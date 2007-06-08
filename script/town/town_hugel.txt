@@ -9,7 +9,7 @@
 //--------------------------------------------------------------
 // Script Title: Hugel Town NPCs	Author: Tsuyuki
 //--------------------------------------------------------------
-// Revision History: v2.2
+// Revision History: v2.3
 //--------------------------------------------------------------
 //	1.0 Added redone script with new/missing NPCs and ripped iRO dialogue [Tsuyuki]
 //	1.1 Fixed a couple bugs [Tsuyuki]
@@ -24,6 +24,7 @@
 //	2.0 Moved Bismarc to the Blacksmith Job Change Quest [Tsuyuki]
 //	2.1 Added the Hugel Remedy Quest, converted from Aegis (iRO 10.4) [Tsuyuki]
 //	2.2 Added the Biological Weapon Quest, converted from Aegis (iRO 10.4) [Tsuyuki]
+//	2.3 Updated script formatting [Tsuyuki]
 //--------------------------------------------------------------
 // Additional Notes: Quests are largely incomplete, but
 // NPCs exist. * Official-certified *
@@ -31,7 +32,7 @@
 
 
 //--------------------------------------------------------------
-// Hugel Field NPCs
+// Hugel Town NPCs
 //--------------------------------------------------------------
 
 hu_fild06.gat,217,270,3	script	Burupu	896,{
@@ -45,11 +46,6 @@ hu_fild06.gat,217,270,3	script	Burupu	896,{
 	mes "was almost a Magnum Break, right?";
 	close;
 }
-
-
-//--------------------------------------------------------------
-// Hugel Outdoor Town NPCs
-//--------------------------------------------------------------
 
 hugel.gat,85,93,3	script	Mudie	866,{
 
@@ -175,11 +171,6 @@ hugel.gat,175,115,5	script	Marius	897,{
 	mes "wrestle or something, kid~";
 	close;
 }
-
-
-//--------------------------------------------------------------
-// Hugel Indoor Town NPCs
-//--------------------------------------------------------------
 
 hu_in01.gat,310,380,5	script	Girl	891,{
 
@@ -363,6 +354,419 @@ L_No:
 	mes "when you're ready to";
 	mes "leave this dangerous place.";
 	close;
+}
+
+
+//--------------------------------------------------------------
+// Monster Races System (Incomplete)
+//--------------------------------------------------------------
+
+// Eckar Erenes (Incomplete)
+hugel.gat,62,69,1	script	Eckar Erenes	86,{
+
+	mes "[Eckar Erenes]";
+	mes "Welcome to the";
+	mes "Monster Race Arena,";
+	mes "the pride and joy of";
+	mes "the village of Hugel!";
+	mes "How may I help you?";
+	next;
+	menu	"Monster Race Info",L_RaceInfo,
+		"Enter Monster Race",L_EnterRace;
+
+	L_RaceInfo:
+		mes "[Eckar Erenes]";
+		mes "Monster Races originated from";
+		mes "simple children's games in which";
+		mes "Cute Pets would race against each";
+		mes "other. This grew into an adult";
+		mes "pastime that is so popular, we've";
+		mes "built a racing arena in Hugel.";
+		next;
+		mes "[Eckar Erenes]";
+		mes "Our Monster Race Arena hosts";
+		mes "two types of monster races. First,";
+		mes "we have the Single Monster Race,";
+		mes "in which those that wagered on the";
+		mes "1st place monster are rewarded.";
+		next;
+		mes "[Eckar Erenes]";
+		mes "Then, we have the Dual Monster";
+		mes "Race in which the house odds and";
+		mes "rewards are greater than in Single";
+		mes "Monster Races: you must wager on";
+		mes "2 monsters, and they must place in";
+		mes "1st and 2nd for you to win.";
+		next;
+		mes "[Eckar Erenes]";
+		mes "Although a small entrance";
+		mes "fee is required, we only use";
+		mes "the money to give rewards to";
+		mes "participants and maintain this";
+		mes "arena. Therefore, we're not";
+		mes "profiting from this enterprise.";
+		next;
+		mes "[Eckar Erenes]";
+		mes "Also, we prohibit others";
+		mes "from making personal bets";
+		mes "and wagers, using items and";
+		mes "zeny, based on the outcomes";
+		mes " of these races. That kind of";
+		mes "gambling is illegal here...";
+		next;
+		mes "[Eckar Erenes]";
+		mes "Once you enter the Race Arena,";
+		mes "you will receive a Racing Ticket.";
+		mes "Keep in mind that winning Racing";
+		mes "Tickets can only be exchanged for";
+		mes "Prize Medals during a 5 minute";
+		mes "windows after the end of the race.";
+		next;
+		goto L_EnterRace;
+
+	L_EnterRace:
+		mes "[Eckar Erenes]";
+		mes "The entrance fee for all races";
+		mes "in the Monster Race Arena is";
+		mes "2,000 zeny. If you'd like to wager";
+		mes "on a Single Monster Race,";
+		mes "then please ask my brother";
+		mes "Ellebird to help you.";
+		next;
+		mes "[Eckar Erenes]";
+		mes "Otherwise, I'll help get you";
+		mes "started if you're interested";
+		mes "in a Dual Monster Race.";
+		mes "Would you like to wager";
+		mes "on a Dual Monster Race?";
+		next;
+		menu	"Yes, please.",L_DualRace,
+			"No, thanks.",L_NoThanks;
+
+		L_DualRace:
+			if (Zeny < 2000) goto L_NotEnoughZeny;
+
+			// Incomplete + Unofficial dialogue
+			// Should take your Zeny and take you
+			// to the Dual Monster Race Arena [Tsuyuki]
+
+			mes "[Eckar Erenes]";
+			mes "I'm sorry, but the Monster Race";
+			mes "Arena is currently undergoing";
+			mes "renovations so it's shut down";
+			mes "for now.";
+			close;
+
+		L_NoThanks:
+			mes "[Eckar Erenes]";
+			mes "Very well. I hope that";
+			mes "you enjoy your time here";
+			mes "in the Monster Race Arena~";
+			close;
+		
+	L_NotEnoughZeny:
+		mes "[Eckar Erenes]";
+		mes "I'm sorry, but you";
+		mes "don't have enough";
+		mes "money to pay the";
+		mes "2,000 zeny entrance fee.";
+		close;
+}
+
+// Eckar Ellebird (Incomplete)
+hugel.gat,58,72,5	script	Eckar Ellebird	86,{
+
+	mes "[Eckar Ellebird]";
+	mes "Welcome to the biggest";
+	mes "attraction in Hugel, the";
+	mes "Monster Race Arena.";
+	mes "How may I help you today?";
+	next;
+	menu	"Monster Race Info",L_RaceInfo,
+		"Enter Monster Race",L_EnterRace;
+
+	L_RaceInfo:
+		mes "[Eckar Ellebird]";
+		mes "Monster Races originated from";
+		mes "simple children's games in which";
+		mes "Cute Pets would race against each";
+		mes "other. This grew into an adult";
+		mes "pastime that is so popular, we've";
+		mes "built a racing arena in Hugel.";
+		next;
+		mes "[Eckar Ellebird]";
+		mes "Our Monster Race Arena hosts";
+		mes "two types of monster races. First,";
+		mes "we have the Single Monster Race,";
+		mes "in which those that wagered on the";
+		mes "1st place monster are rewarded.";
+		next;
+		mes "[Eckar Ellebird]";
+		mes "Then, we have the Dual Monster";
+		mes "Race in which the house odds and";
+		mes "rewards are greater than in Single";
+		mes "Monster Races: you must wager on";
+		mes "2 monsters, and they must place in";
+		mes "1st and 2nd for you to win.";
+		next;
+		mes "[Eckar Ellebird]";
+		mes "Although a small entrance";
+		mes "fee is required, we only use";
+		mes "the money to give rewards to";
+		mes "participants and maintain this";
+		mes "arena. Therefore, we're not";
+		mes "profiting from this enterprise.";
+		next;
+		mes "[Eckar Ellebird]";
+		mes "Also, we prohibit others";
+		mes "from making personal bets";
+		mes "and wagers, using items and";
+		mes "zeny, based on the outcomes";
+		mes " of these races. That kind of";
+		mes "gambling is illegal here...";
+		next;
+		mes "[Eckar Ellebird]";
+		mes "Once you enter the Race Arena,";
+		mes "you will receive a Racing Ticket.";
+		mes "Keep in mind that winning Racing";
+		mes "Tickets can only be exchanged for";
+		mes "Prize Medals during a 5 minute";
+		mes "windows after the end of the race.";
+		next;
+		goto L_EnterRace;
+
+	L_EnterRace:
+		mes "[Eckar Ellebird]";
+		mes "The entrance fee for all races";
+		mes "in the Monster Race Arena is";
+		mes "2,000 zeny. If you'd like to wager";
+		mes "on a Dual Monster Race, then";
+		mes "please ask my brother Erenes,";
+		mes "and he will help you.";
+		next;
+		mes "[Eckar Ellebird]";
+		mes "Otherwise, I'll help get you";
+		mes "started if you're interested";
+		mes "in a Single Monster Race.";
+		mes "Would you like to wager";
+		mes "on a Single Monster Race?";
+		next;
+		menu	"Yes, please.",L_SingleRace,
+			"No, thanks.",L_NoThanks;
+
+		L_SingleRace:
+			if (Zeny < 2000) goto L_NotEnoughZeny;
+
+			// Incomplete + Unofficial dialogue
+			// Should take your Zeny and take you
+			// to the Dual Monster Race Arena [Tsuyuki]
+
+			mes "[Eckar Ellebird]";
+			mes "I'm sorry, but the Monster Race";
+			mes "Arena is currently undergoing";
+			mes "renovations so it's shut down";
+			mes "for now.";
+			close;
+
+		L_NoThanks:
+			mes "[Eckar Ellebird]";
+			mes "Very well. I hope that";
+			mes "you enjoy your time here";
+			mes "in the Monster Race Arena~";
+			close;
+		
+	L_NotEnoughZeny:
+		mes "[Eckar Ellebird]";
+		mes "I'm sorry, but you";
+		mes "don't have enough";
+		mes "money to pay the";
+		mes "2,000 zeny entrance fee.";
+		close;
+}
+
+
+//--------------------------------------------------------------
+// Prize Medal Exchanger (Incomplete)
+//--------------------------------------------------------------
+
+hugel.gat,71,83,3	script	Wayne	900,{
+
+	mes "[Wayne]";
+	mes "Hello, there! Ever wonder";
+	mes "what you could do with all";
+	mes "the Prize Medals you can win";
+	mes "in Monster Race Arena? You";
+	mes "can donate them in Einbroch";
+	mes "to the Blacksmith Guild...";
+	next;
+	mes "[Wayne]";
+	mes "...Or you can exchange them";
+	mes "for items, right here and right";
+	mes "now, with me. As always, the";
+	mes "choice is really up to you.";
+	next;
+	menu "Prize Medal Exchange",L_Exchange,"Cancel",L_Cancel;
+
+	L_Exchange:
+		mes "[Wayne]";
+		mes "Now, how many Prize Medals";
+		mes "would you like to exchange?";
+		mes "It doesn't take a genius to";
+		mes "figure out that you can get";
+		mes "more valuable items by trading";
+		mes "more Prize Medals at a time.";
+		next;
+		menu	"1 Prize Medal",L_Prize01,
+			"3 Prize Medals",L_Prize02,
+			"7 Prize Medals",L_Prize03,
+			"8 Prize Medals",L_Prize04,
+			"16 Prize Medals",L_Prize05,
+			"25 Prize Medals",L_Prize06,
+			"42 Prize Medals",L_Prize07,
+			"59 Prize Medals",L_Prize08;
+
+		L_Prize01:
+			mes "[Wayne]";
+			mes "Now, please choose";
+			mes "which of the following item";
+			mes "sets that you'd like to receive";
+			mes "in exchange for 1 Prize Medal.";
+			next;
+			menu	"2 Hinale Leaflets",L_PrzOpt01,
+				"2 Aloe Leaflets",L_PrzOpt02,
+				"1 Mastela Fruit",L_PrzOpt03,
+				"5 Witch Starsands",L_PrzOpt04,
+				"4 Condensed Red Potions",L_PrzOpt05;
+
+			// Incomplete
+			L_PrzOpt01:
+			L_PrzOpt02:
+			L_PrzOpt03:
+			L_PrzOpt04:
+			L_PrzOpt05:
+				goto L_NotEnoughMedals;
+
+		L_Prize02:
+			mes "[Wayne]";
+			mes "Now, please choose";
+			mes "which of the following item";
+			mes "sets that you'd like to receive";
+			mes "in exchange for 3 Prize Medals.";
+			next;
+			menu	"1 Royal Jelly",L_PrzOpt06,
+				"6 Holy Waters",L_PrzOpt07;
+
+			// Incomplete
+			L_PrzOpt06:
+			L_PrzOpt07:
+				goto L_NotEnoughMedals;
+
+		L_Prize03:
+			mes "[Wayne]";
+			mes "Now, please choose";
+			mes "which of the following item";
+			mes "sets that you'd like to receive";
+			mes "in exchange for 7 Prize Medals.";
+			next;
+			menu	"1 Cookie Bag",L_PrzOpt08,
+				"1 First Aid Kit",L_PrzOpt09;
+
+			// Incomplete
+			L_PrzOpt08:
+			L_PrzOpt09:
+				goto L_NotEnoughMedals;
+
+		L_Prize04:
+			mes "[Wayne]";
+			mes "Now, please choose";
+			mes "which of the following item";
+			mes "sets that you'd like to receive";
+			mes "in exchange for 8 Prize Medals.";
+			mes "Well, we have only 1 set, but...";
+			next;
+			menu "1 Gift Box",-;
+
+				// Incomplete
+				goto L_NotEnoughMedals;
+
+		L_Prize05:
+			mes "[Wayne]";
+			mes "Now, please choose";
+			mes "which of the following item";
+			mes "sets that you'd like to receive";
+			mes "in exchange for 16 Prize Medals.";
+			mes "Well, we have only 1 set, but...";
+			next;
+			menu "1 Old Blue Box",-;
+
+				// Incomplete
+				goto L_NotEnoughMedals;
+
+		L_Prize06:
+			mes "[Wayne]";
+			mes "Now, please choose";
+			mes "which of the following item";
+			mes "sets that you'd like to receive";
+			mes "in exchange for 25 Prize Medals.";
+			mes "Well, we have only 1 set, but...";
+			next;
+			menu "1 Taming Gift Set",-;
+
+				// Incomplete
+				goto L_NotEnoughMedals;
+
+		L_Prize07:
+			mes "[Wayne]";
+			mes "Now, please choose";
+			mes "which of the following item";
+			mes "sets that you'd like to receive";
+			mes "in exchange for 42 Prize Medals.";
+			mes "Well, we have only 1 set, but...";
+			next;
+			menu "1 Old Purple Box",-;
+
+				// Incomplete
+				goto L_NotEnoughMedals;
+
+		L_Prize08:
+			mes "[Wayne]";
+			mes "Now, please choose";
+			mes "which of the following item";
+			mes "sets that you'd like to receive";
+			mes "in exchange for 59 Prize Medals.";
+			mes "Well, we have only 1 set, but...";
+			next;
+			menu "1 Poring Box",-;
+
+				// Incomplete
+				goto L_NotEnoughMedals;
+
+	L_NotEnoughMedals:
+		mes "[Wayne]";
+		mes "Hey, you don't have";
+		mes "enough Prize Medals with";
+		mes "you. Go and get some more";
+		mes "if you want to exchange";
+		mes "them with me for anything.";
+		close;
+
+	L_Cancel:
+		mes "[Wayne]";
+		mes "Well, just keep in mind";
+		mes "that you can always come";
+		mes "to me to trade in your Prize";
+		mes "Medals for consumable items.";
+		mes "That guy in Einbroch? Not sure";
+		mes "what he'd give you for them...";
+		next;
+		mes "[Wayne]";
+		mes "All I know is that he";
+		mes "needs a whole lot of medals";
+		mes "for the work that he's doing.";
+		mes "Still, I hear that he just may";
+		mes "make your donations worth";
+		mes "all your effort, you know?";
+		close;
 }
 
 
@@ -1567,6 +1971,613 @@ hugel.gat,126,151,3	script	Emily#3459	90,{
 
 
 //--------------------------------------------------------------
+// Fish Cake Soup Mini-Quest
+//--------------------------------------------------------------
+
+// Used variables:
+// - fcsquest -> Main quest variable.
+// - @i -> Temp variable for random chance.
+// - fcsversion -> Splitter between Neha, Layoma, Maewan, and Erjan clients.
+
+// Cellette Lavit
+hu_in01.gat,15,372,3	script	Cellette Lavit	74,{
+
+	if (fcsquest == 1) goto L_CelletteQ01;
+	if (fcsquest == 2) goto L_CelletteQ02;
+	if (fcsquest == 3) goto L_CelletteQ05;
+	if (fcsquest == 4) goto L_CelletteQ04;
+
+	mes "[Cellette]";
+	mes "Hi there, thanks for";
+	mes "visiting our lovely town!";
+	mes "Why don't you come in and";
+	mes "have a taste of authentic";
+	mes "Hugel cuisine? I guarantee";
+	mes "that you won't regret it~";
+	next;
+	mes "[Cellette]";
+	mes "My name is Cellette Lavit,";
+	mes "and I proudly server Fish Cake";
+	mes "Soup, Hugel's specialty dish.";
+	mes "All the tourists that've tried";
+	mes "it have loved it, and I have";
+	mes "many regular customers~";
+	next;
+	mes "[Cellette]";
+	mes "The dish has something";
+	mes "of a cult following, and it's";
+	mes "not widely popularized, but I'm";
+	mes "surue that it'll be considered";
+	mes "representative of Schwaltzvalt";
+	mes "Republic cuisine someday.";
+	next;
+	mes "[Cellette]";
+	mes "Listen, you look like an";
+	mes "able adventurer, so would";
+	mes "you consider working part time";
+	mes "for me? I have many orders for";
+	mes "Fish Cake Soup, so there's";
+	mes "no way I can make deliveries...";
+	next;
+	mes "[Cellette]";
+	mes "If you work for me, I'll";
+	mes "waive the price: I'll give you";
+	mes "1 Fish Cake Soup for each";
+	mes "delivery that you complete.";
+	mes "But if you're not interested,";
+	mes "you can just buy some now~";
+	next;
+	menu	"Sure, I'll work for you!",L_StartWork,
+		"I want to buy Fish Cake Soup.",L_BuySoup,
+		"See ya.",L_Cancel01;
+
+	L_StartWork:
+		mes "[Cellette]";
+		mes "Oh, thank you so much!";
+		mes "You can't imagine how busy";
+		mes "I've been, and how much I need";
+		mes "the help! Now, let's get started~";
+		next;
+		set @i,rand(1,4);
+
+		if (@i == 1) goto L_Neha01;
+		if (@i == 2) goto L_Layoma01;
+		if (@i == 3) goto L_Maewan01;
+		if (@i == 4) goto L_Erjan01;
+
+		L_Neha01:
+			mes "[Cellette]";
+			mes "Alright, please take this";
+			mes "order of Fish Cake Soup to";
+			mes "my friend Neha. I'm grateful";
+			mes "that she's a regular customer--";
+			mes "she's a good friend, but I'm sure";
+			mes "she's a good friend, but I'm sure^FFFFFF ^000000 that she loves the soup as well.";
+			getitem 584,1;
+			set fcsversion,1;
+			set fcsquest,1;
+			close;
+
+		L_Layoma01:
+			mes "[Cellette]";
+			mes "Okay, this order of Fish";
+			mes "Cake Soup is ready! Please";
+			mes "take it to my roommate Layoma.";
+			mes "But... Be careful. She's got";
+			mes "a thing about punctuality.";
+			mes "Just try not to be late...";
+			getitem 584,1;
+			set fcsversion,2;
+			set fcsquest,1;
+			close;
+
+		L_Maewan01:
+			mes "[Cellette]";
+			mes "Right, take this next order";
+			mes "of Fish Cake Soup to Maewan,";
+			mes "another one of my regulars.";
+			mes "He's been buying my soup ever";
+			mes "since I helped him start his^FFFFFF ^000000 business. Nice of him, isn't it?";
+			getitem 584,1;
+			set fcsversion,3;
+			set fcsquest,1;
+			close;
+
+		L_Erjan01:
+			mes "[Cellette]";
+			mes "Quick, take this Fish";
+			mes "Paste Soup to Erjan. Um,";
+			mes "but be careful, he's really";
+			mes "nitpicky... And he likes to";
+			mes "have everything in such";
+			mes "and such and order...";
+			getitem 584,1;
+			set fcsversion,4;
+			set fcsquest,1;
+			close;
+
+	L_BuySoup:
+		mes "[Cellette]";
+		mes "Oh, you'd like to try my";
+		mes "Fish Cake Soup, eh? Good";
+		mes "choice, I know you'll enjoy";
+		mes "its delicious, hearty flavor~";
+		mes "Each order costs 100 zeny.";
+		next;
+		menu	"Order 1 Fish Cake Soup",L_Order01,
+			"Cancel",L_Cancel02;
+
+		L_Order01:
+			if (Zeny < 100) goto L_NotEnoughZeny;
+
+			set Zeny,Zeny - 100;
+			getitem 584,1;
+			mes "[Cellette]";
+			mes "Thanks! Enjoy your";
+			mes "bowl of Fish Cake Soup.";
+			mes "I Hope you come and";
+			mes "visit me again, okay?";
+			close;
+
+		L_Cancel02:
+			mes "[Cellette]";
+			mes "If you're ever hungry,";
+			mes "or just want to enjoy";
+			mes "a delicious meal, come";
+			mes "and have some of my soup~";
+			close;
+
+		L_NotEnoughZeny:
+			mes "[Cellette]";
+			mes "Oh, what's this?";
+			mes "You don't have enough";
+			mes "money? Well, come back";
+			mes "after you save 100 zeny.";
+			mes "That's a really good price";
+			mes "for my gourmet soup, you know.";
+			close;
+
+	L_Cancel01:
+		mes "[Cellette]";
+		mes "Oh? You're not interested";
+		mes "in trying my Fish Cake Soup";
+		mes "at all? Well, if you change";
+		mes "your mind, please come";
+		mes "back. I just know you'll love";
+		mes "the taste if you give it a try.";
+		close;
+
+	L_CelletteQ01:
+		if (!countitem(584)) goto L_CelletteQ03;
+		if (fcsversion == 1) goto L_Neha02;
+		if (fcsversion == 2) goto L_Layoma02;
+		if (fcsversion == 3) goto L_Maewan02;
+		if (fcsversion == 4) goto L_Erjan02;
+
+		L_Neha02:
+			mes "[Cellette]";
+			mes "Haven't you left already?";
+			mes "My friend Neha is waiting";
+			mes "for you to deliver her order";
+			mes "of Fish Cake Soup. Please";
+			mes "try to get it to her before the";
+			mes "soup gets cold, okay?";
+			close;
+
+		L_Layoma02:
+			mes "[Cellette]";
+			mes "I thought you left to";
+			mes "deliver that soup to";
+			mes "Layoma. You should hurry";
+			mes "and bring it to her, before";
+			mes "it doesn't taste good after";
+			mes "it gets cold, you know.";
+			close;
+
+		L_Maewan02:
+			mes "[Cellette]";
+			mes "Whoa, whoa, whoa!";
+			mes "You should have left";
+			mes "already to deliver that";
+			mes "soup to Maewan! Hurry,";
+			mes "before it gets too cold!";
+			close;
+
+		L_Erjan02:
+			mes "[Cellette]";
+			mes "Oh, dear, you better";
+			mes "leave now and deliver";
+			mes "that Fish Cake Soup to";
+			mes "Erjan before he can think";
+			mes "of something to complain about.^FFFFFF ^000000 Although it's probably too late...";
+			close;
+
+	L_CelletteQ02:
+		mes "[Cellette]";
+		mes "Come and taste some";
+		mes "authentic Hugel cuisine!";
+		mes "Enjoy a big steaming bowl";
+		mes "of delicious Fish Cake Soup~";
+		close;
+
+	L_CelletteQ03:
+		mes "[Cellette]";
+		mes "What's that? You lost";
+		mes "the Fish Cake Soup you're";
+		switch(fcsversion) {
+		case 1:
+			mes "supposed to give to Neha?";
+			break;
+		case 2:
+			mes "supposed to give to Layoma?";
+			break;
+		case 3:
+			mes "supposed to give to Maewan?";
+			break;
+		case 4:
+			mes "supposed to give to Erjan?";
+			break;
+		}
+		mes "Oh well, I suppose I'll have";
+		mes "to give you this fresh bowl";
+		mes "of soup that I just made...";
+		next;
+		if (Zeny >= 100) {
+			mes "[Cellette]";
+			mes "But you need to be";
+			mes "responsible and pay";
+			mes "me for the food you lost.";
+			mes "There, I took 100 zeny";
+			mes "from you. That's fair, so";
+			mes "please don't lose it this time.";
+			set Zeny,Zeny-100;
+			getitem 584,1;
+			close;
+		} else {
+			mes "[Cellette]";
+			mes "W-wait... You're don't";
+			mes "have any money to pay";
+			mes "me for the soup you lost?";
+			mes "Well, I don't think I can";
+			mes "trust somebody like you";
+			mes "with any deliveries...";
+			set fcsquest,4;
+			close;
+		}
+
+	L_CelletteQ04:
+		mes "[Cellette]";
+		mes "Ah, I'm sorry, but";
+		mes "I can't do any business";
+		mes "with somebody that's proven";
+		mes "to be irresponsible. Nothing";
+		mes "personal, it's just my policy.";
+		close;
+
+	L_CelletteQ05:
+		mes "[Cellette]";
+		mes "Good work! I hear that";
+		mes "you successfully delivered";
+		mes "the soup. I knew I could trust";
+		mes "you! Ah, before I forget, here";
+		mes "is your Fish Cake Soup. Thank";
+		mes "you so much for your help~";
+		set fcsquest,0;
+		set fcsversion,0;
+		getitem 584,3;
+		set BaseExp,Exp+1000;
+		next;
+		mes "[Cellette]";
+		mes "It was really nice working";
+		mes "with you, and I hope you come";
+		mes "by and help me again sometime.";
+		mes "Oh, and please tell all your";
+		mes "friends about my delicious";
+		mes "Fish Cake Soup. See you later~";
+		close;
+}
+
+// Neha
+hugel.gat,76,134,3	script	Neha	101,{
+
+	if (fcsquest == 1 && fcsversion == 1 && countitem(584)) goto L_Neha01;
+	if (fcsquest == 2 && fcsversion == 1) goto L_Neha02;
+
+	mes "[Neha]";
+	mes "Oh ho ho ho ho ho~";
+	mes "I just love cute little boys...";
+	mes "But for some reason, it";
+	mes "thrills me to tortue them";
+	mes "a little bit as well. Hoho~";
+	close;
+
+	L_Neha01:
+		mes "[Neha]";
+		mes "Oh, you have a delivery";
+		mes "from Cellette, hm? Hmpf!";
+		mes "You're late! Don't you know";
+		mes "this soup isn't good if it";
+		mes "isn't steaming hot?";
+		next;
+		if (Sex == Female) {
+				mes "[Neha]";
+				mes "Yes, yes... You should";
+				mes "be punished. You should be";
+				mes "spanked. If you want to finish";
+				mes "your delivery, then bring me";
+				mes "^FF00001 Whip^000000 so that I can spank you";
+				mes "for your impertinence, girl!";
+		}
+		else {
+			mes "But... You're a handsome";
+			mes "fellow, so I'll forgive you...";
+			mes "On one condition. Bring me";
+			mes "^FF00001 Whip^000000 with which to spank";
+			mes "you. YOu better hurry, boy, or";
+			mes "I won't let you off that easy.";
+		}
+		set fcsquest,2;
+		close;
+
+	L_Neha02:
+		if (countitem(1960) && countitem(584)) {
+			mes "[Neha]";
+			mes "Finally... My soup!";
+			mes "And you brought me my Whip!";
+			mes "Don't worry, I'll only give you";
+			mes "just one hard spanking. It'll";
+			mes "be over before you know it~";
+			next;
+			mes "[Neha]";
+			mes "Ha!";
+			next;
+			mes "^3355FF*Slap*^000000";
+			percentheal -25,0;
+			next;
+			mes "[Neha]";
+			mes "Heeyah!!";
+			next;
+			mes "^3355FF*SLAP*^000000";
+			percentheal -25,0;
+			next;
+			mes "[Neha]";
+			mes "Ooh, did I accidentally";
+			mes "whip you twice? Heh heh...";
+			mes "Well, I'm satisfied. I'll go";
+			mes "ahead and tell Celette that";
+			mes "you did a good job... I hope";
+			mes "you come deliver my soup again~";
+			delitem 1960,1;
+			delitem 584,1;
+			set fcsquest,3;
+			close;
+		}
+		else {
+			mes "[Neha]";
+			mes "^FF00001 Fish Cake Soup^000000...";
+			mes "^FF00001 Whip^000000... Is that too";
+			mes "much for a girl to ask?";
+			mes "I'm hungry, and I want to";
+			mes "hit somebody! What's wrong";
+			mes "with that, huh? Now hurry up!";
+			close;
+		}
+}
+
+// Layoma
+hugel.gat,84,125,3	script	Layoma	700,{
+
+	if (fcsquest == 1 && fcsversion == 2 && countitem(584)) goto L_Layoma01;
+	if (fcsquest == 2 && fcsversion == 2) goto L_Layoma02;
+
+	mes "[Layoma]";
+	mes "I love singing songs,";
+	mes "and I love eating mushrooms.";
+	mes "For a person living in Hugel,";
+	mes "that's a pretty exciting life!";
+	close;
+
+	L_Layoma01:
+		mes "[Layoma]";
+		mes "You're here to deliver";
+		mes "my Fish Cake Soup?";
+		mes "How could you be so late?!";
+		mes "Don't you know that your";
+		mes "incompetence also reflects";
+		mes "on Cellette and her shop?!";
+		next;
+		mes "[Layoma]";
+		mes "I can't let you continue";
+		mes "delivering for Cellette";
+		mes "unless you prove that you're";
+		mes "dependable to me. Erm, bring";
+		mes "me ^FF00001 Mushroom Spore^000000, and";
+		mes "I'll forget this whole thing.";
+		set fcsquest,2;
+		close;
+
+	L_Layoma02:
+		if (countitem(921) && countitem(584)) {
+			mes "[Layoma]";
+			mes "Great! You brought me";
+			mes "1 Mushroom Spore! This";
+			mes "will taste perfect with my";
+			mes "bowl of Fish Cake Soup~";
+			next;
+			mes "[Layoma]";
+			mes "Alright, maybe I can";
+			mes "count on you to work";
+			mes "for my roommate Cellette";
+			mes "a little while longer. Oh, and";
+			mes "please tell her to not to come^FFFFFF ^000000 home so late all the time, okay?";
+			delitem 921,1;
+			delitem 584,1;
+			set fcsquest,3;
+			close;
+		}
+		else {
+			mes "[Layoma]";
+			mes "Hey! I thought you";
+			mes "wanted to prove that";
+			mes "you're a reliable and";
+			mes "trustworthy person! Go";
+			mes "and bring me 1 Mushroom";
+			mes "Spore with my Fish Cake Soup!";
+			close;
+		}
+}
+
+// Maewan
+hugel.gat,87,139,3	script	Maewan	86,{
+
+	if (fcsquest == 1 && fcsversion == 3 && countitem(584)) goto L_Maewan01;
+	if (fcsquest == 2 && fcsversion == 3) goto L_Maewan02;
+
+	mes "[Maewan]";
+	mes "I like to think of";
+	mes "myself as a man of";
+	mes "eclectic taste. I love";
+	mes "collecting strange and";
+	mes "unique items, and learning";
+	mes "all sorts of new things~";
+	close;
+
+	L_Maewan01:
+		mes "[Maewan]";
+		mes "Oh, finally, I've been";
+		mes "waiting for my order of";
+		mes "Fish Cake Soup from Cellette!";
+		mes "Aaaah, it smells oh so delicious~";
+		next;
+		mes "[Maewan]";
+		mes "Argh, but you're late!";
+		mes "This is your fault, you";
+		mes "know that, right? Well,";
+		mes "it's not a big deal, but";
+		mes "I can forgive you if you";
+		mes "help me with my collection.";
+		next;
+		mes "[Maewan]";
+		mes "Just bring me";
+		mes "1 Bookclip in Memory,";
+		mes "alright? Oh, and don't";
+		mes "eat my soup before";
+		mes "you deliver it to me!";
+		set fcsquest,2;
+		close;
+
+	L_Maewan02:
+		if (countitem(584) && countitem(7015)) {
+			mes "[Maewan]";
+			mes "Great, you really brought";
+			mes "me a Bookclip in Memory!";
+			mes "Yes, this'll make a fine";
+			mes "addition to my collection~";
+			mes "Oh, and give me my soup.";
+			mes "Thanks again for delivering~";
+			delitem 584,1;
+			delitem 7015,1;
+			set fcsquest,3;
+			close;
+		}
+		else {
+			mes "[Maewan]";
+			mes "I know it sounds unfair";
+			mes "of me to ask you to bring";
+			mes "^FF00001 Bookclip in Memory^000000 with";
+			mes "my ^FF0000Fish Cake Soup^000000, but well...";
+			next;
+			mes "[Maewan]";
+			mes "I'd feel left out if";
+			mes "I didn't do it. I know";
+			mes "all of Cellette's other";
+			mes "customers are asking the";
+			mes "people delivering their soup";
+			mes "for all sorts of crazy things.";
+			close;
+		}
+}
+
+// Erjan
+hugel.gat,102,161,3	script	Erjan	100,{
+
+	if (fcsquest == 1 && fcsversion == 4 && countitem(584)) goto L_Erjan01;
+	if (fcsquest == 2 && fcsversion == 4) goto L_Erjan02;
+
+	mes "[Erjan]";
+	mes "I am Erjan, first son of";
+	mes "the noble Franchefeschu";
+	mes "family. Commoner, if you";
+	mes "do not have any business";
+	mes "with me, then leave me be,";
+	mes "and do whatever it is you do.";
+	close;
+
+	L_Erjan01:
+		mes "[Erjan]";
+		mes "Well, I thought you'd";
+		mes "never come to deliver";
+		mes "my Fish Cake Soup. You're";
+		mes "awfully late, you know that?";
+		mes "Still, the smell is just so^FFFFFF ^000000 appetizing, I can barely resist...";
+		next;
+		mes "[Erjan]";
+		mes "Hm, but as the first son";
+		mes "of the Franchefeschu family,";
+		mes "I cannot eat this soup unless";
+		mes "it is suitably prepared. Go!";
+		mes "I command you to bring me";
+		mes "the commoner's ^FF0000China^000000!";
+		next;
+		mes "[Erjan]";
+		mes "Realize that I'm compromising";
+		mes "with you by asking you to bring";
+		mes "me regular China... I always";
+		mes "enjoy my meals on the finest";
+		mes "glass and tableware available.";
+		mes "That's how we noblemen live~";
+		set fcsquest,2;
+		close;
+
+	L_Erjan02:
+		if (countitem(584) && countitem(736)) {
+			mes "[Erjan]";
+			mes "Ah, so you've delivered";
+			mes "my Fish Cake Soup with some";
+			mes "proper China. Yes, this pleases";
+			mes "me. Now, I may enjoy this meal";
+			mes "in a manner befitting the";
+			mes "Franchefeschu family.";
+			next;
+			mes "[Erjan]";
+			mes "Although this China is";
+			mes "below my standards, I also";
+			mes "understand that this is the";
+			mes "best you can do. Yes, to accept";
+			mes "this is my... noblesse oblige.";
+			next;
+			mes "[Erjan]";
+			mes "You are dismissed.";
+			mes "Please take your leave,";
+			mes "and return to Cellette";
+			mes "with my noble thanks.";
+			delitem 584,1;
+			delitem 736,1;
+			set fcsquest,3;
+			close;
+		}
+		else {
+			mes "[Erjan]";
+			mes "Must I repeat myself?";
+			mes "Bring me my ^FF0000Fish Cake Soup^000000";
+			mes "with ^FF00001 China^000000 so that I may";
+			mes "properly enjoy my meal.";
+			close;
+		}
+}
+
+
+//--------------------------------------------------------------
 // Hide n' Seek Quest
 //--------------------------------------------------------------
 
@@ -2158,6 +3169,730 @@ OnCommandOff:
 OnTimer60000:
 	disablenpc "Strange Man#out";
 	donpcevent "Suspicious Barrel#hugel::OnCommandOn";
+	stopnpctimer;
+	end;
+}
+
+
+//--------------------------------------------------------------
+// Medicine Quest
+//--------------------------------------------------------------
+
+
+hu_in01.gat,387,245,0	script	Allen Schuwell#Hugel1	 	849,2,2,{
+
+	if (BaseLevel > 49) {
+		if (hg_herb == 0) {
+			mes "[Allen]";
+			mes "*Groooooan~*";
+			mes "Arrrgh, my back hurts...";
+			mes "And my stomach... Why do";
+			mes "I have to suffer like this";
+			mes "while other people get to";
+			mes "live happy, luxurious lives?";
+			next;
+			mes "[Allen]";
+			mes "My son is the only family";
+			mes "I've got. He used to be such";
+			mes "a good obedient kid, but now";
+			mes "I doubt whether he cares about";
+			mes "his father! I told that lazy kid^FFFFFF ^000000 to hurry and bring me my meds...";
+			next;
+			mes "[Allen]";
+			mes "But does he worry about";
+			mes "his father's suffering?! No!";
+			mes "I bet you he's hanging out with";
+			mes "his no good hoodlum friends!";
+			mes "Argh! The pain is getting worse!^FFFFFF ^000000 I... I need my medication!";
+			next;
+			mes "[Allen]";
+			mes "Oh! I can definitely feel";
+			mes "it getting worse! Please,";
+			mes "adventurer, would you help";
+			mes "a sick man? I need you to";
+			mes "find my son Postell and to";
+			mes "tell him to bring my medicine!";
+			next;
+			menu "Sure.",L_LABEL1,"No, I'm sorry.",L_LABEL2;
+			L_LABEL1:
+				mes "[Allen]";
+				mes "Th-thank you so much!";
+				mes "Please head east, go";
+				mes "outside of town, and";
+				mes "you should be able to";
+				mes "find Postell. Tell him that";
+				mes "I need my ''Kolbun A'' now!";
+				set hg_herb,1;
+				next;
+				mes "[Allen]";
+				mes "And let him know that";
+				mes "if he doesn't shape up...";
+				mes "Well, I just might have";
+				mes "to disown my own son!";
+				mes "He's dead to me if he";
+				mes "doesn't love his father!";
+				close;
+			L_LABEL2:
+				mes "[Allen]";
+				mes "I... I don't understand...!";
+				mes "How can you leave a sick";
+				mes "man alone with his suffering?";
+				mes "I-I desperately need help!";
+				mes "No! Please, d-don't go away!";
+				close;
+		} else if (hg_herb == 2) {
+			mes "[Allen]";
+			mes "Postell... My son...";
+			mes "Why have you forsaken me?";
+			mes "I'm lying here at the brink";
+			mes "of death, and the boy won't";
+			mes "even come to see his father!";
+			next;
+			mes "[Allen]";
+			mes "But you... I can count on you.";
+			mes "Even in Lighthazlen, I'd never";
+			mes "find anyone as dependable as";
+			mes "you. This time, I've decided to";
+			mes "discipline my degenerate son.";
+			mes "Will you help me once more?";
+			next;
+			mes "[" + strcharinfo(0) + "]";
+			mes "Wait, wait...";
+			mes "Lighthalzen?";
+			mes "Did you used to";
+			mes "live there or something?";
+			next;
+			mes "[Allen]";
+			mes "Uh? Er, well, that's just";
+			mes "an expression I use. You";
+			mes "know, like an example.";
+			mes "I-I--^333333*Cough!*^000000 Oh, oh no.";
+			mes "My ^333333*Hack!*^000000 pancreas! Or liver!";
+			mes "I'm having another attack!";
+			next;
+			mes "[" + strcharinfo(0) + "]";
+			mes "......";
+			mes ".........";
+			mes "............";
+			next;
+			mes "[Allen]";
+			mes "Oh, everything's getting";
+			mes "so dark! P-please, if you";
+			mes "have any mercy at all, any";
+			mes "shred of human decency,";
+			mes "would you please let me";
+			mes "have a White P-Potion?";
+			next;
+			menu "Give White Potion",L_LABEL3,"Ignore",L_LABEL4;
+			L_LABEL3:
+				if (countitem(504) < 1) {
+					mes "[Allen]";
+					mes "Oh... Oh no...! You";
+					mes "don't have any White";
+					mes "Potions either?! Wh-what";
+					mes "what am I gonna--?! Help me,";
+					mes "please! Bring me a White Potion";
+					mes "as soon as you can! ^333333*Cough!*^000000";
+					close;
+				} else {
+					delitem 504,1;
+					mes "[Allen]";
+					mes "Oh, thank you!";
+					mes "I-It hurts so much...";
+					mes "A White Potion just has";
+					mes "to help. I-It has to work!";
+					next;
+					mes "[" + strcharinfo(0) + "]";
+					mes "......";
+					mes ".........";
+					mes "............";
+					next;
+					mes "[Allen]";
+					mes "Ah, that... *Whew*";
+					mes "Thank you so much. Now,";
+					mes "all I need to do is wait for";
+					mes "my son to bring my medicine.";
+					mes "Wait. What if he takes too long";
+					mes "to get here. No, no, what if...";
+					next;
+					mes "[Allen]";
+					mes "Wh-what if I have another";
+					mes "ulcer attack before Postell";
+					mes "can bring my meds?! I might";
+					mes "not survive! A-adventurer, would^FFFFFF ^000000 you please stay by my side until";
+					mes "my son arrives? P-please?";
+					next;
+					set hg_herb,3;
+					mes "[" + strcharinfo(0) + "]";
+					mes "......";
+					mes ".........";
+					mes "............";
+					close;
+				}
+			L_LABEL4:
+				mes "[Allen]";
+				mes "W-wait! A-are you just";
+				mes "going to let me d-die?";
+				mes "Noo! ^333333*Cough*^000000 Arrgh! A plague!";
+				mes "A plague on both your houses!";
+				close;
+		} else if (hg_herb == 3) {
+			mes "[Allen]";
+			mes "*Gasp* I... I can";
+			mes "feel it! I think I'm";
+			mes "gonna have another";
+			mes "neutron attack! Argh, it's";
+			mes "already effecting all of the";
+			mes "neutrons in my nervous system!";
+			next;
+			mes "[Allen]";
+			mes "C-can't... Lift...";
+			mes "Legs and fingers...";
+			mes "But... Must... Get...";
+			mes "''Withstander'' medicine...";
+			mes "from... Drawer... H-heeelp me!";
+			mes "Adventurer! H-Heeeeelp~!";
+			set hg_herb,4;
+			close;
+		} else if (hg_herb == 4) {
+			mes "[Allen]";
+			mes "No...!";
+			mes "There's a light at the";
+			mes "the end of the tunnel!";
+			mes "Please, adventurer! C-come";
+			mes "a little closer to me! Don't";
+			mes "let me step into the light!";
+			close;
+		} else if (hg_herb == 6) {
+			mes "^3355FFYou have given the";
+			mes "Withstander medicine";
+			mes "to Allen who guzzles";
+			mes "it down very quickly.^000000";
+			next;
+			mes "[Allen]";
+			mes "Blood... circulating...";
+			mes "through limbs... Clarity...";
+			mes "of thought... returning...";
+			next;
+			mes "[Allen]";
+			mes "Ah, wh-what a relief. It looks";
+			mes "like I-I live to see another";
+			mes "day. Th-thank you so much...";
+			set hg_herb,7;
+			close;
+		} else if (hg_herb == 7) {
+			mes "[Allen]";
+			mes "I... I can't...!";
+			mes "I can barely breathe!";
+			mes "A-adventurer, I need you";
+			mes "again! Please, c-come closer";
+			mes "to me! I-I think I need CPR!";
+			close;
+		} else if (hg_herb == 9) {
+			mes "^3355FFYou give another dose";
+			mes "of Withstander to Allen.^000000";
+			next;
+			set @gyundisio,rand(1,3);
+			if (@gyundisio == 3) {
+				mes "[Allen]";
+				mes "Oh... Thank you...";
+				mes "I feel much b-better now.";
+				mes "My son Postell, he should";
+				mes "be coming soon. Thank you";
+				mes "for being so patient with me...";
+				set hg_herb,10;
+				close;
+			} else {
+				mes "[Allen]";
+				mes "Oh... Thank you...";
+				mes "Y-you're an angel, a regular";
+				mes "Florence Nightingale. Please";
+				mes "stay with m-me until my son";
+				mes "arrives. You wouldn't abandon";
+				mes "this sick man now, would you?";
+				next;
+				mes "[" + strcharinfo(0) + "]";
+				mes "(^333333Your son Postell";
+				mes "better get here soon!^000000)";
+				set hg_herb,7;
+				close;
+			}
+		} else if (hg_herb == 10) {
+			mes "[Allen]";
+			mes "Arrrgh! My ligaments!";
+			mes "They're in such pain!";
+			mes "Oh, oh no! I think my";
+			mes "bones are infected!";
+			mes "Help me, oh help me!";
+			next;
+			donpcevent "Postell Schuwell#2::OnCommandOn";
+			mes "[Allen]";
+			mes "Oh...";
+			mes "My son...!";
+			mes "P-Postell!";
+			next;
+			mes "[Postell]";
+			mes "Uh... Hey, dad.";
+			mes "I brought that";
+			mes "medicine you're";
+			mes "supposed to";
+			mes "need so badly.";
+			misceffect 174,"Postell Schuwell#2";
+			next;
+			mes "[Allen]";
+			mes "Thank goodness...";
+			mes "G-give it to me!";
+			mes "^333333*Gulp gulp gulp*^000000";
+			next;
+			mes "[Allen]";
+			mes "W-wait...";
+			mes "Something's not";
+			mes "right. Bunkoll A";
+			mes "doesn't taste like this...";
+			emotion ET_SWEAT,"Postell Schuwell#2";
+			next;
+			mes "[Postell]";
+			mes "Bunkoll A...?";
+			mes "I thougt you said that";
+			mes "you wanted Kolbun A?";
+			next;
+			mes "[Allen]";
+			mes "My own son, lying to";
+			mes "me! Are you trying to";
+			mes "trick me, Postell?!";
+			mes "I told you get Bunkoll A!";
+			next;
+			mes "[" + strcharinfo(0) + "]";
+			mes "(^333333Wait, wait...";
+			mes "Allen did say that";
+			mes "he wanted Kolbun A...^000000)";
+			next;
+			mes "[Postell]";
+			mes "Right. Okay, I guess";
+			mes "I made a mistake? Um,";
+			mes "Dad, I'll be right back with";
+			mes "the medicine that you want.";
+			mes "It won't take long, so don't";
+			mes "stress yourself about it.";
+			close2;
+			set hg_herb,11;
+			donpcevent "Postell Schuwell#2::OnCommandOff";
+			emotion ET_SWEAT;
+			emotion ET_SWEAT,"Allen Schuwell#Hugel1";
+			end;
+		} else if (hg_herb == 11) {
+			mes "[Allen]";
+			mes "*Sniff* I should have known";
+			mes "that Postell really does care";
+			mes "about me deep down inside.";
+			mes "I wish I had never gotten";
+			mes "myself sick in Lighthalzen...";
+			mes "Then we both wouldn't suffer...";
+			next;
+			mes "[Allen]";
+			mes "Don't worry, adventurer.";
+			mes "I haven't forgotten about";
+			mes "you. Please take a look inside";
+			mes "the medicine drawer, and help";
+			mes "yourself to whatever you like~";
+			set hg_herb,12;
+			close;
+		} else if (hg_herb == 12) {
+			mes "[Allen]";
+			mes "Don't worry, adventurer.";
+			mes "I haven't forgotten about";
+			mes "you. Please take a look inside";
+			mes "the medicine drawer, and help";
+			mes "yourself to whatever you like~";
+			close;
+		} else if (hg_herb == 13) {
+			mes "[Allen]";
+			mes "So did you find the";
+			mes "Old Blue Box I put in";
+			mes "my medicine drawer? It's";
+			mes "not much, but I hope you";
+			mes "like it. Consider my way";
+			mes "of thanking you for your help~";
+			close;
+		} else {
+			mes "[Allen]";
+			mes "*Groooooan~*";
+			mes "Arrrgh, my back hurts...";
+			mes "And my stomach... Why do";
+			mes "I have to suffer like this";
+			mes "while other people get to";
+			mes "live happy, luxurious lives?";
+			close;
+		}
+	} else {
+		mes "[Allen]";
+		mes "*Groooooan~*";
+		mes "Arrrgh, my back hurts...";
+		mes "And my stomach... Why do";
+		mes "I have to suffer like this";
+		mes "while other people get to";
+		mes "live happy, luxurious lives?";
+		close;
+	}
+
+OnTouch:
+	if (hg_herb == 4) {
+		mes "[Allen]";
+		mes "^333333*Cough cough!*^000000";
+		mes "W-Withstander...!";
+		mes "I need m-my Withstander!";
+		mes "P-please! ^333333*Cough cough!*^000000";
+		set hg_herb,5;
+		donpcevent "#opendrawer::OnCommandOn";
+		close;
+	} else if (hg_herb == 7) {
+		mes "[Allen]";
+		mes "^333333*Whew*^000000";
+		mes "I... I can breathe again!";
+		mes "B=but what if I have another";
+		mes "attack?! Please, g-get me";
+		mes "another dose of Withstander,";
+		mes "just to be on the safe side!";
+		set hg_herb,8;
+		donpcevent "#opendrawer::OnCommandOn";
+		close;
+	}
+}
+
+hu_in.gat,385,247,5	script	Postell Schuwell#2	97,{
+
+	mes "[Postell]";
+	mes "Hey, uh...";
+	mes "I'm in the middle";
+	mes "of something here.";
+	close;
+
+OnInit:
+	disablenpc "Postell Schuwell#2";
+	end;
+
+OnCommandOn:
+	enablenpc "Postell Schuwell#2";
+	initnpctimer;
+	end;
+
+OnCommandOff:
+	disablenpc "Postell Schuwell#2";
+	end;
+
+OnTimer100000:
+	disablenpc "Postell Schuwell#2";
+	end;
+}
+
+hu_fild06.gat,34,123,3	script	Postell Schuwell#1	97,{
+
+	if (hg_herb == 1) {
+		mes "[Postell]";
+		mes "I really like living";
+		mes "in Hugel. Fresh air,";
+		mes "clean water, everyone's";
+		mes "friendly and nice. What";
+		mes "more could I want?";
+		next;
+		mes "[Postell]";
+		mes "Oh, what's that?";
+		mes "My dad wants me to";
+		mes "bring him some medicine?";
+		mes "Again? Well, he was really";
+		mes "sick a long time ago, but";
+		mes "nowadays, I'm not so sure.";
+		next;
+		mes "[Postell]";
+		mes "I mean, I'm pretty sure";
+		mes "his illnesses are all, you";
+		mes "know, psychosomatic.";
+		mes "Besides, I'm worried that";
+		mes "all the medicines he's taking";
+		mes "are habit forming, you know?";
+		next;
+		menu "But your father needs you!",L_LABEL1,"Habit forming?",L_LABEL2;
+		L_LABEL1:
+			mes "[Allen's Voice]";
+			mes "Yeah, I guess you're right.";
+			mes "Even if I think he's nuts,";
+			mes "and I don't agree with him,";
+			mes "I should at least show that";
+			mes "I care about my dad. What";
+			mes "medicine did he say he needed?";
+			next;
+			mes "[Postell]";
+			mes "''Kolbun A?'' Alright,";
+			mes "I better make sure that";
+			mes "it's safe for him to take.";
+			mes "Who knows, that stuff might";
+			mes "make him worse. Anyway,";
+			mes "I'll try to get it to him soon.";
+			next;
+			mes "[Postell]";
+			mes "Hey, would you do";
+			mes "me a favor and make";
+			mes "sure that my dad doesn't";
+			mes "get himself into any";
+			mes "more trouble? I'd really";
+			mes "appreciate it if you do.";
+			set hg_herb,2;
+			close;
+		L_LABEL2:
+			mes "[Postell]";
+			mes "Yeah, like he's addicted";
+			mes "to the medicine. That's why";
+			mes "I'm trying to make sure he";
+			mes "gets as little of it as possible! Honestly, I think he drinks";
+			mes "too much medicine already...";
+			close;
+	} else if (hg_herb > 1) {
+		mes "[Postell]";
+		mes "Kolbun A, Kolbun A...";
+		mes "Let's see, is it really";
+		mes "safe for my dad to take?";
+		mes "If it isn't, I better come up";
+		mes "with some replacement...";
+		close;
+	} else {
+		mes "[Postell]";
+		mes "I really like living";
+		mes "in Hugel. Fresh air,";
+		mes "clean water, everyone's";
+		mes "friendly and nice. What";
+		mes "more could I want?";
+		close;
+	}
+}
+
+hu_in01.gat,370,255,3	script	Upper Drawer#1	111,2,2,{
+
+	end;
+
+OnCommandOn:
+	enablenpc "Upper Drawer#1";
+	end;
+
+OnCommandOff:
+	disablenpc "Upper Drawer#1";
+	end;
+
+OnTouch:
+	set @book_01,rand(1,7);
+	if (hg_herb < 5) {
+		mes "^3355FFThere are several";
+		mes "books and a few";
+		mes "liquid medicines";
+		mes "inside this drawer.^000000";
+		close;
+	} else if (hg_herb == 5) {
+		mes "[Allen]";
+		mes "Oh... Oh...";
+		mes "Oooh... The pain";
+		mes "is gone! It's a miracle!";
+		mes "Maybe I'll just take the";
+		mes "Withstander later...";
+		set hg_herb,4;
+		next;
+		if (@book_01 == 4) {
+			mes "^3355FFYou find an old book";
+			mes "inside the drawer.^000000";
+			next;
+			mes "[Welcome to Lighthalzen!]";
+			mes "Author: Tupetso Iltekka";
+			next;
+			mes "......";
+			mes ".........";
+			mes "............";
+			next;
+			mes "[" + strcharinfo(0) + "]";
+			mes "(^333333I guess Allen used";
+			mes "to live in Lighthalzen.";
+			mes "I guess that's why he'd";
+			mes "keep this old PR brochure...^000000)";
+			close;
+		} else if (@book_01 == 5) {
+			mes "^3355FFYou find Allen's";
+			mes "journal inside the";
+			mes "drawer and quickly";
+			mes "leaf through its pages.";
+			mes "It's difficult to read since";
+			mes "the pages are old and worn.^000000";
+			next;
+			mes "[" + strcharinfo(0) + "]";
+			mes "Let's see, let's see...";
+			mes "Rekenber Corporation...";
+			mes "Something about the Slums....";
+			mes "Enormous funds... Experiments.";
+			mes "Lab... Escape... Hugel... Um...";
+			mes "Dr. Morriphen... Side effects?";
+			close;
+		} else {
+			mes "[" + strcharinfo(0) + "]";
+			mes "Wh-what...?";
+			mes "Do you really";
+			mes "need that medicine?!";
+			close;
+		}
+	} else if (hg_herb == 6) {
+		end;
+	} else if (hg_herb == 8) {
+		mes "[Allen]";
+		mes "Oh... Oh...";
+		mes "Oooh... The pain";
+		mes "is gone! It's a miracle!";
+		mes "Maybe I'll just take the";
+		mes "Withstander later...";
+		set hg_herb,7;
+		next;
+		if (@book_01 == 4) {
+			mes "^3355FFYou find an old book";
+			mes "inside the drawer.^000000";
+			next;
+			mes "[Welcome to Lighthalzen!]";
+			mes "Author: Tupetso Iltekka";
+			next;
+			mes "......";
+			mes ".........";
+			mes "............";
+			next;
+			mes "[" + strcharinfo(0) + "]";
+			mes "(^333333I guess Allen used";
+			mes "to live in Lighthalzen.";
+			mes "I guess that's why he'd";
+			mes "keep this old PR brochure...^000000)";
+			close;
+		} else if (@book_01 == 5) {
+			mes "^3355FFYou find Allen's";
+			mes "journal inside the";
+			mes "drawer and quickly";
+			mes "leaf through its pages.";
+			mes "It's difficult to read since";
+			mes "the pages are old and worn.^000000";
+			next;
+			mes "[" + strcharinfo(0) + "]";
+			mes "Let's see, let's see...";
+			mes "Rekenber Corporation...";
+			mes "Something about the Slums....";
+			mes "Enormous funds... Experiments.";
+			mes "Lab... Escape... Hugel... Um...";
+			mes "Dr. Morriphen... Side effects?";
+			close;
+		} else {
+			mes "[" + strcharinfo(0) + "]";
+			mes "Wh-what...?";
+			mes "Do you really";
+			mes "need that medicine?!";
+			close;
+		}
+	} else if (hg_herb == 9) {
+		end;
+	} else if (hg_herb == 12) {
+		mes "^3355FFYou find an";
+		mes "Old Blue Box deep";
+		mes "inside the drawer.^000000";
+		close2;
+		misceffect 71;
+		set hg_herb,13;
+		getitem 603,1;
+		set BaseExp,BaseExp+50000;
+		end;
+	} else {
+		if (@book_01 > 3) {
+			mes "^3355FFYou find an old book";
+			mes "inside the drawer.^000000";
+			next;
+			mes "[Welcome to Lighthalzen!]";
+			mes "Author: Tupetso Iltekka";
+			next;
+			mes "......";
+			mes ".........";
+			mes "............";
+			next;
+			mes "[" + strcharinfo(0) + "]";
+			mes "(^333333I guess Allen used";
+			mes "to live in Lighthalzen.";
+			mes "I guess that's why he'd";
+			mes "keep this old PR brochure...^000000)";
+			close;
+		} else {
+			mes "^3355FFYou find Allen's";
+			mes "journal inside the";
+			mes "drawer and quickly";
+			mes "leaf through its pages.";
+			mes "It's difficult to read since";
+			mes "the pages are old and worn.^000000";
+			next;
+			mes "[" + strcharinfo(0) + "]";
+			mes "Let's see, let's see...";
+			mes "Rekenber Corporation...";
+			mes "Something about the Slums....";
+			mes "Enormous funds... Experiments.";
+			mes "Lab... Escape... Hugel... Um...";
+			mes "Dr. Morriphen... Side effects?";
+			close;
+		}
+	}
+}
+
+hu_in01.gat,370,255,3	script	Upper Drawer#2	111,2,2,{
+
+	end;
+
+OnInit:
+	disablenpc "Upper Drawer#2";
+	end;
+
+OnCommandOn:
+	enablenpc "Upper Drawer#2";
+	end;
+
+OnCommandOff:
+	disablenpc "Upper Drawer#2";
+	end;
+
+OnTouch:
+	if (hg_herb == 5) {
+		mes "^3355FFYou take out one dose of";
+		mes "Withstander from the drawer.^000000";
+		set hg_herb,6;
+		close;
+	} else if (hg_herb == 8) {
+		mes "^3355FFYou take out one dose of";
+		mes "Withstander from the drawer.^000000";
+		set hg_herb,9;
+		close;
+	} else {
+		mes "^3355FFThere are several books";
+		mes "kept inside this drawer.^000000";
+		close;
+	}
+}
+
+hu_in01.gat,377,275,0	script	#opendrawer	139,{
+
+OnInit:
+	disablenpc "#opendrawer";
+	end;
+
+OnCommandOn:
+	enablenpc "#opendrawer";
+	initnpctimer;
+	end;
+
+OnCommandOff:
+	disablenpc "#opendrawer";
+	end;
+
+OnTimer1000:
+	donpcevent "Upper Drawer#2::OnCommandOn";
+	donpcevent "Upper Drawer#1::OnCommandOff";
+	end;
+
+OnTimer4500:
+	donpcevent "Upper Drawer#2::OnCommandOff";
+	donpcevent "Upper Drawer#1::OnCommandOn";
+	disablenpc "#opendrawer";
 	stopnpctimer;
 	end;
 }
@@ -2888,725 +4623,185 @@ hugel.gat,196,164,3	script	El Schatt#hg	50,{
 
 
 //--------------------------------------------------------------
-// Medicine Quest
+// Odin Excavation Quest - Incomplete ->
 //--------------------------------------------------------------
 
+hugel.gat,91,152,3	script	Sign	837,{
 
-hu_in01.gat,387,245,0	script	Allen Schuwell#Hugel1	 	849,2,2,{
-
-	if (BaseLevel > 49) {
-		if (hg_herb == 0) {
-			mes "[Allen]";
-			mes "*Groooooan~*";
-			mes "Arrrgh, my back hurts...";
-			mes "And my stomach... Why do";
-			mes "I have to suffer like this";
-			mes "while other people get to";
-			mes "live happy, luxurious lives?";
-			next;
-			mes "[Allen]";
-			mes "My son is the only family";
-			mes "I've got. He used to be such";
-			mes "a good obedient kid, but now";
-			mes "I doubt whether he cares about";
-			mes "his father! I told that lazy kid^FFFFFF ^000000 to hurry and bring me my meds...";
-			next;
-			mes "[Allen]";
-			mes "But does he worry about";
-			mes "his father's suffering?! No!";
-			mes "I bet you he's hanging out with";
-			mes "his no good hoodlum friends!";
-			mes "Argh! The pain is getting worse!^FFFFFF ^000000 I... I need my medication!";
-			next;
-			mes "[Allen]";
-			mes "Oh! I can definitely feel";
-			mes "it getting worse! Please,";
-			mes "adventurer, would you help";
-			mes "a sick man? I need you to";
-			mes "find my son Postell and to";
-			mes "tell him to bring my medicine!";
-			next;
-			menu "Sure.",L_LABEL1,"No, I'm sorry.",L_LABEL2;
-			L_LABEL1:
-				mes "[Allen]";
-				mes "Th-thank you so much!";
-				mes "Please head east, go";
-				mes "outside of town, and";
-				mes "you should be able to";
-				mes "find Postell. Tell him that";
-				mes "I need my ''Kolbun A'' now!";
-				set hg_herb,1;
-				next;
-				mes "[Allen]";
-				mes "And let him know that";
-				mes "if he doesn't shape up...";
-				mes "Well, I just might have";
-				mes "to disown my own son!";
-				mes "He's dead to me if he";
-				mes "doesn't love his father!";
-				close;
-			L_LABEL2:
-				mes "[Allen]";
-				mes "I... I don't understand...!";
-				mes "How can you leave a sick";
-				mes "man alone with his suffering?";
-				mes "I-I desperately need help!";
-				mes "No! Please, d-don't go away!";
-				close;
-		} else if (hg_herb == 2) {
-			mes "[Allen]";
-			mes "Postell... My son...";
-			mes "Why have you forsaken me?";
-			mes "I'm lying here at the brink";
-			mes "of death, and the boy won't";
-			mes "even come to see his father!";
-			next;
-			mes "[Allen]";
-			mes "But you... I can count on you.";
-			mes "Even in Lighthazlen, I'd never";
-			mes "find anyone as dependable as";
-			mes "you. This time, I've decided to";
-			mes "discipline my degenerate son.";
-			mes "Will you help me once more?";
-			next;
-			mes "[" + strcharinfo(0) + "]";
-			mes "Wait, wait...";
-			mes "Lighthalzen?";
-			mes "Did you used to";
-			mes "live there or something?";
-			next;
-			mes "[Allen]";
-			mes "Uh? Er, well, that's just";
-			mes "an expression I use. You";
-			mes "know, like an example.";
-			mes "I-I--^333333*Cough!*^000000 Oh, oh no.";
-			mes "My ^333333*Hack!*^000000 pancreas! Or liver!";
-			mes "I'm having another attack!";
-			next;
-			mes "[" + strcharinfo(0) + "]";
-			mes "......";
-			mes ".........";
-			mes "............";
-			next;
-			mes "[Allen]";
-			mes "Oh, everything's getting";
-			mes "so dark! P-please, if you";
-			mes "have any mercy at all, any";
-			mes "shred of human decency,";
-			mes "would you please let me";
-			mes "have a White P-Potion?";
-			next;
-			menu "Give White Potion",L_LABEL3,"Ignore",L_LABEL4;
-			L_LABEL3:
-				if (countitem(504) < 1) {
-					mes "[Allen]";
-					mes "Oh... Oh no...! You";
-					mes "don't have any White";
-					mes "Potions either?! Wh-what";
-					mes "what am I gonna--?! Help me,";
-					mes "please! Bring me a White Potion";
-					mes "as soon as you can! ^333333*Cough!*^000000";
-					close;
-				} else {
-					delitem 504,1;
-					mes "[Allen]";
-					mes "Oh, thank you!";
-					mes "I-It hurts so much...";
-					mes "A White Potion just has";
-					mes "to help. I-It has to work!";
-					next;
-					mes "[" + strcharinfo(0) + "]";
-					mes "......";
-					mes ".........";
-					mes "............";
-					next;
-					mes "[Allen]";
-					mes "Ah, that... *Whew*";
-					mes "Thank you so much. Now,";
-					mes "all I need to do is wait for";
-					mes "my son to bring my medicine.";
-					mes "Wait. What if he takes too long";
-					mes "to get here. No, no, what if...";
-					next;
-					mes "[Allen]";
-					mes "Wh-what if I have another";
-					mes "ulcer attack before Postell";
-					mes "can bring my meds?! I might";
-					mes "not survive! A-adventurer, would^FFFFFF ^000000 you please stay by my side until";
-					mes "my son arrives? P-please?";
-					next;
-					set hg_herb,3;
-					mes "[" + strcharinfo(0) + "]";
-					mes "......";
-					mes ".........";
-					mes "............";
-					close;
-				}
-			L_LABEL4:
-				mes "[Allen]";
-				mes "W-wait! A-are you just";
-				mes "going to let me d-die?";
-				mes "Noo! ^333333*Cough*^000000 Arrgh! A plague!";
-				mes "A plague on both your houses!";
-				close;
-		} else if (hg_herb == 3) {
-			mes "[Allen]";
-			mes "*Gasp* I... I can";
-			mes "feel it! I think I'm";
-			mes "gonna have another";
-			mes "neutron attack! Argh, it's";
-			mes "already effecting all of the";
-			mes "neutrons in my nervous system!";
-			next;
-			mes "[Allen]";
-			mes "C-can't... Lift...";
-			mes "Legs and fingers...";
-			mes "But... Must... Get...";
-			mes "''Withstander'' medicine...";
-			mes "from... Drawer... H-heeelp me!";
-			mes "Adventurer! H-Heeeeelp~!";
-			set hg_herb,4;
-			close;
-		} else if (hg_herb == 4) {
-			mes "[Allen]";
-			mes "No...!";
-			mes "There's a light at the";
-			mes "the end of the tunnel!";
-			mes "Please, adventurer! C-come";
-			mes "a little closer to me! Don't";
-			mes "let me step into the light!";
-			close;
-		} else if (hg_herb == 6) {
-			mes "^3355FFYou have given the";
-			mes "Withstander medicine";
-			mes "to Allen who guzzles";
-			mes "it down very quickly.^000000";
-			next;
-			mes "[Allen]";
-			mes "Blood... circulating...";
-			mes "through limbs... Clarity...";
-			mes "of thought... returning...";
-			next;
-			mes "[Allen]";
-			mes "Ah, wh-what a relief. It looks";
-			mes "like I-I live to see another";
-			mes "day. Th-thank you so much...";
-			set hg_herb,7;
-			close;
-		} else if (hg_herb == 7) {
-			mes "[Allen]";
-			mes "I... I can't...!";
-			mes "I can barely breathe!";
-			mes "A-adventurer, I need you";
-			mes "again! Please, c-come closer";
-			mes "to me! I-I think I need CPR!";
-			close;
-		} else if (hg_herb == 9) {
-			mes "^3355FFYou give another dose";
-			mes "of Withstander to Allen.^000000";
-			next;
-			set @gyundisio,rand(1,3);
-			if (@gyundisio == 3) {
-				mes "[Allen]";
-				mes "Oh... Thank you...";
-				mes "I feel much b-better now.";
-				mes "My son Postell, he should";
-				mes "be coming soon. Thank you";
-				mes "for being so patient with me...";
-				set hg_herb,10;
-				close;
-			} else {
-				mes "[Allen]";
-				mes "Oh... Thank you...";
-				mes "Y-you're an angel, a regular";
-				mes "Florence Nightingale. Please";
-				mes "stay with m-me until my son";
-				mes "arrives. You wouldn't abandon";
-				mes "this sick man now, would you?";
-				next;
-				mes "[" + strcharinfo(0) + "]";
-				mes "(^333333Your son Postell";
-				mes "better get here soon!^000000)";
-				set hg_herb,7;
-				close;
-			}
-		} else if (hg_herb == 10) {
-			mes "[Allen]";
-			mes "Arrrgh! My ligaments!";
-			mes "They're in such pain!";
-			mes "Oh, oh no! I think my";
-			mes "bones are infected!";
-			mes "Help me, oh help me!";
-			next;
-			donpcevent "Postell Schuwell#2::OnCommandOn";
-			mes "[Allen]";
-			mes "Oh...";
-			mes "My son...!";
-			mes "P-Postell!";
-			next;
-			mes "[Postell]";
-			mes "Uh... Hey, dad.";
-			mes "I brought that";
-			mes "medicine you're";
-			mes "supposed to";
-			mes "need so badly.";
-			misceffect 174,"Postell Schuwell#2";
-			next;
-			mes "[Allen]";
-			mes "Thank goodness...";
-			mes "G-give it to me!";
-			mes "^333333*Gulp gulp gulp*^000000";
-			next;
-			mes "[Allen]";
-			mes "W-wait...";
-			mes "Something's not";
-			mes "right. Bunkoll A";
-			mes "doesn't taste like this...";
-			emotion ET_SWEAT,"Postell Schuwell#2";
-			next;
-			mes "[Postell]";
-			mes "Bunkoll A...?";
-			mes "I thougt you said that";
-			mes "you wanted Kolbun A?";
-			next;
-			mes "[Allen]";
-			mes "My own son, lying to";
-			mes "me! Are you trying to";
-			mes "trick me, Postell?!";
-			mes "I told you get Bunkoll A!";
-			next;
-			mes "[" + strcharinfo(0) + "]";
-			mes "(^333333Wait, wait...";
-			mes "Allen did say that";
-			mes "he wanted Kolbun A...^000000)";
-			next;
-			mes "[Postell]";
-			mes "Right. Okay, I guess";
-			mes "I made a mistake? Um,";
-			mes "Dad, I'll be right back with";
-			mes "the medicine that you want.";
-			mes "It won't take long, so don't";
-			mes "stress yourself about it.";
-			close2;
-			set hg_herb,11;
-			donpcevent "Postell Schuwell#2::OnCommandOff";
-			emotion ET_SWEAT;
-			emotion ET_SWEAT,"Allen Schuwell#Hugel1";
-			end;
-		} else if (hg_herb == 11) {
-			mes "[Allen]";
-			mes "*Sniff* I should have known";
-			mes "that Postell really does care";
-			mes "about me deep down inside.";
-			mes "I wish I had never gotten";
-			mes "myself sick in Lighthalzen...";
-			mes "Then we both wouldn't suffer...";
-			next;
-			mes "[Allen]";
-			mes "Don't worry, adventurer.";
-			mes "I haven't forgotten about";
-			mes "you. Please take a look inside";
-			mes "the medicine drawer, and help";
-			mes "yourself to whatever you like~";
-			set hg_herb,12;
-			close;
-		} else if (hg_herb == 12) {
-			mes "[Allen]";
-			mes "Don't worry, adventurer.";
-			mes "I haven't forgotten about";
-			mes "you. Please take a look inside";
-			mes "the medicine drawer, and help";
-			mes "yourself to whatever you like~";
-			close;
-		} else if (hg_herb == 13) {
-			mes "[Allen]";
-			mes "So did you find the";
-			mes "Old Blue Box I put in";
-			mes "my medicine drawer? It's";
-			mes "not much, but I hope you";
-			mes "like it. Consider my way";
-			mes "of thanking you for your help~";
-			close;
-		} else {
-			mes "[Allen]";
-			mes "*Groooooan~*";
-			mes "Arrrgh, my back hurts...";
-			mes "And my stomach... Why do";
-			mes "I have to suffer like this";
-			mes "while other people get to";
-			mes "live happy, luxurious lives?";
-			close;
-		}
-	} else {
-		mes "[Allen]";
-		mes "*Groooooan~*";
-		mes "Arrrgh, my back hurts...";
-		mes "And my stomach... Why do";
-		mes "I have to suffer like this";
-		mes "while other people get to";
-		mes "live happy, luxurious lives?";
-		close;
-	}
-
-OnTouch:
-	if (hg_herb == 4) {
-		mes "[Allen]";
-		mes "^333333*Cough cough!*^000000";
-		mes "W-Withstander...!";
-		mes "I need m-my Withstander!";
-		mes "P-please! ^333333*Cough cough!*^000000";
-		set hg_herb,5;
-		donpcevent "#opendrawer::OnCommandOn";
-		close;
-	} else if (hg_herb == 7) {
-		mes "[Allen]";
-		mes "^333333*Whew*^000000";
-		mes "I... I can breathe again!";
-		mes "B=but what if I have another";
-		mes "attack?! Please, g-get me";
-		mes "another dose of Withstander,";
-		mes "just to be on the safe side!";
-		set hg_herb,8;
-		donpcevent "#opendrawer::OnCommandOn";
-		close;
-	}
-}
-
-hu_in.gat,385,247,5	script	Postell Schuwell#2	97,{
-
-	mes "[Postell]";
-	mes "Hey, uh...";
-	mes "I'm in the middle";
-	mes "of something here.";
+	mes "**Recruitment Notice**";
+	mes "            "; // Line break
+	mes "We are now hiring recruits";
+	mes "for the Odin Shrine Expedition.";
+	mes "            "; // Line break
+	mes "- Shrine Expedition Dept.";
 	close;
-
-OnInit:
-	disablenpc "Postell Schuwell#2";
-	end;
-
-OnCommandOn:
-	enablenpc "Postell Schuwell#2";
-	initnpctimer;
-	end;
-
-OnCommandOff:
-	disablenpc "Postell Schuwell#2";
-	end;
-
-OnTimer100000:
-	disablenpc "Postell Schuwell#2";
-	end;
 }
 
-hu_fild06.gat,34,123,3	script	Postell Schuwell#1	97,{
+hu_in01.gat,18,94,3	script	Part-Timer	49,{
 
-	if (hg_herb == 1) {
-		mes "[Postell]";
-		mes "I really like living";
-		mes "in Hugel. Fresh air,";
-		mes "clean water, everyone's";
-		mes "friendly and nice. What";
-		mes "more could I want?";
-		next;
-		mes "[Postell]";
-		mes "Oh, what's that?";
-		mes "My dad wants me to";
-		mes "bring him some medicine?";
-		mes "Again? Well, he was really";
-		mes "sick a long time ago, but";
-		mes "nowadays, I'm not so sure.";
-		next;
-		mes "[Postell]";
-		mes "I mean, I'm pretty sure";
-		mes "his illnesses are all, you";
-		mes "know, psychosomatic.";
-		mes "Besides, I'm worried that";
-		mes "all the medicines he's taking";
-		mes "are habit forming, you know?";
-		next;
-		menu "But your father needs you!",L_LABEL1,"Habit forming?",L_LABEL2;
-		L_LABEL1:
-			mes "[Allen's Voice]";
-			mes "Yeah, I guess you're right.";
-			mes "Even if I think he's nuts,";
-			mes "and I don't agree with him,";
-			mes "I should at least show that";
-			mes "I care about my dad. What";
-			mes "medicine did he say he needed?";
-			next;
-			mes "[Postell]";
-			mes "''Kolbun A?'' Alright,";
-			mes "I better make sure that";
-			mes "it's safe for him to take.";
-			mes "Who knows, that stuff might";
-			mes "make him worse. Anyway,";
-			mes "I'll try to get it to him soon.";
-			next;
-			mes "[Postell]";
-			mes "Hey, would you do";
-			mes "me a favor and make";
-			mes "sure that my dad doesn't";
-			mes "get himself into any";
-			mes "more trouble? I'd really";
-			mes "appreciate it if you do.";
-			set hg_herb,2;
-			close;
-		L_LABEL2:
-			mes "[Postell]";
-			mes "Yeah, like he's addicted";
-			mes "to the medicine. That's why";
-			mes "I'm trying to make sure he";
-			mes "gets as little of it as possible! Honestly, I think he drinks";
-			mes "too much medicine already...";
-			close;
-	} else if (hg_herb > 1) {
-		mes "[Postell]";
-		mes "Kolbun A, Kolbun A...";
-		mes "Let's see, is it really";
-		mes "safe for my dad to take?";
-		mes "If it isn't, I better come up";
-		mes "with some replacement...";
-		close;
-	} else {
-		mes "[Postell]";
-		mes "I really like living";
-		mes "in Hugel. Fresh air,";
-		mes "clean water, everyone's";
-		mes "friendly and nice. What";
-		mes "more could I want?";
-		close;
-	}
+	mes "[Luda]";
+	mes "Welcome to the";
+	mes "Shrine Expedition Office.";
+	mes "I'm Luda, a part-time";
+	mes "assistant. My job is to";
+	mes "keep this office neat and";
+	mes "clean, but look at this place!";
+	next;
+	mes "[Luda]";
+	mes "Still, I think I can";
+	mes "handle this difficult task~";
+	mes "This room is the office for";
+	mes "the Schwaltzvalt Republic team,";
+	mes "and the other is for the Rune-";
+	mes "Midgarts Kingdom team.";
+	next;
+	mes "[Luda]";
+	mes "I have to clean both rooms,";
+	mes "so they keep me pretty busy.";
+	mes "Why don't you volunteer for";
+	mes "their expedition? I know they";
+	mes "can't really pay you, but it's";
+	mes "a great chance to explore~";
+	close;
 }
 
-hu_in01.gat,370,255,3	script	Upper Drawer#1	111,2,2,{
+hu_in01.gat,26,77,4	script	Part-Timer	50,{
 
-	end;
+	mes "^3131FFThis part-timer is";
+	mes "completely engrossed";
+	mes "in his task of organizing";
+	mes "files and books.^000000";
+	close;
+}
 
-OnCommandOn:
-	enablenpc "Upper Drawer#1";
-	end;
+hu_in01.gat,18,167,5	script	Julian	86,{
 
-OnCommandOff:
-	disablenpc "Upper Drawer#1";
-	end;
+	mes "[Julian]";
+	mes "Say, are you here";
+	mes "for a job? We're looking";
+	mes "for someone that's passionate";
+	mes "about ancient history. If you";
+	mes "want to make money, then this";
+	// iRO dialogue fix
+	// mes "this the wrong place for you~";
+	// mes "is the wrong place for you~";
+	next;
+	mes "[Julian]";
+	mes "This is supposed to be";
+	mes "a collaborative excavation,";
+	mes "but the team leaders are too";
+	mes "stubborn, and refuse to make";
+	mes "any compromises. It's been";
+	mes "incredibly frustrating...";
+	next;
+	mes "[Julian]";
+	mes "Basically, each of our teams";
+	mes "is conducting its own research";
+	mes "for now. Now, we need your help";
+	mes "to find any relics from the odin";
+	mes "Shrine. We'd appreciate it if you";
+	// iRO dialogue fix
+	// mes "brought as many as you can!";
+	mes "bring as many as you can!";
+	close;
+}
 
-OnTouch:
-	set @book_01,rand(1,7);
-	if (hg_herb < 5) {
-		mes "^3355FFThere are several";
-		mes "books and a few";
-		mes "liquid medicines";
-		mes "inside this drawer.^000000";
-		close;
-	} else if (hg_herb == 5) {
-		mes "[Allen]";
-		mes "Oh... Oh...";
-		mes "Oooh... The pain";
-		mes "is gone! It's a miracle!";
-		mes "Maybe I'll just take the";
-		mes "Withstander later...";
-		set hg_herb,4;
-		next;
-		if (@book_01 == 4) {
-			mes "^3355FFYou find an old book";
-			mes "inside the drawer.^000000";
-			next;
-			mes "[Welcome to Lighthalzen!]";
-			mes "Author: Tupetso Iltekka";
-			next;
-			mes "......";
-			mes ".........";
-			mes "............";
-			next;
-			mes "[" + strcharinfo(0) + "]";
-			mes "(^333333I guess Allen used";
-			mes "to live in Lighthalzen.";
-			mes "I guess that's why he'd";
-			mes "keep this old PR brochure...^000000)";
-			close;
-		} else if (@book_01 == 5) {
-			mes "^3355FFYou find Allen's";
-			mes "journal inside the";
-			mes "drawer and quickly";
-			mes "leaf through its pages.";
-			mes "It's difficult to read since";
-			mes "the pages are old and worn.^000000";
-			next;
-			mes "[" + strcharinfo(0) + "]";
-			mes "Let's see, let's see...";
-			mes "Rekenber Corporation...";
-			mes "Something about the Slums....";
-			mes "Enormous funds... Experiments.";
-			mes "Lab... Escape... Hugel... Um...";
-			mes "Dr. Morriphen... Side effects?";
-			close;
-		} else {
-			mes "[" + strcharinfo(0) + "]";
-			mes "Wh-what...?";
-			mes "Do you really";
-			mes "need that medicine?!";
-			close;
-		}
-	} else if (hg_herb == 6) {
-		end;
-	} else if (hg_herb == 8) {
-		mes "[Allen]";
-		mes "Oh... Oh...";
-		mes "Oooh... The pain";
-		mes "is gone! It's a miracle!";
-		mes "Maybe I'll just take the";
-		mes "Withstander later...";
-		set hg_herb,7;
-		next;
-		if (@book_01 == 4) {
-			mes "^3355FFYou find an old book";
-			mes "inside the drawer.^000000";
-			next;
-			mes "[Welcome to Lighthalzen!]";
-			mes "Author: Tupetso Iltekka";
-			next;
-			mes "......";
-			mes ".........";
-			mes "............";
-			next;
-			mes "[" + strcharinfo(0) + "]";
-			mes "(^333333I guess Allen used";
-			mes "to live in Lighthalzen.";
-			mes "I guess that's why he'd";
-			mes "keep this old PR brochure...^000000)";
-			close;
-		} else if (@book_01 == 5) {
-			mes "^3355FFYou find Allen's";
-			mes "journal inside the";
-			mes "drawer and quickly";
-			mes "leaf through its pages.";
-			mes "It's difficult to read since";
-			mes "the pages are old and worn.^000000";
-			next;
-			mes "[" + strcharinfo(0) + "]";
-			mes "Let's see, let's see...";
-			mes "Rekenber Corporation...";
-			mes "Something about the Slums....";
-			mes "Enormous funds... Experiments.";
-			mes "Lab... Escape... Hugel... Um...";
-			mes "Dr. Morriphen... Side effects?";
-			close;
-		} else {
-			mes "[" + strcharinfo(0) + "]";
-			mes "Wh-what...?";
-			mes "Do you really";
-			mes "need that medicine?!";
-			close;
-		}
-	} else if (hg_herb == 9) {
-		end;
-	} else if (hg_herb == 12) {
-		mes "^3355FFYou find an";
-		mes "Old Blue Box deep";
-		mes "inside the drawer.^000000";
+// I'm guessing if I wasn't a Novice, or I was higher-leveled
+// she would say something different? [Tsuyuki] ->
+hu_in01.gat,19,161,3	script	Alex	803,{
+
+	cutin "hu_alex01",2;
+	mes "[Alex]";
+	mes "Huh...?";
+	mes "What do you want?";
+	next;
+	menu	"Excuse me...",L_Alex01,
+		"I saw the recruitment notice and...",L_Alex02;
+
+	L_Alex01:
+		mes "[Alex]";
+		mes "Whatever you're";
+		mes "trying to sell me,";
+		mes "I'm not interested!";
+		mes "Now get out of here!";
 		close2;
-		misceffect 71;
-		set hg_herb,13;
-		getitem 603,1;
-		set BaseExp,BaseExp+50000;
+		cutin "",255;
 		end;
-	} else {
-		if (@book_01 > 3) {
-			mes "^3355FFYou find an old book";
-			mes "inside the drawer.^000000";
-			next;
-			mes "[Welcome to Lighthalzen!]";
-			mes "Author: Tupetso Iltekka";
-			next;
-			mes "......";
-			mes ".........";
-			mes "............";
-			next;
-			mes "[" + strcharinfo(0) + "]";
-			mes "(^333333I guess Allen used";
-			mes "to live in Lighthalzen.";
-			mes "I guess that's why he'd";
-			mes "keep this old PR brochure...^000000)";
-			close;
-		} else {
-			mes "^3355FFYou find Allen's";
-			mes "journal inside the";
-			mes "drawer and quickly";
-			mes "leaf through its pages.";
-			mes "It's difficult to read since";
-			mes "the pages are old and worn.^000000";
-			next;
-			mes "[" + strcharinfo(0) + "]";
-			mes "Let's see, let's see...";
-			mes "Rekenber Corporation...";
-			mes "Something about the Slums....";
-			mes "Enormous funds... Experiments.";
-			mes "Lab... Escape... Hugel... Um...";
-			mes "Dr. Morriphen... Side effects?";
-			close;
-		}
-	}
+
+	L_Alex02:
+		cutin "",255;
+		cutin "hu_alex02",2;
+		mes "[Alex]";
+		mes "Oh, so you saw the";
+		mes "recruitment notice for the";
+		mes "Odin Shrine Expedition, eh?";
+		mes "Well, I dunno. I think that";
+		mes "kind of expedition would";
+		mes "eat you alive. No offense...";
+		next;
+		mes "[Alex]";
+		mes "Look, I'll reconsider";
+		mes "whether you qualify after";
+		// iRO dialogue fix (My god..) [Tsuyuki]
+		// you get train a little more,";
+		mes "you train a little more,";
+		mes "develop your skills, you know,";
+		mes "get stronger. For now, though,";
+		mes "I do'nt think we can use you.";
+		close2;
+		cutin "",255;
+		end;
 }
 
-hu_in01.gat,370,255,3	script	Upper Drawer#2	111,2,2,{
+hu_in01.gat,16,20,5	script	Ashe	95,{
 
-	end;
-
-OnInit:
-	disablenpc "Upper Drawer#2";
-	end;
-
-OnCommandOn:
-	enablenpc "Upper Drawer#2";
-	end;
-
-OnCommandOff:
-	disablenpc "Upper Drawer#2";
-	end;
-
-OnTouch:
-	if (hg_herb == 5) {
-		mes "^3355FFYou take out one dose of";
-		mes "Withstander from the drawer.^000000";
-		set hg_herb,6;
-		close;
-	} else if (hg_herb == 8) {
-		mes "^3355FFYou take out one dose of";
-		mes "Withstander from the drawer.^000000";
-		set hg_herb,9;
-		close;
-	} else {
-		mes "^3355FFThere are several books";
-		mes "kept inside this drawer.^000000";
-		close;
-	}
+	mes "[Ashe]";
+	// iRO dialogue fix
+	// mes "Oh, you've here in response";
+	mes "Oh, you're here in response";
+	mes "to the recruitment notice?";
+	mes "Well then, let me give you";
+	mes "a brief idea about the work.";
+	mes "First off, we can't pay you any";
+	mes "money, so you'd be a volunteer.";
+	next;
+	mes "[Ashe]";
+	mes "Instead, you're allowed to";
+	mes "keep whatever you excavate";
+	mes "in the Odin Shrine, so long";
+	mes "as we don't need it for our";
+	mes "research. This opportunity";
+	mes "might prove worthwhile to you.";
+	next;
+	mes "[Ashe]";
+	mes "Now, we should be working";
+	mes "together with the Schaltzvalt";
+	mes "Republic's Research Team, but";
+	mes "our leaders aren't getting along";
+	mes "at all. There's just a huge";
+	mes "clash of personalities...";
+	next;
+	mes "[Ashe]";
+	mes "In any case, if you'd";
+	mes "like to join us in our";
+	mes "efforts to uncover the";
+	mes "secrets of the past, then";
+	mes "please speak to Ms. Laurence.";
+	close;
 }
 
-hu_in01.gat,377,275,0	script	#opendrawer	139,{
+hu_in01.gat,14,11,4	script	Laura	70,{
 
-OnInit:
-	disablenpc "#opendrawer";
-	end;
-
-OnCommandOn:
-	enablenpc "#opendrawer";
-	initnpctimer;
-	end;
-
-OnCommandOff:
-	disablenpc "#opendrawer";
-	end;
-
-OnTimer1000:
-	donpcevent "Upper Drawer#2::OnCommandOn";
-	donpcevent "Upper Drawer#1::OnCommandOff";
-	end;
-
-OnTimer4500:
-	donpcevent "Upper Drawer#2::OnCommandOff";
-	donpcevent "Upper Drawer#1::OnCommandOn";
-	disablenpc "#opendrawer";
-	stopnpctimer;
+	cutin "hu_laura01",2;
+	mes "[Laura]";
+	mes "Hm? Oh, you must be";
+	mes "here in response to our";
+	mes "recruitment notice, yes?";
+	mes "Let me take a look at you...";
+	mes "Oh, you're all skin and bone!";
+	mes "I can't use someone like you.";
+	close2;
+	cutin "",255;
 	end;
 }
 
@@ -4476,614 +5671,7 @@ OnTouch:
 
 
 //--------------------------------------------------------------
-// Fish Cake Soup Mini-Quest
-//--------------------------------------------------------------
-
-// Used variables:
-// - fcsquest -> Main quest variable.
-// - @i -> Temp variable for random chance.
-// - fcsversion -> Splitter between Neha, Layoma, Maewan, and Erjan clients.
-
-// Cellette Lavit
-hu_in01.gat,15,372,3	script	Cellette Lavit	74,{
-
-	if (fcsquest == 1) goto L_CelletteQ01;
-	if (fcsquest == 2) goto L_CelletteQ02;
-	if (fcsquest == 3) goto L_CelletteQ05;
-	if (fcsquest == 4) goto L_CelletteQ04;
-
-	mes "[Cellette]";
-	mes "Hi there, thanks for";
-	mes "visiting our lovely town!";
-	mes "Why don't you come in and";
-	mes "have a taste of authentic";
-	mes "Hugel cuisine? I guarantee";
-	mes "that you won't regret it~";
-	next;
-	mes "[Cellette]";
-	mes "My name is Cellette Lavit,";
-	mes "and I proudly server Fish Cake";
-	mes "Soup, Hugel's specialty dish.";
-	mes "All the tourists that've tried";
-	mes "it have loved it, and I have";
-	mes "many regular customers~";
-	next;
-	mes "[Cellette]";
-	mes "The dish has something";
-	mes "of a cult following, and it's";
-	mes "not widely popularized, but I'm";
-	mes "surue that it'll be considered";
-	mes "representative of Schwaltzvalt";
-	mes "Republic cuisine someday.";
-	next;
-	mes "[Cellette]";
-	mes "Listen, you look like an";
-	mes "able adventurer, so would";
-	mes "you consider working part time";
-	mes "for me? I have many orders for";
-	mes "Fish Cake Soup, so there's";
-	mes "no way I can make deliveries...";
-	next;
-	mes "[Cellette]";
-	mes "If you work for me, I'll";
-	mes "waive the price: I'll give you";
-	mes "1 Fish Cake Soup for each";
-	mes "delivery that you complete.";
-	mes "But if you're not interested,";
-	mes "you can just buy some now~";
-	next;
-	menu	"Sure, I'll work for you!",L_StartWork,
-		"I want to buy Fish Cake Soup.",L_BuySoup,
-		"See ya.",L_Cancel01;
-
-	L_StartWork:
-		mes "[Cellette]";
-		mes "Oh, thank you so much!";
-		mes "You can't imagine how busy";
-		mes "I've been, and how much I need";
-		mes "the help! Now, let's get started~";
-		next;
-		set @i,rand(1,4);
-
-		if (@i == 1) goto L_Neha01;
-		if (@i == 2) goto L_Layoma01;
-		if (@i == 3) goto L_Maewan01;
-		if (@i == 4) goto L_Erjan01;
-
-		L_Neha01:
-			mes "[Cellette]";
-			mes "Alright, please take this";
-			mes "order of Fish Cake Soup to";
-			mes "my friend Neha. I'm grateful";
-			mes "that she's a regular customer--";
-			mes "she's a good friend, but I'm sure";
-			mes "she's a good friend, but I'm sure^FFFFFF ^000000 that she loves the soup as well.";
-			getitem 584,1;
-			set fcsversion,1;
-			set fcsquest,1;
-			close;
-
-		L_Layoma01:
-			mes "[Cellette]";
-			mes "Okay, this order of Fish";
-			mes "Cake Soup is ready! Please";
-			mes "take it to my roommate Layoma.";
-			mes "But... Be careful. She's got";
-			mes "a thing about punctuality.";
-			mes "Just try not to be late...";
-			getitem 584,1;
-			set fcsversion,2;
-			set fcsquest,1;
-			close;
-
-		L_Maewan01:
-			mes "[Cellette]";
-			mes "Right, take this next order";
-			mes "of Fish Cake Soup to Maewan,";
-			mes "another one of my regulars.";
-			mes "He's been buying my soup ever";
-			mes "since I helped him start his^FFFFFF ^000000 business. Nice of him, isn't it?";
-			getitem 584,1;
-			set fcsversion,3;
-			set fcsquest,1;
-			close;
-
-		L_Erjan01:
-			mes "[Cellette]";
-			mes "Quick, take this Fish";
-			mes "Paste Soup to Erjan. Um,";
-			mes "but be careful, he's really";
-			mes "nitpicky... And he likes to";
-			mes "have everything in such";
-			mes "and such and order...";
-			getitem 584,1;
-			set fcsversion,4;
-			set fcsquest,1;
-			close;
-
-	L_BuySoup:
-		mes "[Cellette]";
-		mes "Oh, you'd like to try my";
-		mes "Fish Cake Soup, eh? Good";
-		mes "choice, I know you'll enjoy";
-		mes "its delicious, hearty flavor~";
-		mes "Each order costs 100 zeny.";
-		next;
-		menu	"Order 1 Fish Cake Soup",L_Order01,
-			"Cancel",L_Cancel02;
-
-		L_Order01:
-			if (Zeny < 100) goto L_NotEnoughZeny;
-
-			set Zeny,Zeny - 100;
-			getitem 584,1;
-			mes "[Cellette]";
-			mes "Thanks! Enjoy your";
-			mes "bowl of Fish Cake Soup.";
-			mes "I Hope you come and";
-			mes "visit me again, okay?";
-			close;
-
-		L_Cancel02:
-			mes "[Cellette]";
-			mes "If you're ever hungry,";
-			mes "or just want to enjoy";
-			mes "a delicious meal, come";
-			mes "and have some of my soup~";
-			close;
-
-		L_NotEnoughZeny:
-			mes "[Cellette]";
-			mes "Oh, what's this?";
-			mes "You don't have enough";
-			mes "money? Well, come back";
-			mes "after you save 100 zeny.";
-			mes "That's a really good price";
-			mes "for my gourmet soup, you know.";
-			close;
-
-	L_Cancel01:
-		mes "[Cellette]";
-		mes "Oh? You're not interested";
-		mes "in trying my Fish Cake Soup";
-		mes "at all? Well, if you change";
-		mes "your mind, please come";
-		mes "back. I just know you'll love";
-		mes "the taste if you give it a try.";
-		close;
-
-	L_CelletteQ01:
-		if (!countitem(584)) goto L_CelletteQ03;
-		if (fcsversion == 1) goto L_Neha02;
-		if (fcsversion == 2) goto L_Layoma02;
-		if (fcsversion == 3) goto L_Maewan02;
-		if (fcsversion == 4) goto L_Erjan02;
-
-		L_Neha02:
-			mes "[Cellette]";
-			mes "Haven't you left already?";
-			mes "My friend Neha is waiting";
-			mes "for you to deliver her order";
-			mes "of Fish Cake Soup. Please";
-			mes "try to get it to her before the";
-			mes "soup gets cold, okay?";
-			close;
-
-		L_Layoma02:
-			mes "[Cellette]";
-			mes "I thought you left to";
-			mes "deliver that soup to";
-			mes "Layoma. You should hurry";
-			mes "and bring it to her, before";
-			mes "it doesn't taste good after";
-			mes "it gets cold, you know.";
-			close;
-
-		L_Maewan02:
-			mes "[Cellette]";
-			mes "Whoa, whoa, whoa!";
-			mes "You should have left";
-			mes "already to deliver that";
-			mes "soup to Maewan! Hurry,";
-			mes "before it gets too cold!";
-			close;
-
-		L_Erjan02:
-			mes "[Cellette]";
-			mes "Oh, dear, you better";
-			mes "leave now and deliver";
-			mes "that Fish Cake Soup to";
-			mes "Erjan before he can think";
-			mes "of something to complain about.^FFFFFF ^000000 Although it's probably too late...";
-			close;
-
-	L_CelletteQ02:
-		mes "[Cellette]";
-		mes "Come and taste some";
-		mes "authentic Hugel cuisine!";
-		mes "Enjoy a big steaming bowl";
-		mes "of delicious Fish Cake Soup~";
-		close;
-
-	L_CelletteQ03:
-		mes "[Cellette]";
-		mes "What's that? You lost";
-		mes "the Fish Cake Soup you're";
-		switch(fcsversion) {
-		case 1:
-			mes "supposed to give to Neha?";
-			break;
-		case 2:
-			mes "supposed to give to Layoma?";
-			break;
-		case 3:
-			mes "supposed to give to Maewan?";
-			break;
-		case 4:
-			mes "supposed to give to Erjan?";
-			break;
-		}
-		mes "Oh well, I suppose I'll have";
-		mes "to give you this fresh bowl";
-		mes "of soup that I just made...";
-		next;
-		if (Zeny >= 100) {
-			mes "[Cellette]";
-			mes "But you need to be";
-			mes "responsible and pay";
-			mes "me for the food you lost.";
-			mes "There, I took 100 zeny";
-			mes "from you. That's fair, so";
-			mes "please don't lose it this time.";
-			set Zeny,Zeny-100;
-			getitem 584,1;
-			close;
-		} else {
-			mes "[Cellette]";
-			mes "W-wait... You're don't";
-			mes "have any money to pay";
-			mes "me for the soup you lost?";
-			mes "Well, I don't think I can";
-			mes "trust somebody like you";
-			mes "with any deliveries...";
-			set fcsquest,4;
-			close;
-		}
-
-	L_CelletteQ04:
-		mes "[Cellette]";
-		mes "Ah, I'm sorry, but";
-		mes "I can't do any business";
-		mes "with somebody that's proven";
-		mes "to be irresponsible. Nothing";
-		mes "personal, it's just my policy.";
-		close;
-
-	L_CelletteQ05:
-		mes "[Cellette]";
-		mes "Good work! I hear that";
-		mes "you successfully delivered";
-		mes "the soup. I knew I could trust";
-		mes "you! Ah, before I forget, here";
-		mes "is your Fish Cake Soup. Thank";
-		mes "you so much for your help~";
-		set fcsquest,0;
-		set fcsversion,0;
-		getitem 584,3;
-		set BaseExp,Exp+1000;
-		next;
-		mes "[Cellette]";
-		mes "It was really nice working";
-		mes "with you, and I hope you come";
-		mes "by and help me again sometime.";
-		mes "Oh, and please tell all your";
-		mes "friends about my delicious";
-		mes "Fish Cake Soup. See you later~";
-		close;
-}
-
-// Neha
-hugel.gat,76,134,3	script	Neha	101,{
-
-	if (fcsquest == 1 && fcsversion == 1 && countitem(584)) goto L_Neha01;
-	if (fcsquest == 2 && fcsversion == 1) goto L_Neha02;
-
-	mes "[Neha]";
-	mes "Oh ho ho ho ho ho~";
-	mes "I just love cute little boys...";
-	mes "But for some reason, it";
-	mes "thrills me to tortue them";
-	mes "a little bit as well. Hoho~";
-	close;
-
-	L_Neha01:
-		mes "[Neha]";
-		mes "Oh, you have a delivery";
-		mes "from Cellette, hm? Hmpf!";
-		mes "You're late! Don't you know";
-		mes "this soup isn't good if it";
-		mes "isn't steaming hot?";
-		next;
-		if (Sex == Female) {
-				mes "[Neha]";
-				mes "Yes, yes... You should";
-				mes "be punished. You should be";
-				mes "spanked. If you want to finish";
-				mes "your delivery, then bring me";
-				mes "^FF00001 Whip^000000 so that I can spank you";
-				mes "for your impertinence, girl!";
-		}
-		else {
-			mes "But... You're a handsome";
-			mes "fellow, so I'll forgive you...";
-			mes "On one condition. Bring me";
-			mes "^FF00001 Whip^000000 with which to spank";
-			mes "you. YOu better hurry, boy, or";
-			mes "I won't let you off that easy.";
-		}
-		set fcsquest,2;
-		close;
-
-	L_Neha02:
-		if (countitem(1960) && countitem(584)) {
-			mes "[Neha]";
-			mes "Finally... My soup!";
-			mes "And you brought me my Whip!";
-			mes "Don't worry, I'll only give you";
-			mes "just one hard spanking. It'll";
-			mes "be over before you know it~";
-			next;
-			mes "[Neha]";
-			mes "Ha!";
-			next;
-			mes "^3355FF*Slap*^000000";
-			percentheal -25,0;
-			next;
-			mes "[Neha]";
-			mes "Heeyah!!";
-			next;
-			mes "^3355FF*SLAP*^000000";
-			percentheal -25,0;
-			next;
-			mes "[Neha]";
-			mes "Ooh, did I accidentally";
-			mes "whip you twice? Heh heh...";
-			mes "Well, I'm satisfied. I'll go";
-			mes "ahead and tell Celette that";
-			mes "you did a good job... I hope";
-			mes "you come deliver my soup again~";
-			delitem 1960,1;
-			delitem 584,1;
-			set fcsquest,3;
-			close;
-		}
-		else {
-			mes "[Neha]";
-			mes "^FF00001 Fish Cake Soup^000000...";
-			mes "^FF00001 Whip^000000... Is that too";
-			mes "much for a girl to ask?";
-			mes "I'm hungry, and I want to";
-			mes "hit somebody! What's wrong";
-			mes "with that, huh? Now hurry up!";
-			close;
-		}
-}
-
-// Layoma
-hugel.gat,84,125,3	script	Layoma	700,{
-
-	if (fcsquest == 1 && fcsversion == 2 && countitem(584)) goto L_Layoma01;
-	if (fcsquest == 2 && fcsversion == 2) goto L_Layoma02;
-
-	mes "[Layoma]";
-	mes "I love singing songs,";
-	mes "and I love eating mushrooms.";
-	mes "For a person living in Hugel,";
-	mes "that's a pretty exciting life!";
-	close;
-
-	L_Layoma01:
-		mes "[Layoma]";
-		mes "You're here to deliver";
-		mes "my Fish Cake Soup?";
-		mes "How could you be so late?!";
-		mes "Don't you know that your";
-		mes "incompetence also reflects";
-		mes "on Cellette and her shop?!";
-		next;
-		mes "[Layoma]";
-		mes "I can't let you continue";
-		mes "delivering for Cellette";
-		mes "unless you prove that you're";
-		mes "dependable to me. Erm, bring";
-		mes "me ^FF00001 Mushroom Spore^000000, and";
-		mes "I'll forget this whole thing.";
-		set fcsquest,2;
-		close;
-
-	L_Layoma02:
-		if (countitem(921) && countitem(584)) {
-			mes "[Layoma]";
-			mes "Great! You brought me";
-			mes "1 Mushroom Spore! This";
-			mes "will taste perfect with my";
-			mes "bowl of Fish Cake Soup~";
-			next;
-			mes "[Layoma]";
-			mes "Alright, maybe I can";
-			mes "count on you to work";
-			mes "for my roommate Cellette";
-			mes "a little while longer. Oh, and";
-			mes "please tell her to not to come^FFFFFF ^000000 home so late all the time, okay?";
-			delitem 921,1;
-			delitem 584,1;
-			set fcsquest,3;
-			close;
-		}
-		else {
-			mes "[Layoma]";
-			mes "Hey! I thought you";
-			mes "wanted to prove that";
-			mes "you're a reliable and";
-			mes "trustworthy person! Go";
-			mes "and bring me 1 Mushroom";
-			mes "Spore with my Fish Cake Soup!";
-			close;
-		}
-}
-
-// Maewan
-hugel.gat,87,139,3	script	Maewan	86,{
-
-	if (fcsquest == 1 && fcsversion == 3 && countitem(584)) goto L_Maewan01;
-	if (fcsquest == 2 && fcsversion == 3) goto L_Maewan02;
-
-	mes "[Maewan]";
-	mes "I like to think of";
-	mes "myself as a man of";
-	mes "eclectic taste. I love";
-	mes "collecting strange and";
-	mes "unique items, and learning";
-	mes "all sorts of new things~";
-	close;
-
-	L_Maewan01:
-		mes "[Maewan]";
-		mes "Oh, finally, I've been";
-		mes "waiting for my order of";
-		mes "Fish Cake Soup from Cellette!";
-		mes "Aaaah, it smells oh so delicious~";
-		next;
-		mes "[Maewan]";
-		mes "Argh, but you're late!";
-		mes "This is your fault, you";
-		mes "know that, right? Well,";
-		mes "it's not a big deal, but";
-		mes "I can forgive you if you";
-		mes "help me with my collection.";
-		next;
-		mes "[Maewan]";
-		mes "Just bring me";
-		mes "1 Bookclip in Memory,";
-		mes "alright? Oh, and don't";
-		mes "eat my soup before";
-		mes "you deliver it to me!";
-		set fcsquest,2;
-		close;
-
-	L_Maewan02:
-		if (countitem(584) && countitem(7015)) {
-			mes "[Maewan]";
-			mes "Great, you really brought";
-			mes "me a Bookclip in Memory!";
-			mes "Yes, this'll make a fine";
-			mes "addition to my collection~";
-			mes "Oh, and give me my soup.";
-			mes "Thanks again for delivering~";
-			delitem 584,1;
-			delitem 7015,1;
-			set fcsquest,3;
-			close;
-		}
-		else {
-			mes "[Maewan]";
-			mes "I know it sounds unfair";
-			mes "of me to ask you to bring";
-			mes "^FF00001 Bookclip in Memory^000000 with";
-			mes "my ^FF0000Fish Cake Soup^000000, but well...";
-			next;
-			mes "[Maewan]";
-			mes "I'd feel left out if";
-			mes "I didn't do it. I know";
-			mes "all of Cellette's other";
-			mes "customers are asking the";
-			mes "people delivering their soup";
-			mes "for all sorts of crazy things.";
-			close;
-		}
-}
-
-// Erjan
-hugel.gat,102,161,3	script	Erjan	100,{
-
-	if (fcsquest == 1 && fcsversion == 4 && countitem(584)) goto L_Erjan01;
-	if (fcsquest == 2 && fcsversion == 4) goto L_Erjan02;
-
-	mes "[Erjan]";
-	mes "I am Erjan, first son of";
-	mes "the noble Franchefeschu";
-	mes "family. Commoner, if you";
-	mes "do not have any business";
-	mes "with me, then leave me be,";
-	mes "and do whatever it is you do.";
-	close;
-
-	L_Erjan01:
-		mes "[Erjan]";
-		mes "Well, I thought you'd";
-		mes "never come to deliver";
-		mes "my Fish Cake Soup. You're";
-		mes "awfully late, you know that?";
-		mes "Still, the smell is just so^FFFFFF ^000000 appetizing, I can barely resist...";
-		next;
-		mes "[Erjan]";
-		mes "Hm, but as the first son";
-		mes "of the Franchefeschu family,";
-		mes "I cannot eat this soup unless";
-		mes "it is suitably prepared. Go!";
-		mes "I command you to bring me";
-		mes "the commoner's ^FF0000China^000000!";
-		next;
-		mes "[Erjan]";
-		mes "Realize that I'm compromising";
-		mes "with you by asking you to bring";
-		mes "me regular China... I always";
-		mes "enjoy my meals on the finest";
-		mes "glass and tableware available.";
-		mes "That's how we noblemen live~";
-		set fcsquest,2;
-		close;
-
-	L_Erjan02:
-		if (countitem(584) && countitem(736)) {
-			mes "[Erjan]";
-			mes "Ah, so you've delivered";
-			mes "my Fish Cake Soup with some";
-			mes "proper China. Yes, this pleases";
-			mes "me. Now, I may enjoy this meal";
-			mes "in a manner befitting the";
-			mes "Franchefeschu family.";
-			next;
-			mes "[Erjan]";
-			mes "Although this China is";
-			mes "below my standards, I also";
-			mes "understand that this is the";
-			mes "best you can do. Yes, to accept";
-			mes "this is my... noblesse oblige.";
-			next;
-			mes "[Erjan]";
-			mes "You are dismissed.";
-			mes "Please take your leave,";
-			mes "and return to Cellette";
-			mes "with my noble thanks.";
-			delitem 584,1;
-			delitem 736,1;
-			set fcsquest,3;
-			close;
-		}
-		else {
-			mes "[Erjan]";
-			mes "Must I repeat myself?";
-			mes "Bring me my ^FF0000Fish Cake Soup^000000";
-			mes "with ^FF00001 China^000000 so that I may";
-			mes "properly enjoy my meal.";
-			close;
-		}
-}
-
-
-//--------------------------------------------------------------
-// Shede Collection Mini-Quest (Partially Complete)
+// Shede Collection Quest (Partially Complete)
 //--------------------------------------------------------------
 
 // Missing Moks Bug side part
@@ -5446,607 +6034,8 @@ hu_fild06.gat,155,309,1	script	Moks Bugs#2	1017,{
 
 
 //--------------------------------------------------------------
-// Monster Races System (Incomplete)
-//--------------------------------------------------------------
-
-// Eckar Erenes (Incomplete)
-hugel.gat,62,69,1	script	Eckar Erenes	86,{
-
-	mes "[Eckar Erenes]";
-	mes "Welcome to the";
-	mes "Monster Race Arena,";
-	mes "the pride and joy of";
-	mes "the village of Hugel!";
-	mes "How may I help you?";
-	next;
-	menu	"Monster Race Info",L_RaceInfo,
-		"Enter Monster Race",L_EnterRace;
-
-	L_RaceInfo:
-		mes "[Eckar Erenes]";
-		mes "Monster Races originated from";
-		mes "simple children's games in which";
-		mes "Cute Pets would race against each";
-		mes "other. This grew into an adult";
-		mes "pastime that is so popular, we've";
-		mes "built a racing arena in Hugel.";
-		next;
-		mes "[Eckar Erenes]";
-		mes "Our Monster Race Arena hosts";
-		mes "two types of monster races. First,";
-		mes "we have the Single Monster Race,";
-		mes "in which those that wagered on the";
-		mes "1st place monster are rewarded.";
-		next;
-		mes "[Eckar Erenes]";
-		mes "Then, we have the Dual Monster";
-		mes "Race in which the house odds and";
-		mes "rewards are greater than in Single";
-		mes "Monster Races: you must wager on";
-		mes "2 monsters, and they must place in";
-		mes "1st and 2nd for you to win.";
-		next;
-		mes "[Eckar Erenes]";
-		mes "Although a small entrance";
-		mes "fee is required, we only use";
-		mes "the money to give rewards to";
-		mes "participants and maintain this";
-		mes "arena. Therefore, we're not";
-		mes "profiting from this enterprise.";
-		next;
-		mes "[Eckar Erenes]";
-		mes "Also, we prohibit others";
-		mes "from making personal bets";
-		mes "and wagers, using items and";
-		mes "zeny, based on the outcomes";
-		mes " of these races. That kind of";
-		mes "gambling is illegal here...";
-		next;
-		mes "[Eckar Erenes]";
-		mes "Once you enter the Race Arena,";
-		mes "you will receive a Racing Ticket.";
-		mes "Keep in mind that winning Racing";
-		mes "Tickets can only be exchanged for";
-		mes "Prize Medals during a 5 minute";
-		mes "windows after the end of the race.";
-		next;
-		goto L_EnterRace;
-
-	L_EnterRace:
-		mes "[Eckar Erenes]";
-		mes "The entrance fee for all races";
-		mes "in the Monster Race Arena is";
-		mes "2,000 zeny. If you'd like to wager";
-		mes "on a Single Monster Race,";
-		mes "then please ask my brother";
-		mes "Ellebird to help you.";
-		next;
-		mes "[Eckar Erenes]";
-		mes "Otherwise, I'll help get you";
-		mes "started if you're interested";
-		mes "in a Dual Monster Race.";
-		mes "Would you like to wager";
-		mes "on a Dual Monster Race?";
-		next;
-		menu	"Yes, please.",L_DualRace,
-			"No, thanks.",L_NoThanks;
-
-		L_DualRace:
-			if (Zeny < 2000) goto L_NotEnoughZeny;
-
-			// Incomplete + Unofficial dialogue
-			// Should take your Zeny and take you
-			// to the Dual Monster Race Arena [Tsuyuki]
-
-			mes "[Eckar Erenes]";
-			mes "I'm sorry, but the Monster Race";
-			mes "Arena is currently undergoing";
-			mes "renovations so it's shut down";
-			mes "for now.";
-			close;
-
-		L_NoThanks:
-			mes "[Eckar Erenes]";
-			mes "Very well. I hope that";
-			mes "you enjoy your time here";
-			mes "in the Monster Race Arena~";
-			close;
-		
-	L_NotEnoughZeny:
-		mes "[Eckar Erenes]";
-		mes "I'm sorry, but you";
-		mes "don't have enough";
-		mes "money to pay the";
-		mes "2,000 zeny entrance fee.";
-		close;
-}
-
-// Eckar Ellebird (Incomplete)
-hugel.gat,58,72,5	script	Eckar Ellebird	86,{
-
-	mes "[Eckar Ellebird]";
-	mes "Welcome to the biggest";
-	mes "attraction in Hugel, the";
-	mes "Monster Race Arena.";
-	mes "How may I help you today?";
-	next;
-	menu	"Monster Race Info",L_RaceInfo,
-		"Enter Monster Race",L_EnterRace;
-
-	L_RaceInfo:
-		mes "[Eckar Ellebird]";
-		mes "Monster Races originated from";
-		mes "simple children's games in which";
-		mes "Cute Pets would race against each";
-		mes "other. This grew into an adult";
-		mes "pastime that is so popular, we've";
-		mes "built a racing arena in Hugel.";
-		next;
-		mes "[Eckar Ellebird]";
-		mes "Our Monster Race Arena hosts";
-		mes "two types of monster races. First,";
-		mes "we have the Single Monster Race,";
-		mes "in which those that wagered on the";
-		mes "1st place monster are rewarded.";
-		next;
-		mes "[Eckar Ellebird]";
-		mes "Then, we have the Dual Monster";
-		mes "Race in which the house odds and";
-		mes "rewards are greater than in Single";
-		mes "Monster Races: you must wager on";
-		mes "2 monsters, and they must place in";
-		mes "1st and 2nd for you to win.";
-		next;
-		mes "[Eckar Ellebird]";
-		mes "Although a small entrance";
-		mes "fee is required, we only use";
-		mes "the money to give rewards to";
-		mes "participants and maintain this";
-		mes "arena. Therefore, we're not";
-		mes "profiting from this enterprise.";
-		next;
-		mes "[Eckar Ellebird]";
-		mes "Also, we prohibit others";
-		mes "from making personal bets";
-		mes "and wagers, using items and";
-		mes "zeny, based on the outcomes";
-		mes " of these races. That kind of";
-		mes "gambling is illegal here...";
-		next;
-		mes "[Eckar Ellebird]";
-		mes "Once you enter the Race Arena,";
-		mes "you will receive a Racing Ticket.";
-		mes "Keep in mind that winning Racing";
-		mes "Tickets can only be exchanged for";
-		mes "Prize Medals during a 5 minute";
-		mes "windows after the end of the race.";
-		next;
-		goto L_EnterRace;
-
-	L_EnterRace:
-		mes "[Eckar Ellebird]";
-		mes "The entrance fee for all races";
-		mes "in the Monster Race Arena is";
-		mes "2,000 zeny. If you'd like to wager";
-		mes "on a Dual Monster Race, then";
-		mes "please ask my brother Erenes,";
-		mes "and he will help you.";
-		next;
-		mes "[Eckar Ellebird]";
-		mes "Otherwise, I'll help get you";
-		mes "started if you're interested";
-		mes "in a Single Monster Race.";
-		mes "Would you like to wager";
-		mes "on a Single Monster Race?";
-		next;
-		menu	"Yes, please.",L_SingleRace,
-			"No, thanks.",L_NoThanks;
-
-		L_SingleRace:
-			if (Zeny < 2000) goto L_NotEnoughZeny;
-
-			// Incomplete + Unofficial dialogue
-			// Should take your Zeny and take you
-			// to the Dual Monster Race Arena [Tsuyuki]
-
-			mes "[Eckar Ellebird]";
-			mes "I'm sorry, but the Monster Race";
-			mes "Arena is currently undergoing";
-			mes "renovations so it's shut down";
-			mes "for now.";
-			close;
-
-		L_NoThanks:
-			mes "[Eckar Ellebird]";
-			mes "Very well. I hope that";
-			mes "you enjoy your time here";
-			mes "in the Monster Race Arena~";
-			close;
-		
-	L_NotEnoughZeny:
-		mes "[Eckar Ellebird]";
-		mes "I'm sorry, but you";
-		mes "don't have enough";
-		mes "money to pay the";
-		mes "2,000 zeny entrance fee.";
-		close;
-}
-
-
-//--------------------------------------------------------------
-// Prize Medal Exchanger (Incomplete)
-//--------------------------------------------------------------
-
-hugel.gat,71,83,3	script	Wayne	900,{
-
-	mes "[Wayne]";
-	mes "Hello, there! Ever wonder";
-	mes "what you could do with all";
-	mes "the Prize Medals you can win";
-	mes "in Monster Race Arena? You";
-	mes "can donate them in Einbroch";
-	mes "to the Blacksmith Guild...";
-	next;
-	mes "[Wayne]";
-	mes "...Or you can exchange them";
-	mes "for items, right here and right";
-	mes "now, with me. As always, the";
-	mes "choice is really up to you.";
-	next;
-	menu "Prize Medal Exchange",L_Exchange,"Cancel",L_Cancel;
-
-	L_Exchange:
-		mes "[Wayne]";
-		mes "Now, how many Prize Medals";
-		mes "would you like to exchange?";
-		mes "It doesn't take a genius to";
-		mes "figure out that you can get";
-		mes "more valuable items by trading";
-		mes "more Prize Medals at a time.";
-		next;
-		menu	"1 Prize Medal",L_Prize01,
-			"3 Prize Medals",L_Prize02,
-			"7 Prize Medals",L_Prize03,
-			"8 Prize Medals",L_Prize04,
-			"16 Prize Medals",L_Prize05,
-			"25 Prize Medals",L_Prize06,
-			"42 Prize Medals",L_Prize07,
-			"59 Prize Medals",L_Prize08;
-
-		L_Prize01:
-			mes "[Wayne]";
-			mes "Now, please choose";
-			mes "which of the following item";
-			mes "sets that you'd like to receive";
-			mes "in exchange for 1 Prize Medal.";
-			next;
-			menu	"2 Hinale Leaflets",L_PrzOpt01,
-				"2 Aloe Leaflets",L_PrzOpt02,
-				"1 Mastela Fruit",L_PrzOpt03,
-				"5 Witch Starsands",L_PrzOpt04,
-				"4 Condensed Red Potions",L_PrzOpt05;
-
-			// Incomplete
-			L_PrzOpt01:
-			L_PrzOpt02:
-			L_PrzOpt03:
-			L_PrzOpt04:
-			L_PrzOpt05:
-				goto L_NotEnoughMedals;
-
-		L_Prize02:
-			mes "[Wayne]";
-			mes "Now, please choose";
-			mes "which of the following item";
-			mes "sets that you'd like to receive";
-			mes "in exchange for 3 Prize Medals.";
-			next;
-			menu	"1 Royal Jelly",L_PrzOpt06,
-				"6 Holy Waters",L_PrzOpt07;
-
-			// Incomplete
-			L_PrzOpt06:
-			L_PrzOpt07:
-				goto L_NotEnoughMedals;
-
-		L_Prize03:
-			mes "[Wayne]";
-			mes "Now, please choose";
-			mes "which of the following item";
-			mes "sets that you'd like to receive";
-			mes "in exchange for 7 Prize Medals.";
-			next;
-			menu	"1 Cookie Bag",L_PrzOpt08,
-				"1 First Aid Kit",L_PrzOpt09;
-
-			// Incomplete
-			L_PrzOpt08:
-			L_PrzOpt09:
-				goto L_NotEnoughMedals;
-
-		L_Prize04:
-			mes "[Wayne]";
-			mes "Now, please choose";
-			mes "which of the following item";
-			mes "sets that you'd like to receive";
-			mes "in exchange for 8 Prize Medals.";
-			mes "Well, we have only 1 set, but...";
-			next;
-			menu "1 Gift Box",-;
-
-				// Incomplete
-				goto L_NotEnoughMedals;
-
-		L_Prize05:
-			mes "[Wayne]";
-			mes "Now, please choose";
-			mes "which of the following item";
-			mes "sets that you'd like to receive";
-			mes "in exchange for 16 Prize Medals.";
-			mes "Well, we have only 1 set, but...";
-			next;
-			menu "1 Old Blue Box",-;
-
-				// Incomplete
-				goto L_NotEnoughMedals;
-
-		L_Prize06:
-			mes "[Wayne]";
-			mes "Now, please choose";
-			mes "which of the following item";
-			mes "sets that you'd like to receive";
-			mes "in exchange for 25 Prize Medals.";
-			mes "Well, we have only 1 set, but...";
-			next;
-			menu "1 Taming Gift Set",-;
-
-				// Incomplete
-				goto L_NotEnoughMedals;
-
-		L_Prize07:
-			mes "[Wayne]";
-			mes "Now, please choose";
-			mes "which of the following item";
-			mes "sets that you'd like to receive";
-			mes "in exchange for 42 Prize Medals.";
-			mes "Well, we have only 1 set, but...";
-			next;
-			menu "1 Old Purple Box",-;
-
-				// Incomplete
-				goto L_NotEnoughMedals;
-
-		L_Prize08:
-			mes "[Wayne]";
-			mes "Now, please choose";
-			mes "which of the following item";
-			mes "sets that you'd like to receive";
-			mes "in exchange for 59 Prize Medals.";
-			mes "Well, we have only 1 set, but...";
-			next;
-			menu "1 Poring Box",-;
-
-				// Incomplete
-				goto L_NotEnoughMedals;
-
-	L_NotEnoughMedals:
-		mes "[Wayne]";
-		mes "Hey, you don't have";
-		mes "enough Prize Medals with";
-		mes "you. Go and get some more";
-		mes "if you want to exchange";
-		mes "them with me for anything.";
-		close;
-
-	L_Cancel:
-		mes "[Wayne]";
-		mes "Well, just keep in mind";
-		mes "that you can always come";
-		mes "to me to trade in your Prize";
-		mes "Medals for consumable items.";
-		mes "That guy in Einbroch? Not sure";
-		mes "what he'd give you for them...";
-		next;
-		mes "[Wayne]";
-		mes "All I know is that he";
-		mes "needs a whole lot of medals";
-		mes "for the work that he's doing.";
-		mes "Still, I hear that he just may";
-		mes "make your donations worth";
-		mes "all your effort, you know?";
-		close;
-}
-
-
-//--------------------------------------------------------------
-// Odin Excavation Quest - Incomplete ->
-//--------------------------------------------------------------
-
-hugel.gat,91,152,3	script	Sign	837,{
-
-	mes "**Recruitment Notice**";
-	mes "            "; // Line break
-	mes "We are now hiring recruits";
-	mes "for the Odin Shrine Expedition.";
-	mes "            "; // Line break
-	mes "- Shrine Expedition Dept.";
-	close;
-}
-
-hu_in01.gat,18,94,3	script	Part-Timer	49,{
-
-	mes "[Luda]";
-	mes "Welcome to the";
-	mes "Shrine Expedition Office.";
-	mes "I'm Luda, a part-time";
-	mes "assistant. My job is to";
-	mes "keep this office neat and";
-	mes "clean, but look at this place!";
-	next;
-	mes "[Luda]";
-	mes "Still, I think I can";
-	mes "handle this difficult task~";
-	mes "This room is the office for";
-	mes "the Schwaltzvalt Republic team,";
-	mes "and the other is for the Rune-";
-	mes "Midgarts Kingdom team.";
-	next;
-	mes "[Luda]";
-	mes "I have to clean both rooms,";
-	mes "so they keep me pretty busy.";
-	mes "Why don't you volunteer for";
-	mes "their expedition? I know they";
-	mes "can't really pay you, but it's";
-	mes "a great chance to explore~";
-	close;
-}
-
-hu_in01.gat,26,77,4	script	Part-Timer	50,{
-
-	mes "^3131FFThis part-timer is";
-	mes "completely engrossed";
-	mes "in his task of organizing";
-	mes "files and books.^000000";
-	close;
-}
-
-hu_in01.gat,18,167,5	script	Julian	86,{
-
-	mes "[Julian]";
-	mes "Say, are you here";
-	mes "for a job? We're looking";
-	mes "for someone that's passionate";
-	mes "about ancient history. If you";
-	mes "want to make money, then this";
-	// iRO dialogue fix
-	// mes "this the wrong place for you~";
-	// mes "is the wrong place for you~";
-	next;
-	mes "[Julian]";
-	mes "This is supposed to be";
-	mes "a collaborative excavation,";
-	mes "but the team leaders are too";
-	mes "stubborn, and refuse to make";
-	mes "any compromises. It's been";
-	mes "incredibly frustrating...";
-	next;
-	mes "[Julian]";
-	mes "Basically, each of our teams";
-	mes "is conducting its own research";
-	mes "for now. Now, we need your help";
-	mes "to find any relics from the odin";
-	mes "Shrine. We'd appreciate it if you";
-	// iRO dialogue fix
-	// mes "brought as many as you can!";
-	mes "bring as many as you can!";
-	close;
-}
-
-// I'm guessing if I wasn't a Novice, or I was higher-leveled
-// she would say something different? [Tsuyuki] ->
-hu_in01.gat,19,161,3	script	Alex	803,{
-
-	cutin "hu_alex01",2;
-	mes "[Alex]";
-	mes "Huh...?";
-	mes "What do you want?";
-	next;
-	menu	"Excuse me...",L_Alex01,
-		"I saw the recruitment notice and...",L_Alex02;
-
-	L_Alex01:
-		mes "[Alex]";
-		mes "Whatever you're";
-		mes "trying to sell me,";
-		mes "I'm not interested!";
-		mes "Now get out of here!";
-		close2;
-		cutin "",255;
-		end;
-
-	L_Alex02:
-		cutin "",255;
-		cutin "hu_alex02",2;
-		mes "[Alex]";
-		mes "Oh, so you saw the";
-		mes "recruitment notice for the";
-		mes "Odin Shrine Expedition, eh?";
-		mes "Well, I dunno. I think that";
-		mes "kind of expedition would";
-		mes "eat you alive. No offense...";
-		next;
-		mes "[Alex]";
-		mes "Look, I'll reconsider";
-		mes "whether you qualify after";
-		// iRO dialogue fix (My god..) [Tsuyuki]
-		// you get train a little more,";
-		mes "you train a little more,";
-		mes "develop your skills, you know,";
-		mes "get stronger. For now, though,";
-		mes "I do'nt think we can use you.";
-		close2;
-		cutin "",255;
-		end;
-}
-
-hu_in01.gat,16,20,5	script	Ashe	95,{
-
-	mes "[Ashe]";
-	// iRO dialogue fix
-	// mes "Oh, you've here in response";
-	mes "Oh, you're here in response";
-	mes "to the recruitment notice?";
-	mes "Well then, let me give you";
-	mes "a brief idea about the work.";
-	mes "First off, we can't pay you any";
-	mes "money, so you'd be a volunteer.";
-	next;
-	mes "[Ashe]";
-	mes "Instead, you're allowed to";
-	mes "keep whatever you excavate";
-	mes "in the Odin Shrine, so long";
-	mes "as we don't need it for our";
-	mes "research. This opportunity";
-	mes "might prove worthwhile to you.";
-	next;
-	mes "[Ashe]";
-	mes "Now, we should be working";
-	mes "together with the Schaltzvalt";
-	mes "Republic's Research Team, but";
-	mes "our leaders aren't getting along";
-	mes "at all. There's just a huge";
-	mes "clash of personalities...";
-	next;
-	mes "[Ashe]";
-	mes "In any case, if you'd";
-	mes "like to join us in our";
-	mes "efforts to uncover the";
-	mes "secrets of the past, then";
-	mes "please speak to Ms. Laurence.";
-	close;
-}
-
-hu_in01.gat,14,11,4	script	Laura	70,{
-
-	cutin "hu_laura01",2;
-	mes "[Laura]";
-	mes "Hm? Oh, you must be";
-	mes "here in response to our";
-	mes "recruitment notice, yes?";
-	mes "Let me take a look at you...";
-	mes "Oh, you're all skin and bone!";
-	mes "I can't use someone like you.";
-	close2;
-	cutin "",255;
-	end;
-}
-
-
-//--------------------------------------------------------------
 // Abyss Lake Entrance - [SinSloth]
 //--------------------------------------------------------------
-
-
 
 hu_fild05.gat,168,304,0	script	Column	111,{
 
