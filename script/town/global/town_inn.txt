@@ -9,14 +9,15 @@
 //--------------------------------------------------------------
 // Script Title: Inn Employee NPCs	Author: Tsuyuki
 //--------------------------------------------------------------
-// Revision History: v1.2
+// Revision History: v1.3
 //--------------------------------------------------------------
 //	1.0 Redid script based on the leaked Aegis version, iRO screenshots, and Muad_Dib's ASB script [Tsuyuki]
 //	1.1 Added official dialogue (iRO)/corrected save/warp coords for Hugel Inn [Tsuyuki]
 //	1.2 Updated Einbroch Hotel Employee with compatibility for the Airship Quest [Tsuyuki]
+//	1.3 Updated Hugel Inn Employee with the missing official dialogue [Tsuyuki]
 //--------------------------------------------------------------
 // Additional Notes: 100% Official Information - Date: 02/12/2007
-// Inn NPCs that may have some custom parts: Al De Baran, Hugel, Rachel
+// Inn NPCs that may have some custom parts: Al De Baran, Rachel
 // * Aegis-certified *
 //--------------------------------------------------------------
 
@@ -219,7 +220,7 @@ geffen_in.gat,70,64,5	script	Inn Employee::Cena	53,{
 }
 
 //--------------------------------------------------------------
-// Hugel Inn Employee -> Some Dialogue Custom
+// Hugel Inn Employee
 //--------------------------------------------------------------
 
 hu_in01.gat,246,107,5	script	Inn Staff::Hugel	53,{
@@ -247,18 +248,13 @@ hu_in01.gat,246,107,5	script	Inn Staff::Hugel	53,{
 	L_Hug_Inn02:
 		if (Zeny < 5000) goto L_InnPoorHug;
 
-		// Possibly custom dialogue from here on ->
 		emotion 15;
-		mes "[Inn Staff]";
-		mes "Thank you.";
-		mes "I hope you";
-		mes "enjoy your rest~";
+		mes "Enjoy your stay.";
 		close2;
 		set zeny,zeny - 5000;
 		percentheal 100,100;
-		warp "hu_in01.gat",262,96;
+		warp "hu_in01.gat",267,5;
 		close;
-		// <- End of custom dialogue
 
 		InnPoorHug:
 			mes "[Inn Staff]";
