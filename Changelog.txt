@@ -14,6 +14,7 @@
 Date	Added
 
 2007/06/08
+	* Updated: Hugel Monster Races a little bit [Tsuyuki]
 	* Updated: Moscovia Town warps by $ephiroth [Tsuyuki]
 	* Added: A script dev information file: './script/dev.txt/ [Tsuyuki]
 	* Added: The Cow Milking Quest, converted from Aegis (iRO 10.4) [Tsuyuki]

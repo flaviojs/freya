@@ -28,6 +28,7 @@
 //	2.4 Small fix to the Abyss Lake warper [Tsuyuki]
 //	2.5 Added the Odin's Temple Excavation Quest, converted from Aegis (iRO 10.4) [Tsuyuki]
 //	2.6 Added the Cow Milking Quest, converted from Aegis (iRO 10.4) [Tsuyuki]
+//	2.7 Added some more Monster Race NPCs [Tsuyuki]
 //--------------------------------------------------------------
 // Additional Notes: Monster Races, Bingo, Rebellion Quest,
 // and Remedy Quest are incomplete. * Aegis-certified *
@@ -108,7 +109,42 @@ hu_in01.gat,23,311,4	script	Party Supplies Shop	898,{
 // Monster Races System (Incomplete)
 //--------------------------------------------------------------
 
-hugel.gat,85,93,3	script	Mudie	866,{
+airplane.gat,246,47,1	script	Eocatt#decoy01	878,{
+
+	mes "[Eocatt]";
+	mes "In the Republic of Schwaltzvalt,";
+	mes "at the far edge of the kingdom,";
+	mes "there lies an isolated village, forgotten by the realm of men.";
+	mes "Only a true warrior like me,";
+	mes "is able to travel through the land of dragons";
+	mes "and find this village.";
+	next;
+	mes "[Eocatt]";
+	mes "Without the interference of outsiders,";
+	mes "the village seems to have ceased from evolving since it's established.";
+	mes "There are a lot of interesting games in the village";
+	mes "and one of them is the Monster Race.";
+	next;
+	mes "[Eocatt]";
+	mes "Those who won the Race";
+	mes "will be given a medal as reward.";
+	mes "It is said that the medal";
+	mes "is made of rare and precious metal.";
+	next;
+	mes "[Eocatt]";
+	mes "I was wondering whether this metal";
+	mes "can be used in other places and";
+	mes "decided to send it to the factory in Einbroch.";
+	next;
+	mes "[Eocatt]";
+	mes "If you ever visit that village,";
+	mes "how about taking part in the race?";
+	mes "It's a quiet village,";
+	mes "and you won't find much entertainment there.";
+	close;
+}
+
+hugel.gat,85,93,3	script	Mudie#dummy01	866,{
 
 	mes "[Mudie]";
 	mes "The Monster Races";
@@ -132,6 +168,162 @@ hugel.gat,85,93,3	script	Mudie	866,{
 	mes "or just watch the races, just";
 	mes "ask one of the Eckar brothers.";
 	mes "I hope you enjoy our little town~";
+	close;
+}
+
+p_track02.gat,32,45,3	script	Eccentric Scholar#double	755,{
+
+	mes "[Eccentric Scholar]";
+	mes "Mumbling...Hmmm...This one...";
+	mes "Hmmm, with this speed and length";
+	mes "Time consumed when they passed.";
+	mes "2 pets from 6 pets...";
+	mes "The rate of getting to the finishing points..............";
+	mes "..Mumbling...So...Mumble...";
+	next;
+	mes "["+strcharinfo(0)+"]";
+	mes "...Excuse me......?";
+	next;
+	mes "[Eccentric Scholar]";
+	mes "Hey! Don't speak to me!!";
+	mes "You've messed up my calculation!!!!!";
+	misceffect 107,"Eccentric Scholar#double";
+	emotion ET_FRET,"Eccentric Scholar#double";
+	close;
+}
+
+p_track02.gat,69,31,1	script	Blacksmith Guildsman#double1	726,{
+
+	if ($051101_mon_time_2_2 == 0) {
+		mes "[Blacksmith Guildsman]";
+		mes "Hmmm....Hahaha...";
+		mes "I'll be successful this time...";
+		mes "I wonder how many times have I tried.";
+		emotion "Blacksmith Guildsman#double1",ET_CRY;
+		next;
+		mes "[Blacksmith Guildsman]";
+		mes "Do you know that the";
+		mes "medal for the winners";
+		mes "contains a rare type of substance?";
+		mes "I come from the factory in Einbroch";
+		mes "to study this kind of metal...";
+		mes "I am not sure whether I can do it...Hehehe...";
+		next;
+		mes "[Blacksmith Guildsman]";
+		mes "...If there's any medal left...";
+		mes "Do you think you can send them to the factory...";
+		mes "Oh no...";
+		mes "How can I say this...";
+		emotion "Blacksmith Guildsman#double1",ET_PROFUSELY_SWAT;
+		close;
+	} else {
+		mes "[Blacksmith Guildsman]";
+		mes "Run! Run!";
+		mes "Run for my research! My medal!";
+		mes "Please run quickly!!!";
+		emotion "Blacksmith Guildsman#double1",ET_FLAG;
+		close;
+	}
+}
+
+p_track02.gat,53,45,3	script	Valiant Knight#double	733,{
+
+	mes "[Valiant Knight]";
+	mes "Huh? Have we met before?";
+	mes "Oh, whatever.";
+	mes "Have you played the Monster Race before?";
+	mes "Why don't we make a bet?";
+	mes "When the monster you've chosen won the race,";
+	mes "the one who've lost the race will buy a drink";
+	mes "for the one who've won?";
+	next;
+	mes "[Valiant Knight]";
+	mes "Well, this reminds me of";
+	mes "the Tropical Sograt from";
+	mes "Morocc of Rune Midgard.";
+	mes "That' so tasty.";
+	mes "My ancestors are mercenary.";
+	mes "That must be why I like to travel too.";
+	next;
+	mes "[Valiant Knight]";
+	mes "Looks like you're an adventurer too.";
+	mes "You should go out when you're young";
+	mes "to widen up your view.";
+	mes "Look at the world,";
+	mes "there're lot of things out there!";
+	emotion ET_BEST,"Valiant Knight#double";
+	close;
+}
+
+p_track01.gat,27,47,5	script	Drunkard#single	853,{
+
+	mes "[Familiar Drunkard]";
+	mes "Hmmmm...";
+	mes "I make the right guess this time!";
+	mes "Hiccups.";
+	mes "What pet should I pick this time.";
+	mes "Guess what pet are you going to pick.";
+	mes "Ok! I'll pick this one!";
+	next;
+	mes "["+strcharinfo(0)+"]";
+	mes "...Excuse me......?";
+	next;
+	mes "[Familiar Drunkard]";
+	mes "Run! Run faster!!";
+	mes "You must be the first!";
+	mes "Hehehehe.";
+	close;
+}
+
+p_track01.gat,69,31,1	script	Blacksmith Guildsman#single	107,{
+
+	mes "[Blacksmith Guildsman]";
+	mes "Hmmm....Hahaha...";
+	mes "I'll be successful this time...";
+	mes "I wonder how many times have I tried.";
+	next;
+	mes "[Blacksmith Guildsman]";
+	mes "Do you know that the";
+	mes "medal for the winners";
+	mes "contains a rare type of substance?";
+	mes "I come from the factory in Einbroch";
+	mes "to study this kind of metal...";
+	mes "I am not sure whether I can do it...Hehehe...";
+	next;
+	mes "[Blacksmith Guildsman]";
+	mes "...If there's any medal left...";
+	mes "Do you think you can send them to the factory...";
+	mes "Oh no...";
+	mes "How can I say this...";
+	next;
+	mes "[Blacksmith Guildsman]";
+	mes "I might need this at the end of the traininig.";
+	mes "But I don't think I can see the result...";
+	close;
+}
+
+p_track01.gat,45,24,3	script	Absent Minded Man#single	881,{
+
+	mes "[Absent Minded Man]";
+	mes "...";
+	mes "Are you here to play";
+	mes "the monster race too?";
+	mes "I was in a journey";
+	mes "when I was given a task to come for the";
+	mes "medal of this place.";
+	next;
+	mes "[Absent Minded Man]";
+	mes "Look,";
+	mes "I've been playing here for more than 100 times.";
+	mes "However,";
+	mes "I haven't won a single match.";
+	next;
+	mes "[Absent Minded Man]";
+	mes "According to the ration calculation,";
+	mes "I should have won at least for a time.";
+	mes "Is that too much to ask for?";
+	mes "I think that man is still waiting for me";
+	mes "How am I going to do this?";
 	close;
 }
 
@@ -358,13 +550,17 @@ hugel.gat,58,72,5	script	Eckar Ellebird	86,{
 		close;
 }
 
-
-//--------------------------------------------------------------
-// Prize Medal Exchanger (Incomplete)
-//--------------------------------------------------------------
-
+// Wayne - Prize Medal Exchanger (Incomplete)
 hugel.gat,71,83,3	script	Wayne	900,{
 
+	if (!checkweight(1201,1)) {
+		mes "- Please wait for a while!! -";
+		mes "- You're carrying too many items-";
+		mes "- and you won't be able to receive any item now.-";
+		mes "- Please take off some of your loads-";
+		mes "- and come for the challenge again.-";
+		close;
+	}
 	mes "[Wayne]";
 	mes "Hello, there! Ever wonder";
 	mes "what you could do with all";
@@ -382,6 +578,13 @@ hugel.gat,71,83,3	script	Wayne	900,{
 	menu "Prize Medal Exchange",L_Exchange,"Cancel",L_Cancel;
 
 	L_Exchange:
+		set '@now_weight,MaxWeight-Weight;
+		if ('@now_weight < 5500) {
+			mes "[Wayne]";
+			mes "Looks like you've been carrying too many items...";
+			mes "Why don't you put it in the storage before you come again.";
+			close;
+		}
 		mes "[Wayne]";
 		mes "Now, how many Prize Medals";
 		mes "would you like to exchange?";
