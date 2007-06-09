@@ -9,9 +9,10 @@
 //--------------------------------------------------------------
 // Script Title: Guide NPCs	Author: A Lot of People
 //--------------------------------------------------------------
-// Revision History: v1.0
+// Revision History: v1.1
 //--------------------------------------------------------------
 //	1.0 Merged all guide NPC scripts into this file [Tsuyuki]
+//	1.1 Updated Rachel Guide NPC to official by L0ne_W0lf [Tsuyuki]
 //--------------------------------------------------------------
 // Additional Notes: Rachel/Veins Guides are incomplete.
 // Louyang Guide NPCs are * Official-certified *. Juno Guide NPCs
@@ -2784,83 +2785,105 @@ prontera.gat,151,330,4	duplicate(Prt_Guide)	Guide#prt5	105
 
 
 //--------------------------------------------------------------
-// Rachel Guides (Incomplete -> Missing blinkies) - [Tsuyuki/Harp]
+// Rachel Guides - [L0ne_W0lf]
 //--------------------------------------------------------------
 
-rachel.gat,138,146,5	script	Rachel Guide Agent	934,{
+rachel.gat,138,146,5	script	Rachel Guide	934,{
 
-	mes "[Rachel Guide Agent]";
-	mes "Welcome to Rachel, the capitol of Arunafeltz";
-	mes "where you can almost feel the breath of our goddess Freya.";
-	mes "If this is your time at Rachel, please check out";
-	mes "our 'General Announcements'.";
-	next;
-	goto L_menu2;
-
-L_menu2:
-	menu	"Get town info",-,
-		"Erase all minimap indications",L_menu2,
-		"General Announcements",L_menu2,
-		"End Conversation",L_end;
-
-	mes "[Rachel Guide Agent]";
-	mes "Which location do you want to know?";
-	mes "Do you want an indication on the minimap?";
-	next;
-	
-	menu	"Yes",L_menu1,
-		"No",L_menu1;
-
-	L_menu1:
-		menu	"Sanctuary",-,
-			"Inn",L_inn,
-			"Weapon Shop",L_weap,
-			"Tool Shop",L_tools,
-			"Airport",L_airp,
-			"Cancel",L_end2;
-
-		mes "[Rachel Guide Agent]";
-		mes "Sanctuary is the Holy Temple at which the Pope,";
-		mes "who is the embodiment of Freya, resides.";
-		mes "Follow the road north to reach the Sanctuary";
+	mes "[Rachel Guide]";
+	mes "Welcome to the capital of";
+	mes "Arunafeltz, Rachel where a warm";
+	mes "breath of goddess Freya reaches.";
+	mes "If this is the first time for you";
+	mes "to use the guide services, why";
+	mes "don't you check the \"Notice\" menu first?";
+	while(1) {
 		next;
-		goto L_menu1;
-	
-	L_inn:
-		mes "[Rachel Guide Agent]";
-		mes "The comfortable Inn is a great place to rest";
-		mes "and relax. The building just to the left is the Rachel Inn.";
-		next;
-		goto L_menu1;
-	
-	L_weap:
-		mes "[Rachel Guide Agent]";
-		mes "Would you like to see the strong weapons being sold";
-		mes "in Rachel? The weapon shop is near the Western gate.";
-		next;
-		goto L_menu1;
-		
-	L_tools:
-		mes "[Rachel Guide Agent]";
-		mes "Our selective tool shop which only deals the finest";
-		mes "high-quality potions is near the Western gate.";
-		next;
-		goto L_menu1;
-	
-	L_airp:
-		mes "[Rachel Guide Agent]";
-		mes "The airport is located outside the Eastern gate of rachel.";
-		next;
-		goto L_menu1;
+		switch(select("Village Guide:Remove Marks from Mini-Map:Notice:Cancel")) {
+		case 1:
+			mes "[Rachel Guide]";
+			mes "I can tell you any building location as long as it is in Rachel.";
+			mes "So where do you want to go?";
+			if (@compass_check == 0) {
+				mes "Would you like me";
+				mes "to mark locations";
+				mes "on your Mini-Map?";
+				next;
+				if (select("Yes:No") == 1) set @compass_check,1;
+				next;
 
-	L_end:
-		close;
+			}
+			while(1) {
+				if (@wait_button_chk == 0) set @wait_button_chk,1;
+				else next;
 
-	L_end2:
-		mes "[Rachel Guide Agent]";
-		mes "If you ever want the indicators removed from the";
-		mes "minimap, pick 'Erase minimap inidcations'.";
-		goto L_menu2;
+				switch(select("Cheshrumnir:Inn:Weapon Shop:Tool Shop:Airport:Cancel")) {
+				case 1:
+					mes "[Rachel Guide]";
+					mes "Cheshrumnir is a holy ground where pope, the incarnation of goddess Freya stays.";
+					mes "Take the road to the norh to find the building.";
+					if (@compass_check == 1) viewpoint 1,150,249,1,0xFF0000;
+					break;
+				case 2:
+					mes "[Rachel Guide]";
+					mes "You can rest your fatigue off the journey in the Inn.";
+					mes "The left building next to me is the Inn of Rachel.";
+					if (@compass_check == 1) viewpoint 1,115,149,2,0xFF00FF;
+					break;
+				case 3:
+					mes "[Rachel Guide]";
+					mes "Do you want to check out the weapons that are sold in Rachel?";
+					mes "The weapon shop is located nearby the western gate.";
+					if (@compass_check == 1) viewpoint 1,42,87,3,0x99FFFF;
+					break;
+				case 4:
+					mes "[Rachel Guide]";
+					mes "Rachel tool shop sells the best quality potions.";
+					mes "It's located nearby the western gate.";
+					if (@compass_check == 1) viewpoint 1,83,78,4,0x0000FF;
+					break;
+				case 5:
+					mes "[Rachel Guide]";
+					mes "The Airport is located outside the eastern gate.";
+					if (@compass_check == 1) viewpoint 1,273,125,5,0x00FF00;
+					break;
+				case 6:
+					mes "[Rachel Guide]";
+					mes "If you like to get rid of all the location marks on your Mini-Map,";
+					mes "just ask me again, and choose \"Remove Marks from Mini-Map\" menu.";
+					set @Exitloop,1;
+					break;
+				}
+				if (@Exitloop) break;
+			}
+			break;
+
+		case 2:
+			viewpoint 2,150,249,1,0xFF0000;
+			viewpoint 2,115,149,2,0xFF00FF;
+			viewpoint 2,42,87,3,0x99FFFF;
+			viewpoint 2,83,78,4,0x0000FF;
+			viewpoint 2,273,125,5,0x00FF00;
+			mes "[Rachel Guide]";
+			mes "Okay, they are gone now. If you have more locations to ask, just let me know.";
+			break;
+		case 3:
+			mes "[Rachel Guide]";
+			mes "When you are using the ''Village Guide'' menu,";
+			mes "make sure that building locations will be marked on your mini-map at the upper right side of your screen.";
+			mes "If you cannot see your mini-map, use the short cut key ''ctrl+tab'' or press the ''Map'' button on your basic information windows, okay?";
+			mes "And you can also zoom out your mini-map by using the ''-'' button in case you cannot view the entire map of the village.";
+			break;
+		case 4:
+			mes "[Rachel Guide]";
+			mes "Hope you have a wonderfull journey";
+			mes "in Arunafeltz.";
+			set @Exitloop2,1;
+			break;
+		}
+		if (@Exitloop2) break;
+	}
+	close;
 }
 
 
