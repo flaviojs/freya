@@ -27,7 +27,7 @@
 //	 - Adds in Mobster Security, Biolabs Entrance Quest, Pickpocket Quest, Friendship Quest
 //	2.3 Removed duplicate NPCs from the Cursed Spirit Quest [Tsuyuki]
 //	2.4 Removed duplicate NPCs from the President's Quest [Tsuyuki]
-//	2.5 Added the Cursed Spirit and Presiden'ts Quests by SinSloth [Tsuyuki]
+//	2.5 Added the Cursed Spirit and President's Quests by SinSloth [Tsuyuki]
 //	2.6 Added the Shadow Quest, converted from Aegis [Tsuyuki]
 //--------------------------------------------------------------
 // Additional Notes: * Official-certified / Aegis-certified *
