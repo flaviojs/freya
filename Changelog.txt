@@ -14,6 +14,8 @@
 Date	Added
 
 2007/06/08
+	* Added: The Alchemist Bio Ethics skill quest by Evera [Tsuyuki]
+	 - Oops.. missed it before apparently, Homunuclus works fine now
 	* Added: The President's Quest (Schwartzvalt Trilogy Quest) by SinSloth [Tsuyuki]
 	* Added: The Cursed Spirit Quest by SinSloth [Tsuyuki]
 	* Added: A new global function to end all status changes (F_EndAllStatuses) [Tsuyuki]
