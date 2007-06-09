@@ -36,12 +36,6 @@
 - Hugel Rebellion Quest
 - Hugel Remedy Quest (Mostly implemented, but not functional)
 
-- Rachel Town NPCs [Aurora's Current: Temporary]
-- Rachel Bruspetti Quest
-- Rachel Ice Necklace Quest [Aurora's Current: Temporary]
-- Rachel Lost Child Quest
-- Rachel Sanctuary Quest
-
 - All Episode 11.2 (Veins) Town NPCs/Quests
 - All Episode 11.3 (Nameless Island) Town NPCs/Quests
 
