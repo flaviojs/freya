@@ -14,6 +14,8 @@
 Date	Added
 
 2007/06/08
+	* Updated: Lighthalzen/Juno for the implementation of the Cursed Spirit and President's Quests [Tsuyuki]
+	* Updated: Kiel Hyre warps by L0ne_W0lf [Tsuyuki]
 	* Updated: Rachel Guide NPC to official by L0ne_W0lf [Tsuyuki]
 	* Updated: Rachel Town NPCs/Quests with fully official iRO/Aegis versions by L0ne_W0lf [Tsuyuki]
 	* Updated: The Kiel Hyre Quest with all the latest bug fixes [Tsuyuki]
