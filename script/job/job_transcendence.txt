@@ -353,7 +353,7 @@ valkyrie.gat,44,39,5	script	Lord Knight	56,{
 		}
 		close;
 	}
-	callfunc "JobChanger","Lord Knight",1,7;
+	callfunc "F_JobChanger","Lord Knight",1,7;
 	mes "[Lord Knight]";
 	mes "Welcome to the great Valhalla.";
 	mes "Rest well before you depart.";
@@ -382,7 +382,7 @@ valkyrie.gat,44,42,5	script	High Priest	60,{
 		}
 		close;
 	}
-	callfunc "JobChanger","High Priest",4,8;
+	callfunc "F_JobChanger","High Priest",4,8;
 	mes "[High Priest]";
 	mes "Welcome to the great Valhalla.";
 	mes "Rest well before you depart.";
@@ -411,7 +411,7 @@ valkyrie.gat,44,47,5	script	High Wizard	735,{
 		}
 		close;
 	}
-	callfunc "JobChanger","High Wizard",2,9;
+	callfunc "F_JobChanger","High Wizard",2,9;
 	mes "[High Wizard]";
 	mes "Welcome to the great Valhalla.";
 	mes "Rest well before you depart.";
@@ -440,7 +440,7 @@ valkyrie.gat,44,50,5	script	Whitesmith	731,{
 		}
 		close;
 	}
-	callfunc "JobChanger","Whitesmith",5,10;
+	callfunc "F_JobChanger","Whitesmith",5,10;
 	mes "[Whitesmith]";
 	mes "Welcome to the great Valhalla.";
 	mes "Rest well before you depart.";
@@ -470,7 +470,7 @@ valkyrie.gat,44,55,5	script	Sniper	727,{
 		}
 		close;
 	}
-	callfunc "JobChanger","Sniper",3,11;
+	callfunc "F_JobChanger","Sniper",3,11;
 	mes "[Sniper]";
 	mes "Welcome to the great Valhalla.";
 	mes "Rest well before you depart.";
@@ -498,7 +498,7 @@ valkyrie.gat,44,58,5	script	Assassin Cross	725,{
 		}
 		close;
 	}
-	callfunc "JobChanger","Assassin Cross",6,12;
+	callfunc "F_JobChanger","Assassin Cross",6,12;
 	mes "[Assassin Cross]";
 	mes "Welcome to the great Valhalla.";
 	mes "Rest well before you depart.";
@@ -527,7 +527,7 @@ valkyrie.gat,53,39,3	script	Paladin	752,{
 		}
 		close;
 	}
-	callfunc "JobChanger","Paladin",1,14;
+	callfunc "F_JobChanger","Paladin",1,14;
 	mes "[Paladin]";
 	mes "Welcome to the great Valhalla.";
 	mes "Rest well before you depart.";
@@ -558,7 +558,7 @@ valkyrie.gat,53,42,3	script	Champion	52,{
 		}
 		close;
 	}
-	callfunc "JobChanger","Champion",4,15;
+	callfunc "F_JobChanger","Champion",4,15;
 	mes "[Champion]";
 	mes "Welcome to the great Valhalla.";
 	mes "Rest well before you depart.";
@@ -587,7 +587,7 @@ valkyrie.gat,53,47,3	script	Professor	743,{
 		}
 		close;
 	}
-	callfunc "JobChanger","Professor",2,16;
+	callfunc "F_JobChanger","Professor",2,16;
 	mes "[Professor]";
 	mes "Welcome to the great Valhalla.";
 	mes "Rest well before you depart.";
@@ -615,7 +615,7 @@ valkyrie.gat,53,58,3	script	Stalker	747,{
 		}
 		close;
 	}
-	callfunc "JobChanger","Stalker",6,17;
+	callfunc "F_JobChanger","Stalker",6,17;
 	mes "[Stalker]";
 	mes "Welcome to the great Valhalla.";
 	mes "Rest well before you depart.";
@@ -645,7 +645,7 @@ valkyrie.gat,53,50,3	script	Creator	122,{
 		}
 		close;
 	}
-	callfunc "JobChanger","Creator",5,18;
+	callfunc "F_JobChanger","Creator",5,18;
 	mes "[Creator]";
 	mes "Welcome to the great Valhalla.";
 	mes "Rest well before you depart.";
@@ -674,7 +674,7 @@ valkyrie.gat,53,54,3	script	Clown	741,{
 		}
 		close;
 	}
-	callfunc "JobChanger","Clown",3,19;
+	callfunc "F_JobChanger","Clown",3,19;
 	mes "[Clown]";
 	mes "Welcome to the great Valhalla.";
 	mes "Rest well before you depart.";
@@ -702,7 +702,7 @@ valkyrie.gat,53,56,3	script	Gypsy	101,{
 		}
 		close;
 	}
-	callfunc "JobChanger","Gypsy",3,20;
+	callfunc "F_JobChanger","Gypsy",3,20;
 	mes "[Gypsy]";
 	mes "Welcome to the great Valhalla.";
 	mes "Rest well before you depart.";
@@ -713,10 +713,10 @@ valkyrie.gat,53,56,3	script	Gypsy	101,{
 
 //--------------------------------------------------------------
 // 2nd Class Job Changer Function
-// -> callfunc "JobChanger","Name",1stClass,2ndClass
+// -> callfunc "F_JobChanger","Name",1stClass,2ndClass
 //--------------------------------------------------------------
 
-function	script	JobChanger	{
+function	script	F_JobChanger	{
 
 	if (JobLevel < 40 || Basejob != getarg(1) || OLD_CLASS != getarg(2))
 		return;
