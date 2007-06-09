@@ -37,8 +37,21 @@
 
 - Episode 11.1 - 2006 Headgear Quests (Need to be officialized) [Aurora's Current: Temporary]
 
-- Episode 11.2 - All Veins Town NPCs/Quests
-- Episode 11.3 - All Nameless Island Town NPCs/Quests
+- Episode 11.2 - All Veins Town NPCs
+- Episode 11.2 - Veins Old Person Aid Quest
+- Episode 11.2 - Arunafeltz Spy Quest
+- Episode 11.2 - Sibling Search Quest
+- Episode 11.2 - Logistic Base Quest
+
+- Episode 11.3 - All Nameless Island Town NPCs
+- Episode 11.3 - Nameless Island Admission Quest
+- Episode 11.3 - Peace Teaching of Arunafeltz Republic Quest
+- Episode 11.3 - Z Group Quest
+- Episode 11.3 - Investigation Cooperation Quest
+- Episode 11.3 - Loan Book of Mirv Quest
+- Episode 11.3 - Diamond of Ruin Quest
+- Episode 11.3 - Emerald of Misfortune Quest
+
 - RussianRO Moscovia - All Town NPCs/Quests (?)
 
 ==============================================================
