@@ -18,17 +18,12 @@
 ----------------------------
 
 - Aldebaran Turbo Track
-
 - Auction System NPCs
-
 - Izlude Battle Arena
-
 - Lighthalzen Ymir Quest
 
 - Nogholt Curse of Gaebolg Quest (Founding of the Nation Myth Quest/Prontera Curse Quest)
 - Nogholt Heart Fragment Quest
-- Nogholt Shadow Quest (Rekenber Job Quest)
-
 - Hugel Bingo System (Partially implemented)
 - Hugel Monster Races (Partially implemented)
 - Hugel Rebellion Quest
@@ -36,14 +31,11 @@
 
 - All Episode 11.2 (Veins) Town NPCs/Quests
 - All Episode 11.3 (Nameless Island) Town NPCs/Quests
-
 - All RussianRO Moscovia Town NPCs/Quests
 
 - 2nd Class Skill Quests (Partially complete) [Aurora's Current: Temporary]
-
 - Soul Linker Job Change Quest [Aurora's Current: Temporary]
 - Star Gladiator (Taekwon Master) Job Change Quest [Aurora's Current: Temporary]
-
 - Thai Hat Quest
 
 ==============================================================

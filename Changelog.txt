@@ -13,6 +13,9 @@
 
 Date	Added
 
+2007/06/09
+	* Added: The Lighthalzen Shadow Quest, converted from Aegis [Tsuyuki]
+
 2007/06/08
 	* Added: The Alchemist Bio Ethics skill quest by Evera [Tsuyuki]
 	 - Oops.. missed it before apparently, Homunuclus works fine now
