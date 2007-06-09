@@ -9,7 +9,7 @@
 //--------------------------------------------------------------
 // Script Title: Hugel Town NPCs	Author: Tsuyuki
 //--------------------------------------------------------------
-// Revision History: v2.6
+// Revision History: v2.7
 //--------------------------------------------------------------
 //	1.0 Added redone script with new/missing NPCs and ripped iRO dialogue [Tsuyuki]
 //	1.1 Fixed a couple bugs [Tsuyuki]
@@ -38,7 +38,6 @@
 //--------------------------------------------------------------
 // Hugel Town NPCs
 //--------------------------------------------------------------
-
 
 hu_in01.gat,365,170,5	script	Rachel	793,{
 
