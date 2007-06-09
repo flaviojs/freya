@@ -9,7 +9,7 @@
 //--------------------------------------------------------------
 // Script Title: Airship System	Author: Spirit Death/Bison/Tsuyuki
 //--------------------------------------------------------------
-// Revision History: v1.6
+// Revision History: v1.7
 //--------------------------------------------------------------
 //	1.0 First release [Spirit Death]
 //	1.1 Added some variables to manage when players may board the
@@ -19,6 +19,7 @@
 //	1.4 Fixed some mapannounce commands [Tsuyuki]
 //	1.5 Added Rachel/Veins to the international airship route [Tsuyuki]
 //	1.6 Officialized some dialogue based on Aegis scripts [Tsuyuki]
+//	1.7 Fixed some conflicting NPC names [Tsuyuki]
 //--------------------------------------------------------------
 // Additional Notes: Airship System with 2 Routes (Almost official)
 // 1st Route: Juno -> Hugel -> Einbroch -> Lighthalzen -> Juno
@@ -48,8 +49,8 @@ OnInit:
 
 OnTimer1000:
 	set $route1,0;
-	disablenpc "#warp1";
-	disablenpc "#warp2";
+	disablenpc "#airshipwarp1";
+	disablenpc "#airshipwarp2";
 	disablenpc "jairp7";
 	mapannounce "airplane.gat","The Airship is leaving the ground. Our next destination is Hugel.",9,0x00FF00;
 	mapannounce "yuno.gat","Airship Service: The Route 1 airship has departed from Juno.",9,0x00FF00;
@@ -60,8 +61,8 @@ OnTimer51000:
 	end;
 
 OnTimer61000:
-	enablenpc "#warp1";
-	enablenpc "#warp2";
+	enablenpc "#airshipwarp1";
+	enablenpc "#airshipwarp2";
 	set $at_hugel, 1;
 	mapannounce "airplane.gat","Welcome to Hugel. Have a safe trip.",9,0x00FF00;
 	mapannounce "hugel.gat","Airship Service: The Route 1 airship has arrived at Hugel.",9,0x00FF00;
@@ -73,8 +74,8 @@ OnTimer71000:
 
 OnTimer81000:
 	set $route1,1;
-	disablenpc "#warp1";
-	disablenpc "#warp2";
+	disablenpc "#airshipwarp1";
+	disablenpc "#airshipwarp2";
 	set $at_hugel, 0;
 	mapannounce "airplane.gat","The Airship is now taking off. Our next destination is Einbroch.",9,0x00FF00;
 	mapannounce "hugel.gat","Airship Service: The Route 1 airship has departed from Hugel.",9,0x00FF00;
@@ -85,8 +86,8 @@ OnTimer131000:
 	end;
 
 OnTimer141000:
-	enablenpc "#warp1";
-	enablenpc "#warp2";
+	enablenpc "#airshipwarp1";
+	enablenpc "#airshipwarp2";
 	enablenpc "ein_ap01";
 	mapannounce "airplane.gat","Welcome to Einbroch. Have a safe trip.",9,0x00FF00;
 	mapannounce "einbroch.gat","Airship Service: The Route 1 airship has arrived at Einbroch.",9,0x00FF00;
@@ -98,8 +99,8 @@ OnTimer151000:
 	
 OnTimer161000:
 	set $route1,2;
-	disablenpc "#warp1";
-	disablenpc "#warp2";
+	disablenpc "#airshipwarp1";
+	disablenpc "#airshipwarp2";
 	disablenpc "ein_ap01";
 	mapannounce "airplane.gat","The Airship is now taking off. Our next destination is Lighthalzen.",9,0x00FF00;
 	mapannounce "einbroch.gat","Airship Service: The Route 1 airship has departed from Einbroch.",9,0x00FF00;
@@ -110,8 +111,8 @@ OnTimer211000:
 	end;
 
 OnTimer221000:
-	enablenpc "#warp1";
-	enablenpc "#warp2";
+	enablenpc "#airshipwarp1";
+	enablenpc "#airshipwarp2";
 	enablenpc "lairp5";
 	mapannounce "airplane.gat","Welcome to Lighthalzen. Have a safe trip.",9,0x00FF00;
 	mapannounce "lighthalzen.gat","Airship Service: The Route 1 airship has arrived at Lighthalzen.",9,0x00FF00;
@@ -123,8 +124,8 @@ OnTimer231000:
 
 OnTimer241000:
 	set $route1,3;
-	disablenpc "#warp1";
-	disablenpc "#warp2";
+	disablenpc "#airshipwarp1";
+	disablenpc "#airshipwarp2";
 	disablenpc "lairp5";
 	mapannounce "airplane.gat","The Airship is now taking off. Our next destination is Juno.",9,0x00FF00;
 	mapannounce "lighthalzen.gat","Airship Service: The Route 1 airship has departed from Lighthalzen.",9,0x00FF00;
@@ -135,8 +136,8 @@ OnTimer291000:
 	end;
 
 OnTimer301000:
-	enablenpc "#warp1";
-	enablenpc "#warp2";
+	enablenpc "#airshipwarp1";
+	enablenpc "#airshipwarp2";
 	enablenpc "jairp7";
 	mapannounce "airplane.gat","Welcome to Juno. Have a safe trip.",9,0x00FF00;
 	mapannounce "yuno.gat","Airship Service: The Route 1 airship has arrived at Juno.",9,0x00FF00;
@@ -151,7 +152,7 @@ OnTimer320000:
 	end;
 }
 
-airplane.gat,243,74,4	script	#warp1	45,2,2,{
+airplane.gat,243,74,4	script	#airshipwarp1	45,2,2,{
 
 OnTouch:
 	if ($route1 == 0) warp "hugel.gat",178,149;
@@ -161,7 +162,7 @@ OnTouch:
 	close;
 }
 
-airplane.gat,243,29,4	script	#warp2	45,2,2{
+airplane.gat,243,29,4	script	#airshipwarp2	45,2,2{
 
 OnTouch:
 	if ($route1 == 0) warp "hugel.gat",178,149;
@@ -184,8 +185,8 @@ OnInit:
 
 OnTimer1000:
 	set $route2,0;
-	disablenpc "#warp3";
-	disablenpc "#warp4";
+	disablenpc "#airshipwarp3";
+	disablenpc "#airshipwarp4";
 	disablenpc "jairp6";
 	mapannounce "airplane_01.gat","The Airship is leaving the ground. Our next destination is Rachel.",9,0x00FF00;
 	mapannounce "yuno.gat","Airship Service: The Route 2 airship has departed from Juno.",9,0x00FF00;
@@ -196,8 +197,8 @@ OnTimer51000:
 	end;
 
 OnTimer61000:
-	enablenpc "#warp3";
-	enablenpc "#warp4";
+	enablenpc "#airshipwarp3";
+	enablenpc "#airshipwarp4";
 	mapannounce "airplane_01.gat","Welcome to Rachel. Have a safe trip.",9,0x00FF00;
 	mapannounce "ra_fild12.gat","Airship Service: The Route 2 airship has arrived at Rachel.",9,0x00FF00;
 	end;
@@ -208,8 +209,8 @@ OnTimer71000:
 
 OnTimer81000:
 	set $route2,1;
-	disablenpc "#warp3";
-	disablenpc "#warp4";
+	disablenpc "#airshipwarp3";
+	disablenpc "#airshipwarp4";
 	mapannounce "airplane_01.gat","The Airship is now taking off. Our next destination is Veins.",9,0x00FF00;
 	mapannounce "ra_fild12.gat","Airship Service: The Route 2 airship has departed from Rachel.",9,0x00FF00;
 	end;
@@ -219,8 +220,8 @@ OnTimer131000:
 	end;
 
 OnTimer141000:
-	enablenpc "#warp3";
-	enablenpc "#warp4";
+	enablenpc "#airshipwarp3";
+	enablenpc "#airshipwarp4";
 	mapannounce "airplane_01.gat","Welcome to Veins. Have a safe trip.",9,0x00FF00;
 	mapannounce "veins.gat","Airship Service: The Route 2 airship has arrived at Veins.",9,0x00FF00;
 	end;
@@ -231,8 +232,8 @@ OnTimer151000:
 
 OnTimer161000:
 	set $route2,2;
-	disablenpc "#warp3";
-	disablenpc "#warp4";
+	disablenpc "#airshipwarp3";
+	disablenpc "#airshipwarp4";
 	mapannounce "airplane_01.gat","The Airship is now taking off. Our next destination is Izlude.",9,0x00FF00;
 	mapannounce "veins.gat","Airship Service: The Route 2 airship has departed from Veins.",9,0x00FF00;
 	end;
@@ -242,8 +243,8 @@ OnTimer211000:
 	end;
 
 OnTimer221000:
-	enablenpc "#warp3";
-	enablenpc "#warp4";
+	enablenpc "#airshipwarp3";
+	enablenpc "#airshipwarp4";
 	set $at_izlude,1;
 	mapannounce "airplane_01.gat","Welcome to Izlude. Have a safe trip.",9,0x00FF00;
 	mapannounce "izlude.gat","Airship Service: The Route 2 airship has arrived at Izlude.",9,0x00FF00;
@@ -256,8 +257,8 @@ OnTimer231000:
 OnTimer241000:
 	set $route2,3;
 	set $at_izlude,0;
-	disablenpc "#warp3";
-	disablenpc "#warp4";
+	disablenpc "#airshipwarp3";
+	disablenpc "#airshipwarp4";
 	disablenpc "jairp6";
 	mapannounce "airplane_01.gat","The Airship is leaving the ground. Our next destination is Juno.",9,0x00FF00;
 	mapannounce "izlude.gat","Airship Service: The Route 2 airship has departed from Izlude.",9,0x00FF00;
@@ -268,8 +269,8 @@ OnTimer291000:
 	end;
 
 OnTimer301000:
-	enablenpc "#warp3";
-	enablenpc "#warp4";
+	enablenpc "#airshipwarp3";
+	enablenpc "#airshipwarp4";
 	enablenpc "jairp6";
 	mapannounce "airplane_01.gat","Welcome to Juno. Have a safe trip.",9,0x00FF00;
 	mapannounce "rachel.gat","Airship Service: The Route 2 airship has arrived at Juno.",9,0x00FF00;
@@ -284,7 +285,7 @@ OnTimer320000:
 	end;
 }
 
-airplane_01.gat,243,74,4	script	#warp3	45,2,2,{
+airplane_01.gat,243,74,4	script	#airshipwarp3	45,2,2,{
 
 OnTouch:
 	if ($route2 == 0) warp "ra_fild12.gat",290,202;
@@ -294,7 +295,7 @@ OnTouch:
 	close;
 }
 
-airplane_01.gat,243,29,4	script	#warp4	45,2,2,{
+airplane_01.gat,243,29,4	script	#airshipwarp4	45,2,2,{
 
 OnTouch:
 	if ($route2 == 0) warp "ra_fild12.gat",290,202;
