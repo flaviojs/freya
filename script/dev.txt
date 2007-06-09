@@ -17,26 +17,29 @@
 -> Missing Official Scripts:
 ----------------------------
 
-- Aldebaran Turbo Track
-- Auction System NPCs
-- Izlude Battle Arena
-- Lighthalzen Ymir Quest
+- Episode ???? - Izlude Battle Arena
+- Episode ???? - Thai Hat Quest
 
-- Nogholt Curse of Gaebolg Quest (Founding of the Nation Myth Quest/Prontera Curse Quest)
-- Nogholt Heart Fragment Quest
-- Hugel Bingo System (Partially implemented)
-- Hugel Monster Races (Partially implemented)
-- Hugel Rebellion Quest
-- Hugel Remedy Quest (Mostly implemented, but not functional)
+- Episode 10.1 - Aldebaran Turbo Track
 
-- All Episode 11.2 (Veins) Town NPCs/Quests
-- All Episode 11.3 (Nameless Island) Town NPCs/Quests
-- All RussianRO Moscovia Town NPCs/Quests
+- Episode 10.3 - Curse of Gaebolg Quest (Founding of the Nation Myth Quest/Prontera Curse Quest)
+- Episode 10.3 - Heart Fragment Quest (Lighthalzen Ymir Quest)
+- Episode 10.3 - 2nd Class Skill Quests (Partially complete) [Aurora's Current: Temporary]
+- Episode 10.3 - Star Gladiator (Taekwon Master) Job Change Quest [Aurora's Current: Temporary]
+- Episode 10.3 - Soul Linker Job Change Quest [Aurora's Current: Temporary]
 
-- 2nd Class Skill Quests (Partially complete) [Aurora's Current: Temporary]
-- Soul Linker Job Change Quest [Aurora's Current: Temporary]
-- Star Gladiator (Taekwon Master) Job Change Quest [Aurora's Current: Temporary]
-- Thai Hat Quest
+- Episode 10.4 - Auction System NPCs (Partially implemented)
+- Episode 10.4 - Hugel Bingo System (Partially implemented)
+- Episode 10.4 - Hugel Monster Races (Partially implemented)
+- Episode 10.4 - Hugel Rebellion Quest
+- Episode 10.4 - Hugel Remedy Quest (Mostly implemented, but not functional)
+- Episode 10.4 - Hugel Guide NPC (Need to be officialized) [Aurora's Current: Temporary]
+
+- Episode 11.1 - 2006 Headgear Quests (Need to be officialized) [Aurora's Current: Temporary]
+
+- Episode 11.2 - All Veins Town NPCs/Quests
+- Episode 11.3 - All Nameless Island Town NPCs/Quests
+- RussianRO Moscovia - All Town NPCs/Quests (?)
 
 ==============================================================
 --------------------------------------------------------------
@@ -46,7 +49,7 @@
 ==============================================================
 --------------------------------------------------------------
 
-- The Morroc Dandelion's Request / Invasion Quest is causing these errors in the map-server console:
+- The Dandelion's Request / Morroc Invasion Quest is causing these errors in the map-server console:
 
 script_rid2sd: fatal error ! player not attached!
 --- nullpo info --------------------------------------------

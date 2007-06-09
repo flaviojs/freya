@@ -9,7 +9,7 @@
 //--------------------------------------------------------------
 // Script Title: Einbroch Town NPCs	Author: A Lot of People
 //--------------------------------------------------------------
-// Revision History: v2.9
+// Revision History: v3.0
 //--------------------------------------------------------------
 //	1.0 First version [Nexon]
 //	1.1 Added some NPCs [MasterOfMuppets]
@@ -34,6 +34,7 @@
 //	 - Adds in Lover's Quest, Factory Quest, Pollution Quest, and Uwe Quest
 //	2.8 Replaced Einbroch Pollution quest with jAthena's version, translated [Tsuyuki]
 //	2.9 Fixed some small errors [Tsuyuki]
+//	3.0 Renamed Shinokas Quest -> Einbroch Murder Quest [Tsuyuki]
 //--------------------------------------------------------------
 // Additional Notes: * Official-certified *
 //--------------------------------------------------------------
@@ -984,7 +985,7 @@ OnTouch:
 
 
 //--------------------------------------------------------------
-// Shinokas Quest
+// Einbroch Murder Quest
 //--------------------------------------------------------------
 
 ein_in01.gat,231,163,1	script	Sick Old Man	849,6,6,{
@@ -2470,6 +2471,7 @@ L_NNotify:
 	mes "sorry for myself now.";
 	close;
 }
+
 
 //--------------------------------------------------------------
 // Einbroch Lover's Quest
