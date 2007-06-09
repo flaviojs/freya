@@ -14,6 +14,7 @@
 Date	Added
 
 2007/06/08
+	* Updated: Rachel Town NPCs/Quests with fully official iRO/Aegis versions by L0ne_W0lf [Tsuyuki]
 	* Updated: The Kiel Hyre Quest with all the latest bug fixes [Tsuyuki]
 	* Updated: Hugel Monster Races a little bit [Tsuyuki]
 	* Updated: Moscovia Town warps by $ephiroth [Tsuyuki]
