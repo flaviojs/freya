@@ -475,5 +475,8 @@ function	script	F_TownAnnounce	{
 	mapannounce "hugel.gat",getarg(0),getarg(1);
 	mapannounce "rachel.gat",getarg(0),getarg(1);
 	mapannounce "veins.gat",getarg(0),getarg(1);
+	mapannounce "nameless_i.gat",getarg(0),getarg(1);
+	mapannounce "nameless_n.gat",getarg(0),getarg(1);
+	mapannounce "moscovia.gat",getarg(0),getarg(1);
 	return;
 }
