@@ -156,7 +156,7 @@ M_Menu:
 		mes "I have 2 kinds of metals for sale. Which do ye like?";
 		set @chris, 1;
 		set @name$, "Christopher Guillenrow";
-		callfunc "phramain";
+		callfunc "F_PhraMain";
 
 	M_3:
 		mes "[Christopher Guillenrow]";
@@ -165,7 +165,7 @@ M_Menu:
 		mes "Well... which one do ye want ta make?";
 		set @chris, 1;
 		set @name$, "Christopher Guillenrow";
-		callfunc "orimain";
+		callfunc "F_OriMain";
 
 	M_End:
 		close;
@@ -200,49 +200,49 @@ ein_in01.gat,38,29,6	duplicate(Chris)	Christopher#2	63
 prt_in.gat,63,60,4	script	Hollengrhen	85,{
 
 	set @name$,"Hollengrhen";
-	callfunc "refinemain";
+	callfunc "F_RefineMain";
 	end;
 }
 
 morocc_in.gat,73,38,4	script	Aragham	99,{
 
 	set @name$,"Aragham";
-	callfunc "refinemain";
+	callfunc "F_RefineMain";
 	end;
 }
 
 payon.gat,144,173,4	script	Antonio	88,{
 
 	set @name$,"Antonio";
-	callfunc "refinemain";
+	callfunc "F_RefineMain";
 	end;
 }
 
 alberta_in.gat,28,58,4	script	Fredrik	85,{
 
 	set @name$,"Fredrik";
-	callfunc "refinemain";
+	callfunc "F_RefineMain";
 	end;
 }
 
 yuno_in01.gat,164,26,6	script	Disturb	88,{
 
 	set @name$,"Disturb";
-	callfunc "refinemain";
+	callfunc "F_RefineMain";
 	end;
 }
 
 ein_in01.gat,24,87,6	script	Manthasman	826,{
 
 	set @name$,"Manthasman Pruhag";
-	callfunc "refinemain";
+	callfunc "F_RefineMain";
 	end;
 }
 
 lhz_in02.gat,282,20,7	script	Fulerr	869,{
 
 	set @name$,"Fulerr";
-	callfunc "refinemain";
+	callfunc "F_RefineMain";
 	end;
 }
 
@@ -254,7 +254,7 @@ lhz_in02.gat,282,20,7	script	Fulerr	869,{
 // @features variable to 1
 //--------------------------------------------------------------
 
-function	script	refinemain	{
+function	script	F_RefineMain	{
 
 	set @features,0;
 
@@ -618,49 +618,49 @@ L_refinenumber:
 prt_in.gat,56,69,4	script	Vurewell	86,{
 
 	set @name$,"Vurewell";
-	callfunc "phramain";
+	callfunc "F_PhraMain";
 	end;
 }
 
 payon.gat,145,178,4	script	Begnahd	88,{
 
 	set @name$,"Begnahd";
-	callfunc "phramain";
+	callfunc "F_PhraMain";
 	end;
 }
 
 morocc_in.gat,65,37,4	script	Sade	99,{
 
 	set @name$,"Sade";
-	callfunc "phramain";
+	callfunc "F_PhraMain";
 	end;
 }
 
 alberta_in.gat,18,59,5	script	Kahlamanlith	86,{
 
 	set @name$,"Kahlamanlith";
-	callfunc "phramain";
+	callfunc "F_PhraMain";
 	end;
 }
 
 yuno_in01.gat,171,26,6	script	Dillemat	88,{
 
 	set @name$,"Dillemat";
-	callfunc "phramain";
+	callfunc "F_PhraMain";
 	end;
 }
 
 ein_in01.gat,15,87,7	script	Tirehaus	86,{
 
 	set @name$,"Tirehaus";
-	callfunc "phramain";
+	callfunc "F_PhraMain";
 	end;
 }
 
 lhz_in02.gat,278,24,3	script	Krugg	86,{
 
 	set @name$,"Krugg";
-	callfunc "phramain";
+	callfunc "F_PhraMain";
 	end;
 }
 
@@ -669,7 +669,7 @@ lhz_in02.gat,278,24,3	script	Krugg	86,{
 // Material Salesmen Functions
 //--------------------------------------------------------------
 
-function	script	phramain	{
+function	script	F_PhraMain	{
 
 	if (@chris == 1) goto M_Menu;
 	mes "[" + @name$ + "]";
@@ -731,49 +731,49 @@ L_ABOVE:
 prt_in.gat,63,69,4	script	Dietrich	84,{
 
 	set @name$,"Dietrich";
-	callfunc "orimain";
+	callfunc "F_OriMain";
 	end;
 }
 
 payon.gat,137,178,4	script	Hakhim	88,{
 
 	set @name$,"Hakhim";
-	callfunc "orimain";
+	callfunc "F_OriMain";
 	end;
 }
 
 morocc_in.gat,72,32,4	script	Abdul	99,{
 
 	set @name$,"Abdul";
-	callfunc "orimain";
+	callfunc "F_OriMain";
 	end;
 }
 
 alberta_in.gat,21,63,5	script	Xenophon	84,{
 
 	set @name$,"Xenophon";
-	callfunc "orimain";
+	callfunc "F_OriMain";
 	end;
 }
 
 yuno_in01.gat,171,22,6	script	Delayt	88,{
 
 	set @name$,"Delayt";
-	callfunc "orimain";
+	callfunc "F_OriMain";
 	end;
 }
 
 ein_in01.gat,18,82,6	script	Matestein	84,{
 
 	set @name$,"Matestein";
-	callfunc "orimain";
+	callfunc "F_OriMain";
 	end;
 }
 
 lhz_in02.gat,281,24,5	script	Fruel	84,{
 
 	set @name$,"Fruel";
-	callfunc "orimain";
+	callfunc "F_OriMain";
 	end;
 }
 
@@ -782,7 +782,7 @@ lhz_in02.gat,281,24,5	script	Fruel	84,{
 // Ori/Elu Functions
 //--------------------------------------------------------------
 
-function	script	orimain	{
+function	script	F_OriMain	{
 
 	if (@chris == 1) goto M_Menu;
 	mes "[" + @name$ + "]";
@@ -855,7 +855,7 @@ M_Menu:
 prt_in.gat,62,54,2	script	Grendal	84,{
 
 	set @name$,"Grendal";
-	callfunc "repairmain";
+	callfunc "F_RepairMain";
 	end;
 }
 
@@ -863,21 +863,21 @@ prt_in.gat,62,54,2	script	Grendal	84,{
 payon.gat,149,182,2	script	Repairman#01	88,{
 
 	set @name$,"Repairman";
-	callfunc "repairmain";
+	callfunc "F_RepairMain";
 	end;
 }
 
 morocc_in.gat,71,40,2	script	Repairman#02	99,{
 
 	set @name$,"Repairman";
-	callfunc "repairmain";
+	callfunc "F_RepairMain";
 	end;
 }
 
 lhz_in02.gat,284,14,3	script	Repairman#03	86,{
 
 	set @name$,"Repairman";
-	callfunc "repairmain";
+	callfunc "F_RepairMain";
 	end;
 }
 
@@ -886,7 +886,7 @@ lhz_in02.gat,284,14,3	script	Repairman#03	86,{
 // Equipment Repair Function
 //--------------------------------------------------------------
 
-function	script	repairmain	{
+function	script	F_RepairMain	{
 
 	mes "[" + @name$ + "]";
 	mes "I am the Repair Smith and I can repair any Arms you want.";
