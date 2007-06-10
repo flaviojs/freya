@@ -3565,7 +3565,6 @@ rachel.gat,157,183,3	script	Sincere Follower Urstia	917,{
 				goto L_End;
 			}
 		}
-		cutin "ra_usti2",2;
 		mes "[Urstialla]";
 		mes "...............................";
 		mes "Are you telling me";
