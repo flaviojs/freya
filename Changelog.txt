@@ -14,6 +14,7 @@
 Date	Added
 
 2007/06/09
+	* Updated: Prontera Library Encyclopedias/Books, converted from Aegis by L0ne_W0lf [Tsuyuki]
 	* Added: The Gaebolg Family Curse Qust, by L0ne_W0lf [Tsuyuki]
 	* Updated: Some scripts + bug fixes by various people [Tsuyuki]
 
