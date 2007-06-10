@@ -9,37 +9,13 @@
 //--------------------------------------------------------------
 // Script Title: Headgear Quests	Author: A Ton of People
 //--------------------------------------------------------------
-// Revision History: v1.0
+// Revision History: v1.1
 //--------------------------------------------------------------
 //	1.0 Merged all headgear quests into this single file [Tsuyuki]
+//	1.1 Added the missing Orc Hero Helm Quest, by Dj-Yhn [Tsuyuki]
 //--------------------------------------------------------------
 // Additional Notes: All headgear quests are located here, and
 // future headgear quests should also go here.
-//--------------------------------------------------------------
-
-
-//--------------------------------------------------------------
-// Includes the following headgear quests:
-//--------------------------------------------------------------
-// A-yam Hat/Alarm Mask/Anonymous Mask/Antlers/Baby Pacifier/
-// Back Ribbon/Bandage/Bao Bao/Bear Hat/Binoculars/Blue Hairband/
-// Blush/Boy's Cap/Bride Mask/Bulb Hairband/Bunny Band/
-// Burning Blood Bandana/Cake Hat/Candle/Cat Hairband/Chef Hat/
-// Cowboy Hat/Crescent Hairpin/Cross Hat/Crown of Ancient Queen/
-// Crown of Mistress/Crunch Toast/Detective Hat/Deviruchi Cap/
-// Doctor Band/Drooping Cat/Ear Muffs/Ears of Angel/Ears of Demon/
-// Fashionable Glasses/Feather Beret/Feather Bonnet/Flower Hairpin/
-// Fox Mask/Fresh Bluish Fish/Furry Hat/Golden Bells/Hat of Sun God/
-// Headset/Heart Hairpin/Helm of Angel/Indian Headband/Judge Hat/
-// Lazy Racoon Hat/Lion Masquerade/Mage Hat/Magician Hat/Mine Helmet/
-// Money Loser's Grief/Mr. Smile/Mushroom Hairband/Mystic Rose/
-// Opera Masque/Oxygen Mask/Parcel Hat/Ph.D Hat/
-// Phantom of the Opera Mask/Pointy Cap/Posture Fix Hat/
-// Pretend Murdered/Racoon Hat/Rainbow Eggshell/Red Bonnet/Sakkat/
-// Sea Otter Hat/Smiling Mask/Sombrero/Spore Hat/Stop Post/Straw Hat/
-// Striped Hairband/Sunday Hat/Transformation Leaf/Tulip Hairpin/
-// Turban/Valkyrie Helm/Welding Mask/Winter Hat/Wonder Nutshell/
-// X-Shaped Hairpin/Zealotus Mask
 //--------------------------------------------------------------
 
 
@@ -2723,6 +2699,992 @@ L_EXIT:
 	mes "Aww... well, OK then!";
 	mes "Be pretty some other time";
 	close;
+}
+
+
+//--------------------------------------------------------------
+// Orc Hero Helm Quest
+//--------------------------------------------------------------
+
+in_orcs01.gat,31,93,1	script	Orc Warrior#1	1023,2,2{
+
+	if (orcs_hero_hat == 1) {
+		if (countitem(909)>999) {
+			delitem 909,1000;
+			mes "[Orc Warrior]";
+			mes "Good, you have collected it all, haven't you?";
+			mes "So you really want to have a talk, hahahahaha!!";
+			mes "Ok, I will talk to you then";
+			next;
+			mes "[Orc Warrior]";
+			mes "I don't like humans.";
+			mes "All of the Orcish Tribe dislike humans.";
+			mes "Do you know that?";
+			mes "I really hate it when you come to find us.";
+			set orcs_hero_hat,2;
+			next;
+			mes "[Orc Warrior]";
+			mes "So if you want to hear more. Prepare another ^FF0000Jellopy x1000^000000";
+			mes "This means, get out of my sight...!";
+			mes "Humans...";
+			close;
+		}
+	} else if (orcs_hero_hat == 2) {
+		if (countitem(909) > 999) {
+			delitem 909,1000;
+			mes "[Orc Warrior]";
+			mes "Good, you have collected it all, haven't you?";
+			mes "So you really want to have a talk, hahahahahaha!!";
+			mes "Ok, I will talk to you then";
+			next;
+			mes "[Orc Warrior]";
+			mes "Do you want to know why we hate humans?";
+			mes "That's because,";
+			mes "out village is living a quiet life,";
+			mes "before the rude intrusion of you human.";
+			next;
+			mes "[Orc Warrior]";
+			mes "Can you just build your city";
+			mes "and live there quietly?";
+			mes "Why do you create chaos everywhere...";
+			mes "I can't understand";
+			set orcs_hero_hat,3;
+			next;
+			mes "[Orc Warrior]";
+			mes "Go, if you want another conversation, prepare ^FF0000Jellopy x1000^000000 again,";
+			mes "If you're statisfied with such kind of converstaion.";
+			mes "Hahahahaha";
+			close;
+		} else {
+			mes "[Orc Warrior]";
+			mes "Haven't I mentioned? Find ^FF0000Jellopy x1000^000000...";
+			mes "If you want to talk to me,";
+			mes "show your will, humans.";
+			mes "I don't care, just brought 1000 Jellopy.";
+			close;
+		}
+	} else if (orcs_hero_hat == 3) {
+		if (countitem(909)>999) {
+			delitem 909,1000;
+			mes "[Orc Warrior]";
+			mes "Good, you have collect it all, haven't you? ";
+			mes "So you really want to have a talk, hahahahaha!!";
+			mes "Ok, I will talk to you until you're fed up then.";
+			next;
+			mes "[Orc Warrior]";
+			mes "If you compare the achievement, ";
+			mes "we won't lose to you humans.";
+			mes "The same goes to the Goblin in the jungle,";
+			mes "and the Kobold, who are the master of the grassland...";
+			next;
+			mes "[Orc Warrior]";
+			mes "Before you human build cities, ";
+			mes "we orc warriors has developed sophisticated tunnel in caves,";
+			mes "as well as water way.";
+			mes "We use the things we found in the wild,";
+			mes "to create the things we wanted.";
+			next;
+			mes "[Orc Warrior]";
+			mes "Then we build high tower.";
+			mes "However, the evil forces ";
+			mes "have made the master of the tower betray our tribe...";
+			mes " And those who fail to escape there,";
+			mes "they're still suffering,";
+			mes "at that place.";
+			next;
+			mes "[Orc Warrior]";
+			mes "...Hmm, this,";
+			mes "Why do I tell this to you humans?";
+			mes "The conversation ends here today.";
+			set orcs_hero_hat,4;
+			next;
+			mes "[Orc Warrior]";
+			mes "So, if you want to hear more,";
+			mes "prepare ^FF0000Jellopy x 1000 again^000000";
+			close;
+		} else {
+			mes "[Orc Warrior]";
+			mes "Haven't I mentioned? Find ^FF0000Jellopy x1000^000000...";
+			mes "If you want to talk to me";
+			mes "Show your will, human.";
+			mes "I don't care, just brought 2000 Jellopy.";
+			close;
+		}
+	} else if (orcs_hero_hat == 4) {
+		if (countitem(909)>999) {
+			delitem 909,1000;
+			mes "[Orc Warrior]";
+			mes "Good, you have collect it all, haven't you? ";
+			mes "So you really want to have a talk, hahahahaha!!";
+			mes "Ok, I will talk to you until you're fed up then.";
+			next;
+			mes "[Orc Warrior]";
+			mes "Yes, until that time,";
+			mes "human and the orc warriors";
+			mes "do lead a peaceful life.";
+			mes "But as time goes by, the misunderstanding,";
+			mes "has accumulated and cannot be broken.";
+			next;
+			mes "[Orc Warrior]";
+			mes "The powerless human only wants fame and wealth.";
+			mes "A true warrior,";
+			mes "will only emphasize on glory and honor...";
+			mes "Those who do not care what method they use to achieve their goal,";
+			mes "will be lead to the path of perdition easily.";
+			next;
+			mes "[Orc Warrior]";
+			mes "They only care about their safety,";
+			mes "and ignore about others.";
+			mes "They will not let anthing that";
+			mes "pose a threat to them to live... ";
+			mes "No matter it's other tribe,";
+			mes "or unknown creature, they will kill";
+			mes "even their closest companion if they had to.";
+			next;
+			mes "[Orc Warrior]";
+			mes "...I have talked too much, and there's nothing more to talk about.";
+			mes "The conversation ends here.";
+			set orcs_hero_hat,5;
+			next;
+			mes "[Orc Warrior]";
+			mes "So, if you want to hear more,";
+			mes "prepare ^FF0000Jellopy x 1000 again^000000";
+			close;
+		} else {
+			mes "[Orc Warrior]";
+			mes "Haven't I mentioned? Find ^FF0000Jellopy x1000^000000... ";
+			mes "If you want to talk to me,";
+			mes "show you will, humans.";
+			mes "I don't care, just brought 3000 Jellopy.";
+			close;
+		}
+	} else if (orcs_hero_hat == 5) {
+		if (countitem(909)>999) {
+			delitem 909,1000;
+			mes "[Orc Warrior]";
+			mes "You reall have the patience to collect these things.";
+			mes "You really want to talk to me, don't you?... ";
+			mes "If that's so, I will talk about other things.";
+			next;
+			mes "[Orc Warrior]";
+			mes "The Orc Warriors think that the best things are";
+			mes "battle and victory.";
+			mes "It is the greatest honor,";
+			mes "to fight and beat the enemies face to face.";
+			next;
+			mes "[Orc Warrior]";
+			mes "The spirit to win will not stop even for death.";
+			mes "However, some tribesmate that die of trickery,";
+			mes "will get up from the grave,";
+			mes "wandering to look for a target to fight.";
+			next;
+			mes "[Orc Warrior]";
+			mes "During the battle,";
+			mes "we are different from you.";
+			mes "We don't use tricks, and we don't run away!";
+			mes "We will fight till then end, till we are out of energy.";
+			mes "Even when we're lost in the end, we will still make our last attempt to counter.";
+			next;
+			mes "[Orc Warrior]";
+			mes "Besides that, we don't rely of potions.";
+			mes "You human are too weak.";
+			mes "That's why you use potions and herbs.";
+			mes "Without potion, you will quit immediately, don't you?";
+			mes "Hmm, I'm not sure whether you are like that too.";
+			set orcs_hero_hat,6;
+			next;
+			mes "[Orc Warrior]";
+			mes "So, if you want to hear more,";
+			mes "prepare ^FF0000Jellopy x 1000 again^000000";
+			close;
+		} else {
+			mes "[Orc Warrior]";
+			mes "Haven't I mentioned? Find ^FF0000Jellopy x1000^000000... ";
+			mes "If you want to talk to me,";
+			mes "show you will, humans.";
+			mes "I don't care, just brought 4000 Jellopy.";
+			close;
+		}
+	} else if (orcs_hero_hat == 6) {
+		if (countitem(909)>999) {
+			delitem 909,1000;
+			mes "[Orc Warrior]";
+			mes "You reall have the patience to collect these things.";
+			mes "You really want to talk to me, don't you?... ";
+			mes "If that's so, I will talk about other things.";
+			next;
+			mes "[Orc Warrior]";
+			mes "The warriors of the tribe,";
+			mes "are selected among the strongest.";
+			mes "When they grow up, we'll send them into the jungle,";
+			mes "to test their qualification to be a real warrior.";
+			next;
+			mes "[Orc Warrior]";
+			mes "We will recognize";
+			mes "the tribesman who come back alive as a warrior.";
+			mes "These strong warriors are known as Orc Warriors.";
+			mes "For the females that has fighting ability,";
+			mes "they are known as Orc Lady.";
+			next;
+			mes "[Orc Warrior]";
+			mes "And for those with a dexterous hand and";
+			mes "possess good eyesight,";
+			mes "we'll give them bow and arrow,";
+			mes "and called them Orc Archer.";
+			mes "They will learn and grow in the countless battles.";
+			next;
+			mes "[Orc Warrior]";
+			mes "And there is another trial of fire.";
+			mes "Those who pass the trial,";
+			mes "will be protected by fire";
+			mes "and gain greater ability and endurance.";
+			mes "We called this warriors as High Orc.";
+			next;
+			mes "[Orc Warrior]";
+			mes "Hmm, when human looks at us,";
+			mes "you'll think that we look alike... ";
+			mes "But for use Orc, we can distinguish it easily.";
+			mes "So, when you look at me, ";
+			mes "you will feel that I look like";
+			mes "no different that the orc warrior outside, isn't it?";
+			set orcs_hero_hat,7;
+			next;
+			mes "[Orc Warrior]";
+			mes "So, if you want to hear more,";
+			mes "prepare ^FF0000Jellopy x 1000 again^000000";
+			close;
+		} else {
+			mes "[Orc Warrior]";
+			mes "Haven't I mentioned? Find ^FF0000Jellopy x1000^000000... ";
+			mes "If you want to talk to me,";
+			mes "show you will, humans.";
+			mes "I don't care, just brought 5000 Jellopy.";
+			close;
+		}
+	} else if (orcs_hero_hat == 7) {
+		if (countitem(909)>999) {
+			delitem 909,1000;
+			mes "[Orc Warrior]";
+			mes "I can feel you are getting tired and want to quit now.";
+			mes "But you have keep the promise this time.";
+			mes "So a promise is a promise, I shall continue to talk to you.";
+			next;
+			mes "[Orc Warrior]";
+			mes "We are talking about the Orc Warrior last time...";
+			mes "Yes, in the orcish fighters,";
+			mes "there are dexterous one with abilities,";
+			mes "that has not pass the trial of fire.";
+			mes "They are the warriors that can take care of";
+			mes "other orc warriors....";
+			next;
+			mes "[Orc Warrior]";
+			mes "Such kind of warriors are the true hero.";
+			mes "We call them Orc Heroes.";
+			mes "They had strength and stamin greater than other orcs.";
+			mes "They possess ability to lead too.";
+			mes "This is the true hero of Orc Warriors.";
+			next;
+			mes "[Orc Warrior]";
+			mes "They get the Voucher of Orcish Hero,";
+			mes "and is able to wield the sword only a hero can use.";
+			mes "When the Orc Hero wields the sword,";
+			mes "the earth shakes...";
+			next;
+			mes "[Orc Warrior]";
+			mes "Orc Hero has his own special headgear too.";
+			mes "It is a symbol of";
+			mes "the fame and strength of an Orc Hero... Just like you humans.";
+			mes "If you want to see it,  you can only feel its power in the battle.";
+			set orcs_hero_hat,8;
+			next;
+			mes "[Orc Warrior]";
+			mes "So, if you want to hear more,";
+			mes "prepare ^FF0000Jellopy x 1000 again^000000";
+			close;
+		} else {
+			mes "[Orc Warrior]";
+			mes "Haven't I mentioned? Find ^FF0000Jellopy x1000^000000... ";
+			mes "If you want to talk to me,";
+			mes "show you will, humans.";
+			mes "I don't care, just brought 6000 Jellopy.";
+			close;
+		}
+	} else if (orcs_hero_hat == 8) {
+		if (countitem(909)>999) {
+			delitem 909,1000;
+			mes "[Orc Warrior]";
+			mes "I can feel you are getting tired and want to quit now.";
+			mes "But you have keep the promise this time.";
+			mes "So a promise is a promise, I shall continue to talk to you.";
+			next;
+			mes "[Orc Warrior]";
+			mes "We talk about the Orc Hero just now.";
+			mes "Some orc does not born with an ability,";
+			mes "like the Orc Heroes do.";
+			mes "It took them a long time to go through numerous battle to be a warrior.";
+			next;
+			mes "[Orc Warrior]";
+			mes "To a Orc Warrior,";
+			mes "age does not means coward.";
+			mes "In fact is represents experience and skills,";
+			mes "that makes him more valiant.";
+			next;
+			mes "[Orc Warrior]";
+			mes "They can perform great battle skill,";
+			mes "even without weapons.";
+			mes "They can fight for days even without their axe.";
+			mes "If they reach that state,";
+			mes "weapon are just useless burdens...";
+			next;
+			mes "[Orc Warrior]";
+			mes "Among such experience elders,";
+			mes "we called the most experienced one as ";
+			mes "Orc Lord. And we honor them,";
+			mes "They wear a 3 horn iron helm";
+			mes "that represents the leadership of Orcish tribe.";
+			set orcs_hero_hat,9;
+			next;
+			mes "[Orc Warrior]";
+			mes "So, if you want to hear more,";
+			mes "prepare ^FF0000Jellopy x 1000 again^000000";
+			close;
+		} else {
+			mes "[Orc Warrior]";
+			mes "Haven't I mentioned? Find ^FF0000Jellopy x1000^000000... ";
+			mes "If you want to talk to me,";
+			mes "show you will, humans.";
+			mes "I don't care, just brought 7000 Jellopy.";
+			close;
+	  }
+	} else if (orcs_hero_hat == 9) {
+		if (countitem(909)>999) {
+			delitem 909,1000;
+			mes "[Orc Warrior]";
+			mes "I've never seen,";
+			mes "a human that won't quit like you... So I'll keep my promise";
+			mes "to tell you about our tribe today.";
+			next;
+			mes "[Orc Warrior]";
+			mes "Sometimes, there will be those treacherous ones";
+			mes "who run away from the battle.";
+			mes "We have such kind in out tribe too.";
+			mes "Although it is a disgrace, they are Orcs too.";
+			mes "They only differ in their level of existance.";
+			next;
+			mes "[Orc Warrior]";
+			mes "Such kind will be cursed.";
+			mes "Their body shrinks and the teeth grows.";
+			mes "And finally, they lose the heart to fight.";
+			mes "Since they don't want to be found by others, ";
+			mes "they hide themselves.";
+			next;
+			mes "[Orc Warrior]";
+			mes "They are originally us.";
+			mes "But their alteration rise suspicions.";
+			mes "Such kind with greed,";
+			mes "and hatred to us are called...";
+			mes "Zenorc.";
+			next;
+			mes "[Orc Warrior]";
+			mes "Unlike us,";
+			mes "human do not change even their hearts have changed.";
+			mes "Therefore, we need to be more careful.";
+			mes "Because we can tell from the appearances,";
+			mes "how treacherous humans are....";
+			set orcs_hero_hat,10;
+			next;
+			mes "[Orc Warrior]";
+			mes "So, if you want to hear more,";
+			mes "prepare ^FF0000Jellopy x 1000 again^000000";
+			close;
+		} else {
+			mes "[Orc Warrior]";
+			mes "Haven't I mentioned? Find ^FF0000Jellopy x1000^000000... ";
+			mes "If you want to talk to me,";
+			mes "show you will, humans.";
+			mes "I don't care, just brought 8000 Jellopy.";
+			close;
+	  }
+	} else if (orcs_hero_hat == 10) {
+		if (countitem(909)>999) {
+			delitem 909,1000;
+			mes "[Orc Warrior]";
+			mes "Really? Have you really gathered 10,000 Jellopy?";
+			mes "Good, that's enough now.";
+			mes "You've shown your sincerity.";
+			mes "I will treat you honestly.";
+			next;
+			mes "[Orc Warrior]";
+			mes "It is enough for";
+			mes "the stories about our tribe.";
+			mes "However, there are difference,";
+			mes "from what you've heard and what you'll experience.";
+			next;
+			mes "[Orc Warrior]";
+			mes "I advise that you gather more experience";
+			mes "through the battle with us to understand our tribe.";
+			mes "The most direct way,";
+			mes "is through combat.";
+			set orcs_hero_hat,11;
+			next;
+			mes "[Orc Warrior]";
+			mes "I shall stop here.";
+			mes "As the token of appreciation to your sincerity,";
+			mes "this is the axe that has accompanied me in my pass battles.";
+			mes "Take good care of it, thank you.";
+			getitem 1304,1;
+			next;
+			mes "[Orc Warrior]";
+			mes "It must be hard for you after all these time.";
+			mes "If you want to understand more about Orcs,";
+			mes "come and find me again.";
+			close;
+		} else {
+			mes "[Orc Warrior]";
+			mes "Haven't I mentioned? Find ^FF0000Jellopy x1000^000000... ";
+			mes "If you want to talk to me,";
+			mes "show you will, humans.";
+			mes "I don't care, just brought 9000 Jellopy.";
+			close;
+	  }
+	} else if (orcs_hero_hat == 11 || orcs_hero_hat == 12) {
+		if (countitem(1304)) {
+			mes "[Orc Warrior]";
+			mes "If must be hard for you after all these time.";
+			mes "If you want to understand more about Orcs,";
+			mes "come and find me again.";
+			close;
+		} else {
+			set orc_hero_quest,rand(1,10);
+			if (orc_hero_quest > 9) {
+				if (orcs_hero_hat == 12 && countitem(931)>99) {
+					mes "[Orc Warrior]";
+					mes "Uhoh, that is really great.";
+					mes "After all these battles, I am not sure how much you understand.";
+					mes "However, the voucher of Orc warrior";
+					mes "is given to a true Orc Warrior.";
+					next;
+					mes "[Orc Warrior]";
+					mes "We use 1000 thousand victories";
+					mes "as a qualification to recognize one asa true Orc Warrior.";
+					mes "However, you are a human...";
+					mes "It is hard to cross the line between two different kinds.";
+					next;
+					mes "[Orc Warrior]";
+					mes "Ok, come again after you've won 10 thousand victories.";
+					mes "By that time, we will recognized you as the true warrior.";
+					mes "However,";
+					mes "you will have to walk a lonely path for such fame.";
+					mes "The choise is up to you...";
+					next;
+					mes "[Orc Warrior]";
+					mes "All you get is just fame...";
+					mes "But for a human,";
+					mes "you get a chance to proof and test your capability...";
+					mes "So what do you want to choose?";
+					next;
+					switch(select("I think I don't need it.:I want to take the 10,000 challenge.")) {
+					case 1:
+						mes "[Orc Warrior]";
+						mes "Alright, I won't force you to choose.";
+						mes "Now, please return";
+						mes "to your human city slowly.";
+						mes "Your friends are waiting for you.";
+						close;
+					case 2:
+						mes "[Orc Warrior]";
+						mes "You have chosen a hard path";
+						mes "A path of eternal battles is waiting ahead of you.";
+						mes "You will have to face";
+						mes "thousands,if not ten thousands of warriors.";
+						next;
+						mes "[Orc Warrior]";
+						mes "Then, before you reach your 10,000th victories,";
+						mes "Bring me the voucher of orc warrior.";
+						mes "Once, ten times, or even hundreds";
+						mes "please leave your record of victories.";
+						if (countitem(931)>99) {
+							delitem 931,100;
+							set orcs_hero_hat,13;
+							set orcs_hero_hat2,100;
+						}
+						next;
+						mes "[Orc Warrior]";
+						mes "If I take the voucher of Orc Warrior,";
+						mes "I will record it a 100 victories.";
+						mes "Please make sure you defeat 10,000 orc warrior...";
+						mes "Please continue your battle, don't stop.";
+						close;
+					}
+				}
+				mes "[Orc Warrior]";
+				mes "The best way to understand Orcs,";
+				mes "is through battle.";
+				mes "Thrugh collisions of strength and skills,";
+				mes "improve your understanding between each other.";
+				next;
+				mes "[Orc Warrior]";
+				mes "So, go out there and fight.";
+				mes "conversation with my is just an acceptance of concepts.";
+				mes "One day,";
+				mes "You shall be recognized as a true warrior.";
+				set orcs_hero_hat,12;
+				close;
+			} else {
+				mes "[Orc Warrior]";
+				mes "I feel that you are not statisfied?";
+				mes "Do you have any doubts about us?";
+				mes "You are a human.";
+				mes "Your concern to other tribers,";
+				mes "will not benefit you.";
+				close;
+			}
+		}
+	} else if (orcs_hero_hat == 13) {
+		if (countitem(931)) {
+			mes "[Orc Warrior]";
+			mes "Stay alive before you grab the victory...";
+			mes "Rest here for a while before you leave.";
+			mes "Until now, you have achieved "+orcs_hero_hat2+" times of victories.";
+			next;
+			mes "[Orc Warrior]";
+			mes "Do you want to add the record of your current victory";
+			mes "into this record? You have won "+countitem(931)+" times this time.";
+			next;
+			switch(select("Add the record:Add it later")) {
+			case 1:
+				set orcs_hero_hat2,orcs_hero_hat2+countitem(931);
+				delitem 931,countitem(931);
+				if (orcs_hero_hat2>9999) {
+					mes "[Orc Warrior]";
+					mes "And this, achieving more than 10,000 victories";
+					mes "is an extraordinary achievement to human...";
+					mes "You have completed an unusual task.";
+					mes "Through the current battle,";
+					mes "You must have learned a lot about the Orcish Tribe.";
+					next;
+					mes "[Orc Warrior]";
+					mes "Although you're a human, you have walked the path of a true warrior....";
+					mes "We have recognized you.";
+					mes "You are a true warrior!!";
+					mes "You are... Orc Lady!!";
+					getitem 2299,1;
+					set orcs_hero_hat,14;
+					next;
+					mes "[Orc Warrior]";
+					mes "This is your present.";
+					mes "I wonder if it fits your head.";
+					mes "Wear it well.";
+					mes "If you do not want to wear it, take it along with you.";
+					getitem 931,1;
+					next;
+					mes "[Orc Warrior]";
+					mes "And, you have been recognized as a warrior...";
+					mes "This voucher is for you.";
+					mes "Although it has no difference compared to others,";
+					mes "keep it well.";
+					mes "You will only be recognized as a Orc Warrior,";
+					mes "with this voucher.";
+					next;
+					mes "[Orc Warrior]";
+					mes "So, you may go back now...";
+					mes "If you ever think of us,";
+					mes "come and look for us.";
+					mes "A true self of a person can only be shown through endless battles.";
+					mes "Return to the land now.";
+					close;
+				}
+				mes "[Orc Warrior]";
+				mes "You have worked hard.";
+				mes "I hope your futue better will shine with the light of victories.";
+				mes "If you ever lost,";
+				mes "I hope to see you stand up again.";
+				next;
+				mes "[Orc Warrior]";
+				mes "There are "+(10000-orcs_hero_hat2)+" of battles left.";
+				mes "Although it is a though road ahead,";
+				mes "I hope that you will pull yourself together and achieve the final victory.";
+				close;
+			case 2:
+				mes "[Orc Warrior]";
+				mes "Hmm, as you like it.";
+				mes "I will be dissapointed again,";
+				mes "If you give up in the middle.";
+				close;
+			}
+		} else {
+			mes "[Orc Warrior]";
+			mes "Rest here for a while before you leave.";
+			mes "Until now, you have achieved "+orcs_hero_hat2+" times of victories.";
+			close;
+		}
+	} else if(orcs_hero_hat == 14) {
+		if (countitem(1304)) {
+			mes "[Orc Warrior]";
+			mes "Hmm? Don't tell me that you assume that";
+			mes "you won't be able to get back to the human villages";
+			mes "if you are recognized as a Orc Warrior. Hahahaha!";
+			mes "You better leave then.";
+			close;
+		} else {
+			set @orc_hero_quest,rand(1,10);
+			if (@orc_hero_quest > 9) {
+				mes "[Orc Warrior]";
+				mes "That? Is that thirst...?";
+				mes "Although you're recognized as a warrior,";
+				mes "that eyes of yours show you seek more powerful enemies...";
+				mes "Maybe you are not statisfied with the current situation.";
+				next;
+				mes "[Orc Warrior]";
+				mes "Alright, do you want to take another trial?";
+				mes "Maybe all you accumulated belongings";
+				mes "shall become but a dream...";
+				mes "This path,";
+				mes "is a process feared,";
+				mes "by even the most skullful warrior.";
+				next;
+				mes "[Orc Warrior]";
+				mes "a recognized Orc Warrior, maybe you can defeat them...";
+				mes "What is your choise?";
+				next;
+				switch(select("I am statisfied with the current condition:...I will challenge the trial")){
+				case 1:
+					mes "[Orc Warrior]";
+					mes "Yes, it is useful";
+					mes "if you are statisfied with yourself sometimes.";
+					mes "It takes greater courage,";
+					mes "to admit that you can't overcome a greater obstacle.";
+					close;
+				case 2:
+					mes "[Orc Warrior]";
+					mes "Good, I praise your honorable spirit.";
+					mes "This is an opportunity";
+					mes "for a warrior who've won 10,000 victories.";
+					mes "You will face";
+					mes "the greatest warrior of the Orcish tribe...!";
+					next;
+					mes "[Orc Warrior]";
+					mes "Fight the best warrior of the Orc Warrior.";
+					mes "Obtain 100 victories from the Orc Heroes,";
+					mes "and bring me the voucher.";
+					mes "Although you're a great warrior, this is a ardous task";
+					mes "espectially when you have to face it alone....!";
+					next;
+					mes "[Orc Warrior]";
+					mes "Come, go now! Since you can beat 10,000 Orc warrior,";
+					mes "there's some possibilities that";
+					mes "you can take down 100 Orc Heroes!";
+					mes "If that's so, we will recognize you as";
+					mes "the Orc Hero...!";
+					set orcs_hero_hat,15;
+					close;
+				}
+			} else {
+				mes "[Orc Warrior]";
+				mes "Oh warrior, continue to shine in the victories of your battles.";
+				mes "Stand up again even if you've lost.";
+				mes "Show your unshaken spirit.";
+				mes "You are the human that is reconized as an Orc Warrior!";
+				close;
+			}
+		}
+	} else if(orcs_hero_hat == 15) {
+		if (countitem(968)>99) {
+			mes "[Orc Warrior]";
+			mes "Finally... You have achive the goal.";
+			mes "Those who've lost to you have admitted that";
+			mes "you have shown yourself as a Hero";
+			mes "by crossing the barrier of kinds as a human...";
+			mes "I, on behalf of our tribe,";
+			mes "pay our greatest respect to you.";
+			next;
+			mes "[Orc Warrior]";
+			mes "Now I ask you to make you final selection,";
+			mes "what will you do with the vouchers you've taken?";
+			mes "It means nothing to humands,";
+			mes "but to the orcs,";
+			mes "Heroic Emblem is a belonging";
+			mes "of a true hero.";
+			next;
+			mes "[Orc Warrior]";
+			mes "You've obtained this through you hardship.";
+			mes "You can take it with you,";
+			mes "or give them back to the Orc Heroes.";
+			mes "The meaning of giving them back the voucher,";
+			mes "is to battle them again...";
+			next;
+			mes "[Orc Warrion]";
+			mes "So, heroic emblem,";
+			mes "what will you do with it?";
+			next;
+			switch(select("I will take it back as token of victories:I'll give them back to Orc Heroes")) {
+			case 1:
+				mes "[Ork Warrior]";
+				mes "Well, that is a good choise.";
+				mes "Nobody can change your right to make that decision.";
+				mes "Please take good care of";
+				mes "these tokens of victory.";
+				close;
+			case 2:
+				mes "[Orc Warrior]";
+				mes "This is the true spirit of a warrior...!";
+				mes "Respecting your oppenent even after you've won,";
+				mes "such deeds";
+				mes "should be learned by we Orcs...!";
+				if (countitem(968)<100) close;
+				delitem 968,100;
+				set orcs_hero_hat,16;
+				next;
+				mes "[Orc Warrior]";
+				mes "The one who have defeated 100 Orc Hero...";
+				mes "Altough you're a human";
+				mes "we know you as the best warrior of the Orcs.";
+				mes "You are now... Orc hero!";
+				getitem 1124,1;
+				next;
+				mes "[Orc Warrior]";
+				mes "This is the sword given only to the Heroes.";
+				mes "Iam not sure wether you can use it.";
+				mes "But as a Orc Hero,";
+				mes "you should have it.";
+				getitem 968,1;
+				next;
+				mes "[Orc Warrior]";
+				mes "And since you're a Orc Hero now...";
+				mes "This is the Heroic Emblem for you.";
+				mes "Although it has no difference compared to others,";
+				mes "keep it well.";
+				mes "You will only be recognized as a Orc Hero,";
+				mes "with this voucher.";
+				next;
+				mes "[Orc Warrior]";
+				mes "So, you can leave now...";
+				mes "A person from human tribe that can understand us,";
+				mes "is the one who crosses the boundaries of tribe.";
+				mes "Show the tough spirit of you,";
+				mes "and set for you new destiny....";
+				close;
+			}
+		} else {
+			mes "[Orc Warrior]";
+			mes "Tired...? Orc Hero is";
+			mes "the best warrior among our warriors.";
+			mes "They are known for their capability.";
+			mes "It might be to hard for";
+			mes "a human to pick on them.";
+			next;
+			mes "[Orc Warrior]";
+			mes "However, this trial is the patch you've chosen.";
+			mes "Maybe you want to know you true limit,";
+			mes "so you keep your promise to walk this path...!";
+			mes "Don't rush for the answer,";
+			mes "it might lies beneath the records of your countless battles.";
+			close;
+		}
+	} else if (orcs_hero_hat > 15) {
+		if (countitem(968)) {
+			mes "[Orc Warrior]";
+			mes "Warrior of the Orc Warrior, the greatest Hero";
+			mes "You are... Orc Hero!!";
+			mes "May the valiant warrior be blessed with light!!";
+			close;
+		} else {
+			mes "[Orc Warrior]";
+			mes "Oh Hero, where have you put your voucher...?";
+			mes "Without the Heroic Emblem,";
+			mes "you shall not be knows as a Orc Hero.";
+			mes "Please retrieve it and keep it with you.";
+			close;
+		}
+	} else if (orcs_hero_hat == 0 || orcs_hero_hat ==1) {
+		mes "[Orc Warrior]";
+		if (sex == 1) {
+			mes "What does the son of a human have to do here?";
+		} else {
+			mes "What does the daughter of a human have to do here?";
+		}
+		mes "Shouldn't you have nothing to do with us, the Orc Warriors?";
+		mes "Or are you tired of the endless war";
+		mes "and hope for a truce? That should be good!";
+		next;
+		mes "[Orc Warrior]";
+		mes "We, the Orc Warriors don't simple speak to men.";
+		mes "I praise your courage";
+		mes "to dare to come and try to talk to me.";
+		mes "But we have no intention of hearing what you want to say.";
+		next;
+		mes "[Orc Warrior]";
+		mes "Sit there quietly and leave without making any noises.";
+		mes "If you want to rest before you depart,";
+		mes "watch your manners, at least to the host, me.";
+		if (rand(1,10)>9) {
+			next;
+			switch(select(".....","I want a conversation with you.")) {
+			case 1:
+				close;
+			case 2:
+				mes "[Orc Warrior]";
+				mes "Converstation...? Conversation you say?Hahahaha!! ";
+				mes "You are really an interesting human.";
+				mes "Talk to a Orc Warrior? ";
+				mes "This is the first time I see human talk without sword and shield...!";
+				next;
+				mes "[Orc Warrior]";
+				mes "However, I won't be kind to anyone.";
+				mes "If you want to talk to me,";
+				mes "you'll need to show some respect! Do you understand that?";
+				mes "Ok... this is my little suggestion.";
+				next;
+				mes "[Orc Warrior]";
+				mes "Show me the will of a human,";
+				mes "who wants to talk to me.";
+				mes "To talk to me, gather^FF0000Jellopy x 1000 ^000000 ";
+				mes "Bring it to me when you come to talk next time";
+				next;
+				mes "[Orc Warrior]";
+				mes "And, don't question me.";
+				mes "I won't give you the rights to question my opinion.";
+				mes "And don't you dream that,";
+				mes "I will give you anything.";
+				mes "Do you still want to talk under these circumstances?";
+				mes "Decendent of human?";
+				next;
+				switch(select("Let's battle, Orc Warrior!!:I will show you my faith")) {
+				case 1:
+					mes "[Orc Warrior]";
+					mes "Yeahyeahyee, what a noisy fella!!";
+					mes "If you like to fight, go outside!";
+					mes "I really hate to see humans!!";
+					close;
+				case 2:
+					mes "[Orc Warrior]";
+					mes "Ok, keep your promise!";
+					mes "I want to see how you keep that.";
+					mes "You will quit eventually.";
+					mes "Hahahahaha!!";
+					set orcs_hero_hat,1;
+					close;
+				}
+			}
+		} else {
+			close;
+		}
+	}
+}
+
+in_orcs01.gat,162,33,1	script	Hero of Orc#1	1087,2,2{
+
+	if (orcs_hero_hat < 16) {
+		mes "[Orc Hero]";
+		mes ".....Go away, don't interrupt me!";
+		mes "If you want to fight me,";
+		mes "wait for me at the west forest.";
+		mes "I am not in the mood to fight human now.";
+		close;
+	} else if (orcs_hero_hat == 17) {
+		mes "[Orc Hero]";
+		mes "Hahaha, interesting, really interesting.";
+		mes "You are the most interesting human";
+		mes "that I have seen...";
+		mes "I like it, interesting...";
+		close;
+	} else if (orcs_hero_hat == 16) {
+		if (countitem(968) && countitem(2299) && countitem(1124) && countitem(931)) {
+			if(rand(1,20)>19) {
+				mes "[Orc Hero]";
+				mes "Hmm, a human that is knows as Hero?";
+				mes "DO you know the meaning of returning a Heroic Emblem?...";
+				mes "When I am free later,";
+				mes "I'll fight with you.";
+				next;
+				mes "[Orc Hero]";
+				mes ".....HmmHmmm...? This iron helm...?";
+				mes "It belongs to Orc Warrior...?";
+				next;
+				mes "[Orc Hero]";
+				mes "Wait... You're still using this?";
+				mes "Uhoh....";
+				mes "Such an interesting human! Hahaha";
+				mes "Good, really good...";
+				next;
+				mes "[Orc Hero]";
+				mes "You seem not to be aware of the story behind this viking helm.";
+				mes "In the battle between Orc Lord and the humands,";
+				mes "he lost it in his defeat...";
+				mes "The horn in the center was broken";
+				mes "and this helm is created...!";
+				next;
+				mes "[Orc Hero]";
+				mes "Rumors said that if it is given to a human,";
+				mes "the human will be recognized as a Hero...";
+				mes "Hahaha, interesting.";
+				mes "And there're still people who";
+				mes "continue to use it...!!";
+				next;
+				mes "[Orc Hero]";
+				mes "So that's the belonging of the Orc Lord!";
+				mes "And you are not qualified to have it.";
+				mes "So if you don't mind,";
+				mes "can you return it to its origional owner?";
+				mes "Oh 'Human' Orc Warrior?";
+				next;
+				switch(select("I refuse to do so:I agree")) {
+				case 1:
+					mes "[Orc Hero]";
+					mes "Hmm, how stubborn.";
+					mes "If you think it's important, wear it well.";
+					mes "The history of the battle is still kept";
+					mes "on this headgear of a warrior.";
+					close;
+				case 2:
+					mes "[Orc Hero]";
+					mes "Good, that's more like it.";
+					mes "This Viking Helm,";
+					mes "I'll give it to him, hahahaha...";
+					mes "I never imagined to see this thing here.";
+					next;
+					mes "[Orc Hero]";
+					mes "I'll give you a useful item though!";
+					mes "Although you're human,";
+					mes "you're recognizedas a Orc Hero before.";
+					mes "You should at least have a suitable headgear...";
+					next;
+					mes "[Orc Hero]";
+					mes "Here you can have this.";
+					mes "I have nade a special sign on it...";
+					mes "So continue to use this in the future,";
+					mes "understand? 'Human' Orc Warrior?";
+					if (countitem(2299)) {
+						delitem 2299,1;
+						getitem 5094,1;
+						set orcs_hero_hat,17;
+					}
+					close;
+				}
+			} else {
+				mes "[Orc Hero]";
+				mes "Hmm, a human that is recognized a warrior?";
+				mes "Do you know the meaning of returning a Heroic Emblem?...";
+				mes "When I am free later,";
+				mes "I'll fight with you.";
+				close;
+			}
+		} else {
+			mes "[Orc Hero]";
+			mes "Hmm, a human that is recognized a warrior?";
+			mes "You don't look like one though.";
+			mes "Is he really going to return the Heroic Emblem?";
+			mes "I can't believe it.";
+			next;
+			mes "[Orc Hero]";
+			mes "I won't recognize you as a Hero.";
+			mes "He forgets even the most basic things.";
+			mes "How can he be called warrior... Humans!!";
+			mes "Go to the west forest now.";
+			mes "I want you to pass the trial again...!";
+			close;
+		}
+	}
 }
 
 
