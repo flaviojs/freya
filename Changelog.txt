@@ -17,7 +17,7 @@ Date	Added
 	* Updated: Renamed all script functions/sub-functions with "F_" and "sF_" prefixes [Tsuyuki]
 	* Changed: Merged the God Seal Quests together [Tsuyuki]
 	* Added: The Bingo Game System, converted from Aegis by SinSloth [Tsuyuki]
-	* Updated: Translated a bunch of battle_athena.conf, and converted it to Unicode [Tsuyuki]
+	* Updated: Translated a bunch of battle_athena.conf [Tsuyuki]
 	* Added: The Lighthalzen Shadow Quest, converted from Aegis [Tsuyuki]
 
 2007/06/08
