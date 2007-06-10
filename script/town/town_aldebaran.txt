@@ -9,26 +9,14 @@
 //--------------------------------------------------------------
 // Script Title: Aldebaran Town NPCs	Author: A Lot of People
 //--------------------------------------------------------------
-// Revision History: v2.3
+// Revision History: v1.2
 //--------------------------------------------------------------
-//	1.0 First version [Unknown]
-//	1.1 Added RS125 NPC. Added another Kafra Reserve points agent [Unknown]
-//	1.2 Lottery input number fix [Lupus]
-//	1.3 Label typo fixed [Lupus]
-//	1.4 Gatekeeper's bug fixed (wrong check and wrong item ID for underground), fixed some typos [Lupus]
-//	1.5 Fixed Typos and Spellcheck [massdriller]
-//	1.6 Finally added the Special Reserve 2 Lotto with official prizes [Lupus]
-//	 - 80% official, 4-5 entries are made up
-//	1.7 Fixed typo Orange Potions -> Red Potions [Lupus]
-//	1.8 Fixed bug (missing label), optimized all menus [Lupus]
-//	1.9 Fixed exploits [Lupus] 1.8 Removed Duplicates [Silent]
-//	2.0 Fixed a bunch of typos with information from Crono/Hollengrhen [Evera]
-//	2.1 Now Pavianne doesn't sell Kafra Passes, she refunds them [Lupus]
-//	2.2 Merged in Alchemist shop [Tsuyuki]
-//	2.3 Updated some of the NPCs to Aegis 10.4 (Credits to DZeroX) [Tsuyuki]
+//	1.0 First version, converted from Aegis [DZeroX]
+//	1.1 Merged in the Alchemist shop [Tsuyuki]
+//	1.2 Merged the Clock Tower/Aldebaran Dungeon NPCs back in [Tsuyuki]
 //--------------------------------------------------------------
 // Additional Notes: Features Kafra Corp. Headquarters
-// * Semi-Aegis-Certified * (Up to Kafra Corp. Headquarters)
+// * Mostly Aegis-Certified * (Up to Kafra Corp. Headquarters)
 //--------------------------------------------------------------
 
 

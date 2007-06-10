@@ -31,8 +31,8 @@
 //	2.7 Added some more Monster Race NPCs [Tsuyuki]
 //	2.8 Added the Bingo Game System, converted from Aegis by SinSloth [Tsuyuki]
 //--------------------------------------------------------------
-// Additional Notes: Monster Races, Rebellion Quest,
-// and Remedy Quest are incomplete. * Aegis-certified *
+// Additional Notes: Monster Races, Rebellion Quest, and Remedy
+// Quest are incomplete. * Offical-certified / Aegis-certified *
 //--------------------------------------------------------------
 
 

@@ -16,7 +16,7 @@
 //	1.2 Fixed some conversion bugs [Tsuyuki]
 //	1.3 Updated the Dandelion's Request Quest to work with the Gaebolg Quest [L0ne_W0lf]
 //--------------------------------------------------------------
-// Additional Notes: * Aegis-certified *
+// Additional Notes: * Official-certified / Aegis-certified *
 //--------------------------------------------------------------
 
 

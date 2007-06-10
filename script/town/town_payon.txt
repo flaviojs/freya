@@ -7,7 +7,7 @@
 //              /_/  |_|\____|_|  \___/|_|  \__,_|              
 //                    http://www.ro-freya.net                   
 //--------------------------------------------------------------
-// Script Title: Payon Town NPCs	Author: Tsuyuki/GreenGoblin
+// Script Title: Payon Town NPCs	Author: Tsuyuki/GreenGoblin/Muad_Dib
 //--------------------------------------------------------------
 // Revision History: v1.3
 //--------------------------------------------------------------

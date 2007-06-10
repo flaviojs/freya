@@ -9,29 +9,26 @@
 //--------------------------------------------------------------
 // Script Title: Louyang Town NPCs	Author: A Lot of People
 //--------------------------------------------------------------
-// Revision History: v2.9
+// Revision History: v2.6
 //--------------------------------------------------------------
-//	1.0 First version for Vidar [Dino9021]
-//	1.1 Added official warp NPCs [Mass Zero]
-//	1.2 Fixed gramatical errors and translated [celest]
-//	1.3 Completely rewrote the current scripts based on iRO [Mass Zero]
-//	1.4 Added the 'Shouting Quest' and the 'Medicine Quest' [Mas Zero]
-//	1.5 Optimized, made quest vars unique [Lupus]
-//	1.6 Minor fix [Unknown]
-//	1.7 Fixed typos [Nexon]
-//	1.8 Fixed exploits [Lupus]
-//	1.9 Updated the color codes a little and fixed the shouting quest to broadcast green text [Unknown]
-//	2.0 A small fix to the shout quest npc in louyang field not warping you
+//	1.0 First version, based on iRO information [Mass Zero]
+//	1.1 Added the 'Shouting Quest' and the 'Medicine Quest' [Mas Zero]
+//	1.2 Optimized, made quest vars unique [Lupus]
+//	1.3 Minor fix [Unknown]
+//	1.4 Fixed typos [Nexon]
+//	1.5 Fixed exploits [Lupus]
+//	1.6 Updated the color codes a little and fixed the shouting quest to broadcast green text [Unknown]
+//	1.7 A small fix to the Shouting Quest NPC in Louyang field not warping you
 //	 back up to the tower if you died or teleported out of there [MasterOfMuppets]
-//	2.1 A small fix [MasterOfMuppets]
-//	2.2 Implemented a few more npcs, thanks to Prometheus for them [MasterOfMuppets]
-//	2.3 Implemented the Poison King quest [MasterOfMuppets]
-//	2.4 Removed duplicates [Silent]
-//	2.5 Updated a few names with new item_db.txt names [Evera]
-//	2.6 Split quests to quests/quests_louyang.txt [Evera]
-//	2.7 Minor optimizations before Louyang quests [Lupus]
-//	2.8 Moved guide NPCs to the Guides folder [Lupus]
-//	2.9 Merged in Louyang Quests [Tsuyuki]
+//	1.8 A small fix [MasterOfMuppets]
+//	1.9 Implemented a few more NPCs, thanks to Prometheus for them [MasterOfMuppets]
+//	2.0 Implemented the Poison King Quest [MasterOfMuppets]
+//	2.1 Removed duplicates [Silent]
+//	2.2 Updated a few names with new item_db.txt names [Evera]
+//	2.3 Split quests to another file [Evera]
+//	2.4 Minor optimizations before Louyang quests [Lupus]
+//	2.5 Moved Guide NPCs to the Guides script [Lupus]
+//	2.6 Merged Louyang Quests back in [Tsuyuki]
 //	 - Adds in Soup Quest, Tool Master Quest, Doctor Quest, Poison King Quest
 //--------------------------------------------------------------
 // Additional Notes: * Official-certified *
