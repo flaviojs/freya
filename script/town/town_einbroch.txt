@@ -1116,7 +1116,7 @@ ein_in01.gat,231,163,1	script	Sick Old Man	849,6,6,{
 		mes "ore might be?";
 		next;
 		while(1){
-			switch(select("Airport:Factory:Train Station:Airship Repairshop:Laboratory")){
+			switch(select("Airport","Factory","Train Station","Airship Repairshop","Laboratory")){
 			case 1: //airport
 				mes "[Shinokas]";
 				mes "No...";
@@ -1266,7 +1266,7 @@ ein_in01.gat,231,163,1	script	Sick Old Man	849,6,6,{
 	mes "Excuse me...";
 	next;
 	while(1){
-		switch(select("Remember the mine tunnel collapse?:Didn't you used to be a miner?:Have you lived in Einbroch all your life?")){
+		switch(select("Remember the mine tunnel collapse?","Didn't you used to be a miner?","Have you lived in Einbroch all your life?")){
 		case 1: //remember
 			if(@shinqst2 > 4 || @shinqst3 > 4) goto L_Cont;
 			mes "[Sick Old Man]";
@@ -1528,7 +1528,7 @@ einbroch.gat,51,52,1	script	lab_warp	45,2,2{
 	mes "Please identify yourself";
 	mes "through the system.";
 	next;
-	switch(select("Identify.:Information:Cancel")){
+	switch(select("Identify.","Information","Cancel")){
 		case 1: //Identify
 			break; //continue after switch =\
 		case 2: //information
@@ -1728,7 +1728,7 @@ ein_in01.gat,254,35,1	script	Scientist	749,{
 	mes "..............";
 	mes "*Grumble grumble*";
 	next;
-	if(select("What's wrong?:Catch you later.")==2){
+	if(select("What's wrong?","Catch you later.")==2){
 		 mes "[Scientist]";
 		 mes "Right.";
 		 mes "Yeah.";
@@ -1907,7 +1907,7 @@ L_Apples:
 	mes "Hahaha! Th-thank you~";
 	mes "^111111*Hic-hic-hiccup!*^000000";
 	next;
-	if(select("So what was that about Ymir's Heart?:Hehe, you're welcome.")==2){
+	if(select("So what was that about Ymir's Heart?","Hehe, you're welcome.")==2){
 		 mes "[Drunken Man]";
 		 mes "Hahahaha!";
 		 mes "You're great!";

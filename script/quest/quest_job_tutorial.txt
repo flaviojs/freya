@@ -49,7 +49,7 @@ prt_church.gat,179,15,1	script	Priest Praupin	110,{
 		mes "you may not know what to do";
 		mes "as an Acolyte from here on...";
 		next;
-		switch(select("I'm not worried.:What should I do?")){
+		switch(select("I'm not worried.","What should I do?")){
 		case 1:
 			mes "[Priest Praupin]";
 			mes "Seeing your eyes filled with such determination assures me. But if you run into any trouble, feel free to ask me for help. Good bye for now, blessed child.";
@@ -66,7 +66,7 @@ prt_church.gat,179,15,1	script	Priest Praupin	110,{
 			mes "become a better Acolyte after learning from Sister Asthe's instructions. If you like, I can send you to the convent.";
 			set tu_acolyte01, 1;
 			next;
-			if(select("Go to the convent.:Do not go.")==1){
+			if(select("Go to the convent.","Do not go.")==1){
 				mes "[Priest Praupin]";
 				mes "Please say hello";
 				mes "to Sister Asthe for me.";
@@ -120,7 +120,7 @@ prt_church.gat,179,15,1	script	Priest Praupin	110,{
 			mes "I know I'm not offering much,";
 			mes "but they were quite helpful to me when I was a young Acolyte like yourself.";
 			next;
-			if(select("Maces:Clubs")==1){
+			if(select("Maces","Clubs")==1){
 				getitem 1604, 1;
 			} else {
 				getitem 1510, 1;
@@ -151,7 +151,7 @@ prt_church.gat,179,15,1	script	Priest Praupin	110,{
 	mes "[Priest Praupin]";
 	mes "Would you like me to send you to the convent so that you can learn from this wonderful teacher?";
 	next;
-	if(select("Yes, please.:No thanks.")==1){
+	if(select("Yes, please.","No thanks.")==1){
 		mes "[Priest Praupin]";
 		mes "Please say hello";
 		mes "to Sister Asthe for me.";
@@ -181,7 +181,7 @@ prt_monk.gat,230,106,3	script	Asthe#tu	79,{
 		mes "manage to reach";
 		mes "this remote place?";
 		next;
-		if(select("I came for fun.:Priest Praupin suggested I come here.")==1){
+		if(select("I came for fun.","Priest Praupin suggested I come here.")==1){
 			mes "[Asthe]";
 			mes "This convent is always quiet and peaceful. Sitting on the benches and feeling the almighty presense all around you is such a relaxing, meditative experience.";
 			close;
@@ -215,7 +215,7 @@ prt_monk.gat,230,106,3	script	Asthe#tu	79,{
 		mes ""+strcharinfo(0)+",";
 		mes "have you thought about what kind of Acolyte you would like to become? It's very important that you plan for the future that you want.";
 		next;
-		if(select("One that supports others.:One that punishes evil.")==1){
+		if(select("One that supports others.","One that punishes evil.")==1){
 			mes "[Asthe]";
 			mes "Ah, you have such";
 			mes "a generous heart!";
@@ -244,7 +244,7 @@ prt_monk.gat,230,106,3	script	Asthe#tu	79,{
 		mes "is the most necessary";
 		mes "skill for an Acolyte?";
 		next;
-		switch(select("Heal:Aqua Benedicta:Teleport")){ 
+		switch(select("Heal","Aqua Benedicta","Teleport")){ 
 		case 1:
 			mes "[Asthe]";
 			mes "Ah, yes.";
@@ -639,7 +639,7 @@ prt_monk.gat,230,106,3	script	Asthe#tu	79,{
 		mes "Now, we've covered some";
 		mes "pretty complicated material in this lesson. Would you like to hear this again?";
 		next;
-		if(select("Listen again.:Move to the next topic.")==1){
+		if(select("Listen again.","Move to the next topic.")==1){
 			mes "[Asthe]";
 			mes "Alright,";
 			mes "give me a moment";
@@ -878,7 +878,7 @@ monk_in.gat,18,38,6	script	Priest Gardron#tu	110,{
 			mes "Now then...";
 			mes "Will you go to Payon?";
 			next;
-			if(select("Let's go to Payon!:Um, let me get ready first.")==1){
+			if(select("Let's go to Payon!","Um, let me get ready first.")==1){
 				mes "[Priest Gardron]";
 				mes "Good, good.";
 				mes "I shall send you";
@@ -908,7 +908,7 @@ prt_monk.gat,235,245,5	script	Dog#tu	81,{
 	if(tu_acolyte01 == 10){
 		set @dog_food, 0;
 		while((1)){
-			switch(select("Give a treat.:Pet the dog.:End actions.")){
+			switch(select("Give a treat.","Pet the dog.","End actions.")){
 			case 1:
 				set @dog_food, @dog_food + 1;
 				if(@dog_food > 4){
@@ -1049,7 +1049,7 @@ prt_monk.gat,226,257,6	script	Ill Girl#tu	93,{
 		mes "on her back and perform";
 		mes "a holy spell...^000000";
 		next;
-		switch(select("Heal!:Blessing!:Cure!:Recovery!:Signum Crucis!:B.S Sacramenti!")){
+		switch(select("Heal!","Blessing!","Cure!","Recovery!","Signum Crucis!","B.S Sacramenti!")){
 		case 1:
 			mes "["+strcharinfo(0)+"]";
 			mes "H...";
@@ -1319,7 +1319,7 @@ prt_monk.gat,219,164,3	script	Gloria#tu	95,{
 		mes "send you to Prontera.";
 		mes "Just let me know, okay?";
 		next;
-		switch(select("I'm okay for now.:Send me to Prontera.")){
+		switch(select("I'm okay for now.","Send me to Prontera.")){
 		case 1:
 			mes "[Gloria]";
 			mes "In order to use";
@@ -1893,7 +1893,7 @@ payon_in02.gat,47,13,3	script	Master Kavaruk	55,{
 	mes "of the Icarus Archer Guild.";
 	mes "I bid you welcome.";
 	next;
-	switch(select("Ask about 'Icarus.':Ask about recent news.:Talk about Archers.")){
+	switch(select("Ask about 'Icarus.'","Ask about recent news.","Talk about Archers.")){
 	case 1:
 		mes "[Master Kavaruk]";
 		mes "Have you ever";
@@ -2062,7 +2062,7 @@ payon_in02.gat,47,13,3	script	Master Kavaruk	55,{
 				mes "some specialized instruction to learn more about the Archer job?";
 			}
 			next;
-			switch(select("Yes:No")){
+			switch(select("Yes","No")){
 			case 1:
 				set tu_archer01, 1;
 				mes "[Master Kavaruk]";
@@ -2140,7 +2140,7 @@ pay_arche.gat,103,165,5	script	Raiden Karus#tu	832,{
 			mes "Can I help you";
 			mes "with something?";
 			next;
-			switch(select("Tell me about skills.:Er, not really...")){
+			switch(select("Tell me about skills.","Er, not really...")){
 			case 1:
 				mes "[Raiden Karus]";
 				mes "Huh. So Master";
@@ -2229,7 +2229,7 @@ pay_arche.gat,103,165,5	script	Raiden Karus#tu	832,{
 			mes "If you don't like it, you can just quit! No reason to stick around";
 			mes "if you can't keep up with the Chief, anyway.";
 			next;
-			switch(select("Please teach me... Chief!:I want to quit.")){
+			switch(select("Please teach me... Chief!","I want to quit.")){
 			case 1:
 				mes "[Raiden Karus]";
 				mes "That's what I'm talkin' about! Yeah! Just trust me and you'll learn almost everything about Archer skills! Let's get started!";
@@ -2264,7 +2264,7 @@ pay_arche.gat,103,165,5	script	Raiden Karus#tu	832,{
 					mes "else if you want, but if you don't know any training areas, then";
 					mes "just follow my great advice.";
 					next;
-					switch(select("I'll follow your advice, Chief!:I'll hunt somewhere else...")){
+					switch(select("I'll follow your advice, Chief!","I'll hunt somewhere else...")){
 					case 1:
 						mes "[Raiden Karus]";
 						mes "I'll send you to";
@@ -2743,7 +2743,7 @@ pay_arche.gat,103,165,5	script	Raiden Karus#tu	832,{
 				mes "From Prontera, you'd get to Mt. Mjolnir by traveling ^3131FFnorth^000000, ^3131FFnorth^000000 and then ^3131FFeast^000000. But if you want,";
 				mes "I can just send you there.";
 				next;
-				switch(select("Go!:W-Wait!")){
+				switch(select("Go!","W-Wait!")){
 				case 1:
 					mes "[Raiden Karus]";
 					mes "Alright!";
@@ -2890,7 +2890,7 @@ pay_arche.gat,84,139,3	script	Seisner	727,{
 		mes "you about Archers and Archery? Alright, what would you like to know more about?";
 		next;
 		while(1){
-			switch(select("About Archers.:Stats for Archers:End Conversation.")){
+			switch(select("About Archers.","Stats for Archers","End Conversation.")){
 			case 1:
 				mes "[Seisner]";
 				mes "Archers specialize";
@@ -3092,7 +3092,7 @@ mjolnir_11.gat,27,223,3	script	Acolyte#tu	95,{
 			mes "Let's h-help each other train!";
 			mes "Um, is that okay?";
 			next;
-			switch(select("Sure.:No thanks.:Raiden Karus is mine!")){
+			switch(select("Sure.","No thanks.","Raiden Karus is mine!")){
 			case 1:
 				mes "[Acolyte]";
 				mes "Wow!";
@@ -3286,7 +3286,7 @@ pay_arche.gat,130,113,3	script	Alchemist Guildmember#tu	740,{
 			mes "each Stem for ^3131FF30 Zeny^000000 and each";
 			mes "Maneater Blossom for ^3131FF130 Zeny^000000.";
 			next;
-			switch(select("Sell all Stems and Maneater Blossoms.:Don't sell anything.")){
+			switch(select("Sell all Stems and Maneater Blossoms.","Don't sell anything.")){
 			case 1:
 				mes "[Alchemist Guildmember]";
 				mes "Thank you very much!";
@@ -3655,7 +3655,7 @@ monk_in.gat,19,43,1	script	Bishop Maugins	60,{
 		mes "[Bishop Maugins]";
 		mes "Hm? Work related to the Palace? Yes, I'm in charge of that area. So how may I help you?";
 		next;
-		if(select("Has something happened to the Kingdom?:Nothing.")==1){
+		if(select("Has something happened to the Kingdom?","Nothing.")==1){
 			mes "[Bishop Maugins]";
 			mes "...!!";
 			next;
@@ -5025,7 +5025,7 @@ L_JobFix:
 	
 	mes "You've just started out as a Merchant, haven't you? How would you like to learn the fundamentals of business from an experienced colleague?";
 	next;
-	if(select("Sure!:I'll make it on my own!")==1){
+	if(select("Sure!","I'll make it on my own!")==1){
 		set tu_merchant, 1;
 		if(getskilllv(36) < 4){
 			mes "[Guarnien]";
@@ -5112,7 +5112,7 @@ prontera.gat,66,111,3	script	Sagle	82,{
 		mes "[Sagle]";
 		mes "I will sell you 10 Red Potions for ^871F78420 zeny^000000. You'd better get them now while they're still here!";
 		next;
-		switch(select("Buy:Cancel")){
+		switch(select("Buy","Cancel")){
 		case 1:
 			mes "[Sagle]";
 			mes "Excellent!";
@@ -5161,7 +5161,7 @@ prontera.gat,66,111,3	script	Sagle	82,{
 		mes "[Sagle]";
 		mes "I will sell you 10 Red Potions for ^871F78410 zeny^000000. You'd better get them now while they're still here!";
 		next;
-		switch(select("Buy:Cancel")){
+		switch(select("Buy","Cancel")){
 			case 1:
 				mes "[Sagle]";
 				mes "Excellent!";
@@ -5211,7 +5211,7 @@ prontera.gat,66,111,3	script	Sagle	82,{
 		mes "[Sagle]";
 		mes "I will sell you 10 Red Potions for ^871F78390 zeny^000000. You'd better get them now while they're still here!";
 		next;
-		switch(select("Buy:Cancel")){
+		switch(select("Buy","Cancel")){
 			case 1:
 				mes "[Sagle]";
 				mes "Excellent!";
@@ -5272,7 +5272,7 @@ prontera.gat,93,330,3	script	Kellion	97,{
 		mes "10 Red Potions for 340 Zeny.";
 		mes "Would you like some?";
 		next;
-		switch(select("Buy:Cancel")){
+		switch(select("Buy","Cancel")){
 		case 1:
 			mes "[Kellion]";
 			mes "Good choice~";
@@ -5313,7 +5313,7 @@ prontera.gat,93,330,3	script	Kellion	97,{
 		mes "10 Red Potions for 390 Zeny.";
 		mes "Would you like some?";
 		next;
-		switch(select("Buy:Cancel")){
+		switch(select("Buy","Cancel")){
 		case 1:
 			mes "[Kellion]";
 			mes "Good choice~";
@@ -5354,7 +5354,7 @@ prontera.gat,93,330,3	script	Kellion	97,{
 		mes "10 Red Potions for 400 Zeny.";
 		mes "Would you like some?";
 		next;
-		switch(select("Buy:Cancel")){
+		switch(select("Buy","Cancel")){
 		case 1:
 			mes "[Kellion]";
 			mes "Good choice~";
@@ -5415,7 +5415,7 @@ prt_in.gat,169,11,3	script	Aigie	92,{
 		mes "to buy 10 Red Potions";
 		mes "for 390 Zeny, kind adventurer?";
 		next;
-		switch(select("Buy:Cancel")){
+		switch(select("Buy","Cancel")){
 		case 1:
 			mes "[Aigie]";
 			mes "Thank you so much.";
@@ -5462,7 +5462,7 @@ prt_in.gat,169,11,3	script	Aigie	92,{
 		mes "to buy 10 Red Potions";
 		mes "for 420 Zeny, kind adventurer?";
 		next;
-		switch(select("Buy:Cancel")){
+		switch(select("Buy","Cancel")){
 		case 1:
 			mes "[Aigie]";
 			mes "Thank you so much.";
@@ -5509,7 +5509,7 @@ prt_in.gat,169,11,3	script	Aigie	92,{
 		mes "to buy 10 Red Potions";
 		mes "for 340 Zeny, kind adventurer?";
 		next;
-		switch(select("Buy:Cancel")){
+		switch(select("Buy","Cancel")){
 		case 1:
 			mes "[Aigie]";
 			mes "Thank you so much.";
@@ -5560,7 +5560,7 @@ prontera.gat,247,129,3	script	Jayon	85,{
 		mes "[Jayon]";
 		mes "If you've checked out the market for Red Potions, you know that my price is the best. I'm offering 10 Red Potions for only 410 Zeny!";
 		next;
-		switch(select("Buy:Cancel")){
+		switch(select("Buy","Cancel")){
 		case 1:
 			mes "[Jayon]";
 			mes "Heh heh...!";
@@ -5608,7 +5608,7 @@ prontera.gat,247,129,3	script	Jayon	85,{
 		mes "[Jayon]";
 		mes "If you've checked out the market for Red Potions, you know that my price is the best. I'm offering 10 Red Potions for only 400 Zeny!";
 		next;
-		switch(select("Buy:Cancel")){
+		switch(select("Buy","Cancel")){
 		case 1:
 			mes "[Jayon]";
 			mes "Heh heh...!";
@@ -5657,7 +5657,7 @@ prontera.gat,247,129,3	script	Jayon	85,{
 		mes "[Jayon]";
 		mes "If you've checked out the market for Red Potions, you know that my price is the best. I'm offering 10 Red Potions for only 410 Zeny!";
 		next;
-		switch(select("Buy:Cancel")){
+		switch(select("Buy","Cancel")){
 		case 1:
 			mes "[Jayon]";
 			mes "Heh heh...!";
@@ -5721,7 +5721,7 @@ prt_in.gat,251,129,3	script	Maos	709,{
 		mes "I'll sell them to you";
 		mes "for the low price of 420 Zeny~";
 		next;
-		switch(select("Buy:Cancel")){
+		switch(select("Buy","Cancel")){
 		case 1:
 			mes "[Maos]";
 			mes "Excellent choice!";
@@ -5759,7 +5759,7 @@ prt_in.gat,251,129,3	script	Maos	709,{
 		mes "I'll sell them to you";
 		mes "for the low price of 340 Zeny~";
 		next;
-		switch(select("Buy:Cancel")){
+		switch(select("Buy","Cancel")){
 		case 1:
 			mes "[Maos]";
 			mes "Excellent choice!";
@@ -5796,7 +5796,7 @@ prt_in.gat,251,129,3	script	Maos	709,{
 		mes "I'll sell them to you";
 		mes "for the low price of 400 Zeny~";
 		next;
-		switch(select("Buy:Cancel")){
+		switch(select("Buy","Cancel")){
 		case 1:
 			mes "[Maos]";
 			mes "Excellent choice!";
@@ -8324,7 +8324,7 @@ moc_ruins.gat,66,164,4	script	Thief Trainer#T	84,{
 			mes "the guy in charge";
 			mes "of training new Thieves.";
 			next;
-			switch(select("Training?:Training? Right now?")){
+			switch(select("Training?","Training? Right now?")){
 			case 1:
 				mes "[Yierhan]";
 				mes "Yeah, training. I mean, this kind of stuff is second nature to some people, but other guys need a little more help. So this is one of those 'just in case' things.";
@@ -8345,7 +8345,7 @@ moc_ruins.gat,66,164,4	script	Thief Trainer#T	84,{
 			mes "So for melee attacks, which stat increases your damage? Come on";
 			mes "now, you should know this if you didn't skip the Novice Training Grounds.";
 			next;
-			switch(select("^6B8E23INT^000000:^2F4F2FSTR^000000:^23238EDEX^000000")){
+			switch(select("^6B8E23INT^000000","^2F4F2FSTR^000000","^23238EDEX^000000")){
 			case 1:
 				mes "[Yierhan]";
 				mes "Say whaaat? ^6B8E23INT^000000 affects magic damage, magic defense and some skills. Thieves don't even work with magic!";
@@ -8516,7 +8516,7 @@ moc_ruins.gat,66,164,4	script	Thief Trainer#T	84,{
 			mes "already know?";
 			next;
 			while(1){
-				switch(select("Double Attack:Increase Dodge:Steal:Hiding:Envenom:Detoxify:Cancel")){
+				switch(select("Double Attack","Increase Dodge","Steal","Hiding","Envenom","Detoxify","Cancel")){
 				case 1: 
 					mes "[Yierhan]";
 					mes "Just like its name,";
@@ -8806,7 +8806,7 @@ moc_ruins.gat,66,164,4	script	Thief Trainer#T	84,{
 			mes "So, did you complete your mission?";
 			mes "I know it is a pretty difficult one though.";
 			next;
-			switch(select("I am still ivestigating.:Not yet.:Yes, I did.")){
+			switch(select("I am still ivestigating.","Not yet.","Yes, I did.")){
 			case 1:
 				mes "[Yierhan]";
 				mes "Ah...";
@@ -8923,7 +8923,7 @@ moc_ruins.gat,66,164,4	script	Thief Trainer#T	84,{
 			mes "I have had so many other works recently";
 			mes "to focus on the investigation.";
 			next;
-			switch(select("I am still ivestigating.:Not yet.:I finished to investigate.")){
+			switch(select("I am still ivestigating.","Not yet.","I finished to investigate.")){
 			case 1:
 				mes "[Yierhan]";
 				mes "Ah...";
@@ -9160,7 +9160,7 @@ moc_fild11.gat,205,52,0	script	Battle Traces#5	844,{
 				mes "You can neutralize the poison momentarily";
 				mes "with the Green Potion.";
 				next;
-				switch(select("Use Green Potion.:Don't use it.")){
+				switch(select("Use Green Potion.","Don't use it.")){
 				case 1:
 					mes "The poison has gotten weaker. After investigating the scene where the poison has cleared I see a piece of cloth.";
 					next;

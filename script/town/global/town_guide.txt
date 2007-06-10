@@ -2799,7 +2799,7 @@ rachel.gat,138,146,5	script	Rachel Guide	934,{
 	mes "don't you check the \"Notice\" menu first?";
 	while(1) {
 		next;
-		switch(select("Village Guide:Remove Marks from Mini-Map:Notice:Cancel")) {
+		switch(select("Village Guide","Remove Marks from Mini-Map","Notice","Cancel")) {
 		case 1:
 			mes "[Rachel Guide]";
 			mes "I can tell you any building location as long as it is in Rachel.";
@@ -2809,7 +2809,7 @@ rachel.gat,138,146,5	script	Rachel Guide	934,{
 				mes "to mark locations";
 				mes "on your Mini-Map?";
 				next;
-				if (select("Yes:No") == 1) set @compass_check,1;
+				if (select("Yes","No") == 1) set @compass_check,1;
 				next;
 
 			}
@@ -2817,7 +2817,7 @@ rachel.gat,138,146,5	script	Rachel Guide	934,{
 				if (@wait_button_chk == 0) set @wait_button_chk,1;
 				else next;
 
-				switch(select("Cheshrumnir:Inn:Weapon Shop:Tool Shop:Airport:Cancel")) {
+				switch(select("Cheshrumnir","Inn","Weapon Shop","Tool Shop","Airport","Cancel")) {
 				case 1:
 					mes "[Rachel Guide]";
 					mes "Cheshrumnir is a holy ground where pope, the incarnation of goddess Freya stays.";

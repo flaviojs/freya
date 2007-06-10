@@ -14,6 +14,7 @@
 Date	Added
 
 2007/06/09
+	* Fixed: A ton of select script command bugs [Tsuyuki]
 	* Added: The missing Orc Hero Helm Quest, by Dj-Yhn [Tsuyuki]
 	* Updated: Renamed all script functions/sub-functions with "F_" and "sF_" prefixes [Tsuyuki]
 	* Changed: Merged the God Seal Quests together [Tsuyuki]

@@ -554,7 +554,7 @@ gonryun.gat,180,118,4	script	Iron man#gnp	85,{
 		mes "Oh~ you look strong!";
 		mes "Wanna try?";
 		next;
-		switch(select("Why not?:?????:No thanks.")){
+		switch(select("Why not?","?????","No thanks.")){
 		case 1:
 			mes "[Songmoodoo]";
 			mes "Haha~ I knew you would try.";
@@ -642,7 +642,7 @@ gonryun.gat,180,118,4	script	Iron man#gnp	85,{
 		mes "Good to see you again!";
 		mes "Wanna go??";
 		next;
-		if (select("Sure:Maybe next time") == 1) {
+		if (select("Sure","Maybe next time") == 1) {
 			mes "[Songmoodoo]";
 			mes "Good! Haha.";
 			mes "I like your confidence.";
@@ -686,7 +686,7 @@ gon_test.gat,50,14,4	script	Administrator#gnp	780,{
 	mes "Remember, you have to pay";
 	mes "500z to fight.";
 	next;
-	if (select("Yes, let me fight!:One moment, please.") == 2) {
+	if (select("Yes, let me fight!","One moment, please.") == 2) {
 		mes "[Administrator]";
 		mes "Ok, see you later.";
 		close;
@@ -793,7 +793,7 @@ gon_test.gat,46,14,3	script	Guide of field of fight#gnp	770,{
 	mes "This is a field of fight.";
 	mes "Got any questions?";
 	next;
-	switch(select("A field of fight?:You got a minute lady?:Get in.:Out.:Nope.")){
+	switch(select("A field of fight?","You got a minute lady?","Get in.","Out.","Nope.")){
 	case 1:
 		mes "[SongHeeYeon]";
 		mes "Just like the name of this place,";
@@ -840,7 +840,7 @@ gon_test.gat,70,103,3	script	ChowAnAn#gnp	773,{
 	mes "[ChowAnAn]";
 	mes "Want to go back?";
 	next;
-	if (select("Yes.:No.") == 1) {
+	if (select("Yes.","No.") == 1) {
 		mes "[ChowAnAn]";
 		mes "Thank you.";
 		mes "Please come again.";
@@ -958,7 +958,7 @@ gon_in.gat,17,93,5	script	Chief#gnbs	775,{
 			mes "Like you've noticed,";
 			mes "village is not so peaceful huh?";
 			next;
-			if(select("It's alright.:I heard that something was stolen..") == 1){
+			if(select("It's alright.","I heard that something was stolen..") == 1){
 				mes "[SaYumMoon]";
 				mes "Good...";
 				mes "Well, watch out for robbery.";
@@ -972,7 +972,7 @@ gon_in.gat,17,93,5	script	Chief#gnbs	775,{
 			mes "occurred. The rumor was true..";
 			mes "Lots of thieves are out there in the village.";
 			next;
-			switch(select("......:What was stolen?:Anyone with injuries?")){
+			switch(select("......","What was stolen?","Anyone with injuries?")){
 			case 1:
 				mes "[SaYumMoon]";
 				mes "Can't believe it really happened.";
@@ -999,7 +999,7 @@ gon_in.gat,17,93,5	script	Chief#gnbs	775,{
 				mes "chief of village.";
 				mes "This is a big trouble...hmm...";
 				next;
-				if (select("Hope you find it soon.:Can I find it for you?") == 1){
+				if (select("Hope you find it soon.","Can I find it for you?") == 1){
 					mes "[SaYumMoon]";
 					mes "um..thank you.";
 					mes "Perhaps you find a sword, ";
@@ -1035,7 +1035,7 @@ gon_in.gat,17,93,5	script	Chief#gnbs	775,{
 				mes "chief of village.";
 				mes "This is a big trouble...hmm...";
 				next;
-				if (select("Hope you find it soon.:Can I find it for you?") == 1){
+				if (select("Hope you find it soon.","Can I find it for you?") == 1){
 					mes "[SaYumMoon]";
 					mes "um..thank you.";
 					mes "Perhaps you find a sword, ";
@@ -1114,7 +1114,7 @@ gon_in.gat,17,93,5	script	Chief#gnbs	775,{
 			mes "Would you repair my sword for me?";
 			mes "I'm sure I'll pay for that.";
 			next;
-			if (select("No way.:Alright.") == 1) {
+			if (select("No way.","Alright.") == 1) {
 				mes "[SaYumMoon]";
 				mes "Well, yes.. you've been such a";
 				mes "nice person. I appreciate for";
@@ -1243,7 +1243,7 @@ gon_in.gat,17,93,5	script	Chief#gnbs	775,{
 			mes "please leave it somewhere else and come back.";
 			mes "Just in case that you give me a wrong one...";
 			next;
-			if(select("Wait for sec:Here it is.") == 1 || countitem(1123) < 1){
+			if(select("Wait for sec","Here it is.") == 1 || countitem(1123) < 1){
 				mes "[SaYumMoon]";
 				mes "Ok, go ahead.";
 				mes "Don't leave mine!!";
@@ -1288,7 +1288,7 @@ gon_in.gat,152,35,4	script	Hostess#gnbs	702,{
 		mes "Oops, what am I saying..";
 		mes "Wants some wine?";
 		next;
-		if (select("Yes, please:No, it's ok.") == 1) {
+		if (select("Yes, please","No, it's ok.") == 1) {
 			mes "[MaYumBang]";
 			mes "Oooops.. oh no...";
 			mes "Many customers came by earlier and";
@@ -1376,12 +1376,12 @@ gon_in.gat,165,16,4	script	Man in hangover#gnbs	748,{
 		mes "your ^00FF00Green_Potion^000000 to me?";
 		mes "I got a mad stomach.";
 		next;
-		if (select("No.:Ok, here.") == 1 || countitem(506) < 1) {
+		if (select("No.","Ok, here.") == 1 || countitem(506) < 1) {
 			mes "[SulBoong]";
 			mes "Ehh...";
 			mes "Are you sure?";
 			next;
-			if (select("Sorry, I don't have one.:Ok, here it is.") == 1 || countitem(506) < 1) {
+			if (select("Sorry, I don't have one.","Ok, here it is.") == 1 || countitem(506) < 1) {
 				mes "[SulBoong]";
 				mes "Wooo..";
 				mes "Go away man..";
@@ -1396,7 +1396,7 @@ gon_in.gat,165,16,4	script	Man in hangover#gnbs	748,{
 			mes "I feel much better now.";
 			mes "By the way.. You got any questions?";
 			next;
-			if (select("About thief.:Nothing.") == 1){
+			if (select("About thief.","Nothing.") == 1){
 				mes "[SulBoong]";
 				mes "Ah~ a thief..";
 				mes "hmm.. let me see..";
@@ -1435,7 +1435,7 @@ gon_in.gat,165,16,4	script	Man in hangover#gnbs	748,{
 			mes "hmm.. you seem like you got";
 			mes "something to ask me.";
 			next;
-			switch(select("About thief..:How much have you been drinking?:Nothing..")){
+			switch(select("About thief..","How much have you been drinking?","Nothing..")){
 			case 1:
 				mes "[SulBoong]";
 				mes "Ah~ a thief..hmm...";
@@ -1452,7 +1452,7 @@ gon_in.gat,165,16,4	script	Man in hangover#gnbs	748,{
 				mes "on the roof of houses.";
 				mes "It disappeared in a second.";
 				next;
-				if (select("Where to?:Probably a cat.") == 1) {
+				if (select("Where to?","Probably a cat.") == 1) {
 					mes "[SulBoong]";
 					mes "Umm?";
 					mes "Well..let me see..";
@@ -1475,7 +1475,7 @@ gon_in.gat,165,16,4	script	Man in hangover#gnbs	748,{
 					mes "Anything else I can help?";
 					mes "Thanks for the potion.";
 					next;
-					switch(select("Thanks for the information.:Stop drinking too much.:Ok, bye")){
+					switch(select("Thanks for the information.","Stop drinking too much.","Ok, bye")){
 					case 1:
 						mes "[SulBoong]";
 						mes "I'll see you later then.";
@@ -1527,7 +1527,7 @@ gon_in.gat,165,16,4	script	Man in hangover#gnbs	748,{
 		mes "What are you up to?";
 		mes "Got any question for me?";
 		next;
-		if (select("About a thief last night...:Nope, just passing by..") == 1){
+		if (select("About a thief last night...","Nope, just passing by..") == 1){
 			mes "[SulBoong]";
 			mes "Ah~ a thief..";
 			mes "hmm.. let me see..";
@@ -2849,7 +2849,7 @@ gon_in.gat,18,27,5	script	Madam#gnbs	771,{
 	mes "A vistor from out of town~";
 	mes "hohoho.";
 	next;
-	if (select("Hi, Madam~:Where's chief?") == 1) {
+	if (select("Hi, Madam~","Where's chief?") == 1) {
 		mes "[SangHwaYeun]";
 		mes "Hi, there~";
 		close;
@@ -2881,7 +2881,7 @@ gon_dun03.gat,62,222,0	script	Strange dead body#gnbs	111,{
 		mes "of dead body.";
 		mes "Take a look?";
 		next;
-		if (select("Yes.:Leave.") == 1) {
+		if (select("Yes.","Leave.") == 1) {
 			mes "Paper is so worned out,";
 			mes "but there's a words on it.";
 			mes "It's written by a blood.";
@@ -2951,14 +2951,14 @@ gonryun.gat,100,241,0	script	Stranger#gnbs"	733,{
 				mes "What do you want?";
 				mes "I don't like to get bothered.";
 				next;
-				if (select("Ask about blacksmith.:Are are you being so mean?") == 1){
+				if (select("Ask about blacksmith.","Are are you being so mean?") == 1){
 					mes "[Choahk]";
 					mes "Hum.....";
 					mes "so..you are the one who found";
 					mes "the sword huh?";
 					mes "Did you also get asked to repair it?";
 					next;
-					if (select("Exactly.:No..I'm just...") == 1){
+					if (select("Exactly.","No..I'm just...") == 1){
 						mes "[Choahk]";
 						mes "well..";
 						mes "If you want some information";
@@ -3002,14 +3002,14 @@ gonryun.gat,100,241,0	script	Stranger#gnbs"	733,{
 				mes "Hmm...";
 				mes "What do you want??";
 				next;
-				if (select("Ask about blacksmith.:Are are you being so mean?") == 1) {
+				if (select("Ask about blacksmith.","Are are you being so mean?") == 1) {
 					mes "[Choahk]";
 					mes "Hum.....";
 					mes "so..you are the one who found";
 					mes "the sword huh?";
 					mes "Did you also get asked to repair it?";
 					next;
-					if (select("Exactly.:No..I'm just...") == 1){
+					if (select("Exactly.","No..I'm just...") == 1){
 						mes "[Choahk]";
 						mes "Hmm...";
 						mes "Since it's broke into pieces,";
@@ -3078,14 +3078,14 @@ gonryun.gat,100,241,0	script	Stranger#gnbs"	733,{
 				mes "Hmm......";
 				mes "What do you want?";
 				next;
-				if (select("Ask about blacksmith.:Are are you being so mean?") == 1) {
+				if (select("Ask about blacksmith.","Are are you being so mean?") == 1) {
 					mes "[Choahk]";
 					mes "Hum.....";
 					mes "so..you are the one who found";
 					mes "the sword huh?";
 					mes "Did you also get asked to repair it?";
 					next;
-					if (select("Exactly:No.. I'm just...") == 1) {
+					if (select("Exactly","No.. I'm just...") == 1) {
 						mes "[Choahk]";
 						mes "Hmm...";
 						mes "Since it's broke into pieces,";
@@ -3157,13 +3157,13 @@ geffen_in.gat,71,112,2	script	Blacksmith#SaYumMoon	731,{
 			mes "My poor baby Lyroo..";
 			mes "hew....";
 			next;
-			if (select("Sir...:...........") == 1) {
+			if (select("Sir...","...........") == 1) {
 				mes "[Aumgarl]";
 				mes "Umm? Who're you?";
 				mes "Need something?";
 				mes "If not, please leave..";
 				next;
-				if (select("I came to repair the sword.:I heard you are famous blacksmith...") == 1) {
+				if (select("I came to repair the sword.","I heard you are famous blacksmith...") == 1) {
 					mes "[Aumgarl]";
 					mes "Umm........";
 					mes "Sorry but, we're closed.";
@@ -3198,7 +3198,7 @@ geffen_in.gat,71,112,2	script	Blacksmith#SaYumMoon	731,{
 			mes "What nerve you've got!";
 			mes "What do you want?";
 			next;
-			switch(select("I want to marry your granddaughter.:Your graddaughter is such a pretty girl.:I came to repair the sword.")){
+			switch(select("I want to marry your granddaughter.","Your graddaughter is such a pretty girl.","I came to repair the sword.")){
 			case 1:
 				mes "[Aumgarl]";
 				mes ".....";
@@ -3221,7 +3221,7 @@ geffen_in.gat,71,112,2	script	Blacksmith#SaYumMoon	731,{
 				mes "Hahaha....";
 				mes ".....peew heew....";
 				next;
-				switch(select("I want to marry her...:I came to repair the sword.:Anything wrong?")){
+				switch(select("I want to marry her...","I came to repair the sword.","Anything wrong?")){
 				case 1:
 					mes "[Aumgarl]";
 					mes ".....";
@@ -3289,7 +3289,7 @@ geffen_in.gat,71,112,2	script	Blacksmith#SaYumMoon	731,{
 					mes "no one even found out the name of";
 					mes "a disease.";
 					next;
-					switch(select("I am sorry to hear that.:I'll make her happy.:I want to cure her.")){
+					switch(select("I am sorry to hear that.","I'll make her happy.","I want to cure her.")){
 					case 1:
 						mes "[Aumgarl]";
 						mes "Ahh.......";
@@ -3307,7 +3307,7 @@ geffen_in.gat,71,112,2	script	Blacksmith#SaYumMoon	731,{
 						mes "I don't think it makes sense at all.";
 						mes "Umm......";
 						next;
-						switch(select( "I'll make her happy all the time.:I want to take her with me.:I will cure her.")){
+						switch(select( "I'll make her happy all the time.","I want to take her with me.","I will cure her.")){
 						case 1:
 							mes "[Aumgarl]";
 							mes "................";
@@ -3327,7 +3327,7 @@ geffen_in.gat,71,112,2	script	Blacksmith#SaYumMoon	731,{
 							mes "You want to take her to where?";
 							mes "What are you gonna do?";
 							next;
-							if (select("I will cure her.:I am sorry.") == 1) {
+							if (select("I will cure her.","I am sorry.") == 1) {
 								mes "[Aumgarl]";
 								mes "It's useless talking about";
 								mes "it any longer. I don't think";
@@ -3340,14 +3340,14 @@ geffen_in.gat,71,112,2	script	Blacksmith#SaYumMoon	731,{
 								mes "It's not your fault anyway.";
 								mes "........";
 								next;
-								if (select("...........:I'll wish for her recover.") == 1){
+								if (select("...........","I'll wish for her recover.") == 1){
 									mes "[Aumgarl]";
 									mes "Ahh......";
 									mes "....I am sorry to ask you this but..";
 									mes "can you do me a favor?";
 									mes "Umm......";
 									next;
-									if (select("No.:Sure.") == 1) {
+									if (select("No.","Sure.") == 1) {
 										mes "[Aumgarl]";
 										mes "Umm....";
 										mes "Alright, I won't bother you..";
@@ -3397,7 +3397,7 @@ geffen_in.gat,71,112,2	script	Blacksmith#SaYumMoon	731,{
 							mes "You don't look like";
 							mes "a doctor to me.";
 							next;
-							switch(select("I am a doctor.:I know a famous doctor.:I'll cure her no matter what.")){
+							switch(select("I am a doctor.","I know a famous doctor.","I'll cure her no matter what.")){
 							case 1:
 								mes "[Aumgarl]";
 								mes "Hoo.......";
@@ -3491,7 +3491,7 @@ geffen_in.gat,71,112,2	script	Blacksmith#SaYumMoon	731,{
 			mes "do for you?";
 			mes "I want to return your favor somehow.";
 			next;
-			if (select("No..I don't need anything.:Would you repair the sword for me?") == 1) {
+			if (select("No..I don't need anything.","Would you repair the sword for me?") == 1) {
 				mes "[Aumgarl]";
 				mes "Hmm....";
 				mes "Well..";
@@ -3536,7 +3536,7 @@ geffen_in.gat,71,112,2	script	Blacksmith#SaYumMoon	731,{
 				mes "I am sorry I am asking";
 				mes "you too much to do.";
 				next;
-				if (select("Umm..let's do it next time.:Alright, I'll go get them.") == 1){
+				if (select("Umm..let's do it next time.","Alright, I'll go get them.") == 1){
 					mes "[Aumgarl]";
 					mes "Umm.....";
 					mes "I am sorry I can't";
@@ -3574,7 +3574,7 @@ geffen_in.gat,71,112,2	script	Blacksmith#SaYumMoon	731,{
 			mes "I'll do my best";
 			mes "to help you.";
 			next;
-			if (select("Maybe next time..:Please repair this sword for me.") == 1) {
+			if (select("Maybe next time..","Please repair this sword for me.") == 1) {
 				mes "[Aumgarl]";
 				mes "Well..";
 				mes "Whenever you have a favor to ask,";
@@ -3616,7 +3616,7 @@ geffen_in.gat,71,112,2	script	Blacksmith#SaYumMoon	731,{
 				mes "I am sorry I am asking";
 				mes "you too much to do.";
 				next;
-				if (select("Umm..let's do it next time.:Alright, I'll go get them.") == 1) {
+				if (select("Umm..let's do it next time.","Alright, I'll go get them.") == 1) {
 					mes "[Aumgarl]";
 					mes "Umm.....";
 					mes "I am sorry I can't";
@@ -3748,7 +3748,7 @@ geffen_in.gat,106,106,7	script	Girl#gnbs2	716,{
 		}
 		mes "ah he he....";
 		next;
-		if (select("Ask about her health condition.:Talk to her for a while.") == 1){
+		if (select("Ask about her health condition.","Talk to her for a while.") == 1){
 			mes "[Lyroo]";
 			if (rand(1,4) == 3) {
 				mes "uh....umm...?";
@@ -3789,7 +3789,7 @@ geffen_in.gat,106,106,7	script	Girl#gnbs2	716,{
 		if (countitem(606) > 0) {
 			mes "uh?..what is that you have?";
 			next;
-			if (select("It's nothing.:It's your medicine.") == 1 || countitem(606) < 1){
+			if (select("It's nothing.","It's your medicine.") == 1 || countitem(606) < 1){
 				mes "[Lyroo]";
 				mes "umm......";
 				mes "ok....";
@@ -3911,7 +3911,7 @@ yuno_in01.gat,99,101,4	script	Doctor#gnbs	744,{
 				mes "...............";
 				mes "Need to ask me something?";
 				next;
-				if (select("You're so beautiful.:Do you like traveling?") == 1) {
+				if (select("You're so beautiful.","Do you like traveling?") == 1) {
 					mes "[Cylrnel]";
 					if (rand(1,4) == 4) {
 						mes "..excuse me?";
@@ -3920,7 +3920,7 @@ yuno_in01.gat,99,101,4	script	Doctor#gnbs	744,{
 						mes "Trying to work on me?";
 						mes "Ah ha ha ha.";
 						next;
-						if (select("Yes, I fell in love in first sight.:I have a favor to ask.") == 1) {
+						if (select("Yes, I fell in love in first sight.","I have a favor to ask.") == 1) {
 							mes "[Cylrnel]";
 							if (rand(1,3) == 3) {
 								mes "Ahhaha...Ahahaha...";
@@ -4035,7 +4035,7 @@ yuno_in01.gat,99,101,4	script	Doctor#gnbs	744,{
 			mes "I wanted to go with you, but";
 			mes "I been really busy.";
 			next;
-			if(select("Not yet...:Yes, Here.") == 1){
+			if(select("Not yet...","Yes, Here.") == 1){
 				mes "[Cylrnel]";
 				mes "You're still here?";
 				mes "Go right away!";
@@ -4090,7 +4090,7 @@ yuno_in01.gat,99,101,4	script	Doctor#gnbs	744,{
 			mes ""+sick4$[@sick4]+"^000000";
 			mes "right?";
 			next;
-			if(select("No..not exactly..:Yes, I am sure.") == 1){
+			if(select("No..not exactly..","Yes, I am sure.") == 1){
 				mes "[Cylrnel]";
 				mes "Then, go back to her and";
 				mes "find the exact symptoms";
@@ -4102,7 +4102,7 @@ yuno_in01.gat,99,101,4	script	Doctor#gnbs	744,{
 			mes "this, right?";
 			mes "If they're wrong symptoms, I can't be responsible.";
 			next;
-			if(select("Well..let me go and recheck it.:I'm sure.") == 1){
+			if(select("Well..let me go and recheck it.","I'm sure.") == 1){
 				mes "[Cylrnel]";
 				mes "Then, go back to her and";
 				mes "find the exact symptoms";

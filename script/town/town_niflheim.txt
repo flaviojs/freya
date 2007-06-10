@@ -185,13 +185,13 @@ L_book3:
 	mes "Ahahaha.... I see you are brave!!";
 	mes "Start reading your prayersahahahah!!";
 	next;
-	if(select("Clover.:Klaatu.:Kleitos.")==2)
+	if(select("Clover.","Klaatu.","Kleitos.")==2)
 		set @nif_t,@nif_t + 10;
 
-	if(select("Verit.:Veritas.:Verata.")==3)
+	if(select("Verit.","Veritas.","Verata.")==3)
 		set @nif_t,@nif_t + 10;
 
-	if(select("Necktie.:Necklace.:Nero.:^FFFFFFNictu.^000000")==4)
+	if(select("Necktie.","Necklace.","Nero.","^FFFFFFNictu.^000000")==4)
 		set @nif_t,@nif_t + 10;
 
 	mes "[Ashe Bruce]";

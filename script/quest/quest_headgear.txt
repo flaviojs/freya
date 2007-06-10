@@ -3183,7 +3183,7 @@ in_orcs01.gat,31,93,1	script	Orc Warrior#1	1023,2,2{
 					mes "you get a chance to proof and test your capability...";
 					mes "So what do you want to choose?";
 					next;
-					switch(select("I think I don't need it.:I want to take the 10,000 challenge.")) {
+					switch(select("I think I don't need it.","I want to take the 10,000 challenge.")) {
 					case 1:
 						mes "[Orc Warrior]";
 						mes "Alright, I won't force you to choose.";
@@ -3251,7 +3251,7 @@ in_orcs01.gat,31,93,1	script	Orc Warrior#1	1023,2,2{
 			mes "Do you want to add the record of your current victory";
 			mes "into this record? You have won "+countitem(931)+" times this time.";
 			next;
-			switch(select("Add the record:Add it later")) {
+			switch(select("Add the record","Add it later")) {
 			case 1:
 				set orcs_hero_hat2,orcs_hero_hat2+countitem(931);
 				delitem 931,countitem(931);
@@ -3347,7 +3347,7 @@ in_orcs01.gat,31,93,1	script	Orc Warrior#1	1023,2,2{
 				mes "a recognized Orc Warrior, maybe you can defeat them...";
 				mes "What is your choise?";
 				next;
-				switch(select("I am statisfied with the current condition:...I will challenge the trial")){
+				switch(select("I am statisfied with the current condition","...I will challenge the trial")){
 				case 1:
 					mes "[Orc Warrior]";
 					mes "Yes, it is useful";
@@ -3417,7 +3417,7 @@ in_orcs01.gat,31,93,1	script	Orc Warrior#1	1023,2,2{
 			mes "So, heroic emblem,";
 			mes "what will you do with it?";
 			next;
-			switch(select("I will take it back as token of victories:I'll give them back to Orc Heroes")) {
+			switch(select("I will take it back as token of victories","I'll give them back to Orc Heroes")) {
 			case 1:
 				mes "[Ork Warrior]";
 				mes "Well, that is a good choise.";
@@ -3549,7 +3549,7 @@ in_orcs01.gat,31,93,1	script	Orc Warrior#1	1023,2,2{
 				mes "Do you still want to talk under these circumstances?";
 				mes "Decendent of human?";
 				next;
-				switch(select("Let's battle, Orc Warrior!!:I will show you my faith")) {
+				switch(select("Let's battle, Orc Warrior!!","I will show you my faith")) {
 				case 1:
 					mes "[Orc Warrior]";
 					mes "Yeahyeahyee, what a noisy fella!!";
@@ -3628,7 +3628,7 @@ in_orcs01.gat,162,33,1	script	Hero of Orc#1	1087,2,2{
 				mes "can you return it to its origional owner?";
 				mes "Oh 'Human' Orc Warrior?";
 				next;
-				switch(select("I refuse to do so:I agree")) {
+				switch(select("I refuse to do so","I agree")) {
 				case 1:
 					mes "[Orc Hero]";
 					mes "Hmm, how stubborn.";

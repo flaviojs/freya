@@ -128,7 +128,7 @@ prt_castle.gat,43,30,3	script	Charles Orleans#cook	878,{
 		mes "but I am emboldened by";
 		mes "my, shall we say, curiosity.";
 		next;
-		switch(select("......?:She is my sister:Actually, I don't know her.")) {
+		switch(select("......?","She is my sister","Actually, I don't know her.")) {
 		case 1:
 			cutin "nyuang_3",2;
 			donpcevent "Child with Cat#cook::onDelight";
@@ -234,7 +234,7 @@ prt_castle.gat,43,30,3	script	Charles Orleans#cook	878,{
 		mes "I think teaching is a waste";
 		mes "of my time! ^333333*Sigh*^000000 However...";
 		next;
-		switch(select("Um, are you talking to me?:Wait, don't you remember me?:Sir Orleans?")) {
+		switch(select("Um, are you talking to me?","Wait, don't you remember me?","Sir Orleans?")) {
 		case 1:
 			cutin "orleans_7",0;
 			mes "[Charles Orleans]";
@@ -819,7 +819,7 @@ prt_castle.gat,43,30,3	script	Charles Orleans#cook	878,{
 		mes "...Nyaaa?";
 		mes "...Meow?";
 		next;
-		switch(select("What's your name, kid?:Do you want to eat something?:Here, kitty~:Get out!")) {
+		switch(select("What's your name, kid?","Do you want to eat something?","Here, kitty~","Get out!")) {
 		case 1:
 			donpcevent "Child with Cat#cook::OnOkay";
 			mes "[Child with Cat]";
@@ -1068,7 +1068,7 @@ prt_castle.gat,43,30,3	script	Charles Orleans#cook	878,{
 		mes "important to ask of me,";
 		mes "please let me take a break~";
 		next;
-		switch(select("I want to learn more recipes.:For whom do you cook?:I'm sorry to bother you...")) {
+		switch(select("I want to learn more recipes.","For whom do you cook?","I'm sorry to bother you...")) {
 		case 1:
 			cutin "orleans_7",0;
 			mes "[Charles Orleans]";
@@ -1284,7 +1284,7 @@ prt_castle.gat,43,30,3	script	Charles Orleans#cook	878,{
 				mes "my Level 1 Cookbooks.";
 				if (countitem(535) > 9) {
 					next;
-					if (select("Give 10 Pumpkins and Current Cookbook:Cancel") == 1) {
+					if (select("Give 10 Pumpkins and Current Cookbook","Cancel") == 1) {
 						cutin "orleans_6",0;
 						mes "[Charles Orleans]";
 						mes "Perfect, you've brought";
@@ -1315,7 +1315,7 @@ prt_castle.gat,43,30,3	script	Charles Orleans#cook	878,{
 				mes "to borrow my Level 2 Cookbook.";
 				if (countitem(538) > 4) {
 					next;
-					if (select("Give Cookies and Current Cookbook:Cancel") == 1) {
+					if (select("Give Cookies and Current Cookbook","Cancel") == 1) {
 						cutin "orleans_6",0;
 						mes "[Charles Orleans]";
 						mes "Oh, you brought these";
@@ -1349,7 +1349,7 @@ prt_castle.gat,43,30,3	script	Charles Orleans#cook	878,{
 				mes "Level 3 Cookbook, okay?";
 				if (countitem(551) > 4) {
 					next;
-					if (select("Give Sushi and Current Cookbook:Cancel")) {
+					if (select("Give Sushi and Current Cookbook","Cancel")) {
 						cutin "orleans_6",0;
 						mes "[Charles Orleans]";
 						mes "Ooh, these look so fresh!";
@@ -1381,7 +1381,7 @@ prt_castle.gat,43,30,3	script	Charles Orleans#cook	878,{
 				mes "borrow my Level 4 Cookbook.";
 				if (countitem(553) > 4) {
 					next;
-					if (select("Give Bao and Current Cookbook:Cancel") == 1) {
+					if (select("Give Bao and Current Cookbook","Cancel") == 1) {
 						cutin "orleans_6",0;
 						mes "[Charles Orleans]";
 						mes "Great, you actually";
@@ -1415,7 +1415,7 @@ prt_castle.gat,43,30,3	script	Charles Orleans#cook	878,{
 				mes "borrow a Level 5 Cookbook.";
 				if (countitem(711) > 9) {
 					next;
-					if (select("Give Shoots and Current Cookbook:Quit") == 1) {
+					if (select("Give Shoots and Current Cookbook","Quit") == 1) {
 						cutin "orleans_6",0;
 						mes "[Charles Orleans]";
 						mes "Goodness, these are";
@@ -1545,7 +1545,7 @@ prt_castle.gat,45,35,5	script	Madeleine Chu#cook	886,{
 		mes "Sir Charles. May I help";
 		mes "you with anything today?";
 		next;
-		switch(select("What do you do as a chef?:Which foods can you make?:I want to learn cooking too!")) {
+		switch(select("What do you do as a chef?","Which foods can you make?","I want to learn cooking too!")) {
 		case 1:
 			mes "[Madeleine Chu]";
 			mes "What do I do as a chef?";
@@ -1644,7 +1644,7 @@ prt_castle.gat,45,35,5	script	Madeleine Chu#cook	886,{
 		mes "you of the ingredients you need";
 		mes "if you've forgotten them~";
 		next;
-		switch(select("Fried Grasshopper Legs:Grape Juice Herbal Tea:Honey Grape Juice:Frog Egg and Squid Ink Soup:Steamed Crab Nippers:Fried Monkey Tails")) {
+		switch(select("Fried Grasshopper Legs","Grape Juice Herbal Tea","Honey Grape Juice","Frog Egg and Squid Ink Soup","Steamed Crab Nippers","Fried Monkey Tails")) {
 		case 1:
 			mes "[Madeleine Chu]";
 			mes "Oh! You'll need";
@@ -1756,14 +1756,14 @@ prt_castle.gat,45,35,5	script	Madeleine Chu#cook	886,{
 		mes "your culinary skills. Now,";
 		mes "can I help you with anything?";
 		next;
-		switch(select("I need some Cooking Kits.:Will you try the food I cooked?:How does the food I cooked look?")) {
+		switch(select("I need some Cooking Kits.","Will you try the food I cooked?","How does the food I cooked look?")) {
 		case 1:
 			mes "[Madeleine Chu]";
 			mes "Sure, which kind";
 			mes "of Cooking Kits";
 			mes "did you need?";
 			next;
-			switch(Select("Outdoor Cooking Kit - 500z:Home Cooking Kit - 1,000z:Quit")) {
+			switch(Select("Outdoor Cooking Kit - 500z","Home Cooking Kit - 1,000z","Quit")) {
 			case 1:
 				callfunc "F_SellSets",12125;
 				close;
@@ -1895,7 +1895,7 @@ prt_castle.gat,45,35,5	script	Madeleine Chu#cook	886,{
 			mes "I'd be disappointed if";
 			mes "you lost it or sold it...";
 			next;
-			if (select("I did!:I lost the Bundle of Food!") == 1) {
+			if (select("I did!","I lost the Bundle of Food!") == 1) {
 				mes "[Madeleine Chu]";
 				mes "Hahaha, I suppose you";
 				mes "did. But even if you didn't";
@@ -1972,14 +1972,14 @@ prt_castle.gat,45,35,5	script	Madeleine Chu#cook	886,{
 		mes "Now, can I help you with";
 		mes "anything in particular?";
 		next;
-		switch(select("I need some Cooking Kits.:How is Sir Charles?:Um, who's that kid?")) {
+		switch(select("I need some Cooking Kits.","How is Sir Charles?","Um, who's that kid?")) {
 		case 1:
 			mes "[Madeleine Chu]";
 			mes "Sure, which kind";
 			mes "of Cooking Kits";
 			mes "did you need?";
 			next;
-			switch(select("Outdoor Cooking Kit - 500z:Home Cooking Kit - 1,000z:Show me a different kit.:Quit")) {
+			switch(select("Outdoor Cooking Kit - 500z","Home Cooking Kit - 1,000z","Show me a different kit.","Quit")) {
 			case 1:
 				callfunc "F_SellSets",12125;
 				close;
@@ -2279,7 +2279,7 @@ payon.gat,209,127,3	script	Servant	88,{
 		mes "It's only 200 zeny, but";
 		mes "it's oh-so-delicious~";
 		next;
-		switch(select("Sure, I'll buy one!:No, thanks.:Actually, Madeleine sent me...")) {
+		switch(select("Sure, I'll buy one!","No, thanks.","Actually, Madeleine sent me...")) {
 		case 1:
 			if (zeny < 200) {
 				mes "[Chulsoo]";
@@ -2451,7 +2451,7 @@ payon.gat,209,127,3	script	Servant	88,{
 		mes "It's only 200 zeny, but";
 		mes "it's oh-so-delicious~";
 		next;
-		if (select("Sure, I'll buy one!:No, thanks.") == 1) {
+		if (select("Sure, I'll buy one!","No, thanks.") == 1) {
 			if (zeny < 200) {
 				mes "[Chulsoo]";
 				mes "Oh, I'm sorry, but";

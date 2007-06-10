@@ -539,7 +539,7 @@ comodo.gat,112,182,0	script	Munak's Grandma	103,{
 		mes "leave my misery behind and came";
 		mes "here to Comodo...";
 		next;
-		switch(select("Oh come on! Cheer up!:Um, is this diary...?")) {
+		switch(select("Oh come on! Cheer up!","Um, is this diary...?")) {
 		case 1:
 			mes "[Munak's Grandma]";
 			mes "It seems my granddaughter haunts my";
@@ -565,7 +565,7 @@ comodo.gat,112,182,0	script	Munak's Grandma	103,{
 				mes "please. I no longer have anything";
 				mes "that belonged to her now...";
 				next;
-				switch(select("No way.:Ok, I'll.")) {
+				switch(select("No way.","Ok, I'll.")) {
 				case 1:
 					mes "[Munak's Grandma]";
 					mes "Oh...?";
