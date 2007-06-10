@@ -9,7 +9,7 @@
 //--------------------------------------------------------------
 // Script Title: Prontera Town NPCs	Author: Tsuyuki/L0ne_W0lf
 //--------------------------------------------------------------
-// Revision History: v1.6
+// Revision History: v1.8
 //--------------------------------------------------------------
 //	1.0 Converted from Aegis, replaced old file entirely [Tsuyuki]
 //	1.1 Merged Prontera library books into this file [Tsuyuki]
@@ -18,6 +18,8 @@
 //	1.4 Fixed some bugs in the Prontera Town NPCs + Milk Vendor [Tsuyuki]
 //	1.5 Updated Prontera Library Encyclopedias/Books, converted from Aegis by L0ne_W0lf [Tsuyuki]
 //	1.6 Updated the Magical Swords Quest with iRO dialogue [Tsuyuki]
+//	1.7 Updated Prontera Maze Guard dialogues [Tsuyuki]
+//	1.8 Fixed a small bug [Tsuyuki]
 //--------------------------------------------------------------
 // Additional Notes: * Aegis-certified *
 //--------------------------------------------------------------
@@ -64,16 +66,23 @@ prt_fild05.gat,270,212,5	script	Culvert Guardian	105,{
 prt_maze02.gat,100,69,0	script	Soldier	105,{
 
 	mes "[Soldier]";
-	mes "Somehow you had better control yourself well when you go in this wood. I heard the devil will show up here!";
-	mes "Because no one ever comea back once they go in there, no one knows why. What?! ...Off course it is your choice to go in.";
+	mes "H-hey!";
+	mes "What are";
+	mes "you doing here?!";
+	next;
+	mes "[Soldier]";
+	mes "Don't you know there's a Demon living in this forest?! I can't guarantee your safety";
+	mes "if you go in!";
 	close;
 }
 
 prt_maze02.gat,110,69,0	script	Soldier	105,{
 
 	mes "[Soldier]";
-	mes "Keh! ... The last guy that went in might not be back! To get certain herbs you have to go in there....";
-	mes "If I were you I won't be stupid enough to die for that herb.";
+	mes "*Sigh...* The last guy that entered this place haven't come back at all. He didn't listen to me and went in to gather Herbs or something dumb like that...";
+	next;
+	mes "[Soldier]";
+	mes "Whaaaat a stupid guy. Why would anyone want to throw his life away just to collect some silly Herbs?";
 	close;
 }
 
@@ -402,7 +411,7 @@ prt_in.gat,173,24,2	script	Shevild	85,{
 		mes "mysterious dungeon or that";
 		mes "dangerous forest?!";
 		next;
-		if (VAR_JOB == NOVICE) goto L_Case03;
+		if (Basejob == Job_Novice) goto L_Case03;
 		goto L_Case04;
 
 		L_Case03:
