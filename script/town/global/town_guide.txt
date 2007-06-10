@@ -9,10 +9,11 @@
 //--------------------------------------------------------------
 // Script Title: Guide NPCs	Author: A Lot of People
 //--------------------------------------------------------------
-// Revision History: v1.1
+// Revision History: v1.2
 //--------------------------------------------------------------
 //	1.0 Merged all guide NPC scripts into this file [Tsuyuki]
 //	1.1 Updated Rachel Guide NPC to official by L0ne_W0lf [Tsuyuki]
+//	1.2 Updated Rachel Guide NPC again by L0ne_W0lf [Tsuyuki]
 //--------------------------------------------------------------
 // Additional Notes: Rachel/Veins Guides are incomplete.
 // Louyang Guide NPCs are * Official-certified *. Juno Guide NPCs
@@ -2797,7 +2798,8 @@ rachel.gat,138,146,5	script	Rachel Guide	934,{
 	mes "If this is the first time for you";
 	mes "to use the guide services, why";
 	mes "don't you check the \"Notice\" menu first?";
-	while(1) {
+	set @loop,1;
+	while(@loop) {
 		next;
 		switch(select("Village Guide","Remove Marks from Mini-Map","Notice","Cancel")) {
 		case 1:
@@ -2811,9 +2813,9 @@ rachel.gat,138,146,5	script	Rachel Guide	934,{
 				next;
 				if (select("Yes","No") == 1) set @compass_check,1;
 				next;
-
 			}
-			while(1) {
+			set @loop2,1;
+			while(@loop2) {
 				if (@wait_button_chk == 0) set @wait_button_chk,1;
 				else next;
 
@@ -2851,10 +2853,9 @@ rachel.gat,138,146,5	script	Rachel Guide	934,{
 					mes "[Rachel Guide]";
 					mes "If you like to get rid of all the location marks on your Mini-Map,";
 					mes "just ask me again, and choose \"Remove Marks from Mini-Map\" menu.";
-					set @Exitloop,1;
+					set @loop2,0;
 					break;
 				}
-				if (@Exitloop) break;
 			}
 			break;
 
@@ -2878,10 +2879,9 @@ rachel.gat,138,146,5	script	Rachel Guide	934,{
 			mes "[Rachel Guide]";
 			mes "Hope you have a wonderfull journey";
 			mes "in Arunafeltz.";
-			set @Exitloop2,1;
+			set @loop,0;
 			break;
 		}
-		if (@Exitloop2) break;
 	}
 	close;
 }

@@ -9,7 +9,7 @@
 //--------------------------------------------------------------
 // Script Title: Rachel Town NPCs	Author: L0ne_W0lf
 //--------------------------------------------------------------
-// Revision History: v1.8
+// Revision History: v2.1
 //--------------------------------------------------------------
 //	1.0 Text translated from Korean -> English based on a kRO video by Doddler [Harp]
 //	 - Highly incomplete, missing all quests
@@ -22,6 +22,9 @@
 //	 - Lost Child QUest, Bruspetti Quest, Ice Necklace Quest, Sanctuary Quest
 //	1.7 Some slight optimization [L0ne_W0lf]
 //	1.8 Fixed Man Stuck in Ice only giving 1 Freezing Snow Powder [L0ne_W0lf]
+//	1.9 Added hte ability to redeem lottery tickets before donation max is met [L0ne_W0lf]
+//	2.0 Removed an erroneous "case". Thanks, Jet [L0ne_W0lf]
+//	2.1 Fixed an exploit and otpimized Rachel donations [Playtester]
 //--------------------------------------------------------------
 // Additional Notes: * Aegis-certified / Official-certified *
 //--------------------------------------------------------------
@@ -4685,15 +4688,15 @@ ra_temple.gat,116,174,3	script	Nemma#ra_temple	920,{
 			switch(select("50,000z - 1 Lottery Ticket","100,000z - 2 Lottery Ticket","150,000z - 3 Lottery Ticket","Cancel")) {
 
 			case 1:
-				callsub S_Donate,50000,"50,000",1;
+				callsub S_Donate,1,"50,000";
 				break;
 
 			case 2:
-				callsub S_Donate,100000,"100,000",3;
+				callsub S_Donate,2,"100,000";
 				break;
 
 			case 3:
-				callsub S_Donate,150000,"150,000",3;
+				callsub S_Donate,3,"150,000";
 				break;
 
 			case 4:
@@ -4737,15 +4740,15 @@ ra_temple.gat,116,174,3	script	Nemma#ra_temple	920,{
 				switch(select("50,000z - 1 Lottery Ticket","100,000z - 2 Lottery Ticket","150,000z - 3 Lottery Ticket","Cancel")) {
 
 				case 1:
-					callsub S_Donate,50000,"50,000",1;
+					callsub S_Donate,1,"50,000";
 					break;
 
 				case 2:
-					callsub S_Donate,100000,"100,000",3;
+					callsub S_Donate,2,"100,000";
 					break;
 
 				case 3:
-					callsub S_Donate,150000,"150,000",3;
+					callsub S_Donate,3,"150,000";
 					break;
 
 				case 4:
@@ -5005,9 +5008,10 @@ S_Donate:
 	mes "[Priestess Nemma]";
 	mes "So, " + strcharinfo(0) + "...";
 	mes "I just want to make sure:";
-	mes "you want to donate "+getarg(1);
-	mes "zeny, and receive 1 Lottery ";
-	mes "Ticket. Is that correct?";
+	mes "You want to donate "+getarg(1);
+	mes "zeny, and receive "+getarg(0)+" Lottery";
+	if(getarg(0) == 1) mes "Ticket. Is that correct?";
+	else mes "Tickets. Is that correct?";
 	next;
 	if (select("No","Yes") == 1) {
 		mes "[Priestess Nemma]";
@@ -5019,8 +5023,8 @@ S_Donate:
 		mes "generous and rewards the patient!";
 		return;
 	}
-	if (zeny >= getarg(0)) {
-		if (!checkweight(7570,getarg(2))) {
+	if (zeny >= getarg(0)*50000) {
+		if (!checkweight(7570,getarg(0))) {
 			cutin "ra_nemma02",2;
 			mes "[Priestess Nemma]";
 			mes "I can scarcely believe it...";
@@ -5039,9 +5043,9 @@ S_Donate:
 			mes "donate if you can, okay?";
 			return;
 		}
-		set $rachel_donate,$rachel_donate+getarg(2);
-		getitem 7570,getarg(2); //Temple_Lottery_Ticket
-		set zeny,zeny-getarg(0);
+		set $rachel_donate,$rachel_donate+getarg(0);
+		getitem 7570,getarg(0); //Temple_Lottery_Ticket
+		set zeny,zeny-getarg(0)*50000;
 		set ra_have_donated,1;
 		if ($rachel_donate > 9999) {
 			cutin "ra_nemma03",2;
@@ -6187,23 +6191,16 @@ L_End:
 ra_temin.gat,170,46,3	script	Panno#rachel	920,{
 
 	cutin "ra_fano03",2;
-	if (ra_tem_q == 10) {
+	if (ra_tem_q < 2) {
 		mes "[Priestess Panno]";
-		mes "Good day.";
+		mes "Greetings.";
+		mes "May Freya fill";
+		mes "your days with joy.";
+		mes "Laughter. And prosperity.";
 		next;
-
-		switch(select("Redeem Lottery Tickets","Temple Information","Hey, did you open the gate?")) {
-
+		switch(select("Redeem Lottery Tickets","Temple Information","Hey, what's happening?")) {
 		case 1:
-			cutin "ra_fano01",2;
-			mes "[Priestess Panno]";
-			mes "You... still have";
-			mes "Lottery Tickets from";
-			mes "making donations for";
-			mes "the festival? Look up the";
-			mes "word ''punctuality'' in the";
-			mes "dictionary. It might help you.";
-			next;
+			cutin "ra_fano03",2;
 			mes "[Priestess Panno]";
 			mes "Fine. You really";
 			mes "want to exchange your";
@@ -6213,7 +6210,8 @@ ra_temin.gat,170,46,3	script	Panno#rachel	920,{
 			mes "them for some weird reason.";
 			next;
 			if (select("Yes","No") == 1) goto L_Lottery;
-			mes "[Priestess Panno]";
+			cutin "ra_fano03",2;
+			mes "[Priestess Panno]";;
 			mes "You can redeem your";
 			mes "Lottery Tickets at any";
 			mes "time, so please visit";
@@ -6225,7 +6223,7 @@ ra_temin.gat,170,46,3	script	Panno#rachel	920,{
 			cutin "ra_fano01",2;
 			mes "[Priestess Panno]";
 			mes "The Chapel is located";
-			mes "over the wall behind me";
+			mes "over the wall behind me.";
 			mes "Our pope's office and chambers";
 			mes "are upstairs. You can only go";
 			mes "there if you have special";
@@ -6251,7 +6249,7 @@ ra_temin.gat,170,46,3	script	Panno#rachel	920,{
 			mes "with the priestesses";
 			mes "like me. Don't forget it.";
 			next;
-			cutin "ra_fano02",2;
+			cutin "ra_fano03",2;
 			mes "[Priestess Panno]";
 			mes "The offices for the High";
 			mes "Priests are located on each";
@@ -6261,193 +6259,14 @@ ra_temin.gat,170,46,3	script	Panno#rachel	920,{
 			goto L_End;
 
 		case 3:
-			cutin "ra_fano02",2;
 			mes "[Priestess Panno]";
-			mes "Gate...?";
-			next;
-			select("The locked gate to the temple!");
-			mes "[Priestess Panno]";
-			mes "I don't know";
-			mes "what you mean.";
-			next;
-			select("Explain");
-			mes "["+strcharinfo(0)+"]";
-			mes "I think that Priestess Nemma";
-			mes "has been worried about the";
-			mes "gate being broken, though";
-			mes "it hasn't been like that since";
-			mes "you've started your position";
-			mes "here at the temple.";
-			next;
-			mes "[Priestess Panno]";
-			mes "Worried...?";
-			mes "Yes, my twin sister";
-			mes "has been known to";
-			mes "do a lot of that, and cry";
-			mes "for my help. Am I right?";
-			next;
-			mes "["+strcharinfo(0)+"]";
-			mes "It's weird";
-			mes "...She said that the gate";
-			mes "should automatically fix";
-			mes "itself, but it hasn't been";
-			mes "doing it lately. She was";
-			mes "acting really funny..";
-			next;
-			mes "["+strcharinfo(0)+"]";
-			mes "She was talking about";
-			mes "the temple's history and";
-			mes "how the security system was";
-			mes "built. Then she mentioned you,";
-			mes "so I get the feeling you might";
-			mes "know something about this.";
-			next;
-			mes "[Priestess Panno]";
-			mes ".........";
-			set ra_tem_q,11;
+			mes "......................";
+			mes "No chit-chat";
+			mes "inside the temple.";
 			goto L_End;
-
 		}
-
 	}
-
-	else if (ra_tem_q == 11) {
-		mes "["+strcharinfo(0)+"]";
-		mes "I remember now...!";
-		mes "I was there when the gate";
-		mes "closed, and I heard someone";
-		mes "with your exact voice whisper";
-		mes "something to magically open";
-		mes "the gate! What's that all about?";
-		next;
-		mes "[Priestess Panno]";
-		mes "......";
-		mes ".........";
-		mes "............";
-		next;
-		mes "[Priestess Panno]";
-		mes "......";
-		mes ".........";
-		mes "............";
-		mes "We... I mean....";
-		next;
-		cutin "ra_fano01",2;
-		mes "[Priestess Panno]";
-		mes "Nemma and I are descended";
-		mes "from a family of great alchemists.";
-		mes "They went on a long, religious";
-		mes "pilgrimage and ended up here.";
-		mes "They are the ones that built";
-		mes "this temple and security system.";
-		next;
-		mes "[Priestess Panno]";
-		mes "In a sense, this temple";
-		mes "is the tomb of our ancestors,";
-		mes "who left Rune-Midgarts and";
-		mes "built this city of Rachel about";
-		mes "a thousand years ago.";
-		next;
-		mes "[Priestess Panno]";
-		mes "Over the generations, many";
-		mes "Alchemists left Rune-Midgarts";
-		mes "and settled here, converting";
-		mes "the desert into green fields.";
-		mes "This temple was supposed";
-		mes "be a shelter from intruders.";
-		next;
-		mes "[Priestess Panno]";
-		mes "My ancester designed the";
-		mes "temple security system to";
-		mes "require a special permit in";
-		mes "order to access the temple";
-		mes "But the invaders never came,";
-		mes "and we didn't need the permits.";
-		next;
-		mes "[Priestess Panno]";
-		mes "The special permits were";
-		mes "disposed, but the automatic";
-		mes "security system was left on";
-		mes "the gate, just in case. Now,";
-		mes "I've heard that the security";
-		mes "system has been malfunctioning.";
-		next;
-		cutin "ra_fano03",2;
-		mes "[Priestess Panno]";
-		mes "However, that's not possible.";
-		mes "Even by today's standards, the";
-		mes "system is perfectly designed.";
-		mes "While I was praying in the";
-		mes "Chapel some time ago, I found";
-		mes "what is causing the gate problems.";
-		next;
-		mes "[Priestess Panno]";
-		mes "Suddenly, the lights went";
-		mes "out, and I could only barely";
-		mes "see distinguish my surroundings.";
-		mes "I was about to go outside when";
-		mes "I heard a noise from the stairs.";
-		next;
-		cutin "ra_fano02",2;
-		mes "[Priestess Panno]";
-		mes "From what I can tell,";
-		mes "someone is transporting";
-		mes "something out of the Holy";
-		mes "Grounds. I don't know what";
-		mes "they keep there, though.";
-		mes "I'm not a high rank Priestess.";
-		next;
-		mes "[Priestess Panno]";
-		mes "I'm not sure if I want";
-		mes "to find out what's there";
-		mes "I heard something that";
-		mes "sounded like a horrible";
-		mes "monster's howl. It was";
-		mes "incredibly frightening.";
-		next;
-		mes "[Priestess Panno]";
-		mes "I panicked, ran to";
-		mes "my desk at the front,";
-		mes "and just recited the secret";
-		mes "password passed down from my";
-		mes "ancestors to open the gate.";
-		next;
-		cutin "ra_fano01",2;
-		mes "[Priestess Panno]";
-		mes "You see, my ancestors";
-		mes "included the secret password";
-		mes "and voice recognition feature";
-		mes "into the gate in case something";
-		mes "after they disposed of the";
-		mes "temple permits--just in case.";
-		next;
-		mes "[Priestess Panno]";
-		mes "The real reason why the gate";
-		mes "is acting strangely is not";
-		mes "because the gate is broken,";
-		mes "but because someone is sneaking";
-		mes "in and out of the Holy Ground.";
-		next;
-		mes "[Priestess Panno]";
-		mes "Whoever they are, they";
-		mes "must be using one of the";
-		mes "old temple permits in order";
-		mes "to cover their tracks. Now,";
-		mes "you know everything.";
-		next;
-		cutin "ra_fano01",2;
-		mes "[Priestess Panno]";
-		mes "You'd better not";
-		mes "reveal what you learned";
-		mes "from me. Otherwise, I'm";
-		mes "sure we'll end up dead.";
-		mes "Excuse me now, I need";
-		mes "to get back to work.";
-		set ra_tem_q,12;
-		goto L_End;
-	}
-
-	else if (ra_tem_q >= 12 || MISC_QUEST & 8192) {
-		cutin "ra_fano03",2;
+	else if (ra_tem_q == 10) {
 		mes "[Priestess Panno]";
 		mes "Good day.";
 		mes "Have you come to";
@@ -6461,30 +6280,29 @@ ra_temin.gat,170,46,3	script	Panno#rachel	920,{
 			mes "everything I know.";
 			mes "Remember to keep";
 			mes "quiet about what I said.";
+			goto L_End;
 		}
-		else {
-			cutin "ra_fano02",2;
-			mes "[Priestess Panno]";
-			mes "This is a holy place";
-			mes "Behave yourself, and";
-			mes "respect those who have";
-			mes "come here just to worship.";
-		}
-		goto L_End;
-
 	}
-
-	else {
-		cutin "ra_fano02",2;
-		mes "[Priestess Panno]";
-		mes "This is a holy place";
-		mes "Behave yourself, and";
-		mes "respect those who have";
-		mes "come here just to worship.";
-		goto L_End;
-	}
+	cutin "ra_fano02",2;
+	mes "[Priestess Panno]";
+	mes "This is a holy place";
+	mes "Behave yourself, and";
+	mes "respect those who have";
+	mes "come here just to worship.";
+	goto L_End;
 
 L_Lottery:
+	if (checkweight(607,1) == 0) {
+		cutin "ra_fano02",2;
+		mes "[Priestess Panno]";
+		mes "You're carrying too much";
+		mes "right now. What are you";
+		mes "going to do if I give you";
+		mes "something large, unwieldy";
+		mes "and heavy? Put your junk";
+		mes "away in Storage first.";
+		goto L_End;
+	}
 	mes "[Priestess Panno]";
 	mes "Here we go";
 	mes "Excited? Mm";
@@ -6524,7 +6342,7 @@ L_Lottery:
 	mes "[Priestess Panno]";
 	mes "You...";
 	mes "Don't have any Lottery";
-	mes "Tickets to redeem";
+	mes "Tickets to redeem?";
 	mes "We're not distributing";
 	mes "them now, but maybe you";
 	mes "can ask your friends for one.";
