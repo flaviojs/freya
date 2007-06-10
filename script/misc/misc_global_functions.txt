@@ -56,7 +56,7 @@ function	script	F_ClearJobVariables	{
 	set DANC_Q,0;
 	set BARD_Q,0;
 	// Expanded Classes
-	set TAEK_Q,0; set TK_Q,0;
+	set TAEK_Q,0; set TAEK_Q2,0; set TK_Q,0;
 	set STGL_Q,0;
 	set SOUL_Q,0;
 	set GUNS_Q,0;

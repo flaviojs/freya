@@ -9,22 +9,69 @@
 //--------------------------------------------------------------
 // Script Title: Taekwon Job Change Quest	Author: Tsuyuki
 //--------------------------------------------------------------
-// Revision History: v1.1
+// Revision History: v1.2
 //--------------------------------------------------------------
 //	1.0 First version [Tsuyuki]
 //	1.1 Fixed quest for level 99 and above Novices [Tsuyuki]
+//	1.2 Made 100% fully official based on the iRO Aegis script [Tsuyuki]
 //--------------------------------------------------------------
-// Additional Notes: * Official-certified *
+// Additional Notes: * Official-certified / Aegis-certified *
 //--------------------------------------------------------------
 
 
-payon.gat,157,141,5	script	Phoenix#TKjob_change	753,{
+payon.gat,157,141,5	script	Phoenix#Taekwon	753,{
 
+	if (Upper == 2) goto L_Baby;
 	if (BaseClass == Job_Taekwon) goto L_Complete;
 	if (TK_Q == 1) goto L_Activated2;
-	if (TK_Q == 2) goto L_job_change;
-	if (TAEK_Q > 0) goto L_Activated1;
+	if (TK_Q == 2) goto L_JobChange;
+	if (TAEK_Q2) goto L_Strong;
+	if (TAEK_Q) goto L_Activated1;
+	if (Class == Job_Novice) goto L_Begin;
+	goto L_OtherClass;
 
+L_OtherClass:
+	mes "[Phoenix]";
+	mes "This land. Our once";
+	mes "beautiful world has been";
+	mes "stained by evil: there are";
+	mes "too many men corrupted by";
+	mes "darkness, too many monsters";
+	mes "threatening the innocent...";
+	next;
+	mes "[Phoenix]";
+	mes "The havoc that reigns in this";
+	mes "world is too much for normal";
+	mes "humans, which cannot stand";
+	mes "up for themselves against such";
+	mes "overwhelming odds. Still, one";
+	mes "must aspire to fight the odds.";
+	next;
+	mes "[Phoenix]";
+	mes "And so, I've dedicated";
+	mes "myself to becoming stronger.";
+	mes "I have been training to achieve";
+	mes "enlightenment, developing an art to hone the mind and body that";
+	mes "I wish to share with the world.";
+	next;
+	mes "[Phoenix]";
+	mes "I may not be able to change";
+	mes "the world on my own, but I'll";
+	mes "never stop training myself";
+	mes "spiritually and physically.";
+	mes "I know that the answer";
+	mes "will come in time...";
+	next;
+	mes "[Phoenix]";
+	mes "Noble adventurer:";
+	mes "if you know anyone who";
+	mes "has not chosen his path";
+	mes "in life, please recommend";
+	mes "him to me. If interested,";
+	mes "I may teach him my art...";
+	close;
+
+L_Begin:
 	mes "[Phoenix]";
 	mes "This land. Our once";
 	mes "beautiful world as been";
@@ -65,11 +112,10 @@ payon.gat,157,141,5	script	Phoenix#TKjob_change	753,{
 	mes "art. It won't be easy, but it will";
 	mes "lead you to great strength...";
 	next;
-	menu "Okay, I will join you.",L_Join,"No, thank you.",L_NoThx;
+	menu "Okay, I will join you.",L_Join,"No, thank you.",L_NoThanks;
 
 L_Join:
-	// Can't be Baby/High Novice, MUST be normal Novice
-	if (Class != Job_Novice || JobLevel < 9) goto L_Failed1;
+	if (JobLevel < 9) goto L_Failed1;
 	mes "[Phoenix]";
 	mes "Very well... I accept you";
 	mes "as my student. In beginning";
@@ -96,7 +142,7 @@ L_Join:
 	set TAEK_Q,BaseLevel;
 	close;
 
-L_NoThx:
+L_NoThanks:
 	mes "[Phoenix]";
 	mes "I understand. One's life can";
 	mes "take many paths, but you can";
@@ -107,8 +153,6 @@ L_NoThx:
 	close;
 
 L_Failed1:
-	// Can't be Baby/High Novice, MUST be normal Novice
-	if (Class != Job_Novice) goto L_Failed2;
 	mes "[Phoenix]";
 	mes "How unfortunate!";
 	mes "You're not yet ready to";
@@ -118,14 +162,9 @@ L_Failed1:
 	mes "reach Job Level 9 or higher.";
 	close;
 
-L_Failed2: // CUSTOM MESSAGE
-	mes "[Phoenix]";
-	mes "It seems that you have already";
-	mes "chosen a path of life..";
-	close;
-
 L_Activated1:
-	if (TAEK_Q < BaseLevel || TAEK_Q >= 99) goto L_Finish;
+	if (TAEK_Q >= 99) goto L_Strong;
+	if (TAEK_Q < BaseLevel || TAEK_Q >= 20) goto L_Finish;
 	mes "[Phoenix]";
 	mes "You must gain ^ff00001 more";
 	mes "Base Level^000000 to prove that";
@@ -134,8 +173,18 @@ L_Activated1:
 	mes "neglect your training.";
 	close;
 
+L_Strong:
+	mes "[Phoenix]";
+	mes "Hm. I see that you have";
+	mes "undergone sufficient physical";
+	mes "training as a Novice. Very good. Then let us prepare for your";
+	mes "spiritual training. Take a deep";
+	mes "breath, speak to me when ready.";
+	set TAEK_Q2,1;
+	close;
+
 L_Finish:
-	if (SkillPoint > 0) goto L_Failed1;
+	if (SkillPoint) goto L_Failed1;
 	mes "[Phoenix]";
 	mes "Good I sense that you";
 	mes "are more in tune with your";
@@ -328,7 +377,7 @@ L_TKQST3:
 	mes "failure. Then, you return to me.";
 	close;
 
-L_job_change:
+L_JobChange:
 	mes "[Phoenix]";
 	mes "Are you feeling calm";
 	mes "and at peace? I will ask";
@@ -341,9 +390,9 @@ L_job_change:
 	mes "I will teach you, and uphold";
 	mes "the dignity of its philosophy?^000000";
 	next;
-	menu "Yes.",L_job_changeA,"No.",L_job_changeB;
+	menu "Yes.",L_JobChangeA,"No.",L_JobChangeB;
 
-L_job_changeA:
+L_JobChangeA:
 	mes "[Phoenix]";
 	mes "Very well. You are no";
 	mes "longer just a student.";
@@ -371,7 +420,12 @@ L_job_changeA:
 	mes "You are still young, so";
 	mes "I assume you'll want a job";
 	mes "title. Mm. In that case, you";
-	mes "are now a ^ff0000Taekwon Boy^000000.";
+	if (Sex == Male) {
+		mes "are now a ^ff0000Taekwon Boy^000000.";
+	}
+	else {
+		mes "are now a ^ff0000Taekwon Girl^000000.";
+	}
 	mes "Yes, that sounds good.";
 
 	callfunc "F_JobChange",Job_Taekwon;
@@ -401,7 +455,7 @@ L_job_changeA:
 	mes "sometime, "+strcharinfo(0)+".";
 	close;
 
-L_job_changeB:
+L_JobChangeB:
 	mes "[Phoenix]";
 	mes "Hm, perhaps you are not";
 	mes "quite ready to progress from";
@@ -419,5 +473,10 @@ L_Complete:
 	mes "refined or spectacular,";
 	mes "never forget that you can";
 	mes "always rely on the basics.";
+	close;
+
+L_Baby:
+	mes "[Phoenix]";
+	mes "Hello, child.";
 	close;
 }
