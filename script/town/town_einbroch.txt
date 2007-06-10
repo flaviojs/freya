@@ -94,7 +94,7 @@ einbroch.gat,235,141,5	script	Bulletin Board#05	858,{
 	close;
 }
 
-function	script	Ein_Tower	{
+function	script	F_EinTower	{
 
 	mes "["+ @Tower_Name$ +"]";
 	mes "Good day~";
@@ -166,7 +166,7 @@ s_NEnough:
 einbroch.gat,176,172,5	script	Khemko	855,{
 
 	set @Tower_Name$,"Khemko";
-	callfunc "Ein_Tower";
+	callfunc "F_EinTower";
 	end;
 
 OnHide:
@@ -182,7 +182,7 @@ OnUnhide:
 einbroch.gat,218,198,5	script	Mark	855,{
 
 	set @Tower_Name$,"Mark";
-	callfunc "Ein_Tower";
+	callfunc "F_EinTower";
 	end;
 
 OnHide:
@@ -198,7 +198,7 @@ OnUnhide:
 einbroch.gat,174,228,5	script	Oberu	855,{
 
 	set @Tower_Name$,"Oberu";
-	callfunc "Ein_Tower";
+	callfunc "F_EinTower";
 	end;
 
 OnHide:

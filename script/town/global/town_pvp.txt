@@ -28,32 +28,32 @@
 // Alberta
 alberta_in.gat,22,146,4	script	PvP Narrator#1	84,{
 
-	callfunc "F_PvPNarr", "alberta_in.gat", 24, 143;
+	callfunc "F_PvPNarrarator", "alberta_in.gat", 24, 143;
 	end;
 }
 // Payon
 payon_in01.gat,173,109,3	script	PvP Narrator#2	84,{
 
-	callfunc "F_PvPNarr", "payon_in01.gat", 169, 108;
+	callfunc "F_PvPNarrarator", "payon_in01.gat", 169, 108;
 	end;
 }
 // Prontera
 prt_in.gat,56,140,4	script	PvP Narrator#3	84,{
 
-	callfunc "F_PvPNarr", "prt_in.gat", 54, 137;
+	callfunc "F_PvPNarrarator", "prt_in.gat", 54, 137;
 	end;
 }
 // Morroc
 morocc_in.gat,144,138,4	script	PvP Narrator#4	84,{
 
-	callfunc "F_PvPNarr", "morocc_in.gat", 141, 140;
+	callfunc "F_PvPNarrarator", "morocc_in.gat", 141, 140;
 	end;
 }
 
 // Geffen
 geffen_in.gat,67,63,4	script	PvP Narrator#5	84,{
 
-	callfunc "F_PvPNarr", "geffen_in.gat", 64, 60;
+	callfunc "F_PvPNarrarator", "geffen_in.gat", 64, 60;
 	end;
 }
 
@@ -66,7 +66,7 @@ geffen_in.gat,67,63,4	script	PvP Narrator#5	84,{
 // arg(2): savepoint y cord.
 //--------------------------------------------------------------
 
-function	script	F_PvPNarr	{
+function	script	F_PvPNarrarator	{
 
 	mes "[PvP Narrator]";
 	mes "Hello and welcome! I am in charge of explaining the PvP mode to all of those who inquire.";

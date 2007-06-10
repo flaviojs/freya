@@ -2432,16 +2432,16 @@ s_No:
 	close;
 }
 
-function	script	Sign_Alch_Summon	{
+function	script	F_SignAlchSummon	{
 
 Loopback:
 	if ($signmazemonster != 0) goto Else;
 	set $signmazemonster,5;
-	monster "prt_maze02.gat",14,177,"Flora",1118,1,"Sign_Alch_Summon::OnMonsterDead";
-	monster "prt_maze02.gat",17,171,"Flora",1118,1,"Sign_Alch_Summon::OnMonsterDead";
-	monster "prt_maze02.gat",24,173,"Flora",1118,1,"Sign_Alch_Summon::OnMonsterDead";
-	monster "prt_maze02.gat",17,175,"Marine Sphere",1142,1,"Sign_Alch_Summon::OnMonsterDead";
-	monster "prt_maze02.gat",17,168,"Marine Sphere",1142,1,"Sign_Alch_Summon::OnMonsterDead";
+	monster "prt_maze02.gat",14,177,"Flora",1118,1,"F_SignAlchSummon::OnMonsterDead";
+	monster "prt_maze02.gat",17,171,"Flora",1118,1,"F_SignAlchSummon::OnMonsterDead";
+	monster "prt_maze02.gat",24,173,"Flora",1118,1,"F_SignAlchSummon::OnMonsterDead";
+	monster "prt_maze02.gat",17,175,"Marine Sphere",1142,1,"F_SignAlchSummon::OnMonsterDead";
+	monster "prt_maze02.gat",17,168,"Marine Sphere",1142,1,"F_SignAlchSummon::OnMonsterDead";
 	return;
 
 Else:
@@ -2524,7 +2524,7 @@ prt_maze02.gat,14,183,3	script	Gordon	51,{
 	next;
 	menu "Roar~!",-,"Excuse me.",s_Excuse;
 
-	callfunc "Sign_Alch_Summon";
+	callfunc "F_SignAlchSummon";
 	emotion 23; // OMG
 	donpcevent "Pleur::OnOmg";
 	set ScareAlchSign,1;
@@ -6439,7 +6439,7 @@ Seal4:
 	mes "Check out the";
 	set @signseal,4;
 
-	callfunc "Sign_Seal";
+	callfunc "F_SignSeal";
 
 	mes "" + @Sign_Seal1$ + ",";
 	mes "" + @Sign_Seal2$ + ",";
@@ -6600,7 +6600,7 @@ L_Where:
 L_Where1:
 	mes "[Laichin]";
 	mes "Check out the";
-	callfunc "Sign_Seal";
+	callfunc "F_SignSeal";
 	mes "" + @Sign_Seal1$ + ",";
 	mes "" + @Sign_Seal2$ + ",";
 	mes "" + @Sign_Seal3$ + " and the";
@@ -6666,7 +6666,7 @@ L_Queen:
 	close;
 }
 
-function	script	Sign_Seal	{
+function	script	F_SignSeal	{
 
 
 		if (Sign_Seal1 == 1) set @Sign_Seal1$,"big 1 o'clock";
@@ -8264,7 +8264,7 @@ L_NoRing:
 	end;
 
 L_Medal:
-	callfunc "Sign_Party";
+	callfunc "F_SignParty";
 
 L_NoMedal:
 	if (signquest > 56) goto L_Done;
@@ -8402,7 +8402,7 @@ gl_dun02.gat,262,265,1	script	Mysterious Energy	111,{
 	close;
 
 BREAKSEAL:
-		callfunc "Break_Seal";
+		callfunc "F_BreakSeal";
 		mes "^3355FFThe weapon you're holding";
 		mes "right now doesn't look like it has";
 		mes "any chance of breaking this seal.";
@@ -8423,7 +8423,7 @@ gl_dun02.gat,270,98,1	script	Mysterious Energy	111,{
 	close;
 
 BREAKSEAL:
-		callfunc "Break_Seal";
+		callfunc "F_BreakSeal";
 		mes "^3355FFThe weapon you're holding";
 		mes "right now doesn't look like it has";
 		mes "any chance of breaking this seal.";
@@ -8443,7 +8443,7 @@ gl_dun02.gat,268,31,1	script	Mysterious Energy	111,{
 	close;
 
 BREAKSEAL:
-		callfunc "Break_Seal";
+		callfunc "F_BreakSeal";
 		mes "^3355FFThe weapon you're holding";
 		mes "right now doesn't look like it has";
 		mes "any chance of breaking this seal.";
@@ -8463,7 +8463,7 @@ gl_dun02.gat,139,72,1	script	Mysterious Energy	111,{
 	close;
 
 BREAKSEAL:
-		callfunc "Break_Seal";
+		callfunc "F_BreakSeal";
 		mes "^3355FFThe weapon you're holding";
 		mes "right now doesn't look like it has";
 		mes "any chance of breaking this seal.";
@@ -8484,7 +8484,7 @@ gl_dun02.gat,16,26,1	script	Mysterious Energy	111,{
 	close;
 
 BREAKSEAL:
-		callfunc "Break_Seal";
+		callfunc "F_BreakSeal";
 		mes "^3355FFThe weapon you're holding";
 		mes "right now doesn't look like it has";
 		mes "any chance of breaking this seal.";
@@ -8505,7 +8505,7 @@ gl_dun02.gat,120,180,1	script	Mysterious Energy	111,{
 	close;
 
 BREAKSEAL:
-		callfunc "Break_Seal";
+		callfunc "F_BreakSeal";
 		mes "^3355FFThe weapon you're holding";
 		mes "right now doesn't look like it has";
 		mes "any chance of breaking this seal.";
@@ -8526,7 +8526,7 @@ gl_dun02.gat,42,251,1	script	Mysterious Energy	111,{
 	close;
 
 BREAKSEAL:
-		callfunc "Break_Seal";
+		callfunc "F_BreakSeal";
 		mes "^3355FFThe weapon you're holding";
 		mes "right now doesn't look like it has";
 		mes "any chance of breaking this seal.";
@@ -8547,7 +8547,7 @@ gl_dun02.gat,124,231,1	script	Mysterious Energy	111,{
 	close;
 
 BREAKSEAL:
-		callfunc "Break_Seal";
+		callfunc "F_BreakSeal";
 		mes "^3355FFThe weapon you're holding";
 		mes "right now doesn't look like it has";
 		mes "any chance of breaking this seal.";
@@ -8559,7 +8559,7 @@ BREAKSEAL:
 
 
 
-function	script	Break_Seal	{
+function	script	F_BreakSeal	{
 
 	getinventorylist;
 	set @i,-1;
@@ -9363,7 +9363,7 @@ L_Done:
 	end;
 }
 
-function	script	Sign_Party	{
+function	script	F_SignParty	{
 
 	getpartymember $signparty; //,1
 	set @i,-1;

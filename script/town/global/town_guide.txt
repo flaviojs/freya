@@ -408,25 +408,25 @@ ayothaya.gat,203,169,4	script	Noy	839,{
 comodo.gat,322,178,4	script	Comodo Guide#1	700,{
 
 	set @name$,"Native Kokomo";
-	callfunc "comodo_guide";
+	callfunc "F_ComodoGuide";
 	end;
 }
 
 comodo.gat,176,350,4	script	Comodo Guide#2	700,{
 
 	set @name$,"Native Cocomo";
-	callfunc "comodo_guide";
+	callfunc "F_ComodoGuide";
 	end;
 }
 
 comodo.gat,37,219,4	script	Comodo Guide#3	700,{
 
 	set @name$,"Native Papaya";
-	callfunc "comodo_guide";
+	callfunc "F_ComodoGuide";
 	end;
 }
 
-function	script	comodo_guide	{
+function	script	F_ComodoGuide	{
 
 	mes "[" + @name$ + "]";
 	mes "The night of pleasure continues for 24 hours";

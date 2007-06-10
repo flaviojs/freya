@@ -23,7 +23,7 @@
 // Documentation:
 //--------------------------------------------------------------
 // Kafra package functions
-//	callfunc "KafraMain",Speech,SelectNum,"OutSave",OutX,OutY,"InSave",InX,InY,
+//	callfunc "F_KafraMain",Speech,SelectNum,"OutSave",OutX,OutY,"InSave",InX,InY,
 //				Storage,Cart,MapCodeArray,PriceArray;
 // * Details of arguments:
 //	Speech -> What says the kafra?
@@ -80,9 +80,9 @@
 //	KAFRA_PIT -> Kafra points.
 //-------------------------------------------------------------------------
 
-function	script	KafraMain	{
+function	script	F_KafraMain	{
 	// Greeting section
-	function KafraSpeech {
+	function sF_KafraSpeech {
 		if(getarg(0)!=3) {
 			mes "[Kafra]";
 			mes "Welcome to Kafra Corporation.";
@@ -107,7 +107,7 @@ function	script	KafraMain	{
 	}
 
 	// Service of Respawn point.
-	function KafraSave {
+	function sF_KafraSave {
 		if(getarg(5) == "NULL")
 			savepoint getarg(2),getarg(3),getarg(4);	// if only 1 choice, so use outside values
 		else if(select("Save outside city.","Save inside city.")==1)
@@ -121,7 +121,7 @@ function	script	KafraMain	{
 	}
 
 	// Teleport Service
-	function KafraTrans {
+	function sF_KafraTrans {
 		if(getarg(0)==4) {	// einbroch and einbech
 			mes "[Kafra]";
 			mes "Because of the";
@@ -195,7 +195,7 @@ function	script	KafraMain	{
 	}
 
 	// Cart service
-	function KafraCart {
+	function sF_KafraCart {
 		if (BaseClass != Job_Merchant) {
 			mes "[Kafra]";
 			mes "I'm sorry dear.";
@@ -235,7 +235,7 @@ function	script	KafraMain	{
 	}
 
 	// Information about Kafra points.
-	function KafraPoint {
+	function sF_KafraPoint {
 		mes "[Kafra]";
 		mes strcharinfo(0)+ ", you have acquired"+KAFRA_PIT+ " points actually.";
 		//mes "";
@@ -249,7 +249,7 @@ function	script	KafraMain	{
 	}
 
 	// End
-	function KafraEnd {
+	function sF_KafraEnd {
 		mes "[Kafra]";
 		mes "Some of the rules of the Kafra Service are:";
 		mes "- we aim toward a more perfect service and administration.";
@@ -261,7 +261,7 @@ function	script	KafraMain	{
 	}
 
 	// From here main section
-	KafraSpeech getarg(0);
+	sF_KafraSpeech getarg(0);
 	setarray '@serv$,"Set your respawn point","Use storage","Use Teleport Service",
 				"Rent a Cart","Kafra Points information.","Kafra location on map";
 	for(set '@i,0; '@i<7; set '@i,'@i+1) {
@@ -271,25 +271,25 @@ function	script	KafraMain	{
 	switch (select('@serv$[0],'@serv$[1],'@serv$[2],'@serv$[3],'@serv$[4],'@serv$[5],'@serv$[6])) {
 		case 1:
 			// Respawn point service (values 0 and 1 are not used)
-			KafraSave 0,1,getarg(2),getarg(3),getarg(4),getarg(5),getarg(6),getarg(7);
+			sF_KafraSave 0,1,getarg(2),getarg(3),getarg(4),getarg(5),getarg(6),getarg(7);
 			break;
 		case 2:
 			// Storage service (use a separated function)
-			callfunc "KafraStorage",getarg(8);
+			callfunc "F_KafraStorage",getarg(8);
 			end;
 		case 3:
 			// Values from 1 to 9 are not used.
 			if(getarg(0) != 4)
-				KafraTrans getarg(0),1,2,3,4,5,6,7,8,9,getarg(10),getarg(11);
+				sF_KafraTrans getarg(0),1,2,3,4,5,6,7,8,9,getarg(10),getarg(11);
 			else
-				KafraTrans getarg(0);
+				sF_KafraTrans getarg(0);
 			break;
 		case 4:
 			// Values from 0 to 8 are not used.
-			KafraCart 0,1,2,3,4,5,6,7,8,getarg(9);
+			sF_KafraCart 0,1,2,3,4,5,6,7,8,getarg(9);
 			break;
 		case 5:
-			KafraPoint;
+			sF_KafraPoint;
 			break;
 		case 6:
 			mes "[Kafra]";
@@ -297,7 +297,7 @@ function	script	KafraMain	{
 			//mes "";
 			return;	// Only case 6 do a 'return', it's a better for user.
 		case 7:
-			KafraEnd;
+			sF_KafraEnd;
 			break;
 	}
 	close2;
@@ -306,7 +306,7 @@ function	script	KafraMain	{
 }
 
 // Only Storage service uses a separated function.
-function	script	KafraStorage	{
+function	script	F_KafraStorage	{
 	if(basicskillcheck() && getskilllv(1)<6) {
 		mes "[Kafra]";
 		mes "I am sorry but you must have at least basic skill level 6 if you want to use the Storage.";
@@ -336,7 +336,7 @@ prontera.gat,146,89,6	script	Kafra	117,{
 	cutin "kafra_01",2;
 	setarray '@code,2,3,4,5,6,7;
 	setarray '@price,600,1200,1200,1200,1800,1700;
-	callfunc "KafraMain",1,0x7f,"prontera.gat",116,72,"NULL",0,0,40,800,'@code,'@price;
+	callfunc "F_KafraMain",1,0x7f,"prontera.gat",116,72,"NULL",0,0,40,800,'@code,'@price;
 	close2;
 	viewpoint 1,146,89,1,0x0000FF;
 	viewpoint 1,282,200,2,0x0000FF;
@@ -354,7 +354,7 @@ prontera.gat,282,200,2	script	Kafra	114,{
 	cutin "kafra_04",2;
 	setarray '@code,2,3,4,5,6,7;
 	setarray '@price,600,1200,1200,1200,1800,1700;
-	callfunc "KafraMain",1,0x7f,"prt_fild06.gat",33,192,"prontera.gat",279,200,40,800,'@code,'@price;
+	callfunc "F_KafraMain",1,0x7f,"prt_fild06.gat",33,192,"prontera.gat",279,200,40,800,'@code,'@price;
 	close2;
 	viewpoint 1,146,89,1,0x0000FF;
 	viewpoint 1,282,200,2,0x0000FF;
@@ -372,7 +372,7 @@ prontera.gat,151,29,0	script	Kafra	115,{
 	cutin "kafra_03",2;
 	setarray '@code,2,3,4,5,6,7;
 	setarray '@price,600,1200,1200,1200,1800,1700;
-	callfunc "KafraMain",1,0x7f,"prt_fild08.gat",170,368,"prontera.gat",116,72,40,800,'@code,'@price;
+	callfunc "F_KafraMain",1,0x7f,"prt_fild08.gat",170,368,"prontera.gat",116,72,40,800,'@code,'@price;
 	close2;
 	viewpoint 1,146,89,1,0x0000FF;
 	viewpoint 1,282,200,2,0x0000FF;
@@ -390,7 +390,7 @@ prontera.gat,29,207,6	script	Kafra	113,{
 	cutin "kafra_05",2;
 	setarray '@code,2,3,4,5,6,7;
 	setarray '@price,600,1200,1200,1200,1800,1700;
-	callfunc "KafraMain",1,0x7f,"prt_fild05.gat",368,205,"prontera.gat",33,207,40,800,'@code,'@price;
+	callfunc "F_KafraMain",1,0x7f,"prt_fild05.gat",368,205,"prontera.gat",33,207,40,800,'@code,'@price;
 	close2;
 	viewpoint 1,146,89,1,0x0000FF;
 	viewpoint 1,282,200,2,0x0000FF;
@@ -408,7 +408,7 @@ prt_fild01.gat,198,47,0	script	Kafra	112,{
 	cutin "kafra_06",2;
 	setarray '@code,2,3,4,5,6,7;
 	setarray '@price,600,1200,1200,1200,1800,1700;
-	callfunc "KafraMain",1,0x5f,"prt_fild01.gat",198,51,"NULL",0,0,40,800,'@code,'@price;
+	callfunc "F_KafraMain",1,0x5f,"prt_fild01.gat",198,51,"NULL",0,0,40,800,'@code,'@price;
 	end;
 }
 
@@ -418,7 +418,7 @@ prt_fild01.gat,198,47,0	script	Kafra	112,{
 
 prt_fild05.gat,290,224,4	script	Kafra	114,{
 	cutin "kafra_04",2;
-	callfunc "KafraMain",0,0x5b,"prt_fild05.gat",274,244,"NULL",0,0,30,800;
+	callfunc "F_KafraMain",0,0x5b,"prt_fild05.gat",274,244,"NULL",0,0,30,800;
 	end;
 }
 
@@ -430,7 +430,7 @@ izlude.gat,134,88,4	script	Kafra	115,{
 	cutin "kafra_03",2;
 	setarray '@code,5,4,3,8;
 	setarray '@price,1200,1200,1200,1800;
-	callfunc "KafraMain",1,0x7f,"prt_fild08.gat",350,202,"izlude.gat",94,103,30,800,'@code,'@price;
+	callfunc "F_KafraMain",1,0x7f,"prt_fild08.gat",350,202,"izlude.gat",94,103,30,800,'@code,'@price;
 	close2;
 	viewpoint 1,136,88,1,0x0000FF;
 	cutin "kafra_03",255;
@@ -445,7 +445,7 @@ geffen.gat,120,62,0	script	Kafra	115,{
 	cutin "kafra_03",2;
 	setarray '@code,1,8,7,9;
 	setarray '@price,1200,1200,1700,1700;
-	callfunc "KafraMain",0,0x7f,"geffen.gat",120,38,"NULL",0,0,30,800,'@code,'@price;
+	callfunc "F_KafraMain",0,0x7f,"geffen.gat",120,38,"NULL",0,0,30,800,'@code,'@price;
 	close2;
 	viewpoint 1,120,62,1,0x0000FF;
 	viewpoint 1,203,123,2,0x0000FF;
@@ -461,7 +461,7 @@ geffen.gat,203,123,4	script	Kafra	114,{
 	cutin "kafra_04",2;
 	setarray '@code,1,8,7,9;
 	setarray '@price,1200,1200,1700,1700;
-	callfunc "KafraMain",0,0x7f,"gef_fild00.gat",55,222,"geffen.gat",120,38,30,800,'@code,'@price;
+	callfunc "F_KafraMain",0,0x7f,"gef_fild00.gat",55,222,"geffen.gat",120,38,30,800,'@code,'@price;
 	close2;
 	viewpoint 1,120,62,1,0x0000FF;
 	viewpoint 1,203,123,2,0x0000FF;
@@ -477,7 +477,7 @@ morocc.gat,156,97,4	script	Kafra	113,{
 	cutin "kafra_05",2;
 	setarray '@code,1,4,6,10,11;
 	setarray '@price,1200,1200,1800,1800,1200;
-	callfunc "KafraMain",1,0x7f,"morocc.gat",156,46,"NULL",0,0,40,800,'@code,'@price;
+	callfunc "F_KafraMain",1,0x7f,"morocc.gat",156,46,"NULL",0,0,40,800,'@code,'@price;
 	close2;
 	viewpoint 1,160,258,1,0x0000FF;
 	viewpoint 1,159,97,2,0x0000FF;
@@ -493,7 +493,7 @@ morocc.gat,160,258,4	script	Kafra	114,{
 	cutin "kafra_04",2;
 	setarray '@code,1,4,6,10,11;
 	setarray '@price,1200,1200,1800,1800,1200;
-	callfunc "KafraMain",1,0x7f,"moc_fild07.gat",211,29,"morocc.gat",160,283,40,800,'@code,'@price;
+	callfunc "F_KafraMain",1,0x7f,"moc_fild07.gat",211,29,"morocc.gat",160,283,40,800,'@code,'@price;
 	close2;
 	viewpoint 1,160,258,1,0x0000FF;
 	viewpoint 1,159,97,2,0x0000FF;
@@ -507,7 +507,7 @@ morocc.gat,160,258,4	script	Kafra	114,{
 
 moc_ruins.gat,59,157,6	script	Kafra	117,{
 	cutin "kafra_01",2;
-	callfunc "KafraMain",1,0x5a,0,0,0,0,0,0,50,800;
+	callfunc "F_KafraMain",1,0x5a,0,0,0,0,0,0,50,800;
 	end;
 }
 
@@ -519,7 +519,7 @@ alberta.gat,28,229,0	script	Kafra	116,{
 	cutin "kafra_02",2;
 	setarray '@code,4,1,5;
 	setarray '@price,1200,1800,1800;
-	callfunc "KafraMain",1,0x7f,"pay_fild03.gat",387,76,"alberta.gat",31,231,50,800,'@code,'@price;
+	callfunc "F_KafraMain",1,0x7f,"pay_fild03.gat",387,76,"alberta.gat",31,231,50,800,'@code,'@price;
 	close2;
 	viewpoint 1,28,229,1,0x0000FF;
 	viewpoint 1,113,60,2,0x0000FF;
@@ -535,7 +535,7 @@ alberta.gat,113,60,6	script	Kafra#alberta2	112,{
 	cutin "kafra_06",2;
 	setarray '@code,4,1,5;
 	setarray '@price,1200,1800,1800;
-	callfunc "KafraMain",1,0x7f,"alberta.gat",117,56,"NULL",0,0,50,800,'@code,'@price;
+	callfunc "F_KafraMain",1,0x7f,"alberta.gat",117,56,"NULL",0,0,50,800,'@code,'@price;
 	close2;
 	viewpoint 1,28,229,1,0x0000FF;
 	viewpoint 1,113,60,2,0x0000FF;
@@ -551,7 +551,7 @@ alb2trea.gat,59,69,6	script	Kafra	117,{
 	cutin "kafra_01",2;
 	// Merchant Job Change Quest-related Function
 	if (Basejob == Job_Novice && Job_Merchant_q3 > 0) callfunc "F_MercKafra";
-	callfunc "KafraMain",0,0x5a,0,0,0,0,0,0,50,800;
+	callfunc "F_KafraMain",0,0x5a,0,0,0,0,0,0,50,800;
 	end;
 }
 
@@ -563,7 +563,7 @@ payon.gat,175,226,4	script	Kafra	116,{
 	cutin "kafra_02",2;
 	setarray '@code,6,1,5;
 	setarray '@price,1200,1200,1200;
-	callfunc "KafraMain",1,0x5f,"payon.gat",207,113,"NULL",0,0,40,800,'@code,'@price;
+	callfunc "F_KafraMain",1,0x5f,"payon.gat",207,113,"NULL",0,0,40,800,'@code,'@price;
 	end;
 }
 
@@ -575,7 +575,7 @@ payon.gat,181,104,4	script	Kafra	113,{
 	cutin "kafra_05",2;
 	setarray '@code,6,1,5;
 	setarray '@price,1200,1200,1200;
-	callfunc "KafraMain",1,0x5f,"payon.gat",160,58,"NULL",0,0,40,800,'@code,'@price;
+	callfunc "F_KafraMain",1,0x5f,"payon.gat",160,58,"NULL",0,0,40,800,'@code,'@price;
 	end;
 }
 
@@ -585,7 +585,7 @@ payon.gat,181,104,4	script	Kafra	113,{
 
 pay_arche.gat,55,123,4	script	Kafra	114,{
 	cutin "kafra_04",2;
-	callfunc "KafraMain",1,0x5b,"pay_arche.gat",50,145,"NULL",0,0,40,800;
+	callfunc "F_KafraMain",1,0x5b,"pay_arche.gat",50,145,"NULL",0,0,40,800;
 	end;
 }
 
@@ -597,7 +597,7 @@ aldebaran.gat,143,119,4	script	Kafra	113,{
 	cutin "kafra_05",2;
 	setarray '@code,3,13,2,9;
 	setarray '@price,1200,1200,1800,1700;
-	callfunc "KafraMain",0,0x5f,"aldebaran.gat",167,112,"NULL",0,0,40,800,'@code,'@price;
+	callfunc "F_KafraMain",0,0x5f,"aldebaran.gat",167,112,"NULL",0,0,40,800,'@code,'@price;
 	end;
 }
 
@@ -609,7 +609,7 @@ cmd_in02.gat,146,180,4	script	Kafra	721,{
 	cutin "kafra_07",2;
 	setarray '@code,5,12;
 	setarray '@price,1800,1200;
-	callfunc "KafraMain",2,0x5f,"comodo.gat",209,143,"NULL",0,0,40,800,'@code,'@price;
+	callfunc "F_KafraMain",2,0x5f,"comodo.gat",209,143,"NULL",0,0,40,800,'@code,'@price;
 	end;
 }
 
@@ -621,7 +621,7 @@ cmd_fild07.gat,136,134,4	script	Kafra	721,{
 	cutin "kafra_07",2;
 	setarray '@code,10,5;
 	setarray '@price,1200,1200;
-	callfunc "KafraMain",2,0x5f,"cmd_fild07.gat",127,134,"NULL",0,0,80,1000,'@code,'@price;
+	callfunc "F_KafraMain",2,0x5f,"cmd_fild07.gat",127,134,"NULL",0,0,80,1000,'@code,'@price;
 	end;
 }
 
@@ -633,7 +633,7 @@ comodo.gat,195,150,4	script	Kafra	721,{
 	cutin "kafra_07",2;
 	setarray '@code,5,12;
 	setarray '@price,1800,1200;
-	callfunc "KafraMain",2,0x5f,"comodo.gat",180,151,"NULL",0,0,80,1000,'@code,'@price;
+	callfunc "F_KafraMain",2,0x5f,"comodo.gat",180,151,"NULL",0,0,80,1000,'@code,'@price;
 	end;
 }
 
@@ -643,7 +643,7 @@ comodo.gat,195,150,4	script	Kafra	721,{
 
 gef_fild10.gat,73,340,5	script	Kafra	117,{
 	cutin "kafra_01",2;
-	callfunc "KafraMain",0,0x5a,0,0,0,0,0,0,130,800;
+	callfunc "F_KafraMain",0,0x5a,0,0,0,0,0,0,130,800;
 	end;
 }
 
@@ -653,7 +653,7 @@ gef_fild10.gat,73,340,5	script	Kafra	117,{
 
 mjolnir_02.gat,82,362,4	script	Kafra	117,{
 	cutin "kafra_01",2;
-	callfunc "KafraMain",1,0x5a,0,0,0,0,0,0,100,800;
+	callfunc "F_KafraMain",1,0x5a,0,0,0,0,0,0,100,800;
 	end;
 }
 
@@ -665,7 +665,7 @@ yuno.gat,152,187,4	script	Kafra	113,{
 	cutin "kafra_05",2;
 	set '@code,8;
 	set '@price,1200;
-	callfunc "KafraMain",0,0x7f,"yuno.gat",158,124,"NULL",0,0,40,800,'@code,'@price;
+	callfunc "F_KafraMain",0,0x7f,"yuno.gat",158,124,"NULL",0,0,40,800,'@code,'@price;
 	close2;
 	viewpoint 1,327,109,2,0x0000FF;
 	viewpoint 1,277,221,3,0x0000FF;
@@ -681,7 +681,7 @@ yuno.gat,327,109,4	script	Kafra	113,{
 	cutin "kafra_05",2;
 	set '@code,8;
 	set '@price,1200;
-	callfunc "KafraMain",0,0x7f,"yuno.gat",327,100,"NULL",0,0,40,800,'@code,'@price;
+	callfunc "F_KafraMain",0,0x7f,"yuno.gat",327,100,"NULL",0,0,40,800,'@code,'@price;
 	close2;
 	viewpoint 1,152,187,1,0x0000FF;
 	viewpoint 1,277,221,3,0x0000FF;
@@ -697,7 +697,7 @@ yuno.gat,277,221,4	script	Kafra	113,{
 	cutin "kafra_05",2;
 	set '@code,8;
 	set '@price,1200;
-	callfunc "KafraMain",0,0x7f,"yuno.gat",275,229,"NULL",0,0,40,800,'@code,'@price;
+	callfunc "F_KafraMain",0,0x7f,"yuno.gat",275,229,"NULL",0,0,40,800,'@code,'@price;
 	close2;
 	viewpoint 1,152,187,1,0x0000FF;
 	viewpoint 1,327,109,2,0x0000FF;
@@ -725,7 +725,7 @@ amatsu.gat,102,149,5	script	Kafra#amatsunomal	116,{
 	//mes "";
 	mes "How can I help you?";
 	next;
-	callfunc "KafraMain",3,0x5b,"amatsu.gat",116,94,"NULL",0,0,80,700;
+	callfunc "F_KafraMain",3,0x5b,"amatsu.gat",116,94,"NULL",0,0,80,700;
 	end;
 }
 
@@ -735,7 +735,7 @@ amatsu.gat,102,149,5	script	Kafra#amatsunomal	116,{
 
 gonryun.gat,159,122,4	script	Kafra	116,{
 	cutin "kafra_02",2;
-	callfunc "KafraMain",1,0x5b,"gonryun.gat",160,62,"NULL",0,0,80,700;
+	callfunc "F_KafraMain",1,0x5b,"gonryun.gat",160,62,"NULL",0,0,80,700;
 	end;
 }
 
@@ -747,7 +747,7 @@ umbala.gat,87,160,5	script	Kafra	721,{
 	cutin "kafra_07",2;
 	set '@code,10;
 	set '@price,1800;
-	callfunc "KafraMain",0,0x57,"umbala.gat",100,154,"NULL",0,0,80,0,'@code,'@price;
+	callfunc "F_KafraMain",0,0x57,"umbala.gat",100,154,"NULL",0,0,80,0,'@code,'@price;
 	end;
 }
 
@@ -765,7 +765,7 @@ niflheim.gat,202,180,3	script	Kafra	791,{
 	switch (select("Use storage","Cancel.")) {
 	case 1:
 		percentheal 0,-10;
-		callfunc "KafraStorage",150;
+		callfunc "F_KafraStorage",150;
 		end;
 	case 2:
 		percentheal 0,-10;
@@ -786,7 +786,7 @@ niflheim.gat,202,180,3	script	Kafra	791,{
 
 louyang.gat,210,104,4	script	Kafra	116,{
 	cutin "kafra_02",2;
-	callfunc "KafraMain",1,0x5b,"louyang.gat",218,97,"NULL",0,0,80,700;
+	callfunc "F_KafraMain",1,0x5b,"louyang.gat",218,97,"NULL",0,0,80,700;
 	end;
 }
 
@@ -796,7 +796,7 @@ louyang.gat,210,104,4	script	Kafra	116,{
 
 ayothaya.gat,212,169,6	script	Kafra	116,{
 	cutin "kafra_02",2;
-	callfunc "KafraMain",1,0x5b,"ayothaya.gat",217,187,"NULL",0,0,80,700;
+	callfunc "F_KafraMain",1,0x5b,"ayothaya.gat",217,187,"NULL",0,0,80,700;
 	end;
 }
 
@@ -806,7 +806,7 @@ ayothaya.gat,212,169,6	script	Kafra	116,{
 
 einbroch.gat,242,205,5	script	Kafra#einbroch1	116,{
 	cutin "kafra_02",2;
-	callfunc "KafraMain",4,0x7f,"einbroch.gat",239,197,"NULL",0,0,40,800;
+	callfunc "F_KafraMain",4,0x7f,"einbroch.gat",239,197,"NULL",0,0,40,800;
 	close2;
 	viewpoint 1,242,205,1,0x0000FF;
 	viewpoint 1,59,203,2,0x0000FF;
@@ -820,7 +820,7 @@ einbroch.gat,242,205,5	script	Kafra#einbroch1	116,{
 
 einbroch.gat,59,203,5	script	Kafra#einbroch2	117,{
 	cutin "kafra_01",2;
-	callfunc "KafraMain",4,0x7f,"einbroch.gat",239,197,"NULL",0,0,40,800;
+	callfunc "F_KafraMain",4,0x7f,"einbroch.gat",239,197,"NULL",0,0,40,800;
 	close2;
 	viewpoint 1,242,205,1,0x0000FF;
 	viewpoint 1,59,203,2,0x0000FF;
@@ -834,7 +834,7 @@ einbroch.gat,59,203,5	script	Kafra#einbroch2	117,{
 
 einbech.gat,181,132,5	script	Kafra	115,{
 	cutin "kafra_03",2;
-	callfunc "KafraMain",4,0x7f,"einbech.gat",181,123,"NULL",0,0,40,850;
+	callfunc "F_KafraMain",4,0x7f,"einbech.gat",181,123,"NULL",0,0,40,850;
 	close2;
 	viewpoint 1,181,132,1,0x0000FF;
 	cutin "kafra_03",255;
@@ -847,7 +847,7 @@ einbech.gat,181,132,5	script	Kafra	115,{
 
 lighthalzen.gat,191,320,4	script	Kafra	861,{
 	cutin "kafra_09",2;
-	callfunc "KafraMain",4,0x5f,"lighthalzen.gat",194,313,"NULL",0,0,40,800;
+	callfunc "F_KafraMain",4,0x5f,"lighthalzen.gat",194,313,"NULL",0,0,40,800;
 	end;
 }
 
@@ -857,7 +857,7 @@ lighthalzen.gat,191,320,4	script	Kafra	861,{
 
 lighthalzen.gat,164,100,4	script	Kafra	860,{
 	cutin "kafra_08",2;
-	callfunc "KafraMain",4,0x5f,"lighthalzen.gat",158,96,"NULL",0,0,40,800;
+	callfunc "F_KafraMain",4,0x5f,"lighthalzen.gat",158,96,"NULL",0,0,40,800;
 	end;
 }
 
@@ -867,7 +867,7 @@ lighthalzen.gat,164,100,4	script	Kafra	860,{
 
 lhz_in02.gat,237,284,4	script	Kafra	861,{
 	cutin "kafra_09",2;
-	callfunc "KafraMain",4,0x5f,"lhz_in02.gat",278,214,"NULL",0,0,40,800;
+	callfunc "F_KafraMain",4,0x5f,"lhz_in02.gat",278,214,"NULL",0,0,40,800;
 	end;
 }
 
@@ -928,6 +928,6 @@ prontera.gat,248,42,0	script	Kafra#ProSword	116,{
 
 izlu2dun.gat,106,58,4	script	Kafra#Byalan	116,{
 	cutin "kafra_02",2;
-	callfunc "KafraMain",0,0x5a,0,0,0,0,0,0,40,800;
+	callfunc "F_KafraMain",0,0x5a,0,0,0,0,0,0,40,800;
 	end;
 }

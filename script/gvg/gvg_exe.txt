@@ -20,7 +20,7 @@
 
 //=========================================================================
 // WoE starting and guild changements common functions.
-//	callfunc "AgitGiveUp","AgitCode";
+//	callfunc "F_AgitGiveUp","AgitCode";
 //
 // * Run
 //	"::OnFlagEmb_XY" (refer to npc_gvg_flag.txt file)
@@ -29,7 +29,7 @@
 //	When it is WoE, function "AgitSummon" is called·(npc_gvg_monster)
 //-------------------------------------------------------------------------
 
-function	script	AgitGiveUp	{
+function	script	F_AgitGiveUp	{
 	set '@dummy,getmapxy('@map$,'@dummy,'@dummy,1);		// Only '@map$ is used.
 	killmonsterall '@map$;
 	disablenpc "AgitKafra_"+getarg(0);
@@ -39,7 +39,7 @@ function	script	AgitGiveUp	{
 	donpcevent "::OnFlagEmb_"+getarg(0);		// Change in flag emblem
 	maprespawnguildid '@map$,0,7;
 	if(agitcheck())
-		callfunc "AgitSummon",getarg(0);	// Summoning of monsters and the emperium
+		callfunc "F_AgitSummon",getarg(0);	// Summoning of monsters and the emperium
 	return;
 }
 
@@ -61,7 +61,7 @@ OnAgitInit:
 		disablenpc "AgitKafra_"+strnpcinfo(2);
 	for(set '@i,10; '@i<=17; set '@i,'@i+1) {	// We summon Guardians if they exist.
 		if(getcastledata('@map$,'@i))
-			callfunc "GuardianCall",strnpcinfo(2),'@i,0;
+			callfunc "F_GuardianCall",strnpcinfo(2),'@i,0;
 	}
 	end;
 OnAgitStart:
@@ -69,7 +69,7 @@ OnAgitStart:
 	if('@map$ == "-")
 		end;
 	maprespawnguildid '@map$,getcastledata('@map$,1),2;
-	callfunc "AgitSummon",strnpcinfo(2);	// Summonning of Emperium (npc_gvg_monster.txt)
+	callfunc "F_AgitSummon",strnpcinfo(2);	// Summonning of Emperium (npc_gvg_monster.txt)
 	gvgon '@map$;
 	end;
 OnAgitBreak:
@@ -99,13 +99,13 @@ OnAgitEliminate:
 	if('@map$ == "-")
 		end;
 	maprespawnguildid '@map$,getcastledata('@map$,1),6;
-	callfunc "AgitSummon",strnpcinfo(2);	// Only the Emperium is summoned again. (npc_gvg_monster.txt)
+	callfunc "F_AgitSummon",strnpcinfo(2);	// Only the Emperium is summoned again. (npc_gvg_monster.txt)
 	end;
 OnGuildBreak:
 	set '@dummy,getmapxy('@map$,'@dummy,'@dummy,1);
 	if('@map$ == "-")
 		end;
-	callfunc "AgitGiveUp",strnpcinfo(2);
+	callfunc "F_AgitGiveUp",strnpcinfo(2);
 	end;
 OnAgitEnd:
 	set '@dummy,getmapxy('@map$,'@dummy,'@dummy,1);

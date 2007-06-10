@@ -20,13 +20,13 @@
 
 //=========================================================================
 // Guild Flag common functions
-//	callfunc "FlagSrc",AreaIndex,"MAP",X,Y;
+//	callfunc "F_FlagSrc",AreaIndex,"MAP",X,Y;
 //
 // * Detail of an argument:
 //	AreaIndex -> 0:Aldebaran, 1:Others
 //-------------------------------------------------------------------------
 
-function	script	FlagSrc	{
+function	script	F_FlagSrc	{
 	set '@gid,getcastledata(getarg(1),1);
 	if('@gid > 0 && getcharid(2)=='@gid && getarg(2)) {	// It's true when a X coordinate is set and when the Castle has a guild.
 		mes "[Ringing Voice]";
@@ -91,7 +91,7 @@ function	script	FlagSrc	{
 // L1 : Aldebaran
 //------------------------------------------
 -	script	GdFlag_L1	722,{
-	callfunc "FlagSrc",0,"aldeg_cas01.gat",0,0;
+	callfunc "F_FlagSrc",0,"aldeg_cas01.gat",0,0;
 	close;
 OnAgitInit:
 OnFlagEmb_L1:
@@ -101,7 +101,7 @@ OnFlagEmb_L1:
 }
 
 alde_gld.gat,257,153,7	script	Guild Flag#L1-00	722,{
-	callfunc "FlagSrc",0,"aldeg_cas01.gat",218,170;
+	callfunc "F_FlagSrc",0,"aldeg_cas01.gat",218,170;
 	close;
 OnAgitInit:
 OnFlagEmb_L1:
@@ -133,7 +133,7 @@ aldeg_cas01.gat,210,150,4	duplicate(GdFlag_L1)	Guild Flag#L1-19	722
 // L2 : Aldebaran
 //------------------------------------------
 -	script	GdFlag_L2	722,{
-	callfunc "FlagSrc",0,"aldeg_cas02.gat",0,0;
+	callfunc "F_FlagSrc",0,"aldeg_cas02.gat",0,0;
 	close;
 OnAgitInit:
 OnFlagEmb_L2:
@@ -143,7 +143,7 @@ OnFlagEmb_L2:
 }
 
 alde_gld.gat,257,166,5	script	Guild Flag#L2-00	722,{
-	callfunc "FlagSrc",0,"aldeg_cas02.gat",84,74;
+	callfunc "F_FlagSrc",0,"aldeg_cas02.gat",84,74;
 	close;
 OnAgitInit:
 OnFlagEmb_L2:
@@ -172,7 +172,7 @@ aldeg_cas02.gat,121,29,2	duplicate(GdFlag_L2)	Guild Flag#L2-16	722
 // L3 : Aldebaran
 //------------------------------------------
 -	script	GdFlag_L3	722,{
-	callfunc "FlagSrc",0,"aldeg_cas03.gat",0,0;
+	callfunc "F_FlagSrc",0,"aldeg_cas03.gat",0,0;
 	close;
 OnAgitInit:
 OnFlagEmb_L3:
@@ -182,7 +182,7 @@ OnFlagEmb_L3:
 }
 
 alde_gld.gat,262,153,7	script	Guild Flag#L3-00	722,{
-	callfunc "FlagSrc",0,"aldeg_cas03.gat",118,76;
+	callfunc "F_FlagSrc",0,"aldeg_cas03.gat",118,76;
 	close;
 OnAgitInit:
 OnFlagEmb_L3:
@@ -214,7 +214,7 @@ aldeg_cas03.gat,96,62,2		duplicate(GdFlag_L3)	Guild Flag#L3-19	722
 // L4 : Aldebaran
 //------------------------------------------
 -	script	GdFlag_L4	722,{
-	callfunc "FlagSrc",0,"aldeg_cas04.gat",0,0;
+	callfunc "F_FlagSrc",0,"aldeg_cas04.gat",0,0;
 	close;
 OnAgitInit:
 OnFlagEmb_L4:
@@ -224,7 +224,7 @@ OnFlagEmb_L4:
 }
 
 alde_gld.gat,262,166,5	script	Guild Flag#L4-00	722,{
-	callfunc "FlagSrc",0,"aldeg_cas04.gat",45,88;
+	callfunc "F_FlagSrc",0,"aldeg_cas04.gat",45,88;
 	close;
 OnAgitInit:
 OnFlagEmb_L4:
@@ -256,7 +256,7 @@ aldeg_cas04.gat,169,15,2	duplicate(GdFlag_L4)	Guild Flag#L4-19	722
 // L5 : Aldebaran
 //------------------------------------------
 -	script	GdFlag_L5	722,{
-	callfunc "FlagSrc",0,"aldeg_cas05.gat",0,0;
+	callfunc "F_FlagSrc",0,"aldeg_cas05.gat",0,0;
 	close;
 OnAgitInit:
 OnFlagEmb_L5:
@@ -266,7 +266,7 @@ OnFlagEmb_L5:
 }
 
 alde_gld.gat,267,153,7	script	Guild Flag#L5-00	722,{
-	callfunc "FlagSrc",0,"aldeg_cas05.gat",31,190;
+	callfunc "F_FlagSrc",0,"aldeg_cas05.gat",31,190;
 	close;
 OnAgitInit:
 OnFlagEmb_L5:
@@ -296,7 +296,7 @@ aldeg_cas05.gat,150,202,2	duplicate(GdFlag_L5)	Guild Flag#L5-17	722
 // B1 : Geffen
 //------------------------------------------
 -	script	GdFlag_B1	722,{
-	callfunc "FlagSrc",1,"gefg_cas01.gat",0,0;
+	callfunc "F_FlagSrc",1,"gefg_cas01.gat",0,0;
 	close;
 OnAgit:
 OnFlagEmb_B1:
@@ -306,7 +306,7 @@ OnFlagEmb_B1:
 }
 
 gef_fild07.gat,330,199,2	script	Guild Flag#B1-00	722,{
-	callfunc "FlagSrc",1,"gefg_cas01.gat",83,47;
+	callfunc "F_FlagSrc",1,"gefg_cas01.gat",83,47;
 	close;
 OnAgitInit:
 OnFlagEmb_B1:
@@ -329,7 +329,7 @@ gefg_cas01.gat,64,16,4		duplicate(GdFlag_B1)	Guild Flag#B1-10	722
 // B2 : Geffen
 //------------------------------------------
 -	script	GdFlag_B2	722,{
-	callfunc "FlagSrc",1,"gefg_cas02.gat",0,0;
+	callfunc "F_FlagSrc",1,"gefg_cas02.gat",0,0;
 	close;
 OnAgitInit:
 OnFlagEmb_B2:
@@ -339,7 +339,7 @@ OnFlagEmb_B2:
 }
 
 gef_fild07.gat,330,204,2	script	Guild Flag#B2-00	722,{
-	callfunc "FlagSrc",1,"gefg_cas02.gat",23,66;
+	callfunc "F_FlagSrc",1,"gefg_cas02.gat",23,66;
 	close;
 OnAgitInit:
 OnFlagEmb_B2:
@@ -363,7 +363,7 @@ gefg_cas02.gat,68,36,2		duplicate(GdFlag_B2)	Guild Flag#B2-11	722
 // B3 : Geffen
 //------------------------------------------
 -	script	GdFlag_B3	722,{
-	callfunc "FlagSrc",1,"gefg_cas03.gat",0,0;
+	callfunc "F_FlagSrc",1,"gefg_cas03.gat",0,0;
 	close;
 OnAgitInit:
 OnFlagEmb_B3:
@@ -373,7 +373,7 @@ OnFlagEmb_B3:
 }
 
 gef_fild07.gat,330,176,2	script	Guild Flag#B3-00	722,{
-	callfunc "FlagSrc",1,"gefg_cas03.gat",116,89;
+	callfunc "F_FlagSrc",1,"gefg_cas03.gat",116,89;
 	close;
 OnAgitInit:
 OnFlagEmb_B3:
@@ -400,7 +400,7 @@ gefg_cas03.gat,34,208,1		duplicate(GdFlag_B3)	Guild Flag#B3-14	722
 // B4 : Geffen
 //------------------------------------------
 -	script	GdFlag_B4	722,{
-	callfunc "FlagSrc",1,"gefg_cas04.gat",0,0;
+	callfunc "F_FlagSrc",1,"gefg_cas04.gat",0,0;
 	close;
 OnAgitInit:
 OnFlagEmb_B4:
@@ -410,7 +410,7 @@ OnFlagEmb_B4:
 }
 
 gef_fild07.gat,330,171,2	script	Guild Flag#B4-00	722,{
-	callfunc "FlagSrc",1,"gefg_cas04.gat",59,70;
+	callfunc "F_FlagSrc",1,"gefg_cas04.gat",59,70;
 	close;
 OnAgitInit:
 OnFlagEmb_B4:
@@ -433,7 +433,7 @@ gefg_cas04.gat,35,73,4		duplicate(GdFlag_B4)	Guild Flag#B4-10	722
 // B5 : Geffen
 //------------------------------------------
 -	script	GdFlag_B5	722,{
-	callfunc "FlagSrc",1,"gefg_cas05.gat",0,0;
+	callfunc "F_FlagSrc",1,"gefg_cas05.gat",0,0;
 	close;
 OnAgitInit:
 OnFlagEmb_B5:
@@ -443,7 +443,7 @@ OnFlagEmb_B5:
 }
 
 gef_fild07.gat,330,166,2	script	Guild Flag#B5-00	722,{
-	callfunc "FlagSrc",1,"gefg_cas05.gat",61,52;
+	callfunc "F_FlagSrc",1,"gefg_cas05.gat",61,52;
 	close;
 OnAgitInit:
 OnFlagEmb_B5:
@@ -466,7 +466,7 @@ gefg_cas05.gat,69,66,4		duplicate(GdFlag_B5)	Guild Flag#B5-10	722
 // C1 : Payon
 //------------------------------------------
 -	script	GdFlag_C1	722,{
-	callfunc "FlagSrc",1,"payg_cas01.gat",0,0;
+	callfunc "F_FlagSrc",1,"payg_cas01.gat",0,0;
 	close;
 OnAgitInit:
 OnFlagEmb_C1:
@@ -476,7 +476,7 @@ OnFlagEmb_C1:
 }
 
 pay_gld.gat,347,125,2	script	Guild Flag#C1-00	722,{
-	callfunc "FlagSrc",1,"payg_cas01.gat",212,108;
+	callfunc "F_FlagSrc",1,"payg_cas01.gat",212,108;
 	close;
 OnAgitInit:
 OnFlagEmb_C1:
@@ -499,7 +499,7 @@ payg_cas01.gat,212,108,4	duplicate(GdFlag_C1)	Guild Flag#C1-10	722
 // C2 : Payon
 //------------------------------------------
 -	script	GdFlag_C2	722,{
-	callfunc "FlagSrc",1,"payg_cas02.gat",0,0;
+	callfunc "F_FlagSrc",1,"payg_cas02.gat",0,0;
 	close;
 OnAgitInit:
 OnFlagEmb_C2:
@@ -509,7 +509,7 @@ OnFlagEmb_C2:
 }
 
 pay_gld.gat,347,116,2	script	Guild Flag#C2-00	722,{
-	callfunc "FlagSrc",1,"payg_cas02.gat",22,275;
+	callfunc "F_FlagSrc",1,"payg_cas02.gat",22,275;
 	close;
 OnAgitInit:
 OnFlagEmb_C2:
@@ -532,7 +532,7 @@ payg_cas02.gat,70,282,4		duplicate(GdFlag_C2)	Guild Flag#C2-10	722
 // C3 : Payon
 //------------------------------------------
 -	script	GdFlag_C3	722,{
-	callfunc "FlagSrc",1,"payg_cas03.gat",0,0;
+	callfunc "F_FlagSrc",1,"payg_cas03.gat",0,0;
 	close;
 OnAgitInit:
 OnFlagEmb_C3:
@@ -542,7 +542,7 @@ OnFlagEmb_C3:
 }
 
 pay_gld.gat,341,106,0	script	Guild Flag#C3-00	722,{
-	callfunc "FlagSrc",1,"payg_cas03.gat",9,263;
+	callfunc "F_FlagSrc",1,"payg_cas03.gat",9,263;
 	close;
 OnAgitInit:
 OnFlagEmb_C3:
@@ -565,7 +565,7 @@ payg_cas03.gat,43,31,4		duplicate(GdFlag_C3)	Guild Flag#C3-10	722
 // C4 : Payon
 //------------------------------------------
 -	script	GdFlag_C4	722,{
-	callfunc "FlagSrc",1,"payg_cas04.gat",0,0;
+	callfunc "F_FlagSrc",1,"payg_cas04.gat",0,0;
 	close;
 OnAgitInit:
 OnFlagEmb_C4:
@@ -575,7 +575,7 @@ OnFlagEmb_C4:
 }
 
 pay_gld.gat,330,106,0	script	Guild Flag#C4-00	722,{
-	callfunc "FlagSrc",1,"payg_cas04.gat",40,235;
+	callfunc "F_FlagSrc",1,"payg_cas04.gat",40,235;
 	close;
 OnAgitInit:
 OnFlagEmb_C4:
@@ -598,7 +598,7 @@ payg_cas04.gat,239,181,4	duplicate(GdFlag_C4)	Guild Flag#C4-10	722
 // C5 : Payon
 //------------------------------------------
 -	script	GdFlag_C5	722,{
-	callfunc "FlagSrc",1,"payg_cas05.gat",0,0;
+	callfunc "F_FlagSrc",1,"payg_cas05.gat",0,0;
 	close;
 OnAgitInit:
 OnFlagEmb_C5:
@@ -608,7 +608,7 @@ OnFlagEmb_C5:
 }
 
 pay_gld.gat,318,106,0	script	Guild Flag#C5-00	722,{
-	callfunc "FlagSrc",1,"payg_cas05.gat",276,227;
+	callfunc "F_FlagSrc",1,"payg_cas05.gat",276,227;
 	close;
 OnAgitInit:
 OnFlagEmb_C5:
@@ -631,7 +631,7 @@ payg_cas05.gat,55,260,2		duplicate(GdFlag_C5)	Guild Flag#C5-10	722
 // V1 : Prontera
 //------------------------------------------
 -	script	GdFlag_V1	722,{
-	callfunc "FlagSrc",1,"prtg_cas01.gat",0,0;
+	callfunc "F_FlagSrc",1,"prtg_cas01.gat",0,0;
 	close;
 OnAgitInit:
 OnFlagEmb_V1:
@@ -641,7 +641,7 @@ OnFlagEmb_V1:
 }
 
 prt_gld.gat,160,210,4	script	Guild Flag#V1-00	722,{
-	callfunc "FlagSrc",1,"prtg_cas01.gat",97,174;
+	callfunc "F_FlagSrc",1,"prtg_cas01.gat",97,174;
 	close;
 OnAgitInit:
 OnFlagEmb_V1:
@@ -668,7 +668,7 @@ prtg_cas01.gat,45,46,4		duplicate(GdFlag_V1)	Guild Flag#V1-14	722
 // V2 : Prontera
 //------------------------------------------
 -	script	GdFlag_V2	722,{
-	callfunc "FlagSrc",1,"prtg_cas02.gat",0,0;
+	callfunc "F_FlagSrc",1,"prtg_cas02.gat",0,0;
 	close;
 OnAgitInit:
 OnFlagEmb_V2:
@@ -678,7 +678,7 @@ OnFlagEmb_V2:
 }
 
 prt_gld.gat,153,213,3	script	Guild Flag#V2-00	722,{
-	callfunc "FlagSrc",1,"prtg_cas02.gat",71,36;
+	callfunc "F_FlagSrc",1,"prtg_cas02.gat",71,36;
 	close;
 OnAgitInit:
 OnFlagEmb_V2:
@@ -707,7 +707,7 @@ prtg_cas02.gat,162,161,4	duplicate(GdFlag_V2)	Guild Flag#V2-16	722
 // V3 : Prontera
 //------------------------------------------
 -	script	GdFlag_V3	722,{
-	callfunc "FlagSrc",1,"prtg_cas03.gat",0,0;
+	callfunc "F_FlagSrc",1,"prtg_cas03.gat",0,0;
 	close;
 OnAgitInit:
 OnFlagEmb_V3:
@@ -717,7 +717,7 @@ OnFlagEmb_V3:
 }
 
 prt_gld.gat,150,220,2	script	Guild Flag#V3-00	722,{
-	callfunc "FlagSrc",1,"prtg_cas03.gat",181,215;
+	callfunc "F_FlagSrc",1,"prtg_cas03.gat",181,215;
 	close;
 OnAgitInit:
 OnFlagEmb_V3:
@@ -744,7 +744,7 @@ prtg_cas03.gat,165,201,4	duplicate(GdFlag_V3)	Guild Flag#V3-14	722
 // V4 : Prontera
 //------------------------------------------
 -	script	GdFlag_V4	722,{
-	callfunc "FlagSrc",1,"prtg_cas04.gat",0,0;
+	callfunc "F_FlagSrc",1,"prtg_cas04.gat",0,0;
 	close;
 OnAgitInit:
 OnFlagEmb_V4:
@@ -754,7 +754,7 @@ OnFlagEmb_V4:
 }
 
 prt_gld.gat,169,220,6	script	Guild Flag#V4-00	722,{
-	callfunc "FlagSrc",1,"prtg_cas04.gat",258,247;
+	callfunc "F_FlagSrc",1,"prtg_cas04.gat",258,247;
 	close;
 OnAgitInit:
 OnFlagEmb_V4:
@@ -781,7 +781,7 @@ prtg_cas04.gat,263,27,4		duplicate(GdFlag_V4)	Guild Flag#V4-14	722
 // V5 : Prontera
 //------------------------------------------
 -	script	GdFlag_V5	722,{
-	callfunc "FlagSrc",1,"prtg_cas05.gat",0,0;
+	callfunc "F_FlagSrc",1,"prtg_cas05.gat",0,0;
 	close;
 OnAgitInit:
 OnFlagEmb_V5:
@@ -791,7 +791,7 @@ OnFlagEmb_V5:
 }
 
 prt_gld.gat,167,213,5	script	Guild Flag#V5-00	722,{
-	callfunc "FlagSrc",1,"prtg_cas05.gat",52,41;
+	callfunc "F_FlagSrc",1,"prtg_cas05.gat",52,41;
 	close;
 OnAgitInit:
 OnFlagEmb_V5:

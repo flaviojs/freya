@@ -1452,88 +1452,88 @@ L_DONE:
 	end;
 }
 
-function	script	MnkTraps	{
+function	script	F_MnkTraps	{
 	mapannounce "monk_test.gat","trap: " + strcharinfo(0)+ " , you fell into a trap! We will warp you to the starting line.",8;
 	warp "monk_test.gat",388,348;
 }
 
 //--------------------------------------------------------------
-monk_test.gat,386,164,0	script	monk1-1	139,0,0,{callfunc "MnkTraps";}
-monk_test.gat,386,165,0	script	monk1-2	139,0,0,{callfunc "MnkTraps";}
-monk_test.gat,387,164,0	script	monk1-3	139,0,0,{callfunc "MnkTraps";}
-monk_test.gat,387,165,0	script	monk1-4	139,0,0,{callfunc "MnkTraps";}
-monk_test.gat,388,164,0	script	monk1-5	139,0,0,{callfunc "MnkTraps";}
-monk_test.gat,388,165,0	script	monk1-6	139,0,0,{callfunc "MnkTraps";}
-monk_test.gat,389,164,0	script	monk1-7	139,0,0,{callfunc "MnkTraps";}
-monk_test.gat,389,165,0	script	monk1-8	139,0,0,{callfunc "MnkTraps";}
+monk_test.gat,386,164,0	script	monk1-1	139,0,0,{callfunc "F_MnkTraps";}
+monk_test.gat,386,165,0	script	monk1-2	139,0,0,{callfunc "F_MnkTraps";}
+monk_test.gat,387,164,0	script	monk1-3	139,0,0,{callfunc "F_MnkTraps";}
+monk_test.gat,387,165,0	script	monk1-4	139,0,0,{callfunc "F_MnkTraps";}
+monk_test.gat,388,164,0	script	monk1-5	139,0,0,{callfunc "F_MnkTraps";}
+monk_test.gat,388,165,0	script	monk1-6	139,0,0,{callfunc "F_MnkTraps";}
+monk_test.gat,389,164,0	script	monk1-7	139,0,0,{callfunc "F_MnkTraps";}
+monk_test.gat,389,165,0	script	monk1-8	139,0,0,{callfunc "F_MnkTraps";}
 //--------------------------------------------------------------
-monk_test.gat,386,42,0	script	monk2-1	139,0,0,{callfunc "MnkTraps";}
-monk_test.gat,386,43,0	script	monk2-2	139,0,0,{callfunc "MnkTraps";}
-monk_test.gat,387,42,0	script	monk2-3	139,0,0,{callfunc "MnkTraps";}
-monk_test.gat,387,43,0	script	monk2-4	139,0,0,{callfunc "MnkTraps";}
-monk_test.gat,388,42,0	script	monk2-5	139,0,0,{callfunc "MnkTraps";}
-monk_test.gat,388,43,0	script	monk2-6	139,0,0,{callfunc "MnkTraps";}
-monk_test.gat,389,42,0	script	monk2-7	139,0,0,{callfunc "MnkTraps";}
-monk_test.gat,389,43,0	script	monk2-8	139,0,0,{callfunc "MnkTraps";}
+monk_test.gat,386,42,0	script	monk2-1	139,0,0,{callfunc "F_MnkTraps";}
+monk_test.gat,386,43,0	script	monk2-2	139,0,0,{callfunc "F_MnkTraps";}
+monk_test.gat,387,42,0	script	monk2-3	139,0,0,{callfunc "F_MnkTraps";}
+monk_test.gat,387,43,0	script	monk2-4	139,0,0,{callfunc "F_MnkTraps";}
+monk_test.gat,388,42,0	script	monk2-5	139,0,0,{callfunc "F_MnkTraps";}
+monk_test.gat,388,43,0	script	monk2-6	139,0,0,{callfunc "F_MnkTraps";}
+monk_test.gat,389,42,0	script	monk2-7	139,0,0,{callfunc "F_MnkTraps";}
+monk_test.gat,389,43,0	script	monk2-8	139,0,0,{callfunc "F_MnkTraps";}
 //--------------------------------------------------------------
-monk_test.gat,184,11,0	script	monk3-1	139,0,3,{callfunc "MnkTraps";}
-monk_test.gat,185,11,0	script	monk3-2	139,0,3,{callfunc "MnkTraps";}
-monk_test.gat,186,11,0	script	monk3-3	139,0,3,{callfunc "MnkTraps";}
-monk_test.gat,187,11,0	script	monk3-4	139,0,3,{callfunc "MnkTraps";}
+monk_test.gat,184,11,0	script	monk3-1	139,0,3,{callfunc "F_MnkTraps";}
+monk_test.gat,185,11,0	script	monk3-2	139,0,3,{callfunc "F_MnkTraps";}
+monk_test.gat,186,11,0	script	monk3-3	139,0,3,{callfunc "F_MnkTraps";}
+monk_test.gat,187,11,0	script	monk3-4	139,0,3,{callfunc "F_MnkTraps";}
 //--------------------------------------------------------------
-monk_test.gat,70,10,0	script	monk4-1	139,0,0,{callfunc "MnkTraps";}
-monk_test.gat,70,11,0	script	monk4-2	139,0,0,{callfunc "MnkTraps";}
-monk_test.gat,70,12,0	script	monk4-3	139,0,0,{callfunc "MnkTraps";}
-monk_test.gat,70,13,0	script	monk4-4	139,0,0,{callfunc "MnkTraps";}
-monk_test.gat,71,10,0	script	monk4-5	139,0,0,{callfunc "MnkTraps";}
-monk_test.gat,71,11,0	script	monk4-6	139,0,0,{callfunc "MnkTraps";}
-monk_test.gat,71,12,0	script	monk4-7	139,0,0,{callfunc "MnkTraps";}
-monk_test.gat,71,13,0	script	monk4-8	139,0,0,{callfunc "MnkTraps";}
+monk_test.gat,70,10,0	script	monk4-1	139,0,0,{callfunc "F_MnkTraps";}
+monk_test.gat,70,11,0	script	monk4-2	139,0,0,{callfunc "F_MnkTraps";}
+monk_test.gat,70,12,0	script	monk4-3	139,0,0,{callfunc "F_MnkTraps";}
+monk_test.gat,70,13,0	script	monk4-4	139,0,0,{callfunc "F_MnkTraps";}
+monk_test.gat,71,10,0	script	monk4-5	139,0,0,{callfunc "F_MnkTraps";}
+monk_test.gat,71,11,0	script	monk4-6	139,0,0,{callfunc "F_MnkTraps";}
+monk_test.gat,71,12,0	script	monk4-7	139,0,0,{callfunc "F_MnkTraps";}
+monk_test.gat,71,13,0	script	monk4-8	139,0,0,{callfunc "F_MnkTraps";}
 //--------------------------------------------------------------
-monk_test.gat,8,30,0	script	monk5-1	139,0,0,{callfunc "MnkTraps";}
-monk_test.gat,8,31,0	script	monk5-2	139,0,0,{callfunc "MnkTraps";}
-monk_test.gat,9,30,0	script	monk5-3	139,0,0,{callfunc "MnkTraps";}
-monk_test.gat,9,31,0	script	monk5-4	139,0,0,{callfunc "MnkTraps";}
-monk_test.gat,10,30,0	script	monk5-5	139,0,0,{callfunc "MnkTraps";}
-monk_test.gat,10,31,0	script	monk5-6	139,0,0,{callfunc "MnkTraps";}
-monk_test.gat,11,30,0	script	monk5-7	139,0,0,{callfunc "MnkTraps";}
-monk_test.gat,11,31,0	script	monk5-8	139,0,0,{callfunc "MnkTraps";}
-monk_test.gat,12,30,0	script	monk5-9	139,0,0,{callfunc "MnkTraps";}
-monk_test.gat,12,31,0	script	monk5-10	139,0,0,{callfunc "MnkTraps";}
-monk_test.gat,13,30,0	script	monk5-11	139,0,0,{callfunc "MnkTraps";}
-monk_test.gat,13,31,0	script	monk5-12	139,0,0,{callfunc "MnkTraps";}
-monk_test.gat,14,30,0	script	monk5-13	139,0,0,{callfunc "MnkTraps";}
-monk_test.gat,14,31,0	script	monk5-14	139,0,0,{callfunc "MnkTraps";}
-monk_test.gat,15,30,0	script	monk5-15	139,0,0,{callfunc "MnkTraps";}
-monk_test.gat,15,31,0	script	monk5-16	139,0,0,{callfunc "MnkTraps";}
+monk_test.gat,8,30,0	script	monk5-1	139,0,0,{callfunc "F_MnkTraps";}
+monk_test.gat,8,31,0	script	monk5-2	139,0,0,{callfunc "F_MnkTraps";}
+monk_test.gat,9,30,0	script	monk5-3	139,0,0,{callfunc "F_MnkTraps";}
+monk_test.gat,9,31,0	script	monk5-4	139,0,0,{callfunc "F_MnkTraps";}
+monk_test.gat,10,30,0	script	monk5-5	139,0,0,{callfunc "F_MnkTraps";}
+monk_test.gat,10,31,0	script	monk5-6	139,0,0,{callfunc "F_MnkTraps";}
+monk_test.gat,11,30,0	script	monk5-7	139,0,0,{callfunc "F_MnkTraps";}
+monk_test.gat,11,31,0	script	monk5-8	139,0,0,{callfunc "F_MnkTraps";}
+monk_test.gat,12,30,0	script	monk5-9	139,0,0,{callfunc "F_MnkTraps";}
+monk_test.gat,12,31,0	script	monk5-10	139,0,0,{callfunc "F_MnkTraps";}
+monk_test.gat,13,30,0	script	monk5-11	139,0,0,{callfunc "F_MnkTraps";}
+monk_test.gat,13,31,0	script	monk5-12	139,0,0,{callfunc "F_MnkTraps";}
+monk_test.gat,14,30,0	script	monk5-13	139,0,0,{callfunc "F_MnkTraps";}
+monk_test.gat,14,31,0	script	monk5-14	139,0,0,{callfunc "F_MnkTraps";}
+monk_test.gat,15,30,0	script	monk5-15	139,0,0,{callfunc "F_MnkTraps";}
+monk_test.gat,15,31,0	script	monk5-16	139,0,0,{callfunc "F_MnkTraps";}
 //--------------------------------------------------------------
-monk_test.gat,10,158,0	script	monk6-1	139,0,0,{callfunc "MnkTraps";}
-monk_test.gat,10,159,0	script	monk6-2	139,0,0,{callfunc "MnkTraps";}
-monk_test.gat,11,158,0	script	monk6-3	139,0,0,{callfunc "MnkTraps";}
-monk_test.gat,11,159,0	script	monk6-4	139,0,0,{callfunc "MnkTraps";}
-monk_test.gat,12,158,0	script	monk6-5	139,0,0,{callfunc "MnkTraps";}
-monk_test.gat,12,159,0	script	monk6-6	139,0,0,{callfunc "MnkTraps";}
-monk_test.gat,13,158,0	script	monk6-7	139,0,0,{callfunc "MnkTraps";}
-monk_test.gat,13,159,0	script	monk6-8	139,0,0,{callfunc "MnkTraps";}
+monk_test.gat,10,158,0	script	monk6-1	139,0,0,{callfunc "F_MnkTraps";}
+monk_test.gat,10,159,0	script	monk6-2	139,0,0,{callfunc "F_MnkTraps";}
+monk_test.gat,11,158,0	script	monk6-3	139,0,0,{callfunc "F_MnkTraps";}
+monk_test.gat,11,159,0	script	monk6-4	139,0,0,{callfunc "F_MnkTraps";}
+monk_test.gat,12,158,0	script	monk6-5	139,0,0,{callfunc "F_MnkTraps";}
+monk_test.gat,12,159,0	script	monk6-6	139,0,0,{callfunc "F_MnkTraps";}
+monk_test.gat,13,158,0	script	monk6-7	139,0,0,{callfunc "F_MnkTraps";}
+monk_test.gat,13,159,0	script	monk6-8	139,0,0,{callfunc "F_MnkTraps";}
 //--------------------------------------------------------------
-monk_test.gat,38,386,0	script	monk7-1	139,0,0,{callfunc "MnkTraps";}
-monk_test.gat,38,387,0	script	monk7-2	139,0,0,{callfunc "MnkTraps";}
-monk_test.gat,38,388,0	script	monk7-3	139,0,0,{callfunc "MnkTraps";}
-monk_test.gat,38,389,0	script	monk7-4	139,0,0,{callfunc "MnkTraps";}
-monk_test.gat,39,386,0	script	monk7-5	139,0,0,{callfunc "MnkTraps";}
-monk_test.gat,39,387,0	script	monk7-6	139,0,0,{callfunc "MnkTraps";}
-monk_test.gat,39,388,0	script	monk7-7	139,0,0,{callfunc "MnkTraps";}
-monk_test.gat,39,389,0	script	monk7-8	139,0,0,{callfunc "MnkTraps";}
+monk_test.gat,38,386,0	script	monk7-1	139,0,0,{callfunc "F_MnkTraps";}
+monk_test.gat,38,387,0	script	monk7-2	139,0,0,{callfunc "F_MnkTraps";}
+monk_test.gat,38,388,0	script	monk7-3	139,0,0,{callfunc "F_MnkTraps";}
+monk_test.gat,38,389,0	script	monk7-4	139,0,0,{callfunc "F_MnkTraps";}
+monk_test.gat,39,386,0	script	monk7-5	139,0,0,{callfunc "F_MnkTraps";}
+monk_test.gat,39,387,0	script	monk7-6	139,0,0,{callfunc "F_MnkTraps";}
+monk_test.gat,39,388,0	script	monk7-7	139,0,0,{callfunc "F_MnkTraps";}
+monk_test.gat,39,389,0	script	monk7-8	139,0,0,{callfunc "F_MnkTraps";}
 //--------------------------------------------------------------
-monk_test.gat,82,390,0	script	monk8-1	139,0,0,{callfunc "MnkTraps";}
-monk_test.gat,82,391,0	script	monk8-2	139,0,0,{callfunc "MnkTraps";}
-monk_test.gat,83,390,0	script	monk8-3	139,0,0,{callfunc "MnkTraps";}
-monk_test.gat,83,391,0	script	monk8-4	139,0,0,{callfunc "MnkTraps";}
+monk_test.gat,82,390,0	script	monk8-1	139,0,0,{callfunc "F_MnkTraps";}
+monk_test.gat,82,391,0	script	monk8-2	139,0,0,{callfunc "F_MnkTraps";}
+monk_test.gat,83,390,0	script	monk8-3	139,0,0,{callfunc "F_MnkTraps";}
+monk_test.gat,83,391,0	script	monk8-4	139,0,0,{callfunc "F_MnkTraps";}
 //--------------------------------------------------------------
-monk_test.gat,82,384,0	script	monk9-1	139,0,0,{callfunc "MnkTraps";}
-monk_test.gat,82,385,0	script	monk9-2	139,0,0,{callfunc "MnkTraps";}
-monk_test.gat,83,384,0	script	monk9-3	139,0,0,{callfunc "MnkTraps";}
-monk_test.gat,83,385,0	script	monk9-4	139,0,0,{callfunc "MnkTraps";}
+monk_test.gat,82,384,0	script	monk9-1	139,0,0,{callfunc "F_MnkTraps";}
+monk_test.gat,82,385,0	script	monk9-2	139,0,0,{callfunc "F_MnkTraps";}
+monk_test.gat,83,384,0	script	monk9-3	139,0,0,{callfunc "F_MnkTraps";}
+monk_test.gat,83,385,0	script	monk9-4	139,0,0,{callfunc "F_MnkTraps";}
 //--------------------------------------------------------------
 
 prt_monk.gat,225,179,4	script	XuanWu#01 	89,{

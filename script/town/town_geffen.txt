@@ -751,7 +751,7 @@ L_Practice:
 	mes "try to guess my number, okay?";
 	mes "If you want to cancel, then please enter a number greater than 1,000.";
 	next;
-	callfunc "MasterMind",0;
+	callfunc "F_MasterMind",0;
 	end;
 
 L_Record:
@@ -779,7 +779,7 @@ L_Match:
 	next;
 	set @timeMin,(gettime(3)*60 + gettime(2));
 	set @timeSec,gettime(1);
-	callfunc "MasterMind",1;
+	callfunc "F_MasterMind",1;
 	set @timeMinFinish,((gettime(3)*60 + gettime(2))-@timeMin);
 	set @timeSecFinish,(gettime(1)-@timeSec);
 	if ($NameMasterMind$ == "") goto L_GainRecord;
@@ -825,7 +825,7 @@ L_Beat:
 	close;
 }
 
-function	script	MasterMind	{
+function	script	F_MasterMind	{
 	set @retry,0;
 	set @number1,rand(1,9);
 

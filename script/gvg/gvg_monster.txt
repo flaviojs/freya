@@ -21,12 +21,12 @@
 //=========================================================================
 // Emperium and a monsters summoning functions.
 // (They are called when Emperium is destroyed, when castle changes of guild, and at start of WoE).
-//	callfunc "AgitSummon","AgitCode";
+//	callfunc "F_AgitSummon","AgitCode";
 //-------------------------------------------------------------------------
 
-function	script	AgitSummon	{
+function	script	F_AgitSummon	{
 	// This function changes AgitCode into a numerical value.
-	function enum {
+	function sF_Enum {
 		if(getarg(0)=="L1") return 11;
 		if(getarg(0)=="L2") return 12;
 		if(getarg(0)=="L3") return 13;
@@ -51,7 +51,7 @@ function	script	AgitSummon	{
 	}
 
 	// Summoning of the Emperium
-	switch (enum(getarg(0))) {
+	switch (sF_Enum(getarg(0))) {
 		case 11: monster "aldeg_cas01.gat",216,24,"Emperium",1288,1,"AgitExe#L1::OnAgitBreak"; 	break;
 		case 12: monster "aldeg_cas02.gat",214,24,"Emperium",1288,1,"AgitExe#L2::OnAgitBreak"; 	break;
 		case 13: monster "aldeg_cas03.gat",206,32,"Emperium",1288,1,"AgitExe#L3::OnAgitBreak"; 	break;
@@ -78,7 +78,7 @@ function	script	AgitSummon	{
 		return;					// Stop here if castle have a guild.
 
 	// Setup of the monsters' coordinates for each castle.
-	switch (enum(getarg(0))) {
+	switch (sF_Enum(getarg(0))) {
 		case 11: setarray '@pos,216,23; 	break;
 		case 12: setarray '@pos,213,23; 	break;
 		case 13: setarray '@pos,205,31; 	break;
@@ -101,7 +101,7 @@ function	script	AgitSummon	{
 		case 45: setarray '@pos,266,266; 	break;
 	}
 	// Summoning of monsters when castle has no guild.
-	switch (enum(getarg(0))/10) {
+	switch (sF_Enum(getarg(0))/10) {
 	case 1:	// Aldebaran
 		areamonster '@map$,0,0,0,0,"Evil Druid",1117,10;
 		areamonster '@map$,0,0,0,0,"Khalitzburg",1132,4;
@@ -179,7 +179,7 @@ function	script	AgitSummon	{
 //=========================================================================
 // Guardian summons function
 // (It is called to summon by the Inter-server connection or the steward.)
-//	callfunc "GuardianCall","AgitCode",Num,Mes;
+//	callfunc "F_GuardianCall","AgitCode",Num,Mes;
 //
 // * Detail of arguments:
 //	"AgitCode" -> Code of the location/place (example: L1, B2, C3, V4)
@@ -187,7 +187,7 @@ function	script	AgitSummon	{
 //	    Mes    -> 0: No message, 1: There is a message (When it is a steward.)
 //-------------------------------------------------------------------------
 
-function	script	GuardianCall	{
+function	script	F_GuardianCall	{
 	if(getarg(0)=="L1") {
 		switch(getarg(1)) {
 			case 10: monster "aldeg_cas01.gat",17,218,"--ja--",1287,1,"#GuardianKilled::On_L1_10"; 	break;
