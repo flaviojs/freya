@@ -1128,7 +1128,7 @@ izlude.gat,171,185,3	script	Marriage Companion#Izlude Island	71,{
 	case 2:
 		if (!PartnerID) {
 			mes "[Happy Wedding]";
-			mes "UhOh, I'm sorry.";
+			mes "Uh oh, I'm sorry.";
 			mes "You can't go there if you're not married...";
 			mes "Why don't you go to the Prontera Inn,";
 			mes "and cheer yourself up?";
@@ -1144,7 +1144,7 @@ izlude.gat,171,185,3	script	Marriage Companion#Izlude Island	71,{
 		} else {
 			mes "[Happy Wedding]";
 			mes "I've explained about the trip to 'Jawaii'.";
-			mes "You'll need 100,000 z.";
+			mes "You'll need 100,000 zeny.";
 			mes "If you do not have enough zeny,";
 			mes "why don't you seek help from your partner...?";
 			close;
@@ -1311,7 +1311,7 @@ jawaii.gat,141,200,3	script	Employee#Sweetness Suite	798,{
 	mes "So please feel free to use it.";
 	next;
 	mes "[Alowawu]";
-	mes "The rental is 1000zeny per person.";
+	mes "The rental is 1000 zeny per person.";
 	mes "If you give it to me,";
 	mes "I'll transfer you inside.";
 	mes "There's no other way to get inside directly.";
@@ -1505,7 +1505,7 @@ jawaii.gat,214,168,5	script	Marriage Companion#Jawaii	71,{
 			close;
 		} else {
 			mes "[Happy Wedding]";
-			mes "The price for 'Memory of Wedding' is50000z.";
+			mes "The price for 'Memory of Wedding' is 50000z.";
 			mes "Looks like you don't have enough zeny.";
 			mes "Do you want to seek the help of your partner?";
 			close;
