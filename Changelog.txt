@@ -14,6 +14,7 @@
 Date	Added
 
 2007/06/10
+	* Added: Nameless Island's level 80+ official requirement to go there [Tsuyuki]
 	* Updated: Taekwon Job Change Quest to be 100% fully accurate to iRO Aegis [Tsuyuki]
 	* Added: A Moscovia Town NPCs script for later use [Tsuyuki]
 	* Added: Geffen Town NPCs, converted from Aegis in replacement of the old NPC script [Tsuyuki]
