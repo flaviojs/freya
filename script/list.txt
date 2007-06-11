@@ -29,6 +29,7 @@
 // npc: script/event/event_french_flag.txt
 // npc: script/event/event_ice_cream.txt
 // npc: script/event/event_idul_fitri.txt
+// npc: script/event/event_moscovia.txt
 // npc: script/event/event_skill_reset.txt
 // npc: script/event/event_twin_towers.txt
 // npc: script/event/event_valentines_day.txt
@@ -158,7 +159,6 @@ npc: script/town/town_lighthalzen.txt
 npc: script/town/town_louyang.txt
 npc: script/town/town_lutie.txt
 npc: script/town/town_morroc.txt
-npc: script/town/town_moscovia.txt
 npc: script/town/town_nameless.txt
 npc: script/town/town_niflheim.txt
 npc: script/town/town_payon.txt

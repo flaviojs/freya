@@ -9,18 +9,16 @@
 //--------------------------------------------------------------
 // Script Title: Town Warps	Author: A Lot of People
 //--------------------------------------------------------------
-// Revision History: v1.9
+// Revision History: v1.7
 //--------------------------------------------------------------
 //	1.0 First version, merged together [Tsuyuki]
 //	1.1 Updated Nameless Island and Veins warp portals (Credits to jAthena) [Tsuyuki]
-//	1.2 Added custom Moscovia Town warps by Azazel [Tsuyuki]
-//	1.3 Fixed Izlude Battle Arena warps [Tsuyuki]
-//	1.4 Updated Hugel warps for the Odin's Excavation Quest [Tsuyuki]
-//	1.5 Updated Moscovia Town warps by $ephiroth [Tsuyuki]
-//	1.6 Updated Lighthalzen warps for the Cursed Spirit Quest [Tsuyuki]
-//	1.7 Updated Juno warps for the President's Quest [Tsuyuki]
-//	1.8 Removed a duplicate Rachel warp [Tsuyuki]
-//	1.9 Added official Aegis Rachel warps by Playtester [Tsuyuki]
+//	1.2 Fixed Izlude Battle Arena warps [Tsuyuki]
+//	1.3 Updated Hugel warps for the Odin's Excavation Quest [Tsuyuki]
+//	1.4 Updated Lighthalzen warps for the Cursed Spirit Quest [Tsuyuki]
+//	1.5 Updated Juno warps for the President's Quest [Tsuyuki]
+//	1.6 Removed a duplicate Rachel warp [Tsuyuki]
+//	1.7 Added official Aegis Rachel warps by Playtester [Tsuyuki]
 //--------------------------------------------------------------
 // Additional Notes: N/A
 //--------------------------------------------------------------
@@ -1001,36 +999,6 @@ moc_castle.gat,92,67,0	warp	mocc14	3,2,moc_castle.gat,92,85
 moc_castle.gat,92,82,0	warp	mocc14-1	3,2,moc_castle.gat,92,63
 moc_castle.gat,94,143,0	warp	mocc15	3,2,moc_castle.gat,94,160
 moc_castle.gat,94,156,0	warp	mocc15-1	3,2,moc_castle.gat,94,140
-
-
-//--------------------------------------------------------------
-// Moscovia Town Warps
-//--------------------------------------------------------------
-
-moscovia.gat,224,235,0    warp    moskwarp1001    1,1,mosk_in.gat,96,91
-mosk_in.gat,93,91,0    warp    moskwarp1002    1,1,moscovia.gat,224,232
-mosk_in.gat,100,126,0    warp    moskwarp1003    1,1,mosk_in.gat,21,116
-mosk_in.gat,21,113,0    warp    moskwarp1004    1,1,mosk_in.gat,100,123
-moscovia.gat,185,189,0    warp    moskwarp1005    1,1,mosk_in.gat,16,179
-mosk_in.gat,13,179,0    warp    moskwarp1006    1,1,moscovia.gat,188,193
-moscovia.gat,203,171,0    warp    moskwarp1007    1,1,mosk_in.gat,85,179
-mosk_in.gat,88,179,0    warp    moskwarp1008    1,1,moscovia.gat,205,168
-moscovia.gat,223,174,0    warp    moskwarp1009    1,1,mosk_in.gat,14,245
-mosk_in.gat,11,245,0    warp    moskwarp1010    1,1,moscovia.gat,220,177
-moscovia.gat,229,207,0    warp    moskwarp1011    1,1,mosk_in.gat,141,178
-mosk_in.gat,141,175,0    warp    moskwarp1012    1,1,moscovia.gat,226,204
-mosk_in.gat,150,191,0    warp    moskwarp1013    1,1,mosk_in.gat,206,187
-mosk_in.gat,203,187,0    warp    moskwarp1014    1,1,mosk_in.gat,147,191
-moscovia.gat,256,138,0    warp    moskwarp1015    1,1,mosk_in.gat,211,114
-mosk_in.gat,211,111,0    warp    moskwarp1016    1,1,moscovia.gat,254,141
-mosk_in.gat,221,128,0    warp    moskwarp1017    1,1,mosk_in.gat,287,120
-mosk_in.gat,287,117,0    warp    moskwarp1018    1,1,mosk_in.gat,221,125
-moscovia.gat,195,80,0    warp    moskwarp1019    1,1,mosk_in.gat,215,40
-mosk_in.gat,215,37,0    warp    moskwarp1020    1,1,moscovia.gat,194,78
-moscovia.gat,146,112,0    warp    moskwarp1021    1,1,mosk_in.gat,213,256
-mosk_in.gat,213,253,0    warp    moskwarp1022    1,1,moscovia.gat,146,109
-mosk_in.gat,219,272,0    warp    moskwarp1023    1,1,mosk_in.gat,151,276
-mosk_in.gat,151,273,0    warp    moskwarp1024    1,1,mosk_in.gat,219,269
 
 
 //--------------------------------------------------------------

@@ -1,0 +1,58 @@
+//--------------------------------------------------------------
+//               (c)2004-2007 Aurora Team Presents:             
+//                  ___                                         
+//                 /   |_   _ _ __ ___  _ __ __ _               
+//                / /| | | | | '__/ _ \| '__/ _` |              
+//               / ___ | |_| | | | (_) | | | (_| |              
+//              /_/  |_|\____|_|  \___/|_|  \__,_|              
+//                 http://aurora.deltaanime.net                 
+//--------------------------------------------------------------
+// Script Title: Moscovia RussianRO Event	Author: A Lot of People
+//--------------------------------------------------------------
+// Revision History: v1.2
+//--------------------------------------------------------------
+//	1.0 First version, added the file [Tsuyuki]
+//	1.1 Added custom Moscovia Town warps by Azazel [Tsuyuki]
+//	1.2 Updated Moscovia Town warps by $ephiroth [Tsuyuki]
+//--------------------------------------------------------------
+// Additional Notes: Highly incomplete
+//--------------------------------------------------------------
+
+
+//--------------------------------------------------------------
+// Moscovia Region Warps
+//--------------------------------------------------------------
+
+// Town
+moscovia.gat,224,235,0    warp    moskwarp1001    1,1,mosk_in.gat,96,91
+mosk_in.gat,93,91,0    warp    moskwarp1002    1,1,moscovia.gat,224,232
+mosk_in.gat,100,126,0    warp    moskwarp1003    1,1,mosk_in.gat,21,116
+mosk_in.gat,21,113,0    warp    moskwarp1004    1,1,mosk_in.gat,100,123
+moscovia.gat,185,189,0    warp    moskwarp1005    1,1,mosk_in.gat,16,179
+mosk_in.gat,13,179,0    warp    moskwarp1006    1,1,moscovia.gat,188,193
+moscovia.gat,203,171,0    warp    moskwarp1007    1,1,mosk_in.gat,85,179
+mosk_in.gat,88,179,0    warp    moskwarp1008    1,1,moscovia.gat,205,168
+moscovia.gat,223,174,0    warp    moskwarp1009    1,1,mosk_in.gat,14,245
+mosk_in.gat,11,245,0    warp    moskwarp1010    1,1,moscovia.gat,220,177
+moscovia.gat,229,207,0    warp    moskwarp1011    1,1,mosk_in.gat,141,178
+mosk_in.gat,141,175,0    warp    moskwarp1012    1,1,moscovia.gat,226,204
+mosk_in.gat,150,191,0    warp    moskwarp1013    1,1,mosk_in.gat,206,187
+mosk_in.gat,203,187,0    warp    moskwarp1014    1,1,mosk_in.gat,147,191
+moscovia.gat,256,138,0    warp    moskwarp1015    1,1,mosk_in.gat,211,114
+mosk_in.gat,211,111,0    warp    moskwarp1016    1,1,moscovia.gat,254,141
+mosk_in.gat,221,128,0    warp    moskwarp1017    1,1,mosk_in.gat,287,120
+mosk_in.gat,287,117,0    warp    moskwarp1018    1,1,mosk_in.gat,221,125
+moscovia.gat,195,80,0    warp    moskwarp1019    1,1,mosk_in.gat,215,40
+mosk_in.gat,215,37,0    warp    moskwarp1020    1,1,moscovia.gat,194,78
+moscovia.gat,146,112,0    warp    moskwarp1021    1,1,mosk_in.gat,213,256
+mosk_in.gat,213,253,0    warp    moskwarp1022    1,1,moscovia.gat,146,109
+mosk_in.gat,219,272,0    warp    moskwarp1023    1,1,mosk_in.gat,151,276
+mosk_in.gat,151,273,0    warp    moskwarp1024    1,1,mosk_in.gat,219,269
+
+// Dungeon
+mosk_fild02.gat,190,257,0	warp	moscovia008	1,1,mosk_dun01.gat,189,45
+mosk_dun01.gat,189,42,0	warp	moscovia009	1,1,mosk_fild02.gat,190,254
+mosk_dun01.gat,200,273,0	warp	moscovia010	1,1,mosk_dun02.gat,164,31
+mosk_dun02.gat,167,28,0	warp	moscovia011	1,1,mosk_dun01.gat,200,270
+mosk_dun02.gat,267,117,0	warp	moscovia012	1,1,mosk_dun03.gat,32,135
+mosk_dun03.gat,29,132,0	warp	moscovia013	1,1,mosk_dun02.gat,264,117
