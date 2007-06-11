@@ -17,7 +17,6 @@
 
 // Add your custom scripts here
 
-npc: script/custom/custom_jobchanger.txt
 
 //--------------------------------------------------------------
 // Event Scripts
