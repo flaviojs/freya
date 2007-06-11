@@ -762,7 +762,7 @@ function	script	F_JobChanger	{
 
 function	script	F_HighFirstClass	{
 
-	if (Upper == 1 && Basejob == 0) {
+	if (Upper == 1 && Basejob == Job_Novice) {
 		if (OLD_CLASS != getarg(2) && OLD_CLASS != getarg(3) && OLD_CLASS != getarg(4)) {
 			mes "["+getarg(5)+"]";
 			mes "After a long journey, you've come to this place again.";
@@ -823,11 +823,12 @@ function	script	F_HighFirstClass	{
 		}
 		close;
 	}
-	if (Upper == 1 && Basejob == 4) {
+	else if (Upper == 1 && Basejob == Job_Acolyte) {
 		mes "["+getarg(5)+"]";
 		mes "Come, set out for your pilgrimage again.";
 		mes "May your future be blessed with happiness and light.";
 		close;
+	} else {
+		return;
 	}
-	return;
 }

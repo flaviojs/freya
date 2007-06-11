@@ -342,7 +342,7 @@ L_3:
 
 L_4:
 	mes "Ah, the guide told me about you. So, let me check your mushrooms...";
-	if((countitem(1069)==0) || (countitem(1070)==0)) {
+	if((countitem(1069)==0) && (countitem(1070)==0)) {
 		next;
 		mes "[Comrade]";
 		mes "What the hell...";
