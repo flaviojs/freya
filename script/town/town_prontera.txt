@@ -6966,8 +6966,8 @@ prontera.gat,248,212,3	script	Busy Boy#prt	706,3,3,{
 		mes "[Busy-Looking Boy]";
 		mes "Ack! Would you leave";
 		mes "me alone and let me work?";
-		mes "I've got somehing important";
-		mes "to do! When Ifinish arranging";
+		mes "I've got something important";
+		mes "to do! When I finish arranging";
 		mes "these books,  need to... I need to make some preparations!";
 		close;
 	}
