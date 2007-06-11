@@ -13,6 +13,11 @@
 
 Date	Added
 
+2007/06/11
+	* Removed: Some duplicate NPCs [Tsuyuki]
+	 - Duplicate Christopher Blacksmith in script/town/global/town_refine.txt and script/town/town_geffen.txt
+	 - Duplicate Einbroch Hotel Employee in script/town/global/town_inn.txt and script/town/town_einbroch.txt
+
 2007/06/10
 	* Added: Nameless Island's level 80+ official requirement to go there [Tsuyuki]
 	* Updated: Taekwon Job Change Quest to be 100% fully accurate to iRO Aegis [Tsuyuki]

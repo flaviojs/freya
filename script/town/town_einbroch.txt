@@ -913,54 +913,6 @@ OnUnhide:
 	end;
 }
 
-ein_in01.gat,206,224,2	script	Hotel Employee	855,{
-
-	mes "[Hotel Employee]";
-	mes "Good day, welcome to the";
-	mes "Einbroch Hotel. The staff is";
-	mes "always striving to accomodate";
-	mes "our guests with the highest";
-	mes "standards in cleanliness,";
-	mes "service and convenience~";
-	next;
-	menu "Save",s_Save,"Take Rest- 5,000 zeny",s_Rest,"Cancel",-;
-
-	mes "[Hotel Employee]";
-	mes "Thank you and";
-	mes "please come again~";
-	close;
-
-s_Save:
-	savepoint "ein_in01.gat",199,224;
-	mes "[Hotel Employee]";
-	mes "Your Respawn Point";
-	mes "has been saved here";
-	mes "in the Einbroch Hotel.";
-	mes "Thank you, and please";
-	mes "come again.";
-	next;
-	mes "[Hotel Employee]";
-	mes "Have a good day.";
-	close;
-
-s_Rest:
-	mes "[Hotel Employee]";
-	if(Zeny < 5000){
-		mes "I'm sorry but";
-		mes "you don't seem";
-		mes "to have enough zeny.";
-		close;
-	}
-	mes "Thank you.";
-	mes "Please enjoy";
-	mes "your rest~";
-	close2;
-	set zeny,zeny - 5000;
-	warp "ein_in01.gat",272,167;
-	percentheal 100,100;
-	end;
-}
-
 ein_in01.gat,21,147,4	script	Megass	853,3,3,{
 
 	end;
@@ -982,6 +934,8 @@ OnTouch:
 	warp "einbroch.gat",112,245;
 	end;
 }
+
+ein_in01.gat,38,29,6	script	duplicate(Chris)	Christopher#2	63
 
 
 //--------------------------------------------------------------

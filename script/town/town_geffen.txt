@@ -222,7 +222,7 @@ geffen.gat,34,170,0	script	Theodore	47,{
 	close;
 }
 
-geffen_in.gat,110,172,0	script	Christopher	63,{
+geffen_in.gat,110,172,0	script	Christopher#1::Chris	63,{
 
 	mes "[Christopher Guillenrow]";
 	mes "Welcome to Christopher's Workshop. Ye can get all yer stuff for forging here. What business";
@@ -421,13 +421,11 @@ geffen_in.gat,110,172,0	script	Christopher	63,{
 				mes "Me friend... Seems to me ye don't have Inventory space. Why doncha put some things into Kafra Storage first?";
 				close;
 			}
-			
 			getitem 1011,@input;
 			set Zeny,Zeny-'@sell;
 			mes "[Christopher Guillenrow]";
 			mes "Thank ye fer shopping at me workshop. Feel free to come anytime, whenever ye need, whenever ye want.";
 			close;
-		break;		
 	case 3:
 			mes "[Christopher Guillenrow]";
 			mes "Feel free to come anytime, whenever ye need. Fare ye well.";
