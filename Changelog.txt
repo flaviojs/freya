@@ -14,6 +14,7 @@
 Date	Added
 
 2007/06/11
+	* Updated: New item names in the item database [Rikter]
 	* Updated: Monster database and fixed a major bug with it [Tsuyuki]
 	* Changed: Moved all current Moscovia script data to 'script/event/event_moscovia.txt' [Tsuyuki]
 	* Updated: Some warp portals by Playtester [Tsuyuki]
