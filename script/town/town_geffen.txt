@@ -222,7 +222,7 @@ geffen.gat,34,170,0	script	Theodore	47,{
 	close;
 }
 
-geffen_in.gat,110,172,0	script	Christopher#1::Chris	63,{
+geffen_in.gat,110,172,0	script	Christopher::Christopher	63,{
 
 	mes "[Christopher Guillenrow]";
 	mes "Welcome to Christopher's Workshop. Ye can get all yer stuff for forging here. What business";
@@ -471,6 +471,8 @@ geffen_in.gat,110,172,0	script	Christopher#1::Chris	63,{
 		close;
 	}
 }
+
+ein_in01.gat,38,29,6	duplicate(Christopher)	Christopher#2	63
 
 geffen.gat,146,148,4	script	Suspicious Guy	99,{
 

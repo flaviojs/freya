@@ -935,8 +935,6 @@ OnTouch:
 	end;
 }
 
-ein_in01.gat,38,29,6	duplicate(Chris)	Christopher#2	63
-
 
 //--------------------------------------------------------------
 // Einbroch Murder Quest
