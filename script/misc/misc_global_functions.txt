@@ -440,10 +440,15 @@ function	script	F_EndAllStatuses	{
 function	script	F_JobChange	{
 
 	unequip;
-	if (Upper < 2)
+	if (Upper == 0) {
 		jobchange getarg(0),0; // Normal Job Change
-	else 
+	}
+	else if (Upper == 1) {
+		jobchange getarg(0),1; // Advanced Job Change
+	}
+	else if (Upper == 2) {
 		jobchange getarg(0),2; // Baby Job Change
+	}
 	return;
 }
 
