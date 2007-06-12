@@ -9,9 +9,10 @@
 //--------------------------------------------------------------
 // Script Title: Dye/Clothes/Hair Stylists	Author: A Lot of People
 //--------------------------------------------------------------
-// Revision History: v1.0
+// Revision History: v1.1
 //--------------------------------------------------------------
 //	1.0 Merged all stylist/dye maker scripts together [Tsuyuki]
+//	1.1 Fixed an Alchemist Job Change Quest bug thanks to FanFatal [Tsuyuki]
 //--------------------------------------------------------------
 // Additional Notes: Clothes Dye script is disabled from working,
 // check comments on it to enable. Also note that the Counteragent
@@ -563,6 +564,7 @@ M_Menu2:
 					mes "Fine... Like this..... Fine... Keep... More........ Heheheheheh";
 					mes ".... Ahhhh.... ..... OhOh.... OhOh!..... OhOhOhOhOhOh!!!...!!!!!!";
 					next;
+					set al_morgen,1;
 					getitem 974,1;//Items: Mixture,
 					mes "[Chemist Morgenstein]";
 					mes ".... Hmmm......";
