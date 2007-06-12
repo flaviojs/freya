@@ -44,15 +44,15 @@ new_1-2.gat,155,171,0	warp	new16-1	2,2,new_1-2.gat,123,106
 new_1-3.gat,96,175,0	warp	new17	3,2,new_1-4.gat,100,14
 
 // Swordsman
-job_sword1.gat,192,244,0	warp	SwordWarp0	2,2,job_sword1.gat,215,244
-job_sword1.gat,223,243,0	warp	SwordWarp1	2,2,job_sword1.gat,12,206
-job_sword1.gat,192,206,0	warp	SwordWarp2	2,2,job_sword1.gat,215,205
-job_sword1.gat,223,205,0	warp	SwordWarp3	2,2,job_sword1.gat,12,168
-job_sword1.gat,192,168,0	warp	SwordWarp4	2,2,job_sword1.gat,215,167
-job_sword1.gat,65,117,0	warp	swd101	1,1,job_sword1.gat,10,245
-job_sword1.gat,98,27,0	warp	swd102	1,1,job_sword1.gat,11,207
-job_sword1.gat,161,27,0	warp	swd103	1,1,job_sword1.gat,11,207
-job_sword1.gat,239,117,0	warp	swd106	1,1,job_sword1.gat,11,169
+sword_1-1.gat,192,244,0	warp	SwordWarp0	2,2,sword_1-1.gat,215,244
+sword_1-1.gat,223,243,0	warp	SwordWarp1	2,2,sword_1-1.gat,12,206
+sword_1-1.gat,192,206,0	warp	SwordWarp2	2,2,sword_1-1.gat,215,205
+sword_1-1.gat,223,205,0	warp	SwordWarp3	2,2,sword_1-1.gat,12,168
+sword_1-1.gat,192,168,0	warp	SwordWarp4	2,2,sword_1-1.gat,215,167
+sword_1-1.gat,65,117,0	warp	swd101	1,1,sword_1-1.gat,10,245
+sword_1-1.gat,98,27,0	warp	swd102	1,1,sword_1-1.gat,11,207
+sword_1-1.gat,161,27,0	warp	swd103	1,1,sword_1-1.gat,11,207
+sword_1-1.gat,239,117,0	warp	swd106	1,1,sword_1-1.gat,11,169
 
 // Swordsman [Old]
 sword_1-1.gat,192,244,0	warp	SwordWarp0	2,2,sword_1-1.gat,215,244
