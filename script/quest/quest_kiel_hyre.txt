@@ -9,7 +9,7 @@
 //--------------------------------------------------------------
 // Script Title: Kiel Hyre Quest	Author: L0ne_W0lf/DZeroX
 //--------------------------------------------------------------
-// Revision History: v3.4
+// Revision History: v3.5
 //--------------------------------------------------------------
 //	1.0 First version, needs testing [L0ne_W0lf/DZeroX]
 //	1.1 Copied over some changes made by -Tsuyuki- [L0ne_W0lf]
@@ -74,6 +74,7 @@
 //	 - Converted to Aurora formatting (No actual technical changes)
 //	3.3 Fixed error with Allysia teling yout o "Go away." maybe. [L0ne_W0lf]
 //	3.4 Some some things with Allysia [Playtester]
+//	3.5 Fixed a bug with the swords part of the quest (Variable names are case-sensitive) [Tsuyuki]
 //--------------------------------------------------------------
 // Additional Notes: * Official-certified / Aegis-certified *
 //--------------------------------------------------------------
@@ -3371,19 +3372,19 @@ kh_vila.gat,136,68,0	script	Sword Hilt	111,{
 					switch(select("First Snake","Second Snake","Third Snake","Fourth Snake")) {
 
 					case 1:
-						set @KHfirstSword,1;
+						set @KHFirstSword,1;
 						break;
 
 					case 2:
-						set @KHfirstSword,2;
+						set @KHFirstSword,2;
 						break;
 
 					case 3:
-						set @KHfirstSword,3;
+						set @KHFirstSword,3;
 						break;
 
 					case 4:
-						set @KHfirstSword,4;
+						set @KHFirstSword,4;
 						break;
 
 					}
@@ -3451,24 +3452,24 @@ kh_vila.gat,136,68,0	script	Sword Hilt	111,{
 					switch(select("First Snake","Second Snake","Third Snake","Fourth Snake")) {
 
 					case 1:
-						set @KHFouthSword,1;
+						set @KHFourthSword,1;
 						break;
 
 					case 2:
-						set @KHFouthSword,2;
+						set @KHFourthSword,2;
 						break;
 
 					case 3:
-						set @KHFouthSword,3;
+						set @KHFourthSword,3;
 						break;
 
 					case 4:
-						set @KHFouthSword,4;
+						set @KHFourthSword,4;
 						break;
 
 					}
 
-					if ((@KHFirstSword == 2) && (@KHSecondSword == 4) && (@KHThirdSword == 1) && (@KHFouthSword == 3)) {
+					if ((@KHFirstSword == 2) && (@KHSecondSword == 4) && (@KHThirdSword == 1) && (@KHFourthSword == 3)) {
 						mes "^3355FFYour ears are suddenly^000000";
 						mes "^3355FFfilled with a low buzzing^000000";
 						mes "^3355FFnoise, and your mind^000000";
