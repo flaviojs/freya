@@ -24,6 +24,7 @@
 //	2.0 Merged in Transcendence warps [Tsuyuki]
 //	2.1 Merged in old warps for backwards compatibility [Tsuyuki]
 //	2.2 Merged in Gunslinger/Ninja warps [Tsuyuki]
+//	2.3 Updated Swordsman Job Change Quest warps [Tsuyuki]
 //--------------------------------------------------------------
 // Additional Notes: Job quests will not work if removed.
 //--------------------------------------------------------------
@@ -37,29 +38,13 @@ new_zone02.gat,156,171,0	warp	newwarp6004	2,2,new_zone02.gat,123,106
 new_zone02.gat,73,106,0	warp	newwarp6005	2,2,new_zone02.gat,41,172
 new_zone02.gat,46,172,0	warp	newwarp6006	2,2,new_zone02.gat,78,106
 
-// Novice [Old]
-new_1-1.gat,148,112,0	warp	new11	2,3,new_1-2.gat,100,9
-new_1-2.gat,126,106,0	warp	new16	2,2,new_1-2.gat,158,171
-new_1-2.gat,155,171,0	warp	new16-1	2,2,new_1-2.gat,123,106
-new_1-3.gat,96,175,0	warp	new17	3,2,new_1-4.gat,100,14
-
 // Swordsman
-sword_1-1.gat,192,244,0	warp	SwordWarp0	2,2,sword_1-1.gat,215,244
-sword_1-1.gat,223,243,0	warp	SwordWarp1	2,2,sword_1-1.gat,12,206
-sword_1-1.gat,192,206,0	warp	SwordWarp2	2,2,sword_1-1.gat,215,205
-sword_1-1.gat,223,205,0	warp	SwordWarp3	2,2,sword_1-1.gat,12,168
-sword_1-1.gat,192,168,0	warp	SwordWarp4	2,2,sword_1-1.gat,215,167
 sword_1-1.gat,65,117,0	warp	swd101	1,1,sword_1-1.gat,10,245
 sword_1-1.gat,98,27,0	warp	swd102	1,1,sword_1-1.gat,11,207
 sword_1-1.gat,161,27,0	warp	swd103	1,1,sword_1-1.gat,11,207
+sword_1-1.gat,223,205,0	warp	swd104	1,1,sword_1-1.gat,11,168
+sword_1-1.gat,223,243,0	warp	swd105	1,1,sword_1-1.gat,11,206
 sword_1-1.gat,239,117,0	warp	swd106	1,1,sword_1-1.gat,11,169
-
-// Swordsman [Old]
-sword_1-1.gat,192,244,0	warp	SwordWarp0	2,2,sword_1-1.gat,215,244
-sword_1-1.gat,223,243,0	warp	SwordWarp1	2,2,sword_1-1.gat,12,206
-sword_1-1.gat,192,206,0	warp	SwordWarp2	2,2,sword_1-1.gat,215,205
-sword_1-1.gat,223,205,0	warp	SwordWarp3	2,2,sword_1-1.gat,12,168
-sword_1-1.gat,192,168,0	warp	SwordWarp4	2,2,sword_1-1.gat,215,167
 sword_2-1.gat,65,117,0	warp	swd201	1,1,sword_2-1.gat,10,245
 sword_2-1.gat,98,27,0	warp	swd202	1,1,sword_2-1.gat,11,207
 sword_2-1.gat,161,27,0	warp	swd203	1,1,sword_2-1.gat,11,207
@@ -72,10 +57,6 @@ sword_3-1.gat,161,27,0	warp	swd303	1,1,sword_3-1.gat,11,207
 sword_3-1.gat,223,205,0	warp	swd304	1,1,sword_3-1.gat,11,168
 sword_3-1.gat,223,243,0	warp	swd305	1,1,sword_3-1.gat,11,206
 sword_3-1.gat,239,117,0	warp	swd306	1,1,sword_3-1.gat,11,169
-sword_1-1.gat,65,117,0	warp	swd101	1,1,sword_1-1.gat,10,245
-sword_1-1.gat,98,27,0	warp	swd102	1,1,sword_1-1.gat,11,207
-sword_1-1.gat,161,27,0	warp	swd103	1,1,sword_1-1.gat,11,207
-sword_1-1.gat,239,117,0	warp	swd106	1,1,sword_1-1.gat,11,169
 
 // Thief
 job_thief1.gat,180,15,0	warp	jthf	7,1,moc_ruins.gat,145,117

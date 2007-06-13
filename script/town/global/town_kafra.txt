@@ -9,13 +9,17 @@
 //--------------------------------------------------------------
 // Script Title: Kafra Corp System	Author: jAthena/Yor
 //--------------------------------------------------------------
-// Revision History: v1.2
+// Revision History: v1.4
 //--------------------------------------------------------------
 //	1.0 First version [jAthena]
 //	1.1 Translated to English [Yor]
 //	1.2 Imported script from fAthena [Tsuyuki]
+//	1.3 Officialized some dialogue/function [Tsuyuki]
+//	1.4 Updated Merchant Job Change Quest Kafras [Tsuyuki]
 //--------------------------------------------------------------
-// Additional Notes: * Aegis-certified *
+// Additional Notes: The Izlude Byalan Island, and Prontera
+// Old Swordsman Association Kafras are required for the Merchant
+// Job Change Quest.
 //--------------------------------------------------------------
 
 
@@ -26,7 +30,7 @@
 //	callfunc "F_KafraMain",Speech,SelectNum,"OutSave",OutX,OutY,"InSave",InX,InY,
 //				Storage,Cart,MapCodeArray,PriceArray;
 // * Details of arguments:
-//	Speech -> What says the kafra?
+//	Speech -> What says the Kafra?
 //			0: A greeting of 3 lines.
 //			1: A greeting of 4 lines.
 //			2: For Comodo.
@@ -77,28 +81,26 @@
 //	If you want, you can change script to not finish and continue the conversation.
 //
 // * Character permanent variable:
-//	KAFRA_PIT -> Kafra points.
-//-------------------------------------------------------------------------
+//	Kafra_PIT -> Kafra points.
+//--------------------------------------------------------------
 
 function	script	F_KafraMain	{
 	// Greeting section
 	function sF_KafraSpeech {
-		if(getarg(0)!=3) {
-			mes "[Kafra]";
-			mes "Welcome to Kafra Corporation.";
-			mes "We will stay with you wherever you go.";
-			//mes "";
+		if (getarg(0)!=3) {
+			mes "[Kafra Employee]";
+			mes "Welcome to the";
+			mes "Kafra Corporartion.";
+			mes "The Kafra services";
+			mes "are always on your side.";
+			mes "How may I assist you?";
 			switch(getarg(0)) {
 			case 0:
 				break;
 			case 1:
-			case 4:	// case 4, seulement pour einbroch et einbech
-				mes "How can I help you?";
+			case 4:	// Einbroch/Einbech
 				break;
 			case 2:	// Comodo
-				mes "Here, in the west branch of the Kafra service, we try to use improved procedures to ensure higher quality of service.";
-				//mes "";
-				//mes "";
 				break;
 			}
 			next;
@@ -108,37 +110,39 @@ function	script	F_KafraMain	{
 
 	// Service of Respawn point.
 	function sF_KafraSave {
-		if(getarg(5) == "NULL")
-			savepoint getarg(2),getarg(3),getarg(4);	// if only 1 choice, so use outside values
-		else if(select("Save outside city.","Save inside city.")==1)
-			savepoint getarg(2),getarg(3),getarg(4);	// OutSave
+		if (getarg(5) == "NULL")
+			savepoint getarg(2),getarg(3),getarg(4);
+		else if (select("Save outside city.","Save inside city.")==1)
+			savepoint getarg(2),getarg(3),getarg(4);	// Outside Save
 		else
-			savepoint getarg(5),getarg(6),getarg(7);	// InSave
-		mes "[Kafra]";
-		mes "Your respawn point has been saved.";
-		mes "Thank you for using this Kafra Service.";
+			savepoint getarg(5),getarg(6),getarg(7);	// Inside Save
+		mes "[Kafra Employee]";
+		mes "Your Respawn Point";
+		mes "has been saved. Thank you";
+		mes "for using the Kafra Service.";
 		return;
 	}
 
 	// Teleport Service
 	function sF_KafraTrans {
-		if(getarg(0)==4) {	// einbroch and einbech
-			mes "[Kafra]";
-			mes "Because of the";
-			mes "^FF0000Limited Transport Agreement^000000,";
-			mes "the Kafra Corporation cannot provide Teleport Services in the Schwarzwald Republic.";
-			//mes "";
-			//mes "";
-			//mes "";
+		if (getarg(0)==4) {	// Einbroch/Einbech
+			mes "[Kafra Employee]";
+			mes "Because of the ^FF0000Limited^000000";
+			mes "^FF0000Transport Agreement^000000, the";
+			mes "Kafra Corporation cannot";
+			mes "provide Teleport Services";
+			mes "in the Schwartzwald Republic.";
 			next;
-			mes "[Kafra]";
-			mes "Please use the Airship Service instead.";
-			mes "Thank you for your understanding and cooperation.";
+			mes "[Kafra Employee]";
+			mes "We ask that you please";
+			mes "use the Airship Service";
+			mes "instead, Thank you for your";
+			mes "understanding and cooperation.";
 			return;
 		}
 		copyarray '@price,getarg(11),getarraysize(getarg(11));	// Received Price Array is developed in another array.
 		// Only when the function calls for the first time, setarray is done.
-		if('placename$[0] == "") {
+		if ('placename$[0] == "") {
 			setarray 'placename$,	"Prontera","Izlude","Geffen","Payon","Morroc","Albelta",
 						"Orc dungeon","Aldebaran","Coal Mine (Dead Pit)","Comodo","Pharos Lighthouse island",
 						"Comodo Pharos Lighthouse","Yuno","Prontera","Geffen","Payon","Aldebaran",
@@ -146,26 +150,23 @@ function	script	F_KafraMain	{
 		}
 		for(set '@i,0; '@i<getarraysize('@price); set '@i,'@i+1)
 			set '@place$['@i],'placename$[ getelementofarray(getarg(10),'@i)-1 ] +" -> "+ '@price['@i] +" z";
-		mes "[Kafra]";
+		mes "[Kafra Employee]";
 		mes "Please choice your destination.";
 		next;
 		set '@j,select(		'@place$[0],'@place$[1],'@place$[2],'@place$[3],'@place$[4],'@place$[5],'@place$[6],'@place$[7],
 					'@place$[8],'@place$[9],'@place$[10],'@place$[11],'@place$[12],'@place$[13],'@place$[14],'@place$[15],
 					'@place$[16],'@place$[17],'@place$[18],'@place$[19],"Cancel.")-1;
-		if('@j==20) {
-			mes "[Kafra]";
-			mes "Ok. No problem.";
-			mes "It will be for a next time. ";
+		if ('@j==20) {
 			return;
 		}
-		if(Zeny<'@price['@j]) {
-			mes "[Kafra]";
-			mes "Sorry, but you don't have enough money.";
+		if (Zeny<'@price['@j]) {
+			mes "[Kafra Employee]";
+			mes "I'm sorry, but you don't have enough money.";
 			mes "Please check your funds again.";
 			return;
 		}
 		set Zeny,Zeny-'@price['@j];
-		set KAFRA_PIT,KAFRA_PIT+('@price['@j]/10);
+		set Kafra_PIT,Kafra_PIT+('@price['@j]/10);
 		switch ( getelementofarray(getarg(10),'@j) ) {
 			case 1: warp "prontera.gat",116,72; 	break;
 			case 2: warp "izlude.gat",91,105; 	break;
@@ -197,19 +198,19 @@ function	script	F_KafraMain	{
 	// Cart service
 	function sF_KafraCart {
 		if (BaseClass != Job_Merchant) {
-			mes "[Kafra]";
+			mes "[Kafra Employee]";
 			mes "I'm sorry dear.";
 			mes "The Cart service is only provided for the Merchants and its higher jobs.";
 			//mes "";
 			return;
 		}
-		if(Cart) {
-			mes "[Kafra]";
+		if (Cart) {
+			mes "[Kafra Employee]";
 			mes "Excuse me...";
 			mes "But you already have a Cart...";
 			return;
 		}
-		mes "[Kafra]";
+		mes "[Kafra Employee]";
 		mes "The Cart Fee is " +getarg(9)+ " Zenys.";
 		mes "In addition, 'Pushcart' skill is required to use a Cart.";
 		//mes "";
@@ -217,14 +218,14 @@ function	script	F_KafraMain	{
 		mes "So, be careful to your answer.";
 		mes "Do you want to rent a Cart?";
 		next;
-		if(select("Rent a Cart.","Cancel.")==2) {
-			mes "[Kafra]";
+		if (select("Rent a Cart.","Cancel.")==2) {
+			mes "[Kafra Employee]";
 			mes "Ok. No problem.";
 			mes "It will be for a next time. ";
 			return;
 		}
-		if(Zeny<getarg(9)) {
-			mes "[Kafra]";
+		if (Zeny<getarg(9)) {
+			mes "[Kafra Employee]";
 			mes "Sorry, but you don't have enough Money.";
 			mes "The Fee to use a Cart is " +getarg(9)+ " Zenys.";
 			return;
@@ -236,12 +237,12 @@ function	script	F_KafraMain	{
 
 	// Information about Kafra points.
 	function sF_KafraPoint {
-		mes "[Kafra]";
-		mes strcharinfo(0)+ ", you have acquired"+KAFRA_PIT+ " points actually.";
+		mes "[Kafra Employee]";
+		mes strcharinfo(0)+ ", you have acquired"+Kafra_PIT+ " points actually.";
 		//mes "";
 		next;
-		mes "[Kafra]";
-		mes "The kafra points can be exchanged for the prize at head office of Kafra services.";
+		mes "[Kafra Employee]";
+		mes "The Kafra points can be exchanged for the prize at head office of Kafra services.";
 		//mes "";
 		mes "Also in the future you ask Kafra services to have more Kafra points.";
 		//mes "";
@@ -250,7 +251,7 @@ function	script	F_KafraMain	{
 
 	// End
 	function sF_KafraEnd {
-		mes "[Kafra]";
+		mes "[Kafra Employee]";
 		mes "Some of the rules of the Kafra Service are:";
 		mes "- we aim toward a more perfect service and administration.";
 		mes "- the customer must feel at ease.";
@@ -261,11 +262,20 @@ function	script	F_KafraMain	{
 	}
 
 	// From here main section
+	if (Kafra_PIT >= 25000) {
+		mes "[Kafra Employee]";
+		mes "Your Special Reserve Points";
+		mes "have exceeded the maximum";
+		mes "capacity. Please redeem these";
+		mes "points at the Kafra Corportation Headquarters in Al De Baran";
+		mes "before using the Kafra Service.";
+		close;
+	}
 	sF_KafraSpeech getarg(0);
 	setarray '@serv$,"Set your respawn point","Use storage","Use Teleport Service",
 				"Rent a Cart","Kafra Points information.","Kafra location on map";
 	for(set '@i,0; '@i<7; set '@i,'@i+1) {
-		if(getarg(1)&(1<<'@i) == 0)
+		if (getarg(1)&(1<<'@i) == 0)
 			set '@serv$['@i],"";	// If the bit flag of SelectNum is not set, we remove the menu
 	}
 	switch (select('@serv$[0],'@serv$[1],'@serv$[2],'@serv$[3],'@serv$[4],'@serv$[5],'@serv$[6])) {
@@ -279,7 +289,7 @@ function	script	F_KafraMain	{
 			end;
 		case 3:
 			// Values from 1 to 9 are not used.
-			if(getarg(0) != 4)
+			if (getarg(0) != 4)
 				sF_KafraTrans getarg(0),1,2,3,4,5,6,7,8,9,getarg(10),getarg(11);
 			else
 				sF_KafraTrans getarg(0);
@@ -292,7 +302,7 @@ function	script	F_KafraMain	{
 			sF_KafraPoint;
 			break;
 		case 6:
-			mes "[Kafra]";
+			mes "[Kafra Employee]";
 			mes "The flashing signals on your mini-map point to the locations of all of the Kafra Agents in this city.";
 			//mes "";
 			return;	// Only case 6 do a 'return', it's a better for user.
@@ -301,39 +311,41 @@ function	script	F_KafraMain	{
 			break;
 	}
 	close2;
-	cutin "kafra_01",255;
+	cutin "Kafra_01",255;
 	end;
 }
 
 // Only Storage service uses a separated function.
 function	script	F_KafraStorage	{
-	if(basicskillcheck() && getskilllv(1)<6) {
-		mes "[Kafra]";
+	if (basicskillcheck() && getskilllv(1)<6) {
+		mes "[Kafra Employee]";
 		mes "I am sorry but you must have at least basic skill level 6 if you want to use the Storage.";
 		//mes "";
 	}
-	else if(Zeny<getarg(0)) {
-		mes "[Kafra]";
+	else if (Zeny<getarg(0)) {
+		mes "[Kafra Employee]";
 		mes "Sorry, but you don't have enough Money.";
 		mes "The Fee to use a Storage is " +getarg(0)+ " Zenys.";
 	}
 	else {
 		set Zeny,Zeny-getarg(0);
 		openstorage;
-		cutin "kafra_01",255;
+		cutin "Kafra_01",255;
 		close;
 	}
 	close2;
-	cutin "kafra_01",255;
+	cutin "Kafra_01",255;
 	return;
 }
 
-//----------------------------------
-// < Prontera - Center >
-//----------------------------------
 
-prontera.gat,146,89,6	script	Kafra	117,{
-	cutin "kafra_01",2;
+//--------------------------------------------------------------
+// < Prontera - Center >
+//--------------------------------------------------------------
+
+prontera.gat,146,89,6	script	Kafra Employee	117,{
+
+	cutin "Kafra_01",2;
 	setarray '@code,2,3,4,5,6,7;
 	setarray '@price,600,1200,1200,1200,1800,1700;
 	callfunc "F_KafraMain",1,0x7f,"prontera.gat",116,72,"NULL",0,0,40,800,'@code,'@price;
@@ -342,16 +354,18 @@ prontera.gat,146,89,6	script	Kafra	117,{
 	viewpoint 1,282,200,2,0x0000FF;
 	viewpoint 1,151,29,3,0x0000FF;
 	viewpoint 1,29,207,4,0x0000FF;
-	cutin "kafra_01",255;
+	cutin "Kafra_01",255;
 	end;
 }
 
-//----------------------------------
-// < Prontera - East >
-//----------------------------------
 
-prontera.gat,282,200,2	script	Kafra	114,{
-	cutin "kafra_04",2;
+//--------------------------------------------------------------
+// < Prontera - East >
+//--------------------------------------------------------------
+
+prontera.gat,282,200,2	script	Kafra Employee	114,{
+
+	cutin "Kafra_04",2;
 	setarray '@code,2,3,4,5,6,7;
 	setarray '@price,600,1200,1200,1200,1800,1700;
 	callfunc "F_KafraMain",1,0x7f,"prt_fild06.gat",33,192,"prontera.gat",279,200,40,800,'@code,'@price;
@@ -360,16 +374,18 @@ prontera.gat,282,200,2	script	Kafra	114,{
 	viewpoint 1,282,200,2,0x0000FF;
 	viewpoint 1,151,29,3,0x0000FF;
 	viewpoint 1,29,207,4,0x0000FF;
-	cutin "kafra_04",255;
+	cutin "Kafra_04",255;
 	end;
 }
 
-//----------------------------------
-// < Prontera - South >
-//----------------------------------
 
-prontera.gat,151,29,0	script	Kafra	115,{
-	cutin "kafra_03",2;
+//--------------------------------------------------------------
+// < Prontera - South >
+//--------------------------------------------------------------
+
+prontera.gat,151,29,0	script	Kafra Employee	115,{
+
+	cutin "Kafra_03",2;
 	setarray '@code,2,3,4,5,6,7;
 	setarray '@price,600,1200,1200,1200,1800,1700;
 	callfunc "F_KafraMain",1,0x7f,"prt_fild08.gat",170,368,"prontera.gat",116,72,40,800,'@code,'@price;
@@ -378,16 +394,18 @@ prontera.gat,151,29,0	script	Kafra	115,{
 	viewpoint 1,282,200,2,0x0000FF;
 	viewpoint 1,151,29,3,0x0000FF;
 	viewpoint 1,29,207,4,0x0000FF;
-	cutin "kafra_03",255;
+	cutin "Kafra_03",255;
 	end;
 }
 
-//----------------------------------
-// < Prontera - West >
-//----------------------------------
 
-prontera.gat,29,207,6	script	Kafra	113,{
-	cutin "kafra_05",2;
+//--------------------------------------------------------------
+// < Prontera - West >
+//--------------------------------------------------------------
+
+prontera.gat,29,207,6	script	Kafra Employee	113,{
+
+	cutin "Kafra_05",2;
 	setarray '@code,2,3,4,5,6,7;
 	setarray '@price,600,1200,1200,1200,1800,1700;
 	callfunc "F_KafraMain",1,0x7f,"prt_fild05.gat",368,205,"prontera.gat",33,207,40,800,'@code,'@price;
@@ -396,367 +414,403 @@ prontera.gat,29,207,6	script	Kafra	113,{
 	viewpoint 1,282,200,2,0x0000FF;
 	viewpoint 1,151,29,3,0x0000FF;
 	viewpoint 1,29,207,4,0x0000FF;
-	cutin "kafra_05",255;
+	cutin "Kafra_05",255;
 	end;
 }
 
-//----------------------------------
-// < Prontera - North >
-//----------------------------------
 
-prt_fild01.gat,198,47,0	script	Kafra	112,{
-	cutin "kafra_06",2;
+//--------------------------------------------------------------
+// < Prontera - North >
+//--------------------------------------------------------------
+
+prt_fild01.gat,198,47,0	script	Kafra Employee	112,{
+
+	cutin "Kafra_06",2;
 	setarray '@code,2,3,4,5,6,7;
 	setarray '@price,600,1200,1200,1200,1800,1700;
 	callfunc "F_KafraMain",1,0x5f,"prt_fild01.gat",198,51,"NULL",0,0,40,800,'@code,'@price;
 	end;
 }
 
-//----------------------------------
-// < Prontera - in front of water road (outside) >
-//----------------------------------
 
-prt_fild05.gat,290,224,4	script	Kafra	114,{
-	cutin "kafra_04",2;
+//--------------------------------------------------------------
+// < Prontera - In Front Of River (Outside) >
+//--------------------------------------------------------------
+
+prt_fild05.gat,290,224,4	script	Kafra Employee	114,{
+
+	cutin "Kafra_04",2;
 	callfunc "F_KafraMain",0,0x5b,"prt_fild05.gat",274,244,"NULL",0,0,30,800;
 	end;
 }
 
-//----------------------------------
-// < Izlude - in town >
-//----------------------------------
 
-izlude.gat,134,88,4	script	Kafra	115,{
-	cutin "kafra_03",2;
+//--------------------------------------------------------------
+// < Izlude >
+//--------------------------------------------------------------
+
+izlude.gat,134,88,4	script	Kafra Employee	115,{
+
+	cutin "Kafra_03",2;
 	setarray '@code,5,4,3,8;
 	setarray '@price,1200,1200,1200,1800;
 	callfunc "F_KafraMain",1,0x7f,"prt_fild08.gat",350,202,"izlude.gat",94,103,30,800,'@code,'@price;
 	close2;
 	viewpoint 1,136,88,1,0x0000FF;
-	cutin "kafra_03",255;
+	cutin "Kafra_03",255;
 	end;
 }
 
-//----------------------------------
-// < Geffen - South fountain >
-//----------------------------------
 
-geffen.gat,120,62,0	script	Kafra	115,{
-	cutin "kafra_03",2;
+//--------------------------------------------------------------
+// < Geffen - South Fountain >
+//--------------------------------------------------------------
+
+geffen.gat,120,62,0	script	Kafra Employee	115,{
+
+	cutin "Kafra_03",2;
 	setarray '@code,1,8,7,9;
 	setarray '@price,1200,1200,1700,1700;
 	callfunc "F_KafraMain",0,0x7f,"geffen.gat",120,38,"NULL",0,0,30,800,'@code,'@price;
 	close2;
 	viewpoint 1,120,62,1,0x0000FF;
 	viewpoint 1,203,123,2,0x0000FF;
-	cutin "kafra_03",255;
+	cutin "Kafra_03",255;
 	end;
 }
 
-//----------------------------------
-// < Geffen - East entrance >
-//----------------------------------
 
-geffen.gat,203,123,4	script	Kafra	114,{
-	cutin "kafra_04",2;
+//--------------------------------------------------------------
+// < Geffen - East Entrance >
+//--------------------------------------------------------------
+
+geffen.gat,203,123,4	script	Kafra Employee	114,{
+
+	cutin "Kafra_04",2;
 	setarray '@code,1,8,7,9;
 	setarray '@price,1200,1200,1700,1700;
 	callfunc "F_KafraMain",0,0x7f,"gef_fild00.gat",55,222,"geffen.gat",120,38,30,800,'@code,'@price;
 	close2;
 	viewpoint 1,120,62,1,0x0000FF;
 	viewpoint 1,203,123,2,0x0000FF;
-	cutin "kafra_04",255;
+	cutin "Kafra_04",255;
 	end;
 }
 
-//----------------------------------
-// < Morroc - South >
-//----------------------------------
 
-morocc.gat,156,97,4	script	Kafra	113,{
-	cutin "kafra_05",2;
+//--------------------------------------------------------------
+// < Morroc - South >
+//--------------------------------------------------------------
+
+morocc.gat,156,97,4	script	Kafra Employee	113,{
+
+	cutin "Kafra_05",2;
 	setarray '@code,1,4,6,10,11;
 	setarray '@price,1200,1200,1800,1800,1200;
 	callfunc "F_KafraMain",1,0x7f,"morocc.gat",156,46,"NULL",0,0,40,800,'@code,'@price;
 	close2;
 	viewpoint 1,160,258,1,0x0000FF;
 	viewpoint 1,159,97,2,0x0000FF;
-	cutin "kafra_05",255;
+	cutin "Kafra_05",255;
 	end;
 }
 
-//----------------------------------
-// < Morroc - North entrance >
-//----------------------------------
 
-morocc.gat,160,258,4	script	Kafra	114,{
-	cutin "kafra_04",2;
+//--------------------------------------------------------------
+// < Morroc - North Entrance >
+//--------------------------------------------------------------
+
+morocc.gat,160,258,4	script	Kafra Employee	114,{
+
+	cutin "Kafra_04",2;
 	setarray '@code,1,4,6,10,11;
 	setarray '@price,1200,1200,1800,1800,1200;
 	callfunc "F_KafraMain",1,0x7f,"moc_fild07.gat",211,29,"morocc.gat",160,283,40,800,'@code,'@price;
 	close2;
 	viewpoint 1,160,258,1,0x0000FF;
 	viewpoint 1,159,97,2,0x0000FF;
-	cutin "kafra_04",255;
+	cutin "Kafra_04",255;
 	end;
 }
 
-//----------------------------------
-// < Morroc - Pyramid entrance >
-//----------------------------------
 
-moc_ruins.gat,59,157,6	script	Kafra	117,{
-	cutin "kafra_01",2;
+//--------------------------------------------------------------
+// < Morroc - Pyramid Entrance >
+//--------------------------------------------------------------
+
+moc_ruins.gat,59,157,6	script	Kafra Employee	117,{
+	cutin "Kafra_01",2;
 	callfunc "F_KafraMain",1,0x5a,0,0,0,0,0,0,50,800;
 	end;
 }
 
-//----------------------------------
-// < Albelta - North entrance >
-//----------------------------------
 
-alberta.gat,28,229,0	script	Kafra	116,{
-	cutin "kafra_02",2;
+//--------------------------------------------------------------
+// < Albelta - North Entrance >
+//--------------------------------------------------------------
+
+alberta.gat,28,229,0	script	Kafra Employee	116,{
+
+	cutin "Kafra_02",2;
 	setarray '@code,4,1,5;
 	setarray '@price,1200,1800,1800;
 	callfunc "F_KafraMain",1,0x7f,"pay_fild03.gat",387,76,"alberta.gat",31,231,50,800,'@code,'@price;
 	close2;
 	viewpoint 1,28,229,1,0x0000FF;
 	viewpoint 1,113,60,2,0x0000FF;
-	cutin "kafra_02",255;
+	cutin "Kafra_02",255;
 	end;
 }
 
-//----------------------------------
-// < Albelta - South fountain >
-//----------------------------------
 
-alberta.gat,113,60,6	script	Kafra#alberta2	112,{
-	cutin "kafra_06",2;
+//--------------------------------------------------------------
+// < Alberta - South Fountain >
+//--------------------------------------------------------------
+
+alberta.gat,113,60,6	script	Kafra Employee#alberta2	112,{
+
+	cutin "Kafra_06",2;
 	setarray '@code,4,1,5;
 	setarray '@price,1200,1800,1800;
 	callfunc "F_KafraMain",1,0x7f,"alberta.gat",117,56,"NULL",0,0,50,800,'@code,'@price;
 	close2;
 	viewpoint 1,28,229,1,0x0000FF;
 	viewpoint 1,113,60,2,0x0000FF;
-	cutin "kafra_06",255;
+	cutin "Kafra_06",255;
 	end;
 }
 
-//----------------------------------
-// < Alberta - Island >
-//----------------------------------
 
-alb2trea.gat,59,69,6	script	Kafra	117,{
-	cutin "kafra_01",2;
-	// Merchant Job Change Quest-related Function
-	if (Basejob == Job_Novice && Job_Merchant_q3 > 0) callfunc "F_MercKafra";
+//--------------------------------------------------------------
+// < Alberta - Island >
+//--------------------------------------------------------------
+
+alb2trea.gat,59,69,6	script	Kafra Employee	117,{
+
+	cutin "Kafra_01",2;
 	callfunc "F_KafraMain",0,0x5a,0,0,0,0,0,0,50,800;
 	end;
 }
 
-//----------------------------------
-// < Payon - Nord >
-//----------------------------------
 
-payon.gat,175,226,4	script	Kafra	116,{
-	cutin "kafra_02",2;
+//--------------------------------------------------------------
+// < Payon - North >
+//--------------------------------------------------------------
+
+payon.gat,175,226,4	script	Kafra Employee	116,{
+
+	cutin "Kafra_02",2;
 	setarray '@code,6,1,5;
 	setarray '@price,1200,1200,1200;
 	callfunc "F_KafraMain",1,0x5f,"payon.gat",207,113,"NULL",0,0,40,800,'@code,'@price;
 	end;
 }
 
-//----------------------------------
-// < Payon - South >
-//----------------------------------
 
-payon.gat,181,104,4	script	Kafra	113,{
-	cutin "kafra_05",2;
+//--------------------------------------------------------------
+// < Payon - South >
+//--------------------------------------------------------------
+
+payon.gat,181,104,4	script	Kafra Employee	113,{
+
+	cutin "Kafra_05",2;
 	setarray '@code,6,1,5;
 	setarray '@price,1200,1200,1200;
 	callfunc "F_KafraMain",1,0x5f,"payon.gat",160,58,"NULL",0,0,40,800,'@code,'@price;
 	end;
 }
 
-//----------------------------------
-// < Payon - Archer village >
-//----------------------------------
 
-pay_arche.gat,55,123,4	script	Kafra	114,{
-	cutin "kafra_04",2;
+//--------------------------------------------------------------
+// < Payon - Archer's Village >
+//--------------------------------------------------------------
+
+pay_arche.gat,55,123,4	script	Kafra Employee	114,{
+
+	cutin "Kafra_04",2;
 	callfunc "F_KafraMain",1,0x5b,"pay_arche.gat",50,145,"NULL",0,0,40,800;
 	end;
 }
 
-//----------------------------------
+//--------------------------------------------------------------
 // < Aldebaran >
-//----------------------------------
+//--------------------------------------------------------------
 
-aldebaran.gat,143,119,4	script	Kafra	113,{
-	cutin "kafra_05",2;
+aldebaran.gat,143,119,4	script	Kafra Employee	113,{
+
+	cutin "Kafra_05",2;
 	setarray '@code,3,13,2,9;
 	setarray '@price,1200,1200,1800,1700;
 	callfunc "F_KafraMain",0,0x5f,"aldebaran.gat",167,112,"NULL",0,0,40,800,'@code,'@price;
 	end;
 }
 
-//----------------------------------
-// < Comodo inside a building >
-//----------------------------------
 
-cmd_in02.gat,146,180,4	script	Kafra	721,{
-	cutin "kafra_07",2;
+//--------------------------------------------------------------
+// < Comodo Inside A Building >
+//--------------------------------------------------------------
+
+cmd_in02.gat,146,180,4	script	Kafra Employee	721,{
+
+	cutin "Kafra_07",2;
 	setarray '@code,5,12;
 	setarray '@price,1800,1200;
 	callfunc "F_KafraMain",2,0x5f,"comodo.gat",209,143,"NULL",0,0,40,800,'@code,'@price;
 	end;
 }
 
-//----------------------------------
-// < Comodo Pharos Lighthouse >
-//----------------------------------
 
-cmd_fild07.gat,136,134,4	script	Kafra	721,{
-	cutin "kafra_07",2;
+//--------------------------------------------------------------
+// < Comodo Pharos Lighthouse >
+//--------------------------------------------------------------
+
+cmd_fild07.gat,136,134,4	script	Kafra Employee	721,{
+
+	cutin "Kafra_07",2;
 	setarray '@code,10,5;
 	setarray '@price,1200,1200;
 	callfunc "F_KafraMain",2,0x5f,"cmd_fild07.gat",127,134,"NULL",0,0,80,1000,'@code,'@price;
 	end;
 }
 
-//----------------------------------
-// < Comodo > 
-//----------------------------------
 
-comodo.gat,195,150,4	script	Kafra	721,{
-	cutin "kafra_07",2;
+//--------------------------------------------------------------
+// < Comodo > 
+//--------------------------------------------------------------
+
+comodo.gat,195,150,4	script	Kafra Employee	721,{
+
+	cutin "Kafra_07",2;
 	setarray '@code,5,12;
 	setarray '@price,1800,1200;
 	callfunc "F_KafraMain",2,0x5f,"comodo.gat",180,151,"NULL",0,0,80,1000,'@code,'@price;
 	end;
 }
 
-//----------------------------------
-// < Before the Orc Dungeon >
-//----------------------------------
 
-gef_fild10.gat,73,340,5	script	Kafra	117,{
-	cutin "kafra_01",2;
+//--------------------------------------------------------------
+// < Orc Dungeon >
+//--------------------------------------------------------------
+
+gef_fild10.gat,73,340,5	script	Kafra Employee	117,{
+
+	cutin "Kafra_01",2;
 	callfunc "F_KafraMain",0,0x5a,0,0,0,0,0,0,130,800;
 	end;
 }
 
-//----------------------------------
-// < Before the Coal Mine (Dead Pit) >
-//----------------------------------
 
-mjolnir_02.gat,82,362,4	script	Kafra	117,{
-	cutin "kafra_01",2;
+//--------------------------------------------------------------
+// < Coal Mine (Dead Pit) >
+//--------------------------------------------------------------
+
+mjolnir_02.gat,82,362,4	script	Kafra Employee	117,{
+
+	cutin "Kafra_01",2;
 	callfunc "F_KafraMain",1,0x5a,0,0,0,0,0,0,100,800;
 	end;
 }
 
-//----------------------------------
-// < Yuno > South entrance
-//----------------------------------
 
-yuno.gat,152,187,4	script	Kafra	113,{
-	cutin "kafra_05",2;
+//--------------------------------------------------------------
+// < Yuno > South Entrance
+//--------------------------------------------------------------
+
+yuno.gat,152,187,4	script	Kafra Employee	113,{
+
+	cutin "Kafra_05",2;
 	set '@code,8;
 	set '@price,1200;
 	callfunc "F_KafraMain",0,0x7f,"yuno.gat",158,124,"NULL",0,0,40,800,'@code,'@price;
 	close2;
 	viewpoint 1,327,109,2,0x0000FF;
 	viewpoint 1,277,221,3,0x0000FF;
-	cutin "kafra_05",255;
+	cutin "Kafra_05",255;
 	end;
 }
 
-//----------------------------------
-// < Yuno > South east
-//----------------------------------
 
-yuno.gat,327,109,4	script	Kafra	113,{
-	cutin "kafra_05",2;
+//--------------------------------------------------------------
+// < Juno > South East
+//--------------------------------------------------------------
+
+yuno.gat,327,109,4	script	Kafra Employee	113,{
+
+	cutin "Kafra_05",2;
 	set '@code,8;
 	set '@price,1200;
 	callfunc "F_KafraMain",0,0x7f,"yuno.gat",327,100,"NULL",0,0,40,800,'@code,'@price;
 	close2;
 	viewpoint 1,152,187,1,0x0000FF;
 	viewpoint 1,277,221,3,0x0000FF;
-	cutin "kafra_05",255;
+	cutin "Kafra_05",255;
 	end;
 }
 
-//----------------------------------
-// < Yuno > North east
-//----------------------------------
 
-yuno.gat,277,221,4	script	Kafra	113,{
-	cutin "kafra_05",2;
+//--------------------------------------------------------------
+// < Juno > North East
+//--------------------------------------------------------------
+
+yuno.gat,277,221,4	script	Kafra Employee	113,{
+
+	cutin "Kafra_05",2;
 	set '@code,8;
 	set '@price,1200;
 	callfunc "F_KafraMain",0,0x7f,"yuno.gat",275,229,"NULL",0,0,40,800,'@code,'@price;
 	close2;
 	viewpoint 1,152,187,1,0x0000FF;
 	viewpoint 1,327,109,2,0x0000FF;
-	cutin "kafra_05",255;
+	cutin "Kafra_05",255;
 	end;
 }
 
-//----------------------------------
+
+//--------------------------------------------------------------
 // < Amatsu >
-//----------------------------------
+//--------------------------------------------------------------
 
-amatsu.gat,102,149,5	script	Kafra#amatsunomal	116,{
-	cutin "kafra_02",2;
-	mes "[Kafra]";
-	mes "So, have you come from a faraway land to study our culture, or are you just sightseeing?";
-	//mes "";
-	mes "In either case, why not stay a while?";
-	mes "The air is eternally heavy with the scent of pleasant wild flowers.";
-	//mes "";
-	//mes "";
-	next;
-	mes "[Kafra]";
-	mes "Well. Kafra services is anywhere, including in exotic areas, to propose these services at all visitors.";
-	//mes "";
-	//mes "";
-	mes "How can I help you?";
-	next;
-	callfunc "F_KafraMain",3,0x5b,"amatsu.gat",116,94,"NULL",0,0,80,700;
+amatsu.gat,102,149,5	script	Kafra Employee#amatsunomal	116,{
+
+	cutin "Kafra_02",2;
+	callfunc "F_KafraMain",1,0x5b,"amatsu.gat",116,94,"NULL",0,0,80,700;
 	end;
 }
 
-//----------------------------------
-// < Gonryun >
-//----------------------------------
 
-gonryun.gat,159,122,4	script	Kafra	116,{
-	cutin "kafra_02",2;
+//--------------------------------------------------------------
+// < Kunlun >
+//--------------------------------------------------------------
+
+gonryun.gat,159,122,4	script	Kafra Employee	116,{
+
+	cutin "Kafra_02",2;
 	callfunc "F_KafraMain",1,0x5b,"gonryun.gat",160,62,"NULL",0,0,80,700;
 	end;
 }
 
-//----------------------------------
-// < Umbala >
-//----------------------------------
 
-umbala.gat,87,160,5	script	Kafra	721,{
-	cutin "kafra_07",2;
+//--------------------------------------------------------------
+// < Umbala >
+//--------------------------------------------------------------
+
+umbala.gat,87,160,5	script	Kafra Employee	721,{
+
+	cutin "Kafra_07",2;
 	set '@code,10;
 	set '@price,1800;
 	callfunc "F_KafraMain",0,0x57,"umbala.gat",100,154,"NULL",0,0,80,0,'@code,'@price;
 	end;
 }
 
-//----------------------------------
-// < Niflheim >
-//----------------------------------
 
-niflheim.gat,202,180,3	script	Kafra	791,{
-	mes "[Kafra]";
+//--------------------------------------------------------------
+// < Niflheim >
+//--------------------------------------------------------------
+
+niflheim.gat,202,180,3	script	Kafra Employee	791,{
+
+	mes "[Kafra Employee]";
 	mes "Welcome...";
 	mes "Kafra Corporation...";
 	mes "We are always near you, even if you're dying.";
@@ -769,7 +823,7 @@ niflheim.gat,202,180,3	script	Kafra	791,{
 		end;
 	case 2:
 		percentheal 0,-10;
-		mes "[Kafra]";
+		mes "[Kafra Employee]";
 		mes "Kafra Services...";
 		mes "anytime and anywhere...";
 		mes "Always for customer...";
@@ -780,154 +834,348 @@ niflheim.gat,202,180,3	script	Kafra	791,{
 	close;
 }
 
-//----------------------------------
+//--------------------------------------------------------------
 // < Louyang >
-//----------------------------------
+//--------------------------------------------------------------
 
-louyang.gat,210,104,4	script	Kafra	116,{
-	cutin "kafra_02",2;
+louyang.gat,210,104,4	script	Kafra Employee	116,{
+
+	cutin "Kafra_02",2;
 	callfunc "F_KafraMain",1,0x5b,"louyang.gat",218,97,"NULL",0,0,80,700;
 	end;
 }
 
-//----------------------------------
-// < Ayothaya >
-//----------------------------------
 
-ayothaya.gat,212,169,6	script	Kafra	116,{
-	cutin "kafra_02",2;
+//--------------------------------------------------------------
+// < Ayothaya >
+//--------------------------------------------------------------
+
+ayothaya.gat,212,169,6	script	Kafra Employee	116,{
+
+	cutin "Kafra_02",2;
 	callfunc "F_KafraMain",1,0x5b,"ayothaya.gat",217,187,"NULL",0,0,80,700;
 	end;
 }
 
-//----------------------------------
+
+//--------------------------------------------------------------
 // < Einbroch - Plaza >
-//----------------------------------
+//--------------------------------------------------------------
 
-einbroch.gat,242,205,5	script	Kafra#einbroch1	116,{
-	cutin "kafra_02",2;
+einbroch.gat,242,205,5	script	Kafra Employee#einbroch1	116,{
+
+	cutin "Kafra_02",2;
 	callfunc "F_KafraMain",4,0x7f,"einbroch.gat",239,197,"NULL",0,0,40,800;
 	close2;
 	viewpoint 1,242,205,1,0x0000FF;
 	viewpoint 1,59,203,2,0x0000FF;
-	cutin "kafra_02",255;
+	cutin "Kafra_02",255;
 	end;
 }
 
-//----------------------------------
+
+//--------------------------------------------------------------
 // < Einbroch - Airport >
-//----------------------------------
+//--------------------------------------------------------------
 
-einbroch.gat,59,203,5	script	Kafra#einbroch2	117,{
-	cutin "kafra_01",2;
+einbroch.gat,59,203,5	script	Kafra Employee#einbroch2	117,{
+
+	cutin "Kafra_01",2;
 	callfunc "F_KafraMain",4,0x7f,"einbroch.gat",239,197,"NULL",0,0,40,800;
 	close2;
 	viewpoint 1,242,205,1,0x0000FF;
 	viewpoint 1,59,203,2,0x0000FF;
-	cutin "kafra_01",255;
+	cutin "Kafra_01",255;
 	end;
 }
 
-//----------------------------------
-// < Einbech >
-//----------------------------------
 
-einbech.gat,181,132,5	script	Kafra	115,{
-	cutin "kafra_03",2;
+//--------------------------------------------------------------
+// < Einbech >
+//--------------------------------------------------------------
+
+einbech.gat,181,132,5	script	Kafra Employee	115,{
+
+	cutin "Kafra_03",2;
 	callfunc "F_KafraMain",4,0x7f,"einbech.gat",181,123,"NULL",0,0,40,850;
 	close2;
 	viewpoint 1,181,132,1,0x0000FF;
-	cutin "kafra_03",255;
+	cutin "Kafra_03",255;
 	end;
 }
 
-//----------------------------------
-// < Lighthalzen North >
-//----------------------------------
 
-lighthalzen.gat,191,320,4	script	Kafra	861,{
-	cutin "kafra_09",2;
+//--------------------------------------------------------------
+// < Lighthalzen North >
+//--------------------------------------------------------------
+
+lighthalzen.gat,191,320,4	script	Kafra Employee	861,{
+
+	cutin "Kafra_09",2;
 	callfunc "F_KafraMain",4,0x5f,"lighthalzen.gat",194,313,"NULL",0,0,40,800;
 	end;
 }
 
-//----------------------------------
-// < Lighthalzen South >
-//----------------------------------
 
-lighthalzen.gat,164,100,4	script	Kafra	860,{
-	cutin "kafra_08",2;
+//--------------------------------------------------------------
+// < Lighthalzen South >
+//--------------------------------------------------------------
+
+lighthalzen.gat,164,100,4	script	Kafra Employee	860,{
+
+	cutin "Kafra_08",2;
 	callfunc "F_KafraMain",4,0x5f,"lighthalzen.gat",158,96,"NULL",0,0,40,800;
 	end;
 }
 
-//----------------------------------
-// < Lighthalzen Hotel >
-//----------------------------------
 
-lhz_in02.gat,237,284,4	script	Kafra	861,{
-	cutin "kafra_09",2;
+//--------------------------------------------------------------
+// < Lighthalzen Hotel >
+//--------------------------------------------------------------
+
+lhz_in02.gat,237,284,4	script	Kafra Employee	861,{
+
+	cutin "Kafra_09",2;
 	callfunc "F_KafraMain",4,0x5f,"lhz_in02.gat",278,214,"NULL",0,0,40,800;
 	end;
 }
 
-//----------------------------------
-// < Prontera - In front of old swordman Association >
-//----------------------------------
 
-prontera.gat,248,42,0	script	Kafra#ProSword	116,{
-	cutin "kafra_02",2;
-	mes "[Kafra]";
-	mes "Welcome. I am a Kafra Service Agent.";
-	mes "As you can see,";
-	mes "the ^3355FFSwordsman Association^000000";
-	mes "has moved to the satellite city 'Izlude'.";
-	//mes "";
-	next;
-	mes "[Kafra]";
-	mes "I can warp you from here to Izlude for only 600 Zenys if you want?";
-	//mes "";
-	//mes "";
-	//mes "";
-	next;
-	switch (select("Warp me please.","Kafra Points information.","Bye.")) {
-	case 1:
-		if(Zeny<600) {
-			mes "[Kafra]";
-			mes "Sorry, but you don't have enough money.";
-			break;
-		}
-		set Zeny,Zeny-600;
-		set KAFRA_PIT,KAFRA_PIT+60;
-		warp "izlude.gat",94,103;
+//--------------------------------------------------------------
+// < Prontera - Old Swordsman Association >
+//--------------------------------------------------------------
+
+prontera.gat,248,42,0	script	Kafra Employee	116,{
+
+	cutin "kafra_02.bmp",2;
+	if ((job_merchant_q == 6 || job_merchant_q == 5) && (job_merchant_q2 == 2 || job_merchant_q2 == 1)) {
+		mes "[Kafra Employee]";
+		mes "Oh! Thank you for";
+		mes "traveling such a long";
+		mes "way to come over here~";
+		close2;
+		cutin "kafra_02.bmp",255;
 		end;
-	case 2:	// Copy from the function
-		mes "[Kafra]";
-		mes strcharinfo(0)+ ", you have acquired"+KAFRA_PIT+ " points actually.";
-		//mes "";
+	} else if (job_merchant_q == 4 || job_merchant_q == 3) {
+		mes "[Kafra Employee]";
+		mes "A delivery from";
+		mes "the Merchant Guild?";
+		mes "Oh, yes, please set";
+		mes "it down right over there...";
+		if (countitem(1081) == 1 || countitem(1082) == 1 || countitem(1091) == 1) {
+			mes "You must be really tired";
+			mes "after carrying it for so long!";
+		} else {
+			mes "W-wait. Didn't you bring it?";
+			mes "Where's the package?";
+			close2;
+			cutin "kafra_02.bmp",255;
+			end;
+		}
 		next;
-		mes "[Kafra]";
-		mes "The kafra points can be exchanged for the prize at head office of Kafra services.";
-		//mes "";
-		mes "Also in the future you ask Kafra services to have more Kafra points.";
-		//mes "";
-		break;
-	case 3:
-		mes "[Kafra]";
-		mes "We hope to see you again soon.";
-		break;
+		mes "[Kafra Employee]";
+		mes "Now, let me check";
+		mes "the serial number...";
+		if (job_merchant_q2 == 1 && countitem(1081) != 0) {
+			mes "2485741. Right, this is";
+			mes "the one we ordered. Oh,";
+			mes "and don't forget this receipt!";
+			next;
+			delitem 1081,1;
+			getitem 1073,1;
+		} else if (job_merchant_q2 == 2 && countitem(1082) != 0) {
+			mes "2328137. Right, this is";
+			mes "the one we ordered. Oh,";
+			mes "and don't forget this receipt!";
+			next;
+			delitem 1082,1;
+			getitem 1074,1;
+		} else {
+			mes "Mmmm? Hold on. This is";
+			mes "the wrong package. What we";
+			if (job_merchant_q2 == 1) {
+				mes "ordered had the serial number 2485741. I'm sure it's not this.";
+			} else if (job_merchant_q2 == 2) {
+				mes "ordered had the serial number 2328137. I'm sure it's not this.";
+			} else {
+				mes "ordered had the serial number 2328137 or 2328137.";
+			}
+			next;
+			mes "[Kafra Employee]";
+			mes "I'm afraid there";
+			mes "must be some kind";
+			mes "of mistake. Perhaps";
+			mes "you should go back to";
+			mes "the Merchant Guild to";
+			mes "clear up this situation?";
+			close2;
+			cutin "kafra_02.bmp",255;
+			end;
+		}
+		if (job_merchant_q == 4) {
+			set job_merchant_q,6;
+		} else if (job_merchant_q == 3) {
+			set job_merchant_q,5;
+		}
+		mes "[Kafra Employee]";
+		mes "Thanks again";
+		mes "for going through";
+		mes "all of that trouble~";
+		close2;
+		cutin "kafra_02.bmp",255;
+		end;
+	} else {
+		mes "[Kafra Employee]";
+		mes "Welcome to the";
+		mes "Kafra Corportation,";
+		mes "where the service is";
+		mes "always on your side~";
+		next;
+		mes "[Kafra Employee]";
+		mes "As you can see, the";
+		mes "Swordman Assocation";
+		mes "has moved to Izlude, a";
+		mes "satellite city of Prontera.";
+		mes "Currently, we offer a Teleport";
+		mes "Service to Izlude for 600 zeny.";
+		next;
+		switch(select("Use","Cancel")) {
+		case 1:
+			if (Zeny < 600) {
+				mes "[Kafra Employee]";
+				mes "I'm sorry, but you";
+				mes "don't have enough zeny";
+				mes "for this Teleport Service.";
+				close2;
+				cutin "kafra_02.bmp",255;
+				end;
+			}
+			set Zeny,Zeny-600;
+			set KAFRA_PIT,KAFRA_PIT+60;
+			cutin "kafra_02.bmp",255;
+			warp "izlude.gat",94,103;
+			end;
+		case 2:
+			close2;
+			cutin "kafra_02.bmp",255;
+			end;
+		}
 	}
-	close2;
-	cutin "kafra_02",255;
-	end;
 }
 
-//----------------------------------
-// < Izlude - Byalan Island >
-//----------------------------------
 
-izlu2dun.gat,106,58,4	script	Kafra#Byalan	116,{
-	cutin "kafra_02",2;
+//--------------------------------------------------------------
+// < Izlude - Byalan Island >
+//--------------------------------------------------------------
+
+izlu2dun.gat,106,58,4	script	Kafra Employee	116,0,0,{
+
+	if (KAFRA_PIT >= 25000) {
+		mes "[Kafra Employee]";
+		mes "Your Special Reserve Points";
+		mes "have exceeded the maximum";
+		mes "capacity. Please redeem these";
+		mes "points at the Kafra Corportation Headquarters in Al De Baran";
+		mes "before using the Kafra Service.";
+		close;
+	}
+	cutin "kafra_02.bmp",2;
+	if ((job_merchant_q == 6 || job_merchant_q == 5) && (job_merchant_q2 == 8 || job_merchant_q2 == 7)) {
+		mes "[Kafra Employee]";
+		mes "Oh hello~";
+		mes "Um, is there";
+		mes "some special reason";
+		mes "as to why you're here?";
+		close2;
+		cutin "kafra_02.bmp",255;
+		end;
+	} else if (job_merchant_q == 4 || job_merchant_q == 3) {
+		mes "[Kafra Employee]";
+		mes "A delivery from";
+		mes "the Merchant Guild?";
+		mes "Oh, yes, please set";
+		mes "it down right over there...";
+		if (countitem(1081) == 1 || countitem(1082) == 1 || countitem(1091) == 1) {
+			mes "You must be really tired";
+			mes "after carrying it for so long!";
+		} else {
+			mes "W-wait. Didn't you bring it?";
+			mes "Where's the package?";
+			close2;
+			cutin "kafra_02.bmp",255;
+			end;
+		}
+		next;
+		mes "[Kafra Employee]";
+		mes "Now, let me check";
+		mes "the serial number...";
+		if (job_merchant_q2 == 7 && countitem(1081) != 0) {
+			mes "3318702. Right, this is";
+			mes "the one we ordered. Oh,";
+			mes "and don't forget this receipt!";
+			delitem 1081,1;
+			getitem 1079,1;
+		} else if (job_merchant_q2 == 8 && countitem(1082) != 0) {
+			mes "3543625. Right, this is";
+			mes "the one we ordered. Oh,";
+			mes "and don't forget this receipt!";
+			delitem 1082,1;
+			getitem 1080,1;
+		} else {
+			mes "Mmmm? Hold on. This is";
+			mes "the wrong package. What we";
+			if (job_merchant_q2 == 7) {
+				mes "ordered had the serial number 3318702. I'm sure it's not this.";
+			} else if (job_merchant_q2 == 8) {
+				mes "ordered had the serial number 3543625. I'm sure it's not this.";
+			} else {
+				mes "ordered had the serial number 3318702 or 3543625.";
+			}
+			close2;
+			cutin "kafra_02.bmp",255;
+			end;
+		}
+		if (job_merchant_q == 4) {
+			set job_merchant_q,6;
+		} else if (job_merchant_q == 3) {
+			set job_merchant_q,5;
+		}
+		next;
+		if (countitem(1072) != 0 && quest_alb_01 == 0) {
+			switch(select("This is from Chief Mahnsoo of the Merchant Guild...")) {
+			case 1:
+				delitem 1072,1;
+				set quest_alb_01,1;
+				mes "[Kafra Employee]";
+				mes "Oh~! A letter from";
+				mes "Mahnsoo! Thank you";
+				mes "so much, I've been dying";
+				mes "to hear from him. How is";
+				mes "he doing, is he alright?";
+				mes "I can't wait to read it...";
+				next;
+				mes "[Kafra Employee]";
+				mes "Oh, thank you for";
+				mes "going through all the";
+				mes "trouble of delivering all";
+				mes "of this. This isn't anything";
+				mes "special, but please take it.";
+				mes "Well, see you again~";
+				getitem 513,3;
+				close2;
+				cutin "kafra_02.bmp",255;
+				end;
+			}
+		} else {
+			mes "[Kafra Employee]";
+			mes "Thanks again";
+			mes "for going through";
+			mes "all of that trouble~";
+			close2;
+			cutin "kafra_02.bmp",255;
+			end;
+		}
+	}
 	callfunc "F_KafraMain",0,0x5a,0,0,0,0,0,0,40,800;
 	end;
 }

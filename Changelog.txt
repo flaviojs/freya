@@ -13,6 +13,10 @@
 
 Date	Added
 
+2007/06/13
+	* Updated: Almost all first class job change quests to official iRO standards, converted from Aegis [Tsuyuki]
+	 - Mage Job Change Quest is still to-do, coming soon
+
 2007/06/11
 	* Updated: New item names in the item database [Rikter]
 	* Updated: Monster database and fixed a major bug with it [Tsuyuki]

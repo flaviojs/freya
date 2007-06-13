@@ -9,9 +9,10 @@
 //--------------------------------------------------------------
 // Script Title: Job Quest Monster Spawns	Author: A Lot of People
 //--------------------------------------------------------------
-// Revision History: v1.0
+// Revision History: v1.1
 //--------------------------------------------------------------
 //	1.0 First version, merged together [Tsuyuki]
+//	1.1 Added additional Swordsman map monster spawns [Tsuyuki]
 //--------------------------------------------------------------
 // Additional Notes: N/A
 //--------------------------------------------------------------
@@ -34,17 +35,6 @@ new_zone03.gat,0,0,0,0	monster	Poring	1002,10,0,0,0
 new_zone03.gat,0,0,0,0	monster	ChonChon	1011,10,0,0,0
 new_zone03.gat,0,0,0,0	monster	Lunatic	1063,10,0,0,0
 new_zone03.gat,0,0,0,0	monster	Drops	1113,10,0,0,0
-
-
-//--------------------------------------------------------------
-// Novice Training Grounds Monster Spawns [Old]
-//--------------------------------------------------------------
-
-new_1-3.gat.gat,0,0,0,0	monster	Fabre	1184,5,0,0,0
-new_1-3.gat.gat,0,0,0,0	monster	Poring	1002,10,0,0,0
-new_1-3.gat.gat,0,0,0,0	monster	ChonChon	1011,10,0,0,0
-new_1-3.gat.gat,0,0,0,0	monster	Lunatic	1063,10,0,0,0
-new_1-3.gat.gat,0,0,0,0	monster	Drops	1113,10,0,0,0
 
 
 //--------------------------------------------------------------
@@ -71,30 +61,45 @@ sword_1-1.gat,234,117,0,0	monster	Fabre	1184,2,0,0,0
 sword_1-1.gat,198,91,0,0	monster	Fabre	1184,2,0,0,0
 sword_1-1.gat,200,63,0,0	monster	Fabre	1184,2,0,0,0
 
+sword_2-1.gat,35,78,0,0	monster	Fabre	1184,4,0,0,0
+sword_2-1.gat,50,108,0,0	monster	Fabre	1184,2,0,0,0
+sword_2-1.gat,61,28,0,0	monster	Fabre	1184,4,0,0,0
+sword_2-1.gat,61,92,0,0	monster	Fabre	1184,2,0,0,0
 
-//--------------------------------------------------------------
-// Swordsman Job Change Quest Monster Spawns [Old]
-//--------------------------------------------------------------
+sword_2-1.gat,110,112,0,0	monster	Fabre	1184,3,0,0,0
+sword_2-1.gat,161,94,0,0	monster	Fabre	1184,2,0,0,0
+sword_2-1.gat,130,76,0,0	monster	Fabre	1184,2,0,0,0
+sword_2-1.gat,103,58,0,0	monster	Fabre	1184,2,0,0,0
+sword_2-1.gat,130,24,0,0	monster	Fabre	1184,3,0,0,0
 
-sword_1-1.gat,35,78,0,0	monster	Fabre	1184,4,0,0,0
-sword_1-1.gat,50,108,0,0	monster	Fabre	1184,2,0,0,0
-sword_1-1.gat,61,28,0,0	monster	Fabre	1184,4,0,0,0
-sword_1-1.gat,61,92,0,0	monster	Fabre	1184,2,0,0,0
+sword_2-1.gat,201,36,0,0	monster	Fabre	1184,2,0,0,0
+sword_2-1.gat,201,16,0,0	monster	Fabre	1184,2,0,0,0
+sword_2-1.gat,239,44,0,0	monster	Fabre	1184,2,0,0,0
+sword_2-1.gat,239,76,0,0	monster	Fabre	1184,2,0,0,0
+sword_2-1.gat,231,101,0,0	monster	Fabre	1184,2,0,0,0
+sword_2-1.gat,234,117,0,0	monster	Fabre	1184,2,0,0,0
+sword_2-1.gat,198,91,0,0	monster	Fabre	1184,2,0,0,0
+sword_2-1.gat,200,63,0,0	monster	Fabre	1184,2,0,0,0
 
-sword_1-1.gat,110,112,0,0	monster	Fabre	1184,3,0,0,0
-sword_1-1.gat,161,94,0,0	monster	Fabre	1184,2,0,0,0
-sword_1-1.gat,130,76,0,0	monster	Fabre	1184,2,0,0,0
-sword_1-1.gat,103,58,0,0	monster	Fabre	1184,2,0,0,0
-sword_1-1.gat,130,24,0,0	monster	Fabre	1184,3,0,0,0
+sword_3-1.gat,35,78,0,0	monster	Fabre	1184,4,0,0,0
+sword_3-1.gat,50,108,0,0	monster	Fabre	1184,2,0,0,0
+sword_3-1.gat,61,28,0,0	monster	Fabre	1184,4,0,0,0
+sword_3-1.gat,61,92,0,0	monster	Fabre	1184,2,0,0,0
 
-sword_1-1.gat,201,36,0,0	monster	Fabre	1184,2,0,0,0
-sword_1-1.gat,201,16,0,0	monster	Fabre	1184,2,0,0,0
-sword_1-1.gat,239,44,0,0	monster	Fabre	1184,2,0,0,0
-sword_1-1.gat,239,76,0,0	monster	Fabre	1184,2,0,0,0
-sword_1-1.gat,231,101,0,0	monster	Fabre	1184,2,0,0,0
-sword_1-1.gat,234,117,0,0	monster	Fabre	1184,2,0,0,0
-sword_1-1.gat,198,91,0,0	monster	Fabre	1184,2,0,0,0
-sword_1-1.gat,200,63,0,0	monster	Fabre	1184,2,0,0,0
+sword_3-1.gat,110,112,0,0	monster	Fabre	1184,3,0,0,0
+sword_3-1.gat,161,94,0,0	monster	Fabre	1184,2,0,0,0
+sword_3-1.gat,130,76,0,0	monster	Fabre	1184,2,0,0,0
+sword_3-1.gat,103,58,0,0	monster	Fabre	1184,2,0,0,0
+sword_3-1.gat,130,24,0,0	monster	Fabre	1184,3,0,0,0
+
+sword_3-1.gat,201,36,0,0	monster	Fabre	1184,2,0,0,0
+sword_3-1.gat,201,16,0,0	monster	Fabre	1184,2,0,0,0
+sword_3-1.gat,239,44,0,0	monster	Fabre	1184,2,0,0,0
+sword_3-1.gat,239,76,0,0	monster	Fabre	1184,2,0,0,0
+sword_3-1.gat,231,101,0,0	monster	Fabre	1184,2,0,0,0
+sword_3-1.gat,234,117,0,0	monster	Fabre	1184,2,0,0,0
+sword_3-1.gat,198,91,0,0	monster	Fabre	1184,2,0,0,0
+sword_3-1.gat,200,63,0,0	monster	Fabre	1184,2,0,0,0
 
 
 //--------------------------------------------------------------

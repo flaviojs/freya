@@ -13,7 +13,7 @@
 //--------------------------------------------------------------
 //	1.0 First version [Tsuyuki]
 //	1.1 Fixed quest for level 99 and above Novices [Tsuyuki]
-//	1.2 Made 100% fully official based on the iRO Aegis script [Tsuyuki]
+//	1.2 Made 100% fully official based on the Aegis iRO 10.3 script [Tsuyuki]
 //--------------------------------------------------------------
 // Additional Notes: * Official-certified / Aegis-certified *
 //--------------------------------------------------------------
@@ -427,11 +427,9 @@ L_JobChangeA:
 		mes "are now a ^ff0000Taekwon Girl^000000.";
 	}
 	mes "Yes, that sounds good.";
-
 	callfunc "F_JobChange",Job_Taekwon;
 	callfunc "F_ClearJobVariables";
 	getitem 2101,1; // Guard[0]
-
 	next;
 	mes "[Phoenix]";
 	mes "Please, take this training";
