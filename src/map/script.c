@@ -178,6 +178,7 @@ enum {
 
 enum {
 	MF_NOMEMO,
+	MF_NOCOMMAND,
 	MF_NOTELEPORT,
 	MF_NOPORTAL,
 	MF_NORETURN,
@@ -7322,6 +7323,9 @@ static int script_change_mapflag(int m,int type,int val)
 		switch(type) {
 			case MF_NOMEMO:
 				map[m].flag.nomemo = val;
+				break;
+			case MF_NOCOMMAND:
+				map[m].flag.nocommand = val;
 				break;
 			case MF_NOTELEPORT:
 				map[m].flag.noteleport = val;

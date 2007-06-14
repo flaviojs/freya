@@ -1990,6 +1990,20 @@ int pc_bonus(struct map_session_data *sd,int type,int val)
 	case SP_NO_KNOCKBACK:
 		sd->special_state.no_knockback = 1;
 		break;
+	case SP_FIX_MAXHP:
+	case SP_FIX_MAXSP:
+	case SP_FIX_BASEATK:
+	case SP_FIX_MATK:
+	case SP_FIX_DEF:
+	case SP_FIX_MDEF:
+	case SP_FIX_HIT:
+	case SP_FIX_CRITICAL:
+	case SP_FIX_FLEE:
+	case SP_FIX_ASPD:
+	case SP_FIX_SPEED:
+		if(val>0)
+			sd->fix_status[type-SP_FIX_MAXHP]=val;
+		break;
 	default:
 		if(battle_config.error_log)
 			printf("pc_bonus: unknown type %d %d !\n",type,val);
@@ -2382,6 +2396,42 @@ int pc_bonus2(struct map_session_data *sd,int type,int type2,int val)
 			else sd->eternal_status_change[type2] = 1000;
 		}
 		break;
+	case SP_ADD_FIX_CAST_RATE:
+		//update
+		for(i=0;i<sd->skill_fixcastrate.count;i++)
+		{
+			if(sd->skill_fixcastrate.id[i] == type2)
+			{
+				sd->skill_fixcastrate.rate[i] += val;
+				return 0;
+			}
+		}
+		//full
+		if(sd->skill_fixcastrate.count == MAX_SKILL_FIXCASTRATE)
+			break;
+		//add
+		sd->skill_fixcastrate.id[sd->skill_fixcastrate.count] = type2;
+		sd->skill_fixcastrate.rate[sd->skill_fixcastrate.count] = val;
+		sd->skill_fixcastrate.count++;
+		break;
+	case SP_ADD_SKILL_HEAL_RATE:
+		//update
+		for(i=0;i<sd->skill_healup.count;i++)
+		{
+			if(sd->skill_healup.id[i] == type2)
+			{
+				sd->skill_healup.rate[i] += val;
+				return 0;
+			}
+		}
+		//full
+		if(sd->skill_healup.count == MAX_SKILL_HEAL_UP)
+			break;
+		//add
+		sd->skill_healup.id[sd->skill_healup.count] = type2;
+		sd->skill_healup.rate[sd->skill_healup.count] = val;
+		sd->skill_healup.count++;
+		break;
 	default:
 		if(battle_config.error_log)
 			printf("pc_bonus2: unknown type %d %d %d!\n",type,type2,val);
@@ -2401,7 +2451,7 @@ int pc_bonus3(struct map_session_data *sd,int type,int type2,int type3,int val)
 	case SP_ADD_MONSTER_DROP_ITEM:
 		if(sd->state.lr_flag != 2) {
 			if(battle_config.dropitem_itemrate_fix==1)
-				val = mob_droprate_fix(type2,val);
+				val = mob_droprate_fix(type2,val,0);
 			else if(battle_config.dropitem_itemrate_fix>1)
 				val = val * battle_config.dropitem_itemrate_fix / 100;
 			for(i=0;i<sd->monster_drop_item_count;i++) {
@@ -3330,7 +3380,7 @@ int pc_steal_item(struct map_session_data *sd,struct block_list *bl)
 					memset(&tmp_item,0,sizeof(tmp_item));
 					tmp_item.nameid = itemid;
 					tmp_item.amount = 1;
-					tmp_item.identify = !((itemid >= 1101 && itemid<= 2670 ) || (itemid >= 5001 && itemid<= 5150 )|| (itemid >= 13000 && itemid<= 13010 ));
+					tmp_item.identify = !(itemdb_type(itemid) == 4 || itemdb_type(itemid) == 5 || itemdb_type(itemid) == 8);
 					flag = pc_additem(sd,&tmp_item,1);
 					if(battle_config.show_steal_in_same_party)
 						party_foreachsamemap(pc_show_steal,sd,1,sd,tmp_item.nameid,0);
@@ -3944,6 +3994,12 @@ int pc_checkallowskill(struct map_session_data *sd)
 		status_change_end(&sd->bl,SC_GATLINGFEVER,-1);	// ガトリングフィーバーを解除
 	}
 
+        if(sd->sc_data[SC_DANCING].timer!=-1){
+                if(!(skill_get_weapontype(sd->sc_data[SC_DANCING].val1)&(1<<sd->status.weapon))){
+                        skill_stop_dancing(&sd->bl,0);	//合奏状態を解除
+                }
+        }
+
 	if( sd->sc_data[SC_SPURT].timer != -1 && (sd->weapontype1 != WT_FIST || sd->weapontype2 != WT_FIST) ){
 		status_change_end(&sd->bl,SC_SPURT,-1);	// 駆け足STR
 	}
@@ -4108,8 +4164,8 @@ int pc_checkbaselevelup(struct map_session_data *sd)
 			clif_misceffect(&sd->bl,7);	// スパノビ天使
 		}
 		else if(s_class.job >= 24 && s_class.job <= 27){
-			status_change_start(&sd->bl,SkillStatusChangeTable[AL_BLESSING],10,0,0,0,skill_get_time(AL_BLESSING,10),0 );
-			status_change_start(&sd->bl,SkillStatusChangeTable[AL_INCAGI],10,0,0,0,skill_get_time(AL_INCAGI,10),0 );
+			status_change_start(&sd->bl,SkillStatusChangeTable[AL_BLESSING],10,0,0,0,600000,0 );
+			status_change_start(&sd->bl,SkillStatusChangeTable[AL_INCAGI],10,0,0,0,600000,0 );
 			clif_misceffect(&sd->bl,9);	// テコン系天使
 		}
 		else
@@ -5760,11 +5816,8 @@ int pc_percentheal(struct map_session_data *sd,int hp,int sp)
 			sd->status.hp += sd->status.max_hp*hp/100;
 			if(sd->status.hp > sd->status.max_hp)
 				sd->status.hp = sd->status.max_hp;
-			if(sd->status.hp <= 0) {
-				sd->status.hp = 0;
-				pc_damage(NULL,sd,1);
-				hp = 0;
-			}
+			if(sd->status.hp <= 0)
+				sd->status.hp = 1;
 		}
 	}
 	if(sp) {

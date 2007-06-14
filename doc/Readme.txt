@@ -1,4 +1,151 @@
 ----------------------------------------
+// 2304 by Blaze
+
+・percenthealで-100以下のみ死亡判定を出すように修正
+・テコン系列がレベルアップ時の支援効果を10分継続に修正
+　（pc.c）
+・NPCスキルの射程を修正
+　（skill_db.txt）
+・各スキルの消費SPを修正
+　（skill_require_db.txt）
+
+----------------------------------------
+// 2303 by ICO
+
+・龍炎陣(爆炎龍)のダメージ倍率を900%/3に修正 (thx anoym!)
+　ダブルヒットは今のところ未実装ですので、気になる方はskill_dbでhit数を6に増やすか倍率を変更することをお勧めします。
+・ソウルブレイカーのInt,ランダムダメージ部分がカード効果によって軽減されるように修正
+　(thx BBB!　from BTS.ID_377)
+・テコンキッドの一部スキルが射程を無視して発動できていた不具合を修正
+・battle_athena.confにmob_hitstop_rate, mvpmob_item_drop_rate, mvpmob_card_drop_rate, mob_delay_rate_typeを追加
+・24bitカラーまでのエンブレムをディフォルトで使用できるように、guild_emblem_colorsの初期値を2に変更
+・helpの@questskil,@lostskillの項に追記
+・db_ref.txtに召喚系スキルについての説明を追加
+・死んだふり中に攻撃することができた不具合を修正
+・アイテムボーナスにステータス固定ボーナスを10種, bAddFixCastRate, bAddSkillHealRate追加
+・script_ref内のsuccessremovecardsの解説を訂正
+
+	(conf/)
+	battle_athena.conf
+		- mob_hitstop_rate 追加, guild_emblem_colors 0->2
+	help3.txt
+		- 追記
+	(db/)
+		- bFixStatus 追加
+	(doc/)
+	db_ref.txt
+		- 追記
+	item_bonus.txt
+		- bFixStatus追加
+	script_ref.txt
+		- 一部記述訂正
+	(map/)
+	atcommand.c
+		- atcommand_mobinfo() 修正
+	battle.c
+		- battle_config_read(), battle_calc_weapon_attack(), battle_calc_magic_attack()修正
+	battle.h
+		- Battle_Configにメンバ追加
+	map.h
+		- map_session_dataにメンバ追加
+	mob.c
+		- mob_damage(), mob_droprate_fix() 修正
+	mob.h
+		- mob_droprate_fix() 修正
+	npc.c
+		- npc_parse_mob() 修正
+	pc.c
+		- pc_bonus(), pc_bonus2() 修正
+	skill.c
+		- skill_calc_heal() 追加, skill_castend_nodamage_id() 修正
+	skill.h
+		- skill_calc_heal() 修正
+	status.c
+		- status_calc_pc() 修正
+	unit.c
+		- unit_stop_walking(), unit_skilluse_id2(), unit_skilluse_pos2(), unit_attack_timer_sub() 修正
+
+----------------------------------------
+// 2302 by orz~
+
+2300fix
+・　合奏開始判定から混乱状態削除
+2301fix
+・　アルケミスト魂状態のPP修正
+(skill.c)
+
+----------------------------------------
+// 2301 by ルキ
+
+・マップフラグにnocommand命令を追加
+　（atcommand.c、map.h、npc.c、script.c、script_ref.txt）
+・アシッドデモンストレーションがディフェンダーを貫通するよう修正
+　（map/battle.c）
+・プレッシャーがダメージ1固定属性にも貫通していたのを修正
+　（map/battle.c）
+・アルケミストの魂状態でポーションピッチャーの効果が上がるよう修正
+　（map/skill.c）
+
+----------------------------------------
+//2300 by orz~
+
+・skill.cの一部文字コード関連修正
+	丸付き数字を修正
+	line3812 >    /* 範囲4 */
+	line3821 >    /* 範囲3,2 */
+	line3842 >    /* 範囲1 */
+・取り巻きMOBの攻撃対象がHOMの場合の処理修正
+　HOMをターゲットした場合も動くように
+	(map/mob.c)
+・ディボーションの条件式修正
+　自分とターゲットがPT未加入時の条件ミス
+	(map/skill.c)
+・ハンマーフォール素手時不可
+	(map/skill.c)
+・合奏スキル発動・継続条件の変更
+　PT未加入時の条件が抜けているため追加
+　パートナーの状態異常と装備をチェック
+　沈黙時、装備解除時に合奏終了
+	(map/pc.c map/status.c map/skill.c)
+・グランドクロスが物理DEF無視になっていたので修正
+	(map/battle.c)
+・カートターミネーション修正
+  オートガード、パリイング、リフレクトシールドを貫通するように変更
+	(map/battle.c)
+・エスマを武器属性が乗らないように変更
+	(map/battle.c map/status.h map/status.c)
+・カートターミネーション、アシッドデモンストレーション修正
+　状態異常cが乗らないように変更
+	(map/skill.c)
+・メモライズ対象外スキルにメモライズ、ギルドスキル（緊急招集、激励、治療）を指定
+	(map/unit.c)
+・白羽->連打掌落ちを修正 by BTS thanks grv
+	(map/unit.c)
+
+----------------------------------------
+// 2299 by Blaze
+
+・取り巻きモンスターの挙動を修正
+　（mob.c）
+・NPCスキル「取り巻き呼び戻し」の範囲を修正
+　（mob.c）
+・NPCスキル「メタモルフォース」「トランスフォーメーション」のLv2以上実装
+　（skill.c）
+
+----------------------------------------
+// 2298 by Cocoa
+
+・ギルドマスター以外未修得ギルドスキルが見えない不具合修正（clif.c）
+　BTS報告TAKUROさん thank's
+・盗作三段掌が弓で発動しない 不具合修正（battle.c）
+　BTS報告TAKUROさん thank's
+・気功転移が非PT所属プレイヤーとガンスリンガーに成功していた不具合修正（skill.c）
+　BTS報告TAKUROさん thank's
+・一部アイテムをスティールすると未鑑定状態だった不具合修正（pc.c）
+　BTS報告TAKUROさん thank's
+・ガンスリンガーのフリップザコインの成功率が異なっていた点を修正（skill.c）
+
+----------------------------------------
 //2297 by Blaze
 
 ・monsterフォルダを細分化

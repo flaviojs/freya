@@ -1695,7 +1695,11 @@ int npc_parse_mob(char *w1,char *w2,char *w3,char *w4)
 			num=1;
 	}
 
-	if(100 != battle_config.mob_delay_rate) {
+	if(100 != battle_config.mob_delay_rate &&
+	 ( battle_config.mob_delay_rate_type==0 ||
+	 ( battle_config.mob_delay_rate_type & 1 && mob_db[class].mexp>0 && mob_db[class].mode&0x20) ||
+	 ( battle_config.mob_delay_rate_type & 2 && delay1>=1800000 && mob_db[class].mexp==0 && mob_db[class].mode&0x20) ||
+	 ( battle_config.mob_delay_rate_type & 4 && delay1<1800000 && mob_db[class].mexp==0) )) {
 		if(0 >= battle_config.mob_delay_rate) {
 			delay1 = 0;
 			delay2 = 0;
@@ -1806,6 +1810,9 @@ static int npc_parse_mapflag(char *w1,char *w2,char *w3,char *w4)
 	}
 	else if (strcmpi(w3,"nomemo")==0) {
 		map[m].flag.nomemo=1;
+	}
+	else if (strcmpi(w3,"nocommand")==0) {
+		map[m].flag.nocommand=1;
 	}
 	else if (strcmpi(w3,"noteleport")==0) {
 		map[m].flag.noteleport=1;

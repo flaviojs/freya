@@ -493,6 +493,9 @@ L_RECALC:
 	sd->add_attackrange_rate = 100;
 	sd->special_state.item_no_use = 0;
 	sd->skill_delay_rate = 0;
+	memset(sd->fix_status,0,sizeof(sd->fix_status));
+	memset(&sd->skill_fixcastrate,0,sizeof(sd->skill_fixcastrate));
+	memset(&sd->skill_healup,0,sizeof(sd->skill_healup));
 
 	for(i=0;i<10;i++) {
 		index = sd->equip_index[i];
@@ -1976,6 +1979,32 @@ L_RECALC:
 		sd->aspd = sd->aspd*aspd_rate/100;
 	if(pc_isriding(sd))							// 騎兵修練
 		sd->aspd = sd->aspd*(100 + 10*(5 - pc_checkskill(sd,KN_CAVALIERMASTERY)))/ 100;
+
+	//ステータス固定
+	if(sd->fix_status[0])
+		sd->status.max_hp = sd->fix_status[0];
+	if(sd->fix_status[1])
+		sd->status.max_sp = sd->fix_status[1];
+	if(sd->fix_status[2]) {
+		sd->base_atk = sd->fix_status[2];
+		sd->watk = sd->watk2 = 0;
+	} if(sd->fix_status[3])
+		sd->matk1 = sd->matk2 = sd->fix_status[3];
+	if(sd->fix_status[4] >0 && sd->fix_status[4] <=100)
+		sd->def = sd->fix_status[4];
+	if(sd->fix_status[5] >0 && sd->fix_status[5] <=100)
+		sd->mdef = sd->fix_status[5];
+	if(sd->fix_status[6])
+		sd->hit = sd->fix_status[6];
+	if(sd->fix_status[7] >0 && sd->fix_status[7] <=100)
+		sd->critical = 10*sd->fix_status[7];
+	if(sd->fix_status[8])
+		sd->flee = sd->fix_status[8];
+	if(sd->fix_status[9] >=10 && sd->fix_status[9] <=199)
+		sd->aspd = 2000 - sd->fix_status[9]*10;
+	if(sd->fix_status[10] >0 && sd->fix_status[10] <=1000)
+		sd->speed = sd->fix_status[10];
+
 	if(sd->aspd < battle_config.max_aspd) sd->aspd = battle_config.max_aspd;
 	if(map[sd->bl.m].flag.pk){
 		if(sd->aspd < battle_config.pk_max_aspd) sd->aspd = battle_config.pk_max_aspd;
@@ -3450,6 +3479,7 @@ int status_get_amotion(struct block_list *bl)
 	}
 	return 2000;
 }
+
 int status_get_dmotion(struct block_list *bl)
 {
 	int ret = 2000;
@@ -3483,6 +3513,7 @@ int status_get_dmotion(struct block_list *bl)
 
 	return ret;
 }
+
 int status_get_element(struct block_list *bl)
 {
 	int ret = 20;
@@ -3568,6 +3599,7 @@ int status_get_attack_element(struct block_list *bl)
 	}
 	return ret;
 }
+
 int status_get_attack_element2(struct block_list *bl)
 {
 	nullpo_retr(0, bl);
@@ -3600,6 +3632,41 @@ int status_get_attack_element2(struct block_list *bl)
 		return ret;
 	}
 	return 0;
+}
+
+int status_get_attack_element_nw(struct block_list *bl)
+{
+       int ret = 0;
+       struct status_change *sc_data = NULL;
+
+       nullpo_retr(0, bl);
+
+       sc_data = status_get_sc_data(bl);
+
+       if(bl->type==BL_HOM && (struct homun_data *)bl)
+               ret=-1;// 無属性
+
+       if(sc_data) {
+               if( sc_data[SC_FROSTWEAPON].timer!=-1)          // フロストウェポン
+                       ret=1;
+               if( sc_data[SC_SEISMICWEAPON].timer!=-1)        // サイズミックウェポン
+                       ret=2;
+               if( sc_data[SC_FLAMELAUNCHER].timer!=-1)        // フレームランチャー
+                       ret=3;
+               if( sc_data[SC_LIGHTNINGLOADER].timer!=-1)      // ライトニングローダー
+                       ret=4;
+               if( sc_data[SC_ENCPOISON].timer!=-1)            // エンチャントポイズン
+                       ret=5;
+               if( sc_data[SC_ASPERSIO].timer!=-1)             // アスペルシオ
+                       ret=6;
+               if( sc_data[SC_DARKELEMENT].timer!=-1)          // 闇属性
+                       ret=7;
+               if( sc_data[SC_ATTENELEMENT].timer!=-1)         // 念属性
+                       ret=8;
+               if( sc_data[SC_UNDEADELEMENT].timer!=-1)        // 不死属性
+                       ret=9;
+       }
+       return ret;
 }
 
 int status_get_party_id(struct block_list *bl)
@@ -3889,6 +3956,7 @@ int status_check_dummy_sc_data(struct block_list *bl)
 	return 0;
 }
 #endif
+
 /*==========================================
  * ステータス異常開始
  *------------------------------------------
@@ -5032,9 +5100,10 @@ int status_change_start(struct block_list *bl,int type,int val1,int val2,int val
 				*opt1 = type - SC_STONE + 1;
 			break;
 		// opt2
+		case SC_SILENCE:
+			skill_stop_dancing(bl,0);	/* 演奏/ダンスの中断 */
 		case SC_POISON:
 		case SC_CURSE:
-		case SC_SILENCE:
 		case SC_CONFUSION:
 			*opt2 |= 1<<(type-SC_POISON);
 			break;

@@ -709,15 +709,19 @@ int unit_stop_walking(struct block_list *bl,int type)
 	}
 	if( ud == NULL) return 0;
 
-	ud->walkpath.path_len = 0;
-	ud->walkpath.path_pos = 0;
-	ud->to_x              = bl->x;
-	ud->to_y              = bl->y;
+	if((atn_rand()%100 <= battle_config.mob_hitstop_rate && type&0x02 && ud->walktimer != -1) || !md) {
+		ud->walkpath.path_len = 0;
+		ud->walkpath.path_pos = 0;
+		ud->to_x              = bl->x;
+		ud->to_y              = bl->y;
+	}
 
 	if(ud->walktimer == -1) return 0;
 
-	delete_timer(ud->walktimer, unit_walktoxy_timer);
-	ud->walktimer         = -1;
+	if(!(md && type&0x02)) {
+		delete_timer(ud->walktimer, unit_walktoxy_timer);
+		ud->walktimer         = -1;
+	}
 //	if(md) { md->state.skillstate = MSS_IDLE; }
 	if(type&0x01) { // 位置補正送信が必要
 		clif_fixwalkpos(bl);
@@ -727,9 +731,6 @@ int unit_stop_walking(struct block_list *bl,int type)
 		int delay = status_get_dmotion(bl);
 		if( (sd && battle_config.pc_damage_delay) || (md && battle_config.monster_damage_delay) ) {
 			ud->canmove_tick = tick + delay;
-		}
-		else if( (sd && !battle_config.pc_damage_delay) || (md && !battle_config.monster_damage_delay) ) {
-			ud->canmove_tick = (tick)/2 + (delay)/5;
 		}
 	}
 	if(type&0x04 && md) {
@@ -872,12 +873,10 @@ int unit_skilluse_id2(struct block_list *src, int target_id, int skill_num, int 
 		target_id = sc.target;
 	}
 
-	/* 射程と障害物チェック */
+	/* 射程 */
 	range = skill_get_range(skill_num,skill_lv);
 	if(range < 0)
 		range = status_get_range(src) - (range + 1);
-	if (!battle_check_range(src,target,range + 1))
-		return 0;
 
 	switch (skill_num) {
 		case MO_CHAINCOMBO:
@@ -922,10 +921,11 @@ int unit_skilluse_id2(struct block_list *src, int target_id, int skill_num, int 
 			return 0;
 		target_id = src_ud->attacktarget;
 		if( sc_data && sc_data[SC_BLADESTOP].timer!=-1 ){
-			struct block_list *tbl;
-			if((tbl=(struct block_list *)sc_data[SC_BLADESTOP].val4) == NULL) //ターゲットがいない？
-				return 0;
+			struct block_list *tbl = map_id2bl(sc_data[SC_BLADESTOP].val4);
+			if(!tbl) return 0; //ターゲットがいない？
 			target_id = tbl->id;
+			if( (target=map_id2bl(target_id)) == NULL ) return 0;
+				return 0;
 		}
 		break;
 	case CR_SHIELDBOOMERANG:
@@ -946,12 +946,14 @@ int unit_skilluse_id2(struct block_list *src, int target_id, int skill_num, int 
 		if( !src_ud || !src_ud->attacktarget )
 			return 0;
 		target_id = src_ud->attacktarget;
+		if( (target=map_id2bl(target_id)) == NULL ) return 0;
 		break;
 	case MO_EXTREMITYFIST:	/*阿修羅覇鳳拳*/
 		if(! src_ud || !sc_data) return 0;
 		if(sc_data[SC_COMBO].timer != -1 && (sc_data[SC_COMBO].val1 == MO_COMBOFINISH || sc_data[SC_COMBO].val1 == CH_CHAINCRUSH)) {
 			casttime = 0;
 			target_id = src_ud->attacktarget;
+			if( (target=map_id2bl(target_id)) == NULL ) return 0;
 		}
 		forcecast=1;
 		break;
@@ -1005,11 +1007,32 @@ int unit_skilluse_id2(struct block_list *src, int target_id, int skill_num, int 
 		break;
 	}
 
+	/* 障害物のチェック */
+	if (!battle_check_range(src,target,range + 1))
+		return 0;
+
 	//メモライズ状態ならキャストタイムが1/2
-	if(sc_data && sc_data[SC_MEMORIZE].timer != -1 && casttime > 0){
+        if(sc_data && sc_data[SC_MEMORIZE].timer != -1 && casttime > 0 &&
+                        skill_num != GD_EMERGENCYCALL &&        //緊急招集
+                        skill_num != GD_REGENERATION &&         //激励
+                        skill_num != GD_RESTORE &&              //治療
+                        skill_num != PF_MEMORIZE                //メモライズ
+        ){
+
 		casttime = casttime/2;
 		if((--sc_data[SC_MEMORIZE].val2)<=0)
 			status_change_end(src, SC_MEMORIZE, -1);
+	}
+
+	//カードによる固定詠唱時間減少効果
+	if (skill_get_fixedcast(skill_num, skill_lv)>0 && src_sd) {
+		if(src_sd->skill_fixcastrate.count>0) {
+			int i,fix_cast = skill_get_fixedcast(skill_num, skill_lv);
+			for( i=0 ; i<src_sd->skill_fixcastrate.count ; i++ ) {
+				if( skill_num == src_sd->skill_fixcastrate.id[i] )
+					casttime -= fix_cast * src_sd->skill_fixcastrate.rate[i] / 100;
+			}
+		}
 	}
 
 	if(battle_config.pc_skill_log)
@@ -1197,6 +1220,17 @@ int unit_skilluse_pos2( struct block_list *src, int skill_x, int skill_y, int sk
 		casttime = casttime/2;
 		if((--sc_data[SC_MEMORIZE].val2)<=0)
 			status_change_end(src, SC_MEMORIZE, -1);
+	}
+
+	//カードによる固定詠唱時間減少効果
+	if (skill_get_fixedcast(skill_num, skill_lv)>0 && src_sd){
+		if(src_sd->skill_fixcastrate.count>0) {
+			int i,fix_cast = skill_get_fixedcast(skill_num, skill_lv);
+			for( i=0 ; i<src_sd->skill_fixcastrate.count ; i++ ) {
+				if( skill_num == src_sd->skill_fixcastrate.id[i] )
+					casttime -= fix_cast * src_sd->skill_fixcastrate.rate[i] / 100;
+			}
+		}
 	}
 
 	if( casttime>0 ) {
@@ -1450,6 +1484,7 @@ int unit_attack_timer_sub(int tid,unsigned int tick,int id,int data)
 
 	if( sc_data ) {
 		if(sc_data[SC_AUTOCOUNTER].timer != -1 ||
+		   sc_data[SC_TRICKDEAD].timer != -1 ||
 		   sc_data[SC_BLADESTOP].timer != -1 ||
 		   sc_data[SC_FULLBUSTER].timer != -1 ||
 		   sc_data[SC_KEEPING].timer != -1)

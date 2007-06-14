@@ -406,7 +406,7 @@ int battle_calc_damage(struct block_list *src,struct block_list *bl,int damage,i
 				status_change_end(bl, SC_ENDURE, -1);
 		}
 		/* オートガード */
-		if(sc_data[SC_AUTOGUARD].timer != -1 && damage > 0 && flag&BF_WEAPON) {
+		if(sc_data[SC_AUTOGUARD].timer != -1 && damage > 0 && flag&BF_WEAPON && skill_num != WS_CARTTERMINATION) {
 			if(atn_rand()%100 < sc_data[SC_AUTOGUARD].val2) {
 				int delay;
 				damage = 0;
@@ -429,7 +429,7 @@ int battle_calc_damage(struct block_list *src,struct block_list *bl,int damage,i
 			}
 		}
 		/* パリイング */
-		if(sc_data[SC_PARRYING].timer != -1 && damage > 0 && flag&BF_WEAPON) {
+		if(sc_data[SC_PARRYING].timer != -1 && damage > 0 && flag&BF_WEAPON && skill_num != WS_CARTTERMINATION) {
 			if(atn_rand()%100 < sc_data[SC_PARRYING].val2) {
 				int dir = map_calc_dir(bl,src->x,src->y);
 				struct unit_data *ud = unit_bl2ud(bl);
@@ -851,7 +851,7 @@ struct Damage battle_calc_weapon_attack(
 	int t_def1, t_def2, t_vit, s_int;
 	int vitbonusmax = 0;
 	struct Damage wd = { 0, 0, 0, 0, 0, 0, 0, 0, 0 };
-	int damage=0,damage2=0,damage_ot=0,damage_ot2=0,type,div_;
+	int damage=0,damage2=0,damage_ot=0,damage_ot2=0,damage_sbr=0,type,div_;
 	int blewcount=skill_get_blewcount(skill_num,skill_lv);
 	int flag,skill,dmg_lv = 0;
 	int t_mode=0,t_race=0,t_enemy=0,t_size=1,t_group = 0,s_ele=0;
@@ -1125,7 +1125,7 @@ struct Damage battle_calc_weapon_attack(
 		if(skill_num == 0 && skill_lv >= 0 && da == 0 && (skill = pc_checkskill(src_sd,GS_CHAINACTION)) > 0 && src_sd->weapontype1 == WT_HANDGUN)
 			da = (atn_rand()%100 < (skill*5)) ? 1:0;
 		//三段掌
-		if( skill_num == 0 && skill_lv >= 0 && da == 0 && (skill = pc_checkskill(src_sd,MO_TRIPLEATTACK)) > 0 && src_sd->status.weapon <= WT_HUUMA && !src_sd->state.arrow_atk)
+		if( skill_num == 0 && skill_lv >= 0 && da == 0 && (skill = pc_checkskill(src_sd,MO_TRIPLEATTACK)) > 0 && src_sd->status.weapon <= WT_HUUMA)
 		{
 			if(sc_data && sc_data[SC_TRIPLEATTACK_RATE_UP].timer!=-1)
 			{
@@ -2184,7 +2184,7 @@ struct Damage battle_calc_weapon_attack(
 		// 対象の防御力によるダメージの減少
 		switch (skill_num) {
 		case KN_AUTOCOUNTER:
-		case CR_GRANDCROSS:
+		//case CR_GRANDCROSS:
 		case MO_INVESTIGATE:
 		case MO_EXTREMITYFIST:
 		case CR_ACIDDEMONSTRATION:
@@ -2543,6 +2543,22 @@ struct Damage battle_calc_weapon_attack(
 	}
 //カードによるダメージ増加処理(左手)ここまで
 
+	// ソウルブレイカーのInt,ランダム部分のダメージ計算
+	if (skill_num==ASC_BREAKER) {
+		// intによる追加ダメージ
+		damage_sbr = status_get_int(src) * skill_lv * 5;
+		if (target_sd) {
+
+		if (s_ele >= 0)
+			damage_sbr = damage_sbr * (100-target_sd->subele[s_ele])/100;
+		if (s_ele == -1)
+			damage_sbr = damage_sbr * (100-target_sd->subele[0])/100;
+		}
+		// ランダムダメージ
+		damage_sbr += 500 + (atn_rand() % 500);
+		damage_sbr -= (t_def1 + t_def2 + vitbonusmax + status_get_mdef(target) + status_get_mdef2(target))/2;
+	}
+
 //カードによるダメージ減衰処理ここから
 	if(target_sd){ //対象がPCの場合
 		int s_race  = status_get_race(src);
@@ -2551,10 +2567,6 @@ struct Damage battle_calc_weapon_attack(
 		int s_group = status_get_group(src);
 		cardfix=100;
 		cardfix=cardfix*(100-target_sd->subrace[s_race])/100;		// 種族によるダメージ耐性
-		if (s_ele >= 0)
-			cardfix=cardfix*(100-target_sd->subele[s_ele])/100;	// 属性によるダメージ耐性
-		if (s_ele == -1)
-			cardfix=cardfix*(100-target_sd->subele[0])/100;		// 属性無しの耐性は無属性
 		cardfix=cardfix*(100-target_sd->subenemy[s_enemy])/100;		// 敵タイプによるダメージ耐性
 		cardfix=cardfix*(100-target_sd->subsize[s_size])/100;		// サイズによるダメージ耐性
 		cardfix=cardfix*(100-target_sd->subgroup[s_group])/100;	// グループによるダメージ耐性
@@ -2575,6 +2587,11 @@ struct Damage battle_calc_weapon_attack(
 			cardfix=cardfix*(100-target_sd->long_attack_def_rate)/100; //遠距離攻撃はダメージ減少(ホルンCとか)
 		if(flag&BF_SHORT)
 			cardfix=cardfix*(100-target_sd->near_attack_def_rate)/100; //近距離攻撃はダメージ減少(該当無し？)
+		if (s_ele >= 0)
+			cardfix=cardfix*(100-target_sd->subele[s_ele])/100;	// 属性によるダメージ耐性
+		if (s_ele == -1)
+			cardfix=cardfix*(100-target_sd->subele[0])/100;		// 属性無しの耐性は無属性
+		damage_sbr=damage_sbr*cardfix/100;//カード補正によるSbr(Int,ランダム部分)のダメージ減少
 		damage=damage*cardfix/100; //カード補正によるダメージ減少
 		damage2=damage2*cardfix/100; //カード補正による左手ダメージ減少
 	}
@@ -2598,7 +2615,7 @@ struct Damage battle_calc_weapon_attack(
 //対象にステータス異常がある場合のダメージ減算処理ここから
 	if(t_sc_data) {
 		cardfix=100;
-		if(t_sc_data[SC_DEFENDER].timer != -1 && flag&BF_LONG) //ディフェンダー状態で遠距離攻撃
+		if(t_sc_data[SC_DEFENDER].timer != -1 && flag&BF_LONG && skill_num!=CR_ACIDDEMONSTRATION) //ディフェンダー状態で遠距離攻撃
 			cardfix=cardfix*(100-t_sc_data[SC_DEFENDER].val2)/100; //ディフェンダーによる減衰
 		if(t_sc_data[SC_ADJUSTMENT].timer != -1 && flag&BF_LONG) //アジャストメント状態で遠距離攻撃
 			cardfix-=20; //アジャストメント状態による減衰
@@ -2626,19 +2643,8 @@ struct Damage battle_calc_weapon_attack(
 	}
 
 	// ソウルブレイカー
-	if (skill_num==ASC_BREAKER) {
-		// intによる追加ダメージ
-		damage += status_get_int(src) * skill_lv * 5;
-		if (target_sd) {
-			if (s_ele >= 0)
-				damage = damage * (100-target_sd->subele[s_ele])/100;
-			if (s_ele == -1)
-				damage = damage * (100-target_sd->subele[0])/100;
-		}
-		// ランダムダメージ
-		damage += 500 + (atn_rand() % 500);
-		damage -= (t_def1 + t_def2 + vitbonusmax + status_get_mdef(target) + status_get_mdef2(target))/2;
-	}
+	if (skill_num==ASC_BREAKER)
+		damage += damage_sbr;
 
 	// 星のかけら、気球の適用
 	if(src_sd) {
@@ -2751,7 +2757,7 @@ struct Damage battle_calc_weapon_attack(
 	}
 
 	//MobのModeに頑強フラグが立っているときの処理
-	if(t_mode&0x40 && skill_num!=PA_PRESSURE){
+	if(t_mode&0x40){
 		if(damage > 0)
 			damage = (div_<255)? 1: 3; // 三段掌のみ3ダメージ
 		if(damage2 > 0)
@@ -2928,7 +2934,7 @@ struct Damage battle_calc_magic_attack(
 	{
 		case AL_HEAL:	// ヒールor聖体
 		case PR_BENEDICTIO:
-			damage = skill_calc_heal(bl,skill_lv)/2;
+			damage = skill_calc_heal(bl,skill_num,skill_lv,0)/2;
 			if(sd)	//メディタティオを乗せる
 				damage += damage * pc_checkskill(sd,HP_MEDITATIO)*2/100;
 			normalmagic_flag=0;
@@ -3068,7 +3074,7 @@ struct Damage battle_calc_magic_attack(
 			{
 				MATK_FIX(40+sd->status.base_level,100);
 			}
-			ele = status_get_attack_element(bl);
+			ele = status_get_attack_element_nw(bl);
 			if(sc_data && sc_data[SC_SMA].timer!=-1)
 				status_change_end(bl,SC_SMA,-1);
 			break;
@@ -3079,7 +3085,7 @@ struct Damage battle_calc_magic_attack(
 			MATK_FIX( 50,100 );
 			break;
 		case NJ_BAKUENRYU:	// 龍炎陣
-			MATK_FIX(150+ skill_lv*150,100);
+			MATK_FIX(150+ skill_lv*150,300);
 			break;
 		case NJ_HYOUSENSOU:	// 氷閃槍
 			if(t_sc_data && t_sc_data[SC_SUITON].timer!=-1)
@@ -4076,7 +4082,7 @@ int battle_skill_attack(int attack_type,struct block_list* src,struct block_list
 					if(rdamage < 1) rdamage = 1;
 				}
 			}
-			if(sc_data && sc_data[SC_REFLECTSHIELD].timer != -1) { //リフレクトシールド時
+			if(sc_data && sc_data[SC_REFLECTSHIELD].timer != -1 && skillid != WS_CARTTERMINATION ) { //リフレクトシールド時
 				rdamage += damage * sc_data[SC_REFLECTSHIELD].val2 / 100; //跳ね返し計算
 				if(rdamage < 1) rdamage = 1;
 			}
@@ -5141,6 +5147,10 @@ int battle_config_read(const char *cfgName)
 		battle_config.cancel_race = 1;
 		battle_config.allow_es_magic_all = 0;
 		battle_config.sg_miracle_rate = 1;
+		battle_config.mob_hitstop_rate = 0;
+		battle_config.mvpmob_item_drop_rate = 10000;
+		battle_config.mvpmob_card_drop_rate = 10000;
+		battle_config.mob_delay_rate_type = 0;
 	}
 
 	fp=fopen(cfgName,"r");
@@ -5590,6 +5600,10 @@ int battle_config_read(const char *cfgName)
 			{ "cancel_race",						&battle_config.cancel_race							},
 			{ "allow_es_magic_all",					&battle_config.allow_es_magic_all					},
 			{ "sg_miracle_rate",					&battle_config.sg_miracle_rate				},
+			{ "mob_hitstop_rate",					&battle_config.mob_hitstop_rate					},
+			{ "mvpmob_item_drop_rate",						&battle_config.mvpmob_item_drop_rate						},
+			{ "mvpmob_card_drop_rate",						&battle_config.mvpmob_card_drop_rate						},
+			{ "mob_delay_rate_type",						&battle_config.mob_delay_rate_type						},
 		};
 		const int max = sizeof(data)/sizeof(data[0]);
 

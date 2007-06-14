@@ -53,6 +53,21 @@ bAutoSpell,bAutoSelfSpell,bRevAutoSpell,bRevAutoSelfSpell‚Í16ŒÂ‚Ü‚Å—LŒø‚Å‚·B16‚
 	bonus bRace,n;						ní‘°‚É‚È‚é
 
 
+EƒXƒe[ƒ^ƒXŒÅ’è
+	bonus bFixDamage,n;				•¨—UŒ‚‚ªnƒ_ƒ[ƒW‚ÅŒÅ’è‚É‚È‚é
+	bonus bFixMaxHP,n;					Å‘åHP‚ğn‚ÉŒÅ’è
+	bonus bFixMaxSP,n;					Å‘åSP‚ğn‚ÉŒÅ’è
+	bonus bFixBaseAtk,n;				UŒ‚—Í‚ğn‚ÉŒÅ’è
+	bonus bFixMatk,n;					–‚–@UŒ‚—Í‚ğn‚ÉŒÅ’è
+	bonus bFixDef,n;					–hŒä—Í‚ğn‚ÉŒÅ’è(‘•”õ)
+	bonus bFixMdef,n;					–‚–@–hŒä—Í‚ğn‚ÉŒÅ’è(‘•”õ)
+	bonus bFixHit,n;					–½’†—Í‚ğn‚ÉŒÅ’è
+	bonus bFixCritical,n;				ƒNƒŠƒeƒBƒJƒ‹‚ğn‚ÉŒÅ’è
+	bonus bFixFlee,n;					‰ñ”ğ—Í‚ğn‚ÉŒÅ’è
+	bonus bFixAspd,n;					UŒ‚‘¬“x‚ğn‚ÉŒÅ’è
+	bonus bFixSpeed,n;					ˆÚ“®‘¬“x‚ğn‚ÉŒÅ’è
+
+
 E‘®«•t—^
 	bonus bAtkEle,n;					•Ší‚Én‚Ì‘®«•t—^
 	bonus bDefEle,n;					–h‹ï‚Én‚Ì‘®«•t—^
@@ -182,6 +197,8 @@ bAutoSpell,bAutoSelfSpell,bRevAutoSpell,bRevAutoSelfSpell‚Í16ŒÂ‚Ü‚Å—LŒø‚Å‚·B16‚
 	bonus bSkillDelayRate,n;			ƒXƒLƒ‹g—pŒãƒfƒBƒŒƒC+n%
 	bonus2 bAddSkillDamageRate,n,x; 	ƒXƒLƒ‹n‚Ìƒ_ƒ[ƒW‚ğx%‘‰Á
 	bonus2 bAddSkillBlow,n,x;			ƒXƒLƒ‹n‚Éxƒ}ƒX‚Ì‚«”ò‚Î‚µŒø‰Ê’Ç‰Á
+	bonus2 bAddFixCastRate,n,x;			ƒXƒLƒ‹n‚ÌŒÅ’è‰r¥ŠÔ‚ğx%Œ¸­
+	bonus2 bAddSkillHealRate,n,x;			ƒXƒLƒ‹n‚Ì‰ñ•œ—Ê‚ğx%‘‰Á
 
 
 EƒI[ƒgƒXƒyƒ‹
@@ -296,7 +313,6 @@ bAutoSpell,bAutoSelfSpell,bRevAutoSpell,bRevAutoSelfSpell‚Í16ŒÂ‚Ü‚Å—LŒø‚Å‚·B16‚
 	bonus bInfiniteEndure,n;			–³ŒÀƒCƒ“ƒfƒ…ƒA(n‚Í–³ˆÓ–¡)
 	bonus bTigereye,n;				‰B‚ê‚Ä‚¢‚éPC,MOB‚ğŒ©‚Â‚¯‚é‚±‚Æ‚ªo—ˆ‚é
 	bonus bItemNoUse,n;				ƒAƒCƒeƒ€‚ªg‚¦‚È‚¢(n‚Í–³ˆÓ–¡)
-	bonus bFixDamage,n;				•¨—UŒ‚‚ªnƒ_ƒ[ƒW‚ÅŒÅ’è‚É‚È‚é
 	bonus bNoKnockback,n;				ƒmƒbƒNƒoƒbƒN‚µ‚È‚­‚È‚é(n‚Í–³ˆÓ–¡)
 
 

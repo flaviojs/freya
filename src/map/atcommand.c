@@ -4247,6 +4247,9 @@ int atcommand_mapinfo(
 	sprintf(output, "No Memo: %s",
 		(map[m_id].flag.nomemo) ? "True" : "False");
 	clif_displaymessage(fd, output);
+	sprintf(output, "No Command: %s",
+		(map[m_id].flag.nocommand) ? "True" : "False");
+	clif_displaymessage(fd, output);
 	sprintf(output, "No Penalty: %s",
 		(map[m_id].flag.nopenalty) ? "True" : "False");
 	clif_displaymessage(fd, output);
@@ -5128,6 +5131,8 @@ int atcommand_mapflag(
 		map[m].flag.noportal ^= 1;
 	} else if (strcmpi(w3,"noreturn")==0) {
 		map[m].flag.noreturn ^= 1;
+	} else if (strcmpi(w3,"nocommand")==0) {
+		map[m].flag.nocommand ^= 1;
 	} else if (strcmpi(w3,"monster_noteleport")==0) {
 		map[m].flag.monster_noteleport ^= 1;
 	} else if (strcmpi(w3,"nobranch")==0) {
@@ -5849,7 +5854,7 @@ int atcommand_mobinfo(
 	struct item_data *item_data;
 	struct mob_db *mob;
 	int mob_id;
-	int i, j;
+	int i, j,drop_rate;
 
 	memset(output, '\0', sizeof(output));
 	memset(output2, '\0', sizeof(output2));
@@ -5895,9 +5900,13 @@ int atcommand_mobinfo(
 	for (i = 0; i < ITEM_DROP_COUNT; i++) {
 		if (mob->dropitem[i].nameid <= 0 || (item_data = itemdb_search(mob->dropitem[i].nameid)) == NULL)
 			continue;
-		if ( mob_droprate_fix( mob->dropitem[i].nameid, mob->dropitem[i].p ) > 0) {
+		if(mob->mexp)
+			drop_rate=mob_droprate_fix( mob->dropitem[i].nameid, mob->dropitem[i].p, 1 );
+		else
+			drop_rate=mob_droprate_fix( mob->dropitem[i].nameid, mob->dropitem[i].p, 0 );
+		if ( drop_rate > 0) {
 			sprintf(output2, " - %s  %02.02f%%", item_data->jname
-				, (float)mob_droprate_fix( mob->dropitem[i].nameid, mob->dropitem[i].p ) / 100);
+				, (float)drop_rate / 100);
 			strcat(output, output2);
 			if (++j % 3 == 0) {
 				clif_displaymessage(fd, output);

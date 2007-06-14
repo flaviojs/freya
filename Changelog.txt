@@ -8,12 +8,13 @@
                  http://aurora.deltaanime.net                 
                      Aurora SVN Changelog                     
 --------------------------------------------------------------
-                Current Revision: jAthena 2297
+                Current Revision: jAthena 3304
 --------------------------------------------------------------
 
 Date	Added
 
 2007/06/13
+	* Updated: Project to jAthena 3304 (Latest) [Tsuyuki]
 	* Updated: Almost all first class job change quests to official iRO standards, converted from Aegis [Tsuyuki]
 	 - Mage Job Change Quest is still to-do, coming soon
 
@@ -108,7 +109,7 @@ Date	Added
 	* Updated: Thief Job Change Quest with Aegis dialogue [Tsuyuki]
 	* Updated: Archer Job Change Quest with Aegis dialogue [Tsuyuki]
 	* Added: Kunlun Power NPC (Disabled for now, broken) [Tsuyuki]
-	* Updated: Project to jAthena 2297 (Latest) [Tsuyuki]
+	* Updated: Project to jAthena 2297 [Tsuyuki]
 	* Updated: Alberta, Aldebaran, and Morroc Town NPCs to Aegis converted versions [Tsuyuki]
 	* Changed: Merged Assassin Guild NPCs into the Assassin Job Change Quest [Tsuyuki]
 

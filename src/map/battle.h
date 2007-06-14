@@ -270,6 +270,8 @@ extern struct Battle_Config {
 	int consume_drop_rate;
 	int refine_drop_rate;
 	int etc_drop_rate;
+	int mvpmob_item_drop_rate;
+	int mvpmob_card_drop_rate;
 
 	int potion_drop_rate;
 	int arrow_drop_rate;
@@ -522,6 +524,8 @@ extern struct Battle_Config {
 	int cancel_race;
 	int allow_es_magic_all;
 	int sg_miracle_rate;
+	int mob_hitstop_rate;
+	int mob_delay_rate_type;
 } battle_config;
 
 #define BATTLE_CONF_FILENAME "conf/battle_athena.conf"

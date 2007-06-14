@@ -552,14 +552,27 @@ delay    : ƒXƒLƒ‹Žg—pŒã‚ÌƒfƒBƒŒƒCŽžŠÔimsjA‚½‚¾‚µƒfƒBƒŒƒC’†‚ÉŽg‚¦‚È‚¢‚Ì‚Í“¯‚¶ƒ
 
 	—á‚Pj2%‚ÌŠm—¦‚ÅƒGƒ‚[ƒVƒ‡ƒ“”Ô†5‚ðŽg—p‚·‚é
 		1009,ƒGƒ‚[ƒVƒ‡ƒ“—ƒRƒ“ƒhƒ‹,idle,197,1,200,0,5000,no,self,always,0,5,,,,,
-	—á‚QjŽæ‚èŠª‚«‚ª‹‚È‚­‚È‚Á‚½‚ç10%‚ÌŠm—¦‚ÅID 1179/1208/1509‚Ìƒ‚ƒ“ƒXƒ^[‚ð¢ŠÒ‚·‚é
-		1373,Žæ‚èŠª‚«¢Š«—ƒ[ƒhƒIƒuƒfƒX,any,196,2,1000,2000,3600000,no,self,slavele,0,1179,1208,1509,,,
-	—á‚Rj20%‚ÌŠm—¦‚ÅID 1049‚©1050‚Ì‚¢‚¸‚ê‚©‚ÉƒNƒ‰ƒXƒ`ƒFƒ“ƒW‚·‚é
+	—á‚Qj20%‚ÌŠm—¦‚ÅID 1049‚©1050‚Ì‚¢‚¸‚ê‚©‚ÉƒNƒ‰ƒXƒ`ƒFƒ“ƒW‚·‚é
 		1047,ƒƒ^ƒ‚ƒ‹ƒtƒH[ƒX—ƒyƒRƒyƒR‚Ì—‘,idle,193,1,10,2000,0,no,self,always,0,1049,1050,,,,
-	—á‚SjŽüˆÍ5ƒZƒ‹ˆÈ“à‚ÌŽæ‚èŠª‚«‚ª3•CˆÈ‰º‚È‚ç10%‚ÌŠm—¦‚ÅŒÄ‚Ñ–ß‚·
+	—á‚RjŽüˆÍ5ƒZƒ‹ˆÈ“à‚ÌŽæ‚èŠª‚«‚ª3•CˆÈ‰º‚È‚ç10%‚ÌŠm—¦‚ÅŒÄ‚Ñ–ß‚·
 		1038,Žæ‚èŠª‚«ŒÄ‚Ñ–ß‚µ—ƒIƒVƒŠƒX,attack,354,1,10000,0,30000,no,target,areaslavele,0x503,,,,,,
-	—á‚Tj‰“‹——£UŒ‚‚³‚ê‚½‚ç’‡ŠÔ‚Ì‘«Œ³‚ÉƒTƒ“ƒNƒ`ƒ…ƒAƒŠ‚ð“WŠJ‚·‚é
+	—á‚Sj‰“‹——£UŒ‚‚³‚ê‚½‚ç’‡ŠÔ‚Ì‘«Œ³‚ÉƒTƒ“ƒNƒ`ƒ…ƒAƒŠ‚ð“WŠJ‚·‚é
 		1194,ƒTƒ“ƒNƒ`ƒ…ƒAƒŠ—ƒAƒNƒ‰ƒEƒX,attack,70,10,2000,0,5000,no,friend,longrangeattacked,0,,,,,,
+
+	[¢Š«ŒnƒXƒLƒ‹]
+		- ¢Š«Mob‚ªˆê‘Ì‚Ì‚Ý‚Ìê‡‚Ískill_lv•ªA•¡”‚Ìê‡‚Ískill_lv‚Ì”‚ÉŽû‚ß‚½•ª‚ÌMob‚ð¢Š«‚·‚é
+	—á‚PjŽæ‚èŠª‚«‚ª‹‚È‚­‚È‚Á‚½‚ç10%‚ÌŠm—¦‚ÅID 1005‚ÌMob‚ð3‘Ì¢Š«‚·‚é
+		1111,Žæ‚èŠª‚«¢Š«—ƒhƒŒƒCƒ“ƒŠƒA[,any,196,3,1000,2000,60000,no,self,slavele,0,1005,,,,,
+	—á‚QjŽæ‚èŠª‚«‚ª‹‚È‚­‚È‚Á‚½‚ç10%‚ÌŠm—¦‚ÅID 1261/1281‚ÌMob‚ð¢Š«‚·‚é
+		1275,Žæ‚èŠª‚«¢Š«—ƒAƒŠƒX,any,196,2,1000,2000,60000,no,self,slavele,0,1281,1261,,,,
+	—á‚RjŽæ‚èŠª‚«‚ª‹‚È‚­‚È‚Á‚½‚ç50%‚ÌŠm—¦‚ÅID 1179/1208/1509‚Ìƒ‚ƒ“ƒXƒ^[‚ð2‘Ì‚¸‚Â¢ŠÒ‚·‚é
+		1373,Žæ‚èŠª‚«¢Š«—ƒ[ƒhƒIƒuƒfƒX,any,196,6,5000,500,10000,no,self,slavele,0,1179,1208,1509,,,
+	—á‚SjŽæ‚èŠª‚«‚ª‹‚È‚­‚È‚Á‚½‚ç50%‚ÌŠm—¦‚ÅID 1243‚Ìƒ‚ƒ“ƒXƒ^[‚ð1‘ÌA1515‚Ìƒ‚ƒ“ƒXƒ^[‚ð8‘Ì¢ŠÒ‚·‚é
+		1252,Žæ‚èŠª‚«¢Š«—ƒnƒeƒB[,any,196,9,5000,500,10000,no,self,slavele,0,1515,1515,1515,1515,1243,
+
+	@‚wjŽæ‚èŠª‚«‚ª‹‚È‚­‚È‚Á‚½‚ç50%‚ÌŠm—¦‚ÅID 1193/1269‚Ìƒ‚ƒ“ƒXƒ^[‚ð1‘Ì‚¸‚Â¢ŠÒ‚·‚é
+		>>‚±‚Ìê‡skill_lv‚ª1‘«‚è‚Ü‚¹‚ñ
+		1270,Žæ‚èŠª‚«¢Š«—ŽžŒv“ƒŠÇ—ŽÒ,any,196,1,5000,500,10000,no,self,slavele,0,1193,1269,,,,
 
 Žg—pŽžƒGƒ‚[ƒVƒ‡ƒ“: ƒXƒLƒ‹Žg—pŽž‚Éo‚·ƒGƒ‚[ƒVƒ‡ƒ“”Ô†
 

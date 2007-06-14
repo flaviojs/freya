@@ -241,6 +241,8 @@ AthenaNPCScript
 				PKモードにおいて、ランキングを計算しません。
 			turbo<tab>dummy
 				ターボトラックモードになります。
+			nocommand<tab>dummy
+				一般プレイヤーのGMコマンドを禁止します。
 
 	注釈１）
 		NPCの名前は識別子によって管理されています（表示名ではありません）。
@@ -1659,8 +1661,8 @@ AthenaNPCScript
 
 			指定したギルドの情報をInterサーバに要求し取得します。
 
-		successremovecard命令
-			successremovecard <num>[,<position>];
+		successremovecards命令
+			successremovecards <num>[,<position>];
 
 			<num>		1-11までの整数を指定します。詳しくはgetequipidを参照のこと。
 			<position>	カードの位置番号。省略時は0になります。
