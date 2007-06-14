@@ -1376,7 +1376,7 @@ p_track02.gat,69,31,1	script	Blacksmith Guildsman#double1	726,{
 		mes "Hmmm....Hahaha...";
 		mes "I'll be successful this time...";
 		mes "I wonder how many times have I tried.";
-		emotion "Blacksmith Guildsman#double1",ET_CRY;
+		emotion ET_CRY,"Blacksmith Guildsman#double1";
 		next;
 		mes "[Blacksmith Guildsman]";
 		mes "Do you know that the";
@@ -1391,14 +1391,14 @@ p_track02.gat,69,31,1	script	Blacksmith Guildsman#double1	726,{
 		mes "Do you think you can send them to the factory...";
 		mes "Oh no...";
 		mes "How can I say this...";
-		emotion "Blacksmith Guildsman#double1",ET_PROFUSELY_SWAT;
+		emotion ET_PROFUSELY_SWAT,"Blacksmith Guildsman#double1";
 		close;
 	} else {
 		mes "[Blacksmith Guildsman]";
 		mes "Run! Run!";
 		mes "Run for my research! My medal!";
 		mes "Please run quickly!!!";
-		emotion "Blacksmith Guildsman#double1",ET_FLAG;
+		emotion ET_FLAG,"Blacksmith Guildsman#double1";
 		close;
 	}
 }
@@ -3223,7 +3223,7 @@ hugel.gat,56,104,3	script	Kurupe#Hugel	709,3,3,{
 			close;
 		}
 		set hg_ubu02,9;
-		misceffect 71;
+		gmcommand "@misceffect 71";
 		set BaseExp,BaseExp+100000;
 		getitem 12063,3;
 		next;
@@ -6982,7 +6982,7 @@ hugel.gat,107,67,3	script	Torpy	 	706,{
 					mes "disappeared too! I-I'm all";
 					mes "alone now! Waaaaaah~!";
 					next;
-					emotion ET_THINK;
+					gmcommand "@emotion ET_THINK";
 					mes "[" + strcharinfo(0) + "]";
 					mes "Don't worry, I'll look";
 					mes "for your parents. I'm";
@@ -6998,7 +6998,7 @@ hugel.gat,107,67,3	script	Torpy	 	706,{
 					mes "show up sooner";
 					mes "or later. Well, lots";
 					mes "of luck, kid.";
-					emotion ET_THINK;
+					gmcommand "@emotion ET_THINK";
 					close;
 			L_LABEL2:
 				mes "[Torpy]";
@@ -7037,7 +7037,7 @@ hugel.gat,107,67,3	script	Torpy	 	706,{
 			mes "also tell her that Daddy";
 			mes "is safe! See you later~";
 			next;
-			emotion ET_THINK;
+			gmcommand "@emotion ET_THINK";
 			mes "......";
 			mes ".........";
 			mes "............";
@@ -7057,7 +7057,7 @@ hugel.gat,107,67,3	script	Torpy	 	706,{
 			mes "this town, where you last";
 			mes "saw her. Bye bye for now~";
 			next;
-			emotion ET_THINK;
+			gmcommand "@emotion ET_THINK";
 			mes "......";
 			mes ".........";
 			mes "............";
@@ -7071,7 +7071,7 @@ hugel.gat,107,67,3	script	Torpy	 	706,{
 			mes "Um, that might not be good...^000000";
 			close;
 		} else if (hg_ubu01 == 8) {
-			emotion ET_THINK;
+			gmcommand "@emotion ET_THINK";
 			mes "[Torpy]";
 			mes "Daddy promised to get";
 			mes "me a girlfriend if I beat him";
@@ -7087,7 +7087,7 @@ hugel.gat,107,67,3	script	Torpy	 	706,{
 			set hg_ubu01,9;
 			close;
 		} else if (hg_ubu01 == 9) {
-			emotion ET_THINK;
+			gmcommand "@emotion ET_THINK";
 			mes "[Torpy]";
 			mes "Maybe I should wait until";
 			mes "I'm older to have a girlfriend.";
@@ -7200,7 +7200,7 @@ hu_fild06.gat,190,367,3	script	Torpy's Mom	 	701,{
 		mes "it's not much, but I hope";
 		mes "you accept this as our thanks.";
 		mes "Goodbye for now, adventurer~";
-		misceffect EF_CONE;
+		gmcommand "@misceffect 71";
 		set hg_ubu01,8;
 		getitem 12065,3;
 		set BaseExp,BaseExp+50000;
@@ -7220,7 +7220,7 @@ hu_fild06.gat,190,367,3	script	Torpy's Mom	 	701,{
 		mes "it's not much, but I hope";
 		mes "you accept this as our thanks.";
 		mes "Goodbye for now, adventurer~";
-		misceffect EF_MVP;
+		gmcommand "@misceffect 68";
 		set hg_ubu01,8;
 		getitem 12065,3;
 		set BaseExp,BaseExp+50000;
@@ -7235,7 +7235,7 @@ hu_fild06.gat,190,367,3	script	Torpy's Mom	 	701,{
 		mes "after each other. Oh, well...";
 		close;
 	} else if (hg_ubu01 == 9) {
-		emotion ET_THINK;
+		gmcommand "@emotion ET_THINK";
 		mes "[Torpy's Mom]";
 		mes "When is that husband";
 		mes "of mine going to come";
@@ -7243,7 +7243,7 @@ hu_fild06.gat,190,367,3	script	Torpy's Mom	 	701,{
 		mes "didn't make another weird";
 		mes "bet with Torpy, did he? Oh,";
 		mes "the trouble with those two...";
-		emotion ET_THINK;
+		gmcommand "@emotion ET_THINK";
 		close;
 	} else {
 		mes "[Torpy's Mom]";
@@ -7266,7 +7266,7 @@ hugel.gat,100,176,3	script	Suspicious Barrel#hugel	111,{
 		mes "h-health... with... Steamed...";
 		mes "Crab... Nippers... Please...";
 		next;
-		emotion ET_THINK;
+		gmcommand "@emotion ET_THINK";
 		mes "^3355FFIt sounds like";
 		mes "this barrel wants";
 		mes "Steamed Crab Nippers.^000000";
@@ -7281,7 +7281,7 @@ hugel.gat,100,176,3	script	Suspicious Barrel#hugel	111,{
 			mes "and 10... N-Nippers... to";
 			mes "c-cook th-them. Ugh...";
 			next;
-			emotion ET_THINK;
+			gmcommand "@emotion ET_THINK";
 			mes "[" + strcharinfo(0) + "]";
 			mes "Hold on,";
 			mes "I have to cook";
@@ -7301,7 +7301,7 @@ hugel.gat,100,176,3	script	Suspicious Barrel#hugel	111,{
 			mes "hunger...! It... It can't...";
 			mes "It c-can't be... d-denied!";
 			next;
-			emotion ET_THINK;
+			gmcommand "@emotion ET_THINK";
 			mes "[" + strcharinfo(0) + "]";
 			mes "Weirdo! Why don't you";
 			mes "get out of that barrel,";
@@ -7317,7 +7317,7 @@ hugel.gat,100,176,3	script	Suspicious Barrel#hugel	111,{
 			mes "It's b-been so... l-long...";
 			mes "G-Give me! G-Give me now!";
 			next;
-			emotion ET_THINK;
+			gmcommand "@emotion ET_THINK";
 			mes "^3355FFYou dumped the";
 			mes "Steamed Crab Nippers";
 			mes "into the barrel where";
@@ -7343,7 +7343,7 @@ hugel.gat,100,176,3	script	Suspicious Barrel#hugel	111,{
 			mes "and 10... N-Nippers... to";
 			mes "c-cook th-them. Ugh...";
 			next;
-			emotion ET_THINK;
+			gmcommand "@emotion ET_THINK";
 			mes "[" + strcharinfo(0) + "]";
 			mes "Hold on,";
 			mes "I have to cook";
@@ -7365,7 +7365,7 @@ hugel.gat,100,176,3	script	Suspicious Barrel#hugel	111,{
 			mes "It's b-been so... l-long...";
 			mes "G-Give me! G-Give me now!";
 			next;
-			emotion ET_THINK;
+			gmcommand "@emotion ET_THINK";
 			mes "^3355FFYou dumped the";
 			mes "Steamed Crab Nippers";
 			mes "into the barrel where";
@@ -7391,7 +7391,7 @@ hugel.gat,100,176,3	script	Suspicious Barrel#hugel	111,{
 			mes "and 10... N-Nippers... to";
 			mes "c-cook th-them. Ugh...";
 			next;
-			emotion ET_THINK;
+			gmcommand "@emotion ET_THINK";
 			mes "[" + strcharinfo(0) + "]";
 			mes "Hold on,";
 			mes "I have to cook";
@@ -7405,7 +7405,7 @@ hugel.gat,100,176,3	script	Suspicious Barrel#hugel	111,{
 			close;
 		}
 	} else if (hg_ubu01 == 6) {
-		emotion ET_THINK;
+		gmcommand "@emotion ET_THINK";
 		mes "^3355FFFor now, you should";
 		mes "tell Torpy and his mom";
 		mes "where Torpy's father is";
@@ -7413,22 +7413,22 @@ hugel.gat,100,176,3	script	Suspicious Barrel#hugel	111,{
 		mes "worry about him so much.";
 		close;
 	} else if (hg_ubu01 == 7) {
-		emotion ET_THINK;
+		gmcommand "@emotion ET_THINK";
 		mes "^800080Torpy's mom might want to know about^000000";
 		mes "^800080this extraordinary barrel.^000000";
 		close;
 	} else if (hg_ubu01 == 8) {
-		emotion ET_THINK;
+		gmcommand "@emotion ET_THINK";
 		mes "^800080How long does Torpy's father plan to stay within the barrel?^000000";
 		close;
 	} else if (hg_ubu01 == 9) {
-		emotion ET_THINK;
+		gmcommand "@emotion ET_THINK";
 		mes "^800080That barrel will become a symbolic object^000000";
 		mes "^800080that pays tribute to the firm will of Torpy's father^000000";
 		mes "^800080who is trying hard to avoid keeping the promise with his son to find his wife.^000000";
 		close;
 	} else {
-		emotion ET_THINK;
+		gmcommand "@emotion ET_THINK";
 		mes "^800080You hear something bustling from the hole in the barrel.^000000";
 		mes "^800080However, it doesn't seem to be a big deal.^000000";
 		close;
@@ -8152,7 +8152,7 @@ OnTouch:
 		mes "Old Blue Box deep";
 		mes "inside the drawer.^000000";
 		close2;
-		misceffect 71;
+		gmcommand "@misceffect 71";
 		set hg_herb,13;
 		getitem 603,1;
 		set BaseExp,BaseExp+50000;
@@ -8285,7 +8285,7 @@ OnTouch:
 			mes "of overwhelming comfort.^000000";
 			close;
 		} else if (hg_memory == 6) {
-			misceffect 57;
+			gmcommand "@misceffect 57";
 			mes "^3355FFWhat's this strange";
 			mes "feeling of dread?";
 			mes "This peculiar chill...";
@@ -8951,7 +8951,7 @@ hugel.gat,196,164,3	script	El Schatt#hg	50,{
 			close;
 			end;
 		}
-		misceffect 71;
+		gmcommand "@misceffect 71";
 		set hg_memory,12;
 		set BaseExp,BaseExp+50000;
 		getitem 603,1;
@@ -11966,7 +11966,7 @@ yuno.gat,111,156,3	script	Euslan#02	90,{
 		mes "Take care of yourself...";
 		close2;
 		set hg_ma1,13;
-		misceffect 253;
+		gmcommand "@misceffect 253";
 		set BaseExp,BaseExp+900000;
 		set JobExp,JobExp+600000;
 		end;

@@ -5479,7 +5479,7 @@ yuno_in04.gat,188,127,0	script	Stack of Books#yuno06	111,{
 	mes "...";
 	mes "Everything here just";
 	mes "looks so academic...";
-	emotion e_swt;
+	gmcommand "@emotion e_swt";
 	close;
 }
 
@@ -5812,7 +5812,7 @@ yuno_in04.gat,186,125,0	script	Bundle of Files#yuno11	111,{
 				mes "less clear I am on what";
 				mes "the theory actually is.";
 				mes "I don't think there is one...";
-				emotion e_swt;
+				gmcommand "@emotion e_swt";
 				close;
 
 			L_Bundle10a:
@@ -5893,7 +5893,7 @@ yuno_in04.gat,186,125,0	script	Bundle of Files#yuno11	111,{
 				mes "less clear I am on what";
 				mes "the theory actually is.";
 				mes "I don't think there is one...";
-				emotion e_swt;
+				gmcommand "@emotion e_swt";
 				close;
 
 			L_Bundle06b:
@@ -5973,7 +5973,7 @@ yuno_in04.gat,186,125,0	script	Bundle of Files#yuno11	111,{
 				mes "less clear I am on what";
 				mes "the theory actually is.";
 				mes "I don't think there is one...";
-				emotion e_swt;
+				gmcommand "@emotion e_swt";
 				close;
 
 			L_Bnd06:
@@ -6234,7 +6234,7 @@ yuno_in04.gat,167,127,0	script	Red Book#yuno20	111,{
 		mes ".........";
 		mes "............^000000";
 		next;
-//		Emotion "" ET_PROFUSELY_SWAT
+		gmcommand "@emotion ET_PROFUSELY_SWAT";
 		mes "[" + strcharinfo(0) + "]";
 		mes "This is...";
 		mes "A compilation of";

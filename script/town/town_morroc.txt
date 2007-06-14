@@ -84,7 +84,7 @@ morocc.gat,68,260,0	script	Towner#Spencer	99,{
 				if (@result == 1) {
 					mes "[" + strcharinfo(0) + "]";
 					mes "Rock...!";
-					emotion ET_ROCK;
+					gmcommand "@emotion ET_ROCK";
 					next;
 					mes "[Spencer]";
 					mes "What the..?!";
@@ -93,7 +93,7 @@ morocc.gat,68,260,0	script	Towner#Spencer	99,{
 				} else if (@result == 2) {
 					mes "[" + strcharinfo(0) + "]";
 					mes "Rock...!";
-					emotion ET_WRAP;
+					gmcommand "@emotion ET_WRAP";
 					next;
 					mes "[Spencer]";
 					mes "Looks like I win!";
@@ -101,7 +101,7 @@ morocc.gat,68,260,0	script	Towner#Spencer	99,{
 				} else {
 					mes "[" + strcharinfo(0) + "]";
 					mes "Rock...!";
-					emotion ET_SCISSOR;
+					gmcommand "@emotion ET_SCISSOR";
 					next;
 					mes "[Spencer]";
 					mes "..What?!";
@@ -120,7 +120,7 @@ morocc.gat,68,260,0	script	Towner#Spencer	99,{
 				if (@result == 1) {
 					mes "[" + strcharinfo(0) + "]";
 					mes "Paper...!";
-					emotion ET_ROCK;
+					gmcommand "@emotion ET_ROCK";
 					next;
 					mes "[Spencer]";
 					mes "It can't be...";
@@ -134,7 +134,7 @@ morocc.gat,68,260,0	script	Towner#Spencer	99,{
 				} else if (@result == 2) {
 					mes "[" + strcharinfo(0) + "]";
 					mes "Paper...!";
-					emotion ET_WRAP;
+					gmcommand "@emotion ET_WRAP";
 					next;
 					mes "[Spencer]";
 					mes "So...";
@@ -147,7 +147,7 @@ morocc.gat,68,260,0	script	Towner#Spencer	99,{
 				} else {
 					mes "[" + strcharinfo(0) + "]";
 					mes "Paper...!";
-					emotion ET_SCISSOR;
+					gmcommand "@emotion ET_SCISSOR";
 					next;
 					mes "[Spencer]";
 					mes "Bwah Hah Hah!";
@@ -168,7 +168,7 @@ morocc.gat,68,260,0	script	Towner#Spencer	99,{
 				if (@result == 1) {
 					mes "[" + strcharinfo(0) + "]";
 					mes "Scissors...!";
-					emotion ET_ROCK;
+					gmcommand "@emotion ET_ROCK";
 					next;
 					mes "[Spencer]";
 					mes "BAM...!";
@@ -177,7 +177,7 @@ morocc.gat,68,260,0	script	Towner#Spencer	99,{
 				} else if (@result == 2) {
 					mes "[" + strcharinfo(0) + "]";
 					mes "Scissors...!";
-					emotion ET_WRAP;
+					gmcommand "@emotion ET_WRAP";
 					next;
 					mes "[Spencer]";
 					mes "It can't be...!";
@@ -186,7 +186,7 @@ morocc.gat,68,260,0	script	Towner#Spencer	99,{
 				} else {
 					mes "[" + strcharinfo(0) + "]";
 					mes "Scissors...!";
-					emotion ET_SCISSOR;
+					gmcommand "@emotion ET_SCISSOR";
 					next;
 					mes "[Spencer]";
 					mes "Uh oh...";

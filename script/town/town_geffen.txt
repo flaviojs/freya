@@ -712,7 +712,7 @@ geffen_in.gat,22,125,1	script	Crumpler	52,{
 				next;
 				mes "[Crumpler]";
 				mes "Help meeeee!";
-				misceffect EF_METEORSTORM,"Crumpler";
+				misceffect 92,"Crumpler";
 				close;
 			case 2:
 				mes "[Crumpler]";
@@ -723,7 +723,7 @@ geffen_in.gat,22,125,1	script	Crumpler	52,{
 				mes "Oh sweet lord...";
 				mes "You're serious...";
 				next;
-				misceffect EF_LORD,"Crumpler";
+				misceffect 90,"Crumpler";
 				mes "[Crumpler]";
 				mes "ARRRRRGH~!";
 				mes "IT BUUUURNS!";
