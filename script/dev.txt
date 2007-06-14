@@ -57,22 +57,3 @@
 
 ==============================================================
 --------------------------------------------------------------
-
-- The Dandelion's Request / Morroc Invasion Quest is causing these errors in the map-server console:
-
-script_rid2sd: fatal error ! player not attached!
---- nullpo info --------------------------------------------
-pc.c:6183: in func `pc_setglobalreg'
---- end nullpo info ----------------------------------------
-
-==============================================================
---------------------------------------------------------------
-
-- This error is popping up in the map-server console upon startup:
-
-mob_once_spawn: ??
-
-- Cause is unknown, but it is confirmed to be a script issue.
-
-==============================================================
---------------------------------------------------------------
