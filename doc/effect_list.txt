@@ -197,7 +197,7 @@ ID	Description				Aegis Enumeration
 187.	Yellow Sphere #2			EF_COMBOATTACK2
 188.	Yellow Sphere #3			EF_COMBOATTACK3
 189.	Yellow Sphere #4			EF_COMBOATTACK4
-190.	Yellow Sphere #5			EF_COMBOATTAK5
+190.	Yellow Sphere #5			EF_COMBOATTACK5
 191.	Target					EF_GUIDEDATTACK
 192.	purple cloud hit			EF_POISONATTACK
 193.	Attack with Silence Effect		EF_SILENCEATTACK
@@ -371,7 +371,7 @@ ID	Description				Aegis Enumeration
 361.	Soul Breaker				EF_SOULBREAKER
 362.	Another Level 99 Bubbles		EF_LEVEL99_4
 363.	Valentine Day Heart (With Wings)	EF_VALLENTINE
-364.	Valentine Day Heart			EF_vALLENTINE2
+364.	Valentine Day Heart			EF_VALLENTINE2
 365.	Pressure				EF_PRESSURE
 366.	Unknown					EF_BASH3D
 367.	Aura Blade				EF_AURABLADE
