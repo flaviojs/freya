@@ -3811,11 +3811,11 @@ que_job01.gat,80,17,1	script	#maobar7	45,1,1,{
 OnInit:
 	disablenpc "#maobar7";
 	end;
-	
+
 OnEnter:
 	enablenpc "#maobar7";
 	end;
-	
+
 OnTouch:
 	warp "que_job01.gat",52,50;
 	end;
@@ -3826,11 +3826,11 @@ que_job01.gat,144,51,1	script	#maobar8	45,1,1,{
 OnInit:
 	disablenpc "#maobar8";
 	end;
-	
+
 OnEnter:
 	enablenpc "#maobar8";
 	end;
-	
+
 OnTouch:
 	warp "que_job01.gat",52,50;
 	end;
@@ -4346,7 +4346,7 @@ que_job01.gat,16,21,5	script	Valdes#1	55,{
 OnInit:
 	disablenpc "Valdes#1";
 	end;
-	
+
 OnEnter:
 	enablenpc "Valdes#1";
 	end;
@@ -4357,7 +4357,7 @@ que_job01.gat,17,11,3	script	Valdes#2	55,{
 OnInit:
 	disablenpc "Valdes#2";
 	end;
-	
+
 OnEnter:
 	disablenpc "Valdes#2";
 	end;
@@ -4368,7 +4368,7 @@ que_job01.gat,142,56,5	script	Valdes#3	55,{
 OnInit:
 	disablenpc "Valdes#3";
 	end;
-	
+
 OnEnter:
 	disablenpc "Valdes#3";
 	end;
@@ -4443,7 +4443,7 @@ OnInit:
 OnEnter:
 	enablenpc "Lin#1";
 	end;
-	
+
 OnEmotion:
 	emotion e_ok,0;
 	end;
@@ -4454,7 +4454,7 @@ que_job01.gat,13,9,7	script	Lin#2	885,{
 OnInit:
 	disablenpc "Lin#2";
 	end;
-	
+
 OnEnter:
 	disablenpc "Lin#2";
 	end;
@@ -5449,7 +5449,7 @@ que_job01.gat,147,54,3	script	Lin#3	885,{
 OnInit:
 	disablenpc "Lin#3";
 	end;
-	
+
 OnEnter:
 	disablenpc "Lin#3";
 	end;
@@ -5519,11 +5519,11 @@ que_job01.gat,13,17,5	script	Kidd#1	884,{
 OnInit:
 	disablenpc "Kidd#1";
 	end;
-	
+
 OnEnter:
 	enablenpc "Kidd#1";
 	end;
-	
+
 OnEmotion:
 	emotion e_ok,0;
 	end;
@@ -5534,7 +5534,7 @@ que_job01.gat,12,8,7	script	Kidd#2	884,{
 OnInit:
 	disablenpc "Kidd#2";
 	end;
-	
+
 OnEnter:
 	disablenpc "Kidd#2";
 	end;
@@ -5545,7 +5545,7 @@ que_job01.gat,148,54,3	script	Kidd#3	884,{
 OnInit:
 	disablenpc "Kidd#3";
 	end;
-	
+
 OnEnter:
 	disablenpc "Kidd#3";
 	end;
@@ -7282,7 +7282,7 @@ yuno_in04.gat,175,129,0	script	Workbook#mao	111,{
 	}
 
 OnInit:
-	set mao_book,0;
+	// set mao_book,0;
 	end;
 }
 
@@ -7311,10 +7311,12 @@ OnEnter:
 OnStop:
 	donpcevent "Workbook#mao::OnInit";
 	stopnpctimer;
+	end;
 	
 OnTimer180000:
 	donpcevent "Workbook#mao::OnInit";
 	stopnpctimer;
+	end;
 }
 
 que_job01.gat,6,79,5	script	Lin#stairs	885,{
