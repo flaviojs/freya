@@ -9,29 +9,30 @@
 //--------------------------------------------------------------
 // Script Title: Bard Quest	Author: GreenGoblin
 //--------------------------------------------------------------
-// Revision History: v1.1
+// Revision History: v1.2
 //--------------------------------------------------------------
 //	1.0 First version, converted from Aegis [GreenGoblin]
 //	1.1 Fixed typos [Tsuyuki]
+//	1.2 Changed variable "Bard" back to "bard_q", as per Aegis [Tsuyuki]
 //--------------------------------------------------------------
-// Additional Notes: Untested, may be buggy. * Aegis-certified *
+// Additional Notes: * Aegis-certified *
 //--------------------------------------------------------------
 
 
 geffen.gat,132,38,3	script	Bard#2	51,{
 
-	if (Bard == 1 || Bard == 21) goto L_Bard1;
-	if (Bard == 2 || Bard == 22) goto L_Bard2;
-	if (Bard == 3 || Bard == 23) goto L_Bard3;
-	if (Bard == 4 || Bard == 24) goto L_Bard4;
-	if (Bard == 5 || Bard == 25) goto L_Bard5;
-	if (Bard == 6 || Bard == 26) goto L_Bard6;
-	if (Bard == 7 || Bard == 27) goto L_Bard7;
-	if (Bard == 10) goto L_Bard10;
-	if (Bard == 11) goto L_Bard11;
-	if ((Bard > 11) && (Bard < 14)) goto L_Bard12;
-	if (Bard == 14) goto L_Bard14;
-	if (Bard == 15) goto L_Bard15;
+	if (bard_q == 1 || bard_q == 21) goto L_Bard1;
+	if (bard_q == 2 || bard_q == 22) goto L_Bard2;
+	if (bard_q == 3 || bard_q == 23) goto L_Bard3;
+	if (bard_q == 4 || bard_q == 24) goto L_Bard4;
+	if (bard_q == 5 || bard_q == 25) goto L_Bard5;
+	if (bard_q == 6 || bard_q == 26) goto L_Bard6;
+	if (bard_q == 7 || bard_q == 27) goto L_Bard7;
+	if (bard_q == 10) goto L_Bard10;
+	if (bard_q == 11) goto L_Bard11;
+	if ((bard_q > 11) && (bard_q < 14)) goto L_Bard12;
+	if (bard_q == 14) goto L_Bard14;
+	if (bard_q == 15) goto L_Bard15;
 	mes "[Bard]";
 	mes "^4d4dffWhat day is the best to drink? La la la~";
 	mes "It's the day of the earth, the sun and the moon~ La la la~";
@@ -68,7 +69,7 @@ geffen.gat,132,38,3	script	Bard#2	51,{
 		mes "what I have heard and experienced.";
 		mes "If you let me, I will play a song which";
 		mes "will soothe your pain.";
-		set Bard,1;
+		set bard_q,1;
 		next;
 
 	L_Bard:	
@@ -283,7 +284,7 @@ geffen.gat,132,38,3	script	Bard#2	51,{
 				mes "Ok, here we go.";
 				next;
 				set @song,rand(1,5);
-				if (Bard == 1 || Bard == 21) goto L_FunnyAlt1;
+				if (bard_q == 1 || bard_q == 21) goto L_FunnyAlt1;
 				if (@song > 1 && @song < 5) goto L_Funny2;
 				if (@song == 5) goto L_Funny5;
 
@@ -441,8 +442,8 @@ geffen.gat,132,38,3	script	Bard#2	51,{
 						mes "When you meet him, please ask him";
 						mes "of the 8th love.";
 						mes "And let me know immediately.";
-						if (Bard == 1) set Bard,2;
-						if (Bard == 21) set Bard,22;
+						if (bard_q == 1) set bard_q,2;
+						if (bard_q == 21) set bard_q,22;
 						close;
 
 					L_NoHelp:
@@ -451,7 +452,7 @@ geffen.gat,132,38,3	script	Bard#2	51,{
 						mes "This song is incomplete.";
 						mes "I cannot remember what was the 8th part.";
 						mes "*sigh*...";
-						set Bard,7;
+						set bard_q,7;
 						close;
 
 			L_Cancel2:
@@ -571,8 +572,8 @@ L_NameEnter:
 		mes "[Errende]";
 		mes "What was the line...how could";
 		mes "I forgot the 8th love...";
-		if (Bard == 3) set Bard,6;
-		if (Bard == 23) set Bard,26;
+		if (bard_q == 3) set bard_q,6;
+		if (bard_q == 23) set bard_q,26;
 		close;
 
 	L_Kitty:
@@ -602,8 +603,8 @@ L_NameEnter:
 			mes "...my apology.";
 			mes "I must expect too much from you.";
 			mes "Okay, I will find out another way.";
-			if (Bard == 3) set Bard,5;
-			if (Bard == 23) set Bard,25;
+			if (bard_q == 3) set bard_q,5;
+			if (bard_q == 23) set bard_q,25;
 			close;
 
 		L_Cry:
@@ -618,8 +619,8 @@ L_NameEnter:
 			mes "[Errende]";
 			mes "I will pay you back!";
 			mes "Thank you for your trouble in advance.";
-			if (Bard == 3) set Bard,4;
-			if (Bard == 23) set Bard,24;
+			if (bard_q == 3) set bard_q,4;
+			if (bard_q == 23) set bard_q,24;
 			close;
 
 		L_Gunther:
@@ -627,8 +628,8 @@ L_NameEnter:
 			mes "Gunther? I don't think he would do this.";
 			mes "He always put a line in his song";
 			mes "like 'doubleharmony for you'.";
-			if (Bard == 3) set Bard,6;
-			if (Bard == 23) set Bard,26;
+			if (bard_q == 3) set bard_q,6;
+			if (bard_q == 23) set bard_q,26;
 			close;
 
 		L_Errende:
@@ -636,8 +637,8 @@ L_NameEnter:
 			mes "Are you kidding me?";
 			mes "If I did, why would I not know";
 			mes "what this song is about!";
-			if (Bard == 3) set Bard,6;
-			if (Bard == 23) set Bard,26;
+			if (bard_q == 3) set bard_q,6;
+			if (bard_q == 23) set bard_q,26;
 			close;
 
 L_Bard4:
@@ -729,8 +730,8 @@ L_Bard5:
 			mes "I promise I will pay you back!";
 			mes "Thank you in advance.";
 			mes "I will wait you here until you come back.";
-			if (Bard == 5) set Bard,4;
-			if (Bard == 25) set Bard,24;
+			if (bard_q == 5) set bard_q,4;
+			if (bard_q == 25) set bard_q,24;
 			close;
 
 		L_Ignore2:
@@ -797,8 +798,8 @@ L_Bard7:
 		mes "When you meet him, please ask him";
 		mes "of the 8th love.";
 		mes "And let me know immediately.";
-		if (Bard == 7) set Bard,2;
-		if (Bard == 27) set Bard,22;
+		if (bard_q == 7) set bard_q,2;
+		if (bard_q == 27) set bard_q,22;
 		close;
 
 L_Bard10:
@@ -833,7 +834,7 @@ L_Bard10:
 	mes "Now, you may go to Mr. Sketzi.";
 	mes "Remember you will show the seal of friendship.";
 	mes "Good luck.";
-	set Bard,11;
+	set bard_q,11;
 	close;
 
 L_Bard11:
@@ -922,8 +923,8 @@ L_SongEnd:
 	mes "- your mind becomes clear.-";
 	mes "- You gained a little bit of experience points. -";
 	mes "- You seemed to spot an angel.-";
-	if (Bard == 14) set Bard,30;
-	if (Bard == 15) set Bard,31;
+	if (bard_q == 14) set bard_q,30;
+	if (bard_q == 15) set bard_q,31;
 	if (BaseLevel < 56) set BaseExp,BaseExp + 4500;
 	if ((BaseLevel > 55) && (BaseLevel < 61)) set BaseExp,BaseExp + 5500;
 	if ((BaseLevel > 60) && (BaseLevel < 66)) set BaseExp,BaseExp + 9684;
@@ -976,12 +977,12 @@ L_Bard29:
 
 morocc.gat,134,111,3	script	Bard#3	741,{
 
-	if (Bard == 10) goto L_Bard10;
-	if (Bard == 11) goto L_Bard11;
-	if (Bard == 12) goto L_Bard12;
-	if ((Bard > 12) && (Bard < 16)) goto L_Bard13;
-	if ((Bard > 19) && (Bard < 28)) goto L_Bard20;
-	if (Bard == 30 || Bard == 31) goto L_Bard30;
+	if (bard_q == 10) goto L_Bard10;
+	if (bard_q == 11) goto L_Bard11;
+	if (bard_q == 12) goto L_Bard12;
+	if ((bard_q > 12) && (bard_q < 16)) goto L_Bard13;
+	if ((bard_q > 19) && (bard_q < 28)) goto L_Bard20;
+	if (bard_q == 30 || bard_q == 31) goto L_Bard30;
 	mes "[Singing Guy]";
 	mes "Even in the sandy wind, I can recognize you.";
 	mes "You're shining like a star in the sky.";
@@ -1095,9 +1096,9 @@ morocc.gat,134,111,3	script	Bard#3	741,{
 			close;
 
 	L_Interrupt:
-		if (Bard == 2) goto L_Bard2;
-		if (Bard == 3) goto L_Bard3;
-		if (Bard == 4) goto L_Bard4;
+		if (bard_q == 2) goto L_Bard2;
+		if (bard_q == 3) goto L_Bard3;
+		if (bard_q == 4) goto L_Bard4;
 		if (Sex == Male) goto L_Male;
 			mes "[Singing Guy]";
 			mes "Ah, it is my honor to meet such a noble lady.";
@@ -1110,7 +1111,7 @@ morocc.gat,134,111,3	script	Bard#3	741,{
 			mes "Let me introduce myself who is a poor poet wandering the world.";
 			mes "My name is Kino Kitty.";
 			mes "I hope you will remember.";
-			set Bard,20;
+			set bard_q,20;
 			close;
 
 		L_Male:
@@ -1126,7 +1127,7 @@ morocc.gat,134,111,3	script	Bard#3	741,{
 			mes "When we meet again next time";
 			mes "I will tell you what I have heard and experienced.";
 			mes "That is, I am willing to spend my time for you.";
-			set Bard,20;
+			set bard_q,20;
 			close;
 
 		L_Bard2:
@@ -1142,7 +1143,7 @@ morocc.gat,134,111,3	script	Bard#3	741,{
 			mes "When we meet again next time";
 			mes "I will tell you what I have heard and experienced.";
 			mes "That is, I am willing to spend my time for you.";
-			set Bard,22;
+			set bard_q,22;
 			close;
 
 		L_Bard3:
@@ -1158,7 +1159,7 @@ morocc.gat,134,111,3	script	Bard#3	741,{
 			mes "When we meet again next time";
 			mes "I will tell you what I have heard and experienced.";
 			mes "That is, I am willing to spend my time for you.";				
-			set Bard,23;
+			set bard_q,23;
 			close;		
 
 		L_Bard4:
@@ -1249,7 +1250,7 @@ morocc.gat,134,111,3	script	Bard#3	741,{
 				mes "There is a small book store at the book street.";
 				mes "You will find the song in the store.";
 				mes "I feel the last day of my bard life is coming...";
-				set Bard,10;
+				set bard_q,10;
 				close;
 
 			L_Abductor:
@@ -1332,7 +1333,7 @@ L_Bard12:
 			mes "Ah, right. You have had the seal marked by";
 			mes "Errende.";
 			mes "Oh well, I was joking with you.";
-			set Bard,13;
+			set bard_q,13;
 			close;
 
 		L_NoMind:
@@ -1380,7 +1381,7 @@ L_Bard12:
 			next;
 			mes "^4d4dff - You received a letter from Kino Kitty. -";
 			mes " - It says 'Dear Errende' on the front. ^000000-";
-			set Bard,14;
+			set bard_q,14;
 			close;
 
 	L_NoThanks:
@@ -1404,7 +1405,7 @@ L_Bard20:
 	mes "[Kino Kitty]";
 	mes "What business do you have with me, my friend?";
 	next;
-	if (Bard == 24) goto L_Kitty;
+	if (bard_q == 24) goto L_Kitty;
 	menu "Tell me a story.",-,"Sing a song.",L_Song,"Nothing.",L_Cancel;
 		mes "[Kino Kitty]";
 		mes "A story? Hmmm...";
@@ -1523,7 +1524,7 @@ L_Bard30:
 			close;
 
 		L_Story2:
-			if (Bard == 31) goto L_Story2b;
+			if (bard_q == 31) goto L_Story2b;
 			mes "[Kino Kitty]";
 			mes ".... Ah....I feel like";
 			mes "rather singing a song.";
@@ -1682,9 +1683,9 @@ L_Bard30:
 
 morocc.gat,132,111,5	script	LittleGirl#Jorti	703,{
 
-	if ((Bard > 9) && (Bard < 30)) goto L_Bard10;
-	if (Bard == 30) goto L_Bard30;
-	if (Bard > 30) goto L_Bard31;
+	if ((bard_q > 9) && (bard_q < 30)) goto L_Bard10;
+	if (bard_q == 30) goto L_Bard30;
+	if (bard_q > 30) goto L_Bard31;
 	mes "[Singing Guy]";
 	mes "Even in the sandy wind, I can recognize you.";
 	mes "You're shining like a star in the sky.";
@@ -1811,10 +1812,10 @@ L_Bard31:
 
 yuno_in01.gat,172,10,3	script	Old Man#1	712,{
 
-	if (Bard == 11) goto L_Bard11;
-	if ((Bard > 11) && (Bard < 20)) goto L_Bard12;
-	if (Bard == 30) goto L_Bard30;
-	if (Bard == 31) goto L_Bard31;
+	if (bard_q == 11) goto L_Bard11;
+	if ((bard_q > 11) && (bard_q < 20)) goto L_Bard12;
+	if (bard_q == 30) goto L_Bard30;
+	if (bard_q == 31) goto L_Bard31;
 	mes "[Sketzi Bundin]";
 	mes "Welcome.";
 	mes "You must be looking for something special and rare.";
@@ -1845,7 +1846,7 @@ L_Bard11:
 		mes "So, what are you looking for?";
 		mes "I guess I didn't need to ask that...hahaha.";
 		mes "Take your time and find one you are looking for.";
-		set Bard,12;
+		set bard_q,12;
 		close;
 	
 	L_Right:
@@ -1890,7 +1891,7 @@ L_Bard31:
 
 yuno_in01.gat,163,101,0	script	Old Book	111,{
 
-	if ((Bard > 11) && (Bard < 14)) goto L_Bard12;
+	if ((bard_q > 11) && (bard_q < 14)) goto L_Bard12;
 	mes "[Sketzi Bundin]";
 	mes "I am sorry, but that book is too old for a touch.";
 	mes "Please do not touch the book.";
@@ -1950,7 +1951,7 @@ L_Bard12:
 		mes "my love is lied within~";
 		next;
 		mes "- You secured the note inside your pocket. -";
-		set Bard,15;
+		set bard_q,15;
 		close;
 
 }
@@ -1958,7 +1959,7 @@ L_Bard12:
 
 yuno_in01.gat,173,96,0	script	Luke's song collection	111,{
 
-	if (Bard > 11) goto L_Bard12;
+	if (bard_q > 11) goto L_Bard12;
 	mes "[Sketzi Bundin]";
 	mes "I am sorry but";
 	mes "that book is not listed for exhibition!";
@@ -2055,7 +2056,7 @@ L_Bard12:
 
 yuno_in01.gat,173,94,0	script	Drumming in the battlefield	111,{
 
-	if (Bard > 11) goto L_Bard12;
+	if (bard_q > 11) goto L_Bard12;
 	mes "[Sketzi Bundin]";
 	mes "I am sorry but";
 	mes "that book is not listed for exhibition!";
@@ -2093,7 +2094,7 @@ L_Bard12:
 
 yuno_in01.gat,173,92,0	script	Apple of Idun	111,{
 
-	if (Bard > 11) goto L_Bard12;
+	if (bard_q > 11) goto L_Bard12;
 	mes "[Sketzi Bundin]";
 	mes "I am sorry but";
 	mes "that book is not listed for exhibition!";
@@ -2388,7 +2389,7 @@ yuno_in04.gat,20,123,7	script	Representative	95,{
 		mes "You can use a report documentation form in this room";
 		mes "at your convenience.";
 		next;
-		if ((Bard == 4) || (Bard == 24)) goto L_Bard4;
+		if ((bard_q == 4) || (bard_q == 24)) goto L_Bard4;
 			mes "[Marlin Putiur]";
 			mes "We will endeavor our research";
 			mes "to benefit every adventure in this continent.";
