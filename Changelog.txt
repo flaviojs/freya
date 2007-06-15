@@ -14,6 +14,8 @@
 Date	Added
 
 2007/06/15
+	* Added: The official Hunter Phantasmic Arrow Skill Quest, converted from Aegis (iRO 10.3) [Tsuyuki]
+	 - Fully completes skill quest officialization
 	* Updated: Parts of Aldebaran to official, converted/based on Aegis (iRO 10.3) [Tsuyuki]
 	 - All that remains to be officialized is the Kafra Corporation Headquarters
 	* Updated: Comodo Town NPCs to official, converted from Aegis (iRO 10.3) [Tsuyuki]
