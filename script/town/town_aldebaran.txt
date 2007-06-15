@@ -7,16 +7,18 @@
 //              /_/  |_|\____|_|  \___/|_|  \__,_|              
 //                 http://aurora.deltaanime.net                 
 //--------------------------------------------------------------
-// Script Title: Aldebaran Town NPCs	Author: A Lot of People
+// Script Title: Aldebaran Town NPCs	Author: DZeroX/Tsuyuki
 //--------------------------------------------------------------
-// Revision History: v1.2
+// Revision History: v1.4
 //--------------------------------------------------------------
 //	1.0 First version, converted from Aegis [DZeroX]
 //	1.1 Merged in the Alchemist shop [Tsuyuki]
 //	1.2 Merged the Clock Tower/Aldebaran Dungeon NPCs back in [Tsuyuki]
+//	1.3 Updated Clock Tower/Aldebaran Dungeon NPCs to official, converted from Aegis (iR0 10.3) [Tsuyuki]
+//	1.4 Updated Alchemist Shop to official, based on information from the Aegis script (iRO 10.3) [Tsuyuki]
 //--------------------------------------------------------------
-// Additional Notes: Features Kafra Corp. Headquarters
-// * Mostly Aegis-Certified * (Up to Kafra Corp. Headquarters)
+// Additional Notes: * Official-certified / Aegis-Certified *
+// (Except Kafra Corp Headquarters for now)
 //--------------------------------------------------------------
 
 
@@ -1789,83 +1791,23 @@ aldeba_in.gat,148,244,4	script	Kafra Roxie	114,{
 
 
 //--------------------------------------------------------------
-// Clock Tower
+// Clock Tower/Aldebaran Dungeon NPCs
 //--------------------------------------------------------------
 
-// Clock Keeper
-aldebaran.gat,143,136,4	script	Clock Keeper	89,{
-
-	mes "[Clock Keeper]";
-	mes "Let me introduce myself, I am 'Monster A' of the Al De Baran Clock Tower, and the Committee of 'Heaven on Earth'.";
-	next;
-	mes "[Clock Keeper]";
-	mes "It looks like you have an interest in this tower?";
-	next;
-	menu "About the Clock Tower.",-,"About the Committee of 'Heaven on Earth'.",M_1,"Quit.",M_End;
-	
-		mes "[Clock Keeper]";
-		mes "Each floor of this tower is connected through a device called a 'Warp'.";
-		mes "Most of these warps are standard warps but some of them are 'Random Warps'.";
-		next;
-		mes "[Clock Keeper]";
-		mes "You should be careful with 'Random Warps' because they will transport you to a random location.";
-		next;
-		mes "[Clock Keeper]";
-		mes "I know you wouldn't want to get separated from you friends while you're battling monsters.";
-		next;
-		mes "[Clock Keeper]";
-		mes "Random warps are shown as green dots on the Mini-Map so keep your eyes on the Mini-Map to avoid them.";
-		next;
-		mes "[Clock Keeper]";
-		mes "Have a good time with the clocks.  Hehehehe.";
-		close;
-	M_1:
-		mes "[Clock Keeper]";
-		mes "Have you ever heard of the Committee of 'Heaven on Earth'?!";
-		next;
-		menu "Yup, I have",-,"What are they?",sM_1;
-		
-			mes "[Clock Keeper]";
-			mes "Muhahahaha! Good, good!  I'm so glad that our reputation has spread throughout Rune-Midgard.";
-			mes "What a great day to meet an adventurer like you! I would like to present this to you.....";
-			next;
-			mes "[Clock Keeper]";
-			mes "Hmmm... Where did I leave it...";
-			next;
-			mes "[Clock Keeper]";
-			mes "Oops... it seems that I left the present in the control room on the 4th floor of the tower.";
-			mes "I promise I will give it to you next time. See you later.";
-			close;
-		sM_1:
-			mes "[Clock Keeper]";
-			mes "What? I can't believe that there are still people who do not know about us!";
-			next;
-			mes "[Clock Keeper]";
-			mes "Our goal is to build a Heaven on Earth.  Specifically here in AL De Baran.  For starters, we built this clock tower.";
-			next;
-			mes "[Clock Keeper]";
-			mes "We even created the idea for Glast Helm a while back.";
-			mes "Look around and you will see many of our great achievements.";
-			close;
-	M_End:
-		close;
-}
-
-// Gatekeeper Riku
-c_tower3.gat,10,249,4	script	Gatekeeper#01	84,{
+c_tower3.gat,10,249,4	script	Gatekeeper	84,{
 
 	mes "[Gatekeeper Riku]";
-	mes "Welcome to ";
+	mes "Welcome to";
 	mes "Kinase - Blue Gallino";
 	mes "the one of Local Speciality in Aldebaran.";
 	mes "However,from the 4th Floor of this Clock Tower,";
 	mes "You may not enter.";
 	mes "Please go back to where you're from.";
 	next;
-	menu "About Clock Tower",-,"About the 4th Floor",M_1,"Move to the 4th Floor",M_2,"End mesue",M_End;
-
+	switch(select("About Clock Tower","About the 4th Floor","Move to the 4th Floor","End Dialogue")) {
+	case 1:
 		mes "[Gatekeeper Riku]";
-		mes "Homeland of Alchemy, Aldebaran!";
+		mes "Homeland of Alchemy,Aldebaran!";
 		mes "Long Time ago, there were";
 		mes "3 Legendary Alchemists...They are";
 		mes "Bruke Seimer,";
@@ -1874,14 +1816,16 @@ c_tower3.gat,10,249,4	script	Gatekeeper#01	84,{
 		next;
 		mes "[Gatekeeper Riku]";
 		mes "Romero Specialre!";
-		mes "This venerable architecture is their masterpiece.";
+		mes "This venerable architecture is";
+		mes "their masterpiece.";
 		mes "I assume you would feel something unusual";
 		mes "While on the way to this floor,";
-		mes "Every feature of This Clock tower ";
+		mes "Every feature of This Clocktower";
 		next;
 		mes "[Gatekeeper Riku]";
 		mes "Consists of Mysterious Ancient Magics.";
-		mes "If you just wander around here without any intention";
+		mes "If you just wander around here";
+		mes " without any intention";
 		next;
 		mes "[Gatekeeper Riku]";
 		mes "By any means,";
@@ -1889,10 +1833,10 @@ c_tower3.gat,10,249,4	script	Gatekeeper#01	84,{
 		mes "by Gatekeeper Creatures.";
 		mes "Please be careful ..";
 		close;
-	M_1:
+	case 2:
 		mes "[Gatekeeper Riku]";
 		mes "Ancient Alchemists";
-		mes "Sealed the Gate of 4th Floor using an Alchemistic Device ";
+		mes "Sealed the Gate of 4th Floor using an Alchemistic Device";
 		mes "To keep something";
 		mes "From Evil Creatures and Human Enemies.";
 		mes "To go through this door";
@@ -1906,30 +1850,33 @@ c_tower3.gat,10,249,4	script	Gatekeeper#01	84,{
 		mes "The Key is the Intensiveness of Ancient Alchemy,";
 		mes "By hearsay When used once,";
 		mes "It will be released from being spelled";
-		mes "And be disappeared.";
+		mes "And be disapeared.";
 		next;
 		mes "[Gatekeeper Riku]";
-		mes "If that key comes into your possession, please show it to me.";
-		mes "The one who possesses the Key of Clock Tower";
-		mes "Will have access to go through this Gate with his own will!";
+		mes "If that key";
+		mes "Comes into your possession,";
+		mes "Please show it to me.";
+		mes "The one who possesses the Key";
+		mes "Will have access to go through";
+		mes "This Gate with his own will!";
 		next;
 		mes "[Gatekeeper Riku]";
 		mes "I will give you a chance.";
 		mes ". . . . .";
 		close;
-	M_2:
-		mes "[Gatekeeper Riku]";
-		if(countitem(7026) < 1) goto L_Check_Key;
-		delitem 7026,1;
-		mes "Hmm! I already felt that you are not an Ordinary person,";
-		mes "Now it seems to be successful in Speculation.";
-		mes "Please, You may enter.";
-		mes "May God bless you ..";
-		next;
-		warp "c_tower4.gat",185,44;
-		close;
-
-		L_Check_Key:
+	case 3:
+		if (countitem(7026) > 0) {
+			mes "[Gatekeeper Riku]";
+			mes "Hmm! I already felt that you are not an Ordinary person,";
+			mes "Now it seems to be successful in Speculation.";
+			mes "Please,You may enter.";
+			mes "May God bless you ..";
+			close2;
+			delitem 7026,1;
+			warp "c_tower4.gat",185,44;
+			end;
+		} else {
+			mes "[Gatekeeper Riku]";
 			mes ". . . . . .";
 			mes "Unfortunately you don't have a privilege";
 			mes "To enter this Gate ..";
@@ -1937,20 +1884,18 @@ c_tower3.gat,10,249,4	script	Gatekeeper#01	84,{
 			mes "As long as Ancient Alchemists";
 			mes " Don't approve you.";
 			close;
-	M_End:
+		}
+		case 4:
 		mes "[Gatekeeper Riku]";
 		mes "This Clock Tower";
 		mes "Is the place where the 3 Ancient Legendary Alchemists";
 		mes "Have left their Spirits and Skills.";
 		mes "Please Do not Scribble or Damage on the Interior.";
 		close;
+	}
 }
 
-//--------------------------------------------------------------
-// Aldebaran Dungeon (Clock Tower Underground)
-//--------------------------------------------------------------
-
-alde_dun03.gat,264,16,4	script	Gatekeeper#02	101,{
+alde_dun03.gat,264,16,4	script	Gatekeeper	101,{
 
 	mes "[Gatekeeper Boy]";
 	mes "Welcome to";
@@ -1959,12 +1904,12 @@ alde_dun03.gat,264,16,4	script	Gatekeeper#02	101,{
 	mes "You can't go through from B4th Floor,";
 	mes "Please go back.";
 	next;
-	menu "About Clock Tower",-,"About B4th Floor",M_1,"Move to the B4th Floor",M_2,"End mesue",M_End;
-
+	switch(select("About Clock Tower","About B4th Floor","Move to the B4th Floor","End Dialogue")) {
+	case 1:
 		mes "[Gatekeeper Boy]";
-		mes "Homeland of Alchemy, Aldebaran!";
+		mes "Homeland of Alchemy,Aldebaran!";
 		mes "Long Time ago, there were";
-		mes "3 Legendary Alchemists... They are";
+		mes "3 Legendary Alchemists...They are";
 		mes "Bruke Seimer";
 		mes "Philip Warisez";
 		mes "And ..";
@@ -1975,7 +1920,7 @@ alde_dun03.gat,264,16,4	script	Gatekeeper#02	101,{
 		mes "their masterpiece.";
 		mes "I assume you would feel something unusual";
 		mes "While on the way to this floor,";
-		mes "Every feature of This Clock tower";
+		mes "Every feature of This Clocktower";
 		next;
 		mes "[Gatekeeper Boy]";
 		mes "Consists of Mysterious Ancient Magics.";
@@ -1988,10 +1933,10 @@ alde_dun03.gat,264,16,4	script	Gatekeeper#02	101,{
 		mes "by Gatekeeper Creatures.";
 		mes "Please be careful ..";
 		close;
-	M_1:
+	case 2:
 		mes "[Gatekeeper Boy]";
 		mes "Ancient Alchemists";
-		mes "Sealed the Gate of 4th Floor using an Alchemistic Device ";
+		mes "Sealed the Gate of 4th Floor using an Alchemistic Device";
 		mes "To keep something";
 		mes "From Evil Creatures and Human Enemies.";
 		mes "To go through this door";
@@ -2005,30 +1950,33 @@ alde_dun03.gat,264,16,4	script	Gatekeeper#02	101,{
 		mes "The Key is the Intensiveness of Ancient Alchemy,";
 		mes "By hearsay When used once,";
 		mes "It will be released from being spelled";
-		mes "And be disappeared.";
+		mes "And be disapeared.";
 		next;
 		mes "[Gatekeeper Boy]";
-		mes "If that key comes into your possession, please show it to me.";
-		mes "The one who possesses the Key of Underground";
-		mes "Will have access to go through this Gate with his own will!";
+		mes "If that key";
+		mes "Comes into your porssession,";
+		mes "Please show me.";
+		mes "The one who possesses the Key";
+		mes "Will have access to go through";
+		mes "This Gate with his own will!";
 		next;
 		mes "[Gatekeeper Boy]";
 		mes "I will give you a chance.";
 		mes ". . . . .";
 		close;
-	M_2:
-		mes "[Gatekeeper Boy]";
-		if(countitem(7027) < 1) goto L_Check_Key;
-		delitem 7027,1;
-		mes "Hmm! I already felt that you are not an Ordinary person,";
-		mes "Now it seems to be successful in Speculation.";
-		mes "Please,You may enter.";
-		mes "May God bless you ..";
-		next;
-		warp "alde_dun04.gat",79,267;
-		close;
-
-		L_Check_Key:
+	case 3:
+		if (countitem(7027) > 0) {
+			mes "[Gatekeeper Boy]";
+			mes "Hmm! I already felt that you are not an Ordinary person,";
+			mes "Now it seems to be successful in Speculation.";
+			mes "Please,You may enter.";
+			mes "May God bless you ..";
+			close2;
+			delitem 7027,1;
+			warp "alde_dun04.gat",79,267;
+			end;
+		} else {
+			mes "[Gatekeeper Boy]";
 			mes ". . . . . .";
 			mes "Unfortunately you don't have a privilege";
 			mes "To enter this Gate ..";
@@ -2036,13 +1984,15 @@ alde_dun03.gat,264,16,4	script	Gatekeeper#02	101,{
 			mes "As long as Ancient Alchemists";
 			mes " Don't grant you.";
 			close;
-	M_End:
+		}
+	case 4:
 		mes "[Gatekeeper Boy]";
 		mes "This Clock Tower";
 		mes "Is the place where the 3 Ancient Legendary Alchemists";
 		mes "Has left their Spirits and Skills.";
 		mes "Please Do not Scribble or Damage on the Interior.";
 		close;
+	}
 }
 
 
@@ -2050,43 +2000,84 @@ alde_dun03.gat,264,16,4	script	Gatekeeper#02	101,{
 // Alchemist Shop
 //--------------------------------------------------------------
 
-alde_alche.gat,24,188,3	script	Gever AI Sharp	740,{
+alde_alche.gat,24,188,3	script	Guild Dealer	740,{
 
-	mes "[Gever AI Sharp]";
-	mes "Welcome to the Alchemist Union.";
+	/*var '@max_max_c,CheckMaxCount 1201,3;
+	if ('@max_max_c == 1) {
+		mes "- Wait a minute! -";
+		mes "- Currently you are carrying -";
+		mes "- too many items with you. -";
+		mes "- Please come back again -";
+		mes "- after you store some items into kafra storage. -";
+		close;
+	}*/
+	mes "[Gever Al Sharp]";
+	mes "Welcome to the";
+	mes "Alchemist Union.";
 	mes "How can I assist you today?";
 	next;
-	menu "Purchase materials.",M_Material, "Purchase a production manual.",M_Manual, "Cancel Deal.", M_Bye;
+	menu "Purchase materials.",M_Material,"Purchase a production manual.",M_Manual,"Quit.",M_Bye;
 
 	M_Material:
-		mes "[Gever AI Sharp]";
+		mes "[Gever Al Sharp]";
 		mes "What would you like?";
 		next;
-		menu "Medicine Bowl - 8z",-,"Cancel.",M_Bye;
+		menu "Medicine Bowl - 8 Zeny",-,"Cancel.",M_Bye;
 
-			mes "[Gever AI Sharp]";
-			mes "How many do you want?";	
+			mes "[Gever Al Sharp]";
+			mes "How many do you want?";
 			mes "Enter '0' if you want to quit.";
 			next;
+			while(1) {
 			input @num;
-			if((@num < 1) || (@num > 1000)) goto M_Bye;
+				if (@num == 0) {
+					mes "[Gever Al Sharp]";
+					mes "The deal was cancelled.";
+					mes "Come again next time.";
+					close;
+				}
+				if (@num > 499) {
+					mes "[Gever Al Sharp]";
+					mes "The number must";
+					mes "be less than 500.";
+					next;
+					continue;
+				}
+				break;
+			}
 			set @price,@num * 8;
 			mes "[Gever AI Sharp]";
-			if(Zeny < @price) goto sL_NoZeny;
-			if (checkweight(7134,@num) == 0) goto sL_OverW;
+			if (Zeny < @price) {
+				mes "[Gever Al Sharp]";
+				mes "You don't";
+				mes "have enough zeny.";
+				mes "Check how much zeny";
+				mes "you have first.";
+				close;
+			}
+			if (checkweight(7134,@num) == 0) {
+				mes "[Gever Al Sharp]";
+				mes "It doesn't seem like";
+				mes "you can carry everything.";
+				mes "Please check the space";
+				mes "in your inventory.";
+				close;
+			}
 			set Zeny,Zeny-@price;
-			getitem 7134,@num;//Items: Medicine_Bowl,
-			goto L_Bye;
+			getitem 7134,@num; // Items: Medicine_Bowl
+			mes "[Gever Al Sharp]";
+			mes "Thank you.";
+			mes "Come again.";
+			close;
 
 	M_Manual:
-		mes "[Gever AI Sharp]";
+		mes "[Gever Al Sharp]";
 		mes "What do you need?";
-		mes "Manuals are generally 100,000 zeny.";
-		mes "Except for a couple of special manuals.";
+		mes "Manuals are generally 100,000 zeny. But there are a couple of special manuals that will cost more.";
 		next;
-		menu 	"Potion Creation Guide",sM_Pot,	"Alcohol Creation Guide",sM_Alc, "Bottle Grenade Creation Guide",sM_Gren, 
-			"Acid Bottle Creation Guide",sM_Acid,	"Plant Bottle Creation Guide",sM_Plant, "Marine Sphere Bottle Creation Guide",sM_Mar,
-			"Glistening Coat Creation Guide",sM_Coat, "Condensed Potion Creation Guide",sM_Con, "Cancel Deal.",M_Bye;
+		menu 	"Potion Creation Guide",sM_Pot,"Alcohol Creation Guide",sM_Alc,"Bottle Grenade Creation Guide",sM_Gren, 
+			"Acid Bottle Creation Guide",sM_Acid,"Plant Bottle Creation Guide",sM_Plant,"Marine Sphere Bottle Creation Guide",sM_Mar,
+			"Glistening Coat Creation Guide",sM_Coat,"Condensed Potion Creation Guide",sM_Con,"Cancel Deal.",M_Bye;
 		sM_Pot:
 			set @itemid,7144;
 			set @price,100000;
@@ -2135,31 +2126,39 @@ alde_alche.gat,24,188,3	script	Gever AI Sharp	740,{
 
 	L_Choice:
 		mes "[Gever AI Sharp]";
-		mes "An " + @itemname$ + " Creation Guide??";
-		mes "That will be "+@price/1000+",000 zeny.";
+		mes "" + @itemname$ + "";
+		mes "Creation Guide?";
+		mes "That'll be "+@price/1000+",000 zeny.";
 		next;
 		menu "Purchase.",-,"Quit.",M_Bye;
 
-			mes "[Gever AI Sharp]";
-			if(Zeny < @price) goto sL_NoZeny;	
-			if (checkweight(@itemid,1) == 0) goto sL_OverW;
+			if(Zeny < @price) {
+				mes "[Gever Al Sharp]";
+				mes "You don't";
+				mes "have enough zeny.";
+				mes "Check how much zeny";
+				mes "you have first.";
+				close;
+			}
 			set Zeny,Zeny-@price;
-			getitem @itemid,1;			
+			getitem @itemid,1;
+			mes "[Gever Al Sharp]";
+			mes "Thank you for";
+			mes "your patronage.";
+			close;
+
 		L_Bye:
-			mes "Thank you for buying!";
+			mes "[Gever Al Sharp]";
+			mes "Thank you.";
 			mes "Come again.";
 			close;
 
-			sL_NoZeny:
-				mes "You don't seem to have enough money.";
-				close;
-			sL_OverW:
-				mes "Hmm.... it seems that you are overweight...";
-				close;
-
-
 	M_Bye:
-		mes "[Gever AI Sharp]";
-		mes "Then come again next time.";
+		mes "[Gever Al Sharp]";
+		mes "Well then,";
+		mes "come again when";
+		mes "you need to purchase";
+		mes "materials related to";
+		mes "Alchemy, alright?";
 		close;
 }

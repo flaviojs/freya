@@ -9,7 +9,7 @@
 //--------------------------------------------------------------
 // Script Title: Pet Taming Quests	Author: A Lot of People
 //--------------------------------------------------------------
-// Revision History: v1.7
+// Revision History: v1.6
 //--------------------------------------------------------------
 //	1.0 First version [kobra_k88/Darkchild/x[tsk]]
 //	1.1 Fixed exploits [Lupus]
@@ -18,7 +18,6 @@
 //	1.4 Merged in Bon Gun/Munak quests [Tsuyuki]
 //	1.5 Improved formatting [Tsuyuki]
 //	1.6 Removed custom Munak/Bon Gun Quests [Tsuyuki]
-//	1.7 Added Munak's Grandma Quest by L0ne_W0lf, converted from Aegis [Tsuyuki]
 //--------------------------------------------------------------
 // Additional Notes: Munak's Grandma Quest is * Aegis-certified *
 //--------------------------------------------------------------
@@ -491,152 +490,6 @@ M_Menu:
 		mes "Oh... I see.  You probably haven't decided on what monster to raise as a pet yet.";
 		mes "It's a very important decision, so please, take your time.";
 		close;
-}
-
-//--------------------------------------------------------------
-// Munak's Grandma Quest
-//--------------------------------------------------------------
-
-comodo.gat,112,182,0	script	Munak's Grandma	103,{
-
-	if (countitem(1558) > 0) {
-		mes "[Munak's grandma]";
-		mes "Oh my...";
-		mes "Have you seen my granddaughter,";
-		if (Sex == Male) {
-			mes "boy? My poor granddaughter";
-		}
-		else {
-			mes "young lady? My poor granddaughter";
-		}
-		mes "has been missing...";
-		next;
-		mes "[Munak's Grandma]";
-		mes "I can't remember exactly when it";
-		mes "was, but when I lived in Payon, I";
-		mes "had a cute granddaughter. She";
-		mes "was really happy when I made her";
-		mes "hair like ^000077Danggie^000000...";
-		next;
-		mes "[Munak's Grandma]";
-		mes "She was alwaying working with the";
-		mes "village chief... She was such a sweet";
-		mes "girl, and always got along with";
-		mes "chief's son...";
-		next;
-		mes "[Munak's Grandma]";
-		mes "But one day our deity became angry";
-		mes "and cursed the chief's son with a";
-		mes "sickness! The village had to offer";
-		mes "my granddaughter to him as a";
-		mes "companion to lift the curse...";
-		next;
-		mes "[Munak's Grandma]";
-		mes "The chief's son regained his";
-		mes "health, but I lost my";
-		mes "granddaughter! I can't look at him";
-		mes "and not think of her, so I tried to";
-		mes "leave my misery behind and came";
-		mes "here to Comodo...";
-		next;
-		switch(select("Oh come on! Cheer up!","Um, is this diary...?")) {
-		case 1:
-			mes "[Munak's Grandma]";
-			mes "It seems my granddaughter haunts my";
-			mes "dreams every night. I believe I've";
-			mes "been trying to cheer up for years";
-			mes "now...";
-			close;
-		case 2:
-			if (countitem(901) > 0) {
-				mes "[Munak's Grandma]";
-				mes "Oh god!";
-				mes "It's my granddaughter's diary!";
-				mes "Th-This is her writing! Oh my...!";
-				next;
-				mes "[Munak's Grandma]";
-				if (Sex == Male) {
-					mes "Young man... I'll read this to you if";
-				}
-				else {
-					mes "Young lady... I'll read this to you if";
-				}
-				mes "you give it to me with a Danggie,";
-				mes "please. I no longer have anything";
-				mes "that belonged to her now...";
-				next;
-				switch(select("No way.","Ok, I'll.")) {
-				case 1:
-					mes "[Munak's Grandma]";
-					mes "Oh...?";
-					if (Sex == Male) {
-						mes "Alright, young man.";
-						mes "Thank you anyway.";
-					}
-					else {
-						mes "Thank you anyway,";
-						mes "young lady";
-					}
-					next;
-					mes "[Munak's Grandma]";
-					mes "It's alright...";
-					mes "I can only hope that the deity is";
-					mes "taking good care of her!";
-					close;
-				case 2:
-					delitem 1558,1;
-					delitem 901,1;
-					mes "[Munak's Grandma]";
-					if (Sex == Male) {
-						mes "Oh!";
-						mes "Thank you,";
-						mes "young man~!";
-					}
-					else {
-						mes "Goodness!";
-						mes "Thank you,";
-						mes "young lady...";
-					}
-					next;
-					mes "[Munak's Grandma]";
-					mes "Alright...";
-					mes "I'll read this.";
-					mes "Let me see...";
-					next;
-					mes "[Munak's Grandma]";
-					mes "It seems that my granddaughter was";
-					mes "treated by the chief like his own";
-					mes "child! There are so many happy";
-					mes "memories in this book!";
-					next;
-					getitem 659,1;
-					mes "[Munak's Grandma]";
-					mes "Oh, thank you. I now have a good";
-					mes "keepsake of my granddaughter. Thank";
-					mes "you so much! May God-Poing bless";
-					mes "you!";
-					close;
-				}
-			}
-			else {
-				mes "[Munak's Grandma]";
-				mes "What? A diary? What's that diary...?";
-				mes "I don't... I can't remember, oh my...";
-				next;
-				mes "[Munak's Grandma]";
-				mes "I really wish I could make her hair";
-				mes "into a ^000077Danggie^000000 again. I really";
-				mes "wish... Oh, oh my granddaughter...";
-				close;
-			}
-		}
-	}
-	else {
-		mes "[Munak's Grandma]";
-		mes "My own granddaughter...";
-		mes "Why did she have to leave...?";
-		close;
-	}
 }
 
 
