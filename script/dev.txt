@@ -22,15 +22,11 @@
 - Episode 10.1 - Aldebaran Turbo Track
 
 - Episode 10.3 - Heart Fragment Quest (Lighthalzen Ymir Quest)
-- Episode 10.3 - 2nd Class Skill Quests (Partially complete) [Aurora's Current: Temporary]
 - Episode 10.3 - Star Gladiator (Taekwon Master) Job Change Quest [Aurora's Current: Temporary]
 - Episode 10.3 - Soul Linker Job Change Quest [Aurora's Current: Temporary]
 
 - Episode 10.4 - Auction System NPCs (Partially implemented)
 - Episode 10.4 - Hugel Monster Races (Partially implemented)
-- Episode 10.4 - Hugel Rebellion Quest
-- Episode 10.4 - Hugel Remedy Quest (Mostly implemented, but not functional)
-- Episode 10.4 - Hugel Guide NPC (Need to be officialized) [Aurora's Current: Temporary]
 
 - Episode 11.1 - 2006 Headgear Quests (Need to be officialized) [Aurora's Current: Temporary]
 
