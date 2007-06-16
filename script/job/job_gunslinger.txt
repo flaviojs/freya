@@ -476,7 +476,7 @@ payon.gat,184,65,3	script	The Wise Bull Horn	866,{
 
 que_ng.gat,187,149,3	script	Magazine Dealer Kenny	83,{
 
-	mes "[Kenny]";	
+	mes "[Kenny]";
 	mes "I am the Casing Dealer, Kenny!";
 	if(BaseJob != Job_Gunslinger) {
 		mes "I'm here to package the Shells";
