@@ -9,13 +9,14 @@
 //--------------------------------------------------------------
 // Script Title: Juno Town NPCs	Author: Tsuyuki
 //--------------------------------------------------------------
-// Revision History: v1.3
+// Revision History: v1.4
 //--------------------------------------------------------------
 //	1.0 Converted from Aegis, replaced old file entirely [Tsuyuki]
 //	1.1 Merged Monster Museum script with this one [Tsuyuki]
 //	1.2 Added official Monster Museum, converted from Aegis [Tsuyuki]
-//	1.3 Merged Juno Quest script, converted from Aegis [Tsuyuki]
-//	 - Adds in Juperos History quest and Metto Quest
+//	1.3 Merged the Juno Quest script, converted from Aegis [Tsuyuki]
+//	 - Adds in the Juperos History Quest and Metto Quest
+//	1.4 Some fixes [Tsuyuki]
 //--------------------------------------------------------------
 // Additional Notes: * Aegis-certified *
 //--------------------------------------------------------------
@@ -27,8 +28,8 @@
 
 yuno.gat,184,173,4	script	Freidrich	729,{
 
-	set imprezza,rand(1,5);
-	if (imprezza != 1) goto L_Freid01;
+	set '@imprezza,rand(1,5);
+	if ('@imprezza != 1) goto L_Freid01;
 
 	mes "[Freidrich]";
 	mes "^3355FFJuno^000000 is kept aloft in the air by an";
@@ -77,8 +78,8 @@ L_Freid01:
 
 yuno.gat,337,227,4	script	Juno Granny	103,{
 
-	set fourzeroracle,rand(1,50);
-	if (fourzeroracle != 1) goto L_Granny01;
+	set '@fourzeroracle,rand(1,50);
+	if ('@fourzeroracle != 1) goto L_Granny01;
 	if (Zeny <= 999) goto L_Granny02;
 
 	mes "[Granny]";
@@ -177,8 +178,8 @@ yuno.gat,328,239,4	script	Juno Fighter	727,{
 
 yuno.gat,343,68,4	script	Ninno	725,{
 
-	set Ninno,rand(1,1000);
-	if (Ninno != 1) goto L_Ninno01;
+	set '@ninno,rand(1,1000);
+	if ('@ninno != 1) goto L_Ninno01;
 
 	mes "[Ninno]";
 	mes "You are very lucky to have me tell";
@@ -218,8 +219,8 @@ L_Ninno01:
 
 yuno.gat,165,111,4	script	Juno Sage	123,{
 
-	set Le_Morpheus,rand(1,50);
-	if (Le_Morpheus != 25) goto L_Morph01;
+	set '@Le_Morpheus,rand(1,50);
+	if ('@Le_Morpheus != 25) goto L_Morph01;
 	if (Zeny <= 4999) goto L_Morph02;
 
 	mes "[Le Morpheus]";
@@ -285,7 +286,6 @@ L_Morph01:
 	mes "now.";
 	close;
 }
-
 
 yuno.gat,157,205,4	script	Juno Artisan	54,{
 
@@ -441,6 +441,7 @@ yuno.gat,227,292,4	script	Juno Soldier	105,{
 }
 
 yuno.gat,165,228,4	script	Juno Soldier	105,{
+
 	mes "[Juno Soldier]";
 	mes "Welcome to Juno, the city of";
 	mes "noble-mindedness.";
@@ -570,7 +571,7 @@ yuno_in03.gat,33,15,3	script	Museum Guide	67,{
 		close;
 }
 
-yuno_in03.gat,36,21,3	script	Deviace	1108,{ 
+yuno_in03.gat,36,21,3	script	Deviace	1108,{
 	end;
 }
 
@@ -599,7 +600,7 @@ yuno_in03.gat,33,21,1	script	#Deviace	111,{
 	close;
 }
 
-yuno_in03.gat,36,27,3	script	Fur Seal	1317,{ 
+yuno_in03.gat,36,27,3	script	Fur Seal	1317,{
 	end;
 }
 
@@ -628,7 +629,7 @@ yuno_in03.gat,33,27,1	script	#Fur Seal	111,{
 	close;
 }
 
-yuno_in03.gat,36,33,3	script	Sage Worm	1281,{ 
+yuno_in03.gat,36,33,3	script	Sage Worm	1281,{
 	end;
 }
 
@@ -653,7 +654,7 @@ yuno_in03.gat,33,33,1	script	#Sage Worm	111,{
 	close;
 }
 
-yuno_in03.gat,39,39,3	script	Penomena	1216,{ 
+yuno_in03.gat,39,39,3	script	Penomena	1216,{
 	end;
 }
 
@@ -682,7 +683,7 @@ yuno_in03.gat,38,39,1	script	#Penomena	111,{
 	close;
 }
 
-yuno_in03.gat,39,44,3	script	Galapago	1391,{ 
+yuno_in03.gat,39,44,3	script	Galapago	1391,{
 	end;
 }
 
@@ -708,7 +709,7 @@ yuno_in03.gat,37,44,1	script	#Galapago	111,{
 	close;
 }
 
-yuno_in03.gat,15,21,5	script	Raydric	1163,{ 
+yuno_in03.gat,15,21,5	script	Raydric	1163,{
 	end;
 }
 
@@ -731,7 +732,7 @@ yuno_in03.gat,19,21,1	script	#Raydric	111,{
 	close;
 }
 
-yuno_in03.gat,15,27,5	script	Chepet	1250,{ 
+yuno_in03.gat,15,27,5	script	Chepet	1250,{
 	end;
 }
 
@@ -752,7 +753,7 @@ yuno_in03.gat,19,27,1	script	#Chepet	111,{
 	close;
 }
 
-yuno_in03.gat,15,33,5	script	Violy	1390,{ 
+yuno_in03.gat,15,33,5	script	Violy	1390,{
 	end;
 }
 
@@ -778,7 +779,7 @@ yuno_in03.gat,19,33,1	script	#Violy	111,{
 	close;
 }
 
-yuno_in03.gat,10,39,5	script	Alice	1275,{ 
+yuno_in03.gat,10,39,5	script	Alice	1275,{
 	end;
 }
 
@@ -802,7 +803,7 @@ yuno_in03.gat,12,39,1	script	#Alice	111,{
 	close;
 }
 
-yuno_in03.gat,10,45,5	script	Assaulter	1315,{ 
+yuno_in03.gat,10,45,5	script	Assaulter	1315,{
 	end;
 }
 
@@ -829,19 +830,19 @@ yuno_in03.gat,12,45,1	script	#Assaulter	111,{
 	close;
 }
 
-yuno_in03.gat,38,50,3	script	PecoPeco Egg	1047,{ 
+yuno_in03.gat,38,50,3	script	PecoPeco Egg	1047,{
 	end;
 }
 
-yuno_in03.gat,34,54,3	script	Thief Bug Egg	1048,{ 
+yuno_in03.gat,34,54,3	script	Thief Bug Egg	1048,{
 	end;
 }
 
-yuno_in03.gat,12,50,3	script	Ant Egg	1097,{ 
+yuno_in03.gat,12,50,3	script	Ant Egg	1097,{
 	end;
 }
 
-yuno_in03.gat,18,96,5	script	Wanderer	1208,{ 
+yuno_in03.gat,18,96,5	script	Wanderer	1208,{
 	end;
 }
 
@@ -865,7 +866,7 @@ yuno_in03.gat,20,96,1	script	#Wanderer	111,{
 	close;
 }
 
-yuno_in03.gat,16,100,5	script	Caterpillar	1300,{ 
+yuno_in03.gat,16,100,5	script	Caterpillar	1300,{
 	end;
 }
 
@@ -889,7 +890,7 @@ yuno_in03.gat,18,100,1	script	#Caterpillar	111,{
 	close;
 }
 
-yuno_in03.gat,16,104,5	script	Thief Bug Male	1054,{ 
+yuno_in03.gat,16,104,5	script	Thief Bug Male	1054,{
 	end;
 }
 
@@ -912,7 +913,7 @@ yuno_in03.gat,18,104,1	script	#Thief Bug Male	111,{
 	close;
 }
 
-yuno_in03.gat,16,108,5	script	Tri-Joint	1279,{ 
+yuno_in03.gat,16,108,5	script	Tri-Joint	1279,{
 	end;
 }
 
@@ -939,7 +940,7 @@ yuno_in03.gat,18,108,1	script	#Tri-Joint	111,{
 	close;
 }
 
-yuno_in03.gat,16,111,5	script	Arclouse	1194,{ 
+yuno_in03.gat,16,111,5	script	Arclouse	1194,{
 	end;
 }
 
@@ -964,7 +965,7 @@ yuno_in03.gat,18,111,1	script	#Arclouse	111,{
 	close;
 }
 
-yuno_in03.gat,16,116,5	script	Dragon Tail	1321,{ 
+yuno_in03.gat,16,116,5	script	Dragon Tail	1321,{
 	end;
 }
 
@@ -985,7 +986,7 @@ yuno_in03.gat,18,116,1	script	#Dragon Tail	111,{
 	close;
 }
 
-yuno_in03.gat,46,96,3	script	Owl Duke	1320,{ 
+yuno_in03.gat,46,96,3	script	Owl Duke	1320,{
 	end;
 }
 
@@ -1012,7 +1013,7 @@ yuno_in03.gat,44,96,1	script	#Owl Duke	111,{
 	close;
 }
 
-yuno_in03.gat,48,100,3	script	Marine Sphere	1142,{ 
+yuno_in03.gat,48,100,3	script	Marine Sphere	1142,{
 	end;
 }
 
@@ -1038,7 +1039,7 @@ yuno_in03.gat,46,101,1	script	#Marine Sphere	111,{
 	close;
 }
 
-yuno_in03.gat,48,104,3	script	Mandragora	1020,{ 
+yuno_in03.gat,48,104,3	script	Mandragora	1020,{
 	end;
 }
 
@@ -1071,7 +1072,7 @@ yuno_in03.gat,46,105,1	script	#Mandragora	111,{
 	close;
 }
 
-yuno_in03.gat,48,108,3	script	Geographer	1368,{ 
+yuno_in03.gat,48,108,3	script	Geographer	1368,{
 	end;
 }
 
@@ -1107,7 +1108,7 @@ yuno_in03.gat,46,108,1	script	#Geographer	111,{
 	close;
 }
 
-yuno_in03.gat,48,112,3	script	Rafflesia	1162,{ 
+yuno_in03.gat,48,112,3	script	Rafflesia	1162,{
 	end;
 }
 
@@ -1134,7 +1135,7 @@ yuno_in03.gat,46,112,1	script	#Rafflesia	111,{
 	close;
 }
 
-yuno_in03.gat,48,116,3	script	Stem Worm	1215,{ 
+yuno_in03.gat,48,116,3	script	Stem Worm	1215,{
 	end;
 }
 
@@ -1155,7 +1156,7 @@ yuno_in03.gat,45,116,1	script	#Stem Worm	111,{
 	close;
 }
 
-yuno_in03.gat,24,124,3	script	Blazzer	1367,{ 
+yuno_in03.gat,24,124,3	script	Blazzer	1367,{
 	end;
 }
 
@@ -1182,7 +1183,7 @@ yuno_in03.gat,24,122,1	script	#Blazzer	111,{
 	close;
 }
 
-yuno_in03.gat,28,124,5	script	Rideword	1195,{ 
+yuno_in03.gat,28,124,5	script	Rideword	1195,{
 	end;
 }
 
@@ -1200,7 +1201,7 @@ yuno_in03.gat,28,122,1	script	#Rideword	111,{
 	close;
 }
 
-yuno_in03.gat,31,124,3	script	Megalodon	1064,{ 
+yuno_in03.gat,31,124,3	script	Megalodon	1064,{
 	end;
 }
 
@@ -1220,7 +1221,7 @@ yuno_in03.gat,31,122,1	script	#Megalodon	111,{
 	close;
 }
 
-yuno_in03.gat,35,124,3	script	Sleeper	1386,{ 
+yuno_in03.gat,35,124,3	script	Sleeper	1386,{
 	end;
 }
 
@@ -1244,7 +1245,7 @@ yuno_in03.gat,35,122,1	script	#Sleeper	111,{
 	close;
 }
 
-yuno_in03.gat,39,124,3	script	Ancient Mummy	1297,{ 
+yuno_in03.gat,39,124,3	script	Ancient Mummy	1297,{
 	end;
 }
 
@@ -1275,7 +1276,7 @@ yuno_in03.gat,39,122,1	script	#Ancient Mummy	111,{
 	close;
 }
 
-yuno_in03.gat,18,122,5	script	Incubus	1374,{ 
+yuno_in03.gat,18,122,5	script	Incubus	1374,{
 	end;
 }
 
@@ -1300,7 +1301,7 @@ yuno_in03.gat,19,120,1	script	#Incubus	111,{
 	close;
 }
 
-yuno_in03.gat,44,120,3	script	Succubus	1370,{ 
+yuno_in03.gat,44,120,3	script	Succubus	1370,{
 	end;
 }
 
@@ -1329,11 +1330,11 @@ yuno_in03.gat,34,110,5	script	#Yuno	729,{
 	end;
 }
 
+
 //--------------------------------------------------------------
-// The Ryusei Quest (Metto Quest)
+// The Metto Quest (Ryusei Quest)
 //--------------------------------------------------------------
 
-// Metto
 yuno_in03.gat,26,39,3	script	Metto	709,{
 
 	if (mad == 2 || mad == 4 || mad == 6) goto L_Check;
@@ -1503,7 +1504,6 @@ L_Done:
 	close;
 }
 
-// Stangckle
 yuno_in01.gat,17,95,5	script	Stangckle	99,{
 
 	if (mad > 2) goto L_Done;
@@ -1586,7 +1586,6 @@ L_Done:
 	close;
 }
 
-// Kato
 yuno_in01.gat,19,183,3	script	Kato	55,{
 
 	if (mad > 4) goto L_Done;
@@ -1660,7 +1659,6 @@ L_Done:
 	close;
 }
 
-// CiCi
 yuno_in03.gat,178,43,5	script	CiCi	121,{
 
 	if (mad > 6) goto L_Done;
@@ -1747,7 +1745,6 @@ L_Done:
 	close;
 }
 
-// Wagan
 yuno_in01.gat,17,30,3	script	Wagan	85,{
 
 	if (mad > 0) goto L_Check;
@@ -1804,7 +1801,7 @@ yuno_in01.gat,17,30,3	script	Wagan	85,{
 	next;
 	menu "Leave it to me.",-,"I wish your village luck in doing so.",M_End;
 
-		if (Class != JOB_NOVICE) goto L_Cont02;
+		if (Basejob != Job_Novice) goto L_Cont02;
 
 		mes "[Wagan]";
 		mes "Hmm...";
@@ -1907,8 +1904,8 @@ L_Thank:
 	mes "token of our appreciation...";
 	next;
 
-	set now_weight,MaxWeight-Weight;
-	if (now_weight >= 300) goto L_Cont;
+	set '@now_weight,MaxWeight-Weight;
+	if ('@now_weight >= 300) goto L_Cont;
 
 	mes "[Wagan]";
 	mes "Sigh.. the items you bring along";
@@ -1932,7 +1929,6 @@ L_Done:
 	close;
 }
 
-// Bain
 yuno_in01.gat,103,157,3	script	Bain	98,{
 
 	if (alkemi == 1) goto L_Check;
@@ -1995,7 +1991,7 @@ yuno_in01.gat,103,157,3	script	Bain	98,{
 		close;
 
 L_Check:
-	if ((countitem(974) < 1) || (countitem(612) < 5) || (countitem(7068) < 5) || (countitem(1003) < 5) || (countitem(7043) < 5) ||	(countitem(757) < 3) || (countitem(756) < 3) || (Zeny < 2000)) goto L_NotEnough;
+	if (countitem(974) < 1 || countitem(612) < 5 || countitem(7068) < 5 || countitem(1003) < 5 || countitem(7043) < 5 || countitem(757) < 3 || countitem(756) < 3 || Zeny < 2000) goto L_NotEnough;
 
 	if (ALCH_Q == 6) set ALCH_Q2, 2; // For Alchemist Job Quest
 
@@ -2007,7 +2003,7 @@ L_Check:
 	delitem 757,3;
 	delitem 756,3;
 	set Zeny,Zeny-2000;
-	set kyulkwa,rand(1,10);
+	set '@kyulkwa,rand(1,10);
 
 	mes "[Bain]";
 	mes "Oh...The entire ingredients needed,";
@@ -2022,9 +2018,9 @@ L_Check:
 	mes "-SHYAKASHYAKA KWAJIK POBOBOBOBOPOUONG!-";
 	next;
 
-	if (kyulkwa == 1 || kyulkwa == 2 || kyulkwa == 3 || kyulkwa == 4 || kyulkwa == 9 || kyulkwa == 10) goto L_Option01;
-	if (kyulkwa == 5 || kyulkwa == 6 || kyulkwa == 8) goto L_Option02;
-	if (kyulkwa == 7) goto L_Option03;
+	if ('@kyulkwa == 1 || '@kyulkwa == 2 || '@kyulkwa == 3 || '@kyulkwa == 4 || '@kyulkwa == 9 || '@kyulkwa == 10) goto L_Option01;
+	if ('@kyulkwa == 5 || '@kyulkwa == 6 || '@kyulkwa == 8) goto L_Option02;
+	if ('@kyulkwa == 7) goto L_Option03;
 
 	L_Option01:
 		mes "[Bain]";
@@ -2110,7 +2106,6 @@ L_NotEnough:
 	close;
 }
 
-// Bajin
 yuno_in01.gat,100,153,4	script	Bajin	47,{
 
 	if (alkemi == 1) goto L_Check;
@@ -2173,7 +2168,7 @@ yuno_in01.gat,100,153,4	script	Bajin	47,{
 		close;
 
 L_Check:
-	if ((countitem(974) < 1) || (countitem(612) < 5) || (countitem(7068) < 5) || (countitem(1003) < 5) || (countitem(7043) < 5) ||	(countitem(757) < 3) || (countitem(756) < 3) || (Zeny < 2000)) goto L_NotEnough;
+	if (countitem(974) < 1 || countitem(612) < 5 || countitem(7068) < 5 || countitem(1003) < 5 || countitem(7043) < 5 || countitem(757) < 3 || countitem(756) < 3 || Zeny < 2000) goto L_NotEnough;
 
 	if (ALCH_Q == 6) set ALCH_Q2, 2; // For Alchemist Job Quest
 
@@ -2185,7 +2180,7 @@ L_Check:
 	delitem 757,3;
 	delitem 756,3;
 	set Zeny,Zeny-2000;
-	set kyulkwa,rand(1,10);
+	set '@kyulkwa,rand(1,10);
 
 	mes "[Bajin]";
 	mes "Sigh! I've prepared for it!";
@@ -2199,9 +2194,9 @@ L_Check:
 	mes "-SHYAKASHYAKA KWAJIK POBOBOBOBOPOUONG!-";
 	next;
 
-	if (kyulkwa == 1 || kyulkwa == 2 || kyulkwa == 3 || kyulkwa == 4 || kyulkwa == 9 || kyulkwa == 10) goto L_Option01;
-	if (kyulkwa == 5 || kyulkwa == 6 || kyulkwa == 8) goto L_Option02;
-	if (kyulkwa == 7) goto L_Option03;
+	if ('@kyulkwa == 1 || '@kyulkwa == 2 || '@kyulkwa == 3 || '@kyulkwa == 4 || '@kyulkwa == 9 || '@kyulkwa == 10) goto L_Option01;
+	if ('@kyulkwa == 5 || '@kyulkwa == 6 || '@kyulkwa == 8) goto L_Option02;
+	if ('@kyulkwa == 7) goto L_Option03;
 
 	L_Option01:
 		mes "[Bajin]";
@@ -2274,11 +2269,11 @@ L_NotEnough:
 	close;
 }
 
+
 //--------------------------------------------------------------
 // Juperos History Quest
 //--------------------------------------------------------------
 
-// Fayruz
 yuno_in04.gat,190,125,4	script	Scholar	700,{
 
 	if (yuno_book == 0) goto L_Yuno_Book_Check00;
