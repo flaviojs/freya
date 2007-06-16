@@ -9,7 +9,7 @@
 //--------------------------------------------------------------
 // Script Title: Lighthalzen Town NPCs	Author: A Lot of People
 //--------------------------------------------------------------
-// Revision History: v2.6
+// Revision History: v2.7
 //--------------------------------------------------------------
 //	1.0 First version (Placed temporary names) [erKURITA]
 //	1.1 Implemented some misc NPCs [MasterOfMuppets]
@@ -29,8 +29,9 @@
 //	2.4 Removed duplicate NPCs from the President's Quest [Tsuyuki]
 //	2.5 Added the Cursed Spirit and President's Quests by SinSloth [Tsuyuki]
 //	2.6 Added the Shadow Quest, converted from Aegis [Tsuyuki]
+//	2.7 Updated some NPCs for the Hugel Rebellion Quest, changes by SinSloth [Tsuyuki]
 //--------------------------------------------------------------
-// Additional Notes: * Official-certified / Aegis-certified *
+// Additional Notes: * Official-certified / Partially Aegis-certified *
 //--------------------------------------------------------------
 
 
@@ -9414,6 +9415,37 @@ yuno_pre.gat,69,20,4	script	Secretary#1	862,{
 		warp "yuno_pre.gat",113,53;
 		end;
 	}
+	else if(hg_tre == 56)
+	{
+		mes "[Hes O'Neil]";
+		mes "The President has given the order that ";
+		mes "nobody is allowed to enter this place.";
+		next;
+		mes "["+strcharinfo(0)+"]";
+		mes "However, you will change your mind after listening to my explanation.";
+		next;
+		mes "[Hes O'Neil]";
+		mes "...............";
+		mes "Is it something very important?";
+		next;
+		mes "["+strcharinfo(0)+"]";
+		mes "It is the most important thing.";
+		next;
+		mes "[Hes O'Neil]";
+		mes "Alright then, there you go.";
+		mes "(Whisper) I hope you will become his source of strength.";
+		close2;
+		warp "yuno_pre.gat",113,53;
+		end;
+	}
+	else if(hg_tre > 56)
+	{
+		mes "[Hes O'Neil]";
+		mes "The president said that you're welcome to visit him anytime.";
+		close2;
+		warp "yuno_pre.gat",113,53;
+		end;
+	}
 	else
 	{
 		mes "[Hes O'Neil]";
@@ -10352,6 +10384,101 @@ L_Mission:
 		mes "^3355FFGhalstein^000000 again. It's time";
 		mes "we let you loose, adventurer.";
 		set lhz_boss,43;
+		close2;
+		cutin "",255;
+		end;
+	}
+	else if(hg_tre == 56)
+	{
+		if(!countitem(7342))
+		{
+			mes "["+strcharinfo(0)+"]";
+			mes "Ah, where did I put the record?";
+			close;
+		}
+		mes "[Karl]";
+		mes "It's you.....!";
+		mes "It's really been a long time.";
+		next;
+		mes "["+strcharinfo(0)+"]";
+		mes "So, are you still having the idea to go against Rekenber?";
+		next;
+		mes "[Karl]";
+		mes "...................";
+		next;
+		mes "[Karl]";
+		mes "I'm not sure.";
+		mes "The Secret Wing has been disbanded and I am just another puppet they have, just like the previous presidents.";
+		next;
+		mes "["+strcharinfo(0)+"]";
+		mes "Not long ago, the scientists of Regenschrim have stolen the research record and destroyed the machines that they used for research purposes.";
+		next;
+		emotion e_gasp;
+		mes "[Karl]";
+		mes "...!";
+		mes "Did you do that? ";
+		mes "I still fail to move on after the incident of my friends' betrayal and the disband of the Secret Wing...";
+		mes "You are really a great friend.";
+		next;
+		mes "[Karl]";
+		mes "Didn't you speak about the research record just now?";
+		mes "Oh! Can you give me the record?";
+		mes "It will be a big trouble to them.";
+		next;
+		mes "["+strcharinfo(0)+"]";
+		mes "If you insist to go against them, I will give you the record.";
+		next;
+		mes "[Karl]";
+		mes "I am the president of this country.";
+		mes "I have failed before but I won't stop trying when there is still an opportunity.";
+		next;
+		mes "[Karl]";
+		mes "You remind me of the day I made up my mind to rebuild this country.";
+		mes "How could I forgot such important responsibilities of mine.";
+		next;
+		mes "["+strcharinfo(0)+"]";
+		mes "That's great.";
+		mes "Here's the record.";
+		mes "I hope you will make good use of it. ";
+		next;
+		mes "[Karl]";
+		mes "Let's see...";
+		next;
+		mes "[Karl]";
+		mes "Oh! That's some interesting information.";
+		next;
+		mes "["+strcharinfo(0)+"]";
+		mes "I have another good news. The Secret Wing has not given up yet. They are still working on the project and I hope that you won't be giving up on it too.";
+		next;
+		mes "[Karl]";
+		mes ".....I feel so sorry for what I did.";
+		next;
+		mes "[Karl]";
+		mes "Thank you for bringing this great gift. I will stay strong and work hard to achieve my target.";
+		next;
+		mes "[Karl]";
+		mes "I will recruit the new batch of members and use them to let the world know about what the corporation had really done.";
+		next;
+		mes "[Karl]";
+		mes "Thank you so much. ";
+		mes "You can count on me to right what was wrong.";
+		set hg_tre,57;
+		delitem 7342,1;
+		set BaseExp,BaseExp+2000000;
+		getitem 617,1;
+		close2;
+		cutin "",255;
+		end;
+	}
+	else if(hg_tre == 57)
+	{
+		mes "[Karl]";
+		mes "I am trying to recruit capable people who can help me to bring down Rekenber Corporation.";
+		mes "Thanks to you, I have enough information as a good beginning to nail them now down.";
+		next;
+		mes "[Karl]";
+		mes "I have had my men to gather some information and learned that Regenschrim had stopped operating now.";
+		mes "You have done well for the Schwaltzvalt Republic.";
 		close2;
 		cutin "",255;
 		end;
