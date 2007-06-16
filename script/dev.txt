@@ -27,8 +27,6 @@
 - Episode 10.4 - Auction System NPCs (Partially implemented)
 - Episode 10.4 - Hugel Monster Races (Partially implemented)
 
-- Episode 11.1 - 2006 Headgear Quests (Need to be officialized) [Aurora's Current: Temporary]
-
 - Episode 11.2 - All Veins Town NPCs
 - Episode 11.2 - Veins Old Person Aid Quest
 - Episode 11.2 - Arunafeltz Spy Quest
