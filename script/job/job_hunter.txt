@@ -132,14 +132,14 @@ hu_in01.gat,386,373,4	script	Hunter Guildsman#hnt	727,{
 			mes "[Hunter Sherin]";
 			mes "You can't apply to change jobs if you still have unused skill points. Use your remaining skill points first.";
 			close;
-		} else if (job_hunte == 17 && countitem(1007) == 0) {
+		} else if (job_hunter_q == 17 && countitem(1007) == 0) {
 			mes "[Hunter Sherin]";
 			mes "Hmm... I've been informed that you passed the test. But you don't have the necessary 'Necklace of Wisdom (Penetration)' that proves your accomplishment.";
 			next;
 			mes "[Hunter Sherin]";
 			mes "I'll let you change your job, but you must bring back a 'Necklace of Wisdom (Penetration),' no matter what it takes.";
 			close;
-		} else if (job_hunte == 17 && countitem(1007) > 0 && JobLevel > 39) {
+		} else if (job_hunter_q == 17 && countitem(1007) > 0 && JobLevel > 39) {
 			if (JobLevel > 49) {
 				mes "[Hunter Sherin]";
 				mes "Oh...?";
@@ -193,7 +193,7 @@ hu_in01.gat,386,373,4	script	Hunter Guildsman#hnt	727,{
 				getitem 1710,1;
 				close;
 			}
-		} else if (JobLevel > 39 && job_hunte == 0) {
+		} else if (JobLevel > 39 && job_hunter_q == 0) {
 			mes "[Hunter Guildsman]";
 			mes "Oh, you're an Archer! It seems as if you've trained enough as an Archer... You came here to become a Hunter, right?";
 			next;
@@ -391,7 +391,7 @@ hu_in01.gat,386,373,4	script	Hunter Guildsman#hnt	727,{
 					mes "Okay, this is the end of the test!";
 					next;
 					if ('@knight_t == 100) {
-						set job_hunte,2;
+						set job_hunter_q,2;
 						mes "[Hunter Sherin]";
 						mes "Well done! Your answers show you've got the right outlook on life. You definitely have the right qualities to become a Hunter~";
 						next;
@@ -399,7 +399,7 @@ hu_in01.gat,386,373,4	script	Hunter Guildsman#hnt	727,{
 						mes "I'm glad to say you've passed the interview~ Now, go to that person in the corner and confirm which item is necessary for your job change test~";
 						close;
 					} else if ('@knight_t == 90) {
-						set job_hunte,2;
+						set job_hunter_q,2;
 						mes "[Hunter Sherin]";
 						mes "Well, I'm looking at your answers and your score isn't perfect. But I'll let you pass anyway. I don't know what our Guildmaster will think, though.";
 						next;
@@ -407,7 +407,7 @@ hu_in01.gat,386,373,4	script	Hunter Guildsman#hnt	727,{
 						mes "Just remember to always keep basic etiquette in mind. Try harder in the following tests and make me happy, okay?";
 						close;
 					}
-					set job_hunte,1;
+					set job_hunter_q,1;
 					mes "[Hunter Sherin]";
 					mes "Hmm... I don't think this'll work out. You can't become a Hunter without knowing basic etiquette.";
 					next;
@@ -450,7 +450,7 @@ hu_in01.gat,386,373,4	script	Hunter Guildsman#hnt	727,{
 				mes "see you next time~";
 				close;
 			}
-		} else if (JobLevel > 39 && job_hunte == 1) {
+		} else if (JobLevel > 39 && job_hunter_q == 1) {
 			mes "[Hunter Sherin]";
 			mes "Welcome back...!";
 			mes "Well, let's start with the interview. This time, carefully think about the answers to each question.";
@@ -621,7 +621,7 @@ hu_in01.gat,386,373,4	script	Hunter Guildsman#hnt	727,{
 			mes "the end of the test!";
 			next;
 			if ('@knight_t == 100) {
-				set job_hunte,2;
+				set job_hunter_q,2;
 				mes "[Hunter Sherin]";
 				mes "Well done! It seems you've got the right outlook on life. You definitely have what it takes to become a Hunter~";
 				next;
@@ -629,7 +629,7 @@ hu_in01.gat,386,373,4	script	Hunter Guildsman#hnt	727,{
 				mes "I'm happy to say you've passed the interview~ Now, go to that person in the corner and confirm which items are necessary for the job change test~";
 				close;
 			} else if ('@knight_t == 90) {
-				set job_hunte,2;
+				set job_hunter_q,2;
 				mes "[Hunter Sherin]";
 				mes "Hmmm... Well, your score isn't exactly perfect, but I'll let you pass anyway. I'm not sure what our Guildmaster will think though...";
 				next;
@@ -637,7 +637,7 @@ hu_in01.gat,386,373,4	script	Hunter Guildsman#hnt	727,{
 				mes "Just remember to keep the basics of etiquette in mind. Try harder in the following tests, and make me happy, okay?";
 				close;
 			} else {
-				set job_hunte,1;
+				set job_hunter_q,1;
 				mes "[Hunter Sherin]";
 				mes "Hmm...";
 				mes "I'm sorry but you can't become a Hunter without knowing basic etiquette.";
@@ -651,7 +651,7 @@ hu_in01.gat,386,373,4	script	Hunter Guildsman#hnt	727,{
 				mes "when you're ready.";
 				close;
 			}
-		} else if (job_hunte > 2 && job_hunte < 10) {
+		} else if (job_hunter_q > 2 && job_hunter_q < 10) {
 			mes "[Hunter Sherin]";
 			mes "Just give the item to the Demon Hunter, the guy who's all the way to the left in this area~";
 			next;
@@ -664,7 +664,7 @@ hu_in01.gat,386,373,4	script	Hunter Guildsman#hnt	727,{
 				mes "If you decide to become a Hunter, come and visit me, okay? You're pretty, but... You'd be even prettier as a Hunter. Hehe~";
 				close;
 			}
-		} else if (job_hunte == 2) {
+		} else if (job_hunter_q == 2) {
 			mes "[Hunter Sherin]";
 			mes "????";
 			next;
@@ -694,7 +694,7 @@ hu_in01.gat,386,373,4	script	Hunter Guildsman#hnt	727,{
 
 hu_in01.gat,382,382,4	script	Guild Receptionist#hnt	732,{
 
-	if (job_hunte == 2) {
+	if (job_hunter_q == 2) {
 		mes "[Guild Receptionist]";
 		mes "Greetings. They call me... ^660000The Demon Hunter^000000. I am the one in charge of processing applications. Your name is ... "+strcharinfo(0)+", correct?";
 		next;
@@ -710,7 +710,7 @@ hu_in01.gat,382,382,4	script	Guild Receptionist#hnt	732,{
 			if ('@item_need == 1) {
 				mes "[Demon Hunter]";
 				mes "Hmm. ^6600005 Claw of Desert Wolf^000000 to use for arrow tips. ^6600005 Trunk^000000 to use here and there. And ^6600003 White Herb^000000 please.";
-				set job_hunte,3;
+				set job_hunter_q,3;
 				next;
 				mes "[Demon Hunter]";
 				mes "Oh right. Our Guildmaster has gone on an official trip to the Payon Central Palace. You have to go visit him because the one that administers the test.";
@@ -721,7 +721,7 @@ hu_in01.gat,382,382,4	script	Guild Receptionist#hnt	732,{
 			} else if ('@item_need == 2) {
 				mes "[Demon Hunter]";
 				mes "Hmm. ^6600003 Bill of Birds^000000 to use for the arrow tips. ^6600005 Skel-bone^000000 to use here and there. And ^6600003 Green Herbs^000000. That should be enough.";
-				set job_hunte,4;
+				set job_hunter_q,4;
 				next;
 				mes "[Demon Hunter]";
 				mes "Oh right. Our Guildmaster has gone on an official trip to the Payon Central Palace. You have to go visit him since he's the one that administers the test.";
@@ -732,7 +732,7 @@ hu_in01.gat,382,382,4	script	Guild Receptionist#hnt	732,{
 			} else if ('@item_need == 3) {
 				mes "[Demon Hunter]";
 				mes "Mmm. ^6600003 Venom Canine^000000 to use as arrow tips. ^6600003 Animal Skin^000000 to use here and there. And ^6600005 Red Herb^000000. That should be enough.";
-				set job_hunte,5;
+				set job_hunter_q,5;
 				next;
 				mes "[Demon Hunter]";
 				mes "Oh right. Our Guildmaster has gone on an official trip to the Payon Central Palace. You have to go visit him as well since he's the one that administers the test.";
@@ -743,7 +743,7 @@ hu_in01.gat,382,382,4	script	Guild Receptionist#hnt	732,{
 			} else if ('@item_need == 4) {
 				mes "[Demon Hunter]";
 				mes "Mmm. ^6600003 Dokkaebi Horn^000000 to make the arrow tips. ^6600003 Piece of Egg Shell^000000 to use here and there. And ^66000010 Fluff^000000. That should be enough.";
-				set job_hunte,6;
+				set job_hunter_q,6;
 				next;
 				mes "[Demon Hunter]";
 				mes "Oh right. Our Guildmaster has gone on an official trip to the Payon Central Palace. You have to go visit him as well since he's the one that administers the test.";
@@ -754,7 +754,7 @@ hu_in01.gat,382,382,4	script	Guild Receptionist#hnt	732,{
 			} else if ('@item_need == 5) {
 				mes "[Demon Hunter]";
 				mes "Mmm. ^6600009 Shell^000000 to make the arrow tips. ^6600009 Worm Peeling^000000 to use here and there. And ^6600009 Yellow Herb^000000. That should be enough.";
-				set job_hunte,7;
+				set job_hunter_q,7;
 				next;
 				mes "[Demon Hunter]";
 				mes "By the way, a member of our Hunter Guild is at the Archer Guild on official business. I believe you have to go visit this person since he is in charge of the testing.";
@@ -765,7 +765,7 @@ hu_in01.gat,382,382,4	script	Guild Receptionist#hnt	732,{
 			} else if ('@item_need == 6) {
 				mes "[Demon Hunter]";
 				mes "Mmm. ^6600003 Tooth of Bat^000000 to use for the arrow tips. ^6600001 Sticky Mucus^000000 to use as adhesive. And ^6600001 Bear's Footskin^000000 will do.";
-				set job_hunte,8;
+				set job_hunter_q,8;
 				next;
 				mes "[Demon Hunter]";
 				mes "By the way, a member of our Hunter Guild is at the Archer Guild on official business. I believe you have to go visit the person since he's in charge of the testing.";
@@ -776,7 +776,7 @@ hu_in01.gat,382,382,4	script	Guild Receptionist#hnt	732,{
 			} else {
 				mes "[Demon Hunter]";
 				mes "Mmm. ^6600002 Porcupine Quill^000000 to use for the arrow tips. ^6600001 Yoyo Tail^000000 to help make the bow string. And ^6600001 Acorn^000000 please.";
-				set job_hunte,9;
+				set job_hunter_q,9;
 				next;
 				mes "[Demon Hunter]";
 				mes "Before I forget. A member of our Hunter Guild is at the Archer Guild for official business. I believe you have to go visit the person since he is in charge of the testing.";
@@ -802,7 +802,7 @@ hu_in01.gat,382,382,4	script	Guild Receptionist#hnt	732,{
 				if ('@item_need == 1) {
 					mes "[Demon Hunter]";
 					mes "Hmm. 5 ^660000Claw of Desert Wolf^000000 to use for arrow tips. ^6600005 Trunk^000000 to use here and there. And ^6600003 White Herb^000000 please.";
-					set job_hunte,3;
+					set job_hunter_q,3;
 					next;
 					mes "[Demon Hunter]";
 					mes "Oh right. Our Guildmaster has gone on an official trip to the Payon Central Palace. You have to go visit him because the one that administers the test.";
@@ -813,7 +813,7 @@ hu_in01.gat,382,382,4	script	Guild Receptionist#hnt	732,{
 				} else if ('@item_need == 2) {
 					mes "[Demon Hunter]";
 					mes "Hmm. ^6600003 Bill of Birds^000000 to use for the arrow tips. ^6600005 Skel-bone^000000 to use here and there. And ^6600003 Green Herbs^000000. That should be enough.";
-					set job_hunte,4;
+					set job_hunter_q,4;
 					next;
 					mes "[Demon Hunter]";
 					mes "Oh right. Our Guildmaster has gone on an official trip to the Payon Central Palace. You have to go visit him since he's the one that administers the test.";
@@ -824,7 +824,7 @@ hu_in01.gat,382,382,4	script	Guild Receptionist#hnt	732,{
 				} else if ('@item_need == 3) {
 					mes "[Demon Hunter]";
 					mes "Mmm. ^6600003 Venom Canine^000000 to use as arrow tips. ^6600003 Animal Skin^000000 to use here and there. And ^6600005 Red Herb^000000. That should be enough.";
-					set job_hunte,5;
+					set job_hunter_q,5;
 					next;
 					mes "[Demon Hunter]";
 					mes "Oh right. Our Guildmaster has gone on an official trip to the Payon Central Palace. You have to go visit him as well since he's the one that administers the test.";
@@ -835,7 +835,7 @@ hu_in01.gat,382,382,4	script	Guild Receptionist#hnt	732,{
 				} else if ('@item_need == 4) {
 					mes "[Demon Hunter]";
 					mes "Mmm. ^6600003 Dokkaebi Horn^000000 to make the arrow tips. ^6600003 Piece of Egg Shell^000000 to use here and there. And ^66000010 Fluff^000000. That should be enough.";
-					set job_hunte,6;
+					set job_hunter_q,6;
 					next;
 					mes "[Demon Hunter]";
 					mes "Oh right. Our Guildmaster has gone on an official trip to the Payon Central Palace. You have to go visit him as well since he's the one that administers the test.";
@@ -846,7 +846,7 @@ hu_in01.gat,382,382,4	script	Guild Receptionist#hnt	732,{
 				} else if ('@item_need == 5) {
 					mes "[Demon Hunter]";
 					mes "Mmm. ^6600009 Shell^000000 to make the arrow tips. ^6600009 Worm Peeling^000000 to use here and there. And ^6600009 Yellow Herb^000000. That should be enough.";
-					set job_hunte,7;
+					set job_hunter_q,7;
 					next;
 					mes "[Demon Hunter]";
 					mes "By the way, a member of our Hunter Guild is at the Archer Guild on official business. I believe you have to go visit this person since he is in charge of the testing.";
@@ -857,7 +857,7 @@ hu_in01.gat,382,382,4	script	Guild Receptionist#hnt	732,{
 				} else if ('@item_need == 6) {
 					mes "[Demon Hunter]";
 					mes "Mmm. ^6600003 Tooth of Bat^000000 to use for the arrow tips. ^6600001 Sticky Mucus^000000 to use as adhesive. And ^6600001 Bear's Footskin^000000 will do.";
-					set job_hunte,8;
+					set job_hunter_q,8;
 					next;
 					mes "[Demon Hunter]";
 					mes "By the way, a member of our Hunter Guild is at the Archer Guild on official business. I believe you have to go visit the person since he's in charge of the testing.";
@@ -868,7 +868,7 @@ hu_in01.gat,382,382,4	script	Guild Receptionist#hnt	732,{
 				} else {
 					mes "[Demon Hunter]";
 					mes "Mmm. ^6600002 Porcupine Quill^000000 to use for the arrow tips. ^6600001 Yoyo Tail^000000 to help make the bow string. And ^6600001 Acorn^000000 please.";
-					set job_hunte,9;
+					set job_hunter_q,9;
 					next;
 					mes "[Demon Hunter]";
 					mes "Before I forget. A member of our Hunter Guild is at the Archer Guild for official business. I believe you have to go visit the person since he is in charge of the testing.";
@@ -885,14 +885,14 @@ hu_in01.gat,382,382,4	script	Guild Receptionist#hnt	732,{
 				end;
 			}
 		}
-	} else if (job_hunte == 3) {
+	} else if (job_hunter_q == 3) {
 		mes "[Demon Hunter]";
 		mes "Hmm?";
 		next;
 		if (countitem(7030) > 4 && countitem(1019) > 4 && countitem(509) > 2) {
 			mes "[Demon Hunter]";
 			mes "You brought all of the necessary materials... You can get directions to the testing area from our Guildmaster who is currently in the Payon Central Palace.";
-			set job_hunte,10;
+			set job_hunter_q,10;
 			delitem 7030,5;
 			delitem 1019,5;
 			delitem 509,3;
@@ -911,14 +911,14 @@ hu_in01.gat,382,382,4	script	Guild Receptionist#hnt	732,{
 			mes "gathered all the items.";
 			close;
 		}
-	} else if (job_hunte == 4) {
+	} else if (job_hunter_q == 4) {
 		mes "[Demon Hunter]";
 		mes "Ah, you have returned.";
 		next;
 		if (countitem(925) > 2 && countitem(932) > 4 && countitem(511) > 2) {
 			mes "[Demon Hunter]";
 			mes "You brought all the necessary materials... You can get directions to the testing area from our Guildmaster that is currently in the Payon Central Palace.";
-			set job_hunte,10;
+			set job_hunter_q,10;
 			delitem 925,3;
 			delitem 932,5;
 			delitem 511,3;
@@ -937,14 +937,14 @@ hu_in01.gat,382,382,4	script	Guild Receptionist#hnt	732,{
 			mes "gathered all the items.";
 			close;
 		}
-	} else if (job_hunte == 5) {
+	} else if (job_hunter_q == 5) {
 		mes "[Demon Hunter]";
 		mes "Hmm...let me see.";
 		next;
 		if (countitem(937) > 2 && countitem(919) > 2 && countitem(507) > 4) {
 			mes "[Demon Hunter]";
 			mes "You brought all of the necessary materials... You can get directions to the testing area from our Guildmaster that is currently in the Payon Central Palace.";
-			set job_hunte,10;
+			set job_hunter_q,10;
 			delitem 937,3;
 			delitem 919,3;
 			delitem 507,5;
@@ -963,14 +963,14 @@ hu_in01.gat,382,382,4	script	Guild Receptionist#hnt	732,{
 			mes "gathered all of the items.";
 			close;
 		}
-	} else if (job_hunte == 6) {
+	} else if (job_hunter_q == 6) {
 		mes "[Demon Hunter]";
 		mes "Hmm? Let me see...";
 		next;
 		if (countitem(1021) > 2 && countitem(7032) > 2 && countitem(914) > 9) {
 			mes "[Demon Hunter]";
 			mes "You brought all of the necessary materials... You can get directions to the testing area from our Guildmaster that is currently in the Payon Central Palace.";
-			set job_hunte,10;
+			set job_hunter_q,10;
 			delitem 1021,3;
 			delitem 7032,3;
 			delitem 914,10;
@@ -989,14 +989,14 @@ hu_in01.gat,382,382,4	script	Guild Receptionist#hnt	732,{
 			mes "gathered all the items.";
 			close;
 		}
-	} else if (job_hunte == 7) {
+	} else if (job_hunter_q == 7) {
 		mes "[Demon Hunter]";
 		mes "Eh? Let me see...";
 		next;
 		if (countitem(935) > 8 && countitem(955) > 8 && countitem(508) > 8) {
 			mes "[Demon Hunter]";
 			mes "You brought all of the necessary materials... To get directions to the testing area, go talk to our Guildmaster who is at the Archer Guild.";
-			set job_hunte,11;
+			set job_hunter_q,11;
 			delitem 935,9;
 			delitem 955,9;
 			delitem 508,9;
@@ -1015,14 +1015,14 @@ hu_in01.gat,382,382,4	script	Guild Receptionist#hnt	732,{
 			mes "gathered all the items.";
 			close;
 		}
-	} else if (job_hunte == 8) {
+	} else if (job_hunter_q == 8) {
 		mes "[Demon Hunter]";
 		mes "Huh?";
 		next;
 		if (countitem(913) > 2 && countitem(938) > 0 && countitem(948) > 0) {
 			mes "[Demon Hunter]";
 			mes "You brought all of the necessary materials... To get directions to the testing area, go talk to our Guildmaster who is at the Archer Guild.";
-			set job_hunte,11;
+			set job_hunter_q,11;
 			delitem 913,3;
 			delitem 938,1;
 			delitem 948,1;
@@ -1041,14 +1041,14 @@ hu_in01.gat,382,382,4	script	Guild Receptionist#hnt	732,{
 			mes "gathered all the items.";
 			close;
 		}
-	} else if (job_hunte == 9) {
+	} else if (job_hunter_q == 9) {
 		mes "[Demon Hunter]";
 		mes "Huh?";
 		next;
 		if (countitem(1027) > 1 && countitem(942) > 0 && countitem(1026) > 0) {
 			mes "[Demon Hunter]";
 			mes "You brought all of the necessary materials... To get directions to the testing area, go talk to our Guildmaster who is at the Archer Guild.";
-			set job_hunte,11;
+			set job_hunter_q,11;
 			delitem 1027,2;
 			delitem 942,1;
 			delitem 1026,1;
@@ -1067,11 +1067,11 @@ hu_in01.gat,382,382,4	script	Guild Receptionist#hnt	732,{
 			mes "gathered all the items.";
 			close;
 		}
-	} else if (job_hunte > 9 && job_hunte < 17) {
+	} else if (job_hunter_q > 9 && job_hunter_q < 17) {
 		mes "[Demon Hunter]";
 		mes "Hmm? You didn't go to the Guildmaster either in Payon Central Palace or at the Archer Guild? He should be at one of the two places, so go look for him.";
 		close;
-	} else if (job_hunte == 17) {
+	} else if (job_hunter_q == 17) {
 		mes "[Demon Hunter]";
 		mes "Ooh. You passed the test. Congratulations~ You should go talk to Sherin now.";
 		close;
@@ -1084,7 +1084,7 @@ hu_in01.gat,382,382,4	script	Guild Receptionist#hnt	732,{
 
 payon_in03.gat,131,7,3	script	Hunter#htnGM	59,{
 
-	if (job_hunte == 10) {
+	if (job_hunter_q == 10) {
 		mes "[Hunter Guildmaster]";
 		mes "Hmpf. You must be here for the Hunter job test. Let me tell you about the testing process. What would you like to know?";
 		set @a0,1;
@@ -1135,12 +1135,12 @@ payon_in03.gat,131,7,3	script	Hunter#htnGM	59,{
 		}
 		mes "[Hunter Guildmaster]";
 		mes "Well, then. Your arrows are probably still being made, so you can use mine to take the test.";
-		set job_hunte,12;
+		set job_hunter_q,12;
 		getitem 1751,200;
 		close2;
 		warp "job_hunte.gat",176,22;
 		end;
-	} else if (job_hunte > 1 && job_hunte < 10) {
+	} else if (job_hunter_q > 1 && job_hunter_q < 10) {
 		mes "[Hunter Guildmaster]";
 		mes "Mmm...?";
 		mes "What is an Archer";
@@ -1152,11 +1152,11 @@ payon_in03.gat,131,7,3	script	Hunter#htnGM	59,{
 		mes "[Hunter Guildmaster]";
 		mes "Go gather the items for the test, and come back after you've visited the Hunter Guild.";
 		close;
-	} else if (job_hunte == 11) {
+	} else if (job_hunter_q == 11) {
 		mes "[Hunter]";
 		mes "Hmm? Can I help you? If you wish to change jobs, you should visit the person at the Archer Guild, not me.";
 		close;
-	} else if (job_hunte > 11 && job_hunte < 16) {
+	} else if (job_hunter_q > 11 && job_hunter_q < 16) {
 		mes "[Hunter Guildmaster]";
 		mes "Hmm. You're the Archer that almost gave up on changing jobs. You do have everything ready, right? Then I'll send you to take the test right away.";
 		next;
@@ -1211,7 +1211,7 @@ payon_in03.gat,131,7,3	script	Hunter#htnGM	59,{
 			mes "Okay!! I hope";
 			mes "you will pass this time!";
 			close2;
-			set job_hunte,12;
+			set job_hunter_q,12;
 			warp "job_hunte.gat",176,22;
 			end;
 		case 2:
@@ -1220,18 +1220,18 @@ payon_in03.gat,131,7,3	script	Hunter#htnGM	59,{
 			mes "all of your preparations.";
 			close;
 		}
-	} else if (job_hunte == 16) {
+	} else if (job_hunter_q == 16) {
 		mes "[Hunter Guildmaster]";
 		mes "Wow, you came back in one piece!";
 		mes "I mean, good job. I'll give you the item which proves that you have passed the test.";
-		set job_hunte,17;
+		set job_hunter_q,17;
 		savepoint "payon.gat",104,99;
 		getitem 1007,1;
 		next;
 		mes "[Hunter Guildmaster]";
 		mes "Okay, here it is. Now, go back to the Hunter Guild. I have some more business left to do here, but I hope you can become a Hunter soon.";
 		close;
-	} else if (job_hunte == 17) {
+	} else if (job_hunter_q == 17) {
 		mes "[Hunter Guildmaster]";
 		mes "I see you aren't in a hurry to become a Hunter? When I first became a Hunter, I ran around for a month wildly brandishing my bow because I was so happy. Hehe~";
 		next;
@@ -1249,7 +1249,7 @@ payon_in03.gat,131,7,3	script	Hunter#htnGM	59,{
 payon_in02.gat,21,31,1	script	Hunter#htnGM2	59,{
 
 	cutin "job_huntermaster",2;
-	if (job_hunte == 11) {
+	if (job_hunter_q == 11) {
 		mes "[Hunter Guildmaster]";
 		mes "Mmm. I see you're here for the Hunter job test. Let me explain the testing process. What would you like to know?";
 		set @a0,1;
@@ -1310,10 +1310,10 @@ payon_in02.gat,21,31,1	script	Hunter#htnGM2	59,{
 		next;
 		mes "[Hunter Guildmaster]";
 		mes "Good luck.";
-		set job_hunte,12;
+		set job_hunter_q,12;
 		warp "job_hunte.gat",176,22;
 		end;
-	} else if (job_hunte > 1 && job_hunte < 10) {
+	} else if (job_hunter_q > 1 && job_hunter_q < 10) {
 		mes "[Hunter Guildmaster]";
 		mes "Mmm...?";
 		mes "Why is an Archer";
@@ -1327,7 +1327,7 @@ payon_in02.gat,21,31,1	script	Hunter#htnGM2	59,{
 		close2;
 		cutin "job_huntermaster",255;
 		end;
-	} else if (job_hunte == 10) {
+	} else if (job_hunter_q == 10) {
 		mes "[Hunter]";
 		mes "Mmm?";
 		mes "Can I help you";
@@ -1340,7 +1340,7 @@ payon_in02.gat,21,31,1	script	Hunter#htnGM2	59,{
 		close2;
 		cutin "job_huntermaster",255;
 		end;
-	} else if (job_hunte > 11 && job_hunte < 16) {
+	} else if (job_hunter_q > 11 && job_hunter_q < 16) {
 		mes "[Hunter Guildmaster]";
 		mes "Mmm? Aren't you the Archer who gave up last time? Now you're ready, right? Then I'll send you to the job change area right now.";
 		next;
@@ -1409,7 +1409,7 @@ payon_in02.gat,21,31,1	script	Hunter#htnGM2	59,{
 			mes "Pass this time!";
 			close2;
 			cutin "job_huntermaster",255;
-			set job_hunte,12;
+			set job_hunter_q,12;
 			warp "job_hunte.gat",176,22;
 			end;
 		case 2:
@@ -1422,11 +1422,11 @@ payon_in02.gat,21,31,1	script	Hunter#htnGM2	59,{
 			cutin "job_huntermaster",255;
 			end;
 		}
-	} else if (job_hunte == 16) {
+	} else if (job_hunter_q == 16) {
 		mes "[Hunter Guildmaster]";
 		mes "Wow. You're back in one piece!";
 		mes "I mean, good job. Well then, I'll give you the item which serves as proof that you passed the test.";
-		set job_hunte,17;
+		set job_hunter_q,17;
 		savepoint "payon.gat",104,99;
 		getitem 1007,1;
 		next;
@@ -1437,7 +1437,7 @@ payon_in02.gat,21,31,1	script	Hunter#htnGM2	59,{
 		close2;
 		cutin "job_huntermaster",255;
 		end;
-	} else if (job_hunte == 17) {
+	} else if (job_hunter_q == 17) {
 		mes "[Hunter Guildmaster]";
 		mes "I see you're not in a hurry to become a Hunter. I was running around with joy, wildly brandishing my bow the first month I became a Hunter. Hehe~";
 		next;
@@ -1460,7 +1460,7 @@ payon_in02.gat,21,31,1	script	Hunter#htnGM2	59,{
 
 job_hunte.gat,178,32,1	script	Guide#hnt	107,5,2,{
 
-	if (job_hunte == 12) {
+	if (job_hunter_q == 12) {
 		mes "[Guide]";
 		mes "Good day. Welcome to the Hunter testing site. The test begins when you enter the next room.";
 		next;
@@ -1477,7 +1477,7 @@ job_hunte.gat,178,32,1	script	Guide#hnt	107,5,2,{
 		mes "We will provide the arrows, so just make sure that you bring a bow. Well, then. Please enter when you are ready.";
 		savepoint "job_hunte.gat",176,22;
 		close;
-	} else if (job_hunte > 12 && job_hunte < 16) {
+	} else if (job_hunter_q > 12 && job_hunter_q < 16) {
 		mes "[Guide]";
 		mes "Hmm...";
 		mes "Did you mess up?";
@@ -1500,12 +1500,12 @@ job_hunte.gat,178,32,1	script	Guide#hnt	107,5,2,{
 			mes "Very well. I'll send you to Payon. Hope to see you next time. Don't forget to save when you leave.";
 			doevent "hntwait::OnCommandReset";
 			close2;
-			set job_hunte,13;
+			set job_hunter_q,13;
 			savepoint "payon.gat",104,99;
 			warp "payon_in02.gat",21,27;
 			end;
 		}
-	} else if (job_hunte > 15) {
+	} else if (job_hunter_q > 15) {
 		mes "[Guide]";
 		mes "You shouldn't be here. How about finding the required job change item first?";
 		close2;
@@ -1515,7 +1515,7 @@ job_hunte.gat,178,32,1	script	Guide#hnt	107,5,2,{
 	}
 
 OnTouch:
-	if (job_hunte == 12) {
+	if (job_hunter_q == 12) {
 		mes "[Guide]";
 		mes "Good day. Welcome to the Hunter testing site. The test begins when you enter the next room.";
 		next;
@@ -1532,7 +1532,7 @@ OnTouch:
 		mes "We will provide the arrows, so just make sure that you bring a bow. Well, then. Please enter when you are ready.";
 		savepoint "job_hunte.gat",176,22;
 		close;
-	} else if (job_hunte > 12 && job_hunte < 16) {
+	} else if (job_hunter_q > 12 && job_hunter_q < 16) {
 		mes "[Guide]";
 		mes "Hmm...";
 		mes "Did you mess up?";
@@ -1555,12 +1555,12 @@ OnTouch:
 			mes "Very well. I'll send you to Payon. Hope to see you next time. Don't forget to save when you leave.";
 			doevent "hntwait::OnCommandReset";
 			close2;
-			set job_hunte,13;
+			set job_hunter_q,13;
 			savepoint "payon.gat",104,99;
 			warp "payon_in02.gat",21,27;
 			end;
 		}
-	} else if (job_hunte > 15) {
+	} else if (job_hunter_q > 15) {
 		mes "[Guide]";
 		mes "You shouldn't be here. How about finding the required job change item first?";
 		close2;
@@ -1580,6 +1580,7 @@ OnInit:
 	end;
 
 OnStartArena:
+	killmonsterall "job_hunte.gat";
 	warpwaitingpc "job_hunte.gat",90,67;
 	enablenpc "Manager#hnt";
 	donpcevent "Manager#hnt::OnCommandOn";
@@ -1612,17 +1613,15 @@ OnCommandOn:
 	end;
 
 OnCommandReset:
-	set $@mobcount,0;
-	set $@killfix,1;
-	killmonsterall "job_hunte.gat";
-	set $@killfix,0;
+	set $@mobcount1,0;
+	killmonster "job_hunte.gat","Manager#hnt::OnMyMobDead";
 	end;
 
 OnMyMobDead:
-	set $@mobcount,$@mobcount+1;
-	if ($@mobcount >= 4 && $@killfix == 0) {
+	set $@mobcount1,$@mobcount1+1;
+	if ($@mobcount1 >= 4) {
 		mapannounce "job_hunte.gat","Okay, good job... Now, find the switch in the center of the map!! Be careful of the traps!!",8;
-		set job_hunte,14;
+		set job_hunter_q,14;
 		enablenpc "Switch#hnt";
 		donpcevent "Manager#hnt::OnCommandReset";
 		donpcevent "Manager#hnt2::OnCommandReset";
@@ -1765,15 +1764,13 @@ OnCommandOn:
 	end;
 
 OnCommandReset:
-	set $@mobcount,0;
-	set $@killfix,1;
-	killmonsterall "job_hunte.gat";
-	set $@killfix,0;
+	set $@mobcount1,0;
+	killmonster "job_hunte.gat","Manager#hnt2::OnMyMobDead";
 	end;
 
 OnMyMobDead:
 	mapannounce "job_hunte.gat",""+strcharinfo(0)+"!! You made a mistake...Please try again.",8;
-	set job_hunte,13;
+	set job_hunter_q,13;
 	doevent "hntwait::OnCommandReset";
 	stopnpctimer "Manager#hnt";
 	donpcevent "Manager#hnt::OnCommandReset";
@@ -1788,7 +1785,7 @@ job_hunte.gat,93,101,1	script	Switch#hnt	723,1,1,{
 
 	mes "^3355FFThere are 3 buttons";
 	mes "on the escape switch.^000000";
-	set job_hunte,15;
+	set job_hunter_q,15;
 	next;
 	switch(select("Escape","Cancel","Re-test")) {
 	case 1:
@@ -1810,7 +1807,7 @@ job_hunte.gat,93,101,1	script	Switch#hnt	723,1,1,{
 		mes "returned to the";
 		mes "waiting room.^000000";
 		close2;
-		set job_hunte,13;
+		set job_hunter_q,13;
 		warp "job_hunte.gat",176,22;
 		doevent "hntwait::OnCommandReset";
 		end;
@@ -1819,29 +1816,29 @@ job_hunte.gat,93,101,1	script	Switch#hnt	723,1,1,{
 OnTouch:
 	mes "^3355FFThere are 3 buttons";
 	mes "on the escape switch.^000000";
-	set job_hunte,15;
+	set job_hunter_q,15;
 	next;
 	switch(select("Escape","Cancel","Re-test")) {
 	case 1:
 		mes "^3355FFThe Escape Warp Portal";
 		mes "has now been activated.^000000";
 		close2;
-		mapannounce "job_hunte.gat"," ## Escape Warp Portal activation complete. ##",8;
+		mapannounce "job_hunte.gat","Escape Warp Portal activation complete.",8;
 		enablenpc "exit#hnttest";
 		end;
 	case 2:
 		mes "^3355FFCanceling";
 		mes "Operation.^000000";
 		close2;
-		mapannounce "job_hunte.gat"," ## Operation has been cancelled. ##",8;
+		mapannounce "job_hunte.gat","Operation has been cancelled.",8;
 		end;
 	case 3:
-		mapannounce "job_hunte.gat"," ## Cancellation warp activating... ##",8;
+		mapannounce "job_hunte.gat","Cancellation warp activating...",8;
 		mes "^3355FFYou will soon be";
 		mes "returned to the";
 		mes "waiting room.^000000";
 		close2;
-		set job_hunte,13;
+		set job_hunter_q,13;
 		warp "job_hunte.gat",176,22;
 		doevent "hntwait::OnCommandReset";
 		end;
@@ -1857,7 +1854,7 @@ job_hunte.gat,89,139,0	script	exit#hnttest	45,2,2,{
 
 OnTouch:
 	doevent "hntwait::OnCommandReset";
-	set job_hunte,16;
+	set job_hunter_q,16;
 	savepoint "payon.gat",104,99;
 	set '@whe,rand(1,2);
 	if ('@whe == 1) {
@@ -1880,7 +1877,7 @@ OnInit:
 
 OnTouch:
 	warp "job_hunte.gat",176,22;
-	set job_hunte,13;
+	set job_hunter_q,13;
 	end;
 }
 
@@ -4966,7 +4963,7 @@ OnTouch:
 
 function	script	F_HunterTrap	{
 
-	set job_hunte,13;
+	set job_hunter_q,13;
 	warp "job_hunte.gat",176,22;
 	doevent "hntwait::OnCommandReset";
 	donpcevent "Manager#hnt::OnCommandReset";

@@ -281,8 +281,8 @@ prt_fild03.gat,365,255,2	script	Ascetic	89,{
 		}
 		close;
 	} else if (Basejob == Job_Acolyte) {
-		if (PRIEST_Q2 != 0) {
-			if (PRIEST_Q2 == 1) {
+		if (job_priest_q != 0) {
+			if (job_priest_q == 1) {
 				mes "[Father Rubalkabara]";
 				mes "Ah yes, so you're the young Acolyte who wishes to become a Priest.";
 				next;
@@ -296,9 +296,9 @@ prt_fild03.gat,365,255,2	script	Ascetic	89,{
 				mes "Well then, please head to your next destination for your pilgrimage. Be safe in your travels.";
 				close2;
 				savepoint "prt_fild03.gat",361,255;
-				set PRIEST_Q2,2;
+				set job_priest_q,2;
 				end;
-			} else if (PRIEST_Q2 == 2) {
+			} else if (job_priest_q == 2) {
 				mes "[Father Rubalkabara]";
 				mes "Please be hurry to the next destination for your pilgrimage. I hope you become a Priest soon.";
 				close;
@@ -386,8 +386,8 @@ moc_fild07.gat,41,355,4	script	Ascetic	95,{
 			close;
 		}
 	} else if (Basejob == Job_Acolyte) {
-		if (PRIEST_Q2 != 0) {
-			if (PRIEST_Q2 == 1) {
+		if (job_priest_q != 0) {
+			if (job_priest_q == 1) {
 				mes "[Mother Marthilda]";
 				mes "Hmm...";
 				mes "It seems you're";
@@ -400,7 +400,7 @@ moc_fild07.gat,41,355,4	script	Ascetic	95,{
 				mes "[Mother Marthilda]";
 				mes "Perhaps you should ask Bishop Paul or Sister Cecilia once again. Well, may God be with you...";
 				close;
-			} else if (PRIEST_Q2 == 2) {
+			} else if (job_priest_q == 2) {
 				mes "[Mother Marthilda]";
 				mes "Ah, are you";
 				mes "a Priest trainee...?";
@@ -420,9 +420,9 @@ moc_fild07.gat,41,355,4	script	Ascetic	95,{
 				mes "on your journey.";
 				close2;
 				savepoint "moc_fild07.gat",35,355;
-				set PRIEST_Q2,3;
+				set job_priest_q,3;
 				end;
-			} else if (PRIEST_Q2 == 3) {
+			} else if (job_priest_q == 3) {
 				mes "[Mother Marthilda]";
 				mes "Please leave soon, and";
 				mes "continue your training.";
@@ -515,8 +515,8 @@ prt_fild00.gat,208,218,6	script	Ascetic	98,{
 			close;
 		}
 	} else if (Basejob == Job_Acolyte) {
-		if (PRIEST_Q2 != 0) {
-			if (PRIEST_Q2 == 1) {
+		if (job_priest_q != 0) {
+			if (job_priest_q == 1) {
 				mes "[Father Yosuke]";
 				mes "Hmm...";
 				mes "A Priest trainee, eh?";
@@ -528,7 +528,7 @@ prt_fild00.gat,208,218,6	script	Ascetic	98,{
 				mes "But that's your own fault.";
 				mes "Now, go back to Church, kid.";
 				close;
-			} else if (PRIEST_Q2 == 2) {
+			} else if (job_priest_q == 2) {
 				mes "[Father Yosuke]";
 				mes "Hmm...";
 				mes "A Priest trainee, eh?";
@@ -539,7 +539,7 @@ prt_fild00.gat,208,218,6	script	Ascetic	98,{
 				mes "[Father Yosuke]";
 				mes "But that's your own fault. Go back to Church.";
 				close;
-			} else if (PRIEST_Q2 == 3) {
+			} else if (job_priest_q == 3) {
 				mes "[Father Yosuke]";
 				mes "Hmm.";
 				mes "A Priest";
@@ -559,9 +559,9 @@ prt_fild00.gat,208,218,6	script	Ascetic	98,{
 				mes "completed.";
 				close2;
 				savepoint "prt_fild00.gat",206,230;
-				set PRIEST_Q2,4;
+				set job_priest_q,4;
 				end;
-			} else if (PRIEST_Q2 == 4) {
+			} else if (job_priest_q == 4) {
 				mes "[Father Yosuke]";
 				mes "I told you to go back to church.";
 				mes "Or do you want to live with me here for the rest of your life...?";

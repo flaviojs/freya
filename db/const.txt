@@ -90,6 +90,10 @@ Job_Star_Gladiator	25
 Job_StarGladiator	25
 Job_Star_Gladiator2	26
 Job_StarGladiator2	26
+Job_Taekwon_Master	25
+Job_TaekwonMaster	25
+Job_Taekwon_Master2	26
+Job_TaekwonMaster2	26
 Job_Soul_Linker	27
 Job_SoulLinker	27
 Job_Gunslinger  28

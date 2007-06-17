@@ -321,47 +321,46 @@ lighthalzen.gat,230,182,4	script	Klaubis	866,{
 	mes "but it can be a little too";
 	mes "quiet and uneventful here.";
 	next;
-	menu "Have you lived in here long?",live,"I agree.",agree,"Have you heard about the serial killer?",killer;
+	switch(select("Have you lived in here long?","I agree.","Have you heard about the serial killer?")) {
 
+	case 1:
+		mes "[Klaubis]";
+		mes "Yes, our family has";
+		mes "lived in this city for a";
+		mes "long time, starting with";
+		mes "my great grandfather. Let's";
+		mes "see, my family's been here";
+		mes "for about two hundred years.";
+		next;
+		mes "[Klaubis]";
+		mes "You'd be surprised how";
+		mes "many people stay in their";
+		mes "hometowns. Even if you do";
+		mes "leave, though, you can always";
+		mes "come back. It wouldn't be your";
+		mes "hometown if you couldn't, right?";
+		close;
 
-live:
-	mes "[Klaubis]";
-	mes "Yes, our family has";
-	mes "lived in this city for a";
-	mes "long time, starting with";
-	mes "my great grandfather. Let's";
-	mes "see, my family's been here";
-	mes "for about two hundred years.";
-	next;
-	mes "[Klaubis]";
-	mes "You'd be surprised how";
-	mes "many people stay in their";
-	mes "hometowns. Even if you do";
-	mes "leave, though, you can always";
-	mes "come back. It wouldn't be your";
-	mes "hometown if you couldn't, right?";
-	close;
+	case 2:
+		mes "[Klaubis]";
+		mes "Yes, the atmosphere";
+		mes "can get pretty listless";
+		mes "around here. But still,";
+		mes "there are plenty of nice";
+		mes "sights to enjoy here in";
+		mes "Lighthalzen, so look around~";
+		close;
 
-agree: 
-	mes "[Klaubis]";
-	mes "Yes, the atmosphere";
-	mes "can get pretty listless";
-	mes "around here. But still,";
-	mes "there are plenty of nice";
-	mes "sights to enjoy here in";
-	mes "Lighthalzen, so look around~";
-	close;
-
-killer:
-	mes "[Klaubis]";
-	mes "You mean the Serial";
-	mes "Axe Murderer? I thought";
-	mes "that was an old ghost story.";
-	mes "Hm. I think that lady inside";
-	mes "the Weapon Shop would";
-	mes "know more about that tale...";
-	close;
-
+	case 3:
+		mes "[Klaubis]";
+		mes "You mean the Serial";
+		mes "Axe Murderer? I thought";
+		mes "that was an old ghost story.";
+		mes "Hm. I think that lady inside";
+		mes "the Weapon Shop would";
+		mes "know more about that tale...";
+		close;
+	}
 }
 
 lighthalzen.gat,232,156,4	script	Sigmund	866,{
@@ -381,7 +380,6 @@ lighthalzen.gat,232,156,4	script	Sigmund	866,{
 	mes "do there. Which makes me";
 	mes "Wonder... Why guard it?";
 	close;	
-
 }
 
 lighthalzen.gat,190,134,5	script	Joyce	862,{
@@ -393,7 +391,6 @@ lighthalzen.gat,190,134,5	script	Joyce	862,{
 	mes "beating faster and faster";
 	mes "with a feverish passion~";
 	close;	
-
 }
 
 lighthalzen.gat,191,134,5	script	Dan Song	869,{
@@ -404,7 +401,6 @@ lighthalzen.gat,191,134,5	script	Dan Song	869,{
 	mes "like glimmering pools";
 	mes "of light. So, so beautiful...";
 	close;	
-
 }
 
 lighthalzen.gat,115,159,5	script	Collins	866,{
@@ -424,7 +420,6 @@ lighthalzen.gat,115,159,5	script	Collins	866,{
 	mes "do people get hired there";
 	mes "in the first place anyway?";
 	close;	
-
 }
 
 lighthalzen.gat,77,157,5	script	Villagomez	866,{
@@ -436,7 +431,6 @@ lighthalzen.gat,77,157,5	script	Villagomez	866,{
 	mes "i don't keep my family";
 	mes "waiting. *Sigh...*";
 	close;	
-
 }
 
 lighthalzen.gat,125,68,5	script	Kemp	97,{
@@ -454,7 +448,6 @@ lighthalzen.gat,125,68,5	script	Kemp	97,{
 	mes "strange is happening with";
 	mes "all the people who work there.";
 	close;	
-
 }
 
 lighthalzen.gat,138,50,8	script	Mauro	847,{
@@ -475,7 +468,6 @@ lighthalzen.gat,138,50,8	script	Mauro	847,{
 	mes "know that they owe their";
 	mes "lives of luxury to us...";
 	close;	
-
 }
 
 lighthalzen.gat,132,103,5	script	Sefith	734,{
@@ -495,7 +487,6 @@ lighthalzen.gat,132,103,5	script	Sefith	734,{
 	mes "in Lighthalzen. They don't hold";
 	mes "a candle to my studliness~";
 	close;	
-
 }
 
 lighthalzen.gat,239,64,5	script	Jade	862,{
@@ -523,7 +514,6 @@ lighthalzen.gat,239,64,5	script	Jade	862,{
 	mes "It sounds so fantastic";
 	mes "and romantic in a way...";
 	close;	
-
 }
 
 lighthalzen.gat,205,208,3	script	Greedy Looking Man	853,{
@@ -536,7 +526,6 @@ lighthalzen.gat,205,208,3	script	Greedy Looking Man	853,{
 	mes "I don't have enough funds at the";
 	mes "moment, but the day will come~";
 	close;
-
 }
 
 lhz_in02.gat,34,213,4	script	Maggie	91,{
@@ -556,7 +545,6 @@ lhz_in02.gat,34,213,4	script	Maggie	91,{
 	mes "the price of my flowers. Why";
 	mes "are the city officials so greedy?";
 	close;
-
 }
 
 lighthalzen.gat,202,94,5	script	Wallace	847,{
@@ -575,7 +563,6 @@ lighthalzen.gat,202,94,5	script	Wallace	847,{
 	mes "man. I could ask her out now.";
 	mes "Hm? What's that look for?";
 	close;
-
 }
 
 lighthalzen.gat,182,102,3	script	Lucius	866,{
@@ -586,77 +573,80 @@ lighthalzen.gat,182,102,3	script	Lucius	866,{
 	mes "make a donation";
 	mes "to help the hungry?";
 	next;
-	menu "Sure.",s_Sure,"No, thanks.",-;
-	mes "[Lucius]";
-	goto s_Cancel;
-
-s_Cancel:
-	mes "I understand. Still,";
-	mes "keep in mind that when";
-	mes "you give from your heart,";
-	mes "you will be rewarded tenfold.";
-	mes "Though I admit, the benefits";
-	mes "aren't always readily apparent.";
-	close;
-
-s_Sure:
-	mes "[Lucius]";
-	mes "Now, you can donate 1 to";
-	mes "30,000 zeny that will be used";
-	mes "to support the poor and feed";
-	mes "starving children. If you wish";
-	mes "to cancel, please enter '0'.";
-	next;
-	input @zenydonate;
-	mes "[Lucius]";
-	if (@zenydonate == 0) goto s_Cancel;
-	if (@zenydonate > 30000) goto L_Donation1;
-	if (Zeny < @zenydonate) goto L_Donation2;
-	set Zeny,Zeny - @zenydonate;
-	set $donatedzeny,$donatedzeny + @zenydonate;
-	mes "Thank you so much";
-	mes "for your " + @zenydonate + " zeny donation.";
-	mes "I promise that your money";
-	mes "will be put to good use in";
-	mes "benefiting the poor and needy.";
-	next;
-	mes "[Lucius]";
-	mes "So far, I've received";
-	mes "a total of " + $donatedzeny + " zeny in";
-	mes "donations. I'm glad to see";
-	mes "that there are still kinda and";
-	mes "generous people in the world.";
-	if ($donatedzeny > 259999) goto L_Donation3;
-	close;
-
-	L_Donation1:
-		mes "I'm sorry but you can't";
-		mes "donate more than 30,000";
-		mes "zeny. Please choose another";
-		mes "number.";
-		close;
-
-	L_Donation2:
-		mes "I'm sorry but you do";
-		mes "not have as much zeny";
-		mes "as you wish to donate.";
-		mes "Please come back when you";
-		mes "do!";
-		close;
-
-	L_Donation3:
+	switch(select("Sure.",s_Sure,"No, thanks.")) {
+	case 1:
+		mes "[Lucius]";
+		mes "Now, you can donate 1 to";
+		mes "30,000 zeny that will be used";
+		mes "to support the poor and feed";
+		mes "starving children. If you wish";
+		mes "to cancel, please enter '0'.";
+		next;
+		input '@input;
+		mes "[Lucius]";
+		if ('@input == 0) {
+			mes "[Lucius]";
+			mes "I understand. Still,";
+			mes "keep in mind that when";
+			mes "you give from your heart,";
+			mes "you will be rewarded tenfold.";
+			mes "Though I admit, the benefits";
+			mes "aren't always readily apparent.";
+			close;
+		}
+		if ('@input > 30000) {
+			mes "I'm sorry but you can't";
+			mes "donate more than 30,000";
+			mes "zeny. Please choose another";
+			mes "number.";
+			close;
+		}
+		if (Zeny < '@input) {
+			mes "I'm sorry but you do";
+			mes "not have as much zeny";
+			mes "as you wish to donate.";
+			mes "Please come back when you";
+			mes "do!";
+			close;
+		}
+		set Zeny,Zeny-'@input;
+		set zenydonate,zenydonate+'@input;
+		mes "Thank you so much";
+		mes "for your "+'@input+" zeny donation.";
+		mes "I promise that your money";
+		mes "will be put to good use in";
+		mes "benefiting the poor and needy.";
 		next;
 		mes "[Lucius]";
-		mes "This should be enough";
-		mes "to send to the Poor Relief";
-		mes "Organization. Please accpet";
-		mes "this small gift as a token of";
-		mes "my gratitude, adventurer. Bless";
-		mes "you, youngster and take care.";
-		getitem 603,1;
-		getitem 12016,1;
-		set $donatedzeny,0;
+		mes "So far, I've received";
+		mes "a total of "+zenydonate+" zeny in";
+		mes "donations. I'm glad to see";
+		mes "that there are still kinda and";
+		mes "generous people in the world.";
+		if (zenydonate > 259999) {
+			next;
+			mes "[Lucius]";
+			mes "This should be enough";
+			mes "to send to the Poor Relief";
+			mes "Organization. Please accpet";
+			mes "this small gift as a token of";
+			mes "my gratitude, adventurer. Bless";
+			mes "you, youngster and take care.";
+			getitem 603,1;
+			getitem 12016,1;
+			set zenydonate,0;
+		}
 		close;
+	case 2:
+		mes "[Lucius]";
+		mes "I understand. Still,";
+		mes "keep in mind that when";
+		mes "you give from your heart,";
+		mes "you will be rewarded tenfold.";
+		mes "Though I admit, the benefits";
+		mes "aren't always readily apparent.";
+		close;
+	}
 }
 
 lighthalzen.gat,147,105,3	script	Laqumet	869,{
@@ -676,7 +666,6 @@ lighthalzen.gat,147,105,3	script	Laqumet	869,{
 	mes "my honesty and loyalty will";
 	mes "help me find someone good.";
 	close;
-
 }
 
 lhz_in02.gat,241,172,8	script	Hotel Employee#02	868,{
@@ -689,7 +678,6 @@ lhz_in02.gat,241,172,8	script	Hotel Employee#02	868,{
 	mes "Thank you and I hope that";
 	mes "you enjoy your stay here.";
 	close;
-
 }
 
 lhz_in02.gat,210,189,2	script	Christopher Michael	849,{
@@ -701,7 +689,6 @@ lhz_in02.gat,210,189,2	script	Christopher Michael	849,{
 	mes "Don't want to get up.";
 	mes "Ever again. OoOoooh...";
 	close;
-
 }
 
 lhz_in02.gat,201,181,6	script	Safwat Fahmy	853,{
@@ -729,7 +716,6 @@ lhz_in02.gat,201,181,6	script	Safwat Fahmy	853,{
 	mes "I just wish there were";
 	mes "some place quieter to drink.";
 	close;
-
 }
 
 lhz_in02.gat,251,212,2	script	Hotel Employee#03	868,{
@@ -741,7 +727,6 @@ lhz_in02.gat,251,212,2	script	Hotel Employee#03	868,{
 	mes "prioritize couples when";
 	mes "assigning this room.";
 	close;
-
 }
 
 lhz_in02.gat,229,217,2	script	Tanoue	863,{
@@ -759,7 +744,6 @@ lhz_in02.gat,229,217,2	script	Tanoue	863,{
 	mes "plush and have electronic";
 	mes "massage and heating controls...";
 	close;
-
 }
 
 lhz_in02.gat,209,277,4	script	Ben Allen	84,{
@@ -778,7 +762,6 @@ lhz_in02.gat,209,277,4	script	Ben Allen	84,{
 	mes "After a night's sleep over";
 	mes "here, I feel like a new man!";
 	close;
-
 }
 
 lhz_in02.gat,221,276,4	script	Harp	869,{
@@ -797,7 +780,6 @@ lhz_in02.gat,221,276,4	script	Harp	869,{
 	mes "looking at her makes me feel";
 	mes "so happy! Praise be to Kafra!";
 	close;
-
 }
 
 lhz_in02.gat,238,275,4	script	Hotel Employee#04	869,{
@@ -810,7 +792,6 @@ lhz_in02.gat,238,275,4	script	Hotel Employee#04	869,{
 	mes "Please inquire at the front";
 	mes "desk if you wish to check in.";
 	close;
-
 }
 
 lhz_in02.gat,247,275,4	script	Hotel Employee#05	868,{
@@ -829,7 +810,6 @@ lhz_in02.gat,247,275,4	script	Hotel Employee#05	868,{
 	mes "Alcohol certainly is the";
 	mes "grease for social gears.";
 	close;
-
 }
 
 lhz_in02.gat,271,281,2	script	Citizen#01	47,{
@@ -848,7 +828,6 @@ lhz_in02.gat,271,281,2	script	Citizen#01	47,{
 	mes "Oh well, back to schmoozin'";
 	mes "with all the hot chicks~";
 	close;
-
 }
 
 lhz_in02.gat,277,285,4	script	Bartender	61,{
@@ -861,7 +840,6 @@ lhz_in02.gat,277,285,4	script	Bartender	61,{
 	mes "in Lighthalzen and have";
 	mes "yourself a good time.";
 	close;
-
 }
 
 lhz_in02.gat,281,280,6	script	Customer#01	816,{
@@ -880,7 +858,6 @@ lhz_in02.gat,281,280,6	script	Customer#01	816,{
 	mes "nice boy would just";
 	mes "talk to me for real.";
 	close;
-
 }
 
 lhz_in02.gat,287,282,4	script	Customer#02	853,{
@@ -901,7 +878,6 @@ lhz_in02.gat,287,282,4	script	Customer#02	853,{
 	mes "the way the odds work, right?";
 	mes "Even when they're against me...";
 	close;
-
 }
 
 lighthalzen.gat,123,212,4	script	Merpi	700,{
@@ -920,33 +896,33 @@ lighthalzen.gat,123,212,4	script	Merpi	700,{
 	mes "If you have any questions,";
 	mes "feel free to ask me anything.";
 	next;
-	menu "Well, I have nothing to ask...",-,"Any news or rumors?",L_rumors,"I like laundry too.",L_laundry;
-	mes "[Merpi]";
-	mes "Oh, really?";
-	mes "Well, if you've traveled";
-	mes "all over the world, maybe";
-	mes "you've found a place just";
-	mes "like Lighthalzen, so maybe";
-	mes "you're already comfortable?";
-	close;
-	
-L_rumors:
-	mes "[Merpi]";
-	mes "Well, things have";
-	mes "been pretty peaceful";
-	mes "for the past few years.";
-	mes "The only rumor floating";
-	mes "around is about some";
-	mes "weird axe murderer...";
-	close;
-
-L_laundry:
-	mes "[Merpi]";
-	mes "Oh, that's wonderful!";
-	mes "I so love doing hand";
-	mes "laundry, though I'm not";
-	mes "quite sure why. Oh well~";
-	close;
+	switch(select("Well, I have nothing to ask...","Any news or rumors?","I like laundry too.")) {
+	case 1:
+		mes "[Merpi]";
+		mes "Oh, really?";
+		mes "Well, if you've traveled";
+		mes "all over the world, maybe";
+		mes "you've found a place just";
+		mes "like Lighthalzen, so maybe";
+		mes "you're already comfortable?";
+		close;
+	case 2:
+		mes "[Merpi]";
+		mes "Well, things have";
+		mes "been pretty peaceful";
+		mes "for the past few years.";
+		mes "The only rumor floating";
+		mes "around is about some";
+		mes "weird axe murderer...";
+		close;
+	case 3:
+		mes "[Merpi]";
+		mes "Oh, that's wonderful!";
+		mes "I so love doing hand";
+		mes "laundry, though I'm not";
+		mes "quite sure why. Oh well~";
+		close;
+	}
 }
 
 lighthalzen.gat,297,239,3	script	Pilia	818,{
@@ -1082,7 +1058,6 @@ L_zeny:
 	mes "You don't seem to have";
 	mes "enough zeny.";
 	close;
-
 }
 
 lighthalzen.gat,311,194,3	script	Reuben	870,{
@@ -1349,6 +1324,7 @@ lhz_in01.gat,116,39,6	script	Kejulle Rekenber#Kejulle_Rekenber	822,{
 	mes "Yeah, no special treatment...";
 	close;
 }
+
 lhz_in01.gat,110,40,2	script	Jorjerro	89,{
 
 	mes "^0000AAThis man here";
@@ -1523,7 +1499,6 @@ lhz_in03.gat,189,87,4	script	Drunken Man#04	869,{
 	mes "my misery. This is all the";
 	mes "comfort I need, you hear?!";
 	close;
-
 }
 
 lhz_in03.gat,183,82,6	script	Drunken Man#05	870,{
@@ -1541,7 +1516,6 @@ lhz_in03.gat,183,82,6	script	Drunken Man#05	870,{
 	mes "today. Like, it's the flavor";
 	mes "of relaxing, joyous relief~";
 	close;
-
 }
 
 lhz_in03.gat,180,83,6	script	Citizen#02	86,{
@@ -1567,7 +1541,6 @@ lhz_in03.gat,180,83,6	script	Citizen#02	86,{
 	mes "who's not. We all need";
 	mes "somebody to be with, right?";
 	close;
-
 }
 
 lhz_in03.gat,176,85,4	script	Citizen#Citizen2	869,{
@@ -1587,7 +1560,6 @@ lhz_in03.gat,176,85,4	script	Citizen#Citizen2	869,{
 	mes "case, pubs and bars are";
 	mes "all I happen to need~";
 	close;
-
 }
 
 lhz_in03.gat,184,38,2	script	Loudmouth	55,{
@@ -1604,7 +1576,6 @@ lhz_in03.gat,184,38,2	script	Loudmouth	55,{
 	mes "look for? What, you";
 	mes "don't believe me?!";
 	close;
-
 }
 
 lhz_in01.gat,173,28,4	script	Guard#01::LhzRekGuard	868,{
@@ -1617,7 +1588,6 @@ lhz_in01.gat,173,28,4	script	Guard#01::LhzRekGuard	868,{
 	mes "special authorization.";
 	mes "Thank you for your cooperating.";
 	close;
-
 }
 
 lhz_in01.gat,180,28,4	duplicate(LhzRekGuard)	Guard#03	868
@@ -1637,7 +1607,6 @@ lhz_in01.gat,72,209,4	script	Guide#01	862,{
 	mes "C-can I help you";
 	mes "with anything?";
 	close;
-
 }
 
 lhz_in01.gat,72,195,8	script	Guide#02	90,{
@@ -1650,7 +1619,6 @@ lhz_in01.gat,72,195,8	script	Guide#02	90,{
 	mes "are restricted from access";
 	mes "by the general public.";
 	close;
-
 }
 
 lhz_in01.gat,73,188,4	script	Guide#03	862,{
@@ -1659,7 +1627,6 @@ lhz_in01.gat,73,188,4	script	Guide#03	862,{
 	mes "Oh no...";
 	mes "Where did I put it?";
 	close;
-
 }
 
 lhz_in01.gat,34,226,4	script	Rekenber Guard#01	867,{
@@ -1694,7 +1661,6 @@ s_Staff:
 	close2;
 	warp "lhz_in01.gat",37,225;
 	end;
-
 }
 
 lhz_in01.gat,19,129,0	script	LhzHiddenTrg1::LhzTrig	139,1,1{
@@ -1719,7 +1685,6 @@ s_Staff:
 	mes "I know the security here is";
 	mes "pretty much failsafe, but...";
 	close;
-
 }
 
 lhz_in01.gat,23,137,0	duplicate(LhzTrig)	LhzHiddenTrg2	139,1,1
@@ -1763,7 +1728,6 @@ s_Yes:
 s_Auth:
 	warp "lhz_dun01.gat",150,288;
 	end;
-
 }
 
 lhz_in02.gat,34,41,7	script	Arthur	849,{
@@ -2641,7 +2605,7 @@ OnInit:
 	set $@sneakguard, 0; // numbers of people who sneaked past guard
 	set $@threshold, 10; // numbers of sneakers before mob appears
 	set $@mob, 50; 	  // Max respawn numbers of "mobsters"
-	set $@mobcount, 0; // current numbers of "mobsters"
+	set $@mobcount13, 0; // current numbers of "mobsters"
 	set $@lhz_alert, 0; // Alert on Lighthalzen(0 = off, 1 = on)
 	set $@i, 0;
 	
@@ -2677,7 +2641,7 @@ OnTimer10000:
 	
 MakeMob:
 	if ($@lhz_alert == 1) goto ChkEnd;
-	set $@mobcount, $@mob;
+	set $@mobcount13, $@mob;
 	mapannounce "lighthalzen.gat","Maintenance Organization of the Public Order: Currently the security of the city has been compromized, We ask the citizens to be more careful. I repeat. We ask the citizens to be more careful.", 1;
 
 	set $@i,0;
@@ -2699,7 +2663,7 @@ MakeMob:
 	
 ClearMob:
 	if ($@lhz_alert == 0) goto ChkEnd;
-	set $@mobcount, 0;
+	set $@mobcount13, 0;
 	mapannounce "lighthalzen.gat","Maintenance organization of the Public Order: We were able to get rid of all the trouble makers in the city. You may relax now.", 1;	
 	killmonster "lighthalzen.gat","Mobs::MobKilled";
 	set $@lhz_alert, 0;
@@ -2708,8 +2672,8 @@ ClearMob:
 	end;
 		
 MobKilled:
-	set $@mobcount, $@mobcount - 1;
-	if ($@mobcount == 0) goto ClearMob;
+	set $@mobcount13, $@mobcount13 - 1;
+	if ($@mobcount13 == 0) goto ClearMob;
 	setnpctimer 0;
 	end;	
 

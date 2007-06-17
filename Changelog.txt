@@ -13,6 +13,20 @@
 
 Date	Added
 
+2007/06/17
+	* Fixed: Some bugs in the new job change quests [Tsuyuki]
+	* Updated: The Soul Linker Job Change Quest to official, converted from Aegis (iRO 10.3) [Tsuyuki]
+	* Updated: The Taekwon Master (Star Gladiator) Job Change Quest to official, converted from Aegis (iRO 10.3) [Tsuyuki]
+	* Updated: The Taekwon Kid Job Change Quest to official, converted from Aegis (iRO 10.3) [Tsuyuki]
+	* Updated: The Super Novice Job Change Quest to official, converted from Aegis (iRO 10.3) [Tsuyuki]
+	* Updated: The Wizard Job Change Quest to official, converted from Aegis (iRO 10.3) [Tsuyuki]
+	* Updated: The Knight Job Change Quest to official, converted from Aegis (iRO 10.3) [Tsuyuki]
+	* Updated: The Priest Job Change Quest to official, converted from Aegis (iRO 10.3) by decayed.cell [Tsuyuki]
+	* Updated: The Aldebaran Inn NPC to official, with Aegis information (iRO 10.3) [Tsuyuki]
+	* Updated: Aldebaran Town NPCs to official, reconverted from Aegis (iRO 10.3) [Tsuyuki]
+	* Updated: Alberta Town NPCs to official, reconverted from Aegis (iRO 10.3) [Tsuyuki]
+	* Changed: Disabled the Moscovia RussianRO event maps by default [Tsuyuki]
+
 2007/06/16
 	* Updated: The Hunter Job Change Quest to official, converted from Aegis (iRO 10.4) [Tsuyuki]
 	* Updated: The Blacksmith Job Change Quest to official, converted from Aegis (iRO 10.4) [Tsuyuki]

@@ -940,7 +940,7 @@ L_OverWeight:
 			close;
 }
 
-payon.gat,85,133,4	duplicate(RecepQuiz)	Receptionist#2	755
+payon.gat,83,136,4	duplicate(RecepQuiz)	Receptionist#2	755 // Fixed coords
 geffen.gat,111,104,4	duplicate(RecepQuiz)	Receptionist#3	755
 morocc.gat,148,272,5	duplicate(RecepQuiz)	Receptionist#4	755
 alberta.gat,29,241,4	duplicate(RecepQuiz)	Receptionist#5	755

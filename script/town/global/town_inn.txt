@@ -9,16 +9,16 @@
 //--------------------------------------------------------------
 // Script Title: Inn Employee NPCs	Author: Tsuyuki
 //--------------------------------------------------------------
-// Revision History: v1.3
+// Revision History: v1.4
 //--------------------------------------------------------------
 //	1.0 Redid script based on the leaked Aegis version, iRO screenshots, and Muad_Dib's ASB script [Tsuyuki]
 //	1.1 Added official dialogue (iRO)/corrected save/warp coords for Hugel Inn [Tsuyuki]
 //	1.2 Updated Einbroch Hotel Employee with compatibility for the Airship Quest [Tsuyuki]
 //	1.3 Updated Hugel Inn Employee with the missing official dialogue [Tsuyuki]
+//	1.4 Updated Aldebaran Inn Employee with the missing official dialogue [Tsuyuki]
 //--------------------------------------------------------------
-// Additional Notes: 100% Official Information - Date: 02/12/2007
-// Inn NPCs that may have some custom parts: Al De Baran, Rachel
-// * Aegis-certified *
+// Additional Notes: * Official-certified / Aegis-certified *
+// Inn NPCs that may have some custom parts: Rachel
 //--------------------------------------------------------------
 
 
@@ -52,7 +52,7 @@ alberta_in.gat,32,142,5	script	Inn Employee::Jennie	53,{
 			set zeny,zeny-5000;
 			percentheal 100,100;
 			warp "alberta_in.gat",18,188;
-			close;
+			end;
 		InnPoorAlb:
 			mes "[Employee Jennie]";
 			mes "I'm sorry, but the service charge";
@@ -65,42 +65,34 @@ alberta_in.gat,32,142,5	script	Inn Employee::Jennie	53,{
 }
 
 //--------------------------------------------------------------
-// Al De Baran Inn Employee -> Dialogue/Name may be custom (Doesn't exist in iRO)
+// Al De Baran Inn Employee
 //--------------------------------------------------------------
 
-aldeba_in.gat,92,58,2	script	Inn Employee::Moira	53,{
+aldeba_in.gat,92,58,5	script	Inn Maid::Rilim	53,{
 
-	mes "[Employee Moira]";
-	mes "Welcome to 'Al De Baran Inn'.";
+	mes "[Rilim]";
+	mes "Welcome to Al De Baran Inn.";
 	mes "How may I help you?";
 	next;
-	menu "Save",Alde_Inn1,"Take a Rest -> 5000 zeny",Alde_Inn2,"Cancel",Alde_Inn3;
+	menu "Save Point",Alde_Inn1,"Rest -> 5,000z",Alde_Inn2,"Quit",Alde_Inn3;
 	Alde_Inn1:
-		mes "[Employee Moira]";
-		mes "Your respawn point";
-		mes "has been saved.";
-		mes "Thank you,";
-		mes "please come again.";
-		savepoint "aldeba_in.gat",93,50;
+		mes "[Rilim]";
+		mes "Your respawn point has been saved. Thank you.";
+		savepoint "aldeba_in.gat",92,50;
 		close;
 	Alde_Inn2:
 		if (Zeny < 5000) goto InnPoorAlde;
-			emotion 15;
-			mes "[Employee Moira]";
-			mes "Thank you.";
-			mes "I hope you";
-			mes "enjoy your rest~";
+			mes "[Rilim]";
+			mes "Please enjoy your stay. Thank you.";
 			close2;
-			set zeny,zeny-5000;
+			set Zeny,Zeny-5000;
 			percentheal 100,100;
 			warp "aldeba_in.gat",92,112;
-			close;
+			end;
 		InnPoorAlde:
-			mes "[Employee Moira]";
-			mes "I'm sorry, but the service charge";
-			mes "is 5,000 zeny. Please make sure";
-			mes "that you have enough money to check";
-			mes "in next time, okay?";
+			mes "[Rilim]";
+			mes "The service charge is 5,000 zeny.";
+			mes "Please check your wallet again, thanks.";
 			close;
 	Alde_Inn3:
 		close;
@@ -207,7 +199,7 @@ geffen_in.gat,70,64,5	script	Inn Employee::Cena	53,{
 			set zeny,zeny-5000;
 			percentheal 100,100;
 			warp "geffen_in.gat",31,31;
-			close;
+			end;
 		InnPoorGef:
 			mes "[Employee Cena]";
 			mes "I'm sorry, but the service charge";
@@ -254,7 +246,7 @@ hu_in01.gat,246,107,5	script	Inn Staff::Hugel	53,{
 		set zeny,zeny - 5000;
 		percentheal 100,100;
 		warp "hu_in01.gat",267,5;
-		close;
+		end;
 
 		InnPoorHug:
 			mes "[Inn Staff]";
@@ -302,7 +294,7 @@ morocc_in.gat,147,138,5	script	Inn Employee::Hasna	53,{
 			set zeny,zeny-5000;
 			percentheal 100,100;
 			warp "morocc_in.gat",173,135;
-			close;
+			end;
 		InnPoorMoca:
 			mes "[Employee Hasna]";
 			mes "I'm sorry, but the service charge";
@@ -341,7 +333,7 @@ morocc_in.gat,80,100,5	script	Inn Employee::Manar	53,{
 			set zeny,zeny-5000;
 			percentheal 100,100;
 			warp "morocc_in.gat",79,123;
-			close;
+			end;
 		InnPoorMocb:
 			mes "[Employee Manar]";
 			mes "I'm sorry, but the service charge";
@@ -435,7 +427,7 @@ payon_in01.gat,132,62,5	script	Inn Employee::Ahee	53,{
 			set zeny,zeny-5000;
 			percentheal 100,100;
 			warp "payon_in01.gat",132,11;
-			close;
+			end;
 		InnPoorPay:
 			mes "[Employee Ahee]";
 			mes "I'm sorry, but the service charge";
@@ -478,7 +470,7 @@ prt_in.gat,244,135,2	script	Inn Employee::Sammy	53,{
 			set zeny,zeny-5000;
 			percentheal 100,100;
 			warp "prt_in.gat",247,104;
-			close;
+			end;
 		InnPoorPrta:
 			mes "[Employee Sammy]";
 			mes "I'm sorry, but the service charge";
@@ -517,7 +509,7 @@ prt_in.gat,61,141,2	script	Inn Employee::Alma	53,{
 			set zeny,zeny-5000;
 			percentheal 100,100;
 			warp "prt_in.gat",60,166;
-			close;
+			end;
 		InnPoorPrtb:
 			mes "[Employee Alma]";
 			mes "I'm sorry, but the service charge";
@@ -562,7 +554,7 @@ ra_in01.gat,376,69,4	script	Inn Staff::Rachel	931,{
 		set zeny,zeny-5000;
 		percentheal 100,100;
 		warp "ra_in01.gat",384,128;
-		close;
+		end;
 
 		InnPoorRa:
 			mes "[Inn Staff]";

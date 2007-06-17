@@ -76,10 +76,10 @@ npc: script/job/job_priest.txt
 npc: script/job/job_rogue.txt
 npc: script/job/job_sage.txt
 npc: script/job/job_soul_linker.txt
-npc: script/job/job_star_gladiator.txt
 npc: script/job/job_super_novice.txt
 npc: script/job/job_swordsman.txt
 npc: script/job/job_taekwon.txt
+npc: script/job/job_taekwon_master.txt
 npc: script/job/job_thief.txt
 npc: script/job/job_transcendence.txt
 npc: script/job/job_wizard.txt

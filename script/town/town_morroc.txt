@@ -2207,7 +2207,7 @@ morocc.gat,155,56,3	script	Miya	93,3,3,{
 		mes "away from strangers, okay?";
 		close;
 	}
-	if(!(BaseJob == Job_Star_Gladiator || BaseClass == Job_Thief))
+	if(!(BaseJob == Job_Taekwon_Master || BaseClass == Job_Thief))
 	{
 		mes "[Girl]";
 		mes "...............................";
@@ -2219,7 +2219,7 @@ morocc.gat,155,56,3	script	Miya	93,3,3,{
 	}
 	if(!mao_request)
 	{
-		if (BaseJob == Job_Star_Gladiator)
+		if (BaseJob == Job_Taekwon_Master)
 		{
 			mes "[Miya]";
 			mes "Wait! Wait up! You're";
@@ -2300,7 +2300,7 @@ morocc.gat,155,56,3	script	Miya	93,3,3,{
 	}
 	else if(mao_request == 1)
 	{
-		if (BaseJob == Job_Star_Gladiator)
+		if (BaseJob == Job_Taekwon_Master)
 		{
 			mes "[Miya]";
 			mes "If you're interested in";
@@ -2335,7 +2335,7 @@ morocc.gat,155,56,3	script	Miya	93,3,3,{
 	}
 	else if(((mao_request > 2) && (mao_request < 27)) || ((mao_request > 102) && (mao_request < 125)))
 	{
-		if((BaseJob == Job_Star_Gladiator) || BaseClass == Job_Thief)
+		if((BaseJob == Job_Taekwon_Master) || BaseClass == Job_Thief)
 		{
 			mes "[Miya]";
 			mes "So how's it been going?";
@@ -2383,7 +2383,7 @@ OnTouch:
 	{
 		if(!mao_request)
 		{
-			if (BaseJob == Job_Star_Gladiator)
+			if (BaseJob == Job_Taekwon_Master)
 			{
 				mes "[Miya]";
 				mes "Wait! Wait up! You're";
