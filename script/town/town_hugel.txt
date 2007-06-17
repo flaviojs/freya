@@ -9,36 +9,39 @@
 //--------------------------------------------------------------
 // Script Title: Hugel Town NPCs	Author: Tsuyuki/SinSloth/MasterOfMuppets
 //--------------------------------------------------------------
-// Revision History: v2.9
+// Revision History: v1.2
 //--------------------------------------------------------------
-//	1.0 Added redone script with new/missing NPCs and ripped iRO dialogue [Tsuyuki]
-//	1.1 Fixed a couple bugs [Tsuyuki]
-//	1.2 Added the beginnings of the Odin Excavation Quest (Missed earlier) [Tsuyuki]
-//	1.3 Removed Kiel Hyre dungeon entrance [Tsuyuki]
-//	1.4 Updated Abyss Lake Entrance to official by SinSloth [Tsuyuki]
-//	1.5 Finished the Fish Cake Soup Quest, fully matches iRO Aegis 10.4 [Tsuyuki]
-//	1.6 Updated some content to iRO Aegis 10.4 [Tsuyuki]
-//	1.7 Added the Hugel Memory Quest, converted from Aegis (iRO 10.4) [Tsuyuki]
-//	1.8 Added the Hugel Medicine Quest, converted from Aegis (iRO 10.4) [Tsuyuki]
-//	1.9 Added the Hide n' Seek Quest, converted from Aegis (iRO 10.4) [Tsuyuki]
-//	2.0 Moved Bismarc to the Blacksmith Job Change Quest [Tsuyuki]
-//	2.1 Added the Hugel Remedy Quest, converted from Aegis (iRO 10.4) [Tsuyuki]
-//	2.2 Added the Biological Weapon Quest, converted from Aegis (iRO 10.4) [Tsuyuki]
-//	2.3 Updated script formatting [Tsuyuki]
-//	2.4 Small fix to the Abyss Lake warper [Tsuyuki]
-//	2.5 Added the Odin's Temple Excavation Quest, converted from Aegis (iRO 10.4) [Tsuyuki]
-//	2.6 Added the Cow Milking Quest, converted from Aegis (iRO 10.4) [Tsuyuki]
-//	2.7 Added some more Monster Race NPCs [Tsuyuki]
-//	2.8 Added the Bingo Game System, converted from Aegis by SinSloth [Tsuyuki]
-//	2.9 Added the Hugel Rebellion Quest, by MasterOfMuppets [Tsuyuki]
+//	1.0 First version, converted from Aegis (iRO 10.4) [Tsuyuki]
+//	1.1 Added the Bingo Game System/Abyss Lake Entrance, both converted from Aegis by SinSloth (iRO 10.4) [Tsuyuki]
+//	1.2 Added the Rebellion Quest, converted from Aegis by MasterOfMuppets (iRO 10.4)
 //--------------------------------------------------------------
 // Additional Notes: * Offical-certified / Aegis-certified *
-// Monster Races are incomplete.
+// - Monster Races are incomplete.
 //--------------------------------------------------------------
 
 
 //--------------------------------------------------------------
-// Hugel Town NPCs
+// Contents:
+//--------------------------------------------------------------
+// Hugel Town NPCs						- [Tsuyuki]
+// Party Supplies Seller				- [Tsuyuki]
+// Monster Races System (Incomplete)	- [Tsuyuki]
+// Bingo Game System					- [SinSloth]
+// Biological Weapon Quest				- [Tsuyuki]
+// Cow Milking Quest					- [Tsuyuki]
+// Fish Cake Soup Mini-Quest			- [Tsuyuki]
+// Hide n' Seek Quest					- [Tsuyuki]
+// Medicine Quest						- [Tsuyuki]
+// Memory Quest							- [Tsuyuki]
+// Odin's Temple Excavation Quest		- [Tsuyuki]
+// Rebellion Quest						- [MasterOfMuppets]
+// Remedy Quest							- [Tsuyuki]
+// Abyss Lake Entrance					- [SinSloth]
+//--------------------------------------------------------------
+
+
+//--------------------------------------------------------------
+// Hugel Town NPCs - [Tsuyuki]
 //--------------------------------------------------------------
 
 hu_in01.gat,365,170,5	script	Rachel	793,{
@@ -66,7 +69,7 @@ hu_in01.gat,377,106,5	script	Shaomei	892,{
 
 
 //--------------------------------------------------------------
-// Party Supplies Seller (Firecracker NPC)
+// Party Supplies Seller (Firecracker NPC) - [Tsuyuki]
 //--------------------------------------------------------------
 
 hu_in01.gat,23,311,4	script	Party Supplies Shop	898,{
@@ -1284,7 +1287,7 @@ function	script	F_BingoResult	{
 
 
 //--------------------------------------------------------------
-// Monster Races System (Incomplete)
+// Monster Races System (Incomplete) - [Tsuyuki]
 //--------------------------------------------------------------
 
 airplane.gat,246,47,1	script	Eocatt#decoy01	878,{
@@ -1926,7 +1929,7 @@ hugel.gat,71,83,3	script	Wayne	900,{
 
 
 //--------------------------------------------------------------
-// Biological Weapon Quest
+// Biological Weapon Quest - [Tsuyuki]
 //--------------------------------------------------------------
 
 ein_in01.gat,16,36,3	script	Morriphen	86,{
@@ -3126,7 +3129,7 @@ hugel.gat,126,151,3	script	Emily#3459	90,{
 
 
 //--------------------------------------------------------------
-// Cow Milking Quest
+// Cow Milking Quest - [Tsuyuki]
 //--------------------------------------------------------------
 
 hugel.gat,56,104,3	script	Kurupe#Hugel	709,3,3,{
@@ -6332,7 +6335,7 @@ hugel.gat,169,112,5	script	Old Nikki#hg	 892,{
 
 
 //--------------------------------------------------------------
-// Fish Cake Soup Mini-Quest
+// Fish Cake Soup Mini-Quest - [Tsuyuki]
 //--------------------------------------------------------------
 
 // Used variables:
@@ -6939,7 +6942,7 @@ hugel.gat,102,161,3	script	Erjan	100,{
 
 
 //--------------------------------------------------------------
-// Hide n' Seek Quest
+// Hide n' Seek Quest - [Tsuyuki]
 //--------------------------------------------------------------
 
 hugel.gat,107,67,3	script	Torpy	 	706,{
@@ -7536,7 +7539,7 @@ OnTimer60000:
 
 
 //--------------------------------------------------------------
-// Medicine Quest
+// Medicine Quest - [Tsuyuki]
 //--------------------------------------------------------------
 
 
@@ -8260,7 +8263,7 @@ OnTimer4500:
 
 
 //--------------------------------------------------------------
-// Memory Quest
+// Memory Quest - [Tsuyuki]
 //--------------------------------------------------------------
 
 
@@ -8984,7 +8987,7 @@ hugel.gat,196,164,3	script	El Schatt#hg	50,{
 
 
 //--------------------------------------------------------------
-// Odin's Temple Excavation Quest
+// Odin's Temple Excavation Quest - [Tsuyuki]
 //--------------------------------------------------------------
 
 hugel.gat,91,152,1	script	Sign	 837,{
@@ -10489,15 +10492,15 @@ hu_in01.gat,16,20,4	script	Ashe	95,{
 	}
 }
 
-//hu_in01.gat,174,90,0	script	Entrance	139,2,2,{
-//
-//OnTouch:
-//	mes "[Laura]";
-//	mes "So it means that everyone fooled me!";
-//	next;
-//	mes "== Laura is violently wielding a thick file in the air. ==";
-//	close;
-//}
+/*hu_in01.gat,174,90,0	script	Entrance	139,2,2,{
+
+OnTouch:
+	mes "[Laura]";
+	mes "So it means that everyone fooled me!";
+	next;
+	mes "== Laura is violently wielding a thick file in the air. ==";
+	close;
+}*/
 
 hu_in01.gat,159,84,3	script	Laura#2	70,{
 
@@ -11432,15 +11435,15 @@ OnTouch:
 		warp "que_hugel.gat",163,31;
 		end;
 	}
-	//mes "[Giantes]";
-	//mes "...It is a human...finally.";
-	//mes "You are later than I thought.";
-	//next;
-	//mes "[Giantes]";
-	//mes "What you hear is not an actual voice.";
-	//mes "I am sending you my message directly to your brain.";
-	//mes "Human's language is meaningless to us.";
-	//close;
+	/*mes "[Giantes]";
+	mes "...It is a human...finally.";
+	mes "You are later than I thought.";
+	next;
+	mes "[Giantes]";
+	mes "What you hear is not an actual voice.";
+	mes "I am sending you my message directly to your brain.";
+	mes "Human's language is meaningless to us.";
+	close;*/
 }
 
 que_hugel.gat,163,31,0	script	object_2	139,3,3,{
@@ -14145,7 +14148,7 @@ hu_in01.gat,377,106,3	script	Pub Granny	891,{
 
 
 //--------------------------------------------------------------
-// Remedy Quest
+// Remedy Quest - [Tsuyuki]
 //--------------------------------------------------------------
 
 yuno.gat,111,156,3	script	Euslan#02	90,{

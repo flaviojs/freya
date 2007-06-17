@@ -9,42 +9,43 @@
 //--------------------------------------------------------------
 // Script Title: Mail Boxes	Author:	Tsuyuki
 //--------------------------------------------------------------
-// Revision History: v1.1
+// Revision History: v1.2
 //--------------------------------------------------------------
 //	1.0 First version, converted from Aegis [Tsuyuki]
 //	1.1 Added a Mailbox to Veins [Tsuyuki]
+//	1.2 Added Rachel/Hugel Mail Boxes, officialized dialogue [Tsuyuki]
 //--------------------------------------------------------------
-// Additional Notes: * Aegis-certified * Note: Need Mailboxes
-// for Lighthalzen, Hugel, Rachel, and Nameless Island.
+// Additional Notes: * Official-certified / Aegis-certified *
 //--------------------------------------------------------------
 
 
 prontera.gat,146,86,0	script	Mailbox#1::Mailbox	888,{
 
 	mes "[Mailbox]";
-	mes "In order to use the Mailing Service you will need 130z.";
-	mes "Do you want to use the Mailing Service?";
+	mes "To use the mailbox service, you are required";
+	mes "to pay 130 zeny.";
+	mes "Would you like to use the service?";
 	next;
-	menu "Yes, I do.",L_Yes,"Nevermind.",L_No;
-	
-	L_Yes:
-		if (Zeny >= 130) goto L_HaveZeny;
-		mes "[Mailbox]";
-		mes "Sorry, but you don't have enough zeny.";
-		mes "In order to use the Mailing Service you will need 130z.";
-		close;
-
-		L_HaveZeny:
+	switch(select("Yes.","No.")) {
+	case 1:
+		if (Zeny < 130) {
 			mes "[Mailbox]";
-			mes "Thank you for using the Mailing Service.";
-			set Zeny,Zeny-130;
-			gmcommand "@mailbox";
+			mes "I am sorry, but you do not have enough money.";
+			mes "To use the mailbox service, you are required";
+			mes "to pay 130 zeny.";
 			close;
-
-	L_No:
+		}
 		mes "[Mailbox]";
-		mes "You have just canceled.";
+		mes "Thank you, please come again.";
+		set Zeny,Zeny-130;
+		gmcommand "@mailbox";
 		close;
+
+	case 2:
+		mes "[Mailbox]";
+		mes "Thank you, please come again.";
+		close;
+	}
 }
 
 prontera.gat,275,213,0	duplicate(Mailbox)	Mailbox#2	888
@@ -95,4 +96,8 @@ ayothaya.gat,205,169,0	duplicate(Mailbox)	Mailbox#24	888
 
 louyang.gat,204,100,0	duplicate(Mailbox)	Mailbox#25	888
 
-veins.gat,218,123,6	duplicate(Mailbox)	Mailbox#26	888
+hugel.gat,86,168,0	duplicate(Mailbox)	Mailbox#26	111
+
+rachel.gat,122,146,0	duplicate(Mailbox)	Mailbox#27	888
+
+veins.gat,218,123,6	duplicate(Mailbox)	Mailbox#28	888

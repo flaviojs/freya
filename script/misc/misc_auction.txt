@@ -1,62 +1,496 @@
 //--------------------------------------------------------------
-//               (c)2004-2007 Aurora Team Presents:             
+//               (c)2004-2007 Freya Team Presents:              
 //                  ___                                         
 //                 /   |_   _ _ __ ___  _ __ __ _               
 //                / /| | | | | '__/ _ \| '__/ _` |              
 //               / ___ | |_| | | | (_) | | | (_| |              
 //              /_/  |_|\____|_|  \___/|_|  \__,_|              
-//                 http://aurora.deltaanime.net                 
+//                    http://www.ro-freya.net                   
 //--------------------------------------------------------------
-// Script Title: Auction System NPCs	Author: Au{R}oN
+// Script Title: Auction System NPCs	Author: Tsuyuki
 //--------------------------------------------------------------
-// Revision History: v1.1
+// Revision History: v1.0
 //--------------------------------------------------------------
-//	1.0 First version, converted from Aegis [Au{R}oN]
-//	1.1 Removed warps [Tsuyuki]
+//	1.0 First version, converted from Aegis (iRO 10.3) [Tsuyuki]
 //--------------------------------------------------------------
-// Additional Notes: * Aegis-certified *
+// Additional Notes: * Official-certified / Aegis-certified *
 //--------------------------------------------------------------
 
 
-lighthalzen.gat,205,169,4	script	Auction Guide	833,{
+morocc.gat,300,10,0	script	Auction Hall Manager	98,{
 
-	mes "[Auction Guide]";
-	mes "Would you like to go to the auction?";
+	input '@input;
+	if ('@input == 1854) {
+		mes "[Manager]";
+		mes "Off? On?";
+		next;
+		switch(select("On","Off.")) {
+		case 1:
+			enablenpc "Auction Hall Guide#moc";
+			mes "On.";
+			close;
+		case 2:
+			disablenpc "Auction Hall Guide#moc";
+			mes "Off.";
+			close;
+		}
+	}
+}
+
+prontera.gat,300,10,0	script	Auction Hall Manager	98,{
+
+	input '@input;
+	if ('@input == 1854) {
+		mes "[Manager]";
+		mes "Off? On?";
+		next;
+		switch(select("On","Off.")) {
+		case 1:
+			enablenpc "Auction Hall Guide#prt";
+			mes "On.";
+			close;
+		case 2:
+			disablenpc "Auction Hall Guide#prt";
+			mes "Off.";
+			close;
+		}
+	}
+}
+
+yuno.gat,300,10,0	script	Auction Hall Manager	98,{
+
+	input '@input;
+	if ('@input == 1854) {
+		mes "[Manager]";
+		mes "Off? On?";
+		next;
+		switch(select("On","Off.")) {
+		case 1:
+			enablenpc "Auction Hall Guide#yuno";
+			mes "On.";
+			close;
+		case 2:
+			disablenpc "Auction Hall Guide#yuno";
+			mes "Off.";
+			close;
+		}
+	}
+}
+
+lighthalzen.gat,300,10,0	script	Auction Hall Manager	98,{
+
+	input '@input;
+	if ('@input == 1854) {
+		mes "[Manager]";
+		mes "Off? On?";
+		next;
+		switch(select("On","Off.")) {
+		case 1:
+			enablenpc "Auction Hall Guide#lhz";
+			mes "On.";
+			close;
+		case 2:
+			disablenpc "Auction Hall Guide#lhz";
+			mes "Off.";
+			close;
+		}
+	}
+}
+
+morocc.gat,182,95,6	script	Auction Hall Guide#moc	98,{
+
+	mes "[Auction Hall Guide]";
+	mes "Would you like to enter the Auction Hall?";
 	next;
-	menu "Yes.",WA_yes,"No.",WA_no;
-WA_yes:
-	mes "[Auction Guide]";
-	mes "Have a good trip~";
-	close2;
-	warp "auction_02.gat",43,24;
+	switch(select("Yes.","No.")) {
+	case 1:
+		mes "[Auction Hall Guide]";
+		mes "Enjoy your auction~";
+		close2;
+		warp "auction_01.gat",179,53;
+		end;
+	case 2:
+		mes "[Auction Hall Guide]";
+		mes "See you later.";
+		close;
+	}
+}
+
+auction_01.gat,180,49,0	script	Auction Hall Entrance#moc	45,1,1,{
+
+OnTouch:
+	warp "morocc.gat",182,92;
 	end;
-
-WA_no:
-	mes "[Auction Guide]";
-	MES "Come visit next time.";
-	close;
-
 }
 
-auction_02.gat,31,46,9	script	Auction Supervisor::as1	874,{
+prontera.gat,218,120,4	script	Auction Hall Guide#prt	117,{
 
-	mes "[Auctioner]";
-	mes "Welcome.";
-	mes "Is there an item that you're";
-	mes "looking for...?";
+	mes "[Auction Hall Guide]";
+	mes "Would you like to enter the Auction Hall?";
 	next;
-	menu "Yes.",AU_yes,"No.",AU_no;
-AU_yes:
-	// NEED TO ADD THE COMMAND FOR OPEN AUCTION WINDOW!!
-	mes "Currently the Auction System is under development."; // CUSTOM MSG!!
-	mes "Please try again in the future."; // CUSTOM MSG!!
-	close;
+	switch(select("Yes.","No.")) {
+	case 1:
+		mes "[Auction Hall Guide]";
+		mes "Enjoy your auction.";
+		close2;
+		warp "auction_01.gat",21,43;
+		end;
+	case 2:
+		mes "[Auction Hall Guide]";
+		mes "See you later.";
+		close;
+	}
+}
 
-AU_no:
-	mes "[Auctioner]";
-	mes "Okay then..";
+auction_01.gat,22,37,0	script	Auction Hall Entrance#prt	45,1,1,{
+
+OnTouch:
+	warp "prontera.gat",214,120;
+	end;
+}
+
+yuno.gat,129,116,0	script	Auction Hall Guide#yuno	90,{
+
+	mes "[Auction Hall Guide]";
+	mes "Would you like to enter the Auction Hall?";
+	next;
+	switch(select("Yes.","No.")) {
+	case 1:
+		mes "[Auction Hall Guide]";
+		mes "Enjoy your auction.";
+		close2;
+		warp "auction_02.gat",151,23;
+		end;
+	case 2:
+		mes "[Auction Hall Guide]";
+		mes "See you later.";
+		close;
+	}
+}
+
+auction_02.gat,151,17,0	script	Auction Hall Entrance#yun	45,1,1,{
+
+OnTouch:
+	warp "yuno.gat",132,119;
+	end;
+}
+
+lighthalzen.gat,205,169,6	script	Auction Hall Guide#lhz	833,{
+
+	mes "[Auction Hall Guide]";
+	mes "Would you like to enter the Auction Hall?";
+	next;
+	switch(select("Yes.","No.")) {
+	case 1:
+		mes "[Auction Hall Guide]";
+		mes "Enjoy your auction~";
+		close2;
+		warp "auction_02.gat",43,24;
+		end;
+	case 2:
+		mes "[Auction Hall Guide]";
+		mes "See you later.";
+		close;
+	}
+}
+
+auction_02.gat,43,17,0	script	Auction Hall Entrance#lhz	45,1,1,{
+
+OnTouch:
+	warp "lighthalzen.gat",209,169;
+	end;
+}
+
+morocc.gat,180,97,6	script	Information Post#moc	837,{
+
+	mes "[Information]";
+	mes "Auction Warp Guide";
 	close;
 }
 
-auction_02.gat,43,65,2	duplicate(as1)	Auction Supervisor::asd1	874
-auction_02.gat,56,46,2	duplicate(as1)	Auction Supervisor::asd2	874
+prontera.gat,216,120,4	script	Information Post#prt	837,{
+
+	mes "[Information]";
+	mes "Auction Warp Guide";
+	close;
+}
+
+yuno.gat,131,116,0	script	Information Post#yuno	837,{
+
+	mes "[Information]";
+	mes "Auction Warp Guide";
+	close;
+}
+
+lighthalzen.gat,207,169,6	script	Information Post#lhz	837,{
+
+	mes "[Information]";
+	mes "Auction Warp Guide";
+	close;
+}
+
+auction_01.gat,182,68,6	script	Auction Broker#moc1	98,{
+
+	mes "[Auction Broker]";
+	mes "We have brought many good items this time.";
+	mes "Would you like to take a look at them?";
+	next;
+	switch(select("Yes.","No.")) {
+	case 1:
+		mes "[Auction Broker]";
+		mes "Be my guest!";
+		// OpenAuction;
+		close;
+	case 2:
+		mes "[Auction Broker]";
+		mes "Alright, see you later.";
+		close;
+	}
+}
+
+auction_01.gat,182,75,0	script	Auction Broker#moc2	99,{
+
+	mes "[Auction Broker]";
+	mes "We have brought many good items this time.";
+	mes "Would you like to take a look at them?";
+	next;
+	switch(select("Yes.","No.")) {
+	case 1:
+		mes "[Auction Broker]";
+		mes "Be my guest!";
+		// OpenAuction;
+		close;
+	case 2:
+		mes "[Auction Broker]";
+		mes "Alright, see you later.";
+		close;
+	}
+}
+
+auction_01.gat,177,75,2	script	Auction Broker#moc3	98,{
+
+	mes "[Auction Broker]";
+	mes "We have brought many good items this time.";
+	mes "Would you like to take a look at them?";
+	next;
+	switch(select("Yes.","No.")) {
+	case 1:
+		mes "[Auction Broker]";
+		mes "Be my guest!";
+		// OpenAuction;
+		close;
+	case 2:
+		mes "[Auction Broker]";
+		mes "Alright, see you later.";
+		close;
+	}
+}
+
+auction_01.gat,177,68,4	script	Auction Broker#moc4	99,{
+
+	mes "[Auction Broker]";
+	mes "We have brought many good items this time.";
+	mes "Would you like to take a look at them?";
+	next;
+	switch(select("Yes.","No.")) {
+	case 1:
+		mes "[Auction Broker]";
+		mes "Be my guest!";
+		// OpenAuction;
+		close;
+	case 2:
+		mes "[Auction Broker]";
+		mes "Alright, see you later.";
+		close;
+	}
+}
+
+auction_01.gat,21,74,4	script	Auction Broker#prt1	117,{
+
+	mes "[Auction Broker]";
+	mes "Welcome to the Auction Hall.";
+	mes "Would you like to view the goods?";
+	next;
+	switch(select("Yes.","No.")) {
+	case 1:
+		mes "[Auction Broker]";
+		mes "Enjoy your auction!";
+		// OpenAuction;
+		close;
+	case 2:
+		mes "[Auction Broker]";
+		mes "Please come again.";
+		close;
+	}
+}
+
+auction_01.gat,27,78,4	script	Auction Broker#prt2	116,{
+
+	mes "[Auction Broker]";
+	mes "Welcome to the Auction Hall.";
+	mes "Would you like to view the goods?";
+	next;
+	switch(select("Yes.","No.")) {
+	case 1:
+		mes "[Auction Broker]";
+		mes "Enjoy your auction!";
+		// OpenAuction;
+		close;
+	case 2:
+		mes "[Auction Broker]";
+		mes "Please come again.";
+		close;
+	}
+}
+
+auction_01.gat,16,78,4	script	Auction Broker#prt3	115,{
+
+	mes "[Auction Broker]";
+	mes "Welcome to the Auction Hall.";
+	mes "Would you like to view the goods?";
+	next;
+	switch(select("Yes.","No.")) {
+	case 1:
+		mes "[Auction Broker]";
+		mes "Enjoy your auction!";
+		// OpenAuction;
+		close;
+	case 2:
+		mes "[Auction Broker]";
+		mes "Please come again.";
+		close;
+	}
+}
+
+auction_02.gat,158,47,6	script	Auction Broker#yuno1	90,{
+
+	mes "[Auction Broker]";
+	mes "Welcome to the Auction Hall.";
+	mes "Is there any special item that you are looking for?";
+	next;
+	switch(select("Yes.","No.")) {
+	case 1:
+		mes "[Auction Broker]";
+		mes "Enjoy your auction!";
+		// OpenAuction;
+		close;
+	case 2:
+		mes "[Auction Broker]";
+		mes "Please come again.";
+		close;
+	}
+}
+
+auction_02.gat,145,47,2	script	Auction Broker#yuno2	90,{
+
+	mes "[Auction Broker]";
+	mes "Welcome to the Auction Hall.";
+	mes "Is there any special item that you are looking for?";
+	next;
+	switch(select("Yes.","No.")) {
+	case 1:
+		mes "[Auction Broker]";
+		mes "Enjoy your auction!";
+		// OpenAuction;
+		close;
+	case 2:
+		mes "[Auction Broker]";
+		mes "Please come again.";
+		close;
+	}
+}
+
+auction_02.gat,151,54,0	script	Auction Broker#yuno3	90,{
+
+	mes "[Auction Broker]";
+	mes "Welcome to the Auction Hall.";
+	mes "Is there any special item that you are looking for?";
+	next;
+	switch(select("Yes.","No.")) {
+	case 1:
+		mes "[Auction Broker]";
+		mes "Enjoy your auction!";
+		// OpenAuction;
+		close;
+	case 2:
+		mes "[Auction Broker]";
+		mes "Please come again.";
+		close;
+	}
+}
+
+auction_02.gat,152,41,4	script	Auction Broker#yuno4	90,{
+
+	mes "[Auction Broker]";
+	mes "Welcome to the Auction Hall.";
+	mes "Is there any special item that you are looking for?";
+	next;
+	switch(select("Yes.","No.")) {
+	case 1:
+		mes "[Auction Broker]";
+		mes "Enjoy your auction!";
+		// OpenAuction;
+		close;
+	case 2:
+		mes "[Auction Broker]";
+		mes "Please come again.";
+		close;
+	}
+}
+
+auction_02.gat,57,46,2	script	Auction Broker#lhz1	874,{
+
+	mes "[Auction Broker]";
+	mes "Welcome to the Auction Hall.";
+	mes "Is there any special item that you are looking for?";
+	next;
+	switch(select("Yes.","No.")) {
+	case 1:
+		mes "[Auction Broker]";
+		mes "Enjoy your auction!";
+		// OpenAuction;
+		close;
+	case 2:
+		mes "[Auction Broker]";
+		mes "Please come again.";
+		close;
+	}
+}
+
+auction_02.gat,31,46,6	script	Auction Broker#lhz2	874,{
+
+	mes "[Auction Broker]";
+	mes "Welcome to the Auction Hall.";
+	mes "Is there any special item that you are looking for?";
+	next;
+	switch(select("Yes.","No.")) {
+	case 1:
+		mes "[Auction Broker]";
+		mes "Enjoy your auction!";
+		// OpenAuction;
+		close;
+	case 2:
+		mes "[Auction Broker]";
+		mes "Please come again.";
+		close;
+	}
+}
+
+auction_02.gat,43,65,4	script	Auction Broker#lhz3	833,{
+
+	mes "[Auction Broker]";
+	mes "Welcome to the Auction Hall.";
+	mes "Is there any special item that you are looking for?";
+	next;
+	switch(select("Yes.","No.")) {
+	case 1:
+		mes "[Auction Broker]";
+		mes "Enjoy your auction!";
+		// OpenAuction;
+		close;
+	case 2:
+		mes "[Auction Broker]";
+		mes "Please come again.";
+		close;
+	}
+}

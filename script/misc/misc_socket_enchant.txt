@@ -7,23 +7,16 @@
 //              /_/  |_|\____|_|  \___/|_|  \__,_|              
 //                 http://aurora.deltaanime.net                 
 //--------------------------------------------------------------
-// Script Title: Socket Enchant System	Author: A Lot of People
+// Script Title: Socket Enchant System	Author: SinSloth
 //--------------------------------------------------------------
-// Revision History: v1.8
+// Revision History: v1.2
 //--------------------------------------------------------------
-//	1.0 First version [Sousuke_PL]
-//	1.1 Added missing L_No: to 2 functions [Lupus]
-//	1.2 Removed duplicates [Toms]
-//	1.3 Added missing next;'s [Evera]
-//	1.4 Fixed Zweihander[+] ID [Lupus]
-//	1.5 Fixed ingredients check [Lupus]
-//	1.6 Updated to official. [SinSloth]
-//	1.7 Optimized/cleaned [ultramage]
-//	1.8 Fixed some typos and a nasty bug [SinSloth]
+//	1.0 First version, converted from Aegis [SinSloth]
+//	1.1 Optimized/cleaned [ultramage]
+//	1.2 Fixed some typos and a nasty bug [SinSloth]
 //--------------------------------------------------------------
-// Additional Notes: * Aegis-certified *
+// Additional Notes: * Official-certified / Aegis-certified *
 //--------------------------------------------------------------
-
 
 
 payon.gat,140,151,5		script	Seiyablem	84,{

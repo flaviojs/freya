@@ -25,8 +25,9 @@
 - Episode 10.3 - Star Gladiator (Taekwon Master) Job Change Quest [Aurora's Current: Temporary]
 - Episode 10.3 - Soul Linker Job Change Quest [Aurora's Current: Temporary]
 
-- Episode 10.4 - Auction System NPCs (Partially implemented)
 - Episode 10.4 - Hugel Monster Races (Partially implemented)
+
+----------------------------
 
 - Episode 11.2 - All Veins Town NPCs
 - Episode 11.2 - Veins Old Person Aid Quest

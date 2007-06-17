@@ -13,10 +13,18 @@
 
 Date	Added
 
+2007/06/16
+	* Updated: The Hunter Job Change Quest to official, converted from Aegis (iRO 10.4) [Tsuyuki]
+	* Updated: The Blacksmith Job Change Quest to official, converted from Aegis (iRO 10.4) [Tsuyuki]
+	* Updated: Mail Box script dialogue, and added new town duplicates: Hugel/Rachel/Veins (iRO 11.1) [Tsuyuki]
+	* Updated: The Mage Job Change Quest to official, converted from Aegis (iRO 10.3) [Tsuyuki]
+	 - All first class job quests are complete now
+	* Added: Auction System NPCs, converted from Aegis (iRO 10.4) [Tsuyuki]
+
 2007/06/15
-	* Updated: Bulletin Boards/Sign Posts, converted from Aegis [Tsuyuki]
-	* Added: The Heart Fragment Quest, by SinSloth [Tsuyuki]
-	* Added: The Hugel Rebellion Quest, by MasterOfMuppets [Tsuyuki]
+	* Updated: Bulletin Boards/Sign Posts, converted from Aegis (iRO 10.3) [Tsuyuki]
+	* Added: The Heart Fragment Quest, by SinSloth (iRO 10.4) [Tsuyuki]
+	* Added: The Hugel Rebellion Quest, by MasterOfMuppets (iRO 10.4) [Tsuyuki]
 	* Updated: The remaining parts of Alberta to official, converted/based on Aegis (iRO 10.3) [Tsuyuki]
 	* Updated: The Turtle Island Quest to official, converted from Aegis (iRO 10.3) [Tsuyuki]
 	* Added: The official Hunter Phantasmic Arrow Skill Quest, converted from Aegis (iRO 10.3) [Tsuyuki]
@@ -25,7 +33,7 @@ Date	Added
 	* Updated: Comodo Town NPCs to official, converted from Aegis (iRO 10.3) [Tsuyuki]
 	* Updated: Izlude Town NPCs to official, converted from Aegis (iRO 10.3) [Tsuyuki]
 	* Updated: A bit of the Transcendence system with iRO dialogue + some officializations (Work in progress) [Tsuyuki]
-	* Added: The Thai Hat Quest, converted from Aegis [Tsuyuki]
+	* Added: The Thai Hat Quest, converted from Aegis (iRO 10.3) [Tsuyuki]
 	* Updated: All First and Second Class Skill Quests official, converted from Aegis (iRO 10.3) [Tsuyuki]
 	 - With the exception of the Hunter Phantasmic Arrow Quest.. it hasn't been leaked yet apparently
 
@@ -64,8 +72,6 @@ Date	Added
 	* Added: The Lighthalzen Shadow Quest, converted from Aegis [Tsuyuki]
 
 2007/06/08
-	* Added: The Alchemist Bio Ethics skill quest by Evera [Tsuyuki]
-	 - Oops.. missed it before apparently, Homunuclus works fine now
 	* Added: The President's Quest (Schwartzvalt Trilogy Quest) by SinSloth [Tsuyuki]
 	* Added: The Cursed Spirit Quest by SinSloth [Tsuyuki]
 	* Added: A new global function to end all status changes (F_EndAllStatuses) [Tsuyuki]
