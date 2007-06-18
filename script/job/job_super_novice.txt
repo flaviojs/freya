@@ -58,7 +58,6 @@ aldeba_in.gat,223,167,3	script	Tzerero	709,{
 			set job_super,2;
 			getitem 2339,1;
 			callfunc "F_JobChange",Job_Super_Novice;
-			callfunc "F_ClearJobVariables";
 			mes "[Tzerero]";
 			mes "Bwaha! I got you!";
 			mes "So...how do you like my joke?";
@@ -98,7 +97,6 @@ aldeba_in.gat,223,167,3	script	Tzerero	709,{
 			set job_super,2;
 			getitem 2339,1;
 			callfunc "F_JobChange",Job_Super_Novice;
-			callfunc "F_ClearJobVariables";
 			mes "[Tzerero]";
 			mes "Bwaha! I got you!";
 			mes "So...how do you like my joke?";

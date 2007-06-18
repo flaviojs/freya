@@ -685,7 +685,6 @@ comodo.gat,172,230,3	script	Wandering Master#job_star	730,{
 			mes "the Stars. Welcome to our";
 			mes "way of martial arts, friend.";
 			callfunc "F_JobChange",Job_Taekwon_Master;
-			callfunc "F_ClearJobVariables";
 			next;
 			mes "[Moogang]";
 			mes "From now on, please";

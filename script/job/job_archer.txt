@@ -46,7 +46,6 @@ payon_in02.gat,64,71,4	script	Archer Guildsman	85,{
 			mes "I know you'll make a great Archer...";
 			next;
 			callfunc "F_JobChange",Job_Archer;
-			callfunc "F_ClearJobVariables";
 			skill 148,1,0;
 			skill 147,1,0;
 			mes "[Archer Guildsman]";
@@ -201,7 +200,6 @@ payon_in02.gat,64,71,4	script	Archer Guildsman	85,{
 		}
 		next;
 		callfunc "F_JobChange",Job_Archer;
-		callfunc "F_ClearJobVariables";
 		mes "[Archer Guildsman]";
 		mes "Congratulations!";
 		mes "You are now an Archer!";

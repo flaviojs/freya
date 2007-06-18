@@ -612,7 +612,6 @@ L_MONK_Q_9:
 	mes "Here is a gift from us to congratulate you.";
 	if(JBLVL < 50) getitem 1801, 1;//Items: Waghnakh,
 	if(JBLVL == 50) getitem 1804, 1;//Items: Knuckle_Duster_,
-	callfunc "F_ClearJobVariables";
 	close;
 Part6:
 	mes "[Elder Wuhai]";

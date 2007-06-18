@@ -47,7 +47,6 @@ prt_church.gat,184,41,4	script	Cleric	60,{
 				mes "new life's journey.";
 				next;
 				callfunc "F_JobChange",Job_Acolyte;
-				callfunc "F_ClearJobVariables";
 				skill 156,1,0;
 				mes "[Father Mareusis]";
 				mes "Now, venture forth and seek those who need your help. May God light your path.";
@@ -166,7 +165,6 @@ prt_church.gat,184,41,4	script	Cleric	60,{
 		next;
 		set job_acolyte_q,0;
 		callfunc "F_JobChange",Job_Acolyte;
-		callfunc "F_ClearJobVariables";
 		mes "[Father Mareusis]";
 		mes "Always remember to be thankful to God, who is taking care of us all the time.";
 		next;

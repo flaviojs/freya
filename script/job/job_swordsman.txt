@@ -45,7 +45,6 @@ izlude_in.gat,74,172,4	script	Swordman	119,{
 			mes "Excellent! Let me promote you to a Swordman right away!";
 			next;
 			callfunc "F_JobChange",Job_Swordsman;
-			callfunc "F_ClearJobVariables";		
 			skill 144,1,0;
 			skill 145,1,0;
 			skill 146,1,0;
@@ -138,7 +137,6 @@ izlude_in.gat,74,172,4	script	Swordman	119,{
 			mes "Hahaha! Congratulations! Now you are fully qualified to be a real Swordman! I will transform you right away!";
 			next;
 			callfunc "F_JobChange",Job_Swordsman;
-			callfunc "F_ClearJobVariables";
 			set job_sword_q,0;
 			mes "[Swordman]";
 			mes "Once again, congratulations. I expect that you will be a good representative of the Swordman Association.";

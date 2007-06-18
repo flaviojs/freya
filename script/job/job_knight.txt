@@ -501,7 +501,6 @@ prt_in.gat,88,101,4	script	Chivalry Captain	56,{
 		next;
 		set job_knight_q,0;
 		callfunc "F_JobChange",Job_Knight;
-		callfunc "F_ClearJobVariables";
 		mes "[Captain Herman]";
 		mes "I hereby declare";
 		mes "you a member of";

@@ -432,7 +432,6 @@ OnTouch:
 				mes "wisely and for just purposes.";
 				next;
 				callfunc "F_JobChange",Job_Soul_Linker;
-				callfunc "F_ClearJobVariables";
 				set job_linker,0;
 				mes "[Maia]";
 				mes "I wish the best of luck";
@@ -574,7 +573,6 @@ job_soul.gat,35,30,6	script	Maia#link6	716,{
 				mes "wisely and for just purposes.";
 				next;
 				callfunc "F_JobChange",Job_Soul_Linker;
-				callfunc "F_ClearJobVariables";
 				set job_linker,0;
 				mes "[Maia]";
 				mes "I wish the best of luck";

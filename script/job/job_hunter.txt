@@ -157,7 +157,6 @@ hu_in01.gat,386,373,4	script	Hunter Guildsman#hnt	727,{
 				mes "Tada~ Congratulations!";
 				mes "You look great as a Hunter!!";
 				callfunc "F_JobChange",Job_Hunter;
-				callfunc "F_ClearJobVariables";
 				next;
 				mes "[Hunter Sherin]";
 				mes "Become a noble person and become a worthy representative of our Hunter Guild. Show your love of nature as a Hunter~";
@@ -183,7 +182,6 @@ hu_in01.gat,386,373,4	script	Hunter Guildsman#hnt	727,{
 				mes "Tada~ Congratulations!";
 				mes "You look great as a Hunter!!";
 				callfunc "F_JobChange",Job_Hunter;
-				callfunc "F_ClearJobVariables";
 				next;
 				mes "[Hunter Sherin]";
 				mes "Become a noble person and be a worthy representative of the Hunter Guild. Show your love of nature as a Hunter~";

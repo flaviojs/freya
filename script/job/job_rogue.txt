@@ -377,7 +377,6 @@ L_Change:
 		goto L_Continue02;
 
 L_Continue02:
-	callfunc "F_ClearJobVariables";
 	next;
 	mes "[Markie]";
 	mes "Just keep in mind that freedom requires responsibility.  Treat people the way you expect to be treated.";

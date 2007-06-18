@@ -37,7 +37,6 @@ moc_prydb1.gat,39,129,2	script	Thief Guide	69,{
 				mes "Well, I got this feeling like you've been through a lifetime of fighting, so I'm promoting you to a Thief right this minute. I better give you tough guys what you want...";
 				next;
 				callfunc "F_JobChange",Job_Thief;
-				callfunc "F_ClearJobVariables";
 				skill 149,1,0;
 				skill 150,1,0;
 				skill 151,1,0;
@@ -432,7 +431,6 @@ moc_prydb1.gat,42,133,2	script	Comrade	118,{
 			delitem 1070,countitem(1070);
 		}
 		callfunc "F_JobChange",Job_Thief;
-		callfunc "F_ClearJobVariables";
 		next;
 		mes "[Comrade]";
 		mes "Congratulations on becoming a Thief! From now, be an honorable representative of the Thief's Guild.";

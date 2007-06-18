@@ -135,7 +135,6 @@ alberta_in.gat,53,43,6	script	Merchant	86,{
 		mes "[Chief Mahnsoo]";
 		mes "Congratulations!";
 		callfunc "F_JobChange",Job_Merchant;
-		callfunc "F_ClearJobVariables";
 		mes "I'm very pleased that you are joining the Merchant Guild and hope that you will play an active part in Rune-Midgarts' economy.";
 		next;
 		if (quest_alb_01 == 1) {

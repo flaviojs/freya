@@ -2228,7 +2228,6 @@ alde_alche.gat,101,184,4	script	Master Alchemist	122,{
 		if (JobLevel == 50) {
 			set job_alchemist_q,0;
 			callfunc "F_JobChange",Job_Alchemist;
-			callfunc "F_ClearJobVariables";
 			mes "[Vincent Carsciallo]";
 			mes "Henceforth, you are";
 			mes "now a member of our";
@@ -2255,7 +2254,6 @@ alde_alche.gat,101,184,4	script	Master Alchemist	122,{
 		} else {
 			set job_alchemist_q,0;
 			callfunc "F_JobChange",Job_Alchemist;
-			callfunc "F_ClearJobVariables";
 			mes "[Vincent Carsciallo]";
 			mes "Henceforth, you are";
 			mes "now a member of our";

@@ -40,7 +40,6 @@ geffen_in.gat,164,124,4	script	Mage Guildsman	123,{
 				mes "Well, since you have passed the Mage test once, I will not question your qualification. You want to have your magic skills back immediately, don't you?";
 				next;
 				callfunc "F_JobChange",Job_Mage;
-				callfunc "F_ClearJobVariables";
 				skill 157,1,0;
 				mes "[Mage Guildsman]";
 				mes "Wow, for some reason, you look way better than you did before. Anyway, I believe you will do a better job being a Mage as well.";
@@ -210,7 +209,6 @@ geffen_in.gat,164,124,4	script	Mage Guildsman	123,{
 		mes "You are now a Mage!";
 		next;
 		callfunc "F_JobChange",Job_Mage;
-		callfunc "F_ClearJobVariables";
 		set Zeny,Zeny+50;
 		mes "[Mage Guildsman]";
 		mes "'Welcome to My World~'";

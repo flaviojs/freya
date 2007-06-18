@@ -704,10 +704,7 @@ L_job_change:
 	mes "[Bijou]";
 	mes "Watch each time you dance from now on.";
 	next;
-
 	callfunc "F_JobChange",Job_Dancer;
-	callfunc "F_ClearJobVariables";
-
 	mes "[Bijou]";
 	mes "The enjoyment of the people watching you perform......";
 	next;

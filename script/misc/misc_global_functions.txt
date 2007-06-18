@@ -434,7 +434,7 @@ function	script	F_EndAllStatuses	{
 
 
 //--------------------------------------------------------------
-// F_JobChange -> Job change function for Normal/Baby classes
+// F_JobChange -> Job change function
 //--------------------------------------------------------------
 
 function	script	F_JobChange	{
@@ -449,6 +449,7 @@ function	script	F_JobChange	{
 	else if (Upper == 2) {
 		jobchange getarg(0),2; // Baby Job Change
 	}
+	callfunc "F_ClearJobVariables";
 	return;
 }
 

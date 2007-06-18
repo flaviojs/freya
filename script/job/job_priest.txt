@@ -464,7 +464,6 @@ prt_church.gat,16,41,4	script	High Bishop	60,{
 		mes "Make this servant of yours an instrument of your miraculous works...";
 		next;
 		callfunc "F_JobChange",Job_Priest;
-		callfunc "F_ClearJobVariables";
 		mes "[Bishop Paul]";
 		mes "Now you are born again as a Priest. I congratulate you, and hope you will greatly help other people for the rest of your life.";
 		next;

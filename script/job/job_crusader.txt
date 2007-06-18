@@ -242,9 +242,8 @@ prt_castle.gat,45,169,5	script	Senior Crusader	752,{
         mes "[Michael Halig]";
         mes "Together, let us ready ourselves and be victorious over evil and tyranny!";
         next;
-        set job_crusader_q, 0;
-        callfunc "jobchange",Job_Crusader;
-        callfunc "F_ClearJobVar";        //clears all job variables for the current player
+        set job_crusader_q,0;
+        callfunc "F_JobChange",Job_Crusader;
         mes "[Michael Halig]";
         mes "Behold...!";
         mes "You are now a Crusader! When the Holy War comes, we shall fight side by side against the forces of evil.";

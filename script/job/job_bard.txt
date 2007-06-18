@@ -433,7 +433,6 @@ L_CHANGE:
 	if(skillpoint != 0) goto L_SKILLSLEFT;
 
 	callfunc "F_JobChange",Job_Bard;
-	callfunc "F_ClearJobVariables";
 
 	mes "[Lalo]";
 	if (@gift==0) goto L_NOGIFT;

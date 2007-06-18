@@ -76,7 +76,6 @@ payon.gat,157,141,5	script	Phoenix#Taekwon	753,{
 			set taekwon_lv,0;
 			getitem 2101,1;
 			callfunc "F_JobChange",Job_Taekwon;
-			callfunc "F_ClearJobVariables";
 			mes "[Phoenix]";
 			mes "You are still young, so";
 			mes "I assume you'll want a job";

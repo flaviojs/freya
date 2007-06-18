@@ -214,7 +214,6 @@ ein_in01.gat,18,28,4	script	Guildsman#BLS	731,{
 				mes "Excellent, I can tell by the twinkle in your eye that you were successful. I can now bestow upon you the gift of the smithing, the art of the Blacksmith.";
 				next;
 				callfunc "F_JobChange",Job_Blacksmith;
-				callfunc "F_ClearJobVariables";
 				mes "[Altiregen]";
 				mes "Always remember that we are creators, and artists over metals. Be wary that you do not fall into the pitfalls of selfishness";
 				mes "and greed.";
@@ -234,7 +233,6 @@ ein_in01.gat,18,28,4	script	Guildsman#BLS	731,{
 				mes "of the Blacksmith.";
 				next;
 				callfunc "F_JobChange",Job_Blacksmith;
-				callfunc "F_ClearJobVariables";
 				mes "[Altiregen]";
 				mes "Always remember that we are creators, and artists over metals. Be wary that you do not fall into the pitfalls of selfishness";
 				mes "and greed.";

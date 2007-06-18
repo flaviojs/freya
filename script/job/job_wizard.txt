@@ -404,8 +404,6 @@ gef_tower.gat,111,37,4	script	Wizard Guildsman	70,{
 		mes "Well, no need to wait, I congratulate you. I hearby deem you Wizard.";
 		next;
 		set job_wizard_q,0;
-		callfunc "F_JobChange",Job_Wizard;
-		callfunc "F_ClearJobVariables";
 		mes "[Catherine]";
 		mes "Since you're a Wizard now, act like a Wizard, got it?";
 		mes "Us wizards have to be careful since we possess the ultimate power of magic.";
