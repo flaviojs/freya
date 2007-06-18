@@ -14,6 +14,7 @@
 Date	Added
 
 2007/06/18
+	* Updated: The Alchemist Job Change Quest to official, converted from Aegis (iRO 10.3) [Tsuyuki]
 	* Added: All missing stylists, converted from Aegis (iRO 10.3) [Tsuyuki]
 	 - Lighthalzen Assistant Beautician
 	 - Lighthalzen Hair Dresser Prince Shammi

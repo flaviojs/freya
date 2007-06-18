@@ -1993,7 +1993,9 @@ yuno_in01.gat,103,157,3	script	Bain	98,{
 L_Check:
 	if (countitem(974) < 1 || countitem(612) < 5 || countitem(7068) < 5 || countitem(1003) < 5 || countitem(7043) < 5 || countitem(757) < 3 || countitem(756) < 3 || Zeny < 2000) goto L_NotEnough;
 
-	if (ALCH_Q == 6) set ALCH_Q2, 2; // For Alchemist Job Quest
+	// For the Alchemist Job Change Quest
+	if (job_alchemist_q == 23)
+		set job_alchemist_q,24;
 
 	delitem 974,1;
 	delitem 612,5;
@@ -2170,7 +2172,9 @@ yuno_in01.gat,100,153,4	script	Bajin	47,{
 L_Check:
 	if (countitem(974) < 1 || countitem(612) < 5 || countitem(7068) < 5 || countitem(1003) < 5 || countitem(7043) < 5 || countitem(757) < 3 || countitem(756) < 3 || Zeny < 2000) goto L_NotEnough;
 
-	if (ALCH_Q == 6) set ALCH_Q2, 2; // For Alchemist Job Quest
+	// For the Alchemist Job Change Quest
+	if (job_alchemist_q == 23)
+		set job_alchemist_q,24;
 
 	delitem 974,1;
 	delitem 612,5;
