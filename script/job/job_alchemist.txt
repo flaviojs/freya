@@ -763,7 +763,7 @@ L_Start:
 			next;
 			mes "[Van Helmont]";
 			mes "Oh, I got it. Go learn from ^5533FFMorgenstein^000000. Learn how to make a ^009500Counteragent^000000 and ^FF3355Mixture^000000.";
-			mes "You can find him in ^5533FFGeffen^000000.";
+			mes "You can find him in ^5533FFGeffen^000000. Then bring them back to me.";
 			next;
 			mes "[Van Helmont]";
 			mes "You don't need to bring what you made. But just go watch how he makes medicine and stuff.";
@@ -779,7 +779,7 @@ L_Start:
 		mes "If you dont have business here just go away. Ok!!!";
 		close;
 L_Check:
-	if (al_morgen != 1) goto L_NotRdy;
+	if (!countitem(974) || !countitem(973)) goto L_NotRdy;
 	mes "Yes, cut the Tentacle..";
 	mes "and mix some Sticku Mucus,";
 	mes "Jellopy solution in the test tube Darn, where did the Medicine Bowl go...";
@@ -837,7 +837,6 @@ L_Result:
 	mes "Go out and to the room next to here.  ^5533FFNicholas^000000 probably has more to teach you than me.";
 	set ALCH_Q,5;
 	set ALCH_Q2,0;
-	set al_morgen, 0;
 	close;
 
 	L_Failed:
@@ -852,6 +851,7 @@ L_NotRdy:
 	mes "Didn't I tell you to visit Morgenstein in Geffen!?!";
 	mes "He is a wise man! You should go to him!";
 	close;
+
 L_Done:
 	mes "What are you doing? Go out and to the room next to here.  ^5533FFNicholas^000000 probably has more to teach you than me.";
 	mes "I have no more business with you.";

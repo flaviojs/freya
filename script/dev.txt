@@ -17,13 +17,9 @@
 -> Missing Official Scripts:
 ----------------------------
 
-- Episode ???? - Airship System Missing NPCs (Just a few)
 - Episode ???? - Izlude Battle Arena
 
 - Episode 10.1 - Aldebaran Turbo Track
-
-- Episode 10.3 - Star Gladiator (Taekwon Master) Job Change Quest [Aurora's Current: Temporary]
-- Episode 10.3 - Soul Linker Job Change Quest [Aurora's Current: Temporary]
 
 - Episode 10.4 - Hugel Monster Races (Partially implemented)
 

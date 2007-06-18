@@ -118,7 +118,8 @@ prt_in.gat,173,13,4	script	Customer#SoloHan	86,{
 						mes "Hahaha!";
 						close2;
 						percentheal 100,0;
-						break
+						warp "jawaii_in.gat",44,124;
+						end;
 					case 2:
 						mes "[SoloHan]";
 						mes "Oh...";
@@ -128,7 +129,7 @@ prt_in.gat,173,13,4	script	Customer#SoloHan	86,{
 						close;
 					}
 				} else {
-					end;
+					continue;
 				}
 			case 2:
 				if ('@jaw_roof > 6) {
@@ -148,7 +149,7 @@ prt_in.gat,173,13,4	script	Customer#SoloHan	86,{
 						mes "me, will you?";
 						close2;
 						percentheal 100,0;
-						break;
+						warp "jawaii_in.gat",44,124;
 						end;
 					case 2:
 						mes "[SoloHan]";
@@ -174,11 +175,10 @@ prt_in.gat,173,13,4	script	Customer#SoloHan	86,{
 					mes "^3355FF*Gulp Gulp Gulp*^000000";
 					percentheal -10,0;
 					next;
-					}
+					continue;
+				}
 			}
 		}
-		warp "jawaii_in.gat",44,124;
-		end;
 	} else if (PartnerID) {
 		mes "[SoloHan]";
 		mes "UhOh... I'm drunk... Hiccups!";

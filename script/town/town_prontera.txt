@@ -91,28 +91,6 @@ prt_maze02.gat,110,69,0	script	Soldier	105,{
 // Prontera Indoor Town NPCs
 //--------------------------------------------------------------
 
-prt_in.gat,251,129,4	script	Maos	709,2,2,{
-
-	mes "[Maos]";
-	mes "I see too many people struggling to";
-	mes "scrape every penny and put it all";
-	mes "into their savings...";
-	next;
-	mes "[Maos]";
-	mes "Now, don't get me wrong. It's a";
-	mes "good idea to invest in the future.";
-	mes "But money exists to be spent! Enjoy";
-	mes "every moment, that's what I say~";
-	next;
-	mes "[Maos]";
-	mes "Besides...";
-	mes "You can't take";
-	mes "your money with you";
-	mes "when your time's up,";
-	mes "you know?";
-	close;
-}
-
 prt_in.gat,88,105,2	script	Recruiter	105,{
 
 	if (sewer_prt == 1) goto L_Case01;

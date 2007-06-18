@@ -693,8 +693,6 @@ prt_church.gat,27,24,1	script	Sister Cecilia	79,{
 			next;
 			switch(select("Yes.","No.")) {
 			case 1:
-				break;
-			case 2:
 				mes "[Sister Cecilia]";
 				mes "Aw...? God won't grant you the power of holiness if your goals aren't just and pure. Meditate on your motivations for a while, and then come back to me.";
 				next;
@@ -702,6 +700,8 @@ prt_church.gat,27,24,1	script	Sister Cecilia	79,{
 				mes "[Sister Cecilia]";
 				mes "Think about the qualities that make Priests people of respect. You can't be a Priest if your spirit is not in accordance with God.";
 				close;
+			case 2:
+				break;
 			}
 			mes "[Sister Cecilia]";
 			mes "Will you help aid others, even complete strangers, in battles by easing their suffering?";

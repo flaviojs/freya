@@ -20,7 +20,7 @@
 //	1.6 Updated Ninja Job Change Quest dialogue to official by SinSloth [Tsuyuki]
 //	1.7 Added Dagger and Fuuma Shuriken Craftsmen by Playtester [Tsuyuki]
 //--------------------------------------------------------------
-// Additional Notes: * Aegis-certified * on all contents.
+// Additional Notes: * Official-certified / Aegis-certified *
 // Contents:
 // - Ninja Job Change Quest
 // - Kunai Merchant

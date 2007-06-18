@@ -13,6 +13,20 @@
 
 Date	Added
 
+2007/06/18
+	* Added: All missing stylists, converted from Aegis (iRO 10.3) [Tsuyuki]
+	 - Lighthalzen Assistant Beautician
+	 - Lighthalzen Hair Dresser Prince Shammi
+	 - Lighthalzen Hair Dyer Rossa
+	* Updated: All current stylists to official, converted from Aegis (iRO 10.3): [Tsuyuki]
+	 - Alberta Hair Dresser Rui Vishop
+	 - Alberta Hair Dresser Veronica
+	 - Prontera Hair Dresser Jovovich
+	* Updated: The Counteragent and Mixture Quest to official, converted from Aegis (iRO 10.3) [Tsuyuki]
+	 - Merged into 'script/town/town_geffen.txt'
+	* Updated: Dye Maker Java Dullihan to official, converted from Aegis (iRO 10.3) [Tsuyuki]
+	 - Merged into 'script/town/town_morroc.txt'
+
 2007/06/17
 	* Fixed: Some bugs in the new job change quests [Tsuyuki]
 	* Updated: The Soul Linker Job Change Quest to official, converted from Aegis (iRO 10.3) [Tsuyuki]
@@ -39,21 +53,16 @@ Date	Added
 	* Updated: Bulletin Boards/Sign Posts, converted from Aegis (iRO 10.3) [Tsuyuki]
 	* Added: The Heart Fragment Quest, by SinSloth (iRO 10.4) [Tsuyuki]
 	* Added: The Hugel Rebellion Quest, by MasterOfMuppets (iRO 10.4) [Tsuyuki]
-	* Updated: The remaining parts of Alberta to official, converted/based on Aegis (iRO 10.3) [Tsuyuki]
 	* Updated: The Turtle Island Quest to official, converted from Aegis (iRO 10.3) [Tsuyuki]
-	* Added: The official Hunter Phantasmic Arrow Skill Quest, converted from Aegis (iRO 10.3) [Tsuyuki]
-	 - Fully completes skill quest officialization
-	* Updated: The remaining parts of Aldebaran to official, converted/based on Aegis (iRO 10.3) [Tsuyuki]
 	* Updated: Comodo Town NPCs to official, converted from Aegis (iRO 10.3) [Tsuyuki]
 	* Updated: Izlude Town NPCs to official, converted from Aegis (iRO 10.3) [Tsuyuki]
-	* Updated: A bit of the Transcendence system with iRO dialogue + some officializations (Work in progress) [Tsuyuki]
+	* Updated: A bit of the Transcendence system with iRO 10.3 dialogue + some officializations (Work in progress) [Tsuyuki]
 	* Added: The Thai Hat Quest, converted from Aegis (iRO 10.3) [Tsuyuki]
 	* Updated: All First and Second Class Skill Quests official, converted from Aegis (iRO 10.3) [Tsuyuki]
-	 - With the exception of the Hunter Phantasmic Arrow Quest.. it hasn't been leaked yet apparently
 
 2007/06/13
 	* Updated: Project to jAthena 3304 (Latest) [Tsuyuki]
-	* Updated: Almost all first class job change quests to official iRO standards, converted from Aegis [Tsuyuki]
+	* Updated: Almost all first class job change quests to official, converted from Aegis (iRO 10.3) [Tsuyuki]
 	 - Mage Job Change Quest is still to-do, coming soon
 
 2007/06/11
@@ -62,37 +71,35 @@ Date	Added
 	* Changed: Moved all current Moscovia script data to 'script/event/event_moscovia.txt' [Tsuyuki]
 	* Updated: Some warp portals by Playtester [Tsuyuki]
 	* Removed: Some duplicate NPCs [Tsuyuki]
-	 - Duplicate Christopher Blacksmith in script/town/global/town_refine.txt and script/town/town_geffen.txt
-	 - Duplicate Einbroch Hotel Employee in script/town/global/town_inn.txt and script/town/town_einbroch.txt
+	 - Duplicate Christopher Blacksmith in 'script/town/global/town_refine.txt' and 'script/town/town_geffen.txt'
+	 - Duplicate Einbroch Hotel Employee in 'script/town/global/town_inn.txt' and 'script/town/town_einbroch.txt'
 
 2007/06/10
 	* Added: Nameless Island's level 80+ official requirement to go there [Tsuyuki]
-	* Updated: Taekwon Job Change Quest to be 100% fully accurate to iRO Aegis [Tsuyuki]
-	* Added: Geffen Town NPCs, converted from Aegis in replacement of the old NPC script [Tsuyuki]
-	* Added: Lutie Town NPCs, converted from Aegis in replacement of the old NPC script [Tsuyuki]
-	* Added: Jawaii Town NPCs, converted from Aegis in replacement of the old NPC script [Tsuyuki]
-	* Updated: The Magical Swords Quest with iRO dialogue [Tsuyuki]
-	* Updated: Prontera Library Encyclopedias/Books, converted from Aegis by L0ne_W0lf [Tsuyuki]
-	* Added: The Gaebolg Family Curse Qust, by L0ne_W0lf [Tsuyuki]
+	* Added: Geffen Town NPCs to official, converted from Aegis (iRO 10.3) [Tsuyuki]
+	* Updated: Lutie Town NPCs to official, converted from Aegis (iRO 10.3) [Tsuyuki]
+	* Updated: Jawaii Town NPCs to official, converted from Aegis (iRO 10.3) [Tsuyuki]
+	* Updated: The Magical Swords Quest with iRO 10.3 dialogue [Tsuyuki]
+	* Updated: Prontera Library Encyclopedias/Books to official, converted from Aegis (iRO 10.3) by L0ne_W0lf [Tsuyuki]
+	* Added: The Gaebolg Family Curse Quest, converted from Aegis (iRO 10.3) by L0ne_W0lf [Tsuyuki]
 	* Updated: Some scripts + bug fixes by various people [Tsuyuki]
 
 2007/06/09
 	* Fixed: A ton of select script command bugs [Tsuyuki]
-	* Added: The missing Orc Hero Helm Quest, by Dj-Yhn [Tsuyuki]
+	* Added: The missing Orc Hero Helm Quest, converted from Aegis by Dj-Yhn [Tsuyuki]
 	* Updated: Renamed all script functions/sub-functions with "F_" and "sF_" prefixes [Tsuyuki]
 	* Changed: Merged the God Seal Quests together [Tsuyuki]
-	* Added: The Bingo Game System, converted from Aegis by SinSloth [Tsuyuki]
+	* Added: The Bingo Game System, converted from Aegis (iRO 10.4) by SinSloth [Tsuyuki]
 	* Updated: Translated a bunch of battle_athena.conf [Tsuyuki]
-	* Added: The Lighthalzen Shadow Quest, converted from Aegis [Tsuyuki]
+	* Added: The Lighthalzen Shadow Quest, converted from Aegis (iRO 10.3) [Tsuyuki]
 
 2007/06/08
-	* Added: The President's Quest (Schwartzvalt Trilogy Quest) by SinSloth [Tsuyuki]
-	* Added: The Cursed Spirit Quest by SinSloth [Tsuyuki]
+	* Added: The President's Quest (Schwartzvalt Trilogy Quest), converted from Aegis (iRO 10.3) by SinSloth [Tsuyuki]
+	* Added: The Cursed Spirit Quest, converted from Aegis (iRO 10.3) by SinSloth [Tsuyuki]
 	* Added: A new global function to end all status changes (F_EndAllStatuses) [Tsuyuki]
-	* Updated: Lighthalzen/Juno for the implementation of the Cursed Spirit and President's Quests [Tsuyuki]
 	* Updated: Kiel Hyre warps by L0ne_W0lf [Tsuyuki]
-	* Updated: Rachel Guide NPC to official by L0ne_W0lf [Tsuyuki]
-	* Updated: Rachel Town NPCs/Quests with fully official iRO/Aegis versions by L0ne_W0lf [Tsuyuki]
+	* Updated: Rachel Guide NPC to official, converted from Aegis (iRO 11.1) by L0ne_W0lf [Tsuyuki]
+	* Updated: Rachel Town NPCs/Quests, converted from Aegis (iRO 11.1) by L0ne_W0lf [Tsuyuki]
 	* Updated: The Kiel Hyre Quest with all the latest bug fixes [Tsuyuki]
 	* Updated: Hugel Monster Races a little bit [Tsuyuki]
 	* Updated: Moscovia Town warps by $ephiroth [Tsuyuki]
@@ -101,13 +108,12 @@ Date	Added
 	* Added: The Odin's Temple Excavation Quest, converted from Aegis (iRO 10.4) [Tsuyuki]
 	* Added: The Biological Weapon Quest, converted from Aegis (iRO 10.4) [Tsuyuki]
 	* Added: The Hugel Remedy Quest, converted from Aegis (iRO 10.4) [Tsuyuki]
-	* Updated: A few things in the Blacksmith Job Change Quest [Tsuyuki]
 
 2007/06/07
 	* Added: The Hugel Hide n' Seek Quest, converted from Aegis (iRO 10.4) [Tsuyuki]
 	* Added: The Hugel Medicine Quest, converted from Aegis (iRO 10.4) [Tsuyuki]
 	* Added: The Hugel Memory Quest, converted from Aegis (iRO 10.4) [Tsuyuki]
-	* Added: Freya's effect list documentation file [Tsuyuki]
+	* Imported: Freya's effect list documentation file [Tsuyuki]
 	* Updated: Finished the Hugel Fish Cake Soup Quest, based on iRO Aegis 10.4 information [Tsuyuki]
 	* Updated: Cooking Quest to Aegis iRO 10.3 standards, by L0ne_W0lf [Tsuyuki]
 	* Merged: First Class Tutorial Quests into one file [Tsuyuki]
@@ -117,33 +123,27 @@ Date	Added
 	* Added: Moscovia maps [Tsuyuki]
 	* Fixed: Some bugs in the Socket Enchant script by SinSloth [Tsuyuki]
 	* Updated: Some NPC shops [Tsuyuki]
-	* Added: Munak's Grandma Quest by L0ne_W0lf [Tsuyuki]
 	* Removed: Custom Munak/Bon Gun Quests [Tsuyuki]
-	* Updated: Abyss Lake Entrance to official by SinSloth [Tsuyuki]
-	* Added: Ninja Dagger and Fuuma Shuriken Craftsmen by Playtester [Tsuyuki]
-	* Updated: Ninja Kunai Merchant to Aegis by Playtester [Tsuyuki]
-	* Updated: Ninja Job Change Quest with official dialogue by SinSloth [Tsuyuki]
-	* Added: Airship Ticket and How Does The Airship Fly Quests by Samuray22 [Tsuyuki]
+	* Updated: Abyss Lake Entrance to official, converted from Aegis (iRO 10.3) by SinSloth [Tsuyuki]
+	* Added: Ninja Dagger and Fuuma Shuriken Craftsmen, converted from Aegis by Playtester [Tsuyuki]
+	* Updated: Ninja Kunai Merchant converted from Aegis by Playtester [Tsuyuki]
+	* Updated: Ninja Job Change Quest with official dialogue, converted from Aegis (iRO 10.4) by SinSloth [Tsuyuki]
+	* Added: Airship Ticket and How Does The Airship Fly Quests, converted from Aegis by Samuray22 [Tsuyuki]
 	* Updated: All non-Aegis Gunslinger-related quests/merchants to Aegis standards by various people [Tsuyuki]
 
 2007/06/06
-	* Updated: Socket Enchant script to Aegis version by SinSloth [Tsuyuki]
-	* Updated: Peco Peco/Grand Peco Peco/Falcon rentals script to Aegis version by L0ne_W0lf [Tsuyuki]
-	* Updated: Crusader Job Change Quest to Aegis version [Tsuyuki]
-	* Added: Added Novice WoE Event Monument, converted from Aegis [Tsuyuki]
-	* Added: Amatsu Legendary Tree Quest, converted from Aegis [Tsuyuki]
-	* Fixed: Some bugs with the Blacksmith/Monk/Knight skill quests + optimized them [Tsuyuki]
-	* Updated: Replaced Blacksmith, Monk, and Knight skill quests with Aegis-converted versions by Samuray22 [Tsuyuki]
+	* Updated: Socket Enchant to official, converted from Aegis (iRO 11.1) by SinSloth [Tsuyuki]
+	* Updated: Peco Peco/Grand Peco Peco/Falcon rentals script to official, converted from Aegis (iRO 10.3) by L0ne_W0lf [Tsuyuki]
+	* Added: The Izlude Novice WoE Event Monument, converted from Aegis (iRO 10.3) [Tsuyuki]
+	* Added: Amatsu Legendary Tree Quest, converted from Aegis (iRO 10.3) [Tsuyuki]
 	* Fixed: A bug in the Thief Job Change Quest [Tsuyuki]
-	* Added: Dandelion's Request Quest by SinSloth [Tsuyuki
+	* Added: Dandelion's Request Quest, converted from Aegis (iRO 10.3) by SinSloth [Tsuyuki
 	* Changed: Merged Ice Cave Ktullanux Quest into Rachel Town Script [Tsuyuki]
-	* Updated: Juperos Ruins Quest by Blaze (Translated from jAthena) [Tsuyuki]
+	* Updated: Juperos Ruins Quest by Blaze (Translated from jAthena with iRO Aegis dialogue) [Tsuyuki]
 	 - Removed extra warps as well
 	* Updated: Databases to latest Huge CGI versions [Tsuyuki]
 
 2007/06/02
-	* Updated: Thief Job Change Quest with Aegis dialogue [Tsuyuki]
-	* Updated: Archer Job Change Quest with Aegis dialogue [Tsuyuki]
 	* Added: Kunlun Power NPC (Disabled for now, broken) [Tsuyuki]
 	* Updated: Project to jAthena 2297 [Tsuyuki]
 	* Updated: Alberta, Aldebaran, and Morroc Town NPCs to Aegis converted versions [Tsuyuki]

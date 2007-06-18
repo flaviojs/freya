@@ -100,7 +100,7 @@ lighthalzen.gat,261,112,3	script	Ruth	862,{
 	mes "happiness. Ohm I love";
 	mes "you so much, Oyoung.";
 	next;
-	mes "[" + strcharinfo(0) + "]";
+	mes "["+strcharinfo(0)+"]";
 	mes "Whoa...";
 	mes "This couple is";
 	mes "really headed for";
@@ -125,7 +125,7 @@ lighthalzen.gat,259,108,7	script	Oyoung	869,{
 	mes "they got vitamin deficiency.";
 	mes "i better take care of that~";
 	next;
-	mes "[" + strcharinfo(0) + "]";
+	mes "["+strcharinfo(0)+"]";
 	mes "Sweet Sister!";
 	mes "I don't know what's";
 	mes "more mind boggling--";
@@ -322,7 +322,6 @@ lighthalzen.gat,230,182,4	script	Klaubis	866,{
 	mes "quiet and uneventful here.";
 	next;
 	switch(select("Have you lived in here long?","I agree.","Have you heard about the serial killer?")) {
-
 	case 1:
 		mes "[Klaubis]";
 		mes "Yes, our family has";
@@ -340,7 +339,6 @@ lighthalzen.gat,230,182,4	script	Klaubis	866,{
 		mes "come back. It wouldn't be your";
 		mes "hometown if you couldn't, right?";
 		close;
-
 	case 2:
 		mes "[Klaubis]";
 		mes "Yes, the atmosphere";
@@ -350,7 +348,6 @@ lighthalzen.gat,230,182,4	script	Klaubis	866,{
 		mes "sights to enjoy here in";
 		mes "Lighthalzen, so look around~";
 		close;
-
 	case 3:
 		mes "[Klaubis]";
 		mes "You mean the Serial";
@@ -573,7 +570,7 @@ lighthalzen.gat,182,102,3	script	Lucius	866,{
 	mes "make a donation";
 	mes "to help the hungry?";
 	next;
-	switch(select("Sure.",s_Sure,"No, thanks.")) {
+	switch(select("Sure.","No, thanks.")) {
 	case 1:
 		mes "[Lucius]";
 		mes "Now, you can donate 1 to";
@@ -973,91 +970,91 @@ lighthalzen.gat,312,234,2	script	Beggar	777,{
 	mes "Would you give me";
 	mes "some money?";
 	next;
-	menu "Give him some money.",L_give,"Ignore him.",-;
-	mes "[" + strcharinfo(0) + "]";
-	mes "...";
-	mes "......";
-	close;
-
-L_give:
-	if (Zeny < 50) goto L_zeny;
-	mes "[" + strcharinfo(0) + "]";
-	mes "Here you go,";
-	mes "take this.";
-	set Zeny,Zeny-50;
-	next;
-	mes "[Beggar]";
-	mes "Thank you so much.";
-	mes "I have nothing to offer you";
-	mes "in exchange, but I can share";
-	mes "a story with you and impart";
-	mes "some of the wisdom I've";
-	mes "learned over the years.";
-	emotion 15;
-	next;
-	mes "[Beggar]";
-	mes "Anger. People deal with";
-	mes "it in different ways. Some";
-	mes "suppress it. Some relish it.";
-	mes "Some fear being angry. Now,";
-	mes "to be simple, let's say there";
-	mes "are two kinds of anger.";
-	next;
-	mes "[Beggar]";
-	mes "The first is the kind that";
-	mes "isn't so productive. More of";
-	mes "a frustration that you can let";
-	mes "go. Someone cut you off on the";
-	mes "freeway or a friend innocently";
-	mes "forgot your birthday? No Biggie.";
-	next;
-	mes "[Beggar]";
-	mes "Don't let this kind of";
-	mes "anger get to you or you'll";
-	mes "look like a looser. Think of";
-	mes "the big picture and if you're";
-	mes "still upset, vent appropriatly.";
-	mes "Be honest without hurting anyone.";
-	next;
-	mes "[Beggar]";
-	mes "The second kind of anger is";
-	mes "righteous anger. You've been";
-	mes "wronged and need some form";
-	mes "of retribution. Remember to";
-	mes "make appropriate confontrations";
-	mes "and don't misdirect your rage.";
-	next;
-	mes "[Beggar]";
-	mes "Getting into a fight with";
-	mes "righteous anger, say to protect";
-	mes "someone dear to you, will make";
-	mes "you a hero. Fighting with anger";
-	mes "born of frustration will make you";
-	mes "a bully. Know the difference.";
-	next;
-	mes "[" + strcharinfo(0) + "]";
-	mes ". . . . . . . . . . . .";
-	next;
-	mes "[" + strcharinfo(0) + "]";
-	mes ". . . . . . . . . . . .";
-	mes ". . . . . . . . . . . .";
-	next;
-	mes "[" + strcharinfo(0) + "]";
-	mes ". . . . . . . . . . . .";
-	mes ". . . . . . . . . . . .";
-	mes ". . . . . . . . . . . .";
-	next;
-	mes "[Beggar]";
-	mes "What's wrong?";
-	mes "It might be a lot";
-	mes "to take in, I know.";
-	close;
-
-L_zeny:
-	mes "[Beggar]";
-	mes "You don't seem to have";
-	mes "enough zeny.";
-	close;
+	switch(select("Give him some money.","Ignore him.")) {
+	case 1:
+		if (Zeny < 50) {
+			mes "[Beggar]";
+			mes "You don't seem to have";
+			mes "enough zeny.";
+			close;
+		}
+		mes "["+strcharinfo(0)+"]";
+		mes "Here you go,";
+		mes "take this.";
+		set Zeny,Zeny-50;
+		next;
+		mes "[Beggar]";
+		mes "Thank you so much.";
+		mes "I have nothing to offer you";
+		mes "in exchange, but I can share";
+		mes "a story with you and impart";
+		mes "some of the wisdom I've";
+		mes "learned over the years.";
+		emotion 15;
+		next;
+		mes "[Beggar]";
+		mes "Anger. People deal with";
+		mes "it in different ways. Some";
+		mes "suppress it. Some relish it.";
+		mes "Some fear being angry. Now,";
+		mes "to be simple, let's say there";
+		mes "are two kinds of anger.";
+		next;
+		mes "[Beggar]";
+		mes "The first is the kind that";
+		mes "isn't so productive. More of";
+		mes "a frustration that you can let";
+		mes "go. Someone cut you off on the";
+		mes "freeway or a friend innocently";
+		mes "forgot your birthday? No Biggie.";
+		next;
+		mes "[Beggar]";
+		mes "Don't let this kind of";
+		mes "anger get to you or you'll";
+		mes "look like a looser. Think of";
+		mes "the big picture and if you're";
+		mes "still upset, vent appropriatly.";
+		mes "Be honest without hurting anyone.";
+		next;
+		mes "[Beggar]";
+		mes "The second kind of anger is";
+		mes "righteous anger. You've been";
+		mes "wronged and need some form";
+		mes "of retribution. Remember to";
+		mes "make appropriate confontrations";
+		mes "and don't misdirect your rage.";
+		next;
+		mes "[Beggar]";
+		mes "Getting into a fight with";
+		mes "righteous anger, say to protect";
+		mes "someone dear to you, will make";
+		mes "you a hero. Fighting with anger";
+		mes "born of frustration will make you";
+		mes "a bully. Know the difference.";
+		next;
+		mes "["+strcharinfo(0)+"]";
+		mes ". . . . . . . . . . . .";
+		next;
+		mes "["+strcharinfo(0)+"]";
+		mes ". . . . . . . . . . . .";
+		mes ". . . . . . . . . . . .";
+		next;
+		mes "["+strcharinfo(0)+"]";
+		mes ". . . . . . . . . . . .";
+		mes ". . . . . . . . . . . .";
+		mes ". . . . . . . . . . . .";
+		next;
+		mes "[Beggar]";
+		mes "What's wrong?";
+		mes "It might be a lot";
+		mes "to take in, I know.";
+		close;
+	case 2:
+		mes "["+strcharinfo(0)+"]";
+		mes "...";
+		mes "......";
+		close;
+	}
 }
 
 lighthalzen.gat,311,194,3	script	Reuben	870,{
@@ -1222,14 +1219,14 @@ lhz_in01.gat,124,28,2	script	Ellette	66,{
 	mes "[Ellette]";
 	mes "...";
 	next;
-	mes "[" + strcharinfo(0) + "]";
+	mes "["+strcharinfo(0)+"]";
 	mes "Excuse me.";
 	next;
 	mes "[Ellette]";
 	mes "...";
 	mes "......";
 	next;
-	mes "[" + strcharinfo(0) + "]";
+	mes "["+strcharinfo(0)+"]";
 	mes "Hello?";
 	next;
 	mes "[Ellette]";
@@ -1263,23 +1260,24 @@ lhz_in01.gat,125,40,2	script	Dowbow Ryuei#Dowbow_Ryuei	843,{
 	mes "you like better?\"Uber-Cool\"";
 	mes "or \"Reality?\" Pick one~";
 	next;
-	menu "Uber-Cool",-,"Reality",L_reality;
-	mes "[Dowbow Ryuei]";
-	mes "Oh yeah? Me too!";
-	mes "Yeah, we got the same";
-	mes "outlook on life. If you don't";
-	mes "mind, I'd like to shake";
-	mes "your hand, adventurer.";
-	emotion 21;
-	close;
-
-L_reality:
-	mes "[Dowbow Ryuei]";
-	mes "Reality, eh?";
-	mes "Well, I agree that";
-	mes "being realistic has its";
-	mes "perks, I'm more of a dreamer.";
-	close;
+	switch(select("Uber-Cool","Reality")) {
+	case 1:
+		mes "[Dowbow Ryuei]";
+		mes "Oh yeah? Me too!";
+		mes "Yeah, we got the same";
+		mes "outlook on life. If you don't";
+		mes "mind, I'd like to shake";
+		mes "your hand, adventurer.";
+		emotion 21;
+		close;
+	case 2:
+		mes "[Dowbow Ryuei]";
+		mes "Reality, eh?";
+		mes "Well, I agree that";
+		mes "being realistic has its";
+		mes "perks, I'm more of a dreamer.";
+		close;
+	}
 }
 
 lhz_in01.gat,125,46,2	script	Leekal	849,{
@@ -1631,42 +1629,50 @@ lhz_in01.gat,73,188,4	script	Guide#03	862,{
 
 lhz_in01.gat,34,226,4	script	Rekenber Guard#01	867,{
 
-	if (equippeditem(2241)==1 && equippeditem(2243)==1) goto s_Staff;
+	if (equippeditem(2241) && equippeditem(2243)) {
+		mes "[Rekenber Guard]";
+		mes "^3131FF(Whoa, it's a member";
+		mes "of the staff)^000000 Good day!";
+		close2;
+		warp "lhz_in01.gat",37,225;
+		end;
+	}
 	mes "[Rekenber Guard]";
 	mes "This is a restricted";
 	mes "area! Please show";
 	mes "some ID immediately!";
 	next;
-	menu "ID?",s_ID,"Cancel",-;
-
-	mes "[Rekenber Guard]";
-	mes "Unless you have special";
-	mes "authorization, nobody is";
-	mes "allowed into the Underground";
-	mes "Laboratory for security reasons.";
-	close;
-
-s_ID:
-	mes "[Rekenber Guard]";
-	mes "I don't know how you";
-	mes "adventurers do things in";
-	mes "Rune-Midgard, but over here";
-	mes "we have laws about trespassing!";
-	close;
-
-s_Staff:
-	mes "[Rekenber Guard]";
-	mes "^3131FF(Whoa, it's a member";
-	mes "of the staff)^000000 Good day!";
-	close2;
-	warp "lhz_in01.gat",37,225;
-	end;
+	switch(select("ID?","Cancel")) {
+	case 1:
+		mes "[Rekenber Guard]";
+		mes "I don't know how you";
+		mes "adventurers do things in";
+		mes "Rune-Midgard, but over here";
+		mes "we have laws about trespassing!";
+		close;
+	case 2:
+		mes "[Rekenber Guard]";
+		mes "Unless you have special";
+		mes "authorization, nobody is";
+		mes "allowed into the Underground";
+		mes "Laboratory for security reasons.";
+		close;
+	}
 }
 
 lhz_in01.gat,19,129,0	script	LhzHiddenTrg1::LhzTrig	139,1,1{
 
 OnTouch:
-	if (equippeditem(2241)==1 && equippeditem(2243)==1) goto s_Staff;
+	if (equippeditem(2241) && equippeditem(2243)) {
+		mes "[Rekenber Guard]";
+		mes "Keep your eyes open.";
+		mes "I've heard rumors that some";
+		mes "adventurers from Rune-Midgard";
+		mes "are trying to sneak into here!";
+		mes "I know the security here is";
+		mes "pretty much failsafe, but...";
+		close;
+	}
 	mes "[Rekenber Guard]";
 	mes "This area is restricted";
 	mes "to the public! Who are you";
@@ -1675,16 +1681,6 @@ OnTouch:
 	close2;
 	warp "lhz_in01.gat",34,224;
 	end;
-
-s_Staff:
-	mes "[Rekenber Guard]";
-	mes "Keep your eyes open.";
-	mes "I've heard rumors that some";
-	mes "adventurers from Rune-Midgard";
-	mes "are trying to sneak into here!";
-	mes "I know the security here is";
-	mes "pretty much failsafe, but...";
-	close;
 }
 
 lhz_in01.gat,23,137,0	duplicate(LhzTrig)	LhzHiddenTrg2	139,1,1
@@ -1693,41 +1689,39 @@ lhz_in01.gat,24,131,2	duplicate(LhzTrig)	Rekenber Guard#02	867
 
 lhz_in01.gat,25,141,4	script	Regenschirm Guard	868,{
 
-	if (equippeditem(2241)==1 && equippeditem(2243)==1) goto s_Staff;
-	mes "[Regenschirm Guard]";
-	mes "This area is restricted";
-	mes "to the public! Who are you";
-	mes "and how did you get in here?!";
-	mes "Hey, I need backup right away!";
-	close2;
-	warp "lhz_in01.gat",34,224;
-	end;
-
-s_Staff:
-	mes "[Regenschirm Guard]";
-	mes "Do you wish to";
-	mes "go underground?";
-	next;
-	menu "Yes",s_Yes,"No",-;
-
-	mes "[Regenschirm Guard]";
-	mes "Thank you and";
-	mes "have a nice day.";
-	close;
-
-s_Yes:
-	if (equippeditem(2657)==1) goto s_Auth;
-	mes "[Regenschirm Guard]";
-	mes "I'm sorry but I can't let";
-	mes "staff without proper autorization";
-	mes "pass. Only staff members with";
-	mes "Laboratory Passports are allowed";
-	mes "to enter the underground.";
-	close;
-
-s_Auth:
-	warp "lhz_dun01.gat",150,288;
-	end;
+	if (equippeditem(2241) && equippeditem(2243)) {
+		mes "[Regenschirm Guard]";
+		mes "Do you wish to";
+		mes "go underground?";
+		next;
+		switch(select("Yes","No")) {
+		case 1:
+			if (equippeditem(2657)) {
+				warp "lhz_dun01.gat",150,288;
+				end;
+			}
+			mes "[Regenschirm Guard]";
+			mes "I'm sorry but I can't let";
+			mes "staff without proper autorization";
+			mes "pass. Only staff members with";
+			mes "Laboratory Passports are allowed";
+			mes "to enter the underground.";
+			close;
+		case 2:
+			mes "[Regenschirm Guard]";
+			mes "Thank you and";
+			mes "have a nice day.";
+			close;
+		}
+		mes "[Regenschirm Guard]";
+		mes "This area is restricted";
+		mes "to the public! Who are you";
+		mes "and how did you get in here?!";
+		mes "Hey, I need backup right away!";
+		close2;
+		warp "lhz_in01.gat",34,224;
+		end;
+	}
 }
 
 lhz_in02.gat,34,41,7	script	Arthur	849,{
@@ -2503,7 +2497,7 @@ lhz_in02.gat,267,22,1	script	Shop Assistant	91,{
 	mes "month on our store. If you invite";
 	mes "your friends, you'll receive spe--";
 	next;
-	mes "[" + strcharinfo(0) + "]";
+	mes "["+strcharinfo(0)+"]";
 	mes "N-no thank you!";
 	mes "I'm not interested!";
 	close;
@@ -2518,40 +2512,39 @@ lighthalzen.gat,192,63,4	script	Sergei	92,{
 	mes "over there. Would you";
 	mes "like me to tell you?";
 	next;
-	menu "Sure",Yes,"No, thank's.",No;
-
-Yes:
-	mes "[Sergei]";
-	mes "This previous owner of";
-	mes "this Weapon Shop was";
-	mes "a convicted serial killer.";
-	mes "Each night, he'd take that";
-	mes "axe and cruelly murder";
-	mes "beautiful ladies like me.";
-	next;
-	mes "[Sergei]";
-	mes "When he was finally";
-	mes "caught, they beheaded";
-	mes "him with his own axe.";
-	mes "Since then, they say that";
-	mes "his ghost still lingers and";
-	mes "sharpens this axe at night.";
-	next;
-	mes "[Sergei]";
-	mes "Just thinking about";
-	mes "it gives me goosebumps!";
-	mes "And I'm supposed to work";
-	mes "here! It's so creepy!";
-	close;
-
-No:
-	mes "[Sergei]";
-	mes "Oh, how disappointing~";
-	mes "It's the perfect story for";
-	mes "the season. Well, now that";
-	mes "I think about it, that story is";
-	mes "actually pretty creepy...";
-	close;
+	switch(select("Sure","No, thank's.")) {
+	case 1:
+		mes "[Sergei]";
+		mes "This previous owner of";
+		mes "this Weapon Shop was";
+		mes "a convicted serial killer.";
+		mes "Each night, he'd take that";
+		mes "axe and cruelly murder";
+		mes "beautiful ladies like me.";
+		next;
+		mes "[Sergei]";
+		mes "When he was finally";
+		mes "caught, they beheaded";
+		mes "him with his own axe.";
+		mes "Since then, they say that";
+		mes "his ghost still lingers and";
+		mes "sharpens this axe at night.";
+		next;
+		mes "[Sergei]";
+		mes "Just thinking about";
+		mes "it gives me goosebumps!";
+		mes "And I'm supposed to work";
+		mes "here! It's so creepy!";
+		close;
+	case 2:
+		mes "[Sergei]";
+		mes "Oh, how disappointing~";
+		mes "It's the perfect story for";
+		mes "the season. Well, now that";
+		mes "I think about it, that story is";
+		mes "actually pretty creepy...";
+		close;
+	}
 }
 
 lighthalzen.gat,258,223,3	script	Srinivas	866,{
@@ -2629,6 +2622,7 @@ OnMinute55:
 }
 
 lighthalzen.gat,1,1,7	script	AlertChk	139,{
+
 OnInit:
 	initnpctimer;
 	end;
@@ -3181,8 +3175,6 @@ L_11:
 	close;
 }
 
-// Door
-
 lhz_cube.gat,249,184,0	script	Door?	111,{
 
 	mes "Leave room?";
@@ -3197,9 +3189,8 @@ LhzNoLeave:
 	close;
 }
 
-// Chest
-
 lhz_cube.gat,248,179,0	script	Chest	111,{
+
 	if (Axe == 1) goto L_2;
 	mes "There is an Axe in the chest.";
 	next;
@@ -3216,9 +3207,8 @@ L_2:
 	close;
 }
 
-// Barrel
-
 lhz_cube.gat,237,183,0	script	Barrel	111,{
+
 	if (yKey == 1) goto L_4;
 	if (Box == 1) goto L_2;
 	mes "There is a box that looks weak.";
@@ -3278,9 +3268,8 @@ L_4:
 	close;
 }
 
-// Drawer
-
 lhz_cube.gat,242,201,0	script	Drawer	111,{
+
 	if (Jackknife == 1) goto L_3;
 	mes "The drawer is locked.";
 	if (RedKey == 1) goto L_1;
@@ -3306,9 +3295,8 @@ L_3:
 	close;
 }
 
-// Bundle of Files
-
 lhz_cube.gat,237,198,0	script	Bundle of Files	111,{
+
 	if (RedKey == 1) goto L_2;
 	mes "There are tons of documents here.";
 	next;
@@ -3328,9 +3316,8 @@ L_2:
 	close;
 }
 
-// Bed
-
 lhz_cube.gat,247,198,0	script	Bed	111,{
+
 	mes "There is a messy bed.";
 	next;
 	menu "Above the bed",-,"Under the bed",L_1;
@@ -3389,9 +3376,8 @@ L_3:
 	close;
 }
 
-// Goblet
-
 lhz_cube.gat,229,184,0	script	Goblet	111,{
+
 	if (fKey == 1) goto L_2;
 	mes "You see an empty bottle and a goblet with something in it.";
 	next;
@@ -3411,9 +3397,8 @@ L_2:
 	close;
 }
 
-// Chemicals
-
 lhz_cube.gat,233,206,0	script	Checmicals	111,{
+
 	if (gKey == 1) goto L_2;
 	mes "There are lots of bottles filled with chemicals lined up";
 	mes "Along the shelf, they have different labels.";
@@ -3441,9 +3426,8 @@ L_2:
 	close;
 }
 
-// Cabinet
-
 lhz_cube.gat,249,191,0	script	Cabinet	111,{
+
 	if (Polygon >= 1) goto L_4;
 	mes "There is a cabinet with lots of drawers.";
 	if (gKey == 1) goto L_2;
@@ -3482,9 +3466,8 @@ L_4:
 	close;
 }
 
-// Desk
-
 lhz_cube.gat,234,200,0	script	Desk	111,{
+
 	mes "There is a desk with lots of objects scattered around.";
 	next;
 	menu "Above the desk",-,"Below the desk",L_1,"Drawer",L_2;
@@ -3527,9 +3510,8 @@ L_2:
 	close;
 }
 
-// Picture
-
 lhz_cube.gat,237,206,0	script	Picture	111,{
+
 	if (num1 > 0) goto L_2;
 	mes "There is a picture on the wall.";
 	next;
@@ -3613,9 +3595,8 @@ L_2:
 	close;
 }
 
-// Power Generator
-
 lhz_cube.gat,224,192,0	script	Power Generator	111,{
+
 	if (machine == 1) goto L_2;
 	mes "The big machine is running, making a huge noise.";
 	mes "There are lots weird symbols and";
@@ -3642,9 +3623,8 @@ L_2:
 	close;
 }
 
-// Status Light
-
 lhz_cube.gat,248,205,0	script	Status Light	111,{
+
 	if (bKey == 1) goto L_3;
 	if (machine == 1) goto L_1;
 	mes "There is a bright light.";
@@ -3672,9 +3652,8 @@ L_3:
 	close;
 }
 
-// Box
-
 lhz_cube.gat,248,193,0	script	Box	111,{
+
 	if (countitem(2657) > 0 || gotLabPerm > 0 || hzdun) goto L_5;
 	mes "There is a box with three holes.";
 	next;
@@ -3755,9 +3734,8 @@ L_5:
 	close;
 }
 
-// Experiment Tube
-
 lhz_cube.gat,224,197,0	script	Experiment Tube	111,{
+
 	if (countitem(2657) > 0) goto L_3;
 	if (Oval >= 1) goto L_2;
 	mes "There is a weird experiment tube.";
@@ -3856,6 +3834,7 @@ OnTouch:
 //--------------------------------------------------------------
 
 lighthalzen.gat,0,0,0	script	PickPocketControl	139,{
+
 	end;
 
 OnInit:
@@ -3866,6 +3845,7 @@ OnInit:
 }
 
 lighthalzen.gat,240,216,4	script	Suspicious Guy#1	870,2,2,{
+
 	end;
 	
 OnTouch:
@@ -3938,6 +3918,7 @@ L_MoveB1:
 }
 
 lighthalzen.gat,220,169,4	script	Suspicious Guy#2	870,2,2,{
+
 	end;
 
 OnTouch:
@@ -4010,6 +3991,7 @@ L_MoveB2:
 }
 
 lighthalzen.gat,164,127,4	script	Suspicious Guy#3	870,2,2,{
+
 	end;
 
 OnTouch:
@@ -4264,7 +4246,7 @@ s_Cont3:
 	next;
 	menu "Yes, I did already...",-;
 
-	mes "[" + strcharinfo(0) + "]";
+	mes "["+strcharinfo(0)+"]";
 	mes "Yes, I did already...";
 	mes "And I met someone";
 	mes "named Maku there.";
@@ -4368,7 +4350,7 @@ s_Cont5:
 	mes "to Maku? Now when I think";
 	mes "about it, I was kind of--";
 	next;
-	mes "[" + strcharinfo(0) + "]";
+	mes "["+strcharinfo(0)+"]";
 	mes "I delivered your message";
 	mes "word for word, and Maku";
 	mes "got angry, called you names";
@@ -4580,7 +4562,7 @@ s_Wounded:
 	mes "by a knife that is still";
 	mes "embedded in his belly.^000000";
 	next;
-	mes "[" + strcharinfo(0) + "]";
+	mes "["+strcharinfo(0)+"]";
 	mes "Digotz...?";
 	mes "Oh no, let me";
 	mes "get you some help!";
@@ -4645,10 +4627,10 @@ s_Dead:
 	mes "his face seems very";
 	mes "peaceful and content.";
 	close;
-
 }
 
 lighthalzen.gat,337,232,3	script	Maku	870,{
+
 	if (friendship == 2) goto L_friend2;
 	if (friendship == 3) goto L_friend3;
 	if (friendship == 4) goto L_friend4;
@@ -4756,7 +4738,7 @@ lighthalzen.gat,337,232,3	script	Maku	870,{
 		mes "totally prickish Digotz.";
 		next;
 		menu "Speaking of which...",-;
-		mes "[" + strcharinfo(0) + "]";
+		mes "["+strcharinfo(0)+"]";
 		mes "Speaking of which...";
 		mes "I spoke to Digotz again.";
 		mes "He told me to give you a";
@@ -5030,7 +5012,7 @@ lighthalzen.gat,337,232,3	script	Maku	870,{
 		mes "Well, if he apologizes first,";
 		mes "I guess I better forgive him.";
 		next;
-		mes "[" + strcharinfo(0) + "]";
+		mes "["+strcharinfo(0)+"]";
 		mes "Good...";
 		mes "Because Digotz said";
 		mes "that he'll be coming";
@@ -5112,7 +5094,6 @@ yuno_in04.gat,107,14,4	script	Student	754,{
 	mes "Well, he's too organized";
 	mes "and he labels everything!";
 	close;
-
 }
 
 yuno_in04.gat,96,106,4	script	Passionate Student	754,{
@@ -5138,7 +5119,7 @@ yuno_in04.gat,96,106,4	script	Passionate Student	754,{
 	mes "mentioned by Maku and Digotz!";
 	next;
 	menu "Excuse me...",-;
-	mes "[" + strcharinfo(0) + "]";
+	mes "["+strcharinfo(0)+"]";
 	mes "Excuse me...";
 	mes "Benkastein?";
 	next;
@@ -5151,7 +5132,7 @@ yuno_in04.gat,96,106,4	script	Passionate Student	754,{
 	mes "Hmm, this here might help...";
 	next;
 	menu "Hey...",-;
-	mes "[" + strcharinfo(0) + "]";
+	mes "["+strcharinfo(0)+"]";
 	mes "Hey...";
 	mes "Over here.";
 	mes "Benkastein!";
@@ -5165,7 +5146,7 @@ yuno_in04.gat,96,106,4	script	Passionate Student	754,{
 	mes "would look much more solid...";
 	next;
 	menu "HEY YOU...!",-;
-	mes "[" + strcharinfo(0) + "]";
+	mes "["+strcharinfo(0)+"]";
 	mes "HEY YOU...!";
 	mes "BENKASTEIN~!";
 	next;
@@ -5263,7 +5244,7 @@ s_Cont3:
 	mes "acting. Thanks in advance,";
 	mes "and please take care of";
 	mes "Maku and Digotz for me.";
-	if (friendship == 6)set friendship,7;
+	if (friendship == 6) set friendship,7;
 	close;
 
 s_Dialog:
@@ -5305,12 +5286,12 @@ s_Ask:
 	mes "adventurer. When the three";
 	mes "of us get together, I'll be";
 	mes "sure to let you know~";
-	if (BaseLevel < 41)set BaseExp,BaseExp+49500;
-	if (BaseLevel > 40 && BaseLevel < 61)set BaseExp,BaseExp+99000;
-	if (BaseLevel > 60 && BaseLevel < 71)set BaseExp,BaseExp+198000;
-	if (BaseLevel > 70 && BaseLevel < 81)set BaseExp,BaseExp+396000;
-	if (BaseLevel > 80 && BaseLevel < 91)set BaseExp,BaseExp+594000;
-	if (BaseLevel > 90)set BaseExp,BaseExp+792000;
+	if (BaseLevel < 41) set BaseExp,BaseExp+49500;
+	if (BaseLevel > 40 && BaseLevel < 61) set BaseExp,BaseExp+99000;
+	if (BaseLevel > 60 && BaseLevel < 71) set BaseExp,BaseExp+198000;
+	if (BaseLevel > 70 && BaseLevel < 81) set BaseExp,BaseExp+396000;
+	if (BaseLevel > 80 && BaseLevel < 91) set BaseExp,BaseExp+594000;
+	if (BaseLevel > 90) set BaseExp,BaseExp+792000;
 	getitem 7350,1;
 	set friendship,11;
 	set friendship3,4;
@@ -5324,33 +5305,31 @@ s_Finish:
 	mes "it would be best to leave him";
 	mes "alone so that he can study.";
 	close;
-
 }
 
 yuno_in04.gat,168,117,1	script	Book	111,{
 
-	if (friendship3 == 3) goto Book2;
-	if (friendship3 == 2) goto Book;
+	if (friendship3 == 3) {
+		mes "^3131FFThis is where you found";
+		mes "the book that Benkastein";
+		mes "was looking for.";
+		close;
+	}
+	if (friendship3 == 2) {
+		mes "^3131FFThis book is labeled,";
+		mes "\"Benkastein's Journal";
+		mes "Vol. 6.\". This is probably";
+		mes "what Benkastein was trying";
+		mes "to find, so it might be best to";
+		mes "bring this and show it to him";
+		set friendship3,3;
+		getitem 7351,1;
+		close;
+	}
 	mes "^3131FFThis book is labeled,";
 	mes "\"Benkastein's Journal";
 	mes "Vol. 6.\".";
 	close;
-Book:
-	mes "^3131FFThis book is labeled,";
-	mes "\"Benkastein's Journal";
-	mes "Vol. 6.\". This is probably";
-	mes "what Benkastein was trying";
-	mes "to find, so it might be best to";
-	mes "bring this and show it to him";
-	set friendship3,3;
-	getitem 7351,1;
-	close;
-Book2:
-	mes "^3131FFThis is where you found";
-	mes "the book that Benkastein";
-	mes "was looking for.";
-	close;
-
 }
 
 yuno_in04.gat,169,109,1	script	Ambitious Hollgrehenn	111,{
@@ -5372,12 +5351,11 @@ yuno_in04.gat,169,109,1	script	Ambitious Hollgrehenn	111,{
 	mes "could discern which weapons";
 	mes "were the most powerful...";
 	next;
-	mes "[" + strcharinfo(0) + "]";
+	mes "["+strcharinfo(0)+"]";
 	mes "That's strange...";
 	mes "The next page";
 	mes "has been torn out.";
 	close;
-
 }
 
 yuno_in04.gat,171,117,1	script	List of Books	111,{
@@ -5398,12 +5376,11 @@ yuno_in04.gat,171,117,1	script	List of Books	111,{
 	mes "*Platonic Romance*";
 	mes "*How Lara Got Her Groove Back*";
 	next;
-	mes "^000000[" + strcharinfo(0) + "]";
+	mes "^000000["+strcharinfo(0)+"]";
 	mes "What the...?!";
 	mes "This place even has";
 	mes "a romance novel section?";
 	close;
-
 }
 
 
@@ -12201,7 +12178,7 @@ lhz_in01.gat,174,258,3	script	Young Man	868,{
 		mes "into those thugs again?";
 		mes "Why don't you take a rest?";
 		next;
-		mes "[" + strcharinfo(0) + "]";
+		mes "["+strcharinfo(0)+"]";
 		mes "Kazien...";
 		mes "While I was fighting";
 		mes "those thugs, one of the";
@@ -12214,7 +12191,7 @@ lhz_in01.gat,174,258,3	script	Young Man	868,{
 		mes ".........";
 		mes "............";
 		next;
-		mes "[" + strcharinfo(0) + "]";
+		mes "["+strcharinfo(0)+"]";
 		mes "Wh-why are you supplying";
 		mes "those things? If we let those";
 		mes "packages get imported by";
@@ -12227,7 +12204,7 @@ lhz_in01.gat,174,258,3	script	Young Man	868,{
 		mes "I don't want to";
 		mes "hear anymore.";
 		next;
-		mes "[" + strcharinfo(0) + "]";
+		mes "["+strcharinfo(0)+"]";
 		mes "Hold it, I deserve an";
 		mes "answer! How can you turn";
 		mes "a blind eye and provide just";
@@ -12235,7 +12212,7 @@ lhz_in01.gat,174,258,3	script	Young Man	868,{
 		mes "and guardians^000000? It's like you're";
 		mes "promoting war and violence!";
 		next;
-		mes "[" + strcharinfo(0) + "]";
+		mes "["+strcharinfo(0)+"]";
 		mes "And what about your little";
 		mes "brother Lyozien? He has";
 		mes "no idea what he's doing!";
@@ -12251,7 +12228,7 @@ lhz_in01.gat,174,258,3	script	Young Man	868,{
 		mes "You don't know what it's like";
 		mes "to live in Lighthalzen's slums!";
 		next;
-		mes "[" + strcharinfo(0) + "]";
+		mes "["+strcharinfo(0)+"]";
 		mes ".................";
 		next;
 		mes "[Kazien]";
@@ -12284,7 +12261,7 @@ lhz_in01.gat,174,258,3	script	Young Man	868,{
 		mes "of this job, even if I'm dirtying my hands, making money";
 		mes "off of other people's deaths.";
 		next;
-		mes "[" + strcharinfo(0) + "]";
+		mes "["+strcharinfo(0)+"]";
 		mes "But that still isn't right.";
 		mes "You're selling weapons so";
 		mes "that people can kill each other! Even if it's for the sake of";
@@ -12351,7 +12328,7 @@ lhz_in01.gat,174,258,3	script	Young Man	868,{
 		mes "that. Lyozien's waiting for";
 		mes "you, so get to it, okay?";
 		next;
-		mes "[" + strcharinfo(0) + "]";
+		mes "["+strcharinfo(0)+"]";
 		mes "W-wait! During the last";
 		mes "delivery, I was attacked";
 		mes "by a group of thugs that";
@@ -12366,7 +12343,7 @@ lhz_in01.gat,174,258,3	script	Young Man	868,{
 		mes "more for this job since";
 		mes "you're risking your life?";
 		next;
-		mes "[" + strcharinfo(0) + "]";
+		mes "["+strcharinfo(0)+"]";
 		mes "I understand that the";
 		mes "customer's confidentiality";
 		mes "is important, but I'd feel a";
@@ -12409,7 +12386,7 @@ lhz_in01.gat,174,258,3	script	Young Man	868,{
 		mes "you like working with Lyozien?";
 		mes "He's one of my best men.";
 		next;
-		mes "[" + strcharinfo(0) + "]";
+		mes "["+strcharinfo(0)+"]";
 		mes "Wait, aren't you and";
 		mes "Lyozien supposed";
 		mes "to be brothers?";
@@ -12430,7 +12407,7 @@ lhz_in01.gat,174,258,3	script	Young Man	868,{
 		mes "Luckily, I got another";
 		mes "delivery for you to work on...";
 		next;
-		mes "[" + strcharinfo(0) + "]";
+		mes "["+strcharinfo(0)+"]";
 		mes "Actually, Kazien...";
 		mes "I was curious. What";
 		mes "exactly are we delivering?";
@@ -12561,7 +12538,7 @@ lhz_in01.gat,174,258,3	script	Young Man	868,{
 		mes "contact Garins? Or did";
 		mes "you encounter any problems?";
 		next;
-		mes "[" + strcharinfo(0) + "]";
+		mes "["+strcharinfo(0)+"]";
 		mes "Well, I came back to";
 		mes "let you know that I haven't";
 		mes "been able to find a way inside";
@@ -12576,7 +12553,7 @@ lhz_in01.gat,174,258,3	script	Young Man	868,{
 		mes "told him that you had";
 		mes "to talk to Garins, right?";
 		next;
-		mes "[" + strcharinfo(0) + "]";
+		mes "["+strcharinfo(0)+"]";
 		mes "But...";
 		mes "I thought you said";
 		mes "I'm not supposed to";
@@ -12590,7 +12567,7 @@ lhz_in01.gat,174,258,3	script	Young Man	868,{
 		mes "Great! I'm happy to say,";
 		mes "buddy, you passed the test!";
 		next;
-		mes "[" + strcharinfo(0) + "]";
+		mes "["+strcharinfo(0)+"]";
 		mes "H-huh? But I never";
 		mes "even got to see Garins...";
 		mes "I didn't finish the task";
@@ -12604,7 +12581,7 @@ lhz_in01.gat,174,258,3	script	Young Man	868,{
 		mes "trustworthiness, is all.";
 		mes "Now do you understand?";
 		next;
-		mes "[" + strcharinfo(0) + "]";
+		mes "["+strcharinfo(0)+"]";
 		mes "I... I guess.";
 		mes "Still, you just tricked";
 		mes "me! How am I supposed";
@@ -12624,7 +12601,7 @@ lhz_in01.gat,174,258,3	script	Young Man	868,{
 		mes "contact Garins? Or did";
 		mes "you encounter any problems?";
 		next;
-		mes "[" + strcharinfo(0) + "]";
+		mes "["+strcharinfo(0)+"]";
 		mes "Well, I wasn't able to";
 		mes "find him. In fact, I don't";
 		mes "think that Garins even works";
@@ -12636,7 +12613,7 @@ lhz_in01.gat,174,258,3	script	Young Man	868,{
 		mes "Well, how'd you";
 		mes "find that out?";
 		next;
-		mes "[" + strcharinfo(0) + "]";
+		mes "["+strcharinfo(0)+"]";
 		mes "I happened to ask the";
 		mes "Laboratory Guard, but";
 		mes "he wouldn't even let me in.";
@@ -12648,7 +12625,7 @@ lhz_in01.gat,174,258,3	script	Young Man	868,{
 		mes "I'm sorry, pal, but";
 		mes "you failed the test.";
 		next;
-		mes "[" + strcharinfo(0) + "]";
+		mes "["+strcharinfo(0)+"]";
 		mes "H-huh? What?";
 		mes "What do you mean?";
 		next;
@@ -12738,7 +12715,7 @@ lhz_in01.gat,174,258,3	script	Young Man	868,{
 		mes "back? It's just that you're";
 		mes "blocking my view is all.";
 		next;
-		mes "[" + strcharinfo(0) + "]";
+		mes "["+strcharinfo(0)+"]";
 		mes "Wait, did you just say";
 		mes "that you need help?";
 		mes "I'd like to help solve";
@@ -12889,7 +12866,7 @@ einbroch.gat,55,52,3	script	Laboratory Guard	852,{
 			next;
 			menu "I need to see Mr. Garins...",L_LABEL3,"I'll... come back later.",L_LABEL4;
 			L_LABEL3:
-				mes "[" + strcharinfo(0) + "]";
+				mes "["+strcharinfo(0)+"]";
 				mes "I need to see Mr. Garins";
 				mes "and confirm that he received";
 				mes "a package that was sent to him.";
@@ -12912,7 +12889,7 @@ einbroch.gat,55,52,3	script	Laboratory Guard	852,{
 				set weapon_q,4;
 				close;
 			L_LABEL4:
-				mes "[" + strcharinfo(0) + "]";
+				mes "["+strcharinfo(0)+"]";
 				mes "I'll... come back later.";
 				mes "(^333333I better speak to Kazien";
 				mes "and let him know I'm having";
@@ -12922,7 +12899,7 @@ einbroch.gat,55,52,3	script	Laboratory Guard	852,{
 				set weapon_q,5;
 				close;
 		L_LABEL2:
-			mes "[" + strcharinfo(0) + "]";
+			mes "["+strcharinfo(0)+"]";
 			mes "Whoa, I'm leaving!";
 			mes "(^333333I better speak to Kazien";
 			mes "and let him know I'm having";
@@ -12985,7 +12962,7 @@ airplane_01.gat,96,48,3	script	Man#Lyozien	869,{
 		mes "this time, but you easily";
 		mes "dispatched them. Great job!";
 		next;
-		mes "[" + strcharinfo(0) + "]";
+		mes "["+strcharinfo(0)+"]";
 		mes "Thanks, but...";
 		mes "Now I'm really worried";
 		mes "about what could be in";
@@ -13178,7 +13155,7 @@ airplane_01.gat,96,48,3	script	Man#Lyozien	869,{
 		mes "ready for another job, just";
 		mes "ask to my brother Kazien, okay?";
 		next;
-		mes "[" + strcharinfo(0) + "]";
+		mes "["+strcharinfo(0)+"]";
 		mes "Lyozien, do you know";
 		mes "what kinds of things";
 		mes "we're delivering?";
@@ -13227,7 +13204,7 @@ airplane_01.gat,96,48,3	script	Man#Lyozien	869,{
 		mes "these are all pretty fragile.";
 		mes "Thanks, I appreciate it.";
 		next;
-		mes "[" + strcharinfo(0) + "]";
+		mes "["+strcharinfo(0)+"]";
 		mes "Excuse me, but";
 		mes "are you Lyozien?";
 		next;
@@ -13239,7 +13216,7 @@ airplane_01.gat,96,48,3	script	Man#Lyozien	869,{
 		mes "I'm having trouble handling";
 		mes "all of these packages here.";
 		next;
-		mes "[" + strcharinfo(0) + "]";
+		mes "["+strcharinfo(0)+"]";
 		mes "Wait, Kazien is";
 		mes "your brother? That's";
 		mes "weird, you figure he";
@@ -13351,7 +13328,7 @@ izlude.gat,186,57,5	script	Scamp	853,{
 		mes "my packages have arrived";
 		mes "safely. Is that right?";
 		next;
-		mes "[" + strcharinfo(0) + "]";
+		mes "["+strcharinfo(0)+"]";
 		mes "Yes, that's right.";
 		mes "Actually, this time we";
 		mes "were attacked by a group";
@@ -13403,7 +13380,7 @@ izlude.gat,186,57,5	script	Scamp	853,{
 		mes "you agree? Still, I kind of";
 		mes "enjoy sitting around here.";
 		next;
-		mes "[" + strcharinfo(0) + "]";
+		mes "["+strcharinfo(0)+"]";
 		mes "Excuse me, but do";
 		mes "you know where I can";
 		mes "find a man named Ahman?";
@@ -13415,7 +13392,7 @@ izlude.gat,186,57,5	script	Scamp	853,{
 		mes "tell me that my packages";
 		mes "have arrived. Am I correct?";
 		next;
-		mes "[" + strcharinfo(0) + "]";
+		mes "["+strcharinfo(0)+"]";
 		mes "Y-yes. That's right.";
 		mes "Your packages have";
 		mes "arrived and they're";
@@ -13429,7 +13406,7 @@ izlude.gat,186,57,5	script	Scamp	853,{
 		mes "I don't believe I've seen you";
 		mes "around before. Have they finally started hiring part timers?";
 		next;
-		mes "[" + strcharinfo(0) + "]";
+		mes "["+strcharinfo(0)+"]";
 		mes "Yes, that's right.";
 		mes "Actually, I'm working for";
 		mes "them part time. I heard";
@@ -13555,7 +13532,7 @@ OnTouch:
 		mes "that is covering one";
 		mes "of the packages.^000000";
 		next;
-		mes "[" + strcharinfo(0) + "]";
+		mes "["+strcharinfo(0)+"]";
 		mes "Oh... my God!";
 		mes "These are... These are";
 		mes "weapons of mass destruction.";
@@ -13580,7 +13557,7 @@ OnTouch:
 		mes "Answer me! Answer me! Answer meee!";
 		next;
 		set weapon_q,23;
-		mes "[" + strcharinfo(0) + "]";
+		mes "["+strcharinfo(0)+"]";
 		mes ".............Damn it.";
 		close;
 	} else {
@@ -13614,7 +13591,7 @@ OnTouch:
 		mes "alive to enjoy it, huh?";
 		next;
 		set weapon_q,23;
-		mes "[" + strcharinfo(0) + "]";
+		mes "["+strcharinfo(0)+"]";
 		mes "......";
 		mes ".........";
 		mes "Damn it!";
