@@ -351,7 +351,7 @@ prt_fild08.gat,175,374,3	script	Bard#brising	51,{
 				mes "knowledge I have~";
 				next;
 
-					if(BaseLevel < 70)
+					if (BaseLevel < 70)
 				{
 					mes "[Nelliorde]";
 					mes "Alas, this information doesn't seem to be very valuable to someone such as yourself.";
@@ -670,7 +670,7 @@ prt_fild08.gat,175,374,3	script	Bard#brising	51,{
 			next;
 			menu "Bragi's Poem",-,"Eternal Chaos",L_Chaos2,"Assassin in the Sunset",L_Sunset2;
 				
-						if(Zeny > 499)
+						if (Zeny > 499)
 					{
 						mes "[Nelliorde]";
 						mes "Bragi's Poem!";
@@ -688,7 +688,7 @@ prt_fild08.gat,175,374,3	script	Bard#brising	51,{
 					}
 				
  				L_Chaos2:
-						if(Zeny > 499)
+						if (Zeny > 499)
 					{
 						mes "[Nelliorde]";
 						mes "You must like robust and energetic music, eh? As you wish~";
@@ -704,7 +704,7 @@ prt_fild08.gat,175,374,3	script	Bard#brising	51,{
 					}
 				
 				L_Sunset2:
-						if(Zeny > 499)
+						if (Zeny > 499)
 					{
 						mes "[Nelliorde]";
 						mes "Excellent choice!";
@@ -725,7 +725,7 @@ prt_fild08.gat,175,374,3	script	Bard#brising	51,{
 
 yuno_in04.gat,47,113,1	script	Studying Scholar#1	749,{
 
-	if($God3 == 100)
+	if ($God3 == 100)
 {
 	mes "[Studying Scholar]";
 	mes "Hmmm...";
@@ -736,9 +736,9 @@ yuno_in04.gat,47,113,1	script	Studying Scholar#1	749,{
 	close;
 }
  
-	if($God2 > 49)
+	if ($God2 > 49)
 {
-		if(god_brising == 50)
+		if (god_brising == 50)
 	{
 		mes "[Enrico Kaili]";
 		mes "Ah, " + strcharinfo(0) + ",";
@@ -2108,7 +2108,7 @@ yuno_in04.gat,47,113,1	script	Studying Scholar#1	749,{
 
 prt_church.gat,113,103,1	script	Praying Man	798,{
  
-	if($God2 < 50)
+	if ($God2 < 50)
 {
 	mes "[Praying Man]";
 	mes "Let everyone live a life of happiness. Let there be peace in the world...";
@@ -2117,7 +2117,7 @@ prt_church.gat,113,103,1	script	Praying Man	798,{
 	mes "May I hit it rich with this Old Blue Box that I spend this month's paycheck on...";
 	close;
 }
-	if($God3 > 99)
+	if ($God3 > 99)
 {
 	mes "[Praying Man]";
 	mes "Now is the time to reflect upon the past to prepare for the future.";
@@ -2126,7 +2126,7 @@ prt_church.gat,113,103,1	script	Praying Man	798,{
 	mes "It is in stillness that we find the wisdom to know which steps we must take to move forward. Let's pray.";
 	close;
 }
-	if(god_brising > 34)
+	if (god_brising > 34)
 {
 	mes "^3355FFHermite Charles continues to fervently pray. His eyes are closed and his hands are clasped to his chest. There seems to be an air of faint sadness about him.^000000";
 	close;
@@ -2245,7 +2245,7 @@ prt_church.gat,113,103,1	script	Praying Man	798,{
 	else if(god_brising == 5)
 {
 	set @brising_try,rand(1,4);
-		if(@brising_try == 1)
+		if (@brising_try == 1)
 	{
 		mes "[Hermite Charles]";
 		mes "You're still here.";
@@ -2842,7 +2842,7 @@ prt_church.gat,113,103,1	script	Praying Man	798,{
 
 prt_castle.gat,80,52,0	script	Personnel Record#hiddenbook1	111,{
 
-	if($God2 < 50)
+	if ($God2 < 50)
 {
 	mes "[Librarian]";
 	mes "What are you doing now?";
@@ -2850,7 +2850,7 @@ prt_castle.gat,80,52,0	script	Personnel Record#hiddenbook1	111,{
 	close;
 }
  
-	if($God3 > 99)
+	if ($God3 > 99)
 {
 	mes "[Librarian]";
 	mes "What are you doing?";
@@ -2858,7 +2858,7 @@ prt_castle.gat,80,52,0	script	Personnel Record#hiddenbook1	111,{
 	close;
 }
  
-	if(god_brising == 26)
+	if (god_brising == 26)
 {
 	mes "[" + strcharinfo(0) + "]";
 	mes "I should read this from the point where I left off...";
@@ -2873,7 +2873,7 @@ prt_castle.gat,80,52,0	script	Personnel Record#hiddenbook1	111,{
 	mes "No wonder the librarian seemed to hesitate before saying anything. Now let's see...";
 	next;
 	set @bookrand,rand(1,3);
-		if(@bookrand == 1)
+		if (@bookrand == 1)
 	{
 		mes "...(omitted) Lowen, of the 2nd squad, returned to her detachment 3 days after the incident.";
 		next;
@@ -2935,7 +2935,7 @@ prt_castle.gat,80,52,0	script	Personnel Record#hiddenbook1	111,{
 	mes "This is the same information the soldier told me.";
 	next;
 	set @bookrand,rand(1,3);
-		if(@bookrand == 1)
+		if (@bookrand == 1)
 	{
 		mes "[" + strcharinfo(0) + "]";
 		mes "...umm let's read again from the page that I read last time.";
@@ -3010,7 +3010,7 @@ prt_castle.gat,80,52,0	script	Personnel Record#hiddenbook1	111,{
  
 prt_castle.gat,84,51,5	script	Librarian#2	105,{
 
-	if($God2 < 50)
+	if ($God2 < 50)
 {
 	mes "[Librarian]";
 	mes "What are you doing here?";
@@ -3018,7 +3018,7 @@ prt_castle.gat,84,51,5	script	Librarian#2	105,{
 	close;
 }
  
-	if($God3 > 99)
+	if ($God3 > 99)
 {
 	mes "[Librarian]";
 	mes "What are you doing now?";
@@ -3178,7 +3178,7 @@ prt_castle.gat,84,51,5	script	Librarian#2	105,{
 
 prontera.gat,260,354,4	script	Woman#Rosa Ellenen	101,{
 
-	if($God2 < 50)
+	if ($God2 < 50)
 {
 	mes "[Woman]";
 	mes "Hm?";
@@ -3189,7 +3189,7 @@ prontera.gat,260,354,4	script	Woman#Rosa Ellenen	101,{
 	mes "take a walk.";
 	close;
 }
-	if($God3 > 99)
+	if ($God3 > 99)
 {
 	mes "[Woman]";
 	mes "Hm?";
@@ -3200,7 +3200,7 @@ prontera.gat,260,354,4	script	Woman#Rosa Ellenen	101,{
 	mes "take a walk.";
 	close;
 }
-	if(god_brising > 33)
+	if (god_brising > 33)
 {
 	mes "[Rosa Ellenen]";
 	mes "Are you the one who visited me before? Ah, of course.";
@@ -3287,9 +3287,9 @@ prontera.gat,260,354,4	script	Woman#Rosa Ellenen	101,{
 
 prontera.gat,262,353,0	script	Gravestone	111,{
 
-	if($God2 > 49)
+	if ($God2 > 49)
 {
-		if(god_brising > 33)
+		if (god_brising > 33)
 	{
 		mes "Lowen Ellenen";
 		mes " ";
@@ -3320,13 +3320,13 @@ prontera.gat,262,353,0	script	Gravestone	111,{
  
 gef_dun01.gat,89,192,0	script	#lowentrace	111,3,3,{
 
-	if($God2 < 50)
+	if ($God2 < 50)
 {
 	mes "^3355FFIt's just an old,";
 	mes "dry piece of wood.^000000";
 	close;
 }
-	if($God3 > 99)
+	if ($God3 > 99)
 {
 	mes "^3355FFIt's just an old,";
 	mes "dry piece of wood.^000000";
@@ -3339,9 +3339,9 @@ gef_dun01.gat,89,192,0	script	#lowentrace	111,3,3,{
 	next;
 	menu "Yes",-,"No",L_No;
 		input @lowenstring$;
-			if(@lowenstring$ == "Lowen")
+			if (@lowenstring$ == "Lowen")
 		{
-				if(god_brising == 30)
+				if (god_brising == 30)
 			{
 					mes "[Lowen Ellenen]";
 					mes "^6E7B8B...Y-you're...";
@@ -3435,7 +3435,7 @@ gef_dun01.gat,89,192,0	script	#lowentrace	111,3,3,{
 }
 
 OnTouch:
-	if(god_brising > 9 && god_brising < 34)
+	if (god_brising > 9 && god_brising < 34)
 {
 	emotion e_gasp;
 	end;
@@ -3445,30 +3445,30 @@ OnTouch:
 
 gef_dun01.gat,203,48,0	script	#lowentrace1	111,3,3,{
 
-	if($God2 < 50)
+	if ($God2 < 50)
 {
 	mes "^3355FFIt's just an old,";
 	mes "dry piece of wood.^000000";
 	close;
 }
  
-	if($God3 > 99)
+	if ($God3 > 99)
 {
 	mes "^3355FFIt's just an old,";
 	mes "dry piece of wood.^000000";
 	close;
 }
 
-	if(god_brising > 20 && god_brising < 34)
+	if (god_brising > 20 && god_brising < 34)
 {
 	mes "Would you";
 	mes "like to summon her? ";
 	next;
 	menu "Yes",-,"No",L_No;
 		input @lowenstring$;
-			if(@lowenstring$ == "Lowen")
+			if (@lowenstring$ == "Lowen")
 		{
-				if(god_brising == 31)
+				if (god_brising == 31)
 			{
 					mes "[Lowen Ellenen]";
 					mes "^6E7B8BYou came back!";
@@ -3586,7 +3586,7 @@ OnTouch:
 
 que_god02.gat,48,55,3	script	Lowen Ellenen	745,{
 
-	if(god_brising == 30)
+	if (god_brising == 30)
 {
 	mes "[Lowen Ellenen]";
 	mes "Can you see me now?";
@@ -3690,7 +3690,7 @@ que_god02.gat,48,55,3	script	Lowen Ellenen	745,{
 
 que_god02.gat,54,64,4	script	Soldier#1_brising	105,1,1,{
  
-	if(god_brising == 31)
+	if (god_brising == 31)
 {
 	mes "[Soldier]";
 	mes "Have you volunteered for monster subjugation? Would you like to start the mission now?";
@@ -3717,7 +3717,7 @@ que_god02.gat,54,64,4	script	Soldier#1_brising	105,1,1,{
 }
 
 OnTouch:
-	if(god_brising == 31)
+	if (god_brising == 31)
 {
 	warp "que_god02.gat",174,49;
 	donpcevent "#brisinsold::OnSold1Off";
@@ -3887,7 +3887,7 @@ OnSummon:
 
 OnMobDeath:
 	set brisinmobdead,brisinmobdead -1;
-	if(brisinmobdead > 0) end;
+	if (brisinmobdead > 0) end;
 	set god_brising,31;
 	enablenpc "Valkyrie#1";
 	detachrid;
@@ -4144,7 +4144,7 @@ que_god02.gat,21,127,3	script	Lowen Ellenen#2	745,{
 
 que_god02.gat,178,127,3	script	Valkyrie#1	811,{
 
-	if(god_brising == 31)
+	if (god_brising == 31)
 {
 	mes "[Valkyrie]";
 	mes "You have passed the test, Lowen. I don't have much talk to speak.";
@@ -4305,14 +4305,14 @@ que_god02.gat,178,127,3	script	Valkyrie#1	811,{
 
 xmas.gat,38,105,0	script	#brisindwarf1	111,3,3,{
 
-	if($God2 < 50)
+	if ($God2 < 50)
 {
 	mes "^3355FFA lot of snow";
 	mes "is heavily piled";
 	mes "here on the ground.^000000";
 	close;
 }
-	if($God3 > 99)
+	if ($God3 > 99)
 {
 	mes "^3355FFA lot of snow";
 	mes "is heavily piled";
@@ -4435,7 +4435,7 @@ xmas.gat,38,105,0	script	#brisindwarf1	111,3,3,{
 							goto Check;
 					Check:
 					next;
-						if(@point > 4)
+						if (@point > 4)
 					{
 						donpcevent "#brisindwarf1::OnAlfrikOn";
 						mes "[Old dwarf]";
@@ -4473,7 +4473,7 @@ xmas.gat,38,105,0	script	#brisindwarf1	111,3,3,{
 }
 
 OnTouch:
-	if(god_brising > 39) emotion e_gasp,1;
+	if (god_brising > 39) emotion e_gasp,1;
 	end;
 
 OnInit:
@@ -4774,21 +4774,21 @@ xmas.gat,36,103,4	script	Alfrik#1	826,{
 
 prt_fild02.gat,185,269,0	script	#brisindwarf2	111,3,3,{
 
-	if($God2 < 50)
+	if ($God2 < 50)
 {
 	mes "^3355FFIt's just an";
 	mes "ordinary rock.^000000";
 	close;
 }
 
-	if($God3 > 99)
+	if ($God3 > 99)
 {
 	mes "^3355FFIt's just an";
 	mes "ordinary rock.^000000";
 	close;
 }
 
-	if(god_brising > 41)
+	if (god_brising > 41)
 {
 	mes "^3355FFIt's just an ordinary rock underneath the shadow of a tree. But on closer inspection, you notice that the moss on top of the rock looks perfectly flat.^000000";
 	next;
@@ -4921,7 +4921,7 @@ prt_fild02.gat,185,269,0	script	#brisindwarf2	111,3,3,{
 					goto Check;
 			Check:
 			next;
-				if(@point > 4)
+				if (@point > 4)
 			{
 				donpcevent "#brisindwarf2::OnDvalinOn";
 				mes "[Dvalin]";
@@ -4945,7 +4945,7 @@ prt_fild02.gat,185,269,0	script	#brisindwarf2	111,3,3,{
 }
 
 OnTouch:
-	if(god_brising > 41) emotion e_gasp,1;
+	if (god_brising > 41) emotion e_gasp,1;
 	end;
 
 OnInit:
@@ -5071,12 +5071,12 @@ prt_fild02.gat,185,270,3	script	Dvalin#1	826,{
 
 mjolnir_09.gat,85,129,0	script	#brisindwarf3	111,3,3,{
 
-	if($God2 < 50)
+	if ($God2 < 50)
 {
 	mes "^3355FFThe sight of this bubbling stream refreshes you just by looking at it.^000000";
 	close;
 }
-	if($God3 > 99)
+	if ($God3 > 99)
 {
 	mes "^3355FFThe sight of this bubbling stream refreshes you just by looking at it.^000000";
 	close;
@@ -5142,7 +5142,7 @@ mjolnir_09.gat,85,129,0	script	#brisindwarf3	111,3,3,{
 }
 
 OnTouch:
-	if(god_brising > 42) emotion e_gasp,1;
+	if (god_brising > 42) emotion e_gasp,1;
 	end;
 
 OnInit:
@@ -5160,7 +5160,7 @@ OnBerlingOff:
 
 mjolnir_09.gat,87,129,3	script	Berling#1	826,{
 
-	if(god_brising > 44)
+	if (god_brising > 44)
 {
 	mes "[Berling]";
 	mes "You're the one that's awakened us? Hahaha, perhaps that's a sign we may see Freya again! Hahahaha!";
@@ -5288,19 +5288,19 @@ mjolnir_09.gat,87,129,3	script	Berling#1	826,{
 
 mjo_dun02.gat,126,36,0	script	#brisindwarf4	111,3,3,{
 
-	if($God2 < 50)
+	if ($God2 < 50)
 {
 	mes "[" + strcharinfo(0) + "]";
 	mes "Bah, no way out.";
 	close;
 }
-	if($God3 > 99)
+	if ($God3 > 99)
 {
 	mes "[" + strcharinfo(0) + "]";
 	mes "Bah, no way out.";
 	close;
 }
-	if(god_brising > 45 && god_brising < 50)
+	if (god_brising > 45 && god_brising < 50)
 {
 	mes "[Grer]";
 	mes "What!";
@@ -5320,35 +5320,35 @@ mjo_dun02.gat,126,36,0	script	#brisindwarf4	111,3,3,{
 	mes "What was the first line...?";
 	next;
 	input @dwarfsong1$;
-	if(@dwarfsong1$ == "No jewel in the world can compare.") set @point,@point +1;
+	if (@dwarfsong1$ == "No jewel in the world can compare.") set @point,@point +1;
 	mes "[" + strcharinfo(0) + "]";
 	mes " " + @dwarfsong1$ + "";
 	mes "Then...ummm..";
 	mes "The second line?";
 	next;
 	input @dwarfsong2$;
-	if(@dwarfsong2$ == "Our masterpiece made from love.") set @point,@point +1;
+	if (@dwarfsong2$ == "Our masterpiece made from love.") set @point,@point +1;
 	mes "[" + strcharinfo(0) + "]";
 	mes " " + @dwarfsong2$ + "";
 	mes "Now, what was";
 	mes "the third line...?";
 	next;
 	input @dwarfsong3$;
-	if(@dwarfsong3$ == "She wanted the dazzling necklace.") set @point,@point +1;
+	if (@dwarfsong3$ == "She wanted the dazzling necklace.") set @point,@point +1;
 	mes "[" + strcharinfo(0) + "]";
 	mes " " + @dwarfsong3$ + "";
 	mes "Now, the fourth";
 	mes "line after that...";
 	next;
 	input @dwarfsong4$;
-	if(@dwarfsong4$ == "We wanted the goddess of beauty.") set @point,@point +1;
+	if (@dwarfsong4$ == "We wanted the goddess of beauty.") set @point,@point +1;
 	mes "[" + strcharinfo(0) + "]";
 	mes " " + @dwarfsong4$ + "";
 	mes "Alright, now";
 	mes "for the last line...";
 	next;
 	input @dwarfsong5$;
-	if(@dwarfsong5$ == "Our happiest times were with her.") set @point,@point +1;
+	if (@dwarfsong5$ == "Our happiest times were with her.") set @point,@point +1;
 	mes "[" + strcharinfo(0) + "]";
 	mes " " + @dwarfsong5$ + "";
 	mes "Alright, let's give it a try.";
@@ -5360,7 +5360,7 @@ mjo_dun02.gat,126,36,0	script	#brisindwarf4	111,3,3,{
 	mes "" + @dwarfsong4$ + "";
 	mes "" + @dwarfsong5$ + "";
 	next;
-		if(@point > 4)
+		if (@point > 4)
 	{
 		enablenpc "Grer#1";
 		mes "[Grer]";
@@ -5389,19 +5389,19 @@ mjo_dun02.gat,126,36,0	script	#brisindwarf4	111,3,3,{
 }
 
 OnTouch:
-	if($God2 < 50)
+	if ($God2 < 50)
 {
 	mes "[" + strcharinfo(0) + "]";
 	mes "Beh, no way out.";
 	close;
 }
-	if($God3 > 99)
+	if ($God3 > 99)
 {
 	mes "[" + strcharinfo(0) + "]";
 	mes "Beh, no way out.";
 	close;
 }
-	if(god_brising == 44)
+	if (god_brising == 44)
 {
 	emotion e_gasp,1;
 	mes "[Male Voice]";
@@ -5471,7 +5471,7 @@ OnGrerOff:
 
 mjo_dun02.gat,126,34,1	script	Grer#1	826,{
 
-	if(god_brising > 47)
+	if (god_brising > 47)
 {
 	mes "[Grer]";
 	mes "As we promised,";
@@ -5674,9 +5674,9 @@ if($God1 < 50)
 }
 else if($God1 > 49 && $God2 < 100)
 {
-	if(BaseLevel > 59)
+	if (BaseLevel > 59)
 	{
-		if(god_eremes == 0)
+		if (god_eremes == 0)
 		{
 			mes "[Rebarev Doug]";
 			mes "...";
@@ -5788,7 +5788,7 @@ else if($God1 > 49 && $God2 < 100)
 		else if(god_eremes > 0 && god_eremes < 4)
 		{
 
-			if(rand(1,10) > 6 && god_eremes == 2)
+			if (rand(1,10) > 6 && god_eremes == 2)
 			{
 				mes "[Rebarev Doug]";
 				mes "I am wondering how my members are doing by now...";
@@ -5884,7 +5884,7 @@ else if($God1 > 49 && $God2 < 100)
 		}
 		else if(god_eremes > 17 && god_eremes < 20)
 		{
-			if(god_megin_1 > 0 || god_megin_2 > 0 || god_megin_3 > 0 || god_megin_4 > 0 || god_megin_5 > 0 || god_megin_6 > 0)
+			if (god_megin_1 > 0 || god_megin_2 > 0 || god_megin_3 > 0 || god_megin_4 > 0 || god_megin_5 > 0 || god_megin_6 > 0)
 			{
 				mes "[Rebarev Doug]";
 				mes "Oh...";
@@ -6044,7 +6044,7 @@ prt_castle.gat,48,164,0	script	Crusader#God	734,{
 
 if($God1 > 49 && $God2 < 100)
 {
-	if(god_eremes > 22 && god_eremes < 25)
+	if (god_eremes > 22 && god_eremes < 25)
 	{
 		mes "[Max Von Shedough]";
 		mes "Welcome, friend!";
@@ -6064,14 +6064,14 @@ if($God1 > 49 && $God2 < 100)
 
 		set $God2,$God2+1;
 
-		if($God2 == 50)
+		if ($God2 == 50)
 			announce "The 2nd seal of [Megingjard] has appeared.",bc_all;
 		else if($God1 > 99 && $God2 > 99 && $God3 > 99 && $God4 > 99)
 			announce "The four seals have been released at the same time with the seals of [Megingjard].",bc_all;
 		else if($God2 > 99)
 			announce "The seals of [Megingjard] have been released.",bc_all;
 
-		if(god_eremes == 23)
+		if (god_eremes == 23)
 			set god_eremes,25;
 		else if(god_eremes == 24)
 			set god_eremes,26;
@@ -6116,7 +6116,7 @@ if(god_eremes == 12)
 }
 else if(god_eremes > 6 && god_eremes < 12)
 {
-	if(rand(1,10) > 6 && god_eremes > 6)
+	if (rand(1,10) > 6 && god_eremes > 6)
 	{
 		mes "You found a shelf filled with many files.";
 		mes "You started searching files one by one.";
@@ -6323,7 +6323,7 @@ prt_in.gat,172,106,0	script	Librarian#God	833,{
 
 if($God1 > 49 && $God2 < 100)
 {
-	if(god_eremes > 2 && god_eremes < 7)
+	if (god_eremes > 2 && god_eremes < 7)
 	{
 		mes "[Librarian Jekan]";
 		mes "Ah, please do not touch the files at this section.";
@@ -6346,7 +6346,7 @@ if($God1 > 49 && $God2 < 100)
 					mes "[Librarian Jekan]";
 					mes "Since I have worked under a dim light for a long time, my eyes have gone bad.";
 					mes "They should get me ^0000FFa new light^000000, otherwise I will be gone blind sooner or later...";
-					if(god_eremes == 5 && ( countitem(2203) > 0 || countitem(1041) > 0 ) )
+					if (god_eremes == 5 && ( countitem(2203) > 0 || countitem(1041) > 0 ) )
 					{
 						next;
 						mes "[Librarian Jekan]";
@@ -6365,7 +6365,7 @@ if($God1 > 49 && $God2 < 100)
 								mes "[Librarian Jekan]";
 								mes "What a kind person you are!";
 								mes "Now I can believe that you really meant to help me!";
-								if(countitem(2203) && countitem(1041))
+								if (countitem(2203) && countitem(1041))
 								{
 									delitem 1041,countitem(1041);
 									delitem 2203,1;
@@ -6392,7 +6392,7 @@ if($God1 > 49 && $God2 < 100)
 				break;
 
 				case 2:
-					if(god_eremes == 6)
+					if (god_eremes == 6)
 					{
 						mes "[Librarian Jekan]";
 						mes "Read some documents? Well, you've come here to the Library. That's a good start.";
@@ -6422,7 +6422,7 @@ if($God1 > 49 && $God2 < 100)
 				break;
 
 				case 3:
-					if(god_eremes == 4)
+					if (god_eremes == 4)
 					{
 						mes "[Librarian Jekan]";
 						mes "Hmm. Well, I'd gladly accept your help if it weren't for the fact that I cannot allow classified information to be released to the public.";
@@ -6544,7 +6544,7 @@ if($God1 > 49 && $God2 < 100)
 	}
 	else if(god_eremes > 6 && god_eremes < 12)
 	{
-		if(rand(1,10) > 4)
+		if (rand(1,10) > 4)
 		{
 			mes "[Librarian Jekan]";
 			mes "Hmm? So did you find it? I've been searching for that file for a long time, but I haven't been able to find it.";
@@ -6605,7 +6605,7 @@ if($God1 > 49 && $God2 < 100)
 	}
 	else if(god_eremes == 13)
 	{
-		if(countitem(7111) > 1 && countitem(7151) && countitem(1024) > 2 && countitem(916) > 2 && countitem(717) > 19)
+		if (countitem(7111) > 1 && countitem(7151) && countitem(1024) > 2 && countitem(916) > 2 && countitem(717) > 19)
 		{
 			mes "[Librarian Jekan]";
 			mes "Oh, you came back. I didn't expect you to return here so quickly. Whatever's inside must be really important for you to know.";
@@ -6643,7 +6643,7 @@ if($God1 > 49 && $God2 < 100)
 	}
 	else if(god_eremes > 13 && god_eremes < 16)
 	{
-		if(rand(1,10) > 4)
+		if (rand(1,10) > 4)
 		{
 			mes "[Librarian Jekan]";
 			mes "Let me go over and review the document before I make a copy.";
@@ -6680,7 +6680,7 @@ if($God1 > 49 && $God2 < 100)
 					mes "- Please enter a keyword. -";
 					next;
 					input @str$;
-					if(@str$ == "Crusader" || @str$ == "crusader") 
+					if (@str$ == "Crusader" || @str$ == "crusader") 
 					{
 						mes "- search with the keyword : Crusader -";
 						mes "Crusader : Warriors that prepare themselves for a holy war. They are selected from well-experienced and religious swordsmen.";
@@ -6727,7 +6727,7 @@ if($God1 > 49 && $God2 < 100)
 									mes " : Royal Myst";
 									mes " : The Nineball^000000";
 									set @godtemplib3,1;
-									if(god_eremes == 17)set god_eremes,18;
+									if (god_eremes == 17)set god_eremes,18;
 									close;
 								}
 									else if((@str$ == "The last mission" || @str$ == "the last mission") && @godtemplib3)
@@ -6754,7 +6754,7 @@ if($God1 > 49 && $God2 < 100)
 										mes "Currently Rebarev Doug who was the 3rd squad leader at the time have been researching the signs of God based on the mission result.";
 										mes "And the research was ordered by the King of Rune-Midgarts Kingdom.";
 										close2;
-										if(god_eremes == 18)set god_eremes,19;
+										if (god_eremes == 18)set god_eremes,19;
 										end;
 									}
 
@@ -6990,7 +6990,7 @@ geffen_in.gat,109,161,3	script	Crusader#God1	751,{
 
 if($God1 > 49 && $God2 < 100)
 {
-	if(god_eremes > 17 && god_megin_1 < 2)
+	if (god_eremes > 17 && god_megin_1 < 2)
 	{
 		mes "[Zan.Huadoku]";
 		mes "^333333*Phew...*^000000";
@@ -7007,7 +7007,7 @@ if($God1 > 49 && $God2 < 100)
 		switch( select( "Ask him about the 3rd squad.", "Ask him how he's been doing.", "Ask him about the 3rd Squad's last mission." ) )
 		{
 			case 1:
-				if(god_eremes == 18)
+				if (god_eremes == 18)
 				{
 					mes "[Zan.Huadoku]";
 					mes "Yeah, I was a member of the 3rd squad in the 1st platoon a long time ago. How did you know that?";
@@ -7048,7 +7048,7 @@ if($God1 > 49 && $God2 < 100)
 					next;
 					mes "[Zan.Huadoku]";
 					mes "^3355FFZan looks very confused and his eyes begin to glaze with a dazed look. You try speaking to him again, but he doesn't respond at all.^000000";
-					if(!god_megin_1)set god_megin_1,1;
+					if (!god_megin_1)set god_megin_1,1;
 					close;
 				}
 			break;
@@ -7067,7 +7067,7 @@ if($God1 > 49 && $God2 < 100)
 			break;
 
 			case 3:
-				if(god_eremes == 18)
+				if (god_eremes == 18)
 				{
 					mes "[Zan.Huadoku]";
 					mes "Yeah, on our";
@@ -7139,7 +7139,7 @@ if($God1 > 49 && $God2 < 100)
 					mes "I can't think about anything further than that. I can't even remember what we found. But I'm sure it was damned important.";
 					next;
 					mes "^3355FFZan stood still in silence, with a pained look on his face.^000000";
-					if(god_megin_1 == 1)set god_megin_1,2;
+					if (god_megin_1 == 1)set god_megin_1,2;
 					close;
 				}
 				else
@@ -7267,7 +7267,7 @@ morocc_in.gat,146,179,0	script	Employee#God1	66,{
 
 if($God1 > 49 && $God2 < 100)
 {
-	if(god_eremes > 17 && god_megin_2 < 1)
+	if (god_eremes > 17 && god_megin_2 < 1)
 	{
 		mes "^3355FFThe Inn Employee eyes you suspiciously.^000000";
 		next;
@@ -7303,7 +7303,7 @@ if($God1 > 49 && $God2 < 100)
 				switch( select( "Rebarev Doug is wondering about you.", "I am wondering why he's hiding.", "Just a curiosity." ) )
 				{
 					case 1:
-						if(rand(1,10) > 3)
+						if (rand(1,10) > 3)
 						{
 							mes "[Ms. Scary Inn Employee]";
 							mes "Hah!...yeah, I was told thousand times about that.";
@@ -7338,7 +7338,7 @@ if($God1 > 49 && $God2 < 100)
 					break;
 
 					case 2:
-						if(rand(1,10) > 4)
+						if (rand(1,10) > 4)
 						{
 							mes "[Ms. Scary Inn Employee]";
 							mes "Bah...since you are here, that means you know why he has hid himself in here.";
@@ -7476,9 +7476,9 @@ else
 
 in_rogue.gat,243,61,0	script	Suspicious Man#God	748,{
 
-	if($God1 > 49 && $God2 < 100)
+	if ($God1 > 49 && $God2 < 100)
 {
-		if(god_eremes == 18)
+		if (god_eremes == 18)
 	{
 		mes "[Cuaque Donon]";
 		mes "Wha...what are you! How the hell did you come in here!";
@@ -7488,7 +7488,7 @@ in_rogue.gat,243,61,0	script	Suspicious Man#God	748,{
 	}
 		else if(god_eremes > 18)
 	{
-			if(god_megin_2 > 0 && god_megin_2 < 4)
+			if (god_megin_2 > 0 && god_megin_2 < 4)
 		{
 			mes "[Cuaque Donon]";
 			mes "Wha...what are you! How the hell did you come in here!";
@@ -7740,7 +7740,7 @@ alberta.gat,196,146,0	script	Crusader#megin2	751,{
 
 	if ($God1 > 49 && $God2 < 100)
 {
-		if(god_eremes == 18)
+		if (god_eremes == 18)
 	{
 		mes "[Jack O]";
 		mes "^333333*Yawn...*^000000";
@@ -7979,7 +7979,7 @@ aldebaran.gat,66,213,0	script	Lady#megin	69,{
 
 	if ($God1 > 49 && $God2 < 100)
 {
-		if(god_eremes == 18)
+		if (god_eremes == 18)
 	{
 		mes "[Emma Searth]";
 		mes "^333333*Sigh...*^000000 I haven't gotten any response from them. I don't know";
@@ -9014,7 +9014,7 @@ prontera.gat,124,297,3	script	Tialfi	706,{
 }
 	else
 {
-		if(god_mjo_0 == 11)
+		if (god_mjo_0 == 11)
 	{
 		mes "[Tialfi]";
 		mes "I'm waiting for the day";
@@ -9164,7 +9164,7 @@ prontera.gat,124,297,3	script	Tialfi	706,{
 				else
 			{
 				set $God4,$God4 +1;
-					if($God4 == 50)
+					if ($God4 == 50)
 				{
 					announce "The Fourth Seal of [Mjolnir] has appeared.",bc_all;
 				}
@@ -9261,7 +9261,7 @@ prontera.gat,124,297,3	script	Tialfi	706,{
 	}
 		else if(god_mjo_0 == 0)
 	{
-			if($God4 > 99)
+			if ($God4 > 99)
 		{
 			mes "[Tialfi]";
 			mes "Listen...I can feel unknown";
@@ -9405,7 +9405,7 @@ prontera.gat,124,297,3	script	Tialfi	706,{
 prt_fild01.gat,196,47,3	script	Roskva	703,{
 
 
-	if(god_mjo_0 == 1)
+	if (god_mjo_0 == 1)
 {
 	mes "[Roskva]";
 	mes "You should know that Dwarven";
@@ -9500,7 +9500,7 @@ mjolnir_11.gat,149,247,5	script	Dwarf Blacksmith#east	826,{
 }
 	else
 {
-		if($God4 > 99)
+		if ($God4 > 99)
 	{
 		mes "[Austri]";
 		mes "Something is happening";
@@ -9584,7 +9584,7 @@ mjolnir_11.gat,149,247,5	script	Dwarf Blacksmith#east	826,{
 					close;
 
 				L_Excuse:
-						if(countitem(1005) > 0)
+						if (countitem(1005) > 0)
 					{
 						mes "[Austri]";
 						mes "Ah, I see that the entire human";
@@ -9825,7 +9825,7 @@ mjolnir_11.gat,149,247,5	script	Dwarf Blacksmith#east	826,{
 	}
 		else if(god_mjo_0 == 2)
 	{
-			if(god_mjo_1 == 3 || god_mjo_2 == 3 || god_mjo_3 == 3 || god_mjo_4 == 3)
+			if (god_mjo_1 == 3 || god_mjo_2 == 3 || god_mjo_3 == 3 || god_mjo_4 == 3)
 		{
 			mes "[Austri]";
 			mes "What is it! I do not have anything to";
@@ -9867,7 +9867,7 @@ mjolnir_11.gat,149,247,5	script	Dwarf Blacksmith#east	826,{
 					mes "...";
 					close;
 				L_Excuse3:
-						if(countitem(1005) > 0)
+						if (countitem(1005) > 0)
 					{
 						mes "[Austri]";
 						mes "Hmm, I like your polite manners.";
@@ -10218,15 +10218,15 @@ mjolnir_09.gat,209,341,3	script	Dwarf Blacksmith#south	826,{
 				L_DefSudri:
 				set @sudri_def,rand(1,3);
 				set @damage,rand(15,25);
-				if(@player_atk == 1) mes "" + strcharinfo(0) + " attacks Sudri's head!";
+				if (@player_atk == 1) mes "" + strcharinfo(0) + " attacks Sudri's head!";
 				else if(@player_atk == 2) mes "" + strcharinfo(0) + " strikes Sudri's chest!";
 				else if(@player_atk == 3) mes "" + strcharinfo(0) + " aims for Sudri's legs!";
 				else if(@player_atk == 4) mes "" + strcharinfo(0) + " requests a break!";
 				else mes "" + strcharinfo(0) + "'s weak point revealed!";
-					if(@player_atk == @sudri_def)
+					if (@player_atk == @sudri_def)
 				{
 						misceffect "Dwarf Blacksmith#south",336;
-						if(@sudri_def == 1)
+						if (@sudri_def == 1)
 					{
 						mes "--------------------";
 						mes "Sudri easily dodges";
@@ -10300,7 +10300,7 @@ mjolnir_09.gat,209,341,3	script	Dwarf Blacksmith#south	826,{
 					mes "Sudri's counter attack!";
 					mes "--------------------";
 					mes "" + strcharinfo(0) + " has lost 10 HP!";
-						if(@player_vit < 1)
+						if (@player_vit < 1)
 					{
 						mes "Defeated...";
 						next;
@@ -10313,7 +10313,7 @@ mjolnir_09.gat,209,341,3	script	Dwarf Blacksmith#south	826,{
 					mes "Something happened and the fight has stopped!";
 					close;
 				}
-					if(@sudri_vit < 1)
+					if (@sudri_vit < 1)
 				{
 					mes "" + strcharinfo(0) + " wins!";
 					next;
@@ -10344,13 +10344,13 @@ mjolnir_09.gat,209,341,3	script	Dwarf Blacksmith#south	826,{
 				L_DefPlayer:
 				set @sudri_atk,rand(1,3);
 				set @damage,rand(20,25);
-				if(@sudri_atk == 1) mes "Sudri aims for the head!";
+				if (@sudri_atk == 1) mes "Sudri aims for the head!";
 				else if(@sudri_atk == 2) mes "Sudri strikes the chest!";
 				else mes "Sudri attacks the legs!";
-					if(@sudri_atk == @player_def)
+					if (@sudri_atk == @player_def)
 				{
 					misceffect 336;
-						if(@player_def == 1)
+						if (@player_def == 1)
 					{
 						mes "--------------------";
 						mes "" + strcharinfo(0) + " quickly dodged,";
@@ -10380,7 +10380,7 @@ mjolnir_09.gat,209,341,3	script	Dwarf Blacksmith#south	826,{
 					set @counter,rand(1,4);
 					mes "--------------------";
 					mes "" + strcharinfo(0) + " countered back!";
-						if(@counter == 1)
+						if (@counter == 1)
 					{
 						misceffect 131;
 						misceffect "Dwarf Blacksmith#south",17;
@@ -10388,7 +10388,7 @@ mjolnir_09.gat,209,341,3	script	Dwarf Blacksmith#south	826,{
 						mes "You successfully countered back!";
 						mes "--------------------";
 						mes "Sudri has lost 20 HP!";
-							if(@sudri_vit < 1)
+							if (@sudri_vit < 1)
 						{
 							mes "" + strcharinfo(0) + " won!";
 							next;
@@ -10455,7 +10455,7 @@ mjolnir_09.gat,209,341,3	script	Dwarf Blacksmith#south	826,{
 					mes "Something happened and the fight has stopped!";
 					close;
 				}
-					if(@player_vit < 1)
+					if (@player_vit < 1)
 				{
 					mes "Sudri won!";
 					next;
@@ -10647,15 +10647,15 @@ mjolnir_09.gat,209,341,3	script	Dwarf Blacksmith#south	826,{
 				L_DefSudri2:
 				set @sudri_def,rand(1,3);
 				set @damage,rand(15,25);
-				if(@player_atk == 1) mes "" + strcharinfo(0) + " attacks Sudri's head!";
+				if (@player_atk == 1) mes "" + strcharinfo(0) + " attacks Sudri's head!";
 				else if(@player_atk == 2) mes "" + strcharinfo(0) + " strikes Sudri's chest!";
 				else if(@player_atk == 3) mes "" + strcharinfo(0) + " aims for Sudri's legs!";
 				else if(@player_atk == 4) mes "" + strcharinfo(0) + " requests a break!";
 				else mes "" + strcharinfo(0) + "'s weak point revealed!";
-					if(@player_atk == @sudri_def)
+					if (@player_atk == @sudri_def)
 				{
 						misceffect "Dwarf Blacksmith#south",336;
-						if(@sudri_def == 1)
+						if (@sudri_def == 1)
 					{
 						mes "--------------------";
 						mes "Sudri easily dodges";
@@ -10729,7 +10729,7 @@ mjolnir_09.gat,209,341,3	script	Dwarf Blacksmith#south	826,{
 					mes "Sudri's counter attack!";
 					mes "--------------------";
 					mes "" + strcharinfo(0) + " has lost 10 HP!";
-						if(@player_vit < 1)
+						if (@player_vit < 1)
 					{
 						mes "Defeated...";
 						next;
@@ -10742,7 +10742,7 @@ mjolnir_09.gat,209,341,3	script	Dwarf Blacksmith#south	826,{
 					mes "Something happened and the fight has stopped!";
 					close;
 				}
-					if(@sudri_vit < 1)
+					if (@sudri_vit < 1)
 				{
 					mes "" + strcharinfo(0) + " wins!";
 					next;
@@ -10773,13 +10773,13 @@ mjolnir_09.gat,209,341,3	script	Dwarf Blacksmith#south	826,{
 				L_DefPlayer2:
 				set @sudri_atk,rand(1,3);
 				set @damage,rand(20,25);
-				if(@sudri_atk == 1) mes "Sudri aims for the head!";
+				if (@sudri_atk == 1) mes "Sudri aims for the head!";
 				else if(@sudri_atk == 2) mes "Sudri strikes the chest!";
 				else mes "Sudri attacks the legs!";
-					if(@sudri_atk == @player_def)
+					if (@sudri_atk == @player_def)
 				{
 					misceffect 336;
-						if(@player_def == 1)
+						if (@player_def == 1)
 					{
 						mes "--------------------";
 						mes "" + strcharinfo(0) + " quickly dodged,";
@@ -10809,7 +10809,7 @@ mjolnir_09.gat,209,341,3	script	Dwarf Blacksmith#south	826,{
 					set @counter,rand(1,4);
 					mes "--------------------";
 					mes "" + strcharinfo(0) + " countered back!";
-						if(@counter == 1)
+						if (@counter == 1)
 					{
 						misceffect 131;
 						misceffect "Dwarf Blacksmith#south",17;
@@ -10817,7 +10817,7 @@ mjolnir_09.gat,209,341,3	script	Dwarf Blacksmith#south	826,{
 						mes "You successfully countered back!";
 						mes "--------------------";
 						mes "Sudri has lost 20 HP!";
-							if(@sudri_vit < 1)
+							if (@sudri_vit < 1)
 						{
 							mes "" + strcharinfo(0) + " won!";
 							next;
@@ -10884,7 +10884,7 @@ mjolnir_09.gat,209,341,3	script	Dwarf Blacksmith#south	826,{
 					mes "Something happened and the fight has stopped!";
 					close;
 				}
-					if(@player_vit < 1)
+					if (@player_vit < 1)
 				{
 					mes "Sudri won!";
 					next;
@@ -10997,7 +10997,7 @@ mjolnir_09.gat,209,341,3	script	Dwarf Blacksmith#south	826,{
 
 mjolnir_01.gat,35,136,7	script	Dwarf Blacksmith#west	826,{
 
-	if($God3 < 50)
+	if ($God3 < 50)
 {
 	mes "[Vestri]";
 	mes "If you want something,";
@@ -11018,7 +11018,7 @@ mjolnir_01.gat,35,136,7	script	Dwarf Blacksmith#west	826,{
 	else
 {
 
-		if($God4 > 99)
+		if ($God4 > 99)
 	{
 		mes "[Vestri]";
 		mes "I don't feel like doing anything today.";
@@ -11060,7 +11060,7 @@ mjolnir_01.gat,35,136,7	script	Dwarf Blacksmith#west	826,{
 	}
 		else if(god_mjo_0 == 1)
 	{
-			if(god_mjo_1 == 3 || god_mjo_2 == 3 || god_mjo_3 == 3 || god_mjo_4 == 3)
+			if (god_mjo_1 == 3 || god_mjo_2 == 3 || god_mjo_3 == 3 || god_mjo_4 == 3)
 		{
 			mes "[Vestri]";
 			mes "I really hope I meet a decent";
@@ -11169,7 +11169,7 @@ mjolnir_01.gat,35,136,7	script	Dwarf Blacksmith#west	826,{
 					goto M_Menu;
 			
 			L_Check11:
-			if(getequipisenableref(@vestripart)) goto L_Check12;
+			if (getequipisenableref(@vestripart)) goto L_Check12;
 				mes "[Vestri]";
 				mes "What, this isn't upgradable!";
 				mes "What the hell do you want me";
@@ -11179,7 +11179,7 @@ mjolnir_01.gat,35,136,7	script	Dwarf Blacksmith#west	826,{
 				end;
 			
 			L_Check12:
-				if(getequipisidentify(@vestripart)) goto L_Check13;
+				if (getequipisidentify(@vestripart)) goto L_Check13;
 				mes "[Vestri]";
 				mes "You'd better identify this item";
 				mes "first. If we don't know what it";
@@ -11189,7 +11189,7 @@ mjolnir_01.gat,35,136,7	script	Dwarf Blacksmith#west	826,{
 				end;
 			
 			L_Check13:
-				if(getequiprefinerycnt(@vestripart) < 10) goto L_Check14;
+				if (getequiprefinerycnt(@vestripart) < 10) goto L_Check14;
 				mes "[Vestri]";
 				mes "Oh, this is excellent!";
 				mes "This piece here has been";
@@ -11234,7 +11234,7 @@ mjolnir_01.gat,35,136,7	script	Dwarf Blacksmith#west	826,{
 				end;
 			}
 			
-				if(getequipweaponlv(@vestripart) == 0)
+				if (getequipweaponlv(@vestripart) == 0)
 			{
 				mes "[Vestri]";
 				mes "Armor?!";
@@ -11283,7 +11283,7 @@ mjolnir_01.gat,35,136,7	script	Dwarf Blacksmith#west	826,{
 					end;
 			
 			L_Go:
-				if(countitem(984) > 0) delitem 984,1;
+				if (countitem(984) > 0) delitem 984,1;
 				else
 			{
 				mes "[Vestri]";
@@ -11491,7 +11491,7 @@ mjolnir_01.gat,35,136,7	script	Dwarf Blacksmith#west	826,{
 					goto M_Menu2;
 			
 			L_Check21:
-			if(getequipisenableref(@vestripart)) goto L_Check22;
+			if (getequipisenableref(@vestripart)) goto L_Check22;
 				mes "[Vestri]";
 				mes "What, this isn't upgradable!";
 				mes "What the hell do you want me";
@@ -11501,7 +11501,7 @@ mjolnir_01.gat,35,136,7	script	Dwarf Blacksmith#west	826,{
 				end;
 			
 			L_Check22:
-				if(getequipisidentify(@vestripart)) goto L_Check23;
+				if (getequipisidentify(@vestripart)) goto L_Check23;
 				mes "[Vestri]";
 				mes "You'd better identify this item";
 				mes "first. If we don't know what it";
@@ -11511,7 +11511,7 @@ mjolnir_01.gat,35,136,7	script	Dwarf Blacksmith#west	826,{
 				end;
 			
 			L_Check23:
-				if(getequiprefinerycnt(@vestripart) < 10) goto L_Check24;
+				if (getequiprefinerycnt(@vestripart) < 10) goto L_Check24;
 				mes "[Vestri]";
 				mes "Oh, this is excellent!";
 				mes "This piece here has been";
@@ -11556,7 +11556,7 @@ mjolnir_01.gat,35,136,7	script	Dwarf Blacksmith#west	826,{
 				end;
 			}
 			
-				if(getequipweaponlv(@vestripart) == 0)
+				if (getequipweaponlv(@vestripart) == 0)
 			{
 				mes "[Vestri]";
 				mes "Armor?!";
@@ -11593,7 +11593,7 @@ mjolnir_01.gat,35,136,7	script	Dwarf Blacksmith#west	826,{
 					end;
 
 			L_Go2:
-				if(countitem(984) > 0) delitem 984,1;
+				if (countitem(984) > 0) delitem 984,1;
 				else
 			{
 				mes "[Vestri]";
@@ -11730,7 +11730,7 @@ mjolnir_12.gat,18,18,7	script	Dwarf Blacksmith#north	826,{
 }
 	else
 {
-		if($God4 > 99)
+		if ($God4 > 99)
 	{
 		mes "[Nordri]";
 		mes "What's happening?";
@@ -11800,7 +11800,7 @@ mjolnir_12.gat,18,18,7	script	Dwarf Blacksmith#north	826,{
 		}
 			else if(god_mjo_4 == 1)
 		{
-				if(countitem(501) > 0)
+				if (countitem(501) > 0)
 			{
 				delitem 501,1;
 				mes "[Nordri]";
@@ -11984,7 +11984,7 @@ mjolnir_12.gat,18,18,7	script	Dwarf Blacksmith#north	826,{
 		}
 			else if(god_mjo_1 == 1)
 		{
-				if(countitem(501) > 0)
+				if (countitem(501) > 0)
 			{
 				delitem 501,1;
 				mes "[Nordri]";
@@ -16026,7 +16026,7 @@ OnTimer615000:
 
 sec_in02.gat,15,170,0	script	Seals Quest Vars	817,{
 
-	if(getgmlevel() > 98)
+	if (getgmlevel() > 98)
 	{
 	mes "[Variable Management]";
 	mes "Welcome to the God Item Quest";
@@ -16052,8 +16052,8 @@ s_Change:
 	mes "101 to cancel)";
 	next;
 	input @temp;
-	if(@temp == 101)goto s_Canceled;
-	if(@temp < 0 || @temp > 100)goto s_BadValue;
+	if (@temp == 101)goto s_Canceled;
+	if (@temp < 0 || @temp > 100)goto s_BadValue;
 	set $God1,@temp;
 	mes "[Variable Management]";
 	mes "^0000FF$God1^000000 was changed to ^FF0000" + $God1 + "^000000.";
@@ -16067,8 +16067,8 @@ s_2:
 	mes "101 to cancel)";
 	next;
 	input @temp;
-	if(@temp == 101)goto s_Canceled;
-	if(@temp < 0 || @temp > 100)goto s_BadValue;
+	if (@temp == 101)goto s_Canceled;
+	if (@temp < 0 || @temp > 100)goto s_BadValue;
 	set $God2,@temp;
 	mes "[Variable Management]";
 	mes "^0000FF$God2^000000 was changed to ^FF0000" + $God2 + "^000000.";
@@ -16082,8 +16082,8 @@ s_3:
 	mes "101 to cancel)";
 	next;
 	input @temp;
-	if(@temp == 101)goto s_Canceled;
-	if(@temp < 0 || @temp > 100)goto s_BadValue;
+	if (@temp == 101)goto s_Canceled;
+	if (@temp < 0 || @temp > 100)goto s_BadValue;
 	set $God3,@temp;
 	mes "[Variable Management]";
 	mes "^0000FF$God3^000000 was changed to ^FF0000" + $God3 + "^000000.";
@@ -16097,8 +16097,8 @@ s_4:
 	mes "101 to cancel)";
 	next;
 	input @temp;
-	if(@temp == 101)goto s_Canceled;
-	if(@temp < 0 || @temp > 100)goto s_BadValue;
+	if (@temp == 101)goto s_Canceled;
+	if (@temp < 0 || @temp > 100)goto s_BadValue;
 	set $God4,@temp;
 	mes "[Variable Management]";
 	mes "^0000FF$God4^000000 was changed to ^FF0000" + $God4 + "^000000.";

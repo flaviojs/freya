@@ -401,7 +401,7 @@ Lnosafe:
 			mes "Your equipment may be destroyed... is that ok?";
 			next;
 			menu "Yes",-,"No...",Lcancel1;
-				if((countitem(@material) < @refinecnt) || (Zeny < @fullprice)) goto Lcancel2;
+				if ((countitem(@material) < @refinecnt) || (Zeny < @fullprice)) goto Lcancel2;
 				set Zeny,Zeny - @fullprice;
 				delitem @material,@refinecnt;
 				goto L_refinenumber;
@@ -448,7 +448,7 @@ L_refinenumber:
 		mes "[" + @name$ + "]";
 		mes "WAHHHH!!! I'm so sorry... I warned you this could happen...";
 		set @refinecnt,@refinecnt - 1;
-		if(@refinecnt == 0) goto Lend2;
+		if (@refinecnt == 0) goto Lend2;
 		mes "Here's the unused Zeny and Material back...";
 		getitem @material,@refinecnt;
 		set @fullprice,@refinecnt * @price;

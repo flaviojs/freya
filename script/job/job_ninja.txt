@@ -35,16 +35,16 @@
 
 alberta.gat,30,65,3	script	Akagi#nq	730,{
 
-	if(Class == Job_Novice)
+	if (Class == Job_Novice)
 	{
-		if(JobLevel > 9)
+		if (JobLevel > 9)
 		{
 			mes "[Akagi]";
 			mes "Hmm...";
 			mes "Some force must have lead your feet to this dark alley because you are needed here.";
 			mes "Would you like to walk the path of Patience?";
 			next;
-			if(select("No, I don't want to go.","Yep, I'll walk the path.") == 1)
+			if (select("No, I don't want to go.","Yep, I'll walk the path.") == 1)
 			{
 				mes "[Akagi]";
 				mes "Ok.";
@@ -57,7 +57,7 @@ alberta.gat,30,65,3	script	Akagi#nq	730,{
 				mes "[Akagi]";
 				mes "Very well, I'll send you over right away.";
 				close2;
-				switch (rand(3)) {
+				switch(rand(3)) {
 					case 1:  warp "amatsu.gat", 170, 229; break;
 					case 2:  warp "amatsu.gat", 216, 188; break;
 					default: warp "amatsu.gat", 178, 176; break;
@@ -84,7 +84,7 @@ alberta.gat,30,65,3	script	Akagi#nq	730,{
 
 que_ng.gat,30,65,3	script	Cougar Gai	730,{
 
-	if(Class == Job_Novice && JobLevel > 9)
+	if (Class == Job_Novice && JobLevel > 9)
 	{
 		switch(NINJ_Q)
 		{
@@ -367,14 +367,14 @@ que_ng.gat,30,65,3	script	Cougar Gai	730,{
 
 			case 4:
 				mes "[Cougar Gai]";
-				if(countitem(7053) < 5 || countitem(1010) < 1)
+				if (countitem(7053) < 5 || countitem(1010) < 1)
 				{
 					mes "Get me 1 Phracon and 5 Cyfars.";
 					mes "What you have isn't what I said I need before.";
 					mes "It's urgent, so please hurry.";
 					close;
 				}
-				if(skillpoint >0)
+				if (skillpoint >0)
 				{
 					mes "Please come back after you've learned all the basic skills.";
 					close;
@@ -466,7 +466,7 @@ que_ng.gat,30,65,3	script	Cougar Gai	730,{
 
 einbroch.gat,184,194,3	script	Suspicious Guy	881,{
 
-	if(Class == Job_Ninja)
+	if (Class == Job_Ninja)
 	{
 		mes "[Crimson Panther Joe]";
 		mes "Oh, I see you've become a Ninja";
@@ -563,7 +563,7 @@ einbroch.gat,184,194,3	script	Suspicious Guy	881,{
 			}
 
 		case 2:
-			if(countitem(1010) < 1 || countitem(7053) < 5){
+			if (countitem(1010) < 1 || countitem(7053) < 5) {
 				mes "[Suspicious Guy]";
 				mes "I asked for 1 Phracon and 5 Cyfar.";
 				mes "It looks like you didn't gather the amount I've requested.";
@@ -711,7 +711,7 @@ einbroch.gat,184,194,3	script	Suspicious Guy	881,{
 que_ng.gat,72,29,3	script	Kunai Merchant Kashin	83,{
 
 	mes "[Kashin]";	
-	if(BaseJob != Job_Ninja) {
+	if (BaseJob != Job_Ninja) {
 		mes "I am Kashin of the Wind. I distribute trade items to the shadows.";
 		next;
 		mes "[Kashin]";
@@ -755,24 +755,24 @@ function	script	F_KunaiTrade	{
 	input @amount;
 
 	mes "[Kashin]";
-	if(@amount < 1) {
+	if (@amount < 1) {
 		mes "Hmm~ Ok~";
 		mes "Come again~";
 		mes "I, Kashin of the Wind, will always be at this place.";
 		close;
 	}
-	if(@amount > 500) {
+	if (@amount > 500) {
 		mes "You've exceeded the input amount!";
 		mes "Enter a valid number next time~!";
 		close;
 	}
-	if(countitem(getarg(0)) < @amount*getarg(1) || countitem(getarg(2)) < @amount*getarg(3)) {
+	if (countitem(getarg(0)) < @amount*getarg(1) || countitem(getarg(2)) < @amount*getarg(3)) {
 		mes "Hmm... this is no good~";
 		mes "You don't have enough materials to trade in for the amount of Kunai's that you want.";
 		mes "Bring some more if you want this amount.";
 		close;
  	}
-	if(checkweight(getarg(4), @amount*10) == 0) {
+	if (checkweight(getarg(4), @amount*10) == 0) {
 		mes "Your bag is too full to carry the trade items. Come back after you made room for the traded items.";
 		close;
 	}
@@ -1598,7 +1598,7 @@ que_ng.gat,27,18,3	script	Toshu	709,{
 			delitem 2119,1;
 			set Zeny,Zeny-40000;
 
-			switch (rand(5)) {
+			switch(rand(5)) {
 				case 1:
 					getitem 12043,1;
 					mes "[Toshu]";
@@ -1646,7 +1646,7 @@ que_ng.gat,27,18,3	script	Toshu	709,{
 
 que_ng.gat,72,34,3	script	Craftsman Kaibara	847,{
 
-	if (BaseJob != Job_Ninja){
+	if (BaseJob != Job_Ninja) {
 		mes "[Kaibara]";
 		mes "I am a Craftsman called Kaibara";
 		mes "I create weapons for Ninjas.";
@@ -1661,7 +1661,7 @@ que_ng.gat,72,34,3	script	Craftsman Kaibara	847,{
 	mes "You look like a Ninja.";
 	mes "If you're interested, take a look at my goods while you decide what you want.";
 	next;
-	switch(select("Gokurin","Jitte","Ashura[3]","Murasame","Hakujin","Cancel")){
+	switch(select("Gokurin","Jitte","Ashura[3]","Murasame","Hakujin","Cancel")) {
 		case 1:
 			mes "[Kaibara]";
 			mes "Hmm~ I see you've picked the Gokurin.";
@@ -1673,13 +1673,13 @@ que_ng.gat,72,34,3	script	Craftsman Kaibara	847,{
 			mes "and 200,000 Zeny.";
 			mes "Do you want me to create this item for you?";
 			next;
-			if(select("No thanks. It's too expensive.","Yes! I want one!") == 1){
+			if (select("No thanks. It's too expensive.","Yes! I want one!") == 1) {
 				mes "[Kaibara]";
 				mes "Hrm. I understand. These are materials that are difficult to attain...";
 				mes "If you ever happen to gather all these materials one day, feel free to come back.";
 				close;
-			}else{
-				if(countitem(1036) < 400 || countitem(984) < 5 || countitem(7123) < 30){
+			} else {
+				if (countitem(1036) < 400 || countitem(984) < 5 || countitem(7123) < 30) {
 					mes "[Kaibara]";
 					mes "It looks like there are not enough ingredients for me to make you a Gokurin.";
 					next;
@@ -1691,7 +1691,7 @@ que_ng.gat,72,34,3	script	Craftsman Kaibara	847,{
 					mes "Make sure you have those items when you return to me.";
 					close;
 				}
-				if(Zeny < 200000){
+				if (Zeny < 200000) {
 					mes "[Kaibara]";
 					mes "Hmm, it looks like you have enough materials, but you're short on Zeny.";
 					next;
@@ -1725,13 +1725,13 @@ que_ng.gat,72,34,3	script	Craftsman Kaibara	847,{
 			mes "and 20,000 Zeny.";
 			mes "Do you want me to create this item for you?";
 			next;
-			if(select("No thanks. It's too expensive.","Yes! I want one!") == 1){
+			if (select("No thanks. It's too expensive.","Yes! I want one!") == 1) {
 				mes "[Kaibara]";
 				mes "Hrm. I understand. These are materials that are difficult to attain...";
 				mes "If you ever happen to gather all these materials one day, feel free to come back.";
 				close;
-			}else{
-				if(countitem(999) < 30 || countitem(7022) < 1){
+			} else {
+				if (countitem(999) < 30 || countitem(7022) < 1) {
 					mes "[Kaibara]";
 					mes "It looks like you need more materials before I can make you a Jitte.";
 					next;
@@ -1743,7 +1743,7 @@ que_ng.gat,72,34,3	script	Craftsman Kaibara	847,{
 					mes "Remember these needed materials, and come back after you're positive you have them all.";
 					close;
 				}
-				if(Zeny < 20000){
+				if (Zeny < 20000) {
 					mes "[Kaibara]";
 					mes "Hmm.. You brought plenty of materials, but you're short on zeny.";
 					next;
@@ -1774,13 +1774,13 @@ que_ng.gat,72,34,3	script	Craftsman Kaibara	847,{
 			mes "And 32,000 Zeny.";
 			mes "Do you want me to create this item for you?";
 			next;
-			if(select("No thanks. It's too expensive.","Yes! I want one!") == 1){
+			if (select("No thanks. It's too expensive.","Yes! I want one!") == 1) {
 				mes "[Kaibara]";
 				mes "Hrm. I understand. These are materials that are difficult to attain...";
 				mes "If you ever happen to gather all these materials one day, feel free to come back.";
 				close;
-			}else{
-				if(countitem(999) < 25 || countitem(7099) < 5){
+			} else {
+				if (countitem(999) < 25 || countitem(7099) < 5) {
 					mes "[Kaibara]";
 					mes "It looks like you don't have all the materials I need to create an Ashura[3] for you.";
 					next;
@@ -1791,7 +1791,7 @@ que_ng.gat,72,34,3	script	Craftsman Kaibara	847,{
 					mes "Remember these needed materials, and come back after you're positive you have them all.";
 					close;
 				}
-				if(Zeny < 32000){
+				if (Zeny < 32000) {
 					mes "[Kaibara]";
 					mes "Hmm.. You brought plenty of materials, but you're short on zeny.";
 					next;
@@ -1822,13 +1822,13 @@ que_ng.gat,72,34,3	script	Craftsman Kaibara	847,{
 			mes "And 48,000 Zeny.";
 			mes "Do you want me to create this item for you?";
 			next;
-			if(select("No thanks. It's too expensive.","Yes! I want one!") == 1){
+			if (select("No thanks. It's too expensive.","Yes! I want one!") == 1) {
 				mes "[Kaibara]";
 				mes "Hrm. I understand. These are materials that are difficult to attain...";
 				mes "If you ever happen to gather all these materials one day, feel free to come back.";
 				close;
-			}else{
-				if(countitem(999) < 30 || countitem(720) < 10){
+			} else {
+				if (countitem(999) < 30 || countitem(720) < 10) {
 					mes "[Kaibara]";
 					mes "It looks like your short on materials for me to create you a Murasame.";
 					next;
@@ -1840,7 +1840,7 @@ que_ng.gat,72,34,3	script	Craftsman Kaibara	847,{
 					mes "Remember these needed materials, and come back after you're positive you have them all.";
 					close;
 				}
-				if(Zeny < 48000){
+				if (Zeny < 48000) {
 					mes "[Kaibara]";
 					mes "Hmm.. You brought plenty of materials, but you're short on zeny.";
 					next;
@@ -1872,13 +1872,13 @@ que_ng.gat,72,34,3	script	Craftsman Kaibara	847,{
 			mes "and 120,000 Zeny.";
 			mes "Do you want me to create this item for you?";
 			next;
-			if(select("No thanks. It's too expensive.","Yes! I want one!") == 1){
+			if (select("No thanks. It's too expensive.","Yes! I want one!") == 1) {
 				mes "[Kaibara]";
 				mes "Hrm. I understand. These are materials that are difficult to attain...";
 				mes "If you ever happen to gather all these materials one day, feel free to come back.";
 				close;
-			}else{
-				if(countitem(932) < 500 || countitem(12001) < 10 || countitem(722) < 5){
+			} else {
+				if (countitem(932) < 500 || countitem(12001) < 10 || countitem(722) < 5) {
 					mes "[Kaibara]";
 					mes "It looks like you're short on raw materials for me to be able to make you a Hakujin.";
 					next;
@@ -1890,7 +1890,7 @@ que_ng.gat,72,34,3	script	Craftsman Kaibara	847,{
 					mes "Remember these needed materials, and come back after you're positive you have them all.";
 					close;
 				}
-				if(Zeny < 120000){
+				if (Zeny < 120000) {
 					mes "[Kaibara]";
 					mes "Hmm.. You brought plenty of materials, but you're short on zeny.";
 					next;
@@ -1931,7 +1931,7 @@ que_ng.gat,72,34,3	script	Craftsman Kaibara	847,{
 que_ng.gat,22,62,3	script	Tetsu	709,{
 
 	mes "[Tetsu]";
-	if(BaseJob != Job_Ninja){
+	if (BaseJob != Job_Ninja) {
 		mes "I'm The Craftman of Fuuma Ninjas called Tetsu.";
 		next;
 		mes "[Tetsu]";
@@ -1967,7 +1967,7 @@ M_BENEKI:
 	next;
 	menu "Well .. erm .. it's kind of pricey.",M_NOPE,"Yes! Make it for me!",-;
 	
-	if(countitem(999)<50 || countitem(7115)<20 || countitem(984)<5){
+	if (countitem(999)<50 || countitem(7115)<20 || countitem(984)<5) {
 		mes "[Tetsu]";
 		mes "It looks like you haven't brought me enough materials to make you a Fuuma Shuriken Beneki.";
 		next;
@@ -1980,7 +1980,7 @@ M_BENEKI:
 		mes "Remember these needed materials, and come back after you're positive you have them all.";
 		close;
 	}
-	if(Zeny < 90000){
+	if (Zeny < 90000) {
 		mes "[Tetsu]";
 		mes "Hmm.. You brought plenty of materials, but you're short on zeny.";
 		next;
@@ -2014,7 +2014,7 @@ M_DAIS:
 	next;
 	menu "Well .. erm .. it's kind of pricey.",M_NOPE,"Yes! Make it for me!",-;
 
-	if(countitem(999)<30 || countitem(7301)<100 || countitem(984)<2){
+	if (countitem(999)<30 || countitem(7301)<100 || countitem(984)<2) {
 		mes "[Tetsu]";
 		mes "It looks like you haven't brought me enough materials to make you a Fuuma Shuriken Daisharin.";
 		next;
@@ -2027,7 +2027,7 @@ M_DAIS:
 		mes "Remember these needed materials, and come back after you're positive you have them all.";
 		close;
 	}
-	if(Zeny < 40000){
+	if (Zeny < 40000) {
 		mes "[Tetsu]";
 		mes "Hmm.. You brought plenty of materials, but you're short on zeny.";
 		next;
@@ -2066,7 +2066,7 @@ M_DAIS4:
 	next;
 	menu "No thanks.. It's a little pricey..",M_NOPE,"Yes! Make it for me!",-;
 
-	if(countitem(733)<20 || countitem(13301)<1 || countitem(984)<3){
+	if (countitem(733)<20 || countitem(13301)<1 || countitem(984)<3) {
 		mes "[Tetsu]";
 		mes "It looks like you haven't brought me enough materials to make you a Fuuma Shuriken Daisharin[4].";
 		next;
@@ -2079,7 +2079,7 @@ M_DAIS4:
 		mes "Remember these needed materials, and come back after you're positive you have them all.";
 		close;
 	}
-	if(Zeny < 40000){
+	if (Zeny < 40000) {
 		mes "[Tetsu]";
 		mes "Hmm.. You brought plenty of materials, but you're short on zeny.";
 		next;
@@ -2114,7 +2114,7 @@ M_REKKA:
 	next;
 	menu "Well .. erm .. it's kind of pricey",M_NOPE,"Yes! Make it for me!",-;
 
-	if(countitem(999)<50 || countitem(7098)<100 || countitem(7097)<100 || countitem(7521)<50){
+	if (countitem(999)<50 || countitem(7098)<100 || countitem(7097)<100 || countitem(7521)<50) {
 		mes "[Tetsu]";
 		mes "It looks like you haven't brought me enough materials to make you a Fuuma Shuriken Rekka.";
 		next;
@@ -2126,7 +2126,7 @@ M_REKKA:
 		mes "Remember these needed materials, and come back after you're positive you have them all.";
 		close;
 	}
-	if(Zeny < 78000){
+	if (Zeny < 78000) {
 		mes "[Tetsu]";
 		mes "Hmm.. You brought plenty of materials, but you're short on zeny.";
 		next;

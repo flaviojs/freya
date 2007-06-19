@@ -1202,7 +1202,7 @@ morocc_in.gat,146,99,3	script	Java Dullihan	58,{
 
 izlude.gat,103,106,3	script	Guildsman#1	48,3,3,{
 
-	if(checkweight(7416,1) != 1)
+	if (checkweight(7416,1) != 1)
 	{
 		mes "^3355FFWait a second!";
 		mes "Right now, you're carrying";
@@ -1212,7 +1212,7 @@ izlude.gat,103,106,3	script	Guildsman#1	48,3,3,{
 		mes "to store some of your items.^000000";
 		close;
 	}
-	if(!(BaseLevel > 59) || !(BaseJob == Job_Novice || BaseJob == Job_SuperNovice || BaseClass == Job_Swordsman))
+	if (!(BaseLevel > 59) || !(BaseJob == Job_Novice || BaseJob == Job_SuperNovice || BaseClass == Job_Swordsman))
 	{
 		mes "[Guildsman]";
 		mes "There are rumors";
@@ -1229,7 +1229,7 @@ izlude.gat,103,106,3	script	Guildsman#1	48,3,3,{
 		mes "I would do it in a flash.";
 		close;
 	}
-	if(!mao_request)
+	if (!mao_request)
 	{
 		if ((BaseJob == Job_Novice) || (BaseJob == Job_SuperNovice))
 		{
@@ -1465,7 +1465,7 @@ izlude.gat,103,106,3	script	Guildsman#1	48,3,3,{
 	}
 
 OnTouch:
-	if(checkweight(7416,1) != 1)
+	if (checkweight(7416,1) != 1)
 	{
 		mes "^3355FFWait a second!";
 		mes "Right now, you're carrying";
@@ -1475,9 +1475,9 @@ OnTouch:
 		mes "to store some of your items.^000000";
 		close;
 	}
-	if(BaseLevel > 59)
+	if (BaseLevel > 59)
 	{
-		if(!mao_request)
+		if (!mao_request)
 		{
 			if ((BaseJob == Job_Novice) || (BaseJob == Job_SuperNovice))
 			{
@@ -1632,7 +1632,7 @@ OnTouch:
 
 prontera.gat,237,313,3	script	Nun	79,3,3,{
 
-	if(checkweight(7416,1) != 1)
+	if (checkweight(7416,1) != 1)
 	{
 		mes "^3355FFWait a second!";
 		mes "Right now, you're carrying";
@@ -1642,7 +1642,7 @@ prontera.gat,237,313,3	script	Nun	79,3,3,{
 		mes "to store some of your items.^000000";
 		close;
 	}
-	if(!(BaseLevel > 59))
+	if (!(BaseLevel > 59))
 	{
 		mes "[Nun]";
 		mes "Oh, hello there~";
@@ -1653,7 +1653,7 @@ prontera.gat,237,313,3	script	Nun	79,3,3,{
 		mes "united in our humanity.";
 		close;
 	}
-	if(!(BaseClass == Job_Acolyte))
+	if (!(BaseClass == Job_Acolyte))
 	{
 		mes "[Nun]";
 		mes "Ah, hello. Would you ask";
@@ -1671,7 +1671,7 @@ prontera.gat,237,313,3	script	Nun	79,3,3,{
 		mes "in an emergency situation...";
 		close;
 	}
-	if(!mao_request)
+	if (!mao_request)
 	{
 		mes "[Nun]";
 		mes "Oh, " + strcharinfo(0) + "!";
@@ -1763,7 +1763,7 @@ prontera.gat,237,313,3	script	Nun	79,3,3,{
 	}
 
 OnTouch:
-	if(checkweight(7416,1) != 1)
+	if (checkweight(7416,1) != 1)
 	{
 		mes "^3355FFWait a second!";
 		mes "Right now, you're carrying";
@@ -1773,11 +1773,11 @@ OnTouch:
 		mes "to store some of your items.^000000";
 		close;
 	}
-	if(BaseLevel > 59)
+	if (BaseLevel > 59)
 	{
-		if(!mao_request)
+		if (!mao_request)
 		{
-			if(BaseClass == Job_Acolyte)
+			if (BaseClass == Job_Acolyte)
 			{
 				mes "[Nun]";
 				mes "Oh, " + strcharinfo(0) + "!";
@@ -1827,7 +1827,7 @@ OnTouch:
 
 alberta.gat,129,59,3	script	Guildsman#2	49,3,3,{
 
-	if(checkweight(7416,1) != 1)
+	if (checkweight(7416,1) != 1)
 	{
 		mes "^3355FFWait a second!";
 		mes "Right now, you're carrying";
@@ -1837,7 +1837,7 @@ alberta.gat,129,59,3	script	Guildsman#2	49,3,3,{
 		mes "to store some of your items.^000000";
 		close;
 	}
-	if(!(BaseLevel > 59))
+	if (!(BaseLevel > 59))
 	{
 		mes "[Guildsman]";
 		mes "Say, have you heard";
@@ -1846,7 +1846,7 @@ alberta.gat,129,59,3	script	Guildsman#2	49,3,3,{
 		mes "something major going on...";
 		close;
 	}
-	if(!(BaseJob == Job_Soul_Linker || BaseClass == Job_Merchant))
+	if (!(BaseJob == Job_Soul_Linker || BaseClass == Job_Merchant))
 	{
 		mes "[Guildsman]";
 		mes "Goodness, there's so";
@@ -1855,7 +1855,7 @@ alberta.gat,129,59,3	script	Guildsman#2	49,3,3,{
 		mes "find who I'm looking for...";
 		close;
 	}
-	if(!mao_request)
+	if (!mao_request)
 	{
 		if (BaseJob == Job_Soul_Linker)
 		{
@@ -2183,7 +2183,7 @@ alberta.gat,129,59,3	script	Guildsman#2	49,3,3,{
 	}
 
 OnTouch:
-	if(checkweight(7416,1) != 1)
+	if (checkweight(7416,1) != 1)
 	{
 		mes "^3355FFWait a second!";
 		mes "Right now, you're carrying";
@@ -2193,9 +2193,9 @@ OnTouch:
 		mes "to store some of your items.^000000";
 		close;
 	}
-	if(BaseLevel > 59)
+	if (BaseLevel > 59)
 	{
-		if(!mao_request)
+		if (!mao_request)
 		{
 			if (BaseJob == Job_Soul_Linker)
 			{
@@ -2362,7 +2362,7 @@ OnTouch:
 
 geffen.gat,123,109,3	script	Academy Staff	742,3,3,{
 
-	if(checkweight(7416,1) != 1)
+	if (checkweight(7416,1) != 1)
 	{
 		mes "^3355FFWait a second!";
 		mes "Right now, you're carrying";
@@ -2372,7 +2372,7 @@ geffen.gat,123,109,3	script	Academy Staff	742,3,3,{
 		mes "to store some of your items.^000000";
 		close;
 	}
-	if(!(BaseLevel > 59) || !(BaseClass == Job_Mage))
+	if (!(BaseLevel > 59) || !(BaseClass == Job_Mage))
 	{
 		mes "[Academy Staff]";
 		mes "Are you headed to the";
@@ -2389,7 +2389,7 @@ geffen.gat,123,109,3	script	Academy Staff	742,3,3,{
 		mes "Wizards and Sages to hear...";
 		close;
 	}
-	if(!mao_request)
+	if (!mao_request)
 	{
 		mes "[Academy Staff]";
 		mes "Whoa, would you wait";
@@ -2467,7 +2467,7 @@ geffen.gat,123,109,3	script	Academy Staff	742,3,3,{
 	}
 
 OnTouch:
-	if(checkweight(7416,1) != 1)
+	if (checkweight(7416,1) != 1)
 	{
 		mes "^3355FFWait a second!";
 		mes "Right now, you're carrying";
@@ -2477,11 +2477,11 @@ OnTouch:
 		mes "to store some of your items.^000000";
 		close;
 	}
-	if(BaseLevel > 59)
+	if (BaseLevel > 59)
 	{
-		if(!mao_request)
+		if (!mao_request)
 		{
-			if(BaseClass == Job_Mage)
+			if (BaseClass == Job_Mage)
 			{
 				mes "[Academy Staff]";
 				mes "Whoa, would you wait";
@@ -2522,7 +2522,7 @@ OnTouch:
 
 morocc.gat,155,56,3	script	Miya	93,3,3,{
 
-	if(checkweight(7416,1) != 1)
+	if (checkweight(7416,1) != 1)
 	{
 		mes "^3355FFWait a second!";
 		mes "Right now, you're carrying";
@@ -2532,7 +2532,7 @@ morocc.gat,155,56,3	script	Miya	93,3,3,{
 		mes "to store some of your items.^000000";
 		close;
 	}
-	if(!(BaseLevel > 59))
+	if (!(BaseLevel > 59))
 	{
 		mes "[Girl]";
 		mes "Hey little kid...";
@@ -2550,7 +2550,7 @@ morocc.gat,155,56,3	script	Miya	93,3,3,{
 		mes "away from strangers, okay?";
 		close;
 	}
-	if(!(BaseJob == Job_Taekwon_Master || BaseClass == Job_Thief))
+	if (!(BaseJob == Job_Taekwon_Master || BaseClass == Job_Thief))
 	{
 		mes "[Girl]";
 		mes "...............................";
@@ -2560,7 +2560,7 @@ morocc.gat,155,56,3	script	Miya	93,3,3,{
 		mes "unless you want a fat lip!";
 		close;
 	}
-	if(!mao_request)
+	if (!mao_request)
 	{
 		if (BaseJob == Job_Taekwon_Master)
 		{
@@ -2678,7 +2678,7 @@ morocc.gat,155,56,3	script	Miya	93,3,3,{
 	}
 	else if(((mao_request > 2) && (mao_request < 27)) || ((mao_request > 102) && (mao_request < 125)))
 	{
-		if((BaseJob == Job_Taekwon_Master) || BaseClass == Job_Thief)
+		if ((BaseJob == Job_Taekwon_Master) || BaseClass == Job_Thief)
 		{
 			mes "[Miya]";
 			mes "So how's it been going?";
@@ -2712,7 +2712,7 @@ morocc.gat,155,56,3	script	Miya	93,3,3,{
 	}
 
 OnTouch:
-	if(checkweight(7416,1) != 1)
+	if (checkweight(7416,1) != 1)
 	{
 		mes "^3355FFWait a second!";
 		mes "Right now, you're carrying";
@@ -2722,9 +2722,9 @@ OnTouch:
 		mes "to store some of your items.^000000";
 		close;
 	}
-	if(BaseLevel > 59)
+	if (BaseLevel > 59)
 	{
-		if(!mao_request)
+		if (!mao_request)
 		{
 			if (BaseJob == Job_Taekwon_Master)
 			{
@@ -2810,7 +2810,7 @@ OnTouch:
 
 payon.gat,231,323,3	script	Guildsman#3	59,3,3,{
 
-	if(checkweight(7416,1) != 1)
+	if (checkweight(7416,1) != 1)
 	{
 		mes "^3355FFWait a second!";
 		mes "Right now, you're carrying";
@@ -2820,7 +2820,7 @@ payon.gat,231,323,3	script	Guildsman#3	59,3,3,{
 		mes "to store some of your items.^000000";
 		close;
 	}
-	if(!(BaseLevel > 59))
+	if (!(BaseLevel > 59))
 	{
 		mes "[Guildsman]";
 		mes "Please be careful if you're";
@@ -2830,7 +2830,7 @@ payon.gat,231,323,3	script	Guildsman#3	59,3,3,{
 		mes "children there...";
 		close;
 	}
-	if(!(BaseJob == Job_Taekwon) || !(BaseClass == Job_Archer))
+	if (!(BaseJob == Job_Taekwon) || !(BaseClass == Job_Archer))
 	{
 		mes "[Guildsman]";
 		mes "Excuse me, but if you happen";
@@ -2841,7 +2841,7 @@ payon.gat,231,323,3	script	Guildsman#3	59,3,3,{
 		mes "that I should tell them.";
 		close;
 	}
-	if(!mao_request)
+	if (!mao_request)
 	{
 		if (BaseJob == Job_Taekwon)
 		{
@@ -3046,7 +3046,7 @@ payon.gat,231,323,3	script	Guildsman#3	59,3,3,{
 	}
 	else if(((mao_request > 2) && (mao_request < 27)) || ((mao_request > 102) && (mao_request < 125)))
 	{
-		if(BaseJob == Job_Taekwon)
+		if (BaseJob == Job_Taekwon)
 		{
 			mes "[Guildsman]";
 			mes "I'm glad to see that you";
@@ -3102,7 +3102,7 @@ payon.gat,231,323,3	script	Guildsman#3	59,3,3,{
 	}
 
 OnTouch:
-	if(checkweight(7416,1) != 1)
+	if (checkweight(7416,1) != 1)
 	{
 		mes "^3355FFWait a second!";
 		mes "Right now, you're carrying";
@@ -3112,9 +3112,9 @@ OnTouch:
 		mes "to store some of your items.^000000";
 		close;
 	}
-	if(BaseLevel > 59)
+	if (BaseLevel > 59)
 	{
-		if(!mao_request)
+		if (!mao_request)
 		{
 			if (BaseJob == Job_Taekwon)
 			{
@@ -3269,9 +3269,9 @@ OnTouch:
 
 morocc.gat,43,108,5	script	Sharp-Looking Kid	82,{
 
-	if(BaseJob == Job_Assassin)
+	if (BaseJob == Job_Assassin)
 	{
-		if(mao_request == 1)
+		if (mao_request == 1)
 		{
 			mes "[Jack]";
 			mes "I've been waiting for";
@@ -3309,7 +3309,7 @@ morocc.gat,43,108,5	script	Sharp-Looking Kid	82,{
 			close;
 		}
 	}
-	if(mao_request == 1 && countitem(7416))
+	if (mao_request == 1 && countitem(7416))
 	{
 		mes "[Jack]";
 		mes "Oh, hey, you must be the";
@@ -3346,11 +3346,11 @@ morocc.gat,43,108,5	script	Sharp-Looking Kid	82,{
 morocc.gat,45,110,1	script	#maobar1	45,2,2,{
 
 OnTouch:
-	if(mao_request || BaseJob == Job_Assassin) warp "que_job01.gat",9,94;
+	if (mao_request || BaseJob == Job_Assassin) warp "que_job01.gat",9,94;
 	else
 	{
 		set @mao_pass,rand(1,3);
-		if(@mao_pass == 2)
+		if (@mao_pass == 2)
 		{
 			mes "[Jack]";
 			mes "Oh, man...";
@@ -3370,7 +3370,7 @@ OnTouch:
 			switch( select( "Pay 1,000 Zeny","Cancel" ) )
 			{
 				case 1:
-					if(Zeny > 999)
+					if (Zeny > 999)
 					{
 						mes "[Jack]";
 						mes "Oh man... I'm sooo";
@@ -3439,7 +3439,7 @@ OnTouch:
 que_job01.gat,80,77,1	script	#maobar5	45,2,2,{
 
 OnTouch:
-	if(mao_request > 1) warp "que_job01.gat",61,50;
+	if (mao_request > 1) warp "que_job01.gat",61,50;
 	else
 	{
 		mes "[Litheron]";
@@ -3448,7 +3448,7 @@ OnTouch:
 		mes "Hey, master! Do you";
 		mes "know this guy?";
 		next;
-		if(prt_curse == 24)
+		if (prt_curse == 24)
 		{
 			mes "[" + strcharinfo(0) + "]";
 			mes "I, um, I'm looking";
@@ -3576,7 +3576,7 @@ que_job01.gat,81,79,5	script	Idle Knight	733,{
 
 que_job01.gat,82,95,3	script	Bar Master	46,{
 
-	if(checkweight(12112,1) != 1)
+	if (checkweight(12112,1) != 1)
 	{
 		mes "^3355FFWait a second!";
 		mes "Right now, you're carrying";
@@ -3586,7 +3586,7 @@ que_job01.gat,82,95,3	script	Bar Master	46,{
 		mes "to store some of your items.^000000";
 		close;
 	}
-	if(BaseJob == Job_Assassin)
+	if (BaseJob == Job_Assassin)
 	{
 		mes "[Master]";
 		mes "Welcome to my";
@@ -3629,7 +3629,7 @@ que_job01.gat,82,95,3	script	Bar Master	46,{
 					set @maodrink,1;
 					
 				case 2:
-					if(checkweight(12112,1) != 1)
+					if (checkweight(12112,1) != 1)
 					{
 						mes "[Master]";
 						mes "Hey, why did you bring";
@@ -3640,7 +3640,7 @@ que_job01.gat,82,95,3	script	Bar Master	46,{
 						mes "Clear out your inventory!";
 						close;
 					}
-					if(BaseJob == Job_Assassin)
+					if (BaseJob == Job_Assassin)
 					{
 						if (Zeny < 800)
 						{
@@ -3661,7 +3661,7 @@ que_job01.gat,82,95,3	script	Bar Master	46,{
 						mes "my friend, and drink it as";
 						mes "deeply as you would life.";
 						set Zeny,Zeny - 800;
-						if(@maodrink) getitem 12112,1;
+						if (@maodrink) getitem 12112,1;
 						else getitem 12113,1;
 						close;
 					}
@@ -3683,7 +3683,7 @@ que_job01.gat,82,95,3	script	Bar Master	46,{
 					mes "already lucky to be here.";
 					mes "Hey, enjoy your drink~";
 					set Zeny,Zeny - 1000;
-					if(@maodrink) getitem 12112,1;
+					if (@maodrink) getitem 12112,1;
 					else getitem 12113,1;
 					close;
 				
@@ -3699,9 +3699,9 @@ que_job01.gat,82,95,3	script	Bar Master	46,{
 			}
 		
 		case 2:
-			if(mao_request == 1)
+			if (mao_request == 1)
 			{
-				if(BaseJob == Job_Assassin)
+				if (BaseJob == Job_Assassin)
 				{
 					mes "[Master]";
 					mes "Ah, you must be here on";
@@ -3763,7 +3763,7 @@ que_job01.gat,82,95,3	script	Bar Master	46,{
 			}
 			else if(mao_request == 2)
 			{
-				if(BaseJob == Job_Assassin)
+				if (BaseJob == Job_Assassin)
 				{
 					mes "[Master]";
 					mes "Just go through the";
@@ -3781,7 +3781,7 @@ que_job01.gat,82,95,3	script	Bar Master	46,{
 			}
 			else if(mao_request > 2)
 			{
-				if(BaseJob == Job_Assassin)
+				if (BaseJob == Job_Assassin)
 				{
 					mes "[Master]";
 					mes "How's your asssignment";
@@ -3801,7 +3801,7 @@ que_job01.gat,82,95,3	script	Bar Master	46,{
 			}
 			else if(mao_request == 30 || mao_request == 128)
 			{
-				if(BaseJob == Job_Assassin)
+				if (BaseJob == Job_Assassin)
 				{
 					mes "[Master]";
 					mes "Hey, thanks for all";
@@ -3819,7 +3819,7 @@ que_job01.gat,82,95,3	script	Bar Master	46,{
 			}
 			else
 			{
-				if(BaseJob == Job_Assassin)
+				if (BaseJob == Job_Assassin)
 				{
 					mes "[Master]";
 					mes "So you haven't been";
@@ -3856,7 +3856,7 @@ que_job01.gat,82,95,3	script	Bar Master	46,{
 
 que_job01.gat,49,49,5	script	Tao	877,{
 
-	if(mao_request == 28 || mao_request == 29 || mao_request == 126 || mao_request == 127)
+	if (mao_request == 28 || mao_request == 29 || mao_request == 126 || mao_request == 127)
 	{
 		mes "[Tao]";
 		mes "Meow, what the hell";
@@ -3916,13 +3916,13 @@ OnInit:
 	end;
 	
 OnTouch:
-	if(mao_request == 2 || mao_request == 24 || mao_request == 28 || mao_request == 29 || mao_request == 123 || mao_request == 126 || mao_request == 127 || prt_curse == 24)
+	if (mao_request == 2 || mao_request == 24 || mao_request == 28 || mao_request == 29 || mao_request == 123 || mao_request == 126 || mao_request == 127 || prt_curse == 24)
 	{
-		if(!$maobar_room)
+		if (!$maobar_room)
 		{
 			set $maobar_room,1;
 			donpcevent "#maobartimer1::OnEnter";
-			if(mao_request == 2 || mao_request == 28 || mao_request == 29 || mao_request == 126 || mao_request == 127)
+			if (mao_request == 2 || mao_request == 28 || mao_request == 29 || mao_request == 126 || mao_request == 127)
 			{
 				donpcevent "Valdes#1::OnEnter";
 				donpcevent "Lin#1::OnEnter";
@@ -3947,7 +3947,7 @@ OnTouch:
 			mes "only have ^4D4DFF4 minutes^000000 to remain";
 			mes "there. Don't waste time, meow!";
 			close2;
-			if(mao_request == 24 || mao_request == 123) warp "que_job01.gat",15,8;
+			if (mao_request == 24 || mao_request == 123) warp "que_job01.gat",15,8;
 			else warp "que_job01.gat",11,7;
 			end;
 		}
@@ -4038,9 +4038,9 @@ OnInit:
 	end;
 	
 OnTouch:
-	if(mao_request == 25 || (mao_request > 102 && mao_request < 123))
+	if (mao_request == 25 || (mao_request > 102 && mao_request < 123))
 	{
-		if(mao_request == 121)
+		if (mao_request == 121)
 		{
 			mes "[" + strcharinfo(0) + "]";
 			mes "I can't go back to";
@@ -4051,11 +4051,11 @@ OnTouch:
 			warp "que_job01.gat",52,50;
 			end;
 		}
-		if(!$maobar_room2)
+		if (!$maobar_room2)
 		{
 			set $maobar_room2,1;
 			donpcevent "#maobartimer2::OnEnter";
-			if(mao_request == 25)
+			if (mao_request == 25)
 			{
 				donpcevent "Valdes#3::OnEnter";
 				donpcevent "Kidd#3::OnEnter";
@@ -4071,12 +4071,12 @@ OnTouch:
 			mes "only have ^4D4DFF4 minutes^000000 to remain";
 			mes "there. Don't waste time, meow!";
 			close2;
-			if(mao_request > 102 && mao_request < 122) warp "que_job01.gat",80,21;
+			if (mao_request > 102 && mao_request < 122) warp "que_job01.gat",80,21;
 			else warp "que_job01.gat",144,57;
 			end;
 		}
 		mes "^3355FFThe door is locked.^000000";
-		if(mao_request > 102 && mao_request < 122)
+		if (mao_request > 102 && mao_request < 122)
 		{
 			next;
 			mes "[" + strcharinfo(0) + "]";
@@ -4205,7 +4205,7 @@ OnTouch:
 
 que_job01.gat,16,21,5	script	Valdes#1	55,{
 
-	if(checkweight(7417,1) != 1)
+	if (checkweight(7417,1) != 1)
 	{
 		mes "^3355FFWait a second!";
 		mes "Right now, you're carrying";
@@ -4215,9 +4215,9 @@ que_job01.gat,16,21,5	script	Valdes#1	55,{
 		mes "to store some of your items.^000000";
 		close;
 	}
-	if(mao_request == 2)
+	if (mao_request == 2)
 	{
-		if(BaseJob == Job_Assassin)
+		if (BaseJob == Job_Assassin)
 		{
 			mes "[Valdes]";
 			mes "Welcome. Ah, this must be";
@@ -4347,7 +4347,7 @@ que_job01.gat,16,21,5	script	Valdes#1	55,{
 	}
 	else if(mao_request == 3 || mao_request == 103)
 	{
-		if(BaseJob == Job_Assassin)
+		if (BaseJob == Job_Assassin)
 		{
 			mes "[Valdes]";
 			mes "We're running out of";
@@ -4449,7 +4449,7 @@ que_job01.gat,16,21,5	script	Valdes#1	55,{
 		mes "She seems upset....";
 		next;
 		mes "[Valdes]";
-		if(BaseJob == Job_Assassin)
+		if (BaseJob == Job_Assassin)
 		{
 			mes "Well, as a fellow Assassin,";
 			mes "I'm sure you can understand";
@@ -4468,12 +4468,12 @@ que_job01.gat,16,21,5	script	Valdes#1	55,{
 		delitem 7416,countitem(7416);
 		delitem 7417,countitem(7417);
 		set mao_request,30;
-		if(mao_request == 28) getexp 1050000,0;
+		if (mao_request == 28) getexp 1050000,0;
 		else if(mao_request == 29) getexp 1280000,0;
 		getitem 12107,1;
 		next;
 		mes "[Valdes]";
-		if(BaseJob == Job_Assassin)
+		if (BaseJob == Job_Assassin)
 		{
 			mes "Regardless of our";
 			mes "original objective,";
@@ -4516,7 +4516,7 @@ que_job01.gat,16,21,5	script	Valdes#1	55,{
 	}
 	else if(mao_request == 126 || mao_request == 127)
 	{
-		if(BaseJob == Job_Assassin)
+		if (BaseJob == Job_Assassin)
 		{
 			mes "[Valdes]";
 			mes "How are you feeling?";
@@ -4588,7 +4588,7 @@ que_job01.gat,16,21,5	script	Valdes#1	55,{
 		mes "the task of finding Moore.";
 		next;
 		mes "[Valdes]";
-		if(BaseJob == Job_Assassin)
+		if (BaseJob == Job_Assassin)
 		{
 			mes "Ah, and before I forget,";
 			mes "let me give you your fee";
@@ -4609,7 +4609,7 @@ que_job01.gat,16,21,5	script	Valdes#1	55,{
 		delitem 7416,countitem(7416);
 		delitem 7418,countitem(7418);
 		set mao_request,128;
-		if(mao_request == 126) getexp 1050000,0;
+		if (mao_request == 126) getexp 1050000,0;
 		else if(mao_request == 127) getexp 1280000,0;
 		getitem 12106,1;
 		next;
@@ -4628,7 +4628,7 @@ que_job01.gat,16,21,5	script	Valdes#1	55,{
 		cutin "mocseal_rin01.bmp",255;
 		donpcevent "Lin#1::OnInit";
 		mes "[Valdes]";
-		if(BaseJob == Job_Assassin)
+		if (BaseJob == Job_Assassin)
 		{
 			mes "Alright, then.";
 			mes "You're dismissed.";
@@ -4661,7 +4661,7 @@ que_job01.gat,16,21,5	script	Valdes#1	55,{
 	}
 	else if(mao_request == 30 || mao_request == 128)
 	{
-		if(BaseJob == Job_Assassin)
+		if (BaseJob == Job_Assassin)
 		{
 			mes "[Valdes]";
 			mes "You may go ahead";
@@ -4829,7 +4829,7 @@ que_job01.gat,84,17,3	script	Lin#2-1	885,{
 		mes "[Lin]";
 		mes "Ah, this is "+ strcharinfo(0) +",";
 		mes "my partner for this assignment.";
-		if(Sex == 1) mes "Don't worry, you can trust him.";
+		if (Sex == 1) mes "Don't worry, you can trust him.";
 		else mes "Don't worry, you can trust her.";
 		next;
 		mes "[R.]";
@@ -5126,7 +5126,7 @@ que_job01.gat,84,17,3	script	Lin#2-1	885,{
 		mes "[Lin]";
 		mes "I'm sending "+ strcharinfo(0) +"";
 		mes "on a snack errand and it won't";
-		if(Sex == 1) mes "take too long. Did you want him";
+		if (Sex == 1) mes "take too long. Did you want him";
 		else mes "take too long. Did you want her";
 		mes "to bring you back anything?";
 		next;
@@ -5344,7 +5344,7 @@ que_job01.gat,84,17,3	script	Lin#2-1	885,{
 
 que_job01.gat,79,15,1	script	R	880,{
 
-	if(mao_request == 103)
+	if (mao_request == 103)
 	{
 		cutin "mocseal_dan01.bmp",0;
 		mes "[R.]";
@@ -5374,7 +5374,7 @@ que_job01.gat,79,15,1	script	R	880,{
 		mes "[Lin]";
 		mes "Ah, this is "+ strcharinfo(0) +",";
 		mes "my partner for this assignment.";
-		if(Sex == 1) mes "Don't worry, you can trust him.";
+		if (Sex == 1) mes "Don't worry, you can trust him.";
 		else mes "Don't worry, you can trust her.";
 		next;
 		mes "[R.]";
@@ -6489,7 +6489,7 @@ que_job01.gat,91,83,3	script	Kidd#hall	884,{
 		switch( select( "Yes, I did.","No, not yet..." ) )
 		{
 			case 1:
-				if(thana_quest > 1)
+				if (thana_quest > 1)
 				{
 					mes "[" + strcharinfo(0) + "]";
 					mes "Well, I found some old log";
@@ -6745,7 +6745,7 @@ que_job01.gat,91,83,3	script	Kidd#hall	884,{
 
 que_job01.gat,89,85,5	script	Dandelion Member	880,{
 
-	if(checkweight(12112,1) != 1)
+	if (checkweight(12112,1) != 1)
 	{
 		mes "^3355FFWait a second!";
 		mes "Right now, you're carrying";
@@ -7523,7 +7523,7 @@ yuno_in04.gat,175,129,0	script	Workbook#mao	111,{
 
 	if (mao_request == 7)
 	{
-		if(!mao_book)
+		if (!mao_book)
 		{
 			set mao_book,mao_book +1;
 			donpcevent "#maobooktimer::OnEnter";
@@ -7893,7 +7893,7 @@ moc_fild10.gat,281,148,1	script	Upturned Spot#water	111,{
 		mes "^3355FFYou find a gleaming";
 		mes "crest that looks like a";
 		mes "splashing wave of water.^000000";
-		if(countitem(996))
+		if (countitem(996))
 		{
 			mes "^3355FFYou take out a Rough Wind";
 			mes "to counter the crest's power.^000000";
@@ -8025,7 +8025,7 @@ moc_fild19.gat,21,33,1	script	Unturned Spot#wind	111,{
 	}
 	else if(mao_request == 12)
 	{
-		if(countitem(997))
+		if (countitem(997))
 		{
 			cutin "mocseal_wind01.bmp",2;
 			mes "^3355FFYou find a shining crest";
@@ -8315,7 +8315,7 @@ moc_fild07.gat,192,166,1	script	Unturned Spot#fire	111,{
 
 	if (mao_request == 15)
 	{
-		if(countitem(995))
+		if (countitem(995))
 		{
 			mes "^3355FFYou find a gleaming";
 			mes "crest that symbolizes Fire.^000000";
@@ -8874,7 +8874,7 @@ OnEnter:
 que_job01.gat,144,57,1	script	#Rabsent	139,1,1,{
 
 OnTouch:
-	if(mao_request == 25)
+	if (mao_request == 25)
 	{
 		mes "[Kidd]";
 		mes "Raiyan Moore...!";
@@ -8968,7 +8968,7 @@ moc_castle.gat,40,20,3	script	Man	849,{
 		mes "For the s-sacrifice!";
 		mes "^333333*Cough Cough!*^000000";
 		close2;
-		if(!$mao_gate)
+		if (!$mao_gate)
 		{
 			warp "que_job02.gat",14,182;
 			set $mao_gate1,1;
@@ -8986,7 +8986,7 @@ moc_castle.gat,40,20,3	script	Man	849,{
 		mes "For the s-sacrifice!";
 		mes "^333333*Cough Cough!*^000000";
 		close2;
-		if(!$mao_gate2)
+		if (!$mao_gate2)
 		{
 			warp "que_job03.gat",14,182;
 			set $mao_gate2,1;
@@ -9528,7 +9528,7 @@ OnMyMobDead:
 
 que_job02.gat,66,85,5	script	Dandelion Member#1_bt	880,{
 
-	if(mao_request == 26 || mao_request == 27)
+	if (mao_request == 26 || mao_request == 27)
 	{
 		mes "[Dandelion Member]";
 		mes "Hey... Are";
@@ -9833,7 +9833,7 @@ OnEnter:
 	
 OnMyMobDead:
 	set $@maogate1mobs,$@maogate1mobs -1;
-	if($@maogate1mobs < 1) donpcevent "#maogate1_end2::OnEnter";
+	if ($@maogate1mobs < 1) donpcevent "#maogate1_end2::OnEnter";
 	end;
 }
 
@@ -10543,7 +10543,7 @@ OnMyMobDead:
 
 que_job03.gat,66,85,5	script	Dandelion Member#2_bt	880,{
 
-	if(mao_request == 124 || mao_request == 125)
+	if (mao_request == 124 || mao_request == 125)
 	{
 		mes "[Dandelion Member]";
 		mes "Hey, are you alright?";
@@ -10859,7 +10859,7 @@ OnEnter:
 	
 OnMyMobDead:
 	set $@maogate2mobs,$@maogate2mobs -1;
-	if($@maogate2mobs < 1) donpcevent "#maogate2_end2::OnEnter";
+	if ($@maogate2mobs < 1) donpcevent "#maogate2_end2::OnEnter";
 	end;
 }
 
@@ -11113,7 +11113,7 @@ OnTouch:
 		donpcevent "Member#mao2::OnStop";
 		donpcevent "Member#mao3::OnStop";
 		donpcevent "Member#mao4::OnStop";
-		if($maoattack > 49)
+		if ($maoattack > 49)
 		{
 			donpcevent "#mao_manager::OnStart";
 			set $maoattack,0;
@@ -11504,7 +11504,7 @@ sec_in02.gat,38,162,0	script	Morroc Invasion Manager	882,{
 	mes "Enter password.";
 	next;
 	input @mao;
-	if(@mao == 1854)
+	if (@mao == 1854)
 	{
 		mes "A total of " + $maoattack + " users completed";
 		mes "the Satan Morroc: Lin Quest.";

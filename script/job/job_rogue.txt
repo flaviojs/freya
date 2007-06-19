@@ -37,8 +37,8 @@ in_rogue.gat,363,123,3	script	Markie	747,{
 	if (Upper == 1)	close;
 
 	mes "[Markie]";
-	if(BaseJob == Job_Thief) goto L_Thief;
-	if(BaseJob == Job_Rogue) goto L_Rogue;
+	if (BaseJob == Job_Thief) goto L_Thief;
+	if (BaseJob == Job_Rogue) goto L_Rogue;
 
 L_JobOther:
 	mes "I don't know how you found this place, but I think you better leave..........";
@@ -49,7 +49,7 @@ L_Rogue:
 	close;
 
 L_Thief:
-	if(JobLevel < 40) goto L_JobLevelLow;
+	if (JobLevel < 40) goto L_JobLevelLow;
 	goto L_Continue;
 
 	L_JobLevelLow:
@@ -58,11 +58,11 @@ L_Thief:
 		close;
 
 L_Continue:
-	if(ROGUE_Q == 1) goto L_ReTest;
-	if(ROGUE_Q == 2) goto L_Test2;
-	if(ROGUE_Q == 3) goto L_Test3;
-	if(ROGUE_Q == 4) goto L_Test4;
-	if(ROGUE_Q == 5) goto L_Change;
+	if (ROGUE_Q == 1) goto L_ReTest;
+	if (ROGUE_Q == 2) goto L_Test2;
+	if (ROGUE_Q == 3) goto L_Test3;
+	if (ROGUE_Q == 4) goto L_Test4;
+	if (ROGUE_Q == 5) goto L_Change;
 	mes "Hmm? What brings you down here? Oh I see now... You want to become a rogue don't you sweetie?";
 	next;
 	mes "[Markie]";
@@ -104,7 +104,7 @@ L_Test1:
 	savepoint "in_rogue.gat",366,114;
 	set @score, 0;
 	set ROGUE_Q, 1;
-	if(rand(2)) goto L_QSet2;
+	if (rand(2)) goto L_QSet2;
 
 		mes "[Markie]";
 		mes "1) What is the added flee rate that a Thief recieves when the ^5533FFImprove Dodge^000000 skill is ^5533FFmastered^000000?";
@@ -303,8 +303,8 @@ L_Test1:
 		next;
 		mes "[Markie]";
 
-		if(@score< 90) goto sL_Failed;
-		if(@score<100) goto sL_Passed;
+		if (@score< 90) goto sL_Failed;
+		if (@score<100) goto sL_Passed;
 
 		sL_Perfect:
 			mes "A perfect score!  I knew you had what it takes to be a Rogue.....";
@@ -356,7 +356,7 @@ L_Change:
 	mes "You have proven that you are ready to become a Rogue!";
 	emotion e_ic;
 	next;
-	if(SkillPoint != 0) goto L_SkillP;
+	if (SkillPoint != 0) goto L_SkillP;
 	mes "[Markie]";
 	mes "Tada! Congratulations on becoming a Rogue.  You showed a lot of effort and deserve a reward for it......";
 	setlook 7,0;
@@ -400,8 +400,8 @@ L_SkillP:
 in_rogue.gat,376,23,3	script	Mr. Smith	57,{
 
 	mes "[Mr. Smith]";
-	if(BaseJob == Job_Thief) goto L_Thief;
-	if(BaseJob == Job_Rogue) goto L_Rogue;
+	if (BaseJob == Job_Thief) goto L_Thief;
+	if (BaseJob == Job_Rogue) goto L_Rogue;
 
 L_OtherJob:
 	mes "Go away! I'm busy.....";
@@ -410,9 +410,9 @@ L_Rogue:
 	mes "Looking good there my Rogue friend";
 	close;
 L_Thief:
-	if(ROGUE_Q == 2) goto L_Test2;
-	if(ROGUE_Q == 3) goto L_Test3;
-	if(ROGUE_Q > 3) goto L_Done;
+	if (ROGUE_Q == 2) goto L_Test2;
+	if (ROGUE_Q == 3) goto L_Test3;
+	if (ROGUE_Q > 3) goto L_Done;
 	mes "Ok ok.... one... two.... three.... Where do you do you business... is it.... Morroc... Geffen.... Comodo??.......";
 	next;
 	mes "[Mr. Smith]";
@@ -427,7 +427,7 @@ L_Thief:
 	close;
 
 L_Test2:
-	if(ROGUE_Q2 > 0) goto L_Check2;
+	if (ROGUE_Q2 > 0) goto L_Check2;
 	mes "So you're here to take the second test.... good.......";
 	next;
 	mes "[Mr. Smith]";
@@ -443,9 +443,9 @@ L_Test2:
 	next;
 	mes "[Mr. Smith]";
 	set ROGUE_Q2, rand(1,3);
-	if(ROGUE_Q2 == 1) callsub sF2_R1;
-	if(ROGUE_Q2 == 2) callsub sF2_R2;
-	if(ROGUE_Q2 == 3) callsub sF2_R3;
+	if (ROGUE_Q2 == 1) callsub sF2_R1;
+	if (ROGUE_Q2 == 2) callsub sF2_R2;
+	if (ROGUE_Q2 == 3) callsub sF2_R3;
 	next;
 	mes "[Mr. Smith]";
 	mes "Once you have ALL of these items and 10,000 zeny, come back and see me okay? Good.";
@@ -472,12 +472,12 @@ L_Test2:
 
 L_Check2:
 	set @count, 0;
-	if(ROGUE_Q2 == 2) goto L_2;
-	if(ROGUE_Q2 == 3) goto L_3;
+	if (ROGUE_Q2 == 2) goto L_2;
+	if (ROGUE_Q2 == 3) goto L_3;
 
 	L_1:
 		set @R, 1;
-		if(countitem(510)<6 || countitem(932)<10 || countitem(957)<10 || countitem(958)<10 || Zeny < 10000) goto L_NotEnuf;
+		if (countitem(510)<6 || countitem(932)<10 || countitem(957)<10 || countitem(958)<10 || Zeny < 10000) goto L_NotEnuf;
 		delitem 510,6;
 		delitem 932,10;
 		delitem 957,10;
@@ -486,7 +486,7 @@ L_Check2:
 
 	L_2:
 		set @R, 2;
-		if(countitem(511)<10 || countitem(910)<10 || countitem(926)<10 || countitem(964)<10 || Zeny < 10000) goto L_NotEnuf;
+		if (countitem(511)<10 || countitem(910)<10 || countitem(926)<10 || countitem(964)<10 || Zeny < 10000) goto L_NotEnuf;
 		delitem 511,10;
 		delitem 910,10;
 		delitem 926,10;
@@ -495,7 +495,7 @@ L_Check2:
 
 	L_3:
 		set @R, 3;
-		if(countitem(508)<10 || countitem(948)<10 || countitem(935)<10 || countitem(940)<10 || Zeny < 10000) goto L_NotEnuf;
+		if (countitem(508)<10 || countitem(948)<10 || countitem(935)<10 || countitem(940)<10 || Zeny < 10000) goto L_NotEnuf;
 		delitem 508,10;
 		delitem 948,10;
 		delitem 935,10;
@@ -517,9 +517,9 @@ L_Check2:
 		next;
 		mes "[Mr. Smith]";
 		mes "Write this down! You need ^5533FF10,000^000000 zeny and:";
-		if(ROGUE_Q2 == 1) callsub sF2_R1;
-		if(ROGUE_Q2 == 2) callsub sF2_R2;
-		if(ROGUE_Q2 == 3) callsub sF2_R3;
+		if (ROGUE_Q2 == 1) callsub sF2_R1;
+		if (ROGUE_Q2 == 2) callsub sF2_R2;
+		if (ROGUE_Q2 == 3) callsub sF2_R3;
 		next;
 		mes "[Mr. Smith]";
 		mes "Got it? DON'T come back until you have everything.........";
@@ -527,7 +527,7 @@ L_Check2:
 		close;
 
 L_Test3:
-	if(ROGUE_Q2 > 0) goto L_Check3;
+	if (ROGUE_Q2 > 0) goto L_Check3;
 	mes "Let me see..... Who should I have you go find........ hmm.........";
 	emotion e_hmm;
 	next;
@@ -537,9 +537,9 @@ L_Test3:
 	next;
 	mes "[Mr. Smith]";
 	set ROGUE_Q2, rand(1,3);
-	if(ROGUE_Q2 == 1) callsub sF3_R1;
-	if(ROGUE_Q2 == 2) callsub sF3_R2;
-	if(ROGUE_Q2 == 3) callsub sF3_R3;
+	if (ROGUE_Q2 == 1) callsub sF3_R1;
+	if (ROGUE_Q2 == 2) callsub sF3_R2;
+	if (ROGUE_Q2 == 3) callsub sF3_R3;
 	next;
 	mes "[Mr. Smith]";
 	mes "Good luck to you.  Try to finish this test as soon as possible.  Getting things done quickly is one of a Rogue's traits.";
@@ -613,9 +613,9 @@ L_Check3:
 	emotion e_an;
 	next;
 	mes "[Mr. Smith]";
-	if(ROGUE_Q2 == 1) callsub sF3_R1;
-	if(ROGUE_Q2 == 2) callsub sF3_R2;
-	if(ROGUE_Q2 == 3) callsub sF3_R3;
+	if (ROGUE_Q2 == 1) callsub sF3_R1;
+	if (ROGUE_Q2 == 2) callsub sF3_R2;
+	if (ROGUE_Q2 == 3) callsub sF3_R3;
 	close;
 
 L_Done:
@@ -662,8 +662,8 @@ function	script	F_RogueTest3	{
 	mes "[???]";
 	mes "Who's there?!!!";
 	mes "Who dares to trespass on my territory?";
-	if(god_megin_2 > 0 && getarg(1) == "Aragham") goto L_Pass;
-	if(BaseJob != Job_Thief || ROGUE_Q<3 || ROGUE_Q2==0) close;
+	if (god_megin_2 > 0 && getarg(1) == "Aragham") goto L_Pass;
+	if (BaseJob != Job_Thief || ROGUE_Q<3 || ROGUE_Q2==0) close;
 L_Pass:
 	deletearray @choice$[1], 4;
 	next;
@@ -734,10 +734,10 @@ L_Pass:
 
 L_Check:
 	callsub sF_Password;
-	if(god_megin_2 > 0) goto L_Enter;
-	if(ROGUE_Q2 != getarg(0)) goto L_Wrong;
+	if (god_megin_2 > 0) goto L_Enter;
+	if (ROGUE_Q2 != getarg(0)) goto L_Wrong;
 L_Enter:
-	if((@choice$[1] != getarg(1)) || (@choice$[2] != getarg(2)) || (@choice$[3] != getarg(3)) || (@choice$[4] != getarg(4))) goto L_Wrong;
+	if ((@choice$[1] != getarg(1)) || (@choice$[2] != getarg(2)) || (@choice$[3] != getarg(3)) || (@choice$[4] != getarg(4))) goto L_Wrong;
 	mes "~ creeek ~";
 	mes "You hear the door begining to open........";
 	next;
@@ -787,8 +787,8 @@ in_rogue.gat,183,105,4	script	Antonio Junior#02	88,{
 // Function for Guildsman
 function	script	F_RogueTest4	{
 
-	if(BaseJob != Job_Thief || ROGUE_Q2 != getarg(0)) goto L_NoThief;
-	if(ROGUE_Q == 4) goto L_Restart;
+	if (BaseJob != Job_Thief || ROGUE_Q2 != getarg(0)) goto L_NoThief;
+	if (ROGUE_Q == 4) goto L_Restart;
 	mes "[" + getarg(1) + "]";
 	mes "Hello there... You must be from the Rogue guild.  My name is " + getarg(1) + "...... I am the Rogue of the Desert..............";
 	next;

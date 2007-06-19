@@ -259,7 +259,7 @@ alberta.gat,135,79,3	script	Tempestra	71,{
 	next;
 	menu "Here you go, my treat.",-, "Then go get one, sheesh....",M_1;
 
-		if(countitem(503) < 1) goto L_NoPot;
+		if (countitem(503) < 1) goto L_NoPot;
 		delitem 503, 1;
 		set MISC_QUEST,MISC_QUEST | 2;
 		mes "[Tempestra]";
@@ -383,7 +383,7 @@ alberta.gat,135,79,3	script	Tempestra	71,{
 			next;
 			menu "Alright.",-, "Not right now thanks.",ssM_1b;
 
-				if(countitem(7086)<1 || countitem(969)<10 || countitem(999)<40 || countitem(1003)<50 || countitem(984)<2) goto ssL_NotEnuf;
+				if (countitem(7086)<1 || countitem(969)<10 || countitem(999)<40 || countitem(1003)<50 || countitem(984)<2) goto ssL_NotEnuf;
 				delitem 7086, 1;
 				delitem 969, 10;
 				delitem 999, 40;
@@ -446,7 +446,7 @@ aldeba_in.gat,152,166,4	script	Trader#01	86,{
 	menu "Doctor Band",-, "Feather Bonnet",M_1, "Opera Masque",M_2, "Sakkat",M_3;
 		
 		mes "[Trader]";
-		if(countitem(2275) == 0 || countitem(998) < 50 || countitem(733) == 0 || Zeny < 3500) goto L_CantMake;
+		if (countitem(2275) == 0 || countitem(998) < 50 || countitem(733) == 0 || Zeny < 3500) goto L_CantMake;
 		delitem 2275,1;//Items: Red Bandana,
 		delitem 998,50;//Items: Iron,
 		delitem 733,1;//Items: Cracked deamond
@@ -461,7 +461,7 @@ aldeba_in.gat,152,166,4	script	Trader#01	86,{
 		close;
 	M_1:
 		mes "[Trader]";
-		if(countitem(2247) == 0 || countitem(916) < 300 || Zeny < 500) goto L_CantMake;//Items: Romantic Gent, Feather of Birds,
+		if (countitem(2247) == 0 || countitem(916) < 300 || Zeny < 500) goto L_CantMake;//Items: Romantic Gent, Feather of Birds,
 		delitem 2247,1;//Items: Romantic Gent,
 		delitem 916,300;//Items: Feather of Birds,
 		set Zeny,Zeny - 500;
@@ -471,7 +471,7 @@ aldeba_in.gat,152,166,4	script	Trader#01	86,{
 		close;
 	M_2:
 		mes "[Trader]";
-		if(countitem(998) < 20 || countitem(707) == 0 || Zeny < 5000) goto L_CantMake;//Items: Iron, Singing Plant,
+		if (countitem(998) < 20 || countitem(707) == 0 || Zeny < 5000) goto L_CantMake;//Items: Iron, Singing Plant,
 		delitem 998,20;//Items: Iron,
 		delitem 707,1;//Items: Singing Plant,
 		set Zeny,Zeny - 5000;
@@ -483,7 +483,7 @@ aldeba_in.gat,152,166,4	script	Trader#01	86,{
 		close;
 	M_3:
 		mes "[Trader]";
-		if(countitem(1019) < 120 || Zeny < 10000) goto L_CantMake;//Items: Trunk,
+		if (countitem(1019) < 120 || Zeny < 10000) goto L_CantMake;//Items: Trunk,
 		delitem 1019,120;//Items: Trunk,
 		set Zeny,Zeny - 10000;
 		mes "If you have a chance to visit the Village of Payon, please go meet the Sakkat Craftsman.";
@@ -533,7 +533,7 @@ alberta_in.gat,122,53,4	script	Cherokee	47,{
 	menu "You got it!",-, "Shut up Dumbo.",M_End;
 
 		mes "[Cherokee]";
-		if(countitem(923) < 20) goto L_NotEnuf;
+		if (countitem(923) < 20) goto L_NotEnuf;
 		delitem 923,20;
 		mes "Whoah~! This is the first time I've ever seen a real ^3355FF'Evil Horn'^000000!!";
 		emotion e_ic;
@@ -747,7 +747,7 @@ morocc_in.gat,76,163,4	script	Alchemist	64,{
 
 	M_Make:
 		mes "[Marius]";
-		if(countitem(2243) < 1 || countitem(999) < 100 || Zeny < 50000) goto sL_NotEnuf;
+		if (countitem(2243) < 1 || countitem(999) < 100 || Zeny < 50000) goto sL_NotEnuf;
 		delitem 2243,1;
 		delitem 999,100;
 		set Zeny, Zeny - 50000;
@@ -759,8 +759,8 @@ morocc_in.gat,76,163,4	script	Alchemist	64,{
 		next;
 		mes "[Marius]";
 		mes "But before you go out and use them I have to tell you......";
-		if(Sex == Female) mes "DON'T USE THEM TO BE A PEEPING TOM!!!";
-		if(Sex == Male) mes "Becarefull where you look..... you might see someting you didn't want to........";
+		if (Sex == Female) mes "DON'T USE THEM TO BE A PEEPING TOM!!!";
+		if (Sex == Male) mes "Becarefull where you look..... you might see someting you didn't want to........";
 		close;
 
 		sL_NotEnuf:
@@ -793,7 +793,7 @@ alberta_in.gat,28,145,4	script	Grampa	120,{
 	mes "Even so I STILL feel young at heart..... unfortunately my body is very old and is in poor condtion......";
 	mes "Cough !! Cough .. !!";
 	next;
-	if(countitem(1030) >= 10) menu "Talk.",M_Talk, "Show him Tiger's Footskin.",M_Show, "Cancel.",M_End;
+	if (countitem(1030) >= 10) menu "Talk.",M_Talk, "Show him Tiger's Footskin.",M_Show, "Cancel.",M_End;
 	menu "Talk",M_Talk, "Cancel",M_End;
 	
 	M_Talk:
@@ -850,7 +850,7 @@ alberta_in.gat,28,145,4	script	Grampa	120,{
 		menu "-Give him the Tiger's Footskin.",-, "Walk away.", sM_End;
 
 			mes "[Grampa]";
-			if(countitem(1030) < 10) goto L_NoItems;
+			if (countitem(1030) < 10) goto L_NoItems;
 			delitem 1030,10;
 			getitem 5016,1;
 			mes "T-Thank YOU!! Thank you SO VERY MUCH!!";
@@ -926,7 +926,7 @@ alberta.gat,23,232,1	script	Kafra Corp. Rep.#1::KCRep	83,{
 		close;
 
 	L_Check:
-		if(countitem(949)<100 || countitem(706)<1 || countitem(722)<1 || countitem(2213)<1) goto sL_NoItems;
+		if (countitem(949)<100 || countitem(706)<1 || countitem(722)<1 || countitem(2213)<1) goto sL_NoItems;
 		delitem 949,100;
 		delitem 706,1;
 		delitem 722,1;
@@ -1095,32 +1095,32 @@ M_Menu:
 
 		set @BAND$, "Cross Hat Hairband";
 		set @ITEMS$, " ^5555FF1 Rosary^000000 and ^5555FF500 Destroyed Armors^000000.";
-		if(countitem(2608)>=1 && countitem(7069)>=500) set @GETBAND, 1;
+		if (countitem(2608)>=1 && countitem(7069)>=500) set @GETBAND, 1;
 		goto sL_0;
 
 	M_Bulb:
 		set @BAND$, "Bulb Hairband";
 		set @ITEMS$, "^5555FF1 Slotted Circlet^000000 and ^5555FF20 Glass Beads^000000.";
-		if(countitem(2233)>=1 && countitem(746)>=20) set @GETBAND, 2;
+		if (countitem(2233)>=1 && countitem(746)>=20) set @GETBAND, 2;
 		goto sL_0;
 
 	M_Striped:
 		set @BAND$, "Striped Hairband";
 		set @ITEMS$, "^5555FF1500 Worn-out Prison Uniforms^000000.";
-		if(countitem(1099)>=1500) set @GETBAND, 3;
+		if (countitem(1099)>=1500) set @GETBAND, 3;
 		goto sL_0;
 
 	M_Blue:
 		set @BAND$, "Blue Hairband";
 		set @ITEMS$, "^5555FF1 Bandana^000000, ^5555FF1 Cobaltblue Dyestuffs^000000, and ^5555FF300 Anolian Skins^000000.";
-		if(countitem(2211)>=1 && countitem(978)>=1 && countitem(7003)>=300) set @GETBAND, 4;
+		if (countitem(2211)>=1 && countitem(978)>=1 && countitem(7003)>=300) set @GETBAND, 4;
 
 		sL_0:
 			mes "[Hair Ornament Girl]";
 			mes "So you're interested in the "+@BAND$+" huh? Here are the items you'll need for the "+@BAND$+":";
 			mes @ITEMS$;
 			next;
-			if(@GETBAND > 0) goto sL_GetBand;
+			if (@GETBAND > 0) goto sL_GetBand;
 
 			mes "[Hair Ornament Girl]";
 			mes "Bring me all of these items and I will be able to make you a "+@BAND$+".";
@@ -1132,30 +1132,30 @@ M_Menu:
 			next;
 			menu "Yes, I would.",-, "No thank you.",M_End;
 
-				if(@GETBAND == 1) goto ssL_Cross;
-				if(@GETBAND == 2) goto ssL_Bulb;
-				if(@GETBAND == 3) goto ssL_Striped;
-				if(@GETBAND == 4) goto ssL_Blue;
+				if (@GETBAND == 1) goto ssL_Cross;
+				if (@GETBAND == 2) goto ssL_Bulb;
+				if (@GETBAND == 3) goto ssL_Striped;
+				if (@GETBAND == 4) goto ssL_Blue;
 
 				ssL_Cross:
-					if(countitem(2608)<1 || countitem(7069)<500) goto L_Cheater;
+					if (countitem(2608)<1 || countitem(7069)<500) goto L_Cheater;
 					delitem 2608,1;
 					delitem 7069,500;
 					getitem  5036,1;
 					goto ssL_End;
 				ssL_Bulb:
-					if(countitem(2233)<1 || countitem(746)<20) goto L_Cheater;
+					if (countitem(2233)<1 || countitem(746)<20) goto L_Cheater;
 					delitem 2233,1;
 					delitem 746,20;
 					getitem 5034,1;
 					goto ssL_End;
 				ssL_Striped:
-					if(countitem(1099)<1500) goto L_Cheater;
+					if (countitem(1099)<1500) goto L_Cheater;
 					delitem 1099,1500;
 					getitem 5049,1;
 					goto ssL_End;
 				ssL_Blue:
-					if(countitem(2211)<1 || countitem(978)<1 || countitem(7003)<300) goto L_Cheater;
+					if (countitem(2211)<1 || countitem(978)<1 || countitem(7003)<300) goto L_Cheater;
 					delitem 2211,1;
 					delitem 978,1;
 					delitem 7003,300;
@@ -1296,7 +1296,7 @@ M_Menu:
 	M_1:
 		menu "-Mine Helmet",-, "-Parcel Hat",sM_MakePar, "-Money Loser's Grief",sM_MakeMon, "-Phantom of the Opera Mask",sM_MakePhan;
 
-			if(countitem(5009)<1 || countitem(5028)<1 || countitem(747)<1 || countitem(999)<25) goto ssL_NoItems;
+			if (countitem(5009)<1 || countitem(5028)<1 || countitem(747)<1 || countitem(999)<25) goto ssL_NoItems;
 			delitem 5009, 1;
 			delitem 5028, 1;
 			delitem 747, 1;
@@ -1306,7 +1306,7 @@ M_Menu:
 			getitem 5031,1;
 			close;
 		sM_MakePar:
-			if(countitem(1059)<150 || countitem(907)<100 || countitem(978)<1) goto ssL_NoItems;
+			if (countitem(1059)<150 || countitem(907)<100 || countitem(978)<1) goto ssL_NoItems;
 			delitem 1059, 150;
 			delitem 907, 100;
 			delitem 978, 1;
@@ -1315,7 +1315,7 @@ M_Menu:
 			getitem 5023,1;
 			close;
 		sM_MakeMon:
-			if(countitem(2233)<1 || countitem(969)<1 || countitem(999)<20 || countitem(949)<80 || countitem(938)<800) goto ssL_NoItems;
+			if (countitem(2233)<1 || countitem(969)<1 || countitem(999)<20 || countitem(949)<80 || countitem(938)<800) goto ssL_NoItems;
 			delitem 2233, 1;
 			delitem 969, 1;
 			delitem 999, 20;
@@ -1326,7 +1326,7 @@ M_Menu:
 			getitem 5021,1;
 			close;
 		sM_MakePhan:
-			if(countitem(2281)<1 || countitem(1048)<50) goto ssL_NoItems; 
+			if (countitem(2281)<1 || countitem(1048)<50) goto ssL_NoItems; 
 			delitem 2281,1;
 			delitem 1048, 50;
 			mes "[Mari Isac]";
@@ -1457,7 +1457,7 @@ payon_in01.gat,18,10,4	script	Mystic Lady	75,{
 		close;
 	
 	M_Muffs:
-		if(countitem(724)<1 || countitem(5001)<1 || countitem(949)<200 || zeny<5000) goto sL_NotEnuf;
+		if (countitem(724)<1 || countitem(5001)<1 || countitem(949)<200 || zeny<5000) goto sL_NotEnuf;
 		delitem 724,1;
 		delitem 5001,1;
 		delitem 949,200;
@@ -1793,7 +1793,7 @@ geffen_in.gat,30,71,4	script	Eric	83,{
 
 	M_Make:
 		mes "[Eric]";
-		if(countitem(999) < 40 || countitem(984) < 1 || countitem(970)<1 || countitem(1003) < 1) goto L_NotEnuf;
+		if (countitem(999) < 40 || countitem(984) < 1 || countitem(970)<1 || countitem(1003) < 1) goto L_NotEnuf;
 		delitem 999,40;
 		delitem 984,1;
 		delitem 970,1;
@@ -2243,7 +2243,7 @@ xmas.gat,117,295,3	script	Titicupe	704,{
  	next;
 	menu "Here. Now do your magic!",-,"Cancel",M_Cancel;
 	
-	if(countitem(7047)<100) goto L_NoItem;
+	if (countitem(7047)<100) goto L_NoItem;
 	delitem 7047,100;
 	getitem 5040,1;
 	mes "[^469ED2Titicupe^000000]";
@@ -2263,7 +2263,7 @@ cake_hat:
  	next;
 	menu "Here. Now do your magic!",-,"Cancel",M_Cancel;
 	
-	if(countitem(529)<10 || countitem(530)<5 || countitem(539)<20 || countitem(999)<10 || countitem(538)<15) goto L_NoItem;
+	if (countitem(529)<10 || countitem(530)<5 || countitem(539)<20 || countitem(999)<10 || countitem(538)<15) goto L_NoItem;
 	delitem 529,10;
 	delitem 530,5;
 	delitem 539,20;
@@ -2283,7 +2283,7 @@ candle:
  	next;
 	menu "Here. Now do your magic!",-,"Cancel",M_Cancel;
 	
-	if(countitem(2279)<1 || countitem(7035)<50 || countitem(526)<100) goto L_NoItem;
+	if (countitem(2279)<1 || countitem(7035)<50 || countitem(526)<100) goto L_NoItem;
 	delitem 2279,1;
 	delitem 7035,50;
 	delitem 526,100;
@@ -2302,7 +2302,7 @@ chef_hat:
  	next;
 	menu "Here. Now do your magic!",-,"Cancel",M_Cancel;
 	
-	if(countitem(1036)<450 || countitem(949)<330 || countitem(539)<120 || countitem(982)<1) goto L_NoItem;
+	if (countitem(1036)<450 || countitem(949)<330 || countitem(539)<120 || countitem(982)<1) goto L_NoItem;
 	delitem 1036,450;
 	delitem 949,330;
 	delitem 539,120;
@@ -2322,7 +2322,7 @@ raccoon_hat:
  	next;
 	menu "Here. Now do your magic!",-,"Cancel",M_Cancel;
 	
-	if(countitem(1036)<20 || countitem(2213)<1 || countitem(7065)<300 || countitem(7012)<200) goto L_NoItem;
+	if (countitem(1036)<20 || countitem(2213)<1 || countitem(7065)<300 || countitem(7012)<200) goto L_NoItem;
 	delitem 1036,20;
 	delitem 2213,1;
 	delitem 7065,300;
@@ -2341,7 +2341,7 @@ rainbow_egg:
  	next;
 	menu "Here. Now do your magic!",-,"Cancel",M_Cancel;
 	
-	if(countitem(7030)<50 || countitem(978)<1 || countitem(5015)<1) goto L_NoItem;
+	if (countitem(7030)<50 || countitem(978)<1 || countitem(5015)<1) goto L_NoItem;
 	delitem 7030,50;
 	delitem 978,1;
 	delitem 5015,1;
@@ -2359,7 +2359,7 @@ spore_hat:
  	next;
 	menu "Here. Now do your magic!",-,"Cancel",M_Cancel;
 	
-	if(countitem(7068)<300 || countitem(7033)<850 || countitem(1015)<1) goto L_NoItem;
+	if (countitem(7068)<300 || countitem(7033)<850 || countitem(1015)<1) goto L_NoItem;
 	delitem 7068,300;
 	delitem 7033,850;
 	delitem 1015,1;
@@ -2377,7 +2377,7 @@ wonder_nut:
  	next;
 	menu "Here. Now do your magic!",-,"Cancel",M_Cancel;
 	
-	if(countitem(5037)<1 || countitem(7064)<500) goto L_NoItem;
+	if (countitem(5037)<1 || countitem(7064)<500) goto L_NoItem;
 	delitem 5037,1;
 	delitem 7064,500;
 	getitem 5050,1;
@@ -2557,7 +2557,7 @@ alberta.gat,113,53,3	script	Smile Assistance::SmileAT	92,{
 		close;
 	M_1:
 		mes "[Smile Assistant]";
-		if(countitem(705) < 10 || countitem(909) < 10 || countitem(914) < 10) goto sL_NoItems;
+		if (countitem(705) < 10 || countitem(909) < 10 || countitem(914) < 10) goto sL_NoItems;
 		delitem 705,10;
 		delitem 909,10;
 		delitem 914,10;
@@ -3347,7 +3347,7 @@ in_orcs01.gat,31,93,1	script	Orc Warrior#1	1023,2,2{
 				mes "a recognized Orc Warrior, maybe you can defeat them...";
 				mes "What is your choise?";
 				next;
-				switch(select("I am statisfied with the current condition","...I will challenge the trial")){
+				switch(select("I am statisfied with the current condition","...I will challenge the trial")) {
 				case 1:
 					mes "[Orc Warrior]";
 					mes "Yes, it is useful";
@@ -3590,7 +3590,7 @@ in_orcs01.gat,162,33,1	script	Hero of Orc#1	1087,2,2{
 		close;
 	} else if (orcs_hero_hat == 16) {
 		if (countitem(968) && countitem(2299) && countitem(1124) && countitem(931)) {
-			if(rand(1,20)>19) {
+			if (rand(1,20)>19) {
 				mes "[Orc Hero]";
 				mes "Hmm, a human that is knows as Hero?";
 				mes "DO you know the meaning of returning a Heroic Emblem?...";
@@ -3695,7 +3695,7 @@ in_orcs01.gat,162,33,1	script	Hero of Orc#1	1087,2,2{
 payon_in02.gat,25,71,4	script	Young Man#11	86,{
 
 	mes "[Young Man]";
-	if(countitem(701) >= 5) goto L_GotOra;
+	if (countitem(701) >= 5) goto L_GotOra;
 	mes "Blahhhhhh! I... I... I JUST CAN'T take it anymore!! You little stinky, filthy, BASTARDS!!!";
 	emotion e_an;
 	next;
@@ -3752,7 +3752,7 @@ L_GotOra:
 		goto M_Menu;
 
 	M_Give:
-		if(countitem(701) < 5) goto L_Cheater;
+		if (countitem(701) < 5) goto L_Cheater;
 		delitem 701,5;
 		mes "[Young Man]";
 		mes "Muhahahahah!!! Finally, I have it.... Ora Ora! Stupid and distgusting Thief Bugs.... you'll pay for invading MY HOME!!!";
@@ -3827,9 +3827,9 @@ payon_in01.gat,56,12,4	script	Young Man#12	89,{
 				mes "Do you have all of the items needed?";
 				menu "-Give him the items.",-, "Nevermind.",M_End;
 
-				if(@HAT == 2) goto ssL_Devir;
+				if (@HAT == 2) goto ssL_Devir;
 
-					if(countitem(2229)<1 || countitem(2254)<1 || countitem(7036)<5) goto ssL_NotEnuf;
+					if (countitem(2229)<1 || countitem(2254)<1 || countitem(7036)<5) goto ssL_NotEnuf;
 					delitem 2229, 1;
 					delitem 2254, 1;
 					delitem 7036, 5;
@@ -3838,7 +3838,7 @@ payon_in01.gat,56,12,4	script	Young Man#12	89,{
 					getitem 5025, 1;
 					close;
 				ssL_Devir:
-					if(countitem(1038)<600 || countitem(7048)<40) goto ssL_NotEnuf;
+					if (countitem(1038)<600 || countitem(7048)<40) goto ssL_NotEnuf;
 					delitem 1038, 600;
 					delitem 7048, 40;
 					mes "[Young Man]";
@@ -4296,7 +4296,7 @@ M_EXIT:
 payon.gat,154,170,4	script	Granny	78,{
 
 	mes "[Granny]";
-	if(countitem(1049) >= 4) goto L_Get;
+	if (countitem(1049) >= 4) goto L_Get;
 
 	mes "Oh deary me.  What to do... what to do........  You see I want to nitt some special clothes for my family but I don't have the right cloth to do so.";
 	next;
@@ -4321,7 +4321,7 @@ L_Get:
 	next;
 	menu "Why of course granny",-,"Heck no ya old bag!",M_No;
 
-		if(countitem(1049) < 4) goto M_No;
+		if (countitem(1049) < 4) goto M_No;
 		mes "[Granny]";
 		mes "Bless your kind heart.  Now I can make some special clothes for my family.  Let me give you a reward for being so genrous dear.";
 		emotion e_lv2;
@@ -4472,7 +4472,7 @@ morocc_in.gat,142,100,4	script	William	89,{
 		mes "50 Trunks,";
 		mes "and 1 Black Dyestuff^000000.";
 		next;
-		if(countitem(1019) >= 50 && countitem(983) >= 1 && Zeny >= 91100) goto sL_GetPost;
+		if (countitem(1019) >= 50 && countitem(983) >= 1 && Zeny >= 91100) goto sL_GetPost;
 		mes "[William]";
 		mes "Come back when you have all of the items.";
 		close;
@@ -4739,7 +4739,7 @@ geffen_in.gat,144,166,4	script	Blacksmith#01	63,{
 		menu "Hm.. Not bad. Alright.",-, "No thanks.  I'd have no use for it.",sM_No;
 
 			mes "[Blacksmith]";
-			if(countitem(999) < 50 || Zeny < 2000) goto sL_NotEnuf;
+			if (countitem(999) < 50 || Zeny < 2000) goto sL_NotEnuf;
 			delitem 999,50;
 			set Zeny, Zeny - 2000;
 			mes "Great! I'll make one right away.......";

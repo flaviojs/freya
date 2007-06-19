@@ -27,7 +27,7 @@ function	script	F_RoomSwitch	{
 	mes "There's a small switch.";
 	mes "Do you want to pull it?";
 	next;
-	if(select("Pull it.","Don't pull it.")==1) {
+	if (select("Pull it.","Don't pull it.")==1) {
 		set '@dummy,getmapxy('@map$,'@dummy,'@dummy,1);		// Only '@map$ is used.
 		warp '@map$,getarg(0),getarg(1);
 		end;

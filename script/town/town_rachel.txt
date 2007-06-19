@@ -4927,7 +4927,7 @@ ra_temple.gat,116,174,3	script	Nemma#ra_temple	920,{
 			mes "Hey, did you bring me";
 			mes "^FF000020 Firecrackers^000000? Mmm?";
 			next;
-			if(select("Yes.","No, not yet.") == 1) {
+			if (select("Yes.","No, not yet.") == 1) {
 				cutin "ra_nemma01",2;
 				mes "[Priestess Nemma]";
 				mes "Let's see...";
@@ -5004,7 +5004,7 @@ S_Donate:
 	mes "I just want to make sure:";
 	mes "You want to donate "+getarg(1);
 	mes "zeny, and receive "+getarg(0)+" Lottery";
-	if(getarg(0) == 1) mes "Ticket. Is that correct?";
+	if (getarg(0) == 1) mes "Ticket. Is that correct?";
 	else mes "Tickets. Is that correct?";
 	next;
 	if (select("No","Yes") == 1) {
@@ -5360,7 +5360,7 @@ OnTouch:
 		mes "open window that";
 		mes "you can easily enter.^000000";
 		next;
-		if(select("Stay","Enter Through Window") == 2) {
+		if (select("Stay","Enter Through Window") == 2) {
 			mes "^3355FFYou pull the window,";
 			mes "and it smoothly opens.";
 			mes "This is probably what";
@@ -5383,7 +5383,7 @@ OnTouch:
 		mes "enter the temple";
 		mes "through this window?^000000";
 		next;
-		if(select("Enter","Cancel") == 1) {
+		if (select("Enter","Cancel") == 1) {
 			close2;
 			warp "que_rachel.gat",62,82;
 			end;
@@ -5401,7 +5401,7 @@ que_rachel.gat,63,82,0	script	Window#ra_temple	111,{
 
 	mes "^3355FFThis window it open^000000";
 	next;
-	if(select("Stay","Exit Through Window") == 2) {
+	if (select("Stay","Exit Through Window") == 2) {
 		close2;
 		warp "ra_temple.gat",73,208;
 		end;
@@ -6418,7 +6418,7 @@ ra_temin.gat,134,134,3	duplicate(raofficeguard)	Pope's Office Guard#2ra	927
 ra_temin.gat,134,131,0	script	gyoin1#rachel	45,1,1,{
 
 OnTouch:
-	if ((ra_tem_q > 16) || (MISC_QUEST & 8192)){
+	if ((ra_tem_q > 16) || (MISC_QUEST & 8192)) {
 		mes "[Pope's Office Guard]";
 		mes "I'm sorry, but the pope";
 		mes "is officiating a service";

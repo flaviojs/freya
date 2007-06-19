@@ -1087,7 +1087,7 @@ payon_in03.gat,131,7,3	script	Hunter#htnGM	59,{
 		mes "Hmpf. You must be here for the Hunter job test. Let me tell you about the testing process. What would you like to know?";
 		set @a0,1;
 		next;
-		while (1) {
+		while(1) {
 			switch(select("What is the test?","What are the passing requirements?","Any warnings?","Begin test.")) {
 			case 1:
 				mes "[Hunter Guildmaster]";
@@ -1162,7 +1162,7 @@ payon_in03.gat,131,7,3	script	Hunter#htnGM	59,{
 		mes "If you have any";
 		mes "questions, ask now.";
 		next;
-		while (1) {
+		while(1) {
 			switch(select("What is the test?","What are the passing requirements?","Any warnings?","Begin test.")) {
 			case 1:
 				mes "[Hunter Guildmaster]";
@@ -1252,7 +1252,7 @@ payon_in02.gat,21,31,1	script	Hunter#htnGM2	59,{
 		mes "Mmm. I see you're here for the Hunter job test. Let me explain the testing process. What would you like to know?";
 		set @a0,1;
 		next;
-		while (1) {
+		while(1) {
 			switch(select("What is the test?","What are the passing requirements?","Any warnings?","Begin test.")) {
 			case 1:
 				mes "[Hunter Guildmaster]";
@@ -1347,7 +1347,7 @@ payon_in02.gat,21,31,1	script	Hunter#htnGM2	59,{
 		mes "have questions,";
 		mes "feel free to ask.";
 		next;
-		while (1) {
+		while(1) {
 			switch(select("What is the test?","What are the requirements to pass the test?","Any warnings?","Begin test.")) {
 			case 1:
 				mes "[Hunter Guildmaster]";

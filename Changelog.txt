@@ -13,9 +13,14 @@
 
 Date	Added
 
+2007/06/19
+	* Added: Some missing Lutie NPCs, converted from Aegis (euRO) [Tsuyuki]
+	* Updated: The Bard Job Change Quest to official, converted from Aegis (iRO 10.3) [Tsuyuki]
+	* Updated: The Assassin Job Change Quest to official, converted from Aegis (iRO 10.3) [Tsuyuki]
+	* Updated: The Level 4 Weapon Quests to official, converted from Aegis (iRO 10.3) [Tsuyuki]
+
 2007/06/18
 	* Updated: Finished updating the Transcendence script system to official, based on Aegis info (iRO 10.3) [Tsuyuki]
-
 	* Updated: The Alchemist Job Change Quest to official, converted from Aegis (iRO 10.3) [Tsuyuki]
 	* Added: All missing stylists, converted from Aegis (iRO 10.3) [Tsuyuki]
 	 - Lighthalzen Assistant Beautician

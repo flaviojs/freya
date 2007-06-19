@@ -38,7 +38,7 @@ prontera.gat,146,92,3	script	Cellerb	58,{
 	mes "If you interest to follow this event, I will cook it to you.";
 	next;
 
-	switch(select("Allright. I like that!!","Next time.... Thanks.")){
+	switch(select("Allright. I like that!!","Next time.... Thanks.")) {
 	case 1:
 		mes @npcname$;
 		mes "I have something that might interest you.";

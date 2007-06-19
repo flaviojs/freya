@@ -1590,7 +1590,7 @@ kh_school.gat,179,39,1	script	Cute Student	895,{
 //--------------------------------------------------------------
 
 yuno_fild08.gat,69,185,0	script	Window::WindowKHQ1	111,{
-	if ((KielHyreQuest <= 28) || (KielHyreQuest >= 46)){
+	if ((KielHyreQuest <= 28) || (KielHyreQuest >= 46)) {
 		mes "^3355FFThis must be Elly's room.^000000";
 		mes "^3355FFIt doesn't sound like anyone^000000";
 		mes "^3355FFis inside, so the probably^000000";
@@ -2574,7 +2574,7 @@ kh_vila.gat,33,184,0	script	Pot	111,{
 
 	}
 
-	else if ((KHCottagePoem1 > 1) || (KielHyreQuest >= 30)){
+	else if ((KHCottagePoem1 > 1) || (KielHyreQuest >= 30)) {
 		mes "^3355FFThis is where you^000000";
 		mes "^3355FFpicked up the pot filled^000000";
 		mes "^3355FFwith steaming liquid.^000000";

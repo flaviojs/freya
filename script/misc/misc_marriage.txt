@@ -172,7 +172,7 @@ prt_church.gat,94,100,4	script	Sister Mary	71,{
 			"Explain the marriage procedure.",
 			"I want to get married with someone."
 		);
-		switch (@menu) {
+		switch(@menu) {
 		case 1: //Quit
 			mes "["+@name$+"]";
 			mes "In that case, enjoy your bachelor's life.";
@@ -189,7 +189,7 @@ prt_church.gat,94,100,4	script	Sister Mary	71,{
 			callfunc "F_Register";
 			break;
 		}
-	} while (@menu > 1);
+	} while(@menu > 1);
 	close2;
 	cutin "wedding_marry01",255;
 	end;
@@ -268,7 +268,7 @@ function	script	F_Bride	{
 		close;
 	}
 
-	switch ($wed_bride_progress) {
+	switch($wed_bride_progress) {
 	case 1:
 		callfunc "F_AcceptGroom";
 		break;
@@ -522,7 +522,7 @@ function	script	F_Register	{
 		else
 			set @submenu, 3;
 	}
-	switch (@submenu) {
+	switch(@submenu) {
 	case 1: // Groom
 		callfunc "F_TryRegister",0;
 		set $wed_progress,1;
@@ -606,7 +606,7 @@ function	script	F_WedProgress	{
 		mes "["+@name$+"]";
 		mes $wed_groom$+" is waiting for the bride to register. Are you the one who came to register as the bride?";
 		next;
-		if(select("Yes, I am.","Sorry, you got the wrong person.") == 1) {
+		if (select("Yes, I am.","Sorry, you got the wrong person.") == 1) {
 			callfunc "F_TryRegister",1;
 			stopnpctimer;
 			mes "["+@name$+"]";
@@ -638,7 +638,7 @@ function	script	F_WedProgress	{
 	}
 	//Display Progress
 	mes "["+@name$+"]";
-	switch ($wed_groom_progress) {
+	switch($wed_groom_progress) {
 	case 0:
 		mes "The groom has not registered yet.";
 		break;
@@ -655,7 +655,7 @@ function	script	F_WedProgress	{
 		mes "The groom, "+$wed_groom$+", is waiting for the bride to retrieve the ring.";
 		break;
 	}
-	switch ($wed_bride_progress) {
+	switch($wed_bride_progress) {
 	case 0:
 		mes "The bride has not registered yet.";
 		break;

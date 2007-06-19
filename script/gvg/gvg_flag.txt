@@ -28,15 +28,15 @@
 
 function	script	F_FlagSrc	{
 	set '@gid,getcastledata(getarg(1),1);
-	if('@gid > 0 && getcharid(2)=='@gid && getarg(2)) {	// It's true when a X coordinate is set and when the Castle has a guild.
+	if ('@gid > 0 && getcharid(2)=='@gid && getarg(2)) {	// It's true when a X coordinate is set and when the Castle has a guild.
 		mes "[Ringing Voice]";
 		mes "Brave one...";
 		mes "Would you return to your land?";
 		next;
-		if(select("Yes, please.","No, not now.")==1) {
+		if (select("Yes, please.","No, not now.")==1) {
 			// Check again, because the Castle can change of Guild while the time of the choice of the player
 			set '@gid,getcastledata(getarg(1),1);
-			if('@gid > 0 && getcharid(2)=='@gid && getarg(2)) {
+			if ('@gid > 0 && getcharid(2)=='@gid && getarg(2)) {
 				warp getarg(1),getarg(2),getarg(3);
 				end;
 			}
@@ -56,7 +56,7 @@ function	script	F_FlagSrc	{
 		mes "Divine Rune Midgard Kingdom.";
 		break;
 	}
-	if('@gid <= 0) {
+	if ('@gid <= 0) {
 		mes "This guild base has not been taken";
 		mes "by any Guild yet.";
 		next;
@@ -95,7 +95,7 @@ function	script	F_FlagSrc	{
 	close;
 OnAgitInit:
 OnFlagEmb_L1:
-	if(strnpcinfo(0) != "GdFlag_L1")
+	if (strnpcinfo(0) != "GdFlag_L1")
 		flagemblem getcastledata("aldeg_cas01.gat",1);
 	end;
 }
@@ -137,7 +137,7 @@ aldeg_cas01.gat,210,150,4	duplicate(GdFlag_L1)	Guild Flag#L1-19	722
 	close;
 OnAgitInit:
 OnFlagEmb_L2:
-	if(strnpcinfo(0) != "GdFlag_L2")
+	if (strnpcinfo(0) != "GdFlag_L2")
 		flagemblem getcastledata("aldeg_cas02.gat",1);
 	end;
 }
@@ -176,7 +176,7 @@ aldeg_cas02.gat,121,29,2	duplicate(GdFlag_L2)	Guild Flag#L2-16	722
 	close;
 OnAgitInit:
 OnFlagEmb_L3:
-	if(strnpcinfo(0) != "GdFlag_L3")
+	if (strnpcinfo(0) != "GdFlag_L3")
 		flagemblem getcastledata("aldeg_cas03.gat",1);
 	end;
 }
@@ -218,7 +218,7 @@ aldeg_cas03.gat,96,62,2		duplicate(GdFlag_L3)	Guild Flag#L3-19	722
 	close;
 OnAgitInit:
 OnFlagEmb_L4:
-	if(strnpcinfo(0) != "GdFlag_L4")
+	if (strnpcinfo(0) != "GdFlag_L4")
 		flagemblem getcastledata("aldeg_cas04.gat",1);
 	end;
 }
@@ -260,7 +260,7 @@ aldeg_cas04.gat,169,15,2	duplicate(GdFlag_L4)	Guild Flag#L4-19	722
 	close;
 OnAgitInit:
 OnFlagEmb_L5:
-	if(strnpcinfo(0) != "GdFlag_L5")
+	if (strnpcinfo(0) != "GdFlag_L5")
 		flagemblem getcastledata("aldeg_cas05.gat",1);
 	end;
 }
@@ -300,7 +300,7 @@ aldeg_cas05.gat,150,202,2	duplicate(GdFlag_L5)	Guild Flag#L5-17	722
 	close;
 OnAgit:
 OnFlagEmb_B1:
-	if(strnpcinfo(0) != "GdFlag_B1")
+	if (strnpcinfo(0) != "GdFlag_B1")
 		flagemblem getcastledata("gefg_cas01.gat",1);
 	end;
 }
@@ -333,7 +333,7 @@ gefg_cas01.gat,64,16,4		duplicate(GdFlag_B1)	Guild Flag#B1-10	722
 	close;
 OnAgitInit:
 OnFlagEmb_B2:
-	if(strnpcinfo(0) != "GdFlag_B2")
+	if (strnpcinfo(0) != "GdFlag_B2")
 		flagemblem getcastledata("gefg_cas02.gat",1);
 	end;
 }
@@ -367,7 +367,7 @@ gefg_cas02.gat,68,36,2		duplicate(GdFlag_B2)	Guild Flag#B2-11	722
 	close;
 OnAgitInit:
 OnFlagEmb_B3:
-	if(strnpcinfo(0) != "GdFlag_B3")
+	if (strnpcinfo(0) != "GdFlag_B3")
 		flagemblem getcastledata("gefg_cas03.gat",1);
 	end;
 }
@@ -404,7 +404,7 @@ gefg_cas03.gat,34,208,1		duplicate(GdFlag_B3)	Guild Flag#B3-14	722
 	close;
 OnAgitInit:
 OnFlagEmb_B4:
-	if(strnpcinfo(0) != "GdFlag_B4")
+	if (strnpcinfo(0) != "GdFlag_B4")
 		flagemblem getcastledata("gefg_cas04.gat",1);
 	end;
 }
@@ -437,7 +437,7 @@ gefg_cas04.gat,35,73,4		duplicate(GdFlag_B4)	Guild Flag#B4-10	722
 	close;
 OnAgitInit:
 OnFlagEmb_B5:
-	if(strnpcinfo(0) != "GdFlag_B5")
+	if (strnpcinfo(0) != "GdFlag_B5")
 		flagemblem getcastledata("gefg_cas05.gat",1);
 	end;
 }
@@ -470,7 +470,7 @@ gefg_cas05.gat,69,66,4		duplicate(GdFlag_B5)	Guild Flag#B5-10	722
 	close;
 OnAgitInit:
 OnFlagEmb_C1:
-	if(strnpcinfo(0) != "GdFlag_C1")
+	if (strnpcinfo(0) != "GdFlag_C1")
 		flagemblem getcastledata("payg_cas01.gat",1);
 	end;
 }
@@ -503,7 +503,7 @@ payg_cas01.gat,212,108,4	duplicate(GdFlag_C1)	Guild Flag#C1-10	722
 	close;
 OnAgitInit:
 OnFlagEmb_C2:
-	if(strnpcinfo(0) != "GdFlag_C2")
+	if (strnpcinfo(0) != "GdFlag_C2")
 		flagemblem getcastledata("payg_cas02.gat",1);
 	end;
 }
@@ -536,7 +536,7 @@ payg_cas02.gat,70,282,4		duplicate(GdFlag_C2)	Guild Flag#C2-10	722
 	close;
 OnAgitInit:
 OnFlagEmb_C3:
-	if(strnpcinfo(0) != "GdFlag_C3")
+	if (strnpcinfo(0) != "GdFlag_C3")
 		flagemblem getcastledata("payg_cas03.gat",1);
 	end;
 }
@@ -569,7 +569,7 @@ payg_cas03.gat,43,31,4		duplicate(GdFlag_C3)	Guild Flag#C3-10	722
 	close;
 OnAgitInit:
 OnFlagEmb_C4:
-	if(strnpcinfo(0) != "GdFlag_C4")
+	if (strnpcinfo(0) != "GdFlag_C4")
 		flagemblem getcastledata("payg_cas04.gat",1);
 	end;
 }
@@ -602,7 +602,7 @@ payg_cas04.gat,239,181,4	duplicate(GdFlag_C4)	Guild Flag#C4-10	722
 	close;
 OnAgitInit:
 OnFlagEmb_C5:
-	if(strnpcinfo(0) != "GdFlag_C5")
+	if (strnpcinfo(0) != "GdFlag_C5")
 		flagemblem getcastledata("payg_cas05.gat",1);
 	end;
 }
@@ -635,7 +635,7 @@ payg_cas05.gat,55,260,2		duplicate(GdFlag_C5)	Guild Flag#C5-10	722
 	close;
 OnAgitInit:
 OnFlagEmb_V1:
-	if(strnpcinfo(0) != "GdFlag_V1")
+	if (strnpcinfo(0) != "GdFlag_V1")
 		flagemblem getcastledata("prtg_cas01.gat",1);
 	end;
 }
@@ -672,7 +672,7 @@ prtg_cas01.gat,45,46,4		duplicate(GdFlag_V1)	Guild Flag#V1-14	722
 	close;
 OnAgitInit:
 OnFlagEmb_V2:
-	if(strnpcinfo(0) != "GdFlag_V2")
+	if (strnpcinfo(0) != "GdFlag_V2")
 		flagemblem getcastledata("prtg_cas02.gat",1);
 	end;
 }
@@ -711,7 +711,7 @@ prtg_cas02.gat,162,161,4	duplicate(GdFlag_V2)	Guild Flag#V2-16	722
 	close;
 OnAgitInit:
 OnFlagEmb_V3:
-	if(strnpcinfo(0) != "GdFlag_V3")
+	if (strnpcinfo(0) != "GdFlag_V3")
 		flagemblem getcastledata("prtg_cas03.gat",1);
 	end;
 }
@@ -748,7 +748,7 @@ prtg_cas03.gat,165,201,4	duplicate(GdFlag_V3)	Guild Flag#V3-14	722
 	close;
 OnAgitInit:
 OnFlagEmb_V4:
-	if(strnpcinfo(0) != "GdFlag_V4")
+	if (strnpcinfo(0) != "GdFlag_V4")
 		flagemblem getcastledata("prtg_cas04.gat",1);
 	end;
 }
@@ -785,7 +785,7 @@ prtg_cas04.gat,263,27,4		duplicate(GdFlag_V4)	Guild Flag#V4-14	722
 	close;
 OnAgitInit:
 OnFlagEmb_V5:
-	if(strnpcinfo(0) != "GdFlag_V5")
+	if (strnpcinfo(0) != "GdFlag_V5")
 		flagemblem getcastledata("prtg_cas05.gat",1);
 	end;
 }

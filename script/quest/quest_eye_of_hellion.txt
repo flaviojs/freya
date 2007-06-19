@@ -203,7 +203,7 @@ s_Switches:
 	break;
 
 	case 23:
-		if(!countitem(717))goto s_NoGem;
+		if (!countitem(717))goto s_NoGem;
 		mes "[Welshyun]";
 		mes "Thank you. You've";
 		mes "brought the book to Enoz";
@@ -220,7 +220,7 @@ s_Switches:
 		mes "of Grimnir? Well, adventurer?";
 		next;
 		input @str$;
-		if(@str$ != "Valaskjalf")goto s_WrongStr;
+		if (@str$ != "Valaskjalf")goto s_WrongStr;
 		mes "[Welshyun]";
 		mes "Ah, well met, well met.";
 		mes "You are as well learned as";
@@ -367,7 +367,7 @@ s_Switches:
 	}
 
 OnTouch:
-	if(HELLIONQ != 19)end;
+	if (HELLIONQ != 19)end;
 	misceffect 313,"Sage Welshyun";
 	misceffect 313;
 	mes "^3151FFThe piece of tablet";
@@ -380,8 +380,8 @@ OnTouch:
 
 prontera.gat,269,326,3	script	Clanux Heffron	50,{
 
-	if(HELLIONQ > 7)goto s_Last;
-	if(HELLIONQ)goto s_Switches;
+	if (HELLIONQ > 7)goto s_Last;
+	if (HELLIONQ)goto s_Switches;
 	mes "[Clanux Heffron]";
 	mes "What's wrong with";
 	mes "this map?! I can't";
@@ -412,7 +412,7 @@ s_Switches:
 	{
 
 	case 1:
-		if(HELLIONQ2)goto s_Bother;
+		if (HELLIONQ2)goto s_Bother;
 		mes "[" + strcharinfo(0) + "]";
 		mes "Excuse me, but are";
 		mes "you Clanux Heffron?";
@@ -690,7 +690,7 @@ s_Sorry:
 
 prontera.gat,224,84,1	script	Training Dummy#HellionDummy	111,{
 
-	if(HELLIONQ == 2)goto s_Hellion;
+	if (HELLIONQ == 2)goto s_Hellion;
 	mes "^3151FFIt's a training dummy";
 	mes "that was used to hone the";
 	mes "skills of new Swordmen...";
@@ -729,8 +729,8 @@ s_Hellion:
 }
 
 prt_in.gat,128,79,0	script	Unknown Machine#HellionMchn	111,{
-	if(HELLIONQ == 6)goto s_Input2;
-	if(HELLIONQ == 5)goto s_Input;
+	if (HELLIONQ == 6)goto s_Input2;
+	if (HELLIONQ == 5)goto s_Input;
 	mes "^3151FFIt's some sort of";
 	mes "strange looking machine";
 	mes "with a mysterious purpose.";
@@ -752,7 +752,7 @@ s_Input:
 	close;
 
 s_Insert:
-	if(!countitem(7093))goto s_NoCog;
+	if (!countitem(7093))goto s_NoCog;
 	mes "[" + strcharinfo(0) + "]";
 	mes "I just know this";
 	mes "cogwheel will fit";
@@ -778,7 +778,7 @@ s_Insert:
 	mes "that Veggie Lady gave me!";
 	next;
 	input @temp;
-	if(@temp != 16754213)goto s_FailInp;
+	if (@temp != 16754213)goto s_FailInp;
 s_CorrectInput:
 	mes "^3151FFThe machine responds to";
 	mes "the password with a pleasant";
@@ -812,7 +812,7 @@ s_Input2:
 	mes "right number this time...";
 	next;
 	input @temp;
-	if(@temp == 16754213)goto s_CorrectInput;
+	if (@temp == 16754213)goto s_CorrectInput;
 
 s_FailInp:
 	mes "^3151FFThe machine responds to";
@@ -834,7 +834,7 @@ s_NoCog:
 
 prontera.gat,45,67,1	script	#HellionActivator	139,0,0,{
 OnTouch:
-	if(HELLIONQ != 4)end;
+	if (HELLIONQ != 4)end;
 	mes "[" + strcharinfo(0) + "]";
 	mes "Well, according to the";
 	mes "message in that old training";
@@ -852,7 +852,7 @@ OnTouch:
 	mes "what was that last word again?";
 	next;
 	input @tempstr$;
-	if(@tempstr$ != "BINGO")goto s_Failstr;
+	if (@tempstr$ != "BINGO")goto s_Failstr;
 	mes "[" + strcharinfo(0) + "]";
 	mes "Of course!";
 	mes "\"BINGO!\" But";
@@ -914,8 +914,8 @@ s_Failstr:
 
 payon.gat,182,132,3	script	Grout'he Tuccok	48,{
 
-	if(HELLIONQ > 17)goto s_Final;
-	if(HELLIONQ > 8)goto s_Switches;
+	if (HELLIONQ > 17)goto s_Final;
+	if (HELLIONQ > 8)goto s_Switches;
 	mes "[Grout'he]";
 	mes "Hey...";
 	mes "Hey you!";
@@ -1010,7 +1010,7 @@ s_Switches:
 		mes "where I found 'em, in case";
 		mes "you can find something new.";
 		next;
-		if(Zeny < 10000)goto s_NoZeny;
+		if (Zeny < 10000)goto s_NoZeny;
 		set Zeny,Zeny-10000;
 		mes "[Grout'he]";
 		mes "There you go!";
@@ -1215,7 +1215,7 @@ s_Switches:
 }
 
 payon.gat,101,191,1	script	#HellionStepAct	139,1,1,{
-	if(HELLIONQ != 10)end;
+	if (HELLIONQ != 10)end;
 	mes "[" + strcharinfo(0) + "]";
 	mes "Well, this is where";
 	mes "Grout'he told me to look.";
@@ -1235,7 +1235,7 @@ payon.gat,101,191,1	script	#HellionStepAct	139,1,1,{
 }
 
 payon.gat,82,109,1	script	Pile of Stones#HellionStones	111,{
-	if(HELLIONQ != 11)end;
+	if (HELLIONQ != 11)end;
 	mes "[" + strcharinfo(0) + "]";
 	mes "Well, this is the place";
 	mes "that Grout'he told me about.";
@@ -1257,7 +1257,7 @@ payon.gat,82,109,1	script	Pile of Stones#HellionStones	111,{
 }
 
 payon.gat,239,56,1	script	Dried Fish#HellionFish	111,{
-	if(HELLIONQ != 12)end;
+	if (HELLIONQ != 12)end;
 	mes "[" + strcharinfo(0) + "]";
 	mes "So... Dried fish all";
 	mes "around me. This is getting";
@@ -1278,7 +1278,7 @@ payon.gat,239,56,1	script	Dried Fish#HellionFish	111,{
 }
 
 payon.gat,240,161,1	script	Vat#HellionVat	111,{
-	if(HELLIONQ != 13)end;
+	if (HELLIONQ != 13)end;
 	mes "[" + strcharinfo(0) + "]";
 	mes "Alright, the last";
 	mes "place I have to check.";
@@ -1304,8 +1304,8 @@ payon.gat,240,161,1	script	Vat#HellionVat	111,{
 }
 
 payon.gat,159,130,1	script	Wooden Floor#HellionFloor	111,{
-	if(HELLIONQ > 15)goto s_Slab;
-	if(HELLIONQ != 15)end;
+	if (HELLIONQ > 15)goto s_Slab;
+	if (HELLIONQ != 15)end;
 	mes "[" + strcharinfo(0) + "]";
 	mes "Hey, the floor around";
 	mes "here doesn't seem very";
@@ -1383,7 +1383,7 @@ s_Slab:
 }
 
 pay_arche.gat,141,29,1	script	Buddha Statue#HellionStat	111,3,3,{
-	if(HELLIONQ != 17)end;
+	if (HELLIONQ != 17)end;
 	mes "[" + strcharinfo(0) + "]";
 	mes "Hey, there's a huge";
 	mes "stone statue. This";
@@ -1467,7 +1467,7 @@ s_Ask:
 	end;
 
 OnTouch:
-	if(HELLIONQ != 17)end;
+	if (HELLIONQ != 17)end;
 	misceffect 313,"Buddha Statue#HellionStat";
 	misceffect 313;
 	mes "^3151FFThe piece of tablet";
@@ -1480,17 +1480,17 @@ OnTouch:
 
 morocc_in.gat,116,101,2	script	Old Scholar Tyus	735,2,2,{
 
-	if(HELLIONQ == 27)goto s_Last;
-	if(countitem(7332))goto s_Tablet;
-	if(HELLIONQ == 25)goto s_Completion;
-	if(HELLIONQ == 24)goto s_Four;
-	if(HELLIONQ > 18)goto s_Welshyun;
-	if(HELLIONQ == 18)goto s_Morroc;
-	if(HELLIONQ > 8)goto s_Grout;
-	if(HELLIONQ == 8)goto s_Payon;
-	if(HELLIONQ == 4)goto s_Veggie;
-	if(HELLIONQ > 0)goto s_Seek;
-	if(hellion_consideration)goto s_Consider;
+	if (HELLIONQ == 27)goto s_Last;
+	if (countitem(7332))goto s_Tablet;
+	if (HELLIONQ == 25)goto s_Completion;
+	if (HELLIONQ == 24)goto s_Four;
+	if (HELLIONQ > 18)goto s_Welshyun;
+	if (HELLIONQ == 18)goto s_Morroc;
+	if (HELLIONQ > 8)goto s_Grout;
+	if (HELLIONQ == 8)goto s_Payon;
+	if (HELLIONQ == 4)goto s_Veggie;
+	if (HELLIONQ > 0)goto s_Seek;
+	if (hellion_consideration)goto s_Consider;
 	mes "[Sir Chilias'Tyus]";
 	mes "Greetings...";
 	mes "My name is Sir Chilias'Tyus.";
@@ -1549,7 +1549,7 @@ s_Glimmer:
 	close;
 
 s_Looking:
-	if(BaseLevel < 75)goto s_Glimmer;
+	if (BaseLevel < 75)goto s_Glimmer;
 	mes "[Sir Chilias'Tyus]";
 	mes "I suppose I should tell you";
 	mes "first about my grandfather,";
@@ -1878,7 +1878,7 @@ s_Tablet:
 	mes "this bracelet to seal";
 	mes "its power forever...";
 	next;
-	if(countitem(7337))goto s_HellionEye;
+	if (countitem(7337))goto s_HellionEye;
 	misceffect 12,"Old Scholar Tyus";
 	mes "[Sir Chilias'Tyus]";
 	mes "Darkness that writhes,";
@@ -2066,7 +2066,7 @@ s_Last:
 	close;
 
 OnTouch:
-	if(HELLIONQ != 18)end;
+	if (HELLIONQ != 18)end;
 	misceffect 313,"Old Scholar Tyus";
 	misceffect 313;
 	mes "^3151FFOne of the Table Pieces";
@@ -2079,7 +2079,7 @@ OnTouch:
 
 gef_fild09.gat,296,59,1	script	Hidden Cave#HellionCave	111,{
 
-	if(!countitem(7332))goto s_NoTablet;
+	if (!countitem(7332))goto s_NoTablet;
 	mes "^3151FFAmongst the wild bushes";
 	mes "and overgrown grass, you";
 	mes "see a large rock slab that";

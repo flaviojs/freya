@@ -22,13 +22,13 @@
 function	script	F_NMerch	{
 
 	mes "["+getarg(0)+"]";
-	if((Weight*100)/MaxWeight >= 90){
+	if ((Weight*100)/MaxWeight >= 90) {
 		mes "You will exceed your weight limit if you exchange for the Red Potions.";
 		close;
 	}
 	mes "Good day!";
 	mes "Do you have any collection items such as "+getitemname(getarg(1))+" or "+getitemname(getarg(3))+"?";
-	if(getarg(5))
+	if (getarg(5))
 		mes "...how about "+getitemname(getarg(5))+"?..";
 	mes "Oh, yeah, I need those for something.";
 	next;
@@ -36,22 +36,22 @@ function	script	F_NMerch	{
 	mes "Of course I am not asking you to give those for free!";
 	mes "How about... if I give you 1 Red";
 	mes "Potion for "+getarg(2)+" "+getitemname(getarg(1))+" or "+getarg(4)+" "+getitemname(getarg(3))+"?";
-	if(getarg(5))
+	if (getarg(5))
 		mes "Or "+getarg(6)+" "+getitemname(getarg(5))+"?";
 	next;
-	switch (select("Sure!:Think you're ripping me off...:No, thanks")) {
+	switch(select("Sure!:Think you're ripping me off...:No, thanks")) {
 	case 1:
 		mes "["+getarg(0)+"]";
 		mes "So which item do you bring me?";
 		mes ""+getitemname(getarg(1))+"?  "+getitemname(getarg(3))+"?";
-		if(getarg(5))
+		if (getarg(5))
 			mes "Or "+getitemname(getarg(5))+"?";
 		next;
-		if(getarg(5))
+		if (getarg(5))
 			set @i,select(""+getitemname(getarg(1))+"",""+getitemname(getarg(3))+"",""+getitemname(getarg(5))+"","Cancel");
 		else
 			set @i,select(""+getitemname(getarg(1))+"",""+getitemname(getarg(3))+"","Cancel");
-		if(@i==4 || (@i==3 && !getarg(5))) {
+		if (@i==4 || (@i==3 && !getarg(5))) {
 			mes "["+getarg(0)+"]";
 			mes "Sure, no problem.";
 			close;
@@ -59,7 +59,7 @@ function	script	F_NMerch	{
 		set @item,getarg(@i*2-1);
 		set @amount,getarg(@i*2);
 		set @have,countitem(@item);
-		if(@have < @amount) {
+		if (@have < @amount) {
 			mes "["+getarg(0)+"]";
 			mes "Hey, where are all those";
 			mes getitemname(@item)+" you promised?";
@@ -77,7 +77,7 @@ function	script	F_NMerch	{
 		mes "["+getarg(0)+"]";
 		mes "What do you say? Deal?";
 		next;
-		if(select("Deal.:No deal.")==2) {
+		if (select("Deal.:No deal.")==2) {
 			mes "["+getarg(0)+"]";
 			mes "Bah~ whatever.";
 			mes "Bah!";
@@ -95,7 +95,7 @@ function	script	F_NMerch	{
 		while(1) {
 			next;
 			input @val;
-			if(@val<0 || @val>100) {
+			if (@val<0 || @val>100) {
 				mes "["+getarg(0)+"]";
 				mes "Uh oh, the number you entered";
 				mes "seemed incorrect.";
@@ -106,14 +106,14 @@ function	script	F_NMerch	{
 			break;
 		}
 		mes "["+getarg(0)+"]";
-		if(@val == 0) {
+		if (@val == 0) {
 			mes "What...how the hell did you even";
 			mes "bother to talk to me?";
 			mes "Leave, I don't deal with whimsical";
 			mes "people.";
 			close;
 		}
-		if(@val > @max) {
+		if (@val > @max) {
 			mes "Uh oh, the number you entered";
 			mes "seemed incorrect.";
 			mes "You'd better check how many Red";

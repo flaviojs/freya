@@ -254,18 +254,18 @@ function	script	F_Socket	{
 	mes "You want to add a Slot to a " +getitemname(getarg(1))+ "?";
 	if (getarg(0) == 1)
 	{
-		if(getarg(5) > 999) mes "Alright, please bring me ^FF0000" +getarg(7)+ " " +getitemname(getarg(6))+ "s^000000, and my^FF0000 " +getarg(5) / 1000+",000,000 zeny^000000 service fee.";
+		if (getarg(5) > 999) mes "Alright, please bring me ^FF0000" +getarg(7)+ " " +getitemname(getarg(6))+ "s^000000, and my^FF0000 " +getarg(5) / 1000+",000,000 zeny^000000 service fee.";
 		else mes "Alright, please bring me ^FF0000" +getarg(7)+ " " +getitemname(getarg(6))+ "s^000000, and my^FF0000 " +getarg(5)+",000 zeny^000000 service fee.";
 	}
 	else if (getarg(0) == 2)
 	{
-		if(getarg(5) > 999) mes "Alright, please bring me ^FF0000" +getarg(7)+ " " +getitemname(getarg(6))+ "^000000, ^FF0000" +getarg(9)+ " " +getitemname(getarg(8))+ "^000000 and my^FF0000 " +getarg(5) / 1000+",000,000 zeny^000000 service fee.";
+		if (getarg(5) > 999) mes "Alright, please bring me ^FF0000" +getarg(7)+ " " +getitemname(getarg(6))+ "^000000, ^FF0000" +getarg(9)+ " " +getitemname(getarg(8))+ "^000000 and my^FF0000 " +getarg(5) / 1000+",000,000 zeny^000000 service fee.";
 		else mes "Alright, please bring me ^FF0000" +getarg(7)+ " " +getitemname(getarg(6))+ "^000000, ^FF0000" +getarg(9)+ " " +getitemname(getarg(8))+ "^000000 and my^FF0000 " +getarg(5)+",000 zeny^000000 service fee.";
 	}
 	mes "Ah, and don't forget to bring that " +getitemname(getarg(1))+ "!";
 	next;
 
-	if(@sockettype == 1)
+	if (@sockettype == 1)
 	{
 		mes "[Seiyablem]";
 		mes "I can try to add a slot now if you have the required items and zeny.";
@@ -301,7 +301,7 @@ function	script	F_Socket	{
 	switch(getarg(0))
 	{
 		case 1:		
-			if((Zeny < getarg(5)*1000) || (countitem(getarg(6)) < getarg(7)) || (!countitem(getarg(1))))
+			if ((Zeny < getarg(5)*1000) || (countitem(getarg(6)) < getarg(7)) || (!countitem(getarg(1))))
 			{
 				mes "[Seiyablem]";
 				mes "I'd like to go ahead with this Slot Addition attempt, but you're missing a few things.";
@@ -311,7 +311,7 @@ function	script	F_Socket	{
 			break;
 	
 		case 2:
-			if((Zeny < getarg(5)*1000) || (countitem(getarg(6)) < getarg(7)) || (countitem(getarg(8)) < getarg(9)) || (!countitem(getarg(1))))
+			if ((Zeny < getarg(5)*1000) || (countitem(getarg(6)) < getarg(7)) || (countitem(getarg(8)) < getarg(9)) || (!countitem(getarg(1))))
 			{
 				mes "[Seiyablem]";
 				mes "I'd like to go ahead with this Slot Addition attempt, but you're missing a few things.";
@@ -326,16 +326,16 @@ function	script	F_Socket	{
 	mes "You'd better pray for a successful result.";
 	next;
 	set @socketrand,rand(1,100);
-	if((@socketrand > getarg(3)) && (@socketrand < getarg(4)))
+	if ((@socketrand > getarg(3)) && (@socketrand < getarg(4)))
 	{
-		if(getarg(4) == 51) misceffect 90,"Seiyablem";
+		if (getarg(4) == 51) misceffect 90,"Seiyablem";
 		else misceffect 83,"Seiyablem";
 		mes "[Seiyablem]";
 		mes "Great, it seems to be successful.";
 		mes "It looks pretty well done. Congratulations!";
 		delitem getarg(1),1;
 		delitem getarg(6),getarg(7);
-		if(getarg(0) == 2) delitem getarg(8),getarg(9);
+		if (getarg(0) == 2) delitem getarg(8),getarg(9);
 		set Zeny,Zeny - getarg(5)*1000;
 		getitem getarg(2),1;
 		next;
@@ -353,7 +353,7 @@ function	script	F_Socket	{
 		mes "Don't be so disappointed, and try next time.";
 		delitem getarg(1),1;
 		delitem getarg(6),getarg(7);
-		if(getarg(0) == 2) delitem getarg(8),getarg(9);
+		if (getarg(0) == 2) delitem getarg(8),getarg(9);
 		set Zeny,Zeny - getarg(5)*1000;
 		next;
 		mes "[Seiyablem]";

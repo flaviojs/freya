@@ -285,7 +285,7 @@ M_Menu:
 			"Cancel",M_End;
 
 		sM_1:
-			if(countitem(5017)<1) goto sL_NoItems;
+			if (countitem(5017)<1) goto sL_NoItems;
 			delitem 5017,1;
 			mes "[Monster Tamer YuU]";
 			mes "Alright, just a minute while I prepare the tame......";
@@ -296,7 +296,7 @@ M_Menu:
 			close;
 
 		sM_2:
-			if(countitem(5004)<1) goto sL_NoItems;
+			if (countitem(5004)<1) goto sL_NoItems;
 			delitem 5004,1;
 			mes "[Monster Tamer YuU]";
 			mes "Alright, just a minute while I prepare the tame......";
@@ -307,7 +307,7 @@ M_Menu:
 			close;
 
 		sM_3:
-			if(countitem(2208)<1) goto sL_NoItems;
+			if (countitem(2208)<1) goto sL_NoItems;
 			delitem 2208,1;
 			mes "[Monster Tamer YuU]";
 			mes "Alright, just a minute while I prepare the tame......";
@@ -318,7 +318,7 @@ M_Menu:
 			close;
 
 		sM_4:
-			if(countitem(2294)<1) goto sL_NoItems;
+			if (countitem(2294)<1) goto sL_NoItems;
 			delitem 2294,1;
 			mes "[Monster Tamer YuU]";
 			mes "Alright, just a minute while I prepare the tame......";
@@ -329,7 +329,7 @@ M_Menu:
 			close;
 
 		sM_5:
-			if(countitem(5015)<1) goto sL_NoItems;
+			if (countitem(5015)<1) goto sL_NoItems;
 			delitem 5015,1;
 			mes "[Monster Tamer YuU]";
 			mes "Alright, just a minute while I prepare the tame......";
@@ -340,7 +340,7 @@ M_Menu:
 			close;
 
 		sM_6:
-			if(countitem(2208)<1 || countitem(912)<2 || Zeny<400) goto sL_NoItems;
+			if (countitem(2208)<1 || countitem(912)<2 || Zeny<400) goto sL_NoItems;
 			delitem 2208,1;
 			delitem 912,2;
 			set Zeny, Zeny-400;
@@ -500,7 +500,7 @@ M_Menu:
 niflheim.gat,184,199,5	script	Little Girl#02	793,{
 
 	mes "[Sairin]";
-	if(MISC_QUEST & 256) goto L_Blah01;
+	if (MISC_QUEST & 256) goto L_Blah01;
 	if (@niflheimlost == 2) goto L_Blah02;
 	if (@niflheimlost == 1) goto M_YES;
 	goto L_Blah03;

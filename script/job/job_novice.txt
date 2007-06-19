@@ -45,7 +45,7 @@ new_zone01.gat,66,114,4	script	Bulletin Board	111,{
 new_zone01.gat,53,114,4	script	Shion	727,{
 
 	if (Class != Job_Novice || Upper) goto L_Fail;
-	switch (NEW_MES_FLAG0) {
+	switch(NEW_MES_FLAG0) {
 	case 0:	mes "[Shion]";
 		mes "Hello there~";
 		mes "Welcome to the";
@@ -66,7 +66,7 @@ new_zone01.gat,53,114,4	script	Shion	727,{
 		mes "anything I can help you with?";
 		mes "I'm here for your questions~";
 		next;
-		switch ( select("Where should I go?","About Basic Interfaces.","What the hell are you!") ) {
+		switch(select("Where should I go?","About Basic Interfaces.","What the hell are you!")) {
 		case 1:	mes "[Shion]";
 			mes "Do you see the bridge to your";
 			mes "right side? Just cross the bridge";
@@ -279,7 +279,7 @@ new_zone02.gat,100,29,4	script	Receptionist#nz	86,{
 	mes "menu for more information.";
 L_loop:
 	next;
-	switch( select("Apply for training.","Direct access to Ragnarok Online.","^3355FFTraining Grounds Introduction.^000000","I need a moment to think.") ) {
+	switch( select("Apply for training.","Direct access to Ragnarok Online.","^3355FFTraining Grounds Introduction.^000000","I need a moment to think.")) {
 	case 1:	mes "[Training Grounds Receptionist]";
 		mes "Thank you for applying for Novice training. For detailed information of each training course, please inquire the Guides for assistance.";
 		next;
@@ -300,7 +300,7 @@ L_loop:
 		mes "the best of luck!";
 		close2;
 		set NEW_MES_FLAG0,0;
-		switch( rand(6) ) {
+		switch( rand(6)) {
 		case 0:	savepoint "prontera.gat",273,354;
 			warp "prontera.gat",273,354;
 			break;
@@ -378,7 +378,7 @@ new_zone02.gat,99,105,4	script	Interfaces Instructor	751,{
 		mes "I will teach the real basic interface to "+strcharinfo(0)+".";
 		mes "This is not forced to you so if you don't want, you don't need to take this course.";
 		next;
-		switch( select("Listen about 'Interface'.","No lecture, I just want Practical Course.","Cancel.") ) {
+		switch( select("Listen about 'Interface'.","No lecture, I just want Practical Course.","Cancel.")) {
 		case 1:	mes "[Chris]";
 			mes "You can move any window by dragging your mouse.";
 			mes "I will explain from the basic location where you start on the screen.";
@@ -455,7 +455,7 @@ new_zone02.gat,99,105,4	script	Interfaces Instructor	751,{
 		mes "You didn't take the skill lectures.";
 		mes "The Skill Instructor is on your leftside.";
 		next;
-		switch( select("Thanks!","Lectures are boring.","Cancel") ) {
+		switch( select("Thanks!","Lectures are boring.","Cancel")) {
 		case 1:	mes "[Chris]";
 			mes "If you take this course You will learn usefull skill information, so pay attention.";
 			mes "Well, find the skill instructor.";
@@ -467,7 +467,7 @@ new_zone02.gat,99,105,4	script	Interfaces Instructor	751,{
 			mes "I will send you to the next course,";
 			mes "the Practical Lecture course.";
 			next;
-			if ( select("What? No.","Yes, please send me!") == 1 ) {
+			if ( select("What? No.","Yes, please send me!") == 1) {
 				mes "[Chris]";
 				mes "Then, find me later when you need me.";
 				close;
@@ -490,7 +490,7 @@ new_zone02.gat,99,105,4	script	Interfaces Instructor	751,{
 		mes "You didn't take the items lectures.";
 		mes "The Item Instructor is on my rightside.";
 		next;
-		switch( select("Thanks!","Lectures are boring.","Cancel") ) {
+		switch( select("Thanks!","Lectures are boring.","Cancel")) {
 		case 1:	mes "[Chris]";
 			mes "You can learn how to use items, and other windows.";
 			mes "It will be helpful.";
@@ -503,7 +503,7 @@ new_zone02.gat,99,105,4	script	Interfaces Instructor	751,{
 			mes "I will send you to the next course,";
 			mes "the Practical Lecture course.";
 			next;
-			if ( select("What? No.","Yes, please send me!") == 1 ) {
+			if ( select("What? No.","Yes, please send me!") == 1) {
 				mes "[Chris]";
 				mes "Then, find me later when you need me.";
 				close;
@@ -524,7 +524,7 @@ new_zone02.gat,99,105,4	script	Interfaces Instructor	751,{
 	mes "The next stage is practical monster-hunting.";
 	mes "Are you ready?";
 	next;
-	switch( select("Move to next course!","I want to look arround more.","Send me to Town!") ) {
+	switch( select("Move to next course!","I want to look arround more.","Send me to Town!")) {
 	case 1:	mes "[Chris]";
 		mes "The next course is practical monster-hunting.";
 		mes "Pay attention to what he says, and finish the course safely.";
@@ -579,7 +579,7 @@ new_zone02.gat,83,111,4	script	Skill Instructor	753,{
 		mes "It is such a good name!";
 		mes "Let's start this class?";
 		next;
-		switch( select("What do you teach me?","Send me to Practical Course!","Cancel") ) {
+		switch( select("What do you teach me?","Send me to Practical Course!","Cancel")) {
 		case 1:	mes "[Shecil]";
 			mes "I live and die for fighting!";	
 			mes "Some sort of special skill!!!!!!";
@@ -645,7 +645,7 @@ new_zone02.gat,83,111,4	script	Skill Instructor	753,{
 			mes "If you think that is hard, go to talk to Assistant.";	
 			mes "He will teach you well.";
 			next;
-			switch( select("Let me look around.","Send me to the Practical Course.","Cancel.") ) {
+			switch( select("Let me look around.","Send me to the Practical Course.","Cancel.")) {
 			case 1:	mes "[Shecil]";
 				mes "If you think, you learned enough anybody will be fine.";	
 				mes "Ask one of our insctructors, they will help you.";
@@ -668,7 +668,7 @@ new_zone02.gat,83,111,4	script	Skill Instructor	753,{
 		mes "I know the lecture is not worth it!";
 		mes "HaHaHaHa!!!!";
 		next;
-		switch( select("I will go take it!","I am bored. Send me to Practical Course.") ) {
+		switch( select("I will go take it!","I am bored. Send me to Practical Course.")) {
 		case 1:	mes "[Shecil]";
 			mes "Yes, it's good thinking.";
 			mes "Get EXP, Items as much as you can.";
@@ -689,7 +689,7 @@ new_zone02.gat,83,111,4	script	Skill Instructor	753,{
 		mes "I know the lecture is not worth it!";
 		mes "HaHaHaHa!!!!";
 		next;
-		switch( select("I will go and take it!","I am bored. Send me to Practical Course.","Cancel.") ) {
+		switch( select("I will go and take it!","I am bored. Send me to Practical Course.","Cancel.")) {
 		case 1:	mes "[Shecil]";
 			mes "Yes, it is a good thinking.";
 			mes "Get EXP, Items as much as you can.";
@@ -711,7 +711,7 @@ new_zone02.gat,83,111,4	script	Skill Instructor	753,{
 	mes "Is it right?";
 	mes "have you met the Assistants?";
 	next;
-	switch( select("Send me to the next course.","Assistants?","I want to go to town.") ) {
+	switch( select("Send me to the next course.","Assistants?","I want to go to town.")) {
 	case 1:	mes "[Shecil]";
 		mes "Oh, Right.";
 		mes "You should go to the Practical Lecture Course.";
@@ -800,7 +800,7 @@ new_zone02.gat,115,111,4	script	Item Instructor	726,{
 			getitem 569,1;
 			// enable_items;
 			next;
-			if ( @potion >= countitem(569) ) {
+			if ( @potion >= countitem(569)) {
 				mes "[Alice]";
 				mes "Nice~!";
 				mes "And here's";
@@ -838,7 +838,7 @@ new_zone02.gat,115,111,4	script	Item Instructor	726,{
 			mes "I just gave you to";
 			mes "put them on.";
 			next;
-			if ( getequipisequiped(6) ) {
+			if ( getequipisequiped(6)) {
 				mes "[Alice]";
 				mes "Hooray~!";
 				mes "You did it!";
@@ -939,7 +939,7 @@ new_zone02.gat,115,111,4	script	Item Instructor	726,{
 		mes "Do you want to go to Practical Course?";
 		mes "Then, I will send you.";
 		next;
-		if ( select("Let me go!","Wait for a moment.") == 1 ) {
+		if ( select("Let me go!","Wait for a moment.") == 1) {
 			mes "[Alice]";
 			mes "You got your equipment that I gave you right?";
 			mes "Wear those tight.";
@@ -961,7 +961,7 @@ L_battle:
 	mes "Hmmm... Did you meet every instructor?";
 	mes "It's better for you to meet all of them.";
 	next;
-	if ( select("Only Practical Course!","Wait for a moment.") == 1 ) {
+	if ( select("Only Practical Course!","Wait for a moment.") == 1) {
 L_battle1:
 		mes "[Alice]";
 		mes "Huh.. You are so energetic.";
@@ -1013,7 +1013,7 @@ new_zone02.gat,118,108,4	script	Kafra Employee	94,{
 	mes "If you move to a town";
 	mes "^4d4dffYou will be unable to return to the Training Grounds ever again^000000.";
 	next;
-	if ( select("Teleport Service","About Kafra services") == 1 ) {
+	if ( select("Teleport Service","About Kafra services") == 1) {
 		mes "[Kafra Employee]";
 		mes "I see, you must want to teleport to a town in Rune-Midgard imediately. First, let me briefly inform you about the different towns and cities in Ragnarok.";
 		next;
@@ -1036,8 +1036,8 @@ new_zone02.gat,118,108,4	script	Kafra Employee	94,{
 		mes "Please choose";
 		mes "your destination.";
 		next;
-		if ( NEW_MES_FLAG1 || NEW_MES_FLAG2 || NEW_MES_FLAG3 ) {
-			if ( select("Practical Course","Prontera","Morroc","Payon","Alberta","Geffen") == 1 ) {
+		if ( NEW_MES_FLAG1 || NEW_MES_FLAG2 || NEW_MES_FLAG3) {
+			if ( select("Practical Course","Prontera","Morroc","Payon","Alberta","Geffen") == 1) {
 				mes "[Kafra Employee]";
 				mes "You will be sent to Practical Course.";
 				close2;
@@ -1048,7 +1048,7 @@ new_zone02.gat,118,108,4	script	Kafra Employee	94,{
 		} else {
 			menu "Prontera",-,"Morroc",-,"Payon",-,"Alberta",-,"Geffen",-;
 		}
-		switch ( @menu ) {
+		switch(@menu) {
 		case 1:	mes "[Kafra Employee]";
 			mes "You have decided";
 			mes "to go to Prontera.";
@@ -1108,7 +1108,7 @@ new_zone02.gat,118,108,4	script	Kafra Employee	94,{
 		mes "learn more about.";
 L_loop:
 		next;
-		switch( select("Save service.","Storage service.","Teleport service.","Cart rental service.","Cancel.") ) {
+		switch( select("Save service.","Storage service.","Teleport service.","Cart rental service.","Cancel.")) {
 		case 1:	mes "[Kafra Employee]";
 			mes "When you talk to a Kafra Employee and ask for the save Service, the location of where you will revive, after being defeated in battle, will be changed.";
 			next;
@@ -1253,7 +1253,7 @@ new_zone02.gat,161,182,6	script	Interface Assistant	92,{
 	mes "Choose what you want to know more about.";
 L_loop:
 	next;
-	switch( select("Basic Information Window","Party Window","Item Window","Option Window","Equipment Window","Cancel") ) {
+	switch( select("Basic Information Window","Party Window","Item Window","Option Window","Equipment Window","Cancel")) {
 	case 1:	mes "[Edwin]";
 		mes "Let's see the Basic Information Window.";
 		mes "You can find your name, base level, you job and your job  level displayed on the window.";
@@ -1408,7 +1408,7 @@ new_zone02.gat,182,182,4	script	Status Assistant	754,{
 	mes "DEX stands for Dexterity, LUK stands for Luck.";
 L_loop:
 	next;
-	switch( select("Str and Agi.","Vit and Int.","Dex and Luk.","Cancel") ) {
+	switch( select("Str and Agi.","Vit and Int.","Dex and Luk.","Cancel")) {
 	case 1:	mes "[Jarre Riotte]";
 		mes "Let me explain Strength first.";
 		mes "";
@@ -1654,7 +1654,7 @@ new_zone02.gat,184,172,4	script	Skill Assistant	47,{
 	emotion e_kis;
 L_loop:
 	next;
-	switch( select("Passive and Active Skills.","Passive, Basic Skills.","Use of Emoticons","Cancel") ) {
+	switch( select("Passive and Active Skills.","Passive, Basic Skills.","Use of Emoticons","Cancel")) {
 	case 1:	mes "[Pitch Judas]";
 		mes "You have chosen the passive and";
 		mes "active skills.";
@@ -1749,7 +1749,7 @@ L_loop:
 		mes "lesson.";
 L_loop1:
 		next;
-		switch( select("Trade and Exchange","Organising & Joining party","Opening Chat room","Storage Use","No thanks, I know already.") ) {
+		switch( select("Trade and Exchange","Organising & Joining party","Opening Chat room","Storage Use","No thanks, I know already.")) {
 		case 1:	mes "[Pitch Judas]";
 			mes "When you go visit our official";
 			mes "website at ^4d4dffhttp://ragnarok.co.kr^000000,";
@@ -2051,7 +2051,7 @@ new_zone02.gat,38,182,4	script	Helper	92,{
 			mes "the North section of the field.";
 			mes "Now then, do you want to try?";
 			next;
-			if ( select("Yes","I want to learn more.") == 1 ) {
+			if ( select("Yes","I want to learn more.") == 1) {
 				mes "[Kane]";
 				mes "Just feel free to fight.";
 				mes "These will help you if you have";
@@ -2089,7 +2089,7 @@ new_zone02.gat,38,182,4	script	Helper	92,{
 	mes "[Kane]";
 	mes "Do you want to try again?";
 	next;
-	if ( select("Yes","No, I want to prepare more.") == 1 ) {
+	if ( select("Yes","No, I want to prepare more.") == 1) {
 		if (!(NEW_LVUP1)) {
 			mes "[Kane]";
 			mes "Then, I will give you some additional help.";
@@ -2146,7 +2146,7 @@ new_zone02.gat,17,182,6	script	Helper#2	84,{
 		mes "equipped all of your equipment,";
 		mes "your weapons and armor?";
 		next;
-		if ( select("Yes","No") == 1 ) {
+		if ( select("Yes","No") == 1) {
 			callsub L_battle;
 			next;
 			mes "[Elmeen]";
@@ -2174,7 +2174,7 @@ new_zone02.gat,17,182,6	script	Helper#2	84,{
 			mes "first for you?";
 		L_loop:
 			next;
-			switch( select("Monster","EXP","Items","Cancel") ) {
+			switch( select("Monster","EXP","Items","Cancel")) {
 			case 1:	callsub L_monster;
 				break;
 			case 2:	callsub L_exp;
@@ -2196,7 +2196,7 @@ new_zone02.gat,17,182,6	script	Helper#2	84,{
 	mes "Which one do you want to know?";
 L_loop1:
 	next;
-	switch( select("Monster","EXP","Items","Basic info on Monster Hunting","Cancel") ) {
+	switch( select("Monster","EXP","Items","Basic info on Monster Hunting","Cancel")) {
 	case 1:	callsub L_monster;
 		break;
 	case 2:	callsub L_exp;
@@ -2467,7 +2467,7 @@ new_zone03.gat,96,174,4	script	Keyman#1	85,{
 	mes "Hmmm!";
 	mes "You have practiced a lot, would you like to go on with further training?";
 	next;
-	if (select("Yes","No")==1){
+	if (select("Yes","No")==1) {
 		mes "[Keyman]";
 		mes "Don't forget about everything you've learnt here. Have a nice trip.";
 		close2;
@@ -2511,7 +2511,7 @@ new_zone04.gat,91,22,4	script	Novice Instructor	57,{
 	mes "Which job do you want to hear about?";
 L_loop:
 	next;
-	switch( select("Swordman","Mage","Archer","Merchant","Thief","Acolyte","End Conversation") ) {
+	switch( select("Swordman","Mage","Archer","Merchant","Thief","Acolyte","End Conversation")) {
 	case 1:	mes "[Bruce]";
 		mes "Literally, Swordsman means one who";
 		mes "specialises in wielding swords.";
@@ -2776,7 +2776,7 @@ new_zone04.gat,100,29,4	script	Final Instructor	46,{
 	mes "Online immediately, or to take";
 	mes "this personality test?";
 	next;
-	if ( select("I'll take the test.","Let me start Ragnarok Online Please.") == 2 ) {
+	if ( select("I'll take the test.","Let me start Ragnarok Online Please.") == 2) {
 		mes "[Hanson]";
 		mes "I understand.";
 		mes "I will now move you directly into the world of Ragnarok Online.";
@@ -2793,7 +2793,7 @@ new_zone04.gat,100,29,4	script	Final Instructor	46,{
 		next;
 L_cancel:
 		callsub L_cleararg;
-		switch ( rand(6) ) {
+		switch(rand(6)) {
 		case 0:	savepoint "izlude.gat",94,103;
 			warp "prt_fild08.gat",357,212;
 			break;
@@ -2842,33 +2842,33 @@ L_cancel:
 	mes "Please choose the most familiar";
 	mes "word to you, from these examples.";
 	next;
-	switch ( select("Study","Exercise","Public service","Violence") ) {
+	switch(select("Study","Exercise","Public service","Violence")) {
 	case 1:	set NOV_3_MAGICIAN,NOV_3_MAGICIAN+1;break;
 	case 2:	set NOV_3_SWORDMAN,NOV_3_SWORDMAN+1;
 		set NOV_3_THIEF,NOV_3_THIEF+1;break;
 	case 3:	set NOV_3_ACOLYTE,NOV_3_ACOLYTE+1;break;
 	case 4:	set NOV_3_THIEF,NOV_3_THIEF+1;
 	}
-	switch ( select("Change","Conserve") ) {
+	switch(select("Change","Conserve")) {
 	case 1:	set NOV_3_MAGICIAN,NOV_3_MAGICIAN+1;break;
 	case 2:	set NOV_3_ACOLYTE,NOV_3_ACOLYTE+1;
 	}
-	switch ( select("Consumer","Seller","Producer") ) {
+	switch(select("Consumer","Seller","Producer")) {
 	case 1:	set NOV_3_SWORDMAN,NOV_3_SWORDMAN+1;
 		set NOV_3_THIEF,NOV_3_THIEF+1;
 		set NOV_3_ACOLYTE,NOV_3_ACOLYTE+1;break;
 	case 2:	set NOV_3_MERCHANT,NOV_3_MERCHANT+1;break;
 	case 3:	set NOV_3_MAGICIAN,NOV_3_MAGICIAN+1;
 	}
-	switch ( select("Celebrity","Prudence") ) {
+	switch(select("Celebrity","Prudence")) {
 	case 1:	set NOV_3_THIEF,NOV_3_THIEF+1;break;
 	case 2:	set NOV_3_ARCHER,NOV_3_ARCHER+1;
 	}
-	switch ( select("Theory","Experience") ) {
+	switch(select("Theory","Experience")) {
 	case 1:	set NOV_3_MAGICIAN,NOV_3_MAGICIAN+1;break;
 	case 2:	set NOV_3_SWORDMAN,NOV_3_SWORDMAN+1;
 	}
-	switch ( select("The past","The reality","The future") ) {
+	switch(select("The past","The reality","The future")) {
 	case 1:	set NOV_3_ARCHER,NOV_3_ARCHER+1;break;
 	case 2:	set NOV_3_MERCHANT,NOV_3_MERCHANT+1;
 		set NOV_3_THIEF,NOV_3_THIEF+1;break;
@@ -2881,7 +2881,7 @@ L_cancel:
 	mes "[Hanson]";
 	mes "To die with honor is better than to live with disgrace.";
 	next;
-	switch ( select("Yes.","No") ) {
+	switch(select("Yes.","No")) {
 	case 1:	set NOV_3_SWORDMAN,NOV_3_SWORDMAN+1;break;
 	case 2:	set NOV_3_THIEF,NOV_3_THIEF+1;
 		set NOV_3_MERCHANT,NOV_3_MERCHANT+1;
@@ -2890,7 +2890,7 @@ L_cancel:
 	mes "You are often upset to see someone";
 	mes "who is better than you";
 	next;
-	switch ( select("Yes","No") ) {
+	switch(select("Yes","No")) {
 	case 1:	set NOV_3_MERCHANT,NOV_3_MERCHANT+1;break;
 	case 2:set NOV_3_ACOLYTE,NOV_3_ACOLYTE+1;
 	}
@@ -2898,14 +2898,14 @@ L_cancel:
 	mes "You don't mind exploring dangerous";
 	mes "places.";
 	next;
-	switch ( select("Yes","No") ) {
+	switch(select("Yes","No")) {
 	case 1:	set NOV_3_SWORDMAN,NOV_3_SWORDMAN+1;break;
 	case 2:	set NOV_3_MAGICIAN,NOV_3_MAGICIAN+1;
 	}
 	mes "[Hanson]";
 	mes "You are a leader-type person.";
 	next;
-	switch ( select("Yes","No") ) {
+	switch(select("Yes","No")) {
 	case 1:	set NOV_3_SWORDMAN,NOV_3_SWORDMAN+1;break;
 	case 2:	set NOV_3_ARCHER,NOV_3_ARCHER+1;
 	}
@@ -2921,7 +2921,7 @@ L_cancel:
 	mes "and have an urge to push the";
 	mes "button. Do you push it?";
 	next;
-	switch ( select("Yes","No") ) {
+	switch(select("Yes","No")) {
 	case 1:	set NOV_3_THIEF,NOV_3_THIEF+1;break;
 	case 2:	set NOV_3_SWORDMAN,NOV_3_SWORDMAN+1;
 	}
@@ -2929,7 +2929,7 @@ L_cancel:
 	mes "You often see things that don't";
 	mes "exist";
 	next;
-	switch ( select("Yes","No") ) {
+	switch(select("Yes","No")) {
 	case 1:	set NOV_3_ACOLYTE,NOV_3_ACOLYTE+1;break;
 	case 2:	set NOV_3_MAGICIAN,NOV_3_MAGICIAN+1;
 	}
@@ -2937,14 +2937,14 @@ L_cancel:
 	mes "You feel you can fly";
 	mes "when falling from a cliff.";
 	next;
-	switch ( select("Yes","No") ) {
+	switch(select("Yes","No")) {
 	case 1:	set NOV_3_ACOLYTE,NOV_3_ACOLYTE+1;break;
 	case 2:	set NOV_3_MAGICIAN,NOV_3_MAGICIAN+1;
 	}
 	mes "[Hanson]";
 	mes "Money talks. I can buy even human being if I want.";
 	next;
-	switch ( select("Yes","No") ) {
+	switch(select("Yes","No")) {
 	case 1:	set NOV_3_MERCHANT,NOV_3_MERCHANT+1;break;
 	case 2:	set NOV_3_ARCHER,NOV_3_ARCHER+1;
 	}
@@ -2959,7 +2959,7 @@ L_cancel:
 	mes "As you check your tight";
 	mes "schedule....";
 	next;
-	switch ( select("You feel like a robot.","You are proud and satisfied.","Schedule... what schedule?") ) {
+	switch(select("You feel like a robot.","You are proud and satisfied.","Schedule... what schedule?")) {
 	case 1:	set NOV_3_SWORDMAN,NOV_3_SWORDMAN+1;
 		set NOV_3_THIEF,NOV_3_THIEF+1;break;
 	case 2:	set NOV_3_MAGICIAN,NOV_3_MAGICIAN+1;
@@ -2975,7 +2975,7 @@ L_cancel:
 	mes "Before you purchase an item,";
 	mes "first thing you do is...";
 	next;
-	switch ( select("Think about if you need it.","Check the price.","Buy it without thinking twice...!") ) {
+	switch(select("Think about if you need it.","Check the price.","Buy it without thinking twice...!")) {
 	case 1:	set NOV_3_ARCHER,NOV_3_ARCHER+1;break;
 	case 2:	set NOV_3_MERCHANT,NOV_3_MERCHANT+1;break;
 	case 3:	set NOV_3_THIEF,NOV_3_THIEF+1;
@@ -2984,7 +2984,7 @@ L_cancel:
 	mes "You (____Fill in blank___) to compete";
 	mes "with other people.......";
 	next;
-	switch ( select("Don't mind...","Don't like...","Don't care...") ) {
+	switch(select("Don't mind...","Don't like...","Don't care...")) {
 	case 1:	set NOV_3_MERCHANT,NOV_3_MERCHANT+1;break;
 	case 2:	set NOV_3_THIEF,NOV_3_THIEF+1;break;
 	case 3:	set NOV_3_ACOLYTE,NOV_3_ACOLYTE+1;
@@ -3001,7 +3001,7 @@ L_cancel:
 	mes "it will be simple and an enjoyable";
 	mes "task. You would...";
 	next;
-	switch ( select("Handle it by myself even if it's hard.","Ask friends to help.") ) {
+	switch(select("Handle it by myself even if it's hard.","Ask friends to help.")) {
 	case 1:	set NOV_3_MAGICIAN,NOV_3_MAGICIAN+1;break;
 	case 2:	set NOV_3_MERCHANT,NOV_3_MERCHANT+1;
 	}
@@ -3010,7 +3010,7 @@ L_cancel:
 	mes "fainted on the street.";
 	mes "What would you do?";
 	next;
-	switch ( select("Carry her to a hospital.","Considder my priority before taking an action.","Just ignore it.") ) {
+	switch(select("Carry her to a hospital.","Considder my priority before taking an action.","Just ignore it.")) {
 	case 1:	set NOV_3_ACOLYTE,NOV_3_ACOLYTE+1;break;
 	case 2:	set NOV_3_SWORDMAN,NOV_3_SWORDMAN+1;
 		set NOV_3_ARCHER,NOV_3_ARCHER+1;break;
@@ -3023,7 +3023,7 @@ L_cancel:
 	mes "some 'clothing'";
 	mes "What would you do?";
 	next;
-	switch ( select("Check the brand.","Wonder who lost it.","Find the owner.","Leave it where it was.") ) {
+	switch(select("Check the brand.","Wonder who lost it.","Find the owner.","Leave it where it was.")) {
 	case 1:	set NOV_3_MERCHANT,NOV_3_MERCHANT+1;break;
 	case 2:	set NOV_3_ACOLYTE,NOV_3_ACOLYTE+1;break;
 	case 3:	set NOV_3_MERCHANT,NOV_3_MERCHANT+1;break;
@@ -3034,14 +3034,14 @@ L_cancel:
 	mes "the middle of a conversation.";
 	mes "What would be your reaction?";
 	next;
-	switch ( select("Pretend it's a joke.","Change the subject.","Analyse it.","Apologise honestly.") ) {
+	switch(select("Pretend it's a joke.","Change the subject.","Analyse it.","Apologise honestly.")) {
 	case 1:	set NOV_3_THIEF,NOV_3_THIEF+1;break;
 	case 2:	set NOV_3_SWORDMAN,NOV_3_SWORDMAN+1;break;
 	case 3:	set NOV_3_MAGICIAN,NOV_3_MAGICIAN+1;break;
 	case 4:	set NOV_3_ACOLYTE,NOV_3_ACOLYTE+1;
 	}
 	mes "[Hanson]";
-	switch (Sex) {
+	switch(Sex) {
 	case 0:	mes "You're on a trip with your beloved";
 		mes "one. She asks you to buy a";
 		mes "souvenir that's not particularly";
@@ -3055,7 +3055,7 @@ L_cancel:
 		mes "What would you do?";
 	}
 	next;
-	switch ( select("Buy the item for her/him.","Say 'no'.","Promise to buy it next time.") ) {
+	switch(select("Buy the item for her/him.","Say 'no'.","Promise to buy it next time.")) {
 	case 1:	set NOV_3_SWORDMAN,NOV_3_SWORDMAN+1;break;
 	case 2:	set NOV_3_MERCHANT,NOV_3_MERCHANT+1;break;
 	case 3:	set NOV_3_THIEF,NOV_3_THIEF+1;
@@ -3101,7 +3101,7 @@ L_cancel:
 	set @JOB_NUMBER_CHK,0;
 	set @JOB_WITH,NOV_3_SWORDMAN;
 L_loop1:
-	switch ( @JOB_NUMBER ) {
+	switch(@JOB_NUMBER) {
 	case 1:		set @JOB_WITH_C,NOV_3_ARCHER;break;
 	case 2:		set @JOB_WITH_C,NOV_3_THIEF;break;
 	case 3:		set @JOB_WITH_C,NOV_3_MAGICIAN;break;
@@ -3110,7 +3110,7 @@ L_loop1:
 	}
 	if (@JOB_WITH >= @JOB_WITH_C) goto L_loop2;
 	set @JOB_NUMBER_CHK,@JOB_NUMBER;
-	switch ( @JOB_NUMBER ) {
+	switch(@JOB_NUMBER) {
 	case 1:		set @JOB_WITH,NOV_3_ARCHER;break;
 	case 2:		set @JOB_WITH,NOV_3_THIEF;break;
 	case 3:		set @JOB_WITH,NOV_3_MAGICIAN;break;
@@ -3119,9 +3119,9 @@ L_loop1:
 	}
 L_loop2:
 	set @JOB_NUMBER,@JOB_NUMBER+1;
-	while ( @JOB_NUMBER < 6 ) goto L_loop1;
+	while(@JOB_NUMBER < 6 ) goto L_loop1;
 	mes "[Hanson]";
-	switch ( @JOB_NUMBER_CHK ) {
+	switch(@JOB_NUMBER_CHK) {
 	case 0:	set @JOB_NAME$,"Swordsman";
 		mes "Although you are direct and";
 		mes "'to the point', you are also";
@@ -3193,7 +3193,7 @@ L_loop2:
 	mes "recommendation, or would you like";
 	mes "to choose a job on your own?";
 	next;
-	if ( select(@JOB_NAME$+"!","No, my own choice!") == 1 ) {
+	if ( select(@JOB_NAME$+"!","No, my own choice!") == 1) {
 		mes "[Hanson]";
 		mes "Great! I guarantee that it is";
 		mes "a good decision!";
@@ -3202,7 +3202,7 @@ L_loop2:
 		mes "the associated town.";
 		next;
 		mes "^882420Item Offer List^000099";
-		switch( @JOB_NUMBER_CHK ) {
+		switch( @JOB_NUMBER_CHK) {
 		case 0:	mes "1 Falchion";
 			getitem 1104,1;
 			break;
@@ -3223,14 +3223,14 @@ L_loop2:
 		case 5:	mes "1 Battle Axe";
 			getitem 1351,1;
 		}
-		if ( @JOB_NUMBER_CHK == 5 ){
+		if ( @JOB_NUMBER_CHK == 5) {
 			mes "^0000304 Free Tickets for Kafra Storage";
 			mes "4 Free Tickets for Kafra Transportation";
 			mes "4 Free Tickets for the Cart Service";
 			getitem 7059,4;
 			getitem 7060,4;
 			getitem 7061,4;
-		}else{
+		} else {
 			mes "^0000305 Free Tickets for Kafra Storage";
 			mes "5 Free Tickets for Kafra Transportation";
 			getitem 7059,5;
@@ -3250,7 +3250,7 @@ L_loop2:
 		mes "about these items.";
 		next;
 		mes "[Hanson]";
-		switch( @JOB_NUMBER_CHK ) {
+		switch( @JOB_NUMBER_CHK) {
 		case 0:	mes "After you change your job,";
 			mes "you can use the 'Falchion'"; break;
 		case 1:	mes "After you change your job,";
@@ -3286,8 +3286,8 @@ L_loop2:
 	mes "Please choose the profession";
 	mes "that you want.";
 	next;
-	switch( @JOB_NUMBER_CHK ) {
-	case 0:	switch( select("Mage","Merchant","Thief","Archer","Acolyte") ) {
+	switch( @JOB_NUMBER_CHK) {
+	case 0:	switch( select("Mage","Merchant","Thief","Archer","Acolyte")) {
 		case 1:	set @JOB_NUMBER_CHK,3;
 			set @JOB_NAME$,"Mage";
 			break;
@@ -3304,7 +3304,7 @@ L_loop2:
 			set @JOB_NAME$,"Acolyte";
 		}
 		break;
-	case 1:	switch( select("Swordsman","Mage","Merchant","Thief","Acolyte") ) {
+	case 1:	switch( select("Swordsman","Mage","Merchant","Thief","Acolyte")) {
 		case 1:	set @JOB_NUMBER_CHK,0;
 			set @JOB_NAME$,"Swordsman";
 			break;
@@ -3321,7 +3321,7 @@ L_loop2:
 			set @JOB_NAME$,"Acolyte";
 		}
 		break;
-	case 2:	switch( select("Swordsman","Mage","Merchant","Archer","Acolyte") ) {
+	case 2:	switch( select("Swordsman","Mage","Merchant","Archer","Acolyte")) {
 		case 1:	set @JOB_NUMBER_CHK,0;
 			set @JOB_NAME$,"Swordsman";
 			break;
@@ -3338,7 +3338,7 @@ L_loop2:
 			set @JOB_NAME$,"Acolyte";
 		}
 		break;
-	case 3:	switch( select("Swordsman","Merchant","Thief","Archer","Acolyte") ) {
+	case 3:	switch( select("Swordsman","Merchant","Thief","Archer","Acolyte")) {
 		case 1:	set @JOB_NUMBER_CHK,0;
 			set @JOB_NAME$,"Swordsman";
 			break;
@@ -3355,7 +3355,7 @@ L_loop2:
 			set @JOB_NAME$,"Acolyte";
 		}
 		break;
-	case 4:	switch( select("Swordsman","Mage","Merchant","Thief","Archer") ) {
+	case 4:	switch( select("Swordsman","Mage","Merchant","Thief","Archer")) {
 		case 1:	set @JOB_NUMBER_CHK,0;
 			set @JOB_NAME$,"Swordsman";
 			break;
@@ -3372,7 +3372,7 @@ L_loop2:
 			set @JOB_NAME$,"Archer";
 		}
 		break;
-	case 5:	switch( select("Swordsman","Mage","Thief","Archer","Acolyte") ) {
+	case 5:	switch( select("Swordsman","Mage","Thief","Archer","Acolyte")) {
 		case 1:	set @JOB_NUMBER_CHK,0;
 			set @JOB_NAME$,"Swordsman";
 			break;
@@ -3430,7 +3430,7 @@ L_warp:
 	mes "and farewell.";
 	close2;
 	callsub L_cleararg;
-	switch( @JOB_NUMBER_CHK ) {
+	switch( @JOB_NUMBER_CHK) {
 	case 0:	savepoint "izlude.gat",94,103;
 		warp "izlude_in.gat",74,167;
 		break;
@@ -3451,7 +3451,7 @@ L_warp:
 	}
 	end;
 L_place:
-	switch( @JOB_NUMBER_CHK ) {
+	switch( @JOB_NUMBER_CHK) {
 	case 0:	mes "The town you will be sent to";
 		mes "is 'Izlude'. The Swordsman";
 		mes "association is located in the";

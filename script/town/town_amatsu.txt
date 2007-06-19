@@ -716,17 +716,17 @@ s_Got:
 		goto L_Continue;
 
 L_Continue:
-	if(countitem(@stoneID) < 8)goto s_NEnough;
+	if (countitem(@stoneID) < 8)goto s_NEnough;
 	mes "[Laspuchin Gregory]";
 	mes "Kehekeh. I see you brought";
 	mes "enough stones! What kind of";
 	mes "stone do you want me to change";
 	mes "them into? Kehehehe.";
 	next;
-	if(@stoneID == 995)menu "Great Nature",s_Great,"Flame Heart",s_Flame,"Rough Wind",s_Rough;
-	if(@stoneID == 996)menu "Great Nature",s_Great,"Flame Heart",s_Flame,"Mystic Frozen",s_Frozen;
-	if(@stoneID == 997)menu "Mystic Frozen",s_Frozen,"Flame Heart",s_Flame,"Rough Wind",s_Rough;
-	if(@stoneID == 994)menu "Great Nature",s_Great,"Mystic Frozen",s_Frozen,"Rough Wind",s_Rough;
+	if (@stoneID == 995)menu "Great Nature",s_Great,"Flame Heart",s_Flame,"Rough Wind",s_Rough;
+	if (@stoneID == 996)menu "Great Nature",s_Great,"Flame Heart",s_Flame,"Mystic Frozen",s_Frozen;
+	if (@stoneID == 997)menu "Mystic Frozen",s_Frozen,"Flame Heart",s_Flame,"Rough Wind",s_Rough;
+	if (@stoneID == 994)menu "Great Nature",s_Great,"Mystic Frozen",s_Frozen,"Rough Wind",s_Rough;
 
 s_Great:
 	mes "[Laspuchin Gregory]";
@@ -1460,17 +1460,17 @@ OnStartTimer:
 	end;
 
 OnTimer180000:
-	if(!isloggedin($MomotaroRID))goto s_Cleanup;
+	if (!isloggedin($MomotaroRID))goto s_Cleanup;
 	mapannounce "ama_test.gat","Timer: 3 Minutes left.",8;
 	end;
 
 OnTimer300000:
-	if(!isloggedin($MomotaroRID))goto s_Cleanup;
+	if (!isloggedin($MomotaroRID))goto s_Cleanup;
 	mapannounce "ama_test.gat","Timer: 1 Minute left.",8;
 	end;
 
 OnTimer360000:
-	if(!isloggedin($MomotaroRID))goto s_Cleanup;
+	if (!isloggedin($MomotaroRID))goto s_Cleanup;
 	mapannounce "ama_test.gat","Timer: Beep- Beep- Beep- Time's up.",8;
 
 OnTimer362500:
@@ -1493,7 +1493,7 @@ OnTimer260000:
 OnTimer280000:
 OnTimer320000:
 OnTimer340000:
-	if(!isloggedin($MomotaroRID)) goto s_Cleanup;
+	if (!isloggedin($MomotaroRID)) goto s_Cleanup;
 	end;
 
 OnCleanUp:
@@ -1514,7 +1514,7 @@ OnStopTimer:
 }
 
 ama_test.gat,51,85,0	script	#MomotaroActivator	139,1,1,{
-	if($Momotaro)end;
+	if ($Momotaro)end;
 	set $Momotaro,1;
 	set $MomotaroRID,getcharid(3);
 	areaannounce "ama_test.gat",30,78,68,120,"Timer: The Timer has been activated. You have 6 minutes. Annihilate the monsters in time!",8;
@@ -1683,7 +1683,7 @@ L2_2:
 
 OnTimer5000:
 	stopnpctimer;
-	if(!isloggedin($MomotaroRID)) goto L_Cleanup;
+	if (!isloggedin($MomotaroRID)) goto L_Cleanup;
 	attachrid($MomotaroRID);
 	monster "ama_test.gat",35,103,"Am Mut",1301,1,"mobcount2#momotaro::OnMobDead";
 	monster "ama_test.gat",56,111,"Am Mut",1301,1,"mobcount2#momotaro::OnMobDead";
@@ -1719,7 +1719,7 @@ LWarpOut:
 
 OnStart:
 	misceffect 215;
-	if(!isloggedin($MomotaroRID)) goto L_Cleanup;
+	if (!isloggedin($MomotaroRID)) goto L_Cleanup;
 	attachrid($MomotaroRID);
 	mes "[Manager]";
 	mes "Hohoho......";

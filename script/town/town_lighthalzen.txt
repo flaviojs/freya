@@ -5391,9 +5391,9 @@ yuno_in04.gat,171,117,1	script	List of Books	111,{
 lhz_dun01.gat,147,106,0	script	#kiz01-1	139,3,3,{
 
 OnTouch:
-	if(countitem(7345))
+	if (countitem(7345))
 	{
-		if(!lhz_curse)
+		if (!lhz_curse)
 		{
 			soundeffect "loli_ruri_stand.wav",0;
 			set lhz_curse,1;
@@ -5404,7 +5404,7 @@ OnTouch:
 			set @lhz_ghost,rand(1,5);
 			sc_start SC_CURSE,1000,0;
 			soundeffect "loli_ruri_stand.wav",0;
-			if(@lhz_ghost == 1)
+			if (@lhz_ghost == 1)
 			{
 				mes "[???]";
 				mes "......";
@@ -5436,9 +5436,9 @@ lhz_dun01.gat,225,198,0	duplicate(#kiz01-1)	#kiz01-4	139,3,3
 lhz_dun02.gat,244,229,0	script	#kiz02-1	139,3,3,{
 
 OnTouch:
-	if(countitem(7345))
+	if (countitem(7345))
 	{
-		if(!lhz_curse)
+		if (!lhz_curse)
 		{
 			soundeffect "tao_gunka_stand.wav",0;
 			set lhz_curse,1;
@@ -5449,7 +5449,7 @@ OnTouch:
 			set @lhz_ghost,rand(1,10);
 			sc_start SC_CURSE,1000,0;
 			soundeffect "tao_gunka_stand.wav",0;
-			if(@lhz_ghost == 1)
+			if (@lhz_ghost == 1)
 			{
 				mes "[???]";
 				mes "......";
@@ -5481,9 +5481,9 @@ lhz_dun02.gat,94,199,0	duplicate(#kiz02-1)	#kiz02-4	139,3,3
 lhz_dun03.gat,244,51,0	script	#kiz03-1	139,3,3,{
 
 OnTouch:
-	if(countitem(7345))
+	if (countitem(7345))
 	{
-		if(!lhz_curse)
+		if (!lhz_curse)
 		{
 			soundeffect "tao_gunka_stand.wav",0;
 			set lhz_curse,1;
@@ -5494,7 +5494,7 @@ OnTouch:
 			set @lhz_ghost,rand(1,10);
 			sc_start SC_CURSE,1000,0;
 			soundeffect "tao_gunka_stand.wav",0;
-			if(@lhz_ghost == 1)
+			if (@lhz_ghost == 1)
 			{
 				mes "[???]";
 				mes "......";
@@ -5526,9 +5526,9 @@ lhz_dun03.gat,344,278,0	duplicate(#kiz03-1)	#kiz03-4	139,3,3
 lighthalzen.gat,344,278,0	script	#kiz03	139,2,2,{
 
 OnTouch:
-	if(countitem(7345))
+	if (countitem(7345))
 	{
-		if(!lhz_curse)
+		if (!lhz_curse)
 		{
 			sc_start SC_CURSE,1000,0;
 			soundeffect "tao_gunka_stand.wav",0;
@@ -5573,7 +5573,7 @@ OnTouch:
 			close2;
 			callfunc "F_EndAllStatuses";
 			sc_start SC_CURSE,5000,0;
-			if(!lhz_spi01) set lhz_spi01,1;
+			if (!lhz_spi01) set lhz_spi01,1;
 			end;
 		}
 	}
@@ -5582,9 +5582,9 @@ OnTouch:
 lhz_in03.gat,178,22,0	script	#kiz04	139,2,2,{
 
 OnTouch:
-	if(countitem(7345))
+	if (countitem(7345))
 	{
-		if(!lhz_curse)
+		if (!lhz_curse)
 		{
 			sc_start SC_CURSE,1000,0;
 			soundeffect "tao_gunka_stand.wav",0;
@@ -5657,7 +5657,7 @@ OnTouch:
 			soundeffect "tao_gunka_stand.wav",0;
 			callfunc "F_EndAllStatuses";
 			sc_start SC_CURSE,5000,0;
-			if(!lhz_spi02) set lhz_spi02,1;
+			if (!lhz_spi02) set lhz_spi02,1;
 			end;
 		}
 	}
@@ -5666,9 +5666,9 @@ OnTouch:
 lighthalzen.gat,295,227,0	script	#kiz05	139,2,2,{
 
 OnTouch:
-	if(countitem(7345))
+	if (countitem(7345))
 	{
-		if(!lhz_curse)
+		if (!lhz_curse)
 		{
 			sc_start SC_CURSE,1000,0;
 			end;
@@ -5708,7 +5708,7 @@ OnTouch:
 			soundeffect "loli_ruri_stand.wav",0;
 			callfunc "F_EndAllStatuses";
 			sc_start SC_CURSE,3000,0;
-			if(!lhz_spi03) set lhz_spi03,1;
+			if (!lhz_spi03) set lhz_spi03,1;
 			end;
 		}
 	}
@@ -5717,9 +5717,9 @@ OnTouch:
 lighthalzen.gat,364,315,0	script	#kiz06	139,3,3,{
 
 OnTouch:
-	if(countitem(7345))
+	if (countitem(7345))
 	{
-		if(!lhz_curse)
+		if (!lhz_curse)
 		{
 			sc_start SC_CURSE,1000,0;
 			end;
@@ -5772,7 +5772,7 @@ OnTouch:
 			soundeffect "tao_gunka_stand.wav",0;
 			callfunc "F_EndAllStatuses";
 			sc_start SC_CURSE,5000,0;
-			if(!lhz_spi04) set lhz_spi04,1;
+			if (!lhz_spi04) set lhz_spi04,1;
 			end;
 		}
 	}
@@ -5781,9 +5781,9 @@ OnTouch:
 lhz_in01.gat,113,150,0	script	#kiz07	139,3,3,{
 
 OnTouch:
-	if(countitem(7345))
+	if (countitem(7345))
 	{
-		if(!lhz_curse)
+		if (!lhz_curse)
 		{
 			sc_start SC_CURSE,1000,0;
 			end;
@@ -5831,7 +5831,7 @@ OnTouch:
 			soundeffect "tao_gunka_stand.wav",0;
 			callfunc "F_EndAllStatuses";
 			sc_start SC_CURSE,3000,0;
-			if(lhz_curse == 6) set lhz_curse,7;
+			if (lhz_curse == 6) set lhz_curse,7;
 			end;
 		}
 	}
@@ -5840,9 +5840,9 @@ OnTouch:
 lhz_in01.gat,272,227,0	script	#kiz08	139,2,2,{
 
 OnTouch:
-	if(countitem(7345))
+	if (countitem(7345))
 	{
-		if(!lhz_curse)
+		if (!lhz_curse)
 		{
 			sc_start SC_CURSE,1000,0;
 			end;
@@ -5920,7 +5920,7 @@ OnTouch:
 			soundeffect "tao_gunka_stand.wav",0;
 			callfunc "F_EndAllStatuses";
 			sc_start SC_CURSE,3000,0;
-			if(lhz_curse == 11) set lhz_curse,12;
+			if (lhz_curse == 11) set lhz_curse,12;
 			end;
 		}
 	}
@@ -5929,9 +5929,9 @@ OnTouch:
 lhz_in01.gat,206,129,0	script	#kiz09	139,5,5,{
 
 OnTouch:
-	if(countitem(7345))
+	if (countitem(7345))
 	{
-		if(lhz_curse == 12)
+		if (lhz_curse == 12)
 		{
 			mes "...............";
 			next;
@@ -5953,9 +5953,9 @@ OnTouch:
 lhz_que01.gat,21,31,5	script	#Varmunt	755,{
 
 OnTouch:
-	if(countitem(7345))
+	if (countitem(7345))
 	{
-		if(lhz_curse == 12)
+		if (lhz_curse == 12)
 		{
 			mes "Doctor Varmunt,";
 			mes "you've finally agreed";
@@ -6098,9 +6098,9 @@ OnEmote:
 lhz_que01.gat,29,24,3	script	#Rekenber	754,{
 
 OnTouch:
-	if(countitem(7345))
+	if (countitem(7345))
 	{
-		if(lhz_curse == 12)
+		if (lhz_curse == 12)
 		{
 			mes "Doctor Varmunt,";
 			mes "you've finally agreed";
@@ -6243,9 +6243,9 @@ OnEmote:
 lhz_in01.gat,282,166,0	script	#kiz10	139,3,3,{
 
 OnTouch:
-	if(countitem(7345))
+	if (countitem(7345))
 	{
-		if(lhz_curse == 16)
+		if (lhz_curse == 16)
 		{
 			mes "...............";
 			next;
@@ -6266,7 +6266,7 @@ OnTouch:
 
 lhz_que01.gat,99,74,5	script	#pecomaster	48,{
 
-	if(checkweight(7341,1) != 1)
+	if (checkweight(7341,1) != 1)
 	{
 		mes "^3355FFWait a second! Right now,";
 		mes "you have too many items in your";
@@ -6421,7 +6421,7 @@ OnTouch:
 
 lighthalzen.gat,346,263,3	script	Elder	846,{
 
-	if((!countitem(7345)) || (lhz_curse > 18))
+	if ((!countitem(7345)) || (lhz_curse > 18))
 	{
 L_NoText:
 		mes "[Elder]";
@@ -6660,7 +6660,7 @@ L_NoText:
 	}
 	else if(lhz_curse == 17)
 	{
-		if(!countitem(7341))
+		if (!countitem(7341))
 		{
 			mes "[Elder]";
 			mes "I'm sorry, but there's";
@@ -6714,7 +6714,7 @@ L_NoText:
 	}
 	else if(lhz_curse == 18)
 	{
-		if((countitem(523) < 5) || (!countitem(744)) || (!countitem(7341)))
+		if ((countitem(523) < 5) || (!countitem(744)) || (!countitem(7341)))
 		{
 			mes "[Elder]";
 			mes "Hurry and bring";
@@ -6773,9 +6773,9 @@ L_NoText:
 
 lhz_in03.gat,32,162,3	script	Crippled Girl	53,{
 
-	if(lhz_curse == 23)
+	if (lhz_curse == 23)
 	{
-		if(countitem(7341))
+		if (countitem(7341))
 		{
 			mes "["+strcharinfo(0)+"]";
 			mes "Hey there, are";
@@ -6913,7 +6913,7 @@ lhz_in03.gat,32,162,3	script	Crippled Girl	53,{
 		mes "thanks for asking.";
 		mes "I'm just waiting for";
 		mes "somebody, that's all.";
-		if(lhz_curse == 19)
+		if (lhz_curse == 19)
 		{
 			next;
 			switch( select( "Show her the Pendant.","Okay, have a good day." ) )
@@ -7004,7 +7004,7 @@ lhz_in03.gat,32,162,3	script	Crippled Girl	53,{
 							mes "Yes! I must be okay";
 							mes "and be able to walk when my";
 							mes "brother come.";
-							if(!countitem(7341)) close;
+							if (!countitem(7341)) close;
 							next;
 							mes "^3131ffYou place the";
 							mes "old pendant";
@@ -7126,7 +7126,7 @@ lhz_in03.gat,32,162,3	script	Crippled Girl	53,{
 lighthalzen.gat,324,322,1	script	#lhz_door1	45,2,2,{
 
 OnTouch:
-	if((lhz_curse > 19) && (lhz_curse < 23))
+	if ((lhz_curse > 19) && (lhz_curse < 23))
 	{	
 		mes "^3131ffThe door is locked.^000000";
 		close;
@@ -7167,7 +7167,7 @@ OnTouch:
 lighthalzen.gat,319,321,0	script	#brother	139,3,3,{
 
 OnTouch:
-	if((lhz_curse == 24) || (lhz_curse == 25))
+	if ((lhz_curse == 24) || (lhz_curse == 25))
 	{
 		mes "*Shhhzzzz!*";
 		next;
@@ -7202,7 +7202,7 @@ OnTouch:
 		mes "Corporation^000000 and that";
 		mes "^FF0000Regenschirm Laboratory^000000.";
 		set lhz_curse,26;
-		if(BaseLevel < 70) getexp 800000,300000;
+		if (BaseLevel < 70) getexp 800000,300000;
 		else if(BaseLevel < 80) getexp 1000000,500000;
 		else if(BaseLevel < 90) getexp 1500000,800000;
 		else getexp 2000000,1000000;
@@ -7217,7 +7217,7 @@ lhz_in01.gat,114,181,3	script	Representative	71,{
 	mes "to the Rekenber Corporation.";
 	mes "How may I be of service today?";
 	next;
-	if(lhz_curse == 7) menu "Building Information",L_Building,"Corporation History",L_History;
+	if (lhz_curse == 7) menu "Building Information",L_Building,"Corporation History",L_History;
 	else menu "Building Information",L_Building;
 
 L_Building:
@@ -7303,7 +7303,7 @@ L_History:
 
 lhz_in01.gat,27,247,5	script	Representative	71,{
 
-	if(lhz_curse > 6)
+	if (lhz_curse > 6)
 	{
 		mes "[Representative]";
 		mes "Welcome to the";
@@ -7342,7 +7342,7 @@ lhz_in01.gat,27,247,5	script	Representative	71,{
 				mes "in science that enabled the";
 				mes "Rekenber Corporation to grow";
 				mes "into the nation's biggest company.";
-				if(lhz_curse == 8) set lhz_curse,9;
+				if (lhz_curse == 8) set lhz_curse,9;
 				else if(lhz_curse == 9) set lhz_curse,10;
 				next;
 				break;
@@ -7482,7 +7482,7 @@ lhz_in01.gat,25,251,3	script	Rekenber Guidebook	111,{
 	mes "by making the ancient power";
 	mes "of the gods more accessible";
 	mes "by means of new technologies.^000000";
-	if(lhz_curse == 10) set lhz_curse,11;
+	if (lhz_curse == 10) set lhz_curse,11;
 	next;
 	mes "...............";
 	close;
@@ -7490,7 +7490,7 @@ lhz_in01.gat,25,251,3	script	Rekenber Guidebook	111,{
 
 lhz_in01.gat,273,121,1	script	Mad Scientist	865,{
 
-	if(lhz_curse == 13)
+	if (lhz_curse == 13)
 	{
 		mes "[Wolfchev]";
 		mes "No one shall";
@@ -7562,7 +7562,7 @@ lhz_in01.gat,273,121,1	script	Mad Scientist	865,{
 	}
 	else if(lhz_curse == 15)
 	{
-		if(!countitem(746))
+		if (!countitem(746))
 		{
 			mes "[Wolfchev]";
 			mes "It's a round and shining thing!";
@@ -7681,7 +7681,7 @@ L_Ask1:
 
 lhz_in01.gat,286,226,3	script	Secretary Slierre	831,{
 
-	if(lhz_curse == 26)
+	if (lhz_curse == 26)
 	{
 		mes "[Sueii Slierre]";
 		mes "Excuse me, but you are";
@@ -8096,13 +8096,13 @@ L_Evidence:
 lhz_que01.gat,94,24,0	script	#trace	139,2,2,{
 
 OnTouch:
-	if(lhz_curse > 30)
+	if (lhz_curse > 30)
 	{
 		mes "^3131FFThere's no trace of";
 		mes "that mad scientist. Only";
 		mes "his stacks of well organized";
 		mes "files remain here in the lab.^000000";
-		if(lhz_curse == 31) set lhz_curse,32;
+		if (lhz_curse == 31) set lhz_curse,32;
 		close;
 	}
 }
@@ -8110,7 +8110,7 @@ OnTouch:
 lhz_in01.gat,43,114,1	script	#warp1	45,1,1,{
 
 OnTouch:
-	if(lhz_curse > 30)
+	if (lhz_curse > 30)
 	{
 		warp "lhz_que01.gat",97,30;
 		end;
@@ -8186,7 +8186,7 @@ lhz_in01.gat,269,114,3	script	Documents	111,{
 
 lighthalzen.gat,179,170,4	script	Ordinary Man	98,{
 
-	if(!lhz_boss)
+	if (!lhz_boss)
 	{
 		mes "[Ghalstein]";
 		mes "Hello there~";
@@ -8224,7 +8224,7 @@ lighthalzen.gat,179,170,4	script	Ordinary Man	98,{
 				break;
 		}
 		next;
-		if(BaseLevel < 60)
+		if (BaseLevel < 60)
 		{
 			mes "[Ghalstein]";
 			mes "Ha ha ha!";
@@ -8248,7 +8248,7 @@ lighthalzen.gat,179,170,4	script	Ordinary Man	98,{
 	else if(lhz_boss == 1)
 	{
 		set @weather,rand(1,5);
-		if(@weather == 4)
+		if (@weather == 4)
 		{
 			mes "[Ghalstein]";
 			mes "Hm? It's a little";
@@ -8635,7 +8635,7 @@ lighthalzen.gat,179,170,4	script	Ordinary Man	98,{
 		next;
 		mes "[??????]";
 		mes "^666666Now...^000000";
-		if(Sex == Male) mes "^666666Make him^000000";
+		if (Sex == Male) mes "^666666Make him^000000";
 		else mes "^666666Make her^000000";
 		mes "^666666swallow this pill.^000000";
 		next;
@@ -8720,7 +8720,7 @@ lighthalzen.gat,179,170,4	script	Ordinary Man	98,{
 	}
 	else if(lhz_boss == 7)
 	{
-		if(!MISC_QUEST&512)
+		if (!MISC_QUEST&512)
 		{
 			mes "[Ghalstein]";
 			mes "An error occurred.";
@@ -8882,7 +8882,7 @@ lighthalzen.gat,179,170,4	script	Ordinary Man	98,{
 lighthalzen.gat,173,167,1	script	Switch	139,2,4,{
 
 OnTouch:
-	if(lhz_boss == 1)
+	if (lhz_boss == 1)
 	{
 		mes "[??????]";
 		mes "^666666Come on.";
@@ -8965,7 +8965,7 @@ OnTouch:
 
 yuno_fild04.gat,165,245,4	script	Dismal Guy	89,{
 
-	if(lhz_boss < 8)
+	if (lhz_boss < 8)
 	{
 		mes "[Gushaar]";
 		mes "Decisions, decisions.";
@@ -9014,7 +9014,7 @@ yuno_fild04.gat,165,245,4	script	Dismal Guy	89,{
 				switch( select( "Oh, right!","What are you talking about?" ) )
 				{
 					case 1:
-						if(!countitem(7348))
+						if (!countitem(7348))
 						{
 							mes "[Gushaar]";
 							mes "Hey... Umm...";
@@ -9144,7 +9144,7 @@ yuno_fild04.gat,165,245,4	script	Dismal Guy	89,{
 
 yuno_pre.gat,69,20,4	script	Secretary#1	862,{
 
-	if(lhz_boss < 11)
+	if (lhz_boss < 11)
 	{
 		mes "[Hes O'Neil]";
 		mes "Good day, how";
@@ -9221,7 +9221,7 @@ yuno_pre.gat,69,20,4	script	Secretary#1	862,{
 		switch( select( "Show Secret Wing Card.","I'm here to see the president.","Nothing." ) )
 		{
 			case 1:
-				if(!countitem(7348))
+				if (!countitem(7348))
 				{
 					mes "^3355FFWait a second...";
 					mes "You don't seem to";
@@ -9230,7 +9230,7 @@ yuno_pre.gat,69,20,4	script	Secretary#1	862,{
 					mes "Membership Card.^000000";
 					close;
 				}
-				if(((gettime(3) > 10) && (gettime(3) < 15)) || ((gettime(3) > 19) && (gettime(3) <= 23)))
+				if (((gettime(3) > 10) && (gettime(3) < 15)) || ((gettime(3) > 19) && (gettime(3) <= 23)))
 				{
 					mes "^3355FFYou suavely flash";
 					mes "your ''Secret Wing''";
@@ -9306,7 +9306,7 @@ yuno_pre.gat,69,20,4	script	Secretary#1	862,{
 	}
 	else if(lhz_boss == 16)
 	{
-		if(!countitem(7342))
+		if (!countitem(7342))
 		{
 			mes "[Hes O'Neil]";
 			mes "Hm? I thought the";
@@ -9350,7 +9350,7 @@ yuno_pre.gat,69,20,4	script	Secretary#1	862,{
 		mes "Oh, the president";
 		mes "is expecting you.";
 		mes "Please, go right";
-		if(Sex == Male) mes "on ahead, sir.";
+		if (Sex == Male) mes "on ahead, sir.";
 		else mes "on ahead, ma'am.";
 		close2;
 		warp "yuno_pre.gat",113,53;
@@ -9400,7 +9400,7 @@ yuno_pre.gat,69,20,4	script	Secretary#1	862,{
 
 yuno_pre.gat,95,71,5	script	Guard	852,{
 
-	if(lhz_boss < 11)
+	if (lhz_boss < 11)
 	{
 		mes "[Guard]";
 		mes "You are in the";
@@ -9416,8 +9416,8 @@ yuno_pre.gat,95,71,5	script	Guard	852,{
 	}
 	else if(lhz_boss == 11 || lhz_boss == 12)
 	{
-		if(lhz_boss == 12) set @visit_pre,rand(1,10);
-		if(@visit_pre == 7)
+		if (lhz_boss == 12) set @visit_pre,rand(1,10);
+		if (@visit_pre == 7)
 		{
 			mes "[?????]";
 			mes "I see.";
@@ -9441,7 +9441,7 @@ yuno_pre.gat,95,71,5	script	Guard	852,{
 			mes "Yes, it's about time";
 			mes "for me to depart. Ah,";
 			mes "and may I ask who this";
-			if(Sex == Male) mes "young gentleman here is?";
+			if (Sex == Male) mes "young gentleman here is?";
 			else mes "lovely young lady is?";
 			next;
 			mes "[Guard]";
@@ -9469,7 +9469,7 @@ yuno_pre.gat,95,71,5	script	Guard	852,{
 		mes "Currently, the president";
 		mes "is seeing another guest.";
 		mes "Thank you for your patience.";
-		if(lhz_boss == 11) set lhz_boss,12;
+		if (lhz_boss == 11) set lhz_boss,12;
 		close;
 	}
 	else if(lhz_boss == 13)
@@ -9483,10 +9483,10 @@ yuno_pre.gat,95,71,5	script	Guard	852,{
 		switch( select( "Thank you.","Who was that gentleman...?" ) )
 		{
 			case 1:
-				if(Sex == Male) mes "A Mister "+strcharinfo(0)+"";
+				if (Sex == Male) mes "A Mister "+strcharinfo(0)+"";
 				else
 				{
-					if(PartnerId) mes "A Missis "+strcharinfo(0)+"";
+					if (PartnerId) mes "A Missis "+strcharinfo(0)+"";
 					else mes "A Miss "+strcharinfo(0)+"";
 				}
 				mes "has arrived to see you now.";
@@ -9537,7 +9537,7 @@ OnInit:
 
 yuno_pre.gat,69,79,4	script	Mr. President	872,{
 
-	if(checkweight(7342,1) != 1)
+	if (checkweight(7342,1) != 1)
 	{
 		mes "- Wait a moment! -";
 		mes "- Currently you're carrying -";
@@ -9547,7 +9547,7 @@ yuno_pre.gat,69,79,4	script	Mr. President	872,{
 		close;
 	}
 	cutin "lhz_karl.bmp",2;
-	if(lhz_boss < 11)
+	if (lhz_boss < 11)
 	{
 		mes "[Karl]";
 		mes "How did you get in here?";
@@ -9751,7 +9751,7 @@ L_Mission:
 	}
 	else if(lhz_boss == 21)
 	{
-		if(!countitem(7343))
+		if (!countitem(7343))
 		{
 			mes "[Karl]";
 			mes "Hm? I was expecting";
@@ -9794,7 +9794,7 @@ L_Mission:
 	else if(lhz_boss == 22)
 	{
 		set @read_pre,rand(1,5);
-		if(@read_pre == 3)
+		if (@read_pre == 3)
 		{
 			mes "[Karl]";
 			mes "Hm. After completely";
@@ -9833,7 +9833,7 @@ L_Mission:
 			mes "I don't want our enemies";
 			mes "to discover Shinokas before";
 			mes "we can get him to talk.";
-			if(Shinokas_Quest == 10) set lhz_boss,24;
+			if (Shinokas_Quest == 10) set lhz_boss,24;
 			else set lhz_boss,23;
 			close2;
 			cutin "",255;
@@ -9858,7 +9858,7 @@ L_Mission:
 	}
 	else if(lhz_boss == 23)
 	{
-		if(Shinokas_Quest == 10)
+		if (Shinokas_Quest == 10)
 		{
 			mes "[Karl]";
 			mes "Ymir's Heart Pieces?";
@@ -10015,7 +10015,7 @@ L_Mission:
 	else if(lhz_boss == 25)
 	{
 		set @talk_pre,rand(1,10);
-		if(@talk_pre == 8)
+		if (@talk_pre == 8)
 		{
 			mes "[Karl]";
 			mes "Alright, I just";
@@ -10082,7 +10082,7 @@ L_Mission:
 	}
 	else if(lhz_boss == 37)
 	{
-		if(!countitem(7344))
+		if (!countitem(7344))
 		{
 			mes "[Karl]";
 			mes "Did you find any";
@@ -10147,7 +10147,7 @@ L_Mission:
 	}
 	else if(lhz_boss == 39)
 	{
-		if(!countitem(7343))
+		if (!countitem(7343))
 		{
 			mes "[Karl]";
 			mes "You don't have the";
@@ -10331,7 +10331,7 @@ L_Mission:
 	}
 	else if(hg_tre == 56)
 	{
-		if(!countitem(7342))
+		if (!countitem(7342))
 		{
 			mes "["+strcharinfo(0)+"]";
 			mes "Ah, where did I put the record?";
@@ -10452,7 +10452,7 @@ OnInit:
 yuno_pre.gat,117,60,0	script	Eavesdrop	139,10,5,{
 
 OnTouch:
-	if(lhz_boss == 16)
+	if (lhz_boss == 16)
 	{
 		mes "^3355FFWhat the...?";
 		mes "You can hear";
@@ -10487,7 +10487,7 @@ OnTouch:
 
 aldebaran.gat,58,225,4	script	Kafra Employee#l1	116,{
 
-	if(lhz_boss != 17)
+	if (lhz_boss != 17)
 	{
 		mes "[Kafra Employee]";
 		mes "Welcome to the";
@@ -10557,7 +10557,7 @@ aldebaran.gat,58,225,4	script	Kafra Employee#l1	116,{
 
 aldeba_in.gat,155,240,5	script	Kafra Employee#l2	859,{
 
-	if(checkweight(7343,1) != 1)
+	if (checkweight(7343,1) != 1)
 	{
 		mes "^3355FFWait a second!";
 		mes "Right now, you're carrying";
@@ -10567,7 +10567,7 @@ aldeba_in.gat,155,240,5	script	Kafra Employee#l2	859,{
 		mes "to store some of your items.^000000";
 		close;
 	}
-	if(lhz_boss < 17)
+	if (lhz_boss < 17)
 	{
 		mes "[Kafra Employee]";
 		mes "Welcome to";
@@ -10681,7 +10681,7 @@ aldeba_in.gat,155,240,5	script	Kafra Employee#l2	859,{
 								close;
 
 							case 2:
-								if(!countitem(7348))
+								if (!countitem(7348))
 								{
 									mes "^3355FFWait...";
 									mes "You can't show";
@@ -10761,7 +10761,7 @@ aldeba_in.gat,155,240,5	script	Kafra Employee#l2	859,{
 	}
 	else if(lhz_boss == 19)
 	{
-		if(!countitem(7343))
+		if (!countitem(7343))
 		{
 			mes "[Benith]";
 			mes "Please hurry!";
@@ -10838,7 +10838,7 @@ aldeba_in.gat,155,240,5	script	Kafra Employee#l2	859,{
 
 lhz_fild02.gat,228,214,0	script	Wounded Man	849,{
 
-	if(checkweight(7343,1) != 1)
+	if (checkweight(7343,1) != 1)
 	{
 		mes "^3355FFWait a second!";
 		mes "Right now, you're carrying";
@@ -10848,7 +10848,7 @@ lhz_fild02.gat,228,214,0	script	Wounded Man	849,{
 		mes "to store some of your items.^000000";
 		close;
 	}
-	if(lhz_boss < 18)
+	if (lhz_boss < 18)
 	{
 		mes "[?????]";
 		mes "^333333*Cough cough*^000000";
@@ -10893,7 +10893,7 @@ lhz_fild02.gat,228,214,0	script	Wounded Man	849,{
 				mes "are you working for...?";
 				next;
 				input @jargeah$;
-				if((@jargeah$ == "Kafra Corporation") || (@jargeah$ == "Secret Wing"))
+				if ((@jargeah$ == "Kafra Corporation") || (@jargeah$ == "Secret Wing"))
 				{
 					mes "[Jargeah]";
 					mes "Th-thank goodness!";
@@ -10940,7 +10940,7 @@ OnInit:
 lhz_fild02.gat,224,220,0	script	Wounded Man Switch	139,3,3,{
 
 OnTouch:
-	if(lhz_boss == 18)
+	if (lhz_boss == 18)
 	{
 		mes "[?????]";
 		mes "^333333*Cough cough*^000000";
@@ -10954,7 +10954,7 @@ OnTouch:
 lhz_fild01.gat,76,214,0	script	Esuna Trigger	139,5,5,{
 
 OnTouch:
-	if((lhz_boss == 26) || (lhz_boss == 36) || (lhz_boss == 38) || (lhz_boss == 40))
+	if ((lhz_boss == 26) || (lhz_boss == 36) || (lhz_boss == 38) || (lhz_boss == 40))
 	{
 		mes "[????]";
 		mes "Here,";
@@ -10968,9 +10968,9 @@ OnTouch:
 
 lhz_fild01.gat,66,219,4	script	Mysterious Woman	859,{
 
-	if(lhz_boss == 26)
+	if (lhz_boss == 26)
 	{
-		if(checkweight(7343,1) != 1)
+		if (checkweight(7343,1) != 1)
 		{
 			mes "^3355FFWait a second!";
 			mes "Right now, you're carrying";
@@ -11182,7 +11182,7 @@ OnInit:
 
 lhz_in01.gat,93,45,4	script	Researcher	865,{
 
-	if(lhz_boss < 28)
+	if (lhz_boss < 28)
 	{
 		mes "[Researcher]";
 		mes "You know what's weird?";
@@ -11191,7 +11191,7 @@ lhz_in01.gat,93,45,4	script	Researcher	865,{
 		mes "bombs? There's so many";
 		mes "others you could use, like";
 		mes "pink or yellow or or green...";
-		if(lhz_boss == 27)
+		if (lhz_boss == 27)
 		{
 			next;
 			mes "[Researcher]";
@@ -11211,7 +11211,7 @@ lhz_in01.gat,93,45,4	script	Researcher	865,{
 					mes "Heh, yeah, just like";
 					mes "in the movies. I like";
 					mes "the way you think~";
-					if(!countitem(7348)) close;
+					if (!countitem(7348)) close;
 					next;
 					mes "^3355FFYou surrepticiously";
 					mes "check the researcher's";
@@ -11284,7 +11284,7 @@ lhz_in01.gat,93,45,4	script	Researcher	865,{
 
 lhz_in01.gat,285,169,3	script	Researcher	865,{
 
-	if(checkweight(7349,1) != 1)
+	if (checkweight(7349,1) != 1)
 	{
 		mes "^3355FFWait a second!";
 		mes "Right now, you're carrying";
@@ -11294,7 +11294,7 @@ lhz_in01.gat,285,169,3	script	Researcher	865,{
 		mes "to store some of your items.^000000";
 		close;
 	}
-	if(lhz_boss < 27)
+	if (lhz_boss < 27)
 	{
 		mes "[Researcher]";
 		mes "This is a restricted";
@@ -11371,7 +11371,7 @@ lhz_in01.gat,285,169,3	script	Researcher	865,{
 	}
 	else if(lhz_boss == 35)
 	{
-		if((!countitem(7349)) || (!countitem(7344)))
+		if ((!countitem(7349)) || (!countitem(7344)))
 		{
 			mes "[Lestin]";
 			mes "My pass will get you inside,";
@@ -11438,10 +11438,10 @@ lhz_in01.gat,187,31,0	script	#Sneak	111,4,3,{
 	end;
 
 OnTouch:
-	if((lhz_boss > 27) && (lhz_boss < 35))
+	if ((lhz_boss > 27) && (lhz_boss < 35))
 	{
 		set @sneaktime,gettimetick(0) % 100;
-		if((@sneaktime < -10) && (@sneaktime > -59))
+		if ((@sneaktime < -10) && (@sneaktime > -59))
 		{
 			mes "^3355FFAs you approach";
 			mes "the corner, you can";
@@ -11489,7 +11489,7 @@ OnTouch:
 					switch( select( "Insert Card","Retreat" ) )
 					{
 						case 1:
-							if(!countitem(7349))
+							if (!countitem(7349))
 							{
 								mes "^3355FFYou forgot to bring";
 								mes "the card pass that";
@@ -11507,7 +11507,7 @@ OnTouch:
 							next;
 L_Enter:
 							input @sneakpass;
-							if(@sneakpass == 738495)
+							if (@sneakpass == 738495)
 							{
 								mes "^3355FF*Beep~*";
 								mes "You hear a pleasant";
@@ -11548,7 +11548,7 @@ L_Enter:
 							mes "should try to input it again.^000000";
 							set @sneakerror,@sneakerror +1;
 							next;
-							if(@sneakerror > 2)
+							if (@sneakerror > 2)
 							{
 									mes "[Security System]";
 									mes "*Gzzzzz*";
@@ -11619,7 +11619,7 @@ OnTimer190000:
 
 lhz_in01.gat,182,35,0	script	File Search Engine	111,{
 
-	if((lhz_boss > 28) && (lhz_boss < 35))
+	if ((lhz_boss > 28) && (lhz_boss < 35))
 	{
 		mes "^3355FFThis machine can be";
 		mes "used to locate specific";
@@ -11642,7 +11642,7 @@ L_Search:
 				mes "capital letters.^000000";
 				next;
 				input @sneaksearch$;
-				if((@sneaksearch$ == "kafra") || (@sneaksearch$ == "cool event"))
+				if ((@sneaksearch$ == "kafra") || (@sneaksearch$ == "cool event"))
 				{
 					mes "^663300[Search Result]";
 					mes "Documents regarding";
@@ -11749,7 +11749,7 @@ L_Search:
 
 lhz_in01.gat,177,31,0	script	Door#sneak	111,{
 
-	if(lhz_boss < 29)
+	if (lhz_boss < 29)
 	{
 		mes "[Guard]";
 		mes "This is a";
@@ -11787,7 +11787,7 @@ lhz_in01.gat,177,31,0	script	Door#sneak	111,{
 
 lhz_in01.gat,184,40,0	script	Area 1-5	111,{
 
-	if(checkweight(7344,1) != 1)
+	if (checkweight(7344,1) != 1)
 	{
 		mes "^3355FFWait a second!";
 		mes "Right now, you're carrying";
@@ -11797,7 +11797,7 @@ lhz_in01.gat,184,40,0	script	Area 1-5	111,{
 		mes "to store some of your items.^000000";
 		close;
 	}
-	if((lhz_boss > 28) && (lhz_boss < 31))
+	if ((lhz_boss > 28) && (lhz_boss < 31))
 	{
 		mes "^3355FFThere's literally thousands";
 		mes "of documents to sort through.";
@@ -11836,7 +11836,7 @@ lhz_in01.gat,184,40,0	script	Area 1-5	111,{
 
 lhz_in01.gat,184,52,0	script	Area 1-7	111,{
 
-	if((lhz_boss > 28) && (lhz_boss < 32))
+	if ((lhz_boss > 28) && (lhz_boss < 32))
 	{
 		mes "^3355FFThere's literally thousands";
 		mes "of documents to sort through.";
@@ -11898,7 +11898,7 @@ lhz_in01.gat,184,52,0	script	Area 1-7	111,{
 
 lhz_in01.gat,184,46,0	script	Area 3-2	111,{
 
-	if((lhz_boss > 28) && (lhz_boss < 30))
+	if ((lhz_boss > 28) && (lhz_boss < 30))
 	{
 		mes "^3355FFThere's literally thousands";
 		mes "of documents to sort through.";
@@ -11963,7 +11963,7 @@ lhz_in01.gat,184,46,0	script	Area 3-2	111,{
 
 lhz_in01.gat,184,48,0	script	Area 3-3	111,{
 
-	if((lhz_boss > 28) && (lhz_boss < 34))
+	if ((lhz_boss > 28) && (lhz_boss < 34))
 	{
 		mes "^3355FFThere's literally thousands";
 		mes "of documents to sort through.";
@@ -12011,7 +12011,7 @@ lhz_in01.gat,184,48,0	script	Area 3-3	111,{
 
 lhz_in01.gat,177,56,0	script	Area 6-1	111,{
 
-	if((lhz_boss > 28) && (lhz_boss < 33))
+	if ((lhz_boss > 28) && (lhz_boss < 33))
 	{
 		mes "^3355FFThere's literally thousands";
 		mes "of documents to sort through.";
@@ -12058,7 +12058,7 @@ lhz_in01.gat,177,56,0	script	Area 6-1	111,{
 
 lhz_dun02.gat,282,278,0	script	Broken Machine	111,{
 
-	if(checkweight(7346,1) != 1)
+	if (checkweight(7346,1) != 1)
 	{
 		mes "^3355FFWait a second!";
 		mes "Right now, you're carrying";
@@ -12068,7 +12068,7 @@ lhz_dun02.gat,282,278,0	script	Broken Machine	111,{
 		mes "to store some of your items.^000000";
 		close;
 	}
-	if(lhz_boss < 6)
+	if (lhz_boss < 6)
 	{
 		mes "^3355FFThere are several";
 		mes "broken machines lying";

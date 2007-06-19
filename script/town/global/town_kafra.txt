@@ -168,7 +168,7 @@ function	script	F_KafraMain	{
 		}
 		set Zeny,Zeny-'@price['@j];
 		set Kafra_PIT,Kafra_PIT+('@price['@j]/10);
-		switch ( getelementofarray(getarg(10),'@j) ) {
+		switch(getelementofarray(getarg(10),'@j)) {
 			case 1: warp "prontera.gat",116,72; 	break;
 			case 2: warp "izlude.gat",91,105; 	break;
 			case 3: warp "geffen.gat",120,39; 	break;
@@ -279,7 +279,7 @@ function	script	F_KafraMain	{
 		if (getarg(1)&(1<<'@i) == 0)
 			set '@serv$['@i],"";	// If the bit flag of SelectNum is not set, we remove the menu
 	}
-	switch (select('@serv$[0],'@serv$[1],'@serv$[2],'@serv$[3],'@serv$[4],'@serv$[5],'@serv$[6])) {
+	switch(select('@serv$[0],'@serv$[1],'@serv$[2],'@serv$[3],'@serv$[4],'@serv$[5],'@serv$[6])) {
 		case 1:
 			// Respawn point service (values 0 and 1 are not used)
 			sF_KafraSave 0,1,getarg(2),getarg(3),getarg(4),getarg(5),getarg(6),getarg(7);
@@ -817,7 +817,7 @@ niflheim.gat,202,180,3	script	Kafra Employee	791,{
 	mes "We are always near you, even if you're dying.";
 	mes "How can I help you?";
 	next;
-	switch (select("Use storage","Cancel.")) {
+	switch(select("Use storage","Cancel.")) {
 	case 1:
 		percentheal 0,-10;
 		callfunc "F_KafraStorage",150;
@@ -1205,70 +1205,70 @@ M_Menu:
 		"900- Sweet Potato 100 ea",M_1i, "1000- 1st Lottery Chance!",M_1j, "Next items",M_2, "Cancel",M_End;
 
 	M_1a:
-		if(RESRVPTS < 100) goto sL_LowPts1;
+		if (RESRVPTS < 100) goto sL_LowPts1;
 		mes "[Kafra]";
 		mes "Here you are.";
 		getitem 516, 7;
 		set RESRVPTS, RESRVPTS - 100;
 		close;
 	M_1b:
-		if(RESRVPTS < 200) goto sL_LowPts1;
+		if (RESRVPTS < 200) goto sL_LowPts1;
 		mes "[Kafra]";
 		mes "Here you are.";
 		getitem 516, 15;
 		set RESRVPTS, RESRVPTS - 200;
 		close;
 	M_1c:
-		if(RESRVPTS < 300) goto sL_LowPts1;
+		if (RESRVPTS < 300) goto sL_LowPts1;
 		mes "[Kafra]";
 		mes "Here you are.";
 		getitem 516, 25;
 		set RESRVPTS, RESRVPTS - 300;
 		close;
 	M_1d:
-		if(RESRVPTS < 400) goto sL_LowPts1;
+		if (RESRVPTS < 400) goto sL_LowPts1;
 		mes "[Kafra]";
 		mes "Here you are.";
 		getitem 516, 35;
 		set RESRVPTS, RESRVPTS - 400;
 		close;
 	M_1e:
-		if(RESRVPTS < 500) goto sL_LowPts1;
+		if (RESRVPTS < 500) goto sL_LowPts1;
 		mes "[Kafra]";
 		mes "Here you are.";
 		getitem 516, 50;
 		set RESRVPTS, RESRVPTS - 500;
 		close;
 	M_1f:
-		if(RESRVPTS < 600) goto sL_LowPts1;
+		if (RESRVPTS < 600) goto sL_LowPts1;
 		mes "[Kafra]";
 		mes "Here you are.";
 		getitem 516, 60;
 		set RESRVPTS, RESRVPTS - 600;
 		close;
 	M_1g:
-		if(RESRVPTS < 700) goto sL_LowPts1;
+		if (RESRVPTS < 700) goto sL_LowPts1;
 		mes "[Kafra]";
 		mes "Here you are.";
 		getitem 516, 75;
 		set RESRVPTS, RESRVPTS - 700;
 		close;
 	M_1h:
-		if(RESRVPTS < 800) goto sL_LowPts1;
+		if (RESRVPTS < 800) goto sL_LowPts1;
 		mes "[Kafra]";
 		mes "Here you are.";
 		getitem 516, 85;
 		set RESRVPTS, RESRVPTS - 800;
 		close;
 	M_1i:
-		if(RESRVPTS < 900) goto sL_LowPts1;
+		if (RESRVPTS < 900) goto sL_LowPts1;
 		mes "[Kafra]";
 		mes "Here you are.";
 		getitem 516, 100;
 		set RESRVPTS, RESRVPTS - 900;
 		close;
 	M_1j:
-		if(RESRVPTS < 1000) goto sL_LowPts1;
+		if (RESRVPTS < 1000) goto sL_LowPts1;
 		set RESRVPTS, RESRVPTS - 1000;
 		mes "[Kafra]";
 		mes "^0000FF1st Lottery Opportunity!!^000000";
@@ -1289,70 +1289,70 @@ M_Menu:
 			"3000- 2nd Lotery Chance!",M_2j, "Previous List",M_Menu, "Cancel",M_End;
 		
 		M_2a:
-			if(RESRVPTS < 1100) goto sL_LowPts2;
+			if (RESRVPTS < 1100) goto sL_LowPts2;
 			mes "[Kafra]";
 			mes "Here you are.";
 			getitem 501, 7;
 			set RESRVPTS, RESRVPTS - 1100;
 			close;
 		M_2b:
-			if(RESRVPTS < 1300) goto sL_LowPts2;
+			if (RESRVPTS < 1300) goto sL_LowPts2;
 			mes "[Kafra]";
 			mes "Here you are.";
 			getitem 501, 15;
 			set RESRVPTS, RESRVPTS - 1300;
 			close;
 		M_2c:
-			if(RESRVPTS < 1500) goto sL_LowPts2;
+			if (RESRVPTS < 1500) goto sL_LowPts2;
 			mes "[Kafra]";
 			mes "Here you are.";
 			getitem 501, 25;
 			set RESRVPTS, RESRVPTS - 1500;
 			close;
 		M_2d:
-			if(RESRVPTS < 1700) goto sL_LowPts2;
+			if (RESRVPTS < 1700) goto sL_LowPts2;
 			mes "[Kafra]";
 			mes "Here you are.";
 			getitem 501, 35;
 			set RESRVPTS, RESRVPTS - 1700;
 			close;
 		M_2e:
-			if(RESRVPTS < 1900) goto sL_LowPts2;
+			if (RESRVPTS < 1900) goto sL_LowPts2;
 			mes "[Kafra]";
 			mes "Here you are.";
 			getitem 501, 50;
 			set RESRVPTS, RESRVPTS - 1900;
 			close;
 		M_2f:
-			if(RESRVPTS < 2100) goto sL_LowPts2;
+			if (RESRVPTS < 2100) goto sL_LowPts2;
 			mes "[Kafra]";
 			mes "Here you are.";
 			getitem 501, 60;
 			set RESRVPTS, RESRVPTS - 2100;
 			close;
 		M_2g:
-			if(RESRVPTS < 2300) goto sL_LowPts2;
+			if (RESRVPTS < 2300) goto sL_LowPts2;
 			mes "[Kafra]";
 			mes "Here you are.";
 			getitem 501, 75;
 			set RESRVPTS, RESRVPTS - 2300;
 			close;
 		M_2h:
-			if(RESRVPTS < 2500) goto sL_LowPts2;
+			if (RESRVPTS < 2500) goto sL_LowPts2;
 			mes "[Kafra]";
 			mes "Here you are.";
 			getitem 501, 85;
 			set RESRVPTS, RESRVPTS - 2500;
 			close;
 		M_2i:
-			if(RESRVPTS < 2800) goto sL_LowPts2;
+			if (RESRVPTS < 2800) goto sL_LowPts2;
 			mes "[Kafra]";
 			mes "Here you are.";
 			getitem 501, 100;
 			set RESRVPTS, RESRVPTS - 2800;
 			close;
 		M_2j:
-			if(RESRVPTS < 3000) goto sL_LowPts2;
+			if (RESRVPTS < 3000) goto sL_LowPts2;
 			set RESRVPTS, RESRVPTS - 3000;
 			mes "[Kafra]";
 			mes "^0000FF2nd Lottery Opportunity!!^000000";
@@ -1394,19 +1394,19 @@ aldeba_in.gat,88,161,3	script	Kafra#05	115,{
 		menu "5000pts = 1st Lottery Chance!",sM_1st, "7000pts = 2nd Lottery Chance!",sM_2nd, "10000pts = 3rd Lottery Chance!",sM_3rd, "Cancel",M_End; 
 
 		sM_1st:
-			if(RESRVPTS < 5000) goto sL_NotEnuf;
+			if (RESRVPTS < 5000) goto sL_NotEnuf;
 			set RESRVPTS, RESRVPTS - 5000;
 			set @Lotto, 3;
 			callfunc "F_Lottery";
 			goto M_End;
 		sM_2nd:
-			if(RESRVPTS < 7000) goto sL_NotEnuf;
+			if (RESRVPTS < 7000) goto sL_NotEnuf;
 			set RESRVPTS, RESRVPTS - 7000;
 			set @Lotto, 4;
 			callfunc "F_Lottery";
 			goto M_End;
 		sM_3rd:
-			if(RESRVPTS < 10000) goto sL_NotEnuf;
+			if (RESRVPTS < 10000) goto sL_NotEnuf;
 			set RESRVPTS, RESRVPTS - 10000;
 			set @Lotto, 5;
 			callfunc "F_Lottery";
@@ -1438,7 +1438,7 @@ function	script	F_Lottery	{
 	mes "How many times do you want the Lottery Machine to spin? You can choose up to 5 times.";
 	next;
 	input @input;
-	if(@input < 1 || @input > 5) set @input, rand(1,5); //Lupus's fix
+	if (@input < 1 || @input > 5) set @input, rand(1,5); //Lupus's fix
 	callsub sF_Spin;
 	mes "[Kafra]";
 	mes "Ok~ Let me check the results~ guess what it is?";
@@ -1446,58 +1446,58 @@ function	script	F_Lottery	{
 	mes "[Kafra]";
 	mes "^FF0000Lets see.... This is...!!^000000";
 	next;
-	if(@temp <  1) goto sL_Prize1;
-	if(@temp <  2) goto sL_Prize2;
-	if(@temp <  3) goto sL_Prize3;
-	if(@temp <=  4) goto sL_Prize4;
+	if (@temp <  1) goto sL_Prize1;
+	if (@temp <  2) goto sL_Prize2;
+	if (@temp <  3) goto sL_Prize3;
+	if (@temp <=  4) goto sL_Prize4;
 	goto sL_Prize5;
 
 	sL_Prize1:
 		mes "[Kafra]";
 		mes "WOW!!!!..... You win!!! 1st Prize~! Congratulations~~ You got the 1st prize~~";
-		if(@Lotto == 1) getitem 2328,1;//Items: Wooden_Mail,
-		if(@Lotto == 2) getitem 2307,1;//Items: Mantle,
-		if(@Lotto == 3) getitem 657,10;//Items: Berserk_Potion,
-		if(@Lotto == 4) getitem 607,2;//Items: Yggdrasilberry,
-		if(@Lotto == 4) getitem 608,1;//Items: Yggdrasil_Seed,
-		if(@Lotto == 5) getitem 607,3;//Items: Yggdrasilberry,
+		if (@Lotto == 1) getitem 2328,1;//Items: Wooden_Mail,
+		if (@Lotto == 2) getitem 2307,1;//Items: Mantle,
+		if (@Lotto == 3) getitem 657,10;//Items: Berserk_Potion,
+		if (@Lotto == 4) getitem 607,2;//Items: Yggdrasilberry,
+		if (@Lotto == 4) getitem 608,1;//Items: Yggdrasil_Seed,
+		if (@Lotto == 5) getitem 607,3;//Items: Yggdrasilberry,
 		return;
 	sL_Prize2:
 		mes "[Kafra]";
 		mes "Oh! WOW! You've won the 2nd prize! Congratulations!!";
-		if(@Lotto == 1) getitem 2403,1;//Items: Shoes,
-		if(@Lotto == 2) getitem 2226,1;//Items: Cap,
-		if(@Lotto == 3) getitem 2201,1;//Items: Sunglasses,
-		if(@Lotto == 4) getitem 526,3;//Items: Royal_Jelly,
-		if(@Lotto == 5) getitem 608,1;//Items: Yggdrasil_Seed,
-		if(@Lotto == 5) getitem 526,10;//Items: Royal_Jelly,
+		if (@Lotto == 1) getitem 2403,1;//Items: Shoes,
+		if (@Lotto == 2) getitem 2226,1;//Items: Cap,
+		if (@Lotto == 3) getitem 2201,1;//Items: Sunglasses,
+		if (@Lotto == 4) getitem 526,3;//Items: Royal_Jelly,
+		if (@Lotto == 5) getitem 608,1;//Items: Yggdrasil_Seed,
+		if (@Lotto == 5) getitem 526,10;//Items: Royal_Jelly,
 		return;
 	sL_Prize3:
 		mes "[Kafra]";
 		mes "Congratulations! You've won the 3rd prize.";
-		if(@Lotto == 1) getitem 602,4;//Items: Butterfly_Wing,
-		if(@Lotto == 2) getitem 505,3;//Items: Blue_Potion,
-		if(@Lotto == 3) getitem 2203,1;//Items: Glasses,
-		if(@Lotto == 4) getitem 504,15;//Items: White_Potion,
-		if(@Lotto == 5) getitem 504,30;//Items: White_Potion,
+		if (@Lotto == 1) getitem 602,4;//Items: Butterfly_Wing,
+		if (@Lotto == 2) getitem 505,3;//Items: Blue_Potion,
+		if (@Lotto == 3) getitem 2203,1;//Items: Glasses,
+		if (@Lotto == 4) getitem 504,15;//Items: White_Potion,
+		if (@Lotto == 5) getitem 504,30;//Items: White_Potion,
 		return;
 	sL_Prize4:
 		mes "[Kafra]";
 		mes "You've won the 4th prize.";
-		if(@Lotto == 1) getitem 516,100;//Items: Sweet_Potato,
-		if(@Lotto == 2) getitem 501,150;//Items: Red_Potion,
-		if(@Lotto == 3) getitem 502,150;//Items: Orange_Potion,
-		if(@Lotto == 4) getitem 505,5;//Items: Blue_Potion,
-		if(@Lotto == 5) getitem 505,10;//Items: Blue_Potion,
+		if (@Lotto == 1) getitem 516,100;//Items: Sweet_Potato,
+		if (@Lotto == 2) getitem 501,150;//Items: Red_Potion,
+		if (@Lotto == 3) getitem 502,150;//Items: Orange_Potion,
+		if (@Lotto == 4) getitem 505,5;//Items: Blue_Potion,
+		if (@Lotto == 5) getitem 505,10;//Items: Blue_Potion,
 		return;
 	sL_Prize5:
 		mes "[Kafra]";
 		mes "You've won the 5th prize.";
-		if(@Lotto == 1) getitem 516,50;//Items: Sweet_Potato,
-		if(@Lotto == 2) getitem 501,100;//Items: Red_Potion,
-		if(@Lotto == 3) getitem 501,200;//Items: Red_Potion,
-		if(@Lotto == 4) getitem 501,250;//Items: Red_Potion,
-		if(@Lotto == 5) getitem 501,300;//Items: Red_Potion,
+		if (@Lotto == 1) getitem 516,50;//Items: Sweet_Potato,
+		if (@Lotto == 2) getitem 501,100;//Items: Red_Potion,
+		if (@Lotto == 3) getitem 501,200;//Items: Red_Potion,
+		if (@Lotto == 4) getitem 501,250;//Items: Red_Potion,
+		if (@Lotto == 5) getitem 501,300;//Items: Red_Potion,
 		return;
 
 sF_Spin:
@@ -1509,6 +1509,6 @@ sF_Spin:
 	next;
 	set @temp, rand(10);
 	set @input, @input -1;
-	if(@input <= 0) return;
+	if (@input <= 0) return;
 	goto sF_Spin;
 }

@@ -27,31 +27,31 @@
 function	script	F_AgitSummon	{
 	// This function changes AgitCode into a numerical value.
 	function sF_Enum {
-		if(getarg(0)=="L1") return 11;
-		if(getarg(0)=="L2") return 12;
-		if(getarg(0)=="L3") return 13;
-		if(getarg(0)=="L4") return 14;
-		if(getarg(0)=="L5") return 15;
-		if(getarg(0)=="B1") return 21;
-		if(getarg(0)=="B2") return 22;
-		if(getarg(0)=="B3") return 23;
-		if(getarg(0)=="B4") return 24;
-		if(getarg(0)=="B5") return 25;
-		if(getarg(0)=="C1") return 31;
-		if(getarg(0)=="C2") return 32;
-		if(getarg(0)=="C3") return 33;
-		if(getarg(0)=="C4") return 34;
-		if(getarg(0)=="C5") return 35;
-		if(getarg(0)=="V1") return 41;
-		if(getarg(0)=="V2") return 42;
-		if(getarg(0)=="V3") return 43;
-		if(getarg(0)=="V4") return 44;
-		if(getarg(0)=="V5") return 45;
+		if (getarg(0)=="L1") return 11;
+		if (getarg(0)=="L2") return 12;
+		if (getarg(0)=="L3") return 13;
+		if (getarg(0)=="L4") return 14;
+		if (getarg(0)=="L5") return 15;
+		if (getarg(0)=="B1") return 21;
+		if (getarg(0)=="B2") return 22;
+		if (getarg(0)=="B3") return 23;
+		if (getarg(0)=="B4") return 24;
+		if (getarg(0)=="B5") return 25;
+		if (getarg(0)=="C1") return 31;
+		if (getarg(0)=="C2") return 32;
+		if (getarg(0)=="C3") return 33;
+		if (getarg(0)=="C4") return 34;
+		if (getarg(0)=="C5") return 35;
+		if (getarg(0)=="V1") return 41;
+		if (getarg(0)=="V2") return 42;
+		if (getarg(0)=="V3") return 43;
+		if (getarg(0)=="V4") return 44;
+		if (getarg(0)=="V5") return 45;
 		return 0;
 	}
 
 	// Summoning of the Emperium
-	switch (sF_Enum(getarg(0))) {
+	switch(sF_Enum(getarg(0))) {
 		case 11: monster "aldeg_cas01.gat",216,24,"Emperium",1288,1,"AgitExe#L1::OnAgitBreak"; 	break;
 		case 12: monster "aldeg_cas02.gat",214,24,"Emperium",1288,1,"AgitExe#L2::OnAgitBreak"; 	break;
 		case 13: monster "aldeg_cas03.gat",206,32,"Emperium",1288,1,"AgitExe#L3::OnAgitBreak"; 	break;
@@ -74,11 +74,11 @@ function	script	F_AgitSummon	{
 		case 45: monster "prtg_cas05.gat",266,266,"Emperium",1288,1,"AgitExe#V5::OnAgitBreak"; 	break;
 	}
 	set '@dummy,getmapxy('@map$,'@dummy,'@dummy,1);		// Only '@map$ is used.
-	if(getcastledata('@map$,1))
+	if (getcastledata('@map$,1))
 		return;					// Stop here if castle have a guild.
 
 	// Setup of the monsters' coordinates for each castle.
-	switch (sF_Enum(getarg(0))) {
+	switch(sF_Enum(getarg(0))) {
 		case 11: setarray '@pos,216,23; 	break;
 		case 12: setarray '@pos,213,23; 	break;
 		case 13: setarray '@pos,205,31; 	break;
@@ -101,7 +101,7 @@ function	script	F_AgitSummon	{
 		case 45: setarray '@pos,266,266; 	break;
 	}
 	// Summoning of monsters when castle has no guild.
-	switch (sF_Enum(getarg(0))/10) {
+	switch(sF_Enum(getarg(0))/10) {
 	case 1:	// Aldebaran
 		areamonster '@map$,0,0,0,0,"Evil Druid",1117,10;
 		areamonster '@map$,0,0,0,0,"Khalitzburg",1132,4;
@@ -188,7 +188,7 @@ function	script	F_AgitSummon	{
 //-------------------------------------------------------------------------
 
 function	script	F_GuardianCall	{
-	if(getarg(0)=="L1") {
+	if (getarg(0)=="L1") {
 		switch(getarg(1)) {
 			case 10: monster "aldeg_cas01.gat",17,218,"--ja--",1287,1,"#GuardianKilled::On_L1_10"; 	break;
 			case 11: monster "aldeg_cas01.gat",39,205,"--ja--",1285,1,"#GuardianKilled::On_L1_11"; 	break;
@@ -200,7 +200,7 @@ function	script	F_GuardianCall	{
 			case 17: monster "aldeg_cas01.gat",45,228,"--ja--",1285,1,"#GuardianKilled::On_L1_17"; 	break;
 		}
 	}
-	if(getarg(0)=="L2") {
+	if (getarg(0)=="L2") {
 		switch(getarg(1)) {
 			case 10: monster "aldeg_cas02.gat",51,183,"--ja--",1287,1,"#GuardianKilled::On_L2_10"; 	break;
 			case 11: monster "aldeg_cas02.gat",27,184,"--ja--",1286,1,"#GuardianKilled::On_L2_11"; 	break;
@@ -212,7 +212,7 @@ function	script	F_GuardianCall	{
 			case 17: monster "aldeg_cas02.gat",36,183,"--ja--",1285,1,"#GuardianKilled::On_L2_17"; 	break;
 		}
 	}
-	if(getarg(0)=="L3") {
+	if (getarg(0)=="L3") {
 		switch(getarg(1)) {
 			case 10: monster "aldeg_cas03.gat",110,217,"--ja--",1285,1,"#GuardianKilled::On_L3_10"; break;
 			case 11: monster "aldeg_cas03.gat",90,112,"--ja--",1286,1,"#GuardianKilled::On_L3_11"; 	break;
@@ -224,7 +224,7 @@ function	script	F_GuardianCall	{
 			case 17: monster "aldeg_cas03.gat",212,160,"--ja--",1285,1,"#GuardianKilled::On_L3_17"; break;
 		}
 	}
-	if(getarg(0)=="L4") {
+	if (getarg(0)=="L4") {
 		switch(getarg(1)) {
 			case 10: monster "aldeg_cas04.gat",187,100,"--ja--",1285,1,"#GuardianKilled::On_L4_10"; break;
 			case 11: monster "aldeg_cas04.gat",192,42,"--ja--",1285,1,"#GuardianKilled::On_L4_11"; 	break;
@@ -236,7 +236,7 @@ function	script	F_GuardianCall	{
 			case 17: monster "aldeg_cas04.gat",48,72,"--ja--",1286,1,"#GuardianKilled::On_L4_17"; 	break;
 		}
 	}
-	if(getarg(0)=="L5") {
+	if (getarg(0)=="L5") {
 		switch(getarg(1)) {
 			case 10: monster "aldeg_cas05.gat",51,202,"--ja--",1285,1,"#GuardianKilled::On_L5_10"; 	break;
 			case 11: monster "aldeg_cas05.gat",27,221,"--ja--",1286,1,"#GuardianKilled::On_L5_11"; 	break;
@@ -248,7 +248,7 @@ function	script	F_GuardianCall	{
 			case 17: monster "aldeg_cas05.gat",41,112,"--ja--",1286,1,"#GuardianKilled::On_L5_17"; 	break;
 		}
 	}
-	if(getarg(0)=="B1") {
+	if (getarg(0)=="B1") {
 		switch(getarg(1)) {
 			case 10: monster "gefg_cas01.gat",67,179,"--ja--",1287,1,"#GuardianKilled::On_B1_10"; 	break;
 			case 11: monster "gefg_cas01.gat",36,186,"--ja--",1285,1,"#GuardianKilled::On_B1_11"; 	break;
@@ -260,7 +260,7 @@ function	script	F_GuardianCall	{
 			case 17: monster "gefg_cas01.gat",200,167,"--ja--",1286,1,"#GuardianKilled::On_B1_17"; 	break;
 		}
 	}
-	if(getarg(0)=="B2") {
+	if (getarg(0)=="B2") {
 		switch(getarg(1)) {
 			case 10: monster "gefg_cas02.gat",64,168,"--ja--",1287,1,"#GuardianKilled::On_B2_10"; 	break;
 			case 11: monster "gefg_cas02.gat",35,148,"--ja--",1285,1,"#GuardianKilled::On_B2_11"; 	break;
@@ -272,7 +272,7 @@ function	script	F_GuardianCall	{
 			case 17: monster "gefg_cas02.gat",159,188,"--ja--",1286,1,"#GuardianKilled::On_B2_17"; 	break;
 		}
 	}
-	if(getarg(0)=="B3") {
+	if (getarg(0)=="B3") {
 		switch(getarg(1)) {
 			case 10: monster "gefg_cas03.gat",48,176,"--ja--",1285,1,"#GuardianKilled::On_B3_10"; 	break;
 			case 11: monster "gefg_cas03.gat",113,214,"--ja--",1285,1,"#GuardianKilled::On_B3_11"; 	break;
@@ -284,7 +284,7 @@ function	script	F_GuardianCall	{
 			case 17: monster "gefg_cas03.gat",238,160,"--ja--",1286,1,"#GuardianKilled::On_B3_17"; 	break;
 		}
 	}
-	if(getarg(0)=="B4") {
+	if (getarg(0)=="B4") {
 		switch(getarg(1)) {
 			case 10: monster "gefg_cas04.gat",53,191,"--ja--",1285,1,"#GuardianKilled::On_B4_10"; 	break;
 			case 11: monster "gefg_cas04.gat",31,178,"--ja--",1285,1,"#GuardianKilled::On_B4_11"; 	break;
@@ -296,7 +296,7 @@ function	script	F_GuardianCall	{
 			case 17: monster "gefg_cas04.gat",148,189,"--ja--",1286,1,"#GuardianKilled::On_B4_17"; 	break;
 		}
 	}
-	if(getarg(0)=="B5") {
+	if (getarg(0)=="B5") {
 		switch(getarg(1)) {
 			case 10: monster "gefg_cas05.gat",45,149,"--ja--",1285,1,"#GuardianKilled::On_B5_10"; 	break;
 			case 11: monster "gefg_cas05.gat",71,163,"--ja--",1285,1,"#GuardianKilled::On_B5_11"; 	break;
@@ -308,7 +308,7 @@ function	script	F_GuardianCall	{
 			case 17: monster "gefg_cas05.gat",193,166,"--ja--",1286,1,"#GuardianKilled::On_B5_17"; 	break;
 		}
 	}
-	if(getarg(0)=="C1") {
+	if (getarg(0)=="C1") {
 		switch(getarg(1)) {
 			case 10: monster "payg_cas01.gat",229,92,"--ja--",1285,1,"#GuardianKilled::On_C1_10"; 	break;
 			case 11: monster "payg_cas01.gat",225,80,"--ja--",1285,1,"#GuardianKilled::On_C1_11"; 	break;
@@ -320,7 +320,7 @@ function	script	F_GuardianCall	{
 			case 17: monster "payg_cas01.gat",138,133,"--ja--",1286,1,"#GuardianKilled::On_C1_17"; 	break;
 		}
 	}
-	if(getarg(0)=="C2") {
+	if (getarg(0)=="C2") {
 		switch(getarg(1)) {
 			case 10: monster "payg_cas02.gat",237,54,"--ja--",1285,1,"#GuardianKilled::On_C2_10"; 	break;
 			case 11: monster "payg_cas02.gat",228,72,"--ja--",1285,1,"#GuardianKilled::On_C2_11"; 	break;
@@ -332,7 +332,7 @@ function	script	F_GuardianCall	{
 			case 17: monster "payg_cas02.gat",27,20,"--ja--",1286,1,"#GuardianKilled::On_C2_17"; 	break;
 		}
 	}
-	if(getarg(0)=="C3") {
+	if (getarg(0)=="C3") {
 		switch(getarg(1)) {
 			case 10: monster "payg_cas03.gat",245,37,"--ja--",1285,1,"#GuardianKilled::On_C3_10"; 	break;
 			case 11: monster "payg_cas03.gat",269,51,"--ja--",1285,1,"#GuardianKilled::On_C3_11"; 	break;
@@ -344,7 +344,7 @@ function	script	F_GuardianCall	{
 			case 17: monster "payg_cas03.gat",268,244,"--ja--",1286,1,"#GuardianKilled::On_C3_17"; 	break;
 		}
 	}
-	if(getarg(0)=="C4") {
+	if (getarg(0)=="C4") {
 		switch(getarg(1)) {
 			case 10: monster "payg_cas04.gat",251,212,"--ja--",1285,1,"#GuardianKilled::On_C4_10"; 	break;
 			case 11: monster "payg_cas04.gat",232,212,"--ja--",1285,1,"#GuardianKilled::On_C4_11"; 	break;
@@ -356,7 +356,7 @@ function	script	F_GuardianCall	{
 			case 17: monster "payg_cas04.gat",270,41,"--ja--",1286,1,"#GuardianKilled::On_C4_17"; 	break;
 		}
 	}
-	if(getarg(0)=="C5") {
+	if (getarg(0)=="C5") {
 		switch(getarg(1)) {
 			case 10: monster "payg_cas05.gat",19,279,"--ja--",1285,1,"#GuardianKilled::On_C5_10"; 	break;
 			case 11: monster "payg_cas05.gat",33,260,"--ja--",1285,1,"#GuardianKilled::On_C5_11"; 	break;
@@ -368,7 +368,7 @@ function	script	F_GuardianCall	{
 			case 17: monster "payg_cas05.gat",36,36,"--ja--",1286,1,"#GuardianKilled::On_C5_17"; 	break;
 		}
 	}
-	if(getarg(0)=="V1") {
+	if (getarg(0)=="V1") {
 		switch(getarg(1)) {
 			case 10: monster "prtg_cas01.gat",182,68,"--ja--",1287,1,"#GuardianKilled::On_V1_10"; 	break;
 			case 11: monster "prtg_cas01.gat",182,116,"--ja--",1287,1,"#GuardianKilled::On_V1_11"; 	break;
@@ -380,7 +380,7 @@ function	script	F_GuardianCall	{
 			case 17: monster "prtg_cas01.gat",107,179,"--ja--",1286,1,"#GuardianKilled::On_V1_17"; 	break;
 		}
 	}
-	if(getarg(0)=="V2") {
+	if (getarg(0)=="V2") {
 		switch(getarg(1)) {
 			case 10: monster "prtg_cas02.gat",188,175,"--ja--",1286,1,"#GuardianKilled::On_V2_10"; 	break;
 			case 11: monster "prtg_cas02.gat",198,175,"--ja--",1286,1,"#GuardianKilled::On_V2_11"; 	break;
@@ -392,7 +392,7 @@ function	script	F_GuardianCall	{
 			case 17: monster "prtg_cas02.gat",75,175,"--ja--",1285,1,"#GuardianKilled::On_V2_17"; 	break;
 		}
 	}
-	if(getarg(0)=="V3") {
+	if (getarg(0)=="V3") {
 		switch(getarg(1)) {
 			case 10: monster "prtg_cas03.gat",191,190,"--ja--",1286,1,"#GuardianKilled::On_V3_10"; 	break;
 			case 11: monster "prtg_cas03.gat",137,190,"--ja--",1286,1,"#GuardianKilled::On_V3_11"; 	break;
@@ -404,7 +404,7 @@ function	script	F_GuardianCall	{
 			case 17: monster "prtg_cas03.gat",191,72,"--ja--",1285,1,"#GuardianKilled::On_V3_17"; 	break;
 		}
 	}
-	if(getarg(0)=="V4") {
+	if (getarg(0)=="V4") {
 		switch(getarg(1)) {
 			case 10: monster "prtg_cas04.gat",276,14,"--ja--",1286,1,"#GuardianKilled::On_V4_10"; 	break;
 			case 11: monster "prtg_cas04.gat",274,35,"--ja--",1286,1,"#GuardianKilled::On_V4_11"; 	break;
@@ -416,7 +416,7 @@ function	script	F_GuardianCall	{
 			case 17: monster "prtg_cas04.gat",36,61,"--ja--",1285,1,"#GuardianKilled::On_V4_17"; 	break;
 		}
 	}
-	if(getarg(0)=="V5") {
+	if (getarg(0)=="V5") {
 		switch(getarg(1)) {
 			case 10: monster "prtg_cas05.gat",266,262,"--ja--",1286,1,"#GuardianKilled::On_V5_10"; 	break;
 			case 11: monster "prtg_cas05.gat",287,280,"--ja--",1286,1,"#GuardianKilled::On_V5_11"; 	break;
@@ -428,7 +428,7 @@ function	script	F_GuardianCall	{
 			case 17: monster "prtg_cas05.gat",44,248,"--ja--",1285,1,"#GuardianKilled::On_V5_17"; 	break;
 		}
 	}
-	if(getarg(2)) {		// When the call origin (of the function) is a steward
+	if (getarg(2)) {		// When the call origin (of the function) is a steward
 		mes "[Steward "+strnpcinfo(0)+"]";
 		mes "The Guardian was set up.";
 		mes "The Guardian will defend our castle";

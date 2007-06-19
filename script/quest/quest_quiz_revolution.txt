@@ -100,7 +100,7 @@ prontera.gat,152,286,4	script	Receptionist::RecepQuiz	755,{
 						set @score_test, 0;
 						next;
 
-							if (@test_soonsu == 0){
+							if (@test_soonsu == 0) {
 								mes "^2f4f4f[Tsuji]^000000";
 								mes "1st question.";
 								mes "Ragnarok is a MMORPG game.";
@@ -201,7 +201,7 @@ prontera.gat,152,286,4	script	Receptionist::RecepQuiz	755,{
 								goto X0;
 
 
-							} else if (@test_soonsu == 1){
+							} else if (@test_soonsu == 1) {
 
 								mes "^2f4f4f[Tsuji]^000000";
 								mes "1st question.";
@@ -296,7 +296,7 @@ prontera.gat,152,286,4	script	Receptionist::RecepQuiz	755,{
 
 								goto X0;
 
-								} else if (@test_soonsu == 2){
+								} else if (@test_soonsu == 2) {
 
 								mes "1st question.";
 								mes "Ragnarok is a MMORPG game.";
@@ -1724,7 +1724,7 @@ if(quiz_rvl == 20) {
 				next;
 				menu "Join 1st round",-,"Join 2nd round",s2nd,"Join 3rd round",s3nd,"Join 4th round",s4nd,"Join 5th round",s5nd;
 				
-						if(quiz1 > 199){
+						if (quiz1 > 199) {
 							mes "[Kantryl]";
 							mes "I'm sorry. We are all full at";
 							mes "1st round of quiz revolution";
@@ -1745,7 +1745,7 @@ if(quiz_rvl == 20) {
 
 
 					s2nd:
-						if(quiz2 > 199){
+						if (quiz2 > 199) {
 								mes "[Kantryl]";
 							mes "I'm sorry. We are all full at";
 							mes "2nd round of quiz revolution";
@@ -1765,7 +1765,7 @@ if(quiz_rvl == 20) {
 
 
 					s3nd:
-						if(quiz3 > 199){
+						if (quiz3 > 199) {
 								mes "[Kantryl]";
 							mes "I'm sorry. We are all full at";
 							mes "3rd round of quiz revolution.";
@@ -1787,7 +1787,7 @@ if(quiz_rvl == 20) {
 
 							
 					s4nd:
-						if(quiz4 > 199){
+						if (quiz4 > 199) {
 								mes "[Kantryl]";
 							mes "I'm sorry. We are all full at";
 							mes "4th round of quiz revolution.";
@@ -1808,7 +1808,7 @@ if(quiz_rvl == 20) {
 
 					
 					s5nd:
-						if(quiz5 > 199){
+						if (quiz5 > 199) {
 								mes "[Kantryl]";
 							mes "I'm sorry. We are all full at";
 							mes "5th round of quiz revolution.";

@@ -2447,7 +2447,7 @@ alde_alche.gat,24,188,3	script	Guild Dealer	740,{
 		next;
 		switch(select("Purchase.","Quit.")) {
 		case 1:
-			if(Zeny < '@price) {
+			if (Zeny < '@price) {
 				mes "[Gever Al Sharp]";
 				mes "You don't";
 				mes "have enough zeny.";

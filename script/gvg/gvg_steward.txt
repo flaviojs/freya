@@ -37,7 +37,7 @@ function	script	sF_StewardMain	{
 	function sF_StewardSpeech {
 		set '@dummy,getmapxy('@map$,'@dummy,'@dummy,1);		// only '@map$ is used
 		set '@gid,getcastledata('@map$,1);
-		if('@gid <= 0) {
+		if ('@gid <= 0) {
 			mes "[Steward "+strnpcinfo(0)+"]";
 			mes "I am waiting for my master.";
 			//mes "";
@@ -45,7 +45,7 @@ function	script	sF_StewardMain	{
 			//mes "";
 			close;
 		}
-		if(getcharid(0) != getguildmasterid('@gid)) {
+		if (getcharid(0) != getguildmasterid('@gid)) {
 			mes "[Steward "+strnpcinfo(0)+"]";
 			mes "I am here to follow";
 			//mes "";
@@ -69,10 +69,10 @@ function	script	sF_StewardMain	{
 		mes "I will inform you on the state of the Castle:";
 		mes " ";
 		mes "^0000ffCurrent Commerce Investment is " +getcastledata('@map$,2)+ " point(s).";
-		if(getcastledata('@map$,4) != 0)
+		if (getcastledata('@map$,4) != 0)
 			mes "- You have invested " +getcastledata('@map$,4)+ " times today.";
 		mes "Current Defence Investment is " +getcastledata('@map$,3)+ " ‚Å‚·B^000000";
-		if(getcastledata('@map$,5) != 0)
+		if (getcastledata('@map$,5) != 0)
 			mes "^0000ff- You have invested " +getcastledata('@map$,5)+ " times today.^000000";
 		mes " ";
 		mes "That is about it.";
@@ -95,7 +95,7 @@ function	script	sF_StewardMain	{
 		//mes "";
 		next;
 		set '@count,getcastledata('@map$,4);
-		if('@count == 2) {
+		if ('@count == 2) {
 			mes "[Steward "+strnpcinfo(0)+"]";
 			mes "^ff0000You have already invested twice today,";
 			mes "and that's the limit.";
@@ -105,7 +105,7 @@ function	script	sF_StewardMain	{
 			close;
 		}
 		set '@val,getcastledata('@map$,2);
-		if('@val == 100) {	// check maxmimum value
+		if ('@val == 100) {	// check maxmimum value
 			mes "[Steward "+strnpcinfo(0)+"]";
 			mes "^ff0000Castle's commerce investment";
 			mes "is already at the maximum of 100 points.";
@@ -130,14 +130,14 @@ function	script	sF_StewardMain	{
 			break;
 		}
 		next;
-		if(select("Invest Commerce.","Cancel.")==2) {
+		if (select("Invest Commerce.","Cancel.")==2) {
 			mes "[Steward "+strnpcinfo(0)+"]";
 			mes "I'll wait for you.";
 			mes "There's no need to be in a hurry.";
 			mes "You can come back anytime.";
 			close;
 		}
-		if(Zeny < '@price) {	// Not enough money
+		if (Zeny < '@price) {	// Not enough money
 			mes "[Steward "+strnpcinfo(0)+"]";
 			mes "Master!";
 			mes "You do not have enough money to invest.";
@@ -169,7 +169,7 @@ function	script	sF_StewardMain	{
 		mes "but the second investment need an additional cost.";
 		next;
 		set '@count,getcastledata('@map$,5);
-		if('@count == 2) {
+		if ('@count == 2) {
 			mes "[Steward "+strnpcinfo(0)+"]";
 			mes "^ff0000You have already invested twice today,";
 			mes "and that's the limit.";
@@ -179,7 +179,7 @@ function	script	sF_StewardMain	{
 			close;
 		}
 		set '@val,getcastledata('@map$,3);
-		if('@val == 100) {	// check maxmimum value
+		if ('@val == 100) {	// check maxmimum value
 			mes "[Steward "+strnpcinfo(0)+"]";
 			mes "^ff0000Castle's Defence Investment is already maxed at 100 points.";
 			mes "You can not invest any further.^000000";
@@ -203,14 +203,14 @@ function	script	sF_StewardMain	{
 			break;
 		}
 		next;
-		if(select("Invest Defense.","Cancel.")==2) {
+		if (select("Invest Defense.","Cancel.")==2) {
 			mes "[Steward "+strnpcinfo(0)+"]";
 			mes "I'll wait for you.";
 			mes "There's no need to be in a hurry.";
 			mes "You can come back anytime.";
 			close;
 		}
-		if(Zeny < '@price) {	// Not enough money
+		if (Zeny < '@price) {	// Not enough money
 			mes "[Steward "+strnpcinfo(0)+"]";
 			mes "Master!";
 			mes "You do not have enough money to invest.";
@@ -245,7 +245,7 @@ function	script	sF_StewardMain	{
 		// It will check if a Guardian can be installed or not, and will indicate his HP.
 		// Moreover, you can install a Guardian even if it is already present, in this case, it will recover his HP.
 		set '@ret,select("Guardian 1","Guardian 2","Guardian 3","Guardian 4","Guardian 5","Guardian 6","Guardian 7","Guardian 8")+9;
-		if(getcastledata('@map$,'@ret)) {
+		if (getcastledata('@map$,'@ret)) {
 			mes "[Steward "+strnpcinfo(0)+"]";	// Guardian is already installed
 			mes "Master!";
 			mes "This Guardian has already been installed.";
@@ -258,7 +258,7 @@ function	script	sF_StewardMain	{
 		mes "this Guardian? You need";
 		mes "^ff000010000^000000Zenys.";
 		next;
-		if(select("Install the Guardian.","Cancel.")==2) {
+		if (select("Install the Guardian.","Cancel.")==2) {
 			mes "[Steward "+strnpcinfo(0)+"]";
 			mes "I'll wait for you.";
 			mes "When some room will be made";
@@ -266,7 +266,7 @@ function	script	sF_StewardMain	{
 			mes "to install a maximum of Guardians.";
 			close;
 		}
-		if(getgdskilllv(getcharid(2),GD_GUARDIANRESEARCH) == 0) {
+		if (getgdskilllv(getcharid(2),GD_GUARDIANRESEARCH) == 0) {
 			mes "[Steward "+strnpcinfo(0)+"]";
 			mes "I'm sorry Master but you cannot install";
 			mes "any Guardians right now.";
@@ -276,7 +276,7 @@ function	script	sF_StewardMain	{
 			mes "Guardian installation has been cancelled.";
 			close;
 		}
-		if(Zeny < 10000) {	// Not enough money
+		if (Zeny < 10000) {	// Not enough money
 			mes "[Steward "+strnpcinfo(0)+"]";
 			mes "Master!";
 			mes "You do not have enough money to install this Guardian.";
@@ -292,13 +292,13 @@ function	script	sF_StewardMain	{
 	// Section: Steward menu for Kafra contract
 	function sF_StewardKafra {
 		set '@dummy,getmapxy('@map$,'@dummy,'@dummy,1);
-		if(getcastledata('@map$,9)==0) {
+		if (getcastledata('@map$,9)==0) {
 			mes "[Steward "+strnpcinfo(0)+"]";
 			mes "Would you like to employ";
 			mes "the services of a Kafra?";
 			mes "You will need ^ff000010000^000000 Zenys to do so...";
 			next;
-			if(select("Employ Kafra.","Cancel.")==2) {
+			if (select("Employ Kafra.","Cancel.")==2) {
 				mes "[Steward "+strnpcinfo(0)+"]";
 				mes "I'll wait for you.";
 				mes "But the convenience of";
@@ -306,7 +306,7 @@ function	script	sF_StewardMain	{
 				mes "must not be forgotten.";
 				close;
 			}
-			if(getgdskilllv(getcharid(2),GD_KAFRACONTACT) == 0) {
+			if (getgdskilllv(getcharid(2),GD_KAFRACONTACT) == 0) {
 				mes "[Steward "+strnpcinfo(0)+"]";
 				mes "Master... The contract with";
 				mes "the Kafra Headquarter hasn't been made yet.";
@@ -320,7 +320,7 @@ function	script	sF_StewardMain	{
 				mes "Kafra installation has been cancelled.";
 				close;
 			}
-			if(Zeny < 10000) {	// Not enough money
+			if (Zeny < 10000) {	// Not enough money
 				mes "[Steward "+strnpcinfo(0)+"]";
 				mes "Master! You don't have enough money!";
 				close;
@@ -347,7 +347,7 @@ function	script	sF_StewardMain	{
 			mes "[Steward "+strnpcinfo(0)+"]";
 			mes "Would you like to lay off the current Kafra?";
 			next;
-			if(select("Lay off the Kafra.","Cancel.")==2) {
+			if (select("Lay off the Kafra.","Cancel.")==2) {
 				mes "[Steward "+strnpcinfo(0)+"]";
 				mes "Understood.";
 				close;
@@ -358,7 +358,7 @@ function	script	sF_StewardMain	{
 			mes "If I did, will you please forgive me?";
 			//mes "";
 			next;
-			if(select("Lay off the Kafra.","Cancel.")==2) {
+			if (select("Lay off the Kafra.","Cancel.")==2) {
 				mes "[Kafra]";
 				mes "Thank you Master!";
 				mes "I'll do my best!";
@@ -389,7 +389,7 @@ function	script	sF_StewardMain	{
 		mes "Only you, the Guild Master,";
 		mes "are allowed to enter this room.";
 		next;
-		if(select("Enter in Treasure Room.","Cancel.")==1) {
+		if (select("Enter in Treasure Room.","Cancel.")==1) {
 			mes "[Steward "+strnpcinfo(0)+"]";
 			mes "I will guide you.";
 			mes "Please follow me.";
@@ -417,13 +417,13 @@ function	script	sF_StewardMain	{
 		mes " ";
 		mes "Oh please reconsider Master!";
 		next;
-		if(select("Abandon the Castle.","Cancel.")==1) {
+		if (select("Abandon the Castle.","Cancel.")==1) {
 			mes "[Steward "+strnpcinfo(0)+"]";
 			mes "Master!";
 			mes "Oh please reconsider one more time.";
 			mes "Please I beg you!!!!!!!!";
 			next;
-			if(select("Cancel.","Abandon the Castle.")==2) {
+			if (select("Cancel.","Abandon the Castle.")==2) {
 				mes "[Steward "+strnpcinfo(0)+"]";
 				mes "Master!...";
 				mes "... it is... it is... the end...";
@@ -441,7 +441,7 @@ function	script	sF_StewardMain	{
 
 	// Here the main
 	sF_StewardSpeech;
-	switch (select("Display Castle state","Commercial investment","Defense investment","Install Guardians","Contract/Lay off with kafra","Enter in Treasure Room.","Abandon the Castle.")) {
+	switch(select("Display Castle state","Commercial investment","Defense investment","Install Guardians","Contract/Lay off with kafra","Enter in Treasure Room.","Abandon the Castle.")) {
 		case 1:
 			sF_StewardConf;
 			close;

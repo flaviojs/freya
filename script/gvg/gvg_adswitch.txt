@@ -31,11 +31,11 @@ function	script	F_DungeonSwitch	{
 	mes "There's a small switch.";
 	mes "Do you want to pull it?";
 	next;
-	if(select("Pull it.","Don't pull it.")==2)
+	if (select("Pull it.","Don't pull it.")==2)
 		return;
 	set '@dummy,getmapxy('@map$,'@dummy,'@dummy,1);		// It is a dummy except '@map$.
 	set '@gid,getcastledata('@map$,1);
-	if('@gid && '@gid == getcharid(2)) {
+	if ('@gid && '@gid == getcharid(2)) {
 		warp getarg(0),getarg(1),getarg(2);
 		end;
 	}

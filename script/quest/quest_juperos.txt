@@ -41,7 +41,7 @@ juperos_01.gat,100,91,0		script	juperoswarp4003		139,2,2,{
 	mes "Its warmth is...";
 	mes "Wrapping all over me...";
 	next;
-	if(select("Ah, it's so nice...","No! This is wrong!")==1) {
+	if (select("Ah, it's so nice...","No! This is wrong!")==1) {
 		gmcommand "@misceffect 348";
 		mes "^3355FF["+strcharinfo(0)+"]^000000";
 		mes "Ahhhh...";
@@ -85,7 +85,7 @@ jupe_gate.gat,50,171,0		script	juperoswarp4006		139,4,0{
 	mes "that will teleport you";
 	mes "to the previous floor.^000000";
 	next;
-	if(select("Use it.","Ignore it.")==1) {
+	if (select("Use it.","Ignore it.")==1) {
 		gmcommand "@misceffect 348";
 		next;
 		warp "juperos_02.gat",130,142;
@@ -154,13 +154,13 @@ OnKilled:
 OnTimer23000:
 	set 't,'t-1;
 	misceffect 561,"juperoswarp4005";
-	if('t == 2) {
+	if ('t == 2) {
 		sleep 4000;
 		announce "Attention, visitors. The gate to the next zone will close shortly.",9,0xE55AA4;
 		sleep 5000;
 		announce "1 minute remaining until Gate Closure.",9,0xE55AA4;
 	}
-	if('t == 0) {
+	if ('t == 0) {
 		sleep 2000;
 		hideonnpc "juperoswarp4005";
 		announce "The gate is being closed...",9,0xE55AA4;
@@ -359,7 +359,7 @@ OnSummon8:
 
 OnKilled:
 	set 'mob,'mob-1;
-	if('mob == 0) {
+	if ('mob == 0) {
 		sleep 2000;
 		switch('flag) {
 		case 1: donpcevent "jupe_area1::OnSummon2"; break;
@@ -397,7 +397,7 @@ jupe_area1.gat,88,224,0	script	#jupe_area1-1	844,{
 
 	set '@id,strcut(strnpcinfo(2),11);
 	cutin strcut(strnpcinfo(2),11),2;
-	if(getvariableofnpc('flag,"jupe_area1") != ('@id-1)*3) {
+	if (getvariableofnpc('flag,"jupe_area1") != ('@id-1)*3) {
 		mes "^3355FFThis seems like";
 		mes "some kind of device";
 		mes "that will allow you to";
@@ -417,9 +417,9 @@ jupe_area1.gat,88,224,0	script	#jupe_area1-1	844,{
 	mes "probably need to insert";
 	mes "some kind of object...^000000";
 	next;
-	if(select("Insert a Crest Piece.","Cancel.")==1) {
+	if (select("Insert a Crest Piece.","Cancel.")==1) {
 		set '@id,7355+'@id;
-		if(countitem('@id)) {
+		if (countitem('@id)) {
 			cutin strcut(strnpcinfo(2),11)+"-1",2;
 			misceffect 159;
 			mes "^3355FFYou take out your";
@@ -475,10 +475,10 @@ jupe_area1.gat,112,162,0	script	Lever#jupe_area1	844,{
 	mes "^3355FFIt's a lever";
 	mes "whose function";
 	mes "is not known to you.^000000";
-	if(getvariableofnpc('flag,"jupe_area1") != 12)
+	if (getvariableofnpc('flag,"jupe_area1") != 12)
 		close;
 	next;
-	if(select("Pull.","Cance.")==1) {
+	if (select("Pull.","Cance.")==1) {
 		hideonnpc;
 		hideoffnpc "juperoswarp5#jupe_area1";
 		misceffect 561,"juperoswarp5#jupe_area1";
@@ -508,7 +508,7 @@ jupe_area1.gat,83,221,0	script	juperoswarp1#jupe_area1	139,2,2{
 	case 3: warp "jupe_area1.gat",33,105; break;
 	case 4: warp "jupe_area1.gat",83,157; break;
 	}
-	if(getvariableofnpc('flag,"jupe_area1") == ('@n-1)*3)
+	if (getvariableofnpc('flag,"jupe_area1") == ('@n-1)*3)
 		donpcevent "jupe_area1::OnSummon"+('@n*2-1)+"";
 	end;
 
@@ -550,7 +550,7 @@ jupe_ele_r.gat,51,98,0	script	Switch#jupe_ele	844,{
 	mes "lever that's located";
 	mes "next to four empty slots.^000000";
 	next;
-	if(select("Pull the lever.","Leave it alone.")==2) {
+	if (select("Pull the lever.","Leave it alone.")==2) {
 		mes "^3355FFWho knows what";
 		mes "this lever may do?";
 		mes "You'll never know unless";
@@ -567,7 +567,7 @@ jupe_ele_r.gat,51,98,0	script	Switch#jupe_ele	844,{
 	mes "insert the correct objects";
 	mes "into the slots in order";
 	mes "for the lever to operate.^000000";
-	if(countitem(7356) < 1 && countitem(7357) < 1 && countitem(7358) < 1 && countitem(7359) < 1) {
+	if (countitem(7356) < 1 && countitem(7357) < 1 && countitem(7358) < 1 && countitem(7359) < 1) {
 		mes "^3355FFYou need to find";
 		mes "some kind of object";
 		mes "that you can fit into";
@@ -578,7 +578,7 @@ jupe_ele_r.gat,51,98,0	script	Switch#jupe_ele	844,{
 	}
 	next;
 	menu "Insert all of your Crest Pieces.",-;
-	if(countitem(7356) < 1 || countitem(7357) < 1 || countitem(7358) < 1 || countitem(7359) < 1) {
+	if (countitem(7356) < 1 || countitem(7357) < 1 || countitem(7358) < 1 || countitem(7359) < 1) {
 		mes "^3355FFRight now, you don't";
 		mes "have enough Crest Pieces";
 		mes "to place into all four of these";
@@ -667,7 +667,7 @@ OnInit:
 
 OnKilled:
 	set 'mob,'mob-1;
-	if('mob == 0) {
+	if ('mob == 0) {
 		stopnpctimer "Switch#jupe_ele";
 		sleep 5000;
 		announce "Those of you who have defeated the hallucination, step forward.",9,0x66FF00;
@@ -778,7 +778,7 @@ OnClear:
 
 OnKilled:
 	set 'mob,'mob-1;
-	if('mob == 0) {
+	if ('mob == 0) {
 		sleep 2000;
 		switch('flag) {
 		case 0: donpcevent "jupe_ele::OnSummon2"; break;

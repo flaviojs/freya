@@ -86,7 +86,7 @@ M_GOTO:
 	menu "Sure",-,"Cancel",M_CANCEL2;
 
 	mes "[Girl]";
-	if(Zeny < 10000){
+	if (Zeny < 10000) {
 		mes "...";
 		mes "You don't seem";
 		mes "to have 10,100 zeny...";
@@ -342,7 +342,7 @@ louyang.gat,276,136,4	script	Fist Master	819,{
 louyang.gat,272,133,0	script	Trainee::trainees	819,{
 
 	mes "[Trainee]";
-	switch(rand(12)){
+	switch(rand(12)) {
 	case 0:
 		mes "Aha~!";
 		mes "Hai~!!";
@@ -547,7 +547,7 @@ lou_in01.gat,25,23,4	script	Friendly Looking Lady	817,{
 
 s_Yes:
 	mes "[Hong Miao]";
-	if(zeny < 500){
+	if (zeny < 500) {
 		mes "I am sorry, but you don't have enough money.";
 		close;
 	}
@@ -598,11 +598,11 @@ lou_in02.gat,272,55,1	script	Familiar-Looking Patient	86,{
 
 lou_fild01.gat,195,177,4	script	Jiu Lian Bu#01	819,{
 
-	if(QL_SOUP2) goto L_DONE;
-	if(QL_SOUPQUEST)goto L_WHERE;
-	if(QL_GOTFAKESOUP) goto L_FAKE;
-	if(QL_GOTDRAGONSOUP) goto L_SOUP;
-	if(QL_ACCEPTSOUP) goto L_GORESTA;
+	if (QL_SOUP2) goto L_DONE;
+	if (QL_SOUPQUEST)goto L_WHERE;
+	if (QL_GOTFAKESOUP) goto L_FAKE;
+	if (QL_GOTDRAGONSOUP) goto L_SOUP;
+	if (QL_ACCEPTSOUP) goto L_GORESTA;
 	mes "[Jiu Lian Bu]";
 	mes "Hey~";
 	mes "What's up?";
@@ -777,8 +777,8 @@ L_WHERE:
 }
 
 lou_fild01.gat,175,174,4	script	Jiu Lian Bu#02	819,{
-	if(QL_SOUPQUEST < 1) goto L_DOQUEST;
-	if(QL_SOUP2 < 1) goto L_1STTIME;
+	if (QL_SOUPQUEST < 1) goto L_DOQUEST;
+	if (QL_SOUP2 < 1) goto L_1STTIME;
 	mes "[Jiu Lian Bu]";
 	mes "So...";
 	mes "Whaddya want to do?";
@@ -883,7 +883,7 @@ lou_in02.gat,61,175,2	script	Employee#01	818,2,2{
 	close;
 
 OnTouch:
-	if(QL_GOTDRAGONSOUP == 1 || QL_GOTFAKESOUP == 1) goto S_CAUGHT;
+	if (QL_GOTDRAGONSOUP == 1 || QL_GOTFAKESOUP == 1) goto S_CAUGHT;
 	end;
 
 S_CAUGHT:
@@ -897,8 +897,8 @@ S_CAUGHT:
 	mes "Wait a sec...";
 	mes "Are you a thief?!";
 	mes "Get out of here!!";
-	if(QL_GOTFAKESOUP == 1) set QL_GOTFAKESOUP,0;
-	if(QL_GOTDRAGONSOUP == 1) set QL_GOTDRAGONSOUP,0;
+	if (QL_GOTFAKESOUP == 1) set QL_GOTFAKESOUP,0;
+	if (QL_GOTDRAGONSOUP == 1) set QL_GOTDRAGONSOUP,0;
 	next;
 	mes "^3131FFYou have failed";
 	mes "^3131FFto steal the pot.";
@@ -912,8 +912,8 @@ lou_in02.gat,54,174,6	script	Employee#02	822,{
 }
 
 lou_in02.gat,50,185,4	script	Pot#01	111,{
-	if(QL_SOUPQUEST == 1) goto L_EMPTY;
-	if(QL_ACCEPTSOUP < 1) goto L_NORMAL;
+	if (QL_SOUPQUEST == 1) goto L_EMPTY;
+	if (QL_ACCEPTSOUP < 1) goto L_NORMAL;
 	mes "^3131FFBeneath the shadows, you find a large pot filled with dark, red liquid. What do you want to do?";
 	next;
 	menu "Take the pot.",-,"Look for another pot.",M_LOOK;
@@ -950,8 +950,8 @@ L_EMPTY:
 }
 
 lou_in02.gat,49,185,4	script	Pot#02	111,{
-	if(QL_SOUPQUEST == 1) goto L_EMPTY;
-	if(QL_ACCEPTSOUP < 1) goto L_NORMAL;
+	if (QL_SOUPQUEST == 1) goto L_EMPTY;
+	if (QL_ACCEPTSOUP < 1) goto L_NORMAL;
 	mes "^3131FFBeneath the shadows, you find a large pot filled with dark, red liquid. What do you want to do?";
 	next;
 	menu "Take the pot.",-,"Look for another pot.",M_LOOK;
@@ -988,7 +988,7 @@ L_EMPTY:
 }
 
 lou_in02.gat,62,183,4	script	Chef	820,{
-	if(QL_SOUPQUEST == 1) goto L_FINISHED;
+	if (QL_SOUPQUEST == 1) goto L_FINISHED;
 	mes "[Wang Shi Long]";
 	mes "Hello, are you";
 	mes "one of our customers?";
@@ -1043,7 +1043,7 @@ L_FINISHED:
 }
 
 lou_in02.gat,42,186,4	script	Liu Jia Lim	816,{
-	if(QL_SOUPQUEST == 1) goto L_FINISHED;
+	if (QL_SOUPQUEST == 1) goto L_FINISHED;
 	mes "[Liu Jia Lim]";
 	mes "Do you know what's the best dish at this restaurant? It's Dragon Soup! They've been selling it here for as long as this restaurant has been around";
 	next;
@@ -1067,7 +1067,7 @@ L_FINISHED:
 }
 
 lou_in02.gat,80,173,2	script	Li Min	746,{
-	if(QL_SOUPQUEST == 1) goto L_FINISHED;
+	if (QL_SOUPQUEST == 1) goto L_FINISHED;
 	mes "[Li Min]";
 	mes "Well, I don't really";
 	mes "live here in Louyang.";
@@ -1112,7 +1112,7 @@ L_FINISHED:
 }
 
 louyang.gat,174,150,4	script	Liu Chi Ling	815,{
-	if(QL_SOUPQUEST == 1) goto L_RUMOR;
+	if (QL_SOUPQUEST == 1) goto L_RUMOR;
 	mes "[Jiu Chi Ling]";
 	mes "I'm worried about my brother.";
 	mes "He's young, rebellious and doesn't";
@@ -1152,9 +1152,9 @@ L_RUMOR:
 
 lou_in02.gat,210,47,8	script	City Hall Officer	825,{
 
-	if(QL_GOTCOMPROP == 1)goto L_BEENTOHIM;
-	if(QL_LOUBRIBE == 1)goto L_OFFICER;
-	if(QL_BEENTOSTORAGE == 1)goto L_QUEST;
+	if (QL_GOTCOMPROP == 1)goto L_BEENTOHIM;
+	if (QL_LOUBRIBE == 1)goto L_OFFICER;
+	if (QL_BEENTOSTORAGE == 1)goto L_QUEST;
 	mes "[Jin Chiyuan]";
 	mes "^6A6A6A*Yawn~*^000000";
 	mes "Gosh, this hot weather is such a pain. Oh? You look like a tourist. Are you enjoying your stay?";
@@ -1186,8 +1186,8 @@ L_QUEST:
 
 M_BRIBE:
 	input @loubribe;
-	if(@loubribe < 10000)goto L_POOR;
-	if(zeny < @loubribe)goto L_NOTENOUGH;
+	if (@loubribe < 10000)goto L_POOR;
+	if (zeny < @loubribe)goto L_NOTENOUGH;
 	set Zeny, Zeny - @loubribe;
 	set QL_LOUBRIBE,1;
 	mes "[Jin Chiyuan]";
@@ -1248,9 +1248,9 @@ L_BEENTOHIM:
 }
 
 lou_in02.gat,156,38,8	script	Studying Officer	822,{
-	if(QL_GOTCOMPROP == 1)goto L_RANT2;
-	if(QL_LOUBRIBE == 1)goto L_BRIBED;
-	if(QL_BEENTOSTORAGE == 1)goto L_RANT;
+	if (QL_GOTCOMPROP == 1)goto L_RANT2;
+	if (QL_LOUBRIBE == 1)goto L_BRIBED;
+	if (QL_BEENTOSTORAGE == 1)goto L_RANT;
 	mes "[Huang Zhishu]";
 	mes ".....";
 	mes "^6A6A6A*Mumble mumble*^000000";
@@ -1311,7 +1311,7 @@ L_DOCU:
 	mes "You want..";
 	mes "a " + @loudocument$ + "?";
 	next;
-	if(@loudocument$ != "Communication Proposal")goto L_WHAT;
+	if (@loudocument$ != "Communication Proposal")goto L_WHAT;
 	mes "[Huang Zhishu]";
 	mes "Now where did I put that? You want a Communication Proposal, huh? I think I'll need some time to find it. Ah, right. I think I know where I put that.";
 	next;
@@ -1364,9 +1364,9 @@ L_RANT2:
 }
 
 lou_in02.gat,248,166,2	script	Tool Shop Master	824,{
-	if(QL_GOTHERB == 1)goto L_HERB;
-	if(QL_TOOLMASTER == 1)goto L_STORAGE;
-	if(QL_DOCQUEST == 1)goto L_QUEST;
+	if (QL_GOTHERB == 1)goto L_HERB;
+	if (QL_TOOLMASTER == 1)goto L_STORAGE;
+	if (QL_DOCQUEST == 1)goto L_QUEST;
 L_HERB:
 	mes "[Wang Chuiyi]";
 	mes "My business hasn't been doing well recently. And what is wrong with this weather? I don't know what's going on with the world...";
@@ -1406,9 +1406,9 @@ L_STORAGE:
 }
 
 lou_in02.gat,201,166,5	script	Storage Keeper	819,{
-	if(QL_GOTCOMPROP == 1)goto L_FINALLY;
-	if(QL_BEENTOSTORAGE == 1)goto L_LAZY;
-	if(QL_TOOLMASTER == 1)goto L_QUEST;
+	if (QL_GOTCOMPROP == 1)goto L_FINALLY;
+	if (QL_BEENTOSTORAGE == 1)goto L_LAZY;
+	if (QL_TOOLMASTER == 1)goto L_QUEST;
 	mes "[Jiang Xiayou]";
 	mes "^6A6A6A*Yawn...*^000000";
 	mes "This is boring...";
@@ -1533,10 +1533,10 @@ L_FINALLY:
 
 lou_in02.gat,265,69,4	script	Doctor	814,{
 
-	if(QL_DOCQUEST == 1) goto L_MED;
-	if(QL_DOCQUEST == 2) goto L_RANT;
-	if(QL_DOCQUEST == 3) goto L_CHECKITM;
-	if(QL_DOC1STTIME == 1) goto L_QUEST;
+	if (QL_DOCQUEST == 1) goto L_MED;
+	if (QL_DOCQUEST == 2) goto L_RANT;
+	if (QL_DOCQUEST == 3) goto L_CHECKITM;
+	if (QL_DOC1STTIME == 1) goto L_QUEST;
 	mes "[Hua Tuo]";
 	mes "There are many pressure points on the human body. Ever since ancient times, it has been believed that each pressure point was limited to its role and functions.";
 	next;
@@ -1616,7 +1616,7 @@ M_SHAME:
 	close;
 
 L_MED:
-	if(countitem(7252) == 0)goto L_NOMED;
+	if (countitem(7252) == 0)goto L_NOMED;
 	delitem 7252,1; //Herbal Medicine
 	mes "[Hua Tuo]";
 	mes "Ah, finally...";
@@ -1693,12 +1693,12 @@ L_RANT:
 	close;
 
 L_CHECKITM:
-	if(countitem(7172) < 2)goto L_NOTENOUGH; //Leopard Claw
-	if(countitem(7164) < 10)goto L_NOTENOUGH; //Solid Peach
-	if(countitem(7155) < 5)goto L_NOTENOUGH; //Poisonous Toad Skin
-	if(countitem(7188) < 20)goto L_NOTENOUGH; //Brown Root
-	if(countitem(7193) < 10)goto L_NOTENOUGH; //Sprout
-	if(countitem(7121) < 5)goto L_NOTENOUGH; //Honey Pot
+	if (countitem(7172) < 2)goto L_NOTENOUGH; //Leopard Claw
+	if (countitem(7164) < 10)goto L_NOTENOUGH; //Solid Peach
+	if (countitem(7155) < 5)goto L_NOTENOUGH; //Poisonous Toad Skin
+	if (countitem(7188) < 20)goto L_NOTENOUGH; //Brown Root
+	if (countitem(7193) < 10)goto L_NOTENOUGH; //Sprout
+	if (countitem(7121) < 5)goto L_NOTENOUGH; //Honey Pot
 	delitem 7172,2; //Leopard Claw
 	delitem 7164,10; //Solid Peach
 	delitem 7155,5; //Poisonous Toad Skin
@@ -1738,7 +1738,7 @@ lou_fild01.gat,224,348,7	script	Lady#04	817,{
 	emotion 30;
 	mes "[Lady]";
 	mes "You're at the entrance of Louyang.";
-	if(QL_POISONKING > 8)
+	if (QL_POISONKING > 8)
 	{
 	mes "I hope you have a good time~";
 	close;
@@ -1751,7 +1751,7 @@ lou_fild01.gat,224,348,7	script	Lady#04	817,{
 	next;
 	menu "Sure!",s_Firework,"No thanks~",-;
 
-	if(QL_POISONKING == 8)goto s_PKQuest;
+	if (QL_POISONKING == 8)goto s_PKQuest;
 	mes "[Lady]";
 	mes "Hmpf...!";
 	emotion 9;
@@ -1767,7 +1767,7 @@ s_PKQuest:
 
 	mes "[Lady]";
 	mes "No...?";
-	if(Sex == Female)close;
+	if (Sex == Female)close;
 	next;
 	mes "[Lady]";
 	mes "Are you...";
@@ -1781,7 +1781,7 @@ s_Sent:
 	mes "his name.";
 	next;
 	input @PKstr$;
-	if(@PKstr$ != "Song Zhi Du")goto s_Dunno;
+	if (@PKstr$ != "Song Zhi Du")goto s_Dunno;
 
 	mes "[Lady]";
 	mes "Oh, I see.";
@@ -1794,7 +1794,7 @@ s_Sent:
 	mes "delivery fee of 1,000 zeny.";
 	next;
 	mes "[Lady]";
-	if(Zeny < 1000)goto s_NEnoughZeny;
+	if (Zeny < 1000)goto s_NEnoughZeny;
 	mes "Thank you~";
 	mes "Now that the fee is paid,";
 	mes "please bring this to";
@@ -1853,7 +1853,7 @@ lou_in01.gat,99,158,4	script	Lord	821,{
 	mes "your stay here,";
 	mes "Rune-Midgardian!";
 	next;
-	if(QL_POISONKING == 15)goto s_Journal;
+	if (QL_POISONKING == 15)goto s_Journal;
 	mes "[Lord Bai Long]";
 	mes "How could I have lost my friend";
 	mes "from our glory days? Hmm...?";
@@ -1927,21 +1927,21 @@ s_Journal:
 }
 lou_in02.gat,253,45,4	script	Employee#04	822,{
 
-	if(QL_POISONKING == 30)goto s_NoGoodIdea;
-	if(QL_POISONKING == 18)goto s_Busy;
-	if(QL_POISONKING == 17)goto s_Told;
-	if(QL_POISONKING == 14 && QL_POISONPATH < 2)goto s_CameBack;
-	if(QL_POISONKING > 13)goto s_Proud;
-	if(QL_POISONKING > 12)goto s_Security;
-	if(QL_POISONKING == 12)goto s_LordDie;
-	if(QL_POISONKING == 11)goto s_MaterialCheck;
-	if(QL_POISONKING == 10)goto s_NotSure;
-	if(QL_POISONKING == 9)goto s_Thanked;
-	if(QL_POISONKING == 7 && QL_POISONDISLIKED)goto s_Materials2;
-	if(QL_POISONKING > 6)goto s_DeliveryMes;
-	if(QL_POISONKING == 6 && QL_POISONDISLIKED)goto s_Pity;
-	if(QL_POISONKING == 6)goto s_Talked;
-	if(QL_DOCQUEST != 2)goto s_NotPoison;
+	if (QL_POISONKING == 30)goto s_NoGoodIdea;
+	if (QL_POISONKING == 18)goto s_Busy;
+	if (QL_POISONKING == 17)goto s_Told;
+	if (QL_POISONKING == 14 && QL_POISONPATH < 2)goto s_CameBack;
+	if (QL_POISONKING > 13)goto s_Proud;
+	if (QL_POISONKING > 12)goto s_Security;
+	if (QL_POISONKING == 12)goto s_LordDie;
+	if (QL_POISONKING == 11)goto s_MaterialCheck;
+	if (QL_POISONKING == 10)goto s_NotSure;
+	if (QL_POISONKING == 9)goto s_Thanked;
+	if (QL_POISONKING == 7 && QL_POISONDISLIKED)goto s_Materials2;
+	if (QL_POISONKING > 6)goto s_DeliveryMes;
+	if (QL_POISONKING == 6 && QL_POISONDISLIKED)goto s_Pity;
+	if (QL_POISONKING == 6)goto s_Talked;
+	if (QL_DOCQUEST != 2)goto s_NotPoison;
 	mes "[Song Zhi Du]";
 	mes "Well, well. Thank you for you're";
 	mes "trouble. I didn't expect you to";
@@ -2180,7 +2180,7 @@ s_Materials2:
 	close;
 
 s_Items:
-	if(countitem(939) < 4 || countitem(937) < 10 || countitem(1093) < 10 || countitem(506) < 30)goto s_NEnoughItems;
+	if (countitem(939) < 4 || countitem(937) < 10 || countitem(1093) < 10 || countitem(506) < 30)goto s_NEnoughItems;
 	delitem 939,4; //Bee Sting
 	delitem 937,10; //Venom Canine
 	delitem 1093,10; //Empty Potion Bottle
@@ -2243,7 +2243,7 @@ s_DeliveryMes:
 	close;
 
 s_Thanked:
-	if(countitem(7126) == 0)goto s_WheresJellopy;
+	if (countitem(7126) == 0)goto s_WheresJellopy;
 	delitem 7126,1;
 	mes "[Song Zhi Du]";
 	mes "Ah. Thank you,";
@@ -2322,7 +2322,7 @@ s_NotSure:
 	close;
 
 s_MaterialCheck:
-	if(countitem(939) < 4 || countitem(937) < 10 || countitem(1093) < 10 || countitem(506) < 30 || countitem(7126) < 1 )goto s_NEnoughItems2;
+	if (countitem(939) < 4 || countitem(937) < 10 || countitem(1093) < 10 || countitem(506) < 30 || countitem(7126) < 1 )goto s_NEnoughItems2;
 	delitem 939,countitem(939); //Bee Sting
 	delitem 937,countitem(937); //Venom Canine
 	delitem 1093,countitem(1093); //Empty Potion Bottle
@@ -2372,7 +2372,7 @@ s_MaterialCheck:
 	next;
 
 	set @PKSuccessRate,rand(1,1000);
-	if(@PKSuccessRate > 700)
+	if (@PKSuccessRate > 700)
 	{
 	emotion 23;
 	misceffect 20,"Employee#04";
@@ -2574,7 +2574,7 @@ s_CameBack:
 	set QL_POISONKING,30;
 	set QL_POISONPATH,0;
 	getitem 678,3;
-	if(BaseLevel < 56)set BaseExp,BaseExp+8909;
+	if (BaseLevel < 56)set BaseExp,BaseExp+8909;
 	else if(BaseLevel > 55 && BaseLevel < 61)set BaseExp,BaseExp+10213;
 	else if(BaseLevel > 60 && BaseLevel < 66)set BaseExp,BaseExp+17684;
 	else if(BaseLevel > 65 && BaseLevel < 71)set BaseExp,BaseExp+25411;
@@ -2662,13 +2662,13 @@ s_NoGoodIdea:
 
 lou_in02.gat,122,38,4	script	Poison King	824,{
 
-	if(QL_POISONKING > 16 && QL_POISONKING != 30)goto s_Proud;
-	if(QL_POISONKING == 16)goto s_Letter;
-	if(QL_POISONKING == 15)goto s_Hope;
-	if(QL_POISONKING == 14 && QL_POISONPATH > 1)goto s_Happened;
-	if(QL_POISONKING == 30)goto s_Emo;
-	if(QL_POISONPATH == 2)goto s_StopHim;
-	if(QL_POISONKING == 13 || QL_POISONKING == 14)goto s_MetDisciple;
+	if (QL_POISONKING > 16 && QL_POISONKING != 30)goto s_Proud;
+	if (QL_POISONKING == 16)goto s_Letter;
+	if (QL_POISONKING == 15)goto s_Hope;
+	if (QL_POISONKING == 14 && QL_POISONPATH > 1)goto s_Happened;
+	if (QL_POISONKING == 30)goto s_Emo;
+	if (QL_POISONPATH == 2)goto s_StopHim;
+	if (QL_POISONKING == 13 || QL_POISONKING == 14)goto s_MetDisciple;
 	mes "[Nagash Arses]";
 	mes "It's been 40 years since I came";
 	mes "here. Hahaha, but it doesn't feel";
@@ -2700,9 +2700,9 @@ lou_in02.gat,122,38,4	script	Poison King	824,{
 	mes " ";
 	mes "I lower my head";
 	mes "feeling homesick.";
-	if(!QL_POISONKING)close;
+	if (!QL_POISONKING)close;
 	next;
-	if(QL_POISONKING > 1)goto s_Menu2;
+	if (QL_POISONKING > 1)goto s_Menu2;
 	menu "Grin at him.",-,"Lament on his grief.",s_Grief,"Reprove him.",s_Reprove,"Listen to the poem again.",s_Again,"Show him a sad look.",s_Sad;
 
 	mes "[Nagash Arses]";
@@ -2797,7 +2797,7 @@ s_Menu2:
 	mes "memorize this poem...";
 	next;
 	set @PKrand,rand(0,2);
-	if(@PKrand == 0)
+	if (@PKrand == 0)
 {
 	mes "[Nagash Arses]";
 	mes "^3131FF'As I lay ^000000[ ]^3131FF looking up at the";
@@ -2833,7 +2833,7 @@ s_2:
 
 s_3:
 	set @PKrand2,rand(0,1);
-	if(!@PKrand2)
+	if (!@PKrand2)
 	{
 	mes "[Nagash Arses]";
 	mes "What do you think is the major";
@@ -2841,7 +2841,7 @@ s_3:
 	next;
 	menu "Tragedy",s_4,"Seperation",-,"Love",s_4,"Revenge",s_4,"Buddy Cop Film",s_4;
 	}
-	if(@PKrand2)
+	if (@PKrand2)
 	{
 	mes "[Nagash Arses]";
 	mes "According to the poem,";
@@ -2864,7 +2864,7 @@ s_4:
 
 s_5:
 }
-	if(@PKrand == 1)
+	if (@PKrand == 1)
 {
 	mes "[Nagash Arses]";
 	mes "^3131FF'It looks like the ^000000[ ]^3131FF on the";
@@ -2918,7 +2918,7 @@ s_9:
 
 s_10:
 }
-	if(@PKrand == 2)
+	if (@PKrand == 2)
 {
 	mes "[Nagash Arses]";
 	mes "^3131FF'It looks like the ^000000[ ]^3131FF on the";
@@ -2953,7 +2953,7 @@ s_12:
 
 s_13:
 	set @PKrand2,rand(0,1);
-	if(!@PKrand2)
+	if (!@PKrand2)
 	{
 	mes "[Nagash Arses]";
 	mes "What might be one reason why the";
@@ -2962,7 +2962,7 @@ s_13:
 	next;
 	menu "He's looking though a frosty window",s_14,"A bright moon glimmers like icicles",-,"He's homesick, so the moonlight looks cold.",s_14,"It's called 'Poetic Lisense.'",s_14;
 	}
-	if(@PKrand2)
+	if (@PKrand2)
 	{
 	mes "[Nagash Arses]";
 	mes "Although this poem is only four";
@@ -2985,7 +2985,7 @@ s_14:
 
 s_15:
 }
-	if(@PKtest == 5 && QL_POISONKING == 2)set QL_POISONKING,3;
+	if (@PKtest == 5 && QL_POISONKING == 2)set QL_POISONKING,3;
 	mes "[Nagash Arses]";
 	mes "Thank you for yout time,";
 	mes "youngster. Oh, and this is";
@@ -3021,7 +3021,7 @@ s_Hometown:
 	mes "'Canine of Desert.' Long ago, I was";
 	mes "their poison expert.";
 	next;
-	if(QL_POISONKING == 3)goto s_AltMenu;
+	if (QL_POISONKING == 3)goto s_AltMenu;
 	menu "Tell him news of Morroc",s_News,"Info about 'Canine of Desert'",s_Canine;
 
 s_AltMenu:
@@ -3193,7 +3193,7 @@ s_Poison:
 	mes "teach, I'm too old to";
 	mes "remember everything";
 	mes "clearly...";
-	if(QL_POISONKING > 4)goto s_Disciple;
+	if (QL_POISONKING > 4)goto s_Disciple;
 	close;
 
 s_Disciple:
@@ -3204,11 +3204,11 @@ s_Disciple:
 	mes "something useful. He's working at";
 	mes "the doctor's office. If it weren't";
 	mes "for him, I'd be starving now.";
-	if(QL_POISONKING == 5)set QL_POISONKING,6;
+	if (QL_POISONKING == 5)set QL_POISONKING,6;
 	close;
 
 s_Situation:
-	if(QL_POISONKING == 4)goto s_Situation2;
+	if (QL_POISONKING == 4)goto s_Situation2;
 	mes "[Nagash Arses]";
 	mes "I...";
 	mes "I don't want";
@@ -3387,8 +3387,8 @@ s_TalkDisciple:
 	mes "come to visit me since you last";
 	mes "came to speak with me.";
 	next;
-	if(QL_POISONPATH == 1)goto s_BeFine;
-	if(countitem(678))menu "Give him Poison Bottle.",s_Bottle,"Cancel and go to 'Song Zhi Du'.",-;
+	if (QL_POISONPATH == 1)goto s_BeFine;
+	if (countitem(678))menu "Give him Poison Bottle.",s_Bottle,"Cancel and go to 'Song Zhi Du'.",-;
 	else
 	{
 	mes "[" + strcharinfo(0) + "]";
@@ -3607,7 +3607,7 @@ s_Letter:
 	mes "^3131FFYou grow dizzy, but you can also feel";
 	mes "like you're becoming more powerful";
 	mes "and gaining experience.";
-	if(BaseLevel < 56)set BaseExp,BaseExp+9000;
+	if (BaseLevel < 56)set BaseExp,BaseExp+9000;
 	else if(BaseLevel > 55 && BaseLevel < 61)set BaseExp,BaseExp+10500;
 	else if(BaseLevel > 60 && BaseLevel < 66)set BaseExp,BaseExp+18684;
 	else if(BaseLevel > 65 && BaseLevel < 71)set BaseExp,BaseExp+27411;
@@ -3633,7 +3633,7 @@ s_Proud:
 }
 
 lou_in01.gat,101,124,0	script	#LouSoldChk	139,100,0,{
-	if(QL_POISONKING == 13)goto s_SoldChk;
+	if (QL_POISONKING == 13)goto s_SoldChk;
 	end;
 
 s_SoldChk:
@@ -3649,7 +3649,7 @@ s_SoldChk:
 }
 
 lou_in01.gat,115,163,0	script	#LouSoldChk2	139,0,2,{
-	if(QL_POISONKING == 13)goto s_SoldChk;
+	if (QL_POISONKING == 13)goto s_SoldChk;
 	end;
 
 s_SoldChk:
@@ -3665,7 +3665,7 @@ s_SoldChk:
 }
 
 lou_in01.gat,115,163,0	script	#LouSoldChk3	139,25,0,{
-	if(QL_POISONKING == 13)goto s_SoldChk;
+	if (QL_POISONKING == 13)goto s_SoldChk;
 	end;
 
 s_SoldChk:
@@ -3713,12 +3713,12 @@ lou_in01.gat,117,167,0	script	#LouSecExit	111,{
 
 lou_in01.gat,106,162,0	script	#BaiLongBottle	111,{
 
-	if(QL_POISONPATH > 1 && countitem(713) && countitem(938))goto s_Save;
-	if(QL_POISONKING != 13)goto s_Fancy;
+	if (QL_POISONPATH > 1 && countitem(713) && countitem(938))goto s_Save;
+	if (QL_POISONKING != 13)goto s_Fancy;
 	mes "^3131FFYou found a drink bottle that's";
 	mes "possibly owned by Bai Long, lord of";
 	mes "Louyang.^000000";
-	if(QL_POISONPATH < 2 && countitem(678))goto s_Assassinate;
+	if (QL_POISONPATH < 2 && countitem(678))goto s_Assassinate;
 	close;
 
 s_Assassinate:

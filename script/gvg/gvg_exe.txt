@@ -38,7 +38,7 @@ function	script	F_AgitGiveUp	{
 	}
 	donpcevent "::OnFlagEmb_"+getarg(0);		// Change in flag emblem
 	maprespawnguildid '@map$,0,7;
-	if(agitcheck())
+	if (agitcheck())
 		callfunc "F_AgitSummon",getarg(0);	// Summoning of monsters and the emperium
 	return;
 }
@@ -55,18 +55,18 @@ function	script	F_AgitGiveUp	{
 -	script	AgitExe	139,{
 OnAgitInit:
 	set '@dummy,getmapxy('@map$,'@dummy,'@dummy,1);		// Only '@map$ is used.
-	if('@map$ == "-")					// the 'duplicate' has no origin.
+	if ('@map$ == "-")					// the 'duplicate' has no origin.
 		end;
-	if(getcastledata('@map$,9) == 0)
+	if (getcastledata('@map$,9) == 0)
 		disablenpc "AgitKafra_"+strnpcinfo(2);
 	for(set '@i,10; '@i<=17; set '@i,'@i+1) {	// We summon Guardians if they exist.
-		if(getcastledata('@map$,'@i))
+		if (getcastledata('@map$,'@i))
 			callfunc "F_GuardianCall",strnpcinfo(2),'@i,0;
 	}
 	end;
 OnAgitStart:
 	set '@dummy,getmapxy('@map$,'@dummy,'@dummy,1);
-	if('@map$ == "-")
+	if ('@map$ == "-")
 		end;
 	maprespawnguildid '@map$,getcastledata('@map$,1),2;
 	callfunc "F_AgitSummon",strnpcinfo(2);	// Summonning of Emperium (npc_gvg_monster.txt)
@@ -74,15 +74,15 @@ OnAgitStart:
 	end;
 OnAgitBreak:
 	set '@dummy,getmapxy('@map$,'@dummy,'@dummy,1);
-	if('@map$ == "-")
+	if ('@map$ == "-")
 		end;
 	killmonsterall '@map$;
 	set '@gid,getcharid(2);		// Get Emperium ID
-	if('@gid <= 0)
+	if ('@gid <= 0)
 		end;
 	setcastledata '@map$,1,'@gid;
 	for(set '@i,2; '@i<=17; set '@i,'@i+1) {
-		if('@i==2 || '@i==3) {
+		if ('@i==2 || '@i==3) {
 			set '@val,getcastledata('@map$,'@i)-5;
 			setcastledata '@map$,'@i,('@val<1)? 1: '@val;
 		}
@@ -96,20 +96,20 @@ OnAgitBreak:
 	end;
 OnAgitEliminate:
 	set '@dummy,getmapxy('@map$,'@dummy,'@dummy,1);
-	if('@map$ == "-")
+	if ('@map$ == "-")
 		end;
 	maprespawnguildid '@map$,getcastledata('@map$,1),6;
 	callfunc "F_AgitSummon",strnpcinfo(2);	// Only the Emperium is summoned again. (npc_gvg_monster.txt)
 	end;
 OnGuildBreak:
 	set '@dummy,getmapxy('@map$,'@dummy,'@dummy,1);
-	if('@map$ == "-")
+	if ('@map$ == "-")
 		end;
 	callfunc "F_AgitGiveUp",strnpcinfo(2);
 	end;
 OnAgitEnd:
 	set '@dummy,getmapxy('@map$,'@dummy,'@dummy,1);
-	if('@map$ == "-")
+	if ('@map$ == "-")
 		end;
 	maprespawnguildid '@map$,getcastledata('@map$,1),4;
 	killmonster '@map$,strnpcinfo(0)+"::OnAgitBreak";	// Only the Emperium is deleted.

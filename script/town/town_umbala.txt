@@ -92,7 +92,7 @@ comodo.gat,171,137,1	script	Heath	92,{
 		menu "Alright.  I'll be a sucker today",Lzeny_1,"Dream on, Dunce Duo!",Lzeny_2;
 
 		Lzeny_1:
-			if(Zeny < 1000) goto Lzeny_no;
+			if (Zeny < 1000) goto Lzeny_no;
 			set Zeny,Zeny-1000;
 			mes "[Heath]";
 			mes "Alright, my 'friend'. listen up.";
@@ -273,7 +273,7 @@ if(event_umbala < 3) goto LumWord;
 	next;
 	menu "Nod",-,"Shake Head",Lend2;
 
-		if(Zeny < 1000) goto LError2;
+		if (Zeny < 1000) goto LError2;
 		mes "[Hatan]";
 		mes "Yay!!";
 		mes "You're the best!!";
@@ -329,7 +329,7 @@ LumWord:
 	next;
 	menu "Nod",-,"Shake Head",Lend;
 
-		if(Zeny < 1000) goto LError;
+		if (Zeny < 1000) goto LError;
 		mes "[Hatan]";
 		mes "Umbaumba!!";
 		mes "Um!-babaumba-baumba-.";
@@ -366,7 +366,7 @@ if(event_umbala < 3) goto LumWord;
 	mes "...Gimme meat!";
 	next;
 	menu "Sure",-,"No way!",L2;
-	if(countitem(517) < 1) goto LError;//Items: Meat,
+	if (countitem(517) < 1) goto LError;//Items: Meat,
 		delitem 517,1;//Items: Meat,
 		mes "[Kotan]";
 		mes "Hey, thanks!";
@@ -399,7 +399,7 @@ LumWord:
 	emotion e_rock;
 	next;
 	menu "Umba",-,"Umbabu",Lu2;
-	if(countitem(517) < 1) goto LuError;//Items: Meat,
+	if (countitem(517) < 1) goto LuError;//Items: Meat,
 		delitem 517,1;//Items: Meat,
 		mes "[???]";
 		mes "Umbaumbaumbababa.";
@@ -496,7 +496,7 @@ umbala.gat,80,146,4	script	Yuki	753,{
 
 um_in.gat,101,73,3	script	Yunatan 	783,{
 
-	if(event_umbala < 3) goto LumWord;
+	if (event_umbala < 3) goto LumWord;
 	mes "[Yunatan]";
 	mes "I'm standing out here because I";
 	mes "can't stand to lay eyes on";
@@ -513,7 +513,7 @@ LumWord:
 
 um_in.gat,94,123,5	script	Bartsutan	783,{
 
-	if(event_umbala < 3) goto LumWord;
+	if (event_umbala < 3) goto LumWord;
 	mes "[Bartsutan]";
 	mes "I want to see Wambokoriotan";
 	mes "morph into an insect so I can";
@@ -532,7 +532,7 @@ LumWord:
 
 umbala.gat,140,157,6	script	Utan Tribe Young Adult::UtanTribeYougAdult1	785,{
 
-	if(event_umbala < 3) goto LumWord;
+	if (event_umbala < 3) goto LumWord;
 	mes "[Seirutan]";
 	mes "Bungy jumping is extremely dangerous.";
 	mes "As such, completing a successful";
@@ -549,7 +549,7 @@ LumWord:
 
 umbala.gat,146,157,4	script	Utan Young Adult#2	786,{
 
-	if(event_umbala < 3) goto LumWord;
+	if (event_umbala < 3) goto LumWord;
 	mes "[Arotan]";
 	mes "Making a safe bungy jump is a";
 	mes "really big deal.  When someone makes";
@@ -565,7 +565,7 @@ LumWord:
 
 umbala.gat,149,165,4	script	Utan Young Adult#3	781,{
 
-	if(event_umbala < 3) goto LumWord;
+	if (event_umbala < 3) goto LumWord;
 	mes "[Kryubatan]";
 	mes "I'm really afraid of heights,";
 	mes "so I really don't want to jump,";
@@ -583,7 +583,7 @@ LumWord:
 
 umbala.gat,92,159,4	script	Hartan	785,{
 
-	if(event_umbala < 3) goto LumWord;
+	if (event_umbala < 3) goto LumWord;
 	mes "[Hartan]";
 	mes "You want to know why our";
 	mes "skin is jet-black?";
@@ -612,7 +612,7 @@ LumWord:
 
 umbala.gat,194,104,4	script	Utan Tribe Child#2	787,{
 
-	if(event_umbala < 3) goto LumWord;
+	if (event_umbala < 3) goto LumWord;
 	mes "[Burkatan]";
 	mes "An outsider?";
 	mes "Are you here to try bungy jumping?";
@@ -655,7 +655,7 @@ LumWord:
 
 umbala.gat,193,208,6	script	Utan Child#3	789,{
 
-	if(event_umbala < 3) goto LumWord;
+	if (event_umbala < 3) goto LumWord;
 	mes "[Fuitan]";
 	mes "When I was younger, I went bungy";
 	mes "jumping even though it was extremely";
@@ -675,7 +675,7 @@ LumWord:
 
 umbala.gat,139,205,4	script	Utan Tribe Young Adult::UtanTribeYougAdult5	785,{
 
-	if(event_umbala < 3) goto LumWord;
+	if (event_umbala < 3) goto LumWord;
 	mes "[Tsunitan]";
 	mes "Awesome!  I haven't seen an outsider in some time.";
 	mes "You're just in time to watch as";
@@ -716,7 +716,7 @@ LumWord:
 
 um_in.gat,158,71,3	script	Utan Tribesman	787,{
 
-	if(event_umbala < 3) goto LumWord;
+	if (event_umbala < 3) goto LumWord;
 	mes "[Mutakutan]";
 	mes "Umbala has enough interesting trees";
 	mes "that studying them never gets old!";
@@ -778,7 +778,7 @@ LumWord:
 }
 
 umbala.gat,145,217,3	script	Chibibatan	783,{
-	if(event_umbala < 3) goto LumWord;
+	if (event_umbala < 3) goto LumWord;
 	mes "[Chibibatan]";
 	mes "I want to have some fun with";
 	mes "Wambokoriotan, but after seeing";
@@ -795,7 +795,7 @@ LumWord:
 
 um_in.gat,139,48,5	script	Purenotan	783,{
 
-	if(event_umbala < 3) goto LumWord;
+	if (event_umbala < 3) goto LumWord;
 	mes "[Purenotan]";
 	mes "See that loser over there?";
 	mes "I'm on to him.  He hasn't";
@@ -827,7 +827,7 @@ end;
 
 um_in.gat,144,45,5	script	Wambokoriotan	789,{
 
-	if(event_umbala < 3) goto LumWord;
+	if (event_umbala < 3) goto LumWord;
 	mes "[Wambokoriotan]";
 	mes "Ahhh...My wife is a real";
 	mes "hothead.  Ouch...ouch.";

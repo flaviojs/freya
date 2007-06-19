@@ -105,7 +105,7 @@ L_FORGE:
 	goto L_WIPE;
 
 L_WIPE:
- 		if(@COMPASS_CHECK == 1)goto L_MENU_2;
+ 		if (@COMPASS_CHECK == 1)goto L_MENU_2;
 		viewpoint 2,33,41,1,0xFF0000;
 		viewpoint 2,117,37,2,0xFF00FF;
 		viewpoint 2,98,154,3,0xFF00FF;
@@ -611,7 +611,7 @@ L_MINE:
 	goto L_WIPE;
 
 L_WIPE:
-	if(@COMPASS_CHECK == 1)goto L_MENU_2;
+	if (@COMPASS_CHECK == 1)goto L_MENU_2;
 	viewpoint 2,44,216,1,0xFF0000;
 	viewpoint 2,145,112,2,0xFF00FF;
 	viewpoint 2,177,135,3,0xFF00FF;
@@ -780,7 +780,7 @@ SM_2j:
 	goto M_Menu;
 
 sL_Wipe:
-	if(@COMPASS_CHECK == 1) goto sM_Menu;
+	if (@COMPASS_CHECK == 1) goto sM_Menu;
 	viewpoint 2,63,208,1,0xFF0000;
 	viewpoint 2,238,272,2,0x0000FF;
 	viewpoint 2,149,80,3,0x00FF00;
@@ -1102,8 +1102,8 @@ M_Menu:
 			set @COMPASS_CHECK, 2;
 
 		sL_Wipe:
-			if(@COMPASS_CHECK != 2) next;	// avoids a double 'next' when 'wipe indications' is chosen
-			if(@COMPASS_CHECK == 1) goto sM_Menu;
+			if (@COMPASS_CHECK != 2) next;	// avoids a double 'next' when 'wipe indications' is chosen
+			if (@COMPASS_CHECK == 1) goto sM_Menu;
 			viewpoint 2,157,112,1,0xFF5555;
 			viewpoint 2,101,78,2,0x44FF44;
 			viewpoint 2,126,65,3,0x5555FF;
@@ -1234,7 +1234,7 @@ L_TOOL:
 	goto L_WIPE;
 
 L_WIPE:
- 	if(@COMPASS_CHECK == 1)goto L_MENU_2;
+ 	if (@COMPASS_CHECK == 1)goto L_MENU_2;
 	viewpoint 2,52,140,1,0xFF0000;
 	viewpoint 2,214,130,2,0x00FF00;
 	viewpoint 2,128,225,3,0x00FF00;
@@ -2430,7 +2430,7 @@ L_FORGE:
 	goto L_WIPE;
 
 L_WIPE:
- 	if(@COMPASS_CHECK == 1)goto L_MENU_2;
+ 	if (@COMPASS_CHECK == 1)goto L_MENU_2;
 	viewpoint 2,228,326,1,0xFF0000;
 	viewpoint 2,139,158,2,0xFF00FF;
 	viewpoint 2,144,85,3,0xFF00FF;

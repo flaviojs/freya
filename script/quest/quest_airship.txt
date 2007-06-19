@@ -25,7 +25,7 @@
 
 airplane.gat,47,61,1	script	Crewman	833,{
 
-	if(kain_ticket==4) {
+	if (kain_ticket==4) {
 		mes "[Kain Himere]";
 		mes "Ah...";
 		mes "Here it is!";
@@ -46,7 +46,7 @@ airplane.gat,47,61,1	script	Crewman	833,{
 	mes "[Kain Himere]";
 	mes "Welcome to the Airship. If you have any questions or need any assistnace, please don't hesisitate to let me or one of the other crewman know.";
 	next;
-	if(kain_ticket==0) {
+	if (kain_ticket==0) {
 		switch( select( "About the Airship...", "Leave a Comment" )) {
 		case 1:
 			set kain_ticket, 1;
@@ -447,7 +447,7 @@ OnTouch:
 	mes "fear-less comraaades~!";
 	mes "Do our best! Nothing";
 	mes "can stop us, lads~!";
-	if(kain_ticket == 6) {
+	if (kain_ticket == 6) {
 		next;
 		switch( select( "Hello!", "What are you singing?")) {
 		case 1:
@@ -523,7 +523,7 @@ OnTouch:
 
 ein_in01.gat,123,94,1	script	Theo Cherno	851,{
 
-	if(kain_ticket == 7) {
+	if (kain_ticket == 7) {
 		callfunc "F_Cherno";
 		set kain_ticket, 8;
 		close;
@@ -559,7 +559,7 @@ ein_in01.gat,123,94,1	script	Theo Cherno	851,{
 
 ein_in01.gat,125,99,3	script	Tarsha Cherno	850,{
 
-	if(kain_ticket == 7) {
+	if (kain_ticket == 7) {
 		callfunc "F_Cherno";
 		set kain_ticket, 8;
 		close;
@@ -869,7 +869,7 @@ function	script	F_Machine	{
 ein_in01.gat,121,99,5	script	Mirror	111,{
 
 
-	if(kain_ticket==8) {
+	if (kain_ticket==8) {
 		mes "^3355FFIt's a mirror.";
 		mes "So, of course the";
 		mes "first thing you'll";
@@ -890,7 +890,7 @@ ein_in01.gat,121,99,5	script	Mirror	111,{
 
 einbech.gat,45,113,5	script	Tree#t1-1::Tree	111,{
 
-	if(kain_ticket==11) {
+	if (kain_ticket==11) {
 		mes "^3355FFYou crouch down";
 		mes "under the tree and";
 		mes "begin digging into";
@@ -904,7 +904,7 @@ einbech.gat,45,113,5	script	Tree#t1-1::Tree	111,{
 		mes ".........";
 		next;
 		set @find_diary,rand(1,100);
-		if(@find_diary > 10) {
+		if (@find_diary > 10) {
 			mes "^3355ffUnfortunately,";
 			mes "you weren't able";
 			mes "to find anything.^000000";
@@ -1005,14 +1005,14 @@ function	script	F_Diary	{
 
 ein_in01.gat,117,80,5	script	Unidentified Machine	111,{
 
-	if(kain_ticket > 12) {
+	if (kain_ticket > 12) {
 		mes "["+strcharinfo(0)+"]";
 		mes "This is the";
 		mes "^FF0000Expert Repairman^000000?!";
 		mes "It looks like it";
 		mes "needs repairs itself...";
 		next;
-		if(getrepairableitemcount()==0) {
+		if (getrepairableitemcount()==0) {
 			mes "[Expert Repairman]";
 			mes "*Beep-*";
 			mes "Please check";
@@ -1083,7 +1083,7 @@ OnTimer16000:
 	monster "airplane01.gat",227,49,"Beholder",1633,1;
 	monster "airplane01.gat",233,41,"Beholder",1633,1;
 	set $@monster, rand(1,5);
-	if($@monster == 1) {
+	if ($@monster == 1) {
 		monster "airplane01.gat",251,47,"Drainliar",1434,1;
 		monster "airplane01.gat",245,53,"Drainliar",1434,1;
 		monster "airplane01.gat",234,46,"Drainliar",1434,1;
@@ -1383,7 +1383,7 @@ airplane01.gat,238,154,5	script	Airship Captain#01	873,{
 	} else if(lght_air == 6) {
 		set question$, "Already finished reading?";
 	}
-	switch( select( "Y-you're a reindeer?!", ""+question$+"", "No, not really." )){
+	switch( select( "Y-you're a reindeer?!", ""+question$+"", "No, not really." )) {
 	case 1:
 		mes "[Tarlock]";
 		mes "Hm? Oh, that";
@@ -1404,7 +1404,7 @@ airplane01.gat,238,154,5	script	Airship Captain#01	873,{
 		cutin "",255;
 		end;
 	case 2:
-		if(lght_air == 1) {
+		if (lght_air == 1) {
 			if (BaseLevel <= 59) {
 				mes "[Tarlock]";
 				mes "Mm...?";
@@ -1648,7 +1648,7 @@ airplane01.gat,238,154,5	script	Airship Captain#01	873,{
 airplane.gat,236,163,5	script	Airship Captain#03	873,{
 
 	cutin "fly_trock.bmp",2;
-	if(hg_ma1 == 3 || hg_ma1 == 4)
+	if (hg_ma1 == 3 || hg_ma1 == 4)
 	{
 		mes "[Ferlock]";
 		mes "Welcome to the airship. I am Ferlock, captain of this airship. What do you want from me? ";
@@ -1668,7 +1668,7 @@ airplane.gat,236,163,5	script	Airship Captain#03	873,{
 		}
 		mes "[Ferlock]";
 		mes "The passenger list is not opened to public unfortunately. Sorry I couldn't help you. ";
-		if(hg_ma1 == 3) close;
+		if (hg_ma1 == 3) close;
 		next;
 		switch( select( "Follow Kaci's request and tell him the story." ) )
 		{
@@ -1962,7 +1962,7 @@ airplane.gat,236,163,5	script	Airship Captain#03	873,{
 	mes "on this flight. How can";
 	mes "I be of service to you?";
 	next;
-	if(lght_air == 2) {
+	if (lght_air == 2) {
 		set question2$, "Give him Tarlock's Letter.";
 		set question3$, "Cancel.";
 	} else if(lght_air == 3) {
@@ -2128,7 +2128,7 @@ airplane01.gat,249,50,0	duplicate(boom)	boom#air-0::boom	139
 
 airplane.gat,236,63,4	script	Hallen	706,{
 
-	if(hg_ma1 == 3)
+	if (hg_ma1 == 3)
 	{
 		mes "[Hallen]";
 		mes "Sha Sha~ ";
@@ -2146,7 +2146,7 @@ airplane.gat,236,63,4	script	Hallen	706,{
 		mes "Kaci might know this person.";
 		close;
 	}
-	if(BaseLevel < 60)
+	if (BaseLevel < 60)
 	{
 		mes "[Hallen]";
 		mes "If you need me to";
@@ -2155,7 +2155,7 @@ airplane.gat,236,63,4	script	Hallen	706,{
 		mes "Bweh heh... hollah~";
 		close;
 	}
-	if(!lhz_heart)
+	if (!lhz_heart)
 	{
 		mes "[Hallen]";
 		mes "Howdy, howdy~";
@@ -2348,7 +2348,7 @@ airplane.gat,236,63,4	script	Hallen	706,{
 				mes "I do. You and me, we're";
 				mes "on the same wavelength~";
 				next;
-				if(checkweight(501,1) != 1)
+				if (checkweight(501,1) != 1)
 				{
 					mes "[Hallen]";
 					mes "Oh... Hey, I was";
@@ -2448,7 +2448,7 @@ airplane.gat,236,63,4	script	Hallen	706,{
 		mes "heavy Airship like this fly";
 		mes "for so long in the sky?";
 		next;
-		if(lght_air == 7)
+		if (lght_air == 7)
 		{
 			switch( select( "Umm, yeah, kind of." ) )
 			{
@@ -2544,7 +2544,7 @@ airplane.gat,236,63,4	script	Hallen	706,{
 		mes "when he plays the Dice";
 		mes "game for Apples!";
 		next;
-		if(Shinokas_Quest > 9)
+		if (Shinokas_Quest > 9)
 		{
 			mes "["+strcharinfo(0)+"]";
 			mes "(^333333Wait, I met that guy when";
@@ -2562,7 +2562,7 @@ airplane.gat,236,63,4	script	Hallen	706,{
 		mes "the trouble of learning that";
 		mes "secret information for me...";
 		next;
-		if(checkweight(501,1) != 1)
+		if (checkweight(501,1) != 1)
 		{
 			mes "[Hallen]";
 			mes "Aw, nuts...";
@@ -2573,7 +2573,7 @@ airplane.gat,236,63,4	script	Hallen	706,{
 			mes "in your inventory for me, okay?";
 			close;
 		}
-		if(Shinokas_Quest > 9) set lhz_heart,9;
+		if (Shinokas_Quest > 9) set lhz_heart,9;
 		else set lhz_heart,8;
 		getitem 501,1;
 		mes "[Hallen]";
@@ -2610,7 +2610,7 @@ airplane.gat,236,63,4	script	Hallen	706,{
 
 airplane.gat,33,69,4	script	Kaci	73,{
 
-	if(hg_ma1 == 3)
+	if (hg_ma1 == 3)
 	{
 		mes "[Kaci]";
 		mes "Hello there. My name is Kaci. If you feel bored boarding the airship, why don't you play a game of dice with me.";
@@ -2801,7 +2801,7 @@ L_Ask:
 		mes "or if you're just curious";
 		mes "about me in general~";
 		next;
-		if(!'@mesa || !'@mesb || !'@mesc) goto L_Ask;
+		if (!'@mesa || !'@mesb || !'@mesc) goto L_Ask;
 		mes "[Kaci]";
 		mes "By the way, if Hallen";
 		mes "bothers you with another";
@@ -2882,7 +2882,7 @@ L_Ask:
 ein_in01.gat,279,25,0	script	#lab01_heart	139,1,1,{
 
 OnTouch:
-	if(lhz_heart == 9)
+	if (lhz_heart == 9)
 	{
 		mes "["+strcharinfo(0)+"]";
 		mes "(^333333I've... I've just";
@@ -2897,7 +2897,7 @@ OnTouch:
 ein_in01.gat,264,17,0	script	#lab02_heart	139,1,1,{
 
 OnTouch:
-	if(lhz_heart == 9)
+	if (lhz_heart == 9)
 	{
 		mes "["+strcharinfo(0)+"]";
 		mes "What the...";
@@ -2940,7 +2940,7 @@ OnTimer120000:
 ein_in01.gat,261,35,0	script	lab03#heart	139,1,1,{
 
 OnTouch:
-	if(lhz_heart == 9)
+	if (lhz_heart == 9)
 	{
 		mes "[Security System]";
 		mes "^FF0000Unauthorized person";
@@ -2970,10 +2970,10 @@ L_Recode:
 		set @thanacode1,rand(1,9);
 		set @thanacode2,rand(1,9);
 		set @thanacode3,rand(1,9);
-		if((@thanacode1 == @thanacode2) || (@thanacode1 == @thanacode3) || (@thanacode2 == @thanacode3)) goto L_Recode;
+		if ((@thanacode1 == @thanacode2) || (@thanacode1 == @thanacode3) || (@thanacode2 == @thanacode3)) goto L_Recode;
 L_Input:
 		input @thanainput;
-		if((@thanainput < 100) || (@thanainput > 999))
+		if ((@thanainput < 100) || (@thanainput > 999))
 		{
 			mes "[Security System]";
 			mes "^FF0000Error.";
@@ -3006,13 +3006,13 @@ L_Input:
 		next;
 		set @strike,0;
 		set @ball,0;
-		if(@thanainput1 == @thanacode1) set @strike,@strike +1;
-		if(@thanainput2 == @thanacode2) set @strike,@strike +1;
-		if(@thanainput3 == @thanacode3) set @strike,@strike +1;
-		if((@thanainput1 == @thanacode2) || (@thanainput1 == @thanacode3)) set @ball,@ball +1;
-		if((@thanainput2 == @thanacode1) || (@thanainput2 == @thanacode3)) set @ball,@ball +1;
-		if((@thanainput3 == @thanacode1) || (@thanainput3 == @thanacode2)) set @ball,@ball +1;
-		if(@strike == 3)
+		if (@thanainput1 == @thanacode1) set @strike,@strike +1;
+		if (@thanainput2 == @thanacode2) set @strike,@strike +1;
+		if (@thanainput3 == @thanacode3) set @strike,@strike +1;
+		if ((@thanainput1 == @thanacode2) || (@thanainput1 == @thanacode3)) set @ball,@ball +1;
+		if ((@thanainput2 == @thanacode1) || (@thanainput2 == @thanacode3)) set @ball,@ball +1;
+		if ((@thanainput3 == @thanacode1) || (@thanainput3 == @thanacode2)) set @ball,@ball +1;
+		if (@strike == 3)
 		{
 			mes "[Security System]";
 			mes "Authorization complete.";
@@ -3092,7 +3092,7 @@ L_Input:
 		mes "Please use these results";
 		mes "to make a more accurate guess.^000000";
 		next;
-		if(@thanatry > 4)
+		if (@thanatry > 4)
 		{
 			mes "[Security System]";
 			mes "^FF0000The correct password";
@@ -3106,10 +3106,10 @@ L_Input:
 		mes "Beeeeep!";
 		mes "Incorrect password.";
 		mes " ";
-		if(@thanatry == 1) mes "Initialing 2nd attempt...^000000";
-		if(@thanatry == 2) mes "Initialing 3rd attempt...^000000";
-		if(@thanatry == 3) mes "Initialing 4th attempt...^000000";
-		if(@thanatry == 4) mes "Initialing final attempt...^000000";
+		if (@thanatry == 1) mes "Initialing 2nd attempt...^000000";
+		if (@thanatry == 2) mes "Initialing 3rd attempt...^000000";
+		if (@thanatry == 3) mes "Initialing 4th attempt...^000000";
+		if (@thanatry == 4) mes "Initialing final attempt...^000000";
 		next;
 		goto L_Input;
 	}

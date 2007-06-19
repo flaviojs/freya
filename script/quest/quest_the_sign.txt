@@ -5320,7 +5320,7 @@ L_Cherish:
 mjo_dun02.gat,88,295,3		script	Flaming Spirit Man	85,{
 
 	// Get rid of some pieces, to let player reborn in future
-	if(signquest > 22) delitem 7177,countitem(7177);
+	if (signquest > 22) delitem 7177,countitem(7177);
 
 	if (signquest > 62) goto L_Improve;
 	if (signquest > 61) goto L_Hour;

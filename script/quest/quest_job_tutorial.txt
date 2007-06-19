@@ -27,8 +27,8 @@
 prt_church.gat,179,15,1	script	Priest Praupin	110,{
 
 	mes "[Priest Praupin]";
-	if(BaseClass != Job_Acolyte){
-		if(tu_acolyte01 == 25){
+	if (BaseClass != Job_Acolyte) {
+		if (tu_acolyte01 == 25) {
 			mes "Oh...!";
 			mes "You're "+strcharinfo(0)+" !";
 			mes "You've grown so much!";
@@ -39,7 +39,7 @@ prt_church.gat,179,15,1	script	Priest Praupin	110,{
 		}
 		close;
 	}
-	switch(tu_acolyte01){
+	switch(tu_acolyte01) {
 	case 0:
 		mes "Welcome, little one.";
 		mes "Fate must have brought";
@@ -51,7 +51,7 @@ prt_church.gat,179,15,1	script	Priest Praupin	110,{
 		mes "you may not know what to do";
 		mes "as an Acolyte from here on...";
 		next;
-		switch(select("I'm not worried.","What should I do?")){
+		switch(select("I'm not worried.","What should I do?")) {
 		case 1:
 			mes "[Priest Praupin]";
 			mes "Seeing your eyes filled with such determination assures me. But if you run into any trouble, feel free to ask me for help. Good bye for now, blessed child.";
@@ -68,7 +68,7 @@ prt_church.gat,179,15,1	script	Priest Praupin	110,{
 			mes "become a better Acolyte after learning from Sister Asthe's instructions. If you like, I can send you to the convent.";
 			set tu_acolyte01, 1;
 			next;
-			if(select("Go to the convent.","Do not go.")==1){
+			if (select("Go to the convent.","Do not go.")==1) {
 				mes "[Priest Praupin]";
 				mes "Please say hello";
 				mes "to Sister Asthe for me.";
@@ -97,7 +97,7 @@ prt_church.gat,179,15,1	script	Priest Praupin	110,{
 		close;
 		break;
 	case 22:
-		if(countitem(7181) > 0){	// Receipt_01
+		if (countitem(7181) > 0) {	// Receipt_01
 			emotion e_gasp;
 			mes "Oh my, you seem";
 			mes "to be growing quickly";
@@ -122,7 +122,7 @@ prt_church.gat,179,15,1	script	Priest Praupin	110,{
 			mes "I know I'm not offering much,";
 			mes "but they were quite helpful to me when I was a young Acolyte like yourself.";
 			next;
-			if(select("Maces","Clubs")==1){
+			if (select("Maces","Clubs")==1) {
 				getitem 1604, 1;
 			} else {
 				getitem 1510, 1;
@@ -153,7 +153,7 @@ prt_church.gat,179,15,1	script	Priest Praupin	110,{
 	mes "[Priest Praupin]";
 	mes "Would you like me to send you to the convent so that you can learn from this wonderful teacher?";
 	next;
-	if(select("Yes, please.","No thanks.")==1){
+	if (select("Yes, please.","No thanks.")==1) {
 		mes "[Priest Praupin]";
 		mes "Please say hello";
 		mes "to Sister Asthe for me.";
@@ -175,7 +175,7 @@ prt_church.gat,179,15,1	script	Priest Praupin	110,{
 prt_monk.gat,230,106,3	script	Asthe#tu	79,{
 
 	mes "[Asthe]";
-	switch(tu_acolyte01){
+	switch(tu_acolyte01) {
 	case 1:
 		mes "Oh my...";
 		mes "How did such";
@@ -183,7 +183,7 @@ prt_monk.gat,230,106,3	script	Asthe#tu	79,{
 		mes "manage to reach";
 		mes "this remote place?";
 		next;
-		if(select("I came for fun.","Priest Praupin suggested I come here.")==1){
+		if (select("I came for fun.","Priest Praupin suggested I come here.")==1) {
 			mes "[Asthe]";
 			mes "This convent is always quiet and peaceful. Sitting on the benches and feeling the almighty presense all around you is such a relaxing, meditative experience.";
 			close;
@@ -217,7 +217,7 @@ prt_monk.gat,230,106,3	script	Asthe#tu	79,{
 		mes ""+strcharinfo(0)+",";
 		mes "have you thought about what kind of Acolyte you would like to become? It's very important that you plan for the future that you want.";
 		next;
-		if(select("One that supports others.","One that punishes evil.")==1){
+		if (select("One that supports others.","One that punishes evil.")==1) {
 			mes "[Asthe]";
 			mes "Ah, you have such";
 			mes "a generous heart!";
@@ -246,7 +246,7 @@ prt_monk.gat,230,106,3	script	Asthe#tu	79,{
 		mes "is the most necessary";
 		mes "skill for an Acolyte?";
 		next;
-		switch(select("Heal","Aqua Benedicta","Teleport")){ 
+		switch(select("Heal","Aqua Benedicta","Teleport")) { 
 		case 1:
 			mes "[Asthe]";
 			mes "Ah, yes.";
@@ -292,7 +292,7 @@ prt_monk.gat,230,106,3	script	Asthe#tu	79,{
 		mes "HEAL !!";
 		// unitskilluseid getcharid(3),28,10;
 		set tu_acolyte01, 3;
-		if(getskilllv(28) == 0){
+		if (getskilllv(28) == 0) {
 			set JobExp,JobExp+100; 
 			//misceffect EF_CONE;
 		}
@@ -303,7 +303,7 @@ prt_monk.gat,230,106,3	script	Asthe#tu	79,{
 		mes "think? I believe learning the basics is your most important";
 		mes "task for now.";
 		next;
-		if(getskilllv(28) < 3){
+		if (getskilllv(28) < 3) {
 			mes "[Asthe]";
 			mes "Well then, learn";
 			mes "the Heal skill up to";
@@ -353,8 +353,8 @@ prt_monk.gat,230,106,3	script	Asthe#tu	79,{
 		}
 		break;
 	case 4:
-		if(getskilllv(28) > 2){
-			if(countitem(1504) > 0){
+		if (getskilllv(28) > 2) {
+			if (countitem(1504) > 0) {
 				mes "Oh my!";
 				mes "Welcome back~";
 				mes "I see that you've";
@@ -363,7 +363,7 @@ prt_monk.gat,230,106,3	script	Asthe#tu	79,{
 				emotion e_heh;
 				set tu_acolyte01, 5;
 				delitem 1504, 1;
-				if(Basejob == Job_Acolyte && Upper == 1){
+				if (Basejob == Job_Acolyte && Upper == 1) {
 					set JobExp,JobExp+1000; 
 					set BaseExp, BaseExp + 2000;
 					//misceffect EF_CONE;
@@ -641,7 +641,7 @@ prt_monk.gat,230,106,3	script	Asthe#tu	79,{
 		mes "Now, we've covered some";
 		mes "pretty complicated material in this lesson. Would you like to hear this again?";
 		next;
-		if(select("Listen again.","Move to the next topic.")==1){
+		if (select("Listen again.","Move to the next topic.")==1) {
 			mes "[Asthe]";
 			mes "Alright,";
 			mes "give me a moment";
@@ -676,7 +676,7 @@ prt_monk.gat,230,106,3	script	Asthe#tu	79,{
 		mes "[Asthe]";
 		mes "Oh, and this last delivery is a receipt for ^3131FFPriest Praupin^000000, the priest who told you about me.";
 		mes "Here you go, the letters and packages...";
-		if(MaxWeight - Weight < 2430){
+		if (MaxWeight - Weight < 2430) {
 			next;
 			mes "[Asthe]";
 			mes "Oh...!";
@@ -795,8 +795,8 @@ prt_monk.gat,230,106,3	script	Asthe#tu	79,{
 monk_in.gat,18,38,6	script	Priest Gardron#tu	110,{
 
 	mes "[Priest Gardron]";
-	if(tu_acolyte01 == 7){
-		if(countitem(7148) >= 1){
+	if (tu_acolyte01 == 7) {
+		if (countitem(7148) >= 1) {
 			mes "Hmm...?";
 			mes "What's that?";
 			mes "You have something for me?";
@@ -825,8 +825,8 @@ monk_in.gat,18,38,6	script	Priest Gardron#tu	110,{
 			mes "it or misplaced it somewhere.";
 			close;
 		}
-	} else if(tu_acolyte01 == 8){
-		if(countitem(957) > 4){
+	} else if(tu_acolyte01 == 8) {
+		if (countitem(957) > 4) {
 			mes "Oh..!";
 			mes "You've returned!";
 			mes "Let's see... One...";
@@ -880,7 +880,7 @@ monk_in.gat,18,38,6	script	Priest Gardron#tu	110,{
 			mes "Now then...";
 			mes "Will you go to Payon?";
 			next;
-			if(select("Let's go to Payon!","Um, let me get ready first.")==1){
+			if (select("Let's go to Payon!","Um, let me get ready first.")==1) {
 				mes "[Priest Gardron]";
 				mes "Good, good.";
 				mes "I shall send you";
@@ -907,13 +907,13 @@ prt_monk.gat,235,245,5	script	Dog#tu	81,{
 	mes "^CDB79EBark bark!";
 	mes "Woof woof!^000000";
 	next;
-	if(tu_acolyte01 == 10){
+	if (tu_acolyte01 == 10) {
 		set @dog_food, 0;
-		while((1)){
-			switch(select("Give a treat.","Pet the dog.","End actions.")){
+		while((1)) {
+			switch(select("Give a treat.","Pet the dog.","End actions.")) {
 			case 1:
 				set @dog_food, @dog_food + 1;
-				if(@dog_food > 4){
+				if (@dog_food > 4) {
 					mes "[Dog]";
 					mes "^CDB79EGrrrrrr...!^000000";
 					emotion e_an;
@@ -951,7 +951,7 @@ prt_monk.gat,235,245,5	script	Dog#tu	81,{
 prt_monk.gat,243,238,5	script	Boy#boy_voi	139,5,5{
 
 OnTouch:
-	if(tu_acolyte01 != 10)end;
+	if (tu_acolyte01 != 10)end;
 	mes "[???]";
 	mes "^333333*Sniff*^000000";
 	mes "Sister...";
@@ -961,7 +961,7 @@ OnTouch:
 prt_monk.gat,226,257,6	script	Ill Girl#tu	93,{
 
 	mes "[Angelic]";
-	if(tu_acolyte01 > 12){
+	if (tu_acolyte01 > 12) {
 		mes "Thanks for helping me.";
 		mes "I'm sad my older sister is no longer with me, but I oughta";
 		mes "cheer up, right? I'll try my best!";
@@ -972,7 +972,7 @@ prt_monk.gat,226,257,6	script	Ill Girl#tu	93,{
 	mes "^333333*Sniff* *Cough cough!*^000000";
 	mes "It h-hurts so... much...!";
 	mes "Sis...ter...";
-	if(tu_acolyte01 == 10){
+	if (tu_acolyte01 == 10) {
 		next;
 		mes "[Angelic]";
 		mes "^333333*Sniff...*^000000";
@@ -1037,21 +1037,21 @@ prt_monk.gat,226,257,6	script	Ill Girl#tu	93,{
 		set tu_acolyte01, 11;
 		close;
 	} else
-	if(tu_acolyte01 == 11){
+	if (tu_acolyte01 == 11) {
 		next;
 		mes "[Angelic]";
 		mes "It hurts...!";
 		mes "I... I can't...!";
 		close;
 	} else
-	if(tu_acolyte01 == 12){
+	if (tu_acolyte01 == 12) {
 		next;
 		mes "^3355FFYou go towards";
 		mes "the girl, place your hands";
 		mes "on her back and perform";
 		mes "a holy spell...^000000";
 		next;
-		switch(select("Heal!","Blessing!","Cure!","Recovery!","Signum Crucis!","B.S Sacramenti!")){
+		switch(select("Heal!","Blessing!","Cure!","Recovery!","Signum Crucis!","B.S Sacramenti!")) {
 		case 1:
 			mes "["+strcharinfo(0)+"]";
 			mes "H...";
@@ -1064,12 +1064,12 @@ prt_monk.gat,226,257,6	script	Ill Girl#tu	93,{
 			close; 
 			break;
 		case 2:
-			if(getskilllv(34) == 0) goto L_NONE;
+			if (getskilllv(34) == 0) goto L_NONE;
 			mes "["+strcharinfo(0)+"]";
 			mes "B...";
 			mes "Blessing!";
 			next;
-			if(rand(100) < getskilllv(34)*10){
+			if (rand(100) < getskilllv(34)*10) {
 				//misceffect EF_BLESSING;
 				mes "["+strcharinfo(0)+"]";
 				mes "I...";
@@ -1094,7 +1094,7 @@ prt_monk.gat,226,257,6	script	Ill Girl#tu	93,{
 			}
 			break;
 		case 3:
-			if(getskilllv(35) == 0) goto L_NONE;
+			if (getskilllv(35) == 0) goto L_NONE;
 			mes "["+strcharinfo(0)+"]";
 			mes "C-Cure...!";
 			//misceffect EF_CURE;
@@ -1110,7 +1110,7 @@ prt_monk.gat,226,257,6	script	Ill Girl#tu	93,{
 			close;
 			break;
 		case 5:
-			if(getskilllv(32) == 0) goto L_NONE;
+			if (getskilllv(32) == 0) goto L_NONE;
 			mes "["+strcharinfo(0)+"]";
 			mes "S-Signum...";
 			mes "Signum Crucis!";
@@ -1151,7 +1151,7 @@ L_NONE:
 prt_monk.gat,197,228,3	script	Veiner	89,{
 
 	mes "[Veiner]";
-	if(countitem(1081) && tu_acolyte01 == 18){
+	if (countitem(1081) && tu_acolyte01 == 18) {
 		set tu_acolyte01, 19;
 		delitem 1081, 1;
 		mes "So very exhausted...";
@@ -1176,7 +1176,7 @@ prt_monk.gat,197,228,3	script	Veiner	89,{
 		mes "Thank you very much for delivering this to me. Sorry, but I'm always excited to hear from my cutie pie~";
 		emotion e_thx;
 		close;
-	} else if(tu_acolyte01 > 18){
+	} else if(tu_acolyte01 > 18) {
 		mes "I can't wait";
 		mes "to see her again!";
 		mes "Bibi...! I loooove you!";
@@ -1199,7 +1199,7 @@ prt_monk.gat,28,260,5	script	Hedrick	50,{
 	mes "And so efficiently too!";
 	mes "Awesome job as usual,";
 	mes "Hedrick. You're number one!";
-	if(countitem(7148)==0 || tu_acolyte01 != 19) close;
+	if (countitem(7148)==0 || tu_acolyte01 != 19) close;
 	next;
 	mes "[Hedrick]";
 	mes "Oh...?";
@@ -1229,7 +1229,7 @@ prt_monk.gat,28,260,5	script	Hedrick	50,{
 prt_monk.gat,135,263,4	script	Weapon Merchant#tu	139,9,9{
 
 OnTouch:
-	if(tu_acolyte01 != 20 || countitem(1081)==0) end;
+	if (tu_acolyte01 != 20 || countitem(1081)==0) end;
 	delitem 1081, 1;
 	set tu_acolyte01, 21;
 	mes "[Weapon Merchant]";
@@ -1247,7 +1247,7 @@ monk_in.gat,103,176,7	script	Karven	60,{
 
 	mes "[Karven]";
 	mes "May you rest";
-	if(tu_acolyte01 == 21 && countitem(7183)){
+	if (tu_acolyte01 == 21 && countitem(7183)) {
 		delitem 7183, 1;
 		set tu_acolyte01, 22;
 		mes "in peace forever...";
@@ -1279,7 +1279,7 @@ monk_in.gat,103,176,7	script	Karven	60,{
 prt_monk.gat,219,164,3	script	Gloria#tu	95,{
 
 	mes "[Gloria]";
-	if(BaseJob != Job_Acolyte){
+	if (BaseJob != Job_Acolyte) {
 		mes "Hi, hi~";
 		mes "I'm Gloria.";
 		mes "You wanna know";
@@ -1296,7 +1296,7 @@ prt_monk.gat,219,164,3	script	Gloria#tu	95,{
 		mes "you, but I like my name very much. I mean, it's not like my parents named me after that weapon, right?";
 		close;
 	}
-	if(tu_acolyte01 > 0 && tu_acolyte01 < 25){
+	if (tu_acolyte01 > 0 && tu_acolyte01 < 25) {
 		mes "I'm still";
 		mes "a young Acolyte";
 		mes "in training and I'm";
@@ -1321,7 +1321,7 @@ prt_monk.gat,219,164,3	script	Gloria#tu	95,{
 		mes "send you to Prontera.";
 		mes "Just let me know, okay?";
 		next;
-		switch(select("I'm okay for now.","Send me to Prontera.")){
+		switch(select("I'm okay for now.","Send me to Prontera.")) {
 		case 1:
 			mes "[Gloria]";
 			mes "In order to use";
@@ -1353,7 +1353,7 @@ prt_monk.gat,219,164,3	script	Gloria#tu	95,{
 prt_monk.gat,153,210,3	script	Cleope Verce	95,{
 
 	mes "[Cleope Verce]";
-	if(BaseJob != Job_Acolyte){
+	if (BaseJob != Job_Acolyte) {
 		mes "Hello hello.";
 		mes "The sun is very";
 		mes "warm today, don't";
@@ -1361,7 +1361,7 @@ prt_monk.gat,153,210,3	script	Cleope Verce	95,{
 		mes "weather today...";
 		close;
 	}
-	if(JobLevel >= 40){
+	if (JobLevel >= 40) {
 		mes "Hmmm?";
 		mes "It looks like you've";
 		mes "learned quite a lot as";
@@ -1370,7 +1370,7 @@ prt_monk.gat,153,210,3	script	Cleope Verce	95,{
 		mes "call you a rookie anymore~";
 		close; 
 	}
-	if(BaseLevel < 26){
+	if (BaseLevel < 26) {
 		mes "Oh my.. "; 
 		mes "A newbie Acolyte?";
 		mes "It doesn't even seem";
@@ -1381,7 +1381,7 @@ prt_monk.gat,153,210,3	script	Cleope Verce	95,{
 		mes "Ho ho~!";
 		mes "In my days";
 		mes "as an Acolyte,";
-		switch(rand(1,4)){
+		switch(rand(1,4)) {
 		case 1:
 			mes "I trained by attacking";
 			mes "^3131FFgreen frogs^000000 till my knuckles";
@@ -1412,7 +1412,7 @@ prt_monk.gat,153,210,3	script	Cleope Verce	95,{
 		mes "Good luck...";
 		mes "Rookie.";
 		close;
-	} else if(BaseLevel < 36){
+	} else if(BaseLevel < 36) {
 		mes "Oh my.. "; 
 		mes "A young Acolyte?";
 		mes "You seem to have just";
@@ -1422,7 +1422,7 @@ prt_monk.gat,153,210,3	script	Cleope Verce	95,{
 		mes "Ho ho~!";
 		mes "When I was";
 		mes "around your age,";
-		switch(rand(1,5)){
+		switch(rand(1,5)) {
 		case 1:
 			mes "I'd fight with those ^3131FFwhite";
 			mes "mice^000000 and ^3131FFbig roaches^000000~";
@@ -1463,7 +1463,7 @@ prt_monk.gat,153,210,3	script	Cleope Verce	95,{
 		mes "Good luck,";
 		mes "young friend.";
 		close;
-	} else if(BaseLevel < 46){
+	} else if(BaseLevel < 46) {
 		mes "Well, well, well~"; 
 		mes "Hello, young Acolyte.";
 		mes "You're still kind of";
@@ -1473,7 +1473,7 @@ prt_monk.gat,153,210,3	script	Cleope Verce	95,{
 		mes "[Cleope Verce]";
 		mes "I remember that when";
 		mes "I was your age, I used to";
-		switch(rand(1,6)){
+		switch(rand(1,6)) {
 		case 1:
 			mes "fight these ^3131FFfearsome evil spirits^000000 all the time in that castle ^3131FFwest of Geffen^000000.";
 			mes "I wonder how I survived all that?";
@@ -1534,8 +1534,8 @@ prt_monk.gat,153,210,3	script	Cleope Verce	95,{
 prt_monk.gat,217,123,4	script	#tu_monk	139,10,10{
 
 OnTouch:
-	if(BaseJob == Job_Acolyte){
-		switch(tu_acolyte01){
+	if (BaseJob == Job_Acolyte) {
+		switch(tu_acolyte01) {
 		case 0:
 			mes "[Sound by Window]";
 			mes "Oh...no.. ....so.....";
@@ -1553,7 +1553,7 @@ OnTouch:
 			mes "yonder window...^000000";
 			close;
 		}
-	} else if(BaseClass == Job_Archer){
+	} else if(BaseClass == Job_Archer) {
 		mes "[Sound by Window]";
 		mes "Oh...no.. ....so.....";
 		close;
@@ -1563,11 +1563,11 @@ OnTouch:
 
 prt_monk.gat,223,123,3	script	Eavesdrop#tu	111,{
 
-	if(BaseJob != Job_Acolyte){
+	if (BaseJob != Job_Acolyte) {
 		mes "^3355FFThere's nothing here.^000000";
 		close;
 	}
-	if(tu_acolyte01 > 3 && tu_acolyte01 < 10){
+	if (tu_acolyte01 > 3 && tu_acolyte01 < 10) {
 		mes "[Voices from Window]";
 		mes "^A68064Sir...";
 		mes "Something doesn't";
@@ -1592,7 +1592,7 @@ prt_monk.gat,223,123,3	script	Eavesdrop#tu	111,{
 		mes "Still, I can't help";
 		mes "but feel uneasy...^000000";
 		close;
-	} else if(tu_acolyte01 > 9 && tu_acolyte01 < 25){
+	} else if(tu_acolyte01 > 9 && tu_acolyte01 < 25) {
 		mes "[Voices from Window]";
 		mes "^A68064I heard from an";
 		mes "official at the palace";
@@ -1623,7 +1623,7 @@ prt_monk.gat,223,123,3	script	Eavesdrop#tu	111,{
 		mes "[Voices from Window]";
 		mes "^CD6600Thank you...^000000";
 		close;
-	} else if(tu_acolyte01 > 24){
+	} else if(tu_acolyte01 > 24) {
 		mes "[Voices from Window]";
 		mes "^A68064...Sir, do you know anything about the ^855E42curse of the Geobourg family^A68064?^000000";
 		next;
@@ -1772,7 +1772,7 @@ payon_in02.gat,67,65,3	script	Bard Jet#tu	51,{
 		mes "up a joke~!";
 		emotion e_gg;
 		next;
-		if (Sex == Male){
+		if (Sex == Male) {
 			menu "A joke, eh?",-;
 			mes "["+ strcharinfo(0) +"]";
 			mes "What did...";
@@ -1820,7 +1820,7 @@ payon_in02.gat,67,65,3	script	Bard Jet#tu	51,{
 		mes "jobs so that you can";
 		mes "come play with me!";
 		close;
-	} else if(Basejob == Job_Bard){
+	} else if(Basejob == Job_Bard) {
 		mes "Ooh...!";
 		mes "You're...!";
 		next;
@@ -1847,7 +1847,7 @@ payon_in02.gat,67,65,3	script	Bard Jet#tu	51,{
 		mes "sounds-- wait. It's not funny";
 		mes "if I have to explain it, huh?";
 		close;
-	} else if(Basejob == Job_Dancer){
+	} else if(Basejob == Job_Dancer) {
 		mes "Ooh...!";
 		mes "Hello, hello!";
 		mes "Wouldn't it be";
@@ -1895,7 +1895,7 @@ payon_in02.gat,47,13,3	script	Master Kavaruk	55,{
 	mes "of the Icarus Archer Guild.";
 	mes "I bid you welcome.";
 	next;
-	switch(select("Ask about 'Icarus.'","Ask about recent news.","Talk about Archers.")){
+	switch(select("Ask about 'Icarus.'","Ask about recent news.","Talk about Archers.")) {
 	case 1:
 		mes "[Master Kavaruk]";
 		mes "Have you ever";
@@ -1914,17 +1914,17 @@ payon_in02.gat,47,13,3	script	Master Kavaruk	55,{
 		mes "The members of our guild are those who not only wish to be brave, but to reach out for our dreams like Icarus did. Our members are aspiring Archers, former Archers and current Archers.";
 		next;
 		mes "[Master Kavaruk]";
-		if(Basejob == Job_Novice && Upper != 1){
+		if (Basejob == Job_Novice && Upper != 1) {
 			mes "If you'd like to become an Archer, why don't you go around and learn";
 			mes "a few things about the profession? I'm sure you'll be able to hear plenty of stories around here.";
 			close;
 
-		} else if(Basejob == Job_Archer){
+		} else if(Basejob == Job_Archer) {
 			mes "Since you're an Archer, you might";
 			mes "benefit from going around and listening to everyone else's battle experiences. Becoming familiar with different fight scenarios will help you in the future.";
 			close;
 
-		} else if(Basejob == Job_Hunter){
+		} else if(Basejob == Job_Hunter) {
 			mes "In fact, there are a few members in our guild who handle Falcons and Arrows, just like you.";
 			next;
 			mes "[Master Kavaruk]";
@@ -1932,7 +1932,7 @@ payon_in02.gat,47,13,3	script	Master Kavaruk	55,{
 			mes "here sometime, though.";
 			close;
 
-		} else if(Basejob == Job_Dancer){
+		} else if(Basejob == Job_Dancer) {
 			mes "In fact, a few of our";
 			mes "members specialize in";
 			mes "capturing the fascination";
@@ -1946,7 +1946,7 @@ payon_in02.gat,47,13,3	script	Master Kavaruk	55,{
 			mes "one of these days.";
 			close;
 
-		} else if(Basejob == Job_Bard){
+		} else if(Basejob == Job_Bard) {
 			mes "In fact, a few of our members";
 			mes "are highly skilled in singing and entertaining their allies, much in the same way you do.";
 			next;
@@ -1962,7 +1962,7 @@ payon_in02.gat,47,13,3	script	Master Kavaruk	55,{
 	case 2:
 		mes "[Master Kavaruk]";
 		if (Basejob == Job_Archer) {
-			if(tu_archer02 == 0){
+			if (tu_archer02 == 0) {
 				mes "Oh, it's a good thing";
 				mes "you're here, "+strcharinfo(0)+".";
 				mes "I've just received request for support from the Alchemist";
@@ -1984,7 +1984,7 @@ payon_in02.gat,47,13,3	script	Master Kavaruk	55,{
 				set tu_archer02, 1;
 				close;
 
-			} else if(tu_archer02 == 1){
+			} else if(tu_archer02 == 1) {
 				mes "Hmmm...";
 				mes "..........";
 				next;
@@ -2010,14 +2010,14 @@ payon_in02.gat,47,13,3	script	Master Kavaruk	55,{
 				set tu_archer02, 2;
 				close;
 
-			} else if(tu_archer02 == 2){
+			} else if(tu_archer02 == 2) {
 				mes "Find Arthail";
 				mes "of the Wind for me.";
 				mes "He must be somewhere";
 				mes "in Prontera...";
 				close;
 
-			} else if(tu_archer02 == 9){
+			} else if(tu_archer02 == 9) {
 				mes "Hmmm, I see. Thank you";
 				mes "for bringing me the news. As Arthail has said, I shall wait until he has more news for me.";
 				mes "You should also train and prepare for the future as well.";
@@ -2040,17 +2040,17 @@ payon_in02.gat,47,13,3	script	Master Kavaruk	55,{
 
 	case 3:
 		mes "[Master Kavaruk]";
-		if(tu_archer01 < 1){
-			if(Basejob == Job_Novice && Upper != 1){
+		if (tu_archer01 < 1) {
+			if (Basejob == Job_Novice && Upper != 1) {
 				mes "Ah...";
 				mes "So are you";
 				mes "interested in";
 				mes "becoming an Archer?";
 
-			} else if(BaseClass == Job_Archer){
+			} else if(BaseClass == Job_Archer) {
 				mes "Although I can't deny that you're an expert, I suppose it is a good idea to review the basics of archery from time to time. Would you like to try some refresher training?";
 
-			} else if(Basejob == Job_Archer && Upper != 1){
+			} else if(Basejob == Job_Archer && Upper != 1) {
 				mes "As an Archer, I can see that you'd want to make sure that you have a strong grasp on the fundamentals";
 				mes "of our job. Would you like some specialized instruction?";
 
@@ -2064,7 +2064,7 @@ payon_in02.gat,47,13,3	script	Master Kavaruk	55,{
 				mes "some specialized instruction to learn more about the Archer job?";
 			}
 			next;
-			switch(select("Yes","No")){
+			switch(select("Yes","No")) {
 			case 1:
 				set tu_archer01, 1;
 				mes "[Master Kavaruk]";
@@ -2092,7 +2092,7 @@ payon_in02.gat,47,13,3	script	Master Kavaruk	55,{
 				close;
 				break;
 			}
-		} else if(tu_archer01 == 1 || tu_archer01 == 2){
+		} else if(tu_archer01 == 1 || tu_archer01 == 2) {
 			mes "Hmm...?";
 			mes "What are you still";
 			mes "doing here? Go to the";
@@ -2100,7 +2100,7 @@ payon_in02.gat,47,13,3	script	Master Kavaruk	55,{
 			mes "talk to ^3131FFSeisner^000000 to begin your special training.";
 			close;
 
-		} else if(tu_archer01 == 3){
+		} else if(tu_archer01 == 3) {
 			mes "So "+strcharinfo(0)+",";
 			mes "Did you have a good experience? Learning theory alone is never too enjoyable, but it is necessary.";
 			next;
@@ -2114,7 +2114,7 @@ payon_in02.gat,47,13,3	script	Master Kavaruk	55,{
 			}
 			close;
 
-		} else if(tu_archer01 == 4){
+		} else if(tu_archer01 == 4) {
 			mes "Raiden Karus is just outside of this building. Didn't you see him on your way in?";
 			close;
 
@@ -2896,7 +2896,7 @@ pay_arche.gat,84,139,3	script	Seisner	727,{
 	mes "Now, there are some";
 	mes "Thief class people who also use arrows, but they're better suited to using Knives. We Archers are";
 	mes "the arrow specialists!";
-	if(tu_archer01 == 1 || tu_archer01 > 2){
+	if (tu_archer01 == 1 || tu_archer01 > 2) {
 		next;
 		mes "^3355FFYou show Seisner";
 		mes "the letter that Master";
@@ -2908,8 +2908,8 @@ pay_arche.gat,84,139,3	script	Seisner	727,{
 		mes "wants me to teach";
 		mes "you about Archers and Archery? Alright, what would you like to know more about?";
 		next;
-		while(1){
-			switch(select("About Archers.","Stats for Archers","End Conversation.")){
+		while(1) {
+			switch(select("About Archers.","Stats for Archers","End Conversation.")) {
 			case 1:
 				mes "[Seisner]";
 				mes "Archers specialize";
@@ -2934,7 +2934,7 @@ pay_arche.gat,84,139,3	script	Seisner	727,{
 				next;
 				mes "[Seisner]";
 				mes "Hunters can ultimately transcend into ^3131FFSnipers^000000, Bards into ^3131FFMinstrels^000000, and Dancers into ^3131FFGypsies^000000. I know that's pretty complex.";
-				if(tu_archer01 == 1) set tu_archer01, 2;
+				if (tu_archer01 == 1) set tu_archer01, 2;
 				next;  
 				break;
 			case 2:
@@ -2943,8 +2943,8 @@ pay_arche.gat,84,139,3	script	Seisner	727,{
 				mes "know more about Stats";
 				mes "and how they affect Archer abilities? I'll do my best to explain."; 
 				next;
-				while(1){
-					switch(select("STR", "^3131FFAGI^000000", "VIT", "^FF9900INT^000000", "^FF3131DEX^000000", "LUK", "End Conversation.")){
+				while(1) {
+					switch(select("STR", "^3131FFAGI^000000", "VIT", "^FF9900INT^000000", "^FF3131DEX^000000", "LUK", "End Conversation.")) {
 					case 1:
 						mes "[Seisner]";
 						mes "STR typically increases the damage of attacks. However, Archer class characters use weapons that rely on ^FF3131DEX^000000 to increase their damage.";
@@ -2961,7 +2961,7 @@ pay_arche.gat,84,139,3	script	Seisner	727,{
 						mes "increase the amount of weight";
 						mes "that any character can carry. So if you have more STR, you can carry around more arrows.";
 						next;
-						if(tu_archer01 == 1) set tu_archer01, 2;
+						if (tu_archer01 == 1) set tu_archer01, 2;
 						break;
 					case 2:
 						mes "[Seisner]";
@@ -2972,7 +2972,7 @@ pay_arche.gat,84,139,3	script	Seisner	727,{
 						mes "[Seisner]";
 						mes "One of the drawbacks of being an Archer is having weaker strength and lower Dodge Rate. However, the Dodge Rate disadvantage is lessened by increasing your ^FF3131AGI^000000.";
 						next;
-						if(tu_archer01 == 1) set tu_archer01, 2;
+						if (tu_archer01 == 1) set tu_archer01, 2;
 						break;
 					case 3:
 						mes "[Seisner]";
@@ -2988,7 +2988,7 @@ pay_arche.gat,84,139,3	script	Seisner	727,{
 						mes "VIT might be helpful";
 						mes "depending on how you use it. Still, I wouldn't recommend focusing too much on increasing your VIT if you're an Archer.";
 						next;
-						if(tu_archer01 == 1) set tu_archer01, 2;
+						if (tu_archer01 == 1) set tu_archer01, 2;
 						break;
 					case 4:
 						mes "[Seisner]";
@@ -3004,7 +3004,7 @@ pay_arche.gat,84,139,3	script	Seisner	727,{
 						mes "[Seisner]";
 						mes "For Hunters, one of the Second Job Classes for Archers, having higher INT will increase the damage inflicted by ^3131FFFalcons^000000.";
 						next;
-						if(tu_archer01 == 1) set tu_archer01, 2;
+						if (tu_archer01 == 1) set tu_archer01, 2;
 						break;
 					case 5:
 						mes "[Seisner]";
@@ -3023,7 +3023,7 @@ pay_arche.gat,84,139,3	script	Seisner	727,{
 						mes "[Seisner]";
 						mes "Just like any other class, ^FF3131DEX^000000 increases ^3131FFAccuracy (HIT)^000000 and slightly enhances Attack Speed (ASPD).";
 						next;
-						if(tu_archer01 == 1) set tu_archer01, 2;
+						if (tu_archer01 == 1) set tu_archer01, 2;
 						break;
 					case 6:
 						mes "[Seisner]";
@@ -3034,7 +3034,7 @@ pay_arche.gat,84,139,3	script	Seisner	727,{
 						mes "[Seisner]";
 						mes "For Hunters, one of the Second Classes for the Archer, LUK increases the chance of ^3131FFBlitz Beat^000000 occurring automatically. So Hunters who rely on their Falcons might want to invest in LUK.";
 						next;
-						if(tu_archer01 == 1) set tu_archer01, 2;
+						if (tu_archer01 == 1) set tu_archer01, 2;
 						break;
 					case 7:
 						mes "[Seisner]";
@@ -3057,7 +3057,7 @@ pay_arche.gat,84,139,3	script	Seisner	727,{
 				break;
 			}
 		}
-	} else if(tu_archer01 == 2){
+	} else if(tu_archer01 == 2) {
 		next;
 		mes "[Seisner]";
 		mes "Thanks for listening.";
@@ -3069,11 +3069,11 @@ pay_arche.gat,84,139,3	script	Seisner	727,{
 		close2;
 		//misceffect EF_WIND ;
 		set tu_archer01, 3;
-		if(JobLevel == 1){
+		if (JobLevel == 1) {
 			set JobExp,JobExp+30;
-		} else if((JobLevel > 1) && (JobLevel < 11)){	
+		} else if((JobLevel > 1) && (JobLevel < 11)) {	
 			set JobExp,JobExp+100;
-		} else if((JobLevel > 10) && (JobLevel < 21)){
+		} else if((JobLevel > 10) && (JobLevel < 21)) {
 			set JobExp,JobExp+250;
 		} else {
 			set JobExp,JobExp+500;
@@ -3087,8 +3087,8 @@ pay_arche.gat,76,135,3	script	Target#Target	111,{ end; }	// empty NPC?? [Jukka]
 
 mjolnir_11.gat,27,223,3	script	Acolyte#tu	95,{
 	mes "[Acolyte]";
-	if(tu_archer01 == 14){
-		if(gettime(3) >= 18 && gettime(3) < 22){
+	if (tu_archer01 == 14) {
+		if (gettime(3) >= 18 && gettime(3) < 22) {
 			mes "H-hello!";
 			mes "Umm, umm...";
 			mes "Are you R-Raiden Karus's";
@@ -3111,7 +3111,7 @@ mjolnir_11.gat,27,223,3	script	Acolyte#tu	95,{
 			mes "Let's h-help each other train!";
 			mes "Um, is that okay?";
 			next;
-			switch(select("Sure.","No thanks.","Raiden Karus is mine!")){
+			switch(select("Sure.","No thanks.","Raiden Karus is mine!")) {
 			case 1:
 				mes "[Acolyte]";
 				mes "Wow!";
@@ -3139,7 +3139,7 @@ mjolnir_11.gat,27,223,3	script	Acolyte#tu	95,{
 				mes "he already has a girlfriend...";
 				next;
 				mes "[Acolyte]";
-				if (Sex == Male){
+				if (Sex == Male) {
 					mes "W-wait!";
 					mes "Y-you're a man!";
 					mes "D-d-d-don't tease me";
@@ -3173,36 +3173,36 @@ mjolnir_11.gat,27,223,3	script	Acolyte#tu	95,{
 			mes "Y-you're... ^666666*Yawn*^000000";
 			mes "So sleepy. Take this for now...";
 			set @kurae_heal, rand(1,4);
-			if(@kurae_heal == 1){
+			if (@kurae_heal == 1) {
 				// unitskilluseid getcharid(3),28,3;
-			} else if(@kurae_heal == 2){
+			} else if(@kurae_heal == 2) {
 				// unitskilluseid getcharid(3),28,9;
-			} else if(@kurae_heal == 3){
+			} else if(@kurae_heal == 3) {
 				// unitskilluseid getcharid(3),28,10;
-			} else if(@kurae_heal == 4){
+			} else if(@kurae_heal == 4) {
 			}
 
 			set @kurae_agi, rand(1,3);
-			if(@kurae_agi == 1){
+			if (@kurae_agi == 1) {
 				// unitskilluseid getcharid(3),29,0;
-			} else if(@kurae_agi == 2){
+			} else if(@kurae_agi == 2) {
 				// unitskilluseid getcharid(3),29,5;
-			} else if(@kurae_agi == 3){
+			} else if(@kurae_agi == 3) {
 				// unitskilluseid getcharid(3),29,10;
 			}
 
 			set @kurae_bls, rand(1,3);
-			if(@kurae_bls == 1){
+			if (@kurae_bls == 1) {
 				// unitskilluseid getcharid(3),34,0;
-			} else if(@kurae_bls == 2){
+			} else if(@kurae_bls == 2) {
 				// unitskilluseid getcharid(3),34,5;
-			} else if(@kurae_bls == 3){
+			} else if(@kurae_bls == 3) {
 				// unitskilluseid getcharid(3),34,10;
 			}
 			close;
 		}
-	} else if(tu_archer01 == 15){
-		if((gettime(3) >= 18) && (gettime(3) < 22)){	//CHECK
+	} else if(tu_archer01 == 15) {
+		if ((gettime(3) >= 18) && (gettime(3) < 22)) {	//CHECK
 			mes "^666666Zzzzz...^000000";
 			mes "Wh-wha...?";
 			mes "Who are you?";
@@ -3220,29 +3220,29 @@ mjolnir_11.gat,27,223,3	script	Acolyte#tu	95,{
 			mes "I fall asleep again~! ^666666*Yawn*^000000";
 
 			set @kurae_heal, rand(1,4);
-			if(@kurae_heal == 1){
+			if (@kurae_heal == 1) {
 				// unitskilluseid getcharid(3),28,3;
-			} else if(@kurae_heal == 2){
+			} else if(@kurae_heal == 2) {
 				// unitskilluseid getcharid(3),28,10;
-			} else if(@kurae_heal == 3){
+			} else if(@kurae_heal == 3) {
 				// unitskilluseid getcharid(3),28,8;
 			}
 
 			set @kurae_agi, rand(1,3);
-			if(@kurae_agi == 1){
+			if (@kurae_agi == 1) {
 				// unitskilluseid getcharid(3),29,0;
-			} else if(@kurae_agi == 2){
+			} else if(@kurae_agi == 2) {
 				// unitskilluseid getcharid(3),29,5;
-			} else if(@kurae_agi == 3){
+			} else if(@kurae_agi == 3) {
 				// unitskilluseid getcharid(3),29,10;
 			}
 
 			set @kurae_bls, rand(1,3);
-			if(@kurae_bls == 1){
+			if (@kurae_bls == 1) {
 				// unitskilluseid getcharid(3),34,0;
-			} else if(@kurae_bls == 2){
+			} else if(@kurae_bls == 2) {
 				// unitskilluseid getcharid(3),34,5;
-			} else if(@kurae_bls == 3){
+			} else if(@kurae_bls == 3) {
 				// unitskilluseid getcharid(3),34,10;
 			}
 			close;
@@ -3253,25 +3253,25 @@ mjolnir_11.gat,27,223,3	script	Acolyte#tu	95,{
 			mes "to help you! Yaa~p!";
 
 			set @kurae_heal, rand(1,3);
-			if(@kurae_heal == 1){
+			if (@kurae_heal == 1) {
 				// unitskilluseid getcharid(3),28,3;
-			} else if(@kurae_heal == 2){
+			} else if(@kurae_heal == 2) {
 				// unitskilluseid getcharid(3),28,10;
-			} else if(@kurae_heal == 3){
+			} else if(@kurae_heal == 3) {
 				// unitskilluseid getcharid(3),28,8;
 			}
 
 			set @kurae_agi, rand(1,2);
-			if(@kurae_agi == 1){
+			if (@kurae_agi == 1) {
 				// unitskilluseid getcharid(3),29,10;
-			} else if(@kurae_agi == 2){	
+			} else if(@kurae_agi == 2) {	
 				// unitskilluseid getcharid(3),29,5;
 			}
 
 			set @kurae_bls, rand(1,2);
-			if(@kurae_bls == 1){
+			if (@kurae_bls == 1) {
 				// unitskilluseid getcharid(3),34,10;
-			} else if(@kurae_bls == 2){
+			} else if(@kurae_bls == 2) {
 				// unitskilluseid getcharid(3),34,5;
 			}
 			close;
@@ -3289,8 +3289,8 @@ mjolnir_11.gat,27,223,3	script	Acolyte#tu	95,{
 pay_arche.gat,130,113,3	script	Alchemist Guildmember#tu	740,{
 
 	mes "[Alchemist Guildmember]";
-	if(tu_archer02 > 0){
-		if((countitem(1032) > 0) || (countitem(905) > 0 )){	// Blossom_Of_Maneater & Stem
+	if (tu_archer02 > 0) {
+		if ((countitem(1032) > 0) || (countitem(905) > 0 )) {	// Blossom_Of_Maneater & Stem
 			mes "Great...!";
 			mes "I've been waiting";
 			mes "for the Icarus Guild";
@@ -3305,7 +3305,7 @@ pay_arche.gat,130,113,3	script	Alchemist Guildmember#tu	740,{
 			mes "each Stem for ^3131FF30 Zeny^000000 and each";
 			mes "Maneater Blossom for ^3131FF130 Zeny^000000.";
 			next;
-			switch(select("Sell all Stems and Maneater Blossoms.","Don't sell anything.")){
+			switch(select("Sell all Stems and Maneater Blossoms.","Don't sell anything.")) {
 			case 1:
 				mes "[Alchemist Guildmember]";
 				mes "Thank you very much!";
@@ -3319,9 +3319,9 @@ pay_arche.gat,130,113,3	script	Alchemist Guildmember#tu	740,{
 				set @f_zeny, @alche_f * 130;
 				set @s_zeny, @alche_s * 30;
 				set @total_zeny, @f_zeny + @s_zeny;
-				if(countitem(1032) == 0){
+				if (countitem(1032) == 0) {
 					delitem 905, @alche_s;
-				} else if(countitem(905) == 0){
+				} else if(countitem(905) == 0) {
 					delitem 1032, @alche_f;
 				} else {
 					delitem 1032, @alche_f;
@@ -3364,7 +3364,7 @@ pay_arche.gat,130,113,3	script	Alchemist Guildmember#tu	740,{
 prontera.gat,126,335,5	script	Arthail	51,{
 
 	mes "[Arthail]";
-	if(tu_archer02 < 3){
+	if (tu_archer02 < 3) {
 		mes "I am the Bard";
 		mes "who sings only for";
 		mes "himself. The gentle";
@@ -3378,7 +3378,7 @@ prontera.gat,126,335,5	script	Arthail	51,{
 		mes "so you had best be on";
 		mes "your way. I'm sorry, but";
 		mes "I have no songs to share.";
-		if(tu_archer02 == 2) {
+		if (tu_archer02 == 2) {
 			next;
 			menu "Master Kavaruk told me to find you!",-;
 			mes "[Arthail]";
@@ -3417,13 +3417,13 @@ prontera.gat,126,335,5	script	Arthail	51,{
 			set tu_archer02, 3;
 		}
 		close;
-	} else if(tu_archer02 == 3){
+	} else if(tu_archer02 == 3) {
 		mes "I'm ashamed to ask,";
 		mes "but would you go the fountain in Prontera's central plaza and see";
 		mes "if there's any news?";
 		close;
 
-	} else if(tu_archer02 == 4){
+	} else if(tu_archer02 == 4) {
 		mes "I see...";
 		mes "Nothing much.";
 		mes "Another person";
@@ -3506,11 +3506,11 @@ prontera.gat,126,335,5	script	Arthail	51,{
 		close2;
 		end;
 
-	} else if(tu_archer02 > 4 && tu_archer02 < 7){
+	} else if(tu_archer02 > 4 && tu_archer02 < 7) {
 		mes "^333333Zzzzz...^000000";
 		close;
 
-	} else if(tu_archer02 == 8){
+	} else if(tu_archer02 == 8) {
 		mes "Where did you go?";
 		mes "I thought you might have been kidnapped since you weren't";
 		mes "here when I woke up.";
@@ -3562,7 +3562,7 @@ prontera.gat,167,281,3	script	New Guild Master#tu	753,{
 	mes "those who call themselves";
 	mes "my comrades will never";
 	mes "know the taste of defeat!";
-	if(tu_archer02 == 3) set tu_archer02, 4;
+	if (tu_archer02 == 3) set tu_archer02, 4;
 	close;
 }
 
@@ -3600,7 +3600,7 @@ prt_castle.gat,76,165,6	script	Minister#tu	55,{
 	mes "is extremely busy";
 	mes "at the moment, handling";
 	mes "our nation's administration.";
-	if(tu_archer02 == 5){
+	if (tu_archer02 == 5) {
 		next;
 		mes "["+strcharinfo(0)+"]";
 		mes "I heard screams";
@@ -3615,13 +3615,13 @@ prt_castle.gat,76,165,6	script	Minister#tu	55,{
 		mes "Ah, there are a few stray cats running around, those Wild Roses, so those noises you heard must have been them. Everything is fine here in the palace.";
 		set tu_archer02, 6;
 		close;
-	} else if(tu_archer02 == 7){
+	} else if(tu_archer02 == 7) {
 		next;
 		mes "^3355FFThe urgency that the Minister expressed earlier has been";
 		mes "replaced with a stone cold feeling of sternness. He probably won't tell you much more information,";
 		mes "no matter how much you ask him.";
 		close;
-	} else if(tu_acolyte01 == 25){
+	} else if(tu_acolyte01 == 25) {
 		next;
 		mes "["+strcharinfo(0)+"]";
 		mes "Um...";
@@ -3655,7 +3655,7 @@ prt_castle.gat,76,165,6	script	Minister#tu	55,{
 prt_castle.gat,94,150,4	script	#sound_tu	139,10,10,{
 
 OnTouch:
-	if(tu_archer02 != 6) end;
+	if (tu_archer02 != 6) end;
 	mes "[Minister]";
 	mes "Contact the";
 	mes "Prontera Church.";
@@ -3667,14 +3667,14 @@ OnTouch:
 monk_in.gat,19,43,1	script	Bishop Maugins	60,{
 
 	mes "[Bishop Maugins]";
-	if(vu_archer02 == 7){
+	if (vu_archer02 == 7) {
 		mes "Greetings.";
 		mes "I doubt that you're here to change to the Monk job, but may I help you with something? Perhaps you're here for a confession?";
 		next;
 		mes "[Bishop Maugins]";
 		mes "Hm? Work related to the Palace? Yes, I'm in charge of that area. So how may I help you?";
 		next;
-		if(select("Has something happened to the Kingdom?","Nothing.")==1){
+		if (select("Has something happened to the Kingdom?","Nothing.")==1) {
 			mes "[Bishop Maugins]";
 			mes "...!!";
 			next;
@@ -3716,7 +3716,7 @@ geffen.gat,61,174,4	script	Sign#M	111,{
 geffen.gat,67,180,4	script	New Mage Manager#M	102,{
 
 	mes "[Mana]";
-	if(Basejob == Job_Novice){
+	if (Basejob == Job_Novice) {
 		mes "[Mana]";
 		mes "You're not";
 		mes "ready yet.";
@@ -3724,7 +3724,7 @@ geffen.gat,67,180,4	script	New Mage Manager#M	102,{
 		mes "you've trained more.";
 		close;
 	}
-	if(BaseClass != Job_Mage){
+	if (BaseClass != Job_Mage) {
 		mes "Be more confident in your job.";
 		mes "Sometimes other jobs may seem";
 		mes "better but take a look back at yourself";
@@ -3732,12 +3732,12 @@ geffen.gat,67,180,4	script	New Mage Manager#M	102,{
 		mes "by doing so.";
 		close;
 	}
-	if(Upper == 1 && tu_magician01 < 7){
+	if (Upper == 1 && tu_magician01 < 7) {
 		mes "[Mana]";
 		mes "My training isn't very helpful to those that are already skilled in magic. I'm afraid you'll have to rely on yourself to improve your skills.";
 		close;
 	}
-	switch(tu_magician01){
+	switch(tu_magician01) {
 	case 0:
 		mes "Welcome!";
 		mes "I'm Mana, a trainer in charge of those who have justed joined the Mage Guild.";
@@ -3745,7 +3745,7 @@ geffen.gat,67,180,4	script	New Mage Manager#M	102,{
 		mes "[Mana]";
 		mes "I've only been doing this job for a little while, but I'm here to help you if you want to learn more about the Mage job.";
 		next;
-		if(select("Will you teach me?", "Perhaps later...")==2){
+		if (select("Will you teach me?", "Perhaps later...")==2) {
 			mes "[Mana]";
 			mes "Well, I guess";
 			mes "that should be fine.";
@@ -3800,8 +3800,8 @@ geffen.gat,67,180,4	script	New Mage Manager#M	102,{
 		mes "have different features that must be considered.";
 		mes "I will explain the properties now.";
 		next;
-		while((1)){
-			switch(select("^ff0000Fire^000000", "^5C4033Earth^000000", "^93DB70Wind^000000", "^0000FFWater^000000", "^CFB53BGhost^000000", "Quit.")){
+		while((1)) {
+			switch(select("^ff0000Fire^000000", "^5C4033Earth^000000", "^93DB70Wind^000000", "^0000FFWater^000000", "^CFB53BGhost^000000", "Quit.")) {
 			case 1:
 				mes "[Mana]";
 				mes "In general, monsters that have the '^ff0000Fire^000000'";
@@ -3987,29 +3987,29 @@ geffen.gat,67,180,4	script	New Mage Manager#M	102,{
 				mes "So listen carefully until you have absorbed all the";
 				mes "information this time.";
 				next;
-				if(select("Then the explanation..", "Quit for sure.")==2){
+				if (select("Then the explanation..", "Quit for sure.")==2) {
 					mes "[Mana]";
 					mes "I'll move onto the next subject then.";
 					mes "Hoho..";
 					set tu_magician01, 2;
 					//misceffect EF_HIT5;
-					if(tu_mana&1){
+					if (tu_mana&1) {
 						set BaseExp, BaseExp + 150;
 						set JobExp,JobExp+70;
 					}
-					if(tu_mana&2){
+					if (tu_mana&2) {
 						set BaseExp, BaseExp + 150;
 						set JobExp,JobExp+70;
 					}
-					if(tu_mana&4){
+					if (tu_mana&4) {
 						set BaseExp, BaseExp + 150;
 						set JobExp,JobExp+70;
 					}
-					if(tu_mana&8){
+					if (tu_mana&8) {
 						set BaseExp, BaseExp + 150;
 						set JobExp,JobExp+70;
 					}
-					if(tu_mana&16){
+					if (tu_mana&16) {
 						set BaseExp, BaseExp + 150;
 						set JobExp,JobExp+70;
 					}
@@ -4115,7 +4115,7 @@ geffen.gat,67,180,4	script	New Mage Manager#M	102,{
 		mes "Ah~ You're here?";
 		mes "Let's see if you gathered all that's needed.";
 		next;
-		if(countitem(915) < 10){
+		if (countitem(915) < 10) {
 			mes "[Mana]";
 			mes "Not quite enough.";
 			mes "Come back when you have gathered some more.";
@@ -4145,7 +4145,7 @@ geffen.gat,67,180,4	script	New Mage Manager#M	102,{
 		mes "Ah~ You're here?";
 		mes "Let's see if you gathered all that's needed.";
 		next;
-		if(countitem(915) < 10){
+		if (countitem(915) < 10) {
 			mes "[Mana]";
 			mes "You need a little bit more.";
 			mes "You can do it!";
@@ -4171,8 +4171,8 @@ geffen.gat,67,180,4	script	New Mage Manager#M	102,{
 	case 5:
 		mes "Now shall we discuss the more advanced skills?";
 		next;
-		while(1){
-			switch(select("Soul Strike", "Safety Wall", "Fire Ball", "Frost Diver", "Thunderstorm", "Fire Wall", "Energy Coat", "Quit.")){
+		while(1) {
+			switch(select("Soul Strike", "Safety Wall", "Fire Ball", "Frost Diver", "Thunderstorm", "Fire Wall", "Energy Coat", "Quit.")) {
 			case 1:
 				mes "[Mana]";
 				mes "'Soul Strike' is a '^CFB53Bghost^000000' property";
@@ -4320,31 +4320,31 @@ geffen.gat,67,180,4	script	New Mage Manager#M	102,{
 				set tu_magician01, 6;
 				getitem 1604, 1;
 				//misceffect EF_HIT5;
-				if(tu_mana&1){
+				if (tu_mana&1) {
 					set BaseExp, BaseExp + 300;
 					set JobExp,JobExp+100;
 				}
-				if(tu_mana&2){
+				if (tu_mana&2) {
 					set BaseExp, BaseExp + 300;
 					set JobExp,JobExp+100;
 				}
-				if(tu_mana&4){
+				if (tu_mana&4) {
 					set BaseExp, BaseExp + 300;
 					set JobExp,JobExp+100;
 				}
-				if(tu_mana&8){
+				if (tu_mana&8) {
 					set BaseExp, BaseExp + 300;
 					set JobExp,JobExp+100;
 				}
-				if(tu_mana&16){
+				if (tu_mana&16) {
 					set BaseExp, BaseExp + 300;
 					set JobExp,JobExp+100;
 				}
-				if(tu_mana&32){
+				if (tu_mana&32) {
 					set BaseExp, BaseExp + 300;
 					set JobExp,JobExp+100;
 				}
-				if(tu_mana&64){
+				if (tu_mana&64) {
 					set BaseExp, BaseExp + 300;
 					set JobExp,JobExp+100;
 				}
@@ -4372,7 +4372,7 @@ geffen.gat,67,180,4	script	New Mage Manager#M	102,{
 		mes "return and we will give you some things to support you.";
 		mes "What would you like to do?";
 		next;
-		if(select("Do it.", "Don't do it.")==1){
+		if (select("Do it.", "Don't do it.")==1) {
 			mes "[Mana]";
 			mes "Hoho..of course...";
 			mes "I shall send you to Morroc.";
@@ -4431,7 +4431,7 @@ geffen.gat,67,180,4	script	New Mage Manager#M	102,{
 		close;
 		break;
 	default:
-		if(tu_magician01 < 27){
+		if (tu_magician01 < 27) {
 			mes "Hmm....";
 			mes "I see....";
 			mes "There is something going on in the Rune";
@@ -4461,7 +4461,7 @@ geffen.gat,67,180,4	script	New Mage Manager#M	102,{
 alberta_in.gat,70,51,5	script	Guarnien	98,{
 
 	mes "[Guarnien]";
-	if(Basejob == Job_Merchant && Upper != 1) goto L_JobFix;
+	if (Basejob == Job_Merchant && Upper != 1) goto L_JobFix;
 		mes "Hello stranger.";
 		mes "I wish I could";
 		mes "offer you help";
@@ -4469,7 +4469,7 @@ alberta_in.gat,70,51,5	script	Guarnien	98,{
 		next;
 		mes "[Guarnien]";
 		mes "However, what I have to teach would only benefit Merchants. Trading and monkey making are my areas of expertise. If you have any Merchant friends, send them to me.";
-		if(Basejob == Job_Merchant && Upper == 1){
+		if (Basejob == Job_Merchant && Upper == 1) {
 			next;
 			mes "[Guarnien]";
 			mes "Technically, yes, you're a Merchant, but I know an expert when I see one. You've been through the Merchant life before, I can tell!";
@@ -4477,7 +4477,7 @@ alberta_in.gat,70,51,5	script	Guarnien	98,{
 		close;
 
 L_JobFix:
-	switch(tu_merchant){
+	switch(tu_merchant) {
 	case 17:
 		mes "We can't even begin";
 		mes "to fathom the number";
@@ -4498,7 +4498,7 @@ L_JobFix:
 		mes "about Vending?";
 		next;
 		set @chk_vend, getskilllv(41);
-		if((@chk_vend > 3) && (@chk_vend < 10)){
+		if ((@chk_vend > 3) && (@chk_vend < 10)) {
 			mes "[Guarnien]";
 			mes "Excellent!";
 			mes "You've taught yourself well. Here, you've earned this little reward~";
@@ -4506,7 +4506,7 @@ L_JobFix:
 			set BaseExp, BaseExp + 1860;
 			set JobExp, JobExp + 604;
 			next;
-		} else if(@chk_vend == 10){
+		} else if(@chk_vend == 10) {
 			mes "[Guarnien]";
 			mes "Oh, I see that you're very serious about being a Merchant. I'm proud that you've managed to master this skill! Here, you deserve this reward!";
 			set tu_merchant, 17;
@@ -4562,7 +4562,7 @@ L_JobFix:
 		mes "increase by one.";
 		next;
 		set @chk_vend, getskilllv(41);
-		if((@chk_vend > 3) && (@chk_vend < 10)){
+		if ((@chk_vend > 3) && (@chk_vend < 10)) {
 			mes "[Guarnien]";
 			mes "But I see that you must already know that, huh? Well, seeing as you're so clever, I think you've earned this little prize~";
 			set tu_merchant, 17;
@@ -4570,7 +4570,7 @@ L_JobFix:
 			set JobExp, JobExp + 604;
 			//misceffect EF_HIT5;
 			next;
-		} else if(@chk_vend == 10){
+		} else if(@chk_vend == 10) {
 			mes "[Guarnien]";
 			mes "But it looks like I just put my foot in my mouth. I'm sorry, I didn't notice that you already mastered the Vending skill...";
 			next;
@@ -4614,7 +4614,7 @@ L_JobFix:
 		mes "to Level 4 like I asked?";
 		next;
 		set @chk_cart, getskilllv(39);
-		if(@chk_cart > 3 && @chk_cart < 10){
+		if (@chk_cart > 3 && @chk_cart < 10) {
 			mes "[Guarnien]";
 			mes "Well done~";
 			mes "You've been a very";
@@ -4629,7 +4629,7 @@ L_JobFix:
 			mes "[Guarnien]";
 			mes "Next time, I'll talk about the skill that sets Merchants apart from all the other classes: ^871F78Vending^000000. So don't miss it!";
 			close;
-		} else if(@chk_cart == 10){
+		} else if(@chk_cart == 10) {
 			mes "[Guarnien]";
 			mes "Excellent!";
 			mes "You've actually went above and beyond mastered the Push Cart skill. Great work!";
@@ -4671,7 +4671,7 @@ L_JobFix:
 		mes "down at all!";
 		next;
 		set @chk_cart, getskilllv(39);
-		if(@chk_cart > 3 && @chk_cart < 10){
+		if (@chk_cart > 3 && @chk_cart < 10) {
 			mes "[Guarnien]";
 			mes "Ah, and I see that you've been focusing on learning Push Cart. Although you might still have a problem with your movement";
 			mes "speed, it shouldn't be a big deal.";
@@ -4684,7 +4684,7 @@ L_JobFix:
 			mes "[Guarnien]";
 			mes "Next time, I'll talk about the skill that sets Merchants apart from all the other classes: ^871F78Vending^000000. So don't miss it!";
 			close;
-		} else if(@chk_cart == 10){
+		} else if(@chk_cart == 10) {
 			mes "[Guarnien]";
 			mes "Wonderful! You've already";
 			mes "mastered the Push Cart skill.";
@@ -4715,7 +4715,7 @@ L_JobFix:
 		mes "^871F78Over Charge^000000 skill?";
 		next;
 		set @chk_over, getskilllv(38);
-		if(@chk_over > 3 && @chk_over < 10){
+		if (@chk_over > 3 && @chk_over < 10) {
 			mes "[Guarnien]";
 			mes "Nice work!";
 			mes "I can tell that";
@@ -4730,7 +4730,7 @@ L_JobFix:
 			mes "[Guarnien]";
 			mes "Next time, I'll discuss the Push Cart skill. Be ready for this lecture, as Push Cart is one of the more important skills for a Merchant.";
 			close;
-		} else if(@chk_over == 10){
+		} else if(@chk_over == 10) {
 			mes "[Guarnien]";
 			mes "Whoa...";
 			mes "You actually";
@@ -4767,7 +4767,7 @@ L_JobFix:
 		mes "Over Charge allows you to sell items to NPC shops for more Zeny. The higher your Over Charge Skill Level, the more Zeny you'll receive for items sold to NPCs.";
 		next;
 		set @chk_over, getskilllv(38);
-		if(@chk_over > 3 && @chk_over < 10){
+		if (@chk_over > 3 && @chk_over < 10) {
 			mes "[Guarnien]";
 			mes "Ah, you've already learned Level 4 Over Charge. Perfect! Let me give you a little reward~";
 			set tu_merchant, 13;
@@ -4779,7 +4779,7 @@ L_JobFix:
 			mes "Next time, I'll discuss the";
 			mes "Push Cart skill. Be ready for this lecture, as Push Cart is one of the more important skills for a Merchant.";
 			close;
-		} else if(@chk_over == 10){
+		} else if(@chk_over == 10) {
 			mes "[Guarnien]";
 			mes "Amazing! You've already mastered the Over Charge skill! You must have wanted this reward badly~";
 			set tu_merchant, 13;
@@ -4879,7 +4879,7 @@ L_JobFix:
 		next;
 		mes "[Guarnien]";
 		set @chk_disc, getskilllv(37);
-		if(@chk_disc > 3 && @chk_disc < 10){
+		if (@chk_disc > 3 && @chk_disc < 10) {
 			mes "Ah, you've learned";
 			mes "how to use the Discount skill";
 			mes "well enough. Good, here's a little reward for your hard work~";
@@ -4891,7 +4891,7 @@ L_JobFix:
 			mes "[Guarnien]";
 			mes "Alright, my next lesson will hopefully offer you a bit more of a challenge. Come back when you think you're ready, alright?";
 			close;
-		} else if(@chk_disc == 10){
+		} else if(@chk_disc == 10) {
 			mes "Incredible!";
 			mes "You've actually mastered the Discount skill! You're such a great student. You deserve a bit of a reward!";
 			set tu_merchant, 5;
@@ -4922,7 +4922,7 @@ L_JobFix:
 		next;
 		mes "[Guarnien]";
 		set @chk_disc, getskilllv(37);
-		if(@chk_disc > 3 && @chk_disc < 10){
+		if (@chk_disc > 3 && @chk_disc < 10) {
 			mes "Oooh, good work.";
 			mes "I see that you've";
 			mes "raised your Discount";
@@ -4938,7 +4938,7 @@ L_JobFix:
 			mes "Alright, my next lesson will hopefully offer you a bit more of a challenge. Come back when you";
 			mes "think you're ready, alright?";
 			close;
-		} else if(@chk_disc == 10){
+		} else if(@chk_disc == 10) {
 			mes "Incredible!";
 			mes "You've actually mastered the Discount skill! You're such a great student. You deserve a bit of a reward!";
 			set tu_merchant, 5;
@@ -4977,7 +4977,7 @@ L_JobFix:
 		next;
 		mes "[Guarnien]";
 		set @chk_mam, getskilllv(42);
-		if(@chk_mam > 3 && @chk_mam < 10){
+		if (@chk_mam > 3 && @chk_mam < 10) {
 			mes "Ah, I see that you've already tried this skill. How much money have you wasted using Mammonite? Not too much, I hope.";
 			next;
 			mes "[Guarnien]";
@@ -5005,7 +5005,7 @@ L_JobFix:
 		next;
 		mes "[Guarnien]";
 		set @chk_soji, getskilllv(36);
-		if(@chk_soji > 3 && @chk_soji < 10){
+		if (@chk_soji > 3 && @chk_soji < 10) {
 			mes "Ah. I can tell that you have. Not bad! By now you should be able to learn the ^871F78Discount^000000 skill, but I'll teach you about that later.";
 			next;
 			mes "[Guarnien]";
@@ -5017,7 +5017,7 @@ L_JobFix:
 			mes "[Guarnien]";
 			mes "This skill works exactly like a ^871F78Magnifier^000000, so you won't have to spend any Zeny on them. Also, this skill is mastered at ^871F78Level 1^000000.";
 			next;
-			if(getskilllv(40)){
+			if (getskilllv(40)) {
 				mes "[Guarnien]";
 				mes "I see in your eyes that you've already learned to appraise items. Haha, although having that knowledge is reward in itself, let me give you something extra!";
 				set tu_merchant, 2;
@@ -5044,11 +5044,11 @@ L_JobFix:
 	
 	mes "You've just started out as a Merchant, haven't you? How would you like to learn the fundamentals of business from an experienced colleague?";
 	next;
-	if(select("Sure!","I'll make it on my own!")==1){
+	if (select("Sure!","I'll make it on my own!")==1) {
 		set tu_merchant, 1;
-		if(getskilllv(36) < 4){
+		if (getskilllv(36) < 4) {
 			mes "[Guarnien]";
-			if(Sex == Male){
+			if (Sex == Male) {
 				mes "Atta boy~!";
 			} else {
 				mes "Atta girl~!";
@@ -5084,7 +5084,7 @@ L_JobFix:
 			next;
 			mes "[Guarnien]";
 			set tu_merchant, 2;
-			if(getskilllv(40)){
+			if (getskilllv(40)) {
 				mes "I see in your eyes that you've already learned to appraise items. Haha, although having that knowledge is reward in itself, let me give you something extra!";
 				//misceffect EF_HIT5;
 				set BaseExp, BaseExp + 585;
@@ -5122,7 +5122,7 @@ L_JobFix:
 prontera.gat,66,111,3	script	Sagle	82,{
 
 	mes "[Sagle]";
-	if(tu_merchant == 8){
+	if (tu_merchant == 8) {
 		mes "Hello, hello~";
 		mes "Why don't you buy";
 		mes "some Red Potions?";
@@ -5131,12 +5131,12 @@ prontera.gat,66,111,3	script	Sagle	82,{
 		mes "[Sagle]";
 		mes "I will sell you 10 Red Potions for ^871F78420 zeny^000000. You'd better get them now while they're still here!";
 		next;
-		switch(select("Buy","Cancel")){
+		switch(select("Buy","Cancel")) {
 		case 1:
 			mes "[Sagle]";
 			mes "Excellent!";
 			mes "You certainly have an eye for bargains. Here you go, 10 Red Potions fresh from the... Potioner...";
-			if(Zeny < 420){
+			if (Zeny < 420) {
 				next;
 				mes "[Sagle]";
 				mes "Whoa, hold on!";
@@ -5147,7 +5147,7 @@ prontera.gat,66,111,3	script	Sagle	82,{
 				mes "Zeny, alright?";
 				close;
 			}
-			if(MaxWeight - Weight < 71){
+			if (MaxWeight - Weight < 71) {
 				next;
 				mes "[Sagle]";
 				mes "Whoa, hold on!";
@@ -5171,7 +5171,7 @@ prontera.gat,66,111,3	script	Sagle	82,{
 			break;
 		}
 	}
-	if(tu_merchant == 7){
+	if (tu_merchant == 7) {
 		mes "Hello, hello~";
 		mes "Why don't you buy";
 		mes "some Red Potions?";
@@ -5180,12 +5180,12 @@ prontera.gat,66,111,3	script	Sagle	82,{
 		mes "[Sagle]";
 		mes "I will sell you 10 Red Potions for ^871F78410 zeny^000000. You'd better get them now while they're still here!";
 		next;
-		switch(select("Buy","Cancel")){
+		switch(select("Buy","Cancel")) {
 			case 1:
 				mes "[Sagle]";
 				mes "Excellent!";
 				mes "You certainly have an eye for bargains. Here you go, 10 Red Potions fresh from the... Potioner...";
-				if(Zeny < 410){
+				if (Zeny < 410) {
 					next;
 					mes "[Sagle]";
 					mes "Whoa, hold on!";
@@ -5196,7 +5196,7 @@ prontera.gat,66,111,3	script	Sagle	82,{
 					mes "Zeny, alright?";
 					close;
 				}
-				if(MaxWeight - Weight < 71){
+				if (MaxWeight - Weight < 71) {
 					next;
 					mes "[Sagle]";
 					mes "Whoa, hold on!";
@@ -5221,7 +5221,7 @@ prontera.gat,66,111,3	script	Sagle	82,{
 				break;
 		}
 	}
-	if(tu_merchant == 6){
+	if (tu_merchant == 6) {
 		mes "Hello, hello~";
 		mes "Why don't you buy";
 		mes "some Red Potions?";
@@ -5230,12 +5230,12 @@ prontera.gat,66,111,3	script	Sagle	82,{
 		mes "[Sagle]";
 		mes "I will sell you 10 Red Potions for ^871F78390 zeny^000000. You'd better get them now while they're still here!";
 		next;
-		switch(select("Buy","Cancel")){
+		switch(select("Buy","Cancel")) {
 			case 1:
 				mes "[Sagle]";
 				mes "Excellent!";
 				mes "You certainly have an eye for bargains. Here you go, 10 Red Potions fresh from the... Potioner...";
-				if(Zeny < 390){
+				if (Zeny < 390) {
 					next;
 					mes "[Sagle]";
 					mes "Whoa, hold on!";
@@ -5246,7 +5246,7 @@ prontera.gat,66,111,3	script	Sagle	82,{
 					mes "Zeny, alright?";
 					close;
 				}
-				if(MaxWeight - Weight < 71){			
+				if (MaxWeight - Weight < 71) {			
 					next;
 					mes "[Sagle]";
 					mes "Whoa, hold on!";
@@ -5286,25 +5286,25 @@ prontera.gat,66,111,3	script	Sagle	82,{
 prontera.gat,93,330,3	script	Kellion	97,{
 
 	mes "[Kellion]";
-	if(tu_merchant == 8){
+	if (tu_merchant == 8) {
 		mes "I'm selling sets of";
 		mes "10 Red Potions for 340 Zeny.";
 		mes "Would you like some?";
 		next;
-		switch(select("Buy","Cancel")){
+		switch(select("Buy","Cancel")) {
 		case 1:
 			mes "[Kellion]";
 			mes "Good choice~";
 			mes "Thank you for";
 			mes "using my shop.";
-			if(Zeny < 340){
+			if (Zeny < 340) {
 				next;
 				mes "[Kellion]";
 				mes "Ooops!";
 				mes "I'm sorry, but you don't have enough Zeny. I've got to stay in business somehow, you know?";
 				close;
 			}
-			if(MaxWeight - Weight < 71){
+			if (MaxWeight - Weight < 71) {
 				next;
 				mes "[Kellion]";
 				mes "...Huh?";
@@ -5327,25 +5327,25 @@ prontera.gat,93,330,3	script	Kellion	97,{
 			break;
 		}
 	}
-	if(tu_merchant == 7){
+	if (tu_merchant == 7) {
 		mes "I'm selling sets of";
 		mes "10 Red Potions for 390 Zeny.";
 		mes "Would you like some?";
 		next;
-		switch(select("Buy","Cancel")){
+		switch(select("Buy","Cancel")) {
 		case 1:
 			mes "[Kellion]";
 			mes "Good choice~";
 			mes "Thank you for";
 			mes "using my shop.";
-			if(Zeny < 390){
+			if (Zeny < 390) {
 				next;
 				mes "[Kellion]";
 				mes "Ooops!";
 				mes "I'm sorry, but you don't have enough Zeny. I've got to stay in business somehow, you know?";
 				close;
 			}
-			if(MaxWeight - Weight < 71){
+			if (MaxWeight - Weight < 71) {
 				next;
 				mes "[Kellion]";
 				mes "...Huh?";
@@ -5368,25 +5368,25 @@ prontera.gat,93,330,3	script	Kellion	97,{
 			break;
 		}
 	}
-	if(tu_merchant == 6){
+	if (tu_merchant == 6) {
 		mes "I'm selling sets of";
 		mes "10 Red Potions for 400 Zeny.";
 		mes "Would you like some?";
 		next;
-		switch(select("Buy","Cancel")){
+		switch(select("Buy","Cancel")) {
 		case 1:
 			mes "[Kellion]";
 			mes "Good choice~";
 			mes "Thank you for";
 			mes "using my shop.";
-			if(Zeny < 400){
+			if (Zeny < 400) {
 				next;
 				mes "[Kellion]";
 				mes "Ooops!";
 				mes "I'm sorry, but you don't have enough Zeny. I've got to stay in business somehow, you know?";
 				close;
 			}
-			if(MaxWeight - Weight < 71){
+			if (MaxWeight - Weight < 71) {
 				next;
 				mes "[Kellion]";
 				mes "...Huh?";
@@ -5424,7 +5424,7 @@ prontera.gat,93,330,3	script	Kellion	97,{
 
 prt_in.gat,169,11,3	script	Aigie	92,{
 
-	if(tu_merchant == 8){
+	if (tu_merchant == 8) {
 		mes "[Aigie]";
 		mes "Welcome to my shop.";
 		mes "I'm just a young girl who's a victim of circumstance, forced to sell potions on the street for dirt cheap prices.";
@@ -5434,20 +5434,20 @@ prt_in.gat,169,11,3	script	Aigie	92,{
 		mes "to buy 10 Red Potions";
 		mes "for 390 Zeny, kind adventurer?";
 		next;
-		switch(select("Buy","Cancel")){
+		switch(select("Buy","Cancel")) {
 		case 1:
 			mes "[Aigie]";
 			mes "Thank you so much.";
 			mes "Now I can finally";
 			mes "afford food again...";
-			if(Zeny < 390){
+			if (Zeny < 390) {
 				next;
 				mes "[Aigie]";
 				mes "Wait, wait!";
 				mes "I am sorry, but you don't have enough money. Would you please get some more Zeny before coming back?";
 				close;
 			}
-			if(MaxWeight - Weight < 71){
+			if (MaxWeight - Weight < 71) {
 				next;
 				mes "[Aigie]";
 				mes "Wait, wait!";
@@ -5471,7 +5471,7 @@ prt_in.gat,169,11,3	script	Aigie	92,{
 			break;
 		}					
 	}
-	if(tu_merchant == 7){
+	if (tu_merchant == 7) {
 		mes "[Aigie]";
 		mes "Welcome to my shop.";
 		mes "I'm just a young girl who's a victim of circumstance, forced to sell potions on the street for dirt cheap prices.";
@@ -5481,20 +5481,20 @@ prt_in.gat,169,11,3	script	Aigie	92,{
 		mes "to buy 10 Red Potions";
 		mes "for 420 Zeny, kind adventurer?";
 		next;
-		switch(select("Buy","Cancel")){
+		switch(select("Buy","Cancel")) {
 		case 1:
 			mes "[Aigie]";
 			mes "Thank you so much.";
 			mes "Now I can finally";
 			mes "afford food again...";
-			if(Zeny < 420){
+			if (Zeny < 420) {
 				next;
 				mes "[Aigie]";
 				mes "Wait, wait!";
 				mes "I am sorry, but you don't have enough money. Would you please get some more Zeny before coming back?";
 				close;
 			}
-			if(MaxWeight - Weight < 71){
+			if (MaxWeight - Weight < 71) {
 				next;
 				mes "[Aigie]";
 				mes "Wait, wait!";
@@ -5518,7 +5518,7 @@ prt_in.gat,169,11,3	script	Aigie	92,{
 			break;
 		}					
 	}
-	if(tu_merchant == 6){
+	if (tu_merchant == 6) {
 		mes "[Aigie]";
 		mes "Welcome to my shop.";
 		mes "I'm just a young girl who's a victim of circumstance, forced to sell potions on the street for dirt cheap prices.";
@@ -5528,20 +5528,20 @@ prt_in.gat,169,11,3	script	Aigie	92,{
 		mes "to buy 10 Red Potions";
 		mes "for 340 Zeny, kind adventurer?";
 		next;
-		switch(select("Buy","Cancel")){
+		switch(select("Buy","Cancel")) {
 		case 1:
 			mes "[Aigie]";
 			mes "Thank you so much.";
 			mes "Now I can finally";
 			mes "afford food again...";
-			if(Zeny < 340){
+			if (Zeny < 340) {
 				next;
 				mes "[Aigie]";
 				mes "Wait, wait!";
 				mes "I am sorry, but you don't have enough money. Would you please get some more Zeny before coming back?";
 				close;
 			}
-			if(MaxWeight - Weight < 71){
+			if (MaxWeight - Weight < 71) {
 				next;
 				mes "[Aigie]";
 				mes "Wait, wait!";
@@ -5575,11 +5575,11 @@ prt_in.gat,169,11,3	script	Aigie	92,{
 
 prontera.gat,247,129,3	script	Jayon	85,{
 
-	if(tu_merchant == 8){
+	if (tu_merchant == 8) {
 		mes "[Jayon]";
 		mes "If you've checked out the market for Red Potions, you know that my price is the best. I'm offering 10 Red Potions for only 410 Zeny!";
 		next;
-		switch(select("Buy","Cancel")){
+		switch(select("Buy","Cancel")) {
 		case 1:
 			mes "[Jayon]";
 			mes "Heh heh...!";
@@ -5588,7 +5588,7 @@ prontera.gat,247,129,3	script	Jayon	85,{
 			mes "stuff. You're a";
 			mes "Merchant yourself,";
 			mes "aren't you?";
-			if(Zeny < 410){
+			if (Zeny < 410) {
 				next;
 				mes "[Jayon]";
 				mes "But sorry buddy.";
@@ -5597,7 +5597,7 @@ prontera.gat,247,129,3	script	Jayon	85,{
 				mes "if you want these potions.";
 				close;
 			}
-			if(MaxWeight - Weight < 71){
+			if (MaxWeight - Weight < 71) {
 				next;
 				mes "[Jayon]";
 				mes "But sorry buddy. I can't let you carry more than you can handle.";
@@ -5623,11 +5623,11 @@ prontera.gat,247,129,3	script	Jayon	85,{
 		}
 	}
 
-	if(tu_merchant == 7){
+	if (tu_merchant == 7) {
 		mes "[Jayon]";
 		mes "If you've checked out the market for Red Potions, you know that my price is the best. I'm offering 10 Red Potions for only 400 Zeny!";
 		next;
-		switch(select("Buy","Cancel")){
+		switch(select("Buy","Cancel")) {
 		case 1:
 			mes "[Jayon]";
 			mes "Heh heh...!";
@@ -5636,7 +5636,7 @@ prontera.gat,247,129,3	script	Jayon	85,{
 			mes "stuff. You're a";
 			mes "Merchant yourself,";
 			mes "aren't you?";
-			if(Zeny < 400){
+			if (Zeny < 400) {
 				next;
 				mes "[Jayon]";
 				mes "But sorry buddy.";
@@ -5645,7 +5645,7 @@ prontera.gat,247,129,3	script	Jayon	85,{
 				mes "if you want these potions.";
 				close;
 			}
-			if(MaxWeight - Weight < 71){
+			if (MaxWeight - Weight < 71) {
 				next;
 				mes "[Jayon]";
 				mes "But sorry buddy. I can't let you carry more than you can handle.";
@@ -5672,11 +5672,11 @@ prontera.gat,247,129,3	script	Jayon	85,{
 		}
 	}
 
-	if(tu_merchant == 6){
+	if (tu_merchant == 6) {
 		mes "[Jayon]";
 		mes "If you've checked out the market for Red Potions, you know that my price is the best. I'm offering 10 Red Potions for only 410 Zeny!";
 		next;
-		switch(select("Buy","Cancel")){
+		switch(select("Buy","Cancel")) {
 		case 1:
 			mes "[Jayon]";
 			mes "Heh heh...!";
@@ -5685,7 +5685,7 @@ prontera.gat,247,129,3	script	Jayon	85,{
 			mes "stuff. You're a";
 			mes "Merchant yourself,";
 			mes "aren't you?";
-			if(Zeny < 410){
+			if (Zeny < 410) {
 				next;
 				mes "[Jayon]";
 				mes "But sorry buddy.";
@@ -5694,7 +5694,7 @@ prontera.gat,247,129,3	script	Jayon	85,{
 				mes "if you want these potions.";
 				close;
 			}
-			if(MaxWeight - Weight < 71){
+			if (MaxWeight - Weight < 71) {
 				next;
 				mes "[Jayon]";
 				mes "But sorry buddy. I can't let you carry more than you can handle.";
@@ -5732,7 +5732,7 @@ prontera.gat,247,129,3	script	Jayon	85,{
 
 prt_in.gat,251,129,3	script	Maos	709,{
 
-	if(tu_merchant == 8){
+	if (tu_merchant == 8) {
 		mes "[Maos]";
 		mes "Don't say anything.";
 		mes "I know what you want.";
@@ -5740,18 +5740,18 @@ prt_in.gat,251,129,3	script	Maos	709,{
 		mes "I'll sell them to you";
 		mes "for the low price of 420 Zeny~";
 		next;
-		switch(select("Buy","Cancel")){
+		switch(select("Buy","Cancel")) {
 		case 1:
 			mes "[Maos]";
 			mes "Excellent choice!";
 			mes "Good products at affordable prices! That's my ethic as a merchant.";
-			if(Zeny < 420){
+			if (Zeny < 420) {
 				next;
 				mes "[Maos]";
 				mes "Ooh, but you don't even have enough Zeny to purchase these potions. I'm sorry, but I can't sell these just to lose money, you know?";
 				close;
 			}
-			if(MaxWeight - Weight < 71){
+			if (MaxWeight - Weight < 71) {
 				next;
 				mes "[Maos]";
 				mes "Ooh, but it doesn't look like you've got enough inventory space to carry any more items.";
@@ -5770,7 +5770,7 @@ prt_in.gat,251,129,3	script	Maos	709,{
 			break;
 		}
 	}
-	if(tu_merchant == 7){
+	if (tu_merchant == 7) {
 		mes "[Maos]";
 		mes "Don't say anything.";
 		mes "I know what you want.";
@@ -5778,18 +5778,18 @@ prt_in.gat,251,129,3	script	Maos	709,{
 		mes "I'll sell them to you";
 		mes "for the low price of 340 Zeny~";
 		next;
-		switch(select("Buy","Cancel")){
+		switch(select("Buy","Cancel")) {
 		case 1:
 			mes "[Maos]";
 			mes "Excellent choice!";
 			mes "Good products at affordable prices! That's my ethic as a merchant.";
-			if(Zeny < 340){
+			if (Zeny < 340) {
 				next;
 				mes "[Maos]";
 				mes "Ooh, but you don't even have enough Zeny to purchase these potions. I'm sorry, but I can't sell these just to lose money, you know?";
 				close;
 			}
-			if(MaxWeight - Weight < 71){
+			if (MaxWeight - Weight < 71) {
 				mes "[Maos]";
 				mes "Ooh, but it doesn't look like you've got enough inventory space to carry any more items.";
 				close;
@@ -5807,7 +5807,7 @@ prt_in.gat,251,129,3	script	Maos	709,{
 			break;
 		}
 	}
-	if(tu_merchant == 6){
+	if (tu_merchant == 6) {
 		mes "[Maos]";
 		mes "Don't say anything.";
 		mes "I know what you want.";
@@ -5815,18 +5815,18 @@ prt_in.gat,251,129,3	script	Maos	709,{
 		mes "I'll sell them to you";
 		mes "for the low price of 400 Zeny~";
 		next;
-		switch(select("Buy","Cancel")){
+		switch(select("Buy","Cancel")) {
 		case 1:
 			mes "[Maos]";
 			mes "Excellent choice!";
 			mes "Good products at affordable prices! That's my ethic as a merchant.";
-			if(Zeny < 400){
+			if (Zeny < 400) {
 				next;
 				mes "[Maos]";
 				mes "Ooh, but you don't even have enough Zeny to purchase these potions. I'm sorry, but I can't sell these just to lose money, you know?";
 				close;
 			}
-			if(MaxWeight - Weight < 71){
+			if (MaxWeight - Weight < 71) {
 				mes "[Maos]";
 				mes "Ooh, but it doesn't look like you've got enough inventory space to carry any more items.";
 				close;
@@ -5867,7 +5867,7 @@ prt_in.gat,251,129,3	script	Maos	709,{
 izlude_in.gat,82,163,3	script	Shurank	733,{
 
 	mes "[Shurank]";
-	if(Basejob == Job_Novice && Upper != 1){
+	if (Basejob == Job_Novice && Upper != 1) {
 		mes "Still wondering";
 		mes "what to do with";
 		mes "your future, eh?";
@@ -5887,7 +5887,7 @@ izlude_in.gat,82,163,3	script	Shurank	733,{
 		mes "come back to me...";
 		close;
 	}
-	if(BaseClass == Job_Swordsman && Upper == 1){
+	if (BaseClass == Job_Swordsman && Upper == 1) {
 		mes "From your raiment,";
 		mes "I see that you are";
 		if (Sex == Male)
@@ -5901,7 +5901,7 @@ izlude_in.gat,82,163,3	script	Shurank	733,{
 		mes "There's nothing that I can actually offer to teach you. But if you know any new Swordmen that show potential, please direct them to me.";
 		close;
 	}
-	if(BaseClass != Job_Swordsman){
+	if (BaseClass != Job_Swordsman) {
 		mes "Greetings adventurer.";
 		mes "If you happen to know";
 		mes "any new Swordmen,";
@@ -5916,7 +5916,7 @@ izlude_in.gat,82,163,3	script	Shurank	733,{
 		mes "Foreign to me.";
 		close;
 	}
-	switch(tu_swordman){
+	switch(tu_swordman) {
 	case 23:
 		mes "Greetings, my friend.";
 		mes "There is nothing more";
@@ -5946,7 +5946,7 @@ izlude_in.gat,82,163,3	script	Shurank	733,{
 		mes "when surrounded by foes, but also keep in mind that it also inflicts a little damage on its caster.";
 		next;
 		set @chk_magnum, getskilllv(7);
-		if(@chk_magnum > 5){
+		if (@chk_magnum > 5) {
 			mes "[Shurank]";
 			mes "I see that you've been training in the use of Magnum Break. Although it is an awesome skill, it's not for every Swordman. Still, there's no harm in learning it.";
 			next;
@@ -6031,7 +6031,7 @@ izlude_in.gat,82,163,3	script	Shurank	733,{
 		next;
 		set @chk_hanson, getskilllv(2);
 		set @chk_yangson, getskilllv(3);
-		if((@chk_hanson > 9) || (@chk_yangson > 9)){
+		if ((@chk_hanson > 9) || (@chk_yangson > 9)) {
 			mes "[Shurank]";
 			mes "Ah, from the way you handle your Sword, I see that you have mastered a Sword Mastery. I'm thoroughly impressed.";
 			next;
@@ -6064,7 +6064,7 @@ izlude_in.gat,82,163,3	script	Shurank	733,{
 		mes "skill coming along?";
 		next;
 		set @chk_endure, getskilllv(8);
-		if(@chk_endure > 1){
+		if (@chk_endure > 1) {
 			mes "[Shurank]";
 			mes "From that gleen of toughness upon your skin, I see now that I was foolish to ask. Well done~";
 			set tu_swordman, 13;
@@ -6094,7 +6094,7 @@ izlude_in.gat,82,163,3	script	Shurank	733,{
 		mes "the Endure skill yet?";
 		next;
 		set @chk_endure, getskilllv(8);
-		if((@chk_endure > 0) && (@chk_endure < 2)){
+		if ((@chk_endure > 0) && (@chk_endure < 2)) {
 			mes "[Shurank]";
 			mes "I see that you";
 			mes "know how to use the";
@@ -6123,7 +6123,7 @@ izlude_in.gat,82,163,3	script	Shurank	733,{
 			mes "Hurry and meet with Dequ'ee and return to me when you complete whatever it is that he wishes for you to do.";
 			close2;
 			end;
-		} else if(@chk_endure > 1){
+		} else if(@chk_endure > 1) {
 			mes "[Shurank]";
 			mes "From that gleen of toughness upon your skin, I see now that I was foolish to ask. Well done~";
 			set tu_swordman, 13;
@@ -6151,7 +6151,7 @@ izlude_in.gat,82,163,3	script	Shurank	733,{
 		mes "the Endure skill.";
 		next;
 		set @chk_endure, getskilllv(8);
-		if(@chk_endure == 0){
+		if (@chk_endure == 0) {
 			mes "[Shurank]";
 			mes "As you've noticed, receiving any damage causes you to reel in pain, stunning you for an instant. Thus, rapidly attacking enemies are dangerous since it's difficult to counter or escape them.";
 			next;
@@ -6168,7 +6168,7 @@ izlude_in.gat,82,163,3	script	Shurank	733,{
 			mes "from your enemies!";
 			set tu_swordman, 11;
 			close;
-		} else if((@chk_endure > 0) && (@chk_endure < 2)){
+		} else if((@chk_endure > 0) && (@chk_endure < 2)) {
 			mes "[Shurank]";
 			mes "I see that you";
 			mes "know how to use the";
@@ -6196,7 +6196,7 @@ izlude_in.gat,82,163,3	script	Shurank	733,{
 			mes "[Shurank]";
 			mes "Hurry and meet with Dequ'ee and return to me when you complete whatever it is that he wishes for you to do.";
 			close;
-		} else if(@chk_endure > 1){
+		} else if(@chk_endure > 1) {
 			mes "[Shurank]";
 			mes "Hm. But judging from the gleen of toughness on your skin, I suppose teaching you about Endure would be a waste of your time. Well done!";
 			set tu_swordman, 13;
@@ -6218,7 +6218,7 @@ izlude_in.gat,82,163,3	script	Shurank	733,{
 		mes "the use of the Provoke skill?";
 		next;
 		set @chk_provoke, getskilllv(6);
-		if((@chk_provoke > 4) && (@chk_provoke < 10)){
+		if ((@chk_provoke > 4) && (@chk_provoke < 10)) {
 			mes "[Shurank]";
 			mes "Ah, I see that you have a fairly good understanding of the Provoke skill. Let me reward you in this small way for your efforts.";
 			set tu_swordman, 10;
@@ -6227,7 +6227,7 @@ izlude_in.gat,82,163,3	script	Shurank	733,{
 			mes "[Shurank]";
 			mes "Next time we speak, I will tell you what I know about the ^5D478BEndure^000000 skill. When you're ready to learn, come back to me.";
 			close;
-		} else if(@chk_provoke == 10){
+		} else if(@chk_provoke == 10) {
 			mes "[Shurank]";
 			mes "Y-you've mastered";
 			mes "Provoke? Impressive!";
@@ -6256,7 +6256,7 @@ izlude_in.gat,82,163,3	script	Shurank	733,{
 		mes "skill been progressing?";
 		next;
 		set @chk_provoke, getskilllv(6);
-		if((@chk_provoke > 0) && (@chk_provoke < 5)){
+		if ((@chk_provoke > 0) && (@chk_provoke < 5)) {
 			mes "[Shurank]";
 			mes "Ah, now I can see that you";
 			mes "know how to use it. That's a vast improvement over not being able to use it at all. Let me refesh you on Provoke's details.";
@@ -6282,7 +6282,7 @@ izlude_in.gat,82,163,3	script	Shurank	733,{
 			mes "Alright, come back to me when you become sufficiently skilled in the use of Provoke. In the meantime, keep training.";
 			set tu_swordman, 9;
 			close;
-		} else if((@chk_provoke > 4) && (@chk_provoke < 10)){
+		} else if((@chk_provoke > 4) && (@chk_provoke < 10)) {
 			mes "[Shurank]";
 			mes "Ah, I see that you have a fairly good understanding of the Provoke skill. Let me reward you in this small way for your efforts.";
 			set tu_swordman, 10;
@@ -6291,7 +6291,7 @@ izlude_in.gat,82,163,3	script	Shurank	733,{
 			mes "[Shurank]";
 			mes "Next time we speak, I will tell you what I know about the ^5D478BEndure^000000 skill. When you're ready to learn, come back to me.";
 			close;
-		} else if(@chk_provoke == 10){
+		} else if(@chk_provoke == 10) {
 			mes "[Shurank]";
 			mes "Y-you've mastered";
 			mes "Provoke? Impressive!";
@@ -6321,7 +6321,7 @@ izlude_in.gat,82,163,3	script	Shurank	733,{
 		mes "of that, let me continue your instruction on Swordman skills. This time, we'll cover Provoke.";
 		next;
 		set @chk_provoke, getskilllv(6);
-		if(@chk_provoke == 0){
+		if (@chk_provoke == 0) {
 			mes "[Shurank]";
 			mes "You haven't";
 			mes "learned Provoke yet?";
@@ -6350,7 +6350,7 @@ izlude_in.gat,82,163,3	script	Shurank	733,{
 			mes "to me when you have a sufficient understanding of the use of the Provoke skill.";
 			set tu_swordman, 8;
 			close;
-		} else if((@chk_provoke > 0) && (@chk_provoke < 5)){
+		} else if((@chk_provoke > 0) && (@chk_provoke < 5)) {
 			mes "[Shurank]";
 			mes "Hm. You seem to have a basic understanding of Provoke, but let me give you a few details so that you can better understand the use of that skill.";
 			next;
@@ -6376,7 +6376,7 @@ izlude_in.gat,82,163,3	script	Shurank	733,{
 			mes "to me when you have a sufficient understanding of the use of the Provoke skill.";
 			set tu_swordman, 9;
 			close;
-		} else if((@chk_provoke > 4) && (@chk_provoke < 10)){
+		} else if((@chk_provoke > 4) && (@chk_provoke < 10)) {
 			mes "[Shurank]";
 			mes "Ah, I see that you have a fairly good understanding of the Provoke skill. Let me reward you in this small way for your efforts.";
 			set tu_swordman, 10;
@@ -6385,7 +6385,7 @@ izlude_in.gat,82,163,3	script	Shurank	733,{
 			mes "[Shurank]";
 			mes "Next time we speak, I will tell you what I know about the ^5D478BEndure^000000 skill. When you're ready to learn, come back to me.";
 			close;
-		} else if(@chk_provoke == 10){
+		} else if(@chk_provoke == 10) {
 			mes "[Shurank]";
 			mes "Y-you've mastered";
 			mes "Provoke? Impressive!";
@@ -6461,7 +6461,7 @@ izlude_in.gat,82,163,3	script	Shurank	733,{
 		mes "able to both take it and dish it out.";
 		next;
 		set @chk_hp, getskilllv(4);
-		if(@chk_hp == 0){
+		if (@chk_hp == 0) {
 			mes "[Shurank]";
 			mes "But judging from that";
 			mes "scrawny frame of yours,";
@@ -6480,7 +6480,7 @@ izlude_in.gat,82,163,3	script	Shurank	733,{
 			mes "learn this skill! Of course, there are other Swordman skills that are just as important, though...";
 			set tu_swordman, 5;
 			next;
-		} else if(@chk_hp == 10){
+		} else if(@chk_hp == 10) {
 			mes "[Shurank]";
 			mes "Ah! That healthy glow!";
 			mes "I see that you've mastered this skill already. Let me give you a little reward for your hard training!";
@@ -6518,7 +6518,7 @@ izlude_in.gat,82,163,3	script	Shurank	733,{
 		mes "you as a fellow Swordman.";
 		next;
 		set @chk_bash, getskilllv(5);
-		if(@chk_bash == 10){
+		if (@chk_bash == 10) {
 			mes "[Shurank]";
 			mes "Those calluses...!";
 			mes "Only a master of the Bash skill has those kinds of hands. Great work, Swordman. I'm very impressed.";
@@ -6544,7 +6544,7 @@ izlude_in.gat,82,163,3	script	Shurank	733,{
 		mes "need to master this skill.";
 		next;
 		set @chk_bash, getskilllv(5);
-		if((@chk_bash > 4) && (@chk_bash < 10)){
+		if ((@chk_bash > 4) && (@chk_bash < 10)) {
 			mes "[Shurank]";
 			mes "Hm. It doesn't look like you've gained mastery of Bash, but it seems like you're trying hard.";
 			next;
@@ -6565,7 +6565,7 @@ izlude_in.gat,82,163,3	script	Shurank	733,{
 			set tu_swordman, 3;
 			set BaseExp, BaseExp + 830;
 			close;
-		} else if(@chk_bash == 10){
+		} else if(@chk_bash == 10) {
 			mes "[Shurank]";
 			mes "Those calluses...!";
 			mes "Only a master of the Bash skill has those kinds of hands. Great work, Swordman. I'm very impressed.";
@@ -6589,7 +6589,7 @@ izlude_in.gat,82,163,3	script	Shurank	733,{
 		mes "the art of using Bash? I fervently believe that the Bash skill is the essense of Swordmanship!";
 		next;
 		set @chk_bash, getskilllv(5);
-		if((@chk_bash > 0) && (@chk_bash < 5)){
+		if ((@chk_bash > 0) && (@chk_bash < 5)) {
 			mes "[Shurank]";
 			mes "I see that you understand";
 			mes "a little bit about the Bash skill. But still, it's not enough. Let me explain in detail...";
@@ -6612,7 +6612,7 @@ izlude_in.gat,82,163,3	script	Shurank	733,{
 			set tu_swordman, 2;
 			set BaseExp, BaseExp + 585;
 			close;
-		} else if((@chk_bash > 4) && (@chk_bash < 10)){
+		} else if((@chk_bash > 4) && (@chk_bash < 10)) {
 			mes "[Shurank]";
 			mes "Hmm...";
 			mes "Still haven't mastered Bash, eh? Well, in any case, I think you've made some progress.";
@@ -6644,7 +6644,7 @@ izlude_in.gat,82,163,3	script	Shurank	733,{
 			mes "[Shurank]";
 			mes "I believe that every true Swordman should master the Bash skill. If you ever do master the skill as a Swordman, come back to me.";
 			close;
-		} else if(@chk_bash == 10){
+		} else if(@chk_bash == 10) {
 			mes "[Shurank]";
 			mes "Those calluses...!";
 			mes "Only a master of the Bash skill has those kinds of hands. Great work, Swordman. I'm very impressed.";
@@ -6679,7 +6679,7 @@ izlude_in.gat,82,163,3	script	Shurank	733,{
 		mes "which is the ^5D478BBash^000000 skill.";
 		next;
 		set @chk_bash, getskilllv(5);
-		if(@chk_bash == 0){
+		if (@chk_bash == 0) {
 			mes "[Shurank]";
 			mes "^333333*Gasp*^000000";
 			mes "Those soft, delicate hands! You've never learned how to use Bash, haven't you?! How do you expect to lead battles without knowing Bash?";
@@ -6689,7 +6689,7 @@ izlude_in.gat,82,163,3	script	Shurank	733,{
 			set tu_swordman, 1;
 			set BaseExp, BaseExp + 490;
 			close;
-		} else if((@chk_bash > 0) && (@chk_bash < 5)){
+		} else if((@chk_bash > 0) && (@chk_bash < 5)) {
 			mes "[Shurank]";
 			mes "I see that you understand";
 			mes "a little bit about the Bash skill. But still, it's not enough. Let me explain in detail...";
@@ -6712,7 +6712,7 @@ izlude_in.gat,82,163,3	script	Shurank	733,{
 			set tu_swordman, 2;
 			set BaseExp, BaseExp + 585;
 			close;
-		} else if((@chk_bash > 4) && (@chk_bash < 10)){
+		} else if((@chk_bash > 4) && (@chk_bash < 10)) {
 			mes "[Shurank]";
 			mes "I see that you've gained some proficiency with the Bash skill. But still, it's not enough. Let me explain...";
 			next;
@@ -6737,7 +6737,7 @@ izlude_in.gat,82,163,3	script	Shurank	733,{
 			mes "[Shurank]";
 			mes "But if you wish to become an expert Swordman in my eyes, you must master Bash!";
 			close;
-		} else if(@chk_bash == 10){
+		} else if(@chk_bash == 10) {
 			mes "[Shurank]";
 			mes "Those calluses...!";
 			mes "Only a master of the Bash skill has those kinds of hands. Great work, Swordman. I'm very impressed.";
@@ -6759,7 +6759,7 @@ izlude_in.gat,82,163,3	script	Shurank	733,{
 
 geffen.gat,154,143,3	script	Dequ'ee	734,{
 
-	if(BaseJob == Job_Novice){
+	if (BaseJob == Job_Novice) {
 		mes "[Dequ'ee]";
 		mes "Hey there.";
 		mes "Frustrated with";
@@ -6777,7 +6777,7 @@ geffen.gat,154,143,3	script	Dequ'ee	734,{
 		mes "I don't know how you want to live your life, but you should give the Swordman job some serious thought...";
 		close;
 	}
-	if(BaseClass == Job_Swordsman && Upper == 1){
+	if (BaseClass == Job_Swordsman && Upper == 1) {
 		mes "[Dequ'ee]";
 		mes "Ah...";
 		mes "A fellow sword wielder!";
@@ -6788,7 +6788,7 @@ geffen.gat,154,143,3	script	Dequ'ee	734,{
 		mes "depend on the strength of your blade. It's an awesome responsibility, but we can never let our allies down in battle...";
 		close;
 	}
-	if(BaseClass != Job_Swordsman){
+	if (BaseClass != Job_Swordsman) {
 		mes "[Dequ'ee]";
 		mes "Hello there.";
 		mes "Not a fan of swords, are you?";
@@ -6804,7 +6804,7 @@ geffen.gat,154,143,3	script	Dequ'ee	734,{
 		close;
 	}
 
-if(tu_swordman > 20){
+if(tu_swordman > 20) {
 	mes "[Dequ'ee]";
 	mes "I hope you continue";
 	mes "to train yourself in";
@@ -6814,7 +6814,7 @@ if(tu_swordman > 20){
 	close;
 }
 
-if(tu_swordman == 20){
+if(tu_swordman == 20) {
 	mes "[Dequ'ee]";
 	mes "Huh...?";
 	mes "Aren't you supposed";
@@ -6844,7 +6844,7 @@ if(tu_swordman == 20){
 	end;
 }
 
-if(tu_swordman == 19){
+if(tu_swordman == 19) {
 	mes "[Dequ'ee]";
 	mes "What are still doing here?";
 	mes "Hurry and check on Bankley!";
@@ -6853,15 +6853,15 @@ if(tu_swordman == 19){
 	close;
 }
 
-if((tu_swordman == 17) || (tu_swordman == 18)){
+if((tu_swordman == 17) || (tu_swordman == 18)) {
 	mes "[Dequ'ee]";
-	if(tu_swordman == 17){
+	if (tu_swordman == 17) {
 		mes "TheisWesomeof";
 		mes "ConBanfoevidehi";
 		mes "victkleyundncem";
 		mes "hekdlfiDrindkelsd";
 		next;
-	} else if(tu_swordman == 18){
+	} else if(tu_swordman == 18) {
 		mes "hekdlfiDrindkelsd";
 		mes "TheisWesomeof";
 		mes "ConBanfoevidehi";
@@ -6874,7 +6874,7 @@ if((tu_swordman == 17) || (tu_swordman == 18)){
 	mes "This is a complex transposition cipher in which we remove one person's code from the rest of them. So who do you think is";
 	mes "the murderer?";
 	next;
-	switch(select("Hans", "Bankley", "Geil", "Muetro")){
+	switch(select("Hans", "Bankley", "Geil", "Muetro")) {
 		case 1:
 			mes "[Dequ'ee]";
 			mes "Hans...?";
@@ -6928,14 +6928,14 @@ if((tu_swordman == 17) || (tu_swordman == 18)){
 	}
 }	
 	
-if(tu_swordman == 16){
+if(tu_swordman == 16) {
 	mes "[Dequ'ee]";
 	mes "I guess these codes need to be arranged in a certain order before we can figure out its secrets.";
 	next;
 	mes "[Dequ'ee]";
 	mes "Hm, you guess the order and I'll try to formulate a cryptanalysis based on your guess.";
 	next;
-	switch(select("Muetro", "Hans", "Geil", "Bankley")){
+	switch(select("Muetro", "Hans", "Geil", "Bankley")) {
 		case 1:
 			mes "[Dequ'ee]";
 			mes "Okay, Muetro's";
@@ -6944,7 +6944,7 @@ if(tu_swordman == 16){
 			mes "code do you think";
 			mes "should go second?";
 			next;
-			switch(select("Hans", "Geil", "Bankley")){
+			switch(select("Hans", "Geil", "Bankley")) {
 				case 1:
 					mes "[Dequ'ee]";
 					mes "Hans...?";
@@ -6953,7 +6953,7 @@ if(tu_swordman == 16){
 					mes "the third code";
 					mes "would be...?";
 					next;
-					switch(select("Geil", "Bankley")){
+					switch(select("Geil", "Bankley")) {
 						case 1:
 							mes "[Dequ'ee]";
 							mes "Muetro, Hans,";
@@ -7008,7 +7008,7 @@ if(tu_swordman == 16){
 					mes "the third code";
 					mes "would be...?";
 					next;
-					switch(select("Hans", "Bankley")){
+					switch(select("Hans", "Bankley")) {
 						case 1:
 							mes "[Dequ'ee]";
 							mes "Muetro, Geil,";
@@ -7063,7 +7063,7 @@ if(tu_swordman == 16){
 					mes "the third code";
 					mes "would be...?";
 					next;
-					switch(select("Hans", "Geil")){
+					switch(select("Hans", "Geil")) {
 						case 1:
 							mes "[Dequ'ee]";
 							mes "Muetro, Bankley,";
@@ -7120,7 +7120,7 @@ if(tu_swordman == 16){
 			mes "code do you think";
 			mes "should go second?";
 			next;
-			switch(select("Muetro", "Geil", "Bankley")){
+			switch(select("Muetro", "Geil", "Bankley")) {
 				case 1:
 					mes "[Dequ'ee]";
 					mes "Muestro's...?";
@@ -7129,7 +7129,7 @@ if(tu_swordman == 16){
 					mes "the third code";
 					mes "would be...?";
 					next;
-					switch(select("Geil", "Bankley")){
+					switch(select("Geil", "Bankley")) {
 						case 1:
 							mes "[Dequ'ee]";
 							mes "Hans, Muetro,";
@@ -7184,7 +7184,7 @@ if(tu_swordman == 16){
 					mes "the third code";
 					mes "would be...?";
 					next;
-					switch(select("Muetro", "Bankley")){
+					switch(select("Muetro", "Bankley")) {
 						case 1:
 							mes "[Dequ'ee]";
 							mes "Hans, Geil,";
@@ -7239,7 +7239,7 @@ if(tu_swordman == 16){
 					mes "the third code";
 					mes "would be...?";
 					next;
-					switch(select("Muetro", "Geil")){
+					switch(select("Muetro", "Geil")) {
 						case 1:
 							mes "[Dequ'ee]";
 							mes "Hans, Bankley,";
@@ -7296,7 +7296,7 @@ if(tu_swordman == 16){
 			mes "code do you think";
 			mes "should go second?";
 			next;
-			switch(select("Muetro", "Hans", "Bankley")){
+			switch(select("Muetro", "Hans", "Bankley")) {
 				case 1:					
 					mes "[Dequ'ee]";
 					mes "Muestro's...?";
@@ -7305,7 +7305,7 @@ if(tu_swordman == 16){
 					mes "the third code";
 					mes "would be...?";
 					next;
-					switch(select("Hans", "Bankley")){
+					switch(select("Hans", "Bankley")) {
 						case 1:			 
 							mes "[Dequ'ee]";
 							mes "Geil, Muetro,";
@@ -7367,7 +7367,7 @@ if(tu_swordman == 16){
 					mes "the third code";
 					mes "would be...?";
 					next;
-					switch(select("Muetro", "Bankley")){
+					switch(select("Muetro", "Bankley")) {
 						case 1:
 							mes "[Dequ'ee]";
 							mes "Geil, Hans,";
@@ -7422,7 +7422,7 @@ if(tu_swordman == 16){
 					mes "the third code";
 					mes "would be...?";
 					next;
-					switch(select("Muetro", "Hans")){
+					switch(select("Muetro", "Hans")) {
 						case 1:
 							mes "[Dequ'ee]";
 							mes "Geil, Bankley,";
@@ -7479,7 +7479,7 @@ if(tu_swordman == 16){
 			mes "code do you think";
 			mes "should go second?";
 			next;
-			switch(select("Muetro", "Hans", "Geil")){
+			switch(select("Muetro", "Hans", "Geil")) {
 				case 1:
 					mes "[Dequ'ee]";
 					mes "Muestro's...?";
@@ -7488,7 +7488,7 @@ if(tu_swordman == 16){
 					mes "the third code";
 					mes "would be...?";
 					next;
-					switch(select("Hans", "Geil")){
+					switch(select("Hans", "Geil")) {
 						case 1:
 							mes "[Dequ'ee]";
 							mes "Bankley, Muetro,";
@@ -7543,7 +7543,7 @@ if(tu_swordman == 16){
 					mes "the third code";
 					mes "would be...?";
 					next;
-					switch(select("Muetro", "Geil")){
+					switch(select("Muetro", "Geil")) {
 						case 1:
 							mes "[Dequ'ee]";
 							mes "Bankley, Hans,";
@@ -7596,7 +7596,7 @@ if(tu_swordman == 16){
 					mes "the third code";
 					mes "would be...?";
 					next;
-					switch(select("Muetro", "Hans")){
+					switch(select("Muetro", "Hans")) {
 						case 1:	
 							mes "[Dequ'ee]";
 							mes "Bankley, Geil,";
@@ -7655,7 +7655,7 @@ if(tu_swordman == 16){
 	}
 }
 
-if(tu_swordman == 15){
+if(tu_swordman == 15) {
 	set @hans$, "victkleyundncem";
 	set @bang$, "hekdlfiDrindkelsd";
 	set @mutr$, "ConBanfoevidehi";
@@ -7677,7 +7677,7 @@ if(tu_swordman == 15){
 	next;
 	set @inputstr$, NULL;
 	input @inputstr$;
-	if(@inputstr$ == @hans$){
+	if (@inputstr$ == @hans$) {
 		mes "[Dequ'ee]";
 		mes "victkleyundncem?";
 		mes "That's certainly";
@@ -7686,7 +7686,7 @@ if(tu_swordman == 15){
 		next;
 		set @inputstr$, NULL;
 		input @inputstr$;
-		if(@inputstr$ == @bang$){
+		if (@inputstr$ == @bang$) {
 			mes "[Dequ'ee]";
 			mes "hekdlfiDrindkelsd..";
 			mes "What the hell is that...?";
@@ -7695,7 +7695,7 @@ if(tu_swordman == 15){
 			next;
 			set @inputstr$, NULL;
 			input @inputstr$;
-			if(@inputstr$ == @mutr$){
+			if (@inputstr$ == @mutr$) {
 				mes "[Dequ'ee]";
 				mes "ConBanfoevidehi.";
 				mes "This is going to";
@@ -7705,7 +7705,7 @@ if(tu_swordman == 15){
 				next;
 				set @inputstr$, NULL;
 				input @inputstr$;
-				if(@inputstr$ == @geil$){
+				if (@inputstr$ == @geil$) {
 					mes "[Dequ'ee]";
 					mes "TheisWesomeof...";
 					mes "Alright, great.";
@@ -7750,7 +7750,7 @@ if(tu_swordman == 15){
 	}
 }
 
-if(tu_swordman == 14){
+if(tu_swordman == 14) {
 	mes "[Dequ'ee]";
 	mes "Didn't I ask you";
 	mes "to interrogate the";
@@ -7761,7 +7761,7 @@ if(tu_swordman == 14){
 	close;
 }
 
-if(tu_swordman == 13){
+if(tu_swordman == 13) {
 	mes "[Dequ'ee]";
 	mes "Ah, you're here!";
 	mes "Shurank must have";
@@ -7798,7 +7798,7 @@ if(tu_swordman == 13){
 	close;
 }
 
-if((tu_swordman > 7) && (tu_swordman < 13)){
+if((tu_swordman > 7) && (tu_swordman < 13)) {
 	mes "[Dequ'ee]";
 	mes "Hmm...";
 	mes "Still receiving";
@@ -7811,7 +7811,7 @@ if((tu_swordman > 7) && (tu_swordman < 13)){
 	close;
 }
 
-if(tu_swordman == 7){
+if(tu_swordman == 7) {
 	mes "[Dequ'ee]";
 	mes "What are you";
 	mes "still doing here?";
@@ -7827,7 +7827,7 @@ if(tu_swordman == 7){
 	close;
 }
 
-if(tu_swordman == 6){	
+if(tu_swordman == 6) {	
 	mes "[Dequ'ee]";
 	mes "Ah...!";
 	mes "Are you the Swordman";
@@ -7839,20 +7839,20 @@ if(tu_swordman == 6){
 	mes "What message does";
 	mes "Shurank have for me?";
 	next;
-	switch(select("Killer...", "Murderer...")){
+	switch(select("Killer...", "Murderer...")) {
 		case 1:
 			mes "[" + strcharinfo(0) + "]";
 			mes "What happened";
 			mes "to the killer?";
 			next;
-			switch(select("Who he is...", "Who is behind...")){
+			switch(select("Who he is...", "Who is behind...")) {
 				case 1:
 					mes "[" + strcharinfo(0) + "]";
 					mes "Did you find";
 					mes "out who he is?";
 					mes "If you did...";
 					next; 
-					switch(select("Why are we...", "What are we...")){
+					switch(select("Why are we...", "What are we...")) {
 						case 1:
 							mes "[" + strcharinfo(0) + "]";
 							mes "Why are sitting";
@@ -7895,7 +7895,7 @@ if(tu_swordman == 6){
 					mes "who's behind all this?";
 					mes "If you did...";
 					next; 
-					switch(select("Why are we...", "What are we...")){
+					switch(select("Why are we...", "What are we...")) {
 						case 1:
 							mes "[" + strcharinfo(0) + "]";
 							mes "Why are sitting";
@@ -7939,14 +7939,14 @@ if(tu_swordman == 6){
 			mes "What happened";
 			mes "to the murderer?";
 			next;
-			switch(select("Who he is...", "Who is behind...")){
+			switch(select("Who he is...", "Who is behind...")) {
 				case 1:
 					mes "[" + strcharinfo(0) + "]";
 					mes "Did you find";
 					mes "out who he is?";
 					mes "If you did...";
 					next; 
-					switch(select("Why are we...", "What are we...")){
+					switch(select("Why are we...", "What are we...")) {
 						case 1:
 							mes "[" + strcharinfo(0) + "]";
 							mes "Why are sitting";
@@ -8014,7 +8014,7 @@ if(tu_swordman == 6){
 					mes "who's behind all this?";
 					mes "If you did...";
 					next; 
-					switch(select("Why are we...", "What are we...")){
+					switch(select("Why are we...", "What are we...")) {
 						case 1:
 							mes "[" + strcharinfo(0) + "]";
 							mes "Why are sitting";
@@ -8070,7 +8070,7 @@ if(tu_swordman == 6){
 morocc_in.gat,51,101,3	script	Geil	89,{
 
 	mes "[Geil]";
-	if(tu_swordman == 15){
+	if (tu_swordman == 15) {
 		mes "Were you sent by the authorities? Quit giving me such a hard time! I'm not the murderer! I don't even know who was killed. I'm not the one you're looking for!";
 
 		next;
@@ -8089,7 +8089,7 @@ morocc_in.gat,51,101,3	script	Geil	89,{
 		mes "What's so important about this code, and why do you guys keep hounding me about the murder?!";
 		close;
 	}
-	if(tu_swordman == 14){
+	if (tu_swordman == 14) {
 		mes "Were you sent by the authorities? Quit giving me such a hard time! I'm not the murderer! I don't even know who was killed. I'm not the one you're looking for!";
 
 		next;
@@ -8122,7 +8122,7 @@ morocc_in.gat,51,101,3	script	Geil	89,{
 morocc.gat,82,292,5	script	Muetro	84,{
 
 	mes "[Muetro]";
-	if(tu_swordman == 15){
+	if (tu_swordman == 15) {
 		mes "You're just";
 		mes "like all the others.";
 		mes "You want the code";
@@ -8135,7 +8135,7 @@ morocc.gat,82,292,5	script	Muetro	84,{
 		mes "catch the murderer.";
 		close;
 	}
-	if(tu_swordman == 14){
+	if (tu_swordman == 14) {
 		mes "You're just";
 		mes "like all the others.";
 		mes "You want the code";
@@ -8162,7 +8162,7 @@ morocc.gat,82,292,5	script	Muetro	84,{
 morocc.gat,240,72,3	script	Hans	86,{
 
 	mes "[Hans]";
-	if(tu_swordman == 15){
+	if (tu_swordman == 15) {
 		mes "Help me!";
 		mes "Please help me!";
 		mes "I'm no murderer!";
@@ -8186,7 +8186,7 @@ morocc.gat,240,72,3	script	Hans	86,{
 		mes "It's like he used magic or something to make it stick out in my brain. Please leave me alone, this is all I know!";
 		close;
 	}
-	if(tu_swordman == 14){
+	if (tu_swordman == 14) {
 		mes "Help me!";
 		mes "Please help me!";
 		mes "I'm no murderer!";
@@ -8218,13 +8218,13 @@ morocc.gat,240,72,3	script	Hans	86,{
 
 morocc_in.gat,12,156,3	script	Bankley	97,{
 
-	if(tu_swordman > 19){
+	if (tu_swordman > 19) {
 		mes "^3355FFBankley had a pitiable";
 		mes "expression on his face.^000000";
 		mes "^3355FFHis body is completely lifeless. There's a long, deep wound in his chest, and a blood drenched knife is clenched in his right hand.^000000";
 		close;
 	}
-	if(tu_swordman == 19){
+	if (tu_swordman == 19) {
 		mes "...";
 		mes "......";
 		next;
@@ -8236,7 +8236,7 @@ morocc_in.gat,12,156,3	script	Bankley	97,{
 		close;
 	}
 	mes "[Bankley]";
-	if(tu_swordman == 15){
+	if (tu_swordman == 15) {
 		mes "I didn't kill anybody...!";
 		mes "I'm innocent and don't";
 		mes "have anything to hide!";
@@ -8263,7 +8263,7 @@ morocc_in.gat,12,156,3	script	Bankley	97,{
 		mes "for the real culprit!";
 		close;
 	}
-	if(tu_swordman == 14){
+	if (tu_swordman == 14) {
 		mes "I didn't kill anybody...!";
 		mes "I'm innocent and don't";
 		mes "have anything to hide!";
@@ -8307,7 +8307,7 @@ morocc_in.gat,12,156,3	script	Bankley	97,{
 moc_ruins.gat,66,164,4	script	Thief Trainer#T	84,{
 
 	mes "[Yierhan]";
-	if(Basejob == Job_Novice){
+	if (Basejob == Job_Novice) {
 		mes "Eh...?";
 		mes "A Novice?";
 		mes "Still thinking";
@@ -8320,9 +8320,9 @@ moc_ruins.gat,66,164,4	script	Thief Trainer#T	84,{
 		mes "I might add--come and talk to me. I'll show you the ropes!";
 		close;
 
-	} else if(BaseClass == Job_Thief){
-		if((Basejob == Job_Thief && Upper == 1) || Basejob == Job_Assassin || Basejob == Job_Rogue){
-			if(tu_thief01 < 8){
+	} else if(BaseClass == Job_Thief) {
+		if ((Basejob == Job_Thief && Upper == 1) || Basejob == Job_Assassin || Basejob == Job_Rogue) {
+			if (tu_thief01 < 8) {
 				mes "Whaaaat are you";
 				mes "doin' here? There's";
 				mes "nothing I can teach you!";
@@ -8336,14 +8336,14 @@ moc_ruins.gat,66,164,4	script	Thief Trainer#T	84,{
 				close;
 			}
 		}
-		if(tu_thief01 == 0){
+		if (tu_thief01 == 0) {
 			mes "Heya pal.";
 			mes "I'm Yierhan.";
 			mes "I happen to be";
 			mes "the guy in charge";
 			mes "of training new Thieves.";
 			next;
-			switch(select("Training?","Training? Right now?")){
+			switch(select("Training?","Training? Right now?")) {
 			case 1:
 				mes "[Yierhan]";
 				mes "Yeah, training. I mean, this kind of stuff is second nature to some people, but other guys need a little more help. So this is one of those 'just in case' things.";
@@ -8364,7 +8364,7 @@ moc_ruins.gat,66,164,4	script	Thief Trainer#T	84,{
 			mes "So for melee attacks, which stat increases your damage? Come on";
 			mes "now, you should know this if you didn't skip the Novice Training Grounds.";
 			next;
-			switch(select("^6B8E23INT^000000","^2F4F2FSTR^000000","^23238EDEX^000000")){
+			switch(select("^6B8E23INT^000000","^2F4F2FSTR^000000","^23238EDEX^000000")) {
 			case 1:
 				mes "[Yierhan]";
 				mes "Say whaaat? ^6B8E23INT^000000 affects magic damage, magic defense and some skills. Thieves don't even work with magic!";
@@ -8416,7 +8416,7 @@ moc_ruins.gat,66,164,4	script	Thief Trainer#T	84,{
 				close;
 				break;
 			}
-		} else if(tu_thief01 == 1){
+		} else if(tu_thief01 == 1) {
 			mes "Alright, enough about stats.";
 			mes "You know what? I think I'll just talk to you about the skills that we Thieves use.";
 			next;
@@ -8425,7 +8425,7 @@ moc_ruins.gat,66,164,4	script	Thief Trainer#T	84,{
 			mes "then come back over here.";
 			set tu_thief01, 2;
 			close;
-		} else if(tu_thief01 == 2){
+		} else if(tu_thief01 == 2) {
 			mes "Okay, let me see your skills. You know you gotta change your battle strategy depending on what skills you have, right? Skills are just as important as stats!";
 			next;
 			set @chk_th_skill1, getskilllv(48);
@@ -8435,12 +8435,12 @@ moc_ruins.gat,66,164,4	script	Thief Trainer#T	84,{
 			set @chk_th_skill5, getskilllv(52);
 			set @chk_th_skill6, getskilllv(53);
 
-			if(@chk_th_skill1 == 0 && @chk_th_skill2 == 0 && @chk_th_skill3 == 0 && @chk_th_skill4 == 0 && @chk_th_skill5 == 0 && @chk_th_skill6 == 0){
+			if (@chk_th_skill1 == 0 && @chk_th_skill2 == 0 && @chk_th_skill3 == 0 && @chk_th_skill4 == 0 && @chk_th_skill5 == 0 && @chk_th_skill6 == 0) {
 				mes "[Yierhan]";
 				mes "You haven't learned any skills yet? Come on, it's your skills that'll set you apart from Novices and everyone else!";
 				close;
 			} else {
-				if(@chk_th_skill1 > 0){
+				if (@chk_th_skill1 > 0) {
 					mes "[Yierhan]";
 					mes "Ah, so you've learned";
 					mes "Level "+@chk_th_skill1+" Double Attack.";
@@ -8451,7 +8451,7 @@ moc_ruins.gat,66,164,4	script	Thief Trainer#T	84,{
 					mes "It's a Passive skill, so it's always in effect and won't have to use any SP to use it. The higher your Double Attack skill level, the more double attacks you'll do.";
 					next;
 				}
-				if(@chk_th_skill2 > 0){
+				if (@chk_th_skill2 > 0) {
 					mes "[Yierhan]";
 					mes "Let's see...";
 					mes "Level "+@chk_th_skill2+" Increase Dodge?";
@@ -8462,7 +8462,7 @@ moc_ruins.gat,66,164,4	script	Thief Trainer#T	84,{
 					mes "effect. If you don't like to bruise, this is your skill.";
 					next;
 				}
-				if(@chk_th_skill3 > 0){
+				if (@chk_th_skill3 > 0) {
 					mes "[Yierhan]";
 					mes "Whoa, so you've";
 					mes "got Level "+@chk_th_skill3+" Steal~";
@@ -8473,7 +8473,7 @@ moc_ruins.gat,66,164,4	script	Thief Trainer#T	84,{
 					mes "But you can use Steal to take items from monsters. If you're lucky, you can get some good items that way. Oh, and Steal doesn't affect monster drop rates.";
 					next;
 				}
-				if(@chk_th_skill4 > 0){
+				if (@chk_th_skill4 > 0) {
 					mes "[Yierhan]";
 					mes "You've learned";
 					mes "Level "+@chk_th_skill4+" Hiding?";
@@ -8488,7 +8488,7 @@ moc_ruins.gat,66,164,4	script	Thief Trainer#T	84,{
 					mes "Certain monsters will still be able to find you, no matter how well you hide. There are even a few monsters that can flush you out of hiding!";
 					next;
 				}
-				if(@chk_th_skill5 > 0){
+				if (@chk_th_skill5 > 0) {
 					mes "[Yierhan]";
 					mes "Alright, I see that you";
 					mes "know Level "+@chk_th_skill5+" Envenom.";
@@ -8504,7 +8504,7 @@ moc_ruins.gat,66,164,4	script	Thief Trainer#T	84,{
 					mes "If the monster's too strong for you, you might not be able to poison it. So don't go crazy.";
 					next;
 				}
-				if(@chk_th_skill6 > 0){
+				if (@chk_th_skill6 > 0) {
 					mes "[Yierhan]";
 					mes "Level "+@chk_th_skill6+" Detoxify.";
 					mes "If you took the trouble to learn that, you must be the cautious";
@@ -8526,7 +8526,7 @@ moc_ruins.gat,66,164,4	script	Thief Trainer#T	84,{
 			set JobExp, JobExp + (BaseLevel *15);
 			//misceffect EF_HIT5;//CHECK
 			close;
-		} else if(tu_thief01 == 3){
+		} else if(tu_thief01 == 3) {
 			mes "So...";
 			mes "Are there any";
 			mes "skills you want";
@@ -8534,8 +8534,8 @@ moc_ruins.gat,66,164,4	script	Thief Trainer#T	84,{
 			mes "pretty much stuff you";
 			mes "already know?";
 			next;
-			while(1){
-				switch(select("Double Attack","Increase Dodge","Steal","Hiding","Envenom","Detoxify","Cancel")){
+			while(1) {
+				switch(select("Double Attack","Increase Dodge","Steal","Hiding","Envenom","Detoxify","Cancel")) {
 				case 1: 
 					mes "[Yierhan]";
 					mes "Just like its name,";
@@ -8622,27 +8622,27 @@ moc_ruins.gat,66,164,4	script	Thief Trainer#T	84,{
 					mes "Now that you're such an expert on skills, I want you to level up your skills and come back, got it?";
 					set tu_thief01, 4;
 					//misceffect EF_HIT5;
-					if(@read_d){
+					if (@read_d) {
 						set BaseExp, BaseExp + 300;
 						set JobExp, JobExp + 100;
 					}
-					if(@read_f){
+					if (@read_f) {
 						set BaseExp, BaseExp + 300;
 						set JobExp, JobExp + 100;
 					}
-					if(@read_s){
+					if (@read_s) {
 						set BaseExp, BaseExp + 300;
 						set JobExp, JobExp + 100;
 					}
-					if(@read_p){
+					if (@read_p) {
 						set BaseExp, BaseExp + 300;
 						set JobExp, JobExp + 100;
 					}
-					if(@read_h){
+					if (@read_h) {
 						set BaseExp, BaseExp + 300;
 						set JobExp, JobExp + 100;
 					}
-					if(@read_r){
+					if (@read_r) {
 						set BaseExp, BaseExp + 300;
 						set JobExp, JobExp + 100;
 					}
@@ -8650,7 +8650,7 @@ moc_ruins.gat,66,164,4	script	Thief Trainer#T	84,{
 					break;
 				}
 			}
-		} else if(tu_thief01 == 4){
+		} else if(tu_thief01 == 4) {
 			mes "Alright, we studied the skills and you've been practicing a little, right? You better have...";
 			next;
 			mes "[Yierhan]";
@@ -8669,8 +8669,8 @@ moc_ruins.gat,66,164,4	script	Thief Trainer#T	84,{
 			close2;
 			warp "moc_fild12.gat",158,373;
 			end;
-		} else if(tu_thief01 == 5 || tu_thief01 == 6){
-			if(countitem(916) < 10){	//Feather_Of_Birds
+		} else if(tu_thief01 == 5 || tu_thief01 == 6) {
+			if (countitem(916) < 10) {	//Feather_Of_Birds
 				mes "'Ey, you don't";
 				mes "have the 10 ^ff0000Feather of Birds^000000 I asked you for ";
 				mes "Remember, experience is more important";
@@ -8687,8 +8687,8 @@ moc_ruins.gat,66,164,4	script	Thief Trainer#T	84,{
 				mes "I hope you will continue to do your best.";
 				mes "Do you have any question?";
 				next;
-				if(tu_thief01 == 6){
-					switch(select("Regarding the Traces.", "No.")){
+				if (tu_thief01 == 6) {
+					switch(select("Regarding the Traces.", "No.")) {
 					case 1:
 						mes "[Yierhan]";
 						mes "Ah....";
@@ -8737,7 +8737,7 @@ moc_ruins.gat,66,164,4	script	Thief Trainer#T	84,{
 						break;
 					}
 				} else {
-					switch(select("It was nice to meet you.", "No.")){
+					switch(select("It was nice to meet you.", "No.")) {
 					case 1:
 						mes "[Yierhan]";
 						mes "Hahaha...nice to meet you, too.";
@@ -8770,7 +8770,7 @@ moc_ruins.gat,66,164,4	script	Thief Trainer#T	84,{
 					}
 				}
 			}
-		} else if(tu_thief01 == 7){
+		} else if(tu_thief01 == 7) {
 			mes "There was a fight happened at the south of town.";
 			mes "It was midnight when it was happened";
 			mes "so only few people know about this.";
@@ -8799,7 +8799,7 @@ moc_ruins.gat,66,164,4	script	Thief Trainer#T	84,{
 			set JobExp, JobExp + 100;
 			//misceffect EF_HIT5;
 			close;
-		} else if(tu_thief01 == 8){
+		} else if(tu_thief01 == 8) {
 			mes "So, how are you lately?";
 			mes "Fighting against an unknown enemy always";
 			mes "have a big danger within.";
@@ -8811,7 +8811,7 @@ moc_ruins.gat,66,164,4	script	Thief Trainer#T	84,{
 			mes "for everything. Not only monsters are your enemies but";
 			mes "people, even your comrades.";
 			close;
-		} else if(tu_thief01 < 26){
+		} else if(tu_thief01 < 26) {
 			mes "I heard that an assassin who";
 			mes "was on a misson has never come back.";
 			mes "Although the assassin guild was reported his mission was complete,";
@@ -8821,11 +8821,11 @@ moc_ruins.gat,66,164,4	script	Thief Trainer#T	84,{
 			mes "[Yierhan]";
 			mes "Anyways, take care of yourself well.";
 			close;
-		} else if(tu_thief01 == 26){
+		} else if(tu_thief01 == 26) {
 			mes "So, did you complete your mission?";
 			mes "I know it is a pretty difficult one though.";
 			next;
-			switch(select("I am still ivestigating.","Not yet.","Yes, I did.")){
+			switch(select("I am still ivestigating.","Not yet.","Yes, I did.")) {
 			case 1:
 				mes "[Yierhan]";
 				mes "Ah...";
@@ -8897,18 +8897,18 @@ moc_ruins.gat,66,164,4	script	Thief Trainer#T	84,{
 			mes "Life without a dream cannot become a perfect one.";
 			close2;
 		}
-	} else if(BaseClass == Job_Mage){
-		if(tu_magician01 < 7){
+	} else if(BaseClass == Job_Mage) {
+		if (tu_magician01 < 7) {
 			mes "I am a thief trainer.";
 			mes "And I can tell you are not a thief.";
 			mes "You should become a thief if you wanted to";
 			mes "be taught by me...hahaha.";
 			close;
-		} else if(tu_magician01 == 7){
+		} else if(tu_magician01 == 7) {
 			mes "Hm...?";
 			mes "That's weird, usually only Thieves hang around this joint. What's someone like you doing here? Unless...";
 			next;
-			switch(select("I'm here on behalf of 'Mana.'")){
+			switch(select("I'm here on behalf of 'Mana.'")) {
 			case 1:
 				mes "[Yierhan]";
 				mes "Ah, I've been expecting you. Good good, I asked Mana for help with something.";
@@ -8927,7 +8927,7 @@ moc_ruins.gat,66,164,4	script	Thief Trainer#T	84,{
 				set tu_magician01, 8;
 				break;
 			}
-		} else if(tu_magician01 < 26){
+		} else if(tu_magician01 < 26) {
 			mes "There's stories of some highly skilled Assassin that has never returned from a mission...";
 			next;
 			mes "[Yierhan]";
@@ -8936,13 +8936,13 @@ moc_ruins.gat,66,164,4	script	Thief Trainer#T	84,{
 			mes "[Yierhan]";
 			mes "Be careful, my friend. It seems your mission might be related to that mysterious Assassin...";
 			close;
-		} else if(tu_magician01 == 26){
+		} else if(tu_magician01 == 26) {
 			mes "Hmm.....";
 			mes "So how is it going lately?";
 			mes "I have had so many other works recently";
 			mes "to focus on the investigation.";
 			next;
-			switch(select("I am still ivestigating.","Not yet.","I finished to investigate.")){
+			switch(select("I am still ivestigating.","Not yet.","I finished to investigate.")) {
 			case 1:
 				mes "[Yierhan]";
 				mes "Ah...";
@@ -9020,25 +9020,25 @@ moc_ruins.gat,66,164,4	script	Thief Trainer#T	84,{
 
 moc_fild12.gat,166,369,0	script	Battle Traces#1	844,{
 
-	if(BaseClass == Job_Thief){
-		if(tu_thief01 < 5){
+	if (BaseClass == Job_Thief) {
+		if (tu_thief01 < 5) {
 			mes "^3355FFThere are traces of poison used in a battle. You can sense its power and decide that it would be safer not to get too close to it.^000000";
 			close;
-		} else if(tu_thief01 == 5){
+		} else if(tu_thief01 == 5) {
 			mes "^3355FFThere are traces of poison used in a battle. After examining the scene carefully, I feel a little dizzy.";
 			set tu_thief01, 6;
 			//#####		GetHEALTHSTATE VAR_POISON 60#####
 			//misceffect EF_VENOMDUST2;
 			close;
-		} else if(tu_thief01 == 6){
+		} else if(tu_thief01 == 6) {
 			mes "^3355FFThere are traces of poison used in a battle. After examining the scene carefully, I feel a little dizzy.";
 			//#####		GetHEALTHSTATE VAR_POISON 60#####
 			//misceffect EF_VENOMDUST2;
 			close;
-		} else if(tu_thief01 == 7){
+		} else if(tu_thief01 == 7) {
 			mes "^3355FFThere are traces of poison used in a battle. You can sense its power and decide that it would be safer not to get too close to it.^000000";
 			close;
-		} else if(tu_thief01 == 8){
+		} else if(tu_thief01 == 8) {
 			mes "^3355FFThere are signs of a pursuit that heads south.^000000";
 			set tu_thief01, 9;
 			close;
@@ -9047,12 +9047,12 @@ moc_fild12.gat,166,369,0	script	Battle Traces#1	844,{
 			close;
 		}
 	}
-	if(BaseClass == Job_Mage){
-		if(tu_magician01 < 8){
+	if (BaseClass == Job_Mage) {
+		if (tu_magician01 < 8) {
 			mes "There are traces of poison used in a battle. You can sense its power and decide that it would be safer not to get too close to it.^000000";
 			//misceffect EF_VENOMDUST2;
 			close;
-		} else if(tu_magician01 == 8){
+		} else if(tu_magician01 == 8) {
 			mes "^3355FFThere are signs of a pursuit that heads south.^000000";
 			set tu_magician01, 9;
 			close2;
@@ -9067,11 +9067,11 @@ moc_fild12.gat,166,369,0	script	Battle Traces#1	844,{
 
 moc_fild12.gat,173,215,0	script	Battle Traces#2	844,{
 
-	if(BaseClass == Job_Thief){
-		if(tu_thief01 < 9){
+	if (BaseClass == Job_Thief) {
+		if (tu_thief01 < 9) {
 			mes "There are traces of many people going by.";
 			close;
-		} else if(tu_thief01 == 9){
+		} else if(tu_thief01 == 9) {
 			mes "The traces lead to the east. There is one peculiar footstep amongst them all that caugh my attention. Seems like the one of the person being pursued.";
 			set tu_thief01, 10;
 			close;
@@ -9079,11 +9079,11 @@ moc_fild12.gat,173,215,0	script	Battle Traces#2	844,{
 			mes "The traces lead to the east.";
 			close;
 		}
-	} else if(BaseClass == Job_Mage){
-		if(tu_magician01 < 9){
+	} else if(BaseClass == Job_Mage) {
+		if (tu_magician01 < 9) {
 			mes "There are traces of many people going by.";
 			close;
-		} else if(tu_magician01 == 9){
+		} else if(tu_magician01 == 9) {
 			mes "The traces lead to the east. There is one peculiar footstep amongst them all that caugh my attention. Seems like the one of the people being chased.";
 			set tu_magician01, 10;
 			close;
@@ -9098,11 +9098,11 @@ moc_fild12.gat,173,215,0	script	Battle Traces#2	844,{
 
 moc_fild12.gat,276,165,0	script	Battle Traces#3	844,{
 
-	if(BaseClass == Job_Thief){
-		if(tu_thief01 < 10){
+	if (BaseClass == Job_Thief) {
+		if (tu_thief01 < 10) {
 			mes "There are traces of several who have went by.";
 			close;
-		} else if(tu_thief01 == 10){
+		} else if(tu_thief01 == 10) {
 			mes "The footsteps of the one being chased after is rather peculiar. It almost seems as if it was left on purpose.";
 			set tu_thief01, 11;
 			close;
@@ -9110,11 +9110,11 @@ moc_fild12.gat,276,165,0	script	Battle Traces#3	844,{
 			mes "There are a peculiar set up footsteps.";
 			close;
 		}
-	} else if(BaseClass == Job_Mage){
-		if(tu_magician01 < 10){
+	} else if(BaseClass == Job_Mage) {
+		if (tu_magician01 < 10) {
 			mes "There are traces of many people going by.";
 			close;
-		} else if(tu_magician01 == 10){	//CHECK
+		} else if(tu_magician01 == 10) {	//CHECK
 			mes "The footsteps of the one being chased after is rather peculiar. It almost seems like it was left on purpose.";
 			set tu_magician01, 11;//Check
 			close;
@@ -9129,11 +9129,11 @@ moc_fild12.gat,276,165,0	script	Battle Traces#3	844,{
 
 moc_fild11.gat,39,163,0	script	Battle Traces#4	844,{
 
-	if(BaseClass == Job_Thief){
-		if(tu_thief01 < 11){
+	if (BaseClass == Job_Thief) {
+		if (tu_thief01 < 11) {
 			mes "There are traces of many that have gone by.";
 			close;
-		} else if(tu_thief01 == 11){
+		} else if(tu_thief01 == 11) {
 			mes "Another peculiar trace has been added. Unlike the others, it is small and clear, It seems like another has joined in.";
 			set tu_thief01, 12;
 			close;
@@ -9141,11 +9141,11 @@ moc_fild11.gat,39,163,0	script	Battle Traces#4	844,{
 			mes "A new trace has been added.";
 			close;
 		}
-	} else if(BaseClass == Job_Mage){
-		if(tu_magician01 < 11){
+	} else if(BaseClass == Job_Mage) {
+		if (tu_magician01 < 11) {
 			mes "There are traces of many that have gone by.";
 			close;
-		} else if(tu_magician01 == 11){
+		} else if(tu_magician01 == 11) {
 			mes "Another peculiar trace has been added.";
 			mes "Unlike the others, it is small and clear.";
 			mes "It seems like another has joined in.";
@@ -9162,14 +9162,14 @@ moc_fild11.gat,39,163,0	script	Battle Traces#4	844,{
 
 moc_fild11.gat,205,52,0	script	Battle Traces#5	844,{
 
-	if(BaseClass == Job_Thief){
-		if(tu_thief01 < 12){
+	if (BaseClass == Job_Thief) {
+		if (tu_thief01 < 12) {
 			mes "There are traces of many that have gone by.";
 			close;
-		} else if(tu_thief01 == 12){
+		} else if(tu_thief01 == 12) {
 			mes "The traces are divided into ones from the East";
 			mes "split into North and South.";
-			if(countitem(506) == 0){	// Green_Potion
+			if (countitem(506) == 0) {	// Green_Potion
 				mes "I sense a strong poison nearby so";
 				mes "it is hard to approach.";
 				mes "It will be hard without getting rid of the poison first.";
@@ -9179,11 +9179,11 @@ moc_fild11.gat,205,52,0	script	Battle Traces#5	844,{
 				mes "You can neutralize the poison momentarily";
 				mes "with the Green Potion.";
 				next;
-				switch(select("Use Green Potion.","Don't use it.")){
+				switch(select("Use Green Potion.","Don't use it.")) {
 				case 1:
 					mes "The poison has gotten weaker. After investigating the scene where the poison has cleared I see a piece of cloth.";
 					next;
-					switch(select("Don't investigate.", "Investigate.")){
+					switch(select("Don't investigate.", "Investigate.")) {
 					case 1:
 						mes "It's not something to be concerned about.";
 						close;
@@ -9207,14 +9207,14 @@ moc_fild11.gat,205,52,0	script	Battle Traces#5	844,{
 			mes "Can't find anything else. Only the traces split into two remain.";
 			close;
 		}
-	} else if(BaseClass == Job_Mage){
-		if(tu_magician01 < 12){
+	} else if(BaseClass == Job_Mage) {
+		if (tu_magician01 < 12) {
 			mes "There are traces of many that have gone by.";
 			close;
-		} else if(tu_magician01 == 12){
+		} else if(tu_magician01 == 12) {
 			mes "The traces from the east split into";
 			mes "the north and south.";
-			if(countitem(506) == 0){	// Green_Potion
+			if (countitem(506) == 0) {	// Green_Potion
 				mes "I sense a strong poison nearby so";
 				mes "it is hard to approach.";
 				mes "It will be hard without getting rid of the poison first.";
@@ -9224,13 +9224,13 @@ moc_fild11.gat,205,52,0	script	Battle Traces#5	844,{
 				mes "You can neutralize the poison momentarily";
 				mes "with the Green Potion.";
 				next;
-				switch(select("Use Green Potion.", "Don't use it.")){
+				switch(select("Use Green Potion.", "Don't use it.")) {
 				case 1:
 					mes "The poison got weaker after using the potion.";
 					mes "After investigating the scene where the poison";
 					mes "is cleared I see a piece of cloth.";
 					next;
-					switch(select("Don't investigate.", "Investigate.")){
+					switch(select("Don't investigate.", "Investigate.")) {
 					case 1:
 						mes "It's not something to be concerned about.";
 						close;
@@ -9264,16 +9264,16 @@ moc_fild11.gat,205,52,0	script	Battle Traces#5	844,{
 
 moc_fild11.gat,226,235,0	script	Battle Traces#6	844,{
 
-	if(BaseClass == Job_Thief){
-		if(tu_thief01 < 13){
+	if (BaseClass == Job_Thief) {
+		if (tu_thief01 < 13) {
 			mes "There are traces of many that have gone by.";
 			close;
 		} else {
 			mes "There is a trace from the south. It seems to be leading to the north but I can't seem to be able to tell as of yet.";
 			close;
 		}
-	} else if(BaseClass == Job_Mage){
-		if(tu_magician01 < 13){
+	} else if(BaseClass == Job_Mage) {
+		if (tu_magician01 < 13) {
 			mes "There are traces of many that have gone by.";
 			close;
 		} else {
@@ -9287,16 +9287,16 @@ moc_fild11.gat,226,235,0	script	Battle Traces#6	844,{
 
 moc_fild11.gat,184,342,0	script	Battle Traces#7	844,{
 
-	if(BaseClass == Job_Thief){
-		if(tu_thief01 < 13){
+	if (BaseClass == Job_Thief) {
+		if (tu_thief01 < 13) {
 			mes "There are traces of several that have stopped by.";
 			close;
 		} else {
 			mes "Many of the traces are connected. They seemed to have stopped here for a while, but headed north.";
 			close;
 		}
-	} else if(BaseClass == Job_Mage){
-		if(tu_magician01 < 13){
+	} else if(BaseClass == Job_Mage) {
+		if (tu_magician01 < 13) {
 			mes "There are traces of several that have stopped by.";
 			close;
 		} else {
@@ -9310,11 +9310,11 @@ moc_fild11.gat,184,342,0	script	Battle Traces#7	844,{
 
 moc_fild17.gat,213,358,0	script	Battle Traces#8	844,{
 
-	if(BaseClass == Job_Thief){
-		if(tu_thief01 < 13){
+	if (BaseClass == Job_Thief) {
+		if (tu_thief01 < 13) {
 			mes "There are traces of about two people that stopped by.";
 			close;
-		} else if(tu_thief01 == 13){
+		} else if(tu_thief01 == 13) {
 			mes "I can no longer see the traces of those that were pursuiting. I only see traces of the two.";
 			set tu_thief01, 14;
 			close;
@@ -9322,11 +9322,11 @@ moc_fild17.gat,213,358,0	script	Battle Traces#8	844,{
 			mes "There are traces of a small amont of people.";
 			close;
 		}
-	} else if(BaseClass == Job_Mage){
-		if(tu_magician01 < 13){
+	} else if(BaseClass == Job_Mage) {
+		if (tu_magician01 < 13) {
 			mes "There seem to be traces of approximately two people that stopped by.";
 			close;
-		} else if(tu_magician01 == 13){
+		} else if(tu_magician01 == 13) {
 			mes "I can no longer see the traces of those that were pursuiting. I only see traces of the two.";
 			set tu_magician01, 14;
 			close;
@@ -9341,19 +9341,19 @@ moc_fild17.gat,213,358,0	script	Battle Traces#8	844,{
 
 moc_fild17.gat,228,274,0	script	Battle Traces#9	844,{
 
-	if(BaseClass == Job_Thief){
-		if(tu_thief01 < 14){
+	if (BaseClass == Job_Thief) {
+		if (tu_thief01 < 14) {
 			mes "There are traces of a small battle.";
 			close;
-		} else if(tu_thief01 == 14){
+		} else if(tu_thief01 == 14) {
 			mes "There seems to have been a small battle. Traces that come from the north and some from the southeast are mixed together.";
 			next;
 			mes "Then the traces lead to the east. More may be found by investigating more.";
 			set tu_thief01, 15;
 			close;
-		} else if(tu_thief01 == 15){
+		} else if(tu_thief01 == 15) {
 			set @seek_tm, rand(1,10);
-			if(@seek_tm == 7){
+			if (@seek_tm == 7) {
 				mes "I found a piece of cloth with blood on it like before.";
 				next;
 				mes "- You discovered a piece of cloth with blood -";
@@ -9367,19 +9367,19 @@ moc_fild17.gat,228,274,0	script	Battle Traces#9	844,{
 			mes "There are no other peculiar traces other than one leading west.";
 			close;
 		}
-	} else if(BaseClass == Job_Mage){
-		if(tu_magician01 < 14){
+	} else if(BaseClass == Job_Mage) {
+		if (tu_magician01 < 14) {
 			mes "There are traces of a small battle.";
 			close;
-		} else if(tu_magician01 == 14){
+		} else if(tu_magician01 == 14) {
 			mes "There seems to have been a small battle. Traces that come from the north and some from the southeast are mixed together.";
 			next;
 			mes "Then the traces lead to the east. More may be found by investigating more.";
 			set tu_magician01, 15;
 			close;
-		} else if(tu_magician01 == 15){
+		} else if(tu_magician01 == 15) {
 			set @seek_tm1, rand(1,10);
-			if(@seek_tm1 == 7){
+			if (@seek_tm1 == 7) {
 				mes "I found a piece of cloth with blood on it like before.";
 				next;
 				mes "- You discovered a piece of cloth with blood -";
@@ -9400,11 +9400,11 @@ moc_fild17.gat,228,274,0	script	Battle Traces#9	844,{
 
 moc_fild17.gat,34,292,0	script	Battle Traces#10	844,{
 
-	if(BaseClass == Job_Thief){
-		if(tu_thief01 < 16){
+	if (BaseClass == Job_Thief) {
+		if (tu_thief01 < 16) {
 			mes "A large group of people seem to have gone by.";
 			close;
-		} else if(tu_thief01 == 16){
+		} else if(tu_thief01 == 16) {
 			mes "Traces lead from the east. Ones of the pursuer and the one being pursued have become similar. The gap in between must be decreasing.";
 			set tu_thief01, 17;
 			close;
@@ -9412,11 +9412,11 @@ moc_fild17.gat,34,292,0	script	Battle Traces#10	844,{
 			mes "There are traces leading to the east.";
 			close;
 		}
-	} else if(BaseClass == Job_Mage){
-		if(tu_magician01 < 16){
+	} else if(BaseClass == Job_Mage) {
+		if (tu_magician01 < 16) {
 			mes "A large group of people seem to have gone by.";
 			close;
-		} else if(tu_magician01 == 16){
+		} else if(tu_magician01 == 16) {
 			mes "Traces lead from the east. Ones of the pursuer and the one being pursued have become similar. The gap in between must be decreasing.";
 			set tu_magician01, 17;
 			close;
@@ -9431,11 +9431,11 @@ moc_fild17.gat,34,292,0	script	Battle Traces#10	844,{
 
 moc_fild18.gat,346,296,0	script	Battle Traces#11	844,{
 
-	if(BaseClass == Job_Thief){
-		if(tu_thief01 < 17){
+	if (BaseClass == Job_Thief) {
+		if (tu_thief01 < 17) {
 			mes "A large group of people seem to have gone by.";
 			close;
-		} else if(tu_thief01 == 17){
+		} else if(tu_thief01 == 17) {
 			mes "Traces of a pursuit continues. Someone must have been injured seeing there is blood.";
 			set tu_thief01, 18;
 			close;
@@ -9443,11 +9443,11 @@ moc_fild18.gat,346,296,0	script	Battle Traces#11	844,{
 			mes "There is blood here and there so other traces should be easy to find.";
 			close;
 		}
-	} else if(BaseClass == Job_Mage){
-		if(tu_magician01 < 17){
+	} else if(BaseClass == Job_Mage) {
+		if (tu_magician01 < 17) {
 			mes "A large group of people seem to have gone by.";
 			close;
-		} else if(tu_magician01 == 17){
+		} else if(tu_magician01 == 17) {
 			mes "Traces of a pursuit continues. Someone must have been injured seeing there is blood.";
 			set tu_magician01, 18;
 			close;
@@ -9462,11 +9462,11 @@ moc_fild18.gat,346,296,0	script	Battle Traces#11	844,{
 
 moc_fild18.gat,309,257,0	script	Battle Traces#12	844,{
 
-	if(BaseClass == Job_Thief){
-		if(tu_thief01 < 18){
+	if (BaseClass == Job_Thief) {
+		if (tu_thief01 < 18) {
 			mes "A large group of people seem to have gone by.";
 			close;
-		} else if(tu_thief01 == 18){
+		} else if(tu_thief01 == 18) {
 			mes "Traces lead to the north. Ones of the pursuer and the one being pursued have become similar. The gap in between must be decreasing.";
 			set tu_thief01, 19;
 			close;
@@ -9474,11 +9474,11 @@ moc_fild18.gat,309,257,0	script	Battle Traces#12	844,{
 			mes "There are traces leading to the north.";
 			close;
 		}
-	} else if(BaseClass == Job_Mage){
-		if(tu_magician01 < 18){
+	} else if(BaseClass == Job_Mage) {
+		if (tu_magician01 < 18) {
 			mes "A large group of people seem to have gone by.";
 			close;
-		} else if(tu_magician01 == 18){
+		} else if(tu_magician01 == 18) {
 			mes "Traces lead to the north. Ones of the pursuer and the one being pursued have become similar. The gap in between must be decreasing.";
 			set tu_magician01, 19;
 			close;
@@ -9493,11 +9493,11 @@ moc_fild18.gat,309,257,0	script	Battle Traces#12	844,{
 
 moc_fild18.gat,177,333,0	script	Battle Traces#13	844,{
 
-	if(BaseClass == Job_Thief){
-		if(tu_thief01 < 19){
+	if (BaseClass == Job_Thief) {
+		if (tu_thief01 < 19) {
 			mes "A large group of people seem to have gone by.";
 			close;
-		} else if(tu_thief01 == 19){
+		} else if(tu_thief01 == 19) {
 			mes "Traces leading to the north have changed direction to the southwest. More pursuers seem to have joined and stalled the group.";
 			set tu_thief01, 20;
 			close;
@@ -9505,11 +9505,11 @@ moc_fild18.gat,177,333,0	script	Battle Traces#13	844,{
 			mes "Within the traces of the battle, there are some leading to the southwest.";
 			close;
 		}
-	} else if(BaseClass == Job_Mage){
-		if(tu_magician01 < 19){
+	} else if(BaseClass == Job_Mage) {
+		if (tu_magician01 < 19) {
 			mes "A large group of people seem to have gone by.";
 			close;
-		} else if(tu_magician01 == 19){
+		} else if(tu_magician01 == 19) {
 			mes "Traces leading to the north have changed direction to the southwest. More pursuers seem to have joined and stalled the group.";
 			set tu_magician01, 20;
 			close;
@@ -9524,11 +9524,11 @@ moc_fild18.gat,177,333,0	script	Battle Traces#13	844,{
 
 moc_fild18.gat,111,303,0	script	Battle Traces#14	844,{
 
-	if(BaseClass == Job_Thief){
-		if(tu_thief01 < 20){
+	if (BaseClass == Job_Thief) {
+		if (tu_thief01 < 20) {
 			mes "A large group of people seem to have gone by.";
 			close;
-		} else if(tu_thief01 == 20){
+		} else if(tu_thief01 == 20) {
 			mes "Traces lead to the south. More pursuers have joined from the north making the traces clearer.";
 			set tu_thief01, 21;
 			close;
@@ -9536,11 +9536,11 @@ moc_fild18.gat,111,303,0	script	Battle Traces#14	844,{
 			mes "Traces lead to the south.";
 			close;
 		}
-	} else if(BaseClass == Job_Mage){
-		if(tu_magician01 < 20){
+	} else if(BaseClass == Job_Mage) {
+		if (tu_magician01 < 20) {
 			mes "A large group of people seem to have gone by.";
 			close;
-		} else if(tu_magician01 == 20){
+		} else if(tu_magician01 == 20) {
 			mes "Traces lead to the south. More pursuers have joined from the north making the traces clearer.";
 			set tu_magician01, 21;
 			close;
@@ -9555,14 +9555,14 @@ moc_fild18.gat,111,303,0	script	Battle Traces#14	844,{
 
 moc_fild18.gat,109,197,0	script	Battle Traces#15	844,{
 
-	if(BaseClass == Job_Thief){
-		if(tu_thief01 < 21){
+	if (BaseClass == Job_Thief) {
+		if (tu_thief01 < 21) {
 			mes "A large group of people seem to have gone by.";
 			close;
-		} else if(tu_thief01 == 21){
+		} else if(tu_thief01 == 21) {
 			mes "There are traces of a harsh battle. Poison seems to have been used here and there.";
 			next;
-			switch(select("Continue following the traces.", "Look around a little more.")){
+			switch(select("Continue following the traces.", "Look around a little more.")) {
 			case 1:
 				mes "Nothing special was found.";
 				close;
@@ -9573,14 +9573,14 @@ moc_fild18.gat,109,197,0	script	Battle Traces#15	844,{
 				close;
 				break;
 			}
-		} else if(tu_thief01 == 22){
+		} else if(tu_thief01 == 22) {
 			set @trap_tm, rand(1,3);
-			if(@trap_tm == 3){
+			if (@trap_tm == 3) {
 				mes "A peculiar looking trap is found. How about pouring some Green Potion on it like before?";
 				next;
-				switch(select("Pour Green Potion.", "Do something else.")){
+				switch(select("Pour Green Potion.", "Do something else.")) {
 				case 1:
-					if(countitem(506) < 1){	// Green_Potion
+					if (countitem(506) < 1) {	// Green_Potion
 						mes "...........";
 						mes "No Green Potion is in possession.";
 						close;
@@ -9603,15 +9603,15 @@ moc_fild18.gat,109,197,0	script	Battle Traces#15	844,{
 				percentheal -30,0;
 				close;
 			}
-		} else if(tu_thief01 == 23){
-			if(countitem(511) > 0 || countitem(716) > 0){	// Green_Herb || Red_Gemstone
-				if(countitem(511) > 0 && countitem(716) > 0){	// Green_Herb && Red_Gemstone
+		} else if(tu_thief01 == 23) {
+			if (countitem(511) > 0 || countitem(716) > 0) {	// Green_Herb || Red_Gemstone
+				if (countitem(511) > 0 && countitem(716) > 0) {	// Green_Herb && Red_Gemstone
 					mes "Make powder out of Green Herb and sprinkle it. When placing a Red Gemstone on the trap, it glows and disappears. The trap is dismantled.";
 					delitem 511, 1;
 					delitem 716, 1;
 					set tu_thief01, 24;
 					close;
-				} else if(countitem(511) > 0){	// Green_Herb	
+				} else if(countitem(511) > 0) {	// Green_Herb	
 					mes "Make powder out of Green Herb and sprinkle it. Nothing happens. It may need some other catalyst.";
 					close;
 				} else {
@@ -9622,7 +9622,7 @@ moc_fild18.gat,109,197,0	script	Battle Traces#15	844,{
 				mes "Seems to need some other catalyst.";
 				close;
 			}
-		} else if(tu_thief01 == 24){
+		} else if(tu_thief01 == 24) {
 			mes "In front of the dismantled trap, a piece of cloth soaked in blood is found before is there.";
 			next;
 			mes "Found 'Blood Stained Cloth'.";
@@ -9632,14 +9632,14 @@ moc_fild18.gat,109,197,0	script	Battle Traces#15	844,{
 			mes "There seem to be no other Traps. Traces lead to the south.";
 			close;
 		}
-	} else if(BaseClass == Job_Mage){
-		if(tu_magician01 < 21){
+	} else if(BaseClass == Job_Mage) {
+		if (tu_magician01 < 21) {
 			mes "A large group of people seem to have gone by.";
 			close;
-		} else if(tu_magician01 == 21){
+		} else if(tu_magician01 == 21) {
 			mes "There are traces of a harsh battle. Poison seems to have been used here and there.";
 			next;
-			switch(select("Continue following the traces.", "Look around a little more.")){
+			switch(select("Continue following the traces.", "Look around a little more.")) {
 			case 1:
 				mes "Nothing special was found.";
 				close;
@@ -9650,14 +9650,14 @@ moc_fild18.gat,109,197,0	script	Battle Traces#15	844,{
 				close;
 				break;
 			}
-		} else if(tu_magician01 == 22){
+		} else if(tu_magician01 == 22) {
 			set @trap_tm, rand(1,3);
-			if(@trap_tm == 3){
+			if (@trap_tm == 3) {
 				mes "A peculiar looking trap is found. How about pouring some Green Potion on it like before?";
 				next;
-				switch(select("Pour Green Potion.", "Do something else.")){
+				switch(select("Pour Green Potion.", "Do something else.")) {
 				case 1:
-					if(countitem(506) < 1){	// Green_Potion
+					if (countitem(506) < 1) {	// Green_Potion
 						mes "...........";
 						mes "No Green Potion is in possession.";
 						close;
@@ -9680,15 +9680,15 @@ moc_fild18.gat,109,197,0	script	Battle Traces#15	844,{
 			percentheal -30,0;
 			close;
 		}
-		} else if(tu_magician01 == 23){
-			if(countitem(511) > 0 || countitem(716) > 0){	// Green_Herb || Red_Gemstone
-				if(countitem(511) > 0 && countitem(716) > 0){	// Green_Herb && Red_Gemstone
+		} else if(tu_magician01 == 23) {
+			if (countitem(511) > 0 || countitem(716) > 0) {	// Green_Herb || Red_Gemstone
+				if (countitem(511) > 0 && countitem(716) > 0) {	// Green_Herb && Red_Gemstone
 					mes "Make powder out of Green Herb and sprinkle it. When placing a Red Gemstone on the trap, it glows and disappears. The trap is dismantled.";
 					delitem 511, 1;
 					delitem 716, 1;
 					set tu_magician01, 24;
 					close;
-				} else if(countitem(511) > 0){	// Green_Herb
+				} else if(countitem(511) > 0) {	// Green_Herb
 					mes "Make powder out of Green Herb and sprinkle it. Nothing happens. It may need some other catalyst.";
 					close;
 				} else {
@@ -9699,7 +9699,7 @@ moc_fild18.gat,109,197,0	script	Battle Traces#15	844,{
 				mes "Seems to need some other catalyst.";
 				close;
 			}
-		} else if(tu_magician01 == 24){
+		} else if(tu_magician01 == 24) {
 			mes "In front of the dismantled trap, a piece of cloth soaked in blood is found before is there.";
 			next;
 			mes "Found 'Blood Stained Cloth'.";
@@ -9717,11 +9717,11 @@ moc_fild18.gat,109,197,0	script	Battle Traces#15	844,{
 
 moc_fild18.gat,156,96,0	script	Battle Traces#16	844,{
 
-	if(BaseClass == Job_Thief){
-		if(tu_thief01 < 25){
+	if (BaseClass == Job_Thief) {
+		if (tu_thief01 < 25) {
 			mes "A large group of people seem to have gone by.";
 			close;
-		} else if(tu_thief01 == 25){
+		} else if(tu_thief01 == 25) {
 			mes "Traces lead to the end of the cliff. No other traces can be found.";
 			next;
 			mes "...............";
@@ -9735,11 +9735,11 @@ moc_fild18.gat,156,96,0	script	Battle Traces#16	844,{
 			mes "No more traces other than ones from the north.";
 			close;
 		}
-	} else if(BaseClass == Job_Mage){
-		if(tu_magician01 < 25){
+	} else if(BaseClass == Job_Mage) {
+		if (tu_magician01 < 25) {
 			mes "A large group of people seem to have gone by.";
 			close;
-		} else if(tu_magician01 == 25){
+		} else if(tu_magician01 == 25) {
 			mes "Traces lead to the end of the cliff. No other traces can be found.";
 			next;
 			mes "...............";

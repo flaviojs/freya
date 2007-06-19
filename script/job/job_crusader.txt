@@ -205,7 +205,7 @@ prt_castle.gat,45,169,5	script	Senior Crusader	752,{
             close;
         }
         set @val,0;
-        while ( countitem(@item[@val]) > 9 && val < 4 ) {
+        while(countitem(@item[@val]) > 9 && val < 4) {
             set @val,@val+1;
         }
         if (@val==4) {

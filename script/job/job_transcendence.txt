@@ -355,7 +355,7 @@ valkyrie.gat,44,33,5	script	Teleporter	124,{
 	mes "Honorable one,";
 	mes "which place do you wish to go?";
 	next;
-	switch (select("Prontera","Morroc","Payon","Geffen","Alberta","Izlude","Al De Baran","Comodo","Juno")) {
+	switch(select("Prontera","Morroc","Payon","Geffen","Alberta","Izlude","Al De Baran","Comodo","Juno")) {
 		case 1: savepoint "prontera.gat",116,72; 	break;
 		case 2: savepoint "morocc.gat",156,46; 		break;
 		case 3: savepoint "payon.gat",69,100; 		break;

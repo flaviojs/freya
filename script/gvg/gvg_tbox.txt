@@ -31,9 +31,9 @@
 		killmonster getarg(0),"#TresureBox::OnKilled";
 		set '@num1,2+(getcastledata(getarg(0),2)+5)/10;
 		set '@num2,2+getcastledata(getarg(0),2)/10;
-		if('@num1 > 12)
+		if ('@num1 > 12)
 			set '@num1,12;
-		if('@num2 > 12)
+		if ('@num2 > 12)
 			set '@num2,12;
 		areamonster getarg(0),getarg(1),getarg(2),getarg(3),getarg(4),"Treasure box",getarg(5),'@num1,"#TresureBox::OnKilled";
 		areamonster getarg(0),getarg(1),getarg(2),getarg(3),getarg(4),"Treasure box",getarg(6),'@num2,"#TresureBox::OnKilled";
@@ -71,12 +71,12 @@ OnKilled:
 //----- The debugging mode only for GMs -----
 //===========================================================
 //prontera.gat,159,208,0	script	TBOX-Control	111,{
-//	if(getgmlevel(0))==0)
+//	if (getgmlevel(0))==0)
 //		end;
 //	mes "[TBOX-Control^ff0000(GMs only)^000000]";
 //	mes "Would you generate Treasure Box?";
 //	next;
-//	if(select("Yes","No")==2)
+//	if (select("Yes","No")==2)
 //		close;
 //	donpcevent "#TresureBox::OnClock0000";
 //	mes "[TBOX-Control^ff0000(GMs only)^000000]";

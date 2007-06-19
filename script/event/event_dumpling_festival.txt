@@ -43,9 +43,9 @@ payon.gat,93,81,4	script	Exorcist Master Fahae	834,{
 	mes "(Type in 0 to cancel)";
 	next;
 	input @input;
-	if(@input==0) close;
-	if(@input>5) goto L_SORRY;
-	if(Zeny< @input*20000) goto L_NOZENY;
+	if (@input==0) close;
+	if (@input>5) goto L_SORRY;
+	if (Zeny< @input*20000) goto L_NOZENY;
 	set Zeny,Zeny-20000*@input;
 	getitem 682,@input;
 	mes "[Exorcist Master Fahae]";
@@ -70,9 +70,9 @@ M_HERB:
 	mes "(Type in 0 to cancel)";
 	next;
 	input @input;
-	if(@input==0) close;
-	if(@input>5) goto L_SORRY;
-	if(Zeny< @input*10000) goto L_NOZENY;
+	if (@input==0) close;
+	if (@input>5) goto L_SORRY;
+	if (Zeny< @input*10000) goto L_NOZENY;
 	set Zeny,Zeny-10000*@input;
 	getitem 683,@input;
 	mes "[Exorcist Master Fahae]";

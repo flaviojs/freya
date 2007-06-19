@@ -187,20 +187,20 @@ lhz_in02.gat,110,283,5	script	Cool Event Manager	853,{
 lhz_in02.gat,36,274,3	script	Cool Event Staff#02	831,{
 
 	callfunc "F_ClearGarbageVariables";
-	if($dts == 0){
+	if ($dts == 0) {
 		set $dts,$dts|(1<<0);				// Sets NPCs to election mode if first time running
 		set $dts,$dts|(1<<3);
 	}
-	if($dts&(1<<1) && $dts&(1<<2) || $dts&(1<<0) && $dts&(1<<1) || $dts&(1<<0) && $dts&(1<<2)){
-		if($dts&(1<<0)) set $dts,$dts&~(1<<0);
-		if($dts&(1<<1)) set $dts,$dts&~(1<<1);
-		if($dts&(1<<2)) set $dts,$dts&~(1<<2);
+	if ($dts&(1<<1) && $dts&(1<<2) || $dts&(1<<0) && $dts&(1<<1) || $dts&(1<<0) && $dts&(1<<2)) {
+		if ($dts&(1<<0)) set $dts,$dts&~(1<<0);
+		if ($dts&(1<<1)) set $dts,$dts&~(1<<1);
+		if ($dts&(1<<2)) set $dts,$dts&~(1<<2);
 		set $dts,$dts|(1<<0);
 	}
-	if($dts&(1<<4) && $dts&(1<<5) || $dts&(1<<3) && $dts&(1<<4) || $dts&(1<<3) && $dts&(1<<5)){
-		if($dts&(1<<3)) set $dts,$dts&~(1<<3);
-		if($dts&(1<<4)) set $dts,$dts&~(1<<4);
-		if($dts&(1<<5)) set $dts,$dts&~(1<<5);
+	if ($dts&(1<<4) && $dts&(1<<5) || $dts&(1<<3) && $dts&(1<<4) || $dts&(1<<3) && $dts&(1<<5)) {
+		if ($dts&(1<<3)) set $dts,$dts&~(1<<3);
+		if ($dts&(1<<4)) set $dts,$dts&~(1<<4);
+		if ($dts&(1<<5)) set $dts,$dts&~(1<<5);
 		set $dts,$dts|(1<<3);
 	}
 	mes "[Saera]";
@@ -209,7 +209,7 @@ lhz_in02.gat,36,274,3	script	Cool Event Staff#02	831,{
 	mes "of Cool Event Corporation";
 	mes "How may I help you today?";
 	next;
-	if(getgmlevel()>=40){ //Unofficial Text, GM-configurable settings for Event (GM level above 40 required)
+	if (getgmlevel()>=40) { //Unofficial Text, GM-configurable settings for Event (GM level above 40 required)
 		mes "[Saera]";
 		mes "Why, I didn't even";
 		mes "notice you there,";
@@ -253,13 +253,13 @@ lhz_in02.gat,36,274,3	script	Cool Event Staff#02	831,{
 		mes "selecting our valued customers";
 		mes "to choose the company they want.";
 		next;
-		if((dtseligible == 0 || dtseligible == 3) && baselevel >= 60 && MISC_QUEST&128 == 0) set dtseligible,1;
+		if ((dtseligible == 0 || dtseligible == 3) && baselevel >= 60 && MISC_QUEST&128 == 0) set dtseligible,1;
 		//Clear previous var of dtseligible,3 being tried for eligibility already
-		if(dtseligible != $dtsday && baselevel >= 60 && MISC_QUEST&128){
+		if (dtseligible != $dtsday && baselevel >= 60 && MISC_QUEST&128) {
 			set MISC_QUEST,MISC_QUEST&~128;
 			set dtseligible,1;
 		}
-		switch(dtseligible){
+		switch(dtseligible) {
 			default:
 				mes "[Saera]";
 				mes "Only a limited number of";
@@ -297,26 +297,26 @@ lhz_in02.gat,36,274,3	script	Cool Event Staff#02	831,{
 	Lfixvote:							//Fix Vote
 		mes "[Saera]";
 		mes "Umm, sure..";
-		if($dtsv > 0) mes "Cool Event Corp is currently winning by "+$dtsv+" votes.";
-		if($dtsv < 0) mes "Kafra Corp is currently winning by "+$dtsv*-1+" votes.";
-		if($dtsv == 0) mes "The vote is currently tied.";
+		if ($dtsv > 0) mes "Cool Event Corp is currently winning by "+$dtsv+" votes.";
+		if ($dtsv < 0) mes "Kafra Corp is currently winning by "+$dtsv*-1+" votes.";
+		if ($dtsv == 0) mes "The vote is currently tied.";
 		mes "To who would you like to give votes to?";
 		next;
 		menu "Kafra",-,"Cool Event Corp",Lfixcool;
 
 	Lfixkafra:							//Fixing vote for Kafra
 		mes "[Saera]";
-		if($dtsv > 0) mes "Cool Event Corp is currently winning by "+$dtsv+" votes.";
-		if($dtsv < 0) mes "Kafra Corp is currently winning by "+$dtsv*-1+" votes.";	//multiplied by -1 because var is negative
-		if($dtsv == 0) mes "The vote is currently tied.";
+		if ($dtsv > 0) mes "Cool Event Corp is currently winning by "+$dtsv+" votes.";
+		if ($dtsv < 0) mes "Kafra Corp is currently winning by "+$dtsv*-1+" votes.";	//multiplied by -1 because var is negative
+		if ($dtsv == 0) mes "The vote is currently tied.";
 		mes "Please input the amount you wish to give to Kafra Corp";
 		input @dtstemp;					//Set buffer for Kafra vote
 		next;
 		mes "[Saera]";
 		mes "You inputted "+@dtstemp+" for Kafra";
-		if($dtsv > 0) mes "Cool Event Corp is currently winning by "+$dtsv+" votes.";
-		if($dtsv < 0) mes "Kafra Corp is currently winning by "+$dtsv*-1+" votes.";
-		if($dtsv == 0) mes "The vote is currently tied.";
+		if ($dtsv > 0) mes "Cool Event Corp is currently winning by "+$dtsv+" votes.";
+		if ($dtsv < 0) mes "Kafra Corp is currently winning by "+$dtsv*-1+" votes.";
+		if ($dtsv == 0) mes "The vote is currently tied.";
 		mes "Are you sure you would like to";
 		mes "make these changes?";
 		next;
@@ -325,25 +325,25 @@ lhz_in02.gat,36,274,3	script	Cool Event Staff#02	831,{
 		mes "[Saera]";
 		mes "Okay, you fixed the vote";
 		mes "of Kafra Corp.";
-		if($dtsv > 0) mes "Cool Event Corp is currently winning by "+$dtsv+" votes.";
-		if($dtsv < 0) mes "Kafra Corp is currently winning by "+$dtsv*-1+" votes.";
-		if($dtsv == 0) mes "The vote is currently tied.";
+		if ($dtsv > 0) mes "Cool Event Corp is currently winning by "+$dtsv+" votes.";
+		if ($dtsv < 0) mes "Kafra Corp is currently winning by "+$dtsv*-1+" votes.";
+		if ($dtsv == 0) mes "The vote is currently tied.";
 		close;
 
 	Lfixcool:						//Fixing vote for cool corp
 		mes "[Saera]";
 		mes "Let me find the papers...";
-		if($dtsv > 0) mes "Cool Event Corp is currently winning by "+$dtsv+" votes.";
-		if($dtsv < 0) mes "Kafra Corp is currently winning by "+$dtsv*-1+" votes.";
-		if($dtsv == 0) mes "The vote is currently tied.";
+		if ($dtsv > 0) mes "Cool Event Corp is currently winning by "+$dtsv+" votes.";
+		if ($dtsv < 0) mes "Kafra Corp is currently winning by "+$dtsv*-1+" votes.";
+		if ($dtsv == 0) mes "The vote is currently tied.";
 		mes "Please input new vote for Cool Event Corp";
 		input @dtstemp;					//Set buffer for Cool vote
 		next;
 		mes "[Saera]";
 		mes "You inputted "+@dtstemp+" for Cool Event Corp";
-		if($dtsv > 0) mes "Cool Event Corp is currently winning by "+$dtsv+" votes.";
-		if($dtsv < 0) mes "Kafra Corp is currently winning by "+$dtsv*-1+" votes.";
-		if($dtsv == 0) mes "The vote is currently tied.";
+		if ($dtsv > 0) mes "Cool Event Corp is currently winning by "+$dtsv+" votes.";
+		if ($dtsv < 0) mes "Kafra Corp is currently winning by "+$dtsv*-1+" votes.";
+		if ($dtsv == 0) mes "The vote is currently tied.";
 		mes "Are you sure you would like to";
 		mes "make these changes?";
 		next;
@@ -352,9 +352,9 @@ lhz_in02.gat,36,274,3	script	Cool Event Staff#02	831,{
 		mes "[Saera]";
 		mes "Okay, you fixed the vote";
 		mes "of Cool Event Corp.";
-		if($dtsv > 0) mes "Cool Event Corp is currently winning by "+$dtsv+" votes.";
-		if($dtsv < 0) mes "Kafra Corp is currently winning by "+$dtsv*-1+" votes.";
-		if($dtsv == 0) mes "The vote is currently tied.";
+		if ($dtsv > 0) mes "Cool Event Corp is currently winning by "+$dtsv+" votes.";
+		if ($dtsv < 0) mes "Kafra Corp is currently winning by "+$dtsv*-1+" votes.";
+		if ($dtsv == 0) mes "The vote is currently tied.";
 		close;
 
 	Lsettele:							//Set current DTS tele
@@ -363,19 +363,19 @@ lhz_in02.gat,36,274,3	script	Cool Event Staff#02	831,{
 		mes "Cool for Cool Event Corp-enabled";
 		mes "warp ,Election for election mode,";
 		mes "or Cancel to cancel.";
-		if($dts&(1<<0)) mes "The election is currently in election mode.";
-		if($dts&(1<<1)) mes "Cool Event Corp is currently the DTS warper.";
-		if($dts&(1<<2)) mes "Kafra Corp is currently the DTS warper.";
+		if ($dts&(1<<0)) mes "The election is currently in election mode.";
+		if ($dts&(1<<1)) mes "Cool Event Corp is currently the DTS warper.";
+		if ($dts&(1<<2)) mes "Kafra Corp is currently the DTS warper.";
 		next;
 		input @dtstemps$;					//Typed in choices to prevent mistakes
 		mes "Let me find the papers...";
 		next;
-		if(@dtstemps$ == "Election" || @dtstemps$ == "election"){
-			if($dts&(1<<1)){
+		if (@dtstemps$ == "Election" || @dtstemps$ == "election") {
+			if ($dts&(1<<1)) {
 				set $dts,$dts&~(1<<1);			//Removes previous winner
 				set $dts,$dts|(1<<0);			//Changes status to election
 			}
-			if($dts&(1<<2)){
+			if ($dts&(1<<2)) {
 				set $dts,$dts&~(1<<2);
 				set $dts,$dts|(1<<0);
 			}
@@ -383,12 +383,12 @@ lhz_in02.gat,36,274,3	script	Cool Event Staff#02	831,{
 			mes "Set to election mode.";
 			close;
 		}
-		if(@dtstemps$ == "Cool" || @dtstemps$ == "cool"){
-			if($dts&(1<<0)){
+		if (@dtstemps$ == "Cool" || @dtstemps$ == "cool") {
+			if ($dts&(1<<0)) {
 				set $dts,$dts&~(1<<0);
 				set $dts,$dts|(1<<1);
 			}
-			if($dts&(1<<2)){
+			if ($dts&(1<<2)) {
 				set $dts,$dts&~(1<<2);
 				set $dts,$dts|(1<<1);
 			}
@@ -396,12 +396,12 @@ lhz_in02.gat,36,274,3	script	Cool Event Staff#02	831,{
 			mes "Cool Event Corp. is now the DTS warper.";
 			close;
 		}
-		if(@dtstemps$ == "Kafra" || @dtstemps$ == "kafra"){
-			if($dts&(1<<1)){
+		if (@dtstemps$ == "Kafra" || @dtstemps$ == "kafra") {
+			if ($dts&(1<<1)) {
 				set $dts,$dts&~(1<<1);
 				set $dts,$dts|(1<<2);
 			}
-			if($dts&(1<<0)){
+			if ($dts&(1<<0)) {
 				set $dts,$dts&~(1<<0);
 				set $dts,$dts|(1<<2);
 			}
@@ -409,7 +409,7 @@ lhz_in02.gat,36,274,3	script	Cool Event Staff#02	831,{
 			mes "Kafra Corp. is now the DTS warper.";
 			close;
 		}
-		if(@dtstemps$ == "Cancel" || @dtstemps$ == "cancel") goto Lnothx;
+		if (@dtstemps$ == "Cancel" || @dtstemps$ == "cancel") goto Lnothx;
 		mes "[Saera]";
 		mes "Please input a correct name for the election";
 		next;
@@ -421,20 +421,20 @@ lhz_in02.gat,36,274,3	script	Cool Event Staff#02	831,{
 		mes "Cool for Cool for election records to show Cool Event Corp,";
 		mes "None for no winner in election records,";
 		mes "or Cancel to cancel.";
-		if($dts&(1<<3)) mes "There was no previous winner";
-		if($dts&(1<<4)) mes "Cool Event Corp was the last winner";
-		if($dts&(1<<5)) mes "Kafra Corp was the last winner";
+		if ($dts&(1<<3)) mes "There was no previous winner";
+		if ($dts&(1<<4)) mes "Cool Event Corp was the last winner";
+		if ($dts&(1<<5)) mes "Kafra Corp was the last winner";
 		next;
 		input @dtstemps$;
 		mes "[Saera]";
 		mes "Let me find the papers...";
 		next;
-		if(@dtstemps$ == "None" || @dtstemps$ == "none"){
-			if($dts&(1<<4)){
+		if (@dtstemps$ == "None" || @dtstemps$ == "none") {
+			if ($dts&(1<<4)) {
 				set $dts,$dts&~(1<<4);			//removes last winner
 				set $dts,$dts|(1<<3);			//sets current last winner
 			}
-			if($dts&(1<<5)){
+			if ($dts&(1<<5)) {
 				set $dts,$dts&~(1<<5);
 				set $dts,$dts|(1<<3);
 			}
@@ -442,12 +442,12 @@ lhz_in02.gat,36,274,3	script	Cool Event Staff#02	831,{
 			mes "Set records to show no previous winner.";
 			close;
 		}
-		if(@dtstemps$ == "Cool" || @dtstemps$ == "cool"){
-			if($dts&(1<<3)){
+		if (@dtstemps$ == "Cool" || @dtstemps$ == "cool") {
+			if ($dts&(1<<3)) {
 				set $dts,$dts&~(1<<3);
 				set $dts,$dts|(1<<4);
 			}
-			if($dts&(1<<5)){
+			if ($dts&(1<<5)) {
 				set $dts,$dts&~(1<<5);
 				set $dts,$dts|(1<<4);
 			}
@@ -455,12 +455,12 @@ lhz_in02.gat,36,274,3	script	Cool Event Staff#02	831,{
 			mes "Cool Event Corp. is now the previous winner.";
 			close;
 		}
-		if(@dtstemps$ == "Kafra" || @dtstemps$ == "kafra"){
-			if($dts&(1<<3)){
+		if (@dtstemps$ == "Kafra" || @dtstemps$ == "kafra") {
+			if ($dts&(1<<3)) {
 				set $dts,$dts&~(1<<3);
 				set $dts,$dts|(1<<5);
 			}
-			if($dts&(1<<4)){
+			if ($dts&(1<<4)) {
 				set $dts,$dts&~(1<<4);
 				set $dts,$dts|(1<<5);
 			}
@@ -468,7 +468,7 @@ lhz_in02.gat,36,274,3	script	Cool Event Staff#02	831,{
 			mes "Kafra Corp. is now the previous winner.";
 			close;
 		}
-		if(@dtstemps$ == "Cancel" || @dtstemps$ == "cancel") goto Lnothx;
+		if (@dtstemps$ == "Cancel" || @dtstemps$ == "cancel") goto Lnothx;
 		mes "[Saera]";
 		mes "Please input a correct name";
 		mes "for previous winner";
@@ -483,36 +483,36 @@ lhz_in02.gat,36,274,3	script	Cool Event Staff#02	831,{
 		menu "Yes",Lmanuvoteyes,"No",Lnothx;
 
 	Lmanuvoteyes:
-		if($dtsday<4 || $dtsday>=100) set $dtsday,4;
+		if ($dtsday<4 || $dtsday>=100) set $dtsday,4;
 		else set $dtsday,$dtsday+1;
-		if($dts&(1<<1) && $dts&(1<<2) || $dts&(1<<0) && $dts&(1<<1) || $dts&(1<<0) && $dts&(1<<2)){
-			if($dts&(1<<0)) set $dts,$dts&~(1<<0);
-			if($dts&(1<<1)) set $dts,$dts&~(1<<1);
-			if($dts&(1<<2)) set $dts,$dts&~(1<<2);
+		if ($dts&(1<<1) && $dts&(1<<2) || $dts&(1<<0) && $dts&(1<<1) || $dts&(1<<0) && $dts&(1<<2)) {
+			if ($dts&(1<<0)) set $dts,$dts&~(1<<0);
+			if ($dts&(1<<1)) set $dts,$dts&~(1<<1);
+			if ($dts&(1<<2)) set $dts,$dts&~(1<<2);
 			set $dts,$dts|(1<<0);
 		}
-		if($dts&(1<<4) && $dts&(1<<5) || $dts&(1<<3) && $dts&(1<<4) || $dts&(1<<3) && $dts&(1<<5)){
-			if($dts&(1<<3)) set $dts,$dts&~(1<<3);
-			if($dts&(1<<4)) set $dts,$dts&~(1<<4);
-			if($dts&(1<<5)) set $dts,$dts&~(1<<5);
+		if ($dts&(1<<4) && $dts&(1<<5) || $dts&(1<<3) && $dts&(1<<4) || $dts&(1<<3) && $dts&(1<<5)) {
+			if ($dts&(1<<3)) set $dts,$dts&~(1<<3);
+			if ($dts&(1<<4)) set $dts,$dts&~(1<<4);
+			if ($dts&(1<<5)) set $dts,$dts&~(1<<5);
 			set $dts,$dts|(1<<3);
 		}
-		if($dtsv == 0){
+		if ($dtsv == 0) {
 			set $@dtstemp,rand(1,2);
-			if($@dtstemp == 1) set $dtsv,$dtsv+100;
+			if ($@dtstemp == 1) set $dtsv,$dtsv+100;
 			else set $dtsv,$dtsv-100;
 		}
-		if($dtsv > 0){
-			if($dts&(1<<3)) set $dts,$dts&~(1<<3);			//removes last winner varialbes
-			if($dts&(1<<4)) set $dts,$dts&~(1<<4);
-			if($dts&(1<<5)) set $dts,$dts&~(1<<5);
-			if($dts&(1<<0)){
+		if ($dtsv > 0) {
+			if ($dts&(1<<3)) set $dts,$dts&~(1<<3);			//removes last winner varialbes
+			if ($dts&(1<<4)) set $dts,$dts&~(1<<4);
+			if ($dts&(1<<5)) set $dts,$dts&~(1<<5);
+			if ($dts&(1<<0)) {
 				set $dts,$dts&~(1<<0);				//removes winner variable
 				set $dts,$dts|(1<<3);				//sets last winner varialbe
 				set $dts,$dts|(1<<1);				//sets current winner variable
 			}
-			if($dts&(1<<1)) set $dts,$dts|(1<<4);
-			if($dts&(1<<2)){
+			if ($dts&(1<<1)) set $dts,$dts|(1<<4);
+			if ($dts&(1<<2)) {
 				set $dts,$dts&~(1<<2);
 				set $dts,$dts|(1<<1);
 				set $dts,$dts|(1<<5);
@@ -520,43 +520,43 @@ lhz_in02.gat,36,274,3	script	Cool Event Staff#02	831,{
 			set $dtsv,0;
 		}
 		else{
-			if($dts&(1<<3)) set $dts,$dts&~(1<<3);
-			if($dts&(1<<4)) set $dts,$dts&~(1<<4);
-			if($dts&(1<<5)) set $dts,$dts&~(1<<5);
-			if($dts&(1<<0)){
+			if ($dts&(1<<3)) set $dts,$dts&~(1<<3);
+			if ($dts&(1<<4)) set $dts,$dts&~(1<<4);
+			if ($dts&(1<<5)) set $dts,$dts&~(1<<5);
+			if ($dts&(1<<0)) {
 				set $dts,$dts&~(1<<0);
 				set $dts,$dts|(1<<2);
 				set $dts,$dts|(1<<3);
 			}
-			if($dts&(1<<1)){
+			if ($dts&(1<<1)) {
 				set $dts,$dts&~(1<<1);
 				set $dts,$dts|(1<<2);
 				set $dts,$dts|(1<<4);
 			}
-			if($dts&(1<<2)) set $dts,$dts|(1<<5);
+			if ($dts&(1<<2)) set $dts,$dts|(1<<5);
 			set $dtsv,0;
 		}
 		mes "[Saera]";
 		mes "Vote check run again.";
-		if($dts&(1<<0)) mes "The election is currently in election mode.";
-		if($dts&(1<<1)) mes "Cool Event Corp is currently the DTS warper.";
-		if($dts&(1<<2)) mes "Kafra Corp is currently the DTS warper.";
+		if ($dts&(1<<0)) mes "The election is currently in election mode.";
+		if ($dts&(1<<1)) mes "Cool Event Corp is currently the DTS warper.";
+		if ($dts&(1<<2)) mes "Kafra Corp is currently the DTS warper.";
 		close;
 }
 
 // Function for Voting Staff NPC
 function	script	F_DTSWarp	{
 	callfunc "F_ClearGarbageVariables"; //Clear outdated, unused variables
-	if($dts == 0){ 						//Sets NPCs to election mode if first time running
+	if ($dts == 0) { 						//Sets NPCs to election mode if first time running
 		set $dts,$dts|(1<<0);
 		set $dts,$dts|(1<<3);
 	}
-	if((dtseligible == 0 || dtseligible == 3) && baselevel >= 60 && MISC_QUEST&128 == 0) set dtseligible,1;	//Clear previous var of dtseligible,3 being tried for eligibility already
-	if(dtseligible != $dtsday && baselevel >= 60 && MISC_QUEST&128){
+	if ((dtseligible == 0 || dtseligible == 3) && baselevel >= 60 && MISC_QUEST&128 == 0) set dtseligible,1;	//Clear previous var of dtseligible,3 being tried for eligibility already
+	if (dtseligible != $dtsday && baselevel >= 60 && MISC_QUEST&128) {
 		set MISC_QUEST,MISC_QUEST&~128;
 		set dtseligible,1;
 	}
-	switch(getarg(0)){
+	switch(getarg(0)) {
 	case 0:
 		cutin "zonda_01",2;
 		mes "[Cool Event Corp. Voting Staff]";
@@ -568,7 +568,7 @@ function	script	F_DTSWarp	{
 		mes "the Dungeon Teleport Service!";
 		break;
 	case 1:
-		switch(getarg(1)){
+		switch(getarg(1)) {
 		case 0: cutin "kafra_06",2; break;			//Finding arguments to find which illust to use
 		case 1: cutin "kafra_05",2; break;			//Used Red hair "kafra_09" for black outfit kafra
 		case 2: cutin "kafra_04",2; break;			//because I couldn't find a suitable illust
@@ -593,7 +593,7 @@ function	script	F_DTSWarp	{
 	"Use Teleport Service",Lteleport,"Cancel",Lcancel;
 
 	Lelection: 							//Reason for election explanation
-		switch(getarg(0)){
+		switch(getarg(0)) {
 		case 0:
 			mes "[Cool Event Corp. Voting Staff]";
 			mes "Cool Event Corp. has been";
@@ -677,10 +677,10 @@ function	script	F_DTSWarp	{
 		goto Lend;
 
 	Lvote: //If you clicked you wanted to vote
-		if(dtseligible == 1) goto Leligible; 			//Var check if eligible
+		if (dtseligible == 1) goto Leligible; 			//Var check if eligible
 
 	Lnoteligible: 							//Text displayed if wanted to vote, but not eligible/voted
-		switch(getarg(0)){
+		switch(getarg(0)) {
 		case 0:
 			mes "[Cool Event Corp. Voting Staff]";
 			mes "I'm sorry, but you are not";
@@ -703,8 +703,8 @@ function	script	F_DTSWarp	{
 		goto Lend;
 
 	Leligible: 							//Text displayed if eligible to vote
-		if(MISC_QUEST&128 && $dtsday == dtseligible) goto Lnoteligible; //Var check if voted
-		switch(getarg(0)){
+		if (MISC_QUEST&128 && $dtsday == dtseligible) goto Lnoteligible; //Var check if voted
+		switch(getarg(0)) {
 		case 0:
 			mes "[Cool Event Corp. Voting Staff]"; 		//Unofficial text
 			mes "Checking your credentials, you";
@@ -728,7 +728,7 @@ function	script	F_DTSWarp	{
 		set $dtsv,$dtsv+1;				//Adds 1 to cool count
 		set MISC_QUEST,MISC_QUEST|128;				//Sets var so that you can't vote over and over
 		set dtseligible,$dtsday;
-		switch(getarg(0)){
+		switch(getarg(0)) {
 		case 0:
 			mes "[Cool Event Corp. Voting Staff]";
 			mes "Thank you for voting for us.";
@@ -750,7 +750,7 @@ function	script	F_DTSWarp	{
 		set $dtsv,$dtsv-1; 				//Adds 1 to kafra count
 		set MISC_QUEST,MISC_QUEST|128; 			//Sets var to prevent cheating
 		set dtseligible,$dtsday;
-		switch(getarg(0)){
+		switch(getarg(0)) {
 		case 0:
 			mes "[Cool Event Corp. Voting Staff]";		//Unofficial Text
 			mes "Thank you for your opinion.";
@@ -771,9 +771,9 @@ function	script	F_DTSWarp	{
 		goto Lend;						//End Unofficial text
 
 	Lteleport: 							//Selected Teleport
-		switch(getarg(0)){
+		switch(getarg(0)) {
 		case 0:
-			if($dts&(1<<0)){
+			if ($dts&(1<<0)) {
 				mes "[Cool Event Corp. Voting Staff]";
 				mes "I'm sorry, but the";
 				mes "Dungeon Teleport Service is";
@@ -783,7 +783,7 @@ function	script	F_DTSWarp	{
 				mes "Thank you and have a nice day.";
 				goto Lend;
 			}
-			if($dts&(1<<1)) goto Lteleenabled;
+			if ($dts&(1<<1)) goto Lteleenabled;
 			mes "[Cool Event Corp. Voting Staff]";		//Text if Kafra won DTS elect.
 			mes "I'm sorry, but Cool Event";
 			mes "Corp. does not currently offer";
@@ -793,7 +793,7 @@ function	script	F_DTSWarp	{
 			mes "next time, alright? Good day~";
 			break;
 		case 1:
-			if($dts&(1<<0)){
+			if ($dts&(1<<0)) {
 				mes "[Kafra Voting Staff]";
 				mes "Sorry, but the elections for";
 				mes "which Dungeon Teleport System";
@@ -802,7 +802,7 @@ function	script	F_DTSWarp	{
 				mes "vote until results are announced";
 				goto Lend;
 			}
-			if($dts&(1<<2)) goto Lteleenabled;
+			if ($dts&(1<<2)) goto Lteleenabled;
 			mes "[Kafra Voting Staff]";
 			mes "We're sorry, but Kafra Corp";
 			mes "doesn't currently offer the";
@@ -817,7 +817,7 @@ function	script	F_DTSWarp	{
 	Lteleenabled: 							//Shows DTS tele selections
 	cleararray @dtswarpmap$[0],"",getarraysize(@dtswarpmap$);
 	cleararray @dtswarp$[0],"",getarraysize(@dtswarp$);
-	switch(getarg(0)){
+	switch(getarg(0)) {
 	case 0:
 		mes "[Cool Event Corp. Voting Staff]";
 		mes "Please remember that we";
@@ -828,7 +828,7 @@ function	script	F_DTSWarp	{
 		setarray @dtswarpmap$[0],"Byalan, Level 4","Clock Tower, Basement 3";
 		setarray @dtswarp$[0],@dtswarpmap$[0]+" -> 4,000z",
 		@dtswarpmap$[1]+" -> 4,000z","Cancel";
-		if($dts&(1<<4)){ 
+		if ($dts&(1<<4)) { 
 			set @dtswarpmap$[2],"Glastheim Entrance";
 			setarray @dtswarp$[2],@dtswarpmap$[2]+" -> 4,000z","Cancel";
 		}
@@ -844,14 +844,14 @@ function	script	F_DTSWarp	{
 		setarray @dtswarpmap$[0],"Toy Factory, Level 2","Clock Tower, Level 3";
 		setarray @dtswarp$[0],@dtswarpmap$[0]+" -> 4,000z",
 		@dtswarpmap$[1]+" -> 4,000z","Cancel";
-		if($dts&(1<<5)){ 
+		if ($dts&(1<<5)) { 
 			set @dtswarpmap$[2],"Lava Dungeon, Level 2";
 			setarray @dtswarp$[2],@dtswarpmap$[2]+" -> 4,000z","Cancel";
 		}
 		break;
 	}
 	next;
-	switch(select(@dtswarp$[0],@dtswarp$[1],@dtswarp$[2],@dtswarp$[3])){
+	switch(select(@dtswarp$[0],@dtswarp$[1],@dtswarp$[2],@dtswarp$[3])) {
 		case 1:
 			set @num, 0;
 			break;
@@ -884,7 +884,7 @@ function	script	F_DTSWarp	{
 		cutin "", 255;
 		end;
 	Lnomoney:
-		switch(getarg(0)){
+		switch(getarg(0)) {
 		case 0:
 			mes "[Cool Event Corp. Voting Staff]"; 		//Unofficial Text
 			mes "Umm, apparently you don't have";
@@ -904,7 +904,7 @@ function	script	F_DTSWarp	{
 		goto Lend;						//End unofficial text
 
 	Lcancel: 							//Selected Cancel on first menu
-		switch(getarg(0)){
+		switch(getarg(0)) {
 		case 0:
 			mes "[Cool Event Corp. Voting Staff]";	
 			mes "Cool Event Corp. is always";
@@ -934,40 +934,40 @@ function	script	F_DTSWarp	{
 // Elections administration NPC (hidden)
 -	script	DTS_Admin	139,{
 	OnSun0100:					//Works only at 1am on sunday
-		if($dtsday<4 || $dtsday>=100) set $dtsday,4;
+		if ($dtsday<4 || $dtsday>=100) set $dtsday,4;
 		else set $dtsday,$dtsday+1;
-		if($dts == 0){
+		if ($dts == 0) {
 			set $dts,$dts|(1<<0);
 			set $dts,$dts|(1<<3);
 		}
-		if($dts&(1<<1) && $dts&(1<<2) || $dts&(1<<0) && $dts&(1<<1) || $dts&(1<<0) && $dts&(1<<2)){
-			if($dts&(1<<0)) set $dts,$dts&~(1<<0);
-			if($dts&(1<<1)) set $dts,$dts&~(1<<1);
-			if($dts&(1<<2)) set $dts,$dts&~(1<<2);
+		if ($dts&(1<<1) && $dts&(1<<2) || $dts&(1<<0) && $dts&(1<<1) || $dts&(1<<0) && $dts&(1<<2)) {
+			if ($dts&(1<<0)) set $dts,$dts&~(1<<0);
+			if ($dts&(1<<1)) set $dts,$dts&~(1<<1);
+			if ($dts&(1<<2)) set $dts,$dts&~(1<<2);
 			set $dts,$dts|(1<<0);
 		}
-		if($dts&(1<<4) && $dts&(1<<5) || $dts&(1<<3) && $dts&(1<<4) || $dts&(1<<3) && $dts&(1<<5)){
-			if($dts&(1<<3)) set $dts,$dts&~(1<<3);
-			if($dts&(1<<4)) set $dts,$dts&~(1<<4);
-			if($dts&(1<<5)) set $dts,$dts&~(1<<5);
+		if ($dts&(1<<4) && $dts&(1<<5) || $dts&(1<<3) && $dts&(1<<4) || $dts&(1<<3) && $dts&(1<<5)) {
+			if ($dts&(1<<3)) set $dts,$dts&~(1<<3);
+			if ($dts&(1<<4)) set $dts,$dts&~(1<<4);
+			if ($dts&(1<<5)) set $dts,$dts&~(1<<5);
 			set $dts,$dts|(1<<3);
 		}
-		if($dtsv == 0){				//If tied, gives random side 100 votes
+		if ($dtsv == 0) {				//If tied, gives random side 100 votes
 			set $@dtstemp,rand(1,2);
-			if($@dtstemp == 1) set $dtsv,$dtsv+100;
+			if ($@dtstemp == 1) set $dtsv,$dtsv+100;
 			else set $dtsv,$dtsv-100;
 		}
-		if($dtsv > 0){
-			if($dts&(1<<3)) set $dts,$dts&~(1<<3);
-			if($dts&(1<<4)) set $dts,$dts&~(1<<4);
-			if($dts&(1<<5)) set $dts,$dts&~(1<<5);
-			if($dts&(1<<0)){
+		if ($dtsv > 0) {
+			if ($dts&(1<<3)) set $dts,$dts&~(1<<3);
+			if ($dts&(1<<4)) set $dts,$dts&~(1<<4);
+			if ($dts&(1<<5)) set $dts,$dts&~(1<<5);
+			if ($dts&(1<<0)) {
 				set $dts,$dts&~(1<<0);
 				set $dts,$dts|(1<<1);
 				set $dts,$dts|(1<<3);
 			}
-			if($dts&(1<<1)) set $dts,$dts|(1<<4);
-			if($dts&(1<<2)){
+			if ($dts&(1<<1)) set $dts,$dts|(1<<4);
+			if ($dts&(1<<2)) {
 				set $dts,$dts&~(1<<2);
 				set $dts,$dts|(1<<1);
 				set $dts,$dts|(1<<5);
@@ -975,20 +975,20 @@ function	script	F_DTSWarp	{
 			set $dtsv,0;
 		}
 		else{
-			if($dts&(1<<3)) set $dts,$dts&~(1<<3);
-			if($dts&(1<<4)) set $dts,$dts&~(1<<4);
-			if($dts&(1<<5)) set $dts,$dts&~(1<<5);
-			if($dts&(1<<0)){
+			if ($dts&(1<<3)) set $dts,$dts&~(1<<3);
+			if ($dts&(1<<4)) set $dts,$dts&~(1<<4);
+			if ($dts&(1<<5)) set $dts,$dts&~(1<<5);
+			if ($dts&(1<<0)) {
 				set $dts,$dts&~(1<<0);
 				set $dts,$dts|(1<<2);
 				set $dts,$dts|(1<<3);
 			}
-			if($dts&(1<<1)){
+			if ($dts&(1<<1)) {
 				set $dts,$dts&~(1<<1);
 				set $dts,$dts|(1<<2);
 				set $dts,$dts|(1<<4);
 			}
-			if($dts&(1<<2)) set $dts,$dts|(1<<5);
+			if ($dts&(1<<2)) set $dts,$dts|(1<<5);
 			set $dtsv,0;
 		}
 		end;

@@ -22,9 +22,9 @@
 // Knight Peco Peco Breeder
 prontera.gat,55,350,5	script	Peco Peco Breeder	105,{
 
-	if(Upper==0) set @price,2500; // Normal Peco - Default price
-	if(Upper==1) set @price,2500; // Armored Peco
-	if(Upper==2) set @price,2500; // Baby Peco
+	if (Upper==0) set @price,2500; // Normal Peco - Default price
+	if (Upper==1) set @price,2500; // Armored Peco
+	if (Upper==2) set @price,2500; // Baby Peco
 
 	mes "[Peco Peco Breeder]";
 	if (BaseJob == Job_Knight) {
@@ -78,9 +78,9 @@ prontera.gat,55,350,5	script	Peco Peco Breeder	105,{
 // Crusader Grand Peco Peco Breeder
 prontera.gat,232,318,3	script	Peco Peco Breeder	105,{
 
-	if(Upper==0) set @price,3500; // Normal Peco - Default price
-	if(Upper==1) set @price,3500; // Armored Peco
-	if(Upper==2) set @price,3500; // Baby Peco
+	if (Upper==0) set @price,3500; // Normal Peco - Default price
+	if (Upper==1) set @price,3500; // Armored Peco
+	if (Upper==2) set @price,3500; // Baby Peco
 
 	mes "[Peco Peco Breeder]";
 	if (BaseJob == Job_Crusader) {
@@ -135,9 +135,9 @@ prontera.gat,232,318,3	script	Peco Peco Breeder	105,{
 // Hunter Falcon Breeder
 hu_in01.gat,381,304,5	script	Falcon Breeder	105,{
 
-	if(Upper==0) set @price,2500; // Normal Falcon - Default price
-	if(Upper==1) set @price,2500; // Scarf Falcon
-	if(Upper==2) set @price,2500; // Baby Falcon
+	if (Upper==0) set @price,2500; // Normal Falcon - Default price
+	if (Upper==1) set @price,2500; // Scarf Falcon
+	if (Upper==2) set @price,2500; // Baby Falcon
 
 	mes "[Falcon Breeder]";
 	if (BaseJob == Job_Hunter) {

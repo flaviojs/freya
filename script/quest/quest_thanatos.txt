@@ -447,7 +447,7 @@ ThanReward:
 	next;
 	menu "Golden Ornament",-,"Red Feather",L_Red,"Blue Feather",L_Blue,"Cursed Seal",L_Curse;
 	set @count,countitem(7435);
-	if(countitem(7435) < 1) goto L_NoGolden;
+	if (countitem(7435) < 1) goto L_NoGolden;
 	mes "[Liei]";
 	mes "The reward for each";
 	mes "Golden Ornament is...";
@@ -501,7 +501,7 @@ L_NoGolden:
 
 L_Red:
 	set @count,countitem(7440);
-	if(@count < 1) goto L_NoRed;
+	if (@count < 1) goto L_NoRed;
 	mes "[Liei]";
 	mes "The reward for";
 	mes "each Red Feather is...";
@@ -548,7 +548,7 @@ L_NoRed:
 
 L_Blue:
 	set @count,countitem(7441);
-	if(@count < 1) goto L_NoBlue;
+	if (@count < 1) goto L_NoBlue;
 	mes "[Liei]";
 	mes "The reward for";
 	mes "each Blue Feather is...";
@@ -595,7 +595,7 @@ L_NoBlue:
 
 L_Curse:
 	set @count,countitem(7442);
-	if(@count < 1) goto L_NoCurse;
+	if (@count < 1) goto L_NoCurse;
 	mes "[Liei]";
 	mes "The reward for";
 	mes "each Cursed Seal is...";
@@ -679,7 +679,7 @@ L_ThirdFloor:
 	mes "Ah, you're "+strcharinfo(0)+", right?";
 	next;
 	set @temps,getareausers("tha_t02.gat",226,156,236,166);
-	if(@temps)<5 goto L_NotEnough;
+	if (@temps)<5 goto L_NotEnough;
 	mes "[Burled]";
 	mes "Great, you're just";
 	mes "in time. We just met";

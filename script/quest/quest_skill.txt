@@ -13882,7 +13882,7 @@ yuno_in03.gat,176,24,3	script	Mishuna	755,{
 				mes "able to change it. Now, which";
 				mes "skill would you like to learn?";
 				next;
-				while (1) {
+				while(1) {
 					switch(select("Fire Elemental Change","Earth Elemental Change","Wind Elemental Change","Water Elemental Change")) {
 					case 1:
 						if (!getskilllv(280)) {
@@ -14083,7 +14083,7 @@ yuno_in03.gat,176,24,3	script	Mishuna	755,{
 				mes "able to change it. Now, which";
 				mes "skill would you like to learn?";
 				next;
-				while (1) {
+				while(1) {
 					switch(select("Fire Elemental Change","Earth Elemental Change","Wind Elemental Change","Water Elemental Change")) {
 					case 1:
 						if (!getskilllv(280)) {
@@ -14517,7 +14517,7 @@ yuno_in03.gat,176,24,3	script	Mishuna	755,{
 			mes "to change that skill. So have you decided which Elemental Change";
 			mes "skill that you want to learn?";
 			next;
-			while (1) {
+			while(1) {
 				switch(select("Fire Elemental Change","Earth Elemental Change","Wind Elemental Change","Water Elemental Change")) {
 				case 1:
 					if (!getskilllv(280)) {

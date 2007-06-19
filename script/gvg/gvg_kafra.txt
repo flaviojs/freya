@@ -27,7 +27,7 @@ function	script	F_GvKafraMenu	{
 	cutin "kafra_01",2;
 	set '@dummy,getmapxy('@map$,'@dummy,'@dummy,1);		// Only '@map$ is necessary
 	set '@gid,getcastledata('@map$,1);
-	if('@gid == 0 || getcharid(2) != '@gid) {
+	if ('@gid == 0 || getcharid(2) != '@gid) {
 		mes "[Kafra]";
 		mes "I am here to serve only";
 		mes "^ff0000" + getguildname('@gid) + "^000000";

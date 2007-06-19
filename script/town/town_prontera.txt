@@ -3526,7 +3526,7 @@ prt_in.gat,164,96,4	script	Monster Encyclopedia#5pront	111,{
 	mes "Monsters living in Dungeons.";
 	next;
 	set @loop1,1;
-	switch(select("Orc Dungeon","Byalan Cave near Izlude","Prontera Culvert")){
+	switch(select("Orc Dungeon","Byalan Cave near Izlude","Prontera Culvert")) {
 	case 1:
 		while(@loop1) {
 			switch(select("1F","2F","Cancel")) {
