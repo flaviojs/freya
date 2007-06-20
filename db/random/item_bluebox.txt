@@ -1,8 +1,12 @@
-//item_bluebox.txt＠Athena 2007/06/19 08:35:05 (JST)
-// 古く青い箱から得られるアイテムを設定。
-// nameid, item_name(dummy), rate
-// アイテムID、アイテムの名前(ダミー)、確率(*10000)をした物です。500000なら50%で1000000なら100%です。)
-// アイテムIDが0の場合確率をアイテムの選択に失敗した時に得られるデフォルトアイテムのIDとして認識します。(複数である場合最後の物だけ有効です。) 
+// item_bluebox.txt, Old Blue Box Database
+//
+// <Item_ID>,<Description (Dummy)>,<Rate>
+//
+// Rate Examples
+// 10000   = 1%
+// 500000  = 50%
+// 1000000 = 100%
+
 0,Guard,2102
 525,Panacea,20000
 526,Royal Jelly,10000

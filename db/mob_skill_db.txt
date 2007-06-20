@@ -1,3 +1,71 @@
+// mob_skill_db.txt, Monster Skill Database
+//
+// Structure of Database:
+//
+// Mob_ID,Dummy skill and monster name,STATE,SKILL_ID,SKILL_LV,rate,casttime,delay,can stop the target,Condition,Condition value,Value 1,Value 2,Value 3,Value 4,Value 5,Emotion associate with the skill
+// Dummy skill and monster name : when you can see the skill and mob name isn't it good?
+//
+// STATE: any At any time / idle Idle/standing / walk Walking / attack Attacking /
+//        dead Dead / loot Loot / chase Following or pursuiting / Attacking back(?)
+//        command
+//
+// Target: target Attacking PC / self Self / friend Friend
+//	  around  surrounding (81 surrounding tails = around4)
+//	  around1  9 surrounding tails of the caster (3*3)
+//	  around2 25 surrounding tails of the caster (5*5)
+//	  around3 49 surrounding tails of the caster (7*7)
+//	  around4 81 surrounding tails of the caster (9*9)
+//	  around5  9 surrounding tails of the target (3*3)
+//	  around6 25 surrounding tails of the target (5*5)
+//	  around7 49 surrounding tails of the target (7*7)
+//	  around8 81 surrounding tails of the target (9*9)
+//	  master / command / modechange
+//	You can only use around for area of effect skills. You can only use friend if there is friends nearby.
+//
+// Condition: (Condition type)		(Specified condition value)
+//	always             No condition
+//	myhpltmaxrate      When caster max HP is under the specified %
+//	mystatuson         When caster has an abnormal status (condition value)
+//	mystatusoff        When caster has an abnormal status (condition value)
+//	friendhpltmaxrate  When friend max HP is under the specified %
+//	friendstatuson     When friend has an abnormal status (condition value)
+//	friendstatusoff    When friend has an abnormal status (condition value)
+//	attackpcgt         When attacking PC become more than the specified number
+//	attackpcge         When attacking PC become equal or more than the specified number
+//	slavelt            When the number of slave become less than the specified number
+//	slavele            When the number of slave become equal or less than the specified number
+//	closedattacked     When it is attacked in close range
+//	longrangeattacked  When it is attacked by long range attacks
+//	skillused          When it is attacked by a specified skill
+//	casttargeted       When it is attacked by a skill with an area of effect
+//	targethpgtmaxrate  When target max HP is over the specified %
+//	targethpltmaxrate  When target max HP is under the specified %
+//	targetstatuson     When target has an abnormal status (condition value)
+//	targetstatusoff    When target has an abnormal status (condition value)
+//	targethpgt         When target max HP is over the specified value
+//	targethplt         When target max HP is under the specified value
+//	masterhpgtmaxrate  When master max HP is over the specified value
+//	masterhpltmaxrate  When master max HP is under the specified value
+//	masterstatuson     When master has an abnormal status (condition value)
+//	masterstatusoff    When master has an abnormal status (condition value)
+//	rudeattacked       
+//
+//	The caracter status can be specified with the statuson/statusoff system
+//	anybad     Which one of the 9 following abnormal status is it?
+//	stone      Stone Cursedｻ	<- anybad correspondence
+//	freeze     Frozen
+//	stan       Stuned
+//	sleep      Asleep
+//	poison     Poisoned
+//	curse      Cursed
+//	silence    Silenced
+//	confusion  Chaosed
+//	blind      Blind	<- anybad correspondence
+//	hiding     Hidden
+//	sight      Using Sight
+//	stone      Stone Cursedｻ(beeing completly stone cursed/pertified)
+//	lexaeterna State of LA
+
 1001,NPC_POISON�@Scorpion,attack,176,3,500,800,5000,no,target,always,0,,,,,,
 1001,NPC_FIREATTACK@Scorpion,attack,186,1,2000,0,5000,no,target,always,0,,,,,,
 1002,NPC_WATERATTACK@Poring,attack,184,1,2000,0,5000,no,target,always,0,,,,,,
@@ -84,30 +152,30 @@
 1038,NPC_CURSEATTACK@Osiris,attack,181,5,2000,0,5000,no,target,always,0,,,,,,09
 1038,NPC_CURSEATTACK@Osiris,attack,181,5,1000,0,5000,no,target,always,0,,,,,,09
 1038,NPC_POISONATTACK@Osiris,attack,188,5,2000,0,5000,no,target,always,0,,,,,,09
-1038,取り巻き召喚@Osiris,idle,196,7,10000,0,0,no,self,onspawn,0,1029,,,,,
-1038,取り巻き召喚@Osiris,attack,196,5,10000,700,60000,no,self,slavele,0,1522,,,,,
-1038,取り巻き召喚@Osiris,idle,196,5,10000,700,60000,no,self,slavele,0,1029,,,,,
+1038,NPC_SUMMONSLAVE@Osiris,idle,196,7,10000,0,0,no,self,onspawn,0,1029,,,,,
+1038,NPC_SUMMONSLAVE@Osiris,attack,196,5,10000,700,60000,no,self,slavele,0,1522,,,,,
+1038,NPC_SUMMONSLAVE@Osiris,idle,196,5,10000,700,60000,no,self,slavele,0,1029,,,,,
 1038,NPC_DARKBREATH@Osiris,attack,202,5,500,0,5000,no,target,always,0,,,,,,09
 1038,NPC_DARKBREATH@Osiris,chase,202,5,200,0,5000,no,target,always,0,,,,,,09
 1038,NPC_INCREASEFLEE@Osiris,attack,350,5,10000,0,60000,no,self,myhpltmaxrate,30,,,,,,06
-1038,取り巻き呼び戻し@Osiris,attack,354,1,10000,0,30000,no,target,always,0,,,,,,
-1038,取り巻き呼び戻し@Osiris,idle,354,1,10000,0,30000,no,self,always,0,,,,,,
+1038,NPC_RECALL@Osiris,attack,354,1,10000,0,30000,no,target,always,0,,,,,,
+1038,NPC_RECALL@Osiris,idle,354,1,10000,0,30000,no,self,always,0,,,,,,
 1038,NPC_DARKJUPITEL@Osiris,chase,341,10,1000,0,5000,no,target,always,0,,,,,,
 1039,AL_TELEPORT@Baphomet,idle,26,1,1000,0,5000,no,self,rudeattacked,,,,,,,
 1039,KN_BRANDISHSPEAR@Baphomet,attack,57,10,2000,500,5000,no,target,always,0,,,,,,29
 1039,WZ_VERMILION@Baphomet,attack,85,10,2000,500,5000,no,target,always,0,,,,,,29
 1039,WZ_VERMILION@Baphomet,chase,85,10,1000,500,5000,no,target,always,0,,,,,,29
 1039,NPC_GUIDEATTACK@Baphomet,attack,172,1,500,0,20000,no,target,always,0,,,,,,
-1039,取り巻き召喚@Baphomet,idle,196,4,10000,0,0,no,self,onspawn,0,1101,,,,,
-1039,取り巻き召喚@Baphomet,attack,196,6,10000,700,10000,no,self,slavele,3,1431,,,,,
-1039,取り巻き召喚@Baphomet,idle,196,6,10000,700,10000,no,self,slavele,3,1431,,,,,
+1039,NPC_SUMMONSLAVE@Baphomet,idle,196,4,10000,0,0,no,self,onspawn,0,1101,,,,,
+1039,NPC_SUMMONSLAVE@Baphomet,attack,196,6,10000,700,10000,no,self,slavele,3,1431,,,,,
+1039,NPC_SUMMONSLAVE@Baphomet,idle,196,6,10000,700,10000,no,self,slavele,3,1431,,,,,
 1039,NPC_DARKBREATH@Baphomet,attack,202,5,2000,800,5000,no,target,always,0,,,,,,29
 1039,MO_BODYRELOCATION@Baphomet,chase,264,1,1000,200,1000,no,target,always,0,,,,,,
 1039,NPC_DARKSOULSTRIKE@Baphomet,chase,340,10,1000,0,1000,no,target,always,0,,,,,,
 1039,NPC_BREAKARMOR@Baphomet,attack,344,10,500,0,5000,no,target,always,0,,,,,,
 1039,NPC_EXPLOSIONSPIRITS@Baphomet,attack,349,5,10000,0,60000,no,self,myhpltmaxrate,30,,,,,,06
-1039,取り巻き呼び戻し@Baphomet,attack,354,1,10000,0,30000,no,target,always,0,,,,,,
-1039,取り巻き呼び戻し@Baphomet,idle,354,1,10000,0,30000,no,self,always,0,,,,,,
+1039,NPC_RECALL@Baphomet,attack,354,1,10000,0,30000,no,target,always,0,,,,,,
+1039,NPC_RECALL@Baphomet,idle,354,1,10000,0,30000,no,self,always,0,,,,,,
 1040,NPC_STUNATTACK@Golem,attack,179,3,500,1500,5000,no,target,always,0,,,,,,06
 1040,NPC_EMOTION@Golem,idle,197,1,200,0,5000,no,self,always,0,9,,,,,
 1040,CR_AUTOGUARD@Golem,attack,249,2,500,0,30000,no,self,always,0,,,,,,
@@ -137,14 +205,14 @@
 1046,KN_TWOHANDQUICKEN@Doppelganger,attack,60,10,10000,0,120000,no,self,myhpltmaxrate,30,,,,,,06
 1046,BS_HAMMERFALL@Doppelganger,attack,110,11,2000,0,5000,no,target,always,0,,,,,,
 1046,NPC_CRITICALSLASH@Doppelganger,attack,170,1,2000,0,5000,no,target,always,0,,,,,,
-1046,取り巻き召喚@Doppelganger,idle,196,5,10000,0,0,no,self,onspawn,0,1061,,,,,
-1046,取り巻き召喚@Doppelganger,attack,196,5,10000,700,10000,no,self,slavele,3,1427,,,,,
-1046,取り巻き召喚@Doppelganger,idle,196,5,10000,700,10000,no,self,slavele,3,1427,,,,,
+1046,NPC_SUMMONSLAVE@Doppelganger,idle,196,5,10000,0,0,no,self,onspawn,0,1061,,,,,
+1046,NPC_SUMMONSLAVE@Doppelganger,attack,196,5,10000,700,10000,no,self,slavele,3,1427,,,,,
+1046,NPC_SUMMONSLAVE@Doppelganger,idle,196,5,10000,700,10000,no,self,slavele,3,1427,,,,,
 1046,CR_AUTOGUARD@Doppelganger,attack,249,10,2000,500,30000,no,self,always,0,,,,,,29
 1046,CR_AUTOGUARD@Doppelganger,chase,249,10,1000,500,30000,no,self,longrangeattacked,,,,,,,29
 1046,NPC_BREAKARMOR@Doppelganger,attack,344,10,500,0,5000,no,target,always,0,,,,,,
-1046,取り巻き呼び戻し@Doppelganger,attack,354,1,10000,0,30000,no,target,always,0,,,,,,
-1046,取り巻き呼び戻し@Doppelganger,idle,354,1,10000,0,30000,no,self,always,0,,,,,,
+1046,NPC_RECALL@Doppelganger,attack,354,1,10000,0,30000,no,target,always,0,,,,,,
+1046,NPC_RECALL@Doppelganger,idle,354,1,10000,0,30000,no,self,always,0,,,,,,
 1047,NPC_METAMORPHOSIS@PecoPeco Egg,idle,193,1,5,2000,0,no,self,always,0,1049,1050,,,,
 1047,NPC_EMOTION@PecoPeco Egg,idle,197,1,200,0,5000,no,self,always,0,19,,,,,
 1048,NPC_METAMORPHOSIS@Thief Bug Egg,idle,193,4,5,2000,0,no,self,always,0,1051,,,,,
@@ -166,7 +234,7 @@
 1056,NPC_GROUNDATTACK@Smokie,attack,185,2,500,500,5000,no,target,always,0,,,,,,06
 1056,NPC_EMOTION@Smokie,loot,197,1,2000,0,5000,no,self,always,0,2,,,,,
 1057,SM_PROVOKE@Yoyo,chase,6,10,200,600,5000,yes,target,always,0,,,,,,
-1057,石投げ@Yoyo,chase,152,1,1000,0,5000,no,target,always,0,,,,,,06
+1057,TF_THROWSTONE@Yoyo,chase,152,1,1000,0,5000,no,target,always,0,,,,,,06
 1057,NPC_GROUNDATTACK@Yoyo,attack,185,1,2000,0,5000,no,target,always,0,,,,,,
 1057,NPC_EMOTION@Yoyo,loot,197,1,2000,0,5000,no,self,always,0,2,,,,,
 1057,AM_POTIONPITCHER@Yoyo,idle,231,1,50,1500,5000,yes,self,always,0,,,,,,
@@ -188,13 +256,13 @@
 1059,NPC_GUIDEATTACK@Mistress,chase,172,5,200,0,20000,no,target,always,0,,,,,,18
 1059,NPC_SILENCEATTACK@Mistress,attack,178,5,2000,0,5000,no,target,always,0,,,,,,
 1059,NPC_SILENCEATTACK@Mistress,chase,178,5,1000,0,5000,no,target,always,0,,,,,,
-1059,取り巻き召喚@Mistress,idle,196,4,10000,0,0,no,self,onspawn,0,1156,,,,,
-1059,取り巻き召喚@Mistress,attack,196,5,10000,700,60000,no,self,slavele,0,1604,,,,,
-1059,取り巻き召喚@Mistress,idle,196,5,10000,700,60000,no,self,slavele,0,1156,,,,,
+1059,NPC_SUMMONSLAVE@Mistress,idle,196,4,10000,0,0,no,self,onspawn,0,1156,,,,,
+1059,NPC_SUMMONSLAVE@Mistress,attack,196,5,10000,700,60000,no,self,slavele,0,1604,,,,,
+1059,NPC_SUMMONSLAVE@Mistress,idle,196,5,10000,700,60000,no,self,slavele,0,1156,,,,,
 1059,NPC_HOLDWEB@Mistress,attack,342,1,2000,0,30000,no,target,always,0,,,,,,06
 1059,NPC_INCREASEFLEE@Mistress,attack,350,5,10000,0,60000,no,self,myhpltmaxrate,30,,,,,,06
-1059,取り巻き呼び戻し@Mistress,attack,354,1,10000,0,30000,no,target,always,0,,,,,,
-1059,取り巻き呼び戻し@Mistress,idle,354,1,10000,0,30000,no,self,always,0,,,,,,
+1059,NPC_RECALL@Mistress,attack,354,1,10000,0,30000,no,target,always,0,,,,,,
+1059,NPC_RECALL@Mistress,idle,354,1,10000,0,30000,no,self,always,0,,,,,,
 1060,SM_ENDURE@Bigfoot,chase,8,1,1000,0,10000,no,self,longrangeattacked,,,,,,,06
 1060,NPC_STUNATTACK@Bigfoot,attack,179,2,500,1500,5000,no,target,always,0,,,,,,06
 1060,NPC_GROUNDATTACK@Bigfoot,attack,185,1,2000,0,5000,no,target,always,0,,,,,,
@@ -249,12 +317,12 @@
 1086,MG_FIREBALL@Golden Thief Bug,chase,17,10,1000,0,5000,no,target,longrangeattacked,,,,,,,
 1086,AL_TELEPORT@Golden Thief Bug,idle,26,1,1000,0,5000,no,self,rudeattacked,,,,,,,
 1086,AL_HEAL@Golden Thief Bug,idle,28,11,10000,0,5000,no,self,mystatuson,hiding,,,,,,
-1086,メマーナイト@Golden Thief Bug,attack,42,19,2000,0,5000,no,target,always,0,,,,,,08
+1086,MC_MAMMONITE@Golden Thief Bug,attack,42,19,2000,0,5000,no,target,always,0,,,,,,08
 1086,TF_HIDING@Golden Thief Bug,attack,51,1,150,0,5000,no,self,myhpltmaxrate,30,,,,,,
 1086,NPC_GUIDEATTACK@Golden Thief Bug,attack,172,5,500,0,20000,no,target,always,0,,,,,,
-1086,取り巻き召喚@Golden Thief Bug,idle,196,10,10000,0,0,no,self,onspawn,0,1054,,,,,
-1086,取り巻き召喚@Golden Thief Bug,attack,196,10,10000,700,10000,no,self,slavele,5,1608,,,,,
-1086,取り巻き召喚@Golden Thief Bug,idle,196,10,10000,700,10000,no,self,slavele,5,1608,,,,,
+1086,NPC_SUMMONSLAVE@Golden Thief Bug,idle,196,10,10000,0,0,no,self,onspawn,0,1054,,,,,
+1086,NPC_SUMMONSLAVE@Golden Thief Bug,attack,196,10,10000,700,10000,no,self,slavele,5,1608,,,,,
+1086,NPC_SUMMONSLAVE@Golden Thief Bug,idle,196,10,10000,700,10000,no,self,slavele,5,1608,,,,,
 1086,CR_REFLECTSHIELD@Golden Thief Bug,attack,252,10,2000,0,300000,no,self,always,0,,,,,,06
 1087,MG_THUNDERSTORM@Orc Hero,attack,21,10,2000,1500,5000,no,target,always,0,,,,,,
 1087,MG_THUNDERSTORM@Orc Hero,chase,21,10,1000,1500,5000,no,target,longrangeattacked,,,,,,,
@@ -263,49 +331,49 @@
 1087,KN_TWOHANDQUICKEN@Orc Hero,attack,60,10,10000,0,120000,no,self,myhpltmaxrate,30,,,,,,06
 1087,NPC_GUIDEATTACK@Orc Hero,attack,172,5,500,0,20000,no,target,always,0,,,,,,05
 1087,NPC_GROUNDATTACK@Orc Hero,attack,185,5,2000,0,5000,no,target,always,0,,,,,,
-1087,取り巻き召喚@Orc Hero,idle,196,8,10000,0,0,no,self,onspawn,0,1213,,,,,
-1087,取り巻き召喚@Orc Hero,attack,196,8,10000,700,10000,no,self,slavele,3,1439,,,,,
-1087,取り巻き召喚@Orc Hero,idle,196,8,10000,700,10000,no,self,slavele,3,1439,,,,,
+1087,NPC_SUMMONSLAVE@Orc Hero,idle,196,8,10000,0,0,no,self,onspawn,0,1213,,,,,
+1087,NPC_SUMMONSLAVE@Orc Hero,attack,196,8,10000,700,10000,no,self,slavele,3,1439,,,,,
+1087,NPC_SUMMONSLAVE@Orc Hero,idle,196,8,10000,700,10000,no,self,slavele,3,1439,,,,,
 1087,CR_AUTOGUARD@Orc Hero,attack,249,10,2000,500,300000,no,self,always,0,,,,,,
 1087,NPC_BREAKARMOR@Orc Hero,attack,344,10,500,0,5000,no,target,always,0,,,,,,06
-1087,取り巻き呼び戻し@Orc Hero,attack,354,1,10000,0,30000,no,target,always,0,,,,,,
-1087,取り巻き呼び戻し@Orc Hero,idle,354,1,10000,0,30000,no,self,always,0,,,,,,
+1087,NPC_RECALL@Orc Hero,attack,354,1,10000,0,30000,no,target,always,0,,,,,,
+1087,NPC_RECALL@Orc Hero,idle,354,1,10000,0,30000,no,self,always,0,,,,,,
 1088,AL_TELEPORT@Vocal,idle,26,1,1000,0,5000,no,self,rudeattacked,,,,,,,
 1088,NPC_COMBOATTACK@Vocal,attack,171,2,500,700,5000,no,target,always,0,,,,,,06
 1088,NPC_SILENCEATTACK@Vocal,attack,178,3,500,700,5000,no,target,always,0,,,,,,02
 1088,NPC_SILENCEATTACK@Vocal,chase,178,3,200,700,5000,no,target,always,0,,,,,,02
 1088,NPC_GROUNDATTACK@Vocal,attack,185,1,2000,0,5000,no,target,always,0,,,,,,
-1088,取り巻き召喚@Vocal,idle,196,8,10000,0,0,no,self,onspawn,0,1052,,,,,
-1088,取り巻き召喚@Vocal,attack,196,5,10000,2000,60000,no,self,slavele,0,1052,,,,,02
-1088,取り巻き召喚@Vocal,idle,196,5,10000,2000,60000,no,self,slavele,0,1052,,,,,02
+1088,NPC_SUMMONSLAVE@Vocal,idle,196,8,10000,0,0,no,self,onspawn,0,1052,,,,,
+1088,NPC_SUMMONSLAVE@Vocal,attack,196,5,10000,2000,60000,no,self,slavele,0,1052,,,,,02
+1088,NPC_SUMMONSLAVE@Vocal,idle,196,5,10000,2000,60000,no,self,slavele,0,1052,,,,,02
 1089,AL_TELEPORT@Toad,idle,26,1,1000,0,5000,no,self,rudeattacked,,,,,,,
 1089,NPC_WATERATTACK@Toad,attack,184,3,500,500,5000,no,target,always,0,,,,,,06
-1089,取り巻き召喚@Toad,idle,196,6,10000,0,0,no,self,onspawn,0,1012,,,,,
-1089,取り巻き召喚@Toad,attack,196,5,10000,2000,60000,no,self,slavele,3,1012,,,,,
-1089,取り巻き召喚@Toad,idle,196,5,10000,2000,60000,no,self,slavele,3,1012,,,,,
+1089,NPC_SUMMONSLAVE@Toad,idle,196,6,10000,0,0,no,self,onspawn,0,1012,,,,,
+1089,NPC_SUMMONSLAVE@Toad,attack,196,5,10000,2000,60000,no,self,slavele,3,1012,,,,,
+1089,NPC_SUMMONSLAVE@Toad,idle,196,5,10000,2000,60000,no,self,slavele,3,1012,,,,,
 1090,AL_TELEPORT@Mastering,idle,26,1,1000,0,0,no,self,rudeattacked,,,,,,,
-1090,取り巻き召喚@Mastering,attack,196,5,10000,2000,60000,no,self,slavele,3,1002,1113,,,,21
-1090,取り巻き召喚@Mastering,idle,196,5,10000,2000,60000,no,self,slavele,3,1002,1113,,,,21
-1090,取り巻き召喚@Mastering,any,196,10,10000,0,0,no,self,onspawn,0,1002,,,,,21
+1090,NPC_SUMMONSLAVE@Mastering,attack,196,5,10000,2000,60000,no,self,slavele,3,1002,1113,,,,21
+1090,NPC_SUMMONSLAVE@Mastering,idle,196,5,10000,2000,60000,no,self,slavele,3,1002,1113,,,,21
+1090,NPC_SUMMONSLAVE@Mastering,any,196,10,10000,0,0,no,self,onspawn,0,1002,,,,,21
 1090,NPC_WATERATTACK@Mastering,attack,184,5,500,500,5000,no,target,always,0,,,,,,06
 1091,AL_TELEPORT@Dragon Fly,idle,26,1,1000,0,5000,no,self,rudeattacked,,,,,,,
 1091,NPC_SILENCEATTACK@Dragon Fly,attack,178,5,500,700,5000,no,target,always,0,,,,,,06
 1091,NPC_SILENCEATTACK@Dragon Fly,chase,178,5,200,700,5000,no,target,always,0,,,,,,06
 1091,NPC_WINDATTACK@Dragon Fly,attack,187,5,500,500,5000,no,target,always,0,,,,,,06
-1091,取り巻き召喚@Dragon Fly,idle,196,8,10000,0,0,no,self,onspawn,0,1011,,,,,
-1091,取り巻き召喚@Dragon Fly,attack,196,5,10000,2000,60000,no,self,slavele,3,1011,,,,,27
-1091,取り巻き召喚@Dragon Fly,idle,196,5,10000,2000,60000,no,self,slavele,3,1011,,,,,27
+1091,NPC_SUMMONSLAVE@Dragon Fly,idle,196,8,10000,0,0,no,self,onspawn,0,1011,,,,,
+1091,NPC_SUMMONSLAVE@Dragon Fly,attack,196,5,10000,2000,60000,no,self,slavele,3,1011,,,,,27
+1091,NPC_SUMMONSLAVE@Dragon Fly,idle,196,5,10000,2000,60000,no,self,slavele,3,1011,,,,,27
 1092,AL_TELEPORT@Vagabond Wolf,idle,26,1,1000,0,5000,no,self,rudeattacked,,,,,,,
 1092,NPC_COMBOATTACK@Vagabond Wolf,attack,171,1,500,700,5000,no,target,always,0,,,,,,06
 1092,NPC_GROUNDATTACK@Vagabond Wolf,attack,185,3,500,500,5000,no,target,always,0,,,,,,06
-1092,取り巻き召喚@Vagabond Wolf,idle,196,5,10000,0,0,no,self,onspawn,0,1013,,,,,
-1092,取り巻き召喚@Vagabond Wolf,attack,196,5,10000,2000,60000,no,self,slavele,3,1013,,,,,27
-1092,取り巻き召喚@Vagabond Wolf,idle,196,5,10000,2000,60000,no,self,slavele,3,1013,,,,,27
+1092,NPC_SUMMONSLAVE@Vagabond Wolf,idle,196,5,10000,0,0,no,self,onspawn,0,1013,,,,,
+1092,NPC_SUMMONSLAVE@Vagabond Wolf,attack,196,5,10000,2000,60000,no,self,slavele,3,1013,,,,,27
+1092,NPC_SUMMONSLAVE@Vagabond Wolf,idle,196,5,10000,2000,60000,no,self,slavele,3,1013,,,,,27
 1092,NPC_EMOTION@Vagabond Wolf,chase,197,1,500,0,5000,no,self,always,0,27,,,,,
 1093,AL_TELEPORT@Eclipse,idle,26,1,1000,0,5000,no,self,rudeattacked,,,,,,,
-1093,取り巻き召喚@Eclipse,idle,196,8,10000,0,0,no,self,onspawn,0,1063,,,,,
-1093,取り巻き召喚@Eclipse,attack,196,5,10000,2000,60000,no,self,slavele,3,1063,,,,,
-1093,取り巻き召喚@Eclipse,idle,196,5,10000,2000,60000,no,self,slavele,3,1063,,,,,
+1093,NPC_SUMMONSLAVE@Eclipse,idle,196,8,10000,0,0,no,self,onspawn,0,1063,,,,,
+1093,NPC_SUMMONSLAVE@Eclipse,attack,196,5,10000,2000,60000,no,self,slavele,3,1063,,,,,
+1093,NPC_SUMMONSLAVE@Eclipse,idle,196,5,10000,2000,60000,no,self,slavele,3,1063,,,,,
 1093,NPC_LICK@Eclipse,attack,206,3,500,0,5000,no,target,always,0,,,,,,06
 1094,NPC_WATERATTACK@Ambernite,attack,184,1,2000,0,5000,no,target,always,0,,,,,,
 1094,NPC_EMOTION@Ambernite,walk,197,1,500,0,5000,no,self,always,0,19,,,,,
@@ -320,9 +388,9 @@
 1096,AL_HEAL@Angeling,chase,28,9,10000,500,5000,no,friend,friendhpltmaxrate,60,,,,,,03
 1096,NPC_HOLYATTACK@Angeling,attack,189,5,500,500,5000,no,target,always,0,,,,,,18
 1096,NPC_HOLYATTACK@Angeling,chase,189,5,200,500,5000,no,target,always,0,,,,,,18
-1096,取り巻き召喚@Angeling,idle,196,3,10000,0,0,no,self,onspawn,0,1031,,,,,
-1096,取り巻き召喚@Angeling,attack,196,1,10000,2000,60000,no,self,slavele,3,1031,1031,1031,1062,1062,18
-1096,取り巻き召喚@Angeling,idle,196,1,10000,2000,60000,no,self,slavele,3,1031,1031,1031,1062,1062,18
+1096,NPC_SUMMONSLAVE@Angeling,idle,196,3,10000,0,0,no,self,onspawn,0,1031,,,,,
+1096,NPC_SUMMONSLAVE@Angeling,attack,196,1,10000,2000,60000,no,self,slavele,3,1031,1031,1031,1062,1062,18
+1096,NPC_SUMMONSLAVE@Angeling,idle,196,1,10000,2000,60000,no,self,slavele,3,1031,1031,1031,1062,1062,18
 1096,NPC_EMOTION@Angeling,idle,197,1,200,0,5000,no,self,always,0,22,,,,,
 1096,SA_REVERSEORCISH@Angeling,attack,294,1,50,0,30000,no,target,always,0,,,,,,18
 1096,SA_REVERSEORCISH@Angeling,chase,294,1,20,0,30000,no,target,always,0,,,,,,18
@@ -335,15 +403,15 @@
 1099,NPC_EMOTION@Argiope,idle,197,1,200,0,5000,no,self,always,0,7,149,,,,
 1100,NPC_POISON�@Argor,attack,176,2,500,800,5000,no,target,always,0,,,,,,
 1100,NPC_POISONATTACK@Argor,attack,188,1,2000,0,5000,no,target,always,0,,,,,,
-1101,AL_TELEPORT@バフォメットJr.,idle,26,1,1000,0,5000,no,self,rudeattacked,,,,,,,
-1101,NPC_CURSEATTACK@バフォメットJr.,attack,181,3,500,800,5000,no,target,always,0,,,,,,29
-1101,NPC_DARKNESSATTACK@バフォメットJr.,attack,190,2,500,500,5000,no,target,always,0,,,,,,06
-1101,NPC_EMOTION@バフォメットJr.,walk,197,1,500,0,5000,no,self,always,0,2,,,,,
-1101,NPC_EMOTION@バフォメットJr.,chase,197,1,50,0,30000,no,self,always,0,19,129,,,,
-1101,NPC_EMOTION@バフォメットJr.,idle,197,1,200,0,5000,no,self,always,0,6,149,,,,
-1101,錯覚@バフォメットJr.,attack,207,1,500,500,5000,no,target,always,0,,,,,,29
-1101,錯覚@バフォメットJr.,chase,207,1,200,500,5000,no,target,always,0,,,,,,29
-1101,SA_DISPELL@バフォメットJr.,attack,289,5,0,0,30000,no,target,always,0,,,,,,29
+1101,AL_TELEPORT@Baphomet Jr.,idle,26,1,1000,0,5000,no,self,rudeattacked,,,,,,,
+1101,NPC_CURSEATTACK@Baphomet Jr.,attack,181,3,500,800,5000,no,target,always,0,,,,,,29
+1101,NPC_DARKNESSATTACK@Baphomet Jr.,attack,190,2,500,500,5000,no,target,always,0,,,,,,06
+1101,NPC_EMOTION@Baphomet Jr.,walk,197,1,500,0,5000,no,self,always,0,2,,,,,
+1101,NPC_EMOTION@Baphomet Jr.,chase,197,1,50,0,30000,no,self,always,0,19,129,,,,
+1101,NPC_EMOTION@Baphomet Jr.,idle,197,1,200,0,5000,no,self,always,0,6,149,,,,
+1101,NPC_HALLUCINATION@Baphomet Jr.,attack,207,1,500,500,5000,no,target,always,0,,,,,,29
+1101,NPC_HALLUCINATION@Baphomet Jr.,chase,207,1,200,500,5000,no,target,always,0,,,,,,29
+1101,SA_DISPELL@Baphomet Jr.,attack,289,5,0,0,30000,no,target,always,0,,,,,,29
 1102,NPC_SILENCEATTACK@Bathory,attack,178,3,500,700,5000,no,target,always,0,,,,,,
 1102,NPC_CURSEATTACK@Bathory,attack,181,3,500,800,5000,no,target,always,0,,,,,,
 1102,NPC_EMOTION@Bathory,chase,197,1,500,0,5000,no,self,always,0,30,,,,,
@@ -352,7 +420,7 @@
 1102,NPC_HOLDWEB@Bathory,attack,342,1,500,0,30000,no,target,always,0,,,,,,
 1103,NPC_PIERCINGATT@Caramel,attack,158,5,500,0,5000,no,target,always,0,,,,,,06
 1103,NPC_GROUNDATTACK@Caramel,attack,185,1,2000,0,5000,no,target,always,0,,,,,,
-1104,石投げ@Coco,chase,152,1,1000,0,5000,no,target,always,0,,,,,,06
+1104,TF_THROWSTONE@Coco,chase,152,1,1000,0,5000,no,target,always,0,,,,,,06
 1104,NPC_GROUNDATTACK@Coco,attack,185,1,2000,0,5000,no,target,always,0,,,,,,
 1104,NPC_EMOTION@Coco,chase,197,1,50,0,30000,no,self,always,0,19,145,,,,
 1105,NPC_GROUNDATTACK@Deniro,attack,185,2,500,500,5000,no,target,always,0,,,,,,
@@ -374,7 +442,7 @@
 1109,NPC_ENERGYDRAIN@Deviruchi,chase,200,1,200,0,5000,no,target,myhpltmaxrate,30,,,,,,19
 1109,NPC_DARKJUPITEL@Deviruchi,attack,341,3,500,1500,5000,yes,target,always,0,,,,,,29
 1109,NPC_DARKJUPITEL@Deviruchi,chase,341,3,200,1500,5000,yes,target,always,0,,,,,,29
-1110,メマーナイト@Dokebi,attack,42,5,500,800,5000,no,target,always,0,,,,,,08
+1110,MC_MAMMONITE@Dokebi,attack,42,5,500,800,5000,no,target,always,0,,,,,,08
 1110,BS_ADRENALINE@Dokebi,attack,111,1,500,1500,30000,no,self,always,0,,,,,,
 1110,BS_ADRENALINE@Dokebi,chase,111,1,200,1500,30000,no,self,always,0,,,,,,06
 1110,NPC_DARKNESSATTACK@Dokebi,attack,190,1,2000,0,5000,no,target,always,0,,,,,,
@@ -392,13 +460,13 @@
 1112,NPC_GUIDEATTACK@Drake,chase,172,5,200,0,20000,no,target,always,0,,,,,,
 1112,NPC_WATERATTACK@Drake,attack,184,5,2000,0,5000,no,target,always,0,,,,,,29
 1112,NPC_WATERATTACK@Drake,chase,184,5,1000,0,5000,no,target,always,0,,,,,,29
-1112,取り巻き召喚@Drake,idle,196,4,10000,0,0,no,self,onspawn,0,1192,,,,,
-1112,取り巻き召喚@Drake,attack,196,5,10000,700,60000,no,self,slavele,3,1566,,,,,
-1112,取り巻き召喚@Drake,idle,196,5,10000,700,60000,no,self,slavele,3,1566,,,,,
+1112,NPC_SUMMONSLAVE@Drake,idle,196,4,10000,0,0,no,self,onspawn,0,1192,,,,,
+1112,NPC_SUMMONSLAVE@Drake,attack,196,5,10000,700,60000,no,self,slavele,3,1566,,,,,
+1112,NPC_SUMMONSLAVE@Drake,idle,196,5,10000,700,60000,no,self,slavele,3,1566,,,,,
 1112,NPC_BREAKARMOR@Drake,attack,344,10,500,0,60000,no,target,always,0,,,,,,
 1112,NPC_INCREASEFLEE@Drake,attack,350,5,10000,0,60000,no,self,myhpltmaxrate,30,,,,,,06
-1112,取り巻き呼び戻し@Drake,attack,354,1,10000,0,30000,no,target,always,0,,,,,,
-1112,取り巻き呼び戻し@Drake,idle,354,1,10000,0,30000,no,self,always,0,,,,,,
+1112,NPC_RECALL@Drake,attack,354,1,10000,0,30000,no,target,always,0,,,,,,
+1112,NPC_RECALL@Drake,idle,354,1,10000,0,30000,no,self,always,0,,,,,,
 1113,NPC_FIREATTACK@Drops,attack,186,1,2000,0,5000,no,target,always,0,,,,,,
 1113,NPC_EMOTION@Drops,loot,197,1,2000,0,5000,no,self,always,0,2,,,,,
 1114,NPC_BLINDATTACK@Dustiness,attack,177,3,2000,0,5000,no,target,always,0,,,,,,
@@ -409,14 +477,14 @@
 1115,SM_ENDURE@Eddga,chase,8,1,1000,0,10000,no,self,longrangeattacked,,,,,,,06
 1115,MG_FIREBALL@Eddga,chase,17,10,1000,0,5000,no,target,always,0,,,,,,
 1115,AL_TELEPORT@Eddga,idle,26,1,1000,0,5000,no,self,rudeattacked,,,,,,,
-1115,取り巻き召喚@Eddga,idle,196,5,10000,0,0,no,self,onspawn,0,1060,,,,,
-1115,取り巻き召喚@Eddga,attack,196,8,10000,700,60000,no,self,slavele,3,1603,,,,,
-1115,取り巻き召喚@Eddga,idle,196,8,10000,700,60000,no,self,slavele,3,1603,,,,,
+1115,NPC_SUMMONSLAVE@Eddga,idle,196,5,10000,0,0,no,self,onspawn,0,1060,,,,,
+1115,NPC_SUMMONSLAVE@Eddga,attack,196,8,10000,700,60000,no,self,slavele,3,1603,,,,,
+1115,NPC_SUMMONSLAVE@Eddga,idle,196,8,10000,700,60000,no,self,slavele,3,1603,,,,,
 1115,AM_DEMONSTRATION@Eddga,attack,229,5,2000,500,5000,no,target,always,0,,,,,,06
 1115,AM_DEMONSTRATION@Eddga,chase,229,5,1000,500,5000,no,target,always,0,,,,,,06
 1115,NPC_EXPLOSIONSPIRITS@Eddga,attack,349,5,10000,0,60000,no,self,myhpltmaxrate,30,,,,,,06
-1115,取り巻き呼び戻し@Eddga,attack,354,1,10000,0,30000,no,target,always,0,,,,,,
-1115,取り巻き呼び戻し@Eddga,idle,354,1,10000,0,30000,no,self,always,0,,,,,,
+1115,NPC_RECALL@Eddga,attack,354,1,10000,0,30000,no,target,always,0,,,,,,
+1115,NPC_RECALL@Eddga,idle,354,1,10000,0,30000,no,self,always,0,,,,,,
 1116,NPC_BLINDATTACK@Eggyra,attack,177,5,2000,0,5000,no,target,always,0,,,,,,
 1116,NPC_TELEKINESISATTACK@Eggyra,attack,191,5,500,0,5000,no,target,always,0,,,,,,06
 1116,CR_AUTOGUARD@Eggyra,attack,249,2,500,0,30000,no,self,always,0,,,,,,
@@ -444,9 +512,9 @@
 1120,AL_TELEPORT@Ghostring,attack,26,1,500,0,5000,no,self,always,0,,,,,,
 1120,AL_TELEPORT@Ghostring,idle,26,1,1000,0,5000,no,self,rudeattacked,,,,,,,
 1120,NPC_TELEKINESISATTACK@Ghostring,attack,191,5,500,0,5000,no,target,always,0,,,,,,28
-1120,取り巻き召喚@Ghostring,idle,196,5,10000,0,0,no,self,onspawn,0,1186,,,,,
-1120,取り巻き召喚@Ghostring,attack,196,5,10000,2000,60000,no,self,slavele,0,1186,,,,,
-1120,取り巻き召喚@Ghostring,idle,196,5,10000,2000,60000,no,self,slavele,0,1186,,,,,
+1120,NPC_SUMMONSLAVE@Ghostring,idle,196,5,10000,0,0,no,self,onspawn,0,1186,,,,,
+1120,NPC_SUMMONSLAVE@Ghostring,attack,196,5,10000,2000,60000,no,self,slavele,0,1186,,,,,
+1120,NPC_SUMMONSLAVE@Ghostring,idle,196,5,10000,2000,60000,no,self,slavele,0,1186,,,,,
 1120,NPC_EMOTION@Ghostring,walk,197,1,500,0,5000,no,self,always,0,28,,,,,
 1120,NPC_DARKBREATH@Ghostring,attack,202,4,500,800,5000,no,target,always,0,,,,,,28
 1120,NPC_INVISIBLE@Ghostring,attack,352,1,2000,200,5000,yes,self,always,0,,,,,,
@@ -486,7 +554,7 @@
 1129,AL_TELEPORT@Horong,idle,26,1,1000,0,5000,no,self,rudeattacked,,,,,,,
 1129,NPC_COMBOATTACK@Horong,attack,171,2,500,700,5000,no,target,always,0,,,,,,09
 1129,NPC_FIREATTACK@Horong,attack,186,1,2000,0,5000,no,target,always,0,,,,,,
-1129,錯覚@Horong,chase,207,1,200,500,5000,no,target,always,0,,,,,,09
+1129,NPC_HALLUCINATION@Horong,chase,207,1,200,500,5000,no,target,always,0,,,,,,09
 1130,NPC_BLINDATTACK@Jakk,attack,177,3,500,0,5000,no,target,always,0,,,,,,
 1130,NPC_CURSEATTACK@Jakk,attack,181,3,500,800,5000,no,target,always,0,,,,,,29
 1130,NPC_CURSEATTACK@Jakk,chase,181,3,200,800,5000,no,target,always,0,,,,,,29
@@ -541,9 +609,9 @@
 1141,NPC_CRITICALSLASH@Marina,attack,170,1,500,500,5000,no,target,always,0,,,,,,06
 1141,NPC_WATERATTACK@Marina,attack,184,2,500,500,5000,no,target,always,0,,,,,,06
 1141,NPC_EMOTION@Marina,walk,197,1,500,0,5000,no,self,always,0,19,,,,,
-1142,NPC_SELFDESTRUCTION@マリンスフィア,idle,173,1,50,2000,0,no,self,myhpltmaxrate,100,,,,,,
-1142,NPC_SELFDESTRUCTION@マリンスフィア,idle,173,1,10000,2000,0,no,self,skillused,173,,,,,,
-1142,NPC_SELFDESTRUCTION2@マリンスフィア,any,331,1,0,5000,0,no,self,always,0,,,,,,
+1142,NPC_SELFDESTRUCTION@Marine Sphere,idle,173,1,50,2000,0,no,self,myhpltmaxrate,100,,,,,,
+1142,NPC_SELFDESTRUCTION@Marine Sphere,idle,173,1,10000,2000,0,no,self,skillused,173,,,,,,
+1142,NPC_SELFDESTRUCTION2@Marine Sphere,any,331,1,0,5000,0,no,self,always,0,,,,,,
 1143,MG_FIREWALL@Marionette,chase,18,5,200,500,5000,yes,target,always,0,,,,,,02
 1143,HT_FREEZINGTRAP@Marionette,idle,121,5,50,0,60000,no,around1,always,0,,,,,,29
 1143,NPC_TELEKINESISATTACK@Marionette,attack,191,5,500,0,5000,no,target,always,0,,,,,,06
@@ -569,14 +637,14 @@
 1147,WZ_HEAVENDRIVE@Maya,attack,91,5,2000,0,5000,no,target,always,0,,,,,,
 1147,WZ_HEAVENDRIVE@Maya,chase,91,5,1000,0,5000,no,target,always,0,,,,,,
 1147,NPC_GUIDEATTACK@Maya,attack,172,5,500,0,20000,no,target,always,0,,,,,,18
-1147,取り巻き召喚@Maya,idle,196,10,10000,0,0,no,self,onspawn,0,1194,,,,,
-1147,取り巻き召喚@Maya,attack,196,5,10000,700,10000,no,self,slavele,3,1477,,,,,
-1147,取り巻き召喚@Maya,idle,196,5,10000,700,10000,no,self,slavele,3,1477,,,,,
+1147,NPC_SUMMONSLAVE@Maya,idle,196,10,10000,0,0,no,self,onspawn,0,1194,,,,,
+1147,NPC_SUMMONSLAVE@Maya,attack,196,5,10000,700,10000,no,self,slavele,3,1477,,,,,
+1147,NPC_SUMMONSLAVE@Maya,idle,196,5,10000,700,10000,no,self,slavele,3,1477,,,,,
 1147,CR_AUTOGUARD@Maya,attack,249,10,500,0,30000,no,self,always,0,,,,,,
 1147,NPC_BREAKARMOR@Maya,attack,344,10,500,0,5000,no,target,always,0,,,,,,06
 1147,NPC_EXPLOSIONSPIRITS@Maya,attack,349,5,10000,0,120000,no,self,myhpltmaxrate,30,,,,,,06
-1147,取り巻き呼び戻し@Maya,attack,354,1,10000,0,30000,no,target,always,0,,,,,,
-1147,取り巻き呼び戻し@Maya,idle,354,1,10000,0,30000,no,self,always,0,,,,,,
+1147,NPC_RECALL@Maya,attack,354,1,10000,0,30000,no,target,always,0,,,,,,
+1147,NPC_RECALL@Maya,idle,354,1,10000,0,30000,no,self,always,0,,,,,,
 1148,MG_STONECURSE@Medusa,attack,16,10,500,1500,5000,no,target,always,0,,,,,,03
 1148,NPC_PETRIFYATTACK@Medusa,attack,180,5,500,500,5000,no,target,always,0,,,,,,03
 1148,NPC_PETRIFYATTACK@Medusa,chase,180,5,200,500,5000,no,target,always,0,,,,,,03
@@ -597,17 +665,17 @@
 1150,AL_HEAL@Moonlight Flower,attack,28,11,10000,0,5000,no,friend,friendhpltmaxrate,60,,,,,,21
 1150,AL_HEAL@Moonlight Flower,chase,28,11,10000,0,5000,no,self,myhpltmaxrate,30,,,,,,21
 1150,AL_HEAL@Moonlight Flower,chase,28,11,10000,0,5000,no,friend,friendhpltmaxrate,60,,,,,,21
-1150,メマーナイト@Moonlight Flower,attack,42,40,500,0,5000,no,target,always,0,,,,,,08
+1150,MC_MAMMONITE@Moonlight Flower,attack,42,40,500,0,5000,no,target,always,0,,,,,,08
 1150,BS_HAMMERFALL@Moonlight Flower,attack,110,11,2000,0,5000,no,target,always,0,,,,,,00
 1150,NPC_GUIDEATTACK@Moonlight Flower,attack,172,5,500,0,20000,no,target,always,0,,,,,,06
-1150,取り巻き召喚@Moonlight Flower,idle,196,3,10000,0,0,no,self,onspawn,0,1180,,,,,
-1150,取り巻き召喚@Moonlight Flower,attack,196,5,10000,700,10000,no,self,slavele,3,1471,,,,,
-1150,取り巻き召喚@Moonlight Flower,idle,196,5,10000,700,10000,no,self,slavele,3,1471,,,,,
+1150,NPC_SUMMONSLAVE@Moonlight Flower,idle,196,3,10000,0,0,no,self,onspawn,0,1180,,,,,
+1150,NPC_SUMMONSLAVE@Moonlight Flower,attack,196,5,10000,700,10000,no,self,slavele,3,1471,,,,,
+1150,NPC_SUMMONSLAVE@Moonlight Flower,idle,196,5,10000,700,10000,no,self,slavele,3,1471,,,,,
 1150,SA_DISPELL@Moonlight Flower,attack,289,5,500,0,5000,no,target,always,0,,,,,,06
 1150,SA_DISPELL@Moonlight Flower,chase,289,5,200,0,5000,no,target,always,0,,,,,,06
 1150,NPC_EXPLOSIONSPIRITS@Moonlight Flower,attack,349,5,10000,0,60000,no,self,myhpltmaxrate,30,,,,,,06
-1150,取り巻き呼び戻し@Moonlight Flower,attack,354,1,10000,0,30000,no,target,always,0,,,,,,
-1150,取り巻き呼び戻し@Moonlight Flower,idle,354,1,10000,0,30000,no,self,always,0,,,,,,
+1150,NPC_RECALL@Moonlight Flower,attack,354,1,10000,0,30000,no,target,always,0,,,,,,
+1150,NPC_RECALL@Moonlight Flower,idle,354,1,10000,0,30000,no,self,always,0,,,,,,
 1151,NPC_MENTALBREAKER@Myst,attack,159,2,500,800,5000,no,target,always,0,,,,,,09
 1151,NPC_BLINDATTACK@Myst,attack,177,5,500,0,5000,no,target,always,0,,,,,,
 1151,NPC_POISONATTACK@Myst,attack,188,3,500,500,5000,no,target,always,0,,,,,,09
@@ -636,31 +704,31 @@
 1157,AL_TELEPORT@Pharaoh,idle,26,1,1000,0,5000,no,self,rudeattacked,,,,,,,
 1157,AC_CHARGEARROW@Pharaoh,attack,148,1,2000,0,5000,no,target,always,0,,,,,,
 1157,NPC_GUIDEATTACK@Pharaoh,chase,172,5,200,0,20000,no,target,always,0,,,,,,
-1157,取り巻き召喚@Pharaoh,idle,196,3,10000,0,0,no,self,onspawn,0,1140,1154,,,,
-1157,取り巻き召喚@Pharaoh,attack,196,2,10000,700,10000,no,self,slavele,3,1458,1458,1464,,,
-1157,取り巻き召喚@Pharaoh,idle,196,2,10000,700,10000,no,self,slavele,3,1458,1458,1464,,,
+1157,NPC_SUMMONSLAVE@Pharaoh,idle,196,3,10000,0,0,no,self,onspawn,0,1140,1154,,,,
+1157,NPC_SUMMONSLAVE@Pharaoh,attack,196,2,10000,700,10000,no,self,slavele,3,1458,1458,1464,,,
+1157,NPC_SUMMONSLAVE@Pharaoh,idle,196,2,10000,700,10000,no,self,slavele,3,1458,1458,1464,,,
 1157,NPC_ENERGYDRAIN@Pharaoh,attack,200,1,2000,0,5000,no,target,always,0,,,,,,
 1157,NPC_ENERGYDRAIN@Pharaoh,chase,200,1,1000,0,5000,no,target,always,0,,,,,,
 1157,NPC_DARKBLESSING@Pharaoh,attack,203,1,500,800,20000,no,target,always,0,,,,,,29
 1157,NPC_DARKSOULSTRIKE@Pharaoh,attack,340,10,2000,0,5000,no,target,always,0,,,,,,
 1157,NPC_DARKSOULSTRIKE@Pharaoh,chase,340,10,1000,0,5000,no,target,always,0,,,,,,
 1157,NPC_EXPLOSIONSPIRITS@Pharaoh,attack,349,5,10000,0,60000,no,self,myhpltmaxrate,30,,,,,,06
-1157,取り巻き呼び戻し@Pharaoh,attack,354,1,10000,0,10000,no,target,always,0,,,,,,
-1157,取り巻き呼び戻し@Pharaoh,idle,354,1,10000,0,10000,no,self,always,0,,,,,,
+1157,NPC_RECALL@Pharaoh,attack,354,1,10000,0,10000,no,target,always,0,,,,,,
+1157,NPC_RECALL@Pharaoh,idle,354,1,10000,0,10000,no,self,always,0,,,,,,
 1158,NPC_WATERATTACK@Phen,attack,184,3,500,500,5000,no,target,always,0,,,,,,19
 1159,AL_TELEPORT@Phreeoni,idle,26,1,1000,0,5000,no,self,rudeattacked,,,,,,,
 1159,AL_HEAL@Phreeoni,idle,28,11,10000,0,5000,no,self,mystatuson,hiding,,,,,,
 1159,TF_HIDING@Phreeoni,attack,51,1,2000,500,5000,no,self,myhpltmaxrate,30,,,,,,19
 1159,WZ_HEAVENDRIVE@Phreeoni,chase,91,5,1000,0,5000,no,target,longrangeattacked,,,,,,,19
 1159,NPC_GUIDEATTACK@Phreeoni,chase,172,5,200,0,20000,no,target,always,0,,,,,,
-1159,取り巻き召喚@Phreeoni,idle,196,10,10000,0,0,no,self,onspawn,0,1127,,,,,
-1159,取り巻き召喚@Phreeoni,attack,196,6,10000,700,60000,no,self,slavele,3,1558,,,,,
-1159,取り巻き召喚@Phreeoni,idle,196,6,10000,700,60000,no,self,slavele,3,1558,,,,,
+1159,NPC_SUMMONSLAVE@Phreeoni,idle,196,10,10000,0,0,no,self,onspawn,0,1127,,,,,
+1159,NPC_SUMMONSLAVE@Phreeoni,attack,196,6,10000,700,60000,no,self,slavele,3,1558,,,,,
+1159,NPC_SUMMONSLAVE@Phreeoni,idle,196,6,10000,700,60000,no,self,slavele,3,1558,,,,,
 1159,NPC_LICK@Phreeoni,attack,206,5,2000,0,5000,no,target,always,0,,,,,,03
 1159,NPC_BREAKHELM@Phreeoni,attack,345,10,500,0,5000,no,target,always,0,,,,,,
 1159,NPC_EXPLOSIONSPIRITS@Phreeoni,attack,349,5,10000,0,120000,no,self,myhpltmaxrate,30,,,,,,06
-1159,取り巻き呼び戻し@Phreeoni,attack,354,1,10000,0,30000,no,target,always,0,,,,,,
-1159,取り巻き呼び戻し@Phreeoni,idle,354,1,10000,0,30000,no,self,always,0,,,,,,
+1159,NPC_RECALL@Phreeoni,attack,354,1,10000,0,30000,no,target,always,0,,,,,,
+1159,NPC_RECALL@Phreeoni,idle,354,1,10000,0,30000,no,self,always,0,,,,,,
 1160,NPC_GROUNDATTACK@Piere,attack,185,2,500,500,5000,no,target,always,0,,,,,,
 1160,NPC_EMOTION@Piere,loot,197,1,2000,0,5000,no,self,always,0,19,,,,,
 1161,NPC_WATERATTACK@Plankton,attack,184,1,2000,0,5000,no,target,always,0,,,,,,
@@ -730,14 +798,14 @@
 1190,AL_INCAGI@Orc Lord,chase,29,10,1000,700,30000,no,self,always,0,,,,,,06
 1190,PR_LEXDIVINA@Orc Lord,chase,76,10,1000,0,5000,no,target,always,0,,,,,,09
 1190,NPC_GROUNDATTACK@Orc Lord,attack,185,3,2000,0,5000,no,target,always,0,,,,,,06
-1190,取り巻き召喚@Orc Lord,idle,196,5,10000,0,0,no,self,onspawn,0,1189,,,,,
-1190,取り巻き召喚@Orc Lord,attack,196,6,10000,700,10000,no,self,slavele,3,1473,,,,,27
-1190,取り巻き召喚@Orc Lord,idle,196,6,10000,700,10000,no,self,slavele,3,1473,,,,,27
+1190,NPC_SUMMONSLAVE@Orc Lord,idle,196,5,10000,0,0,no,self,onspawn,0,1189,,,,,
+1190,NPC_SUMMONSLAVE@Orc Lord,attack,196,6,10000,700,10000,no,self,slavele,3,1473,,,,,27
+1190,NPC_SUMMONSLAVE@Orc Lord,idle,196,6,10000,700,10000,no,self,slavele,3,1473,,,,,27
 1190,CR_SHIELDCHARGE@Orc Lord,attack,250,5,2000,0,5000,no,target,always,0,,,,,,
 1190,NPC_BREAKSIELD@Orc Lord,attack,346,10,500,0,5000,no,target,always,0,,,,,,
 1190,NPC_EXPLOSIONSPIRITS@Orc Lord,attack,349,5,10000,0,120000,no,self,myhpltmaxrate,30,,,,,,06
-1190,取り巻き呼び戻し@Orc Lord,attack,354,1,10000,0,10000,no,target,always,0,,,,,,
-1190,取り巻き呼び戻し@Orc Lord,idle,354,1,10000,0,10000,no,self,always,0,,,,,,
+1190,NPC_RECALL@Orc Lord,attack,354,1,10000,0,10000,no,target,always,0,,,,,,
+1190,NPC_RECALL@Orc Lord,idle,354,1,10000,0,10000,no,self,always,0,,,,,,
 1191,NPC_EMOTION@Mimic,idle,197,1,200,0,5000,no,self,always,0,29,,,,,
 1191,NPC_BLOODDRAIN@Mimic,attack,199,1,500,0,5000,no,target,always,0,,,,,,02
 1191,CR_AUTOGUARD@Mimic,attack,249,2,500,0,30000,no,self,always,0,,,,,,
@@ -769,7 +837,7 @@
 1200,AL_TELEPORT@Zealotus,idle,26,1,1000,0,5000,no,self,rudeattacked,,,,,,,
 1200,AS_SONICBLOW@Zealotus,attack,136,10,500,800,5000,no,target,always,0,,,,,,03
 1200,NPC_GUIDEATTACK@Zealotus,attack,172,3,500,1000,20000,no,target,always,0,,,,,,30
-1200,取り巻き召喚@Zealotus,idle,196,3,10000,2000,60000,no,self,slavele,0,1257,,,,,
+1200,NPC_SUMMONSLAVE@Zealotus,idle,196,3,10000,2000,60000,no,self,slavele,0,1257,,,,,
 1200,NPC_EMOTION@Zealotus,chase,197,1,500,0,5000,no,self,always,0,30,,,,,
 1200,NPC_LICK@Zealotus,attack,206,3,500,0,5000,no,target,always,0,,,,,,30
 1200,NPC_HOLDWEB@Zealotus,attack,342,1,500,0,30000,no,target,always,0,,,,,,03
@@ -832,10 +900,10 @@
 1214,SM_PROVOKE@Choco,chase,6,10,200,600,5000,no,target,always,0,,,,,,
 1214,AL_TELEPORT@Choco,idle,26,1,1000,0,5000,no,self,rudeattacked,,,,,,,
 1214,HT_SKIDTRAP@Choco,idle,115,5,50,0,60000,no,around1,always,0,,,,,,29
-1214,石投げ@Choco,chase,152,1,1000,0,5000,no,target,always,0,,,,,,
+1214,TF_THROWSTONE@Choco,chase,152,1,1000,0,5000,no,target,always,0,,,,,,
 1214,NPC_FIREATTACK@Choco,attack,186,1,2000,0,5000,no,target,always,0,,,,,,
-1214,取り巻き召喚@Choco,attack,196,3,10000,2000,60000,no,self,slavele,0,1057,,,,,27
-1214,取り巻き召喚@Choco,idle,196,3,10000,2000,60000,no,self,slavele,0,1057,,,,,27
+1214,NPC_SUMMONSLAVE@Choco,attack,196,3,10000,2000,60000,no,self,slavele,0,1057,,,,,27
+1214,NPC_SUMMONSLAVE@Choco,idle,196,3,10000,2000,60000,no,self,slavele,0,1057,,,,,27
 1214,NPC_EMOTION@Choco,chase,197,1,50,0,30000,no,self,always,0,19,129,,,,
 1214,NPC_EMOTION@Choco,idle,197,1,200,0,5000,no,self,always,0,6,149,,,,
 1214,AM_POTIONPITCHER@Choco,idle,231,1,50,1500,5000,yes,self,always,0,,,,,,
@@ -849,7 +917,7 @@
 1219,AC_CHARGEARROW@Abysmal Knight,chase,148,1,200,0,5000,no,target,always,0,,,,,,
 1219,NPC_DARKNESSATTACK@Abysmal Knight,attack,190,5,500,500,5000,no,target,always,0,,,,,,09
 1219,NPC_DARKNESSATTACK@Abysmal Knight,chase,190,5,200,500,5000,no,target,always,0,,,,,,09
-1219,取り巻き召喚@Abysmal Knight,idle,196,2,10000,2000,60000,no,self,slavele,0,1438,,,,,
+1219,NPC_SUMMONSLAVE@Abysmal Knight,idle,196,2,10000,2000,60000,no,self,slavele,0,1438,,,,,
 1219,CR_AUTOGUARD@Abysmal Knight,attack,249,10,500,0,30000,no,self,always,0,,,,,,
 1219,CR_AUTOGUARD@Abysmal Knight,chase,249,10,1000,0,30000,no,self,longrangeattacked,,,,,,,
 1219,NPC_BREAKARMOR@Abysmal Knight,attack,344,5,500,0,5000,no,target,always,0,,,,,,
@@ -888,10 +956,10 @@
 1248,NPC_COMBOATTACK@Cruiser,attack,171,1,500,700,5000,no,target,always,0,,,,,,24
 1248,NPC_EMOTION@Cruiser,chase,197,1,500,0,5000,no,self,always,0,27,,,,,
 1249,AL_TELEPORT@Myst Case,idle,26,1,1000,0,5000,no,self,rudeattacked,,,,,,,
-1249,メマーナイト@Myst Case,attack,42,5,200,800,5000,yes,target,always,0,,,,,,08
+1249,MC_MAMMONITE@Myst Case,attack,42,5,200,800,5000,yes,target,always,0,,,,,,08
 1249,KN_SPEARSTAB@Myst Case,attack,58,5,500,800,5000,no,target,always,0,,,,,,06
 1249,NPC_EMOTION@Myst Case,walk,197,1,500,0,5000,no,self,always,0,3,,,,,
-1249,錯覚@Myst Case,any,207,1,100,500,20000,yes,target,always,0,,,,,,06
+1249,NPC_HALLUCINATION@Myst Case,any,207,1,100,500,20000,yes,target,always,0,,,,,,06
 1250,AL_TELEPORT@Chepet,idle,26,1,1000,0,5000,no,self,rudeattacked,,,,,,,
 1250,AL_HEAL@Chepet,attack,28,9,10000,500,5000,yes,self,myhpltmaxrate,30,,,,,,03
 1250,AL_HEAL@Chepet,attack,28,9,10000,500,5000,yes,friend,friendhpltmaxrate,60,,,,,,03
@@ -900,8 +968,8 @@
 1250,PR_STRECOVERY@Chepet,attack,72,1,2000,700,5000,yes,friend,friendstatuson,anybad,,,,,,03
 1250,PR_STRECOVERY@Chepet,chase,72,1,1000,700,5000,yes,friend,friendstatuson,anybad,,,,,,03
 1250,WZ_FIREPILLAR@Chepet,idle,80,5,50,0,5000,no,around1,always,0,,,,,,
-1250,取り巻き召喚@Chepet,attack,196,3,2000,2000,60000,no,self,slavele,0,1249,,,,,27
-1250,取り巻き召喚@Chepet,idle,196,3,10000,2000,60000,no,self,slavele,0,1249,,,,,27
+1250,NPC_SUMMONSLAVE@Chepet,attack,196,3,2000,2000,60000,no,self,slavele,0,1249,,,,,27
+1250,NPC_SUMMONSLAVE@Chepet,idle,196,3,10000,2000,60000,no,self,slavele,0,1249,,,,,27
 1250,NPC_EMOTION@Chepet,attack,197,1,2000,0,5000,no,self,always,0,17,,,,,
 1250,AM_DEMONSTRATION@Chepet,attack,229,5,500,500,5000,no,target,always,0,,,,,,17
 1250,AM_DEMONSTRATION@Chepet,chase,229,5,200,500,5000,no,target,always,0,,,,,,17
@@ -910,14 +978,14 @@
 1251,WZ_STORMGUST@Stormy Knight,chase,89,10,1000,500,5000,no,target,always,0,,,,,,21
 1251,NPC_WINDATTACK@Stormy Knight,attack,187,3,2000,0,5000,no,target,always,0,,,,,,
 1251,NPC_WINDATTACK@Stormy Knight,chase,187,3,1000,0,5000,no,target,always,0,,,,,,
-1251,取り巻き召喚@Stormy Knight,idle,196,6,10000,0,0,no,self,onspawn,0,1245,,,,,
-1251,取り巻き召喚@Stormy Knight,attack,196,6,10000,700,60000,no,self,slavele,3,1607,,,,,27
-1251,取り巻き召喚@Stormy Knight,idle,196,6,10000,700,60000,no,self,slavele,3,1607,,,,,27
-1251,錯覚@Stormy Knight,chase,207,1,200,0,5000,no,target,always,0,,,,,,
+1251,NPC_SUMMONSLAVE@Stormy Knight,idle,196,6,10000,0,0,no,self,onspawn,0,1245,,,,,
+1251,NPC_SUMMONSLAVE@Stormy Knight,attack,196,6,10000,700,60000,no,self,slavele,3,1607,,,,,27
+1251,NPC_SUMMONSLAVE@Stormy Knight,idle,196,6,10000,700,60000,no,self,slavele,3,1607,,,,,27
+1251,NPC_HALLUCINATION@Stormy Knight,chase,207,1,200,0,5000,no,target,always,0,,,,,,
 1251,CR_SHIELDCHARGE@Stormy Knight,attack,250,5,2000,0,20000,no,target,always,0,,,,,,21
 1251,NPC_EXPLOSIONSPIRITS@Stormy Knight,attack,349,5,10000,0,30000,no,self,myhpltmaxrate,30,,,,,,06
-1251,取り巻き呼び戻し@Stormy Knight,attack,354,1,10000,0,30000,no,target,always,0,,,,,,
-1251,取り巻き呼び戻し@Stormy Knight,idle,354,1,10000,0,30000,no,self,always,0,,,,,,
+1251,NPC_RECALL@Stormy Knight,attack,354,1,10000,0,30000,no,target,always,0,,,,,,
+1251,NPC_RECALL@Stormy Knight,idle,354,1,10000,0,30000,no,self,always,0,,,,,,
 1252,AL_TELEPORT@Hatii,idle,26,1,1000,0,5000,no,self,rudeattacked,,,,,,,
 1252,AL_DECAGI@Hatii,chase,30,48,1000,0,20000,no,target,always,0,,,,,,06
 1252,WZ_STORMGUST@Hatii,attack,89,10,2000,0,5000,no,target,always,0,,,,,,
@@ -925,12 +993,12 @@
 1252,NPC_GUIDEATTACK@Hatii,attack,172,5,500,0,20000,no,target,always,0,,,,,,
 1252,NPC_WATERATTACK@Hatii,attack,184,3,2000,0,5000,no,target,always,0,,,,,,06
 1252,NPC_WATERATTACK@Hatii,chase,184,3,1000,0,5000,no,target,always,0,,,,,,06
-1252,取り巻き召喚@Hatii,idle,196,5,10000,0,0,no,self,onspawn,0,1515,,,,,
-1252,取り巻き召喚@Hatii,attack,196,5,10000,700,10000,no,self,slavele,0,1606,,,,,
-1252,取り巻き召喚@Hatii,idle,196,5,10000,700,10000,no,self,slavele,0,1606,,,,,
+1252,NPC_SUMMONSLAVE@Hatii,idle,196,5,10000,0,0,no,self,onspawn,0,1515,,,,,
+1252,NPC_SUMMONSLAVE@Hatii,attack,196,5,10000,700,10000,no,self,slavele,0,1606,,,,,
+1252,NPC_SUMMONSLAVE@Hatii,idle,196,5,10000,700,10000,no,self,slavele,0,1606,,,,,
 1252,NPC_BREAKWEAPON@Hatii,attack,343,10,500,0,30000,no,target,always,0,,,,,,06
-1252,取り巻き呼び戻し@Hatii,attack,354,1,10000,0,30000,no,target,always,0,,,,,,
-1252,取り巻き呼び戻し@Hatii,idle,354,1,10000,0,30000,no,self,always,0,,,,,,
+1252,NPC_RECALL@Hatii,attack,354,1,10000,0,30000,no,target,always,0,,,,,,
+1252,NPC_RECALL@Hatii,idle,354,1,10000,0,30000,no,self,always,0,,,,,,
 1253,AL_TELEPORT@Gargoyle,idle,26,1,1000,0,5000,no,self,rudeattacked,,,,,,,
 1253,AC_CHARGEARROW@Gargoyle,attack,148,1,500,0,5000,no,target,always,0,,,,,,
 1253,NPC_BLINDATTACK@Gargoyle,attack,177,5,500,0,5000,no,target,always,0,,,,,,
@@ -997,14 +1065,14 @@
 1267,AL_TELEPORT@Carat,idle,26,1,1000,0,5000,no,self,rudeattacked,,,,,,,
 1267,NPC_WINDATTACK@Carat,attack,187,1,2000,0,5000,no,target,always,0,,,,,,
 1267,NPC_EMOTION@Carat,walk,197,1,500,0,5000,no,self,always,0,2,,,,,
-1267,錯覚@Carat,chase,207,1,200,500,5000,no,target,always,0,,,,,,18
+1267,NPC_HALLUCINATION@Carat,chase,207,1,200,500,5000,no,target,always,0,,,,,,18
 1267,SA_REVERSEORCISH@Carat,attack,294,1,50,0,30000,no,target,always,0,,,,,,18
 1267,SA_REVERSEORCISH@Carat,chase,294,1,20,0,30000,no,target,always,0,,,,,,18
 1268,AL_TELEPORT@Bloody Knight,idle,26,1,1000,0,5000,no,self,rudeattacked,,,,,,,
 1268,KN_BRANDISHSPEAR@Bloody Knight,attack,57,5,500,1000,5000,no,target,always,0,,,,,,09
 1268,WZ_METEOR@Bloody Knight,attack,83,5,2000,1500,5000,no,target,myhpltmaxrate,30,,,,,,
 1268,WZ_METEOR@Bloody Knight,chase,83,5,1000,1500,5000,no,target,myhpltmaxrate,30,,,,,,
-1268,火属性変化@Bloody Knight,attack,164,1,10000,2000,600000,no,self,myhpltmaxrate,30,,,,,,
+1268,NPC_CHANGEFIRE@Bloody Knight,attack,164,1,10000,2000,600000,no,self,myhpltmaxrate,30,,,,,,
 1268,NPC_DARKNESSATTACK@Bloody Knight,attack,190,2,500,500,5000,no,target,always,0,,,,,,09
 1268,CR_SHIELDCHARGE@Bloody Knight,attack,250,5,500,0,5000,no,target,always,0,,,,,,09
 1268,NPC_BREAKWEAPON@Bloody Knight,attack,343,5,500,0,30000,no,target,always,0,,,,,,
@@ -1027,14 +1095,14 @@
 1272,AL_TELEPORT@Dark Lord,idle,26,1,1000,0,5000,no,self,rudeattacked,,,,,,,
 1272,WZ_METEOR@Dark Lord,attack,83,29,2000,500,5000,no,target,always,0,,,,,,
 1272,WZ_METEOR@Dark Lord,chase,83,29,1000,500,5000,no,target,always,0,,,,,,
-1272,取り巻き召喚@Dark Lord,idle,196,5,10000,0,0,no,self,onspawn,0,1302,,,,,
-1272,取り巻き召喚@Dark Lord,attack,196,3,10000,700,60000,no,self,slavele,3,1605,,,,,
-1272,取り巻き召喚@Dark Lord,idle,196,3,10000,700,60000,no,self,slavele,3,1605,,,,,
+1272,NPC_SUMMONSLAVE@Dark Lord,idle,196,5,10000,0,0,no,self,onspawn,0,1302,,,,,
+1272,NPC_SUMMONSLAVE@Dark Lord,attack,196,3,10000,700,60000,no,self,slavele,3,1605,,,,,
+1272,NPC_SUMMONSLAVE@Dark Lord,idle,196,3,10000,700,60000,no,self,slavele,3,1605,,,,,
 1272,NPC_DARKBLESSING@Dark Lord,attack,203,1,500,800,20000,no,target,always,0,,,,,,09
 1272,NPC_BREAKHELM@Dark Lord,attack,345,10,500,0,30000,no,target,always,0,,,,,,
 1272,NPC_INCREASEFLEE@Dark Lord,attack,350,5,10000,0,30000,no,self,myhpltmaxrate,30,,,,,,06
-1272,取り巻き呼び戻し@Dark Lord,attack,354,1,10000,0,30000,no,target,always,0,,,,,,
-1272,取り巻き呼び戻し@Dark Lord,idle,354,1,10000,0,30000,no,self,always,0,,,,,,
+1272,NPC_RECALL@Dark Lord,attack,354,1,10000,0,30000,no,target,always,0,,,,,,
+1272,NPC_RECALL@Dark Lord,idle,354,1,10000,0,30000,no,self,always,0,,,,,,
 1273,AL_INCAGI@Orc Lady,chase,29,1,200,700,30000,no,self,always,0,,,,,,30
 1273,NPC_GROUNDATTACK@Orc Lady,attack,185,3,500,500,5000,no,target,always,0,,,,,,
 1273,NPC_EMOTION@Orc Lady,chase,197,1,500,0,5000,no,self,always,0,3,,,,,
@@ -1042,7 +1110,7 @@
 1274,NPC_EMOTION@Megalith,idle,197,1,200,0,5000,no,self,always,0,9,,,,,
 1275,AL_TELEPORT@Alice,idle,26,1,1000,0,5000,no,self,rudeattacked,,,,,,,
 1275,AL_HEAL@Alice,idle,28,9,10000,500,5000,no,friend,friendhpltmaxrate,60,,,,,,03
-1275,取り巻き召喚@Alice,idle,196,1,50,2000,60000,no,self,slavele,0,1261,,,,,
+1275,NPC_SUMMONSLAVE@Alice,idle,196,1,50,2000,60000,no,self,slavele,0,1261,,,,,
 1275,CR_SHIELDCHARGE@Alice,attack,250,3,2000,0,5000,no,target,always,0,,,,,,06
 1275,SA_DISPELL@Alice,attack,289,5,500,0,30000,no,target,always,0,,,,,,
 1275,SA_DISPELL@Alice,chase,289,5,200,0,30000,no,target,always,0,,,,,,
@@ -1079,7 +1147,7 @@
 1283,WZ_HEAVENDRIVE@Chimera,chase,91,5,200,1200,5000,no,target,always,0,,,,,,06
 1283,NPC_SPLASHATTACK@Chimera,attack,174,1,500,0,5000,no,target,always,0,,,,,,
 1283,NPC_FIREATTACK@Chimera,attack,186,3,500,500,5000,no,target,always,0,,,,,,06
-1283,取り巻き召喚@Chimera,idle,196,4,10000,2000,60000,no,self,slavele,0,1253,,,,,
+1283,NPC_SUMMONSLAVE@Chimera,idle,196,4,10000,2000,60000,no,self,slavele,0,1253,,,,,
 1283,CR_AUTOGUARD@Chimera,attack,249,5,500,0,30000,no,self,always,0,,,,,,
 1283,CR_AUTOGUARD@Chimera,chase,249,5,1000,0,30000,no,self,longrangeattacked,,,,,,,
 1283,NPC_BREAKSIELD@Chimera,attack,346,5,500,0,5000,no,target,always,0,,,,,,06
@@ -1091,14 +1159,14 @@
 1289,KN_BRANDISHSPEAR@Maya Purple,attack,57,10,500,1000,5000,no,target,always,0,,,,,,
 1289,WZ_HEAVENDRIVE@Maya Purple,attack,91,5,500,1200,5000,yes,target,always,0,,,,,,
 1289,WZ_HEAVENDRIVE@Maya Purple,chase,91,5,200,1200,5000,yes,target,always,0,,,,,,
-1289,取り巻き召喚@Maya Purple,idle,196,3,10000,2000,60000,no,self,slavele,0,1194,,,,,
+1289,NPC_SUMMONSLAVE@Maya Purple,idle,196,3,10000,2000,60000,no,self,slavele,0,1194,,,,,
 1289,NPC_EMOTION@Maya Purple,chase,197,1,50,0,30000,no,self,always,0,19,161,,,,
 1289,NPC_EMOTION@Maya Purple,idle,197,1,200,0,5000,no,self,always,0,7,181,,,,
 1290,AL_TELEPORT@Skeleton General,idle,26,1,1000,0,5000,no,self,rudeattacked,,,,,,,
 1290,AS_SONICBLOW@Skeleton General,attack,136,10,500,800,5000,no,target,always,0,,,,,,
 1290,NPC_COMBOATTACK@Skeleton General,attack,171,2,500,700,5000,no,target,always,0,,,,,,
 1290,NPC_SPLASHATTACK@Skeleton General,attack,174,1,500,0,5000,no,target,always,0,,,,,,
-1290,取り巻き召喚@Skeleton General,idle,196,1,10000,2000,60000,no,self,slavele,0,1016,1028,,,,
+1290,NPC_SUMMONSLAVE@Skeleton General,idle,196,1,10000,2000,60000,no,self,slavele,0,1016,1028,,,,
 1291,AL_TELEPORT@Wraith Dead,idle,26,1,1000,0,5000,no,self,rudeattacked,,,,,,,
 1291,AL_DECAGI@Wraith Dead,chase,30,9,200,1000,20000,no,target,always,0,,,,,,29
 1291,AS_GRIMTOOTH@Wraith Dead,chase,137,5,1000,0,5000,no,target,always,0,,,,,,
@@ -1107,8 +1175,8 @@
 1291,NPC_CURSEATTACK@Wraith Dead,chase,181,5,200,800,5000,no,target,always,0,,,,,,29
 1292,AL_TELEPORT@Mini Demon,idle,26,1,1000,0,5000,no,self,rudeattacked,,,,,,,
 1292,NPC_DARKNESSATTACK@Mini Demon,attack,190,1,2000,0,5000,no,target,always,0,,,,,,
-1292,取り巻き召喚@Mini Demon,attack,196,2,10000,2000,60000,no,self,slavele,0,1109,,,,,11
-1292,取り巻き召喚@Mini Demon,idle,196,2,10000,2000,60000,no,self,slavele,0,1109,,,,,11
+1292,NPC_SUMMONSLAVE@Mini Demon,attack,196,2,10000,2000,60000,no,self,slavele,0,1109,,,,,11
+1292,NPC_SUMMONSLAVE@Mini Demon,idle,196,2,10000,2000,60000,no,self,slavele,0,1109,,,,,11
 1292,NPC_EMOTION@Mini Demon,chase,197,1,50,0,30000,no,self,always,0,19,129,,,,
 1292,NPC_EMOTION@Mini Demon,idle,197,1,200,0,5000,no,self,always,0,18,149,,,,
 1292,NPC_DARKBREATH@Mini Demon,attack,202,2,500,800,5000,no,target,always,0,,,,,,29
@@ -1121,19 +1189,19 @@
 1293,AL_TELEPORT@Creamy Fear,idle,26,1,1000,0,5000,no,self,rudeattacked,,,,,,,
 1293,NPC_BLINDATTACK@Creamy Fear,attack,177,5,500,0,5000,no,target,always,0,,,,,,
 1293,NPC_CURSEATTACK@Creamy Fear,attack,181,5,500,800,5000,no,target,always,0,,,,,,
-1293,取り巻き召喚@Creamy Fear,idle,196,3,10000,2000,60000,no,self,slavele,0,1018,,,,,
+1293,NPC_SUMMONSLAVE@Creamy Fear,idle,196,3,10000,2000,60000,no,self,slavele,0,1018,,,,,
 1293,RG_INTIMIDATE@Creamy Fear,attack,219,1,500,0,5000,no,target,always,0,,,,,,
 1294,AL_TELEPORT@Killer Mantis,idle,26,1,1000,0,5000,no,self,rudeattacked,,,,,,,
 1294,NPC_CRITICALSLASH@Killer Mantis,attack,170,1,500,500,5000,no,target,always,0,,,,,,06
 1294,NPC_COMBOATTACK@Killer Mantis,attack,171,1,500,700,5000,no,target,always,0,,,,,,
 1294,NPC_GROUNDATTACK@Killer Mantis,attack,185,3,500,500,5000,no,target,always,0,,,,,,06
-1294,取り巻き召喚@Killer Mantis,idle,196,2,10000,2000,60000,no,self,slavele,0,1139,,,,,
+1294,NPC_SUMMONSLAVE@Killer Mantis,idle,196,2,10000,2000,60000,no,self,slavele,0,1139,,,,,
 1294,NPC_EMOTION@Killer Mantis,chase,197,1,50,0,30000,no,self,always,0,19,129,,,,
 1294,NPC_EMOTION@Killer Mantis,idle,197,1,200,0,5000,no,self,always,0,6,149,,,,
 1295,MG_LIGHTNINGBOLT@Owl Baron,attack,20,5,2000,0,5000,no,target,always,0,,,,,,
 1295,MG_LIGHTNINGBOLT@Owl Baron,chase,20,5,1000,0,5000,no,target,always,0,,,,,,
 1295,AL_TELEPORT@Owl Baron,idle,26,1,1000,0,5000,no,self,rudeattacked,,,,,,,
-1295,取り巻き召喚@Owl Baron,idle,196,2,10000,2000,60000,no,self,slavele,0,1320,,,,,
+1295,NPC_SUMMONSLAVE@Owl Baron,idle,196,2,10000,2000,60000,no,self,slavele,0,1320,,,,,
 1295,NPC_EMOTION@Owl Baron,idle,197,1,200,0,5000,no,self,always,0,32,,,,,
 1295,NPC_EMOTION@Owl Baron,chase,197,1,50,0,30000,no,self,always,0,19,161,,,,
 1295,NPC_EMOTION@Owl Baron,idle,197,1,200,0,5000,no,self,always,0,6,181,,,,
@@ -1141,8 +1209,8 @@
 1296,AL_TELEPORT@Kobold Leader,idle,26,1,1000,0,5000,no,self,rudeattacked,,,,,,,
 1296,BS_ADRENALINE@Kobold Leader,attack,111,10,500,1500,30000,no,self,always,0,,,,,,06
 1296,BS_ADRENALINE@Kobold Leader,chase,111,10,200,1500,30000,no,self,always,0,,,,,,06
-1296,取り巻き召喚@Kobold Leader,attack,196,1,10000,2000,60000,no,self,slavele,2,1133,1134,1135,1282,,27
-1296,取り巻き召喚@Kobold Leader,idle,196,1,10000,2000,60000,no,self,slavele,2,1133,1134,1135,1282,,27
+1296,NPC_SUMMONSLAVE@Kobold Leader,attack,196,1,10000,2000,60000,no,self,slavele,2,1133,1134,1135,1282,,27
+1296,NPC_SUMMONSLAVE@Kobold Leader,idle,196,1,10000,2000,60000,no,self,slavele,2,1133,1134,1135,1282,,27
 1296,CR_SHIELDCHARGE@Kobold Leader,attack,250,3,500,0,5000,no,target,always,0,,,,,,06
 1297,AL_TELEPORT@Ancient Mummy,idle,26,1,1000,0,5000,no,self,rudeattacked,,,,,,,
 1297,NPC_DARKBREATH@Ancient Mummy,attack,202,3,500,800,5000,no,target,always,0,,,,,,07
@@ -1150,20 +1218,20 @@
 1298,AL_TELEPORT@Zombie Master,idle,26,1,1000,0,5000,no,self,rudeattacked,,,,,,,
 1298,KN_BRANDISHSPEAR@Zombie Master,attack,57,5,500,1000,5000,no,target,always,0,,,,,,
 1298,NPC_POISON�@Zombie Master,attack,176,3,500,800,5000,no,target,always,0,,,,,,
-1298,取り巻き召喚@Zombie Master,idle,196,2,10000,2000,60000,no,self,slavele,0,1036,,,,,
+1298,NPC_SUMMONSLAVE@Zombie Master,idle,196,2,10000,2000,60000,no,self,slavele,0,1036,,,,,
 1299,AL_TELEPORT@Goblin Leader,idle,26,1,1000,0,5000,no,self,rudeattacked,,,,,,,
 1299,BS_MAXIMIZE@Goblin Leader,attack,114,5,500,1000,30000,no,self,always,0,,,,,,27
 1299,BS_MAXIMIZE@Goblin Leader,chase,114,5,200,1000,30000,no,self,always,0,,,,,,27
-1299,取り巻き召喚@Goblin Leader,attack,196,1,10000,2000,60000,no,self,slavele,2,1122,1123,1124,1125,1126,27
-1299,取り巻き召喚@Goblin Leader,idle,196,1,10000,2000,60000,no,self,slavele,2,1122,1123,1124,1125,1126,27
+1299,NPC_SUMMONSLAVE@Goblin Leader,attack,196,1,10000,2000,60000,no,self,slavele,2,1122,1123,1124,1125,1126,27
+1299,NPC_SUMMONSLAVE@Goblin Leader,idle,196,1,10000,2000,60000,no,self,slavele,2,1122,1123,1124,1125,1126,27
 1299,CR_SHIELDCHARGE@Goblin Leader,attack,250,3,500,0,5000,no,target,always,0,,,,,,27
 1300,NPC_POISON�@Caterpillar,attack,176,5,500,800,5000,no,target,always,0,,,,,,
 1300,NPC_SILENCEATTACK@Caterpillar,attack,178,3,500,700,5000,no,target,always,0,,,,,,
 1300,NPC_PETRIFYATTACK@Caterpillar,attack,180,5,500,500,5000,no,target,always,0,,,,,,
 1301,AL_TELEPORT@Am Mut,idle,26,1,1000,0,5000,no,self,rudeattacked,,,,,,,
-1301,メマーナイト@Am Mut,attack,42,9,500,800,5000,no,target,always,0,,,,,,08
+1301,MC_MAMMONITE@Am Mut,attack,42,9,500,800,5000,no,target,always,0,,,,,,08
 1301,NPC_DARKNESSATTACK@Am Mut,attack,190,3,500,500,5000,no,target,always,0,,,,,,06
-1301,取り巻き召喚@Am Mut,idle,196,2,10000,2000,60000,no,self,slavele,0,1110,,,,,
+1301,NPC_SUMMONSLAVE@Am Mut,idle,196,2,10000,2000,60000,no,self,slavele,0,1110,,,,,
 1301,NPC_EMOTION@Am Mut,walk,197,1,500,0,5000,no,self,always,0,2,,,,,
 1301,AM_ACIDTERROR@Am Mut,chase,230,5,200,0,5000,no,target,always,0,,,,,,29
 1302,AL_TELEPORT@Dark Illusion,idle,26,1,1000,0,5000,no,self,rudeattacked,,,,,,,
@@ -1180,27 +1248,27 @@
 1304,AL_TELEPORT@Giant Spider,idle,26,1,1000,0,5000,no,self,rudeattacked,,,,,,,
 1304,AS_GRIMTOOTH@Giant Spider,chase,137,5,1000,0,5000,no,target,always,0,,,,,,
 1304,NPC_POISON�@Giant Spider,attack,176,5,500,800,5000,no,target,always,0,,,,,,
-1304,取り巻き召喚@Giant Spider,idle,196,2,10000,2000,60000,no,self,slavele,0,1100,,,,,
+1304,NPC_SUMMONSLAVE@Giant Spider,idle,196,2,10000,2000,60000,no,self,slavele,0,1100,,,,,
 1304,NPC_EMOTION@Giant Spider,chase,197,1,50,0,30000,no,self,always,0,19,129,,,,
 1304,NPC_EMOTION@Giant Spider,idle,197,1,200,0,5000,no,self,always,0,9,149,,,,
 1304,NPC_HOLDWEB@Giant Spider,attack,342,1,500,0,30000,no,target,always,0,,,,,,
 1305,AL_TELEPORT@Ancient Worm,idle,26,1,1000,0,5000,no,self,rudeattacked,,,,,,,
 1305,AS_VENOMDUST@Ancient Worm,attack,140,1,500,1500,5000,no,around5,always,0,,,,,,
 1305,NPC_POISON�@Ancient Worm,attack,176,5,500,800,5000,no,target,always,0,,,,,,
-1305,取り巻き召喚@Ancient Worm,idle,196,2,10000,2000,60000,no,self,slavele,0,1099,,,,,
+1305,NPC_SUMMONSLAVE@Ancient Worm,idle,196,2,10000,2000,60000,no,self,slavele,0,1099,,,,,
 1305,NPC_HOLDWEB@Ancient Worm,attack,342,1,500,0,30000,no,target,always,0,,,,,,
 1306,SM_MAGNUM@Leib Olmai,attack,7,9,500,500,5000,no,self,always,0,,,,,,06
 1306,SM_ENDURE@Leib Olmai,chase,8,1,1000,0,10000,no,self,longrangeattacked,,,,,,,06
 1306,AL_TELEPORT@Leib Olmai,idle,26,1,1000,0,5000,no,self,rudeattacked,,,,,,,
 1306,NPC_STUNATTACK@Leib Olmai,attack,179,3,500,1500,5000,no,target,always,0,,,,,,06
 1306,NPC_GROUNDATTACK@Leib Olmai,attack,185,1,2000,0,5000,no,target,always,0,,,,,,
-1306,取り巻き召喚@Leib Olmai,idle,196,3,10000,2000,60000,no,self,slavele,0,1243,,,,,
+1306,NPC_SUMMONSLAVE@Leib Olmai,idle,196,3,10000,2000,60000,no,self,slavele,0,1243,,,,,
 1306,NPC_EMOTION@Leib Olmai,chase,197,1,50,0,30000,no,self,always,0,19,129,,,,
 1306,NPC_EMOTION@Leib Olmai,idle,197,1,200,0,5000,no,self,always,0,6,149,,,,
 1307,AL_TELEPORT@Cat o' Nine Tails,idle,26,1,1000,0,5000,no,self,rudeattacked,,,,,,,
-1307,メマーナイト@Cat o' Nine Tails,attack,42,9,500,800,5000,no,target,always,0,,,,,,08
+1307,MC_MAMMONITE@Cat o' Nine Tails,attack,42,9,500,800,5000,no,target,always,0,,,,,,08
 1307,NPC_GUIDEATTACK@Cat o' Nine Tails,attack,172,2,500,1000,20000,no,target,always,0,,,,,,
-1307,取り巻き召喚@Cat o' Nine Tails,idle,196,2,10000,2000,60000,no,self,slavele,0,1180,,,,,
+1307,NPC_SUMMONSLAVE@Cat o' Nine Tails,idle,196,2,10000,2000,60000,no,self,slavele,0,1180,,,,,
 1307,NPC_EMOTION@Cat o' Nine Tails,idle,197,1,200,0,5000,no,self,always,0,22,,,,,
 1308,SM_MAGNUM@Panzer Goblin,attack,7,9,500,500,5000,no,self,always,0,,,,,,06
 1308,NPC_SELFDESTRUCTION@Panzer Goblin,attack,173,1,500,2000,0,no,self,myhpltmaxrate,50,,,,,,23
@@ -1211,22 +1279,22 @@
 1309,NPC_BLINDATTACK@Gajomart,attack,177,5,500,0,5000,no,target,always,0,,,,,,
 1309,NPC_BLINDATTACK@Gajomart,chase,177,5,200,0,5000,no,target,always,0,,,,,,
 1309,NPC_FIREATTACK@Gajomart,attack,186,1,2000,0,5000,no,target,always,0,,,,,,
-1309,取り巻き召喚@Gajomart,idle,196,2,10000,2000,60000,no,self,slavele,0,1129,,,,,
-1309,錯覚@Gajomart,attack,207,1,500,500,5000,no,target,always,0,,,,,,
+1309,NPC_SUMMONSLAVE@Gajomart,idle,196,2,10000,2000,60000,no,self,slavele,0,1129,,,,,
+1309,NPC_HALLUCINATION@Gajomart,attack,207,1,500,500,5000,no,target,always,0,,,,,,
 1309,RG_STRIPWEAPON@Gajomart,attack,215,5,500,0,30000,no,target,always,0,,,,,,
 1310,AL_TELEPORT@Majoruros,idle,26,1,1000,0,5000,no,self,rudeattacked,,,,,,,
 1310,WZ_HEAVENDRIVE@Majoruros,attack,91,5,500,1200,5000,yes,target,always,0,,,,,,02
 1310,WZ_HEAVENDRIVE@Majoruros,chase,91,5,200,1200,5000,yes,target,always,0,,,,,,02
 1310,BS_HAMMERFALL@Majoruros,attack,110,5,500,1500,5000,no,target,always,0,,,,,,
 1310,NPC_FIREATTACK@Majoruros,attack,186,3,500,500,5000,no,target,always,0,,,,,,06
-1310,取り巻き召喚@Majoruros,idle,196,2,10000,2000,60000,no,self,slavele,0,1149,,,,,
+1310,NPC_SUMMONSLAVE@Majoruros,idle,196,2,10000,2000,60000,no,self,slavele,0,1149,,,,,
 1310,NPC_EMOTION@Majoruros,chase,197,1,50,0,30000,no,self,always,0,19,129,,,,
 1310,NPC_EMOTION@Majoruros,idle,197,1,200,0,5000,no,self,always,0,9,149,,,,
 1311,SM_ENDURE@Gullinbursti,chase,8,1,1000,0,10000,no,self,longrangeattacked,,,,,,,06
 1311,AL_TELEPORT@Gullinbursti,idle,26,1,1000,0,5000,no,self,rudeattacked,,,,,,,
 1311,NPC_STUNATTACK@Gullinbursti,attack,179,5,500,1500,5000,no,target,always,0,,,,,,06
 1311,NPC_GROUNDATTACK@Gullinbursti,attack,185,3,500,500,5000,no,target,always,0,,,,,,06
-1311,取り巻き召喚@Gullinbursti,idle,196,4,10000,2000,60000,no,self,slavele,0,1166,,,,,
+1311,NPC_SUMMONSLAVE@Gullinbursti,idle,196,4,10000,2000,60000,no,self,slavele,0,1166,,,,,
 1311,NPC_EMOTION@Gullinbursti,chase,197,1,50,0,30000,no,self,always,0,19,129,,,,
 1311,NPC_EMOTION@Gullinbursti,idle,197,1,200,0,5000,no,self,always,0,6,149,,,,
 1311,RG_STRIPSHIELD@Gullinbursti,attack,216,5,500,0,30000,no,target,always,0,,,,,,
@@ -1238,13 +1306,13 @@
 1312,AS_SONICBLOW@Turtle General,attack,136,10,2000,0,5000,no,target,always,0,,,,,,18
 1312,NPC_STUNATTACK@Turtle General,attack,179,5,2000,0,5000,no,target,always,0,,,,,,06
 1312,NPC_GROUNDATTACK@Turtle General,attack,185,3,2000,0,5000,no,target,always,0,,,,,,06
-1312,取り巻き召喚@Turtle General,idle,196,1,10000,0,0,no,self,onspawn,0,1314,1315,1316,1318,1319,
-1312,取り巻き召喚@Turtle General,attack,196,1,10000,700,60000,no,self,slavele,3,1364,1594,1600,1601,1602,
-1312,取り巻き召喚@Turtle General,idle,196,1,10000,700,60000,no,self,slavele,3,1364,1594,1600,1601,1602,
+1312,NPC_SUMMONSLAVE@Turtle General,idle,196,1,10000,0,0,no,self,onspawn,0,1314,1315,1316,1318,1319,
+1312,NPC_SUMMONSLAVE@Turtle General,attack,196,1,10000,700,60000,no,self,slavele,3,1364,1594,1600,1601,1602,
+1312,NPC_SUMMONSLAVE@Turtle General,idle,196,1,10000,700,60000,no,self,slavele,3,1364,1594,1600,1601,1602,
 1312,NPC_BREAKWEAPON@Turtle General,attack,343,10,500,0,20000,no,target,always,0,,,,,,18
 1312,NPC_INCREASEFLEE@Turtle General,attack,350,5,10000,0,120000,no,self,myhpltmaxrate,30,,,,,,06
-1312,取り巻き呼び戻し@Turtle General,attack,354,1,10000,0,30000,no,target,always,0,,,,,,
-1312,取り巻き呼び戻し@Turtle General,idle,354,1,10000,0,30000,no,self,always,0,,,,,,
+1312,NPC_RECALL@Turtle General,attack,354,1,10000,0,30000,no,target,always,0,,,,,,
+1312,NPC_RECALL@Turtle General,idle,354,1,10000,0,30000,no,self,always,0,,,,,,
 1313,KN_SPEARSTAB@Mobster,attack,58,5,500,800,5000,no,target,always,0,,,,,,06
 1313,KN_SPEARBOOMERANG@Mobster,chase,59,5,200,0,5000,no,target,always,0,,,,,,29
 1313,TF_SPRINKLESAND@Mobster,attack,149,1,2000,0,5000,no,target,always,0,,,,,,29
@@ -1254,15 +1322,15 @@
 1314,NPC_GROUNDATTACK@Permeter,attack,185,3,500,500,5000,no,target,always,0,,,,,,06
 1314,NPC_EMOTION@Permeter,walk,197,1,500,0,5000,no,self,always,0,2,,,,,
 1314,NPC_EMOTION@Permeter,chase,197,1,50,0,30000,no,self,always,0,19,145,,,,
-1314,錯覚@Permeter,attack,207,1,500,500,5000,no,target,always,0,,,,,,
-1314,錯覚@Permeter,chase,207,1,200,500,5000,no,target,always,0,,,,,,
+1314,NPC_HALLUCINATION@Permeter,attack,207,1,500,500,5000,no,target,always,0,,,,,,
+1314,NPC_HALLUCINATION@Permeter,chase,207,1,200,500,5000,no,target,always,0,,,,,,
 1314,AM_POTIONPITCHER@Permeter,any,231,4,10000,500,5000,yes,self,myhpltmaxrate,30,,,,,,05
 1314,AM_POTIONPITCHER@Permeter,any,231,4,10000,500,5000,yes,friend,friendhpltmaxrate,30,,,,,,05
 1315,AL_TELEPORT@Assaulter,idle,26,1,1000,0,5000,no,self,rudeattacked,,,,,,,
 1315,AS_SONICBLOW@Assaulter,attack,136,10,500,800,5000,no,target,always,0,,,,,,
 1315,TF_BACKSLIDING@Assaulter,attack,150,1,10000,500,600000,no,self,myhpltmaxrate,10,,,,,,
 1315,NPC_WINDATTACK@Assaulter,attack,187,3,500,500,5000,no,target,always,0,,,,,,06
-1315,取り巻き召喚@Assaulter,chase,196,2,10000,0,600000,no,self,myhpltmaxrate,10,1364,,,,,
+1315,NPC_SUMMONSLAVE@Assaulter,chase,196,2,10000,0,600000,no,self,myhpltmaxrate,10,1364,,,,,
 1315,NPC_EMOTION@Assaulter,attack,197,1,2000,0,600000,no,self,myhpltmaxrate,20,23,,,,,
 1315,NPC_EMOTION@Assaulter,chase,197,1,50,0,30000,no,self,always,0,19,129,,,,
 1315,NPC_EMOTION@Assaulter,idle,197,1,200,0,5000,no,self,always,0,7,149,,,,
@@ -1300,7 +1368,7 @@
 1321,NPC_WINDATTACK@Dragon Tail,attack,187,2,500,500,5000,no,target,always,0,,,,,,
 1321,NPC_BLOODDRAIN@Dragon Tail,attack,199,1,500,0,5000,no,target,always,0,,,,,,
 1322,SM_BASH@Spring Rabbit,attack,5,10,500,0,5000,no,target,always,0,,,,,,06
-1322,石投げ@Spring Rabbit,chase,152,1,1000,0,5000,no,target,always,0,,,,,,
+1322,TF_THROWSTONE@Spring Rabbit,chase,152,1,1000,0,5000,no,target,always,0,,,,,,
 1322,NPC_GROUNDATTACK@Spring Rabbit,attack,185,1,2000,0,5000,no,target,always,0,,,,,,
 1322,NPC_EMOTION@Spring Rabbit,walk,197,1,500,0,5000,no,self,always,0,2,,,,,
 1322,NPC_EMOTION@Spring Rabbit,chase,197,1,50,0,30000,no,self,always,0,19,131,,,,
@@ -1317,7 +1385,7 @@
 1366,AL_TELEPORT@Lava Golem,idle,26,1,1000,0,5000,no,self,rudeattacked,,,,,,,
 1366,WZ_FIREPILLAR@Lava Golem,idle,80,3,50,0,5000,no,around1,always,0,,,,,,
 1366,NPC_FIREATTACK@Lava Golem,attack,186,3,500,500,5000,no,target,always,0,,,,,,07
-1366,取り巻き召喚@Lava Golem,idle,196,2,10000,2000,60000,no,self,slavele,0,1367,,,,,
+1366,NPC_SUMMONSLAVE@Lava Golem,idle,196,2,10000,2000,60000,no,self,slavele,0,1367,,,,,
 1367,MG_FIREBALL@Blazer,chase,17,9,1000,0,5000,no,target,always,0,,,,,,
 1367,AL_TELEPORT@Blazer,idle,26,1,1000,0,5000,no,self,rudeattacked,,,,,,,
 1367,WZ_SIGHTRASHER@Blazer,attack,81,5,500,1000,5000,no,self,always,0,,,,,,06
@@ -1342,8 +1410,8 @@
 1371,NPC_SILENCEATTACK@False Angel,chase,178,5,200,700,5000,no,target,always,0,,,,,,29
 1371,NPC_CURSEATTACK@False Angel,attack,181,5,500,800,5000,no,target,always,0,,,,,,29
 1371,NPC_CURSEATTACK@False Angel,chase,181,5,200,800,5000,no,target,always,0,,,,,,29
-1371,錯覚@False Angel,attack,207,1,500,500,5000,no,target,always,0,,,,,,29
-1371,錯覚@False Angel,chase,207,1,200,500,5000,no,target,always,0,,,,,,29
+1371,NPC_HALLUCINATION@False Angel,attack,207,1,500,500,5000,no,target,always,0,,,,,,29
+1371,NPC_HALLUCINATION@False Angel,chase,207,1,200,500,5000,no,target,always,0,,,,,,29
 1371,NPC_DARKSOULSTRIKE@False Angel,attack,340,7,500,700,5000,no,target,always,0,,,,,,29
 1371,NPC_DARKSOULSTRIKE@False Angel,chase,340,7,200,700,5000,no,target,always,0,,,,,,29
 1372,BS_ADRENALINE@Goat,attack,111,10,500,1500,30000,no,self,always,0,,,,,,06
@@ -1355,14 +1423,14 @@
 1373,AL_DECAGI@Lord of Death,chase,30,48,1000,0,20000,no,target,always,0,,,,,,
 1373,KN_BRANDISHSPEAR@Lord of Death,attack,57,12,2000,500,5000,no,target,always,0,,,,,,
 1373,NPC_STUNATTACK@Lord of Death,attack,179,5,2000,0,5000,no,target,always,0,,,,,,
-1373,取り巻き召喚@Lord of Death,idle,196,1,10000,0,0,no,self,onspawn,0,1179,1208,1208,1508,1509,
-1373,取り巻き召喚@Lord of Death,attack,196,1,10000,700,10000,no,self,slavele,3,1179,1490,1490,1508,1509,
-1373,取り巻き召喚@Lord of Death,idle,196,1,10000,700,10000,no,self,slavele,3,1179,1490,1490,1508,1509,
+1373,NPC_SUMMONSLAVE@Lord of Death,idle,196,1,10000,0,0,no,self,onspawn,0,1179,1208,1208,1508,1509,
+1373,NPC_SUMMONSLAVE@Lord of Death,attack,196,1,10000,700,10000,no,self,slavele,3,1179,1490,1490,1508,1509,
+1373,NPC_SUMMONSLAVE@Lord of Death,idle,196,1,10000,700,10000,no,self,slavele,3,1179,1490,1490,1508,1509,
 1373,NPC_DARKGRANDCROSS@Lord of Death,attack,339,10,1000,700,5000,no,self,myhpltmaxrate,30,,,,,,
 1373,NPC_DARKSOULSTRIKE@Lord of Death,chase,340,10,1000,0,5000,no,target,always,0,,,,,,
 1373,NPC_INCREASEFLEE@Lord of Death,attack,350,5,10000,0,120000,no,self,myhpltmaxrate,30,,,,,,06
-1373,取り巻き呼び戻し@Lord of Death,attack,354,1,10000,0,30000,no,target,always,0,,,,,,
-1373,取り巻き呼び戻し@Lord of Death,idle,354,1,10000,0,30000,no,self,always,0,,,,,,
+1373,NPC_RECALL@Lord of Death,attack,354,1,10000,0,30000,no,target,always,0,,,,,,
+1373,NPC_RECALL@Lord of Death,idle,354,1,10000,0,30000,no,self,always,0,,,,,,
 1374,AL_TELEPORT@Incubus,idle,26,1,50,0,5000,no,self,always,0,,,,,,
 1374,NPC_MENTALBREAKER@Incubus,attack,159,3,500,800,5000,no,target,always,0,,,,,,14
 1374,NPC_MENTALBREAKER@Incubus,chase,159,3,200,800,5000,no,target,always,0,,,,,,14
@@ -1447,22 +1515,22 @@
 1388,PR_SANCTUARY@Arc Angeling,chase,70,10,10000,500,30000,no,self,always,0,,,,,,18
 1388,NPC_HOLYATTACK@Arc Angeling,attack,189,5,500,0,5000,no,target,always,0,,,,,,18
 1388,NPC_HOLYATTACK@Arc Angeling,chase,189,5,200,0,5000,no,target,always,0,,,,,,18
-1388,取り巻き召喚@Arc Angeling,idle,196,1,10000,0,0,no,self,onspawn,0,1246,1248,1249,1261,1267,
-1388,取り巻き召喚@Arc Angeling,attack,196,1,10000,700,60000,no,self,slavele,3,1246,1248,1249,1261,1267,18
-1388,取り巻き召喚@Arc Angeling,idle,196,1,10000,700,60000,no,self,slavele,3,1246,1248,1249,1261,1267,18
+1388,NPC_SUMMONSLAVE@Arc Angeling,idle,196,1,10000,0,0,no,self,onspawn,0,1246,1248,1249,1261,1267,
+1388,NPC_SUMMONSLAVE@Arc Angeling,attack,196,1,10000,700,60000,no,self,slavele,3,1246,1248,1249,1261,1267,18
+1388,NPC_SUMMONSLAVE@Arc Angeling,idle,196,1,10000,700,60000,no,self,slavele,3,1246,1248,1249,1261,1267,18
 1388,NPC_BARRIER@Arc Angeling,attack,204,1,500,1000,30000,no,self,myhpltmaxrate,30,,,,,,18
 1388,RG_INTIMIDATE@Arc Angeling,attack,219,5,2000,0,5000,no,target,always,0,,,,,,
 1388,CR_GRANDCROSS@Arc Angeling,attack,254,1,2000,0,5000,no,self,always,0,,,,,,
-1388,取り巻き呼び戻し@Arc Angeling,attack,354,1,10000,0,30000,no,target,always,0,,,,,,
-1388,取り巻き呼び戻し@Arc Angeling,idle,354,1,10000,0,30000,no,self,always,0,,,,,,
+1388,NPC_RECALL@Arc Angeling,attack,354,1,10000,0,30000,no,target,always,0,,,,,,
+1388,NPC_RECALL@Arc Angeling,idle,354,1,10000,0,30000,no,self,always,0,,,,,,
 1389,AL_TELEPORT@Dracula,idle,26,1,1000,0,5000,no,self,rudeattacked,,,,,,,
 1389,AL_DECAGI@Dracula,chase,30,48,1000,0,20000,no,target,always,0,,,,,,
 1389,AS_GRIMTOOTH@Dracula,chase,137,5,1000,0,5000,no,target,always,0,,,,,,
 1389,NPC_SILENCEATTACK@Dracula,attack,178,5,2000,0,5000,no,target,always,0,,,,,,
 1389,NPC_SILENCEATTACK@Dracula,chase,178,5,1000,0,5000,no,target,always,0,,,,,,
-1388,取り巻き召喚@Dracula,idle,196,16,10000,0,0,no,self,onspawn,0,1005,,,,,
-1389,取り巻き召喚@Dracula,attack,196,16,10000,700,5000,no,self,slavele,5,1419,,,,,
-1389,取り巻き召喚@Dracula,idle,196,16,10000,700,5000,no,self,slavele,5,1419,,,,,
+1388,NPC_SUMMONSLAVE@Dracula,idle,196,16,10000,0,0,no,self,onspawn,0,1005,,,,,
+1389,NPC_SUMMONSLAVE@Dracula,attack,196,16,10000,700,5000,no,self,slavele,5,1419,,,,,
+1389,NPC_SUMMONSLAVE@Dracula,idle,196,16,10000,700,5000,no,self,slavele,5,1419,,,,,
 1389,NPC_BLOODDRAIN@Dracula,attack,199,1,2000,0,5000,no,target,always,0,,,,,,
 1389,NPC_ENERGYDRAIN@Dracula,chase,200,1,1000,0,5000,no,target,always,0,,,,,,
 1389,MO_BODYRELOCATION@Dracula,chase,264,1,1000,200,5000,no,target,always,0,,,,,,
@@ -1471,8 +1539,8 @@
 1389,NPC_INVISIBLE@Dracula,attack,352,1,2000,200,5000,no,self,always,0,,,,,,
 1389,NPC_INVISIBLE@Dracula,chase,352,1,1000,200,5000,no,self,always,0,,,,,,
 1389,NPC_INVISIBLE@Dracula,idle,352,1,200,200,5000,no,self,always,0,,,,,,
-1389,取り巻き呼び戻し@Dracula,attack,354,1,10000,0,30000,no,target,always,0,,,,,,
-1389,取り巻き呼び戻し@Dracula,idle,354,1,10000,0,30000,no,self,always,0,,,,,,
+1389,NPC_RECALL@Dracula,attack,354,1,10000,0,30000,no,target,always,0,,,,,,
+1389,NPC_RECALL@Dracula,idle,354,1,10000,0,30000,no,self,always,0,,,,,,
 1390,PR_LEXDIVINA@Violy,attack,76,5,500,1000,5000,yes,target,always,0,,,,,,02
 1390,NPC_CURSEATTACK@Violy,attack,181,3,500,800,5000,no,target,always,0,,,,,,02
 1390,NPC_DARKBREATH@Violy,attack,202,2,500,800,5000,no,target,always,0,,,,,,
@@ -1497,16 +1565,16 @@
 1399,WZ_STORMGUST@Baphomet,attack,89,10,2000,0,5000,no,target,always,0,,,,,,29
 1399,WZ_STORMGUST@Baphomet,chase,89,10,1000,0,5000,no,target,always,0,,,,,,29
 1399,NPC_GUIDEATTACK@Baphomet,attack,172,5,2000,0,20000,no,target,always,0,,,,,,29
-1399,取り巻き召喚@Baphomet,idle,196,1,10000,0,0,no,self,onspawn,0,1026,1029,1044,1148,1170,
-1399,取り巻き召喚@Baphomet,attack,196,2,10000,700,20000,no,self,slavele,3,1026,1029,1044,1148,1170,
-1399,取り巻き召喚@Baphomet,idle,196,2,10000,700,20000,no,self,slavele,3,1026,1029,1044,1148,1170,
+1399,NPC_SUMMONSLAVE@Baphomet,idle,196,1,10000,0,0,no,self,onspawn,0,1026,1029,1044,1148,1170,
+1399,NPC_SUMMONSLAVE@Baphomet,attack,196,2,10000,700,20000,no,self,slavele,3,1026,1029,1044,1148,1170,
+1399,NPC_SUMMONSLAVE@Baphomet,idle,196,2,10000,700,20000,no,self,slavele,3,1026,1029,1044,1148,1170,
 1399,NPC_BARRIER@Baphomet,attack,204,1,500,1000,30000,no,self,myhpltmaxrate,30,,,,,,18
-1399,取り巻き呼び戻し@Baphomet,attack,354,1,10000,0,30000,no,target,always,0,,,,,,
-1399,取り巻き呼び戻し@Baphomet,idle,354,1,10000,0,30000,no,self,always,0,,,,,,
+1399,NPC_RECALL@Baphomet,attack,354,1,10000,0,30000,no,target,always,0,,,,,,
+1399,NPC_RECALL@Baphomet,idle,354,1,10000,0,30000,no,self,always,0,,,,,,
 1400,WZ_WATERBALL@Karakasa,chase,86,1,200,500,5000,yes,target,always,0,,,,,,06
 1400,NPC_EMOTION@Karakasa,attack,197,1,10000,0,30000,no,self,always,0,28,133,,,,
-1400,錯覚@Karakasa,attack,207,1,500,500,5000,no,target,always,0,,,,,,31
-1400,錯覚@Karakasa,chase,207,1,200,500,5000,no,target,always,0,,,,,,31
+1400,NPC_HALLUCINATION@Karakasa,attack,207,1,500,500,5000,no,target,always,0,,,,,,31
+1400,NPC_HALLUCINATION@Karakasa,chase,207,1,200,500,5000,no,target,always,0,,,,,,31
 1400,MO_BODYRELOCATION@Karakasa,chase,264,1,1000,500,5000,no,target,always,0,,,,,,06
 1401,SM_BASH@Shinobi,attack,5,5,500,0,5000,no,target,always,0,,,,,,
 1401,AL_TELEPORT@Shinobi,idle,26,1,50,0,5000,no,self,always,0,,,,,,
@@ -1568,15 +1636,15 @@
 1418,MG_FROSTDIVER@Evil Snake Lord,attack,15,10,2000,0,5000,no,target,always,0,,,,,,
 1418,MG_FROSTDIVER@Evil Snake Lord,chase,15,10,1000,0,5000,no,target,always,0,,,,,,
 1418,AL_TELEPORT@Evil Snake Lord,idle,26,1,1000,0,5000,no,self,rudeattacked,,,,,,,
-1418,取り巻き召喚@Evil Snake Lord,idle,196,1,10000,0,0,no,self,onspawn,0,1412,1412,1416,,,
-1418,取り巻き召喚@Evil Snake Lord,attack,196,2,10000,700,60000,no,self,slavele,2,1531,1531,1564,,,
-1418,取り巻き召喚@Evil Snake Lord,idle,196,2,10000,700,60000,no,self,slavele,2,1531,1531,1564,,,
+1418,NPC_SUMMONSLAVE@Evil Snake Lord,idle,196,1,10000,0,0,no,self,onspawn,0,1412,1412,1416,,,
+1418,NPC_SUMMONSLAVE@Evil Snake Lord,attack,196,2,10000,700,60000,no,self,slavele,2,1531,1531,1564,,,
+1418,NPC_SUMMONSLAVE@Evil Snake Lord,idle,196,2,10000,700,60000,no,self,slavele,2,1531,1531,1564,,,
 1418,NPC_DARKBREATH@Evil Snake Lord,attack,202,5,2000,800,5000,no,target,always,0,,,,,,29
 1418,NPC_HOLDWEB@Evil Snake Lord,attack,342,1,10000,0,20000,no,target,always,0,,,,,,02
 1418,NPC_BREAKSIELD@Evil Snake Lord,attack,346,10,500,0,20000,no,target,always,0,,,,,,02
 1418,NPC_EXPLOSIONSPIRITS@Evil Snake Lord,attack,349,5,10000,0,30000,no,self,myhpltmaxrate,30,,,,,,06
-1418,取り巻き呼び戻し@Evil Snake Lord,attack,354,1,10000,0,30000,no,target,always,0,,,,,,
-1418,取り巻き呼び戻し@Evil Snake Lord,idle,354,1,10000,0,30000,no,self,always,0,,,,,,
+1418,NPC_RECALL@Evil Snake Lord,attack,354,1,10000,0,30000,no,target,always,0,,,,,,
+1418,NPC_RECALL@Evil Snake Lord,idle,354,1,10000,0,30000,no,self,always,0,,,,,,
 1419,NPC_BLINDATTACK@Farmiliar,attack,177,1,500,0,5000,no,target,always,0,,,,,,
 1419,NPC_DARKNESSATTACK@Farmiliar,attack,190,1,2000,0,5000,no,target,always,0,,,,,,
 1420,AC_DOUBLE@Skeleton Archer,attack,46,1,500,1000,5000,no,target,always,0,,,,,,
@@ -1606,10 +1674,10 @@
 1429,NPC_POISONATTACK@Argiope,attack,188,2,500,500,5000,no,target,always,0,,,,,,
 1430,NPC_POISON�@Argor,attack,176,2,500,800,5000,no,target,always,0,,,,,,
 1430,NPC_POISONATTACK@Argor,attack,188,1,2000,0,5000,no,target,always,0,,,,,,
-1431,NPC_DARKNESSATTACK@バフォメットJr.,attack,190,2,500,500,5000,no,target,always,0,,,,,,
-1431,NPC_DARKBREATH@バフォメットJr.,attack,202,2,500,500,5000,no,target,always,0,,,,,,
-1431,錯覚@バフォメットJr.,attack,207,1,500,500,5000,no,target,always,0,,,,,,
-1431,錯覚@バフォメットJr.,chase,207,1,200,500,5000,no,target,always,0,,,,,,
+1431,NPC_DARKNESSATTACK@Baphomet Jr.,attack,190,2,500,500,5000,no,target,always,0,,,,,,
+1431,NPC_DARKBREATH@Baphomet Jr.,attack,202,2,500,500,5000,no,target,always,0,,,,,,
+1431,NPC_HALLUCINATION@Baphomet Jr.,attack,207,1,500,500,5000,no,target,always,0,,,,,,
+1431,NPC_HALLUCINATION@Baphomet Jr.,chase,207,1,200,500,5000,no,target,always,0,,,,,,
 1432,TF_SPRINKLESAND@Desert Wolf,attack,149,1,500,0,5000,no,target,always,0,,,,,,
 1432,NPC_FIREATTACK@Desert Wolf,attack,186,1,2000,0,5000,no,target,always,0,,,,,,
 1433,NPC_BLINDATTACK@Deviruchi,attack,177,3,500,0,5000,no,target,always,0,,,,,,
@@ -1801,7 +1869,7 @@
 1490,KN_AUTOCOUNTER@Wanderer,attack,61,5,500,0,5000,no,self,always,0,,,,,,
 1490,NPC_SPLASHATTACK@Wanderer,attack,174,1,500,0,5000,no,target,always,0,,,,,,
 1490,NPC_WINDATTACK@Wanderer,attack,187,2,500,500,5000,no,target,always,0,,,,,,
-1491,メマーナイト@Dokebi,attack,42,5,500,800,5000,no,target,always,0,,,,,,
+1491,MC_MAMMONITE@Dokebi,attack,42,5,500,800,5000,no,target,always,0,,,,,,
 1491,BS_ADRENALINE@Dokebi,attack,111,1,500,1500,30000,no,self,always,0,,,,,,
 1491,BS_ADRENALINE@Dokebi,chase,111,1,200,1500,30000,no,self,always,0,,,,,,
 1491,NPC_DARKNESSATTACK@Dokebi,attack,190,1,2000,0,5000,no,target,always,0,,,,,,
@@ -1810,21 +1878,21 @@
 1492,KN_BRANDISHSPEAR@Samurai Specter,attack,57,10,2000,500,5000,no,target,always,0,,,,,,
 1492,NPC_CRITICALSLASH@Samurai Specter,attack,170,1,2000,0,5000,no,target,always,0,,,,,,
 1492,NPC_GUIDEATTACK@Samurai Specter,attack,172,5,500,0,20000,no,target,always,0,,,,,,
-1492,取り巻き召喚@Samurai Specter,idle,196,5,10000,0,0,no,self,onspawn,0,1401,,,,,
-1492,取り巻き召喚@Samurai Specter,attack,196,5,10000,700,60000,no,self,slavele,2,1560,,,,,
-1492,取り巻き召喚@Samurai Specter,idle,196,5,10000,700,60000,no,self,slavele,2,1560,,,,,
+1492,NPC_SUMMONSLAVE@Samurai Specter,idle,196,5,10000,0,0,no,self,onspawn,0,1401,,,,,
+1492,NPC_SUMMONSLAVE@Samurai Specter,attack,196,5,10000,700,60000,no,self,slavele,2,1560,,,,,
+1492,NPC_SUMMONSLAVE@Samurai Specter,idle,196,5,10000,700,60000,no,self,slavele,2,1560,,,,,
 1492,RG_INTIMIDATE@Samurai Specter,attack,219,10,2000,0,60000,no,target,always,0,,,,,,
 1492,NPC_BREAKARMOR@Samurai Specter,attack,344,10,500,0,20000,no,target,always,0,,,,,,
 1492,NPC_BREAKHELM@Samurai Specter,chase,345,10,200,0,20000,no,target,always,0,,,,,,
 1492,NPC_BREAKSIELD@Samurai Specter,attack,346,5,500,0,20000,no,target,always,0,,,,,,
 1492,NPC_INCREASEFLEE@Samurai Specter,attack,350,5,10000,0,120000,no,self,myhpltmaxrate,30,,,,,,09
-1492,取り巻き呼び戻し@Samurai Specter,attack,354,1,10000,0,30000,no,target,always,0,,,,,,
-1492,取り巻き呼び戻し@Samurai Specter,idle,354,1,10000,0,30000,no,self,always,0,,,,,,
+1492,NPC_RECALL@Samurai Specter,attack,354,1,10000,0,30000,no,target,always,0,,,,,,
+1492,NPC_RECALL@Samurai Specter,idle,354,1,10000,0,30000,no,self,always,0,,,,,,
 1493,AL_HEAL@Dryad,attack,28,9,10000,500,5000,yes,friend,friendhpltmaxrate,60,,,,,,02
 1493,AL_HEAL@Dryad,chase,28,9,10000,500,5000,yes,friend,friendhpltmaxrate,60,,,,,,02
 1493,NPC_GROUNDATTACK@Dryad,attack,185,3,500,500,5000,no,target,always,0,,,,,,
-1493,錯覚@Dryad,attack,207,1,500,500,5000,no,target,always,0,,,,,,
-1493,錯覚@Dryad,chase,207,1,200,500,5000,no,target,always,0,,,,,,
+1493,NPC_HALLUCINATION@Dryad,attack,207,1,500,500,5000,no,target,always,0,,,,,,
+1493,NPC_HALLUCINATION@Dryad,chase,207,1,200,500,5000,no,target,always,0,,,,,,
 1493,NPC_HOLDWEB@Dryad,attack,342,1,500,0,30000,no,target,always,0,,,,,,03
 1494,NPC_COMBOATTACK@Beetle King,attack,171,1,500,700,5000,no,target,always,0,,,,,,
 1494,NPC_GROUNDATTACK@Beetle King,attack,185,2,500,500,5000,no,target,always,0,,,,,,06
@@ -1856,16 +1924,16 @@
 1502,WZ_VERMILION@Bring it on!,chase,85,10,1000,0,5000,no,target,always,0,,,,,,18
 1502,WZ_STORMGUST@Bring it on!,attack,89,10,2000,0,5000,no,target,always,0,,,,,,18
 1502,WZ_STORMGUST@Bring it on!,chase,89,10,1000,0,5000,no,target,always,0,,,,,,18
-1502,取り巻き召喚@Bring it on!,idle,196,5,10000,0,0,no,self,onspawn,0,1101,1109,1110,,,
-1502,取り巻き召喚@Bring it on!,attack,196,5,10000,700,10000,no,self,slavele,3,1431,1433,1491,,,18
-1502,取り巻き召喚@Bring it on!,idle,196,5,10000,700,10000,no,self,slavele,3,1431,1433,1491,,,18
+1502,NPC_SUMMONSLAVE@Bring it on!,idle,196,5,10000,0,0,no,self,onspawn,0,1101,1109,1110,,,
+1502,NPC_SUMMONSLAVE@Bring it on!,attack,196,5,10000,700,10000,no,self,slavele,3,1431,1433,1491,,,18
+1502,NPC_SUMMONSLAVE@Bring it on!,idle,196,5,10000,700,10000,no,self,slavele,3,1431,1433,1491,,,18
 1502,RG_STRIPWEAPON@Bring it on!,attack,215,5,2000,0,20000,no,target,always,0,,,,,,
 1502,RG_STRIPSHIELD@Bring it on!,attack,216,5,2000,0,20000,no,target,always,0,,,,,,
 1502,RG_STRIPARMOR@Bring it on!,attack,217,5,2000,0,20000,no,target,always,0,,,,,,
 1502,RG_STRIPHELM@Bring it on!,attack,218,5,2000,0,20000,no,target,always,0,,,,,,
 1502,RG_INTIMIDATE@Bring it on!,attack,219,5,2000,0,5000,no,target,always,0,,,,,,
-1502,取り巻き呼び戻し@Bring it on!,attack,354,1,10000,0,30000,no,target,always,0,,,,,,
-1502,取り巻き呼び戻し@Bring it on!,idle,354,1,10000,0,30000,no,self,always,0,,,,,,
+1502,NPC_RECALL@Bring it on!,attack,354,1,10000,0,30000,no,target,always,0,,,,,,
+1502,NPC_RECALL@Bring it on!,idle,354,1,10000,0,30000,no,self,always,0,,,,,,
 1503,AS_GRIMTOOTH@Gibbet,chase,137,5,1000,0,5000,no,target,always,0,,,,,,
 1503,NPC_CURSEATTACK@Gibbet,attack,181,3,500,800,5000,no,target,always,0,,,,,,06
 1503,NPC_UNDEADATTACK@Gibbet,attack,347,2,500,500,5000,no,target,always,0,,,,,,06
@@ -1895,8 +1963,8 @@
 1509,PR_LEXAETERNA@Lude,chase,78,1,200,1000,5000,yes,target,always,0,,,,,,06
 1509,NPC_TRANSFORMATION@Lude,attack,198,1,500,0,60000,no,self,myhpltmaxrate,30,1508,,,,,19
 1510,AL_DECAGI@Hylozoist,chase,30,1,200,1000,20000,no,target,always,0,,,,,,29
-1510,錯覚@Hylozoist,attack,207,1,500,500,5000,no,target,always,0,,,,,,09
-1510,錯覚@Hylozoist,chase,207,1,200,500,5000,no,target,always,0,,,,,,09
+1510,NPC_HALLUCINATION@Hylozoist,attack,207,1,500,500,5000,no,target,always,0,,,,,,09
+1510,NPC_HALLUCINATION@Hylozoist,chase,207,1,200,500,5000,no,target,always,0,,,,,,09
 1510,MO_BODYRELOCATION@Hylozoist,chase,264,1,1000,500,5000,no,target,always,0,,,,,,
 1511,WZ_FIREPILLAR@Amon Ra,idle,80,10,1000,0,2000,no,around3,always,0,,,,,,
 1511,WZ_METEOR@Amon Ra,any,83,25,5000,500,5000,no,self,longrangeattacked,,,,,,,09
@@ -1926,15 +1994,15 @@
 1518,PR_SANCTUARY@White Lady,attack,70,10,2000,500,30000,no,self,always,0,,,,,,18
 1518,WZ_WATERBALL@White Lady,attack,86,5,2000,500,5000,no,target,always,0,,,,,,18
 1518,WZ_WATERBALL@White Lady,chase,86,5,1000,500,5000,no,target,always,0,,,,,,18
-1518,取り巻き召喚@White Lady,idle,196,3,10000,0,0,no,self,onspawn,0,1519,,,,,
-1518,取り巻き召喚@White Lady,attack,196,3,10000,700,10000,no,self,slavele,3,1519,,,,,
-1518,取り巻き召喚@White Lady,idle,196,3,10000,700,10000,no,self,slavele,3,1519,,,,,
+1518,NPC_SUMMONSLAVE@White Lady,idle,196,3,10000,0,0,no,self,onspawn,0,1519,,,,,
+1518,NPC_SUMMONSLAVE@White Lady,attack,196,3,10000,700,10000,no,self,slavele,3,1519,,,,,
+1518,NPC_SUMMONSLAVE@White Lady,idle,196,3,10000,700,10000,no,self,slavele,3,1519,,,,,
 1518,NPC_HOLDWEB@White Lady,attack,342,1,2000,0,30000,no,target,always,0,,,,,,06
 1518,NPC_INVISIBLE@White Lady,attack,352,1,2000,200,5000,no,self,always,0,,,,,,
 1518,NPC_INVISIBLE@White Lady,chase,352,1,1000,200,5000,no,self,always,0,,,,,,
 1518,NPC_INVISIBLE@White Lady,idle,352,1,200,200,5000,no,self,always,0,,,,,,
-1518,取り巻き呼び戻し@White Lady,attack,354,1,10000,0,30000,no,target,always,0,,,,,,
-1518,取り巻き呼び戻し@White Lady,idle,354,1,10000,0,30000,no,self,always,0,,,,,,
+1518,NPC_RECALL@White Lady,attack,354,1,10000,0,30000,no,target,always,0,,,,,,
+1518,NPC_RECALL@White Lady,idle,354,1,10000,0,30000,no,self,always,0,,,,,,
 1519,TF_POISON@Green Maiden,attack,52,5,500,1000,5000,no,target,always,0,,,,,,06
 1519,PR_LEXDIVINA@Green Maiden,chase,76,1,200,1000,5000,no,target,always,0,,,,,,06
 1519,CR_SHIELDCHARGE@Green Maiden,attack,250,5,2000,0,5000,no,target,always,0,,,,,,06
@@ -1993,8 +2061,8 @@
 1543,WZ_WATERBALL@Kapha,chase,86,3,200,1500,5000,yes,target,always,0,,,,,,
 1543,NPC_WATERATTACK@Kapha,attack,184,3,500,500,5000,no,target,always,0,,,,,,
 1544,WZ_WATERBALL@Karakasa,chase,86,1,200,500,5000,yes,target,always,0,,,,,,
-1544,錯覚@Karakasa,attack,207,1,500,500,5000,no,target,always,0,,,,,,
-1544,錯覚@Karakasa,chase,207,1,200,500,5000,no,target,always,0,,,,,,
+1544,NPC_HALLUCINATION@Karakasa,attack,207,1,500,500,5000,no,target,always,0,,,,,,
+1544,NPC_HALLUCINATION@Karakasa,chase,207,1,200,500,5000,no,target,always,0,,,,,,
 1544,MO_BODYRELOCATION@Karakasa,chase,264,1,1000,500,5000,no,target,always,0,,,,,,
 1545,NPC_WINDATTACK@Kobold 2,attack,187,3,500,500,5000,no,target,always,0,,,,,,
 1546,NPC_POISONATTACK@Kobold 2,attack,188,3,500,500,5000,no,target,always,0,,,,,,
@@ -2073,7 +2141,7 @@
 1569,KN_BRANDISHSPEAR@Bloody Knight,attack,57,5,500,1000,5000,no,target,always,0,,,,,,
 1569,WZ_METEOR@Bloody Knight,attack,83,5,2000,1500,5000,no,target,myhpltmaxrate,30,,,,,,
 1569,WZ_METEOR@Bloody Knight,chase,83,5,1000,1500,5000,no,target,myhpltmaxrate,30,,,,,,
-1569,火属性変化@Bloody Knight,attack,164,1,10000,2000,600000,no,self,myhpltmaxrate,30,,,,,,
+1569,NPC_CHANGEFIRE@Bloody Knight,attack,164,1,10000,2000,600000,no,self,myhpltmaxrate,30,,,,,,
 1569,NPC_DARKNESSATTACK@Bloody Knight,attack,190,2,500,500,5000,no,target,always,0,,,,,,
 1569,CR_SHIELDCHARGE@Bloody Knight,attack,250,5,500,0,5000,no,target,always,0,,,,,,
 1569,NPC_BREAKWEAPON@Bloody Knight,attack,343,5,500,0,30000,no,target,always,0,,,,,,
@@ -2102,7 +2170,7 @@
 1578,MG_SIGHT@Horong,chase,10,1,1000,0,10000,no,self,always,0,,,,,,
 1578,NPC_COMBOATTACK@Horong,attack,171,2,500,700,5000,no,target,always,0,,,,,,
 1578,NPC_FIREATTACK@Horong,attack,186,1,2000,0,5000,no,target,always,0,,,,,,
-1578,錯覚@Horong,chase,207,1,200,500,5000,no,target,always,0,,,,,,
+1578,NPC_HALLUCINATION@Horong,chase,207,1,200,500,5000,no,target,always,0,,,,,,
 1579,NPC_WATERATTACK@Hydra,attack,184,2,500,500,5000,no,target,always,0,,,,,,
 1580,NPC_MENTALBREAKER@Incubus,attack,159,3,500,800,5000,no,target,always,0,,,,,,
 1580,NPC_MENTALBREAKER@Incubus,chase,159,3,200,800,5000,no,target,always,0,,,,,,
@@ -2116,9 +2184,9 @@
 1581,NPC_GROUNDATTACK@Vocal,attack,185,1,2000,0,5000,no,target,always,0,,,,,,
 1582,AL_DECAGI@Deviling,chase,30,1,1000,1000,20000,no,target,always,0,,,,,,29
 1582,NPC_DARKNESSATTACK@Deviling,attack,190,2,500,500,5000,no,target,always,0,,,,,,06
-1582,取り巻き召喚@Deviling,idle,196,2,10000,0,0,no,self,onspawn,0,1109,1242,1242,1242,,
-1582,取り巻き召喚@Deviling,attack,196,2,10000,2000,10000,no,self,slavele,3,1433,1595,1595,1595,,29
-1582,取り巻き召喚@Deviling,idle,196,2,10000,2000,10000,no,self,slavele,3,1433,1595,1595,1595,,
+1582,NPC_SUMMONSLAVE@Deviling,idle,196,2,10000,0,0,no,self,onspawn,0,1109,1242,1242,1242,,
+1582,NPC_SUMMONSLAVE@Deviling,attack,196,2,10000,2000,10000,no,self,slavele,3,1433,1595,1595,1595,,29
+1582,NPC_SUMMONSLAVE@Deviling,idle,196,2,10000,2000,10000,no,self,slavele,3,1433,1595,1595,1595,,
 1582,NPC_DARKSOULSTRIKE@Deviling,attack,340,5,2000,700,1000,no,target,always,0,,,,,,32
 1582,NPC_DARKSOULSTRIKE@Deviling,chase,340,5,1000,700,1000,no,target,always,0,,,,,,32
 1583,AL_TELEPORT@Tao Gunka,idle,26,1,1000,0,5000,no,self,rudeattacked,,,,,,,
@@ -2131,13 +2199,13 @@
 1583,NPC_GUIDEATTACK@Tao Gunka,chase,172,5,200,0,20000,no,target,always,0,,,,,,07
 1583,NPC_STUNATTACK@Tao Gunka,attack,179,5,2000,0,5000,no,target,always,0,,,,,,06
 1583,NPC_STUNATTACK@Tao Gunka,chase,179,5,1000,0,5000,no,target,always,0,,,,,,06
-1583,取り巻き召喚@Tao Gunka,idle,196,4,10000,0,0,no,self,onspawn,0,1274,,,,,
-1583,取り巻き召喚@Tao Gunka,attack,196,5,10000,700,10000,no,self,slavele,3,1274,,,,,
-1583,取り巻き召喚@Tao Gunka,idle,196,5,10000,700,10000,no,self,slavele,3,1274,,,,,
+1583,NPC_SUMMONSLAVE@Tao Gunka,idle,196,4,10000,0,0,no,self,onspawn,0,1274,,,,,
+1583,NPC_SUMMONSLAVE@Tao Gunka,attack,196,5,10000,700,10000,no,self,slavele,3,1274,,,,,
+1583,NPC_SUMMONSLAVE@Tao Gunka,idle,196,5,10000,700,10000,no,self,slavele,3,1274,,,,,
 1583,NPC_BREAKARMOR@Tao Gunka,attack,344,10,500,0,5000,no,target,always,0,,,,,,
 1583,NPC_INCREASEFLEE@Tao Gunka,attack,350,5,10000,0,120000,no,self,myhpltmaxrate,30,,,,,,09
-1583,取り巻き呼び戻し@Tao Gunka,attack,354,1,10000,0,30000,no,target,always,0,,,,,,
-1583,取り巻き呼び戻し@Tao Gunka,idle,354,1,10000,0,30000,no,self,always,0,,,,,,
+1583,NPC_RECALL@Tao Gunka,attack,354,1,10000,0,30000,no,target,always,0,,,,,,
+1583,NPC_RECALL@Tao Gunka,idle,354,1,10000,0,30000,no,self,always,0,,,,,,
 1584,NPC_SILENCEATTACK@Tamruan,attack,178,5,500,700,5000,no,target,always,0,,,,,,09
 1584,NPC_EMOTION@Tamruan,chase,197,1,500,0,5000,no,self,always,0,9,,,,,
 1584,NPC_EMOTION@Tamruan,idle,197,1,200,0,5000,no,self,always,0,9,,,,,
@@ -2182,8 +2250,8 @@
 1600,NPC_FIREATTACK@Heater,attack,186,3,500,500,5000,no,target,always,0,,,,,,
 1601,TF_SPRINKLESAND@Permeter,attack,149,1,500,0,5000,no,target,always,0,,,,,,
 1601,NPC_GROUNDATTACK@Permeter,attack,185,3,500,500,5000,no,target,always,0,,,,,,
-1601,錯覚@Permeter,attack,207,1,500,500,5000,no,target,always,0,,,,,,
-1601,錯覚@Permeter,chase,207,1,200,500,5000,no,target,always,0,,,,,,
+1601,NPC_HALLUCINATION@Permeter,attack,207,1,500,500,5000,no,target,always,0,,,,,,
+1601,NPC_HALLUCINATION@Permeter,chase,207,1,200,500,5000,no,target,always,0,,,,,,
 1601,AM_POTIONPITCHER@Permeter,any,231,4,10000,500,5000,yes,self,myhpltmaxrate,30,,,,,,
 1601,AM_POTIONPITCHER@Permeter,any,231,4,10000,500,5000,yes,friend,friendhpltmaxrate,30,,,,,,
 1602,NPC_SPLASHATTACK@Solider,attack,174,1,500,0,5000,no,target,always,0,,,,,,
@@ -2211,7 +2279,7 @@
 1613,CR_AUTOGUARD@Metaling,attack,249,5,500,0,300000,yes,self,always,0,,,,,,
 1613,CR_AUTOGUARD@Metaling,chase,249,5,500,0,300000,yes,self,longrangeattacked,,,,,,,
 1613,RG_STRIPWEAPON@Metaling,attack,215,3,500,0,10000,no,target,always,0,,,,,,18
-1613,メマーナイト@Metaling,attack,42,5,1000,800,5000,yes,target,always,0,,,,,,08
+1613,MC_MAMMONITE@Metaling,attack,42,5,1000,800,5000,yes,target,always,0,,,,,,08
 1614,CR_REFLECTSHIELD@Mineral,attack,252,3,1000,0,200000,no,self,always,0,,,,,,07
 1614,NPC_RANDOMATTACK@Mineral,attack,183,2,500,500,5000,yes,target,always,0,,,,,,
 1614,NPC_BARRIER@Mineral,attack,204,1,500,3000,5000,no,self,myhpltmaxrate,30,,,,,,18
@@ -2230,7 +2298,7 @@
 1616,NPC_EXPLOSIONSPIRITS@Pitman,attack,349,2,3000,500,10000,no,self,myhpltmaxrate,40,,,,,,
 1616,HT_CLAYMORETRAP@Pitman,idle,123,5,50,0,300000,yes,around2,always,0,,,,,,18
 1617,NPC_STUNATTACK@Waste Stove,attack,179,3,1000,1500,5000,no,target,always,0,,,,,,09
-1617,石投げ@Waste Stove,chase,152,1,500,0,30000,yes,target,always,0,,,,,,
+1617,TF_THROWSTONE@Waste Stove,chase,152,1,500,0,30000,yes,target,always,0,,,,,,
 1617,NPC_RANDOMATTACK@Waste Stove,attack,183,3,500,200,5000,no,target,always,0,,,,,,
 1617,NPC_SPLASHATTACK@Waste Stove,attack,174,1,1000,500,5000,yes,target,attackpcge,2,,,,,,09
 1618,NPC_PETRIFYATTACK@Ungoliant,attack,180,2,1000,500,5000,no,target,always,0,,,,,,03
@@ -2239,8 +2307,8 @@
 1618,NPC_POISONATTACK@Ungoliant,attack,188,3,1000,0,5000,yes,target,always,0,,,,,,
 1618,AL_TELEPORT@Ungoliant,idle,26,1,5000,0,5000,yes,self,rudeattacked,,,,,,,
 1618,AL_TELEPORT@Ungoliant,attack,26,1,5000,0,5000,yes,self,rudeattacked,,,,,,,
-1618,取り巻き召喚@Ungoliant,attack,196,3,10000,700,30000,no,self,slavele,0,1625,,,,,
-1618,取り巻き召喚@Ungoliant,idle,196,3,10000,700,30000,no,self,slavele,0,1625,,,,,
+1618,NPC_SUMMONSLAVE@Ungoliant,attack,196,3,10000,700,30000,no,self,slavele,0,1625,,,,,
+1618,NPC_SUMMONSLAVE@Ungoliant,idle,196,3,10000,700,30000,no,self,slavele,0,1625,,,,,
 1619,AL_PNEUMA@Porcellio,attack,25,1,500,0,5000,yes,self,longrangeattacked,,,,,,,18
 1619,NPC_GROUNDATTACK@Porcellio,attack,185,2,1000,0,5000,yes,target,always,0,,,,,,
 1619,NPC_KEEPING@Porcellio,attack,201,1,2000,1000,5000,no,self,myhpltmaxrate,25,,,,,,09
@@ -2267,30 +2335,30 @@
 1623,BS_HAMMERFALL@RSX-0806,chase,110,11,1000,0,5000,no,target,always,0,,,,,,
 1623,AS_SONICBLOW@RSX-0806,attack,136,10,2000,0,5000,no,target,always,0,,,,,,02
 1623,NPC_CRITICALSLASH@RSX-0806,attack,170,1,2000,0,5000,no,target,always,0,,,,,,
-1623,取り巻き召喚@RSX-0806,idle,196,5,10000,0,0,no,self,onspawn,0,1617,,,,,
-1623,取り巻き召喚@RSX-0806,attack,196,2,10000,700,10000,no,self,slavele,3,1620,1621,1624,1624,,
-1623,取り巻き召喚@RSX-0806,idle,196,2,10000,700,10000,no,self,slavele,3,1620,1621,1624,1624,,
+1623,NPC_SUMMONSLAVE@RSX-0806,idle,196,5,10000,0,0,no,self,onspawn,0,1617,,,,,
+1623,NPC_SUMMONSLAVE@RSX-0806,attack,196,2,10000,700,10000,no,self,slavele,3,1620,1621,1624,1624,,
+1623,NPC_SUMMONSLAVE@RSX-0806,idle,196,2,10000,700,10000,no,self,slavele,3,1620,1621,1624,1624,,
 1623,NPC_BREAKWEAPON@RSX-0806,attack,343,10,500,0,5000,no,target,always,0,,,,,,06
 1623,NPC_EXPLOSIONSPIRITS@RSX-0806,attack,349,5,10000,0,60000,no,self,myhpltmaxrate,30,,,,,,06
 1623,NPC_INCREASEFLEE@RSX-0806,chase,350,5,10000,0,60000,no,self,myhpltmaxrate,30,,,,,,06
-1623,取り巻き呼び戻し@RSX-0806,attack,354,1,10000,0,30000,no,target,always,0,,,,,,
-1623,取り巻き呼び戻し@RSX-0806,idle,354,1,10000,0,30000,no,self,always,0,,,,,,
-1624,石投げ@Waste Stove,chase,152,1,1000,0,5000,no,target,always,0,,,,,,
+1623,NPC_RECALL@RSX-0806,attack,354,1,10000,0,30000,no,target,always,0,,,,,,
+1623,NPC_RECALL@RSX-0806,idle,354,1,10000,0,30000,no,self,always,0,,,,,,
+1624,TF_THROWSTONE@Waste Stove,chase,152,1,1000,0,5000,no,target,always,0,,,,,,
 1624,NPC_SPLASHATTACK@Waste Stove,attack,174,1,500,0,5000,no,target,always,0,,,,,,
 1624,NPC_STUNATTACK@Waste Stove,attack,179,3,500,1500,5000,no,target,always,0,,,,,,
 1624,NPC_RANDOMATTACK@Waste Stove,attack,183,3,500,500,5000,no,target,always,0,,,,,,
 1625,AL_PNEUMA@Porcellio,attack,25,1,2000,0,5000,no,self,longrangeattacked,,,,,,,
 1625,AL_PNEUMA@Porcellio,chase,25,1,1000,0,5000,no,self,longrangeattacked,,,,,,,
 1625,NPC_GROUNDATTACK@Porcellio,attack,185,2,500,500,5000,no,target,always,0,,,,,,
-1626,AL_HEAL@ヘリオン=レバーノント,attack,28,11,10000,0,5000,no,self,myhpltmaxrate,30,,,,,,09
-1626,AL_HEAL@ヘリオン=レバーノント,chase,28,11,10000,0,5000,no,self,myhpltmaxrate,30,,,,,,09
-1626,NPC_DARKNESSATTACK@ヘリオン=レバーノント,attack,190,5,500,500,5000,no,target,always,0,,,,,,
-1626,NPC_DARKBREATH@ヘリオン=レバーノント,chase,202,5,1000,800,5000,no,target,always,0,,,,,,09
-1626,MO_BODYRELOCATION@ヘリオン=レバーノント,chase,264,1,1000,500,5000,no,target,always,0,,,,,,
-1626,NPC_DARKCROSS@ヘリオン=レバーノント,attack,338,10,2000,0,5000,no,target,always,0,,,,,,09
-1626,NPC_DARKGRANDCROSS@ヘリオン=レバーノント,attack,339,5,500,1000,5000,no,self,attackpcgt,2,,,,,,09
-1626,NPC_DARKSOULSTRIKE@ヘリオン=レバーノント,chase,340,10,1000,700,5000,no,target,always,0,,,,,,29
-1626,NPC_ELEMENTUNDEAD@ヘリオン=レバーノント,attack,351,1,500,1000,30000,no,target,always,0,,,,,,29
+1626,AL_HEAL@Hellion Revenant,attack,28,11,10000,0,5000,no,self,myhpltmaxrate,30,,,,,,09
+1626,AL_HEAL@Hellion Revenant,chase,28,11,10000,0,5000,no,self,myhpltmaxrate,30,,,,,,09
+1626,NPC_DARKNESSATTACK@Hellion Revenant,attack,190,5,500,500,5000,no,target,always,0,,,,,,
+1626,NPC_DARKBREATH@Hellion Revenant,chase,202,5,1000,800,5000,no,target,always,0,,,,,,09
+1626,MO_BODYRELOCATION@Hellion Revenant,chase,264,1,1000,500,5000,no,target,always,0,,,,,,
+1626,NPC_DARKCROSS@Hellion Revenant,attack,338,10,2000,0,5000,no,target,always,0,,,,,,09
+1626,NPC_DARKGRANDCROSS@Hellion Revenant,attack,339,5,500,1000,5000,no,self,attackpcgt,2,,,,,,09
+1626,NPC_DARKSOULSTRIKE@Hellion Revenant,chase,340,10,1000,700,5000,no,target,always,0,,,,,,29
+1626,NPC_ELEMENTUNDEAD@Hellion Revenant,attack,351,1,500,1000,30000,no,target,always,0,,,,,,29
 1627,NPC_COMBOATTACK@Anopheles,attack,171,2,500,700,5000,no,target,always,0,,,,,,
 1627,NPC_WINDATTACK@Anopheles,attack,187,2,500,500,5000,no,target,always,0,,,,,,
 1627,NPC_BLOODDRAIN@Anopheles,attack,199,1,500,0,5000,no,target,always,0,,,,,,30
@@ -2307,15 +2375,15 @@
 1630,PR_SANCTUARY@White Lady,attack,70,10,2000,500,30000,no,self,always,0,,,,,,18
 1630,WZ_WATERBALL@White Lady,attack,86,5,2000,500,5000,no,target,always,0,,,,,,18
 1630,WZ_WATERBALL@White Lady,chase,86,5,1000,500,5000,no,target,always,0,,,,,,18
-1630,取り巻き召喚@White Lady,idle,196,3,10000,0,0,no,self,onspawn,0,1631,,,,,
-1630,取り巻き召喚@White Lady,attack,196,3,10000,700,10000,no,self,slavele,3,1631,,,,,
-1630,取り巻き召喚@White Lady,idle,196,3,10000,700,10000,no,self,slavele,3,1631,,,,,
+1630,NPC_SUMMONSLAVE@White Lady,idle,196,3,10000,0,0,no,self,onspawn,0,1631,,,,,
+1630,NPC_SUMMONSLAVE@White Lady,attack,196,3,10000,700,10000,no,self,slavele,3,1631,,,,,
+1630,NPC_SUMMONSLAVE@White Lady,idle,196,3,10000,700,10000,no,self,slavele,3,1631,,,,,
 1630,NPC_HOLDWEB@White Lady,attack,342,1,2000,0,30000,no,target,always,0,,,,,,06
 1630,NPC_INVISIBLE@White Lady,attack,352,1,2000,200,5000,no,self,always,0,,,,,,
 1630,NPC_INVISIBLE@White Lady,chase,352,1,1000,200,5000,no,self,always,0,,,,,,
 1630,NPC_INVISIBLE@White Lady,idle,352,1,200,200,5000,no,self,always,0,,,,,,
-1630,取り巻き呼び戻し@White Lady,attack,354,1,10000,0,30000,no,target,always,0,,,,,,
-1630,取り巻き呼び戻し@White Lady,idle,354,1,10000,0,30000,no,self,always,0,,,,,,
+1630,NPC_RECALL@White Lady,attack,354,1,10000,0,30000,no,target,always,0,,,,,,
+1630,NPC_RECALL@White Lady,idle,354,1,10000,0,30000,no,self,always,0,,,,,,
 1631,TF_POISON@Green Maiden,attack,52,5,500,1000,5000,no,target,always,0,,,,,,06
 1631,PR_LEXDIVINA@Green Maiden,chase,76,1,200,1000,5000,no,target,always,0,,,,,,06
 1631,CR_SHIELDCHARGE@Green Maiden,attack,250,5,2000,0,5000,no,target,always,0,,,,,,06
@@ -2345,7 +2413,7 @@
 1635,NPC_POISONATTACK@Eremes Guile,attack,188,5,2000,500,5000,no,target,always,0,,,,,,09
 1635,NPC_INCREASEFLEE@Eremes Guile,attack,350,5,500,0,60000,no,self,always,0,,,,,,06
 1636,AL_TELEPORT@Howard Alt-Eisen,idle,26,1,1000,0,5000,no,self,rudeattacked,,,,,,,
-1636,メマーナイト@Howard Alt-Eisen,attack,42,20,500,0,5000,no,target,always,0,,,,,,23
+1636,MC_MAMMONITE@Howard Alt-Eisen,attack,42,20,500,0,5000,no,target,always,0,,,,,,23
 1636,BS_HAMMERFALL@Howard Alt-Eisen,attack,110,5,2000,0,5000,no,target,always,0,,,,,,07
 1636,BS_HAMMERFALL@Howard Alt-Eisen,chase,110,5,1000,0,5000,no,target,always,0,,,,,,07
 1636,BS_ADRENALINE@Howard Alt-Eisen,chase,111,5,1000,0,60000,no,self,always,0,,,,,,21
@@ -2420,7 +2488,7 @@
 1641,NPC_INVISIBLE@Eremes Guile,attack,352,5,2000,0,5000,no,self,always,0,,,,,,
 1641,NPC_INVISIBLE@Eremes Guile,chase,352,5,1000,0,5000,no,self,always,0,,,,,,
 1641,NPC_INVISIBLE@Eremes Guile,idle,352,5,200,0,5000,no,self,always,0,,,,,,
-1642,メマーナイト@Howard Alt-Eisen,attack,42,35,2000,0,5000,no,target,always,0,,,,,,
+1642,MC_MAMMONITE@Howard Alt-Eisen,attack,42,35,2000,0,5000,no,target,always,0,,,,,,
 1642,BS_HAMMERFALL@Howard Alt-Eisen,attack,110,11,2000,0,5000,no,target,always,0,,,,,,
 1642,BS_HAMMERFALL@Howard Alt-Eisen,chase,110,11,1000,0,5000,no,target,always,0,,,,,,
 1642,BS_ADRENALINE@Howard Alt-Eisen,chase,111,5,1000,0,60000,no,self,always,0,,,,,,
@@ -2486,18 +2554,18 @@
 1646,KN_SPEARBOOMERANG@Lord Knight Seyren,chase,59,5,1000,0,1000,no,target,always,0,,,,,,06
 1646,KN_TWOHANDQUICKEN@Lord Knight Seyren,attack,60,10,2000,0,120000,no,self,always,0,,,,,,02
 1646,KN_BOWLINGBASH@Lord Knight Seyren,attack,62,10,2000,0,5000,no,target,always,0,,,,,,06
-1646,火属性変化@Lord Knight Seyren,attack,164,1,10000,500,300000,no,self,myhpltmaxrate,70,,,,,,09
+1646,NPC_CHANGEFIRE@Lord Knight Seyren,attack,164,1,10000,500,300000,no,self,myhpltmaxrate,70,,,,,,09
 1646,NPC_CHANGEHOLY@Lord Knight Seyren,attack,167,1,10000,500,300000,no,self,myhpltmaxrate,40,,,,,,09
 1646,NPC_CHANGETELEKINESIS@Lord Knight Seyren,attack,168,1,10000,500,300000,no,self,myhpltmaxrate,10,,,,,,09
 1646,NPC_CRITICALSLASH@Lord Knight Seyren,attack,170,1,2000,0,5000,no,target,always,0,,,,,,
 1646,NPC_STUNATTACK@Lord Knight Seyren,attack,179,5,2000,0,5000,no,target,always,0,,,,,,06
 1646,NPC_FIREATTACK@Lord Knight Seyren,attack,186,10,2000,0,5000,no,target,always,0,,,,,,09
-1646,取り巻き召喚@Lord Knight Seyren,idle,196,1,10000,0,0,no,self,onspawn,0,1641,1642,1643,1644,1645,
-1646,取り巻き召喚@Lord Knight Seyren,attack,196,1,10000,700,30000,no,self,slavele,3,1641,1642,1643,1644,1645,
-1646,取り巻き召喚@Lord Knight Seyren,idle,196,1,10000,700,30000,no,self,slavele,3,1641,1642,1643,1644,1645,
+1646,NPC_SUMMONSLAVE@Lord Knight Seyren,idle,196,1,10000,0,0,no,self,onspawn,0,1641,1642,1643,1644,1645,
+1646,NPC_SUMMONSLAVE@Lord Knight Seyren,attack,196,1,10000,700,30000,no,self,slavele,3,1641,1642,1643,1644,1645,
+1646,NPC_SUMMONSLAVE@Lord Knight Seyren,idle,196,1,10000,700,30000,no,self,slavele,3,1641,1642,1643,1644,1645,
 1646,NPC_EXPLOSIONSPIRITS@Lord Knight Seyren,attack,349,5,2000,0,60000,no,self,always,0,,,,,,06
-1646,取り巻き呼び戻し@Lord Knight Seyren,attack,354,1,10000,0,30000,no,target,always,0,,,,,,
-1646,取り巻き呼び戻し@Lord Knight Seyren,idle,354,1,10000,0,30000,no,self,always,0,,,,,,
+1646,NPC_RECALL@Lord Knight Seyren,attack,354,1,10000,0,30000,no,target,always,0,,,,,,
+1646,NPC_RECALL@Lord Knight Seyren,idle,354,1,10000,0,30000,no,self,always,0,,,,,,
 1647,AL_TELEPORT@Eremes Guile,idle,26,1,1000,0,5000,no,self,rudeattacked,,,,,,,
 1647,TF_POISON@Eremes Guile,attack,52,10,2000,0,5000,no,target,always,0,,,,,,
 1647,AS_SONICBLOW@Eremes Guile,attack,136,10,2000,0,5000,no,target,always,0,,,,,,06
@@ -2510,17 +2578,17 @@
 1647,NPC_GUIDEATTACK@Eremes Guile,attack,172,10,2000,0,10000,no,target,always,0,,,,,,09
 1647,NPC_STUNATTACK@Eremes Guile,attack,179,5,2000,0,5000,no,target,always,0,,,,,,09
 1647,NPC_POISONATTACK@Eremes Guile,attack,188,10,2000,0,5000,no,target,always,0,,,,,,09
-1647,取り巻き召喚@Eremes Guile,idle,196,1,10000,0,0,no,self,onspawn,0,1640,1642,1643,1644,1645,
-1647,取り巻き召喚@Eremes Guile,attack,196,1,10000,700,30000,no,self,slavele,3,1640,1642,1643,1644,1645,
-1647,取り巻き召喚@Eremes Guile,idle,196,1,10000,700,30000,no,self,slavele,3,1640,1642,1643,1644,1645,
+1647,NPC_SUMMONSLAVE@Eremes Guile,idle,196,1,10000,0,0,no,self,onspawn,0,1640,1642,1643,1644,1645,
+1647,NPC_SUMMONSLAVE@Eremes Guile,attack,196,1,10000,700,30000,no,self,slavele,3,1640,1642,1643,1644,1645,
+1647,NPC_SUMMONSLAVE@Eremes Guile,idle,196,1,10000,700,30000,no,self,slavele,3,1640,1642,1643,1644,1645,
 1647,NPC_INCREASEFLEE@Eremes Guile,attack,350,5,2000,0,60000,no,self,always,0,,,,,,
 1647,NPC_INVISIBLE@Eremes Guile,attack,352,5,2000,0,5000,no,self,always,0,,,,,,
 1647,NPC_INVISIBLE@Eremes Guile,chase,352,5,1000,0,5000,no,self,always,0,,,,,,
 1647,NPC_INVISIBLE@Eremes Guile,idle,352,5,200,0,5000,no,self,always,0,,,,,,
-1647,取り巻き呼び戻し@Eremes Guile,attack,354,1,10000,0,30000,no,target,always,0,,,,,,
-1647,取り巻き呼び戻し@Eremes Guile,idle,354,1,10000,0,30000,no,self,always,0,,,,,,
+1647,NPC_RECALL@Eremes Guile,attack,354,1,10000,0,30000,no,target,always,0,,,,,,
+1647,NPC_RECALL@Eremes Guile,idle,354,1,10000,0,30000,no,self,always,0,,,,,,
 1648,AL_TELEPORT@Howard Alt-Eisen,idle,26,1,1000,0,5000,no,self,rudeattacked,,,,,,,
-1648,メマーナイト@Howard Alt-Eisen,attack,42,35,2000,0,5000,no,target,always,0,,,,,,23
+1648,MC_MAMMONITE@Howard Alt-Eisen,attack,42,35,2000,0,5000,no,target,always,0,,,,,,23
 1648,BS_HAMMERFALL@Howard Alt-Eisen,attack,110,11,2000,0,5000,no,target,always,0,,,,,,07
 1648,BS_HAMMERFALL@Howard Alt-Eisen,chase,110,11,1000,0,5000,no,target,always,0,,,,,,07
 1648,BS_ADRENALINE@Howard Alt-Eisen,chase,111,5,1000,0,60000,no,self,always,0,,,,,,21
@@ -2532,15 +2600,15 @@
 1648,NPC_SPLASHATTACK@Howard Alt-Eisen,attack,174,1,2000,0,5000,no,target,always,0,,,,,,
 1648,NPC_GROUNDATTACK@Howard Alt-Eisen,attack,185,10,2000,0,5000,no,target,always,0,,,,,,06
 1648,NPC_FIREATTACK@Howard Alt-Eisen,attack,186,10,2000,0,5000,no,target,always,0,,,,,,06
-1648,取り巻き召喚@Howard Alt-Eisen,idle,196,1,10000,0,0,no,self,onspawn,0,1640,1641,1643,1644,1645,
-1648,取り巻き召喚@Howard Alt-Eisen,attack,196,1,10000,700,30000,no,self,slavele,3,1640,1641,1643,1644,1645,
-1648,取り巻き召喚@Howard Alt-Eisen,idle,196,1,10000,700,30000,no,self,slavele,3,1640,1641,1643,1644,1645,
+1648,NPC_SUMMONSLAVE@Howard Alt-Eisen,idle,196,1,10000,0,0,no,self,onspawn,0,1640,1641,1643,1644,1645,
+1648,NPC_SUMMONSLAVE@Howard Alt-Eisen,attack,196,1,10000,700,30000,no,self,slavele,3,1640,1641,1643,1644,1645,
+1648,NPC_SUMMONSLAVE@Howard Alt-Eisen,idle,196,1,10000,700,30000,no,self,slavele,3,1640,1641,1643,1644,1645,
 1648,NPC_BREAKARMOR@Howard Alt-Eisen,attack,344,10,2000,0,5000,no,target,always,0,,,,,,19
 1648,NPC_BREAKHELM@Howard Alt-Eisen,attack,345,10,2000,0,5000,no,target,always,0,,,,,,19
 1648,NPC_BREAKSIELD@Howard Alt-Eisen,attack,346,10,2000,0,5000,no,target,always,0,,,,,,19
 1648,NPC_EXPLOSIONSPIRITS@Howard Alt-Eisen,attack,349,5,500,0,60000,no,self,always,0,,,,,,06
-1648,取り巻き呼び戻し@Howard Alt-Eisen,attack,354,1,10000,0,30000,no,target,always,0,,,,,,
-1648,取り巻き呼び戻し@Howard Alt-Eisen,idle,354,1,10000,0,30000,no,self,always,0,,,,,,
+1648,NPC_RECALL@Howard Alt-Eisen,attack,354,1,10000,0,30000,no,target,always,0,,,,,,
+1648,NPC_RECALL@Howard Alt-Eisen,idle,354,1,10000,0,30000,no,self,always,0,,,,,,
 1649,MG_SAFETYWALL@Margaretha Sorin,attack,12,10,500,0,5000,no,self,always,0,,,,,,05
 1649,AL_PNEUMA@Margaretha Sorin,attack,25,1,10000,0,5000,no,self,longrangeattacked,,,,,,,19
 1649,AL_TELEPORT@Margaretha Sorin,idle,26,1,1000,0,5000,no,self,rudeattacked,,,,,,,
@@ -2563,11 +2631,11 @@
 1649,NPC_CRITICALSLASH@Margaretha Sorin,attack,170,1,2000,0,5000,no,target,always,0,,,,,,
 1649,NPC_STUNATTACK@Margaretha Sorin,attack,179,5,2000,0,5000,no,target,always,0,,,,,,06
 1649,NPC_HOLYATTACK@Margaretha Sorin,attack,189,10,2000,0,5000,no,target,always,0,,,,,,06
-1649,取り巻き召喚@Margaretha Sorin,idle,196,1,10000,0,0,no,self,onspawn,0,1640,1641,1642,1644,1645,
-1649,取り巻き召喚@Margaretha Sorin,attack,196,1,10000,700,30000,no,self,slavele,3,1640,1641,1642,1644,1645,
-1649,取り巻き召喚@Margaretha Sorin,idle,196,1,10000,700,30000,no,self,slavele,3,1640,1641,1642,1644,1645,
-1649,取り巻き呼び戻し@Margaretha Sorin,attack,354,1,10000,0,30000,no,target,always,0,,,,,,
-1649,取り巻き呼び戻し@Margaretha Sorin,idle,354,1,10000,0,30000,no,self,always,0,,,,,,
+1649,NPC_SUMMONSLAVE@Margaretha Sorin,idle,196,1,10000,0,0,no,self,onspawn,0,1640,1641,1642,1644,1645,
+1649,NPC_SUMMONSLAVE@Margaretha Sorin,attack,196,1,10000,700,30000,no,self,slavele,3,1640,1641,1642,1644,1645,
+1649,NPC_SUMMONSLAVE@Margaretha Sorin,idle,196,1,10000,700,30000,no,self,slavele,3,1640,1641,1642,1644,1645,
+1649,NPC_RECALL@Margaretha Sorin,attack,354,1,10000,0,30000,no,target,always,0,,,,,,
+1649,NPC_RECALL@Margaretha Sorin,idle,354,1,10000,0,30000,no,self,always,0,,,,,,
 1650,AL_TELEPORT@Cecil Damon,idle,26,1,1000,0,5000,no,self,rudeattacked,,,,,,,
 1650,AC_DOUBLE@Cecil Damon,attack,46,10,2000,0,3000,no,target,always,0,,,,,,11
 1650,AC_SHOWER@Cecil Damon,attack,47,10,2000,0,3000,no,target,always,0,,,,,,11
@@ -2586,13 +2654,13 @@
 1650,NPC_CRITICALSLASH@Cecil Damon,attack,170,1,2000,0,5000,no,target,always,0,,,,,,
 1650,NPC_STUNATTACK@Cecil Damon,attack,179,5,2000,0,5000,no,target,always,0,,,,,,06
 1650,NPC_WINDATTACK@Cecil Damon,attack,187,5,2000,500,5000,no,target,always,0,,,,,,06
-1650,取り巻き召喚@Cecil Damon,idle,196,1,10000,0,0,no,self,onspawn,0,1640,1641,1642,1643,1645,
-1650,取り巻き召喚@Cecil Damon,attack,196,1,10000,700,30000,no,self,slavele,3,1640,1641,1642,1643,1645,
-1650,取り巻き召喚@Cecil Damon,idle,196,1,10000,700,30000,no,self,slavele,3,1640,1641,1642,1643,1645,
+1650,NPC_SUMMONSLAVE@Cecil Damon,idle,196,1,10000,0,0,no,self,onspawn,0,1640,1641,1642,1643,1645,
+1650,NPC_SUMMONSLAVE@Cecil Damon,attack,196,1,10000,700,30000,no,self,slavele,3,1640,1641,1642,1643,1645,
+1650,NPC_SUMMONSLAVE@Cecil Damon,idle,196,1,10000,700,30000,no,self,slavele,3,1640,1641,1642,1643,1645,
 1650,NPC_EXPLOSIONSPIRITS@Cecil Damon,attack,349,5,500,0,60000,no,self,always,0,,,,,,06
 1650,NPC_INCREASEFLEE@Cecil Damon,attack,350,5,500,0,60000,no,self,always,0,,,,,,06
-1650,取り巻き呼び戻し@Cecil Damon,attack,354,1,10000,0,30000,no,target,always,0,,,,,,
-1650,取り巻き呼び戻し@Cecil Damon,idle,354,1,10000,0,30000,no,self,always,0,,,,,,
+1650,NPC_RECALL@Cecil Damon,attack,354,1,10000,0,30000,no,target,always,0,,,,,,
+1650,NPC_RECALL@Cecil Damon,idle,354,1,10000,0,30000,no,self,always,0,,,,,,
 1651,MG_SIGHT@Kathryne Keyron,idle,10,1,2000,0,10000,no,self,always,0,,,,,,
 1651,MG_SAFETYWALL@Kathryne Keyron,attack,12,10,500,0,5000,no,self,always,0,,,,,,19
 1651,AL_TELEPORT@Kathryne Keyron,idle,26,1,1000,0,5000,no,self,rudeattacked,,,,,,,
@@ -2608,11 +2676,11 @@
 1651,NPC_ATTRICHANGE@Kathryne Keyron,attack,161,1,10000,500,300000,no,self,myhpltmaxrate,70,,,,,,09
 1651,NPC_CHANGEHOLY@Kathryne Keyron,attack,167,1,10000,500,300000,no,self,myhpltmaxrate,40,,,,,,09
 1651,NPC_CHANGETELEKINESIS@Kathryne Keyron,attack,168,1,10000,500,300000,no,self,myhpltmaxrate,10,,,,,,09
-1651,取り巻き召喚@Kathryne Keyron,idle,196,1,10000,0,0,no,self,onspawn,0,1640,1641,1642,1643,1644,
-1651,取り巻き召喚@Kathryne Keyron,attack,196,1,10000,700,30000,no,self,slavele,3,1640,1641,1642,1643,1644,
-1651,取り巻き召喚@Kathryne Keyron,idle,196,1,10000,700,30000,no,self,slavele,3,1640,1641,1642,1643,1644,
-1651,取り巻き呼び戻し@Kathryne Keyron,attack,354,1,10000,0,30000,no,target,always,0,,,,,,
-1651,取り巻き呼び戻し@Kathryne Keyron,idle,354,1,10000,0,30000,no,self,always,0,,,,,,
+1651,NPC_SUMMONSLAVE@Kathryne Keyron,idle,196,1,10000,0,0,no,self,onspawn,0,1640,1641,1642,1643,1644,
+1651,NPC_SUMMONSLAVE@Kathryne Keyron,attack,196,1,10000,700,30000,no,self,slavele,3,1640,1641,1642,1643,1644,
+1651,NPC_SUMMONSLAVE@Kathryne Keyron,idle,196,1,10000,700,30000,no,self,slavele,3,1640,1641,1642,1643,1644,
+1651,NPC_RECALL@Kathryne Keyron,attack,354,1,10000,0,30000,no,target,always,0,,,,,,
+1651,NPC_RECALL@Kathryne Keyron,idle,354,1,10000,0,30000,no,self,always,0,,,,,,
 1652,SM_BASH@Egnigem Cenia,attack,5,5,500,800,5000,no,target,always,0,,,,,,32
 1652,SM_PROVOKE@Egnigem Cenia,chase,6,9,200,600,5000,no,target,always,0,,,,,,06
 1652,SM_MAGNUM@Egnigem Cenia,attack,7,9,2000,500,5000,no,self,attackpcgt,2,,,,,,
@@ -2621,11 +2689,11 @@
 1652,NPC_FIREATTACK@Egnigem Cenia,attack,186,3,500,0,5000,no,target,always,0,,,,,,
 1653,AL_TELEPORT@Wickebine Tres,idle,26,1,1000,0,5000,no,self,rudeattacked,,,,,,,
 1653,TF_POISON@Wickebine Tres,attack,52,9,500,1000,5000,no,target,always,0,,,,,,
-1653,石投げ@Wickebine Tres,chase,152,1,1000,0,5000,no,target,always,0,,,,,,
+1653,TF_THROWSTONE@Wickebine Tres,chase,152,1,1000,0,5000,no,target,always,0,,,,,,
 1653,NPC_POISON�@Wickebine Tres,attack,176,5,500,800,5000,no,target,always,0,,,,,,
 1653,NPC_POISONATTACK@Wickebine Tres,attack,188,3,500,0,5000,no,target,always,0,,,,,,
 1654,AL_TELEPORT@Armeyer Dinze,idle,26,1,1000,0,5000,no,self,rudeattacked,,,,,,,
-1654,メマーナイト@Armeyer Dinze,attack,42,9,500,800,5000,no,target,always,0,,,,,,08
+1654,MC_MAMMONITE@Armeyer Dinze,attack,42,9,500,800,5000,no,target,always,0,,,,,,08
 1654,NPC_STUNATTACK@Armeyer Dinze,attack,179,3,500,0,5000,no,target,always,0,,,,,,
 1654,NPC_GROUNDATTACK@Armeyer Dinze,attack,185,3,500,0,5000,no,target,always,0,,,,,,
 1654,NPC_EMOTION@Armeyer Dinze,idle,197,1,200,0,5000,no,self,always,0,8,,,,,
@@ -2660,17 +2728,17 @@
 1658,NPC_CHANGEWATER@Egnigem Cenia,attack,162,1,10000,500,300000,no,self,myhpltmaxrate,70,,,,,,09
 1658,NPC_CHANGEWIND@Egnigem Cenia,attack,165,1,10000,500,300000,no,self,myhpltmaxrate,40,,,,,,09
 1658,NPC_CRITICALSLASH@Egnigem Cenia,attack,170,1,2000,0,5000,no,target,always,0,,,,,,
-1658,取り巻き召喚@Egnigem Cenia,idle,196,1,10000,0,0,no,self,onspawn,0,1659,1660,1661,1662,1663,
-1658,取り巻き召喚@Egnigem Cenia,attack,196,1,10000,700,10000,no,self,slavele,3,1659,1660,1661,1662,1663,
-1658,取り巻き召喚@Egnigem Cenia,idle,196,1,10000,700,10000,no,self,slavele,3,1659,1660,1661,1662,1663,
+1658,NPC_SUMMONSLAVE@Egnigem Cenia,idle,196,1,10000,0,0,no,self,onspawn,0,1659,1660,1661,1662,1663,
+1658,NPC_SUMMONSLAVE@Egnigem Cenia,attack,196,1,10000,700,10000,no,self,slavele,3,1659,1660,1661,1662,1663,
+1658,NPC_SUMMONSLAVE@Egnigem Cenia,idle,196,1,10000,700,10000,no,self,slavele,3,1659,1660,1661,1662,1663,
 1658,NPC_BREAKSIELD@Egnigem Cenia,attack,346,10,500,0,5000,no,target,always,0,,,,,,06
-1658,取り巻き呼び戻し@Egnigem Cenia,attack,354,1,10000,0,30000,no,target,always,0,,,,,,
-1658,取り巻き呼び戻し@Egnigem Cenia,idle,354,1,10000,0,30000,no,self,always,0,,,,,,
+1658,NPC_RECALL@Egnigem Cenia,attack,354,1,10000,0,30000,no,target,always,0,,,,,,
+1658,NPC_RECALL@Egnigem Cenia,idle,354,1,10000,0,30000,no,self,always,0,,,,,,
 1659,TF_POISON@Wickebine Tres,attack,52,5,500,1000,5000,no,target,always,0,,,,,,
-1659,石投げ@Wickebine Tres,chase,152,1,1000,0,5000,no,target,always,0,,,,,,
+1659,TF_THROWSTONE@Wickebine Tres,chase,152,1,1000,0,5000,no,target,always,0,,,,,,
 1659,NPC_POISON�@Wickebine Tres,attack,176,5,500,800,5000,no,target,always,0,,,,,,
 1659,NPC_POISONATTACK@Wickebine Tres,attack,188,3,500,0,5000,no,target,always,0,,,,,,
-1660,メマーナイト@Armeyer Dinze,attack,42,5,500,800,5000,no,target,always,0,,,,,,
+1660,MC_MAMMONITE@Armeyer Dinze,attack,42,5,500,800,5000,no,target,always,0,,,,,,
 1660,NPC_STUNATTACK@Armeyer Dinze,attack,179,5,500,1500,10000,no,target,always,0,,,,,,
 1660,NPC_GROUNDATTACK@Armeyer Dinze,attack,185,3,500,0,5000,no,target,always,0,,,,,,
 1661,AL_PNEUMA@Errende Ebecee,idle,25,1,1000,0,10000,yes,self,longrangeattacked,,,,,,,
@@ -2777,15 +2845,15 @@
 1685,NPC_CRITICALSLASH@Vesper,attack,170,1,2000,0,5000,no,target,always,0,,,,,,
 1685,WZ_METEOR@Vesper,attack,83,10,2000,500,5000,no,target,always,0,,,,,,
 1685,WZ_METEOR@Vesper,chase,83,10,1000,500,5000,no,target,always,0,,,,,,
-1685,取り巻き召喚@Vesper,idle,196,5,10000,0,0,no,self,onspawn,0,1365,,,,,
-1685,取り巻き召喚@Vesper,attack,196,2,10000,700,60000,no,self,slavele,3,1365,1669,1675,,,
-1685,取り巻き召喚@Vesper,idle,196,2,10000,700,60000,no,self,slavele,3,1365,1669,1675,,,
+1685,NPC_SUMMONSLAVE@Vesper,idle,196,5,10000,0,0,no,self,onspawn,0,1365,,,,,
+1685,NPC_SUMMONSLAVE@Vesper,attack,196,2,10000,700,60000,no,self,slavele,3,1365,1669,1675,,,
+1685,NPC_SUMMONSLAVE@Vesper,idle,196,2,10000,700,60000,no,self,slavele,3,1365,1669,1675,,,
 1685,NPC_EXPLOSIONSPIRITS@Vesper,attack,349,5,10000,0,30000,no,self,myhpltmaxrate,30,,,,,,06
-1685,取り巻き呼び戻し@Vesper,attack,354,1,10000,0,30000,no,target,always,0,,,,,,
-1685,取り巻き呼び戻し@Vesper,idle,354,1,10000,0,30000,no,self,always,0,,,,,,
-1686,SM_BASH@オークベベ,attack,5,5,500,800,5000,no,target,always,0,,,,,,
-1686,NPC_EMOTION@オークベベ,idle,197,1,200,0,5000,no,self,always,0,2,,,,,
-1686,取り巻き召喚@オークベベ,attack,196,1,2000,2000,600000,no,self,myhpltmaxrate,30,1222,1452,,,,26
+1685,NPC_RECALL@Vesper,attack,354,1,10000,0,30000,no,target,always,0,,,,,,
+1685,NPC_RECALL@Vesper,idle,354,1,10000,0,30000,no,self,always,0,,,,,,
+1686,SM_BASH@Orc Baby,attack,5,5,500,800,5000,no,target,always,0,,,,,,
+1686,NPC_EMOTION@Orc Baby,idle,197,1,200,0,5000,no,self,always,0,2,,,,,
+1686,NPC_SUMMONSLAVE@Orc Baby,attack,196,1,2000,2000,600000,no,self,myhpltmaxrate,30,1222,1452,,,,26
 1687,NPC_GROUNDATTACK@Grove,attack,185,3,500,500,5000,no,target,always,0,,,,,,06
 1687,NPC_TELEKINESISATTACK@Grove,chase,191,5,200,0,5000,no,target,always,0,,,,,,
 1687,NPC_EMOTION@Grove,walk,197,1,500,0,5000,no,self,always,0,2,,,,,
@@ -2805,25 +2873,25 @@
 1688,NPC_STUNATTACK@Lady Tanee,attack,179,5,500,0,5000,no,target,always,0,,,,,,
 1688,NPC_DEFENDER@Lady Tanee,any,205,1,1000,0,30000,no,self,longrangeattacked,,,,,,,29
 1688,NPC_EXPLOSIONSPIRITS@Lady Tanee,attack,349,5,10000,0,30000,no,self,myhpltmaxrate,30,,,,,,06
-1688,取り巻き召喚@Lady Tanee,any,196,5,10000,0,0,no,self,onspawn,,1587,,,,,
-1688,取り巻き召喚@Lady Tanee,attack,196,5,10000,700,5000,no,self,slavele,2,1691,,,,,
-1688,取り巻き召喚@Lady Tanee,idle,196,5,10000,700,5000,no,self,slavele,2,1691,,,,,
-1688,取り巻き呼び戻し@Lady Tanee,attack,354,1,10000,0,60000,no,target,always,0,,,,,,
-1688,取り巻き呼び戻し@Lady Tanee,idle,354,1,10000,0,60000,no,self,always,0,,,,,,
+1688,NPC_SUMMONSLAVE@Lady Tanee,any,196,5,10000,0,0,no,self,onspawn,,1587,,,,,
+1688,NPC_SUMMONSLAVE@Lady Tanee,attack,196,5,10000,700,5000,no,self,slavele,2,1691,,,,,
+1688,NPC_SUMMONSLAVE@Lady Tanee,idle,196,5,10000,700,5000,no,self,slavele,2,1691,,,,,
+1688,NPC_RECALL@Lady Tanee,attack,354,1,10000,0,60000,no,target,always,0,,,,,,
+1688,NPC_RECALL@Lady Tanee,idle,354,1,10000,0,60000,no,self,always,0,,,,,,
 1689,AL_TELEPORT@White Lady,idle,26,1,1000,0,5000,no,self,rudeattacked,,,,,,,
 1689,PR_SANCTUARY@White Lady,attack,70,10,2000,500,30000,no,self,always,0,,,,,,18
 1689,WZ_WATERBALL@White Lady,attack,86,5,2000,500,5000,no,target,always,0,,,,,,18
 1689,WZ_WATERBALL@White Lady,chase,86,5,1000,500,5000,no,target,always,0,,,,,,18
-1689,取り巻き召喚@White Lady,attack,196,5,10000,700,10000,no,self,slavele,3,1690,,,,,
-1689,取り巻き召喚@White Lady,idle,196,5,10000,700,10000,no,self,slavele,3,1690,,,,,
+1689,NPC_SUMMONSLAVE@White Lady,attack,196,5,10000,700,10000,no,self,slavele,3,1690,,,,,
+1689,NPC_SUMMONSLAVE@White Lady,idle,196,5,10000,700,10000,no,self,slavele,3,1690,,,,,
 1689,NPC_HOLDWEB@White Lady,attack,342,1,2000,0,30000,no,target,always,0,,,,,,06
 1689,NPC_INVISIBLE@White Lady,attack,352,1,2000,200,5000,no,self,always,0,,,,,,
 1689,NPC_INVISIBLE@White Lady,chase,352,1,1000,200,5000,no,self,always,0,,,,,,
 1689,NPC_INVISIBLE@White Lady,idle,352,1,200,200,5000,no,self,always,0,,,,,,
-1689,取り巻き呼び戻し@White Lady,attack,354,1,10000,0,30000,no,target,always,0,,,,,,
-1689,取り巻き呼び戻し@White Lady,idle,354,1,10000,0,30000,no,self,always,0,,,,,,
+1689,NPC_RECALL@White Lady,attack,354,1,10000,0,30000,no,target,always,0,,,,,,
+1689,NPC_RECALL@White Lady,idle,354,1,10000,0,30000,no,self,always,0,,,,,,
 1690,SM_BASH@Spring Rabbit,attack,5,10,500,0,5000,no,target,always,0,,,,,,06
-1690,石投げ@Spring Rabbit,chase,152,1,1000,0,5000,no,target,always,0,,,,,,
+1690,TF_THROWSTONE@Spring Rabbit,chase,152,1,1000,0,5000,no,target,always,0,,,,,,
 1690,NPC_GROUNDATTACK@Spring Rabbit,attack,185,1,2000,0,5000,no,target,always,0,,,,,,
 1690,NPC_EMOTION@Spring Rabbit,walk,197,1,500,0,5000,no,self,always,0,2,,,,,
 1690,NPC_EMOTION@Spring Rabbit,chase,197,1,50,0,30000,no,self,always,0,19,131,,,,
@@ -2878,18 +2946,18 @@
 1700,NPC_HOLYATTACK@Dame of Sentinel,attack,189,2,500,0,5000,no,target,always,0,,,,,,18
 1700,NPC_HOLYATTACK@Dame of Sentinel,chase,189,2,200,0,5000,no,target,always,0,,,,,,18
 1700,RG_INTIMIDATE@Dame of Sentinel,attack,219,5,500,0,5000,no,target,always,0,,,,,,
-1701,AL_TELEPORT@安息を与える者,idle,26,1,1000,0,5000,no,self,rudeattacked,,,,,,,
+1701,AL_TELEPORT@Mistress of Shelter,idle,26,1,1000,0,5000,no,self,rudeattacked,,,,,,,
 1701,AS_VENOMDUST@Mistress of Shelter,attack,140,1,500,0,5000,no,around5,always,0,,,,,,29
 1701,NPC_BLINDATTACK@Mistress of Shelter,attack,177,5,500,0,5000,no,target,always,0,,,,,,29
 1701,NPC_DARKNESSATTACK@Mistress of Shelter,attack,190,2,500,500,5000,no,target,always,0,,,,,,36
 1701,NPC_DARKNESSATTACK@Mistress of Shelter,chase,190,2,200,500,5000,no,target,always,0,,,,,,36
 1701,NPC_DARKJUPITEL@Mistress of Shelter,attack,341,4,500,1500,5000,no,target,always,0,,,,,,
 1701,NPC_DARKJUPITEL@Mistress of Shelter,chase,341,4,200,1500,5000,no,target,always,0,,,,,,
-1702,AL_TELEPORT@神罰の代行者,idle,26,1,1000,0,5000,no,self,rudeattacked,,,,,,,
+1702,AL_TELEPORT@Baroness of Retribution,idle,26,1,1000,0,5000,no,self,rudeattacked,,,,,,,
 1702,KN_BOWLINGBASH@Baroness of Retribution,attack,62,7,500,0,10000,no,target,always,0,,,,,,
 1702,NPC_CURSEATTACK@Baroness of Retribution,attack,181,3,500,800,5000,no,target,always,0,,,,,,
 1702,NPC_DARKNESSATTACK@Baroness of Retribution,attack,190,2,500,500,5000,no,target,always,0,,,,,,36
-1702,NPC_DARKBREATH@神罰の代行者,attack,202,2,500,800,5000,no,target,always,0,,,,,,29
+1702,NPC_DARKBREATH@Baroness of Retribution,attack,202,2,500,800,5000,no,target,always,0,,,,,,29
 1702,NPC_DARKCROSS@Baroness of Retribution,attack,338,3,500,700,5000,no,target,always,0,,,,,,36
 1702,NPC_DARKGRANDCROSS@Baroness of Retribution,attack,339,1,500,1000,5000,no,self,myhpltmaxrate,50,,,,,,
 1703,MG_NAPALMBEAT@Lady Solace,attack,11,5,2000,0,5000,no,target,always,0,,,,,,
@@ -2904,7 +2972,7 @@
 1703,CR_GRANDCROSS@Lady Solace,attack,254,1,500,1000,5000,no,self,myhpltmaxrate,50,,,,,,
 1704,AL_TELEPORT@Odium of Thanatos,idle,26,1,1000,0,5000,no,self,rudeattacked,,,,,,,
 1704,NPC_PIERCINGATT@Odium of Thanatos,attack,158,3,500,0,5000,no,target,always,0,,,,,,36
-1704,闇属性変化@Odium of Thanatos,attack,169,1,10000,2000,600000,no,self,myhpltmaxrate,30,,,,,,29
+1704,NPC_CHANGEDARLNESS@Odium of Thanatos,attack,169,1,10000,2000,600000,no,self,myhpltmaxrate,30,,,,,,29
 1704,NPC_DARKNESSATTACK@Odium of Thanatos,attack,190,5,500,500,5000,no,target,always,0,,,,,,36
 1704,NPC_TELEKINESISATTACK@Odium of Thanatos,attack,191,5,500,0,5000,no,target,always,0,,,,,,21
 1704,NPC_HOLDWEB@Odium of Thanatos,attack,342,1,500,0,30000,no,target,always,0,,,,,,
@@ -2919,7 +2987,7 @@
 1705,NPC_INCREASEFLEE@Despero of Thanatos,attack,350,5,10000,0,60000,no,self,myhpltmaxrate,30,,,,,,
 1705,SM_PROVOKE@Despero of Thanatos,attack,6,5,500,0,5000,no,target,always,0,,,,,,29
 1705,SM_PROVOKE@Despero of Thanatos,chase,6,5,200,0,5000,no,target,always,0,,,,,,29
-1706,AL_TELEPORT@タナトスの悲哀,idle,26,1,1000,0,5000,no,self,rudeattacked,,,,,,,
+1706,AL_TELEPORT@Maero of Thanatos,idle,26,1,1000,0,5000,no,self,rudeattacked,,,,,,,
 1706,AS_SONICBLOW@Maero of Thanatos,attack,136,10,500,800,5000,no,target,always,0,,,,,,06
 1706,NPC_TELEKINESISATTACK@Maero of Thanatos,attack,191,5,500,0,5000,no,target,always,0,,,,,,21
 1706,NPC_DARKSOULSTRIKE@Maero of Thanatos,attack,340,9,500,700,5000,no,target,always,0,,,,,,
@@ -2937,24 +3005,24 @@
 1707,NPC_MENTALBREAKER@Dolor of Thanatos,chase,159,2,200,0,5000,no,target,always,0,,,,,,30
 1707,NPC_DARKJUPITEL@Dolor of Thanatos,attack,341,9,500,1500,5000,no,target,always,0,,,,,,
 1707,NPC_DARKJUPITEL@Dolor of Thanatos,chase,341,9,200,1500,5000,no,target,always,0,,,,,,
-1708,SM_BASH@魔剣士タナトスの記憶,attack,5,10,2000,0,5000,no,target,always,0,,,,,,
+1708,SM_BASH@Thanatos Phantom,attack,5,10,2000,0,5000,no,target,always,0,,,,,,
 1708,SM_PROVOKE@Thanatos Phantom,chase,6,10,1000,0,5000,no,target,always,0,,,,,,29
-1708,MG_SOULSTRIKE@魔剣士タナトスの記憶,chase,13,10,1000,0,1000,no,target,always,0,,,,,,
-1708,AL_TELEPORT@魔剣士タナトスの記憶,idle,26,1,1000,0,5000,no,self,rudeattacked,,,,,,,
+1708,MG_SOULSTRIKE@Thanatos Phantom,chase,13,10,1000,0,1000,no,target,always,0,,,,,,
+1708,AL_TELEPORT@Thanatos Phantom,idle,26,1,1000,0,5000,no,self,rudeattacked,,,,,,,
 1708,KN_TWOHANDQUICKEN@Thanatos Phantom,attack,60,10,10000,0,120000,no,self,myhpltmaxrate,30,,,,,,02
-1708,WZ_METEOR@魔剣士タナトスの記憶,attack,83,10,2000,1500,5000,no,target,always,0,,,,,,29
-1708,WZ_VERMILION@魔剣士タナトスの記憶,attack,85,10,2000,1500,5000,no,target,always,0,,,,,,29
-1708,WZ_STORMGUST@魔剣士タナトスの記憶,attack,89,10,2000,1500,5000,no,target,always,0,,,,,,29
-1708,BS_HAMMERFALL@魔剣士タナトスの記憶,attack,110,11,2000,0,5000,no,target,always,0,,,,,,
-1708,NPC_CHANGEHOLY@魔剣士タナトスの記憶,attack,167,1,10000,500,300000,no,self,myhpltmaxrate,30,,,,,,06
-1708,取り巻き召喚@魔剣士タナトスの記憶,idle,196,1,10000,0,0,no,self,onspawn,0,1709,1710,1711,1712,,
-1708,取り巻き召喚@魔剣士タナトスの記憶,attack,196,1,10000,700,60000,no,self,slavele,3,1709,1710,1711,1712,,
-1708,取り巻き召喚@魔剣士タナトスの記憶,idle,196,1,10000,700,60000,no,self,slavele,3,1709,1710,1711,1712,,
-1708,NPC_EXPLOSIONSPIRITS@魔剣士タナトスの記憶,attack,349,5,10000,0,30000,no,self,always,0,,,,,,06
-1708,取り巻き呼び戻し@魔剣士タナトスの記憶,attack,354,1,10000,0,30000,no,target,always,0,,,,,,
-1708,取り巻き呼び戻し@魔剣士タナトスの記憶,idle,354,1,10000,0,30000,no,self,always,0,,,,,,
+1708,WZ_METEOR@Thanatos Phantom,attack,83,10,2000,1500,5000,no,target,always,0,,,,,,29
+1708,WZ_VERMILION@Thanatos Phantom,attack,85,10,2000,1500,5000,no,target,always,0,,,,,,29
+1708,WZ_STORMGUST@Thanatos Phantom,attack,89,10,2000,1500,5000,no,target,always,0,,,,,,29
+1708,BS_HAMMERFALL@Thanatos Phantom,attack,110,11,2000,0,5000,no,target,always,0,,,,,,
+1708,NPC_CHANGEHOLY@Thanatos Phantom,attack,167,1,10000,500,300000,no,self,myhpltmaxrate,30,,,,,,06
+1708,NPC_SUMMONSLAVE@Thanatos Phantom,idle,196,1,10000,0,0,no,self,onspawn,0,1709,1710,1711,1712,,
+1708,NPC_SUMMONSLAVE@Thanatos Phantom,attack,196,1,10000,700,60000,no,self,slavele,3,1709,1710,1711,1712,,
+1708,NPC_SUMMONSLAVE@Thanatos Phantom,idle,196,1,10000,700,60000,no,self,slavele,3,1709,1710,1711,1712,,
+1708,NPC_EXPLOSIONSPIRITS@Thanatos Phantom,attack,349,5,10000,0,30000,no,self,always,0,,,,,,06
+1708,NPC_RECALL@Thanatos Phantom,attack,354,1,10000,0,30000,no,target,always,0,,,,,,
+1708,NPC_RECALL@Thanatos Phantom,idle,354,1,10000,0,30000,no,self,always,0,,,,,,
 1709,NPC_PIERCINGATT@Odium of Thanatos,attack,158,3,500,0,5000,no,target,always,0,,,,,,36
-1709,闇属性変化@Odium of Thanatos,attack,169,1,10000,0,600000,no,self,myhpltmaxrate,30,,,,,,
+1709,NPC_CHANGEDARLNESS@Odium of Thanatos,attack,169,1,10000,0,600000,no,self,myhpltmaxrate,30,,,,,,
 1709,NPC_DARKNESSATTACK@Odium of Thanatos,attack,190,5,500,500,5000,no,target,always,0,,,,,,36
 1709,NPC_TELEKINESISATTACK@Odium of Thanatos,attack,191,5,500,0,5000,no,target,always,0,,,,,,21
 1709,NPC_HOLDWEB@Odium of Thanatos,attack,342,1,500,0,30000,no,target,always,0,,,,,,
@@ -2986,16 +3054,16 @@
 1712,NPC_MENTALBREAKER@Dolor of Thanatos,chase,159,2,200,0,5000,no,target,always,0,,,,,,30
 1713,SM_MAGNUM@Acidus,attack,7,10,2000,500,5000,no,self,attackpcgt,2,,,,,,36
 1713,MG_FIREBALL@Acidus,chase,17,5,200,0,5000,no,target,always,0,,,,,,44
-1713,AL_TELEPORT@アシダス,idle,26,1,1000,0,5000,no,self,rudeattacked,,,,,,,
-1713,WZ_FIREPILLAR@アシダス,idle,80,5,50,0,5000,no,around1,always,0,,,,,,
-1713,NPC_CRITICALSLASH@アシダス,attack,170,1,500,500,5000,no,target,always,0,,,,,,
+1713,AL_TELEPORT@Acidus,idle,26,1,1000,0,5000,no,self,rudeattacked,,,,,,,
+1713,WZ_FIREPILLAR@Acidus,idle,80,5,50,0,5000,no,around1,always,0,,,,,,
+1713,NPC_CRITICALSLASH@Acidus,attack,170,1,500,500,5000,no,target,always,0,,,,,,
 1713,NPC_STUNATTACK@Acidus,attack,179,3,500,1500,5000,no,target,always,0,,,,,,
 1713,NPC_FIREATTACK@Acidus,attack,186,3,500,500,5000,no,target,always,0,,,,,,
-1714,AL_TELEPORT@フェルス,idle,26,1,1000,0,5000,no,self,rudeattacked,,,,,,,
+1714,AL_TELEPORT@Ferus,idle,26,1,1000,0,5000,no,self,rudeattacked,,,,,,,
 1714,KN_BRANDISHSPEAR@Ferus,attack,57,5,500,1000,5000,no,target,always,0,,,,,,09
 1714,KN_SPEARSTAB@Ferus,attack,58,5,500,800,5000,no,target,always,0,,,,,,36
-1714,NPC_CRITICALSLASH@フェルス,attack,170,1,500,500,5000,no,target,always,0,,,,,,
-1714,NPC_COMBOATTACK@フェルス,attack,171,2,500,700,5000,no,target,always,0,,,,,,
+1714,NPC_CRITICALSLASH@Ferus,attack,170,1,500,500,5000,no,target,always,0,,,,,,
+1714,NPC_COMBOATTACK@Ferus,attack,171,2,500,700,5000,no,target,always,0,,,,,,
 1714,NPC_FIREATTACK@Ferus,attack,186,3,500,500,5000,no,target,always,0,,,,,,
 1715,SM_BASH@Novus,attack,5,5,500,500,5000,no,target,always,0,,,,,,
 1715,NPC_PIERCINGATT@Novus,attack,158,2,500,0,5000,no,target,always,0,,,,,,
@@ -3006,20 +3074,20 @@
 1716,MG_LIGHTNINGBOLT@Acidus,chase,20,5,200,1500,5000,no,target,always,0,,,,,,32
 1716,MG_THUNDERSTORM@Acidus,attack,21,5,500,1500,5000,no,target,always,0,,,,,,
 1716,MG_THUNDERSTORM@Acidus,chase,21,5,200,1500,5000,no,target,always,0,,,,,,
-1716,AL_TELEPORT@アシダス,idle,26,1,1000,0,5000,no,self,rudeattacked,,,,,,,
+1716,AL_TELEPORT@Acidus,idle,26,1,1000,0,5000,no,self,rudeattacked,,,,,,,
 1716,NPC_WINDATTACK@Acidus,attack,187,3,500,500,5000,no,target,always,0,,,,,,
 1716,NPC_HOLDWEB@Acidus,attack,342,1,500,500,5000,no,target,always,0,,,,,,
-1717,SM_PROVOKE@フェルス,chase,6,10,200,600,5000,no,target,always,0,,,,,,
-1717,AL_TELEPORT@フェルス,idle,26,1,1000,0,5000,no,self,rudeattacked,,,,,,,
+1717,SM_PROVOKE@Ferus,chase,6,10,200,600,5000,no,target,always,0,,,,,,
+1717,AL_TELEPORT@Ferus,idle,26,1,1000,0,5000,no,self,rudeattacked,,,,,,,
 1717,NPC_PIERCINGATT@Ferus,attack,158,3,500,0,5000,no,target,always,0,,,,,,
 1717,KN_BRANDISHSPEAR@Ferus,attack,57,5,500,1000,5000,no,target,always,0,,,,,,09
 1717,KN_SPEARSTAB@Ferus,attack,58,5,500,800,5000,no,target,always,0,,,,,,36
-1717,NPC_COMBOATTACK@フェルス,attack,171,2,500,700,5000,no,target,always,0,,,,,,
+1717,NPC_COMBOATTACK@Ferus,attack,171,2,500,700,5000,no,target,always,0,,,,,,
 1717,NPC_GROUNDATTACK@Ferus,attack,185,3,500,500,5000,no,target,always,0,,,,,,
 1718,SM_BASH@Novus,attack,5,5,500,500,5000,no,target,always,0,,,,,,
 1718,NPC_SILENCEATTACK@Novus,attack,178,3,500,700,5000,no,target,always,0,,,,,,
 1718,NPC_EMOTION@Novus,idle,197,1,500,0,5000,no,self,always,0,22,,,,,
-1718,錯覚@Novus,attack,207,1,500,500,5000,no,target,always,0,,,,,,18
+1718,NPC_HALLUCINATION@Novus,attack,207,1,500,500,5000,no,target,always,0,,,,,,18
 1719,SM_MAGNUM@Detardeurus,attack,7,20,2000,0,5000,no,self,always,0,,,,,,
 1719,MG_FIREBALL@Detardeurus,chase,17,10,1000,0,5000,no,target,always,0,,,,,,
 1719,AL_TELEPORT@Detardeurus,idle,26,1,1000,0,5000,no,self,rudeattacked,,,,,,,
@@ -3027,16 +3095,16 @@
 1719,WZ_METEOR@Detardeurus,chase,83,20,1000,500,5000,no,target,always,0,,,,,,
 1719,WZ_VERMILION@Detardeurus,attack,85,20,2000,500,5000,no,target,always,0,,,,,,
 1719,WZ_VERMILION@Detardeurus,chase,85,20,1000,500,5000,no,target,always,0,,,,,,
-1719,取り巻き召喚@Detardeurus,idle,196,1,10000,0,0,no,self,onspawn,0,1720,,,,,
-1719,取り巻き召喚@Detardeurus,attack,196,1,2000,700,10000,no,self,slavele,0,1756,,,,,
-1719,取り巻き召喚@Detardeurus,idle,196,1,10000,700,10000,no,self,slavele,0,1756,,,,,
+1719,NPC_SUMMONSLAVE@Detardeurus,idle,196,1,10000,0,0,no,self,onspawn,0,1720,,,,,
+1719,NPC_SUMMONSLAVE@Detardeurus,attack,196,1,2000,700,10000,no,self,slavele,0,1756,,,,,
+1719,NPC_SUMMONSLAVE@Detardeurus,idle,196,1,10000,700,10000,no,self,slavele,0,1756,,,,,
 1719,CR_REFLECTSHIELD@Detardeurus,attack,252,10,2000,0,300000,no,self,always,0,,,,,,06
 1719,NPC_BREAKWEAPON@Detardeurus,attack,343,10,500,0,5000,no,target,always,0,,,,,,36
 1719,NPC_BREAKARMOR@Detardeurus,attack,344,10,500,0,5000,no,target,always,0,,,,,,36
 1719,NPC_EXPLOSIONSPIRITS@Detardeurus,attack,349,5,10000,0,30000,no,self,myhpltmaxrate,30,,,,,,06
-1719,取り巻き呼び戻し@Detardeurus,attack,354,1,10000,0,30000,no,target,always,0,,,,,,
-1719,取り巻き呼び戻し@Detardeurus,idle,354,1,10000,0,30000,no,self,always,0,,,,,,
-1720,AL_TELEPORT@ハイドロランサー,idle,26,1,1000,0,5000,no,self,rudeattacked,,,,,,,
+1719,NPC_RECALL@Detardeurus,attack,354,1,10000,0,30000,no,target,always,0,,,,,,
+1719,NPC_RECALL@Detardeurus,idle,354,1,10000,0,30000,no,self,always,0,,,,,,
+1720,AL_TELEPORT@Hydrolancer,idle,26,1,1000,0,5000,no,self,rudeattacked,,,,,,,
 1720,AL_HEAL@Hydrolancer,attack,28,11,10000,0,5000,no,friend,friendhpltmaxrate,60,,,,,,02
 1720,AL_HEAL@Hydrolancer,chase,28,11,10000,0,5000,no,friend,friendhpltmaxrate,60,,,,,,02
 1720,WZ_METEOR@Hydrolancer,attack,83,15,2000,500,5000,no,target,always,0,,,,,,29
@@ -3045,13 +3113,13 @@
 1720,NPC_CRITICALSLASH@Hydrolancer,attack,170,1,2000,0,5000,no,target,always,0,,,,,,
 1720,NPC_COMBOATTACK@Hydrolancer,attack,171,2,2000,0,5000,no,target,always,0,,,,,,
 1720,NPC_RANDOMATTACK@Hydrolancer,attack,183,5,2000,0,5000,no,target,always,0,,,,,,47
-1720,取り巻き召喚@ハイドロランサー,idle,196,1,10000,0,0,no,self,onspawn,2,1757,1758,1759,1760,,
-1720,取り巻き召喚@ハイドロランサー,attack,196,1,2000,700,60000,no,self,slavele,2,1757,1758,1759,1760,,
-1720,取り巻き召喚@ハイドロランサー,idle,196,1,10000,700,60000,no,self,slavele,2,1757,1758,1759,1760,,
+1720,NPC_SUMMONSLAVE@Hydrolancer,idle,196,1,10000,0,0,no,self,onspawn,2,1757,1758,1759,1760,,
+1720,NPC_SUMMONSLAVE@Hydrolancer,attack,196,1,2000,700,60000,no,self,slavele,2,1757,1758,1759,1760,,
+1720,NPC_SUMMONSLAVE@Hydrolancer,idle,196,1,10000,700,60000,no,self,slavele,2,1757,1758,1759,1760,,
 1720,NPC_DARKBREATH@Hydrolancer,attack,202,5,500,0,5000,no,target,always,0,,,,,,
-1720,NPC_EXPLOSIONSPIRITS@ハイドロランサー,attack,349,5,10000,0,30000,no,self,myhpltmaxrate,30,,,,,,06
-1720,取り巻き呼び戻し@ハイドロランサー,attack,354,1,10000,0,30000,no,target,always,0,,,,,,
-1720,取り巻き呼び戻し@ハイドロランサー,idle,354,1,10000,0,30000,no,self,always,0,,,,,,
+1720,NPC_EXPLOSIONSPIRITS@Hydrolancer,attack,349,5,10000,0,30000,no,self,myhpltmaxrate,30,,,,,,06
+1720,NPC_RECALL@Hydrolancer,attack,354,1,10000,0,30000,no,target,always,0,,,,,,
+1720,NPC_RECALL@Hydrolancer,idle,354,1,10000,0,30000,no,self,always,0,,,,,,
 1721,NPC_METAMORPHOSIS@Dragon Egg,idle,193,1,5,2000,0,no,self,always,0,1715,1718,,,,
 1733,SM_BASH@Kiehl,attack,5,10,500,0,5000,no,target,always,0,,,,,,
 1733,SM_MAGNUM@Kiehl,attack,7,6,500,500,5000,no,self,always,0,,,,,,
@@ -3071,72 +3139,72 @@
 1734,KN_BRANDISHSPEAR@Kiel D-01,attack,57,20,2000,500,5000,no,target,always,0,,,,,,
 1734,PR_LEXDIVINA@Kiel D-01,attack,76,5,2000,0,5000,no,target,always,0,,,,,,
 1734,PR_LEXAETERNA@Kiel D-01,attack,78,1,2000,0,5000,no,target,always,0,,,,,,
-1734,取り巻き召喚@Kiel D-01,idle,196,3,10000,0,0,no,self,onspawn,0,1735,1736,,,,
-1734,取り巻き召喚@Kiel D-01,attack,196,3,10000,700,30000,no,self,slavele,3,1739,1740,,,,
-1734,取り巻き召喚@Kiel D-01,idle,196,3,10000,700,30000,no,self,slavele,3,1739,1740,,,,
+1734,NPC_SUMMONSLAVE@Kiel D-01,idle,196,3,10000,0,0,no,self,onspawn,0,1735,1736,,,,
+1734,NPC_SUMMONSLAVE@Kiel D-01,attack,196,3,10000,700,30000,no,self,slavele,3,1739,1740,,,,
+1734,NPC_SUMMONSLAVE@Kiel D-01,idle,196,3,10000,700,30000,no,self,slavele,3,1739,1740,,,,
 1734,NPC_DARKBLESSING@Kiel D-01,attack,203,1,500,800,20000,no,target,always,0,,,,,,09
 1734,NPC_EXPLOSIONSPIRITS@Kiel D-01,attack,349,4,10000,0,30000,no,self,myhpltmaxrate,30,,,,,,
-1734,取り巻き呼び戻し@Kiel D-01,attack,354,1,10000,0,30000,no,target,always,0,,,,,,
-1734,取り巻き呼び戻し@Kiel D-01,idle,354,1,10000,0,30000,no,self,always,0,,,,,,
-1735,AL_TELEPORT@アリセル,idle,26,1,1000,0,5000,no,self,rudeattacked,,,,,,,
-1735,NPC_GUIDEATTACK@アリセル,attack,172,3,500,1000,20000,no,target,always,0,,,,,,
-1735,NPC_DARKNESSATTACK@アリセル,attack,190,1,2000,0,5000,no,target,always,0,,,,,,
+1734,NPC_RECALL@Kiel D-01,attack,354,1,10000,0,30000,no,target,always,0,,,,,,
+1734,NPC_RECALL@Kiel D-01,idle,354,1,10000,0,30000,no,self,always,0,,,,,,
+1735,AL_TELEPORT@Alicel,idle,26,1,1000,0,5000,no,self,rudeattacked,,,,,,,
+1735,NPC_GUIDEATTACK@Alicel,attack,172,3,500,1000,20000,no,target,always,0,,,,,,
+1735,NPC_DARKNESSATTACK@Alicel,attack,190,1,2000,0,5000,no,target,always,0,,,,,,
 1735,NPC_EMOTION@Alicel,idle,197,1,200,0,5000,no,self,always,0,29,,,,,
-1735,MO_BODYRELOCATION@アリセル,chase,264,1,1000,500,5000,no,target,always,0,,,,,,
-1736,KN_SPEARSTAB@アリオット,attack,58,5,500,800,5000,no,target,always,0,,,,,,
-1736,BS_MAXIMIZE@アリオット,attack,114,5,500,1000,30000,no,self,always,0,,,,,,
-1736,BS_MAXIMIZE@アリオット,chase,114,5,200,1000,30000,no,self,always,0,,,,,,
-1736,NPC_CRITICALSLASH@アリオット,attack,170,1,500,500,5000,no,target,always,0,,,,,,
-1736,NPC_SPLASHATTACK@アリオット,attack,174,1,500,0,5000,no,target,always,0,,,,,,
-1736,NPC_REBIRTH@アリオット,dead,208,1,5000,0,600000,no,self,always,0,,,,,,
-1736,CR_AUTOGUARD@アリオット,attack,249,5,500,0,30000,no,self,always,0,,,,,,
-1736,CR_AUTOGUARD@アリオット,chase,249,5,1000,0,30000,no,self,longrangeattacked,,,,,,,
+1735,MO_BODYRELOCATION@Alicel,chase,264,1,1000,500,5000,no,target,always,0,,,,,,
+1736,KN_SPEARSTAB@Aliot,attack,58,5,500,800,5000,no,target,always,0,,,,,,
+1736,BS_MAXIMIZE@Aliot,attack,114,5,500,1000,30000,no,self,always,0,,,,,,
+1736,BS_MAXIMIZE@Aliot,chase,114,5,200,1000,30000,no,self,always,0,,,,,,
+1736,NPC_CRITICALSLASH@Aliot,attack,170,1,500,500,5000,no,target,always,0,,,,,,
+1736,NPC_SPLASHATTACK@Aliot,attack,174,1,500,0,5000,no,target,always,0,,,,,,
+1736,NPC_REBIRTH@Aliot,dead,208,1,5000,0,600000,no,self,always,0,,,,,,
+1736,CR_AUTOGUARD@Aliot,attack,249,5,500,0,30000,no,self,always,0,,,,,,
+1736,CR_AUTOGUARD@Aliot,chase,249,5,1000,0,30000,no,self,longrangeattacked,,,,,,,
 1737,SM_BASH@Aliza,attack,5,5,2000,1000,30000,no,target,always,0,,,,,,52
 1737,NPC_EMOTION@Aliza,walk,197,1,500,0,30000,no,self,always,0,2,,,,,
-1737,NPC_EMOTION@アリザ,idle,197,1,200,0,5000,no,self,always,0,5,,,,,
+1737,NPC_EMOTION@Aliza,idle,197,1,200,0,5000,no,self,always,0,5,,,,,
 1737,AL_HEAL@Aliza,any,28,5,10000,1000,5000,no,friend,friendhpltmaxrate,80,,,,,,03
 1738,NPC_SELFDESTRUCTION@Constant,attack,173,1,2000,1000,0,no,self,myhpltmaxrate,100,,,,,,
-1739,NPC_GUIDEATTACK@アリセル,attack,172,1,1000,0,1000,no,target,always,0,,,,,,
-1739,NPC_GUIDEATTACK@アリセル,attack,172,1,1000,0,1000,no,target,always,0,,,,,,
-1739,MO_BODYRELOCATION@アリセル,any,264,1,1000,0,5000,no,self,longrangeattacked,0,,,,,,
-1739,AL_TELEPORT@アリセル,idle,26,1,1000,0,0,no,self,always,0,,,,,,
-1739,MO_BODYRELOCATION@アリセル,any,264,1,1000,0,5000,no,target,longrangeattacked,0,,,,,,
-1740,BS_MAXIMIZE@アリオット,attack,114,1,1000,0,1000,no,self,always,0,,,,,,
-1740,NPC_SPLASHATTACK@アリオット,attack,174,1,1000,0,3000,no,target,always,0,,,,,,
-1740,KN_SPEARSTAB@アリオット,attack,58,5,1000,0,3000,no,target,always,0,,,,,,
-1740,CR_AUTOGUARD@アリオット,attack,249,10,1000,0,3000,no,self,always,0,,,,,,
-1740,NPC_REBIRTH@アリオット,dead,208,1,5000,0,600000,no,self,always,0,,,,,,
+1739,NPC_GUIDEATTACK@Alicel,attack,172,1,1000,0,1000,no,target,always,0,,,,,,
+1739,NPC_GUIDEATTACK@Alicel,attack,172,1,1000,0,1000,no,target,always,0,,,,,,
+1739,MO_BODYRELOCATION@Alicel,any,264,1,1000,0,5000,no,self,longrangeattacked,0,,,,,,
+1739,AL_TELEPORT@Alicel,idle,26,1,1000,0,0,no,self,always,0,,,,,,
+1739,MO_BODYRELOCATION@Alicel,any,264,1,1000,0,5000,no,target,longrangeattacked,0,,,,,,
+1740,BS_MAXIMIZE@Aliot,attack,114,1,1000,0,1000,no,self,always,0,,,,,,
+1740,NPC_SPLASHATTACK@Aliot,attack,174,1,1000,0,3000,no,target,always,0,,,,,,
+1740,KN_SPEARSTAB@Aliot,attack,58,5,1000,0,3000,no,target,always,0,,,,,,
+1740,CR_AUTOGUARD@Aliot,attack,249,10,1000,0,3000,no,self,always,0,,,,,,
+1740,NPC_REBIRTH@Aliot,dead,208,1,5000,0,600000,no,self,always,0,,,,,,
 1745,NPC_SELFDESTRUCTION@Constant,attack,173,1,10000,0,0,no,self,always,0,,,,,,
-1751,NPC_DARKGRANDCROSS@ランドグリーズ,attack,339,10,1000,700,5000,no,self,always,0,,,,,,
-1751,SA_DISPELL@ランドグリーズ,attack,289,5,500,0,5000,no,target,always,0,,,,,,06
-1751,SA_DISPELL@ランドグリーズ,chase,289,5,200,0,5000,no,target,always,0,,,,,,06
-1751,WZ_VERMILION@ランドグリーズ,attack,85,10,2000,500,5000,no,target,always,0,,,,,,29
-1751,WZ_VERMILION@ランドグリーズ,chase,85,10,1000,500,5000,no,target,always,0,,,,,,29
-1751,KN_BRANDISHSPEAR@ランドグリーズ,attack,57,10,2000,0,5000,no,target,always,0,,,,,,
-1751,MG_THUNDERSTORM@ランドグリーズ,attack,21,10,2000,0,5000,no,target,longrangeattacked,,,,,,,
-1751,MG_THUNDERSTORM@ランドグリーズ,chase,21,10,1000,0,5000,no,target,longrangeattacked,,,,,,,
-1751,NPC_HOLYATTACK@ランドグリーズ,attack,189,5,500,0,5000,no,target,always,0,,,,,,06
-1751,AS_SONICBLOW@ランドグリーズ,attack,136,10,2000,0,5000,no,target,always,0,,,,,,
-1751,取り巻き召喚@Valkyrie Randgris,idle,196,3,10000,0,0,no,self,onspawn,0,1765,,,,,
-1751,取り巻き召喚@Valkyrie Randgris,attack,196,3,2000,700,60000,no,self,slavele,2,1765,,,,,
-1751,取り巻き召喚@Valkyrie Randgris,idle,196,3,10000,700,60000,no,self,slavele,2,1765,,,,,
-1751,NPC_EXPLOSIONSPIRITS@ランドグリーズ,attack,349,5,10000,0,120000,no,self,myhpltmaxrate,30,,,,,,06
-1751,NPC_INCREASEFLEE@ランドグリーズ,chase,350,5,10000,0,120000,no,self,myhpltmaxrate,30,,,,,,06
-1751,取り巻き呼び戻し@ランドグリーズ,attack,354,1,10000,0,30000,no,target,always,0,,,,,,
-1751,取り巻き呼び戻し@ランドグリーズ,idle,354,1,10000,0,30000,no,self,always,0,,,,,,
-1751,AL_TELEPORT@ランドグリーズ,idle,26,1,1000,0,5000,no,self,rudeattacked,,,,,,,
+1751,NPC_DARKGRANDCROSS@Valkyrie Randgris,attack,339,10,1000,700,5000,no,self,always,0,,,,,,
+1751,SA_DISPELL@Valkyrie Randgris,attack,289,5,500,0,5000,no,target,always,0,,,,,,06
+1751,SA_DISPELL@Valkyrie Randgris,chase,289,5,200,0,5000,no,target,always,0,,,,,,06
+1751,WZ_VERMILION@Valkyrie Randgris,attack,85,10,2000,500,5000,no,target,always,0,,,,,,29
+1751,WZ_VERMILION@Valkyrie Randgris,chase,85,10,1000,500,5000,no,target,always,0,,,,,,29
+1751,KN_BRANDISHSPEAR@Valkyrie Randgris,attack,57,10,2000,0,5000,no,target,always,0,,,,,,
+1751,MG_THUNDERSTORM@Valkyrie Randgris,attack,21,10,2000,0,5000,no,target,longrangeattacked,,,,,,,
+1751,MG_THUNDERSTORM@Valkyrie Randgris,chase,21,10,1000,0,5000,no,target,longrangeattacked,,,,,,,
+1751,NPC_HOLYATTACK@Valkyrie Randgris,attack,189,5,500,0,5000,no,target,always,0,,,,,,06
+1751,AS_SONICBLOW@Valkyrie Randgris,attack,136,10,2000,0,5000,no,target,always,0,,,,,,
+1751,NPC_SUMMONSLAVE@Valkyrie Randgris,idle,196,3,10000,0,0,no,self,onspawn,0,1765,,,,,
+1751,NPC_SUMMONSLAVE@Valkyrie Randgris,attack,196,3,2000,700,60000,no,self,slavele,2,1765,,,,,
+1751,NPC_SUMMONSLAVE@Valkyrie Randgris,idle,196,3,10000,700,60000,no,self,slavele,2,1765,,,,,
+1751,NPC_EXPLOSIONSPIRITS@Valkyrie Randgris,attack,349,5,10000,0,120000,no,self,myhpltmaxrate,30,,,,,,06
+1751,NPC_INCREASEFLEE@Valkyrie Randgris,chase,350,5,10000,0,120000,no,self,myhpltmaxrate,30,,,,,,06
+1751,NPC_RECALL@Valkyrie Randgris,attack,354,1,10000,0,30000,no,target,always,0,,,,,,
+1751,NPC_RECALL@Valkyrie Randgris,idle,354,1,10000,0,30000,no,self,always,0,,,,,,
+1751,AL_TELEPORT@Valkyrie Randgris,idle,26,1,1000,0,5000,no,self,rudeattacked,,,,,,,
 1752,MG_SOULSTRIKE@Skogul,chase,13,5,1000,0,5000,no,target,always,0,,,,,,
 1752,TF_HIDING@Skogul,idle,51,1,200,0,5000,no,self,always,0,,,,,,09
 1752,AS_GRIMTOOTH@Skogul,idle,137,5,10000,0,700,no,target,mystatuson,hiding,,,,,,
 1752,NPC_CURSEATTACK@Skogul,attack,181,5,500,0,5000,no,target,always,0,,,,,,
 1752,NPC_DARKNESSATTACK@Skogul,attack,190,5,500,0,5000,no,target,always,0,,,,,,09
-1752,取り巻き召喚@Skogul,attack,196,1,100,0,3600000,no,self,slavele,0,1762,,,,,
+1752,NPC_SUMMONSLAVE@Skogul,attack,196,1,100,0,3600000,no,self,slavele,0,1762,,,,,
 1753,MG_FIREWALL@Thruth,chase,18,5,200,500,5000,no,target,always,0,,,,,,
 1753,NPC_POISON�@Thruth,attack,176,5,500,800,5000,no,target,always,0,,,,,,
-1753,NPC_DARKNESSATTACK@フラッズ,attack,190,5,500,500,5000,no,target,always,0,,,,,,06
+1753,NPC_DARKNESSATTACK@Thruth,attack,190,5,500,500,5000,no,target,always,0,,,,,,06
 1753,RG_STRIPARMOR@Thruth,attack,217,5,500,0,30000,no,target,always,0,,,,,,
 1753,NPC_ELEMENTUNDEAD@Thruth,attack,351,1,500,0,20000,no,target,always,0,,,,,,
-1753,取り巻き召喚@Thruth,attack,196,1,100,0,3600000,no,self,slavele,0,1761,,,,,
+1753,NPC_SUMMONSLAVE@Thruth,attack,196,1,100,0,3600000,no,self,slavele,0,1761,,,,,
 1754,MG_SAFETYWALL@Skeggiold,attack,12,5,500,1000,5000,no,self,always,0,,,,,,
 1754,MG_THUNDERSTORM@Skeggiold,attack,21,10,2000,1500,5000,no,target,always,0,,,,,,
 1754,MG_THUNDERSTORM@Skeggiold,chase,21,10,1000,1500,5000,no,target,always,0,,,,,,
@@ -3146,22 +3214,22 @@
 1754,AL_DECAGI@Skeggiold,chase,30,10,200,1000,20000,no,target,always,0,,,,,,
 1754,NPC_PETRIFYATTACK@Skeggiold,chase,180,5,200,500,5000,no,target,always,0,,,,,,
 1754,NPC_HOLYATTACK@Skeggiold,attack,189,3,500,500,5000,no,target,always,0,,,,,,
-1754,取り巻き召喚@Skeggiold,idle,196,2,10000,0,0,no,self,onspawn,0,1763,,,,,
+1754,NPC_SUMMONSLAVE@Skeggiold,idle,196,2,10000,0,0,no,self,onspawn,0,1763,,,,,
 1754,AM_ACIDTERROR@Skeggiold,chase,230,5,200,0,5000,no,target,always,0,,,,,,
 1754,SA_REVERSEORCISH@Skeggiold,attack,294,1,50,0,30000,no,target,always,0,,,,,,
 1754,SA_REVERSEORCISH@Skeggiold,chase,294,1,20,0,30000,no,target,always,0,,,,,,
-1754,取り巻き呼び戻し@Skeggiold,attack,354,1,10000,0,30000,no,target,always,0,,,,,,
-1754,取り巻き呼び戻し@Skeggiold,idle,354,1,10000,0,30000,no,self,always,0,,,,,,
+1754,NPC_RECALL@Skeggiold,attack,354,1,10000,0,30000,no,target,always,0,,,,,,
+1754,NPC_RECALL@Skeggiold,idle,354,1,10000,0,30000,no,self,always,0,,,,,,
 1755,MG_SAFETYWALL@Skeggiold,attack,12,5,500,1000,5000,no,self,always,0,,,,,,
 1755,MG_SOULSTRIKE@Skeggiold,chase,13,9,1000,500,5000,no,target,always,0,,,,,,
 1755,AL_TELEPORT@Skeggiold,idle,26,1,1000,0,5000,no,self,rudeattacked,,,,,,,
 1755,NPC_HOLYATTACK@Skeggiold,attack,189,3,500,500,5000,no,target,always,0,,,,,,
-1755,取り巻き召喚@Skeggiold,idle,196,2,10000,0,0,no,self,onspawn,0,1764,,,,,
+1755,NPC_SUMMONSLAVE@Skeggiold,idle,196,2,10000,0,0,no,self,onspawn,0,1764,,,,,
 1755,CR_HOLYCROSS@Skeggiold,attack,253,5,2000,0,5000,no,target,always,0,,,,,,
 1755,SA_REVERSEORCISH@Skeggiold,attack,294,1,50,0,30000,no,target,always,0,,,,,,
 1755,SA_REVERSEORCISH@Skeggiold,chase,294,1,20,0,30000,no,target,always,0,,,,,,
-1755,取り巻き呼び戻し@Skeggiold,attack,354,1,10000,0,30000,no,target,always,0,,,,,,
-1755,取り巻き呼び戻し@Skeggiold,idle,354,1,10000,0,30000,no,self,always,0,,,,,,
+1755,NPC_RECALL@Skeggiold,attack,354,1,10000,0,30000,no,target,always,0,,,,,,
+1755,NPC_RECALL@Skeggiold,idle,354,1,10000,0,30000,no,self,always,0,,,,,,
 1756,AL_HEAL@Hydrolancer,attack,28,11,10000,0,5000,no,friend,friendhpltmaxrate,60,,,,,,
 1756,AL_HEAL@Hydrolancer,chase,28,11,10000,0,5000,no,friend,friendhpltmaxrate,60,,,,,,
 1756,WZ_METEOR@Hydrolancer,attack,83,15,2000,500,5000,no,target,always,0,,,,,,
@@ -3170,13 +3238,13 @@
 1756,NPC_CRITICALSLASH@Hydrolancer,attack,170,1,2000,0,5000,no,target,always,0,,,,,,
 1756,NPC_COMBOATTACK@Hydrolancer,attack,171,2,2000,0,5000,no,target,always,0,,,,,,
 1756,NPC_RANDOMATTACK@Hydrolancer,attack,183,5,2000,0,5000,no,target,always,0,,,,,,
-1756,取り巻き召喚@Hydrolancer,idle,196,1,10000,0,0,no,self,onspawn,0,1757,1758,1759,1760,,
-1756,取り巻き召喚@Hydrolancer,attack,196,1,2000,700,60000,no,self,slavele,2,1757,1758,1759,1760,,
-1756,取り巻き召喚@Hydrolancer,idle,196,1,10000,700,60000,no,self,slavele,2,1757,1758,1759,1760,,
+1756,NPC_SUMMONSLAVE@Hydrolancer,idle,196,1,10000,0,0,no,self,onspawn,0,1757,1758,1759,1760,,
+1756,NPC_SUMMONSLAVE@Hydrolancer,attack,196,1,2000,700,60000,no,self,slavele,2,1757,1758,1759,1760,,
+1756,NPC_SUMMONSLAVE@Hydrolancer,idle,196,1,10000,700,60000,no,self,slavele,2,1757,1758,1759,1760,,
 1756,NPC_DARKBREATH@Hydrolancer,attack,202,5,500,0,5000,no,target,always,0,,,,,,
 1756,NPC_EXPLOSIONSPIRITS@Hydrolancer,attack,349,5,10000,0,30000,no,self,myhpltmaxrate,30,,,,,,
-1756,取り巻き呼び戻し@Hydrolancer,attack,354,1,10000,0,30000,no,target,always,0,,,,,,
-1756,取り巻き呼び戻し@Hydrolancer,idle,354,1,10000,0,30000,no,self,always,0,,,,,,
+1756,NPC_RECALL@Hydrolancer,attack,354,1,10000,0,30000,no,target,always,0,,,,,,
+1756,NPC_RECALL@Hydrolancer,idle,354,1,10000,0,30000,no,self,always,0,,,,,,
 1765,AL_TELEPORT@Valkyrie,idle,26,1,1000,0,5000,no,self,rudeattacked,,,,,,,
 1765,AL_HEAL@Valkyrie,attack,28,11,10000,0,5000,no,friend,friendhpltmaxrate,60,,,,,,3
 1765,AL_HEAL@Valkyrie,chase,28,11,10000,0,5000,no,friend,friendhpltmaxrate,60,,,,,,3
@@ -3197,10 +3265,10 @@
 1768,WZ_SIGHTRASHER@Gloom Under Night,attack,81,20,2000,0,5000,no,self,always,0,,,,,,
 1768,MG_FIREBALL@Gloom Under Night,attack,17,20,1000,500,20000,no,target,always,0,,,,,,
 1768,MG_FIREBALL@Gloom Under Night,chase,17,20,10000,500,20000,no,target,always,0,,,,,,
-1768,取り巻き呼び戻し@Gloom Under Night,attack,354,1,10000,0,30000,no,self,always,0,,,,,,
-1768,取り巻き呼び戻し@Gloom Under Night,idle,354,1,10000,0,30000,no,self,always,0,,,,,,
-1768,取り巻き召喚@Gloom Under Night,attack,196,4,10000,700,30000,no,self,slavele,3,1786,1787,,,,
-1768,取り巻き召喚@Gloom Under Night,idle,196,4,10000,700,30000,no,self,slavele,3,1786,1787,,,,
+1768,NPC_RECALL@Gloom Under Night,attack,354,1,10000,0,30000,no,self,always,0,,,,,,
+1768,NPC_RECALL@Gloom Under Night,idle,354,1,10000,0,30000,no,self,always,0,,,,,,
+1768,NPC_SUMMONSLAVE@Gloom Under Night,attack,196,4,10000,700,30000,no,self,slavele,3,1786,1787,,,,
+1768,NPC_SUMMONSLAVE@Gloom Under Night,idle,196,4,10000,700,30000,no,self,slavele,3,1786,1787,,,,
 1768,AL_TELEPORT@Gloom Under Night,idle,26,1,10000,0,0,no,self,rudeattacked,,,,,,,
 1768,AL_TELEPORT@Gloom Under Night,walk,26,1,5000,0,5000,no,self,rudeattacked,,,,,,,
 1769,MG_SIGHT@Agav,idle,10,1,100,0,5000,no,self,always,0,,,,,,
@@ -3294,22 +3362,22 @@
 1778,MG_COLDBOLT@Gazeti,attack,14,5,2000,0,5000,no,target,always,0,,,,,,
 1778,NPC_GUIDEATTACK@Gazeti,attack,172,2,500,0,20000,no,target,always,0,,,,,,
 1778,NPC_WATERATTACK@Gazeti,attack,184,2,2000,0,5000,no,target,always,0,,,,,,
-1779,MG_FROSTDIVER@クチュラヌクス,chase,15,10,1000,0,5000,no,target,always,0,,,,,,
-1779,AL_TELEPORT@クチュラヌクス,idle,26,1,1000,0,5000,no,self,rudeattacked,,,,,,,
-1779,WZ_WATERBALL@クチュラヌクス,attack,86,5,2000,500,20000,no,target,attackpcgt,2,,,,,,
-1779,WZ_WATERBALL@クチュラヌクス,chase,86,5,1000,500,20000,no,target,attackpcgt,2,,,,,,
-1779,WZ_FROSTNOVA@クチュラヌクス,attack,88,10,2000,0,5000,no,self,always,0,,,,,,
-1779,WZ_STORMGUST@クチュラヌクス,attack,89,10,2000,500,5000,no,target,always,0,,,,,,
-1779,WZ_STORMGUST@クチュラヌクス,chase,89,10,1000,500,5000,no,target,always,0,,,,,,
-1779,NPC_RANDOMATTACK@クチュラヌクス,attack,183,5,2000,0,5000,no,target,always,0,,,,,,
-1779,NPC_WATERATTACK@クチュラヌクス,attack,184,5,2000,0,5000,no,target,always,0,,,,,,
-1779,取り巻き召喚@クチュラヌクス,idle,196,6,10000,0,0,no,self,onspawn,0,1777,,,,,
-1779,取り巻き召喚@クチュラヌクス,attack,196,6,10000,700,10000,no,self,slavele,3,1788,,,,,
-1779,取り巻き召喚@クチュラヌクス,idle,196,6,10000,700,10000,no,self,slavele,3,1788,,,,,
-1779,NPC_BREAKARMOR@クチュラヌクス,attack,344,5,500,0,20000,no,target,always,0,,,,,,
-1779,NPC_EXPLOSIONSPIRITS@クチュラヌクス,attack,349,5,10000,0,60000,no,self,myhpltmaxrate,30,,,,,,
-1779,取り巻き呼び戻し@クチュラヌクス,attack,354,1,10000,0,30000,no,target,always,0,,,,,,
-1779,取り巻き呼び戻し@クチュラヌクス,idle,354,1,10000,0,30000,no,self,always,0,,,,,,
+1779,MG_FROSTDIVER@Ktullanux,chase,15,10,1000,0,5000,no,target,always,0,,,,,,
+1779,AL_TELEPORT@Ktullanux,idle,26,1,1000,0,5000,no,self,rudeattacked,,,,,,,
+1779,WZ_WATERBALL@Ktullanux,attack,86,5,2000,500,20000,no,target,attackpcgt,2,,,,,,
+1779,WZ_WATERBALL@Ktullanux,chase,86,5,1000,500,20000,no,target,attackpcgt,2,,,,,,
+1779,WZ_FROSTNOVA@Ktullanux,attack,88,10,2000,0,5000,no,self,always,0,,,,,,
+1779,WZ_STORMGUST@Ktullanux,attack,89,10,2000,500,5000,no,target,always,0,,,,,,
+1779,WZ_STORMGUST@Ktullanux,chase,89,10,1000,500,5000,no,target,always,0,,,,,,
+1779,NPC_RANDOMATTACK@Ktullanux,attack,183,5,2000,0,5000,no,target,always,0,,,,,,
+1779,NPC_WATERATTACK@Ktullanux,attack,184,5,2000,0,5000,no,target,always,0,,,,,,
+1779,NPC_SUMMONSLAVE@Ktullanux,idle,196,6,10000,0,0,no,self,onspawn,0,1777,,,,,
+1779,NPC_SUMMONSLAVE@Ktullanux,attack,196,6,10000,700,10000,no,self,slavele,3,1788,,,,,
+1779,NPC_SUMMONSLAVE@Ktullanux,idle,196,6,10000,700,10000,no,self,slavele,3,1788,,,,,
+1779,NPC_BREAKARMOR@Ktullanux,attack,344,5,500,0,20000,no,target,always,0,,,,,,
+1779,NPC_EXPLOSIONSPIRITS@Ktullanux,attack,349,5,10000,0,60000,no,self,myhpltmaxrate,30,,,,,,
+1779,NPC_RECALL@Ktullanux,attack,354,1,10000,0,30000,no,target,always,0,,,,,,
+1779,NPC_RECALL@Ktullanux,idle,354,1,10000,0,30000,no,self,always,0,,,,,,
 1780,AL_HEAL@Muscipular,attack,28,9,10000,500,5000,yes,friend,friendhpltmaxrate,60,,,,,,
 1780,AL_HEAL@Muscipular,idle,28,9,10000,500,5000,yes,friend,friendhpltmaxrate,60,,,,,,
 1780,KN_SPEARSTAB@Muscipular,attack,58,5,500,800,5000,no,target,always,0,,,,,,
@@ -3326,7 +3394,7 @@
 1783,AS_SONICBLOW@Galion,attack,136,10,500,800,5000,no,target,always,0,,,,,,06
 1783,NPC_WINDATTACK@Galion,attack,187,3,500,0,5000,no,target,always,0,,,,,,09
 1783,NPC_DARKNESSATTACK@Galion,attack,190,3,500,0,5000,no,target,always,0,,,,,,09
-1783,取り巻き召喚@Galion,idle,196,2,10000,2000,60000,no,self,slavele,0,1782,,,,,
+1783,NPC_SUMMONSLAVE@Galion,idle,196,2,10000,2000,60000,no,self,slavele,0,1782,,,,,
 1784,SM_BASH@Stapo,attack,5,5,500,0,5000,no,target,always,0,,,,,,06
 1784,NPC_KEEPING@Stapo,attack,201,1,2000,0,30000,no,self,myhpltmaxrate,20,,,,,,09
 1785,SM_BASH@Atroce,attack,5,10,2000,0,5000,no,target,always,0,,,,,,06
@@ -3334,12 +3402,12 @@
 1785,AL_TELEPORT@Atroce,idle,26,1,1000,0,5000,no,self,rudeattacked,,,,,,,
 1785,KN_TWOHANDQUICKEN@Atroce,attack,60,10,10000,0,120000,no,self,myhpltmaxrate,30,,,,,,06
 1785,NPC_DARKNESSATTACK@Atroce,attack,190,5,2000,0,5000,no,target,always,0,,,,,,06
-1785,取り巻き召喚@Atroce,idle,196,5,10000,0,0,no,self,onspawn,0,1783,,,,,
-1785,取り巻き召喚@Atroce,attack,196,5,10000,700,10000,no,self,slavele,3,1791,,,,,
-1785,取り巻き召喚@Atroce,idle,196,5,10000,700,10000,no,self,slavele,3,1791,,,,,
+1785,NPC_SUMMONSLAVE@Atroce,idle,196,5,10000,0,0,no,self,onspawn,0,1783,,,,,
+1785,NPC_SUMMONSLAVE@Atroce,attack,196,5,10000,700,10000,no,self,slavele,3,1791,,,,,
+1785,NPC_SUMMONSLAVE@Atroce,idle,196,5,10000,700,10000,no,self,slavele,3,1791,,,,,
 1785,NPC_EXPLOSIONSPIRITS@Atroce,attack,349,5,10000,0,60000,no,self,myhpltmaxrate,30,,,,,,06
-1785,取り巻き呼び戻し@Atroce,attack,354,1,10000,0,30000,no,target,always,0,,,,,,
-1785,取り巻き呼び戻し@Atroce,idle,354,1,10000,0,30000,no,self,always,0,,,,,,
+1785,NPC_RECALL@Atroce,attack,354,1,10000,0,30000,no,target,always,0,,,,,,
+1785,NPC_RECALL@Atroce,idle,354,1,10000,0,30000,no,self,always,0,,,,,,
 
 1786,G_Agav@NPC_HOLYATTACK,attack,189,5,500,0,5000,yes,target,always,0,,,,,,
 1786,G_Agav@MG_SIGHT,chase,10,1,500,0,5000,yes,self,always,0,,,,,,
@@ -3396,17 +3464,17 @@
 1814,AL_HEAL@Moonlight Flower,attack,28,11,10000,0,5000,no,self,myhpltmaxrate,30,,,,,,21
 1814,AL_HEAL@Moonlight Flower,attack,28,11,10000,0,5000,no,friend,friendhpltmaxrate,60,,,,,,21
 1814,AL_HEAL@Moonlight Flower,chase,28,11,10000,0,5000,no,friend,friendhpltmaxrate,60,,,,,,21
-1814,メマーナイト@Moonlight Flower,attack,42,40,5000,0,5000,no,target,always,0,,,,,,08
+1814,MC_MAMMONITE@Moonlight Flower,attack,42,40,5000,0,5000,no,target,always,0,,,,,,08
 1814,BS_HAMMERFALL@Moonlight Flower,attack,110,11,2000,0,5000,no,target,always,0,,,,,,00
 1814,NPC_GUIDEATTACK@Moonlight Flower,attack,172,5,500,0,20000,no,target,always,0,,,,,,06
-1814,取り巻き召喚@Moonlight Flower,idle,196,3,10000,0,0,no,self,onspawn,0,1180,,,,,
-1814,取り巻き召喚@Moonlight Flower,attack,196,5,10000,700,10000,no,self,slavele,3,1471,,,,,
-1814,取り巻き召喚@Moonlight Flower,idle,196,5,10000,700,10000,no,self,slavele,3,1471,,,,,
+1814,NPC_SUMMONSLAVE@Moonlight Flower,idle,196,3,10000,0,0,no,self,onspawn,0,1180,,,,,
+1814,NPC_SUMMONSLAVE@Moonlight Flower,attack,196,5,10000,700,10000,no,self,slavele,3,1471,,,,,
+1814,NPC_SUMMONSLAVE@Moonlight Flower,idle,196,5,10000,700,10000,no,self,slavele,3,1471,,,,,
 1814,SA_DISPELL@Moonlight Flower,attack,289,5,500,0,5000,no,target,always,0,,,,,,06
 1814,SA_DISPELL@Moonlight Flower,chase,289,5,500,0,5000,no,target,always,0,,,,,,06
 1814,NPC_EXPLOSIONSPIRITS@Moonlight Flower,attack,349,5,10000,0,60000,no,self,myhpltmaxrate,30,,,,,,06
-1814,取り巻き呼び戻し@Moonlight Flower,attack,354,1,10000,0,30000,no,target,always,0,,,,,,
-1814,取り巻き呼び戻し@Moonlight Flower,idle,354,1,10000,0,30000,no,self,always,0,,,,,,
+1814,NPC_RECALL@Moonlight Flower,attack,354,1,10000,0,30000,no,target,always,0,,,,,,
+1814,NPC_RECALL@Moonlight Flower,idle,354,1,10000,0,30000,no,self,always,0,,,,,,
 1817,SM_MAGNUM@Detardeurus,attack,7,20,2000,0,5000,no,self,always,0,,,,,,
 1817,MG_FIREBALL@Detardeurus,chase,17,10,1000,0,5000,no,target,always,0,,,,,,
 1817,AL_TELEPORT@Detardeurus,idle,26,1,1000,0,500,no,self,rudeattacked,0,,,,,,
@@ -3414,43 +3482,43 @@
 1817,WZ_METEOR@Detardeurus,chase,83,20,1000,500,5000,no,target,always,0,,,,,,
 1817,WZ_VERMILION@Detardeurus,attack,85,20,2000,500,5000,no,target,always,0,,,,,,
 1817,WZ_VERMILION@Detardeurus,chase,85,20,1000,500,5000,no,target,always,0,,,,,,
-1817,取り巻き召喚@Detardeurus,idle,196,1,10000,700,10000,no,self,onspawn,0,1756,,,,,
-1817,取り巻き召喚@Detardeurus,attack,196,1,10000,700,10000,no,self,slavele,0,1756,,,,,
-1817,取り巻き召喚@Detardeurus,idle,196,1,10000,700,10000,no,self,always,0,1756,,,,,
+1817,NPC_SUMMONSLAVE@Detardeurus,idle,196,1,10000,700,10000,no,self,onspawn,0,1756,,,,,
+1817,NPC_SUMMONSLAVE@Detardeurus,attack,196,1,10000,700,10000,no,self,slavele,0,1756,,,,,
+1817,NPC_SUMMONSLAVE@Detardeurus,idle,196,1,10000,700,10000,no,self,always,0,1756,,,,,
 1817,CR_REFLECTSHIELD@Detardeurus,any,252,,0,,,no,target,always,0,,,,,,
 1817,NPC_BREAKWEAPON@Detardeurus,attack,343,10,500,,300000,no,self,always,0,,,,,,06
 1817,NPC_BREAKARMOR@Detardeurus,attack,344,10,500,0,5000,no,target,always,0,,,,,,36
 1817,NPC_EXPLOSIONSPIRITS@Detardeurus,attack,349,5,10000,0,30000,no,self,myhpltmaxrate,30,,,,,,06
-1817,取り巻き呼び戻し@Detardeurus,attack,354,1,10000,,30000,no,target,always,0,,,,,,
-1817,取り巻き呼び戻し@Detardeurus,idle,354,1,10000,0,30000,no,self,always,0,,,,,,
+1817,NPC_RECALL@Detardeurus,attack,354,1,10000,,30000,no,target,always,0,,,,,,
+1817,NPC_RECALL@Detardeurus,idle,354,1,10000,0,30000,no,self,always,0,,,,,,
 
-1829,モードチェンジ@ソードマスター,any,197,1,10000,0,3600000,no,modechange,closedattacked,0,self,0,181,,,
-1829,モードチェンジ@ソードマスター,any,197,1,10000,0,3600000,no,modechange,longrangeattacked,0,self,0,181,,,
-1829,モードチェンジ@ソードマスター,idle,197,1,20,0,3600000,no,modechange,always,0,self,0,181,,,
-1829,AL_HEAL@ソードマスター,idle,28,10,10000,0,10000,no,self,myhpltmaxrate,30,,,,,,
-1829,AL_HEAL@ソードマスター,attack,28,10,10000,0,10000,no,self,myhpltmaxrate,30,,,,,,
-1829,TF_BACKSLIDING@ソードマスター,attack,150,1,1000,0,5000,no,self,longrangeattacked,,,,,,,
-1829,NPC_RUNAWAY@ソードマスター,attack,348,5,1000,0,20000,no,self,myhpltmaxrate,70,,,,,,
-1829,CR_REFLECTSHIELD@ソードマスター,attack,252,5,5000,0,30000,no,self,always,0,,,,,,
-1829,AC_CONCENTRATION@ソードマスター,attack,45,38,10000,0,120000,no,self,myhpltmaxrate,50,,,,,,
-1829,KN_TWOHANDQUICKEN@ソードマスター,attack,60,10,10000,0,120000,no,self,myhpltmaxrate,30,,,,,,
-1829,SM_MAGNUM@ソードマスター,attack,7,10,500,0,5000,no,self,always,0,,,,,,
-1829,KN_AUTOCOUNTER@ソードマスター,attack,61,3,1000,0,3000,no,self,always,0,,,,,,
-1829,NPC_DARKCROSS@ソードマスター,attack,338,5,2000,0,5000,no,target,always,0,,,,,,
-1829,NPC_STUNATTACK@ソードマスター,attack,179,5,500,0,5000,no,target,always,0,,,,,,
-1829,NPC_SILENCEATTACK@ソードマスター,attack,178,2,500,0,5000,no,target,always,0,,,,,,
-1829,KN_SPEARBOOMERANG@ソードマスター,chase,59,5,1000,0,5000,no,target,always,0,,,,,,
-1829,AL_DECAGI@ソードマスター,chase,30,10,2000,0,20000,no,target,always,0,,,,,,
-1830,AL_TELEPORT@ボウマスター,idle,26,1,1000,0,5000,no,self,rudeattacked,,,,,,,
-1830,NPC_RUNAWAY@ボウマスター,attack,348,7,5000,0,5000,no,self,closedattacked,,,,,,,
-1830,NPC_RUNAWAY@ボウマスター,attack,348,7,3000,0,5000,no,self,longrangeattacked,,,,,,,
-1830,NPC_RUNAWAY@ボウマスター,chase,348,7,3000,0,5000,no,self,longrangeattacked,,,,,,,
-1830,HT_FLASHER@ボウマスター,idle,120,5,1000,0,10000,no,self,always,0,,,,,,
-1830,AC_DOUBLE@ボウマスター,attack,46,10,1000,0,3000,no,target,always,0,,,,,,
-1830,AC_CHARGEARROW@ボウマスター,attack,148,1,1000,0,5000,no,target,closedattacked,,,,,,,
-1830,AC_SHOWER@ボウマスター,attack,47,5,3000,0,0,no,target,always,0,,,,,,
-1830,NPC_STUNATTACK@ボウマスター,attack,179,2,500,0,5000,no,target,always,0,,,,,,
-1830,NPC_SILENCEATTACK@ボウマスター,attack,178,5,1000,0,5000,no,target,always,0,,,,,,
+1829,NPC_EMOTION@Sword Master,any,197,1,10000,0,3600000,no,modechange,closedattacked,0,self,0,181,,,
+1829,NPC_EMOTION@Sword Master,any,197,1,10000,0,3600000,no,modechange,longrangeattacked,0,self,0,181,,,
+1829,NPC_EMOTION@Sword Master,idle,197,1,20,0,3600000,no,modechange,always,0,self,0,181,,,
+1829,AL_HEAL@Sword Master,idle,28,10,10000,0,10000,no,self,myhpltmaxrate,30,,,,,,
+1829,AL_HEAL@Sword Master,attack,28,10,10000,0,10000,no,self,myhpltmaxrate,30,,,,,,
+1829,TF_BACKSLIDING@Sword Master,attack,150,1,1000,0,5000,no,self,longrangeattacked,,,,,,,
+1829,NPC_RUNAWAY@Sword Master,attack,348,5,1000,0,20000,no,self,myhpltmaxrate,70,,,,,,
+1829,CR_REFLECTSHIELD@Sword Master,attack,252,5,5000,0,30000,no,self,always,0,,,,,,
+1829,AC_CONCENTRATION@Sword Master,attack,45,38,10000,0,120000,no,self,myhpltmaxrate,50,,,,,,
+1829,KN_TWOHANDQUICKEN@Sword Master,attack,60,10,10000,0,120000,no,self,myhpltmaxrate,30,,,,,,
+1829,SM_MAGNUM@Sword Master,attack,7,10,500,0,5000,no,self,always,0,,,,,,
+1829,KN_AUTOCOUNTER@Sword Master,attack,61,3,1000,0,3000,no,self,always,0,,,,,,
+1829,NPC_DARKCROSS@Sword Master,attack,338,5,2000,0,5000,no,target,always,0,,,,,,
+1829,NPC_STUNATTACK@Sword Master,attack,179,5,500,0,5000,no,target,always,0,,,,,,
+1829,NPC_SILENCEATTACK@Sword Master,attack,178,2,500,0,5000,no,target,always,0,,,,,,
+1829,KN_SPEARBOOMERANG@Sword Master,chase,59,5,1000,0,5000,no,target,always,0,,,,,,
+1829,AL_DECAGI@Sword Master,chase,30,10,2000,0,20000,no,target,always,0,,,,,,
+1830,AL_TELEPORT@Bow Master,idle,26,1,1000,0,5000,no,self,rudeattacked,,,,,,,
+1830,NPC_RUNAWAY@Bow Master,attack,348,7,5000,0,5000,no,self,closedattacked,,,,,,,
+1830,NPC_RUNAWAY@Bow Master,attack,348,7,3000,0,5000,no,self,longrangeattacked,,,,,,,
+1830,NPC_RUNAWAY@Bow Master,chase,348,7,3000,0,5000,no,self,longrangeattacked,,,,,,,
+1830,HT_FLASHER@Bow Master,idle,120,5,1000,0,10000,no,self,always,0,,,,,,
+1830,AC_DOUBLE@Bow Master,attack,46,10,1000,0,3000,no,target,always,0,,,,,,
+1830,AC_CHARGEARROW@Bow Master,attack,148,1,1000,0,5000,no,target,closedattacked,,,,,,,
+1830,AC_SHOWER@Bow Master,attack,47,5,3000,0,0,no,target,always,0,,,,,,
+1830,NPC_STUNATTACK@Bow Master,attack,179,2,500,0,5000,no,target,always,0,,,,,,
+1830,NPC_SILENCEATTACK@Bow Master,attack,178,5,1000,0,5000,no,target,always,0,,,,,,
 1831,NPC_DEFENDER@Salamander,chase,257,1,500,0,30000,no,self,longrangeattacked,,,,,,,07
 1831,AS_GRIMTOOTH@Salamander,chase,137,4,200,0,5000,no,target,always,0,,,,,,
 1831,NPC_FIREATTACK@Salamander,attack,186,5,1000,250,5000,no,target,always,0,,,,,,07
@@ -3458,11 +3526,11 @@
 1831,NPC_COMBOATTACK@Salamander,attack,171,6,2000,500,5000,no,target,always,0,,,,,,
 1831,NPC_SPLASHATTACK@Salamander,attack,174,1,500,0,20000,no,target,always,0,,,,,,
 1832,AL_TELEPORT@Ifrit,idle,26,1,1000,0,5000,no,self,rudeattacked,,,,,,,
-1832,取り巻き召喚@Ifrit,idle,196,1,10000,700,0,no,self,onspawn,0,1834,1835,,,,
-1832,取り巻き召喚@Ifrit,attack,196,1,5000,700,30000,no,self,slavele,1,1834,1835,,,,
-1832,取り巻き召喚@Ifrit,idle,196,1,10000,700,30000,no,self,slavele,1,1834,1835,,,,
-1832,取り巻き呼び戻し@Ifrit,attack,354,1,3000,0,30000,no,self,always,0,,,,,,
-1832,取り巻き呼び戻し@Ifrit,idle,354,1,1000,0,30000,no,self,always,0,,,,,,
+1832,NPC_SUMMONSLAVE@Ifrit,idle,196,1,10000,700,0,no,self,onspawn,0,1834,1835,,,,
+1832,NPC_SUMMONSLAVE@Ifrit,attack,196,1,5000,700,30000,no,self,slavele,1,1834,1835,,,,
+1832,NPC_SUMMONSLAVE@Ifrit,idle,196,1,10000,700,30000,no,self,slavele,1,1834,1835,,,,
+1832,NPC_RECALL@Ifrit,attack,354,1,3000,0,30000,no,self,always,0,,,,,,
+1832,NPC_RECALL@Ifrit,idle,354,1,1000,0,30000,no,self,always,0,,,,,,
 1832,NPC_SUMMONMONSTER@Ifrit,attack,209,1,10000,1000,120000,no,self,myhpltmaxrate,15,1837,1837,1835,,,06
 1832,SM_MAGNUM@Ifrit,attack,7,30,1000,0,5000,no,self,always,0,,,,,,
 1832,ASC_METEORASSAULT@Ifrit,attack,406,10,5000,200,15000,no,self,closedattacked,,,,,,,
@@ -3472,10 +3540,10 @@
 1832,NPC_EXPLOSIONSPIRITS@Ifrit,attack,349,1,500,0,180000,no,command,always,0,group,7,self,0,,
 1832,NPC_EXPLOSIONSPIRITS@Ifrit,attack,349,1,500,0,60000,no,command,myhpltmaxrate,30,group,7,self,0,,
 1832,SA_DISPELL@Ifrit,attack,289,5,500,0,180000,no,target,always,0,,,,,,09
-1832,雷撃砕@Ifrit,attack,541,10,3000,1500,30000,no,self,myhpltmaxrate,50,,,,,,
-1832,雷撃砕@Ifrit,attack,541,10,10000,1300,180000,no,self,skillused,271,,,,,,
-1832,爆炎龍@Ifrit,attack,536,3,1000,500,5000,no,anothertarget,longrangeattacked,0,,,,,,09
-1832,爆炎龍@Ifrit,chase,536,3,3000,500,5000,no,anothertarget,longrangeattacked,0,,,,,,09
+1832,NJ_RAIGEKISAI@Ifrit,attack,541,10,3000,1500,30000,no,self,myhpltmaxrate,50,,,,,,
+1832,NJ_RAIGEKISAI@Ifrit,attack,541,10,10000,1300,180000,no,self,skillused,271,,,,,,
+1832,NJ_BAKUENRYU@Ifrit,attack,536,3,1000,500,5000,no,anothertarget,longrangeattacked,0,,,,,,09
+1832,NJ_BAKUENRYU@Ifrit,chase,536,3,3000,500,5000,no,anothertarget,longrangeattacked,0,,,,,,09
 1832,NPC_CRITICALSLASH@Ifrit,attack,170,1,1000,0,5000,no,target,always,0,,,,,,
 1832,NPC_DARKSOULSTRIKE@Ifrit,attack,340,8,1000,0,10000,no,target,closedattacked,,,,,,,
 1832,NPC_COMBOATTACK@Ifrit,attack,171,8,1000,500,10000,no,target,always,0,,,,,,
@@ -3509,9 +3577,9 @@
 1835,AL_HEAL@Kasa,any,28,11,3000,1500,30000,no,friend,friendhpltmaxrate,30,,,,,,
 1835,MG_SOULSTRIKE@Kasa,attack,13,8,500,2000,10000,yes,target,always,0,,,,,,
 1835,MG_FIREBOLT@Kasa,attack,19,10,5000,200,5000,no,target,always,0,,,,,,
-1835,ガンバンテイン@Kasa,attack,483,1,3000,500,20000,no,target,always,0,,,,,,
-1835,ガンバンテイン@Kasa,attack,483,1,3000,500,5000,no,anothertarget,longrangeattacked,,,,,,,
-1835,ガンバンテイン@Kasa,chase,483,1,5000,500,5000,no,anothertarget,longrangeattacked,,,,,,,
+1835,HW_GANBANTEIN@Kasa,attack,483,1,3000,500,20000,no,target,always,0,,,,,,
+1835,HW_GANBANTEIN@Kasa,attack,483,1,3000,500,5000,no,anothertarget,longrangeattacked,,,,,,,
+1835,HW_GANBANTEIN@Kasa,chase,483,1,5000,500,5000,no,anothertarget,longrangeattacked,,,,,,,
 1835,NPC_MAGICALATTACK@Kasa,attack,192,1,500,0,7000,no,target,always,0,,,,,,02
 1835,WZ_METEOR@Kasa,attack,83,15,5000,500,15000,no,target,always,0,,,,,,27
 1835,WZ_METEOR@Kasa,chase,83,15,1000,500,15000,no,target,always,0,,,,,,27
@@ -3541,7 +3609,7 @@
 1839,AS_VENOMDUST@Byorgue,attack,140,1,1000,1500,30000,no,target,always,0,,,,,,
 1839,NPC_INCREASEFLEE@Byorgue,chase,350,1,500,200,30000,yes,self,always,0,,,,,,
 1839,NPC_INVISIBLE@Byorgue,idle,352,1,500,0,10000,yes,self,always,0,,,,,,
-1839,ベナムナイフ@Byorgue,chase,1004,1,200,0,0,no,target,always,0,,,,,,
+1839,AS_VENOMKNIFE@Byorgue,chase,1004,1,200,0,0,no,target,always,0,,,,,,
 
 1864,Zombie Slaughter@AS_SONICBLOW,attack,136,10,1500,0,5000,no,target,always,0,,,,,,
 1865,Ragged Zombie@AC_SHOWER,attack,47,10,500,0,3000,no,target,always,0,,,,,,6
@@ -3561,17 +3629,17 @@
 1870,Necromancer@MG_THUNDERSTORM,chase,21,11,2000,500,10000,no,target,always,0,,,,,,
 1870,Necromancer@CR_REFLECTSHIELD,attack,252,5,1000,500,30000,no,self,always,0,,,,,,
 1870,Necromancer@CR_REFLECTSHIELD,chase,252,5,1000,500,30000,no,self,always,0,,,,,,
-1870,Necromancer@NPC_SUMMONSLAVE,attack,196,2,1000,500,3600000,no,self,slavele,1,1864,,,,, // Zombie Slaughter
-1870,Necromancer@NPC_SUMMONSLAVE,chase,196,2,1000,500,3600000,no,self,slavele,1,1864,,,,, // Zombie Slaughter
-1870,Necromancer@NPC_SUMMONSLAVE,idle,196,2,1000,500,3600000,no,self,slavele,1,1864,,,,, // Zombie Slaughter
+1870,Necromancer@NPC_SUMMONSLAVE,attack,196,2,1000,500,3600000,no,self,slavele,1,1864,,,,,
+1870,Necromancer@NPC_SUMMONSLAVE,chase,196,2,1000,500,3600000,no,self,slavele,1,1864,,,,,
+1870,Necromancer@NPC_SUMMONSLAVE,idle,196,2,1000,500,3600000,no,self,slavele,1,1864,,,,,
 1871,Fallen Bishop@AL_PNEUMA,attack,25,1,5000,0,10000,no,self,longrangeattacked,,,,,,,19
 1871,Fallen Bishop@AL_PNEUMA,chase,25,1,5000,0,10000,no,self,longrangeattacked,,,,,,,19
 1871,Fallen Bishop@ASC_METEOR,attack,406,10,15000,1000,20000,no,target,always,0,,,,,,
 1871,Fallen Bishop@ASC_METEOR,chase,406,10,15000,1000,20000,no,target,always,0,,,,,,
 1871,Fallen Bishop@AL_TELEPORT,idle,26,1,10000,0,0,yes,self,rudeattacked,,,,,,,
-1871,Fallen Bishop@NPC_SUMMONSLAVE,attack,196,3,1000,500,3600000,no,self,slavele,1,1868,,,,, // Banshee
-1871,Fallen Bishop@NPC_SUMMONSLAVE,chase,196,3,1000,500,3600000,no,self,slavele,1,1868,,,,, // Banshee
-1871,Fallen Bishop@NPC_SUMMONSLAVE,idle,196,3,1000,500,3600000,no,self,slavele,1,1868,,,,, // Banshee
+1871,Fallen Bishop@NPC_SUMMONSLAVE,attack,196,3,1000,500,3600000,no,self,slavele,1,1868,,,,,
+1871,Fallen Bishop@NPC_SUMMONSLAVE,chase,196,3,1000,500,3600000,no,self,slavele,1,1868,,,,,
+1871,Fallen Bishop@NPC_SUMMONSLAVE,idle,196,3,1000,500,3600000,no,self,slavele,1,1868,,,,,
 1871,Fallen Bishop@NPC_RECALL,attack,354,1,2000,0,10000,no,self,always,0,,,,,,
 1871,Fallen Bishop@NPC_RECALL,chase,354,1,2000,0,10000,no,self,always,0,,,,,,
 1871,Fallen Bishop@NPC_RECALL,idle,354,1,2000,0,10000,no,self,always,0,,,,,,
@@ -3588,9 +3656,9 @@
 1873,Beelzebub@RG_INTIMIDATE,attack,219,5,500,0,5000,no,target,always,0,,,,,,
 1873,Beelzebub@NPC_BREAKSIELD,attack,346,10,2000,0,5000,no,target,always,0,,,,,,6
 1873,Beelzebub@NPC_DARKBLESSING,attack,203,1,500,500,5000,no,target,always,0,,,,,,9
-1873,Beelzebub@NPC_SUMMONSLAVE,attack,196,2,1000,500,3600000,no,self,slavele,4,1872,1872,1872,1011,, // Hell Fly/ChonChon
-1873,Beelzebub@NPC_SUMMONSLAVE,chase,196,2,1000,500,3600000,no,self,slavele,4,1872,1872,1872,1011,, // Hell Fly/ChonChon
-1873,Beelzebub@NPC_SUMMONSLAVE,idle,196,2,1000,500,3600000,no,self,slavele,4,1872,1872,1872,1011,, // Hell Fly/ChonChon
+1873,Beelzebub@NPC_SUMMONSLAVE,attack,196,2,1000,500,3600000,no,self,slavele,4,1872,1872,1872,1011,,
+1873,Beelzebub@NPC_SUMMONSLAVE,chase,196,2,1000,500,3600000,no,self,slavele,4,1872,1872,1872,1011,,
+1873,Beelzebub@NPC_SUMMONSLAVE,idle,196,2,1000,500,3600000,no,self,slavele,4,1872,1872,1872,1011,,
 1873,Beelzebub@NPC_RECALL,attack,354,1,2000,0,10000,no,self,always,0,,,,,,
 1873,Beelzebub@NPC_RECALL,chase,354,1,2000,0,10000,no,self,always,0,,,,,,
 1873,Beelzebub@NPC_RECALL,idle,354,1,2000,0,10000,no,self,always,0,,,,,,
@@ -3600,9 +3668,9 @@
 1874,Beelzebub_@NPC_BREAKSIELD,attack,346,10,2000,0,5000,no,target,always,0,,,,,,6
 1874,Beelzebub_@NPC_DARKBLESSING,attack,203,1,500,500,5000,no,target,always,0,,,,,,9
 1874,Beelzebub@AL_TELEPORT,idle,26,1,10000,0,0,yes,self,rudeattacked,,,,,,,
-1874,Beelzebub_@NPC_SUMMONSLAVE,attack,196,2,1000,500,3600000,no,self,slavele,4,1872,1872,1872,1011,, // Hell Fly/ChonChon
-1874,Beelzebub_@NPC_SUMMONSLAVE,chase,196,2,1000,500,3600000,no,self,slavele,4,1872,1872,1872,1011,, // Hell Fly/ChonChon
-1874,Beelzebub_@NPC_SUMMONSLAVE,idle,196,2,1000,500,3600000,no,self,slavele,4,1872,1872,1872,1011,, // Hell Fly/ChonChon
+1874,Beelzebub_@NPC_SUMMONSLAVE,attack,196,2,1000,500,3600000,no,self,slavele,4,1872,1872,1872,1011,,
+1874,Beelzebub_@NPC_SUMMONSLAVE,chase,196,2,1000,500,3600000,no,self,slavele,4,1872,1872,1872,1011,,
+1874,Beelzebub_@NPC_SUMMONSLAVE,idle,196,2,1000,500,3600000,no,self,slavele,4,1872,1872,1872,1011,,
 1874,Beelzebub_@NPC_RECALL,attack,354,1,2000,0,10000,no,self,always,0,,,,,,
 1874,Beelzebub_@NPC_RECALL,chase,354,1,2000,0,10000,no,self,always,0,,,,,,
 1874,Beelzebub_@NPC_RECALL,idle,354,1,2000,0,10000,no,self,always,0,,,,,,

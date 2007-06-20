@@ -1,8 +1,12 @@
-//item_violetbox.txt＠Athena 2007/06/19 08:35:07 (JST)
-// 古い紫色の箱から得られるアイテムを設定。
-// nameid, item_name(dummy), rate
-// アイテムID、アイテムの名前(ダミー)、確率(*10000)をした物です。500000なら50%で1000000なら100%です。)
-// アイテムIDが0の場合確率をアイテムの選択に失敗した時に得られるデフォルトアイテムのIDとして認識します。(複数である場合最後の物だけ有効です。) 
+// item_violetbox.txt, Old Violet/Purple Box Database
+//
+// <Item_ID>,<Description (Dummy)>,<Rate>
+//
+// Rate Examples
+// 10000   = 1%
+// 500000  = 50%
+// 1000000 = 100%
+
 0,Guard,2102
 1102,Sword,10000
 1105,Falchion,10000
@@ -442,7 +446,7 @@
 5015,Egg Shell,10000
 5018,Feather Bonnet,10000
 5019,Corsair,10000
-5020,カプラヘアバンド,10000
+5020,Kafra Band,10000
 5021,Grief for Greed,10000
 5022,Hat of the Sun God,10000
 5023,Parcel Hat,10000
@@ -608,11 +612,11 @@
 5235,Gray Beanie,10000
 5236,Blue Beanie,10000
 5237,Pink Beanie,10000
-5238,赤色のとんがり帽子,10000
-5239,白色のとんがり帽子,10000
-5240,灰色のとんがり帽子,10000
-5241,青色のとんがり帽子,10000
-5242,黄色のとんがり帽子,10000
+5238,Red Mage Hat,10000
+5239,White Mage Hat,10000
+5240,Gray Mage Hat,10000
+5241,Blue Mage Hat,10000
+5242,Yellow Mage Hat,10000
 5243,Ear_Muffs_Hat,10000
 5252,Drooping Ninetails,10000
 5253,Drooping Lif,10000
