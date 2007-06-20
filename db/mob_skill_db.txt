@@ -3390,17 +3390,17 @@
 1783,NPC_SUMMONSLAVE@Galion,idle,196,2,10000,2000,60000,no,self,slavele,0,1782,,,,,
 1784,SM_BASH@Stapo,attack,5,5,500,0,5000,no,target,always,0,,,,,,06
 1784,NPC_KEEPING@Stapo,attack,201,1,2000,0,30000,no,self,myhpltmaxrate,20,,,,,,09
-1785,SM_BASH@Atros,attack,5,10,2000,0,5000,no,target,always,0,,,,,,06
-1785,SM_MAGNUM@Atros,attack,7,10,500,500,5000,no,self,always,0,,,,,,
-1785,AL_TELEPORT@Atros,idle,26,1,1000,0,5000,no,self,rudeattacked,,,,,,,
-1785,KN_TWOHANDQUICKEN@Atros,attack,60,10,10000,0,120000,no,self,myhpltmaxrate,30,,,,,,06
-1785,NPC_DARKNESSATTACK@Atros,attack,190,5,2000,0,5000,no,target,always,0,,,,,,06
-1785,NPC_SUMMONSLAVE@Atros,idle,196,5,10000,0,0,no,self,onspawn,0,1783,,,,,
-1785,NPC_SUMMONSLAVE@Atros,attack,196,5,10000,700,10000,no,self,slavele,3,1791,,,,,
-1785,NPC_SUMMONSLAVE@Atros,idle,196,5,10000,700,10000,no,self,slavele,3,1791,,,,,
-1785,NPC_EXPLOSIONSPIRITS@Atros,attack,349,5,10000,0,60000,no,self,myhpltmaxrate,30,,,,,,06
-1785,NPC_RECALL@Atros,attack,354,1,10000,0,30000,no,target,always,0,,,,,,
-1785,NPC_RECALL@Atros,idle,354,1,10000,0,30000,no,self,always,0,,,,,,
+1785,SM_BASH@Atroce,attack,5,10,2000,0,5000,no,target,always,0,,,,,,06
+1785,SM_MAGNUM@Atroce,attack,7,10,500,500,5000,no,self,always,0,,,,,,
+1785,AL_TELEPORT@Atroce,idle,26,1,1000,0,5000,no,self,rudeattacked,,,,,,,
+1785,KN_TWOHANDQUICKEN@Atroce,attack,60,10,10000,0,120000,no,self,myhpltmaxrate,30,,,,,,06
+1785,NPC_DARKNESSATTACK@Atroce,attack,190,5,2000,0,5000,no,target,always,0,,,,,,06
+1785,NPC_SUMMONSLAVE@Atroce,idle,196,5,10000,0,0,no,self,onspawn,0,1783,,,,,
+1785,NPC_SUMMONSLAVE@Atroce,attack,196,5,10000,700,10000,no,self,slavele,3,1791,,,,,
+1785,NPC_SUMMONSLAVE@Atroce,idle,196,5,10000,700,10000,no,self,slavele,3,1791,,,,,
+1785,NPC_EXPLOSIONSPIRITS@Atroce,attack,349,5,10000,0,60000,no,self,myhpltmaxrate,30,,,,,,06
+1785,NPC_RECALL@Atroce,attack,354,1,10000,0,30000,no,target,always,0,,,,,,
+1785,NPC_RECALL@Atroce,idle,354,1,10000,0,30000,no,self,always,0,,,,,,
 
 // Non-jA mob skill entries (Aurora Dev Team) ->
 
