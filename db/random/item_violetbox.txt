@@ -1,12 +1,8 @@
-// item_violetbox.txt, Old Violet/Purple Box Database
-//
-// <Item_ID>,<Description (Dummy)>,<Rate>
-//
-// Rate Examples
-// 10000   = 1%
-// 500000  = 50%
-// 1000000 = 100%
-
+//item_violetbox.txt＠Athena 2007/06/19 08:35:07 (JST)
+// 古い紫色の箱から得られるアイテムを設定。
+// nameid, item_name(dummy), rate
+// アイテムID、アイテムの名前(ダミー)、確率(*10000)をした物です。500000なら50%で1000000なら100%です。)
+// アイテムIDが0の場合確率をアイテムの選択に失敗した時に得られるデフォルトアイテムのIDとして認識します。(複数である場合最後の物だけ有効です。) 
 0,Guard,2102
 1102,Sword,10000
 1105,Falchion,10000
@@ -53,8 +49,8 @@
 1170,Katzbalger,10000
 1171,Zweihander,10000
 1172,Claymore,10000
-1173,Unknown Item,10000
-1174,Unknown Item,10000
+1173,Refined Muramasa,10000
+1174,Refined Executioner,10000
 1202,Knife,10000
 1205,Cutter,10000
 1208,Main Gauche,10000
@@ -82,7 +78,7 @@
 1264,Specialty Jur,10000
 1265,Bloody Roar,10000
 1266,Infiltrator,10000
-1267,Infiltrator,10000
+1267,Refined Infiltrator,10000
 1302,Axe,10000
 1306,War Axe,10000
 1307,Windhawk,10000
@@ -138,7 +134,7 @@
 1530,Mjolnir,10000
 1531,Wrench,10000
 1533,Warrior's Balmung,10000
-1535,Unknown Item,10000
+1535,Holgrehenn's Refining Hammer,10000
 1550,Book,10000
 1551,Bible,10000
 1558,Girl's Diary,10000
@@ -147,7 +143,7 @@
 1608,Staff,10000
 1611,Arc Wand,10000
 1613,Mighty Staff,10000
-1626,Unknown Item,10000
+1626,Staff of Piercing,10000
 1702,Bow,10000
 1705,Composite Bow,10000
 1711,Crossbow,10000
@@ -186,11 +182,11 @@
 1813,Kaiser Knuckle,10000
 1815,Garm Claw,10000
 1816,Berserk,10000
-1818,Unknown Item,10000
-1819,Unknown Item,10000
-1820,Unknown Item,10000
-1821,Unknown Item,10000
-1822,Unknown Item,10000
+1818,Magma Fist,10000
+1819,Iceicle Fist,10000
+1820,Electric Fist,10000
+1821,Seismic Fist,10000
+1822,Barrage Fist,10000
 1902,Violin,10000
 1904,Mandolin,10000
 1906,Lute,10000
@@ -203,7 +199,7 @@
 1916,Green Acre Guitar,10000
 1917,Gentle Breeze Guitar,10000
 1918,Oriental Lute,10000
-1920,Unknown Item,10000
+1920,Spirited Guitar,10000
 1951,Rope,10000
 1953,Whip,10000
 1955,Wire Whip,10000
@@ -220,11 +216,11 @@
 1969,Blade Whip,10000
 1970,Queen's Whip,10000
 1971,Electric Wire,10000
-1972,Unknown Item,10000
-1973,Unknown Item,10000
-1974,Unknown Item,10000
-2000,Unknown Item,10000
-2001,Unknown Item,10000
+1972,Electric Eel,10000
+1973,Foot of the Sea Witch,10000
+1974,Carrot Whip,10000
+2000,Staff of Destruction,10000
+2001,Divine Cross,10000
 2102,Guard,10000
 2104,Buckler,10000
 2106,Shield,10000
@@ -343,10 +339,10 @@
 2356,Blessed Holy Robe,10000
 2357,Valkyrie's Armor,10000
 2358,Angel's Dress,10000
-2364,Unknown Item,10000
-2365,Unknown Item,10000
-2366,Unknown Item,10000
-2367,Unknown Item,10000
+2364,Meteor Plate,10000
+2365,Robes of Orleans,10000
+2366,Divine Clothes,10000
+2367,Sniping Suit,10000
 2402,Sandals,10000
 2404,Shoes,10000
 2407,Crystal Pumps,10000
@@ -362,10 +358,10 @@
 2420,Angel's Reincarnation,10000
 2421,Valkyrie's Shoes,10000
 2422,High Quality Sandals,10000
-2423,Unknown Item,10000
-2424,Unknown Item,10000
-2425,Unknown Item,10000
-2426,Unknown Item,10000
+2423,Variant Shoes,10000
+2424,Tidal Shoes,10000
+2425,Black Leather Boots,10000
+2426,Shadow Walk,10000
 2502,Hood,10000
 2504,Muffler,10000
 2506,Manteau,10000
@@ -384,12 +380,12 @@
 2523,Undershirt,10000
 2524,Valkyrie's Manteau,10000
 2526,Dragonscale Jacket,10000
-2527,Unknown Item,10000
-2528,Unknown Item,10000
-2529,Unknown Item,10000
-2530,Unknown Item,10000
-2531,Unknown Item,10000
-2532,Unknown Item,10000
+2527,Breath of the Dragon,10000
+2528,Wool Scarf,10000
+2529,Decoration of the Riderm,10000
+2530,Decoration of the Riderm,10000
+2531,Wolfhedin,10000
+2532,Mithril Magic Cape,10000
 2601,Ring,10000
 2602,Earring,10000
 2603,Necklace,10000
@@ -404,7 +400,7 @@
 2613,Diamond Ring,10000
 2617,Celebrant's Mitten,1000
 2621,Ring,100
-2622,Earring,100
+2622,Earring,1
 2623,Necklace,100
 2624,Glove,10000
 2625,Brooch,100
@@ -431,9 +427,9 @@
 2677,Spiritual Ring,10000
 2678,Ring of Flame Lord,10000
 2679,Ring of Resonance,10000
-2701,Unknown Item,10000
-2702,Unknown Item,10000
-2703,Unknown Item,10000
+2701,Glove of Orleans,10000
+2702,Horn of the Buffalo,10000
+2703,Expert Ring,10000
 5006,Machoman's Glasses,100
 5007,Grand Circlet,10000
 5008,Puppy Love,10000
@@ -446,7 +442,7 @@
 5015,Egg Shell,10000
 5018,Feather Bonnet,10000
 5019,Corsair,10000
-5020,Kafra Band,10000
+5020,カプラヘアバンド,10000
 5021,Grief for Greed,10000
 5022,Hat of the Sun God,10000
 5023,Parcel Hat,10000
@@ -531,7 +527,7 @@
 5144,Gambler Hat,10000
 5145,Carnival Jester,10000
 5146,Elephant Hat,10000
-5147,Baseball Cap,10000
+5147,Europe Baseball Cap,10000
 5148,National Holiday Hat,10000
 5149,Silver Tiara,10000
 5150,Brazil Event Hat,10000
@@ -573,7 +569,7 @@
 5196,Orange Ribbon,10000
 5197,White Ribbon,10000
 5198,Drooping Bunny,10000
-5199,Baseball Cap,10000
+5199,Europe Baseball Cap,10000
 5200,Coppola,10000
 5201,2nd Anniversary Party Hat,10000
 5202,Pumpkin Hat,10000
@@ -599,7 +595,7 @@
 5222,Evolved Blue Fish,10000
 5223,Evolved Decorative Golden Bell,10000
 5224,Evolved Helmet of Orc Hero,10000
-5225,Holy ???,10000
+5225,Police Cap,10000
 5226,Mini Propeller,10000
 5227,Red Deviruchi Hat,10000
 5228,White Deviruchi Hat,10000
@@ -612,11 +608,11 @@
 5235,Gray Beanie,10000
 5236,Blue Beanie,10000
 5237,Pink Beanie,10000
-5238,Red Mage Hat,10000
-5239,White Mage Hat,10000
-5240,Gray Mage Hat,10000
-5241,Blue Mage Hat,10000
-5242,Yellow Mage Hat,10000
+5238,赤色のとんがり帽子,10000
+5239,白色のとんがり帽子,10000
+5240,灰色のとんがり帽子,10000
+5241,青色のとんがり帽子,10000
+5242,黄色のとんがり帽子,10000
 5243,Ear_Muffs_Hat,10000
 5252,Drooping Ninetails,10000
 5253,Drooping Lif,10000
@@ -645,20 +641,20 @@
 5276,Fantastic Wig,10000
 5277,Yellow Bandana,10000
 5278,Yellow Ribbon,10000
-5279,Unknown Item,10000
-5280,Unknown Item,10000
-5281,Unknown Item,10000
-5282,Baseball Cap,10000
-5283,Unknown Item,10000
-5284,Unknown Item,10000
-5285,Unknown Item,10000
-5286,Unknown Item,10000
-5287,Unknown Item,10000
-5288,Unknown Item,10000
-5289,Unknown Item,10000
+5279,Refined Drooping Cat,10000
+5280,Refined Majestic Goat,10000
+5281,Refined Deviruchi Hat,10000
+5282,Europe Baseball Cap,10000
+5283,Baby Chick,10000
+5284,Water Lily Crown,10000
+5285,Red Glasses,10000
+5286,Peco Peco Hairband,10000
+5287,Summer Hat,10000
+5288,Red Glasses,10000
+5289,Vanilmirth Hat,10000
 5290,Drooping Bunny,10000
-5291,Unknown Item,10000
-5292,Unknown Item,10000
-5293,Unknown Item,10000
-5294,Unknown Item,10000
+5291,Magic Kettle,10000
+5292,Sucpicious Skeleton,10000
+5293,Ramen Hat,10000
+5294,Whisper Hat,10000
 5295,Unknown Item,10000
