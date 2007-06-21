@@ -15,6 +15,7 @@ Date	Added
 
 
 2007/06/20
+	* Updated: Castle names to match iRO's [Tsuyuki]
 	* Updated: Databases to huge's latest versions [Tsuyuki]
 	* Updated: A monster name: 'Atros' -> 'Atroce', as per iRO 11.1 [Tsuyuki]
 
