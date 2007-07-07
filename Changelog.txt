@@ -13,6 +13,8 @@
 
 Date	Added
 
+2007/07/07
+	* Fixed: A small typo in the Assassin Job Change Quest [Tsuyuki]
 
 2007/06/20
 	* Updated: Castle names to match iRO's [Tsuyuki]

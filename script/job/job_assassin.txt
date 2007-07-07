@@ -193,7 +193,7 @@ in_moc_16.gat,19,33,1	script	Guildsman	55,{
 			mes "[Ferocious-looking guy]";
 			mes "Hey Newbie. You should really get out of here as soon as you can. I can't guarantee your safety.";
 			close;
-		} else if (BaseClas == Job_Swordsman) {
+		} else if (BaseClass == Job_Swordsman) {
 			mes "[Ferocious-looking guy]";
 			mes "What brings a man of the sword to this place? Why don't you try smashing stuff somewhere else, ya lunkhead.";
 			close;
