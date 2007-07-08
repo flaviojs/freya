@@ -96,7 +96,13 @@ Windows 64bit-CPU+OS なら
 　　　有効になっていればよい。
 　　　[Excute]をクリックし、正常終了すれば完了。
 
+１７　mingwでathenaをコンパイルする場合のみ：
+　　　<mysqlがインストールされているフォルダー>\lib\optsに移動し、ライブラリーを作る
 
+　　　　reimp libmysql.lib
+　　　　mv LIBMYSQL.def libmysql.def
+　　　　dlltool --input-def libmysql.def --dllname libmysql.dll --output-lib mysql.a
+　　　　mv liblibmysql.a libmysql.a
 
 
 

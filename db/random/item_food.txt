@@ -8,14 +8,43 @@
 // 1000000 = 100%
 
 0,Apple,512
-512,Apple,500000
-513,Banana,500000
-514,Grape,500000
-515,Carrot,500000
-516,Potato,500000
-517,Meat,500000
-528,Monster's Feed,500000
-529,Candy,500000
-530,Candy Cane,500000
-544,Fresh Fish,500000
-551,Sushi,500000
+512,Apple,10000
+513,Banana,10000
+514,Grape,10000
+515,Carrot,10000
+516,Potato,10000
+517,Meat,10000
+518,Honey,10000
+519,Milk,10000
+520,Hinalle Leaflet,10000
+521,Aloe Leaflet,10000
+522,Mastela Fruit,10000
+526,Royal Jelly,10000
+529,Candy,10000
+530,Candy Cane,10000
+531,Apple Juice,10000
+532,Banana Juice,10000
+533,Grape Juice,10000
+534,Carrot Juice,10000
+536,Ice Cream,10000
+538,Well-baked Cookie,10000
+539,Piece of Cake,10000
+544,Raw Fish,10000
+548,Cheese,10000
+549,Yam,10000
+550,Rice Cake,10000
+551,Sushi,10000
+553,Bao,10000
+554,Mochi,10000
+555,Traditional Rice Cake,10000
+558,Chocolate,10000
+559,Hand-made Chocolate,10000
+560,Hand-made White Chocolate,10000
+561,White Chocolate,10000
+564,Rice Ball,10000
+566,Tom Yum Goong,10000
+567,Shrimp,10000
+568,Lemon,10000
+576,Prickly Fruit,10000
+607,Yggdrasil Berry,10000
+608,Yggdrasil Seed,10000

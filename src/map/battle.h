@@ -525,7 +525,8 @@ extern struct Battle_Config {
 	int allow_es_magic_all;
 	int sg_miracle_rate;
 	int mob_hitstop_rate;
-	int mob_delay_rate_type;
+	int mob_delay_rate_middle_boss;
+	int mob_delay_rate_mvp_boss;
 } battle_config;
 
 #define BATTLE_CONF_FILENAME "conf/battle_athena.conf"

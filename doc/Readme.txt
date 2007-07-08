@@ -1,4 +1,115 @@
 ----------------------------------------
+//2310 by Blaze
+
+・ラヘル実装
+・ラヘルクエスト5種追加
+	（npc_town_rachel.txt）
+・飛行船に新経路追加
+	（npc_town_airport.txt）
+・ジョンダ職員追加
+	（npc_misc_zonda.txt）
+・宿屋NPC追加
+	（npc_misc_inn.txt）
+・各warp修正
+	（npc_warp_town.txt、npc_warp_dun.txt）
+・新規追加monsterの名称を修正
+	（npc_monster_rafild.txt、npc_monster_rasan.txt、npc_monster_icedun.txt）
+・mapflag修正
+	（mapflag.txt）
+・map_athena.confをラヘル対応に更新、新マップ情報だけ追加
+
+----------------------------------------
+//2309 by Alice
+
+・転生ノビからスパノビに転職する時、upper0を指定するように変更。
+	名無しさん thank's（atcommand.c、script.c）
+
+	fix 修正ミスを修正
+
+----------------------------------------
+//2308 by Blaze
+
+・ルートモンスターが複数個のアイテムをルートした時、個数が1つになってしまうのを修正
+	（mob.c）
+・アマツ通行手形クエスト修正
+	（npc_town_amatsu.txt）
+・バンジージャンプのHP計算を修正
+	（npc_town_umbala.txt）
+・ローグ転職クエストの一部箇所で進行不可になってしまうのを修正
+	（npc_job_17rogue.txt）
+・スロットエンチャントNPCを整形
+	（npc_quest_slotenchant.txt）
+・ノーグハルト追加ランダムアイテムをノーグハルト時点のデータで実装
+	（item_petbox.txt、item_food.txt、item_mask.txt、item_jewel_box.txt）
+
+----------------------------------------
+//2307 by ICO
+
+・サーバースナップショット
+・version.hの更新
+・map_athena.confにmobフォルダ以下にあるスクリプトを使うにあたっての注意を追加
+・npc_monster_crystal.txt, npc_monster_xmas.txtをmonster/eventフォルダに移動
+	(src/common)
+		version.h		- mod version 2307
+	(conf)
+		map_athena.conf		- コメントを追加, 一部スクリプトを移動
+	(script/mob)
+		npc_monster_crystal.txt	- 削除
+		npc_monster_xmas.txt	- 削除
+	(script/monster/event)
+		npc_monster_crystal.txt	- 追加
+		npc_monster_xmas.txt	- 追加
+----------------------------------------
+// 2306 by ICO
+
+・ソウルブレイカーのダメージ計算式修正
+　2303でInt,ランダムダメージへの属性軽減効果が二重に行われていた不都合を修正
+　ランダムダメージにInt,物理ダメージ,カードの影響がかからないように修正
+・運命のタロットカードの効果がエンペリウムに出る不都合を修正(thx anyom & hoehoe!　from BTS.ID_388)
+・運命のタロットカードの固定詠唱時間を通常詠唱時間に修正
+・プレッシャーがエンペリウムに対して発動する不都合を修正(thx Linkin!　from BTS.ID_392)
+・混乱状態の敵にパンボイスを使用した際、相手の混乱状態を解除するように修正
+・アイテムボーナスのSP､HPドレインの発動確率が合算で計算されていた不都合を修正(thx 人非獣!　from BTS.ID_14)
+・ペットが主人が死亡している時にも支援攻撃した不都合を修正
+・主人が9マス以上離れるとペットが支援攻撃を止めるように仕様を変更
+・skill_db.txtにNPCスキルを追加(エフェクトの解説,skillidのみ)
+・battle_athena.confにmob_delay_rate_middle_boss,mob_delay_rate_mvp_bossを追加
+　それに伴いmob_delay_rate_typeを削除
+・mvpmob_item_drop_rate,mvpmob_card_drop_rateの仕様を変更(thx Cocoa!　from BTS.ID_395)
+・2296にてMobスキルの使用条件にmyhpgtmaxrateが追加されていなかったので追加し直し
+・Mobがスクリーム、寒いジョーク等のスキルを使うと一瞬姿が消えてしまう不都合を修正
+・helpの@questskilの項を整形、及び記述を一部訂正
+
+	(conf/)
+	battle_athena.conf - mob_delay_rate_middle_boss,mob_delay_rate_mvp_boss 追加 mob_delay_rate_type 削除
+			      mvpmob_item_drop_rate,mvpmob_card_drop_rate 10000->100
+	help3.txt - 記述訂正
+	(db/)
+	skill_db.txt - NPCスキルをコメントアウトして追加
+	skill_cast_db.txt - 運命のタロットカードの詠唱時間変更
+	(map/)
+	battle.c - battle_calc_weapon_attack(), battle_attack_drain(), battle_weapon_attack(), battle_skill_attack(),
+		    battle_config_read() 修正 
+	battle.h - Battle_Configにmob_delay_rate_middle_boss,mob_delay_rate_mvp_boss 追加
+		    mob_delay_rate_type 削除
+	unit.c - unit_skilluse_id2(), unit_attack_timer_sub() 修正
+	mob.c - mobskill_use(), mob_readskilldb() 修正
+	mob.h - 修正
+	npc.c - npc_parse_mob() 修正
+	skill.c - skill_castend_damage_id(), skill_castend_nodamage_id(), skill_castend_pos2() 修正
+	pc.c - pc_setrestartvalue(), pc_bonus2() 修正
+	pet.c - pet_ai_sub_hard() 修正
+	map.h - map_session_dataにメンバ追加
+	status.c - status_calc_pc() 修正
+
+----------------------------------------
+// 2305 by number24
+
+・mingw環境下でSQL版のコンパイルができない不具合を修正
+　(makefile)
+・sqllogin.txtにmingw環境下でコンパイルするときの注意点を追加
+
+----------------------------------------
 // 2304 by Blaze
 
 ・percenthealで-100以下のみ死亡判定を出すように修正

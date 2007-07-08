@@ -8,15 +8,15 @@
 // 1000000 = 100%
 
 0,Mr. Smile,2278
-2278,Mr. Smile,500000
-2281,Opera Masque,500000
-2288,Mr. Scream,500000
-2292,Welding Mask,500000
-2297,Goblin Mask,500000
-5005,Gas Mask,500000
-5086,Alarm Mask,500000
-5087,Poker Face,500000
-5088,Surprised Mask,500000
-5089,Annoyed Mask,500000
-5090,Goblin Leader Mask,500000
-5121,Zealotus Mask,100000
+2278,Mr. Smile,10000
+2281,Opera Masque,10000
+2288,Mr. Scream,10000
+2292,Welding Mask,10000
+2297,Goblin Mask,10000
+5005,Gas Mask,10000
+5086,Alarm Mask,10000
+5087,Poker Face,10000
+5088,Surprised Mask,10000
+5089,Annoyed Mask,10000
+5090,Goblin Leader Mask,10000
+5121,Zherlthsh Mask,1000

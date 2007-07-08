@@ -39,9 +39,7 @@
 #define LOOTITEM_SIZE 10
 #define MAX_SKILL_ID MAX_SKILL
 #define MAX_SKILL_LEVEL 12
-// MAX_MOBSKILL extended from 32 -> 50 to support more skills [Aurora]
-#define MAX_MOBSKILL 35
-// End of custom changes [Aurora]
+#define MAX_MOBSKILL	32
 #define MAX_EVENTQUEUE	2
 #define MAX_EVENTTIMER	32
 #define NATURAL_HEAL_INTERVAL 500
@@ -350,8 +348,8 @@ struct map_session_data {
 	short splash_range,splash_add_range;
 	short autospell_id,autospell_lv,autospell_rate;
 	long autospell_flag;
-	short hp_drain_rate,hp_drain_per,sp_drain_rate,sp_drain_per;
-	short hp_drain_rate_,hp_drain_per_,sp_drain_rate_,sp_drain_per_;
+	short hp_drain_rate,hp_drain_rate_per,hp_drain_per,sp_drain_rate,sp_drain_rate_per,sp_drain_per;
+	short hp_drain_rate_,hp_drain_rate_per_,hp_drain_per_,sp_drain_rate_,sp_drain_rate_per_,sp_drain_per_;
 	short hp_drain_value,sp_drain_value,hp_drain_value_,sp_drain_value_;
 	int short_weapon_damage_return,long_weapon_damage_return,magic_damage_return;
 	int weapon_coma_ele[10],weapon_coma_race[12];

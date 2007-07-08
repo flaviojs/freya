@@ -8,6 +8,8 @@
 // 1000000 = 100%
 
 0,Guard,2102
+603,Old Blue Box,1000
+617,Old Purple Box,10000
 1102,Sword,10000
 1105,Falchion,10000
 1108,Blade,10000
@@ -19,42 +21,12 @@
 1127,Saber,10000
 1128,Haedonggum,10000
 1129,Flamberge,10000
-1130,Nagan,10000
-1131,Ice Falchion,10000
-1132,Edge,10000
-1133,Fireblend,10000
-1134,Caesar's Sword,10000
-1135,Cutlus,10000
-1136,Solar Sword,10000
-1137,Excalibur,10000
-1138,Mysteltainn,10000
-1139,Tirfing,10000
-1140,Byeollungum,10000
-1141,Immaterial Sword,10000
-1142,Jeweled Sword,10000
-1143,Gaia Sword,10000
-1144,Sashimi,10000
-1145,Holy Avenger,10000
-1146,Town Sword,10000
-1147,Town Sword,10000
-1148,Star Dust Blade,10000
-1149,Flamberge,10000
 1152,Slayer,10000
 1155,Bastard Sword,10000
 1158,Two-Handed Sword,10000
 1162,Broad Sword,10000
 1163,Claymore,10000
 1164,Muramasa,10000
-1165,Masamune,10000
-1166,Dragon Slayer,10000
-1167,Schweizersabel,10000
-1168,Zweihander,10000
-1169,Executioner,10000
-1170,Katzbalger,10000
-1171,Zweihander,10000
-1172,Claymore,10000
-1173,Refined Muramasa,10000
-1174,Refined Executioner,10000
 1202,Knife,10000
 1205,Cutter,10000
 1208,Main Gauche,10000
@@ -63,63 +35,28 @@
 1217,Stiletto,10000
 1220,Gladius,10000
 1226,Damascus,10000
-1230,Ice Pick,10000
-1231,Bazerald,10000
-1232,Assassin Dagger,10000
-1233,Exorciser,10000
-1234,Moonlight Dagger,10000
 1237,Grimtooth,10000
-1238,Zeny Knife,10000
 1239,Poison Knife,10000
-1240,Princess Knife,10000
-1244,Holy Dagger,10000
 1251,Jur,10000
 1253,Katar,10000
 1255,Jamadhar,10000
+1256,Katar of Frozen Icicle,10000
 1261,Infiltrator,10000
-1262,Loki's Nail,10000
-1263,Unholy Touch,10000
-1264,Specialty Jur,10000
-1265,Bloody Roar,10000
-1266,Infiltrator,10000
-1267,Refined Infiltrator,10000
 1302,Axe,10000
 1306,War Axe,10000
-1307,Windhawk,10000
 1352,Battle Axe,10000
 1355,Hammer,10000
 1358,Buster,10000
 1361,Two-Handed Axe,10000
-1363,Bloody Axe,10000
-1364,Great Axe,10000
-1365,Sabbath,10000
-1366,Light Epsilon,10000
-1367,Slaughter,10000
-1368,Tomahawk,10000
-1369,Guillotine,10000
 1402,Javelin,10000
 1405,Spear,10000
 1408,Pike,10000
 1410,Lance,10000
-1414,Gelerdria,10000
-1415,Brocca,10000
-1416,Tjungkuletti,10000
-1417,Pole Axe,10000
-1418,Gungnir,10000
 1452,Guisarme,10000
 1455,Glaive,10000
 1458,Partizan,10000
 1461,Trident,10000
 1464,Halberd,10000
-1466,Crescent Scythe,10000
-1468,Zephyrus,10000
-1469,Longinus's Spear,10000
-1470,Brionac,10000
-1471,Hellfire,10000
-1472,Soul Staff,10000
-1473,Wizardry Staff,10000
-1474,Gae Bolg,10000
-1476,Crescent Scythe,10000
 1502,Club,10000
 1505,Mace,10000
 1508,Smasher,10000
@@ -128,17 +65,6 @@
 1517,Sword Mace,10000
 1520,Chain,10000
 1522,Stunner,10000
-1523,Spike,10000
-1524,Golden Mace,10000
-1525,Long Mace,10000
-1526,Slash,10000
-1527,Quadrille,10000
-1528,Grand Cross,10000
-1529,Iron Driver,10000
-1530,Mjolnir,10000
-1531,Wrench,10000
-1533,Warrior's Balmung,10000
-1535,Holgrehenn's Refining Hammer,10000
 1550,Book,10000
 1551,Bible,10000
 1558,Girl's Diary,10000
@@ -147,7 +73,6 @@
 1608,Staff,10000
 1611,Arc Wand,10000
 1613,Mighty Staff,10000
-1626,Staff of Piercing,10000
 1702,Bow,10000
 1705,Composite Bow,10000
 1711,Crossbow,10000
@@ -157,10 +82,6 @@
 1719,Roguemaster's Bow,10000
 1720,Rudra Bow,10000
 1721,Repeating Crossbow,10000
-1722,Ballista,10000
-1723,Luna Bow,10000
-1724,Dragon Wing,10000
-1726,Hunter Bow,10000
 1750,Arrow,10000
 1751,Silver Arrow,10000
 1752,Fire Arrow,10000
@@ -183,27 +104,11 @@
 1770,Iron Arrow,10000
 1806,Studded Knuckles,10000
 1810,Claw,10000
-1813,Kaiser Knuckle,10000
-1815,Garm Claw,10000
-1816,Berserk,10000
-1818,Magma Fist,10000
-1819,Iceicle Fist,10000
-1820,Electric Fist,10000
-1821,Seismic Fist,10000
-1822,Barrage Fist,10000
 1902,Violin,10000
 1904,Mandolin,10000
 1906,Lute,10000
 1908,Guitar,10000
 1910,Harp,10000
-1912,Gumoongoh,10000
-1913,Electric Guitar,10000
-1914,Burning Passion Guitar,10000
-1915,Loner's Guitar,10000
-1916,Green Acre Guitar,10000
-1917,Gentle Breeze Guitar,10000
-1918,Oriental Lute,10000
-1920,Spirited Guitar,10000
 1951,Rope,10000
 1953,Whip,10000
 1955,Wire Whip,10000
@@ -211,39 +116,12 @@
 1959,Tail Whip,10000
 1961,Whip,10000
 1962,Lariat Whip,10000
-1963,Rapture Rose,10000
-1964,Chemeti Whip,10000
-1965,Red Flame Whip,10000
-1966,Icicle Whip,10000
-1967,Gaia Whip,10000
-1968,Skipping Rope,10000
-1969,Blade Whip,10000
-1970,Queen's Whip,10000
-1971,Electric Wire,10000
-1972,Electric Eel,10000
-1973,Foot of the Sea Witch,10000
-1974,Carrot Whip,10000
-2000,Staff of Destruction,10000
-2001,Divine Cross,10000
 2102,Guard,10000
 2104,Buckler,10000
 2106,Shield,10000
 2108,Mirror Shield,10000
-2110,Holy Guard,10000
-2111,Sacred Mission,10000
-2115,Valkyrie's Shield,10000
-2116,Angelic Guard,10000
-2118,Arm Guard,10000
-2120,Improved Arm Guard,10000
-2122,Unknown Item,10000
-2123,Unknown Item,10000
-2124,Unknown Item,10000
-2125,Unknown Item,10000
-2199,Ahura Mazdah,10000
 2201,Sunglasses,10000
-2202,Sunglasses,10000
 2203,Glasses,10000
-2204,Glasses,10000
 2207,Fancy Flower,10000
 2209,Ribbon,10000
 2213,Kitty Band,10000
@@ -254,22 +132,13 @@
 2225,Goggles,10000
 2227,Cap,10000
 2229,Helm,10000
-2230,Gemmed Sallet,10000
 2231,Gemmed Sallet,10000
 2233,Circlet,10000
-2234,Tiara,10000
-2235,Crown,10000
 2236,Santa Hat,10000
-2237,Bandit Beard,10000
-2238,Moustache,10000
-2240,Beard,10000
 2242,Purple Glasses,10000
 2243,Geek Glasses,10000
 2244,Big Ribbon,10000
-2245,Sweet Gent,10000
-2246,Golden Gear,10000
 2247,Romantic Gent,10000
-2248,Western Grace,10000
 2249,Coronet,10000
 2250,Cute Ribbon,10000
 2251,Monk Hat,10000
@@ -291,18 +160,15 @@
 2276,Angled Glasses,10000
 2277,Nurse Cap,500
 2279,Bomb Wick,10000
-2283,Ear Muffs,10000
 2284,Antlers,10000
 2287,Pirate Bandana,10000
 2289,Poo Poo Hat,10000
 2290,Funeral Hat,10000
 2291,Masquerade,10000
-2292,Welding Mask,10000
 2293,Pretend Murdered,10000
 2294,Stellar,10000
 2295,Blinker,10000
 2296,Binoculars,10000
-2297,Goblin Mask,10000
 2298,Green Feeler,10000
 2299,Orc Helm,10000
 2302,Cotton Shirt,10000
@@ -327,69 +193,17 @@
 2339,Pantie,10000
 2340,Novice Breastplate,10000
 2341,Legion Plate Armor,10000
-2343,Robe of Cast,10000
-2344,Lucius's Fierce Armor of Volcano,10000
-2345,Lucius's Fierce Armor of Volcano,10000
-2346,Saphien's Armor of Ocean,10000
-2347,Saphien's Armor of Ocean,10000
-2348,Aebeccee's Raging Typhoon Armor,10000
-2349,Aebeccee's Raging Typhoon Armor,10000
-2350,Claytos Cracking Earth Armor,10000
-2351,Claytos Cracking Earth Armor,10000
-2352,Tattered Novice Ninja Suit,10000
-2353,Odin's Blessing,10000
-2354,Goibne's Armor,10000
-2355,Angelic Protection,10000
-2356,Blessed Holy Robe,10000
-2357,Valkyrie's Armor,10000
-2358,Angel's Dress,10000
-2364,Meteor Plate,10000
-2365,Robes of Orleans,10000
-2366,Divine Clothes,10000
-2367,Sniping Suit,10000
 2402,Sandals,10000
 2404,Shoes,10000
 2407,Crystal Pumps,10000
 2408,Shackles,10000
 2409,High Heels,10000
-2410,Sleipnir,10000
 2411,Greaves,10000
-2413,Safety Boots,10000
-2415,Bunny Slipper,10000
-2417,Freya's Shoes,10000
-2418,Vidar's Boots,10000
-2419,Goibne's Greaves,10000
-2420,Angel's Reincarnation,10000
-2421,Valkyrie's Shoes,10000
-2422,High Quality Sandals,10000
-2423,Variant Shoes,10000
-2424,Tidal Shoes,10000
-2425,Black Leather Boots,10000
-2426,Shadow Walk,10000
 2502,Hood,10000
 2504,Muffler,10000
 2506,Manteau,10000
 2507,Ancient Cape,10000
 2508,Ragamuffin Manteau,10000
-2513,Heavenly Maiden Robe,10000
-2514,Pauldron,10000
-2515,Eagle Wing,10000
-2516,Falcon Muffler,10000
-2517,Vali's Manteau,10000
-2518,Morpheus's Shawl,10000
-2519,Morrigane's Manteau,10000
-2520,Goibne's Spaulders,10000
-2521,Angelic Cardigan,10000
-2522,Undershirt,10000
-2523,Undershirt,10000
-2524,Valkyrie's Manteau,10000
-2526,Dragonscale Jacket,10000
-2527,Breath of the Dragon,10000
-2528,Wool Scarf,10000
-2529,Decoration of the Riderm,10000
-2530,Decoration of the Riderm,10000
-2531,Wolfhedin,10000
-2532,Mithril Magic Cape,10000
 2601,Ring,10000
 2602,Earring,10000
 2603,Necklace,10000
@@ -402,263 +216,22 @@
 2611,Silver Ring,10000
 2612,Flower Ring,10000
 2613,Diamond Ring,10000
+2614,Eye of Dullahan,10000
 2617,Celebrant's Mitten,1000
 2621,Ring,100
-2622,Earring,1
+2622,Earring,100
 2623,Necklace,100
 2624,Glove,10000
 2625,Brooch,100
-2629,Megingjard,10000
-2630,Brisingamen,10000
-2631,Celebration Ring,10000
-2639,Sacred Incense,10000
-2640,Kafra Ring,10000
-2641,Fashion Hip Sack,10000
-2644,The Sign,10000
-2645,Moonlight Ring,10000
-2649,Morpheus's Bracelet,10000
-2650,Morrigane's Belt,10000
-2651,Morrigane's Pendant,10000
-2652,Goddess of Fortune's Cursed Brooch,10000
-2653,Sacrifice Ring,10000
-2654,Shinobi Sash,10000
-2655,Bloodied Shackle Ball,10000
-2656,Armor Charm,10000
-2663,Gauntlet of Hit,10000
-2664,Belcarf,10000
-2675,Lord Ring,10000
-2676,Hunter's Earring,10000
-2677,Spiritual Ring,10000
-2678,Ring of Flame Lord,10000
-2679,Ring of Resonance,10000
-2701,Glove of Orleans,10000
-2702,Horn of the Buffalo,10000
-2703,Expert Ring,10000
+2626,Rosary,100
 5006,Machoman's Glasses,100
-5007,Grand Circlet,10000
 5008,Puppy Love,10000
 5009,Safety Helmet,10000
 5010,Indian Fillet,10000
-5011,Aerial,10000
-5012,Ph.D Hat,10000
-5013,Lord Kaho's Horn,10000
 5014,Fin Helm,10000
 5015,Egg Shell,10000
-5018,Feather Bonnet,10000
 5019,Corsair,10000
-5020,Kafra Band,10000
-5021,Grief for Greed,10000
-5022,Hat of the Sun God,10000
-5023,Parcel Hat,10000
-5024,Cake Hat,10000
-5025,Helm of Angel,10000
-5032,Sunday Hat,10000
-5033,Raccoon Hat,10000
-5040,Blush,10000
-5041,Heart Hairpin,10000
-5042,Bao Bao,10000
-5043,Opera Phantom Mask,10000
-5044,Wings of Diablo,10000
+5020,Kafra Band,100
+5030,Panda Hat,10000
 5046,Bongun Hat,10000
-5047,Fashionable Glasses,10000
-5048,Cresent Hairpin,10000
-5051,Pussy_Cat_Bell,10000
-5053,Sphinx Hat,10000
-5054,Assassin Mask,10000
-5057,Black Cat Ears,10000
-5059,Teddybear Hat,10000
-5061,Flower Hairpin,10000
-5062,Straw Hat,10000
-5063,Giant Band Aid,10000
-5068,Evil Wing Ears,10000
-5069,Kitsune Mask,10000
-5074,Angel Wing Ears,10000
-5075,Cowboy Hat,10000
-5076,Beanie,10000
-5077,Tulip Hairpin,10000
-5078,Sea-Otter Hat,10000
 5081,Crown of Mistress,10000
-5083,Red Ribbon,10000
-5084,Lazy Smokie,10000
-5085,Small Ribbons,10000
-5091,Evolved Decorative Golden Bell,10000
-5094,Evolved Helmet of Orc Hero,10000
-5098,Tiger Mask,10000
-5099,Neko Mimi,10000
-5101,Takius's Blindfold,10000
-5102,Blank Eyes,10000
-5103,Sunflower Hairpin,10000
-5104,Dark Blinder,10000
-5105,2nd Anniversary Hat,10000
-5106,2nd Anniversary Hat,10000
-5107,Crunch Toast,10000
-5108,Renown Detective's Cap,10000
-5109,Red Bonnet,10000
-5110,Baby Pacifier,10000
-5111,Galapago Cap,10000
-5112,Super Novice Hat,10000
-5113,Angry Snarl,10000
-5114,Bucket Hat,10000
-5115,Winter Hat,10000
-5116,Banana Hat,10000
-5117,Mystic Rose,10000
-5118,Puppy Headband,10000
-5119,Super Novice Hat,10000
-5120,Bucket Hat,10000
-5121,Zherlthsh Mask,10000
-5122,Magni's Cap,10000
-5123,Ulle's Cap,10000
-5124,Frigg's Circlet,10000
-5125,Angel's Kiss,10000
-5126,Morpheus's Hood,10000
-5127,Morrigane's Helm,10000
-5128,Goibne's Helm,10000
-5129,Bird Nest,10000
-5130,Lion Mask,10000
-5131,Close Helmet,10000
-5132,Angeling Hat,10000
-5133,Sheep Hat,10000
-5134,Pumpkin-Head,10000
-5135,Cyclop's Eye,10000
-5136,Louise's Santa Hat,10000
-5137,Alice Doll,10000
-5138,Magic Eyes,10000
-5139,Lotus,10000
-5140,Kawaii Ribbon,10000
-5141,Marionette Doll,10000
-5142,Crescent Helm,10000
-5143,Kabuki Mask,10000
-5144,Gambler Hat,10000
-5145,Carnival Jester,10000
-5146,Elephant Hat,10000
-5147,Europe Baseball Cap,10000
-5148,National Holiday Hat,10000
-5149,Silver Tiara,10000
-5150,Brazil Event Hat,10000
-5151,Note Headphones,10000
-5152,Phoenix Crown,10000
-5153,Angeling Pin,10000
-5154,Father's Sunglasses,10000
-5155,Father's White Beard,10000
-5156,Father's Mask,10000
-5157,Orc Helm,10000
-5158,Monk Hat,10000
-5164,Tiara,10000
-5169,Bride Mask,10000
-5170,Feather Beret,10000
-5171,Valkyrie Helm,10000
-5172,Beret,10000
-5173,Judge Hat,10000
-5174,A-yam,10000
-5175,Anonymity Request,10000
-5176,Smiling Mask,10000
-5177,Lion Masquerade,10000
-5178,Candle,10000
-5180,National Holiday Hat,10000
-5181,Helm of Darkness,10000
-5182,Puppy Hat,10000
-5183,Bird Nest,10000
-5184,Captain's Hat,10000
-5185,Laurel Crown,10000
-5186,Geographer Decoration,10000
-5187,Twin Ribbon,10000
-5188,Wandering Minstrel Hat,10000
-5189,Autumn Leaves,10000
-5190,Independence Memorial Hat,10000
-5191,Black Ribbon,10000
-5192,Yellow Ribbon,10000
-5193,Green Ribbon,10000
-5194,Pink Ribbon,10000
-5195,Red Ribbon,10000
-5196,Orange Ribbon,10000
-5197,White Ribbon,10000
-5198,Drooping Bunny,10000
-5199,Europe Baseball Cap,10000
-5200,Coppola,10000
-5201,2nd Anniversary Party Hat,10000
-5202,Pumpkin Hat,10000
-5203,Smiling Mask,10000
-5204,Rudolf's Red Nose,10000
-5205,Emperor's Laurel Crown,10000
-5206,White Petal,10000
-5207,Angel Blessing,10000
-5208,Rideword Hat,10000
-5209,iRO Baseball Cap,10000
-5210,Flying Angel,10000
-5211,Ribbon Hat,10000
-5212,Solar Panels,10000
-5213,Rabbit Ears,10000
-5214,Cat Helm,10000
-5215,Evolved Angel Wing,10000
-5216,Evolved Evil Wing,10000
-5217,Evolved Majestic Goat,10000
-5218,Evolved Bunny Band,10000
-5219,Drooping Cat,10000
-5220,Evolved Pipe,10000
-5221,Small Ribbons,10000
-5222,Evolved Blue Fish,10000
-5223,Evolved Decorative Golden Bell,10000
-5224,Evolved Helmet of Orc Hero,10000
-5225,Police Cap,10000
-5226,Mini Propeller,10000
-5227,Red Deviruchi Hat,10000
-5228,White Deviruchi Hat,10000
-5229,Gray Deviruchi Hat,10000
-5230,White Drooping Cat,10000
-5231,Gray Drooping Cat,10000
-5232,Pink Drooping Cat,10000
-5233,Blue Drooping Cat,10000
-5234,Yellow Drooping Cat,10000
-5235,Gray Beanie,10000
-5236,Blue Beanie,10000
-5237,Pink Beanie,10000
-5238,Red Mage Hat,10000
-5239,White Mage Hat,10000
-5240,Gray Mage Hat,10000
-5241,Blue Mage Hat,10000
-5242,Yellow Mage Hat,10000
-5243,Ear_Muffs_Hat,10000
-5252,Drooping Ninetails,10000
-5253,Drooping Lif,10000
-5254,Deviling Hat,10000
-5255,Poring Tower,10000
-5256,Valkyrie Feather Band,10000
-5257,Soul Ring,10000
-5258,Dokebi's Wig,10000
-5259,Elephant Hat,10000
-5260,Cookie Hat,10000
-5261,Silver Tiara,10000
-5262,Golden Tiara,10000
-5263,Pagdayaw,10000
-5264,Australian Flag Hat,10000
-5265,Unknown Item,10000
-5266,Unknown Item,10000
-5267,Unknown Item,10000
-5268,Unknown Item,10000
-5269,Flying Angel,10000
-5270,Autumn Leaves,10000
-5271,Phoenix Crown,10000
-5272,Smiling Mask,10000
-5273,Happy Wig,10000
-5274,Shiny Wig,10000
-5275,Marvelous Wig,10000
-5276,Fantastic Wig,10000
-5277,Yellow Bandana,10000
-5278,Yellow Ribbon,10000
-5279,Refined Drooping Cat,10000
-5280,Refined Majestic Goat,10000
-5281,Refined Deviruchi Hat,10000
-5282,Europe Baseball Cap,10000
-5283,Baby Chick,10000
-5284,Water Lily Crown,10000
-5285,Red Glasses,10000
-5286,Peco Peco Hairband,10000
-5287,Summer Hat,10000
-5288,Red Glasses,10000
-5289,Vanilmirth Hat,10000
-5290,Drooping Bunny,10000
-5291,Magic Kettle,10000
-5292,Sucpicious Skeleton,10000
-5293,Ramen Hat,10000
-5294,Whisper Hat,10000
-5295,Unknown Item,10000

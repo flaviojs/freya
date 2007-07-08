@@ -336,7 +336,7 @@
 1955,Wire Whip,10000
 1957,Rante Whip,10000
 1959,Tail Whip,10000
-2102,Guard,2102
+2102,Guard,10000
 2106,Shield,10000
 2108,Mirror Shield,10000
 2201,Sunglasses,10000

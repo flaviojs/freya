@@ -13,7 +13,11 @@ LIBS = -lm
 endif
 
 ifdef SQLFLAG
-	LIBS += -L$(MYSQL_LIBS) -lmysqlclient
+	ifeq ($(findstring MINGW32,$(shell uname)), MINGW32)
+		LIBS += -L$(MYSQL_LIBS) -lmysql
+	else
+		LIBS += -L$(MYSQL_LIBS) -lmysqlclient
+	endif
 endif
 
 ifneq ($(findstring LOCALZLIB,$(CFLAGS)), LOCALZLIB)

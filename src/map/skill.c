@@ -2510,7 +2510,12 @@ int skill_castend_damage_id( struct block_list* src, struct block_list *bl,int s
 		}
 		break;
 	case CG_TAROTCARD:		/*運命のタロットカード*/
-		skill_tarot_card_of_fate(src,bl,skillid,skilllv,tick,flag,0);
+		if(status_get_class(bl) == 1288){	//エンペリウム無効
+			clif_skill_fail(sd,skillid,0,0);
+			break;
+			}
+		else
+			skill_tarot_card_of_fate(src,bl,skillid,skilllv,tick,flag,0);
 		break;
 	case MG_FROSTDIVER:		/* フロストダイバー */
 	{
@@ -2849,6 +2854,12 @@ int skill_castend_damage_id( struct block_list* src, struct block_list *bl,int s
 	default:
 		map_freeblock_unlock();
 		return 1;
+	}
+	//スキル使用でMobが消えないようにする
+	if(md) {
+		if(!(mob_get_viewclass(md->class) < MAX_VALID_PC_CLASS) &&
+		 (skillid == MO_FINGEROFFENSIVE) )
+		clif_skill_poseffect(src,SM_BASH,1,bl->x,bl->y,tick);
 	}
 	map_freeblock_unlock();
 
@@ -3291,7 +3302,10 @@ int skill_castend_nodamage_id( struct block_list *src, struct block_list *bl,int
 
 	case BA_PANGVOICE://パンボイス
 		clif_skill_nodamage(src,bl,skillid,skilllv,1);
-		if( !(status_get_mode(bl)&0x20) && atn_rand()%10000 < 5000 )
+		sc_data = status_get_sc_data(bl);
+		if(sc_data && sc_data[SC_CONFUSION].timer != -1)
+			status_change_end(bl,SC_CONFUSION,-1);
+		else if( !(status_get_mode(bl)&0x20) && atn_rand()%10000 < 5000 )
 			status_change_start(bl,SC_CONFUSION,7,0,0,0,10000+7000,0);
 		else if(sd)
 			clif_skill_fail(sd,skillid,0,0);
@@ -5542,6 +5556,15 @@ int skill_castend_nodamage_id( struct block_list *src, struct block_list *bl,int
 		map_freeblock_unlock();
 		return 1;
 	}
+	//スキル使用でMobが消えないようにする
+	if(md) {
+		if(!(mob_get_viewclass(md->class) < MAX_VALID_PC_CLASS)) {
+			if(skillid == DC_SCREAM || skillid == BA_FROSTJOKE)
+				clif_skill_damage(src,src,tick,status_get_amotion(src),status_get_adelay(src),4,1,SM_BASH,1,6);
+			else if(skillid == BA_PANGVOICE)
+				clif_skill_poseffect(src,SM_BASH,1,bl->x,bl->y,tick);
+		}
+	}
 	map_freeblock_unlock();
 	return 0;
 }
@@ -5885,7 +5908,7 @@ int skill_castend_pos2( struct block_list *src, int x,int y,int skillid,int skil
 			clif_skill_warppoint(sd,sd->ud.skillid,sd->status.save_point.map, p[0], p[1], p[2]);
 		}
 		break;
-	case HW_GANBANTEIN:			//ガバンティン
+	case HW_GANBANTEIN:			//ガンバンテイン
 		if(atn_rand()%100 < 80)
 		{
 			map_foreachinarea(skill_delunit_by_ganbatein,src->m,x-1,y-1,x+1,y+1,BL_SKILL);
@@ -5899,8 +5922,8 @@ int skill_castend_pos2( struct block_list *src, int x,int y,int skillid,int skil
 				unit_movepos(src,x,y,0);
 				if(sd){
 					sd->skillstatictimer[MO_EXTREMITYFIST] = tick + 2000;
+					clif_skill_poseffect(src,skillid,skilllv,x,y,tick);
 				}
-				clif_skill_poseffect(src,skillid,skilllv,x,y,tick);
 			}
 		}
 		break;

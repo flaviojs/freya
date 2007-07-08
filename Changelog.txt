@@ -13,6 +13,11 @@
 
 Date	Added
 
+2007/07/08
+	* Updated: Project to jAthena 3310 (Latest) [Tsuyuki]
+	* Updated: Databases to huge's latest versions [Tsuyuki]
+	 - Monster data now matches kRO Episode 11.1
+
 2007/07/07
 	* Fixed: A small typo in the Assassin Job Change Quest [Tsuyuki]
 
@@ -77,7 +82,7 @@ Date	Added
 	* Updated: All First and Second Class Skill Quests official, converted from Aegis (iRO 10.3) [Tsuyuki]
 
 2007/06/13
-	* Updated: Project to jAthena 3304 (Latest) [Tsuyuki]
+	* Updated: Project to jAthena 3304 [Tsuyuki]
 	* Updated: Almost all first class job change quests to official, converted from Aegis (iRO 10.3) [Tsuyuki]
 	 - Mage Job Change Quest is still to-do, coming soon
 

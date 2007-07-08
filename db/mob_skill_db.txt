@@ -401,8 +401,8 @@
 1099,NPC_POISONATTACK@Argiope,attack,188,2,500,500,5000,no,target,always,0,,,,,,
 1099,NPC_EMOTION@Argiope,chase,197,1,50,0,30000,no,self,always,0,19,129,,,,
 1099,NPC_EMOTION@Argiope,idle,197,1,200,0,5000,no,self,always,0,7,149,,,,
-1100,NPC_POISON‚@Argor,attack,176,2,500,800,5000,no,target,always,0,,,,,,
-1100,NPC_POISONATTACK@Argor,attack,188,1,2000,0,5000,no,target,always,0,,,,,,
+1100,NPC_POISON‚@Argos,attack,176,2,500,800,5000,no,target,always,0,,,,,,
+1100,NPC_POISONATTACK@Argos,attack,188,1,2000,0,5000,no,target,always,0,,,,,,
 1101,AL_TELEPORT@Baphomet Jr.,idle,26,1,1000,0,5000,no,self,rudeattacked,,,,,,,
 1101,NPC_CURSEATTACK@Baphomet Jr.,attack,181,3,500,800,5000,no,target,always,0,,,,,,29
 1101,NPC_DARKNESSATTACK@Baphomet Jr.,attack,190,2,500,500,5000,no,target,always,0,,,,,,06
@@ -1672,8 +1672,8 @@
 1429,AS_VENOMDUST@Argiope,attack,140,1,500,1500,5000,no,around5,always,0,,,,,,
 1429,NPC_POISON‚@Argiope,attack,176,3,500,800,5000,no,target,always,0,,,,,,
 1429,NPC_POISONATTACK@Argiope,attack,188,2,500,500,5000,no,target,always,0,,,,,,
-1430,NPC_POISON‚@Argor,attack,176,2,500,800,5000,no,target,always,0,,,,,,
-1430,NPC_POISONATTACK@Argor,attack,188,1,2000,0,5000,no,target,always,0,,,,,,
+1430,NPC_POISON‚@Argos,attack,176,2,500,800,5000,no,target,always,0,,,,,,
+1430,NPC_POISONATTACK@Argos,attack,188,1,2000,0,5000,no,target,always,0,,,,,,
 1431,NPC_DARKNESSATTACK@Baphomet Jr.,attack,190,2,500,500,5000,no,target,always,0,,,,,,
 1431,NPC_DARKBREATH@Baphomet Jr.,attack,202,2,500,500,5000,no,target,always,0,,,,,,
 1431,NPC_HALLUCINATION@Baphomet Jr.,attack,207,1,500,500,5000,no,target,always,0,,,,,,
@@ -2407,7 +2407,7 @@
 1635,TF_POISON@Eremes Guile,attack,52,10,2000,0,5000,no,target,always,0,,,,,,
 1635,AS_SONICBLOW@Eremes Guile,attack,136,10,500,0,5000,no,target,always,0,,,,,,06
 1635,AS_GRIMTOOTH@Eremes Guile,chase,137,5,1000,0,1000,no,target,always,0,,,,,,06
-1635,AS_VENOMDUST@Eremes Guile,attack,140,1,2000,0,5000,no,around5,always,0,,,,,,29
+1635,AS_VENOMDUST@Eremes Guile,attack,140,5,2000,0,5000,no,around5,always,0,,,,,,29
 1635,NPC_CRITICALSLASH@Eremes Guile,attack,170,1,2000,0,5000,no,target,always,0,,,,,,
 1635,NPC_STUNATTACK@Eremes Guile,attack,179,5,2000,0,5000,no,target,always,0,,,,,,09
 1635,NPC_POISONATTACK@Eremes Guile,attack,188,5,2000,500,5000,no,target,always,0,,,,,,09
@@ -2421,7 +2421,7 @@
 1636,NPC_CRITICALSLASH@Howard Alt-Eisen,attack,170,1,2000,0,5000,no,target,always,0,,,,,,
 1636,NPC_SPLASHATTACK@Howard Alt-Eisen,attack,174,1,2000,0,5000,no,target,always,0,,,,,,
 1636,NPC_GROUNDATTACK@Howard Alt-Eisen,attack,185,10,2000,500,5000,no,target,always,0,,,,,,06
-1636,NPC_FIREATTACK@Howard Alt-Eisen,attack,186,10,2000,500,5000,no,target,always,0,,,,,,06
+1636,NPC_WATERATTACK@Howard Alt-Eisen,attack,184,10,2000,500,5000,no,target,always,0,,,,,,06
 1636,NPC_BREAKARMOR@Howard Alt-Eisen,attack,344,10,500,0,5000,no,target,always,0,,,,,,19
 1636,NPC_EXPLOSIONSPIRITS@Howard Alt-Eisen,attack,349,5,500,0,60000,no,self,always,0,,,,,,06
 1637,MG_SAFETYWALL@Margaretha Sorin,attack,12,5,500,0,5000,no,self,always,0,,,,,,05
@@ -3104,7 +3104,7 @@
 1719,NPC_EXPLOSIONSPIRITS@Detardeurus,attack,349,5,10000,0,30000,no,self,myhpltmaxrate,30,,,,,,06
 1719,NPC_RECALL@Detardeurus,attack,354,1,10000,0,30000,no,target,always,0,,,,,,
 1719,NPC_RECALL@Detardeurus,idle,354,1,10000,0,30000,no,self,always,0,,,,,,
-1720,AL_TELEPORT@Hydrolancer,idle,26,1,1000,0,5000,no,self,rudeattacked,,,,,,,
+1720,AL_TELEPORT@Detardeurus,idle,26,1,1000,0,5000,no,self,rudeattacked,,,,,,,
 1720,AL_HEAL@Hydrolancer,attack,28,11,10000,0,5000,no,friend,friendhpltmaxrate,60,,,,,,02
 1720,AL_HEAL@Hydrolancer,chase,28,11,10000,0,5000,no,friend,friendhpltmaxrate,60,,,,,,02
 1720,WZ_METEOR@Hydrolancer,attack,83,15,2000,500,5000,no,target,always,0,,,,,,29
@@ -3113,13 +3113,13 @@
 1720,NPC_CRITICALSLASH@Hydrolancer,attack,170,1,2000,0,5000,no,target,always,0,,,,,,
 1720,NPC_COMBOATTACK@Hydrolancer,attack,171,2,2000,0,5000,no,target,always,0,,,,,,
 1720,NPC_RANDOMATTACK@Hydrolancer,attack,183,5,2000,0,5000,no,target,always,0,,,,,,47
-1720,NPC_SUMMONSLAVE@Hydrolancer,idle,196,1,10000,0,0,no,self,onspawn,2,1757,1758,1759,1760,,
-1720,NPC_SUMMONSLAVE@Hydrolancer,attack,196,1,2000,700,60000,no,self,slavele,2,1757,1758,1759,1760,,
-1720,NPC_SUMMONSLAVE@Hydrolancer,idle,196,1,10000,700,60000,no,self,slavele,2,1757,1758,1759,1760,,
+1720,NPC_SUMMONSLAVE@Detardeurus,idle,196,1,10000,0,0,no,self,onspawn,2,1757,1758,1759,1760,,
+1720,NPC_SUMMONSLAVE@Detardeurus,attack,196,1,2000,700,60000,no,self,slavele,2,1757,1758,1759,1760,,
+1720,NPC_SUMMONSLAVE@Detardeurus,idle,196,1,10000,700,60000,no,self,slavele,2,1757,1758,1759,1760,,
 1720,NPC_DARKBREATH@Hydrolancer,attack,202,5,500,0,5000,no,target,always,0,,,,,,
-1720,NPC_EXPLOSIONSPIRITS@Hydrolancer,attack,349,5,10000,0,30000,no,self,myhpltmaxrate,30,,,,,,06
-1720,NPC_RECALL@Hydrolancer,attack,354,1,10000,0,30000,no,target,always,0,,,,,,
-1720,NPC_RECALL@Hydrolancer,idle,354,1,10000,0,30000,no,self,always,0,,,,,,
+1720,NPC_EXPLOSIONSPIRITS@Detardeurus,attack,349,5,10000,0,30000,no,self,myhpltmaxrate,30,,,,,,06
+1720,NPC_RECALL@Detardeurus,attack,354,1,10000,0,30000,no,target,always,0,,,,,,
+1720,NPC_RECALL@Detardeurus,idle,354,1,10000,0,30000,no,self,always,0,,,,,,
 1721,NPC_METAMORPHOSIS@Dragon Egg,idle,193,1,5,2000,0,no,self,always,0,1715,1718,,,,
 1733,SM_BASH@Kiehl,attack,5,10,500,0,5000,no,target,always,0,,,,,,
 1733,SM_MAGNUM@Kiehl,attack,7,6,500,500,5000,no,self,always,0,,,,,,
@@ -3378,25 +3378,30 @@
 1779,NPC_EXPLOSIONSPIRITS@Ktullanux,attack,349,5,10000,0,60000,no,self,myhpltmaxrate,30,,,,,,
 1779,NPC_RECALL@Ktullanux,attack,354,1,10000,0,30000,no,target,always,0,,,,,,
 1779,NPC_RECALL@Ktullanux,idle,354,1,10000,0,30000,no,self,always,0,,,,,,
-1780,AL_HEAL@Muscipular,attack,28,9,10000,500,5000,yes,friend,friendhpltmaxrate,60,,,,,,
-1780,AL_HEAL@Muscipular,idle,28,9,10000,500,5000,yes,friend,friendhpltmaxrate,60,,,,,,
-1780,KN_SPEARSTAB@Muscipular,attack,58,5,500,800,5000,no,target,always,0,,,,,,
-1780,NPC_PETRIFYATTACK@Muscipular,attack,180,3,500,500,5000,no,target,always,0,,,,,,
-1780,NPC_GROUNDATTACK@Muscipular,attack,185,3,500,500,5000,no,target,always,0,,,,,,
-1780,NPC_BLOODDRAIN@Muscipular,attack,199,1,500,0,5000,no,target,always,0,,,,,,
-1781,KN_PIERCE@Drosera,attack,56,5,500,700,5000,no,target,always,0,,,,,,
-1781,NPC_GUIDEATTACK@Drosera,attack,172,1,500,1000,20000,no,target,always,0,,,,,,
-1781,NPC_SLEEPATTACK@Drosera,attack,182,5,500,0,5000,no,target,always,0,,,,,,
-1781,NPC_GROUNDATTACK@Drosera,attack,185,3,500,500,5000,no,target,always,0,,,,,,
-1781,NPC_BLOODDRAIN@Drosera,attack,199,1,500,0,5000,no,target,always,0,,,,,,
-1782,NPC_COMBOATTACK@Roween,attack,171,1,500,700,5000,no,target,always,0,,,,,,
-1782,NPC_WINDATTACK@Roween,attack,187,1,2000,0,5000,no,target,always,0,,,,,,
-1783,AS_SONICBLOW@Galion,attack,136,10,500,800,5000,no,target,always,0,,,,,,06
-1783,NPC_WINDATTACK@Galion,attack,187,3,500,0,5000,no,target,always,0,,,,,,09
-1783,NPC_DARKNESSATTACK@Galion,attack,190,3,500,0,5000,no,target,always,0,,,,,,09
-1783,NPC_SUMMONSLAVE@Galion,idle,196,2,10000,2000,60000,no,self,slavele,0,1782,,,,,
-1784,SM_BASH@Stapo,attack,5,5,500,0,5000,no,target,always,0,,,,,,06
-1784,NPC_KEEPING@Stapo,attack,201,1,2000,0,30000,no,self,myhpltmaxrate,20,,,,,,09
+1780,NPC_BLOODDRAIN@Muscipular,attack,199,1,1000,0,5000,yes,anothertarget,always,0,,,,,,
+1780,KN_SPEARSTAB@Muscipular,attack,58,5,500,800,5000,no,anothertarget,always,0,,,,,,06
+1780,NPC_GROUNDATTACK@Muscipular,attack,185,1,1000,0,5000,yes,anothertarget,always,0,,,,,,
+1780,AL_HEAL@Muscipular,attack,28,9,10000,500,5000,yes,friend,friendhpltmaxrate,50,,,,,,
+1780,AL_HEAL@Muscipular,idle,28,9,10000,500,5000,yes,friend,friendhpltmaxrate,50,,,,,,
+1780,NPC_PETRIFYATTACK@Muscipular,attack,180,5,500,0,5000,no,anothertarget,always,0,,,,,,
+1781,NPC_BLOODDRAIN@Drosera,attack,199,1,1000,0,5000,yes,anothertarget,always,0,,,,,,
+1781,KN_PIERCE@Drosera,attack,56,5,500,700,5000,no,anothertarget,always,0,,,,,,
+1781,NPC_GROUNDATTACK@Drosera,attack,185,1,1000,0,5000,yes,anothertarget,always,0,,,,,,
+1781,NPC_GUIDEATTACK@Drosera,attack,172,3,500,1000,20000,no,anothertarget,always,0,,,,,,06
+1781,NPC_SLEEPATTACK@Drosera,attack,182,5,500,0,5000,yes,anothertarget,always,0,,,,,,
+1782,NPC_WINDATTACK@Roween,attack,187,2,500,500,5000,no,target,always,0,,,,,,
+1782,NPC_COMBOATTACK@Roween,attack,171,4,500,500,5000,no,target,always,0,,,,,,06
+1782,NPC_EMOTION@Roween,idle,197,1,200,0,5000,yes,self,always,0,22,141,,,,
+1783,NPC_WINDATTACK@Galion,attack,187,3,500,500,5000,no,target,always,0,,,,,,
+1783,NPC_COMBOATTACK@Galion,attack,171,1,500,500,5000,no,target,always,0,,,,,,06
+1783,AS_SONICBLOW@Galion,attack,136,5,500,800,5000,no,target,always,0,,,,,,
+1783,NPC_DARKNESSATTACK@Galion,attack,190,1,2000,0,5000,yes,target,always,0,,,,,,
+1783,NPC_EMOTION@Galion,idle,197,1,200,0,5000,yes,self,always,0,7,149,,,,
+1783,AL_TELEPORT@Galion,idle,26,1,10000,0,0,yes,self,rudeattacked,,,,,,,
+1783,NPC_SUMMONSLAVE@Galion,attack,196,3,10000,1000,30000,no,self,slavele,3,1794,,,,,
+1783,NPC_SUMMONSLAVE@Galion,idle,196,3,10000,1000,30000,no,self,slavele,3,1794,,,,,
+1784,NPC_KEEPING@Stapo,attack,201,1,1000,1000,5000,no,self,myhpltmaxrate,25,,,,,,09
+1784,SM_BASH@Stapo,attack,5,3,500,0,5000,yes,target,always,0,,,,,,
 1785,SM_BASH@Atroce,attack,5,10,2000,0,5000,no,target,always,0,,,,,,06
 1785,SM_MAGNUM@Atroce,attack,7,10,500,500,5000,no,self,always,0,,,,,,
 1785,AL_TELEPORT@Atroce,idle,26,1,1000,0,5000,no,self,rudeattacked,,,,,,,
@@ -3408,7 +3413,6 @@
 1785,NPC_EXPLOSIONSPIRITS@Atroce,attack,349,5,10000,0,60000,no,self,myhpltmaxrate,30,,,,,,06
 1785,NPC_RECALL@Atroce,attack,354,1,10000,0,30000,no,target,always,0,,,,,,
 1785,NPC_RECALL@Atroce,idle,354,1,10000,0,30000,no,self,always,0,,,,,,
-
 1786,G_Agav@NPC_HOLYATTACK,attack,189,5,500,0,5000,yes,target,always,0,,,,,,
 1786,G_Agav@MG_SIGHT,chase,10,1,500,0,5000,yes,self,always,0,,,,,,
 1786,G_Agav@MG_SOULSTRIKE,chase,13,7,1500,500,5000,yes,target,always,0,,,,,,
@@ -3456,7 +3460,6 @@
 1797,G_Vanberk@BS_MAXIMIZE,chase,114,5,500,1000,60000,no,self,always,0,,,,,,
 1797,G_Vanberk@PR_LEXAETERNA,attack,78,1,500,0,10000,yes,target,always,0,,,,,,
 1797,G_Vanberk@PR_LEXAETERNA,chase,78,1,500,0,10000,yes,target,always,0,,,,,,
-
 1814,MG_COLDBOLT@Moonlight Flower,chase,14,5,1000,0,5000,no,target,always,0,,,,,,00
 1814,MG_FIREBOLT@Moonlight Flower,chase,19,5,1000,0,5000,no,target,always,0,,,,,,00
 1814,MG_LIGHTNINGBOLT@Moonlight Flower,chase,20,5,1000,0,5000,no,target,always,0,,,,,,00
@@ -3491,7 +3494,6 @@
 1817,NPC_EXPLOSIONSPIRITS@Detardeurus,attack,349,5,10000,0,30000,no,self,myhpltmaxrate,30,,,,,,06
 1817,NPC_RECALL@Detardeurus,attack,354,1,10000,,30000,no,target,always,0,,,,,,
 1817,NPC_RECALL@Detardeurus,idle,354,1,10000,0,30000,no,self,always,0,,,,,,
-
 1829,NPC_EMOTION@Sword Master,any,197,1,10000,0,3600000,no,modechange,closedattacked,0,self,0,181,,,
 1829,NPC_EMOTION@Sword Master,any,197,1,10000,0,3600000,no,modechange,longrangeattacked,0,self,0,181,,,
 1829,NPC_EMOTION@Sword Master,idle,197,1,20,0,3600000,no,modechange,always,0,self,0,181,,,
@@ -3610,39 +3612,36 @@
 1839,NPC_INCREASEFLEE@Byorgue,chase,350,1,500,200,30000,yes,self,always,0,,,,,,
 1839,NPC_INVISIBLE@Byorgue,idle,352,1,500,0,10000,yes,self,always,0,,,,,,
 1839,AS_VENOMKNIFE@Byorgue,chase,1004,1,200,0,0,no,target,always,0,,,,,,
-
-1864,Zombie Slaughter@AS_SONICBLOW,attack,136,10,1500,0,5000,no,target,always,0,,,,,,
-1865,Ragged Zombie@AC_SHOWER,attack,47,10,500,0,3000,no,target,always,0,,,,,,6
-1865,Ragged Zombie@AC_SHOWER,chase,47,10,500,0,3000,no,target,always,0,,,,,,6
-1867,Banshee@MG_SOULSTRIKE,attack,13,10,500,500,5000,no,target,always,0,,,,,,
-1867,Banshee@MG_SOULSTRIKE,chase,13,10,500,500,5000,no,target,always,0,,,,,,
-1867,Banshee@NPC_CURSEATTACK,attack,181,10,500,0,5000,no,target,always,0,,,,,,
-1867,Banshee@NPC_BLOODDRAIN,attack,199,1,500,0,5000,no,target,always,0,,,,,,
-1867,Banshee@NPC_BLOODDRAIN,chase,199,1,500,0,5000,no,target,always,0,,,,,,
-1868,G_Banshee@MG_SOULSTRIKE,attack,13,10,500,500,5000,no,target,always,0,,,,,,
-1868,G_Banshee@MG_SOULSTRIKE,chase,13,10,500,500,5000,no,target,always,0,,,,,,
-1868,G_Banshee@NPC_CURSEATTACK,attack,181,10,500,0,5000,no,target,always,0,,,,,,
-1868,G_Banshee@NPC_BLOODDRAIN,attack,199,1,500,0,5000,no,target,always,0,,,,,,
-1868,G_Banshee@NPC_BLOODDRAIN,chase,199,1,500,0,5000,no,target,always,0,,,,,,
-1869,Flame Skull@MO_BODYRELOCATION,chase,264,1,1000,0,5000,no,target,always,0,,,,,,
-1870,Necromancer@MG_THUNDERSTORM,attack,21,11,2000,500,10000,no,target,always,0,,,,,,
-1870,Necromancer@MG_THUNDERSTORM,chase,21,11,2000,500,10000,no,target,always,0,,,,,,
-1870,Necromancer@CR_REFLECTSHIELD,attack,252,5,1000,500,30000,no,self,always,0,,,,,,
-1870,Necromancer@CR_REFLECTSHIELD,chase,252,5,1000,500,30000,no,self,always,0,,,,,,
-1870,Necromancer@NPC_SUMMONSLAVE,attack,196,2,1000,500,3600000,no,self,slavele,1,1864,,,,,
-1870,Necromancer@NPC_SUMMONSLAVE,chase,196,2,1000,500,3600000,no,self,slavele,1,1864,,,,,
-1870,Necromancer@NPC_SUMMONSLAVE,idle,196,2,1000,500,3600000,no,self,slavele,1,1864,,,,,
-1871,Fallen Bishop@AL_PNEUMA,attack,25,1,5000,0,10000,no,self,longrangeattacked,,,,,,,19
-1871,Fallen Bishop@AL_PNEUMA,chase,25,1,5000,0,10000,no,self,longrangeattacked,,,,,,,19
-1871,Fallen Bishop@ASC_METEOR,attack,406,10,15000,1000,20000,no,target,always,0,,,,,,
-1871,Fallen Bishop@ASC_METEOR,chase,406,10,15000,1000,20000,no,target,always,0,,,,,,
-1871,Fallen Bishop@AL_TELEPORT,idle,26,1,10000,0,0,yes,self,rudeattacked,,,,,,,
-1871,Fallen Bishop@NPC_SUMMONSLAVE,attack,196,3,1000,500,3600000,no,self,slavele,1,1868,,,,,
-1871,Fallen Bishop@NPC_SUMMONSLAVE,chase,196,3,1000,500,3600000,no,self,slavele,1,1868,,,,,
-1871,Fallen Bishop@NPC_SUMMONSLAVE,idle,196,3,1000,500,3600000,no,self,slavele,1,1868,,,,,
-1871,Fallen Bishop@NPC_RECALL,attack,354,1,2000,0,10000,no,self,always,0,,,,,,
-1871,Fallen Bishop@NPC_RECALL,chase,354,1,2000,0,10000,no,self,always,0,,,,,,
-1871,Fallen Bishop@NPC_RECALL,idle,354,1,2000,0,10000,no,self,always,0,,,,,,
+1864,AS_SONICBLOW@Zombie Slaughter,any,136,1,0,0,5000,no,target,always,0,,,,,,
+1864,RG_STRIPARMOR@Zombie Slaughter,any,217,1,0,0,5000,no,target,always,0,,,,,,
+1864,CR_AUTOGUARD@Zombie Slaughter,any,249,1,0,0,5000,no,target,always,0,,,,,,
+1865,AC_SHOWER@Ragged Zombie,any,47,1,0,0,5000,no,target,always,0,,,,,,
+1865,NPC_UNDEADATTACK@Ragged Zombie,any,347,1,0,0,5000,no,target,always,0,,,,,,
+1865,NPC_STUNATTACK@Ragged Zombie,any,179,1,0,0,5000,no,target,always,0,,,,,,
+1866,AS_GRIMTOOTH@Hell Poodle,any,137,1,0,0,5000,no,target,always,0,,,,,,
+1866,NPC_BLINDATTACK@Hell Poodle,any,177,1,0,0,5000,no,target,always,0,,,,,,
+1866,SM_BASH@Hell Poodle,any,5,1,0,0,5000,no,target,always,0,,,,,,
+1867,MG_SOULSTRIKE@Banshee,any,13,1,0,0,5000,no,target,always,0,,,,,,
+1867,NPC_CURSEATTACK@Banshee,any,181,3,0,1,5000,no,target,always,0,,,,,,
+1867,NPC_BLOODDRAIN@Banshee,any,199,1,0,0,5000,no,target,always,0,,,,,,
+1868,MG_SOULSTRIKE@Banshee,any,13,1,0,0,5000,no,target,always,0,,,,,,
+1868,NPC_CURSEATTACK@Banshee,any,181,3,0,1,5000,no,target,always,0,,,,,,
+1868,NPC_BLOODDRAIN@Banshee,any,199,1,0,0,5000,no,target,always,0,,,,,,
+1869,MO_BODYRELOCATION@Flame Skull,any,264,1,0,0,5000,no,target,always,0,,,,,,
+1869,MG_FIREBALL@Flame Skull,any,17,1,0,0,5000,no,target,always,0,,,,,,
+1869,WZ_SIGHTRASHER@Flame Skull,any,81,1,0,0,5000,no,target,always,0,,,,,,
+1870,MG_THUNDERSTORM@Necromancer,any,21,1,0,1,5000,no,target,always,0,,,,,,
+1870,NPC_DARKSOULSTRIKE@Necromancer,any,340,1,0,0,5000,no,target,always,0,,,,,,
+1870,CR_REFLECTSHIELD@Necromancer,any,252,1,0,0,5000,no,target,always,0,,,,,,
+1870,WZ_QUAGMIRE@Necromancer,any,92,1,0,0,5000,no,target,always,0,,,,,,
+1870,AL_TELEPORT@Necromancer,any,26,1,0,0,5000,no,target,always,0,,,,,,
+1870,NPC_SUMMONSLAVE@Necromancer,any,196,2,0,0,5000,no,target,always,0,1864,,,,,
+1871,NPC_SUMMONSLAVE@Falling Bishop,any,196,14,0,0,5000,no,target,always,0,1868,,,,,
+1871,ASC_METEORASSAULT@Falling Bishop,any,406,1,0,0,5000,no,target,always,0,,,,,,
+1871,NPC_CURSEATTACK@Falling Bishop,any,181,11,0,0,5000,no,target,always,0,,,,,,
+1871,NPC_SILENCEATTACK@Falling Bishop,any,178,11,0,0,5000,no,target,always,0,,,,,,
+1871,AL_PNEUMA@Falling Bishop,any,25,1,0,0,5000,no,target,always,0,,,,,,
+1871,WZ_WATERBALL@Falling Bishop,any,86,1,0,0,5000,no,target,always,0,,,,,,
 1872,Hell Fly@AL_HEAL,attack,28,10,1000,0,5000,no,self,myhpltmaxrate,99,,,,,,21
 1872,Hell Fly@AL_HEAL,chase,28,10,1000,0,5000,no,self,myhpltmaxrate,99,,,,,,21
 1872,Hell Fly@AL_HEAL,idle,28,10,1000,0,5000,no,self,myhpltmaxrate,99,,,,,,21
@@ -3656,9 +3655,9 @@
 1873,Beelzebub@RG_INTIMIDATE,attack,219,5,500,0,5000,no,target,always,0,,,,,,
 1873,Beelzebub@NPC_BREAKSIELD,attack,346,10,2000,0,5000,no,target,always,0,,,,,,6
 1873,Beelzebub@NPC_DARKBLESSING,attack,203,1,500,500,5000,no,target,always,0,,,,,,9
-1873,Beelzebub@NPC_SUMMONSLAVE,attack,196,2,1000,500,3600000,no,self,slavele,4,1872,1872,1872,1011,,
-1873,Beelzebub@NPC_SUMMONSLAVE,chase,196,2,1000,500,3600000,no,self,slavele,4,1872,1872,1872,1011,,
-1873,Beelzebub@NPC_SUMMONSLAVE,idle,196,2,1000,500,3600000,no,self,slavele,4,1872,1872,1872,1011,,
+1873,Beelzebub@NPC_SUMMONSLAVE,attack,196,2,1000,500,3600000,no,self,slavele,4,1872,1872,1872,,,
+1873,Beelzebub@NPC_SUMMONSLAVE,chase,196,2,1000,500,3600000,no,self,slavele,4,1872,1872,1872,,,
+1873,Beelzebub@NPC_SUMMONSLAVE,idle,196,2,1000,500,3600000,no,self,slavele,4,1872,1872,1872,,,
 1873,Beelzebub@NPC_RECALL,attack,354,1,2000,0,10000,no,self,always,0,,,,,,
 1873,Beelzebub@NPC_RECALL,chase,354,1,2000,0,10000,no,self,always,0,,,,,,
 1873,Beelzebub@NPC_RECALL,idle,354,1,2000,0,10000,no,self,always,0,,,,,,
@@ -3668,9 +3667,9 @@
 1874,Beelzebub_@NPC_BREAKSIELD,attack,346,10,2000,0,5000,no,target,always,0,,,,,,6
 1874,Beelzebub_@NPC_DARKBLESSING,attack,203,1,500,500,5000,no,target,always,0,,,,,,9
 1874,Beelzebub@AL_TELEPORT,idle,26,1,10000,0,0,yes,self,rudeattacked,,,,,,,
-1874,Beelzebub_@NPC_SUMMONSLAVE,attack,196,2,1000,500,3600000,no,self,slavele,4,1872,1872,1872,1011,,
-1874,Beelzebub_@NPC_SUMMONSLAVE,chase,196,2,1000,500,3600000,no,self,slavele,4,1872,1872,1872,1011,,
-1874,Beelzebub_@NPC_SUMMONSLAVE,idle,196,2,1000,500,3600000,no,self,slavele,4,1872,1872,1872,1011,,
+1874,Beelzebub_@NPC_SUMMONSLAVE,attack,196,2,1000,500,3600000,no,self,slavele,4,1872,1872,1872,,,
+1874,Beelzebub_@NPC_SUMMONSLAVE,chase,196,2,1000,500,3600000,no,self,slavele,4,1872,1872,1872,,,
+1874,Beelzebub_@NPC_SUMMONSLAVE,idle,196,2,1000,500,3600000,no,self,slavele,4,1872,1872,1872,,,
 1874,Beelzebub_@NPC_RECALL,attack,354,1,2000,0,10000,no,self,always,0,,,,,,
 1874,Beelzebub_@NPC_RECALL,chase,354,1,2000,0,10000,no,self,always,0,,,,,,
 1874,Beelzebub_@NPC_RECALL,idle,354,1,2000,0,10000,no,self,always,0,,,,,,

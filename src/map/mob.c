@@ -1483,7 +1483,7 @@ static int mob_delay_item_drop(int tid,unsigned int tick,int id,int data)
 		}
 	}
 
-	map_addflooritem(&temp_item,1,ditem->m,ditem->x,ditem->y,ditem->first_bl,ditem->second_bl,ditem->third_bl,0);
+	map_addflooritem(&temp_item,ditem->amount,ditem->m,ditem->x,ditem->y,ditem->first_bl,ditem->second_bl,ditem->third_bl,0);
 	aFree(ditem);
 	return 0;
 }
@@ -1510,7 +1510,7 @@ static int mob_delay_item_drop2(int tid,unsigned int tick,int id,int data)
 		}
 	}
 
-	map_addflooritem(&ditem->item_data,1,ditem->m,ditem->x,ditem->y,ditem->first_bl,ditem->second_bl,ditem->third_bl,0);
+	map_addflooritem(&ditem->item_data,ditem->item_data.amount,ditem->m,ditem->x,ditem->y,ditem->first_bl,ditem->second_bl,ditem->third_bl,0);
 	aFree(ditem);
 	return 0;
 }
@@ -3119,6 +3119,8 @@ int mobskill_use(struct mob_data *md,unsigned int tick,int event)
 			flag=1; break;
 		case MSC_MYHPLTMAXRATE:		// HP< maxhp%
 			flag=( md->hp < status_get_max_hp(&md->bl)*c2/100 ); break;
+		case MSC_MYHPGTMAXRATE:		// HP< maxhp%
+			flag=( md->hp > status_get_max_hp(&md->bl)*c2/100 ); break;
 		case MSC_MYSTATUSON:		// status[num] on
 		case MSC_MYSTATUSOFF:		// status[num] off
 			if( ms[i].cond2==-1 ){
@@ -3775,6 +3777,7 @@ static int mob_readskilldb(void)
 	} cond1[] = {
 		{	"always",			MSC_ALWAYS				},
 		{	"myhpltmaxrate",	MSC_MYHPLTMAXRATE		},
+		{	"myhpgtmaxrate",	MSC_MYHPGTMAXRATE		},
 		{	"friendhpltmaxrate",MSC_FRIENDHPLTMAXRATE	},
 		{	"friendhpgtmaxrate",MSC_FRIENDHPGTMAXRATE	},
 		{	"mystatuson",		MSC_MYSTATUSON			},
@@ -4143,10 +4146,18 @@ int mob_droprate_fix(int item,int drop,int mvp)
 		}
 	}
 	if(mvp) {
-		if(itemdb_type(item)==6) {
-			drop_fix = drop_fix * battle_config.mvpmob_card_drop_rate /10000;
+		if(battle_config.mvpmob_card_drop_rate<0) {
+			if(itemdb_type(item)==6) {
+				drop_fix = (drop_fix*100)/-battle_config.mvpmob_card_drop_rate;
+			} else {
+				drop_fix = (drop_fix*100)/-battle_config.mvpmob_item_drop_rate;
+			}
 		} else {
-			drop_fix = drop_fix * battle_config.mvpmob_item_drop_rate /10000;
+			if(itemdb_type(item)==6) {
+				drop_fix = (drop_fix*battle_config.mvpmob_card_drop_rate)/100;
+			} else {
+				drop_fix = (drop_fix*battle_config.mvpmob_item_drop_rate)/100;
+			}
 		}
 	}
 	if(drop_fix > 10000) drop_fix = 10000;

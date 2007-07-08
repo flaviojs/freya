@@ -984,6 +984,12 @@ int unit_skilluse_id2(struct block_list *src, int target_id, int skill_num, int 
 		if(sc_data && sc_data[SC_BASILICA].timer != -1)
 			casttime = 0;
 		break;
+	case PA_PRESSURE:
+		if(status_get_class(target) == 1288 && src_sd) {
+			clif_skill_fail(src_sd,skill_num,0,0); //エンペリウムには使用不可
+			return 0;
+		}
+		break;
 	case KN_CHARGEATK:			//チャージアタック
 		{
 			int dist  = unit_distance(src->x,src->y,target->x,target->y);
@@ -1535,6 +1541,14 @@ int unit_attack_timer_sub(int tid,unsigned int tick,int id,int data)
 				if( target_sd->state.gangsterparadise )
 					return 0;
 			}
+		}
+	}
+
+	if( src_pd ) {
+		// 主人が死んでいたらペットの攻撃止め(主人の敵討ちはｱﾘならｺﾒﾝﾄｱｳﾄ･･･)
+		if( unit_isdead(&src_pd->msd->bl) ) {
+			src_pd->target_id=0;
+			return 0;
 		}
 	}
 

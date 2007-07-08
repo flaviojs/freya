@@ -1204,7 +1204,7 @@ atcommand_jobchange(
 		return -1;
 	}
 
-	if (job >= 24)
+	if (job >= 23 && upper != 2)
 		upper = 0;
 	if (pc_jobchange(sd, job, upper) == 0)
 		clif_displaymessage(fd, msg_txt(12));
@@ -2998,7 +2998,7 @@ atcommand_character_job(
 	if ((pl_sd = map_nick2sd(character)) != NULL) {
 		if (pc_isGM(sd) >= pc_isGM(pl_sd)) {
 			if ((job >= 0 && job < MAX_VALID_PC_CLASS)) {
-				if (job >= 24)
+				if (job >= 23 && upper != 2)
 					upper = 0;
 				pc_jobchange(pl_sd, job, upper);
 				clif_displaymessage(fd, msg_txt(48));

@@ -449,10 +449,6 @@ int pc_setrestartvalue(struct map_session_data *sd,int type)
 					clif_updatestatus(sd, SP_ZENY);
 			}
 		}
-
-		// ƒyƒbƒg‚ÌUŒ‚~‚ß(ål‚Ì“G“¢‚¿‚Í±Ø‚È‚çºÒİÄ±³Ä¥¥¥)
-		if(sd->pd && sd->pd->target_id > 0)
-			unit_stopattack(&sd->pd->bl);
 	}
 
 	return 0;
@@ -2182,11 +2178,11 @@ int pc_bonus2(struct map_session_data *sd,int type,int type2,int val)
 		break;
 	case SP_HP_DRAIN_RATE:
 		if(!sd->state.lr_flag) {
-			sd->hp_drain_rate += type2;
+			sd->hp_drain_rate_per += type2;
 			sd->hp_drain_per += val;
 		}
 		else if(sd->state.lr_flag == 1) {
-			sd->hp_drain_rate_ += type2;
+			sd->hp_drain_rate_per_ += type2;
 			sd->hp_drain_per_ += val;
 		}
 		break;
@@ -2202,11 +2198,11 @@ int pc_bonus2(struct map_session_data *sd,int type,int type2,int val)
 		break;
 	case SP_SP_DRAIN_RATE:
 		if(!sd->state.lr_flag) {
-			sd->sp_drain_rate += type2;
+			sd->sp_drain_rate_per += type2;
 			sd->sp_drain_per += val;
 		}
 		else if(sd->state.lr_flag == 1) {
-			sd->sp_drain_rate_ += type2;
+			sd->sp_drain_rate_per_ += type2;
 			sd->sp_drain_per_ += val;
 		}
 		break;

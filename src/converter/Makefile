@@ -11,13 +11,17 @@ COMMON_OBJ += ../common/zlib/inflate.o ../common/zlib/deflate.o ../common/zlib/c
 endif
 
 ifeq ($(findstring MINGW32,$(shell uname)), MINGW32)
-LIBS = -lm -lwsock32
+LIBS = -lm -lwsock32  -limagehlp
 else
 LIBS = -lm
 endif
 
 ifdef SQLFLAG
-	LIBS += -L$(MYSQL_LIBS) -lmysqlclient
+	ifeq ($(findstring MINGW32,$(shell uname)), MINGW32)
+		LIBS += -L$(MYSQL_LIBS) -lmysql
+	else
+		LIBS += -L$(MYSQL_LIBS) -lmysqlclient
+	endif
 endif
 
 ifneq ($(findstring LOCALZLIB,$(CFLAGS)), LOCALZLIB)

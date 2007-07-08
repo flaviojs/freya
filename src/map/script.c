@@ -4224,7 +4224,7 @@ int buildin_jobchange(struct script_state *st)
 	if(job>=MAX_VALID_PC_CLASS)
 		return 0;
 
-	if(job>=24)
+	if(job>=23 && upper!=2)
 		upper = 0;
 
 	if ((job >= 0 && job < MAX_VALID_PC_CLASS))

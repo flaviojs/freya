@@ -435,8 +435,8 @@ L_RECALC:
 	sd->splash_range = sd->splash_add_range = 0;
 	sd->autospell_id = sd->autospell_lv = sd->autospell_rate = 0;
 	sd->autospell_flag = 0;
-	sd->hp_drain_rate = sd->hp_drain_per = sd->sp_drain_rate = sd->sp_drain_per = 0;
-	sd->hp_drain_rate_ = sd->hp_drain_per_ = sd->sp_drain_rate_ = sd->sp_drain_per_ = 0;
+	sd->hp_drain_rate = sd->hp_drain_rate_per = sd->hp_drain_per = sd->sp_drain_rate = sd->sp_drain_rate_per = sd->sp_drain_per = 0;
+	sd->hp_drain_rate_ = sd->hp_drain_rate_per_ = sd->hp_drain_per_ = sd->sp_drain_rate_ = sd->sp_drain_rate_per_ = sd->sp_drain_per_ = 0;
 	sd->hp_drain_value = sd->hp_drain_value_ = sd->sp_drain_value = sd->sp_drain_value_ = 0;
 	sd->short_weapon_damage_return = sd->long_weapon_damage_return = sd->magic_damage_return = 0;
 	sd->break_weapon_rate = sd->break_armor_rate = 0;

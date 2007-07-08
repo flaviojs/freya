@@ -849,7 +849,7 @@ static int pet_ai_sub_hard(struct pet_data *pd,unsigned int tick)
 
 	if(sd->pet.intimate > 0) {
 		dist = unit_distance(sd->bl.x,sd->bl.y,pd->bl.x,pd->bl.y);
-		if(dist > 12) {
+		if(dist > 12 || (pd->target_id > 0 && dist>9)) {
 			if(pd->target_id > 0)
 				pet_unlocktarget(pd);
 			if(pd->ud.walktimer != -1 && unit_distance(pd->ud.to_x,pd->ud.to_y,sd->bl.x,sd->bl.y) < 3)
