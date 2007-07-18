@@ -1,0 +1,31 @@
+@ECHO OFF
+@echo ---------------------------------------
+@echo           実行ファイル削除
+@echo ---------------------------------------
+del bin\login-server.exe
+del bin\char-server.exe
+del bin\map-server.exe
+del bin\txt-converter.exe
+@echo ---------------------------------------
+@echo        ilk,map,pdbファイル削除
+@echo ---------------------------------------
+del bin\*.ilk
+del bin\*.map
+del bin\*.pdb
+del src\login\*.pdb
+del src\char\*.pdb
+del src\map\*.pdb
+del src\converter\*.pdb
+del src\common\*.pdb
+del src\common\zlib\*.pdb
+@echo ---------------------------------------
+@echo          中間ファイル削除
+@echo ---------------------------------------
+del src\common\zlib\*.obj
+del src\common\*.obj
+del src\char\*.obj
+del src\login\*.obj
+del src\map\*.obj
+del src\converter\*.obj
+
+pause
