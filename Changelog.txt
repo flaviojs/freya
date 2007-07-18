@@ -13,6 +13,9 @@
 
 Date	Added
 
+2007/07/17
+	* Updated: All Guide NPCs to official, converted from Aegis by L0ne_W0lf (iRO 10.3) [Tsuyuki]
+
 2007/07/08
 	* Updated: Project to jAthena 3310 (Latest) [Tsuyuki]
 	* Updated: Databases to huge's latest versions [Tsuyuki]
