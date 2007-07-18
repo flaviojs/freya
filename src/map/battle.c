@@ -863,6 +863,7 @@ struct Damage battle_calc_weapon_attack(
 	int tk_power_damage=0,tk_power_damage2=0;//TK_POWER用
 	int calc_dist_on = 0;	//遠距離スキルの計算フラグ
 	long asflag = EAS_ATTACK;
+	int kaupe_flag = 0;
 
 	memset(&wd,0,sizeof(wd));
 
@@ -2382,12 +2383,9 @@ struct Damage battle_calc_weapon_attack(
 	if(type == 0 && atn_rand()%100 >= hitrate) {
 		damage = damage2 = 0;
 		dmg_lv = ATK_FLEE;
-	}else if(type == 0 && t_sc_data && t_sc_data[SC_KAUPE].timer !=-1 && atn_rand()%100 < (t_sc_data[SC_KAUPE].val2))//カウプ
-	{
-		damage = damage2 = 0;
-		dmg_lv = ATK_FLEE;
-		//カウプ終了処理
-		status_change_end(target,SC_KAUPE,-1);
+	}else if(skill_num==0 && t_sc_data && t_sc_data[SC_KAUPE].timer !=-1 && atn_rand()%100 < (t_sc_data[SC_KAUPE].val2)) {
+		//カウプ
+		kaupe_flag = 1;
 	}else if(type == 0 && t_sc_data && t_sc_data[SC_UTSUSEMI].timer !=-1)//空蝉
 	{
 		damage = damage2 = 0;
@@ -2714,8 +2712,8 @@ struct Damage battle_calc_weapon_attack(
 		div_ = 248+da;
 	}
 
-	if(src_sd && src_sd->status.weapon == WT_KATAR) {
-		// アドバンスドカタール研究
+	if(src_sd && src_sd->status.weapon == WT_KATAR && skill_num!=ASC_BREAKER) {
+		// カタール研究
 		if((skill = pc_checkskill(src_sd,ASC_KATAR)) > 0) {
 			damage += damage*(10+(skill * 2))/100;
 		}
@@ -2738,6 +2736,7 @@ struct Damage battle_calc_weapon_attack(
 		damage=damage2=0;
 		type=0x0b;
 		dmg_lv = ATK_LUCKY;
+		kaupe_flag=0;
 	}
 
 	// 対象が完全回避をする設定がONなら
@@ -2746,6 +2745,7 @@ struct Damage battle_calc_weapon_attack(
 			damage=damage2=0;
 			type=0x0b;
 			dmg_lv = ATK_LUCKY;
+			kaupe_flag=0;
 		}
 	}
 
@@ -2817,11 +2817,21 @@ struct Damage battle_calc_weapon_attack(
 		{
 			if(target->type == BL_MOB || status_get_sp(target) > 5*kaahi_lv)	// 対象がmob以外でSPが減少量以下のときは発生しない
 			{
-				unit_heal(target,200*kaahi_lv,-5*kaahi_lv);
+				int heal=200*kaahi_lv;
+				heal=skill_calc_heal(target,SL_KAAHI,kaahi_lv,heal,1);
+				unit_heal(target,heal,-5*kaahi_lv);
 				if(target->type == BL_PC)
 					clif_misceffect3(target,7);				// 回復した本人にのみ回復エフェクト
 			}
 		}
+	}
+
+	//カウプが成功した場合はダメージ0
+	if(kaupe_flag) {
+		damage = damage2 = 0;
+		dmg_lv = ATK_FLEE;
+		//カウプ終了処理
+		status_change_end(target,SC_KAUPE,-1);
 	}
 
 	//太陽と月と星の奇跡
@@ -2927,7 +2937,7 @@ struct Damage battle_calc_magic_attack(
 	{
 		case AL_HEAL:	// ヒールor聖体
 		case PR_BENEDICTIO:
-			damage = skill_calc_heal(bl,skill_num,skill_lv,0)/2;
+			damage = skill_calc_heal(bl,skill_num,skill_lv,0,0)/2;
 			if(sd)	//メディタティオを乗せる
 				damage += damage * pc_checkskill(sd,HP_MEDITATIO)*2/100;
 			normalmagic_flag=0;
@@ -3183,7 +3193,7 @@ struct Damage battle_calc_magic_attack(
 		static struct Damage wd = { 0, 0, 0, 0, 0, 0, 0, 0, 0 };
 		wd=battle_calc_weapon_attack(bl,target,skill_num,skill_lv,flag);
 		damage = (damage + wd.damage) * (100 + 40*skill_lv)/100;
-		if(battle_config.gx_dupele) damage=battle_attr_fix(damage, ele, status_get_element(target) );	//属性2回かかる
+		if(battle_config.gx_dupele && damage>=0) damage=battle_attr_fix(damage, ele, status_get_element(target) );	//属性2回かかる
 		if(bl==target){
 			if(bl->type == BL_MOB || bl->type == BL_HOM)
 				damage = 0;		//MOB,HOMが使う場合は反動無し
@@ -3341,11 +3351,6 @@ struct Damage  battle_calc_misc_attack(
 	case NPC_SELFDESTRUCTION:	// 自爆
 	case NPC_SELFDESTRUCTION2:	// 自爆2
 		damage=status_get_hp(bl)-(bl==target?1:0);
-		damagefix=0;
-		break;
-
-	case NPC_SMOKING:	// タバコを吸う
-		damage=3;
 		damagefix=0;
 		break;
 
@@ -3981,6 +3986,13 @@ int battle_skill_attack(int attack_type,struct block_list* src,struct block_list
 		clif_skill_nodamage(bl,bl,SA_MAGICROD,sc_data[SC_MAGICROD].val1,1);	//マジックロッドエフェクトを表示
 	}
 
+	//カウプ
+	if(skillid!=PA_PRESSURE && sc_data && sc_data[SC_KAUPE].timer !=-1 && atn_rand()%100 < (sc_data[SC_KAUPE].val2)) {
+		dmg.damage = dmg.damage2 = 0;
+		//カウプ終了処理
+		status_change_end(bl,SC_KAUPE,-1);
+	}
+
 	damage = dmg.damage + dmg.damage2;
 
 	if(lv==15)
@@ -4108,15 +4120,15 @@ int battle_skill_attack(int attack_type,struct block_list* src,struct block_list
 		if(rdamage > 0)
 			clif_damage(src,src,tick, dmg.amotion,0,rdamage,1,4,0);
 	}
-	if(attack_type&BF_MAGIC && damage > 0 && src != bl && src == dsrc) { //魔法スキル＆ダメージあり＆使用者と対象者が違う
-		if(tsd) { //対象がPCの時
+	if(attack_type&BF_MAGIC && damage > 0 && src != bl) { //魔法スキル＆ダメージあり＆使用者と対象者が違う
+		if(tsd && src == dsrc) { //対象がPCの時
 			if(tsd->magic_damage_return > 0 && atn_rand()%100 < tsd->magic_damage_return) { //魔法攻撃跳ね返し？※
 				rdamage = damage;
 				damage  = -1;	// ダメージ0だがmissを出さない
 			}
 		}
 		//カイト
-		if(damage > 0 && sc_data && sc_data[SC_KAITE].timer!=-1)
+		if(damage > 0 && sc_data && sc_data[SC_KAITE].timer!=-1 && skillid!=HW_GRAVITATION)
 		{
 			if(src->type == BL_PC || (status_get_lv(src) < 80 && !(status_get_mode(src)&0x20)))
 			{
@@ -4135,8 +4147,10 @@ int battle_skill_attack(int attack_type,struct block_list* src,struct block_list
 			}
 		}
 		if(rdamage > 0){
-			//clif_damage(src,src,tick, dmg.amotion,0,rdamage,1,4,0);
-			clif_skill_damage(src,src,tick,dmg.amotion,dmg.dmotion, rdamage, dmg.div_, skillid, (lv!=0)?lv:skilllv, (skillid==0)? 5:type );
+			if(src == dsrc)
+				clif_skill_damage(src,src,tick,dmg.amotion,dmg.dmotion, rdamage, dmg.div_, skillid, (lv!=0)?lv:skilllv, (skillid==0)? 5:type );
+			else
+				clif_skill_damage(src,src,tick,dmg.amotion,dmg.dmotion, rdamage, dmg.div_, SL_KAITE, (lv!=0)?lv:skilllv, skill_get_hit(skillid) );
 			if(dmg.blewcount > 0 && !map[src->m].flag.gvg) {
 				int dir = map_calc_dir(src,bl->x,bl->y);
 				if(dir == 0)
@@ -4241,29 +4255,33 @@ int battle_skill_attack(int attack_type,struct block_list* src,struct block_list
 	}
 
 	/* 反射ダメージの実際の処理 */
-	if (sd && (skillid || flag) && rdamage>0) {
+	if ((skillid || flag) && rdamage>0) {
 		if (attack_type&BF_WEAPON)
 		{
 			battle_delay_damage(tick+dmg.amotion,bl,src,rdamage,0);
-			//反射ダメージのオートスペル
-			if(battle_config.weapon_reflect_autospell)
-			{
-				skill_bonus_autospell(bl,src,AS_ATTACK,gettick(),0);
-			}
+			if(sd){
+				//反射ダメージのオートスペル
+				if(battle_config.weapon_reflect_autospell)
+				{
+					skill_bonus_autospell(bl,src,AS_ATTACK,gettick(),0);
+				}
 
-			if(battle_config.weapon_reflect_drain)
-				battle_attack_drain(bl,src,rdamage,0,battle_config.weapon_reflect_drain_per_enable);
+				if(battle_config.weapon_reflect_drain)
+					battle_attack_drain(bl,src,rdamage,0,battle_config.weapon_reflect_drain_per_enable);
+			}
 		}
 		else
 		{
 			battle_damage(bl,src,rdamage,0);
-			//反射ダメージのオートスペル
-			if(battle_config.magic_reflect_autospell)
-			{
-				skill_bonus_autospell(bl,src,AS_ATTACK,gettick(),0);
+			if(sd){
+				//反射ダメージのオートスペル
+				if(battle_config.magic_reflect_autospell)
+				{
+					skill_bonus_autospell(bl,src,AS_ATTACK,gettick(),0);
+				}
+				if(battle_config.magic_reflect_drain)
+					battle_attack_drain(bl,src,rdamage,0,battle_config.magic_reflect_drain_per_enable);
 			}
-			if(battle_config.magic_reflect_drain)
-				battle_attack_drain(bl,src,rdamage,0,battle_config.magic_reflect_drain_per_enable);
 		}
 	}
 
@@ -4714,7 +4732,6 @@ int battle_config_read(const char *cfgName)
 		battle_config.pc_skill_add_range=0;
 		battle_config.skill_out_range_consume=1;
 		battle_config.mob_skill_add_range=0;
-		battle_config.pc_damage_delay=1;
 		battle_config.pc_damage_delay_rate=100;
 		battle_config.defnotenemy=1;
 		battle_config.random_monster_checklv=1;
@@ -4899,7 +4916,6 @@ int battle_config_read(const char *cfgName)
 		battle_config.item_rate_100_max = 999;
 		battle_config.item_rate_1000_min = 1000;
 		battle_config.item_rate_1000_max = 10000;
-		battle_config.monster_damage_delay = 1;
 		battle_config.card_drop_rate = 100;
 		battle_config.equip_drop_rate = 100;
 		battle_config.consume_drop_rate = 100;
@@ -4944,7 +4960,7 @@ int battle_config_read(const char *cfgName)
 		battle_config.branch_boss_no_drop = 0;
 		battle_config.branch_boss_no_exp = 0;
 		battle_config.branch_boss_no_mvp = 0;
-		battle_config.pc_hit_stop_type = 3;
+		battle_config.pc_hit_stop_type = 1;
 		battle_config.nomanner_mode = 0;
 		battle_config.death_by_unrig_penalty = 0;
 		battle_config.dance_and_play_duration = 20000;
@@ -5168,7 +5184,6 @@ int battle_config_read(const char *cfgName)
 			{ "player_skill_add_range",				&battle_config.pc_skill_add_range					},
 			{ "skill_out_range_consume",			&battle_config.skill_out_range_consume				},
 			{ "monster_skill_add_range",			&battle_config.mob_skill_add_range					},
-			{ "player_damage_delay",				&battle_config.pc_damage_delay						},
 			{ "player_damage_delay_rate",			&battle_config.pc_damage_delay_rate					},
 			{ "defunit_not_enemy",					&battle_config.defnotenemy							},
 			{ "random_monster_checklv",				&battle_config.random_monster_checklv				},
@@ -5353,7 +5368,6 @@ int battle_config_read(const char *cfgName)
 			{ "item_rate_100_max",					&battle_config.item_rate_100_max					},
 			{ "item_rate_1000_min",					&battle_config.item_rate_1000_min					},
 			{ "item_rate_1000_max",					&battle_config.item_rate_1000_max					},
-			{ "monster_damage_delay",				&battle_config.monster_damage_delay					},
 			{ "card_drop_rate",						&battle_config.card_drop_rate						},
 			{ "equip_drop_rate",					&battle_config.equip_drop_rate						},
 			{ "consume_drop_rate",					&battle_config.consume_drop_rate					},

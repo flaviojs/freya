@@ -2759,7 +2759,6 @@ int skill_castend_damage_id( struct block_list* src, struct block_list *bl,int s
 		}
 		break;
 	case TF_THROWSTONE:			/* 石投げ */
-	case NPC_SMOKING:			/* スモーキング */
 		battle_skill_attack(BF_MISC,src,src,bl,skillid,skilllv,tick,0 );
 		break;
 
@@ -2927,7 +2926,7 @@ int skill_castend_nodamage_id( struct block_list *src, struct block_list *bl,int
 	{
 	case AL_HEAL:				/* ヒール */
 		{
-			int heal=skill_calc_heal( src, skillid, skilllv, 1 );
+			int heal=skill_calc_heal( src, skillid, skilllv, 0, 1 );
 			int heal_get_jobexp;
 			int skill;
 			struct pc_base_job s_class;
@@ -2974,7 +2973,7 @@ int skill_castend_nodamage_id( struct block_list *src, struct block_list *bl,int
 	case HLIF_HEAL:	//治癒の手助け
 		{
 			int lv=0;
-			int heal=skill_calc_heal( src, skillid, skilllv, 1 );
+			int heal=skill_calc_heal( src, skillid, skilllv, 0, 1 );
 			sc_data=status_get_sc_data(bl);
 			if(hd && (lv=homun_checkskill(hd,HLIF_BRAIN)))
 				heal += heal*lv/50;
@@ -4119,8 +4118,12 @@ int skill_castend_nodamage_id( struct block_list *src, struct block_list *bl,int
 		break;
 
 	case NV_FIRSTAID:			/* 応急手当 */
-		clif_skill_nodamage(src,bl,skillid,5,1);
-		battle_heal(NULL,bl,5,0,0);
+		{
+			int heal=skill_calc_heal(src,skillid,skilllv,5,1);
+
+			clif_skill_nodamage(src,bl,skillid,heal,1);
+			battle_heal(NULL,bl,heal,0,0);
+		}
 		break;
 
 	case AL_CURE:				/* キュアー */
@@ -4423,6 +4426,10 @@ int skill_castend_nodamage_id( struct block_list *src, struct block_list *bl,int
 					hp = hp * (100 + sd->status.base_level) / 100;
 				if(sp && sd->sc_data[SC_ALCHEMIST].timer != -1)
 					sp = sp * (100 + sd->status.base_level) / 100;
+				if(hp > 0)
+					hp = skill_calc_heal(src,skillid,skilllv,hp,1);
+				if(sp > 0)
+					sp = skill_calc_heal(src,skillid,skilllv,sp,1);
 			}
 			else {
 				hp = (1 + atn_rand()%400) * (100 + skilllv*10) / 100;
@@ -4456,6 +4463,7 @@ int skill_castend_nodamage_id( struct block_list *src, struct block_list *bl,int
 				if (dstsd) {
 					hp = hp * (100 + pc_checkskill(dstsd,SM_RECOVERY)*10)/100;
 				}
+				hp = skill_calc_heal(src,skillid,skilllv,hp,1);
 				tbl.id = 0;
 				tbl.type = BL_NUL;
 				tbl.m = src->m;
@@ -4780,6 +4788,9 @@ int skill_castend_nodamage_id( struct block_list *src, struct block_list *bl,int
 		if(md && md->skillidx != -1)
 			clif_pet_performance(src,mob_db[md->class].skill[md->skillidx].val[0]);
 		break;
+	case NPC_SMOKING:			/* スモーキング */
+		clif_damage(src,src,tick,status_get_dmotion(src),status_get_dmotion(src),3,1,0,0);
+		break;
 
 	case NPC_HALLUCINATION:
 		clif_skill_nodamage(src,bl,skillid,skilllv,1);
@@ -4920,11 +4931,13 @@ int skill_castend_nodamage_id( struct block_list *src, struct block_list *bl,int
 			{
 				int hp_rate=(skilllv <= 0)? 0:skill_db[skillid].hp_rate[skilllv-1];
 				int gain_hp=dstsd->status.max_hp*abs(hp_rate)/100;// 15%
+				gain_hp=skill_calc_heal(src,skillid,skilllv,gain_hp,1);
 				clif_skill_nodamage(src,bl,skillid,gain_hp,1);
 				battle_heal(NULL,bl,gain_hp,0,0);
 			}else{
 				int hp_rate=(skilllv <= 0)? 0:skill_db[skillid].hp_rate[skilllv-1];
 				int gain_hp=sd->status.max_hp*abs(hp_rate)/100;// 15%
+				gain_hp=skill_calc_heal(src,skillid,skilllv,gain_hp,1);
 				clif_skill_nodamage(src,bl,skillid,gain_hp,1);
 				battle_heal(NULL,bl,gain_hp,0,0);
 			}
@@ -4936,11 +4949,13 @@ int skill_castend_nodamage_id( struct block_list *src, struct block_list *bl,int
 			{
 				int sp_rate=(skilllv <= 0)? 0:skill_db[skillid].sp_rate[skilllv-1];
 				int gain_sp=dstsd->status.max_sp*abs(sp_rate)/100;// 15%
+				gain_sp=skill_calc_heal(src,skillid,skilllv,gain_sp,1);
 				clif_skill_nodamage(src,bl,skillid,gain_sp,1);
 				battle_heal(NULL,bl,0,gain_sp,0);
 			}else{
 				int sp_rate=(skilllv <= 0)? 0:skill_db[skillid].sp_rate[skilllv-1];
 				int gain_sp=sd->status.max_sp*abs(sp_rate)/100;// 15%
+				gain_sp=skill_calc_heal(src,skillid,skilllv,gain_sp,1);
 				clif_skill_nodamage(src,bl,skillid,gain_sp,1);
 				battle_heal(NULL,bl,0,gain_sp,0);
 			}
@@ -5493,7 +5508,7 @@ int skill_castend_nodamage_id( struct block_list *src, struct block_list *bl,int
 			if(hd){
 				//HOM,PC,MOB
 				struct block_list* heal_tearget=NULL;
-				int heal = skill_calc_heal( src, skillid, 1+atn_rand()%skilllv, 1 );
+				int heal = skill_calc_heal( src, skillid, 1+atn_rand()%skilllv, 0, 1 );
 				static const int per[10][2]={{20,50},{50,60},{25,75},{60,64},{34,67},
 											 {34,67},{34,67},{34,67},{34,67},{34,67}};//10まで拡張
 				int rnd = atn_rand()%100;
@@ -5649,7 +5664,7 @@ int skill_castend_id( int tid, unsigned int tick, int id,int data )
 					return 0;
 			}
 			if(src_md->ud.skillid != NPC_EMOTION)
-				src_md->last_thinktime=tick + status_get_adelay(src);
+				src_md->ud.canact_tick=tick + status_get_adelay(src);
 			if( src_md->skillidx >= 0)
 				src_md->skilldelay[src_md->skillidx]=tick;
 		}
@@ -6198,7 +6213,7 @@ struct skill_unit_group *skill_unitsetting( struct block_list *src, int skillid,
 		break;
 	case PR_SANCTUARY:			/* サンクチュアリ */
 		val1 = skilllv*2+6;
-		val2 = (skilllv>6)?777:skilllv*100;
+		val2 = skill_calc_heal(src,skillid,skilllv,(skilllv>6)?777:skilllv*100,1);
 		interval = interval + 500;
 		break;
 	case WZ_FIREPILLAR:			/* ファイアーピラー */
@@ -9913,6 +9928,7 @@ int skill_idun_heal(struct block_list *bl, va_list ap )
 {
 	struct skill_unit *unit;
 	struct skill_unit_group *sg;
+	struct block_list *src=NULL;
 	int heal;
 
 	nullpo_retr(0, bl);
@@ -9920,7 +9936,12 @@ int skill_idun_heal(struct block_list *bl, va_list ap )
 	nullpo_retr(0, unit = va_arg(ap,struct skill_unit *));
 	nullpo_retr(0, sg = unit->group);
 
+	src=map_id2bl(sg->src_id);
+
 	heal=30+sg->skill_lv*5+((sg->val1)>>16)*5+((sg->val2)&0xfff)/2;
+	if(src && src->type==BL_PC){
+		heal=skill_calc_heal(src,sg->skill_id,sg->skill_lv,heal,1);
+	}
 
 	if(bl->type == BL_SKILL || bl->id == sg->src_id)
 		return 0;
@@ -12078,9 +12099,8 @@ int skill_clone(struct map_session_data* sd,int skillid,int skilllv)
  * 回復系スキルの回復量計算
  *------------------------------------------
  */
-int skill_calc_heal( struct block_list *bl, int skill_id, int skill_lv, int type)
+int skill_calc_heal( struct block_list *bl, int skill_id, int skill_lv, int heal, int type)
 {
-	int heal;
 	struct map_session_data *sd=NULL;
 
 	nullpo_retr(0, bl);
@@ -12088,7 +12108,9 @@ int skill_calc_heal( struct block_list *bl, int skill_id, int skill_lv, int type
 	if(bl->type == BL_PC)
 		nullpo_retr(0, sd = (struct map_session_data *)bl);
 
-	heal = ( status_get_lv(bl)+status_get_int(bl) )/8 *(4+ skill_lv*8);
+	// 回復量の値が無ければAL_HEALの回復量を算出
+	if(heal==0)
+		heal = ( status_get_lv(bl)+status_get_int(bl) )/8 *(4+ skill_lv*8);
 
 	if(sd && type) {
 		if(sd->skill_healup.count > 0 && skill_id > 0 && heal > 0) {

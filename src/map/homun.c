@@ -1242,7 +1242,7 @@ int homun_damage(struct block_list *src,struct homun_data *hd,int damage)
 		return 0;
 
 	// •à‚¢‚Ä‚¢‚½‚ç‘«‚ğ~‚ß‚é
-	unit_stop_walking(&hd->bl,battle_config.pc_hit_stop_type);
+	unit_stop_walking(&hd->bl,3);
 
 	if(damage>0)
 		skill_stop_gravitation(&hd->bl);

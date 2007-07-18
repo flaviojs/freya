@@ -95,7 +95,6 @@ extern struct Battle_Config {
 	int pc_skill_add_range;
 	int skill_out_range_consume;
 	int mob_skill_add_range;
-	int pc_damage_delay;
 	int pc_damage_delay_rate;
 	int defnotenemy;
 	int random_monster_checklv;
@@ -468,8 +467,6 @@ extern struct Battle_Config {
 	int item_rate_1_min,item_rate_10_min,item_rate_100_min,item_rate_1000_min;	//ドロップレート詳細min
 	int item_rate_1_max,item_rate_10_max,item_rate_100_max,item_rate_1000_max;	//ドロップレート詳細max
 	int dropitem_itemrate_fix;
-
-	int monster_damage_delay;
 
 	int noportal_flag;
 	int noexp_hiding;
