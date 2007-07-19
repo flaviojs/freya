@@ -15,7 +15,7 @@
 // Custom Scripts
 //--------------------------------------------------------------
 
-// Add your custom scripts here
+// Add your own custom scripts here
 
 
 //--------------------------------------------------------------
@@ -35,6 +35,22 @@
 // npc: script/event/event_valentines_day.txt
 // npc: script/event/event_white_day.txt
 // npc: script/event/event_xmas.txt
+
+
+//--------------------------------------------------------------
+// Global Town Scripts
+//--------------------------------------------------------------
+
+npc: script/global/global_airship.txt
+npc: script/global/global_bulletin_board.txt
+npc: script/global/global_cool_event.txt
+npc: script/global/global_guide.txt
+npc: script/global/global_inn.txt
+npc: script/global/global_kafra.txt
+npc: script/global/global_mail_box.txt
+npc: script/global/global_pvp.txt
+npc: script/global/global_refine.txt
+npc: script/global/global_shop.txt
 
 
 //--------------------------------------------------------------
@@ -129,6 +145,7 @@ npc: script/quest/quest_juice_maker.txt
 npc: script/quest/quest_juperos.txt
 npc: script/quest/quest_kiel_hyre.txt
 npc: script/quest/quest_lv4_weapon.txt
+npc: script/quest/quest_old_blue_box.txt
 npc: script/quest/quest_pet_taming.txt
 npc: script/quest/quest_quiz_revolution.txt
 npc: script/quest/quest_skill.txt
@@ -136,8 +153,6 @@ npc: script/quest/quest_thai_hat.txt
 npc: script/quest/quest_thanatos.txt
 npc: script/quest/quest_the_sign.txt
 
-// Old Blue Box Quest - Exclusive to iRO
-// npc: script/quest/quest_old_blue_box.txt
 
 //--------------------------------------------------------------
 // Town Scripts
@@ -168,17 +183,6 @@ npc: script/town/town_rachel.txt
 npc: script/town/town_umbala.txt
 npc: script/town/town_veins.txt
 
-npc: script/town/global/town_airship.txt
-npc: script/town/global/town_bulletin_board.txt
-npc: script/town/global/town_cool_event.txt
-npc: script/town/global/town_guide.txt
-npc: script/town/global/town_inn.txt
-npc: script/town/global/town_kafra.txt
-npc: script/town/global/town_mail_box.txt
-npc: script/town/global/town_pvp.txt
-npc: script/town/global/town_refine.txt
-npc: script/town/global/town_shop.txt
-
 
 //--------------------------------------------------------------
 // Warp Scripts
@@ -192,6 +196,3 @@ npc: script/warp/warp_job.txt
 npc: script/warp/warp_misc.txt
 npc: script/warp/warp_pvp.txt
 npc: script/warp/warp_town.txt
-
-// Ragnarok Online Alpha warps
-// npc: script/warp/misc/warp_alpha.txt

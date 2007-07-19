@@ -14,6 +14,10 @@
 Date	Added
 
 2007/07/18
+	* Enabled: Old Blue Box iRO Quest by default [Tsuyuki]
+	* Removed: Ragnarok Online Alpha warps [Tsuyuki]
+	* Changed: Script folder structure slightly [Tsuyuki]
+	* Updated: Configuration files a little bit [Tsuyuki]
 	* Updated: Project to jAthena 2311 (Latest) [Tsuyuki]
 
 2007/07/17

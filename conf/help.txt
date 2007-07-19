@@ -173,10 +173,10 @@ To use one command, type it inside the message window where you usually type to 
 	Blacksmith                      1019 = Elemental Change : Wind
 	 1012 = Unfair Trick           Rogue
 	 1013 = Greed                   1005 = Close Confine
-	ハンター                        Alchemist
-	 1012 = フェイクゼニー           238 = Bio Ethics
-	アサシン                       Bard
-	 1012 = フェイクゼニー          1010 = Pang Voice
+	Blacksmith                     Alchemist
+	 1012 = Unfair Trick            238 = Bio Ethics
+	Blacksmith                     Bard
+	 1012 = Unfair Trick            1010 = Pang Voice
 	Crusader                       Dancer
 	 1002 = Shrink                  1011 = Wink of Charm
 
@@ -273,22 +273,23 @@ resetstate
 @mailbox --- Opens your mailbox.
 
 @readvars <variable_name> <name> ---- Displays specified variable.
-                              Can only read variable previously displayed in a script.
-                              If a character / if the variable is an account or continual variable, if you do not use a name, your character name will be used. Otherwise, the inputted name will be used.
+                              Can only read a variable previously set in a script.
+                              If a character / if the variable is an account or continual variable, if you do not use a name, your character name will be used. Otherwise, the input name will be used.
                               If a map / if it is a continual variable｡｢name is unneccesary
                               If it is a script dependant variable, enter the NPC's name in the name (required)
                               It is impossible to designate a variable reliant on a function.
 
 @writevars <variable_name> <Value> <name> --- Set specified variable with the value.
-                              以下同上
-                              また、値を"で囲むと"で囲まれた部分を文字列として認識します
-                              これにより半角スペースを含む文字列も書き込むことが可能です
-                              ただしこの場合 "記号は \"、\記号は \\として表記します (refer to doc/script_ref.txt)
-
-	Example: @readvars @val -> 自分の持つキャラ一時変数@valの値を表示する
-	         @readvars 'count$[3] Test -> TestというNPCが持つスクリプト依存変数'count$の要素番号3の文字列を表示する
-	         @writevars $num 30 -> マップ永続変数$numの値を30に変更する
-	         @writevars @str$ "X Y" ABCD -> ABCDというキャラクターのキャラ一時変数@str$を文字列 X Y に変更する
+                              Can only set a variable previously set in a script.
+                              If a character / if the variable is an account or continual variable, if you do not use a name, your character name will be used. Otherwise, the input name will be used.
+                              If a map / if it is a continual variable｡｢name is unneccesary
+                              If it is a script dependant variable, enter the NPC's name in the name (required)
+                              It is impossible to designate a variable reliant on a function.
+		                      
+	Example: @readvars @val -> Displays the temporary variable @val assigned to your character.
+	         @readvars 'count$[3] Test -> Displays the NPC array variable slot 'count$[3] belonging to the NPC 'Test'.
+	         @writevars $num 30 -> Writes the value 30 to the global permanent variable $num
+	         @writevars @str$ "X Y" ABCD -> Writes the string "X Y" to the temporary string variable @str$ belonging to the character 'ABCD'.
 
 @cloneskill <skill_id> [level=maximum]  ---- The specified skill is cloned and memorised (if it's possible).
 @cloneskill2 <skill_id> [level=maximum] ---- The specified skill is memorized.

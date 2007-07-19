@@ -100,10 +100,10 @@ To use one command, type it inside the message window where you usually type to 
 	Blacksmith                      1019 = Elemental Change : Wind
 	 1012 = Unfair Trick           Rogue
 	 1013 = Greed                   1005 = Close Confine
-	ハンター                        Alchemist
-	 1012 = フェイクゼニー           238 = Bio Ethics
-	アサシン                       Bard
-	 1012 = フェイクゼニー          1010 = Pang Voice
+	Blacksmith                     Alchemist
+	 1012 = Unfair Trick            238 = Bio Ethics
+	Blacksmith                     Bard
+	 1012 = Unfair Trick            1010 = Pang Voice
 	Crusader                       Dancer
 	 1002 = Shrink                  1011 = Wink of Charm
 
