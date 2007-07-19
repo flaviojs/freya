@@ -1,8 +1,8 @@
 #!/sh
-# Freya Phaeton starting script by rowla
+# Aurora Linux Start Shell Script
 
 # chkconfig: 345 99 01
-# description: start and stop Phaeton service
+# description: Start and stop Aurora service
 
 PATH=./:$PATH
 
@@ -21,14 +21,11 @@ M_SRV_C6=./conf/grf-files.txt
 
 print_start() {
 #	more << EOF
-echo "Phaeton Starting..."
-echo "			(c) 2007 Freya Project."
-echo "			URL:http://ro-freya.net/"
+echo "Aurora Starting..."
+echo "			(c) 2007 Deltaanime/jAthena Project."
+echo "			URL:http://aurora.deltaanime.net/"
 echo ""
-echo "Debug information will appear,"
-echo "since this is a test release."
-echo ""
-echo "checking..."
+echo "Checking..."
 #EOF
 }
 
@@ -134,7 +131,7 @@ check_files() {
 
 #	more << EOF
 echo "Check done."
-echo "Looks good, have a nice Phaeton!"
+echo "Looks good, have a nice Aurora!"
 #EOF
 }
 
@@ -181,9 +178,9 @@ case $1 in
 #			exec nice -n -20 ${M_SRV} ${M_SRV_C} ${M_SRV_C2} ${M_SRV_C3} ${M_SRV_C4} ${M_SRV_C5} ${M_SRV_C6}&
 			exec ${M_SRV} ${M_SRV_C} ${M_SRV_C2} ${M_SRV_C3} ${M_SRV_C4} ${M_SRV_C5} ${M_SRV_C6}&
 
-			echo "Now started Phaeton."
+			echo "Now starting Aurora."
 		else
-			echo "Phaeton is already running..."
+			echo "Aurora is already running..."
 		fi
 ;;
 	'stop')

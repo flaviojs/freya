@@ -1,12 +1,12 @@
 #!/sh
 
-# Phaeton Launcher Script
+# Aurora Launcher Script
 #
 #  [USAGE] ./start
 #
-#  既にPhaetonを起動した状態では実行しないで下さい。
+#  既にAuroraを起動した状態では実行しないで下さい。
 #  サーバーの状態を確認するスクリプトが動作するので、シェルに戻りません。
-#  Phaetonを止めたいときは Ctrl+C で終了してください。
+#  Auroraを止めたいときは Ctrl+C で終了してください。
 #　
 #  もしくは ./start & としてバックグラウンドで起動すると
 #  シェルに戻ってきますが、サーバーの停止が少し面倒です。
@@ -45,7 +45,7 @@ process_check() {
 }
 
 if [ `process_check` -ne 0 ]; then
-	echo "Phaeton is already running..."
+	echo "Aurora is already running..."
 else
 	./athena-start start
 	sleep 30
