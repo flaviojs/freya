@@ -93,7 +93,7 @@ function	script	F_KafraMain	{
 			mes "Welcome to the";
 			mes "Kafra Corporartion.";
 			mes "The Kafra services";
-			mes "are always on your side.";
+			mes "are always by your side.";
 			mes "How may I assist you?";
 			switch(getarg(0)) {
 			case 0:
@@ -135,9 +135,9 @@ function	script	F_KafraMain	{
 			mes "in the Schwartzwald Republic.";
 			next;
 			mes "[Kafra Employee]";
-			mes "We ask that you please";
+			mes "We ask you to";
 			mes "use the Airship Service";
-			mes "instead, Thank you for your";
+			mes "instead, thanks for your";
 			mes "understanding and cooperation.";
 			return;
 		}
@@ -145,7 +145,7 @@ function	script	F_KafraMain	{
 		// Only when the function calls for the first time, setarray is done.
 		if ('placename$[0] == "") {
 			setarray 'placename$,	"Prontera","Izlude","Geffen","Payon","Morroc","Albelta",
-						"Orc dungeon","Aldebaran","Coal Mine (Dead Pit)","Comodo","Pharos Lighthouse island",
+						"Orc Dungeon","Aldebaran","Coal Mine (Dead Pit)","Comodo","Pharos Lighthouse island",
 						"Comodo Pharos Lighthouse","Yuno","Prontera","Geffen","Payon","Aldebaran",
 						"Reserved 1","Reserved 2","Reserved 3";
 		}
@@ -212,7 +212,7 @@ function	script	F_KafraMain	{
 			return;
 		}
 		mes "[Kafra Employee]";
-		mes "The Cart Fee is " +getarg(9)+ " Zenys.";
+		mes "The Cart Fee is " +getarg(9)+ " Zeny.";
 		mes "In addition, 'Pushcart' skill is required to use a Cart.";
 		//mes "";
 		mes "The Cart cannot be used if you don't have this skill and the money is nevertheless taken.";
@@ -222,13 +222,13 @@ function	script	F_KafraMain	{
 		if (select("Rent a Cart.","Cancel.")==2) {
 			mes "[Kafra Employee]";
 			mes "Ok. No problem.";
-			mes "It will be for a next time. ";
+			mes "It will be for the next time.";
 			return;
 		}
 		if (Zeny<getarg(9)) {
 			mes "[Kafra Employee]";
-			mes "Sorry, but you don't have enough Money.";
-			mes "The Fee to use a Cart is " +getarg(9)+ " Zenys.";
+			mes "Sorry, but you don't have enough money.";
+			mes "The Fee to use a Cart is " +getarg(9)+ " Zeny.";
 			return;
 		}
 		set Zeny,Zeny-getarg(9);
@@ -243,9 +243,9 @@ function	script	F_KafraMain	{
 		//mes "";
 		next;
 		mes "[Kafra Employee]";
-		mes "The Kafra points can be exchanged for the prize at head office of Kafra services.";
+		mes "The Kafra points can be exchanged for the prize at the head office of Kafra services.";
 		//mes "";
-		mes "Also in the future you ask Kafra services to have more Kafra points.";
+		mes "Also in future use Kafra services to gain more Kafra points.";
 		//mes "";
 		return;
 	}
@@ -274,7 +274,7 @@ function	script	F_KafraMain	{
 	}
 	sF_KafraSpeech getarg(0);
 	setarray '@serv$,"Set your respawn point","Use storage","Use Teleport Service",
-				"Rent a Cart","Kafra Points information.","Kafra location on map";
+				"Rent a Cart","Kafra Points information","Kafra location on map";
 	for(set '@i,0; '@i<7; set '@i,'@i+1) {
 		if (getarg(1)&(1<<'@i) == 0)
 			set '@serv$['@i],"";	// If the bit flag of SelectNum is not set, we remove the menu
@@ -320,13 +320,13 @@ function	script	F_KafraMain	{
 function	script	F_KafraStorage	{
 	if (basicskillcheck() && getskilllv(1)<6) {
 		mes "[Kafra Employee]";
-		mes "I am sorry but you must have at least basic skill level 6 if you want to use the Storage.";
+		mes "I am sorry, but you must have at least basic skill level 6 if you want to use the Storage.";
 		//mes "";
 	}
 	else if (Zeny<getarg(0)) {
 		mes "[Kafra Employee]";
 		mes "Sorry, but you don't have enough Money.";
-		mes "The Fee to use a Storage is " +getarg(0)+ " Zenys.";
+		mes "The Fee to use a Storage is " +getarg(0)+ " Zeny.";
 	}
 	else {
 		set Zeny,Zeny-getarg(0);
@@ -1030,7 +1030,7 @@ prontera.gat,248,42,0	script	Kafra Employee	116,{
 		mes "Welcome to the";
 		mes "Kafra Corportation,";
 		mes "where the service is";
-		mes "always on your side~";
+		mes "always by your side~";
 		next;
 		mes "[Kafra Employee]";
 		mes "As you can see, the";
@@ -1279,7 +1279,7 @@ M_Menu:
 
 	sL_LowPts1:
 		mes "[Kafra]";
-		mes "I'm sorry but you do not have enough reserve points for that selection.";
+		mes "I'm sorry, but you do not have enough reserve points for that selection.";
 		goto M_Menu;
 
 	M_2:
@@ -1363,7 +1363,7 @@ M_Menu:
 
 		sL_LowPts2:
 			mes "[Kafra]";
-			mes "I'm sorry but you do not have enough reserve points for that selection.";
+			mes "I'm sorry, but you do not have enough reserve points for that selection.";
 			next;
 			goto M_2;
 
@@ -1414,7 +1414,7 @@ aldeba_in.gat,88,161,3	script	Kafra#05	115,{
 
 			sL_NotEnuf:
 				mes "[Kafra]";
-				mes "I'm sorry dear but you do not have enough points for this selection.";
+				mes "I'm sorry dear, but you do not have enough points for this selection.";
 				cutin "",255;
 				close;
 	M_End:
@@ -1444,7 +1444,7 @@ function	script	F_Lottery	{
 	mes "Ok~ Let me check the results~ guess what it is?";
 	next;
 	mes "[Kafra]";
-	mes "^FF0000Lets see.... This is...!!^000000";
+	mes "^FF0000Let's see.... This is...!!^000000";
 	next;
 	if (@temp <  1) goto sL_Prize1;
 	if (@temp <  2) goto sL_Prize2;
