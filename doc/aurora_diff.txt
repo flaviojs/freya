@@ -8,10 +8,9 @@
 ---------------------------------------------------------------------------
 
 -> Atcommand Changes:
-- Added @warp duplicate of @rura.
 - Changed @jump from forced '@jump x y', to optional x and y parameters. Without x, y, a random location will be used.
 - Removed forced 'name' parameter from @monster/@monstermap commands.
-- @job/@jobchange command uses constants as well as IDs.
+- @job command uses constants as well as IDs.
 
 -> Database File Changes:
 - Databases such as OCA and OBB are located inside ./db/random/ instead of ./db/.
@@ -25,14 +24,13 @@
 - In all three servers, the 'Aurora' logo was added as the first thing printed at application startup.
 
 -> Compilation Changes:
-- Server executables are placed in the main directory, whereas in jAthena, they are placed in ./bin.
-- The ./tool folder is placed in the main directory, whereas in jAthena, it's placed in ./bin.
+- Server executables are placed in the main directory upon compilation, whereas in jAthena, they are placed in ./bin.
 
 - Source code comments are NOT translated. This would make updating the code far too messy and difficult.
 - Other than code comments, there really isn't anything that needs translating in the source.
 - All source code modifications are documented/noticed in the form of comments in the code itself.
 
-- The following source code files have modifications, the rest are untouched:
+- The following source code files have modifications, the rest are unaltered:
 -----------------------------------------------------------------------------
 - src/char/makefile
 - src/common/mmo.h
@@ -41,10 +39,10 @@
 - src/login/makefile
 - src/map/atcommand.c
 - src/map/itemdb.c
+- src/map/makefile
 - src/map/map.h
 - src/map/mob.c
 - src/map/pc.c
-
 
 ===========================================================================
 	Databases (./db)
@@ -55,11 +53,9 @@
 	- ./db/mob_skill_db.txt
 	- ./db/random/mob_bloodybranch.txt
 	- ./db/random/mob_deadbranch.txt
-	- ./db/random/mob_poringbox.txt
 	- ./db/random/item_cardalbum.txt
 
 - The item_db.txt follows jAthena, but the 'Class' script command has been replaced with 'BaseJob' in all occurrences to support the imported scripts properly. Every time the item_db.txt is updated to jAthena's, the 'Class' command will have to be re-replaced with 'BaseJob'.
-- To make merging easier with this change, the script bonuses bAddDamageClass and MonsterClassChange have the 'Class' changed with 'Type', and new const.txt entries added to support the change.
 
 -> As listed above:
 - Databases such as OCA and OBB are located inside ./db/random/ instead of ./db/.
@@ -70,21 +66,22 @@
 	NPC Scripts (./npc)
 ---------------------------------------------------------------------------
 
-- Almost all scripts have been imported from English emulators, with the exception of the following from jAthena:
+- Almost all scripts have been imported from English emulators. We currently only use and update one file from jAthena's scripts:
 
 	- ./script/misc/misc_mapflag.txt [Translated]
-	- ./script/gvg/ (Entire folder) [Translated]
-	- ./script/town/extra/town_kafra.txt [Translated]
-	- ./script/job/job_transcendence.txt [Translated/Modified]
-	- ./script/quest/juperos.txt [Translated]
 
 ===========================================================================
 	Configuration (./conf)
 ---------------------------------------------------------------------------
 
+- Changed all @commands with GM level 0 required to GM level 1.
+- Added @warp duplicate of @rura.
+- Added @job duplicate of @jobchange.
+- Added @lvlup/@baselvlup duplicates of @lvup.
+- Added @guildlvlup duplicate of @guildlvup.
+- Added @joblvlup duplicate of @joblvup.
 - ./conf/help.txt files contain @command changes.
 - In ./conf/GM_account.txt, account ID 2000001 is set to GM level 99 by default.
-- ./conf/atcommand_athena.conf has a lot of changes.. not entirely sure on the details.
 - In ./conf/map_athena.conf, read_map_from_cache is set to active at '2'. Normal jAthena is set to '0', inactive.
 - In ./conf/map_athena.conf, the map_cache_file option is set to ./db/mapinfo.txt instead of ./db/map.info.
 
@@ -99,14 +96,12 @@
 	Misc Changes
 ---------------------------------------------------------------------------
 
-- The './dev' folder and its contents do not exist in jAthena.
 - There is no LICENCE_JA file in Aurora, instead there is just License.txt.
 - The 'Readme' changelog is stored in ./doc as 'Readme.txt' instead of in the main folder.
 - This documentation file, './doc/aurora_diff.txt' does not exist in jAthena.
 - The '.doc/effect_list.txt' documentation file does not exist in jAthena.
-- The './doc/script_conv_notes.txt' does not exist in jAthena.
+- The './doc/aurora_script.txt' documentation file does not exist in jAthena.
 - The Changelog.txt file in the main folder does not exist in jAthena, they use the 'Readme' file as their Changelog.
-- Aurora's 'vc07_make.bat' and 'vc07_clean.bat' scripts do not exist in jAthena.
 - The ./tool/translate folder is a translation system for Aurora that does not exist in jAthena.
 - The win32_start.bat batch launcher has been modified to work better.
-- All files use DOS (Win32) line endings.
+- All files currently use DOS (Win32) line endings.
