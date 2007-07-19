@@ -428,22 +428,6 @@ int clif_send_sub(struct block_list *bl, va_list ap) {
 	nullpo_retr(0, (src_bl = va_arg(ap, struct block_list*)));
 	type = va_arg(ap, int);
 
-	// fix players seeing damage with sclientinfo.xml exploit
-	if(map[bl->m].flag.gvg && sd->GM_level < 60) {		// gm >= 60 can see damages
-		switch(WPACKETW( 0)) {
-			case 0x8a:
-				WPACKETW(22) = 1;
-				WPACKETW(27) = 1;
-				break;
-			case 0x1de:
-				WPACKETL(24) = 1;
-				break;
-			case 0x115:
-				WPACKETW(28) = 1;
-				break;
-		}
-	}
-
 	switch(type) {
 	case AREA_WOS:
 		if (bl == src_bl)
@@ -3670,11 +3654,16 @@ int clif_damage(struct block_list *src, struct block_list *dst, unsigned int tic
 		if (type != 4 && !map[dst->m].flag.gvg && (sc_data[SC_ENDURE].timer != -1 ||
 			sc_data[SC_CONCENTRATION].timer != -1 || sc_data[SC_BERSERK].timer != -1))
 			type = 9;
-		if (sc_data[SC_HALLUCINATION].timer != -1) {
-			if (damage > 0)
-				damage = damage * (5+sc_data[SC_HALLUCINATION].val1) + rand() % 100;
-			if (damage2 > 0)
-				damage2 = damage2 * (5+sc_data[SC_HALLUCINATION].val1) + rand() % 100;
+		if(map[dst->m].flag.gvg) {
+			damage = 1;
+			damage2 = 1;
+		} else {
+			if (sc_data[SC_HALLUCINATION].timer != -1) {
+				if (damage > 0)
+					damage = damage * (5+sc_data[SC_HALLUCINATION].val1) + rand() % 100;
+				if (damage2 > 0)
+					damage2 = damage2 * (5+sc_data[SC_HALLUCINATION].val1) + rand() % 100;
+			}
 		}
 	}
 
@@ -4364,8 +4353,12 @@ int clif_skill_damage(struct block_list *src, struct block_list *dst,
 		if (type != 5 && !map[dst->m].flag.gvg && (sc_data[SC_ENDURE].timer != -1 ||
 			sc_data[SC_CONCENTRATION].timer != -1 || sc_data[SC_BERSERK].timer != -1))
 			type = 9;
-		if (sc_data[SC_HALLUCINATION].timer != -1 && damage > 0)
-			damage = damage * (5+sc_data[SC_HALLUCINATION].val1) + rand() % 100;
+		if(map[dst->m].flag.gvg) {
+			damage = 1;
+		} else {
+			if (sc_data[SC_HALLUCINATION].timer != -1 && damage > 0)
+				damage = damage * (5+sc_data[SC_HALLUCINATION].val1) + rand() % 100;
+		}
 	}
 
 	WPACKETW( 0) = 0x1de;

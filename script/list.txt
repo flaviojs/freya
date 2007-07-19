@@ -57,9 +57,6 @@ water_height: script/server/mapflag/water_height.txt
 // PCLoadMapEvent, script which is activated for every player when changing maps
 // npc: script/server/PCLoadMapEvent.txt
 
-// Devel Effect Testing Script
-// npc: script/server/server_test_effect.txt
-
 
 //--------------------------------------------------------------
 // Custom Scripts
@@ -95,6 +92,21 @@ water_height: script/server/mapflag/water_height.txt
 // npc: script/event/event_valentines_day.txt
 // npc: script/event/event_white_day.txt
 // npc: script/event/event_xmas.txt
+
+
+//--------------------------------------------------------------
+// Global Town Scripts
+//--------------------------------------------------------------
+
+npc: script/global/global_airship.txt
+npc: script/global/global_bulletin_board.txt
+npc: script/global/global_cool_event.txt
+npc: script/global/global_guide.txt
+npc: script/global/global_kafra.txt
+npc: script/global/global_mail_box.txt
+npc: script/global/global_pvp.txt
+npc: script/global/global_refine.txt
+npc: script/global/global_shop.txt
 
 
 //--------------------------------------------------------------
@@ -152,7 +164,6 @@ npc: script/gvg/prtg/prtg_guardians.txt
 //--------------------------------------------------------------
 
 // Job Quest Functions
-// -> JOB QUESTS WILL NOT WORK IF REMOVED!
 npc: script/job/job_function/Jfunc1-1.txt
 npc: script/job/job_function/Jfunc2-1.txt
 npc: script/job/job_function/Jfunc2-2.txt
@@ -187,7 +198,6 @@ npc: script/job/job_rogue.txt
 npc: script/job/job_sage.txt
 
 // Transcendence Job Quests Main File
-// -> TRANSCENDENCE QUESTS WILL NOT WORK IF REMOVED!
 npc: script/job/job_transcendence.txt
 
 // Transcendent Class Job Quests (2-1-1)
@@ -213,9 +223,8 @@ npc: script/job/job_gunslinger.txt
 npc: script/job/job_ninja.txt
 
 // Expanded Class Job Quests (2-1)
-// -> Classes are still incomplete
-// npc: script/job/job_star_gladiator.txt
-// npc: script/job/job_soul_linker.txt
+npc: script/job/job_star_gladiator.txt
+npc: script/job/job_soul_linker.txt
 
 
 //--------------------------------------------------------------
@@ -295,22 +304,11 @@ npc: script/town/town_rachel.txt
 npc: script/town/town_umbala.txt
 npc: script/town/town_veins.txt
 
-npc: script/town/global/town_airship.txt
-npc: script/town/global/town_bulletin_board.txt
-npc: script/town/global/town_cool_event.txt
-npc: script/town/global/town_guide.txt
-npc: script/town/global/town_kafra.txt
-npc: script/town/global/town_mail_box.txt
-npc: script/town/global/town_pvp.txt
-npc: script/town/global/town_refine.txt
-npc: script/town/global/town_shop.txt
-
 
 //--------------------------------------------------------------
 // Warp Points
 //--------------------------------------------------------------
 
-npc: script/warp/warp_disabled.txt
 npc: script/warp/warp_dungeon.txt
 npc: script/warp/warp_field.txt
 npc: script/warp/warp_gvg.txt
@@ -318,27 +316,3 @@ npc: script/warp/warp_job.txt
 npc: script/warp/warp_misc.txt
 npc: script/warp/warp_pvp.txt
 npc: script/warp/warp_town.txt
-
-// Ragnarok Online Alpha warps
-// npc: script/warp/warp_alpha.txt
-
-
-//--------------------------------------------------------------
-// Non-kRO Scripts
-//--------------------------------------------------------------
-
-// Novice Guild Wars (No known proof of existance in kRO)
-// npc: script/gvg/nguild/nguild_ev_agit.txt
-// npc: script/gvg/nguild/nguild_flags.txt
-// npc: script/gvg/nguild/nguild_managers.txt
-// npc: script/gvg/nguild/nguild_kafras.txt
-// npc: script/gvg/nguild/nguild_dunsw.txt
-// npc: script/gvg/nguild/nguild_treas.txt
-// npc: script/gvg/nguild/nguild_guardians.txt
-// npc: script/gvg/nguild/nguild_warper.txt
-
-// Old Blue Box Quest (Implemented in iRO, but not in kRO)
-// npc: script/quest/quest_old_blue_box.txt
-
-// Nightmare Mode PvP Spawns (Nightmare Mode PvP removed from kRO)
-// npc: script/mob/mob_pvp.txt
