@@ -3488,8 +3488,8 @@ int status_get_dmotion(struct block_list *bl)
 
 	if(bl->type==BL_MOB && (struct mob_data *)bl){
 		ret=mob_db[((struct mob_data *)bl)->class].dmotion;
-		if(battle_config.monster_damage_delay_rate != 100)
-			ret = ret*battle_config.monster_damage_delay_rate/100;
+//		if(battle_config.monster_damage_delay_rate != 100)
+//			ret = ret*battle_config.monster_damage_delay_rate/100;
 	}
 	else if(bl->type==BL_PC) {
 		struct map_session_data *sd = (struct map_session_data *)bl;
@@ -3498,8 +3498,8 @@ int status_get_dmotion(struct block_list *bl)
 				ret = 0;
 			} else {
 				ret = sd->dmotion;
-				if(battle_config.pc_damage_delay_rate != 100)
-					ret = ret*battle_config.pc_damage_delay_rate/100;
+//				if(battle_config.pc_damage_delay_rate != 100)
+//					ret = ret*battle_config.pc_damage_delay_rate/100;
 			}
 		}
 	}

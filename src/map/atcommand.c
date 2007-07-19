@@ -2174,18 +2174,28 @@ atcommand_monster(
 	}
 
 	for (i = 0; i < number; i++) {
-		int mx = 0, my = 0;
+		int mx = 0, my = 0,wcount=10;
+
 		if (on_map) {
-			mx = atn_rand() % (map[sd->bl.m].xs - 2) + 1;
-			my = atn_rand() % (map[sd->bl.m].ys - 2) + 1;
+			wcount=100;
+			do{
+				mx = atn_rand() % (map[sd->bl.m].xs - 2) + 1;
+				my = atn_rand() % (map[sd->bl.m].ys - 2) + 1;
+				wcount-=1;
+			}while(map_getcell(sd->bl.m,mx,my,CELL_CHKNOPASS) && wcount>0);
 		} else {
-			if (x <= 0)
-				mx = sd->bl.x + (atn_rand() % 10 - 5);
-			else
+			do{
+				mx = sd->bl.x + (atn_rand() % wcount - wcount/2);
+				my = sd->bl.y + (atn_rand() % wcount - wcount/2);
+				wcount-=1;
+			}while(map_getcell(sd->bl.m,mx,my,CELL_CHKNOPASS) && wcount>0 && x <= 0 && y <= 0);
+			if(wcount==0) {
+				mx = sd->bl.x;
+				my = sd->bl.y;
+			}
+			if (x > 0)
 				mx = x;
-			if (y <= 0)
-				my = sd->bl.y + (atn_rand() % 10 - 5);
-			else
+			if (y > 0)
 				my = y;
 		}
 		count += (mob_once_spawn(sd, "this", mx, my, mob_db[mob_id].jname, mob_id, 1, "") != 0) ? 1 : 0;

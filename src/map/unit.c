@@ -696,6 +696,7 @@ int unit_stop_walking(struct block_list *bl,int type)
 	struct mob_data         *md = NULL;
 	struct homun_data       *hd = NULL;
 	struct unit_data        *ud = NULL;
+	int hitstop_rate=atn_rand()%100;
 	nullpo_retr(0, bl);
 
 	if( (sd = BL_DOWNCAST( BL_PC,  bl ) ) ) {
@@ -709,7 +710,7 @@ int unit_stop_walking(struct block_list *bl,int type)
 	}
 	if( ud == NULL) return 0;
 
-	if((atn_rand()%100 <= battle_config.mob_hitstop_rate && type&0x02 && ud->walktimer != -1) || !md) {
+	if((hitstop_rate <= battle_config.mob_hitstop_rate && type&0x02 && ud->walktimer != -1) || !md) {
 		ud->walkpath.path_len = 0;
 		ud->walkpath.path_pos = 0;
 		ud->to_x              = bl->x;
@@ -718,20 +719,23 @@ int unit_stop_walking(struct block_list *bl,int type)
 
 	if(ud->walktimer == -1) return 0;
 
-	if(!(md && type&0x02)) {
+	if(!(md && hitstop_rate <= battle_config.mob_hitstop_rate && type&0x02)) {
 		delete_timer(ud->walktimer, unit_walktoxy_timer);
 		ud->walktimer         = -1;
 	}
 //	if(md) { md->state.skillstate = MSS_IDLE; }
-	if(type&0x01) { // 位置補正送信が必要
+	if(type&0x01 && (!sd || battle_config.pc_hit_stop_type==0) && ud->walktimer==-1) { // 位置補正送信が必要
 		clif_fixwalkpos(bl);
 	}
 	if(type&0x02) { // ダメージ食らう
 		unsigned int tick = gettick();
 		int delay = status_get_dmotion(bl);
-		if( (sd && battle_config.pc_damage_delay) || (md && battle_config.monster_damage_delay) ) {
-			ud->canmove_tick = tick + delay;
-		}
+		if(sd && battle_config.pc_damage_delay_rate!=100)
+			ud->canmove_tick = tick + delay*battle_config.pc_damage_delay_rate/100;
+		else if(md && battle_config.monster_damage_delay_rate!=100)
+			ud->canmove_tick = tick + delay*battle_config.monster_damage_delay_rate/100;
+		else if(hd && battle_config.pc_damage_delay_rate!=100)
+			ud->canmove_tick = tick + delay*battle_config.pc_damage_delay_rate/100;
 	}
 	if(type&0x04 && md) {
 		int dx=ud->to_x-md->bl.x;
@@ -898,7 +902,7 @@ int unit_skilluse_id2(struct block_list *src, int target_id, int skill_num, int 
 			break;
 	}
 
-	if(skill_num != SA_MAGICROD)
+	if(skill_num != SA_MAGICROD && !src_md)
 		delay=skill_delayfix(src, skill_get_delay( skill_num,skill_lv), skill_get_cast( skill_num,skill_lv) );
 	src_ud->state.skillcastcancel = castcancel;
 
@@ -1068,8 +1072,20 @@ int unit_skilluse_id2(struct block_list *src, int target_id, int skill_num, int 
 	if( casttime<=0 )	/* 詠唱の無いものはキャンセルされない */
 		src_ud->state.skillcastcancel=0;
 
-	src_ud->canact_tick  = tick + casttime + delay;
-	src_ud->canmove_tick = tick;
+	if(!src_md) {
+		src_ud->canact_tick  = tick + casttime + delay;
+		src_ud->canmove_tick = tick;
+	} else {
+		if(skill_num != NPC_EMOTION && skill_num != NPC_SELFDESTRUCTION && skill_num !=NPC_SELFDESTRUCTION2 && skill_num != NPC_RUNAWAY) {
+			if(status_get_amotion(src) < status_get_adelay(src)) {
+				src_ud->canact_tick = tick + casttime + status_get_amotion(src);
+				src_ud->canmove_tick = tick + status_get_amotion(src);
+			} else {
+				src_ud->canact_tick = tick + casttime + status_get_adelay(src);
+				src_ud->canmove_tick = tick + status_get_adelay(src);
+			}
+		}
+	}
 	src_ud->skilltarget  = target_id;
 	src_ud->skillx       = 0;
 	src_ud->skilly       = 0;
@@ -1215,7 +1231,8 @@ int unit_skilluse_pos2( struct block_list *src, int skill_x, int skill_y, int sk
 
 	unit_stopattack(src);
 
-	delay=skill_delayfix(src, skill_get_delay( skill_num,skill_lv), skill_get_cast( skill_num,skill_lv) );
+	if(!src_md)
+		delay=skill_delayfix(src, skill_get_delay( skill_num,skill_lv), skill_get_cast( skill_num,skill_lv) );
 	src_ud->state.skillcastcancel = castcancel;
 
 	if(battle_config.pc_skill_log)
@@ -1249,8 +1266,18 @@ int unit_skilluse_pos2( struct block_list *src, int skill_x, int skill_y, int sk
 		src_ud->state.skillcastcancel=0;
 
 	tick=gettick();
-	src_ud->canact_tick  = tick + casttime + delay;
-	src_ud->canmove_tick = tick;
+	if(!src_md) {
+		src_ud->canact_tick  = tick + casttime + delay;
+		src_ud->canmove_tick = tick;
+	} else {
+		if(status_get_amotion(src) < status_get_adelay(src)) {
+			src_ud->canact_tick = tick + casttime + status_get_amotion(src);
+			src_ud->canmove_tick = tick + status_get_amotion(src);
+		} else {
+			src_ud->canact_tick = tick  + casttime + status_get_adelay(src);
+			src_ud->canmove_tick = tick + status_get_adelay(src);
+		}
+	}
 	src_ud->skillid      = skill_num;
 	src_ud->skilllv      = skill_lv;
 	src_ud->skillx       = skill_x;
@@ -2012,7 +2039,7 @@ int unit_remove_map(struct block_list *bl, int clrtype, int flag)
 			clif_clearchar_delay(gettick()+3000,&md->bl,0);
 		}
 		mob_ai_hard_spawn( &md->bl, 0 );
-		if(!battle_config.monster_damage_delay || battle_config.monster_damage_delay_rate == 0)
+		if(battle_config.monster_damage_delay_rate == 0)
 			mob_deleteslave(md);
 
 		if( md->ai_pc_count != 0 || md->ai_prev != NULL || md->ai_next != NULL ) {

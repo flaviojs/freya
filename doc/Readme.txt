@@ -1,4 +1,41 @@
 ----------------------------------------
+//2311 by ICO
+・Azule Flameの日記を参考に、ベインスパッチ以降のNPCスキルのid、名前を追加
+　及び元のデータを修正(thx Blaze! from Azule Flame)
+	(skill_db.txt)
+・スキル｢カウプ｣にプレッシャー以外の回避不能スキルがある不都合を修正
+	(battle.c)
+・スキル｢カイト｣で範囲魔法を反射できない不都合を修正
+	(battle.c)
+・スキル｢ソウルブレイカー｣にカタール研究の効果が乗っている不都合を修正
+	(battle.c)
+・NPCスキル｢喫煙｣でダメージが発生する不都合を修正
+	(skill_db.txt,battle.c,skill.c)
+・gx_dupeleがyesのとき、聖属性のMobにスキル｢グランドクロス｣のダメージが通る不都合を修正(thx C! from BTS.ID_346)
+	(battle.c)
+・bAddSkillHealRateで回復量を増やすことができるスキルの数を増加(サンクチュアリなど)
+	(battle.c,skill.c)
+・歩行中にPCがスキルを詠唱した時に位置補正情報が送られる不都合を修正
+	(unit.c)
+・Mobはスキル固有のディレイを無視するように修正
+	(unit.c)
+・Mobがスキルを使用した際、攻撃モーションの値分移動停止するように修正
+	(unit.c)
+・player_damage_delayといったconfの設定に関係なく、dmotionの値が一定になるように修正
+　それに伴いbattle_athena.confのplayer_damage_delay、monster_damage_delayを削除
+	(status.c,battle_athena.conf)
+・pc_hit_stop_typeの仕様を変更
+　ダメージディレイの有無でなく、位置補正情報の有無を設定できるようになります
+	(battle.c,pc.c,homun.c,unit.c)
+・player_damage_delay_rate、monster_damage_delay_rateの初期値を0に変更
+	(battle_athena.conf)
+・@monster,@monstermapでMobがスタックすると召喚に失敗する不都合を修正
+	(atcommand.c)
+・2303でhelp.txtの@questskillの記述を修正し忘れたため再修正
+　2306でhelp3.txtに入ったゴミを削除
+	(help.txt,help3.txt)
+
+----------------------------------------
 //2310 by Blaze
 
 ・ラヘル実装
