@@ -83,7 +83,6 @@
 - ./conf/help.txt files contain @command changes.
 - In ./conf/GM_account.txt, account ID 2000001 is set to GM level 99 by default.
 - In ./conf/map_athena.conf, read_map_from_cache is set to active at '2'. Normal jAthena is set to '0', inactive.
-- In ./conf/map_athena.conf, the map_cache_file option is set to ./db/mapinfo.txt instead of ./db/map.info.
 
 ===========================================================================
 	Saved Data (./save)
