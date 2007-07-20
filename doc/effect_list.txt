@@ -2,8 +2,11 @@
 ==========================================================================
 			Aurora Effect List Reference
 --------------------------------------------------------------------------
---------------------------------------------------------------------------
 
+
+==========================================================================
+	Effect List
+--------------------------------------------------------------------------
 
 ID	Description				Aegis Enumeration
 
@@ -668,7 +671,7 @@ ID	Description				Aegis Enumeration
 655.	Change Undead effect start
 656.	Change Undead effect end
 
--> Past this point information is fully updated..
+-> Past this point information is not fully updated..
 
 657.	(Unused)
 658.	(Unused)

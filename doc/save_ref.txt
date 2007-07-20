@@ -1,10 +1,12 @@
 ==========================================================================
- Athena dev 2.1.1 save reference
---------------------------------------------------------------------------
- Translation by Darkraven.
+==========================================================================
+			TXT Database Save Reference
 --------------------------------------------------------------------------
 
-< Description of this document >
+
+==========================================================================
+	Description Of Documentation File
+--------------------------------------------------------------------------
 
  It is a reference of the saving files of Athena.
  You can change the path and the name of saving files in inter_athena.conf.
@@ -17,8 +19,9 @@ map_extra.txt  Extra system
 
 
 ==========================================================================
-1. save/castle.txt
+	1. save/castle.txt
 --------------------------------------------------------------------------
+
 CastleID,GuildID,Economy,Defense,TriggerE,TriggerD,NextTime,PayTime,CreateTime,VisibleC,VisibleG0,1,2,3,4,5,6,7
 
 CastleID      : ID of castle. The relation between the castle ID and the castle name is set up inside the castle_db.txt file.
@@ -36,8 +39,9 @@ VisibleG[0-7] : Define if each guardian is present or not?  (0: no, 1: yes).
 
 
 ==========================================================================
-2. save/map_extra.txt
+	2. save/map_extra.txt
 --------------------------------------------------------------------------
+
 It is a system to give/remove zenys or items to a character with a text file.
 It can perform operations on zenys or items without an administrator logs into the game.
 You can choose if you activate it or not by the extra_system_flag option of the battle_athena.conf file.
@@ -66,6 +70,7 @@ Name   : Character name.
 	         512,2,Test_name2
 	           Give 2 apples to the character named Test_name2.
 
+
 ==========================================================================
-EOF
+ EOF
 --------------------------------------------------------------------------

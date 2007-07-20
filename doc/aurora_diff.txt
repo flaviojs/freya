@@ -3,6 +3,7 @@
 			Aurora and jAthena Differences
 ---------------------------------------------------------------------------
 
+
 ===========================================================================
 	Source Code (./src)
 ---------------------------------------------------------------------------
@@ -105,3 +106,8 @@
 - The ./tool/translate folder is a translation system for Aurora that does not exist in jAthena.
 - The win32_start.bat batch launcher has been modified to work better.
 - All files currently use DOS (Win32) line endings.
+
+
+==========================================================================
+ EOF
+--------------------------------------------------------------------------

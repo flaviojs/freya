@@ -1,13 +1,11 @@
 ===========================================================================
 ===========================================================================
-			LIST OF ADMINISTRATION PACKETS
----------------------------------------------------------------------------
-Translation by Darkraven.
+			List Of Administration Packets
 ---------------------------------------------------------------------------
 
 
 ===========================================================================
-	COMMON PACKETS TO ALL SERVERS
+	Common Packets To All Servers
 ---------------------------------------------------------------------------
 
 S 7530
@@ -21,7 +19,7 @@ S 7532
 	When client requests an end of connection, the server sets eof (=1) and this information is not logged.
 
 ===========================================================================
-	ADMINISTRATION PACKETS OF THE LOGIN-SERVER
+	Administration Packets Of The Login Server
 ---------------------------------------------------------------------------
 
 S 7918 <len>.w <encrypt_flag>.w <ladmin_password>.24(16)B
@@ -80,3 +78,7 @@ R 793e <flag>.w <account_id>.l <GM_level>.B <account_name>.24B <sex>.B <count>.l
 	Reply of request to obtain complete information about an account (0x793c and 0x793d).
 	flag= 0 success/1 account doesn't exist
 
+	
+==========================================================================
+ EOF
+--------------------------------------------------------------------------
