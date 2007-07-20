@@ -13,6 +13,11 @@
 
 Date	Added
 
+2007/07/20
+	* Removed: Japanese documentation files [Tsuyuki]
+	* Changed: Modified Makefile Linux MySQL library paths to more common locations [Tsuyuki]
+	* Changed: Simplified Win32 batch start script [Tsuyuki]
+
 2007/07/18
 	* Enabled: Old Blue Box iRO Quest by default [Tsuyuki]
 	* Removed: Ragnarok Online Alpha warps [Tsuyuki]
