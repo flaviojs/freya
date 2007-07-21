@@ -11,9 +11,9 @@
 //--------------------------------------------------------------
 // Revision History: v1.2
 //--------------------------------------------------------------
-//	1.0 First version, converted from Aegis (iRO 10.3) [Tsuyuki]
+//	1.0 First version, converted from Aegis [Tsuyuki]
 //	1.1 Merged in Comodo Gambling, converted from Aegis by GreenGoblin [Tsuyuki]
-//	1.2 Added the Munak's Grandma Quest, converted from Aegis (iRO 10.3) [Tsuyuki]
+//	1.2 Added the Munak's Grandma Quest, converted from Aegis [Tsuyuki]
 //--------------------------------------------------------------
 // Additional Notes: * Official-certified / Aegis-certified *
 //--------------------------------------------------------------

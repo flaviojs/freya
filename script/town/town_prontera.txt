@@ -11,9 +11,9 @@
 //--------------------------------------------------------------
 // Revision History: v1.2
 //--------------------------------------------------------------
-//	1.0 First version, converted from Aegis (iRO 11.1) [Tsuyuki]
-//	1.1 Added the Gaebolg Family Curse Quest, converted from Aegis (iRO 11.1) by L0ne_W0lf [Tsuyuki]
-//	1.2 Added Prontera Library Encyclopedias/Books, converted from Aegis (iRO 11.1) by L0ne_W0lf [Tsuyuki]
+//	1.0 First version, converted from Aegis [Tsuyuki]
+//	1.1 Added the Gaebolg Family Curse Quest, converted from Aegis by L0ne_W0lf [Tsuyuki]
+//	1.2 Added Prontera Library Encyclopedias/Books, converted from Aegis by L0ne_W0lf [Tsuyuki]
 //--------------------------------------------------------------
 // Additional Notes: * Official-certified / Aegis-certified *
 //--------------------------------------------------------------

@@ -11,11 +11,10 @@
 //--------------------------------------------------------------
 // Revision History: v1.1
 //--------------------------------------------------------------
-//	1.0 First version, converted from Aegis (iRO 10.4) [L0ne_W0lf]
-//	1.1 Merged in the Super Novice Cart Renter, converted from Aegis (iRO 10.3) [Tsuyuki]
+//	1.0 First version, converted from Aegis [L0ne_W0lf]
+//	1.1 Merged in the Super Novice Cart Renter, converted from Aegis [Tsuyuki]
 //--------------------------------------------------------------
-// Additional Notes: Rentals for Peco Pecos, Grand Peco Pecos,
-// and Falcons. * Aegis-certified *
+// Additional Notes: * Official-certified / Aegis-certified *
 //--------------------------------------------------------------
 
 
