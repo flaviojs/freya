@@ -21,7 +21,7 @@
 //	1.7 Added Christmas goblins to yuno_fild09, thanks to Playtester for pointing it out [Unknown]
 //	1.8 Added a fix to make Lutie and Bard quests passable during this event [Lupus]
 //--------------------------------------------------------------
-// Additional Notes: N/A
+// Additional Notes: Activated during Xmas in official servers.
 //--------------------------------------------------------------
 
 

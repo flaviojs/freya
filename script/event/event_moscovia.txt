@@ -15,7 +15,7 @@
 //	1.1 Added custom Moscovia Town warps by Azazel [Tsuyuki]
 //	1.2 Updated Moscovia Town warps by $ephiroth [Tsuyuki]
 //--------------------------------------------------------------
-// Additional Notes: Highly incomplete
+// Additional Notes: Highly incomplete.
 //--------------------------------------------------------------
 
 

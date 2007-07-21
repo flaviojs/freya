@@ -16,8 +16,7 @@
 //	1.2 According to a new kRO patch, Ice Cream seller has been removed from Morroc [Lupus]
 //	1.3 Fixed some NPC coordinates/facing positions as per Aegis [Tsuyuki]
 //--------------------------------------------------------------
-// Additional Notes: Ice Cream seller that's activated during
-// the summer.
+// Additional Notes: Activated every summer in official servers.
 //--------------------------------------------------------------
 
 

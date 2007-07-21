@@ -24,16 +24,9 @@
 
 // Event scripts are disabled by default
 // npc: script/event/event_crystal.txt
-// npc: script/event/event_dumpling_festival.txt
-// npc: script/event/event_easter.txt
-// npc: script/event/event_french_flag.txt
 // npc: script/event/event_ice_cream.txt
-// npc: script/event/event_idul_fitri.txt
 // npc: script/event/event_moscovia.txt
 // npc: script/event/event_skill_reset.txt
-// npc: script/event/event_twin_towers.txt
-// npc: script/event/event_valentines_day.txt
-// npc: script/event/event_white_day.txt
 // npc: script/event/event_xmas.txt
 
 
@@ -106,7 +99,6 @@ npc: script/job/job_wizard.txt
 //--------------------------------------------------------------
 
 npc: script/misc/misc_auction.txt
-npc: script/misc/misc_divorce.txt
 npc: script/misc/misc_function.txt
 npc: script/misc/misc_mapflag.txt
 npc: script/misc/misc_marriage.txt
@@ -152,6 +144,7 @@ npc: script/quest/quest_skill.txt
 npc: script/quest/quest_thai_hat.txt
 npc: script/quest/quest_thanatos.txt
 npc: script/quest/quest_the_sign.txt
+npc: script/quest/quest_turtle.txt
 
 
 //--------------------------------------------------------------
