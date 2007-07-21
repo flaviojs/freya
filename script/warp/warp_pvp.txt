@@ -7,7 +7,7 @@
 //              /_/  |_|\____|_|  \___/|_|  \__,_|              
 //                 http://aurora.deltaanime.net                 
 //--------------------------------------------------------------
-// Script Title: PvP System Warps	Author: Athena/Yor
+// Script Title: PvP System Warps	Author: Athena
 //--------------------------------------------------------------
 // Revision History: v1.3
 //--------------------------------------------------------------
@@ -16,7 +16,7 @@
 //	1.2 Fixed fc103-1/fc107 warps [Yor]
 //	1.3 Fixed fc105-1/fc105 warps [Yor]
 //--------------------------------------------------------------
-// Additional Notes: Also includes Prontera Arena warps.
+// Additional Notes: * Official-certified *
 //--------------------------------------------------------------
 
 

@@ -12,9 +12,9 @@
 // Revision History: v1.1
 //--------------------------------------------------------------
 //	1.0 First version, merged together [Tsuyuki]
-//	1.1 Added additional Swordsman map monster spawns [Tsuyuki]
+//	1.1 Added duplicate Swordsman map monster spawns [Tsuyuki]
 //--------------------------------------------------------------
-// Additional Notes: N/A
+// Additional Notes: * Official-certified / Aegis-certified *
 //--------------------------------------------------------------
 
 

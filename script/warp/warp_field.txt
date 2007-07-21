@@ -15,7 +15,7 @@
 //	1.1 Updated Rachel field warps to official Aegis by Playtester [Tsuyuki]
 //	1.2 Updated Hugel field warps to official Aegis by Playtester [Tsuyuki]
 //--------------------------------------------------------------
-// Additional Notes: N/A
+// Additional Notes: * Official-certified *
 //--------------------------------------------------------------
 
 

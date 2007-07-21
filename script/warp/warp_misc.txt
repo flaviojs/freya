@@ -15,8 +15,7 @@
 //	1.1 Updated Kiel Hyre warps [Tsuyuki]
 //	1.2 Updated Kiel Hyre warps once again by L0ne_W0lf [Tsuyuki]
 //--------------------------------------------------------------
-// Additional Notes: Includes Airship, Kiel Hyre, God Seal, and
-// The Sign Quest warps.
+// Additional Notes: * Official-certified *
 //--------------------------------------------------------------
 
 

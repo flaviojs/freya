@@ -20,7 +20,7 @@
 //	1.6 Added official Aegis Ice Dungeon warps by Playtester [Tsuyuki]
 //	1.7 Added official Aegis Odin's Temple warps by Playtester [Tsuyuki]
 //--------------------------------------------------------------
-// Additional Notes: N/A
+// Additional Notes: * Official-certified *
 //--------------------------------------------------------------
 
 

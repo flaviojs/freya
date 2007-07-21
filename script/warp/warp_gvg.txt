@@ -17,8 +17,7 @@
 //	1.3 Fixed some warps positions [Yor]
 //	1.4 Changed all break commands to end commands [Skotlex]
 //--------------------------------------------------------------
-// Additional Notes: Warps for Aldebaran, Payon, Prontera and
-// Geffen Guild Castles
+// Additional Notes: * Official-certified *
 //--------------------------------------------------------------
 
 

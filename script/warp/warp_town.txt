@@ -20,7 +20,7 @@
 //	1.6 Removed a duplicate Rachel warp [Tsuyuki]
 //	1.7 Added official Aegis Rachel warps by Playtester [Tsuyuki]
 //--------------------------------------------------------------
-// Additional Notes: N/A
+// Additional Notes: * Official-certified *
 //--------------------------------------------------------------
 
 
