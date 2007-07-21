@@ -37,7 +37,37 @@
 ==========================================================================
 --------------------------------------------------------------------------
 
-- The Kunlun Power NPC is currently commented/disabled. It has array syntax errors.
+-> Scripts In Need Of Aegis Conversion:
+---------------------------------------
+
+- script/event/event_ice_cream.txt
+- script/global/global_kafra.txt
+- script/global/global_pvp.txt
+- script/global/global_refine.txt
+- script/job/job_crusader.txt
+- script/job/job_dancer.txt
+- script/job/job_monk.txt
+- script/job/job_novice.txt
+- script/job/job_rogue.txt
+- script/job/job_sage.txt
+- script/misc/misc_marriage.txt
+- script/quest/quest_headgear.txt
+- script/quest/quest_juice_maker.txt
+- script/quest/quest_old_blue_box.txt
+- script/quest/quest_pet_taming.txt
+- script/town/town_amatsu.txt
+- script/town/town_niflheim.txt
+
+--------------------------------------
+
+- script/gvg/ <- Need to import Aegis dialogue
+
+
+==========================================================================
+--------------------------------------------------------------------------
+
+- The Kunlun Power NPC is currently commented/disabled. It has array syntax errors:
+- script/town/town_kunlun.txt
 
 
 ==========================================================================
