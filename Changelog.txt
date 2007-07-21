@@ -13,6 +13,10 @@
 
 Date	Added
 
+2007/07/21
+	* Removed: Disabled warps scripts (Unofficial + Unnecessary) [Tsuyuki]
+	* Changed: Further updates to the script directory layout [Tsuyuki]
+
 2007/07/20
 	* Removed: Japanese documentation files [Tsuyuki]
 	* Changed: Modified Makefile Linux MySQL library paths to more common locations [Tsuyuki]
