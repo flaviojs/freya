@@ -22,8 +22,8 @@
 // Monk Job Change Quest Monster Spawns
 //--------------------------------------------------------------
 
-job_monk.gat,0,0,0,0	monster	Thief Mushroom	1182,170,0,0,0
-job_monk.gat,0,0,0,0	monster	Thief Bug Larva	1051,120,0,0,0
+job_monk.gat,0,0,0,0	monster	Thief Mushroom	1182,70,0,0,0
+job_monk.gat,0,0,0,0	monster	Thief Bug Larva	1051,20,0,0,0
 
 
 //--------------------------------------------------------------

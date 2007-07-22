@@ -142,7 +142,7 @@ in_rogue.gat,363,122,4	script	Rogue Guildsman	747,{
 				mes "Good! You've become a Rogue.";
 				mes "Well done!";
 				mes "Wish that you can always drop around in the future, enjoy the life freely ~";
-				callfunc "F_JobChange",job_rogue_q;
+				callfunc "F_JobChange",Job_Rogue;
 				next;
 				mes "[Markie]";
 				mes "But, bear in mind that freedom implicated to responsiblity?";
@@ -170,7 +170,7 @@ in_rogue.gat,363,122,4	script	Rogue Guildsman	747,{
 				mes "Good! You've become a Rogue.";
 				mes "Well done!";
 				mes "Wish that you can always drop around in the future, enjoy the life freely~";
-				callfunc "F_JobChange",job_rogue_q;
+				callfunc "F_JobChange",Job_Rogue;
 				next;
 				mes "[Markie]";
 				mes "But, bear in mind that freedom implicated to responsiblity?";
@@ -1624,9 +1624,9 @@ OnTouch:
 	if (Basejob == Job_Thief) {
 		monster "in_rogue.gat",200,389,"Zombie",1015,1,"gen_ro#1::OnMyMobDead";
 		monster "in_rogue.gat",201,389,"Zombie",1015,1,"gen_ro#1::OnMyMobDead";
-		doevent "gen_ro#2::OnCommandOff";
-		doevent "gen_ro#3::OnCommandOff";
-		doevent "gen_ro#4::OnCommandOff";
+		donpcevent "gen_ro#2::OnCommandOff";
+		donpcevent "gen_ro#3::OnCommandOff";
+		donpcevent "gen_ro#4::OnCommandOff";
 	} else {
 		warp "mag_dun02.gat",181,176;
 	}
@@ -1645,7 +1645,7 @@ in_rogue.gat,100,389,0	script	gen_ro#2	139,3,3,{
 OnTouch:
 	if (Basejob == Job_Thief) {
 		monster "in_rogue.gat",100,389,"Mummy",1041,1,"gen_ro#2::OnMyMobDead";
-		doevent "gen_ro#1::OnCommandOff";
+		donpcevent "gen_ro#1::OnCommandOff";
 	} else {
 		warp "mag_dun02.gat",181,176;
 	}
@@ -1665,7 +1665,7 @@ OnTouch:
 	if (Basejob == Job_Thief) {
 		monster "in_rogue.gat",145,389,"Zombie",1015,1,"gen_ro#3::OnMyMobDead";
 		monster "in_rogue.gat",143,389,"Mummy",1041,1,"gen_ro#3::OnMyMobDead";
-		doevent "gen_ro#2::OnCommandOff";
+		donpcevent "gen_ro#2::OnCommandOff";
 	} else {
 		warp "mag_dun02.gat",181,176;
 	}
@@ -1684,7 +1684,7 @@ in_rogue.gat,250,389,0	script	gen_ro#4	139,3,3,{
 OnTouch:
 	if (Basejob == Job_Thief) {
 		monster "in_rogue.gat",200,389,"Knight of Abyss",1219,1,"gen_ro#4::OnMyMobDead";
-		doevent "gen_ro#3::OnCommandOff";
+		donpcevent "gen_ro#3::OnCommandOff";
 	} else {
 		warp "mag_dun02.gat",181,176;
 	}
@@ -1701,7 +1701,7 @@ OnCommandOff:
 in_rogue.gat,9,389,0	script	oneway_to_gu	139,1,1,{
 
 OnTouch:
-	doevent "gen_ro#4::OnCommandOff";
+	donpcevent "gen_ro#4::OnCommandOff";
 	set job_rogue_q,17;
 	warp "in_rogue.gat",367,10;
 	end;
@@ -1990,9 +1990,9 @@ OnTouch:
 		monster "in_rogue.gat",15,336,"Zombie",1015,1,"mob_rogue#3::OnMyMobDead";
 		monster "in_rogue.gat",15,336,"Zombie",1015,1,"mob_rogue#3::OnMyMobDead";
 		monster "in_rogue.gat",15,336,"Zombie",1015,1,"mob_rogue#3::OnMyMobDead";
-		doevent "mob_rogue#4::OnCommandReset";
-		doevent "mob_rogue#7::OnCommandReset";
-		doevent "mob_rogue#8::OnCommandReset";
+		donpcevent "mob_rogue#4::OnCommandReset";
+		donpcevent "mob_rogue#7::OnCommandReset";
+		donpcevent "mob_rogue#8::OnCommandReset";
 	} else {
 		warp "mag_dun02.gat",181,176;
 	}
@@ -2032,9 +2032,9 @@ in_rogue.gat,102,334,0	script	mob_rogue#5	139,1,4,{
 OnTouch:
 	if (Basejob == Job_Thief) {
 		monster "in_rogue.gat",92,334,"Khalitzburg",1132,1,"mob_rogue#5::OnMyMobDead";
-		doevent "mob_rogue#1::OnCommandReset";
-		doevent "mob_rogue#2::OnCommandReset";
-		doevent "mob_rogue#3::OnCommandReset";
+		donpcevent "mob_rogue#1::OnCommandReset";
+		donpcevent "mob_rogue#2::OnCommandReset";
+		donpcevent "mob_rogue#3::OnCommandReset";
 	} else {
 		warp "mag_dun02.gat",181,176;
 	}
@@ -2053,9 +2053,9 @@ in_rogue.gat,58,309,0	script	mob_rogue#6	139,4,1,{
 OnTouch:
 	if (Basejob == Job_Thief) {
 		monster "in_rogue.gat",57,301,"Khalitzburg",1132,1,"mob_rogue#6::OnMyMobDead";
-		doevent "mob_rogue#1::OnCommandReset";
-		doevent "mob_rogue#2::OnCommandReset";
-		doevent "mob_rogue#3::OnCommandReset";
+		donpcevent "mob_rogue#1::OnCommandReset";
+		donpcevent "mob_rogue#2::OnCommandReset";
+		donpcevent "mob_rogue#3::OnCommandReset";
 	} else {
 		warp "mag_dun02.gat",181,176;
 	}
@@ -2149,9 +2149,9 @@ OnTouch:
 		monster "in_rogue.gat",179,212,"Zombie",1015,1,"mob_rogue#10::OnMyMobDead";
 		monster "in_rogue.gat",179,213,"Zombie",1015,1,"mob_rogue#10::OnMyMobDead";
 		monster "in_rogue.gat",179,214,"Zombie",1015,1,"mob_rogue#10::OnMyMobDead";
-		doevent "mob_rogue#4::OnCommandReset";
-		doevent "mob_rogue#5::OnCommandReset";
-		doevent "mob_rogue#6::OnCommandReset";
+		donpcevent "mob_rogue#4::OnCommandReset";
+		donpcevent "mob_rogue#5::OnCommandReset";
+		donpcevent "mob_rogue#6::OnCommandReset";
 	} else {
 		warp "mag_dun02.gat",181,176;
 	}
@@ -2169,10 +2169,10 @@ in_rogue.gat,96,205,0	script	mob_rogue#11	139,1,8,{
 
 OnTouch:
 	if (Basejob == Job_Thief) {
-		doevent "mob_rogue#7::OnCommandReset";
-		doevent "mob_rogue#8::OnCommandReset";
-		doevent "mob_rogue#9::OnCommandReset";
-		doevent "mob_rogue#10::OnCommandReset";
+		donpcevent "mob_rogue#7::OnCommandReset";
+		donpcevent "mob_rogue#8::OnCommandReset";
+		donpcevent "mob_rogue#9::OnCommandReset";
+		donpcevent "mob_rogue#10::OnCommandReset";
 	} else {
 		warp "mag_dun02.gat",181,176;
 	}
@@ -2206,7 +2206,7 @@ OnTouch:
 		monster "in_rogue.gat",236,186,"Absymal Knight",1219,1,"mob_rogue#13::OnMyMobDead";
 		monster "in_rogue.gat",234,186,"Absymal Knight",1219,1,"mob_rogue#13::OnMyMobDead";
 		monster "in_rogue.gat",234,186,"Absymal Knight",1219,1,"mob_rogue#13::OnMyMobDead";
-		doevent "mob_rogue#12::OnCommandReset";
+		donpcevent "mob_rogue#12::OnCommandReset";
 	} else {
 		warp "mag_dun02.gat",181,176;
 	}
@@ -2224,7 +2224,7 @@ in_rogue.gat,233,207,0	script	mob_rogue#14	139,8,3,{
 
 OnTouch:
 	if (Basejob == Job_Thief) {
-		doevent "mob_rogue#13::OnCommandReset";
+		donpcevent "mob_rogue#13::OnCommandReset";
 	} else {
 		warp "mag_dun02.gat",181,176;
 	}
@@ -2258,7 +2258,7 @@ in_rogue.gat,334,319,0	script	mob_rogue#16	139,8,8,{
 
 OnTouch:
 	if (Basejob == Job_Thief) {
-		doevent "mob_rogue#15::OnCommandReset";
+		donpcevent "mob_rogue#15::OnCommandReset";
 	} else {
 		warp "mag_dun02.gat",181,176;
 	}
@@ -2268,19 +2268,19 @@ OnTouch:
 in_rogue.gat,3,3,0	script	resetter#rogue	139,{
 
 OnTimer500000:
-	doevent "mob_rogue#1::OnCommandReset";
-	doevent "mob_rogue#2::OnCommandReset";
-	doevent "mob_rogue#3::OnCommandReset";
-	doevent "mob_rogue#4::OnCommandReset";
-	doevent "mob_rogue#5::OnCommandReset";
-	doevent "mob_rogue#6::OnCommandReset";
-	doevent "mob_rogue#7::OnCommandReset";
-	doevent "mob_rogue#8::OnCommandReset";
-	doevent "mob_rogue#9::OnCommandReset";
-	doevent "mob_rogue#10::OnCommandReset";
-	doevent "mob_rogue#12::OnCommandReset";
-	doevent "mob_rogue#13::OnCommandReset";
-	doevent "mob_rogue#15::OnCommandReset";
+	donpcevent "mob_rogue#1::OnCommandReset";
+	donpcevent "mob_rogue#2::OnCommandReset";
+	donpcevent "mob_rogue#3::OnCommandReset";
+	donpcevent "mob_rogue#4::OnCommandReset";
+	donpcevent "mob_rogue#5::OnCommandReset";
+	donpcevent "mob_rogue#6::OnCommandReset";
+	donpcevent "mob_rogue#7::OnCommandReset";
+	donpcevent "mob_rogue#8::OnCommandReset";
+	donpcevent "mob_rogue#9::OnCommandReset";
+	donpcevent "mob_rogue#10::OnCommandReset";
+	donpcevent "mob_rogue#12::OnCommandReset";
+	donpcevent "mob_rogue#13::OnCommandReset";
+	donpcevent "mob_rogue#15::OnCommandReset";
 	stopnpctimer;
 	initnpctimer;
 	end;
@@ -2290,6 +2290,6 @@ OnCommandOn:
 	end;
 
 OnInit:
-	doevent "resetter#rogue::OnCommandOn";
+	donpcevent "resetter#rogue::OnCommandOn";
 	end;
 }
