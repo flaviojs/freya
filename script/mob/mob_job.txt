@@ -7,12 +7,11 @@
 //              /_/  |_|\____|_|  \___/|_|  \__,_|              
 //                 http://aurora.deltaanime.net                 
 //--------------------------------------------------------------
-// Script Title: Job Quest Monster Spawns	Author: A Lot of People
+// Script Title: Job Quest Monster Spawns	Author: Tsuyuki
 //--------------------------------------------------------------
-// Revision History: v1.1
+// Revision History: v1.0
 //--------------------------------------------------------------
-//	1.0 First version, merged together [Tsuyuki]
-//	1.1 Added duplicate Swordsman map monster spawns [Tsuyuki]
+//	1.0 First version, converted from Aegis [Tsuyuki]
 //--------------------------------------------------------------
 // Additional Notes: * Official-certified / Aegis-certified *
 //--------------------------------------------------------------
@@ -30,11 +29,35 @@ job_monk.gat,0,0,0,0	monster	Thief Bug Larva	1051,20,0,0,0
 // Novice Training Grounds Monster Spawns
 //--------------------------------------------------------------
 
-new_zone03.gat,0,0,0,0	monster	Fabre	1184,5,0,0,0
-new_zone03.gat,0,0,0,0	monster	Poring	1002,10,0,0,0
-new_zone03.gat,0,0,0,0	monster	ChonChon	1011,10,0,0,0
-new_zone03.gat,0,0,0,0	monster	Lunatic	1063,10,0,0,0
-new_zone03.gat,0,0,0,0	monster	Drops	1113,10,0,0,0
+new_1-3.gat,0,0,0,0	monster	Fabre	1184,5,0,0,0
+new_1-3.gat,0,0,0,0	monster	Poring	1002,10,0,0,0
+new_1-3.gat,0,0,0,0	monster	Chonchon	1011,10,0,0,0
+new_1-3.gat,0,0,0,0	monster	Lunatic	1063,10,0,0,0
+new_1-3.gat,0,0,0,0	monster	Drops	1113,10,0,0,0
+
+new_2-3.gat,0,0,0,0	monster	Fabre	1184,5,0,0,0
+new_2-3.gat,0,0,0,0	monster	Condor	1009,10,0,0,0
+new_2-3.gat,0,0,0,0	monster	Picky	1050,10,0,0,0
+new_2-3.gat,0,0,0,0	monster	Willow	1010,10,0,0,0
+new_2-3.gat,0,0,0,0	monster	Roda Frog	1012,10,0,0,0
+
+new_3-3.gat,0,0,0,0	monster	Fabre	1184,5,0,0,0
+new_3-3.gat,0,0,0,0	monster	Condor	1009,10,0,0,0
+new_3-3.gat,0,0,0,0	monster	Picky	1050,10,0,0,0
+new_3-3.gat,0,0,0,0	monster	Willow	1010,10,0,0,0
+new_3-3.gat,0,0,0,0	monster	Roda Frog	1012,10,0,0,0
+
+new_4-3.gat,0,0,0,0	monster	Fabre	1184,5,0,0,0
+new_4-3.gat,0,0,0,0	monster	Rocker	1052,10,0,0,0
+new_4-3.gat,0,0,0,0	monster	Thief Bug	1051,10,0,0,0
+new_4-3.gat,0,0,0,0	monster	Thief Bug Female	1053,10,0,0,0
+new_4-3.gat,0,0,0,0	monster	Spore	1014,10,0,0,0
+
+new_5-3.gat,0,0,0,0	monster	Fabre	1184,5,0,0,0
+new_5-3.gat,0,0,0,0	monster	Rocker	1052,10,0,0,0
+new_5-3.gat,0,0,0,0	monster	Thief Bug	1051,10,0,0,0
+new_5-3.gat,0,0,0,0	monster	Thief Bug Female	1053,10,0,0,0
+new_5-3.gat,0,0,0,0	monster	Spore	1014,10,0,0,0
 
 
 //--------------------------------------------------------------

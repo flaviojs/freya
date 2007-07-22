@@ -9,7 +9,7 @@
 //--------------------------------------------------------------
 // Script Title: Job Quest Warps	Author: A Lot of People
 //--------------------------------------------------------------
-// Revision History: v2.4
+// Revision History: v2.5
 //--------------------------------------------------------------
 //	1.0 First version [Athena]
 //	1.1 Commented some warps because new Job quests have correct ones [Lupus]
@@ -26,18 +26,47 @@
 //	2.2 Merged in Gunslinger/Ninja warps [Tsuyuki]
 //	2.3 Updated Swordsman Job Change Quest warps [Tsuyuki]
 //	2.4 Updated Rogue Job Change Quest warps by decayed.cell [Tsuyuki]
+//	2.5 Updated Novice Grounds warps [Tsuyuki]
 //--------------------------------------------------------------
 // Additional Notes: * Official-certified *
 //--------------------------------------------------------------
 
 
 // Novice
-new_zone01.gat,148,112,0	warp	newwarp6001	2,2,new_zone02.gat,100,9
-new_zone02.gat,100,6,0	warp	newwarp6002	2,2,new_zone01.gat,144,112
-new_zone02.gat,126,106,0	warp	newwarp6003	2,2,new_zone02.gat,160,171
-new_zone02.gat,156,171,0	warp	newwarp6004	2,2,new_zone02.gat,123,106
-new_zone02.gat,73,106,0	warp	newwarp6005	2,2,new_zone02.gat,41,172
-new_zone02.gat,46,172,0	warp	newwarp6006	2,2,new_zone02.gat,78,106
+new_1-1.gat,148,112,0	warp	novgrounds01-1	2,2,new_1-2.gat,100,9
+new_1-2.gat,100,6,0	warp	novgrounds02-1	2,2,new_1-1.gat,144,112
+new_1-2.gat,126,106,0	warp	novgrounds03-1	2,2,new_1-2.gat,160,171
+new_1-2.gat,156,171,0	warp	novgrounds04-1	2,2,new_1-2.gat,123,106
+new_1-2.gat,73,106,0	warp	novgrounds05-1	2,2,new_1-2.gat,41,172
+new_1-2.gat,46,172,0	warp	novgrounds06-1	2,2,new_1-2.gat,78,106
+
+new_2-1.gat,148,112,0	warp	novgrounds01-2	2,2,new_2-2.gat,100,9
+new_2-2.gat,100,6,0 	warp	novgrounds02-2	2,2,new_2-1.gat,144,112
+new_2-2.gat,126,106,0	warp	novgrounds03-2	2,2,new_2-2.gat,160,171
+new_2-2.gat,156,171,0	warp	novgrounds04-2	2,2,new_2-2.gat,123,106
+new_2-2.gat,73,106,0	warp	novgrounds05-2	2,2,new_2-2.gat,41,172
+new_2-2.gat,46,172,0	warp	novgrounds06-2	2,2,new_2-2.gat,78,106
+
+new_3-1.gat,148,112,0	warp	novgrounds01-3	2,2,new_3-2.gat,100,9
+new_3-2.gat,100,6,0 	warp	novgrounds02-3	2,2,new_3-1.gat,144,112
+new_3-2.gat,126,106,0	warp	novgrounds03-3	2,2,new_3-2.gat,160,171
+new_3-2.gat,156,171,0	warp	novgrounds04-3	2,2,new_3-2.gat,123,106
+new_3-2.gat,73,106,0	warp	novgrounds05-3	2,2,new_3-2.gat,41,172
+new_3-2.gat,46,172,0	warp	novgrounds06-3	2,2,new_3-2.gat,78,106
+
+new_4-1.gat,148,112,0	warp	novgrounds01-4	2,2,new_4-2.gat,100,9
+new_4-2.gat,100,6,0 	warp	novgrounds02-4	2,2,new_4-1.gat,144,112
+new_4-2.gat,126,106,0	warp	novgrounds03-4	2,2,new_4-2.gat,160,171
+new_4-2.gat,156,171,0	warp	novgrounds04-4	2,2,new_4-2.gat,123,106
+new_4-2.gat,73,106,0	warp	novgrounds05-4	2,2,new_4-2.gat,41,172
+new_4-2.gat,46,172,0	warp	novgrounds06-4	2,2,new_4-2.gat,78,106
+
+new_5-1.gat,148,112,0	warp	novgrounds01-5	2,2,new_5-2.gat,100,9
+new_5-2.gat,100,6,0 	warp	novgrounds02-5	2,2,new_5-1.gat,144,112
+new_5-2.gat,126,106,0	warp	novgrounds03-5	2,2,new_5-2.gat,160,171
+new_5-2.gat,156,171,0	warp	novgrounds04-5	2,2,new_5-2.gat,123,106
+new_5-2.gat,73,106,0	warp	novgrounds05-5	2,2,new_5-2.gat,41,172
+new_5-2.gat,46,172,0	warp	novgrounds06-5	2,2,new_5-2.gat,78,106
 
 // Swordsman
 sword_1-1.gat,65,117,0	warp	swd101	1,1,sword_1-1.gat,10,245
