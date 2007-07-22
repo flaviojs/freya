@@ -14,6 +14,7 @@
 Date	Added
 
 2007/07/21
+	* Added: The Ice Cream Summer Event, converted from Aegis [Tsuyuki]
 	* Added: The Juice Maker Quest (Marx Hansen), converted from Aegis [Tsuyuki]
 	* Added: The Rogue Job Change Quest, converted from Aegis [Tsuyuki]
 	* Updated: Nine Tails quest to official Aegis standards [Tsuyuki]

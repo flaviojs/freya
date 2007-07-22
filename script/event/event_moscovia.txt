@@ -7,7 +7,7 @@
 //              /_/  |_|\____|_|  \___/|_|  \__,_|              
 //                 http://aurora.deltaanime.net                 
 //--------------------------------------------------------------
-// Script Title: Moscovia RussianRO Event	Author: A Lot of People
+// Script Title: Moscovia RussianRO Event	Author: Azazel/$ephiroth
 //--------------------------------------------------------------
 // Revision History: v1.2
 //--------------------------------------------------------------

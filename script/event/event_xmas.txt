@@ -7,13 +7,14 @@
 //              /_/  |_|\____|_|  \___/|_|  \__,_|              
 //                 http://aurora.deltaanime.net                 
 //--------------------------------------------------------------
-// Script Title: Christmas Event	Author: Unknown
+// Script Title: Christmas Event Spawns	Author: Unknown
 //--------------------------------------------------------------
-// Revision History: v1.8
+// Revision History: v1.0
 //--------------------------------------------------------------
 //	1.0 First version [Unknown]
 //--------------------------------------------------------------
-// Additional Notes: Activated during Xmas in official servers.
+// Additional Notes: * Official-certified *
+// Activated during Xmas in official servers.
 //--------------------------------------------------------------
 
 

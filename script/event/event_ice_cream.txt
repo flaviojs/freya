@@ -7,57 +7,217 @@
 //              /_/  |_|\____|_|  \___/|_|  \__,_|              
 //                 http://aurora.deltaanime.net                 
 //--------------------------------------------------------------
-// Script Title: Ice Cream Merchant Event	Author: KOOK SWU
+// Script Title: Ice Cream Maker Event	Author: Tsuyuki
 //--------------------------------------------------------------
-// Revision History: v1.1
+// Revision History: v1.0
 //--------------------------------------------------------------
-//	1.0 First version [KOOK SWU]
-//	1.1 Fixed some NPC coordinates/facing positions as per Aegis [Tsuyuki]
+//	1.0 First version, converted from Aegis [Tsuyuki]
 //--------------------------------------------------------------
-// Additional Notes: Activated every summer in official servers.
+// Additional Notes: * Official-certified / Aegis-certified *
+// Activated every summer in official servers.
 //--------------------------------------------------------------
 
 
-alberta.gat,107,73,4	script	Ice Cream Maker::IceCreamer	85,{
+morocc.gat,160,143,4	script	Ice Cream Maker	85,{
 
 	mes "[Ice Cream Maker]";
 	mes "Fresh Ice Cream made with snow from Lutie!";
 	mes "Enjoy it now, it won't be on sale for long!";
-	mes "^0000FF100 Zeny^000000 Ice Cream,";
+	mes "^3355FF100 Zeny^000000 Ice Cream,";
 	mes "Ice Cream!";
 	next;
-	menu "Gimme Ice Cream!",-,"Cancel Trade",L_End;
-	
+	switch(select("Gimme Ice Cream!","Cancel Trade")) {
+	case 1:
+		set '@weight,MaxWeight - Weight;
 		mes "[Ice Cream Maker]";
 		mes "Fresh Ice Cream made with snow from Lutie!";
-		mes "Everyone wants our delicious ice cream, but we have limited amount,";
+		mes "Everyone wants our delicious ice cream,";
+		mes "but we have a limited amount,";
 		mes "so you can only purchase 5 at a time!!";
 		next;
-		input @input;
-		mes "[Ice Cream Maker]";
-		if (@input<1) goto L_inpC;
-		if (@input>5) goto L_inpM;
-		if (Zeny< @input*100) goto L_NoZ;
-		set Zeny,Zeny-100*@input;
-		getitem 536,@input;
-		mes "Here you go  " +@input+ "  Ice Cream for you.";
+		while(1) {
+			input '@input;
+			if ('@input == 0) {
+				mes "[Ice Cream Maker]";
+				mes "If you don't want to buy any,";
+				mes "could you please let the next customer";
+				mes "make a purchase?";
+				mes "Thank you.";
+				close;
+			} else if ('@input < 0 || '@input > 5) {
+				mes "[Ice Cream Maker]";
+				mes "Ouch";
+				mes "You expect too much.";
+				mes "Dear customer,";
+				mes "If you eat more than 5 Ice creams,";
+				mes "If you might haveto make a lot of trips";
+				mes "to the bathroom tonight.";
+				next;
+			} else {
+				break;
+			}
+		}
+		set '@icecream_hap,'@input * 100;
+		if (Zeny < '@icecream_hap) {
+			mes "[Ice Cream Maker]";
+			mes "Dear customer, your wallet seems to be light.";
+			mes "Price is ^3355FF100 Zeny^000000 per ice cream.";
+			close;
+		}
+		set '@icecream_weight,'@input * 10;
+		if ('@weight < '@icecream_weight) {
+			mes "[Ice Cream Maker]";
+			mes "Dear customer,you look like you're carrying a lot.";
+			mes "Ice Cream is fine,";
+			mes "but you must consider your weight";
+			mes "before making a purchase.";
+			close;
+		}
+		set Zeny,Zeny-'@icecream_hap;
+		getitem 536,'@input;
 		close;
-		
-		L_inpC:
-			mes "Deal is canceled.";
-			close;
-		L_inpM:
-			mes "Sorry, but you can only buy 5 at a time.";
-			close;
-		L_NoZ:
-			mes "Sorry, but you need more money.";
-			close;
-	L_End:
+	case 2:
 		mes "[Ice Cream Maker]";
 		mes "Are you sure you don't want any?";
-		mes "I won't be selling it for long, and once I run out, there won't be anymore!!!";
+		mes "I won't be selling it for long,";
+		mes "and once I run out,";
+		mes "there won't be any more!!!";
 		close;
+	}
 }
 
-moc_fild16.gat,88,304,4	duplicate(IceCreamer)	Ice Cream Maker#2	85
-morocc.gat,160,143,4	duplicate(IceCreamer)	Ice Cream Maker#3	85
+moc_fild16.gat,88,304,4	script	Ice Cream Maker	85,{
+
+	mes "[Ice Cream Maker]";
+	mes "Fresh Ice Cream made with snow from Lutie!";
+	mes "Enjoy it now, it won't be on sale for long!";
+	mes "^3355FF100 Zeny^000000 Ice Cream,";
+	mes "Ice Cream!";
+	next;
+	switch(select("Gimme Ice Cream!","Cancel Trade")) {
+	case 1:
+		set '@weight,MaxWeight - Weight;
+		mes "[Ice Cream Maker]";
+		mes "Fresh Ice Cream made with snow from Lutie!";
+		mes "Everyone wants our delicious ice cream,";
+		mes "but we have a limited amount,";
+		mes "so you can only purchase 5 at a time!!";
+		next;
+		while(1) {
+			input '@input;
+			if ('@input == 0) {
+				mes "[Ice Cream Maker]";
+				mes "If you don't want to buy any,";
+				mes "could you please let the next customer";
+				mes "make a purchase?";
+				mes "Thank you.";
+				close;
+			} else if ('@input < 0 || '@input > 5) {
+				mes "[Ice Cream Maker]";
+				mes "Ouch";
+				mes "You expect too much.";
+				mes "Dear customer,";
+				mes "If you eat more than 5 Ice creams,";
+				mes "If you might haveto make a lot of trips";
+				mes "to the bathroom tonight.";
+				next;
+			} else {
+				break;
+			}
+		}
+		set '@icecream_hap,'@input * 100;
+		if (Zeny < '@icecream_hap) {
+			mes "[Ice Cream Maker]";
+			mes "Dear customer, your wallet seems to be light.";
+			mes "Price is ^3355FF100 Zeny^000000 per ice cream.";
+			close;
+		}
+		set '@icecream_weight,'@input * 10;
+		if ('@weight < '@icecream_weight) {
+			mes "[Ice Cream Maker]";
+			mes "Dear customer,you look like you're carrying a lot.";
+			mes "Ice Cream is fine,";
+			mes "but you must consider your weight";
+			mes "before making a purchase.";
+			close;
+		}
+		set Zeny,Zeny-'@icecream_hap;
+		getitem 536,'@input;
+		close;
+	case 2:
+		mes "[Ice Cream Maker]";
+		mes "Are you sure you don't want any?";
+		mes "I won't be selling it for long,";
+		mes "and once I run out,";
+		mes "there won't be any more!!!";
+		close;
+	}
+}
+
+alberta.gat,120,53,4	script	Ice Cream Maker	85,{
+
+	mes "[Ice Cream Maker]";
+	mes "Fresh Ice Cream made with snow from Lutie!";
+	mes "Enjoy it now, it won't be on sale for long!";
+	mes "^3355FF100 Zeny^000000 Ice Cream,";
+	mes "Ice Cream!";
+	next;
+	switch(select("Gimme Ice Cream!","Cancel Trade")) {
+	case 1:
+		set '@weight,MaxWeight - Weight;
+		mes "[Ice Cream Maker]";
+		mes "Fresh Ice Cream made with snow from Lutie!";
+		mes "Everyone wants our delicious ice cream,";
+		mes "but we have a limited amount,";
+		mes "so you can only purchase 5 at a time!!";
+		next;
+		while(1) {
+			input '@input;
+			if ('@input == 0) {
+				mes "[Ice Cream Maker]";
+				mes "If you don't want to buy any,";
+				mes "could you please let the next customer";
+				mes "make a purchase?";
+				mes "Thank you.";
+				close;
+			} else if ('@input < 0 || '@input > 5) {
+				mes "[Ice Cream Maker]";
+				mes "Ouch";
+				mes "You expect too much.";
+				mes "Dear customer,";
+				mes "If you eat more than 5 Ice creams,";
+				mes "If you might haveto make a lot of trips";
+				mes "to the bathroom tonight.";
+				next;
+			} else {
+				break;
+			}
+		}
+		set '@icecream_hap,'@input * 100;
+		if (Zeny < '@icecream_hap) {
+			mes "[Ice Cream Maker]";
+			mes "Dear customer, your wallet seems to be light.";
+			mes "Price is ^3355FF100 Zeny^000000 per ice cream.";
+			close;
+		}
+		set '@icecream_weight,'@input * 10;
+		if ('@weight < '@icecream_weight) {
+			mes "[Ice Cream Maker]";
+			mes "Dear customer,you look like you're carrying a lot.";
+			mes "Ice Cream is fine,";
+			mes "but you must consider your weight";
+			mes "before making a purchase.";
+			close;
+		}
+		set Zeny,Zeny-'@icecream_hap;
+		getitem 536,'@input;
+		close;
+	case 2:
+		mes "[Ice Cream Maker]";
+		mes "Are you sure you don't want any?";
+		mes "I won't be selling it for long,";
+		mes "and once I run out,";
+		mes "there won't be any more!!!";
+		close;
+	}
+}
