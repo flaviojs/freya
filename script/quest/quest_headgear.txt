@@ -1534,51 +1534,90 @@ rachel.gat,135,121,4	script	Sakyul	933,{
 
 
 //--------------------------------------------------------------
-// Fox Mask Quest
+// Fox Mask Quest - [jAthena]
 //--------------------------------------------------------------
 
-pay_dun04.gat,204,152,2	script	Nine Tail	1180,{
+pay_dun03.gat,48,84,4	script	Nine Tails	1180,1,1,{
 
+	if(countitem(1022)<999) {
+		mes "[Nine Tail]";
+		mes "......Aiyo? Isn't this the appearance of a human boy?";
+		mes "Has my transfiguration skill gone wrong again... oh... oh well.";
+		next;
+		mes "[Nine Tail]";
+		mes "Do you know how it feels to be chased everyday? How tough that is? Huh?";
+		mes "I just want to live a quiet life with my husband!";
+		next;
+		mes "[Nine Tail]";
+		mes "But one day, someone intruded into our habitat and tried to catch us.";
+		next;
+		mes "[Nine Tail]";
+		mes "Do you know how much that Sohee that lives besides me likes to complain to me everyday? Someone will pull a disgusting face and say 'Haha, Miss Sohee~' and they will chase to rip off her clothes. They are making her crazy!";
+		next;
+		mes "[Nine Tail]";
+		mes "It is just a flawless body as fine as pine, and as beautiful as the flower. Why can't anyone understand that?";
+		next;
+		mes "[Nine Tail]";
+		mes "Hmmm...let me calm down first.";
+		mes "I just want to save my husband and bring him back.";
+		mes "I hope you can help me.";
+		next;
+		mes "[Nine Tail]";
+		mes "To save my husband,";
+		mes "please bring along ^FF0000999 ^0000FFNine Tails^000000!";
+		mes "What? You said that's too much?";
+		next;
+		mes "[Nine Tail]";
+		mes "Hmmph, it really makes me angry to think of what you've done to us...";
+		mes "I understand. You humans won't do anything without a reward...";
+		next;
+		mes "[Nine Tail]";
+		mes "Hmm, ok. What do you think of the mask I'm wearing? The ^0000FFKitsune Mask^000000. Gather the items I want, and I will give you this.";
+		mes "You must gather ^FF0000999 ^0000FFNine Tails^000000!";
+	}
+	else {
+		mes "[Nine Tail]";
+		mes "Uh Oh!! You've brought it, human.";
+		mes "Good...I think you can save yourself with these.";
+		next;
+		if (select("Give it to him","Do not give it to him") == 1) {
+			delitem 1022,999;
+			getitem 5069,1;
+			mes "[Nine Tail]";
+			mes "Go now. You have got what you wanted, human. Now leave!";
+			emotion 6;
+		}
+	}
+	close2;
+	misceffect 106;
+	hideonnpc;
+	initnpctimer;
+	end;
+OnTouch:
+	if('flag) end;
 	mes "[Nine Tail]";
-	mes "What do you want?";
+	mes "Kee! KeeKee!";
+	mes "KeeKeeKee! KeeKee! KeeKee!";
 	next;
-	mes "[Nine Tail]";
-	mes "Have you come here for a ^FF3300 Fox Mask^000000?";
-	next;
-	menu "Yeah, Sure.",-,"No",M_EXIT;
-
-	mes "[Nine Tail]";
-	mes "Fine then. if I make one for you, will you go away?";
-	mes "You realize that it requires 999 Nine Tails to make, do you?";
-	next;
-	menu "Sure.",M_MAKE,"Nah.",-;
-
-	mes "[Nine Tail]";
-	mes "Grrrr... I'll make one anyway but I hope my master gets you.";
-	next;
-M_MAKE:
-	mes "[Nine Tail]";
-	mes "Ok then, I shall make one for you.";
-	next;
-
-	if (countitem(1022) < 999) goto L_NOITEM;//Items: Nine Tails,
-	delitem 1022,999;//Items: Nine Tails,
-	getitem 5069,1;//Items: Fox Mask,
-	next;
-	mes "[Nine Tails]";
-	mes "Have fun.";
+	switch (select("Shaking your head","Nodding")) {
+	case 1:
+		mes "[Nine Tail]";
+		mes "KeeKee! Ke! Kee!";
+		initnpctimer;
+		break;
+	case 2:
+		classchange 762,0;
+		break;
+	}
+	misceffect 99;
+	set 'flag,1;
 	close;
-
-L_NOITEM:
-	mes "[Nine Tail]";
-	mes "You do not have have enough Nine Tails.";
-	mes "You need 999 of them.";
-	close;
-
-M_EXIT:
-	mes "[Nine Tail]";
-	mes "Then leave me alone... I am waiting for my master.";
-	close;
+OnTimer60000:
+	stopnpctimer;
+	set 'flag,0;
+	classchange 1180,0;
+	hideoffnpc;
+	end;
 }
 
 
@@ -3864,7 +3903,7 @@ payon_in01.gat,56,12,4	script	Young Man#12	89,{
 // -> Judge Hat/A-yam Hat
 //--------------------------------------------------------------
 
-payon.gat,137,123,5	script	Hangaram	740,{
+payon_in03.gat,139,124,5	script	Hangaram	88,{
 
 	mes "[Hangaram]";
 	mes "Hello adventurer!";
@@ -4025,7 +4064,7 @@ payon.gat,137,123,5	script	Hangaram	740,{
 // -> Smiling Mask/Lion Masquerade/Bride Mask
 //--------------------------------------------------------------
 
-payon.gat,135,231,5	script	Chung-Wol-Mang	907,{
+payon.gat,135,320,3	script	Chung-Wol-Mang	97,{
 
 	mes "[Chung-Wol-Mang]";
 	mes "Hey, I can make you three rare masks if you bring me all of the items needed to make them.";
