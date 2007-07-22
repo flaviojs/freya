@@ -9,7 +9,7 @@
 //--------------------------------------------------------------
 // Script Title: Kiel Hyre Quest	Author: L0ne_W0lf/DZeroX
 //--------------------------------------------------------------
-// Revision History: v3.6
+// Revision History: v3.9
 //--------------------------------------------------------------
 //	1.0 First version, needs testing [L0ne_W0lf/DZeroX]
 //	1.1 Copied over some changes made by -Tsuyuki- [L0ne_W0lf]
@@ -76,6 +76,9 @@
 //	3.4 Some some things with Allysia [Playtester]
 //	3.5 Fixed a bug with the swords part of the quest (Variable names are case-sensitive) [Tsuyuki]
 //	3.6 Fixed a bunch of missing .gat's from maps [Tsuyuki]
+//	3.7 Fixed some typos and grammar mistakes [SinSloth]
+//	3.8 Fixed the receiver log out bugs [L0ne_W0lf]
+//	3.9 Fixed bug when you can't get a Yellow Keycard if you got the Blue one at first [Lupus]
 //--------------------------------------------------------------
 // Additional Notes: * Official-certified / Aegis-certified *
 //--------------------------------------------------------------
@@ -89,7 +92,7 @@
 //  - Accidentally progressed Elly's dialog while reading 'Letter to Elly'. Improvising.
 //  - Possible missing dialog for some getitem weight checks.
 //  - Possible missing dialog for "Test Tube" if you haven't read the second poem.
-//  - Possible missing dialog for Elly in Dromitory if you don't have "Grey Box"
+//  - Possible missing dialog for Elly in Dromitory if you don't have "Steel Box"
 //  - Possible missing dialog for "Grave" if you don't have "Yellow Keycard"
 //  - Not going to list ALL of the more usless NPCs. (Doors + Empty "Beautiful Ladies")
 //  - Accidently progressed Kiel Hyre's dialog. Improvising.
@@ -176,55 +179,55 @@
 //
 //--------------------------------------------------------------
 // [NPCs]			 [Location]
-//  Pub Master .................. yuno_in01.gat	[ 35,178]
+//  Pub Master .................. yuno_in01	[ 35,178]
 //  Hanie ....................... yuno_fild08	[196,196]
 //  Security Guard .............. yuno_fild08	[158,194]
 //  Security Guard .............. yuno_fild08	[158,183]
-//  Student ..................... kh_school.gat	[ 57,142]
-//  Student ..................... kh_school.gat	[ 57,139]
-//  Lady ........................ kh_school.gat	[176, 60]
-//  Cute Student ................ kh_school.gat	[179, 39]
+//  Student ..................... kh_school	[ 57,142]
+//  Student ..................... kh_school	[ 57,139]
+//  Lady ........................ kh_school	[176, 60]
+//  Cute Student ................ kh_school	[179, 39]
 //  Little Kid .................. yuno		[217,114]
-//  Windmill Owner .............. lighthalzen.gat	[365,300]
+//  Windmill Owner .............. lighthalzen	[365,300]
 //  Cottage Keeper .............. yuno_fild02	[ 93,210]
 //  Door ........................ yuno_fild02	[ 75,218]
 //  Door ........................ yuno_fild02	[109,218]
-//  Wall ........................ kh_vila.gat	[191, 14]
-//  Book ........................ kh_vila.gat	[184, 20]
-//  Book ........................ kh_vila.gat	[181, 20]
-//  Book ........................ kh_vila.gat	[178, 20]
-//  Book ........................ kh_vila.gat	[175, 19]
-//  KH_Letter_Trigger ........... kh_vila.gat	[179, 11]
-//  Box ......................... kh_vila.gat	[ 16,175]
-//  Apple Box ................... kh_vila.gat	[ 30,184]
-//  Map ......................... kh_vila.gat	[ 44,125]
-//  Pot ......................... kh_vila.gat	[ 33,148]
-//  Calabash .................... kh_vila.gat	[ 14, 55]
-//  Pool ........................ kh_vila.gat	[ 39, 39]
-//  Vicious Dog ................. kh_vila.gat 	[180,178]
-//  Drawer ...................... kh_vila.gat 	[115,186]
-//  Box ......................... kh_vila.gat 	[107,126]
-//  Bookshelf ................... kh_vila.gat 	[181,138]
-//  Sword Hilt .................. kh_vila.gat 	[136, 69]
-//  Test Tube ................... kh_vila.gat	[179, 69]
-//  Test Tube ................... kh_vila.gat	[185, 69]
+//  Wall ........................ kh_vila	[191, 14]
+//  Book ........................ kh_vila	[184, 20]
+//  Book ........................ kh_vila	[181, 20]
+//  Book ........................ kh_vila	[178, 20]
+//  Book ........................ kh_vila	[175, 19]
+//  KH_Letter_Trigger ........... kh_vila	[179, 11]
+//  Box ......................... kh_vila	[ 16,175]
+//  Apple Box ................... kh_vila	[ 30,184]
+//  Map ......................... kh_vila	[ 44,125]
+//  Pot ......................... kh_vila	[ 33,148]
+//  Calabash .................... kh_vila	[ 14, 55]
+//  Pool ........................ kh_vila	[ 39, 39]
+//  Vicious Dog ................. kh_vila 	[180,178]
+//  Drawer ...................... kh_vila 	[115,186]
+//  Box ......................... kh_vila 	[107,126]
+//  Bookshelf ................... kh_vila 	[181,138]
+//  Sword Hilt .................. kh_vila 	[136, 69]
+//  Test Tube ................... kh_vila	[179, 69]
+//  Test Tube ................... kh_vila	[185, 69]
 //  Window ...................... yuno_fild08	[ 69,185]
-//  Elly ........................ kh_school.gat	[178,180]
-//  Cookie Basket ............... kh_school.gat	[175,175]
-//  Window ...................... kh_school.gat	[188,185]
+//  Elly ........................ kh_school	[178,180]
+//  Cookie Basket ............... kh_school	[175,175]
+//  Window ...................... kh_school	[188,185]
 //  Grave ....................... yuno_fild08	[ 72,170]
-//  Heavy Door .................. kh_dun01.gat	[236, 48]
-//  Beautiful lady .............. kh_school.gat	[119,149]
-//  Beautiful lady .............. kh_school.gat	[122,186]
-//  Signboard ................... kh_dun01.gat	[163,223]
-//  Mechanical Device ........... kh_dun01.gat	[166,223]
-//  Mechanical Device ........... kh_dun01.gat	[162,206]
-//  Kiel_Hyre_Door .............. kh_dun01.gat	[224,232]
-//  Steward ..................... kh_mansion.gat	[ 78, 55]
-//  Kiel Hyre ................... kh_mansion.gat	[ 22, 27]
-//  Allysia ..................... kh_mansion.gat	[ 22, 27]
-//  Abduction_trigger ........... lighthalzen.gat	[188,200]
-//  Mysterious Woman ............ kh_mansion.gat	[ 25, 79]
+//  Heavy Door .................. kh_dun01	[236, 48]
+//  Beautiful lady .............. kh_school	[119,149]
+//  Beautiful lady .............. kh_school	[122,186]
+//  Signboard ................... kh_dun01	[163,223]
+//  Mechanical Device ........... kh_dun01	[166,223]
+//  Mechanical Device ........... kh_dun01	[162,206]
+//  Kiel_Hyre_Door .............. kh_dun01	[224,232]
+//  Steward ..................... kh_mansion	[ 78, 55]
+//  Kiel Hyre ................... kh_mansion	[ 22, 27]
+//  Allysia ..................... kh_mansion	[ 22, 27]
+//  Abduction_trigger ........... lighthalzen	[188,200]
+//  Mysterious Woman ............ kh_mansion	[ 25, 79]
 //  Odd Granma .................. yuno		[250,132]
 //  Old Lady .................... yuno 		[250,132]
 //  Rosimmir_Entrance ........... yuno		[273,141]
@@ -234,35 +237,35 @@
 //  Bookshelf ................... kh_rossi	[144,146]
 //  Old Fisherman ............... yuno_fild12	[232,222]
 //  Wooden Board ................ yuno_fild09	[158,217]
-//  Kiehl_Room_Warp ............. kh_mansion.gat	[ 29, 27]
-//  Entrance Device#KHEntry1 .... kh_dun01.gat	[ 44, 20]
-//  Entrance Device#KHEntry2 .... kh_dun01.gat	[ 44,203]
+//  Kiehl_Room_Warp ............. kh_mansion	[ 29, 27]
+//  Entrance Device#KHEntry1 .... kh_dun01	[ 44, 20]
+//  Entrance Device#KHEntry2 .... kh_dun01	[ 44,203]
 //  Security Guard .............. yuno_fild08	[158,194]
-//  Receiver .................... kh_kiehl01.gat	[ 17, 39]
-//  Flower Vase ................. kh_kiehl01.gat	[ 13, 40]
-//  Box ......................... kh_kiehl01.gat	[ 19, 25]
-//  Big Door .................... kh_kiehl01.gat	[ 44, 33]
-//  Big_Door_1_Warp ............. kh_kiehl01.gat	[ 43, 33]
-//  Big Door .................... kh_kiehl01.gat	[174, 40]
-//  Big_Door_2_Warp ............. kh_kiehl01.gat	[174, 39]
-//  Big Door .................... kh_kiehl01.gat	[ 77,108]
-//  Big_Door_3_Warp ............. kh_kiehl01.gat	[ 68,108]
-//  Big Door .................... kh_kiehl01.gat	[ 41,177]
-//  Big_Door_4_Warp ............. kh_kiehl01.gat	[ 78,177]
-//  Robots ...................... kh_kiehl01.gat	[ 15,181]
-//  Big Door .................... kh_kiehl01.gat	[166,187]
-//  Big_Door_5_Warp ............. kh_kiehl01.gat	[166,186]
-//  Kiehl_Room_Trap ............. kh_kiehl02.gat	[ 49, 15]
-//  Kiehl#Original .............. kh_kiehl02.gat	[ 50, 52]
-//  KiehlRoom ................... kh_kiehl02.gat	[  1,  1]
+//  Receiver .................... kh_kiehl01	[ 17, 39]
+//  Flower Vase ................. kh_kiehl01	[ 13, 40]
+//  Box ......................... kh_kiehl01	[ 19, 25]
+//  Big Door .................... kh_kiehl01	[ 44, 33]
+//  Big_Door_1_Warp ............. kh_kiehl01	[ 43, 33]
+//  Big Door .................... kh_kiehl01	[174, 40]
+//  Big_Door_2_Warp ............. kh_kiehl01	[174, 39]
+//  Big Door .................... kh_kiehl01	[ 77,108]
+//  Big_Door_3_Warp ............. kh_kiehl01	[ 68,108]
+//  Big Door .................... kh_kiehl01	[ 41,177]
+//  Big_Door_4_Warp ............. kh_kiehl01	[ 78,177]
+//  Robots ...................... kh_kiehl01	[ 15,181]
+//  Big Door .................... kh_kiehl01	[166,187]
+//  Big_Door_5_Warp ............. kh_kiehl01	[166,186]
+//  Kiehl_Room_Trap ............. kh_kiehl02	[ 49, 15]
+//  Kiehl#Original .............. kh_kiehl02	[ 50, 52]
+//  KiehlRoom ................... kh_kiehl02	[  1,  1]
 //  Floating NPC (Agent#KHAgent0::KHAgent)
-//  Mitchell#KiehlRoom .......... kh_kiehl02.gat	[ 49, 55]
-//  Agent#KHAgent1 ....   ....... kh_kiehl02.gat	[ 53, 52]
-//  Agent#KHAgent2 .............. kh_kiehl02.gat	[ 51, 49]
-//  Agent#KHAgent3 .............. kh_kiehl02.gat	[ 47, 50]
-//  Agent#KHAgent4 .............. kh_kiehl02.gat	[ 46, 53]
-//  Kiehl#Copy .................. kh_kiehl02.gat	[ 48, 53]
-//  Kiehl_Roomn_Exit ............ kh_kiehl01.gat	[ 50, 59]
+//  Mitchell#KiehlRoom .......... kh_kiehl02	[ 49, 55]
+//  Agent#KHAgent1 ....   ....... kh_kiehl02	[ 53, 52]
+//  Agent#KHAgent2 .............. kh_kiehl02	[ 51, 49]
+//  Agent#KHAgent3 .............. kh_kiehl02	[ 47, 50]
+//  Agent#KHAgent4 .............. kh_kiehl02	[ 46, 53]
+//  Kiehl#Copy .................. kh_kiehl02	[ 48, 53]
+//  Kiehl_Roomn_Exit ............ kh_kiehl01	[ 50, 59]
 //
 //--------------------------------------------------------------
 
@@ -294,7 +297,7 @@ yuno_in01.gat,35,179,1	script	Pub Master	46,4,4,{
 		mes "would you like to have?";
 		next;
 
-		switch(select("Beer, please","A coctail, please","Soju, please.","You look worried, what's up?","Cancel")) {
+		switch(select("Beer, please","A cocktail, please","Soju, please.","You look worried, what's up?","Cancel")) {
  
 		case 1:
 			mes "[Vandt]";
@@ -343,8 +346,8 @@ yuno_in01.gat,35,179,1	script	Pub Master	46,4,4,{
 			mes "that I need to send to";
 			mes "the Kiel Hyre Academy,";
 			mes "but I can't find anyone";
-			mes "that's avaliable for this";
-			mes "kind of temporaty job.";
+			mes "that's available for this";
+			mes "kind of temporary job.";
 			next;
 
 			switch(select("I'm sorry to hear that","Do you want me to help you?")) {
@@ -517,7 +520,7 @@ yuno.gat,217,114,4	script	Little Kid	96,{
 				mes "Listen, can you help me out?";
 				next;
 				mes "[Cezu]"; 
-				mes "would you please go get";
+				mes "Would you please go get";
 				mes "some flour and eggs for me";
 				mes "from the ^3355FFLighthalzen Windmill^000000";
 				mes "Then, when you come back, I can";
@@ -627,7 +630,7 @@ lighthalzen.gat,365,300,2	script	Windmill Owner	46,{
 			mes "that kid needs right";
 			mes "here. There's eggs inside,";
 			mes "so be really careful with it.";
-			mes "it ready for you...";
+			mes "It's ready for you...";
 			next;
 			mes "[Mills]";
 			mes "Kid's one of my regular";
@@ -1338,7 +1341,7 @@ kh_school.gat,179,39,1	script	Cute Student	895,{
 		mes "What's this,";
 		mes "a letter for me?";
 		next;
-		mes "^3355FFElly opened the envelopre^000000";
+		mes "^3355FFElly opened the envelope^000000";
 		mes "^3355FFand started reading the letter^000000";
 		next;
 		mes "Dearest Elly";
@@ -1352,11 +1355,11 @@ kh_school.gat,179,39,1	script	Cute Student	895,{
 		mes "trouble. Don't trust anyone";
 		mes "at the Academy, Elly.";
 		mes "I've left something for you";
-		mes "In the Study.";
+		mes "in the Study.";
 		next;
 		cutin "kh_elly03",2;
 		mes "[Elly]";
-		mes "What? oh no, it's been";
+		mes "What? Oh no, it's been";
 		mes "ten days since he wrote";
 		mes "this letter! Ah, does this";
 		mes "mean that he's in danger?!";
@@ -1750,14 +1753,14 @@ kh_school.gat,178,180,5	script	Elly	895,{
 			mes "^3355FFIt looks like Elly's^000000";
 			mes "^3355FFGolden Key might fit^000000";
 			mes "^3355FFinto the keyhole on the^000000";
-			mes "^3355FFGrey Box you found inside^000000";
+			mes "^3355FFSteel Box you found inside^000000";
 			mes "^3355FFKiel Hyre's Cottage.^000000";
 			next;
 			mes "^3355FFYou successfully open the^000000";
-			mes "^3355FFGrey Box with the Golden Key,^000000";
+			mes "^3355FFSteel Box with the Golden Key,^000000";
 			mes "^3355FFand find a Blue Keycard, along^000000";
 			mes "^3355FFwith a folded note, inside the^000000";
-			mes "^3355FFGrey Box. You quickly read^000000";
+			mes "^3355FFSteel Box. You quickly read^000000";
 			mes "^3355FFthe note's contents...^000000";
 			next;
 			mes "Dearest Elly,";
@@ -1786,7 +1789,7 @@ kh_school.gat,178,180,5	script	Elly	895,{
 			mes "Sorry about that,";
 			mes "Grandpa";
 			getitem 7495,1; //Blue_Keycard
-			delitem 7491,1; //Iron_Box
+			delitem 7491,1; //Steel_box
 			set KielHyreQuest,36;
 			close;
 		}
@@ -1796,7 +1799,7 @@ kh_school.gat,178,180,5	script	Elly	895,{
 	else if (KielHyreQuest >= 36) {
 		mes "^3355FFThis is where you^000000";
 		mes "^3355FFdiscovered the note^000000";
-		mes "^3355FFlocked inside the Grey Box.^000000";
+		mes "^3355FFlocked inside the Steel Box.^000000";
 		mes "^3355FFThe following message was^000000";
 		mes "^3355FFwritten in the note by Elly's^000000";
 		mes "^3355FFgrandfather, Kiel Hyre.^000000";
@@ -1850,7 +1853,7 @@ kh_school.gat,175,175,0	script	Cookie Basket	111,{
 		case 1:
 			mes ""+strcharinfo(0)+", help!";
 			mes "There's this guy dressed in";
-			mes "black who;s walking around,";
+			mes "black who's walking around,";
 			mes "and casting this weird spell!";
 			mes "He's the one that's been making";
 			mes "people cold and lifeless as";
@@ -2073,7 +2076,7 @@ yuno_fild02.gat,93,210,3	script	Cottage Keeper	85,{
 		mes "area unless you're authorized.";
 		next;
 
-		switch(select("I have an apointment with Kiel Hyre.","Alright.")) {
+		switch(select("I have an appointment with Kiel Hyre.","Alright.")) {
 
 		case 1:
 			mes "[Cottage Keeper]";
@@ -2089,7 +2092,7 @@ yuno_fild02.gat,93,210,3	script	Cottage Keeper	85,{
 				mes "There must be some sort";
 				mes "of mistake. Mister Hyre";
 				mes "wouldn't have left if he";
-				mes "was suposed to keep";
+				mes "was supposed to keep";
 				mes "an appointment...";
 				set KielHyreQuest,14;
 				close;
@@ -2135,11 +2138,11 @@ yuno_fild02.gat,75,218,0	script	Door::DoorKHQ1	111,{
 		switch(select("Unlock","Cancel")) {
 
 		case 1:
-			mes "^3355FFYou unlock the door with the.^000000";
-			mes "^3355FFkey that Elly gave you, and.^000000";
-			mes "^3355FFas you push it open, a folded.^000000";
-			mes "^3355FFnote dropped from the top of the.^000000";
-			mes "^3355FFdoor. The following words.^000000";
+			mes "^3355FFYou unlock the door with the^000000";
+			mes "^3355FFkey that Elly gave you, and^000000";
+			mes "^3355FFas you push it open, a folded^000000";
+			mes "^3355FFnote dropped from the top of the^000000";
+			mes "^3355FFdoor. The following words^000000";
 			mes "^3355FFare written on this crude note.^000000";
 			next;
 			mes "6 Forward,";
@@ -2309,7 +2312,7 @@ OnTouch:
 		}
 		mes "^3355FFYou've found a letter^000000";
 		mes "^3355FFon the floor. Naturally,^000000";
-		mes "^3355FFyou pick i up, despite^000000";
+		mes "^3355FFyou pick it up, despite^000000";
 		mes "^3355FFthe fact that it's not^000000";
 		mes "^3355FFaddressed to you.^000000";
 		getitem 7490,1; //Letter to Elly
@@ -2338,8 +2341,8 @@ kh_vila.gat,16,175,0	script	Box::BoxKHQ1	111,{
 
 		case 1:
 			mes "^3355FF1,100 zeny seems kind";
-			mes "^3355FFor expensive for Pet Food,";
-			mes "^3355FFbut if it's better t han the";
+			mes "^3355FFof expensive for Pet Food,";
+			mes "^3355FFbut if it's better than the";
 			mes "^3355FFnormal stuff, it might";
 			mes "^3355FFbe worth a shot.";
 			next;
@@ -2362,7 +2365,7 @@ kh_vila.gat,16,175,0	script	Box::BoxKHQ1	111,{
 		case 2:
 			mes "^3355FFThis vending machine^000000";
 			mes "^3355FFseems really shady and^000000";
-			mes "^3355FFsuspicious for some reason^000000";
+			mes "^3355FFsuspicious for some reason.^000000";
 			close;
 		}
 
@@ -2422,7 +2425,7 @@ kh_vila.gat,44,126,0	script	Map	111,{
 		mes "^3355FFbeen hidden underneath it.^000000";
 		next;
 
-		switch(select("ignore","Examine")) {
+		switch(select("Ignore","Examine")) {
 
 		case 1:
 			mes "^3355FFWhatever might be^000000";
@@ -2574,7 +2577,7 @@ kh_vila.gat,33,184,0	script	Pot	111,{
 
 	}
 
-	else if ((KHCottagePoem1 > 1) || (KielHyreQuest >= 30)) {
+	else if ((KHCottagePoem1 > 1) || (KielHyreQuest >= 30)){
 		mes "^3355FFThis is where you^000000";
 		mes "^3355FFpicked up the pot filled^000000";
 		mes "^3355FFwith steaming liquid.^000000";
@@ -2607,7 +2610,7 @@ kh_vila.gat,14,55,0	script	Calabash	111,{
 		mes "^3355FFWhat do you do?^000000";
 		next;
 
-		switch(select("Break Open Calabash","Look Inside Calabash","ignore")) {
+		switch(select("Break Open Calabash","Look Inside Calabash","Ignore")) {
 
 		case 1:
 			mes "^3355FFYou can't break^000000";
@@ -2625,7 +2628,7 @@ kh_vila.gat,14,55,0	script	Calabash	111,{
 			mes "^3355FFcalabash, and gently^000000";
 			mes "^3355FFfeel around with your^000000";
 			mes "^3355FFfingers until you retrieve^000000";
-			mes "^3355FFan Old Bronze Key^000000";
+			mes "^3355FFan Old Bronze Key.^000000";
 			getitem 7329,1; //Old_Bronze_Key
 			close;
 
@@ -2663,11 +2666,11 @@ kh_vila.gat,39,41,0	script	pool	111,{
 	else if ((KHCottagePoem1 == 3) && (KielHyreQuest < 30)) {
 		mes "^3355FFYou find a fancy pool^000000";
 		mes "^3355FFfilled with fresh water.^000000";
-		mes "^3355FFalong with a conscpicuous^000000";
-		mes "^3355FFlion statue with two handles^000000";
+		mes "^3355FFalong with a conspicuous^000000";
+		mes "^3355FFlion statue with two handles.^000000";
 		next;
 
-		switch(select("Pull handles","cancel")) {
+		switch(select("Pull Handles","Cancel")) {
 
 		case 1:
 			mes "Which handle would^000000";
@@ -2778,7 +2781,7 @@ OnTouch:
 			mes "^3355FFFood and see what happens?^000000";
 			next;
 
-			switch(select("Give pet Food","It won't work!")) {
+			switch(select("Give Pet Food","It won't work!")) {
 
 			case 1:
 				mes "^3355FFYou gingerly throw the^000000";
@@ -2808,7 +2811,7 @@ OnTouch:
 				next;
 				mes "^3355FFThe dog chases you^000000";
 				mes "^3355FFdownstairs like the^000000";
-				mes "^3355FFsuckah chump you are^000000";
+				mes "^3355FFsuckah chump you are.^000000";
 				close2;
 				warp "kh_vila.gat",126,70;
 				end;
@@ -2845,8 +2848,8 @@ kh_vila.gat,115,186,0	script	Drawer::DrawerKHQ1	111,{
 		mes "trusty Kafra Storage first.^000000";
 		close;
 	}
-	if ((countitem(7492) < 1) && (KielHyreQuest < 36)) {
-		mes "^3355FFyou find an old drawer^000000";
+	if ((countitem(7492) < 1) && (KielHyreQuest <= 36)) {
+		mes "^3355FFYou find an old drawer^000000";
 		mes "^3355FFthat has been closed.^000000";
 		mes "^3355FFIf you open it, then you^000000";
 		mes "^3355FFmight find something^000000";
@@ -2899,7 +2902,7 @@ kh_vila.gat,107,126,0	script	Box::BoxKHQ2	111,{
 		mes "^3355FFon the floor in which^000000";
 		mes "^3355FFa smaller, locked box^000000";
 		mes "^3355FFhas been placed inside.^000000";
-		mes "^3355FFperhaps you can use your^000000";
+		mes "^3355FFPerhaps you can use your^000000";
 		mes "^3355FFOld Bronze Key to unlock it.^000000";
 		next;
 
@@ -2969,7 +2972,7 @@ kh_vila.gat,181,138,0	script	Bookshelf::BookshelfKHQ1	111,{
 			mes "^3355FFshelf as you place the book back.^000000";
 			next;
 
-			switch(select("Examine The steel surface","Ignore")) {
+			switch(select("Examine the steel surface","Ignore")) {
 
 			case 1:
 				mes "^3355FFYou remove more of the^000000";
@@ -3019,7 +3022,7 @@ kh_vila.gat,181,138,0	script	Bookshelf::BookshelfKHQ1	111,{
 
 					else if (countitem(7516) >= 1) {
 
-						switch(select("Green keycard","Cottage Key")) {
+						switch(select("Green Keycard","Cottage Key")) {
 
 						case 1:
 							set @KHFirstKeyhole,1;
@@ -3036,7 +3039,7 @@ kh_vila.gat,181,138,0	script	Bookshelf::BookshelfKHQ1	111,{
 						mes "^3355FFthe second keyhole?^000000";
 						next;
 
-						switch(select("Green keycard","Cottage Key")) {
+						switch(select("Green Keycard","Cottage Key")) {
 
 						case 1:
 							set @KHSecondKeyhole,1;
@@ -3051,13 +3054,13 @@ kh_vila.gat,181,138,0	script	Bookshelf::BookshelfKHQ1	111,{
 						if (@KHFirstKeyhole == 2) && (@KHSecondKeyhole == 1) {
 							mes "^3355FFThe safe opens with^000000";
 							mes "^3355FFa click and you see^000000";
-							mes "^3355FFa Grey Box inside.^000000";
-							mes "^3355FFYou take the Grey Box^000000";
+							mes "^3355FFa Steel Box inside.^000000";
+							mes "^3355FFYou take the Steel Box^000000";
 							mes "^3355FFwith you, hoping that^000000";
 							mes "^3355FFwill come in handy later.^000000";
 							delitem 7489,1; //Cottage Key
 							delitem 7516,1; //Green_Keycard
-							getitem 7491,1; //Iron_Box
+							getitem 7491,1; //Steel_box
 							close;
 						}
 
@@ -3568,7 +3571,7 @@ kh_vila.gat,185,68,0	script	Test Tube::TestTubeKHQ2	111,{
 				mes "have to remember these";
 				mes "numbers, okay? D-don't";
 				mes "forget, they'll be important...";
-				mes "^FF00004^000000, ^FF00007^000000, ^FF00002^000000, ^FF00009^000000, ^FF00006^000000, ^FF00001^000000. That's all...";
+				mes "^FF00004^000000, ^FF00007^000000, ^FF00007^000000, ^FF00002^000000, ^FF00009^000000, ^FF00006^000000, ^FF00001^000000. That's all...";
 				next;
 				mes "^3355FF4772961^000000";
 				mes "^3355FFWhat could^000000";
@@ -3624,7 +3627,7 @@ kh_vila.gat,185,68,0	script	Test Tube::TestTubeKHQ2	111,{
 kh_dun01.gat,235,48,0	script	Heavy Door::HeavyDoorKHQ1	111,{
 	if ((KielHyreQuest >= 38) && (KielHyreQuest < 46)) {
 		mes "^3355FFThere is a large, heavy^000000";
-		mes "^3355FFdoor infront of you^000000";
+		mes "^3355FFdoor infront of you.^000000";
 		next;
 
 		switch(select("Open Door","Cancel")) {
@@ -3673,7 +3676,7 @@ kh_dun01.gat,235,48,0	script	Heavy Door::HeavyDoorKHQ1	111,{
 kh_dun01.gat,76,233,0	script	Heavy Door::HeavyDoorKHQ2	111,{
 	if ((KielHyreQuest >= 38) && (KielHyreQuest < 46)) {
 		mes "^3355FFThere is a large, heavy^000000";
-		mes "^3355FFdoor infront of you^000000";
+		mes "^3355FFdoor infront of you.^000000";
 		next;
 
 		switch(select("Open Door","Cancel")) {
@@ -3726,13 +3729,13 @@ kh_school.gat,119,149,4	script	Beautiful lady::BeatifulLadyKHQ1	894,{
 		mes "[Allysia]";
 		mes "Hm? I don't think";
 		mes "I know you. Kiel Hyre";
-		mes "has only authroized Elly,";
+		mes "has only authorized Elly,";
 		mes "and a trusted friend that";
 		mes "may be helping her, to";
 		mes "be admitted to this area.";
 		next;
 		mes "[Allysia]";
-		mes "I cannot see ^FF0000Elly^000000";
+		mes "I cannot see ^FF0000Elly^000000.";
 		mes "Has she been attacked as well?";
 		mes "Are you ^FF0000Elly's friend^000000?";
 		next;
@@ -3740,7 +3743,7 @@ kh_school.gat,119,149,4	script	Beautiful lady::BeatifulLadyKHQ1	894,{
 		mes "I don't see Elly anywhere";
 		mes "around here. I can only let";
 		mes "you enter if you can identify";
-		mes "youtself as Elly's friend.";
+		mes "yourself as Elly's friend.";
 		mes "Is there anything that you";
 		mes "can present to me as proof?";
 		next;
@@ -3754,6 +3757,7 @@ kh_school.gat,119,149,4	script	Beautiful lady::BeatifulLadyKHQ1	894,{
 			break;
 
 		case 3:
+			mes "[Allysia]";
 			mes "Ah, isn't this the";
 			mes "key that Kiel Hyre gave";
 			mes "to Elly? Yes, I'm convinced";
@@ -3862,7 +3866,7 @@ kh_school.gat,122,186,4	script	Beautiful lady	894,{
 			mes "are actually robots, not humans.";
 			next;
 			mes "[Allysia]";
-			mes "The Kiel Hyre Foundations's";
+			mes "The Kiel Hyre Foundation's";
 			mes "ultimate goal is to develop";
 			mes "superior robots that will help";
 			mes "human society. As robots, we";
@@ -3936,8 +3940,8 @@ kh_school.gat,122,186,4	script	Beautiful lady	894,{
 		mes "...Kiel Hyre's secret code";
 		mes "confirmed. B_2_3 area.";
 		mes "Vital signs are normal.";
-		mes "Envelope recieved. Sending";
-		mes "Modified Puppet Designs...";
+		mes "Envelope received. Sending";
+		mes "modified Puppet Designs...";
 		next;
 		mes "[Allysia]";
 		mes "Alright, I've recieved";
@@ -3964,7 +3968,7 @@ kh_school.gat,122,186,4	script	Beautiful lady	894,{
 		mes "Secondly, meet me at the Kiel";
 		mes "Hyre Mansion in Lighthalzen.";
 		mes "Present the Golden Key to";
-		mes "be admitted to the premises";
+		mes "be admitted to the premises.";
 		delitem 7492,1; //Yellow_Keycard
 		delitem 7495,1; //Blue_Keycard
 		delitem 7496,1; //Red_Keycard
@@ -3975,7 +3979,7 @@ kh_school.gat,122,186,4	script	Beautiful lady	894,{
 		mes "is sudden, and I'm not";
 		mes "giving you a thorough";
 		mes "explanation, but something";
-		mes "horrible will happen if i don't";
+		mes "horrible will happen if I don't";
 		mes "hurry as quickly as possible.";
 		close2;
 		warp "yuno_fild08.gat",73,172;
@@ -4091,7 +4095,7 @@ OnTouch:
 			close;
 		}
 
-		mes "^3355FFyou can faintly hear^000000";
+		mes "^3355FFYou can faintly hear^000000";
 		mes "^3355FFa voice from the other^000000";
 		mes "^3355FFside of this door.^000000";
 		next;
@@ -4246,7 +4250,7 @@ kh_mansion.gat,78,55,5	script	Steward::StewardKHQ1	109,{
 			mes "[Steward]";
 			mes "Ah, Master "+strcharinfo(0)+".";
 			mes "I've been expecting your";
-			mes "arival. Please, this way.";
+			mes "arrival. Please, this way.";
 			close2;
 			warp "kh_mansion.gat",21,14;
 			end;
@@ -4271,7 +4275,7 @@ kh_mansion.gat,78,55,5	script	Steward::StewardKHQ1	109,{
 		mes "[Steward]";
 		mes "Ah, Master "+strcharinfo(0)+".";
 		mes "It is a pleasure to";
-		mes "recieve your company";
+		mes "receive your company";
 		mes "once again. Would you";
 		mes "like to see my master?";
 		next;
@@ -4301,7 +4305,7 @@ kh_mansion.gat,78,55,5	script	Steward::StewardKHQ1	109,{
 		mes "[Steward]";
 		mes "Ah, Master "+strcharinfo(0)+".";
 		mes "It is a pleasure to";
-		mes "recieve your company";
+		mes "receive your company";
 		mes "once again. Would you";
 		mes "like to see my master, or...?";
 		next;
@@ -4328,7 +4332,7 @@ kh_mansion.gat,78,55,5	script	Steward::StewardKHQ1	109,{
 			next;
 			mes "[Steward]";
 			mes "I believe it should";
-			mes "be save enough to let";
+			mes "be safe enough to let";
 			mes "you go see him now...";
 			mes "Please, hurry this way.";
 			close2;
@@ -4353,7 +4357,7 @@ kh_mansion.gat,78,55,5	script	Steward::StewardKHQ1	109,{
 kh_mansion.gat,22,28,4	script	Kiel Hyre	903,{
 	set @now_weight,MaxWeight-Weight;
 	if (@now_weight < 2000) {
-		mes "^3355FFJust as econd...";
+		mes "^3355FFJust a second...";
 		mes "You're carrying too";
 		mes "many items with you";
 		mes "right now, so you'll";
@@ -4458,6 +4462,7 @@ kh_mansion.gat,22,28,4	script	Kiel Hyre	903,{
 		}
 
 		if ((@KHQ1Read == 1) && (@KHQ2Read == 1) && (@KHQ3Read == 1)) {
+			next;
 			mes "[Kiel Hyre]";
 			mes "If you don't have";
 			mes "anymore questions for me,";
@@ -4478,6 +4483,7 @@ kh_mansion.gat,22,28,4	script	Kiel Hyre	903,{
 	}
 
 	else if (KielHyreQuest == 48) {
+		mes "[Kiel Hyre]";
 		mes "Ah, I almost forgot.";
 		mes "Please, take this as";
 		mes "a little reward for";
@@ -4599,7 +4605,7 @@ kh_mansion.gat,22,28,4	script	Kiel Hyre	903,{
 			mes "[Kiel Hyre]";
 			mes "Hahahahahahaha!";
 			mes "Oh, what an imagination~";
-			mes "That's bery ridiculous...";
+			mes "That's very ridiculous...";
 			mes "Though, I admit, maybe";
 			mes "I did design Allysia after";
 			mes "seeing that woman long ago.";
@@ -4643,8 +4649,8 @@ kh_mansion.gat,22,28,4	script	Kiel Hyre	903,{
 				mes "You got me, you got me.";
 				mes "I didn't want you to learn";
 				mes "the truth. You are correct.";
-				mes "I loved Alysia, and designed";
-				mes "my robot to look jus tlike her.";
+				mes "I loved Allysia, and designed";
+				mes "my robot to look just like her.";
 				next;
 				mes "[Kiel Hyre]";
 				mes "I could never forget her.";
@@ -4667,7 +4673,7 @@ kh_mansion.gat,22,28,4	script	Kiel Hyre	903,{
 				mes "evidence shows otherwise.";
 				next;
 
-				switch(select("Reveal Portait of Rosimiers")) {
+				switch(select("Reveal Portrait of Rosimiers")) {
 
 				case 1:
 					mes "["+strcharinfo(0)+"]";
@@ -4679,7 +4685,7 @@ kh_mansion.gat,22,28,4	script	Kiel Hyre	903,{
 					next;
 					cutin "kh_Kyel03",2;
 					mes "[Kiel Hyre]";
-					mes "ASide from that";
+					mes "Aside from that";
 					mes "James Rosimier, you";
 					mes "mean? No! I don't see";
 					mes "anything wrong with";
@@ -4777,7 +4783,7 @@ kh_mansion.gat,22,28,4	script	Kiel Hyre	903,{
 							mes "According to this note,";
 							mes "you told Allysia that you";
 							mes "wanted to see her again";
-							mes "at the place you first med.";
+							mes "at the place you first met.";
 							mes "I think you did see her again...";
 							mes "on August 19th, the day she died!";
 							next;
@@ -5169,7 +5175,7 @@ kh_mansion.gat,22,28,4	script	Kiel Hyre	903,{
 		mes "be, I've got to stop him! Oh,";
 		mes "and here, please take this";
 		mes "with my thanks for all of";
-		mes "your help, "+@KHTitle+". "+strcharinfo(0)+".";
+		mes "your help, "+@KHTitle$+" "+strcharinfo(0)+".";
 		getitem 616,1;  //Old card Album
 		delitem 7508,1; //Elisia's_Ring
 		delitem 7487,1; //Culinary_Wine
@@ -5181,7 +5187,7 @@ kh_mansion.gat,22,28,4	script	Kiel Hyre	903,{
 		delitem 7490,1; //Letter to Elly
 		delitem 7492,1; //Yellow_Keycard
 		delitem 7516,1;	//Green_Keycard
-		delitem 7491,1; //Iron_Box
+		delitem 7491,1; //Steel_box
 		delitem 7496,1; //Red_Keycard
 		delitem 7497,1; //Metal_Fragment
 		delitem 7504,1; //Power_Source
@@ -5266,7 +5272,7 @@ kh_mansion.gat,18,30,4	script	Allysia	894,{
 				next;
 				mes "[Allysia]";
 				mes "My central processing unit,";
-				mes "equivilent to your brain, is";
+				mes "equivalent to your brain, is";
 				mes "essentially a Memory Scroll";
 				mes "based on the design of the";
 				mes "Magic Spell Scrolls that you";
@@ -5279,6 +5285,7 @@ kh_mansion.gat,18,30,4	script	Allysia	894,{
 				mes "process a limited amount of";
 				mes "data. Therefore, I can't express";
 				mes "emotion similarly to a human.";
+				next;
 				break;
 
 			case 2:
@@ -5312,7 +5319,7 @@ kh_mansion.gat,18,30,4	script	Allysia	894,{
 				mes "more powerful than ordinary";
 				mes "Memory Scrolls, they were";
 				mes "problematic and were prone";
-				mes "to too many error problems";
+				mes "to too many error problems.";
 				next;
 				mes "[Allysia]";
 				mes "Second Generation robots";
@@ -5321,6 +5328,7 @@ kh_mansion.gat,18,30,4	script	Allysia	894,{
 				mes "production halted after six";
 				mes "years because they were";
 				mes "considered faulty.";
+				next;
 				break;
 
 			case 3:
@@ -5361,6 +5369,7 @@ kh_mansion.gat,18,30,4	script	Allysia	894,{
 				mes "robots can interact just like";
 				mes "real humans is proof of our";
 				mes "success in robotics.";
+				next;
 				break;
 
 			}
@@ -5398,8 +5407,8 @@ OnTouch:
 		mes "^3355FFAs you walked out of^000000";
 		mes "^3355FFthe mansion, something^000000";
 		mes "^3355FFsmashed the top of your^000000";
-		mes "^3355FFhead, and you instnatly^000000";
-		mes "^3355FFlose consiousness...^000000";
+		mes "^3355FFhead, and you instantly^000000";
+		mes "^3355FFlose consciousness...^000000";
 		close2;
 		percentheal -99,0;
 		warp "kh_mansion.gat",30,75;
@@ -5422,7 +5431,7 @@ L_StartDialog:
 		next;
 		mes "[??????]";
 		mes "Hm? Oh, you're awake";
-		mes "earlier than I though.";
+		mes "earlier than I thought.";
 		mes "You must feel confused,";
 		mes "but listen carefully. If you";
 		mes "don't, then I can't guarantee";
@@ -5572,7 +5581,7 @@ L_StartDialog:
 			mes "in our investigation.";
 			next;
 
-			switch(select("OKay","......")) {
+			switch(select("Okay","......")) {
 
 			case 1:
 				L_Help:
@@ -5916,7 +5925,7 @@ yuno.gat,250,132,2	script	Old Lady	711,{
 				mes "Oh, Allysia was such";
 				mes "a beautiful girl. So many";
 				mes "men wanted her, especially";
-				mes "that dashing Games Rosimier.";
+				mes "that dashing James Rosimier.";
 				mes "I remember hearing that they";
 				mes "were going to get married...";
 				next;
@@ -5948,7 +5957,7 @@ yuno.gat,250,132,2	script	Old Lady	711,{
 					mes "key to the Rosimier Mansion.";
 					next;
 
-					switch(select("may I borrow the Master Key?")) { 
+					switch(select("May I borrow the Master Key?")) { 
 
 					case 1:
 						mes "[Old Lady]";
@@ -6022,8 +6031,8 @@ yuno.gat,250,132,2	script	Old Lady	711,{
 			mes "Time went by, and he";
 			mes "was forced to marry his";
 			mes "fiancee. Allysia was pretty";
-			mes "devistated. I think maybe";
-			mes "that's wht she... you know...";
+			mes "devastated. I think maybe";
+			mes "that's what she... you know...";
 			next;
 			mes "[Old Lady]";
 			mes "Listen, if you want to learn";
@@ -6062,7 +6071,14 @@ yuno.gat,250,132,2	script	Old Lady	711,{
 yuno.gat,273,141,0	script	Rosimmir_Entrance	45,2,2,{
 OnTouch:
 	if (countitem(7498) < 1)
-		warp "yuno.gat",270,141;
+	{
+		mes "That mansion seems to have";
+		mes "been destroyed by the time.";
+		mes "However, the door looks like";
+		mes "it'd be still operational if";
+		mes "you had the right key.";
+		close;
+	}
 	else 
 		warp "kh_rossi.gat",20,92;
 	end;
@@ -6188,10 +6204,10 @@ kh_rossi.gat,144,287,0	script	Desk::DeskKHQ2	111,{
 	}
 
 	mes "^3355FFThe desk has^000000";
-	mes "^3355FFthree drawers^000000";
+	mes "^3355FFthree drawers.^000000";
 	next;
 
-	switch(select("First Drawer","Second Drawer","Third Drawer","Cance;")) {
+	switch(select("First Drawer","Second Drawer","Third Drawer","Cancel")) {
 
 	case 1:
 		mes "^3355FFThe first drawer is locked.^000000";
@@ -6261,7 +6277,7 @@ kh_rossi.gat,149,288,0	script	Bookshelf::BookshelfKHQ2	111,{
 	else {
 		mes "^3355FFYou encounter a dusty ^000000";
 		mes "^3355FFbookshelf filled with^000000";
-		mes "^3355FFnumerous books. You^000000";
+		mes "^3355FFnumerous books.^000000";
 		close;
 	}
 
@@ -6445,7 +6461,6 @@ yuno_fild09.gat,158,217,0	script		Wooden Board	111,{
 
 kh_kiehl01.gat,17,39,0	script	Receiver	111,{
 	if (KHKilled < 1) {
-		set KHKilled,KHKilled+1;
 		mes "^333333*BBBZZZ*^000000";
 		if (KielHyreQuest == 74) {
 			next;
@@ -6460,6 +6475,7 @@ kh_kiehl01.gat,17,39,0	script	Receiver	111,{
 		}
 
 		close2;
+		set KHKilled,KHKilled+1;
 		monster "kh_kiehl01.gat",16,32,"Alicel",1739,1,"Receiver::OnMyMobDead";
 		monster "kh_kiehl01.gat",18,31,"Aliot",1740,1,"Receiver::OnMyMobDead";
 		end;
@@ -6843,12 +6859,12 @@ OnTouch:
 
 kh_kiehl01.gat,15,179,0	script	Robots#kh1	111,{
 	if (KHKilled < 1) {
-		set KHKilled,KHKilled+1;
 		mes "^3355FFAs soon as you";
 		mes "touch the test tube,";
 		mes "a bunch of robots";
 		mes "suddenly appeared.^000000.";
 		close2;
+		set KHKilled,KHKilled+1;
 		monster "kh_kiehl01.gat",18,181,"Aliot",1740,1,"Robots#kh1::OnMyMobDead";
 		monster "kh_kiehl01.gat",18,180,"Alicel",1739,1,"Robots#kh1::OnMyMobDead";
 		monster "kh_kiehl01.gat",18,179,"Aliot",1740,1,"Robots#kh1::OnMyMobDead";
@@ -7166,7 +7182,9 @@ kh_kiehl02.gat,50,52,4	script	Kiehl#Original	902,{
 	if ((KielHyreQuest < 94) || (KielHyreQuest >= 106)) {
 		mes "[Kiehl]";
 		mes ".........";
-		close;
+		close2;
+		cutin "",255;
+		end;
 	}
 
 	if ((KielHyreQuest == 94) && (KHKilled < 5)) {
