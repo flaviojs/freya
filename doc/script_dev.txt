@@ -40,7 +40,6 @@
 -> Scripts In Need Of Aegis Conversion:
 ---------------------------------------
 
-- script/event/event_ice_cream.txt
 - script/global/global_kafra.txt
 - script/global/global_pvp.txt
 - script/global/global_refine.txt
