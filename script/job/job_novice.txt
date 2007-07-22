@@ -393,8 +393,8 @@ new_1-2.gat,99,105,3	script	Interfaces Tutor	751,{
 			set nov_3_acolyte,0;
 			set nov_3_magician,0;
 			set nov_3_archer,0;
+			next;
 		}
-		next;
 		mes "[Kris]";
 		mes "Okay, now";
 		mes "you're ready to go.";
@@ -3037,6 +3037,8 @@ new_1-2.gat,17,182,5	script	Helper	84,{
 				} else if (BaseLevel == 7) {
 					set nov_2nd_cos,18;
 					set BaseExp,BaseExp+153;
+				} else if (BaseLevel >= 8) {
+					set nov_2nd_cos,18;
 				}
 			}
 			next;
