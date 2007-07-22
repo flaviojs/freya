@@ -2850,25 +2850,29 @@ gon_in.gat,18,27,5	script	Madam#gnbs	771,{
 	mes "A vistor from out of town~";
 	mes "hohoho.";
 	next;
-	if (select("Hi, Madam~","Where's chief?") == 1) {
+	switch(select("Hi, Madam~","Where's chief?")) {
+	case 1:
 		mes "[SangHwaYeun]";
 		mes "Hi, there~";
 		close;
+	case 2:
+		if (Sex == Female) {
+			mes "[SangHwaYeun]";
+			mes "Hoho, he's upstairs.";
+			mes "You're such a pretty lady.";
+			mes "Don't be too fascinated by";
+			mes "my husband. alright?";
+			mes "Hohoho~";
+			close;
+		} else {
+			mes "[SangHwaYeun]";
+			mes "He's upstairs.";
+			mes "You are such a handsome young man";
+			mes "But not better than my huhsband.";
+			mes "Hohoho..";
+			close;
+		}
 	}
-	mes "[SangHwaYeun]";
-	if (Sex == Female) {
-		mes "Hoho, he's upstairs.";
-		mes "You're such a pretty lady.";
-		mes "Don't be too fascinated by";
-		mes "my husband. alright?";
-		mes "Hohoho~";
-	} else {
-		mes "He's upstairs.";
-		mes "You are such a handsome young man";
-		mes "But not better than my huhsband.";
-		mes "Hohoho..";
-	}
-	close;
 }
 
 gon_dun03.gat,62,222,0	script	Strange dead body#gnbs	111,{
