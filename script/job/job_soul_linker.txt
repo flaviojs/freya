@@ -276,7 +276,7 @@ morocc_in.gat,174,30,6	script	Kid#link1	716,{
 				mes "available, I'll attend to you.";
 				close;
 			} else {
-				doevent "Timer#link3::OnCommandOn";
+				donpcevent "Timer#link3::OnCommandOn";
 				mes "[Maia]";
 				mes "Great, I've finished";
 				mes "the preparations. Now";
@@ -314,7 +314,7 @@ morocc_in.gat,174,30,6	script	Kid#link1	716,{
 					mes "available, I'll attend to you.";
 					close;
 				} else {
-					doevent "Timer#link3::OnCommandOn";
+					donpcevent "Timer#link3::OnCommandOn";
 					mes "[Maia]";
 					mes "Alright then, close";
 					mes "your eyes and relax.";
@@ -409,7 +409,7 @@ OnTouch:
 				mes "[Maia]";
 				mes "This Witherless Rose will";
 				mes "wither away instead of you...";
-				doevent "Maia#link2::OnCommandEffect";
+				donpcevent "Maia#link2::OnCommandEffect";
 				next;
 				mes "[Maia]";
 				mes "This Witherless Rose will";
@@ -440,7 +440,7 @@ OnTouch:
 				mes "spirits will be able to protect";
 				mes "you and help you fight in your battles. Farewell for now, friend.";
 				close2;
-				doevent "Timer#link3::OnCommandOff";
+				donpcevent "Timer#link3::OnCommandOff";
 				warp "morocc.gat",157,47;
 				end;
 			}
@@ -550,7 +550,7 @@ job_soul.gat,35,30,6	script	Maia#link6	716,{
 				mes "[Maia]";
 				mes "This Witherless Rose will";
 				mes "wither away instead of you...";
-				doevent "Maia#link2::OnCommandEffect";
+				donpcevent "Maia#link2::OnCommandEffect";
 				next;
 				mes "[Maia]";
 				mes "This Witherless Rose will";
