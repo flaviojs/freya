@@ -96,7 +96,7 @@ in_rogue.gat,363,122,4	script	Rogue Guildsman	747,{
 				mes "Take care of your health wherever. Even not in Rogue Guild.";
 				next;
 				mes "[Markie]";
-				mes "OK, since you had apply for the job change, just take a simple exam then,";
+				mes "Okay, since you had apply for the job change, just take a simple exam then,";
 				next;
 				mes "[Markie]";
 				mes "Don't be nervous. Take a simple exam before the application form is approved,";
@@ -147,7 +147,7 @@ in_rogue.gat,363,122,4	script	Rogue Guildsman	747,{
 				mes "[Markie]";
 				mes "But, bear in mind that freedom implicated to responsiblity?";
 				mes "Since you emphasis your own freedom, you should respect others' freedom,";
-				mes "OK! Work hard then!";
+				mes "Okay! Work hard then!";
 				close2;
 				if ('@dancer_joblevel == 2) {
 					getitem 1220,1;
@@ -164,7 +164,7 @@ in_rogue.gat,363,122,4	script	Rogue Guildsman	747,{
 				mes "[Markie]";
 				mes "You're back?";
 				mes "It's must be a hardship~";
-				mes "OK, I'll help you to upgrade your job profession";
+				mes "Okay, I'll help you to upgrade your job profession.";
 				next;
 				mes "[Markie]";
 				mes "Good! You've become a Rogue.";
@@ -175,7 +175,7 @@ in_rogue.gat,363,122,4	script	Rogue Guildsman	747,{
 				mes "[Markie]";
 				mes "But, bear in mind that freedom implicated to responsiblity?";
 				mes "Since you emphasis your own freedom, you should respect others' freedom,";
-				mes "OK, work hard then!!";
+				mes "Okay, work hard then!!";
 				close2;
 				if ('@dancer_joblevel == 2) {
 					getitem 1220,1;
@@ -184,21 +184,21 @@ in_rogue.gat,363,122,4	script	Rogue Guildsman	747,{
 				}
 				end;
 			}
-			switch(select("OK,","Hold on, I've to prepare about it..")) {
+			switch(select("Okay,","Hold on, I've to prepare about it..")) {
 			case 1:
 				mes "[Markie]";
-				mes "OK, then,";
+				mes "Okay, then.";
 				break;
 			case 2:
 				mes "[Markie]";
-				mes "OK....look for me again when you're ready";
+				mes "Okay....look for me again when you're ready.";
 				close;
 			}
 			next;
 			set '@assassin_quiz,rand(1,3);
 			set '@assassin_t,0;
 			mes "[Markie]";
-			mes "OK, give me the correct answer after the question is asked, do you get it?";
+			mes "Okay, give me the correct answer after the question is asked, do you get it?";
 			next;
 			if ('@assassin_quiz == 1) {
 				mes "[Markie]";
@@ -640,7 +640,7 @@ in_rogue.gat,363,122,4	script	Rogue Guildsman	747,{
 				mes "You have done well in the exam.";
 				next;
 				mes "[Markie]";
-				mes "OK, lets start now,";
+				mes "Okay, lets start now,";
 				mes "Smith Lato will guide you for the next test...";
 				mes "Please be careful . He is in charge of keeping the money, he's a weirdie,";
 				close;
@@ -707,7 +707,7 @@ in_rogue.gat,376,23,1	script	Smith Lato	57,{
 	if (job_rogue_q == 2) {
 		mes "[Smith Lato]";
 		mes "Welcome to the Rogue Guild.";
-		mes "I will give you serious test to become a rogue.";
+		mes "I will give you serious test to become a Rogue.";
 		next;
 		mes "[Smith Lato]";
 		mes "You need to know something before you take the test...";
@@ -720,7 +720,7 @@ in_rogue.gat,376,23,1	script	Smith Lato	57,{
 		set '@item_need,rand(1,15);
 		if (('@item_need > 0) && ('@item_need < 6)) {
 			mes "[Smith Lato]";
-			mes "Firstly, Rogue's  registration fees is ^FF000010000 Zeny ^000000 and,";
+			mes "Firstly, Rogue's  registration fees is ^FF000010000 Zeny ^000000 and";
 			mes "10 Skel Bones,";
 			mes "6 Blue Herbs,";
 			set job_rogue_q,3;
@@ -731,12 +731,12 @@ in_rogue.gat,376,23,1	script	Smith Lato	57,{
 			mes "Ehm, you want some more?";
 			next;
 			mes "[Smith Lato]";
-			mes "OK, firstly";
-			mes "Gather all the items and come back again,";
+			mes "Okay, firstly.";
+			mes "Gather all the items and come back again.";
 			close;
 		} else if (('@item_need > 5) && ('@item_need < 11)) {
 			mes "[Smith Lato]";
-			mes "Firstly, Rogue's  registration fees is ^FF000010000 zeny^000000 and,";
+			mes "Firstly, Rogue's  registration fees is ^FF000010000 zeny^000000 and";
 			mes "10 Green Herbs,";
 			mes "10 Crab Shells,";
 			set job_rogue_q,4;
@@ -747,12 +747,12 @@ in_rogue.gat,376,23,1	script	Smith Lato	57,{
 			mes "Ehm, need anything else?";
 			next;
 			mes "[Smith Lato]";
-			mes "OK, firstly";
-			mes "Gather all the items and come back again,";
+			mes "Okay, firstly,";
+			mes "Gather all the items and come back again.";
 			close;
 		} else if (('@item_need > 10) && ('@item_need < 15)) {
 			mes "[Smith Lato]";
-			mes "Firstly, Rogue's  registration fees is ^FF000010000 Zeny ^000000 and,";
+			mes "Firstly, Rogue's  registration fees is ^FF000010000 Zeny ^000000 and";
 			mes "10 Yellow Herbs,";
 			mes "10 Shell,";
 			set job_rogue_q,5;
@@ -763,8 +763,8 @@ in_rogue.gat,376,23,1	script	Smith Lato	57,{
 			mes "Ehm, Do you want more?";
 			next;
 			mes "[Smith Lato]";
-			mes "OK, firstly";
-			mes "Gather all the items and come back again,";
+			mes "Okay, firstly";
+			mes "Gather all the items and come back again.";
 			close;
 		} else if ('@item_need == 15) {
 			mes "[Smith Lato]";
@@ -913,7 +913,7 @@ in_rogue.gat,376,23,1	script	Smith Lato	57,{
 				set job_rogue_q,7;
 				next;
 				mes "[Smith Lato]";
-				mes "OK, you wait for a while I am preparing,";
+				mes "Okay, you wait for a while I am preparing,";
 				mes "Let me see, oh, the next exam is";
 				close;
 			} else {
@@ -951,7 +951,7 @@ in_rogue.gat,376,23,1	script	Smith Lato	57,{
 				set job_rogue_q,7;
 				next;
 				mes "[Smith Lato]";
-				mes "OK, you wait for a while I am preparing,";
+				mes "Okay, you wait for a while I am preparing,";
 				mes "Let me see, oh, the next exam is";
 				close;
 			} else {
@@ -1178,7 +1178,7 @@ in_rogue.gat,376,23,1	script	Smith Lato	57,{
 			}
 		} else if (job_rogue_q == 8) {
 			mes "[Smith Lato]";
-			mes "Ehm, OK, you should calm down. Woo-woo";
+			mes "Ehm, Okay, you should calm down. Woo-woo";
 			next;
 			mes "[Smith Lato]";
 			mes "I will tell you your next destination.";
@@ -1715,7 +1715,7 @@ in_rogue.gat,244,39,1	script	Aragham Junior	99,{
 		next;
 		mes "[Aragham Jr.]";
 		mes "I'm a Rogue from desert. My name is Aragon Jr.";
-		mes "OK, let's have a lesson required for the Rogue~?";
+		mes "Okay, let's have a lesson required for the Rogue~?";
 		next;
 		mes "[Aragham Jr.]";
 		mes "We, the Rogue must ^0000FFAvoid from the strong monsters! Strike utterly against the weak monsters!^000000~";
@@ -1730,7 +1730,7 @@ in_rogue.gat,244,39,1	script	Aragham Junior	99,{
 		mes "When approaching the Rogue Guild~ There are some monsters appeared~ Uses your strong fist to struck your enemy~";
 		next;
 		mes "[Aragham Jr.]";
-		mes "OK! Let's go!";
+		mes "Okay! Let's go!";
 		next;
 		switch(select("Let's go!","Cancel it.")) {
 		case 1:
@@ -1791,7 +1791,7 @@ in_rogue.gat,160,34,1	script	Hollgrehen Junior	85,{
 		next;
 		mes "[Hollgrehen Jr.]";
 		mes "I'm a local Rogue. My name is Hoglren Jr.";
-		mes "OK, you come here to have a lesson required for the Rogue?";
+		mes "Okay, you come here to have a lesson required for the Rogue?";
 		next;
 		mes "[Hollgrehen Jr.]";
 		mes "We, the Rogue must ^0000FFAvoid from the strong monsters! Strike utterly against the weak monsters!^000000";
@@ -1806,7 +1806,7 @@ in_rogue.gat,160,34,1	script	Hollgrehen Junior	85,{
 		mes "Go to Rogue Guild now, and run away from the monsters.";
 		next;
 		mes "[Hollgrehen Jr.]";
-		mes "OK! Let's go!";
+		mes "Okay! Let's go!";
 		next;
 		switch(select("Start","Cancel")) {
 		case 1:
