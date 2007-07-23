@@ -128,7 +128,7 @@ alde_alche.gat,41,187,0	warp	alche17	1,1,alde_alche.gat,114,178
 alde_alche.gat,114,182,0	warp	alche18	1,1,alde_alche.gat,41,183
 
 // Rogue
-cmd_fild07.gat,355,186,0	warp	rogue01	1,1,in_rogue.gat,247,126
+cmd_fild07.gat,355,286,0	warp	rogue01	1,1,in_rogue.gat,247,126
 cmd_fild07.gat,193,117,0	warp	rogue02	1,1,in_rogue.gat,379,46
 in_rogue.gat,8,9,0	warp	rogue03	1,1,in_rogue.gat,389,389
 in_rogue.gat,244,21,0	warp	rogue04	1,1,in_rogue.gat,106,191

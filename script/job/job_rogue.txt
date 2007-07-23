@@ -232,7 +232,7 @@ in_rogue.gat,363,122,4	script	Rogue Guildsman	747,{
 				mes "[Markie]";
 				mes "3. What is the function of 'Steal Coin'?";
 				next;
-				switch(select("Steal item from player","Steal item from monster","Steal zenny from monster","Steal zenny from player")) {
+				switch(select("Steal item from player","Steal item from monster","Steal Zeny from monster","Steal Zeny from player")) {
 				case 1:
 					break;
 				case 2:
@@ -1707,7 +1707,7 @@ OnTouch:
 	end;
 }
 
-in_rogue.gat,244,39,1	script	Aragham Jr.	99,{
+in_rogue.gat,244,39,1	script	Aragham Junior	99,{
 
 	if (job_rogue_q == 9) {
 		mes "[Aragham Jr.]";
@@ -1783,7 +1783,7 @@ in_rogue.gat,244,39,1	script	Aragham Jr.	99,{
 	}
 }
 
-in_rogue.gat,160,34,1	script	Hollgrehen Jr.	85,{
+in_rogue.gat,160,34,1	script	Hollgrehen Junior	85,{
 
 	if (job_rogue_q == 11) {
 		mes "[Hollgrehen Jr.]";
@@ -1863,7 +1863,7 @@ in_rogue.gat,160,34,1	script	Hollgrehen Jr.	85,{
 	}
 }
 
-in_rogue.gat,177,109,1	script	Antonio Jr.	88,{
+in_rogue.gat,177,109,1	script	Antonio Junior	88,{
 
 	if (job_rogue_q == 10) {
 		mes "[Antonio Jr.]";
@@ -1937,6 +1937,14 @@ in_rogue.gat,177,109,1	script	Antonio Jr.	88,{
 		mes "Take a good rest for further journey.";
 		close;
 	}
+}
+
+in_rogue.gat,370,320,0	script	quest_out	139,1,1,{
+
+OnTouch:
+	set job_rogue_q,16;
+	warp "in_rogue.gat",378,113;
+	end;
 }
 
 in_rogue.gat,15,184,0	script	mob_rogue#1	139,8,1,{
