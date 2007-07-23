@@ -9,7 +9,7 @@
 //--------------------------------------------------------------
 // Script Title: Airship System	Author: Spirit Death/Bison/Tsuyuki
 //--------------------------------------------------------------
-// Revision History: v1.7
+// Revision History: v1.8
 //--------------------------------------------------------------
 //	1.0 First release [Spirit Death]
 //	1.1 Added some variables to manage when players may board the
@@ -20,6 +20,7 @@
 //	1.5 Added Rachel/Veins to the international airship route [Tsuyuki]
 //	1.6 Officialized some dialogue based on Aegis scripts [Tsuyuki]
 //	1.7 Fixed some conflicting NPC names [Tsuyuki]
+//	1.8 Updated $global vars to $@temp global vars [Tsuyuki]
 //--------------------------------------------------------------
 // Additional Notes: Airship System with 2 Routes (Almost official)
 // 1st Route: Juno -> Hugel -> Einbroch -> Lighthalzen -> Juno
@@ -29,10 +30,10 @@
 //--------------------------------------------------------------
 // Variable Information:
 //--------------------------------------------------------------
-// $at_izlude - A 0 means the airplane is not at Izlude, and a 1 means that it is at Izlude.
+// $@at_izlude - A 0 means the airplane is not at Izlude, and a 1 means that it is at Izlude.
 // jairp6 - The warp portal that goes from Juno to the Route 2 airship.
 // jairp7 - The warp portal that goes from Juno to the Route 1 airship.
-// $at_hugel - Variable for the Route 1 airship at Hugel, 1 means true, 0 means false.
+// $@at_hugel - Variable for the Route 1 airship at Hugel, 1 means true, 0 means false.
 // ein_ap01 - The warp portal that goes from Einbroch to the Route 1 airship.
 // lairp5 - The warp portal that goes from Lighthalzen to the Route 1 airship.
 
@@ -48,7 +49,7 @@ OnInit:
 	end;
 
 OnTimer1000:
-	set $route1,0;
+	set $@route1,0;
 	disablenpc "#airshipwarp1";
 	disablenpc "#airshipwarp2";
 	disablenpc "jairp7";
@@ -63,7 +64,7 @@ OnTimer51000:
 OnTimer61000:
 	enablenpc "#airshipwarp1";
 	enablenpc "#airshipwarp2";
-	set $at_hugel, 1;
+	set $@at_hugel, 1;
 	mapannounce "airplane.gat","Welcome to Hugel. Have a safe trip.",9,0x00FF00;
 	mapannounce "hugel.gat","Airship Service: The Route 1 airship has arrived at Hugel.",9,0x00FF00;
 	end;
@@ -73,10 +74,10 @@ OnTimer71000:
 	end;
 
 OnTimer81000:
-	set $route1,1;
+	set $@route1,1;
 	disablenpc "#airshipwarp1";
 	disablenpc "#airshipwarp2";
-	set $at_hugel, 0;
+	set $@at_hugel, 0;
 	mapannounce "airplane.gat","The Airship is now taking off. Our next destination is Einbroch.",9,0x00FF00;
 	mapannounce "hugel.gat","Airship Service: The Route 1 airship has departed from Hugel.",9,0x00FF00;
 	end;
@@ -98,7 +99,7 @@ OnTimer151000:
 	end;
 	
 OnTimer161000:
-	set $route1,2;
+	set $@route1,2;
 	disablenpc "#airshipwarp1";
 	disablenpc "#airshipwarp2";
 	disablenpc "ein_ap01";
@@ -123,7 +124,7 @@ OnTimer231000:
 	end;
 
 OnTimer241000:
-	set $route1,3;
+	set $@route1,3;
 	disablenpc "#airshipwarp1";
 	disablenpc "#airshipwarp2";
 	disablenpc "lairp5";
@@ -155,20 +156,20 @@ OnTimer320000:
 airplane.gat,243,74,4	script	#airshipwarp1	45,2,2,{
 
 OnTouch:
-	if ($route1 == 0) warp "hugel.gat",178,149;
-	if ($route1 == 1) warp "einbroch.gat",90,275;
-	if ($route1 == 2) warp "lighthalzen.gat",302,75;
-	if ($route1 == 3) warp "yuno.gat",85,265;
+	if ($@route1 == 0) warp "hugel.gat",178,149;
+	if ($@route1 == 1) warp "einbroch.gat",90,275;
+	if ($@route1 == 2) warp "lighthalzen.gat",302,75;
+	if ($@route1 == 3) warp "yuno.gat",85,265;
 	close;
 }
 
 airplane.gat,243,29,4	script	#airshipwarp2	45,2,2{
 
 OnTouch:
-	if ($route1 == 0) warp "hugel.gat",178,149;
-	if ($route1 == 1) warp "einbroch.gat",90,275;
-	if ($route1 == 2) warp "lighthalzen.gat",302,75;
-	if ($route1 == 3) warp "yuno.gat",85,265;
+	if ($@route1 == 0) warp "hugel.gat",178,149;
+	if ($@route1 == 1) warp "einbroch.gat",90,275;
+	if ($@route1 == 2) warp "lighthalzen.gat",302,75;
+	if ($@route1 == 3) warp "yuno.gat",85,265;
 	close;
 }	
 
@@ -184,7 +185,7 @@ OnInit:
 	end;
 
 OnTimer1000:
-	set $route2,0;
+	set $@route2,0;
 	disablenpc "#airshipwarp3";
 	disablenpc "#airshipwarp4";
 	disablenpc "jairp6";
@@ -208,7 +209,7 @@ OnTimer71000:
 	end;
 
 OnTimer81000:
-	set $route2,1;
+	set $@route2,1;
 	disablenpc "#airshipwarp3";
 	disablenpc "#airshipwarp4";
 	mapannounce "airplane_01.gat","The Airship is now taking off. Our next destination is Veins.",9,0x00FF00;
@@ -231,7 +232,7 @@ OnTimer151000:
 	end;
 
 OnTimer161000:
-	set $route2,2;
+	set $@route2,2;
 	disablenpc "#airshipwarp3";
 	disablenpc "#airshipwarp4";
 	mapannounce "airplane_01.gat","The Airship is now taking off. Our next destination is Izlude.",9,0x00FF00;
@@ -245,7 +246,7 @@ OnTimer211000:
 OnTimer221000:
 	enablenpc "#airshipwarp3";
 	enablenpc "#airshipwarp4";
-	set $at_izlude,1;
+	set $@at_izlude,1;
 	mapannounce "airplane_01.gat","Welcome to Izlude. Have a safe trip.",9,0x00FF00;
 	mapannounce "izlude.gat","Airship Service: The Route 2 airship has arrived at Izlude.",9,0x00FF00;
 	end;
@@ -255,8 +256,8 @@ OnTimer231000:
 	end;
 
 OnTimer241000:
-	set $route2,3;
-	set $at_izlude,0;
+	set $@route2,3;
+	set $@at_izlude,0;
 	disablenpc "#airshipwarp3";
 	disablenpc "#airshipwarp4";
 	disablenpc "jairp6";
@@ -288,20 +289,20 @@ OnTimer320000:
 airplane_01.gat,243,74,4	script	#airshipwarp3	45,2,2,{
 
 OnTouch:
-	if ($route2 == 0) warp "ra_fild12.gat",290,202;
-	if ($route2 == 1) warp "veins.gat",273,281;
-	if ($route2 == 2) warp "izlude.gat",202,56;
-	if ($route2 == 3) warp "yuno.gat",20,265;
+	if ($@route2 == 0) warp "ra_fild12.gat",290,202;
+	if ($@route2 == 1) warp "veins.gat",273,281;
+	if ($@route2 == 2) warp "izlude.gat",202,56;
+	if ($@route2 == 3) warp "yuno.gat",20,265;
 	close;
 }
 
 airplane_01.gat,243,29,4	script	#airshipwarp4	45,2,2,{
 
 OnTouch:
-	if ($route2 == 0) warp "ra_fild12.gat",290,202;
-	if ($route2 == 1) warp "veins.gat",273,281;
-	if ($route2 == 2) warp "izlude.gat",202,56;
-	if ($route2 == 3) warp "yuno.gat",20,265;
+	if ($@route2 == 0) warp "ra_fild12.gat",290,202;
+	if ($@route2 == 1) warp "veins.gat",273,281;
+	if ($@route2 == 2) warp "izlude.gat",202,56;
+	if ($@route2 == 3) warp "yuno.gat",20,265;
 	close;
 }
 
@@ -527,7 +528,7 @@ airport.gat,158,50,3	duplicate(einairportout)	Airport Staff	90
 hugel.gat,177,156,6	script	Airship Staff	91,{
 
 	mes "[Airport Staff]";
-	if ($at_hugel == 0) goto L_Wait;
+	if ($@at_hugel == 0) goto L_Wait;
 	mes "Welcome to the Airport.";
 	mes "How may I help you?";
 	next;
@@ -585,7 +586,7 @@ hugel.gat,177,156,6	script	Airship Staff	91,{
 izlude.gat,201,54,3	script	Airship Staff	91,{
 
 	mes "[Airport Staff]";
-	if ($at_izlude == 0) goto L_Wait;
+	if ($@at_izlude == 0) goto L_Wait;
 	mes "Welcome to the Airport.";
 	mes "How may I help you?";
 	next;
