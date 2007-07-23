@@ -2295,7 +2295,7 @@ ra_in01.gat,235,194,5	script	Katinshuell	931,{
 			mes "house for some reason.";
 			mes "Now, why would you do that?";
 			next;
-			mes "["+name+"]";
+			mes "[" + strcharinfo(0) + "]";
 			mes "You recognized";
 			mes "Bruspetti's diary";
 			mes "pretty quickly...";
@@ -2782,7 +2782,7 @@ ra_in01.gat,250,19,3	script	Mr. Shendar	929,{
 		mes "guy, the one that might";
 		mes "be Bruspetti's boyfriend...";
 		next;
-		mes "["+name+"]";
+		mes "[" + strcharinfo(0) + "]";
 		mes "Right, his name was";
 		mes "Katinshuell. That guy's";
 		mes "been acting really funny.";
@@ -3275,7 +3275,7 @@ OnTouch:
 		mes "the feeling that she";
 		mes "caved in to despair.";
 		next;
-		mes "["+name+"]";
+		mes "[" + strcharinfo(0) + "]";
 		mes "The water's not that";
 		mes "cold, or very deep...";
 		mes "And Katinshuell mentioned";
@@ -3283,7 +3283,7 @@ OnTouch:
 		mes "But she was still looking";
 		mes "at him. It's haunting...";
 		next;
-		mes "["+name+"]";
+		mes "[" + strcharinfo(0) + "]";
 		mes "I suppose she was torn...";
 		mes "She loved him, but couldn't";
 		mes "bear to live with his secret.";

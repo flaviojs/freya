@@ -9,7 +9,7 @@
 //--------------------------------------------------------------
 // Script Title: Job Quest Warps	Author: A Lot of People
 //--------------------------------------------------------------
-// Revision History: v2.5
+// Revision History: v2.6
 //--------------------------------------------------------------
 //	1.0 First version [Athena]
 //	1.1 Commented some warps because new Job quests have correct ones [Lupus]
@@ -27,6 +27,7 @@
 //	2.3 Updated Swordsman Job Change Quest warps [Tsuyuki]
 //	2.4 Updated Rogue Job Change Quest warps by decayed.cell [Tsuyuki]
 //	2.5 Updated Novice Grounds warps [Tsuyuki]
+//	2.6 Updated Dancer Job Change Quest warps [Tsuyuki]
 //--------------------------------------------------------------
 // Additional Notes: * Official-certified *
 //--------------------------------------------------------------
@@ -139,7 +140,7 @@ in_rogue.gat,247,122,0	warp	rogue09	1,1,cmd_fild07.gat,349,285
 in_rogue.gat,172,34,0	warp	rogue10	1,1,cmd_fild09.gat,341,143
 
 // Dancer
-job_duncer.gat,70,45,0	warp	duncer1	2,2,comodo.gat,193,149
+job_duncer.gat,69,43,0	warp	warp_dance	1,1,comodo.gat,185,156
 
 // Trascendence
 valkyrie.gat,48,73,0	warp	valk01	1,1,valkyrie.gat,48,64
