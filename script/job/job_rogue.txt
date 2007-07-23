@@ -110,7 +110,7 @@ in_rogue.gat,363,122,4	script	Rogue Guildsman	747,{
 				next;
 			} else if (job_rogue_q == 2) {
 				mes "[Markie]";
-				mes "See Mr. Mr. Smith,";
+				mes "See Mr. Smith Lato,";
 				mes "He will come out with some very irritating questions, he also in charge of collect the money.";
 				mes "Very stubborn...(Murmuring(";
 				next;
@@ -216,7 +216,7 @@ in_rogue.gat,363,122,4	script	Rogue Guildsman	747,{
 					break;
 				}
 				mes "[Markie]";
-				mes "2. What is the different between the cut-rate of an item of Rogue's 'Compulsion Discount' with Merchant's Discount Level 10?";
+				mes "2. What is the difference between the cut-rate of an item of Rogue's 'Compulsion Discount' with Merchant's Discount Level 10?";
 				next;
 				switch(select("3 %","2 %","1 %","0 %")) {
 				case 1:
@@ -244,7 +244,7 @@ in_rogue.gat,363,122,4	script	Rogue Guildsman	747,{
 					break;
 				}
 				mes "[Markie]";
-				mes "4. How many player required to cast 'GangSter Paradise'?";
+				mes "4. How many player required to cast 'Gangster Paradise'?";
 				next;
 				switch(select("2 Rogues + 1 Assassin","2 Thieves + 1 Rogue","3 Thief","3 Rogues")) {
 				case 1:
@@ -272,7 +272,7 @@ in_rogue.gat,363,122,4	script	Rogue Guildsman	747,{
 					break;
 				}
 				mes "[Markie]";
-				mes "6. Which of the followings could be move while using the Hide?";
+				mes "6. Which of the following could be move while using the Hide?";
 				next;
 				switch(select("Hiding","Back Sliding","Tunnel Drive","Sprinkle sand")) {
 				case 1:
@@ -286,7 +286,7 @@ in_rogue.gat,363,122,4	script	Rogue Guildsman	747,{
 					break;
 				}
 				mes "[Markie]";
-				mes "7. Which of the followings card could increases the rate of Attack ?";
+				mes "7. Which of the following card could increases the rate of Attack ?";
 				next;
 				switch(select("Andre Card","Familiar Card","Mummy Card","Marina Card")) {
 				case 1:
@@ -314,7 +314,7 @@ in_rogue.gat,363,122,4	script	Rogue Guildsman	747,{
 					break;
 				}
 				mes "[Markie]";
-				mes "9. How many SP will be consumed when practise the Double Attack using the Knife ?";
+				mes "9. How much SP will be consumed when practice the Double Attack using the Knife ?";
 				next;
 				switch(select("15","0. Because it's passively.","10. Because it's passively.","54")) {
 				case 1:
@@ -343,7 +343,7 @@ in_rogue.gat,363,122,4	script	Rogue Guildsman	747,{
 				}
 			} else if ('@assassin_quiz == 2) {
 				mes "[Markie]";
-				mes "1. The Slotted Gladius could be obtained from which monster?";
+				mes "1. The Slotted Gladius can be obtained from which monster?";
 				next;
 				switch(select("Thief Bug","Pecopeco","Desert Wolf","Kobold")) {
 				case 1:
@@ -357,7 +357,7 @@ in_rogue.gat,363,122,4	script	Rogue Guildsman	747,{
 					break;
 				}
 				mes "[Markie]";
-				mes "2. The Slotted Main Gauche could be obtained from which monster?";
+				mes "2. The Slotted Main Gauche can be obtained from which monster?";
 				next;
 				switch(select("Hornet","Desert Wolf","Marionette","Myst")) {
 				case 1:
@@ -387,7 +387,7 @@ in_rogue.gat,363,122,4	script	Rogue Guildsman	747,{
 				mes "[Markie]";
 				mes "4. Which of the following weapons is not available for Rogue?";
 				next;
-				switch(select("Kakkung","Cross Bow","Gladius","Katar")) {
+				switch(select("Gakkung","Cross Bow","Gladius","Katar")) {
 				case 1:
 					break;
 				case 2:
@@ -641,7 +641,7 @@ in_rogue.gat,363,122,4	script	Rogue Guildsman	747,{
 				next;
 				mes "[Markie]";
 				mes "OK, lets start now,";
-				mes "Mr. Smith will guide you for the next test...";
+				mes "Smith Lato will guide you for the next test...";
 				mes "Please be careful . He is in charge of keeping the money, he's a weirdie,";
 				close;
 			} else {
@@ -702,110 +702,110 @@ in_rogue.gat,363,122,4	script	Rogue Guildsman	747,{
 	}
 }
 
-in_rogue.gat,376,23,1	script	Mr. Smith	57,{
+in_rogue.gat,376,23,1	script	Smith Lato	57,{
 
 	if (job_rogue_q == 2) {
-		mes "[Mr. Smith]";
+		mes "[Smith Lato]";
 		mes "Welcome to the Rogue Guild.";
 		mes "I will give you serious test to become a rogue.";
 		next;
-		mes "[Mr. Smith]";
+		mes "[Smith Lato]";
 		mes "You need to know something before you take the test...";
 		next;
-		mes "[Mr. Smith]";
+		mes "[Smith Lato]";
 		mes "There is a registration fee so bring your own...";
 		mes "Our guild needs fund to make profit for the night business.";
 		mes "I will tell you the supplies and the the registration fee.";
 		next;
 		set '@item_need,rand(1,15);
 		if (('@item_need > 0) && ('@item_need < 6)) {
-			mes "[Mr. Smith]";
+			mes "[Smith Lato]";
 			mes "Firstly, Rogue's  registration fees is ^FF000010000 Zeny ^000000 and,";
 			mes "10 Skel Bones,";
 			mes "6 Blue Herbs,";
 			set job_rogue_q,3;
 			next;
-			mes "[Mr. Smith]";
+			mes "[Smith Lato]";
 			mes "10 Decayed Nails,";
 			mes "10 Horrendous Mouths,";
 			mes "Ehm, you want some more?";
 			next;
-			mes "[Mr. Smith]";
+			mes "[Smith Lato]";
 			mes "OK, firstly";
 			mes "Gather all the items and come back again,";
 			close;
 		} else if (('@item_need > 5) && ('@item_need < 11)) {
-			mes "[Mr. Smith]";
+			mes "[Smith Lato]";
 			mes "Firstly, Rogue's  registration fees is ^FF000010000 zeny^000000 and,";
 			mes "10 Green Herbs,";
 			mes "10 Crab Shells,";
 			set job_rogue_q,4;
 			next;
-			mes "[Mr. Smith]";
+			mes "[Smith Lato]";
 			mes "10 Scales of Snakes,";
 			mes "10 Garlet,";
 			mes "Ehm, need anything else?";
 			next;
-			mes "[Mr. Smith]";
+			mes "[Smith Lato]";
 			mes "OK, firstly";
 			mes "Gather all the items and come back again,";
 			close;
 		} else if (('@item_need > 10) && ('@item_need < 15)) {
-			mes "[Mr. Smith]";
+			mes "[Smith Lato]";
 			mes "Firstly, Rogue's  registration fees is ^FF000010000 Zeny ^000000 and,";
 			mes "10 Yellow Herbs,";
 			mes "10 Shell,";
 			set job_rogue_q,5;
 			next;
-			mes "[Mr. Smith]";
+			mes "[Smith Lato]";
 			mes "10 Grasshopper's Legs";
 			mes "10 Bear's Foots,";
 			mes "Ehm, Do you want more?";
 			next;
-			mes "[Mr. Smith]";
+			mes "[Smith Lato]";
 			mes "OK, firstly";
 			mes "Gather all the items and come back again,";
 			close;
 		} else if ('@item_need == 15) {
-			mes "[Mr. Smith]";
+			mes "[Smith Lato]";
 			mes "Let me tell you......";
 			set job_rogue_q,6;
 			next;
-			mes "[Mr. Smith]";
+			mes "[Smith Lato]";
 			mes "Let me tell you......";
 			next;
-			mes "[Mr. Smith]";
+			mes "[Smith Lato]";
 			mes "Let me tell you......";
 			mes "But......";
 			next;
-			mes "[Mr. Smith]";
+			mes "[Smith Lato]";
 			mes "Ah, it's troublesome";
 			mes "Oh, wait a minute!";
 			next;
-			mes "[Mr. Smith]";
+			mes "[Smith Lato]";
 			mes "......";
 			next;
-			mes "[Mr. Smith]";
+			mes "[Smith Lato]";
 			mes ".......";
 			next;
-			mes "[Mr. Smith]";
+			mes "[Smith Lato]";
 			mes "..........";
 			next;
-			mes "[Mr. Smith]";
+			mes "[Smith Lato]";
 			mes ".....I'm in bad mood today.";
 			mes "I didn't collect much money and,";
 			mes "some stupid gold diggers!!";
 			next;
-			mes "[Mr. Smith]";
+			mes "[Smith Lato]";
 			mes "Dang... Dealing with people is the most annoying job!!!!";
 			next;
-			mes "[Mr. Smith]";
+			mes "[Smith Lato]";
 			mes "Stupid guildmaster handed me this job. F(beep-(";
 			mapannounce "in_rogue.gat","Stupid guildmaster handed me this job. F(beep-(",8;
 			mes "What the (beep-) and (beep-) and (beep-) better (beep-) (beep-) (beep-) !!";
 			mapannounce "in_rogue.gat","What the (beep-) and (beep-) and (beep-) better (beep-) (beep-) (beep-) !!",8;
 			next;
-			mes "[Mr. Smith]";
+			mes "[Smith Lato]";
 			mes "The guy who wanted to change job was...";
 			mapannounce "in_rogue.gat","The guy who wanted to change job was...",8;
 			mes "What? What did you say?";
@@ -813,88 +813,88 @@ in_rogue.gat,376,23,1	script	Mr. Smith	57,{
 			mes "Die (beep----------------)!!";
 			mapannounce "in_rogue.gat","Die (beep----------------)!!",8;
 			next;
-			mes "[Mr. Smith]";
+			mes "[Smith Lato]";
 			mes "Why is it beeping! It's annoying!! Let me talk!!";
 			mapannounce "in_rogue.gat","Why is it beeping! It's annoying!! Let me talk!!",8;
 			next;
-			mes "[Mr. Smith]";
+			mes "[Smith Lato]";
 			mes "Who are you!!!"+strcharinfo(0)+"?!!!";
 			mapannounce "in_rogue.gat","Who are you!!!"+strcharinfo(0)+"?!!!",8;
 			mes "";
 			mes "["+strcharinfo(0)+"]";
 			mes "That is...what we called...Rogue...job profession change...";
 			next;
-			mes "[Mr. Smith]";
+			mes "[Smith Lato]";
 			mes "Do you want to be a rogue!?";
 			mes "Why should I care!! You..(beep----)!!!";
 			mapannounce "in_rogue.gat","Why should I care!! You..(beep----)!!!",8;
 			next;
-			mes "[Mr. Smith]";
+			mes "[Smith Lato]";
 			mes "Ah I dunno know I dunno know I dunno know I dunno know";
 			mapannounce "in_rogue.gat","Ah I dunno know I dunno know I dunno know I dunno know",8;
 			mes "I will tell you what you need!!";
 			mapannounce "in_rogue.gat","I will tell you what you need!!",8;
 			next;
-			mes "[Mr. Smith]";
+			mes "[Smith Lato]";
 			mes "Rogue's  registration fees is ^FF000010000 Zeny ^000000 and,!!";
 			mes "5 Chrysalis!";
 			mes "5 Empty Bottles!";
 			mes "5 Iron Ores!";
 			mes "5 Stone Hearts!";
 			next;
-			mes "[Mr. Smith]";
+			mes "[Smith Lato]";
 			mes "5 Red Herbs!";
 			mes "5 Animal Skins!!";
 			mes "5 Yellow Gemstones!!";
 			next;
-			mes "[Mr. Smith]";
+			mes "[Smith Lato]";
 			mes "5 Tooth of Bats!";
 			mes "5 Scorpion's Tails!!";
 			mes "5 Yoyo Tails!!";
 			next;
-			mes "[Mr. Smith]";
+			mes "[Smith Lato]";
 			mes "5 Monster's Feed!";
 			mes "5 Fluffs!!";
 			mes "5 Clovers!!";
 			next;
-			mes "[Mr. Smith]";
+			mes "[Smith Lato]";
 			mes "5 Feather of Birds!";
 			mes "5 Talon!!";
 			mes "5 Spawn!!";
 			next;
-			mes "[Mr. Smith]";
+			mes "[Smith Lato]";
 			mes "Don't come back here before gathering all the items!!";
 			next;
-			mes "[Mr. Smith]";
+			mes "[Smith Lato]";
 			mes "What? Frustrating? Dare you!!";
 			next;
-			mes "[Mr. Smith]";
+			mes "[Smith Lato]";
 			mes "Add another 10 more Racoon Leaf!!!";
 			next;
-			mes "[Mr. Smith]";
+			mes "[Smith Lato]";
 			mes "Ahhhhhhh!! Do you know it's difficult to be a NPC!!!!";
 			mapannounce "in_rogue.gat","Ahhhhhh!! Do you know it's difficult to be a NPC!!!!",8;
 			close;
 		}
 	} else if (job_rogue_q < 2) {
-		mes "[Mr. Smith]";
+		mes "[Smith Lato]";
 		mes "Erer...one..two...and three..";
 		mes "Office is in Morroc..Geffen...Comodo...";
 		next;
-		mes "[Mr. Smith]";
+		mes "[Smith Lato]";
 		mes "Ohh, real headache!";
 		next;
-		mes "[Mr. Smith]";
+		mes "[Smith Lato]";
 		mes "Hey, Who are you?";
 		mes "Apply from someone else if (you wish to upgrade the job profession,";
 		next;
-		mes "[Mr. Smith]";
+		mes "[Smith Lato]";
 		mes "......Oh!!! I Forgot!";
 		close;
 	} else if (job_rogue_q > 2) {
 		if (job_rogue_q == 3) {
 			if ((Zeny > 9999) && (countitem(932) > 9) && (countitem(510) > 5) && (countitem(957) > 9) && (countitem(958) > 9)) {
-				mes "[Mr. Smith]";
+				mes "[Smith Lato]";
 				mes "Firstly, Rogue's registration fees is ^FF0000 10000zeny^000000 and,";
 				mes "10 Skel Bone,";
 				mes "6 Blue Herb,";
@@ -906,25 +906,25 @@ in_rogue.gat,376,23,1	script	Mr. Smith	57,{
 				delitem 958,10;
 				set job_rogue_q,7;
 				next;
-				mes "[Mr. Smith]";
+				mes "[Smith Lato]";
 				mes "10 Decayed Nail";
 				mes "10 Horrendous Mouth";
 				mes "Erm, correct,";
 				set job_rogue_q,7;
 				next;
-				mes "[Mr. Smith]";
+				mes "[Smith Lato]";
 				mes "OK, you wait for a while I am preparing,";
 				mes "Let me see, oh, the next exam is";
 				close;
 			} else {
-				mes "[Mr. Smith]";
+				mes "[Smith Lato]";
 				mes "....What? Still not enough?";
 				mes "What? You want me to repeat all the items again?";
 				next;
-				mes "[Mr. Smith]";
+				mes "[Smith Lato]";
 				mes "Rogue's  registration fees is ^FF000010000 zeny^000000,";
 				next;
-				mes "[Mr. Smith]";
+				mes "[Smith Lato]";
 				mes "10 Skel Bone,";
 				mes "6 Blue Herb,";
 				mes "10 Decayed Nail";
@@ -933,7 +933,7 @@ in_rogue.gat,376,23,1	script	Mr. Smith	57,{
 			}
 		} else if (job_rogue_q == 4) {
 			if ((Zeny > 9999) && (countitem(511) > 9) && (countitem(964) > 9) && (countitem(926) > 9) && (countitem(910) > 9)) {
-				mes "[Mr. Smith]";
+				mes "[Smith Lato]";
 				mes "Firstly, Rogue's  registration fees is ^FF000010000 zeny^000000,";
 				mes "Green Herb 10,";
 				mes "Crab Shell10,";
@@ -944,25 +944,25 @@ in_rogue.gat,376,23,1	script	Mr. Smith	57,{
 				delitem 910,10;
 				set job_rogue_q,7;
 				next;
-				mes "[Mr. Smith]";
+				mes "[Smith Lato]";
 				mes "Scale of Snakes 10";
 				mes "Garlet 10";
 				mes "Erm, correct,";
 				set job_rogue_q,7;
 				next;
-				mes "[Mr. Smith]";
+				mes "[Smith Lato]";
 				mes "OK, you wait for a while I am preparing,";
 				mes "Let me see, oh, the next exam is";
 				close;
 			} else {
-				mes "[Mr. Smith]";
+				mes "[Smith Lato]";
 				mes "What? Still not enough?";
 				mes "What? You want me to repeat all the items again?";
 				next;
-				mes "[Mr. Smith]";
+				mes "[Smith Lato]";
 				mes "Firstly, Rogue's  registration fees is ^FF000010000 zeny^000000,";
 				next;
-				mes "[Mr. Smith]";
+				mes "[Smith Lato]";
 				mes "Green Herb10,";
 				mes "Crab Shell10,";
 				mes "Scale of Snakes 10";
@@ -971,7 +971,7 @@ in_rogue.gat,376,23,1	script	Mr. Smith	57,{
 			}
 		} else if (job_rogue_q == 5) {
 			if ((Zeny > 9999) && (countitem(508) > 9) && (countitem(935) > 9) && (countitem(940) > 9) && (countitem(948) > 9)) {
-				mes "[Mr. Smith]";
+				mes "[Smith Lato]";
 				mes "Rogue's  registration fees is ^FF000010000 zeny^000000,";
 				mes "Yellow Herb 10";
 				mes "Shell 10";
@@ -982,25 +982,25 @@ in_rogue.gat,376,23,1	script	Mr. Smith	57,{
 				delitem 948,10;
 				set job_rogue_q,7;
 				next;
-				mes "[Mr. Smith]";
+				mes "[Smith Lato]";
 				mes "Grasshopper's Leg 10";
 				mes "Bear's Foot 10";
 				mes "Erm, correct";
 				set job_rogue_q,7;
 				next;
-				mes "[Mr. Smith]";
+				mes "[Smith Lato]";
 				mes "Alright. Can you wait a minute?";
 				mes "Let's see.... Erer. Next test is...";
 				close;
 			} else {
-				mes "[Mr. Smith]";
+				mes "[Smith Lato]";
 				mes "....Hey! You don't have all of items that I asked.";
 				mes "What? Do you want me to tell you what do you need to bring?";
 				next;
-				mes "[Mr. Smith]";
+				mes "[Smith Lato]";
 				mes "Rogue's  registration fees is ^FF000010000 zeny^000000,";
 				next;
-				mes "[Mr. Smith]";
+				mes "[Smith Lato]";
 				mes "Yellow Herb 10,";
 				mes "Shell 10,";
 				mes "Grasshopper's Leg10,";
@@ -1009,7 +1009,7 @@ in_rogue.gat,376,23,1	script	Mr. Smith	57,{
 			}
 		} else if (job_rogue_q == 6) {
 			if ((Zeny > 9999) && (countitem(915) > 4) && (countitem(713) > 4) && (countitem(1002) > 4) && (countitem(953) > 4) && (countitem(507) > 4) && (countitem(919) > 4) && (countitem(715) > 4) && (countitem(913) > 4) && (countitem(904) > 4) && (countitem(942) > 4) && (countitem(528) > 4) && (countitem(914) > 4) && (countitem(705) > 4) && (countitem(916) > 4) && (countitem(917) > 4) && (countitem(908) > 4) && (countitem(945) > 4)) {
-				mes "[Mr. Smith]";
+				mes "[Smith Lato]";
 				mes "ehm...";
 				set Zeny,Zeny-10000;
 				delitem 915,5;
@@ -1031,26 +1031,26 @@ in_rogue.gat,376,23,1	script	Mr. Smith	57,{
 				delitem 945,5;
 				set job_rogue_q,8;
 				next;
-				mes "[Mr. Smith]";
+				mes "[Smith Lato]";
 				mes "You brought all of them...I feel sorry.";
 				mes "You are awesome! I didn't know, man.";
 				set job_rogue_q,8;
 				next;
-				mes "[Mr. Smith]";
+				mes "[Smith Lato]";
 				mes "I will write you a recommendation as my apology..";
 				mes "You want to be a rogue... Your kind will be benefit for guild.";
 				mes "By the way, I don't have a paper. I will write on here...";
 				getitem 1097,1;
 				next;
-				mes "[Mr. Smith]";
+				mes "[Smith Lato]";
 				mes "...Ah...Why was I angry..This is my job..";
 				mes "Phew. I can't get mad at anything... My old habit is..";
 				next;
-				mes "[Mr. Smith]";
+				mes "[Smith Lato]";
 				mes "Murmurmur...why...again..murmur...";
 				mes "How come...woo woo... I couldn't... augh... control my temper..";
 				next;
-				mes "[Mr. Smith]";
+				mes "[Smith Lato]";
 				mes "Ka...ahahack....!!!";
 				mes "A...ALIEN!!!";
 				next;
@@ -1058,167 +1058,167 @@ in_rogue.gat,376,23,1	script	Mr. Smith	57,{
 				mes "- I better come back after few moments -";
 				close;
 			} else {
-				mes "[Mr. Smith]";
+				mes "[Smith Lato]";
 				mes "The registration fee ^FF0000100000 zeny^0000000!!";
 				mes "Chrysalis 5 !";
 				mes "Empty bottles 5 !";
 				mes "Iron ore 5!";
 				next;
-				mes "[Mr. Smith]";
+				mes "[Smith Lato]";
 				mes "Stone Heart 5 !!";
 				mes "Red Herb 5 !";
 				mes "Animal's Skin 5 !!";
 				mes "Yellow Gemstone 5 !!";
 				next;
-				mes "[Mr. Smith]";
+				mes "[Smith Lato]";
 				mes "Tooth of Bat 5 !";
 				mes "Scorpion's Tail 5 !!";
 				mes "Yoyo Tail 5 !!";
 				next;
-				mes "[Mr. Smith]";
+				mes "[Smith Lato]";
 				mes "Monster's Feed 5 !";
 				mes "Fluff 5 !!";
 				mes "Clover 5 !!";
 				next;
-				mes "[Mr. Smith]";
+				mes "[Smith Lato]";
 				mes "Feather of Birds 5 !";
 				mes "Talon 5 !!";
 				mes "Spawn 5 !!";
 				mes "Racoon Leaf 10 !!";
 				next;
-				mes "[Mr. Smith]";
+				mes "[Smith Lato]";
 				mes "Don't ever come here before you gather the items!!";
 				close;
 			}
 		} else if (job_rogue_q == 7) {
 			set '@ro_q,rand(1,3);
 			if ('@ro_q == 1) {
-				mes "[Mr. Smith]";
+				mes "[Smith Lato]";
 				mes "The next invigilator to help you in the exam is";
 				mes "Ehm, the Rogue that suit you better? Who else?";
 				next;
 				set job_rogue_q,9;
-				mes "[Mr. Smith]";
+				mes "[Smith Lato]";
 				mes "Ah! Right!! He is the one!";
 				next;
-				mes "[Mr. Smith]";
+				mes "[Smith Lato]";
 				mes "Go to the east from here and find Aragham Jr. living in south side of fortress Saint Darmain.";
 				mes "He was good rogue with accounting skill and I was expecting him to work with me.";
 				next;
-				mes "[Mr. Smith]";
+				mes "[Smith Lato]";
 				mes "I don't know what his father did...but he said that everybody tried to kill me whenever they saw him.";
 				mes "He ended up being runaway...";
 				next;
-				mes "[Mr. Smith]";
+				mes "[Smith Lato]";
 				mes "Well now, our rogue guild gave him a hideout and he is hiding in there.";
 				next;
-				mes "[Mr. Smith]";
+				mes "[Smith Lato]";
 				mes "Ah, he won't let anyone to enter his house. I will tell you the password.";
 				mes "The password is ^0000FF'Aragham didn't steal refining material.'^000000 .";
 				next;
-				mes "[Mr. Smith]";
+				mes "[Smith Lato]";
 				mes "Good luck~ Fortress Sanit Darmain is not that far so quickly finish your business and come back. Quickness is a life to us~";
 				close;
 			} else if ('@ro_q == 2) {
-				mes "[Mr. Smith]";
+				mes "[Smith Lato]";
 				mes "For the next test....";
 				mes "Hmm...Who will get along with you... which rogue..";
 				set job_rogue_q,10;
 				next;
-				mes "[Mr. Smith]";
+				mes "[Smith Lato]";
 				mes "Hmm...There is.....him.";
 				mes "It may get risky.";
 				next;
-				mes "[Mr. Smith]";
+				mes "[Smith Lato]";
 				mes "His name is Antonio Jr. He is son of Mr. Antonio... Do you know him...?";
 				mes "I don't know what his father did...but he said that everybody tried to kill me whenever they saw him.";
 				next;
-				mes "[Mr. Smith]";
+				mes "[Smith Lato]";
 				mes "He is from the east Payon. Well, now he is living in the empty house on the Kokomo beach.";
 				mes "He has problem with noisy people on the beach sometimes...Anyway,";
 				next;
-				mes "[Mr. Smith]";
+				mes "[Smith Lato]";
 				mes "He is sensitive... He just throws a knife to people coming near him..";
 				mes "Our guild master persuaded him to join our guild with difficulty...";
 				next;
-				mes "[Mr. Smith]";
+				mes "[Smith Lato]";
 				mes "His skill is the best. He does best job. His kick is wonderful.";
 				mes "Well...He likes to gamble...If he likes you, he will give you the traditional instruction of rogue.";
 				next;
-				mes "[Mr. Smith]";
+				mes "[Smith Lato]";
 				mes "Ah, I will give you the password to get close to him.";
 				mes "The password is ^0000FF'Antonio doesn't like breaking refining material.'^000000 .";
 				close;
 			} else {
-				mes "[Mr. Smith]";
+				mes "[Smith Lato]";
 				mes "For the next test....";
 				mes "Hmm...Who will get along with you... which rogue..";
 				set job_rogue_q,11;
 				next;
-				mes "[Mr. Smith]";
+				mes "[Smith Lato]";
 				mes "Hmm...There is.....him.";
 				mes "It may get risky.";
 				next;
-				mes "[Mr. Smith]";
+				mes "[Smith Lato]";
 				mes "His name is Hollgrehen Jr. I was keeping my eyes on him because of art of conversation but,";
 				mes "I don't know what his father did...but his mind is twisted because everybody tried to kill me whenever they saw him.";
 				next;
-				mes "[Mr. Smith]";
+				mes "[Smith Lato]";
 				mes "He is nervous now...He attacks people who is coming near him.";
 				mes "Our guild master persuaded him to be a rogue upon his life ..";
 				next;
-				mes "[Mr. Smith]";
+				mes "[Smith Lato]";
 				mes "He made progress day after day and month after month after becoming a rogue.";
 				mes "If he likes you, he will give you the traditional instruction of rogue.";
 				next;
-				mes "[Mr. Smith]";
+				mes "[Smith Lato]";
 				mes "Ah, I will give you the password to get close to him.";
 				mes "The password is ^0000FF'My father did not steal refining material.'^000000.";
 				close;
 			}
 		} else if (job_rogue_q == 8) {
-			mes "[Mr. Smith]";
+			mes "[Smith Lato]";
 			mes "Ehm, OK, you should calm down. Woo-woo";
 			next;
-			mes "[Mr. Smith]";
+			mes "[Smith Lato]";
 			mes "I will tell you your next destination.";
 			mes "Find Hermanthorn Jr...";
 			mes "He is in ^0000FFBeacon Island,Pharos,^000000";
 			next;
-			mes "[Mr. Smith]";
+			mes "[Smith Lato]";
 			mes "along the border line of Morroc and Comodo,";
 			mes "hidden from others..";
 			mes "Ah....Do not talk about refining in front of him. Don't forget.";
 			close;
 		} else if (job_rogue_q == 9) {
-			mes "[Mr. Smith]";
+			mes "[Smith Lato]";
 			mes "Forget where is it?";
 			mes "You must jotted down the things";
 			next;
-			mes "[Mr. Smith]";
+			mes "[Smith Lato]";
 			mes "Aragham Jr. is in the south building of fortress Saint Darmain. Go to the east from here.";
 			mes "The password is ^0000FF'Aragham didn't steal refining material.'^000000";
 			close;
 		} else if (job_rogue_q == 10) {
-			mes "[Mr. Smith]";
+			mes "[Smith Lato]";
 			mes "Forgot where it is?";
 			mes "You must jotted down the things";
 			next;
-			mes "[Mr. Smith]";
+			mes "[Smith Lato]";
 			mes "Antonio Jr. is in the building located in Kokomo beach.";
 			mes "The password is ^0000FF'Antonio doesn't like breaking refining material.'^000000";
 			close;
 		} else if (job_rogue_q == 11) {
-			mes "[Mr. Smith]";
+			mes "[Smith Lato]";
 			mes "Forgot where it is?";
 			mes "You must jotted down the things";
 			next;
-			mes "[Mr. Smith]";
+			mes "[Smith Lato]";
 			mes "From here to a region in Morroc, inside the building at the Bastion City Santoleman (South), there is a person named Hogland Jr.";
 			mes "The secret signal is ^0000FF'My dad didn't Forge items Shift to another place,^000000";
 			close;
 		} else if (job_rogue_q > 11) {
-			mes "[Mr. Smith]";
+			mes "[Smith Lato]";
 			mes "Supposed to be none of my business?";
 			close;
 		}
@@ -1515,7 +1515,7 @@ in_rogue.gat,272,135,1	script	Hermanthorn Jr.	85,{
 	if (job_rogue_q == 8) {
 		mes "[Hermanthorn Jr.]";
 		mes "....you're assigned from the Rogue Guild";
-		mes "It seems that Mr. Smith is mad again";
+		mes "It seems that Smith Lato is mad again";
 		next;
 		mes "[Hermanthorn Jr.]";
 		mes "Did you bring all the items he asked and bringing for him?";
