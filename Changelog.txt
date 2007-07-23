@@ -13,6 +13,9 @@
 
 Date	Added
 
+2007/07/23
+	* Fixed: A memory leak / script bug with the Somatology Lab random MvP spawner [lav0s/Tsuyuki]
+
 2007/07/22
 	* Updated: Translated a good portion of battle_athena.conf [Tsuyuki]
 	 - Note: Partial credit to Zarin and kosasi

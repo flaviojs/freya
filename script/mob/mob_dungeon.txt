@@ -438,49 +438,46 @@ lhz_dun03.gat,138,138,36,34	monster	High Priest Margaretha	1643,1,3300000,300000
 lhz_dun03.gat,138,138,36,34	monster	High Wizard Kathryne	1645,1,2580000,2460000,1
 
 // Random MvP Spawn Script
-lhz_dun03.gat,1,1,3 script BioPickMvP 139,{
+lhz_dun03.gat,0,0,0	script	#LhzMVP	-1,{
 
 OnInit:
-    set $@BioMvP,rand(6);
-    if ($@BioMvP == 0) goto BioLordKnight;
-    if ($@BioMvP == 1) goto BioAssassinCross;
-    if ($@BioMvP == 2) goto BioMasterSmith;
-    if ($@BioMvP == 3) goto BioHighPriest;
-    if ($@BioMvP == 4) goto BioSniper;
-    if ($@BioMvP == 5) goto BioHighWizard;
+	initnpctimer;
+	end;
 
-    BioLordKnight:
-        monster "lhz_dun03.gat",0,0,"Lord Knight Seyren",1646,1,"BioPickMvP::OnBioDeadMvP";
-        end;
+OnTimer6000000:
+OnTimer6300000:
+OnTimer6600000:
+OnTimer6900000:
+OnTimer7200000:
+OnTimer7500000:
+	if(rand(6))
+		end;
 
-    BioAssassinCross:
-        monster "lhz_dun03.gat",0,0,"Assassin Cross Eremes",1647,1,"BioPickMvP::OnBioDeadMvP";
-        end;
+OnTimer7800000:
+	stopnpctimer;
+	switch(rand(6)) {
+	case 0: set '@x,140; set '@y,232; break;
+	case 1: set '@x,75; set '@y,138; break;
+	case 2: set '@x,140; set '@y,87; break;
+	case 3: set '@x,205; set '@y,140; break;
+	case 4: set '@x,123; set '@y,137; break;
+	case 5: set '@x,157; set '@y,137; break;
+	}
+	monster "lhz_dun03.gat",'@x,'@y,"--ja--",1646+rand(6),1,"#LhzMVP::OnKilled";
+	end;
 
-    BioMasterSmith:
-        monster "lhz_dun03.gat",0,0,"Mastersmith Howard",1648,1,"BioPickMvP::OnBioDeadMvP";
-        end;
-
-    BioHighPriest:
-        monster "lhz_dun03.gat",0,0,"High Priest Margaretha",1649,1,"BioPickMvP::OnBioDeadMvP";
-        end;
-
-    BioSniper:
-        monster "lhz_dun03.gat",0,0,"Sniper Cecil",1650,1,"BioPickMvP::OnBioDeadMvP";
-        end;
-
-    BioHighWizard:
-        monster "lhz_dun03.gat",0,0,"High Wizard Kathryne",1651,1,"BioPickMvP::OnBioDeadMvP";
-        end;
-
-    OnBioDeadMvP:
-        initnpctimer;
-        setnpctimer 0;
-        end;
-
-    OnTimer7200000:
-        stopnpctimer;
-        goto OnInit;
+OnKilled:
+	switch(rand(6)) {
+	case 0: set '@x,183; set '@y,97; break;
+	case 1: set '@x,97; set '@y,96; break;
+	case 2: set '@x,47; set '@y,139; break;
+	case 3: set '@x,231; set '@y,140; break;
+	case 4: set '@x,139; set '@y,211; break;
+	case 5: set '@x,139; set '@y,259; break;
+	}
+	monster "lhz_dun03.gat",'@x,'@y,"--ja--",1640+rand(6),1;
+	initnpctimer;
+	end;
 }
 
 
