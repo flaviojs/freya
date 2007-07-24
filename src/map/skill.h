@@ -889,7 +889,32 @@ enum {
 	DE_TWINATTACK,//#ツインアタック,//#
 	DE_WINDATTACK,//#ウィンドアタック,//#
 	DE_WATERATTACK	=	615,//#ウォーターアタック,//#
-	
+
+	NPC_EARTHQUAKE		=	653,//#アースクエイク#
+	NPC_FIREBREATH,		//#ファイアブレス#
+	NPC_ICEBREATH,		//#アイスブレス#
+	NPC_THUNDERBREATH,	//#サンダーブレス#
+	NPC_ACIDBREATH,		//#アシッドブレス#
+	NPC_DARKNESSBREATH,	//#ダークネスブレス#
+	NPC_DRAGONFEAR,		//#ドラゴンフィアー#
+	NPC_BLEEDING,		//#出血攻撃#
+	NPC_PULSESTRIKE,	//#パルスストライク#
+	NPC_HELLJUDGEMENT,	//#ヘルジャッジメント#
+	NPC_WIDESILENCE,	//#範囲沈黙攻撃#
+	NPC_WIDEFREEZE,		//#範囲凍結攻撃#
+	NPC_WIDEBLEEDING,	//#範囲出血攻撃#
+	NPC_WIDESTONE,		//#範囲石化攻撃#
+	NPC_WIDECONFUSE,	//#範囲混乱攻撃#
+	NPC_WIDESLEEP,		//#範囲睡眠攻撃#
+	NPC_WIDESIGHT,		//#ワイドサイト#
+	NPC_EVILLAND,		//#イビルランド#
+	NPC_MAGICMIRROR,	//#マジックミラー#
+	NPC_SLOWCAST,		//#スロウキャスト#
+	NPC_CRITICALWOUND,	//#致命傷攻撃#
+	NPC_EXPULSION,		//#エクスパルシオン#
+	NPC_STONESKIN,		//#ストーンスキン#
+	NPC_ANTIMAGIC,		//#アンチマジック#
+
 	KN_CHARGEATK	=	1001,//#チャージアタック#
 	CR_SHRINK		=	1002,//#シュリンク#
 	AS_SONICACCEL	=	1003,//#ソニックアクセラレーション#

@@ -1,3 +1,15 @@
+//2313 by Blaze
+
+・以下のベインス追加NPCスキルを実装
+	「アースクエイク」「ファイアブレス」「アイスブレス」「サンダーブレス」「アシッドブレス」
+	「ダークネスブレス」「出血攻撃」「パルスストライク」「ヘルジャッジメント」「イビルランド」
+	（skill.c、skill.h、battle.c、
+		skill_db.txt、skill_db2.txt、skill_cast_db.txt、skill_require_db2.txt、skill_unit_db.txt）
+・古く青い箱、古い紫色の箱、古いカード帖から得られるアイテムをラヘル時点に更新
+	（item_bluebox.txt、item_violetbox.txt、item_cardalbum.txt）
+・フィゲルのWarpを修正
+	（npc_warp_town.txt）
+----------------------------------------
 //2312 by Blaze
 
 ・TheSignクエスト実装

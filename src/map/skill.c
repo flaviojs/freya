@@ -1133,6 +1133,10 @@ int skill_additional_effect( struct block_list* src, struct block_list *bl,int s
 		if((!tsc_data || tsc_data[SC_FREEZE].timer == -1) && atn_rand()%100 < rate)
 			status_change_start(bl,SC_FREEZE,skilllv,0,0,0,skill_get_time2(skillid,skilllv)*(1-sc_def_mdef/100),0);
 		break;
+	case NPC_BLEEDING:		/* 出血攻撃 */
+		if(atn_rand()%100 < skilllv*20)
+			status_change_start(bl,SC_BLEED,skilllv,0,0,0,skill_get_time2(skillid,skilllv),0);
+		break;
 	}
 
 	//物理通常攻撃なら混乱終了
@@ -1941,6 +1945,7 @@ int skill_castend_damage_id( struct block_list* src, struct block_list *bl,int s
 	case NJ_KASUMIKIRI:		/* 霞斬り */
 	case HFLI_MOON:
 	case HFLI_SBR44:
+	case NPC_BLEEDING:		/* 出血攻撃 */
 		battle_skill_attack(BF_WEAPON,src,src,bl,skillid,skilllv,tick,flag);
 		break;
 	case GS_DISARM:			/* ディスアーム */
@@ -2474,6 +2479,124 @@ int skill_castend_damage_id( struct block_list* src, struct block_list *bl,int s
 					skill_castend_damage_id);
 		}
 		break;
+	case NPC_EARTHQUAKE:		/* アースクエイク */
+		if(flag&1) {
+			if(bl->id != skill_area_temp[1])
+				battle_skill_attack(BF_WEAPON,src,src,bl,skillid,skilllv,tick,skill_area_temp[0]);
+		} else {
+			int ar = 5+(skilllv-1)%5*2;
+			skill_area_temp[0]=0;
+			skill_area_temp[1]=bl->id;
+			map_foreachinarea(skill_area_sub,
+				src->m,src->x-ar,src->y-ar,src->x+ar,src->y+ar,0,
+				src,skillid,skilllv,tick,flag|BCT_ENEMY,
+				skill_area_sub_count);
+			map_foreachinarea(skill_area_sub,
+				src->m,src->x-ar,src->y-ar,src->x+ar,src->y+ar,0,
+				src,skillid,skilllv,tick, flag|BCT_ENEMY|1,
+				skill_castend_damage_id);
+		}
+		break;
+	case NPC_FIREBREATH:		/* ファイアブレス */
+	case NPC_ICEBREATH:		/* アイスブレス */
+	case NPC_THUNDERBREATH:		/* サンダーブレス */
+	case NPC_ACIDBREATH:		/* アシッドブレス */
+	case NPC_DARKNESSBREATH:	/* ダークネスブレス */
+		if(flag&1) {
+			if(bl->id != skill_area_temp[1])
+				battle_skill_attack(BF_WEAPON,src,src,bl,skillid,skilllv,tick,skill_area_temp[0]|(flag&0xf00000));
+		} else {
+			int dir = map_calc_dir(src,bl->x,bl->y);
+			map_foreachinpath(
+				skill_area_sub,bl->m,src->x,src->y,src->x + 14*dirx[dir],src->y + 14*diry[dir],0,
+				src,skillid,skilllv,tick,flag|BCT_ENEMY|1,
+				skill_castend_damage_id);
+			if(diry[dir] == 0) {
+				map_foreachinpath(
+					skill_area_sub,bl->m,src->x,src->y + 1,src->x + 14*dirx[dir],src->y + 14*diry[dir] + 1,0,
+					src,skillid,skilllv,tick,flag|BCT_ENEMY|1,skill_castend_damage_id);
+				map_foreachinpath(
+					skill_area_sub,bl->m,src->x,src->y - 1,src->x + 14*dirx[dir],src->y + 14*diry[dir] - 1,0,
+					src,skillid,skilllv,tick,flag|BCT_ENEMY|1,skill_castend_damage_id);
+				map_foreachinpath(
+					skill_area_sub,bl->m,src->x,src->y + 2,src->x + 14*dirx[dir],src->y + 14*diry[dir] + 2,0,
+					src,skillid,skilllv,tick,flag|BCT_ENEMY|1,skill_castend_damage_id);
+				map_foreachinpath(
+					skill_area_sub,bl->m,src->x,src->y - 2,src->x + 14*dirx[dir],src->y + 14*diry[dir] - 2,0,
+					src,skillid,skilllv,tick,flag|BCT_ENEMY|1,skill_castend_damage_id);
+				map_foreachinpath(
+					skill_area_sub,bl->m,src->x,src->y + 3,src->x + 14*dirx[dir],src->y + 14*diry[dir] + 3,0,
+					src,skillid,skilllv,tick,flag|BCT_ENEMY|1,skill_castend_damage_id);
+				map_foreachinpath(
+					skill_area_sub,bl->m,src->x,src->y - 3,src->x + 14*dirx[dir],src->y + 14*diry[dir] - 3,0,
+					src,skillid,skilllv,tick,flag|BCT_ENEMY|1,skill_castend_damage_id);
+				map_foreachinpath(
+					skill_area_sub,bl->m,src->x,src->y + 4,src->x + 14*dirx[dir],src->y + 14*diry[dir] + 4,0,
+					src,skillid,skilllv,tick,flag|BCT_ENEMY|1,skill_castend_damage_id);
+				map_foreachinpath(
+					skill_area_sub,bl->m,src->x,src->y - 4,src->x + 14*dirx[dir],src->y + 14*diry[dir] - 4,0,
+					src,skillid,skilllv,tick,flag|BCT_ENEMY|1,skill_castend_damage_id);
+			} else {
+				map_foreachinpath(
+					skill_area_sub,bl->m,src->x + 1,src->y,src->x + 14*dirx[dir] + 1,src->y + 14*diry[dir],0,
+					src,skillid,skilllv,tick,flag|BCT_ENEMY|1,skill_castend_damage_id);
+				map_foreachinpath(
+					skill_area_sub,bl->m,src->x - 1,src->y,src->x + 14*dirx[dir] - 1,src->y + 14*diry[dir],0,
+					src,skillid,skilllv,tick,flag|BCT_ENEMY|1,skill_castend_damage_id);
+				map_foreachinpath(
+					skill_area_sub,bl->m,src->x + 2,src->y,src->x + 14*dirx[dir] + 2,src->y + 14*diry[dir],0,
+					src,skillid,skilllv,tick,flag|BCT_ENEMY|1,skill_castend_damage_id);
+				map_foreachinpath(
+					skill_area_sub,bl->m,src->x - 2,src->y,src->x + 14*dirx[dir] - 2,src->y + 14*diry[dir],0,
+					src,skillid,skilllv,tick,flag|BCT_ENEMY|1,skill_castend_damage_id);
+				map_foreachinpath(
+					skill_area_sub,bl->m,src->x + 3,src->y,src->x + 14*dirx[dir] + 3,src->y + 14*diry[dir],0,
+					src,skillid,skilllv,tick,flag|BCT_ENEMY|1,skill_castend_damage_id);
+				map_foreachinpath(
+					skill_area_sub,bl->m,src->x - 3,src->y,src->x + 14*dirx[dir] - 3,src->y + 14*diry[dir],0,
+					src,skillid,skilllv,tick,flag|BCT_ENEMY|1,skill_castend_damage_id);
+				map_foreachinpath(
+					skill_area_sub,bl->m,src->x + 4,src->y,src->x + 14*dirx[dir] + 4,src->y + 14*diry[dir],0,
+					src,skillid,skilllv,tick,flag|BCT_ENEMY|1,skill_castend_damage_id);
+				map_foreachinpath(
+					skill_area_sub,bl->m,src->x - 4,src->y,src->x + 14*dirx[dir] - 4,src->y + 14*diry[dir],0,
+					src,skillid,skilllv,tick,flag|BCT_ENEMY|1,skill_castend_damage_id);
+			}
+		}
+		break;
+	case NPC_PULSESTRIKE:		/* パルスストライク */
+		if(flag&1){
+			/* 個別にダメージを与える */
+			if(bl->id != skill_area_temp[1]) {
+				if(battle_skill_attack(BF_WEAPON,src,src,bl,skillid,skilllv,tick,skill_area_temp[0]|(flag&0xf00000)))
+					skill_blown(src,bl,skill_area_temp[2]);
+			}
+		} else {
+			skill_area_temp[1] = bl->id;
+			skill_area_temp[2] = skill_get_blewcount(skillid,skilllv);
+			map_foreachinarea(skill_area_sub,
+				src->m,src->x-7,src->y-7,src->x+7,src->y+7,0,
+				src,skillid,skilllv,tick, flag|BCT_ENEMY|1,
+				skill_castend_damage_id);
+		}
+		break;
+	case NPC_HELLJUDGEMENT:		/* ヘルジャッジメント */
+		if(flag&1){
+			/* 個別にダメージを与える */
+			if(bl->id != skill_area_temp[1]) {
+				if(battle_skill_attack(BF_WEAPON,src,src,bl,skillid,skilllv,tick,skill_area_temp[0]|(flag&0xf00000)))
+					status_change_start(bl,SC_CURSE,skilllv,0,0,0,skill_get_time2(skillid,skilllv),0);
+			}
+		} else {
+			skill_area_temp[1] = bl->id;
+			skill_area_temp[2] = skill_get_blewcount(skillid,skilllv);
+			map_foreachinarea(skill_area_sub,
+				src->m,src->x-14,src->y-14,src->x+14,src->y+14,0,
+				src,skillid,skilllv,tick, flag|BCT_ENEMY|1,
+				skill_castend_damage_id);
+		}
+		break;
+
 	case ALL_RESURRECTION:		/* リザレクション */
 	case PR_TURNUNDEAD:			/* ターンアンデッド */
 		if(battle_check_undead(status_get_race(bl),status_get_elem_type(bl)))
@@ -5864,7 +5987,8 @@ int skill_castend_pos2( struct block_list *src, int x,int y,int skillid,int skil
 	case HT_TALKIEBOX:			/* トーキーボックス */
 	case GS_GROUNDDRIFT:		/* グラウンドドリフト*/
 	case NJ_TATAMIGAESHI:		/* 畳返し */
-	case NJ_BAKUENRYU:			/* 爆炎龍*/
+	case NJ_BAKUENRYU:			/* 爆炎龍 */
+	case NPC_EVILLAND:			/* イビルランド */
 		skill_unitsetting(src,skillid,skilllv,x,y,0);
 		break;
 	case HW_GRAVITATION:		//グラビテーションフィールド
@@ -6310,6 +6434,10 @@ struct skill_unit_group *skill_unitsetting( struct block_list *src, int skillid,
 		} else {
 			val1 = 13203+atn_rand()%5;
 		}
+		break;
+	case NPC_EVILLAND:		/* イビルランド */
+		val1 = skill_calc_heal(src,skillid,skilllv,(skilllv>6)?666:skilllv*100,1);
+		interval = interval + 500;
 		break;
 	}
 
@@ -7066,6 +7194,26 @@ int skill_unit_onplace_timer(struct skill_unit *src,struct block_list *bl,unsign
 		clif_changelook(&src->bl,LOOK_BASE,0x88);
 		sg->limit=DIFF_TICK(tick,sg->tick)+1500;
 		break;
+	case 0xc7:	/* イビルランド */
+		{
+			int race=status_get_race(bl);
+			sc_data=status_get_sc_data(bl);
+
+			if(battle_check_undead(race,status_get_elem_type(bl)) || race==6) {
+				int heal = sg->val1;
+				if(status_get_hp(bl) >= status_get_max_hp(bl))
+					break;
+				clif_skill_nodamage(&src->bl,bl,AL_HEAL,heal,1);
+				battle_heal(NULL,bl,heal,0,0);
+			}
+			else if(bl->type==BL_PC) {
+				if(battle_skill_attack(BF_MAGIC,ss,&src->bl,bl,sg->skill_id,sg->skill_lv,tick,0)) {
+					if(atn_rand()%100 < sg->skill_lv*5)
+						status_change_start(bl,SC_BLIND,sg->skill_lv,0,0,0,skill_get_time2(sg->skill_id,sg->skill_lv),0);
+				}
+			}
+			break;
+		}
 	}
 
 	if(bl->type==BL_MOB && ss!=bl)	/* スキル使用条件のMOBスキル */
