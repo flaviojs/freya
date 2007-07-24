@@ -1611,13 +1611,13 @@ OnCommandOn:
 	end;
 
 OnCommandReset:
-	set $@mobcount1,0;
+	set 'count,0;
 	killmonster "job_hunte.gat","Manager#hnt::OnMyMobDead";
 	end;
 
 OnMyMobDead:
-	set $@mobcount1,$@mobcount1+1;
-	if ($@mobcount1 >= 4) {
+	set 'count,'count+1;
+	if ('count >= 4) {
 		mapannounce "job_hunte.gat","Okay, good job... Now, find the switch in the center of the map!! Be careful of the traps!!",8;
 		set job_hunter_q,14;
 		enablenpc "Switch#hnt";
@@ -1762,8 +1762,8 @@ OnCommandOn:
 	end;
 
 OnCommandReset:
-	set $@mobcount1,0;
 	killmonster "job_hunte.gat","Manager#hnt2::OnMyMobDead";
+	donpcevent "Manager#hnt::OnCommandReset";
 	end;
 
 OnMyMobDead:

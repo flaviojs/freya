@@ -9,11 +9,10 @@
 //--------------------------------------------------------------
 // Script Title: Mail Boxes	Author:	Tsuyuki
 //--------------------------------------------------------------
-// Revision History: v1.2
+// Revision History: v1.1
 //--------------------------------------------------------------
 //	1.0 First version, converted from Aegis [Tsuyuki]
-//	1.1 Added a Mailbox to Veins [Tsuyuki]
-//	1.2 Added Rachel/Hugel Mail Boxes, officialized dialogue [Tsuyuki]
+//	1.1 Added official Mailboxes to Hugel/Rachel/Veins [Tsuyuki]
 //--------------------------------------------------------------
 // Additional Notes: * Official-certified / Aegis-certified *
 //--------------------------------------------------------------

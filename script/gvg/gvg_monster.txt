@@ -7,24 +7,26 @@
 //              /_/  |_|\____|_|  \___/|_|  \__,_|              
 //                 http://aurora.deltaanime.net                 
 //--------------------------------------------------------------
-// Script Title: GvG Monster System	Author: jAthena/Yor
+// Script Title: GvG Monster System	Author: jAthena/Yor/Tsuyuki
 //--------------------------------------------------------------
 // Revision History: v1.1
 //--------------------------------------------------------------
 //	1.0 First version [jAthena]
 //	1.1 Translated into English [Yor]
+//	1.2 Updated dialogue to iRO Aegis [Tsuyuki]
 //--------------------------------------------------------------
-// Additional Notes: N/A
+// Additional Notes: * Official-certified *
 //--------------------------------------------------------------
 
 
-//=========================================================================
+//==============================================================
 // Emperium and a monsters summoning functions.
 // (They are called when Emperium is destroyed, when castle changes of guild, and at start of WoE).
 //	callfunc "F_AgitSummon","AgitCode";
-//-------------------------------------------------------------------------
+//--------------------------------------------------------------
 
 function	script	F_AgitSummon	{
+
 	// This function changes AgitCode into a numerical value.
 	function sF_Enum {
 		if (getarg(0)=="L1") return 11;
@@ -49,8 +51,7 @@ function	script	F_AgitSummon	{
 		if (getarg(0)=="V5") return 45;
 		return 0;
 	}
-
-	// Summoning of the Emperium
+	// Summoning of the Emperium.
 	switch(sF_Enum(getarg(0))) {
 		case 11: monster "aldeg_cas01.gat",216,24,"Emperium",1288,1,"AgitExe#L1::OnAgitBreak"; 	break;
 		case 12: monster "aldeg_cas02.gat",214,24,"Emperium",1288,1,"AgitExe#L2::OnAgitBreak"; 	break;
@@ -73,10 +74,9 @@ function	script	F_AgitSummon	{
 		case 44: monster "prtg_cas04.gat",292,14,"Emperium",1288,1,"AgitExe#V4::OnAgitBreak"; 	break;
 		case 45: monster "prtg_cas05.gat",266,266,"Emperium",1288,1,"AgitExe#V5::OnAgitBreak"; 	break;
 	}
-	set '@dummy,getmapxy('@map$,'@dummy,'@dummy,1);		// Only '@map$ is used.
+	set '@dummy,getmapxy('@map$,'@dummy,'@dummy,1);	// Only '@map$ is used.
 	if (getcastledata('@map$,1))
-		return;					// Stop here if castle have a guild.
-
+		return;	// Stop here if castle have a guild.
 	// Setup of the monsters' coordinates for each castle.
 	switch(sF_Enum(getarg(0))) {
 		case 11: setarray '@pos,216,23; 	break;
@@ -176,7 +176,7 @@ function	script	F_AgitSummon	{
 }
 
 
-//=========================================================================
+//==============================================================
 // Guardian summons function
 // (It is called to summon by the Inter-server connection or the steward.)
 //	callfunc "F_GuardianCall","AgitCode",Num,Mes;
@@ -185,9 +185,10 @@ function	script	F_AgitSummon	{
 //	"AgitCode" -> Code of the location/place (example: L1, B2, C3, V4)
 //	    Num    -> The ID of the Guardian to summon: 10-17
 //	    Mes    -> 0: No message, 1: There is a message (When it is a steward.)
-//-------------------------------------------------------------------------
+//--------------------------------------------------------------
 
 function	script	F_GuardianCall	{
+
 	if (getarg(0)=="L1") {
 		switch(getarg(1)) {
 			case 10: monster "aldeg_cas01.gat",17,218,"--ja--",1287,1,"#GuardianKilled::On_L1_10"; 	break;
@@ -428,7 +429,7 @@ function	script	F_GuardianCall	{
 			case 17: monster "prtg_cas05.gat",44,248,"--ja--",1285,1,"#GuardianKilled::On_V5_17"; 	break;
 		}
 	}
-	if (getarg(2)) {		// When the call origin (of the function) is a steward
+	if (getarg(2)) {
 		mes "[Steward "+strnpcinfo(0)+"]";
 		mes "The Guardian was set up.";
 		mes "The Guardian will defend our castle";
@@ -439,11 +440,12 @@ function	script	F_GuardianCall	{
 }
 
 
-//=========================================================================
+//==============================================================
 // We change castle data when a Guardian is destroyed.
-//-------------------------------------------------------------------------
+//--------------------------------------------------------------
 
 -	script	#GuardianKilled	139,{
+
 	// Aldebaran
 	On_L1_10: setcastledata "aldeg_cas01.gat",10,0; end;
 	On_L1_11: setcastledata "aldeg_cas01.gat",11,0; end;
@@ -485,6 +487,7 @@ function	script	F_GuardianCall	{
 	On_L5_15: setcastledata "aldeg_cas05.gat",15,0; end;
 	On_L5_16: setcastledata "aldeg_cas05.gat",16,0; end;
 	On_L5_17: setcastledata "aldeg_cas05.gat",17,0; end;
+
 	// Geffen
 	On_B1_10: setcastledata "gefg_cas01.gat",10,0; end;
 	On_B1_11: setcastledata "gefg_cas01.gat",11,0; end;
@@ -526,6 +529,7 @@ function	script	F_GuardianCall	{
 	On_B5_15: setcastledata "gefg_cas05.gat",15,0; end;
 	On_B5_16: setcastledata "gefg_cas05.gat",16,0; end;
 	On_B5_17: setcastledata "gefg_cas05.gat",17,0; end;
+
 	// Payon
 	On_C1_10: setcastledata "payg_cas01.gat",10,0; end;
 	On_C1_11: setcastledata "payg_cas01.gat",11,0; end;
@@ -567,6 +571,7 @@ function	script	F_GuardianCall	{
 	On_C5_15: setcastledata "payg_cas05.gat",15,0; end;
 	On_C5_16: setcastledata "payg_cas05.gat",16,0; end;
 	On_C5_17: setcastledata "payg_cas05.gat",17,0; end;
+
 	// Prontera
 	On_V1_10: setcastledata "prtg_cas01.gat",10,0; end;
 	On_V1_11: setcastledata "prtg_cas01.gat",11,0; end;

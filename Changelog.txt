@@ -8,10 +8,16 @@
                  http://aurora.deltaanime.net                 
                      Aurora SVN Changelog                     
 --------------------------------------------------------------
-                Current Revision: jAthena 2311
+                Current Revision: jAthena 2313
 --------------------------------------------------------------
 
 Date	Added
+
+2007/07/24
+	* Added: The PvP System NPCs, converted from Aegis by L0ne_W0lf [Tsuyuki]
+	* Updated: Most of the GvG system with iRO Aegis dialogue [Tsuyuki]
+	* Updated: Project to jAthena 2313 (Latest) [Tsuyuki]
+	* Changed: Optimized some NPC script variables [Tsuyuki]
 
 2007/07/23
 	* Added: The Dancer Job Change Quest, converted from Aegis [Tsuyuki]
@@ -43,7 +49,7 @@ Date	Added
 	* Removed: Ragnarok Online Alpha warps [Tsuyuki]
 	* Changed: Script folder structure slightly [Tsuyuki]
 	* Updated: Configuration files a little bit [Tsuyuki]
-	* Updated: Project to jAthena 2311 (Latest) [Tsuyuki]
+	* Updated: Project to jAthena 2311 [Tsuyuki]
 
 2007/07/17
 	* Updated: All Town Shops to official, converted from Aegis by L0ne_W0lf [Tsuyuki]

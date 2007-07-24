@@ -14,28 +14,28 @@
 //	1.0 First version [jAthena]
 //	1.1 Translated into English [Yor]
 //--------------------------------------------------------------
-// Additional Notes: N/A
+// Additional Notes: * Official-certified *
 //--------------------------------------------------------------
 
 
-//=========================================================================
-// Steward package functions.
+//==============================================================
+// Steward Package Functions.
 //	callfunc "sF_StewardMain","AgitCode",MasterRoomX,MasterRoomY;
 //
-// * parse end processing
+// * Parse End Processing.
 //	Everery thing contains a 'close' or an 'end', but we have add a 'end' after each 'call' function.
 //
-// * functions
-//	"Guardian installation" is set with the function "GuardianCall"
-//	Function "F_AgitGiveUp" is called when a guild leaves a Castle·(npc_gvg_monster.txt)
+// * Functions.
+//	"Guardian installation" is set with the function "GuardianCall".
+//	Function "F_AgitGiveUp" is called when a guild leaves a castle.
 //
 // * Using strnpcinfo() to get a NPC name, using getmapxy() to know map name of NPC.
-//-------------------------------------------------------------------------
+//--------------------------------------------------------------
 
 function	script	sF_StewardMain	{
-	// Greeting part
+
 	function sF_StewardSpeech {
-		set '@dummy,getmapxy('@map$,'@dummy,'@dummy,1);		// only '@map$ is used
+		set '@dummy,getmapxy('@map$,'@dummy,'@dummy,1);	// Only '@map$ is used.
 		set '@gid,getcastledata('@map$,1);
 		if ('@gid <= 0) {
 			mes "[Steward "+strnpcinfo(0)+"]";
@@ -62,7 +62,6 @@ function	script	sF_StewardMain	{
 		return;
 	}
 
-	// Indicating the state of the Castle
 	function sF_StewardConf {
 		set '@dummy,getmapxy('@map$,'@dummy,'@dummy,1);
 		mes "[Steward "+strnpcinfo(0)+"]";
@@ -79,7 +78,6 @@ function	script	sF_StewardMain	{
 		return;
 	}
 
-	// Part of commercial development
 	function sF_StewardEco {
 		set '@dummy,getmapxy('@map$,'@dummy,'@dummy,1);
 		mes "[Steward "+strnpcinfo(0)+"]";
@@ -137,7 +135,7 @@ function	script	sF_StewardMain	{
 			mes "You can come back anytime.";
 			close;
 		}
-		if (Zeny < '@price) {	// Not enough money
+		if (Zeny < '@price) {
 			mes "[Steward "+strnpcinfo(0)+"]";
 			mes "Master!";
 			mes "You do not have enough money to invest.";
@@ -153,7 +151,6 @@ function	script	sF_StewardMain	{
 		return;
 	}
 
-	// Part of defense development
 	function sF_StewardDef {
 		set '@dummy,getmapxy('@map$,'@dummy,'@dummy,1);
 		mes "[Steward "+strnpcinfo(0)+"]";
@@ -179,7 +176,7 @@ function	script	sF_StewardMain	{
 			close;
 		}
 		set '@val,getcastledata('@map$,3);
-		if ('@val == 100) {	// check maxmimum value
+		if ('@val == 100) {
 			mes "[Steward "+strnpcinfo(0)+"]";
 			mes "^ff0000Castle's Defence Investment is already maxed at 100 points.";
 			mes "You can not invest any further.^000000";
@@ -210,7 +207,7 @@ function	script	sF_StewardMain	{
 			mes "You can come back anytime.";
 			close;
 		}
-		if (Zeny < '@price) {	// Not enough money
+		if (Zeny < '@price) {
 			mes "[Steward "+strnpcinfo(0)+"]";
 			mes "Master!";
 			mes "You do not have enough money to invest.";
@@ -226,7 +223,6 @@ function	script	sF_StewardMain	{
 		return;
 	}
 
-	// Guardians installation
 	function sF_StewardGuard {
 		set '@dummy,getmapxy('@map$,'@dummy,'@dummy,1);
 		mes "[Steward "+strnpcinfo(0)+"]";
@@ -246,7 +242,7 @@ function	script	sF_StewardMain	{
 		// Moreover, you can install a Guardian even if it is already present, in this case, it will recover his HP.
 		set '@ret,select("Guardian 1","Guardian 2","Guardian 3","Guardian 4","Guardian 5","Guardian 6","Guardian 7","Guardian 8")+9;
 		if (getcastledata('@map$,'@ret)) {
-			mes "[Steward "+strnpcinfo(0)+"]";	// Guardian is already installed
+			mes "[Steward "+strnpcinfo(0)+"]"; // Guardian is already installed.
 			mes "Master!";
 			mes "This Guardian has already been installed.";
 			mes " ";
@@ -285,11 +281,10 @@ function	script	sF_StewardMain	{
 		}
 		set Zeny,Zeny-10000;
 		setcastledata '@map$,'@ret,1;
-		callfunc "F_GuardianCall",getarg(0),'@ret,1;	// We sommon the Guardian (npc_gvg_monster.txt)
+		callfunc "F_GuardianCall",getarg(0),'@ret,1;
 		return;
 	}
 
-	// Section: Steward menu for Kafra contract
 	function sF_StewardKafra {
 		set '@dummy,getmapxy('@map$,'@dummy,'@dummy,1);
 		if (getcastledata('@map$,9)==0) {
@@ -320,13 +315,13 @@ function	script	sF_StewardMain	{
 				mes "Kafra installation has been cancelled.";
 				close;
 			}
-			if (Zeny < 10000) {	// Not enough money
+			if (Zeny < 10000) {
 				mes "[Steward "+strnpcinfo(0)+"]";
 				mes "Master! You don't have enough money!";
 				close;
 			}
 			set Zeny,Zeny-10000;
-			enablenpc "AgitKafra_"+getarg(0);	// Get NPC name for "AgitCode".
+			enablenpc "AgitKafra_"+getarg(0);
 			setcastledata '@map$,9,1;
 			mes "[Steward "+strnpcinfo(0)+"]";
 			mes "You have created a contract with the Kafra Service Company.";
@@ -379,7 +374,6 @@ function	script	sF_StewardMain	{
 		return;
 	}
 
-	// Steward: Access to the Treasure Room.
 	function sF_StewardRoom {
 		set '@dummy,getmapxy('@map$,'@dummy,'@dummy,1);
 		mes "[Steward "+strnpcinfo(0)+"]";
@@ -408,10 +402,9 @@ function	script	sF_StewardMain	{
 		return;
 	}
 
-	// Function: guild leaves the Castle
 	function sF_StewardGiveup {
 		set '@dummy,getmapxy('@map$,'@dummy,'@dummy,1);
-		mes "[Steward "+strnpcinfo(0)+"]";	// Unnecessary to check master
+		mes "[Steward "+strnpcinfo(0)+"]";
 		mes "Master!";
 		mes "Do you really want to abandoned the Castle?";
 		mes " ";
@@ -429,7 +422,7 @@ function	script	sF_StewardMain	{
 				mes "... it is... it is... the end...";
 				close2;
 				announce "Castle [" +getcastlename('@map$)+ "] has been abandonned by [" +getguildname(getcharid(2))+ "] guild.",0;
-				callfunc "F_AgitGiveUp",getarg(0);	// Abandonment processing (npc_gvg_exe.txt)
+				callfunc "F_AgitGiveUp",getarg(0);
 				end;
 			}
 		}
@@ -439,7 +432,6 @@ function	script	sF_StewardMain	{
 		return;
 	}
 
-	// Here the main
 	sF_StewardSpeech;
 	switch(select("Display Castle state","Commercial investment","Defense investment","Install Guardians","Contract/Lay off with kafra","Enter in Treasure Room.","Abandon the Castle.")) {
 		case 1:
@@ -468,9 +460,10 @@ function	script	sF_StewardMain	{
 }
 
 
-//==========================================
+//==============================================================
 // Aldebaran
-//------------------------------------------
+//--------------------------------------------------------------
+
 aldeg_cas01.gat,218,175,0	script	Arl Fredo	55,{
 	callfunc "sF_StewardMain","L1",113,223;
 	end;
@@ -496,9 +489,11 @@ aldeg_cas05.gat,51,179,0	script	Brimhemsen	55,{
 	end;
 }
 
-//==========================================
+
+//==============================================================
 // Geffen
-//------------------------------------------
+//--------------------------------------------------------------
+
 gefg_cas01.gat,40,48,5		script	Gnaucher	55,{
 	callfunc "sF_StewardMain","B1",151,109;
 	end;
@@ -524,9 +519,11 @@ gefg_cas05.gat,70,52,3		script	Beeor	55,{
 	end;
 }
 
-//==========================================
+
+//==============================================================
 // Payon
-//------------------------------------------
+//--------------------------------------------------------------
+
 payg_cas01.gat,120,58,4		script	Grunday	55,{
 	callfunc "sF_StewardMain","C1",287,5;
 	end;
@@ -552,9 +549,11 @@ payg_cas05.gat,277,249,3	script	Najarf	55,{
 	end;
 }
 
-//==========================================
+
+//==============================================================
 // Prontera
-//------------------------------------------
+//--------------------------------------------------------------
+
 prtg_cas01.gat,112,181,0	script	Abrai	55,{
 	callfunc "sF_StewardMain","V1",7,205;
 	end;

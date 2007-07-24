@@ -15,7 +15,7 @@
 //--------------------------------------------------------------
 // Additional Notes: * Official-certified / Aegis-certified *
 // Part of this quest is also used for the Priest Job Change
-// Quest, as per the official servers.
+// quest, as per the official servers.
 //--------------------------------------------------------------
 
 

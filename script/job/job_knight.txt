@@ -1839,12 +1839,12 @@ OnCommandOn:
 
 OnCommandReset:
 	killmonster "job_knt.gat","Knight1::OnMyMobDead";
-	set $@mobcount4,0;
+	set 'mobcount1,0;
 	end;
 
 OnMyMobDead:
-	set $@mobcount4,$@mobcount4+1;
-	if ($@mobcount4 > 11) {
+	set 'mobcount1,'mobcount1+1;
+	if ('mobcount1 > 11) {
 		warp "job_knt.gat",43,146; // Custom fix..
 		enablenpc "Out1-1";
 	}
@@ -1912,12 +1912,12 @@ OnCommandOn:
 
 OnCommandReset:
 	killmonster "job_knt.gat","Knight2::OnMyMobDead";
-	set $@mobcount5,0;
+	set 'mobcount2,0;
 	end;
 
 OnMyMobDead:
-	set $@mobcount5,$@mobcount5+1;
-	if ($@mobcount5 > 11) {
+	set 'mobcount2,'mobcount2+1;
+	if ('mobcount2 > 11) {
 		warp "job_knt.gat",42,52; // Custom fix..
 		enablenpc "Out2-1";
 	}
@@ -1979,12 +1979,12 @@ OnCommandOn:
 
 OnCommandReset:
 	killmonster "job_knt.gat","Knight3::OnMyMobDead";
-	set $@mobcount6,0;
+	set 'mobcount3,0;
 	end;
 
 OnMyMobDead:
-	set $@mobcount6,$@mobcount6+1;
-	if ($@mobcount6 > 6) {
+	set 'mobcount3,'mobcount3+1;
+	if ('mobcount3 > 6) {
 		warp "job_knt.gat",143,152; // Custom fix..
 		enablenpc "Out3-1";
 	}
@@ -3053,13 +3053,13 @@ OnCommandOn:
 	end;
 
 OnCommandReset:
-	set $@peacefix,1;
+	set 'peacefix,1;
 	killmonster "job_knt.gat","Timer#knt::OnMyMobDead";
-	set $@peacefix,0;
+	set 'peacefix,0;
 	end;
 
 OnMyMobDead:
-	if ($@peacefix == 0) {
+	if ('peacefix == 0) {
 		warp "prt_fild05.gat",353,251;
 	}
 	end;

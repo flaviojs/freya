@@ -3626,6 +3626,7 @@ einbroch.gat,0,0,0	script	Pollution#einbroch	139,{
 OnInit:
 	initnpctimer;
 	end;
+
 OnTimer3600000:
 	if (rand(2)) {
 		initnpctimer;
@@ -3654,6 +3655,7 @@ OnTimer3600000:
 	disablenpc "Paddler";
 	disablenpc "Head Gear Dealer";
 	end;
+
 OnTimer4200000:
 	killmonster "einbroch.gat","Pollution#einbroch::OnKilled";
 	announce "Emergency status is now cancelled. Air pollution levels are now within the safety zone.",9;

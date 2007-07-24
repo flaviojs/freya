@@ -4,6 +4,48 @@
 ---------------------------------------------------------------------------
 
 ----------------------------------------
+//2313 by Blaze
+
+・以下のベインス追加NPCスキルを実装
+	「アースクエイク」「ファイアブレス」「アイスブレス」「サンダーブレス」「アシッドブレス」
+	「ダークネスブレス」「出血攻撃」「パルスストライク」「ヘルジャッジメント」「イビルランド」
+	（skill.c、skill.h、battle.c、
+		skill_db.txt、skill_db2.txt、skill_cast_db.txt、skill_require_db2.txt、skill_unit_db.txt）
+・古く青い箱、古い紫色の箱、古いカード帖から得られるアイテムをラヘル時点に更新
+	（item_bluebox.txt、item_violetbox.txt、item_cardalbum.txt）
+・フィゲルのWarpを修正
+	（npc_warp_town.txt）
+----------------------------------------
+//2312 by Blaze
+
+・TheSignクエスト実装
+	（npc_quest_thesign.txt）
+・フィゲルクエスト2種実装、1種修正
+	（npc_town_hugel.txt）
+	（npc_town_airport.txt）
+	（npc_town_lighthalzen.txt）
+・ラヘルクエスト修正
+	（npc_town_rachel.txt）
+・ラヘル案内要員追加
+	（npc_misc_guide.txt）
+・ラヘルジョンダ職員のセーブ位置修正
+	（npc_misc_zonda.txt）
+・ラヘル新規追加頭装備作成NPC実装（一部未実装）
+	（npc_quest_hat5.txt）
+・ガンスリンガー武器作成クエスト5種実装
+	（npc_job_28gunslinger.txt）
+・初心者修練場で職業適性検査の結果と判定に相違が出ていたのを修正
+	（npc_job_00novice.txt）
+・キル・ハイルクエスト専用マップのwarpが2重化していたのを修正
+	（npc_quest_kiel.txt）
+・飛行船で新経路のラヘルの不具合修正
+	（npc_town_airport.txt）
+・ゲフェニアのテレポート不可を可に変更
+	（mapflag.txt）
+・NPCのOnTouch判定を修正
+	（npc.c）
+
+----------------------------------------
 //2311 by ICO
 ・Azule Flameの日記を参考に、ベインスパッチ以降のNPCスキルのid、名前を追加
 　及び元のデータを修正(thx Blaze! from Azule Flame)

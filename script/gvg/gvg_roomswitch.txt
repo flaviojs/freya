@@ -7,28 +7,30 @@
 //              /_/  |_|\____|_|  \___/|_|  \__,_|              
 //                 http://aurora.deltaanime.net                 
 //--------------------------------------------------------------
-// Script Title: GvG Treasure Room System	Author: jAthena/Yor
+// Script Title: GvG Treasure Room System	Author: jAthena/Yor/Tsuyuki
 //--------------------------------------------------------------
-// Revision History: v1.1
+// Revision History: v1.2
 //--------------------------------------------------------------
 //	1.0 First version [jAthena]
 //	1.1 Translated into English [Yor]
+//	1.2 Updated dialogue to iRO Aegis [Tsuyuki]
 //--------------------------------------------------------------
-// Additional Notes: N/A
+// Additional Notes: * Official-certified *
 //--------------------------------------------------------------
 
 
-//=========================================================================
+//==============================================================
 // Return switch from master room.
 //	callfunc "F_RoomSwitch",X,Y;
-//-------------------------------------------------------------------------
+//--------------------------------------------------------------
 
 function	script	F_RoomSwitch	{
-	mes "There's a small switch.";
-	mes "Do you want to pull it?";
+
+	mes "";
+	mes "There's a small lever. Will you pull it?";
 	next;
-	if (select("Pull it.","Don't pull it.")==1) {
-		set '@dummy,getmapxy('@map$,'@dummy,'@dummy,1);		// Only '@map$ is used.
+	if (select("Pull.","Do not pull.")==1) {
+		set '@dummy,getmapxy('@map$,'@dummy,'@dummy,1);	// Only '@map$ is used.
 		warp '@map$,getarg(0),getarg(1);
 		end;
 	}
@@ -36,9 +38,10 @@ function	script	F_RoomSwitch	{
 }
 
 
-//==========================================
+//==============================================================
 // Aldebaran
-//------------------------------------------
+//--------------------------------------------------------------
+
 aldeg_cas01.gat,123,223,0	script	#RoomSwitch_L1	111,{
 	callfunc "F_RoomSwitch",218,176;
 	close;
@@ -64,9 +67,11 @@ aldeg_cas05.gat,64,8,0		script	#RoomSwitch_L5	111,{
 	close;
 }
 
-//==========================================
+
+//==============================================================
 // Geffen
-//------------------------------------------
+//--------------------------------------------------------------
+
 gefg_cas01.gat,152,117,0	script	#RoomSwitch_B1	111,{
 	callfunc "F_RoomSwitch",40,49;
 	close;
@@ -92,9 +97,11 @@ gefg_cas05.gat,149,106,0	script	#RoomSwitch_B5	111,{
 	close;
 }
 
-//==========================================
+
+//==============================================================
 // Payon
-//------------------------------------------
+//--------------------------------------------------------------
+
 payg_cas01.gat,295,8,0		script	#RoomSwitch_C1	111,{
 	callfunc "F_RoomSwitch",120,59;
 	close;
@@ -120,9 +127,11 @@ payg_cas05.gat,161,137,0	script	#RoomSwitch_C5	111,{
 	close;
 }
 
-//==========================================
+
+//==============================================================
 // Prontera
-//------------------------------------------
+//--------------------------------------------------------------
+
 prtg_cas01.gat,15,209,0		script	#RoomSwitch_V1	111,{
 	callfunc "F_RoomSwitch",111,181;
 	close;

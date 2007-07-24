@@ -472,16 +472,19 @@ ayothaya.gat,203,169,3	script	Noi#ayo	839,{
 comodo.gat,322,178,4	script	Comodo Guide#cmd::CmdGuide	700,{
 
 	callfunc "F_CmdGuide","Native Kokomo";
+	end;
 }
 
 comodo.gat,176,350,4	script	Comodo Guide#2cmd	700,{
 
 	callfunc "F_CmdGuide","Native Nutcoco";
+	end;
 }
 
 comodo.gat,37,219,4	script	Guide#2cmd	700,{
 
 	callfunc "F_CmdGuide","Native Papaya";
+	end;
 }
 
 function	script	F_CmdGuide	{
@@ -2120,6 +2123,13 @@ morocc.gat,54,97,0	duplicate(MocGuide)	Guide#2moc	707
 
 
 //--------------------------------------------------------------
+// Nameless Island / Endless Nightmare Guides
+//--------------------------------------------------------------
+
+// To-Do
+
+
+//--------------------------------------------------------------
 // Niflheim Guides - [L0ne_W0lf]
 //--------------------------------------------------------------
 
@@ -2957,3 +2967,10 @@ umbala.gat,128,94,4	script	Adventurer#um	702,1,1,{
 	}
 	close;
 }
+
+
+//--------------------------------------------------------------
+// Veins Guides
+//--------------------------------------------------------------
+
+// To-Do

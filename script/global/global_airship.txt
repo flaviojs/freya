@@ -11,7 +11,7 @@
 //--------------------------------------------------------------
 // Revision History: v1.8
 //--------------------------------------------------------------
-//	1.0 First release [Spirit Death]
+//	1.0 First version [Spirit Death]
 //	1.1 Added some variables to manage when players may board the
 //	airplanes [Bison]
 //	1.2 Fixed typo [Tsuyuki]
@@ -20,22 +20,12 @@
 //	1.5 Added Rachel/Veins to the international airship route [Tsuyuki]
 //	1.6 Officialized some dialogue based on Aegis scripts [Tsuyuki]
 //	1.7 Fixed some conflicting NPC names [Tsuyuki]
-//	1.8 Updated $global vars to $@temp global vars [Tsuyuki]
+//	1.8 Changed global vars to temporary global vars [Tsuyuki]
 //--------------------------------------------------------------
 // Additional Notes: Airship System with 2 Routes (Almost official)
 // 1st Route: Juno -> Hugel -> Einbroch -> Lighthalzen -> Juno
 // 2nd Route: Rachel -> Juno -> Izlude -> Rachel
 //--------------------------------------------------------------
-
-//--------------------------------------------------------------
-// Variable Information:
-//--------------------------------------------------------------
-// $@at_izlude - A 0 means the airplane is not at Izlude, and a 1 means that it is at Izlude.
-// jairp6 - The warp portal that goes from Juno to the Route 2 airship.
-// jairp7 - The warp portal that goes from Juno to the Route 1 airship.
-// $@at_hugel - Variable for the Route 1 airship at Hugel, 1 means true, 0 means false.
-// ein_ap01 - The warp portal that goes from Einbroch to the Route 1 airship.
-// lairp5 - The warp portal that goes from Lighthalzen to the Route 1 airship.
 
 
 //--------------------------------------------------------------
@@ -64,7 +54,7 @@ OnTimer51000:
 OnTimer61000:
 	enablenpc "#airshipwarp1";
 	enablenpc "#airshipwarp2";
-	set $@at_hugel, 1;
+	set $@at_hugel,1;
 	mapannounce "airplane.gat","Welcome to Hugel. Have a safe trip.",9,0x00FF00;
 	mapannounce "hugel.gat","Airship Service: The Route 1 airship has arrived at Hugel.",9,0x00FF00;
 	end;
@@ -77,7 +67,7 @@ OnTimer81000:
 	set $@route1,1;
 	disablenpc "#airshipwarp1";
 	disablenpc "#airshipwarp2";
-	set $@at_hugel, 0;
+	set $@at_hugel,0;
 	mapannounce "airplane.gat","The Airship is now taking off. Our next destination is Einbroch.",9,0x00FF00;
 	mapannounce "hugel.gat","Airship Service: The Route 1 airship has departed from Hugel.",9,0x00FF00;
 	end;

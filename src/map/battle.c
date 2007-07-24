@@ -2098,6 +2098,27 @@ struct Damage battle_calc_weapon_attack(
 						status_change_end(src,SC_NEN,-1);
 				}
 				break;
+			case NPC_EARTHQUAKE:		/* アースクエイク */
+				hitrate = 1000000;
+				damage = damage*(500+500*skill_lv)/100;
+				damage2 = damage2*(500+500*skill_lv)/100;
+				if(wflag > 1)
+					damage /= wflag;
+				break;
+			case NPC_FIREBREATH:		/* ファイアブレス */
+			case NPC_ICEBREATH:		/* アイスブレス */
+			case NPC_THUNDERBREATH:		/* サンダーブレス */
+			case NPC_ACIDBREATH:		/* アシッドブレス */
+			case NPC_DARKNESSBREATH:	/* ダークネスブレス */
+			case NPC_HELLJUDGEMENT:	/* ヘルジャッジメント */
+				damage = damage*(100*skill_lv)/100;
+				damage2 = damage2*(100*skill_lv)/100;
+				break;
+			case NPC_PULSESTRIKE:		/* パルスストライク */
+				damage = damage*(100*skill_lv)/100;
+				damage2 = damage2*(100*skill_lv)/100;
+				blewcount=0;
+				break;
 			case HFLI_MOON:
 				damage = damage*(110+skill_lv*110)/100;
 				damage2 = damage2*(110+skill_lv*110)/100;
@@ -3110,6 +3131,10 @@ struct Damage battle_calc_magic_attack(
 			break;
 		case NJ_KAMAITACHI:	// 朔風
 			MATK_FIX(100+ skill_lv*100,100);
+			break;
+		case NPC_EVILLAND:	// イビルランド
+			damage = (skill_lv > 6)?666:skill_lv*100;
+			normalmagic_flag=0;
 			break;
 	}
 

@@ -9,7 +9,7 @@
 //--------------------------------------------------------------
 // Script Title: Refinery System	Author: A Lot of People
 //--------------------------------------------------------------
-// Revision History: v3.2
+// Revision History: v3.3
 //--------------------------------------------------------------
 //	1.0 First version [A Lot of People]
 //	 - Syrus22 -> Redid script using functions, added option for auto safe refining and multiple refining

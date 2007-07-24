@@ -7,36 +7,27 @@
 //              /_/  |_|\____|_|  \___/|_|  \__,_|              
 //                 http://aurora.deltaanime.net                 
 //--------------------------------------------------------------
-// Script Title: Sage Job Change Quest	Author: A Lot of People
+// Script Title: Sage Job Change Quest	Author: jAthena/Darkchild
 //--------------------------------------------------------------
-// Revision History: v2.1
+// Revision History: v1.8
 //--------------------------------------------------------------
-//	1.0 First version [Athena]
-//	1.1 Translated into English [Darkchild]
-//	1.2 Baby class Support added [Lupus]
-//	1.3 Fixed possible EXP abuse [Lupus]
-//	1.4 Added a func which prevent advanced classes passing
+//	1.0 First version [jAthena]
+//	1.1 Translated into English from Japanese [Darkchild]
+//	1.2 Baby class support added [Lupus]
+//	1.3 Fixed possible experience abuse [Lupus]
+//	1.4 Added a function which prevents advanced classes from passing [Lupus]
 //	1.5 Added a function to properly direct Transcendent job changing [Lupus]
-//	1.6 Fixed tuition fee. Fixed some answers, names & typos, added missing labels [Lupus]
-//	1.7 Moved JFunc back in the main file, fixed typos [Lupus]
-//	1.8 Changed numbers to constants [Vicious]
-//	1.9 Fixed double warp [KarLaeda]
-//	2.0 Reconverted  to Freya [Tsuyuki]
-//	2.1 Improved formatting [Tsuyuki]
+//	1.6 Fixed tuition fee, fixed some answers, names and typos, and added missing labels [Lupus]
+//	1.7 Changed numbers to constants [Vicious]
+//	1.8 Fixed a double warp [KarLaeda]
 //--------------------------------------------------------------
 // Additional Notes: N/A
 //--------------------------------------------------------------
 
 
-//--------------------------------------------------------------
-// Sage Castle
-//--------------------------------------------------------------
-
 yuno_in02.gat,38,61,4	script	Magic Academy Headmaster 	743,{
 
-	// Temp fix for the Transcendence system (Need to add dialogue from somewhere..) [Tsuyuki]
 	if (Upper == 1)	close;
-
 	if (BaseJob == Job_Sage) goto L_Menu3_3;
 	if (BaseJob != Job_Mage) goto L_Menu2_1;
 	if (SAGE_Q == 11) goto L_Menu3_1;
@@ -45,8 +36,9 @@ yuno_in02.gat,38,61,4	script	Magic Academy Headmaster 	743,{
 	mes "All who appreciate the fine art";
 	mes "of magic are welcome here.";
 	mes "How can I help you?";
-        next;
+	next;
 	menu "Change class to Sage",L_Menu1_1,"About the Sage class",-,"Just looking around",L_Menu1_2;
+
 		mes "[Keiron]";
 		mes "So you're interested in being a Sage?";
 		mes "Well, I can't just make you one straight away.";
@@ -64,6 +56,7 @@ yuno_in02.gat,38,61,4	script	Magic Academy Headmaster 	743,{
 		mes "If you wish to apply, go see Mathias in the Shubaichul Magic Academy.";
 		mes "Tell him I sent you.";
 		close;
+		
 L_Menu1_1:
 	mes "[Keiron]";
 	mes "A Sage?";
@@ -79,6 +72,7 @@ L_Menu1_1:
 	mes "To become a Sage, please apply for entry into the Shubaichul Magic Academy.";
 	mes "The admissions officer will explain the educational requirements.";
 	close;
+
 L_Menu1_2:
 	mes "[Keiron]";
 	mes "Excellent.  If you have some free time, why not peruse a a volume from our library?";
@@ -87,6 +81,7 @@ L_Menu1_2:
 	mes "[Keiron]";
 	mes "Of course, there is much that can't be learned from reading books, but it's a good start.";
 	close;
+
 L_Menu2_1:
 	mes "[Keiron]";
 	mes "We Sages do a lot of research about the world on our own,";
@@ -96,6 +91,7 @@ L_Menu2_1:
 	mes "[Keiron]";
 	mes "You should talk to our Sages and share any research you may have been doing within your own profession.";
 	close;
+
 L_Menu2_2:
 	mes "[Keiron]";
 	mes "The road to becoming a Sage isn't easy.";
@@ -105,6 +101,7 @@ L_Menu2_2:
 	mes "You need to keep plugging away at that thesis.";
 	mes "Good luck!";
 	close;
+
 L_Menu3_1:
 	if (countitem(1550) >= 1) goto L_Menu3_2;
 	mes "[Keiron]";
@@ -115,6 +112,7 @@ L_Menu3_1:
 	mes "Did you forget it?";
 	mes "In any case, please bring it post-haste.";
 	close;
+
 L_Menu3_2:
 	mes "[Keiron]";
 	mes "It looks like you have a thesis to present.  Let's have a look...";
@@ -132,17 +130,15 @@ L_Menu3_2:
 	mes "It's not stylistically";
 	mes "cohesive, but your zeal for research is amply proven by your thesis.  I approve.";
 	next;
-	if (SkillPoint == 0) goto LCHANGE;
+	if (SkillPoint == 0) goto L_Change;
 	mes "[Keiron]";
 	mes "Well you are all set for the job change except for 1 thing!";
 	mes "You have unused Skill Points!!!";
 	mes "Please use those first!";
 	close;
-		
-	LCHANGE:
 
+L_Change:
 	callfunc "F_JobChange",Job_Sage;
-
 	mes "[Keiron]";
 	mes "Congratulations!";
 	mes "You're a Sage now.";
@@ -154,6 +150,7 @@ L_Menu3_2:
 	mes "[Keiron]";
 	mes "Some day, you'll be a bastion of knowledge all by yourself!";
 	close;
+
 L_Menu3_3:
 	mes "[Keiron]";
 	mes "Hmmm?  What's up?";
@@ -163,11 +160,6 @@ L_Menu3_3:
 	mes "In order to maintain our role as the kingdom's gatherers and dissemenators of knowledge, we can never miss an opportunity to gather data.";
 	close;
 }
-
-
-//--------------------------------------------------------------
-//Biotech Lab
-//--------------------------------------------------------------
 
 yuno_in03.gat,244,31,3	script	Physics Professor	120,{
 
@@ -189,6 +181,7 @@ yuno_in03.gat,244,31,3	script	Physics Professor	120,{
 	mes "Well, you need to enroll first.";
 	mes "Heheheheh...";
 	close;
+
 L_Menu1_1:
 	mes "[Ebeshi]";
 	mes "Eh???????????????????????????????";
@@ -200,6 +193,7 @@ L_Menu1_1:
 	mes "Are you disappointed?";
 	mes "Hehehehe....";
 	close;
+
 L_Menu1_2:
 	set SAGE_Q2,8;
 	mes "[Ebeshi]";
@@ -220,6 +214,7 @@ L_Menu1_2:
 	mes "If you really want to get stones quick,";
 	mes "you should look up a friendly thief to assist you!  Thanks for helping out.";
 	close;
+
 L_Menu2_1:
 	if (countitem(7049) >= 30) goto L_Menu2_2;
 		mes "[Ebeshi]";
@@ -232,6 +227,7 @@ L_Menu2_1:
 		mes "With all the stones lying around,";
 		mes "shouldn't they be easy to find?";
 		close;
+
 	L_Menu2_2:
 		mes "[Ebeshi]";
 		mes "Awesome!  You've got all the stones I need.";
@@ -272,6 +268,7 @@ L_Menu2_1:
 		mes "An archer friend can help you make the arrows.";
 		mes "Give it a try!";
 		close;
+
 	L_Menu2_3:
 		if ((countitem(1754) >= 50) && (countitem(1756) >= 50) && (countitem(1755) >= 50)) goto L_Menu2_4;
 		mes "[Ebeshi]";
@@ -280,12 +277,13 @@ L_Menu2_1:
 		mes "You didn't sell them, I hope...";
 		next;
 		mes "[Ebeshi]";
-                mes "You need to use them to make";
+		mes "You need to use them to make";
 		mes "^3051FD50x Crystal Arrow^000000";
 		mes "^3051FD50x Stone Arrow^000000";
 		mes "^3051FD50x Wind Arrow^000000";
 		mes "An archer friend can help you make the arrows.";
 		close;
+
 	L_Menu2_4:
 		mes "[Ebeshi]";
 		mes "You made the arrows!  Good job.";
@@ -326,6 +324,7 @@ L_Menu2_1:
 		mes "We'll need it for the lesson.";
 		mes "It will be easy to acquire if you have contacts in the church.";
 		close;
+
 	L_Menu2_5:
 		if (countitem(523) >= 1) goto L_Menu2_6;
 		mes "[Ebeshi]";
@@ -337,6 +336,7 @@ L_Menu2_1:
 		mes "Ask an Acolyte to help you make it.";
 		mes "Hehehehe...";
 		close;
+
 	L_Menu2_6:
 		mes "[Ebeshi]";
 		mes "Alright, you have the Holy Water!";
@@ -385,6 +385,7 @@ L_Menu2_1:
 		mes "[Ebeshi]";
 		mes "Come and see me once you've gotten all of these items together.";
 		close;
+
 	L_ThesisStart1:
 		if ((countitem(916) >= 1) && (countitem(919) >= 1) && (countitem(1019) >= 1) && (countitem(1024) >= 1) && (countitem(713) >= 1)) goto L_ThesisStart2;
 		mes "[Ebeshi]";
@@ -392,7 +393,7 @@ L_Menu2_1:
 		mes "You can't forget important things like this!";
 		next;
 		mes "[Ebeshi]";
-                mes "You need these items to start your thesis:";
+		mes "You need these items to start your thesis:";
 		mes "^3051FD1x Feather of Birds^000000 for your writing instrument.";
 		mes "^3051FD1x Animal Skin^000000 for the pages.";
 		mes "^3051FD1x Trunk^000000 to bind the pages.";
@@ -403,6 +404,7 @@ L_Menu2_1:
 		mes "Do you have some friends that might be able to help you gather the materials?";
 		mes "That will make it a simple task!";
 		close;
+
 	L_ThesisStart2:
 		delitem 916,1;
 		delitem 919,1;
@@ -422,120 +424,161 @@ L_Menu2_1:
 		mes "......";
 		next;
 		mes "Elemental magic is divided into four types...";
-			menu "...called Fire, Wind, Water, and Earth",L_ThesisMenu1_1,"...named Fire, Wind, Water, and Earth",L_ThesisMenu1_2,"...that oppose each other Fire, Wind, Water, and Earth",L_ThesisMenu1_3;
+		menu "...called Fire, Wind, Water, and Earth",L_ThesisMenu1_1,"...named Fire, Wind, Water, and Earth",L_ThesisMenu1_2,"...that oppose each other Fire, Wind, Water, and Earth",L_ThesisMenu1_3;
+
 		L_ThesisMenu1_1:
 			mes "...called Fire, Wind, Water, and Earth";
 			goto L_Thesis2;
+
 		L_ThesisMenu1_2:
 			mes "...named Fire, Wind, Water, and Earth";
 			goto L_Thesis2;
+
 		L_ThesisMenu1_3:
 			mes "...that oppose each other: Fire, Wind, Water, and Earth";
 			goto L_Thesis2;
+
 		L_Thesis2:
 			mes "Each attribute has certain properties.";
 			menu "Wind conquers water...",L_ThesisMenu2_1,"Water douses fire...",L_ThesisMenu2_2,"Fire scorches Earth...",L_ThesisMenu2_3;
+
 		L_ThesisMenu2_1:
 			mes "Wind conquers Water and Earth attacks Wind";
 			goto L_Thesis3;
+
 		L_ThesisMenu2_2:
 			mes "Water douses fire, while Wind zaps Water";
 			goto L_Thesis3;
+
 		L_ThesisMenu2_3:
 			mes "Fire scorches Earth, and Water douses Fire.";
 			goto L_Thesis3;
+
 		L_Thesis3:
 			menu "But weaknesses exist, too",L_ThesisMenu3_1,"You can customize your weapon element, also",L_ThesisMenu3_2,"Elemental affinity varies by monster type, also",L_ThesisMenu3_3;
+
 		L_ThesisMenu3_1:
 			mes "But weaknesses exist, too";
 			goto L_Thesis4;
+
 		L_ThesisMenu3_2:
 			mes "You can customize your weapon element, also";
 			goto L_Thesis4;
+
 		L_ThesisMenu3_3:
 			mes "Elemental affinity varies by monster type, also";
 			goto L_Thesis4;
+
+
 		L_Thesis4:
 			menu "You need to be circumspect when facing monsters...",L_ThesisMenu4_1,"So, you should customize your weapon to the situation",L_ThesisMenu4_2,"Red Potions have a delicious strawberry flavor",L_ThesisMenu4_3;
+
 		L_ThesisMenu4_1:
 			mes "You need to be circumspect when facing monster with an unfamiliar affinity.";
 			goto L_Thesis5;
+
 		L_ThesisMenu4_2:
 			mes "You should customize your weapon to the situation.";
 			goto L_Thesis5;
+
 		L_ThesisMenu4_3:
 			mes "Red Potions have a delicious strawberry flavor.";
 			goto L_Thesis5;
+
 		L_Thesis5:
 			next;
 			menu "Eimi of Prontera is hot",L_ThesisMenu5_1,"I wonder how Red Potions are made",L_ThesisMenu5_2,"The complexity of magic exceeds man's capacity to learn",L_ThesisMenu5_3;
+
 		L_ThesisMenu5_1:
 			mes "Eimi of Prontera is hot.";
 			goto L_Thesis6;
+
 		L_ThesisMenu5_2:
 			mes "I wonder how Red Potions are made.";
 			goto L_Thesis6;
+
 		L_ThesisMenu5_3:
 			mes "The complexity of magic exceeds man's capacity to learn.";
 			goto L_Thesis6;
+
 		L_Thesis6:
 			menu "The women in Morok are hot, too",L_ThesisMenu6_1,"Maybe it's a secret recipe",L_ThesisMenu6_2,"It's dangerous to depend on magic too much...",L_ThesisMenu6_3;
+
 		L_ThesisMenu6_1:
 			mes "The women in Morok are hot, too.";
 			goto L_Thesis7;
+
 		L_ThesisMenu6_2:
 			mes "Maybe it's a secret recipe.";
 			goto L_Thesis7;
+
 		L_ThesisMenu6_3:
 			mes "It's dangerous to depend on magic too much...";
 			goto L_Thesis7;
+
 		L_Thesis7:
 			menu "I wish I had a Bunny Band",L_ThesisMenu7_1,"That taste of a White potion...",L_ThesisMenu7_2,"...if you want to stay safe. power...",L_ThesisMenu7_3;
+
 		L_ThesisMenu7_1:
 			mes "I wish I had a Bunny Band.";
 			goto L_Thesis8;
+
 		L_ThesisMenu7_2:
 			mes "The taste of a White Potion...";
 			goto L_Thesis8;
+
 		L_ThesisMenu7_3:
 			mes "...if you want to stay safe. power...";
 			goto L_Thesis8;
+
 		L_Thesis8:
 			menu "That would make me happy",L_ThesisMenu8_1,"...is difficult to imagine",L_ThesisMenu8_2,"In the interest of a safe battle...",L_ThesisMenu8_3;
+
 		L_ThesisMenu8_1:
 			mes "That would make me happy.";
 			goto L_Thesis9;
+
 		L_ThesisMenu8_2:
 			mes "...is difficult to imagine";
 			goto L_Thesis9;
+
 		L_ThesisMenu8_3:
 			mes "In the interest of a safe battle...";
 			goto L_Thesis9;
+
 		L_Thesis9:
 			menu "Bunny Bands make great Acolyte accessories",L_ThesisMenu9_1,"It makes me wonder if...",L_ThesisMenu9_2,"...you should bring along friends",L_ThesisMenu9_3;
+
 		L_ThesisMenu9_1:
 			mes "Bunny Bands make great Acolyte accessories.";
 			goto L_Thesis10;
+
 		L_ThesisMenu9_2:
 			mes "It makes me wonder if...";
 			goto L_Thesis10;
+
 		L_ThesisMenu9_3:
 			mes "...you should bring along friends.";
 			goto L_Thesis10;
+
 		L_Thesis10:
 			menu "I wonder if a Knight could wear one, too",L_ThesisMenu10_1,"...people might drink them when they're not hurt",L_ThesisMenu10_2,"It's the responsible thing to do",L_ThesisMenu10_3;
+
 		L_ThesisMenu10_1:
 			mes "I wonder if a Knight could wear one, too.";
 			next;
 			goto L_ThesisEnd;
+
 		L_ThesisMenu10_2:
 			mes "...people might drink them when they're not hurt";
 			next;
 			goto L_ThesisEnd;
+
 		L_ThesisMenu10_3:
 			mes "It's the responsible thing to do.";
 			next;
 			goto L_ThesisEnd;
+
 	L_ThesisEnd:
 		mes "......";
 		next;
@@ -554,6 +597,7 @@ L_Menu2_1:
 		mes "He'll decide whether you graduate or not.";
 		mes "Hehehehehe....";
 		close;
+
 L_Menu3_1:
 	mes "[Ebeshi]";
 	mes "What's up?  Did you forget something?!";
@@ -561,6 +605,7 @@ L_Menu3_1:
 	mes "[Ebeshi]";
 	mes "You should see the Headmaster and present your thesis so you can graduate!";
 	close;
+
 L_Menu3_2:
 	mes "[Ebeshi]";
 	mes "Good afternoon!";
@@ -576,11 +621,6 @@ L_Menu3_2:
 	mes "Hehehehe!";
 	close;
 }
-
-
-//--------------------------------------------------------------
-//Monster Museum
-//--------------------------------------------------------------
 
 yuno_in03.gat,32,102,0	script	Biology Professor	755,{
 
@@ -598,6 +638,7 @@ yuno_in03.gat,32,102,0	script	Biology Professor	755,{
 	mes "[Lucias]";
 	mes "Of course, I'll teach people about biology even with a headache!";
 	close;
+
 L_Menu1_1:
 	mes "[Lucias]";
 	mes "Hmmm?  Are you just poking around?";
@@ -609,6 +650,7 @@ L_Menu1_1:
 	mes "[Lucias]";
 	mes "If you have information about rare monsters, we'll pay you handsomely.";
 	close;
+
 L_Menu2_1:
 	mes "[Lucias]";
 	mes "Oh, you've taken the placement test?";
@@ -627,27 +669,28 @@ L_Menu2_1:
 	mes "I'm sure that you've encountered and defeated many monsters by now.";
 	mes "Am I right?";
 	next;
-		menu "You're quite right",-,"Well, not really...",L_Menu2_2;
+	menu "You're quite right",-,"Well, not really...",L_Menu2_2;
+
 		mes "[Lucias]";
 		mes "Really?";
 		mes "I hope your background knowledge is diverse.";
 		mes "My class isn't a cakewalk by any means.";
 		next;
 		goto L_Menu2_3;
-//--------------------------------------------------------------
+
 	L_Menu2_2:
-//If you respond negatively
 		mes "[Lucias]";
 		mes "You might be at a disadvantage.";
 		mes "My coursework assumes a lot of background knowledge.";
 		mes "My class wasn't designed to be a cakewalk...";
 		next;
-//--------------------------------------------------------------
-L_Menu2_3:
-	mes "[Lucias]";
-	mes "So, shall we get started?";
-	mes "You'll learn a lot in this class if you're vigilant.";
-	next;
+		goto L_Menu2_3;
+
+	L_Menu2_3:
+		mes "[Lucias]";
+		mes "So, shall we get started?";
+		mes "You'll learn a lot in this class if you're vigilant.";
+		next;
 		set @sagerand,0;
 		set @sagerand,rand(3);
 		mes "[Lucias]";
@@ -660,33 +703,36 @@ L_Menu2_3:
 		mes "^3051FD5x Sharp Scales^000000";
 		next;
 		goto L_Menu2_6;
+
 	L_Menu2_4:
 		set SAGE_Q2,2;
-//--------------------------------------------------------------
 		mes "^3051FD5x Clam Flesh^000000";
 		mes "^3051FD5x Nippers^000000";
 		mes "^3051FD5x Heart of Mermaid^000000";
 		next;
 		goto L_Menu2_6;
+
 	L_Menu2_5:
 		set SAGE_Q2,3;
 		mes "^3051FD5x Single Cells^000000";
 		mes "^3051FD5x Tentacles^000000";
 		mes "^3051FD5x Fish Tails^000000";
-//--------------------------------------------------------------
 		next;
+		goto L_Menu2_6;
+
 	L_Menu2_6:
 		mes "[Lucias]";
 		mes "We'll continue once you've gathered those.";
 		close;
-L_Menu3_1:
-	if ((countitem(1050) >= 5) && (countitem(960) >= 5) && (countitem(963) >= 5) && (SAGE_Q2 == 1)) goto L_Menu3_4;
-	if ((countitem(966) >= 5) && (countitem(960) >= 5) && (countitem(950) >= 5) && (SAGE_Q2 == 2)) goto L_Menu3_4;
-	if ((countitem(1052) >= 5) && (countitem(962) >= 5) && (countitem(1023) >= 5) && (SAGE_Q2 == 3)) goto L_Menu3_4;
-	mes "[Lucias]";
-	mes "You don't have the necessary items.";
-	mes "Let me repeat what you need:";
-	next;
+
+	L_Menu3_1:
+		if ((countitem(1050) >= 5) && (countitem(960) >= 5) && (countitem(963) >= 5) && (SAGE_Q2 == 1)) goto L_Menu3_4;
+		if ((countitem(966) >= 5) && (countitem(960) >= 5) && (countitem(950) >= 5) && (SAGE_Q2 == 2)) goto L_Menu3_4;
+		if ((countitem(1052) >= 5) && (countitem(962) >= 5) && (countitem(1023) >= 5) && (SAGE_Q2 == 3)) goto L_Menu3_4;
+		mes "[Lucias]";
+		mes "You don't have the necessary items.";
+		mes "Let me repeat what you need:";
+		next;
 		mes "[Lucias]";
 		if (SAGE_Q2 == 2) goto L_Menu3_2;
 		if (SAGE_Q2 == 3) goto L_Menu3_3;
@@ -694,53 +740,58 @@ L_Menu3_1:
 		mes "^3051FD5x Nipper^000000";
 		mes "^3051FD5x Sharp Scale^000000";
 		close;
+
 	L_Menu3_2:
 		mes "^3051FD5x Clam Flesh^000000";
 		mes "^3051FD5x Nipper^000000";
 		mes "^3051FD5x Heart of Mermaid^000000";
 		close;
+
 	L_Menu3_3:
 		mes "^3051FD5x Single Cell^000000";
 		mes "^3051FD5x Tentacle^000000";
 		mes "^3051FD5x Fish Tail^000000";
 		close;
-L_Menu3_4:
-	mes "[Lucias]";
-	mes "Well, you have the items, but I can't be sure if you bought them or collected them yourself.";
-	next;
-	mes "[Lucias]";
-	mes "There is a similarity in the characteristics of the monsters that drop those items.";
-	mes "Do you know what it is?";
-	next;
+
+	L_Menu3_4:
+		mes "[Lucias]";
+		mes "Well, you have the items, but I can't be sure if you bought them or collected them yourself.";
+		next;
+		mes "[Lucias]";
+		mes "There is a similarity in the characteristics of the monsters that drop those items.";
+		mes "Do you know what it is?";
+		next;
 		menu "Water element affinity",L_Menu3_5,"They're fish and shells",L_Menu3_6,"They were quite active",-,"They're monsters",-;
-//--------------------------------------------------------------
+
 		mes "[Lucias]";
 		mes "...I'm disappointed in you.";
 		mes "The correct answer is that all of the monsters have water element affinity.";
 		mes "Monsters that live in an aquatic environment have evolved bodies adapted to that environment.";
-//--------------------------------------------------------------
 		next;
 		goto L_Menu3_6;
+
 	L_Menu3_5:
 		mes "[Lucias]";
 		mes "Right!";
 		mes "Most aquatic monsters have water element affinity because they're adapted to their environment.";
 		mes "Fish and shells evolved in a logical way.";
 		next;
+		goto L_Menu3_6;
+
 	L_Menu3_6:
 		mes "[Lucias]";
 		mes "Not every fish and shell has water element affinity, but you can count on it as a general rule.";
 		mes "Now, which type of magic do you think would be most effective against them?";
 		next;
 		menu "Lightning Bolt",L_Menu3_7,"Firebolt",-,"Thunderstorm",L_Menu3_8,"Frost Nova",-;
-//--------------------------------------------------------------
+
 		mes "[Lucias]";
 		mes "That's not correct.";
 		mes "You need to use magic like Lightning Bolt or Thunderstorm.";
 		mes "Check the elemental affinity matrix again.";
 		next;
-//--------------------------------------------------------------
 		goto L_Menu3_9;
+
 	L_Menu3_7:
 		mes "[Lucias]";
 		mes "Great!  That's right!";
@@ -750,6 +801,7 @@ L_Menu3_4:
 		mes "You need to be careful of monsters like the Penomena and Aster because their attribute is different.";
 		next;
 		goto L_Menu3_9;
+
 	L_Menu3_8:
 		mes "[Lucias]";
 		mes "Great!  That's right!";
@@ -758,6 +810,8 @@ L_Menu3_4:
 		mes "[Lucias]";
 		mes "You need to be careful of monsters like the Penomena and Aster because their attribute is different.";
 		next;
+		goto L_Menu3_9;
+
 	L_Menu3_9:
 		mes "[Lucias]";
 		mes "Next, let's turn our attention to insectoid monsters.";
@@ -773,30 +827,31 @@ L_Menu3_4:
 		mes "^3051FD5x Insect Feeler^000000";
 		next;
 		goto L_Menu2_6;
+
 	L_Menu3_10:
 		set SAGE_Q2,5;
-//--------------------------------------------------------------
 		mes "^3051FD5x Moth Dust^000000";
 		mes "^3051FD5x Snail's Shell^000000";
 		mes "^3051FD5x Horn^000000";
 		next;
 		goto L_Menu2_6;
+
 	L_Menu3_11:
 		set SAGE_Q2,6;
 		mes "^3051FD5x Mantis Leg^000000";
 		mes "^3051FD5x Worm Peeling^000000";
 		mes "^3051FD5x Rainbow Shell^000000";
-//--------------------------------------------------------------
 		next;
 		goto L_Menu2_6;
-L_Menu4_1:
-	if ((countitem(1025) >= 5) && (countitem(935) >= 5) && (countitem(928) >= 5) && (SAGE_Q2 == 4)) goto L_Menu4_4;
-	if ((countitem(1057) >= 5) && (countitem(946) >= 5) && (countitem(947) >= 5) && (SAGE_Q2 == 5)) goto L_Menu4_4;
-	if ((countitem(1031) >= 5) && (countitem(955) >= 5) && (countitem(1013) >= 5) && (SAGE_Q2 == 6)) goto L_Menu4_4;
-	mes "[Lucias]";
-	mes "You forgot what you're supposed to gather?";
-	mes "Listen carefully this time!  You need to gather:";
-	next;
+
+	L_Menu4_1:
+		if ((countitem(1025) >= 5) && (countitem(935) >= 5) && (countitem(928) >= 5) && (SAGE_Q2 == 4)) goto L_Menu4_4;
+		if ((countitem(1057) >= 5) && (countitem(946) >= 5) && (countitem(947) >= 5) && (SAGE_Q2 == 5)) goto L_Menu4_4;
+		if ((countitem(1031) >= 5) && (countitem(955) >= 5) && (countitem(1013) >= 5) && (SAGE_Q2 == 6)) goto L_Menu4_4;
+		mes "[Lucias]";
+		mes "You forgot what you're supposed to gather?";
+		mes "Listen carefully this time!  You need to gather:";
+		next;
 		mes "[Lucias]";
 		if (SAGE_Q2 == 5) goto L_Menu4_2;
 		if (SAGE_Q2 == 6) goto L_Menu4_3;
@@ -804,16 +859,19 @@ L_Menu4_1:
 		mes "^3051FD5x Shell^000000";
 		mes "^3051FD5x Insect Feeler^000000";
 		close;
+
 	L_Menu4_2:
 		mes "^3051FD5x Moth Dust^000000";
 		mes "^3051FD5x Snail's Shell^000000";
 		mes "^3051FD5x Horn^000000";
 		close;
+
 	L_Menu4_3:
 		mes "^3051FD5x Mantis Leg^000000";
 		mes "^3051FD5x Worm Peeling^000000";
 		mes "^3051FD5x Rainbow Shell^000000";
 		close;
+
 L_Menu4_4:
 	set SAGE_Q2,7;
 	mes "[Lucias]";
@@ -855,6 +913,7 @@ L_Menu4_4:
 	mes "[Lucias]";
 	mes "We can get started when you return.";
 	close;
+
 L_Menu5_1:
 	if ((countitem(916) >= 1) && (countitem(919) >= 1) && (countitem(1019) >= 1) && (countitem(1024) >= 1) && (countitem(713) >= 1) && (SAGE_Q2 == 7)) goto L_Menu5_2;
 	mes "[Lucias]";
@@ -872,6 +931,7 @@ L_Menu5_1:
 	mes "You've done great so far.";
 	mes "Just a little more and you can graduate.";
 	close;
+
 L_Menu5_2:
 	delitem 916,1;
 	delitem 919,1;
@@ -924,11 +984,13 @@ L_Menu5_2:
 	mes "Show this to the Headmaster and you'll be sure to graduate.";
 	mes "Good luck.";
 	close;
+
 L_Menu5_3:
 	mes "[Lucias]";
 	mes "Hmmm?  What's the matter?";
 	mes "You need to show your thesis to the Headmaster.";
 	close;
+
 L_Menu5_4:
 	mes "[Lucias]";
 	mes "Are you confused about something?";
@@ -945,16 +1007,9 @@ L_Menu5_4:
 	close;
 }
 
-
-//--------------------------------------------------------------
-// Academy Interior
-//--------------------------------------------------------------
-
 yuno_in03.gat,154,35,4	script	Academy Staff	742,{
 
-	// Temp fix for the Transcendence system (Need to add dialogue from somewhere..) [Tsuyuki]
 	if (Upper == 1)	close;
-
 	if (BaseJob == Job_Sage) goto L_Menu6_4;
 	if (BaseJob != Job_Mage) goto L_Menu1_1;
 	if (SAGE_Q == 11) goto L_Menu6_3;
@@ -968,6 +1023,7 @@ yuno_in03.gat,154,35,4	script	Academy Staff	742,{
 	mes "How can I help you?";
 	next;
 	menu "Sage class-change information",-,"I want to apply for admission to the Academy",L_Menu3_1,"Forget it",L_Menu2;
+
 		mes "[Mathias]";
 		mes "You want to change class to Sage?";
 		mes "I can't just change your class right here.";
@@ -996,12 +1052,14 @@ yuno_in03.gat,154,35,4	script	Academy Staff	742,{
 		mes "If you're interested, you need only file an application to get started.";
 		mes "Have a good day.";
 		close;
+
 L_Menu2:
 	mes "[Mathias]";
 	mes "Oh?";
 	mes "Are you hesitant?";
 	mes "See you later, then.";
 	close;
+
 L_Menu1_1:
 	mes "[Mathias]";
 	mes "Welcome.";
@@ -1018,6 +1076,7 @@ L_Menu1_1:
 	mes "[Mathias]";
 	mes "Good bye.";
 	close;
+
 L_Menu3_1:
 	mes "[Mathias]";
 	mes "You want to apply?  Wonderful!";
@@ -1035,6 +1094,7 @@ L_Menu3_1:
 	mes "So, you would like to apply for admission?";
 	next;
 	menu "Yes, I would",L_Menu5_5,"Tuition is too expensive!",-,"I'll try again later",L_Menu3_2;
+
 		mes "[Mathias]";
 		mes "Well...we need the tuition money to cover instruction and materials...";
 		next;
@@ -1061,12 +1121,14 @@ L_Menu3_1:
 		mes "Please do your best to collect the items.";
 		mes "See you later.";
 		close;
+
 	L_Menu3_2:
 		mes "[Mathias]";
 		mes "Oh, alright.";
 		mes "Take your time.";
 		mes "Thanks for stopping by.";
 		close;
+
 L_Menu5_1:
 	mes "[Mathias]";
 	mes "So, would you like to apply for admission?";
@@ -1075,12 +1137,14 @@ L_Menu5_1:
 	if (countitem(1006) > 0) goto L_Menu5_4;
 	if (countitem(1007) > 0) goto L_Menu5_4_;
 	if (Zeny < 70000) goto L_Menu5_2;
-		set Zeny,Zeny-70000;
-		set SAGE_Q,3;
-		mes "[Mathias]";
-		mes "I see you have 70000 Zeny.";
-		mes "I'll take that for tuition. You are now enrolled into the school.";
-		next;
+	set Zeny,Zeny-70000;
+	set SAGE_Q,3;
+	mes "[Mathias]";
+	mes "I see you have 70000 Zeny.";
+	mes "I'll take that for tuition. You are now enrolled into the school.";
+	next;
+	goto L_Menu5_5;
+
 	L_Menu5_5:
 		if (JobLevel < 40) goto L_Menu5_9;
 		mes "[Mathias]";
@@ -1093,19 +1157,19 @@ L_Menu5_1:
 		mes "" + strcharinfo(0) + ".";
 		mes "That's a nice name.";
 		next;
-			if (JobLevel == 50) goto L_JobMax;
-			if (SAGE_Q == 3) goto L_Menu5_6;
-			if (countitem(1006) > 0) goto L_Menu5_7;
-			if (countitem(1007) > 0) goto L_Menu5_7_;
-			if (Zeny < 70000) goto L_Menu5_2;
-			set Zeny,Zeny-70000;
-			set SAGE_Q,3;
-
-			mes "[Mathias]";
-		        mes "I see you have 70000 Zeny.";
-		        mes "I'll take that for tuition.";
-			mes "You are now enrolled into the school.";
-			next;
+		if (JobLevel == 50) goto L_JobMax;
+		if (SAGE_Q == 3) goto L_Menu5_6;
+		if (countitem(1006) > 0) goto L_Menu5_7;
+		if (countitem(1007) > 0) goto L_Menu5_7_;
+		if (Zeny < 70000) goto L_Menu5_2;
+		set Zeny,Zeny-70000;
+		set SAGE_Q,3;
+		mes "[Mathias]";
+		mes "I see you have 70000 Zeny.";
+		mes "I'll take that for tuition.";
+		mes "You are now enrolled into the school.";
+		next;
+		goto L_Menu5_6;
 
 		L_Menu5_6:
 			mes "[Mathias]";
@@ -1118,6 +1182,7 @@ L_Menu5_1:
 			mes "[Mathias]";
 			mes "Good luck on the test.";
 			close;
+
 		L_JobMax:
 			set SAGE_Q,3;
 			mes "[Mathias]";
@@ -1130,6 +1195,7 @@ L_Menu5_1:
 			mes "[Mathias]";
 			mes "Go see Professor Kreitos in the library on the far left side of the building.";
 			close;
+
 	L_Menu5_2:
 		if (SAGE_Q != 2) goto L_Menu5_8;
 		if ((countitem(916) >= 50) && (countitem(914) >= 50) && (countitem(949) >= 50) && (countitem(705) >= 50)) goto L_Menu5_3;
@@ -1147,8 +1213,8 @@ L_Menu5_1:
 		mes "If you can get all that, I'll discount the fee to 30000 Zeny.";
 		mes "Please do your best to collect them.";
 		close;
+
 	L_Menu5_3:
-//--------------------------------------------------------------
 		if (Zeny < 30000) goto L_Menu5_8;
 		delitem 916,50;
 		delitem 914,50;
@@ -1163,6 +1229,7 @@ L_Menu5_1:
 		set SAGE_Q,3;
 		next;
 		goto L_Menu5_5;
+
 	L_Menu5_4:
 		delitem 1006,1;
 		set SAGE_Q,3;
@@ -1171,6 +1238,7 @@ L_Menu5_1:
 		mes "I'll accept it in lieu of tuition.";
 		next;
 		goto L_Menu5_5;
+
 	L_Menu5_4_:
 		delitem 1007,1;
 		set SAGE_Q,3;
@@ -1179,6 +1247,7 @@ L_Menu5_1:
 		mes "I'll accept it in lieu of tuition.";
 		next;
 		goto L_Menu5_5;
+
 	L_Menu5_7:
 		delitem 1006,1;
 		set SAGE_Q,3;
@@ -1187,6 +1256,7 @@ L_Menu5_1:
 		mes "I'll accept it in lieu of tuition.";
 		next;
 		goto L_Menu5_6;
+
 	L_Menu5_7_:
 		delitem 1007,1;
 		set SAGE_Q,3;
@@ -1195,27 +1265,31 @@ L_Menu5_1:
 		mes "I'll accept it in lieu of tuition.";
 		next;
 		goto L_Menu5_6;
+
 	L_Menu5_8:
 		mes "[Mathias]";
 		mes "You don't seem to have enough money.";
 		mes "Please earn some money and return here.";
 		close;
+
 	L_Menu5_9:
 		mes "[Mathias]";
 		mes "Your class level is too low.";
 		mes "Complete some more training and return here.";
 		close;
-//--------------------------------------------------------------
+
 L_Menu6_1:
 	mes "[Mathias]";
 	mes "Hmmm?  Did you forget what you need to do next?";
 	mes "Head over and see Professor Kreitos on the left side of the building.";
 	close;
+
 L_Menu6_2:
 	mes "[Mathias]";
 	mes "Oh, forgive me.  I have so much to do that I can't help you at the moment.";
 	mes "Again, I apologize...";
 	close;
+
 L_Menu6_3:
 	mes "[Mathias]";
 	mes "Oh!  Did you finish your thesis?";
@@ -1225,6 +1299,7 @@ L_Menu6_3:
 	mes "If he approves, you can graduate!";
 	mes "Good luck.";
 	close;
+
 L_Menu6_4:
 	mes "[Mathias]";
 	mes "Welcome, colleague.";
@@ -1240,6 +1315,7 @@ L_Menu6_4:
 }
 
 yuno_in03.gat,169,180,4	script	Test Professor	755,{
+
 	if (BaseJob == Job_Sage) goto L_Menu4_5;
 	if (BaseJob != Job_Mage) goto L_Menu1_1;
 	if (SAGE_Q == 5) goto L_Menu2_1;
@@ -1258,6 +1334,7 @@ yuno_in03.gat,169,180,4	script	Test Professor	755,{
 	mes "Oh, alright.";
 	mes "First you need to enroll and take the placement test.";
 	close;
+
 L_Menu1_1:
 	mes "[Hermes]";
 	mes "This is Shubaichul Magic Academy.";
@@ -1270,10 +1347,12 @@ L_Menu1_1:
 	mes "Keep supporting your party to the best of your ability.";
 	mes "That's all you need to do.";
 	close;
+
 L_Menu1_2:
 	mes "[Hermes]";
 	mes "You need to take the placement test from Kreitos before you can take my test.";
 	close;
+
 L_Menu2_1:
 	set SAGE_Q,6;
 	mes "[Hermes]";
@@ -1288,17 +1367,20 @@ L_Menu2_1:
 	mes "There's an old proverb that one experience is worth a hundred words, so why not try it once?";
 	next;
 	menu "Sounds good",-,"I'm not ready yet",L_Menu2_2;
+
 		mes "[Hermes]";
 		mes "Well, let's get started.";
 		mes "Do your best!";
 		close2;
 		warp "job_sage",50,154;
 		end;
+
 	L_Menu2_2:
 		mes "[Hermes]";
 		mes "Okay.";
 		mes "Please prepare quickly.";
 		close;
+
 L_Menu2_3:
 	mes "[Hermes]";
 	mes "Are you ready to take the skill test?";
@@ -1308,12 +1390,14 @@ L_Menu2_3:
 	mes "How about it?";
 	next;
 	menu "Sounds good",-,"I'm not ready yet",L_Menu2_2;
+
 		mes "[Hermes]";
 		mes "Well, let's get started.";
 		mes "Do your best!";
 		close2;
 		warp "job_sage",50,154;
 		end;
+
 L_Menu3_1:
 	mes "[Hermes]";
 	mes "Good job!  You passed";
@@ -1336,6 +1420,7 @@ L_Menu3_1:
 	mes "you should take the biology course from Professor Lucias.";
 	next;
 	goto L_Menu3_4;
+
 L_Menu3_2:
 	set SAGE_Q,9;
 	mes "[Hermes]";
@@ -1345,25 +1430,31 @@ L_Menu3_2:
 	mes "[Hermes]";
 	mes "You need to take a course from Professor Ebeshi in the biotech lab to gain a deeper understanding of elemental magic.";
 	next;
+	goto L_Menu3_4;
+
 L_Menu3_4:
 	mes "[Hermes]";
 	mes "I hope the coursework goes well.";
 	close;
+
 L_Menu4_1:
 	mes "[Hermes]";
 	mes "Weren't you listening?";
 	mes "You need to see Professor Lucias so you can begin your study of monster biology.";
 	close;
+
 L_Menu4_2:
 	mes "[Hermes]";
 	mes "Weren't you listening?";
 	mes "You need to see Professor Ebeshi so you can begin your study of elemental magic.";
 	close;
+
 L_Menu4_4:
 	mes "[Hermes]";
 	mes "Great job on completing your thesis, but you need to show it to the Headmaster.";
 	mes "He's the one who will judge whether or not you graduate.";
 	close;
+
 L_Menu4_5:
 	mes "[Hermes]";
 	mes "How are you?";
@@ -1380,6 +1471,7 @@ L_Menu4_5:
 }
 
 yuno_in03.gat,62,176,3	script	History Professor	109,{
+
 	if (BaseJob == Job_Sage) goto L_Menu2_2;
 	if (BaseJob != Job_Mage) goto L_Menu1_1;
 	if (SAGE_Q == 11) goto L_Menu2_1;
@@ -1387,6 +1479,7 @@ yuno_in03.gat,62,176,3	script	History Professor	109,{
 	mes "You don't seem sure of your intended direction of study.";
 	mes "Perhaps you should consider it...";
 	close;
+
 L_Menu1_1:
 	mes "[Sapien]";
 	mes "Yes, I teach history.";
@@ -1400,11 +1493,13 @@ L_Menu1_1:
 	mes "By understanding what's happened to you already,";
 	mes "you can blaze a trail into the future unhindered by unresolved problems.";
 	close;
+
 L_Menu2_1:
 	mes "[Sapien]";
 	mes "What are you doing?";
 	mes "Hurry up and show the Headmaster your thesis before you lose it!";
 	close;
+
 L_Menu2_2:
 	mes "[Sapien]";
 	mes "Yes...?";
@@ -1423,6 +1518,7 @@ L_Menu2_2:
 }
 
 yuno_in03.gat,105,177,4	script	Placement Test Professor	754,{
+
 	if (BaseJob == Job_Sage) goto L_Menu3_4;
 	if (BaseJob != Job_Mage) goto L_Menu1_1;
 	if (SAGE_Q == 11) goto L_Menu3_3;
@@ -1437,6 +1533,7 @@ yuno_in03.gat,105,177,4	script	Placement Test Professor	754,{
 	mes "[Kreitos]";
 	mes "You need to formally enroll in the Academy before I can help you any further.";
 	close;
+
 L_Menu1_1:
 	mes "[Kreitos]";
 	mes "Oh, you're not interested in our brand of magic?";
@@ -1446,6 +1543,7 @@ L_Menu1_1:
 	mes "Anyone who teaches others and has a good heart is of value to society.";
 	mes "Please keep that in mind.";
 	close;
+
 L_Menu1_2:
 	set SAGE_Q,4;
 	set sagecheck,10;
@@ -1459,15 +1557,16 @@ L_Menu1_2:
 	mes "right?";
 	mes "Let's start the placement test.";
 	next;
-		mes "[Kreitos]";
-		mes "This test consists of twenty questions concerning the entire world.";
-		mes "If you score at least 80 points, you'll be placed in our program.";
-		mes "Each correct answer is worth 5 points.";
-		next;
-		mes "[Kreitos]";
-		mes "If you cancel, you'll have to start over, so be careful.";
-		next;
-		goto L_Menu2_2;
+	mes "[Kreitos]";
+	mes "This test consists of twenty questions concerning the entire world.";
+	mes "If you score at least 80 points, you'll be placed in our program.";
+	mes "Each correct answer is worth 5 points.";
+	next;
+	mes "[Kreitos]";
+	mes "If you cancel, you'll have to start over, so be careful.";
+	next;
+	goto L_Menu2_2;
+
 	L_Menu2_1:
 		mes "[Kreitos]";
 		mes "Are you ready to try again?";
@@ -1483,334 +1582,370 @@ L_Menu1_2:
 		mes "As before, if you cancel,";
 		mes "you'll have to start over.";
 		next;
-	L_Menu2_2:
+		goto L_Menu2_2;
 
-		set @sage_test2,0;
-		set @sage_test1,rand(3);
-		if (@sage_test1 == 1) goto L_Test2_1;
-		if (@sage_test1 == 2) goto L_Test3_1;
-
-//--------------------------------------------------------------
-// Written Test: Route 1
-//--------------------------------------------------------------
+		L_Menu2_2:
+			set @sage_test2,0;
+			set @sage_test1,rand(3);
+			if (@sage_test1 == 1) goto L_Test2_1;
+			if (@sage_test1 == 2) goto L_Test3_1;
 			mes "1. Which one isn't sold in Morocc's jewel shop?";
 			next;
 			menu "Topaz",L_Test1_1,"Garnet",-,"Diamond",L_Test1_1,"Sapphire",L_Test1_1;
 			set @sage_test2,@sage_test2+5;
 			goto L_Test1_1;
+
 		L_Test1_1:
 			mes "2. In which town can you not buy monster food?";
 			next;
 			menu "Prontera",L_Test1_2,"Morocc",L_Test1_2,"Aldebaran",-,"Alberta",L_Test1_2;
 			set @sage_test2,@sage_test2+5;
+
 		L_Test1_2:
 			mes "3. Which town is closest to the forest maze?";
 			next;
 			menu "Prontera",-,"Morocc",L_Test1_3,"Geffen",L_Test1_3,"Payon",L_Test1_3;
 			set @sage_test2,@sage_test2+5;
+
 		L_Test1_3:
 			mes "4. Which of these monsters is of a different race than the other three?";
 			next;
 			menu "Muka",L_Test1_4,"Drops",L_Test1_4,"Plankton",L_Test1_4,"Penomena",-;
 			set @sage_test2,@sage_test2+5;
+
 		L_Test1_4:
-			mes "5.  All these monsters except one have the same elemental affinity.";
+			mes "5. All these monsters except one have the same elemental affinity.";
 			mes "Which one has the different affinity?";
 			next;
 			menu "Dokebi",L_Test1_5,"Isis",L_Test1_5,"Giearth",-,"Deviruchi",L_Test1_5;
 			set @sage_test2,@sage_test2+5;
+
 		L_Test1_5:
 			mes "6. Which one differs in approximate size from the others?";
 			next;
 			menu "Male Thief Bug",L_Test1_6,"Horn",L_Test1_6,"Metaller",L_Test1_6,"Argos",-;
 			set @sage_test2,@sage_test2+5;
+
 		L_Test1_6:
-			mes "7.  Which of these monsters doesn't drop the Iggydrasil leaf?";
+			mes "7. Which of these monsters doesn't drop the Iggydrasil leaf?";
 			next;
 			menu "Marduk",-,"Baphomet Jr.",L_Test1_7,"Angeling",L_Test1_7,"Wander Man",L_Test1_7;
 			set @sage_test2,@sage_test2+5;
+
 		L_Test1_7:
-			mes "8.  Which of these people isn't related to someone who can perform a class change to priest?";
+			mes "8. Which of these people isn't related to someone who can perform a class change to priest?";
 			next;
 			menu "Peter S. Alberto",-,"Thomas Bishop",L_Test1_8,"Windser Banedict",L_Test1_8,"Sesil Magrita",L_Test1_8;
 			set @sage_test2,@sage_test2+5;
+
 		L_Test1_8:
-			mes "9. Which doesn't live in Morocc?";
+			mes "9. Which doesn't live in Morroc?";
 			next;
 			menu "Muda Armani",L_Test1_9,"Aragham",L_Test1_9,"Antonio",-,"Abldul",L_Test1_9;
 			set @sage_test2,@sage_test2+5;
+
 		L_Test1_9:
-			mes "10.  Which Kapra has the pretty blue hair?";
+			mes "10. Which Kafra has the pretty blue hair?";
 			next;
 			menu "Pavianne",-,"Debril",L_Test1_10,"Claris",L_Test1_10,"Tayelin",L_Test1_10;
 			set @sage_test2,@sage_test2+5;
+
 		L_Test1_10:
-			mes "11.  Which one isn't necessary to unlock the Fire Wall skill?";
+			mes "11. Which one isn't necessary to unlock the Fire Wall skill?";
 			next;
 			menu "Firebolt Lv4",L_Test1_11,"Napalm Beat Lv4",-,"Fireball Lv5",L_Test1_11,"Sight Lv1",L_Test1_11;
 			set @sage_test2,@sage_test2+5;
+
 		L_Test1_11:
-			mes "12.  When the skill 'SP Restoration Lv6' is active, how much SP does the skill restore every ten seconds?";
+			mes "12. When the skill 'SP Restoration Lv6' is active, how much SP does the skill restore every ten seconds?";
 			next;
 			menu "14 sp",L_Test1_12,"16 sp",L_Test1_12,"18 sp",-,"21 sp",L_Test1_12;
 			set @sage_test2,@sage_test2+5;
+
 		L_Test1_12:
 			mes "13. If you are a magician with job lv. 33, how many additional stat points will you get for int?";
 			next;
 			menu "7",L_Test1_13,"6",L_Test1_13,"5",L_Test1_13,"4",-;
 			set @sage_test2,@sage_test2+5;
+
 		L_Test1_13:
-			mes "14.  If the Archer skill 'Concentration Up Lv5' is active, how much SP will it consume?";
+			mes "14. If the Archer skill 'Concentration Up Lv5' is active, how much SP will it consume?";
 			next;
 			menu "45 / 140sec",-,"50 / 140sec",L_Test1_14,"45 / 150sec",L_Test1_14,"50 / 150sec",L_Test1_14;
 			set @sage_test2,@sage_test2+5;
+
 		L_Test1_14:
 			mes "15. Which one isn't necessary to unlock the Blacksmith skill 'Maximize Power'?";
 			next;
 			menu "Hilt Bending",L_Test1_15,"Skin Tempering",-,"Hammer Fall",L_Test1_15,"Weapon Perfection",L_Test1_15;
 			set @sage_test2,@sage_test2+5;
+
 		L_Test1_15:
 			mes "16. What is the defense power and supplemental ability of a Ribbon?";
 			next;
 			menu "0 / SP +20",L_Test1_16,"0 / SP +30",L_Test1_16,"1 / SP +20",-,"1 / SP +30",L_Test1_16;
 			set @sage_test2,@sage_test2+5;
+
 		L_Test1_16:
 			mes "17. Which class can't equip a Saint Robe?";
 			next;
-		//Swordsmen can't equip it either as of this writing.
-			menu "Swordsman",-,"Merchant",L_Test1_17,"Thief",-,"Acolyte",L_Test1_17;
+			menu "Swordman",-,"Merchant",L_Test1_17,"Thief",-,"Acolyte",L_Test1_17;
 			set @sage_test2,@sage_test2+5;
+
 		L_Test1_17:
 			mes "18. Which status ailment can't be removed with a Green Potion?";
 			next;
 			menu "Mute",L_Test1_18,"Poison",L_Test1_18,"Blind",L_Test1_18,"Cursed",-;
 			set @sage_test2,@sage_test2+5;
+
 		L_Test1_18:
 			mes "19. What is the name of the ancient kingdom from which Geffen descends?";
 			next;
 			menu "Gefin",L_Test1_19,"Geffenia",-,"Gefdoria",L_Test1_19,"Gefria",L_Test1_19;
 			set @sage_test2,@sage_test2+5;
+
 		L_Test1_19:
 			mes "20. Which tree is said to be the world's root?";
 			next;
 			menu "Igg Drasil",-,"Idrasil",L_Menu2_3,"Master",L_Menu2_3,"Old Tree",L_Menu2_3;
 			set @sage_test2,@sage_test2+5;
 			goto L_Menu2_3;
-//--------------------------------------------------------------
-// Written Test: Route 2
-//--------------------------------------------------------------
+
 		L_Test2_1:
 			mes "1. Which isn't sold in Geffen's magic shop?";
 			next;
 			menu "Mantle",-,"Wand",L_Test2_2,"Circlet",L_Test2_2,"Silver Robe",L_Test2_2;
 			set @sage_test2,@sage_test2+5;
+
 		L_Test2_2:
 			mes "2. Which town doesn't sell blades?";
 			next;
 			menu "Prontera",L_Test2_3,"Izlude",L_Test2_3,"Aldebaran",-,"payon",L_Test2_3;
 			set @sage_test2,@sage_test2+5;
+
 		L_Test2_3:
 			mes "3. Which town is nearest to Glast Heim?";
 			next;
 			menu "Prontera",L_Test2_4,"Geffen",-,"Morocc",L_Test2_4,"Payon",L_Test2_4;
 			set @sage_test2,@sage_test2+5;
+
 		L_Test2_4:
-			mes "4.  Which monster's type differs from the other three?";
+			mes "4. Which monster's type differs from the other three?";
 			next;
 			menu "Aster",L_Test2_5,"Marc",L_Test2_5,"Marse",L_Test2_5,"Marin",-;
 			set @sage_test2,@sage_test2+5;
+
 		L_Test2_5:
 			mes "5. Which monster's elemental affinity is different from the others?";
 			next;
 			menu "Desert Wolf Babe",L_Test2_6,"Smokie",-,"Picky",L_Test2_6,"Choco",L_Test2_6;
 			set @sage_test2,@sage_test2+5;
+
 		L_Test2_6:
 			mes "6. Which monster is in a different size class than the others?";
 			next;
 			menu "Drake",-,"Wraith",L_Test2_7,"Evil Druid",L_Test2_7,"Khalitzburg",L_Test2_7;
 			set @sage_test2,@sage_test2+5;
+
 		L_Test2_7:
 			mes "7. Which monster doesn't drop Phracon?";
 			next;
 			menu "Pupa",L_Test2_8,"Condor",-,"Savage Baby",L_Test2_8,"Desert Wolf Babe",L_Test2_8;
 			set @sage_test2,@sage_test2+5;
+
 		L_Test2_8:
 			mes "8. Who isn't involved in the Blacksmith class change?";
 			next;
-//--------------------------------------------------------------
-// Acording To mRO Site And Blacksmith Script the following ppl looking like ppl listed here are:
-// - Baisulitst - looks like some1 listed by mRO
-// - Wickebine - mRO has him as option listed
-// - Gromgast - mRO has him as option listed
-// - Mitmayer - translator has him listed as option
-// -> Conclusion -> I took the following:
-//--------------------------------------------------------------
 			menu "Baisulitst",L_Test2_9,"Wickebine",L_Test2_9,"Barkdale",-,"Mitmayer",L_Test2_9;
 			set @sage_test2,@sage_test2+5;
+
 		L_Test2_9:
-			mes "9.  Who doesn't live in Aldebaran?";
+			mes "9. Who doesn't live in Aldebaran?";
 			next;
 			menu "RS125",L_Test2_10,"Maasaru",-,"Munster",L_Test2_10,"Isenberg",L_Test2_10;
 			set @sage_test2,@sage_test2+5;
+
 		L_Test2_10:
-			mes "10. Who is the youngest person in the Kapra organization?";
+			mes "10. Who is the youngest person in the Kafra organization?";
 			next;
 			menu "Deflute",L_Test2_11,"Claris",L_Test2_11,"Tayelin",L_Test2_11,"Curly Sue",-;
 			set @sage_test2,@sage_test2+5;
+
 		L_Test2_11:
 			mes "11. When you use the skill 'Safety Wall Lv6', how much SP is consumed and how many attacks will it block?";
 			next;
 			menu "SP 40, 6bl",L_Test2_12,"SP 35, 6bl",L_Test2_12,"SP 35, 7bl",L_Test2_12,"SP 40, 7bl",-;
 			set @sage_test2,@sage_test2+5;
+
 		L_Test2_12:
 			mes "12. When you use 'Napalm Beat Lv6', what is the attack power relative to MATK?";
 			next;
 			menu "1.2x MATK",L_Test2_13,"1.3x MATK",-,"1.4x MATK",L_Test2_13,"1.5x MATK",L_Test2_13;
 			set @sage_test2,@sage_test2+5;
+
 		L_Test2_13:
 			mes "13. Which one catalyzes the reaction of Liquid #4 during the Magician class change test?";
 			next;
 			menu "Blue Gemstone",L_Test2_14,"Red Gemstone",L_Test2_14,"Orange Gemstone",L_Test2_14,"Carat Diamond",-;
 			set @sage_test2,@sage_test2+5;
+
 		L_Test2_14:
 			mes "14. What is the damage multiplier and SP consumption for 'Bash Lv6'?";
 			next;
 			menu "250% / 8",L_Test2_15,"280% / 8",L_Test2_15,"280% / 15",-,"310% / 15",L_Test2_15;
 			set @sage_test2,@sage_test2+5;
+
 		L_Test2_15:
-			mes "15.  Which isn't necessary to unlock the Hunter skill 'Claymore Trap'?";
+			mes "15. Which isn't necessary to unlock the Hunter skill 'Claymore Trap'?";
 			next;
 			menu "Remove Trap",-,"Land Mine",L_Test2_16,"Ankle Snare",L_Test2_16,"Flash",L_Test2_16;
 			set @sage_test2,@sage_test2+5;
+
 		L_Test2_16:
 			mes "16. What is the defense power and supplemental ability of a Veil?";
 			next;
 			menu "0 / MDEF +3",L_Test2_17,"0 / MDEF +5",-,"1 / MDEF +3",L_Test2_17,"1 / MDEF +5",L_Test2_17;
 			set @sage_test2,@sage_test2+5;
+
 		L_Test2_17:
-			mes "17.  Which class can't equip a Coat?";
+			mes "17. Which class can't equip a Coat?";
 			next;
-			menu "Swordsman",L_Test2_18,"Magician",L_Test2_18,"Thief",L_Test2_18,"Novice",-;
+			menu "Swordman",L_Test2_18,"Magician",L_Test2_18,"Thief",L_Test2_18,"Novice",-;
 			set @sage_test2,@sage_test2+5;
+
 		L_Test2_18:
 			mes "18. Which item isn't blue in color?";
 			next;
 			menu "Alcohol",L_Test2_19,"Detrimindexta",-,"Karvodailnirol",L_Test2_19,"Blue Herb",L_Test2_19;
 			set @sage_test2,@sage_test2+5;
+
 		L_Test2_19:
 			mes "19. Which item did the god Odin use to create the world?";
 			next;
-//			menu "Yomir's Heart",L_Test2_20,"Yomir's Nail",-,"Yomir's Tooth",L_Test2_20,"Yomir's Stuff",L_Test2_20;
-// All answers correct untill i know the real answer, only Stuff is wrong cause that NOT it
-			menu "Yomir's Heart",-,"Yomir's Nail",-,"Yomir's Tooth",-,"Yomir's Stuff",L_Test2_20;
+			menu "Ymir's Heart",-,"Ymir's Nail",-,"Ymir's Tooth",-,"Ymir's Stuff",L_Test2_20;
 			set @sage_test2,@sage_test2+5;
+
 		L_Test2_20:
 			mes "20. Which metal can change the fate of the world?";
 			next;
 			menu "Envertacon",L_Menu2_3,"Emperium",-,"Enbera",L_Menu2_3,"Phracon",L_Menu2_3;
 			set @sage_test2,@sage_test2+5;
 			goto L_Menu2_3;
-//--------------------------------------------------------------
-// Written Test: Route 3
-//--------------------------------------------------------------
+
 		L_Test3_1:
 			mes "1.Which of these items isn't sold at Prontera's knicknack shop?";
 			next;
 			menu "White Plate",L_Test3_2,"Red Frame",L_Test3_2,"Flower",-,"Glass Ball",L_Test3_2;
 			set @sage_test2,@sage_test2+5;
+
 		L_Test3_2:
 			mes "2. Which town doesn't sell stilettos?";
 			next;
 			menu "Prontera",-,"Morocc",L_Test3_3,"Gefen",L_Test3_3,"Lutie",L_Test3_3;
 			set @sage_test2,@sage_test2+5;
+
 		L_Test3_3:
 			mes "3. Which town is closest to Turtle Island?";
 			next;
 			menu "Aldebaran",L_Test3_4,"Alberta",-,"Comodo",L_Test3_4,"Izlude",L_Test3_4;
 			set @sage_test2,@sage_test2+5;
+
 		L_Test3_4:
 			mes "4. Which monster is of a different monster race than the other three?";
 			next;
 			menu "Raggler",L_Test3_5,"Pest",L_Test3_5,"Frilldora",L_Test3_5,"Aster",-;
 			set @sage_test2,@sage_test2+5;
+
 		L_Test3_5:
 			mes "5. Which monster has a different elemental affinity than the other three?";
 			next;
 			menu "Mantis",L_Test3_6,"Metaller",-,"Rokker",L_Test3_6,"Horn",L_Test3_6;
 			set @sage_test2,@sage_test2+5;
+
 		L_Test3_6:
 			mes "6. Which monster is in a different size class than the others?";
 			next;
 			menu "Raydric",-,"Raydric Archer",L_Test3_7,"Wander Man",L_Test3_7,"Dark Flame",L_Test3_7;
 			set @sage_test2,@sage_test2+5;
+
 		L_Test3_7:
 			mes "7. Which monster doesn't drop alcohol?";
 			next;
 			menu "Horn",L_Test3_8,"Plankton",L_Test3_8,"Poison Spore",-,"Toad",L_Test3_8;
 			set @sage_test2,@sage_test2+5;
+
 		L_Test3_8:
 			mes "8. Which isn't involved in the Knight class change?";
 			next;
-//--------------------------------------------------------------
-// Acording To mRO Site And Knight Script the following ppl looking like ppl listed here
-//--------------------------------------------------------------
 			menu "James Syracuse",L_Test3_9,"Thomas Bishop",-,"Amy Veattris",L_Test3_9,"Edmond Groster",L_Test3_9;
 			set @sage_test2,@sage_test2+5;
+
 		L_Test3_9:
 			mes "9. Which of these people doesn't live in Prontera?";
 			next;
 			menu "Nami",L_Test3_10,"Aldefun",-,"Thomas",L_Test3_10,"Hollengrhen",L_Test3_10;
 			set @sage_test2,@sage_test2+5;
+
 		L_Test3_10:
-			mes "10. Which Kapra wears glasses?";
+			mes "10. Which Kafra wears glasses?";
 			next;
 			menu "Deflute",L_Test3_11,"Tayelin",L_Test3_11,"Leilah",-,"Debril",L_Test3_11;
 			set @sage_test2,@sage_test2+5;
+
 		L_Test3_11:
 			mes "11. How much SP does it cost to use 'Thunderstorm Lv7'?";
 			next;
 			menu "49",L_Test3_12,"59",-,"69",L_Test3_12,"74",L_Test3_12;
 			set @sage_test2,@sage_test2+5;
+
 		L_Test3_12:
 			mes "12. If you have 50% of your SP left, how much damage will 'Energy Coat' block and how much SP will be consumed?";
 			next;
 			menu "24% blocked SP1.5% consumed",L_Test3_13,"24% blocked SP2% consumed",L_Test3_13,"18% blocked SP1.5% consumed",L_Test3_13,"18% blocked SP2% consumed",-;
 			set @sage_test2,@sage_test2+5;
+
 		L_Test3_13:
 			mes "13. Which element cannot be used in bolt form by a Magician?";
 			next;
 			menu "Water",L_Test3_14,"Earth",-,"Fire",L_Test3_14,"Wind",L_Test3_14;
 			set @sage_test2,@sage_test2+5;
+
 		L_Test3_14:
 			mes "14. When a thief has the skill 'Double Attack Lv7', what is the trigger probability and attack power multiplier?";
 			next;
 			menu "35% / 120%",L_Test3_15,"35% / 140%",-,"40% / 120%",L_Test3_15,"40% / 140%",L_Test3_15;
 			set @sage_test2,@sage_test2+5;
+
 		L_Test3_15:
 			mes "15. Which of these isn't necessary to unlock the Priest skill 'Magnus Exorcism'?";
 			next;
 			menu "Divine Protection",-,"Heal",L_Test3_16,"Revive",L_Test3_16,"Aqua Benedicta",L_Test3_16;
 			set @sage_test2,@sage_test2+5;
+
 		L_Test3_16:
 			mes "16. What is the defense power and supplemental ability of a Bunny Band?";
 			next;
 			menu "1 / LUK +2",L_Test3_17,"1 / LUK +5",L_Test3_17,"2 / LUK +2",-,"2 / LUK +5",L_Test3_17;
 			set @sage_test2,@sage_test2+5;
+
 		L_Test3_17:
 			mes "17. Which class can't equip armor?";
 			next;
-			menu "Swordsman",L_Test3_18,"Merchant",L_Test3_18,"Thief",L_Test3_18,"Archer",-;
+			menu "Swordman",L_Test3_18,"Merchant",L_Test3_18,"Thief",L_Test3_18,"Archer",-;
 			set @sage_test2,@sage_test2+5;
+
 		L_Test3_18:
 			mes "18. Which item completely restores HP and SP?";
 			next;
 			menu "Royal Jelly",L_Test3_19,"Ig Drasil Seed",L_Test3_19,"Ig Drasil Fruit",-,"Master Fruit",L_Test3_19;
 			set @sage_test2,@sage_test2+5;
+
 		L_Test3_19:
 			mes "19. What's the name of the king of Rune-Midgard?";
 			next;
 			menu "Trisdan III",L_Test3_20,"Tristan III",-,"Traisda III",L_Test3_20,"Trist III",L_Test3_20;
 			set @sage_test2,@sage_test2+5;
+
 		L_Test3_20:
 			mes "20. Which god do Crusaders serve?";
 			next;
@@ -1835,6 +1970,7 @@ L_Menu1_2:
 			mes "You've scored highly enough to pass.";
 			next;
 			goto L_Menu2_6;
+
 		L_Menu2_4:
 			set sagecheck,sagecheck-1;
 			mes "[Kreitos]";
@@ -1846,8 +1982,9 @@ L_Menu1_2:
 			mes "[Kreitos]";
 			mes "We exepect our students to have command of much information about the world.";
 			mes "Learn some more and come back.";
-                        mes "You can take the test again then.";
+			mes "You can take the test again then.";
 			close;
+
  		L_Menu2_5:
 			mes "[Kreitos]";
 			mes "All done.";
@@ -1855,6 +1992,8 @@ L_Menu1_2:
 			mes "Amazing.  You did wonderfully.";
 			mes "There is no doubt you'll make a great Sage.";
 			next;
+			goto L_Menu2_6;
+
 		L_Menu2_6:
 			set SAGE_Q,5;
 			mes "[Kreitos]";
@@ -1862,6 +2001,7 @@ L_Menu1_2:
 			mes "You've completed the placement test.";
 			mes "Now you need to take the skill test from Professor Hermes.";
 			close;
+
 L_Menu3_1:
 	mes "[Kreitos]";
 	mes "Heh?";
@@ -1871,11 +2011,13 @@ L_Menu3_1:
 	mes "Go see Professor Hermes and take the skill test.";
 	mes "Future Sages can't be slacking off.";
 	close;
+
 L_Menu3_2:
 	mes "[Kreitos]";
 	mes "I'm busy grading other students' exams at the moment.";
 	mes "If you need something, please see me later.";
 	close;
+
 L_Menu3_3:
 	mes "[Kreitos]";
 	mes "It's great that you finished your thesis, but I don't grade those.";
@@ -1884,6 +2026,7 @@ L_Menu3_3:
 	mes "Show that to Headmaster Keiron.";
 	mes "He'll judge whether or not it's quality warrants your graduation.";
 	close;
+
 L_Menu3_4:
 	mes "[Kreitos]";
 	mes "You've graduated already?";
@@ -1900,12 +2043,8 @@ L_Menu3_4:
 	close;
 }
 
-
-//--------------------------------------------------------------
-// Skill Test Room
-//--------------------------------------------------------------
-
 job_sage.gat,50,165,4	script	Skill Test Coordinator::jobsage_wroom	700,{
+
 	mes "[Skill Test Coordinator]";
 	mes "Welcome to the Sage skill test.";
 	mes "Please go to the waiting area if you want to take the test.";
@@ -1917,28 +2056,33 @@ job_sage.gat,50,165,4	script	Skill Test Coordinator::jobsage_wroom	700,{
 	mes "[Skill Test Coordinator]";
 	mes "It takes around 5-10 minutes to test one person.";
 	close;
+
 OnInit:
 	waitingroom "Test Waiting Area",10,"jobsage_wroom::OnStart",1;
 	end;
+
 OnStart:
 	disablewaitingroomevent;
 	warpwaitingpc "job_sage.gat",118,99;
 	set $@jobsage_pid,$@warpwaitingpc[0];
-	if ( attachrid($@jobsage_pid)==0 ) goto L_Error;
+	if (attachrid($@jobsage_pid) == 0) goto L_Error;
 		set $@jobsage_pname$,strcharinfo(0);
 		donpcevent "jobsage_1st::OnStart";
 		end;
+
 L_Error:
 	enablewaitingroomevent;
 	end;
+
 OnEnable:
 	enablewaitingroomevent;
 	end;
 }
 
-// Test Step 1
 job_sage.gat,1,1,1	script	jobsage_1st	139,{
+
 	end;
+
 OnStart:
 	set $@jobsage_m,16;
 	monster "job_sage.gat",115,106,"Unit",1183,1,"jobsage_1st::OnKilled";
@@ -1959,67 +2103,82 @@ OnStart:
 	monster "job_sage.gat",103,110,"Unit",1184,1,"jobsage_1st::OnKilled";
 	initnpctimer;
 	end;
+
 OnReset:
 	killmonster "job_sage.gat","All";
 	end;
+
 OnKilled:
 	set $@jobsage_m,$@jobsage_m-1;
-	if ( $@jobsage_m > 0 )goto L_NotWin;
-	if (getnpctimer(0) < 60000 ) set sagecheck,sagecheck+1;
-	if ((getnpctimer(0) >= 120000 ) && (getnpctimer(0) <= 170000 )) set sagecheck,sagecheck-1;
-	if (getnpctimer(0) > 170000 ) set sagecheck,sagecheck-2;
-		stopnpctimer;
-		mapannounce "job_sage.gat","Examiner: " + $@jobsage_pname$ + " killed all the monsters!",8;
-		donpcevent "jobsage_2nd::OnStart";
-	L_NotWin:
+	if ($@jobsage_m > 0) end;
+	if (getnpctimer(0) < 60000) set sagecheck,sagecheck+1;
+	if ((getnpctimer(0) >= 120000) && (getnpctimer(0) <= 170000)) set sagecheck,sagecheck-1;
+	if (getnpctimer(0) > 170000) set sagecheck,sagecheck-2;
+	stopnpctimer;
+	mapannounce "job_sage.gat","Examiner: " + $@jobsage_pname$ + " killed all the monsters!",8;
+	donpcevent "jobsage_2nd::OnStart";
 	end;
+
 OnTimer1000:
 	mapannounce "job_sage.gat","Examiner: The skill test begins now.",8;
 	end;
+
 OnTimer2500:
 	mapannounce "job_sage.gat","Examiner: The time limit for this portion of the test is 3 minutes.",8;
 	end;
+
 OnTimer4000:
 	mapannounce "job_sage.gat","Examiner: You must kill all the monsters within that time period.",8;
 	end;
+
 OnTimer30000:
 	mapannounce "job_sage.gat","Examiner: 2 minutes, 30 seconds remaining.",8;
 	end;
+
 OnTimer60000:
 	mapannounce "job_sage.gat","Examiner: 2 minutes remaining.",8;
 	end;
+
 OnTimer90000:
 	mapannounce "job_sage.gat","Examiner: 1 minute, 30 seconds remaining.",8;
 	end;
+
 OnTimer120000:
 	mapannounce "job_sage.gat","Examiner: 1 minute remaining.",8;
 	end;
+
 OnTimer150000:
 	mapannounce "job_sage.gat","Examiner: 30 seconds remaining.",8;
 	end;
+
 OnTimer170000:
 	mapannounce "job_sage.gat","Examiner: 10 seconds remaining.",8;
 	end;
+
 OnTimer180000:
 	donpcevent "jobsage_1st::OnReset";
 	mapannounce "job_sage.gat","Examiner: Time has expired.",8;
 	end;
+
 OnTimer181500:
 	mapannounce "job_sage.gat","Examiner:" + $@jobsage_pname$ + "failed the test.",8;
 	areawarp "job_sage.gat",100,82,131,113,"yuno.gat",324,258;
 	end;
+
 OnTimer183000:
 	mapannounce "job_sage.gat","Next candidate, please step forward.",8;
 	end;
+
 OnTimer184000:
 	donpcevent "jobsage_wroom::OnEnable";
 	stopnpctimer;
 	end;
 }
 
-// Test Step 2
 job_sage.gat,1,1,1	script	jobsage_2nd	139,{
+
 	end;
+
 OnStart:
 	donpcevent "jobsage_2nd::OnReset";
 	set $@jobsage_m,24;
@@ -2049,67 +2208,79 @@ OnStart:
 	monster "job_sage.gat",111,102,"PhysicsInfo",1063,1,"jobsage_2nd::OnKilled";
 	initnpctimer;
 	end;
+
 OnReset:
 	killmonster "job_sage.gat","All";
 	end;
+
 OnKilled:
 	set $@jobsage_m,$@jobsage_m-1;
-	if ( $@jobsage_m > 0 )goto L_NotWin;
-		stopnpctimer;
-		if (getnpctimer(0) < 60000 ) set sagecheck,sagecheck+1;
-		if ((getnpctimer(0) >= 120000 ) && (getnpctimer(0) <= 170000 )) set sagecheck,sagecheck-1;
-		if (getnpctimer(0) > 170000 ) set sagecheck,sagecheck-2;
-		mapannounce "job_sage.gat","Examiner: " + $@jobsage_pname$ + " killed all the monsters!",8;
-		donpcevent "jobsage_3rd::OnStart";
-	L_NotWin:
+	if ($@jobsage_m > 0) end;
+	stopnpctimer;
+	if (getnpctimer(0) < 60000) set sagecheck,sagecheck+1;
+	if ((getnpctimer(0) >= 120000) && (getnpctimer(0) <= 170000)) set sagecheck,sagecheck-1;
+	if (getnpctimer(0) > 170000) set sagecheck,sagecheck-2;
+	mapannounce "job_sage.gat","Examiner: " + $@jobsage_pname$ + " killed all the monsters!",8;
+	donpcevent "jobsage_3rd::OnStart";
 	end;
+
 OnTimer1500:
 	mapannounce "job_sage.gat","Examiner: The time limit for this portion of the test is 3 minutes.",8;
 	end;
+
 OnTimer3000:
 	mapannounce "job_sage.gat","Examiner: You must kill all the monsters within that time period.",8;
 	end;
+
 OnTimer30000:
 	mapannounce "job_sage.gat","Examiner: 2 minutes, 30 seconds remaining.",8;
 	end;
+
 OnTimer60000:
 	mapannounce "job_sage.gat","Examiner: 2 minutes remaining.",8;
 	end;
+
 OnTimer90000:
 	mapannounce "job_sage.gat","Examiner: 1 minute, 30 seconds remaining.",8;
 	end;
+
 OnTimer120000:
 	mapannounce "job_sage.gat","Examiner: 1 minute remaining.",8;
 	end;
+
 OnTimer150000:
 	mapannounce "job_sage.gat","Examiner: 30 seconds remaining.",8;
 	end;
+
 OnTimer170000:
 	mapannounce "job_sage.gat","Examiner: 10 seconds remaining.",8;
 	end;
+
 OnTimer180000:
 	donpcevent "jobsage_2nd::OnReset";
 	mapannounce "job_sage.gat","Examiner: Time has expired.",8;
 	end;
+
 OnTimer181500:
 	mapannounce "job_sage.gat","Examiner: " + $@jobsage_pname$ + "has failed the test.",8;
 	areawarp "job_sage.gat",100,82,131,113,"yuno.gat",324,258;
 	end;
+
 OnTimer183000:
 	mapannounce "job_sage.gat","Next candidate, please step forward.",8;
 	end;
+
 OnTimer184000:
 	donpcevent "jobsage_wroom::OnEnable";
 	stopnpctimer;
 	end;
 }
 
-
-// Test Step 3
 job_sage.gat,1,1,1	script	jobsage_3rd	139,{
+
 	end;
+
 OnStart:
-	donpcevent "jobsage_3rd::OnReset";
 	set $@jobsage_m,1;
 	monster "job_sage.gat",116,98,"Bachelor",1179,1,"jobsage_3rd::OnKilled";
 	monster "job_sage.gat",124,106,"Tardy",1185,1;
@@ -2118,60 +2289,67 @@ OnStart:
 	monster "job_sage.gat",107,106,"Absentee",1185,1;
 	initnpctimer;
 	end;
-OnReset:
-	end;
+
 OnKilled:
 	set $@jobsage_m,$@jobsage_m-1;
-	if ( $@jobsage_m > 0 )goto L_NotWin;
-		stopnpctimer;
-		killmonster "job_sage.gat","All";
-		set SAGE_Q,7;
-		if (getnpctimer(0) < 20000 ) set sagecheck,sagecheck+1;
-		if ((getnpctimer(0) >= 30000 ) && (getnpctimer(0) <= 50000 )) set sagecheck,sagecheck-1;
-		if (getnpctimer(0) > 50000 ) set sagecheck,sagecheck-2;
-		mapannounce "job_sage.gat","Examiner: Congratulations. " + $@jobsage_pname$ + "passed the test!",8;
-		donpcevent "jobsage_success::OnSuccess";
-	L_NotWin:
+	if ($@jobsage_m > 0) end;
+	stopnpctimer;
+	killmonster "job_sage.gat","All";
+	set SAGE_Q,7;
+	if (getnpctimer(0) < 20000) set sagecheck,sagecheck+1;
+	if ((getnpctimer(0) >= 30000) && (getnpctimer(0) <= 50000)) set sagecheck,sagecheck-1;
+	if (getnpctimer(0) > 50000) set sagecheck,sagecheck-2;
+	mapannounce "job_sage.gat","Examiner: Congratulations. " + $@jobsage_pname$ + "passed the test!",8;
+	donpcevent "jobsage_success::OnSuccess";
 	end;
+
 OnTimer1500:
 	mapannounce "job_sage.gat","Examiner: 1 minute remaining.",8;
 	end;
+
 OnTimer30000:
 	mapannounce "job_sage.gat","Examiner: 30 seconds remaining.",8;
 	end;
+
 OnTimer50000:
 	mapannounce "job_sage.gat","Examiner: 10 seconds remaining.",8;
 	end;
+
 OnTimer60000:
-	donpcevent "jobsage_3rd::OnReset";
 	mapannounce "job_sage.gat","Examiner: Time has expired.",8;
 	end;
+
 OnTimer61500:
 	mapannounce "job_sage.gat","Examiner: " + $@jobsage_pname$ + "failed the test.",8;
 	areawarp "job_sage.gat",100,82,131,113,"yuno.gat",324,258;
 	end;
+
 OnTimer63000:
 	mapannounce "job_sage.gat","Examiner: This concludes the test.  Next candidate, please step forward.",8;
 	end;
+
 OnTimer64000:
 	donpcevent "jobsage_wroom::OnEnable";
 	stopnpctimer;
 	end;
 }
 
-// Successful
 job_sage.gat,1,7,1	script	jobsage_success	66,{
+
 OnSuccess:
 	killmonster "job_sage.gat","All";
 	initnpctimer;
 	end;
+
 OnTimer3000:
 	mapannounce "job_sage.gat","Examiner: Please allow me to guide you out.",8;
 	end;
+
 OnTimer6000:
 	mapannounce "job_sage.gat","Next candidate, please step forward.",8;
 	areawarp "job_sage.gat",100,82,131,113,"yuno_in03.gat",163,180;
 	end;
+
 OnTimer7000:
 	donpcevent "jobsage_wroom::OnEnable";
 	stopnpctimer;

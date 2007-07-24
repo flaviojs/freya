@@ -3934,96 +3934,96 @@ OnInitiation:
 	initnpctimer;
 	end;
 OnTimer1000:
-	if (isloggedin($SignDancingrid) <= 0) goto s_Cleanup;
+	if (isloggedin($@SignDancingrid) <= 0) goto s_Cleanup;
 	areaannounce "cmd_in01.gat",12,12,35,35,"The test will begin shortly. Please do your best~",8;
 	end;
 OnTimer8000:
-	if (isloggedin($SignDancingrid) <= 0) goto s_Cleanup;
-	set $signdance,1;
+	if (isloggedin($@SignDancingrid) <= 0) goto s_Cleanup;
+	set $@signdance,1;
 	areaannounce "cmd_in01.gat",12,12,35,35,"UP LEFT",8;
 	end;
 OnTimer14000:
-	if (isloggedin($SignDancingrid) <= 0) goto s_Cleanup;
-	if ($signdance != 2) set $Signdanceresult,1;
-	set $signdance,3;
+	if (isloggedin($@SignDancingrid) <= 0) goto s_Cleanup;
+	if ($@signdance != 2) set $@Signdanceresult,1;
+	set $@signdance,3;
 	areaannounce "cmd_in01.gat",12,12,35,35,"DOWN RIGHT",8;
 	end;
 OnTimer20000:
-	if (isloggedin($SignDancingrid) <= 0) goto s_Cleanup;
-	if ($signdance != 4) set $Signdanceresult,1;
-	set $signdance,5;
+	if (isloggedin($@SignDancingrid) <= 0) goto s_Cleanup;
+	if ($@signdance != 4) set $@Signdanceresult,1;
+	set $@signdance,5;
 	areaannounce "cmd_in01.gat",12,12,35,35,"DOWN LEFT & UP RIGHT",8;
 	end;
 OnTimer26000:
-	if (isloggedin($SignDancingrid) <= 0) goto s_Cleanup;
-	if ($signdance != 7) set $Signdanceresult,1;
-	 set $signdance,8;
+	if (isloggedin($@SignDancingrid) <= 0) goto s_Cleanup;
+	if ($@signdance != 7) set $@Signdanceresult,1;
+	 set $@signdance,8;
 	areaannounce "cmd_in01.gat",12,12,35,35,"DOWN RIGHT",8;
 	end;
 OnTimer30000:
-	if (isloggedin($SignDancingrid) <= 0) goto s_Cleanup;
-	if ($signdance != 9) set $Signdanceresult,1;
-	set $signdance,10;
+	if (isloggedin($@SignDancingrid) <= 0) goto s_Cleanup;
+	if ($@signdance != 9) set $@Signdanceresult,1;
+	set $@signdance,10;
 	areaannounce "cmd_in01.gat",12,12,35,35,"DOWN LEFT & UP RIGHT & UP LEFT & STAY CENTER",8;
 	end;
 OnTimer40000:
-	if (isloggedin($SignDancingrid) <= 0) goto s_Cleanup;
-	if ($signdance != 14) set $Signdanceresult,1;
-	set $signdance,15;
+	if (isloggedin($@SignDancingrid) <= 0) goto s_Cleanup;
+	if ($@signdance != 14) set $@Signdanceresult,1;
+	set $@signdance,15;
 	areaannounce "cmd_in01.gat",12,12,35,35,"DOWN LEFT & DOWN RIGHT & DOWN LEFT",8;
 	end;
 OnTimer48000:
-	if (isloggedin($SignDancingrid) <= 0) goto s_Cleanup;
-	if ($signdance != 18) set $Signdanceresult,1;
-	set $signdance,19;
+	if (isloggedin($@SignDancingrid) <= 0) goto s_Cleanup;
+	if ($@signdance != 18) set $@Signdanceresult,1;
+	set $@signdance,19;
 	areaannounce "cmd_in01.gat",12,12,35,35,"DOWN RIGHT & CENTER & DOWN RIGHT",8;
 	end;
 OnTimer56000:
-	if (isloggedin($SignDancingrid) <= 0) goto s_Cleanup;
-	if ($signdance != 22) set $Signdanceresult,1;
-	set $signdance,23;
+	if (isloggedin($@SignDancingrid) <= 0) goto s_Cleanup;
+	if ($@signdance != 22) set $@Signdanceresult,1;
+	set $@signdance,23;
 	areaannounce "cmd_in01.gat",12,12,35,35,"DOWN LEFT & UP LEFT & UP RIGHT & DOWN RIGHT & CENTER",8;
 	end;
 OnTimer66000:
-	if (isloggedin($SignDancingrid) <= 0) goto s_Cleanup;
-	if ($signdance != 28) set $Signdanceresult,1;
-	set $signdance,29;
+	if (isloggedin($@SignDancingrid) <= 0) goto s_Cleanup;
+	if ($@signdance != 28) set $@Signdanceresult,1;
+	set $@signdance,29;
 	areaannounce "cmd_in01.gat",12,12,35,35,"DOWN LEFT & UP RIGHT & UP LEFT & DOWN RIGHT",8;
 	end;
 OnTimer80000:
-	if (isloggedin($SignDancingrid) <= 0) goto s_Cleanup;
-	if ($signdance != 33) set $Signdanceresult,1;
-	set $signdance,34;
+	if (isloggedin($@SignDancingrid) <= 0) goto s_Cleanup;
+	if ($@signdance != 33) set $@Signdanceresult,1;
+	set $@signdance,34;
 	areaannounce "cmd_in01.gat",12,12,35,35,"UP RIGHT & DOWN RIGHT & UP RIGHT & DOWN RIGHT",8;
 	end;
 OnTimer88000:
-	if (isloggedin($SignDancingrid) <= 0) goto s_Cleanup;
-	if ($signdance != 38) set $Signdanceresult,1;
-	set $signdance,39;
-	set $SignDanceRandomizer,rand(0,1);
-	if ($SignDanceRandomizer != 0) goto RANDOMISATER;
+	if (isloggedin($@SignDancingrid) <= 0) goto s_Cleanup;
+	if ($@signdance != 38) set $@Signdanceresult,1;
+	set $@signdance,39;
+	set $@SignDanceRandomizer,rand(0,1);
+	if ($@SignDanceRandomizer != 0) goto RANDOMISATER;
 	areaannounce "cmd_in01.gat",12,12,35,35,"UP LEFT & UP RIGHT & CENTER & UP RIGHT & DOWN LEFT & DOWN RIGHT",8;
 RANDOMISATER:
 	areaannounce "cmd_in01.gat",12,12,35,35,"UP LEFT & UP RIGHT & DOWN LEFT & UP RIGHT & DOWN LEFT & DOWN RIGHT",8;
 	end;
 OnTimer103000:
-	if (isloggedin($SignDancingrid) <= 0) goto s_Cleanup;
-	if ($signdance != 45)set $Signdanceresult,1;
+	if (isloggedin($@SignDancingrid) <= 0) goto s_Cleanup;
+	if ($@signdance != 45)set $@Signdanceresult,1;
 	areaannounce "cmd_in01.gat",12,12,35,35,"Well done.",8;
 	end;
 OnTimer109000:
-	if (isloggedin($SignDancingrid) <= 0) goto s_Cleanup;
-	attachrid($SignDancingrid);
-	if ($Signdanceresult) set SignDance,2;
-	if ($Signdanceresult == 0) set SignDance,1;
+	if (isloggedin($@SignDancingrid) <= 0) goto s_Cleanup;
+	attachrid($@SignDancingrid);
+	if ($@Signdanceresult) set SignDance,2;
+	if ($@Signdanceresult == 0) set SignDance,1;
 	warp "cmd_in01.gat",34,17;
 	detachrid;
 	enablenpc "SignDance#WARPER";
 	disablenpc "SignDance#CENTER";
-	set $signdance,0;
-	set $Signdanceresult,0;
-	set $SignDancingrid,0;
-	set $SignDanceRandomizer,0;
+	set $@signdance,0;
+	set $@Signdanceresult,0;
+	set $@SignDancingrid,0;
+	set $@SignDanceRandomizer,0;
 	enablewaitingroomevent "SignDance";
 	stopnpctimer;
 	end;
@@ -4042,40 +4042,32 @@ OnPlayerLogout:
 	areaannounce "cmd_in01.gat",12,12,35,35,"The current dancer has logged out. New dancers will be accepted shortly.",8;
 	enablenpc "SignDance#WARPER";
 	disablenpc "SignDance#CENTER";
-	set $signdance,0;
-	set $Signdanceresult,0;
-	set $SignDancingrid,0;
-	set $SignDanceRandomizer,0;
+	set $@signdance,0;
+	set $@Signdanceresult,0;
+	set $@SignDancingrid,0;
+	set $@SignDanceRandomizer,0;
 
 OnTimer3000:
 	enablewaitingroomevent "SignDance";
 	stopnpctimer;
 	end;
-
-OnInit:
-	set $signdance,0;
-	set $Signdanceresult,0;
-	set $SignDancingrid,0;
-	set $SignDanceRandomizer,0;
-	end;
-
 }
 
 //Dancing tiles
 cmd_in01.gat,16,13,4	script	SignDance#DOWNRIGHT	139,1,1,{
 
-	if ($signdance == 3) set $signdance,4;
-	if ($signdance == 8) set $signdance,9;
-	if ($signdance == 16) set $signdance,17;
-	if ($signdance == 19) set $signdance,20;
-	if ($signdance == 21) set $signdance,22;
-	if ($signdance == 26) set $signdance,27;
-	if ($signdance == 32) set $signdance,33;
-	if ($signdance == 35) set $signdance,36;
-	if ($signdance == 37) set $signdance,38;
-	if ($signdance == 44) set $signdance,45;
+	if ($@signdance == 3) set $@signdance,4;
+	if ($@signdance == 8) set $@signdance,9;
+	if ($@signdance == 16) set $@signdance,17;
+	if ($@signdance == 19) set $@signdance,20;
+	if ($@signdance == 21) set $@signdance,22;
+	if ($@signdance == 26) set $@signdance,27;
+	if ($@signdance == 32) set $@signdance,33;
+	if ($@signdance == 35) set $@signdance,36;
+	if ($@signdance == 37) set $@signdance,38;
+	if ($@signdance == 44) set $@signdance,45;
 	soundeffect "effect\\sign_down.wav",0;
-	if (getcharid(3) != $SignDancingrid)warp "comodo.gat",187,164;
+	if (getcharid(3) != $@SignDancingrid)warp "comodo.gat",187,164;
 	end;
 
 }
@@ -4083,70 +4075,71 @@ cmd_in01.gat,16,13,4	script	SignDance#DOWNRIGHT	139,1,1,{
 
 cmd_in01.gat,19,16,4	script	SignDance#UPRIGHT	139,1,1,{
 
-	if ($signdance == 6) set $signdance,7;
-	if ($signdance == 11) set $signdance,12;
-	if ($signdance == 25) set $signdance,26;
-	if ($signdance == 30) set $signdance,31;
-	if ($signdance == 34) set $signdance,35;
-	if ($signdance == 36) set $signdance,37;
-	if ($signdance == 40) set $signdance,41;
-	if ($signdance == 42) set $signdance,43;
+	if ($@signdance == 6) set $@signdance,7;
+	if ($@signdance == 11) set $@signdance,12;
+	if ($@signdance == 25) set $@signdance,26;
+	if ($@signdance == 30) set $@signdance,31;
+	if ($@signdance == 34) set $@signdance,35;
+	if ($@signdance == 36) set $@signdance,37;
+	if ($@signdance == 40) set $@signdance,41;
+	if ($@signdance == 42) set $@signdance,43;
 	soundeffect "effect\\sign_right.wav",0;
-	if (getcharid(3) != $SignDancingrid)warp "comodo.gat",187,164;
+	if (getcharid(3) != $@SignDancingrid)warp "comodo.gat",187,164;
 	end;
 
 }
 
 cmd_in01.gat,16,19,4	script	SignDance#UPLEFT	139,1,1,{
 
-	if ($signdance == 1) set $signdance,2;
-	if ($signdance == 12) set $signdance,13;
-	if ($signdance == 24) set $signdance,25;
-	if ($signdance == 31) set $signdance,32;
-	if ($signdance == 39) set $signdance,40;
+	if ($@signdance == 1) set $@signdance,2;
+	if ($@signdance == 12) set $@signdance,13;
+	if ($@signdance == 24) set $@signdance,25;
+	if ($@signdance == 31) set $@signdance,32;
+	if ($@signdance == 39) set $@signdance,40;
 	soundeffect "effect\\sign_up.wav",0;
-	if (getcharid(3) != $SignDancingrid)warp "comodo.gat",187,164;
+	if (getcharid(3) != $@SignDancingrid)warp "comodo.gat",187,164;
 	end;
 
 }
 
 cmd_in01.gat,16,16,4	script	SignDance#WARPER	139,1,1,{
-	if (getcharid(3) != $SignDancingrid)warp "comodo.gat",187,164;
+	if (getcharid(3) != $@SignDancingrid)warp "comodo.gat",187,164;
 	end;
 
 }
 
 cmd_in01.gat,16,16,4	script	SignDance#CENTER	139,1,1,{
 
-	if ($signdance != 0) goto L_CENTERNON0;
-	set $SignDancingrid, getcharid(3);
+	if ($@signdance != 0) goto L_CENTERNON0;
+	set $@SignDancingrid, getcharid(3);
 	donpcevent "DanceInit::OnInitiation";
 L_CENTERNON0:
-	if ($signdance == 13) set $signdance,14;
-	if ($signdance == 20) set $signdance,21;
-	if ($signdance == 27) set $signdance,28;
-	if ($signdance == 41 && !$SignDanceRandomizer) set $signdance,42;
+	if ($@signdance == 13) set $@signdance,14;
+	if ($@signdance == 20) set $@signdance,21;
+	if ($@signdance == 27) set $@signdance,28;
+	if ($@signdance == 41 && !$@SignDanceRandomizer) set $@signdance,42;
 	soundeffect "effect\\sign_center.wav",0;
 	end;
 
 OnInit:
 	enablenpc "SignDance#WARPER";
 	disablenpc "SignDance#CENTER";
+	end;
 
 }
 
 cmd_in01.gat,13,16,4	script	SignDance#DOWNLEFT	139,1,1,{
 
-	if ($signdance == 5) set $signdance,6;
-	if ($signdance == 10) set $signdance,11;
-	if ($signdance == 15) set $signdance,16;
-	if ($signdance == 17) set $signdance,18;
-	if ($signdance == 23) set $signdance,24;
-	if ($signdance == 29) set $signdance,30;
-	if ($signdance == 41 && $SignDanceRandomizer) set $signdance,42;
-	if ($signdance == 43) set $signdance,44;
+	if ($@signdance == 5) set $@signdance,6;
+	if ($@signdance == 10) set $@signdance,11;
+	if ($@signdance == 15) set $@signdance,16;
+	if ($@signdance == 17) set $@signdance,18;
+	if ($@signdance == 23) set $@signdance,24;
+	if ($@signdance == 29) set $@signdance,30;
+	if ($@signdance == 41 && $@SignDanceRandomizer) set $@signdance,42;
+	if ($@signdance == 43) set $@signdance,44;
 	soundeffect "effect\\sign_left.wav",0;
-	if (getcharid(3) != $SignDancingrid) warp "comodo.gat",187,164;
+	if (getcharid(3) != $@SignDancingrid) warp "comodo.gat",187,164;
 	end;
 
 }
@@ -7106,15 +7099,15 @@ NORINGRETURN:
 	mes "ready to come with me?";
 	next;
 	menu "Yes.",-,"No.",L_No;
-	if (($signroom2full > 1) || getareausers("que_sign01.gat",229,77,166,12) > 0) goto L_Full;
+	if (($@signroom2full > 1) || getareausers("que_sign01.gat",229,77,166,12) > 0) goto L_Full;
 	mes "[Serin]";
 	mes "Please follow me";
 	mes "......";
 	close2;
-	if (($signroom2full > 1) || getareausers("que_sign01.gat",229,77,166,12) > 0) end;
+	if (($@signroom2full > 1) || getareausers("que_sign01.gat",229,77,166,12) > 0) end;
 	donpcevent "#signserin2::OnSerin";
 	donpcevent "#signserin2::OnCooldown";
-	set $signroom2full,2;
+	set $@signroom2full,2;
 	warp "que_sign01.gat",191,39;
 	end;
 
@@ -8195,7 +8188,7 @@ SENRING0:
 	close;
 
 L_Serin:
-	if (($signroomfull > 1) || getmapusers("que_sign02.gat") > 0 || getareausers("que_sign01.gat",229,227,166,162) > 0) goto L_Full;
+	if (($@signroomfull > 1) || getmapusers("que_sign02.gat") > 0 || getareausers("que_sign01.gat",229,227,166,162) > 0) goto L_Full;
 	if (countitem(2643) < 1) goto L_NoRing;
 	mes "[Kirkena]";
 	mes "You're finally";
@@ -8205,12 +8198,12 @@ L_Serin:
 	mes "to try. Are you ready?";
 	next;
 	menu "Yes",-,"No",L_No;
-	if (($signroomfull > 1) || getmapusers("que_sign02.gat") > 0 || getareausers("que_sign01.gat",229,227,166,162) > 0) goto L_Full;
+	if (($@signroomfull > 1) || getmapusers("que_sign02.gat") > 0 || getareausers("que_sign01.gat",229,227,166,162) > 0) goto L_Full;
 	close2;
 	donpcevent "#signserin::OnSerin";
 	donpcevent "#signserin::OnCooldown";
-	set $signroomfull,2;
-	set $signparty,getcharid(1);
+	set $@signroomfull,2;
+	set $@signparty,getcharid(1);
 	warp "que_sign01.gat",195,189;
 	end;
 
@@ -8249,17 +8242,17 @@ L_NoRing:
 	mes "you ready to go?";
 	next;
 	menu "Yes",-,"No",L_No;
-	if (($signroomfull > 1) || getmapusers("que_sign02.gat") > 0 || getareausers("que_sign01.gat",229,227,166,162) > 0) goto L_Full;
+	if (($@signroomfull > 1) || getmapusers("que_sign02.gat") > 0 || getareausers("que_sign01.gat",229,227,166,162) > 0) goto L_Full;
 	mes "[Kirkena]";
 	mes "Okay then.";
 	mes "Good luck,";
 	mes "" + strcharinfo(0) + "...";
 	close2;
-	if (($signroomfull > 1) || getmapusers("que_sign02.gat") > 0 || getareausers("que_sign01.gat",229,227,166,162) > 0) end;
+	if (($@signroomfull > 1) || getmapusers("que_sign02.gat") > 0 || getareausers("que_sign01.gat",229,227,166,162) > 0) end;
 	donpcevent "#signserin::OnSerin";
 	donpcevent "#signserin::OnCooldown";
-	set $signroomfull,2;
-	set $signparty,getcharid(1);
+	set $@signroomfull,2;
+	set $@signparty,getcharid(1);
 	warp "que_sign02.gat",35,313;
 	end;
 
@@ -8864,8 +8857,6 @@ que_sign01.gat,1,1,1	script	#signserin	139,{
 
 OnInit:
 	disablenpc "Serin#serin";
-	set $signroomfull,0;
-	set $signparty,0;
 	end;
 
 OnSerin:
@@ -8885,7 +8876,7 @@ OnSignDead:
 	set $@Sign_Summon,$@Sign_Summon -1;
 	if ($@Sign_Summon > 0) end;
 	set Sign_Branch8A,8;
-	set $signroomfull,1;
+	set $@signroomfull,1;
 	stopnpctimer;
 	goto OnSerin;
 
@@ -8896,7 +8887,7 @@ OnCooldown:
 OnTimer600000:
 	disablenpc "Serin#serin";
 	killmonster "que_sign01.gat","#signserin::OnSignDead";
-	set $signroomfull,1;
+	set $@signroomfull,1;
 	areawarp "que_sign01.gat",229,227,166,162,"niflheim.gat",30,156;
 	areawarp "que_sign02.gat",1,1,400,400,"niflheim.gat",30,156;
 	stopnpctimer;
@@ -8907,7 +8898,6 @@ que_sign01.gat,1,1,1	script	#signserin2	139,{
 
 OnInit:
 	disablenpc "Serin#serin2";
-	set $signroom2full,0;
 	end;
 
 OnSerin:
@@ -8927,7 +8917,7 @@ OnSignDead:
 	set $@Sign_Summon2,$@Sign_Summon2 -1;
 	if ($@Sign_Summon2 > 0) end;
 	set Sign_Branch8B,4;
-	set $signroom2full,1;
+	set $@signroom2full,1;
 	stopnpctimer;
 	goto OnSerin;
 
@@ -8938,7 +8928,7 @@ OnCooldown:
 OnTimer600000:
 	disablenpc "Serin#serin2";
 	killmonster "que_sign01.gat","#signserin2::OnSignDead";
-	set $signroom2full,1;
+	set $@signroom2full,1;
 	areawarp "que_sign01.gat",229,77,166,12,"niflheim.gat",30,156;
 	stopnpctimer;
 	end;
@@ -9021,7 +9011,7 @@ L_Go:
 	mes "He will be here soon. The great";
 	mes "Dark Lord.";
 	close2;
-	set $signroomfull,0;
+	set $@signroomfull,0;
 	warp "niflheim.gat",30,156;
 	end;
 
@@ -9141,7 +9131,7 @@ L_Done:
 	mes "unconscious Serin";
 	mes "and returned to Niflheim.";
 	close2;
-	set $signroomfull,0;
+	set $@signroomfull,0;
 	warp "niflheim.gat",30,156;
 	end;
 }
@@ -9222,7 +9212,7 @@ L_Go:
 	mes "He will be here soon. The great";
 	mes "Dark Lord.";
 	close2;
-	set $signroom2full,0;
+	set $@signroom2full,0;
 	warp "niflheim.gat",30,156;
 	end;
 
@@ -9358,14 +9348,14 @@ L_Done:
 	mes "unconscious Serin";
 	mes "and returned to Niflheim.";
 	close2;
-	set $signroom2full,0;
+	set $@signroom2full,0;
 	warp "niflheim.gat",30,156;
 	end;
 }
 
 function	script	F_SignParty	{
 
-	getpartymember $signparty; //,1
+	getpartymember $@signparty; //,1
 	set @i,-1;
 
 L_Check:
@@ -9418,7 +9408,7 @@ L_Path:
 
 que_sign01.gat,178,169,0	script	#serinwarp	45,1,1,{
 
-	if ($signroomfull < 3) goto SIGNROOMFULL3;
+	if ($@signroomfull < 3) goto SIGNROOMFULL3;
 	if (getmapusers("que_sign02.gat") > 0 || getareausers("que_sign01.gat",229,227,166,162) > 0) end;
 	donpcevent "#signserin::OnInit";
 
@@ -9429,7 +9419,7 @@ SIGNROOMFULL3:
 
 que_sign01.gat,178,19,0	script	#serinwarp2	45,1,1,{
 
-	set $signroom2full,0;
+	set $@signroom2full,0;
 	warp "niflheim.gat",30,156;
 	end;
 }
@@ -9438,10 +9428,10 @@ que_sign01.gat,178,19,0	script	#serinwarp2	45,1,1,{
 
 geffen.gat,119,55,1	script	GeffeniaWarper	45,2,2,{
 
-	if ($GeffeniaWarp == 1) goto case1;
-	if ($GeffeniaWarp == 2) goto case2;
-	if ($GeffeniaWarp == 3) goto case3;
-	if ($GeffeniaWarp == 4) goto case4;
+	if ($@GeffeniaWarp == 1) goto case1;
+	if ($@GeffeniaWarp == 2) goto case2;
+	if ($@GeffeniaWarp == 3) goto case3;
+	if ($@GeffeniaWarp == 4) goto case4;
 
 	case1:
 		warp "gefenia01.gat",58,169;
@@ -9478,14 +9468,14 @@ OnTimer45000:
 
 OnInit:
 	disablenpc "GeffeniaWarper";
-	set $GeffeniaWarp,0;
+	set $@GeffeniaWarp,0;
 	end;
 
 }
 
 geffen.gat,119,49,1	script	Fountain#SignFountain	111,{
 
-	if (countitem(7025) == 1 && $GeffeniaWarp == 0) goto L_Lament;
+	if (countitem(7025) == 1 && $@GeffeniaWarp == 0) goto L_Lament;
 	mes "^3355FFThis is the";
 	mes "Geffen Fountain.";
 	close;
@@ -9501,7 +9491,7 @@ L_Lament:
 
 L_Throw:
 	misceffect 247;
-	set $GeffeniaWarp,rand(1,4);
+	set $@GeffeniaWarp,rand(1,4);
 	enablenpc "GeffeniaWarper";
 	donpcevent "GeffeniaWarper::OnWarping";
 	mes "^3355FFOnce the Lucifer's Lament";

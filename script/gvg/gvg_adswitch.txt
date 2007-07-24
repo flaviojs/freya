@@ -7,47 +7,53 @@
 //              /_/  |_|\____|_|  \___/|_|  \__,_|              
 //                 http://aurora.deltaanime.net                 
 //--------------------------------------------------------------
-// Script Title: GvG Dungeon Switches	Author: jAthena/Yor
+// Script Title: GvG Dungeon Switches	Author: jAthena/Yor/Tsuyuki
 //--------------------------------------------------------------
-// Revision History: v1.1
+// Revision History: v1.2
 //--------------------------------------------------------------
 //	1.0 First version [jAthena]
 //	1.1 Translated into English [Yor]
+//	1.2 Updated dialogue to iRO Aegis [Tsuyuki]
 //--------------------------------------------------------------
-// Additional Notes: N/A
+// Additional Notes: * Official-certified *
 //--------------------------------------------------------------
 
 
-//=========================================================================
+//==============================================================
 // The switch of hiding place dungeon
 //	callfunc "F_DungeonSwitch","MAP",X,Y;
-//-------------------------------------------------------------------------
+//--------------------------------------------------------------
 
 function	script	F_DungeonSwitch	{
-	mes "[Ringing Voice]";
-	mes "You've challenged your fate go ahead.";
+
+	if (!getcharid(2)) {
+		mes "[ Ringing Voice ]";
+		mes " ' Those who overcome an ordeal shows a great deal of bravery... and will find their way to another ordeal. '";
+		close;
+	}
+	mes "[ Ringing Voice ]";
+	mes " ' Only the truly brave can take the test. '";
 	next;
-	mes " ";
-	mes "There's a small switch.";
-	mes "Do you want to pull it?";
+	mes "";
+	mes "There's a small lever. Will you pull it?";
 	next;
-	if (select("Pull it.","Don't pull it.")==2)
+	if (select("Pull.","Don't pull.")==2)
 		return;
-	set '@dummy,getmapxy('@map$,'@dummy,'@dummy,1);		// It is a dummy except '@map$.
+	set '@dummy,getmapxy('@map$,'@dummy,'@dummy,1);
 	set '@gid,getcastledata('@map$,1);
 	if ('@gid && '@gid == getcharid(2)) {
 		warp getarg(0),getarg(1),getarg(2);
 		end;
 	}
-	mes " ";
-	mes "Nothing Happens.";
+	mes "";
+	mes " Nothing happened.";
 	return;
 }
 
 
-//==========================================
+//==============================================================
 // Aldebaran
-//------------------------------------------
+//--------------------------------------------------------------
 
 aldeg_cas01.gat,211,179,0	script	#DungeonSwitch_L1	111,{
 	callfunc "F_DungeonSwitch","gld_dun02.gat",32,122;
@@ -74,9 +80,9 @@ aldeg_cas05.gat,23,205,0		script	#DungeonSwitch_L5	111,{
 	close;
 }
 
-//==========================================
+//==============================================================
 // Geffen
-//------------------------------------------
+//--------------------------------------------------------------
 
 gefg_cas01.gat,78,84,0	script	#DungeonSwitch_B1	111,{
 	callfunc "F_DungeonSwitch","gld_dun04.gat",39,258;
@@ -103,9 +109,9 @@ gefg_cas05.gat,65,22,0	script	#DungeonSwitch_B5	111,{
 	close;
 }
 
-//==========================================
+//==============================================================
 // Payon
-//------------------------------------------
+//--------------------------------------------------------------
 
 payg_cas01.gat,101,25,0		script	#DungeonSwitch_C1	111,{
 	callfunc "F_DungeonSwitch","gld_dun01.gat",186,165;
@@ -132,9 +138,9 @@ payg_cas05.gat,238,11,0		script	#DungeonSwitch_C5	111,{
 	close;
 }
 
-//==========================================
+//==============================================================
 // Prontera
-//------------------------------------------
+//--------------------------------------------------------------
 
 prtg_cas01.gat,94,200,0	script	#DungeonSwitch_V1	111,{
 	callfunc "F_DungeonSwitch","gld_dun03.gat",28,251;

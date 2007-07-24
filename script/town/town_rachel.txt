@@ -4111,6 +4111,7 @@ rachel.gat,265,98,3	script	Hamion#aru	930,{
 ice_dun02.gat,120,105,3	script	Maheo#cave	937,{
 
 	end;
+
 OnInit:
 	disablenpc "Maheo#cave";
 	end;
@@ -4238,7 +4239,7 @@ ice_dun03.gat,126,126,3	script	Blazing Fire#ice1	802,{
 	mes "you can put this fire out";
 	mes "with conventional means.^000000";
 	if (ice_necklace_q > 4) {
-		if ($ktullanux_summon < 4) {
+		if ($@ktullanux_summon < 4) {
 			if (countitem(7574) > 0) {
 				next;
 				select("Use Freezing Snow Powder.");
@@ -4247,8 +4248,8 @@ ice_dun03.gat,126,126,3	script	Blazing Fire#ice1	802,{
 				mes "flickers before extinguising.^000000";
 				delitem 7574,1; //Freezing Snow Powder
 				disablenpc "Blazing Fire#ice1";
-				set $ktullanux_summon,$ktullanux_summon+1;
-				if ($ktullanux_summon == 4) donpcevent "ice_boss#broad::OnStart";
+				set $@ktullanux_summon,$@ktullanux_summon+1;
+				if ($@ktullanux_summon == 4) donpcevent "ice_boss#broad::OnStart";
 			}
 
 			else if (countitem(7562) > 0) {
@@ -4259,8 +4260,8 @@ ice_dun03.gat,126,126,3	script	Blazing Fire#ice1	802,{
 				mes "extinguising.^000000";
 				delitem 7562,1; //Ice Scale
 				disablenpc "Blazing Fire#ice1";
-				set $ktullanux_summon,$ktullanux_summon+1;
-				if ($ktullanux_summon == 4) donpcevent "ice_boss#broad::OnStart";
+				set $@ktullanux_summon,$@ktullanux_summon+1;
+				if ($@ktullanux_summon == 4) donpcevent "ice_boss#broad::OnStart";
 				close;
 			}
 
@@ -4268,11 +4269,6 @@ ice_dun03.gat,126,126,3	script	Blazing Fire#ice1	802,{
 
 	}
 	close;
-
-OnInit:
-	set $ktullanux_summon,0;
-	end;
-
 }
 
 
@@ -4284,7 +4280,7 @@ ice_dun03.gat,172,126,0	script	Blazing Fire#ice2	802,{
 	mes "you can put this fire out";
 	mes "with conventional means.^000000";
 	if (ice_necklace_q > 4) {
-		if ($ktullanux_summon < 4) {
+		if ($@ktullanux_summon < 4) {
 			if (countitem(7574) > 0) {
 				next;
 				select("Use Freezing Snow Powder.");
@@ -4293,8 +4289,8 @@ ice_dun03.gat,172,126,0	script	Blazing Fire#ice2	802,{
 				mes "flickers before extinguising.^000000";
 				delitem 7574,1; //Freezing Snow Powder
 				disablenpc "Blazing Fire#ice2";
-				set $ktullanux_summon,$ktullanux_summon+1;
-				if ($ktullanux_summon == 4) donpcevent "ice_boss#broad::OnStart";
+				set $@ktullanux_summon,$@ktullanux_summon+1;
+				if ($@ktullanux_summon == 4) donpcevent "ice_boss#broad::OnStart";
 			}
 
 			else if (countitem(7562) > 0) {
@@ -4305,8 +4301,8 @@ ice_dun03.gat,172,126,0	script	Blazing Fire#ice2	802,{
 				mes "extinguising.^000000";
 				delitem 7562,1; //Ice Scale
 				disablenpc "Blazing Fire#ice2";
-				set $ktullanux_summon,$ktullanux_summon+1;
-				if ($ktullanux_summon == 4) donpcevent "ice_boss#broad::OnStart";
+				set $@ktullanux_summon,$@ktullanux_summon+1;
+				if ($@ktullanux_summon == 4) donpcevent "ice_boss#broad::OnStart";
 				close;
 			}
 
@@ -4314,11 +4310,6 @@ ice_dun03.gat,172,126,0	script	Blazing Fire#ice2	802,{
 
 	}
 	close;
-
-OnInit:
-	set $ktullanux_summon,0;
-	end;
-
 }
 
 ice_dun03.gat,172,172,0	script	Blazing Fire#ice3	802,{
@@ -4329,7 +4320,7 @@ ice_dun03.gat,172,172,0	script	Blazing Fire#ice3	802,{
 	mes "you can put this fire out";
 	mes "with conventional means.^000000";
 	if (ice_necklace_q > 4) {
-		if ($ktullanux_summon < 4) {
+		if ($@ktullanux_summon < 4) {
 			if (countitem(7574) > 0) {
 				next;
 				select("Use Freezing Snow Powder.");
@@ -4338,8 +4329,8 @@ ice_dun03.gat,172,172,0	script	Blazing Fire#ice3	802,{
 				mes "flickers before extinguising.^000000";
 				delitem 7574,1; //Freezing Snow Powder
 				disablenpc "Blazing Fire#ice3";
-				set $ktullanux_summon,$ktullanux_summon+1;
-				if ($ktullanux_summon == 4) donpcevent "ice_boss#broad::OnStart";
+				set $@ktullanux_summon,$@ktullanux_summon+1;
+				if ($@ktullanux_summon == 4) donpcevent "ice_boss#broad::OnStart";
 			}
 
 			else if (countitem(7562) > 0) {
@@ -4350,8 +4341,8 @@ ice_dun03.gat,172,172,0	script	Blazing Fire#ice3	802,{
 				mes "extinguising.^000000";
 				delitem 7562,1; //Ice Scale
 				disablenpc "Blazing Fire#ice3";
-				set $ktullanux_summon,$ktullanux_summon+1;
-				if ($ktullanux_summon == 4) donpcevent "ice_boss#broad::OnStart";
+				set $@ktullanux_summon,$@ktullanux_summon+1;
+				if ($@ktullanux_summon == 4) donpcevent "ice_boss#broad::OnStart";
 				close;
 			}
 
@@ -4359,11 +4350,6 @@ ice_dun03.gat,172,172,0	script	Blazing Fire#ice3	802,{
 
 	}
 	close;
-
-OnInit:
-	set $ktullanux_summon,0;
-	end;
-
 }
 
 ice_dun03.gat,127,172,0	script	Blazing Fire#ice4	802,{
@@ -4374,7 +4360,7 @@ ice_dun03.gat,127,172,0	script	Blazing Fire#ice4	802,{
 	mes "you can put this fire out";
 	mes "with conventional means.^000000";
 	if (ice_necklace_q > 4) {
-		if ($ktullanux_summon < 4) {
+		if ($@ktullanux_summon < 4) {
 			if (countitem(7574) > 0) {
 				next;
 				select("Use Freezing Snow Powder.");
@@ -4383,8 +4369,8 @@ ice_dun03.gat,127,172,0	script	Blazing Fire#ice4	802,{
 				mes "flickers before extinguising.^000000";
 				delitem 7574,1; //Freezing Snow Powder
 				disablenpc "Blazing Fire#ice4";
-				set $ktullanux_summon,$ktullanux_summon+1;
-				if ($ktullanux_summon == 4) donpcevent "ice_boss#broad::OnStart";
+				set $@ktullanux_summon,$@ktullanux_summon+1;
+				if ($@ktullanux_summon == 4) donpcevent "ice_boss#broad::OnStart";
 			}
 
 			else if (countitem(7562) > 0) {
@@ -4395,8 +4381,8 @@ ice_dun03.gat,127,172,0	script	Blazing Fire#ice4	802,{
 				mes "extinguising.^000000";
 				delitem 7562,1; //Ice Scale
 				disablenpc "Blazing Fire#ice4";
-				set $ktullanux_summon,$ktullanux_summon+1;
-				if ($ktullanux_summon == 4) donpcevent "ice_boss#broad::OnStart";
+				set $@ktullanux_summon,$@ktullanux_summon+1;
+				if ($@ktullanux_summon == 4) donpcevent "ice_boss#broad::OnStart";
 				close;
 			}
 
@@ -4404,11 +4390,6 @@ ice_dun03.gat,127,172,0	script	Blazing Fire#ice4	802,{
 
 	}
 	close;
-
-OnInit:
-	set $ktullanux_summon,0;
-	end;
-
 }
 
 ice_dun03.gat,1,173,5	script	ice_boss#broad	139,{
@@ -4475,7 +4456,7 @@ OnMyMobDead:
 
 OnTimer7200000:
 	stopnpctimer;
-	set $ktullanux_summon,0;
+	set $@ktullanux_summon,0;
 	enablenpc "Blazing Fire#ice1";
 	enablenpc "Blazing Fire#ice2";
 	enablenpc "Blazing Fire#ice3";

@@ -16,7 +16,7 @@
 //	1.2 Added official coordinates/facing position for the Veins employee [Tsuyuki]
 //	 - Still has custom save coordinates
 //--------------------------------------------------------------
-// Additional Notes: * Aegis-certified *
+// Additional Notes: * Official-certified / Aegis-certified *
 //--------------------------------------------------------------
 
 

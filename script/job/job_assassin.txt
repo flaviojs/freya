@@ -1909,7 +1909,7 @@ OnCommandOn:
 OnCommandReset:
 	killmonster "in_moc_16.gat","ASNTEST1::OnMyMobDead";
 	donpcevent "AssassinArena::OnCommandReset";
-	set $@mobcount14,0;
+	set 'mobcount,0;
 	stopnpctimer;
 	end;
 
@@ -1919,8 +1919,8 @@ OnCommandResetMob:
 	end;
 
 OnMyMobDead:
-	set $@mobcount14,$@mobcount14+1;
-	if ($@mobcount14 > 5) {
+	set 'mobcount,'mobcount+1;
+	if ('mobcount > 5) {
 		mapannounce "in_moc_16.gat","You seem to be doing quite well. Keep it up!",8;
 		set job_assassin_q,3;
 		donpcevent "timestopper#1::OnCommandOn";

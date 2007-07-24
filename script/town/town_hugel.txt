@@ -118,8 +118,6 @@ que_bingo.gat,48,84,5	script	Bingo Waiting Room	124,{
 	end;
 
 OnInit:
-	set $hu_bingoa,0;
-	set $hu_bingob,0;
 	waitingroom "Bingo Waiting Room - 5 People",50,"Bingo Waiting Room::OnWarp",5;
 	end;
 	
@@ -215,14 +213,14 @@ OnStart:
 	end;
 	
 OnEnter:
-	if ($hu_bingoa == 4)
+	if ($@hu_bingoa == 4)
 	{
-		set $hu_bingoa,5;
+		set $@hu_bingoa,5;
 		donpcevent "start2#bingo::OnStart";
 		stopnpctimer;
 		end;
 	}
-	set $hu_bingoa,$hu_bingoa +1;
+	set $@hu_bingoa,$@hu_bingoa +1;
 	end;
 	
 OnTimer1000:
@@ -269,7 +267,7 @@ OnTimer201000:
 	donpcevent "player4#bingo::OnInit";
 	donpcevent "player5#bingo::OnInit";
 	disablenpc "out3#bingo";
-	set $hu_bingoa,0;
+	set $@hu_bingoa,0;
 	donpcevent "Bingo Waiting Room::OnStart";
 	end;
 }
@@ -598,7 +596,7 @@ OnTimer460000:
 	donpcevent "player3#bingo::OnOut";
 	donpcevent "player4#bingo::OnOut";
 	donpcevent "player5#bingo::OnOut";
-	set $hu_bingoa,0;
+	set $@hu_bingoa,0;
 	donpcevent "Bingo Waiting Room::OnStart";
 	end;
 }
@@ -799,16 +797,16 @@ OnTouch:
 			input @bingoyell$;
 			if (@bingoyell$ == "Bingo")
 			{
-				if ($hu_bingoa == 5)
+				if ($@hu_bingoa == 5)
 				{
-					set $hu_bingoa,6;
+					set $@hu_bingoa,6;
 					donpcevent "start2#bingo::OnStop";
 					set $@bingowinner$,strcharinfo(0);
 					donpcevent "win1a#bingo::OnWin";
 					close;
 
 				}
-				else if($hu_bingoa == 6)
+				else if($@hu_bingoa == 6)
 				{
 					next;
 					mes "Oh no! I'm sorry, but";
@@ -1050,7 +1048,7 @@ OnTimer5000:
 	disablenpc "end1c#bingo";
 	disablenpc "end1d#bingo";
 	disablenpc "end1e#bingo";
-	set $hu_bingoa,0;
+	set $@hu_bingoa,0;
 	donpcevent "Bingo Waiting Room::OnStart";
 	end;
 }
@@ -1090,7 +1088,7 @@ OnTouch:
 que_bingo.gat,49,136,0	script	go3#bingo	45,1,1,{
 
 OnTouch:
-	switch($hu_bingob)
+	switch($@hu_bingob)
 	{
 		case 0:
 			warp "que_bingo.gat",49,125;
@@ -1108,8 +1106,8 @@ OnTouch:
 			warp "que_bingo.gat",45,121;
 			break;
 	}
-	set $hu_bingob,$hu_bingob +1;
-	if ($hu_bingob == 4) set $hu_bingob,0;
+	set $@hu_bingob,$@hu_bingob +1;
+	if ($@hu_bingob == 4) set $@hu_bingob,0;
 	end;
 }
 

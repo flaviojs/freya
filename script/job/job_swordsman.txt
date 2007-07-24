@@ -7,17 +7,13 @@
 //              /_/  |_|\____|_|  \___/|_|  \__,_|              
 //                    http://www.ro-freya.net                   
 //--------------------------------------------------------------
-// Script Title: Acolyte Job Change Quest	Author: Tsuyuki
+// Script Title: Swordman Job Change Quest	Author: Tsuyuki
 //--------------------------------------------------------------
 // Revision History: v1.0
 //--------------------------------------------------------------
 //	1.0 First version, converted from Aegis [Tsuyuki]
-//	 - Credits to kobra_k88 for the converted ledge warp duplicates
 //--------------------------------------------------------------
 // Additional Notes: * Official-certified / Aegis-certified *
-// Features all three official Swordsman job maps.
-// The green poison tiles and 10 minute timer are both not
-// implemented, as per the official Aegis script.
 //--------------------------------------------------------------
 
 

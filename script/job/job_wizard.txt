@@ -1844,12 +1844,12 @@ OnCommandOn:
 
 OnCommandReset:
 	killmonster "job_wiz.gat","Room of Water#Main::OnMyMobDead";
-	set $@mobcount7,0;
+	set 'mobcount1,0;
 	end;
 
 OnMyMobDead:
-	set $@mobcount7,$@mobcount7+1;
-	if ($@mobcount7 > 7) {
+	set 'mobcount1,'mobcount1+1;
+	if ('mobcount1 > 7) {
 		getitem asn_skill,1;
 		mapannounce "job_wiz.gat",""+strcharinfo(0)+" has succeeded in eliminating the monsters.",8;
 		donpcevent "Room of Water#Main::OnCommandReset";
@@ -1933,12 +1933,12 @@ OnCommandOn:
 
 OnCommandReset:
 	killmonster "job_wiz.gat","Room of Water#DoorKeeper::OnMyMobDead";
-	set $@mobcount8,0;
+	set 'mobcount2,0;
 	end;
 
 OnMyMobDead:
-	set $@mobcount8,$@mobcount8+1;
-	if ($@mobcount8 > 4) {
+	set 'mobcount2,'mobcount2+1;
+	if ('mobcount2 > 4) {
 		mapannounce "job_wiz.gat",""+strcharinfo(0)+" has succeeded in eliminating the monsters.",8;
 		warp "job_wiz.gat",116,97;
 		percentheal 100,100;
@@ -2016,12 +2016,12 @@ OnCommandOn:
 
 OnCommandReset:
 	killmonster "job_wiz.gat","Room of Earth#Main::OnMyMobDead";
-	set $@mobcount9,0;
+	set 'mobcount3,0;
 	end;
 
 OnMyMobDead:
-	set $@mobcount9,$@mobcount9+1;
-	if ($@mobcount9 > 9) {
+	set 'mobcount3,'mobcount3+1;
+	if ('mobcount3 > 9) {
 		mapannounce "job_wiz.gat",""+strcharinfo(0)+" has succeeded in eliminating the monsters.",8;
 		donpcevent "Room of Earth#Main::OnCommandReset";
 		stopnpctimer;
@@ -2106,12 +2106,12 @@ OnCommandOn:
 
 OnCommandReset:
 	killmonster "job_wiz.gat","Room of Earth#DoorKeeper::OnMyMobDead";
-	set $@mobcount10,0;
+	set 'mobcount4,0;
 	end;
 
 OnMyMobDead:
-	set $@mobcount10,$@mobcount10+1;
-	if ($@mobcount10 > 6) {
+	set 'mobcount4,'mobcount4+1;
+	if ('mobcount4 > 6) {
 		mapannounce "job_wiz.gat",""+strcharinfo(0)+" has succeeded in eliminating the monsters.",8;
 		warp "job_wiz.gat",46,99;
 		percentheal 100,100;
@@ -2187,12 +2187,12 @@ OnCommandOn:
 
 OnCommandReset:
 	killmonster "job_wiz.gat","Room of Fire#Main::OnMyMobDead";
-	set $@mobcount11,0;
+	set 'mobcount5,0;
 	end;
 
 OnMyMobDead:
-	set $@mobcount11,$@mobcount11+1;
-	if ($@mobcount11 > 7) {
+	set 'mobcount5,'mobcount5+1;
+	if ('mobcount5 > 7) {
 		mapannounce "job_wiz.gat",""+strcharinfo(0)+" has succeeded in eliminating the monsters.",8;
 		donpcevent "Room of Fire#Main::OnCommandReset";
 		stopnpctimer;
@@ -2273,12 +2273,12 @@ OnCommandOn:
 
 OnCommandReset:
 	killmonster "job_wiz.gat","Room of Fire#DoorKeeper::OnMyMobDead";
-	set $@mobcount12,0;
+	set 'mobcount6,0;
 	end;
 
 OnMyMobDead:
-	set $@mobcount12,$@mobcount12+1;
-	if ($@mobcount12 > 2) {
+	set 'mobcount6,'mobcount6+1;
+	if ('mobcount6 > 2) {
 		mapannounce "job_wiz.gat","Congratulations, " +strcharinfo(0)+". You have passed the job change test.",8;
 		set job_wizard_q,7;
 		donpcevent "Room of Fire#DoorKeeper::OnCommandReset";

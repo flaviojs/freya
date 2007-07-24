@@ -13379,7 +13379,7 @@ OnTimer315000:
 	disablenpc "Kienna#6";
 	disablenpc "Kienna#7";
 	disablenpc "Kienna#8";
-	set $@KiennaSwitch,0;
+	set $@kienna,0;
 	disablenpc "1stmove";
 	enablenpc "1strecog";
 	doevent "Waiting Room#rogue10::OnCommandOn";
@@ -13403,8 +13403,8 @@ OnTimer3000:
 	end;
 
 OnTimer5000:
-	set $@KiennaSwitch,rand(1,8);
-	switch($@KiennaSwitch) {
+	set $@kienna,rand(1,8);
+	switch($@kienna) {
 	case 1:
 		enablenpc "Kienna#1";
 		break;
@@ -13441,7 +13441,7 @@ OnTimer8000:
 	disablenpc "Kienna#6";
 	disablenpc "Kienna#7";
 	disablenpc "Kienna#8";
-	set $@KiennaSwitch,0;
+	set $@kienna,0;
 	end;
 
 OnTimer9000:
@@ -13505,7 +13505,7 @@ OnTouch:
 						mes "Huh...?";
 						mes "You blocked me!";
 						mes "Very nice work~";
-						switch($@KiennaSwitch) {
+						switch($@kienna) {
 						case 1:
 							misceffect 204,"Kienna#1";
 							break;
@@ -13568,7 +13568,7 @@ OnTouch:
 						mes "Huh...?";
 						mes "You blocked me!";
 						mes "Very nice work~";
-						switch($@KiennaSwitch) {
+						switch($@kienna) {
 						case 1:
 							misceffect 204,"Kienna#1";
 							break;
@@ -13631,7 +13631,7 @@ OnTouch:
 						mes "Huh...?";
 						mes "You blocked me!";
 						mes "Very nice work~";
-						switch($@KiennaSwitch) {
+						switch($@kienna) {
 						case 1:
 							misceffect 204,"Kienna#1";
 							break;
@@ -13751,7 +13751,7 @@ OnTouch:
 			close2;
 			doevent "Waiting Room#rogue10::OnCommandOn";
 			donpcevent "KiennaDisabler::OnInit";
-			set $@KiennaSwitch,0;
+			set $@kienna,0;
 			warp "in_rogue.gat",264,124;
 			end;
 		} else {
@@ -13769,7 +13769,7 @@ OnTouch:
 				doevent "1stmove::OnCommandOn";
 				set qskill_rogue01,6;
 				donpcevent "KiennaDisabler::OnInit";
-				set $@KiennaSwitch,0;
+				set $@kienna,0;
 				warp "prt_are01.gat",150,150;
 				end;
 			case 2:
@@ -13778,7 +13778,7 @@ OnTouch:
 				set qskill_rogue01,6;
 				doevent "Waiting Room#rogue10::OnCommandOn";
 				donpcevent "KiennaDisabler::OnInit";
-				set $@KiennaSwitch,0;
+				set $@kienna,0;
 				warp "in_rogue.gat",264,124;
 				end;
 			}
@@ -13796,7 +13796,7 @@ OnTouch:
 		enablenpc "1stmove";
 		doevent "1stmove::OnCommandOn";
 		donpcevent "KiennaDisabler::OnInit";
-		set $@KiennaSwitch,0;
+		set $@kienna,0;
 		warp "prt_are01.gat",150,150;
 		end;
 	} else if (qskill_rogue01 == 8) {
