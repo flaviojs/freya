@@ -40,7 +40,6 @@
 -> Scripts In Need Of Aegis Conversion:
 ---------------------------------------
 
-- script/global/global_kafra.txt
 - script/global/global_refine.txt
 - script/job/job_crusader.txt
 - script/job/job_sage.txt
@@ -51,9 +50,12 @@
 - script/town/town_amatsu.txt
 - script/town/town_niflheim.txt
 
+-> Scripts In Need Of Aegis Dialogue:
 --------------------------------------
 
-- script/gvg/ <- Need to import Aegis dialogue
+- script/global/global_kafra.txt
+- script/gvg/gvg_flag.txt
+- script/gvg/gvg_steward.txt
 
 
 ==========================================================================
