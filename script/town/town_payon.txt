@@ -7,22 +7,20 @@
 //              /_/  |_|\____|_|  \___/|_|  \__,_|              
 //                 http://aurora.deltaanime.net                 
 //--------------------------------------------------------------
-// Script Title: Payon Town NPCs	Author: Tsuyuki/GreenGoblin/Muad_Dib
+// Script Title: Payon Town NPCs	Author: Tsuyuki/GreenGoblin/L0ne_W0lf
 //--------------------------------------------------------------
-// Revision History: v1.3
+// Revision History: v1.2
 //--------------------------------------------------------------
-//	1.0 Converted from Aegis, replaced old file entirely [Tsuyuki]
-//	1.1 Merged Fortune Teller script, converted from Aegis by GreenGoblin [Tsuyuki]
-//	1.2 Merged Gemstone Exchange script [Tsuyuki]
-//	1.3 Merged Arrow Quiver NPC script by Muad_Dib [Tsuyuki]
+//	1.0 First version, converted from Aegis (euRO dialogue) [Tsuyuki]
+//	1.1 Merged Fortune Teller script, converted from Aegis by GreenGoblin (euRO dialogue) [Tsuyuki]
+//	1.2 Merged Gemstone Exchange / Arrow Quiver NPC, converted from Aegis by L0ne_W0lf (iRO dialogue) [Tsuyuki]
 //--------------------------------------------------------------
-// Additional Notes: * Aegis-certified *. Gemstone Exchange and
-// Arrow Quiver NPCs are not Aegis-certified however.
+// Additional Notes: * Official-certified / Aegis-certified *
 //--------------------------------------------------------------
 
 
 //--------------------------------------------------------------
-// Payon Town NPCs
+// Payon Town NPCs - [Tsuyuki]
 //--------------------------------------------------------------
 
 payon.gat,246,154,0	script	Lady	90,{
@@ -214,42 +212,40 @@ W_EndMenu:
 	close;
 }
 
-//Conflicts with unofficial messed up warps [Tsuyuki]
-//payon.gat,158,246,3	script	Guardsman	708,3,3,{
-//
-//OnTouch:
-//	mes "[Guardsman]";
-//	mes "This is the Central Palace of Payon.";
-//	mes "This place is open to the public, but in accordance with our laws,";
-//	mes "you must behave in a orderly fashion inside.";
-//	next;
-//	mes "[Guardsman]";
-//	mes "In the interest of protecting the public peace, we will disarm your equipments once you enter.";
-//	mes "Your cooperation is much appreciated.";
-//	unequip;
-//	close;
-//}
+payon.gat,158,246,3	script	Guardsman	708,3,3,{
 
-//Conflicts with unofficial messed up warps [Tsuyuki]
-//payon_in03.gat,96,116,3	script	Chief Guardsman	708,3,3,{
-//
-//OnTouch:
-//	mes "[Chief Guardsman]";
-//	mes "What brings";
-//	mes "you here?";
-//	next;
-//	mes "[Chief Guardsman]";
-//	mes "I can see you are none of the Payon locals.";
-//	mes "I would just like to remind you to conduct yourself in an orderly manner.";
-//	mes "Remember, you are a guest here.";
-//	next;
-//	mes "[Chief Guardsman]";
-//	mes "In the interest of protecting the public peace,";
-//	mes "I will disarm your equipment.";
-//	mes "Thank you for your cooperation.";
-//	unequip;
-//	close;
-//}
+OnTouch:
+	mes "[Guardsman]";
+	mes "This is the Central Palace of Payon.";
+	mes "This place is open to the public, but in accordance with our laws,";
+	mes "you must behave in a orderly fashion inside.";
+	next;
+	mes "[Guardsman]";
+	mes "In the interest of protecting the public peace, we will disarm your equipments once you enter.";
+	mes "Your cooperation is much appreciated.";
+	unequip;
+	close;
+}
+
+payon_in03.gat,96,116,3	script	Chief Guardsman	708,3,3,{
+
+OnTouch:
+	mes "[Chief Guardsman]";
+	mes "What brings";
+	mes "you here?";
+	next;
+	mes "[Chief Guardsman]";
+	mes "I can see you are none of the Payon locals.";
+	mes "I would just like to remind you to conduct yourself in an orderly manner.";
+	mes "Remember, you are a guest here.";
+	next;
+	mes "[Chief Guardsman]";
+	mes "In the interest of protecting the public peace,";
+	mes "I will disarm your equipment.";
+	mes "Thank you for your cooperation.";
+	unequip;
+	close;
+}
 
 payon.gat,249,156,1	script	Woman	90,{
 
@@ -1128,7 +1124,7 @@ payon_in03.gat,8,31,4	script	Maid	1416,{end;}
 
 
 //--------------------------------------------------------------
-// Fortune Teller
+// Fortune Teller - [GreenGoblin]
 //--------------------------------------------------------------
 
 // Old official coords on invalid tiles
@@ -5529,11 +5525,16 @@ OnTouch:
 
 
 //--------------------------------------------------------------
-// Gemstone Exchange
+// Gemstone Exchange - [L0ne_W0lf]
 //--------------------------------------------------------------
 
-payon.gat,173,238,5	script	Jade#01	754,{
+payon.gat,173,238,5	script	Jade	754,{
 
+	/*set '@max_max_c,CheckMaxCount;
+	if ('@max_max_c == 1) {
+		mes "^3355FFWait a second! Right now, you're carrying too many items with you. Please come back after putting some of your things into Kafra Storage.^000000";
+		close;
+	}*/
 	mes "[Jade]";
 	mes "Bring me two";
 	mes "Gemstones of the";
@@ -5541,254 +5542,246 @@ payon.gat,173,238,5	script	Jade#01	754,{
 	mes "change them to Gemstones";
 	mes "of a different color.";
 	next;
+	switch(select("Blue Gemstones into Red ones!:Red Gemstones into Yellow ones!:Yellow Gemstones into Blue ones!")) {
+	case 1: callsub sF_TradeGems,717,716;
+	case 2: callsub sF_TradeGems,716,715;
+	case 3: callsub sF_TradeGems,715,717;
+	}
 
-	menu	"Blue Gemstones into Red ones!",L_BlueToRed,
-		"Red Gemstones into Yellow ones!",L_RedToYellow,
-		"Yellow Gemstones into Blue ones!",L_YellowToBlue,
-		"Cancel",L_Cancel;
-
-L_BlueToRed:
-	set @SourceGemstones$,"Blue";
-	set @SourceGemstonesID,717;
-	set @TargetGemstones$,"Red";
-	set @TargetGemstonesID,716;
-	goto L_BeginExchange;
-
-L_RedToYellow:
-	set @SourceGemstones$,"Red";
-	set @SourceGemstonesID,716;
-	set @TargetGemstones$,"Yellow";
-	set @TargetGemstonesID,715;
-	goto L_BeginExchange;
-
-L_YellowToBlue:
-	set @SourceGemstones$,"Yellow";
-	set @SourceGemstonesID,715;
-	set @TargetGemstones$,"Blue";
-	set @TargetGemstonesID,717;
-	goto L_BeginExchange;
-
-L_BeginExchange:
-	if (countitem(@SourceGemstonesID) >= 2) goto L_ExchangeOK;
-	mes "[Jade]";
-	mes "Hah...!";
-	mes "You're kidding me, right?";
-	mes "I can't give you "+@TargetGemstones$+" Gemstones";
-	mes "if you don't give me at least";
-	mes "2 "+@SourceGemstones$+" Gemstones!";
-	close;
-
-L_ExchangeOK:
-	set @ExchangeCount,countitem(@SourceGemstonesID)/2;
-	mes "[Jade]";
-	mes "This may Exchange "+@ExchangeCount+" "+@TargetGemstones$+" Gemstones";
-	mes "How many do you want?";
-	next;
-	menu "Exchange all",L_ExchangeAll,"I want to set a number",L_PointCount,"Cancel",L_Cancel;
-
-L_ExchangeAll:
-	if (countitem(@SourceGemstonesID) < @ExchangeCount*2) goto L_ExchangeNo;
-	delitem @SourceGemstonesID,@ExchangeCount*2;
-	getitem @TargetGemstonesID,@ExchangeCount;
-	goto L_ExchangeDone;
-
-L_PointCount:
-	mes "[Jade]";
-	mes "How many do you want?";
-	mes "Limit is '100'";
-	next;
-	goto L_InputPointCount;
-
-L_InputPointCount:
-	input @number;
-	if (@number <= 0) goto L_ExchangeNo;
-	if (@number > 100) goto L_ExchangeAbove;
-	if (@number > @ExchangeCount) goto L_ExchangeNotEnough;
-	if (countitem(@SourceGemstonesID) < @number*2) goto L_ExchangeNo;
-	delitem @SourceGemstonesID,@number*2;
-	getitem @TargetGemstonesID,@number;
-	goto L_ExchangeDone;
-
-L_ExchangeNo:
-	mes "[Jade]";
-	mes "Hmmm... Very funny...";
-	 close;
-
-L_ExchangeAbove:
-	mes "[Jade]";
-	mes "Hmmm... Please don't set a number above '100'";
-	next;
-	goto L_InputPointCount;
-
-L_ExchangeNotEnough:
-	mes "[Jade]";
-	mes "Hmmm... The "+@SourceGemstones$+" Gemstones you have";
-	mes "is not enough for "+@number+" "+@TargetGemstones$+" Gemstones.";
-	mes "Please set a new number";
-	next;
-	goto L_InputPointCount;
-
-L_ExchangeDone:
-	mes "[Jade]";
-	mes "Here, This is the "+@TargetGemstones$+" Gemstones you need...";
-	mes "Come back to me when you need more";
-	mes "...mmm? Is there something on my face?";
-	close;
-
-L_Cancel:
-	mes "[Jade]";
-	mes "OK, Very well... Come back if you need anything.";
-	mes "I'll Exchange it for you anytime.";
-	close;
+sF_TradeGems:
+	if (countitem(getarg(0)) < 2) {
+		mes "[Jade]";
+		mes "Hah...!";
+		mes "You're kidding me, right?";
+		mes "I can't provide you with this";
+		mes "service if you don't";
+		mes "give me at least";
+		mes "2 "+getitemname(getarg(0))+"s!";
+		close;
+	}
+	else {
+		set '@gems,countitem(getarg(0))/2;
+		mes "[Jade]";
+		mes "I believe I can create";
+		mes "a total of " + '@gems + " " + getitemname(getarg(1)) + "s";
+		mes "using the "+getitemname(getarg(0))+"s";
+		mes "that you currently have.";
+		mes "What do you want to do?";
+		next;
+		switch(select("Give me as many as you can.:I want to set the amount.:I quit.")) {
+		case 1:
+			delitem getarg(0),'@gems * 2;
+			getitem getarg(1),'@gems;
+			mes "[Jade]";
+			mes "There you go.";
+			mes "Feel free to come";
+			mes "back any time.";
+			mes "Hm, what's that look for?";
+			mes "Is there something on my face?";
+			close;
+		case 2:
+			mes "[Jade]";
+			mes "So how many";
+			mes "do you want?";
+			mes "The maximum number";
+			mes "that you can enter is 100.";
+			next;
+			while(1) {
+				input '@input;
+				if ('@input == 0) {
+					mes "[Jade]";
+					mes "None at all?";
+					mes "I guess you";
+					mes "changed your mind...";
+					close;
+				}
+				else if ('@input > 100) {
+					mes "[Jade]";
+					mes "Errm...";
+					mes "I asked you to enter";
+					mes "an amount no greater";
+					mes "than 100, remember...?";
+					next;
+				}
+				else {
+					break;
+				}
+			}
+			if ('@gems > '@input) {
+				delitem getarg(0),'@input * 2;
+				getitem getarg(1),'@input;
+				mes "[Jade]";
+				mes "There you go.";
+				mes "Feel free to come";
+				mes "back any time.";
+				mes "Hm, what's that look for?";
+				mes "Is there something on my face?";
+			}
+			close;
+		case 3:
+			mes "[Jade]";
+			mes "Sure, no problem.";
+			mes "Come back any time.";
+			close;
+		}
+	}
 }
 
 
 //--------------------------------------------------------------
-// Arrow Quiver NPC
+// Arrow Quiver NPC - [L0ne_W0lf]
 //--------------------------------------------------------------
 
-payon_in01.gat,5,134,4	script	Inventor Jaax	89,{
+payon_in01.gat,5,134,5	script	Inventor Jaax	89,{
 
+	/*set '@max_max_c1,CheckMaxCount;
+	if ('@max_max_c1 == 1) {
+		mes "[Inventor Jaax]";
+		mes "Hey, you're carrying";
+		mes "way too much stuff. Why don't you stash it away in Kafra Storage? We can talk after you do that, right?";
+		close;
+	}*/
+	set '@now_weight,MaxWeight-Weight;
+	if ('@now_weight < 2000) {
+		mes "[Inventor Jaax]";
+		mes "Hey, you're carrying";
+		mes "way too much stuff. Why don't you stash it away in Kafra Storage? We can talk after you do that, right?";
+		close;
+	}
 	mes "[Inventor Jaax]";
-	mes "My name is Jaax.";
+	mes "My name is Jaxx.";
 	mes "Without ego, I can";
-	mes "sat that I am perhaps the";
-	mes "^996600greatest inventor of our time.^000000";
+	mes "say that I am perhaps the";
+	mes "^663300greatest inventor of our time^000000.";
 	next;
-	mes "[Inventor Jaax]";
+	mes "[Inventor Jaxx]";
 	mes "This time, I've";
 	mes "created something";
-	mes "truly extraordinary. I call them...";
-	mes "^996600Magic Quivers^000000 !! This will be";
-	mes "remembered in history as an";
+	mes "truly extraordinary. I call them... ^663300Magic Quivers^000000 !! This will be remembered in history as an";
 	mes "arrow revolution!";
+	emotion e_no1;
 	next;
 	mes "[Inventor Jaax]";
-	mes "I've studied magic and quivers for";
-	mes "years, working night and day until";
-	mes "I finally figured out how to condense";
-	mes "arrows with magic! With magic";
-	mes "quivers, you'll be carrying more";
-	mes "arrows, but with less weight!";
+	mes "I've studied magic and quivers for years, working night and day until I finally figured how to condense arrows with magic! With magic quivers, you'll be carrying more arrows, but with less weight!";
 	next;
 	mes "[Inventor Jaax]";
-	mes "Would you like to try using one of";
-	mes "my arrow quivers? I have no doubt";
-	mes "that someone like you can";
-	mes "appreciate my genius!";
+	mes "Would you like to try using one of my arrow quivers? I have no doubt that someone like you can appreciate my genius!";
 	next;
-
-	menu	"Arrow Quiver",-,
-		"Iron Arrow Quiver",Q2,
-		"Steel Arrow Quiver",Q3,
-		"Oridecon Arrow Quiver",Q4,
-		"Fire Arrow Quiver",Q5,
-		"Silver Arrow Quiver",Q6,
-		"Wind Arrow Quiver",Q7,
-		"Stone Arrow Quiver",Q8,
-		"Crystal Arrow Quiver",Q9,
-		"Shadow Arrow Quiver",Q10,
-		"Immaterial Arrow Quiver",Q11,
-		"Rusty Arrow Quiver",Q12,
-		"Holy Arrow Quiver",Q13;
-
-// Arguments
-
-		callsub sF_Make, 1750,500,12004, "Arrow Quiver";
-			goto M_Menu;
-Q2:
-		callsub sF_Make, 1770,500,12005, "Iron Arrow Quiver";
-			goto M_Menu;
-Q3:
-		callsub sF_Make, 1753,500,12006, "Steel Arrow Quiver";
-			goto M_Menu;
-Q4:
-		callsub sF_Make, 1765,500,12007, "Oridecon Arrow Quiver";
-			goto M_Menu;
-Q5:
-		callsub sF_Make, 1752,500,12008, "Fire Arrow Quiver";
-			goto M_Menu;
-Q6:
-		callsub sF_Make, 1751,500,12009, "Silver Arrow Quiver";
-			goto M_Menu;
-Q7:
-		callsub sF_Make, 1755,500,12010, "Wind Arrow Quiver";
-			goto M_Menu;
-Q8:
-		callsub sF_Make, 1756,500,12011, "Stone Arrow Quiver";
-			goto M_Menu;
-Q9:
-		callsub sF_Make, 1754,500,12012, "Crystal Arrow Quiver";
-			goto M_Menu;
-Q10:
-		callsub sF_Make, 1767,500,12013, "Shadow Arrow Quiver";
-			goto M_Menu;
-Q11:
-		callsub sF_Make, 1757,500,12014, "Immaterial Arrow Quiver";
-			goto M_Menu;
-Q12:
-		callsub sF_Make, 1762,500,12015, "Rusty Arrow Quiver";
-			goto M_Menu;
-Q13:
-		callsub sF_Make, 1772,500,12183, "Holy Arrow Quiver";
-			goto M_Menu;
-
-// Subfunction for making quivers
-
-sF_Make:
-	set @arrownum,500;
-	if (countitem(getarg(0)) < @arrownum) goto L_NdArrows;
-	if (Zeny < getarg(1)) goto L_NdZeny;
+	switch(select("Quiver","Iron Arrow Quiver","Steel Arrow Quiver","Oridecon Arrow Quiver","Fire Arrow Quiver","Silver Arrow Quiver","Wind Arrow Quiver","Stone Arrow Quiver","Crystal Arrow Quiver","Shadow Arrow Quiver","Immaterial Arrow Quiver","Rusty Arrow Quiver")) {
+	case 1: callsub sF_BuyQuiver,1750,500,500,12004;
+	case 2: callsub sF_BuyQuiver,1770,500,500,12005;
+	case 3: callsub sF_BuyQuiver,1753,500,500,12006;
+	case 4: callsub sF_BuyQuiver,1765,500,500,12007;
+	case 5: callsub sF_BuyQuiver,1752,500,500,12008;
+	case 6: callsub sF_BuyQuiver,1751,500,500,12009;
+	case 7: callsub sF_BuyQuiver,1755,500,500,12010;
+	case 8: callsub sF_BuyQuiver,1756,500,500,12011;
+	case 9: callsub sF_BuyQuiver,1754,500,500,12012;
+	case 10: callsub sF_BuyQuiver,1767,500,500,12013;
+	case 11: callsub sF_BuyQuiver,1757,500,500,12014;
+	case 12: callsub sF_BuyQuiver,1762,500,500,12015;
+	}
 	mes "[Inventor Jaax]";
-	mes "What do you want me to do?";
-	next;
-	menu "Give me as many as you can.",-, "I want to set the amount.",sM_0b, "Nevermind",M_End;
-
-		set @amount,100;
-		if (zeny/getarg(1) < @amount) set @amount, zeny/getarg(1);
-		if (countitem(getarg(0))/@arrownum < @amount) set @amount, countitem(getarg(0))/@arrownum;
-		if (@amount > 0) goto L_End;
-		mes "[Inventor Jaax]";
-		mes "Jeez... you don't even have the right items.....";
-		close;
-		
-	sM_0b:
-		input @amount;
-		if (@amount<1 || @amount>100) goto L_BadAmnt;
-		if (countitem(getarg(0))/@arrownum < @amount) goto L_NdArrows;
-		if (Zeny < (getarg(1)*@amount)) goto L_NdZeny;
-
-	L_End:
-		set Zeny, Zeny - (getarg(1)*@amount);
-		delitem getarg(0), (@amount*@arrownum);
-		getitem getarg(2), @amount;
-		mes "[Inventor Jaax]";
-		mes "There you go~!";
-		mes "Here are your " +getarg(3)+ ".";
-		close;
-
-	L_NdArrows:
-		mes "[Inventor Jaax]";
-		mes "Sorry, but you need 500 Arrows and 500 Zeny to make 1 Arrow Quiver.";
-		close;
-		
-	L_NdZeny:
-		mes "[Inventor Jaax]";
-		mes "You don't have enough zeny for that many.";
-		close;
-
-	L_BadAmnt:
-		mes "[Inventor Jaax]";
-		mes "Please choose a number between 1 and 100.";	
-		close;
-
-L_Come:
-	mes "[Inventor Jaax]";
-	mes "Please, come again whenever you want too.";
+	mes "Is there";
+	mes "anything you want?";
 	close;
-M_End:
-	mes "[Inventor Jaax]";
-	mes "Sure, no problem.";
-	mes "Come back any time.";
-	close;
+
+sF_BuyQuiver:
+	if (countitem(getarg(0)) > 499) {
+		mes "[Inventor Jaax]";
+		mes "Excellent!";
+		mes "Are you carrying any Arrows with you? I'll provide you with a quiver that can carry "+getarg(1)+" of your "+getitemname(getarg(0))+"s for only ^FF3131"+getarg(2)+" Zeny^000000.";
+		next;
+		switch(select("Store as many Arrows in quivers as possible","Purchase 1 quiver","Cancel")) {
+		case 1:
+			set '@arrows,countitem(getarg(0));
+			set '@quiver,'@arrows / getarg(1);
+			set '@arrows_used,'@quiver * getarg(1);
+			set '@arrow_zeny01,'@quiver * getarg(2);
+			mes "Number of";
+			mes "Arrows: ^3131FF"+'@arrows+" ^000000";
+			mes "Maximum Number";
+			mes "of Purchasable";
+			mes "Quivers: ^3131FF"+'@quiver+" ^000000";
+			mes "Zeny required: ^3131FF"+'@arrow_zeny01+" Zeny^000000";
+			next;
+			mes "[Inventor Jaax]";
+			mes "Would you like to";
+			mes "buy as many Quivers";
+			mes "as you can for the Arrows";
+			mes "you are currently carrying?";
+			next;
+			if (select("Yes","Cancel") == 1) {
+				if ('@arrow_zeny01 < Zeny) {
+					mes "[Inventor Jaax]";
+					mes "There you go!";
+					mes "Just remember, ^FF0000you won't be able to use the Quiver when your carried weight is 90% of your maximum weight limit^000000.";
+					set zeny,zeny-'@arrow_zeny01;
+					delitem getarg(0),'@arrows_used; //Arrow
+					getitem getarg(3),'@quiver; //Quiver
+					next;
+					mes "[Inventor Jaax]";
+					mes "So...";
+					mes "Just keep track";
+					mes "of how much you're";
+					mes "carrying from time";
+					mes "to time and you should";
+					mes "be alright.";
+					close;
+				}
+				else {
+					mes "[Inventor Jaax]";
+					mes "I'm sorry, but you don't have enough Zeny. I can't just give these away after working years";
+					mes "to develop this revolutionary technology!";
+					close;
+				}
+			}
+			mes "[Inventor Jaax]";
+			mes "You changed your mind?";
+			mes "When the glory of owning";
+			mes "a quiver is so close?";
+			close;
+		case 2:
+			if (zeny > getarg(2)) {
+				mes "[Inventor Jaax]";
+				mes "There you go!";
+				mes "Just remember, ^FF0000you won't be able to use the Quiver when your carried weight is 90% of your maximum weight limit^000000.";
+				set zeny,zeny-getarg(2);
+				delitem getarg(0),getarg(1); //Arrow
+				getitem getarg(3),1; //Quiver
+				next;
+				mes "[Inventor Jaax]";
+				mes "So...";
+				mes "Just keep track";
+				mes "of how much you're";
+				mes "carrying from time";
+				mes "to time and you should";
+				mes "be alright.";
+				close;
+			}
+			else {
+				mes "[Inventor Jaax]";
+				mes "You don't even";
+				mes "have "+getarg(2)+" Zeny?";
+				mes "I'm so sorry. I had no";
+				mes "idea that you were so...";
+				mes "^333333Destitute^000000.";
+				close;
+			}
+		case 3:
+			mes "[Inventor Jaax]";
+			mes "What...?";
+			mes "Do you not see that this invention can forever change the way Arrows are carried?! The future is now!";
+			close;
+		}
+	}
+	else {
+		mes "[Inventor Jaax]";
+		mes "You can carry a maximum of 500 Arrows within this quiver. It was made using my secret method,";
+		mes "so the total weight of the Arrows and Quiver is less than carrying the Arrows alone.";
+		next;
+		mes "[Inventor Jaax]";
+		mes "It's a miracle of science! One that you can experience for yourself if you bring me at least 500 Arrows and 500 Zeny for each Quiver.";
+		close;
+	}
 }
