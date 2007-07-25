@@ -430,7 +430,7 @@ ra_temin.gat,228,303,5	script	Freya's Follower#in1	927,{
 	mes "praying so hard for Freya's";
 	mes "second coming. I'm exhausted,";
 	mes "but I feel pretty good about";
-	mes "making that small sacrafice.";
+	mes "making that small sacrifice.";
 	close;
 }
 
@@ -2487,7 +2487,7 @@ ra_in01.gat,235,194,5	script	Katinshuell	931,{
 
 	}
 
-	else if ((rach_vice == 15) && (v[Blue_Diary] > 0)) {
+	else if ((rach_vice == 15) && (countitem(7571))) {
 		mes "[Katinshuell]";
 		mes "Oh, it's you again.";
 		mes "What do you want now?";
@@ -6349,7 +6349,7 @@ ra_temin.gat,134,128,3	script	Pope's Office Guard#rac::raofficeguard	927,{
 		close;
 	}
 
-	if ((ra_tem_q < 15) || (ra_tem_q == 15) && (countitem(7561) > 40)) {
+	if ((ra_tem_q < 15) || (ra_tem_q == 15) && (countitem(7561) < 40)) {
 		mes "[Pope's Office Guard]";
 		mes "I'm sorry, but outsiders";
 		mes "typically aren't allowed";
@@ -6372,10 +6372,12 @@ ra_temin.gat,134,128,3	script	Pope's Office Guard#rac::raofficeguard	927,{
 			mes "I think I know why you're";
 			mes "here. Thanks for bringing";
 			mes "those to me, and I'll let you";
-			mes "enter and see the pope";
+			mes "enter and see the pope.";
 			mes "Welcome, brave "+strcharinfo(0)+".";
+			close2;
+			delitem 7561,40; //Ice_Heart
 			set ra_tem_q,16;
-			close;
+			end;
 		}
 
 		if (ra_tem_q == 16) {
