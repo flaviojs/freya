@@ -45,7 +45,6 @@
 - script/job/job_sage.txt
 - script/misc/misc_marriage.txt
 - script/quest/quest_headgear.txt
-- script/quest/quest_old_blue_box.txt
 - script/quest/quest_pet_taming.txt
 - script/town/town_amatsu.txt
 - script/town/town_niflheim.txt
