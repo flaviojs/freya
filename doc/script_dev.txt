@@ -48,6 +48,7 @@
 - script/quest/quest_pet_taming.txt
 - script/town/town_amatsu.txt
 - script/town/town_niflheim.txt
+- script/town/town_umbala.txt
 
 -> Scripts In Need Of Aegis Dialogue:
 --------------------------------------
