@@ -150,7 +150,7 @@ payon.gat,140,151,5		script	Seiyablem	84,{
 					{
 						case 1:  callfunc "F_Socket",1,2107,2108,40,61,250,999,5; break;
 						case 2:  callfunc "F_Socket",1,2314,2315,40,61,250,999,5; break;
-						case 3:  callfunc "F_Socket",1,2326,2327,40,61,300,999,5; break;
+						case 3:  callfunc "F_Socket",1,2325,2326,40,61,300,999,5; break;
 						case 4:  callfunc "F_Socket",1,2321,2322,40,61,300,999,5; break;
 						case 5:  callfunc "F_Socket",1,2405,2406,40,61,300,999,5; break;
 						case 6:  callfunc "F_Socket",1,2403,2404,40,61,300,999,5; break;
