@@ -9,7 +9,7 @@
 //--------------------------------------------------------------
 // Script Title: Rachel Town NPCs	Author: L0ne_W0lf
 //--------------------------------------------------------------
-// Revision History: v1.6
+// Revision History: v1.7
 //--------------------------------------------------------------
 //	1.0 First version, converted from Aegis [L0ne_W0lf]
 //	1.1 Merged in Rachel Quests by L0ne_W0lf [Tsuyuki]
@@ -19,6 +19,7 @@
 //	1.4 Added the ability to redeem lottery tickets before donation max is met [L0ne_W0lf]
 //	1.5 Removed an erroneous "case". Thanks, Jet [L0ne_W0lf]
 //	1.6 Fixed an exploit and otpimized Rachel donations [Playtester]
+//	1.7 Fixed Maheo, he will revert to his frozen state when clicked [L0ne_W0lf]
 //--------------------------------------------------------------
 // Additional Notes: * Official-certified / Aegis-certified *
 //--------------------------------------------------------------
@@ -3630,6 +3631,7 @@ L_End:
 
 ice_dun02.gat,120,105,3	script	Man Stuck in Ice#cave	924,5,5,{
 
+OnClick:
 	if (ice_necklace_q == 1) {
 		cutin "ra_magic3",2;
 		emotion e_omg;
@@ -4110,6 +4112,9 @@ rachel.gat,265,98,3	script	Hamion#aru	930,{
 
 ice_dun02.gat,120,105,3	script	Maheo#cave	937,{
 
+	enablenpc "Man Stuck in Ice#cave";
+	doevent "Man Stuck in Ice#cave::OnClick";
+	disablenpc "Maheo#cave";
 	end;
 
 OnInit:
