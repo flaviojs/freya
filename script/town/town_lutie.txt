@@ -11,8 +11,7 @@
 //--------------------------------------------------------------
 // Revision History: v1.0
 //--------------------------------------------------------------
-//	1.0 First version, converted from Aegis [Tsuyuki]
-//	1.1 Added some missing NPCs, euRO dialogue [Tsuyuki]
+//	1.0 First version, converted from Aegis (euRO dialogue) [Tsuyuki]
 //--------------------------------------------------------------
 // Additional Notes: * Official-certified / Aegis-certified *
 // Required for the Bard Job Change Quest.

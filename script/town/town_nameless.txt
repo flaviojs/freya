@@ -20,7 +20,7 @@
 
 
 //--------------------------------------------------------------
-// Nameless Island Town NPCs
+// Nameless Island Town NPCs - [Tsuyuki]
 //--------------------------------------------------------------
 
 // Temp Warper to Nameless Island

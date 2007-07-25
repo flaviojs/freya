@@ -12,7 +12,7 @@
 // Revision History: v1.2
 //--------------------------------------------------------------
 //	1.0 First version, converted from Aegis [Tsuyuki]
-//	1.1 Merged in Comodo Gambling, converted from Aegis by GreenGoblin [Tsuyuki]
+//	1.1 Merged in Comodo Gambling, converted from Aegis by GreenGoblin (euRO dialogue) [Tsuyuki]
 //	1.2 Added the Munak's Grandma Quest, converted from Aegis [Tsuyuki]
 //--------------------------------------------------------------
 // Additional Notes: * Official-certified / Aegis-certified *
@@ -20,7 +20,7 @@
 
 
 //--------------------------------------------------------------
-// Comodo Town NPCs
+// Comodo Town NPCs - [Tsuyuki]
 //--------------------------------------------------------------
 
 comodo.gat,206,310,4	script	Campground Boy	704,{
@@ -2754,7 +2754,7 @@ comodo.gat,232,87,4	script	Won	106,{
 
 
 //--------------------------------------------------------------
-// Comodo Gambling
+// Comodo Gambling - [GreenGoblin]
 //--------------------------------------------------------------
 
 comodo.gat,219,158,6	script	Kachua	91,{
@@ -3323,7 +3323,7 @@ L_Tip:
 
 
 //--------------------------------------------------------------
-// Munak's Grandma Quest
+// Munak's Grandma Quest - [Tsuyuki]
 //--------------------------------------------------------------
 
 comodo.gat,112,182,0	script	Munak's Grandma	103,{

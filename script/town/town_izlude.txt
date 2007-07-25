@@ -19,7 +19,7 @@
 
 
 //--------------------------------------------------------------
-// Izlude Town NPCs
+// Izlude Town NPCs - [Tsuyuki]
 //--------------------------------------------------------------
 
 izlude.gat,201,181,2	script	Sailor	100,{
@@ -628,7 +628,7 @@ izlude.gat,182,186,2	script	Edgar	49,{
 
 
 //--------------------------------------------------------------
-// Novice WoE Event Monument
+// Novice WoE Event Monument - [Tsuyuki]
 //--------------------------------------------------------------
 
 izlude.gat,124,218,0	script	Novice WoE Event Monument	111,{

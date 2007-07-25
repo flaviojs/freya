@@ -20,7 +20,7 @@
 
 
 //--------------------------------------------------------------
-// Prontera Field/Maze NPCs
+// Prontera Field/Maze NPCs - [Tsuyuki]
 //--------------------------------------------------------------
 
 prt_fild05.gat,270,212,5	script	Culvert Guardian	105,{
@@ -82,7 +82,7 @@ prt_maze02.gat,110,69,0	script	Soldier	105,{
 
 
 //--------------------------------------------------------------
-// Prontera Indoor Town NPCs
+// Prontera Indoor Town NPCs - [Tsuyuki]
 //--------------------------------------------------------------
 
 prt_in.gat,88,105,2	script	Recruiter	105,{
@@ -878,7 +878,7 @@ prt_in.gat,172,109,4	script	A File	111,2,1,{
 
 
 //--------------------------------------------------------------
-// Prontera Outdoor Town NPCs
+// Prontera Outdoor Town NPCs - [Tsuyuki]
 //--------------------------------------------------------------
 
 prontera.gat,160,330,0	script	Guard	105,{
@@ -1413,7 +1413,7 @@ prontera.gat,73,140,0	script	Milk Vendor	86,{
 
 
 //--------------------------------------------------------------
-// Prontera Church NPCs
+// Prontera Church NPCs - [Tsuyuki]
 //--------------------------------------------------------------
 
 prt_church.gat,179,15,4	script	Priest Praupin	110,{

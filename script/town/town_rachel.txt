@@ -9,49 +9,17 @@
 //--------------------------------------------------------------
 // Script Title: Rachel Town NPCs	Author: L0ne_W0lf
 //--------------------------------------------------------------
-// Revision History: v1.7
+// Revision History: v1.1
 //--------------------------------------------------------------
 //	1.0 First version, converted from Aegis [L0ne_W0lf]
-//	1.1 Merged in Rachel Quests by L0ne_W0lf [Tsuyuki]
-//	 - Lost Child QUest, Bruspetti Quest, Ice Necklace Quest, Sanctuary Quest
-//	1.2 Some slight optimization [L0ne_W0lf]
-//	1.3 Fixed Man Stuck in Ice only giving 1 Freezing Snow Powder [L0ne_W0lf]
-//	1.4 Added the ability to redeem lottery tickets before donation max is met [L0ne_W0lf]
-//	1.5 Removed an erroneous "case". Thanks, Jet [L0ne_W0lf]
-//	1.6 Fixed an exploit and otpimized Rachel donations [Playtester]
-//	1.7 Fixed Maheo, he will revert to his frozen state when clicked [L0ne_W0lf]
+//	1.1 Fixed a bunch of bugs [L0ne_W0lf]
 //--------------------------------------------------------------
 // Additional Notes: * Official-certified / Aegis-certified *
 //--------------------------------------------------------------
 
 
 //--------------------------------------------------------------
-// Documentation
-//--------------------------------------------------------------
-// Lost Child Quest:
-// - End of quest coincides with opening the Sanctuary.
-// - Variable in use: lost_boy (max 13)
-// Bruspetti Quest:
-// - [Aegis conversion]
-// - Requires friendship quest as a prerequisite.
-// - Variable in use: rach_vice (max 24)
-// Ice Necklace Quest:
-// - iRO uses a different sprite for Urstia, and no cutins.
-// - Need command to change NPC sprite
-// - Need Mosnter triggered "OnTouch" event. (OnTouchNPC)
-// - Variable in use: ice_necklace_q (max 7)
-// Sanctuary Quest:
-// - Actually two quests in one. Donation and dungeon quest.
-// - Requires 10000 donations before players can start the quest.
-// - Variable in use: ra_tem_q (max 23) (unset at end)
-// - Variable in use: Once completed MISC_QUEST bit 8192 is set
-// - Variable in use: ra_have_donated (0 no/1 yes)
-// - Variable in use: $rachel_donate (max 10000)
-//--------------------------------------------------------------
-
-
-//--------------------------------------------------------------
-// Rachel Town NPCs
+// Rachel Town NPCs - [L0ne_W0lf]
 //--------------------------------------------------------------
 
 ice_dun04.gat,33,166,3	script	Frozen Boy	925,{
@@ -728,7 +696,7 @@ airplane.gat,238,54,7	script	Adventurer	59,{
 
 
 //--------------------------------------------------------------
-// Lost Child Quest
+// Lost Child Quest - [L0ne_W0lf]
 //--------------------------------------------------------------
 
 ra_in01.gat,384,246,3	script	Vincent#ra_in01	47,{
@@ -1966,7 +1934,7 @@ rachel.gat,263,32,3	script	Kid#ra_in01	931,{
 
 
 //--------------------------------------------------------------
-// Bruspetti Quest (Perequisite: Lighthalzen "Friendship" quest)
+// Bruspetti Quest - [L0ne_W0lf]
 //--------------------------------------------------------------
 
 ra_in01.gat,235,194,5	script	Katinshuell	931,{
@@ -3417,7 +3385,7 @@ ra_in01.gat,255,25,0	script	Book#ra_in	111,{
 
 
 //--------------------------------------------------------------
-// Ice Necklace/Summon Ktullanux Quest and Glaial Heart buyer
+// Ice Necklace Quest - [L0ne_W0lf]
 //--------------------------------------------------------------
 
 // iRO Changed this NPC to avoid "offending" people.
@@ -4559,7 +4527,7 @@ OnEnable:
 
 
 //--------------------------------------------------------------
-// Donation Lottery Quest/High Priest Quest
+// Donation Lottery Quest/High Priest Quest - [L0ne_W0lf]
 //--------------------------------------------------------------
 
 ra_temple.gat,119,180,0	script	Temple Entrance#ra_temple	45,1,1,{

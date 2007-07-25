@@ -13,7 +13,7 @@
 //--------------------------------------------------------------
 //	1.0 First version, converted from Aegis (euRO dialogue) [Tsuyuki]
 //	1.1 Merged Fortune Teller script, converted from Aegis by GreenGoblin (euRO dialogue) [Tsuyuki]
-//	1.2 Merged Gemstone Exchange / Arrow Quiver NPC, converted from Aegis by L0ne_W0lf (iRO dialogue) [Tsuyuki]
+//	1.2 Merged Gemstone Exchange / Arrow Quiver NPC, converted from Aegis by L0ne_W0lf [Tsuyuki]
 //--------------------------------------------------------------
 // Additional Notes: * Official-certified / Aegis-certified *
 //--------------------------------------------------------------
@@ -5542,7 +5542,7 @@ payon.gat,173,238,5	script	Jade	754,{
 	mes "change them to Gemstones";
 	mes "of a different color.";
 	next;
-	switch(select("Blue Gemstones into Red ones!:Red Gemstones into Yellow ones!:Yellow Gemstones into Blue ones!")) {
+	switch(select("Blue Gemstones into Red ones!","Red Gemstones into Yellow ones!","Yellow Gemstones into Blue ones!")) {
 	case 1: callsub sF_TradeGems,717,716;
 	case 2: callsub sF_TradeGems,716,715;
 	case 3: callsub sF_TradeGems,715,717;
@@ -5568,7 +5568,7 @@ sF_TradeGems:
 		mes "that you currently have.";
 		mes "What do you want to do?";
 		next;
-		switch(select("Give me as many as you can.:I want to set the amount.:I quit.")) {
+		switch(select("Give me as many as you can.","I want to set the amount.","I quit.")) {
 		case 1:
 			delitem getarg(0),'@gems * 2;
 			getitem getarg(1),'@gems;

@@ -18,7 +18,7 @@
 
 
 //--------------------------------------------------------------
-// Aldebaran Town NPCs
+// Aldebaran Town NPCs - [Tsuyuki]
 //--------------------------------------------------------------
 
 aldebaran.gat,113,70,4	script	Forger Munster	48,{
@@ -1110,7 +1110,7 @@ aldebaran.gat,143,136,4	script	Bell Keeper#A	89,{
 
 
 //--------------------------------------------------------------
-// Clock Tower/Aldebaran Dungeon NPCs
+// Clock Tower/Aldebaran Dungeon NPCs - [Tsuyuki]
 //--------------------------------------------------------------
 
 c_tower3.gat,10,249,4	script	Gatekeeper	84,{

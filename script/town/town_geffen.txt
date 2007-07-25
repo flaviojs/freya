@@ -12,7 +12,7 @@
 // Revision History: v1.2
 //--------------------------------------------------------------
 //	1.0 First version, converted from Aegis [Tsuyuki]
-//	1.1 Remerged the Mastermind Game NPC converted from Aegis by GreenGoblin [Tsuyuki]
+//	1.1 Added the Mastermind Game NPC converted from Aegis by GreenGoblin (euRO dialogue) [Tsuyuki]
 //	1.2 Added the Counteragent and Mixture Quest, converted from Aegis [Tsuyuki]
 //--------------------------------------------------------------
 // Additional Notes: * Official-certified / Aegis-certified *
