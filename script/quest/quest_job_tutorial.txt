@@ -9,19 +9,17 @@
 //--------------------------------------------------------------
 // Script Title: First Class Tutorial Quests	Author: Jukka
 //--------------------------------------------------------------
-// Revision History: v1.3
+// Revision History: v1.1
 //--------------------------------------------------------------
-//	1.0 First version, merged all Tutorial Quests by Jukka together [Tsuyuki]
-//	1.1 Fixed a small "Battle Traces" NPC name bug [Tsuyuki]
-//	1.2 Updated Reidin Corse to iRO dialogue to match with the Hunter Phantasmic Arrow Skill Quest [Tsuyuki]
-//	1.3 Removed Arpesto (Part of Hunter Phantasmic Arrow Skill Quest) [Tsuyuki]
+//	1.0 First version, merged together, converted from Aegis (euRO dialogue) [Tsuyuki]
+//	1.1 Update NPCs involved with the Hunter Phantasmic Arrow Skill Quest [Tsuyuki]
 //--------------------------------------------------------------
-// Additional Notes: * Aegis-certified * (euRO dialogue)
+// Additional Notes: * Official-certified / Aegis-certified *
 //--------------------------------------------------------------
 
 
 //--------------------------------------------------------------
-// Acolyte Tutorial Quest
+// Acolyte Tutorial Quest - [Jukka]
 //--------------------------------------------------------------
 
 prt_church.gat,179,15,1	script	Priest Praupin	110,{
@@ -1730,7 +1728,7 @@ prt_monk.gat,223,123,3	script	Eavesdrop#tu	111,{
 
 
 //--------------------------------------------------------------
-// Archer Tutorial Quest
+// Archer Tutorial Quest - [Jukka]
 //--------------------------------------------------------------
 
 payon_in02.gat,67,65,3	script	Bard Jet#tu	51,{
@@ -3703,7 +3701,7 @@ monk_in.gat,19,43,1	script	Bishop Maugins	60,{
 
 
 //--------------------------------------------------------------
-// Mage Tutorial Quest
+// Mage Tutorial Quest - [Jukka]
 //--------------------------------------------------------------
 
 geffen.gat,61,174,4	script	Sign#M	111,{
@@ -4455,7 +4453,7 @@ geffen.gat,67,180,4	script	New Mage Manager#M	102,{
 
 
 //--------------------------------------------------------------
-// Merchant Tutorial Quest
+// Merchant Tutorial Quest - [Jukka]
 //--------------------------------------------------------------
 
 alberta_in.gat,70,51,5	script	Guarnien	98,{
@@ -5861,7 +5859,7 @@ prt_in.gat,251,129,3	script	Maos	709,{
 
 
 //--------------------------------------------------------------
-// Swordsman Tutorial Quest
+// Swordman Tutorial Quest - [Jukka]
 //--------------------------------------------------------------
 
 izlude_in.gat,82,163,3	script	Shurank	733,{
@@ -8301,7 +8299,7 @@ morocc_in.gat,12,156,3	script	Bankley	97,{
 
 
 //--------------------------------------------------------------
-// Thief Tutorial Quest
+// Thief Tutorial Quest - [Jukka]
 //--------------------------------------------------------------
 
 moc_ruins.gat,66,164,4	script	Thief Trainer#T	84,{
@@ -9015,7 +9013,7 @@ moc_ruins.gat,66,164,4	script	Thief Trainer#T	84,{
 
 
 //--------------------------------------------------------------
-// Thief/Mage Dual Tutorial Quest
+// Thief/Mage Dual Tutorial Quest - [Jukka]
 //--------------------------------------------------------------
 
 moc_fild12.gat,166,369,0	script	Battle Traces#1	844,{

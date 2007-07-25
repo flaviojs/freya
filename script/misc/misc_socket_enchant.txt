@@ -9,11 +9,9 @@
 //--------------------------------------------------------------
 // Script Title: Socket Enchant System	Author: SinSloth
 //--------------------------------------------------------------
-// Revision History: v1.2
+// Revision History: v1.0
 //--------------------------------------------------------------
 //	1.0 First version, converted from Aegis [SinSloth]
-//	1.1 Optimized/cleaned [ultramage]
-//	1.2 Fixed some typos and a nasty bug [SinSloth]
 //--------------------------------------------------------------
 // Additional Notes: * Official-certified / Aegis-certified *
 //--------------------------------------------------------------

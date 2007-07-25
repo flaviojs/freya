@@ -9,14 +9,11 @@
 //--------------------------------------------------------------
 // Script Title: Cooking Quest	Author: L0ne_W0lf
 //--------------------------------------------------------------
-// Revision History: v1.1
+// Revision History: v1.0
 //--------------------------------------------------------------
 //	1.0 First version, converted from Aegis [L0ne_W0lf]
-//	1.1 Adapated a few things for Aurora [Tsuyuki]
 //--------------------------------------------------------------
-// Additional Notes: * Aegis-certified *
-// Not sure what the EnableItemMove is for, as there is no 
-// command to disable being able to move items.
+// Additional Notes: * Official-certified / Aegis-certified *
 //--------------------------------------------------------------
 
 

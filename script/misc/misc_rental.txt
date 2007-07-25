@@ -12,13 +12,16 @@
 // Revision History: v1.1
 //--------------------------------------------------------------
 //	1.0 First version, converted from Aegis [L0ne_W0lf]
-//	1.1 Merged in the Super Novice Cart Renter, converted from Aegis [Tsuyuki]
+//	1.1 Added the Super Novice Cart Renter, converted from Aegis [Tsuyuki]
 //--------------------------------------------------------------
 // Additional Notes: * Official-certified / Aegis-certified *
 //--------------------------------------------------------------
 
 
-// Knight Peco Peco Breeder
+//--------------------------------------------------------------
+// Knight Peco Peco Breeder - [L0ne_W0lf]
+//--------------------------------------------------------------
+
 prontera.gat,55,350,5	script	Peco Peco Breeder	105,{
 
 	if (Upper==0) set @price,2500; // Normal Peco - Default price
@@ -74,7 +77,11 @@ prontera.gat,55,350,5	script	Peco Peco Breeder	105,{
 	close;
 }
 
-// Crusader Grand Peco Peco Breeder
+
+//--------------------------------------------------------------
+// Crusader Grand Peco Peco Breeder - [L0ne_W0lf]
+//--------------------------------------------------------------
+
 prontera.gat,232,318,3	script	Peco Peco Breeder	105,{
 
 	if (Upper==0) set @price,3500; // Normal Peco - Default price
@@ -131,7 +138,11 @@ prontera.gat,232,318,3	script	Peco Peco Breeder	105,{
 	close;
 }
 
-// Hunter Falcon Breeder
+
+//--------------------------------------------------------------
+// Hunter Falcon Breeder - [L0ne_W0lf]
+//--------------------------------------------------------------
+
 hu_in01.gat,381,304,5	script	Falcon Breeder	105,{
 
 	if (Upper==0) set @price,2500; // Normal Falcon - Default price
@@ -193,7 +204,11 @@ hu_in01.gat,381,304,5	script	Falcon Breeder	105,{
 	close;
 }
 
-// Super Novice Cart Renter
+
+//--------------------------------------------------------------
+// Super Novice Cart Renter - [Tsuyuki]
+//--------------------------------------------------------------
+
 aldebaran.gat,54,238,5	script	Kafra Employee	117,{
 
 	if (Basejob == Job_Super_Novice) {

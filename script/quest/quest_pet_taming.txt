@@ -19,7 +19,7 @@
 //	1.5 Improved formatting [Tsuyuki]
 //	1.6 Removed custom Munak/Bon Gun Quests [Tsuyuki]
 //--------------------------------------------------------------
-// Additional Notes: Munak's Grandma Quest is * Aegis-certified *
+// Additional Notes: N/A
 //--------------------------------------------------------------
 
 

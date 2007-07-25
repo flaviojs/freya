@@ -13,7 +13,7 @@
 //--------------------------------------------------------------
 //	1.0 First version, converted from Aegis [Samuray22]
 //	 - Airship Ticket Quest/How Does the Airship Fly Quest
-//	1.1 Added the Heart Fragment Quest, by SinSloth [Tsuyuki]
+//	1.1 Added the Heart Fragment Quest, converted from Aegis by SinSloth [Tsuyuki]
 //--------------------------------------------------------------
 // Additional Notes: * Official-certified / Aegis-certified *
 //--------------------------------------------------------------

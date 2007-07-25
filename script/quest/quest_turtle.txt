@@ -16,6 +16,7 @@
 // Additional Notes: * Official-certified / Aegis-certified *
 //--------------------------------------------------------------
 
+
 alberta.gat,91,70,4	script	Kinsey	89,{
 
 	mes "[Kinsey]";

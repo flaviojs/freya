@@ -14,7 +14,6 @@
 //	1.0 First version, converted from Aegis [Tsuyuki]
 //--------------------------------------------------------------
 // Additional Notes: * Official-certified / Aegis-certified *
-// Includes every single First and Second Class Skill Quest.
 //--------------------------------------------------------------
 
 

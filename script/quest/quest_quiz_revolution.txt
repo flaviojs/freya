@@ -7,21 +7,20 @@
 //              /_/  |_|\____|_|  \___/|_|  \__,_|              
 //                 http://aurora.deltaanime.net                 
 //--------------------------------------------------------------
-// Script Title: Quiz Revolution Part #1	Author: CAHTXHuK
+// Script Title: Quiz Revolution	Author: CAHTXHuK
 //--------------------------------------------------------------
 // Revision History: v1.0
 //--------------------------------------------------------------
-//	1.0 Added first version [CAHTXHuK]
+//	1.0 First version, converted from Aegis (euRO dialogue) [CAHTXHuK]
 //--------------------------------------------------------------
-// Additional Notes: N/A
+// Additional Notes: * Official-certified / Aegis-certified *
 //--------------------------------------------------------------
 
 
 prontera.gat,152,286,4	script	Receptionist::RecepQuiz	755,{
 
 	if (countitem(1201) > 3) goto M_MaxItem;
-	if (checkweight(1201,3) == 0 ) goto L_OverWeight;
-
+	if (checkweight(1201,3) == 0) goto L_OverWeight;
 
 	if (BaseLevel < 20) {
 			mes "^2f4f4f[Tsuji]^000000";

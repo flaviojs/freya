@@ -9,13 +9,11 @@
 //--------------------------------------------------------------
 // Script Title: Headgear Quests	Author: A Ton of People
 //--------------------------------------------------------------
-// Revision History: v1.1
+// Revision History: v1.0
 //--------------------------------------------------------------
-//	1.0 Merged all headgear quests into this single file [Tsuyuki]
-//	1.1 Added the missing Orc Hero Helm Quest, by Dj-Yhn [Tsuyuki]
+//	1.0 First version, merged together [Tsuyuki]
 //--------------------------------------------------------------
-// Additional Notes: All headgear quests are located here, and
-// future headgear quests should also go here.
+// Additional Notes: N/A
 //--------------------------------------------------------------
 
 

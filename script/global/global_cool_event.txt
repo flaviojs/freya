@@ -9,19 +9,17 @@
 //--------------------------------------------------------------
 // Script Title: Cool Event Corp NPCs	Author: Tsuyuki
 //--------------------------------------------------------------
-// Revision History: v1.2
+// Revision History: v1.1
 //--------------------------------------------------------------
-//	1.0 First version, converted from Aegis [Tsuyuki]
-//	1.1 Added Cool Event Corp NPC to Veins (Custom coords/save coords) [Tsuyuki]
-//	1.2 Added official coordinates/facing position for the Veins employee [Tsuyuki]
-//	 - Still has custom save coordinates
+//	1.0 First version, converted from Aegis (euRO dialogue) [Tsuyuki]
+//	1.1 Added Cool Event Employee to Veins (Custom save coordinates) [Tsuyuki]
 //--------------------------------------------------------------
 // Additional Notes: * Official-certified / Aegis-certified *
 //--------------------------------------------------------------
 
 
 //--------------------------------------------------------------
-// Hugel
+// Hugel Cool Event Employee - [Tsuyuki]
 //--------------------------------------------------------------
 
 hugel.gat,88,168,4	script	Cool Event Employee	874,{
@@ -150,7 +148,7 @@ hugel.gat,88,168,4	script	Cool Event Employee	874,{
 
 
 //--------------------------------------------------------------
-// Lighthalzen
+// Lighthalzen Cool Event Employee - [Tsuyuki]
 //--------------------------------------------------------------
 
 lighthalzen.gat,94,248,4	script	Cool Event Employee	874,{
@@ -279,7 +277,7 @@ lighthalzen.gat,94,248,4	script	Cool Event Employee	874,{
 
 
 //--------------------------------------------------------------
-// Rachel
+// Rachel Cool Event Employee - [Tsuyuki]
 //--------------------------------------------------------------
 
 rachel.gat,109,138,5	script	Cool Event Employee	874,{
@@ -408,7 +406,7 @@ rachel.gat,109,138,5	script	Cool Event Employee	874,{
 
 
 //--------------------------------------------------------------
-// Veins
+// Veins Cool Event Employee - [Tsuyuki]
 //--------------------------------------------------------------
 
 veins.gat,207,127,6	script	Cool Event Employee	874,{

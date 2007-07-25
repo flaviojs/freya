@@ -11,14 +11,14 @@
 //--------------------------------------------------------------
 // Revision History: v1.0
 //--------------------------------------------------------------
-//	1.0 Merged scripts together by SinSloth/MasterOfMuppets [Tsuyuki]
+//	1.0 First version, merged together, converted from Aegis (euRO dialogue) [Tsuyuki]
 //--------------------------------------------------------------
-// Additional Notes: * Aegis-certified *
+// Additional Notes: * Official-certified / Aegis-certified *
 //--------------------------------------------------------------
 
 
 //--------------------------------------------------------------
-// Brisingamen Seal
+// Brisingamen Seal - [SinSloth/MasterOfMuppets]
 //--------------------------------------------------------------
 
 prt_fild08.gat,175,374,3	script	Bard#brising	51,{
@@ -3006,8 +3006,6 @@ prt_castle.gat,80,52,0	script	Personnel Record#hiddenbook1	111,{
 
 }
 
-//-----------librarian----------------------------------------------------------
- 
 prt_castle.gat,84,51,5	script	Librarian#2	105,{
 
 	if ($God2 < 50)
@@ -5544,7 +5542,7 @@ mjo_dun02.gat,126,34,1	script	Grer#1	826,{
 
 
 //--------------------------------------------------------------
-// Megingjard Seal
+// Megingjard Seal - [SinSloth/MasterOfMuppets]
 //--------------------------------------------------------------
 
 
@@ -8992,7 +8990,7 @@ niflheim.gat,109,254,0	script	Egnigem	796,{
 
 
 //--------------------------------------------------------------
-// Mjolnir Seal
+// Mjolnir Seal - [SinSloth/MasterOfMuppets]
 //--------------------------------------------------------------
 
 
@@ -12143,7 +12141,7 @@ L_Speak2:
 
 
 //--------------------------------------------------------------
-// Sleipnir Seal
+// Sleipnir Seal - [SinSloth/MasterOfMuppets]
 //--------------------------------------------------------------
 
 
@@ -14432,7 +14430,7 @@ que_god01.gat,47,80,0	script	god_sl_w4	45,1,1,{
 
 
 //--------------------------------------------------------------
-// God Equipment Creation
+// God Equipment Creation - [SinSloth/MasterOfMuppets]
 //--------------------------------------------------------------
 
 
@@ -16020,9 +16018,8 @@ OnTimer615000:
 
 
 //--------------------------------------------------------------
-// Additional Notes: God Seal GM Management
+// God Seal GM Management - [SinSloth/MasterOfMuppets]
 //--------------------------------------------------------------
-
 
 sec_in02.gat,15,170,0	script	Seals Quest Vars	817,{
 

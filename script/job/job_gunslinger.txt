@@ -7,7 +7,7 @@
 //              /_/  |_|\____|_|  \___/|_|  \__,_|              
 //                 http://aurora.deltaanime.net                 
 //--------------------------------------------------------------
-// Script Title: Gunslinger Job Quests/Merchants	Author: Tsuyuki
+// Script Title: Gunslinger Job Change Quest	Author: Tsuyuki
 //--------------------------------------------------------------
 // Revision History: v1.0
 //--------------------------------------------------------------
