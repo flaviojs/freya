@@ -101,7 +101,7 @@ struct charid2nick {
 };
 
 int map_read_flag = READ_FROM_BITMAP_COMPRESSED;
-char map_cache_file[1024] = "db/mapinfo.txt";
+char map_cache_file[1024] = "db/map.info";
 
 char motd_txt[1024] = "conf/motd.txt";
 char help_txt[1024] = "conf/help.txt";
