@@ -20,6 +20,7 @@ Date	Added
 	* Updated: All shop, mob, and warp scripts, imported from Aurora [Tsuyuki]
 	* Updated: Script folder structure some more + removed some unnecessary scripts [Tsuyuki]
 	* Changed: Removed some unnecessary code from npc.c + cleaned file [Tsuyuki]
+	* Removed: Some old Japanese doc files [Tsuyuki]
 
 07/19/2007
 	* Fixed: A bug causing all attacks in GvG to show up as misses [Tsuyuki]
