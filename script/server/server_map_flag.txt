@@ -1019,14 +1019,6 @@ payon_in03.gat	mapflag	nopenalty
 payon_in03.gat	mapflag	nopvp
 payon_in03.gat	mapflag	noreturn
 payon_in03.gat	mapflag	noteleport
-poring_c01.gat	mapflag	nobranch
-poring_c01.gat	mapflag	nomemo
-poring_c01.gat	mapflag	noreturn
-poring_c01.gat	mapflag	noteleport
-poring_c02.gat	mapflag	nobranch
-poring_c02.gat	mapflag	nomemo
-poring_c02.gat	mapflag	noreturn
-poring_c02.gat	mapflag	noteleport
 priest_1-1.gat	mapflag	nomemo
 priest_2-1.gat	mapflag	nomemo
 priest_3-1.gat	mapflag	nomemo
