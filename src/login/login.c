@@ -3270,8 +3270,7 @@ static inline void read_gm_file(void) {
 
 	/* if we save GM levels with accounts */
 	if (save_GM_level_with_accounts) {
-		save_account(0, 1); /* save accounts before to remove the GM_account_filename */
-		remove(GM_account_filename); /* delete the file. return value = 0 (success), return value = -1 (denied access or not found file) */
+		save_account(0, 1);
 	/* we have read a new version type of account, and we save GM account file */
 	} else if (GM_level_need_save_flag == 1) {
 		save_account(0, 1); // save accounts and GM file (old structure)
