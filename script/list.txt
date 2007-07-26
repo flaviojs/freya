@@ -11,54 +11,6 @@
 
 
 //--------------------------------------------------------------
-// Map Flag Scripts
-//--------------------------------------------------------------
-
-npc: script/server/mapflag/gvg.txt
-npc: script/server/mapflag/indoors.txt
-npc: script/server/mapflag/jail.txt
-npc: script/server/mapflag/nobranch.txt
-npc: script/server/mapflag/noicewall.txt
-npc: script/server/mapflag/nomemo.txt
-npc: script/server/mapflag/nopenalty.txt
-npc: script/server/mapflag/nopvp.txt
-npc: script/server/mapflag/noreturn.txt
-npc: script/server/mapflag/nosave.txt
-npc: script/server/mapflag/noteleport.txt
-npc: script/server/mapflag/nowarp.txt
-npc: script/server/mapflag/nowarpto.txt
-npc: script/server/mapflag/nospell.txt
-npc: script/server/mapflag/nozenypenalty.txt
-npc: script/server/mapflag/pvp.txt
-npc: script/server/mapflag/pvp_noparty.txt
-npc: script/server/mapflag/water.txt
-
-// Nightmare Mode PvP Maps
-// (Nightmare PvP Mode doesn't exist in kRO -> Disabled by default)
-// npc: script/server/mapflag/nightmare.txt
-
-// No GM command Flag (Disabled by default)
-// npc: script/server/mapflag/nogmcmd.txt
-
-// Minimum GM level Flag (Disabled by default)
-// npc: script/server/mapflag/mingmlvl.txt
-
-// Water Height Mapflags
-water_height: script/server/mapflag/water_height.txt
-
-
-//--------------------------------------------------------------
-// Server/Test/Devel Scripts
-//--------------------------------------------------------------
-
-// PCLoginEvent, script which is activated for every player who logs in
-// npc: script/server/PCLoginEvent.txt
-
-// PCLoadMapEvent, script which is activated for every player when changing maps
-// npc: script/server/PCLoadMapEvent.txt
-
-
-//--------------------------------------------------------------
 // Custom Scripts
 //--------------------------------------------------------------
 
@@ -79,18 +31,13 @@ water_height: script/server/mapflag/water_height.txt
 
 
 //--------------------------------------------------------------
-// Events (Disabled by default)
+// Event Scripts (Disabled by default)
 //--------------------------------------------------------------
 
 // npc: script/event/event_crystal.txt
-// npc: script/event/event_dumpling_festival.txt
-// npc: script/event/event_easter.txt
-// npc: script/event/event_french_flag.txt
 // npc: script/event/event_ice_cream.txt
+// npc: script/event/event_moscovia.txt
 // npc: script/event/event_skill_reset.txt
-// npc: script/event/event_twin_towers.txt
-// npc: script/event/event_valentines_day.txt
-// npc: script/event/event_white_day.txt
 // npc: script/event/event_xmas.txt
 
 
@@ -110,10 +57,9 @@ npc: script/global/global_shop.txt
 
 
 //--------------------------------------------------------------
-// Guild vs Guild -> War of Emperium
+// Guild vs Guild -> War of Emperium Scripts
 //--------------------------------------------------------------
 
-// Guild Wars: General
 npc: script/gvg/gldfunc_manager.txt
 npc: script/gvg/gldfunc_dunsw.txt
 npc: script/gvg/gldfunc_flag.txt
@@ -122,109 +68,87 @@ npc: script/gvg/gldfunc_kafra.txt
 npc: script/gvg/gldfunc_ev_agit.txt
 npc: script/gvg/ev_agit_event.txt
 
-// Guild Wars: Al De Baran
-npc: script/gvg/aldeg/aldeg_ev_agit.txt
-npc: script/gvg/aldeg/aldeg_flags.txt
-npc: script/gvg/aldeg/aldeg_managers.txt
-npc: script/gvg/aldeg/aldeg_kafras.txt
-npc: script/gvg/aldeg/aldeg_treas.txt
-npc: script/gvg/aldeg/aldeg_dunsw.txt
-npc: script/gvg/aldeg/aldeg_guardians.txt
+npc: script/gvg/aldeg_ev_agit.txt
+npc: script/gvg/aldeg_flags.txt
+npc: script/gvg/aldeg_managers.txt
+npc: script/gvg/aldeg_kafras.txt
+npc: script/gvg/aldeg_treas.txt
+npc: script/gvg/aldeg_dunsw.txt
+npc: script/gvg/aldeg_guardians.txt
 
-// Guild Wars: Geffen
-npc: script/gvg/gefg/gefg_ev_agit.txt
-npc: script/gvg/gefg/gefg_flags.txt
-npc: script/gvg/gefg/gefg_managers.txt
-npc: script/gvg/gefg/gefg_kafras.txt
-npc: script/gvg/gefg/gefg_treas.txt
-npc: script/gvg/gefg/gefg_dunsw.txt
-npc: script/gvg/gefg/gefg_guardians.txt
+npc: script/gvg/gefg_ev_agit.txt
+npc: script/gvg/gefg_flags.txt
+npc: script/gvg/gefg_managers.txt
+npc: script/gvg/gefg_kafras.txt
+npc: script/gvg/gefg_treas.txt
+npc: script/gvg/gefg_dunsw.txt
+npc: script/gvg/gefg_guardians.txt
 
-// Guild Wars: Payon
-npc: script/gvg/payg/payg_ev_agit.txt
-npc: script/gvg/payg/payg_flags.txt
-npc: script/gvg/payg/payg_managers.txt
-npc: script/gvg/payg/payg_kafras.txt
-npc: script/gvg/payg/payg_dunsw.txt
-npc: script/gvg/payg/payg_treas.txt
-npc: script/gvg/payg/payg_guardians.txt
+npc: script/gvg/payg_ev_agit.txt
+npc: script/gvg/payg_flags.txt
+npc: script/gvg/payg_managers.txt
+npc: script/gvg/payg_kafras.txt
+npc: script/gvg/payg_dunsw.txt
+npc: script/gvg/payg_treas.txt
+npc: script/gvg/payg_guardians.txt
 
-// Guild Wars: Prontera
-npc: script/gvg/prtg/prtg_ev_agit.txt
-npc: script/gvg/prtg/prtg_flags.txt
-npc: script/gvg/prtg/prtg_managers.txt
-npc: script/gvg/prtg/prtg_kafras.txt
-npc: script/gvg/prtg/prtg_dunsw.txt
-npc: script/gvg/prtg/prtg_treas.txt
-npc: script/gvg/prtg/prtg_guardians.txt
+npc: script/gvg/prtg_ev_agit.txt
+npc: script/gvg/prtg_flags.txt
+npc: script/gvg/prtg_managers.txt
+npc: script/gvg/prtg_kafras.txt
+npc: script/gvg/prtg_dunsw.txt
+npc: script/gvg/prtg_treas.txt
+npc: script/gvg/prtg_guardians.txt
 
 
 //--------------------------------------------------------------
-// Job Quests
+// Job Quest Scripts
 //--------------------------------------------------------------
 
-// Job Quest Functions
-npc: script/job/job_function/Jfunc1-1.txt
-npc: script/job/job_function/Jfunc2-1.txt
-npc: script/job/job_function/Jfunc2-2.txt
-
-// Novice Class Job Quests
-npc: script/job/job_novice.txt
-npc: script/job/job_super_novice.txt
-
-// First Class Job Quests (1-1)
 npc: script/job/job_acolyte.txt
-npc: script/job/job_archer.txt
-npc: script/job/job_mage.txt
-npc: script/job/job_merchant.txt
-npc: script/job/job_swordsman.txt
-npc: script/job/job_thief.txt
-
-// Second Class Job Quests (2-1)
-npc: script/job/job_assassin.txt
-npc: script/job/job_blacksmith.txt
-npc: script/job/job_hunter.txt
-npc: script/job/job_knight.txt
-npc: script/job/job_priest.txt
-npc: script/job/job_wizard.txt
-
-// Second Class Job Quests (2-2)
 npc: script/job/job_alchemist.txt
-npc: script/job/job_bard.txt
-npc: script/job/job_crusader.txt
-npc: script/job/job_dancer.txt
-npc: script/job/job_monk.txt
-npc: script/job/job_rogue.txt
-npc: script/job/job_sage.txt
-
-// Transcendence Job Quests Main File
-npc: script/job/job_transcendence.txt
-
-// Transcendent Class Job Quests (2-1-1)
+npc: script/job/job_archer.txt
+npc: script/job/job_assassin.txt
 npc: script/job/job_assassincross.txt
-npc: script/job/job_lordknight.txt
-npc: script/job/job_highpriest.txt
-npc: script/job/job_highwizard.txt
-npc: script/job/job_whitesmith.txt
-npc: script/job/job_sniper.txt
-
-// Transcendent Class Job Quests (2-2-1)
+npc: script/job/job_bard.txt
+npc: script/job/job_blacksmith.txt
 npc: script/job/job_champion.txt
 npc: script/job/job_clown.txt
 npc: script/job/job_creator.txt
-npc: script/job/job_gypsy.txt
-npc: script/job/job_paladin.txt
-npc: script/job/job_professor.txt
-npc: script/job/job_stalker.txt
-
-// Expanded Class Job Quests (1-1)
-npc: script/job/job_taekwon.txt
+npc: script/job/job_crusader.txt
+npc: script/job/job_dancer.txt
 npc: script/job/job_gunslinger.txt
+npc: script/job/job_gypsy.txt
+npc: script/job/job_highpriest.txt
+npc: script/job/job_highwizard.txt
+npc: script/job/job_hunter.txt
+npc: script/job/job_knight.txt
+npc: script/job/job_lordknight.txt
+npc: script/job/job_mage.txt
+npc: script/job/job_merchant.txt
+npc: script/job/job_monk.txt
 npc: script/job/job_ninja.txt
-
-// Expanded Class Job Quests (2-1)
-npc: script/job/job_star_gladiator.txt
+npc: script/job/job_novice.txt
+npc: script/job/job_paladin.txt
+npc: script/job/job_priest.txt
+npc: script/job/job_professor.txt
+npc: script/job/job_rogue.txt
+npc: script/job/job_sage.txt
+npc: script/job/job_sniper.txt
 npc: script/job/job_soul_linker.txt
+npc: script/job/job_stalker.txt
+npc: script/job/job_star_gladiator.txt
+npc: script/job/job_super_novice.txt
+npc: script/job/job_swordsman.txt
+npc: script/job/job_taekwon.txt
+npc: script/job/job_thief.txt
+npc: script/job/job_transcendence.txt
+npc: script/job/job_whitesmith.txt
+npc: script/job/job_wizard.txt
+
+npc: script/job/job_function/Jfunc1-1.txt
+npc: script/job/job_function/Jfunc2-1.txt
+npc: script/job/job_function/Jfunc2-2.txt
 
 
 //--------------------------------------------------------------
@@ -239,12 +163,9 @@ npc: script/misc/misc_rentals.txt
 npc: script/misc/misc_socket_enchant.txt
 npc: script/misc/misc_stylists.txt
 
-// Global Script Functions
-npc: script/misc/misc_global_functions.txt
-
 
 //--------------------------------------------------------------
-// Monster Spawns
+// Monster Spawn Scripts
 //--------------------------------------------------------------
 
 npc: script/mob/mob_dungeon.txt
@@ -256,13 +177,13 @@ npc: script/mob/mob_town.txt
 
 
 //--------------------------------------------------------------
-// Quests
+// Quest Scripts
 //--------------------------------------------------------------
 
-// Extra Quests
 npc: script/quest/quest_bard.txt
 npc: script/quest/quest_cooking.txt
 npc: script/quest/quest_doomed_sword.txt
+npc: script/quest/quest_expanded.txt
 npc: script/quest/quest_eye_of_hellion.txt
 npc: script/quest/quest_headgear.txt
 npc: script/quest/quest_juice_maker.txt
@@ -273,6 +194,17 @@ npc: script/quest/quest_pet_taming.txt
 npc: script/quest/quest_skill.txt
 npc: script/quest/quest_the_sign.txt
 npc: script/quest/quest_thanatos.txt
+npc: script/quest/quest_turtle.txt
+
+
+//--------------------------------------------------------------
+// Server Scripts
+//--------------------------------------------------------------
+
+npc: script/server/server_event_label.txt
+npc: script/server/server_global_functions.txt
+npc: script/server/server_map_flag.txt
+water_height: script/server/server_water_height.txt
 
 
 //--------------------------------------------------------------

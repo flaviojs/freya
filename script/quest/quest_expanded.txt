@@ -1,0 +1,891 @@
+//--------------------------------------------------------------
+//               (c)2004-2007 Aurora Team Presents:             
+//                  ___                                         
+//                 /   |_   _ _ __ ___  _ __ __ _               
+//                / /| | | | | '__/ _ \| '__/ _` |              
+//               / ___ | |_| | | | (_) | | | (_| |              
+//              /_/  |_|\____|_|  \___/|_|  \__,_|              
+//                 http://aurora.deltaanime.net                 
+//--------------------------------------------------------------
+// Script Title: Gunslinger/Ninja Quests/Merchants	Author: A Lot of People
+//--------------------------------------------------------------
+// Revision History: v1.0
+//--------------------------------------------------------------
+//	1.0 First version, merged together [Tsuyuki]
+//--------------------------------------------------------------
+// Additional Notes: N/A
+//--------------------------------------------------------------
+
+
+//--------------------------------------------------------------
+// Gunslinger Ammuntion Box Merchant - [Playtester]
+//--------------------------------------------------------------
+
+que_ng.gat,187,149,3	script	Kenny	83,{
+
+	mes "[Kenny]";
+	mes "My name is Kenny.";
+	mes "I can create ^0000FFbullet casings^000000";
+	mes "and ^0000FFsphere packs^000000.";
+	next;
+	mes "[Kenny]";
+	mes "Would you like to try using one of";
+	mes "my bullet bullet casings or sphere";
+	mes "packs?";
+	mes "Select the one you want me to make!";
+	next;
+
+	menu "Bullet Casing",-,"Silver Bullet Casing",Q2,"Shell of Blood Casing",Q3,"Lightning Sphere Pack",Q4,"Blind Sphere Pack",Q5,"Poison Sphere Pack",Q6,"Freezing Sphere Pack",Q7,"Flare Sphere Pack",Q8;
+
+		callsub sF_Make, 13200,500,12149, "Bullet Casings";
+			goto M_Menu;
+Q2:
+		callsub sF_Make, 13201,500,12151, "Silver Bullet Casings";
+			goto M_Menu;
+Q3:
+		callsub sF_Make, 13202,500,12150, "Shell of Blood Casings";
+			goto M_Menu;
+Q4:
+		callsub sF_Make, 13204,500,12144, "Lightning Sphere Packs";
+			goto M_Menu;
+Q5:
+		callsub sF_Make, 13206,500,12145, "Blind Sphere Packs";
+			goto M_Menu;
+Q6:
+		callsub sF_Make, 13205,500,12146, "Poison Sphere Packs";
+			goto M_Menu;
+Q7:
+		callsub sF_Make, 13207,500,12147, "Freezing Sphere Packs";
+			goto M_Menu;
+Q8:
+		callsub sF_Make, 13203,500,12148, "Flare Sphere Packs";
+			goto M_Menu;
+
+sF_Make:
+	set @ammonum,500;
+	if (countitem(getarg(0)) < @ammonum) goto L_NdAmmo;
+	if (Zeny < getarg(1)) goto L_NdZeny;
+	mes "[Kenny]";
+	mes "What do you want me to do?";
+	next;
+	menu "Give me as many as you can.",-, "I want to set the amount.",sM_0b, "Nevermind",M_End;
+
+		set @amount,50;
+		if (zeny/getarg(1) < @amount) set @amount, zeny/getarg(1);
+		if (countitem(getarg(0))/@ammonum < @amount) set @amount, countitem(getarg(0))/@ammonum;
+		if (@amount > 0) goto L_End;
+		mes "[Kenny]";
+		mes "Dude, you don't even have the right items...";
+		close;
+		
+	sM_0b:
+		input @amount;
+		if (@amount<1 || @amount>50) goto L_BadAmnt;
+		if (countitem(getarg(0))/@ammonum < @amount) goto L_NdAmmo;
+		if (Zeny < (getarg(1)*@amount)) goto L_NdZeny;
+
+	L_End:
+		set Zeny, Zeny - (getarg(1)*@amount);
+		delitem getarg(0), (@amount*@ammonum);
+		getitem getarg(2), @amount;
+		mes "[Kenny]";
+		mes "There you go~!";
+		mes "Here are your " +getarg(3)+ ".";
+		close;
+
+	L_NdAmmo:
+		mes "[Kenny]";
+		mes "Sorry, but you need 500 bullets or"; 
+		mes "spheres and 500 zeny to make";
+		mes "1 bullet casing or 1 sphere pack.";
+		close;
+		
+	L_NdZeny:
+		mes "[Kenny]";
+		mes "You don't have enough zeny for that many.";
+		close;
+
+	L_BadAmnt:
+		mes "[Kenny]";
+		mes "Please choose a number between 1 and 50.";	
+		close;
+
+L_Come:
+	mes "[Kenny]";
+	mes "Please, come again whenever you want too.";
+	close;
+M_End:
+	mes "[Kenny]";
+	mes "Sure, no problem.";
+	mes "Come back any time.";
+	close;
+}
+
+
+//--------------------------------------------------------------
+// Gunslinger Ammunition Merchant - [Playtester]
+//--------------------------------------------------------------
+
+que_ng.gat,187,156,3	script	Tony	86,{
+
+	mes "[Tony]";
+	mes "I can make spheres for you.";
+	mes "Spheres are the ammunition for";
+	mes "grenade launchers.";
+	next;
+	mes "[Tony]";
+	mes "For 30 spheres, I need";
+	mes "^FF00001 Phracon^000000";
+	mes "and";
+	mes "^FF00001 Emveretarcon^000000.";
+	next;
+	mes "[Tony]";
+	mes "I also need another material,";
+	mes "depending on which sphere type";
+	mes "you want to create.";
+	next;
+	mes "[Tony]";
+	mes "Here's a list:";
+	mes "Flare Sphere - ^FF00002 Burning Hearts^000000";
+	mes "Lightning Sphere - ^FF00003 Cyfars^000000";
+	mes "Poison Sphere - ^FF000010 Venom Canines^000000";
+	mes "Blind Sphere - ^FF00005 Squid Inks^000000";
+	mes "Freezing Sphere - ^FF00002 Brigans^000000";
+	next;
+	mes "[Tony]";
+	mes "So which ones do you want me";
+	mes "to create?";
+	next;
+	menu "Flare Sphere",-,"Lightning Sphere",S2,"Poison Sphere",S3,"Blind Sphere",S4,"Freezing Sphere",S5;
+
+	callsub sF_Make,13203,7097,2;
+S2:
+	callsub sF_Make,13204,7053,3;
+S3:
+	callsub sF_Make,13205,937,10;
+S4:
+	callsub sF_Make,13206,1024,5;
+S5:
+	callsub sF_Make,13207,7054,2;
+
+sF_Make:
+	if ( (countitem(1010)<1) || (countitem(1011)<1) || (countitem(getarg(1))<getarg(2)) ) goto L_NoMat;
+	mes "[Tony]";
+	mes "So how many ^0000FF30x packages^000000 do";
+	mes "you want me to make?";
+	next;
+	menu "-Exchange as many as possible.",M_0, "-Let me set the amount.",M_1, "-Cancel",M_End;
+
+	M_0:
+		set @amount, 500;
+		if (countitem(1010) < @amount) set @amount,countitem(1010);
+		if (countitem(1011) < @amount) set @amount,countitem(1011);
+		if (countitem(getarg(1))/getarg(2) < @amount) set @amount,countitem(getarg(1))/getarg(2);
+		if (@amount > 0) goto L_Make;
+		mes "[Tony]";
+		mes "Are you trying to make a fool of me...?";
+		close;
+
+	M_1:
+		input @amount;
+		if (@amount < 1 || @amount > 500) goto M_End;
+		if (countitem(1010) < @amount) goto L_NoMat;
+		if (countitem(1011) < @amount) goto L_NoMat;
+		if (countitem(getarg(1))/getarg(2) < @amount) goto L_NoMat;
+
+	L_Make:
+		delitem 1010,@amount;
+		delitem 1011,@amount;
+		delitem getarg(1),@amount*getarg(2);
+		getitem getarg(0),@amount*30;
+
+	M_End:
+		mes "[Tony]";
+		mes "Come back anytime.";
+		close;
+
+	L_NoMat:
+		mes "[Tony]";
+		mes "I'm sorry but you don't have";
+		mes "enough materials to create the";
+		mes "spheres.";
+		close;
+}
+
+
+//--------------------------------------------------------------
+// Gunslinger Garrison/Drifter/Destroyer/Inferno Weapon Quests - [Playtester]
+//--------------------------------------------------------------
+
+que_ng.gat,182,85,3	script	Mr.Garrison	109,{
+
+	mes "[Mr.Garrison]";
+	if (countitem(13105)>0) goto L_Already;
+	if (countitem(13104)>0) goto L_Slot;
+	mes "I have invented a new Revolver!";
+	mes "I think I call it... Garrison.";
+	next;
+	mes "[" +strcharinfo(0) + "]";
+	mes "Very innovative name really.";
+	next;
+	if (Class != JOB_GUNSLINGER || BaseLevel < 55) goto GSRQ1;
+	goto GSRQ2;
+
+	GSRQ1:
+		mes "[Mr.Garrison]";
+		mes "I don't think you have enough";
+		mes "knowledge of guns to see its";
+		mes "true beauty.";
+		close;
+
+GSRQ2:
+	mes "[Mr.Garrison]";
+	mes "You look like you're an expert";
+	mes "in guns, aren't you?";
+	next;
+	mes "[" +strcharinfo(0) + "]";
+	mes "Yeah you could say so.";
+	next;
+	mes "[Mr.Garrison]";
+	mes "So, do you want me to make a";
+	mes "^0000FFGarrison^000000 for you?";
+	next;
+
+	menu "Yes, please.",GSRQMenu1,"Nah, I'll stick with my gun.",GSRQMenu2;
+
+		GSRQMenu1:
+			mes "[Mr.Garrison]";
+			mes "Great! But first you need to";
+			mes "bring me the materials I need";
+			mes "to create one.";
+			next;
+			mes "[Mr.Garrison]";
+			mes "This is what I need:";
+			mes "^FF000050 Steels^000000,";
+			mes "^FF00003 Eluniums^000000,";
+			mes "^FF00001 Oridecon^000000,";
+			mes "^FF000050 Coals^000000,";
+			mes "^FF000020 Rusty Screws^000000 and";
+			mes "^FF000030000 Zeny^000000.";
+			next;
+			mes "[Mr.Garrison]";
+			if ((countitem(999)<50) || (countitem(985)<3) || (countitem(984)<1) || (countitem(1003)<50) || (countitem(7317)<20) || (Zeny < 30000)) goto GSRQ3;
+			goto GSRQ4;
+
+			GSRQ3:
+				mes "Come back when you have the materials.";
+				close;
+
+		GSRQ4:
+			delitem 999,50;
+			delitem 985,3;
+			delitem 984,1;
+			delitem 1003,50;
+			delitem 7317,20;
+			set Zeny,Zeny-30000;
+			mes "I see you came prepared.";
+			mes "Let me take those material.";
+			next;
+			mes "[Mr.Garrison]";
+			mes "Give me just a minute...";
+			mes "...";
+			mes "...";
+			next;
+			getitem 13104,1;
+			mes "[Mr.Garrison]";
+			mes "It's done. Here, take this";
+			mes "wonderful gun!";
+			close;
+
+		GSRQMenu2:
+			mes "[Mr.Garrison]";
+			mes "Well, guess a true Gunslinger";
+			mes "will never part from his";
+			mes "favorite gun, heh.";
+			close;
+
+L_Slot:
+	mes "Oh, I see you have one of";
+	mes "my high-quality guns.";
+	next;
+	mes "[Mr.Garrison]";
+	mes "Now that I look at it, I";
+	mes "think I could improve it";
+	mes "some more.";
+	next;
+	mes "[Mr.Garrison]";
+	mes "How about I add a ^0000FFslot^000000";
+	mes "to it? Be careful, though.";
+	mes "If you put a card into it";
+	mes "already, it will be lost";
+	mes "in the process.";
+	next;
+	menu "Yes, please add a slot.",GSRQMenu3,"Nah, I keep it as it is now.",GSRQMenu4;
+
+		GSRQMenu3:
+			mes "[Mr.Garrison]";
+			mes "Great! But first you need to";
+			mes "bring me the materials I need";
+			mes "to improve it.";
+			next;
+			mes "[Mr.Garrison]";
+			mes "This is what I need:";
+			mes "^FF000010 Steels^000000,";
+			mes "^FF00001 Eluniums^000000,";
+			mes "^FF000010 Emveretarcon^000000,";
+			mes "^FF000030 Coals^000000,";
+			mes "^FF000010 Rusty Screws^000000 and";
+			mes "of course your ^FF0000Garrison^000000.";
+			next;
+			mes "[Mr.Garrison]";
+			if ((countitem(999)<10) || (countitem(985)<1) || (countitem(1011)<10) ||(countitem(1003)<30) || (countitem(7317)<10) || (countitem(13104)<1)) goto GSRQ5;
+			goto GSRQ6;
+
+			GSRQ5:
+				mes "Come back when you have the materials.";
+				close;
+
+		GSRQ6:
+			delitem 999,10;
+			delitem 985,1;
+			delitem 1011,10;
+			delitem 1003,30;
+			delitem 7317,10;
+			delitem 13104,1;
+			mes "I see you came prepared.";
+			mes "Let me take those materials.";
+			next;
+			mes "[Mr.Garrison]";
+			mes "Give me just a minute...";
+			mes "...";
+			mes "...";
+			next;
+			getitem 13105,1;
+			mes "[Mr.Garrison]";
+			mes "It's done. Now it is";
+			mes "even better than before.";
+			mes "Put it to good use.";
+			close;
+
+		GSRQMenu4:
+			mes "[Mr.Garrison]";
+			mes "Okay, come back when you";
+			mes "changed your mind.";
+			close;
+
+L_Already:
+	mes "So how do you like";
+	mes "my gun?";
+	close;
+}
+
+que_ng.gat,187,163,3	script	Ingrid	744,{
+
+	mes "[Ingrid]";
+	mes "I can make the strongest of";
+	mes "all weapons. The ultimate";
+	mes "grenade launcher.";
+	mes "It's called ^0000FFInferno^000000.";
+	next;
+	if (Class != JOB_GUNSLINGER || BaseLevel < 65) goto GSIQ1;
+	goto GSIQ2;
+
+	GSIQ1:
+		mes "[Ingrid]";
+		mes "But I don't think you are";
+		mes "experienced enough to use it.";
+		next;
+		mes "[Ingrid]";
+		mes "You'll probably kill yourself.";
+		mes "It's just too powerful to use";
+		mes "for a beginner. I refuse to";
+		mes "make one for you.";
+		close;
+
+GSIQ2:
+	mes "[Ingrid]";
+	mes "You look experienced.";
+	mes "I think I could make one";
+	mes "for you.";
+	next;
+	mes "[Ingrid]";
+	mes "So, do you want me to make an";
+	mes "^0000FFInferno^000000 for you?";
+	next;
+
+	menu "Yes, please.",GSIQMenu1,"No thanks.",GSIQMenu2;
+
+		GSIQMenu1:
+			mes "[Ingrid]";
+			mes "Okay, but first you need to";
+			mes "bring me the materials I need";
+			mes "to create one.";
+			next;
+			mes "[Ingrid]";
+			mes "This is what I need:";
+			mes "^FF0000100 Used Iron Plates^000000,";
+			mes "^FF000010 Oridecons^000000,";
+			mes "^FF000050 Rusty Screws^000000,";
+			mes "^FF0000100 Burning Hearts^000000 and";
+			mes "^FF0000200000 Zeny^000000.";
+			next;
+			mes "[Ingrid]";
+			if ((countitem(7319)<100) || (countitem(984)<10) || (countitem(7317)<50) || (countitem(7097)<100) || (Zeny < 200000)) goto GSIQ3;
+			goto GSIQ4;
+
+			GSIQ3:
+				mes "Come back when you have the materials.";
+				close;
+
+		GSIQ4:
+			delitem 7319,100;
+			delitem 984,10;
+			delitem 7317,50;
+			delitem 7097,100;
+			set Zeny,Zeny-200000;
+			mes "Oh, you already have the materials.";
+			mes "Let me have them.";
+			next;
+			mes "[Ingrid]";
+			mes "I need to be careful...";
+			mes "...";
+			mes "...";
+			next;
+			getitem 13162,1;
+			mes "[Ingrid]";
+			mes "It's done.";
+			mes "Be careful with it.";
+			close;
+
+		GSIQMenu2:
+			mes "[Ingrid]";
+			mes "Probably a good choice.";
+			mes "It's really dangerous.";
+			close;
+}
+
+que_ng.gat,185,180,3	script	Vanessa	726,{
+
+	mes "[Vanessa]";
+	mes "I can make a grenade launcher";
+	mes "that can destroy armors.";
+	mes "It's called ^0000FFDestroyer^000000.";
+	next;
+	if (Class != JOB_GUNSLINGER || BaseLevel < 52) goto GSVQ1;
+	goto GSVQ2;
+
+	GSVQ1:
+		mes "[Vanessa]";
+		mes "But I don't think you are";
+		mes "experienced enough to use it.";
+		next;
+		mes "[Vanessa]";
+		mes "Come back when you think";
+		mes "you are worthy to use this";
+		mes "weapon.";
+		close;
+
+GSVQ2:
+	mes "[Vanessa]";
+	mes "You look experienced.";
+	mes "I think I could make one";
+	mes "for you.";
+	next;
+	mes "[Vanessa]";
+	mes "So, do you want me to make a";
+	mes "^0000FFDestroyer^000000 for you?";
+	next;
+
+	menu "Yes, please.",GSVQMenu1,"No thanks.",GSVQMenu2;
+
+		GSVQMenu1:
+			mes "[Vanessa]";
+			mes "Okay, but first you need to";
+			mes "bring me the materials I need";
+			mes "to create one.";
+			next;
+			mes "[Vanessa]";
+			mes "This is what I need:";
+			mes "^FF000050 Used Iron Plates^000000,";
+			mes "^FF00005 Oridecons^000000,";
+			mes "^FF000070 Rusty Screws^000000 and";
+			mes "^FF0000100000 Zeny^000000.";
+			next;
+			mes "[Vanessa]";
+			if ((countitem(7319) < 50) || (countitem(984) < 5) || (countitem(7317) < 70) || (Zeny < 100000)) goto GSVQ3;
+			goto GSVQ4;
+
+			GSVQ3:
+				mes "Come back when you have the materials.";
+				close;
+
+		GSVQ4:
+			delitem 7319,50;
+			delitem 984,5;
+			delitem 7317,70;
+			set Zeny,Zeny-100000;
+			mes "Oh, you already have the materials.";
+			mes "Let me have them.";
+			next;
+			mes "[Vanessa]";
+			mes "I'll make it in a minute...";
+			mes "...";
+			mes "...";
+			next;
+			getitem 13160,1;
+			mes "[Vanessa]";
+			mes "It's done.";
+			mes "Be careful with it.";
+			close;
+
+		GSVQMenu2:
+			mes "[Vanessa]";
+			mes "Oh well, your loss.";
+			close;
+}
+
+que_ng.gat,149,178,5	script	N.A	744,{
+
+	mes "[N.A]";
+	mes "If you like gatling guns, I'm the";
+	mes "right person to talk to.";
+	mes "I can make a ^0000FFDrifter^000000.";
+	next;
+	if (Class != JOB_GUNSLINGER || BaseLevel < 55) goto GSNA1;
+	goto GSNA2;
+
+	GSNA1:
+		mes "[N.A]";
+		mes "But I don't think you are";
+		mes "experienced enough to use it.";
+		next;
+		mes "[N.A]";
+		mes "Come back when you think";
+		mes "you are worthy to use this";
+		mes "weapon.";
+		close;
+
+GSNA2:
+	mes "[N.A]";
+	mes "You look experienced.";
+	mes "I think I could make one";
+	mes "for you.";
+	next;
+	mes "[N.A]";
+	mes "So, do you want me to make a";
+	mes "^0000FFDrifter^000000 for you?";
+	next;
+
+	menu "Yes, please.",GSNAMenu1,"No thanks.",GSNAMenu2;
+
+		GSNAMenu1:
+			mes "[N.A]";
+			mes "Okay, but first you need to";
+			mes "bring me the materials I need";
+			mes "to create one.";
+			next;
+			mes "[N.A]";
+			mes "This is what I need:";
+			mes "^FF000070 Steels^000000,";
+			mes "^FF00005 Eluniums^000000,";
+			mes "^FF00003 Oridecons^000000,";
+			mes "^FF000070 Coals^000000,";
+			mes "^FF000050 Rusty Screws^000000 and";
+			mes "^FF000050000 Zeny^000000.";
+			next;
+			mes "[N.A]";
+			if ((countitem(999)<70) || (countitem(985)<5) || (countitem(984)<3) || (countitem(1003)<70) || (countitem(7317)<50) || (Zeny < 50000)) goto GSNA3;
+			goto GSNA4;
+
+			GSNA3:
+				mes "Come back when you have the materials.";
+				close;
+
+		GSNA4:
+			delitem 999,70;
+			delitem 985,5;
+			delitem 984,3;
+			delitem 1003,70;
+			delitem 7317,50;
+			set Zeny,Zeny-50000;
+			mes "I see you came prepared.";
+			mes "Let me take those materials.";
+			next;
+			mes "[N.A]";
+			mes "Alright, you won't regret it...";
+			mes "...";
+			mes "...";
+			next;
+			getitem 13157,1;
+			mes "[N.A]";
+			mes "It's done. Now shoot the";
+			mes "enemies with no mercy!";
+			close;
+
+		GSNAMenu2:
+			mes "[N.A]";
+			mes "Oh well, your loss.";
+			close;
+}
+
+
+//--------------------------------------------------------------
+// Ninja Kunai Merchant - [erKURITA]
+//--------------------------------------------------------------
+
+que_ng.gat,72,29,3	script	Kunai Seller	83,{
+
+	mes "[Jin]";
+	mes "Hi, I sell elemental enchanted kunai. I'll trade you some elemental stones and one kind of shuriken for a determined elemental Kunai";
+	next;
+	mes "[Jin]";
+	mes "What would you like to trade some? It's free";
+	menu "10 Poison Kunai",KS1,"10 Icycle Kunai",KS2,"10 Rough Wind Kunai",KS3,"10 Black Soil Kunai",KS4,"10 Explosion Kunai",KS5,"Nothing at the Moment",KS6;
+
+//Callfunc usage: callfunc "Kunai_Trade",itemreqid1,itemreqct1,itemreqid2,itemreqct2,itemidtrade;
+	KS1:
+		callfunc "Kunai_Trade",13250,20,7524,1,13259;
+		goto L_Bye;
+
+	KS2:
+		callfunc "Kunai_Trade",13251,8,7522,2,13255;
+		goto L_Bye;
+
+	KS3:
+		callfunc "Kunai_Trade",13252,4,7523,2,13257;
+		goto L_Bye;
+
+	KS4:
+		callfunc "Kunai_Trade",13253,2,7524,1,13256;
+		goto L_Bye;
+
+	KS5:
+		callfunc "Kunai_Trade",13254,1,7521,2,13258;
+		goto L_Bye;
+
+	KS6:
+		goto L_Bye;
+
+L_Bye:
+	next;
+	mes "[Jin]";
+	mes "Good bye and hope to see you again then";
+	close;
+}
+
+function	script	Kunai_Trade	{
+	next;
+	mes "[Jin]";
+	if (MaxWeight*50/100 < Weight) goto KT1;
+	goto KT4;
+
+	KT1:
+		if (MaxWeight*90/100 < Weight) goto KT2;
+		goto KT3;
+
+		KT2:
+			mes "Sorry but you have more than 90% weight. Your Kunai might drop. I can't give you anything.";
+			return;
+
+	KT3:
+		mes "You have 50% or more weight, do you still want to continue?";
+		menu "Yes",-,"No, thanks",L_Return;
+
+KT4:
+	mes "Would you like to trade my 10 "+getitemname(getarg(4))+" for your "+getarg(1)+" "+getitemname(getarg(0))+" and "+getarg(3)+" "+getitemname(getarg(2))+" ?";
+	menu "Yes",KTMenu1,"I'll think about it",KTMenu2;
+
+		KTMenu1:
+			next; 
+			mes "[Jin]";
+			if (countitem(getarg(0)) < getarg(1) || countitem(getarg(2)) < getarg(3)) goto KT5;
+			goto KT6;
+
+			KT5:
+				mes "Sorry but you're missing one of the required items. Please get them";
+				close;
+
+		KT6:
+			mes "How many do you want to trade? I can only trade you ^FF0000500^000000 units at once.";
+			mes "^00FF001 Unit^000000 ^FF0000=^000000 ^0000FF10 Kunai^000000 of your desire";
+			input @trade;
+			next;
+			mes "[Jin]";
+			if (@trade > 500) goto KT7;
+			if (@trade < 1) goto KT8;
+			if ((countitem(getarg(0)) < @trade*getarg(1)) || (countitem(getarg(2)) < @trade*getarg(3))) goto KT9;
+			goto KT10;
+
+			KT7:
+				mes "Sorry, but I told you I could only trade you 500 units at once. Try again";
+				close;
+
+			KT8:
+				mes "Sorry, but 1 unit is the minimun I can trade. Try again please.";
+				close;
+
+			KT9:
+ 				mes "Sorry, but you don't have enough items to trade "+@trade+" unit(s). Get more please";
+				close;
+
+		KT10:
+			mes "Here you go, enjoy them";
+			delitem getarg(0),getarg(1)*@trade;
+			delitem getarg(2),getarg(3)*@trade;
+			getitem getarg(4),10*@trade;
+			next;
+			return;
+
+		KTMenu2:
+			return;
+
+L_Return:
+	return;
+}
+
+
+//--------------------------------------------------------------
+// Ninja Shuriken Merchant - [Au{R}oN]
+//--------------------------------------------------------------
+
+que_ng.gat,22,62,3	script	Taitsu	709,{
+
+	mes "[Taitsu]";
+	if (Class != JOB_NINJA) goto TSM1;
+	goto TSM2;
+
+	TSM1:
+		mes "Sorry, but I can use my ability only for Ninja Class.";
+		close;
+
+TSM2:
+	mes "Hello";
+	mes "I'm Taitsu, the Blacksmith of Fuuma Ninja.";
+	next;
+	mes "[Taitsu]";
+	mes "Due to a burst of interest, my life became very miserable.";
+	mes "So, I'm taking everything from the beginning, but haven't made weapon in a long time...";
+	next;
+	mes "[Taitsu]";
+	mes "However, in terms of making Fuuma weapons, no one can make them any better then mine.";
+	mes "Here, take a look.";
+	next;
+	menu "Fuuma Shuriken Beneki",M_BENEKI,"Fuuma Shuriken Daisharin",M_DAIS,
+		"Fuuma Shuriken Daisharin [4]",M_DAIS4,"Fuuma Shuriken Rekka",M_REKKA;
+
+M_BENEKI:
+	mes "[Taitsu]";
+	mes "For making ^FF0000Fuuma Shuriken Beneki^000000";
+	mes "you need these items:";
+	mes "50 Steel, 20 Harpy's Feathers, 5 Oridecon, and 90.000z.";
+	mes "Do you want it?";
+	next;
+	menu "Yes",-,"No Thanks",M_NOPE;
+
+	mes "[Taitsu]";
+	mes "So let me check for your items...";
+	set @z,90000;
+	if (Zeny < @z) goto L_NOZENY;
+	if (countitem(999)<50 || countitem(7115)<20 || countitem(984)<5) goto L_NOITEMS;
+	set Zeny,Zeny-@z;
+	delitem 999,50;
+	delitem 7115,20;
+	delitem 984,5;
+	next;
+	getitem 13300,1;
+	mes "[Taitsu]";
+	mes "Ok, enjoy with your new weapon.";
+	close;
+
+M_DAIS:
+	mes "[Taitsu]";
+	mes "For making ^FF0000Fuuma Shuriken Daisharin^000000";
+	mes "you need these items:";
+	mes "30 Steel, 100 Tassels, 2 Oridecon, and 40.000z.";
+	mes "Do you want it?";
+	next;
+	menu "Yes",-,"No Thanks",M_NOPE;
+
+	mes "[Taitsu]";
+	mes "So let me check for your items...";
+	set @z,40000;
+	if (Zeny < @z) goto L_NOZENY;
+	if (countitem(999)<30 || countitem(7301)<100 || countitem(984)<2) goto L_NOITEMS;
+	set Zeny,Zeny-@z;
+	delitem 999,30;
+	delitem 7301,100;
+	delitem 984,2;
+	next;
+	getitem 13301,1;
+	mes "[Taitsu]";
+	mes "Ok, enjoy with your new weapon.";
+	close;
+
+M_DAIS4:
+	mes "[Taitsu]";
+	mes "For making ^FF0000Fuuma Shuriken Daisharin[4]^000000";
+	mes "you need these items:";
+	mes "20 Cracked Diamonds, 1 Fuuma Shuriken Daisharin, 3 Oridecon, and 40.000z.";
+	mes "Do you want it?";
+	next;
+	menu "Yes",-,"No Thanks",M_NOPE;
+
+	mes "[Taitsu]";
+	mes "So let me check for your items...";
+	set @z,40000;
+	if (Zeny < @z) goto L_NOZENY;
+	if (countitem(733)<20 || countitem(13301)<1 || countitem(984)<3) goto L_NOITEMS;
+	set Zeny,Zeny-@z;
+	delitem 733,20;
+	delitem 13301,1;
+	delitem 984,3;
+	next;
+	getitem 13302,1;
+	mes "[Taitsu]";
+	mes "Ok, enjoy with your new weapon.";
+	close;
+
+M_REKKA:
+	mes "[Taitsu]";
+	mes "For making ^FF0000Fuuma Shuriken Rekka^000000";
+	mes "you need these items:";
+	mes "50 Steel, 100 Live Coal, 100 Burning Heart, 50 Burning Stone and 78.000z.";
+	mes "Do you want it?";
+	next;
+	menu "Yes",-,"No Thanks",M_NOPE;
+
+	mes "[Taitsu]";
+	mes "So let me check for your items...";
+	set @z,78000;
+	if (Zeny < @z) goto L_NOZENY;
+	if (countitem(999)<50 || countitem(7098)<100 || countitem(7097)<100 || countitem(7521)<50) goto L_NOITEMS;
+	set Zeny,Zeny-@z;
+	delitem 999,50;
+	delitem 7098,100;
+	delitem 7097,100;
+	delitem 7521,50;
+	next;
+	getitem 13303,1;
+	mes "[Taitsu]";
+	mes "Ok, enjoy with your new weapon.";
+	close;
+
+L_NOITEMS:
+	next;
+	mes "[Taitsu]";
+	mes "Sorry, but you don't have all the required items.";
+	emotion 17;
+	close;
+
+L_NOZENY:
+	next;
+	mes "[Taitsu]";
+	mes "I'm sorry, but you need "+@z+"z";
+	emotion 8;
+	close;
+
+M_NOPE:
+	mes "[Taitsu]";
+	mes "OK, came back when you want.";
+	close;
+}

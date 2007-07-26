@@ -10,9 +10,9 @@
 //--------------------------------------------------------------
 // Revision History: v1.0
 //--------------------------------------------------------------
-//	1.0 First version [A Lot of People]
+//	1.0 First version, merged together [Tsuyuki]
 //--------------------------------------------------------------
-// Additional Notes: N/A
+// Additional Notes: * Official-certified / Aegis-certified *
 //--------------------------------------------------------------
 
 
@@ -1634,19 +1634,19 @@ ra_fild01.gat,0,0,0,0	monster	Galion	1783,2,0,0,0
 ra_fild02.gat,0,0,0,0	monster	Muscipular	1780,40,0,0,0
 ra_fild02.gat,0,0,0,0	monster	Galion	1783,20,0,0,0
 ra_fild02.gat,0,0,0,0	monster	Drosera	1781,20,0,0,0
-ra_fild02.gat,0,0,0,0	monster	Atros	1785,1,14400000,7200000,1
+ra_fild02.gat,0,0,0,0	monster	Atroce	1785,1,14400000,7200000,1
 
 ra_fild03.gat,0,0,0,0	monster	Galion	1783,30,0,0,0
 ra_fild03.gat,0,0,0,0	monster	Roween	1782,10,0,0,0
 ra_fild03.gat,0,0,0,0	monster	Drosera	1781,10,0,0,0
 ra_fild03.gat,0,0,0,0	monster	Stapo	1784,10,0,0,0
-ra_fild03.gat,0,0,0,0	monster	Atros	1785,1,10800000,5400000,1
+ra_fild03.gat,0,0,0,0	monster	Atroce	1785,1,10800000,5400000,1
 
 ra_fild04.gat,0,0,0,0	monster	Roween	1782,60,0,0,0
 ra_fild04.gat,0,0,0,0	monster	Stapo	1784,20,0,0,0
 ra_fild04.gat,0,0,0,0	monster	Wild Rose	1261,10,0,0,0
 ra_fild04.gat,0,0,0,0	monster	Galion	1783,3,0,0,0
-ra_fild04.gat,0,0,0,0	monster	Atros	1785,1,18000000,9000000,1
+ra_fild04.gat,0,0,0,0	monster	Atroce	1785,1,18000000,9000000,1
 
 ra_fild05.gat,0,0,0,0	monster	Hill Wind	1680,50,0,0,0
 ra_fild05.gat,0,0,0,0	monster	Drosera	1781,25,0,0,0
@@ -1808,7 +1808,7 @@ ve_fild01.gat,0,0,0,0	monster	Stapo	1784,20,0,0,0
 ve_fild02.gat,0,0,0,0	monster	Side Winder	1037,10,0,0,0
 ve_fild02.gat,0,0,0,0	monster	Savage	1166,60,0,0,0
 ve_fild02.gat,0,0,0,0	monster	Roween	1782,30,0,0,0
-ve_fild02.gat,0,0,0,0	monster	Atros	1785,1,7200000,3600000,1
+ve_fild02.gat,0,0,0,0	monster	Atroce	1785,1,7200000,3600000,1
 
 ve_fild03.gat,0,0,0,0	monster	Sleeper	1386,40,0,0,0
 ve_fild03.gat,0,0,0,0	monster	Magmaring	1836,30,0,0,0

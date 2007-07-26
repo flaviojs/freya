@@ -13,8 +13,7 @@
 //	1.0 First version [Darkchild]
 //	1.1 Converted job IDs to constants + reformatted [Tsuyuki]
 //--------------------------------------------------------------
-// Additional Notes: Job Change Quest, Cart Rental NPC, and misc
-// NPCs related to Super Novices. * Official-certified *
+// Additional Notes: * Official-certified *
 //--------------------------------------------------------------
 
 
@@ -212,73 +211,5 @@ L_Otherjob:
 	mes "You're one of those people who rejected the common way of life!";
 	mes "You might be dangerous to those who walk the common path!";
 	mes "Ahhhh!";
-	close;
-}
-
-
-//--------------------------------------------------------------
-// Super Novice Cart Rental
-//--------------------------------------------------------------
-
-aldebaran.gat,54,238,5	script	Kafra	117,{
-
-	if (Basejob != Job_Super_Novice) goto L_Otherjob;
-	if (checkcart(0) == 1) goto L_GotCart;
-	mes "[Kafra]";
-	mes "Oh, a Super Novice!";
-	mes "You're annoyed that the other Kafras won't lend you a cart?";
-	mes "No problem!";
-	next;
-	mes "[Kafra]";
-	mes "I can lend you a cart, but try to keep a low profile,";
-	mes "because we are under orders from Kafra management not to lend carts to any Novice.";
-	next;
-	mes "[Kafra]";
-	mes "There will be a fee of ^FF00001900zeny^000000 to use the cart.";
-	next;
-	mes "[Kafra]";
-	mes "You need to have the Push Cart skill in order to use a cart.";
-	mes "If you don't have this skill,";
-	mes "you won't be able to use the cart and You'll lose your money.";
-	mes "Do you want me to lend you a cart?";
-	next;
-	menu "Lend me a cart",-,"Not Necessary",L_End;
-	mes "[Kafra]";
-	mes "Since I'm secretly lending you a cart,";
-	mes "I can't ensure you have the Push Cart skill.";
-	mes "If you don't, you won't be able to use the cart and You'll lose your money.";
-	mes "Are you sure you want the cart?";
-	next;
-	menu "I heard you the first time!",-,"Uhhh...wait a minute...",L_End;
-	if (Zeny < 1900) goto L_Error;
-	set Zeny,Zeny-1900;
-	if (getskilllv(39)==0) goto L_End;
-	setcart;
-	mes "[Kafra]";
-	mes "Thanks for using the Kafra service, even if it is under the table.";
-	mes "Hehehehehe...";
-	close;
-
-L_Error:
-	mes "[Kafra]";
-	mes "Hmmm.  It seems you're short of funds.";
-	close;
-
-L_End:
-	mes "[Kafra]";
-	mes "Thank you for your patronage.";
-	mes "Please come again.";
-	close;
-
-L_GotCart:
-	mes "[Kafra]";
-	mes "HI There, Dear Super Novice.";
-	mes "I'm sorry but I can't help you, you already have an cart!";
-	close;
-
-L_Otherjob:
-	mes "[Kafra]";
-	mes "I'm sorry, but I'm not taking customers right now.";
-	mes "Please try asking the other Kafra staff for assistance.";
 	close;
 }

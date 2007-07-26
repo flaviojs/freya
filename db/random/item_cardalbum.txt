@@ -6,17 +6,15 @@
 // 10000   = 1%
 // 500000  = 50%
 // 1000000 = 100%
-//
-// Accurate to Aegis X.3
 
-0,DEFAULT,4001
+0,Poring Card,4001
 4001,Poring Card,70000
-4002,Fabre Card,70000
-4003,Pupa Card,60000
+4002,Fabre Card,40000
+4003,Pupa Card,70000
 4004,Drops Card,70000
 4005,Santa Poring Card,10000
 4006,Lunatic Card,70000
-4007,Peco Peco Egg Card,40000
+4007,Peco Peco Egg Card,30000
 4008,Picky Card,70000
 4009,Chonchon Card,70000
 4010,Willow Card,70000
@@ -45,7 +43,7 @@
 4034,Wormtail Card,30000
 4035,Hydra Card,30000
 4036,Muka Card,30000
-4037,Snake/Boa Card,30000
+4037,Snake Card,30000
 4038,Zombie Card,30000
 4039,Stainer Card,30000
 4040,Creamy Card,30000
@@ -55,7 +53,7 @@
 4044,Smokie Card,30000
 4045,Horn Card,30000
 4046,Martin Card,30000
-4047,Ghostring Card,10000
+4047,Ghostring Card,1000
 4048,Poison Spore Card,30000
 4049,Vadon Card,30000
 4050,Male Thief Bug Card,30000
@@ -127,14 +125,18 @@
 4117,Sidewinder Card,10000
 4118,Earth Petite Card,10000
 4119,Bathory Card,10000
-4120,Sky Petite Card,10000
+4120,Earth Petite Card,10000
 4122,Deviruchi Card,10000
+4124,Medusa Card,10000
 4125,Deviace Card,10000
+4126,Minorous Card,10000
 4127,Nightmare Card,10000
 4129,Bapho Jr. Card,10000
+4130,Scorpion King Card,10000
 4133,Raydric Card,10000
 4136,Khalitzburg Card,10000
 4139,Joker Card,10000
+4140,Abysmal Knight Card,10000
 4141,Evil Druid Card,10000
 4149,Gargoyle Card,10000
 4150,Goat Card,10000
@@ -142,6 +144,7 @@
 4152,Galapago Card,10000
 4153,Crab Card,10000
 4154,Dumpling Child Card,10000
+4155,Goblin Leader Card,10000
 4156,Goblin Steamrider Card,10000
 4157,Goblin Archer Card,10000
 4158,Sky Deleter Card,10000
@@ -149,24 +152,30 @@
 4160,Firelock Soldier Card,10000
 4161,Grand Peco Card,10000
 4162,Grizzly Card,10000
+4163,Gryphon Card,10000
 4164,Gullinbursti Card,10000
 4165,Gig Card,10000
 4166,Nightmare Terror Card,10000
 4167,Nereid Card,10000
+4169,Dark Illusion Card,10000
 4170,Dark Frame Card,10000
+4171,Dark Priest Card,10000
 4172,The Paper Card,10000
-4173,Demon Fungus Card,10000
+4173,Demon Pungus Card,10000
+4174,Deviling Card,1000
 4175,Poisonous Toad Card,10000
 4176,Dullahan Card,10000
 4177,Dryad Card,10000
 4178,Dragon Tail Card,10000
+4179,Dragon Fly Card,10000
 4180,Driller Card,10000
 4181,Disguise Card,10000
 4182,Diabolic Card,10000
+4183,Vagabond Wolf Card,10000
 4184,Lava Golem Card,10000
 4185,Rideword Card,10000
 4186,Raggler Card,10000
-4187,Raydric Card,10000
+4187,Raydric Archer Card,10000
 4188,Leib Olmai Card,10000
 4189,Wraith Dead Card,10000
 4190,Wraith Card,10000
@@ -176,18 +185,23 @@
 4194,Rybio Card,10000
 4195,Leaf Cat Card,10000
 4196,Marin Card,10000
+4197,Mastering Card,10000
+4198,Maya Purple Card,10000
 4199,Merman Card,10000
 4200,Megalith Card,10000
 4201,Majoruros Card,10000
 4202,Mao Guai Card,10000
+4203,Mutant Dragonoid Card,10000
 4204,Mini Demon Card,10000
 4205,Mimic Card,10000
 4206,Myst Case Card,10000
+4207,Mysteltainn Card,10000
 4208,Miyabi Doll Card,10000
 4209,Violy Card,10000
 4210,Wanderer Card,10000
-4212,Bon Gun Card,10000
-4213,Brilight Card Card,10000
+4211,Vocal Card,10000
+4212,Bongun Card,10000
+4213,Brilight Card,10000
 4214,Bloody Murderer Card,10000
 4215,Blazer Card,10000
 4216,Sasquatch Card,10000
@@ -203,6 +217,7 @@
 4226,Sting Card,10000
 4227,Spring Rabbit Card,10000
 4228,Sleeper Card,10000
+4229,Clock Tower Manager Card,10000
 4230,Shinobi Card,10000
 4231,Mi Gao Card,10000
 4232,Hermit Plant Card,10000
@@ -213,16 +228,20 @@
 4238,Owl Baron Card,10000
 4239,Iron Fist Card,10000
 4240,Arclouze Card,10000
+4241,Arc Angeling Card,10000
 4242,Apocalipse Card,10000
+4243,Antonio Card,10000
 4244,Alarm Card,10000
 4245,Am Mut Card,10000
 4246,Assaulter Card,10000
 4247,Aster Card,10000
 4248,Ancient Mummy Card,10000
 4249,Ancient Worm Card,10000
+4250,Executioner Card,10000
 4251,Elder Card,10000
 4252,Alligator Card,10000
 4253,Alice Card,10000
+4254,Tirfing Card,10000
 4255,Orc Lady Card,10000
 4256,Orc Archer Card,10000
 4257,Wild Rose Card,10000
@@ -233,6 +252,7 @@
 4262,Cloud Hermit Card,10000
 4264,Wind Ghost Card,10000
 4265,Jing GUai Card,10000
+4266,Eclipse Card,10000
 4267,Explosion Card,10000
 4268,Injustice Card,10000
 4269,Incubus Card,10000
@@ -256,6 +276,7 @@
 4288,Carat Card,10000
 4289,Caterpillar Card,10000
 4290,Cat o' Nine Tails Card,10000
+4291,Kobold Leader Card,10000
 4292,Kobold Archer Card,10000
 4293,Cookie Card,10000
 4294,Quve Card,10000
@@ -266,8 +287,9 @@
 4299,Clock Card,10000
 4300,Chimera Card,10000
 4301,Killer Mantis Card,10000
+4303,Giant Whisper Card,10000
 4304,Tamruan Card,10000
-4229,Tower Manager Card,10000
+4306,Toad Card,10000
 4307,Beetle King Card,10000
 4308,Tri Joint Card,10000
 4309,Parasite Card,10000
@@ -278,7 +300,9 @@
 4314,Penomena Card,10000
 4315,Pest Card,10000
 4316,False Angel Card,10000
+4317,Mobster Card,10000
 4319,Freezer Card,10000
+4320,Bloody Knight Card,10000
 4321,Hylozoist Card,10000
 4322,High Orc Card,10000
 4323,Hatii Bebe Card,10000
@@ -288,7 +312,6 @@
 4328,Yao Jun Card,10000
 4329,Phendark Card,10000
 4331,Heater Card,10000
-4243,Antonio Card,10000
 4332,Waste Stove Card,10000
 4333,Venemous Card,10000
 4334,Noxious Card,10000

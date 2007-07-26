@@ -15,7 +15,7 @@
 int npc_event_dequeue(struct map_session_data *sd);
 int npc_event_timer(int tid, unsigned int tick, int id, int data);
 int npc_event(struct map_session_data *sd, const char *npcname, int);
-int npc_timer_event(const char *eventname); // Added by RoVeRT
+int npc_timer_event(const char *eventname);
 int npc_command(struct map_session_data *sd, char *npcname, char *command);
 int npc_touch_areanpc(struct map_session_data *, int, int, int);
 void npc_click(struct map_session_data *, int);
@@ -32,7 +32,7 @@ int npc_globalmessage(const char *name, char *mes);
 int npc_enable(const char *name, int flag);
 struct npc_data* npc_name2id(const char *name);
 
-int npc_walktoxy(struct npc_data *nd, int x, int y, int easy); // npc walking [Valaris]
+int npc_walktoxy(struct npc_data *nd, int x, int y, int easy);
 int npc_stop_walking(struct npc_data *nd, int type);
 int npc_changestate(struct npc_data *nd, int state, int type);
 
@@ -57,4 +57,3 @@ int npc_delete(struct npc_data *nd);
 extern char *current_file;
 
 #endif // _NPC_H_
-

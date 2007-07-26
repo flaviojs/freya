@@ -10,11 +10,19 @@
 
 Date	Added
 
+07/26/2007
+	* Note: The latest clients login to Freya's servers perfectly fine [Tsuyuki]
+	* Updated: Thor Volcano / Cursed Abbey / Endless Nightmare / Moscovia monsters in the mob database [Tsuyuki]
+	* Imported: Aurora's mob skill database + converted necessary components [Tsuyuki]
+	* Fixed: Some invalid NPC monster skill IDs [Tsuyuki]
+	* Updated: All shop, mob, and warp scripts, imported from Aurora [Tsuyuki]
+	* Updated: Script folder structure some more + removed some unnecessary scripts [Tsuyuki]
+	* Changed: Removed some unnecessary code from npc.c + cleaned file [Tsuyuki]
+
 07/19/2007
 	* Fixed: A bug causing all attacks in GvG to show up as misses [Tsuyuki]
 	 - Reverts Latios' sclientinfo.xml GvG exploit fix
 	* Fixed: A bug that caused a lot of monsters not to use skills properly [Tsuyuki]
-	* Enabled: The Old Blue Box quest by default [Tsuyuki]
 	* Removed: Some unnecessary scripts [Tsuyuki]
 	* Updated: Script folder structure [Tsuyuki]
 	* Changed: Merged changelogs together [Tsuyuki]
@@ -1259,8 +1267,8 @@ Date	Added
 	* Fixed: Gunslinger and Ninja skill tree [Latios]
 
 11/24/2006
-	* Fixed: Taekwon stance statuses are now removed on job change to soul linker [Latios]
-	* Added: item_upper for items equipable only by advanced characters (vesper core, ...) [Latios]
+	* Fixed: Taekwon stance statuses are now removed on job change to Soul Linker [Latios]
+	* Added: item_upper.txt for items equippable only by advanced characters (Vesper Core, ...) [Latios]
 	* Added: Estin, Estun, Eswoo, Esma, Eske & Eska (Soul Linker skills) [Latios]
 	* Added: Dark Collector and Death Knight and related-classes [Tsuyuki]
 	 - NOT FOR USE - Test only
@@ -1271,7 +1279,7 @@ Date	Added
 	* Fixed: Zealotus Mask Quest [Latios]
 	* Fixed: A question in Rogue Quest [Latios]
 	* Fixed: db/item_db.txt [Latios]
-		* sloted infiltrator : Infiltrator => Infiltrator_
+		* Slotted Infiltrator : Infiltrator => Infiltrator_
 		* Alice & Zealotus Egg id
 		* Firecrackers
 		* SC_Stun => SC_Stan
@@ -1280,7 +1288,6 @@ Date	Added
 	* Updated: Red Thorn Fruit heal rates [Tsuyuki]
 	* Fixed: Compilation error [Tsuyuki]
 	* Added: Gunslinger Weapon Quests [Tsuyuki]
-	 - Note: All Gunslinger/Ninja-related Quests and NPCs should now be in Freya
 	* Added: Gunslinger/Ninja Merchant-Related NPCs [Tsuyuki]
 	 - Kunai Maker, Shuriken Maker, Ammo Boxes Dealer, Ammo Dealer
 
@@ -1323,7 +1330,7 @@ Date	Added
 	 - Note: Apparently they aren't enabled in kRO
 	* Added: Alice/Zealotus Pet Skills partially implemented [Tsuyuki]
 	 - Note: Incorrect damage/heal values, and Sohee should heal hp AND sp to 100% (only heals to 25% right now)
-	* Removed: Unnecessary /client folder files [Tsuyuki]
+	* Removed: Unnecessary client folder files [Tsuyuki]
 
 11/20/2006
 	* Fixed: Updated and disabled Novice WoE by default (No kRO proof it even exists) [Tsuyuki]
@@ -1341,9 +1348,9 @@ Date	Added
 	 - Note: Muting is only applied automatically during chat floods
 	 - Note: Shouldn't have anything to do with actual gameplay
 	 - Note: Not to mention mute is really buggy, so this just makes it a little more convenient for people
-	* Fixed: Items can no longer be used in EDP-mode as per kRO [Tsuyuki]
-	* Fixed: Medusa's now give proper experience/drops [Tsuyuki]
-	* Fixed: Updated Polymorph list to Arunafeltz and removed Duplicate/Event/MvP monsters [Tsuyuki]
+	* Fixed: Items can no longer be used in EDP-mode [Tsuyuki]
+	* Fixed: Medusa now gives proper experience/drops [Tsuyuki]
+	* Fixed: Updated Polymorph list to kRO Episode 11.1 and removed Duplicate/Event/MvP monsters [Tsuyuki]
 	* Fixed: Gravitation Field can now hit the Emperium in WoE [Tsuyuki]
 	* Fixed: Gloria Domini and Gravitation Field now ignore WoE damage reductions [Tsuyuki]
 
@@ -1353,9 +1360,6 @@ Date	Added
 
 11/17/2006
 	* Fixed: When you target a player and they cloak/chasewalk, you will no longer continue to follow them [Tsuyuki]
-	 - Note: Need to test, requires two people so I couldn't check it myself
-	* Added: Possibly fixed this bug report: http://freya.dns.st/mantis/view.php?id=301 [Tsuyuki]
-	 - Changed the way the Airport system worked for extra stability assurance
 	* Added: Intravision bonus to Maya Purple Card [Tsuyuki]
 	* Added: bIntravision, imported from Nezumi [Tsuyuki]
 	- Note: Tested, and doesn't seem to be working for some reason.. anyone seen zug/zugule?
@@ -1435,7 +1439,7 @@ Date	Added
 	 - Conversion: Damz Fish
 	 - Testing: galaxy
 	 - Bug Fixing: Tsuyuki & galaxy
-	 - Original Script from eAthena (Master of Muppets)
+	 - Original Script from eAthena (MasterOfMuppets/SinSloth)
 	 - Special thanks to these people on getting this quest completed =D
 	* Fixed: Lady Tanee's mode [Tsuyuki]
 	* Changed: Increased Bloody Edge drop to 10% from Valkyrie Randgrith [Tsuyuki]
@@ -1634,15 +1638,15 @@ Date	Added
 10/03/2006
 	* Fixed: Bugs in Eye of Hellion Quest (Thanks to galaxy) [Tsuyuki]
 	* Added: Missing Atros MvP to the Rachel field spawns [Tsuyuki]
-	* Fixed: Cowardice Blade is now only equipable by Assassin [Tsuyuki]
+	* Fixed: Cowardice Blade is now only equippable by Assassin [Tsuyuki]
 	* Fixed: Alchemist skill quest, you can now get the book properly [Tsuyuki]
 	* Fixed: Geographer's / Parasite's modes restored (attack people again) [Tsuyuki]
 	* Fixed: Sight Blaster's range (now takes range of sight) [Tsuyuki]
 
 10/01/2006
 	* Recommitted: Some lost commits from Proximus in Perforce: [Tsuyuki]
-		* Removed: 'Surrender' optin from Kafra guild manager, as it was 100% custom [Proximus]
-		- Not present in the leaked aegis npc scripts. eAthena removed it as well, a while ago.
+		* Removed: 'Surrender' option from Kafra guild manager, as it was 100% custom [Proximus]
+		- Not present in the leaked Aegis NPC scripts. eAthena removed it as well, a while ago.
 		- The only way to surrender a castle would be to break the guild.
 	* Recommitted: Also readded Proximus' adoption skill database changes [Tsuyuki]
 
@@ -1893,7 +1897,7 @@ Date	Added
 	 - source: http://ragnainfo.net/forums/viewtopic.php?t=28669
 	* Enabled: The other/wedding.txt, and other/books.txt scripts automatically [Tsuyuki]
 	* Moved: IceCream.txt to the npc/merchants folder [Tsuyuki]
-	* Removed: Some more customs NPCs, and removed them from map_athena.conf as well[Tsuyuki]
+	* Removed: Some more customs NPCs, and removed them from map_athena.conf as well [Tsuyuki]
 	* Removed: Custom NPCs from map_athena.conf that Harbin removed [Tsuyuki]
 	* Fixed: mammonite damage should ignore weapon element damage modifiers [Harbin]
 	* Fixed: some issues regarding magic damage reflection [Harbin]
@@ -5600,7 +5604,7 @@ Date	Added
 03/14/2005	***** RELEASE 2.0.0 *****
 
 03/14/2005
-	* Dont display emociton with @joyjoy GM command on hidden GM [Yor]
+	* Dont display emoticon with @joyjoy GM command on hidden GM [Yor]
 	* Improved socket with console [Yor]
 	* Fixed character name in @useskill and @chareffect GM command [Yor]
 
@@ -7192,6 +7196,7 @@ FREYA BEGINS HERE, based on eAthena 1.0 RC4
 09/26/2004
 	(Dated On Aegis Website)
 	*--Released 1.0.0 RC4--*
+
 09/25/2004
 	* Reorganized Npc folder for release
 	* Updated map_athena.conf
@@ -7411,7 +7416,7 @@ FREYA BEGINS HERE, based on eAthena 1.0 RC4
 	* Added Items Ability to be unbreakable (using bonus bUnbreakable,100;) it will totally unbreakable 
 	  any lower than a 100 it still has a chance of breaking but call it more durable ;p[AppleGirl]
 	* Added Start_Weapon and Start_Armor to all the other starts in char_athena.conf [AppleGirl]
-	* Updated skill_require_db and skill_cast_db.txt [AppleGirl]
+	* Updated skill_require_db and skill_cast_db.txt [AppleGirl]
 	* Finish to add a (reserved) wisp name for server - part 3: in map-server replace name where server name is used for wisp [Yor]
 	* Continue to add a (reserved) wisp name for server - part 2: in map-server, reception of the name [Yor]
 	* Begin to add a (reserved) wisp name for server - part 1: in char-server [Yor]

@@ -120,9 +120,6 @@ mf_nojobexp	29
 mf_nodrop	30
 mf_nomobdrop	31
 mf_nomvpdrop	32
-//mf_noloot	31
-//mf_nomobloot	32
-//mf_nomvploot	33
 mf_pvp_nightmaredrop	33
 mf_nogmcmd	34
 mf_mingmlvl	35

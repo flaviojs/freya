@@ -6,25 +6,26 @@
 //                (_)   (_)\_) (___) (__/  (_)(_)               
 //                    http://www.ro-freya.net                   
 //--------------------------------------------------------------
-// Script Title: Miscellaneous Monster Spawns	Author: MasterOfMuppets
+// Script Title: Nightmare Mode PvP Monster Spawns	Author: Unknown
 //--------------------------------------------------------------
 // Revision History: v1.0
 //--------------------------------------------------------------
-//	1.0 First version [MasterOfMuppets]
+//	1.0 First version [Unknown]
 //--------------------------------------------------------------
 // Additional Notes: * Official-certified / Aegis-certified *
 //--------------------------------------------------------------
 
 
-//--------------------------------------------------------------
-// The Sign Quest Monster Spawns - [MasterOfMuppets]
-//--------------------------------------------------------------
+pvp_n_8-1.gat,0,0,0,0	monster	Sidewinder	1037,2,360000,180000,1
+pvp_n_8-1.gat,0,0,0,0	monster	Bigfoot	1060,2,360000,180000,1
 
-que_sign02.gat,0,0,0,0	monster	Incubus	1580,1,0,0,0
-que_sign02.gat,0,0,0,0	monster	Wraith Dead	1566,3,0,0,0
-que_sign02.gat,0,0,0,0	monster	Evil Druid	1435,5,0,0,0
-que_sign02.gat,0,0,0,0	monster	Wraith	1475,5,0,0,0
-que_sign02.gat,0,0,0,0	monster	Injustice	1446,10,0,0,0
-que_sign02.gat,0,0,0,0	monster	Skeleton Prisoner	1479,10,0,0,0
-que_sign02.gat,0,0,0,0	monster	Zombie Prisoner	1480,10,0,0,0
-que_sign02.gat,0,0,0,0	monster	Ghoul	1423,15,0,0,0
+pvp_n_8-2.gat,0,0,0,0	monster	Cramp	1209,4,360000,180000,1
+
+pvp_n_8-3.gat,0,0,0,0	monster	Whisper	1179,3,360000,180000,1
+pvp_n_8-3.gat,0,0,0,0	monster	Giant Whisper	1186,2,360000,180000,1
+
+pvp_n_8-4.gat,0,0,0,0	monster	Zombie	1015,4,360000,180000,1
+pvp_n_8-4.gat,0,0,0,0	monster	Ghoul	1036,3,360000,180000,1
+
+pvp_n_8-5.gat,0,0,0,0	monster	Khalitzburg	1132,1,360000,180000,1
+pvp_n_8-5.gat,0,0,0,0	monster	Raydric	1163,2,360000,180000,1

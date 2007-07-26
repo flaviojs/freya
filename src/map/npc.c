@@ -5,7 +5,7 @@
 
 #include <stdio.h>
 #include <stdlib.h>
-#include <ctype.h> // isspace
+#include <ctype.h>
 #include <string.h>
 #include <math.h>
 #include <time.h>
@@ -48,7 +48,7 @@ static int npc_script = 0;
 static int npc_mob = 0;
 
 char *current_file = NULL;
-int npc_get_new_npc_id(void) { return npc_id++; } // first with 110000000 (START_NPC_NUM)
+int npc_get_new_npc_id(void) { return npc_id++; } // First with 110000000 (START_NPC_NUM)
 
 static struct dbt *ev_db;
 static struct dbt *npcname_db;
@@ -57,10 +57,10 @@ struct event_data {
 	struct npc_data *nd;
 	int pos;
 };
-static struct tm ev_tm_b;	// 時計イベント用
+static struct tm ev_tm_b;
 
-static int npc_walktimer(int, unsigned int, int, int); // [Valaris]
-static int npc_walktoxy_sub(struct npc_data *nd); // [Valaris]
+static int npc_walktimer(int, unsigned int, int, int);
+static int npc_walktoxy_sub(struct npc_data *nd);
 
 
 /*==========================================
@@ -70,6 +70,7 @@ static int npc_walktoxy_sub(struct npc_data *nd); // [Valaris]
  *------------------------------------------
  */
 int npc_enable_sub(struct block_list *bl, va_list ap) {
+
 	struct map_session_data *sd;
 	struct npc_data *nd;
 	char name[50];
@@ -80,7 +81,7 @@ int npc_enable_sub(struct block_list *bl, va_list ap) {
 
 	if (bl->type == BL_PC && (sd = (struct map_session_data *)bl)) {
 
-		if (nd->flag & 1) // 無効化されている
+		if (nd->flag & 1)
 			return 1;
 
 		if (sd->areanpc_id == nd->bl.id)
@@ -94,14 +95,14 @@ int npc_enable_sub(struct block_list *bl, va_list ap) {
 	return 0;
 }
 
-int npc_enable(const char *name, int flag)
-{
+int npc_enable(const char *name, int flag) {
+
 	struct npc_data *nd = strdb_search(npcname_db, name);
 
 	if (nd == NULL)
 		return 0;
 
-	if (flag & 1) { // 有効化
+	if (flag & 1) {
 		nd->flag &= ~1;
 		clif_spawnnpc(nd);
 	} else if (flag & 2) {
@@ -112,7 +113,7 @@ int npc_enable(const char *name, int flag)
 		nd->flag |= 1;
 		nd->option = 0x0002;
 		clif_changeoption(&nd->bl);
-	} else { // 無効化
+	} else {
 		nd->flag |= 1;
 		clif_clearchar(&nd->bl, 0);
 	}
@@ -126,8 +127,8 @@ int npc_enable(const char *name, int flag)
  * NPCを名前で探す
  *------------------------------------------
  */
-struct npc_data* npc_name2id(const char *name)
-{
+struct npc_data* npc_name2id(const char *name) {
+
 	return strdb_search(npcname_db, name);
 }
 
@@ -136,30 +137,31 @@ struct npc_data* npc_name2id(const char *name)
  *------------------------------------------
  */
 int npc_event_dequeue(struct map_session_data *sd) {
+
 	char *name;
 	int i;
 
 	nullpo_retr(0, sd);
 
 	sd->npc_id = 0;
-	if (sd->eventqueue[0][0]) { // キューのイベント処理
+	if (sd->eventqueue[0][0]) {
 		size_t ev;
-		// find an empty place in eventtimer list
+		// Find an empty place in eventtimer list
 		for(ev = 0; ev < MAX_EVENTTIMER; ev++)
 			if (sd->eventtimer[ev] == -1)
 				break;
-		if (ev < MAX_EVENTTIMER) { // generate and insert the timer
-			// copy the first event name
+		if (ev < MAX_EVENTTIMER) { // Generate and insert the timer
+			// Copy the first event name
 			CALLOC(name, char, 50); // 49 + NULL
 			strncpy(name, sd->eventqueue[0], 49);
-			// shift queued events down by one
+			// Shift queued events down by one
 			for(i = 1; i < MAX_EVENTQUEUE; i++) {
 				memset(&sd->eventqueue[i-1], 0, sizeof(sd->eventqueue[i-1]));
 				strncpy(sd->eventqueue[i-1], sd->eventqueue[i], 49); // 49 + NULL
 			}
-			// clear the last event
+			// Clear the last event
 			memset(&sd->eventqueue[MAX_EVENTQUEUE-1], 0, sizeof(sd->eventqueue[MAX_EVENTQUEUE-1]));
-			// add the timer
+			// Add the timer
 			sd->eventtimer[ev] = add_timer(gettick_cache + 100, pc_eventtimer, sd->bl.id, (int)name);
 		} else
 			printf("npc_event_dequeue: event timer is full !\n");
@@ -185,15 +187,8 @@ int npc_delete(struct npc_data *nd)
  * イベントの遅延実行
  *------------------------------------------
  */
-int npc_event_timer(int tid, unsigned int tick, int id, int data)
-{
-/*	struct map_session_data *sd = map_id2sd(id);
+int npc_event_timer(int tid, unsigned int tick, int id, int data) {
 
-	if (sd==NULL)
-		return 0;
-
-	npc_event(sd,(const char *)data, 0);
-	free((void*)data);*/
 	char *eventname = (char *)data;
 	struct event_data *ev = (struct event_data *)strdb_search(ev_db, eventname);
 	struct npc_data *nd;
@@ -221,11 +216,10 @@ int npc_event_timer(int tid, unsigned int tick, int id, int data)
 	return 0;
 }
 
-int npc_timer_event(const char *eventname) // Added by RoVeRT
+int npc_timer_event(const char *eventname)
 {
 	struct event_data *ev = strdb_search(ev_db, eventname);
 	struct npc_data *nd;
-//	int xs,ys;
 
 	if ((ev == NULL || (nd=ev->nd) == NULL)) {
 		printf("npc_event: event not found [%s]\n", eventname);
@@ -237,58 +231,13 @@ int npc_timer_event(const char *eventname) // Added by RoVeRT
 	return 0;
 }
 
-/*
-int npc_timer_sub_sub(void *key, void *data, va_list ap) { // Added by RoVeRT
-	char *p = (char *)key;
-	struct event_data *ev=(struct event_data *)data;
-	int *c = va_arg(ap,int *);
-	int tick = 0;
-	char temp[10];
-	char event[100];
-
-	if (ev->nd->bl.id == (int)*c && (p=strchr(p, ':')) && p && strncasecmp("::OnTimer", p, 8) == 0) {
-		sscanf(&p[9], "%s", temp);
-		tick = atoi(temp);
-
-		strcpy(event, ev->nd->name);
-		strcat(event, p);
-
-		if (gettick_cache >= ev->nd->lastaction && gettick_cache - ev->nd->timer >= tick) {
-			npc_timer_event(event);
-			ev->nd->lastaction = gettick_cache;
-		}
-	}
-
-	return 0;
-}
-
-int npc_timer_sub(void *key,void *data,va_list ap)	// Added by RoVeRT
-{
-	struct npc_data *nd=(struct npc_data*)data;
-
-	if(nd->timer == -1)
-		return 0;
-
-	strdb_foreach(ev_db,npc_timer_sub_sub,&nd->bl.id);
-
-	return 0;
-}
-
-int npc_timer(int tid,unsigned int tick,int id,int data)	// Added by RoVeRT
-{
-	strdb_foreach(npcname_db,npc_timer_sub);
-
-	free((void*)data);
-
-	return 0;
-}*/
-
 /*==========================================
  * イベント用ラベルのエクスポート
  * npc_parse_script->strdb_foreachから呼ばれる
  *------------------------------------------
  */
 int npc_event_export(void *key, void *data, va_list ap) {
+
 	char *lname = (char *)key;
 	int pos = (int)data;
 	struct npc_data *nd = va_arg(ap,struct npc_data *);
@@ -297,7 +246,6 @@ int npc_event_export(void *key, void *data, va_list ap) {
 		struct event_data *ev;
 		char *buf;
 		char *p = strchr(lname, ':');
-		// エクスポートされる
 		CALLOC(ev, struct event_data, 1);
 		CALLOC(buf, char, 50);
 		if (p == NULL || (p - lname) > 24) {
@@ -310,8 +258,6 @@ int npc_event_export(void *key, void *data, va_list ap) {
 			sprintf(buf, "%s::%s", nd->exname, lname);
 			*p = ':';
 			strdb_insert(ev_db, buf, ev);
-//			if (battle_config.etc_log)
-//				printf("npc_event_export: export [%s]\n", buf);
 		}
 	}
 
@@ -322,8 +268,8 @@ int npc_event_export(void *key, void *data, va_list ap) {
  * 全てのNPCのOn*イベント実行
  *------------------------------------------
  */
-int npc_event_doall_sub(void *key,void *data,va_list ap)
-{
+int npc_event_doall_sub(void *key,void *data,va_list ap) {
+
 	char *p=(char *)key;
 	struct event_data *ev;
 	int *c;
@@ -343,8 +289,8 @@ int npc_event_doall_sub(void *key,void *data,va_list ap)
 	return 0;
 }
 
-int npc_event_doall(const char *name)
-{
+int npc_event_doall(const char *name) {
+
 	int c = 0;
 	char buf[64] = "::";
 
@@ -354,8 +300,8 @@ int npc_event_doall(const char *name)
 	return c;
 }
 
-int npc_event_do_sub(void *key,void *data,va_list ap)
-{
+int npc_event_do_sub(void *key,void *data,va_list ap) {
+
 	char *p=(char *)key;
 	struct event_data *ev;
 	int *c;
@@ -376,6 +322,7 @@ int npc_event_do_sub(void *key,void *data,va_list ap)
 }
 
 int npc_event_do(const char *name) {
+
 	int c = 0;
 
 	if (*name==':' && name[1] == ':') {
@@ -392,6 +339,7 @@ int npc_event_do(const char *name) {
  *------------------------------------------
  */
 int npc_event_do_clock(int tid, unsigned int tick, int id, int data) {
+
 	time_t timer;
 	struct tm *t;
 	char buf[64];
@@ -401,7 +349,6 @@ int npc_event_do_clock(int tid, unsigned int tick, int id, int data) {
 	time(&timer);
 	t = localtime(&timer);
 
-	//t->tm_wday : weekday 0 ~ 6  ( 0 = sunday )
 	switch (t->tm_wday) {
 	case 0: day = "Sun"; break;
 	case 1: day = "Mon"; break;
@@ -441,16 +388,17 @@ int npc_event_do_oninit(void)
 {
 	printf(CL_GREEN "Loaded: " CL_RESET "'" CL_WHITE "OnInit" CL_RESET "' NPC Event executed with '" CL_WHITE "%d" CL_RESET "' NPCs.\n\n", npc_event_doall("OnInit"));
 
-	add_timer_interval(gettick_cache + 100, npc_event_do_clock, 0, 0, 15000); // "ontimer" are coded for every min. so, check only every 15 sec (not every sec)
+	add_timer_interval(gettick_cache + 100, npc_event_do_clock, 0, 0, 15000);
 
 	return 0;
 }
 
 /*==========================================
- * OnTimer NPC event - by RoVeRT
+ * OnTimer NPC event
  *------------------------------------------
  */
 int npc_addeventtimer(struct npc_data *nd, int tick, const char *name) {
+
 	int i;
 	char *evname;
 
@@ -468,6 +416,7 @@ int npc_addeventtimer(struct npc_data *nd, int tick, const char *name) {
 }
 
 int npc_deleventtimer(struct npc_data *nd, const char *name) {
+
 	int i;
 	char *evname;
 
@@ -483,6 +432,7 @@ int npc_deleventtimer(struct npc_data *nd, const char *name) {
 }
 
 int npc_cleareventtimer(struct npc_data *nd) {
+
 	int i;
 	char *evname;
 
@@ -498,10 +448,10 @@ int npc_cleareventtimer(struct npc_data *nd) {
 }
 
 int npc_do_ontimer_sub(void *key, void *data, va_list ap) {
+
 	char *p = (char *)key;
 	struct event_data *ev = (struct event_data *)data;
 	int *c = va_arg(ap, int *);
-//	struct map_session_data *sd=va_arg(ap,struct map_session_data *);
 	int option=va_arg(ap,int);
 	int tick=0;
 	char temp[10];
@@ -525,6 +475,7 @@ int npc_do_ontimer_sub(void *key, void *data, va_list ap) {
 }
 
 int npc_do_ontimer(int npc_idx, struct map_session_data *sd, int option) {
+
 	strdb_foreach(ev_db, npc_do_ontimer_sub, &npc_idx, sd, option);
 
 	return 0;
@@ -535,15 +486,14 @@ int npc_do_ontimer(int npc_idx, struct map_session_data *sd, int option) {
  * npc_parse_script->strdb_foreachから呼ばれる
  *------------------------------------------
  */
-int npc_timerevent_import(void *key, void *data, va_list ap)
-{
+int npc_timerevent_import(void *key, void *data, va_list ap) {
+
 	char *lname = (char *)key;
 	int pos = (int)data;
 	struct npc_data *nd = va_arg(ap, struct npc_data *);
 	int t = 0, n = 0;
 
 	if (sscanf(lname, "OnTimer%d%n", &t, &n) == 1 && lname[n] == ':') {
-		// タイマーイベント
 		struct npc_timerevent_list *te = nd->u.scr.timer_event;
 		int j, i = nd->u.scr.timeramount;
 		if (te == NULL) {
@@ -571,8 +521,8 @@ int npc_timerevent_import(void *key, void *data, va_list ap)
  * タイマーイベント実行
  *------------------------------------------
  */
-int npc_timerevent(int tid, unsigned int tick, int id, int data)
-{
+int npc_timerevent(int tid, unsigned int tick, int id, int data) {
+
 	int next,t;
 	struct npc_data* nd = (struct npc_data *)map_id2bl(id);
 	struct npc_timerevent_list *te;
@@ -602,8 +552,8 @@ int npc_timerevent(int tid, unsigned int tick, int id, int data)
  * タイマーイベント開始
  *------------------------------------------
  */
-int npc_timerevent_start(struct npc_data *nd, int rid)
-{
+int npc_timerevent_start(struct npc_data *nd, int rid) {
+
 	int j, n, next;
 
 	nullpo_retr(0, nd);
@@ -616,13 +566,13 @@ int npc_timerevent_start(struct npc_data *nd, int rid)
 		if (nd->u.scr.timer_event[j].timer > nd->u.scr.timer)
 			break;
 	}
-	if (j >= n) // check if there is a timer to use !!BEFORE!! you write stuff to the structures
+	if (j >= n) // Check if there is a timer to use BEFORE you write stuff to the structures
 		return 0;
 
 	nd->u.scr.nexttimer = j;
 	nd->u.scr.timertick = gettick_cache;
-	if (rid >= 0) // if rid is less than 0 leave it unchanged
-		nd->u.scr.rid = rid; // changed to: attaching to given rid by default
+	if (rid >= 0) // If rid is less than 0 leave it unchanged
+		nd->u.scr.rid = rid; // Changed to: Attaching to given rid by default
 
 	next = nd->u.scr.timer_event[j].timer - nd->u.scr.timer;
 	nd->u.scr.timerid = add_timer(gettick_cache + next, npc_timerevent, nd->bl.id, next);
@@ -634,8 +584,8 @@ int npc_timerevent_start(struct npc_data *nd, int rid)
  * タイマーイベント終了
  *------------------------------------------
  */
-int npc_timerevent_stop(struct npc_data *nd)
-{
+int npc_timerevent_stop(struct npc_data *nd) {
+
 	nullpo_retr(0, nd);
 
 	if (nd->u.scr.nexttimer >= 0) {
@@ -655,8 +605,8 @@ int npc_timerevent_stop(struct npc_data *nd)
  * タイマー値の所得
  *------------------------------------------
  */
-int npc_gettimerevent_tick(struct npc_data *nd)
-{
+int npc_gettimerevent_tick(struct npc_data *nd) {
+
 	int tick;
 
 	nullpo_retr(0, nd);
@@ -673,8 +623,8 @@ int npc_gettimerevent_tick(struct npc_data *nd)
  * タイマー値の設定
  *------------------------------------------
  */
-int npc_settimerevent_tick(struct npc_data *nd, int newtimer)
-{
+int npc_settimerevent_tick(struct npc_data *nd, int newtimer) {
+
 	int flag;
 
 	nullpo_retr(0, nd);
@@ -693,8 +643,8 @@ int npc_settimerevent_tick(struct npc_data *nd, int newtimer)
  * イベント型のNPC処理
  *------------------------------------------
  */
-int npc_event(struct map_session_data *sd, const char *eventname, int mob_kill)
-{
+int npc_event(struct map_session_data *sd, const char *eventname, int mob_kill) {
+
 	struct event_data *ev = strdb_search(ev_db, eventname);
 	struct npc_data *nd;
 	int xs, ys;
@@ -708,7 +658,6 @@ int npc_event(struct map_session_data *sd, const char *eventname, int mob_kill)
 		return 1;
 
 	if (ev == NULL || (nd = ev->nd) == NULL) {
-//		if (mob_kill && (ev == NULL || (nd = ev->nd) == NULL)) {
 		if (mob_kill) {
 			strcpy(mobevent, eventname);
 			strcat(mobevent, "::OnMyMobDead");
@@ -738,8 +687,6 @@ int npc_event(struct map_session_data *sd, const char *eventname, int mob_kill)
 	}
 
 	if (sd->npc_id != 0) {
-//		if (battle_config.error_log)
-//			printf("npc_event: npc_id != 0\n");
 		int i;
 		for(i = 0; i < MAX_EVENTQUEUE; i++)
 			if (!sd->eventqueue[i][0])
@@ -748,14 +695,12 @@ int npc_event(struct map_session_data *sd, const char *eventname, int mob_kill)
 			if (battle_config.error_log)
 				printf("npc_event: event queue is full !\n");
 		} else {
-//			if (battle_config.etc_log)
-//				printf("npc_event: enqueue\n");
 			memset(&sd->eventqueue[i], 0, sizeof(sd->eventqueue[i]));
 			strncpy(sd->eventqueue[i], eventname, 49); // 49 + NULL
 		}
 		return 1;
 	}
-	if (nd->flag & 1) {	// 無効化されている
+	if (nd->flag & 1) {
 		npc_event_dequeue(sd);
 		return 0;
 	}
@@ -766,8 +711,8 @@ int npc_event(struct map_session_data *sd, const char *eventname, int mob_kill)
 	return 0;
 }
 
-int npc_command_sub(void *key, void *data, va_list ap)
-{
+int npc_command_sub(void *key, void *data, va_list ap) {
+
 	char *p = (char *)key;
 	struct event_data *ev = (struct event_data *)data;
 	char *npcname = va_arg(ap,char *);
@@ -784,8 +729,8 @@ int npc_command_sub(void *key, void *data, va_list ap)
 	return 0;
 }
 
-int npc_command(struct map_session_data *sd, char *npcname, char *command)
-{
+int npc_command(struct map_session_data *sd, char *npcname, char *command) {
+
 	strdb_foreach(ev_db, npc_command_sub, npcname, command);
 
 	return 0;
@@ -795,8 +740,8 @@ int npc_command(struct map_session_data *sd, char *npcname, char *command)
  * 接触型のNPC処理
  *------------------------------------------
  */
-int npc_touch_areanpc(struct map_session_data *sd,int m,int x,int y)
-{
+int npc_touch_areanpc(struct map_session_data *sd,int m,int x,int y) {
+
 	int i, f = 1;
 	int xs, ys;
 
@@ -806,7 +751,7 @@ int npc_touch_areanpc(struct map_session_data *sd,int m,int x,int y)
 		return 1;
 
 	for(i = 0; i < map[m].npc_num; i++) {
-		if (map[m].npc[i]->flag & 1) { // 無効化されている
+		if (map[m].npc[i]->flag & 1) {
 			f = 0;
 			continue;
 		}
@@ -837,7 +782,8 @@ int npc_touch_areanpc(struct map_session_data *sd,int m,int x,int y)
 
 	switch(map[m].npc[i]->bl.subtype) {
 		case WARP:
-			if (sd->status.option&(4|6))	//hidden chars cannot use warps as per Aegis 10.2
+			// Characters with hidden/cloaked status cannot use warps
+			if (sd->status.option&(4|6))
 				break;
 			skill_stop_dancing(&sd->bl, 0);
 			pc_setpos(sd, map[m].npc[i]->u.warp.name, map[m].npc[i]->u.warp.x, map[m].npc[i]->u.warp.y, 0, 0);
@@ -847,7 +793,6 @@ int npc_touch_areanpc(struct map_session_data *sd,int m,int x,int y)
 			char name[50];
 			if (sd->areanpc_id == map[m].npc[i]->bl.id)
 				return 1;
-
 			strncpy(name, map[m].npc[i]->name, 50);
 			name[49] = '\0';
 			sd->areanpc_id = map[m].npc[i]->bl.id;
@@ -865,15 +810,13 @@ int npc_touch_areanpc(struct map_session_data *sd,int m,int x,int y)
  *------------------------------------------
  */
 int npc_checknear(struct map_session_data *sd, struct npc_data *nd) {
-//	nullpo_retr(0, sd); // checked before to call function
 
 	if (nd == NULL || nd->bl.type != BL_NPC)
 		return 1;
 
-	if (nd->class < 0) // イベント系は常にOK
+	if (nd->class < 0)
 		return 0;
 
-	// エリア判定
 	if (nd->bl.m != sd->bl.m ||
 	    nd->bl.x < sd->bl.x - AREA_SIZE - 1 || nd->bl.x > sd->bl.x + AREA_SIZE + 1 ||
 	    nd->bl.y < sd->bl.y - AREA_SIZE - 1 || nd->bl.y > sd->bl.y + AREA_SIZE + 1)
@@ -887,6 +830,7 @@ int npc_checknear(struct map_session_data *sd, struct npc_data *nd) {
  *------------------------------------------
  */
 int npc_globalmessage(const char *name, char *mes) {
+
 	struct npc_data *nd = (struct npc_data *)strdb_search(npcname_db, name);
 	char *temp;
 
@@ -906,20 +850,13 @@ int npc_globalmessage(const char *name, char *mes) {
  *------------------------------------------
  */
 void npc_click(struct map_session_data *sd, int id) {
+
 	struct npc_data *nd;
 
-//	nullpo_retr(1, sd); // checked before to call function
-
-/*	if (sd->npc_id != 0) { // checked before to call function
-		if (battle_config.error_log)
-			printf("npc_click: npc_id != 0\n");
-		return;
-	}*/
-
-	if (sd->trade_partner != 0) // if player in trade, he can not click on a NPC
+	if (sd->trade_partner != 0) // Cannot click on NPCs during trade
 		return;
 
-	// If player is frozen, stunned, stone cursed, or sleeping they cannot click on a NPC
+	// If player is frozen, stunned, stone cursed, or sleeping they cannot click on NPCs
 	if(sd->sc_count) {
 		if((sd->sc_data[SC_STONE].timer != -1 && sd->sc_data[SC_STONE].val2 == 0) ||
 		   sd->sc_data[SC_FREEZE].timer != -1 ||
@@ -929,10 +866,10 @@ void npc_click(struct map_session_data *sd, int id) {
 	}
 
 	nd = (struct npc_data *)map_id2bl(id);
-	if (npc_checknear(sd, nd)) // check if npc exists too and is a NPC
+	if (npc_checknear(sd, nd)) // Verify NPC exists, and that it's an NPC
 		return;
 
-	if (nd->flag & 1) // 無効化されている
+	if (nd->flag & 1)
 		return;
 
 	sd->npc_id = id;
@@ -954,6 +891,7 @@ void npc_click(struct map_session_data *sd, int id) {
  *------------------------------------------
  */
 void npc_scriptcont(struct map_session_data *sd, int id) {
+
 	struct npc_data *nd;
 
 	nullpo_retv(sd);
@@ -962,7 +900,7 @@ void npc_scriptcont(struct map_session_data *sd, int id) {
 		return;
 
 	nd = (struct npc_data *)map_id2bl(id);
-	if (npc_checknear(sd, nd)) // check if npc exists too and is a NPC
+	if (npc_checknear(sd, nd)) // Verify NPC exists, and that it's an NPC
 		return;
 
 	sd->npc_pos = run_script(nd->u.scr.script, sd->npc_pos, sd->bl.id, id);
@@ -977,17 +915,15 @@ void npc_scriptcont(struct map_session_data *sd, int id) {
 void npc_buysellsel(struct map_session_data *sd, int id, int type) {
 	struct npc_data *nd;
 
-//	nullpo_retr(1, sd); // checked before to call function
-
 	nd = (struct npc_data *)map_id2bl(id);
-	if (npc_checknear(sd, nd)) // check if npc exists too and is a NPC
+	if (npc_checknear(sd, nd)) // Verify NPC exists, and that it's an NPC
 		return;
 
 	if (nd->bl.subtype != SHOP) {
 		sd->npc_id = 0;
 		return;
 	}
-	if (nd->flag & 1) // 無効化されている
+	if (nd->flag & 1)
 		return;
 
 	sd->npc_shopid = id;
@@ -1005,16 +941,14 @@ void npc_buysellsel(struct map_session_data *sd, int id, int type) {
  *------------------------------------------
  */
 int npc_buylist(struct map_session_data *sd, int n, unsigned short *item_list) {
+
 	struct npc_data *nd;
 	double z;
 	int i, j, w, skill, new = 0;
 	struct item_data *item_data;
 
-//	nullpo_retr(3, sd); // checked before to call function
-//	nullpo_retr(3, item_list); // checked before to call function
-
 	nd = (struct npc_data*)map_id2bl(sd->npc_shopid);
-	if (npc_checknear(sd, nd)) // check if npc exists too and is a NPC
+	if (npc_checknear(sd, nd)) // Verify NPC exists, and that it's an NPC
 		return 3; // 0: The deal has successfully completed., 1: You dont have enough zeny., 2: you are overcharged!, 3: You are over your weight limit.
 
 	if (nd->bl.subtype != SHOP)
@@ -1038,7 +972,7 @@ int npc_buylist(struct map_session_data *sd, int n, unsigned short *item_list) {
 		if (nd->u.shop_item[j].nameid == 0)
 			return 3; // 0: The deal has successfully completed., 1: You dont have enough zeny., 2: you are overcharged!, 3: You are over your weight limit.
 
-		// You can't buy more than 1 stackable item (of the same item) at the same time [Proximus]
+		// You can't buy more than 1 stackable item (of the same item) at the same time
 		if (itemdb_isequip3(nd->u.shop_item[j].nameid) && item_list[i*2] > 1)
 		{
 			char message_to_gm[strlen(msg_txt(671)) + strlen(msg_txt(507)) + strlen(msg_txt(540)) + strlen(msg_txt(508))];
@@ -1082,22 +1016,22 @@ int npc_buylist(struct map_session_data *sd, int n, unsigned short *item_list) {
 		w += item_data->weight * amount;
 	}
 
-	/* check for the weight limit */
+	/* Check for the weight limit */
 	if(sd->weight + w > sd->max_weight)
 		return 2;
 
-	/* check for the inventory space limit */
+	/* Check for the inventory space limit */
 	if(pc_inventoryblank(sd) <= new)
 		return 3;
 
 	if (z < 0. || z > (double)sd->status.zeny)
 		return 1; // 0: The deal has successfully completed., 1: You dont have enough zeny., 2: you are overcharged!, 3: You are over your weight limit.
 
-	/* get zenys from player */
+	/* Get zeny from player */
 	if(pc_payzeny(sd, (int)z) != 0)
 		return 1;
 
-	/* add items to player's inventory */
+	/* Add items to player's inventory */
 	for(i = 0; i < n; i++)
 	{
 		struct item item_tmp;
@@ -1109,7 +1043,6 @@ int npc_buylist(struct map_session_data *sd, int n, unsigned short *item_list) {
 		pc_additem(sd, &item_tmp, item_list[i * 2]);
 	}
 
-	//商人経験値
 	if (battle_config.shop_exp > 0 && z > 0. && (skill = pc_checkskill(sd, MC_DISCOUNT)) > 0) {
 		if (sd->status.skill[MC_DISCOUNT].flag >= 2 && sd->status.skill[MC_DISCOUNT].flag != 13) // flag: 0 (normal), 1 (only card), 2-12 (card and skill (skill level +2)), 13 (cloneskill)
 			if (skill < sd->status.skill[MC_DISCOUNT].flag - 2)
@@ -1130,23 +1063,21 @@ int npc_buylist(struct map_session_data *sd, int n, unsigned short *item_list) {
  *------------------------------------------
  */
 int npc_selllist(struct map_session_data *sd, int n, unsigned short *item_list) {
+
 	struct npc_data *nd;
 	double z;
 	int i, skill, idx;
 	struct item_data *item_data;
-	struct item inventory[MAX_INVENTORY]; // too fix cumulativ selling (hack)
-
-//	nullpo_retr(1, sd); // checked before to call function
-//	nullpo_retr(1, item_list); // checked before to call function
+	struct item inventory[MAX_INVENTORY]; // To fix cumulative selling (hack)
 
 	nd = (struct npc_data*)map_id2bl(sd->npc_shopid);
-	if (npc_checknear(sd, nd)) // check if npc exists too and is a NPC
+	if (npc_checknear(sd, nd)) // Verify NPC exists, and that it's an NPC
 		return 1;
 
-	if (nd->bl.subtype != SHOP) // don't sell to a non-shop NPC!
+	if (nd->bl.subtype != SHOP) // Don't sell to a non-shop NPC!
 		return 1;
 
-	// get inventory of player
+	// Get inventory of player
 	memcpy(&inventory, &sd->status.inventory, sizeof(struct item) * MAX_INVENTORY);
 
 	z = 0.;
@@ -1185,7 +1116,6 @@ int npc_selllist(struct map_session_data *sd, int n, unsigned short *item_list) 
 		pc_delitem(sd, idx, item_list[i * 2 + 1], 0);
 	}
 
-	//商人経験値
 	if (battle_config.shop_exp > 0 && z > 0. && (skill = pc_checkskill(sd, MC_OVERCHARGE)) > 0) {
 		if (sd->status.skill[MC_OVERCHARGE].flag >= 2 && sd->status.skill[MC_OVERCHARGE].flag != 13) // flag: 0 (normal), 1 (only card), 2-12 (card and skill (skill level +2)), 13 (cloneskill)
 			if (skill < sd->status.skill[MC_OVERCHARGE].flag - 2)
@@ -1201,13 +1131,12 @@ int npc_selllist(struct map_session_data *sd, int n, unsigned short *item_list) 
 	return 0;
 }
 
-// [Valaris] NPC Walking
-
 /*==========================================
  * Time calculation concerning one step next to npc
  *------------------------------------------
  */
 static int calc_next_walk_step(struct npc_data *nd) {
+
 	nullpo_retr(0, nd);
 
 	if (nd->walkpath.path_pos >= nd->walkpath.path_len)
@@ -1226,8 +1155,8 @@ static int calc_next_walk_step(struct npc_data *nd) {
  * npc Walk processing
  *------------------------------------------
  */
-static int npc_walk(struct npc_data *nd, unsigned int tick, int data)
-{
+static int npc_walk(struct npc_data *nd, unsigned int tick, int data) {
+
 	int moveblock;
 	int i;
 	static int dirx[8] = {0, -1, -1, -1,  0,  1, 1, 1};
@@ -1290,14 +1219,14 @@ static int npc_walk(struct npc_data *nd, unsigned int tick, int data)
 		nd->state.state = MS_WALK;
 
 		if(nd->walkpath.path_pos>=nd->walkpath.path_len)
-			clif_fixnpcpos(nd);	// When npc stops, retransmission current of a position.
+			clif_fixnpcpos(nd);
 	}
 
 	return 0;
 }
 
-int npc_changestate(struct npc_data *nd, int state, int type)
-{
+int npc_changestate(struct npc_data *nd, int state, int type) {
+
 	int i;
 
 	nullpo_retr(0, nd);
@@ -1326,8 +1255,8 @@ int npc_changestate(struct npc_data *nd, int state, int type)
 	return 0;
 }
 
-static int npc_walktimer(int tid, unsigned int tick, int id, int data)
-{
+static int npc_walktimer(int tid, unsigned int tick, int id, int data) {
+
 	struct npc_data *nd;
 
 	nd = (struct npc_data*)map_id2bl(id);
@@ -1357,8 +1286,8 @@ static int npc_walktimer(int tid, unsigned int tick, int id, int data)
 	return 0;
 }
 
-static int npc_walktoxy_sub(struct npc_data *nd)
-{
+static int npc_walktoxy_sub(struct npc_data *nd) {
+
 	struct walkpath_data wpd;
 
 	nullpo_retr(0, nd);
@@ -1375,8 +1304,8 @@ static int npc_walktoxy_sub(struct npc_data *nd)
 	return 0;
 }
 
-int npc_walktoxy(struct npc_data *nd,int x,int y,int easy)
-{
+int npc_walktoxy(struct npc_data *nd,int x,int y,int easy) {
+
 	struct walkpath_data wpd;
 
 	nullpo_retr(0, nd);
@@ -1396,8 +1325,8 @@ int npc_walktoxy(struct npc_data *nd,int x,int y,int easy)
 	return 0;
 }
 
-int npc_stop_walking(struct npc_data *nd, int type)
-{
+int npc_stop_walking(struct npc_data *nd, int type) {
+
 	nullpo_retr(0, nd);
 
 	if (nd->state.state == MS_WALK || nd->state.state == MS_IDLE) {
@@ -1434,15 +1363,12 @@ int npc_stop_walking(struct npc_data *nd, int type)
 	return 0;
 }
 
-//
-// 初期化関係
-//
-
 /*==========================================
  * 読み込むnpcファイルのクリア
  *------------------------------------------
  */
 void npc_clearsrcfile() {
+
 	struct npc_src_list *p = npc_src_first;
 
 	while(p) {
@@ -1459,8 +1385,8 @@ void npc_clearsrcfile() {
  * 読み込むnpcファイルの追加
  *------------------------------------------
  */
-void npc_addsrcfile(char *name)
-{
+void npc_addsrcfile(char *name) {
+
 	struct npc_src_list *new;
 
 	if (strcasecmp(name, "clear") == 0) {
@@ -1468,10 +1394,10 @@ void npc_addsrcfile(char *name)
 		return;
 	}
 
-	// prevent multiple insert of source files
+	// Prevent multiple insert of source files
   {
 	struct npc_src_list *p = npc_src_first;
-	while (p) { // found the file, no need to insert it again
+	while (p) { // Found the file, no need to insert it again
 		if (strcmp(name, p->name) == 0)
 			return;
 		p = p->next;
@@ -1494,8 +1420,7 @@ void npc_addsrcfile(char *name)
  * 読み込むnpcファイルの削除
  *------------------------------------------
  */
-void npc_delsrcfile(char *name)
-{
+void npc_delsrcfile(char *name) {
 	struct npc_src_list *p=npc_src_first,*pp=NULL,**lp=&npc_src_first;
 
 	if (strcasecmp(name, "all") == 0) {
@@ -1516,97 +1441,63 @@ void npc_delsrcfile(char *name)
 }
 
 /*==========================================
- * warp行解析
+ * Warp script NPC parse function
  *------------------------------------------
  */
 int npc_parse_warp(char *w1, char *w3, char *w4, int lines) {
+
 	int x, y, xs, ys, to_x, to_y, m;
 	int i, j, ii, jj, count;
 	char mapname[17], to_mapname[17]; // 16 + NULL
 	struct npc_data *nd;
 
-	// 引数の個数チェック
+	// Verify warp line script syntax is valid
 	if (sscanf(w1, "%[^,],%d,%d", mapname, &x, &y) != 3 ||
 	    sscanf(w4, "%d,%d,%[^,],%d,%d", &xs, &ys, to_mapname, &to_x, &to_y) != 5) {
-		if (current_file != NULL) // if not a GM command, but a script
+		if (current_file != NULL)
 			printf(CL_RED "Bad warp line" CL_RESET ": %s (file:%s:%d) -> " CL_RED "not loaded" CL_RESET ".\n", w3, current_file, lines);
 		return 1;
 	}
 
-	// check map names (need to check both map name, a GM command can call this function directly)
+	// Verify warp source map name is valid
 	if (strstr(mapname, ".gat") == NULL || mapname[0] == '\0' || strlen(mapname) > 16) {
-		if (current_file != NULL) // if not a GM command, but a script
-			printf(CL_RED "Bad source map name" CL_RESET " in warp: %s (file:%s:%d) -> " CL_RED "not loaded" CL_RESET "!\n", w3, current_file, lines);
+		if (current_file != NULL)
+			printf(CL_RED "Bad warp source map name" CL_RESET " in warp: %s (file:%s:%d) -> " CL_RED "not loaded" CL_RESET "!\n", w3, current_file, lines);
 		return 1;
 	}
+	// Verify warp destination map name is valid
 	if (strstr(to_mapname, ".gat") == NULL || to_mapname[0] == '\0' || strlen(to_mapname) > 16) {
-		if (current_file != NULL) // if not a GM command, but a script
-			printf(CL_RED "Bad destination map name" CL_RESET " in warp: %s (file:%s:%d) -> " CL_RED "not loaded" CL_RESET "!\n", w3, current_file, lines);
+		if (current_file != NULL)
+			printf(CL_RED "Bad warp destination map name:" CL_RESET " In warp: %s (%s:%d) -> " CL_RED "Removed." CL_RESET "\n", w3, current_file, lines);
 		return 1;
 	}
 
-	// check destination warp coordinates (if possible)
-	if ((m = map_mapname2mapid(to_mapname)) >= 0) { // map id on this server (m == -1 if not in actual map-server)
-		// out of range destination
+	// Verify warp desination coordinates are valid
+	if ((m = map_mapname2mapid(to_mapname)) >= 0) {
+		// Verify warp destination coordinates are within map coordinate range
 		if (to_x < 0 || to_x >= map[m].xs || to_y < 0 || to_y >= map[m].ys) {
-			if (current_file != NULL) // if not a GM command, but a script
-				printf(CL_RED "Bad destination coordinates" CL_RESET " (out of range: %s,%d,%d) in warp: %s (file:%s:%d) -> " CL_RED "not loaded" CL_RESET "!\n", to_mapname, to_x, to_y, w3, current_file, lines);
+			if (current_file != NULL)
+				printf(CL_RED "Bad warp destination coordinates:" CL_RESET " Out of map coordinate range: %s,%d,%d in warp: %s (%s:%d) -> " CL_RED "Removed." CL_RESET "\n", to_mapname, to_x, to_y, w3, current_file, lines);
 			return 1;
+		// Verify warp destination coordinates are walkable
 		} else if (map_getcell(m, to_x, to_y, CELL_CHKNOPASS)) {
-			if (current_file != NULL) // if not a GM command, but a script
-#ifdef __DEBUG
-				printf(CL_RED "Bad destination coordinates" CL_RESET " (can not walk on this position: %s,%d,%d, cell type: %d) in warp: %s (file:%s:%d) -> " CL_RED "not loaded" CL_RESET "!\n", to_mapname, to_x, to_y, map_getcell(m, to_x, to_y, CELL_GETTYPE), w3, current_file, lines);
-#else
-				printf(CL_RED "Bad destination coordinates" CL_RESET " (can not walk on this position: %s,%d,%d) in warp: %s (file:%s:%d) -> " CL_RED "not loaded" CL_RESET "!\n", to_mapname, to_x, to_y, w3, current_file, lines);
-#endif
+			if (current_file != NULL)
+				printf(CL_RED "Bad warp destination coordinates:" CL_RESET " Can't walk on this position: %s,%d,%d in warp: %s (%s:%d) -> " CL_RED "Removed." CL_RESET "\n", to_mapname, to_x, to_y, w3, current_file, lines);
 			return 1;
-		} else if (map_getcell(m, to_x, to_y, CELL_CHKNPC)) {
-			if (current_file != NULL) { // if not a GM command, but a script
-				int k, xs1, ys1;
-				// search npc name
-				for(k = 0; k < map[m].npc_num; k++) {
-					switch(map[m].npc[k]->bl.subtype) {
-					case WARP:
-						xs1 = map[m].npc[k]->u.warp.xs;
-						ys1 = map[m].npc[k]->u.warp.ys;
-						break;
-					case SCRIPT:
-						xs1 = map[m].npc[k]->u.scr.xs;
-						ys1 = map[m].npc[k]->u.scr.ys;
-						break;
-					default:
-						continue;
-					}
-					if (to_x >= map[m].npc[k]->bl.x - xs1 / 2 && to_x <= map[m].npc[k]->bl.x - xs1 / 2 + xs1 &&
-					    to_y >= map[m].npc[k]->bl.y - ys1 / 2 && to_y <= map[m].npc[k]->bl.y - ys1 / 2 + ys1)
-						break;
-				}
-				// if (k != map[m].npc_num)
-					// Commented (Annoying) -> Seems to be incorrect based on Aegis info [Tsuyuki]
-					// printf(CL_YELLOW "WARNING: Bad destination coordinates" CL_RESET " (same of another npc/warp (%s): %s,%d,%d) in warp: %s (file:%s:%d) -> " CL_YELLOW "loaded" CL_RESET ".\n", map[m].npc[k]->name, to_mapname, to_x, to_y, w3, current_file, lines);
-				// else
-					// Commented (Annoying) -> Seems to be incorrect based on Aegis info [Tsuyuki]
-					// printf(CL_YELLOW "WARNING: Bad destination coordinates" CL_RESET " (same of another npc/warp: %s,%d,%d) in warp: %s (file:%s:%d) -> " CL_YELLOW "loaded" CL_RESET ".\n", to_mapname, to_x, to_y, w3, current_file, lines);
-			}
 		}
 	}
 
-	m = map_mapname2mapid(mapname); // map id on this server (m == -1 if not in actual map-server)
-	// don't accept warp if not in this map-server
+	m = map_mapname2mapid(mapname);
 	if (m < 0)
 		return 1;
 
-	// check source warp coordinates
+	// Check source warp coordinates
 	if (x < 0 || x >= map[m].xs || y < 0 || y >= map[m].ys) {
-		if (current_file != NULL) // if not a GM command, but a script
-			printf(CL_RED "Bad source coordinates" CL_RESET " (out of range: %s,%d,%d) in warp: %s (file:%s:%d) -> " CL_RED " not loaded" CL_RESET "!\n", mapname, x, y, w3, current_file, lines);
-		return 1;
-	} else if (map_getcell(m, x, y, CELL_CHKNPC)) {
-		if (current_file != NULL) // if not a GM command, but a script
-			printf(CL_RED "Bad source coordinates" CL_RESET " (same of another npc/warp: %s,%d,%d) in warp: %s (file:%s:%d) -> " CL_RED " not loaded" CL_RESET "!\n", mapname, x, y, w3, current_file, lines);
+		if (current_file != NULL)
+			printf(CL_RED "Bad warp source coordinates:" CL_RESET " Out of range: %s,%d,%d in warp: %s (%s:%d) -> " CL_RED " Removed." CL_RESET "\n", mapname, x, y, w3, current_file, lines);
 		return 1;
 	}
-	// check all position of source warp coordinates
+
 	count = 0;
 	for(i = 0; i < ys + 2; i++) {
 		ii = y - (ys + 2) / 2 + i;
@@ -1614,74 +1505,42 @@ int npc_parse_warp(char *w1, char *w3, char *w4, int lines) {
 			jj = x - (xs + 2) / 2 + j;
 			if (map_getcell(m, jj, ii, CELL_CHKNOPASS))
 				continue;
-			if (map_getcell(m, jj, ii, CELL_CHKNPC)) // don't set 2 npc on same place
+			if (map_getcell(m, jj, ii, CELL_CHKNPC))
 				continue;
 			count++;
 		}
 	}
-	if (count == 0) {
-		if (current_file != NULL) // if not a GM command, but a script
-			printf(CL_RED "No available square" CL_RESET " (warp can not be used, position: %s,%d,%d) in warp: %s (file:%s:%d) -> " CL_RED "not loaded" CL_RESET "!\n", mapname, x, y, w3, current_file, lines);
-		return 1;
-	} else if (count == 1) {
-		if (current_file != NULL) // if not a GM command, but a script
-			printf(CL_RED "Only 1 available square" CL_RESET " (it's difficult to use warp, position: %s,%d,%d) in warp: %s (file:%s:%d) -> " CL_RED "not loaded" CL_RESET "!\n", mapname, x, y, w3, current_file, lines);
-		return 1;
-	}
-	if (map_getcell(m, x, y, CELL_CHKNOPASS)) {
-		if (current_file != NULL) { // if not a GM command, but a script
-#ifdef __DEBUG
-			printf(CL_YELLOW "WARNING: Bad source coordinates" CL_RESET " (can not walk on this position: %s,%d,%d, cell type: %d) in warp: %s (file:%s:%d), ", mapname, x, y, map_getcell(m, x, y, CELL_GETTYPE), w3, current_file, lines);
-#else
-			printf(CL_YELLOW "WARNING: Bad source coordinates" CL_RESET " (can not walk on this position: %s,%d,%d) in warp: %s (file:%s:%d), ", mapname, x, y, w3, current_file, lines);
-#endif
-			if (count == 2)
-				printf(CL_YELLOW "and only 2 available squares" CL_RESET " -> " CL_YELLOW "loaded" CL_RESET "!\n");
-			else
-				printf("but this warp has %d available squares -> " CL_YELLOW "can be used" CL_RESET ".\n", count);
-		}
-	} else if (count == 2) {
-//		if (current_file != NULL) // if not a GM command, but a script
-//			printf(CL_YELLOW "WARNING: Only 2 available squares" CL_RESET " (it's difficult to use warp, position: %s,%d,%d) in warp: %s (file:%s:%d) -> " CL_YELLOW "loaded" CL_RESET "!\n", mapname, x, y, w3, current_file, lines);
-	} // with 3 squares, warp can be used by players without problem
 
-	// warning on warp name
+	// Verify warp name is valid
 	if (strlen(w3) > 24) {
-		if (current_file != NULL) // if not a GM command, but a script
-			printf(CL_YELLOW "WARNING: Invalid warp name" CL_RESET" (warp: %s) - Name too long (> 24 char.) -> only 24 first characters are used (file:%s:%d).\n", w3, current_file, lines);
+		if (current_file != NULL)
+			printf(CL_YELLOW "Warning: Invalid warp name:" CL_RESET" (%s) -> Name too long (> 24 char) -> Only 24 first characters are used (%s:%d).\n", w3, current_file, lines);
 	}
 
 	CALLOC(nd, struct npc_data, 1);
 	nd->bl.id = npc_get_new_npc_id();
 	nd->n = map_addnpc(m, nd);
 
+	// Verify maximum NPC quantity on map
 	if (nd->n == -1) {
-		if (current_file != NULL) // if not a GM command, but a script
-			printf(CL_RED "Too many NPCs (%d) in map %s. Warp %s not loaded" CL_RESET " (file:%s:%d).\n", MAX_NPC_PER_MAP, mapname, w3, current_file, lines);
+		if (current_file != NULL)
+			printf(CL_RED "Too many NPCs (%d) in map %s -> Warp %s removed:" CL_RESET " (%s:%d).\n", MAX_NPC_PER_MAP, mapname, w3, current_file, lines);
 		FREE(nd);
 		return 1;
 	}
 
-//	nd->bl.prev = NULL;
-//	nd->bl.next = NULL;
 	nd->bl.m = m;
 	nd->bl.x = x;
 	nd->bl.y = y;
-//	nd->dir = 0;
-//	nd->flag = 0;
 	strncpy(nd->name, w3, 24);
 	strncpy(nd->exname, w3, 24);
 
-//	nd->chat_id = 0;
 	if (!battle_config.warp_point_debug)
 		nd->class = WARP_CLASS;
 	else
 		nd->class = WARP_DEBUG_CLASS;
+
 	nd->speed = 200;
-//	nd->option = 0;
-//	nd->opt1 = 0;
-//	nd->opt2 = 0;
-//	nd->opt3 = 0;
 	strncpy(nd->u.warp.name, to_mapname, 16); // 17 - NULL
 	xs += 2;
 	ys += 2;
@@ -1696,13 +1555,12 @@ int npc_parse_warp(char *w1, char *w3, char *w4, int lines) {
 			jj = x - xs / 2 + j;
 			if (map_getcell(m, jj, ii, CELL_CHKNOPASS))
 				continue;
-			if (map_getcell(m, jj, ii, CELL_CHKNPC)) // don't set 2 npc on same place
+			if (map_getcell(m, jj, ii, CELL_CHKNPC))
 				continue;
 			map_setcell(m, jj, ii, CELL_SETNPC);
 		}
 	}
 
-//	printf("warp npc %s %d read done\n", mapname, nd->bl.id);
 	npc_warp++;
 	nd->bl.type = BL_NPC;
 	nd->bl.subtype = WARP;
@@ -1714,57 +1572,56 @@ int npc_parse_warp(char *w1, char *w3, char *w4, int lines) {
 }
 
 /*==========================================
- * shop行解析
+ * Shop script NPC parse function
  *------------------------------------------
  */
 static int npc_parse_shop(char *w1, char *w3, char *w4, int lines) {
+
 #define MAX_SHOPITEMS 100
+
 	char *p;
 	int x, y, dir, m;
 	short pos;
 	char mapname[17]; // 16 + NULL
 	struct npc_data *nd;
 
-	// 引数の個数チェック
-	if (sscanf(w1, "%[^,],%d,%d,%d", mapname, &x, &y, &dir) != 4 ||
-	    strchr(w4, ',') == NULL) {
-		if (current_file != NULL) // if not a GM command, but a script
+	// Verify shop line script syntax is valid
+	if (sscanf(w1, "%[^,],%d,%d,%d", mapname, &x, &y, &dir) != 4 || strchr(w4, ',') == NULL) {
+		if (current_file != NULL)
 			printf(CL_RED "Bad shop line" CL_RESET ": %s (file:%s:%d)\n", w3, current_file, lines);
 		return 1;
 	}
-	// check map name (note: mapname already tested before to call parse function)
-	m = map_mapname2mapid(mapname); // map id on this server (m == -1 if not in actual map-server)
 
-	// check position coordinates
+	m = map_mapname2mapid(mapname);
+
+	// Verify shop coordinates are valid
 	if (x < 0 || x >= map[m].xs || y < 0 || y >= map[m].ys) {
-		if (current_file != NULL) // if not a GM command, but a script
-			printf(CL_RED "Bad position coordinates" CL_RESET " (out of range: %s,%d,%d) in shop: %s (file:%s:%d) -> " CL_RED " not loaded" CL_RESET "!\n", mapname, x, y, w3, current_file, lines);
-		return 1;
-	} else if (map_getcell(m, x, y, CELL_CHKNPC)) {
-		if (current_file != NULL) // if not a GM command, but a script
-			printf(CL_RED "Bad position coordinates" CL_RESET " (same of another npc/warp: %s,%d,%d) in shop: %s (file:%s:%d) -> " CL_RED " not loaded" CL_RESET "!\n", mapname, x, y, w3, current_file, lines);
+		if (current_file != NULL)
+			printf(CL_RED "Bad shop position coordinates:" CL_RESET " Out of range: %s,%d,%d in shop: %s (%s:%d) -> " CL_RED " removed." CL_RESET "\n", mapname, x, y, w3, current_file, lines);
 		return 1;
 	}
 
-	// warning on warp name
+	// Verify shop name is valid
 	if (strlen(w3) > 24) {
-		if (current_file != NULL) // if not a GM command, but a script
-			printf(CL_YELLOW "WARNING: Invalid shop name" CL_RESET" (shop: %s) - Name too long (> 24 char.) -> only 24 first characters are used (file:%s:%d).\n", w3, current_file, lines);
+		if (current_file != NULL)
+			printf(CL_YELLOW "Warning: Invalid shop name:" CL_RESET" (%s) -> Name too long (> 24 char) -> Only 24 first characters are used (%s:%d).\n", w3, current_file, lines);
 	}
 
 	CALLOC(nd, struct npc_data, 1);
 	nd->bl.id = npc_get_new_npc_id();
 	nd->n = map_addnpc(m, nd);
 
+	// Verify maximum NPC quantity on map
 	if (nd->n == -1) {
-		if (current_file != NULL) // if not a GM command, but a script
-			printf(CL_RED "Too many NPCs (%d) in map %s. Shop %s not loaded" CL_RESET " (file:%s:%d) -> " CL_RED " not loaded" CL_RESET ".\n", MAX_NPC_PER_MAP, mapname, w3, current_file, lines);
+		if (current_file != NULL)
+			printf(CL_RED "Too many NPCs (%d) in map %s. Shop %s removed:" CL_RESET " (%s:%d).\n", MAX_NPC_PER_MAP, mapname, w3, current_file, lines);
 		FREE(nd);
 		return 1;
 	}
 
 	CALLOC(nd->u.shop_item, struct npc_item_list, MAX_SHOPITEMS + 1);
 
+	// Verify shop items
 	p = strchr(w4, ',');
 	pos = 0;
 	while(p && pos < MAX_SHOPITEMS) {
@@ -1774,15 +1631,14 @@ static int npc_parse_shop(char *w1, char *w3, char *w4, int lines) {
 		if (sscanf(p, "%d:%d", &nameid, &value) != 2)
 			break;
 		if ((id = itemdb_search(nameid)) == NULL) {
-			if (current_file != NULL) // if not a GM command, but a script
-				printf(CL_YELLOW "Unknown item in a shop" CL_RESET " (id: %d): %s (file:%s:%d) -> " CL_YELLOW "item not added in the shop" CL_RESET ".\n", nameid, w3, current_file, lines);
+			if (current_file != NULL)
+				printf(CL_YELLOW "Unknown item in a shop:" CL_RESET " (id: %d): %s (%s:%d) -> " CL_YELLOW "item not added in the shop." CL_RESET "\n", nameid, w3, current_file, lines);
 		} else {
 			nd->u.shop_item[pos].nameid = nameid;
 			if (value < 0)
 				value = id->value_buy;
 			nd->u.shop_item[pos].value = value;
-			// check for bad prices that can possibly cause exploits
-			if ((double)value * 75. < (double)id->value_sell * 124.) { // ((double)value * 75.) / 100. < ((double)id->value_sell * 124.) / 100.
+			if ((double)value * 75. < (double)id->value_sell * 124.) {
 				printf("[NPC file %s], possible exploit OC/DC (" CL_YELLOW "WARNING" CL_RESET "):\n", current_file);
 				printf("Item %s [%d] buying:%d < selling:%d.\n", id->name, id->nameid, value * 75 / 100, id->value_sell * 124 / 100);
 				nd->u.shop_item[pos].value = ((double)id->value_sell * 124.) / 75. + 1.;
@@ -1793,7 +1649,7 @@ static int npc_parse_shop(char *w1, char *w3, char *w4, int lines) {
 		p = strchr(p, ',');
 	}
 	if (pos == 0) {
-		if (current_file != NULL) // if not a GM command, but a script
+		if (current_file != NULL)
 			printf(CL_RED "Bad shop line" CL_RESET " (no item in the shop): %s (file:%s:%d) -> " CL_RED " not loaded" CL_RESET ".\n", w3, current_file, lines);
 		FREE(nd->u.shop_item);
 		FREE(nd);
@@ -1802,23 +1658,14 @@ static int npc_parse_shop(char *w1, char *w3, char *w4, int lines) {
 	nd->u.shop_item[pos++].nameid = 0;
 	REALLOC(nd->u.shop_item, struct npc_item_list, pos);
 
-//	nd->bl.prev = NULL;
-//	nd->bl.next = NULL;
 	nd->bl.m = m;
 	nd->bl.x = x;
 	nd->bl.y = y;
 	nd->dir = dir;
-//	nd->flag = 0;
 	strncpy(nd->name, w3, 24);
 	nd->class = atoi(w4);
 	nd->speed = 200;
-//	nd->chat_id = 0;
-//	nd->option = 0;
-//	nd->opt1 = 0;
-//	nd->opt2 = 0;
-//	nd->opt3 = 0;
 
-	//printf("shop npc %s %d read done\n", mapname, nd->bl.id);
 	npc_shop++;
 	nd->bl.type = BL_NPC;
 	nd->bl.subtype = SHOP;
@@ -1830,11 +1677,10 @@ static int npc_parse_shop(char *w1, char *w3, char *w4, int lines) {
 }
 
 /*==========================================
- * NPCのラベルデータコンバート
+ * npc_convertlabel_db function
  *------------------------------------------
  */
-int npc_convertlabel_db(void *key, void *data, va_list ap)
-{
+int npc_convertlabel_db(void *key, void *data, va_list ap) {
 	char *lname = (char *)key;
 	int pos = (int)data;
 	struct npc_data *nd;
@@ -1857,7 +1703,6 @@ int npc_convertlabel_db(void *key, void *data, va_list ap)
 
 	*p = '\0';
 
-	// here we check if the label fit into the buffer
 	if (strlen(lname) > 23) {
 		printf("npc_parse_script: " CL_RED "label name longer than 23 chars!" CL_RESET " '" CL_RED "%s" CL_RESET "' (in file '" CL_WHITE "%s" CL_RESET "')\n", lname, current_file);
 		exit(1);
@@ -1873,12 +1718,12 @@ int npc_convertlabel_db(void *key, void *data, va_list ap)
 }
 
 /*==========================================
- * script行解析
+ * Normal script NPC parse function
  *------------------------------------------
  */
-static int npc_parse_script(char *w1, char *w2, char *w3, char *w4, char *first_line, FILE *fp, int *lines)
-{
-	int x, y, dir, m, xs = 0, ys = 0, class = 0; // [Valaris] thanks to fov
+static int npc_parse_script(char *w1, char *w2, char *w3, char *w4, char *first_line, FILE *fp, int *lines) {
+
+	int x, y, dir, m, xs = 0, ys = 0, class = 0;
 	char mapname[17]; // 16 + NULL
 	char *srcbuf = NULL;
 	unsigned char *script;
@@ -1894,10 +1739,10 @@ static int npc_parse_script(char *w1, char *w2, char *w3, char *w4, char *first_
 	int label_dupnum = 0;
 	int src_id = 0;
 
+	// Verify floating NPC line syntax is valid
 	if (strcmp(w1, "-") == 0) {
 		x = 0; y = 0; m = -1;
 	} else {
-		// 引数の個数チェック
 		if (sscanf(w1, "%[^,],%d,%d,%d", mapname, &x, &y, &dir) != 4 ||
 		    (strcmp(w2, "script") == 0 && strchr(w4, ',') == NULL)) {
 			if (current_file)
@@ -1906,11 +1751,11 @@ static int npc_parse_script(char *w1, char *w2, char *w3, char *w4, char *first_
 				printf(CL_RED "Bad script line" CL_RESET ": %s.\n", w3);
 			return 1;
 		}
-		m = map_mapname2mapid(mapname); // map id on this server (m == -1 if not in actual map-server)
+		m = map_mapname2mapid(mapname);
 	}
 
+	// Verify normal NPC line syntax is valid
 	if (strcmp(w2, "script") == 0) {
-		// スクリプトの解析
 		CALLOC(srcbuf, char, srcsize);
 		if (strchr(first_line, '{')) {
 			strcpy(srcbuf, strchr(first_line, '{'));
@@ -1922,7 +1767,7 @@ static int npc_parse_script(char *w1, char *w2, char *w3, char *w4, char *first_
 				;
 			if (i >= 0 && srcbuf[i] == '}')
 				break;
-			if (fgets(line, sizeof(line), fp) == NULL) // fgets reads until maximum one less than size and add '\0' -> so, it's not necessary to add -1
+			if (fgets(line, sizeof(line), fp) == NULL)
 				break;
 			(*lines)++;
 			if (strlen(srcbuf) + strlen(line) + 1 >= srcsize) {
@@ -1940,37 +1785,31 @@ static int npc_parse_script(char *w1, char *w2, char *w3, char *w4, char *first_
 		}
 		script = parse_script((unsigned char *)srcbuf, startline);
 		if (script == NULL) {
-			// script parse error?
 			FREE(srcbuf);
 			return 1;
 		}
-
+	// Verify duplicate NPC line syntax is valid
 	} else {
-		// duplicateする
 		char srcname[128];
 		struct npc_data *nd2;
 		if (sscanf(w2, "duplicate(%[^)])", srcname) != 1) {
-			printf("bad duplicate name (in %s)! : %s", current_file, w2);
+			printf("Bad duplicate name: (%s) -> %s\n", current_file, w2);
 			return 0;
 		}
 		if ((nd2 = npc_name2id(srcname)) == NULL) {
-			printf("bad duplicate name (in %s)! (not exist) : %s\n", current_file, srcname);
+			printf("Bad duplicate name: (%s) -> Doesn't exist: %s\n", current_file, srcname);
 			return 0;
 		}
 		script = nd2->u.scr.script;
 		label_dup = nd2->u.scr.label_list;
 		label_dupnum = nd2->u.scr.label_list_num;
 		src_id = nd2->bl.id;
-
-	}// end of スクリプト解析
+	}
 
 	CALLOC(nd, struct npc_data, 1);
 
 	if (m == -1) {
-		// スクリプトコピー用のダミーNPC
-
 	} else if (sscanf(w4, "%d,%d,%d", &class, &xs, &ys) == 3) {
-		// 接触型NPC
 		int j;
 
 		if (xs >= 0) xs = xs * 2 + 1;
@@ -1986,16 +1825,15 @@ static int npc_parse_script(char *w1, char *w2, char *w3, char *w4, char *first_
 				}
 			}
 		}
-
 		nd->u.scr.xs = xs;
 		nd->u.scr.ys = ys;
-	} else { // クリック型NPC
+	} else {
 		class = atoi(w4);
 		nd->u.scr.xs = 0;
 		nd->u.scr.ys = 0;
 	}
 
-	if (class < 0 && m >= 0) { // イベント型NPC
+	if (class < 0 && m >= 0) {
 		evflag = 1;
 	}
 
@@ -2031,7 +1869,6 @@ static int npc_parse_script(char *w1, char *w2, char *w3, char *w4, char *first_
 	for(i = 0; i < MAX_EVENTTIMER; i++)
 		nd->eventtimer[i] = -1;
 
-	//printf("script npc %s %d %d read done\n", mapname, nd->bl.id, nd->class);
 	npc_script++;
 	nd->bl.type = BL_NPC;
 	nd->bl.subtype = SCRIPT;
@@ -2039,7 +1876,7 @@ static int npc_parse_script(char *w1, char *w2, char *w3, char *w4, char *first_
 		nd->n = map_addnpc(m,nd);
 		map_addblock(&nd->bl);
 
-		if (evflag) { // イベント型
+		if (evflag) {
 			struct event_data *ev;
 			CALLOC(ev, struct event_data, 1);
 			ev->nd=nd;
@@ -2050,30 +1887,15 @@ static int npc_parse_script(char *w1, char *w2, char *w3, char *w4, char *first_
 	}
 	strdb_insert(npcname_db, nd->exname, nd);
 
-	//-----------------------------------------
-	// ラベルデータの準備
 	if (srcbuf) {
-		// script本体がある場合の処理
-
-		// ラベルデータのコンバート
 		label_db = script_get_label_db();
 		strdb_foreach(label_db, npc_convertlabel_db, nd);
-
-		// もう使わないのでバッファ解放
 		FREE(srcbuf);
-
 	} else {
-		// duplicate
-
-//		CALLOC(nd->u.scr.label_list, struct npc_label_list, label_dupnum);
-//		memcpy(nd->u.scr.label_list, label_dup, sizeof(struct npc_label_list) * label_dupnum);
-
-		nd->u.scr.label_list = label_dup; // ラベルデータ共有
+		nd->u.scr.label_list = label_dup;
 		nd->u.scr.label_list_num = label_dupnum;
 	}
 
-	//-----------------------------------------
-	// イベント用ラベルデータのエクスポート
 	for(i = 0; i < nd->u.scr.label_list_num; i++) {
 		char *lname = nd->u.scr.label_list[i].name;
 		int pos = nd->u.scr.label_list[i].pos;
@@ -2081,11 +1903,10 @@ static int npc_parse_script(char *w1, char *w2, char *w3, char *w4, char *first_
 		if ((lname[0] == 'O' || lname[0] == 'o') && (lname[1] == 'N' || lname[1] == 'n')) {
 			struct event_data *ev;
 			char *buf;
-			// エクスポートされる
 			CALLOC(ev, struct event_data, 1);
 			CALLOC(buf, char, 50);
 			if (strlen(lname) > 24) {
-				printf("npc_parse_script: label name error: too long name (%s) !\n", current_file);
+				printf("Parse script error: Label name is too long: (%s).\n", current_file);
 				exit(1);
 			} else {
 				ev->nd = nd;
@@ -2096,14 +1917,11 @@ static int npc_parse_script(char *w1, char *w2, char *w3, char *w4, char *first_
 		}
 	}
 
-	//-----------------------------------------
-	// ラベルデータからタイマーイベント取り込み
 	for(i = 0; i < nd->u.scr.label_list_num; i++) {
 		int t = 0, n = 0;
 		char *lname = nd->u.scr.label_list[i].name;
 		int pos = nd->u.scr.label_list[i].pos;
 		if (sscanf(lname, "OnTimer%d%n", &t, &n) == 1 && lname[n] == '\0') {
-			// タイマーイベント
 			struct npc_timerevent_list *te = nd->u.scr.timer_event;
 			int j, k = nd->u.scr.timeramount;
 			if(te == NULL) {
@@ -2131,21 +1949,19 @@ static int npc_parse_script(char *w1, char *w2, char *w3, char *w4, char *first_
 }
 
 /*==========================================
- * function行解析
+ * Function script NPC parse function
  *------------------------------------------
  */
-static int npc_parse_function(char *w1, char *w3, char *w4, char *first_line, FILE *fp, int *lines)
-{
+static int npc_parse_function(char *w1, char *w3, char *w4, char *first_line, FILE *fp, int *lines) {
+
 	char *srcbuf = NULL;
 	unsigned char *script;
 	int srcsize = 65536;
 	int startline = 0;
 	char line[1024];
 	int i;
-//	struct dbt *label_db;
 	char *p;
 
-	// スクリプトの解析
 	CALLOC(srcbuf, char, srcsize);
 	if (strchr(first_line, '{')) {
 		strcpy(srcbuf, strchr(first_line, '{'));
@@ -2157,7 +1973,7 @@ static int npc_parse_function(char *w1, char *w3, char *w4, char *first_line, FI
 			;
 		if (i >= 0 && srcbuf[i] == '}')
 			break;
-		if (fgets(line, sizeof(line), fp) == NULL) // fgets reads until maximum one less than size and add '\0' -> so, it's not necessary to add -1
+		if (fgets(line, sizeof(line), fp) == NULL)
 			break;
 		(*lines)++;
 		if (strlen(srcbuf) + strlen(line) + 1 >= srcsize) {
@@ -2175,7 +1991,6 @@ static int npc_parse_function(char *w1, char *w3, char *w4, char *first_line, FI
 	}
 	script = parse_script((unsigned char *)srcbuf, startline);
 	if (script == NULL) {
-		// script parse error?
 		FREE(srcbuf);
 		return 1;
 	}
@@ -2185,22 +2000,18 @@ static int npc_parse_function(char *w1, char *w3, char *w4, char *first_line, FI
 	strncpy(p, w3, 49);
 	strdb_insert(script_get_userfunc_db(), p, script);
 
-//	label_db = script_get_label_db();
-
-	// もう使わないのでバッファ解放
 	FREE(srcbuf);
-
-//	printf("function %s => %p\n", p, script);
 
 	return 0;
 }
 
 
 /*==========================================
- * mob行解析
+ * Mob script NPC parse function
  *------------------------------------------
  */
 int npc_parse_mob(char *w1, char *w3, char *w4) {
+
 	int m, x, y, xs, ys, class, num, delay1, delay2, level, size;
 	int i;
 	char mapname[17]; // 16 + NULL
@@ -2210,32 +2021,29 @@ int npc_parse_mob(char *w1, char *w3, char *w4) {
 
 	xs = ys = 0;
 	delay1 = delay2 = 0;
-	// 引数の個数チェック
 	if (sscanf(w1, "%[^,],%d,%d,%d,%d", mapname, &x, &y, &xs, &ys) < 3 ||
 	    sscanf(w4, "%d,%d,%d,%d,%s", &class, &num, &delay1, &delay2, eventname) < 2) {
 		printf("bad monster line: %s.\n", w3);
 		return 1;
 	}
 
-	m = map_mapname2mapid(mapname); // map id on this server (m == -1 if not in actual map-server)
+	m = map_mapname2mapid(mapname);
 
-//	printf("%d->", num);
 	if (num > 1 && battle_config.mob_count_rate != 100) {
 		if ((num = num * battle_config.mob_count_rate / 100) < 1)
 			num = 1;
 	} else if (num < 0) {
-		printf("bad monster line: %s (negativ number of mob: %d).\n", w3, num);
+		printf("Bad monster line: %s -> Negative number of monsters: %d.\n", w3, num);
 		return 1;
 	}
-//	printf("%d (%d%%)\n", num, battle_config.mob_count_rate);
 
-	size = 0;
+	size = 0; // Normal size
 	if (class >= (MAX_MOB_DB * 2)) {
 		size = 2;
-		class -= (MAX_MOB_DB * 2); // big
+		class -= (MAX_MOB_DB * 2); // Large size
 	} else if (class >= MAX_MOB_DB) {
 		size = 1;
-		class -= MAX_MOB_DB; // small
+		class -= MAX_MOB_DB; // Small size
 	}
 
 	for(i = 0; i < num; i++) {
@@ -2292,16 +2100,16 @@ int npc_parse_mob(char *w1, char *w3, char *w4) {
 
 		npc_mob++;
 	}
-	//printf("warp npc %s %d read done\n", mapname, nd->bl.id);
 
 	return 0;
 }
 
 /*==========================================
- * マップフラグ行の解析
+ * Map flag script NPC parse function
  *------------------------------------------
  */
 int npc_parse_mapflag(char *w1, char *w3, char *w4, int lines) {
+
 	int m;
 	char mapname[17], savemap[17];
 	int savex, savey;
@@ -2310,27 +2118,23 @@ int npc_parse_mapflag(char *w1, char *w3, char *w4, int lines) {
 	char drop_type = 0;
 	int drop_per = 0;
 
-	// 引数の個数チェック
 	memset(mapname, 0, sizeof(mapname));
 	if (sscanf(w1, "%[^,]", mapname) != 1) {
-		if (current_file != NULL) // if not a GM command, but a script
+		if (current_file != NULL)
 			printf(CL_RED "Bad map flag line" CL_RESET ": %s (file:%s:%d)!\n", w3, current_file, lines);
 		return 1;
 	}
 
-	// check map name (a GM command can call this function directly)
 	if (strstr(mapname, ".gat") == NULL || mapname[0] == '\0' || strlen(mapname) > 16) {
-		if (current_file != NULL) // if not a GM command, but a script
+		if (current_file != NULL)
 			printf(CL_RED "Invalid map name" CL_RESET " in map flag line: %s (file:%s:%d)!\n", w3, current_file, lines);
 		return 1;
 	}
 
-	m = map_mapname2mapid(mapname); // map id on this server (m == -1 if not in actual map-server)
-	// don't accept flag if not in this map-server
+	m = map_mapname2mapid(mapname);
 	if (m < 0)
 		return 1;
 
-//マップフラグ
 	if (strcasecmp(w3, "nomemo") == 0) { // 0
 		map[m].flag.nomemo = 1;
 	} else if (strcasecmp(w3, "noteleport") == 0) { // 1
@@ -2348,12 +2152,12 @@ int npc_parse_mapflag(char *w1, char *w3, char *w4, int lines) {
 			map[m].save.x = savex;
 			map[m].save.y = savey;
 		} else {
-			if (current_file != NULL) // if not a GM command, but a script
+			if (current_file != NULL)
 				printf(CL_RED "Invalid save point" CL_RESET " in map flag line: %s (file:%s:%d)!\n", w3, current_file, lines);
 			return 1;
 		}
 	} else if (strcasecmp(w3, "nobranch") == 0) { // 3
-		map[m].flag.nobranch = 1; // forbid usage of Dead Branch (604), Bloody Branch (12103) and Poring Box (12109)
+		map[m].flag.nobranch = 1;
 	} else if (strcasecmp(w3, "nopenalty") == 0) { // 4
 		map[m].flag.nopenalty = 1;
 	} else if (strcasecmp(w3, "nozenypenalty") == 0) { // 5
@@ -2374,17 +2178,17 @@ int npc_parse_mapflag(char *w1, char *w3, char *w4, int lines) {
 		map[m].flag.noskill = 1;
 	} else if (strcasecmp(w3, "nowarp") == 0) { // 13
 		map[m].flag.nowarp = 1;
-	} else if (strcasecmp(w3, "nopvp") == 0) { // nopvp for pk mode // 14
+	} else if (strcasecmp(w3, "nopvp") == 0) { // 14
 		map[m].flag.pvp = 0;
-	} else if (strcasecmp(w3, "noicewall") == 0) { // noicewall // 15
+	} else if (strcasecmp(w3, "noicewall") == 0) { // 15
 		map[m].flag.noicewall = 1;
-	} else if (strcasecmp(w3, "snow") == 0) { // snow // 16
+	} else if (strcasecmp(w3, "snow") == 0) { // 16
 		map[m].flag.snow = 1;
-	} else if (strcasecmp(w3, "fog") == 0) { // fog // 17
+	} else if (strcasecmp(w3, "fog") == 0) { // 17
 		map[m].flag.fog = 1;
-	} else if (strcasecmp(w3, "sakura") == 0) { // sakura // 18
+	} else if (strcasecmp(w3, "sakura") == 0) { // 18
 		map[m].flag.sakura = 1;
-	} else if (strcasecmp(w3, "leaves") == 0) { // leaves // 19
+	} else if (strcasecmp(w3, "leaves") == 0) { // 19
 		map[m].flag.leaves = 1;
 	} else if (strcasecmp(w3, "indoors") == 0) { // 20
 		map[m].flag.indoors = 1;
@@ -2417,14 +2221,14 @@ int npc_parse_mapflag(char *w1, char *w3, char *w4, int lines) {
 	           strcasecmp(w3, "nomobloot") == 0) {
 		map[m].flag.nomobdrop = 1;
 		if (strcasecmp(w3, "nomobloot") == 0) {
-			if (current_file != NULL) // if not a GM command, but a script
+			if (current_file != NULL)
 				printf(CL_YELLOW "WARNING: Unknown map flag" CL_RESET ": nomobloot (file:%s:%d)! Server uses 'nomobdrop' mapflag.\n", current_file, lines);
 		}
 	} else if (strcasecmp(w3, "nomvpdrop") == 0 || // 32
 	           strcasecmp(w3, "nomvploot") == 0) {
 		map[m].flag.nomvpdrop = 1;
 		if (strcasecmp(w3, "nomvploot") == 0) {
-			if (current_file != NULL) // if not a GM command, but a script
+			if (current_file != NULL)
 				printf(CL_YELLOW "WARNING: Unknown map flag" CL_RESET ": nomvploot (file:%s:%d)! Server uses 'nomvpdrop' mapflag.\n", current_file, lines);
 		}
 	} else if (strcasecmp(w3, "pvp_nightmaredrop") == 0) { // 33
@@ -2441,12 +2245,11 @@ int npc_parse_mapflag(char *w1, char *w3, char *w4, int lines) {
 				else if (strcmp(drop_arg2, "all") == 0)
 					drop_type = 3;
 				else {
-					if (current_file != NULL) // if not a GM command, but a script
+					if (current_file != NULL)
 						printf(CL_YELLOW "WARNING: Invalid map flag" CL_RESET ": pvp_nightmaredrop (file:%s:%d)! Argument 2 must be: 'inventory' or 'equip' or 'all'.\n", current_file, lines);
 					return 1;
 				}
-				// add the drop list
-				if (map[m].drop_list_num == 0) { // MAX_DROP_PER_MAP -> now, dynamic
+				if (map[m].drop_list_num == 0) {
 					MALLOC(map[m].drop_list, struct drop_list, 1);
 				} else {
 					REALLOC(map[m].drop_list, struct drop_list, map[m].drop_list_num + 1);
@@ -2457,28 +2260,27 @@ int npc_parse_mapflag(char *w1, char *w3, char *w4, int lines) {
 				map[m].drop_list_num++;
 				map[m].flag.pvp_nightmaredrop = 1;
 			} else {
-				if (current_file != NULL) // if not a GM command, but a script
+				if (current_file != NULL)
 					printf(CL_YELLOW "WARNING: Invalid map flag" CL_RESET ": pvp_nightmaredrop (file:%s:%d)! Argument 1 must be: 'random' or a valid item_id.\n", current_file, lines);
 				return 1;
 			}
 		} else {
-			if (current_file != NULL) // if not a GM command, but a script
+			if (current_file != NULL)
 				printf(CL_YELLOW "WARNING: Invalid map flag" CL_RESET ": pvp_nightmaredrop (file:%s:%d)! Number of parameters is incorrect.\n", current_file, lines);
 			return 1;
 		}
 	} else if (strcasecmp(w3, "nogmcmd") == 0) { // 34
-		// when you use this mapflag (nogmcmd, you forbid GM commands upper than the mentionned level, included @ban, @kick, etc...)
 		int gmlvl;
 		if (sscanf(w4, "%d", &gmlvl) == 1) {
 			if (gmlvl >=0 && gmlvl <= 100)
 				map[m].flag.nogmcmd = gmlvl;
 			else {
-				if (current_file != NULL) // if not a GM command, but a script
+				if (current_file != NULL)
 					printf(CL_YELLOW "WARNING: Invalid map flag" CL_RESET ": nogmcmd (file:%s:%d)! Value must be between 0 to 100 (not: %d).\n", current_file, lines, gmlvl);
 				return 1;
 			}
 		} else {
-			if (current_file != NULL) // if not a GM command, but a script
+			if (current_file != NULL)
 				printf(CL_YELLOW "WARNING: Invalid map flag" CL_RESET ": nogmcmd (file:%s:%d)! Please, specify a minimum level.\n", current_file, lines);
 			return 1;
 		}
@@ -2488,21 +2290,20 @@ int npc_parse_mapflag(char *w1, char *w3, char *w4, int lines) {
 			if (gmlvl >=0 && gmlvl <= 100)
 				map[m].flag.mingmlvl = gmlvl;
 			else {
-				if (current_file != NULL) // if not a GM command, but a script
+				if (current_file != NULL)
 					printf(CL_YELLOW "WARNING: Invalid map flag" CL_RESET ": mingmlvl (file:%s:%d)! Value must be between 0 to 100 (not: %d).\n", current_file, lines, gmlvl);
 				return 1;
 			}
 		} else {
-			if (current_file != NULL) // if not a GM command, but a script
+			if (current_file != NULL)
 				printf(CL_YELLOW "WARNING: Invalid map flag" CL_RESET ": mingmlvl (file:%s:%d)! Please, specify a minimum level.\n", current_file, lines);
 			return 1;
 		}
 	} else if (strcasecmp(w3, "gvg_dungeon") == 0) { // 36
 		map[m].flag.gvg_dungeon = 1;
 	} else if (strcasecmp(w3, "water") == 0) {
-		// not used in code
 	} else {
-		if (current_file != NULL) // if not a GM command, but a script
+		if (current_file != NULL)
 			printf(CL_YELLOW "WARNING: Unknown map flag" CL_RESET ": %s (file:%s:%d)!\n", w3, current_file, lines);
 		return 1;
 	}
@@ -2511,6 +2312,7 @@ int npc_parse_mapflag(char *w1, char *w3, char *w4, int lines) {
 }
 
 static int npc_read_indoors(void) {
+
 	char *buf, *p;
 	int s, m;
 
@@ -2531,7 +2333,7 @@ static int npc_read_indoors(void) {
 				memset(mapname, 0, sizeof(mapname));
 				strncpy(mapname, buf2, strlen(buf2) - 4);
 				strcat(mapname, ".gat");
-				if ((m = map_mapname2mapid(mapname)) >= 0) // map id on this server (m == -1 if not in actual map-server)
+				if ((m = map_mapname2mapid(mapname)) >= 0)
 					map[m].flag.indoors = 1;
 			}
 		}
@@ -2549,6 +2351,7 @@ static int npc_read_indoors(void) {
 }
 
 static int ev_db_final(void *key, void *data, va_list ap) {
+
 	FREE(data);
 	if (strstr(key, "::") != NULL) {
 		FREE(key);
@@ -2558,14 +2361,16 @@ static int ev_db_final(void *key, void *data, va_list ap) {
 }
 
 static int npcname_db_final(void *key, void *data, va_list ap) {
+
 	return 0;
 }
 
 /*==========================================
- * 終了
+ * do_final_npc fucntion
  *------------------------------------------
  */
 int do_final_npc(void) {
+
 	int i, count;
 	int count_warp, count_shop, count_script, count_mob;
 	struct block_list *bl;
@@ -2636,10 +2441,11 @@ void ev_release(struct dbn *db, int which) {
 }
 
 /*==========================================
- * npc初期化
+ * do_init_npc function
  *------------------------------------------
  */
 int do_init_npc(void) {
+
 	struct npc_src_list *nsl;
 	FILE *fp;
 	char line[1024];
@@ -2648,7 +2454,6 @@ int do_init_npc(void) {
 	// indoorrswtable.txt and etcinfo.txt
 	if (battle_config.indoors_override_grffile)
 		npc_read_indoors();
-	//npc_read_weather();
 
 	printf("\nLoading NPCs...\r");
 
@@ -2660,7 +2465,7 @@ int do_init_npc(void) {
 	memset(&ev_tm_b, -1, sizeof(ev_tm_b));
 
 	for(nsl = npc_src_first; nsl; nsl = nsl->next) {
-		current_file = nsl->name; // To display in error
+		current_file = nsl->name;
 		if ((fp = fopen(nsl->name, "r")) == NULL) {
 			printf("File not found: '%s'.\n", nsl->name);
 			exit(1);
@@ -2670,19 +2475,18 @@ int do_init_npc(void) {
 			fflush(stdout);
 		}
 		lines = 0;
-		// sizeof(line) - 1 because after, we can add cariage return!
-		while(fgets(line, sizeof(line) - 1, fp)) { // fgets reads until maximum one less than size and add '\0' -> so, it's not necessary to add -1
+
+		while(fgets(line, sizeof(line) - 1, fp)) {
 			char w1[1024], w2[1024], w3[1024], w4[1024], mapname[1024];
 			int i, j, w4pos, count;
 			lines++;
 
 			if ((line[0] == '/' && line[1] == '/') || line[0] == '\0' || line[0] == '\n' || line[0] == '\r')
 				continue;
-			if ((line[(i = strlen(line) - 1)] != '\n' && line[i] != '\r')) { // fixed last line of a script file
+			if ((line[(i = strlen(line) - 1)] != '\n' && line[i] != '\r')) {
 				line[i+1] = '\n';
 				line[i+2] = '\0';
 			}
-			// 不要なスペースやタブの連続は詰める
 			for(i = j = 0; line[i]; i++) {
 				if (line[i] == ' ') {
 					if (!((line[i + 1] && (isspace(line[i + 1]) || line[i + 1] == ',')) ||
@@ -2694,7 +2498,6 @@ int do_init_npc(void) {
 				} else
 					line[j++] = line[i];
 			}
-			// 最初はタブ区切りでチェックしてみて、ダメならスペース区切りで確認
 			memset(w1, 0, sizeof(w1));
 			memset(w2, 0, sizeof(w2));
 			memset(w3, 0, sizeof(w3));
@@ -2703,29 +2506,26 @@ int do_init_npc(void) {
 			    (count = sscanf(line, "%s%s%s%n%s", w1, w2, w3, &w4pos, w4)) < 3) {
 				continue;
 			}
-			// マップの存在確認
 			if (strcasecmp(w2, "script") != 0 || (strcmp(w1,"-") != 0 && strcasecmp(w1, "function") != 0)) {
 				sscanf(w1, "%[^,]", mapname);
-				// check map name
 				if (strstr(mapname, ".gat") == NULL || mapname[0] == '\0' || strlen(mapname) > 16) {
 					printf(CL_RED "Bad map name" CL_RESET " at start of a script (file:%s, line %d)!\n", current_file, lines);
 					continue;
 				}
-				m = map_mapname2mapid(mapname); // map id on this server (m == -1 if not in actual map-server)
+				m = map_mapname2mapid(mapname);
 				if (m < 0) {
-					// "mapname" is not assigned to this server (it's not an error -> no display)
 					char *p;
-					if (strcasecmp(w2, "script") == 0) { // check to not display error on each line if map-name doesn't in this server
-						int counter = 0; // to count number of { and }
-						if ((p = strchr(line, '{'))) { // first '{' can be on same line of "script" or on a following line
+					if (strcasecmp(w2, "script") == 0) {
+						int counter = 0;
+						if ((p = strchr(line, '{'))) {
 							counter++;
-							if (strchr(p, '}')) { // if script finished on same line...
+							if (strchr(p, '}')) {
 								counter--;
 								if (counter == 0)
 									continue;
 							}
 						}
-						while(fgets(line, sizeof(line), fp)) { // fgets reads until maximum one less than size and add '\0' -> so, it's not necessary to add -1
+						while(fgets(line, sizeof(line), fp)) {
 							lines++;
 							if ((line[0] == '/' && line[1] == '/') || line[0] == '\0' || line[0] == '\n' || line[0] == '\r')
 								continue;
@@ -2737,7 +2537,6 @@ int do_init_npc(void) {
 									break;
 							}
 						}
-						// if break because end of file
 						if (counter != 0)
 							printf(CL_RED "Bad script ending" CL_RESET ": incorrect number of '{' and '}' (%d more '{') (file:%s)!\n", counter, current_file);
 					}
@@ -2752,7 +2551,7 @@ int do_init_npc(void) {
 				if (strcasecmp(w1, "function") == 0) {
 					npc_parse_function(w1, w3, w4, line + w4pos, fp, &lines);
 				} else {
-					if (npc_parse_script(w1, w2, w3, w4, line + w4pos, fp, &lines)) // on error
+					if (npc_parse_script(w1, w2, w3, w4, line + w4pos, fp, &lines))
 						printf("\n");
 				}
 			} else if ((i = 0, sscanf(w2, "duplicate%n", &i), (i > 0 && w2[i] == '(')) && count > 3) {
@@ -2767,56 +2566,13 @@ int do_init_npc(void) {
 		current_file = NULL;
 	}
 
-#ifdef __DEBUG
-	// check warning on destination warp position
-	// this check is necessary because a warp can exist before than an other npc is set on same place
-  {
-	int i;
-	for(i = START_NPC_NUM; i < npc_id; i++) {
-		struct npc_data *nd = (struct npc_data *)map_id2bl(i);
-		if (nd && nd->bl.type == BL_NPC && nd->bl.subtype == WARP) {
-			// check destination warp coordinates (if possible)
-			if ((m = map_mapname2mapid(nd->u.warp.name)) >= 0) { // map id on this server (m == -1 if not in actual map-server)
-				if (map_getcell(m, nd->u.warp.x, nd->u.warp.y, CELL_CHKNPC)) {
-					int j, xs, ys;
-					// search npc name
-					for(j = 0; j < map[m].npc_num; j++) {
-						switch(map[m].npc[j]->bl.subtype) {
-						case WARP:
-							xs = map[m].npc[j]->u.warp.xs;
-							ys = map[m].npc[j]->u.warp.ys;
-							break;
-						case SCRIPT:
-							xs = map[m].npc[j]->u.scr.xs;
-							ys = map[m].npc[j]->u.scr.ys;
-							break;
-						default:
-							continue;
-						}
-						if (nd->u.warp.x >= map[m].npc[j]->bl.x - xs / 2 && nd->u.warp.x <= map[m].npc[j]->bl.x - xs / 2 + xs &&
-						    nd->u.warp.y >= map[m].npc[j]->bl.y - ys / 2 && nd->u.warp.y <= map[m].npc[j]->bl.y - ys / 2 + ys)
-							break;
-					}
-					// if (j != map[m].npc_num)
-						// Commented (Annoying) -> Seems to be incorrect based on Aegis info [Tsuyuki]
-						// printf(CL_YELLOW "WARNING: Bad destination coordinates" CL_RESET " (same of another npc/warp (%s): %s,%d,%d) in warp: %s.\n", map[m].npc[j]->name, nd->u.warp.name, nd->u.warp.x, nd->u.warp.y, nd->name);
-					// else
-						// Commented (Annoying) -> Seems to be incorrect based on Aegis info [Tsuyuki]
-						// printf(CL_YELLOW "WARNING: Bad destination coordinates" CL_RESET " (same of another npc/warp: %s,%d,%d) in warp: %s.\n", nd->u.warp.name, nd->u.warp.x, nd->u.warp.y, nd->name);
-				}
-			}
-		}
-	}
-  }
-#endif // __DEBUG
-
 	printf(CL_WHITE "Server: Freya NPC Scripts" CL_RESET " ('" CL_WHITE "%d" CL_RESET "'):%40s\n", npc_id - START_NPC_NUM, "");
 	printf(CL_GREEN "Loaded: " CL_RESET "'" CL_WHITE "%d" CL_RESET "' Warps.\n", npc_warp);
 	printf(CL_GREEN "Loaded: " CL_RESET "'" CL_WHITE "%d" CL_RESET "' Shops.\n", npc_shop);
 	printf(CL_GREEN "Loaded: " CL_RESET "'" CL_WHITE "%d" CL_RESET "' Scripts.\n", npc_script);
 	printf(CL_GREEN "Loaded: " CL_RESET "'" CL_WHITE "%d" CL_RESET "' Mobs.\n", npc_mob);
 
-	add_timer_func_list(npc_walktimer, "npc_walktimer"); // [Valaris]
+	add_timer_func_list(npc_walktimer, "npc_walktimer");
 	add_timer_func_list(npc_event_timer, "npc_event_timer");
 	add_timer_func_list(npc_event_do_clock, "npc_event_do_clock");
 	add_timer_func_list(npc_timerevent, "npc_timerevent");

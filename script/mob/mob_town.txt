@@ -10,9 +10,9 @@
 //--------------------------------------------------------------
 // Revision History: v1.0
 //--------------------------------------------------------------
-//	1.0 First version [A Lot of People]
+//	1.0 First version, converted from Aegis [Unknown]
 //--------------------------------------------------------------
-// Additional Notes: * Aegis-certified *
+// Additional Notes: * Official-certified / Aegis-certified *
 //--------------------------------------------------------------
 
 

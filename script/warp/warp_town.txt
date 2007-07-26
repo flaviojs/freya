@@ -8,11 +8,18 @@
 //--------------------------------------------------------------
 // Script Title: Town Warps	Author: A Lot of People
 //--------------------------------------------------------------
-// Revision History: v1.0
+// Revision History: v1.7
 //--------------------------------------------------------------
 //	1.0 First version, merged together [Tsuyuki]
+//	1.1 Updated Nameless Island and Veins warp portals (Credits to jAthena) [Tsuyuki]
+//	1.2 Fixed Izlude Battle Arena warps [Tsuyuki]
+//	1.3 Updated Hugel warps for the Odin's Excavation Quest [Tsuyuki]
+//	1.4 Updated Lighthalzen warps for the Cursed Spirit Quest [Tsuyuki]
+//	1.5 Updated Juno warps for the President's Quest [Tsuyuki]
+//	1.6 Removed a duplicate Rachel warp [Tsuyuki]
+//	1.7 Added official Aegis Rachel warps by Playtester [Tsuyuki]
 //--------------------------------------------------------------
-// Additional Notes: N/A
+// Additional Notes: * Official-certified *
 //--------------------------------------------------------------
 
 
@@ -393,22 +400,23 @@ hugel.gat,104,79,0	warp	hugel31	1,1,hu_in01.gat,235,107
 hu_in01.gat,231,107,0	warp	hugel32	1,1,hugel.gat,99,77
 hu_in01.gat,268,123,0	warp	hugel33	1,1,hu_in01.gat,265,36
 hu_in01.gat,265,42,0	warp	hugel34	1,1,hu_in01.gat,265,123
-hugel.gat,52,91,0	warp	hugel35	1,1,hu_in01.gat,33,90
-hu_in01.gat,37,90,0	warp	hugel36	1,1,hugel.gat,54,96
-hu_in01.gat,15,70,0	warp	hugel37	1,1,hu_in01.gat,15,27
-hu_in01.gat,15,29,0	warp	hugel38	1,1,hu_in01.gat,16,74
-hu_in01.gat,15,108,0	warp	hugel39	1,1,hu_in01.gat,15,155
-hu_in01.gat,15,151,0	warp	hugel40	1,1,hu_in01.gat,16,104
+
+
+
+hu_in01.gat,37,90,0	warp	hugel36	1,1,hugel.gat,52,95
+hu_in01.gat,15,70,0	warp	hugel37	1,1,hu_in01.gat,15,25
+hu_in01.gat,15,29,0	warp	hugel38	1,1,hu_in01.gat,15,74
+hu_in01.gat,177,90,0	warp	hugel39	1,1,hugel.gat,52,95
+hu_in01.gat,15,151,0	warp	hugel40	1,1,hu_in01.gat,15,104
 hugel.gat,206,228,0	warp	hugel41	1,1,hu_in01.gat,381,368
 hu_in01.gat,381,363,0	warp	hugel42	1,1,hugel.gat,207,225
 hu_in01.gat,380,319,0	warp	hugel43	1,1,hu_in01.gat,384,388
 hu_in01.gat,388,388,0	warp	hugel44	1,1,hu_in01.gat,385,319
-hu_in01.gat,149,90,0	warp	hugel45	1,1,hu_in01.gat,104,90
-hu_in01.gat,106,90,0	warp	hugel46	1,1,hu_in01.gat,151,90
-hu_in01.gat,85,108,0	warp	hugel47	1,1,hu_in01.gat,84,153
-hu_in01.gat,84,151,0	warp	hugel48	1,1,hu_in01.gat,85,106
-hu_in01.gat,84,71,0	warp	hugel49	1,1,hu_in01.gat,86,26
-hu_in01.gat,85,28,0	warp	hugel50	1,1,hu_in01.gat,84,73
+hu_in01.gat,107,90,0	warp	hugel46	1,1,hugel.gat,52,95
+hu_in01.gat,85,108,0	warp	hugel47	1,1,hu_in01.gat,85,155
+hu_in01.gat,84,151,0	warp	hugel48	1,1,hu_in01.gat,85,104
+hu_in01.gat,85,70,0	warp	hugel49	1,1,hu_in01.gat,85,25
+hu_in01.gat,85,29,0	warp	hugel50	1,1,hu_in01.gat,85,74
 hugel.gat,129,65,0	warp	hugel51	1,1,hu_in01.gat,347,108
 hu_in01.gat,345,108,0	warp	hugel52	1,1,hugel.gat,127,65
 hu_in01.gat,380,118,0	warp	hugel53	1,1,hu_in01.gat,378,176
@@ -417,8 +425,8 @@ hu_in01.gat,314,386,0	warp	hugel55	1,1,hu_in01.gat,309,322
 hu_in01.gat,307,322,0	warp	hugel56	1,1,hu_in01.gat,312,386
 hugel.gat,80,230,0	warp	hugel57	1,1,hu_in01.gat,24,363
 hu_in01.gat,24,361,0	warp	hugel58	1,1,hugel.gat,82,230
-hugel.gat,93,201,0	warp	hugel60	1,1,hu_in01.gat,303,380
 hu_in01.gat,301,380,0	warp	hugel59	1,1,hugel.gat,93,199
+hugel.gat,93,201,0	warp	hugel60	1,1,hu_in01.gat,303,380
 
 // Bingo Warps
 hugel.gat,55,207,0    warp    hugelwarp1051    1,1,que_bingo.gat,49,9
@@ -452,8 +460,8 @@ izlude_in.gat,87,169,0	warp	iz05-1	2,3,izlude_in.gat,111,169
 izlude.gat,149,39,0	warp	izair1	1,1,izlude.gat,180,56
 izlude.gat,176,56,0	warp	lizair2	1,1,izlude.gat,145,39
 
-// Izlude Battle Arena Warps (Bugged)
-// izlude.gat,128,126,0	warp	welcome_arena	1,1,arena_room.gat,100,30
+// Izlude Battle Arena Warps
+izlude.gat,128,226,0	warp	welcome_arena	1,1,arena_room.gat,100,30
 arena_room.gat,99,24,0	warp	bye_arena	2,2,izlude.gat,128,220
 arena_room.gat,84,103,0	warp	arn_room_11_1	1,1,arena_room.gat,63,130
 arena_room.gat,63,126,0	warp	arn_room_11_2	1,1,arena_room.gat,87,100
@@ -465,7 +473,7 @@ arena_room.gat,115,71,0	warp	arn_room_5_1	1,1,arena_room.gat,139,50
 arena_room.gat,136,53,0	warp	arn_room_5_2	1,1,arena_room.gat,113,74
 arena_room.gat,123,88,0	warp	arn_room_3_1	1,1,arena_room.gat,153,87
 arena_room.gat,150,87,0	warp	arn_room_3_2	1,1,arena_room.gat,120,87
-// prt_are_in.gat,54,13,0	warp	toarn_room	1,1,arena_room.gat,100,77
+prt_are_in.gat,54,13,0	warp	toarn_room	1,1,arena_room.gat,100,77
 
 
 //--------------------------------------------------------------
@@ -569,6 +577,19 @@ yuno_in05.gat,50,87,0	warp	yun73	1,1,yuno_in02.gat,85,14
 yuno_in01.gat,88,36,0	warp	yun74	1,1,yuno_in01.gat,173,34
 yuno_in01.gat,176,34,0	warp	yun75	1,1,yuno_in01.gat,91,36
 yuno_in05.gat,197,102,0	warp	yun76	1,1,yuno_in05.gat,168,103
+yuno_pre.gat,52,22,0	warp	yungvn01	1,1,yuno_pre.gat,37,23
+yuno_pre.gat,87,22,0	warp	yungvn02	1,1,yuno_pre.gat,102,22
+yuno_pre.gat,41,23,0	warp	yungvn03	1,1,yuno_pre.gat,56,22
+yuno_pre.gat,18,35,0	warp	yungvn04	1,1,yuno_pre.gat,18,53
+yuno_pre.gat,98,22,0	warp	yungvn05	1,1,yuno_pre.gat,83,22
+yuno_pre.gat,18,48,0	warp	yungvn06	1,1,yuno_pre.gat,18,31
+yuno_pre.gat,18,77,0	warp	yungvn07	1,1,yuno_pre.gat,18,96
+yuno_pre.gat,113,48,0	warp	yungvn08	1,1,yuno_pre.gat,84,22
+yuno_pre.gat,81,68,0	warp	yungvn09	1,1,yuno_pre.gat,95,68
+yuno_pre.gat,18,92,0	warp	yungvn10	1,1,yuno_pre.gat,18,73
+yuno.gat,157,322,0	warp	yungvn11	1,1,yuno_pre.gat,69,13
+yuno_pre.gat,69,10,0	warp	yungvn12	1,1,yuno.gat,157,317
+
 
 
 //--------------------------------------------------------------
@@ -674,12 +695,10 @@ lhz_in01.gat,40,224,0	warp	lhz046	1,1,lhz_in01.gat,19,129
 lhz_in01.gat,15,129,0	warp	lhz046a	1,1,lhz_in01.gat,34,224
 lhz_in01.gat,58,130,0	warp	lhz047	1,1,lhz_in01.gat,193,127
 lhz_in01.gat,191,127,0	warp	lhz047a	1,1,lhz_in01.gat,56,130
-lhz_in01.gat,43,115,0	warp	lhz048	1,1,lhz_in01.gat,278,130
-lhz_in01.gat,278,132,0	warp	lhz048a	1,1,lhz_in01.gat,43,117
 lighthalzen.gat,324,301,0	warp	lhz050	1,1,lhz_in03.gat,239,101
 lhz_in03.gat,237,101,0	warp	lhz050a	1,1,lighthalzen.gat,324,299
-lighthalzen.gat,322,321,0	warp	lhz051	1,1,lhz_in03.gat,15,162
-lhz_in03.gat,13,162,0	warp	lhz051a	1,1,lighthalzen.gat,317,322
+lhz_in01.gat,44,144,0	warp	lhz051	1,1,lhz_in01.gat,277,159
+lhz_in01.gat,277,156,0	warp	lhz051a	1,1,lhz_in01.gat,44,141
 // Bad source coordinates
 // auction_02.gat,43,17,0	warp	auc_light01	1,1,lighthalzen.gat,209,169
 
@@ -697,114 +716,114 @@ lhz_cube.gat,177,96,0	warp	lhzcube4	1,1,lighthalzen.gat,310,302
 
 lhz_cube.gat,74,74,0	script	cubew01-1	45,1,1,{
 
-	callfunc "randomw";
+	callfunc "F_RandomWarp";
 	end;
 }
 lhz_cube.gat,66,67,0	warp	cubew01-2	2,2,lhz_cube.gat,10,18
 lhz_cube.gat,59,74,0	script	cubew01-3	45,1,1,{
 
-	callfunc "randomw";
+	callfunc "F_RandomWarp";
 	end;
 }
 lhz_cube.gat,66,82,0	script	cubew01-4	45,1,1,{
 
-	callfunc "randomw";
+	callfunc "F_RandomWarp";
 	end;
 }
 lhz_cube.gat,74,136,0	warp	cubew02-1	2,2,lhz_cube.gat,10,193
 lhz_cube.gat,66,129,0	script	cubew02-2	45,1,1,{
-	callfunc "randomw";
+	callfunc "F_RandomWarp";
 	end;
 }
 lhz_cube.gat,59,136,0	script	cubew02-3	45,1,1,{
-	callfunc "randomw";
+	callfunc "F_RandomWarp";
 	end;
 }
 lhz_cube.gat,66,144,0	script	cubew02-4	45,1,1,{
-	callfunc "randomw";
+	callfunc "F_RandomWarp";
 	end;
 }
 lhz_cube.gat,74,192,0	script	cubew03-1	45,1,1,{
-	callfunc "randomw";
+	callfunc "F_RandomWarp";
 	end;
 }
 lhz_cube.gat,67,185,0	script	cubew03-2	45,1,1,{
-	callfunc "randomw";
+	callfunc "F_RandomWarp";
 	end;
 }
 lhz_cube.gat,59,192,0	script	cubew03-3	45,1,1,{
-	callfunc "randomw";
+	callfunc "F_RandomWarp";
 	end;
 }
 lhz_cube.gat,67,200,0	warp	cubew03-4	2,2,lhz_cube.gat,10,136
 lhz_cube.gat,74,18,0	script	cubew04-1	45,1,1,{
-	callfunc "randomw";
+	callfunc "F_RandomWarp";
 	end;
 }
 lhz_cube.gat,66,11,0	warp	cubew04-2	2,2,lhz_cube.gat,10,18
 lhz_cube.gat,59,18,0	script	cubew04-3	45,1,1,{
-	callfunc "randomw";
+	callfunc "F_RandomWarp";
 	end;
 }
 lhz_cube.gat,66,26,0	warp	cubew04-4	2,2,lhz_cube.gat,123,18
 lhz_cube.gat,18,18,0	warp	cubew05-1	2,2,lhz_cube.gat,10,193
 lhz_cube.gat,10,11,0	warp	cubew05-2	2,2,lhz_cube.gat,123,18
 lhz_cube.gat,3,18,0	script	cubew05-3	45,1,1,{
-	callfunc "randomw";
+	callfunc "F_RandomWarp";
 	end;
 }
 lhz_cube.gat,10,26,0	script	cubew05-4	45,1,1,{
-	callfunc "randomw";
+	callfunc "F_RandomWarp";
 	end;
 }
 lhz_cube.gat,18,74,0	script	cubew06-1	45,1,1,{
-	callfunc "randomw";
+	callfunc "F_RandomWarp";
 	end;
 }
 lhz_cube.gat,10,67,0	warp	cubew06-2	2,2,lhz_cube.gat,123,18
 lhz_cube.gat,3,74,0	warp	cubew06-3	2,2,lhz_cube.gat,66,18
 lhz_cube.gat,10,82,0	script	cubew06-4	45,1,1,{
-	callfunc "randomw";
+	callfunc "F_RandomWarp";
 	end;
 }
 lhz_cube.gat,18,136,0	warp	cubew07-1	2,2,lhz_cube.gat,10,74
 lhz_cube.gat,10,129,0	script	cubew07-2	45,1,1,{
-	callfunc "randomw";
+	callfunc "F_RandomWarp";
 	end;
 }
 lhz_cube.gat,3,136,0	script	cubew07-3	45,1,1,{
-	callfunc "randomw";
+	callfunc "F_RandomWarp";
 	end;
 }
 lhz_cube.gat,10,144,0	script	cubew07-4	45,1,1,{
-	callfunc "randomw";
+	callfunc "F_RandomWarp";
 	end;
 }
 lhz_cube.gat,18,192,0	script	cubew08-1	45,1,1,{
-	callfunc "randomw";
+	callfunc "F_RandomWarp";
 	end;
 }
 lhz_cube.gat,10,185,0	script	cubew08-2	45,1,1,{
-	callfunc "randomw";
+	callfunc "F_RandomWarp";
 	end;
 }
 lhz_cube.gat,3,192,0	warp	cubew08-3	2,2,lhz_cube.gat,10,74
 lhz_cube.gat,10,200,0	warp	cubew08-4	2,2,lhz_cube.gat,66,18
 lhz_cube.gat,130,18,0	script	cubew08-1	45,1,1,{
-	callfunc "randomw";
+	callfunc "F_RandomWarp";
 	end;
 }
 lhz_cube.gat,123,11,0	script	cubew08-2	45,1,1,{
-	callfunc "randomw";
+	callfunc "F_RandomWarp";
 	end;
 }
 lhz_cube.gat,115,18,0	warp	cubew08-3	2,2,lhz_cube.gat,248,184
 lhz_cube.gat,123,26,0	script	cubew08-4	45,1,1,{
-	callfunc "randomw";
+	callfunc "F_RandomWarp";
 	end;
 }
 // Random Warp Function
-function	script	randomw	{
+function	script	F_RandomWarp	{
 	set @rdm,rand(3);
 	if (@rdm==1) goto rdm1;
 	if (@rdm==2) goto rdm2;
@@ -982,10 +1001,17 @@ moc_castle.gat,94,156,0	warp	mocc15-1	3,2,moc_castle.gat,94,140
 
 
 //--------------------------------------------------------------
-// Nameless Island Town Warps (Incomplete)
+// Nameless Island Town Warps
 //--------------------------------------------------------------
 
-// To-Do
+nameless_i.gat,168,257,0    warp    namelesswarp1001    1,1,nameless_in.gat,12,43
+nameless_in.gat,12,40,0        warp    namelesswarp1002    1,1,nameless_i.gat,168,254
+nameless_i.gat,252,130,0    warp    namelesswarp1003    1,1,nameless_in.gat,26,128
+nameless_in.gat,23,128,0    warp    namelesswarp1004    1,1,nameless_i.gat,249,130
+nameless_i.gat,79,256,0        warp    namelesswarp1005    1,1,nameless_in.gat,12,172
+nameless_in.gat,12,169,0    warp    namelesswarp1006    1,1,nameless_i.gat,82,256
+nameless_i.gat,78,94,0        warp    namelesswarp1007    1,1,nameless_in.gat,96,180
+nameless_in.gat,96,177,0    warp    namelesswarp1008    1,1,nameless_i.gat,81,96
 
 
 //--------------------------------------------------------------
@@ -1201,58 +1227,109 @@ prt_castle.gat,92,107,0	warp	prtca12-1	2,3,prt_castle.gat,72,107
 // Rachel Town Warps
 //--------------------------------------------------------------
 
-rachel.gat,57,259,0	warp	ra_in012	2,2,ra_in01.gat,295,350
-ra_in01.gat,295,346,0	warp	ra_in012a	2,2,rachel.gat,57,254
-ra_in01.gat,293,372,0	warp	ra_in013	2,2,ra_in01.gat,225,379
-ra_in01.gat,220,379,0	warp	ra_in013a	2,2,ra_in01.gat,289,372
-ra_in01.gat,313,374,0	warp	ra_in014	2,2,ra_in01.gat,358,373
-ra_in01.gat,354,373,0	warp	ra_in014a	2,2,ra_in01.gat,308,374
-rachel.gat,149,249,0	warp	rachel001	1,1,ra_temple.gat,119,28
-rachel.gat,273,125,0	warp	rachel009	1,1,ra_fild12.gat,41,225
-ra_in01.gat,172,392,0	warp	rachel01	1,1,rachel.gat,42,114
-rachel.gat,42,87,0	warp	rachel02	1,1,ra_in01.gat,171,359
-rachel.gat,42,109,0	warp	rachel03	1,1,ra_in01.gat,171,389
-ra_in01.gat,171,355,0	warp	rachel04	1,1,rachel.gat,42,82 
-rachel.gat,83,78,0	warp	rachel05	1,1,ra_in01.gat,249,266
-ra_in01.gat,249,262,0	warp	rachel05	1,1,rachel.gat,83,75
-rachel.gat,115,149,0	warp	rachel06	1,1,ra_in01.gat,386,43
-ra_in01.gat,386,40,0	warp	rachel07	1,1,rachel.gat,115,144
-ra_in01.gat,165,369,0	warp	rachel10	1,1,ra_in01.gat,122,334
-ra_in01.gat,126,334,0	warp	rachel11	1,1,ra_in01.gat,169,369
-ra_in01.gat,178,370,0	warp	rachel12	1,1,ra_in01.gat,113,385
-ra_in01.gat,109,385,0	warp	rachel13	1,1,ra_in01.gat,174,370
-ra_in01.gat,357,61,0	warp	rachel15	1,1,ra_in01.gat,310,62
-ra_in01.gat,314,62,0	warp	rachel16	1,1,ra_in01.gat,361,61
-ra_in01.gat,309,70,0	warp	rachel17	1,1,rachel.gat,108,175
-rachel.gat,105,171,0	warp	rachel18	1,1,ra_in01.gat,309,65
-ra_in01.gat,297,59,0	warp	rachel19	1,1,ra_in01.gat,339,116
-ra_in01.gat,339,120,0	warp	rachel20	1,1,ra_in01.gat,297,63
-ra_in01.gat,375,109,0	warp	rachel21	1,1,rachel.gat,116,154
-rachel.gat,116,158,0	warp	rachel22	1,1,ra_in01.gat,375,114
-ra_in01.gat,135,286,0	warp	rachel22	1,1,rachel.gat,216,164
-rachel.gat,216,160,0	warp	rachel23	1,1,ra_in01.gat,135,282
-ra_in01.gat,213,79,0	warp	rachel24	1,1,rachel.gat,108,195
-rachel.gat,108,200,0	warp	rachel25	1,1,ra_in01.gat,213,83
-ra_in01.gat,192,152,0	warp	rachel26	1,1,rachel.gat,90,193
-rachel.gat,90,189,0	warp	rachel27	1,1,ra_in01.gat,192,148
-rachel.gat,25,125,0	warp	rachel28	1,1,ra_fild11.gat,353,226
+rachel.gat,150,249,0	warp	rachel01	1,1,ra_temple.gat,120,30
 
-// Rachel Sanctuary Sky Map
-ra_temsky.gat,99,117,0	warp	rasky001	1,1,ra_temsky.gat,99,140
-ra_temsky.gat,99,135,0	warp	rasky002	1,1,ra_temsky.gat,99,112
-ra_temsky.gat,112,143,0	warp	rasky003	1,1,ra_temsky.gat,141,139
-ra_temsky.gat,137,139,0	warp	rasky004	1,1,ra_temsky.gat,108,143
-ra_temsky.gat,87,143,0	warp	rasky005	1,1,ra_temsky.gat,58,139
-ra_temsky.gat,62,139,0	warp	rasky004	1,1,ra_temsky.gat,91,143
+rachel.gat,81,33,0	warp	rachel02	1,1,ra_in01.gat,237,198
+rachel.gat,61,33,0	warp	rachel03	1,1,ra_in01.gat,181,198
+rachel.gat,217,55,0	warp	rachel04	1,1,ra_in01.gat,250,34
+rachel.gat,179,220,0	warp	rachel05	1,1,ra_in01.gat,295,352
+rachel.gat,103,240,0	warp	rachel06	1,1,ra_in01.gat,343,193
+rachel.gat,216,160,0	warp	rachel07	1,1,ra_in01.gat,135,282
+rachel.gat,42,87,0	warp	rachel08	1,1,ra_in01.gat,171,359
+rachel.gat,42,109,0	warp	rachel09	1,1,ra_in01.gat,171,388
+rachel.gat,83,78,0	warp	rachel10	1,1,ra_in01.gat,249,266
+rachel.gat,115,149,0	warp	rachel11	1,1,ra_in01.gat,386,43
+rachel.gat,90,189,0	warp	rachel12	1,1,ra_in01.gat,192,148
+rachel.gat,108,200,0	warp	rachel13	1,1,ra_in01.gat,213,83
 
-// Rachel Temple Map (Entrance to Sanctuary)
-ra_temple.gat,119,21,0	warp	rachel002	1,1,rachel.gat,149,244
-ra_temple.gat,119,179,0	warp	rachel003	1,1,ra_temin.gat,169,22
-ra_temin.gat,169,17,0	warp	rachel004	1,1,ra_temple.gat,119,176
-ra_temin.gat,206,93,0	warp	rachel005	1,1,ra_temin.gat,312,257
-ra_temin.gat,312,252,0	warp	rachel006	1,1,ra_temin.gat,206,88
-ra_temin.gat,130,93,0	warp	rachel007	1,1,ra_temin.gat,238,257
-ra_temin.gat,238,252,0	warp	rachel008	1,1,ra_temin.gat,130,88
+ra_in01.gat,188,189,0	warp	rachel14	1,1,ra_in01.gat,263,144
+ra_in01.gat,296,144,0	warp	rachel15	1,1,ra_in01.gat,235,189
+ra_in01.gat,175,189,0	warp	rachel16	1,1,ra_in01.gat,132,189
+ra_in01.gat,244,189,0	warp	rachel17	1,1,ra_in01.gat,291,189
+ra_in01.gat,235,21,0	warp	rachel18	1,1,ra_in01.gat,187,31
+ra_in01.gat,312,374,0	warp	rachel19	1,1,ra_in01.gat,359,374
+ra_in01.gat,291,371,0	warp	rachel20	1,1,ra_in01.gat,225,380
+ra_in01.gat,381,200,0	warp	rachel21	1,1,ra_in01.gat,377,268
+ra_in01.gat,367,255,0	warp	rachel22	1,1,ra_in01.gat,326,296
+ra_in01.gat,319,303,0	warp	rachel23	1,1,ra_in01.gat,381,320
+ra_in01.gat,178,370,0	warp	rachel24	1,1,ra_in01.gat,113,385
+ra_in01.gat,165,369,0	warp	rachel25	1,1,ra_in01.gat,122,334
+ra_in01.gat,241,299,0	warp	rachel26	1,1,ra_in01.gat,193,312
+ra_in01.gat,185,303,0	warp	rachel27	1,1,ra_in01.gat,194,249
+ra_in01.gat,357,61,0	warp	rachel28	1,1,ra_in01.gat,310,62
+ra_in01.gat,297,59,0	warp	rachel29	1,1,ra_in01.gat,339,116
+
+ra_temin.gat,130,93,0	warp	rachel30	1,1,ra_temin.gat,239,258
+ra_temin.gat,206,93,0	warp	rachel31	1,1,ra_temin.gat,312,258
+ra_temin.gat,275,332,0	warp	rachel32	1,1,ra_temin.gat,27,305
+
+ra_temin.gat,275,226,0	warp	rachel33	1,1,ra_temsky.gat,99,11
+
+ra_temsky.gat,99,118,0	warp	rachel34	1,1,ra_temsky.gat,99,140
+ra_temsky.gat,112,143,0	warp	rachel35	1,1,ra_temsky.gat,141,139
+ra_temsky.gat,87,143,0	warp	rachel36	1,1,ra_temsky.gat,58,139
+
+ra_temple.gat,120,22,0	warp	rachel37	1,1,rachel.gat,150,243
+
+ra_in01.gat,237,202,0	warp	rachel38	1,1,rachel.gat,81,38
+ra_in01.gat,181,202,0	warp	rachel39	1,1,rachel.gat,61,38
+ra_in01.gat,250,38,0	warp	rachel40	1,1,rachel.gat,217,60
+ra_in01.gat,295,348,0	warp	rachel41	1,1,rachel.gat,179,215
+ra_in01.gat,339,193,0	warp	rachel42	1,1,rachel.gat,98,238
+ra_in01.gat,135,286,0	warp	rachel43	1,1,rachel.gat,216,164
+ra_in01.gat,171,355,0	warp	rachel44	1,1,rachel.gat,42,82
+ra_in01.gat,172,392,0	warp	rachel45	1,1,rachel.gat,42,114
+ra_in01.gat,249,262,0	warp	rachel46	1,1,rachel.gat,83,73
+ra_in01.gat,386,39,0	warp	rachel47	1,1,rachel.gat,115,144
+ra_in01.gat,192,152,0	warp	rachel48	1,1,rachel.gat,90,193
+ra_in01.gat,213,79,0	warp	rachel49	1,1,rachel.gat,108,195
+
+ra_in01.gat,259,144,0	warp	rachel50	1,1,ra_in01.gat,184,189
+ra_in01.gat,231,189,0	warp	rachel51	1,1,ra_in01.gat,292,144
+ra_in01.gat,136,189,0	warp	rachel52	1,1,ra_in01.gat,179,189
+ra_in01.gat,287,189,0	warp	rachel53	1,1,ra_in01.gat,240,189
+ra_in01.gat,183,31,0	warp	rachel54	1,1,ra_in01.gat,239,21
+ra_in01.gat,355,374,0	warp	rachel55	1,1,ra_in01.gat,308,374
+ra_in01.gat,221,380,0	warp	rachel56	1,1,ra_in01.gat,287,371
+ra_in01.gat,381,268,0	warp	rachel57	1,1,ra_in01.gat,387,200
+ra_in01.gat,330,296,0	warp	rachel58	1,1,ra_in01.gat,371,255
+ra_in01.gat,381,324,0	warp	rachel59	1,1,ra_in01.gat,319,299
+ra_in01.gat,109,385,0	warp	rachel60	1,1,ra_in01.gat,174,370
+ra_in01.gat,126,334,0	warp	rachel61	1,1,ra_in01.gat,169,369
+ra_in01.gat,197,312,0	warp	rachel62	1,1,ra_in01.gat,245,299
+ra_in01.gat,194,245,0	warp	rachel63	1,1,ra_in01.gat,190,302
+ra_in01.gat,314,62,0	warp	rachel64	1,1,ra_in01.gat,361,61
+ra_in01.gat,339,120,0	warp	rachel65	1,1,ra_in01.gat,297,63
+
+ra_temin.gat,169,18,0	warp	rachel66	1,1,ra_temple.gat,119,175
+
+ra_temin.gat,239,253,0	warp	rachel67	1,1,ra_temin.gat,130,88
+ra_temin.gat,312,253,0	warp	rachel68	1,1,ra_temin.gat,206,88
+ra_temin.gat,27,299,0	warp	rachel69	1,1,ra_temin.gat,275,328
+
+ra_temsky.gat,99,8,0	warp	rachel70	1,1,ra_temin.gat,275,231
+
+ra_temsky.gat,99,135,0	warp	rachel71	1,1,ra_temsky.gat,99,113
+ra_temsky.gat,137,139,0	warp	rachel72	1,1,ra_temsky.gat,109,143
+ra_temsky.gat,62,139,0	warp	rachel73	1,1,ra_temsky.gat,91,143
+
+rachel.gat,25,125,0	warp	rachel74	1,1,ra_fild11.gat,353,226
+rachel.gat,275,125,0	warp	rachel75	1,1,ra_fild12.gat,40,226
+rachel.gat,130,20,0	warp	rachel76	1,1,ve_fild02.gat,196,379
+
+que_rachel.gat,130,93,0	warp	rachel77	1,1,que_rachel.gat,239,258
+que_rachel.gat,206,93,0	warp	rachel78	1,1,que_rachel.gat,312,258
+que_rachel.gat,275,332,0	warp	rachel79	1,1,que_rachel.gat,27,305
+que_rachel.gat,239,253,0	warp	rachel80	1,1,que_rachel.gat,130,88
+que_rachel.gat,312,253,0	warp	rachel81	1,1,que_rachel.gat,206,88
+que_rachel.gat,27,299,0	warp	rachel82	1,1,que_rachel.gat,275,328
+
+ra_in01.gat,309,70,0	warp	rachel83	1,1,rachel.gat,108,175
+rachel.gat,105,171,0	warp	rachel84	1,1,ra_in01.gat,309,65
+ra_in01.gat,375,109,0	warp	rachel85	1,1,rachel.gat,116,154
+rachel.gat,116,158,0	warp	rachel86	1,1,ra_in01.gat,375,114
+
+ra_temin.gat,275,243,0	warp	rachel87	1,1,ra_temin.gat,131,131
 
 
 //--------------------------------------------------------------
@@ -1276,10 +1353,36 @@ um_in.gat,38,110,0	warp	umba0040	1,1,umbala.gat,104,163
 
 
 //--------------------------------------------------------------
-// Veins Town Warps (Incomplete)
+// Veins Town Warps
 //--------------------------------------------------------------
 
-veins.gat,218,361,0	warp	veinswarp0501	1,1,ve_fild06.gat,152,221
-veins.gat,146,24,0		warp	veinswarp0502	1,1,ve_fild07.gat,148,370
-rachel.gat,130,20,0	warp	veinswarp0503	1,1,ve_fild02.gat,196,379
-
+veins.gat,218,361,0    warp    veinswarp0501    1,1,ve_fild06.gat,152,221
+veins.gat,146,24,0        warp    veinswarp0502    1,1,ve_fild07.gat,148,370
+veins.gat,196,260,0    warp    veinswarp1001    1,1,ve_in.gat,351,320
+ve_in.gat,351,317,0    warp    veinswarp1002    1,1,veins.gat,196,257
+veins.gat,116,277,0    warp    veinswarp1003    1,1,ve_in.gat,99,218
+ve_in.gat,99,215,0    warp    veinswarp1004    1,1,veins.gat,113,277
+ve_in.gat,76,229,0    warp    veinswarp1005    1,1,ve_in.gat,74,160
+ve_in.gat,71,160,0    warp    veinswarp1006    1,1,ve_in.gat,73,229
+veins.gat,148,220,0    warp    veinswarp1007    1,1,ve_in.gat,253,127
+ve_in.gat,256,127,0    warp    veinswarp1008    1,1,veins.gat,150,217
+ve_in.gat,224,115,0    warp    veinswarp1009    1,1,ve_in.gat,312,114
+ve_in.gat,309,114,0    warp    veinswarp1010    1,1,ve_in.gat,221,115
+veins.gat,230,166,0    warp    veinswarp1011    1,1,ve_in.gat,251,286
+ve_in.gat,251,283,0    warp    veinswarp1012    1,1,veins.gat,230,163
+ve_in.gat,261,315,0    warp    veinswarp1013    1,1,ve_in.gat,177,296
+ve_in.gat,177,293,0    warp    veinswarp1014    1,1,ve_in.gat,261,312
+veins.gat,138,190,0    warp    veinswarp1015    1,1,ve_in.gat,349,251
+ve_in.gat,346,251,0    warp    veinswarp1016    1,1,veins.gat,135,190
+veins.gat,88,174,0    warp    veinswarp1017    1,1,ve_in.gat,77,294
+ve_in.gat,77,291,0    warp    veinswarp1018    1,1,veins.gat,88,171
+ve_in.gat,97,298,0    warp    veinswarp1019    1,1,ve_in.gat,125,372
+ve_in.gat,128,372,0    warp    veinswarp1020    1,1,ve_in.gat,100,298
+veins.gat,199,165,0    warp    veinswarp1021    1,1,ve_in.gat,183,206
+ve_in.gat,183,203,0    warp    veinswarp1022    1,1,veins.gat,199,162
+veins.gat,210,167,0    warp    veinswarp1023    1,1,ve_in.gat,203,211
+ve_in.gat,206,211,0    warp    veinswarp1024    1,1,veins.gat,213,167
+veins.gat,267,230,0    warp    veinswarp1025    1,1,ve_in.gat,283,223
+ve_in.gat,286,223,0    warp    veinswarp1026    1,1,veins.gat,268,227
+veins.gat,338,230,0    warp    veinswarp1027    1,1,ve_in.gat,194,372
+ve_in.gat,194,369,0    warp    veinswarp1028    1,1,veins.gat,335,230
