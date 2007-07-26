@@ -39,7 +39,7 @@ OBJECTS="common"
 CONFIGFILE="src/include/config.h"
 MAKEFILE="Makefile"
 LAST_LIBS="-lmysql -lmysqlclient -lws2_32 -ldl -lz -lm -lstdc++"
-FREYA_VERSION="3.1"
+FREYA_VERSION="4.0"
 
 # Autoinstall values...
 ZLIB_LAST_VERSION="1.2.3"
