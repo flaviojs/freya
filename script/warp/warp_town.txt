@@ -1330,7 +1330,6 @@ rachel.gat,105,171,0	warp	rachel84	1,1,ra_in01.gat,309,65
 ra_in01.gat,375,109,0	warp	rachel85	1,1,rachel.gat,116,154
 rachel.gat,116,158,0	warp	rachel86	1,1,ra_in01.gat,375,114
 
-//Additional Temple warp
 ra_temin.gat,275,243,0	warp	rachel87	1,1,ra_temin.gat,131,131
 
 
@@ -1360,7 +1359,6 @@ um_in.gat,38,110,0	warp	umba0040	1,1,umbala.gat,104,163
 
 veins.gat,218,361,0    warp    veinswarp0501    1,1,ve_fild06.gat,152,221
 veins.gat,146,24,0        warp    veinswarp0502    1,1,ve_fild07.gat,148,370
-rachel.gat,130,20,0    warp    veinswarp0503    1,1,ve_fild02.gat,196,379
 veins.gat,196,260,0    warp    veinswarp1001    1,1,ve_in.gat,351,320
 ve_in.gat,351,317,0    warp    veinswarp1002    1,1,veins.gat,196,257
 veins.gat,116,277,0    warp    veinswarp1003    1,1,ve_in.gat,99,218

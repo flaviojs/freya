@@ -677,7 +677,7 @@ ice_dun01.gat,146,161,0	warp	ice002	1,1,ice_dun02.gat,151,139
 ice_dun02.gat,151,145,0	warp	ice003	1,1,ice_dun01.gat,146,157
 ice_dun02.gat,150,285,0	warp	ice004	1,1,ice_dun03.gat,149,24
 ice_dun03.gat,149,19,0	warp	ice005	1,1,ice_dun02.gat,150,280
-ice_dun04.gat,33,140,0	warp	ice006	1,1,ice_dun03.gat,149,1300
+ice_dun04.gat,33,140,0	warp	ice006	1,1,ice_dun03.gat,149,130
 
 
 //--------------------------------------------------------------

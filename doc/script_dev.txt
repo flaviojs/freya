@@ -43,7 +43,6 @@
 - script/global/global_refine.txt
 - script/job/job_crusader.txt
 - script/job/job_sage.txt
-- script/misc/misc_marriage.txt
 - script/quest/quest_headgear.txt
 - script/quest/quest_pet_taming.txt
 - script/town/town_amatsu.txt

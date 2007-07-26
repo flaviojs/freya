@@ -7,7 +7,7 @@
 //              /_/  |_|\____|_|  \___/|_|  \__,_|              
 //                 http://aurora.deltaanime.net                 
 //--------------------------------------------------------------
-// Script Title: PvP System Warps	Author: Athena/L0ne_W0lf
+// Script Title: PvP System Warps	Author: jAthena/L0ne_W0lf
 //--------------------------------------------------------------
 // Revision History: v1.1
 //--------------------------------------------------------------
@@ -29,12 +29,6 @@ pvp_n_8-4.gat,150,71,0	warp	Link#pt_link_1-41	1,1,pvp_n_8-4.gat,0,0
 pvp_n_8-4.gat,144,166,0	warp	Link#pt_link_1-42	1,1,pvp_n_8-4.gat,0,0
 pvp_n_8-5.gat,30,30,0	warp	Link#pt_link_2-51	3,3,pvp_n_8-5.gat,100,100
 
-// Prontera Arena
-prt_are_in.gat,142,13,0	warp	warp1076	1,1,prt_are_in.gat,177,78
-prt_are_in.gat,177,75,0	warp	warp1077	1,1,prt_are_in.gat,139,13
-prt_are_in.gat,55,13,0	warp	warp1078	1,1,prt_are_in.gat,125,78
-prt_are_in.gat,125,75,0	warp	warp1079	1,1,prt_are_in.gat,58,13
-prt_are_in.gat,97,7,0	warp	warp1080	1,1,izlude.gat,128,222
 
 // Time Limit Mode
 force_1-1.gat,25,44,0	warp	fc101	1,1,force_1-1.gat,25,69

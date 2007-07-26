@@ -1,1018 +1,1267 @@
 //--------------------------------------------------------------
-//               (c)2004-2007 Aurora Team Presents:             
+//               (c)2004-2007 Freya Team Presents:              
 //                  ___                                         
 //                 /   |_   _ _ __ ___  _ __ __ _               
 //                / /| | | | | '__/ _ \| '__/ _` |              
 //               / ___ | |_| | | | (_) | | | (_| |              
 //              /_/  |_|\____|_|  \___/|_|  \__,_|              
-//                 http://aurora.deltaanime.net                 
+//                    http://www.ro-freya.net                   
 //--------------------------------------------------------------
-// Script Title: Marriage	Author: A Lot of People
+// Script Title: Marriage System	Author: L0ne_W0lf
 //--------------------------------------------------------------
-// Revision History: v2.8
+// Revision History: v1.0
 //--------------------------------------------------------------
-//	1.0 First version [AppleGirl/Evera]
-//	1.1 Tested and debugged [whocares]
-//	1.2 Same sex weddings, now the script (NPCs) tell the players how they must perform exactly [ShadowLady]
-//	1.3 Added some code ideas. Thanks to Jbain for help me debbuging [ShadowLady]
-//	1.4 Added @outfit variable, to check if you already bought a tux/dress [ShadowLady]
-//	1.5 Fixed "part" of the divorce npc, the code is bugged by itself, need both chars to be online yet [ShadowLady]
-//	1.6 Fixed some minor bugs. Same-sex is disabled by default now [ShadowLady]
-//	1.7 Change $progress variable to $@progress, so it doesn't mess up the ceremony on a server crash [ShadowLady]
-//	1.8 Added a Special GM Menu to enable/disable same-sex weddings and reset most variables [ShadowLady]
-//	1.9 Added the $progress to $@progress variable change that ShadowLady put in notes, but not in code [Aria]
-//	2.0 Complete rewrite [Skotlex]
-//	2.1 Removed Divorce System from this script as the official Divorce system is now in [Tsuyuki]
-//	2.2 Converted to be fully compatible with jAthena [Tsuyuki]
-//	2.3 Corrected NPC coordinates/view ID/facing positions and added cutins [Tsuyuki]
-//	2.4 Added base level 45 and under failure check [Tsuyuki]
-//	2.5 Added in misc NPCs from Aegis/jAthena [Tsuyuki]
-//	2.6 Removed Wedding Veil requirement entirely [Tsuyuki]
-//	2.7 Script no longer requires players to have Tuxedo/Wedding Dress equiped, as per Aegis [Tsuyuki]
-//	 - Instead the two players must have the items in their inventories
-//	2.8 Merged in Divorce, converted from Aegis by LightFighter [Tsuyuki]
+//	1.0 First version, converted from Aegis [L0ne_W0lf]
 //--------------------------------------------------------------
-// Additional Notes: Divorce/Misc NPCs are * Aegis-certified *
+// Additional Notes: * Official-certified / Aegis-certified *
 //--------------------------------------------------------------
 
 
-//--------------------------------------------------------------
-// Configuration Variables:
-//--------------------------------------------------------------
-
--	script	marriage_init	139,{
-
-OnInit:
-	set $@wed_allow, 0;	// If 1, allows same sex marriages.
-
-	// ID of the item that is traded for the Wedding Ring (use 0 to disable):
-	set $@wed_ring, 2613;
-
-	set $@wed_groom_reg, 1300000;	// Registration cost for the Groom
-	set $@wed_bride_reg, 1200000; // Registration cost for the Bride
-	set $@wedding_effect, 1; // On who to display the FX: 0: Priest, 1: Bride, 2: Groom
-	end;
-}
-
-
-//--------------------------------------------------------------
-// Documentation
-//--------------------------------------------------------------
-
-// Other Configuration:
-// Line 61,62: Priest location, sprite and name.
-// Line 437,438: Registration location, sprite and name. 
-// Line 813,814: Divorcing location, sprite and name.
-
-// Variable Notes:
-// $wed_progress	Signals that there is a wedding in progress
-// $wed_groom$ - Groom's name storage
-// $wed_groom_sex - Groom's gender (for same marriage ring giving)
-// $wed_bride$ - Bride's name storage
-// $wed_bride_sex - Groom's gender (for same marriage ring giving)
-// $wed_groom_progress - Notes the progress on the groom's part
-// $wed_bride_progress - Notes the progress on the bride's part
-// 0: Not registered. 1: Registered. 2: Accepted the partner. 3: Ready to
-// Retrieve the ring. 4: Retrieved the ring. 5: All set to be wed. 6: Already
-// a couple.
-// ceremony.
-// $wedding_effect_id - When wedding_effect is enabled, sets the ID of the
-// player to show the effect on.
-
-
-//--------------------------------------------------------------
-// Frederick Second (The Priest)
-//--------------------------------------------------------------
-
-prt_church.gat,99,125,4	script	Frederick Second	108,{
-
-	set @name$,"Frederick Second";
-	
-	if (PartnerId) {
-		mes "["+@name$+"]";
-		mes "You have my blessings, have a wonderful married life.";
-		close;
-	}
-	if ($wed_progress == 0) {
-		mes "["+@name$+"]";
-		mes "Hello child. How is life treating you?";
-		close;
-	}
-	
-	if (strcharinfo(0) == $wed_groom$) {
-		callfunc "F_Groom";
-		end;
-	}
-	if (strcharinfo(0) == $wed_bride$) {
-		callfunc "F_Bride";
-		end;
-	}
-	mes "["+@name$+"]";
-	if ($wed_groom_progress == 0 || $wed_bride_progress == 0) {
-		mes "There is a wedding being planned. I would appreciate it if you would not interrupt me.";
-		close;
-	}
-	if ($wed_groom_progress == 6) {
-		mes "I am wedding "+$wed_groom$+" and "+$wed_bride$+", and it's already too late to object. Please let me continue.";
-		close;
-	}
-	mes "I am going to wed "+$wed_groom$+" and "+$wed_bride$+", do you have an objection to it?";
-	if (select("Sorry, please go on.","Yes, I actually do.") == 2) {
-		//Abort
-		announce "Ladies and gentlemen, "+strcharinfo(0)+" has an objection to the wedding!",9;
-		callfunc "F_wed_end";
-		mes "Why should they not be wed?";
-		input $@msg$;
-		announce strcharinfo(0)+"'s objection is: "+$@msg$,9;
-		emotion e_sob;
-		mes "I see...";
-	} else
-		mes "Very well, go sit and enjoy the ceremony.";
-	close;
-
-OnInit:
-	if ($wed_groom_progress == 6) {
-		callfunc "F_wed_end";
-	}
-	end;
-}
-
-
-//--------------------------------------------------------------
-// Sister Mary
-//--------------------------------------------------------------
-
-// Registration & Status
-prt_church.gat,94,100,4	script	Sister Mary	71,{
+prt_church.gat,97,100,4	script	Wedding Staff#w	71,{
 
 	cutin "wedding_marry01",2;
-	set @name$,"Mary";
-	if (PartnerId) {
-		mes "["+@name$+"]";
-		mes "Isn't marriage beautiful?";
-		close2;
-		cutin "wedding_marry01",255;
-		end;
-	}
-
-	if ($wed_progress) {
-		callfunc "F_WedProgress";
-		close2;
-		cutin "wedding_marry01",255;
-		end;
-	}
-	
-	do {
-		mes "["+@name$+"]";
-		mes "Marriage... is such a beautiful thing.";
-		mes "Would you like to get married with someone?";
-		next;
-		set @menu, select(
-			"I'll be single forever!",
-			"Explain the principles of marriage.",
-			"Explain the marriage procedure.",
-			"I want to get married with someone."
-		);
-		switch(@menu) {
-		case 1: //Quit
-			mes "["+@name$+"]";
-			mes "In that case, enjoy your bachelor's life.";
-			close2;
-			cutin "wedding_marry01",255;
-			end;
-		case 2: //Principles
-			callfunc "F_Principles";
-			break;
-		case 3: //Procedure
-			callfunc "F_Procedure";
-			break;
-		case 4: //Register
-			callfunc "F_Register";
-			break;
-		}
-	} while(@menu > 1);
-	close2;
-	cutin "wedding_marry01",255;
-	end;
-
-OnInit:
-	if ($wed_groom_progress + $wed_bride_progress == 1)
-		initnpctimer;
-	end;
-
-OnTimer60000:
-	//Registration failed.
-	if ($wed_bride_progress == 1)
-		set $@msg$, $wed_bride$;
-	else
-		set $@msg$, $wed_groom$;
-
-	announce "Registration timed out. Is it that no one wants to marry "+$@msg$+"..?",9;
-	emotion e_hmm;
-	
-	set $wed_groom$,"";
-	set $wed_groom_sex, 0;
-	set $wed_bride$,"";
-	set $wed_bride_sex, 0;
-	set $wed_groom_progress,0;
-	set $wed_bride_progress,0;
-	set $wed_progress,0;
-	stopnpctimer;
-	end;
-}
-
-
-//--------------------------------------------------------------
-// Marriage Functions
-//--------------------------------------------------------------
-
-function	script	F_Groom	{
-
-	if ($wed_bride_progress == 0) {
-		mes "["+@name$+"]";
-		mes "Looks like your bride has yet to arrive and register.";
-		close;
-	}
-
-	switch($wed_groom_progress) {
-	case 1:
-		callfunc "F_AcceptBride";
-		break;
-	case 2:
-		mes "["+@name$+"]";
-		mes "I am waiting for your partner to accept you to start the ceremony.";
-		close;
-	case 3:
-		callfunc "F_RetrieveRingM";
-		break;
-	case 4:
-		mes "["+@name$+"]";
-		mes "Your partner's wedding ring hasn't been retrieved yet. The ceremony will start as soon as you both have claimed your rings.";
-		close;
-	case 5:
-		mes "["+@name$+"]";
-		callfunc "F_StartCeremony";
-		break;
-	default:
-		mes "["+@name$+"]";
-		mes "Please don't interrupt me now.";
-		close;
-	}
-	return;
-}
-
-function	script	F_Bride	{
-
-	if ($wed_groom_progress == 0) {
-		mes "["+@name$+"]";
-		mes "Looks like your groom has yet to arrive and register.";
-		close;
-	}
-
-	switch($wed_bride_progress) {
-	case 1:
-		callfunc "F_AcceptGroom";
-		break;
-	case 2:
-		mes "["+@name$+"]";
-		mes "I am waiting for your partner to accept you to start the ceremony.";
-		close;
-	case 3:
-		callfunc "F_RetrieveRingF";
-		break;
-	case 4:
-		mes "["+@name$+"]";
-		mes "Your partner's wedding ring hasn't been retrieved yet. The ceremony will start as soon as you both have claimed your rings.";
-		close;
-	case 5:
-		mes "["+@name$+"]";
-		callfunc "F_StartCeremony";
-		break;
-	default:
-		mes "["+@name$+"]";
-		mes "Please don't interrupt me now.";
-		close;
-	}
-	return;
-}
-
-function	script	F_AcceptGroom	{
-
-	mes "["+@name$+"]";
-	mes $wed_bride$+", "+$wed_groom$+" has requested to be your husband for the rest of your life. Do you accept?";
-	next;
-	switch(select("I need time to think about it.","No, I don't!","Yes, I do!")) {
-	case 1:
-		mes "["+@name$+"]";
-		mes "You what!?";
-		mes "err.. *cough* *cough* very well... come back after you've made up your mind.";
-		emotion e_ag;
-		close;
-	case 2:
-		mes "["+@name$+"]";
-		mes "!!";
-		mes "Ah... err... ehm... okay. You two seem to have some differences to settle first.";
-		close2;
-		emotion e_omg;
-		announce "Ladies and gentlemen, "+$wed_bride$+" has rejected to marry "+$wed_groom$+"!",9;
-		callfunc "F_wed_end";
-		break;
-	case 3:
-		set $wed_bride_progress,2;
-		if ($wed_groom_progress == 2) {
-		callfunc "F_RingsAccepted";
-			break;
-		}
-		emotion e_ok;
-		mes "["+@name$+"]";
-		mes "After your groom approves, you will be given your rings, the ceremony will begin and you will be officially married.";
-		close;
-	}
-	return;
-}
-
-function	script	F_AcceptBride	{
-
-	mes "["+@name$+"]";
-	mes $wed_groom$+", "+$wed_bride$+" has requested to be your wife for the rest of your life. Do you accept?";
-	next;
-	switch(select("I need time to think about it.","No, I don't!","Yes, I do!")) {
-	case 1:
-		mes "["+@name$+"]";
-		mes "You what!?";
-		mes "err.. *cough* *cough* very well... come back after you've made up your mind.";
-		emotion e_ag;
-		close;
-	case 2:
-		mes "["+@name$+"]";
-		mes "!!";
-		mes "Ah... err... ehm... okay. You two seem to have some differences to settle first.";
-		emotion e_omg;
-		close2;
-		announce "Ladies and gentlemen, "+$wed_groom$+" has rejected to marry "+$wed_bride$+"!",9;
-		callfunc "F_wed_end";
-		break;
-	case 3:
-		set $wed_groom_progress,2;
-		if ($wed_bride_progress == 2) {
-			callfunc "F_RingsAccepted";
-			break;
-		}
-		emotion e_ok;
-		mes "["+@name$+"]";
-		mes "After your bride approves, you will be given your rings, the ceremony will begin and you will be officially married.";
-		close;
-	}
-	return;
-}
-
-function	script	F_RingsAccepted	{
-
-	mes "["+@name$+"]";
-	mes "Now that you both have accepted, the wedding will begin. Please come forth, you and your partner, to retrieve your rings.";
-	set $wed_bride_progress,3;
-	set $wed_groom_progress,3;
-	announce $wed_groom$+" and "+$wed_bride$+"'s wedding ceremony will be held at the church!",8;
-	close2;
-	emotion e_lv;
-	announce "May the groom and bride please step forward and retrieve their rings?",9;
-}
-
-function	script	F_RetrieveRingM	{
-
-	mes "["+@name$+"]";
-	if ($@wed_ring && countitem($@wed_ring) < 1) {
-		mes "What happened to your "+getitemname($@wed_ring)+"? You didn't lose it... did you? We need it to continue with the ceremony!";
-		close;
-	}
-	if ($wed_bride_sex)
-		set @item, 2634;	//Groom's wedding ring
-	else
-		set @item, 2635;	//Bride's wedding ring
-
-	getitem @item,1,0,getcharid(3,$wed_groom$);
-
-	mes "Here's the wedding ring for your bride.";
-	if ($@wed_ring) delitem $@wed_ring,1;
-	set $wed_groom_progress,4;
-	
-	if ($wed_bride_progress == 4)
-		callfunc "F_StartCeremony";
-	else {
-		mes "Once your bride retrieves the ring, the ceremony will begin.";
-		close;
-	}
-	return;
-}
-
-function	script	F_RetrieveRingF	{
-
-	mes "["+@name$+"]";
-	if ($@wed_ring && countitem($@wed_ring) < 1) {
-		mes "What happened to your "+getitemname($@wed_ring)+"? You didn't lose it... did you? We need it to continue with the ceremony!";
-		close;
-	}
-	if ($wed_groom_sex)
-		set @item, 2634;	//Groom's wedding ring
-	else
-		set @item, 2635;	//Bride's wedding ring
-
-	getitem @item,1,0,getcharid(3,$wed_bride$);
-
-	mes "Here's the wedding ring for your groom.";
-	if ($@wed_ring) delitem $@wed_ring,1;
-	set $wed_bride_progress,4;
-
-	if ($wed_groom_progress == 4)
-		callfunc "F_StartCeremony";
-	else {
-		mes "Once your groom retrieves the ring, the ceremony will begin.";
-		close;
-	}
-	return;
-}
-
-function	script	F_StartCeremony	{
-
-	mes "I will now start the wedding ceremony, and you will be declared forth husband and wife.";
-	set $wed_bride_progress,5;
-	set $wed_groom_progress,5;
-	set $@msg$,$wed_groom$;
-	if (strcharinfo(0) == $wed_groom$)
-		set $@msg$,$wed_bride$;
-	if (marriage($@msg$) == 0) {
-		next;
-		mes "["+@name$+"]";
-		mes "Where is "+$@msg$+"?? I can't marry you both if one is missing...";
-		close;
-	}
-	set $wed_bride_progress,6;
-	set $wed_groom_progress,6;
-	close2;
-	sleep 1000;
-	announce "Ladies and Gentlemen, We will now join in holy matrimony these two lovers.",9;
-	sleep 4000;
-	announce "Now more than ever, will both of your lives be entwined together as so will be your souls.",9;
-	sleep 5000;
-	announce "You will both honor and cherish each other through the best and worst of times.",9;
-	sleep 5000;
-	announce "The safety and well being of your other will now also be your responsibility.",9;
-	sleep 5000;
-	announce "May in sickness or good health, your love burn bright like no force can extinguish it.",9;
-	sleep 5000;
-	announce "Those here stand witness to these vows bestowed upon you, you must act accordingly to them.",9;
-	sleep 5000;
-	announce "Understanding that, we are nothing more but mortals on this earth, but this is our triumph.",9;
-	sleep 5000;
-	announce "We here will now join these two mortal entities, and create an immortal love.",9;
-	sleep 5000;
-	announce $wed_groom$+", you have accepted to take "+$wed_bride$+" as your lawfully wedded wife,",9;
-	sleep 5000;
-	announce "and you, "+$wed_bride$+", have accepted take "+$wed_groom$+" as your lawfully wedded husband.",9;
-	sleep 5000;
-	announce "And as such, now, by the powers vested in me...",9;
-	sleep 5000;
-	announce "I pronounce you Husband and Wife, you may kiss the bride and exchange rings.",9;
-	if ($wedding_effect_id && isloggedin($wedding_effect_id))
-	{
-		attachrid($wedding_effect_id);
-		wedding;
-		detachrid;
-	} else
-		wedding;
-		callfunc "F_wed_end";
-	stopnpctimer;
-	end;
-	return;
-}
-
-// Function: Resets wedding variables.
-function	script	F_wed_end	{
-
-	set $wed_groom$,"";
-	set $wed_groom_sex, 0;
-	set $wed_bride$,"";
-	set $wed_bride_sex, 0;
-	set $wed_groom_progress,0;
-	set $wed_bride_progress,0;
-	set $wed_progress,0;
-	set $wedding_effect_id,0;
-}
-
-function	script	F_Register	{
-
-	if ($@wed_allow) { // Role select
-		mes "["+@name$+"]";
-		mes "Very well, whom would you like to register as?";
-		next;
-		set @submenu, select("Groom","Bride","Cancel");
-	} else if (Sex == Male) { // Groom
-		mes "["+@name$+"]";
-		mes "Very well, will you register as the Groom?";
-		next;
-		if (select("Yes","I've changed my mind.")==1)
-			set @submenu, 1;
-		else
-			set @submenu, 3;
-	} else { // Bride
-		mes "["+@name$+"]";
-		mes "Very well, will you register as the Bride?";
-		next;
-		if (select("Yes","I've changed my mind.")==1)
-			set @submenu, 2;
-		else
-			set @submenu, 3;
-	}
-	switch(@submenu) {
-	case 1: // Groom
-		callfunc "F_TryRegister",0;
-		set $wed_progress,1;
-		mes "["+@name$+"]";
-		mes "You are now registered as the groom.";
-		mes "Tell your bride to register as soon as possible.";	
-		emotion e_hmm;
-		initnpctimer;
-		close2;
-		cutin "wedding_marry01",255;
-		end;
-	case 2: // Bride
-		callfunc "F_TryRegister",1;
-		set $wed_progress,1;
-		mes "["+@name$+"]";
-		mes "You are now registered as the bride.";
-		mes "Tell your groom to register as soon as possible.";
-		emotion e_hmm;
-		initnpctimer;
-		close2;
-		cutin "wedding_marry01",255;
-		end;
-	default: // Cancel
-		mes "["+@name$+"]";
-		mes "Come back when you are ready.";
-		close2;
-		cutin "wedding_marry01",255;
-		end;
-	}
-	return;
-}
-
-function	script	F_WedProgress	{
-
-	if (strcharinfo(0) == $wed_groom$) {
-		mes "["+@name$+"]";
-		if ($wed_bride_progress > 0)
-			mes "The Priest will handle the rest of the ceremony.";
-		else
-			mes "Tell your bride to register, what is taking so long? Time is running out.";
-		close2;
-		cutin "wedding_marry01",255;
-		end;
-	}
-	if (strcharinfo(0) == $wed_bride$) {
-		mes "["+@name$+"]";
-		if ($wed_groom_progress > 0) 
-			mes "The Priest will handle the rest of the ceremony.";
-		else
-			mes "Tell your groom to register, what is taking so long? Time is running out.";
-		close2;
-		cutin "wedding_marry01",255;
-		end;
-	}
-	if (($wed_groom_progress == 0) && (Sex == Male || $@wed_allow == 1)) {
-		mes "["+@name$+"]";
-		mes $wed_bride$+" is waiting for the groom to register. Are you the one who came to register as groom?";
-		next;
-		if (select("Yes, I am.","Sorry, you got the wrong person.") == 1) {
-			callfunc "F_TryRegister",0;
-			stopnpctimer;
-			set $wed_groom_progress,1;
-			mes "["+@name$+"]";
-			mes "Very well, now go to the Priest to reaffirm your vows and the ceremony will begin."; 
-			emotion e_no1;
-			close2;
-			cutin "wedding_marry01",255;
-			announce "Registration finished. "+$wed_groom$+" and "+$wed_bride$+", please reaffirm your vows with the Priest.",9;
-			emotion e_no1;
-			end;
-		} else {
-			mes "["+@name$+"]";
-			mes "I see. Sorry to have bothered you then.";
-			close2;
-			cutin "wedding_marry01",255;
-			end;
-		}
-
-	}
-	if (($wed_bride_progress == 0) && (Sex == Female || $@wed_allow == 1)) {
-		mes "["+@name$+"]";
-		mes $wed_groom$+" is waiting for the bride to register. Are you the one who came to register as the bride?";
-		next;
-		if (select("Yes, I am.","Sorry, you got the wrong person.") == 1) {
-			callfunc "F_TryRegister",1;
-			stopnpctimer;
-			mes "["+@name$+"]";
-			mes "Very well, now go to the Priest to reaffirm your vows and the ceremony will begin."; 
-			emotion e_no1;
-			close2;
-			cutin "wedding_marry01",255;
-			announce "Registration finished. "+$wed_groom$+" and "+$wed_bride$+", please reaffirm your vows with the Priest.",9;
-			emotion e_no1;
-			end;
-		} else {
-			mes "["+@name$+"]";
-			mes "I see. Sorry to have bothered you then.";
-			close2;
-			cutin "wedding_marry01",255;
-			end;
-		}
-	}
-	mes "["+@name$+"]";
-	mes "There is a wedding in progress.";
-	mes "Would you like to know the progress of said wedding?";
-	next;
-	if (select("Yes","No") != 1) {
-		mes "["+@name$+"]";
-		mes "Enjoy the wedding.";
-		close2;
-		cutin "wedding_marry01",255;
-		end;
-	}
-	//Display Progress
-	mes "["+@name$+"]";
-	switch($wed_groom_progress) {
-	case 0:
-		mes "The groom has not registered yet.";
-		break;
-	case 1:
-		mes "The groom, "+$wed_groom$+", has yet to accept the bride.";
-		break;
-	case 2:
-		mes "The groom, "+$wed_groom$+", is waiting for the bride's acceptance.";
-		break;
-	case 3:
-		mes "The groom, "+$wed_groom$+", has yet to retrieve the ring.";
-		break;
-	case 4:
-		mes "The groom, "+$wed_groom$+", is waiting for the bride to retrieve the ring.";
-		break;
-	}
-	switch($wed_bride_progress) {
-	case 0:
-		mes "The bride has not registered yet.";
-		break;
-	case 1:
-		mes "The bride, "+$wed_bride$+", has yet to confirm the groom.";
-		break;
-	case 2:
-		mes "The bride, "+$wed_bride$+", is waiting for the groom's acceptance.";
-		break;
-	case 3:
-		mes "The bride, "+$wed_bride$+", has yet to retrieve the ring.";
-		break;
-	case 4:
-		mes "The bride, "+$wed_bride$+", is waiting for the groom to retrieve the ring.";	
-		break;
-	case 5:
-		mes "We are just waiting for both "+$wed_groom$+" and "+$wed_bride$+" to be together to marry them.";
-		break;
-	case 6:
-		mes $wed_groom$+" and "+$wed_bride$+"'s wedding ceremony is already well on it's way.";
-		break;
-	}
-	mes "Enjoy the remaining of the wedding.";
-	close2;
-	cutin "wedding_marry01",255;
-	end;
-	return;
-}
-
-// Function F_TryRegister (int bride)
-function	script	F_TryRegister	{
-
-	set @bride, getarg(0);
-	set @type$, "groom";
-	if (@bride)
-		set @type$, "bride";
-		
-	mes "["+@name$+"]";
-	mes "Before registering as "+@type$+", let me check if you meet all the requirements...";
-	next;
 	if (Upper == 2) {
-		mes "["+@name$+"]";
-		mes "Oh dear, you are too young to be thinking of marriage!";
-		emotion e_gasp;
-		close2;
-		cutin "wedding_marry01",255;
-		end;
-	}
-	if (BaseLevel < 45) {
-		mes "["+@name$+"]";
-		mes "I'm sorry, but you must be";
-		mes "at least base level 45 or higher";
-		mes "to get married. Please come back";
-		mes "when you've become stronger.";
-		close2;
-		cutin "wedding_marry02",255;
-		end;
-	}
-	if (Sex == Male)
-		set @item,7170;
-	else
-		set @item,2338;
-	if ((Sex == Female && countitem(@item) < 1) || (Sex == Male && countitem(@item) < 1)) {
-		mes "["+@name$+"]";
-		if (Sex == Female) {
-			mes "I'm sorry, but you must provide us with a Wedding Dress";
-			mes "in your inventory for the marriage process.";
-		}
-		else {
-			mes "I'm sorry, but you must provide us with a Tuxedo";
-			mes "in your inventory for the marriage process.";
-		}
-		mes "Please get one and come back.";
-		close2;
-		cutin "wedding_marry02",255;
-		end;
-	}
-	if ($@wed_ring && countitem($@wed_ring) < 1) {
-		mes "["+@name$+"]";
-		mes "Where's the ring? You need a "+getitemname($@wed_ring)+" for the ring exchange, dear.";
-		close2;
-		cutin "wedding_marry01",255;
-		end;
-	}
-	if (@bride)
-		set @cost, $@wed_bride_reg;
-	else 
-		set @cost, $@wed_groom_reg;
-
-	if (Zeny < @cost) {
-		mes "["+@name$+"]";
-		mes "I am sorry, but you don't have enough to pay for the registration fee.";
-		mes "Come back once you have collected "+@cost+"z."; 
-		close2;
-		cutin "wedding_marry01",255;
-		end;
-	}
-	set Zeny,Zeny-@cost;
-	if (Sex == Female) {
-		delitem 2338,1;
-	}
-	else {
-		delitem 7170,1;
-	}
-	sc_start SC_Wedding,3600000000,1; //Start Wedding Effect (SC_WEDDING)
-	if (@bride) {
-		set $wed_bride_progress,1;
-		set $wed_bride$,strcharinfo(0);
-		set $wed_bride_sex, sex;
-		if ($@wedding_effect == 1) //Store account id for effect.
-			set $wedding_effect_id, getcharid(3);
-	} else {
-		set $wed_groom_progress,1;
-		set $wed_groom$,strcharinfo(0);
-		set $wed_groom_sex, sex;
-		if ($@wedding_effect == 2) //Store account id for effect.
-			set $wedding_effect_id, getcharid(3);
-	}
-	return;
-}
-
-// Explain wedding principles...
-function	script	F_Principles	{
-
-	mes "["+@name$+"]";
-	mes "Weddings are performed by our local Priest with the intent of promoting love and peace among the loving couples.";
-	next;
-	mes "["+@name$+"]";
-	mes "The proposal must be done with prudence and courtesy, once the wedlocks have been made, they cannot be undone.";
-	next;
-	mes "["+@name$+"]";
-	mes "The two who have been joined by marriage must remain together forever until the day death do them apart.";
-	next;
-	mes "["+@name$+"]";
-	if ($@wed_allow == 1)
-		mes "Although normally only males can wed females (and viceversa), our local Priest is more open-minded than that and he permits all pairings regardless of gender.";
-	else
-		mes "Males may only wed with females, and females only with males, the church will not consent any other kind of partnerships.";
-	next;
-	mes "["+@name$+"]";
-	mes "If there is a significant other with whom you want to spend the rest of your life with, then don't be shy to propose.";
-	next;
-	mes "["+@name$+"]";
-   mes "I wish for many blessings upon couples who wish to live happily ever after...";
-	next;
-	return;
-}
-
-//Explain the wedding procedure...
-function	script	F_Procedure	{
-
-	mes "["+@name$+"]";
-	mes "First of all, both groom and bride must register with me.";
-	next;
-	if ($@wed_allow == 1) {
-		mes "["+@name$+"]";
-		mes "The registration requirements are:";
-		mes "- Males must have a "+getitemname(7170)+". in their inventory.";
-		mes "- Females must have a "+getitemname(2338)+". in their inventory";
-		if ($@wed_ring) mes "- Both must own a "+getitemname($@wed_ring)+" each.";
-		if ($@wed_groom_reg > 0) mes "- The registration fee for the groom is "+$@wed_groom_reg+"z.";
-		if ($@wed_bride_reg > 0) mes "- The registration fee for the bride is "+$@wed_bride_reg+"z.";
-	} else {
-		mes "["+@name$+"]";
-		mes "The registration requirements for the groom are:";
-		mes "- To have a "+getitemname(7170)+". in their inventory";
-		if ($@wed_ring) mes "- To own a "+getitemname($@wed_ring)+".";
-		if ($@wed_groom_reg > 0) mes "- Pay a Registration fee of "+$@wed_groom_reg+"z.";
+		mes "[Marry Happy]";
+		mes "Hello~";
+		mes "My name is Marry Happy";
+		mes "and I'm here to provide you";
+		mes "with information related to";
+		mes "marriage. Now, did you";
+		mes "have any questions?";
 		next;
-		mes "["+@name$+"]";
-		mes "The registration requirements for the bride are:";
-		mes "- To have a "+getitemname(2338)+". in their inventory.";
-		if ($@wed_ring) mes "- To own a "+getitemname($@wed_ring)+".";
-		if ($@wed_bride_reg > 0) mes "- Pay a Registration fee of "+$@wed_bride_reg+"z.";
+		if (select("I want to get married.","I don't need your help!") == 1) {
+			mes "[Marry Happy]";
+			mes "Oh, I'm sorry, but";
+			mes "adopted characters";
+			mes "aren't allowed to get";
+			mes "married. For now, why";
+			mes "don't you enjoy the simple";
+			mes "pleasures of childhood?";
+			close2;
+			cutin "",255;
+			end;
+		}
+		mes "[Marry Happy]";
+		mes "Oh, of course you";
+		mes "don't! Little children";
+		mes "can't get married-- there";
+		mes "are too many laws against";
+		mes "that~ Aren't you the most";
+		mes "adorable little thing?";
+		close2;
+		cutin "",255;
+		end;
 	}
+	mes "[Marry Happy]";
+	mes "Marriage is the beautiful";
+	mes "union of two souls that have";
+	mes "chosen to be together forever,";
+	mes "to share their joy and lives.";
+	mes "Is there a special someone";
+	mes "like that in your life?";
 	next;
-	mes "["+@name$+"]";
-	mes "I shouldn't need to mention this, but adopted kids are too young to get married.";
-	mes "Both groom and bride must register within a minute of each other, or the wedding will be cancelled. So be sure you both are ready and meet the registration requirements beforehand.";
-	next;
-	mes "["+@name$+"]";
-	mes "After both have registered with me, you have to go pledge your vows to the Priest and accept your registered partner. If for some reason you reject your registered partner, the wedding will be cancelled...";
-	next;
-	mes "["+@name$+"]";
-	mes "If you both accept each other, then the wedding has been decided and the ceremony will begin.";
-	if ($@wed_ring) {
-		mes "But first, you need to get your rings ready.";
+	switch(select("Ask about Wedding Ceremony","Ask about Procedure","Apply for Wedding","We are the Invincible Single Army!")) {
+	case 1:
+		mes "[Marry Happy]";
+		mes "Wise and benevolent";
+		mes "King Tristram III used to";
+		mes "conduct wedding ceremonies,";
+		mes "but he's no longer able to do";
+		mes "so because of his royal duties";
+		mes "and freneticly paced schedule.";
 		next;
-		mes "["+@name$+"]";
-		mes "Talk to the priest once more, and he will exchange your "+getitemname($@wed_ring)+" for a wedding ring. After you both have claimed the rings for exchanging, the ceremony will begin.";
+		mes "[Marry Happy]";
+		mes "Bishop Vomars, the bishop";
+		mes "of love, is now the officiator";
+		mes "of the marriage ceremony.";
+		mes "He is truly a treasure to the";
+		mes "Rune-Midgarts Kingdom.";
+		next;
+		mes "[Marry Happy]";
+		mes "When you marry someone,";
+		mes "it's for the rest of your life, so think carefully before making or";
+		mes "accepting a marriage proposal.";
+		mes "Keep in mind that a man can only";
+		mes "marry a woman and vice versa.";
+		next;
+		mes "[Marry Happy]";
+		mes "If you're lucky enough to";
+		mes "find someone that you really";
+		mes "want to spend the rest of your";
+		mes "life with, you might want to pop the question. I hope everyone";
+		mes "finds their perfect match~";
+		break;
+	case 2:
+		mes "[Marry Happy]";
+		mes "The first part of the";
+		mes "wedding procedure is to";
+		mes "complete the application.";
+		mes "Once the bride and bridegroom";
+		mes "have finished applying, they";
+		mes "must form a party of two.";
+		next;
+		mes "[Marry Happy]";
+		mes "After forming a party of two,";
+		mes "the couple must then speak to";
+		mes "Bishop Vomars. The bridegroom";
+		mes "speaks first and must tell his";
+		mes "bride's exact name to the Bishop. Otherwise, the ceremony will stop.";
+		next;
+		mes "[Marry Happy]";
+		mes "Afterwards, the bride will";
+		mes "speak to the Bishop and tell";
+		mes "him the name of her groom.";
+		mes "If these names are correctly";
+		mes "told to the Biship, they will";
+		mes "be able to exchange rings.";
+		next;
+		mes "[Marry Happy]";
+		mes "Once the wedding rings are";
+		mes "exchanged, the couple is forever bound in matrimony. Of course,";
+		mes "before this point, there are many chances to change your mind, so...";
+		next;
+		mes "[Marry Happy]";
+		mes "If there are too many";
+		mes "couples who want to get";
+		mes "married at one time, please";
+		mes "form a line and speak to Bishop";
+		mes "Vomars in order since only one couple can be married at a time.";
+		next;
+		mes "[Marry Happy]";
+		mes "Finally, be sure to tell";
+		mes "Bishop Vomars your partner's";
+		mes "exact name without wasting too much time. If you take too long,";
+		mes "the ceremony will automatically stop and you'll have to try again.";
+		next;
+		mes "[Marry Happy]";
+		mes "Brides need to remember";
+		mes "that they only have 3 minutes";
+		mes "to finish speaking to Bishop";
+		mes "Vomars after their grooms";
+		mes "have finished speaking to him.";
+		next;
+		if (select("Thanks, that helps a lot!","Easiest way to say my partner's name?") == 1) {
+			mes "[Marry Happy]";
+			mes "Well, I'm here to help";
+			mes "weddings proceed as";
+			mes "smoothly as possible.";
+			mes "If there was something";
+			mes "you didn't understand,";
+			mes "feel free to ask me again.";
+			close2;
+			cutin "",255;
+			end;
+		}
+		mes "[Marry Happy]";
+		mes "The easiest way to write";
+		mes "your partner's name for the";
+		mes "bishop is to send a private";
+		mes "message to your partner, and";
+		mes "then left-click the name section that is left of the chat prompt.";
+		next;
+		mes "[Marry Happy]";
+		mes "Press the ''Ctrl'' and ''C''";
+		mes "keys to copy the name. Then,";
+		mes "you can paste the name into";
+		mes "the input prompt by pressing";
+		mes "the ''Insert'' and ''Shift'' keys. That sounds easy, right?";
+		next;
+		mes "[Marry Happy]";
+		mes "Alright, now let's try";
+		mes "it. Practice giving me the";
+		mes "name of your partner using";
+		mes "the method I just described.";
+		next;
+		input '@partner$;
+		mes "[Marry Happy]";
+		mes "Alright, after you've";
+		mes "decided to get married,";
+		mes "come back to me and";
+		mes "submit your application.";
+		mes "I'll see you later, adventurer~";
+		break;
+	case 3:
+		cutin "wedding_marry02",2;
+		if (sex) {
+			mes "[Marry Happy]";
+			mes "So you'd like to get married?";
+			mes "As a groom, you need to prepare";
+			mes "^3377FF1 Tuxedo^000000 and pay ^3377FF1,300,000 zeny^000000.";
+			mes "Brides have to provide their own Wedding Dresses and pay a fee";
+			mes "of 1,200,000 zeny.";
+		} else {
+			mes "[Marry Happy]";
+			mes "So you'd like to get married?";
+			mes "As a bride, you need to prepare";
+			mes "1 Wedding Dress and pay a fee";
+			mes "of 1,200,000 zeny. Grooms must";
+			mes "bring a Tuxedo and pay 1,300,000 zeny to get married.";
+		}
+		next;
+		mes "[Marry Happy]";
+		mes "Brides and grooms also need";
+		mes "to have ^3377FF1 Diamond Ring^000000 to be";
+		mes "exchanged with their partners.";
+		mes "You'll need all of these items";
+		mes "prepared when you submit your";
+		mes "wedding ceremony application.";
+		next;
+		mes "[Marry Happy]";
+		mes "The prospective bride and";
+		mes "groom must both complete";
+		mes "application process before";
+		mes "the wedding can take place.";
+		mes "Now, would you like to";
+		mes "apply for marriage?";
+		next;
+		if (select("Yes","No") == 1) {
+			if (PartnerId) {
+				cutin "wedding_marry02",2;
+				mes "[Marry Happy]";
+				mes "I'm sorry, but you can't";
+				mes "apply for another marriage!";
+				mes "I can't allow you to betray";
+				mes "your spouse like that, and";
+				mes "besides, polygamy isn't";
+				mes "legal here in Rune-Midgarts.";
+				break;
+			}  else if (wedding_sign == 1) {
+				mes "[Marry Happy]";
+				mes "Didn't you already";
+				mes "complete the application?";
+				mes "Hmm, make sure that your";
+				mes "partner also finished the";
+				mes "application process, and";
+				mes "then talk to Bishop Vomars.";
+				break;
+			} else if (BaseLevel < 45) {
+				mes "[Marry Happy]";
+				mes "Hmm, you need to be";
+				mes "strong enough to protect";
+				mes "the one that you love before";
+				mes "you can consider marriage.";
+				mes "After you grow stronger,";
+				mes "come and talk to me again.";
+				close2;
+				cutin "",255;
+				end;
+			} else if (countitem(2613) < 1) {
+				mes "[Marry Happy]";
+				mes "Mm? Did you forget to";
+				mes "bring the Diamond Ring";
+				mes "to exchange with your partner";
+				mes "during the wedding ceremony?";
+				mes "Look for it carefully and come";
+				mes "back after you find it, okay?";
+				close2;
+				cutin "",255;
+				end;
+			} else if (Sex == Male) {
+				if (zeny < 1300000) {
+					mes "[Marry Happy]";
+					mes "I'm sorry, but you don't";
+					mes "have the 1,300,000 zeny";
+					mes "that all grooms must pay";
+					mes "for the wedding ceremony.";
+					mes "Did you misplace your money?";
+					close2;
+					cutin "",255;
+					end;
+				} else if (countitem(7170) < 1) {
+					mes "[Marry Happy]";
+					mes "Where's your Tuxedo?";
+					mes "You absolutely have to";
+					mes "wear it during the wedding";
+					mes "ceremony! Find it, bring it";
+					mes "to me, and then we can finally";
+					mes "begin the wedding, okay?";
+					close2;
+					cutin "",255;
+					end;
+				}
+			} else if (Sex == Female) {
+				if (zeny < 1200000) {
+					mes "[Marry Happy]";
+					mes "I'm sorry, but all brides";
+					mes "must pay the 1,200,000";
+					mes "zeny fee to proceed with the";
+					mes "wedding ceremony. Perhaps";
+					mes "you could ask your partner";
+					mes "to help you with the funds?";
+					close2;
+					cutin "",255;
+					end;
+				} else if (countitem(2338) < 1) {
+					mes "[Marry Happy]";
+					mes "Oh dear, did you forget";
+					mes "your Wedding Dress?";
+					mes "Hurry and find it, then";
+					mes "bring it to me-- you";
+					mes "absolutely need it";
+					mes "for the wedding!";
+					close2;
+					cutin "",255;
+					end;
+				}
+			}
+			mes "[Marry Happy]";
+			mes "Well, it looks like you";
+			mes "have everything ready.";
+			mes "Although I'm not sure who";
+			mes "your partner is, let me be";
+			mes "the first to congratulate you";
+			mes "on your upcoming wedding~";
+			next;
+			mes "[Marry Happy]";
+			mes "Now, let's begin the";
+			mes "application. Please write";
+			mes "down your exact name here.";
+			next;
+			while(1) {
+				input '@name$;
+				if ('@name$ != strcharinfo(0)) {
+					mes "[Marry Happy]";
+					mes "Hmmm, you have to write";
+					mes "down your name exactly as";
+					mes "it is displayed. Maybe you";
+					mes "need to copy and paste it?";
+					mes "Anyway, let's try it again.";
+					next;
+				} else 
+					break;
+			}
+			mes "[Marry Happy]";
+			mes "Great, it looks like we";
+			mes "finished your application.";
+			mes "Remember that you'll need";
+			mes "to tell Bishop Vomars your";
+			mes "partner's exact name when";
+			mes "you talk to him later, okay?";
+			next;
+			mes "[Marry Happy]";
+			mes "When your partner is";
+			mes "finished with the application";
+			mes "process, both of you should";
+			mes "speak to the Bishop to begin";
+			mes "the wedding ceremony.";
+			emotion e_lv;
+			next;
+			mes "[Marry Happy]";
+			if (Sex == Male) {
+				mes "Since you're the groom,";
+				mes "you need to speak to the";
+				mes "Bishop first. When you're";
+				mes "finished, it will be your";
+				mes "bride's turn to speak to";
+				mes "Bishop Vomars.";
+				set zeny,zeny-1300000;
+				delitem 7170,1;
+			} else {
+				mes "Since you're the bride,";
+				mes "you need to wait for the";
+				mes "groom to speak to Bishop";
+				mes "Vomars first. When he's";
+				mes "finished, it'll be your turn";
+				mes "to speak to Bishop Vomars.";
+				set zeny,zeny-1200000;
+				delitem 2338,1;
+			}
+			delitem 2613,1;
+			set wedding_sign,1;
+			close2;
+			cutin "",255;
+			end;
+		}
+		mes "[Marry Happy]";
+		mes "No...?";
+		mes "Well, when you're";
+		mes "ready for marriage,";
+		mes "feel free to come back to";
+		mes "me so that you can apply,";
+		mes "okay? Have a good day~";
+		break;
+	case 4:
+		cutin "wedding_marry02",2;
+		donpcevent "Single Army#Prontera::OnEnable";
+		donpcevent "Single Army#Geffen::OnEnable";
+		donpcevent "Single Army#Morocc::OnEnable";
+		donpcevent "Single Army#Payon::OnEnable";
+		donpcevent "Single Army#Amatsu::OnEnable";
+		donpcevent "Single Army#Gonryun::OnEnable";
+		emotion e_omg;
+		mes "[Single Army]";
+		mes "^CC9933You have to refine";
+		mes "items on your own to";
+		mes "make great equipment!^000000";
+		donpcevent "Single Army#Prontera::OnEmote";
+		next;
+		mes "[Single Army]";
+		mes "^330099It's a waste to";
+		mes "form parties in";
+		mes "dungeons! I can";
+		mes "make it on my own!^000000";
+		donpcevent "Single Army#Geffen::OnEmote";
+		next;
+		mes "[Single Army]";
+		mes "^666666Hell, I've trained";
+		mes "all by myself since";
+		mes "birth, all the way";
+		mes "to my job change!^000000";
+		donpcevent "Single Army#Morocc::OnEmote";
+		next;
+		mes "[Single Army]";
+		mes "^666600I CHOOSE to spend";
+		mes "Christmas alone...";
+		mes "playing Solitaire and";
+		mes "doing crossword puzzles!^000000";
+		donpcevent "Single Army#Payon::OnEmote";
+		next;
+		mes "[Single Army]";
+		mes "^CC9966Women may break my";
+		mes "spirit, but they'll never";
+		mes "take... my FREEDOM!^000000";
+		donpcevent "Single Army#Amatsu::OnEmote";
+		next;
+		mes "[Single Army]";
+		mes "^669900...We're the free! We're";
+		mes "the Invincible Single Army!^000000";
+		donpcevent "Single Army#Gonryun::OnEmote";
+		close2;
+		cutin "wedding_marry01",255;
+		emotion e_swt;
+		donpcevent "Single Army#Prontera::OnInit";
+		donpcevent "Single Army#Geffen::OnInit";
+		donpcevent "Single Army#Morocc::OnInit";
+		donpcevent "Single Army#Payon::OnInit";
+		donpcevent "Single Army#Amatsu::OnInit";
+		donpcevent "Single Army#Gonryun::OnInit";
+		end;
 	}
-	next;
-	mes "["+@name$+"]";
-	mes "If there are various couples who desire to marry, you should keep in order, for the Priest can only handle one wedding at a time.";
-	next;
-	return;
+	close2;
+	cutin "wedding_marry01",255;
+	end;
 }
-
-
-//--------------------------------------------------------------
-// Miscellaneous Marriage NPCs
-//--------------------------------------------------------------
 
 prt_church.gat,97,102,0	script	Single Army#Prontera	105,{
 
 	mes "[Single Army]";
-	mes "You have to refine things yourself to produce great items!";
+	mes "^CC9933You have to refine";
+	mes "items on your own to";
+	mes "make great equipment!^000000";
 	close;
+
+OnInit:
+	disablenpc "Single Army#Prontera";
+	end;
+
+OnEnable:
+	enablenpc "Single Army#Prontera";
+	emotion e_go;
+	end;
+
+OnEmote:
+	emotion e_rock;
+	end;
 }
 
 prt_church.gat,98,102,0	script	Single Army#Geffen	705,{
 
 	mes "[Single Army]";
-	mes "It is a waste to form a party in a dungeon!";
+	mes "^330099It's a waste to";
+	mes "form parties in";
+	mes "dungeons! I can";
+	mes "make it on my own!^000000";
 	close;
+
+OnInit:
+	disablenpc "Single Army#Geffen";
+	end;
+
+OnEnable:
+	enablenpc "Single Army#Geffen";
+	emotion e_go;
+	end;
+
+OnEmote:
+	emotion e_rock;
+	end;
 }
 
-prt_church.gat,99,102,0	script	Single Army#Morroc	707,{
+prt_church.gat,99,102,0	script	Single Army#Morocc	707,{
 
 	mes "[Single Army]";
-	mes "I can become a heart-shaped NPC!";
+	mes "^666666Hell, I've trained";
+	mes "all by myself since";
+	mes "birth, all the way";
+	mes "to my job change!^000000";
 	close;
+
+OnInit:
+	disablenpc "Single Army#Morocc";
+	end;
+
+OnEnable:
+	enablenpc "Single Army#Morocc";
+	emotion e_go;
+	end;
+
+OnEmote:
+	emotion e_rock;
+	end;
 }
 
 prt_church.gat,100,102,0	script	Single Army#Payon	708,{
 
 	mes "[Single Army]";
-	mes "I train by myself from my creation to my job change!";
+	mes "^666600I CHOOSE to spend";
+	mes "Christmas alone...";
+	mes "playing Solitaire and";
+	mes "doing crossword puzzles!^000000";
 	close;
+
+OnInit:
+	disablenpc "Single Army#Payon";
+	end;
+
+OnEnable:
+	enablenpc "Single Army#Payon";
+	emotion e_go;
+	end;
+
+OnEmote:
+	emotion e_rock;
+	end;
 }
 
 prt_church.gat,101,102,0	script	Single Army#Amatsu	767,{
 
 	mes "[Single Army]";
-	mes "During Christmas, I'll cut grass outside the house!";
+	mes "^CC9966Women may break my";
+	mes " spirit, but they'll never";
+	mes "take... my FREEDOM!^000000";
 	close;
+
+OnInit:
+	disablenpc "Single Army#Amatsu";
+	end;
+
+OnEnable:
+	enablenpc "Single Army#Amatsu";
+	emotion e_go;
+	end;
+
+OnEmote:
+	emotion e_rock;
+	end;
 }
 
-prt_church.gat,102,102,0	script	Single Army#Kunlun	780,{
+prt_church.gat,102,102,0	script	Single Army#Gonryun	780,{
 
 	mes "[Single Army]";
-	mes "...We are the invincible Single Army!";
+	mes "^669900...We're the free! We're";
+	mes "the Invincible Single Army!^000000";
 	close;
+
+OnInit:
+	disablenpc "Single Army#Gonryun";
+	end;
+
+OnEnable:
+	enablenpc "Single Army#Gonryun";
+	emotion e_go;
+	end;
+
+OnEmote:
+	emotion e_rock;
+	end;
 }
 
+prt_church.gat,100,128,4	script	Bishop#w	60,{
 
-//--------------------------------------------------------------
-// Divorce
-//--------------------------------------------------------------
-
-nif_in.gat,190,112,5 script Deviruchi 738,{
-
-	if (PartnerId) goto DivorceMe;
-
-	mes "[Deviruchi]";
-	mes "Kekeke, humans are always alone in the end,";
-	mes "The feeling of lonely is just temporarily.";
-	mes "If you feel lonely, how about getting a pet?";
-	mes "I, the Deviruchi is quite popular recently, you know...";
-	close;
-
-DivorceMe:
-	mes "[Deviruchi]";
-	mes "You don't look good...";
-	mes "Anything that you have done that makes you feel regret now?";
-	mes "You must know that I am not willing to help happy people.";
-	mes "Deviruchi bear no interest";
-	mes "to those kind of people. Kekeke";
-	next;
-	mes "[Deviruchi]";
-	mes "Let's put everything aside first.";
-	mes "Let me ask you. Are you happy after you get married?";
-	mes "Don't think about love...";
-	mes "I know more than you can imagine.";
-	mes "There're countless problem behind one grand wedding.";
-	next;
-	mes "[Deviruchi]";
-	mes "That's right.";
-	mes "It your fate that you come here.";
-	mes "And I know it's your instinct to change your life too.";
-	mes "Although you have made an oath to your partner,";
-	mes "the heart will still wither somehow...!";
-	next;
-	mes "[Deviruchi]";
-	mes "The method is easy!";
-	mes "Marriage is actually one kind of contract.";
-	mes "Just ask a favor from Deviruchi";
-	mes "and it will destroy the contract for you... Do you get it?";
-	mes "Live a free life!!";
-	next;
-	mes "[Deviruchi]";
-	mes "You don't need to get the agreement of your partner,";
-	mes "You will find another lover soon,";
-	mes "So, why not leave your current partner?";
-	mes "... Want me to help?";
-	mes "I can cancel your marriage now, you know...!";
-	next;
-	menu "No, I am very happy now",-,"Yes, I want a new life",M_NewLife;
-
-	mes "[Deviruchi]";
-	mes "Hmmph, lovers... lovers!!";
-	mes "You will regret,";
-	mes "and come back to find Deviruchi someday!";
-	mes "We'll see how long your happiness will last!!";
+	cutin "wedding_bomars01",2;
+	if (Upper == 2) {
+		mes "[Vomars]";
+		mes "Greetings, child.";
+		mes "Are you lost? Hmmm.";
+		mes "Do you know where your";
+		mes "mommy and daddy are?";
+		close2;
+		cutin "wedding_bomars01",255;
+		end;
+	}
+	if (!PartnerId) {
+		if (!$@wedding) {
+			if (wedding_sign == 1) {
+				getpartymember(getcharid(1));
+				set '@partymembercount,$@partymembercount;
+				if ('@partymembercount == 2) {
+					if (Sex == Male) {
+						set $@wedding,1;
+						initnpctimer;
+						mes "[Vomars]";
+						mes "Young lovers, please";
+						mes "remember this moment for";
+						mes "the rest of your lives. May your future be blessed with peace";
+						mes "and joy. May the love you share";
+						mes "grow with each passing day.";
+						next;
+						mapannounce "prt_church.gat","It's the marriage proposal from the groom, Mr. " + strcharinfo(0) + "...",9;
+						mes "[Vomars]";
+						mes "Until the end of the";
+						mes "world, may you stand";
+						mes "by the side of the one";
+						mes "whom you love, to support";
+						mes "her and protect her. Now, may";
+						mes "I know the name of your bride?";
+						next;
+						input $wed_bride$;
+						mes "[Vomars]";
+						mes "Mr. " + strcharinfo(0) + "...";
+						mes "Do you swear on your life";
+						mes "that you will forever cherish";
+						mes "and care for your bride,";
+						mes "Miss " + $wed_bride$ + "?";
+						next;
+						select("I do.");
+						set $wed_groom$,strcharinfo(0);
+						mes "[Vomars]";
+						mes "Now, it is time for";
+						mes "your bride to make";
+						mes "her wedding vows.";
+						mes "If she will come forward...";
+						close2;
+						mapannounce "prt_church.gat","The groom, Mr. " + strcharinfo(0) + ", has made his vows to Miss " + $wed_bride$ + "...",9;
+						cutin "",255;
+						end;
+					}
+					mes "[Vomars]";
+					mes "I'm sorry, but the groom";
+					mes "must speak to me first in";
+					mes "order to begin the wedding.";
+					mes "It's old fashioned protocol,";
+					mes "but I'll admit that it does";
+					mes "keep things running smoothly.";
+					close2;
+					cutin "",255;
+					end;
+				}
+				mes "[Vomars]";
+				mes "Before you can be";
+				mes "married, you must";
+				mes "first form a party of";
+				mes "two with your partner.";
+				mes "Then, we can proceed";
+				mes "with the ceremony.";
+				close2;
+				cutin "",255;
+				end;
+			}
+			mes "[Vomars]";
+			mes "You must apply for";
+			mes "marriage with Happy Marry";
+			mes "before you can get married.";
+			mes "Happy Marry will let you know";
+			mes "what else you'll need to do";
+			mes "to prepare for marriage.";
+			close2;
+			cutin "",255;
+			end;
+		} else if ($@wedding == 1) {
+			if (wedding_sign == 1) {
+				getpartymember(getcharid(1));
+				set '@partymembercount,$@partymembercount;
+				if ('@partymembercount == 2) {
+					if (Sex == Female) {
+						if (strcharinfo(0) == $wed_bride$) {
+							mes "[Vomars]";
+							mes "Young lovers, please";
+							mes "remember this moment for";
+							mes "the rest of your lives. May your future be blessed with peace";
+							mes "and joy. May the love you share";
+							mes "grow with each passing day.";
+							next;
+							mapannounce "prt_church.gat","Let's hear what the bride, Miss "+$wed_bride$+", has to say...",9;
+							mes "[Vomars]";
+							mes "Miss "+$wed_bride$+"...";
+							mes "Do you swear to stay";
+							mes "true to "+$wed_groom$+",";
+							mes "to be by his side, no matter";
+							mes "what the dangers may be?";
+							next;
+							if (select("^FF0000No.^000000","I do.") == 1) {
+								cutin "wedding_bomars03",2;
+								mapannounce "prt_church.gat","Next couple, please proceed...",9;
+								mes "[Vomars]";
+								mes "So "+$wed_groom$;
+								mes "isn't the one you";
+								mes "want to marry? Hmm.";
+								mes "I'm truly sorry for this";
+								mes "misunderstanding...";
+								set $@wedding,0;
+								close2;
+								stopnpctimer;
+								cutin "",255;
+								end;
+							}
+							mes "[Vomars]";
+							mes "Do you truly swear";
+							mes "fidelity and patience?";
+							mes "Will you marry "+$wed_groom$+"?";
+							next;
+							if (select("Yes, I do.","^FF0000No.^000000") == 1) {
+								if (isloggedin(getcharid(3,$wed_groom$))) {
+									if (marriage($wed_groom$)) {
+										wedding;
+										sc_start SC_WEDDING,3600000,0;
+										getitem 2635,1,0;
+										sc_start SC_WEDDING,3600000,0,getcharid(3,$wed_groom$);
+										getitem 2634,1,0,getcharid(3,$wed_groom$);
+										cutin "wedding_bomars02",2;
+										mapannounce "prt_church.gat","I now pronounce you, "+$wed_groom$+" and "+$wed_bride$+", husband and wife.",9;
+										mes "[Vomars]";
+										mes "By the power invested";
+										mes "in me as Royal Bishop of";
+										mes "the Rune-Midgarts Kingdom,";
+										mes "I now pronounce you husband";
+										mes "and wife. May your future be";
+										mes "blessed with many great joys.";
+										next;
+										mes "[Vomars]";
+										mes "And lastly...";
+										mes "Always be happy,";
+										mes "dear "+$wed_bride$+"...";
+										set $wed_groom$,"";
+										set $wed_bride$,"";
+										set $@wedding,0;
+										close2;
+										stopnpctimer;
+										cutin "",255;
+										detachrid;
+										end;
+									}
+								}
+								cutin "wedding_bomars03",2;
+								mes "[Vomars]";
+								mes "Hm. It seems that";
+								mes "your groom left before";
+								mes "the ceremony has finished";
+								mes "Please try again once he's";
+								mes "returned.";
+								close2;
+								cutin "",255;
+								end;
+							} else {
+								cutin "wedding_bomars03",2;
+								mapannounce "prt_church.gat","Alas! "+$wed_bride$+" has rejected "+$wed_groom$+"'s marriage proposal!",9;
+								mes "[Vomars]";
+								mes "Hm. It seems that";
+								mes "you've changed your";
+								mes "mind. Although I feel";
+								mes "sorry for the groom, you";
+								mes "must do what your heart";
+								mes "tells you is right. Now, run!";
+							}
+							set $wed_groom$,"";
+							set $wed_bride$,"";
+							set $@wedding,0;
+							close2;
+							stopnpctimer;
+							cutin "",255;
+							end;
+						}
+						callsub sF_Busy;
+					}
+					callsub sF_Busy;
+				}
+				callsub sF_Busy;
+			}
+			if (strcharinfo(0) == $wed_bride$) {
+				mes "[Vomars]";
+				mes "Hm? It appears that";
+				mes "Happy Marry still hasn't";
+				mes "received your marriage";
+				mes "application. Please speak";
+				mes "to her so that we can begin";
+				mes "the wedding ceremony.";
+				close2;
+				cutin "",255;
+				end;
+			}
+			callsub sF_Busy;
+		}
+		callsub sF_Busy;
+	}
+	mes "[Vomars]";
+	mes "I wish you eternal";
+	mes "happiness. No matter";
+	mes "how dark the present may";
+	mes "be, always stand by your";
+	mes "loved one's side and look";
+	mes "to the future with hope.";
 	close2;
-	warp "niflheim.gat",169,162;
+	cutin "",255;
 	end;
 
-M_NewLife:
-	mes "[Deviruchi]";
-	mes "Good, you don't need anything.";
-	mes "I just need your heart and 2,500,000 zeny.";
-	mes "You want to get back your life before you get married, don't you?";
-	mes "So, is that it? You're going to cancel the marriage contract?";
-	next;
-	menu "...No, I want to stay married",-,"Do it, divorce me!",M_Divorce;
+sF_Busy:
+	if ($wed_groom$ != "" && $wed_bride$ != "") {
+		mes "[Vomars]";
+		mes "The wedding of";
+		mes "Miss "+ $wed_bride$ +" and";
+		mes "Mister "+ $wed_groom$;
+		mes "is currently in progress.";
+		mes "Please keep your voice down.";
+		goto L_End;
+	}
+	mes "[Vomars]";
+	mes "I'm conducting a wedding";
+	mes "for another couple now, so";
+	mes "please wait patiently for your";
+	mes "turn. Thanks for understanding... ^FFFFFF ^000000";
+	goto L_End;
 
-	mes "[Deviruchi]";
-	mes "Quit considering. Everyone will be alone in the end.";
-	mes "Just make up your mind and prepare the zeny,";
-	mes "then come and look for me...";
-	mes "Kekekeke.....";
-	close;
-
-M_Divorce:
-	if (Zeny < 2500000) goto NoMoney;
-	mes "[Deviruchi]";
-	mes "Before you change your mind again, I will proceed with your divorce now!!";
-	mes "It might take some time...";
-	mes "So don't go away, and stay here!";
-	next;
-	set '@name$,getcharname(PartnerId);
-	mes "[Deviruchi]";
-	mes "Kekeke, you are free now!";
-	mes "Throw away all your sinking feelings!";
-	mes "You should thank Deviruchi.....!";
-	close2;
-	set @register,0;
-	set '@name$,getcharname(divorce(0));
-	heal -Hp+1,-Sp;
-	set Zeny,Zeny-2500000;
-	announce strcharinfo(0)+ " and " +'@name$+ " have been divorced.",0x1a;
+OnCommandStop:
+	stopnpctimer;
 	end;
 
-M_DivorceFail:
-	emotion 23;
-	mes "Kekeke! Deviruchi's magic seems not to work out.";
-	mes "Come back another day...";
-	mes "Deviruchi's tired... kekeke";
-	close;
+OnCommandReset:
+	set $wed_groom$,"";
+	set $wed_bride$,"";
+	set $@wedding,0;
+	end;
 
-NoMoney:
+OnTimer180000:
+	mapannounce "prt_church.gat","You've responded too slowly... Next couple, please proceed.",9;
+	set $wed_groom$,"";
+	set $wed_bride$,"";
+	set $@wedding,0;
+	stopnpctimer;
+	end;
+}
+
+prt_church.gat,28,178,4	script	The King of Midgard#Switch	108,{
+
+	mes "[The King of Midgard]";
+	mes "Wh-who are you?";
+	mes "You must know the";
+	mes "password to invoke";
+	mes "my awesome powers.";
+	next;
+	input '@input;
+	if ('@input < 0 || '@input > 9999) {
+		mes "[The King of Midgard]";
+		mes "This is";
+		mes "no place for";
+		mes "fooling around.";
+		close2;
+		warp "prt_church.gat",101,102;
+		end;
+	} else if ('@input == 0) {
+		mes "[The King of Midgard]";
+		mes "This is";
+		mes "no place for";
+		mes "fooling around.";
+		close2;
+		warp "prt_church.gat",101,102;
+		end;
+	} else if ('@input == 1854) {
+		mes "[Wedding Switch]";
+		mes "Is there a problem with";
+		mes "the wedding ceremony?";
+		mes "I can reset the Bishop";
+		mes "Vomars NPC if you like.";
+		next;
+		switch(select("No, thanks.","Reset.")) {
+		case 1:
+			mes "[Wedding Switch]";
+			mes "Alright, then.";
+			mes "However, if the";
+			mes "Bishop Vomars";
+			mes "NPC is stuck, it may";
+			mes "be best to reset it.";
+			close;
+		case 2:
+			donpcevent "Bishop#w::OnCommandStop";
+			donpcevent "Bishop#w::OnCommandReset";
+			mapannounce "prt_church.gat","You've responded too slowly... Next couple, please proceed.",8;
+			mes "[Wedding Switch]";
+			mes "The Bishop Vomars NPC";
+			mes "has now been reactivated.";
+			mes "It should now be possible";
+			mes "to proceed with weddings.";
+			close;
+		}
+	} else {
+		mes "[The King of Midgard]";
+		mes "This is";
+		mes "no place for";
+		mes "fooling around.";
+		close2;
+		warp "prt_church.gat",101,102;
+		end;
+	}
+}
+
+prt_church.gat,20,179,4	script	Divorce Staff	71,{
+
+	mes "[Divorce Staff]";
+	mes "Uh oh...";
+	mes "You know I can't";
+	mes "do anything for you.";
+	next;
+	input '@input;
+	if ('@input < 0 || '@input > 9999) {
+		mes "[Divorce Staff]";
+		mes "Hmm...";
+		mes "You really";
+		mes "shouldn't be";
+		mes "in this place...";
+		close;
+	} else if ('@input == 0) {
+		mes "[Divorce Staff]";
+		mes "Hmm...";
+		mes "You really";
+		mes "shouldn't be";
+		mes "in this place...";
+		close;
+	} else if ('@input == 1854) {
+		mes "[Bad Ending]";
+		mes "Great, you know the";
+		mes "password! Now, did you";
+		mes "want me to remove the";
+		mes "Wedding Ring in your";
+		mes "inventory?";
+		next;
+		switch(select("Drop 1 Wedding Ring.","Keep it.")) {
+		case 1:
+			if (Sex == Female) {
+				if (countitem(2635) > 0) {
+					delitem 2635,1;
+					mes "[Bad Ending]";
+					mes "It's done!";
+					close;
+				} else {
+					mes "[Bad Ending]";
+					mes "I couldn't find";
+					mes "the Wedding Ring...";
+					mes "Please make sure";
+					mes "that it's not equipped.";
+					close;
+				}
+			} else {
+				if (countitem(2634) > 0) {
+					delitem 2634,1;
+					mes "[Bad Ending]";
+					mes "It's done!";
+					close;
+				} else {
+					mes "[Bad Ending]";
+					mes "I couldn't find";
+					mes "the Wedding Ring...";
+					mes "Please make sure";
+					mes "that it's not equipped.";
+					close;
+				}
+			}
+		case 2:
+			mes "[Bad Ending]";
+			mes "You sure you want";
+			mes "to keep that ring?";
+			mes "Alright, but if it becomes";
+			mes "a problem, you come to me.";
+			close;
+		}
+	} else {
+		mes "[Divorce Staff]";
+		mes "Hmm...";
+		mes "You really";
+		mes "shouldn't be";
+		mes "in this place...";
+		close;
+	}
+}
+
+prt_church.gat,22,179,4	script	Remarry Staff	71,{
+
+	mes "[Remarry Staff]";
+	mes "Hmm...?";
+	mes "What exactly are";
+	mes "you doing here?";
+	next;
+	input '@input;
+	if ('@input < 0 || '@input > 9999) {
+		mes "[Remarry Staff]";
+		mes "Ahk!";
+		mes "An adventurer";
+		mes "like you shouldn't";
+		mes "be in this place!";
+		close;
+	} else if ('@input == 0) {
+		mes "[Remarry Staff]";
+		mes "Ahk!";
+		mes "An adventurer";
+		mes "like you shouldn't";
+		mes "be in this place!";
+		close;
+	} else if ('@input == 1854) {
+		if (PartnerID == 0) {
+			mes "[Wedding Again]";
+			mes "Hmm...";
+			mes "I can only create";
+			mes "a Wedding Ring if the";
+			mes "character is married.";
+			close;
+		}
+		mes "[Wedding Again]";
+		mes "Ah, I see that you";
+		mes "know the password.";
+		mes "Alright, if you somehow";
+		mes "lost your Wedding Ring,";
+		mes "I can make you a new one.";
+		next;
+		switch(select("Make new Wedding Ring.","Cancel.")) {
+		case 1:
+			if (Sex == Female) {
+				if ((equippeditem(2635) > 0) || (ring == 1)) {
+					mes "[Wedding Again]";
+					mes "Wait, wait...";
+					mes "You're wearing your";
+					mes "Wedding Ring. I better";
+					mes "not make you another since";
+					mes "you don't need more than one.";
+					close;
+				} else {
+					getitem 2635,1;
+					mes "[Wedding Again]";
+					mes "Here you go~";
+					mes "It's your brand";
+					mes "new Wedding Ring!";
+					close;
+				}
+			} else {
+				if ((equippeditem(2634) > 0) || (ring == 1)) {
+					mes "[Wedding Again]]";
+					mes "Wait, wait...";
+					mes "You're wearing your";
+					mes "Wedding Ring. I better";
+					mes "not make you another since";
+					mes "you don't need more than one.";
+					close;
+				} else {
+					getitem 2634,1;
+					mes "[Wedding Again]";
+					mes "Here you go~";
+					mes "It's your brand";
+					mes "new Wedding Ring!";
+					close;
+				}
+			}
+		case 2:
+			mes "[Wedding Again]";
+			mes "Alright. If you ever";
+			mes "lose your Wedding Ring,";
+			mes "come to me if you happen";
+			mes "to need a new one, okay?";
+			close;
+		}
+	} else {
+		mes "[Remarry Staff]";
+		mes "Ahk!";
+		mes "An adventurer";
+		mes "like you shouldn't";
+		mes "be in this place!";
+		close;
+	}
+}
+
+nif_in.gat,190,112,5	script	Deviruchi#divorce	738,{
+
+	if (wedding_sign == 0) {
+		mes "[Deviruchi]";
+		mes "Heh heh...";
+		mes "Look at that depressed face.";
+		mes "You must be feeling very lonely.";
+		mes "But that's something everyone";
+		mes "has to deal with.";
+		next;
+		mes "[Deviruchi]";
+		mes "If you feel that lonely,";
+		mes "how about raising a Pet?";
+		mes "I hear that my kind is very";
+		mes "popular nowadays, heh heh~";
+		close;
+	} else if (!PartnerId) {
+		mes "[Deviruchi]";
+		mes "Bwah hah hah~!";
+		mes "That look in your eyes~!";
+		if (Sex == Male) {
+			mes "Those are definitely the eyes";
+			mes "of a lonely male bachelor.";
+			mes "I'm almost 100 percent sure";
+			mes "you got ditched at the altar.";
+		} else {
+			mes "They're just filled with the";
+			mes "pain of an old maid--!";
+			mes "Couldn't rope some poor guy";
+			mes "into marriage, huh?";
+		}
+		next;
+		mes "[Deviruchi]";
+		mes "HHAHAHAHA~!";
+		mes "Oooooh...Hee hee~";
+		mes "I'd be more sympathetic if,";
+		mes "you know, I weren't a creature";
+		mes "of darkness.";
+		close;
+	}
 	mes "[Deviruchi]";
-	mes "Haven't I said 2,500,000 zeny?";
-	mes "This is the payment for Deviruchi to help you.";
-	mes "If you don't even have that money,";
-	mes "you can rot with that married life of yours... kekeke";
+	mes "You look awfully depressed...";
+	mes "Lucky for you, I could care";
+	mes "less about happy people...";
+	mes "It's the humans in despair";
+	mes "that I take an interest in.";
+	mes "Hahahahahahah~!";
+	next;
+	mes "[Deviruchi]";
+	mes "I sense that you carry a";
+	mes "tiresome burden...";
+	mes "If I'm not wrong, you're";
+	if (Sex == Male) {
+		mes "a married man, aren't you?";
+	} else {
+		mes "a married woman, aren't you?";
+	}
+	next;
+	mes "[Deviruchi]";
+	mes "Let me ask you one thing.";
+	mes "Are you happy to be married?";
+	mes "Forget about responsibilities,";
+	mes "romance and all that other junk";
+	mes "for now.";
+	next;
+	mes "[Deviruchi]";
+	mes "I mean, can just one single";
+	mes "person really bring you all that";
+	mes "happiness? I know all about how";
+	mes "special weddings and the magic";
+	mes "of love is supposed to be, but...";
+	next;
+	mes "[Deviruchi]";
+	mes "At the end of the day, you and";
+	mes "your partner fight, and you feel";
+	mes "totally totally miserable.";
+	if (Sex == Male) {
+		mes "...all because of HER.";
+	} else {
+		mes "...all because of HIM.";
+	}
+	next;
+	mes "[Deviruchi]";
+	mes "Yes, it's your destiny to find me";
+	mes "here. We all make mistakes...";
+	mes "Even if you promised everlasting";
+	mes "love, even if you made a vow...";
+	mes "I can free you from that prison";
+	mes "of matrimony.";
+	next;
+	mes "[Deviruchi]";
+	mes "It's simple if you look at";
+	mes "marriage as a contract...a";
+	mes "contract that ends with 'till";
+	mes "death do we part.' Here in";
+	mes "Nifleheim, it's easy to use";
+	mes "that little loophole...";
+	next;
+	mes "[Deviruchi]";
+	mes "*whispers*";
+	mes "^555555It's not like you're breaking^000000";
+	if (Sex == Male) {
+		mes "^555555any promises, and it's not";
+		mes "like your wife will care if she";
+		mes "doesn't know... Don't you";
+		mes "want to be freed from her?^000000";
+	} else {
+		mes "^555555any promises. Hell, your husband";
+		mes "doesn't even have to know";
+		mes "about it... you deserve";
+		mes "real happiness, right?^000000";
+	}
+	next;
+	mes "[Deviruchi]";
+	mes "You can have a brand new love";
+	mes "with a better person...";
+	mes "Wouldn't that be great...?";
+	mes "I can help you if you want...";
+	mes "I can make all of this happen!";
+	next;
+	if (select("No thanks, I am happy.","Yes, please do.") == 1) {
+		mes "[Deviruchi]";
+		mes "Hmpf~! You must still be";
+		mes "fascinated with the silly";
+		mes "notion of eternal love. Well,";
+		mes "if you think you're happy,";
+		mes "then I'll have nothing";
+		mes "to do with you--!";
+		close2;
+		warp "niflheim",169,162;
+		end;
+	}
+	mes "[Deviruchi]";
+	mes "Good, good...";
+	mes "Now all you have to do is give";
+	mes "me what I want in exchange...";
+	mes "Just 2,500,000 zeny and...*cough!*";
+	mes "^666666An eensy piece of your soul.^000000";
+	next;
+	mes "[Deviruchi]";
+	mes "After that, it's the carefree";
+	mes "single's life. All you have to";
+	mes "do is say the word...";
+	next;
+	if (select("...Give me some time to think.","Any price will do, give me a divorce right now!") == 1) {
+		mes "[Deviruchi]";
+		mes "I understand. But if you think";
+		mes "about anything, think about";
+		if (Sex == Male) {
+			mes "your wife's nagging, and";
+			mes "how great it would be to";
+			mes "finally free yourself of the";
+			mes "old ball and chain~";
+			close;
+		} else {
+			mes "how horrible your husband is,";
+			mes "and what a relief it would";
+			mes "be to be rid of that crumbum~";
+			close;
+		}
+	}
+	if (Zeny > 2499999) {
+		mes "[Deviruchi]";
+		mes "Excellent choice~";
+		mes "Let's get started right";
+		mes "away! This may take some";
+		mes "time, but it's better than";
+		mes "being hopelessly married";
+		mes "^FF0000for the rest of your life.^000000";
+		next;
+		misceffect 244,"Deviruchi#divorce";
+		gmcommand "@misceffect 372";
+		set Zeny,Zeny-2500000;
+		percentheal -100,-100;
+		divorce;
+		mes "[Deviruchi]";
+		mes "Bwahhahahaha~!";
+		mes "Now you're free~!";
+		mes "Don't you feel so much";
+		mes "better now as a single?";
+		mes "Ah, bachelorhood...";
+		close;
+	}
+	mes "[Deviruchi]";
+	mes "Hmmm...I did tell you to bring";
+	mes "2,500,000 zeny, right?";
+	mes "No one else in this world can";
+	mes "offer this kind of freedom...";
+	mes "You can't put a price on";
+	mes "peace of mind, can you?";
 	close;
 }
