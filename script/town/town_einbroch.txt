@@ -3865,7 +3865,7 @@ OnTimer600000:
 	donpcevent "Laboratory Soldier#02::OnUnHide";
 	enablenpc "Paddler";
 	enablenpc "Head Gear Dealer";
-	set $EinPolution,0;
+	set $@EinPolution,0;
 	end;
 }
 
@@ -3876,15 +3876,15 @@ sec_in02.gat,127,86,3	script	Einbroch Polution	851,{
 
 Tsu_Polution1:
 	mes "[Einbroch Polution Variable Management]";
-	mes "$EinPolution is currently: " + $EinPolution + ".";
+	mes "$@EinPolution is currently: " + $@EinPolution + ".";
 	mes "What would you like to do?";
 	next;
-	menu "Reset $EinPolution to 0",s_0,"Input My Own Value",s_Input,"Cancel.",-;
+	menu "Reset $@EinPolution to 0",s_0,"Input My Own Value",s_Input,"Cancel.",-;
 	close;
 
 s_0:
 	mes "[Einbroch Polution Variable Management]";
-	mes "$EinPolution has been reset to 0.";
+	mes "$@EinPolution has been reset to 0.";
 	close;
 
 s_Input:
@@ -3894,9 +3894,9 @@ s_Input:
 	input @temppol;
 	if (@temppol < 0) goto s_Error;
 	if (@temppol == 0) close;
-	set $EinPolution,@temppol;
+	set $@EinPolution,@temppol;
 	mes "[Einbroch Polution Variable Management]";
-	mes "$EinPolution has been set to: " + $EinPolution + ".";
+	mes "$@EinPolution has been set to: " + $@EinPolution + ".";
 	close;
 
 Tsu_Polution2:
@@ -3913,7 +3913,7 @@ Tsu_Polution2:
 
 einbroch.gat,132,84,3	script	Liotzburg	853,{
 
-	if ($EinPolution > 9) goto Tsu_Liotzburg1;
+	if ($@EinPolution > 9) goto Tsu_Liotzburg1;
 	goto Tsu_PolutionNext1;
 
 Tsu_Liotzburg1:
@@ -4005,7 +4005,7 @@ OnUnhide:
 
 ein_in01.gat,67,243,3	script	Zelmeto	851,{
 
-	if ($EinPolution > 9) goto Tsu_EinPolute1;
+	if ($@EinPolution > 9) goto Tsu_EinPolute1;
 	goto L_PoluteSkip1;
 
 Tsu_EinPolute1:
@@ -4574,7 +4574,7 @@ s_Switches:
 		delitem 7317,10;
 		delitem 7319,10;
 		set EinFactory,16;
-		set $EinPolution,$EinPolution+1;
+		set $@EinPolution,$@EinPolution+1;
 		if (BaseLevel < 41) set BaseExp,BaseExp+615;
 		if ((BaseLevel >= 41) && (BaseLevel < 51)) set BaseExp,BaseExp+3075;
 		if ((BaseLevel >= 51) && (BaseLevel < 61)) set BaseExp,BaseExp+6604;

@@ -799,7 +799,7 @@ L_GainRecord:
 	mes "for setting a new record!";
 	set $MinMasterMind,@timeMinFinish;
 	set $SecMasterMind,@timeSecFinish;
-	set $NameMasterMind$, strcharinfo(0);
+	set $NameMasterMind$,strcharinfo(0);
 	close;
 
 L_Beat:

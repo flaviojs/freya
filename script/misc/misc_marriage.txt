@@ -120,8 +120,8 @@ L_CancelWedding:
 	mes "[Tristan the Third]";
 	mes "The wedding has been cancelled by "+strcharinfo(0)+".";
 	set $@progress,0;
-	set $groom$,"null";
-	set $bride$,"null";
+	set $groom$,"";
+	set $bride$,"";
 	set @register,0;
 	set event_wedding,0;
 	set @get_ring,0;
@@ -165,10 +165,10 @@ L_OtherReason:
 	next;
 	areaannounce "prt_church.gat",0,0,350,350,""+$reason$+"",0;
 	set $@progress,0;
-	set $groom$,"null";
-	set $bride$,"null";
-	set $name$,"null";
-	set $name2$,"null";
+	set $groom$,"";
+	set $bride$,"";
+	set $name$,"";
+	set $name2$,"";
 	set @register,0;
 	set event_wedding,0;
 	set @get_ring,0;
@@ -265,10 +265,10 @@ L_DisableSameSex:
 	close;
 L_ResetVariables:
 	set $@progress,0;
-	set $groom$,"null";
-	set $bride$,"null";
-	set $name$,"null";
-	set $name2$,"null";
+	set $groom$,"";
+	set $bride$,"";
+	set $name$,"";
+	set $name2$,"";
 	set @register,0;
 	set event_wedding,0;
 	set @get_ring,0;
@@ -589,9 +589,9 @@ prt_church.gat,99,124,0	script	weddinglimit1	-1,{
 	announce "The bride has not registered within the alotted time frame.",3;
 	announce "Your wedding has been cancelled.",3;
 	set $@progress,0;
-	set $groom$,"null";
-	set $name$,"null";
-	set $name2$,"null";
+	set $groom$,"";
+	set $name$,"";
+	set $name2$,"";
 	set @register,0;
 	deltimer "a1";
 	deltimer "a2";
@@ -612,10 +612,10 @@ prt_church.gat,99,124,0	script	weddinglimit2	-1,{
 	announce "The groom has not begun the wedding ceremony by speaking to Tristan the Third.",3;
 	announce "Your wedding has been cancelled.",3;
 	set $@progress,0;
-	set $groom$,"null";
-	set $bride$,"null";
-	set $name$,"null";
-	set $name2$,"null";
+	set $groom$,"";
+	set $bride$,"";
+	set $name$,"";
+	set $name2$,"";
 	set @register,0;
 	set event_wedding,0;
 	deltimer "a1";
@@ -692,20 +692,20 @@ prt_church.gat,99,124,0	script	a12	-1,{
 areaannounce "prt_church.gat",0,0,350,350,"I pronouce you Husband and Wife, you may kiss the bride.",0;
 	wedding;
 	set $@progress,0;
-	set $groom$,"null";
-	set $bride$,"null";
-	set $name$,"null";
-	set $name2$,"null";
+	set $groom$,"";
+	set $bride$,"";
+	set $name$,"";
+	set $name2$,"";
 }
 
 prt_church.gat,99,124,0	script	a13	-1,{
 
 areaannounce "prt_church.gat",0,0,350,350,"The wedding has been cancelled.",0;
 	set $@progress,0;
-	set $groom$,"null";
-	set $bride$,"null";
-	set $name$,"null";
-	set $name2$,"null";
+	set $groom$,"";
+	set $bride$,"";
+	set $name$,"";
+	set $name2$,"";
 	set @register,0;
 	set event_wedding,0;
 	set @get_ring,0;

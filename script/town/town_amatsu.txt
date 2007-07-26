@@ -1322,17 +1322,17 @@ OnStartTimer:
 	end;
 
 OnTimer180000:
-	if(!isloggedin($MomotaroRID))goto s_Cleanup;
+	if(!isloggedin($@MomotaroRID))goto s_Cleanup;
 	mapannounce "ama_test.gat","Timer: 3 Minutes left.",8;
 	end;
 
 OnTimer300000:
-	if(!isloggedin($MomotaroRID))goto s_Cleanup;
+	if(!isloggedin($@MomotaroRID))goto s_Cleanup;
 	mapannounce "ama_test.gat","Timer: 1 Minute left.",8;
 	end;
 
 OnTimer360000:
-	if(!isloggedin($MomotaroRID))goto s_Cleanup;
+	if(!isloggedin($@MomotaroRID))goto s_Cleanup;
 	mapannounce "ama_test.gat","Timer: Beep- Beep- Beep- Time's up.",8;
 
 OnTimer362500:
@@ -1355,16 +1355,16 @@ OnTimer260000:
 OnTimer280000:
 OnTimer320000:
 OnTimer340000:
-	if(!isloggedin($MomotaroRID)) goto s_Cleanup;
+	if(!isloggedin($@MomotaroRID)) goto s_Cleanup;
 	end;
 
 OnCleanUp:
 s_Cleanup:
 	stopnpctimer;
-	set $Momotaro,0;
-	set $MomoDokebi,0;
-	set $MomoDokebi2,0;
-	set $MomotaroRID,0;
+	set $@Momotaro,0;
+	set $@MomoDokebi,0;
+	set $@MomoDokebi2,0;
+	set $@MomotaroRID,0;
 	mapannounce "ama_test.gat","The current player has exited. The waiting room will now open again.",8;
 	disablenpc "Manager#Momotaro";
 	donpcevent "Event Hall Staff::OnInitCopy";
@@ -1376,9 +1376,9 @@ OnStopTimer:
 }
 
 ama_test.gat,51,85,0	script	#MomotaroActivator	139,1,1,{
-	if($Momotaro)end;
-	set $Momotaro,1;
-	set $MomotaroRID,getcharid(3);
+	if($@Momotaro)end;
+	set $@Momotaro,1;
+	set $@MomotaroRID,getcharid(3);
 	areaannounce "ama_test.gat",30,78,68,120,"Timer: The Timer has been activated. You have 6 minutes. Annihilate the monsters in time!",8;
 	donpcevent "#MomotaroTimer::OnStartTimer";
 	mes "[Grandpa]";
@@ -1429,8 +1429,8 @@ ama_test.gat,51,85,0	script	#MomotaroActivator	139,1,1,{
 
 OnTimer5000:
 	stopnpctimer;
-	set $MomoDokebi,0;
-	set $MomoDokebi2,0;
+	set $@MomoDokebi,0;
+	set $@MomoDokebi2,0;
 	disablenpc "Grandpa#Momotaro";
 	disablenpc "Grandma#Momotaro";
 	monster "ama_test.gat",47,101,"Dokebi",1110,1,"mobcount#momotaro::OnMobDead";
@@ -1443,14 +1443,6 @@ OnTimer5000:
 	monster "ama_test.gat",45,96,"Dokebi",1110,1,"mobcount#momotaro::OnMobDead";
 	monster "ama_test.gat",45,99,"Dokebi",1110,1,"mobcount#momotaro::OnMobDead";
 	end;
-
-OnInit:
-	set $Momotaro,0;
-	set $MomoDokebi,0;
-	set $MomoDokebi2,0;
-	set $MomotaroRID,0;
-	end;
-
 }
 
 ama_test.gat,49,95,4	script	Grandpa#Momotaro	766,{
@@ -1498,10 +1490,10 @@ L1:
 	mes "[Manager]";
 	mes "Whatever you encounter, never loose that strong spirit!";
 	close2;
-	set $Momotaro,0;
-	set $MomoDokebi,0;
-	set $MomoDokebi2,0;
-	set $MomotaroRID,0;
+	set $@Momotaro,0;
+	set $@MomoDokebi,0;
+	set $@MomoDokebi2,0;
+	set $@MomotaroRID,0;
 	set event_momo,1;
 	donpcevent "Event Hall Staff::OnInitCopy";
 	warp "amatsu.gat",223,230;
@@ -1545,8 +1537,8 @@ L2_2:
 
 OnTimer5000:
 	stopnpctimer;
-	if(!isloggedin($MomotaroRID)) goto L_Cleanup;
-	attachrid($MomotaroRID);
+	if(!isloggedin($@MomotaroRID)) goto L_Cleanup;
+	attachrid($@MomotaroRID);
 	monster "ama_test.gat",35,103,"Am Mut",1301,1,"mobcount2#momotaro::OnMobDead";
 	monster "ama_test.gat",56,111,"Am Mut",1301,1,"mobcount2#momotaro::OnMobDead";
 	monster "ama_test.gat",40,91,"Am Mut",1301,1,"mobcount2#momotaro::OnMobDead";
@@ -1570,10 +1562,10 @@ LWarpOut:
 	mes "[Manager]";
 	mes "Whatever you encounter, never loose that strong spirit!";
 	close2;
-	set $Momotaro,0;
-	set $MomoDokebi,0;
-	set $MomoDokebi2,0;
-	set $MomotaroRID,0;
+	set $@Momotaro,0;
+	set $@MomoDokebi,0;
+	set $@MomoDokebi2,0;
+	set $@MomotaroRID,0;
 	warp "amatsu.gat",223,230;
 	donpcevent "Event Hall Staff::OnInitCopy";
 	disablenpc "Manager#Momotaro";
@@ -1581,8 +1573,8 @@ LWarpOut:
 
 OnStart:
 	misceffect 215;
-	if(!isloggedin($MomotaroRID)) goto L_Cleanup;
-	attachrid($MomotaroRID);
+	if(!isloggedin($@MomotaroRID)) goto L_Cleanup;
+	attachrid($@MomotaroRID);
 	mes "[Manager]";
 	mes "Hohoho......";
 	close;
@@ -1592,9 +1584,9 @@ OnStart:
 ama_test.gat,0,1,0	script	mobcount#momotaro	-1,{
 
 OnMobDead:
-	if ($MomoDokebi >= 8) goto L_mobcount;
+	if ($@MomoDokebi >= 8) goto L_mobcount;
 
-	set $MomoDokebi,$MomoDokebi+1;
+	set $@MomoDokebi,$@MomoDokebi+1;
 	set @mobrand,rand(4);
 	if (@mobrand == 1) goto Lrand1;
 	if (@mobrand == 2) goto Lrand2;
@@ -1621,7 +1613,7 @@ OnTimer5000:
 
 L_mobcount:
 	areaannounce "ama_test.gat",30,78,68,120,"Dokebi: I will be baaack~~~~!!!",8;
-	attachrid($MomotaroRID);
+	attachrid($@MomotaroRID);
 	initnpctimer;
 	end;
 }
@@ -1629,8 +1621,8 @@ L_mobcount:
 ama_test.gat,50,101,0	script	mobcount2#momotaro	-1,{
 
 OnMobDead:
-	if ($MomoDokebi2 == 2) goto Lfin;
-	set $MomoDokebi2,$MomoDokebi2+1;
+	if ($@MomoDokebi2 == 2) goto Lfin;
+	set $@MomoDokebi2,$@MomoDokebi2+1;
 	areaannounce "ama_test.gat",30,78,68,120,"Am Mut: Ow, Ouch!!!",8;
 	end;
 

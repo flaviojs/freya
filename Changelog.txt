@@ -11,6 +11,7 @@
 Date	Added
 
 07/26/2007
+	* Improved: Cleaned up global script variables [Tsuyuki]
 	* Removed: Automatic deletion of conf/GM_Account.txt on server startup [Tsuyuki]
 	* Removed: conf/save directory generation in configure and renamed conf-dist/save-dist directories [Tsuyuki]
 	* Updated: Thor Volcano / Cursed Abbey / Endless Nightmare / Moscovia monsters in the mob database [Tsuyuki]
