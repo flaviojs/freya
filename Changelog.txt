@@ -11,6 +11,7 @@
 Date	Added
 
 07/26/2007
+	* Removed: Automatic deletion of conf/GM_Account.txt on server startup [Tsuyuki]
 	* Removed: conf/save directory generation in configure and the conf-dist/save-dist directories [Tsuyuki]
 	* Note: The latest clients login to Freya's servers perfectly fine [Tsuyuki]
 	* Updated: Thor Volcano / Cursed Abbey / Endless Nightmare / Moscovia monsters in the mob database [Tsuyuki]
