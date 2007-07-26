@@ -37,13 +37,13 @@ OnInit:
 // This string will be used to show which timezone your server
 // is located in, it's necessary for the quest, so please change it.
 
-	set $timezonestring$,"^FF0000GMT^000000";
+	set $@timezonestring$,"^FF0000GMT^000000";
 
 // This variable determines whether the "sign_xx.bmps" will be used or
 // if raw text will be used in the 'Sign::GeffeniaSigns' script. Set it to
 // 0 if you want to use text.
 
-	set $signbmps,0;
+	set $@signbmps,0;
 	end;
 }
 
@@ -54,7 +54,7 @@ OnInit:
 
 alberta.gat,34,241,1	script	Sign::GeffeniaSigns	111,{
 
-	if ($signbmps==0) goto L_SBMP;
+	if ($@signbmps==0) goto L_SBMP;
 	if (signquest < 1) set signquest,1;
 	cutin "sign_01",4;
 	mes "^3355FFNext";
@@ -2341,7 +2341,7 @@ s_Daewoon:
 	mes "Oh, and make sure to";
 	mes "bring those things to me";
 	mes "before I go to bed at";
-	mes "precisely 10:00 PM " + $timezonestring$ + ".";
+	mes "precisely 10:00 PM " + $@timezonestring$ + ".";
 	mes "I do have a regular sleeping";
 	mes "schedule, you know.";
 	set SignJore,1;
@@ -2394,7 +2394,7 @@ s_Again:
 	mes "Sorry, but I'm kind of";
 	mes "busy right now. Yes, yes,";
 	mes "would you come back at";
-	mes "precisely 5:00 PM " + $timezonestring$ + "?";
+	mes "precisely 5:00 PM " + $@timezonestring$ + "?";
 	next;
 	mes "[Sire Jore]";
 	mes "Let's see...";
