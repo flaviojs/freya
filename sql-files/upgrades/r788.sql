@@ -1,7 +1,7 @@
 # @DB						: Ragnarok
 # @Table				: char
 # @Description	: Needed table modifications for the adoption system.
-# @Author				: GoodKat
+# @Author				: Proximus
 
 
 # BACKUP YOUR DATABASE BEFORE MAKING ANY CHANGES!
