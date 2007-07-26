@@ -895,41 +895,6 @@ echo -n "Cleaning up source dir (removing Makefiles)..."
 )
 echo "done"
 
-##### GENERATE CONF AND SAVE DIRECTORIES
-
-echo -n "Generating conf and save directories..."
-for dir in conf save; do
-	if [ -d ${dir}/ ]; then
-		# ok
-		:
-	else
-		mkdir "${dir}"
-	fi
-	if [ -d "${dir}-dist/" ]; then
-		# ok
-		:
-	else
-		echo "Missing ${dir}-dist !"
-		exit 1
-	fi
-	find "${dir}-dist/" -type f | while read foo; do
-		foo=`echo "$foo" | sed -e "s/${dir}-dist\///"`
-		foo2=`echo "$foo" | sed -e 's/\/.svn//' -e 's/^.svn//'`
-		if [ x"$foo" != x"$foo2" ]; then
-			# skip .svn dirs
-			continue
-		fi
-		if [ -f "${dir}/${foo}" ]; then
-			# already exists
-			:
-		else
-			mkdir -p `dirname ${dir}/${foo}` 2>/dev/null
-			cp -f "${dir}-dist/${foo}" "${dir}/${foo}"
-		fi
-	done
-done
-echo "done"
-
 ##### GENERATE config.h
 
 echo "Generating $CONFIGFILE ..."
