@@ -3825,7 +3825,6 @@ L_Win:
 	set Zeny, Zeny + 20000;
 	getitem 7177,1;
 	set signquest,12;
-	set $dance_fail,0;
 	next;
 
 L_Ever:

@@ -10,11 +10,11 @@
 -> Missing Official Scripts:
 ----------------------------
 
-- Episode ???? - Izlude Battle Arena
+- Episode ???? - Izlude Battle Arena (jAthena + Aegis have it -> Translate w/ Aegis dialogue?)
 
-- Episode 10.1 - Aldebaran Turbo Track
+- Episode 10.1 - Aldebaran Turbo Track (jAthena + Aegis have it -> Translate w/ Aegis dialogue?)
 
-- Episode 10.4 - Hugel Monster Races (Partially implemented)
+- Episode 10.4 - Hugel Monster Races (Partially implemented + Aegis has it)
 
 ----------------------------
 
@@ -42,7 +42,7 @@
 
 - script/global/global_refine.txt
 - script/job/job_crusader.txt
-- script/job/job_sage.txt
+- script/job/job_sage.txt <- Assigned [Tsuyuki]
 - script/quest/quest_headgear.txt
 - script/quest/quest_pet_taming.txt
 - script/town/town_amatsu.txt
@@ -50,18 +50,139 @@
 - script/town/town_umbala.txt
 
 -> Scripts In Need Of Aegis Dialogue:
---------------------------------------
+-------------------------------------
 
 - script/global/global_kafra.txt
-- script/gvg/gvg_flag.txt
+- script/gvg/gvg_flag.txt <- Assigned [Tsuyuki]
 - script/gvg/gvg_steward.txt
 
 
 ==========================================================================
 --------------------------------------------------------------------------
 
-- The Kunlun Power NPC is currently commented/disabled. It has array syntax errors:
-- script/town/town_kunlun.txt
+-> Script Errors:
+-----------------
+
+- Kunlun Power Arena (town/town_kunlun.txt)
+- Currently commented/disabled. It has array syntax errors that show up on map server start.
+
+- Missing character RID errors consistently pop up in the map server console with no users online.
+- Errors are spanned every few hours. First error doesn't occur until several hours after map server has started.
+
+
+==========================================================================
+--------------------------------------------------------------------------
+
+-> To-Do: Major Cleanup
+-> Global Temporary Variables (39):
+-----------------------------------
+
+- Airship System (global/global_airship.txt)
+$@at_hugel
+$@at_izlude
+$@route1
+$@route2
+
+- Crusader Job Change Quest (job/job_crusader.txt)
+$@mobcountcru
+
+- Sage Job Change Quest (job/job_sage.txt)
+$@jobsage_pid
+$@jobsage_pname$
+$@jobsage_m
+
+- Marriage System (misc/misc_marriage.txt)
+$@wedding
+
+- Cool Event vs Kafra Voting Event (misc/misc_vote.txt)
+$@dtstemp
+
+- God Seal Equipment Quests (quest/quest_god_seal.txt)
+$@BrisinRID$
+
+- Kiel Hyre Quest (quest/quest_kiel_hyre.txt)
+$@KHQuestBusy
+
+- Rogue Close Confine Skill Quest (quest/quest_skill.txt)
+$@kienna
+
+- Thanatos Tower Quest (quest/quest_thanatos.xt)
+$@thanaboss1
+$@thanaboss2
+
+- The Sign Quest (quest/quest_the_sign.txt)
+$@timezonestring$
+$@signbmps
+$@signdance
+$@SignDanceRandomizer
+$@Signdanceresult
+$@SignDancingrid
+$@signroomfull
+$@signroom2full
+$@Sign_Summon
+$@Sign_Summon2
+$@signparty
+$@GeffeniaWarp
+
+- Amatsu Momotaro Event (town/town_amatsu.txt)
+$@Momotaro
+$@MomoDokebi
+$@MomoDokebi2
+$@MomotaroRID
+
+- Hugel Bingo System (town/town_hugel.txt)
+$@hu_bingoa
+$@hu_bingob
+
+- Kunlun Power System (town/town_kunlun.txt)
+$@in_battle
+
+- Morroc Dandelion's Request Quest (town/town_morroc.txt)
+$@maobar_room
+$@maobar_room2
+$@maogate1mobs
+$@maogate2mobs
+
+- Ice Necklace/Ktullanux Summoning Quest (town/town_rachel.txt)
+$@ktullanux_summon
+
+
+==========================================================================
+--------------------------------------------------------------------------
+
+-> To-Do: Major Cleanup
+-> Global Permanent Variables (16):
+-----------------------------------
+
+- Marriage System (misc/misc_marriage.txt)
+$wed_bride$
+$wed_groom$
+
+- Cool Event vs Kafra Voting Event (misc/misc_vote.txt)
+$dts
+$dtsday
+$dtsv
+$dtsvote
+
+- Einbroch Pollution Quest (town/town_einbroch.txt)
+$EinPolution
+
+- Geffen Mastermind Game (town/town_geffen.txt)
+$MinMasterMind
+$NameMasterMind$
+$SecMasterMind
+
+- Rachel Sanctuary Quest (town/town_rachel.txt)
+$rachel_donate
+
+- God Seal Equipment Quests (quest/quest_god_seal.txt)
+$God1
+$God2
+$God3
+$God4
+
+- The Sign Quest (quest/quest_the_sign.txt)
+$signmazemonster
 
 
 ==========================================================================

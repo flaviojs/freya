@@ -73,7 +73,6 @@ function	script	F_ClearGarbageVariables	{
 
 	// Clear outdated global VARS
 	// DTS Vote System
-	if ($dtsglobalelig) set $dtsglobalelig,0;
 	if ($dts&(1<<6)) set $dts,$dts&~(1<<6);
 	// Cube Room
 	if (hzdun) {
@@ -81,14 +80,6 @@ function	script	F_ClearGarbageVariables	{
 		set num1,0;	set num2,0;	set num3,0;	set num4,0;	set num5,0;
 		set num6,0;	set num7,0;	set num8,0;	set num9,0;
 		set hzdun,0; set cubekey,0; set piciburn,0;
-	}
-	// Airship
-	if ($lengths) {
-		cleararray $textstringsa$[0],"",getarraysize($textstringsa$);
-		cleararray $textstringsb$[0],"",getarraysize($textstringsb$);
-		cleararray $textstringsc$[0],"",getarraysize($textstringsc$);
-		cleararray $compstring$[0],"",getarraysize($compstring$);
-		cleararray $lengths[0],0,getarraysize($lengths);
 	}
 	return;
 }
@@ -127,16 +118,16 @@ function	script	F_EndAllStatuses	{
 	sc_end SC_WEAPONPERFECTION;
 	sc_end SC_OVERTHRUST;
 	sc_end SC_MAXIMIZEPOWER;
-	sc_end SC_RIDING;
-	sc_end SC_FALCON;
+	// sc_end SC_RIDING;
+	// sc_end SC_FALCON;
 	sc_end SC_TRICKDEAD;
 	sc_end SC_LOUD;
 	sc_end SC_ENERGYCOAT;
 	sc_end SC_PK_PENALTY;
 	sc_end SC_REVERSEORCISH;
 	sc_end SC_HALLUCINATION;
-	sc_end SC_WEIGHT50;
-	sc_end SC_WEIGHT90;
+	// sc_end SC_WEIGHT50;
+	// sc_end SC_WEIGHT90;
 	sc_end SC_SPEEDPOTION0;
 	sc_end SC_SPEEDPOTION1;
 	sc_end SC_SPEEDPOTION2;
@@ -238,7 +229,7 @@ function	script	F_EndAllStatuses	{
 	sc_end SC_INCATK;
 	sc_end SC_INCMATK;
 	sc_end SC_WEDDING;
-	sc_end SC_NOCHAT;
+	// sc_end SC_NOCHAT;
 	sc_end SC_SPLASHER;
 	sc_end SC_SELFDESTRUCTION;
 	sc_end SC_MAGNUM;
