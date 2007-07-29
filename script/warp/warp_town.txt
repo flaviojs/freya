@@ -136,9 +136,6 @@ ama_in02.gat,56,44,0	warp	warp1975	1,1,ama_in02.gat,59,144
 ama_in02.gat,59,142,0	warp	warp1976	1,1,ama_in02.gat,56,41
 ama_in02.gat,59,159,0	warp	warp1977	1,1,ama_in02.gat,215,152
 ama_in02.gat,65,38,0	warp	warp1974	1,1,ama_in02.gat,195,41
-ama_test.gat,50,16,0	warp	warp8003	1,1,ama_fild01.gat,174,330
-ama_test.gat,50,44,0	warp	warp8004	1,1,ama_test.gat,50,82
-ama_test.gat,50,79,0	warp	warp8005	1,1,ama_test.gat,50,41
 amatsu.gat,133,148,0	warp	warp1989	1,1,ama_in01.gat,88,22
 amatsu.gat,168,180,0	warp	warp1964	1,1,ama_in01.gat,34,99
 amatsu.gat,216,116,0	warp	warp1968	1,1,ama_in01.gat,162,25
