@@ -13,6 +13,9 @@
 
 Date	Added
 
+2007/07/28
+	* Fixed: Fixed some issueus with GvG castle investment, by kosai [Tsuyuki]
+
 2007/07/26
 	* Updated: Marriage / Divorce scripts, converted from Aegis by L0ne_W0lf [Tsuyuki]
 	* Fixed: Some warp portal bugs [Tsuyuki]
