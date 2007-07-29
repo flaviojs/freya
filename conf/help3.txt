@@ -61,7 +61,7 @@ To use one command, type it inside the message window where you usually type to 
 @item <item_name|item_ID> [quantity=1] ---- Gives you the quantity of desired item.
 @item2 <item_name|item_ID> <quantity> <Identify_flag> <refine> <attribute> <Card1> <Card2> <Card3> <Card4> ---- Gives you the desired item. It's possible to set any value: refining, attribute, etc.
 @item3 <item_name|item_ID> <quantity> <character name> ---- Gives to designed charater the quantity of desired item.
-@refine <equip_position> <amount> ---- Upgrades equipment at the specified position (all equipement=0, otherwise: lower/top/mid head=1/256/512, right hand=2, robe/garment=4, left accessory=8, body/armor=16, left hand=32, feet=64, right accessory=128, stackable).
+@refine <equip_position> <amount> ---- Upgrades equipment at the specified position (all equipement=0, otherwise: lower/top/mid head=1/256/512, right hand=2, robe/garment=4, left acc=8, body/armor=16, left hand=32, feet=64, right acc=128, stackable).
 @produce <equip_name|equip_ID> [element=0 [Number_of_stars=0]] ---- Creates an equipement (Element: 0=None 1=Ice 2=Earth 3=Fire 4=Wind).
 @guildlvup <number_of_levels>     ---- Raises Guild level by desired number of levels.
 @recall <character name>          ---- Warps target character to you.
@@ -95,9 +95,9 @@ To use one command, type it inside the message window where you usually type to 
 	 1001 = Charge Attack           1015 = Ki Translation
 	Priest                          1016 = 
 	 1014 = Redemptio              Sage
-	Wizard                          1017 = Elemental Change : Earth
-	1006 = Sight Blaster            1018 = Elemental Change : Fire
-	Blacksmith                      1019 = Elemental Change : Wind
+	Wizard                          1017 = Elemental Change: Earth
+	1006 = Sight Blaster            1018 = Elemental Change: Fire
+	Blacksmith                      1019 = Elemental Change: Wind
 	 1012 = Unfair Trick           Rogue
 	 1013 = Greed                   1005 = Close Confine
 	Blacksmith                     Alchemist

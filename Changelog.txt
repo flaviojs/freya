@@ -14,6 +14,7 @@
 Date	Added
 
 2007/07/29
+	* Fixed: Client crashes with @help and variants, thanks to Zarin [Tsuyuki]
 	* Updated: Amatsu Town NPCs / Quests to official, converted from Aegis [Tsuyuki]
 	* Updated: Niflheim Town NPCs / Quests to official, converted from Aegis [Tsuyuki]
 	* Updated: Umbala Town NPCs / Quests to official, converted from Aegis [Tsuyuki]
