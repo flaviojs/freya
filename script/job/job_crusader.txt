@@ -1872,38 +1872,38 @@ prt_castle.gat,35,151,5	script	Patron Kinght	751,{
 	}
 }
 
-job_cru.gat,1,1,1	script	Summoner#1	107,{
+job_cru.gat,1,1,1	script	Summoner#1::CrusaderSummon1	107,{
 
 	end;
 
 OnTimer300000:
-	donpcevent "Summoner#1::OnCommandReset";
+	donpcevent "CrusaderSummon1::OnCommandReset";
 	end;
 
 OnTimer301000:
-	donpcevent "Summoner#1::OnCommandOn";
+	donpcevent "CrusaderSummon1::OnCommandOn";
 	stopnpctimer;
 	end;
 
 OnInit:
 OnCommandOn:
-	monster "job_cru.gat",94,45,"Mandragora",1020,1,"Summoner#1::OnMyMobDead";
-	monster "job_cru.gat",94,55,"Mandragora",1020,1,"Summoner#1::OnMyMobDead";
-	monster "job_cru.gat",94,65,"Mandragora",1020,1,"Summoner#1::OnMyMobDead";
-	monster "job_cru.gat",94,75,"Mandragora",1020,1,"Summoner#1::OnMyMobDead";
-	monster "job_cru.gat",94,85,"Mandragora",1020,1,"Summoner#1::OnMyMobDead";
-	monster "job_cru.gat",94,95,"Mandragora",1020,1,"Summoner#1::OnMyMobDead";
-	monster "job_cru.gat",101,45,"Mandragora",1020,1,"Summoner#1::OnMyMobDead";
-	monster "job_cru.gat",101,55,"Mandragora",1020,1,"Summoner#1::OnMyMobDead";
-	monster "job_cru.gat",101,65,"Mandragora",1020,1,"Summoner#1::OnMyMobDead";
-	monster "job_cru.gat",101,75,"Mandragora",1020,1,"Summoner#1::OnMyMobDead";
-	monster "job_cru.gat",101,85,"Mandragora",1020,1,"Summoner#1::OnMyMobDead";
-	monster "job_cru.gat",101,95,"Mandragora",1020,1,"Summoner#1::OnMyMobDead";
+	monster "job_cru.gat",94,45,"Mandragora",1020,1,"CrusaderSummon1::OnMyMobDead";
+	monster "job_cru.gat",94,55,"Mandragora",1020,1,"CrusaderSummon1::OnMyMobDead";
+	monster "job_cru.gat",94,65,"Mandragora",1020,1,"CrusaderSummon1::OnMyMobDead";
+	monster "job_cru.gat",94,75,"Mandragora",1020,1,"CrusaderSummon1::OnMyMobDead";
+	monster "job_cru.gat",94,85,"Mandragora",1020,1,"CrusaderSummon1::OnMyMobDead";
+	monster "job_cru.gat",94,95,"Mandragora",1020,1,"CrusaderSummon1::OnMyMobDead";
+	monster "job_cru.gat",101,45,"Mandragora",1020,1,"CrusaderSummon1::OnMyMobDead";
+	monster "job_cru.gat",101,55,"Mandragora",1020,1,"CrusaderSummon1::OnMyMobDead";
+	monster "job_cru.gat",101,65,"Mandragora",1020,1,"CrusaderSummon1::OnMyMobDead";
+	monster "job_cru.gat",101,75,"Mandragora",1020,1,"CrusaderSummon1::OnMyMobDead";
+	monster "job_cru.gat",101,85,"Mandragora",1020,1,"CrusaderSummon1::OnMyMobDead";
+	monster "job_cru.gat",101,95,"Mandragora",1020,1,"CrusaderSummon1::OnMyMobDead";
 	initnpctimer;
 	end;
 
 OnCommandReset:
-	killmonster "job_cru.gat","Summoner#1::OnMyMobDead";
+	killmonster "job_cru.gat","CrusaderSummon1::OnMyMobDead";
 	end;
 
 OnMyMobDead:
@@ -1911,33 +1911,33 @@ OnMyMobDead:
 	end;
 }
 
-job_cru.gat,1,2,1	script	Summoner#2	107,1,1,{
+job_cru.gat,1,2,1	script	Summoner#2::CrusaderSummon2	107,1,1,{
 
 	end;
 
 OnTimer345000:
-	donpcevent "Summoner#2::OnCommandReset";
+	donpcevent "CrusaderSummon2::OnCommandReset";
 	end;
 
 OnTimer346000:
-	donpcevent "Summoner#2::OnCommandOn";
+	donpcevent "CrusaderSummon2::OnCommandOn";
 	stopnpctimer;
 	end;
 
 OnInit:
 OnCommandOn:
-	monster "job_cru.gat",98,50,"Flora",1118,1,"Summoner#2::OnMyMobDead";
-	monster "job_cru.gat",92,60,"Flora",1118,1,"Summoner#2::OnMyMobDead";
-	monster "job_cru.gat",104,60,"Flora",1118,1,"Summoner#2::OnMyMobDead";
-	monster "job_cru.gat",98,70,"Flora",1118,1,"Summoner#2::OnMyMobDead";
-	monster "job_cru.gat",92,80,"Flora",1118,1,"Summoner#2::OnMyMobDead";
-	monster "job_cru.gat",104,80,"Flora",1118,1,"Summoner#2::OnMyMobDead";
-	monster "job_cru.gat",98,90,"Flora",1118,1,"Summoner#2::OnMyMobDead";
+	monster "job_cru.gat",98,50,"Flora",1118,1,"CrusaderSummon2::OnMyMobDead";
+	monster "job_cru.gat",92,60,"Flora",1118,1,"CrusaderSummon2::OnMyMobDead";
+	monster "job_cru.gat",104,60,"Flora",1118,1,"CrusaderSummon2::OnMyMobDead";
+	monster "job_cru.gat",98,70,"Flora",1118,1,"CrusaderSummon2::OnMyMobDead";
+	monster "job_cru.gat",92,80,"Flora",1118,1,"CrusaderSummon2::OnMyMobDead";
+	monster "job_cru.gat",104,80,"Flora",1118,1,"CrusaderSummon2::OnMyMobDead";
+	monster "job_cru.gat",98,90,"Flora",1118,1,"CrusaderSummon2::OnMyMobDead";
 	initnpctimer;
 	end;
 
 OnCommandReset:
-	killmonster "job_cru.gat","Summoner#2::OnMyMobDead";
+	killmonster "job_cru.gat","CrusaderSummon2::OnMyMobDead";
 	end;
 
 OnMyMobDead:
@@ -1945,34 +1945,34 @@ OnMyMobDead:
 	end;
 }
 
-job_cru.gat,1,3,1	script	Summoner#3	107,1,1,{
+job_cru.gat,1,3,1	script	Summoner#3::CrusaderSummon3	107,1,1,{
 
 	end;
 
 OnTimer345000:
-	donpcevent "Summoner#3::OnCommandReset";
+	donpcevent "CrusaderSummon3::OnCommandReset";
 	end;
 
 OnTimer346000:
-	donpcevent "Summoner#3::OnCommandOn";
+	donpcevent "CrusaderSummon3::OnCommandOn";
 	stopnpctimer;
 	end;
 
 OnInit:
 OnCommandOn:
-	monster "job_cru.gat",90,50,"Greatest General",1277,1,"Summoner#3::OnMyMobDead";
-	monster "job_cru.gat",105,50,"Greatest General",1277,1,"Summoner#3::OnMyMobDead";
-	monster "job_cru.gat",98,60,"Greatest General",1277,1,"Summoner#3::OnMyMobDead";
-	monster "job_cru.gat",90,70,"Greatest General",1277,1,"Summoner#3::OnMyMobDead";
-	monster "job_cru.gat",105,70,"Greatest General",1277,1,"Summoner#3::OnMyMobDead";
-	monster "job_cru.gat",98,80,"Greatest General",1277,1,"Summoner#3::OnMyMobDead";
-	monster "job_cru.gat",90,90,"Greatest General",1277,1,"Summoner#3::OnMyMobDead";
-	monster "job_cru.gat",105,90,"Greatest General",1277,1,"Summoner#3::OnMyMobDead";
+	monster "job_cru.gat",90,50,"Greatest General",1277,1,"CrusaderSummon3::OnMyMobDead";
+	monster "job_cru.gat",105,50,"Greatest General",1277,1,"CrusaderSummon3::OnMyMobDead";
+	monster "job_cru.gat",98,60,"Greatest General",1277,1,"CrusaderSummon3::OnMyMobDead";
+	monster "job_cru.gat",90,70,"Greatest General",1277,1,"CrusaderSummon3::OnMyMobDead";
+	monster "job_cru.gat",105,70,"Greatest General",1277,1,"CrusaderSummon3::OnMyMobDead";
+	monster "job_cru.gat",98,80,"Greatest General",1277,1,"CrusaderSummon3::OnMyMobDead";
+	monster "job_cru.gat",90,90,"Greatest General",1277,1,"CrusaderSummon3::OnMyMobDead";
+	monster "job_cru.gat",105,90,"Greatest General",1277,1,"CrusaderSummon3::OnMyMobDead";
 	initnpctimer;
 	end;
 
 OnCommandReset:
-	killmonster "job_cru.gat","Summoner#3::OnMyMobDead";
+	killmonster "job_cru.gat","CrusaderSummon3::OnMyMobDead";
 	end;
 
 OnMyMobDead:
@@ -1980,37 +1980,37 @@ OnMyMobDead:
 	end;
 }
 
-job_cru.gat,1,3,1	script	Summoner#4	107,1,1,{
+job_cru.gat,1,3,1	script	Summoner#4::CrusaderSummon4	107,1,1,{
 
 	end;
 
 OnTimer185000:
-	donpcevent "Summoner#4::OnCommandReset";
+	donpcevent "CrusaderSummon4::OnCommandReset";
 	end;
 
 OnTimer186000:
-	donpcevent "Summoner#4::OnCommandOn";
+	donpcevent "CrusaderSummon4::OnCommandOn";
 	stopnpctimer;
 	end;
 
 OnInit:
 OnCommandOn:
-	monster "job_cru.gat",98,50,"Familiar",1005,1,"Summoner#4::OnMyMobDead";
-	monster "job_cru.gat",98,55,"Familiar",1005,1,"Summoner#4::OnMyMobDead";
-	monster "job_cru.gat",98,60,"Familiar",1005,1,"Summoner#4::OnMyMobDead";
-	monster "job_cru.gat",98,65,"Familiar",1005,1,"Summoner#4::OnMyMobDead";
-	monster "job_cru.gat",98,70,"Familiar",1005,1,"Summoner#4::OnMyMobDead";
-	monster "job_cru.gat",98,75,"Familiar",1005,1,"Summoner#4::OnMyMobDead";
-	monster "job_cru.gat",98,80,"Familiar",1005,1,"Summoner#4::OnMyMobDead";
-	monster "job_cru.gat",98,85,"Familiar",1005,1,"Summoner#4::OnMyMobDead";
-	monster "job_cru.gat",98,90,"Familiar",1005,1,"Summoner#4::OnMyMobDead";
-	monster "job_cru.gat",90,34,"Mushroom",1182,1,"Summoner#4::OnMyMobDead";
-	monster "job_cru.gat",105,34,"Mushroom",1182,1,"Summoner#4::OnMyMobDead";
+	monster "job_cru.gat",98,50,"Familiar",1005,1,"CrusaderSummon4::OnMyMobDead";
+	monster "job_cru.gat",98,55,"Familiar",1005,1,"CrusaderSummon4::OnMyMobDead";
+	monster "job_cru.gat",98,60,"Familiar",1005,1,"CrusaderSummon4::OnMyMobDead";
+	monster "job_cru.gat",98,65,"Familiar",1005,1,"CrusaderSummon4::OnMyMobDead";
+	monster "job_cru.gat",98,70,"Familiar",1005,1,"CrusaderSummon4::OnMyMobDead";
+	monster "job_cru.gat",98,75,"Familiar",1005,1,"CrusaderSummon4::OnMyMobDead";
+	monster "job_cru.gat",98,80,"Familiar",1005,1,"CrusaderSummon4::OnMyMobDead";
+	monster "job_cru.gat",98,85,"Familiar",1005,1,"CrusaderSummon4::OnMyMobDead";
+	monster "job_cru.gat",98,90,"Familiar",1005,1,"CrusaderSummon4::OnMyMobDead";
+	monster "job_cru.gat",90,34,"Mushroom",1182,1,"CrusaderSummon4::OnMyMobDead";
+	monster "job_cru.gat",105,34,"Mushroom",1182,1,"CrusaderSummon4::OnMyMobDead";
 	initnpctimer;
 	end;
 
 OnCommandReset:
-	killmonster "job_cru.gat","Summoner#4::OnMyMobDead";
+	killmonster "job_cru.gat","CrusaderSummon4::OnMyMobDead";
 	end;
 
 OnMyMobDead:
@@ -2018,7 +2018,7 @@ OnMyMobDead:
 	end;
 }
 
-job_cru.gat,98,105,4	script	Summoner#5	45,3,3,{
+job_cru.gat,98,105,4	script	Summoner#5::CrusaderSummon5	45,3,3,{
 
 OnTouch:
 	set job_crusader_q,6;
@@ -2044,19 +2044,19 @@ job_cru.gat,24,187,4	script	Patron Knight	751,{
 	close;
 }
 
-job_cru.gat,24,187,2	script	Waiting Room#1	700,1,1,{
+job_cru.gat,24,187,2	script	Waiting Room#1::CrusaderWait	700,1,1,{
 
 	end;
 
 OnInit:
-	waitingroom "Waiting Room",20,"Waiting Room#1::OnStartArena",1;
+	waitingroom "Waiting Room",20,"CrusaderWait::OnStartArena",1;
 	enablewaitingroomevent;
 	end;
 
 OnStartArena:
 	warpwaitingpc "job_cru.gat",168,17;
-	enablenpc "Monster Summon#0";
-	donpcevent "Monster Summon#0::OnCommandOn";
+	enablenpc "CrusaderMob0";
+	donpcevent "CrusaderMob0::OnCommandOn";
 	disablewaitingroomevent;
 	end;
 
@@ -2065,22 +2065,22 @@ OnCommandOn:
 	end;
 
 OnCommandReset:
-	killmonster "job_cru.gat","Monster Summon#0::OnMyMobDead";
-	killmonster "job_cru.gat","Monster Summon#3::OnMyMobDead";
-	killmonster "job_cru.gat","Monster Summon#4::OnMyMobDead";
-	set getvariableofnpc('mobcount,"Monster Summon#0"),0;
-	set getvariableofnpc('mobswitch,"Monster Summon#0"),0;
-	set getvariableofnpc('mobfix,"Monster Summon#3"),0;
-	set getvariableofnpc('mobfix,"Monster Summon#4"),0;
-	disablenpc "Monster Summon#0";
-	disablenpc "Monster Summon#1";
-	disablenpc "Monster Summon#2";
-	disablenpc "Monster Summon#3";
-	disablenpc "Monster Summon#4";
-	disablenpc "Monster Summon#5";
-	disablenpc "Monster Summon#6";
-	disablenpc "Monster Summon#7";
-	disablenpc "Monster Summon#8";
+	killmonster "job_cru.gat","CrusaderMob0::OnMyMobDead";
+	killmonster "job_cru.gat","CrusaderMob3::OnMyMobDead";
+	killmonster "job_cru.gat","CrusaderMob4::OnMyMobDead";
+	set getvariableofnpc('mobcount,"CrusaderMob0"),0;
+	set getvariableofnpc('mobswitch,"CrusaderMob0"),0;
+	set getvariableofnpc('mobfix,"CrusaderMob3"),0;
+	set getvariableofnpc('mobfix,"CrusaderMob4"),0;
+	disablenpc "CrusaderMob0";
+	disablenpc "CrusaderMob1";
+	disablenpc "CrusaderMob2";
+	disablenpc "CrusaderMob3";
+	disablenpc "CrusaderMob4";
+	disablenpc "CrusaderMob5";
+	disablenpc "CrusaderMob6";
+	disablenpc "CrusaderMob7";
+	disablenpc "CrusaderMob8";
 	end;
 }
 
@@ -2100,42 +2100,42 @@ OnTouch:
 	close;
 }
 
-job_cru.gat,2,1,1	script	Monster Summon#0	110,1,1,{
+job_cru.gat,2,1,1	script	Monster Summon#0::CrusaderMob0	110,1,1,{
 
 	end;
 
 OnInit:
-	disablenpc "Monster Summon#0";
+	disablenpc "CrusaderMob0";
 	end;
 
 OnCommandOn:
-	enablenpc "Monster Summon#1";
-	enablenpc "Monster Summon#2";
-	enablenpc "Monster Summon#3";
-	enablenpc "Monster Summon#4";
-	enablenpc "Monster Summon#6";
-	donpcevent "Monster Summon#6::OnCommandOn";
+	enablenpc "CrusaderMob1";
+	enablenpc "CrusaderMob2";
+	enablenpc "CrusaderMob3";
+	enablenpc "CrusaderMob4";
+	enablenpc "CrusaderMob6";
+	donpcevent "CrusaderMob6::OnCommandOn";
 	end;
 
 OnCommandM1:
-	monster "job_cru.gat",168,45,"Zombie",1015,1,"Monster Summon#0::OnMyMobDead";
-	monster "job_cru.gat",168,45,"Zombie",1015,1,"Monster Summon#0::OnMyMobDead";
-	monster "job_cru.gat",168,45,"Zombie",1015,1,"Monster Summon#0::OnMyMobDead";
-	monster "job_cru.gat",168,45,"Zombie",1015,1,"Monster Summon#0::OnMyMobDead";
-	monster "job_cru.gat",168,45,"Zombie",1015,1,"Monster Summon#0::OnMyMobDead";
-	monster "job_cru.gat",168,45,"Zombie",1015,1,"Monster Summon#0::OnMyMobDead";
+	monster "job_cru.gat",168,45,"Zombie",1015,1,"CrusaderMob0::OnMyMobDead";
+	monster "job_cru.gat",168,45,"Zombie",1015,1,"CrusaderMob0::OnMyMobDead";
+	monster "job_cru.gat",168,45,"Zombie",1015,1,"CrusaderMob0::OnMyMobDead";
+	monster "job_cru.gat",168,45,"Zombie",1015,1,"CrusaderMob0::OnMyMobDead";
+	monster "job_cru.gat",168,45,"Zombie",1015,1,"CrusaderMob0::OnMyMobDead";
+	monster "job_cru.gat",168,45,"Zombie",1015,1,"CrusaderMob0::OnMyMobDead";
 	set 'mobswitch,1;
 	end;
 
 OnCommandM2:
-	monster "job_cru.gat",168,80,"Soldier Skeleton",1028,1,"Monster Summon#0::OnMyMobDead";
-	monster "job_cru.gat",168,80,"Soldier Skeleton",1028,1,"Monster Summon#0::OnMyMobDead";
-	monster "job_cru.gat",168,80,"Soldier Skeleton",1028,1,"Monster Summon#0::OnMyMobDead";
+	monster "job_cru.gat",168,80,"Soldier Skeleton",1028,1,"CrusaderMob0::OnMyMobDead";
+	monster "job_cru.gat",168,80,"Soldier Skeleton",1028,1,"CrusaderMob0::OnMyMobDead";
+	monster "job_cru.gat",168,80,"Soldier Skeleton",1028,1,"CrusaderMob0::OnMyMobDead";
 	set 'mobswitch,2;
 	end;
 
 OnCommandM3:
-	monster "job_cru.gat",168,115,"Mummy",1041,1,"Monster Summon#0::OnMyMobDead";
+	monster "job_cru.gat",168,115,"Mummy",1041,1,"CrusaderMob0::OnMyMobDead";
 	set 'mobswitch,3;
 	end;
 
@@ -2148,47 +2148,47 @@ OnMyMobDead:
 OnCommandReset:
 	set 'mobcount,0;
 	set 'mobswitch,0;
-	killmonster "job_cru.gat","Monster Summon#0::OnMyMobDead";
+	killmonster "job_cru.gat","CrusaderMob0::OnMyMobDead";
 	end;
 }
 
-job_cru.gat,168,45,0	script	Monster Summon#1	139,15,1,{
+job_cru.gat,168,45,0	script	Monster Summon#1::CrusaderMob1	139,15,1,{
 
 OnInit:
-	disablenpc "Monster Summon#1";
+	disablenpc "CrusaderMob1";
 	end;
 
 OnTouch:
-	donpcevent "Monster Summon#0::OnCommandM1";
-	disablenpc "Monster Summon#1";
+	donpcevent "CrusaderMob0::OnCommandM1";
+	disablenpc "CrusaderMob1";
 	end;
 }
 
-job_cru.gat,168,80,0	script	Monster Summon#2	139,15,1,{
+job_cru.gat,168,80,0	script	Monster Summon#2::CrusaderMob2	139,15,1,{
 
 OnInit:
-	disablenpc "Monster Summon#2";
+	disablenpc "CrusaderMob2";
 	end;
 
 OnTouch:
-	donpcevent "Monster Summon#0::OnCommandM2";
-	disablenpc "Monster Summon#2";
+	donpcevent "CrusaderMob0::OnCommandM2";
+	disablenpc "CrusaderMob2";
 	end;
 }
 
-job_cru.gat,168,115,0	script	Monster Summon#3	139,15,1,{
+job_cru.gat,168,115,0	script	Monster Summon#3::CrusaderMob3	139,15,1,{
 
 OnInit:
-	disablenpc "Monster Summon#3";
+	disablenpc "CrusaderMob3";
 	end;
 
 OnTouch:
 	if ('mobfix == 1) {
 		end;
 	}
-	monster "job_cru.gat",168,110,"Archer Skeleton",1016,1,"Monster Summon#3::OnMyMobDead";
+	monster "job_cru.gat",168,110,"Archer Skeleton",1016,1,"CrusaderMob3::OnMyMobDead";
 	set 'mobfix,1;
-	donpcevent "Monster Summon#0::OnCommandM3";
+	donpcevent "CrusaderMob0::OnCommandM3";
 	end;
 
 OnMyMobDead:
@@ -2196,90 +2196,90 @@ OnMyMobDead:
 	end;
 
 OnCommandReset:
-	killmonster "job_cru.gat","Monster Summon#3::OnMyMobDead";
+	killmonster "job_cru.gat","CrusaderMob3::OnMyMobDead";
 	set 'mobfix,0;
 	end;
 }
 
-job_cru.gat,168,150,0	script	Monster Summon#4	139,15,1,{
+job_cru.gat,168,150,0	script	Monster Summon#4::CrusaderMob4	139,15,1,{
 
 OnInit:
-	disablenpc "Monster Summon#4";
+	disablenpc "CrusaderMob4";
 	end;
 
 OnTouch:
 	if ('mobfix == 1) {
 		end;
 	}
-	monster "job_cru.gat",168,150,"Ghoul",1036,1,"Monster Summon#4::OnMyMobDead";
+	monster "job_cru.gat",168,150,"Ghoul",1036,1,"CrusaderMob4::OnMyMobDead";
 	set 'mobfix,1;
 	end;
 
 OnMyMobDead:
-	enablenpc "Monster Summon#5";
+	enablenpc "CrusaderMob5";
 	set 'mobfix,0;
 	end;
 
 OnCommandReset:
-	killmonster "job_cru.gat","Monster Summon#4::OnMyMobDead";
+	killmonster "job_cru.gat","CrusaderMob4::OnMyMobDead";
 	set 'mobfix,0;
 	end;
 }
 
-job_cru.gat,168,180,4	script	Monster Summon#5	45,3,3,{
+job_cru.gat,168,180,4	script	Monster Summon#5::CrusaderMob5	45,3,3,{
 
 OnInit:
-	disablenpc "Monster Summon#5";
+	disablenpc "CrusaderMob5";
 	end;
 
 OnTouch:
 	warp "prt_castle.gat",35,147;
-	donpcevent "Monster Summon#0::OnCommandReset";
-	disablenpc "Monster Summon#0";
-	donpcevent "Monster Summon#6::OnCommandStop";
-	disablenpc "Monster Summon#6";
-	disablenpc "Monster Summon#5";
-	donpcevent "Waiting Room#1::OnCommandOn";
+	donpcevent "CrusaderMob0::OnCommandReset";
+	disablenpc "CrusaderMob0";
+	donpcevent "CrusaderMob6::OnCommandStop";
+	disablenpc "CrusaderMob6";
+	disablenpc "CrusaderMob5";
+	donpcevent "CrusaderWait::OnCommandOn";
 	end;
 }
 
-job_cru.gat,2,2,1	script	Monster Summon#6	110,1,1,{
+job_cru.gat,2,2,1	script	Monster Summon#6::CrusaderMob6	110,1,1,{
 
 	end;
 
 OnTimer60000:
-	enablenpc "Monster Summon#8";
+	enablenpc "CrusaderMob8";
 	end;
 
 OnTimer61000:
-	disablenpc "Monster Summon#8";
+	disablenpc "CrusaderMob8";
 	end;
 
 OnTimer240000:
-	enablenpc "Monster Summon#7";
+	enablenpc "CrusaderMob7";
 	end;
 
 OnTimer241000:
-	donpcevent "Monster Summon#0::OnCommandReset";
-	donpcevent "Monster Summon#3::OnCommandReset";
-	donpcevent "Monster Summon#4::OnCommandReset";
+	donpcevent "CrusaderMob0::OnCommandReset";
+	donpcevent "CrusaderMob3::OnCommandReset";
+	donpcevent "CrusaderMob4::OnCommandReset";
 	end;
 
 OnTimer242000:
-	disablenpc "Monster Summon#0";
-	disablenpc "Monster Summon#3";
-	disablenpc "Monster Summon#4";
-	disablenpc "Monster Summon#7";
+	disablenpc "CrusaderMob0";
+	disablenpc "CrusaderMob3";
+	disablenpc "CrusaderMob4";
+	disablenpc "CrusaderMob7";
 	end;
 
 OnTimer243000:
-	disablenpc "Monster Summon#6";
-	donpcevent "Waiting Room#1::OnCommandOn";
+	disablenpc "CrusaderMob6";
+	donpcevent "CrusaderWait::OnCommandOn";
 	stopnpctimer;
 	end;
 
 OnInit:
-	disablenpc "Monster Summon#6";
+	disablenpc "CrusaderMob6";
 	end;
 
 OnCommandOn:
@@ -2291,10 +2291,10 @@ OnCommandStop:
 	end;
 }
 
-job_cru.gat,168,110,0	script	Monster Summon#7	139,14,82,{
+job_cru.gat,168,110,0	script	Monster Summon#7::CrusaderMob7	139,14,82,{
 
 OnInit:
-	disablenpc "Monster Summon#7";
+	disablenpc "CrusaderMob7";
 	end;
 
 OnTouch:
@@ -2302,10 +2302,10 @@ OnTouch:
 	end;
 }
 
-job_cru.gat,168,17,0	script	Monster Summon#8	139,14,5,{
+job_cru.gat,168,17,0	script	Monster Summon#8::CrusaderMob8	139,14,5,{
 
 OnInit:
-	disablenpc "Monster Summon#8";
+	disablenpc "CrusaderMob8";
 	end;
 
 OnTouch:
