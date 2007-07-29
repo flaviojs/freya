@@ -2670,8 +2670,8 @@ OnInit:
 OnStartArena:
 	disablenpc "Coach";
 	donpcevent "Am Mut::OnCommandReset";
-	donpcevent "Dokebi#ez::OnCommandReset";
-	donpcevent "Dokebi#hd::OnCommandReset";
+	donpcevent "MomoEasy::OnCommandReset";
+	donpcevent "MomoHard::OnCommandReset";
 	enablenpc "Grandma#ama";
 	enablenpc "Grandpa#ama";
 	warpwaitingpc "ama_test.gat",50,83;
@@ -2913,37 +2913,33 @@ OnTouch:
 	close2;
 	set mm_q,1;
 	if ((countitem(9010) > 0) || (countitem(9005) > 0)  || (countitem(9016) > 0)) {
-		donpcevent "Dokebi#ez::OnCommandOn";
+		donpcevent "MomoEasy::OnCommandOn";
 		disablenpc "Grandpa#ama";
 		disablenpc "Grandma#ama";
 	} else {
-		donpcevent "Dokebi#hd::OnCommandOn";
+		donpcevent "MomoHard::OnCommandOn";
 		disablenpc "Grandpa#ama";
 		disablenpc "Grandma#ama";
 	}
 	end;
 }
 
-ama_test.gat,34,15,0	script	Dokebi#ez	139,{
-
-OnInit:
-	disablenpc "Dokebi#ez";
-	end;
+ama_test.gat,34,15,0	script	Dokebi#ez::MomoEasy	139,{
 
 OnCommandOn:
-	monster "ama_test.gat",45,95,"Dokebi",1110,1,"Dokebi#ez::OnMyMobDead";
-	monster "ama_test.gat",45,99,"Dokebi",1110,1,"Dokebi#ez::OnMyMobDead";
-	monster "ama_test.gat",47,101,"Dokebi",1110,1,"Dokebi#ez::OnMyMobDead";
-	monster "ama_test.gat",51,101,"Dokebi",1110,1,"Dokebi#ez::OnMyMobDead";
-	monster "ama_test.gat",55,101,"Dokebi",1110,1,"Dokebi#ez::OnMyMobDead";
-	monster "ama_test.gat",55,97,"Dokebi",1110,1,"Dokebi#ez::OnMyMobDead";
-	monster "ama_test.gat",55,93,"Dokebi",1110,1,"Dokebi#ez::OnMyMobDead";
-	monster "ama_test.gat",53,91,"Dokebi",1110,1,"Dokebi#ez::OnMyMobDead";
-	monster "ama_test.gat",49,91,"Dokebi",1110,1,"Dokebi#ez::OnMyMobDead";
+	monster "ama_test.gat",45,95,"Dokebi",1110,1,"MomoEasy::OnMyMobDead";
+	monster "ama_test.gat",45,99,"Dokebi",1110,1,"MomoEasy::OnMyMobDead";
+	monster "ama_test.gat",47,101,"Dokebi",1110,1,"MomoEasy::OnMyMobDead";
+	monster "ama_test.gat",51,101,"Dokebi",1110,1,"MomoEasy::OnMyMobDead";
+	monster "ama_test.gat",55,101,"Dokebi",1110,1,"MomoEasy::OnMyMobDead";
+	monster "ama_test.gat",55,97,"Dokebi",1110,1,"MomoEasy::OnMyMobDead";
+	monster "ama_test.gat",55,93,"Dokebi",1110,1,"MomoEasy::OnMyMobDead";
+	monster "ama_test.gat",53,91,"Dokebi",1110,1,"MomoEasy::OnMyMobDead";
+	monster "ama_test.gat",49,91,"Dokebi",1110,1,"MomoEasy::OnMyMobDead";
 	end;
 
 OnCommandReset:
-	killmonster "ama_test.gat","Dokebi#ez::OnMyMobDead";
+	killmonster "ama_test.gat","MomoEasy::OnMyMobDead";
 	set 'mobcount,0;
 	end;
 
@@ -2972,26 +2968,22 @@ OnMyMobDead:
 	end;
 }
 
-ama_test.gat,34,16,0	script	Dokebi#hd	139,{
-
-OnInit:
-	disablenpc "Dokebi#hd";
-	end;
+ama_test.gat,34,16,0	script	Dokebi#hd::MomoHard	139,{
 
 OnCommandOn:
-	monster "ama_test.gat",45,95,"Dokebi",1110,1,"Dokebi#hd::OnMyMobDead";
-	monster "ama_test.gat",45,99,"Dokebi",1110,1,"Dokebi#hd::OnMyMobDead";
-	monster "ama_test.gat",47,101,"Dokebi",1110,1,"Dokebi#hd::OnMyMobDead";
-	monster "ama_test.gat",51,101,"Dokebi",1110,1,"Dokebi#hd::OnMyMobDead";
-	monster "ama_test.gat",55,101,"Dokebi",1110,1,"Dokebi#hd::OnMyMobDead";
-	monster "ama_test.gat",55,97,"Dokebi",1110,1,"Dokebi#hd::OnMyMobDead";
-	monster "ama_test.gat",55,93,"Dokebi",1110,1,"Dokebi#hd::OnMyMobDead";
-	monster "ama_test.gat",53,91,"Dokebi",1110,1,"Dokebi#hd::OnMyMobDead";
-	monster "ama_test.gat",49,91,"Dokebi",1110,1,"Dokebi#hd::OnMyMobDead";
+	monster "ama_test.gat",45,95,"Dokebi",1110,1,"MomoHard::OnMyMobDead";
+	monster "ama_test.gat",45,99,"Dokebi",1110,1,"MomoHard::OnMyMobDead";
+	monster "ama_test.gat",47,101,"Dokebi",1110,1,"MomoHard::OnMyMobDead";
+	monster "ama_test.gat",51,101,"Dokebi",1110,1,"MomoHard::OnMyMobDead";
+	monster "ama_test.gat",55,101,"Dokebi",1110,1,"MomoHard::OnMyMobDead";
+	monster "ama_test.gat",55,97,"Dokebi",1110,1,"MomoHard::OnMyMobDead";
+	monster "ama_test.gat",55,93,"Dokebi",1110,1,"MomoHard::OnMyMobDead";
+	monster "ama_test.gat",53,91,"Dokebi",1110,1,"MomoHard::OnMyMobDead";
+	monster "ama_test.gat",49,91,"Dokebi",1110,1,"MomoHard::OnMyMobDead";
 	end;
 
 OnCommandReset:
-	killmonster "ama_test.gat","Dokebi#hd::OnMyMobDead";
+	killmonster "ama_test.gat","MomoHard::OnMyMobDead";
 	set 'mobcount,0;
 	end;
 
@@ -3125,10 +3117,6 @@ OnTouch:
 }
 
 ama_test.gat,34,17,0	script	Am Mut	139,{
-
-OnInit:
-	disablenpc "Am Mut";
-	end;
 
 OnCommandOn:
 	monster "ama_test.gat",35,102,"Am Mut",1301,1,"Am Mut::OnMyMobDead";
