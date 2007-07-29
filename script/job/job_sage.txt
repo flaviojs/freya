@@ -4516,7 +4516,7 @@ OnCommandOn:
 	end;
 
 OnCommandReset:
-	killmonsterall "SageArena1::OnMyMobDead";
+	killmonster "job_sage.gat","SageArena1::OnMyMobDead";
 	set 'mobcount1,0;
 	end;
 
@@ -4626,7 +4626,7 @@ OnCommandOn:
 	end;
 
 OnCommandReset:
-	killmonsterall "SageArena2::OnMyMobDead";
+	killmonster "job_sage.gat","SageArena2::OnMyMobDead";
 	set 'mobcount2,0;
 	end;
 
@@ -4711,7 +4711,7 @@ OnCommandOn:
 
 OnCommandReset:
 	donpcevent "SageArena3::OnCommandReset";
-	killmonsterall "SageKeeper::OnMyMobDead";
+	killmonster "job_sage.gat","SageKeeper::OnMyMobDead";
 	end;
 
 OnCommandOff:
@@ -4791,7 +4791,7 @@ OnMyMobDead:
 	end;
 
 OnCommandReset:
-	killmonsterall "SageArena3::OnMyMobDead";
+	killmonster "job_sage.gat","SageArena3::OnMyMobDead";
 	end;
 
 OnCommandOff:

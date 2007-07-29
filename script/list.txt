@@ -99,6 +99,7 @@ npc: script/job/job_wizard.txt
 //--------------------------------------------------------------
 
 npc: script/misc/misc_auction.txt
+npc: script/misc/misc_cash_item.txt
 npc: script/misc/misc_function.txt
 npc: script/misc/misc_mapflag.txt
 npc: script/misc/misc_marriage.txt
@@ -137,7 +138,7 @@ npc: script/quest/quest_juice_maker.txt
 npc: script/quest/quest_juperos.txt
 npc: script/quest/quest_kiel_hyre.txt
 npc: script/quest/quest_lv4_weapon.txt
-npc: script/quest/quest_pet_taming.txt
+npc: script/quest/quest_pet.txt
 npc: script/quest/quest_quiz_revolution.txt
 npc: script/quest/quest_skill.txt
 npc: script/quest/quest_thai_hat.txt

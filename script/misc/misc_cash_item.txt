@@ -1,0 +1,48 @@
+//--------------------------------------------------------------
+//               (c)2004-2007 Aurora Team Presents:             
+//                  ___                                         
+//                 /   |_   _ _ __ ___  _ __ __ _               
+//                / /| | | | | '__/ _ \| '__/ _` |              
+//               / ___ | |_| | | | (_) | | | (_| |              
+//              /_/  |_|\____|_|  \___/|_|  \__,_|              
+//                 http://aurora.deltaanime.net                 
+//--------------------------------------------------------------
+// Script Title: Cash Item Shops	Author: Tsuyuki
+//--------------------------------------------------------------
+// Revision History: v1.0
+//--------------------------------------------------------------
+//	1.0 First version, converted from Aegis [Tsuyuki]
+//--------------------------------------------------------------
+// Additional Notes: * Official-certified / Aegis-certified *
+//--------------------------------------------------------------
+
+
+prontera.gat,151,133,4	script	iMall Owner	107,{
+
+	// CashShop "FIRST";
+	end;
+}
+
+payon.gat,200,125,4	script	iMall Owner	107,{
+
+	// CashShop "SECOND";
+	end;
+}
+
+morocc.gat,169,73,4	script	iMall Owner	107,{
+
+	// CashShop "THIRD";
+	end;
+}
+
+alberta.gat,46,37,4	script	iMall Owner	107,{
+
+	// CashShop "FOURTH";
+	end;
+}
+
+aldebaran.gat,116,106,4	script	iMall Owner	107,{
+
+	// CashShop "FIFTH";
+	end;
+}

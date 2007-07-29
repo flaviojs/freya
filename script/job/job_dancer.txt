@@ -1609,7 +1609,7 @@ OnMyMobDead:
 	end;
 
 OnCommandReset:
-	killmonsterall "dance#poring::OnMyMobDead";
+	killmonster "job_duncer.gat","dance#poring::OnMyMobDead";
 	end;
 }
 
