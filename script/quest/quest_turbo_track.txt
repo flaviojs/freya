@@ -1,0 +1,205 @@
+//--------------------------------------------------------------
+//               (c)2004-2007 Aurora Team Presents:             
+//                  ___                                         
+//                 /   |_   _ _ __ ___  _ __ __ _               
+//                / /| | | | | '__/ _ \| '__/ _` |              
+//               / ___ | |_| | | | (_) | | | (_| |              
+//              /_/  |_|\____|_|  \___/|_|  \__,_|              
+//                 http://aurora.deltaanime.net                 
+//--------------------------------------------------------------
+// Script Title: Aldebaran Turbo Track	Author: jAthena/Tsuyuki
+//--------------------------------------------------------------
+// Revision History: v1.0
+//--------------------------------------------------------------
+//	1.0 First version [jAthena/Tsuyuki]
+//--------------------------------------------------------------
+// Additional Notes: Highly incomplete.
+//--------------------------------------------------------------
+
+
+//--------------------------------------------------------------
+// Aldebaran Turbo Track-Related NPCs
+//--------------------------------------------------------------
+
+alde_gld.gat,178,180,0	script	Sign#TBT	837,{
+
+	mes "[Al De Baran Turbo Track]";
+	mes "This way...";
+	mes "to the Al De Baran";
+	mes "Turbo Track Arena!";
+	next;
+	mes "[Al De Baran Turbo Track]";
+	mes "Turbo Track is";
+	mes "an arena where";
+	mes "participants compete to be the first to reach the Finish Line! Don't miss the chance to race against your friends!";
+	close;
+}
+
+alde_gld.gat,186,199,3	script	Turbo Track Guide#Entrance	845,{
+
+	mes "[Guide]";
+	mes "Welcome to";
+	mes "the Al De Baran";
+	mes "Turbo Track~";
+	next;
+	mes "[Guide]";
+	mes "Peco Pecos are prohibited inside the Turbo Track Arena. But anyone riding on a Peco Peco will receive a Free Peco Peco Mount Ticket at the Turbo Track Entrance and automatically dismount.";
+	next;
+	mes "[Guide]";
+	mes "Well then,";
+	mes "enjoy your time";
+	mes "in Turbo Track~!";
+	close;
+}
+
+alde_gld.gat,181,199,5	script	Peco Peco Manager	845,{
+
+	if(getskilllv(63)) {
+		mes "[Peco Peco Manager]";
+		mes "Welcome, would you like";
+		mes "to retrieve your Peco Peco?";
+		mes "Please show me your Free";
+		mes "Ticket for Peco Ride. You";
+		mes "may also pay a rental fee";
+		mes "of 2,500 zeny.";
+		next;
+		if(select("Use","Cancel")==2) {
+			mes "[Peco Peco Manager]";
+			mes "Are you going";
+			mes "back to race in";
+			mes "the Turbo Track?";
+			mes "Good luck!";
+			close;
+		}
+		if(checkriding()) {
+			mes "[Peco Peco Manager]";
+			mes "I'm sorry, but you're";
+			mes "not eligible for this";
+			mes "service. Please go learn";
+			mes "the Peco Peco Ride skill first.";
+			close;
+		}
+		if(countitem(7310) < 1 && Zeny < 2500) {
+			mes "[Peco Peco Manager]";
+			mes "I'm sorry, but you";
+			mes "don't have a Free Ticket";
+			mes "for Peco Ride or 2,500 zeny.";
+			mes "to use the Peco rental service.";
+			close;
+		}
+		if(countitem(7310)) 
+			delitem 7310,1;
+		else
+			set Zeny,Zeny-2500;
+		setriding;
+		mes "[Peco Peco Manager]";
+		mes "Thank you for";
+		mes "your patronage~";
+		close;
+	}
+	mes "[Peco Peco Manager]";
+	mes "Thank you for";
+	mes "visiting Al De Baran's";
+	mes "Turbo Track~";
+	close;
+}
+
+alde_gld.gat,183,204,0	script	turbowarp1001	45,1,1,{
+
+	if(checkriding()) {
+		mes "[Helper]";
+		mes "Peco Pecos are prohibited";
+		mes "in the Turbo Track Arena.";
+		mes "Please dismount from your";
+		mes "Peco Peco and you will receive";
+		mes "a Free Ticket for Peco Ride";
+		mes "for retrieving your Peco Peco.";
+		close2;
+		setoption 0x0000;
+		getitem 7310,1;
+	}
+	warp "turbo_room.gat",100,65;
+	end;
+}
+
+
+//--------------------------------------------------------------
+// Turbo Track NPCs
+//--------------------------------------------------------------
+
+turbo_room.gat,100,62,0	warp	turbowarp1002	1,1,alde_gld.gat,183,198
+
+turbo_room.gat,124,86,7	shop	Turbo Track Merchant	90,501:50,502:200,503:550,504:1200,645:800,656:1500,1065:100,1750:1
+
+turbo_room.gat,130,91,3	script	Kafra Staff	115,{
+
+	if (KAFRA_PIT >= 25000) {
+		mes "[Kafra Staff]";
+		mes "Your Special Reserve Points";
+		mes "have exceeded the maximum";
+		mes "capacity. Please redeem these";
+		mes "points at the Kafra Corportation Headquarters in Al De Baran";
+		mes "before using the Kafra Service.";
+		close;
+	}
+	cutin "kafra_03",2;
+	mes "[Kafra Staff]";
+	mes "Welcome~ The Kafra Services";
+	mes "are always on your side. Let me";
+	mes "remind you that using the Save";
+	mes "Service here will change your";
+	mes "Respawn Point to Al De Baran.";
+	mes "Now, how may I assist you?";
+	next;
+	switch(select("Save","Use Storage","Check Other Information","Cancel")) {
+	case 1:
+		savepoint "aldebaran.gat",167,112;
+		mes "[Kafra Staff]";
+		mes "Your Respawn Point";
+		mes "has been saved here";
+		mes "in Al De Baran. Thank you";
+		mes "for using the Kafra Service~";
+		break;
+	case 2:
+		callfunc "KafraStorage",40;
+		break;
+	case 3:
+		mes "[Kafra Staff]";
+		mes ""+strcharinfo(0)+" has";
+		mes ""+KAFRA_PIT+" Special Reserve Points.";
+		next;
+		mes "[Kafra Staff]";
+		mes "You can exchange";
+		mes "Special Reserve Points";
+		mes "for rewards in our main office";
+		mes "in Al De Baran. Please use our";
+		mes "convenient services to earn a";
+		mes "chance to win some prizes~";
+		break;
+	case 4:
+		mes "[Kafra Staff]";
+		mes "We, here at Kafra Corporation,";
+		mes "are trying our best to provide";
+		mes "you with top quality service.";
+		next;
+		mes "[Kafra Staff]";
+		mes "We are putting our greatest effort into providing our customers with services that are reliable and convenient through strict organization and management.";
+		next;
+		mes "[Kafra Staff]";
+		mes "Thank you for using Kafra Corporation's services.";
+		break;
+	}
+	close2;
+	cutin "kafra_03",255;
+	end;
+}
+
+turbo_room.gat,75,95,5	script	Solo Mode#1	857,{
+
+	mes "^2F4F4FSolo Mode Record^000000";
+	mes "";
+	mes "The best player";
+	mes "in Solo Mode...";
+	mes "^4D4DFF"+ $TurboNameN$[0] +"^000000!!";
+	close;
+}

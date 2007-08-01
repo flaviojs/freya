@@ -129,6 +129,7 @@ npc: script/mob/mob_town.txt
 
 npc: script/quest/quest_airship.txt
 npc: script/quest/quest_bard.txt
+npc: script/quest/quest_battle_arena.txt
 npc: script/quest/quest_cooking.txt
 npc: script/quest/quest_eye_of_hellion.txt
 npc: script/quest/quest_god_seal.txt
@@ -144,6 +145,7 @@ npc: script/quest/quest_skill.txt
 npc: script/quest/quest_thai_hat.txt
 npc: script/quest/quest_thanatos.txt
 npc: script/quest/quest_the_sign.txt
+npc: script/quest/quest_turbo_track.txt
 npc: script/quest/quest_turtle.txt
 
 
