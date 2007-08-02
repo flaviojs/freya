@@ -439,7 +439,7 @@ ra_temin.gat,138,64,5	script	Child Follower#in1	921,{
 
 ra_fild12.gat,283,208,3	script	Apprentice Priestess	914,{
 
-	if ($rachel_donate < 10000) {
+	if (getvariableofnpc('rachel_donate,"Nemma#ra_temple") < 10000) {
 		mes "[Papaii]";
 		mes "Welcome to Arunafeltz,";
 		mes "adventurer! Enjoy your stay~";
@@ -642,7 +642,7 @@ ra_temple.gat,172,113,5	script	Child Follower#6	921,{
 
 airplane.gat,238,54,7	script	Adventurer	59,{
 
-	if ($rachel_donate < 10000) {
+	if (getvariableofnpc('rachel_donate,"Nemma#ra_temple") < 10000) {
 		mes "[Adventurer]";
 		mes "You know that the temple";
 		mes "in Rachel is accepting";
@@ -4533,7 +4533,7 @@ OnEnable:
 ra_temple.gat,119,180,0	script	Temple Entrance#ra_temple	45,1,1,{
 
 OnTouch:
-	if ($rachel_donate >= 10000) {
+	if (getvariableofnpc('rachel_donate,"Nemma#ra_temple") >= 10000) {
 		if (MISC_QUEST & 8192) { warp "ra_temin",169,23; end; }
 
 		if (ra_tem_q < 10) {
@@ -4554,7 +4554,7 @@ OnTouch:
 ra_temple.gat,116,174,3	script	Nemma#ra_temple	920,{
 
 	cutin "ra_nemma02",2;
-	if ($rachel_donate < 10000) {
+	if (getvariableofnpc('rachel_donate,"Nemma#ra_temple") < 10000) {
 		if (ra_have_donated == 0) {
 			cutin "ra_nemma03",2;
 			mes "[Priestess Nemma]";
@@ -4992,11 +4992,11 @@ S_Donate:
 			mes "donate if you can, okay?";
 			return;
 		}
-		set $rachel_donate,$rachel_donate+getarg(0);
+		set 'rachel_donate,'rachel_donate+getarg(0);
 		getitem 7570,getarg(0); //Temple_Lottery_Ticket
 		set zeny,zeny-getarg(0)*50000;
 		set ra_have_donated,1;
-		if ($rachel_donate > 9999) {
+		if (getvariableofnpc('rachel_donate,"Nemma#ra_temple") > 9999) {
 			cutin "ra_nemma03",2;
 			mes "[Priestess Nemma]";
 			mes "There you are~";
@@ -5008,7 +5008,7 @@ S_Donate:
 			return;
 		}
 		else {
-			set @Remaining,10000-$rachel_donate;
+			set @Remaining,10000-'rachel_donate;
 			cutin "ra_nemma03",2;
 			mes "[Priestess Nemma]";
 			mes "Thank you so much! We'll be";

@@ -1776,10 +1776,10 @@ L_Practice:
 
 L_Record:
 	mes "[Nia]";
-	mes "^ff0000"+$NameMasterMind$+"^000000 is the";
+	mes "^ff0000"+'NameMasterMind$+"^000000 is the";
 	mes "record holder for the Number";
 	mes "Match game with a time of";
-	mes "^ff0000"+$MinMasterMind+" minutes, "+$SecMasterMind+" seconds^000000.";
+	mes "^ff0000"+'MinMasterMind+" minutes, "+'SecMasterMind+" seconds^000000.";
 	close;
 
 L_Cancel:
@@ -1802,9 +1802,9 @@ L_Match:
 	callfunc "F_MasterMind",1;
 	set @timeMinFinish,((gettime(3)*60 + gettime(2))-@timeMin);
 	set @timeSecFinish,(gettime(1)-@timeSec);
-	if ($NameMasterMind$ == "") goto L_GainRecord;
-	if (@timeMinFinish > $MinMasterMind) goto L_Beat;
-	if (@timeMinFinish == $MinMasterMind && @timeSecFinish > $SecMasterMind) goto L_Beat;
+	if ('NameMasterMind$ == "") goto L_GainRecord;
+	if (@timeMinFinish > 'MinMasterMind) goto L_Beat;
+	if (@timeMinFinish == 'MinMasterMind && @timeSecFinish > 'SecMasterMind) goto L_Beat;
 
 L_GainRecord:
 	mes "[Nia]";
@@ -1813,18 +1813,18 @@ L_GainRecord:
 	mes "^ff0000"+@number1+"^000000 ^ff0000"+@number2+"^000000 ^ff0000"+@number3+"^000000. You finished in";
 	mes "^ff0000"+@timeMinFinish+" minutes, "+@timeSecFinish+" seconds^000000,";
 	mes "breaking the previous record";
-	mes "of ^ff0000"+$MinMasterMind+" minutes, "+$SecMasterMind+" seconds^000000.";
+	mes "of ^ff0000"+'MinMasterMind+" minutes, "+'SecMasterMind+" seconds^000000.";
 	next;
 	mes "[Nia]";
-	mes "^ff0000"+$NameMasterMind$+"^000000";
+	mes "^ff0000"+'NameMasterMind$+"^000000";
 	mes "set that old record,";
 	mes "but now you are the";
 	mes "new person to beat in the";
 	mes "Match Game. Congratulations";
 	mes "for setting a new record!";
-	set $MinMasterMind,@timeMinFinish;
-	set $SecMasterMind,@timeSecFinish;
-	set $NameMasterMind$, strcharinfo(0);
+	set 'MinMasterMind,@timeMinFinish;
+	set 'SecMasterMind,@timeSecFinish;
+	set 'NameMasterMind$, strcharinfo(0);
 	close;
 
 L_Beat:
@@ -1836,10 +1836,10 @@ L_Beat:
 	mes "in ^ff0000"+@timeMinFinish+" minutes, "+@timeSecFinish+" seconds^000000.";
 	next;
 	mes "[Nia]";
-	mes "^ff0000"+$NameMasterMind$+"^000000 is";
+	mes "^ff0000"+'NameMasterMind$+"^000000 is";
 	mes "the current Number Match";
 	mes "record holder with a time";
-	mes "of ^ff0000"+$MinMasterMind+" minutes, "+$SecMasterMind+" seconds^000000";
+	mes "of ^ff0000"+'MinMasterMind+" minutes, "+'SecMasterMind+" seconds^000000";
 	mes "Good luck, and hopefully you";
 	mes "can break this record someday~";
 	close;

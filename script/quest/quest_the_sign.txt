@@ -2436,8 +2436,8 @@ s_No:
 function	script	F_SignAlchSummon	{
 
 Loopback:
-	if ($signmazemonster != 0) goto Else;
-	set $signmazemonster,5;
+	if ('signmazemonster != 0) goto Else;
+	set 'signmazemonster,5;
 	monster "prt_maze02.gat",14,177,"Flora",1118,1,"F_SignAlchSummon::OnMonsterDead";
 	monster "prt_maze02.gat",17,171,"Flora",1118,1,"F_SignAlchSummon::OnMonsterDead";
 	monster "prt_maze02.gat",24,173,"Flora",1118,1,"F_SignAlchSummon::OnMonsterDead";
@@ -2447,11 +2447,11 @@ Loopback:
 
 Else:
 	killmonster "prt_maze02.gat","OnMonsterDead";
-	set $signmazemonster,0;
+	set 'signmazemonster,0;
 	goto Loopback;
 
 OnMonsterDead:
-	set $signmazemonster,$signmazemonster - 1;
+	set 'signmazemonster,'signmazemonster - 1;
 	end;
 }
 

@@ -3709,7 +3709,7 @@ OnKilled:
 
 einbroch.gat,132,84,3	script	Liotzburg	853,{
 
-	if ($EinPolution > 9) {
+	if (getvariableofnpc('EinPolution,"Zelmeto") > 9) {
 		mes "[Liotzburg]";
 		mes "What's going on?!";
 		mes "Who's responsible?!";
@@ -3795,7 +3795,7 @@ OnUnhide:
 
 ein_in01.gat,67,243,3	script	Zelmeto	851,{
 
-	if ($EinPolution > 9) {
+	if ('EinPolution > 9) {
 		mes "[Zelmeto]";
 		mes "We've got a big problem";
 		mes "here! I appreciate that you've";
@@ -4358,7 +4358,7 @@ s_Switches:
 		delitem 7317,10;
 		delitem 7319,10;
 		set EinFactory,16;
-		set $EinPolution,$EinPolution+1;
+		set 'EinPolution,'EinPolution+1;
 		if (BaseLevel < 41) set BaseExp,BaseExp+615;
 		else if(BaseLevel >= 41 && BaseLevel < 51) set BaseExp,BaseExp+3075;
 		else if(BaseLevel >= 51 && BaseLevel < 61) set BaseExp,BaseExp+6604;

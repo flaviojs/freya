@@ -590,13 +590,13 @@ prt_church.gat,100,128,4	script	Bishop#w	60,{
 		end;
 	}
 	if (!PartnerId) {
-		if (!$@wedding) {
+		if (!'wedding) {
 			if (wedding_sign == 1) {
 				getpartymember(getcharid(1));
 				set '@partymembercount,$@partymembercount;
 				if ('@partymembercount == 2) {
 					if (Sex == Male) {
-						set $@wedding,1;
+						set 'wedding,1;
 						initnpctimer;
 						mes "[Vomars]";
 						mes "Young lovers, please";
@@ -614,23 +614,23 @@ prt_church.gat,100,128,4	script	Bishop#w	60,{
 						mes "her and protect her. Now, may";
 						mes "I know the name of your bride?";
 						next;
-						input $wed_bride$;
+						input 'wed_bride$;
 						mes "[Vomars]";
 						mes "Mr. " + strcharinfo(0) + "...";
 						mes "Do you swear on your life";
 						mes "that you will forever cherish";
 						mes "and care for your bride,";
-						mes "Miss " + $wed_bride$ + "?";
+						mes "Miss " + 'wed_bride$ + "?";
 						next;
 						select("I do.");
-						set $wed_groom$,strcharinfo(0);
+						set 'wed_groom$,strcharinfo(0);
 						mes "[Vomars]";
 						mes "Now, it is time for";
 						mes "your bride to make";
 						mes "her wedding vows.";
 						mes "If she will come forward...";
 						close2;
-						mapannounce "prt_church.gat","The groom, Mr. " + strcharinfo(0) + ", has made his vows to Miss " + $wed_bride$ + "...",9;
+						mapannounce "prt_church.gat","The groom, Mr. " + strcharinfo(0) + ", has made his vows to Miss " + 'wed_bride$ + "...",9;
 						cutin "",255;
 						end;
 					}
@@ -666,13 +666,13 @@ prt_church.gat,100,128,4	script	Bishop#w	60,{
 			close2;
 			cutin "",255;
 			end;
-		} else if ($@wedding == 1) {
+		} else if ('wedding == 1) {
 			if (wedding_sign == 1) {
 				getpartymember(getcharid(1));
 				set '@partymembercount,$@partymembercount;
 				if ('@partymembercount == 2) {
 					if (Sex == Female) {
-						if (strcharinfo(0) == $wed_bride$) {
+						if (strcharinfo(0) == 'wed_bride$) {
 							mes "[Vomars]";
 							mes "Young lovers, please";
 							mes "remember this moment for";
@@ -680,11 +680,11 @@ prt_church.gat,100,128,4	script	Bishop#w	60,{
 							mes "and joy. May the love you share";
 							mes "grow with each passing day.";
 							next;
-							mapannounce "prt_church.gat","Let's hear what the bride, Miss "+$wed_bride$+", has to say...",9;
+							mapannounce "prt_church.gat","Let's hear what the bride, Miss "+'wed_bride$+", has to say...",9;
 							mes "[Vomars]";
-							mes "Miss "+$wed_bride$+"...";
+							mes "Miss "+'wed_bride$+"...";
 							mes "Do you swear to stay";
-							mes "true to "+$wed_groom$+",";
+							mes "true to "+'wed_groom$+",";
 							mes "to be by his side, no matter";
 							mes "what the dangers may be?";
 							next;
@@ -692,12 +692,12 @@ prt_church.gat,100,128,4	script	Bishop#w	60,{
 								cutin "wedding_bomars03",2;
 								mapannounce "prt_church.gat","Next couple, please proceed...",9;
 								mes "[Vomars]";
-								mes "So "+$wed_groom$;
+								mes "So "+'wed_groom$;
 								mes "isn't the one you";
 								mes "want to marry? Hmm.";
 								mes "I'm truly sorry for this";
 								mes "misunderstanding...";
-								set $@wedding,0;
+								set 'wedding,0;
 								close2;
 								stopnpctimer;
 								cutin "",255;
@@ -706,18 +706,18 @@ prt_church.gat,100,128,4	script	Bishop#w	60,{
 							mes "[Vomars]";
 							mes "Do you truly swear";
 							mes "fidelity and patience?";
-							mes "Will you marry "+$wed_groom$+"?";
+							mes "Will you marry "+'wed_groom$+"?";
 							next;
 							if (select("Yes, I do.","^FF0000No.^000000") == 1) {
-								if (isloggedin(getcharid(3,$wed_groom$))) {
-									if (marriage($wed_groom$)) {
+								if (isloggedin(getcharid(3,'wed_groom$))) {
+									if (marriage('wed_groom$)) {
 										wedding;
 										sc_start SC_WEDDING,3600000,0;
 										getitem 2635,1,0;
-										sc_start SC_WEDDING,3600000,0,getcharid(3,$wed_groom$);
-										getitem 2634,1,0,getcharid(3,$wed_groom$);
+										sc_start SC_WEDDING,3600000,0,getcharid(3,'wed_groom$);
+										getitem 2634,1,0,getcharid(3,'wed_groom$);
 										cutin "wedding_bomars02",2;
-										mapannounce "prt_church.gat","I now pronounce you, "+$wed_groom$+" and "+$wed_bride$+", husband and wife.",9;
+										mapannounce "prt_church.gat","I now pronounce you, "+'wed_groom$+" and "+'wed_bride$+", husband and wife.",9;
 										mes "[Vomars]";
 										mes "By the power invested";
 										mes "in me as Royal Bishop of";
@@ -729,10 +729,10 @@ prt_church.gat,100,128,4	script	Bishop#w	60,{
 										mes "[Vomars]";
 										mes "And lastly...";
 										mes "Always be happy,";
-										mes "dear "+$wed_bride$+"...";
-										set $wed_groom$,"";
-										set $wed_bride$,"";
-										set $@wedding,0;
+										mes "dear "+'wed_bride$+"...";
+										set 'wed_groom$,"";
+										set 'wed_bride$,"";
+										set 'wedding,0;
 										close2;
 										stopnpctimer;
 										cutin "",255;
@@ -752,7 +752,7 @@ prt_church.gat,100,128,4	script	Bishop#w	60,{
 								end;
 							} else {
 								cutin "wedding_bomars03",2;
-								mapannounce "prt_church.gat","Alas! "+$wed_bride$+" has rejected "+$wed_groom$+"'s marriage proposal!",9;
+								mapannounce "prt_church.gat","Alas! "+'wed_bride$+" has rejected "+'wed_groom$+"'s marriage proposal!",9;
 								mes "[Vomars]";
 								mes "Hm. It seems that";
 								mes "you've changed your";
@@ -761,9 +761,9 @@ prt_church.gat,100,128,4	script	Bishop#w	60,{
 								mes "must do what your heart";
 								mes "tells you is right. Now, run!";
 							}
-							set $wed_groom$,"";
-							set $wed_bride$,"";
-							set $@wedding,0;
+							set 'wed_groom$,"";
+							set 'wed_bride$,"";
+							set 'wedding,0;
 							close2;
 							stopnpctimer;
 							cutin "",255;
@@ -775,7 +775,7 @@ prt_church.gat,100,128,4	script	Bishop#w	60,{
 				}
 				callsub sF_Busy;
 			}
-			if (strcharinfo(0) == $wed_bride$) {
+			if (strcharinfo(0) == 'wed_bride$) {
 				mes "[Vomars]";
 				mes "Hm? It appears that";
 				mes "Happy Marry still hasn't";
@@ -803,11 +803,11 @@ prt_church.gat,100,128,4	script	Bishop#w	60,{
 	end;
 
 sF_Busy:
-	if ($wed_groom$ != "" && $wed_bride$ != "") {
+	if ('wed_groom$ != "" && 'wed_bride$ != "") {
 		mes "[Vomars]";
 		mes "The wedding of";
-		mes "Miss "+ $wed_bride$ +" and";
-		mes "Mister "+ $wed_groom$;
+		mes "Miss "+ 'wed_bride$ +" and";
+		mes "Mister "+ 'wed_groom$;
 		mes "is currently in progress.";
 		mes "Please keep your voice down.";
 		goto L_End;
@@ -824,17 +824,21 @@ OnCommandStop:
 	end;
 
 OnCommandReset:
-	set $wed_groom$,"";
-	set $wed_bride$,"";
-	set $@wedding,0;
+	set 'wed_groom$,"";
+	set 'wed_bride$,"";
+	set 'wedding,0;
 	end;
 
 OnTimer180000:
 	mapannounce "prt_church.gat","You've responded too slowly... Next couple, please proceed.",9;
-	set $wed_groom$,"";
-	set $wed_bride$,"";
-	set $@wedding,0;
+	set 'wed_groom$,"";
+	set 'wed_bride$,"";
+	set 'wedding,0;
 	stopnpctimer;
+	end;
+
+OnInit:
+	set 'wedding,0;
 	end;
 }
 

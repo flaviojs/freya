@@ -77,17 +77,6 @@ $@at_izlude
 $@route1
 $@route2
 
-- Crusader Job Change Quest (job/job_crusader.txt)
-$@mobcountcru
-
-- Sage Job Change Quest (job/job_sage.txt)
-$@jobsage_pid
-$@jobsage_pname$
-$@jobsage_m
-
-- Marriage System (misc/misc_marriage.txt)
-$@wedding
-
 - Cool Event vs Kafra Voting Event (misc/misc_vote.txt)
 $@dtstemp
 
@@ -118,12 +107,6 @@ $@Sign_Summon2
 $@signparty
 $@GeffeniaWarp
 
-- Amatsu Momotaro Event (town/town_amatsu.txt)
-$@Momotaro
-$@MomoDokebi
-$@MomoDokebi2
-$@MomotaroRID
-
 - Hugel Bingo System (town/town_hugel.txt)
 $@hu_bingoa
 $@hu_bingob
@@ -148,35 +131,17 @@ $@ktullanux_summon
 -> Global Permanent Variables (16):
 -----------------------------------
 
-- Marriage System (misc/misc_marriage.txt)
-$wed_bride$
-$wed_groom$
-
 - Cool Event vs Kafra Voting Event (misc/misc_vote.txt)
 $dts
 $dtsday
 $dtsv
 $dtsvote
 
-- Einbroch Pollution Quest (town/town_einbroch.txt)
-$EinPolution
-
-- Geffen Mastermind Game (town/town_geffen.txt)
-$MinMasterMind
-$NameMasterMind$
-$SecMasterMind
-
-- Rachel Sanctuary Quest (town/town_rachel.txt)
-$rachel_donate
-
 - God Seal Equipment Quests (quest/quest_god_seal.txt)
 $God1
 $God2
 $God3
 $God4
-
-- The Sign Quest (quest/quest_the_sign.txt)
-$signmazemonster
 
 
 ==========================================================================
