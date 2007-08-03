@@ -3015,7 +3015,7 @@ prt_in.gat,70,99,6	script	Sir Edmond	734,{
 job_knt.gat,1,1,1	script	Timer#knt	139,{
 
 OnTimer300000:
-	enablenpc "Warp#knt";
+	enablenpc "KntPeaceWarp";
 	end;
 
 OnTimer300500:
@@ -3023,12 +3023,12 @@ OnTimer300500:
 	end;
 
 OnTimer301000:
-	disablenpc "Warp#knt";
+	disablenpc "KntPeaceWarp";
 	end;
 
 OnTimer301500:
-	donpcevent "Timer#knt::OnCommandOn";
 	stopnpctimer;
+	donpcevent "Timer#knt::OnCommandOn";
 	end;
 
 OnInit:
@@ -3053,22 +3053,18 @@ OnCommandOn:
 	end;
 
 OnCommandReset:
-	set 'peacefix,1;
 	killmonster "job_knt.gat","Timer#knt::OnMyMobDead";
-	set 'peacefix,0;
 	end;
 
 OnMyMobDead:
-	if ('peacefix == 0) {
-		warp "prt_fild05.gat",353,251;
-	}
+	warp "prt_fild05.gat",353,251;
 	end;
 }
 
-job_knt.gat,143,57,0	script	Warp#knt	139,22,22,{
+job_knt.gat,143,57,0	script	KntPeaceWarp	139,22,22,{
 
 OnInit:
-	disablenpc "Warp#knt";
+	disablenpc "KntPeaceWarp";
 	end;
 
 OnTouch:
