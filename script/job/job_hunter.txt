@@ -1496,7 +1496,7 @@ job_hunte.gat,178,32,1	script	Guide#hnt	107,5,2,{
 			mes "[Guide]";
 			mapannounce "job_hunte.gat",""+strcharinfo(0)+" has resigned. Next person, please enter.",8;
 			mes "Very well. I'll send you to Payon. Hope to see you next time. Don't forget to save when you leave.";
-			doevent "hntwait::OnCommandReset";
+			donpcevent "hntwait::OnCommandReset";
 			close2;
 			set job_hunter_q,13;
 			savepoint "payon.gat",104,99;
@@ -1551,7 +1551,7 @@ OnTouch:
 			mapannounce "job_hunte.gat",""+strcharinfo(0)+" has resigned. Next person, please enter.",8;
 			mes "[Guide]";
 			mes "Very well. I'll send you to Payon. Hope to see you next time. Don't forget to save when you leave.";
-			doevent "hntwait::OnCommandReset";
+			donpcevent "hntwait::OnCommandReset";
 			close2;
 			set job_hunter_q,13;
 			savepoint "payon.gat",104,99;
@@ -1718,7 +1718,7 @@ OnTimer197000:
 	disablenpc "hnt_backers";
 	donpcevent "Manager#hnt::OnCommandReset";
 	donpcevent "Manager#hnt2::OnCommandReset";
-	doevent "hntwait::OnCommandReset";
+	donpcevent "hntwait::OnCommandReset";
 	end;
 }
 
@@ -1769,11 +1769,11 @@ OnCommandReset:
 OnMyMobDead:
 	mapannounce "job_hunte.gat",""+strcharinfo(0)+"!! You made a mistake...Please try again.",8;
 	set job_hunter_q,13;
-	doevent "hntwait::OnCommandReset";
 	stopnpctimer "Manager#hnt";
 	donpcevent "Manager#hnt::OnCommandReset";
 	donpcevent "Manager#hnt2::OnCommandReset";
 	disablenpc "Manager#hnt";
+	donpcevent "hntwait::OnCommandReset";
 	disablenpc "Manager#hnt2";
 	warp "job_hunte.gat",176,22;
 	end;
@@ -1807,7 +1807,7 @@ job_hunte.gat,93,101,1	script	Switch#hnt	723,1,1,{
 		close2;
 		set job_hunter_q,13;
 		warp "job_hunte.gat",176,22;
-		doevent "hntwait::OnCommandReset";
+		donpcevent "hntwait::OnCommandReset";
 		end;
 	}
 
@@ -1838,7 +1838,7 @@ OnTouch:
 		close2;
 		set job_hunter_q,13;
 		warp "job_hunte.gat",176,22;
-		doevent "hntwait::OnCommandReset";
+		donpcevent "hntwait::OnCommandReset";
 		end;
 	}
 
@@ -1851,7 +1851,7 @@ OnCommandOff:
 job_hunte.gat,89,139,0	script	exit#hnttest	45,2,2,{
 
 OnTouch:
-	doevent "hntwait::OnCommandReset";
+	donpcevent "hntwait::OnCommandReset";
 	set job_hunter_q,16;
 	savepoint "payon.gat",104,99;
 	set '@whe,rand(1,2);
@@ -4963,7 +4963,7 @@ function	script	F_HunterTrap	{
 
 	set job_hunter_q,13;
 	warp "job_hunte.gat",176,22;
-	doevent "hntwait::OnCommandReset";
+	donpcevent "hntwait::OnCommandReset";
 	donpcevent "Manager#hnt::OnCommandReset";
 	donpcevent "Manager#hnt2::OnCommandReset";
 	disablenpc "Manager#hnt";
