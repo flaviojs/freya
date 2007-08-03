@@ -39,7 +39,7 @@ function	script	F_NMerch	{
 	if (getarg(5))
 		mes "Or "+getarg(6)+" "+getitemname(getarg(5))+"?";
 	next;
-	switch(select("Sure!:Think you're ripping me off...:No, thanks")) {
+	switch(select("Sure!","Think you're ripping me off...","No, thanks")) {
 	case 1:
 		mes "["+getarg(0)+"]";
 		mes "So which item do you bring me?";
