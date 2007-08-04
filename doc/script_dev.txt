@@ -68,7 +68,7 @@
 --------------------------------------------------------------------------
 
 -> To-Do: Major Cleanup
--> Global Temporary Variables (39):
+-> Global Temporary Variables (30):
 -----------------------------------
 
 - Airship System (global/global_airship.txt)
@@ -128,7 +128,7 @@ $@ktullanux_summon
 --------------------------------------------------------------------------
 
 -> To-Do: Major Cleanup
--> Global Permanent Variables (16):
+-> Global Permanent Variables (8):
 -----------------------------------
 
 - Cool Event vs Kafra Voting Event (misc/misc_vote.txt)
