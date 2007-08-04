@@ -81,7 +81,7 @@
 //	If you want, you can change script to not finish and continue the conversation.
 //
 // * Character permanent variable:
-//	Kafra_PIT -> Kafra points.
+//	KAFRA_PIT -> Kafra points.
 //--------------------------------------------------------------
 
 function	script	F_KafraMain	{
@@ -166,7 +166,7 @@ function	script	F_KafraMain	{
 			return;
 		}
 		set Zeny,Zeny-'@price['@j];
-		set Kafra_PIT,Kafra_PIT+('@price['@j]/10);
+		set KAFRA_PIT,KAFRA_PIT+('@price['@j]/10);
 		switch(getelementofarray(getarg(10),'@j)) {
 			case 1: warp "prontera.gat",116,72; 	break;
 			case 2: warp "izlude.gat",91,105; 	break;
@@ -238,7 +238,7 @@ function	script	F_KafraMain	{
 	// Information about Kafra points.
 	function sF_KafraPoint {
 		mes "[Kafra Employee]";
-		mes strcharinfo(0)+ ", you have acquired"+Kafra_PIT+ " points actually.";
+		mes strcharinfo(0)+ ", you have acquired"+KAFRA_PIT+ " points actually.";
 		//mes "";
 		next;
 		mes "[Kafra Employee]";
@@ -262,7 +262,7 @@ function	script	F_KafraMain	{
 	}
 
 	// From here main section
-	if (Kafra_PIT >= 25000) {
+	if (KAFRA_PIT >= 25000) {
 		mes "[Kafra Employee]";
 		mes "Your Special Reserve Points";
 		mes "have exceeded the maximum";
