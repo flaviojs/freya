@@ -40,13 +40,13 @@
 -> Scripts In Need Of Aegis Conversion:
 ---------------------------------------
 
+- script/global/global_kafra.txt <- Assigned [Tsuyuki]
 - script/global/global_refine.txt
 - script/quest/quest_headgear.txt
 
 -> Scripts In Need Of Aegis Dialogue:
 -------------------------------------
 
-- script/global/global_kafra.txt
 - script/gvg/gvg_flag.txt <- Assigned [Tsuyuki]
 - script/gvg/gvg_steward.txt
 
