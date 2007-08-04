@@ -73,7 +73,7 @@ OnTimer81000:
 	end;
 
 OnTimer131000:
-	mapannounce "airplane.gat","We will arrive in Hugel shortly.",9,0x00FF00;
+	mapannounce "airplane.gat","We will arrive in Einbroch shortly.",9,0x00FF00;
 	end;
 
 OnTimer141000:

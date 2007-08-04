@@ -151,7 +151,7 @@ function	script	F_KafraMain	{
 		for(set '@i,0; '@i<getarraysize('@price); set '@i,'@i+1)
 			set '@place$['@i],'placename$[ getelementofarray(getarg(10),'@i)-1 ] +" -> "+ '@price['@i] +" z";
 		mes "[Kafra Employee]";
-		mes "Please choice your destination.";
+		mes "Please choose your destination.";
 		next;
 		set '@j,select(		'@place$[0],'@place$[1],'@place$[2],'@place$[3],'@place$[4],'@place$[5],'@place$[6],'@place$[7],
 					'@place$[8],'@place$[9],'@place$[10],'@place$[11],'@place$[12],'@place$[13],'@place$[14],'@place$[15],

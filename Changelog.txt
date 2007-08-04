@@ -13,6 +13,9 @@
 
 Date	Added
 
+2007/08/03
+	* Fixed: A bunch of script bugs (Thanks to Ryan) [Tsuyuki]
+
 2007/08/02
 	* Fixed: Several script bugs (Thanks to Ryan) [Tsuyuki]
 

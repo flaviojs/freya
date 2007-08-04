@@ -4524,7 +4524,7 @@ OnMyMobDead:
 	set 'mobcount1,'mobcount1 + 1;
 	if ('mobcount1 > 15) {
 		mapannounce "job_sage.gat"," " +strcharinfo(0)+", successfully defeat all the monsters.",8;
-		enablenpc "SageArena2::OnCommandOn";
+		enablenpc "SageArena2";
 		donpcevent "SageArena2::OnCommandOn";
 		stopnpctimer;
 		set 'mobcount1,0;
@@ -4607,7 +4607,7 @@ OnCommandOn:
 	monster "job_sage.gat",111,93,"Architecture",1063,1,"SageArena2::OnMyMobDead";
 	monster "job_sage.gat",111,93,"Control",1063,1,"SageArena2::OnMyMobDead";
 	monster "job_sage.gat",111,93,"Instrumentology",1063,1,"SageArena2::OnMyMobDead";
-	monster "job_sage.gat",120,102,"Statistics;",1063,1,"SageArena2::OnMyMobDead";
+	monster "job_sage.gat",120,102,"Statistics",1063,1,"SageArena2::OnMyMobDead";
 	monster "job_sage.gat",120,102,"Graphic Method",1063,1,"SageArena2::OnMyMobDead";
 	monster "job_sage.gat",120,102,"Language",1063,1,"SageArena2::OnMyMobDead";
 	monster "job_sage.gat",111,93,"Sitology",1063,1,"SageArena2::OnMyMobDead";
@@ -4636,6 +4636,7 @@ OnMyMobDead:
 		mapannounce "job_sage.gat"," " +strcharinfo(0)+", successfully defeat all the monsters.",8;
 		enablenpc "SageKeeper";
 		donpcevent "SageKeeper::OnCommandOn";
+		enablenpc "SageArena3";
 		donpcevent "SageArena3::OnCommandOn";
 		stopnpctimer;
 		set 'mobcount2,0;
