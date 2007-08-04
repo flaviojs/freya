@@ -7,528 +7,484 @@
 //              /_/  |_|\____|_|  \___/|_|  \__,_|              
 //                 http://aurora.deltaanime.net                 
 //--------------------------------------------------------------
-// Script Title: Cool Event Corp NPCs	Author: Tsuyuki
+// Script Title: Cool Event Corporation System	Author: Tsuyuki
 //--------------------------------------------------------------
-// Revision History: v1.1
+// Revision History: v1.0
 //--------------------------------------------------------------
-//	1.0 First version, converted from Aegis (euRO dialogue) [Tsuyuki]
-//	1.1 Added Cool Event Employee to Veins (Custom save coordinates) [Tsuyuki]
+//	1.0 First version, converted from Aegis [Tsuyuki]
 //--------------------------------------------------------------
 // Additional Notes: * Official-certified / Aegis-certified *
 //--------------------------------------------------------------
 
 
 //--------------------------------------------------------------
-// Hugel Cool Event Employee - [Tsuyuki]
+// Hugel Cool Event Employees - [Tsuyuki]
 //--------------------------------------------------------------
 
-hugel.gat,88,168,4	script	Cool Event Employee	874,{
+hugel.gat,88,168,4	script	Cool Event Corp. Staff	874,{
 
-	cutin "zonda_01.bmp",2;
-	mes "[Cool Event Employee]";
-	mes "Welcome to Cool Event Corporation.";
-	mes "Our Staff is always working";
+	mes "[Cool Event Corp. Staff]";
+	mes "Welcome to Cool Event Corp.";
+	mes "Our staff is always working";
 	mes "to surpass your expectations";
 	mes "for quality service. So how";
 	mes "may I assist you today?";
 	next;
-	menu "Save",L_Save,"Use Storage",L_Storage,"Rent a Pushcart",L_Cart,"Cancel",L_Cancel;
-
-	L_Save:
+	switch(select("Save","Use Storage","Rent a Pushcart","Cancel")) {
+	case 1:
 		savepoint "hugel.gat",97,154;
-		mes "[Cool Event Employee]";
-		mes "Your Respawn Point has";
-		mes "been saved in the city";
-		mes "of Hugel. Thank you for";
-		mes "using the Cool Event Service.";
-		close2;
-		cutin "",255;
-		end;
-
-	L_Storage:
-		if (Class == Job_Novice && Joblevel < 6) goto L_End01;
-		if (Zeny < 40) goto L_End02;
-		set RESRVPTS,RESRVPTS+4;
-		set Zeny,Zeny-40;
-		mes "[Cool Event Employee]";
-		mes "Here, let me open";
-		mes "your Storage for you.";
-		mes "Thank you for supporting";
-		mes "Cool Event Corporation";
-		mes "by using our services.";
-		mes "Have a nice day~";
-		close2;
-		cutin "",255;
-		openstorage;
-		end;
-
-		L_End01:
-			mes "[Cool Event Employee]";
+		mes "[Cool Event Corp. Staff]";
+		mes "Your Respawn Point";
+		mes "has been saved in Hugel.";
+		mes "Thank you for using the";
+		mes "Cool Event Corp. service~";
+		close;
+	case 2:
+		if (getskilllv(1) < 6) {
+			mes "[Cool Event Corp. Staff]";
 			mes "I'm sorry, but you";
 			mes "need the Novice's";
 			mes "Basic Skill Level 6 to";
 			mes "use the Storage Service.";
-			close2;
-			cutin "",255;
-			end;
-
-		L_End02:
-			mes "[Cool Event Employee]";
-			mes "You don't have enough money.";
-			mes "The storage usage fee is 40 Zeny.";
-			close2;
-			cutin "",255;
-			end;
-
-	L_Cart:
-		if (BaseClass != Job_Merchant) goto L_End03;
-		if (checkcart() == 1) goto L_End04;
-		if (getskilllv(39) == 0) goto L_End05;
-
-		mes "[Cool Event Employee]";
-		mes "The Cart Fee is 800 Zeny.";
-		mes "To rent a cart.";
-		next;
-		menu "Rent a Cart",L_Cont01,"Cancel",L_Cancel;
-
-		L_Cont01:
-			if (Zeny < 800) goto L_End06;
-			set RESRVPTS,RESRVPTS+8;
-			set Zeny,Zeny-800;
-			setcart;
-			close2;
-			cutin "",255;
-			end;
-
-			L_End06:
-				mes "[Cool Event Employee]";
-				mes "Sorry, you don't have enough Money.";
-				mes "The Cart Fee is 800 Zeny.";
+			close;
+		} else {
+			if (Zeny >= 40) {
+				set kf_1_pit,4;
+				set Zeny,Zeny-40;
+				mes "[Cool Event Corp. Staff]";
+				mes "Let me open your personal";
+				mes "storage for you right away.";
+				mes "Thanks for supporting Cool";
+				mes "Event Corp. by using our";
+				mes "services. Have a good day~";
 				close2;
-				cutin "",255;
+				openstorage;
 				end;
-
-		L_End03:
-			mes "[Cool Event Employee]";
+			} else {
+				mes "[Cool Event Corp. Staff]";
+				mes "I'm sorry, but you don't";
+				mes "have enough zeny to use";
+				mes "the Storage Service. Our";
+				mes "Storage access fee is 40 zeny.";
+				close;
+			}
+		}
+	case 3:
+		if (BaseClass != Job_Merchant) {
+			mes "[Cool Event Corp. Staff]";
 			mes "I'm sorry, but the";
 			mes "Pushcart rental service";
 			mes "is only available to Merchants,";
 			mes "Blacksmiths, Master Smiths";
 			mes "Alchemists and Biochemists.";
-			close2;
-			cutin "",255;
-			end;
-
-		L_End04:
-			mes "[Cool Event Employee]";
-			mes "Sorry you already have a cart.";
-			close2;
-			cutin "",255;
-			end;
-
-		L_End05:
-			mes "[Cool Event Employee]";
-			mes "You must learn the skill Pushcart to be able to rent a cart.";
-			close2;
-			cutin "",255;
-			end;
-
-	L_Cancel:
-		mes "[Cool Event Employee]";
-		mes "Cool Event Corporation is always";
+			close;
+		} else if (Cart) {
+			mes "[Cool Event Corp. Staff]";
+			mes "You already have";
+			mes "a Pushcart equipped.";
+			mes "Unfortunately, we can't";
+			mes "rent more than one to";
+			mes "each customer at a time.";
+			close;
+		} else {
+			if (!getskilllv(39)) {
+				mes "[Cool Event Corp. Staff]";
+				mes "You can only rent a cart after learning \"Push Cart\" skill.";
+				close;
+			}
+			if (countitem(7061) != 0) {
+				delitem 7061,1;
+				setcart;
+				close;
+			} else {
+				mes "[Cool Event Corp. Staff]";
+				mes "The Pushcart rental";
+				mes "fee is 800 zeny. Would";
+				mes "you like to rent a Pushcart?";
+				next;
+				switch(select("Rent a Pushcart.","Cancel")) {
+				case 1:
+					if (Zeny >= 800) {
+						set kf_10_pit,8;
+						set Zeny,Zeny-800;
+						setcart;
+						close;
+					} else {
+						mes "[Cool Event Corp. Staff]";
+						mes "I'm sorry, but you";
+						mes "don't have enough";
+						mes "zeny to pay the Pushcart";
+						mes "rental fee of 800 zeny.";
+						close;
+					}
+				case 2:
+					close;
+				}
+			}
+		}
+	case 4:
+		mes "[Cool Event Corp. Staff]";
+		mes "Cool Event Corp. is always";
 		mes "striving to provide the best";
 		mes "services for our customers.";
 		mes "Help us become the best by";
 		mes "providing us with your opinions";
 		mes "and honest feedback. Thank you.";
-		close2;
-		cutin "",255;
-		end;
+		close;
+	}
 }
 
 
 //--------------------------------------------------------------
-// Lighthalzen Cool Event Employee - [Tsuyuki]
+// Lighthalzen Cool Event Employees - [Tsuyuki]
 //--------------------------------------------------------------
 
-lighthalzen.gat,94,248,4	script	Cool Event Employee	874,{
+lighthalzen.gat,94,248,4	script	Cool Event Corp. Staff	874,{
 
-	cutin "zonda_01.bmp",2;
-	mes "[Cool Event Employee]";
-	mes "Welcome to Cool Event Corporation.";
-	mes "Our Staff is always working";
+	mes "[Cool Event Corp. Staff]";
+	mes "Welcome to Cool Event Corp.";
+	mes "Our staff is always working";
 	mes "to surpass your expectations";
 	mes "for quality service. So how";
 	mes "may I assist you today?";
 	next;
-	menu "Save",L_Save,"Use Storage",L_Storage,"Rent a Pushcart",L_Cart,"Cancel",L_Cancel;
-
-	L_Save:
-		savepoint "hugel.gat",97,154;
-		mes "[Cool Event Employee]";
-		mes "Your Respawn Point has";
-		mes "been saved in the city";
-		mes "of Lighthalzen. Thank you for";
-		mes "using the Cool Event Service.";
-		close2;
-		cutin "",255;
-		end;
-
-	L_Storage:
-		if (Class == Job_Novice && Joblevel < 6) goto L_End01;
-		if (Zeny < 40) goto L_End02;
-		set RESRVPTS,RESRVPTS+4;
-		set Zeny,Zeny-40;
-		mes "[Cool Event Employee]";
-		mes "Here, let me open";
-		mes "your Storage for you.";
-		mes "Thank you for supporting";
-		mes "Cool Event Corporation";
-		mes "by using our services.";
-		mes "Have a nice day~";
-		close2;
-		cutin "",255;
-		openstorage;
-		end;
-
-		L_End01:
-			mes "[Cool Event Employee]";
+	switch(select("Save","Use Storage","Rent a Pushcart","Cancel")) {
+	case 1:
+		savepoint "lighthalzen.gat",94,240;
+		mes "[Cool Event Corp. Staff]";
+		mes "Your Respawn Point";
+		mes "has been saved here";
+		mes "in the city of Lighthalzen.";
+		mes "Thank you for using the";
+		mes "Cool Event Corp. service~";
+		close;
+	case 2:
+		if (getskilllv(1) < 6) {
+			mes "[Cool Event Corp. Staff]";
 			mes "I'm sorry, but you";
 			mes "need the Novice's";
 			mes "Basic Skill Level 6 to";
 			mes "use the Storage Service.";
-			close2;
-			cutin "",255;
-			end;
-
-		L_End02:
-			mes "[Cool Event Employee]";
-			mes "You don't have enough money.";
-			mes "The storage usage fee is 40 Zeny.";
-			close2;
-			cutin "",255;
-			end;
-
-	L_Cart:
-		if (BaseClass != Job_Merchant) goto L_End03;
-		if (checkcart() == 1) goto L_End04;
-		if (getskilllv(39) == 0) goto L_End05;
-
-		mes "[Cool Event Employee]";
-		mes "The Cart Fee is 800 Zeny.";
-		mes "To rent a cart.";
-		next;
-		menu "Rent a Cart",L_Cont01,"Cancel",L_Cancel;
-
-		L_Cont01:
-			if (Zeny < 800) goto L_End06;
-			set RESRVPTS,RESRVPTS+8;
-			set Zeny,Zeny-800;
-			setcart;
-			close2;
-			cutin "",255;
-			end;
-
-			L_End06:
-				mes "[Cool Event Employee]";
-				mes "Sorry, you don't have enough Money.";
-				mes "The Cart Fee is 800 Zeny.";
+			close;
+		} else {
+			if (Zeny >= 40) {
+				set kf_1_pit,4;
+				set Zeny,Zeny-40;
+				mes "[Cool Event Corp. Staff]";
+				mes "Let me open your personal";
+				mes "storage for you right away.";
+				mes "Thanks for supporting Cool";
+				mes "Event Corp. by using our";
+				mes "services. Have a good day~";
 				close2;
-				cutin "",255;
+				openstorage;
 				end;
-
-		L_End03:
-			mes "[Cool Event Employee]";
+			} else {
+				mes "[Cool Event Corp. Staff]";
+				mes "I'm sorry, but you don't";
+				mes "have enough zeny to use";
+				mes "the Storage Service. Our";
+				mes "Storage access fee is 40 zeny.";
+				close;
+			}
+		}
+	case 3:
+		if (BaseClass != Job_Merchant) {
+			mes "[Cool Event Corp. Staff]";
 			mes "I'm sorry, but the";
 			mes "Pushcart rental service";
 			mes "is only available to Merchants,";
 			mes "Blacksmiths, Master Smiths";
 			mes "Alchemists and Biochemists.";
-			close2;
-			cutin "",255;
-			end;
-
-		L_End04:
-			mes "[Cool Event Employee]";
-			mes "Sorry you already have a cart.";
-			close2;
-			cutin "",255;
-			end;
-
-		L_End05:
-			mes "[Cool Event Employee]";
-			mes "You must learn the skill Pushcart to be able to rent a cart.";
-			close2;
-			cutin "",255;
-			end;
-
-	L_Cancel:
-		mes "[Cool Event Employee]";
-		mes "Cool Event Corporation is always";
+			close;
+		} else if (Cart) {
+			mes "[Cool Event Corp. Staff]";
+			mes "You already have";
+			mes "a Pushcart equipped.";
+			mes "Unfortunately, we can't";
+			mes "rent more than one to";
+			mes "each customer at a time.";
+			close;
+		} else {
+			if (!getskilllv(39)) {
+				mes "[Cool Event Corp. Staff]";
+				mes "You can only rent a cart after learning \"Push Cart\" skill.";
+				close;
+			}
+			if (countitem(7061) != 0) {
+				delitem 7061,1;
+				setcart;
+				close;
+			} else {
+				mes "[Cool Event Corp. Staff]";
+				mes "The Pushcart rental";
+				mes "fee is 800 zeny. Would";
+				mes "you like to rent a Pushcart?";
+				next;
+				switch(select("Rent a Pushcart.","Cancel")) {
+				case 1:
+					if (Zeny >= 800) {
+						set kf_10_pit,8;
+						set Zeny,Zeny-800;
+						setcart;
+						close;
+					} else {
+						mes "[Cool Event Corp. Staff]";
+						mes "I'm sorry, but you";
+						mes "don't have enough";
+						mes "zeny to pay the Pushcart";
+						mes "rental fee of 800 zeny.";
+						close;
+					}
+				case 2:
+					close;
+				}
+			}
+		}
+	case 4:
+		mes "[Cool Event Corp. Staff]";
+		mes "Cool Event Corp. is always";
 		mes "striving to provide the best";
 		mes "services for our customers.";
 		mes "Help us become the best by";
 		mes "providing us with your opinions";
 		mes "and honest feedback. Thank you.";
-		close2;
-		cutin "",255;
-		end;
+		close;
+	}
 }
 
 
 //--------------------------------------------------------------
-// Rachel Cool Event Employee - [Tsuyuki]
+// Rachel Cool Event Employees - [Tsuyuki]
 //--------------------------------------------------------------
 
-rachel.gat,109,138,5	script	Cool Event Employee	874,{
+rachel.gat,109,138,5	script	Cool Event Corp. Staff	874,{
 
-	cutin "zonda_01.bmp",2;
-	mes "[Cool Event Employee]";
-	mes "Welcome to Cool Event Corporation.";
-	mes "Our Staff is always working";
+	mes "[Cool Event Corp. Staff]";
+	mes "Welcome to Cool Event Corp.";
+	mes "Our staff is always working";
 	mes "to surpass your expectations";
 	mes "for quality service. So how";
 	mes "may I assist you today?";
 	next;
-	menu "Save",L_Save,"Use Storage",L_Storage,"Rent a Pushcart",L_Cart,"Cancel",L_Cancel;
-
-	L_Save:
-		savepoint "rachel.gat",116,127; // Custom Coordinates
-		mes "[Cool Event Employee]";
-		mes "Your Respawn Point has";
-		mes "been saved in the city";
-		mes "of Rachel. Thank you for";
-		mes "using the Cool Event Service.";
-		close2;
-		cutin "",255;
-		end;
-
-	L_Storage:
-		if (Class == Job_Novice && Joblevel < 6) goto L_End01;
-		if (Zeny < 40) goto L_End02;
-		set RESRVPTS,RESRVPTS+4;
-		set Zeny,Zeny-40;
-		mes "[Cool Event Employee]";
-		mes "Here, let me open";
-		mes "your Storage for you.";
-		mes "Thank you for supporting";
-		mes "Cool Event Corporation";
-		mes "by using our services.";
-		mes "Have a nice day~";
-		close2;
-		cutin "",255;
-		openstorage;
-		end;
-
-		L_End01:
-			mes "[Cool Event Employee]";
+	switch(select("Save","Use Storage","Rent a Pushcart","Cancel")) {
+	case 1:
+		savepoint "rachel.gat",115,125;
+		mes "[Cool Event Corp. Staff]";
+		mes "Your Respawn Point";
+		mes "has been saved in Rachel.";
+		mes "Thank you for using the";
+		mes "Cool Event Corp. service~";
+		close;
+	case 2:
+		if (getskilllv(1) < 6) {
+			mes "[Cool Event Corp. Staff]";
 			mes "I'm sorry, but you";
 			mes "need the Novice's";
 			mes "Basic Skill Level 6 to";
 			mes "use the Storage Service.";
-			close2;
-			cutin "",255;
-			end;
-
-		L_End02:
-			mes "[Cool Event Employee]";
-			mes "You don't have enough money.";
-			mes "The storage usage fee is 40 Zeny.";
-			close2;
-			cutin "",255;
-			end;
-
-	L_Cart:
-		if (BaseClass != Job_Merchant) goto L_End03;
-		if (checkcart() == 1) goto L_End04;
-		if (getskilllv(39) == 0) goto L_End05;
-
-		mes "[Cool Event Employee]";
-		mes "The Cart Fee is 800 Zeny.";
-		mes "To rent a cart.";
-		next;
-		menu "Rent a Cart",L_Cont01,"Cancel",L_Cancel;
-
-		L_Cont01:
-			if (Zeny < 800) goto L_End06;
-			set RESRVPTS,RESRVPTS+8;
-			set Zeny,Zeny-800;
-			setcart;
-			close2;
-			cutin "",255;
-			end;
-
-			L_End06:
-				mes "[Cool Event Employee]";
-				mes "Sorry, you don't have enough Money.";
-				mes "The Cart Fee is 800 Zeny.";
+			close;
+		} else {
+			if (Zeny >= 40) {
+				set kf_1_pit,4;
+				set Zeny,Zeny-40;
+				mes "[Cool Event Corp. Staff]";
+				mes "Let me open your personal";
+				mes "storage for you right away.";
+				mes "Thanks for supporting Cool";
+				mes "Event Corp. by using our";
+				mes "services. Have a good day~";
 				close2;
-				cutin "",255;
+				openstorage;
 				end;
-
-		L_End03:
-			mes "[Cool Event Employee]";
+			} else {
+				mes "[Cool Event Corp. Staff]";
+				mes "I'm sorry, but you don't";
+				mes "have enough zeny to use";
+				mes "the Storage Service. Our";
+				mes "Storage access fee is 40 zeny.";
+				close;
+			}
+		}
+	case 3:
+		if (BaseClass != Job_Merchant) {
+			mes "[Cool Event Corp. Staff]";
 			mes "I'm sorry, but the";
 			mes "Pushcart rental service";
 			mes "is only available to Merchants,";
 			mes "Blacksmiths, Master Smiths";
 			mes "Alchemists and Biochemists.";
-			close2;
-			cutin "",255;
-			end;
-
-		L_End04:
-			mes "[Cool Event Employee]";
-			mes "Sorry you already have a cart.";
-			close2;
-			cutin "",255;
-			end;
-
-		L_End05:
-			mes "[Cool Event Employee]";
-			mes "You must learn the skill Pushcart to be able to rent a cart.";
-			close2;
-			cutin "",255;
-			end;
-
-	L_Cancel:
-		mes "[Cool Event Employee]";
-		mes "Cool Event Corporation is always";
+			close;
+		} else if (Cart) {
+			mes "[Cool Event Corp. Staff]";
+			mes "You already have";
+			mes "a Pushcart equipped.";
+			mes "Unfortunately, we can't";
+			mes "rent more than one to";
+			mes "each customer at a time.";
+			close;
+		} else {
+			if (!getskilllv(39)) {
+				mes "[Cool Event Corp. Staff]";
+				mes "You can only rent a cart after learning \"Push Cart\" skill.";
+				close;
+			}
+			if (countitem(7061) != 0) {
+				delitem 7061,1;
+				setcart;
+				close;
+			} else {
+				mes "[Cool Event Corp. Staff]";
+				mes "The Pushcart rental";
+				mes "fee is 800 zeny. Would";
+				mes "you like to rent a Pushcart?";
+				next;
+				switch(select("Rent a Pushcart.","Cancel")) {
+				case 1:
+					if (Zeny >= 800) {
+						set kf_10_pit,8;
+						set Zeny,Zeny-800;
+						setcart;
+						close;
+					} else {
+						mes "[Cool Event Corp. Staff]";
+						mes "I'm sorry, but you";
+						mes "don't have enough";
+						mes "zeny to pay the Pushcart";
+						mes "rental fee of 800 zeny.";
+						close;
+					}
+				case 2:
+					close;
+				}
+			}
+		}
+	case 4:
+		mes "[Cool Event Corp. Staff]";
+		mes "Cool Event Corp. is always";
 		mes "striving to provide the best";
 		mes "services for our customers.";
 		mes "Help us become the best by";
 		mes "providing us with your opinions";
 		mes "and honest feedback. Thank you.";
-		close2;
-		cutin "",255;
-		end;
+		close;
+	}
 }
 
 
 //--------------------------------------------------------------
-// Veins Cool Event Employee - [Tsuyuki]
+// Veins Cool Event Employees - [Tsuyuki]
 //--------------------------------------------------------------
 
-veins.gat,207,127,6	script	Cool Event Employee	874,{
+veins.gat,207,127,6	script	Cool Event Corp. Staff	874,{
 
-	cutin "zonda_01.bmp",2;
-	mes "[Cool Event Employee]";
-	mes "Welcome to Cool Event Corporation.";
-	mes "Our Staff is always working";
+	mes "[Cool Event Corp. Staff]";
+	mes "Welcome to Cool Event Corp.";
+	mes "Our staff is always working";
 	mes "to surpass your expectations";
 	mes "for quality service. So how";
 	mes "may I assist you today?";
 	next;
-	menu "Save",L_Save,"Use Storage",L_Storage,"Rent a Pushcart",L_Cart,"Cancel",L_Cancel;
-
-	L_Save:
-		savepoint "veins.gat",219,126;
-		mes "[Cool Event Employee]";
-		mes "Your Respawn Point has";
-		mes "been saved in the city";
-		mes "of Veins. Thank you for";
-		mes "using the Cool Event Service.";
-		close2;
-		cutin "",255;
-		end;
-
-	L_Storage:
-		if (Class == Job_Novice && Joblevel < 6) goto L_End01;
-		if (Zeny < 40) goto L_End02;
-		set RESRVPTS,RESRVPTS+4;
-		set Zeny,Zeny-40;
-		mes "[Cool Event Employee]";
-		mes "Here, let me open";
-		mes "your Storage for you.";
-		mes "Thank you for supporting";
-		mes "Cool Event Corporation";
-		mes "by using our services.";
-		mes "Have a nice day~";
-		close2;
-		cutin "",255;
-		openstorage;
-		end;
-
-		L_End01:
-			mes "[Cool Event Employee]";
+	switch(select("Save","Use Storage","Rent a Pushcart","Cancel")) {
+	case 1:
+		savepoint "veins.gat",219,126; // Custom coordinates
+		mes "[Cool Event Corp. Staff]";
+		mes "Your Respawn Point";
+		mes "has been saved in Veins.";
+		mes "Thank you for using the";
+		mes "Cool Event Corp. service~";
+		close;
+	case 2:
+		if (getskilllv(1) < 6) {
+			mes "[Cool Event Corp. Staff]";
 			mes "I'm sorry, but you";
 			mes "need the Novice's";
 			mes "Basic Skill Level 6 to";
 			mes "use the Storage Service.";
-			close2;
-			cutin "",255;
-			end;
-
-		L_End02:
-			mes "[Cool Event Employee]";
-			mes "You don't have enough money.";
-			mes "The storage usage fee is 40 Zeny.";
-			close2;
-			cutin "",255;
-			end;
-
-	L_Cart:
-		if (BaseClass != Job_Merchant) goto L_End03;
-		if (checkcart() == 1) goto L_End04;
-		if (getskilllv(39) == 0) goto L_End05;
-
-		mes "[Cool Event Employee]";
-		mes "The Cart Fee is 800 Zeny.";
-		mes "To rent a cart.";
-		next;
-		menu "Rent a Cart",L_Cont01,"Cancel",L_Cancel;
-
-		L_Cont01:
-			if (Zeny < 800) goto L_End06;
-			set RESRVPTS,RESRVPTS+8;
-			set Zeny,Zeny-800;
-			setcart;
-			close2;
-			cutin "",255;
-			end;
-
-			L_End06:
-				mes "[Cool Event Employee]";
-				mes "Sorry, you don't have enough Money.";
-				mes "The Cart Fee is 800 Zeny.";
+			close;
+		} else {
+			if (Zeny >= 40) {
+				set kf_1_pit,4;
+				set Zeny,Zeny-40;
+				mes "[Cool Event Corp. Staff]";
+				mes "Let me open your personal";
+				mes "storage for you right away.";
+				mes "Thanks for supporting Cool";
+				mes "Event Corp. by using our";
+				mes "services. Have a good day~";
 				close2;
-				cutin "",255;
+				openstorage;
 				end;
-
-		L_End03:
-			mes "[Cool Event Employee]";
+			} else {
+				mes "[Cool Event Corp. Staff]";
+				mes "I'm sorry, but you don't";
+				mes "have enough zeny to use";
+				mes "the Storage Service. Our";
+				mes "Storage access fee is 40 zeny.";
+				close;
+			}
+		}
+	case 3:
+		if (BaseClass != Job_Merchant) {
+			mes "[Cool Event Corp. Staff]";
 			mes "I'm sorry, but the";
 			mes "Pushcart rental service";
 			mes "is only available to Merchants,";
 			mes "Blacksmiths, Master Smiths";
 			mes "Alchemists and Biochemists.";
-			close2;
-			cutin "",255;
-			end;
-
-		L_End04:
-			mes "[Cool Event Employee]";
-			mes "Sorry you already have a cart.";
-			close2;
-			cutin "",255;
-			end;
-
-		L_End05:
-			mes "[Cool Event Employee]";
-			mes "You must learn the skill Pushcart to be able to rent a cart.";
-			close2;
-			cutin "",255;
-			end;
-
-	L_Cancel:
-		mes "[Cool Event Employee]";
-		mes "Cool Event Corporation is always";
+			close;
+		} else if (Cart) {
+			mes "[Cool Event Corp. Staff]";
+			mes "You already have";
+			mes "a Pushcart equipped.";
+			mes "Unfortunately, we can't";
+			mes "rent more than one to";
+			mes "each customer at a time.";
+			close;
+		} else {
+			if (!getskilllv(39)) {
+				mes "[Cool Event Corp. Staff]";
+				mes "You can only rent a cart after learning \"Push Cart\" skill.";
+				close;
+			}
+			if (countitem(7061) != 0) {
+				delitem 7061,1;
+				setcart;
+				close;
+			} else {
+				mes "[Cool Event Corp. Staff]";
+				mes "The Pushcart rental";
+				mes "fee is 800 zeny. Would";
+				mes "you like to rent a Pushcart?";
+				next;
+				switch(select("Rent a Pushcart.","Cancel")) {
+				case 1:
+					if (Zeny >= 800) {
+						set kf_10_pit,8;
+						set Zeny,Zeny-800;
+						setcart;
+						close;
+					} else {
+						mes "[Cool Event Corp. Staff]";
+						mes "I'm sorry, but you";
+						mes "don't have enough";
+						mes "zeny to pay the Pushcart";
+						mes "rental fee of 800 zeny.";
+						close;
+					}
+				case 2:
+					close;
+				}
+			}
+		}
+	case 4:
+		mes "[Cool Event Corp. Staff]";
+		mes "Cool Event Corp. is always";
 		mes "striving to provide the best";
 		mes "services for our customers.";
 		mes "Help us become the best by";
 		mes "providing us with your opinions";
 		mes "and honest feedback. Thank you.";
-		close2;
-		cutin "",255;
-		end;
+		close;
+	}
 }
