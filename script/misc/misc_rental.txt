@@ -7,12 +7,11 @@
 //              /_/  |_|\____|_|  \___/|_|  \__,_|              
 //                 http://aurora.deltaanime.net                 
 //--------------------------------------------------------------
-// Script Title: Rentals	Author: L0ne_W0lf/Tsuyuki
+// Script Title: Rentals	Author: L0ne_W0lf
 //--------------------------------------------------------------
-// Revision History: v1.1
+// Revision History: v1.0
 //--------------------------------------------------------------
 //	1.0 First version, converted from Aegis [L0ne_W0lf]
-//	1.1 Added the Super Novice Cart Renter, converted from Aegis [Tsuyuki]
 //--------------------------------------------------------------
 // Additional Notes: * Official-certified / Aegis-certified *
 //--------------------------------------------------------------
@@ -202,100 +201,4 @@ hu_in01.gat,381,304,5	script	Falcon Breeder	105,{
 	mes "and Snipers, capish?";
 	mes "...Heh heh, jealous?";
 	close;
-}
-
-
-//--------------------------------------------------------------
-// Super Novice Cart Renter - [Tsuyuki]
-//--------------------------------------------------------------
-
-aldebaran.gat,54,238,5	script	Kafra Employee	117,{
-
-	if (Basejob == Job_Super_Novice) {
-		mes "[Kafra Employee]";
-		if (Sex == Male) {
-			mes "Hello, Mister Super Novice~";
-		} else {
-			mes "Hello, Super Novice, Ma'am.";
-		}
-		mes "You must have been really";
-		mes "dissapointed that the other";
-		mes "Kafra Employees wouldn't let";
-		mes "you rent a cart from them.";
-		mes "But don't you worry now...";
-		next;
-		mes "[Kafra Employee]";
-		mes "I'm here to support you guys";
-		mes "by providing carts...";
-		next;
-		mes "[Kafra Employee]";
-		mes "^3355FF*whispers*^000000";
-		mes "^555555I am not supposed to do this";
-		mes "because it's against our";
-		mes "company policy. But I felt";
-		mes "really sorry for Super Novices";
-		mes "...so here I am.^000000";
-		next;
-		mes "[Kafra Employee]";
-		mes "Anyway, would you like to rent a cart? The service fee is 1,900 zeny.";
-		next;
-		switch(select("Rent a Cart.","Cancel.")) {
-		case 1:
-			mes "[Kafra Employee]";
-			mes "Oh, here's the thing...";
-			mes "Have you learned the 'Push Cart'";
-			mes "skill? I can just rent you a";
-			mes "cart, but if you haven't";
-			mes "learned to push it, you'll";
-			mes "just be wasting your zeny.";
-			next;
-			mes "[Kafra Employee]";
-			mes "So make sure that you have";
-			mes "the 'Push Cart' skill already.";
-			next;
-			switch(select("Rent a Cart.","Cancel.")) {
-			case 1:
-				if (Cart) {
-					mes "[Kafra Employee]";
-					mes "Oh, you've already equipped a cart.";
-					close;
-				}
-				if (Zeny > 1899) {
-					set KAFRA_PIT,KAFRA_PIT+10;
-					set Zeny,Zeny-1900;
-					setcart;
-					mes "[Kafra Employee]";
-					mes "Thank you for using my service.";
-					mes "Although what I am doing might";
-					mes "not be legitimate to other";
-					mes "Kafra Employees, I strongly";
-					mes "believe I am doing what's right for the customers.";
-					close;
-				} else {
-					mes "[Kafra Employee]";
-					mes "I am sorry, but you do not have enough zeny with you. The service fee is 1,900 zeny.";
-					close;
-				}
-			case 2:
-				mes "[Kafra Employee]";
-				mes "Please come again.";
-				mes "Thank you for using my services.";
-				close;
-		}
-		case 2:
-			mes "[Kafra Employee]";
-			mes "Please come again.";
-			mes "Thank you for using my services.";
-			close;
-		}
-	} else {
-		mes "[Kafra Employee]";
-		mes "Good da--Oops...!";
-		mes "I don't think I can provide you";
-		mes "with the services you want...";
-		mes "Please go talk to another";
-		mes "Kafra employee. I apologize";
-		mes "for such inconvenience...";
-		close;
-	}
 }

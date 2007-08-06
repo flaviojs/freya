@@ -245,7 +245,7 @@ alberta.gat,135,79,3	script	Tempestra	71,{
 	mes "Ah...... Such a cool breeze. It's good to be next to the sea.";
 	mes "I think it was the right choice for me to take a break from my business and come here.";
 	emotion e_ho;
-	if (MISC_QUEST & 2) goto sM_Menu;
+	if (tempestra_q == 1) goto sM_Menu;
 	next;
 	mes "[Tempestra]";
 	mes "Oh the sun is so bright today. I'm glad I brought my hat.";
@@ -259,7 +259,7 @@ alberta.gat,135,79,3	script	Tempestra	71,{
 
 		if (countitem(503) < 1) goto L_NoPot;
 		delitem 503, 1;
-		set MISC_QUEST,MISC_QUEST | 2;
+		set tempestra_q,1;
 		mes "[Tempestra]";
 		mes "Oooh! Thank you so much.  I'm so glad to meet such a friendly person here....";
 		emotion e_thx;

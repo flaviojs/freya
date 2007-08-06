@@ -2681,7 +2681,7 @@ lighthalzen.gat,341,224,4	script	Fishburn	868,{
 	close;
 
 Lstart:
-	if (hzdun == 1) goto L_11;
+	if (lhzcube == 1) goto L_11;
 	if (Fishburn == 7) goto L_10;
 	if (Fishburn == 6) goto L_9;
 	if (Fishburn == 5) goto L_6;
@@ -3532,7 +3532,7 @@ L_3:
 
 lhz_cube.gat,248,193,0	script	Box	111,{
 
-	if (countitem(2657) > 0 || gotLabPerm > 0 || hzdun) goto L_5;
+	if (countitem(2657) > 0 || gotLabPerm > 0 || lhzcube) goto L_5;
 	mes "There is a box with three holes.";
 	next;
 	if (Oval == 2 && Quadrangle == 2 && Polygon == 2) goto L_4;
@@ -3656,11 +3656,12 @@ L4_1:
 	set Axe,0;	set yKey,0;	set Box,0;	set num1,0;
 	set num2,0;	set num3,0;	set num4,0;	set num5,0;
 	set num6,0;	set num7,0;	set num8,0;	set num9,0;
+	set lhzcube,0; set cubekey,0; set piciburn,0;
 	set Jackknife,0;	set RedKey,0;	set srod1,0;	set srod2,0;
 	set fKey,0;	set gKey,0;	set Polygon,0;	set machine,0;
 	set bKey,0;	set Oval,0;	set Quadrangle,0;	set rod,0;
 	set gotLabPerm,0;
-	set hzdun,1;
+	set lhzcube,1;
 	warp "lhz_cube.gat",177,13;
 	end;
 }
@@ -3674,7 +3675,7 @@ L4_1:
 lighthalzen.gat,313,301,0	script	Sewer Pipe	111,{
 
 	mes "You see some pipes for a sewage system.";
-	if (hzdun == 1) goto s_Find;
+	if (lhzcube == 1) goto s_Find;
 	close;
 
 	s_Find:
@@ -8598,7 +8599,7 @@ lighthalzen.gat,179,170,4	script	Ordinary Man	98,{
 	}
 	else if(lhz_boss == 7)
 	{
-		if (!MISC_QUEST&512)
+		if (!lhzcube)
 		{
 			mes "[Ghalstein]";
 			mes "An error occurred.";

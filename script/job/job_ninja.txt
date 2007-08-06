@@ -23,25 +23,20 @@
 
 alberta.gat,30,65,3	script	Akagi#nq	730,{
 
-	if (Class == Job_Novice)
-	{
-		if (JobLevel > 9)
-		{
+	if (Class == Job_Novice) {
+		if (JobLevel > 9) {
 			mes "[Akagi]";
 			mes "Hmm...";
 			mes "Some force must have lead your feet to this dark alley because you are needed here.";
 			mes "Would you like to walk the path of Patience?";
 			next;
-			if (select("No, I don't want to go.","Yep, I'll walk the path.") == 1)
-			{
+			if (select("No, I don't want to go.","Yep, I'll walk the path.") == 1) {
 				mes "[Akagi]";
 				mes "Ok.";
 				mes ".....";
 				mes "Then farewell.";
 				close;
-			}
-			else
-			{
+			} else {
 				mes "[Akagi]";
 				mes "Very well, I'll send you over right away.";
 				close2;
@@ -52,17 +47,13 @@ alberta.gat,30,65,3	script	Akagi#nq	730,{
 				}
 				end;
 			}
-		}
-		else
-		{
+		} else {
 			mes "[Akagi]";
 			mes "This isn't where you should be.";
 			mes "Come back after you've become stronger.";
 			close;
 		}
-	}
-	else
-	{
+	} else {
 		mes "[Akagi]";
 		mes "I have nothing to say to you.";
 		mes "Go back to where you came from.";
@@ -72,10 +63,8 @@ alberta.gat,30,65,3	script	Akagi#nq	730,{
 
 que_ng.gat,30,65,3	script	Cougar Gai	730,{
 
-	if (Class == Job_Novice && JobLevel > 9)
-	{
-		switch(NINJ_Q)
-		{
+	if (Class == Job_Novice && JobLevel > 9) {
+		switch(hg_nin) {
 			case 0:
 				mes "["+strcharinfo(0)+"]";
 				mes "Excuse me.";
@@ -222,9 +211,7 @@ que_ng.gat,30,65,3	script	Cougar Gai	730,{
 				mes "Well, if you really want to become a Ninja, how about you do me a favor?";
 				mes "If you fulfill this favor well, then although I can't make you a ninja, I can teach you a few techniques. You never know!";
 				next;
-				switch( select( "Accept to do the favor","Refuse to do the favor" ) )
-				{
-
+				switch(select("Accept to do the favor","Refuse to do the favor")) {
 					case 1:
 						mes "["+strcharinfo(0)+"]";
 						mes "Hmm... Ok.";
@@ -252,9 +239,8 @@ que_ng.gat,30,65,3	script	Cougar Gai	730,{
 						mes "["+strcharinfo(0)+"]";
 						mes "Ok~";
 						mes "I'll do it.";
-						set NINJ_Q,1;
+						set hg_nin,1;
 						close;
-
 					case 2:
 						mes "["+strcharinfo(0)+"]";
 						mes "I don't wish to simply learn a few techniques.";
@@ -269,19 +255,16 @@ que_ng.gat,30,65,3	script	Cougar Gai	730,{
 						mes "Well, off with you now.";
 						close;
 				}
-
 			case 1:
 				mes "[Cougar Gai]";
 				mes "Hmm... It's nothing I need immediately, but do hurry.";
 				mes "Field Cat Joe is at Einbroch.";
 				close;
-
 			case 2:
 				mes "[Cougar Gai]";
 				mes "Don't forget to bring me back his reply.";
 				mes "I have to make sure he doesn't claim otherwise later.";
 				close;
-
 			case 3:
 				mes "[Cougar Gai]";
 				mes "Did you bring me back his reply?";
@@ -350,20 +333,17 @@ que_ng.gat,30,65,3	script	Cougar Gai	730,{
 				mes "["+strcharinfo(0)+"]";
 				mes "- Let's bring Mr. Gai 1 Phracon -";
 				mes "- And 5 Cyfars -";
-				set NINJ_Q,4;
+				set hg_nin,4;
 				close;
-
 			case 4:
 				mes "[Cougar Gai]";
-				if (countitem(7053) < 5 || countitem(1010) < 1)
-				{
+				if (countitem(7053) < 5 || countitem(1010) < 1) {
 					mes "Get me 1 Phracon and 5 Cyfars.";
 					mes "What you have isn't what I said I need before.";
 					mes "It's urgent, so please hurry.";
 					close;
 				}
-				if (skillpoint >0)
-				{
+				if (Skillpoint > 0) {
 					mes "Please come back after you've learned all the basic skills.";
 					close;
 				}
@@ -412,37 +392,28 @@ que_ng.gat,30,65,3	script	Cougar Gai	730,{
 				mes "[Cougar Gai]";
 				mes "Haaa!!!!";
 				next;
-				set NINJ_Q,0;
+				set hg_nin,0;
 				callfunc "F_JobChange",Job_Ninja;
 				getitem 13010,1;
 				close;
-
 		}
-	}
-	else if(Class == Job_Novice && JobLevel < 10)
-	{
+	} else if (Class == Job_Novice && JobLevel < 10) {
 		mes "[Cougar Gai]";
 		mes "It looks like you need to train more.";
 		mes "Come back after you gained more muscle.";
 		close;
-	}
-	else if(Class == Job_Ninja)
-	{
+	} else if (Class == Job_Ninja) {
 		mes "[Cougar Gai]";
 		mes "Hmm, how have you been?";
 		mes "You don't know when and where you may be asked to go on a mission, so don't put off your training for a single day.";
 		close;
-	}
-	else if(Basejob == Job_Novice && Upper == 2)
-	{
+	} else if(Basejob == Job_Novice && Upper == 2) {
 		mes "[Cougar Gai]";
 		mes "What the...! A super baby!";
 		mes "Has this location been so exposed that even babies know where it is?";
 		mes "Oh no~ Ah no~";
 		close;
-	}
-	else
-	{
+	} else {
 		mes "[Cougar Gai]";
 		mes "What the.. What's that stench?!";
 		mes "I was wondering what was causing that stench -- it was you.";
@@ -454,23 +425,19 @@ que_ng.gat,30,65,3	script	Cougar Gai	730,{
 
 einbroch.gat,184,194,3	script	Suspicious Guy	881,{
 
-	if (Class == Job_Ninja)
-	{
+	if (Class == Job_Ninja) {
 		mes "[Crimson Panther Joe]";
 		mes "Oh, I see you've become a Ninja";
 		mes "There will be many hardships in the future, so don't slack off in training.";
 		close;
-	}
-	else if(!NINJ_Q)
-	{
+	} else if (!hg_nin) {
 		mes "[Suspicious Guy]";
 		mes "Hyaa~ This sure is a high spot.";
 		mes "I've been to many different lands, but this is the highest place I've found so far.";
 		mes "My only regret is that I can't spend more time looking around this spectacular view...";
 		close;
 	}
-	switch(NINJ_Q)
-	{
+	switch(hg_nin) {
 		case 1:
 			mes "[Suspicious Guy]";
 			mes "Hiyaa~ This sure is a high place, right?";
@@ -527,14 +494,12 @@ einbroch.gat,184,194,3	script	Suspicious Guy	881,{
 			mes "[Suspicious Guy]";
 			mes "If you help me out with what I'm doing, then I will search for Crimson Panther Joe with you.";
 			next;
-			switch( select( "I'll just search for him alone.","Ok, I'll help you." ) )
-			{
+			switch( select( "I'll just search for him alone.","Ok, I'll help you." ) ) {
 				case 1:
 					mes "[Suspicious Guy]";
 					mes "Ah, I understand.";
 					mes "Good luck looking for him. If you need help later, come and talk to me before I leave...";
 					close;
-
 				case 2:
 					mes "[Suspicious Guy]";
 					mes "Hmm.. Let's see.";
@@ -546,10 +511,9 @@ einbroch.gat,184,194,3	script	Suspicious Guy	881,{
 					next;
 					mes "["+strcharinfo(0)+"]";
 					mes "- Let's go find 1 Phracon and 5 Cyfar.-";
-					set NINJ_Q,2;
+					set hg_nin,2;
 					close;
 			}
-
 		case 2:
 			if (countitem(1010) < 1 || countitem(7053) < 5) {
 				mes "[Suspicious Guy]";
@@ -653,11 +617,10 @@ einbroch.gat,184,194,3	script	Suspicious Guy	881,{
 			mes "We'll meet again..";
 			delitem 1010,1;
 			delitem 7053,5;
-			set NINJ_Q,3;
+			set hg_nin,3;
 			close2;
 			warp "amatsu.gat",113,127;
 			end;
-
 		case 3:
 			mes "[Crimson Panther Joe]";
 			mes "Hmm, I don't know what happened, but it seems you've returned to me without reaching Gai first.";
@@ -666,14 +629,12 @@ einbroch.gat,184,194,3	script	Suspicious Guy	881,{
 			mes "If you would like, I can send you to amatsu again.";
 			mes "I'll take you back to Amatsu.";
 			next;
-			switch( select( "No thanks.","Yes, please send me to Amatsu." ) )
-			{
+			switch( select( "No thanks.","Yes, please send me to Amatsu." ) ) {
 				case 1 :
 					mes "[Crimson Panther Joe]";
 					mes "Hmm, very well.";
 					mes "Decisions are best when decided yourself.";
 					close;
-
 				case 2:
 					mes "[Crimson Panther Joe]";
 					mes "Very well.";
@@ -682,7 +643,6 @@ einbroch.gat,184,194,3	script	Suspicious Guy	881,{
 					warp "amatsu.gat",113,127;
 					end;
 			}
-
 		case 4:
 			mes "[Crimson Panther Joe]";
 			mes "Is Gai bothering you with a lot of bothersome tasks?";

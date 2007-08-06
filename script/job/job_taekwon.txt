@@ -24,7 +24,7 @@ payon.gat,157,141,5	script	Phoenix#Taekwon	753,{
 		mes "Hello, child.";
 		close;
 	}
-	if (job_taekwon_q == 4) {
+	if (BaseClass == Job_Taekwon) {
 		mes "[Phoenix]";
 		mes "How is your training";
 		mes "coming along? As your";

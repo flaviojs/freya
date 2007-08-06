@@ -13,6 +13,10 @@
 
 Date	Added
 
+2007/08/06
+	* Updated: The Kafra Corporation system NPCs to official, converted from Aegis [Tsuyuki]
+	* Updated: F_ClearJobVariables / F_ClearGarbageVariables script functions [Tsuyuki]
+
 2007/08/03
 	* Updated: The Cool Event Corp. system NPCs to official, converted from Aegis [Tsuyuki]
 	* Fixed: A bunch of script bugs (Thanks to Ryan) [Tsuyuki]

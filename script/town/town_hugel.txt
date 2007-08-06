@@ -13,7 +13,7 @@
 //--------------------------------------------------------------
 //	1.0 First version, converted from Aegis [Tsuyuki]
 //	1.1 Added the Bingo Game System/Abyss Lake Entrance, both converted from Aegis by SinSloth [Tsuyuki]
-//	1.2 Added the Rebellion Quest, converted from Aegis by MasterOfMuppets [Tsuyuki]
+//	1.2 Added the Rebellion Quest, converted from Aegis by MasterOfMuppets (euRO dialogue) [Tsuyuki]
 //--------------------------------------------------------------
 // Additional Notes: * Offical-certified / Aegis-certified *
 // - Monster Races are incomplete.
@@ -34,7 +34,7 @@
 // Medicine Quest						- [Tsuyuki]
 // Memory Quest							- [Tsuyuki]
 // Odin's Temple Excavation Quest		- [Tsuyuki]
-// Rebellion Quest						- [MasterOfMuppets]
+// Rebellion Quest (euRO dialogue)		- [MasterOfMuppets]
 // Remedy Quest							- [Tsuyuki]
 // Abyss Lake Entrance					- [SinSloth]
 //--------------------------------------------------------------

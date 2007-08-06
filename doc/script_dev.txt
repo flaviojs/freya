@@ -4,146 +4,213 @@
 ---------------------------------------------------------------------------
 
 
-===========================================================================
+---------------------------------------------------------------------------
+ Aurora's Non-Aegis Scripts:
 ---------------------------------------------------------------------------
 
--> Missing Official Scripts:
-----------------------------
+- event/event_crystal.txt		<- Good enough - No access to an Aegis version
+- event/event_moscovia.txt		<- Requires conversion - No access to an Aegis version [*]
+- event/event_xmas.txt			<- Good enough - No access to an Aegis version
 
-- Episode ???? - Izlude Battle Arena (jAthena + Aegis have it -> Translate w/ Aegis dialogue?)
+- global/global_airship.txt		<- Requires conversion [*]
+- global/global_refine.txt		<- Requires conversion [*]
 
-- Episode 10.1 - Aldebaran Turbo Track (jAthena + Aegis have it -> Translate w/ Aegis dialogue?)
+- gvg/gvg_adswitch.txt			<- Good enough
+- gvg/gvg_config.txt			<- Good enough
+- gvg/gvg_exe.txt			<- Good enough
+- gvg/gvg_flag.txt			<- Good enough, need to import Aegis dialogue/function [Assigned ~ Tsuyuki]
+- gvg/gvg_monster.txt			<- Good enough
+- gvg/gvg_roomswitch.txt		<- Good enough
+- gvg/gvg_steward.txt			<- Good enough, need to import Aegis dialogue/function [*]
+- gvg/gvg_tbox.txt			<- Good enough
 
-- Episode 10.4 - Hugel Monster Races (Partially implemented + Aegis has it)
+- misc/misc_novice_exchange.txt		<- Requires conversion [*]
+- misc/misc_vote.txt			<- Good enough, need to import some missing dialogue [*]
 
-----------------------------
+- quest/quest_headgear.txt		<- Requires conversion [*]
+- quest/quest_juperos.txt		<- Good enough
+- quest/quest_kiel_hyre.txt		<- Good enough - No access to an iRO Aegis version
+- quest/quest_the_sign.txt		<- Good enough
 
-- Episode 11.2 - All Veins Town NPCs
-- Episode 11.2 - Veins Old Person Aid Quest
-- Episode 11.2 - Arunafeltz Spy Quest
-- Episode 11.2 - Sibling Search Quest
-- Episode 11.2 - Logistic Base Quest
-
-- Episode 11.3 - All Nameless Island Town NPCs
-- Episode 11.3 - Nameless Island Admission Quest
-- Episode 11.3 - Peace Teaching of Arunafeltz Republic Quest
-- Episode 11.3 - Z Group Quest
-- Episode 11.3 - Investigation Cooperation Quest
-- Episode 11.3 - Loan Book of Mirv Quest
-- Episode 11.3 - Diamond of Ruin Quest
-- Episode 11.3 - Emerald of Misfortune Quest
-
-
-==========================================================================
---------------------------------------------------------------------------
-
--> Scripts In Need Of Aegis Conversion:
----------------------------------------
-
-- script/global/global_kafra.txt <- Assigned [Tsuyuki]
-- script/global/global_refine.txt
-- script/quest/quest_headgear.txt
-
--> Scripts In Need Of Aegis Dialogue:
--------------------------------------
-
-- script/gvg/gvg_flag.txt <- Assigned [Tsuyuki]
-- script/gvg/gvg_steward.txt
+- town/town_ayothaya.txt		<- Requires conversion [*]
+- town/town_einbech.txt			<- Requires conversion [*]
+- town/town_einbroch.txt		<- Requires conversion [*]
+- town/town_lighthalzen.txt		<- Requires conversion - Some parts are Aegis-converted [*]
+- town/town_louyang.txt			<- Requires conversion [*]
+- town/town_nameless.txt		<- No access to an Aegis version [*]
+- town/town_veins.txt			<- No access to an Aegis version [*]
 
 
-==========================================================================
---------------------------------------------------------------------------
-
--> Script Errors:
------------------
-
-- Kunlun Power Arena (town/town_kunlun.txt)
-- Currently commented/disabled. It has array syntax errors that show up on map server start.
-
-- Missing character RID errors consistently pop up in the map server console with no users online.
-- Errors are spanned every few hours. First error doesn't occur until several hours after map server has started.
+- warp/warp_dungeon.txt			<- Good enough
+- warp/warp_field.txt			<- Good enough
+- warp/warp_gvg.txt			<- Good enough
+- warp/warp_misc.txt			<- Good enough
+- warp/warp_pvp.txt			<- Good enough
+- warp/warp_town.txt			<- Good enough
 
 
-==========================================================================
---------------------------------------------------------------------------
+---------------------------------------------------------------------------
+ Aurora's euRO Dialogue Aegis Scripts:
+---------------------------------------------------------------------------
 
--> To-Do: Major Cleanup
--> Global Temporary Variables (30):
------------------------------------
-
-- Airship System (global/global_airship.txt)
-$@at_hugel
-$@at_izlude
-$@route1
-$@route2
-
-- Cool Event vs Kafra Voting Event (misc/misc_vote.txt)
-$@dtstemp
-
-- God Seal Equipment Quests (quest/quest_god_seal.txt)
-$@BrisinRID$
-
-- Kiel Hyre Quest (quest/quest_kiel_hyre.txt)
-$@KHQuestBusy
-
-- Rogue Close Confine Skill Quest (quest/quest_skill.txt)
-$@kienna
-
-- Thanatos Tower Quest (quest/quest_thanatos.xt)
-$@thanaboss1
-$@thanaboss2
-
-- The Sign Quest (quest/quest_the_sign.txt)
-$@timezonestring$
-$@signbmps
-$@signdance
-$@SignDanceRandomizer
-$@Signdanceresult
-$@SignDancingrid
-$@signroomfull
-$@signroom2full
-$@Sign_Summon
-$@Sign_Summon2
-$@signparty
-$@GeffeniaWarp
-
-- Hugel Bingo System (town/town_hugel.txt)
-$@hu_bingoa
-$@hu_bingob
-
-- Kunlun Power System (town/town_kunlun.txt)
-$@in_battle
-
-- Morroc Dandelion's Request Quest (town/town_morroc.txt)
-$@maobar_room
-$@maobar_room2
-$@maogate1mobs
-$@maogate2mobs
-
-- Ice Necklace/Ktullanux Summoning Quest (town/town_rachel.txt)
-$@ktullanux_summon
+- global/global_inn.txt			<- Optional [*]
+- job/job_gunslinger.txt		<- Optional [*]
+- job/job_rogue.txt			<- Optional - No access to an iRO Aegis version [*]
+- quest/quest_bard.txt			<- Optional [*]
+- quest/quest_expanded.txt		<- Optional [*]
+- quest/quest_job_tutorial.txt		<- Optional [*]
+- quest/quest_quiz_revolution.txt	<- Optional - No access to an iRO Aegis version [*]
+- quest/quest_thanatos.txt		<- Optional [*]
+- town/town_comodo.txt			<- Optional - Only Comodo Gambling is euRO [*]
+- town/town_geffen.txt			<- Optional - Only Mastermind Game is euRO [*]
+- town/town_hugel.txt			<- Optional - Only Rebellion Quest is euRO - No access to an iRO Aegis version [*]
+- town/town_juno.txt			<- Optional - [*]
+- town/town_kunlun.txt			<- Optional - [*]
+- town/town_lutie.txt			<- Optional - No access to an iRO Aegis version [*]
+- town/town_payon.txt			<- Optional - All contents are euRO except Gemstone Exchange / Arrow Quiver NPC [*]
 
 
-==========================================================================
---------------------------------------------------------------------------
+---------------------------------------------------------------------------
+ Aurora's Missing Aegis Scripts: (Excluding GM/Management)
+---------------------------------------------------------------------------
 
--> To-Do: Major Cleanup
--> Global Permanent Variables (8):
------------------------------------
-
-- Cool Event vs Kafra Voting Event (misc/misc_vote.txt)
-$dts
-$dtsday
-$dtsv
-$dtsvote
-
-- God Seal Equipment Quests (quest/quest_god_seal.txt)
-$God1
-$God2
-$God3
-$God4
+- cashitem/advholgren.sc		<- Cash Item Refinery (?) - Requires conversion [*]
+- event/resetskill.sc			<- 1st Class Skill Reset NPC - Requires conversion [Assigned ~ Tsuyuki]
+- local/arena/ *			<- Izlude Battle Arena - jAthena has it (In Japanese.. translate?) - Requires conversion [*]
+- local/turbotrack/ *			<- Al De Baran Turbo Track - jAthena has it (In Japanese.. translate?) - Requires conversion [*]
+- quest/monster_race.sc			<- Hugel Monster Races - Requires conversion [*]
 
 
-==========================================================================
+---------------------------------------------------------------------------
+ Aurora's Missing No Access Aegis Scripts: (Excluding GM/Management)
+---------------------------------------------------------------------------
+
+- Episode 11.2	<- All Veins Town NPCs [*]
+- Episode 11.2	<- Veins Old Person Aid Quest [*]
+- Episode 11.2	<- Arunafeltz Spy Quest [*]
+- Episode 11.2	<- Sibling Search Quest [*]
+- Episode 11.2	<- Logistic Base Quest [*]
+
+- Episode 11.3	<- All Nameless Island Town NPCs [*]
+- Episode 11.3	<- Nameless Island Admission Quest [*]
+- Episode 11.3	<- Peace Teaching of Arunafeltz Republic Quest [*]
+- Episode 11.3	<- Z Group Quest [*]
+- Episode 11.3	<- Investigation Cooperation Quest [*]
+- Episode 11.3	<- Loan Book of Mirv Quest [*]
+- Episode 11.3	<- Diamond of Ruin Quest [*]
+- Episode 11.3	<- Emerald of Misfortune Quest [*]
+
+
+---------------------------------------------------------------------------
+ Aurora's Script Errors / Bugs:
+---------------------------------------------------------------------------
+
+- local/l_kunlun/powernpc.sc		<- Kunlun Power NPC (Broken + disabled in Aurora) - Requires fix [*]
+	-> Enable script and check error message in map server console on script load for more information (Array syntax issues)
+
+- Missing character RID errors		<- Consistently pop up in the map server console with no users online - Requires fix [*]
+	-> Errors are spanned every few hours; first error doesn't occur until several hours after map server has started
+
+
+---------------------------------------------------------------------------
+ Aurora's Global Temporary Script Variables (30):
+---------------------------------------------------------------------------
+
+-> To-Do: Major cleanup
+
+-> Airship System (global/global_airship.txt)
+- $@at_hugel
+- $@at_izlude
+- $@route1
+- $@route2
+
+-> Cool Event vs Kafra Voting Event (misc/misc_vote.txt)
+- $@dtstemp
+
+-> God Seal Equipment Quests (quest/quest_god_seal.txt)
+- $@BrisinRID$
+
+-> Kiel Hyre Quest (quest/quest_kiel_hyre.txt)
+- $@KHQuestBusy
+
+-> Rogue Close Confine Skill Quest (quest/quest_skill.txt)
+- $@kienna
+
+-> Thanatos Tower Quest (quest/quest_thanatos.xt)
+- $@thanaboss1
+- $@thanaboss2
+
+-> The Sign Quest (quest/quest_the_sign.txt)
+- $@timezonestring$
+- $@signbmps
+- $@signdance
+- $@SignDanceRandomizer
+- $@Signdanceresult
+- $@SignDancingrid
+- $@signroomfull
+- $@signroom2full
+- $@Sign_Summon
+- $@Sign_Summon2
+- $@signparty
+- $@GeffeniaWarp
+
+-> Hugel Bingo System (town/town_hugel.txt)
+- $@hu_bingoa
+- $@hu_bingob
+
+-> Kunlun Power System (town/town_kunlun.txt)
+- $@in_battle
+
+-> Morroc Dandelion's Request Quest (town/town_morroc.txt)
+- $@maobar_room
+- $@maobar_room2
+- $@maogate1mobs
+- $@maogate2mobs
+
+-> Ice Necklace/Ktullanux Summoning Quest (town/town_rachel.txt)
+- $@ktullanux_summon
+
+
+---------------------------------------------------------------------------
+ Aurora's Global Permanent Script Variables (8):
+---------------------------------------------------------------------------
+
+-> To-Do: Further cleanup
+
+-> Cool Event vs Kafra Voting Event (misc/misc_vote.txt)
+- $dts
+- $dtsday
+- $dtsv
+- $dtsvote
+
+-> God Seal Equipment Quests (quest/quest_god_seal.txt)
+- $God1
+- $God2
+- $God3
+- $God4
+
+
+---------------------------------------------------------------------------
+ Final Notes from Tsuyuki:
+---------------------------------------------------------------------------
+
+	If you are reading this documentation and would like to help with
+the Aegis script conversions, talk to me online and I'll get you setup. If
+you want to help fix script bugs, investigate them and post fixes in the
+Aurora forum's community dev section. Finished script conversions should
+also go in the community dev section. If you would like to work on non-
+conversions such as obtaining + translating Moscovia via screenshots/etc,
+you are welcome to do so. Any contributions are highly appreciated and
+usually accepted by the Aurora dev team. Custom scripts are also accepted.
+They should go in the custom dev section of the Aurora forum.
+
+-> Contact Information:
+- Aurora Forums:Tsuyuki
+- IRC: irc.deltaanime.net #aurora:Tsuyuki
+- MSN: voidreality16@hotmail.com
+- AIM: Aetrix
+
+
+===========================================================================
  EOF
---------------------------------------------------------------------------
+---------------------------------------------------------------------------

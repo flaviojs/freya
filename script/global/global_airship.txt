@@ -22,9 +22,7 @@
 //	1.7 Fixed some conflicting NPC names [Tsuyuki]
 //	1.8 Changed global vars to temporary global vars [Tsuyuki]
 //--------------------------------------------------------------
-// Additional Notes: Airship System with 2 Routes (Almost official)
-// 1st Route: Juno -> Hugel -> Einbroch -> Lighthalzen -> Juno
-// 2nd Route: Rachel -> Juno -> Izlude -> Rachel
+// Additional Notes: * Official-certified *
 //--------------------------------------------------------------
 
 

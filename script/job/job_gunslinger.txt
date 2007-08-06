@@ -23,8 +23,8 @@
 
 que_ng.gat,152,167,3	script	Master Miller	901,{
 
-	if (Class == JOB_NOVICE) goto L_StartQuest;
-	if (Class == JOB_GUNSLINGER) goto L_Gunslinger;
+	if (Class == Job_Novice) goto L_StartQuest;
+	if (Class == Job_Gunslinger) goto L_Gunslinger;
 	if (Upper == 2) goto L_Baby;
 	goto L_OtherClass;
 
@@ -201,12 +201,10 @@ que_ng.gat,152,167,3	script	Master Miller	901,{
 			mes "So here's to a nice time";
 			mes "working together.";
 			set hg_gun,6;
-
 			callfunc "F_JobChange",Job_Gunslinger;
-
-			set gunex,rand(1,2);
-			if (gunex == 1) getitem 13100,1;
-			if (gunex == 2) getitem 13150,1;
+			set '@gunex,rand(1,2);
+			if ('@gunex == 1) getitem 13100,1;
+			if ('@gunex == 2) getitem 13150,1;
 			close;
 
 	L_Gunslinger:
@@ -317,7 +315,6 @@ payon.gat,184,65,3	script	The Wise Bull Horn	866,{
 
 	L_WBH02:
 		if (countitem(949) < 3 || countitem(912) < 3 || countitem(1019) < 1 || countitem(935) < 10 || countitem(1013) < 3 || countitem(511) < 3) goto L_NotEnoughItems;
-
 		delitem 949,3;
 		delitem 912,3;
 		delitem 1013,3;
@@ -331,15 +328,15 @@ payon.gat,184,65,3	script	The Wise Bull Horn	866,{
 		mes "make the gift, Wait for a while.";
 		close;
 
-		L_NotEnoughItems:
-			mes "[" +strcharinfo(0) + "]";
-			mes "-I'll need-";
-			mes "-3 Rainbow Shells-";
-			mes "-10 Shells";
-			mes "-3 Feathers-";
-			mes "-1 Trunk, 3 Zargons,-";
-			mes "-and 3 Green Herbs-";
-			close;
+	L_NotEnoughItems:
+		mes "[" +strcharinfo(0) + "]";
+		mes "-I'll need-";
+		mes "-3 Rainbow Shells-";
+		mes "-10 Shells";
+		mes "-3 Feathers-";
+		mes "-1 Trunk, 3 Zargons,-";
+		mes "-and 3 Green Herbs-";
+		close;
 
 	L_WBH03:
 		mes "[The Wise Bull Horn]";
@@ -396,7 +393,6 @@ payon.gat,184,65,3	script	The Wise Bull Horn	866,{
 
 	L_WBH04:
 		if (countitem(519) < 1) goto L_NotEnoughMilk;
-
 		delitem 519,1;
 		set hg_gun,5;
 		mes "[The Wise Bull Horn]";
@@ -422,11 +418,11 @@ payon.gat,184,65,3	script	The Wise Bull Horn	866,{
 		mes "-to Mr.Miller now.-";
 		close;
 
-		L_NotEnoughMilk:
-			mes "[" +strcharinfo(0) + "]";
-			mes "-Let's get a glass of Milk-";
-			mes "-for 'The Wise Bull Horn'.-";
-			close;
+	L_NotEnoughMilk:
+		mes "[" +strcharinfo(0) + "]";
+		mes "-Let's get a glass of Milk-";
+		mes "-for 'The Wise Bull Horn'.-";
+		close;
 
 	L_WBH05:
 		mes "[The Wise Bull Horn]";

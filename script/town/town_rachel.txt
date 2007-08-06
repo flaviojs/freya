@@ -4534,7 +4534,7 @@ ra_temple.gat,119,180,0	script	Temple Entrance#ra_temple	45,1,1,{
 
 OnTouch:
 	if (getvariableofnpc('rachel_donate,"Nemma#ra_temple") >= 10000) {
-		if (MISC_QUEST & 8192) { warp "ra_temin",169,23; end; }
+		if (ra_tem_q2 == 1) { warp "ra_temin",169,23; end; }
 
 		if (ra_tem_q < 10) {
 			mes "^3355FFThe temple's";
@@ -4752,7 +4752,7 @@ ra_temple.gat,116,174,3	script	Nemma#ra_temple	920,{
 	}
 
 	else {
-		if (MISC_QUEST & 8192) {
+		if (ra_tem_q2 == 1) {
 			cutin "ra_nemma01",2;
 			mes "[Priestess Nemma]";
 			mes "Welcome to our temple!";
@@ -5042,7 +5042,7 @@ S_Donate:
 
 rachel.gat,243,37,3	script	Kid#Candy Addict	921,{
 
-	if ((ra_tem_q < 2) || (ra_tem_q > 9) || (MISC_QUEST & 8192)) {
+	if ((ra_tem_q < 2) || (ra_tem_q > 9) || (ra_tem_q2 == 1)) {
 		mes "[Kid]";
 		mes "Hey! What's that";
 		mes "smile for? You're not";
@@ -5600,7 +5600,7 @@ que_rachel.gat,169,18,0	script	Quest Temple Exit#ra_temple	45,2,2,{
 ra_temin.gat,277,159,3	script	High Priest Zhed#rachel	932,{
 
 	cutin "ra_gman",2;
-	if (MISC_QUEST & 8192) {
+	if (ra_tem_q2 == 1) {
 		mes "[High Priest Zhed]";
 		mes "I need to rest now";
 		mes "But I thank you for";
@@ -6117,7 +6117,7 @@ ra_temin.gat,277,159,3	script	High Priest Zhed#rachel	932,{
 				mes "I need to go lay down now,";
 				mes "so if you'll let me rest...";
 				close2;
-				set MISC_QUEST,MISC_QUEST | 8192;
+				set ra_tem_q2,1;
 				set ra_tem_q,0;
 				cutin "",255;
 				misceffect 253;
@@ -6309,7 +6309,7 @@ L_End:
 
 ra_temin.gat,134,128,3	script	Pope's Office Guard#rac::raofficeguard	927,{
 
-	if (MISC_QUEST & 8192) {
+	if (ra_tem_q2 == 1) {
 		mes "[Pope's Office Guard]";
 		mes "I'm sorry, but the pope";
 		mes "is officiating a service";
@@ -6375,7 +6375,7 @@ ra_temin.gat,134,134,3	duplicate(raofficeguard)	Pope's Office Guard#2ra	927
 ra_temin.gat,134,131,0	script	gyoin1#rachel	45,1,1,{
 
 OnTouch:
-	if ((ra_tem_q > 16) || (MISC_QUEST & 8192)) {
+	if ((ra_tem_q > 16) || (ra_tem_q2 == 1)) {
 		mes "[Pope's Office Guard]";
 		mes "I'm sorry, but the pope";
 		mes "is officiating a service";
@@ -6799,7 +6799,7 @@ OnTouch:
 ra_temin.gat,28,319,0	script	saint1#rachel	45,4,2,{
 
 OnTouch:
-	if ((ra_tem_q > 21) || (MISC_QUEST & 8192)) { warp "ra_san01",140,135; end; }
+	if ((ra_tem_q > 21) || (ra_tem_q2 == 1)) { warp "ra_san01",140,135; end; }
 
 	if (ra_tem_q == 21) {
 		mes "^3355FFThis must be the";

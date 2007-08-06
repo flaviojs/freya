@@ -131,69 +131,6 @@ turbo_room.gat,100,62,0	warp	turbowarp1002	1,1,alde_gld.gat,183,198
 
 turbo_room.gat,124,86,7	shop	Turbo Track Merchant	90,501:50,502:200,503:550,504:1200,645:800,656:1500,1065:100,1750:1
 
-turbo_room.gat,130,91,3	script	Kafra Staff	115,{
-
-	if (KAFRA_PIT >= 25000) {
-		mes "[Kafra Staff]";
-		mes "Your Special Reserve Points";
-		mes "have exceeded the maximum";
-		mes "capacity. Please redeem these";
-		mes "points at the Kafra Corportation Headquarters in Al De Baran";
-		mes "before using the Kafra Service.";
-		close;
-	}
-	cutin "kafra_03",2;
-	mes "[Kafra Staff]";
-	mes "Welcome~ The Kafra Services";
-	mes "are always on your side. Let me";
-	mes "remind you that using the Save";
-	mes "Service here will change your";
-	mes "Respawn Point to Al De Baran.";
-	mes "Now, how may I assist you?";
-	next;
-	switch(select("Save","Use Storage","Check Other Information","Cancel")) {
-	case 1:
-		savepoint "aldebaran.gat",167,112;
-		mes "[Kafra Staff]";
-		mes "Your Respawn Point";
-		mes "has been saved here";
-		mes "in Al De Baran. Thank you";
-		mes "for using the Kafra Service~";
-		break;
-	case 2:
-		callfunc "KafraStorage",40;
-		break;
-	case 3:
-		mes "[Kafra Staff]";
-		mes ""+strcharinfo(0)+" has";
-		mes ""+KAFRA_PIT+" Special Reserve Points.";
-		next;
-		mes "[Kafra Staff]";
-		mes "You can exchange";
-		mes "Special Reserve Points";
-		mes "for rewards in our main office";
-		mes "in Al De Baran. Please use our";
-		mes "convenient services to earn a";
-		mes "chance to win some prizes~";
-		break;
-	case 4:
-		mes "[Kafra Staff]";
-		mes "We, here at Kafra Corporation,";
-		mes "are trying our best to provide";
-		mes "you with top quality service.";
-		next;
-		mes "[Kafra Staff]";
-		mes "We are putting our greatest effort into providing our customers with services that are reliable and convenient through strict organization and management.";
-		next;
-		mes "[Kafra Staff]";
-		mes "Thank you for using Kafra Corporation's services.";
-		break;
-	}
-	close2;
-	cutin "kafra_03",255;
-	end;
-}
-
 turbo_room.gat,75,95,5	script	Solo Mode#1	857,{
 
 	mes "^2F4F4FSolo Mode Record^000000";

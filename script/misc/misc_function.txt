@@ -25,42 +25,58 @@
 
 function	script	F_ClearJobVariables	{
 
-	// Misc
-	set JBLVL,0;
-	set FIRSTAID,0;
-	set PLAYDEAD,0;
-	set got_bandage,0;
-	set got_novnametag,0;
-	// First Class Jobs
-	set job_acolyte_q,0; set job_acolyte_q2,0;
+	// Novice Grounds
+	set nov_1st_cos,0;
+	set nov_2nd_cos,0;
+	set nov_3_swordman,0;
+	set nov_3_archer,0;
+	set nov_3_thief,0;
+	set nov_3_magician,0;
+	set nov_3_acolyte,0;
+	set nov_3_merchant,0;
+	set treasure_alb,0;
+	set nov_1_2_cos_c,0;
+	set nov_get_item01,0;
+	set nov_get_item02,0;
+	set nov_get_item03,0;
+	set nov_get_item04,0;
+	set nov_get_item05,0;
+
+	// 1st Class Quests
+	set job_acolyte_q,0;
 	set job_archer_q,0;
 	set job_magician_q,0;
-	set job_merchant_q,0; set job_merchant_q2,0; set job_merchant_q3,0;
-	set job_sword_q,0; set SWTEST, 0;
+	set job_merchant_q,0;
+	set job_merchant_q2,0;
+	set quest_alb_01,0;
+	set job_sword_q,0;
 	set job_thief_q,0;
-	// Super Novice
-	set SUPNOV_Q,0;
-	// 2-1 Jobs
-	set ASSIN_Q,0; set ASSIN_Q2,0;
-	set BSMITH_Q,0; set BSMITH_Q2,0;
-	set HNTR_Q,0; set HNTR_Q2,0;
-	set KNIGHT_Q,0; set KNIGHT_Q2,0;
-	set PRIEST_Q,0; set PRIEST_Q2,0; set PRIEST_Q3,0;
-	set WIZ_Q,0; set WIZ_Q2,0;
-	// 2-2 Jobs
-	set ROGUE_Q,0; set ROGUE_Q2,0;
-	set ALCH_Q,0; set ALCH_Q2,0;
-	set CRUS_Q,0;
-	set MONK_Q,0; set JOB_MONK_C,0;
-	set SAGE_Q,0; set SAGE_Q2,0;
-	set DANC_Q,0;
-	set BARD_Q,0;
-	// Expanded Classes
-	set TAEK_Q,0; set TAEK_Q2,0; set TK_Q,0;
-	set STGL_Q,0;
-	set SOUL_Q,0;
-	set GUNS_Q,0;
-	set NINJ_Q,0;
+
+	// 2nd Class Quests
+	set job_wizard_q,0;
+	set job_knight_q,0;
+	set job_priest_q,0;
+	set job_black,0;
+	set job_assasin_q,0;
+	set thief_joblvl,0;
+	set asn_skill,0;
+	set job_hunter_q,0;
+	set job_monk_q,0;
+	set job_rogue_q,0;
+	set job_sage_q,0;
+	set job_alchemist_q,0;
+	set job_crusader_q,0;
+	set job_bard_q,0;
+	set xmas_npc,0;
+	set job_dancer_q,0;
+
+	// Expanded Class Quests
+	set job_taekwon_q,0;
+	set job_star,0;
+	set job_linker,0;
+	set hg_gun,0;
+	set hg_nin,0;
+
 	return;
 }
 
@@ -71,16 +87,6 @@ function	script	F_ClearJobVariables	{
 
 function	script	F_ClearGarbageVariables	{
 
-	// Clear outdated global VARS
-	// DTS Vote System
-	if ($dts&(1<<6)) set $dts,$dts&~(1<<6);
-	// Cube Room
-	if (hzdun) {
-		set MISC_QUEST,MISC_QUEST|512;
-		set num1,0;	set num2,0;	set num3,0;	set num4,0;	set num5,0;
-		set num6,0;	set num7,0;	set num8,0;	set num9,0;
-		set hzdun,0; set cubekey,0; set piciburn,0;
-	}
 	return;
 }
 
@@ -456,10 +462,11 @@ function	script	F_TownAnnounce	{
 	mapannounce "alberta.gat",getarg(0),getarg(1);
 	mapannounce "geffen.gat",getarg(0),getarg(1);
 	mapannounce "morocc.gat",getarg(0),getarg(1);
-	mapannounce "aldebaran.gat",getarg(0),getarg(1);
 	mapannounce "izlude.gat",getarg(0),getarg(1);
-	mapannounce "yuno.gat",getarg(0),getarg(1);
+	mapannounce "aldebaran.gat",getarg(0),getarg(1);
+	mapannounce "xmas.gat",getarg(0),getarg(1);
 	mapannounce "comodo.gat",getarg(0),getarg(1);
+	mapannounce "yuno.gat",getarg(0),getarg(1);
 	mapannounce "amatsu.gat",getarg(0),getarg(1);
 	mapannounce "gonryun.gat",getarg(0),getarg(1);
 	mapannounce "umbala.gat",getarg(0),getarg(1);
@@ -474,6 +481,6 @@ function	script	F_TownAnnounce	{
 	mapannounce "veins.gat",getarg(0),getarg(1);
 	mapannounce "nameless_i.gat",getarg(0),getarg(1);
 	mapannounce "nameless_n.gat",getarg(0),getarg(1);
-	mapannounce "moscovia.gat",getarg(0),getarg(1);
+	//mapannounce "moscovia.gat",getarg(0),getarg(1);
 	return;
 }

@@ -7,113 +7,2432 @@
 //              /_/  |_|\____|_|  \___/|_|  \__,_|              
 //                 http://aurora.deltaanime.net                 
 //--------------------------------------------------------------
-// Script Title: GvG Kafra System	Author: jAthena/Yor/Tsuyuki
+// Script Title: GvG Kafra System	Author: Tsuyuki
 //--------------------------------------------------------------
-// Revision History: v1.2
+// Revision History: v1.0
 //--------------------------------------------------------------
-//	1.0 First version [jAthena]
-//	1.1 Translated into English [Yor]
-//	1.2 Updated dialogue to iRO Aegis [Tsuyuki]
+//	1.0 First version, converted from Aegis [Tsuyuki]
 //--------------------------------------------------------------
-// Additional Notes: * Official-certified *
+// Additional Notes: * Official-certified / Aegis-certified *
 //--------------------------------------------------------------
 
 
-//==============================================================
-// Menu function of a kafra under exclusive contract inside a Castle.
-//	callfunc "F_GvKafraMenu";
+//--------------------------------------------------------------
+// Aldebaran Guild Castle Kafra Employees - [Tsuyuki]
 //--------------------------------------------------------------
 
-function	script	F_GvKafraMenu	{
+aldeg_cas01.gat,218,170,0	script	Kafra Employee::AgitKafra_L0	117,{
 
 	cutin "kafra_01",2;
-	set '@dummy,getmapxy('@map$,'@dummy,'@dummy,1);	// Only '@map$ is necessary.
+	set '@dummy,getmapxy('@map$,'@dummy,'@dummy,1);
 	set '@gid,getcastledata('@map$,1);
 	if ('@gid == 0 || getcharid(2) != '@gid) {
-		mes "I am instructed to service only for the ^ff0000" +getguildname('@gid)+ "^000000 Guild. Please try another Kafra staff member around here. Sorry for the inconvenience.";
+		mes "[Kafra Employee]";
+		mes "Welcome, member of the ^ff0000"+getguildname('@gid)+"^000000 guild.";
+		mes "We Kafra will stay with you wherever you go.";
+		next;
+		switch(select("Use Storage","Teleport Service","Rent a Cart","Cancel")) {
+		case 1:
+			if (getskilllv(1) < 6) {
+				mes "[Kafra Employee]";
+				mes "I am sorry but you have to be at least Novice skill level 6 for this service.";
+				close2;
+				cutin "kafra_01",255;
+				end;
+			} else {
+				openstorage;
+				close2;
+				cutin "kafra_01",255;
+				end;
+			}
+		case 2:
+			mes "[Kafra Staff]";
+			mes "Please let me know your destination.";
+			next;
+			switch(select("Geffen ^880000200 ^000000z","Al De Baran ^880000200 ^000000z","Prontera ^880000200 ^000000z","Izlude ^880000200 ^000000z","Alberta ^880000200 ^000000z","Payon ^880000200 ^000000z","Morroc ^880000200 ^000000z","Comodo ^880000500 ^000000z","Cancel")) {
+			case 1:
+				if (Zeny < 200) {
+					mes "[Kafra Staff]";
+					mes "You don't have enough money. Please check again.";
+					close2;
+					cutin "kafra_01",255;
+					end;
+				}
+				set Zeny,Zeny-200;
+				set kf_10_pit,kf_10_pit+2;
+				warp "geffen.gat",120,39;
+				cutin "kafra_01",255;
+				end;
+			case 2:
+				if (Zeny < 200) {
+					mes "[Kafra Staff]";
+					mes "You don't have enough money. Please check again.";
+					close2;
+					cutin "kafra_01",255;
+					end;
+				}
+				set Zeny,Zeny-200;
+				set kf_10_pit,kf_10_pit+2;
+				warp "aldebaran.gat",139,39;
+				cutin "kafra_01",255;
+				end;
+			case 3:
+				if (Zeny < 200) {
+					mes "[Kafra Staff]";
+					mes "You don't have enough money. Please check again.";
+					close2;
+					cutin "kafra_01",255;
+					end;
+				}
+				set Zeny,Zeny-200;
+				set kf_10_pit,kf_10_pit+2;
+				warp "prontera.gat",116,72;
+				cutin "kafra_01",255;
+				end;
+			case 4:
+				if (Zeny < 200) {
+					mes "[Kafra Staff]";
+					mes "You don't have enough money. Please check again.";
+					close2;
+					cutin "kafra_01",255;
+					end;
+				}
+				set Zeny,Zeny-200;
+				set kf_10_pit,kf_10_pit+2;
+				warp "izlude.gat",91,105;
+				cutin "kafra_01",255;
+				end;
+			case 5:
+				if (Zeny < 200) {
+					mes "[Kafra Staff]";
+					mes "You don't have enough money. Please check again.";
+					close2;
+					cutin "kafra_01",255;
+					end;
+				}
+				set Zeny,Zeny-200;
+				set kf_10_pit,kf_10_pit+2;
+				warp "alberta.gat",116,57;
+				cutin "kafra_01",255;
+				end;
+			case 6:
+				if (Zeny < 200) {
+					mes "[Kafra Staff]";
+					mes "You don't have enough money. Please check again.";
+					close2;
+					cutin "kafra_01",255;
+					end;
+				}
+				set Zeny,Zeny-200;
+				set kf_10_pit,kf_10_pit+2;
+				warp "payon.gat",68,99;
+				cutin "kafra_01",255;
+				end;
+			case 7:
+				if (Zeny < 200) {
+					mes "[Kafra Staff]";
+					mes "You don't have enough money. Please check again.";
+					close2;
+					cutin "kafra_01",255;
+					end;
+				}
+				set Zeny,Zeny-200;
+				set kf_10_pit,kf_10_pit+2;
+				warp "morocc.gat",156,46;
+				cutin "kafra_01",255;
+				end;
+			case 8:
+				if (Zeny < 500) {
+					mes "[Kafra Staff]";
+					mes "You don't have enough money. Please check again.";
+					close2;
+					cutin "kafra_01",255;
+					end;
+				}
+				set Zeny,Zeny-500;
+				set kf_10_pit,kf_10_pit+2;
+				warp "comodo.gat",209,143;
+				cutin "kafra_01",255;
+				end;
+			case 9:
+				close2;
+				cutin "kafra_01",255;
+				end;
+			}
+		case 3:
+			if ((Basejob != Job_Merchant) && (Basejob != Job_Blacksmith)) {
+				mes "[Kafra Employee]";
+				mes "I am sorry. The cart service is only provided for the Merchant and Blacksmith class.";
+				close2;
+				cutin "kafra_01",255;
+				end;
+			} else if (Cart) {
+				mes "[Kafra Employee]";
+				mes "You have a cart equipped already.";
+				close2;
+				cutin "kafra_01",255;
+				end;
+			} else {
+				mes "[Kafra Employee]";
+				mes "The cart fee is 800 zeny. Do you want to use this service?";
+				next;
+				switch(select("Yes.","Cancel.")) {
+				case 1:
+					if (Zeny < 800) {
+						mes "[Kafra Employee]";
+						mes "You don't have enough money. You need 800 zeny to rent a cart.";
+						close2;
+						cutin "kafra_01",255;
+						end;
+					}
+					set kf_10_pit,kf_10_pit+8;
+					set Zeny,Zeny-800;
+					setcart;
+					close2;
+					cutin "kafra_01",255;
+					end;
+				case 2:
+					close2;
+					cutin "kafra_01",255;
+					end;
+				}
+			}
+		case 4:
+			mes "[Kafra Employee]";
+			mes "The Kafra corp. always tries to privide the best of the services.";
+			mes "Thank you for using Kafra corp. Please come again.";
+			close2;
+			cutin "kafra_01",255;
+			end;
+		}
+	} else {
+		mes "[Kafra Employee]";
+		mes "I am only contracted to provide service to the ^ff0000"+getguildname('@gid)+"^000000 Guild. Please try another Kafra Employe around here. Sorry for the inconvenience.";
 		close2;
 		cutin "kafra_01",255;
 		end;
 	}
-	mes "[Kafra]";
- 	mes "Welcome. ^ff0000" +getguildname('@gid)+ "^000000 Member.";
-	mes "The Kafra Coporation will stay with you wherever you go.";
-	next;
-	return;
+}
+
+aldeg_cas02.gat,84,74,0	script	Kafra Staff::AgitKafra_L1	117,{
+
+	cutin "kafra_01",2;
+	set '@dummy,getmapxy('@map$,'@dummy,'@dummy,1);
+	set '@gid,getcastledata('@map$,1);
+	if ('@gid == 0 || getcharid(2) != '@gid) {
+		mes "[Kafra Staff]";
+		mes "Welcome. ^ff0000"+getguildname('@gid)+"^000000 Member.";
+		mes "The Kafra Coporation will stay with you wherever you go.";
+		next;
+		switch(select("Use Storage","Use Warp Service","Rent a Cart","Cancel")) {
+		case 1:
+			if (getskilllv(1) < 6) {
+				mes "[Kafra Staff]";
+				mes "I am sorry but you have to be at least Novice skill level 6 if you want to use the storage.";
+				close2;
+				cutin "kafra_01",255;
+				end;
+			} else {
+				openstorage;
+				close2;
+				cutin "kafra_01",255;
+				end;
+			}
+		case 2:
+			mes "[Kafra Staff]";
+			mes "Please let me know your destination.";
+			next;
+			switch(select("Al De Baran ^880000200 ^000000z","Cancel")) {
+			case 1:
+				if (Zeny < 200) {
+					mes "[Kafra Staff]";
+					mes "You don't have enough money. Please check again.";
+					close2;
+					cutin "kafra_01",255;
+					end;
+				}
+				set Zeny,Zeny-200;
+				set kf_10_pit,kf_10_pit+2;
+				warp "aldebaran.gat",132,103;
+				cutin "kafra_01",255;
+				end;
+			case 2:
+				close2;
+				cutin "kafra_01",255;
+				end;
+			}
+		case 3:
+			if ((Basejob != Job_Merchant) && (Basejob != Job_Blacksmith)) {
+				mes "[Kafra Staff]";
+				mes "I am sorry. The Cart Service is only provided for the Merchant and Blacksmith class.";
+				close2;
+				cutin "kafra_01",255;
+				end;
+			} else if (Cart) {
+				mes "[Kafra Staff]";
+				mes "You have a cart equipped already.";
+				close2;
+				cutin "kafra_01",255;
+				end;
+			} else {
+				mes "[Kafra Staff]";
+				mes "The cart fee is 800 zeny. Do you want to rent a cart?";
+				next;
+				switch(select("Yes.","Cancel.")) {
+				case 1:
+					if (Zeny < 800) {
+						mes "[Kafra Staff]";
+						mes "You don't have enough Money. You need 800 Zeny to rent a cart.";
+						close2;
+						cutin "kafra_01",255;
+						end;
+					}
+					set kf_10_pit,kf_10_pit+8;
+					set Zeny,Zeny-800;
+					setcart;
+					close2;
+					cutin "kafra_01",255;
+					end;
+				case 2:
+					close2;
+					cutin "kafra_01",255;
+					end;
+				}
+			}
+		case 4:
+			mes "[Kafra Staff]";
+			mes "The Kafra corp. always tries to give the best service.";
+			mes "Thank you for using Kafra corp. Please come again.";
+			close2;
+			cutin "kafra_01",255;
+			end;
+		}
+	} else {
+		mes "[Kafra Staff]";
+		mes "I am instructed to service only for the ^ff0000"+getguildname('@gid)+"^000000 Guild. Please try another Kafra staff member around here. Sorry for the inconvenience.";
+		close2;
+		cutin "kafra_01",255;
+		end;
+	}
+}
+
+aldeg_cas03.gat,118,76,0	script	Kafra Employee::AgitKafra_L2	117,{
+
+	cutin "kafra_01",2;
+	set '@dummy,getmapxy('@map$,'@dummy,'@dummy,1);
+	set '@gid,getcastledata('@map$,1);
+	if ('@gid == 0 || getcharid(2) != '@gid) {
+		mes "[Kafra Employee]";
+		mes "Welcome, member of the ^ff0000"+getguildname('@gid)+"^000000 guild.";
+		mes "We Kafra will stay with you wherever you go.";
+		next;
+		switch(select("Use Storage","Use Warp Service","Rent a Cart","Cancel")) {
+		case 1:
+			if (getskilllv(1) < 6) {
+				mes "[Kafra Employee]";
+				mes "I am sorry but you have to be at least Novice skill level 6 if you want to use the storage.";
+				close2;
+				cutin "kafra_01",255;
+				end;
+			} else {
+				openstorage;
+				close2;
+				cutin "kafra_01",255;
+				end;
+			}
+		case 2:
+			mes "[Kafra Employee]";
+			mes "Please let me know your destination.";
+			next;
+			switch(select("Al De Baran ^880000200 ^000000z","Cancel")) {
+			case 1:
+				if (Zeny < 200) {
+					mes "[Kafra Employee]";
+					mes "You don't have enough money. Please check again.";
+					close2;
+					cutin "kafra_01",255;
+					end;
+				}
+				set Zeny,Zeny-200;
+				set kf_10_pit,kf_10_pit+2;
+				warp "aldebaran.gat",132,103;
+				cutin "kafra_01",255;
+				end;
+			case 2:
+				close2;
+				cutin "kafra_01",255;
+				end;
+			}
+		case 3:
+			if ((Basejob != Job_Merchant) && (Basejob != Job_Blacksmith)) {
+				mes "[Kafra Employee]";
+				mes "I am sorry. The Cart Service is only provided for the Merchant and Blacksmith class.";
+				close2;
+				cutin "kafra_01",255;
+				end;
+			} else if (Cart) {
+				mes "[Kafra Employee]";
+				mes "You have a cart equipped already.";
+				close2;
+				cutin "kafra_01",255;
+				end;
+			} else {
+				mes "[Kafra Employee]";
+				mes "The Cart Fee is 800 Zeny. Do you want to Rent a Cart?";
+				next;
+				switch(select("Yes.","Cancel.")) {
+				case 1:
+					if (Zeny < 800) {
+						mes "[Kafra Employee]";
+						mes "You don't have enough money. You need 800 Zeny to rent a cart.";
+						close2;
+						cutin "kafra_01",255;
+						end;
+					}
+					set kf_10_pit,kf_10_pit+8;
+					set Zeny,Zeny-800;
+					setcart;
+					close2;
+					cutin "kafra_01",255;
+					end;
+				case 2:
+					close2;
+					cutin "kafra_01",255;
+					end;
+				}
+			}
+		case 4:
+			mes "[Kafra Employee]";
+			mes "The Kafra corp. always tries to privide the best of the services.";
+			mes "Thank you for using Kafra corp. Please come again.";
+			close2;
+			cutin "kafra_01",255;
+			end;
+		}
+	} else {
+		mes "[Kafra Employee]";
+		mes "I am only contracted to provide service to the ^ff0000"+getguildname('@gid)+"^000000 Guild. Please try another Kafra Employe around here. Sorry for the inconvenience.";
+		close2;
+		cutin "kafra_01",255;
+		end;
+	}
+}
+
+aldeg_cas04.gat,45,88,0	script	Kafra Staff::AgitKafra_L3	117,{
+
+	cutin "kafra_01",2;
+	set '@dummy,getmapxy('@map$,'@dummy,'@dummy,1);
+	set '@gid,getcastledata('@map$,1);
+	if ('@gid == 0 || getcharid(2) != '@gid) {
+		mes "[Kafra Staff]";
+		mes "Welcome. ^ff0000"+getguildname('@gid)+"^000000 Member.";
+		mes "The Kafra Coporation will stay with you wherever you go.";
+		next;
+		switch(select("Use Storage","Use Warp Service","Rent a Cart","Cancel")) {
+		case 1:
+			if (getskilllv(1) < 6) {
+				mes "[Kafra Staff]";
+				mes "I am sorry but you have to be at least Novice skill level 6 if you want to use the storage.";
+				close2;
+				cutin "kafra_01",255;
+				end;
+			} else {
+				openstorage;
+				close2;
+				cutin "kafra_01",255;
+				end;
+			}
+		case 2:
+			mes "[Kafra Staff]";
+			mes "Please let me know your destination.";
+			next;
+			switch(select("Al De Baran ^880000200 ^000000z","Cancel")) {
+			case 1:
+				if (Zeny < 200) {
+					mes "[Kafra Staff]";
+					mes "You don't have enough money. Please check again.";
+					close2;
+					cutin "kafra_01",255;
+					end;
+				}
+				set Zeny,Zeny-200;
+				set kf_10_pit,kf_10_pit+2;
+				warp "aldebaran.gat",132,103;
+				cutin "kafra_01",255;
+				end;
+			case 2:
+				close2;
+				cutin "kafra_01",255;
+				end;
+			}
+		case 3:
+			if ((Basejob != Job_Merchant) && (Basejob != Job_Blacksmith)) {
+				mes "[Kafra Staff]";
+				mes "[Kafra Staff]";
+				mes "I am sorry. The Cart Service is only provided for the Merchant and Blacksmith class.";
+				close2;
+				cutin "kafra_01",255;
+				end;
+			} else if (Cart) {
+				mes "[Kafra Staff]";
+				mes "You have a cart equipped already.";
+				close2;
+				cutin "kafra_01",255;
+				end;
+			} else {
+				mes "[Kafra Staff]";
+				mes "The cart fee is 800 zeny. Do you want to rent a cart?";
+				next;
+				switch(select("Yes.","Cancel.")) {
+				case 1:
+					if (Zeny < 800) {
+						mes "[Kafra Staff]";
+						mes "You don't have enough money. You need 800 zeny to rent a cart.";
+						close2;
+						cutin "kafra_01",255;
+						end;
+					}
+					set kf_10_pit,kf_10_pit+8;
+					set Zeny,Zeny-800;
+					setcart;
+					close2;
+					cutin "kafra_01",255;
+					end;
+				case 2:
+					close2;
+					cutin "kafra_01",255;
+					end;
+				}
+			}
+		case 4:
+			mes "[Kafra Staff]";
+			mes "The Kafra corp. always tries to give the best service.";
+			mes "Thank you for using Kafra corp. Please come again.";
+			close2;
+			cutin "kafra_01",255;
+			end;
+		}
+	} else {
+		mes "[Kafra Staff]";
+		mes "I am instructed to service only for the ^ff0000"+getguildname('@gid)+"^000000 Guild. Please try another Kafra staff member around here. Sorry for the inconvenience.";
+		close2;
+		cutin "kafra_01",255;
+		end;
+	}
+}
+
+aldeg_cas05.gat,31,190,0	script	Kafra Staff::AgitKafra_L4	117,{
+
+	cutin "kafra_01",2;
+	set '@dummy,getmapxy('@map$,'@dummy,'@dummy,1);
+	set '@gid,getcastledata('@map$,1);
+	if ('@gid == 0 || getcharid(2) != '@gid) {
+		mes "[Kafra Staff]";
+		mes "Welcome. ^ff0000"+getguildname('@gid)+"^000000 Member.";
+		mes "The Kafra Coporation will stay with you wherever you go.";
+		next;
+		switch(select("Use Storage","Use Warp Service","Rent a Cart","Cancel")) {
+		case 1:
+			if (getskilllv(1) < 6) {
+				mes "[Kafra Staff]";
+				mes "I am sorry but you have to be at least Novice skill level 6 if you want to use the storage.";
+				close2;
+				cutin "kafra_01",255;
+				end;
+			} else {
+				openstorage;
+				close2;
+				cutin "kafra_01",255;
+				end;
+			}
+		case 2:
+			mes "[Kafra Staff]";
+			mes "Please let me know your destination.";
+			next;
+			switch(select("Al De Baran ^880000200 ^000000z","Cancel")) {
+			case 1:
+				if (Zeny < 200) {
+					mes "[Kafra Staff]";
+					mes "You don't have enough money. Please check again.";
+					close2;
+					cutin "kafra_01",255;
+					end;
+				}
+				set Zeny,Zeny-200;
+				set kf_10_pit,kf_10_pit+2;
+				warp "aldebaran.gat",132,103;
+				cutin "kafra_01",255;
+				end;
+			case 2:
+				close2;
+				cutin "kafra_01",255;
+				end;
+			}
+		case 3:
+			if ((Basejob != Job_Merchant) && (Basejob != Job_Blacksmith)) {
+				mes "[Kafra Staff]";
+				mes "I am sorry. The Cart Service is only provided for the Merchant and Blacksmith class.";
+				close2;
+				cutin "kafra_01",255;
+				end;
+			} else if (Cart) {
+				mes "[Kafra Staff]";
+				mes "You have a cart equipped already.";
+				close2;
+				cutin "kafra_01",255;
+				end;
+			} else {
+				mes "[Kafra Staff]";
+				mes "The cart fee is 800 zeny. Do you want to rent a cart?";
+				next;
+				switch(select("Yes.","Cancel.")) {
+				case 1:
+					if (Zeny < 800) {
+						mes "[Kafra Staff]";
+						mes "You don't have enough money. You need 800 zeny to rent a cart.";
+						close2;
+						cutin "kafra_01",255;
+						end;
+					}
+					set kf_10_pit,kf_10_pit+8;
+					set Zeny,Zeny-800;
+					setcart;
+					close2;
+					cutin "kafra_01",255;
+					end;
+				case 2:
+					close2;
+					cutin "kafra_01",255;
+					end;
+				}
+			}
+		case 4:
+			mes "[Kafra Staff]";
+			mes "The Kafra corp. always tries to give the best service.";
+			mes "Thank you for using Kafra corp. Please come again.";
+			close2;
+			cutin "kafra_01",255;
+			end;
+		}
+	} else {
+		mes "[Kafra Staff]";
+		mes "I am instructed to service only for the ^ff0000"+getguildname('@gid)+"^000000 Guild. Please try another Kafra staff member around here. Sorry for the inconvenience.";
+		close2;
+		cutin "kafra_01",255;
+		end;
+	}
 }
 
 
-//==============================================================
-// Aldebaran
+//--------------------------------------------------------------
+// Geffen Guild Castle Kafra Employees - [Tsuyuki]
 //--------------------------------------------------------------
 
--	script	AgitKafra_L0	139,{
-	callfunc "F_GvKafraMenu";
-	set '@code,17;
-	set '@price,200;
-	callfunc "F_KafraMain",3,0x4e,0,0,0,0,0,0,40,800,'@code,'@price;
-	end;
+gefg_cas01.gat,83,47,3	script	Kafra Staff::AgitKafra_B0	117,{
+
+	cutin "kafra_01",2;
+	set '@dummy,getmapxy('@map$,'@dummy,'@dummy,1);
+	set '@gid,getcastledata('@map$,1);
+	if ('@gid == 0 || getcharid(2) != '@gid) {
+		mes "[Kafra Staff]";
+		mes "Welcome. ^ff0000"+getguildname('@gid)+"^000000 Member.";
+		mes "The Kafra Coporation will stay with you wherever you go.";
+		next;
+		switch(select("Use Storage","Use Warp Service","Rent a Cart","Cancel")) {
+		case 1:
+			if (getskilllv(1) < 6) {
+				mes "[Kafra Staff]";
+				mes "I am sorry but you have to be at least Novice skill level 6 if you want to use the storage.";
+				close2;
+				cutin "kafra_01",255;
+				end;
+			} else {
+				openstorage;
+				close2;
+				cutin "kafra_01",255;
+				end;
+			}
+		case 2:
+			mes "[Kafra Staff]";
+			mes "Please let me know your destination.";
+			next;
+			switch(select("Geffen ^880000200 ^000000z","Al De Baran ^880000200 ^000000z","Prontera ^880000200 ^000000z","Izlude ^880000200 ^000000z","Alberta ^880000200 ^000000z","Payon ^880000200 ^000000z","Morroc ^880000200 ^000000z","Comodo ^880000500 ^000000z","Cancel")) {
+			case 1:
+				if (Zeny < 200) {
+					mes "[Kafra Staff]";
+					mes "You don't have enough money. Please check again.";
+					close2;
+					cutin "kafra_01",255;
+					end;
+				}
+				set Zeny,Zeny-200;
+				set kf_10_pit,kf_10_pit+2;
+				warp "geffen.gat",120,39;
+				cutin "kafra_01",255;
+				end;
+			case 2:
+				if (Zeny < 200) {
+					mes "[Kafra Staff]";
+					mes "You don't have enough money. Please check again.";
+					close2;
+					cutin "kafra_01",255;
+					end;
+				}
+				set Zeny,Zeny-200;
+				set kf_10_pit,kf_10_pit+2;
+				warp "aldebaran.gat",139,39;
+				cutin "kafra_01",255;
+				end;
+			case 3:
+				if (Zeny < 200) {
+					mes "[Kafra Staff]";
+					mes "You don't have enough money. Please check again.";
+					close2;
+					cutin "kafra_01",255;
+					end;
+				}
+				set Zeny,Zeny-200;
+				set kf_10_pit,kf_10_pit+2;
+				warp "prontera.gat",116,72;
+				cutin "kafra_01",255;
+				end;
+			case 4:
+				if (Zeny < 200) {
+					mes "[Kafra Staff]";
+					mes "You don't have enough money. Please check again.";
+					close2;
+					cutin "kafra_01",255;
+					end;
+				}
+				set Zeny,Zeny-200;
+				set kf_10_pit,kf_10_pit+2;
+				warp "izlude.gat",91,105;
+				cutin "kafra_01",255;
+				end;
+			case 5:
+				if (Zeny < 200) {
+					mes "[Kafra Staff]";
+					mes "You don't have enough money. Please check again.";
+					close2;
+					cutin "kafra_01",255;
+					end;
+				}
+				set Zeny,Zeny-200;
+				set kf_10_pit,kf_10_pit+2;
+				warp "alberta.gat",116,57;
+				cutin "kafra_01",255;
+				end;
+			case 6:
+				if (Zeny < 200) {
+					mes "[Kafra Staff]";
+					mes "You don't have enough money. Please check again.";
+					close2;
+					cutin "kafra_01",255;
+					end;
+				}
+				set Zeny,Zeny-200;
+				set kf_10_pit,kf_10_pit+2;
+				warp "payon.gat",68,99;
+				cutin "kafra_01",255;
+				end;
+			case 7:
+				if (Zeny < 200) {
+					mes "[Kafra Staff]";
+					mes "You don't have enough money. Please check again.";
+					close2;
+					cutin "kafra_01",255;
+					end;
+				}
+				set Zeny,Zeny-200;
+				set kf_10_pit,kf_10_pit+2;
+				warp "morocc.gat",156,46;
+				cutin "kafra_01",255;
+				end;
+			case 8:
+				if (Zeny < 500) {
+					mes "[Kafra Staff]";
+					mes "You don't have enough money. Please check again.";
+					close2;
+					cutin "kafra_01",255;
+					end;
+				}
+				set Zeny,Zeny-500;
+				set kf_10_pit,kf_10_pit+2;
+				warp "comodo.gat",209,143;
+				cutin "kafra_01",255;
+				end;
+			case 9:
+				close2;
+				cutin "kafra_01",255;
+				end;
+			}
+		case 3:
+			if ((Basejob != Job_Merchant) && (Basejob != Job_Blacksmith)) {
+				mes "[Kafra Staff]";
+				mes "I am sorry. The Cart service is only provided for Merchant and Blacksmith Class.";
+				close2;
+				cutin "kafra_01",255;
+				end;
+			} else if (Cart) {
+				mes "[Kafra Staff]";
+				mes "You have a cart equipped already.";
+				close2;
+				cutin "kafra_01",255;
+				end;
+			} else {
+				mes "[Kafra Staff]";
+				mes "The cart fee is 800 zeny. Do you want to rent a cart?";
+				next;
+				switch(select("Yes.","Cancel.")) {
+				case 1:
+					if (Zeny < 800) {
+						mes "[Kafra Staff]";
+						mes "You don't have enough money. You need 800 zeny to rent a cart.";
+						close2;
+						cutin "kafra_01",255;
+						end;
+					}
+					set kf_10_pit,kf_10_pit+8;
+					set Zeny,Zeny-800;
+					setcart;
+					close2;
+					cutin "kafra_01",255;
+					end;
+				case 2:
+					close2;
+					cutin "kafra_01",255;
+					end;
+				}
+			}
+		case 4:
+			mes "[Kafra Staff]";
+			mes "The Kafra corp. always tries to give the best service.";
+			mes "Thank you for using Kafra corp. Please come again.";
+			close2;
+			cutin "kafra_01",255;
+			end;
+		}
+	} else {
+		mes "[Kafra Staff]";
+		mes "I am instructed to service only for the ^ff0000"+getguildname('@gid)+"^000000 Guild. Please try another Kafra staff member around here. Sorry for the inconvenience.";
+		close2;
+		cutin "kafra_01",255;
+		end;
+	}
 }
 
-aldeg_cas01.gat,218,170,0	duplicate(AgitKafra_L0)	Kafra::AgitKafra_L1	117
-aldeg_cas02.gat,84,74,0		duplicate(AgitKafra_L0)	Kafra::AgitKafra_L2	117
-aldeg_cas03.gat,118,76,0	duplicate(AgitKafra_L0)	Kafra::AgitKafra_L3	117
-aldeg_cas04.gat,45,88,0		duplicate(AgitKafra_L0)	Kafra::AgitKafra_L4	117
-aldeg_cas05.gat,31,190,0	duplicate(AgitKafra_L0)	Kafra::AgitKafra_L5	117
+gefg_cas02.gat,23,66,3	script	Kafra Staff::AgitKafra_B1	117,{
+
+	cutin "kafra_01",2;
+	set '@dummy,getmapxy('@map$,'@dummy,'@dummy,1);
+	set '@gid,getcastledata('@map$,1);
+	if ('@gid == 0 || getcharid(2) != '@gid) {
+		mes "[Kafra Staff]";
+		mes "Welcome. ^ff0000"+getguildname('@gid)+"^000000 Member.";
+		mes "The Kafra Coporation will stay with you wherever you go.";
+		next;
+		switch(select("Use Storage","Use Warp Service","Rent a Cart","Cancel")) {
+		case 1:
+			if (getskilllv(1) < 6) {
+				mes "[Kafra Staff]";
+				mes "I am sorry but you have to be at least Novice skill level 6 if you want to use the storage.";
+				close2;
+				cutin "kafra_01",255;
+				end;
+			} else {
+				openstorage;
+				close2;
+				cutin "kafra_01",255;
+				end;
+			}
+		case 2:
+			mes "[Kafra Staff]";
+			mes "Please let me know your destination.";
+			next;
+			switch(select("Geffen ^880000200 ^000000z","Cancel")) {
+			case 1:
+				if (Zeny < 200) {
+					mes "[Kafra Staff]";
+					mes "You don't have enough money. Please check again.";
+					close2;
+					cutin "kafra_01",255;
+					end;
+				}
+				set Zeny,Zeny-200;
+				set kf_10_pit,kf_10_pit+2;
+				warp "geffen.gat",120,39;
+				cutin "kafra_01",255;
+				end;
+			case 2:
+				close2;
+				cutin "kafra_01",255;
+				end;
+			}
+		case 3:
+			if ((Basejob != Job_Merchant) && (Basejob != Job_Blacksmith)) {
+				mes "[Kafra Staff]";
+				mes "I am sorry. The Cart service is only provided for Merchant and Blacksmith Class.";
+				close2;
+				cutin "kafra_01",255;
+				end;
+			} else if (Cart) {
+				mes "[Kafra Staff]";
+				mes "You have a cart equipped already.";
+				close2;
+				cutin "kafra_01",255;
+				end;
+			} else {
+				mes "[Kafra Staff]";
+				mes "The cart fee is 800 zeny. Do you want to rent a cart?";
+				next;
+				switch(select("Yes.","Cancel.")) {
+				case 1:
+					if (Zeny < 800) {
+						mes "[Kafra Staff]";
+						mes "You don't have enough money. You need 800 zeny to rent a cart.";
+						close2;
+						cutin "kafra_01",255;
+						end;
+					}
+					set kf_10_pit,kf_10_pit+8;
+					set Zeny,Zeny-800;
+					setcart;
+					close2;
+					cutin "kafra_01",255;
+					end;
+				case 2:
+					close2;
+					cutin "kafra_01",255;
+					end;
+				}
+			}
+		case 4:
+			mes "[Kafra Staff]";
+			mes "The Kafra corp. always tries to give the best service.";
+			mes "Thank you for using Kafra corp. Please come again.";
+			close2;
+			cutin "kafra_01",255;
+			end;
+		}	
+	} else {
+		mes "[Kafra Staff]";
+		mes "I am instructed to service only for the ^ff0000"+getguildname('@gid)+"^000000 Guild. Please try another Kafra staff member around here. Sorry for the inconvenience.";
+		close2;
+		cutin "kafra_01",255;
+		end;
+	}
+}
+
+gefg_cas03.gat,116,89,5	script	Kafra Staff::AgitKafra_B2	117,{
+
+	cutin "kafra_01",2;
+	set '@dummy,getmapxy('@map$,'@dummy,'@dummy,1);
+	set '@gid,getcastledata('@map$,1);
+	if ('@gid == 0 || getcharid(2) != '@gid) {
+		mes "[Kafra Staff]";
+		mes "Welcome. ^ff0000"+getguildname('@gid)+"^000000 Member.";
+		mes "The Kafra Coporation will stay with you wherever you go.";
+		next;
+		switch(select("Use Storage","Use Warp Service","Rent a Cart","Cancel")) {
+		case 1:
+			if (getskilllv(1) < 6) {
+				mes "[Kafra Staff]";
+				mes "I am sorry but you have to be at least Novice skill level 6 if you want to use the storage.";
+				close2;
+				cutin "kafra_01",255;
+				end;
+			} else {
+				openstorage;
+				close2;
+				cutin "kafra_01",255;
+				end;
+			}
+		case 2:
+			mes "[Kafra Staff]";
+			mes "Please let me know your destination.";
+			next;
+			switch(select("Geffen ^880000200 ^000000z","Cancel")) {
+			case 1:
+				if (Zeny < 200) {
+					mes "[Kafra Staff]";
+					mes "You don't have enough money. Please check again.";
+					close2;
+					cutin "kafra_01",255;
+					end;
+				}
+				set Zeny,Zeny-200;
+				set kf_10_pit,kf_10_pit+2;
+				warp "geffen.gat",120,39;
+				cutin "kafra_01",255;
+				end;
+			case 2:
+				close2;
+				cutin "kafra_01",255;
+				end;
+			}
+		case 3:
+			if ((Basejob != Job_Merchant) && (Basejob != Job_Blacksmith)) {
+				mes "[Kafra Staff]";
+				mes "I am sorry. The Cart Service is only provided for the Merchant and Blacksmith class.";
+				close2;
+				cutin "kafra_01",255;
+				end;
+			} else if (Cart) {
+				mes "[Kafra Staff]";
+				mes "You have a cart equipped already.";
+				close2;
+				cutin "kafra_01",255;
+				end;
+			} else {
+				mes "[Kafra Staff]";
+				mes "The cart fee is 800 zeny. Do you want to rent a cart?";
+				next;
+				switch(select("Yes.","Cancel.")) {
+				case 1:
+					if (Zeny < 800) {
+						mes "[Kafra Staff]";
+						mes "You don't have enough money. You need 800 zeny to rent a cart.";
+						close2;
+						cutin "kafra_01",255;
+						end;
+					}
+					set kf_10_pit,kf_10_pit+8;
+					set Zeny,Zeny-800;
+					setcart;
+					close2;
+					cutin "kafra_01",255;
+					end;
+				case 2:
+					close2;
+					cutin "kafra_01",255;
+					end;
+				}
+			}
+		case 4:
+			mes "[Kafra Staff]";
+			mes "The Kafra corp. always tries to give the best service.";
+			mes "Thank you for using Kafra corp. Please come again.";
+			close2;
+			cutin "kafra_01",255;
+			end;
+		}
+	} else {
+		mes "[Kafra Staff]";
+		mes "I am instructed to service only for the ^ff0000"+getguildname('@gid)+"^000000 Guild. Please try another Kafra staff member around here. Sorry for the inconvenience.";
+		close2;
+		cutin "kafra_01",255;
+		end;
+	}
+}
+
+gefg_cas04.gat,59,70,3	script	Kafra Staff::AgitKafra_B3	117,{
+
+	cutin "kafra_01",2;
+	set '@dummy,getmapxy('@map$,'@dummy,'@dummy,1);
+	set '@gid,getcastledata('@map$,1);
+	if ('@gid == 0 || getcharid(2) != '@gid) {
+		mes "[Kafra Staff]";
+		mes "Welcome. ^ff0000"+getguildname('@gid)+"^000000 Member.";
+		mes "The Kafra Coporation will stay with you wherever you go.";
+		next;
+		switch(select("Use Storage","Use Warp Service","Rent a Cart","Cancel")) {
+		case 1:
+			if (getskilllv(1) < 6) {
+				mes "[Kafra Staff]";
+				mes "I am sorry but you have to be at least Novice skill level 6 if you want to use the storage.";
+				close2;
+				cutin "kafra_01",255;
+				end;
+			} else {
+				openstorage;
+				close2;
+				cutin "kafra_01",255;
+				end;
+			}
+		case 2:
+			mes "[Kafra Staff]";
+			mes "Please let me know your destination.";
+			next;
+			switch(select("Geffen ^880000200 ^000000z","Cancel")) {
+			case 1:
+				if (Zeny < 200) {
+					mes "[Kafra Staff]";
+					mes "You don't have enough money. Please check again.";
+					close2;
+					cutin "kafra_01",255;
+					end;
+				}
+				set Zeny,Zeny-200;
+				set kf_10_pit,kf_10_pit+2;
+				warp "geffen.gat",120,39;
+				cutin "kafra_01",255;
+				end;
+			case 2:
+				close2;
+				cutin "kafra_01",255;
+				end;
+			}
+		case 3:
+			if ((Basejob != Job_Merchant) && (Basejob != Job_Blacksmith)) {
+				mes "[Kafra Staff]";
+				mes "I am sorry. The Cart Service is only provided for the Merchant and Blacksmith class.";
+				close2;
+				cutin "kafra_01",255;
+				end;
+			} else if (Cart) {
+				mes "[Kafra Staff]";
+				mes "You have a cart equipped already.";
+				close2;
+				cutin "kafra_01",255;
+				end;
+			} else {
+				mes "[Kafra Staff]";
+				mes "The cart fee is 800 zeny. Do you want to rent a cart?";
+				next;
+				switch(select("Yes.","Cancel.")) {
+				case 1:
+					if (Zeny < 800) {
+						mes "[Kafra Staff]";
+						mes "You don't have enough money. You need 800 zeny to rent a cart.";
+						close2;			
+						cutin "kafra_01",255;
+						end;
+					}
+					set kf_10_pit,kf_10_pit+8;
+					set Zeny,Zeny-800;
+					setcart;
+					close2;
+					cutin "kafra_01",255;
+					end;
+				case 2:
+					close2;
+					cutin "kafra_01",255;
+					end;
+				}
+			}
+		case 4:
+			mes "[Kafra Staff]";
+			mes "The Kafra corp. always tries to give the best service.";
+			mes "Thank you for using Kafra corp. Please come again.";
+			close2;
+			cutin "kafra_01",255;
+			end;
+		}
+	} else {
+		mes "[Kafra Staff]";
+		mes "I am instructed to service only for the ^ff0000"+getguildname('@gid)+"^000000 Guild. Please try another Kafra staff member around here. Sorry for the inconvenience.";
+		close2;
+		cutin "kafra_01",255;
+		end;
+	}
+}
+
+gefg_cas05.gat,61,52,5	script	Kafra Staff::AgitKafra_B4	117,{
+
+	cutin "kafra_01",2;
+	set '@dummy,getmapxy('@map$,'@dummy,'@dummy,1);
+	set '@gid,getcastledata('@map$,1);
+	if ('@gid == 0 || getcharid(2) != '@gid) {
+		mes "[Kafra Staff]";
+		mes "Welcome. ^ff0000"+getguildname('@gid)+"^000000 Member.";
+		mes "The Kafra Coporation will stay with you wherever you go.";
+		next;
+		switch(select("Use Storage","Use Warp Service","Rent a Cart","Cancel")) {
+		case 1:
+			if (getskilllv(1) < 6) {
+				mes "[Kafra Staff]";
+				mes "I am sorry but you have to be at least Novice skill level 6 if you want to use the storage.";
+				close2;
+			} else {
+				openstorage;
+				close2;
+				cutin "kafra_01",255;
+				end;
+			}
+		case 2:
+			mes "[Kafra Staff]";
+			mes "Please let me know your destination.";
+			next;
+			switch(select("Geffen ^880000200 ^000000z","Cancel")) {
+			case 1:
+				if (Zeny < 200) {
+					mes "[Kafra Staff]";
+					mes "You don't have enough money. Please check again.";
+					close2;
+					cutin "kafra_01",255;
+					end;
+				}
+				set Zeny,Zeny-200;
+				set kf_10_pit,kf_10_pit+2;
+				warp "geffen.gat",120,39;
+				cutin "kafra_01",255;
+				end;
+			case 2:
+				close2;
+				cutin "kafra_01",255;
+				end;
+			}
+		case 3:
+			if ((Basejob != Job_Merchant) && (Basejob != Job_Blacksmith)) {
+				mes "[Kafra Staff]";
+				mes "I am sorry. The Cart Service is only provided for the Merchant and Blacksmith class.";
+				close2;
+				cutin "kafra_01",255;
+				end;
+			} else if (Cart) {
+				mes "[Kafra Staff]";
+				mes "You have a cart equipped already.";
+				close2;
+				cutin "kafra_01",255;
+				end;
+			} else {
+				mes "[Kafra Staff]";
+				mes "The cart fee is 800 zeny. Do you want to rent a cart?";
+				next;
+				switch(select("Yes.","Cancel.")) {
+				case 1:
+					if (Zeny < 800) {
+						mes "[Kafra Staff]";
+						mes "You don't have enough money. You need 800 zeny to rent a cart.";
+						close2;
+						cutin "kafra_01",255;
+						end;
+					}
+					set kf_10_pit,kf_10_pit+8;
+					set Zeny,Zeny-800;
+					setcart;
+					close2;
+					cutin "kafra_01",255;
+					end;
+				case 2:
+					close2;
+					cutin "kafra_01",255;
+					end;
+				}
+			}
+		case 4:
+			mes "[Kafra Staff]";
+			mes "The Kafra corp. always tries to give the best service.";
+			mes "Thank you for using Kafra corp. Please come again.";
+			close2;
+			cutin "kafra_01",255;
+			end;
+		}
+	} else {
+		mes "[Kafra Staff]";
+		mes "I am instructed to service only for the ^ff0000"+getguildname('@gid)+"^000000 Guild. Please try another Kafra staff member around here. Sorry for the inconvenience.";
+		close2;
+		cutin "kafra_01",255;
+		end;
+	}
+}
 
 
-//==============================================================
-// Geffen
+//--------------------------------------------------------------
+// Payon Guild Castle Kafra Employees - [Tsuyuki]
 //--------------------------------------------------------------
 
--	script	AgitKafra_B0	139,{
-	callfunc "F_GvKafraMenu";
-	set '@code,15;
-	set '@price,200;
-	callfunc "F_KafraMain",3,0x4e,0,0,0,0,0,0,40,800,'@code,'@price;
-	end;
+payg_cas01.gat,128,58,3	script	Kafra Staff::AgitKafra_C0	117,{
+
+	cutin "kafra_01",2;
+	set '@dummy,getmapxy('@map$,'@dummy,'@dummy,1);
+	set '@gid,getcastledata('@map$,1);
+	if ('@gid == 0 || getcharid(2) != '@gid) {
+		mes "[Kafra Staff]";
+		mes "Welcome. ^ff0000"+getguildname('@gid)+"^000000 Member.";
+		mes "The Kafra Coporation will stay with you wherever you go.";
+		next;
+		switch(select("Use Storage","Use Warp Service","Rent a Cart","Cancel")) {
+		case 1:
+			if (getskilllv(1) < 6) {
+				mes "[Kafra Staff]";
+				mes "I am sorry but you have to be at least Novice skill level 6 if you want to use the storage.";
+				close2;
+				cutin "kafra_01",255;
+				end;
+			} else {
+				openstorage;
+				close2;
+				cutin "kafra_01",255;
+				end;
+			}
+		case 2:
+			mes "[Kafra Staff]";
+			mes "Please let me know your destination.";
+			next;
+			switch(select("Geffen ^880000200 ^000000z","Al De Baran ^880000200 ^000000z","Prontera ^880000200 ^000000z","Izlude ^880000200 ^000000z","Alberta ^880000200 ^000000z","Payon ^880000200 ^000000z","Morroc ^880000200 ^000000z","Comodo ^880000500 ^000000z","Cancel")) {
+			case 1:
+				if (Zeny < 200) {
+					mes "[Kafra Staff]";
+					mes "You don't have enough money. Please check again.";
+					close2;
+					cutin "kafra_01",255;
+					end;
+				}
+				set Zeny,Zeny-200;
+				set kf_10_pit,kf_10_pit+2;
+				warp "geffen.gat",120,39;
+				cutin "kafra_01",255;
+				end;
+			case 2:
+				if (Zeny < 200) {
+					mes "[Kafra Staff]";
+					mes "You don't have enough money. Please check again.";
+					close2;
+					cutin "kafra_01",255;
+					end;
+				}
+				set Zeny,Zeny-200;
+				set kf_10_pit,kf_10_pit+2;
+				warp "aldebaran.gat",139,39;
+				cutin "kafra_01",255;
+				end;
+			case 3:
+				if (Zeny < 200) {
+					mes "[Kafra Staff]";
+					mes "You don't have enough money. Please check again.";
+					close2;
+					cutin "kafra_01",255;
+					end;
+				}
+				set Zeny,Zeny-200;
+				set kf_10_pit,kf_10_pit+2;
+				warp "prontera.gat",116,72;
+				cutin "kafra_01",255;
+				end;
+			case 4:
+				if (Zeny < 200) {
+					mes "[Kafra Staff]";
+					mes "You don't have enough money. Please check again.";
+					close2;
+					cutin "kafra_01",255;
+					end;
+				}
+				set Zeny,Zeny-200;
+				set kf_10_pit,kf_10_pit+2;
+				warp "izlude.gat",91,105;
+				cutin "kafra_01",255;
+				end;
+			case 5:
+				if (Zeny < 200) {
+					mes "[Kafra Staff]";
+					mes "You don't have enough money. Please check again.";
+					close2;
+					cutin "kafra_01",255;
+					end;
+				}
+				set Zeny,Zeny-200;
+				set kf_10_pit,kf_10_pit+2;
+				warp "alberta.gat",116,57;
+				cutin "kafra_01",255;
+				end;
+			case 6:
+				if (Zeny < 200) {
+					mes "[Kafra Staff]";
+					mes "You don't have enough money. Please check again.";
+					close2;
+					cutin "kafra_01",255;
+					end;
+				}
+				set Zeny,Zeny-200;
+				set kf_10_pit,kf_10_pit+2;
+				warp "payon.gat",70,100;
+				cutin "kafra_01",255;
+				end;
+			case 7:
+				if (Zeny < 200) {
+					mes "[Kafra Staff]";
+					mes "You don't have enough money. Please check again.";
+					close2;
+					cutin "kafra_01",255;
+					end;
+				}
+				set Zeny,Zeny-200;
+				set kf_10_pit,kf_10_pit+2;
+				warp "morocc.gat",156,46;
+				cutin "kafra_01",255;
+				end;
+			case 8:
+				if (Zeny < 500) {
+					mes "[Kafra Staff]";
+					mes "You don't have enough money. Please check again.";
+					close2;
+					cutin "kafra_01",255;
+					end;
+				}
+				set Zeny,Zeny-500;
+				set kf_10_pit,kf_10_pit+2;
+				warp "comodo.gat",209,143;
+				cutin "kafra_01",255;
+				end;
+			case 9:
+				close2;
+				cutin "kafra_01",255;
+				end;
+			}
+		case 3:
+			if ((Basejob != Job_Merchant) && (Basejob != Job_Blacksmith)) {
+				mes "[Kafra Staff]";
+				mes "I am sorry. The Cart Service is only provided for the Merchant and Blacksmith class.";
+				close2;
+				cutin "kafra_01",255;
+				end;
+			} else if (Cart) {
+				mes "[Kafra Staff]";
+				mes "You equipped a Cart already.";
+				close2;
+				cutin "kafra_01",255;
+				end;
+			} else {
+				mes "[Kafra Staff]";
+				mes "The Cart Fee is 800 Zeny. Do you want to Rent a Cart?";
+				next;
+				switch(select("Use.","Cancel.")) {
+				case 1:
+					if (Zeny < 800) {
+						mes "[Kafra Staff]";
+						mes "You don't have enough Money. You need 800 Zeny to rent a cart.";
+						close2;
+						cutin "kafra_01",255;
+						end;
+					}
+					set kf_10_pit,kf_10_pit+8;
+					set Zeny,Zeny-800;
+					setcart;
+					close2;
+					cutin "kafra_01",255;
+					end;
+				case 2:
+					close2;
+					cutin "kafra_01",255;
+					end;
+				}
+			}
+		case 4:
+			mes "[Kafra Staff]";
+			mes "The Kafra corp. always tries to give the best service.";
+			mes "Thank you for using Kafra corp. Please come again.";
+			close2;
+			cutin "kafra_01",255;
+			end;
+		}
+	} else {
+		mes "[Kafra Staff]";
+		mes "I am instructed to service only for the ^ff0000"+getguildname('@gid)+"^000000 Guild. Please try another Kafra staff member around here. Sorry for the inconvenience.";
+		close2;
+		cutin "kafra_01",255;
+		end;
+	}
 }
 
-gefg_cas01.gat,83,47,3		duplicate(AgitKafra_B0)	Kafra::AgitKafra_B1	117
-gefg_cas02.gat,23,66,3		duplicate(AgitKafra_B0)	Kafra::AgitKafra_B2	117
-gefg_cas03.gat,116,89,5		duplicate(AgitKafra_B0)	Kafra::AgitKafra_B3	117
-gefg_cas04.gat,59,70,3		duplicate(AgitKafra_B0)	Kafra::AgitKafra_B4	117
-gefg_cas05.gat,61,52,5		duplicate(AgitKafra_B0)	Kafra::AgitKafra_B5	117
+payg_cas02.gat,22,275,5	script	Kafra Staff::AgitKafra_C1	117,{
+
+	cutin "kafra_01",2;
+	set '@dummy,getmapxy('@map$,'@dummy,'@dummy,1);
+	set '@gid,getcastledata('@map$,1);
+	if ('@gid == 0 || getcharid(2) != '@gid) {
+		mes "[Kafra Staff]";
+		mes "Welcome. ^ff0000"+getguildname('@gid)+"^000000 Member.";
+		mes "The Kafra Coporation will stay with you wherever you go.";
+		next;
+		switch(select("Use Storage","Use Warp Service","Rent a Cart","Cancel")) {
+		case 1:
+			if (getskilllv(1) < 6) {
+				mes "[Kafra Staff]";
+				mes "I am sorry but you have to be at least Novice skill level 6 if you want to use the storage.";
+				close2;
+				cutin "kafra_01",255;
+				end;
+			} else {
+				openstorage;
+				close2;
+				cutin "kafra_01",255;
+				end;
+			}
+		case 2:
+			mes "[Kafra Staff]";
+			mes "Please let me know your destination.";
+			next;
+			switch(select("Payon ^880000200 ^000000z","Cancel")) {
+			case 1:
+				if (Zeny < 200) {
+					mes "[Kafra Staff]";
+					mes "You don't have enough money. Please check again.";
+					close2;
+					cutin "kafra_01",255;
+					end;
+				}
+				set Zeny,Zeny-200;
+				set kf_10_pit,kf_10_pit+2;
+				warp "payon.gat",70,100;
+				cutin "kafra_01",255;
+				end;
+			case 2:
+				close2;
+				cutin "kafra_01",255;
+				end;
+			}
+		case 3:
+			if ((Basejob != Job_Merchant) && (Basejob != Job_Blacksmith)) {
+				mes "[Kafra Staff]";
+				mes "I am sorry. The Cart service is only provided for Merchant and Blacksmith Classes.";
+				close2;
+				cutin "kafra_01",255;
+				end;
+			} else if (Cart) {
+				mes "[Kafra Staff]";
+				mes "You equipped a Cart already.";
+				close2;
+				cutin "kafra_01",255;
+				end;
+			} else {
+				mes "[Kafra Staff]";
+				mes "The Cart Fee is 800 Zeny. Do you want to Rent a Cart?";
+				next;
+				switch(select("Use.","Cancel.")) {
+				case 1:
+					if (Zeny < 800) {
+						mes "[Kafra Staff]";
+						mes "You don't have enough Money. You need 800 Zeny to rent a cart.";
+						close2;
+						cutin "kafra_01",255;
+						end;
+					}
+					set kf_10_pit,kf_10_pit+8;
+					set Zeny,Zeny-800;
+					setcart;
+					close2;
+					cutin "kafra_01",255;
+					end;
+				case 2:
+					close2;
+					cutin "kafra_01",255;
+					end;
+				}
+			}
+		case 4:
+			mes "[Kafra Staff]";
+			mes "The Kafra corp. always tries to give the best service.";
+			mes "Thank you for using Kafra corp. Please come again.";
+			close2;
+			cutin "kafra_01",255;
+			end;
+		}
+	} else {
+		mes "[Kafra Staff]";
+		mes "I am instructed to service only for the ^ff0000"+getguildname('@gid)+"^000000 Guild. Please try another Kafra staff member around here. Sorry for the inconvenience.";
+		close2;
+		cutin "kafra_01",255;
+		end;
+	}
+}
+
+payg_cas03.gat,9,263,5	script	Kafra Staff::AgitKafra_C2	117,{
+
+	cutin "kafra_01",2;
+	set '@dummy,getmapxy('@map$,'@dummy,'@dummy,1);
+	set '@gid,getcastledata('@map$,1);
+	if ('@gid == 0 || getcharid(2) != '@gid) {
+		mes "[Kafra Staff]";
+		mes "Welcome. ^ff0000"+getguildname('@gid)+"^000000 Member.";
+		mes "The Kafra Coporation will stay with you wherever you go.";
+		next;
+		switch(select("Use Storage","Use Warp Service","Rent a Cart","Cancel")) {
+		case 1:
+			if (getskilllv(1) < 6) {
+				mes "[Kafra Staff]";
+				mes "I am sorry but you have to be at least Novice skill level 6 if you want to use the storage.";
+				close2;
+				cutin "kafra_01",255;
+				end;
+			} else {
+				openstorage;
+				close2;
+				cutin "kafra_01",255;
+				end;
+			}
+		case 2:
+			mes "[Kafra Staff]";
+			mes "Please let me know your destination.";
+			next;
+			switch(select("Payon ^880000200 ^000000z","Cancel")) {
+			case 1:
+				if (Zeny < 200) {
+					mes "[Kafra Staff]";
+					mes "You don't have enough money. Please check again.";
+					close2;
+					cutin "kafra_01",255;
+					end;
+				}
+				set Zeny,Zeny-200;
+				set kf_10_pit,kf_10_pit+2;
+				warp "payon.gat",70,100;
+				cutin "kafra_01",255;
+				end;
+			case 2:
+				close2;
+				cutin "kafra_01",255;
+				end;
+			}
+		case 3:
+			if ((Basejob != Job_Merchant) && (Basejob != Job_Blacksmith)) {
+				mes "[Kafra Staff]";
+				mes "I am sorry. The Cart Service is only provided for the Merchant and Blacksmith class.";
+				close2;
+				cutin "kafra_01",255;
+				end;
+			} else if (Cart) {
+				mes "[Kafra Staff]";
+				mes "You have a cart equipped already.";
+				close2;
+				cutin "kafra_01",255;
+				end;
+			} else {
+				mes "[Kafra Staff]";
+				mes "The cart fee is 800 zeny. Do you want to rent a cart?";
+				next;
+				switch(select("Yes.","Cancel.")) {
+				case 1:
+					if (Zeny < 800) {
+						mes "[Kafra Staff]";
+						mes "You don't have enough money. You need 800 zeny to rent a cart.";
+						close2;
+						cutin "kafra_01",255;
+						end;
+					}
+					set kf_10_pit,kf_10_pit+8;
+					set Zeny,Zeny-800;
+					setcart;
+					close2;
+					cutin "kafra_01",255;
+					end;
+				case 2:
+					close2;
+					cutin "kafra_01",255;
+					end;
+				}
+			}
+		case 4:
+			mes "[Kafra Staff]";
+			mes "The Kafra corp. always tries to give the best service.";
+			mes "Thank you for using Kafra corp. Please come again.";
+			close2;
+			cutin "kafra_01",255;
+			end;
+		}
+	} else {
+		mes "[Kafra Staff]";
+		mes "I am instructed to service only for the ^ff0000"+getguildname('@gid)+"^000000 Guild. Please try another Kafra staff member around here. Sorry for the inconvenience.";
+		close2;
+		cutin "kafra_01",255;
+		end;
+	}
+}
+
+payg_cas04.gat,40,235,1	script	Kafra Staff::AgitKafra_C3	117,{
+
+	cutin "kafra_01",2;
+	set '@dummy,getmapxy('@map$,'@dummy,'@dummy,1);
+	set '@gid,getcastledata('@map$,1);
+	if ('@gid == 0 || getcharid(2) != '@gid) {
+		mes "[Kafra Staff]";
+		mes "Welcome. ^ff0000"+getguildname('@gid)+"^000000 Member.";
+		mes "The Kafra Coporation will stay with you wherever you go.";
+		next;
+		switch(select("Use Storage","Use Warp Service","Rent a Cart","Cancel")) {
+		case 1:
+			if (getskilllv(1) < 6) {
+				mes "[Kafra Staff]";
+				mes "I am sorry but you have to be at least Novice skill level 6 if you want to use the storage.";
+				close2;
+				cutin "kafra_01",255;
+				end;
+			} else {
+				openstorage;
+				close2;
+				cutin "kafra_01",255;
+				end;
+			}
+		case 2:
+			mes "[Kafra Staff]";
+			mes "Please let me know your destination.";
+			next;
+			switch(select("Payon ^880000200 ^000000z","Cancel")) {
+			case 1:
+				if (Zeny < 200) {
+					mes "[Kafra Staff]";
+					mes "You don't have enough money. Please check again.";
+					close2;
+					cutin "kafra_01",255;
+					end;
+				}
+				set Zeny,Zeny-200;
+				set kf_10_pit,kf_10_pit+2;
+				warp "payon.gat",70,100;
+				cutin "kafra_01",255;
+				end;
+			case 2:
+				close2;
+				cutin "kafra_01",255;
+				end;
+			}
+		case 3:
+			if ((Basejob != Job_Merchant) && (Basejob != Job_Blacksmith)) {
+				mes "[Kafra Staff]";
+				mes "I am sorry. The Cart Service is only provided for the Merchant and Blacksmith class.";
+				close2;
+				cutin "kafra_01",255;
+				end;
+			} else if (Cart) {
+				mes "[Kafra Staff]";
+				mes "You have a cart equipped already.";
+				close2;
+				cutin "kafra_01",255;
+				end;
+			} else {
+				mes "[Kafra Staff]";
+				mes "The cart fee is 800 zeny. Do you want to rent a cart?";
+				next;
+				switch(select("Yes.","Cancel.")) {
+				case 1:
+					if (Zeny < 800) {
+						mes "[Kafra Staff]";
+						mes "You don't have enough money. You need 800 zeny to rent a cart.";
+						close2;
+						cutin "kafra_01",255;
+						end;
+					}
+					set kf_10_pit,kf_10_pit+8;
+					set Zeny,Zeny-800;
+					setcart;
+					close2;
+					cutin "kafra_01",255;
+					end;
+				case 2:
+					close2;
+					cutin "kafra_01",255;
+					end;
+				}
+			}
+		case 4:
+			mes "[Kafra Staff]";
+			mes "The Kafra corp. always tries to give the best service.";
+			mes "Thank you for using Kafra corp. Please come again.";
+			close2;
+			cutin "kafra_01",255;
+			end;
+		}
+	} else {
+		mes "[Kafra Staff]";
+		mes "I am instructed to service only for the ^ff0000"+getguildname('@gid)+"^000000 Guild. Please try another Kafra staff member around here. Sorry for the inconvenience.";
+		close2;
+		cutin "kafra_01",255;
+		end;
+	}
+}
+
+payg_cas05.gat,276,227,1	script	Kafra Staff::AgitKafra_C4	117,{
+
+	cutin "kafra_01",2;
+	set '@dummy,getmapxy('@map$,'@dummy,'@dummy,1);
+	set '@gid,getcastledata('@map$,1);
+	if ('@gid == 0 || getcharid(2) != '@gid) {
+		mes "[Kafra Staff]";
+		mes "Welcome. ^ff0000"+getguildname('@gid)+"^000000 Member.";
+		mes "The Kafra Coporation will stay with you wherever you go.";
+		next;
+		switch(select("Use Storage","Use Warp Service","Rent a Cart","Cancel")) {
+		case 1:
+			if (getskilllv(1) < 6) {
+				mes "[Kafra Staff]";
+				mes "I am sorry but you have to be at least Novice skill level 6 if you want to use the storage.";
+				close2;
+			} else {
+				openstorage;
+				close2;
+				cutin "kafra_01",255;
+				end;
+			}
+		case 2:
+			mes "[Kafra Staff]";
+			mes "Please let me know your destination.";
+			next;
+			switch(select("Payon ^880000200 ^000000z","Cancel")) {
+			case 1:
+				if (Zeny < 200) {
+					mes "[Kafra Staff]";
+					mes "You don't have enough money. Please check again.";
+					close2;
+					cutin "kafra_01",255;
+					end;
+				}
+				set Zeny,Zeny-200;
+				set kf_10_pit,kf_10_pit+2;
+				warp "payon.gat",70,100;
+				cutin "kafra_01",255;
+				end;
+			case 2:
+				close2;
+				cutin "kafra_01",255;
+				end;
+			}
+		case 3:
+			if ((Basejob != Job_Merchant) && (Basejob != Job_Blacksmith)) {
+				mes "[Kafra Staff]";
+				mes "I am sorry. The Cart Service is only provided for the Merchant and Blacksmith class.";
+				close2;
+				cutin "kafra_01",255;
+				end;
+			} else if (Cart) {
+				mes "[Kafra Staff]";
+				mes "You have a cart equipped already.";
+				close2;
+				cutin "kafra_01",255;
+				end;
+			} else {
+				mes "[Kafra Staff]";
+				mes "The cart fee is 800 zeny. Do you want to rent a cart?";
+				next;
+				switch(select("Yes.","Cancel.")) {
+				case 1:
+					if (Zeny < 800) {
+						mes "[Kafra Staff]";
+						mes "You don't have enough money. You need 800 zeny to rent a cart.";
+						close2;
+						cutin "kafra_01",255;
+						end;
+					}
+					set kf_10_pit,kf_10_pit+8;
+					set Zeny,Zeny-800;
+					setcart;
+					close2;
+					cutin "kafra_01",255;
+					end;
+				case 2:
+					close2;
+					cutin "kafra_01",255;
+					end;
+				}
+			}
+		case 4:
+			mes "[Kafra Staff]";
+			mes "The Kafra corp. always tries to give the best service.";
+			mes "Thank you for using Kafra corp. Please come again.";
+			close2;
+			cutin "kafra_01",255;
+			end;
+		}
+	} else {
+		mes "[Kafra Staff]";
+		mes "I am instructed to service only for the ^ff0000"+getguildname('@gid)+"^000000 Guild. Please try another Kafra staff member around here. Sorry for the inconvenience.";
+		close2;
+		cutin "kafra_01",255;
+		end;
+	}
+}
 
 
-//==============================================================
-// Payon
+//--------------------------------------------------------------
+// Prontera Guild Castle Kafra Employees - [Tsuyuki]
 //--------------------------------------------------------------
 
--	script	AgitKafra_C0	139,{
-	callfunc "F_GvKafraMenu";
-	set '@code,16;
-	set '@price,200;
-	callfunc "F_KafraMain",3,0x4e,0,0,0,0,0,0,40,800,'@code,'@price;
-	end;
+prtg_cas01.gat,96,173,0	script	Kafra Staff::AgitKafra_V0	117,{
+
+	cutin "kafra_01",2;
+	set '@dummy,getmapxy('@map$,'@dummy,'@dummy,1);
+	set '@gid,getcastledata('@map$,1);
+	if ('@gid == 0 || getcharid(2) != '@gid) {
+		mes "[Kafra Staff]";
+		mes "Welcome. ^ff0000"+getguildname('@gid)+"^000000 Member.";
+		mes "The Kafra Coporation will stay with you wherever you go.";
+		next;
+		switch(select("Use Storage","Use Warp Service","Rent a Cart","Cancel")) {
+		case 1:
+			if (getskilllv(1) < 6) {
+				mes "[Kafra Staff]";
+				mes "I am sorry but you have to be at least Novice skill level 6 if you want to use the storage.";
+				close2;
+				cutin "kafra_01",255;
+				end;
+			} else {
+				openstorage;
+				close2;
+				cutin "kafra_01",255;
+				end;
+			}
+		case 2:
+			mes "[Kafra Staff]";
+			mes "Please let me know your destination.";
+			next;
+			switch(select("Geffen ^880000200 ^000000z","Al De Baran ^880000200 ^000000z","Prontera ^880000200 ^000000z","Izlude ^880000200 ^000000z","Alberta ^880000200 ^000000z","Payon ^880000200 ^000000z","Morroc ^880000200 ^000000z","Comodo ^880000500 ^000000z","Cancel")) {
+			case 1:
+				if (Zeny < 200) {
+					mes "[Kafra Staff]";
+					mes "You don't have enough money. Please check again.";
+					close2;
+					cutin "kafra_01",255;
+					end;
+				}
+				set Zeny,Zeny-200;
+				set kf_10_pit,kf_10_pit+2;
+				warp "geffen.gat",120,39;
+				cutin "kafra_01",255;
+				end;
+			case 2:
+				if (Zeny < 200) {
+					mes "[Kafra Staff]";
+					mes "You don't have enough money. Please check again.";
+					close2;
+					cutin "kafra_01",255;
+					end;
+				}
+				set Zeny,Zeny-200;
+				set kf_10_pit,kf_10_pit+2;
+				warp "aldebaran.gat",139,39;
+				cutin "kafra_01",255;
+				end;
+			case 3:
+				if (Zeny < 200) {
+					mes "[Kafra Staff]";
+					mes "You don't have enough money. Please check again.";
+					close2;
+					cutin "kafra_01",255;
+					end;
+				}
+				set Zeny,Zeny-200;
+				set kf_10_pit,kf_10_pit+2;
+				warp "prontera.gat",116,72;
+				cutin "kafra_01",255;
+				end;
+			case 4:
+				if (Zeny < 200) {
+					mes "[Kafra Staff]";
+					mes "You don't have enough money. Please check again.";
+					close2;
+					cutin "kafra_01",255;
+					end;
+				}
+				set Zeny,Zeny-200;
+				set kf_10_pit,kf_10_pit+2;
+				warp "izlude.gat",91,105;
+				cutin "kafra_01",255;
+				end;
+			case 5:
+				if (Zeny < 200) {
+					mes "[Kafra Staff]";
+					mes "You don't have enough money. Please check again.";
+					close2;
+					cutin "kafra_01",255;
+					end;
+				}
+				set Zeny,Zeny-200;
+				set kf_10_pit,kf_10_pit+2;
+				warp "alberta.gat",116,57;
+				cutin "kafra_01",255;
+				end;
+			case 6:
+				if (Zeny < 200) {
+					mes "[Kafra Staff]";
+					mes "You don't have enough money. Please check again.";
+					close2;
+					cutin "kafra_01",255;
+					end;
+				}
+				set Zeny,Zeny-200;
+				set kf_10_pit,kf_10_pit+2;
+				warp "payon.gat",68,99;
+				cutin "kafra_01",255;
+				end;
+			case 7:
+				if (Zeny < 200) {
+					mes "[Kafra Staff]";
+					mes "You don't have enough money. Please check again.";
+					close2;
+					cutin "kafra_01",255;
+					end;
+				}
+				set Zeny,Zeny-200;
+				set kf_10_pit,kf_10_pit+2;
+				warp "morocc.gat",156,46;
+				cutin "kafra_01",255;
+				end;
+			case 8:
+				if (Zeny < 500) {
+					mes "[Kafra Staff]";
+					mes "You don't have enough money. Please check again.";
+					close2;
+					cutin "kafra_01",255;
+					end;
+				}
+				set Zeny,Zeny-500;
+				set kf_10_pit,kf_10_pit+2;
+				warp "comodo.gat",209,143;
+				cutin "kafra_01",255;
+				end;
+			case 9:
+				close2;
+				cutin "kafra_01",255;
+				end;
+			}
+		case 3:
+			if ((Basejob != Job_Merchant) && (Basejob != Job_Blacksmith)) {
+				mes "[Kafra Staff]";
+				mes "I am sorry, but the Cart service is only available for the Merchant and Blacksmith Class.";
+				close2;
+				cutin "kafra_01",255;
+				end;
+			} else if (Cart) {
+				mes "[Kafra Staff]";
+				mes "You have a Cart already.";
+				close2;
+				cutin "kafra_01",255;
+				end;
+			} else {
+				mes "[Kafra Staff]";
+				mes "The Cart Fee is 800 Zeny. Do you still wish to Rent a Cart?";
+				next;
+				switch(select("Use.","Cancel.")) {
+				case 1:
+					if (Zeny < 800) {
+						mes "[Kafra Staff]";
+						mes "You don't have enough Money. You need 800 Zeny to rent a cart.";
+						close2;
+						cutin "kafra_01",255;
+						end;
+					}
+					set kf_10_pit,kf_10_pit+8;
+					set Zeny,Zeny-800;
+					setcart;
+					close2;
+					cutin "kafra_01",255;
+					end;
+				case 2:
+					close2;
+					cutin "kafra_01",255;
+					end;
+				}
+			}
+		case 4:
+			mes "[Kafra Staff]";
+			mes "We Kafra corp. always try to serve you the best.";
+			mes "Thank you for using. Please come again.";
+			close2;
+			cutin "kafra_01",255;
+			end;
+		}
+	} else {
+		mes "[Kafra Staff]";
+		mes "I am contracted to provide service only for the ^ff0000"+getguildname('@gid)+"^000000 Guild. Please use another Kafra Corporation staff member around here. I am Sorry for your inconvenience.";
+		close2;
+		cutin "kafra_01",255;
+		end;
+	}
 }
 
-payg_cas01.gat,128,58,3		duplicate(AgitKafra_C0)	Kafra::AgitKafra_C1	117
-payg_cas02.gat,22,275,5		duplicate(AgitKafra_C0)	Kafra::AgitKafra_C2	117
-payg_cas03.gat,9,263,5		duplicate(AgitKafra_C0)	Kafra::AgitKafra_C3	117
-payg_cas04.gat,40,235,1		duplicate(AgitKafra_C0)	Kafra::AgitKafra_C4	117
-payg_cas05.gat,276,227,1	duplicate(AgitKafra_C0)	Kafra::AgitKafra_C5	117
+prtg_cas02.gat,71,36,4	script	Kafra Staff::AgitKafra_V1	117,{
 
-
-//==============================================================
-// Prontera
-//--------------------------------------------------------------
-
--	script	AgitKafra_V0	139,{
-	callfunc "F_GvKafraMenu";
-	set '@code,14;
-	set '@price,200;
-	callfunc "F_KafraMain",3,0x4e,0,0,0,0,0,0,40,800,'@code,'@price;
-	end;
+	cutin "kafra_01",2;
+	set '@dummy,getmapxy('@map$,'@dummy,'@dummy,1);
+	set '@gid,getcastledata('@map$,1);
+	if ('@gid == 0 || getcharid(2) != '@gid) {
+		mes "[Kafra Staff]";
+		mes "Welcome. ^ff0000"+getguildname('@gid)+"^000000 Member.";
+		mes "The Kafra Coporation will stay with you wherever you go.";
+		next;
+		switch(select("Use Storage","Use Warp Service","Rent a Cart","Cancel")) {
+		case 1:
+			if (getskilllv(1) < 6) {
+				mes "[Kafra Staff]";
+				mes "I am sorry but you have to be at least Novice skill level 6 if you want to use the storage.";
+				close2;
+				cutin "kafra_01",255;
+				end;
+			} else {
+				openstorage;
+				close2;
+				cutin "kafra_01",255;
+				end;
+			}
+		case 2:
+			mes "[Kafra Staff]";
+			mes "Please let me know your destination.";
+			next;
+			switch(select("Prontera ^880000200 ^000000z","Cancel")) {
+			case 1:
+				if (Zeny < 200) {
+					mes "[Kafra Staff]";
+					mes "You don't have enough money. Please check again when you have more money.";
+					close2;
+					cutin "kafra_01",255;
+					end;
+				}
+				set Zeny,Zeny-200;
+				set kf_10_pit,kf_10_pit+2;
+				warp "prontera.gat",278,211;
+				cutin "kafra_01",255;
+				end;
+			case 2:
+				close2;
+				cutin "kafra_01",255;
+				end;
+			}
+		case 3:
+			if ((Basejob != Job_Merchant) && (Basejob != Job_Blacksmith)) {
+				mes "[Kafra Staff]";
+				mes "I am sorry, but the Cart service is only available for the Merchant and Blacksmith Class.";
+				close2;
+				cutin "kafra_01",255;
+				end;
+			} else if (Cart) {
+				mes "[Kafra Staff]";
+				mes "You have a Cart already.";
+				close2;
+				cutin "kafra_01",255;
+				end;
+			} else {
+				mes "[Kafra Staff]";
+				mes "The Cart Fee is 800 Zeny. Do you still wish to Rent a Cart?";
+				next;
+				switch(select("Use.","Cancel.")) {
+				case 1:
+					if (Zeny < 800) {
+						mes "[Kafra Staff]";
+						mes "You don't have enough Money. You need 800 Zeny to rent a cart.";
+						close2;
+						cutin "kafra_01",255;
+						end;
+					}
+					set kf_10_pit,kf_10_pit+8;
+					set Zeny,Zeny-800;
+					setcart;
+					close2;
+					cutin "kafra_01",255;
+					end;
+				case 2:
+					close2;
+					cutin "kafra_01",255;
+					end;
+				}
+			}
+		case 4:
+			mes "[Kafra Staff]";
+			mes "The Kafra Corporation always tries to serve you the best way we can.";
+			mes "Thank you for using our services. Please come again.";
+			close2;
+			cutin "kafra_01",255;
+			end;
+		}
+	} else {
+		mes "[Kafra Staff]";
+		mes "I am contracted to provide service only for the ^ff0000"+getguildname('@gid)+"^000000 Guild. Please use another Kafra Corporation staff member around here. I am Sorry for your inconvenience.";
+		close2;
+		cutin "kafra_01",255;
+		end;
+	}
 }
 
-prtg_cas01.gat,96,173,0		duplicate(AgitKafra_V0)	Kafra::AgitKafra_V1	117
-prtg_cas02.gat,71,36,4		duplicate(AgitKafra_V0)	Kafra::AgitKafra_V2	117
-prtg_cas03.gat,181,215,4	duplicate(AgitKafra_V0)	Kafra::AgitKafra_V3	117
-prtg_cas04.gat,258,247,4	duplicate(AgitKafra_V0)	Kafra::AgitKafra_V4	117
-prtg_cas05.gat,52,41,4		duplicate(AgitKafra_V0)	Kafra::AgitKafra_V5	117
+prtg_cas03.gat,181,215,4	script	Kafra Staff::AgitKafra_V2	117,{
+
+	cutin "kafra_01",2;
+	set '@dummy,getmapxy('@map$,'@dummy,'@dummy,1);
+	set '@gid,getcastledata('@map$,1);
+	if ('@gid == 0 || getcharid(2) != '@gid) {
+		mes "[Kafra Staff]";
+		mes "Welcome. ^ff0000"+getguildname('@gid)+"^000000 Member.";
+		mes "The Kafra Coporation will stay with you wherever you go.";
+		next;
+		switch(select("Use Storage","Use Warp Service","Rent a Cart","Cancel")) {
+		case 1:
+			if (getskilllv(1) < 6) {
+				mes "[Kafra Staff]";
+				mes "I am sorry but you have to be at least Novice skill level 6 if you want to use the storage.";
+				close2;
+				cutin "kafra_01",255;
+				end;
+			} else {
+				openstorage;
+				close2;
+				cutin "kafra_01",255;
+				end;
+			}
+		case 2:
+			mes "[Kafra Staff]";
+			mes "Please let me know your destination.";
+			next;
+			switch(select("Prontera ^880000200 ^000000z","Cancel")) {
+			case 1:
+				if (Zeny < 200) {
+					mes "[Kafra Staff]";
+					mes "You don't have enough money. Please check again when you have more money.";
+					close2;
+					cutin "kafra_01",255;
+					end;
+				}
+				set Zeny,Zeny-200;
+				set kf_10_pit,kf_10_pit+2;
+				warp "prontera.gat",278,211;
+				cutin "kafra_01",255;
+				end;
+			case 2:
+				close2;
+				cutin "kafra_01",255;
+				end;
+			}
+		case 3:
+			if ((Basejob != Job_Merchant) && (Basejob != Job_Blacksmith)) {
+				mes "[Kafra Staff]";
+				mes "I am sorry, but the Cart service is only available for the Merchant and Blacksmith Class.";
+				close2;
+				cutin "kafra_01",255;
+				end;
+			} else if (Cart) {
+				mes "[Kafra Staff]";
+				mes "You equipped a Cart already.";
+				close2;
+				cutin "kafra_01",255;
+				end;
+			} else {
+				mes "[Kafra Staff]";
+				mes "The Cart Fee is 800 Zeny. Do you want to Rent a Cart?";
+				next;
+				switch(select("Use.","Cancel.")) {
+				case 1:
+					if (Zeny < 800) {
+						mes "[Kafra Staff]";
+						mes "You don't have enough Money. You need 800 Zeny to rent a cart.";
+						close2;
+						cutin "kafra_01",255;
+						end;
+					}
+					set kf_10_pit,kf_10_pit+8;
+					set Zeny,Zeny-800;
+					setcart;
+					close2;
+					cutin "kafra_01",255;
+					end;
+				case 2:
+					close2;
+					cutin "kafra_01",255;
+					end;
+				}
+			}
+		case 4:
+			mes "[Kafra Staff]";
+			mes "We Kafra corp. always try to serve you the best.";
+			mes "Thank you for using. Please come again.";
+			close2;
+			cutin "kafra_01",255;
+			end;
+		}
+	} else {
+		mes "[Kafra Staff]";
+		mes "I am contracted to provide service only for the ^ff0000"+getguildname('@gid)+"^000000 Guild. Please use another Kafra Corporation staff member around here. I am Sorry for your inconvenience.";
+		close2;
+		cutin "kafra_01",255;
+		end;
+	}
+}
+
+prtg_cas04.gat,258,247,4	script	Kafra Staff::AgitKafra_V3	117,{
+
+	cutin "kafra_01",2;
+	set '@dummy,getmapxy('@map$,'@dummy,'@dummy,1);
+	set '@gid,getcastledata('@map$,1);
+	if ('@gid == 0 || getcharid(2) != '@gid) {
+		mes "[Kafra Staff]";
+		mes "Welcome. ^ff0000"+getguildname('@gid)+"^000000 Member.";
+		mes "The Kafra Coporation will stay with you wherever you go.";
+		next;
+		switch(select("Use Storage","Use Warp Service","Rent a Cart","Cancel")) {
+		case 1:
+			if (getskilllv(1) < 6) {
+				mes "[Kafra Staff]";
+				mes "I am sorry but you have to be at least Novice skill level 6 if you want to use the storage.";
+				close2;
+				cutin "kafra_01",255;
+				end;
+			} else {
+				openstorage;
+				close2;
+				cutin "kafra_01",255;
+				end;
+			}
+		case 2:
+			mes "[Kafra Staff]";
+			mes "Please let me know your destination.";
+			next;
+			switch(select("Prontera ^880000200 ^000000z","Cancel")) {
+			case 1:
+				if (Zeny < 200) {
+					mes "[Kafra Staff]";
+					mes "You don't have enough money. Please check again when you have more money.";
+					close2;
+					cutin "kafra_01",255;
+					end;
+				}
+				set Zeny,Zeny-200;
+				set kf_10_pit,kf_10_pit+2;
+				warp "prontera.gat",278,211;
+				cutin "kafra_01",255;
+				end;
+			case 2:
+				close2;
+				cutin "kafra_01",255;
+				end;
+			}
+		case 3:
+			if ((Basejob != Job_Merchant) && (Basejob != Job_Blacksmith)) {
+				mes "[Kafra Staff]";
+				mes "I am sorry, but the Cart service is only available for the Merchant and Blacksmith Class.";
+				close2;
+				cutin "kafra_01",255;
+				end;
+			} else if (Cart) {
+				mes "[Kafra Staff]";
+				mes "You equipped a Cart already.";
+				close2;
+				cutin "kafra_01",255;
+				end;
+			} else {
+				mes "[Kafra Staff]";
+				mes "The Cart Fee is 800 Zeny. Do you want to Rent a Cart?";
+				next;
+				switch(select("Use.","Cancel.")) {
+				case 1:
+					if (Zeny < 800) {
+						mes "[Kafra Staff]";
+						mes "You don't have enough Money. You need 800 Zeny to rent a cart.";
+						close2;
+						cutin "kafra_01",255;
+						end;
+					}
+					set kf_10_pit,kf_10_pit+8;
+					set Zeny,Zeny-800;
+					setcart;
+					close2;
+					cutin "kafra_01",255;
+					end;
+				case 2:
+					close2;
+					cutin "kafra_01",255;
+					end;
+				}
+			}
+		case 4:
+			mes "[Kafra Staff]";
+			mes "The Kafra Corporation always tries to serve you the best way we can.";
+			mes "Thank you for using our services. Please come again.";
+			close2;
+			cutin "kafra_01",255;
+			end;
+		}
+	} else {
+		mes "[Kafra Staff]";
+		mes "I am contracted to provide service only for the ^ff0000"+getguildname('@gid)+"^000000 Guild. Please use another Kafra Corporation staff member around here. I am Sorry for your inconvenience.";
+		close2;
+		cutin "kafra_01",255;
+		end;
+	}
+}
+
+prtg_cas05.gat,52,41,4	script	Kafra Staff::AgitKafra_V4	117,{
+
+	cutin "kafra_01",2;
+	set '@dummy,getmapxy('@map$,'@dummy,'@dummy,1);
+	set '@gid,getcastledata('@map$,1);
+	if ('@gid == 0 || getcharid(2) != '@gid) {
+		mes "[Kafra Staff]";
+		mes "Welcome. ^ff0000"+getguildname('@gid)+"^000000 Member.";
+		mes "The Kafra Coporation will stay with you wherever you go.";
+		next;
+		switch(select("Use Storage","Use Warp Service","Rent a Cart","Cancel")) {
+		case 1:
+			if (getskilllv(1) < 6) {
+				mes "[Kafra Staff]";
+				mes "I am sorry but you have to be at least Novice skill level 6 if you want to use the storage.";
+				close2;
+				cutin "kafra_01",255;
+				end;
+			} else {
+				openstorage;
+				close2;
+				cutin "kafra_01",255;
+				end;
+			}
+		case 2:
+			mes "[Kafra Staff]";
+			mes "Please let me know your destination.";
+			next;
+			switch(select("Prontera ^880000200 ^000000z","Cancel")) {
+			case 1:
+				if (Zeny < 200) {
+					mes "[Kafra Staff]";
+					mes "You don't have enough money. Please check again when you have more money.";
+					close2;
+					cutin "kafra_01",255;
+					end;
+				}
+				set Zeny,Zeny-200;
+				set kf_10_pit,kf_10_pit+2;
+				warp "prontera.gat",278,211;
+				cutin "kafra_01",255;
+				end;
+			case 2:
+				close2;
+				cutin "kafra_01",255;
+				end;
+			}
+		case 3:
+			if ((Basejob != Job_Merchant) && (Basejob != Job_Blacksmith)) {
+				mes "[Kafra Staff]";
+				mes "I am sorry, but the Cart service is only available for the Merchant and Blacksmith Class.";
+				close2;
+				cutin "kafra_01",255;
+				end;
+			} else if (Cart) {
+				mes "[Kafra Staff]";
+				mes "You have a Cart already.";
+				close2;
+				cutin "kafra_01",255;
+				end;
+			} else {
+				mes "[Kafra Staff]";
+				mes "The Cart Fee is 800 Zeny. Do you still wish to Rent a Cart?";
+				next;
+				switch(select("Use.","Cancel.")) {
+				case 1:
+					if (Zeny < 800) {
+						mes "[Kafra Staff]";
+						mes "You don't have enough Money. You need 800 Zeny to rent a cart.";
+						close2;
+						cutin "kafra_01",255;
+						end;
+					}
+					set kf_10_pit,kf_10_pit+8;
+					set Zeny,Zeny-800;
+					setcart;
+					close2;
+					cutin "kafra_01",255;
+					end;
+				case 2:
+					close2;
+					cutin "kafra_01",255;
+					end;
+				}
+			}
+		case 4:
+			mes "[Kafra Staff]";
+			mes "The Kafra Corporation always tries to serve you the best way we can.";
+			mes "Thank you for using our services. Please come again.";
+			close2;
+			cutin "kafra_01",255;
+			end;
+		}
+	} else {
+		mes "[Kafra Staff]";
+		mes "I am contracted to provide service only for the ^ff0000"+getguildname('@gid)+"^000000 Guild. Please use another Kafra Corporation staff member around here. I am Sorry for your inconvenience.";
+		close2;
+		cutin "kafra_01",255;
+		end;
+	}
+}
