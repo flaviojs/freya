@@ -75,7 +75,6 @@
 ---------------------------------------------------------------------------
 
 - cashitem/advholgren.sc		<- Cash Item Refinery (?) - Requires conversion [*]
-- event/resetskill.sc			<- 1st Class Skill Reset NPC - Requires conversion [Assigned ~ Tsuyuki]
 - local/arena/ *			<- Izlude Battle Arena - jAthena has it (In Japanese.. translate?) - Requires conversion [*]
 - local/turbotrack/ *			<- Al De Baran Turbo Track - jAthena has it (In Japanese.. translate?) - Requires conversion [*]
 - quest/monster_race.sc			<- Hugel Monster Races - Requires conversion [*]
