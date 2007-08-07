@@ -8,10 +8,13 @@
                  http://aurora.deltaanime.net                 
                      Aurora SVN Changelog                     
 --------------------------------------------------------------
-                Current Revision: jAthena 2313
+                Current Revision: jAthena 2315
 --------------------------------------------------------------
 
 Date	Added
+
+2007/08/07
+	* Updated: Project to jAthena 2315 [Tsuyuki]
 
 2007/08/06
 	* Added: The 1st Class Skill Reset NPC, converted from Aegis [Tsuyuki]
@@ -56,7 +59,7 @@ Date	Added
 	* Fixed: Various script bugs by various people [Tsuyuki]
 	* Updated: The PvP System NPCs, converted from Aegis by L0ne_W0lf [Tsuyuki]
 	* Updated: Most of the GvG system with iRO Aegis dialogue [Tsuyuki]
-	* Updated: Project to jAthena 2313 (Latest) [Tsuyuki]
+	* Updated: Project to jAthena 2313 [Tsuyuki]
 	* Changed: Optimized some NPC script variables [Tsuyuki]
 
 2007/07/23
