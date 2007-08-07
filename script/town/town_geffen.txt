@@ -313,7 +313,7 @@ geffen_in.gat,110,172,0	script	Christopher::Christopher	63,{
 				close;
 			}
 			getitem 612,@input;
-			set Zeny,Zeny-sell;
+			set Zeny,Zeny-'@sell;
 			mes "[Christopher Guillenrow]";
 			mes "Thank ye fer shopping at me workshop. Feel free to come anytime, whenever ye need.";
 			close;

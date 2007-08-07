@@ -337,7 +337,7 @@ payon_in03.gat,188,146,5	script	Marx Hansen	86,{
 				delitem 713,'@bottle_send;
 				set Zeny,Zeny-'@money_send;
 				getitem 532,'@total_gap;
-			} else if (juice == 3) {
+			} else if ('@juice == 3) {
 				delitem 515,'@fruit_send;
 				delitem 713,'@bottle_send;
 				set Zeny,Zeny-'@money_send;

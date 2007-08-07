@@ -14935,7 +14935,7 @@ prt_in.gat,75,88,5	script	Leon Von Frich	85,3,3,{
 			mes "Nice to see you again! How are you?";
 			mes "Be careful! Hahaha!";
 			close;
-		} else if (countitem(1752) > 9 && countitem(12009) > 9 && countitem(532) > 0 && countitem(962) > 29 && countitem(526) > 4 && ((Basejob == Job_Swordsman && JobLevel >= 25) || Basejob == Job_Knight || Basejob == Job_Crusader)) {
+		} else if (countitem(1752) > 9 && countitem(1751) > 9 && countitem(532) > 0 && countitem(962) > 29 && countitem(526) > 4 && ((Basejob == Job_Swordsman && JobLevel >= 25) || Basejob == Job_Knight || Basejob == Job_Crusader)) {
 			mes "[Leon]";
 			mes "Ooh! You are more than ready";
 			mes "to learn Fatal Blow!";
@@ -14947,7 +14947,7 @@ prt_in.gat,75,88,5	script	Leon Von Frich	85,3,3,{
 				mes "OK, lets begin!";
 				next;
 				delitem 1752,10;
-				delitem 12009,10;
+				delitem 1751,10;
 				delitem 532,1;
 				delitem 962,30;
 				delitem 526,5;
