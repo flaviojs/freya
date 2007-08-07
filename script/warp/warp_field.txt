@@ -558,7 +558,7 @@ prt_fild07.gat,385,186,0	warp	prtf15	3,20,prt_fild08.gat,20,186
 prt_fild07.gat,84,13,0	warp	prtf16	4,2,prt_fild09.gat,87,377
 prt_fild08.gat,16,187,0	warp	prtf15-1	3,17,prt_fild07.gat,380,186
 prt_fild08.gat,16,239,0	warp	prtf14-1	3,15,prt_fild07.gat,379,239
-prt_fild08.gat,170,377,0	warp	prtf004	3,2,prontera.gat,156,26
+prt_fild08.gat,170,378,0	warp	prtf004	3,2,prontera.gat,156,26
 prt_fild08.gat,233,16,0	warp	prtf023	12,1,moc_fild01.gat,238,378
 prt_fild08.gat,371,212,0	warp	prtf005	3,3,izlude.gat,35,78
 prt_fild08.gat,55,21,0	warp	prtf024	4,2,moc_fild01.gat,56,380
