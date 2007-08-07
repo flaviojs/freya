@@ -1,3 +1,12 @@
+//2315 by 片山
+
+・mmo.h内に説明文を追加
+(src/common/mmo.h)
+・homun.c内、腹減り時間の設定説明文を修正
+(src/map/homun.c)
+・パッチ評価スレッドpert2、>>32 free氏のpacket_dbを追加。
+(db/packet_db.txt)
+----------------------------------------
 //2314 by Para
 
 ・sc_ison関数でサーバーが落ちるバグを修正

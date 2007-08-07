@@ -173,7 +173,7 @@ static int homun_hungry(int tid,unsigned int tick,int id,int data)
 	clif_send_homstatus(sd,0);
 
 	interval = 60*1000;
-	//腹が減る時間を設定。デフォルトでは60*1000ﾐﾘ秒ごとにstatus.hungryで設定した分減る。
+	//腹が減る時間を設定。デフォルトでは60*1000ﾐﾘ秒（1分）ごとにstatus.hungryで設定した分減る。
 
 	sd->homun_hungry_timer = add_timer(tick+interval,homun_hungry,sd->bl.id,0);
 
@@ -1242,7 +1242,7 @@ int homun_damage(struct block_list *src,struct homun_data *hd,int damage)
 		return 0;
 
 	// 歩いていたら足を止める
-	unit_stop_walking(&hd->bl,3);
+	unit_stop_walking(&hd->bl,battle_config.pc_hit_stop_type);
 
 	if(damage>0)
 		skill_stop_gravitation(&hd->bl);

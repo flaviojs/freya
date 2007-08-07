@@ -19,48 +19,48 @@
 
 #define MAX_INVENTORY 100
 #define MAX_AMOUNT 30000
-#define MAX_ZENY 1000000000	// 1G zeny
-#define MAX_CART 100
-#define MAX_SKILL 1020
-#define MAX_HOMSKILL 16
+#define MAX_ZENY 1000000000					// 最大所持金（デフォルト1G zeny）
+#define MAX_CART 100						//カート内アイテムの最大種類
+#define MAX_SKILL 1020						//全スキルの数
+#define MAX_HOMSKILL 16						//全ホムスキル数
 #define GLOBAL_REG_NUM 96
 #define ACCOUNT_REG_NUM 16
 #define ACCOUNT_REG2_NUM 16
-#define DEFAULT_WALK_SPEED 150
-#define MIN_WALK_SPEED 0
-#define MAX_WALK_SPEED 1000
-#define MAX_STORAGE 300
-#define MAX_GUILD_STORAGE 1000
-#define MAX_PARTY 12
+#define DEFAULT_WALK_SPEED 150				//基本移動速度
+#define MIN_WALK_SPEED 0					//最速移動速度
+#define MAX_WALK_SPEED 1000					//最遅移動速度
+#define MAX_STORAGE 300						//倉庫に入れられる最大種類
+#define MAX_GUILD_STORAGE 1000				//同上（こちらはギルド倉庫）
+#define MAX_PARTY 12						//PT内最大人数
 #define MAX_GUILD 76
-#define MAX_GUILDPOSITION 20
+#define MAX_GUILDPOSITION 20				//職位の最大数
 #define MAX_GUILDEXPLUSION 32
 #define MAX_GUILDALLIANCE 16
-#define MAX_GUILDSKILL  15
-#define MAX_GUILDCASTLE 20
-#define MAX_GUILDLEVEL 50
-#define MAX_FRIEND 20
+#define MAX_GUILDSKILL  15					//ギルドスキルの数
+#define MAX_GUILDCASTLE 20					//全砦数
+#define MAX_GUILDLEVEL 50					//ギルドレベル最大値
+#define MAX_FRIEND 20						//友達登録最大数
 #define MAX_STATUSCHANGE 380
 
-#define MAX_HAIR_STYLE 24
-#define MAX_HAIR_COLOR 9
-#define MAX_CLOTH_COLOR 5
+#define MAX_HAIR_STYLE 24					//髪型の数（デフォルト：24）
+#define MAX_HAIR_COLOR 9					//髪色の数（デフォルト：9）
+#define MAX_CLOTH_COLOR 5					//服色の数（デフォルト：5） ※88色服色パレット等を使う場合、変更して下さい。
 
 // for produce
 #define MIN_ATTRIBUTE 0
 #define MAX_ATTRIBUTE 4
 #define ATTRIBUTE_NORMAL 0
-#define MIN_STAR 0
-#define MAX_STAR 3
+#define MIN_STAR 0							//武器製造時、星のかけら最小数
+#define MAX_STAR 3							//武器製造時、星のかけら最大数
 
-#define MAX_PORTAL_MEMO 3
+#define MAX_PORTAL_MEMO 3					//ワープポータルのメモ最大数
 
 #define MAX_STATUS_TYPE 5
 
-#define WEDDING_RING_M 2634
-#define WEDDING_RING_F 2635
+#define WEDDING_RING_M 2634					//結婚指輪アイテムID（男性）
+#define WEDDING_RING_F 2635					//同上（女性）
 
-#define MAIL_STORE_MAX 30
+#define MAIL_STORE_MAX 30					//メールBOX最大数
 
 #define MAX_HOMUN_DB 16			// ホムの数
 #define HOM_ID 6001				// ID開始値
