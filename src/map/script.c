@@ -3448,6 +3448,7 @@ int buildin_divorce(struct script_state *st);
 int buildin_getitemname(struct script_state *st);
 int buildin_makepet(struct script_state *st);
 int buildin_getinventorylist(struct script_state *st);
+int buildin_getcartlist(struct script_state *st);
 int buildin_getskilllist(struct script_state *st);
 int buildin_clearitem(struct script_state *st);
 int buildin_getrepairableitemcount(struct script_state *st);
@@ -3689,6 +3690,7 @@ struct script_function buildin_func[] = {
 	{buildin_getitemname,"getitemname","i"},
 	{buildin_makepet,"makepet","i"},
 	{buildin_getinventorylist,"getinventorylist",""},
+	{buildin_getcartlist,"getcartlist",""},
 	{buildin_getskilllist,"getskilllist",""},
 	{buildin_clearitem,"clearitem",""},
 	{buildin_getrepairableitemcount,"getrepairableitemcount",""},
@@ -6784,11 +6786,12 @@ int buildin_sc_ison(struct script_state *st)
 	}
 	if(bl) {
 		sc_data = status_get_sc_data(bl);
-		if(sc_data && sc_data[type].timer != -1)
+		if(sc_data && sc_data[type].timer != -1) {
 			push_val(st->stack,C_INT,1);
-	} else {
-		push_val(st->stack,C_INT,0);
+			return 0;
+		}
 	}
+	push_val(st->stack,C_INT,0);
 	return 0;
 }
 
@@ -8025,6 +8028,34 @@ int buildin_getinventorylist(struct script_state *st)
 	}
 	pc_setreg(sd,add_str("@inventorylist_count"),j);
 	return 0;
+}
+
+/*==========================================
+ * PCのカート内所持品情報読み取り
+ *------------------------------------------
+ */
+int buildin_getcartlist(struct script_state *st)
+{
+    struct map_session_data *sd=script_rid2sd(st);
+    int i,j=0;
+    if(!sd) return 0;
+    for(i=0;i<MAX_CART;i++){
+        if(sd->status.cart[i].nameid > 0 && sd->status.cart[i].amount > 0){
+            pc_setreg(sd,add_str("@cartlist_id")+(j<<24),sd->status.cart[i].nameid);
+            pc_setreg(sd,add_str("@cartlist_amount")+(j<<24),sd->status.cart[i].amount);
+            pc_setreg(sd,add_str("@cartlist_equip")+(j<<24),sd->status.cart[i].equip);
+            pc_setreg(sd,add_str("@cartlist_refine")+(j<<24),sd->status.cart[i].refine);
+            pc_setreg(sd,add_str("@cartlist_identify")+(j<<24),sd->status.cart[i].identify);
+            pc_setreg(sd,add_str("@cartlist_attribute")+(j<<24),sd->status.cart[i].attribute);
+            pc_setreg(sd,add_str("@cartlist_card1")+(j<<24),sd->status.cart[i].card[0]);
+            pc_setreg(sd,add_str("@cartlist_card2")+(j<<24),sd->status.cart[i].card[1]);
+            pc_setreg(sd,add_str("@cartlist_card3")+(j<<24),sd->status.cart[i].card[2]);
+            pc_setreg(sd,add_str("@cartlist_card4")+(j<<24),sd->status.cart[i].card[3]);
+            j++;
+        }
+    }
+    pc_setreg(sd,add_str("@cartlist_count"),j);
+    return 0;
 }
 
 /*==========================================

@@ -1710,6 +1710,24 @@ AthenaNPCScript
 			@inventorylist_card4 : アイテムに挿しているカードデータ(4枚目)
 			@inventorylist_count : プレイヤーの所持している総アイテム種類数
 
+		getcartlist命令
+			getcartlist;
+
+			現在アタッチされているプレイヤーのカート内の装備品含むアイテムデータを
+			配列変数@cartlist_***にロードします。
+			以下変数の説明
+			@cartlist_id : アイテムのID
+			@cartlist_amount : カート内のアイテムの量
+			@cartlist_equip : 装備している場合の装備箇所
+			@cartlist_refine : アイテムの精錬値
+			@cartlist_identify : アイテムの鑑定状態
+			@cartlist_attribute : アイテムの破損の有無
+			@cartlist_card1 : アイテムに挿しているカードデータ(1枚目)
+			@cartlist_card2 : アイテムに挿しているカードデータ(2枚目)
+			@cartlist_card3 : アイテムに挿しているカードデータ(3枚目)
+			@cartlist_card4 : アイテムに挿しているカードデータ(4枚目)
+			@cartlist_count : プレイヤーのカート内の総アイテム種類数
+
 		getskilllist命令
 			getskilllist;
 

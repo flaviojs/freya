@@ -1,3 +1,18 @@
+//2314 by Para
+
+・sc_ison関数でサーバーが落ちるバグを修正
+	（src/map/script.c）
+・スクリプトに配列でカート内所持品を返すgetcartlist命令を追加
+	（src/map/script.c）
+・矢作成で装備している物が出てしまうバグを修正（thx CoCoa!）
+	（src/map/clif.c）
+・座る処理を少し変更
+	（src/map/clif.c）
+	（src/map/clif.h）
+	（src/map/skill.c）
+・packet_db.txtの更新
+	（db/packet_db.txt）
+----------------------------------------
 //2313 by Blaze
 
 ・以下のベインス追加NPCスキルを実装

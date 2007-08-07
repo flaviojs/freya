@@ -3405,7 +3405,7 @@ void clif_arrow_fail(struct map_session_data *sd, unsigned short type)
  */
 void clif_arrow_create_list(struct map_session_data *sd)
 {
-	int i,c,view;
+	int i,c,view,idx;
 	int fd;
 
 	nullpo_retv(sd);
@@ -3414,7 +3414,7 @@ void clif_arrow_create_list(struct map_session_data *sd)
 	WFIFOW(fd,0)=0x1ad;
 
 	for(i=0,c=0;i<MAX_SKILL_ARROW_DB;i++){
-		if(skill_arrow_db[i].nameid > 0 && pc_search_inventory(sd,skill_arrow_db[i].nameid)>=0){
+		if(skill_arrow_db[i].nameid > 0 && (idx=pc_search_inventory(sd,skill_arrow_db[i].nameid))>=0 && !sd->status.inventory[idx].equip){
 			if((view = itemdb_viewid(skill_arrow_db[i].nameid)) > 0)
 				WFIFOW(fd,c*2+4) = view;
 			else
@@ -7907,17 +7907,16 @@ void clif_divorced(struct map_session_data *sd, char *name)
  * 座る
  *------------------------------------------
  */
-void clif_sitting(struct map_session_data *sd)
+void clif_sitting(struct block_list *bl,int type)
 {
-	int fd;
+	unsigned char buf[32];
 
-	nullpo_retv(sd);
+	nullpo_retv(bl);
 
-	fd=sd->fd;
-	WFIFOW(fd,0)=0x8a;
-	WFIFOL(fd,2)=sd->bl.id;
-	WFIFOB(fd,26)=2;
-	clif_send(WFIFOP(fd,0),packet_db[0x8a].len,&sd->bl,AREA);
+	WBUFW(buf,0)=0x8a;
+	WBUFL(buf,2)=bl->id;
+	WBUFB(buf,26)=type;
+	clif_send(buf,packet_db[0x8a].len,bl,AREA);
 
 	return;
 }
@@ -9258,7 +9257,7 @@ static void clif_parse_ActionRequest(int fd,struct map_session_data *sd, int cmd
 	case 0x02:	// sitdown
 		if(battle_config.basic_skill_check == 0 || pc_checkskill(sd,NV_BASIC) >= 3) {
 			pc_setsit(sd);
-			clif_sitting(sd);
+			clif_sitting(&sd->bl,2);
 			skill_gangsterparadise(sd,1);/* ギャングスターパラダイス設定 */
 		}
 		else
@@ -9266,10 +9265,7 @@ static void clif_parse_ActionRequest(int fd,struct map_session_data *sd, int cmd
 		break;
 	case 0x03:	// standup
 		pc_setstand(sd);
-		WFIFOW(fd,0)=0x8a;
-		WFIFOL(fd,2)=sd->bl.id;
-		WFIFOB(fd,26)=3;
-		clif_send(WFIFOP(fd,0),packet_db[0x8a].len,&sd->bl,AREA);
+		clif_sitting(&sd->bl,3);
 		skill_gangsterparadise(sd,0);/* ギャングスターパラダイス解除 */
 		break;
 	}
