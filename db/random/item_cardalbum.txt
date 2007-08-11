@@ -373,3 +373,28 @@
 4404,Skogul Card,10000
 4405,Thruth Card,10000
 4406,Skeggjold Card,10000
+4409,Agav Card,10000
+4410,Echio Card,10000
+4411,Vanberk Card,10000
+4413,Hodremlin Card,10000
+4414,Seeker Card,10000
+4415,Snowier Card,10000
+4416,Siroma Card,10000
+4417,Ice Titan_Card,10000
+4420,Muscipular Card,10000
+4421,Drosera Card,10000
+4422,Roween Card,10000
+4423,Galion Card,10000
+4424,Stapo Card,10000
+4427,Sword Guardian Card,10000
+4428,Bow Guardian Card,10000
+4429,Salamander Card,10000
+4431,Kasa Card,10000
+4432,Magmaring Card,10000
+4433,Imp Card,10000
+4435,Zombie Slaughter Card,10000
+4436,Ragged Zombie Card,10000
+4437,Hell Poodle Card,10000
+4438,Banshee Card,10000
+4439,Flame Skull Card,10000
+4440,Necromancer Card,10000
