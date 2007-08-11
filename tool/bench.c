@@ -1,13 +1,13 @@
-/* Bench code by nameless */
+/* 演算ベンチ by nameless */
 
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
 #include <time.h>
 
-/* ------------------------------- */
-/* Function prototypes declaration */
-/* ------------------------------- */
+/* -------------------- */
+/* 関数プロトタイプ宣言 */
+/* -------------------- */
 long calcFuncCall(void);
 long calcAdd(void);
 long calcSub(void);
@@ -27,13 +27,13 @@ long calcDoubleDiv(void);
 
 int foo(void);
 
-/* The function which does nothing */
+/* 何もしない関数 */
 int foo(void)
 {
 	return 1;
 }
 /* -------------------------------- */
-/* Measure the call function        */
+/* 関数呼び出し						*/
 /* -------------------------------- */
 long calcFuncCall(void)
 {
@@ -57,9 +57,9 @@ long calcFuncCall(void)
 
 	return endTim;
 }
-/* ---------------------------------------- */
-/* Measure the addition of an integer value */
-/* ---------------------------------------- */
+/* -------------------------------- */
+/* 整数値の加算の計測 				*/
+/* -------------------------------- */
 long calcAdd(void)
 {
 	long stTim,endTim;
@@ -86,9 +86,9 @@ long calcAdd(void)
 	return endTim;
 }
 
-/* ------------------------------------------- */
-/* Measure the subtraction of an integer value */
-/* ------------------------------------------- */
+/* -------------------------------- */
+/* 整数値の減算の計測 				*/
+/* -------------------------------- */
 long calcSub(void)
 {
 	long stTim,endTim;
@@ -115,9 +115,9 @@ long calcSub(void)
 	return endTim;
 }
 
-/* ---------------------------------------------- */
-/* Measure the multiplication of an integer value */
-/* ---------------------------------------------- */
+/* -------------------------------- */
+/* 整数値の乗算の計測 				*/
+/* -------------------------------- */
 long calcMul(void)
 {
 	long stTim,endTim;
@@ -143,9 +143,9 @@ long calcMul(void)
 	return endTim;
 }
 
-/* ---------------------------------------- */
-/* Measure the division of an integer value */
-/* ---------------------------------------- */
+/* -------------------------------- */
+/* 整数値の除算の計測 				*/
+/* -------------------------------- */
 long calcDiv(void)
 {
 	long stTim,endTim;
@@ -156,7 +156,7 @@ long calcDiv(void)
 
 	a=0;
 	for(i=0;i<10000;i++){
-		for(j=1;j<10001;j++){	/* To not generate a division by 0, j starts at 1 */
+		for(j=1;j<10001;j++){	/* 0除算が発生しないようにjは1から */
 			a/=j;
 		}
 	}
@@ -171,9 +171,9 @@ long calcDiv(void)
 	return endTim;
 }
 
-/* ------------------------------------- */
-/* Measure the shift of an integer value */
-/* ------------------------------------- */
+/* -------------------------------- */
+/* 整数値のシフトの計測 			*/
+/* -------------------------------- */
 long calcShift(void)
 {
 	long stTim,endTim;
@@ -201,9 +201,9 @@ long calcShift(void)
 	return endTim;
 }
 
-/* ------------------------------------- */
-/* Measure the addition of a float value */
-/* ------------------------------------- */
+/* -------------------------------- */
+/* 浮動小数点値の加算の計測			*/
+/* -------------------------------- */
 long calcFloatAdd(void)
 {
 	long stTim,endTim;
@@ -230,9 +230,9 @@ long calcFloatAdd(void)
 	return endTim;
 }
 
-/* ---------------------------------------- */
-/* Measure the subtraction of a float value */
-/* ---------------------------------------- */
+/* -------------------------------- */
+/* 浮動小数点値の減算の計測			*/
+/* -------------------------------- */
 long calcFloatSub(void)
 {
 	long stTim,endTim;
@@ -260,9 +260,9 @@ long calcFloatSub(void)
 }
 
 
-/* ------------------------------------------- */
-/* Measure the multiplication of a float value */
-/* ------------------------------------------- */
+/* -------------------------------- */
+/* 浮動小数点値の乗算の計測			*/
+/* -------------------------------- */
 long calcFloatMul(void)
 {
 	long stTim,endTim;
@@ -288,9 +288,9 @@ long calcFloatMul(void)
 	return endTim;
 }
 
-/* ------------------------------------- */
-/* Measure the division of a float value */
-/* ------------------------------------- */
+/* -------------------------------- */
+/* 浮動小数点値の除算の計測			*/
+/* -------------------------------- */
 long calcFloatDiv(void)
 {
 	long stTim,endTim;
@@ -301,7 +301,7 @@ long calcFloatDiv(void)
 
 	a=0.0f;
 	for(i=0;i<10000;i++){
-		for(j=1;j<10001;j++){	/* To not generate a division by 0, j starts at 1 */
+		for(j=1;j<10001;j++){	/* 0除算が発生しないようにjは1から */
 			a/=(float)j;
 		}
 	}
@@ -316,9 +316,9 @@ long calcFloatDiv(void)
 	return endTim;
 }
 
-/* ------------------------------------------------------ */
-/* Measure the addition of a double precision float value */
-/* ------------------------------------------------------ */
+/* -------------------------------- */
+/* 浮動小数点値の加算の計測			*/
+/* -------------------------------- */
 long calcDoubleAdd(void)
 {
 	long stTim,endTim;
@@ -345,9 +345,9 @@ long calcDoubleAdd(void)
 	return endTim;
 }
 
-/* --------------------------------------------------------- */
-/* Measure the subtraction of a double precision float value */
-/* --------------------------------------------------------- */
+/* -------------------------------- */
+/* 浮動小数点値の減算の計測			*/
+/* -------------------------------- */
 long calcDoubleSub(void)
 {
 	long stTim,endTim;
@@ -376,9 +376,9 @@ long calcDoubleSub(void)
 }
 
 
-/* ------------------------------------------------------------ */
-/* Measure the multiplication of a double precision float value */
-/* ------------------------------------------------------------ */
+/* -------------------------------- */
+/* 浮動小数点値の乗算の計測			*/
+/* -------------------------------- */
 long calcDoubleMul(void)
 {
 	long stTim,endTim;
@@ -404,9 +404,9 @@ long calcDoubleMul(void)
 	return endTim;
 }
 
-/* ------------------------------------------------------ */
-/* Measure the division of a double precision float value */
-/* ------------------------------------------------------ */
+/* -------------------------------- */
+/* 浮動小数点値の除算の計測			*/
+/* -------------------------------- */
 long calcDoubleDiv(void)
 {
 	long stTim,endTim;
@@ -418,7 +418,7 @@ long calcDoubleDiv(void)
 	a=0.0;
 	for(i=0;i<10000;i++){
 		for(j=1;j<10001;j++){
-			a/=(double)j;		/* To not generate a division by 0, j starts at 1 */
+			a/=(double)j;		/* 0除算が発生しないようにjは1から */
 		}
 	}
 	
@@ -454,7 +454,7 @@ int main()
 	ctime=ctime+calcDoubleDiv();
 
 
-	printf("Execution Time=,%d",ctime);
+	printf("Spec Time=,%d",ctime);
 
 	return 0;
 }

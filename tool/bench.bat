@@ -1,8 +1,8 @@
 @echo off
-@rem Remove the line below if you have already add it to the environment variable 'path'.
+@rem 環境変数にパスが通っていない人は下の行の:を外してください。
 :set path=%path%;C:\borland\bcc55\bin;C:\borland\bcc55\Include;C:\borland\bcc55\lib
 
-@echo Generating execution file of each option...
+@echo 各オプションごとの実行ファイルを生成
 bcc32 -w-ccc -w-aus -3 -ebench bench.c
 ren bench.exe bench_386.exe
 del bench.obj
@@ -83,7 +83,7 @@ ren bench.exe bench_686ocv.exe
 del bench.obj
 del bench.tds
 
-@echo Generating files for extended arithmetic tests...
+@echo 拡張演算使用型コンパイル
 
 bcc32 -w-ccc -w-aus -Oc -Ov -f -ff -5 -ebench bench.c
 ren bench.exe bench_586ocf.exe
@@ -115,7 +115,7 @@ ren bench.exe bench_686ocfiw.exe
 del bench.obj
 del bench.tds
 
-@echo Running bench... (It takes about 1-3 minutes with a 2GHz CPU.)
+@echo ベンチを実行します(2GHz程度で1-3分ほどかかります)
 bench_386.exe>>bench.csv
 @echo ,[-3]>>bench.csv
 bench_486.exe>>bench.csv
@@ -166,8 +166,8 @@ bench_686ocfiw.exe>>bench.csv
 @echo ,[-6 -tWM -oc -ov -oi -f -ff]>>bench.csv
 
 del *.exe
-@echo The measurement with the bench was completed.
-@echo Please choose the optimization option referring
-@echo to log file [bench.csv].
+@echo ベンチによる測定が完了しました。
+@echo ログファイル[bench.csv]を参考にして最適化オプションを
+@echo 決定してください。
 pause
 

@@ -1,47 +1,47 @@
 #!/usr/bin/perl
 
 ##########################################################################
-# The data backup tool of Athena
+# Athena用データバックアップツール
 #
-#	This tool backs up various *.txt data files of Athena
+# 　Athenaの各種データファイル*.txtをバックアップするツール
 #
 #-------------------------------------------------------------------------
-# How to set up.
-#  The path from the current directory to the data files and the list of
-#  files are already set (correctly). Because the backup directory is not
-#  automatically created, it is necessary that you create it by yourself.
-#  The last "/" of the directories is necessary.
+# 設定方法
+# 　実行する時のカレントフォルダからのデータへのパス、ファイルのリストを
+# 　正しく設定します。バックアップ先のフォルダは自動作成されないので、
+# 　自分で作成しておく必要があります。
+# 　フォルダの最後の「/」は省略できません。
 #
-#  The directories can be specified by arguments. Example: ./backup ../save/ ./backup_data/
-#  The last "/" of the directories is necessary.
+# 　フォルダは引数でも指定できます。例＞./backup ../save/ ./backup_data/
+# 　フォルダの最後の「/」は省略できません。
 #
-#  When this tool copies the files to the backup directory, it adds to
-#  the file name the current date and time.
+# 　実行するとバックアップ先のフォルダへ、ファイル名に現在の日付と時刻を
+# 　つけてファイルをコピーします。
 #
-#  If the backup_data directory is created in the tool directory and if
-#  the line './tool/backup ./save/ ./tool/backup_data/' is added into
-#  athena.sh, each time Athena is started a backup is done.
+#   * toolフォルダ内にbackup_dataフォルダを作成し、
+# 　  athena.shの中に「./tool/backup ./save/ ./tool/backup_data/」
+#     という行を追加すると、athenaを起動するたびにバックアップが取れます
 #
-# * When restoring, '- r date_and_time' must be passed as argument.
-#  In addition, it is also possible to add after the directories:
-#  Example 1: ./backup -r 200309191607
-#  Example 2: ./backup -r 200309191607 ../save ./backup_data/
-#  With these examples, backup datas from 2003/09/19 16:07 are restored.
+#   復元するときは引数に「-r 日付と時刻」を指定します。
+# 　またその後ろにフォルダを指定することも出来ます
+# 　例１＞ ./backup -r 200309191607
+# 　例２＞ ./backup -r 200309191607 ../save ./backup_data/
+# 　この例では2003/09/19の16:07分にバックアップしたデータを復元しています
 #
-#  File names in Athena directory (when restoring) are changed to *.bak and files are not deleted.
-#  When they become unnecessary, delete them with rm *.bak.
+# 　復元するとき、Athenaディレクトリにあるデータは *.bak に名前を変更して
+# 　残しているので、いらない場合は rm *.bak などで消してください。
 #
 ##########################################################################
 
-$sdir="../../save/";		# source directory (The /save/ directory of Athena)
-$tdir="./backup_data/";		# backup/target directory
+$sdir="../../save/";		#バックアップ元(Athenaのディレクトリ/save/)
+$tdir="./backup_data/";		#バックアップ先
 
-@files=(			# List of files
+@files=(			#ファイルのリスト
 	"account","athena","storage","party","guild","castle","pet"
 );
 
 
-#------------------------------End of setting----------------------------
+#-------------------------------設定ここまで-----------------------------
 
 
 
@@ -54,7 +54,7 @@ $tdir="./backup_data/";		# backup/target directory
 
 
 if($ARGV[0]=~/^\-r$/i || $ARGV[0]=~/\-\-(recover|restore)/i){
-	# Restoring process
+	#復元処理
 
 	$file=$ARGV[1];
 	$sdir=$ARGV[2]||$sdir;
@@ -63,12 +63,12 @@ if($ARGV[0]=~/^\-r$/i || $ARGV[0]=~/\-\-(recover|restore)/i){
 	exit(0);
 }
 
-# Backup process
+#バックアップ処理
 $sdir=$ARGV[0]||$sdir;
 $tdir=$ARGV[1]||$tdir;
 
 unless( -d $tdir ){
-	print "$0: \"$tdir\" : No such directory.\n";
+	print "$0: \"$tdir\" : No such directory\n";
 	exit(1);
 }
 
