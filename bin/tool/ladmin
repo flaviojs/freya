@@ -309,20 +309,24 @@ while(1){
 	eval{
 		if("help" =~ /^\Q$cmdlist[0]/){
 			print << "EOD";
-  add <account_name> <gender> <password> -- Add account
-  check <account_name> <password>     -- Check the validity of a password
-  del <account_name>                  -- Delete account
-  getcount                            -- Give the number of players online
-  help                                -- This help
-  info <account_id>                   -- Display all information of an account
-  list [start_id [end_id]]            -- List account
-  passwd <account_name> <newpassword> -- Change password of account
-  quit                                -- Quit
-  search <keyword>                    -- Search account
-  search -r <expression>              -- Search account by regular-expression
-  state <account_name> <newstate>     -- Change status of account (ban)
-  version                             -- Give the version of the login-server
-  who <account_name>                  -- Display all information of an account
+
+  add <アカウントID> <性別> <パスワード> <メールアドレス> -- アカウント作成
+→<メールアドレス>は省略可。
+  check <アカウントID> <パスワード>   -- パスワードの有効性をチェック
+  del <アカウントID>                  -- アカウント削除
+→確認が出ますので、ｙで削除、ｎでキャンセル。
+  getcount                            -- サーバー内に何人いるか
+  help(または何も入力せずにエンター)  -- この画面です
+  info <アカウントID>                 -- アカウント情報
+  list [start_id [end_id]]            -- アカウントリスト表\示\
+  passwd <アカウントID> <新パスワード>-- パスワード変更
+  quit                                -- 終了
+→qでも同様です。
+  search <検索文字>                   -- アカウント検索
+  search -r <expression>              -- アカウント正規表現検索
+  state <アカウントID> <b または n>   -- アカウントBAN/解除(bでBAN,nでBAN解除)
+  version                             -- ログインサーバーのバージョン
+  who <アカウントID>                  -- アカウント情報
 EOD
 		}elsif("add" =~ /^\Q$cmdlist[0]/){
 			addaccount($cmdlist[1],$cmdlist[2],$cmdlist[3],$cmdlist[4]);

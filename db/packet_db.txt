@@ -1054,7 +1054,7 @@
 0x02ab,36
 0x02ac,6
 
-2007-05-07aSakexe
+//2007-05-07aSakexe
 0x01fd,15,repairitem,2
 
 0x0288,10
