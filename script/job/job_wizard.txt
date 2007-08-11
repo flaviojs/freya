@@ -403,7 +403,7 @@ gef_tower.gat,111,37,4	script	Wizard Guildsman	70,{
 		mes "[Catherine]";
 		mes "Well, no need to wait, I congratulate you. I hearby deem you Wizard.";
 		next;
-		set job_wizard_q,0;
+		callfunc "F_JobChange",Job_Wizard;
 		mes "[Catherine]";
 		mes "Since you're a Wizard now, act like a Wizard, got it?";
 		mes "Us wizards have to be careful since we possess the ultimate power of magic.";
@@ -2340,17 +2340,6 @@ OnTouch:
 	end;
 }
 
-job_wiz.gat,46,99,0	script	Succeed	139,16,16,{
-
-OnInit:
-	disablenpc "Succeed";
-	end;
-
-OnTouch:
-	warp "gef_tower.gat",110,30;
-	end;
-}
-
 job_wiz.gat,1,7,1	script	Test Helper	139,1,1,{
 
 OnInit:
@@ -2370,11 +2359,7 @@ OnTimer4000:
 	end;
 
 OnTimer5000:
-	enablenpc "Succeed";
-	end;
-
-OnTimer6000:
-	disablenpc "Succeed";
+	areawarp "job_wiz.gat",30,82,61,113,"gef_tower.gat",110,30;
 	end;
 
 OnTimer7000:

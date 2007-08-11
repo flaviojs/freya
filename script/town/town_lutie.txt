@@ -294,7 +294,7 @@ xmas.gat,134,112,4	script	Snowman	710,{
 				mes "^3355FFYou gingerly stir";
 				mes "your hand around in";
 				mes "Jack Frost's magical gift bag^000000.";
-				set '@snownow,rand(1,8);
+				set '@snowsnow,rand(1,8);
 				next;
 				switch('@snowsnow) {
 				case 1:

@@ -1218,6 +1218,8 @@ prt_in.gat,70,162,0		warp	pronterawarp1072	2,1,prt_in.gat,70,140
 prt_church.gat,115,122,0	warp	pronterawarp1073	1,2,prt_church.gat,168,106
 prt_church.gat,166,106,0	warp	pronterawarp1074	1,2,prt_church.gat,112,122
 
+prontera.gat,263,279,0   warp   pronterawarp1075   2,2,prt_in.gat,227,18
+
 
 //--------------------------------------------------------------
 // Rachel Town Warps
