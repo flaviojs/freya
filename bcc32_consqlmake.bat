@@ -113,26 +113,25 @@ set __warning__=-w-7035 -w-8004 -w-8012 -w-8017 -w-8057 -w-8060 -w-8064 -w-8065 
 
 @echo ログインサーバーコンパイル
 cd src\login
-bcc32 -j255 %__warning__% %__define__% %__include__% login.c libmysql.lib %__common__%
-copy login.exe ..\..\login-server.exe > NUL
+bcc32 -j255 -e..\..\login-server.exe %__warning__% %__define__% %__include__% login.c libmysql.lib %__common__%
 
 @echo キャラクターサーバーコンパイル
 cd ..\char
-bcc32 -j255 %__warning__% %__define__% %__include__% char.c libmysql.lib int_pet.c int_guild.c int_party.c int_storage.c inter.c %__common__%
+bcc32 -j255 -e..\..\char-server.exe %__warning__% %__define__% %__include__% libmysql.lib char.c int_pet.c int_guild.c int_party.c int_storage.c inter.c int_mail.c int_homun.c int_status.c %__common__%
 copy char.exe ..\..\char-server.exe > NUL
 
 @echo コンバーターコンパイル
 cd ..\converter
-bcc32 -j255 %__warning__% %__define__% %__include__% char-converter.c libmysql.lib converter.c login-converter.c inter-converter.c %__common__%
-copy converter.exe ..\..\converter.exe > NUL
+bcc32 -e..\..\converter.exe -j255 %__warning__% %__define__% %__include__% char-converter.c libmysql.lib converter.c login-converter.c inter-converter.c %__common__%
+
+@echo マップサーバーコンパイル
+cd ..\map
+bcc32 -j255 -e..\..\map-server.exe %__warning__% %__define__% %__include__% map.c npc.c battle.c chat.c chrif.c clif.c guild.c intif.c itemdb.c mob.c atcommand.c party.c path.c pc.c pet.c status.c script.c skill.c storage.c trade.c vending.c friend.c date.c ranking.c unit.c mail.c homun.c mercenary.c %__common__%
 
 cd ..\..\
 @echo オブジェクトファイル等のクリーンアップ
 del src\char\*.obj > NUL
-del src\char\char.exe > NUL
 del src\login\*.obj > NUL
-del src\login\login.exe > NUL
 del src\map\*.obj > NUL
-del src\map\map.exe > NUL
 pause
 

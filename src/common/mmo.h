@@ -40,7 +40,7 @@
 #define MAX_GUILDCASTLE 20					//全砦数
 #define MAX_GUILDLEVEL 50					//ギルドレベル最大値
 #define MAX_FRIEND 20						//友達登録最大数
-#define MAX_STATUSCHANGE 380
+#define MAX_STATUSCHANGE 383
 
 #define MAX_HAIR_STYLE 24					//髪型の数（デフォルト：24）
 #define MAX_HAIR_COLOR 9					//髪色の数（デフォルト：9）
@@ -51,6 +51,7 @@
 #define MAX_ATTRIBUTE 4
 #define ATTRIBUTE_NORMAL 0
 #define MIN_STAR 0							//武器製造時、星のかけら最小数
+#define MAX_REFINE 10						//精錬できる回数(デフォルト：10)
 #define MAX_STAR 3							//武器製造時、星のかけら最大数
 
 #define MAX_PORTAL_MEMO 3					//ワープポータルのメモ最大数
@@ -67,7 +68,27 @@
 #define HOM_SKILLID 8001		// ホムスキルIDの開始値
 #define MAX_HOM_SKILLID (HOM_SKILLID+MAX_HOMSKILL)	// ホムスキルIDの最大値
 
+#define MERCENARY_MAX_DB 30		//傭兵の数
+#define MERCENARY_ID	10001	//ID開始値
+#define MECENARY_MAX_JOB_ID	3	//傭兵がつく職業の最大値
+#define MERCENARY_MAX_INTIMATE	300	//信頼度の最大値
+#define MERCENARY_MAX_SKILL_NUM	10	//所持可能なスキルの数
+#define MERCENARY_REG_KILL_COUNT "MEC_KILL_COUNT"
+#define MERCENARY_SKILL_ID	9001	// 傭兵スキルIDの開始値
+#define MERCENARY_SKILL_MAX	100
+#define MERCENARY_SKILL_ID_MAX	(MERCENARY_SKILL_ID+MERCENARY_SKILL_MAX)	//傭兵スキルID最大値
+
 #define GRF_PATH_FILENAME "conf/grf-files.txt"
+
+#define MAX_HOTKEYS 27	//9×3ページ
+
+#define GET_STATUSPOINT_INC(lv,n)	((lv + n + 14) / 5)
+
+struct hotkey {
+	int type;
+	int id;
+	int skill_lv;
+};
 
 struct item {
 	int id;
@@ -121,7 +142,7 @@ struct mmo_charstatus {
 	int base_exp,job_exp,zeny;
 
 	short class;
-	short status_point,skill_point;
+	unsigned short status_point,skill_point;
 	int hp,max_hp,sp,max_sp;
 	short option,karma,manner;
 	short hair,hair_color,clothes_color;
@@ -141,6 +162,8 @@ struct mmo_charstatus {
 	struct skill skill[MAX_SKILL];
 	int friend_num;
 	struct friend_data friend_data[MAX_FRIEND];
+	int mec_intimate[MECENARY_MAX_JOB_ID];
+	struct hotkey hotkey[MAX_HOTKEYS];
 };
 
 struct registry {

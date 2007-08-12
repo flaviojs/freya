@@ -30,6 +30,7 @@
 #include "status.h"
 #include "ranking.h"
 #include "homun.h"
+#include "mercenary.h"
 //#include "trade.h"
 //#include "core.h"
 #include "db.h"
@@ -208,6 +209,10 @@ ATCOMMAND_FUNC(homrecalc);
 ATCOMMAND_FUNC(makehomun);
 ATCOMMAND_FUNC(homfriendly);
 ATCOMMAND_FUNC(autoloot);
+ATCOMMAND_FUNC(call_mercenary);
+ATCOMMAND_FUNC(free_mercenary);
+ATCOMMAND_FUNC(get_mecstatus);
+ATCOMMAND_FUNC(inc_mec_intimate);
 
 /*==========================================
  *AtCommandInfo atcommand_info[]\‘¢‘Ì‚Ì’è‹`
@@ -375,6 +380,10 @@ static AtCommandInfo atcommand_info[] = {
 	{ AtCommand_MakeHomun,          "@makehomun",        0, atcommand_makehomun	},
 	{ AtCommand_HomFriendly,        "@homfriendly",      0, atcommand_homfriendly },
 	{ AtCommand_AutoLoot,           "@autoloot",         0, atcommand_autoloot	},
+	{ AtCommand_CallMercenary,		"@call_mercenary",   0, atcommand_call_mercenary },
+	{ AtCommand_FreeMercenary,		"@free_mercenary",   0, atcommand_free_mercenary },
+	{ AtCommand_GetMercenaryStatus, "@get_mecstat" ,   0, atcommand_get_mecstatus },
+	{ AtCommand_IncMecIntimate,		"@inc_mecintimate",  0, atcommand_inc_mec_intimate},
 		// add here
 	{ AtCommand_MapMove,            "@mapmove",          0, NULL },
 	{ AtCommand_Broadcast,          "@broadcast",        0, NULL },
@@ -1417,8 +1426,8 @@ atcommand_item2(
 				}
 				if (item_data->type == 8)
 					refine = 0;
-				if (refine > 10)
-					refine = 10;
+				if (refine > MAX_REFINE)
+					refine = MAX_REFINE;
 			} else {
 				identify = 1;
 				refine = 0;
@@ -1602,7 +1611,7 @@ atcommand_baselevelup(
 		if (level <= 0)
 			return -1;
 		for (i = 1; i <= level; i++)
-			sd->status.status_point += (sd->status.base_level + i + 14) / 5;
+			sd->status.status_point += GET_STATUSPOINT_INC(sd->status.base_level,i);
 		sd->status.base_level += level;
 		clif_updatestatus(sd, SP_BASELEVEL);
 		clif_updatestatus(sd, SP_NEXTBASEEXP);
@@ -2238,10 +2247,10 @@ atcommand_refine(
 	if (sscanf(message, "%d %d", &position, &refine) < 2)
 		return -1;
 
-	if (refine < -10)
-		refine = -10;
-	else if (refine > 10)
-		refine = 10;
+	if (refine < -MAX_REFINE)
+		refine = -MAX_REFINE;
+	else if (refine > MAX_REFINE)
+		refine = MAX_REFINE;
 	else if (refine == 0)
 		refine = 1;
 
@@ -2256,8 +2265,8 @@ atcommand_refine(
 			continue;
 		current_refine = data->refine;
 		data->refine += refine;
-		if (data->refine > 10)
-			data->refine = 10;
+		if (data->refine > MAX_REFINE)
+			data->refine = MAX_REFINE;
 		else if (data->refine < 0)
 			data->refine = 0;
 		if (current_refine == data->refine)
@@ -6094,6 +6103,141 @@ atcommand_autoloot(
 		sd->state.autoloot = 1;
 		clif_displaymessage(fd, msg_txt(147));
 	}
+
+	return 0;
+}
+/*==========================================
+ *
+ *------------------------------------------
+ */
+int
+atcommand_call_mercenary(
+	const int fd, struct map_session_data* sd,
+	const char* command, const char* message)
+{
+	int mec_id;
+
+	nullpo_retr(-1, sd);
+
+	if(sscanf(message, "%d", &mec_id)<1)
+		return -1;
+
+	mercenary_call(sd,mec_id);
+
+	return 0;
+}
+
+int
+atcommand_free_mercenary(
+	const int fd, struct map_session_data* sd,
+	const char* command, const char* message)
+{
+	nullpo_retr(-1, sd);
+	if(sd->mcd == NULL)	return 1;
+
+	mercenary_free(sd->mcd);
+
+	return 0;
+}
+
+int atcommand_get_mecstatus(
+	const int fd, struct map_session_data* sd,
+	const char* command, const char* message)
+{
+	char buf[1024];
+	struct mercenary_data *mcd;
+	int type = 0;
+	int lv,hp,sp,max_hp,max_sp;
+	int str,agi,vit,int_,dex,luk;
+	int atk,matk,def,def2,mdef,mdef2;
+	int hit,critical,flee,aspd;
+
+	nullpo_retr(-1, sd);
+	if(sd->mcd == NULL)	return 1;
+	mcd = sd->mcd;
+
+	sscanf(message, "%d", &type);
+
+	switch(type)
+	{
+		case 0:
+			lv = status_get_lv(&mcd->bl);
+			hp = status_get_hp(&mcd->bl);
+			sp = status_get_sp(&mcd->bl);
+			max_hp = status_get_max_hp(&mcd->bl);
+			max_sp = status_get_max_sp(&mcd->bl);
+			str = status_get_str(&mcd->bl);
+			agi = status_get_agi(&mcd->bl);
+			vit = status_get_vit(&mcd->bl);
+			int_ = status_get_int(&mcd->bl);
+			dex = status_get_dex(&mcd->bl);
+			luk = status_get_luk(&mcd->bl);
+			atk = status_get_atk(&mcd->bl);
+			matk = mcd->matk;
+			def = status_get_def(&mcd->bl);
+			def2 = status_get_def2(&mcd->bl);
+			mdef = status_get_mdef(&mcd->bl);
+			mdef2 = status_get_mdef2(&mcd->bl);
+			hit = status_get_hit(&mcd->bl);
+			critical = mcd->critical;
+			flee = status_get_flee(&mcd->bl);
+			aspd = status_get_amotion(&mcd->bl);
+			break;
+		case 1:
+			lv = mcd->base_level;
+			hp = mcd->hp;
+			sp = mcd->sp;
+			max_hp = mcd->max_hp;
+			max_sp = mcd->max_sp;
+			str = mcd->str;
+			agi = mcd->agi;
+			vit = mcd->vit;
+			int_ = mcd->int_;
+			dex = mcd->dex;
+			luk = mcd->luk;
+			atk = mcd->atk;
+			matk = mcd->matk;
+			def = mcd->def;
+			def2 = mcd->def2;
+			mdef = mcd->mdef;
+			mdef2 = mcd->mdef2;
+			hit = mcd->hit;
+			critical = mcd->critical;
+			flee = mcd->flee;
+			aspd = mcd->aspd;
+			break;
+		default:
+			return -1;
+	}
+	snprintf(buf,sizeof(buf),"Name:%s Lv:%d %d/%d %d/%d",mcd->name,lv,hp,max_hp,sp,max_sp);
+	clif_displaymessage(fd, buf);
+	snprintf(buf,sizeof(buf),"str:%d agi:%d vit:%d int:%d dex:%d luk:%d",str,agi,vit,int_,dex,luk);
+	clif_displaymessage(fd, buf);
+	snprintf(buf,sizeof(buf),"ATK:%d MATK:%d DEF:%d+%d MDEF:%d+%d",atk,matk,def,def2,mdef,mdef2);
+	clif_displaymessage(fd, buf);
+	snprintf(buf,sizeof(buf),"Hit:%d Critical:%d Flee:%d aspd:%d",hit,critical,flee,aspd);
+	clif_displaymessage(fd, buf);
+	snprintf(buf,sizeof(buf),"intimate:%d job_id:%d",mcd->msd->status.mec_intimate[mcd->job_id],mcd->job_id);
+	clif_displaymessage(fd, buf);
+	snprintf(buf,sizeof(buf),"x:%d y:%d",mcd->bl.x,mcd->bl.y);
+	clif_displaymessage(fd, buf);
+
+	return 0;
+}
+
+int
+atcommand_inc_mec_intimate(
+	const int fd, struct map_session_data* sd,
+	const char* command, const char* message)
+{
+	int n,job_id;
+	nullpo_retr(-1, sd);
+
+	if(sscanf(message, "%d %d", &job_id,&n)<1)
+		return -1;
+	if(job_id > MECENARY_MAX_JOB_ID)
+		return -1;
+	sd->status.mec_intimate[job_id] += n;
 
 	return 0;
 }

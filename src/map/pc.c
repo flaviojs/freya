@@ -17,6 +17,7 @@
 #include "mob.h"
 #include "pet.h"
 #include "homun.h"
+#include "mercenary.h"
 #include "itemdb.h"
 #include "script.h"
 #include "battle.h"
@@ -33,6 +34,7 @@
 #include "date.h"
 #include "unit.h"
 #include "lock.h"
+#include "mercenary.h"
 
 #ifdef MEMWATCH
 #include "memwatch.h"
@@ -934,6 +936,9 @@ int pc_authok(int id,struct mmo_charstatus *st,struct registry *reg)
 	sd->homun_hungry_timer = -1;
 	memset(&sd->hom,0,sizeof(struct mmo_homunstatus));
 
+	//傭兵
+	sd->mcd = NULL;
+
 	// ステータス異常の初期化
 	for(i=0;i<MAX_STATUSCHANGE;i++) {
 		sd->sc_data[i].timer = -1;
@@ -1084,6 +1089,8 @@ int pc_authok(int id,struct mmo_charstatus *st,struct registry *reg)
 			fclose(fp);
 		}
 	}
+
+	clif_send_hotkey(sd);
 
 	return 0;
 }
@@ -3471,6 +3478,8 @@ int pc_setpos(struct map_session_data *sd,char *mapname_org,int x,int y,int clrt
 					pc_setglobalreg(sd,"HOM_TEMP_INTIMATE",sd->hd->intimate);
 				unit_free(&sd->hd->bl, 0);
 			}
+			if( sd->mcd )
+				unit_free(&sd->mcd->bl, 0);
 			unit_free(&sd->bl,clrtype);
 			memcpy(sd->status.last_point.map,mapname,24);
 			sd->status.last_point.x = x;
@@ -3542,6 +3551,8 @@ int pc_setpos(struct map_session_data *sd,char *mapname_org,int x,int y,int clrt
 		if(sd->status.homun_id > 0 && sd->hd){
 			unit_remove_map( &sd->hd->bl, clrtype&0xffff ,1);
 		}
+		if( sd->mcd )
+			unit_remove_map( &sd->mcd->bl, clrtype&0xffff ,1);
 		clif_changemap(sd,mapname,x,y);
 	}
 	memcpy(sd->mapname,mapname,24);
@@ -3569,6 +3580,16 @@ int pc_setpos(struct map_session_data *sd,char *mapname_org,int x,int y,int clrt
 		sd->hd->bl.x = sd->hd->ud.to_x = x;
 		sd->hd->bl.y = sd->hd->ud.to_y = y;
 		sd->hd->dir  = sd->dir;
+	}
+	// 傭兵の移動
+	if(sd->mcd) {
+		sd->mcd->bl.m = m;
+		sd->mcd->dir  = sd->dir;
+		sd->mcd->bl.x = x;
+		sd->mcd->bl.y = y;
+		mercenary_calc_movetopos(sd->mcd,x,y,sd->dir);
+		sd->mcd->bl.x = sd->mcd->ud.to_x;
+		sd->mcd->bl.y = sd->mcd->ud.to_y;
 	}
 
 	//OnPCMoveMapイベント
@@ -4829,6 +4850,8 @@ int pc_damage(struct block_list *src,struct map_session_data *sd,int damage)
 	sd->status.hp-=damage;
 	if(sd->status.pet_id > 0 && sd->pd && sd->petDB && battle_config.pet_damage_support)
 		pet_target_check(sd,src,1);
+	if(sd->mcd)
+		mercenary_lock_target(sd->mcd,src);
 
 	if (sd->status.option & 0x02)
 		status_change_end(&sd->bl, SC_HIDING, -1);

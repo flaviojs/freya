@@ -60,7 +60,7 @@ function	script	Refine1	{
 		mes "これは未鑑定だから精錬できない。";
 		return;
 	}
-	if(getequiprefinerycnt('@i)>=10) {
+	if(getequiprefinerycnt('@i)>=get_maxrefine()) {
 		mes "これ以上は精錬できないぞ。";
 		return;
 	}
@@ -234,7 +234,7 @@ function	script	Refine2	{
 		mes "精錬する趣味は無い…";
 		return;
 	}
-	if(getequiprefinerycnt('@i)>=10) {
+	if(getequiprefinerycnt('@i)>=get_maxrefine()) {
 		mes "これ以上手を加えるところが";
 		mes "無いぞ！";
 		return;
@@ -391,7 +391,7 @@ function	script	Refine3	{
 		mes "これは未鑑定だから精錬できない。";
 		return;
 	}
-	if(getequiprefinerycnt('@i)>=10) {
+	if(getequiprefinerycnt('@i)>=get_maxrefine()) {
 		mes "これ以上は精錬できない。";
 		return;
 	}
