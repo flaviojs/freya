@@ -14,7 +14,7 @@
 Date	Added
 
 2007/08/11
-	* Updated: Translated some more of battle_athena.conf (Thanks to lav0s) [Tsuyuki]
+	* Updated: Translated some more of battle_athena.conf (Thanks to kosai) [Tsuyuki]
 
 2007/08/10
 	* Updated: Project to jAthena 2316 [Tsuyuki]
