@@ -370,6 +370,7 @@ INSERT INTO `login` (`account_id`, `userid`, `user_pass`, `sex`, `email`) VALUES
 INSERT INTO `login` (`account_id`, `userid`, `user_pass`, `sex`, `email`) VALUES ('13', 's13', 'p13', 'S','athena@athena.com');
 INSERT INTO `login` (`account_id`, `userid`, `user_pass`, `sex`, `email`) VALUES ('14', 's14', 'p14', 'S','athena@athena.com');
 INSERT INTO `login` (`account_id`, `userid`, `user_pass`, `sex`, `email`) VALUES ('15', 's15', 'p15', 'S','athena@athena.com');
+INSERT INTO `login` (`account_id`, `userid`, `user_pass`, `sex`, `email`) VALUES ('2000001', 'Test', 'Test', 'M','athena@athena.com');
 
 # Database: Ragnarok
 # Table: 'login_error'
@@ -552,5 +553,26 @@ CREATE TABLE `status_change` (
   `val3` int(11) NOT NULL default '0',
   `val4` int(11) NOT NULL default '0',
   `tick` int(11) NOT NULL default '0',
+  KEY `char_id` (`char_id`)
+) TYPE=MyISAM;
+
+# Database: Ragnarok
+# Table: 'mec_intimate'
+# 
+CREATE TABLE `mec_intimate` (
+  `char_id` int(11) NOT NULL default '0',
+  `intimate` int(11) NOT NULL default '0',
+  KEY `char_id` (`char_id`)
+) TYPE=MyISAM;
+
+# Database: Ragnarok
+# Table: 'hotkey'
+# 
+CREATE TABLE `hotkey` (
+  `char_id` int(11) NOT NULL default '0',
+  `type` int(11) NOT NULL default '0',
+  `hotkey` int(11) NOT NULL default '0',
+  `id` int(11) NOT NULL default '0',
+  `skill_lv` int(11) NOT NULL default '0',
   KEY `char_id` (`char_id`)
 ) TYPE=MyISAM;

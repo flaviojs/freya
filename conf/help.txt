@@ -304,3 +304,9 @@ resetstate
 @homfriendly <friendly_value>               ---- Sets friendly value of your homunculus.
 
 @autoloot ---- Switches on/off autoloot.
+
+@call_mercenary      ---- Summons a Mercenary based on Mercenary ID.
+@free_mercenary      ---- Gets rid of a summoned Mercenary.
+@get_mecstatus       ---- Displays Mercenary status information.
+@inc_mecintimate x y ---- Changes Mercenary Intimacy
+                            x = job_id y = intimacy

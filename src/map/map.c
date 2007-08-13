@@ -41,6 +41,7 @@
 #include "friend.h"
 #include "unit.h"
 #include "homun.h"
+#include "mercenary.h"
 
 #ifdef MEMWATCH
 #include "memwatch.h"
@@ -1144,6 +1145,9 @@ int map_quit(struct map_session_data *sd)
 		if( sd->hd ) {
 			unit_free( &sd->hd->bl, 0);
 		}
+		if( sd->mcd) {
+			unit_free( &sd->mcd->bl,0);
+		}
 		unit_free(&sd->bl, 0);
 		chrif_save(sd);
 	}
@@ -1217,6 +1221,21 @@ struct homun_data * map_id2hd(int id)
 	return NULL;
 }
 
+/*==========================================
+ * id”Ô†‚ÌMEC‚ğ’T‚·B‹‚È‚¯‚ê‚ÎNULL
+ *------------------------------------------
+ */
+struct mercenary_data * map_id2mcd(int id)
+{
+	struct block_list *bl;
+
+	if(id > 0) {
+		bl = numdb_search(id_db,id);
+		if(bl && bl->type == BL_MEC)
+			return (struct mercenary_data *)bl;
+	}
+	return NULL;
+}
 /*==========================================
  * id”Ô†‚ÌNPC‚ğ’T‚·B‹‚È‚¯‚ê‚ÎNULL
  *------------------------------------------
@@ -2469,6 +2488,7 @@ void do_final(void)
 	do_final_party();
 	do_final_pet();
 	do_final_homun();
+	do_final_mercenary();
 
 	atnwinsvc_notify_stop();	// ’â~ˆ—’†‚ğ’Ê’m
 
@@ -2572,6 +2592,7 @@ int do_init(int argc,char *argv[])
 
 	do_init_pet();
 	do_init_homun();
+	do_init_mercenary();
 	do_init_status();
 	do_init_friend();
 	do_init_ranking();

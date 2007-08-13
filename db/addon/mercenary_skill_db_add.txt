@@ -1,0 +1,5 @@
+// mercenary_skill_db_add.txt, Custom Mercenary Skill Database (Overwrites Normal Database)
+//
+// Structure of Database:
+//
+// ID,DummyInfo,Skill_ID,Skill_LV,Target,Rate,State,Condition,Param1,Param2,Param3

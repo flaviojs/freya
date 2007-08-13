@@ -41,11 +41,15 @@ void clif_spawnpc(struct map_session_data *sd);	//area
 void clif_spawnnpc(struct npc_data *nd);	// area
 void clif_spawnmob(struct mob_data *md);	// area
 void clif_spawnpet(struct pet_data *pd);	// area
+void clif_spawnmec(struct mercenary_data *mcd);	//area
+void clif_send_mecdata(struct mercenary_data *mcd, int type, int param);
+void clif_send_mecstatus(struct map_session_data *sd, int flag);
 void clif_movepet(struct pet_data *pd);	//area
 void clif_walkok(struct map_session_data *sd);	// self
 void clif_movechar(struct map_session_data *sd);	// area
 void clif_movemob(struct mob_data *md);	//area
 void clif_movehom(struct homun_data *hd);	//area
+void clif_movemec(struct mercenary_data *mcd);	//area
 void clif_changemap(struct map_session_data *sd,char *mapname,int x,int y);	//self
 void clif_changemapserver(struct map_session_data *sd, char *mapname, int x, int y, int ip, int port);	//self
 int clif_fixpos(struct block_list *bl);	// area
@@ -132,6 +136,8 @@ int clif_petinsight(struct block_list *bl, va_list ap);
 int clif_petoutsight(struct block_list *bl, va_list ap);
 int clif_hominsight(struct block_list *bl, va_list ap);
 int clif_homoutsight(struct block_list *bl, va_list ap);
+int clif_mecinsight(struct block_list *bl,va_list ap);
+int clif_mecoutsight(struct block_list *bl,va_list ap);
 
 void clif_class_change(struct block_list *bl, int class, int type);
 
@@ -322,6 +328,8 @@ void clif_homskillup(struct map_session_data *sd, int skill_num);
 
 void clif_GM_kickack(struct map_session_data *sd, int id);
 void clif_GM_kick(struct map_session_data *sd, struct map_session_data *tsd, int type);
+
+void clif_send_hotkey(struct map_session_data *sd);
 
 int clif_foreachclient(int (*)(struct map_session_data*,va_list),...);
 

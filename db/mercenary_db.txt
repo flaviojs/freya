@@ -1,0 +1,9 @@
+// mercenary_db.txt, Mercenary Database
+//
+// Structure of Database:
+//
+//ID,View_Class,Name,JName,Job_ID,Base_Level,MaxHP,MaxSP,STR,AGI,VIT,INT,DEX,LUK,ATK_Min,ATK_Max,MATK_Min,MATK_Max,Def,MDEF,ASPD,Size,Race,Element,Range,Script
+//
+10001,6009,Mercenary,Mercenary,0,98,10000,400,120,1,100,1,60,1,170,170,0,0,38,0,500,0,0,80,2,{}
+10002,6012,Mercenary,Mercenary,1,98,12000,400,120,1,100,1,60,1,160,160,0,0,38,0,600,0,0,80,3,{}
+10003,6011,Mercenary,Mercenary,2,98,10000,400,1,60,100,1,120,1,150,150,0,0,28,0,700,0,0,80,12,{}

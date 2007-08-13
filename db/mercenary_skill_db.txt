@@ -1,0 +1,21 @@
+// mercenary_skill_db.txt, Mercenary Skill Database
+//
+// Structure of Database:
+//
+// ID,DummyInfo,Skill_ID,Skill_LV,Target,Rate,State,Condition,Param1,Param2,Param3
+//
+10001,剣傭兵@ツーハンドクイッケン,60,10,self,100,battle,status,2,except,
+10001,剣傭兵@マキシマイズパワー,114,5,self,100,battle,status,26,except,
+10001,剣傭兵@爆裂波動,270,5,self,100,battle,status,86,except,
+10001,剣傭兵@バッシュ,5,10,enemy,30,battle,,,,
+10001,剣傭兵@ボウリングバッシュ,62,10,enemy,50,battle,,,,
+10002,槍傭兵@ツーハンドクイッケン,60,10,self,100,battle,status,2,except,
+10002,槍傭兵@マキシマイズパワー,114,5,self,100,battle,status,26,except,
+10002,槍傭兵@爆裂波動,270,5,self,100,battle,status,86,except,
+10002,槍傭兵@ピアース,56,10,enemy,30,battle,,,,
+10002,槍傭兵@ブランディッシュスピア,57,10,enemy,50,battle,,,,
+10003,弓傭兵@ツーハンドクイッケン,60,10,self,100,battle,status,2,except,
+10003,弓傭兵@マキシマイズパワー,114,5,self,100,battle,status,26,except,
+10003,弓傭兵@爆裂波動,270,5,self,100,battle,status,86,except,
+10003,弓傭兵@ダブルストレイフィング,46,10,enemy,40,battle,,,,
+10003,弓傭兵@アローシャワー,47,5,enemy,50,battle,,,,

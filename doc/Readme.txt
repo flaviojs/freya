@@ -4,6 +4,32 @@
 ---------------------------------------------------------------------------
 
 ----------------------------------------
+//2317fix2 by 24
+・改行コードがLFになっていたのを直した(*.c,*.h)
+・マージ時に起こった不具合を修正(battle.c)
+----------------------------------------
+//2317fix by 24
+・get_maxrefine命令を追加(script.c,script_ref.txt,npc_misc_refine.txt)
+・db_ref.txtにrefine_db.txtの仕様を追加
+----------------------------------------
+//2317 by 24
+
+・傭兵システムを暫定実装
+(atcommand_athena.conf,battle_athena.conf,help.txt
+ skill_cast_db.txt,skill_db.txt,skill_db2.txt,skill_require_db.txt,
+ conf_ref.txt,db_ref.txt,script_ref.txt,main.sql,mec_changetable.sql,
+ mec_changetable.sql,atcommand.*,battle.*,clif.*,map.*,mercenary.*,
+ mob.c,pc.c,script.c,skill.*,status.*,unit.c)
+・hotkey関連の実装 thanks to ViVi
+(char.c,char-converter.c,clif.c,main.sql,drop_table.sql,hotkey_chagetable.sql)
+・スキル使用時にクリティカルするかしないかを切り替えられるようにした
+(battle.*,battle_athena.conf)
+・精錬最大値をMAX_REFINEで定義するようにした
+(status.c,mmo.h,atcommand.c,script.c)
+・レベルアップ時のステータスポイントの計算部分を一つにまとめた
+(mmo.h,atcommand.c,pc.c)
+
+----------------------------------------
 //2316 by 片山
 
 ・ladmin実行時、helpコマンドを入力した時の表示を日本語に
