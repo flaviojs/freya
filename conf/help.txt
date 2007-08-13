@@ -307,6 +307,6 @@ resetstate
 
 @call_mercenary      ---- Summons a Mercenary based on Mercenary ID.
 @free_mercenary      ---- Gets rid of a summoned Mercenary.
-@get_mecstatus       ---- Displays Mercenary status information.
+@get_mecstat         ---- Displays Mercenary status information.
 @inc_mecintimate x y ---- Changes Mercenary Intimacy
                             x = job_id y = intimacy
