@@ -67,10 +67,11 @@ int fake_mob_list[] = { // Set here mobs that do not sound when they don't move
 };
 #endif
 
-#define MAX_PACKET_DB   0x300
+#define MAX_PACKET_DB   0x350
 #define MAX_PACKET_VERSION 16
 
 static const int packet_len_table[MAX_PACKET_DB] = {
+//#0x0000
    10,  0,  0,  0,  0,  0,  0,  0,   0,  0,  0,  0,  0,  0,  0,  0,
     0,  0,  0,  0,  0,  0,  0,  0,   0,  0,  0,  0,  0,  0,  0,  0,
     0,  0,  0,  0,  0,  0,  0,  0,   0,  0,  0,  0,  0,  0,  0,  0,
@@ -126,8 +127,8 @@ static const int packet_len_table[MAX_PACKET_DB] = {
    12,  4,284,  6, 14,  6,  4, -1,   6,  8, 18, -1, 46, 34,  4,  6,
     4,  4,  2, 70, 10, -1, -1, -1,   8,  6, 27, 72, 66, -1, 11,  3,
 //#0x2A0
-    0,  0,  8,  0,  0,  8,  0,  0,   0,  0,  4, 36,  6,  8,  0,  0,
-    0,  0,  0,  0,  0,  0,  0,  0,   0,  0,  0,  0,  0,  0,  0,  0,
+    0,  0,  8,  0,  0,  8, 22, 22, 162, 58,  4, 36,  6,  8, 10,  2,
+   85,  0,  0,  7,  6, 12,  7, 10,  22,191, 11,  8,  6,  0,  0,  0,
 };
 
 // Size list for each packet version after packet version 4.
@@ -12718,6 +12719,8 @@ static void (*clif_parse_func_table[MAX_PACKET_VERSION][MAX_PACKET_DB])() = {
 	// 290
 	NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL,  NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL,
 	// 2a0
+	NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL,  NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL,
+	// 2b0
 	NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL,  NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL,
 
 #if 0

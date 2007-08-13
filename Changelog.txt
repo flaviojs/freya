@@ -10,6 +10,9 @@
 
 Date	Added
 
+08/13/2007
+	* Updated: Some packetry [Tsuyuki]
+
 07/26/2007
 	* Improved: Cleaned up global script variables [Tsuyuki]
 	* Removed: Automatic deletion of conf/GM_Account.txt on server startup [Tsuyuki]
