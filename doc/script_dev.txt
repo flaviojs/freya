@@ -32,7 +32,6 @@
 - quest/quest_kiel_hyre.txt		<- Good enough - No access to an iRO Aegis version
 - quest/quest_the_sign.txt		<- Good enough
 
-- town/town_ayothaya.txt		<- Requires conversion [*]
 - town/town_einbech.txt			<- Requires conversion [*]
 - town/town_einbroch.txt		<- Requires conversion [*]
 - town/town_lighthalzen.txt		<- Requires conversion - Some parts are Aegis-converted [*]
