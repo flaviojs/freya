@@ -40,7 +40,6 @@
 - town/town_nameless.txt		<- No access to an Aegis version [*]
 - town/town_veins.txt			<- No access to an Aegis version [*]
 
-
 - warp/warp_dungeon.txt			<- Good enough
 - warp/warp_field.txt			<- Good enough
 - warp/warp_gvg.txt			<- Good enough
