@@ -62,7 +62,6 @@
 - quest/quest_quiz_revolution.txt	<- Optional - No access to an iRO Aegis version [*]
 - quest/quest_thanatos.txt		<- Optional [*]
 - town/town_comodo.txt			<- Optional - Only Comodo Gambling is euRO [*]
-- town/town_geffen.txt			<- Optional - Only Mastermind Game is euRO [*]
 - town/town_hugel.txt			<- Optional - Only Rebellion Quest is euRO - No access to an iRO Aegis version [*]
 - town/town_juno.txt			<- Optional - [*]
 - town/town_kunlun.txt			<- Optional - [*]
