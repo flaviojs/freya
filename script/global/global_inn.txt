@@ -9,12 +9,13 @@
 //--------------------------------------------------------------
 // Script Title: Inn Employee NPCs	Author: Tsuyuki
 //--------------------------------------------------------------
-// Revision History: v1.3
+// Revision History: v1.4
 //--------------------------------------------------------------
 //	1.0 First version, converted from Aegis (euRO dialogue) [Tsuyuki]
 //	1.1 Added iRO dialogue + corrected save/warp coords for Hugel Inn [Tsuyuki]
 //	1.2 Updated Einbroch Hotel Employee with compatibility for the Airship Quest [Tsuyuki]
 //	1.3 Updated Aldebaran Inn Employee with the missing official dialogue [Tsuyuki]
+//	1.4 Updated Payon Inn Employee with iRO dialogue [Tsuyuki]
 //--------------------------------------------------------------
 // Additional Notes: * Official-certified / Aegis-certified *
 // Inn NPCs that may have some custom parts: Rachel
@@ -25,7 +26,7 @@
 // Alberta Inn Employees - [Tsuyuki]
 //--------------------------------------------------------------
 
-alberta_in.gat,32,142,5	script	Inn Employee::Jennie	53,{
+alberta_in.gat,32,142,5	script	Inn Employee#Jennie	53,{
 
 	mes "[Employee Jennie]";
 	mes "Welcome to 'Fisherman Inn'.";
@@ -68,7 +69,7 @@ alberta_in.gat,32,142,5	script	Inn Employee::Jennie	53,{
 // Al De Baran Inn Employees - [Tsuyuki]
 //--------------------------------------------------------------
 
-aldeba_in.gat,92,58,5	script	Inn Maid::Rilim	53,{
+aldeba_in.gat,92,58,5	script	Inn Maid#Rilim	53,{
 
 	mes "[Rilim]";
 	mes "Welcome to Al De Baran Inn.";
@@ -103,7 +104,7 @@ aldeba_in.gat,92,58,5	script	Inn Maid::Rilim	53,{
 // Einbroch Hotel Employees -> Related to Airship Quest - [Tsuyuki]
 //--------------------------------------------------------------
 
-ein_in01.gat,206,224,3	script	Hotel Employee	855,{
+ein_in01.gat,206,224,3	script	Hotel Employee#Einbroch	855,{
 
 	mes "[Hotel Employee]";
 	mes "Good day, welcome to the";
@@ -173,7 +174,7 @@ InnPoorEin:
 // Geffen Inn Employees - [Tsuyuki]
 //--------------------------------------------------------------
 
-geffen_in.gat,70,64,5	script	Inn Employee::Cena	53,{
+geffen_in.gat,70,64,5	script	Inn Employee#Cena	53,{
 
 	mes "[Employee Cena]";
 	mes "Welcome to 'Ifrit',";
@@ -218,7 +219,7 @@ geffen_in.gat,70,64,5	script	Inn Employee::Cena	53,{
 // Hugel Inn Employees - [Tsuyuki]
 //--------------------------------------------------------------
 
-hu_in01.gat,246,107,5	script	Inn Staff::Hugel	53,{
+hu_in01.gat,246,107,5	script	Inn Staff#Hugel	53,{
 
 	mes "[Inn Staff]";
 	mes "Welcome to Hugel Inn.";
@@ -272,7 +273,7 @@ hu_in01.gat,246,107,5	script	Inn Staff::Hugel	53,{
 //--------------------------------------------------------------
 
 // Northern Inn
-morocc_in.gat,147,138,5	script	Inn Employee::Hasna	53,{
+morocc_in.gat,147,138,5	script	Inn Employee#Hasna	53,{
 
 	mes "[Employee Hasna]";
 	mes "Welcome to 'Morroc Inn!'";
@@ -311,7 +312,7 @@ morocc_in.gat,147,138,5	script	Inn Employee::Hasna	53,{
 }
 
 // Southern Inn
-morocc_in.gat,80,100,5	script	Inn Employee::Manar	53,{
+morocc_in.gat,80,100,5	script	Inn Employee#Manar	53,{
 
 	mes "[Employee Manar]";
 	mes "Welcome to 'Morroc Inn!'";
@@ -354,7 +355,7 @@ morocc_in.gat,80,100,5	script	Inn Employee::Manar	53,{
 // Lighthalzen Hotel Employees - [Tsuyuki]
 //--------------------------------------------------------------
 
-lhz_in02.gat,230,284,4	script	Hotel Employee	86,{
+lhz_in02.gat,230,284,4	script	Hotel Employee#Lighthalzen	86,{
 
 	mes "[Hotel Employee]";
 	mes "Welcome to";
@@ -407,14 +408,14 @@ InnPoorLhz:
 // Payon Inn Employees - [Tsuyuki]
 //--------------------------------------------------------------
 
-payon_in01.gat,132,62,5	script	Inn Employee::Ahee	53,{
+payon_in01.gat,132,62,5	script	Inn Employee#Ahee	53,{
 
 	mes "[Employee Ahee]";
-	mes "Welcome to 'Payon Inn'.";
+	mes "Welcome to Payon Inn.";
 	mes "How may I help you?";
 	next;
-	menu "Save",Pay_Inn1,"Take a Rest -> 5000 zeny",Pay_Inn2,"Cancel",Pay_Inn3;
-	Pay_Inn1:
+	switch(select("Save","Take Rest - 5,000 zeny","Cancel")) {
+	case 1:
 		mes "[Employee Ahee]";
 		mes "Your respawn point";
 		mes "has been saved.";
@@ -422,27 +423,25 @@ payon_in01.gat,132,62,5	script	Inn Employee::Ahee	53,{
 		mes "please come again.";
 		savepoint "payon_in01.gat",136,61;
 		close;
-	Pay_Inn2:
-		if (Zeny < 5000) goto InnPoorPay;
-			emotion 15;
+	case 2:
+		if (Zeny > 4999) {
 			mes "[Employee Ahee]";
 			mes "Thank you.";
 			mes "I hope you";
 			mes "enjoy your rest~";
 			close2;
-			set zeny,zeny-5000;
+			set Zeny,Zeny-5000;
 			percentheal 100,100;
 			warp "payon_in01.gat",132,11;
 			end;
-		InnPoorPay:
+		} else {
 			mes "[Employee Ahee]";
-			mes "I'm sorry, but the service charge";
-			mes "is 5,000 zeny. Please make sure";
-			mes "that you have enough money to check";
-			mes "in next time, okay?";
+			mes "I'm sorry, but the service charge is 5,000 zeny. Please make sure that you have enough money to check in next time, okay?";
 			close;
-	Pay_Inn3:
+		}
+	case 3:
 		close;
+	}
 }
 
 
@@ -451,7 +450,7 @@ payon_in01.gat,132,62,5	script	Inn Employee::Ahee	53,{
 //--------------------------------------------------------------
 
 // West Inn
-prt_in.gat,244,135,2	script	Inn Employee::Sammy	53,{
+prt_in.gat,244,135,2	script	Inn Employee#Sammy	53,{
 
 	mes "[Employee Sammy]";
 	mes "Welcome to 'Nenkaras'.";
@@ -490,7 +489,7 @@ prt_in.gat,244,135,2	script	Inn Employee::Sammy	53,{
 }
 
 // East Inn
-prt_in.gat,61,141,2	script	Inn Employee::Alma	53,{
+prt_in.gat,61,141,2	script	Inn Employee#Alma	53,{
 
 	mes "[Employee Alma]";
 	mes "Welcome to 'Nenkaras'.";
@@ -533,7 +532,7 @@ prt_in.gat,61,141,2	script	Inn Employee::Alma	53,{
 // Rachel Inn Employees - [Tsuyuki]
 //--------------------------------------------------------------
 
-ra_in01.gat,376,69,4	script	Inn Staff::Rachel	931,{
+ra_in01.gat,376,69,4	script	Inn Staff#Rachel	931,{
 
 	mes "[Inn Staff]";
 	mes "Welcome to 'Rachel Inn'.";

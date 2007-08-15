@@ -53,7 +53,7 @@
  Aurora's euRO Dialogue Aegis Scripts:
 ---------------------------------------------------------------------------
 
-- global/global_inn.txt			<- Optional [*]
+- global/global_inn.txt			<- Optional - All contents are euRO except Payon Inn Employees [*]
 - job/job_gunslinger.txt		<- Optional [*]
 - job/job_rogue.txt			<- Optional - No access to an iRO Aegis version [*]
 - quest/quest_bard.txt			<- Optional [*]
@@ -66,7 +66,7 @@
 - town/town_juno.txt			<- Optional - [*]
 - town/town_kunlun.txt			<- Optional - [*]
 - town/town_lutie.txt			<- Optional - No access to an iRO Aegis version [*]
-- town/town_payon.txt			<- Optional - All contents are euRO except Gemstone Exchange / Arrow Quiver NPC [*]
+- town/town_payon.txt			<- Optional - Only Fortune Teller is euRO [*]
 
 
 ---------------------------------------------------------------------------

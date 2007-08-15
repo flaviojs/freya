@@ -1983,6 +1983,69 @@ L_SIGNQ6:
 
 }
 
+payon.gat,154,170,4	script	Hagin	78,{
+
+	mes "[Hagin]";
+	mes "Have you heard?";
+	mes "Payon's most eligible";
+	mes "bachelor is back home!";
+	next;
+	mes "[Hagin]";
+	mes "He was a little brat";
+	mes "back when he was a kid,";
+	mes "but now he's grown up to";
+	mes "be the manliest of men!";
+	mes "No wonder all the ladies";
+	mes "just can't resist him!";
+	next;
+	mes "[Hagin]";
+	mes "Heh heh...";
+	mes "With this beautiful";
+	mes "face and charming figure...";
+	mes "I'm gonna seduce him.";
+	next;
+	menu "Who are you talking about?",Ha_Case1,"You're freaking me out!",Ha_Case2;
+	Ha_Case1:
+		mes "[Hagin]";
+		mes "You don't know";
+		mes "Daewoon, the most";
+		mes "beautiful man in all";
+		mes "of Payon and maybe";
+		mes "even the world?";
+		next;
+		mes "[Hagin]";
+		mes "He left home to become stronger";
+		mes "when he was just a boy. I had no";
+		mes "idea he would come back as such";
+		mes "a fine specimen of a man...";
+		next;
+		menu "I'd like to meet this Daewoon.",-;
+			mes "[Hagin]";
+			mes "Oh, I see~";
+			mes "You plan to ask him";
+			mes "to show you some fighting";
+			mes "pointers, do you? You men";
+			mes "are all the same: not as";
+			mes "cool or tough as Daewoon!";
+			next;
+			mes "[Hagin]";
+			mes "Anyway, Daewoon";
+			mes "is staying in the annex";
+			mes "to the Payon Castle. If you";
+			mes "want to see him for yourself,";
+			mes "why don't you go there?";
+			close;
+	Ha_Case2:
+		mes "[Hagin]";
+		mes "Freaking you out?";
+		mes "Excuuuuse me~!";
+		mes "I'll have you know that";
+		mes "a flower's life is brief.";
+		mes "I better snag Daewoon";
+		mes "While I still can~";
+		close;
+}
+
 aldebaran.gat,226,54,4	script	#aldesignwarp	45,2,2,{
 OnTouch:
 	set @aldesigncheck,0;
