@@ -5458,7 +5458,7 @@ prt_in.gat,168,68,4	script	Blacksmith Guide#pront	111,{
 
 
 //--------------------------------------------------------------
-// Magical Swords Quest (Doomed Swords Quest) - [Tsuyuki]
+// Doomed Swords Quest Path #1 - [Tsuyuki]
 //--------------------------------------------------------------
 
 prt_in.gat,162,11,2	script	Ghatu	86,{

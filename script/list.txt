@@ -132,6 +132,7 @@ npc: script/quest/quest_airship.txt
 npc: script/quest/quest_bard.txt
 npc: script/quest/quest_battle_arena.txt
 npc: script/quest/quest_cooking.txt
+npc: script/quest/quest_doomed_swords.txt
 npc: script/quest/quest_eye_of_hellion.txt
 npc: script/quest/quest_god_seal.txt
 npc: script/quest/quest_headgear.txt
