@@ -7,7 +7,7 @@
 //              /_/  |_|\____|_|  \___/|_|  \__,_|              
 //                 http://aurora.deltaanime.net                 
 //--------------------------------------------------------------
-// Script Title: Lighthalzen Town NPCs	Author: A Lot of People
+// Script Title: Lighthalzen Town NPCs / Quests	Author: A Lot of People
 //--------------------------------------------------------------
 // Revision History: v2.7
 //--------------------------------------------------------------

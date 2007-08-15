@@ -7,7 +7,7 @@
 //              /_/  |_|\____|_|  \___/|_|  \__,_|              
 //                 http://aurora.deltaanime.net                 
 //--------------------------------------------------------------
-// Script Title: Kunlun Town NPCs	Author: GreenGoblin/KarLaeda
+// Script Title: Kunlun Town NPCs / Quests	Author: GreenGoblin/KarLaeda
 //--------------------------------------------------------------
 // Revision History: v1.3
 //--------------------------------------------------------------

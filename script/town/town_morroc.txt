@@ -7,7 +7,7 @@
 //              /_/  |_|\____|_|  \___/|_|  \__,_|              
 //                 http://aurora.deltaanime.net                 
 //--------------------------------------------------------------
-// Script Title: Morroc Town NPCs	Author: Tsuyuki/SinSloth
+// Script Title: Morroc Town NPCs / Quests	Author: Tsuyuki/SinSloth
 //--------------------------------------------------------------
 // Revision History: v1.1
 //--------------------------------------------------------------

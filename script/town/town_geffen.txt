@@ -7,7 +7,7 @@
 //              /_/  |_|\____|_|  \___/|_|  \__,_|              
 //                 http://aurora.deltaanime.net                 
 //--------------------------------------------------------------
-// Script Title: Geffen Town NPCs	Author: Tsuyuki/GreenGoblin
+// Script Title: Geffen Town NPCs / Quests	Author: Tsuyuki/GreenGoblin
 //--------------------------------------------------------------
 // Revision History: v1.2
 //--------------------------------------------------------------

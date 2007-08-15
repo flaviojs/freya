@@ -7,7 +7,7 @@
 //              /_/  |_|\____|_|  \___/|_|  \__,_|              
 //                 http://aurora.deltaanime.net                 
 //--------------------------------------------------------------
-// Script Title: Einbech Town NPCs	Author: Muad_dib
+// Script Title: Einbech Town NPCs / Quests	Author: Muad_dib
 //--------------------------------------------------------------
 // Revision History: v2.1
 //--------------------------------------------------------------

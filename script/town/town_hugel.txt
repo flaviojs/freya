@@ -7,7 +7,7 @@
 //              /_/  |_|\____|_|  \___/|_|  \__,_|              
 //                 http://aurora.deltaanime.net                 
 //--------------------------------------------------------------
-// Script Title: Hugel Town NPCs	Author: Tsuyuki/SinSloth/MasterOfMuppets
+// Script Title: Hugel Town NPCs / Quests	Author: Tsuyuki/SinSloth/MasterOfMuppets
 //--------------------------------------------------------------
 // Revision History: v1.2
 //--------------------------------------------------------------
@@ -23,20 +23,20 @@
 //--------------------------------------------------------------
 // Contents:
 //--------------------------------------------------------------
-// Hugel Town NPCs						- [Tsuyuki]
-// Party Supplies Seller				- [Tsuyuki]
-// Monster Races System (Incomplete)	- [Tsuyuki]
-// Bingo Game System					- [SinSloth]
-// Biological Weapon Quest				- [Tsuyuki]
-// Cow Milking Quest					- [Tsuyuki]
+// Hugel Town NPCs				- [Tsuyuki]
+// Party Supplies Seller			- [Tsuyuki]
+// Monster Races System (Incomplete)		- [Tsuyuki]
+// Bingo Game System				- [SinSloth]
+// Biological Weapon Quest			- [Tsuyuki]
+// Cow Milking Quest				- [Tsuyuki]
 // Fish Cake Soup Mini-Quest			- [Tsuyuki]
-// Hide n' Seek Quest					- [Tsuyuki]
-// Medicine Quest						- [Tsuyuki]
-// Memory Quest							- [Tsuyuki]
+// Hide n' Seek Quest				- [Tsuyuki]
+// Medicine Quest				- [Tsuyuki]
+// Memory Quest					- [Tsuyuki]
 // Odin's Temple Excavation Quest		- [Tsuyuki]
 // Rebellion Quest (euRO dialogue)		- [MasterOfMuppets]
-// Remedy Quest							- [Tsuyuki]
-// Abyss Lake Entrance					- [SinSloth]
+// Remedy Quest					- [Tsuyuki]
+// Abyss Lake Entrance				- [SinSloth]
 //--------------------------------------------------------------
 
 

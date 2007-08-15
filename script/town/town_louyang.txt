@@ -7,7 +7,7 @@
 //              /_/  |_|\____|_|  \___/|_|  \__,_|              
 //                 http://aurora.deltaanime.net                 
 //--------------------------------------------------------------
-// Script Title: Louyang Town NPCs	Author: A Lot of People
+// Script Title: Louyang Town NPCs / Quests	Author: A Lot of People
 //--------------------------------------------------------------
 // Revision History: v2.6
 //--------------------------------------------------------------

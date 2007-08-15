@@ -7,7 +7,7 @@
 //              /_/  |_|\____|_|  \___/|_|  \__,_|              
 //                 http://aurora.deltaanime.net                 
 //--------------------------------------------------------------
-// Script Title: Prontera Town NPCs	Author: Tsuyuki/L0ne_W0lf
+// Script Title: Prontera Town NPCs / Quests	Author: Tsuyuki/L0ne_W0lf
 //--------------------------------------------------------------
 // Revision History: v1.2
 //--------------------------------------------------------------

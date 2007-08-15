@@ -7,7 +7,7 @@
 //              /_/  |_|\____|_|  \___/|_|  \__,_|              
 //                 http://aurora.deltaanime.net                 
 //--------------------------------------------------------------
-// Script Title: Einbroch Town NPCs	Author: A Lot of People
+// Script Title: Einbroch Town NPCs / Quests	Author: A Lot of People
 //--------------------------------------------------------------
 // Revision History: v3.1
 //--------------------------------------------------------------
