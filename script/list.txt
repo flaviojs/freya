@@ -99,7 +99,7 @@ npc: script/job/job_wizard.txt
 //--------------------------------------------------------------
 
 npc: script/misc/misc_auction.txt
-npc: script/misc/misc_cash_item.txt
+// npc: script/misc/misc_cash_item.txt
 npc: script/misc/misc_function.txt
 npc: script/misc/misc_mapflag.txt
 npc: script/misc/misc_marriage.txt
