@@ -189,27 +189,6 @@
 - $God4
 
 
----------------------------------------------------------------------------
- Final Notes from Tsuyuki:
----------------------------------------------------------------------------
-
-	If you are reading this documentation and would like to help with
-the Aegis script conversions, talk to me online and I'll get you setup. If
-you want to help fix script bugs, investigate them and post fixes in the
-Aurora forum's community dev section. Finished script conversions should
-also go in the community dev section. If you would like to work on non-
-conversions such as obtaining + translating Moscovia via screenshots/etc,
-you are welcome to do so. Any contributions are highly appreciated and
-usually accepted by the Aurora dev team. Custom scripts are also accepted.
-They should go in the custom dev section of the Aurora forum.
-
--> Contact Information:
-- Aurora Forums:Tsuyuki
-- IRC: irc.deltaanime.net #aurora:Tsuyuki
-- MSN: voidreality16@hotmail.com
-- AIM: Aetrix
-
-
 ===========================================================================
  EOF
 ---------------------------------------------------------------------------
