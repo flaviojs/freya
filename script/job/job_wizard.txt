@@ -695,7 +695,7 @@ gef_tower.gat,102,24,2	script	Gloomy Wizard	735,{
 			mes "[Raulel]";
 			mes "1. Which monster can you obtain a slotted Guard from?";
 			next;
-			switch(select("Thief Bug","PecoPeco","Pupa","Kobold (Hammer(")) {
+			switch(select("Thief Bug","PecoPeco","Pupa","Kobold (Hammer)")) {
 			case 1:
 				break;
 			case 2:
@@ -813,9 +813,9 @@ gef_tower.gat,102,24,2	script	Gloomy Wizard	735,{
 			case 2:
 				break;
 			case 3:
-				set '@wizard_t,'@wizard_t + 10;
 				break;
 			case 4:
+				set '@wizard_t,'@wizard_t + 10;
 				break;
 			}
 			mes "[Raulel]";
