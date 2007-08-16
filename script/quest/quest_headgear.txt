@@ -5025,8 +5025,8 @@ gl_prison1.gat,137,138,5	script	Zealotus#LhzHat	1200,{
 				mes "in my power. Those that";
 				mes "bow to me must also bow";
 				mes "to " + strcharinfo(0) + ". It shall be done.";
-				misceffect 196,"Zealotus#LhzHat"; //Curse? EF_DEVIL
-				misceffect 192,"Zealotus#LhzHat"; //Poison attack? EF_POISONHIT
+				misceffect 196,"Zealotus#LhzHat";
+				misceffect 192,"Zealotus#LhzHat";
 				next;
 				mes "[Zealotus]";
 				mes "Human, take this";

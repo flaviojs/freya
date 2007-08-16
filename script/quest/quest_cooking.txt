@@ -867,7 +867,7 @@ prt_castle.gat,43,30,3	script	Charles Orleans#cook	878,{
 			next;
 			cutin "nyuang_4",2;
 			donpcevent "Child with Cat#cook::OnAngry";
-			misceffect 1; //EF_HIT2
+			misceffect 1;
 			percentheal -10,0;
 			mes "[Child with Cat]";
 			mes "Grrrrrrr!";

@@ -6833,7 +6833,7 @@ prontera.gat,248,212,3	script	Busy Boy#prt	706,3,3,{
 			mes "You couldn't help it:";
 			mes "it was a natural reflex!^000000";
 			next;
-			misceffect 180,"Busy Boy#prt"; //EF_HITDARK
+			misceffect 180,"Busy Boy#prt";
 			emotion e_omg;
 			mes "^3355FF*BAM!*^000000";
 			next;
@@ -6955,7 +6955,7 @@ OnTouch:
 	callsub sF_CheckWeight; //Check Player's weight
 	if (BaseLevel > 59) {
 		if (prt_curse == 0) {
-			misceffect 180,"Busy Boy#prt"; //EF_HITDARK
+			misceffect 180,"Busy Boy#prt";
 			mes "^3355FF*BAM!*^000000";
 			next;
 			mes "[Busy Looking Boy]";
@@ -9611,9 +9611,9 @@ prt_church.gat,21,111,5	script	#prince2	887,{
 		close;
 	}
 	else if (prt_curse == 33 || prt_curse > 41 && prt_curse < 51 || prt_curse == 52) {
-		misceffect 192,"#prince2"; //EF_POISONATTACK
-		misceffect 53,"#prince2"; //EF_POISONHIT
-		misceffect 109,"#prince2"; //EF_BUBBLE
+		misceffect 192,"#prince2";
+		misceffect 53,"#prince2";
+		misceffect 109,"#prince2";
 		mes "^3355FFYou poured a little of the";
 		mes "solution made from Green";
 		mes "Potion and Yellow Gemstone";
@@ -9704,9 +9704,9 @@ prt_church.gat,24,111,5	script	#prince3	887,{
 			mes "forming a solution to test for the presense of poison. You pour";
 			mes "it on the prince's scale marks.^000000";
 			next;
-			misceffect 192,"#prince3"; //EF_POISONATTACK
-			misceffect 53,"#prince3"; //EF_POISONHIT
-			misceffect 109,"#prince3"; //EF_BUBBLE
+			misceffect 192,"#prince3";
+			misceffect 53,"#prince3";
+			misceffect 109,"#prince3";
 			mes "^3355FF*Pssssssssh*^000000";
 			next;
 			mes "^3355FFThe solution bubbles";

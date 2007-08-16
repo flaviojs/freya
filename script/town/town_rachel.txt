@@ -292,7 +292,7 @@ rachel.gat,206,30,3	script	Freya's Priest#play	920,{
 		mes "^3355FFYou told her the first";
 		mes "funny story that you";
 		mes "could think of.^000000";
-		misceffect 295; //EF_TALK_FROSTJOKE
+		misceffect 295;
 		next;
 		mes "[Freya's Priest]";
 		mes "That's supposed to";
@@ -3620,12 +3620,12 @@ OnClick:
 		mes "this ice off of me!.";
 		next;
 		if (getskilllv(19) > 0) {
-			misceffect 24;  //EF_FIREBALL
+			misceffect 24;
 			mes "^3355FFYou cast Fire Bolt at";
 			mes "the ice..^000000";
 		}
 		else {
-			misceffect 1; //EF_HIT2
+			misceffect 1;
 			mes "^3355FFYou hammer at the";
 			mes "ice with all your might.^000000";
 		}
@@ -3828,9 +3828,9 @@ OnClick:
 		mes "swung it down at the ice";
 		mes "with all of your strength.^000000";
 		next;
-		misceffect 276; //EF_TEIHIT3
-		misceffect 133; //EF_FREEZE
-		misceffect 135; //EF_ICECRASH
+		misceffect 276;
+		misceffect 133;
+		misceffect 135;
 		mes "^3355FF*Pzzzzz*";
 		mes "*CRASH!*^000000";
 		next;
@@ -3842,7 +3842,7 @@ OnClick:
 		mes "After all of this";
 		mes "time! I'm free!";
 		next;
-		misceffect 56; //EF_BEGINSPELL4
+		misceffect 56;
 		mes "[Maheo]";
 		mes "Now, all of the monsters";
 		mes "in this cave will taste the";
@@ -3855,7 +3855,7 @@ OnClick:
 		monster "ice_dun02.gat",114,112,"Snowier",1775,1,"Man Stuck in Ice#cave::OnMyMobDead";
 		monster "ice_dun02.gat",126,105,"Snowier",1775,1,"Man Stuck in Ice#cave::OnMyMobDead";
 		monster "ice_dun02.gat",121,99,"Snowier",1775,1,"Man Stuck in Ice#cave::OnMyMobDead";
-		misceffect 90; //EF_LORD
+		misceffect 90;
 		killmonster "ice_dun02.gat","Man Stuck in Ice#cave::OnMyMobDead";
 		mes "[Maheo]";
 		mes "Muhahahahahahahaha!";
@@ -3879,7 +3879,7 @@ OnClick:
 		mes "[Maheo]";
 		mes "Let's see, now...";
 		next;
-		misceffect 256; //EF_FROSTWEAPON
+		misceffect 256;
 		mes "^3355FF*Ting*^000000";
 		next;
 		mes "[Maheo]";
@@ -4051,7 +4051,7 @@ rachel.gat,265,98,3	script	Hamion#aru	930,{
 		mes "[Hamion]";
 		mes "Here we go...!";
 		next;
-		misceffect 71; //EF_CONE
+		misceffect 71;
 		mes "^3355FF*Pzzzz*^000000";
 		next;
 		mes "[Hamion]";
@@ -4472,7 +4472,7 @@ OnInit:
 	end;
 
 OnEnable:
-	misceffect 247; //EF_MAPPILLAR2
+	misceffect 247;
 	end;
 
 }
@@ -4488,7 +4488,7 @@ OnInit:
 	end;
 
 OnEnable:
-	misceffect 247; //EF_MAPPILLAR2
+	misceffect 247;
 	end;
 
 }
@@ -4504,7 +4504,7 @@ OnInit:
 	end;
 
 OnEnable:
-	misceffect 247; //EF_MAPPILLAR2
+	misceffect 247;
 	end;
 
 }
@@ -4520,7 +4520,7 @@ OnInit:
 	end;
 
 OnEnable:
-	misceffect 247; //EF_MAPPILLAR2
+	misceffect 247;
 	end;
 
 }
