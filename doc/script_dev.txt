@@ -35,7 +35,6 @@
 - town/town_einbech.txt			<- Requires conversion [*]
 - town/town_einbroch.txt		<- Requires conversion [*]
 - town/town_lighthalzen.txt		<- Requires conversion - Some parts are already Aegis-converted [*]
-- town/town_louyang.txt			<- Requires conversion [*]
 - town/town_nameless.txt		<- No access to an Aegis version [*]
 - town/town_veins.txt			<- No access to an Aegis version [*]
 
