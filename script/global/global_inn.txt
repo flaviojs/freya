@@ -9,13 +9,14 @@
 //--------------------------------------------------------------
 // Script Title: Inn Employee NPCs	Author: Tsuyuki
 //--------------------------------------------------------------
-// Revision History: v1.4
+// Revision History: v1.5
 //--------------------------------------------------------------
 //	1.0 First version, converted from Aegis (euRO dialogue) [Tsuyuki]
 //	1.1 Added iRO dialogue + corrected save/warp coords for Hugel Inn [Tsuyuki]
 //	1.2 Updated Einbroch Hotel Employee with compatibility for the Airship Quest [Tsuyuki]
 //	1.3 Updated Aldebaran Inn Employee with the missing official dialogue [Tsuyuki]
 //	1.4 Updated Payon Inn Employee with iRO dialogue [Tsuyuki]
+//	1.5 Updated Lighthalzen Hotel Employee with iRO dialogue [Tsuyuki]
 //--------------------------------------------------------------
 // Additional Notes: * Official-certified / Aegis-certified *
 // Inn NPCs that may have some custom parts: Rachel
@@ -355,7 +356,7 @@ morocc_in.gat,80,100,5	script	Inn Employee#Manar	53,{
 // Lighthalzen Hotel Employees - [Tsuyuki]
 //--------------------------------------------------------------
 
-lhz_in02.gat,230,284,4	script	Hotel Employee#Lighthalzen	86,{
+lhz_in02.gat,230,284,5	script	Hotel Employee	86,{
 
 	mes "[Hotel Employee]";
 	mes "Welcome to";
@@ -364,43 +365,41 @@ lhz_in02.gat,230,284,4	script	Hotel Employee#Lighthalzen	86,{
 	mes "finest accomodations";
 	mes "and the best service.";
 	next;
-	menu "Save Point",Lhz_Inn1,"Rest - 5,000 zeny",Lhz_Inn2,"Cancel",Lhz_Inn3;
-
-Lhz_Inn1:
-	savepoint "lhz_in02.gat",209,275;
-	mes "[Hotel Employee]";
-	mes "Thank you, your";
-	mes "Respawn Point has";
-	mes "been saved here in";
-	mes "the Royal Dragon.";
-	close;
-
-Lhz_Inn2:
-	if (Zeny < 5000) goto InnPoorLhz;
-	set Zeny,Zeny - 5000;
-	mes "[Hotel Employee]";
-	mes "Thank you~";
-	mes "I hope you enjoy";
-	mes "your stay in the";
-	mes "Royal Dragon.";
-	close2;
-	warp "lhz_in02.gat",219,150;
-	sc_start SC_BLESSING,240000,10;
-	percentheal 100,100;
-	end;
-
-Lhz_Inn3:
-	mes "[Hotel Employee]";
-	mes "Thank you and";
-	mes "have a nice day.";
-	close;
-
-InnPoorLhz:
-	mes "[Hotel Employee]";
-	mes "I'm sorry but you do not";
-	mes "have enough zeny, please";
-	mes "come back when you do!";
-	close;
+	switch(select("Save Point","Rest - 5,000 zeny","Cancel")) {
+	case 1:
+		mes "[Hotel Employee]";
+		mes "Thank you, your";
+		mes "Respawn Point has";
+		mes "been saved here in";
+		mes "the Royal Dragon.";
+		savepoint "lhz_in02.gat",232,274;
+		close;
+	case 2:
+		if (Zeny > 4999) {
+			mes "[Hotel Employee]";
+			mes "Thank you~";
+			mes "I hope you enjoy";
+			mes "your stay in the";
+			mes "Royal Dragon.";
+			close2;
+			set Zeny,Zeny-5000;
+			percentheal 100,100;
+			sc_start SC_BLESSING,240000,10;
+			warp "lhz_in02.gat",220,150;
+			end;
+		} else {
+			mes "[Hotel Employee]";
+			mes "I'm sorry, but";
+			mes "you need 5,000 zeny";
+			mes "in order to check in.";
+			close;
+		}
+	case 3:
+		mes "[Hotel Employee]";
+		mes "Thank you and";
+		mes "have a nice day.";
+		close;
+	}
 }
 
 
