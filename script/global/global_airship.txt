@@ -9,7 +9,7 @@
 //--------------------------------------------------------------
 // Script Title: Airship System	Author: Spirit Death/Bison/Tsuyuki
 //--------------------------------------------------------------
-// Revision History: v1.8
+// Revision History: v1.9
 //--------------------------------------------------------------
 //	1.0 First version [Spirit Death]
 //	1.1 Added some variables to manage when players may board the
@@ -21,8 +21,9 @@
 //	1.6 Officialized some dialogue based on Aegis scripts [Tsuyuki]
 //	1.7 Fixed some conflicting NPC names [Tsuyuki]
 //	1.8 Changed global vars to temporary global vars [Tsuyuki]
+//	1.9 Removed Veins from the international airship route as per official servers [Tsuyuki]
 //--------------------------------------------------------------
-// Additional Notes: * Official-certified *
+// Additional Notes: N/A
 //--------------------------------------------------------------
 
 
@@ -163,7 +164,7 @@ OnTouch:
 
 
 //--------------------------------------------------------------
-// Route 2 (Rachel -> Veins -> Izlude -> Juno)
+// Route 2 (Rachel -> Izlude -> Juno)
 //--------------------------------------------------------------
 
 airplane_01.gat,0,0,0	script	airplane_01	139,{
@@ -200,38 +201,15 @@ OnTimer81000:
 	set $@route2,1;
 	disablenpc "#airshipwarp3";
 	disablenpc "#airshipwarp4";
-	mapannounce "airplane_01.gat","The Airship is now taking off. Our next destination is Veins.",9,0x00FF00;
+	mapannounce "airplane_01.gat","The Airship is now taking off. Our next destination is Izlude.",9,0x00FF00;
 	mapannounce "ra_fild12.gat","Airship Service: The Route 2 airship has departed from Rachel.",9,0x00FF00;
 	end;
 
 OnTimer131000:
-	mapannounce "airplane_01.gat","We will arrive in Veins shortly.",9,0x00FF00;
-	end;
-
-OnTimer141000:
-	enablenpc "#airshipwarp3";
-	enablenpc "#airshipwarp4";
-	mapannounce "airplane_01.gat","Welcome to Veins. Have a safe trip.",9,0x00FF00;
-	mapannounce "veins.gat","Airship Service: The Route 2 airship has arrived at Veins.",9,0x00FF00;
-	end;
-
-OnTimer151000:
-	mapannounce "airplane_01.gat","We are currently in Veins. The Airship will take off shortly.",9,0x00FF00;
-	end;
-
-OnTimer161000:
-	set $@route2,2;
-	disablenpc "#airshipwarp3";
-	disablenpc "#airshipwarp4";
-	mapannounce "airplane_01.gat","The Airship is now taking off. Our next destination is Izlude.",9,0x00FF00;
-	mapannounce "veins.gat","Airship Service: The Route 2 airship has departed from Veins.",9,0x00FF00;
-	end;
-
-OnTimer211000:
 	mapannounce "airplane_01.gat","We will arrive in Izlude shortly.",9,0x00FF00;
 	end;
 
-OnTimer221000:
+OnTimer141000:
 	enablenpc "#airshipwarp3";
 	enablenpc "#airshipwarp4";
 	set $@at_izlude,1;
@@ -239,12 +217,12 @@ OnTimer221000:
 	mapannounce "izlude.gat","Airship Service: The Route 2 airship has arrived at Izlude.",9,0x00FF00;
 	end;
 
-OnTimer231000:
+OnTimer151000:
 	mapannounce "airplane_01.gat","We are currently in Izlude. The Airship will take off shortly.",9,0x00FF00;
 	end;
 
-OnTimer241000:
-	set $@route2,3;
+OnTimer161000:
+	set $@route2,2;
 	set $@at_izlude,0;
 	disablenpc "#airshipwarp3";
 	disablenpc "#airshipwarp4";
@@ -253,11 +231,11 @@ OnTimer241000:
 	mapannounce "izlude.gat","Airship Service: The Route 2 airship has departed from Izlude.",9,0x00FF00;
 	end;
 
-OnTimer291000:
+OnTimer211000:
 	mapannounce "airplane_01.gat","We will arrive in Juno shortly.",9,0x00FF00;
 	end;
 
-OnTimer301000:
+OnTimer221000:
 	enablenpc "#airshipwarp3";
 	enablenpc "#airshipwarp4";
 	enablenpc "jairp6";
@@ -265,11 +243,11 @@ OnTimer301000:
 	mapannounce "rachel.gat","Airship Service: The Route 2 airship has arrived at Juno.",9,0x00FF00;
 	end;
 
-OnTimer311000:
+OnTimer231000:
 	mapannounce "airplane_01.gat","We are currently in Juno. The Airship will take off shortly.",9,0x00FF00;
 	end;
 
-OnTimer320000:
+OnTimer240000:
 	initnpctimer;
 	end;
 }
@@ -278,9 +256,8 @@ airplane_01.gat,243,74,4	script	#airshipwarp3	45,2,2,{
 
 OnTouch:
 	if ($@route2 == 0) warp "ra_fild12.gat",290,202;
-	if ($@route2 == 1) warp "veins.gat",273,281;
-	if ($@route2 == 2) warp "izlude.gat",202,56;
-	if ($@route2 == 3) warp "yuno.gat",20,265;
+	if ($@route2 == 1) warp "izlude.gat",202,56;
+	if ($@route2 == 2) warp "yuno.gat",20,265;
 	close;
 }
 
@@ -288,9 +265,8 @@ airplane_01.gat,243,29,4	script	#airshipwarp4	45,2,2,{
 
 OnTouch:
 	if ($@route2 == 0) warp "ra_fild12.gat",290,202;
-	if ($@route2 == 1) warp "veins.gat",273,281;
-	if ($@route2 == 2) warp "izlude.gat",202,56;
-	if ($@route2 == 3) warp "yuno.gat",20,265;
+	if ($@route2 == 1) warp "izlude.gat",202,56;
+	if ($@route2 == 2) warp "yuno.gat",20,265;
 	close;
 }
 
@@ -845,51 +821,6 @@ ra_fild12.gat,45,230,3	script	Airport Guide	934,{
 }
 
 ra_fild12.gat,294,206,3	script	Airport Staff#rachel	91,{
-
-	mes "[Airport Staff]";
-	mes "Welcome to the International Airport.";
-	mes "How may I help you?";
-	next;
-	menu "Board the Airship",-,"Cancel",L_Cancel;
-
-		mes "[Airport Staff]";
-		mes "The Airship boarding fee";
-		mes "is 1,200 zeny, but if you've";
-		mes "got a Free Ticket for Airship,"; 
-		mes "the fee will be waived. Will";
-		mes "you board the Airship?";
-		next;
-		menu "Yes",-,"No",L_Cancel;
-
-		if (countitem(7311) > 0) goto L_GotTicket;
-		if (Zeny < 1200) goto L_NoZeny;
-			set Zeny, Zeny - 1200;
-			warp "airplane_01.gat",224,64;
-			close;
-
-		L_GotTicket:
-			delitem 7311,1;
-			warp "airplane_01.gat",224,64;
-			close;
-
-	L_NoZeny:
-		mes "[Airport Staff]";
-		mes "You don't have enough zeny.";
-		close;
-
-	L_Cancel:
-		mes "[Airport Staff]";
-		mes "Thank you and";
-		mes "have a nice day.";
-		close;
-}
-
-
-//--------------------------------------------------------------
-// Veins Airport
-//--------------------------------------------------------------
-
-veins.gat,273,287,5	script	Airport Staff#veins	91,{
 
 	mes "[Airport Staff]";
 	mes "Welcome to the International Airport.";
