@@ -49,7 +49,6 @@ hugel.gat,88,168,4	script	Cool Event Corp. Staff	874,{
 			close;
 		} else {
 			if (Zeny >= 40) {
-				set kf_1_pit,4;
 				set Zeny,Zeny-40;
 				mes "[Cool Event Corp. Staff]";
 				mes "Let me open your personal";
@@ -105,7 +104,6 @@ hugel.gat,88,168,4	script	Cool Event Corp. Staff	874,{
 				switch(select("Rent a Pushcart.","Cancel")) {
 				case 1:
 					if (Zeny >= 800) {
-						set kf_10_pit,8;
 						set Zeny,Zeny-800;
 						setcart;
 						close;
@@ -168,7 +166,6 @@ lighthalzen.gat,94,248,4	script	Cool Event Corp. Staff	874,{
 			close;
 		} else {
 			if (Zeny >= 40) {
-				set kf_1_pit,4;
 				set Zeny,Zeny-40;
 				mes "[Cool Event Corp. Staff]";
 				mes "Let me open your personal";
@@ -224,7 +221,6 @@ lighthalzen.gat,94,248,4	script	Cool Event Corp. Staff	874,{
 				switch(select("Rent a Pushcart.","Cancel")) {
 				case 1:
 					if (Zeny >= 800) {
-						set kf_10_pit,8;
 						set Zeny,Zeny-800;
 						setcart;
 						close;
@@ -286,7 +282,6 @@ rachel.gat,109,138,5	script	Cool Event Corp. Staff	874,{
 			close;
 		} else {
 			if (Zeny >= 40) {
-				set kf_1_pit,4;
 				set Zeny,Zeny-40;
 				mes "[Cool Event Corp. Staff]";
 				mes "Let me open your personal";
@@ -342,7 +337,6 @@ rachel.gat,109,138,5	script	Cool Event Corp. Staff	874,{
 				switch(select("Rent a Pushcart.","Cancel")) {
 				case 1:
 					if (Zeny >= 800) {
-						set kf_10_pit,8;
 						set Zeny,Zeny-800;
 						setcart;
 						close;
@@ -404,7 +398,6 @@ veins.gat,207,127,6	script	Cool Event Corp. Staff	874,{
 			close;
 		} else {
 			if (Zeny >= 40) {
-				set kf_1_pit,4;
 				set Zeny,Zeny-40;
 				mes "[Cool Event Corp. Staff]";
 				mes "Let me open your personal";
@@ -460,7 +453,6 @@ veins.gat,207,127,6	script	Cool Event Corp. Staff	874,{
 				switch(select("Rent a Pushcart.","Cancel")) {
 				case 1:
 					if (Zeny >= 800) {
-						set kf_10_pit,8;
 						set Zeny,Zeny-800;
 						setcart;
 						close;
