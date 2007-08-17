@@ -18,14 +18,14 @@
 - gvg/gvg_adswitch.txt			<- Good enough
 - gvg/gvg_config.txt			<- Good enough
 - gvg/gvg_exe.txt			<- Good enough
-- gvg/gvg_flag.txt			<- Good enough, need to import Aegis dialogue/function [Assigned ~ Tsuyuki]
+- gvg/gvg_flag.txt			<- Good enough - Need to import Aegis dialogue/function [Assigned ~ Tsuyuki]
 - gvg/gvg_monster.txt			<- Good enough
 - gvg/gvg_roomswitch.txt		<- Good enough
-- gvg/gvg_steward.txt			<- Good enough, need to import Aegis dialogue/function [*]
+- gvg/gvg_steward.txt			<- Good enough - Need to import Aegis dialogue/function [*]
 - gvg/gvg_tbox.txt			<- Good enough
 
 - misc/misc_novice_exchange.txt		<- Requires conversion [*]
-- misc/misc_vote.txt			<- Good enough, need to import some missing dialogue / optimization [*]
+- misc/misc_vote.txt			<- Good enough - Need to import some missing official dialogue / optimize [*]
 
 - quest/quest_headgear.txt		<- Requires conversion [*]
 - quest/quest_juperos.txt		<- Good enough
@@ -33,8 +33,8 @@
 - quest/quest_the_sign.txt		<- Good enough
 
 - town/town_einbroch.txt		<- Requires conversion [*]
-- town/town_nameless.txt		<- No access to an Aegis version [*]
-- town/town_veins.txt			<- No access to an Aegis version [*]
+- town/town_nameless.txt		<- Requires conversion - No access to an Aegis version [*]
+- town/town_veins.txt			<- Requires conversion - No access to an Aegis version [*]
 
 - warp/warp_dungeon.txt			<- Good enough
 - warp/warp_field.txt			<- Good enough
