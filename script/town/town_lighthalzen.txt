@@ -8363,9 +8363,6 @@ lighthalzen.gat,267,200,3	script	Guard	868,{
 		mes "around here. But how can";
 		mes "so many sneak through us?";
 		donpcevent "Law Enforcement::OnCommandOn";
-		set '@t,$@mobstersecurity;
-		set '@t,'@t + 1;
-		set $@mobstersecurity,'@t;
 		set $@mobstersecurity,100;
 		close;
 	}
@@ -8440,9 +8437,6 @@ lighthalzen.gat,294,223,7	script	Guard	868,{
 		mes "around here. But how can";
 		mes "so many sneak through us?";
 		donpcevent "Law Enforcement::OnCommandOn";
-		set '@t,$@mobstersecurity;
-		set '@t,'@t + 1;
-		set $@mobstersecurity,'@t;
 		set $@mobstersecurity,100;
 		close;
 	}
@@ -8507,7 +8501,7 @@ OnCommandReset:
 
 OnTimer220000:
 	killmonster "lighthalzen.gat","Law Enforcement::OnMyMobDead";
-	mapannounce "lighthalzen.gat","Attention, citizens. Our law enforcement department has successfully contained the situation. Alert status has been canceled.",8;
+	mapannounce "lighthalzen.gat","Attention, citizens. Our law enforcement department has successfully contained the situation. Alert status has been cancelled.",8;
 	set $@mobstersecurity,0;
 	stopnpctimer;
 	disablenpc "Law Enforcement";
