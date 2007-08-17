@@ -25,16 +25,15 @@
 - gvg/gvg_tbox.txt			<- Good enough
 
 - misc/misc_novice_exchange.txt		<- Requires conversion [*]
-- misc/misc_vote.txt			<- Good enough, need to import some missing dialogue [*]
+- misc/misc_vote.txt			<- Good enough, need to import some missing dialogue / optimization [*]
 
 - quest/quest_headgear.txt		<- Requires conversion [*]
 - quest/quest_juperos.txt		<- Good enough
 - quest/quest_kiel_hyre.txt		<- Good enough - No access to an iRO Aegis version
 - quest/quest_the_sign.txt		<- Good enough
 
-- town/town_einbech.txt			<- Requires conversion [*]
 - town/town_einbroch.txt		<- Requires conversion [*]
-- town/town_lighthalzen.txt		<- Requires conversion - Some parts are already Aegis-converted [*]
+- town/town_lighthalzen.txt		<- Requires conversion - Only Biolabs Access Quest requires conversion [Assigned - Tsuyuki]
 - town/town_nameless.txt		<- No access to an Aegis version [*]
 - town/town_veins.txt			<- No access to an Aegis version [*]
 
@@ -50,7 +49,7 @@
  Aurora's euRO Dialogue Aegis Scripts:
 ---------------------------------------------------------------------------
 
-- global/global_inn.txt			<- Optional - All contents are euRO except Payon Inn Employees [*]
+- global/global_inn.txt			<- Optional [*]
 - job/job_gunslinger.txt		<- Optional [*]
 - job/job_rogue.txt			<- Optional - No access to an iRO Aegis version [*]
 - quest/quest_bard.txt			<- Optional [*]
@@ -155,6 +154,9 @@
 
 -> Kunlun Power System (town/town_kunlun.txt)
 - $@in_battle
+
+-> Mobster Security Quest (town/town_lighthalzen.txt)
+- $@mobstersecurity
 
 -> Morroc Dandelion's Request Quest (town/town_morroc.txt)
 - $@maobar_room

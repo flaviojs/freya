@@ -160,7 +160,6 @@ npc: script/town/town_aldebaran.txt
 npc: script/town/town_amatsu.txt
 npc: script/town/town_ayothaya.txt
 npc: script/town/town_comodo.txt
-npc: script/town/town_einbech.txt
 npc: script/town/town_einbroch.txt
 npc: script/town/town_geffen.txt
 npc: script/town/town_hugel.txt

@@ -7,7 +7,7 @@
 //              /_/  |_|\____|_|  \___/|_|  \__,_|              
 //                 http://aurora.deltaanime.net                 
 //--------------------------------------------------------------
-// Script Title: Hugel Town NPCs / Quests	Author: Tsuyuki/SinSloth/MasterOfMuppets
+// Script Title: Hugel Town NPCs / Quests	Author: Tsuyuki/SinSloth/MoM
 //--------------------------------------------------------------
 // Revision History: v1.2
 //--------------------------------------------------------------
