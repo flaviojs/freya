@@ -2643,7 +2643,9 @@ ra_in01.gat,235,194,5	script	Katinshuell	931,{
 		mes "away from other people,";
 		mes "and to be left all alone for";
 		mes "some semblance of peace.";
-		if (friendship > 10) set rach_vice,1;
+		if (lght_friend > 14) {
+			set rach_vice,1;
+		}
 		close;
 	}
 	mes "[Katinshuell]";
