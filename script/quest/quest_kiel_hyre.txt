@@ -6270,7 +6270,7 @@ yuno_fild09.gat,158,217,0	script		Wooden Board	111,{
 //--------------------------------------------------------------
 
 kh_kiehl01.gat,17,39,0	script	Receiver	111,{
-	if (KHKilled < 1) {
+	if ('KHKilled < 1) {
 		mes "^333333*BBBZZZ*^000000";
 		if (KielHyreQuest == 74) {
 			next;
@@ -6285,7 +6285,7 @@ kh_kiehl01.gat,17,39,0	script	Receiver	111,{
 		}
 
 		close2;
-		set KHKilled,KHKilled+1;
+		set 'KHKilled,'KHKilled+1;
 		monster "kh_kiehl01.gat",16,32,"Alicel",1739,1,"Receiver::OnMyMobDead";
 		monster "kh_kiehl01.gat",18,31,"Aliot",1740,1,"Receiver::OnMyMobDead";
 		end;
@@ -6296,10 +6296,10 @@ kh_kiehl01.gat,17,39,0	script	Receiver	111,{
 	}
 
 OnMyMobDead:
-	set KHKilled,KHKilled+1;
-	if (KHKilled == 3) { 
+	set 'KHKilled,'KHKilled+1;
+	if ('KHKilled == 3) { 
 		dropitem 7506,1,"kh_kiehl01.gat",19,36;
-		set KHKilled,0;
+		set 'KHKilled,0;
 	}
 	end;
 }
@@ -6668,13 +6668,13 @@ OnTouch:
 //--------------------------------------------------------------
 
 kh_kiehl01.gat,15,179,0	script	Robots#kh1	111,{
-	if (KHKilled < 1) {
+	if ('KHKilled < 1) {
 		mes "^3355FFAs soon as you";
 		mes "touch the test tube,";
 		mes "a bunch of robots";
 		mes "suddenly appeared.^000000.";
 		close2;
-		set KHKilled,KHKilled+1;
+		set 'KHKilled,'KHKilled+1;
 		monster "kh_kiehl01.gat",18,181,"Aliot",1740,1,"Robots#kh1::OnMyMobDead";
 		monster "kh_kiehl01.gat",18,180,"Alicel",1739,1,"Robots#kh1::OnMyMobDead";
 		monster "kh_kiehl01.gat",18,179,"Aliot",1740,1,"Robots#kh1::OnMyMobDead";
@@ -6687,10 +6687,10 @@ kh_kiehl01.gat,15,179,0	script	Robots#kh1	111,{
 	}
 
 OnMyMobDead:
-	set KHKilled,KHKilled+1;
-	if (KHKilled == 4) { 
+	set 'KHKilled,'KHKilled+1;
+	if ('KHKilled == 4) { 
 		dropitem 7506,1,"kh_kiehl01.gat",18,179;
-		set KHKilled,0;
+		set 'KHKilled,0;
 	}
 	end;
 }
@@ -6997,7 +6997,7 @@ kh_kiehl02.gat,50,52,4	script	Kiehl#Original	902,{
 		end;
 	}
 
-	if ((KielHyreQuest == 94) && (KHKilled < 5)) {
+	if ((KielHyreQuest == 94) && (getvariableofnpc('KHKilled,"KiehlRoom") < 5)) {
 		mes "[Kiehl]";
 		mes "I'm surprised you made";
 		mes "it this far, adventurer~";
@@ -7014,7 +7014,7 @@ kh_kiehl02.gat,50,52,4	script	Kiehl#Original	902,{
 		mes "then show me what you've got!";
 		close2;
 		cutin "",255;
-		set KHKilled,0;
+		set getvariableofnpc('KHKilled,"KiehlRoom"),0;
 		monster "kh_kiehl02.gat",49,48,"Aliot",1740,1,"KiehlRoom::OnKiehlMobDead";
 		monster "kh_kiehl02.gat",46,50,"Alicel",1739,1,"KiehlRoom::OnKiehlMobDead";
 		monster "kh_kiehl02.gat",49,50,"Constant",1745,1,"KiehlRoom::OnKiehlMobDead";
@@ -7027,7 +7027,7 @@ kh_kiehl02.gat,50,52,4	script	Kiehl#Original	902,{
 		end;
 	}
 
-	else if ((KielHyreQuest == 94) && (KHKilled >= 5)) {
+	else if ((KielHyreQuest == 94) && (getvariableofnpc('KHKilled,"KiehlRoom") >= 5)) {
 		cutin "kh_kiel03",2;
 		mes "[Kiehl]";
 		mes "Hmpf! You're pretty good.";
@@ -7115,7 +7115,7 @@ kh_kiehl02.gat,50,52,4	script	Kiehl#Original	902,{
 		mes "under arrest for creating";
 		mes "and trading illegal weapons!";
 		set KielHyreQuest,100;
-		donpcevent "::OnKHAgent";
+		donpcevent "Agent#KHAgent1::OnKHAgent";
 		enablenpc "Mitchell#KiehlRoom";
 		enablenpc "Agent#KHAgent1";
 		enablenpc "Agent#KHAgent2";
@@ -7125,9 +7125,9 @@ kh_kiehl02.gat,50,52,4	script	Kiehl#Original	902,{
 		goto L_Continue;
 	}
 
-	else if ((KielHyreQuest == 100) && (KHKilledBoss < 1)) {
+	else if ((KielHyreQuest == 100) && (getvariableofnpc('KHKilledBoss,"KiehlRoom") < 1)) {
 		L_Continue:
-		set KHKilledBoss,0;
+		set 'KHKilledBoss,0;
 		cutin "kh_kiel01",2;
 		mes "[Kiehl]";
 		mes "Ah, Schwaltzvalt Republic";
@@ -7145,7 +7145,7 @@ kh_kiehl02.gat,50,52,4	script	Kiehl#Original	902,{
 		mes "jobs--sort of like robots-- but";
 		mes "don't worry, they won't be hurt.";
 		next;
-		donpcevent "::OnKHSpiderWeb";
+		donpcevent "Agent#KHAgent1::OnKHSpiderWeb";
 		mes "[Mitchell]";
 		mes "Nooooo!";
 		next;
@@ -7163,7 +7163,7 @@ kh_kiehl02.gat,50,52,4	script	Kiehl#Original	902,{
 		end;
 	}
 
-	else if ((KielHyreQuest == 100) && (KHKilledBoss == 1)) {
+	else if ((KielHyreQuest == 100) && (getvariableofnpc('KHKilledBoss,"KiehlRoom") == 1)) {
 		cutin "kh_kiel02",2;
 		mes "[Kiehl]";
 		mes "D-damn...!";
@@ -7318,7 +7318,7 @@ kh_kiehl02.gat,50,52,4	script	Kiehl#Original	902,{
 		mes "[Mitchell]";
 		mes "No, get away! Let me go!";
 		mes "Let go of me, Wolkeus!";
-		donpcevent "::OnKHAgent";
+		donpcevent "Agent#KHAgent1::OnKHAgent";
 		disablenpc "Mitchell#KiehlRoom";
 		disablenpc "Agent#KHAgent1";
 		disablenpc "Agent#KHAgent2";
@@ -7493,15 +7493,15 @@ kh_kiehl02.gat,1,1,0	script	KiehlRoom	139,{
 	end;
 
 OnKiehlMobDead:
-	set KHKilled,KHKilled+1;
-	if (KHKilled == 5) { 
+	set 'KHKilled,'KHKilled+1;
+	if ('KHKilled == 5) { 
 		donpcevent "Kiehl#Original::OnChangeState";
 		enablenpc "Kiehl#Original"; 
 	}
 	end;
 
 OnKiehlDead:
-	set KHKilledBoss,1;
+	set 'KHKilledBoss,1;
 	donpcevent "Kiehl#Original::OnChangeState";
 	enablenpc "Kiehl#Original";
 	end;
@@ -7519,8 +7519,8 @@ OnReset:
 	disablenpc "Agent#KHAgent4";
 	disablenpc "Kiehl#Copy";
 	enablenpc "Kiehl#Original"; 
-	set KHKilledBoss,0;
-	set KHKilled,0;
+	set 'KHKilledBoss,0;
+	set 'KHKilled,0;
 	set KHTrapSprung,0;
 	set $@KHQuestBusy,0;
 	end;

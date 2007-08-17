@@ -7213,7 +7213,7 @@ niflheim.gat,331,72,3	script	Waltboughst	794,{
 		mes "sure he'd be ashamed...";
 		close;
 	}
-	if ((lv4weapon == 52) && (1005 > 1) && (989 > 0) && (710 > 0) && (Gold > 19)) {
+	if ((lv4weapon == 52) && (countitem(1005) > 1) && (countitem(989) > 0) && (countitem(710) > 0) && (countitem(969) > 19)) {
 		mes "[Waltboughst]";
 		mes "You brought everything I needed already? That's great, but somehow, I can't still remember the other materials I need...";
 		next;
@@ -7261,9 +7261,9 @@ niflheim.gat,331,72,3	script	Waltboughst	794,{
 		mes "[Waltboughst]";
 		mes "It's funny, you know. My father always used to say, 'Trying your best won't always result in success...' Um, that's ... Huh? There was more, I think.";
 		next;
-		set '@dap4,"But that's no excuse!";
+		set '@dap4$,"But that's no excuse!";
 		input '@input;
-		if ('@input == dap4) {
+		if ('@input == '@dap4$) {
 			mes "[Waltboughst]";
 			mes "Yes! That was it!";
 			mes "But that's no excuse!";
