@@ -24,7 +24,6 @@
 - gvg/gvg_steward.txt			<- Good enough - Need to import Aegis dialogue/function [*]
 - gvg/gvg_tbox.txt			<- Good enough
 
-- misc/misc_novice_exchange.txt		<- Requires conversion [*]
 - misc/misc_vote.txt			<- Good enough - Need to import some missing official dialogue / optimize [*]
 
 - quest/quest_headgear.txt		<- Requires conversion [*]

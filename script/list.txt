@@ -103,7 +103,7 @@ npc: script/misc/misc_auction.txt
 npc: script/misc/misc_function.txt
 npc: script/misc/misc_mapflag.txt
 npc: script/misc/misc_marriage.txt
-npc: script/misc/misc_novice_exchange.txt
+npc: script/misc/misc_potion_exchange.txt
 npc: script/misc/misc_rental.txt
 npc: script/misc/misc_reset_skill.txt
 npc: script/misc/misc_socket_enchant.txt
