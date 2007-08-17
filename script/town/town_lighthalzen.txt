@@ -9,12 +9,11 @@
 //--------------------------------------------------------------
 // Script Title: Lighthalzen Town NPCs / Quests	Author: Tsuyuki/SinSloth
 //--------------------------------------------------------------
-// Revision History: v1.3
+// Revision History: v1.2
 //--------------------------------------------------------------
 //	1.0 First version, converted from Aegis [Tsuyuki]
 //	1.1 Added the Cursed Spirit Quest, converted from Aegis by SinSloth [Tsuyuki]
 //	1.2 Added the President's Quest, converted from Aegis by SinSloth [Tsuyuki]
-//	1.3 Added the Biolabs Access Quest by Unknown [Tsuyuki]
 //--------------------------------------------------------------
 // Additional Notes: * Official-certified / Aegis-certified *
 //--------------------------------------------------------------
@@ -3320,1034 +3319,2789 @@ lhz_in01.gat,199,137,3	script	Scientist#li_03	865,{
 
 
 //--------------------------------------------------------------
-// Biolabs Access Quest - [Unknown]
+// Biolabs Access Quest Part #1 - [Tsuyuki]
 //--------------------------------------------------------------
 
-lighthalzen.gat,341,224,4	script	Fishburn	868,{
-
-	if (BaseLevel > 60) goto Lstart;
-	mes "[Fishburn]";
-	mes "Keep moving.";
-	close;
-
-Lstart:
-	if (lhzcube == 1) goto L_11;
-	if (Fishburn == 7) goto L_10;
-	if (Fishburn == 6) goto L_9;
-	if (Fishburn == 5) goto L_6;
-	if (Fishburn == 4) goto L_4;
-	if (Fishburn == 3) goto L_3;
-	if (Fishburn == 2) goto L_2;
-	if (Fishburn == 1) goto L_1;
-	mes "[Fishburn]";
-	mes "Hmm...? What is it?";
-	mes "I am busy at the moment,";
-	mes "so stop bothering me.";
-	set Fishburn,1;
-	close;
-
-L_1:
-	mes "[Fishburn]";
-	mes "I'm getting distracted because";
-	mes "You keep staring at me!";
-	mes "Would you please leave me alone?";
-	set Fishburn,Fishburn+1;
-	close;
-
-L_2:
-	mes "[Fishburn]";
-	mes "Hmm...? Oh, it's you..";
-	mes "You are really getting on my nerves.";
-	mes "You're weird, you know that?";
-	mes "What is it that you want from me?";
-	next;
-	mes "[" +strcharinfo(0) + "]";
-	mes "Nothing really...";
-	mes "Just looking around...";
-	mes "What are you doing?";
-	next;
-	mes "[Fishburn]";
-	mes "Oh, man...";
-	mes "If I just needed to show you this,";
-	mes "I wouldn't have got all worked up.";
-	next;
-	mes "[" +strcharinfo(0) + "]";
-	mes "I know. Haha.";
-	next;
-	mes "[Fishburn]";
-	mes "You really ARE a weird person...";
-	mes "Are you just going to stand there";
-	mes "and keep watching?";
-	next;
-	mes "[Fishburn]";
-	mes "... You're really annoying me!";
-	mes "What do you want from me?!";
-	next;
-	mes "[" +strcharinfo(0) + "]";
-	mes "I've aready told you.";
-	mes "I asked what you were doing.";
-	mes "This place is hot and sticky.";
-	next;
-	mes "[Fishburn]";
-	mes "Okay, okay..";
-	mes "I'll tell you what i'm doing,";
-	mes "but would you leave me in peace";
-	mes "if i did? Thanks.";
-	next;
-	mes "[Fishburn]";
-	mes "I'm.. um... doing something illegal...";
-	mes "Don't tell anyone about this!";
-	next;
-	mes "[Fishburn]";
-	mes "I am the only person who can make a route to";
-	mes "the industrial city's -^FF0000Laboratory^000000- or";
-	mes "places normal people wouldn't usually be able to get to.";
-	next;
-	mes "[" +strcharinfo(0) + "]";
-	mes "The -Laboratory?!!!-";
-	mes "Can you really get people in there?!!!";
-	next;
-	mes "[Fishburn]";
-	mes "Agh! Quieten down! What did i tell you?";
-	mes "I've told you what i do, now will you stop staring at me?";
-	mes "And be quiet~!";
-	mes "You're weird.. ¬_¬";
-	next;
-	mes "[" +strcharinfo(0) + "]";
-	mes "Ah..Haha.. I'm sorry.";
-	mes "I really want to go there,";
-	mes "so I got excited when I heard you can get people in there";
-	next;
-	mes "[Fishburn]";
-	mes "Hmm? You were planning to get in there?";
-	next;
-	mes "[" +strcharinfo(0) + "]";
-	mes "Yeah, but i couldn't get in..";
-	next;
-	mes "[Fishburn]";
-	mes "Hmm...";
-	mes "This is troublesome...";
-	mes "I don't usually tell people i cannot";
-	mes "trust how to get into the Laboratory...";
-	next;
-	mes "[" +strcharinfo(0) + "]";
-	mes "What do I need to do?";
-	mes "How can I get into the laboratory?";
-	next;
-	mes "[Fishburn]";
-	mes "Geez~, I'm just giving people a route, not sending them there.";
-	next;
-	mes "[" +strcharinfo(0) + "]";
-	mes "Doesn't that mean the same thing?";
-	next;
-	mes "[Fishburn]";
-	mes "What I'm saying is,";
-	mes "I'm giving people the chance to get into the labs.";
-	next;
-	mes "[" +strcharinfo(0) + "]";
-	mes "You're really talented, huh.";
-	next;
-	mes "[Fishburn]";
-	mes "Hahaha! Damn right.";
-	mes "It's a piece of cake!";
-	mes "...";
-	mes "Actually, now i think about it, it's impossible..";
-	next;
-	mes "[" +strcharinfo(0) + "]";
-	mes "How's it impossible?";
-	mes "I haven't say anything yet~..";
-	next;
-	mes "[Fishburn]";
-	mes "Oh come on, you were going to BEG me to send you there~!!!";
-	next;
-	mes "[" +strcharinfo(0) + "]";
-	mes "Heh...";
-	mes "You really ARE clever.";
-	mes "Well...";
-	mes "Pretty please~~?";
-	next;
-	mes "[Fishburn]";
-	mes "I can never let you in~..";
-	mes "Never ever~!!!";
-	set Fishburn,Fishburn+1;
-	close;
-
-L_3:
-	mes "[" +strcharinfo(0) + "]";
-	mes "Please?";
-	next;
-	mes "[Fishburn]";
-	mes "No way.";
-	set Fishburn,Fishburn+1;
-	close;
-
-L_4:
-	mes "[" +strcharinfo(0) + "]";
-	mes "Pleaseeeee?";
-	next;
-	mes "[Fishburn]";
-	mes "No.";
-	next;
-	mes "[" +strcharinfo(0) + "]";
-	mes "Pleaseeeeeeeeeee?";
-	next;
-	mes "[Fishburn]";
-	mes "I don't want to.";
-	next;
-	mes "[" +strcharinfo(0) + "]";
-	mes "Do it!!!";
-	next;
-	mes "[Fishburn]";
-	mes "Never~!!!";
-	next;
-	mes "[" +strcharinfo(0) + "]";
-	mes "Why are you doing this to me?!!";
-	mes "What do you want from me !?!";
-	next;
-	mes "[Fishburn]";
-	mes "What do I want?";
-	mes "Heh heh.. One billion zeny.";
-	next;
-	mes "[" +strcharinfo(0) + "]";
-	mes "Are you crazy?!";
-	next;
-	mes "[Fishburn]";
-	mes "It's your choice.";
-	next;
-	mes "[" +strcharinfo(0) + "]";
-	mes "Sir, you know I don't have that much money.";
-	mes "Is there anything else you need?";
-	next;
-	mes "[Fishburn]";
-	mes "Hmm...";
-	mes "Okay fine...";
-	mes "Bring me 20 Jellopies.";
-	mes "'Kay?";
-	next;
-	mes "[" +strcharinfo(0) + "]";
-	mes "........";
-	mes "So that's what you really wanted to ask me?";
-	next;
-	mes "[Fishburn]";
-	mes "Hahaha...";
-	mes "Yeah~~...";
-	next;
-	mes "[" +strcharinfo(0) + "]";
-	mes "........";
-	next;
-	mes "[Fishburn]";
-	mes "So, what're you doing just standing there?";
-	mes "Are you going to do it or not?";
-	next;
-	menu "Definately!",L_5,"No way! It's impossible!",-;
-
-	mes "[Fishburn]";
-	mes "Ah well, your loss,";
-	mes "Too bad!";
-	mes "Bye now~!!";
-	close;
-
-L_5:
-	mes "[Fishburn]";
-	mes "Okay then, do as I said,";
-	mes "bring me 20 jellopies!";
-	mes "....";
-	mes "What're you waiting for?! GO!!";
-	set Fishburn,Fishburn+1;
-	close;
-
-L_6:
-	mes "[Fishburn]";
-	mes "Did you get the items?";
-	next;
-	menu "Erm.. No..",-,"Hell yeah!",L_7,"What did you want again..?",L7_1;
-
-	mes "[Fishburn]";
-	mes "Hey, I don't feel like playing around anymore.";
-	mes "If you really want to get there, bring the damn items!";
-	close;
-
-L_7:
-	if (countitem(909) >= 20) goto L_8;
-	mes "[Fishburn]";
-	mes "Are you joking?";
-	mes "If you keep doing this,";
-	mes "I may not keep the promise either.";
-	mes "So go and get them already!";
-	close;
-
-L7_1:
-	mes "[Fishburn]";
-	mes "You're really stupid~!";
-	mes "It's 20 jellopies!";
-	mes "Don't forget this time~";
-	close;
-
-L_8:
-	delitem 909,20;
-	mes "[Fishburn]";
-	mes "Hmm. You're more reliable than i thought.";
-	mes "Taking this errand into consideration,";
-	mes "i guess you really want to get in there?";
-	next;
-	mes "[Fishburn]";
-	mes "Coming to think of it,";
-	mes "you look different.";
-	mes "Should I say you look more... trustworthy..?";
-	next;
-	mes "[Fishburn]";
-	mes "Well... Anyway...";
-	mes "A promise is a promise.";
-	mes "I will tell you how to get there.";
-	next;
-	mes "[Fishburn]";
-	mes "As I told you earlier, all I can do is";
-	mes "give you the opportunity to get in.";
-	next;
-	mes "[Fishburn]";
-	mes "I used to be a manager working for the lab,";
-	mes "but time moves on, as people do,";
-	mes "and now I am working against the lab.";
-	next;
-	mes "[Fishburn]";
-	mes "Now... Answer honestly on all I ask here on out.";
-	mes "Where i send you all depends on how you answer.";
-	next;
-	mes "[Fishburn]";
-	mes "Somewhere in the place I'm going to send you";
-	mes "There will be things you must find,";
-	mes "So search well.";
-	next;
-	mes "[Fishburn]";
-	mes "Well, when you've made your mind up,";
-	mes "come back and talk to me. Okay?";
-	set Fishburn,Fishburn+1;
-	close;
-
-L_9:
-	mes "[Fishburn]";
-	mes "Hmm... So...";
-	mes "Are you ready to go?";
-	next;
-	menu "No",-,"Yes",L9_1;
-
-	mes "[Fishburn]";
-	mes "Hmm... Not yet, huh...";
-	mes "Well, I guess it is to be expected.";
-	mes "But don't make me wait too long~!";
-	close;
-
-L9_1:
-	mes "[Fishburn]";
-	mes "This is going to be hard~";
-	mes "Let's go!!!";
-	close2;
-	set Fishburn,Fishburn+1;
-	set @rdm,rand(3);
-	if (@rdm==1) goto L_warp1;
-	if (@rdm==2) goto L_warp2;
- 	warp "lhz_cube.gat",67,193;
-	end;
-
-L_10:
-	mes "[Fishburn]";
-	mes "Hah!";
-	mes "You failed in there, right? Hahahaha~.";
-	mes "Are you going to try again? Or is it too tough~";
-	next;
-	menu "No",-,"Yes",L10_1;
-
-	mes "[Fishburn]";
-	mes "It was that hard huh?";
-	mes "Well, come back if you change your mind.";
-	close;
-
-L10_1:
-	mes "[Fishburn]";
-	mes "Okay..";
-	mes "I will send you there again..";
-	mes "Good luck!";
-	close2;
-	set @rdm,rand(3);
-	if (@rdm==1) goto L_warp1;
-	if (@rdm==2) goto L_warp2;
- 	warp "lhz_cube.gat",67,193;
-	end;
-
-L_warp1: 
-	warp "lhz_cube.gat",66,136;
-	end;
-L_warp2:
-	warp "lhz_cube.gat",66,74;
-	end;
-
-L_11:
-	mes "[Fishburn]";
-	mes "Oh~ I guess you found the entrance.";
-	mes "I'll tell you now...";
-	mes "If you want to go in there again";
-	next;
-	mes "[Fishburn]";
-	mes "You can get there by a sewer passage on the north side of town.";
-	next;
-	mes "[" +strcharinfo(0) + "]";
-	mes "No waiiiii!!";
-	next;
-	mes "[Fishburn]";
-	mes "I know. I know...";
-	mes "It is dirty.";
-	mes "But it's only way in, so don't complain!";
-	next;
-	mes "[Fishburn]";
-	mes "Now, take care of yourself~.";
-	close;
-}
-
-lhz_cube.gat,249,184,0	script	Door?	111,{
-
-	mes "Leave room?";
-	next;
-	menu "Yes",LhzLeave,"No",LhzNoLeave;
-
-LhzLeave:
-	warp "lighthalzen.gat",335,227;
-	end;
-
-LhzNoLeave:
-	close;
-}
-
-lhz_cube.gat,248,179,0	script	Chest	111,{
-
-	if (Axe == 1) goto L_2;
-	mes "There is an Axe in the chest.";
-	next;
-	menu "Take the Axe.",L_1,"Leave it alone.",-;
-	close;
-
-L_1:
-	mes "You acquired the ^FF0000Axe^000000.";
-	set Axe,1;
-	close;
-
-L_2:
-	mes "There is a chest that used to contain an ^FF0000Axe^000000.";
-	close;
-}
-
-lhz_cube.gat,237,183,0	script	Barrel	111,{
-
-	if (yKey == 1) goto L_4;
-	if (Box == 1) goto L_2;
-	mes "There is a box that looks weak.";
-	if (Axe == 0) close;
-	next;
-	input @Axe$;
-
-	if (@Axe$ == "Axe") goto L_1;
-	mes "There is no change.";
-	close;
-
-L_1:
-	mes "When you break the barrel with an Axe,";
-	mes "you see that there's a box inside of it.";
-	next;
-	mes "On top of the box, there's a panel with the numbers 1~9";
-	set Box,1;
-	close;
-
-L_2:
-	mes "There is a box with numbers 1~9 on it's surface.";
-	next;
-	set @agree,0;
-	input @number;
-	if (num6 == @number) set @agree,@agree+1;
-	input @number;
-	if (num8 == @number) set @agree,@agree+1;
-	input @number;
-	if (num1 == @number) set @agree,@agree+1;
-	input @number;
-	if (num4 == @number) set @agree,@agree+1;
-	input @number;
-	if (num9 == @number) set @agree,@agree+1;
-	input @number;
-	if (num2 == @number) set @agree,@agree+1;
-	input @number;
-	if (num7 == @number) set @agree,@agree+1;
-	input @number;
-	if (num5 == @number) set @agree,@agree+1;
-	input @number;
-	if (num3 == @number) set @agree,@agree+1;
-	if (@agree == 9 && num1) goto L_3;
-	mes "There is no change.";
-	close;
-
-L_3:
-	mes "The box opened, making a metallic click.";
-	mes "Within the box, there is 'Yellow Key'.";
-	next;
-	mes "You acquired '^FF0000Yellow Key^000000'.";
-	set yKey,1;
-	close;
-
-L_4:
-	mes "This box used to have the '^FF0000Yellow Key^000000'";
-	mes "The box is now empty.";
-	close;
-}
-
-lhz_cube.gat,242,201,0	script	Drawer	111,{
-
-	if (Jackknife == 1) goto L_3;
-	mes "The drawer is locked.";
-	if (RedKey == 1) goto L_1;
-	close;
-
-L_1:
-	input @Key$;
-	if (@Key$ == "Red Key") goto L_2;
-	mes "The drawer is locked, you need some kind of Key.";
-	close;
-
-L_2:
-	mes "The Red Key fits the lock perfectly,opening the drawer.";
-	mes "You found a 'Jackknife' inside.";
-	next;
-	mes "You acquired ^FF0000Jackknife^000000.";
-	set Jackknife,1;
-	close;
-
-L_3:
-	mes "It is the drawer you got ^FF0000Jackknife^000000 from.";
-	mes "There is nothing inside now.";
-	close;
-}
-
-lhz_cube.gat,237,198,0	script	Bundle of Files	111,{
-
-	if (RedKey == 1) goto L_2;
-	mes "There are tons of documents here.";
-	next;
-	menu "Search the documents.",L_1,"Ignore.",-;
-	close;
-
-L_1:
-	mes "As you look through the documents, a 'Red Key' falls out.";
-	next;
-	mes "You acquired ^FF0000Red Key^000000.";
-	set RedKey,1;
-	close;
-
-L_2:
-	mes "This is where you acquired ^FF0000Red Key^000000.";
-	mes "There's nothing else to do here.";
-	close;
-}
-
-lhz_cube.gat,247,198,0	script	Bed	111,{
-
-	mes "There is a messy bed.";
-	next;
-	menu "Above the bed",-,"Under the bed",L_1;
-
-	mes "The blanket is messily placed.";
-	mes "There is nothing special here.";
-	close;
-
-L_1:
-	if (Quadrangle >= 1) goto L_3;
-	if (srod1 == 1) goto L_2;
-	mes "You look below the bed and see a 'Short Stick'.";
-	mes "It is within your grasp, but there is";
-	mes "also another item hidden under the bed, which";
-	mes "you'll need some kind of long item to pull it out.";
-	next;
-	mes "You acquired the '^FF0000Short Stick^000000'.";
-	mes "It looks like this stick could be combined";
-	mes "with another stick to make it longer.";
-	if (srod2 == 1) goto L1_1;
-	set srod1,1;
-	close;
-
-L1_1:
-	set srod1,1;
-	next;
-	mes "It seems like the small-sized stick can be";
-	mes "combined with the 'Short Stick' from under the desk.";
-	mes "You put the two end to end, and they click into place.";
-	next;
-	mes "You acquired the '^FF0000Long Stick^000000'";
-	set rod,1;
-	close;
-
-L_2:
-	if (rod == 0 && srod1 == 1 && srod2 == 1) goto L1_1;
-	mes "As you look under the bed, you see that there";
-	mes "is a small object covered in dust.";
-	next;
-	input @bed$;
-	if (@bed$ == "Long Stick" && rod == 1) goto L2_1;
-	mes "It looks like you need some kind of long item to";
-	mes "Get the item out, you can't reach it!";
-	close;
-
-L2_1:
-	mes "You used the Long Stick to pull it out.";
-	next;
-	mes "You acquired '^FF0000Cube^000000'.";
-	set Quadrangle,1;
-	close;
-
-L_3:
-	mes "This is the place where you got '^FF0000Cube^000000' from.";
-	mes "There is nothing down here now but dust.";
-	close;
-}
-
-lhz_cube.gat,229,184,0	script	Goblet	111,{
-
-	if (fKey == 1) goto L_2;
-	mes "You see an empty bottle and a goblet with something in it.";
-	next;
-	menu "Leave it alone.",-,"Look what is inside.",L_1;
-	close;
-
-L_1:
-	mes "When you look inside, you see a 'Rusty Key'.";
-	next;
-	mes "You acquired the '^FF0000Rusty Key^000000'.";
-	set fKey,1;
-	close;
-
-L_2:
-	mes "You got the '^FF0000Rusty Key^000000' here.";
-	mes "There's nothing but an empty goblet and an empty bottle.";
-	close;
-}
-
-lhz_cube.gat,233,206,0	script	Checmicals	111,{
-
-	if (gKey == 1) goto L_2;
-	mes "There are lots of bottles filled with chemicals lined up";
-	mes "Along the shelf, they have different labels.";
-	next;
-	input @lathe$;
-
-	if (@lathe$ == "Rusty Key" && fKey == 1) goto L_1;
-	mes "Nothing happened.";
-	close;
-
-L_1:
-	mes "As you put the 'Rusty Key' into a bottle, it fizzes";
-	mes "and bubbles, and all the liquid disappears.";
-	mes "All that's left is a clean, Green Key.";
-	next;
-	mes "You acquired the '^FF0000Green Key^000000'";
-	set gKey,1;
-	close;
-
-L_2:
-	mes "There is an acid that changed corroded all the rust";
-	mes "off of your key.";
-	next;
-	mes "I don't see anything useful.";
-	close;
-}
-
-lhz_cube.gat,249,191,0	script	Cabinet	111,{
-
-	if (Polygon >= 1) goto L_4;
-	mes "There is a cabinet with lots of drawers.";
-	if (gKey == 1) goto L_2;
-	if (gKey == 0) next;
-	menu "Leave it alone.",-,"Open one of the drawers.",L_1;
-	close;
-
-L_1:
-	mes "There's nothing of any interest in this drawer.";
-	close;
-
-L_2:
-	next;
-	input @gKey$;
-
-	if (@gKey$ == "Green Key") goto L_3;
-	mes "There's nothing of any interest in this drawer.";
-	close;
-
-L_3:
-	mes "You put the 'Green Key' into a keyhole,";
-	mes "opening one of the locked drawers.";
-	mes "In the drawer, there is a model of";
-	mes "a Polygon.";
-	next;
-	mes "'You acquired the ^FF0000Polygon^000000.";
-	set Polygon,1;
-	close;
-
-L_4:
-	mes "This is the closet where you got";
-	mes "the 'Polygon' from.";
-	next;
-	mes "The other draws will not open, there's";
-	mes "nothing else to do here.";
-	close;
-}
-
-lhz_cube.gat,234,200,0	script	Desk	111,{
-
-	mes "There is a desk with lots of objects scattered around.";
-	next;
-	menu "Above the desk",-,"Below the desk",L_1,"Drawer",L_2;
-
-	mes "There are lots of books, papers and";
-	mes "research equipment.";
-	close;
-
-L_1:
-	if (srod2 == 1) goto L1_2;
-	mes "When you look below the desk,";
-	mes "You see a decent sized stick.";
-	next;
-	mes "You acquired '^FF0000Short Stick^000000'.";
-	mes "It looks like this stick could be combined";
-	mes "With another stick to make it larger.";
-	if (srod1 == 1) goto L1_1;
-	set srod2,1;
-	close;
-
-L1_1:
-	set srod2,1;
-	next;
-	mes "It seems like the decently sized stick can be";
-	mes "combined with the 'Short Stick' from under the bed.";
-	mes "You put the two end to end, and they click into place.";
-	next;
-	mes "You acquired the '^FF0000Long Stick^000000'";
-	set rod,1;
-	close;
-
-L1_2:
-	if (srod1 == 1 && srod2 == 1 && rod == 0) goto L1_1;
-	mes "This is where you acquired the '^FF0000Short Stick^000000'.";
-	mes "There is nothing but dust now.";
-	close;
-
-L_2:
-	mes "It's locked and can't be opened.";
-	close;
-}
-
-lhz_cube.gat,237,206,0	script	Picture	111,{
-
-	if (num1 > 0) goto L_2;
-	mes "There is a picture on the wall.";
-	next;
-	menu "Move it.",L_1,"Leave it alone.",-;
-	close;
-
-L_1:
-	mes "It does not move.";
-	next;
-	input @Jackknife$;
-
-	if (@Jackknife$ == "Jackknife" && Jackknife == 1) goto L1_1;
-	mes "Nothing happened.";
-	close;
-
-L1_1:
-	mes "You slid the 'Jackknife' behind the frame";
-	mes "and used it to twist the picture.";
-	mes "As you turn the frame, the picture detatches and";
-	mes "falls from the wall.";
-	next;
-	set num1,rand(1,9);
-	Lset1:
-	set num2,rand(1,9);
-	if (num1 == num2) goto Lset1;
-	Lset2:
-	set num3,rand(1,9);
-	if (num1 == num3) goto Lset2;
-	if (num2 == num3) goto Lset2;
-	Lset3:
-	set num4,rand(1,9);
-	if (num1 == num4) goto Lset3;
-	if (num2 == num4) goto Lset3;
-	if (num3 == num4) goto Lset3;
-	Lset4:
-	set num5,rand(1,9);
-	if (num1 == num5) goto Lset4;
-	if (num2 == num5) goto Lset4;
-	if (num3 == num5) goto Lset4;
-	if (num4 == num5) goto Lset4;
-	Lset5:
-	set num6,rand(1,9);
-	if (num1 == num6) goto Lset5;
-	if (num2 == num6) goto Lset5;
-	if (num3 == num6) goto Lset5;
-	if (num4 == num6) goto Lset5;
-	if (num5 == num6) goto Lset5;
-	Lset6:
-	set num7,rand(1,9);
-	if (num1 == num7) goto Lset6;
-	if (num2 == num7) goto Lset6;
-	if (num3 == num7) goto Lset6;
-	if (num4 == num7) goto Lset6;
-	if (num5 == num7) goto Lset6;
-	if (num6 == num7) goto Lset6;
-	Lset7:
-	set num8,rand(1,9);
-	if (num1 == num8) goto Lset7;
-	if (num2 == num8) goto Lset7;
-	if (num3 == num8) goto Lset7;
-	if (num4 == num8) goto Lset7;
-	if (num5 == num8) goto Lset7;
-	if (num6 == num8) goto Lset7;
-	if (num7 == num8) goto Lset7;
-	Lset8:
-	set num9,rand(1,9);
-	if (num1 == num9) goto Lset8;
-	if (num2 == num9) goto Lset8;
-	if (num3 == num9) goto Lset8;
-	if (num4 == num9) goto Lset8;
-	if (num5 == num9) goto Lset8;
-	if (num6 == num9) goto Lset8;
-	if (num7 == num9) goto Lset8;
-	if (num8 == num9) goto Lset8;
-	goto L_2;
-
-L_2:
-	mes "There is a number behind the picture.";
-	mes "" + num1 + "3 " + num2 + "6 " + num3 + "9 " + num4 + "4 " + num5 + "8 " + num6 + "1 " + num7 + "7 " + num8 + "2 " + num9 + "5";
-	mes "Perhaps you should write this number down somewhere...";
-	close;
-}
-
-lhz_cube.gat,224,192,0	script	Power Generator	111,{
-
-	if (machine == 1) goto L_2;
-	mes "The big machine is running, making a huge noise.";
-	mes "There are lots weird symbols and";
-	mes "a small key hole beside them.";
-	next;
-	input @Key$;
-
-	if (@Key$ == "Yellow Key" && yKey == 1) goto L_1;
-	mes "There's nothing to do here.";
-	close;
-
-L_1:
-	mes "You insert the 'Yellow Key' into the keyhole";
-	mes "and twist it.";
-	mes "The machine clicks, and becomes silent.";
-	next;
-	mes "When it was stopped, the lamp next to the bed";
-	mes "also turned off.";
-	set machine,1;
-	close;
-
-L_2:
-	mes "The big machine sits quietly.";
-	close;
-}
-
-lhz_cube.gat,248,205,0	script	Status Light	111,{
-
-	if (bKey == 1) goto L_3;
-	if (machine == 1) goto L_1;
-	mes "There is a bright light.";
-	mes "Seems like there is something inside";
-	mes "but it is too hot to touch.";
-	mes "It looks like you need to somehow turn the light off.";
-	close;
-
-L_1:
-	mes "There is something inside of the bulb.";
-	next;
-	menu "Leave it alone.",-,"Break the bulb.",L_2;
-	close;
-
-L_2:
-	mes "When you break the bulb, a";
-	mes "'Black Key' falls out.";
-	next;
-	mes "You acquired the '^FF0000Black Key^000000'.";
-	set bKey,1;
-	close;
-
-L_3:
-	mes "There nothing but a broken bulb.";
-	close;
-}
-
-lhz_cube.gat,248,193,0	script	Box	111,{
-
-	if (countitem(2657) > 0 || gotLabPerm > 0 || lhzcube) goto L_5;
-	mes "There is a box with three holes.";
-	next;
-	if (Oval == 2 && Quadrangle == 2 && Polygon == 2) goto L_4;
-	menu "Oval Hole",L_1,"Cube Hole",L_2,"Polygon Hole",L_3;
-
-L_1:
-	if (Oval == 2) goto L1_2;
-	input @Oval$;
-
-	if (@Oval$ == "Oval" && Oval == 1) goto L1_1;
-	mes "Nothing happened.";
-	close;
-
-L1_1:
-	mes "You inserted the 'Oval' into the oval-shaped hole.";
-	mes "The box makes a metallic click.";
-	set Oval,2;
-	close;
-
-L1_2:
-	mes "You've already inserted the 'Oval'.";
-	close;
-
-L_2:
-	if (Quadrangle == 2) goto L2_2;
-	input @Quadrangle$;
-
-	if (@Quadrangle$ == "Cube" && Quadrangle == 1) goto L2_1;
-	mes "Nothing happened.";
-	close;
-
-L2_1:
-	mes "You inserted the 'Cube' into the cube-shaped hole.";
-	mes "The box makes a metallic click.";
-	set Quadrangle,2;
-	close;
-
-L2_2:
-	mes "You already inserted the 'Cube'.";
-	close;
-
-L_3:
-	if (Polygon == 2) goto L3_2;
-	input @Polygon$;
-
-	if (@Polygon$ == "Polygon" && Polygon == 1) goto L3_1;
-	mes "Nothing happened.";
-	close;
-
-L3_1:
-	mes "You inserted the 'Polygon' into the Polygon Hole.";
-	mes "The box makes a metallic click.";
-	set Polygon,2;
-	close;
-
-L3_2:
-	mes "You've already inserted the 'Polygon'.";
-	close;
-
-L_4:
-	mes "All holes are filled with key models.";
-	next;
-	menu "Leave it alone.",-,"Open the box.",L4_1;
-	close;
-
-L4_1:
-	mes "There is a small card inside of it.";
-	next;
-	mes "You acquired the 'Laboratory Permit'.";
-	set gotLabPerm,1;
-	getitem 2657,1;
-	close;
-
-L_5:
-	mes "There is an opened box.";
-	mes "There is nothing inside.";
-	close;
-}
-
-lhz_cube.gat,224,197,0	script	Experiment Tube	111,{
-
-	if (countitem(2657) > 0) goto L_3;
-	if (Oval >= 1) goto L_2;
-	mes "There is a weird experiment tube.";
-	mes "It seems like there is something inside.";
-	mes "There' a keyhole and a hole that fits a thin object.";
-	next;
-	input @Key$;
-
-	if (@Key$ == "Black Key" && bKey == 1) goto L_1;
-	mes "Nothing happened.";
-	close;
-
-L_1:
-	mes "You inserted the 'Black Key' and turned it.";
-	mes "The glass window at the front of the machine opened,";
-	mes "Revealing an Oval.";
-	next;
-	mes "You acquired the '^FF0000Oval^000000'.";
-	set Oval,1;
-	close;
-
-L_2:
-	mes "This is where you got '^FF0000Oval^000000'.";
-	mes "There is a weird symbol on the bottom of the machine.";
-	mes "It looks like it could open as it has hinges on one side.";
-	close;
-
-L_3:
-	mes "There is a rectangular hole in the front of the machine.";
-	next;
-	mes "You inserted the 'Laboratory Permit' in the hole,";
-	mes "and the stair leading down appeared on the floor.";
-	next;
-	menu "Go down.",L4_1,"Do not go down.",-;
-	close;
-
-L4_1:
-	mes "Its connected to a long staircase.";
-	close2;
-	set Axe,0;	set yKey,0;	set Box,0;	set num1,0;
-	set num2,0;	set num3,0;	set num4,0;	set num5,0;
-	set num6,0;	set num7,0;	set num8,0;	set num9,0;
-	set lhzcube,0; set cubekey,0; set piciburn,0;
-	set Jackknife,0;	set RedKey,0;	set srod1,0;	set srod2,0;
-	set fKey,0;	set gKey,0;	set Polygon,0;	set machine,0;
-	set bKey,0;	set Oval,0;	set Quadrangle,0;	set rod,0;
-	set gotLabPerm,0;
-	set lhzcube,1;
-	warp "lhz_cube.gat",177,13;
-	end;
-}
-
-lighthalzen.gat,313,301,0	script	Sewer Pipe	111,{
-
-	mes "You see some pipes for a sewage system.";
-	if (lhzcube == 1) goto s_Find;
-	close;
-
-	s_Find:
-		mes "You found the way into the lab.";
-		next;
-		menu "Go in.",L_1,"Do not go in.",-;
+lighthalzen.gat,341,224,3	script	Fishbone	868,{
+
+	if (lght_boss == 6) {
+		if (lght_sincube == 0) {
+			mes "[Fishbone]";
+			mes "What...?";
+			mes "Is there something";
+			mes "on my face? Quit looking";
+			mes "at me and let me do my work.";
+			set lght_sincube,1;
+			close;
+		} else if (lght_sincube == 1) {
+			mes "[Fishbone]";
+			mes "Hey. Hey you.";
+			mes "You're still looking";
+			mes "at me. Quit it. I'm busy";
+			mes "here and you're bothering me.";
+			set lght_sincube,2;
+			close;
+		} else if (lght_sincube == 2) {
+			mes "[Fishbone]";
+			mes "Seriously, you are";
+			mes "starting to really get";
+			mes "on my nerves! What could";
+			mes "you possibly want from me?!";
+			next;
+			mes "["+strcharinfo(0)+"]";
+			mes "Nothing really.";
+			mes "I just feel like";
+			mes "watching you work.";
+			mes "What exactly are you";
+			mes "doing anyway, huh?";
+			next;
+			mes "[Fishbone]";
+			mes "Hey! If I could just show";
+			mes "you what I'm doing, I wouldn't";
+			mes "be so uptight about you looking";
+			mes "at what I'm doing, now would I?";
+			next;
+			mes "["+strcharinfo(0)+"]";
+			mes "Nah...";
+			mes "I just think";
+			mes "you're uptight";
+			mes "in general.";
+			next;
+			mes "[Fishbone]";
+			mes "Muthafruit!";
+			mes "So you're just";
+			mes "gonna sit and watch";
+			mes "me all day?! Fine! Then";
+			mes "I'll just ignore you, jerk!";
+			next;
+			mes "[Fishbone]";
+			mes "...";
+			mes "......";
+			mes "Damn it!";
+			mes "This is really";
+			mes "ticking me off! Why";
+			mes "don't you go away?!";
+			next;
+			mes "["+strcharinfo(0)+"]";
+			mes "Well, I was also";
+			mes "wondering why you're";
+			mes "working in a place that's";
+			mes "so, um... depressing.";
+			next;
+			mes "[Fishbone]";
+			mes "Alright, fine!";
+			mes "But once I tell you";
+			mes "what I do here, you're";
+			mes "outta here! Okay? Now,";
+			mes "your lips are frickin' sealed.^FFFFFF ^000000 See, what I do is kinda illegal.";
+			next;
+			mes "[Fishbone]";
+			mes "I provide routes that let";
+			mes "people enter Lighthalzen,";
+			mes "or even go anywhere in this";
+			mes "city, without authorization.";
+			mes "Hell, I could even get you";
+			mes "into that Laboratory...";
+			next;
+			mes "["+strcharinfo(0)+"]";
+			mes "W-wait!";
+			mes "Laboratory?!";
+			mes "Are you serious?";
+			mes "Can you get me";
+			mes "into that place?";
+			next;
+			mes "[Fishbone]";
+			mes "Sonuva--You're not";
+			mes "gonna leave me alone,";
+			mes "are you? Look, you seem";
+			mes "okay, even if you are kinda";
+			mes "stubborn, kid. But I don't trust^FFFFFF ^000000 or serve strangers, period.";
+			next;
+			mes "["+strcharinfo(0)+"]";
+			mes "But isn't there";
+			mes "anything I can do";
+			mes "so you can help me";
+			mes "get into the Laboratory?";
+			next;
+			mes "[Fishbone]";
+			mes "No way, no how.";
+			mes "No matter how much you";
+			mes "beg, I can't take a chance";
+			mes "and just trust anyone who";
+			mes "wants to know a secret";
+			mes "route. Now get outta here!";
+			set lght_sincube,3;
+			close;
+		} else if (lght_sincube == 3) {
+			mes "["+strcharinfo(0)+"]";
+			mes "Please...";
+			mes "Please tell me";
+			mes "how I can get inside";
+			mes "the Laboratory. I'm...";
+			mes "I'm begging you!";
+			next;
+			mes "[Fishbone]";
+			mes "No! Now shaddup";
+			mes "and stop begging, okay?";
+			mes "You're only embarassing";
+			mes "yourself! Good grief...";
+			set lght_sincube,4;
+			close;
+		} else if (lght_sincube == 4) {
+			mes "["+strcharinfo(0)+"]";
+			mes "Why won't you";
+			mes "heeeeelp meee?";
+			mes "Pleeeeeeeease~";
+			mes "You're the only one";
+			mes "who knoooooows~";
+			next;
+			mes "[Fishbone]";
+			mes "Yeesh, you're a nutty";
+			mes "kid. Look, ''no'' means";
+			mes "''no.'' That's it. That's";
+			mes "final. How many times do";
+			mes "you gotta make me spell it out?";
+			next;
+			mes "["+strcharinfo(0)+"]";
+			mes "But there's gotta";
+			mes "be something I can";
+			mes "do so you'll help me?";
+			mes "Th-that's the way i-it";
+			mes "always w-works. You";
+			mes "can't just-- You c-can't...";
+			next;
+			mes "[Fishbone]";
+			mes "Alright, you got me.";
+			mes "But if I'm gonna risk";
+			mes "my life to help you get";
+			mes "into that Laboratory I want";
+			mes "something in return. Okay?";
+			next;
+			mes "[Fishbone]";
+			mes "All you need to do is";
+			mes "come back here with";
+			mes "^FF000071,381,305,294,921,000 zeny^000000.";
+			mes "Then I'll give you all the help";
+			mes "you need. Alright, good luck";
+			mes "to you, brave adventurer.";
+			next;
+			mes "["+strcharinfo(0)+"]";
+			mes "You're joking right?!";
+			mes "There's no way I can ever";
+			mes "get that much zeny! I'd...";
+			mes "I'd have to at least take";
+			mes "over the world or, or...";
+			next;
+			mes "[Fishbone]";
+			mes "Good point.";
+			mes "Fine, maybe that";
+			mes "price is a little high.";
+			mes "I'll just cut it in half,";
+			mes "then. Still want my";
+			mes "help? Then bring me...";
+			next;
+			mes "[Fishbone]";
+			mes "";
+			mes "";
+			mes "...^FF000020 Jellopy^000000.";
+			next;
+			mes "[Fishbone]";
+			mes "Gosh.";
+			mes "It's like I'm";
+			mes "doing this for free...";
+			next;
+			switch(select("Okay.","No! It's impossible!")) {
+			case 1:
+				mes "[Fishbone]";
+				mes "Alright, then";
+				mes "bring me back a";
+				mes "total of 20 Jellopy.";
+				mes "But you gotta have";
+				mes "exactly 20 Jellopy on";
+				mes "you, okay? Seeya pal~";
+				set lght_sincube,5;
+				close;
+			case 2:
+				mes "[Fishbone]";
+				mes "What are you--";
+				mes "Okay, now you're the";
+				mes "one who's joking around.";
+				mes "Look, it's either bring me";
+				mes "20 Jellopy or 71,381,3--";
+				mes "whatever number I said-- zeny!";
+				close;
+			}
+		} else if (lght_sincube == 5) {
+			mes "[Fishbone]";
+			mes "So...";
+			mes "Did you bring";
+			mes "the stuff?";
+			next;
+			switch(select("I'm still working on it.","Here you go!","Um... Stuff?")) {
+			case 1:
+				mes "[Fishbone]";
+				mes "Still working on it?";
+				mes "Okay, I know I didn't";
+				mes "ask you for very much,";
+				mes "but gimme some respect";
+				mes "and get serious about it!";
+				mes "It's 20 friggin' Jellopies!";
+				close;
+			case 2:
+				if (countitem(909) > 19) {
+					mes "[Fishbone]";
+					mes "Ooh. Hey, good work.";
+					mes "Okay, I can see you're";
+					mes "the reliable type. A deal";
+					mes "is a deal, so I'll tell you";
+					mes "how you can get inside";
+					mes "that Laboratory.";
+					next;
+					mes "[Fishbone]";
+					mes "Now, if you're wondering";
+					mes "why I don't got much qualm";
+					mes "against helping you, it's";
+					mes "because I used to work in";
+					mes "the Laboratory... But then";
+					mes "they laid me off unfairly.";
+					next;
+					mes "[Fishbone]";
+					mes "Anyway, anything I can";
+					mes "do to cause them trouble";
+					mes "is good in my book. Let me";
+					mes "get some stuff ready and";
+					mes "then I'll tell you what you";
+					mes "really need to know.";
+					delitem 909,20;
+					set lght_sincube,6;
+					close;
+				} else {
+					mes "[Fishbone]";
+					mes "Uh...";
+					mes "I said 20 Jellopies,";
+					mes "didn't I? This ain't";
+					mes "enough pal, so go out";
+					mes "and get some more!";
+					close;
+				}
+			case 3:
+				mes "[Fishbone]";
+				mes "What the...?";
+				mes "How could you forget";
+				mes "something like that?";
+				mes "Anyway, I asked you to";
+				mes "bring 20 Jellopies.";
+				close;
+			}
+		} else if (lght_sincube == 6) {
+			mes "[Fishbone]";
+			mes "Alright. There's no easy";
+			mes "way to get into Regenschrim";
+			mes "Lab. However, I do know of";
+			mes "this secret maze that should";
+			mes "get you there. Still, if you're";
+			mes "willing and ready to go...";
+			next;
+			switch(select("Wait, not yet!","I'm ready, let's go!")) {
+			case 1:
+				mes "[Fishbone]";
+				mes "Eh...?";
+				mes "Alright, it's";
+				mes "not a problem.";
+				mes "Just take your time.";
+				close;
+			case 2:
+				mes "[Fishbone]";
+				mes "Great!";
+				mes "Okay then,";
+				mes "here we go!";
+				close2;
+				set lght_sincube,7;
+				set '@random,rand(1,3);
+				if ('@random == 1) {
+					warp "lhz_cube.gat",67,193;
+					end;
+				} else if ('@random == 2) {
+					warp "lhz_cube.gat",66,136;
+					end;
+				} else if ('@random == 3) {
+					warp "lhz_cube.gat",66,74;
+					end;
+				}
+				end;
+			}
+		} else if (lght_sincube < 10) {
+			mes "[Fishbone]";
+			mes "Hm, you must not have";
+			mes "accomplished whatever";
+			mes "it is you need to do in the";
+			mes "Regenschirm Laboratory yet.";
+			mes "you want me to send";
+			mes "you there again?";
+			next;
+			switch(select("No.","Yes.")) {
+			case 1:
+				mes "[Fishbone]";
+				mes "Geez, you must have";
+				mes "really had a hard time";
+				mes "there. Okay, well, when";
+				mes "you're ready to go there,";
+				mes "just let me know, got it?";
+				close;
+			case 2:
+				mes "[Fishbone]";
+				mes "Got a lot of";
+				mes "spirit in you,";
+				mes "don't you? Heh!";
+				mes "I like you style~";
+				mes "Get ready, 'cuz";
+				mes "here we go...!";
+				close2;
+				set lght_sincube,7;
+				set '@random,rand(1,3);
+				if ('@random == 1) {
+					warp "lhz_cube.gat",67,193;
+					end;
+				} else if ('@random == 2) {
+					warp "lhz_cube.gat",66,136;
+					end;
+				} else if ('@random == 3) {
+					warp "lhz_cube.gat",66,74;
+					end;
+				}
+				end;
+			}
+		} else if (lght_sincube == 10) {
+			mes "[Fishbone]";
+			mes "Hey, you came back!";
+			mes "Good, I was starting";
+			mes "to get a little worried";
+			mes "about what happened to";
+			mes "you. So did you get what";
+			mes "you wanted over there?";
+			next;
+			mes "["+strcharinfo(0)+"]";
+			mes "Yeah...";
+			mes "I hope so,";
+			mes "anyway.";
+			next;
+			mes "[Fishbone]";
+			mes "Good! Whatever you did,";
+			mes "I hope it messes them up big";
+			mes "time! I usedta be a respected";
+			mes "scientist for Regenschirm till";
+			mes "they laid me off! Serves those";
+			mes "ungrateful jerkoffs right!";
+			next;
+			mes "[Fishbone]";
+			mes "Then again, my current";
+			mes "line of work seems to suit";
+			mes "me much better. And I don't";
+			mes "gotta worry about formulas";
+			mes "and algorithms anymore.";
+			next;
+			mes "[Fishbone]";
+			mes "Oh yeah, the place you";
+			mes "just went to? There's a";
+			mes "secret path the Laboratory";
+			mes "there. If you want, I can";
+			mes "send you back there. So";
+			mes "what do you say?";
+			next;
+			switch(select("Sure","No thanks~")) {
+			case 1:
+				mes "[Fishbone]";
+				mes "Okay then, here";
+				mes "we go! Good luck";
+				mes "to you, buddy.";
+				close2;
+				set '@random,rand(1,3);
+				if ('@random == 1) {
+					warp "lhz_cube.gat",67,193;
+					end;
+				} else if ('@random == 2) {
+					warp "lhz_cube.gat",66,136;
+					end;
+				} else if ('@random == 3) {
+					warp "lhz_cube.gat",66,74;
+					end;
+				}
+				end;
+			case 2:
+				mes "[Fishbone]";
+				mes "Alright, it's your";
+				mes "choice. Oh, and that";
+				mes "pass you have should";
+				mes "let you into the Laboratory";
+				mes "anyway. Good luck to you, pal.";
+				close;
+			}
+		} else if (lght_sincube == 11) {
+			mes "[Fishbone]";
+			mes "Oh hey, it's you!";
+			mes "Now, listen. If you wanna";
+			mes "get into Regenschirm again,";
+			mes "you gotta enter that Sewer Pipe";
+			mes "that's like, northeast from me.";
+			mes "It's gross, but you gotta...";
+			next;
+			mes "[Fishbone]";
+			mes "Anyway, good luck in";
+			mes "whatever it is you're doing";
+			mes "here in Lighthazlen. Oh, and";
+			mes "be real careful! Something";
+			mes "shadier than me is going";
+			mes "on in this big city~";
+			close;
+		} else {
+			mes "[Fishbone]";
+			mes "Heya pal!";
+			mes "It's been a while.";
+			mes "You doin' good? I'm";
+			mes "just peachy, thanks~";
+			close;
+		}
+	} else if (lght_boss > 6) {
+		mes "[Fishbone]";
+		mes "Heya pal!";
+		mes "It's been a while.";
+		mes "You doin' good? I'm";
+		mes "just peachy, thanks~";
 		close;
-
-	L_1:
-		warp "lhz_cube.gat",231,17;
-		end;
+	} else {
+		if (lght_sincube == 0) {
+			if (BaseLevel > 59) {
+				mes "[Fishbone]";
+				mes "What...?";
+				mes "Is there something";
+				mes "on my face? Quit looking";
+				mes "at me and let me do my work.";
+				set lght_sincube,1;
+				close;
+			} else {
+				mes "[Fishbone]";
+				mes "Hey kid, get";
+				mes "outta here! Can't";
+				mes "you tell I'm dealin'";
+				mes "in something shady";
+				mes "here? This is no place";
+				mes "for baby faced guys like you!";
+				close;
+			}
+		} else if (lght_sincube == 1) {
+			mes "[Fishbone]";
+			mes "Hey. Hey you.";
+			mes "You're still looking";
+			mes "at me. Quit it. I'm busy";
+			mes "here and you're bothering me.";
+			set lght_sincube,2;
+			close;
+		} else if (lght_sincube == 2) {
+			mes "[Fishbone]";
+			mes "Seriously, you are";
+			mes "starting to really get";
+			mes "on my nerves! What could";
+			mes "you possibly want from me?!";
+			next;
+			mes "["+strcharinfo(0)+"]";
+			mes "Nothing really.";
+			mes "I just feel like";
+			mes "watching you work.";
+			mes "What exactly are you";
+			mes "doing anyway, huh?";
+			next;
+			mes "[Fishbone]";
+			mes "Hey! If I could just show";
+			mes "you what I'm doing, I wouldn't";
+			mes "be so uptight about you looking";
+			mes "at what I'm doing, now would I?";
+			next;
+			mes "["+strcharinfo(0)+"]";
+			mes "Nah...";
+			mes "I just think";
+			mes "you're uptight";
+			mes "in general.";
+			next;
+			mes "[Fishbone]";
+			mes "Muthafruit!";
+			mes "So you're just";
+			mes "gonna sit and watch";
+			mes "me all day?! Fine! Then";
+			mes "I'll just ignore you, jerk!";
+			next;
+			mes "[Fishbone]";
+			mes "...";
+			mes "......";
+			mes "Damn it!";
+			mes "This is really";
+			mes "ticking me off! Why";
+			mes "don't you go away?!";
+			next;
+			mes "["+strcharinfo(0)+"]";
+			mes "Well, I was also";
+			mes "wondering why you're";
+			mes "working in a place that's";
+			mes "so, um... depressing.";
+			next;
+			mes "[Fishbone]";
+			mes "Alright, fine!";
+			mes "But once I tell you";
+			mes "what I do here, you're";
+			mes "outta here! Okay? Now,";
+			mes "your lips are frickin' sealed.^FFFFFF ^000000 See, what I do is kinda illegal.";
+			next;
+			mes "[Fishbone]";
+			mes "I provide routes that let";
+			mes "people enter Lighthalzen,";
+			mes "or even go anywhere in this";
+			mes "city, without authorization.";
+			mes "Hell, I could even get you";
+			mes "into that Laboratory...";
+			next;
+			mes "["+strcharinfo(0)+"]";
+			mes "W-wait!";
+			mes "Laboratory?!";
+			mes "Are you serious?";
+			mes "Can you get me";
+			mes "into that place?";
+			next;
+			mes "[Fishbone]";
+			mes "Sonuva--You're not";
+			mes "gonna leave me alone,";
+			mes "are you? Look, you seem";
+			mes "okay, even if you are kinda";
+			mes "stubborn, kid. But I don't trust^FFFFFF ^000000 or serve strangers, period.";
+			next;
+			mes "["+strcharinfo(0)+"]";
+			mes "But isn't there";
+			mes "anything I can do";
+			mes "so you can help me";
+			mes "get into the Laboratory?";
+			next;
+			mes "[Fishbone]";
+			mes "No way, no how.";
+			mes "No matter how much you";
+			mes "beg, I can't take a chance";
+			mes "and just trust anyone who";
+			mes "wants to know a secret";
+			mes "route. Now get outta here!";
+			set lght_sincube,3;
+			close;
+		} else if (lght_sincube == 3) {
+			mes "["+strcharinfo(0)+"]";
+			mes "Please...";
+			mes "Please tell me";
+			mes "how I can get inside";
+			mes "the Laboratory. I'm...";
+			mes "I'm begging you!";
+			next;
+			mes "[Fishbone]";
+			mes "No! Now shaddup";
+			mes "and stop begging, okay?";
+			mes "You're only embarassing";
+			mes "yourself! Good grief...";
+			set lght_sincube,4;
+			close;
+		} else if (lght_sincube == 4) {
+			mes "["+strcharinfo(0)+"]";
+			mes "Why won't you";
+			mes "heeeeelp meee?";
+			mes "Pleeeeeeeease~";
+			mes "You're the only one";
+			mes "who knoooooows~";
+			next;
+			mes "[Fishbone]";
+			mes "Yeesh, you're a nutty";
+			mes "kid. Look, ''no'' means";
+			mes "''no.'' That's it. That's";
+			mes "final. How many times do";
+			mes "you gotta make me spell it out?";
+			next;
+			mes "["+strcharinfo(0)+"]";
+			mes "But there's gotta";
+			mes "be something I can";
+			mes "do so you'll help me?";
+			mes "Th-that's the way i-it";
+			mes "always w-works. You";
+			mes "can't just-- You c-can't...";
+			next;
+			mes "[Fishbone]";
+			mes "Alright, you got me.";
+			mes "But if I'm gonna risk";
+			mes "my life to help you get";
+			mes "into that Laboratory I want";
+			mes "something in return. Okay?";
+			next;
+			mes "[Fishbone]";
+			mes "All you need to do is";
+			mes "come back here with";
+			mes "^FF000071,381,305,294,921,000 zeny^000000.";
+			mes "Then I'll give you all the help";
+			mes "you need. Alright, good luck";
+			mes "to you, brave adventurer.";
+			next;
+			mes "["+strcharinfo(0)+"]";
+			mes "You're joking right?!";
+			mes "There's no way I can ever";
+			mes "get that much zeny! I'd...";
+			mes "I'd have to at least take";
+			mes "over the world or, or...";
+			next;
+			mes "[Fishbone]";
+			mes "Good point.";
+			mes "Fine, maybe that";
+			mes "price is a little high.";
+			mes "I'll just cut it in half,";
+			mes "then. Still want my";
+			mes "help? Then bring me...";
+			next;
+			next;
+			mes "[Fishbone]";
+			mes "";
+			mes "";
+			mes "...^FF000020 Jellopy^000000.";
+			next;
+			mes "[Fishbone]";
+			mes "Gosh.";
+			mes "It's like I'm";
+			mes "doing this for free...";
+			next;
+			switch(select("Okay.","No! It's impossible!")) {
+			case 1:
+				mes "[Fishbone]";
+				mes "Alright, then";
+				mes "bring me back a";
+				mes "total of 20 Jellopy.";
+				mes "But you gotta have";
+				mes "exactly 20 Jellopy on";
+				mes "you, okay? Seeya pal~";
+				set lght_sincube,5;
+				close;
+			case 2:
+				mes "[Fishbone]";
+				mes "What are you--";
+				mes "Okay, now you're the";
+				mes "one who's joking around.";
+				mes "Look, it's either bring me";
+				mes "20 Jellopy or 71,381,3--";
+				mes "whatever number I said-- zeny!";
+				close;
+			}
+		} else if (lght_sincube == 5) {
+			mes "[Fishbone]";
+			mes "So...";
+			mes "Did you bring";
+			mes "the stuff?";
+			next;
+			switch(select("I'm still working on it.","Here you go!","Um... Stuff?")) {
+			case 1:
+				mes "[Fishbone]";
+				mes "Still working on it?";
+				mes "Okay, I know I didn't";
+				mes "ask you for very much,";
+				mes "but gimme some respect";
+				mes "and get serious about it!";
+				mes "It's 20 friggin Jellopies!";
+				close;
+			case 2:
+				if (countitem(909) > 19) {
+					mes "[Fishbone]";
+					mes "Ooh. Hey, good work.";
+					mes "Okay, I can see you're";
+					mes "the reliable type. A deal";
+					mes "is a deal, so I'll tell you";
+					mes "how you can get inside";
+					mes "that Laboratory.";
+					next;
+					mes "[Fishbone]";
+					mes "Now, if you're wondering";
+					mes "why I don't got much qualm";
+					mes "against helping you, it's";
+					mes "because I used to work in";
+					mes "the Laboratory... But then";
+					mes "they laid me off unfairly.";
+					next;
+					mes "[Fishbone]";
+					mes "Anyway, anything I can";
+					mes "do to cause them trouble";
+					mes "is good in my book. Let me";
+					mes "get some stuff ready and";
+					mes "then I'll tell you what you";
+					mes "really need to know.";
+					delitem 909,20;
+					set lght_sincube,6;
+					close;
+				} else {
+					mes "[Fishbone]";
+					mes "Uh...";
+					mes "I said 20 Jellopies,";
+					mes "didn't I? This ain't";
+					mes "enough pal, so go out";
+					mes "and get some more!";
+					close;
+				}
+			case 3:
+				mes "[Fishbone]";
+				mes "What the...?";
+				mes "How could you forget";
+				mes "something like that?";
+				mes "Anyway, I asked you to";
+				mes "bring 20 Jellopies.";
+				close;
+			}
+		} else if (lght_sincube == 6) {
+			mes "[Fishbone]";
+			mes "Okay...";
+			mes "Are you ready now?";
+			mes "I'm gonna send you";
+			mes "someplace where you";
+			mes "can find the Lab entrance.";
+			next;
+			switch(select("Not yet.","Yes.")) {
+			case 1:
+				mes "[Fishbone]";
+				mes "Eh...?";
+				mes "Alright, it's";
+				mes "not a problem.";
+				mes "Just take your time.";
+				close;
+			case 2:
+				mes "[Fishbone]";
+				mes "Great!";
+				mes "Okay then,";
+				mes "here we go!";
+				close2;
+				set lght_sincube,7;
+				set '@random,rand(1,3);
+				if ('@random == 1) {
+					warp "lhz_cube.gat",67,193;
+					end;
+				} else if ('@random == 2) {
+					warp "lhz_cube.gat",66,136;
+					end;
+				} else if ('@random == 3) {
+					warp "lhz_cube.gat",66,74;
+					end;
+				}
+				end;
+			}
+		} else if (lght_sincube < 10) {
+			mes "[Fishbone]";
+			mes "Hm, you must not have";
+			mes "accomplished whatever";
+			mes "it was you were doing";
+			mes "in the Laboratory. Do";
+			mes "you want me to send";
+			mes "you there again?";
+			next;
+			switch(select("No.","Yes.")) {
+			case 1:
+				mes "[Fishbone]";
+				mes "Geez, you must have";
+				mes "really had a hard time";
+				mes "there. Okay, well, when";
+				mes "you're ready to go there,";
+				mes "just let me know, got it?";
+				close;
+			case 2:
+				mes "[Fishbone]";
+				mes "Got a lot of";
+				mes "spirit in you,";
+				mes "don't you? Heh!";
+				mes "I like you style~";
+				mes "Get ready, 'cuz";
+				mes "here we go...!";
+				close2;
+				set lght_sincube,7;
+				set '@random,rand(1,3);
+				if ('@random == 1) {
+					warp "lhz_cube.gat",67,193;
+					end;
+				} else if ('@random == 2) {
+					warp "lhz_cube.gat",66,136;
+					end;
+				} else if ('@random == 3) {
+					warp "lhz_cube.gat",66,74;
+					end;
+				}
+				end;
+			}
+		} else if (lght_sincube == 10) {
+			mes "[Fishbone]";
+			mes "Hey, you came back!";
+			mes "Good, I was starting";
+			mes "to get a little worried";
+			mes "about what happened to";
+			mes "you. So did you get what";
+			mes "you wanted over there?";
+			next;
+			mes "["+strcharinfo(0)+"]";
+			mes "Yeah...";
+			mes "I hope so,";
+			mes "anyway.";
+			next;
+			mes "[Fishbone]";
+			mes "Good! Whatever you did,";
+			mes "I hope it messes them up big";
+			mes "time! I usedta be a respected";
+			mes "scientist for Regenschirm till";
+			mes "they laid me off! Serves those";
+			mes "ungrateful jerkoffs right!";
+			next;
+			mes "[Fishbone]";
+			mes "Then again, my current";
+			mes "line of work seems to suit";
+			mes "me much better. And I don't";
+			mes "gotta worry about formulas";
+			mes "and algorithms anymore.";
+			next;
+			mes "[Fishbone]";
+			mes "Oh yeah, the place you";
+			mes "just went to? There's a";
+			mes "secret path the Laboratory";
+			mes "there. If you want, I can";
+			mes "send you back there. So";
+			mes "what do you say?";
+			next;
+			switch(select("Sure","No thanks~")) {
+			case 1:
+				mes "[Fishbone]";
+				mes "Okay then, here";
+				mes "we go! Good luck";
+				mes "to you, buddy.";
+				close2;
+				set '@random,rand(1,3);
+				if ('@random == 1) {
+					warp "lhz_cube.gat",67,193;
+					end;
+				} else if ('@random == 2) {
+					warp "lhz_cube.gat",66,136;
+					end;
+				} else if ('@random == 3) {
+					warp "lhz_cube.gat",66,74;
+					end;
+				}
+				end;
+			case 2:
+				mes "[Fishbone]";
+				mes "Alright, it's your";
+				mes "choice. Oh, and that";
+				mes "pass you have should";
+				mes "let you into the Laboratory";
+				mes "anyway. Good luck to you, pal.";
+				close;
+			}
+		} else if (lght_sincube == 11) {
+			mes "[Fishbone]";
+			mes "Oh hey, it's you!";
+			mes "Now, listen. If you wanna";
+			mes "get into Regenschirm again,";
+			mes "you gotta enter that Sewer Pipe";
+			mes "that's like, northeast from me.";
+			mes "It's gross, but you gotta...";
+			next;
+			mes "[Fishbone]";
+			mes "Anyway, good luck in";
+			mes "whatever it is you're doing";
+			mes "here in Lighthazlen. Oh, and";
+			mes "be real careful! Something";
+			mes "shadier than me is going";
+			mes "on in this big city~";
+			close;
+		} else {
+			mes "[Fishbone]";
+			mes "Heya pal!";
+			mes "It's been a while.";
+			mes "You doin' good? I'm";
+			mes "just peachy, thanks~";
+			close;
+		}
+	}
 }
 
-lhz_dun02.gat,150,149,4	script	lhz-warp	45,2,2,{
+lhz_cube.gat,75,193,0	script	A Triangle Room at 12	45,1,1,{
 
 OnTouch:
-	if (Upper != 1 && BaseLevel < 95) goto L_NoEntry01;
-	if (Upper == 1 && BaseLevel < 90) goto L_NoEntry02;
-	warp "lhz_dun03",140,137;
+	set '@random,rand(1,3);
+	if ('@random == 1) {
+		warp "lhz_cube.gat",67,193;
+	} else if ('@random == 2) {
+		warp "lhz_cube.gat",66,136;
+	} else if ('@random == 3) {
+		warp "lhz_cube.gat",66,74;
+	}
 	end;
+}
 
-	L_NoEntry01:
-		mes "Non-Advanced class characters must be at least base level 95 to enter level 3 of the Biolabs Dungeon";
-		close;
+lhz_cube.gat,66,201,0	script	A Triangle Room at 9#1	45,1,1,{
 
-	L_NoEntry02:
-		mes "Advanced class characters must be at least base level 90 to enter level 3 of the Bio Lab Dungeon";
+OnTouch:
+	warp "lhz_cube.gat",10,136;
+	end;
+}
+
+lhz_cube.gat,66,184,0	script	A Triangle Room at 3#2	45,1,1,{
+
+OnTouch:
+	set '@random,rand(1,3);
+	if ('@random == 1) {
+		warp "lhz_cube.gat",67,193;
+	} else if ('@random == 2) {
+		warp "lhz_cube.gat",66,136;
+	} else if ('@random == 3) {
+		warp "lhz_cube.gat",66,74;
+	}
+	end;
+}
+
+lhz_cube.gat,58,193,0	script	A Triangle ROom at 6#3	45,1,1,{
+
+OnTouch:
+	set '@random,rand(1,3);
+	if ('@random == 1) {
+		warp "lhz_cube.gat",67,193;
+	} else if ('@random == 2) {
+		warp "lhz_cube.gat",66,136;
+	} else if ('@random == 3) {
+		warp "lhz_cube.gat",66,74;
+	}
+	end;
+}
+
+lhz_cube.gat,75,136,0	script	A Circle Room at 12#1	45,1,1,{
+
+OnTouch:
+	warp "lhz_cube.gat",10,193;
+	end;
+}
+
+lhz_cube.gat,66,144,0	script	A Circle Room at 9#2	45,1,1,{
+
+OnTouch:
+	set '@random,rand(1,3);
+	if ('@random == 1) {
+		warp "lhz_cube.gat",67,193;
+	} else if ('@random == 2) {
+		warp "lhz_cube.gat",66,136;
+	} else if ('@random == 3) {
+		warp "lhz_cube.gat",66,74;
+	}
+	end;
+}
+
+lhz_cube.gat,59,136,0	script	A Circle Room at 6#3	45,1,1,{
+
+OnTouch:
+	set '@random,rand(1,3);
+	if ('@random == 1) {
+		warp "lhz_cube.gat",67,193;
+	} else if ('@random == 2) {
+		warp "lhz_cube.gat",66,136;
+	} else if ('@random == 3) {
+		warp "lhz_cube.gat",66,74;
+	}
+	end;
+}
+
+lhz_cube.gat,66,128,0	script	A Circle Room at 3#4	45,1,1,{
+
+OnTouch:
+	set '@random,rand(1,3);
+	if ('@random == 1) {
+		warp "lhz_cube.gat",67,193;
+	} else if ('@random == 2) {
+		warp "lhz_cube.gat",66,136;
+	} else if ('@random == 3) {
+		warp "lhz_cube.gat",66,74;
+	}
+	end;
+}
+
+lhz_cube.gat,66,66,0	script	An X Room 3 Exit#1	45,1,1,{
+
+OnTouch:
+	warp "lhz_cube.gat",10,18;
+	end;
+}
+
+lhz_cube.gat,75,75,0	script	An X Room at 12#2	45,1,1,{
+
+OnTouch:
+	set '@random,rand(1,3);
+	if ('@random == 1) {
+		warp "lhz_cube.gat",67,193;
+		end;
+	} else if ('@random == 2) {
+		warp "lhz_cube.gat",66,136;
+		end;
+	} else if ('@random == 3) {
+		warp "lhz_cube.gat",66,74;
+	}
+	end;
+}
+
+lhz_cube.gat,66,82,0	script	An X Room at 9#3	45,1,1,{
+
+OnTouch:
+	set '@random,rand(1,3);
+	if ('@random == 1) {
+		warp "lhz_cube.gat",67,193;
+		end;
+	} else if ('@random == 2) {
+		warp "lhz_cube.gat",66,136;
+		end;
+	} else if ('@random == 3) {
+		warp "lhz_cube.gat",66,74;
+	}
+	end;
+}
+
+lhz_cube.gat,59,75,0	script	An X Room at 6#4	45,1,1,{
+
+OnTouch:
+	set '@random,rand(1,3);
+	if ('@random == 1) {
+		warp "lhz_cube.gat",67,193;
+		end;
+	} else if ('@random == 2) {
+		warp "lhz_cube.gat",66,136;
+		end;
+	} else if ('@random == 3) {
+		warp "lhz_cube.gat",66,74;
+	}
+	end;
+}
+
+lhz_cube.gat,19,192,0	script	Under Triangle at 12#1	45,1,1,{
+
+OnTouch:
+	set '@random,rand(1,3);
+	if ('@random == 1) {
+		warp "lhz_cube.gat",67,193;
+		end;
+	} else if ('@random == 2) {
+		warp "lhz_cube.gat",66,136;
+		end;
+	} else if ('@random == 3) {
+		warp "lhz_cube.gat",66,74;
+	}
+	end;
+}
+
+lhz_cube.gat,10,201,0	script	Under Triangle at 9Exit#2	45,1,1,{
+
+OnTouch:
+	warp "lhz_cube.gat",66,18;
+	end;
+}
+
+lhz_cube.gat,2,192,0	script	Under Triangle at 6Exit#3	45,1,1,{
+
+OnTouch:
+	warp "lhz_cube.gat",10,74;
+	end;
+}
+
+lhz_cube.gat,10,185,0	script	Under Triangle at 3#4	45,1,1,{
+
+OnTouch:
+	set '@random,rand(1,3);
+	if ('@random == 1) {
+		warp "lhz_cube.gat",67,193;
+		end;
+	} else if ('@random == 2) {
+		warp "lhz_cube.gat",66,136;
+		end;
+	} else if ('@random == 3) {
+		warp "lhz_cube.gat",66,74;
+	}
+	end;
+}
+
+lhz_cube.gat,19,136,0,	script	UnderCircle12Exit#1	45,1,1,{
+
+OnTouch:
+	warp "lhz_cube.gat",10,74;
+	end;
+}
+
+lhz_cube.gat,10,144,0	script	Under Circle9#2	45,1,1,{
+
+OnTouch:
+	set '@random,rand(1,3);
+	if ('@random == 1) {
+		warp "lhz_cube.gat",67,193;
+		end;
+	} else if ('@random == 2) {
+		warp "lhz_cube.gat",66,136;
+		end;
+	} else if ('@random == 3) {
+		warp "lhz_cube.gat",66,74;
+	}
+	end;
+}
+
+lhz_cube.gat,2,136,0	script	Circle at 6#3	45,1,1,{
+
+OnTouch:
+	set '@random,rand(1,3);
+	if ('@random == 1) {
+		warp "lhz_cube.gat",67,193;
+		end;
+	} else if ('@random == 2) {
+		warp "lhz_cube.gat",66,136;
+		end;
+	} else if ('@random == 3) {
+		warp "lhz_cube.gat",66,74;
+	}
+	end;
+}
+
+lhz_cube.gat,10,128,0	script	Under Circle3#4	45,1,1,{
+
+OnTouch:
+	set '@random,rand(1,3);
+	if ('@random == 1) {
+		warp "lhz_cube.gat",67,193;
+		end;
+	} else if ('@random == 2) {
+		warp "lhz_cube.gat",66,136;
+		end;
+	} else if ('@random == 3) {
+		warp "lhz_cube.gat",66,74;
+	}
+	end;
+}
+
+lhz_cube.gat,19,74,0	script	Under X 12#1	45,1,1,{
+
+OnTouch:
+	set '@random,rand(1,3);
+	if ('@random == 1) {
+		warp "lhz_cube.gat",67,193;
+		end;
+	} else if ('@random == 2) {
+		warp "lhz_cube.gat",66,136;
+		end;
+	} else if ('@random == 3) {
+		warp "lhz_cube.gat",66,74;
+	}
+	end;
+}
+
+lhz_cube.gat,10,82,0	script	Under X 9#2	45,1,1,{
+
+OnTouch:
+	set '@random,rand(1,3);
+	if ('@random == 1) {
+		warp "lhz_cube.gat",67,193;
+		end;
+	} else if ('@random == 2) {
+		warp "lhz_cube.gat",66,136;
+		end;
+	} else if ('@random == 3) {
+		warp "lhz_cube.gat",66,74;
+	}
+	end;
+}
+
+lhz_cube.gat,2,74,0	script	Under X 6Exit#3	45,1,1,{
+
+OnTouch:
+	warp "lhz_cube.gat",66,18;
+	end;
+}
+
+lhz_cube.gat,10,66,0	script	Under X 3Exit#4	45,1,1,{
+
+OnTouch:
+	warp "lhz_cube.gat",123,18;
+	end;
+}
+
+lhz_cube.gat,18,18,0	script	Under Triangle 2 12 Exit#1	45,1,1,{
+
+OnTouch:
+	warp "lhz_cube.gat",10,193;
+	end;
+}
+
+lhz_cube.gat,10,26,0,	script	Under Triangle 2 9#2	45,1,1,{
+
+OnTouch:
+	set '@random,rand(1,3);
+	if ('@random == 1) {
+		warp "lhz_cube.gat",67,193;
+		end;
+	} else if ('@random == 2) {
+		warp "lhz_cube.gat",66,136;
+		end;
+	} else if ('@random == 3) {
+		warp "lhz_cube.gat",66,74;
+	}
+	end;
+}
+
+lhz_cube.gat,2,18,0	script	Under Triangle 2 6#3	45,1,1,{
+
+OnTouch:
+	set '@random,rand(1,3);
+	if ('@random == 1) {
+		warp "lhz_cube.gat",67,193;
+		end;
+	} else if ('@random == 2) {
+		warp "lhz_cube.gat",66,136;
+		end;
+	} else if ('@random == 3) {
+		warp "lhz_cube.gat",66,74;
+	}
+	end;
+}
+
+lhz_cube.gat,10,10,0	script	Under Triangle 2 3Exit#4	45,1,1,{
+
+OnTouch:
+	warp "lhz_cube.gat",123,18;
+	end;
+}
+
+lhz_cube.gat,75,18,0	script	Under Circle 2 12#1	45,1,1,{
+
+OnTouch:
+	set '@random,rand(1,3);
+	if ('@random == 1) {
+		warp "lhz_cube.gat",67,193;
+		end;
+	} else if ('@random == 2) {
+		warp "lhz_cube.gat",66,136;
+		end;
+	} else if ('@random == 3) {
+		warp "lhz_cube.gat",66,74;
+	}
+	end;
+}
+
+lhz_cube.gat,66,26,0	script	Under Circle 2 9Exit#2	45,1,1,{
+
+OnTouch:
+	warp "lhz_cube.gat",123,18;
+	end;
+}
+
+lhz_cube.gat,58,18,0	script	Under Circle 2 6 #3	45,1,1,{
+
+OnTouch:
+	set '@random,rand(1,3);
+	if ('@random == 1) {
+		warp "lhz_cube.gat",67,193;
+		end;
+	} else if ('@random == 2) {
+		warp "lhz_cube.gat",66,136;
+		end;
+	} else if ('@random == 3) {
+		warp "lhz_cube.gat",66,74;
+	}
+	end;
+}
+
+lhz_cube.gat,66,10,0	script	Under Circle 2 3Exit#4	45,1,1,{
+
+OnTouch:
+	warp "lhz_cube.gat",10,18;
+	end;
+}
+
+lhz_cube.gat,130,18,0	script	Under X 2 12#1	45,1,1,{
+
+OnTouch:
+	set '@random,rand(1,3);
+	if ('@random == 1) {
+		warp "lhz_cube.gat",67,193;
+		end;
+	} else if ('@random == 2) {
+		warp "lhz_cube.gat",66,136;
+		end;
+	} else if ('@random == 3) {
+		warp "lhz_cube.gat",66,74;
+	}
+	end;
+}
+
+lhz_cube.gat,123,26,0	script	Under X 2 9#2	45,1,1,{
+
+OnTouch:
+	set '@random,rand(1,3);
+	if ('@random == 1) {
+		warp "lhz_cube.gat",67,193;
+		end;
+	} else if ('@random == 2) {
+		warp "lhz_cube.gat",66,136;
+		end;
+	} else if ('@random == 3) {
+		warp "lhz_cube.gat",66,74;
+	}
+	end;
+}
+
+lhz_cube.gat,114,18,0	script	Under X 2 6#3	45,1,1,{
+
+OnTouch:
+	set '@random,rand(1,3);
+	if ('@random == 1) {
+		warp "lhz_cube.gat",67,193;
+		end;
+	} else if ('@random == 2) {
+		warp "lhz_cube.gat",248,184;
+		end;
+	} else if ('@random == 3) {
+		warp "lhz_cube.gat",248,184;
+	}
+	end;
+}
+
+lhz_cube.gat,123,10,0	script	Under X 2 3act#4	45,1,1,{
+
+OnTouch:
+	set '@random,rand(1,3);
+	if ('@random == 1) {
+		warp "lhz_cube.gat",67,193;
+		end;
+	} else if ('@random == 2) {
+		warp "lhz_cube.gat",66,136;
+		end;
+	} else if ('@random == 3) {
+		warp "lhz_cube.gat",66,74;
+	}
+	end;
+}
+
+
+//--------------------------------------------------------------
+// Biolabs Access Quest Part #2 - [Tsuyuki]
+//--------------------------------------------------------------
+
+lhz_cube.gat,237,198,0	script	Bundle of Files#cube	111,{
+
+	if (lght_sincube < 7) {
+		mes "^3355FFThere are a bunch";
+		mes "of files scattered";
+		mes "on the ground.^000000";
 		close;
+	} else if (lght_sincube < 10) {
+		if (lght_secret01 < 1) {
+			mes "^3355FFThere are a bunch";
+			mes "of files scattered";
+			mes "on the ground. They";
+			mes "seem to contain all";
+			mes "sorts of information,";
+			mes "but they're all mixed up.^000000";
+			next;
+			switch(select("Rummage through the files.","Cancel.")) {
+			case 1:
+				mes "^3355FFWhile you are";
+				mes "rummaging through";
+				mes "the files, a Red Key";
+				mes "drops to the ground";
+				mes "with a clink. You decide";
+				mes "to keep this ^000000Red Key^3355FF.^000000";
+				set lght_secret01,1;
+				close;
+			case 2:
+				end;
+			}
+		} else {
+			mes "^3355FFThis is the place";
+			mes "where you found the";
+			mes "^000000Red Key^3355FF while you were";
+			mes "looking through the files";
+			mes "scattered on the ground.^000000";
+			close;
+		}
+	} else {
+		mes "^3355FFThis is the place";
+		mes "where you found the";
+		mes "^000000Red Key^3355FF while you were";
+		mes "looking through the files";
+		mes "scattered on the ground.^000000";
+		close;
+	}
+}
+
+lhz_cube.gat,234,202,0	script	Picture#cube	111,{
+
+	if (lght_secret01 < 2) {
+		mes "^3355FFThis picture hanging";
+		mes "on the wall catches";
+		mes "your attention for some";
+		mes "inexplicably strange reason.^000000";
+		next;
+		switch(select("Look behind picture.","Cancel")) {
+		case 1:
+			mes "^3355FFYou push and pull";
+			mes "with all your strength,";
+			mes "but the picture won't";
+			mes "budge. If it's too hard";
+			mes "to move, there must be";
+			mes "something hidden behind it.^000000";
+			close;
+		case 2:
+			end;
+		}
+	} else if (lght_secret01 == 2) {
+		mes "^3355FFThis picture hanging";
+		mes "on the wall catches";
+		mes "your attention for some";
+		mes "inexplicably strange reason.^000000";
+		next;
+		switch(select("Look behind picture.","Cancel")) {
+		case 1:
+			mes "^3355FFYou push and pull";
+			mes "with all your strength,";
+			mes "but this picture is too";
+			mes "hard to move with just";
+			mes "brute strength alone.^000000";
+			next;
+			input '@input$;
+			set '@key_knife1$,'@input$;
+			set '@key_knife2$,"Jackknife";
+			if ('@key_knife1$ == '@key_knife2$) {
+				mes "^3355FFYou take the";
+				mes "Jackknife, thrust";
+				mes "it under the picture";
+				mes "and twist it in order to";
+				mes "pry the picture off the wall.^000000";
+				next;
+				set '@number_rand,rand(1,3);
+				if ('@number_rand == 1) {
+					mes "^3355FFBehind the picture, you";
+					mes "find that the following";
+					mes "numbers are written:^000000";
+					mes "";
+					mes "4 3 2 9 1 6 8 2 7";
+					set lght_secret01,3;
+					close;
+				} else if ('@number_rand == 2) {
+					mes "^3355FFBehind the picture, you";
+					mes "find that the following";
+					mes "numbers are written:^000000";
+					mes "";
+					mes "3 6 4 1 2 8 7 1 5";
+					set lght_secret01,4;
+					close;
+				} else {
+					mes "^3355FFBehind the picture, you";
+					mes "find that the following";
+					mes "numbers are written:^000000";
+					mes "";
+					mes "4 9 3 7 6 2 8 6 6";
+					set lght_secret01,5;
+					close;
+				}
+			} else {
+				mes "^3355FFUnfortunately,";
+				mes "doing that apparently";
+				mes "wasn't enough to move";
+				mes "the picture. Perhaps you";
+				mes "should try something else.^000000";
+				close;
+			}
+		case 2:
+			end;
+		}
+	} else if (lght_secret01 < 6) {
+		if (lght_secret01 == 3) {
+			mes "^3355FFThe following numbers";
+			mes "were written behind the";
+			mes "picture. If they were hidden,";
+			mes "these numbers must have";
+			mes "some kind of importance.^000000";
+			mes "";
+			mes "4 3 2 9 1 6 8 2 7";
+			close;
+		} else if (lght_secret01 == 4) {
+			mes "^3355FFThe following numbers";
+			mes "were written behind the";
+			mes "picture. If they were hidden,";
+			mes "these numbers must have";
+			mes "some kind of importance.^000000";
+			mes "";
+			mes "3 6 4 1 2 8 7 1 5";
+			close;
+		} else if (lght_secret01 == 5) {
+			mes "^3355FFThe following numbers";
+			mes "were written behind the";
+			mes "picture. If they were hidden,";
+			mes "these numbers must have";
+			mes "some kind of importance.^000000";
+			mes "";
+			mes "4 9 3 7 6 2 8 6 6";
+			close;
+		}
+	} else {
+		mes "^3355FFThere is a picture";
+		mes "hanging on the wall.^000000";
+		next;
+		switch(select("Look beneath picture.","Cancel")) {
+		case 1:
+			mes "^3355FFThere are some";
+			mes "numbers behind the";
+			mes "picture, but now there is";
+			mes "no need to memorize them.^000000";
+			close;
+		case 2:
+			end;
+		}
+	}
+}
+
+lhz_cube.gat,242,201,0	script	Drawer#cube	111,{
+
+	if (lght_secret01 < 1) {
+		mes "^3355FFThe drawer here";
+		mes "looks interesting,";
+		mes "but it's locked and";
+		mes "you can't open it.^000000";
+		close;
+	} else if (lght_secret01 == 1) {
+		mes "^3355FF The drawer here";
+		mes "looks interesting, but";
+		mes "it's locked. Hopefully, you";
+		mes "can figure how to open it.^000000";
+		next;
+		input '@input$;
+		set '@key_red1$,'@input$;
+		set '@key_red2$,"Red Key";
+		if ('@key_red1$ == '@key_red2$) {
+			mes "^3355FFYou insert the Red Key";
+			mes "into the lock and open the";
+			mes "drawer. Inside, you find a";
+			mes "^000000Jackknife^3355FF that you decide";
+			mes "to take. After all, it might";
+			mes "be handy sometime.^000000";
+			set lght_secret01,2;
+			close;
+		} else {
+			mes "^3355FFUnfortunately, you";
+			mes "can't open or break";
+			mes "the lock on the drawer";
+			mes "by doing that. You need";
+			mes "to try something else.^000000";
+			close;
+		}
+	} else {
+		mes "^3355FFThis is the drawer";
+		mes "in which you found the";
+		mes "^000000Jackknife^3355FF. It is now empty";
+		mes "and devoid of purpose.^000000";
+		close;
+	}
+}
+
+lhz_cube.gat,248,179,0	script	Chest#cube	111,{
+
+	if (lght_sincube < 7) {
+		mes "^3355FFYou've found a chest";
+		mes "with an axe laid on";
+		mes "top. The axe's purpose";
+		mes "is completely utilitarian";
+		mes "and isn't suited for battle.^000000";
+		close;
+	} else if (lght_sincube == 7) {
+		mes "^3355FFYou've found a chest,";
+		mes "but more importantly,";
+		mes "there is a utility Axe";
+		mes "laid on top of it.^000000";
+		next;
+		switch(select("Take the utility Axe.","Cancel")) {
+		case 1:
+			mes "^3355FFWithout shame or";
+			mes "an ounce of guilt, you";
+			mes "pick up the utility ^000000Axe^3355FF";
+			mes "and claim it as your own.^000000";
+			set lght_sincube,8;
+			close;
+		case 2:
+			end;
+		}
+	} else {
+		mes "^3355FFThis is just a normal";
+		mes "chest. There used to be";
+		mes "a utility ^000000Axe^3355FF on top of";
+		mes "it until you picked it up.^000000";
+		close;
+	}
+}
+
+lhz_cube.gat,237,183,0	script	Barrel#cube	111,{
+
+	if (lght_sincube < 8) {
+		mes "^3355FFYou have";
+		mes "found a shabbily";
+		mes "constructed barrel.^000000";
+		close;
+	} else if (lght_sincube == 8) {
+		mes "^3355FFYou have";
+		mes "found a shabbily";
+		mes "constructed barrel.";
+		mes "You sense that there's";
+		mes "something inside, but";
+		mes "you need something to";
+		mes "smash the barrel open.^000000";
+		next;
+		input '@input$;
+		set '@key_ax1$,'@input$;
+		set '@key_ax2$,"Axe";
+		if ('@key_ax1$ == '@key_ax2$) {
+			mes "^3355FFAxe in hand, you lift";
+			mes "it above your head and";
+			mes "swing it downwards,";
+			mes "smashing off the top of";
+			mes "the barrel. Inside, you find a";
+			mes "box topped with a metal plate.^000000";
+			next;
+			mes "^3355FFThe numbers one";
+			mes "through nine are";
+			mes "etched on the surface";
+			mes "of the metal plate on";
+			mes "top of the box you found,";
+			mes "like some kind of keypad...^000000";
+			set lght_sincube,9;
+			close;
+		} else {
+			mes "^3355FFDoing that probably won't";
+			mes "break open this keg. You'll";
+			mes "need to try something else.^000000";
+			close;
+		}
+	} else if (lght_sincube == 9) {
+		if (lght_secret01 < 3) {
+			mes "^3355FFYou decide to enter";
+			mes "some numbers into the";
+			mes "metallic keypad. Remember,";
+			mes "you can only enter single";
+			mes "digit numbers at one time...^000000";
+			next;
+			input '@input;
+			input '@input;
+			input '@input;
+			input '@input;
+			input '@input;
+			input '@input;
+			input '@input;
+			input '@input;
+			input '@input;
+			mes "^3355FFNothing happened...^000000";
+			close;
+		} else if (lght_secret01 == 3) {
+			mes "^3355FFYou decide to enter";
+			mes "some numbers into the";
+			mes "numberpad etched on the";
+			mes "metal plate on top of the box";
+			mes "you found inside the keg.^000000";
+			next;
+			input '@input;
+			if ('@input == 4) {
+				set '@number_line,'@number_line + 1;
+			}
+			input '@input;
+			if ('@input == 3) {
+				set '@number_line,'@number_line + 1;
+			}
+			input '@input;
+			if ('@input == 2) {
+				set '@number_line,'@number_line + 1;
+			}
+			input '@input;
+			if ('@input == 9) {
+				set '@number_line,'@number_line + 1;
+			}
+			input '@input;
+			if ('@input == 1) {
+				set '@number_line,'@number_line + 1;
+			}
+			input '@input;
+			if ('@input == 6) {
+				set '@number_line,'@number_line + 1;
+			}
+			input '@input;
+			if ('@input == 8) {
+				set '@number_line,'@number_line + 1;
+			}
+			input '@input;
+			if ('@input == 2) {
+				set '@number_line,'@number_line + 1;
+			}
+			input '@input;
+			if ('@input == 7) {
+				set '@number_line,'@number_line + 1;
+			}
+			if ('@number_line == 9) {
+				mes "^3355FFThe metal plate slides";
+				mes "open and you find a key";
+				mes "Key inside the box. You";
+				mes "to keep this ^000000Yellow Key^3355FF.^000000";
+				set lght_secret01,6;
+				close;
+			} else {
+				mes "^3355FFNothing happened.";
+				mes "It's likely that you did not";
+				mes "enter the correct numbers.^000000";
+				close;
+			}
+		} else if (lght_secret01 == 4) {
+			mes "^3355FFYou decide to enter";
+			mes "some numbers into the";
+			mes "numberpad etched on the";
+			mes "metal plate on top of the box";
+			mes "you found inside the keg.^000000";
+			next;
+			input '@input;
+			if ('@input == 3) {
+				set '@number_line,'@number_line + 1;
+			}
+			input '@input;
+			if ('@input == 6) {
+				set '@number_line,'@number_line + 1;
+			}
+			input '@input;
+			if ('@input == 4) {
+				set '@number_line,'@number_line + 1;
+			}
+			input '@input;
+			if ('@input == 1) {
+				set '@number_line,'@number_line + 1;
+			}
+			input '@input;
+			if ('@input == 2) {
+				set '@number_line,'@number_line + 1;
+			}
+			input '@input;
+			if ('@input == 8) {
+				set '@number_line,'@number_line + 1;
+			}
+			input '@input;
+			if ('@input == 7) {
+				set '@number_line,'@number_line + 1;
+			}
+			input '@input;
+			if ('@input == 1) {
+				set '@number_line,'@number_line + 1;
+			}
+			input '@input;
+			if ('@input == 5) {
+				set '@number_line,'@number_line + 1;
+			}
+			if ('@number_line == 9) {
+				mes "^3355FFThe metal plate slides";
+				mes "open and you find a key";
+				mes "Key inside the box. You";
+				mes "to keep this ^000000Yellow Key^3355FF.^000000";
+				set lght_secret01,6;
+				close;
+			} else {
+				mes "^3355FFNothing happened.";
+				mes "It's likely that you did not";
+				mes "enter the correct numbers.^000000";
+				close;
+			}
+		} else if (lght_secret01 == 5) {
+			mes "^3355FFYou decide to enter";
+			mes "some numbers into the";
+			mes "numberpad etched on the";
+			mes "metal plate on top of the box";
+			mes "you found inside the keg.^000000";
+			next;
+			input '@input;
+			if ('@input == 4) {
+				set '@number_line,'@number_line + 1;
+			}
+			input '@input;
+			if ('@input == 9) {
+				set '@number_line,'@number_line + 1;
+			}
+			input '@input;
+			if ('@input == 3) {
+				set '@number_line,'@number_line + 1;
+			}
+			input '@input;
+			if ('@input == 7) {
+				set '@number_line,'@number_line + 1;
+			}
+			input '@input;
+			if ('@input == 6) {
+				set '@number_line,'@number_line + 1;
+			}
+			input '@input;
+			if ('@input == 2) {
+				set '@number_line,'@number_line + 1;
+			}
+			input '@input;
+			if ('@input == 8) {
+				set '@number_line,'@number_line + 1;
+			}
+			input '@input;
+			if ('@input == 6) {
+				set '@number_line,'@number_line + 1;
+			}
+			input '@input;
+			if ('@input == 6) {
+				set '@number_line,'@number_line + 1;
+			}
+			if ('@number_line == 9) {
+				mes "^3355FFThe metal plate slides";
+				mes "open and you find a key";
+				mes "Key inside the box. You";
+				mes "to keep this ^000000Yellow Key^3355FF.^000000";
+				set lght_secret01,6;
+				close;
+			} else {
+				mes "^3355FFNothing happened.";
+				mes "It's likely that you did not";
+				mes "enter the correct numbers.^000000";
+				close;
+			}
+		} else {
+			mes "^3355FFThis is the box with";
+			mes "the keypad in which you";
+			mes "found the ^000000Yellow Key^3355FF.";
+			mes "The box is now empty.^000000";
+			close;
+		}
+	} else {
+		mes "^3355FFThis is a box";
+		mes "topped with a metal";
+		mes "plate that looks like";
+		mes "a crudely made keypad.^000000";
+		close;
+	}
+}
+
+lhz_cube.gat,224,192,0	script	Power Generator#cube	111,{
+
+	if (lght_secret01 < 6) {
+		mes "^3355FFThis is a noisily";
+		mes "operating huge machine";
+		mes "with a front panel that has";
+		mes "a strange mark. There is a";
+		mes "keyhole on the machine";
+		mes "right next to this panel.^000000";
+		next;
+		input '@input;
+		mes "^3355FFNothing happened.";
+		mes "You probably need";
+		mes "to find the right key to";
+		mes "insert into the keyhole.^000000";
+		close;
+	} else if (lght_secret01 == 6) {
+		mes "^3355FFThis is a noisily";
+		mes "operating huge machine";
+		mes "with a front panel that has";
+		mes "a strange mark. There is a";
+		mes "keyhole on the machine";
+		mes "right next to this panel.^000000";
+		next;
+		input '@input$;
+		set '@key_ele1$,'@input$;
+		set '@key_ele2$,"Yellow Key";
+		if ('@key_ele1$ == '@key_ele2$) {
+			mes "^3355FFYou insert the";
+			mes "Yellow Key into the";
+			mes "keyhole and turn it,";
+			mes "causing the machine";
+			mes "to sputter and deactivate.^000000";
+			next;
+			mes "^3355FFYou notice that the";
+			mes "^000000Status Light ^3355FFnext to the";
+			mes "bed has now turned off.^000000";
+			set lght_secret01,7;
+			close;
+		} else {
+			mes "^3355FFNothing happened.";
+			mes "You probably need";
+			mes "to find the right key to";
+			mes "insert into the keyhole.^000000";
+			close;
+		}
+	} else {
+		mes "^3355FFIt's a giant machine.^000000";
+		close;
+	}
+}
+
+lhz_cube.gat,244,201,0	script	Status Light#cube	111,{
+
+	if (lght_secret01 < 7) {
+		mes "^3355FFThe Status Light is";
+		mes "on. It looks like there's";
+		mes "something inside the";
+		mes "bulb, but you can't get";
+		mes "near it since it generates";
+		mes "incredibly scorching heat.^000000";
+		next;
+		mes "^3355FFNow, if you could";
+		mes "somehow shut down the";
+		mes "Power Generator in this";
+		mes "room, the bulb would be";
+		mes "cool enough for you to touch...^000000";
+		close;
+	} else if (lght_secret01 == 7) {
+		mes "The Status Light";
+		mes "is now off and the";
+		mes "bulb has cooled down.";
+		next;
+		switch(select("Smash the light bulb.","Cancel")) {
+		case 1:
+			mes "^3355FFYou smash the";
+			mes "Status Light's bulb";
+			mes "and discover another key.";
+			mes "You obtained a ^000000Black Key^3355FF.^000000";
+			set lght_secret01,8;
+			close;
+		case 2:
+			end;
+		}
+	} else {
+		mes "^3355FFYou find the remains";
+		mes "of a broken light bulb.^000000";
+		close;
+	}
+}
+
+lhz_cube.gat,234,200,0	script	Desk#cube	111,{
+
+	if (lght_secret02 == 0) {
+		mes "^3355FFYou've found";
+		mes "a completely";
+		mes "cluttered desk.^000000";
+		next;
+		switch(select("On the desk","Under the desk","Desk drawer")) {
+		case 1:
+			mes "^3355FFVarious documents,";
+			mes "books and lab equipment";
+			mes "are scattered on the desk.";
+			mes "But none of them seem";
+			mes "all that useful right now.^000000";
+			close;
+		case 2:
+			mes "^3355FFUnder this desk, of";
+			mes "all conceivable places,";
+			mes "you find a ^000000Short Stick^3355FF";
+			mes "that you decide to keep.";
+			mes "You never know when";
+			mes "you'll need one of those.^000000";
+			set lght_secret02,1;
+			close;
+		case 3:
+			mes "^3355FFThe desk drawer is";
+			mes "locked and probably";
+			mes "with good reason. After all,";
+			mes "you just tried to invade this";
+			mes "private and intimate space.^000000";
+			close;
+		}
+	} else if (lght_secret02 == 1) {
+		mes "^3355FFYou've found";
+		mes "a completely";
+		mes "cluttered desk.^000000";
+		next;
+		switch(select("On the desk","Under the desk","Desk drawer")) {
+		case 1:
+			mes "^3355FFVarious documents,";
+			mes "books and lab equipment";
+			mes "are scattered on the desk.";
+			mes "But none of them seem";
+			mes "all that useful right now.^000000";
+			close;
+		case 2:
+			mes "^3355FFThis is where you";
+			mes "found your ^000000Short Stick^3355FF.";
+			mes "Sadly, there are no more";
+			mes "hidden treasures for you to";
+			mes "discover beneath this desk.^000000";
+			close;
+		case 3:
+			mes "^3355FFThe desk drawer is";
+			mes "locked and probably";
+			mes "with good reason. After all,";
+			mes "you just tried to invade this";
+			mes "private and intimate space.^000000";
+			close;
+		}
+	} else if (lght_secret02 == 2) {
+		mes "^3355FFYou're back at the";
+		mes "messy desk which";
+		mes "is probably used by";
+		mes "a high ranking executive";
+		mes "who has someone else";
+		mes "do his desk tidying for him.^000000";
+		next;
+		switch(select("On the desk","Under the desk","Desk drawer")) {
+		case 1:
+			mes "^3355FFAlas, no matter how much";
+			mes "you rummage through it,";
+			mes "the clutter on the desk";
+			mes "proves to be useless to you.^000000";
+			next;
+			if (Sex == Male) {
+				mes "^3355FFAn issue of the";
+				mes "Dancer magazine,";
+				mes "''Harmonic Lick'' catches";
+				mes "your eye, but you really";
+				mes "shouldn't be interested";
+				mes "in that publication just";
+				mes "because of the pictures.^000000";
+			} else {
+				mes "^3355FFAn issue of the female";
+				mes "entertainment magazine,";
+				mes "''Magnum Break'' catches";
+				mes "your eye, but adventurers";
+				mes "have no time to look at";
+				mes "pictures of beautiful men.^000000";
+			}
+			close;
+		case 2:
+			mes "^3355FFUnder the desk, you";
+			mes "discover another Short";
+			mes "Stick which happens to";
+			mes "fit perfectly into the other";
+			mes "Short Stick you found earlier.";
+			next;
+			mes "^3355FFYou combine the two";
+			mes "lesser sticks to create";
+			mes "a stick that is superior";
+			mes "to the sum of its parts.";
+			mes "You are now the proud";
+			mes "bearer of a ^000000Long Stick^3355FF.^000000";
+			set lght_secret02,3;
+			close;
+		case 3:
+			mes "^3355FFThis desk drawer is";
+			mes "locked shut and probably";
+			mes "always will be. It's likely";
+			mes "that nothing really valuable";
+			mes "is inside, aside from perhaps";
+			mes "a hip flask or a candy stash.";
+			close;
+		}
+	} else {
+		mes "^3355FFThis desk is cluttered";
+		mes "with all sorts of random";
+		mes "objects, but such is its";
+		mes "destiny as office equipment.^000000";
+		next;
+		switch(select("On the desk","Under the desk","Desk drawer")) {
+		case 1:
+			mes "^3355FFAlas, no matter how much";
+			mes "you rummage through it,";
+			mes "the clutter on the desk";
+			mes "proves to be useless to you.^000000";
+			next;
+			mes "^3355FFThere's part of a newspaper";
+			mes "here, but it's only the Comics";
+			mes "section which, of course, isn't";
+			mes "informative enough for world";
+			mes "savvy adventurers like you.^000000";
+			close;
+		case 2:
+			mes "^3355FFThis is where you found";
+			mes "one of two Short Sticks";
+			mes "to make your ^000000Long Stick^3355FF.";
+			mes "There isn't anything else";
+			mes "under here, so it's impossible";
+			mes "to make your stick any longer.^000000";
+			close;
+		case 3:
+			mes "^3355FFThis desk drawer is";
+			mes "locked very securely.";
+			mes "The owner of this desk";
+			mes "was wise to provide a";
+			mes "measure of drawer security.";
+			mes "But why put sticks under the";
+			mes "desk? This is most curious...^000000";
+			close;
+		}
+	}
+}
+
+lhz_cube.gat,247,198,0	script	Bed#cube	111,{
+
+	if (lght_secret02 == 0) {
+		mes "^3355FFYou've found a bed";
+		mes "in which the sheets";
+		mes "are slovenly arranged.^000000";
+		next;
+		switch(select("On the bed","Under the bed")) {
+		case 1:
+			mes "^3355FFNo one's in the bed";
+			mes "and if you climbed in,";
+			mes "you'd just be alone. For";
+			mes "some people, this may";
+			mes "be an immutable truth.^000000";
+			close;
+		case 2:
+			mes "^3355FFUnder the bed, you";
+			mes "discover a ^000000Short Stick^3355FF";
+			mes "which you decide to";
+			mes "keep. You never know";
+			mes "when certain, seemingly";
+			mes "useless objects will save you.^000000";
+			set lght_secret02,2;
+			close;
+		}
+	} else if (lght_secret02 == 1) {
+		mes "^3355FFYou've found a bed";
+		mes "in which the sheets";
+		mes "are slovenly arranged.^000000";
+		next;
+		switch(select("On the bed","Under the bed")) {
+		case 1:
+			mes "^3355FFNo one's in the bed";
+			mes "and if you climbed in,";
+			mes "you'd just be alone. For";
+			mes "some people, this may";
+			mes "be an immutable truth.^000000";
+			close;
+		case 2:
+			mes "^3355FFUnder the bed, you";
+			mes "discover another Short";
+			mes "Stick which happens to";
+			mes "fit perfectly into the other";
+			mes "Short Stick you found earlier.";
+			next;
+			mes "^3355FFYou combine the two";
+			mes "lesser sticks to create";
+			mes "a stick that is superior";
+			mes "to the sum of its parts.";
+			mes "You are now the proud";
+			mes "bearer of a ^000000Long Stick^3355FF.^000000";
+			set lght_secret02,3;
+			close;
+		}
+	} else if (lght_secret02 == 2) {
+		mes "^3355FFYou've found a bed";
+		mes "in which the sheets";
+		mes "are slovenly arranged.^000000";
+		next;
+		switch(select("On the bed","Under the bed")) {
+		case 1:
+			mes "^3355FFNo one's in the bed";
+			mes "and if you climbed in,";
+			mes "you'd just be alone. For";
+			mes "some people, this may";
+			mes "be an immutable truth.^000000";
+			close;
+		case 2:
+			mes "^3355FFIn a distant and";
+			mes "dusty corner beneath";
+			mes "the bed, you manage to";
+			mes "spot an object. If only you";
+			mes "could reach it somehow...^000000";
+			next;
+			input '@input$;
+			set '@key_bar1$,'@input$;
+			set '@key_bar2$,"Short Stick";
+			if ('@key_bar1$ == '@key_bar2$) {
+				mes "^3355FFYou try to reach";
+				mes "the object by using";
+				mes "your Short Stick. After";
+				mes "a few attempts, you had no";
+				mes "choice but to admit that your";
+				mes "stick just wasn't long enough.^000000";
+				close;
+			} else {
+				mes "^3355FFUnfortunately,";
+				mes "whatever you used to";
+				mes "try to reach the object";
+				mes "didn't work. You'll have";
+				mes "to think of something else.^000000";
+				close;
+			}
+		}
+	} else if (lght_secret02 == 3) {
+		mes "^3355FFYou find a messy";
+		mes "bed that may be more";
+		mes "than meets the eye.^000000";
+		next;
+		switch(select("On the bed","Under the bed")) {
+		case 1:
+			mes "^3355FFNo one's in the bed";
+			mes "and if you climbed in,";
+			mes "you'd just be alone. For";
+			mes "some people, this may";
+			mes "be an immutable truth.^000000";
+			close;
+		case 2:
+			mes "^3355FFIn a distant and";
+			mes "dusty corner beneath";
+			mes "the bed, you manage to";
+			mes "spot an object. If only you";
+			mes "could reach it somehow...^000000";
+			next;
+			input '@input$;
+			set '@key_bar1$,'@input$;
+			set '@key_bar2$,"Long Stick";
+			if ('@key_bar1$ == '@key_bar2$) {
+				mes "^3355FFWith Long Stick in";
+				mes "hand, you manage to";
+				mes "reach the object and drag";
+				mes "it under the bed towards you.";
+				mes "You now possess the ^000000Cube^3355FF";
+				mes "that was under the bed.^000000";
+				set lght_secret02,4;
+				close;
+			} else {
+				mes "^3355FFUnfortunately,";
+				mes "whatever you used to";
+				mes "try to reach the object";
+				mes "didn't work. You'll have";
+				mes "to think of something else.^000000";
+				close;
+			}
+		}
+	} else {
+		mes "^3355FFYou've found a bed";
+		mes "in which the sheets";
+		mes "are slovenly arranged.^000000";
+		next;
+		switch(select("On the bed","Under the bed")) {
+		case 1:
+			mes "^3355FFNo one's in the bed";
+			mes "and if you climbed in,";
+			mes "you'd just be alone. For";
+			mes "some people, this may";
+			mes "be an immutable truth.^000000";
+			close;
+		case 2:
+			mes "^3355FFThis is where you";
+			mes "managed to find some";
+			mes "sort of strange ^000000Cube^3355FF.^000000";
+			close;
+		}
+	}
+}
+
+lhz_cube.gat,229,184,0	script	Goblet#cube	111,{
+
+	if (lght_sincube < 10) {
+		if (lght_secret03 == 0) {
+			mes "^3355FFYou see an empty";
+			mes "bottle and a goblet.";
+			mes "It looks like you";
+			mes "missed the party.^000000";
+			next;
+			switch(select("Examine the goblet.","Cancel")) {
+			case 1:
+				mes "^3355FFInside the goblet,";
+				mes "you find a ^000000Rusty Key^3355FF";
+				mes "which you decide to keep.";
+				mes "However, you'll need to get";
+				mes "rid of that rust somehow.";
+				mes "Perhaps you can dip the key";
+				mes "in some corrosive chemical?^000000";
+				set lght_secret03,1;
+				close;
+			case 2:
+				end;
+			}
+		} else {
+			mes "^3355FFThis is the goblet where";
+			mes "you found that ^000000Rusty Key^3355FF.^000000";
+			close;
+		}
+	} else {
+		mes "^3355FFThis is goblet cup where";
+		mes "you found that ^000000Rusty Key^3355FF.^000000";
+		close;
+	}
+}
+
+lhz_cube.gat,231,202,0	script	Chemicals#cube	111,{
+
+	if (lght_secret03 < 1) {
+		mes "^3355FFThere is a bottle";
+		mes "containing slightly";
+		mes "corrosive chemicals";
+		mes "that is sitting on the ledge.^000000";
+		next;
+		input '@input;
+		mes "^3355FFWhatever you tried to";
+		mes "pour the chemicals on";
+		mes "wasn't affected at all.";
+		mes "You should try pouring the";
+		mes "chemicals on something else.^000000";
+		close;
+	} else if (lght_secret03 == 1) {
+		mes "^3355FFThere is a bottle";
+		mes "containing slightly";
+		mes "corrosive chemicals";
+		mes "that is sitting on the ledge.^000000";
+		next;
+		input '@input$;
+		set '@key_oil1$,'@input$;
+		set '@key_oil2$,"Rusty Key";
+		if ('@key_oil1$ == '@key_oil2$) {
+			mes "^3355FFPouring the chemicals";
+			mes "on the Rusty Key removes";
+			mes "the rust, making it usable";
+			mes "again. Now that it is clean,";
+			mes "the Rusty Key has become";
+			mes "a sparkling ^000000Green Key^3355FF.^000000";
+			set lght_secret03,2;
+			close;
+		} else {
+			mes "^3355FFWhatever you tried to";
+			mes "pour the chemicals on";
+			mes "wasn't affected at all.";
+			mes "You should try pouring the";
+			mes "chemicals on something else.^000000";
+			close;
+		}
+	} else {
+		mes "^3355FFThese are the chemicals";
+		mes "that you used to clean the";
+		mes "Rusty Key so that it was";
+		mes "restored to its original glory,";
+		mes "becoming the ^000000Green Key^3355FF.^000000";
+		close;
+	}
+}
+
+lhz_cube.gat,249,191,0	script	Cabinet#cube	111,{
+
+	if (lght_secret03 < 2) {
+		mes "^3355FFYou've found a";
+		mes "cabinet that contains";
+		mes "many drawers. Perhaps";
+		mes "something useful is inside?";
+		next;
+		switch(select("Open","Cancel")) {
+		case 1:
+			input '@input;
+			mes "^3355FFUnfortunately, the";
+			mes "cabinet has been locked.";
+			mes "You'll need the right key";
+			mes "in order to open the drawers.^000000";
+			close;
+		case 2:
+			end;
+		}
+	} else if (lght_secret03 == 2) {
+		mes "^3355FFYou've found a";
+		mes "cabinet that contains";
+		mes "many drawers. Perhaps";
+		mes "something useful is inside?";
+		next;
+		input '@input$;
+		set '@key_gr1$,'@input$;
+		set '@key_gr2$,"Green Key";
+		if ('@key_gr1$ == '@key_gr2$) {
+			mes "^3355FFYou take the Green Key";
+			mes "and finds that it fits into";
+			mes "one of the drawer keyholes.";
+			mes "You open the drawer and";
+			mes "obtain a strange ^000000Polygon^3355FF.^000000";
+			set lght_secret03,3;
+			close;
+		} else {
+			mes "^3355FFWhatever you tried";
+			mes "did not succeed in";
+			mes "opening this cabinet.";
+			mes "Think. Think of how";
+			mes "locks are unlocked...";
+			mes "Then you'll find the";
+			mes "answer you seek.^000000";
+			close;
+		}
+	} else {
+		mes "^3355FFThis is the locker";
+		mes "where you used the";
+		mes "Green Key to open one";
+		mes "of the Drawers and obtained";
+		mes "a ^000000Polygon^3355FF. You're pretty happy";
+		mes "with your Polygon and don't";
+		mes "need to open the other drawers.^000000";
+		close;
+	}
+}
+
+lhz_cube.gat,224,197,0	script	Experiment Tube#cube	111,{
+
+	if (lght_secret01 < 8) {
+		mes "^3355FFYou find a strange";
+		mes "tube that seems to";
+		mes "contain something.";
+		mes "Underneath the tube is";
+		mes "a thin plate with a keyhole";
+		mes "and a card insertion slot.^000000";
+		next;
+		input '@input;
+		mes "^3355FFNothing happened.";
+		mes "You'll probably need";
+		mes "to find the right key for";
+		mes "the keyhole and the correct";
+		mes "card to insert into the slot.^000000";
+		close;
+	} else if (lght_secret01 == 8) {
+		mes "^3355FFYou find a strange";
+		mes "tube that seems to";
+		mes "contain something.";
+		mes "Underneath the tube is";
+		mes "a thin plate with a keyhole";
+		mes "and a card insertion slot.^000000";
+		next;
+		input '@input$;
+		set '@key_exit1$,'@input$;
+		set '@key_exit2$,"Black Key";
+		if ('@key_exit1$ == '@key_exit2$) {
+			mes "^3355FFYou insert the Black Key";
+			mes "into the keyhole, causing";
+			mes "the experiment tube to open";
+			mes "and reveal an ^000000Oval^3355FF which you";
+			mes "you choose to take with you.^000000";
+			set lght_secret01,9;
+			close;
+		} else {
+			mes "^3355FFNothing happened...^000000";
+			close;
+		}
+	} else if (lght_secret01 == 9) {
+		mes "^3355FFThis is where you";
+		mes "obtained the ^000000Oval^3355FF.";
+		mes "As you look around";
+		mes "the tube's location,";
+		mes "you notice an artificial";
+		mes "ground fissure which";
+		mes "can probably open up...^000000";
+		close;
+	} else {
+		if (lght_sincube == 10) {
+			mes "^3355FFThere is a narrow,";
+			mes "rectangular card slot";
+			mes "in front of the tube.^000000";
+			next;
+			input '@input$;
+			set '@key_exit3$,'@input$;
+			set '@key_exit4$,"Laboratory Permit";
+			if ('@key_exit3$ == '@key_exit4$) {
+				if (countitem(2657) == 1) {
+					mes "^3355FFYou insert the";
+					mes "Laboratory Permit";
+					mes "into the slot and the";
+					mes "man made fissure in the";
+					mes "ground splits open, revealing";
+					mes "an underground staircase.^000000";
+					next;
+					switch(select("Go downstairs","Cancel")) {
+					case 1:
+						mes "^3355FFYou walk down";
+						mes "the long flight";
+						mes "of winding stairs...^000000";
+						close2;
+						set lght_sincube,11;
+						warp "lhz_cube.gat",177,13;
+						end;
+					case 2:
+						end;
+					}
+				} else {
+					mes "^3355FF..............";
+					mes "Nothing happened.^000000";
+					close;
+				}
+			} else {
+				mes "^3355FFNothing happened.^000000";
+				close;
+			}
+		} else {
+			mes "^3355FFThis is where you";
+			mes "obtained the ^000000Oval^3355FF.";
+			mes "As you look around";
+			mes "the tube's location,";
+			mes "you notice an articial";
+			mes "ground fissure which";
+			mes "can probably open up...^000000";
+			close;
+		}
+	}
+}
+
+lhz_cube.gat,248,193,0	script	Box#cube1	111,{
+
+	if ((lght_secret01 < 9) && (lght_secret02 < 4) && (lght_secret03 < 3)) {
+		mes "^3355FFYou find a box with";
+		mes "three distinctively";
+		mes "shaped holes.^000000";
+		next;
+		switch(select("Oval Hole","Cubic Hole","Polygon Hole")) {
+		case 1:
+			input '@input;
+			mes "^3355FFNothing happened.^000000";
+			close;
+		case 2:
+			input '@input;
+			mes "^3355FFNothing happened.^000000";
+			close;
+		case 3:
+			input '@input;
+			mes "^3355FFNothing happened.^000000";
+			close;
+		}
+	} else if ((lght_secret01 != 10) || (lght_secret02 != 5) || (lght_secret03 != 4)) {
+		mes "^3355FFYou find a box with";
+		mes "three distinctively";
+		mes "shaped holes.^000000";
+		next;
+		switch(select("Oval Hole","Cube Hole","Polygon Hole")) {
+		case 1:
+			if (lght_secret01 == 9) {
+				next;
+				input '@input$;
+				set '@key_round1$,'@input$;
+				set '@key_round2$,"Oval";
+				if ('@key_round1$ == '@key_round2$) {
+					mes "^3355FFYou insert the Oval";
+					mes "into the Oval shaped";
+					mes "hole where it fits perfectly.^000000";
+					set lght_secret01,10;
+					close;
+				} else {
+					mes "^3355FFNothing happened.^000000";
+					close;
+				}
+			} else if (lght_secret01 == 10) {
+				mes "^3355FFThe Oval shaped hole";
+				mes "already has an Oval in it.";
+				mes "Besides, it's not you have";
+				mes "any Ovals to spare, anyway.^000000";
+				close;
+			} else {
+				input '@input;
+				mes "^3355FFNothing happened.^000000";
+				close;
+			}
+		case 2:
+			if (lght_secret02 == 4) {
+				next;
+				input '@input$;
+				set '@key_six1$,'@input$;
+				set '@key_six2$,"Cube";
+				if ('@key_six1$ == '@key_six2$) {
+					mes "^3355FFYou insert the Cube";
+					mes "into the Cubic hole";
+					mes "and it clicks into place.";
+					mes "Your formal Kindergarten";
+					mes "training is finally justified.^000000";
+					set lght_secret02,5;
+					close;
+				} else {
+					mes "^3355FFNothing happened.^000000";
+					close;
+				}
+			} else if (lght_secret02 == 5) {
+				mes "^3355FFYou already placed";
+				mes "a Cube into the hole.";
+				mes "You could take it back";
+				mes "out and put it in again,";
+				mes "but that would just be";
+				mes "a total waste of time.^000000";
+				close;
+			} else {
+				input '@input;
+				mes "^3355FFNothing happened.^000000";
+				close;
+			}
+		case 3:
+			if (lght_secret03 == 3) {
+				next;
+				input '@input$;
+				set '@key_poly1$,'@input$;
+				set '@key_poly2$,"Polygon";
+				if ('@key_poly1$ == '@key_poly2$) {
+					mes "^3355FFFortunately, the";
+					mes "nondescript Polygon";
+					mes "that you have is exactly";
+					mes "the same shape as this";
+					mes "nondescript Polygonal hole.";
+					mes "The Polygon fits perfectly,";
+					mes "almost as if it were destiny.^000000";
+					set lght_secret03,4;
+					close;
+				} else {
+					mes "^3355FFNothing happened.^000000";
+					close;
+				}
+			} else if (lght_secret03 == 4) {
+				mes "^3355FFThe Polygon is already";
+				mes "inserted into the hole.";
+				mes "Trust that this is as much";
+				mes "as this Polygon can do for you.^000000";
+				close;
+			} else {
+				input '@input;
+				mes "^3355FFNothing happened.^000000";
+				close;
+			}
+		}
+	} else if ((lght_secret01 == 10) && (lght_secret02 == 5) && (lght_secret03 == 4) && (lght_sincube != 10)) {
+		mes "^3355FFYou find a box with";
+		mes "three distinctively";
+		mes "shaped holes that";
+		mes "are now filled with the";
+		mes "objects you've inserted.^000000";
+		next;
+		switch(select("Open the box.","Cancel")) {
+		case 1:
+			mes "^3355FFYou open the box";
+			mes "and find that there's";
+			mes "a small card labeled";
+			mes "''Laboratory Permit'' inside.";
+			mes "You pocket this ^000000Laboratory";
+			mes "Permit^3355FF, knowing that you";
+			mes "will be needing it later.";
+			set lght_sincube,10;
+			getitem 2657,1;
+			close;
+		case 2:
+			end;
+		}
+	} else {
+		mes "^3355FFYou find the open box";
+		mes "which used to contain";
+		mes "the ^000000Laboratory Permit^3355FF.";
+		mes "This box is no longer";
+		mes "useful to you now, but";
+		mes "once upon a time, its";
+		mes "mysteries were a challenge.^000000";
+		close;
+	}
+}
+
+lhz_cube.gat,250,184,0	script	Door#cube	111,{
+
+	mes "^3355FFYou've come upon a";
+	mes "door that leads outside.^000000";
+	next;
+	switch(select("Exit","Cancel")) {
+	case 1:
+		warp "lighthalzen.gat",310,302;
+		end;
+	case 2:
+		end;
+	}
+}
+
+lhz_cube.gat,177,96,0	script	Exit1#lt	45,1,1,{
+
+OnTouch:
+	warp "lighthalzen.gat",310,302;
+	end;
+}
+
+lhz_cube.gat,231,12,0	script	Exit2#lt	45,1,1,{
+
+OnTouch:
+	warp "lighthalzen.gat",310,302;
+	end;
+}
+
+lhz_cube.gat,231,96,0	script	Exit3#lt	45,1,1,{
+
+OnTouch:
+	warp "lhz_dun02.gat",220,6;
+	end;
+}
+
+lhz_dun02.gat,224,6,0	script	Exit4#lt	45,1,1,{
+
+OnTouch:
+	if (lght_sincube > 10) {
+		warp "lhz_cube.gat",231,90;
+		end;
+	} else {
+		mes "^3355FFYou found a passage that";
+		mes "seems to lead somewhere,";
+		mes "but you get the feeling that";
+		mes "you shouldn't enter it for now.^000000";
+		close;
+	}
+}
+
+lighthalzen.gat,313,301,0	script	Sewer Pipe#lt	111,{
+
+	if (lght_sincube > 10) {
+		mes "^3355FFYou found some sort";
+		mes "of large sewage pipe.";
+		mes "Naturally, the stench";
+		mes "emanating from inside";
+		mes "the pipe is barely endurable.^000000";
+		next;
+		switch(select("Enter","Cancel")) {
+		case 1:
+			warp "lhz_cube.gat",231,17;
+			end;
+		case 2:
+			end;
+		}
+	} else {
+		mes "^3355FFYou found some sort";
+		mes "of large sewage pipe.";
+		mes "Naturally, the stench";
+		mes "emanating from inside";
+		mes "the pipe is barely endurable.^000000";
+		close;
+	}
+}
+
+lhz_dun02.gat,149,149,0	script	LhzDO2M_LhzDO3M	45,1,1,{
+
+OnTouch:
+	if (Upper == 1) {
+		if (BaseLevel > 89) {
+			warp "lhz_dun03.gat",140,133;
+		} else {
+			warp "lhz_dun02.gat",145,149;
+		}
+		end;
+	} else {
+		if (BaseLevel > 94) {
+			warp "lhz_dun03.gat",140,133;
+		} else {
+			warp "lhz_dun02.gat",145,149;
+		}
+		end;
+	}
+}
+
+lhz_dun02.gat,177,150,0	script	Warning#lhz_east	837,{
+
+	mes "^FF0000Warning^000000";
+	mes "Unauthorized personnel";
+	mes "are prohibited from entering.";
+	close;
+}
+
+lhz_dun02.gat,150,122,0	script	Warning#lhz_south	837,{
+
+	mes "^FF0000Warning^000000";
+	mes "Unauthorized personnel";
+	mes "are prohibited from entering.";
+	close;
+}
+
+lhz_dun02.gat,122,149,0	script	Warning#lhz_west	837,{
+
+	mes "^FF0000Warning^000000";
+	mes "Unauthorized personnel";
+	mes "are prohibited from entering.";
+	close;
+}
+
+lhz_dun02.gat,149,178,0	script	Warning#lhz_north	837,{
+
+	mes "^FF0000Warning^000000";
+	mes "Unauthorized personnel";
+	mes "are prohibited from entering.";
+	close;
 }
 
 
