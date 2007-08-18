@@ -105,7 +105,7 @@
 
 
 ---------------------------------------------------------------------------
- Aurora's Global Temporary Script Variables (30):
+ Aurora's Global Temporary Script Variables (31):
 ---------------------------------------------------------------------------
 
 -> To-Do: Major cleanup
