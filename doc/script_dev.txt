@@ -47,8 +47,6 @@
  Aurora's euRO Dialogue Aegis Scripts:
 ---------------------------------------------------------------------------
 
-- global/global_inn.txt			<- Optional [*]
-- job/job_gunslinger.txt		<- Optional [*]
 - job/job_rogue.txt			<- Optional - No access to an iRO Aegis version [*]
 - quest/quest_bard.txt			<- Optional [*]
 - quest/quest_expanded.txt		<- Optional [*]
