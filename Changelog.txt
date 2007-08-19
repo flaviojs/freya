@@ -14,6 +14,7 @@
 Date	Added
 
 2007/08/18
+	* Updated: Translated the final few parts of battle_athena.conf (Thanks to nemissa) [Tsuyuki]
 	* Updated: Inn Employees with iRO dialogue, converted from Aegis [Tsuyuki]
 	* Updated: The Gunslinger Job Change Quest with iRO dialogue, converted from Aegis [Tsuyuki]
 
