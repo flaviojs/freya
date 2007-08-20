@@ -13,7 +13,7 @@
 - event/event_xmas.txt			<- Good enough - No access to an Aegis version
 
 - global/global_airship.txt		<- Requires conversion [*]
-- global/global_refine.txt		<- Requires conversion [*]
+- global/global_refine.txt		<- Requires conversion [Assigned ~ Tsuyuki]
 
 - gvg/gvg_adswitch.txt			<- Good enough
 - gvg/gvg_config.txt			<- Good enough
@@ -24,9 +24,7 @@
 - gvg/gvg_steward.txt			<- Good enough - Need to import Aegis dialogue/function [*]
 - gvg/gvg_tbox.txt			<- Good enough
 
-- misc/misc_vote.txt			<- Good enough - Need to import some missing official dialogue / optimize [*]
-
-- quest/quest_headgear.txt		<- Requires conversion [*]
+- quest/quest_headgear.txt		<- Requires conversion [Assigned ~ Tsuyuki]
 - quest/quest_juperos.txt		<- Good enough
 - quest/quest_kiel_hyre.txt		<- Good enough - No access to an iRO Aegis version
 - quest/quest_the_sign.txt		<- Good enough
@@ -103,7 +101,7 @@
 
 
 ---------------------------------------------------------------------------
- Aurora's Global Temporary Script Variables (31):
+ Aurora's Global Temporary Script Variables (30):
 ---------------------------------------------------------------------------
 
 -> To-Do: Major cleanup
@@ -113,9 +111,6 @@
 - $@at_izlude
 - $@route1
 - $@route2
-
--> Cool Event vs Kafra Voting Event (misc/misc_vote.txt)
-- $@dtstemp
 
 -> God Seal Equipment Quests (quest/quest_god_seal.txt)
 - $@BrisinRID$
@@ -165,16 +160,20 @@
 
 
 ---------------------------------------------------------------------------
- Aurora's Global Permanent Script Variables (8):
+ Aurora's Global Permanent Script Variables (12):
 ---------------------------------------------------------------------------
 
 -> To-Do: Further cleanup
 
 -> Cool Event vs Kafra Voting Event (misc/misc_vote.txt)
-- $dts
-- $dtsday
-- $dtsv
-- $dtsvote
+- $050530_minus1_tupyo1
+- $050530_minus1_tupyo2
+- $050530_minus1_tupyo3
+- $050530_minus1_tupyo4
+- $050530_minus1_tupyo5
+- $050530_minus1_tupyo6
+- $050530_minus1_tupyo7
+- $050530_minus1_tupyo8
 
 -> God Seal Equipment Quests (quest/quest_god_seal.txt)
 - $God1

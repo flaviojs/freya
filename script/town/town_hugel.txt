@@ -8945,7 +8945,7 @@ hu_in01.gat,19,161,0	script	Alex	803,{
 		mes "Now get out of here!";
 		close;
 	} else if (hg_alex == 1) {
-		cutin "hu_alex01.bmp",2;
+		cutin "hu_alex01",2;
 		mes "[Alex]";
 		mes "Huh...?";
 		mes "What do you want?";
@@ -8958,7 +8958,7 @@ hu_in01.gat,19,161,0	script	Alex	803,{
 			mes "I'm not interested!";
 			mes "Now get out of here!";
 			close2;
-			cutin "hu_alex01.bmp",255;
+			cutin "hu_alex01",255;
 			end;
 		L_LABEL2:
 			mes "[Alex]";
@@ -8971,7 +8971,7 @@ hu_in01.gat,19,161,0	script	Alex	803,{
 				mes "Yeah, I think you qualify.";
 				next;
 			} else {
-				cutin "hu_alex02.bmp",2;
+				cutin "hu_alex02",2;
 				mes "Well, I dunno. I think that";
 				mes "kind of expedition would";
 				mes "eat you alive. No offense...";
@@ -8984,10 +8984,10 @@ hu_in01.gat,19,161,0	script	Alex	803,{
 				mes "get stronger. For now, though,";
 				mes "I don't think we can use you.";
 				close2;
-				cutin "hu_alex02.bmp",255;
+				cutin "hu_alex02",255;
 				end;
 			}
-		cutin "hu_alex03.bmp",2;
+		cutin "hu_alex03",2;
 		mes "[Alex]";
 		mes "I'm Alex Helmut, and I'm";
 		mes "in charge of the expedition.";
@@ -9011,10 +9011,10 @@ hu_in01.gat,19,161,0	script	Alex	803,{
 		mes "to travel to the shrine, okay?";
 		set hg_alex,2;
 		close2;
-		cutin "hu_alex03.bmp",255;
+		cutin "hu_alex03",255;
 		end;
 	} else if (hg_alex == 2) {
-		cutin "hu_alex03.bmp",2;
+		cutin "hu_alex03",2;
 		mes "[Alex]";
 		mes "You really oughtta";
 		mes "check out the shrine";
@@ -9022,10 +9022,10 @@ hu_in01.gat,19,161,0	script	Alex	803,{
 		mes "to the Boatman so that";
 		mes "he take you over there.";
 		close2;
-		cutin "hu_alex03.bmp",255;
+		cutin "hu_alex03",255;
 		end;
 	} else if (hg_alex == 3) {
-		cutin "hu_alex01.bmp",2;
+		cutin "hu_alex01",2;
 		mes "[Alex]";
 		mes "Oh, so you've gone";
 		mes "and seen the shrine";
@@ -9034,7 +9034,7 @@ hu_in01.gat,19,161,0	script	Alex	803,{
 		next;
 		menu "Who are the people in the next room?",L_LABEL3,"Well...",L_LABEL4,"Yes, I do.",L_LABEL5;
 		L_LABEL3:
-			cutin "hu_alex02.bmp",2;
+			cutin "hu_alex02",2;
 			mes "[Alex]";
 			mes "Oh... Them.";
 			mes "They're officially my";
@@ -9050,7 +9050,7 @@ hu_in01.gat,19,161,0	script	Alex	803,{
 			mes "like that. They say they're here^FFFFFF ^000000 to research religious relics,";
 			mes "but I just don't trust them.";
 			next;
-			cutin "hu_alex04.bmp",2;
+			cutin "hu_alex04",2;
 			mes "[Alex]";
 			mes "In fact, I think it's";
 			mes "obvious that they're here";
@@ -9059,7 +9059,7 @@ hu_in01.gat,19,161,0	script	Alex	803,{
 			mes "And that gray haired lady...";
 			mes "She totally creeps me out!";
 			close2;
-			cutin "hu_alex02.bmp",255;
+			cutin "hu_alex02",255;
 			end;
 		L_LABEL4:
 			mes "[Alex]";
@@ -9070,7 +9070,7 @@ hu_in01.gat,19,161,0	script	Alex	803,{
 			mes "that you have to weigh the";
 			mes "risks and everything.";
 			close2;
-			cutin "hu_alex01.bmp",255;
+			cutin "hu_alex01",255;
 			end;
 	L_LABEL5:
 		mes "[Alex]";
@@ -9090,10 +9090,10 @@ hu_in01.gat,19,161,0	script	Alex	803,{
 		mes "we can move on to the";
 		mes "more important stuff.";
 		close2;
-		cutin "hu_alex02.bmp",255;
+		cutin "hu_alex02",255;
 		end;
 	} else if (hg_alex == 4) {
-		cutin "hu_alex02.bmp",2;
+		cutin "hu_alex02",2;
 		mes "[Alex]";
 		mes "What are you still";
 		mes "doing here? Shouldn't";
@@ -9102,7 +9102,7 @@ hu_in01.gat,19,161,0	script	Alex	803,{
 		next;
 		menu "What was I supposed to gather?",L_LABEL6,"I'm leaving, I'm leaving!",L_LABEL7;
 		L_LABEL6:
-			cutin "hu_alex03.bmp",2;
+			cutin "hu_alex03",2;
 			mes "[Alex]";
 			mes "You've forgotten";
 			mes "already? I asked you";
@@ -9110,7 +9110,7 @@ hu_in01.gat,19,161,0	script	Alex	803,{
 			mes "of the Darkness^000000. Okay,";
 			mes "now hurry up and get to it.";
 			close2;
-			cutin "hu_alex03.bmp",255;
+			cutin "hu_alex03",255;
 			end;
 		L_LABEL7:
 			mes "[Alex]";
@@ -9121,10 +9121,10 @@ hu_in01.gat,19,161,0	script	Alex	803,{
 			mes "grey haired crone wasn't";
 			mes "here... We'd be done by now!";
 			close2;
-			cutin "hu_alex02.bmp",255;
+			cutin "hu_alex02",255;
 			end;
 	} else if (hg_alex == 5) {
-		cutin "hu_alex01.bmp",2;
+		cutin "hu_alex01",2;
 		mes "[Alex]";
 		mes "Well, it's about";
 		mes "time you came back.";
@@ -9133,7 +9133,7 @@ hu_in01.gat,19,161,0	script	Alex	803,{
 		next;
 		menu "Er, not yet...",L_LABEL8,"There you go!",L_LABEL9;
 		L_LABEL8:
-			cutin "hu_alex02.bmp",2;
+			cutin "hu_alex02",2;
 			mes "[Alex]";
 			mes "Wh-what?!";
 			mes "You came here just to";
@@ -9149,14 +9149,14 @@ hu_in01.gat,19,161,0	script	Alex	803,{
 			mes "Besides, this adventurer";
 			mes "isn't a pushover, you know?";
 			next;
-			cutin "hu_alex03.bmp",2;
+			cutin "hu_alex03",2;
 			emotion ET_FRET,"Alex";
 			mes "[Alex]";
 			mes "What was that...?";
 			mes "Are you trying to";
 			mes "make me mad, Julian?";
 			next;
-			cutin "hu_alex02.bmp",2;
+			cutin "hu_alex02",2;
 			mes "[Julian]";
 			mes "All I'm saying is that";
 			mes "most adventurers know that";
@@ -9165,7 +9165,7 @@ hu_in01.gat,19,161,0	script	Alex	803,{
 			mes "them are going in and out";
 			mes "of the other room, you know.";
 			next;
-			cutin "hu_alex04.bmp",2;
+			cutin "hu_alex04",2;
 			mes "[Alex]";
 			mes "That... grey... haired...!";
 			mes "N-no... Calm down, Alex...";
@@ -9173,7 +9173,7 @@ hu_in01.gat,19,161,0	script	Alex	803,{
 			mes "everything... D-don't stoop";
 			mes "down to her level.";
 			next;
-			cutin "hu_alex01.bmp",2;
+			cutin "hu_alex01",2;
 			mes "[Alex]";
 			mes "Alright, I'm not in any";
 			mes "position to make demands";
@@ -9182,7 +9182,7 @@ hu_in01.gat,19,161,0	script	Alex	803,{
 			mes "bring me 5 Runes of the";
 			mes "Darkness as soon as possible.";
 			close2;
-			cutin "hu_alex01.bmp",255;
+			cutin "hu_alex01",255;
 			end;
 		L_LABEL9:
 			if (countitem(7511) > 4) {
@@ -9203,7 +9203,7 @@ hu_in01.gat,19,161,0	script	Alex	803,{
 				mes "Since when did";
 				mes "you do research?";
 				next;
-				cutin "hu_alex03.bmp",2;
+				cutin "hu_alex03",2;
 				mes "[Alex]";
 				mes "Gosh, Julian,";
 				mes "will you just";
@@ -9216,7 +9216,7 @@ hu_in01.gat,19,161,0	script	Alex	803,{
 				mes "You think you're so";
 				mes "big just ''supervising...''";
 				next;
-				cutin "hu_alex04.bmp",2;
+				cutin "hu_alex04",2;
 				mes "[Alex]";
 				mes "J-Julian!";
 				next;
@@ -9225,7 +9225,7 @@ hu_in01.gat,19,161,0	script	Alex	803,{
 				mes "got a visitor. Yeah,";
 				mes "okay, sorry about that.";
 				next;
-				cutin "hu_alex02.bmp",2;
+				cutin "hu_alex02",2;
 				mes "[Alex]";
 				mes "I'm sorry about all";
 				mes "this. If you don't mind,";
@@ -9234,21 +9234,21 @@ hu_in01.gat,19,161,0	script	Alex	803,{
 				mes "project soon. Thanks once";
 				mes "again for all of your help.";
 				close2;
-				cutin "hu_alex02.bmp",255;
+				cutin "hu_alex02",255;
 				end;
 			} else {
-				cutin "hu_alex02.bmp",2;
+				cutin "hu_alex02",2;
 				mes "[Alex]";
 				mes "Hm? Oh, this isn't";
 				mes "enough Runes of the";
 				mes "Darkness. I asked you";
 				mes "to bring me 5 of them...";
 				close2;
-				cutin "hu_alex02.bmp",255;
+				cutin "hu_alex02",255;
 				end;
 			}
 	} else if (hg_alex == 6) {
-		cutin "hu_alex02.bmp",2;
+		cutin "hu_alex02",2;
 		mes "[Alex]";
 		mes "...Darn it! I think I might";
 		mes "have miscalculated. Maybe";
@@ -9258,8 +9258,8 @@ hu_in01.gat,19,161,0	script	Alex	803,{
 		mes "crone thinking? Hmmmm...";
 		next;
 		emotion ET_HUK,"Alex";
-		cutin "hu_alex03.bmp",2;
-		cutin "hu_alex01.bmp",2;
+		cutin "hu_alex03",2;
+		cutin "hu_alex01",2;
 		mes "[Alex]";
 		mes "O-Oh! I had no idea that";
 		mes "you were there! Y-you";
@@ -9267,10 +9267,10 @@ hu_in01.gat,19,161,0	script	Alex	803,{
 		mes "s-strange, did you?";
 		mes "Hahahahahahaha!";
 		close2;
-		cutin "hu_alex01.bmp",255;
+		cutin "hu_alex01",255;
 		end;
 	} else if ((hg_alex > 11) && (hg_alex < 17)) {
-		cutin "hu_alex03.bmp",2;
+		cutin "hu_alex03",2;
 		mes "[Alex]";
 		mes "Excuse me?";
 		mes "The grey haired crone";
@@ -9285,7 +9285,7 @@ hu_in01.gat,19,161,0	script	Alex	803,{
 		mes "How can she do this?! Oh, er,";
 		mes "let me introduce myself first.";
 		next;
-		cutin "hu_alex01.bmp",2;
+		cutin "hu_alex01",2;
 		mes "[Alex]";
 		mes "I'm Alex Helmut, and I'm";
 		mes "in charge of the expedition.";
@@ -9293,7 +9293,7 @@ hu_in01.gat,19,161,0	script	Alex	803,{
 		mes "my younger brother Julian who's";
 		mes "also working on the excavation.";
 		next;
-		cutin "hu_alex02.bmp",2;
+		cutin "hu_alex02",2;
 		mes "[Alex]";
 		mes "As supervisor of this";
 		mes "operation, I'm ashamed to";
@@ -9310,10 +9310,10 @@ hu_in01.gat,19,161,0	script	Alex	803,{
 		mes "There's got to be another";
 		mes "reason why she's here...!";
 		close2;
-		cutin "hu_alex02.bmp",255;
+		cutin "hu_alex02",255;
 		end;
 	} else {
-		cutin "hu_alex02.bmp",2;
+		cutin "hu_alex02",2;
 		mes "[Alex]";
 		mes "Hm? Did you need";
 		mes "something? I'm sorry,";
@@ -9322,7 +9322,7 @@ hu_in01.gat,19,161,0	script	Alex	803,{
 		mes "busy, so I just want to";
 		mes "be left alone for a while.";
 		close2;
-		cutin "hu_alex02.bmp",255;
+		cutin "hu_alex02",255;
 		end;
 	}
 }
@@ -9330,28 +9330,28 @@ hu_in01.gat,19,161,0	script	Alex	803,{
 hu_in01.gat,14,11,4	script	Laura	70,{
 
 	if (hg_alex == 0) {
-		cutin "hu_laura02.bmp",2;
+		cutin "hu_laura02",2;
 		mes "[Laura]";
 		mes "Hm? What are you doing";
 		mes "here? Ashe, Ashe! Get";
 		mes "this person out of here!";
 		close2;
-		cutin "hu_laura02.bmp",255;
+		cutin "hu_laura02",255;
 		warp "hu_in01.gat",15,76;
 		end;
 	} else if (hg_alex == 1) {
-		cutin "hu_laura04.bmp",2;
+		cutin "hu_laura04",2;
 		mes "[Laura]";
 		mes "Hm? Oh, you must be";
 		mes "here in response to our";
 		mes "recruitment notice, yes?";
 		if (BaseLevel < 60) {
-			cutin "hu_laura01.bmp",2;
+			cutin "hu_laura01",2;
 			mes "Let me take a look at you...";
 			mes "Oh, you're all skin and bone!";
 			mes "I can't use someone like you.";
 			close2;
-			cutin "hu_laura01.bmp",255;
+			cutin "hu_laura01",255;
 			end;
 		} else {
 			mes "I'm Laura Laurence, the";
@@ -9375,7 +9375,7 @@ hu_in01.gat,14,11,4	script	Laura	70,{
 			mes "powerful creatures that a weak";
 			mes "woman like me can never defeat.";
 			next;
-			cutin "hu_laura01.bmp",2;
+			cutin "hu_laura01",2;
 			mes "[Laura]";
 			mes "Would you let a poor";
 			mes "fragile woman like me go";
@@ -9391,7 +9391,7 @@ hu_in01.gat,14,11,4	script	Laura	70,{
 			mes "a great service your country,";
 			mes "the Rune-Midgart's Kingdom.";
 			next;
-			cutin "hu_laura04.bmp",2;
+			cutin "hu_laura04",2;
 			mes "[Laura]";
 			mes "Think about it!";
 			mes "You'd be making a great";
@@ -9402,7 +9402,7 @@ hu_in01.gat,14,11,4	script	Laura	70,{
 			next;
 			menu "Nah, forget it.",L_LABEL1,"Yes, I'll do it!",L_LABEL2;
 			L_LABEL1:
-				cutin "hu_laura01.bmp",2;
+				cutin "hu_laura01",2;
 				mes "[Laura]";
 				mes "W-wait! Think about";
 				mes "the importance of learning";
@@ -9413,7 +9413,7 @@ hu_in01.gat,14,11,4	script	Laura	70,{
 				next;
 				menu "But you can't pay me.",L_LABEL3,"Alright, I'll do it.",L_LABEL4;
 				L_LABEL3:
-					cutin "hu_laura04.bmp",2;
+					cutin "hu_laura04",2;
 					mes "[Laura]";
 					mes "You're right.";
 					mes "It's like I said";
@@ -9421,7 +9421,7 @@ hu_in01.gat,14,11,4	script	Laura	70,{
 					mes "anything to pay you.";
 					mes "...............................";
 					next;
-					cutin "hu_laura01.bmp",2;
+					cutin "hu_laura01",2;
 					mes "[Laura]";
 					mes "Curses! If this project had";
 					mes "more funding, we'd have more";
@@ -9430,7 +9430,7 @@ hu_in01.gat,14,11,4	script	Laura	70,{
 					mes "like those rich Schwaltzvalt";
 					mes "Republic boys in the next room!";
 					next;
-					cutin "hu_laura02.bmp",2;
+					cutin "hu_laura02",2;
 					mes "[Laura]";
 					mes "Fine, it's your choice";
 					mes "whether you want to work";
@@ -9439,7 +9439,7 @@ hu_in01.gat,14,11,4	script	Laura	70,{
 					mes "help us. I mean, don't you";
 					mes "have any patriotism at all?";
 					close2;
-					cutin "hu_laura02.bmp",255;
+					cutin "hu_laura02",255;
 					end;
 		L_LABEL4:
 		L_LABEL2:
@@ -9451,7 +9451,7 @@ hu_in01.gat,14,11,4	script	Laura	70,{
 			mes "Hurry up and come back soon!";
 			set hg_alex,12;
 			close2;
-			cutin "hu_laura04.bmp",255;
+			cutin "hu_laura04",255;
 			end;
 		}
 	} else if ((hg_alex > 1) && (hg_alex < 6)) {
@@ -9460,7 +9460,7 @@ hu_in01.gat,14,11,4	script	Laura	70,{
 		mes "what are you guys";
 		mes "doing over here?";
 		next;
-		cutin "hu_laura04.bmp",2;
+		cutin "hu_laura04",2;
 		mes "[Laura]";
 		mes "What are we doing...?";
 		mes "This is the shrine expedition";
@@ -9471,14 +9471,14 @@ hu_in01.gat,14,11,4	script	Laura	70,{
 		next;
 		menu "About Alex and Julian",L_LABEL5,"Alright, now I understand.",L_LABEL6;
 		L_LABEL5:
-			cutin "hu_laura01.bmp",2;
+			cutin "hu_laura01",2;
 			mes "["+strcharinfo(0)+"]";
 			mes "These people in the other";
 			mes "room, Alex and Julian, are";
 			mes "they also working in this same";
 			mes "expedition in the Odin Shrine?";
 			next;
-			cutin "hu_laura02.bmp",2;
+			cutin "hu_laura02",2;
 			mes "[Laura]";
 			mes "...Oh. You must be working";
 			mes "for those rich Schwaltvalt";
@@ -9487,7 +9487,7 @@ hu_in01.gat,14,11,4	script	Laura	70,{
 			mes "all, so we're actually working";
 			mes "in separate offices.";
 			next;
-			cutin "hu_laura04.bmp",2;
+			cutin "hu_laura04",2;
 			mes "[Laura]";
 			mes "Sorry, let me introduce";
 			mes "myself. I'm Laura Laurence,";
@@ -9506,19 +9506,19 @@ hu_in01.gat,14,11,4	script	Laura	70,{
 			mes "for those wealthy snobs, then";
 			mes "come back here and let me know.";
 			close2;
-			cutin "hu_laura04.bmp",255;
+			cutin "hu_laura04",255;
 			end;
 		L_LABEL6:
-			cutin "hu_laura01.bmp",2;
+			cutin "hu_laura01",2;
 			mes "[Laura]";
 			mes "......";
 			mes ".........";
 			mes "............";
 			close2;
-			cutin "hu_laura01.bmp",255;
+			cutin "hu_laura01",255;
 			end;
 	} else if (hg_alex == 6) {
-		cutin "hu_laura04.bmp",2;
+		cutin "hu_laura04",2;
 		mes "[Laura]";
 		mes "Hey, I know you...";
 		mes "You're a volunteer for the";
@@ -9527,7 +9527,7 @@ hu_in01.gat,14,11,4	script	Laura	70,{
 		mes "be more perfect. Why don't";
 		mes "you help us for a while?";
 		next;
-		cutin "hu_laura01.bmp",2;
+		cutin "hu_laura01",2;
 		mes "[Laura]";
 		mes "Basically, I want you";
 		mes "to spy on that snobby girl,";
@@ -9535,7 +9535,7 @@ hu_in01.gat,14,11,4	script	Laura	70,{
 		mes "Republic office, and report";
 		mes "what she's actually doing to me. ^FFFFFF ^000000";
 		next;
-		cutin "hu_laura03.bmp",2;
+		cutin "hu_laura03",2;
 		mes "[Laura]";
 		mes "I have to know...";
 		mes "I need to know whether";
@@ -9543,7 +9543,7 @@ hu_in01.gat,14,11,4	script	Laura	70,{
 		mes "already. They can't have found";
 		mes "it before us. It's impossible!";
 		next;
-		cutin "hu_laura04.bmp",2;
+		cutin "hu_laura04",2;
 		mes "[Laura]";
 		mes "Anyway, just eavesdrop";
 		mes "on the Schwaltvalt Office";
@@ -9551,13 +9551,13 @@ hu_in01.gat,14,11,4	script	Laura	70,{
 		mes "close to the door, and listen";
 		mes "to them talk. Will you do that?";
 		next;
-		cutin "hu_laura02.bmp",2;
+		cutin "hu_laura02",2;
 		mes "[Laura]";
 		mes "...............................";
 		mes "Of course, you're";
 		mes "going to do it. Right?";
 		next;
-		cutin "hu_laura03.bmp",2;
+		cutin "hu_laura03",2;
 		mes "[Laura]";
 		mes "RIGHT?!";
 		next;
@@ -9567,15 +9567,15 @@ hu_in01.gat,14,11,4	script	Laura	70,{
 	L_LABEL9:
 	L_LABEL10:
 		set hg_alex,17;
-		cutin "hu_laura04.bmp",2;
+		cutin "hu_laura04",2;
 		mes "[Laura]";
 		mes "Good.";
 		mes "Now do it!";
 		close2;
-		cutin "hu_laura04.bmp",255;
+		cutin "hu_laura04",255;
 		end;
 	} else if (hg_alex == 12) {
-		cutin "hu_laura02.bmp",2;
+		cutin "hu_laura02",2;
 		mes "[Laura]";
 		mes "Ask the Boatman to take";
 		mes "you to the Odin Shrine so";
@@ -9583,10 +9583,10 @@ hu_in01.gat,14,11,4	script	Laura	70,{
 		mes "for yourself. If you don't think^FFFFFF ^000000 you can handle the expedition,";
 		mes "then you can just let me know.";
 		close2;
-		cutin "hu_laura02.bmp",255;
+		cutin "hu_laura02",255;
 		end;
 	} else if (hg_alex == 13) {
-		cutin "hu_laura04.bmp",2;
+		cutin "hu_laura04",2;
 		mes "[Laura]";
 		mes "Have you been to the";
 		mes "Odin Shrine already?";
@@ -9606,7 +9606,7 @@ hu_in01.gat,14,11,4	script	Laura	70,{
 		next;
 		menu "Jellopies.",L_LABEL14,"No.",L_LABEL15;
 		L_LABEL14:
-			cutin "hu_laura01.bmp",2;
+			cutin "hu_laura01",2;
 			mes "[Laura]";
 			mes "You can freakin' find";
 			mes "Jellopy anywhere! I meant,";
@@ -9615,7 +9615,7 @@ hu_in01.gat,14,11,4	script	Laura	70,{
 			next;
 			goto L_Fix01;
 		L_LABEL15:
-			cutin "hu_laura01.bmp",2;
+			cutin "hu_laura01",2;
 			mes "[Laura]";
 			mes "Well, that's fine.";
 			mes "I did tell you to just";
@@ -9625,7 +9625,7 @@ hu_in01.gat,14,11,4	script	Laura	70,{
 			next;
 			goto L_Fix01;
 	L_Fix01:
-		cutin "hu_laura04.bmp",2;
+		cutin "hu_laura04",2;
 		mes "[Laura]";
 		mes "Anyway, are you still willing";
 		mes "to help us? I know that I said";
@@ -9635,7 +9635,7 @@ hu_in01.gat,14,11,4	script	Laura	70,{
 		next;
 		menu "Who are the guys in the other room?",L_LABEL16,"Well...",L_LABEL17,"Yes!",L_LABEL18;
 		L_LABEL16:
-			cutin "hu_laura01.bmp",2;
+			cutin "hu_laura01",2;
 			mes "[Laura]";
 			mes "Oh, those are the";
 			mes "Schwartzvalt Republic";
@@ -9644,7 +9644,7 @@ hu_in01.gat,14,11,4	script	Laura	70,{
 			mes "Personally, I think they're";
 			mes "just a bunch of rich phonies.";
 			next;
-			cutin "hu_laura03.bmp",2;
+			cutin "hu_laura03",2;
 			mes "[Laura]";
 			mes "And that Alex girl...";
 			mes "She may seem polite,";
@@ -9669,7 +9669,7 @@ hu_in01.gat,14,11,4	script	Laura	70,{
 			mes "probably bought for her! Grrr!";
 			mes "Come back later, I'm too mad!";
 			close2;
-			cutin "hu_laura03.bmp",255;
+			cutin "hu_laura03",255;
 			end;
 		L_LABEL17:
 			mes "[Laura]";
@@ -9679,7 +9679,7 @@ hu_in01.gat,14,11,4	script	Laura	70,{
 			mes "I mean, I believe in following";
 			mes "your gut instincts, you know?";
 			close2;
-			cutin "hu_laura04.bmp",255;
+			cutin "hu_laura04",255;
 			end;
 		L_LABEL18:
 			set hg_alex,14;
@@ -9690,10 +9690,10 @@ hu_in01.gat,14,11,4	script	Laura	70,{
 			mes "the Darkness^000000 from the Odin";
 			mes "Shrine. Go now, adventurer~";
 			close2;
-			cutin "hu_laura04.bmp",255;
+			cutin "hu_laura04",255;
 			end;
 	} else if (hg_alex == 14) {
-		cutin "hu_laura02.bmp",2;
+		cutin "hu_laura02",2;
 		mes "[Laura]";
 		mes "Hm? You've got a job";
 		mes "to do, don't you? What";
@@ -9707,7 +9707,7 @@ hu_in01.gat,14,11,4	script	Laura	70,{
 			mes "of the Darkness^000000. Now,";
 			mes "don't forget this time!";
 			close2;
-			cutin "hu_laura02.bmp",255;
+			cutin "hu_laura02",255;
 			end;
 		L_LABEL20:
 			mes "[Laura]";
@@ -9718,10 +9718,10 @@ hu_in01.gat,14,11,4	script	Laura	70,{
 			mes "snobby rich kids in the";
 			mes "other office. ^333333*Sigh...*^000000";
 			close2;
-			cutin "hu_laura02.bmp",255;
+			cutin "hu_laura02",255;
 			end;
 	} else if (hg_alex == 15) {
-		cutin "hu_laura04.bmp",2;
+		cutin "hu_laura04",2;
 		mes "[Laura]";
 		mes "Oh, you've come back.";
 		mes "So where are the Runes";
@@ -9729,14 +9729,14 @@ hu_in01.gat,14,11,4	script	Laura	70,{
 		next;
 		menu "Er, I don't have them yet...",L_LABEL21,"Right here!",L_LABEL22;
 		L_LABEL21:
-			cutin "hu_laura03.bmp",2;
+			cutin "hu_laura03",2;
 			mes "[Laura]";
 			mes "This isn't really one";
 			mes "of those jobs where you";
 			mes "can take your time. Sure,^FFFFFF ^000000 I didn't give you a deadline, but";
 			mes "we can't make progress on our^FFFFFF ^000000 research until you make progress.";
 			close2;
-			cutin "hu_laura03.bmp",255;
+			cutin "hu_laura03",255;
 			end;
 		L_LABEL22:
 			if (countitem(7511) > 4) {
@@ -9767,7 +9767,7 @@ hu_in01.gat,14,11,4	script	Laura	70,{
 				mes "gunk off without damaging";
 				mes "any writing that's there...";
 				next;
-				cutin "hu_laura01.bmp",2;
+				cutin "hu_laura01",2;
 				mes "[Laura]";
 				mes "By the way, what have the other guys been doing?";
 				mes "What, they don't do anything but wasting their time?";
@@ -9775,7 +9775,7 @@ hu_in01.gat,14,11,4	script	Laura	70,{
 				mes "for them to relax and rest.";
 				mes "Well, somehow they are the citizens of this country, you know.";
 				next;
-				cutin "hu_laura02.bmp",2;
+				cutin "hu_laura02",2;
 				mes "[Laura]";
 				mes "What do you think those";
 				mes "Schwaltzvalt snobs are doing?";
@@ -9783,7 +9783,7 @@ hu_in01.gat,14,11,4	script	Laura	70,{
 				mes "is an excuse for them to relax";
 				mes "and slack off! They can afford^FFFFFF ^000000 to, obviously. Hmpf! Rich people!";
 				next;
-				cutin "hu_laura03.bmp",2;
+				cutin "hu_laura03",2;
 				mes "[Laura]";
 				mes "They've got things so easy,";
 				mes "while we're barely covering";
@@ -9800,13 +9800,13 @@ hu_in01.gat,14,11,4	script	Laura	70,{
 				mes "poverty standards here...";
 				mes "Are we still researchers?";
 				next;
-				cutin "hu_laura02.bmp",2;
+				cutin "hu_laura02",2;
 				mes "[Laura]";
 				mes "I know that!";
 				mes "I know that already!";
 				mes "S-stop bringing it up!";
 				next;
-				cutin "hu_laura01.bmp",2;
+				cutin "hu_laura01",2;
 				mes "[Laura]";
 				mes "This is pathetic.";
 				mes "I can't even afford the";
@@ -9814,17 +9814,17 @@ hu_in01.gat,14,11,4	script	Laura	70,{
 				mes "conversation. You too,";
 				mes "why don't you take a rest?";
 				close2;
-				cutin "hu_laura01.bmp",255;
+				cutin "hu_laura01",255;
 				end;
 			} else if (countitem(7511) == 0) {
-				cutin "hu_laura02.bmp",2;
+				cutin "hu_laura02",2;
 				mes "[Laura]";
 				mes "..................";
 				mes "What is this?!";
 				mes "You're supposed to";
 				mes "bring me 5 of them!";
 				next;
-				cutin "hu_laura03.bmp",2;
+				cutin "hu_laura03",2;
 				mes "[Laura]";
 				mes "Is this your way of";
 				mes "saying that you don't";
@@ -9840,7 +9840,7 @@ hu_in01.gat,14,11,4	script	Laura	70,{
 				mes "of all people should know";
 				mes "that they're doing us a favor!";
 				next;
-				cutin "hu_laura02.bmp",2;
+				cutin "hu_laura02",2;
 				mes "[Laura]";
 				mes "Okay, Ashe, I get it!";
 				mes "And as for you, I'll give";
@@ -9848,10 +9848,10 @@ hu_in01.gat,14,11,4	script	Laura	70,{
 				mes "time you see me, bring";
 				mes "5 Runes of the Darkness!";
 				close2;
-				cutin "hu_laura02.bmp",255;
+				cutin "hu_laura02",255;
 				end;
 			} else if (countitem(7511) == 1) {
-				cutin "hu_laura03.bmp",2;
+				cutin "hu_laura03",2;
 				mes "[Laura]";
 				mes "...Only one?";
 				mes "Look at me. I asked";
@@ -9860,10 +9860,10 @@ hu_in01.gat,14,11,4	script	Laura	70,{
 				mes "But it's pretty darn close. Go";
 				mes "get me 4 more this instant!";
 				close2;
-				cutin "hu_laura03.bmp",255;
+				cutin "hu_laura03",255;
 				end;
 			} else if (countitem(7511) == 2) {
-				cutin "hu_laura03.bmp",2;
+				cutin "hu_laura03",2;
 				mes "[Laura]";
 				mes "One, two...";
 				mes "Huh? Th-that's all?!";
@@ -9872,7 +9872,7 @@ hu_in01.gat,14,11,4	script	Laura	70,{
 				mes "5, not 2. Now hurry up";
 				mes "and just do what I asked!";
 				close2;
-				cutin "hu_laura03.bmp",255;
+				cutin "hu_laura03",255;
 				end;
 			} else {
 				mes "[Laura]";
@@ -9882,13 +9882,13 @@ hu_in01.gat,14,11,4	script	Laura	70,{
 				mes "Go and get me more of those";
 				mes "Runes of the Darkness now!";
 				next;
-				cutin "hu_laura03.bmp",2;
+				cutin "hu_laura03",2;
 				close2;
-				cutin "hu_laura03.bmp",255;
+				cutin "hu_laura03",255;
 				end;
 			}
 	} else if (hg_alex == 16) {
-		cutin "hu_laura02.bmp",2;
+		cutin "hu_laura02",2;
 		mes "[Laura]";
 		mes "I wonder how much progress";
 		mes "those pampered Schwaltzvalt";
@@ -9904,7 +9904,7 @@ hu_in01.gat,14,11,4	script	Laura	70,{
 		mes "already. They can't have found";
 		mes "it before us. It's impossible!";
 		next;
-		cutin "hu_laura01.bmp",2;
+		cutin "hu_laura01",2;
 		mes "[Laura]";
 		mes "...Hey, you.";
 		next;
@@ -9925,7 +9925,7 @@ hu_in01.gat,14,11,4	script	Laura	70,{
 		mes "Republic office, and report";
 		mes "what she's actually doing to me. ^FFFFFF ^000000";
 		next;
-		cutin "hu_laura04.bmp",2;
+		cutin "hu_laura04",2;
 		mes "[Laura]";
 		mes "Anyway, just eavesdrop";
 		mes "on the Schwaltvalt Office";
@@ -9933,13 +9933,13 @@ hu_in01.gat,14,11,4	script	Laura	70,{
 		mes "close to the door, and listen";
 		mes "to them talk. Will you do that?";
 		next;
-		cutin "hu_laura02.bmp",2;
+		cutin "hu_laura02",2;
 		mes "[Laura]";
 		mes "...............................";
 		mes "Of course, you're";
 		mes "going to do it. Right?";
 		next;
-		cutin "hu_laura03.bmp",2;
+		cutin "hu_laura03",2;
 		mes "[Laura]";
 		mes "RIGHT?!";
 		next;
@@ -9949,15 +9949,15 @@ hu_in01.gat,14,11,4	script	Laura	70,{
 	L_LABEL27:
 	L_LABEL28:
 		set hg_alex,17;
-		cutin "hu_laura04.bmp",2;
+		cutin "hu_laura04",2;
 		mes "[Laura]";
 		mes "Good.";
 		mes "Now do it!";
 		close2;
-		cutin "hu_laura04.bmp",255;
+		cutin "hu_laura04",255;
 		end;
 	} else if (hg_alex == 17) {
-		cutin "hu_laura02.bmp",2;
+		cutin "hu_laura02",2;
 		mes "[Laura]";
 		mes "What are you standing";
 		mes "around here for? Go and";
@@ -9965,10 +9965,10 @@ hu_in01.gat,14,11,4	script	Laura	70,{
 		mes "next door! I must know";
 		mes "what they're really up to!";
 		close2;
-		cutin "hu_laura02.bmp",255;
+		cutin "hu_laura02",255;
 		end;
 	} else if ((hg_alex == 18) || (hg_alex == 19)) {
-		cutin "hu_laura01.bmp",2;
+		cutin "hu_laura01",2;
 		mes "[Laura]";
 		mes "Frankly, I know I'm paying";
 		mes "you nothing to be spy, but";
@@ -9978,14 +9978,14 @@ hu_in01.gat,14,11,4	script	Laura	70,{
 		next;
 		menu "Giantes",L_LABEL29,"Ymir's Heart",L_LABEL30,"Nothing",L_LABEL31;
 		L_LABEL29:
-			cutin "hu_laura04.bmp",2;
+			cutin "hu_laura04",2;
 			mes "["+strcharinfo(0)+"]";
 			mes "I'm guessing that you're";
 			mes "already familiar with the";
 			mes "creature known as Giantes";
 			mes "since you're an archaeplogist.";
 			next;
-			cutin "hu_laura02.bmp",2;
+			cutin "hu_laura02",2;
 			mes "[Laura]";
 			mes "Of course! It's an";
 			mes "ancient beast on which";
@@ -10045,7 +10045,7 @@ hu_in01.gat,14,11,4	script	Laura	70,{
 			mes "the trendy crowd in the";
 			mes "Schwaltzvalt Republic.";
 			next;
-			cutin "hu_laura01.bmp",2;
+			cutin "hu_laura01",2;
 			mes "[Laura]";
 			mes "Clothing brand?";
 			mes "You mean those snobs";
@@ -10054,7 +10054,7 @@ hu_in01.gat,14,11,4	script	Laura	70,{
 			mes "in there? Huh. Don't they";
 			mes "have better things to do?";
 			next;
-			cutin "hu_laura04.bmp",2;
+			cutin "hu_laura04",2;
 			mes "[Laura]";
 			mes "In the meantime, would";
 			mes "you do one more favor for";
@@ -10072,7 +10072,7 @@ hu_in01.gat,14,11,4	script	Laura	70,{
 			mes "you're the only one I can ask.";
 			set hg_alex,20;
 			close2;
-			cutin "hu_laura04.bmp",255;
+			cutin "hu_laura04",255;
 			end;
 		L_LABEL30:
 			mes "["+strcharinfo(0)+"]";
@@ -10126,7 +10126,7 @@ hu_in01.gat,14,11,4	script	Laura	70,{
 			mes "the trendy crowd in the";
 			mes "Schwaltzvalt Republic.";
 			next;
-			cutin "hu_laura01.bmp",2;
+			cutin "hu_laura01",2;
 			mes "[Laura]";
 			mes "Clothing brand?";
 			mes "You mean those snobs";
@@ -10135,7 +10135,7 @@ hu_in01.gat,14,11,4	script	Laura	70,{
 			mes "in there? Huh. Don't they";
 			mes "have better things to do?";
 			next;
-			cutin "hu_laura04.bmp",2;
+			cutin "hu_laura04",2;
 			mes "[Laura]";
 			mes "In the meantime, would";
 			mes "you do one more favor for";
@@ -10153,7 +10153,7 @@ hu_in01.gat,14,11,4	script	Laura	70,{
 			mes "you're the only one I can ask.";
 			set hg_alex,20;
 			close2;
-			cutin "hu_laura04.bmp",255;
+			cutin "hu_laura04",255;
 			end;
 		L_LABEL31:
 			mes "[Laura]";
@@ -10161,17 +10161,17 @@ hu_in01.gat,14,11,4	script	Laura	70,{
 			mes "Are you sure that's";
 			mes "all you learned?";
 			close2;
-			cutin "hu_laura01.bmp",255;
+			cutin "hu_laura01",255;
 			end;
 	} else if (hg_alex == 20) {
-		cutin "hu_laura01.bmp",2;
+		cutin "hu_laura01",2;
 		mes "[Laura]";
 		mes "I wonder...";
 		mes "What could be going on?";
 		mes "Hopefully I'll be able";
 		mes "to find the answers...";
 		close2;
-		cutin "hu_laura01.bmp",255;
+		cutin "hu_laura01",255;
 		end;
 	}
 }
@@ -10419,7 +10419,7 @@ OnTouch:
 hu_in01.gat,159,84,3	script	Laura#2	70,{
 
 	if ((hg_alex == 22) || (hg_alex == 23)) {
-		cutin "hu_laura03.bmp",2;
+		cutin "hu_laura03",2;
 		emotion ET_FRET,"Laura#2";
 		mes "[Laura]";
 		mes "Wh-what...?!";
@@ -10429,7 +10429,7 @@ hu_in01.gat,159,84,3	script	Laura#2	70,{
 		mes "whole time?! This is";
 		mes "complete lunacy!";
 		next;
-		cutin "hu_alex04.bmp",0;
+		cutin "hu_alex04",0;
 		emotion ET_FRET,"Alex#2";
 		mes "[Alex]";
 		mes "What are you talking";
@@ -10437,14 +10437,14 @@ hu_in01.gat,159,84,3	script	Laura#2	70,{
 		mes "You saw the shrine on the";
 		mes "other side! That's no secret!";
 		next;
-		cutin "hu_laura03.bmp",2;
+		cutin "hu_laura03",2;
 		mes "[Laura]";
 		mes "I'm not talking about that!";
 		mes "I saw your brother digging";
 		mes "everywhere in town in the";
 		mes "middle of the night!";
 		next;
-		cutin "hu_alex04.bmp",0;
+		cutin "hu_alex04",0;
 		mes "[Alex]";
 		mes "Lies...!";
 		mes "Where the hell did";
@@ -10459,7 +10459,7 @@ hu_in01.gat,159,84,3	script	Laura#2	70,{
 		mes "waste so much time doing";
 		mes "something so ridiculous?";
 		next;
-		cutin "hu_laura03.bmp",2;
+		cutin "hu_laura03",2;
 		mes "[Laura]";
 		mes "Hahahaha! Yeah,";
 		mes "defend your brother";
@@ -10468,14 +10468,14 @@ hu_in01.gat,159,84,3	script	Laura#2	70,{
 		mes "you care about him, I know";
 		mes "you two really hate each other!";
 		next;
-		cutin "hu_alex04.bmp",0;
+		cutin "hu_alex04",0;
 		mes "[Alex]";
 		mes "What was that...?";
 		mes "I dare you to say";
 		mes "that again! I'll make";
 		mes "sure that you regret it!";
 		next;
-		cutin "hu_laura01.bmp",2;
+		cutin "hu_laura01",2;
 		mes "[Laura]";
 		mes "I know that you were helping";
 		mes "him in his excavations. There's";
@@ -10498,7 +10498,7 @@ hu_in01.gat,159,84,3	script	Laura#2	70,{
 		mes "Now tell me, what the";
 		mes "hell is ''^FF0000Ymir's Heart?^000000''";
 		next;
-		cutin "hu_alex02.bmp",0;
+		cutin "hu_alex02",0;
 		mes "[Alex]";
 		mes "......";
 		mes "Julian!";
@@ -10509,7 +10509,7 @@ hu_in01.gat,159,84,3	script	Laura#2	70,{
 		mes "Sh-she doesn't have any";
 		mes "right to come into our office!";
 		next;
-		cutin "hu_laura02.bmp",2;
+		cutin "hu_laura02",2;
 		mes "[Laura]";
 		mes "Hah! Aren't we supposed to";
 		mes "be equal partners in the same";
@@ -10517,7 +10517,7 @@ hu_in01.gat,159,84,3	script	Laura#2	70,{
 		mes "at the beginning! But you guys";
 		mes "have something different in mind! ^FFFFFF ^000000";
 		next;
-		cutin "hu_laura03.bmp",2;
+		cutin "hu_laura03",2;
 		mes "[Laura]";
 		mes "It's awfully suspicious: you";
 		mes "guys are only going out at";
@@ -10526,7 +10526,7 @@ hu_in01.gat,159,84,3	script	Laura#2	70,{
 		mes "Shrine excavation. Tell me,";
 		mes "what are your true goals?!";
 		next;
-		cutin "hu_alex03.bmp",0;
+		cutin "hu_alex03",0;
 		emotion ET_PROFUSELY_SWAT,"Alex#2";
 		mes "[Alex]";
 		mes "I-I don't know what you're";
@@ -10535,7 +10535,7 @@ hu_in01.gat,159,84,3	script	Laura#2	70,{
 		mes "has been carrying it out without^FFFFFF ^000000 my consent! Don't go twisting";
 		mes "the facts, you... you thief!";
 		next;
-		cutin "hu_laura03.bmp",2;
+		cutin "hu_laura03",2;
 		mes "[Laura]";
 		mes "Thief...?!";
 		mes "Look who's";
@@ -10555,7 +10555,7 @@ hu_in01.gat,159,84,3	script	Laura#2	70,{
 		mes "Stay out of";
 		mes "this, Ashe!";
 		next;
-		cutin "hu_alex04.bmp",0;
+		cutin "hu_alex04",0;
 		emotion ET_FRET,"Alex#2";
 		mes "[Alex]";
 		mes "Yeah, this is none";
@@ -10565,22 +10565,22 @@ hu_in01.gat,159,84,3	script	Laura#2	70,{
 		mes "[Ashe]";
 		mes "Oh... Oh, dear!";
 		close2;
-		cutin "hu_alex04.bmp",255;
+		cutin "hu_alex04",255;
 		end;
 	} else if (hg_alex > 23) {
-		cutin "hu_laura03.bmp",2;
+		cutin "hu_laura03",2;
 		emotion ET_FRET,"Laura#2";
 		mes "[Laura]";
 		mes "Hah...!";
 		mes "Did you...";
 		mes "Just hit me?";
 		next;
-		cutin "hu_alex04.bmp",0;
+		cutin "hu_alex04",0;
 		emotion ET_FRET,"Alex#2";
 		mes "[Alex]";
 		mes "You crazy...!";
 		close2;
-		cutin "hu_alex04.bmp",255;
+		cutin "hu_alex04",255;
 		end;
 	}
 }
@@ -10588,7 +10588,7 @@ hu_in01.gat,159,84,3	script	Laura#2	70,{
 hu_in01.gat,158,84,5	script	Alex#2	803,{
 
 	if ((hg_alex == 22) || (hg_alex == 23)) {
-		cutin "hu_laura03.bmp",2;
+		cutin "hu_laura03",2;
 		emotion ET_FRET,"Laura#2";
 		mes "[Laura]";
 		mes "Wh-what...?!";
@@ -10598,7 +10598,7 @@ hu_in01.gat,158,84,5	script	Alex#2	803,{
 		mes "whole time?! This is";
 		mes "complete lunacy!";
 		next;
-		cutin "hu_alex04.bmp",0;
+		cutin "hu_alex04",0;
 		emotion ET_FRET,"Alex#2";
 		mes "[Alex]";
 		mes "What are you talking";
@@ -10606,14 +10606,14 @@ hu_in01.gat,158,84,5	script	Alex#2	803,{
 		mes "You saw the shrine on the";
 		mes "other side! That's no secret!";
 		next;
-		cutin "hu_laura03.bmp",2;
+		cutin "hu_laura03",2;
 		mes "[Laura]";
 		mes "I'm not talking about that!";
 		mes "I saw your brother digging";
 		mes "everywhere in town in the";
 		mes "middle of the night!";
 		next;
-		cutin "hu_alex04.bmp",0;
+		cutin "hu_alex04",0;
 		mes "[Alex]";
 		mes "Lies...!";
 		mes "Where the hell did";
@@ -10628,7 +10628,7 @@ hu_in01.gat,158,84,5	script	Alex#2	803,{
 		mes "waste so much time doing";
 		mes "something so ridiculous?";
 		next;
-		cutin "hu_laura03.bmp",2;
+		cutin "hu_laura03",2;
 		mes "[Laura]";
 		mes "Hahahaha! Yeah,";
 		mes "defend your brother";
@@ -10637,14 +10637,14 @@ hu_in01.gat,158,84,5	script	Alex#2	803,{
 		mes "you care about him, I know";
 		mes "you two really hate each other!";
 		next;
-		cutin "hu_alex04.bmp",0;
+		cutin "hu_alex04",0;
 		mes "[Alex]";
 		mes "What was that...?";
 		mes "I dare you to say";
 		mes "that again! I'll make";
 		mes "sure that you regret it!";
 		next;
-		cutin "hu_laura01.bmp",2;
+		cutin "hu_laura01",2;
 		mes "[Laura]";
 		mes "I know that you were helping";
 		mes "him in his excavations. There's";
@@ -10667,7 +10667,7 @@ hu_in01.gat,158,84,5	script	Alex#2	803,{
 		mes "Now tell me, what the";
 		mes "hell is ''^FF0000Ymir's Heart?^000000''";
 		next;
-		cutin "hu_alex02.bmp",0;
+		cutin "hu_alex02",0;
 		mes "[Alex]";
 		mes "......";
 		mes "Julian!";
@@ -10678,7 +10678,7 @@ hu_in01.gat,158,84,5	script	Alex#2	803,{
 		mes "Sh-she doesn't have any";
 		mes "right to come into our office!";
 		next;
-		cutin "hu_laura02.bmp",2;
+		cutin "hu_laura02",2;
 		mes "[Laura]";
 		mes "Hah! Aren't we supposed to";
 		mes "be equal partners in the same";
@@ -10686,7 +10686,7 @@ hu_in01.gat,158,84,5	script	Alex#2	803,{
 		mes "at the beginning! But you guys";
 		mes "have something different in mind! ^FFFFFF ^000000";
 		next;
-		cutin "hu_laura03.bmp",2;
+		cutin "hu_laura03",2;
 		mes "[Laura]";
 		mes "It's awfully suspicious: you";
 		mes "guys are only going out at";
@@ -10695,7 +10695,7 @@ hu_in01.gat,158,84,5	script	Alex#2	803,{
 		mes "Shrine excavation. Tell me,";
 		mes "what are your true goals?!";
 		next;
-		cutin "hu_alex03.bmp",0;
+		cutin "hu_alex03",0;
 		emotion ET_PROFUSELY_SWAT,"Alex#2";
 		mes "[Alex]";
 		mes "I-I don't know what you're";
@@ -10704,7 +10704,7 @@ hu_in01.gat,158,84,5	script	Alex#2	803,{
 		mes "has been carrying it out without^FFFFFF ^000000 my consent! Don't go twisting";
 		mes "the facts, you... you thief!";
 		next;
-		cutin "hu_laura03.bmp",2;
+		cutin "hu_laura03",2;
 		mes "[Laura]";
 		mes "Thief...?!";
 		mes "Look who's";
@@ -10724,7 +10724,7 @@ hu_in01.gat,158,84,5	script	Alex#2	803,{
 		mes "Stay out of";
 		mes "this, Ashe!";
 		next;
-		cutin "hu_alex04.bmp",0;
+		cutin "hu_alex04",0;
 		emotion ET_FRET,"Alex#2";
 		mes "[Alex]";
 		mes "Yeah, this is none";
@@ -10734,22 +10734,22 @@ hu_in01.gat,158,84,5	script	Alex#2	803,{
 		mes "[Ashe]";
 		mes "Oh... Oh, dear!";
 		close2;
-		cutin "hu_alex04.bmp",255;
+		cutin "hu_alex04",255;
 		end;
 	} else if (hg_alex > 23) {
-		cutin "hu_laura03.bmp",2;
+		cutin "hu_laura03",2;
 		emotion ET_FRET,"Laura#2";
 		mes "[Laura]";
 		mes "Hah...!";
 		mes "Did you...";
 		mes "Just hit me?";
 		next;
-		cutin "hu_alex04.bmp",0;
+		cutin "hu_alex04",0;
 		emotion ET_FRET,"Alex#2";
 		mes "[Alex]";
 		mes "You crazy...!";
 		close2;
-		cutin "hu_alex04.bmp",255;
+		cutin "hu_alex04",255;
 		end;
 	}
 }
@@ -11568,7 +11568,7 @@ hu_in01.gat,26,77,4	script	Part-Timer#2	 50,{
 
 hugel.gat,70,137,5	script	Shede	879,{
 
-	cutin "siide1.bmp",2;
+	cutin "siide1",2;
 	if (hg_tre == 0)
 	{
 		mes "[Shede]";
@@ -11601,7 +11601,7 @@ hugel.gat,70,137,5	script	Shede	879,{
 					mes "so I want to make \"^3131FFMushroom Flavor Cookies^000000\" for him.";
 					mes "Unfortunately, I am short of the most important ingredient, the Mushrooms.";
 					next;
-					cutin "siide2.bmp",2;
+					cutin "siide2",2;
 					mes "[Shede]";
 					mes "Ordinary mushrooms don't smell that good, but";
 					mes "\"^3131FFMoks Mushrooms^000000\" which only grow in Hugel have such appetizing scent.";
@@ -11627,7 +11627,7 @@ hugel.gat,70,137,5	script	Shede	879,{
 					mes "You need to know how to harmonize your skills and your senses";
 					mes "to make the most delicious cookies.";
 					next;
-					cutin "siide2.bmp",2;
+					cutin "siide2",2;
 					mes "[Shede]";
 					mes "I dare to say that my cookies are the best.";
 					mes "However, Agette is also a professional cookie baker.";
@@ -11670,7 +11670,7 @@ hugel.gat,70,137,5	script	Shede	879,{
 					mes "I think that the time has come to let him know";
 					mes "how I feel about him.";
 					next;
-					cutin "siide2.bmp",2;
+					cutin "siide2",2;
 					mes "[Shede]";
 					mes "So, I decided to bake special cookies called...";
 					mes "...... ^3131FFDevil's Cookies^000000!";
@@ -11678,7 +11678,7 @@ hugel.gat,70,137,5	script	Shede	879,{
 					mes "["+strcharinfo(0)+"]";
 					mes "Devil's Cookies?";
 					next;
-					cutin "siide1.bmp",2;
+					cutin "siide1",2;
 					mes "[Shede]";
 					mes "Yes, Devil's Cookies.";
 					mes "When you go outside of Hugel, you will find \"^3131FFMoks Bugs^000000\"";
@@ -11688,13 +11688,13 @@ hugel.gat,70,137,5	script	Shede	879,{
 					mes "When you stew their shells and use the broth to kneed flour,";
 					mes "you can make fresh and crunch cookies.";
 					next;
-					cutin "siide2.bmp",2;
+					cutin "siide2",2;
 					mes "[Shede]";
 					mes "Devil's Cookies are so delicious, so they are rumored to dazzle the eaters with";
 					mes "the mysteriously crunch texture and the sweetness, and to allure them to hell without them knowing.";
 					mes "Ah~ I hope that he will like them...";
 					next;
-					cutin "siide1.bmp",2;
+					cutin "siide1",2;
 					mes "[Shede]";
 					mes "Would you please help me to bake the cookies? I need 5 Moks Bug Shells~";
 					next;
@@ -11838,7 +11838,7 @@ hu_in01.gat,256,40,3	script	Herico	897,{
 		mes "Why don't you go take some load off your shoulder first, and come back?";
 		close;
 	}
-	cutin "heri1.bmp",2;
+	cutin "heri1",2;
 	if (hg_tre < 41)
 	{
 		mes "[Herico]";
@@ -11880,12 +11880,12 @@ hu_in01.gat,256,40,3	script	Herico	897,{
 		switch(select("Yes, you are right.","I am not so sure.","No."))
 		{
 		case 1:
-			cutin "heri2.bmp",2;
+			cutin "heri2",2;
 			mes "[Herico]";
 			mes "I think that my senses are still working fine.";
 			mes "People's eyes tell many things to me.";
 			next;
-			cutin "heri1.bmp",2;
+			cutin "heri1",2;
 			mes "[Herico]";
 			mes "Your eyes are telling me your admiration and astonishment";
 			mes "toward what you have seen in Hugel,";
@@ -11965,7 +11965,7 @@ hu_in01.gat,256,40,3	script	Herico	897,{
 			mes "- You told him what you have seen and heard from the Odin Shirine, -";
 			mes "- such as Giantes, Ymir's Heart and Rekenber. -";
 			next;
-			cutin "heri3.bmp",2;
+			cutin "heri3",2;
 			mes "[Herico]";
 			mes "Rekenber...So, they have expanded";
 			mes "their power even to this small village, Hugel.";
@@ -11979,7 +11979,7 @@ hu_in01.gat,256,40,3	script	Herico	897,{
 			mes "[Herico]";
 			mes "............";
 			next;
-			cutin "heri1.bmp",2;
+			cutin "heri1",2;
 			mes "[Herico]";
 			mes "Thank you so much for your effort.";
 			mes "I am afraid that your dangerous journey has not been ended.";
@@ -12045,7 +12045,7 @@ hu_in01.gat,256,40,3	script	Herico	897,{
 		mes "Ever since their rebellion was failed,";
 		mes "survivors of the rebellion have disappeared beyond history.";
 		next;
-		cutin "heri3.bmp",2;
+		cutin "heri3",2;
 		mes "[Herico]";
 		mes "Not only that, they held a fight with guardians in";
 		mes "^FF0000the Sage Varmunt's birthplace^000000";
@@ -12056,7 +12056,7 @@ hu_in01.gat,256,40,3	script	Herico	897,{
 		mes "["+strcharinfo(0)+"]";
 		mes "Sage Varmunt.....!";
 		next;
-		cutin "heri1.bmp",2;
+		cutin "heri1",2;
 		mes "[Herico]";
 		mes "Oh...I must have been really upset about it.";
 		next;
@@ -12173,7 +12173,7 @@ hu_in01.gat,256,40,3	script	Herico	897,{
 			mes "["+strcharinfo(0)+"]";
 			mes "Err...I was just kidding...";
 			next;
-			cutin "heri2.bmp",2;
+			cutin "heri2",2;
 			mes "[Herico]";
 			mes "Haha, the first part was funny,";
 			mes "but the second part was kind of scary, you know?";
@@ -12192,11 +12192,11 @@ hu_in01.gat,256,40,3	script	Herico	897,{
 			next;
 			break;
 		}
-		cutin "heri3.bmp",2;
+		cutin "heri3",2;
 		mes "[Herico]";
 		mes "...........................";
 		next;
-		cutin "heri1.bmp",2;
+		cutin "heri1",2;
 		mes "[Herico]";
 		mes "It was expected.";
 		next;
@@ -12210,11 +12210,11 @@ hu_in01.gat,256,40,3	script	Herico	897,{
 		mes " in Regenschirm laboratory^000000 under Sage Varmunt's supervision.";
 		gmcommand "@emotion e_omg";
 		next;
-		cutin "heri2.bmp",2;
+		cutin "heri2",2;
 		mes "[Herico]";
 		mes "You look very surprised.";
 		next;
-		cutin "heri1.bmp",2;
+		cutin "heri1",2;
 		mes "["+strcharinfo(0)+"]";
 		mes "Does it mean that you are the one";
 		mes "who created the Ymir's Heart imitation?";
@@ -12274,7 +12274,7 @@ hu_in01.gat,256,40,3	script	Herico	897,{
 		mes "almost every research process started stagnating.";
 		mes "Even many projects were canceled or postponed.";
 		next;
-		cutin "heri3.bmp",2;
+		cutin "heri3",2;
 		mes "[Herico]";
 		mes "The upper management were threatened by the phenomenon,";
 		mes "so they yelled at people to ^FF0000continue";
@@ -12282,7 +12282,7 @@ hu_in01.gat,256,40,3	script	Herico	897,{
 		mes "They even allowed people to experiment";
 		mes "on anything that is alive.";
 		next;
-		cutin "heri1.bmp",2;
+		cutin "heri1",2;
 		mes "[Herico]";
 		mes "......................";
 		mes "That gave me a reason to leave Regenschirm.";
@@ -12295,7 +12295,7 @@ hu_in01.gat,256,40,3	script	Herico	897,{
 		mes "That was why they found the \"Bio Lab\"";
 		mes "in order to continue with their research without Sage Varmunt.";
 		next;
-		cutin "heri3.bmp",2;
+		cutin "heri3",2;
 		emotion e_ag;
 		mes "[Herico]";
 		mes "What? \"Bio Lab\"? I didn't image that they could";
@@ -12350,7 +12350,7 @@ hu_in01.gat,256,40,3	script	Herico	897,{
 			cutin "",255;
 			end;
 		case 2:
-			cutin "heri2.bmp",2;
+			cutin "heri2",2;
 			mes "[Herico]";
 			mes "I knew that you are too righteous to";
 			mes "neglect lies and injustice.";
@@ -12396,7 +12396,7 @@ hu_in01.gat,256,40,3	script	Herico	897,{
 		mes "of Rekenber's Laighthalzen headquarters.";
 		mes "Can you sneak into the place and bring me their research data?";
 		close2;
-		cutin "heri1.bmp",255;
+		cutin "heri1",255;
 		end;
 	}
 	else if(hg_tre == 53)
@@ -12478,7 +12478,7 @@ hu_in01.gat,256,40,3	script	Herico	897,{
 		mes "["+strcharinfo(0)+"]";
 		mes "The machine was blown up.";
 		next;
-		cutin "heri2.bmp",2;
+		cutin "heri2",2;
 		mes "[Herico]";
 		mes "Excellent! Excellent!";
 		next;
@@ -12487,7 +12487,7 @@ hu_in01.gat,256,40,3	script	Herico	897,{
 		mes "proceed with their bio research at least for a while.";
 		mes "You did a great job, and I am so proud of you.";
 		next;
-		cutin "heri1.bmp",2;
+		cutin "heri1",2;
 		mes "[Herico]";
 		mes "I assume that there are";
 		mes "some failed experimental objects remaining within the laboratory.";
@@ -12962,7 +12962,7 @@ hu_in01.gat,310,380,5	script	Girl	891,{
 
 hu_in01.gat,317,312,0	script	Book	111,{
 
-	cutin "hg_book.bmp",2;
+	cutin "hg_book",2;
 	if (hg_tre > 47)
 	{
 		mes "- You picked up a very thick book. -";

@@ -7270,10 +7270,10 @@ L_NoText:
 			mes "you must search should";
 			mes "be clear to you now! Don't";
 			mes "forget these placemarks!";
-			viewpoint 1,104,282,1,0xFF99FF33;
-			viewpoint 1,105,282,2,0xFF99FF33;
-			viewpoint 1,104,281,3,0xFF99FF33;
-			viewpoint 1,105,281,4,0xFF99FF33;
+			viewpoint 1,104,282,1,0x99FF33;
+			viewpoint 1,105,282,2,0x99FF33;
+			viewpoint 1,104,281,3,0x99FF33;
+			viewpoint 1,105,281,4,0x99FF33;
 			next;
 			mes "[Elder]";
 			mes "Good luck, youngster.";
@@ -10262,37 +10262,6 @@ OnTimer220000:
 	end;
 }
 
-sec_in02.gat,38,159,3	script	Passage Global	869,{
-
-	mes "[Passage]";
-	mes "Enter password.";
-	next;
-	input '@input;
-	if ('@input == 8028) {
-		set '@g,$@mobstersecurity;
-		mes "[Passage]";
-		mes "Current passage global variable is " + '@g + ".";
-		mes "How would you like to change?";
-		next;
-		switch(select("0","12","100")) {
-		case 1:
-			set $@mobstersecurity,0;
-			end;
-		case 2:
-			set $@mobstersecurity,12;
-			end;
-		case 3:
-			set $@mobstersecurity,100;
-			end;
-		}
-	} else if ('@input < 0 || '@input > 9999) {
-		mes "[Passage]";
-		mes "Wrong password.";
-		close;
-	}
-	end;
-}
-
 
 //--------------------------------------------------------------
 // Pickpocket Quest - [Tsuyuki]
@@ -11381,7 +11350,7 @@ lighthalzen.gat,179,170,4	script	Ordinary Man	98,{
 	}
 }
 
-lighthalzen.gat,173,167,1	script	Switch	139,2,4,{
+lighthalzen.gat,173,167,1	script	Switch#1	139,2,4,{
 
 OnTouch:
 	if (lhz_boss == 1) {
@@ -11998,7 +11967,7 @@ yuno_pre.gat,69,79,4	script	Mr. President	872,{
 		mes "- and try again. -";
 		close;
 	}
-	cutin "lhz_karl.bmp",2;
+	cutin "lhz_karl",2;
 	if (lhz_boss < 11) {
 		mes "[Karl]";
 		mes "How did you get in here?";
@@ -13768,7 +13737,7 @@ lhz_in01.gat,285,169,3	script	Researcher	865,{
 	}
 }
 
-lhz_in01.gat,187,31,0	script	#Sneak	111,4,3,{
+lhz_in01.gat,187,31,0	script	Guard#sneak	111,4,3,{
 
 	end;
 
@@ -13855,7 +13824,7 @@ L_Enter:
 							mes "outside for security reasons.";
 							close2;
 							set lhz_boss,29;
-							donpcevent "Timer_Sneak::OnEnter";
+							donpcevent "timer_out_lt::OnEnter";
 							warp "lhz_in01.gat",177,35;
 							end;
 						case 2:
@@ -13914,14 +13883,14 @@ L_Enter:
 	}
 }
 
-lhz_in01.gat,177,44,0	script	Timer_Sneak	139,8,12,{
+lhz_in01.gat,177,44,0	script	timer_out_lt	139,8,12,{
 
 OnTouch:
 	warp "lhz_in01.gat",191,49;
 	end;
 
 OnInit:
-	disablenpc "Timer_Sneak";
+	disablenpc "timer_out_lt";
 	end;
 
 OnEnter:
@@ -13930,12 +13899,12 @@ OnEnter:
 	end;
 
 OnTimer180000:
-	enablenpc "Timer_Sneak";
+	enablenpc "timer_out_lt";
 	end;
 
 OnTimer190000:
 	stopnpctimer;
-	disablenpc "Timer_Sneak";
+	disablenpc "timer_out_lt";
 	end;
 }
 
@@ -14331,6 +14300,30 @@ lhz_in01.gat,177,56,0	script	Area 6-1	111,{
 	}
 }
 
+lhz_in01.gat,180,28,4	script	Guard#lt5	868,{
+
+	mes "[Guard]";
+	mes "This is a";
+	mes "restricted area.";
+	mes "Please keep clear";
+	mes "if you do not have";
+	mes "special authorization.";
+	mes "Thank you for cooperating.";
+	close;
+}
+
+lhz_in01.gat,173,28,4	script	Guard#lt5	868,{
+
+	mes "[Guard]";
+	mes "This is a";
+	mes "restricted area.";
+	mes "Please keep clear";
+	mes "if you do not have";
+	mes "special authorization.";
+	mes "Thank you for cooperating.";
+	close;
+}
+
 lhz_dun02.gat,282,278,0	script	Broken Machine	111,{
 
 	if (checkweight(7346,1) != 1) {
@@ -14399,6 +14392,175 @@ lhz_dun02.gat,282,278,0	script	Broken Machine	111,{
 		mes "seem completely useless.^000000";
 		close;
 	}
+}
+
+lhz_in01.gat,73,188,0	script	Guide#lt2	862,{
+
+	mes "[Bonnie]";
+	mes "Oh no...";
+	mes "Where did I put it?";
+	close;
+}
+
+lhz_in01.gat,72,195,0	script	Guide#lt1	90,{
+
+	mes "[Geonuii]";
+	mes "Greetings. This path";
+	mes "leads to the Library and";
+	mes "the Laboratory. Please be";
+	mes "aware that these places";
+	mes "are restricted from access";
+	mes "by the general public.";
+	close;
+}
+
+lhz_in01.gat,72,209,5	script	Guide#lt1	862,{
+
+	mes "[Lasoei]";
+	mes "Oh phooey.";
+	mes "The same customers";
+	mes "are always coming in,";
+	mes "day after day. Can it";
+	mes "get any less exciting?";
+	next;
+	mes "[Lasoei]";
+	mes "Oh...!";
+	mes "W-welcome~";
+	mes "C-can I help you";
+	mes "with anything?";
+	close;
+}
+
+lhz_in02.gat,36,274,4	script	Cool Event Staff#Saera	831,{
+
+	mes "[Saera]";
+	mes "Welcome to the";
+	mes "temporary headquarters";
+	mes "of Cool Event Corporation.";
+	mes "How may I help you today?";
+	next;
+	switch(select("Temporary headquarters?","Voting","No, thanks.")) {
+	case 1:
+		mes "[Saera]";
+		mes "Our headquarters building";
+		mes "is currently undergoing";
+		mes "reconstruction, so we are";
+		mes "basing our operations in";
+		mes "this place for the meantime.";
+		close;
+	case 2:
+		if (lght_boss < 17) {
+			mes "[Saera]";
+			mes "Currently, Kafra Corporation";
+			mes "and Cool Event Corp are working";
+			mes "on a collaborative program that";
+			mes "will provide direct teleport";
+			mes "services to dungeons.";
+			next;
+			mes "[Saera]";
+			mes "Due to technical issues,";
+			mes "both companies cannot provide";
+			mes "teleport services to the same";
+			mes "dungeon. Therefore, we will be";
+			mes "selecting our valued customers to choose the company they want.";
+			next;
+			mes "[Saera]";
+			mes "Only a limited number of";
+			mes "voters will be chosen, so";
+			mes "you can check your voting";
+			mes "eligibility at the headquarters";
+			mes "of both participating companies. Thank you for your patronage~";
+			close;
+		} else {
+			mes "[Saera]";
+			mes "Currently, Kafra Corporation";
+			mes "and Cool Event Corp are working";
+			mes "on a collaborative program that";
+			mes "will provide direct teleport";
+			mes "services to dungeons.";
+			next;
+			mes "[Saera]";
+			mes "Due to technical issues,";
+			mes "both companies cannot provide";
+			mes "teleport services to the same";
+			mes "dungeon. Therefore, we will be";
+			mes "selecting a number of valued customers to vote for their choice.";
+			next;
+			mes "[Saera]";
+			mes "I've just reviewed your";
+			mes "information and would like";
+			mes "to inform you that you are";
+			mes "indeed eligible to vote.";
+			mes "Your participation in this";
+			mes "election is much appreciated.";
+			next;
+			mes "[Saera]";
+			mes "Remember that the";
+			mes "election polls can be";
+			mes "found in either Prontera";
+			mes "or Juno. Thank you very much.";
+			close;
+		}
+	case 3:
+		mes "[Saera]";
+		mes "Thank you.";
+		mes "Have a good day.";
+		close;
+	}
+}
+
+lhz_in02.gat,40,280,6	script	Event Planner	833,{
+
+	mes "[Jellarin]";
+	mes "I don't like this.";
+	mes "But I don't like that";
+	mes "idea either. What will";
+	mes "I do for a new event, eh?";
+	next;
+	mes "[Jellarin]";
+	mes "I need something";
+	mes "major, something that'll";
+	mes "really shake up the world,";
+	mes "something epochal, but what?";
+	mes "Hey, do you have any ideas";
+	close;
+}
+
+lhz_in02.gat,110,286,5	script	Cool Event Manager	853,{
+
+	mes "[Baoto]";
+	mes "Hmmm...";
+	mes "The employees seem";
+	mes "to be having too much";
+	mes "fun amongst themselves";
+	mes "recently. This does not";
+	mes "bode well at all...";
+	next;
+	mes "[Baoto]";
+	mes "It looks like I'm";
+	mes "just going to have to";
+	mes "start cracking that whip";
+	mes "more often and much";
+	mes "harder. Ha ha ha ha!";
+	close;
+}
+
+lhz_in02.gat,36,284,0	script	Cool Event Staff#Cesuna	874,{
+
+	mes "[Cesuna]";
+	mes "Ack! I'm totally";
+	mes "swamped with all this";
+	mes "work! But I don't wannna";
+	mes "do any of it. That's it!";
+	mes "I totally need a break";
+	next;
+	mes "[Cesuna]";
+	mes "^333333*Sigh...*^000000";
+	mes "I wonder if Saera";
+	mes "would ever consider";
+	mes "going out with me?";
+	mes "That would be nice~";
+	close;
 }
 
 lhz_in02.gat,19,274,2	script	Maintenance Guy	851,{

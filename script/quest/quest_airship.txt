@@ -1367,7 +1367,7 @@ OnAttack:
 
 airplane01.gat,238,154,5	script	Airship Captain#01	873,{
 
-	cutin "fly_trock.bmp",2;
+	cutin "fly_trock",2;
 	mes "[Tarlock]";
 	mes "I am Tarlock,";
 	mes "captain of this";
@@ -1647,7 +1647,7 @@ airplane01.gat,238,154,5	script	Airship Captain#01	873,{
 
 airplane.gat,236,163,5	script	Airship Captain#03	873,{
 
-	cutin "fly_trock.bmp",2;
+	cutin "fly_trock",2;
 	if (hg_ma1 == 3 || hg_ma1 == 4)
 	{
 		mes "[Ferlock]";

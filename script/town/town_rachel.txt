@@ -23,7 +23,7 @@
 
 ice_dun04.gat,33,166,3	script	Frozen Boy	925,{
 
-	cutin "ra_sboy.bmp",2;
+	cutin "ra_sboy",2;
 	mes "Missing dialog.";
 	close2;
 	cutin "",255;

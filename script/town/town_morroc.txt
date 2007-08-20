@@ -4288,7 +4288,7 @@ que_job01.gat,16,21,5	script	Valdes#1	55,{
 				mes "I'm Kidd.";
 				mes "Nice to meet you.";
 				donpcevent "Kidd#1::OnEmotion";
-				cutin "mocseal_kid01.bmp",2;
+				cutin "mocseal_kid01",2;
 				next;
 				mes "[Valdes]";
 				mes "Alright, please take this";
@@ -4323,7 +4323,7 @@ que_job01.gat,16,21,5	script	Valdes#1	55,{
 				mes "to working together";
 				mes "with you. Heh heh~";
 				donpcevent "Lin#1::OnEmotion";
-				cutin "mocseal_rin01.bmp",2;
+				cutin "mocseal_rin01",2;
 				next;
 				mes "[Valdes]";
 				mes "Here, take this written";
@@ -4400,7 +4400,7 @@ que_job01.gat,16,21,5	script	Valdes#1	55,{
 		mes "That snake managed";
 		mes "to get away in all of";
 		mes "that confusion.";
-		cutin "mocseal_rin01.bmp",2;
+		cutin "mocseal_rin01",2;
 		next;
 		mes "[" + strcharinfo(0) + "]";
 		mes "L-Lin...?";
@@ -4420,7 +4420,7 @@ que_job01.gat,16,21,5	script	Valdes#1	55,{
 		mes "Lin, you did your job";
 		mes "perfectly, and there's no";
 		mes "way we could have known...";
-		cutin "mocseal_kid01.bmp",0;
+		cutin "mocseal_kid01",0;
 		next;
 		mes "[Valdes]";
 		mes "Although I agree with Kidd,";
@@ -4434,9 +4434,9 @@ que_job01.gat,16,21,5	script	Valdes#1	55,{
 		mes "but I don't want to lose";
 		mes "Moore's trail. I'd better";
 		mes "go now while I can...";
-		cutin "mocseal_rin01.bmp",2;
+		cutin "mocseal_rin01",2;
 		next;
-		cutin "mocseal_rin01.bmp",255;
+		cutin "mocseal_rin01",255;
 		donpcevent "Lin#1::OnInit";
 		mes "[" + strcharinfo(0) + "]";
 		mes "She seems upset....";
@@ -4536,7 +4536,7 @@ que_job01.gat,16,21,5	script	Valdes#1	55,{
 		mes "to do was for the sake of";
 		mes "Satan Morroc's reincarnation.";
 		mes "He almost got away with it...";
-		cutin "mocseal_rin01.bmp",2;
+		cutin "mocseal_rin01",2;
 		next;
 		mes "[Lin]";
 		mes "He got away from us";
@@ -4554,7 +4554,7 @@ que_job01.gat,16,21,5	script	Valdes#1	55,{
 		mes "C'mon, we understand";
 		mes "how you feel, but it's not";
 		mes "your fault at all.";
-		cutin "mocseal_kid01.bmp",0;
+		cutin "mocseal_kid01",0;
 		next;
 		mes "[Valdes]";
 		mes "Kidd is right. We shouldn't";
@@ -4563,14 +4563,14 @@ que_job01.gat,16,21,5	script	Valdes#1	55,{
 		mes "be satisfied with preventing";
 		mes "Satan Morroc's revival, and";
 		mes "then focus on Raiyan Moore.";
-		cutin "mocseal_kid01.bmp",255;
+		cutin "mocseal_kid01",255;
 		next;
 		mes "[Lin]";
 		mes "Don't worry, Valdes.";
 		mes "I'm going to take care of";
 		mes "Raiyan Moore. He's not going";
 		mes "to get away from me again.";
-		cutin "mocseal_rin01.bmp",2;
+		cutin "mocseal_rin01",2;
 		next;
 		mes "[Valdes]";
 		mes "Well, Lin...";
@@ -4618,7 +4618,7 @@ que_job01.gat,16,21,5	script	Valdes#1	55,{
 		mes "I'm leaving now.";
 		mes "Wish me luck, "+ strcharinfo(0) +".";
 		next;
-		cutin "mocseal_rin01.bmp",255;
+		cutin "mocseal_rin01",255;
 		donpcevent "Lin#1::OnInit";
 		mes "[Valdes]";
 		if (BaseJob == Job_Assassin)
@@ -4712,7 +4712,7 @@ OnEnter:
 
 que_job01.gat,19,18,3	script	Lin#1	885,{
 
-	cutin "mocseal_rin01.bmp",2;
+	cutin "mocseal_rin01",2;
 	if (mao_request < 3)
 	{
 		mes "[Lin]";
@@ -4800,7 +4800,7 @@ que_job01.gat,84,17,3	script	Lin#2-1	885,{
 
 	if (mao_request == 103)
 	{
-		cutin "mocseal_rin01.bmp",2;
+		cutin "mocseal_rin01",2;
 		mes "[Lin]";
 		mes "What...?";
 		mes "I thought we're";
@@ -4812,7 +4812,7 @@ que_job01.gat,84,17,3	script	Lin#2-1	885,{
 		mes "I'm sorry, but it is";
 		mes "imperative that I leave";
 		mes "for the Juno Library...";
-		cutin "mocseal_dan01.bmp",0;
+		cutin "mocseal_dan01",0;
 		next;
 		mes "[" + strcharinfo(0) + "]";
 		mes "Excuse me, but";
@@ -4850,7 +4850,7 @@ que_job01.gat,84,17,3	script	Lin#2-1	885,{
 		mes "and starting praying";
 		mes "or... something.";
 		next;
-		cutin "mocseal_rin01.bmp",2;
+		cutin "mocseal_rin01",2;
 		mes "[Lin]";
 		mes "I guess he was praying...";
 		mes "Though whatever religion";
@@ -4874,7 +4874,7 @@ que_job01.gat,84,17,3	script	Lin#2-1	885,{
 		mes "clues to finding those children";
 		mes "that have been missing from";
 		mes "Morroc. Please retrieve them!";
-		cutin "mocseal_dan01.bmp",0;
+		cutin "mocseal_dan01",0;
 		next;
 		mes "[Lin]";
 		mes "Well, I guess that's that.";
@@ -4882,7 +4882,7 @@ que_job01.gat,84,17,3	script	Lin#2-1	885,{
 		mes "those documents, we'll be one";
 		mes "step closer to finding those";
 		mes "lost kids. So let's do this.";
-		cutin "mocseal_rin01.bmp",2;
+		cutin "mocseal_rin01",2;
 		next;
 		switch( select( "Wait!","Won't they attack again?" ) )
 		{
@@ -4931,7 +4931,7 @@ que_job01.gat,84,17,3	script	Lin#2-1	885,{
 		mes "think about that, Mr. R?";
 		mes "That alright with you?";
 		next;
-		cutin "mocseal_dan01.bmp",0;
+		cutin "mocseal_dan01",0;
 		mes "[R.]";
 		mes "Of course, I'd like my";
 		mes "safety to be guaranteed,";
@@ -4940,7 +4940,7 @@ que_job01.gat,84,17,3	script	Lin#2-1	885,{
 		mes "than my life. Do whatever it";
 		mes "takes--please get them back.";
 		next;
-		cutin "mocseal_rin01.bmp",2;
+		cutin "mocseal_rin01",2;
 		mes "[Lin]";
 		mes "Well then. Mr. R, you'll";
 		mes "stay here where I can protect";
@@ -4975,7 +4975,7 @@ que_job01.gat,84,17,3	script	Lin#2-1	885,{
 	}
 	else if(mao_request == 105)
 	{
-		cutin "mocseal_rin01.bmp",0;
+		cutin "mocseal_rin01",0;
 		mes "[Lin]";
 		mes "Head over to Juno";
 		mes "Library and speak to";
@@ -4994,7 +4994,7 @@ que_job01.gat,84,17,3	script	Lin#2-1	885,{
 	}
 	else if(mao_request == 106)
 	{
-		cutin "mocseal_rin01.bmp",0;
+		cutin "mocseal_rin01",0;
 		mes "[Lin]";
 		mes "Ah, were you able to";
 		mes "find Yunia? Wait a sec,";
@@ -5005,12 +5005,12 @@ que_job01.gat,84,17,3	script	Lin#2-1	885,{
 		mes "I guess I better";
 		mes "go back and talk";
 		mes "to Yunia once again!";
-		cutin "mocseal_dan01.bmp",0;
+		cutin "mocseal_dan01",0;
 		close2;
 	}
 	else if(mao_request == 107)
 	{
-		cutin "mocseal_rin01.bmp",2;
+		cutin "mocseal_rin01",2;
 		mes "[Lin]";
 		mes "Yunia gave you the";
 		mes "documents that Mr. R";
@@ -5020,7 +5020,7 @@ que_job01.gat,84,17,3	script	Lin#2-1	885,{
 		mes "to do for him next.";
 		set mao_request,108;
 		next;
-		cutin "mocseal_dan01.bmp",0;
+		cutin "mocseal_dan01",0;
 		mes "[R. Moore]";
 		mes "Ah yes, these are exactly";
 		mes "what I wanted! Thank you so";
@@ -5040,7 +5040,7 @@ que_job01.gat,84,17,3	script	Lin#2-1	885,{
 	}
 	else if(mao_request == 109)
 	{
-		cutin "mocseal_dan01.bmp",0;
+		cutin "mocseal_dan01",0;
 		mes "[Lin]";
 		mes "I guess we should do as";
 		mes "Mr. R asks. Go ahead and";
@@ -5049,7 +5049,7 @@ que_job01.gat,84,17,3	script	Lin#2-1	885,{
 		mes "crests, and I'll remain here";
 		mes "to guard Mr. R, just in case.";
 		next;
-		cutin "mocseal_rin01.bmp",2;
+		cutin "mocseal_rin01",2;
 		mes "[Lin]";
 		mes "I'm sorry that ^A9A9A9WAIT^000000 you've";
 		mes "got to do ^A9A9A9FOR^000000 this ^A9A9A9ME^000000 alone,";
@@ -5059,7 +5059,7 @@ que_job01.gat,84,17,3	script	Lin#2-1	885,{
 	}
 	else if(mao_request > 109 && mao_request < 115)
 	{
-		cutin "mocseal_rin01.bmp",2;
+		cutin "mocseal_rin01",2;
 		mes "[Lin]";
 		mes "I don't really know";
 		mes "what's going on, but";
@@ -5070,7 +5070,7 @@ que_job01.gat,84,17,3	script	Lin#2-1	885,{
 	}
 	else if(mao_request == 115)
 	{
-		cutin "mocseal_rin01.bmp",2;
+		cutin "mocseal_rin01",2;
 		mes "[Lin]";
 		mes "Hey... I need to talk to";
 		mes "you alone. This R. Moore guy...";
@@ -5095,27 +5095,27 @@ que_job01.gat,84,17,3	script	Lin#2-1	885,{
 		mes "I don't wanna take chances.";
 		set mao_request,116;
 		next;
-		cutin "mocseal_dan01.bmp",0;
+		cutin "mocseal_dan01",0;
 		mes "[R. Moore]";
 		mes "Hm...?";
 		mes "What were you";
 		mes "talking about so";
 		mes "excitedly over there?";
 		next;
-		cutin "mocseal_rin01.bmp",2;
+		cutin "mocseal_rin01",2;
 		mes "[Lin]";
 		mes "Oh, we were just";
 		mes "talking about the those";
 		mes "elemental crests and how";
 		mes "they're now taken care of.";
 		next;
-		cutin "mocseal_dan01.bmp",0;
+		cutin "mocseal_dan01",0;
 		mes "[R. Moore]";
 		mes "Say, " + strcharinfo(0) + ",";
 		mes "were you about to leave?";
 		mes "I had another reques--";
 		next;
-		cutin "mocseal_rin01.bmp",2;
+		cutin "mocseal_rin01",2;
 		mes "[Lin]";
 		mes "I'm sending "+ strcharinfo(0) +"";
 		mes "on a snack errand and it won't";
@@ -5123,14 +5123,14 @@ que_job01.gat,84,17,3	script	Lin#2-1	885,{
 		else mes "take too long. Did you want her";
 		mes "to bring you back anything?";
 		next;
-		cutin "mocseal_dan01.bmp",0;
+		cutin "mocseal_dan01",0;
 		mes "[R. Moore]";
 		mes "Oh, yes. On your way";
 		mes "back, would you bring";
 		mes "me a Tropical Sograt?";
 		mes "I'm very fond of those.";
 		next;
-		cutin "mocseal_rin01.bmp",2;
+		cutin "mocseal_rin01",2;
 		mes "[Lin]";
 		mes "Well, "+ strcharinfo(0) +",";
 		mes "you heard the ^A9A9A9GO^000000 man.";
@@ -5140,19 +5140,19 @@ que_job01.gat,84,17,3	script	Lin#2-1	885,{
 	}
 	else if(mao_request == 116)
 	{
-		cutin "mocseal_rin01.bmp",2;
+		cutin "mocseal_rin01",2;
 		mes "[Lin]";
 		mes "Back so soon?";
 		mes "Did you forget what";
 		mes "I asked you to do?";
 		next;
-		cutin "mocseal_dan01.bmp",0;
+		cutin "mocseal_dan01",0;
 		mes "[R. Moore]";
 		mes "You were going";
 		mes "on a snack errand,";
 		mes "weren't you?";
 		next;
-		cutin "mocseal_rin01.bmp",2;
+		cutin "mocseal_rin01",2;
 		mes "[Lin]";
 		mes "Right. I ^A9A9A9GO^000000 guess ^A9A9A9FIND^000000 you";
 		mes "^A9A9A9THE^000000 came back because you";
@@ -5166,7 +5166,7 @@ que_job01.gat,84,17,3	script	Lin#2-1	885,{
 		mes "[" + strcharinfo(0) + "]";
 		mes "Well, I'm back...";
 		next;
-		cutin "mocseal_rin01.bmp",2;
+		cutin "mocseal_rin01",2;
 		mes "[Lin]";
 		mes "I'm sorry, ^A9A9A9MEET^000000 partner,";
 		mes "but I forgot to ask you to";
@@ -5186,19 +5186,19 @@ que_job01.gat,84,17,3	script	Lin#2-1	885,{
 	}
 	else if(mao_request == 118)
 	{
-		cutin "mocseal_rin01.bmp",2;
+		cutin "mocseal_rin01",2;
 		mes "[Lin]";
 		mes "Oh, good.";
 		mes "You're finally back~";
 		next;
-		cutin "mocseal_dan01.bmp",0;
+		cutin "mocseal_dan01",0;
 		mes "[R. Moore]";
 		mes "Ah! You've finally returned.";
 		mes "I have another request that";
 		mes "I must ask of you that pertains";
 		mes "to the missing children.";
 		next;
-		cutin "mocseal_rin01.bmp",2;
+		cutin "mocseal_rin01",2;
 		mes "[Lin]";
 		mes "Yeah, alright.";
 		mes "Depending on what";
@@ -5206,7 +5206,7 @@ que_job01.gat,84,17,3	script	Lin#2-1	885,{
 		mes "But if it's some crazy";
 		mes "nonsense errand, we won't.";
 		next;
-		cutin "mocseal_dan01.bmp",0;
+		cutin "mocseal_dan01",0;
 		mes "[R. Moore]";
 		mes "For the sake of my";
 		mes "research, I want you to";
@@ -5229,7 +5229,7 @@ que_job01.gat,84,17,3	script	Lin#2-1	885,{
 		mes "if you could tell me what";
 		mes "you can learn from there...";
 		next;
-		cutin "mocseal_rin01.bmp",2;
+		cutin "mocseal_rin01",2;
 		mes "[Lin]";
 		mes "Thanatos Tower, huh?";
 		mes "Alright, it's not like we don't";
@@ -5241,20 +5241,20 @@ que_job01.gat,84,17,3	script	Lin#2-1	885,{
 	}
 	else if(mao_request == 119)
 	{
-		cutin "mocseal_rin01.bmp",2;
+		cutin "mocseal_rin01",2;
 		mes "[Lin]";
 		mes "Alright... Before";
 		mes "we go and do this, we";
 		mes "need to make absolutely";
 		mes "sure of a few things.";
 		next;
-		cutin "mocseal_dan01.bmp",0;
+		cutin "mocseal_dan01",0;
 		mes "[R. Moore]";
 		mes "Of course.";
 		mes "What is it that";
 		mes "you want to ask me?";
 		next;
-		cutin "mocseal_rin01.bmp",2;
+		cutin "mocseal_rin01",2;
 		mes "[Lin]";
 		mes "First, those men that";
 		mes "attacked you. Are they";
@@ -5263,7 +5263,7 @@ que_job01.gat,84,17,3	script	Lin#2-1	885,{
 		mes "Were they built to break Satan";
 		mes "Morroc's seal or protect it?";
 		next;
-		cutin "mocseal_dan01.bmp",1;
+		cutin "mocseal_dan01",1;
 		mes "[R. Moore]";
 		mes "Oh, my attackers. I have no";
 		mes "idea what they could want.";
@@ -5304,7 +5304,7 @@ que_job01.gat,84,17,3	script	Lin#2-1	885,{
 	}
 	else if(mao_request == 120)
 	{
-		cutin "mocseal_rin01.bmp",2;
+		cutin "mocseal_rin01",2;
 		mes "[Lin]";
 		mes "I'm not sure what to";
 		mes "believe, but investigating";
@@ -5339,13 +5339,13 @@ que_job01.gat,79,15,1	script	R	880,{
 
 	if (mao_request == 103)
 	{
-		cutin "mocseal_dan01.bmp",0;
+		cutin "mocseal_dan01",0;
 		mes "[R.]";
 		mes "Right now, my life isn't";
 		mes "so important! Please let";
 		mes "me finish my research!";
 		next;
-		cutin "mocseal_rin01.bmp",2;
+		cutin "mocseal_rin01",2;
 		mes "[Lin]";
 		mes "What...?";
 		mes "I thought we're";
@@ -5357,7 +5357,7 @@ que_job01.gat,79,15,1	script	R	880,{
 		mes "I'm sorry, but it is";
 		mes "imperative that I leave";
 		mes "for the Juno Library...";
-		cutin "mocseal_dan01.bmp",0;
+		cutin "mocseal_dan01",0;
 		next;
 		mes "[" + strcharinfo(0) + "]";
 		mes "Excuse me, but";
@@ -5387,7 +5387,7 @@ que_job01.gat,79,15,1	script	R	880,{
 	}
 	else if(mao_request == 104)
 	{
-		cutin "mocseal_dan01.bmp",1;
+		cutin "mocseal_dan01",1;
 		mes "[R.]";
 		mes "Your partner should be";
 		mes "able to relate everything";
@@ -5405,7 +5405,7 @@ que_job01.gat,79,15,1	script	R	880,{
 	}
 	else if(mao_request == 105)
 	{
-		cutin "mocseal_dan01.bmp",1;
+		cutin "mocseal_dan01",1;
 		mes "[R.]";
 		mes "The Juno Library is";
 		mes "divided into 3 sections:";
@@ -5424,7 +5424,7 @@ que_job01.gat,79,15,1	script	R	880,{
 	}
 	else if(mao_request == 106)
 	{
-		cutin "mocseal_dan01.bmp",0;
+		cutin "mocseal_dan01",0;
 		mes "[R. Moore]";
 		mes "So were you able to find";
 		mes "Yunia and get my research";
@@ -5441,14 +5441,14 @@ que_job01.gat,79,15,1	script	R	880,{
 		mes "that I received from Yunia.";
 		mes "Is this what you needed?";
 		next;
-		cutin "mocseal_dan01.bmp",0;
+		cutin "mocseal_dan01",0;
 		mes "[R. Moore]";
 		mes "Ah yes, these are exactly";
 		mes "what I wanted! Thank you so";
 		mes "much for your hard work. Wow,";
 		mes "these are so well organized...";
 		next;
-		cutin "mocseal_rin01.bmp",2;
+		cutin "mocseal_rin01",2;
 		mes "[Lin]";
 		mes "Alright. You need to tell";
 		mes "us how your research is";
@@ -5461,7 +5461,7 @@ que_job01.gat,79,15,1	script	R	880,{
 	}
 	else if(mao_request == 108)
 	{
-		cutin "mocseal_dan01.bmp",1;
+		cutin "mocseal_dan01",1;
 		mes "[R. Moore]";
 		mes "The information in these";
 		mes "documents is related to my";
@@ -5470,7 +5470,7 @@ que_job01.gat,79,15,1	script	R	880,{
 		mes "out this task and consider it";
 		mes "part of your assignment.";
 		next;
-		cutin "mocseal_rin01.bmp",2;
+		cutin "mocseal_rin01",2;
 		mes "[Lin]";
 		mes "Yeah, yeah, you don't";
 		mes "have to remind me. Besides,";
@@ -5478,7 +5478,7 @@ que_job01.gat,79,15,1	script	R	880,{
 		mes "any job unfinished. So what do";
 		mes "you need us to do this time?";
 		next;
-		cutin "mocseal_dan01.bmp",1;
+		cutin "mocseal_dan01",1;
 		mes "[R. Moore]";
 		mes "There are four crests";
 		mes "hidden in four different";
@@ -5495,7 +5495,7 @@ que_job01.gat,79,15,1	script	R	880,{
 		mes "stones^000000 to strengthen the power";
 		mes "of these elemental crests.";
 		next;
-		cutin "mocseal_rin01.bmp",2;
+		cutin "mocseal_rin01",2;
 		mes "[Lin]";
 		mes "Wait... We can honor";
 		mes "requests regarding your";
@@ -5504,7 +5504,7 @@ que_job01.gat,79,15,1	script	R	880,{
 		mes "missing kids, but we're your";
 		mes "bodyguards, not your servants.";
 		next;
-		cutin "mocseal_dan01.bmp",0;
+		cutin "mocseal_dan01",0;
 		mes "[R. Moore]";
 		mes "I know, I know...";
 		mes "But whatever force has";
@@ -5529,7 +5529,7 @@ que_job01.gat,79,15,1	script	R	880,{
 	}
 	else if(mao_request == 109)
 	{
-		cutin "mocseal_dan01.bmp",0;
+		cutin "mocseal_dan01",0;
 		mes "[R. Moore]";
 		mes "Why don't you search West";
 		mes "Morroc first for one of the";
@@ -5537,7 +5537,7 @@ que_job01.gat,79,15,1	script	R	880,{
 		mes "is closer? It should be where";
 		mes "the pyramids are located.";
 		next;
-		cutin "mocseal_rin01.bmp",2;
+		cutin "mocseal_rin01",2;
 		mes "[Lin]";
 		mes "Please go ahead";
 		mes "and do as he says.";
@@ -5554,7 +5554,7 @@ que_job01.gat,79,15,1	script	R	880,{
 	}
 	else if(mao_request > 109 && mao_request < 112)
 	{
-		cutin "mocseal_dan01.bmp",1;
+		cutin "mocseal_dan01",1;
 		mes "[R. Moore]";
 		mes "You should be able to find";
 		mes "the element regulation device";
@@ -5566,7 +5566,7 @@ que_job01.gat,79,15,1	script	R	880,{
 	}
 	else if(mao_request == 112)
 	{
-		cutin "mocseal_dan01.bmp",1;
+		cutin "mocseal_dan01",1;
 		mes "[R. Moore]";
 		mes "Alright, now, I don't know";
 		mes "the locations of the other";
@@ -5581,7 +5581,7 @@ que_job01.gat,79,15,1	script	R	880,{
 		mes "me to live like a prisoner...";
 		mes "I feel... I feel trapped.";
 		next;
-		cutin "mocseal_rin01.bmp",2;
+		cutin "mocseal_rin01",2;
 		mes "[Lin]";
 		mes "Hey, what's your problem,";
 		mes "Mr. R?! You're snug as a rug";
@@ -5590,12 +5590,12 @@ que_job01.gat,79,15,1	script	R	880,{
 		mes "running around doing all of";
 		mes "your dirty work for you!";
 		next;
-		cutin "mocseal_dan01.bmp",0;
+		cutin "mocseal_dan01",0;
 		mes "[R. Moore]";
 		mes "This much is";
 		mes "true, I suppose...";
 		next;
-		cutin "mocseal_dan01.bmp",255;
+		cutin "mocseal_dan01",255;
 		mes "[" + strcharinfo(0) + "]";
 		mes "Well, I guess I'll go out";
 		mes "and try to activate those";
@@ -5605,7 +5605,7 @@ que_job01.gat,79,15,1	script	R	880,{
 	}
 	else if(mao_request > 112 && mao_request < 115)
 	{
-		cutin "mocseal_dan01.bmp",1;
+		cutin "mocseal_dan01",1;
 		mes "[R. Moore]";
 		mes "Thank you so much";
 		mes "for all of your hard";
@@ -5626,14 +5626,14 @@ que_job01.gat,79,15,1	script	R	880,{
 	}
 	else if(mao_request == 115)
 	{
-		cutin "mocseal_dan01.bmp",0;
+		cutin "mocseal_dan01",0;
 		mes "[R. Moore]";
 		mes "Good, you've arrived.";
 		mes "Now, to ensure the safety";
 		mes "of all of those poor children,";
 		mes "I need you to complete ano--";
 		next;
-		cutin "mocseal_rin01.bmp",2;
+		cutin "mocseal_rin01",2;
 		mes "[Lin]";
 		mes "Excuse me, I don't mean";
 		mes "to butt in, but I need to";
@@ -5642,7 +5642,7 @@ que_job01.gat,79,15,1	script	R	880,{
 		mes "I need to discuss here";
 		mes "with "+ strcharinfo(0) +".";
 		next;
-		cutin "mocseal_dan01.bmp",0;
+		cutin "mocseal_dan01",0;
 		mes "[R. Moore]";
 		mes "...Very well.";
 		mes "Then I shall next;";
@@ -5651,7 +5651,7 @@ que_job01.gat,79,15,1	script	R	880,{
 	}
 	else if(mao_request == 116)
 	{
-		cutin "mocseal_dan01.bmp",0;
+		cutin "mocseal_dan01",0;
 		mes "[R. Moore]";
 		mes "Hmmm...?";
 		mes "Weren't you going";
@@ -5662,7 +5662,7 @@ que_job01.gat,79,15,1	script	R	880,{
 	}
 	else if(mao_request == 117)
 	{
-		cutin "mocseal_dan01.bmp",0;
+		cutin "mocseal_dan01",0;
 		mes "[R. Moore]";
 		mes "Oh good, you've";
 		mes "returned. Never mind";
@@ -5670,7 +5670,7 @@ que_job01.gat,79,15,1	script	R	880,{
 		mes "talk to you about my";
 		mes "next request if you wo--";
 		next;
-		cutin "mocseal_rin01.bmp",2;
+		cutin "mocseal_rin01",2;
 		mes "[Lin]";
 		mes "I'm sorry, ^A9A9A9MEET^000000 partner,";
 		mes "but I forgot to ask you to";
@@ -5690,14 +5690,14 @@ que_job01.gat,79,15,1	script	R	880,{
 	}
 	else if(mao_request == 118)
 	{
-		cutin "mocseal_dan01.bmp",0;
+		cutin "mocseal_dan01",0;
 		mes "[R. Moore]";
 		mes "Ah, you've finally returned.";
 		mes "I have another request that";
 		mes "I must ask of you that pertains";
 		mes "to the missing children.";
 		next;
-		cutin "mocseal_rin01.bmp",2;
+		cutin "mocseal_rin01",2;
 		mes "[Lin]";
 		mes "Yeah, alright.";
 		mes "Depending on what";
@@ -5705,7 +5705,7 @@ que_job01.gat,79,15,1	script	R	880,{
 		mes "But if it's some crazy";
 		mes "nonsense errand, we won't.";
 		next;
-		cutin "mocseal_dan01.bmp",0;
+		cutin "mocseal_dan01",0;
 		mes "[R. Moore]";
 		mes "For the sake of my";
 		mes "research, I want you to";
@@ -5728,7 +5728,7 @@ que_job01.gat,79,15,1	script	R	880,{
 		mes "if you could tell me what";
 		mes "you can learn from there...";
 		next;
-		cutin "mocseal_rin01.bmp",2;
+		cutin "mocseal_rin01",2;
 		mes "[Lin]";
 		mes "Thanatos Tower, huh?";
 		mes "Alright, it's not like we don't";
@@ -5740,7 +5740,7 @@ que_job01.gat,79,15,1	script	R	880,{
 	}
 	else if(mao_request == 119)
 	{
-		cutin "mocseal_dan01.bmp",1;
+		cutin "mocseal_dan01",1;
 		mes "[R. Moore]";
 		mes "Lin has something to ask";
 		mes "me, so I should probably";
@@ -5750,7 +5750,7 @@ que_job01.gat,79,15,1	script	R	880,{
 	}
 	else if(mao_request == 120)
 	{
-		cutin "mocseal_dan01.bmp",1;
+		cutin "mocseal_dan01",1;
 		mes "[R. Moore]";
 		mes "I'm begging you, please";
 		mes "go to Thanatos Tower and";
@@ -5762,7 +5762,7 @@ que_job01.gat,79,15,1	script	R	880,{
 	}
 	else if(mao_request == 121)
 	{
-		cutin "mocseal_dan01.bmp",1;
+		cutin "mocseal_dan01",1;
 		mes "[R. Moore]";
 		mes "You'll be investigating";
 		mes "Thanatos Tower, then?";
@@ -5793,7 +5793,7 @@ OnEnter:
 
 que_job01.gat,13,17,5	script	Kidd#1	884,{
 
-	cutin "mocseal_kid01.bmp",2;
+	cutin "mocseal_kid01",2;
 	if (mao_request < 3)
 	{
 		mes "[Kidd]";
@@ -5914,7 +5914,7 @@ que_job01.gat,91,83,3	script	Kidd#hall	884,{
 	}
 	else if(mao_request == 3)
 	{
-		cutin "mocseal_kid01.bmp",2;
+		cutin "mocseal_kid01",2;
 		mes "[Kidd]";
 		mes "Oh good, you're here";
 		mes "just in time. This member";
@@ -5923,7 +5923,7 @@ que_job01.gat,91,83,3	script	Kidd#hall	884,{
 		mes "Now, if you'll give him";
 		mes "your full attention...";
 		next;
-		cutin "mocseal_dan01.bmp",0;
+		cutin "mocseal_dan01",0;
 		mes "[Dandelion Member]";
 		mes "Ah, so you're the one";
 		mes "working with Kidd on this";
@@ -5955,7 +5955,7 @@ que_job01.gat,91,83,3	script	Kidd#hall	884,{
 		mes "man. That's why we're asking";
 		mes "for your help in this matter.";
 		next;
-		cutin "mocseal_kid01.bmp",2;
+		cutin "mocseal_kid01",2;
 		mes "[Kidd]";
 		mes "That's how the children";
 		mes "have been disappearing?";
@@ -5964,7 +5964,7 @@ que_job01.gat,91,83,3	script	Kidd#hall	884,{
 		mes "of an academic or a scholar";
 		mes "than a dangerous kidnapper...";
 		next;
-		cutin "mocseal_dan01.bmp",0;
+		cutin "mocseal_dan01",0;
 		mes "[Dandelion Member]";
 		mes "Yes, he would appear";
 		mes "innocuous according to";
@@ -5989,7 +5989,7 @@ que_job01.gat,91,83,3	script	Kidd#hall	884,{
 		mes "What is he doing";
 		mes "with that pendant?^000000)";
 		next;
-		cutin "mocseal_kid01.bmp",2;
+		cutin "mocseal_kid01",2;
 		mes "[Kidd]";
 		mes "I've seen him do that";
 		mes "a couple of times. I dunno,";
@@ -6056,7 +6056,7 @@ que_job01.gat,91,83,3	script	Kidd#hall	884,{
 	}
 	else if(mao_request == 8)
 	{
-		cutin "mocseal_kid01.bmp",2;
+		cutin "mocseal_kid01",2;
 		mes "[Kidd]";
 		mes "Hey you, Dandelion guy,";
 		mes "you know why these four";
@@ -6065,7 +6065,7 @@ que_job01.gat,91,83,3	script	Kidd#hall	884,{
 		mes "He wrote something about";
 		mes "it in his research journal.";
 		next;
-		cutin "mocseal_dan01.bmp",0;
+		cutin "mocseal_dan01",0;
 		mes "[Dandelion Member]";
 		mes "Hm? No, not really.";
 		mes "In fact, it's even more";
@@ -6091,7 +6091,7 @@ que_job01.gat,91,83,3	script	Kidd#hall	884,{
 		mes "about investigating the";
 		mes "four directions in Morroc?";
 		next;
-		cutin "mocseal_kid01.bmp",2;
+		cutin "mocseal_kid01",2;
 		mes "[Kidd]";
 		mes "Hmm... Why don't we try";
 		mes "this? I'll check the south";
@@ -6107,7 +6107,7 @@ que_job01.gat,91,83,3	script	Kidd#hall	884,{
 		mes "of Morroc. If you happen to find anything, then meet me back here.";
 		set mao_request,10;
 		next;
-		cutin "mocseal_dan01.bmp",0;
+		cutin "mocseal_dan01",0;
 		mes "[Dandelion Member]";
 		mes "Good luck to the";
 		mes "two of you. Although";
@@ -6118,7 +6118,7 @@ que_job01.gat,91,83,3	script	Kidd#hall	884,{
 	}
 	else if(mao_request == 10)
 	{
-		cutin "mocseal_kid01.bmp",2;
+		cutin "mocseal_kid01",2;
 		mes "[Kidd]";
 		mes "For now, investigate";
 		mes "the west part of Morroc";
@@ -6130,7 +6130,7 @@ que_job01.gat,91,83,3	script	Kidd#hall	884,{
 	}
 	else if(mao_request == 11)
 	{
-		cutin "mocseal_kid01.bmp",2;
+		cutin "mocseal_kid01",2;
 		mes "[Kidd]";
 		mes "Ah, you've returned.";
 		mes "I found some sort of";
@@ -6146,7 +6146,7 @@ que_job01.gat,91,83,3	script	Kidd#hall	884,{
 		mes "crests in the fields north and";
 		mes "east of Morroc as well?";
 		next;
-		cutin "mocseal_kid01.bmp",2;
+		cutin "mocseal_kid01",2;
 		mes "[Kidd]";
 		mes "I'm not sure, but I can tell";
 		mes "that there's some serious power";
@@ -6155,7 +6155,7 @@ que_job01.gat,91,83,3	script	Kidd#hall	884,{
 		mes "research, the four directions";
 		mes "in Morroc have to be balanced.";
 		next;
-		cutin "mocseal_dan01.bmp",0;
+		cutin "mocseal_dan01",0;
 		mes "[Dandelion Member]";
 		mes "Hmm. Although your mission";
 		mes "is to find Raiyan Moore and";
@@ -6163,7 +6163,7 @@ que_job01.gat,91,83,3	script	Kidd#hall	884,{
 		mes "we cannot allow Moore to cause";
 		mes "more harm. We can't ignore the crests, and should check them...";
 		next;
-		cutin "mocseal_kid01.bmp",2;
+		cutin "mocseal_kid01",2;
 		mes "[Kidd]";
 		mes "I agree... In fact, the";
 		mes "Earth crest seemed pretty";
@@ -6183,7 +6183,7 @@ que_job01.gat,91,83,3	script	Kidd#hall	884,{
 	}
 	else if(mao_request == 12)
 	{
-		cutin "mocseal_kid01.bmp",2;
+		cutin "mocseal_kid01",2;
 		mes "[Kidd]";
 		mes "Hmm... If you want to";
 		mes "stabilize the crests, you'll";
@@ -6210,7 +6210,7 @@ que_job01.gat,91,83,3	script	Kidd#hall	884,{
 	}
 	else if(mao_request > 12 && mao_request < 16)
 	{
-		cutin "mocseal_kid01.bmp",2;
+		cutin "mocseal_kid01",2;
 		mes "[Kidd]";
 		mes "Have you been able to";
 		mes "find the other elemental";
@@ -6222,7 +6222,7 @@ que_job01.gat,91,83,3	script	Kidd#hall	884,{
 	}
 	else if(mao_request == 16)
 	{
-		cutin "mocseal_dan01.bmp",0;
+		cutin "mocseal_dan01",0;
 		mes "[Dandelion Member]";
 		mes "Is that what happened?";
 		mes "I can't believe the historian";
@@ -6231,7 +6231,7 @@ que_job01.gat,91,83,3	script	Kidd#hall	884,{
 		mes "speak to him, and let him";
 		mes "know that it was urgent?";
 		next;
-		cutin "mocseal_kid01.bmp",2;
+		cutin "mocseal_kid01",2;
 		mes "[Kidd]";
 		mes "Hell, yeah...!";
 		mes "Well, you know.";
@@ -6243,7 +6243,7 @@ que_job01.gat,91,83,3	script	Kidd#hall	884,{
 		mes "elemental crests. Wait,";
 		mes "did something happen?";
 		next;
-		cutin "mocseal_dan01.bmp",0;
+		cutin "mocseal_dan01",0;
 		mes "[Dandelion Member]";
 		mes "I'm not sure...";
 		mes "Kidd seems very upset";
@@ -6256,7 +6256,7 @@ que_job01.gat,91,83,3	script	Kidd#hall	884,{
 	}
 	else if(mao_request == 17)
 	{
-		cutin "mocseal_kid01.bmp",2;
+		cutin "mocseal_kid01",2;
 		mes "[Kidd]";
 		mes "Alright...";
 		mes "So you know how";
@@ -6309,7 +6309,7 @@ que_job01.gat,91,83,3	script	Kidd#hall	884,{
 	}
 	else if(mao_request == 18)
 	{
-		cutin "mocseal_kid01.bmp",2;
+		cutin "mocseal_kid01",2;
 		mes "[Kidd]";
 		mes "You should be able to";
 		mes "find our local historian in";
@@ -6327,7 +6327,7 @@ que_job01.gat,91,83,3	script	Kidd#hall	884,{
 	}
 	else if(mao_request == 19)
 	{
-		cutin "mocseal_kid01.bmp",2;
+		cutin "mocseal_kid01",2;
 		mes "[Kidd]";
 		mes "Hey, you're back.";
 		mes "So were you able to";
@@ -6337,7 +6337,7 @@ que_job01.gat,91,83,3	script	Kidd#hall	884,{
 		mes "Say, what's that";
 		mes "you're drinking?";
 		next;
-		cutin "mocseal_dan01.bmp",0;
+		cutin "mocseal_dan01",0;
 		mes "[Dandelion Member]";
 		mes "Oh, this?";
 		mes "It's a Tropical Sograt.";
@@ -6354,7 +6354,7 @@ que_job01.gat,91,83,3	script	Kidd#hall	884,{
 		set mao_request,20;
 		getitem 12112,1;
 		next;
-		cutin "mocseal_kid01.bmp",2;
+		cutin "mocseal_kid01",2;
 		mes "[Kidd]";
 		mes "Hey, drink that later.";
 		mes "Did you figure out why";
@@ -6364,7 +6364,7 @@ que_job01.gat,91,83,3	script	Kidd#hall	884,{
 	}
 	else if(mao_request == 20)
 	{
-		cutin "mocseal_kid01.bmp",2;
+		cutin "mocseal_kid01",2;
 		mes "[Kidd]";
 		mes "Alright, now tell me.";
 		mes "Were you able to talk";
@@ -6427,7 +6427,7 @@ que_job01.gat,91,83,3	script	Kidd#hall	884,{
 	}
 	else if(mao_request == 21)
 	{
-		cutin "mocseal_kid01.bmp",2;
+		cutin "mocseal_kid01",2;
 		mes "[Kidd]";
 		mes "You know... I've been";
 		mes "thinking about what we";
@@ -6444,7 +6444,7 @@ que_job01.gat,91,83,3	script	Kidd#hall	884,{
 		mes "but we gotta investigate the";
 		mes "possibility, find some proof.";
 		next;
-		cutin "mocseal_dan01.bmp",0;
+		cutin "mocseal_dan01",0;
 		mes "[Dandelion Member]";
 		mes "There are those seals";
 		mes "around Morroc, but we're";
@@ -6452,7 +6452,7 @@ que_job01.gat,91,83,3	script	Kidd#hall	884,{
 		mes "Satan Morroc sealed, or if";
 		mes "their magic makes it easier for humans to live in that desert.";
 		next;
-		cutin "mocseal_kid01.bmp",2;
+		cutin "mocseal_kid01",2;
 		mes "[Kidd]";
 		mes "Yeah, yeah, I know. Okay,";
 		mes "this is what we'll do. You go";
@@ -6472,7 +6472,7 @@ que_job01.gat,91,83,3	script	Kidd#hall	884,{
 	}
 	else if(mao_request == 22)
 	{
-		cutin "mocseal_kid01.bmp",2;
+		cutin "mocseal_kid01",2;
 		mes "[Kidd]";
 		mes "So how's the investigation of";
 		mes "Thanatos Tower coming along?";
@@ -6498,7 +6498,7 @@ que_job01.gat,91,83,3	script	Kidd#hall	884,{
 					mes "they ultimately plan to repair";
 					mes "all twelve of its levels.";
 					next;
-					cutin "mocseal_kid01.bmp",2;
+					cutin "mocseal_kid01",2;
 					mes "[Kidd]";
 					mes "So it's true...";
 					mes "Satan Morroc does exist.";
@@ -6507,7 +6507,7 @@ que_job01.gat,91,83,3	script	Kidd#hall	884,{
 					mes "be planning to sacrifice them";
 					mes "to revive that monster.";
 					next;
-					cutin "mocseal_dan01.bmp",0;
+					cutin "mocseal_dan01",0;
 					mes "[Dandelion Member]";
 					mes "I wish we could say that we";
 					mes "were jumping to conclusions,";
@@ -6516,7 +6516,7 @@ que_job01.gat,91,83,3	script	Kidd#hall	884,{
 					mes "planning anything else. This";
 					mes "is the worst case scenario...";
 					next;
-					cutin "mocseal_kid01.bmp",2;
+					cutin "mocseal_kid01",2;
 					mes "[Kidd]";
 					mes "Damn it!";
 					mes "We have to find";
@@ -6528,7 +6528,7 @@ que_job01.gat,91,83,3	script	Kidd#hall	884,{
 				}
 				else
 				{
-					cutin "mocseal_kid01.bmp",2;
+					cutin "mocseal_kid01",2;
 					mes "[Kidd]";
 					mes "Hmm... Your investigation";
 					mes "wasn't thorough enough. You";
@@ -6539,7 +6539,7 @@ que_job01.gat,91,83,3	script	Kidd#hall	884,{
 				break;
 				
 			case 2:
-				cutin "mocseal_kid01.bmp",2;
+				cutin "mocseal_kid01",2;
 				mes "[Kidd]";
 				mes "Alright. Come back";
 				mes "as soon as you finish";
@@ -6553,7 +6553,7 @@ que_job01.gat,91,83,3	script	Kidd#hall	884,{
 	}
 	else if(mao_request == 23)
 	{
-		cutin "mocseal_kid01.bmp",2;
+		cutin "mocseal_kid01",2;
 		mes "[Kidd]";
 		mes "We need to calm down...";
 		mes "We're no good to those";
@@ -6569,7 +6569,7 @@ que_job01.gat,91,83,3	script	Kidd#hall	884,{
 		mes "to where he can be right now.";
 		mes "How can we possibly find him?";
 		next;
-		cutin "mocseal_dan01.bmp",0;
+		cutin "mocseal_dan01",0;
 		mes "[Dandelion Member]";
 		mes "This is bad... Not only";
 		mes "are the missing children in";
@@ -6577,7 +6577,7 @@ que_job01.gat,91,83,3	script	Kidd#hall	884,{
 		mes "revive Satan Morroc. We cannot";
 		mes "allow that to happen at any cost.";
 		next;
-		cutin "mocseal_kid01.bmp",2;
+		cutin "mocseal_kid01",2;
 		mes "[Kidd]";
 		mes "I know, I've been";
 		mes "searching places where";
@@ -6586,8 +6586,8 @@ que_job01.gat,91,83,3	script	Kidd#hall	884,{
 		mes "just so many of them. We";
 		mes "really got to think of ou--";
 		next;
-		cutin "mocseal_kid01.bmp",255;
-		cutin "mocseal_dan01.bmp",255;
+		cutin "mocseal_kid01",255;
+		cutin "mocseal_dan01",255;
 		mes "[Litheron]";
 		mes "Um? I'm really sorry to";
 		mes "interrupt. I know I'm not";
@@ -6608,7 +6608,7 @@ que_job01.gat,91,83,3	script	Kidd#hall	884,{
 		mes "of ''Mr. R.'' Also, I think he";
 		mes "might also be Lin's client...";
 		next;
-		cutin "mocseal_kid01.bmp",2;
+		cutin "mocseal_kid01",2;
 		mes "[Kidd]";
 		mes "What, Lin's client?!";
 		mes "Wait, "+ strcharinfo(0) +", do you recall";
@@ -6655,7 +6655,7 @@ que_job01.gat,91,83,3	script	Kidd#hall	884,{
 	}
 	else if(mao_request == 24)
 	{
-		cutin "mocseal_kid01.bmp",2;
+		cutin "mocseal_kid01",2;
 		mes "[Kidd]";
 		mes "Now I remember...!";
 		mes "Lin is supposed to work";
@@ -6673,7 +6673,7 @@ que_job01.gat,91,83,3	script	Kidd#hall	884,{
 	}
 	else if(mao_request == 25)
 	{
-		cutin "mocseal_kid01.bmp",2;
+		cutin "mocseal_kid01",2;
 		mes "[Kidd]";
 		mes "Raiyan Moore's supposed";
 		mes "to be in the room on the other";
@@ -6683,7 +6683,7 @@ que_job01.gat,91,83,3	script	Kidd#hall	884,{
 	}
 	else if(mao_request == 26 || mao_request == 27)
 	{
-		cutin "mocseal_kid01.bmp",2;
+		cutin "mocseal_kid01",2;
 		mes "[Kidd]";
 		mes "Something huge is going";
 		mes "on at Morroc Castle. If that's";
@@ -6694,7 +6694,7 @@ que_job01.gat,91,83,3	script	Kidd#hall	884,{
 	}
 	else if(mao_request == 28 || mao_request == 29 || mao_request == 126 || mao_request == 127)
 	{
-		cutin "mocseal_kid01.bmp",2;
+		cutin "mocseal_kid01",2;
 		mes "[Kidd]";
 		mes "Man, that was close!";
 		mes "We got really lucky.";
@@ -6702,7 +6702,7 @@ que_job01.gat,91,83,3	script	Kidd#hall	884,{
 		mes "some more with Valdes in";
 		mes "the commanding officer's room.";
 		next;
-		cutin "mocseal_dan01.bmp",0;
+		cutin "mocseal_dan01",0;
 		mes "[Dandelion Member]";
 		mes "I still can't believe it...";
 		mes "Those poor, poor children...";
@@ -6711,7 +6711,7 @@ que_job01.gat,91,83,3	script	Kidd#hall	884,{
 	}
 	else if(mao_request > 102 && mao_request < 126)
 	{
-		cutin "mocseal_kid01.bmp",2;
+		cutin "mocseal_kid01",2;
 		mes "[Kidd]";
 		mes "Hey, you're...";
 		mes "You're Lin's partner,";
@@ -6722,7 +6722,7 @@ que_job01.gat,91,83,3	script	Kidd#hall	884,{
 	}
 	else
 	{
-		cutin "mocseal_kid01.bmp",1;
+		cutin "mocseal_kid01",1;
 		mes "[Kidd]";
 		mes "Damn it, I feel like";
 		mes "we all failed. I can";
@@ -6731,8 +6731,8 @@ que_job01.gat,91,83,3	script	Kidd#hall	884,{
 		mes "and waiting around...";
 		close2;
 	}
-	cutin "mocseal_kid01.bmp",255;
-	cutin "mocseal_dan01.bmp",255;
+	cutin "mocseal_kid01",255;
+	cutin "mocseal_dan01",255;
 	end;
 }
 
@@ -6814,7 +6814,7 @@ que_job01.gat,89,85,5	script	Dandelion Member	880,{
 	}
 	else if(mao_request == 3)
 	{
-		cutin "mocseal_dan01.bmp",0;
+		cutin "mocseal_dan01",0;
 		mes "[Dandelion Member]";
 		mes "Ah, so you're the one";
 		mes "working with Kidd on this";
@@ -6846,7 +6846,7 @@ que_job01.gat,89,85,5	script	Dandelion Member	880,{
 		mes "man. That's why we're asking";
 		mes "for your help in this matter.";
 		next;
-		cutin "mocseal_kid01.bmp",2;
+		cutin "mocseal_kid01",2;
 		mes "[Kidd]";
 		mes "That's how the children";
 		mes "have been disappearing?";
@@ -6855,7 +6855,7 @@ que_job01.gat,89,85,5	script	Dandelion Member	880,{
 		mes "of an academic or a scholar";
 		mes "than a dangerous kidnapper...";
 		next;
-		cutin "mocseal_dan01.bmp",0;
+		cutin "mocseal_dan01",0;
 		mes "[Dandelion Member]";
 		mes "Yes, he would appear";
 		mes "innocuous according to";
@@ -6875,7 +6875,7 @@ que_job01.gat,89,85,5	script	Dandelion Member	880,{
 	}
 	else if(mao_request == 4)
 	{
-		cutin "mocseal_dan01.bmp",1;
+		cutin "mocseal_dan01",1;
 		mes "[Dandelion Member]";
 		mes "All we know is that";
 		mes "Raiyan Moore has last";
@@ -6893,7 +6893,7 @@ que_job01.gat,89,85,5	script	Dandelion Member	880,{
 	}
 	else if(mao_request > 4 && mao_request < 8)
 	{
-		cutin "mocseal_dan01.bmp",1;
+		cutin "mocseal_dan01",1;
 		mes "[Dandelion Member]";
 		mes "Are you leaving now?";
 		mes "I hope that you catch";
@@ -6905,7 +6905,7 @@ que_job01.gat,89,85,5	script	Dandelion Member	880,{
 	}
 	else if(mao_request == 8)
 	{
-		cutin "mocseal_dan01.bmp",1;
+		cutin "mocseal_dan01",1;
 		mes "[Dandelion Member]";
 		mes "So you found some";
 		mes "sort of clue as to where";
@@ -6917,7 +6917,7 @@ que_job01.gat,89,85,5	script	Dandelion Member	880,{
 	}
 	else if(mao_request == 9)
 	{
-		cutin "mocseal_dan01.bmp",1;
+		cutin "mocseal_dan01",1;
 		mes "[Dandelion Member]";
 		mes "Raiyan seems to have";
 		mes "been conducting some very";
@@ -6929,7 +6929,7 @@ que_job01.gat,89,85,5	script	Dandelion Member	880,{
 	}
 	else if(mao_request == 10)
 	{
-		cutin "mocseal_dan01.bmp",1;
+		cutin "mocseal_dan01",1;
 		mes "[Dandelion Member]";
 		mes "So you're really going to";
 		mes "check the four directions";
@@ -6941,7 +6941,7 @@ que_job01.gat,89,85,5	script	Dandelion Member	880,{
 	}
 	else if(mao_request == 11)
 	{
-		cutin "mocseal_dan01.bmp",1;
+		cutin "mocseal_dan01",1;
 		mes "[Dandelion Member]";
 		mes "You found a crest shaped";
 		mes "like the Wind? Ah, Kidd";
@@ -6953,7 +6953,7 @@ que_job01.gat,89,85,5	script	Dandelion Member	880,{
 	}
 	else if(mao_request > 11 && mao_request < 16)
 	{
-		cutin "mocseal_dan01.bmp",1;
+		cutin "mocseal_dan01",1;
 		mes "[Dandelion Member]";
 		mes "I don't understand what";
 		mes "could be so important about";
@@ -6964,7 +6964,7 @@ que_job01.gat,89,85,5	script	Dandelion Member	880,{
 	}
 	else if(mao_request == 16)
 	{
-		cutin "mocseal_dan01.bmp",0;
+		cutin "mocseal_dan01",0;
 		mes "[Dandelion Member]";
 		mes "Is that what happened?";
 		mes "I can't believe the historian";
@@ -6973,7 +6973,7 @@ que_job01.gat,89,85,5	script	Dandelion Member	880,{
 		mes "speak to him, and let him";
 		mes "know that it was urgent?";
 		next;
-		cutin "mocseal_kid01.bmp",2;
+		cutin "mocseal_kid01",2;
 		mes "[Kidd]";
 		mes "Hell, yeah...!";
 		mes "Well, you know.";
@@ -6985,7 +6985,7 @@ que_job01.gat,89,85,5	script	Dandelion Member	880,{
 		mes "elemental crests. Wait,";
 		mes "did something happen?";
 		next;
-		cutin "mocseal_dan01.bmp",0;
+		cutin "mocseal_dan01",0;
 		mes "[Dandelion Member]";
 		mes "I'm not sure...";
 		mes "Kidd seems very upset";
@@ -6998,7 +6998,7 @@ que_job01.gat,89,85,5	script	Dandelion Member	880,{
 	}
 	else if(mao_request == 17)
 	{
-		cutin "mocseal_dan01.bmp",0;
+		cutin "mocseal_dan01",0;
 		mes "[Dandelion Member]";
 		mes "Now why would Morroc's";
 		mes "local historian refuse to see";
@@ -7009,7 +7009,7 @@ que_job01.gat,89,85,5	script	Dandelion Member	880,{
 	}
 	else if(mao_request == 18)
 	{
-		cutin "mocseal_dan01.bmp",0;
+		cutin "mocseal_dan01",0;
 		mes "[Dandelion Member]";
 		mes "We have so very few leads";
 		mes "to finding Raiyan Moore, it's";
@@ -7018,7 +7018,7 @@ que_job01.gat,89,85,5	script	Dandelion Member	880,{
 		mes "I'm worried to death about";
 		mes "those kidnapped children...";
 		next;
-		cutin "mocseal_kid01.bmp",2;
+		cutin "mocseal_kid01",2;
 		mes "[Kidd]";
 		mes "Try not to worry";
 		mes "so much. We'll just";
@@ -7029,7 +7029,7 @@ que_job01.gat,89,85,5	script	Dandelion Member	880,{
 	}
 	else if(mao_request == 19)
 	{
-		cutin "mocseal_dan01.bmp",1;
+		cutin "mocseal_dan01",1;
 		mes "[Dandelion Member]";
 		mes "Oh, you've returned?";
 		mes "Were you able to talk to";
@@ -7041,7 +7041,7 @@ que_job01.gat,89,85,5	script	Dandelion Member	880,{
 		mes "Say, what's that";
 		mes "you're drinking?";
 		next;
-		cutin "mocseal_dan01.bmp",0;
+		cutin "mocseal_dan01",0;
 		mes "[Dandelion Member]";
 		mes "Oh, this?";
 		mes "It's a Tropical Sograt.";
@@ -7058,7 +7058,7 @@ que_job01.gat,89,85,5	script	Dandelion Member	880,{
 		set mao_request,20;
 		getitem 12112,1;
 		next;
-		cutin "mocseal_kid01.bmp",2;
+		cutin "mocseal_kid01",2;
 		mes "[Kidd]";
 		mes "Hey, drink that later.";
 		mes "Did you figure out why";
@@ -7068,14 +7068,14 @@ que_job01.gat,89,85,5	script	Dandelion Member	880,{
 	}
 	else if(mao_request == 20)
 	{
-		cutin "mocseal_dan01.bmp",0;
+		cutin "mocseal_dan01",0;
 		mes "[Dandelion Member]";
 		mes "Isn't Tropical Sograt";
 		mes "so good? I can't believe";
 		mes "Assassins can enjoy this";
 		mes "drink whenever they want~";
 		next;
-		cutin "mocseal_kid01.bmp",2;
+		cutin "mocseal_kid01",2;
 		mes "[Kidd]";
 		mes "Don't forget that";
 		mes "we've got a mission";
@@ -7086,7 +7086,7 @@ que_job01.gat,89,85,5	script	Dandelion Member	880,{
 	}
 	else if(mao_request == 21)
 	{
-		cutin "mocseal_dan01.bmp",1;
+		cutin "mocseal_dan01",1;
 		mes "[Dandelion Member]";
 		mes "Raiyan Moore...";
 		mes "The missing children...";
@@ -7097,7 +7097,7 @@ que_job01.gat,89,85,5	script	Dandelion Member	880,{
 	}
 	else if(mao_request == 22)
 	{
-		cutin "mocseal_dan01.bmp",1;
+		cutin "mocseal_dan01",1;
 		mes "[Dandelion Member]";
 		mes "I hope that you'll be";
 		mes "able to find Raiyan Moore";
@@ -7109,7 +7109,7 @@ que_job01.gat,89,85,5	script	Dandelion Member	880,{
 	}
 	else if(mao_request == 23)
 	{
-		cutin "mocseal_dan01.bmp",1;
+		cutin "mocseal_dan01",1;
 		mes "[Dandelion Member]";
 		mes "That monster...";
 		mes "So he kidnapped the";
@@ -7121,7 +7121,7 @@ que_job01.gat,89,85,5	script	Dandelion Member	880,{
 	}
 	else if(mao_request == 24)
 	{
-		cutin "mocseal_dan01.bmp",0;
+		cutin "mocseal_dan01",0;
 		mes "[Dandelion Member]";
 		mes "Raiyan Moore kidnapped";
 		mes "the children to revive Satan";
@@ -7130,7 +7130,7 @@ que_job01.gat,89,85,5	script	Dandelion Member	880,{
 		mes "to protect him?! He's truly";
 		mes "a devious mastermind...";
 		next;
-		cutin "mocseal_kid01.bmp",2;
+		cutin "mocseal_kid01",2;
 		mes "[Kidd]";
 		mes "Being duped by that guy...";
 		mes "I've never been so insulted!";
@@ -7141,14 +7141,14 @@ que_job01.gat,89,85,5	script	Dandelion Member	880,{
 	}
 	else if(mao_request == 25)
 	{
-		cutin "mocseal_dan01.bmp",0;
+		cutin "mocseal_dan01",0;
 		mes "[Dandelion Member]";
 		mes "I can't believe that";
 		mes "Raiyan Moore was under";
 		mes "our noses this whole time...";
 		mes "Do you know where he is now?";
 		next;
-		cutin "mocseal_kid01.bmp",2;
+		cutin "mocseal_kid01",2;
 		mes "[Kidd]";
 		mes "Yeah. Yeah...";
 		mes "Don't get too";
@@ -7158,7 +7158,7 @@ que_job01.gat,89,85,5	script	Dandelion Member	880,{
 	}
 	else if(mao_request == 26 || mao_request == 27)
 	{
-		cutin "mocseal_dan01.bmp",1;
+		cutin "mocseal_dan01",1;
 		mes "[Dandelion Member]";
 		mes "This is bad news...";
 		mes "It looks like Raiyan Moore";
@@ -7170,7 +7170,7 @@ que_job01.gat,89,85,5	script	Dandelion Member	880,{
 	}
 	else if(mao_request == 28 || mao_request == 29 || mao_request == 126 || mao_request == 127)
 	{
-		cutin "mocseal_dan01.bmp",1;
+		cutin "mocseal_dan01",1;
 		mes "[Dandelion Member]";
 		mes "Well, we've sent some";
 		mes "people to purse Raiyan,";
@@ -7182,7 +7182,7 @@ que_job01.gat,89,85,5	script	Dandelion Member	880,{
 	}
 	else if(mao_request > 102 && mao_request < 126)
 	{
-		cutin "mocseal_dan01.bmp",1;
+		cutin "mocseal_dan01",1;
 		mes "[Dandelion Member]";
 		mes "I'm sorry...";
 		mes "But I'm far too busy";
@@ -7193,7 +7193,7 @@ que_job01.gat,89,85,5	script	Dandelion Member	880,{
 	}
 	else
 	{
-		cutin "mocseal_dan01.bmp",0;
+		cutin "mocseal_dan01",0;
 		mes "[Dandelion Member]";
 		mes "Those poor children...";
 		mes "And what are we going";
@@ -7209,7 +7209,7 @@ que_job01.gat,89,85,5	script	Dandelion Member	880,{
 		mes "Who can understand the ";
 		mes "divine will of Freya?";
 		next;
-		cutin "mocseal_kid01.bmp",2;
+		cutin "mocseal_kid01",2;
 		mes "[Kidd]";
 		mes "Freya...?";
 		mes "I thought most";
@@ -7219,8 +7219,8 @@ que_job01.gat,89,85,5	script	Dandelion Member	880,{
 		mes "a couple things.";
 		close2;
 	}
-	cutin "mocseal_dan01.bmp",255;
-	cutin "mocseal_kid01.bmp",255;
+	cutin "mocseal_dan01",255;
+	cutin "mocseal_kid01",255;
 	end;
 }
 
@@ -7531,7 +7531,7 @@ yuno_in04.gat,175,129,0	script	Workbook#mao	111,{
 			mes "way to Juno to look";
 			mes "through some trash?";
 			next;
-			cutin "mocseal_kid01.bmp",0;
+			cutin "mocseal_kid01",0;
 			mes "[Kidd]";
 			mes "For the sake of those";
 			mes "missing kids, we're duty";
@@ -7584,7 +7584,7 @@ yuno_in04.gat,175,129,0	script	Workbook#mao	111,{
 			mes "meet you back in Morroc.";
 			set mao_request,8;
 			close2;
-			cutin "mocseal_kid01.bmp",255;
+			cutin "mocseal_kid01",255;
 			donpcevent "Kidd#book::OnInit";
 			donpcevent "#maobooktimer::OnStop";
 			end;
@@ -7670,7 +7670,7 @@ que_job01.gat,8,77,1	script	#linstairs	139,3,3,{
 
 	if (mao_request == 109)
 	{
-		cutin "mocseal_rin01.bmp",2;
+		cutin "mocseal_rin01",2;
 		mes "[Lin]";
 		mes "Alright, we need";
 		mes "to talk for a second";
@@ -7699,13 +7699,13 @@ que_job01.gat,8,77,1	script	#linstairs	139,3,3,{
 		mes "me know. I'll see you soon.";
 		set mao_request,110;
 		close2;
-		cutin "mocseal_rin01.bmp",255;
+		cutin "mocseal_rin01",255;
 		donpcevent "Lin#stairs::OnInit";
 		end;
 	}
 	else if(mao_request == 115)
 	{
-		cutin "mocseal_rin01.bmp",2;
+		cutin "mocseal_rin01",2;
 		mes "[Lin]";
 		mes "Hey, I gotta talk to you";
 		mes "real quick without Mr. R";
@@ -7748,13 +7748,13 @@ que_job01.gat,8,77,1	script	#linstairs	139,3,3,{
 		mes "the Morroc Inn, alright?";
 		set mao_request,116;
 		close2;
-		cutin "mocseal_rin01.bmp",255;
+		cutin "mocseal_rin01",255;
 		donpcevent "Lin#stairs::OnInit";
 		end;
 	}
 	else if(mao_request == 117)
 	{
-		cutin "mocseal_rin01.bmp",2;
+		cutin "mocseal_rin01",2;
 		mes "[" + strcharinfo(0) + "]";
 		mes "L-Lin...?";
 		mes "You there?";
@@ -7812,13 +7812,13 @@ que_job01.gat,8,77,1	script	#linstairs	139,3,3,{
 		mes "For now, we'll see what he wants. Ah, and not a word of anything";
 		mes "that we've discussed out here.";
 		close2;
-		cutin "mocseal_rin01.bmp",255;
+		cutin "mocseal_rin01",255;
 		donpcevent "Lin#stairs::OnInit";
 		end;
 	}
 	else if(mao_request == 121 && thana_quest > 1)
 	{
-		cutin "mocseal_rin01.bmp",2;
+		cutin "mocseal_rin01",2;
 		mes "[Lin]";
 		mes "Report to me first.";
 		mes "Did you learn anything";
@@ -7872,7 +7872,7 @@ que_job01.gat,8,77,1	script	#linstairs	139,3,3,{
 		mes "from returning to this world...";
 		set mao_request,122;
 		close2;
-		cutin "mocseal_rin01.bmp",255;
+		cutin "mocseal_rin01",255;
 		donpcevent "Lin#stairs::OnInit";
 		end;
 	}
@@ -7882,7 +7882,7 @@ moc_fild10.gat,281,148,1	script	Upturned Spot#water	111,{
 
 	if (mao_request == 14)
 	{
-		cutin "mocseal_ice01.bmp",2;
+		cutin "mocseal_ice01",2;
 		mes "^3355FFYou find a gleaming";
 		mes "crest that looks like a";
 		mes "splashing wave of water.^000000";
@@ -7898,7 +7898,7 @@ moc_fild10.gat,281,148,1	script	Upturned Spot#water	111,{
 			misceffect 54,"Upturned Spot#water";
 			misceffect 56,"Upturned Spot#water";
 			next;
-			cutin "mocseal_ice02.bmp",2;
+			cutin "mocseal_ice02",2;
 			mes "^3355FFSuddenly, the crest sprayed";
 			mes "some water which evaporated";
 			mes "quickly in mid-air: it seems";
@@ -7929,7 +7929,7 @@ moc_fild10.gat,281,148,1	script	Upturned Spot#water	111,{
 		mes "splashing wave of water.^000000";
 		mes "^3355FFHowever, you don't sense";
 		mes "anything strange about it.^000000";
-		cutin "mocseal_ice02.bmp",2;
+		cutin "mocseal_ice02",2;
 		close2;
 	}
 	else if(mao_request == 113)
@@ -7937,13 +7937,13 @@ moc_fild10.gat,281,148,1	script	Upturned Spot#water	111,{
 		mes "^3355FFYou find a gleaming";
 		mes "crest that looks like a";
 		mes "splashing wave of water.^000000";
-		cutin "mocseal_ice02.bmp",2;
+		cutin "mocseal_ice02",2;
 		if (countitem(995))
 		{
 			mes "^3355FFYou bring out a Mystic Frozen";
 			mes "to enhance the crest's power.^000000";
 			next;
-			cutin "mocseal_ice01.bmp",2;
+			cutin "mocseal_ice01",2;
 			mes "^3355FFThe crest resonates";
 			mes "with the Mystic Frozen,";
 			mes "suddenly causing the air";
@@ -7972,11 +7972,11 @@ moc_fild10.gat,281,148,1	script	Upturned Spot#water	111,{
 		mes "^3355FFYou find a gleaming";
 		mes "crest that looks like a";
 		mes "splashing wave of water.^000000";
-		cutin "mocseal_ice01.bmp",2;
+		cutin "mocseal_ice01",2;
 		close2;
 	}
-	cutin "mocseal_ice01.bmp",255;
-	cutin "mocseal_ice02.bmp",255;
+	cutin "mocseal_ice01",255;
+	cutin "mocseal_ice02",255;
 	end;
 }
 
@@ -7984,7 +7984,7 @@ moc_fild19.gat,21,33,1	script	Unturned Spot#wind	111,{
 
 	if (mao_request == 10)
 	{
-		cutin "mocseal_wind01.bmp",2;
+		cutin "mocseal_wind01",2;
 		mes "^3355FFYou find a shining crest";
 		mes "that looks like a symbol of";
 		mes "the Wind. As you approach it,";
@@ -8002,7 +8002,7 @@ moc_fild19.gat,21,33,1	script	Unturned Spot#wind	111,{
 	}
 	else if(mao_request == 11)
 	{
-		cutin "mocseal_wind01.bmp",2;
+		cutin "mocseal_wind01",2;
 		mes "^3355FFYou find a shining crest";
 		mes "that looks like a symbol of";
 		mes "the Wind. As you approach it,";
@@ -8020,7 +8020,7 @@ moc_fild19.gat,21,33,1	script	Unturned Spot#wind	111,{
 	{
 		if (countitem(997))
 		{
-			cutin "mocseal_wind01.bmp",2;
+			cutin "mocseal_wind01",2;
 			mes "^3355FFYou find a shining crest";
 			mes "that looks like a symbol of";
 			mes "the Wind. As you approach it,";
@@ -8039,7 +8039,7 @@ moc_fild19.gat,21,33,1	script	Unturned Spot#wind	111,{
 			misceffect 56,"Unturned Spot#wind";
 			misceffect 57,"Unturned Spot#wind";
 			next;
-			cutin "mocseal_wind02.bmp",2;
+			cutin "mocseal_wind02",2;
 			mes "^3355FFThe Wind and Earth";
 			mes "neutralized each other,";
 			mes "causing the power of the";
@@ -8058,7 +8058,7 @@ moc_fild19.gat,21,33,1	script	Unturned Spot#wind	111,{
 		}
 		else
 		{
-			cutin "mocseal_wind01.bmp",2;
+			cutin "mocseal_wind01",2;
 			mes "^3355FFYou find a shining crest";
 			mes "that looks like a symbol of";
 			mes "the Wind. As you approach it,";
@@ -8116,12 +8116,12 @@ moc_fild19.gat,21,33,1	script	Unturned Spot#wind	111,{
 		mes "the Wind. However, you don't";
 		mes "think that it's particularly";
 		mes "worthy of an investigation.^000000";
-		cutin "mocseal_wind02.bmp",2;
+		cutin "mocseal_wind02",2;
 		close2;
 	}
 	else if(mao_request == 110)
 	{
-		cutin "mocseal_wind02.bmp",2;
+		cutin "mocseal_wind02",2;
 		mes "^3355FFYou find a shining crest";
 		mes "that looks like a symbol of";
 		mes "the Wind. However, the air";
@@ -8139,7 +8139,7 @@ moc_fild19.gat,21,33,1	script	Unturned Spot#wind	111,{
 	{
 		if (countitem(996))
 		{
-			cutin "mocseal_wind02.bmp",2;
+			cutin "mocseal_wind02",2;
 			mes "[" + strcharinfo(0) + "]";
 			mes "Let's see...";
 			mes "Hopefully this";
@@ -8156,7 +8156,7 @@ moc_fild19.gat,21,33,1	script	Unturned Spot#wind	111,{
 			delitem 996,1;
 			set mao_request,112;
 			next;
-			cutin "mocseal_wind01.bmp",2;
+			cutin "mocseal_wind01",2;
 			mes "[" + strcharinfo(0) + "]";
 			mes "Well, I guess that's that.";
 			mes "Now I need to talk to Lin";
@@ -8170,7 +8170,7 @@ moc_fild19.gat,21,33,1	script	Unturned Spot#wind	111,{
 			mes "^3355FFYou need to bring";
 			mes "a Rough Wind to activate";
 			mes "this Wind elemental crest.^000000";
-			cutin "mocseal_wind02.bmp",2;
+			cutin "mocseal_wind02",2;
 			close2;
 		}
 	}
@@ -8181,11 +8181,11 @@ moc_fild19.gat,21,33,1	script	Unturned Spot#wind	111,{
 		mes "the Wind. As you approach it,";
 		mes "you can feel the wind blowing";
 		mes "strongly against your skin.^000000";
-		cutin "mocseal_wind01.bmp",2;
+		cutin "mocseal_wind01",2;
 		close2;
 	}
-	cutin "mocseal_wind01.bmp",255;
-	cutin "mocseal_wind02.bmp",255;
+	cutin "mocseal_wind01",255;
+	cutin "mocseal_wind02",255;
 	end;
 }
 
@@ -8198,7 +8198,7 @@ moc_fild12.gat,280,36,1	script	Unturned Spot#earth	111,{
 			mes "^3355FFYou find a shimmering";
 			mes "crest that symbolizes";
 			mes "the power of the Earth.^000000";
-			cutin "mocseal_earth01.bmp",2;
+			cutin "mocseal_earth01",2;
 			next;
 			mes "[" + strcharinfo(0) + "]";
 			mes "Let's see...";
@@ -8219,7 +8219,7 @@ moc_fild12.gat,280,36,1	script	Unturned Spot#earth	111,{
 			mes "a burst of heated vapor.";
 			mes "This power of this crest";
 			mes "is now stabilized.^000000";
-			cutin "mocseal_earth02.bmp",2;
+			cutin "mocseal_earth02",2;
 			misceffect 72,"Unturned Spot#earth";
 			delitem 994,1;
 			set mao_request,14;
@@ -8236,7 +8236,7 @@ moc_fild12.gat,280,36,1	script	Unturned Spot#earth	111,{
 			mes "^3355FFYou find a shimmering";
 			mes "crest that symbolizes";
 			mes "the power of the Earth.^000000";
-			cutin "mocseal_earth01.bmp",2;
+			cutin "mocseal_earth01",2;
 			next;
 			mes "^3355FFTo counteract the";
 			mes "crest's Earth power,";
@@ -8252,7 +8252,7 @@ moc_fild12.gat,280,36,1	script	Unturned Spot#earth	111,{
 		mes "the power of the Earth.";
 		mes "However, you don't sense";
 		mes "anything peculiar from it.";
-		cutin "mocseal_earth02.bmp",2;
+		cutin "mocseal_earth02",2;
 		close2;
 	}
 	else if(mao_request == 112)
@@ -8262,7 +8262,7 @@ moc_fild12.gat,280,36,1	script	Unturned Spot#earth	111,{
 		mes "the power of the Earth.";
 		mes "You'll need a Great Nature";
 		mes "stone to enhance its power.^000000";
-		cutin "mocseal_earth02.bmp",2;
+		cutin "mocseal_earth02",2;
 		next;
 		if (countitem(997))
 		{
@@ -8280,7 +8280,7 @@ moc_fild12.gat,280,36,1	script	Unturned Spot#earth	111,{
 			mes "worked! Now, I should try";
 			mes "to find the crest hidden to";
 			mes "the east of Morroc.";
-			cutin "mocseal_earth01.bmp",2;
+			cutin "mocseal_earth01",2;
 			close2;
 		}
 		else
@@ -8297,11 +8297,11 @@ moc_fild12.gat,280,36,1	script	Unturned Spot#earth	111,{
 		mes "^3355FFYou find a shimmering";
 		mes "crest that symbolizes";
 		mes "the power of the Earth.^000000";
-		cutin "mocseal_earth01.bmp",2;
+		cutin "mocseal_earth01",2;
 		close2;
 	}
-	cutin "mocseal_earth01.bmp",255;
-	cutin "mocseal_earth02.bmp",255;
+	cutin "mocseal_earth01",255;
+	cutin "mocseal_earth02",255;
 }
 
 moc_fild07.gat,192,166,1	script	Unturned Spot#fire	111,{
@@ -8312,7 +8312,7 @@ moc_fild07.gat,192,166,1	script	Unturned Spot#fire	111,{
 		{
 			mes "^3355FFYou find a gleaming";
 			mes "crest that symbolizes Fire.^000000";
-			cutin "mocseal_fire01.bmp",2;
+			cutin "mocseal_fire01",2;
 			next;
 			mes "[" + strcharinfo(0) + "]";
 			mes "This crest must be";
@@ -8333,7 +8333,7 @@ moc_fild07.gat,192,166,1	script	Unturned Spot#fire	111,{
 			mes "suddenly chills, and";
 			mes "your Mystic Frozen";
 			mes "bursts into cold vapor.^000000";
-			cutin "mocseal_fire02.bmp",2;
+			cutin "mocseal_fire02",2;
 			misceffect 72,"Unturned Spot#fire";
 			delitem 995,1;
 			set mao_request,16;
@@ -8346,7 +8346,7 @@ moc_fild07.gat,192,166,1	script	Unturned Spot#fire	111,{
 		}
 		else
 		{
-			cutin "mocseal_fire01.bmp",2;
+			cutin "mocseal_fire01",2;
 			mes "^3355FFYou find a gleaming";
 			mes "crest that symbolizes Fire.";
 			mes "You'll need a Mystic Frozen";
@@ -8360,12 +8360,12 @@ moc_fild07.gat,192,166,1	script	Unturned Spot#fire	111,{
 		mes "crest that symbolizes Fire.";
 		mes "However, you don't think it's";
 		mes "worth investigating for now.^000000";
-		cutin "mocseal_fire02.bmp",2;
+		cutin "mocseal_fire02",2;
 		close2;
 	}
 	else if(mao_request == 114)
 	{
-		cutin "mocseal_fire02.bmp",2;
+		cutin "mocseal_fire02",2;
 		mes "^3355FFYou find a gleaming";
 		mes "crest that symbolizes Fire.";
 		if (countitem(994))
@@ -8378,7 +8378,7 @@ moc_fild07.gat,192,166,1	script	Unturned Spot#fire	111,{
 			mes "begins to shine as the";
 			mes "air around you heats up.^000000";
 			misceffect 55,"Unturned Spot#fire";
-			cutin "mocseal_fire01.bmp",2;
+			cutin "mocseal_fire01",2;
 			delitem 994,1;
 			set mao_request,115;
 			next;
@@ -8400,11 +8400,11 @@ moc_fild07.gat,192,166,1	script	Unturned Spot#fire	111,{
 	{
 		mes "^3355FFYou find a gleaming";
 		mes "crest that symbolizes Fire.^000000";
-		cutin "mocseal_fire01.bmp",2;
+		cutin "mocseal_fire01",2;
 		close2;
 	}
-	cutin "mocseal_fire01.bmp",255;
-	cutin "mocseal_fire02.bmp",255;
+	cutin "mocseal_fire01",255;
+	cutin "mocseal_fire02",255;
 }
 
 morocc_in.gat,46,125,5	script	Assistant	729,{
@@ -9632,7 +9632,7 @@ OnTouch:
 	mes "Could it possibly be...";
 	emotion e_gasp,1;
 	next;
-	cutin "mocseal_kid01.bmp",0;
+	cutin "mocseal_kid01",0;
 	mes "[Kidd]";
 	mes ""+ strcharinfo(0) +"...";
 	mes "Stay back and don't come";
@@ -9641,7 +9641,7 @@ OnTouch:
 	mes "mission, you don't know";
 	mes "who your client really is!";
 	next;
-	cutin "mocseal_rin01.bmp",2;
+	cutin "mocseal_rin01",2;
 	mes "[Lin]";
 	mes "What are you talking";
 	mes "about, Kidd? I just found";
@@ -9651,7 +9651,7 @@ OnTouch:
 	mes "hunting Mr. Moore down...";
 	donpcevent "Lin#maogate1_1::OnEmotion";
 	next;
-	cutin "mocseal_kid01.bmp",0;
+	cutin "mocseal_kid01",0;
 	mes "[Kidd]";
 	mes "Yes, of course they're";
 	mes "hunting him down. Your client,";
@@ -9659,7 +9659,7 @@ OnTouch:
 	mes "than Raiyan Moore-- and he";
 	mes "plans to revive Satan Morroc!";
 	next;
-	cutin "mocseal_rin01.bmp",2;
+	cutin "mocseal_rin01",2;
 	mes "[Lin]";
 	mes "What?! But how can that";
 	mes "be? I've been with Moore";
@@ -9674,8 +9674,8 @@ OnTouch:
 	mes "the Dandelion Organization...";
 	donpcevent "R#maogate1::OnEmotion";
 	next;
-	cutin "mocseal_rin01.bmp",255;
-	cutin "mocseal_kid01.bmp",255;
+	cutin "mocseal_rin01",255;
+	cutin "mocseal_kid01",255;
 	mes "[R. Moore]";
 	mes "Thanks for your";
 	mes "concern, Lin. But really...";
@@ -9968,7 +9968,7 @@ OnEnter:
 OnTouch:
 	if (mao_request == 28)
 	{
-		cutin "mocseal_kid01.bmp",2;
+		cutin "mocseal_kid01",2;
 		mes "[Kidd]";
 		mes "" + strcharinfo(0) + "!";
 		mes "Hey, you alright?";
@@ -10657,7 +10657,7 @@ OnTouch:
 	mes "Could it possibly be...";
 	emotion e_gasp,1;
 	next;
-	cutin "mocseal_kid01.bmp",0;
+	cutin "mocseal_kid01",0;
 	mes "[Kidd]";
 	mes ""+ strcharinfo(0) +"...";
 	mes "Stay back and don't come";
@@ -10666,7 +10666,7 @@ OnTouch:
 	mes "mission, you don't know";
 	mes "who your client really is!";
 	next;
-	cutin "mocseal_rin01.bmp",2;
+	cutin "mocseal_rin01",2;
 	mes "[Lin]";
 	mes "What are you talking";
 	mes "about, Kidd? I just found";
@@ -10676,7 +10676,7 @@ OnTouch:
 	mes "hunting Mr. Moore down...";
 	donpcevent "Lin#maogate2_1::OnEmotion";
 	next;
-	cutin "mocseal_kid01.bmp",0;
+	cutin "mocseal_kid01",0;
 	mes "[Kidd]";
 	mes "Yes, of course they're";
 	mes "hunting him down. Your client,";
@@ -10684,7 +10684,7 @@ OnTouch:
 	mes "than Raiyan Moore-- and he";
 	mes "plans to revive Satan Morroc!";
 	next;
-	cutin "mocseal_rin01.bmp",2;
+	cutin "mocseal_rin01",2;
 	mes "[Lin]";
 	mes "What?! But how can that";
 	mes "be? I've been with Moore";
@@ -10699,8 +10699,8 @@ OnTouch:
 	mes "the Dandelion Organization...";
 	donpcevent "R#maogate2::OnEmotion";
 	next;
-	cutin "mocseal_rin01.bmp",255;
-	cutin "mocseal_kid01.bmp",255;
+	cutin "mocseal_rin01",255;
+	cutin "mocseal_kid01",255;
 	mes "[R. Moore]";
 	mes "Thanks for your";
 	mes "concern, Lin. But really...";
@@ -10994,7 +10994,7 @@ OnEnter:
 OnTouch:
 	if (mao_request == 126)
 	{
-		cutin "mocseal_kid01.bmp",2;
+		cutin "mocseal_kid01",2;
 		mes "[Kidd]";
 		mes "" + strcharinfo(0) + "...!";
 		mes "Can you hear me? Oh man...";
@@ -11491,73 +11491,3 @@ OnEmotion3:
 }
 
 que_job01.gat,70,84,1	duplicate(Simon#mao)	Kimmie	882,0,0
-
-sec_in02.gat,38,162,0	script	Morroc Invasion Manager	882,{
-
-	mes "Enter password.";
-	next;
-	input @mao;
-	if (@mao == 1854)
-	{
-		mes "A total of " + $maoattack + " users completed";
-		mes "the Satan Morroc: Lin Quest.";
-		mes "There are 2 requirements to";
-		mes "summon Satan Morroc's troops.";
-		mes "1) 50 users must complete";
-		mes "this Satan Morroc: Lin Quest.";
-		next;
-		mes "2) One of these users that";
-		mes "completed the Lin Quest must";
-		mes "approach the Dandelion Org";
-		mes "NPCs at the outskirts of Morroc to trigger the monster invasion.";
-		mes "Change the GlobalVar to affect status of Satan Morroc invasation?";
-		next;
-		switch( select( "Set Globalvar","Cancel" ) )
-		{
-			case 1:
-				mes "Please choose the number";
-				mes "of times that the Lin Quest";
-				mes "will be recorded as completed";
-				mes "on the server. 0 is essentially";
-				mes "a reset; 50 will immediately";
-				mes "make the invasion available.";
-				next;
-				switch( select( "49","50","0" ) )
-				{
-					case 1:
-						mes "The GlobalVar has been";
-						mes "set to 49. The Lin Quest";
-						mes "must be completed 1 more";
-						mes "time before the Satan Morroc";
-						mes "invasion can be triggered.";
-						set $maoattack,49;
-						close;
-
-					case 2:
-						mes "The GlobalVar has been";
-						mes "set to 50. The Satan Morroc";
-						mes "invasion can now be triggered.";
-						set $maoattack,50;
-						close;
-					
-					case 3:
-						mes "The GlobalVar has been";
-						mes "set to 0. The Lin Quest";
-						mes "must be completed 1 more";
-						mes "time before the Satan Morroc";
-						mes "invasion can be triggered.";
-						set $maoattack,0;
-						close;
-				}
-
-			case 2:
-				mes "You have canceled.";
-				close;
-		}
-	}
-	else
-	{
-		mes "Do it again.";
-		close;
-	}
-}

@@ -1829,7 +1829,7 @@ geffen.gat,46,164,1	script	Baisulist#BLS	69,{
 morocc.gat,27,112,4	script	Wickebine#BLS	725,{
 
 	if (job_black == 10 && countitem(1219) > 0) {
-		cutin "job_black_hucke01.bmp",2;
+		cutin "job_black_hucke01",2;
 		mes "[Wickebine]";
 		mes "...!";
 		mes "It's here!";
@@ -1840,7 +1840,7 @@ morocc.gat,27,112,4	script	Wickebine#BLS	725,{
 		next;
 		switch(select("Whoops, not that one.","I guarantee you it is new.")) {
 		case 1:
-			cutin "job_black_hucke03.bmp",2;
+			cutin "job_black_hucke03",2;
 			mes "[Wickebine]";
 			mes "Oooh...!";
 			mes "Hurry up";
@@ -1848,10 +1848,10 @@ morocc.gat,27,112,4	script	Wickebine#BLS	725,{
 			next;
 			mes "- She seems to be upset. -";
 			close2;
-			cutin "job_black_hucke03.bmp",255;
+			cutin "job_black_hucke03",255;
 			end;
 		case 2:
-			cutin "job_black_hucke02.bmp",2;
+			cutin "job_black_hucke02",2;
 			mes "[Wickebine]";
 			mes "Hah hah hah!";
 			mes "Finally! Now...";
@@ -1864,19 +1864,19 @@ morocc.gat,27,112,4	script	Wickebine#BLS	725,{
 		}
 		set job_black,14;
 		delitem 1219,1;
-		cutin "job_black_hucke01.bmp",2;
+		cutin "job_black_hucke01",2;
 		mes "[Wickebine]";
 		mes "Are you with the";
 		mes "Einbroch Blacksmith Guild?";
 		mes "Give this message to Geschupenschte!";
 		next;
-		cutin "job_black_hucke03.bmp",2;
+		cutin "job_black_hucke03",2;
 		mes "[Wickebine]";
 		mes "'^660000You're late!";
 		mes "Do you know how long";
 		mes "I've been waiting?!^000000'";
 		next;
-		cutin "job_black_hucke02.bmp",2;
+		cutin "job_black_hucke02",2;
 		mes "[Wickebine]";
 		mes "But, this is also";
 		mes "a masterfully crafted item.";
@@ -1890,18 +1890,18 @@ morocc.gat,27,112,4	script	Wickebine#BLS	725,{
 		mes "a good job.";
 		mapannounce "morocc.gat","Thanks for delivering, " +strcharinfo(0)+"~!",8;
 		close2;
-		cutin "job_black_hucke02.bmp",255;
+		cutin "job_black_hucke02",255;
 		end;
 	} else if (job_black == 14) {
 		emotion ET_THROB,"Wickebine#BLS";
-		cutin "job_black_hucke02.bmp",2;
+		cutin "job_black_hucke02",2;
 		mes "[Wickebine]";
 		mes "Thanks for the delivery.";
 		close2;
-		cutin "job_black_hucke02.bmp",255;
+		cutin "job_black_hucke02",255;
 		end;
 	} else {
-		cutin "job_black_hucke03.bmp",2;
+		cutin "job_black_hucke03",2;
 		mes "[Wickebine]";
 		mes "...";
 		next;
@@ -1924,7 +1924,7 @@ morocc.gat,27,112,4	script	Wickebine#BLS	725,{
 		mes "This is very";
 		mes "upsetting...";
 		close2;
-		cutin "job_black_hucke03.bmp",255;
+		cutin "job_black_hucke03",255;
 		end;
 	}
 }

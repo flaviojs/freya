@@ -2511,13 +2511,13 @@ gef_tower.gat,107,36,4	script	White Dog	81,{
 			mes "[Maria]";
 			mes "It's better to just try it yourself than to listen to my descriptions.";
 			close2;
-			cutin "",255;
+			cutin "job_wizard_maria01",255;
 			end;
 		case 2:
 			mes "[Maria]";
 			mes "Really? Ok, then go apply and do your best.";
 			close2;
-			cutin "",255;
+			cutin "job_wizard_maria01",255;
 			end;
 		case 3:
 			cutin "job_wizard_maria02",2;
