@@ -8,9 +8,9 @@
  Aurora's Non-Aegis Scripts:
 ---------------------------------------------------------------------------
 
-- event/event_crystal.txt		<- Good enough - No access to an Aegis version
+- event/event_crystal.txt		<- Good enough? - No access to an Aegis version
 - event/event_moscovia.txt		<- Requires conversion - No access to an Aegis version [*]
-- event/event_xmas.txt			<- Good enough - No access to an Aegis version
+- event/event_xmas.txt			<- Good enough? - No access to an Aegis version
 
 - global/global_airship.txt		<- Requires conversion [*]
 - global/global_refine.txt		<- Requires conversion [Assigned ~ Tsuyuki]
@@ -25,38 +25,38 @@
 - gvg/gvg_tbox.txt			<- Good enough
 
 - quest/quest_headgear.txt		<- Requires conversion [Assigned ~ Tsuyuki]
-- quest/quest_juperos.txt		<- Good enough
-- quest/quest_kiel_hyre.txt		<- Good enough - No access to an iRO Aegis version
-- quest/quest_the_sign.txt		<- Good enough
+- quest/quest_juperos.txt		<- Good enough?
+- quest/quest_kiel_hyre.txt		<- Good enough? - No access to an iRO Aegis version
+- quest/quest_the_sign.txt		<- Good enough?
 
-- town/town_einbroch.txt		<- Requires conversion [*]
+- town/town_einbroch.txt		<- Requires conversion [Assigned ~ Tsuyuki]
 - town/town_nameless.txt		<- Requires conversion - No access to an Aegis version [*]
 - town/town_veins.txt			<- Requires conversion - No access to an Aegis version [*]
 
-- warp/warp_dungeon.txt			<- Good enough
-- warp/warp_field.txt			<- Good enough
-- warp/warp_gvg.txt			<- Good enough
-- warp/warp_misc.txt			<- Good enough
-- warp/warp_pvp.txt			<- Good enough
-- warp/warp_town.txt			<- Good enough
+- warp/warp_dungeon.txt			<- Good enough?
+- warp/warp_field.txt			<- Good enough?
+- warp/warp_gvg.txt			<- Good enough?
+- warp/warp_misc.txt			<- Good enough?
+- warp/warp_pvp.txt			<- Good enough?
+- warp/warp_town.txt			<- Good enough?
 
 
 ---------------------------------------------------------------------------
  Aurora's euRO Dialogue Aegis Scripts:
 ---------------------------------------------------------------------------
 
-- job/job_rogue.txt			<- Optional - No access to an iRO Aegis version [*]
-- quest/quest_bard.txt			<- Optional [*]
-- quest/quest_expanded.txt		<- Optional [*]
-- quest/quest_job_tutorial.txt		<- Optional [*]
-- quest/quest_quiz_revolution.txt	<- Optional - No access to an iRO Aegis version [*]
-- quest/quest_thanatos.txt		<- Optional [*]
-- town/town_comodo.txt			<- Optional - Only Comodo Gambling is euRO [*]
-- town/town_hugel.txt			<- Optional - Only Rebellion Quest is euRO - No access to an iRO Aegis version [*]
-- town/town_juno.txt			<- Optional - All contents are euRO except Juno Town NPCs [*]
-- town/town_kunlun.txt			<- Optional - [*]
-- town/town_lutie.txt			<- Optional - No access to an iRO Aegis version [*]
-- town/town_payon.txt			<- Optional - Only Fortune Teller is euRO [*]
+- job/job_rogue.txt			<- Optional? - No access to an iRO Aegis version [*]
+- quest/quest_bard.txt			<- Optional? [*]
+- quest/quest_expanded.txt		<- Optional? [*]
+- quest/quest_job_tutorial.txt		<- Optional? [*]
+- quest/quest_quiz_revolution.txt	<- Optional? - No access to an iRO Aegis version [*]
+- quest/quest_thanatos.txt		<- Optional? [*]
+- town/town_comodo.txt			<- Optional? - Only Comodo Gambling is euRO [*]
+- town/town_hugel.txt			<- Optional? - Only Rebellion Quest is euRO - No access to an iRO Aegis version [*]
+- town/town_juno.txt			<- Optional? - All contents are euRO except Juno Town NPCs [*]
+- town/town_kunlun.txt			<- Optional? - [*]
+- town/town_lutie.txt			<- Optional? - No access to an iRO Aegis version [*]
+- town/town_payon.txt			<- Optional? - Only Fortune Teller is euRO [*]
 
 
 ---------------------------------------------------------------------------
