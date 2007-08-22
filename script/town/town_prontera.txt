@@ -139,9 +139,9 @@ prt_in.gat,88,105,2	script	Recruiter	105,{
 			mes "3 Red Potions, 1 Milk,";
 			mes "and 1 Orange Potion";
 			mes "...to give you hope.";
-			getitem 501,3; // Red Potion
-			getitem 519,1; // Milk
-			getitem 502,1; // Orange Potion
+			getitem 501,3;
+			getitem 519,1;
+			getitem 502,1;
 			next;
 			mes "[Recruiter]";
 			mes "Are you ready, hero?";
@@ -209,9 +209,9 @@ prt_in.gat,88,105,2	script	Recruiter	105,{
 				mes "3 Red Potions, 1 Milk,";
 				mes "and 1 Orange Potion";
 				mes "...to give you hope.";
-				getitem 501,3; // Red Potion
-				getitem 519,1; // Milk
-				getitem 502,1; // Orange Potion
+				getitem 501,3;
+				getitem 519,1;
+				getitem 502,1;
 				next;
 				mes "[Recruiter]";
 				mes "Adventurer...";
@@ -1202,7 +1202,6 @@ prontera.gat,216,70,2	script	Strife	48,{
 			mes "[Strife]";
 			mes "Bash...!";
 			mes "Bash Bash!";
-			// Effects are in here
 			next;
 			mes "[Strife]";
 			mes "Maaaag...";
@@ -1320,8 +1319,8 @@ prontera.gat,78,150,3	script	Dairenne	91,{
 
 prontera.gat,73,140,0	script	Milk Vendor	86,{
 
-	//set '@max_max_c,CheckMaxCount 1201,1;
-	//if ('@max_max_c == 1) goto L_Case01;
+	set '@max_max_c,checkweight(1201,1);
+	if ('@max_max_c == 1) goto L_Case01;
 	goto L_Case02;
 
 	L_Case01:
@@ -1401,8 +1400,8 @@ prontera.gat,73,140,0	script	Milk Vendor	86,{
 		
 		L_Case12:
 			set Zeny,Zeny-gap;
-			delitem 713,1; // Empty Bottle
-			getitem 519,1; // Milk Bottle
+			delitem 713,1;
+			getitem 519,1;
 			set @bottle,0;
 			set @gap,0;
 			close;
@@ -6757,7 +6756,7 @@ pay_fild08.gat,218,283,2	script	Mysterious Man#magum	89,{
 
 prontera.gat,248,212,3	script	Busy Boy#prt	706,3,3,{
 
-	callsub sF_CheckWeight; // Check Player's weight
+	callsub sF_CheckWeight;
 	if (BaseLevel > 59) {
 		if (prt_curse == 0) {
 			mes "[Busy-Looking Boy]";
@@ -6767,8 +6766,7 @@ prontera.gat,248,212,3	script	Busy Boy#prt	706,3,3,{
 			mes "books, but... I... Oh man,";
 			mes "I can't get scared now!";
 			close;
-		}
-		else if (prt_curse == 1) {
+		} else if (prt_curse == 1) {
 			mes "[Busy-Looking Boy]";
 			mes "Aw nuts...";
 			mes "What am I gonna do?";
@@ -6788,8 +6786,7 @@ prontera.gat,248,212,3	script	Busy Boy#prt	706,3,3,{
 				if (Sex == Male) {
 					mes "Ack! You're that clumsy";
 					mes "dude who made me drop";
-				}
-				else {
+				} else {
 					mes "Ack! You're that ditzy";
 					mes "chick who made me drop";
 				}
@@ -6797,8 +6794,7 @@ prontera.gat,248,212,3	script	Busy Boy#prt	706,3,3,{
 				mes "Wait, you ditched me before,";
 				mes "so why act all concerned now?";
 				emotion e_gasp;
-			}
-			else {
+			} else {
 				mes "[Busy-Looking Boy]";
 				mes "Okay, okay...";
 				mes "Don't even think";
@@ -6818,8 +6814,7 @@ prontera.gat,248,212,3	script	Busy Boy#prt	706,3,3,{
 				mes "without helping me.";
 				mes "You're a real creepo,";
 				mes "you know that?";
-			}
-			else {
+			} else {
 				mes "Yeah... If you were";
 				mes "a graceful and considerate";
 				mes "lady, you woulda helped me";
@@ -6904,8 +6899,7 @@ prontera.gat,248,212,3	script	Busy Boy#prt	706,3,3,{
 			emotion e_sob;
 			set prt_curse,2;
 			close;
-		}
-		else if (prt_curse == 2) {
+		} else if (prt_curse == 2) {
 			mes "[Busy-Looking Boy]";
 			mes "Oh, hello again.";
 			mes "Sorry, but I'm trying to";
@@ -6924,8 +6918,7 @@ prontera.gat,248,212,3	script	Busy Boy#prt	706,3,3,{
 			mes "for quite a while now...";
 			emotion e_sob;
 			close;
-		}
-		else if (prt_curse == 3) {
+		} else if (prt_curse == 3) {
 			mes "[Busy-Looking Boy]";
 			mes "Oh, please deliver";
 			mes "those books I gave";
@@ -6952,7 +6945,7 @@ prontera.gat,248,212,3	script	Busy Boy#prt	706,3,3,{
 	close;
 
 OnTouch:
-	callsub sF_CheckWeight; //Check Player's weight
+	callsub sF_CheckWeight;
 	if (BaseLevel > 59) {
 		if (prt_curse == 0) {
 			misceffect 180,"Busy Boy#prt";
@@ -7038,8 +7031,7 @@ OnTouch:
 			emotion e_sob;
 			set prt_curse,2;
 			close;
-		}
-		else if (prt_curse == 3) {
+		} else if (prt_curse == 3) {
 			mes "[Busy-Looking Boy]";
 			mes "Oh, please deliver";
 			mes "those books I gave";
@@ -7069,13 +7061,13 @@ S_GetBooks:
 		mes "thanks for doing this for me.";
 		mes "I was really at my wit's end...";
 		set prt_curse,3;
-		getitem 7431,1; //Books
+		getitem 7431,1;
 		close;
 	}
 	return;
 
 sF_CheckWeight:
-	/*set '@max_max_c1,CheckMaxCount 1201,1;
+	set '@max_max_c1,checkweight(1201,1);
 	if ('@max_max_c1 == 1) {
 		mes "^3355FFWait a second!";
 		mes "Right now, you're carrying";
@@ -7084,7 +7076,7 @@ sF_CheckWeight:
 		mes "using the Kafra Service";
 		mes "to store some of your items.^000000";
 		close;
-	}*/
+	}
 	set @now_weight,MaxWeight-Weight;
 	if (@now_weight < 2000) {
 		mes "^3355FFWait a second!";
@@ -7100,7 +7092,7 @@ sF_CheckWeight:
 
 yuno.gat,311,195,3	script	Historian#prt01	754,{
 
-	/*set '@max_max_c1,CheckMaxCount 1201,1;
+	set '@max_max_c1,checkweight(1201,1);
 	if ('@max_max_c1 == 1) {
 		mes "^3355FFWait a second!";
 		mes "Right now, you're carrying";
@@ -7109,7 +7101,7 @@ yuno.gat,311,195,3	script	Historian#prt01	754,{
 		mes "using the Kafra Service";
 		mes "to store some of your items.^000000";
 		close;
-	}*/
+	}
 	set @now_weight,MaxWeight-Weight;
 	if (@now_weight < 2000) {
 		mes "^3355FFWait a second!";
@@ -7140,8 +7132,7 @@ yuno.gat,311,195,3	script	Historian#prt01	754,{
 		mes "own eyes... I'd even sell";
 		mes "my soul for the opportunity.";
 		close;
-	}
-	else if (prt_curse == 3) {
+	} else if (prt_curse == 3) {
 		mes "^3355FFAs you approached, this";
 		mes "historian suddenly closed";
 		mes "the book that he was reading,";
@@ -7180,8 +7171,7 @@ yuno.gat,311,195,3	script	Historian#prt01	754,{
 			mes "were you looking around here";
 			mes "for somebody in particular?";
 			next;
-		}
-		else {
+		} else {
 			select("Oh, I'm delivering the books for him.");
 			emotion e_what;
 			mes "[Historian]";
@@ -7243,10 +7233,9 @@ yuno.gat,311,195,3	script	Historian#prt01	754,{
 		mes "Just give me a minute to get";
 		mes "a cool drink of water first~";
 		set prt_curse,4;
-		delitem 7431,1; //Books
+		delitem 7431,1;
 		close;
-	}
-	else if (prt_curse == 4) {
+	} else if (prt_curse == 4) {
 		mes "[Historian]";
 		mes "Ah, that glass of";
 		mes "water was just what";
@@ -7365,8 +7354,7 @@ yuno.gat,311,195,3	script	Historian#prt01	754,{
 		mes "interesting to know about?";
 		set prt_curse,5;
 		close;
-	}
-	else if (prt_curse == 5) {
+	} else if (prt_curse == 5) {
 		mes "[Historian]";
 		mes "I'm sorry that I let my";
 		mes "mouth run while talking at";
@@ -7390,10 +7378,9 @@ yuno.gat,311,195,3	script	Historian#prt01	754,{
 		mes "I'm certain you can find her";
 		mes "somewhere in that desert town.";
 		set prt_curse,6;
-		getitem 7342,1; //File01
+		getitem 7342,1;
 		close;
-	}
-	else if (prt_curse == 6) {
+	} else if (prt_curse == 6) {
 		mes "[Historian]";
 		mes "Please find my colleague,";
 		mes "Rodafrian, in Morroc and";
@@ -7409,8 +7396,7 @@ yuno.gat,311,195,3	script	Historian#prt01	754,{
 			mes "progress of my research,";
 			mes "especially since those books";
 			mes "were delivered fairly late...";
-		}
-		else {
+		} else {
 			mes "[Historian]";
 			mes "Song? Oh, you mean the";
 			mes "one praising the 7 who";
@@ -7434,8 +7420,7 @@ yuno.gat,311,195,3	script	Historian#prt01	754,{
 			mes "Research Group. Ha ha ha~";
 		}
 		close;
-	}
-	else if (prt_curse > 55) {
+	} else if (prt_curse > 55) {
 		mes "[Historian]";
 		mes "Ah, it's been a while";
 		mes "since the last time I saw";
@@ -7452,8 +7437,7 @@ yuno.gat,311,195,3	script	Historian#prt01	754,{
 		mes "in my place. I didn't know she";
 		mes "could be so competitive!";
 		close;
-	}
-	else {
+	} else {
 		mes "[Historian]";
 		mes "ZzzzZZz....";
 		mes "ZzzzZZz....ZZZzzzz...";
@@ -7463,7 +7447,7 @@ yuno.gat,311,195,3	script	Historian#prt01	754,{
 
 morocc_in.gat,45,126,3	script	Historian#prt02	702,{
 
-	/*set '@max_max_c1,CheckMaxCount 1201,1;
+	set '@max_max_c1,checkweight(1201,1);
 	if ('@max_max_c1 == 1) {
 		mes "^3355FFWait a second!";
 		mes "Right now, you're carrying";
@@ -7472,7 +7456,7 @@ morocc_in.gat,45,126,3	script	Historian#prt02	702,{
 		mes "using the Kafra Service";
 		mes "to store some of your items.^000000";
 		close;
-	}*/
+	}
 	set @now_weight,MaxWeight-Weight;
 	if (@now_weight < 2000) {
 		mes "^3355FFWait a second!";
@@ -7595,18 +7579,16 @@ morocc_in.gat,45,126,3	script	Historian#prt02	702,{
 					mes "If you don't mind, would you";
 					mes "please tell me your name?";
 					callsub S_GiveName,1;
-				}
-				else {
+				} else {
 					mes "[Historian Rodafrian]";
 					mes "Huh...?";
 					mes "That doesn't sound";
 					mes "right at all. Are you sure";
 					mes "that's the lyric you heard?";
-					delitem 7342,1; //File01
+					delitem 7342,1;
 					set prt_curse,7;
 					close;
 				}
-
 			case 2:
 				mes "[Historian Rodafrian]";
 				mes "What was that?";
@@ -7625,30 +7607,31 @@ morocc_in.gat,45,126,3	script	Historian#prt02	702,{
 					set @total,@total+1;
 					mes "*The great serpent*";
 					mes "*swallowed the sea.*";
+				} else {
+					mes "* "+@line$+"*";
 				}
-				else mes "* "+@line$+"*";
-
 				input @line$;
 				if (@line$ == "The eagle of the rainbow swallowed the serpent.") {
 					set @total,@total+1;
 					mes "*The eagle of the rainbow*";
 					mes "*swallowed the serpent.*";
+				} else {
+					mes "*"+@line$+"*";
 				}
-				else mes "*"+@line$+"*";
-
 				input @line$;
 				if (@line$ == "Then the eagle built its nest.") {
 					set @total,@total+1;
 					mes "*Then the eagle built its nest.*";
+				} else {
+					mes "*"+@line$+"*";
 				}
-				else mes "*"+@line$+"*";
-
 				input @line$;
 				if (@line$ == "A nest upon the swallowed sea.") {
 					set @total,@total+1;
 					mes "*A nest upon the swallowed sea.*";
+				} else {
+					mes "*"+@line$+"*";
 				}
-				else mes "*"+@line$+"*";
 				next;
 				if (@total == 4) {
 					mes "[Historian Rodafrian]";
@@ -7659,18 +7642,16 @@ morocc_in.gat,45,126,3	script	Historian#prt02	702,{
 					mes "If you don't mind, would you";
 					mes "please tell me your name?";
 					callsub S_GiveName,1;
-				}
-				else {
+				} else {
 					mes "[Historian Rodafrian]";
 					mes "Huh...?";
 					mes "That doesn't sound right";
 					mes "at all. Are you sure those";
 					mes "are the lyrics you heard?";
-					delitem 7342,1; //File01
+					delitem 7342,1;
 					set prt_curse,7;
 					close;
 				}
-
 			case 3:
 				mes "[Historian Rodafrian]";
 				mes "............";
@@ -7689,8 +7670,7 @@ morocc_in.gat,45,126,3	script	Historian#prt02	702,{
 		mes "sometimes. Not many people";
 		mes "share my interests, you know...";
 		close;
-	}
-	else if (prt_curse == 7) {
+	} else if (prt_curse == 7) {
 		mes "^3355FFArms folded, Rodafrian";
 		mes "seems to be deep in thought.";
 		mes "Then, as if making making";
@@ -7702,8 +7682,7 @@ morocc_in.gat,45,126,3	script	Historian#prt02	702,{
 		mes "Adventurer...";
 		mes "I want to know your name.";
 		callsub S_GiveName,0;
-	}
-	else if (prt_curse > 7 && prt_curse < 30) {
+	} else if (prt_curse > 7 && prt_curse < 30) {
 		mes "[Historian Rodafrian]";
 		mes "As I recall, Mondo should";
 		mes "be at Mount Mjolnir, located";
@@ -7711,8 +7690,7 @@ morocc_in.gat,45,126,3	script	Historian#prt02	702,{
 		mes "Rune-Midgarts Kingdom. Ask";
 		mes "him for the lyrics of the song that I can't seem to remember...";
 		close;
-	}
-	else if (prt_curse == 30 || prt_curse == 55) {
+	} else if (prt_curse == 30 || prt_curse == 55) {
 		mes "[Historian Rodafrian]";
 		mes "Oh, you've returned.";
 		mes "Have you met with Mondo";
@@ -7789,13 +7767,13 @@ morocc_in.gat,45,126,3	script	Historian#prt02	702,{
 			mes "that she might spread around!";
 			mes "Oh well, I guess I better head";
 			mes "back to the priests...)^000000";
-			if (prt_curse == 30) 
+			if (prt_curse == 30) {
 				set prt_curse,31;
-			else 
+			} else {
 				set prt_curse,60;
+			}
 			close;
 		}
-
 		mes "[Historian Rodafrian]";
 		mes "Oh, let me thank you";
 		mes "once again for going";
@@ -7817,21 +7795,20 @@ morocc_in.gat,45,126,3	script	Historian#prt02	702,{
 		mes "through Karlomoff's report.";
 		mes "For now, it would be best";
 		mes "to return to Father Bamph.^000000";
-		if (prt_curse == 30)
+		if (prt_curse == 30) {
 			set prt_curse,40;
-		else
+		} else {
 			set prt_curse,56;
+		}
 		close;
-	}
-	else if (prt_curse == 31 || prt_curse == 40) {
+	} else if (prt_curse == 31 || prt_curse == 40) {
 		mes "^3355FFRodafrian seemed very";
 		mes "happy and began to read";
 		mes "through Karlomoff's report.";
 		mes "For now, it would be best";
 		mes "to return to Father Bamph.^000000";
 		close;
-	}
-	else if (prt_curse == 56) {
+	} else if (prt_curse == 56) {
 		emotion e_an;
 		mes "[Historian Rodafrian]";
 		mes "I just paid a visit to";
@@ -7841,8 +7818,7 @@ morocc_in.gat,45,126,3	script	Historian#prt02	702,{
 		mes "But I can never really tell";
 		mes "with that sneaky guy...";
 		close;
-	}
-	else if (prt_curse == 60) {
+	} else if (prt_curse == 60) {
 		emotion e_an;
 		mes "[Historian Rodafrian]";
 		mes "I just aid a visit to";
@@ -7858,8 +7834,7 @@ morocc_in.gat,45,126,3	script	Historian#prt02	702,{
 		mes "now, it would be best to";
 		mes "go to ^3355FFIProntera Church.^000000";
 		close;
-	}
-	else {
+	} else {
 		mes "[Historian Rodafrian]";
 		mes "I'm sorry, but I'm";
 		mes "really very busy with my";
@@ -7893,14 +7868,16 @@ S_GiveName:
 	mes "a silly errand, but I actually";
 	mes "need to know this song's lyrics";
 	mes "for the sake of my research...";
-	if (getarg(0) == 1) delitem 7342,1; //File01
+	if (getarg(0) == 1) {
+		delitem 7342,1;
+	}
 	set prt_curse,8;
 	close;
 }
 
 mjolnir_01.gat,135,168,3	script	Historian#prt03	754,{
 
-	/*set '@max_max_c1,CheckMaxCount 1201,1;
+	set '@max_max_c1,checkweight(1201,1);
 	if ('@max_max_c1 == 1) {
 		mes "^3355FFWait a second!";
 		mes "Right now, you're carrying";
@@ -7909,7 +7886,7 @@ mjolnir_01.gat,135,168,3	script	Historian#prt03	754,{
 		mes "using the Kafra Service";
 		mes "to store some of your items.^000000";
 		close;
-	}*/
+	}
 	set @now_weight,MaxWeight-Weight;
 	if (@now_weight < 2000) {
 		mes "^3355FFWait a second!";
@@ -7981,8 +7958,7 @@ mjolnir_01.gat,135,168,3	script	Historian#prt03	754,{
 		mes "from the beginning.";
 		next;
 		callsub S_Song;
-	}
-	else if (prt_curse == 9) {
+	} else if (prt_curse == 9) {
 		mes "[Historian Mondo]" ;
 		mes "Ah, would you tell me";
 		mes "the lyrics of the version of";
@@ -7991,8 +7967,7 @@ mjolnir_01.gat,135,168,3	script	Historian#prt03	754,{
 		mes "you happened to hear?";
 		next;
 		callsub S_Song;
-	}
-	else if (prt_curse == 10) {
+	} else if (prt_curse == 10) {
 		mes "[Historian Mondo]";
 		mes "Interesting...";
 		mes "The version you heard";
@@ -8046,8 +8021,7 @@ mjolnir_01.gat,135,168,3	script	Historian#prt03	754,{
 		mes "travels, adventurer.";
 		set prt_curse,11;
 		close;
-	}
-	else {
+	} else {
 		mes "[Historian Mondo]";
 		mes "Isn't this such";
 		mes "a beautiful place?";
@@ -8065,27 +8039,30 @@ S_Song:
 		set @total,@total+1;
 		mes "*The great serpent*";
 		mes "*swallowed the sea.*";
+	} else {
+		mes "*"+@line$+"*";
 	}
-	else mes "*"+@line$+"*";
-
 	input @line$;
 	if (@line$ == "The eagle of the rainbow swallowed the serpent.") {
 		set @total,@total+1;
 		mes "*The eagle of the rainbow*";
 		mes "*swallowed the serpent.*";
+	} else {
+		mes "*"+@line$+"*";
 	}
-	else mes "*"+@line$+"*";
-
 	input @line$;
-	if (@line$ == "Then the eagle built its nest.") set @total,@total+1;
+	if (@line$ == "Then the eagle built its nest.") {
+		set @total,@total+1;
+	}
 	mes "*"+@line$+"*";
-
 	input @line$;
-	if (@line$ == "A nest upon the swallowed sea.") set @total,@total+1;
+	if (@line$ == "A nest upon the swallowed sea.") {
+		set @total,@total+1;
+	}
 	mes "*"+@line$+"*";
-
-	if (@total == 4) set prt_curse,10;
-	else {
+	if (@total == 4) {
+		set prt_curse,10;
+	} else {
 		next;
 		mes "["+strcharinfo(0)+"]";
 		mes "Wait, wait...";
@@ -8268,31 +8245,27 @@ mjolnir_01.gat,313,269,5	script	Dazed Boy#prt	706,{
 		mes "......";
 		mes ".........";
 		close;
-	}
-	else if (prt_curse == 36) {
+	} else if (prt_curse == 36) {
 		mes "^3355FFThe little boy looked";
 		mes "very worn and weary of";
 		mes "life, a look that is very";
 		mes "unsettling on the face";
 		mes "of a young child.^000000";
 		close;
-	}
-	else if (prt_curse == 45) {
+	} else if (prt_curse == 45) {
 		mes "^3355FFThe little boy still";
 		mes "won't talk to you, but";
 		mes "he acknowledges your";
 		mes "presense by making eye";
 		mes "contact and smiling.^000000";
 		close;
-	}
-	else if (prt_curse > 54) {
+	} else if (prt_curse > 54) {
 		mes "^3355FFThe little boy still";
 		mes "won't talk to you, but he";
 		mes "make you feel welcome";
 		mes "by giving you a warm smile.^000000";
 		close;
-	}
-	else {
+	} else {
 		mes "[Absent-Minded Boy]";
 		mes "...";
 		mes "......";
@@ -8309,16 +8282,16 @@ mjolnir_01.gat,313,269,5	script	Dazed Boy#prt	706,{
 
 mjolnir_01.gat,316,268,3	script	Exhausted-Looking Woman#prt	879,{
 
-	//set '@max_max_c1,CheckMaxCount 1201,1;
-	//if ('@max_max_c1 == 1) {
-	//	mes "^3355FFWait a second!";
-	//	mes "Right now, you're carrying";
-	//	mes "too many things with you.";
-	//	mes "Please come back after";
-	//	mes "using the Kafra Service";
-	//	mes "to store some of your items.^000000";
-	//	close;
-	//}
+	set '@max_max_c1,checkweight(1201,1);
+	if ('@max_max_c1 == 1) {
+		mes "^3355FFWait a second!";
+		mes "Right now, you're carrying";
+		mes "too many things with you.";
+		mes "Please come back after";
+		mes "using the Kafra Service";
+		mes "to store some of your items.^000000";
+		close;
+	}
 	set @now_weight,MaxWeight-Weight;
 	if (@now_weight < 2000) {
 		mes "^3355FFWait a second!";
@@ -8435,8 +8408,7 @@ mjolnir_01.gat,316,268,3	script	Exhausted-Looking Woman#prt	879,{
 		mes "[Exhausted-Looking Woman]";
 		mes "...........";
 		close;
-	}
-	else if (prt_curse == 12) {
+	} else if (prt_curse == 12) {
 		mes "[Exhausted-Looking Woman]";
 		mes "Not too many people";
 		mes "come to this remote area.";
@@ -8507,8 +8479,7 @@ mjolnir_01.gat,316,268,3	script	Exhausted-Looking Woman#prt	879,{
 		getitem 7432,1;
 		set prt_curse,13;
 		close;
-	}
-	else if (prt_curse > 12 && prt_curse < 16) {
+	} else if (prt_curse > 12 && prt_curse < 16) {
 		mes "[Exhausted-Looking Woman]";
 		mes "Father Bamph has helped";
 		mes "me so much. Please bring";
@@ -8516,8 +8487,7 @@ mjolnir_01.gat,316,268,3	script	Exhausted-Looking Woman#prt	879,{
 		mes "Prontera Church, and give";
 		mes "him my warmest regards.";
 		close;
-	}
-	else if (prt_curse == 16) {
+	} else if (prt_curse == 16) {
 		mes "[Bonnie Imbullea]";
 		mes "Oh, you've come back?";
 		mes "Were you able to deliver";
@@ -8605,8 +8575,7 @@ mjolnir_01.gat,316,268,3	script	Exhausted-Looking Woman#prt	879,{
 		mes "know about this information.)^000000";
 		set prt_curse,17;
 		close;
-	}
-	else if (prt_curse == 17) {
+	} else if (prt_curse == 17) {
 		mes "[Bonnie Imbullea]";
 		mes "It's really very";
 		mes "difficult to live";
@@ -8619,8 +8588,7 @@ mjolnir_01.gat,316,268,3	script	Exhausted-Looking Woman#prt	879,{
 		mes "little while before you";
 		mes "return to Prontera Church.";
 		close;
-	}
-	else if (prt_curse == 35 || prt_curse == 44 || prt_curse == 54) {
+	} else if (prt_curse == 35 || prt_curse == 44 || prt_curse == 54) {
 		mes "^3355FFYou tell Bonnie Imbullea";
 		mes "that the deaths of the princes";
 		mes "were not her fault and that the exorcism was probably sabotaged.";
@@ -8678,19 +8646,19 @@ mjolnir_01.gat,316,268,3	script	Exhausted-Looking Woman#prt	879,{
 		mes "I can finally free myself from";
 		mes "this burdensome guilt...";
 		mes "Thank you, kind adventurer~";
-		if (prt_curse == 35) set prt_curse,36;
-		else if (prt_curse == 44) set prt_curse,45;
-		else {
+		if (prt_curse == 35) {
+			set prt_curse,36;
+		} else if (prt_curse == 44) {
+			set prt_curse,45;
+		} else {
 			next;
 			mes "^3355FFNow, you can return to";
 			mes "Rodafrian, the historian";
 			mes "stationed in Morroc.^000000";
 			set prt_curse,55;
 		}
-
 		close;
-	}
-	else if (prt_curse == 36) {
+	} else if (prt_curse == 36) {
 		mes "[Bonnie Imbullea]";
 		mes "By your grace and mercy,";
 		mes "please pity the poor souls";
@@ -8698,8 +8666,7 @@ mjolnir_01.gat,316,268,3	script	Exhausted-Looking Woman#prt	879,{
 		mes "Bless us with your light and";
 		mes "may your wisdom guide us...";
 		close;
-	}
-	else if (prt_curse == 45) {
+	} else if (prt_curse == 45) {
 		mes "[Bonnie Imbullea]";
 		mes "I guess we've gotten";
 		mes "too used to the peace";
@@ -8707,8 +8674,7 @@ mjolnir_01.gat,316,268,3	script	Exhausted-Looking Woman#prt	879,{
 		mes "Mjolnir. It won't be easy";
 		mes "to leave, even if we're welcome to return to Prontera...";
 		close;
-	}
-	else if (prt_curse > 54) {
+	} else if (prt_curse > 54) {
 		mes "[Bonnie Imbullea]";
 		mes "Thank you so much";
 		mes "for helping out in the";
@@ -8717,8 +8683,7 @@ mjolnir_01.gat,316,268,3	script	Exhausted-Looking Woman#prt	879,{
 		mes "happiness again if it";
 		mes "weren't for your efforts.";
 		close;
-	}
-	else {
+	} else {
 		mes "[Bonnie Imbullea]";
 		mes "^333333*Sigh...*^000000";
 		close;
@@ -8815,10 +8780,11 @@ prt_church.gat,185,106,3	script	Father Bamph	60,{
 		mes "sent this adventurer here";
 		mes "for a favor, it probably means";
 		mes "she trusts this person. Besides, we need somebody to carry out";
-		if (Sex == Male)
+		if (Sex == Male) {
 			mes "this task for us. Why not him?";
-		else
+		} else {
 			mes "this task for us. Why not her?";
+		}
 		next;
 		mes "[Father Bamph]";
 		mes "Your words have the ring";
@@ -8827,10 +8793,9 @@ prt_church.gat,185,106,3	script	Father Bamph	60,{
 		mes "me the opportunity to tell you";
 		mes "something very important. But, you must not tell anyone else...";
 		set prt_curse,14;
-		delitem 7432,1; //Leather_Pouch
+		delitem 7432,1;
 		close;
-	}
-	else if (prt_curse == 14) {
+	} else if (prt_curse == 14) {
 		mes "[Father Bamph]";
 		mes "What I am about to tell";
 		mes "you must be kept secret.";
@@ -8934,8 +8899,7 @@ prt_church.gat,185,106,3	script	Father Bamph	60,{
 		emotion e_dots;
 		set prt_curse,15;
 		close;
-	}
-	else if (prt_curse == 15) {
+	} else if (prt_curse == 15) {
 		mes "[Father Bamph]";
 		mes "Now, you should know that";
 		mes "all of the princes that were";
@@ -9013,8 +8977,7 @@ prt_church.gat,185,106,3	script	Father Bamph	60,{
 		mes "after the exorcism failed...";
 		set prt_curse,16;
 		close;
-	}
-	else if (prt_curse == 16) {
+	} else if (prt_curse == 16) {
 		mes "[Father Bamph]";
 		mes "Please visit Bonnie";
 		mes "Imbullea in Mount Mjolnir";
@@ -9022,8 +8985,7 @@ prt_church.gat,185,106,3	script	Father Bamph	60,{
 		mes "about that song, or about what";
 		mes "happened after the attempted exorcism of the Jormungand curse.";
 		close;
-	}
-	else if (prt_curse == 17) {
+	} else if (prt_curse == 17) {
 		mes "[Father Bamph]";
 		mes "Ah, have you spoken";
 		mes "to Bonnie Imbullea?";
@@ -9053,8 +9015,7 @@ prt_church.gat,185,106,3	script	Father Bamph	60,{
 		mes "I will meet you there.";
 		set prt_curse,18;
 		close;
-	}
-	else if (prt_curse > 17 && prt_curse < 22) {
+	} else if (prt_curse > 17 && prt_curse < 22) {
 		mes "[Father Bamph]";
 		mes "Come with me to the";
 		mes "secret ceremonial grounds";
@@ -9070,8 +9031,7 @@ prt_church.gat,185,106,3	script	Father Bamph	60,{
 		mes "there. Go, and I will meet";
 		mes "you in the ceremonial grounds.";
 		close;
-	}
-	else if (prt_curse == 22) {
+	} else if (prt_curse == 22) {
 		mes "[Father Bamph]";
 		mes "This is a matter of grave";
 		mes "importance, but we can't";
@@ -9089,8 +9049,7 @@ prt_church.gat,185,106,3	script	Father Bamph	60,{
 		mes "was used to kill the princes?";
 		set prt_curse,23;
 		close;
-	}
-	else if (prt_curse == 23) {
+	} else if (prt_curse == 23) {
 		mes "[Father Bamph]";
 		mes "Please see if you can";
 		mes "learn anything about testing";
@@ -9098,8 +9057,7 @@ prt_church.gat,185,106,3	script	Father Bamph	60,{
 		mes "a member of the Assassin";
 		mes "Guild in Morroc.";
 		close;
-	}
-	else if (prt_curse == 31) {
+	} else if (prt_curse == 31) {
 		mes "[Father Bamph]";
 		mes "Ah, you've returned~";
 		mes "Have you managed to learn";
@@ -9122,8 +9080,7 @@ prt_church.gat,185,106,3	script	Father Bamph	60,{
 		mes "over there for you once again.";
 		set prt_curse,32;
 		close;
-	}
-	else if (prt_curse == 32 || prt_curse == 33 || prt_curse == 41 || prt_curse == 42 || prt_curse == 51 || prt_curse == 52) {
+	} else if (prt_curse == 32 || prt_curse == 33 || prt_curse == 41 || prt_curse == 42 || prt_curse == 51 || prt_curse == 52) {
 		mes "[Father Bamph]";
 		mes "You can use the hidden";
 		mes "switch in the bookshelf to";
@@ -9131,8 +9088,7 @@ prt_church.gat,185,106,3	script	Father Bamph	60,{
 		mes "grounds. Don't forget that we";
 		mes "need^3131FF 1 Yellow Gemstone^000000 and ^3131FF1 Green Potion^000000 to test for poison.";
 		close;
-	}
-	else if (prt_curse == 34) {
+	} else if (prt_curse == 34) {
 		mes "[Father Bamph]";
 		mes "I can't believe it!";
 		mes "If poison was used, then";
@@ -9162,16 +9118,14 @@ prt_church.gat,185,106,3	script	Father Bamph	60,{
 		mes "adventurer. May safety accompany you on all of your journeys.";
 		set prt_curse,35;
 		close;
-	}
-	else if (prt_curse > 34 && prt_curse < 40) {
+	} else if (prt_curse > 34 && prt_curse < 40) {
 		mes "[Father Bamph]";
 		mes "I'm at a loss at what";
 		mes "to do. Sometimes, even";
 		mes "I have doubts and believe";
 		mes "that Odin has abandoned us...";
 		close;
-	}
-	else if (prt_curse == 40) {
+	} else if (prt_curse == 40) {
 		mes "[Father Bamph]";
 		mes "Ah, you've returned~";
 		mes "Have you managed to learn";
@@ -9194,8 +9148,7 @@ prt_church.gat,185,106,3	script	Father Bamph	60,{
 		mes "over there for you once again.";
 		set prt_curse,41;
 		close;
-	}
-	else if (prt_curse == 43 || prt_curse == 53) {
+	} else if (prt_curse == 43 || prt_curse == 53) {
 		mes "[Father Bamph]";
 		mes "I can't believe it!";
 		mes "If poison was used, then";
@@ -9234,8 +9187,7 @@ prt_church.gat,185,106,3	script	Father Bamph	60,{
 		else set prt_curse,54;
 		set BaseExp,BaseExp+1600000;
 		close;
-	}
-	else if (prt_curse > 43 && prt_curse < 50) {
+	} else if (prt_curse > 43 && prt_curse < 50) {
 		mes "[Father Bamph]";
 		mes "Have you spoken to";
 		mes "Bonnie Imbullea yet?";
@@ -9244,8 +9196,7 @@ prt_church.gat,185,106,3	script	Father Bamph	60,{
 		mes "murder. Father Biscuss";
 		mes "and I will handle it.";
 		close;
-	}
-	else if (prt_curse == 50) {
+	} else if (prt_curse == 50) {
 		mes "[Father Bamph]";
 		mes "Ah, you've returned~";
 		mes "Have you managed to learn";
@@ -9268,8 +9219,7 @@ prt_church.gat,185,106,3	script	Father Bamph	60,{
 		mes "over there for you once again.";
 		set prt_curse,51;
 		close;
-	}
-	else if (prt_curse == 60) {
+	} else if (prt_curse == 60) {
 		mes "[Father Bamph]";
 		mes "Oh, "+strcharinfo(0)+"~";
 		mes "Long time, no see.";
@@ -9322,8 +9272,7 @@ prt_church.gat,185,106,3	script	Father Bamph	60,{
 		mes "from now on. Thanks again for your help, "+strcharinfo(0)+".";
 		set prt_curse,61;
 		close;
-	}
-	else {
+	} else {
 		mes "[Father Bamph]";
 		mes "I'm sorry, but would it";
 		mes "be alright if we talked";
@@ -9352,8 +9301,7 @@ prt_church.gat,184,110,3	script	Father Biscuss	60,{
 		mes "From here on, Father Bamph";
 		mes "and I will handle this issue.";
 		close;
-	}
-	else if (prt_curse == 35) {
+	} else if (prt_curse == 35) {
 		mes "[Father Biscuss]";
 		mes "I've never seen Father";
 		mes "Bamph this way before, but";
@@ -9387,8 +9335,7 @@ prt_church.gat,184,110,3	script	Father Biscuss	60,{
 		set prt_curse,36;
 		set baseExp,BaseExp+1600000;
 		close;
-	}
-	else if (prt_curse == 36) {
+	} else if (prt_curse == 36) {
 		mes "[Father Biscuss]";
 		mes "No one can know light";
 		mes "without experiencing";
@@ -9403,8 +9350,7 @@ prt_church.gat,184,110,3	script	Father Biscuss	60,{
 		mes "I must remain calm, especially";
 		mes "when Father Bamph feels so bad about this whole incident...";
 		close;
-	}
-	else {
+	} else {
 		mes "[Father Biscuss]";
 		mes "Please observe";
 		mes "silence within the";
@@ -9454,15 +9400,13 @@ prt_church.gat,16,114,4	script	Father Bamph#tomb	60,{
 		mes "a look at the body to the left.";
 		set prt_curse,19;
 		close;
-	}
-	else if (prt_curse == 19) {
+	} else if (prt_curse == 19) {
 		mes "[Father Bamph]";
 		mes "Please take a look";
 		mes "at the body to the";
 		mes "far left, the first prince.";
 		close;
-	}
-	else if (prt_curse == 20) {
+	} else if (prt_curse == 20) {
 		mes "["+strcharinfo(0)+"]";
 		mes "That weird mark looked";
 		mes "just like snake scales.";
@@ -9475,31 +9419,27 @@ prt_church.gat,16,114,4	script	Father Bamph#tomb	60,{
 		mes "body of the second prince,";
 		mes "located in the middle.";
 		close;
-	}
-	else if (prt_curse == 21) {
+	} else if (prt_curse == 21) {
 		mes "[Father Bamph]";
 		mes "Now...";
 		mes "Now we should";
 		mes "examine the third prince.";
 		close;
-	}
-	else if (prt_curse == 22) {
+	} else if (prt_curse == 22) {
 		mes "[Father Bamph]";
 		mes "Let's go upstairs where we";
 		mes "can continue this conversation.";
 		mes "Ah, you might want to ask";
 		mes "Father Biscuss to lead you.";
 		close;
-	}
-	else if (prt_curse == 32 || prt_curse == 41 || prt_curse == 51) {
+	} else if (prt_curse == 32 || prt_curse == 41 || prt_curse == 51) {
 		mes "[Father Bamph]";
 		mes "Do you have a ^3131FFYellow";
 		mes "Gemstone^000000 and ^3131FFGreen Potion^000000";
 		mes "ready? If so, you should begin";
 		mes "testing on the body of the third prince before the others.";
 		close;
-	}
-	else if (prt_curse == 33 || prt_curse == 42 || prt_curse == 52) {
+	} else if (prt_curse == 33 || prt_curse == 42 || prt_curse == 52) {
 		mes "[Father Bamph]";
 		mes "The mark disappeared?";
 		mes "Oh, this is just horrible!";
@@ -9513,12 +9453,15 @@ prt_church.gat,16,114,4	script	Father Bamph#tomb	60,{
 		mes "and to think about all of";
 		mes "this carefully. For now,";
 		mes "let's go back upstairs.";
-		if (prt_curse == 33) set prt_curse,34;
-		else if (prt_curse == 42) set prt_curse,43;
-		else set prt_curse,53;
+		if (prt_curse == 33) {
+			set prt_curse,34;
+		} else if (prt_curse == 42) {
+			set prt_curse,43;
+		} else {
+			set prt_curse,53;
+		}
 		close;
-	}
-	else if (prt_curse == 43 || prt_curse == 53) {
+	} else if (prt_curse == 43 || prt_curse == 53) {
 		mes "[Father Bamph]";
 		mes "We've disturbed the";
 		mes "bodies of these poor";
@@ -9548,16 +9491,14 @@ prt_church.gat,19,111,5	script	#prince1	887,{
 		mes "the scales of a serpent.^000000";
 		set prt_curse,20;
 		close;
-	}
-	else if (prt_curse == 33 || prt_curse > 41 && prt_curse < 51 || prt_curse == 52) {
+	} else if (prt_curse == 33 || prt_curse > 41 && prt_curse < 51 || prt_curse == 52) {
 		mes "^3355FFYou poured a little bit";
 		mes "of the solution made from";
 		mes "Yellow Gemstone and Green";
 		mes "Potion on the mark on the skin.";
 		mes "You waited a while, but there was no reaction from the solution.^000000";
 		close;
-	}
-	else {
+	} else {
 		mes "^3355FFIt's the body of a male";
 		mes "dressed in luxurious robes.";
 		mes "Although deceased, the color";
@@ -9609,8 +9550,7 @@ prt_church.gat,21,111,5	script	#prince2	887,{
 		mes "the body of the third prince.";
 		set prt_curse,21;
 		close;
-	}
-	else if (prt_curse == 33 || prt_curse > 41 && prt_curse < 51 || prt_curse == 52) {
+	} else if (prt_curse == 33 || prt_curse > 41 && prt_curse < 51 || prt_curse == 52) {
 		misceffect 192,"#prince2";
 		misceffect 53,"#prince2";
 		misceffect 109,"#prince2";
@@ -9621,8 +9561,7 @@ prt_church.gat,21,111,5	script	#prince2	887,{
 		mes "scale marks grow fainter and";
 		mes "the solution bubbles on contact. ";
 		close;
-	}
-	else {
+	} else {
 		mes "^3355FFIt's the body of a male";
 		mes "dressed in luxurious robes.";
 		mes "Although deceased, the color";
@@ -9659,8 +9598,9 @@ prt_church.gat,24,111,5	script	#prince3	887,{
 				mes "have declared war on someone.";
 				mes "It couldn't have been a weapon.";
 				next;
+			} else {
+				break;
 			}
-			else  break;
 		}
 		mes "[Father Bamph]";
 		mes "Poison...?";
@@ -9686,16 +9626,14 @@ prt_church.gat,24,111,5	script	#prince3	887,{
 		mes "not to disturb these bodies...";
 		set prt_curse,22;
 		close;
-	}
-	else if (prt_curse == 22) {
+	} else if (prt_curse == 22) {
 		mes "[Father Bamph]";
 		mes "Let's go upstairs where we";
 		mes "can continue this conversation.";
 		mes "Ah, you might want to ask";
 		mes "Father Biscuss to lead you.";
 		close;
-	}
-	else if (prt_curse == 32 || prt_curse == 41 || prt_curse == 51) {
+	} else if (prt_curse == 32 || prt_curse == 41 || prt_curse == 51) {
 		if (countitem(506) > 0 && countitem(715) > 0) {
 			mes "^3355FFYou open a bottle of";
 			mes "Green Potion and insert a";
@@ -9714,11 +9652,15 @@ prt_church.gat,24,111,5	script	#prince3	887,{
 			mes "and the serpent scale marks";
 			mes "on the prince's body slowly";
 			mes "fade until they disappear.^000000";
-			delitem 506,1; //Green_Potion
-			delitem 715,1; //Yellow_Gemstone
-			if (prt_curse == 32) set prt_curse,33;
-			else if (prt_curse == 41) set prt_curse,42;
-			else set prt_curse,52;
+			delitem 506,1;
+			delitem 715,1;
+			if (prt_curse == 32) {
+				set prt_curse,33;
+			} else if (prt_curse == 41) {
+				set prt_curse,42;
+			} else {
+				set prt_curse,52;
+			}
 			close;
 		}
 		mes "^3355FFYou'll need to have";
@@ -9728,16 +9670,14 @@ prt_church.gat,24,111,5	script	#prince3	887,{
 		mes "whether poison killed the";
 		mes "second and third princes.^000000";
 		close;
-	}
-	else if (prt_curse == 33 || prt_curse == 42 || prt_curse == 52) {
+	} else if (prt_curse == 33 || prt_curse == 42 || prt_curse == 52) {
 		mes "^3355FFThe serpent scale marks";
 		mes "on this prince's body have";
 		mes "vanished after you applied";
 		mes "the Green Potion and Yellow";
 		mes "Gemstone solution to the skin.^000000";
 		close;
-	}
-	else {
+	} else {
 		mes "^3355FFIt's the body of a male";
 		mes "dressed in luxurious robes.";
 		mes "Although deceased, the color";
@@ -9787,8 +9727,7 @@ moc_fild16.gat,201,295,5	script	Assassin Guildsman#poison	884,{
 		mes "there is a reason that";
 		mes "you have come here...";
 		close;
-	}
-	else {
+	} else {
 		mes "[Assassin Guildsman]";
 		mes "It's very dry and";
 		mes "windy today. I like this";
@@ -9978,20 +9917,21 @@ OnTouch:
 		set prt_curse,50;
 		close;
 	}
+	end;
 }
 
 prt_in.gat,162,99,4	script	Librarian#curse	67,{
 
-	//set '@max_max_c1,CheckMaxCount 1201,1;
-	//if ('@max_max_c1 == 1) {
-	//	mes "^3355FFWait a second!";
-	//	mes "Right now, you're carrying";
-	//	mes "too many things with you.";
-	//	mes "Please come back after";
-	//	mes "using the Kafra Service";
-	//	mes "to store some of your items.";
-	//	close;
-	//}
+	set '@max_max_c1,checkweight(1201,1);
+	if ('@max_max_c1 == 1) {
+		mes "^3355FFWait a second!";
+		mes "Right now, you're carrying";
+		mes "too many things with you.";
+		mes "Please come back after";
+		mes "using the Kafra Service";
+		mes "to store some of your items.";
+		close;
+	}
 	if (prt_curse == 3) {
 		if (countitem(7431) < 1) {
 			mes "[Librarian]";
@@ -10010,7 +9950,7 @@ prt_in.gat,162,99,4	script	Librarian#curse	67,{
 				mes "we will provide you with";
 				mes "replacement copies.";
 				next;
-				if (zeny > 699) {
+				if (Zeny > 699) {
 					mes "[Librarian]";
 					mes "Ah, here you are.";
 					mes "Please take these";
@@ -10018,7 +9958,7 @@ prt_in.gat,162,99,4	script	Librarian#curse	67,{
 					mes "and try not to lose";
 					mes "them again. Thank you.";
 					set zeny,zeny-700;
-					getitem 7431,1; //Books
+					getitem 7431,1;
 					close;
 				}
 				mes "[Librarian]";
@@ -10034,8 +9974,7 @@ prt_in.gat,162,99,4	script	Librarian#curse	67,{
 			mes "while inside the library.";
 			mes "Thank you for cooperating.";
 			close;
-		}
-		else {
+		} else {
 			mes "[Librarian]";
 			mes "Being a librarian can";
 			mes "be pretty rough. People";
@@ -10052,8 +9991,7 @@ prt_in.gat,162,99,4	script	Librarian#curse	67,{
 			mes "people can really be.";
 			close;
 		}
-	}
-	else {
+	} else {
 		mes "[Librarian]";
 		mes "Being a librarian can";
 		mes "be pretty rough. People";

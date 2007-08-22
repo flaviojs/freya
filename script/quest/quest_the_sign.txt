@@ -5811,7 +5811,7 @@ L_Answer:
 
 umbala.gat,163,256,3	script	Native	781,{
 	
-	if (event_umbala < 3) goto L_UmWord;
+	if (um_trans < 10) goto L_UmWord;
 	if (signquest > 25) goto L_Thanks;
 	if (signquest == 25) goto L_Sign;
 	mes "[Laotan]";

@@ -2388,6 +2388,7 @@ aldebaran.gat,143,119,4	script	Kafra Employee	113,{
 						end;
 					}
 				case 2:
+					close2;
 					cutin "kafra_05",255;
 					end;
 				}

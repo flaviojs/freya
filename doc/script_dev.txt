@@ -12,7 +12,6 @@
 - event/event_moscovia.txt		<- Requires conversion - No access to an Aegis version [*]
 - event/event_xmas.txt			<- Good enough? - No access to an Aegis version
 
-- global/global_airship.txt		<- Requires conversion [*]
 - global/global_refine.txt		<- Requires conversion [Assigned ~ Tsuyuki]
 
 - gvg/gvg_adswitch.txt			<- Good enough
@@ -29,7 +28,6 @@
 - quest/quest_kiel_hyre.txt		<- Good enough? - No access to an iRO Aegis version
 - quest/quest_the_sign.txt		<- Good enough?
 
-- town/town_einbroch.txt		<- Requires conversion [Assigned ~ Tsuyuki]
 - town/town_nameless.txt		<- Requires conversion - No access to an Aegis version [*]
 - town/town_veins.txt			<- Requires conversion - No access to an Aegis version [*]
 
@@ -60,7 +58,7 @@
 
 
 ---------------------------------------------------------------------------
- Aurora's Missing Aegis Scripts: (Excluding GM/Management)
+ Aurora's Missing Aegis Scripts:
 ---------------------------------------------------------------------------
 
 - cashitem/advholgren.sc		<- Cash Item Refinery (?) - Requires conversion [*]
@@ -70,7 +68,7 @@
 
 
 ---------------------------------------------------------------------------
- Aurora's Missing No Access Aegis Scripts: (Excluding GM/Management)
+ Aurora's Missing No Access Aegis Scripts:
 ---------------------------------------------------------------------------
 
 - Episode 11.2	<- All Veins Town NPCs [*]
@@ -101,16 +99,10 @@
 
 
 ---------------------------------------------------------------------------
- Aurora's Global Temporary Script Variables (30):
+ Aurora's Global Temporary Script Variables:
 ---------------------------------------------------------------------------
 
 -> To-Do: Major cleanup
-
--> Airship System (global/global_airship.txt)
-- $@at_hugel
-- $@at_izlude
-- $@route1
-- $@route2
 
 -> God Seal Equipment Quests (quest/quest_god_seal.txt)
 - $@BrisinRID$
@@ -160,10 +152,14 @@
 
 
 ---------------------------------------------------------------------------
- Aurora's Global Permanent Script Variables (12):
+ Aurora's Global Permanent Script Variables:
 ---------------------------------------------------------------------------
 
 -> To-Do: Further cleanup
+
+-> GM Valhalla Administration Center (misc/misc_admin.txt)
+- $gmpassword1$
+- $gmpassword2$
 
 -> Cool Event vs Kafra Voting Event (misc/misc_vote.txt)
 - $050530_minus1_tupyo1
@@ -174,6 +170,11 @@
 - $050530_minus1_tupyo6
 - $050530_minus1_tupyo7
 - $050530_minus1_tupyo8
+
+-> Einbroch Town Script (town/town_einbroch.txt)
+- $050320_minus1_typing$
+- $050320_ein_typing
+- $050318_ryu_ein
 
 -> God Seal Equipment Quests (quest/quest_god_seal.txt)
 - $God1

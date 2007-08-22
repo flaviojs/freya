@@ -1179,9 +1179,9 @@ OnTouch:
 		case 1:
 			set nif_esc,7;
 			getitem 7184,1;
-			end;
+			close;
 		case 2:
-			break;
+			close;
 		}
 	}
 	if (nif_esc == 7) {
@@ -1196,9 +1196,9 @@ OnTouch:
 		case 1:
 			set nif_esc,9;
 			getitem 7184,1;
-			end;
+			close;
 		case 2:
-			break;
+			close;
 		}
 	}
 	if (nif_esc == 8) {
@@ -1211,9 +1211,9 @@ OnTouch:
 		case 1:
 			set nif_esc,10;
 			getitem 7184,1;
-			end;
+			close;
 		case 2:
-			break;
+			close;
 		}
 	}
 	if (nif_esc == 10) {
@@ -1228,11 +1228,12 @@ OnTouch:
 		case 1:
 			set nif_esc,11;
 			getitem 7184,1;
-			end;
+			close;
 		case 2:
-			break;
+			close;
 		}
 	}
+	end;
 }
 
 niflheim.gat,169,71,1	script	#Graveyard2	111,1,1,{
@@ -1248,9 +1249,9 @@ OnTouch:
 		case 1:
 			set nif_esc,11;
 			getitem 7184,1;
-			end;
+			close;
 		case 2:
-			break;
+			close;
 		}
 	}
 	if (nif_esc == 6) {
@@ -1263,11 +1264,12 @@ OnTouch:
 		case 1:
 			set nif_esc,8;
 			getitem 7184,1;
-			end;
+			close;
 		case 2:
-			break;
+			close;
 		}
 	}
+	end;
 }
 
 nif_in.gat,115,181,0	script	#Piano	111,1,1,{
@@ -1299,6 +1301,7 @@ OnTouch:
 		mes "left of the keyboard...^000000";
 		close;
 	}
+	end;
 }
 
 nif_in.gat,114,181,0	script	#Piano3	111,1,1,{
@@ -1334,6 +1337,7 @@ OnTouch:
 		warp "nif_in.gat",179,163;
 		end;
 	}
+	end;
 }
 
 niflheim.gat,52,147,3	script	Keedz	796,{

@@ -4707,7 +4707,7 @@ lhz_cube.gat,237,198,0	script	Bundle of Files#cube	111,{
 				set lght_secret01,1;
 				close;
 			case 2:
-				end;
+				close;
 			}
 		} else {
 			mes "^3355FFThis is the place";
@@ -4745,7 +4745,7 @@ lhz_cube.gat,234,202,0	script	Picture#cube	111,{
 			mes "something hidden behind it.^000000";
 			close;
 		case 2:
-			end;
+			close;
 		}
 	} else if (lght_secret01 == 2) {
 		mes "^3355FFThis picture hanging";
@@ -4806,7 +4806,7 @@ lhz_cube.gat,234,202,0	script	Picture#cube	111,{
 				close;
 			}
 		case 2:
-			end;
+			close;
 		}
 	} else if (lght_secret01 < 6) {
 		if (lght_secret01 == 3) {
@@ -4849,7 +4849,7 @@ lhz_cube.gat,234,202,0	script	Picture#cube	111,{
 			mes "no need to memorize them.^000000";
 			close;
 		case 2:
-			end;
+			close;
 		}
 	}
 }
@@ -4921,7 +4921,7 @@ lhz_cube.gat,248,179,0	script	Chest#cube	111,{
 			set lght_sincube,8;
 			close;
 		case 2:
-			end;
+			close;
 		}
 	} else {
 		mes "^3355FFThis is just a normal";
@@ -5258,7 +5258,7 @@ lhz_cube.gat,244,201,0	script	Status Light#cube	111,{
 			set lght_secret01,8;
 			close;
 		case 2:
-			end;
+			close;
 		}
 	} else {
 		mes "^3355FFYou find the remains";
@@ -5601,7 +5601,7 @@ lhz_cube.gat,229,184,0	script	Goblet#cube	111,{
 				set lght_secret03,1;
 				close;
 			case 2:
-				end;
+				close;
 			}
 		} else {
 			mes "^3355FFThis is the goblet where";
@@ -5683,7 +5683,7 @@ lhz_cube.gat,249,191,0	script	Cabinet#cube	111,{
 			mes "in order to open the drawers.^000000";
 			close;
 		case 2:
-			end;
+			close;
 		}
 	} else if (lght_secret03 == 2) {
 		mes "^3355FFYou've found a";
@@ -5801,7 +5801,7 @@ lhz_cube.gat,224,197,0	script	Experiment Tube#cube	111,{
 						warp "lhz_cube.gat",177,13;
 						end;
 					case 2:
-						end;
+						close;
 					}
 				} else {
 					mes "^3355FF..............";
@@ -5962,7 +5962,7 @@ lhz_cube.gat,248,193,0	script	Box#cube1	111,{
 			getitem 2657,1;
 			close;
 		case 2:
-			end;
+			close;
 		}
 	} else {
 		mes "^3355FFYou find the open box";
@@ -5986,7 +5986,7 @@ lhz_cube.gat,250,184,0	script	Door#cube	111,{
 		warp "lighthalzen.gat",310,302;
 		end;
 	case 2:
-		end;
+		close;
 	}
 }
 
@@ -6040,7 +6040,7 @@ lighthalzen.gat,313,301,0	script	Sewer Pipe#lt	111,{
 			warp "lhz_cube.gat",231,17;
 			end;
 		case 2:
-			end;
+			close;
 		}
 	} else {
 		mes "^3355FFYou found some sort";
@@ -12234,8 +12234,11 @@ L_Mission:
 			mes "I don't want our enemies";
 			mes "to discover Shinokas before";
 			mes "we can get him to talk.";
-			if (Shinokas_Quest == 10) set lhz_boss,24;
-			else set lhz_boss,23;
+			if (ein_main > 9) {
+				set lhz_boss,24;
+			} else {
+				set lhz_boss,23;
+			}
 			close2;
 			cutin "",255;
 			end;
@@ -12257,7 +12260,7 @@ L_Mission:
 		cutin "",255;
 		end;
 	} else if (lhz_boss == 23) {
-		if (Shinokas_Quest == 10) {
+		if (ein_main > 9) {
 			mes "[Karl]";
 			mes "Ymir's Heart Pieces?";
 			mes "Is that what they're";
@@ -16025,46 +16028,5 @@ OnTouch:
 		close;
 	} else {
 		end;
-	}
-}
-
-airplane_01.gat,10,10,3	script	#LyozienSwitch	111,{
-
-	mes "[Lyozien Switch]";
-	mes "Input password.";
-	mes "Enter 0 to cancel.";
-	next;
-	input @input$;
-	if (@input$ != 1028 && @input$ != 0) {
-		mes "[Lyozien Switch]";
-		mes "Incorrect.";
-		close;
-	} else if (@input$ == 0) {
-		mes "[Lyozien Switch]";
-		mes "Cancelled.";
-		close;
-	} else if (@input$ == 1028) {
-		mes "[Lyozien Switch]";
-		mes "Do you want to";
-		mes "turn the Lyozien";
-		mes "NPC ON or OFF?";
-		next;
-		menu "On",L_LABEL1,"OFF",L_LABEL2;
-		L_LABEL1:
-			mes "[Lyozien Switch]";
-			mes "Lyozien NPC is";
-			mes "now activated.";
-			mes "";
-			mes "/mm airplane_01.gat 96 48";
-			enablenpc "Man#Lyozien";
-			close;
-		L_LABEL2:
-			mes "[Lyozien Switch]";
-			mes "Lyozien NPC is";
-			mes "now deactivated.";
-			mes "";
-			mes "/mm airplane_01.gat 96 48";
-			disablenpc "Man#Lyozien";
-			close;
 	}
 }

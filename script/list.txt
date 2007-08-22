@@ -34,7 +34,6 @@
 // Global Town Scripts
 //--------------------------------------------------------------
 
-npc: script/global/global_airship.txt
 npc: script/global/global_cool_event.txt
 npc: script/global/global_guide.txt
 npc: script/global/global_inn.txt
@@ -42,7 +41,6 @@ npc: script/global/global_kafra.txt
 npc: script/global/global_mail_box.txt
 npc: script/global/global_pvp.txt
 npc: script/global/global_refine.txt
-npc: script/global/global_sign.txt
 npc: script/global/global_shop.txt
 
 
@@ -106,6 +104,7 @@ npc: script/misc/misc_marriage.txt
 npc: script/misc/misc_potion_exchange.txt
 npc: script/misc/misc_rental.txt
 npc: script/misc/misc_reset_skill.txt
+npc: script/misc/misc_sign.txt
 npc: script/misc/misc_socket_enchant.txt
 npc: script/misc/misc_stylist.txt
 npc: script/misc/misc_vote.txt

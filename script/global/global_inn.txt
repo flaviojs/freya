@@ -54,7 +54,7 @@ alberta_in.gat,32,142,3	script	Inn Employee	53,{
 			close;
 		}
 	case 3:
-		end;
+		close;
 	}
 }
 
@@ -91,7 +91,7 @@ aldeba_in.gat,92,58,5	script	Inn Maid	53,{
 			close;
 		}
 	case 3:
-		end;
+		close;
 	}
 }
 
@@ -207,7 +207,7 @@ geffen_in.gat,70,64,3	script	Inn Employee	53,{
 			close;
 		}
 	case 3:
-		end;
+		close;
 	}
 }
 
@@ -293,7 +293,7 @@ morocc_in.gat,147,141,3	script	Inn Employee	53,{
 			close;
 		}
 	case 3:
-		end;
+		close;
 	}
 }
 
@@ -330,7 +330,7 @@ morocc_in.gat,78,100,3	script	Inn Employee	53,{
 			close;
 		}
 	case 3:
-		end;
+		close;
 	}
 }
 
@@ -422,7 +422,7 @@ payon_in01.gat,132,62,5	script	Inn Employee	53,{
 			close;
 		}
 	case 3:
-		end;
+		close;
 	}
 }
 
@@ -464,7 +464,7 @@ prt_in.gat,244,135,0	script	Inn Employee	53,{
 			close;
 		}
 	case 3:
-		end;
+		close;
 	}
 }
 
@@ -501,7 +501,7 @@ prt_in.gat,61,141,4	script	Inn Employee	53,{
 			close;
 		}
 	case 3:
-		end;
+		close;
 	}
 }
 
