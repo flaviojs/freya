@@ -14,13 +14,15 @@
 Date	Added
 
 2007/08/22
+	* Updated: ALL Headgear Quests to official, converted from Aegis [Tsuyuki]
+	 - Thanks to Intervention for converting all the item enums to IDs for me!
+	* Updated: The Eye of Hellion Quest to official, converted from Aegis [Tsuyuki]
 	* Updated: The Sign Quest to official, converted from Aegis [Tsuyuki]
 	* Updated: Einbroch/Einbech Town NPCs / Quests to official, converted from Aegis [Tsuyuki]
 	* Updated: The Airship System to official, converted from Aegis [Tsuyuki]
 	* Updated: Heart Fragment Quest to official, converted from Aegis [Tsuyuki]
 	* Updated: The How Does The Airship Fly Quest to official, converted from Aegis [Tsuyuki]
 	* Updated: The Airship Ticket Quest to official, converted from Aegis [Tsuyuki]
-	* Fixed: A few script bugs [Tsuyuki]
 
 2007/08/20
 	* Updated: The Cool Event Corp vs Kafra Corp Voting System to official, converted from Aegis [Tsuyuki]
