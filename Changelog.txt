@@ -14,6 +14,7 @@
 Date	Added
 
 2007/08/22
+	* Updated: The Sign Quest to official, converted from Aegis [Tsuyuki]
 	* Updated: Einbroch/Einbech Town NPCs / Quests to official, converted from Aegis [Tsuyuki]
 	* Updated: The Airship System to official, converted from Aegis [Tsuyuki]
 	* Updated: Heart Fragment Quest to official, converted from Aegis [Tsuyuki]

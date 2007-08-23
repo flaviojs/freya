@@ -23,10 +23,10 @@
 - gvg/gvg_steward.txt			<- Good enough - Need to import Aegis dialogue/function [*]
 - gvg/gvg_tbox.txt			<- Good enough
 
+- quest/quest_eye_of_hellion.txt	<- Good enough?
 - quest/quest_headgear.txt		<- Requires conversion [Assigned ~ Tsuyuki]
 - quest/quest_juperos.txt		<- Good enough?
 - quest/quest_kiel_hyre.txt		<- Good enough? - No access to an iRO Aegis version
-- quest/quest_the_sign.txt		<- Good enough?
 
 - town/town_nameless.txt		<- Requires conversion - No access to an Aegis version [*]
 - town/town_veins.txt			<- Requires conversion - No access to an Aegis version [*]

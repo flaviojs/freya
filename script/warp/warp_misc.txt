@@ -9,42 +9,40 @@
 //--------------------------------------------------------------
 // Script Title: Miscellaneous Warps	Author: A Lot of People
 //--------------------------------------------------------------
-// Revision History: v1.2
+// Revision History: v1.3
 //--------------------------------------------------------------
 //	1.0 First version [A Lot of People]
 //	1.1 Updated Kiel Hyre warps [Tsuyuki]
 //	1.2 Updated Kiel Hyre warps once again by L0ne_W0lf [Tsuyuki]
+//	1.3 Updated Airship / The Sign Quest warps [Tsuyuki]
 //--------------------------------------------------------------
 // Additional Notes: * Official-certified *
 //--------------------------------------------------------------
 
 
 //--------------------------------------------------------------
-// Airship System Warps - * Aegis-certified *
+// Airship System Warps - * Aegis-certified * - [Tsuyuki]
 //--------------------------------------------------------------
 
-// Einbroch Airport
-airport.gat,124,13,0	warp	ein_ap03	1,1,airport.gat,19,21
-airport.gat,19,18,0	warp	ein_ap03a	1,1,airport.gat,122,16
-airport.gat,161,13,0	warp	ein_ap04	1,1,airport.gat,47,21
-airport.gat,47,18,0	warp	ein_ap04a	1,1,airport.gat,163,16
-airport.gat,143,14,0	warp	ein_ap05	1,1,einbroch.gat,64,204
-einbroch.gat,64,207,0	warp	ein_ap05a	1,1,airport.gat,143,17
+airport.gat,124,13,0	warp	airwarp01	1,1,airport.gat,19,21
+airport.gat,19,18,0	warp	airwarp02	1,1,airport.gat,122,16
+airport.gat,161,13,0	warp	airwarp03	1,1,airport.gat,47,21
+airport.gat,47,18,0	warp	airwarp04	1,1,airport.gat,163,16
+airport.gat,143,14,0	warp	airwarp05	1,1,einbroch.gat,64,204
+einbroch.gat,64,207,0	warp	airwarp06	1,1,airport.gat,143,17
 
-// Lighthalzen Airport
-lhz_airport.gat,125,13,0	warp	lairp1	1,1,lhz_airport.gat,19,23
-lhz_airport.gat,19,18,0	warp	lairp1a	1,1,lhz_airport.gat,121,16
-lhz_airport.gat,160,13,0	warp	lairp2	1,1,lhz_airport.gat,47,23
-lhz_airport.gat,47,18,0	warp	lairp2a	1,1,lhz_airport.gat,163,16
-lighthalzen.gat,267,75,0	warp	lairp3	1,1,lhz_airport.gat,142,17
-lhz_airport.gat,142,13,0	warp	lairp3a	1,1,lighthalzen.gat,262,75
+lhz_airport.gat,125,13,0	warp	airwarp07	1,1,lhz_airport.gat,19,23
+lhz_airport.gat,19,18,0	warp	airwarp08	1,1,lhz_airport.gat,121,16
+lhz_airport.gat,160,13,0	warp	airwarp09	1,1,lhz_airport.gat,47,23
+lhz_airport.gat,47,18,0	warp	airwarp10	1,1,lhz_airport.gat,163,16
+lighthalzen.gat,267,75,0	warp	airwarp11	1,1,lhz_airport.gat,142,17
+lhz_airport.gat,142,13,0	warp	airwarp12	1,1,lighthalzen.gat,262,75
 
 
 //--------------------------------------------------------------
-// Kiel Hyre Warps
+// Kiel Hyre Warps - [L0ne_W0lf]
 //--------------------------------------------------------------
 
-// Kiel Hyre School
 kh_school.gat,76,156,0	warp	kh_school_01	1,1,yuno_fild08.gat,155,189
 kh_school.gat,30,125,0	warp	kh_school_02a	1,1,kh_school.gat,67,14
 kh_school.gat,71,14,0	warp	kh_school_02b	1,1,kh_school.gat,36,125
@@ -57,7 +55,6 @@ kh_school.gat,153,56,0	warp	kh_school_05b	1,1,kh_school.gat,40,176
 kh_school.gat,30,185,0	warp	kh_school_06a	1,1,kh_school.gat,67,74
 kh_school.gat,71,74,0	warp	kh_school_06b	1,1,kh_school.gat,35,184
 
-// Kiel Hyre Villa
 kh_vila.gat,79,11,0		warp	kh_vila_01	1,1,yuno_fild02.gat,92,208
 kh_vila.gat,71,38,0		warp	kh_vila_02a	1,1,kh_vila.gat,42,38
 kh_vila.gat,46,38,0		warp	kh_vila_02b	1,1,kh_vila.gat,75,38
@@ -76,7 +73,6 @@ kh_vila.gat,180,171,0	warp	kh_vila_08b	1,1,kh_vila.gat,126,70
 kh_vila.gat,175,71,0	warp	kh_vila_09	1,1,kh_vila.gat,136,64
 kh_vila.gat,191,19,0	warp	kh_vila_10	1,1,yuno_fild02.gat,74,215
 
-// Kiel Hyre Rossi
 kh_rossi.gat,15,92,0	warp	kh_rossi_01	1,1,yuno.gat,270,139
 kh_rossi.gat,35,87,0	warp	kh_rossi_02a	1,1,kh_rossi.gat,27,37
 kh_rossi.gat,27,42,0	warp	kh_rossi_02b	1,1,kh_rossi.gat,35,91
@@ -113,14 +109,13 @@ kh_rossi.gat,204,279,0	warp	kh_rossi_17b	1,1,kh_rossi.gat,204,235
 kh_rossi.gat,220,238,0	warp	kh_rossi_18a	1,1,kh_rossi.gat,261,283
 kh_rossi.gat,260,279,0	warp	kh_rossi_18b	1,1,kh_rossi.gat,220,235
 
-// Kiel Hyre Mansion
 lighthalzen.gat,188,204,0	warp	kh_mansion_01a	1,1,kh_mansion.gat,84,49
 kh_mansion.gat,88,50,0	warp	kh_mansion_01b	1,1,lighthalzen.gat,188,199
 kh_mansion.gat,21,11,0	warp	kh_mansion_02	1,1,kh_mansion.gat,72,49
 
 
 //--------------------------------------------------------------
-// God Seal Quest Warps
+// God Seal Quest Warps - [Unknown]
 //--------------------------------------------------------------
 
 yuno.gat,218,180,0	warp	yuno_god01	1,1,que_god01.gat,99,84
@@ -133,20 +128,23 @@ que_god01.gat,50,55,0	warp	god_sl_w4-1	1,1,que_god01.gat,47,83
 
 
 //--------------------------------------------------------------
-// The Sign Quest Warps
+// The Sign Quest Warps - * Aegis-certified * - [Tsuyuki]
 //--------------------------------------------------------------
 
-cmd_in01.gat,17,34,0	warp	sign01	1,1,comodo.gat,187,164
-geffen.gat,140,99,0	warp	sign02	1,1,geffen_in.gat,165,52
-geffen_in.gat,165,54,0	warp	sign02a	1,1,geffen.gat,138,101
-himinn.gat,49,6,0	warp	sign03	1,1,gef_fild07.gat,179,241
-himinn.gat,49,67,0	warp	sign04	1,1,himinn.gat,49,75
-himinn.gat,49,73,0	warp	sign04a	1,1,himinn.gat,49,65
-um_in.gat,33,18,0	warp	sign05	1,1,um_in.gat,89,11
-um_in.gat,89,9,0	warp	sign05a	1,1,um_in.gat,33,16
-um_dun01.gat,132,90,0	warp	sign06	1,1,um_in.gat,12,18
-um_in.gat,10,18,0	warp	sign06a	1,1,um_dun01.gat,129,90
-que_sign01.gat,113,133,0	warp	sign07	1,1,nif_in.gat,117,173
-que_sign01.gat,45,15,0	warp	sign08	1,1,niflheim.gat,146,245
-que_sign02.gat,22,314,0	warp	sign09	1,1,niflheim.gat,30,156
-que_sign02.gat,379,235,0	warp	sign09a	1,1,que_sign01.gat,180,172
+prontera.gat,263,279,0	warp	signwarp01	1,1,prt_in.gat,227,18
+prt_in.gat,227,15,0	warp	signwarp02	1,1,prontera.gat,263,275
+cmd_in01.gat,17,34,0	warp	signwarp03	1,1,comodo.gat,187,164
+um_in.gat,33,18,0	warp	signwarp04	1,1,um_in.gat,89,11
+um_in.gat,11,18,0	warp	signwarp05	1,1,um_dun01.gat,129,90
+um_in.gat,89,9,0	warp	signwarp06	1,1,um_in.gat,33,16
+um_dun01.gat,132,91,0	warp	signwarp07	1,1,um_in.gat,15,20
+geffen.gat,140,99,0	warp	signwarp08	1,1,geffen_in.gat,166,50
+geffen_in.gat,166,54,0	warp	signwarp09	1,1,geffen.gat,138,104
+himinn.gat,49,72,0	warp	signwarp10	1,1,himinn.gat,49,63
+himinn.gat,49,67,0	warp	signwarp11	1,1,himinn.gat,49,75
+himinn.gat,49,6,0	warp	signwarp12	1,1,gef_fild07.gat,179,241
+que_sign01.gat,113,132,0	warp	signwarp13	1,1,nif_in.gat,117,173
+que_sign01.gat,179,169,0	warp	signwarp14	1,1,niflheim.gat,30,156
+que_sign01.gat,179,19,0	warp	signwarp15	1,1,niflheim.gat,30,156
+que_sign01.gat,45,15,0	warp	signwarp16	1,1,niflheim.gat,146,245
+que_sign02.gat,22,313,0	warp	signwarp17	1,1,niflheim.gat,30,156
