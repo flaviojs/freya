@@ -9,13 +9,11 @@
 //--------------------------------------------------------------
 // Script Title: Field Warp Portals	Author: A Lot of People
 //--------------------------------------------------------------
-// Revision History: v1.2
+// Revision History: v1.0
 //--------------------------------------------------------------
 //	1.0 First version, merged together [Tsuyuki]
-//	1.1 Updated Rachel field warps to official Aegis by Playtester [Tsuyuki]
-//	1.2 Updated Hugel field warps to official Aegis by Playtester [Tsuyuki]
 //--------------------------------------------------------------
-// Additional Notes: * Official-certified *
+// Additional Notes: * Official-certified / Partially Aegis-certified *
 //--------------------------------------------------------------
 
 
@@ -215,12 +213,6 @@ yuno_fild10.gat,39,183,0	warp	hugel014a	1,1,yuno_fild09.gat,371,184
 // Juno Field Warp Portals
 //--------------------------------------------------------------
 
-// Disabled (?)
-// yuno_fild01.gat,286,368,0	warp	yunfild01	1,1,yuno_fild02.gat,294,26
-// yuno_fild02.gat,294,24,0	warp	yunfild01-1	1,1,yuno_fild01.gat,286,366
-// yuno_fild01.gat,70,378,0	warp	yunfild02	1,1,yuno_fild02.gat,70,25
-// yuno_fild02.gat,70,23,0	warp	yunfild02-1	1,1,yuno_fild01.gat,70,376
-
 yuno_fild02.gat,18,337,0	warp	yunfild03	1,1,yuno_fild03.gat,381,331
 yuno_fild03.gat,383,331,0	warp	yunfild03-1	1,1,yuno_fild02.gat,20,337
 yuno_fild03.gat,19,79,0	warp	yunfild04	1,1,yuno_fild04.gat,373,84
@@ -311,8 +303,10 @@ lou_fild01.gat,232,357,0	warp	louwarp001a	3,3,louyang.gat,217,26
 // Lutie Field Warp Portals
 //--------------------------------------------------------------
 
-xmas_fild01.gat,80,252,0	warp	xmas2	10,1,xmas.gat,150,44
-xmas_fild01.gat,85,49,0	warp	xmas001	10,3,aldebaran.gat,140,240
+xmas_fild01.gat,69,252,0	warp	x_fild_in	10,2,xmas.gat,149,44
+xmas_fild01.gat,90,252,0	warp	x_fild_in01	10,2,xmas.gat,149,44
+xmas.gat,149,41,0	warp	x_fild_out	8,1,xmas_fild01.gat,80,248
+xmas_fild01.gat,84,48,0	warp	xmas_27	10,2,aldebaran.gat,140,234
 
 
 //--------------------------------------------------------------
@@ -579,8 +573,6 @@ prt_fild11.gat,17,281,0	warp	prtf021	2,4,gef_fild11.gat,374,293
 prt_fild11.gat,302,301,0	warp	prtf022	5,2,gef_fild03.gat,312,19
 prt_fild11.gat,361,184,0	warp	prtf20-1	2,5,prt_fild10.gat,23,196
 prt_fild11.gat,362,111,0	warp	prtf19-1	2,6,prt_fild10.gat,23,122
-
-// St. Capitolina Abbey
 monk_in.gat,128,46,0	warp	monk03	1,3,monk_in.gat,161,38
 monk_in.gat,128,84,0	warp	monk04	1,3,monk_in.gat,161,90
 monk_in.gat,159,38,0	warp	monk03-1	1,3,monk_in.gat,126,46
@@ -654,8 +646,6 @@ um_fild02.gat,374,326,0	warp	umba0005	1,1,um_fild03.gat,21,334
 um_fild03.gat,18,334,0	warp	umba0006	1,1,um_fild02.gat,371,326
 um_fild03.gat,31,146,0	warp	umba0007	1,10,um_fild02.gat,371,149
 um_fild04.gat,179,12,0	warp	umba0054	10,1,um_fild02.gat,189,371
-
-// Yggdrasil Maps
 um_dun02.gat,125,163,0	warp	nwarp1	1,1,yggdrasil01.gat,40,63
 yggdrasil01.gat,36,62,0	warp	nwarp2	1,1,um_dun02.gat,126,147
 yggdrasil01.gat,249,262,0	warp	nwarp5	1,1,nif_fild01.gat,315,66
@@ -689,7 +679,7 @@ ve_fild04.gat,115,50,0    warp    veinswarp5019    1,1,ve_fild06.gat,78,183
 ve_fild05.gat,359,192,0    warp    veinswarp5020    1,1,ve_fild06.gat,78,183
 ve_fild06.gat,88,176,0	script	#veinswarp5021	45,2,2,{
 OnTouch:
-	set @w,rand(3);
+	set @w,rand(1,2);
 	if (@w == 1) warp "ve_fild04.gat",115,55;
 	if (@w == 2) warp "ve_fild05.gat",354,192;
 	end;

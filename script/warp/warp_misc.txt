@@ -9,19 +9,16 @@
 //--------------------------------------------------------------
 // Script Title: Miscellaneous Warp Portals	Author: A Lot of People
 //--------------------------------------------------------------
-// Revision History: v1.3
+// Revision History: v1.0
 //--------------------------------------------------------------
-//	1.0 First version [A Lot of People]
-//	1.1 Updated Kiel Hyre warps [Tsuyuki]
-//	1.2 Updated Kiel Hyre warps once again by L0ne_W0lf [Tsuyuki]
-//	1.3 Updated Airship / The Sign Quest warps [Tsuyuki]
+//	1.0 First version, merged together [Tsuyuki]
 //--------------------------------------------------------------
-// Additional Notes: * Official-certified *
+// Additional Notes: * Official-certified / Partially Aegis-certified *
 //--------------------------------------------------------------
 
 
 //--------------------------------------------------------------
-// Airship System Warp Portals - * Aegis-certified * - [Tsuyuki]
+// Airship System Warp Portals - [Tsuyuki]
 //--------------------------------------------------------------
 
 airport.gat,124,13,0	warp	airwarp01	1,1,airport.gat,19,21
@@ -30,7 +27,6 @@ airport.gat,161,13,0	warp	airwarp03	1,1,airport.gat,47,21
 airport.gat,47,18,0	warp	airwarp04	1,1,airport.gat,163,16
 airport.gat,143,14,0	warp	airwarp05	1,1,einbroch.gat,64,204
 einbroch.gat,64,207,0	warp	airwarp06	1,1,airport.gat,143,17
-
 lhz_airport.gat,125,13,0	warp	airwarp07	1,1,lhz_airport.gat,19,23
 lhz_airport.gat,19,18,0	warp	airwarp08	1,1,lhz_airport.gat,121,16
 lhz_airport.gat,160,13,0	warp	airwarp09	1,1,lhz_airport.gat,47,23
@@ -54,7 +50,6 @@ kh_school.gat,35,176,0	warp	kh_school_05a	1,1,kh_school.gat,148,56
 kh_school.gat,153,56,0	warp	kh_school_05b	1,1,kh_school.gat,40,176
 kh_school.gat,30,185,0	warp	kh_school_06a	1,1,kh_school.gat,67,74
 kh_school.gat,71,74,0	warp	kh_school_06b	1,1,kh_school.gat,35,184
-
 kh_vila.gat,79,11,0		warp	kh_vila_01	1,1,yuno_fild02.gat,92,208
 kh_vila.gat,71,38,0		warp	kh_vila_02a	1,1,kh_vila.gat,42,38
 kh_vila.gat,46,38,0		warp	kh_vila_02b	1,1,kh_vila.gat,75,38
@@ -72,7 +67,6 @@ kh_vila.gat,126,75,0	warp	kh_vila_08a	1,1,kh_vila.gat,180,176
 kh_vila.gat,180,171,0	warp	kh_vila_08b	1,1,kh_vila.gat,126,70
 kh_vila.gat,175,71,0	warp	kh_vila_09	1,1,kh_vila.gat,136,64
 kh_vila.gat,191,19,0	warp	kh_vila_10	1,1,yuno_fild02.gat,74,215
-
 kh_rossi.gat,15,92,0	warp	kh_rossi_01	1,1,yuno.gat,270,139
 kh_rossi.gat,35,87,0	warp	kh_rossi_02a	1,1,kh_rossi.gat,27,37
 kh_rossi.gat,27,42,0	warp	kh_rossi_02b	1,1,kh_rossi.gat,35,91
@@ -108,7 +102,6 @@ kh_rossi.gat,204,238,0	warp	kh_rossi_17a	1,1,kh_rossi.gat,204,283
 kh_rossi.gat,204,279,0	warp	kh_rossi_17b	1,1,kh_rossi.gat,204,235
 kh_rossi.gat,220,238,0	warp	kh_rossi_18a	1,1,kh_rossi.gat,261,283
 kh_rossi.gat,260,279,0	warp	kh_rossi_18b	1,1,kh_rossi.gat,220,235
-
 lighthalzen.gat,188,204,0	warp	kh_mansion_01a	1,1,kh_mansion.gat,84,49
 kh_mansion.gat,88,50,0	warp	kh_mansion_01b	1,1,lighthalzen.gat,188,199
 kh_mansion.gat,21,11,0	warp	kh_mansion_02	1,1,kh_mansion.gat,72,49

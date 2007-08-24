@@ -9,18 +9,11 @@
 //--------------------------------------------------------------
 // Script Title: Dungeon Warp Portals	Author: A Lot of People
 //--------------------------------------------------------------
-// Revision History: v1.7
+// Revision History: v1.0
 //--------------------------------------------------------------
 //	1.0 First version, merged together [Tsuyuki]
-//	1.1 Added Abbey Dungeon official warps [Tsuyuki]
-//	1.2 Replaced old Kiel Hyre Dungeon warps with new official ones [Tsuyuki]
-//	1.3 Removed Juperos Quest warps (Moved to Juperos Quest script) [Tsuyuki]
-//	1.4 Updated Kiel Hyre Dungeon warps by L0ne_W0lf [Tsuyuki]
-//	1.5 Added official Aegis Rachel Sanctuary warps by Playtester [Tsuyuki]
-//	1.6 Added official Aegis Ice Dungeon warps by Playtester [Tsuyuki]
-//	1.7 Added official Aegis Odin's Temple warps by Playtester [Tsuyuki]
 //--------------------------------------------------------------
-// Additional Notes: * Official-certified *
+// Additional Notes: * Official-certified / Partially Aegis-certified *
 //--------------------------------------------------------------
 
 
@@ -53,6 +46,68 @@ hu_fild05.gat,180,190,0	warp	warpabyss	1,1,hu_fild05.gat,168,300
 
 
 //--------------------------------------------------------------
+// Aldebaran Dungeon Warp Portals
+//--------------------------------------------------------------
+
+alde_dun01.gat,292,306,0	warp	aldd01	2,1,alde_dun02.gat,43,24
+alde_dun01.gat,167,158,0	warp	ald002	2,2,c_tower2.gat,148,283
+alde_dun01.gat,302,25,0	warp	ald003	2,2,c_tower1.gat,125,22
+alde_dun02.gat,43,20,0	warp	aldd04	1,1,alde_dun01.gat,292,300
+alde_dun02.gat,279,250,0	warp	aldd05	2,2,alde_dun03.gat,18,267
+alde_dun02.gat,122,169,0	warp	ald006	2,2,c_tower3.gat,47,41
+alde_dun02.gat,187,234,0	warp	ald007	2,2,c_tower3.gat,65,147
+alde_dun02.gat,267,41,4	script	clt008r	45,1,1,{
+	set @r,rand(2);
+	if (@r==0) goto w1;
+	if (@r==1) goto w2;
+	w1:	warp "c_tower3.gat",168,252; end;
+	w2:	warp "alde_dun02.gat",262,141; end;
+}
+alde_dun03.gat,12,267,0	warp	aldd09	2,2,alde_dun02.gat,273,250
+alde_dun03.gat,277,183,0	warp	ald010	2,2,c_tower2.gat,27,27
+alde_dun03.gat,191,31,0	warp	ald011	2,2,c_tower3.gat,217,159
+alde_dun03.gat,276,48,0	warp	ald012	2,2,c_tower1.gat,235,223
+alde_dun03.gat,130,125,4	script	clt014r	45,1,1,{
+
+	set @r,rand(3);
+	if (@r==0) goto w1;
+	if (@r==1) goto w2;
+	if (@r==2) goto w3;
+	w1:	warp "c_tower2.gat",228,267; end;
+	w2:	warp "alde_dun03.gat",130,130; end;
+	w3:	warp "c_tower3.gat",252,29; end;
+}
+alde_dun03.gat,171,127,4	script	clt015r	45,1,1,{
+
+	set @r,rand(4);
+	if (@r==0) goto w1;
+	if (@r==1) goto w2;
+	if (@r==2) goto w3;
+	w1:	warp "c_tower2.gat",13,282; end;
+	w2:	warp "alde_dun03.gat",175,131; end;
+	w3:	warp "c_tower3.gat",235,7; end;
+}
+alde_dun04.gat,80,273,0	warp	aldd016	2,2,alde_dun03.gat,263,26
+alde_dun04.gat,207,225,0	warp	ald017	1,1,c_tower3.gat,7,34
+alde_dun04.gat,215,192,0	warp	ald018	1,1,c_tower2.gat,148,283
+alde_dun04.gat,32,74,0	warp	aldd19	1,1,alde_dun02.gat,187,239
+alde_dun04.gat,208,58,0	warp	aldd20	2,2,alde_dun04.gat,268,74
+alde_dun04.gat,272,74,0	warp	aldd021	2,2,alde_dun04.gat,204,62
+alde_dun04.gat,80,34,4	script	clt022r	45,1,1,{
+
+	set @r,rand(4);
+	if (@r==0) goto w1;
+	if (@r==1) goto w2;
+	if (@r==2) goto w3;
+	if (@r==3) goto w4;
+	w1:	warp "c_tower2.gat",13,282; end;
+	w2:	warp "alde_dun03.gat",175,131; end;
+	w3:	warp "c_tower3.gat",235,7; end;
+	w4:	warp "alde_dun04.gat",84,36; end;
+}
+
+
+//--------------------------------------------------------------
 // Amatsu Dungeon Warp Portals
 //--------------------------------------------------------------
 
@@ -68,7 +123,6 @@ ama_dun03.gat,119,9,0	warp	warp8011	1,1,ama_dun02.gat,196,121
 
 anthell01.gat,253,32,0	warp	ant01	5,1,anthell02.gat,35,263
 anthell02.gat,34,265,0	warp	ant01-1	1,1,anthell01.gat,253,35
-
 anthell01.gat,35,267,0	script	ant001	45,1,1,{
 	if (anthell == 1) goto L_Ant01;
 	warp "moc_fild04.gat",213,327;
@@ -77,7 +131,6 @@ anthell01.gat,35,267,0	script	ant001	45,1,1,{
 		warp "moc_fild15.gat",251,248;
 		end;
 }
-
 anthell02.gat,171,169,0	script	ant002	45,1,2,{
 	if (anthell == 0) goto L_Ant02;
 	warp "moc_fild04.gat",213,327;
@@ -97,7 +150,7 @@ ayo_dun02.gat,275,21,0	warp	ayodunwrp004	2,2,ayo_dun01.gat,24,281
 
 
 //--------------------------------------------------------------
-// Beach Dungeon Warp Portals (Comodo Caves)
+// Comodo Caves Dungeon Warp Portals
 //--------------------------------------------------------------
 
 beach_dun.gat,276,67,0	warp	cmd004	1,1,comodo.gat,31,215
@@ -108,7 +161,7 @@ beach_dun3.gat,286,57,0	warp	cmd006	1,1,cmd_fild01.gat,30,317
 
 
 //--------------------------------------------------------------
-// Biolabs Warp Portals (Somatology Lab/Lighthalzen Dungeon)
+// Biolabs Dungeon Warp Portals
 //--------------------------------------------------------------
 
 lhz_dun03.gat,140,139,0	warp	lhz003	1,1,lhz_dun02.gat,150,145
@@ -122,7 +175,7 @@ lhz_dun01.gat,150,290,0	warp	lhz007	1,1,lhz_in01.gat,23,137
 
 
 //--------------------------------------------------------------
-// Byalan Dungeon Warp Portals (Izlude Dungeon)
+// Byalan Island Dungeon Warp Portals
 //--------------------------------------------------------------
 
 izlu2dun.gat,108,83,0	warp	izd01	3,2,iz_dun00.gat,168,168
@@ -140,7 +193,35 @@ iz_dun04.gat,26,24,0	warp	izd06-1	2,2,iz_dun03.gat,261,245
 
 
 //--------------------------------------------------------------
-// Clock Tower/Aldebaran Dungeon Warp Portals
+// Cheshrumnir Sanctuary Dungeon Warp Portals
+//--------------------------------------------------------------
+
+ra_san01.gat,139,13,0	script	sanctuary01	45,1,1,{
+	if (ra_tem_q == 21) { warp "que_san04.gat",119,110; end; }
+	switch(rand(3)) {
+		case 1:  warp "ra_san02.gat",213,275; break;
+		case 2:  warp "ra_san03.gat",119,283; break;
+		default: warp "ra_san04.gat",119,110; break;
+	}
+}
+ra_san02.gat,213,280,0	warp	sanctuary02	1,1,ra_san01.gat,140,19
+ra_san03.gat,123,283,0	warp	sanctuary03	1,1,ra_san01.gat,140,19
+ra_san04.gat,119,104,0	warp	sanctuary04	1,1,ra_san01.gat,140,19
+ra_san03.gat,279,21,0	warp	sanctuary05	1,1,ra_san05.gat,282,149
+ra_san03.gat,85,15,0	warp	sanctuary06	1,1,ra_san04.gat,203,216
+ra_san04.gat,203,221,0	warp	sanctuary07	1,1,ra_san03.gat,85,20
+ra_san04.gat,120,48,0	warp	sanctuary08	1,1,ra_san05.gat,150,282
+ra_san05.gat,150,7,0	warp	sanctuary09	1,1,ra_temple.gat,119,153
+ra_san02.gat,289,149,0	warp	sanctuary10	1,1,ra_san03.gat,10,149
+ra_san03.gat,5,149,0	warp	sanctuary11	1,1,ra_san02.gat,284,149
+ra_san02.gat,213,4,0	warp	sanctuary12	1,1,ra_san04.gat,35,216
+ra_san04.gat,35,221,0	warp	sanctuary13	1,1,ra_san02.gat,213,9
+ra_san02.gat,30,21,0	warp	sanctuary14	1,1,ra_san05.gat,14,149
+ra_san01.gat,139,139,0	warp	sanctuary15	1,1,ra_temin.gat,27,314
+
+
+//--------------------------------------------------------------
+// Clock Tower Dungeon Warp Portals
 //--------------------------------------------------------------
 
 aldebaran.gat,139,135,0	warp	ald002	1,1,c_tower1.gat,199,159
@@ -150,9 +231,7 @@ c_tower1.gat,123,22,0	warp	clt002	1,1,alde_dun01.gat,297,25
 c_tower2.gat,142,283,0	warp	clt003	1,1,c_tower3.gat,65,147
 c_tower2.gat,24,24,0	warp	clt004	1,1,alde_dun03.gat,277,178
 c_tower2.gat,273,26,0	warp	clt005	1,1,c_tower1.gat,235,223
-
 c_tower2.gat,13,288,4	script	clt006r	45,1,1,{
-
 	set @r,rand(3);
 	if (@r==0) goto w1;
 	if (@r==1) goto w2;
@@ -162,7 +241,6 @@ c_tower2.gat,13,288,4	script	clt006r	45,1,1,{
 	w3:	warp "c_tower3.gat",235,7; end;
 }
 c_tower2.gat,223,267,4	script	clt007r	45,1,1,{
-
 	set @r,rand(3);
 	if (@r==0) goto w1;
 	if (@r==1) goto w2;
@@ -171,13 +249,11 @@ c_tower2.gat,223,267,4	script	clt007r	45,1,1,{
 	w2:	warp "alde_dun03.gat",130,130; end;
 	w3:	warp "c_tower3.gat",252,29; end;
 }
-
 c_tower3.gat,60,147,0	warp	clt009	1,1,c_tower2.gat,148,283
 c_tower3.gat,212,159,0	warp	clt010	1,1,alde_dun03.gat,276,53
 c_tower3.gat,7,39,0	warp	clt011	1,1,alde_dun01.gat,171,158
 c_tower3.gat,42,41,0	warp	clt012	1,1,alde_dun02.gat,127,169
 c_tower3.gat,146,8,0	warp	clt013	1,1,c_tower1.gat,235,223
-
 c_tower3.gat,163,252,4	script	clt014r	45,1,1,{
 
 	set @r,rand(2);
@@ -206,7 +282,6 @@ c_tower3.gat,252,24,4	script	clt016r	45,1,1,{
 	w2:	warp "alde_dun03.gat",130,130; end;
 	w3:	warp "c_tower3.gat",252,29; end;
 }
-
 c_tower4.gat,37,70,0	warp	clt017	1,1,alde_dun03.gat,277,54
 c_tower4.gat,51,156,0	warp	clt018	1,1,alde_dun01.gat,171,158
 c_tower4.gat,68,46,0	warp	clt019	1,1,c_tower4.gat,73,154
@@ -217,7 +292,6 @@ c_tower4.gat,153,107,0	warp	clt023	1,1,c_tower2.gat,228,267
 c_tower4.gat,171,179,0	warp	clt024	1,1,alde_dun03.gat,276,53
 c_tower4.gat,198,59,0	warp	clt025	1,1,c_tower4.gat,152,98
 c_tower4.gat,204,57,0	warp	clt026	1,1,c_tower4.gat,65,77
-
 c_tower4.gat,75,156,4	script	clt027r	45,0,0,{
 
 	set @r,rand(4);
@@ -279,72 +353,9 @@ c_tower4.gat,189,40,4	script	clt031r	45,2,2,{
 	w4:	warp "c_tower4.gat",152,95; end;
 }
 
-alde_dun01.gat,292,306,0	warp	aldd01	2,1,alde_dun02.gat,43,24
-alde_dun01.gat,167,158,0	warp	ald002	2,2,c_tower2.gat,148,283
-alde_dun01.gat,302,25,0	warp	ald003	2,2,c_tower1.gat,125,22
-alde_dun02.gat,43,20,0	warp	aldd04	1,1,alde_dun01.gat,292,300
-alde_dun02.gat,279,250,0	warp	aldd05	2,2,alde_dun03.gat,18,267
-alde_dun02.gat,122,169,0	warp	ald006	2,2,c_tower3.gat,47,41
-alde_dun02.gat,187,234,0	warp	ald007	2,2,c_tower3.gat,65,147
-
-alde_dun02.gat,267,41,4	script	clt008r	45,1,1,{
-
-	set @r,rand(2);
-	if (@r==0) goto w1;
-	if (@r==1) goto w2;
-	w1:	warp "c_tower3.gat",168,252; end;
-	w2:	warp "alde_dun02.gat",262,141; end;
-}
-
-alde_dun03.gat,12,267,0	warp	aldd09	2,2,alde_dun02.gat,273,250
-alde_dun03.gat,277,183,0	warp	ald010	2,2,c_tower2.gat,27,27
-alde_dun03.gat,191,31,0	warp	ald011	2,2,c_tower3.gat,217,159
-alde_dun03.gat,276,48,0	warp	ald012	2,2,c_tower1.gat,235,223
-
-alde_dun03.gat,130,125,4	script	clt014r	45,1,1,{
-
-	set @r,rand(3);
-	if (@r==0) goto w1;
-	if (@r==1) goto w2;
-	if (@r==2) goto w3;
-	w1:	warp "c_tower2.gat",228,267; end;
-	w2:	warp "alde_dun03.gat",130,130; end;
-	w3:	warp "c_tower3.gat",252,29; end;
-}
-alde_dun03.gat,171,127,4	script	clt015r	45,1,1,{
-
-	set @r,rand(4);
-	if (@r==0) goto w1;
-	if (@r==1) goto w2;
-	if (@r==2) goto w3;
-	w1:	warp "c_tower2.gat",13,282; end;
-	w2:	warp "alde_dun03.gat",175,131; end;
-	w3:	warp "c_tower3.gat",235,7; end;
-}
-
-alde_dun04.gat,80,273,0	warp	aldd016	2,2,alde_dun03.gat,263,26
-alde_dun04.gat,207,225,0	warp	ald017	1,1,c_tower3.gat,7,34
-alde_dun04.gat,215,192,0	warp	ald018	1,1,c_tower2.gat,148,283
-alde_dun04.gat,32,74,0	warp	aldd19	1,1,alde_dun02.gat,187,239
-alde_dun04.gat,208,58,0	warp	aldd20	2,2,alde_dun04.gat,268,74
-alde_dun04.gat,272,74,0	warp	aldd021	2,2,alde_dun04.gat,204,62
-
-alde_dun04.gat,80,34,4	script	clt022r	45,1,1,{
-
-	set @r,rand(4);
-	if (@r==0) goto w1;
-	if (@r==1) goto w2;
-	if (@r==2) goto w3;
-	if (@r==3) goto w4;
-	w1:	warp "c_tower2.gat",13,282; end;
-	w2:	warp "alde_dun03.gat",175,131; end;
-	w3:	warp "c_tower3.gat",235,7; end;
-	w4:	warp "alde_dun04.gat",84,36; end;
-}
-
 
 //--------------------------------------------------------------
-// Coal Mine Dungeon Warp Portals (Dead Pit/Mjolnir Dungeon)
+// Coal Mine Dungeon Warp Portals
 //--------------------------------------------------------------
 
 mjo_dun01.gat,14,283,0	warp	mjod01	2,4,mjo_dun02.gat,381,343
@@ -374,7 +385,7 @@ prt_sewb4.gat,100,95,0	warp	prts05-1	3,1,prt_sewb3.gat,19,183
 
 
 //--------------------------------------------------------------
-// Einbech Dungeon Warp Portals (Einbroch Dungeon)
+// Einbroch Dungeon Warp Portals
 //--------------------------------------------------------------
 
 einbech.gat,139,253,0	warp	ein011	1,1,ein_dun01.gat,22,17
@@ -384,7 +395,7 @@ ein_dun02.gat,292,292,0	warp	ein012a	1,1,ein_dun01.gat,262,258
 
 
 //--------------------------------------------------------------
-// Gefenia Dungeon Warp Portals
+// Geffenia Dungeon Warp Portals
 //--------------------------------------------------------------
 
 gefenia01.gat,37,103,0	warp	gefeniawarp014	1,1,gefenia04.gat,283,95
@@ -416,7 +427,7 @@ gef_dun03.gat,203,204,0	warp	gefd03	2,1,gef_dun02.gat,215,63
 
 
 //--------------------------------------------------------------
-// Glast Heim Dungeon Warp Portals (Chilvalry/Prison/Church/Castle/Sewers/etc)
+// Glast Heim Dungeon Warp Portals
 //--------------------------------------------------------------
 
 gef_fild06.gat,20,304,0	warp	gef027	2,5,glast_01.gat,375,304
@@ -456,13 +467,11 @@ gl_knt02.gat,10,138,0	warp	gl14-1	1,1,gl_knt01.gat,7,148
 gl_knt02.gat,157,292,0	warp	gl16-1	1,1,gl_knt01.gat,150,286
 gl_knt02.gat,289,138,0	warp	gl17-1	1,1,gl_knt01.gat,292,144
 gl_prison.gat,149,183,0	warp	gl18-1	1,1,gl_prison1.gat,150,14
-
 gl_prison.gat,10,70,4	script	gl18-2	45,1,1,{
 if (rand(2)==1) goto w2;
 	warp "gl_cas01",236,192; end;
 w2: warp "gl_cas01",164,191; end;
 }
-
 gl_prison1.gat,150,10,0	warp	gl18	1,1,gl_prison.gat,149,178
 gl_prison1.gat,62,187,0	warp	gl10	1,1,gl_sew01.gat,258,255
 gl_sew01.gat,19,18,0	warp	gl19	5,1,gl_sew02.gat,108,291
@@ -492,16 +501,13 @@ glast_01.gat,77,193,0	warp	gl2	1,1,gl_knt01.gat,150,15
 
 
 //--------------------------------------------------------------
-// Hidden Temple Dungeon Warp Portals (Prontera Maze/Labrynth Forest)
+// Prontera Maze Warp Portals
 //--------------------------------------------------------------
 
-// Exterior Warp Portals
 prt_fild01.gat,136,373,0	warp	prtf030	2,2,prt_maze01.gat,176,7
 mjolnir_12.gat,44,17,0	warp	mjol17	1,1,prt_maze01.gat,17,111
 prt_maze01.gat,14,45,0	warp	mazewarp5137	1,1,mjolnir_12.gat,44,21
 prt_maze01.gat,177,74,0	warp	mazewarp5147	1,1,prt_fild01.gat,136,368
-
-// Level #1
 prt_maze01.gat,22,194,0	warp	mazewarp5101	1,1,prt_maze01.gat,16,31
 prt_maze01.gat,5,186,0	warp	mazewarp5102	1,1,prt_maze01.gat,182,88
 prt_maze01.gat,58,194,0	warp	mazewarp5103	1,1,prt_maze01.gat,23,128
@@ -562,12 +568,8 @@ prt_maze01.gat,176,34,0	warp	mazewarp5159	1,1,prt_maze01.gat,8,186
 prt_maze01.gat,176,5,0	warp	mazewarp5160	1,1,prt_maze01.gat,137,128
 prt_maze01.gat,194,15,0	warp	mazewarp5161	1,1,prt_maze01.gat,52,48
 prt_maze01.gat,165,22,0	warp	mazewarp5162	1,1,prt_maze01.gat,63,128
-
-// Level #2
 prt_maze02.gat,93,16,0	warp	mazewarp5201	1,1,prt_maze01.gat,102,168
 prt_maze02.gat,100,182,0	warp	mazewarp5202	1,1,prt_maze03.gat,182,88
-
-// Level #3
 prt_maze03.gat,22,194,0	warp	mazewarp5301	1,1,prt_maze03.gat,175,48
 prt_maze03.gat,5,186,0	warp	mazewarp5302	1,1,prt_maze03.gat,151,134
 prt_maze03.gat,58,194,0	script	#mazewarp5303	45,1,1,{
@@ -669,7 +671,7 @@ prt_maze03.gat,165,22,0	warp	mazewarp5362	1,1,prt_maze03.gat,111,145
 
 
 //--------------------------------------------------------------
-// Ice Cave Dungeon Warp Portals (Ice Dungeon)
+// Ice Cave Dungeon Warp Portals
 //--------------------------------------------------------------
 
 ice_dun01.gat,157,10,0	warp	ice001	1,1,ra_fild01.gat,233,327
@@ -741,7 +743,7 @@ lou_dun03.gat,165,34,0	warp	louwarp004a	3,3,lou_dun02.gat,165,266
 
 
 //--------------------------------------------------------------
-// Magma Dungeon Warp Portals (Juno Dungeon)
+// Magma Dungeon Warp Portals
 //--------------------------------------------------------------
 
 mag_dun01.gat,126,66,0	warp	mag01-yunfild	1,1,yuno_fild03.gat,34,139
@@ -750,7 +752,7 @@ mag_dun02.gat,47,28,0	warp	mag02-01	1,1,mag_dun01.gat,242,239
 
 
 //--------------------------------------------------------------
-// Odin Shrine Dungeon Warp Portals (Odin Temple)
+// Odin Shrine Dungeon Warp Portals
 //--------------------------------------------------------------
 
 odin_tem01.gat,378,182,0	warp	odin01	1,1,odin_tem02.gat,28,180
@@ -764,7 +766,7 @@ odin_tem03.gat,247,34,0	warp	odin08	1,1,odin_tem02.gat,263,372
 
 
 //--------------------------------------------------------------
-// Orc Dungeon/Village Warp Portals
+// Orc Dungeon Warp Portals
 //--------------------------------------------------------------
 
 in_orcs01.gat,108,86,0	warp	orc001	3,2,gef_fild10.gat,223,203
@@ -781,7 +783,7 @@ orcsdun02.gat,21,188,0	warp	orc03-1	8,2,orcsdun01.gat,183,11
 
 
 //--------------------------------------------------------------
-// Payon Dungeon Warp Portals (Payon Cave)
+// Payon Dungeon Warp Portals
 //--------------------------------------------------------------
 
 pay_dun00.gat,184,33,0	warp	payd01	2,7,pay_dun01.gat,19,33
@@ -840,34 +842,6 @@ moc_prydb1.gat,88,115,0	warp	mocp12-1	2,6,moc_prydb1.gat,56,115
 
 
 //--------------------------------------------------------------
-// Rachel Sanctuary Dungeon Warp Portals (Rachel Temple)
-//--------------------------------------------------------------
-
-ra_san01.gat,139,13,0	script	sanctuary01	45,1,1,{
-	if (ra_tem_q == 21) { warp "que_san04.gat",119,110; end; }
-	switch(rand(3)) {
-		case 1:  warp "ra_san02.gat",213,275; break;
-		case 2:  warp "ra_san03.gat",119,283; break;
-		default: warp "ra_san04.gat",119,110; break;
-	}
-}
-ra_san02.gat,213,280,0	warp	sanctuary02	1,1,ra_san01.gat,140,19
-ra_san03.gat,123,283,0	warp	sanctuary03	1,1,ra_san01.gat,140,19
-ra_san04.gat,119,104,0	warp	sanctuary04	1,1,ra_san01.gat,140,19
-ra_san03.gat,279,21,0	warp	sanctuary05	1,1,ra_san05.gat,282,149
-ra_san03.gat,85,15,0	warp	sanctuary06	1,1,ra_san04.gat,203,216
-ra_san04.gat,203,221,0	warp	sanctuary07	1,1,ra_san03.gat,85,20
-ra_san04.gat,120,48,0	warp	sanctuary08	1,1,ra_san05.gat,150,282
-ra_san05.gat,150,7,0	warp	sanctuary09	1,1,ra_temple.gat,119,153
-ra_san02.gat,289,149,0	warp	sanctuary10	1,1,ra_san03.gat,10,149
-ra_san03.gat,5,149,0	warp	sanctuary11	1,1,ra_san02.gat,284,149
-ra_san02.gat,213,4,0	warp	sanctuary12	1,1,ra_san04.gat,35,216
-ra_san04.gat,35,221,0	warp	sanctuary13	1,1,ra_san02.gat,213,9
-ra_san02.gat,30,21,0	warp	sanctuary14	1,1,ra_san05.gat,14,149
-ra_san01.gat,139,139,0	warp	sanctuary15	1,1,ra_temin.gat,27,314
-
-
-//--------------------------------------------------------------
 // Sphinx Dungeon Warp Portals
 //--------------------------------------------------------------
 
@@ -896,7 +870,7 @@ in_sphinx5.gat,189,183,0	warp	sphx08-6	3,1,in_sphinx5.gat,189,18
 
 
 //--------------------------------------------------------------
-// Sunken Ship Dungeon Warp Portals (Treasure Island)
+// Sunken Ship Dungeon Warp Portals
 //--------------------------------------------------------------
 
 alb2trea.gat,88,111,0	warp	alb002	1,1,treasure01.gat,69,24
@@ -999,7 +973,7 @@ L_Boss:
 
 
 //--------------------------------------------------------------
-// Thor Volcano Dungeon Warp Portals (Thor Dungeon/Veins Dungeon)
+// Thor Volcano Dungeon Warp Portals
 //--------------------------------------------------------------
 
 thor_v01.gat,21,223,0    warp    veinswarp0504    1,1,ve_fild03.gat,168,238
@@ -1012,16 +986,17 @@ thor_camp.gat,288,289,0    warp    veinswarp4006    1,1,thor_v02.gat,146,86
 
 
 //--------------------------------------------------------------
-// Toy Factory Dungeon Warp Portals (Xmas Dungeon/Lutie Dungeon)
+// Toy Factory Dungeon Warp Portals - [Tsuyuki]
 //--------------------------------------------------------------
 
-xmas_dun01.gat,128,131,0	warp	xmas15	1,1,xmas_dun02.gat,129,133
-xmas_dun01.gat,205,12,0	warp	xmas14-1	1,1,xmas.gat,143,312
-xmas_dun02.gat,129,129,0	warp	xmas15-1	1,1,xmas_dun01.gat,128,129
+xmas.gat,143,314,0	warp	xmas_23	1,1,xmas_dun01.gat,205,16
+xmas_dun01.gat,205,13,0	warp	xmas_24	1,1,xmas.gat,143,311
+xmas_dun01.gat,129,130,0	warp	xmas_25	1,1,xmas_dun02.gat,131,130
+xmas_dun02.gat,129,130,0	warp	xmas_26	1,1,xmas_dun01.gat,132,130
 
 
 //--------------------------------------------------------------
-// Turtle Dungeon Warp Portals (Turtle Island)
+// Turtle Island Dungeon Warp Portals
 //--------------------------------------------------------------
 
 tur_dun01.gat,154,241,0	warp	ttl01	1,1,tur_dun02.gat,148,264
@@ -1035,7 +1010,7 @@ tur_dun05.gat,9,45,0	warp	ttl06	1,1,tur_dun01.gat,154,237
 
 
 //--------------------------------------------------------------
-// Umbala Dungeon Warp Portals (Yggdrasil Cave)
+// Umbala Dungeon Warp Portals
 //--------------------------------------------------------------
 
 umbala.gat,106,286,0	warp	umba0011	1,1,um_dun01.gat,42,31

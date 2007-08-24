@@ -9,12 +9,11 @@
 //--------------------------------------------------------------
 // Script Title: PvP System Warp Portals	Author: jAthena/L0ne_W0lf
 //--------------------------------------------------------------
-// Revision History: v1.1
+// Revision History: v1.0
 //--------------------------------------------------------------
-//	1.0 First version [jAthena]
-//	1.1 Added PvP Nightmare Mode warps, converted from Aegis by L0ne_W0lf [Tsuyuki]
+//	1.0 First version, merged together [Tsuyuki]
 //--------------------------------------------------------------
-// Additional Notes: * Official-certified *
+// Additional Notes: * Official-certified / Partially Aegis-certified *
 //--------------------------------------------------------------
 
 
