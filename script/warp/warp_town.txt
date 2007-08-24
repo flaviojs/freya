@@ -728,7 +728,7 @@ lou_in02.gat,189,74,0	warp	louwarp007a	3,3,louyang.gat,309,76
 
 
 //--------------------------------------------------------------
-// Lutie Town Warp Portals
+// Lutie Town Warp Portals - [Tsuyuki]
 //--------------------------------------------------------------
 
 xmas.gat,120,131,0	warp	xmas_01	1,1,xmas_in.gat,43,33

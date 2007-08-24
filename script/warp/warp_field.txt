@@ -300,7 +300,7 @@ lou_fild01.gat,232,357,0	warp	louwarp001a	3,3,louyang.gat,217,26
 
 
 //--------------------------------------------------------------
-// Lutie Field Warp Portals
+// Lutie Field Warp Portals - [Tsuyuki]
 //--------------------------------------------------------------
 
 xmas_fild01.gat,69,252,0	warp	x_fild_in	10,2,xmas.gat,149,44
