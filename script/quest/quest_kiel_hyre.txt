@@ -9,7 +9,7 @@
 //--------------------------------------------------------------
 // Script Title: Kiel Hyre Quest	Author: L0ne_W0lf/DZeroX
 //--------------------------------------------------------------
-// Revision History: v3.9
+// Revision History: v4.0
 //--------------------------------------------------------------
 //	1.0 First version, needs testing [L0ne_W0lf/DZeroX]
 //	1.1 Copied over some changes made by -Tsuyuki- [L0ne_W0lf]
@@ -79,6 +79,7 @@
 //	3.7 Fixed some typos and grammar mistakes [SinSloth]
 //	3.8 Fixed the receiver log out bugs [L0ne_W0lf]
 //	3.9 Fixed bug when you can't get a Yellow Keycard if you got the Blue one at first [Lupus]
+//	4.0 Small logic error bug fix [Tsuyuki]
 //--------------------------------------------------------------
 // Additional Notes: * Official-certified / Aegis-certified *
 //--------------------------------------------------------------
@@ -6688,7 +6689,7 @@ kh_kiehl01.gat,15,179,0	script	Robots#kh1	111,{
 
 OnMyMobDead:
 	set 'KHKilled,'KHKilled+1;
-	if ('KHKilled == 4) { 
+	if ('KHKilled >= 4) { 
 		dropitem 7506,1,"kh_kiehl01.gat",18,179;
 		set 'KHKilled,0;
 	}
