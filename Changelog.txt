@@ -14,6 +14,7 @@
 Date	Added
 
 2007/08/24
+	* Removed: Quiz Revolution script [Tsuyuki]
 	* Updated: All Monster Spawns to official, converted from Aegis [Tsuyuki]
 	 - Source: iRO Aegis Episode 11.1 spawn scripts
 	* Updated: The Poring Box summon list to official, converted from Aegis [Tsuyuki]

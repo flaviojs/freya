@@ -141,7 +141,6 @@ npc: script/quest/quest_juperos.txt
 npc: script/quest/quest_kiel_hyre.txt
 npc: script/quest/quest_lv4_weapon.txt
 npc: script/quest/quest_pet.txt
-npc: script/quest/quest_quiz_revolution.txt
 npc: script/quest/quest_skill.txt
 npc: script/quest/quest_thai_hat.txt
 npc: script/quest/quest_thanatos.txt
