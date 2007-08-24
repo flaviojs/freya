@@ -3156,11 +3156,13 @@
 1734,NPC_EXPLOSIONSPIRITS@Kiel D-01,attack,349,4,10000,0,30000,no,self,myhpltmaxrate,30,,,,,,
 1734,NPC_RECALL@Kiel D-01,attack,354,1,10000,0,30000,no,target,always,0,,,,,,
 1734,NPC_RECALL@Kiel D-01,idle,354,1,10000,0,30000,no,self,always,0,,,,,,
+
 1735,AL_TELEPORT@Alicel,idle,26,1,1000,0,5000,no,self,rudeattacked,,,,,,,
 1735,NPC_GUIDEATTACK@Alicel,attack,172,3,500,1000,20000,no,target,always,0,,,,,,
 1735,NPC_DARKNESSATTACK@Alicel,attack,190,1,2000,0,5000,no,target,always,0,,,,,,
 1735,NPC_EMOTION@Alicel,idle,197,1,200,0,5000,no,self,always,0,29,,,,,
 1735,MO_BODYRELOCATION@Alicel,chase,264,1,1000,500,5000,no,target,always,0,,,,,,
+
 1736,KN_SPEARSTAB@Aliot,attack,58,5,500,800,5000,no,target,always,0,,,,,,
 1736,BS_MAXIMIZE@Aliot,attack,114,5,500,1000,30000,no,self,always,0,,,,,,
 1736,BS_MAXIMIZE@Aliot,chase,114,5,200,1000,30000,no,self,always,0,,,,,,
@@ -3174,11 +3176,12 @@
 1737,NPC_EMOTION@Aliza,idle,197,1,200,0,5000,no,self,always,0,5,,,,,
 1737,AL_HEAL@Aliza,any,28,5,10000,1000,5000,no,friend,friendhpltmaxrate,80,,,,,,03
 1738,NPC_SELFDESTRUCTION@Constant,attack,173,1,2000,1000,0,no,self,myhpltmaxrate,100,,,,,,
+
 1739,NPC_GUIDEATTACK@Alicel,attack,172,1,1000,0,1000,no,target,always,0,,,,,,
 1739,NPC_GUIDEATTACK@Alicel,attack,172,1,1000,0,1000,no,target,always,0,,,,,,
 1739,MO_BODYRELOCATION@Alicel,any,264,1,1000,0,5000,no,self,longrangeattacked,0,,,,,,
-1739,AL_TELEPORT@Alicel,idle,26,1,1000,0,0,no,self,always,0,,,,,,
 1739,MO_BODYRELOCATION@Alicel,any,264,1,1000,0,5000,no,target,longrangeattacked,0,,,,,,
+
 1740,BS_MAXIMIZE@Aliot,attack,114,1,1000,0,1000,no,self,always,0,,,,,,
 1740,NPC_SPLASHATTACK@Aliot,attack,174,1,1000,0,3000,no,target,always,0,,,,,,
 1740,KN_SPEARSTAB@Aliot,attack,58,5,1000,0,3000,no,target,always,0,,,,,,
