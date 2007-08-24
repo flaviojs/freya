@@ -23,6 +23,8 @@
 - gvg/gvg_steward.txt			<- Good enough - Need to import Aegis dialogue/function [*]
 - gvg/gvg_tbox.txt			<- Good enough
 
+- mob/mob_future.txt			<- Placeholder file for non-Aegis spawn entires
+
 - quest/quest_juperos.txt		<- Good enough? - Juperos History Quest is already Aegis-certified
 - quest/quest_kiel_hyre.txt		<- Good enough? - No access to an iRO Aegis version
 
