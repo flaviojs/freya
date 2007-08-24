@@ -115,20 +115,6 @@
 - $@thanaboss1
 - $@thanaboss2
 
--> The Sign Quest (quest/quest_the_sign.txt)
-- $@timezonestring$
-- $@signbmps
-- $@signdance
-- $@SignDanceRandomizer
-- $@Signdanceresult
-- $@SignDancingrid
-- $@signroomfull
-- $@signroom2full
-- $@Sign_Summon
-- $@Sign_Summon2
-- $@signparty
-- $@GeffeniaWarp
-
 -> Hugel Bingo System (town/town_hugel.txt)
 - $@hu_bingoa
 - $@hu_bingob
@@ -179,6 +165,16 @@
 - $God2
 - $God3
 - $God4
+
+-> The Sign Quest (quest/quest_the_sign.txt)
+- $040915_sign_dup
+- $040915_sign_ddown
+- $040915_sign_dleft
+- $040915_sign_dright
+- $040915_sign_dcenter
+- $040915_sign_dcheck
+- $050304_sign_w1
+- $050304_sign_w2
 
 
 ===========================================================================
