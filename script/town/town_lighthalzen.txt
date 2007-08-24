@@ -16030,3 +16030,271 @@ OnTouch:
 		end;
 	}
 }
+
+
+//--------------------------------------------------------------
+// Biolabs Dungeon Random Boss Spawn - [Tsuyuki]
+//--------------------------------------------------------------
+
+
+lhz_dun03.gat,2,2,0	script	summon_boss_lt	139,{
+
+OnInit:
+	initnpctimer;
+	end;
+
+OnTimer6000000:
+	set '@call_lt1,rand(1,6);
+	if ('@call_lt1 == 1) {
+		donpcevent "summon_boss_lt::OnCommandsummon";
+		donpcevent "summon_slave_lt::OnCommandcall";
+		stopnpctimer;
+	}
+	end;
+
+OnTimer6300000:
+	set '@call_lt2,rand(1,6);
+	if ('@call_lt2 == 2) {
+		donpcevent "summon_boss_lt::OnCommandsummon";
+		donpcevent "summon_slave_lt::OnCommandcall";
+		stopnpctimer;
+	}
+	end;
+
+OnTimer6600000:
+	set '@call_lt3,rand(1,6);
+	if ('@call_lt3 == 3) {
+		donpcevent "summon_boss_lt::OnCommandsummon";
+		donpcevent "summon_slave_lt::OnCommandcall";
+		stopnpctimer;
+	}
+	end;
+
+OnTimer6900000:
+	set '@call_lt4,rand(1,6);
+	if ('@call_lt4 == 4) {
+		donpcevent "summon_boss_lt::OnCommandsummon";
+		donpcevent "summon_slave_lt::OnCommandcall";
+		stopnpctimer;
+	}
+	end;
+
+OnTimer7200000:
+	set '@call_lt5,rand(1,6);
+	if ('@call_lt5 == 5) {
+		donpcevent "summon_boss_lt::OnCommandsummon";
+		donpcevent "summon_slave_lt::OnCommandcall";
+		stopnpctimer;
+	}
+	end;
+
+OnTimer7500000:
+	set '@call_lt6,rand(1,6);
+	if ('@call_lt6 == 6) {
+		donpcevent "summon_boss_lt::OnCommandsummon";
+		donpcevent "summon_slave_lt::OnCommandcall";
+		stopnpctimer;
+	}
+	end;
+
+OnTimer7800000:
+	donpcevent "summon_boss_lt::OnCommandsummon";
+	donpcevent "summon_slave_lt::OnCommandcall";
+	stopnpctimer;
+	end;
+
+OnCommandsummon:
+	set '@where_lt1,rand(1,6);
+	set '@boss_lt1,rand(1,6);
+	if ('@where_lt1 == 1) {
+		if ('@boss_lt1 == 1) {
+			monster "lhz_dun03.gat",140,232,"Lord Knight Seyren",1646,1,"summon_boss_lt::OnMyMobDead";
+		} else if ('@boss_lt1 == 2) {
+			monster "lhz_dun03.gat",140,232,"Assassin Cross Eremes",1647,1,"summon_boss_lt::OnMyMobDead";
+		} else if ('@boss_lt1 == 3) {
+			monster "lhz_dun03.gat",140,232,"MasterSmith Howard",1648,1,"summon_boss_lt::OnMyMobDead";
+		} else if ('@boss_lt1 == 4) {
+			monster "lhz_dun03.gat",140,232,"High Priest Margaretha",1649,1,"summon_boss_lt::OnMyMobDead";
+		} else if ('@boss_lt1 == 5) {
+			monster "lhz_dun03.gat",140,232,"Sniper Cecil",1650,1,"summon_boss_lt::OnMyMobDead";
+		} else {
+			monster "lhz_dun03.gat",140,232,"High Wizard Kathryne",1651,1,"summon_boss_lt::OnMyMobDead";
+		}
+	} else if ('@where_lt1 == 2) {
+		if ('@boss_lt1 == 1) {
+			monster "lhz_dun03.gat",75,138,"Lord Knight Seyren",1646,1,"summon_boss_lt::OnMyMobDead";
+		} else if ('@boss_lt1 == 2) {
+			monster "lhz_dun03.gat",75,138,"Assassin Cross Eremes",1647,1,"summon_boss_lt::OnMyMobDead";
+		} else if ('@boss_lt1 == 3) {
+			monster "lhz_dun03.gat",75,138,"MasterSmith Howard",1648,1,"summon_boss_lt::OnMyMobDead";
+		} else if ('@boss_lt1 == 4) {
+			monster "lhz_dun03.gat",75,138,"High Priest Margaretha",1649,1,"summon_boss_lt::OnMyMobDead";
+		} else if ('@boss_lt1 == 5) {
+			monster "lhz_dun03.gat",75,138,"Sniper Cecil",1650,1,"summon_boss_lt::OnMyMobDead";
+		} else {
+			monster "lhz_dun03.gat",75,138,"High Wizard Kathryne",1651,1,"summon_boss_lt::OnMyMobDead";
+		}
+	} else if ('@where_lt1 == 3) {
+		if ('@boss_lt1 == 1) {
+			monster "lhz_dun03.gat",140,87,"Lord Knight Seyren",1646,1,"summon_boss_lt::OnMyMobDead";
+		} else if ('@boss_lt1 == 2) {
+			monster "lhz_dun03.gat",140,87,"Assassin Cross Eremes",1647,1,"summon_boss_lt::OnMyMobDead";
+		} else if ('@boss_lt1 == 3) {
+			monster "lhz_dun03.gat",140,87,"MasterSmith Howard",1648,1,"summon_boss_lt::OnMyMobDead";
+		} else if ('@boss_lt1 == 4) {
+			monster "lhz_dun03.gat",140,87,"High Priest Margaretha",1649,1,"summon_boss_lt::OnMyMobDead";
+		} else if ('@boss_lt1 == 5) {
+			monster "lhz_dun03.gat",140,87,"Sniper Cecil",1650,1,"summon_boss_lt::OnMyMobDead";
+		} else {
+			monster "lhz_dun03.gat",140,87,"High Wizard Kathryne",1651,1,"summon_boss_lt::OnMyMobDead";
+		}
+	} else if ('@where_lt1 == 4) {
+		if ('@boss_lt1 == 1) {
+			monster "lhz_dun03.gat",205,140,"Lord Knight Seyren",1646,1,"summon_boss_lt::OnMyMobDead";
+		} else if ('@boss_lt1 == 2) {
+			monster "lhz_dun03.gat",205,140,"Assassin Cross Eremes",1647,1,"summon_boss_lt::OnMyMobDead";
+		} else if ('@boss_lt1 == 3) {
+			monster "lhz_dun03.gat",205,140,"MasterSmith Howard",1648,1,"summon_boss_lt::OnMyMobDead";
+		} else if ('@boss_lt1 == 4) {
+			monster "lhz_dun03.gat",205,140,"High Priest Margaretha",1649,1,"summon_boss_lt::OnMyMobDead";
+		} else if ('@boss_lt1 == 5) {
+			monster "lhz_dun03.gat",205,140,"Sniper Cecil",1650,1,"summon_boss_lt::OnMyMobDead";
+		} else {
+			monster "lhz_dun03.gat",205,140,"High Wizard Kathryne",1651,1,"summon_boss_lt::OnMyMobDead";
+		}
+	} else if ('@where_lt1 == 5) {
+		if ('@boss_lt1 == 1) {
+			monster "lhz_dun03.gat",123,137,"Lord Knight Seyren",1646,1,"summon_boss_lt::OnMyMobDead";
+		} else if ('@boss_lt1 == 2) {
+			monster "lhz_dun03.gat",123,137,"Assassin Cross Eremes",1647,1,"summon_boss_lt::OnMyMobDead";
+		} else if ('@boss_lt1 == 3) {
+			monster "lhz_dun03.gat",123,137,"MasterSmith Howard",1648,1,"summon_boss_lt::OnMyMobDead";
+		} else if ('@boss_lt1 == 4) {
+			monster "lhz_dun03.gat",123,137,"High Priest Margaretha",1649,1,"summon_boss_lt::OnMyMobDead";
+		} else if ('@boss_lt1 == 5) {
+			monster "lhz_dun03.gat",123,137,"Sniper Cecil",1650,1,"summon_boss_lt::OnMyMobDead";
+		} else {
+			monster "lhz_dun03.gat",123,137,"High Wizard Kathryne",1651,1,"summon_boss_lt::OnMyMobDead";
+		}
+	} else {
+		if ('@boss_lt1 == 1) {
+			monster "lhz_dun03.gat",157,137,"Lord Knight Seyren",1646,1,"summon_boss_lt::OnMyMobDead";
+		} else if ('@boss_lt1 == 2) {
+			monster "lhz_dun03.gat",157,137,"Assassin Cross Eremes",1647,1,"summon_boss_lt::OnMyMobDead";
+		} else if ('@boss_lt1 == 3) {
+			monster "lhz_dun03.gat",157,137,"MasterSmith Howard",1648,1,"summon_boss_lt::OnMyMobDead";
+		} else if ('@boss_lt1 == 4) {
+			monster "lhz_dun03.gat",157,137,"High Priest Margaretha",1649,1,"summon_boss_lt::OnMyMobDead";
+		} else if ('@boss_lt1 == 5) {
+			monster "lhz_dun03.gat",157,137,"Sniper Cecil",1650,1,"summon_boss_lt::OnMyMobDead";
+		} else {
+			monster "lhz_dun03.gat",157,137,"High Wizard Kathryne",1651,1,"summon_boss_lt::OnMyMobDead";
+		}
+	}
+	end;
+
+OnMyMobDead:
+	donpcevent "summon_slave_lt::OnCommanddie";
+	initnpctimer;
+	end;
+}
+
+lhz_dun03.gat,2,1,0	script	summon_slave_lt	139,{
+
+OnCommandcall:
+	set '@where_lt2,rand(1,6);
+	set '@boss_lt2,rand(1,6);
+	if ('@where_lt2 == 1) {
+		if ('@boss_lt2 == 1) {
+			monster "lhz_dun03.gat",183,97,"Seyren Windsor",1640,1,"summon_slave_lt::OnMyMobDead";
+		} else if ('@boss_lt2 == 2) {
+			monster "lhz_dun03.gat",183,97,"Eremes Guile",1641,1,"summon_slave_lt::OnMyMobDead";
+		} else if ('@boss_lt2 == 3) {
+			monster "lhz_dun03.gat",183,97,"Howard Alt-Eisen",1642,1,"summon_slave_lt::OnMyMobDead";
+		} else if ('@boss_lt2 == 4) {
+			monster "lhz_dun03.gat",183,97,"Margaretha Sorin",1643,1,"summon_slave_lt::OnMyMobDead";
+		} else if ('@boss_lt2 == 5) {
+			monster "lhz_dun03.gat",183,97,"Cecil Damon",1644,1,"summon_slave_lt::OnMyMobDead";
+		} else {
+			monster "lhz_dun03.gat",183,97,"Kathryne Keyron",1645,1,"summon_slave_lt::OnMyMobDead";
+		}
+	} else if ('@where_lt2 == 2) {
+		if ('@boss_lt2 == 1) {
+			monster "lhz_dun03.gat",97,96,"Seyren Windsor",1640,1,"summon_slave_lt::OnMyMobDead";
+		} else if ('@boss_lt2 == 2) {
+			monster "lhz_dun03.gat",97,96,"Eremes Guile",1641,1,"summon_slave_lt::OnMyMobDead";
+		} else if ('@boss_lt2 == 3) {
+			monster "lhz_dun03.gat",97,96,"Howard Alt-Eisen",1642,1,"summon_slave_lt::OnMyMobDead";
+		} else if ('@boss_lt2 == 4) {
+			monster "lhz_dun03.gat",97,96,"Margaretha Sorin",1643,1,"summon_slave_lt::OnMyMobDead";
+		} else if ('@boss_lt2 == 5) {
+			monster "lhz_dun03.gat",97,96,"Cecil Damon",1644,1,"summon_slave_lt::OnMyMobDead";
+		} else {
+			monster "lhz_dun03.gat",97,96,"Kathryne Keyron",1645,1,"summon_slave_lt::OnMyMobDead";
+		}
+	} else if ('@where_lt2 == 3) {
+		if ('@boss_lt2 == 1) {
+			monster "lhz_dun03.gat",47,139,"Seyren Windsor",1640,1,"summon_slave_lt::OnMyMobDead";
+		} else if ('@boss_lt2 == 2) {
+			monster "lhz_dun03.gat",47,139,"Eremes Guile",1641,1,"summon_slave_lt::OnMyMobDead";
+		} else if ('@boss_lt2 == 3) {
+			monster "lhz_dun03.gat",47,139,"Howard Alt-Eisen",1642,1,"summon_slave_lt::OnMyMobDead";
+		} else if ('@boss_lt2 == 4) {
+			monster "lhz_dun03.gat",47,139,"Margaretha Sorin",1643,1,"summon_slave_lt::OnMyMobDead";
+		} else if ('@boss_lt2 == 5) {
+			monster "lhz_dun03.gat",47,139,"Cecil Damon",1644,1,"summon_slave_lt::OnMyMobDead";
+		} else {
+			monster "lhz_dun03.gat",47,139,"Kathryne Keyron",1645,1,"summon_slave_lt::OnMyMobDead";
+		}
+	} else if ('@where_lt2 == 4) {
+		if ('@boss_lt2 == 1) {
+			monster "lhz_dun03.gat",231,140,"Seyren Windsor",1640,1,"summon_slave_lt::OnMyMobDead";
+		} else if ('@boss_lt2 == 2) {
+			monster "lhz_dun03.gat",231,140,"Eremes Guile",1641,1,"summon_slave_lt::OnMyMobDead";
+		} else if ('@boss_lt2 == 3) {
+			monster "lhz_dun03.gat",231,140,"Howard Alt-Eisen",1642,1,"summon_slave_lt::OnMyMobDead";
+		} else if ('@boss_lt2 == 4) {
+			monster "lhz_dun03.gat",231,140,"Margaretha Sorin",1643,1,"summon_slave_lt::OnMyMobDead";
+		} else if ('@boss_lt2 == 5) {
+			monster "lhz_dun03.gat",231,140,"Cecil Damon",1644,1,"summon_slave_lt::OnMyMobDead";
+		} else {
+			monster "lhz_dun03.gat",231,140,"Kathryne Keyron",1645,1,"summon_slave_lt::OnMyMobDead";
+		}
+	} else if ('@where_lt2 == 5) {
+		if ('@boss_lt2 == 1) {
+			monster "lhz_dun03.gat",139,211,"Seyren Windsor",1640,1,"summon_slave_lt::OnMyMobDead";
+		} else if ('@boss_lt2 == 2) {
+			monster "lhz_dun03.gat",139,211,"Eremes Guile",1641,1,"summon_slave_lt::OnMyMobDead";
+		} else if ('@boss_lt2 == 3) {
+			monster "lhz_dun03.gat",139,211,"Howard Alt-Eisen",1642,1,"summon_slave_lt::OnMyMobDead";
+		} else if ('@boss_lt2 == 4) {
+			monster "lhz_dun03.gat",139,211,"Margaretha Sorin",1643,1,"summon_slave_lt::OnMyMobDead";
+		} else if ('@boss_lt2 == 5) {
+			monster "lhz_dun03.gat",139,211,"Cecil Damon",1644,1,"summon_slave_lt::OnMyMobDead";
+		} else {
+			monster "lhz_dun03.gat",139,211,"Kathryne Keyron",1645,1,"summon_slave_lt::OnMyMobDead";
+		}
+	} else {
+		if ('@boss_lt2 == 1) {
+			monster "lhz_dun03.gat",139,259,"Seyren Windsor",1640,1,"summon_slave_lt::OnMyMobDead";
+		} else if ('@boss_lt2 == 2) {
+			monster "lhz_dun03.gat",139,259,"Eremes Guile",1641,1,"summon_slave_lt::OnMyMobDead";
+		} else if ('@boss_lt2 == 3) {
+			monster "lhz_dun03.gat",139,259,"Howard Alt-Eisen",1642,1,"summon_slave_lt::OnMyMobDead";
+		} else if ('@boss_lt2 == 4) {
+			monster "lhz_dun03.gat",139,259,"Margaretha Sorin",1643,1,"summon_slave_lt::OnMyMobDead";
+		} else if ('@boss_lt2 == 5) {
+			monster "lhz_dun03.gat",139,259,"Cecil Damon",1644,1,"summon_slave_lt::OnMyMobDead";
+		} else {
+			monster "lhz_dun03.gat",139,259,"Kathryne Keyron",1645,1,"summon_slave_lt::OnMyMobDead";
+		}
+	}
+	end;
+
+OnCommanddie:
+	killmonster "lhz_dun03.gat","summon_slave_lt::OnMyMobDead";
+	end;
+
+OnMyMobDead:
+	end;
+}

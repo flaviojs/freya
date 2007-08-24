@@ -7,7 +7,7 @@
 //              /_/  |_|\____|_|  \___/|_|  \__,_|              
 //                 http://aurora.deltaanime.net                 
 //--------------------------------------------------------------
-// Script Title: Field Warps	Author: A Lot of People
+// Script Title: Field Warp Portals	Author: A Lot of People
 //--------------------------------------------------------------
 // Revision History: v1.2
 //--------------------------------------------------------------
@@ -20,7 +20,7 @@
 
 
 //--------------------------------------------------------------
-// Amatsu Field Warps
+// Amatsu Field Warp Portals
 //--------------------------------------------------------------
 
 ama_fild01.gat,174,332,0	warp	warp8003	1,1,ama_in01.gat,175,174
@@ -28,7 +28,7 @@ ama_fild01.gat,75,29,0	warp	warp1961	1,1,amatsu.gat,247,287
 
 
 //--------------------------------------------------------------
-// Ayothaya Field Warps
+// Ayothaya Field Warp Portals
 //--------------------------------------------------------------
 
 ayo_fild02.gat,285,150,0	warp	ayodunwrp001	2,2,ayo_dun01.gat,275,17
@@ -36,7 +36,7 @@ ayo_dun01.gat,275,14,0	warp	ayodunwrp002	2,2,ayo_fild02.gat,282,150
 
 
 //--------------------------------------------------------------
-// Comodo Field Warps
+// Comodo Field Warp Portals
 //--------------------------------------------------------------
 
 cmd_fild01.gat,222,24,0	warp	cmdf01	1,1,cmd_fild02.gat,222,372
@@ -78,7 +78,7 @@ moc_fild18.gat,51,170,0	warp	cmd010	1,3,cmd_fild09.gat,363,164
 
 
 //--------------------------------------------------------------
-// Einbroch Field Warps
+// Einbroch Field Warp Portals
 //--------------------------------------------------------------
 
 yuno_fild04.gat,251,21,0	warp	ein001	1,1,ein_fild06.gat,252,363
@@ -113,7 +113,7 @@ ein_fild08.gat,23,275,0	warp	ein051a	1,1,lhz_fild03.gat,361,283
 
 
 //--------------------------------------------------------------
-// Geffen Field Warps
+// Geffen Field Warp Portals
 //--------------------------------------------------------------
 
 gef_fild00.gat,267,382,0	warp	gef007	4,2,mjolnir_06.gat,265,32
@@ -176,7 +176,7 @@ gef_fild14.gat,371,219,0	warp	geff19	1,1,gef_fild10.gat,31,219
 
 
 //--------------------------------------------------------------
-// Hugel Field Warps
+// Hugel Field Warp Portals
 //--------------------------------------------------------------
 
 ein_fild04.gat,343,293,0	warp	hugel001	1,1,ein_fild05.gat,80,294
@@ -212,7 +212,7 @@ yuno_fild10.gat,39,183,0	warp	hugel014a	1,1,yuno_fild09.gat,371,184
 
 
 //--------------------------------------------------------------
-// Juno Field Warps
+// Juno Field Warp Portals
 //--------------------------------------------------------------
 
 // Disabled (?)
@@ -282,7 +282,7 @@ yuno_fild01.gat,208,17,0	warp	yunfild-alde	1,1,aldebaran.gat,140,242
 
 
 //--------------------------------------------------------------
-// Kunlun Field Warps
+// Kunlun Field Warp Portals
 //--------------------------------------------------------------
 
 gonryun.gat,161,8,0	warp	gon02	1,1,gon_fild01.gat,191,261
@@ -290,7 +290,7 @@ gon_fild01.gat,192,266,0	warp	gon01	1,1,gonryun.gat,161,11
 
 
 //--------------------------------------------------------------
-// Lighthalzen Field Warps
+// Lighthalzen Field Warp Portals
 //--------------------------------------------------------------
 
 lhz_fild01.gat,210,18,0	warp	lhz043	1,1,lighthalzen.gat,214,324
@@ -300,7 +300,7 @@ lhz_fild02.gat,29,219,0	warp	lhz044a	1,1,lhz_fild01.gat,361,222
 
 
 //--------------------------------------------------------------
-// Louyang Field Warps
+// Louyang Field Warp Portals
 //--------------------------------------------------------------
 
 louyang.gat,217,22,0	warp	louwarp001	3,3,lou_fild01.gat,232,353
@@ -308,7 +308,7 @@ lou_fild01.gat,232,357,0	warp	louwarp001a	3,3,louyang.gat,217,26
 
 
 //--------------------------------------------------------------
-// Lutie Field Warps
+// Lutie Field Warp Portals
 //--------------------------------------------------------------
 
 xmas_fild01.gat,80,252,0	warp	xmas2	10,1,xmas.gat,150,44
@@ -316,7 +316,7 @@ xmas_fild01.gat,85,49,0	warp	xmas001	10,3,aldebaran.gat,140,240
 
 
 //--------------------------------------------------------------
-// Morroc Field Warps
+// Morroc Field Warp Portals
 //--------------------------------------------------------------
 
 moc_fild01.gat,101,16,0	warp	mocf01-1	15,3,moc_fild04.gat,317,376
@@ -409,7 +409,7 @@ moc_fild19.gat,71,170,0	warp	mocf018	8,2,moc_ruins.gat,71,19
 
 
 //--------------------------------------------------------------
-// Mt. Mjolnir Field Warps
+// Mt. Mjolnir Field Warp Portals
 //--------------------------------------------------------------
 
 mjolnir_01.gat,284,18,0	warp	mjol001	4,2,gef_fild04.gat,261,359
@@ -460,7 +460,7 @@ mjolnir_12.gat,220,26,0	warp	mjol08-1	3,2,mjolnir_05.gat,220,379
 
 
 //--------------------------------------------------------------
-// Niflheim Field Warps
+// Niflheim Field Warp Portals
 //--------------------------------------------------------------
 
 nif_fild01.gat,345,323,0	warp	nwarp7	1,1,nif_fild02.gat,23,312
@@ -470,7 +470,7 @@ niflheim.gat,18,151,0	warp	nwarp10	1,1,nif_fild02.gat,376,235
 
 
 //--------------------------------------------------------------
-// Payon Field Warps
+// Payon Field Warp Portals
 //--------------------------------------------------------------
 
 pay_fild01.gat,14,152,0	warp	payf001	2,7,moc_fild03.gat,299,170
@@ -508,7 +508,7 @@ pay_fild11.gat,38,330,0	warp	payf004	4,2,moc_fild03.gat,179,19
 
 
 //--------------------------------------------------------------
-// Prontera Field Warps
+// Prontera Field Warp Portals
 //--------------------------------------------------------------
 
 prt_fild00.gat,159,383,0	warp	prtf007	4,2,mjolnir_07.gat,156,19
@@ -599,7 +599,7 @@ prt_monk.gat,245,137,0	warp	monk02	1,1,monk_in.gat,98,183
 
 
 //--------------------------------------------------------------
-// Rachel Field Warps
+// Rachel Field Warp Portals
 //--------------------------------------------------------------
 
 ra_fild01.gat,233,333,0	warp	ra000	1,1,ice_dun01.gat,157,15
@@ -636,7 +636,7 @@ ra_fild03.gat,23,294,0	warp	ra029	1,1,ra_fild02.gat,367,270
 
 
 //--------------------------------------------------------------
-// Umbala Field Warps
+// Umbala Field Warp Portals
 //--------------------------------------------------------------
 
 um_fild04.gat,215,340,0	warp	umba0055	1,1,umbala.gat,130,80
@@ -664,7 +664,7 @@ yggdrasil01.gat,271,51,0	warp	nwarp3	1,1,yggdrasil01.gat,26,196
 yggdrasil01.gat,26,193,0	warp	nwarp4	1,1,yggdrasil01.gat,269,53
 
 //--------------------------------------------------------------
-// Veins Field Warps
+// Veins Field Warp Portals
 //--------------------------------------------------------------
 
 ve_fild02.gat,196,382,0    warp    veinswarp5001    1,1,rachel.gat,130,23

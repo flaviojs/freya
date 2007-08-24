@@ -13,8 +13,16 @@
 
 Date	Added
 
+2007/08/24
+	* Updated: All Monster Spawns to official, converted from Aegis [Tsuyuki]
+	 - Source: iRO Aegis Episode 11.1 spawn scripts
+	* Updated: The Poring Box summon list to official, converted from Aegis [Tsuyuki]
+	* Updated: The Bloody Branch summon list to official, converted from Aegis [Tsuyuki]
+	* Updated: The Juperos History Quest with iRO dialogue, reconverted from Aegis [Tsuyuki]
+	* Updated: The Juno Monster Museum / Metto Quest with iRO dialogue, reconverted from Aegis [Tsuyuki]
+
 2007/08/22
-	* Updated: ALL Headgear Quests to official, converted from Aegis [Tsuyuki]
+	* Updated: Headgear Quests to official, converted from Aegis [Tsuyuki]
 	 - Thanks to Intervention for converting all the item enums to IDs for me!
 	* Updated: The Eye of Hellion Quest to official, converted from Aegis [Tsuyuki]
 	* Updated: The Sign Quest to official, converted from Aegis [Tsuyuki]
@@ -29,8 +37,8 @@ Date	Added
 
 2007/08/18
 	* Updated: Translated the final few parts of battle_athena.conf (Thanks to nemissa) [Tsuyuki]
-	* Updated: Inn Employees with iRO dialogue, converted from Aegis [Tsuyuki]
-	* Updated: The Gunslinger Job Change Quest with iRO dialogue, converted from Aegis [Tsuyuki]
+	* Updated: Inn Employees with iRO dialogue, reconverted from Aegis [Tsuyuki]
+	* Updated: The Gunslinger Job Change Quest with iRO dialogue, reconverted from Aegis [Tsuyuki]
 
 2007/08/17
 	* Updated: Potion Exchange to official, converted from Aegis [Tsuyuki]
@@ -47,8 +55,8 @@ Date	Added
 2007/08/15
 	* Updated: Ayothaya Town NPCs / Quests to official, converted from Aegis [Tsuyuki]
 	* Added: The Doomed Swords Quest (Path #2), converted from Aegis [Tsuyuki]
-	* Updated: Juno Town NPCs with iRO dialogue, converted from Aegis [Tsuyuki]
-	* Updated: Payon Town NPCs with iRO dialogue, converted from Aegis [Tsuyuki]
+	* Updated: Juno Town NPCs with iRO dialogue, reconverted from Aegis [Tsuyuki]
+	* Updated: Payon Town NPCs with iRO dialogue, reconverted from Aegis [Tsuyuki]
 
 2007/08/12
 	* Updated: Project to jAthena 2317 [Tsuyuki]

@@ -12,7 +12,7 @@
 // Revision History: v1.1
 //--------------------------------------------------------------
 //	1.0 First version, converted from Aegis [Tsuyuki]
-//	1.1 Added Dandelion's Request Quest converted from Aegis by SinSloth [Tsuyuki]
+//	1.1 Added the Dandelion's Request Quest, converted from Aegis by SinSloth [Tsuyuki]
 //--------------------------------------------------------------
 // Additional Notes: * Official-certified / Aegis-certified *
 //--------------------------------------------------------------

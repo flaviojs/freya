@@ -7,7 +7,7 @@
 //              /_/  |_|\____|_|  \___/|_|  \__,_|              
 //                 http://aurora.deltaanime.net                 
 //--------------------------------------------------------------
-// Script Title: Dungeon Warps	Author: A Lot of People
+// Script Title: Dungeon Warp Portals	Author: A Lot of People
 //--------------------------------------------------------------
 // Revision History: v1.7
 //--------------------------------------------------------------
@@ -25,7 +25,7 @@
 
 
 //--------------------------------------------------------------
-// Abbey Dungeon Warps
+// Abbey Dungeon Warp Portals
 //--------------------------------------------------------------
 
 nameless_n.gat,156,184,0	warp	nameless01	1,1,abbey01.gat,51,12
@@ -40,7 +40,7 @@ abbey03.gat,120,6,0	warp	nameless09	1,1,abbey02.gat,150,285
 
 
 //--------------------------------------------------------------
-// Abyss Lake Dungeon Warps
+// Abyss Lake Dungeon Warp Portals
 //--------------------------------------------------------------
 
 hu_fild05.gat,197,210,0	warp	abysslakedunwarp001	2,3,abyss_01.gat,264,271
@@ -53,7 +53,7 @@ hu_fild05.gat,180,190,0	warp	warpabyss	1,1,hu_fild05.gat,168,300
 
 
 //--------------------------------------------------------------
-// Amatsu Dungeon Warps
+// Amatsu Dungeon Warp Portals
 //--------------------------------------------------------------
 
 ama_dun01.gat,234,143,0	warp	warp8008	1,1,ama_dun02.gat,31,41
@@ -63,7 +63,7 @@ ama_dun03.gat,119,9,0	warp	warp8011	1,1,ama_dun02.gat,196,121
 
 
 //--------------------------------------------------------------
-// Ant Hell Dungeon Warps
+// Ant Hell Dungeon Warp Portals
 //--------------------------------------------------------------
 
 anthell01.gat,253,32,0	warp	ant01	5,1,anthell02.gat,35,263
@@ -89,7 +89,7 @@ anthell02.gat,171,169,0	script	ant002	45,1,2,{
 
 
 //--------------------------------------------------------------
-// Ayothaya Dungeon Warps
+// Ayothaya Dungeon Warp Portals
 //--------------------------------------------------------------
 
 ayo_dun02.gat,24,21,0	warp	ayodunwrp003	2,2,ayo_dun01.gat,24,281
@@ -97,7 +97,7 @@ ayo_dun02.gat,275,21,0	warp	ayodunwrp004	2,2,ayo_dun01.gat,24,281
 
 
 //--------------------------------------------------------------
-// Beach Dungeon Warps (Comodo Caves)
+// Beach Dungeon Warp Portals (Comodo Caves)
 //--------------------------------------------------------------
 
 beach_dun.gat,276,67,0	warp	cmd004	1,1,comodo.gat,31,215
@@ -108,7 +108,7 @@ beach_dun3.gat,286,57,0	warp	cmd006	1,1,cmd_fild01.gat,30,317
 
 
 //--------------------------------------------------------------
-// Biolabs Warps (Somatology Lab/Lighthalzen Dungeon)
+// Biolabs Warp Portals (Somatology Lab/Lighthalzen Dungeon)
 //--------------------------------------------------------------
 
 lhz_dun03.gat,140,139,0	warp	lhz003	1,1,lhz_dun02.gat,150,145
@@ -122,7 +122,7 @@ lhz_dun01.gat,150,290,0	warp	lhz007	1,1,lhz_in01.gat,23,137
 
 
 //--------------------------------------------------------------
-// Byalan Dungeon Warps (Izlude Dungeon)
+// Byalan Dungeon Warp Portals (Izlude Dungeon)
 //--------------------------------------------------------------
 
 izlu2dun.gat,108,83,0	warp	izd01	3,2,iz_dun00.gat,168,168
@@ -140,7 +140,7 @@ iz_dun04.gat,26,24,0	warp	izd06-1	2,2,iz_dun03.gat,261,245
 
 
 //--------------------------------------------------------------
-// Clock Tower/Aldebaran Dungeon Warps
+// Clock Tower/Aldebaran Dungeon Warp Portals
 //--------------------------------------------------------------
 
 aldebaran.gat,139,135,0	warp	ald002	1,1,c_tower1.gat,199,159
@@ -344,7 +344,7 @@ alde_dun04.gat,80,34,4	script	clt022r	45,1,1,{
 
 
 //--------------------------------------------------------------
-// Coal Mine Dungeon Warps (Dead Pit/Mjolnir Dungeon)
+// Coal Mine Dungeon Warp Portals (Dead Pit/Mjolnir Dungeon)
 //--------------------------------------------------------------
 
 mjo_dun01.gat,14,283,0	warp	mjod01	2,4,mjo_dun02.gat,381,343
@@ -357,7 +357,7 @@ mjo_dun03.gat,308,264,0	warp	mjod03-1	1,1,mjo_dun02.gat,39,23
 
 
 //--------------------------------------------------------------
-// Culvert Dungeon Warps (Prontera Sewers)
+// Culvert Dungeon Warp Portals (Prontera Sewers)
 //--------------------------------------------------------------
 
 prt_sewb1.gat,135,248,0	warp	prts001	2,2,prt_fild05.gat,274,208
@@ -374,7 +374,7 @@ prt_sewb4.gat,100,95,0	warp	prts05-1	3,1,prt_sewb3.gat,19,183
 
 
 //--------------------------------------------------------------
-// Einbech Dungeon Warps (Einbroch Dungeon)
+// Einbech Dungeon Warp Portals (Einbroch Dungeon)
 //--------------------------------------------------------------
 
 einbech.gat,139,253,0	warp	ein011	1,1,ein_dun01.gat,22,17
@@ -384,7 +384,7 @@ ein_dun02.gat,292,292,0	warp	ein012a	1,1,ein_dun01.gat,262,258
 
 
 //--------------------------------------------------------------
-// Gefenia Dungeon Warps
+// Gefenia Dungeon Warp Portals
 //--------------------------------------------------------------
 
 gefenia01.gat,37,103,0	warp	gefeniawarp014	1,1,gefenia04.gat,283,95
@@ -404,7 +404,7 @@ gefenia04.gat,287,95,0	warp	gefeniawarp013	1,1,gefenia01.gat,40,103
 
 
 //--------------------------------------------------------------
-// Geffen Dungeon Warps
+// Geffen Dungeon Warp Portals
 //--------------------------------------------------------------
 
 gef_dun00.gat,104,102,0	warp	gef024	3,3,gef_tower.gat,153,31
@@ -416,7 +416,7 @@ gef_dun03.gat,203,204,0	warp	gefd03	2,1,gef_dun02.gat,215,63
 
 
 //--------------------------------------------------------------
-// Glast Heim Dungeon Warps (Chilvalry/Prison/Church/Castle/Sewers/etc)
+// Glast Heim Dungeon Warp Portals (Chilvalry/Prison/Church/Castle/Sewers/etc)
 //--------------------------------------------------------------
 
 gef_fild06.gat,20,304,0	warp	gef027	2,5,glast_01.gat,375,304
@@ -492,10 +492,10 @@ glast_01.gat,77,193,0	warp	gl2	1,1,gl_knt01.gat,150,15
 
 
 //--------------------------------------------------------------
-// Hidden Temple Dungeon Warps (Prontera Maze/Labrynth Forest)
+// Hidden Temple Dungeon Warp Portals (Prontera Maze/Labrynth Forest)
 //--------------------------------------------------------------
 
-// Exterior Warps
+// Exterior Warp Portals
 prt_fild01.gat,136,373,0	warp	prtf030	2,2,prt_maze01.gat,176,7
 mjolnir_12.gat,44,17,0	warp	mjol17	1,1,prt_maze01.gat,17,111
 prt_maze01.gat,14,45,0	warp	mazewarp5137	1,1,mjolnir_12.gat,44,21
@@ -669,7 +669,7 @@ prt_maze03.gat,165,22,0	warp	mazewarp5362	1,1,prt_maze03.gat,111,145
 
 
 //--------------------------------------------------------------
-// Ice Cave Dungeon Warps (Ice Dungeon)
+// Ice Cave Dungeon Warp Portals (Ice Dungeon)
 //--------------------------------------------------------------
 
 ice_dun01.gat,157,10,0	warp	ice001	1,1,ra_fild01.gat,233,327
@@ -681,7 +681,7 @@ ice_dun04.gat,33,140,0	warp	ice006	1,1,ice_dun03.gat,149,130
 
 
 //--------------------------------------------------------------
-// Kiel Hyre Dungeon Warps
+// Kiel Hyre Dungeon Warp Portals
 //--------------------------------------------------------------
 
 kh_dun01.gat,3,234,0	warp	kh_dun_00	1,1,yuno_fild08.gat,74,174
@@ -699,7 +699,7 @@ OnTouch:
 
 
 //--------------------------------------------------------------
-// Kunlun Dungeon Warps
+// Kunlun Dungeon Warp Portals
 //--------------------------------------------------------------
 
 gon_dun01.gat,153,45,0	warp	gon20	1,1,gonryun.gat,159,198
@@ -730,7 +730,7 @@ gon_dun03.gat,68,6,0	warp	gon44	1,1,gon_dun02.gat,251,265
 
 
 //--------------------------------------------------------------
-// Louyang Dungeon Warps
+// Louyang Dungeon Warp Portals
 //--------------------------------------------------------------
 
 lou_dun01.gat,222,196,0	warp	louwarp002a	3,3,louyang.gat,41,270
@@ -741,7 +741,7 @@ lou_dun03.gat,165,34,0	warp	louwarp004a	3,3,lou_dun02.gat,165,266
 
 
 //--------------------------------------------------------------
-// Magma Dungeon Warps (Juno Dungeon)
+// Magma Dungeon Warp Portals (Juno Dungeon)
 //--------------------------------------------------------------
 
 mag_dun01.gat,126,66,0	warp	mag01-yunfild	1,1,yuno_fild03.gat,34,139
@@ -750,7 +750,7 @@ mag_dun02.gat,47,28,0	warp	mag02-01	1,1,mag_dun01.gat,242,239
 
 
 //--------------------------------------------------------------
-// Odin Shrine Dungeon Warps (Odin Temple)
+// Odin Shrine Dungeon Warp Portals (Odin Temple)
 //--------------------------------------------------------------
 
 odin_tem01.gat,378,182,0	warp	odin01	1,1,odin_tem02.gat,28,180
@@ -764,7 +764,7 @@ odin_tem03.gat,247,34,0	warp	odin08	1,1,odin_tem02.gat,263,372
 
 
 //--------------------------------------------------------------
-// Orc Dungeon/Village Warps
+// Orc Dungeon/Village Warp Portals
 //--------------------------------------------------------------
 
 in_orcs01.gat,108,86,0	warp	orc001	3,2,gef_fild10.gat,223,203
@@ -781,7 +781,7 @@ orcsdun02.gat,21,188,0	warp	orc03-1	8,2,orcsdun01.gat,183,11
 
 
 //--------------------------------------------------------------
-// Payon Dungeon Warps (Payon Cave)
+// Payon Dungeon Warp Portals (Payon Cave)
 //--------------------------------------------------------------
 
 pay_dun00.gat,184,33,0	warp	payd01	2,7,pay_dun01.gat,19,33
@@ -809,7 +809,7 @@ pay_dun04.gat,40,37,0	warp	payd04-1	1,1,pay_dun03.gat,126,62
 
 
 //--------------------------------------------------------------
-// Pyramids Dungeon Warps
+// Pyramids Dungeon Warp Portals
 //--------------------------------------------------------------
 
 moc_pryd01.gat,10,195,0	warp	mocp01	5,2,moc_pryd02.gat,10,192
@@ -840,7 +840,7 @@ moc_prydb1.gat,88,115,0	warp	mocp12-1	2,6,moc_prydb1.gat,56,115
 
 
 //--------------------------------------------------------------
-// Rachel Sanctuary Dungeon Warps (Rachel Temple)
+// Rachel Sanctuary Dungeon Warp Portals (Rachel Temple)
 //--------------------------------------------------------------
 
 ra_san01.gat,139,13,0	script	sanctuary01	45,1,1,{
@@ -868,7 +868,7 @@ ra_san01.gat,139,139,0	warp	sanctuary15	1,1,ra_temin.gat,27,314
 
 
 //--------------------------------------------------------------
-// Sphinx Dungeon Warps
+// Sphinx Dungeon Warp Portals
 //--------------------------------------------------------------
 
 moc_fild19.gat,98,99,0	warp	mocf019	1,1,in_sphinx1.gat,288,9
@@ -896,7 +896,7 @@ in_sphinx5.gat,189,183,0	warp	sphx08-6	3,1,in_sphinx5.gat,189,18
 
 
 //--------------------------------------------------------------
-// Sunken Ship Dungeon Warps (Treasure Island)
+// Sunken Ship Dungeon Warp Portals (Treasure Island)
 //--------------------------------------------------------------
 
 alb2trea.gat,88,111,0	warp	alb002	1,1,treasure01.gat,69,24
@@ -936,7 +936,7 @@ treasure02.gat,80,72,0	warp	tre15-1	1,4,treasure02.gat,63,72
 
 
 //--------------------------------------------------------------
-// Thanatos Tower Dungeon Warps
+// Thanatos Tower Dungeon Warp Portals
 //--------------------------------------------------------------
 
 tha_scene01.gat,144,198,0	warp	tha_t01	1,1,tha_t01.gat,149,38
@@ -999,7 +999,7 @@ L_Boss:
 
 
 //--------------------------------------------------------------
-// Thor Volcano Dungeon Warps (Thor Dungeon/Veins Dungeon)
+// Thor Volcano Dungeon Warp Portals (Thor Dungeon/Veins Dungeon)
 //--------------------------------------------------------------
 
 thor_v01.gat,21,223,0    warp    veinswarp0504    1,1,ve_fild03.gat,168,238
@@ -1012,7 +1012,7 @@ thor_camp.gat,288,289,0    warp    veinswarp4006    1,1,thor_v02.gat,146,86
 
 
 //--------------------------------------------------------------
-// Toy Factory Dungeon Warps (Xmas Dungeon/Lutie Dungeon)
+// Toy Factory Dungeon Warp Portals (Xmas Dungeon/Lutie Dungeon)
 //--------------------------------------------------------------
 
 xmas_dun01.gat,128,131,0	warp	xmas15	1,1,xmas_dun02.gat,129,133
@@ -1021,7 +1021,7 @@ xmas_dun02.gat,129,129,0	warp	xmas15-1	1,1,xmas_dun01.gat,128,129
 
 
 //--------------------------------------------------------------
-// Turtle Dungeon Warps (Turtle Island)
+// Turtle Dungeon Warp Portals (Turtle Island)
 //--------------------------------------------------------------
 
 tur_dun01.gat,154,241,0	warp	ttl01	1,1,tur_dun02.gat,148,264
@@ -1035,7 +1035,7 @@ tur_dun05.gat,9,45,0	warp	ttl06	1,1,tur_dun01.gat,154,237
 
 
 //--------------------------------------------------------------
-// Umbala Dungeon Warps (Yggdrasil Cave)
+// Umbala Dungeon Warp Portals (Yggdrasil Cave)
 //--------------------------------------------------------------
 
 umbala.gat,106,286,0	warp	umba0011	1,1,um_dun01.gat,42,31

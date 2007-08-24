@@ -7,7 +7,7 @@
 //              /_/  |_|\____|_|  \___/|_|  \__,_|              
 //                 http://aurora.deltaanime.net                 
 //--------------------------------------------------------------
-// Script Title: Town Warps	Author: A Lot of People
+// Script Title: Town Warp Portals	Author: A Lot of People
 //--------------------------------------------------------------
 // Revision History: v1.7
 //--------------------------------------------------------------
@@ -25,7 +25,7 @@
 
 
 //--------------------------------------------------------------
-// Alberta Town Warps
+// Alberta Town Warp Portals
 //--------------------------------------------------------------
 
 alberta.gat,15,234,0	warp	alb001	2,5,pay_fild03.gat,388,63
@@ -72,7 +72,7 @@ alberta_in.gat,66,170,0	warp	alb19-1	3,2,alberta_in.gat,66,149
 
 
 //--------------------------------------------------------------
-// Aldebaran Town Warps
+// Aldebaran Town Warp Portals
 //--------------------------------------------------------------
 
 aldebaran.gat,118,63,0	warp	ald01	1,1,aldeba_in.gat,211,117
@@ -113,7 +113,7 @@ turbo_room.gat,100,61,0	warp	turbo02	1,1,alde_gld.gat,183,198
 
 
 //--------------------------------------------------------------
-// Amatsu Town Warps
+// Amatsu Town Warp Portals
 //--------------------------------------------------------------
 
 ama_in01.gat,157,25,0	warp	warp1969	1,1,amatsu.gat,213,116
@@ -149,7 +149,7 @@ amatsu.gat,96,117,0	warp	warp1962	1,1,ama_in01.gat,30,23
 
 
 //--------------------------------------------------------------
-// Ayothaya Town Warps
+// Ayothaya Town Warp Portals
 //--------------------------------------------------------------
 
 ayothaya.gat,277,176,0	warp	ayothayawarp001	2,2,ayo_fild01.gat,36,239
@@ -193,7 +193,7 @@ ayo_in01.gat,136,27,0	warp	ayothayawarp050	2,2,ayo_in01.gat,16,107
 
 
 //--------------------------------------------------------------
-// Comodo Town Warps
+// Comodo Town Warp Portals
 //--------------------------------------------------------------
 
 comodo.gat,115,291,0	warp	cmd09	1,1,cmd_in02.gat,67,132
@@ -232,7 +232,7 @@ cmd_in02.gat,98,216,0	warp	cmd16-1	1,1,cmd_in02.gat,207,210
 
 
 //--------------------------------------------------------------
-// Einbech Town Warps
+// Einbech Town Warp Portals
 //--------------------------------------------------------------
 
 einbech.gat,177,136,0	warp	eib_wp01	1,1,ein_in01.gat,190,35
@@ -251,7 +251,7 @@ einbech.gat,62,29,0	warp	ein_fd09	1,1,ein_fild09.gat,72,351
 
 
 //--------------------------------------------------------------
-// Einbroch Town Warps
+// Einbroch Town Warp Portals
 //--------------------------------------------------------------
 
 einbroch.gat,132,79,0	warp	ein_fa01	1,1,ein_in01.gat,17,213
@@ -300,7 +300,7 @@ ein_fild08.gat,164,380,0	warp	ein_fd02a	1,1,einbroch.gat,150,28
 
 
 //--------------------------------------------------------------
-// Geffen Town Warps
+// Geffen Town Warp Portals
 //--------------------------------------------------------------
 
 geffen.gat,119,213,0	warp	gef001	3,2,gef_fild04.gat,187,42
@@ -338,7 +338,7 @@ geffen_in.gat,106,181,0	warp	gef03-1	2,2,geffen.gat,180,61
 geffen_in.gat,28,106,0	warp	gef01-1	1,3,geffen.gat,136,136
 geffen_in.gat,70,48,0	warp	gef02-1	3,2,geffen.gat,168,170
 
-// Geffen Tower Warps
+// Geffen Tower Warp Portals
 gef_tower.gat,106,115,0	warp	geft01	1,1,gef_tower.gat,106,72
 gef_tower.gat,106,69,0	warp	geft01-1	1,1,gef_tower.gat,106,112
 gef_tower.gat,44,36,0	warp	geft02	1,1,gef_tower.gat,106,162
@@ -363,7 +363,7 @@ gef_tower.gat,62,87,0	warp	geft09-1	1,1,gef_tower.gat,60,30
 
 
 //--------------------------------------------------------------
-// Hugel Town Warps
+// Hugel Town Warp Portals
 //--------------------------------------------------------------
 
 hu_fild06.gat,199,373,0	warp	hugel01	1,1,hugel.gat,95,34
@@ -426,7 +426,7 @@ hu_in01.gat,24,361,0	warp	hugel58	1,1,hugel.gat,82,230
 hu_in01.gat,301,380,0	warp	hugel59	1,1,hugel.gat,93,199
 hugel.gat,93,201,0	warp	hugel60	1,1,hu_in01.gat,303,380
 
-// Bingo Warps
+// Bingo Warp Portals
 hugel.gat,55,207,0    warp    hugelwarp1051    1,1,que_bingo.gat,49,9
 que_bingo.gat,49,7,0    warp    hugelwarp1052    1,1,hugel.gat,57,207
 que_bingo.gat,39,34,0    warp    hugelwarp1053    1,1,que_bingo.gat,34,109
@@ -436,7 +436,7 @@ que_bingo.gat,48,66,0    warp    hugelwarp1056    1,1,que_bingo.gat,53,29
 
 
 //--------------------------------------------------------------
-// Izlude Town Warps
+// Izlude Town Warp Portals
 //--------------------------------------------------------------
 
 izlude.gat,109,151,0	warp	iz01	3,3,izlude_in.gat,65,87
@@ -458,7 +458,7 @@ izlude_in.gat,87,169,0	warp	iz05-1	2,3,izlude_in.gat,111,169
 izlude.gat,149,39,0	warp	izair1	1,1,izlude.gat,180,56
 izlude.gat,176,56,0	warp	lizair2	1,1,izlude.gat,145,39
 
-// Izlude Battle Arena Warps
+// Izlude Battle Arena Warp Portals
 izlude.gat,128,226,0	warp	welcome_arena	1,1,arena_room.gat,100,30
 arena_room.gat,99,24,0	warp	bye_arena	2,2,izlude.gat,128,220
 arena_room.gat,84,103,0	warp	arn_room_11_1	1,1,arena_room.gat,63,130
@@ -475,7 +475,7 @@ prt_are_in.gat,54,13,0	warp	toarn_room	1,1,arena_room.gat,100,77
 
 
 //--------------------------------------------------------------
-// Jawaii Town Warps
+// Jawaii Town Warp Portals
 //--------------------------------------------------------------
 
 jawaii_in.gat,90,78,0	warp	jawaiiwarp001	1,1,jawaii.gat,115,172
@@ -495,7 +495,7 @@ L_Married:
 
 
 //--------------------------------------------------------------
-// Juno Town Warps
+// Juno Town Warp Portals
 //--------------------------------------------------------------
 
 yuno.gat,158,14,0	warp	yun-yunfild	10,1,yuno_fild04.gat,232,286
@@ -591,7 +591,7 @@ yuno_pre.gat,69,10,0	warp	yungvn12	1,1,yuno.gat,157,317
 
 
 //--------------------------------------------------------------
-// Kunlun Town Warps
+// Kunlun Town Warp Portals
 //--------------------------------------------------------------
 
 gonryun.gat,195,93,0	warp	gon03	1,1,gon_in.gat,95,23
@@ -614,7 +614,7 @@ gon_in.gat,31,97,0	warp	gon18	1,1,gon_in.gat,39,35
 
 
 //--------------------------------------------------------------
-// Lighthalzen Town Warps
+// Lighthalzen Town Warp Portals
 //--------------------------------------------------------------
 
 lighthalzen.gat,196,46,0	warp	lhz010	1,1,lhz_in02.gat,282,83
@@ -701,7 +701,7 @@ auction_02.gat,43,17,0	warp	auc_light01	1,1,lighthalzen.gat,209,169
 
 
 //--------------------------------------------------------------
-// Louyang Town Warps
+// Louyang Town Warp Portals
 //--------------------------------------------------------------
 
 louyang.gat,37,270,0	warp	louwarp002	3,3,lou_dun01.gat,218,196
@@ -741,7 +741,7 @@ lou_in02.gat,189,74,0	warp	louwarp007a	3,3,louyang.gat,309,76
 
 
 //--------------------------------------------------------------
-// Lutie Town Warps
+// Lutie Town Warp Portals
 //--------------------------------------------------------------
 
 xmas.gat,104,290,0	warp	xmas12	3,1,xmas_in.gat,29,162
@@ -771,7 +771,7 @@ xmas_in.gat,95,82,0	warp	xmas8-1	4,1,xmas.gat,142,238
 
 
 //--------------------------------------------------------------
-// Morroc Town Warps
+// Morroc Town Warp Portals
 //--------------------------------------------------------------
 
 morocc.gat,160,17,0	warp	moc001	2,2,moc_fild12.gat,159,378
@@ -868,7 +868,7 @@ moc_castle.gat,94,156,0	warp	mocc15-1	3,2,moc_castle.gat,94,140
 
 
 //--------------------------------------------------------------
-// Nameless Island Town Warps
+// Nameless Island Town Warp Portals
 //--------------------------------------------------------------
 
 nameless_i.gat,168,257,0    warp    namelesswarp1001    1,1,nameless_in.gat,12,43
@@ -882,7 +882,7 @@ nameless_in.gat,96,177,0    warp    namelesswarp1008    1,1,nameless_i.gat,81,96
 
 
 //--------------------------------------------------------------
-// Niflheim Town Warps
+// Niflheim Town Warp Portals
 //--------------------------------------------------------------
 
 niflheim.gat,220,169,0	warp	nwarp11	1,1,nif_in.gat,14,88
@@ -906,7 +906,7 @@ nif_in.gat,154,78,0	warp	nwarp22	1,1,niflheim.gat,167,161
 
 
 //--------------------------------------------------------------
-// Payon Town Warps
+// Payon Town Warp Portals
 //--------------------------------------------------------------
 
 payon.gat,16,142,0		warp	payonwarp001	1,1,pay_gld.gat,370,149
@@ -983,7 +983,7 @@ payon.gat,270,152,0		warp	payonwarp088	2,2,payon_in01.gat,90,9
 payon_in01.gat,107,71,0		warp	payonwarp089	2,2,payon_in01.gat,96,37
 payon_in01.gat,93,37,0		warp	payonwarp090	2,2,payon_in01.gat,104,71
 
-// Archer Village Warps
+// Archer Village Warp Portals
 payon.gat,228,330,0		warp	payonwarp007	4,2,pay_arche.gat,81,22
 pay_arche.gat,81,18,0		warp	payonwarp008	5,2,payon.gat,228,326
 pay_arche.gat,36,131,0		warp	payonwarp048	2,2,pay_dun00.gat,21,183
@@ -1002,7 +1002,7 @@ payon_in02.gat,82,45,0		warp	payonwarp060	2,2,pay_arche.gat,74,153
 
 
 //--------------------------------------------------------------
-// Prontera Town Warps
+// Prontera Town Warp Portals
 //--------------------------------------------------------------
 
 prontera.gat,22,203,0      warp   pronterawarp0502   2,3,prt_fild05.gat,367,205
@@ -1089,7 +1089,7 @@ prt_church.gat,166,106,0	warp	pronterawarp1074	1,2,prt_church.gat,112,122
 
 
 //--------------------------------------------------------------
-// Rachel Town Warps
+// Rachel Town Warp Portals
 //--------------------------------------------------------------
 
 rachel.gat,150,249,0	warp	rachel01	1,1,ra_temple.gat,120,30
@@ -1198,7 +1198,7 @@ ra_temin.gat,275,243,0	warp	rachel87	1,1,ra_temin.gat,131,131
 
 
 //--------------------------------------------------------------
-// Umbala Town Warps
+// Umbala Town Warp Portals
 //--------------------------------------------------------------
 
 umbala.gat,219,189,0	warp	umba0027	0,0,um_in.gat,32,70
@@ -1218,7 +1218,7 @@ um_in.gat,38,110,0	warp	umba0040	1,1,umbala.gat,104,163
 
 
 //--------------------------------------------------------------
-// Veins Town Warps
+// Veins Town Warp Portals
 //--------------------------------------------------------------
 
 veins.gat,218,361,0    warp    veinswarp0501    1,1,ve_fild06.gat,152,221

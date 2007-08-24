@@ -7,15 +7,19 @@
 //              /_/  |_|\____|_|  \___/|_|  \__,_|              
 //                 http://aurora.deltaanime.net                 
 //--------------------------------------------------------------
-// Script Title: Guild Dungeon Monster Spawns	Author: Playtester
+// Script Title: GvG System Monster Spawns	Author: Tsuyuki
 //--------------------------------------------------------------
 // Revision History: v1.0
 //--------------------------------------------------------------
-//	1.0 First version, converted from Aegis [Playtester]
+//	1.0 First version, converted from Aegis [Tsuyuki]
 //--------------------------------------------------------------
 // Additional Notes: * Official-certified / Aegis-certified *
 //--------------------------------------------------------------
 
+
+//--------------------------------------------------------------
+// Guild Dungeon Monster Spawns - [Tsuyuki]
+//--------------------------------------------------------------
 
 gld_dun01.gat,0,0,0,0	monster	Skeleton General	1290,10,0,0,0
 gld_dun01.gat,0,0,0,0	monster	Am Mut	1301,20,0,0,0

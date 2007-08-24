@@ -7,17 +7,15 @@
 // 1000000 = 100%
 
 0,Poring,1002
-1002,Poring,700000
-1062,Santa Poring,200000
-1113,Drops,500000
-1031,Poporing,400000
-1242,Marin,300000
-1613,Metaling,300000
+1002,Poring,500000
+1031,Poporing,500000
+1062,Santa Poring,100000
 1090,Mastering,100000
-1096,Angeling,50000
-1582,Deviling,50000
-1120,Ghostring,50000
-1388,Arc Angeling,10000
-
-//1520,Boiled Rice,????
-//1784,Stapo,????
+1096,Angeling,100000
+1113,Drops,500000
+1120,Ghostring,100000
+1242,Marin,500000
+1388,Arc Angeling,100000
+1582,Deviling,100000
+1613,Metaling,500000
+1784,Stapo,500000

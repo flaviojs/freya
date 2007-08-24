@@ -116,10 +116,10 @@ npc: script/misc/misc_vote.txt
 
 npc: script/mob/mob_dungeon.txt
 npc: script/mob/mob_field.txt
+npc: script/mob/mob_future.txt
 npc: script/mob/mob_gvg.txt
 npc: script/mob/mob_job.txt
 npc: script/mob/mob_misc.txt
-npc: script/mob/mob_pvp.txt
 npc: script/mob/mob_town.txt
 
 

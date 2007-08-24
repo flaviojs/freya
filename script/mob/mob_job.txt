@@ -18,115 +18,110 @@
 
 
 //--------------------------------------------------------------
-// Monk Job Change Quest Monster Spawns
+// Novice Grounds Monster Spawns - [Tsuyuki]
 //--------------------------------------------------------------
 
-job_monk.gat,0,0,0,0	monster	Thief Mushroom	1182,70,0,0,0
-job_monk.gat,0,0,0,0	monster	Thief Bug Larva	1051,20,0,0,0
-
-
-//--------------------------------------------------------------
-// Novice Training Grounds Monster Spawns
-//--------------------------------------------------------------
-
-new_1-3.gat,0,0,0,0	monster	Fabre	1184,5,0,0,0
 new_1-3.gat,0,0,0,0	monster	Poring	1002,10,0,0,0
-new_1-3.gat,0,0,0,0	monster	Chonchon	1011,10,0,0,0
-new_1-3.gat,0,0,0,0	monster	Lunatic	1063,10,0,0,0
 new_1-3.gat,0,0,0,0	monster	Drops	1113,10,0,0,0
-
-new_2-3.gat,0,0,0,0	monster	Fabre	1184,5,0,0,0
+new_1-3.gat,0,0,0,0	monster	Lunatic	1063,10,0,0,0
+new_1-3.gat,0,0,0,0	monster	Chonchon	1011,10,0,0,0
 new_2-3.gat,0,0,0,0	monster	Condor	1009,10,0,0,0
 new_2-3.gat,0,0,0,0	monster	Picky	1050,10,0,0,0
 new_2-3.gat,0,0,0,0	monster	Willow	1010,10,0,0,0
 new_2-3.gat,0,0,0,0	monster	Roda Frog	1012,10,0,0,0
-
-new_3-3.gat,0,0,0,0	monster	Fabre	1184,5,0,0,0
 new_3-3.gat,0,0,0,0	monster	Condor	1009,10,0,0,0
 new_3-3.gat,0,0,0,0	monster	Picky	1050,10,0,0,0
 new_3-3.gat,0,0,0,0	monster	Willow	1010,10,0,0,0
 new_3-3.gat,0,0,0,0	monster	Roda Frog	1012,10,0,0,0
-
-new_4-3.gat,0,0,0,0	monster	Fabre	1184,5,0,0,0
 new_4-3.gat,0,0,0,0	monster	Rocker	1052,10,0,0,0
 new_4-3.gat,0,0,0,0	monster	Thief Bug	1051,10,0,0,0
 new_4-3.gat,0,0,0,0	monster	Thief Bug Female	1053,10,0,0,0
 new_4-3.gat,0,0,0,0	monster	Spore	1014,10,0,0,0
-
-new_5-3.gat,0,0,0,0	monster	Fabre	1184,5,0,0,0
 new_5-3.gat,0,0,0,0	monster	Rocker	1052,10,0,0,0
 new_5-3.gat,0,0,0,0	monster	Thief Bug	1051,10,0,0,0
 new_5-3.gat,0,0,0,0	monster	Thief Bug Female	1053,10,0,0,0
 new_5-3.gat,0,0,0,0	monster	Spore	1014,10,0,0,0
+new_1-3.gat,0,0,0,0	monster	Fabre	1184,5,0,0,0
+new_2-3.gat,0,0,0,0	monster	Fabre	1184,5,0,0,0
+new_3-3.gat,0,0,0,0	monster	Fabre	1184,5,0,0,0
+new_4-3.gat,0,0,0,0	monster	Fabre	1184,5,0,0,0
+new_5-3.gat,0,0,0,0	monster	Fabre	1184,5,0,0,0
 
 
 //--------------------------------------------------------------
-// Swordsman Job Change Quest Monster Spawns
+// Swordsman Job Change Quest Monster Spawns - [Tsuyuki]
 //--------------------------------------------------------------
 
-sword_1-1.gat,35,78,0,0	monster	Fabre	1184,4,0,0,0
-sword_1-1.gat,50,108,0,0	monster	Fabre	1184,2,0,0,0
-sword_1-1.gat,61,28,0,0	monster	Fabre	1184,4,0,0,0
-sword_1-1.gat,61,92,0,0	monster	Fabre	1184,2,0,0,0
-sword_1-1.gat,110,112,0,0	monster	Fabre	1184,3,0,0,0
-sword_1-1.gat,161,94,0,0	monster	Fabre	1184,2,0,0,0
-sword_1-1.gat,130,76,0,0	monster	Fabre	1184,2,0,0,0
-sword_1-1.gat,103,58,0,0	monster	Fabre	1184,2,0,0,0
-sword_1-1.gat,130,24,0,0	monster	Fabre	1184,3,0,0,0
-sword_1-1.gat,201,36,0,0	monster	Fabre	1184,2,0,0,0
-sword_1-1.gat,201,16,0,0	monster	Fabre	1184,2,0,0,0
-sword_1-1.gat,239,44,0,0	monster	Fabre	1184,2,0,0,0
-sword_1-1.gat,239,76,0,0	monster	Fabre	1184,2,0,0,0
-sword_1-1.gat,231,101,0,0	monster	Fabre	1184,2,0,0,0
-sword_1-1.gat,234,117,0,0	monster	Fabre	1184,2,0,0,0
-sword_1-1.gat,198,91,0,0	monster	Fabre	1184,2,0,0,0
-sword_1-1.gat,200,63,0,0	monster	Fabre	1184,2,0,0,0
 sword_1-1.gat,0,0,0,0	monster	Chonchon	1183,20,0,0,0
-
-sword_2-1.gat,35,78,0,0	monster	Fabre	1184,4,0,0,0
-sword_2-1.gat,50,108,0,0	monster	Fabre	1184,2,0,0,0
-sword_2-1.gat,61,28,0,0	monster	Fabre	1184,4,0,0,0
-sword_2-1.gat,61,92,0,0	monster	Fabre	1184,2,0,0,0
-sword_2-1.gat,110,112,0,0	monster	Fabre	1184,3,0,0,0
-sword_2-1.gat,161,94,0,0	monster	Fabre	1184,2,0,0,0
-sword_2-1.gat,130,76,0,0	monster	Fabre	1184,2,0,0,0
-sword_2-1.gat,103,58,0,0	monster	Fabre	1184,2,0,0,0
-sword_2-1.gat,130,24,0,0	monster	Fabre	1184,3,0,0,0
-sword_2-1.gat,201,36,0,0	monster	Fabre	1184,2,0,0,0
-sword_2-1.gat,201,16,0,0	monster	Fabre	1184,2,0,0,0
-sword_2-1.gat,239,44,0,0	monster	Fabre	1184,2,0,0,0
-sword_2-1.gat,239,76,0,0	monster	Fabre	1184,2,0,0,0
-sword_2-1.gat,231,101,0,0	monster	Fabre	1184,2,0,0,0
-sword_2-1.gat,234,117,0,0	monster	Fabre	1184,2,0,0,0
-sword_2-1.gat,198,91,0,0	monster	Fabre	1184,2,0,0,0
-sword_2-1.gat,200,63,0,0	monster	Fabre	1184,2,0,0,0
+sword_1-1.gat,35,79,0,0	monster	Fabre	1184,3,60000,30000,0
+sword_1-1.gat,50,108,0,0	monster	Fabre	1184,3,60000,30000,0
+sword_1-1.gat,61,28,0,0	monster	Fabre	1184,3,60000,30000,0
+sword_1-1.gat,61,92,0,0	monster	Fabre	1184,3,60000,30000,0
+sword_1-1.gat,110,112,0,0	monster	Fabre	1184,2,60000,30000,0
+sword_1-1.gat,161,94,0,0	monster	Fabre	1184,2,60000,30000,0
+sword_1-1.gat,130,76,0,0	monster	Fabre	1184,2,60000,30000,0
+sword_1-1.gat,103,58,0,0	monster	Fabre	1184,2,60000,30000,0
+sword_1-1.gat,130,24,0,0	monster	Fabre	1184,5,60000,30000,0
+sword_1-1.gat,201,36,0,0	monster	Fabre	1184,2,60000,30000,0
+sword_1-1.gat,201,16,0,0	monster	Fabre	1184,2,60000,30000,0
+sword_1-1.gat,239,44,0,0	monster	Fabre	1184,3,60000,30000,0
+sword_1-1.gat,239,76,0,0	monster	Fabre	1184,2,60000,30000,0
+sword_1-1.gat,231,101,0,0	monster	Fabre	1184,2,60000,30000,0
+sword_1-1.gat,234,117,0,0	monster	Fabre	1184,2,60000,30000,0
+sword_1-1.gat,198,91,0,0	monster	Fabre	1184,2,60000,30000,0
+sword_1-1.gat,200,63,0,0	monster	Fabre	1184,2,60000,30000,0
 sword_2-1.gat,0,0,0,0	monster	Chonchon	1183,20,0,0,0
+sword_2-1.gat,35,79,0,0	monster	Fabre	1184,3,60000,30000,0
+sword_2-1.gat,50,108,0,0	monster	Fabre	1184,3,60000,30000,0
+sword_2-1.gat,61,28,0,0	monster	Fabre	1184,3,60000,30000,0
+sword_2-1.gat,61,92,0,0	monster	Fabre	1184,3,60000,30000,0
+sword_2-1.gat,110,112,0,0	monster	Fabre	1184,2,60000,30000,0
+sword_2-1.gat,161,94,0,0	monster	Fabre	1184,2,60000,30000,0
+sword_2-1.gat,130,76,0,0	monster	Fabre	1184,2,60000,30000,0
+sword_2-1.gat,103,58,0,0	monster	Fabre	1184,2,60000,30000,0
+sword_2-1.gat,130,24,0,0	monster	Fabre	1184,5,60000,30000,0
+sword_2-1.gat,201,36,0,0	monster	Fabre	1184,2,60000,30000,0
+sword_2-1.gat,201,16,0,0	monster	Fabre	1184,2,60000,30000,0
+sword_2-1.gat,239,44,0,0	monster	Fabre	1184,3,60000,30000,0
+sword_2-1.gat,239,76,0,0	monster	Fabre	1184,2,60000,30000,0
+sword_2-1.gat,231,101,0,0	monster	Fabre	1184,2,60000,30000,0
+sword_2-1.gat,234,117,0,0	monster	Fabre	1184,2,60000,30000,0
+sword_2-1.gat,198,91,0,0	monster	Fabre	1184,2,60000,30000,0
+sword_2-1.gat,200,63,0,0	monster	Fabre	1184,2,60000,30000,0
 
-sword_3-1.gat,35,78,0,0	monster	Fabre	1184,4,0,0,0
-sword_3-1.gat,50,108,0,0	monster	Fabre	1184,2,0,0,0
-sword_3-1.gat,61,28,0,0	monster	Fabre	1184,4,0,0,0
-sword_3-1.gat,61,92,0,0	monster	Fabre	1184,2,0,0,0
-sword_3-1.gat,110,112,0,0	monster	Fabre	1184,3,0,0,0
-sword_3-1.gat,161,94,0,0	monster	Fabre	1184,2,0,0,0
-sword_3-1.gat,130,76,0,0	monster	Fabre	1184,2,0,0,0
-sword_3-1.gat,103,58,0,0	monster	Fabre	1184,2,0,0,0
-sword_3-1.gat,130,24,0,0	monster	Fabre	1184,3,0,0,0
-sword_3-1.gat,201,36,0,0	monster	Fabre	1184,2,0,0,0
-sword_3-1.gat,201,16,0,0	monster	Fabre	1184,2,0,0,0
-sword_3-1.gat,239,44,0,0	monster	Fabre	1184,2,0,0,0
-sword_3-1.gat,239,76,0,0	monster	Fabre	1184,2,0,0,0
-sword_3-1.gat,231,101,0,0	monster	Fabre	1184,2,0,0,0
-sword_3-1.gat,234,117,0,0	monster	Fabre	1184,2,0,0,0
-sword_3-1.gat,198,91,0,0	monster	Fabre	1184,2,0,0,0
-sword_3-1.gat,200,63,0,0	monster	Fabre	1184,2,0,0,0
 sword_3-1.gat,0,0,0,0	monster	Chonchon	1183,20,0,0,0
+sword_3-1.gat,35,79,0,0	monster	Fabre	1184,3,60000,30000,0
+sword_3-1.gat,50,108,0,0	monster	Fabre	1184,3,60000,30000,0
+sword_3-1.gat,61,28,0,0	monster	Fabre	1184,3,60000,30000,0
+sword_3-1.gat,61,92,0,0	monster	Fabre	1184,3,60000,30000,0
+sword_3-1.gat,110,112,0,0	monster	Fabre	1184,2,60000,30000,0
+sword_3-1.gat,161,94,0,0	monster	Fabre	1184,2,60000,30000,0
+sword_3-1.gat,130,76,0,0	monster	Fabre	1184,2,60000,30000,0
+sword_3-1.gat,103,58,0,0	monster	Fabre	1184,2,60000,30000,0
+sword_3-1.gat,130,24,0,0	monster	Fabre	1184,5,60000,30000,0
+sword_3-1.gat,201,36,0,0	monster	Fabre	1184,2,60000,30000,0
+sword_3-1.gat,201,16,0,0	monster	Fabre	1184,2,60000,30000,0
+sword_3-1.gat,239,44,0,0	monster	Fabre	1184,3,60000,30000,0
+sword_3-1.gat,239,76,0,0	monster	Fabre	1184,2,60000,30000,0
+sword_3-1.gat,231,101,0,0	monster	Fabre	1184,2,60000,30000,0
+sword_3-1.gat,234,117,0,0	monster	Fabre	1184,2,60000,30000,0
+sword_3-1.gat,198,91,0,0	monster	Fabre	1184,2,60000,30000,0
+sword_3-1.gat,200,63,0,0	monster	Fabre	1184,2,60000,30000,0
 
 
 //--------------------------------------------------------------
-// Thief Job Change Quest Monster Spawns
+// Thief Job Change Quest Monster Spawns - [Tsuyuki]
 //--------------------------------------------------------------
 
-job_thief1.gat,0,0,0,0	monster	Orange Mushroom	1182,180,0,0,0
+job_thief1.gat,0,0,0,0	monster	Mushroom	1182,180,0,0,0
 job_thief1.gat,0,0,0,0	monster	Fabre	1184,50,0,0,0
 job_thief1.gat,0,0,0,0	monster	Chonchon	1183,50,0,0,0
 job_thief1.gat,0,0,0,0	monster	Spore	1014,30,0,0,0
+
+
+//--------------------------------------------------------------
+// Monk Job Change Quest Monster Spawns - [Tsuyuki]
+//--------------------------------------------------------------
+
+job_monk.gat,0,0,0,0	monster	Mushroom	1182,70,0,0,0
+job_monk.gat,0,0,0,0	monster	Thief Bug	1051,20,0,0,0

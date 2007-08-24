@@ -1687,7 +1687,7 @@
 4402,Aliot_Card,Aliot Card,6,20,,10,,,,,,,4,,,,,{},{ if(BaseJob == 1 || BaseJob == 5 || BaseJob == 6 || BaseJob == 7 || BaseJob == 10 || BaseJob == 12 || BaseJob == 14 || BaseJob == 17 || BaseJob == 18) bonus bMaxHPrate,5; else bonus bMaxSPrate,5; if(BaseJob == 1 || BaseJob == 5 || BaseJob == 6 || BaseJob == 7 || BaseJob == 10 || BaseJob == 12 || BaseJob == 14 || BaseJob == 17 || BaseJob == 18) bonus bStr,2; else bonus bInt,2; }
 4403,Kiel__Card,Kiel Card,6,20,,10,,,,,,,769,,,,,{},{ bonus bSkillDelayRate,-30; }
 4404,Skogul_Card,Skogul Card,6,20,,10,,,,,,,16,,,,,{},{ bonus2 bAddRevEff,Eff_Bleed,3000; bonus2 bAddEff2,Eff_Bleed,3000; }
-4405,Frus_Card,Frus Card,6,20,,10,,,,,,,16,,,,,{},{ bonus bMagicDamageReturn,getequiprefinerycnt(4)*2; if(BaseJob==2 || BaseJob==9 || BaseJob==16) bonus bMdef,3; }
+4405,Thruth_Card,Thruth Card,6,20,,10,,,,,,,16,,,,,{},{ bonus bMagicDamageReturn,getequiprefinerycnt(4)*2; if(BaseJob==2 || BaseJob==9 || BaseJob==16) bonus bMdef,3; }
 4406,Skeggiold_Card,Skeggiold Card,6,20,,10,,,,,,,2,,,,,{},{ bonus2 bMagicAddRace,6,2; }
 4407,Randgris_Card,Randgris Card,6,20,,10,,,,,,,2,,,,,{},{ bonus bUnbreakableWeapon,0; bonus bAtkRate,10; bonus3 bAutoSpell,289,1,1000; }
 4408,Gloomundernight_Card,Gloom Under Night Card,6,20,,10,,,,,,,16,,,,,{},{ bonus2 bAddEle,6,40; bonus2 bAddEle,7,40; bonus2 bAddRace,8,40; bonus2 bAddRace,6,40; }

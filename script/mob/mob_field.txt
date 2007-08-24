@@ -7,18 +7,18 @@
 //              /_/  |_|\____|_|  \___/|_|  \__,_|              
 //                 http://aurora.deltaanime.net                 
 //--------------------------------------------------------------
-// Script Title: Field Monster Spawns	Author: A Lot of People
+// Script Title: Field Monster Spawns	Author: Tsuyuki
 //--------------------------------------------------------------
 // Revision History: v1.0
 //--------------------------------------------------------------
-//	1.0 First version, merged together [Tsuyuki]
+//	1.0 First version, converted from Aegis [Tsuyuki]
 //--------------------------------------------------------------
 // Additional Notes: * Official-certified / Aegis-certified *
 //--------------------------------------------------------------
 
 
 //--------------------------------------------------------------
-// Amatsu Field Monster Spawns
+// Amatsu Field Spawns - [Tsuyuki]
 //--------------------------------------------------------------
 
 ama_fild01.gat,0,0,0,0	monster	Karakasa	1400,50,0,0,0
@@ -39,11 +39,6 @@ ama_fild01.gat,169,314,0,0	monster	Hydra	1068,1,63000,31500,0
 ama_fild01.gat,171,313,0,0	monster	Hydra	1068,1,66000,33000,0
 ama_fild01.gat,173,313,0,0	monster	Hydra	1068,1,60000,30000,0
 ama_fild01.gat,175,313,0,0	monster	Hydra	1068,1,66000,33000,0
-ama_fild01.gat,175,312,0,0	monster	Hydra	1068,1,63000,31500,0
-ama_fild01.gat,173,312,0,0	monster	Hydra	1068,1,60000,30000,0
-ama_fild01.gat,171,312,0,0	monster	Hydra	1068,1,63000,31500,0
-ama_fild01.gat,174,311,0,0	monster	Hydra	1068,1,63000,31500,0
-ama_fild01.gat,172,311,0,0	monster	Hydra	1068,1,69000,36000,0
 ama_fild01.gat,173,310,0,0	monster	Hydra	1068,1,60000,30000,0
 ama_fild01.gat,0,0,0,0	monster	Kapha	1406,20,60000,30000,0
 ama_fild01.gat,174,306,20,20	monster	Kapha	1406,10,300000,150000,0
@@ -54,7 +49,7 @@ ama_fild01.gat,0,0,0,0	monster	Bigfoot	1060,15,60000,30000,0
 
 
 //--------------------------------------------------------------
-// Ayothaya Field Monster Spawns
+// Ayothaya Field Spawns - [Tsuyuki]
 //--------------------------------------------------------------
 
 ayo_fild01.gat,0,0,0,0	monster	Coco	1104,30,0,0,0
@@ -70,7 +65,7 @@ ayo_fild02.gat,0,0,0,0	monster	Yellow Plant	1081,10,0,0,0
 
 
 //--------------------------------------------------------------
-// Comodo Field Monster Spawns
+// Comodo Field Spawns - [Tsuyuki]
 //--------------------------------------------------------------
 
 cmd_fild01.gat,0,0,0,0	monster	Alligator	1271,60,0,0,0
@@ -99,12 +94,11 @@ cmd_fild02.gat,200,130,150,40	monster	Seal	1317,18,0,0,0
 cmd_fild02.gat,93,82,40,80	monster	Seal	1317,2,180000,0,0
 cmd_fild02.gat,0,0,0,0	monster	Galapago	1391,20,0,0,0
 
-cmd_fild03.gat,0,0,0,0	monster	Mutant Dragonoid	1262,1,3600000,1800000,1
+cmd_fild03.gat,0,0,0,0	monster	Mutant Dragonoid	1262,1,0,0,1
 cmd_fild03.gat,0,0,0,0	monster	Pest	1256,30,0,0,0
 cmd_fild03.gat,0,0,0,0	monster	Poporing	1031,10,0,0,0
-cmd_fild03.gat,0,0,0,0	monster	Anolian	1206,60,0,0,0
+cmd_fild03.gat,0,0,0,0	monster	Anolian	1206,90,0,0,0
 cmd_fild03.gat,0,0,0,0	monster	Toad	1089,1,3600000,1800000,1
-cmd_fild03.gat,0,0,0,0	monster	Rotar Zairo	1392,30,0,0,0
 cmd_fild03.gat,356,232,3,3	monster	Shining Plant	1083,1,1800000,900000,1
 cmd_fild03.gat,262,289,3,3	monster	Shining Plant	1083,1,1800000,900000,1
 cmd_fild03.gat,145,191,3,3	monster	Shining Plant	1083,1,1800000,900000,1
@@ -116,25 +110,33 @@ cmd_fild04.gat,0,0,0,0	monster	Raggler	1254,20,0,0,0
 cmd_fild04.gat,0,0,0,0	monster	Shellfish	1074,20,0,0,0
 cmd_fild04.gat,221,120,120,40	monster	Sea Otter	1323,20,0,0,0
 
-cmd_fild05.gat,0,0,0,0	monster	Frilldora	1119,15,0,0,0
-cmd_fild05.gat,0,0,0,0	monster	Anolian	1206,20,0,0,0
-cmd_fild05.gat,0,0,0,0	monster	Stem Worm	1215,30,0,0,0
+cmd_fild05.gat,0,0,0,0	monster	Frilldora	1119,45,0,0,0
+cmd_fild05.gat,0,0,0,0	monster	Alligator	1271,20,0,0,0
+cmd_fild05.gat,0,0,0,0	monster	Stem Worm	1215,5,0,0,0
 cmd_fild05.gat,0,0,0,0	monster	Poporing	1031,10,0,0,0
-cmd_fild05.gat,0,0,0,0	monster	Pest	1256,20,0,0,0
+cmd_fild05.gat,0,0,0,0	monster	Pest	1256,5,0,0,0
 cmd_fild05.gat,63,158,10,10	monster	Shining Plant	1083,1,1800000,900000,1
 cmd_fild05.gat,318,277,10,10	monster	Yellow Plant	1081,3,1800000,900000,1
 cmd_fild05.gat,282,49,20,20	monster	Yellow Plant	1081,3,1800000,900000,1
 cmd_fild05.gat,0,0,0,0	monster	Green Plant	1080,5,1800000,900000,1
 
-cmd_fild06.gat,357,299,80,70	monster	Kobold Archer	1282,5,0,0,0
-cmd_fild06.gat,318,146,120,80	monster	Kobold Archer	1282,7,0,0,0
+cmd_fild06.gat,0,0,0,0	monster	Kobold Archer	1282,5,0,0,0
+cmd_fild06.gat,0,0,0,0	monster	Kobold Archer	1282,5,300000,0,0
+cmd_fild06.gat,357,299,80,70	monster	Kobold Archer	1282,2,0,0,0
+cmd_fild06.gat,357,299,80,70	monster	Kobold Archer	1282,2,120000,0,0
+cmd_fild06.gat,318,146,120,80	monster	Kobold Archer	1282,4,0,0,0
+cmd_fild06.gat,318,146,120,80	monster	Kobold Archer	1282,4,120000,0,0
 cmd_fild06.gat,244,113,0,0	monster	Kobold Archer	1282,1,180000,0,0
 cmd_fild06.gat,290,164,0,0	monster	Kobold Archer	1282,1,190000,0,0
 cmd_fild06.gat,284,197,0,0	monster	Kobold Archer	1282,1,180000,0,0
 cmd_fild06.gat,286,289,0,0	monster	Kobold Archer	1282,1,180000,0,0
 cmd_fild06.gat,314,267,0,0	monster	Kobold Archer	1282,1,180000,0,0
-cmd_fild06.gat,355,294,80,70	monster	Goblin Archer	1258,7,0,0,0
-cmd_fild06.gat,307,97,70,200	monster	Goblin Archer	1258,7,0,0,0
+cmd_fild06.gat,0,0,0,0	monster	Goblin Archer	1258,10,0,0,0
+cmd_fild06.gat,0,0,0,0	monster	Goblin Archer	1258,10,30000,0,0
+cmd_fild06.gat,355,294,80,70	monster	Goblin Archer	1258,3,0,0,0
+cmd_fild06.gat,355,294,80,70	monster	Goblin Archer	1258,3,120000,0,0
+cmd_fild06.gat,307,97,70,200	monster	Goblin Archer	1258,4,0,0,0
+cmd_fild06.gat,307,97,70,200	monster	Goblin Archer	1258,4,120000,0,0
 cmd_fild06.gat,100,265,10,40	monster	Goblin Archer	1258,3,130000,0,0
 cmd_fild06.gat,244,110,0,0	monster	Goblin Archer	1258,1,180000,0,0
 cmd_fild06.gat,292,169,0,0	monster	Goblin Archer	1258,1,180000,0,0
@@ -146,11 +148,6 @@ cmd_fild06.gat,284,186,0,0	monster	Goblin Archer	1258,1,180000,0,0
 cmd_fild06.gat,354,342,0,0	monster	Goblin Archer	1258,1,180000,0,0
 cmd_fild06.gat,365,342,0,0	monster	Goblin Archer	1258,1,180000,0,0
 cmd_fild06.gat,340,334,0,0	monster	Goblin Archer	1258,1,180000,0,0
-cmd_fild06.gat,305,95,70,180	monster	Stem Worm	1215,30,0,0,0
-cmd_fild06.gat,102,268,10,40	monster	Stem Worm	1215,3,0,0,0
-cmd_fild06.gat,359,156,30,50	monster	Stem Worm	1215,1,0,0,0
-cmd_fild06.gat,360,155,30,50	monster	Stem Worm	1215,1,0,0,0
-cmd_fild06.gat,357,298,80,70	monster	Stem Worm	1215,20,0,0,0
 cmd_fild06.gat,0,0,0,0	monster	Drops	1113,20,0,0,0
 cmd_fild06.gat,0,0,0,0	monster	Harpy	1376,1,1500000,1000000,0
 cmd_fild06.gat,293,235,5,5	monster	Yellow Plant	1081,2,1800000,900000,1
@@ -182,18 +179,19 @@ cmd_fild08.gat,175,367,0,0	monster	Kobold Archer	1282,1,190000,0,0
 cmd_fild08.gat,53,248,0,0	monster	Kobold Archer	1282,1,190000,0,0
 cmd_fild08.gat,52,238,0,0	monster	Kobold Archer	1282,1,190000,0,0
 cmd_fild08.gat,272,175,40,2	monster	Kobold Archer	1282,2,60000,0,0
-cmd_fild08.gat,190,115,100,80	monster	Gargoyle	1253,10,0,0,0
-cmd_fild08.gat,130,192,110,150	monster	Gargoyle	1253,7,0,0,0
-cmd_fild08.gat,72,131,40,100	monster	Gargoyle	1253,8,0,0,0
-cmd_fild08.gat,319,177,0,0	monster	Gargoyle	1253,1,180000,0,0
-cmd_fild08.gat,319,172,0,0	monster	Gargoyle	1253,1,180000,0,0
-cmd_fild08.gat,139,71,0,0	monster	Gargoyle	1253,1,180000,0,0
-cmd_fild08.gat,136,64,0,0	monster	Gargoyle	1253,1,180000,0,0
-cmd_fild08.gat,67,80,0,0	monster	Gargoyle	1253,1,180000,0,0
-cmd_fild08.gat,132,149,0,0	monster	Gargoyle	1253,1,180000,0,0
-cmd_fild08.gat,97,144,0,0	monster	Gargoyle	1253,1,180000,0,0
-cmd_fild08.gat,79,140,0,0	monster	Gargoyle	1253,1,180000,0,0
-cmd_fild08.gat,28,102,0,0	monster	Gargoyle	1253,1,180000,0,0
+
+cmd_fild08.gat,190,115,100,80	monster	Kobold Archer	1282,10,0,0,0
+cmd_fild08.gat,130,192,110,150	monster	Kobold Archer	1282,7,0,0,0
+cmd_fild08.gat,72,131,40,100	monster	Kobold Archer	1282,8,0,0,0
+cmd_fild08.gat,319,177,0,0	monster	Kobold Archer	1282,1,180000,0,0
+cmd_fild08.gat,319,172,0,0	monster	Kobold Archer	1282,1,180000,0,0
+cmd_fild08.gat,139,71,0,0	monster	Kobold Archer	1282,1,180000,0,0
+cmd_fild08.gat,136,64,0,0	monster	Kobold Archer	1282,1,180000,0,0
+cmd_fild08.gat,67,80,0,0	monster	Kobold Archer	1282,1,180000,0,0
+cmd_fild08.gat,132,149,0,0	monster	Kobold Archer	1282,1,180000,0,0
+cmd_fild08.gat,97,144,0,0	monster	Kobold Archer	1282,1,180000,0,0
+cmd_fild08.gat,79,140,0,0	monster	Kobold Archer	1282,1,180000,0,0
+cmd_fild08.gat,28,102,0,0	monster	Kobold Archer	1282,1,180000,0,0
 cmd_fild08.gat,80,348,60,40	monster	Goblin Archer	1258,5,0,0,0
 cmd_fild08.gat,130,192,110,150	monster	Goblin Archer	1258,5,0,0,0
 cmd_fild08.gat,194,291,25,40	monster	Goblin Archer	1258,5,0,0,0
@@ -227,22 +225,29 @@ cmd_fild08.gat,130,201,10,10	monster	Yellow Plant	1081,4,1800000,900000,1
 
 cmd_fild09.gat,0,0,0,0	monster	Steel Chonchon	1042,20,0,0,0
 cmd_fild09.gat,0,0,0,0	monster	Drops	1113,20,0,0,0
-cmd_fild09.gat,0,0,0,0	monster	Anacondaq	1030,20,0,0,0
-cmd_fild09.gat,0,0,0,0	monster	Condor	1009,60,0,0,0
+cmd_fild09.gat,0,0,0,0	monster	Anacondaq	1030,60,0,0,0
+cmd_fild09.gat,0,0,0,0	monster	Condor	1009,20,0,0,0
 cmd_fild09.gat,142,325,40,50	monster	Hode	1127,3,150000,0,0
 cmd_fild09.gat,140,323,40,50	monster	Gargoyle	1253,2,150000,0,0
 
 
 //--------------------------------------------------------------
-// Einbroch Field Monster Spawns
+// Einbroch Field Spawns - [Tsuyuki]
 //--------------------------------------------------------------
 
-ein_fild01.gat,0,0,0,0	monster	Demon Pungus	1378,50,0,0,0
-ein_fild01.gat,0,0,0,0	monster	Punk	1199,50,0,0,0
+ein_fild01.gat,115,190,80,150	monster	Demon Pungus	1378,30,0,0,0
+ein_fild01.gat,264,318,70,60	monster	Demon Pungus	1378,20,0,0,0
+ein_fild01.gat,232,100,25,60	monster	Demon Pungus	1378,5,300000,60000,0
+ein_fild01.gat,115,190,80,150	monster	Punk	1199,25,0,0,0
+ein_fild01.gat,264,318,70,60	monster	Punk	1199,20,0,0,0
+ein_fild01.gat,232,100,25,60	monster	Punk	1199,5,300000,60000,0
 
-ein_fild02.gat,0,0,0,0	monster	Driller	1380,40,0,0,0
-ein_fild02.gat,0,0,0,0	monster	Demon Pungus	1378,25,0,0,0
-ein_fild02.gat,0,0,0,0	monster	Ungoliant	1618,1,86400000,86000000,0
+ein_fild02.gat,105,250,70,80	monster	Driller	1380,10,0,0,0
+ein_fild02.gat,259,269,90,70	monster	Driller	1380,15,0,0,0
+ein_fild02.gat,287,117,55,70	monster	Driller	1380,10,0,0,0
+ein_fild02.gat,108,88,60,60	monster	Driller	1380,10,0,0,0
+ein_fild02.gat,0,0,0,0	monster	Demon Pungus	1378,30,0,0,0
+ein_fild02.gat,0,0,0,0	monster	Ungoliant	1618,1,75600000,75000000,0
 
 ein_fild03.gat,0,0,0,0	monster	Metaling	1613,30,0,0,0
 ein_fild03.gat,0,0,0,0	monster	Geographer	1368,5,0,0,0
@@ -254,12 +259,12 @@ ein_fild03.gat,155,40,35,20	monster	Horn	1128,5,60000,30000,1
 ein_fild03.gat,0,0,0,0	monster	Yellow Plant	1081,15,60000,30000,0
 ein_fild03.gat,0,0,0,0	monster	Green Plant	1080,15,60000,30000,0
 
-ein_fild04.gat,0,0,0,0	monster	Geographer	1368,15,0,0,0
-ein_fild04.gat,0,0,0,0	monster	Holden	1628,5,0,0,0
-ein_fild04.gat,200,295,125,65	monster	Geographer	1368,45,0,0,0
-ein_fild04.gat,125,135,40,40	monster	Geographer	1368,5,0,0,0
-ein_fild04.gat,260,70,20,30	monster	Geographer	1368,5,0,0,0
 ein_fild04.gat,0,0,0,0	monster	Metaling	1613,50,0,0,0
+ein_fild04.gat,0,0,0,0	monster	Geographer	1368,30,60000,30000,0
+ein_fild04.gat,0,0,0,0	monster	Holden	1628,5,0,0,0
+ein_fild04.gat,200,295,125,65	monster	Geographer	1368,40,60000,30000,0
+ein_fild04.gat,125,135,40,40	monster	Geographer	1368,5,60000,30000,0
+ein_fild04.gat,260,70,20,30	monster	Geographer	1368,5,60000,30000,0
 ein_fild04.gat,285,240,35,90	monster	Giearth	1121,10,3600000,3000000,0
 ein_fild04.gat,106,284,60,60	monster	Holden	1628,15,0,0,0
 ein_fild04.gat,106,284,60,60	monster	Mineral	1614,5,3600000,3000000,0
@@ -267,19 +272,23 @@ ein_fild04.gat,0,0,0,0	monster	Red Plant	1078,10,60000,30000,0
 ein_fild04.gat,0,0,0,0	monster	Yellow Plant	1081,10,60000,30000,0
 ein_fild04.gat,0,0,0,0	monster	Green Plant	1080,10,60000,30000,0
 
-ein_fild05.gat,0,0,0,0	monster	Mineral	1614,35,0,0,0
-ein_fild05.gat,0,0,0,0	monster	Obsidian	1615,20,0,0,0
+ein_fild05.gat,205,300,50,50	monster	Mineral	1614,10,600000,360000,0
+ein_fild05.gat,299,189,55,55	monster	Mineral	1614,15,600000,360000,0
+ein_fild05.gat,145,195,30,50	monster	Mineral	1614,10,600000,360000,0
+ein_fild05.gat,205,300,50,50	monster	Obsidian	1615,5,420000,360000,0
+ein_fild05.gat,299,189,55,55	monster	Obsidian	1615,7,420000,360000,0
+ein_fild05.gat,145,195,30,50	monster	Obsidian	1615,5,420000,360000,0
 ein_fild05.gat,0,0,0,0	monster	Anopheles	1627,30,0,0,0
 ein_fild05.gat,0,0,0,0	monster	Demon Pungus	1378,20,0,0,0
 ein_fild05.gat,0,0,0,0	monster	Geographer	1368,10,0,0,0
 
 ein_fild06.gat,0,0,0,0	monster	Goat	1372,55,0,0,0
-ein_fild06.gat,0,0,0,0	monster	Pupa	1008,15,0,0,0
+ein_fild06.gat,0,0,0,0	monster	Pupa	1008,10,0,0,0
+ein_fild06.gat,0,0,0,0	monster	Harpy	1376,5,1800000,1200000,0
 ein_fild06.gat,0,0,0,0	monster	Giearth	1121,2,3600000,3000000,0
 ein_fild06.gat,0,0,0,0	monster	Red Plant	1078,10,120000,60000,0
 ein_fild06.gat,0,0,0,0	monster	Yellow Plant	1081,10,120000,60000,0
-ein_fild06.gat,0,0,0,0	monster	Black Mushroom	1084,10,120000,60000,0
-ein_fild06.gat,0,0,0,0	monster	Harpy	1376,5,0,0,0
+ein_fild06.gat,0,0,0,0	monster	Black Mushroom	1084,5,120000,60000,0
 
 ein_fild07.gat,0,0,0,0	monster	Poring	1002,40,0,0,0
 ein_fild07.gat,0,0,0,0	monster	Poporing	1031,20,0,0,0
@@ -311,11 +320,11 @@ ein_fild09.gat,0,0,0,0	monster	Red Mushroom	1085,10,120000,60000,0
 ein_fild09.gat,260,85,50,20	monster	Flora	1118,5,300000,120000,0
 
 ein_fild10.gat,0,0,0,0	monster	Geographer	1368,5,0,0,0
-ein_fild10.gat,0,0,0,0	monster	Porcellio	1619,10,0,0,1
-ein_fild10.gat,152,314,130,30	monster	Porcellio	1619,20,0,0,1
+ein_fild10.gat,0,0,0,0	monster	Porcellio	1619,20,0,0,1
+ein_fild10.gat,152,314,130,30	monster	Porcellio	1619,10,0,0,1
 ein_fild10.gat,0,0,0,0	monster	Red Plant	1078,20,120000,60000,0
 ein_fild10.gat,0,0,0,0	monster	Yellow Plant	1081,20,120000,60000,0
-ein_fild10.gat,0,0,0,0	monster	Blue Plant	1079,20,120000,60000,0
+ein_fild10.gat,0,0,0,0	monster	Blue Plant	1079,20,600000,300000,0
 ein_fild10.gat,225,95,30,45	monster	Yoyo	1057,6,30000,10000,0
 ein_fild10.gat,320,130,40,40	monster	Yoyo	1057,4,30000,10000,0
 ein_fild10.gat,225,95,30,45	monster	Flora	1118,10,300000,120000,0
@@ -323,7 +332,7 @@ ein_fild10.gat,320,130,40,40	monster	Flora	1118,10,300000,120000,0
 
 
 //--------------------------------------------------------------
-// Geffen Field Monster Spawns
+// Geffen Field Spawns - [Tsuyuki]
 //--------------------------------------------------------------
 
 gef_fild00.gat,0,0,0,0	monster	Poring	1002,50,0,0,0
@@ -341,10 +350,11 @@ gef_fild01.gat,0,0,0,0	monster	Toad	1089,1,3600000,1800000,1
 gef_fild01.gat,215,225,10,10	monster	Green Plant	1080,5,360000,180000,1
 
 gef_fild02.gat,0,0,0,0	monster	Yoyo	1057,10,0,0,0
-gef_fild02.gat,0,0,0,0	monster	Orc Warrior	1023,40,0,0,0
-gef_fild02.gat,0,0,0,0	monster	Coco	1104,20,0,0,0
-gef_fild02.gat,0,0,0,0	monster	Smokie	1056,20,0,0,0
+gef_fild02.gat,0,0,0,0	monster	Orc Warrior	1023,60,0,0,0
+gef_fild02.gat,0,0,0,0	monster	Coco	1104,10,0,0,0
+gef_fild02.gat,0,0,0,0	monster	Smokie	1056,10,0,0,0
 gef_fild02.gat,0,0,0,0	monster	Choco	1214,1,0,0,0
+gef_fild02.gat,0,0,0,0	monster	Orc Hero	1087,1,86400000,43200000,1
 gef_fild02.gat,227,316,6,6	monster	Green Plant	1080,8,360000,180000,1
 gef_fild02.gat,87,48,6,6	monster	Red Mushroom	1085,5,360000,180000,1
 gef_fild02.gat,215,209,2,1	monster	Blue Plant	1079,2,360000,180000,1
@@ -352,9 +362,9 @@ gef_fild02.gat,207,214,1,1	monster	Blue Plant	1079,1,360000,180000,1
 gef_fild02.gat,220,214,1,1	monster	Blue Plant	1079,1,360000,180000,1
 gef_fild02.gat,164,194,1,1	monster	Shining Plant	1083,1,1800000,900000,1
 
-gef_fild03.gat,0,0,0,0	monster	Orc Warrior	1023,30,0,0,0
-gef_fild03.gat,0,0,0,0	monster	High Orc	1213,10,0,0,0
-gef_fild03.gat,0,0,0,0	monster	Savage	1166,30,0,0,0
+gef_fild03.gat,0,0,0,0	monster	Orc Warrior	1023,60,0,0,0
+gef_fild03.gat,0,0,0,0	monster	High Orc	1213,1,0,0,0
+gef_fild03.gat,0,0,0,0	monster	Savage	1166,40,0,0,0
 gef_fild03.gat,0,0,0,0	monster	Poporing	1031,20,0,0,0
 gef_fild03.gat,45,350,3,3	monster	Green Plant	1080,1,180000,90000,1
 gef_fild03.gat,66,300,3,3	monster	Green Plant	1080,1,180000,90000,1
@@ -418,6 +428,7 @@ gef_fild07.gat,0,0,0,0	monster	Poring	1002,20,0,0,0
 gef_fild07.gat,0,0,0,0	monster	Chonchon	1011,30,0,0,0
 gef_fild07.gat,0,0,0,0	monster	Pupa	1008,10,0,0,0
 gef_fild07.gat,0,0,0,0	monster	Fabre	1007,60,0,0,0
+
 gef_fild07.gat,122,221,0,0	monster	Green Plant	1080,3,360000,180000,1
 gef_fild07.gat,185,247,0,0	monster	Shining Plant	1083,1,1800000,900000,1
 gef_fild07.gat,269,289,0,0	monster	Blue Plant	1079,1,900000,450000,1
@@ -457,7 +468,7 @@ gef_fild10.gat,0,0,0,0	monster	Orc Lord	1190,1,7200000,3600000,0
 gef_fild10.gat,0,0,0,0	monster	Orc Warrior	1023,20,0,0,0
 gef_fild10.gat,0,0,0,0	monster	Orc Lady	1273,70,0,0,0
 gef_fild10.gat,0,0,0,0	monster	Poporing	1031,15,0,0,0
-gef_fild10.gat,0,0,0,0	monster	Orc Baby	1686,5,120000,0,0
+gef_fild10.gat,0,0,0,0	monster	Orc Baby	1686,5,0,0,0
 gef_fild10.gat,46,350,5,5	monster	Blue Plant	1079,3,900000,450000,1
 gef_fild10.gat,287,61,5,5	monster	Blue Plant	1079,3,900000,450000,1
 gef_fild10.gat,300,253,5,5	monster	Green Plant	1080,3,360000,180000,1
@@ -490,15 +501,15 @@ gef_fild13.gat,0,0,0,0	monster	Poporing	1031,20,0,0,0
 gef_fild13.gat,0,0,0,0	monster	Creamy	1018,40,0,0,0
 gef_fild13.gat,0,0,0,0	monster	Ambernite	1094,30,0,0,0
 
-gef_fild14.gat,0,0,0,0	monster	Orc Lady	1273,40,0,0,0
+gef_fild14.gat,0,0,0,0	monster	Orc Lady	1273,20,0,0,0
 gef_fild14.gat,0,0,0,0	monster	Orc Hero	1087,1,3600000,1800000,1
-gef_fild14.gat,0,0,0,0	monster	Orc Warrior	1023,20,0,0,0
+gef_fild14.gat,0,0,0,0	monster	Orc Warrior	1023,10,0,0,0
 gef_fild14.gat,0,0,0,0	monster	Orc Archer	1189,30,0,0,0
-gef_fild14.gat,0,0,0,0	monster	High Orc	1213,40,0,0,0
+gef_fild14.gat,0,0,0,0	monster	High Orc	1213,70,0,0,0
 
 
 //--------------------------------------------------------------
-// Hugel Field Monster Spawns
+// Hugel Field Spawns - [Tsuyuki]
 //--------------------------------------------------------------
 
 hu_fild01.gat,0,0,0,0	monster	Breeze	1692,5,900000,300000,0
@@ -510,76 +521,84 @@ hu_fild01.gat,0,0,0,0	monster	Plasma	1693,5,900000,300000,0
 hu_fild01.gat,0,0,0,0	monster	Geographer	1368,30,300000,0,0
 hu_fild01.gat,0,0,0,0	monster	Demon Pungus	1378,30,1200000,600000,0
 
-hu_fild02.gat,0,0,0,0	monster	Rafflesia	1162,35,0,0,0
 hu_fild02.gat,0,0,0,0	monster	Anopheles	1627,30,0,0,0
-hu_fild02.gat,0,0,0,0	monster	Metaling	1613,21,0,0,0
-hu_fild02.gat,0,0,0,0	monster	Savage Babe	1167,21,0,0,0
-hu_fild02.gat,0,0,0,0	monster	Grove	1687,10,0,0,0
+hu_fild02.gat,0,0,0,0	monster	Novus	1715,20,0,0,0
+hu_fild02.gat,0,0,0,0	monster	Novus	1718,40,0,0,0
 hu_fild02.gat,0,0,0,0	monster	Breeze	1692,10,0,0,0
-hu_fild02.gat,0,0,0,0	monster	Geographer	1368,10,0,0,0
-hu_fild02.gat,0,0,0,0	monster	Demon Fungus	1378,5,0,0,0
-hu_fild02.gat,0,0,0,0	monster	Novus	1715,2,0,0,0
-hu_fild02.gat,0,0,0,0	monster	Novus	1718,2,0,0,0
+hu_fild02.gat,0,0,0,0	monster	Geographer	1368,10,600000,120000,0
+hu_fild02.gat,0,0,0,0	monster	Grove	1687,20,600000,120000,0
+hu_fild02.gat,85,85,53,47	monster	Demon Pungus	1378,3,300000,120000,0
+hu_fild02.gat,85,85,37,47	monster	Novus	1715,1,300000,120000,0
+hu_fild02.gat,85,85,37,47	monster	Novus	1718,1,300000,120000,0
 
-hu_fild03.gat,0,0,0,0	monster	Metaling	1613,80,0,0,0
+hu_fild03.gat,0,0,0,0	monster	Grove	1687,70,0,0,0
+hu_fild03.gat,0,0,0,0	monster	Novus	1715,30,0,0,0
 hu_fild03.gat,0,0,0,0	monster	Poporing	1031,20,0,0,0
-hu_fild03.gat,0,0,0,0	monster	Grove	1687,10,0,0,0
 hu_fild03.gat,0,0,0,0	monster	Thief Bug	1051,10,0,0,0
-hu_fild03.gat,0,0,0,0	monster	Black Mushroom	1084,10,180000,90000,1
-hu_fild03.gat,0,0,0,0	monster	Red Mushroom	1085,10,180000,90000,1
+hu_fild03.gat,40,157,3,3	monster	Red Mushroom	1085,2,300000,0,0
+hu_fild03.gat,219,211,7,5	monster	Red Mushroom	1085,3,300000,0,0
+hu_fild03.gat,285,230,5,4	monster	Red Mushroom	1085,2,300000,0,0
+hu_fild03.gat,247,118,9,4	monster	Red Mushroom	1085,3,300000,0,0
+hu_fild03.gat,96,156,5,5	monster	Black Mushroom	1084,3,300000,0,0
+hu_fild03.gat,170,220,5,4	monster	Black Mushroom	1084,3,300000,0,0
+hu_fild03.gat,212,328,5,4	monster	Black Mushroom	1084,2,300000,0,0
+hu_fild03.gat,231,151,3,3	monster	Black Mushroom	1084,2,300000,0,0
 
-hu_fild04.gat,0,0,0,0	monster	Breeze	1692,10,0,0,0
-hu_fild04.gat,0,0,0,0	monster	Deleter	1384,40,0,0,0
-hu_fild04.gat,0,0,0,0	monster	Deleter	1385,30,0,0,0
-hu_fild04.gat,0,0,0,0	monster	Novus	1715,10,0,0,0
+hu_fild04.gat,0,0,0,0	monster	Breeze	1692,20,0,0,0
+hu_fild04.gat,0,0,0,0	monster	Sky Deleter	1384,10,420000,24000,0
+hu_fild04.gat,0,0,0,0	monster	Sky Deleter	1385,10,420000,240000,0
+hu_fild04.gat,0,0,0,0	monster	Petite	1155,10,0,0,0
+hu_fild04.gat,0,0,0,0	monster	Petite	1156,60,0,0,0
+hu_fild04.gat,0,0,0,0	monster	Novus	1715,20,0,0,0
 hu_fild04.gat,0,0,0,0	monster	Novus	1718,10,0,0,0
-hu_fild04.gat,0,0,0,0	monster	Anopheles	1627,50,0,0,0
+hu_fild04.gat,0,0,0,0	monster	Anopheles	1627,30,0,0,0
 hu_fild04.gat,0,0,0,0	monster	Grove	1687,20,0,0,0
 hu_fild04.gat,60,149,35,122	monster	Sleeper	1386,7,600000,300000,0
 hu_fild04.gat,0,0,0,0	monster	Green Plant	1080,10,0,0,0
-hu_fild04.gat,0,0,0,0	monster	Red Plant	1078,10,0,0,0
 hu_fild04.gat,0,0,0,0	monster	Yellow Plant	1081,10,0,0,0
 hu_fild04.gat,206,210,30,18	monster	Blue Plant	1079,4,120000,600000,0
 hu_fild04.gat,206,120,10,10	monster	Blue Plant	1079,2,120000,600000,0
 
+hu_fild05.gat,185,208,15,24	monster	Anopheles	1627,3,42000,30000,0
 hu_fild05.gat,112,272,62,82	monster	Grove	1687,15,0,0,0
-hu_fild05.gat,112,272,62,82	monster	Novus	1715,3,0,0,0
-hu_fild05.gat,112,272,62,82	monster	Novus	1718,3,0,0,0
+hu_fild05.gat,112,272,62,82	monster	Novus	1715,2,0,0,0
+hu_fild05.gat,112,272,62,82	monster	Novus	1718,2,0,0,0
 hu_fild05.gat,112,272,62,82	monster	Anopheles	1627,10,0,0,0
-hu_fild05.gat,112,272,62,82	monster	Mutant Dragonoid	1262,1,24000000,1800000,0
+hu_fild05.gat,112,272,62,82	monster	Muntant Dragonoid	1262,1,24000000,1800000,0
 hu_fild05.gat,276,302,93,60	monster	Grove	1687,15,0,0,0
-hu_fild05.gat,276,302,93,60	monster	Novus	1715,3,0,0,0
-hu_fild05.gat,276,302,93,60	monster	Novus	1718,3,0,0,0
+hu_fild05.gat,276,302,93,60	monster	Novus	1715,2,0,0,0
+hu_fild05.gat,276,302,93,60	monster	Novus	1718,1,0,0,0
 hu_fild05.gat,276,302,93,60	monster	Anopheles	1627,10,0,0,0
-hu_fild05.gat,276,302,93,60	monster	Mutant Dragonoid	1262,1,24000000,1800000,0
+hu_fild05.gat,276,302,93,60	monster	Muntant Dragonoid	1262,1,24000000,1800000,0
 hu_fild05.gat,286,144,82,90	monster	Grove	1687,15,0,0,0
-hu_fild05.gat,286,144,82,90	monster	Novus	1715,3,0,0,0
-hu_fild05.gat,286,144,82,90	monster	Novus	1718,3,0,0,0
+hu_fild05.gat,286,144,82,90	monster	Novus	1715,2,0,0,0
+hu_fild05.gat,286,144,82,90	monster	Novus	1718,2,0,0,0
 hu_fild05.gat,286,144,82,90	monster	Anopheles	1627,10,0,0,0
-hu_fild05.gat,286,144,82,90	monster	Mutant Dragonoid	1262,1,24000000,1800000,0
-hu_fild05.gat,118,106,80,70	monster	Grove	1687,15,0,0,0 
-hu_fild05.gat,118,106,80,70	monster	Novus	1715,3,0,0,0
-hu_fild05.gat,118,106,80,70	monster	Novus	1718,3,0,0,0
+hu_fild05.gat,286,144,82,90	monster	Muntant Dragonoid	1262,1,24000000,1800000,0
+hu_fild05.gat,286,144,82,90	monster	Grove	1687,15,0,0,0
+hu_fild05.gat,118,106,80,70	monster	Novus	1715,2,0,0,0
+hu_fild05.gat,118,106,80,70	monster	Novus	1718,1,0,0,0
 hu_fild05.gat,118,106,80,70	monster	Anopheles	1627,10,0,0,0
-hu_fild05.gat,118,106,80,70	monster	Mutant Dragonoid	1262,1,24000000,1800000,0
+hu_fild05.gat,118,106,80,70	monster	Muntant Dragonoid	1262,1,24000000,1800000,0
 hu_fild05.gat,0,0,0,0	monster	Anopheles	1627,10,0,0,0
-hu_fild05.gat,0,0,0,0	monster	Dragon Egg	1721,2,3600000,1800000,0
-hu_fild05.gat,196,196,5,5	monster	Dragon Egg	1721,1,3600000,1800000,0
-hu_fild05.gat,340,50,10,10	monster	Dragon Egg	1721,1,3600000,1800000,0
-hu_fild05.gat,280,350,5,5	monster	Dragon Egg	1721,1,3600000,1800000,0
+hu_fild05.gat,0,0,0,0	monster	Dragon Egg	1721,1,7200000,1800000,0
+hu_fild05.gat,196,196,5,5	monster	Dragon Egg	1721,1,7200000,1800000,0
+hu_fild05.gat,340,50,10,10	monster	Dragon Egg	1721,1,7200000,1800000,0
+hu_fild05.gat,320,325,5,5	monster	Dragon Egg	1721,1,7200000,1800000,0
 
 hu_fild06.gat,0,0,0,0	monster	Holden	1628,50,0,0,0
 hu_fild06.gat,0,0,0,0	monster	Caramel	1103,20,0,0,0
 hu_fild06.gat,0,0,0,0	monster	Poring	1002,10,0,0,0
 hu_fild06.gat,0,0,0,0	monster	Poporing	1031,10,0,0,0
 hu_fild06.gat,0,0,0,0	monster	Metaling	1613,10,0,0,0
-hu_fild06.gat,0,0,0,0	monster	Female Thief Bug	1053,3,0,0,0
-hu_fild06.gat,0,0,0,0	monster	Green Plant	1080,10,180000,90000,1
-hu_fild06.gat,0,0,0,0	monster	Yellow Plant	1081,10,180000,90000,1
+hu_fild06.gat,234,251,14,120	monster	Green Plant	1080,10,600000,0,0
+hu_fild06.gat,234,251,14,120	monster	Yellow Plant	1081,10,600000,0,0
 
 hu_fild07.gat,0,0,0,0	monster	Breeze	1692,10,0,0,0
-hu_fild07.gat,0,0,0,0	monster	Petite	1155,40,0,0,0
-hu_fild07.gat,0,0,0,0	monster	Petite	1156,40,0,0,0
+hu_fild07.gat,0,0,0,0	monster	Sky Deleter	1384,10,420000,24000,0
+hu_fild07.gat,0,0,0,0	monster	Sky Deleter	1385,10,420000,240000,0
+hu_fild07.gat,0,0,0,0	monster	Petite	1155,60,0,0,0
+hu_fild07.gat,0,0,0,0	monster	Petite	1156,20,0,0,0
 hu_fild07.gat,0,0,0,0	monster	Novus	1715,10,0,0,0
 hu_fild07.gat,0,0,0,0	monster	Novus	1718,10,0,0,0
 hu_fild07.gat,0,0,0,0	monster	Anopheles	1627,30,0,0,0
@@ -590,130 +609,134 @@ hu_fild07.gat,0,0,0,0	monster	Yellow Plant	1081,20,0,0,0
 
 
 //--------------------------------------------------------------
-// Juno Field Monster Spawns
+// Juno Field Spawns - [Tsuyuki]
 //--------------------------------------------------------------
 
 yuno_fild01.gat,0,0,0,0	monster	Dustiness	1114,50,0,0,0
-yuno_fild01.gat,0,0,0,0	monster	Poring	1002,20,0,0,0
+yuno_fild01.gat,0,0,0,0	monster	Green Plant	1080,20,1800000,900000,1
 yuno_fild01.gat,0,0,0,0	monster	Poporing	1031,20,0,0,0
-yuno_fild01.gat,190,329,80,20	monster	Grand Peco	1369,3,50000,25000,0
+yuno_fild01.gat,0,0,0,0	monster	Poring	1002,20,0,0,0
 yuno_fild01.gat,0,0,0,0	monster	Red Plant	1078,15,1800000,900000,1
+yuno_fild01.gat,0,0,0,0	monster	Yellow Plant	1081,15,1800000,900000,1
+yuno_fild01.gat,190,329,80,20	monster	Grand Peco	1369,3,50000,25000,0
+yuno_fild01.gat,238,326,40,40	monster	Shining Plant	1083,2,1800000,900000,1
+yuno_fild01.gat,238,326,40,40	monster	Yellow Plant	1081,6,1800000,900000,1
+yuno_fild01.gat,66,267,10,10	monster	Yellow Plant	1081,2,1800000,900000,1
 yuno_fild01.gat,70,370,10,10	monster	Blue Plant	1079,2,1800000,900000,1
 yuno_fild01.gat,70,370,10,10	monster	Shining Plant	1083,1,1800000,900000,1
-yuno_fild01.gat,66,267,10,10	monster	Yellow Plant	1081,2,1800000,900000,1
-yuno_fild01.gat,238,326,40,40	monster	Yellow Plant	1081,6,1800000,900000,1
-yuno_fild01.gat,238,326,40,40	monster	Shining Plant	1083,2,1800000,900000,1
-yuno_fild01.gat,0,0,0,0	monster	Yellow Plant	1081,15,1800000,900000,1
-yuno_fild01.gat,0,0,0,0	monster	Green Plant	1080,20,1800000,900000,1
 
-yuno_fild02.gat,0,0,0,0	monster	Horn 	1128,40,0,0,0
-yuno_fild02.gat,0,0,0,0	monster	Beetle King	1494,35,0,0,0
+yuno_fild02.gat,0,0,0,0	monster	Beetle King	1494,40,0,0,0
 yuno_fild02.gat,0,0,0,0	monster	Dustiness	1114,20,0,0,0
+yuno_fild02.gat,0,0,0,0	monster	Green Plant	1080,10,1800000,900000,1
+yuno_fild02.gat,0,0,0,0	monster	Horn	1128,40,0,0,0
 yuno_fild02.gat,0,0,0,0	monster	Hunter Fly	1035,10,0,0,0
-yuno_fild02.gat,0,0,0,0	monster	Petite	1155,10,0,0,0
-yuno_fild02.gat,200,350,200,50	monster	Deleter	1384,10,0,0,0
-yuno_fild02.gat,0,0,0,0	monster	Wild Rose	1261,5,0,0,0
 yuno_fild02.gat,0,0,0,0	monster	Red Plant	1078,10,1800000,900000,1
 yuno_fild02.gat,0,0,0,0	monster	Yellow Plant	1081,10,1800000,900000,1
-yuno_fild02.gat,0,0,0,0	monster	Green Plant	1080,10,1800000,900000,1
+yuno_fild02.gat,185,310,170,37	monster	Novus	1715,2,1200000,600000,0
+yuno_fild02.gat,298,194,55,158	monster	Novus	1718,2,1200000,600000,0
+yuno_fild02.gat,92,200,43,52	monster	Wild Rose	1261,5,0,0,0
 
-yuno_fild03.gat,0,0,0,0	monster	Poporing	1031,50,0,0,0
-yuno_fild03.gat,0,0,0,0	monster	Drops	1113,40,0,0,0
-yuno_fild03.gat,0,0,0,0	monster	Poring	1002,30,0,0,0
-yuno_fild03.gat,0,0,0,0	monster	Marin	1242,20,0,0,0
-yuno_fild03.gat,0,0,0,0	monster	Geographer	1368,15,0,0,0
-yuno_fild03.gat,62,131,44,15	monster	Side Winder	1037,1,0,0,0
 yuno_fild03.gat,0,0,0,0	monster	Angeling	1096,1,3600000,1800000,1
 yuno_fild03.gat,0,0,0,0	monster	Deviling	1582,1,3600000,1800000,1
+yuno_fild03.gat,0,0,0,0	monster	Drops	1113,40,0,0,0
+yuno_fild03.gat,0,0,0,0	monster	Geographer	1368,15,0,0,0
+yuno_fild03.gat,0,0,0,0	monster	Green Plant	1080,15,1800000,900000,1
+yuno_fild03.gat,0,0,0,0	monster	Marin	1242,20,0,0,0
+yuno_fild03.gat,0,0,0,0	monster	Poporing	1031,50,0,0,0
+yuno_fild03.gat,0,0,0,0	monster	Poring	1002,30,0,0,0
 yuno_fild03.gat,0,0,0,0	monster	Red Plant	1078,15,1800000,900000,1
 yuno_fild03.gat,0,0,0,0	monster	Yellow Plant	1081,15,1800000,900000,1
-yuno_fild03.gat,0,0,0,0	monster	Green Plant	1080,15,1800000,900000,1
-yuno_fild03.gat,358,215,10,10	monster	Shining Plant	1083,1,1800000,900000,1
 yuno_fild03.gat,358,215,10,10	monster	Blue Plant	1079,4,1800000,900000,1
+yuno_fild03.gat,358,215,10,10	monster	Shining Plant	1083,1,1800000,900000,1
+yuno_fild03.gat,62,131,44,15	monster	Side Winder	1037,1,300000,240000,0
 
-yuno_fild04.gat,0,0,0,0	monster	Poring	1002,60,0,0,0
-yuno_fild04.gat,0,0,0,0	monster	Drops	1113,40,0,0,0
 yuno_fild04.gat,0,0,0,0	monster	Condor	1009,20,0,0,0
-yuno_fild04.gat,0,0,0,0	monster	Pupa	1008,10,0,0,0
+yuno_fild04.gat,0,0,0,0	monster	Drops	1113,40,0,0,0
+yuno_fild04.gat,0,0,0,0	monster	Green Plant	1080,10,1800000,900000,1
 yuno_fild04.gat,0,0,0,0	monster	Mastering	1090,1,3600000,1800000,1
+yuno_fild04.gat,0,0,0,0	monster	Poring	1002,60,0,0,0
+yuno_fild04.gat,0,0,0,0	monster	Pupa	1008,10,0,0,0
 yuno_fild04.gat,0,0,0,0	monster	Red Plant	1078,10,1800000,900000,1
 yuno_fild04.gat,0,0,0,0	monster	Yellow Plant	1081,10,1800000,900000,1
-yuno_fild04.gat,0,0,0,0	monster	Green Plant	1080,10,1800000,900000,1
 
-yuno_fild05.gat,0,0,0,0	monster	Rafflesia	1162,70,0,0,0
-yuno_fild05.gat,0,0,0,0	monster	Dustiness	1114,30,0,0,0
-yuno_fild05.gat,0,0,0,0	monster	Horn	1128,30,0,0,0
-yuno_fild05.gat,0,0,0,0	monster	Beetle King	1494,10,0,0,0
 yuno_fild05.gat,0,0,0,0	monster	Arc Angeling	1388,1,3600000,180000,0
-yuno_fild05.gat,0,0,0,0	monster	Red Plant	1078,10,180000,90000,1
+yuno_fild05.gat,0,0,0,0	monster	Arc Angeling	1388,1,3600000,180000,0
+yuno_fild05.gat,0,0,0,0	monster	Beetle King	1494,10,0,0,0
+yuno_fild05.gat,0,0,0,0	monster	Beetle King	1494,10,0,0,0
+yuno_fild05.gat,0,0,0,0	monster	Dustiness	1114,30,0,0,0
+yuno_fild05.gat,0,0,0,0	monster	Dustiness	1114,30,0,0,0
 yuno_fild05.gat,0,0,0,0	monster	Green Plant	1080,10,180000,90000,1
+yuno_fild05.gat,0,0,0,0	monster	Green Plant	1080,10,180000,90000,1
+yuno_fild05.gat,0,0,0,0	monster	Horn	1128,30,0,0,0
+yuno_fild05.gat,0,0,0,0	monster	Horn	1128,30,0,0,0
+yuno_fild05.gat,0,0,0,0	monster	Rafflesia	1162,70,0,0,0
+yuno_fild05.gat,0,0,0,0	monster	Rafflesia	1162,70,0,0,0
+yuno_fild05.gat,0,0,0,0	monster	Red Plant	1078,10,180000,90000,1
+yuno_fild05.gat,0,0,0,0	monster	Red Plant	1078,10,180000,90000,1
+yuno_fild05.gat,0,0,0,0	monster	Yellow Plant	1081,10,180000,90000,0
 yuno_fild05.gat,0,0,0,0	monster	Yellow Plant	1081,10,180000,90000,0
 yuno_fild05.gat,176,202,8,8	monster	Blue Plant	1079,2,180000,90000,1
+yuno_fild05.gat,176,202,8,8	monster	Blue Plant	1079,2,180000,90000,1
+yuno_fild05.gat,300,280,5,5	monster	Blue Plant	1079,2,180000,90000,1
 yuno_fild05.gat,300,280,5,5	monster	Blue Plant	1079,2,180000,90000,1
 
-yuno_fild06.gat,0,0,0,0	monster	Sleeper	1386,70,0,0,0
-yuno_fild06.gat,0,0,0,0	monster	Goat	1372,40,0,0,0
-yuno_fild06.gat,0,0,0,0	monster	Demon Pungus	1378,30,0,0,0
-yuno_fild06.gat,0,0,0,0	monster	Red Plant	1078,10,0,0,0
-yuno_fild06.gat,0,0,0,0	monster	Yellow Plant	1081,10,0,0,0
-yuno_fild06.gat,0,0,0,0	monster	Green Plant	1080,10,0,0,0
-
-yuno_fild07.gat,0,0,0,0	monster	Goat	1372,10,0,0,0
-yuno_fild07.gat,0,0,0,0	monster	Geographer	1368,20,0,0,0
 yuno_fild07.gat,0,0,0,0	monster	Driller	1380,10,0,0,0
-yuno_fild07.gat,0,0,0,0	monster	Harpy	1376,40,1800000,900000,0
-yuno_fild07.gat,0,0,0,0	monster	Red Plant	1078,10,180000,90000,1
+yuno_fild07.gat,0,0,0,0	monster	Geographer	1368,20,0,0,0
+yuno_fild07.gat,0,0,0,0	monster	Goat	1372,10,0,0,0
 yuno_fild07.gat,0,0,0,0	monster	Green Plant	1080,10,180000,90000,1
+yuno_fild07.gat,0,0,0,0	monster	Harpy	1376,40,600000,300000,0
+yuno_fild07.gat,0,0,0,0	monster	Red Plant	1078,10,180000,90000,1
 yuno_fild07.gat,0,0,0,0	monster	Yellow Plant	1081,10,180000,90000,1
 
-yuno_fild08.gat,0,0,0,0	monster	Wild Rose	1261,5,0,0,0
-yuno_fild08.gat,200,300,290,100	monster	Grand Peco	1369,30,0,0,0
-yuno_fild08.gat,272,205,100,120	monster	Grand Peco	1369,20,0,0,0
-yuno_fild08.gat,230,110,250,90	monster	Grand Peco	1369,30,0,0,0
-yuno_fild08.gat,200,300,290,100	monster	Geographer	1368,12,0,0,0
-yuno_fild08.gat,272,205,100,120	monster	Geographer	1368,6,0,0,0
-yuno_fild08.gat,230,110,250,90	monster	Geographer	1368,12,0,0,0
-yuno_fild08.gat,200,300,290,100	monster	Dustiness	1114,7,0,0,0
-yuno_fild08.gat,272,205,100,120	monster	Dustiness	1114,6,0,0,0
-yuno_fild08.gat,230,110,250,90	monster	Dustiness	1114,7,0,0,0
-yuno_fild08.gat,0,0,0,0	monster	Red Plant	1078,10,180000,90000,1
 yuno_fild08.gat,0,0,0,0	monster	Green Plant	1080,10,180000,90000,1
+yuno_fild08.gat,0,0,0,0	monster	Red Plant	1078,10,180000,90000,1
+yuno_fild08.gat,0,0,0,0	monster	Wild Rose	1261,5,0,0,0
 yuno_fild08.gat,0,0,0,0	monster	Yellow Plant	1081,10,180000,90000,1
+yuno_fild08.gat,200,300,290,100	monster	Dustiness	1114,7,0,0,0
+yuno_fild08.gat,200,300,290,100	monster	Geographer	1368,12,0,0,0
+yuno_fild08.gat,200,300,290,100	monster	Grand Peco	1369,30,0,0,0
+yuno_fild08.gat,230,110,250,90	monster	Dustiness	1114,7,0,0,0
+yuno_fild08.gat,230,110,250,90	monster	Geographer	1368,12,0,0,0
+yuno_fild08.gat,230,110,250,90	monster	Grand Peco	1369,30,0,0,0
+yuno_fild08.gat,272,205,100,120	monster	Dustiness	1114,6,0,0,0
+yuno_fild08.gat,272,205,100,120	monster	Geographer	1368,6,0,0,0
+yuno_fild08.gat,272,205,100,120	monster	Grand Peco	1369,20,0,0,0
 
-yuno_fild09.gat,0,0,0,0	monster	Horn 	1128,40,0,0,0
-yuno_fild09.gat,0,0,0,0	monster	Beetle King 	1494,30,0,0,0
-yuno_fild09.gat,0,0,0,0	monster	Stainer	1174,20,0,0,0
+yuno_fild09.gat,0,0,0,0	monster	Beetle King	1494,40,0,0,0
 yuno_fild09.gat,0,0,0,0	monster	Dustiness	1114,20,0,0,0
-yuno_fild09.gat,0,0,0,0	monster	Hunter Fly	1035,10,0,0,0
-yuno_fild09.gat,0,0,0,0	monster	Wild Rose	1261,5,0,0,0
-yuno_fild09.gat,0,0,0,0	monster	Red Plant	1078,10,180000,90000,1
 yuno_fild09.gat,0,0,0,0	monster	Green Plant	1080,10,180000,90000,1
+yuno_fild09.gat,0,0,0,0	monster	Horn	1128,40,0,0,0
+yuno_fild09.gat,0,0,0,0	monster	Hunter Fly	1035,10,0,0,0
+yuno_fild09.gat,0,0,0,0	monster	Red Plant	1078,10,180000,90000,1
+yuno_fild09.gat,0,0,0,0	monster	Stainer	1174,20,0,0,0
+yuno_fild09.gat,0,0,0,0	monster	Wild Rose	1261,5,0,0,0
 yuno_fild09.gat,0,0,0,0	monster	Yellow Plant	1081,10,180000,90000,1
 
 yuno_fild10.gat,0,0,0,0	monster	Beetle King	1494,40,0,0,0
-yuno_fild10.gat,0,0,0,0	monster	Stainer	1174,20,0,0,0
 yuno_fild10.gat,0,0,0,0	monster	Dustiness	1114,20,0,0,0
 yuno_fild10.gat,0,0,0,0	monster	Geographer	1368,20,0,0,0
 yuno_fild10.gat,0,0,0,0	monster	Hunter Fly	1035,10,0,0,0
+yuno_fild10.gat,0,0,0,0	monster	Stainer	1174,20,0,0,0
 
-yuno_fild11.gat,0,0,0,0	monster	Sleeper	1386,10,0,0,0
-yuno_fild11.gat,0,0,0,0	monster	Geographer	1368,3,0,0,0
-yuno_fild11.gat,65,294,70,160	monster	Sleeper	1386,5,0,0,0
-yuno_fild11.gat,65,294,70,160	monster	Geographer	1368,2,0,0,0
-yuno_fild11.gat,225,220,125,135	monster	Sleeper	1386,35,0,0,0
-yuno_fild11.gat,225,220,125,135	monster	Geographer	1368,15,0,0,0
-yuno_fild11.gat,0,0,0,0	monster	Red Plant	1078,10,180000,90000,1
+yuno_fild11.gat,0,0,0,0	monster	Demon Pungus	1378,10,120000,0,0
+yuno_fild11.gat,0,0,0,0	monster	Geographer	1368,15,0,0,0
 yuno_fild11.gat,0,0,0,0	monster	Green Plant	1080,10,180000,90000,1
+yuno_fild11.gat,0,0,0,0	monster	Red Plant	1078,10,180000,90000,1
+yuno_fild11.gat,0,0,0,0	monster	Sleeper	1386,10,0,0,0
 yuno_fild11.gat,0,0,0,0	monster	Yellow Plant	1081,10,180000,90000,1
+yuno_fild11.gat,225,220,125,135	monster	Geographer	1368,15,0,0,0
+yuno_fild11.gat,225,220,125,135	monster	Sleeper	1386,30,0,0,0
+yuno_fild11.gat,65,294,70,160	monster	Geographer	1368,2,0,0,0
+yuno_fild11.gat,65,294,70,160	monster	Sleeper	1386,3,0,0,0
 
+yuno_fild12.gat,0,0,0,0	monster	Demon Pungus	1378,20,0,0,0
 yuno_fild12.gat,0,0,0,0	monster	Dustiness	1114,30,0,0,0
-yuno_fild12.gat,0,0,0,0	monster	Demon Pungus	1378,30,0,0,0
-yuno_fild12.gat,0,0,0,0	monster	Poporing	1031,15,0,0,0
 yuno_fild12.gat,0,0,0,0	monster	Geographer	1368,5,0,0,0
+yuno_fild12.gat,0,0,0,0	monster	Poporing	1031,15,0,0,0
 
 
 //--------------------------------------------------------------
-// Kunlun Field Monster Spawns
+// Kunlun Field Spawns - [Tsuyuki]
 //--------------------------------------------------------------
 
 gon_fild01.gat,0,0,0,0	monster	Baby Leopard	1415,40,600000,300000,0
@@ -726,36 +749,37 @@ gon_fild01.gat,0,0,0,0	monster	Shining Plant	1083,1,0,0,0
 
 
 //--------------------------------------------------------------
-// Lighthalzen Field Monster Spawns
+// Lighthalzen Field Spawns - [Tsuyuki]
 //--------------------------------------------------------------
 
-lhz_fild01.gat,0,0,0,0	monster	Metaling	1613,60,0,0,0
-lhz_fild01.gat,0,0,0,0	monster	Holden	1628,60,0,0,0
+lhz_fild01.gat,0,0,0,0	monster	Metaling	1613,70,0,0,0
+lhz_fild01.gat,0,0,0,0	monster	Holden	1628,30,0,0,0
 lhz_fild01.gat,0,0,0,0	monster	Caramel	1103,20,0,0,0
-lhz_fild01.gat,0,0,0,0	monster	Yellow Plant	1081,10,180000,90000,1
-lhz_fild01.gat,0,0,0,0	monster	Red Plant	1078,10,180000,90000,1
-lhz_fild01.gat,0,0,0,0	monster	Green Plant	1080,10,180000,90000,1
+lhz_fild01.gat,0,0,0,0	monster	Red Plant	1078,10,60000,30000,0
+lhz_fild01.gat,0,0,0,0	monster	Yellow Plant	1081,10,60000,30000,0
+lhz_fild01.gat,0,0,0,0	monster	Green Plant	1080,10,60000,30000,0
 
 lhz_fild02.gat,0,0,0,0	monster	Metaling	1613,50,0,0,0
 lhz_fild02.gat,0,0,0,0	monster	Caramel	1103,30,0,0,0
-lhz_fild02.gat,0,0,0,0	monster	Anopheles	1627,15,0,0,0
 lhz_fild02.gat,0,0,0,0	monster	Horn	1128,10,0,0,0
 lhz_fild02.gat,0,0,0,0	monster	Holden	1628,10,0,0,0
-lhz_fild02.gat,0,0,0,0	monster	Yellow Plant	1081,15,180000,90000,1
-lhz_fild02.gat,0,0,0,0	monster	Green Plant	1080,15,180000,90000,1
+lhz_fild02.gat,0,0,0,0	monster	Anopheles	1627,10,0,0,0
+lhz_fild02.gat,0,0,0,0	monster	Yellow Plant	1081,15,60000,30000,0
+lhz_fild02.gat,0,0,0,0	monster	Green Plant	1080,15,60000,30000,0
 
-lhz_fild03.gat,0,0,0,0	monster	Stem Worm	1215,50,0,0,0
-lhz_fild03.gat,0,0,0,0	monster	Metaling	1613,20,0,0,0
-lhz_fild03.gat,0,0,0,0	monster	Anopheles	1627,20,0,0,0
-lhz_fild03.gat,0,0,0,0	monster	Caramel	1103,20,0,0,0
-lhz_fild03.gat,0,0,0,0	monster	Hill Wind	1680,12,0,0,0
-lhz_fild03.gat,0,0,0,0	monster	Horn	1128,10,0,0,0
-lhz_fild03.gat,0,0,0,0	monster	Rafflesia	1162,5,0,0,0
-lhz_fild03.gat,0,0,0,0	monster	Green Plant	1080,10,180000,90000,1
+lhz_fild03.gat,262,233,74,140	monster	Stem Worm	1215,50,600000,0,0
+lhz_fild03.gat,262,233,74,140	monster	Metaling	1613,20,0,0,0
+lhz_fild03.gat,127,248,45,140	monster	Caramel	1103,20,0,0,0
+lhz_fild03.gat,127,248,45,140	monster	Horn	1128,10,0,0,0
+lhz_fild03.gat,127,248,45,140	monster	Rafflesia	1162,5,0,0,0
+lhz_fild03.gat,0,0,0,0	monster	Anopheles	1627,20,0,0,1
+lhz_fild03.gat,0,0,0,0	monster	Hill Wind	1680,10,0,0,1
+lhz_fild03.gat,0,0,0,0	monster	Red Plant	1078,10,60000,30000,0
+lhz_fild03.gat,0,0,0,0	monster	Green Plant	1080,10,60000,30000,0
 
 
 //--------------------------------------------------------------
-// Louyang Field Monster Spawns
+// Louyang Field Spawns - [Tsuyuki]
 //--------------------------------------------------------------
 
 lou_fild01.gat,224,315,100,50	monster	Bigfoot	1060,7,0,0,0
@@ -778,251 +802,17 @@ lou_fild01.gat,0,0,0,0	monster	Yellow Plant	1081,10,0,0,0
 
 
 //--------------------------------------------------------------
-// Lutie Field Monster Spawns
+// Lutie Field Spawns - [Tsuyuki]
 //--------------------------------------------------------------
 
 xmas_fild01.gat,0,0,0,0	monster	Marin	1242,35,0,0,0
 xmas_fild01.gat,0,0,0,0	monster	Sasquatch	1243,20,0,0,0
-xmas_fild01.gat,0,0,0,0	monster	Hatii Bebe	1515,1,1800000,0,0
 xmas_fild01.gat,0,0,0,0	monster	Hatii	1252,1,7200000,3600000,1
+xmas_fild01.gat,0,0,0,0	monster	Hatii Bebe	1515,1,1800000,0,0
 
 
 //--------------------------------------------------------------
-// Morroc Field Monster Spawns
-//--------------------------------------------------------------
-
-moc_fild01.gat,0,0,0,0	monster	Baby Desert Wolf	1107,70,0,0,0
-moc_fild01.gat,0,0,0,0	monster	Ant Egg	1097,20,0,0,0
-moc_fild01.gat,0,0,0,0	monster	Peco Peco Egg	1047,20,0,0,0
-moc_fild01.gat,0,0,0,0	monster	Picky	1049,10,0,0,0
-moc_fild01.gat,0,0,0,0	monster	Drops	1113,30,0,0,0
-moc_fild01.gat,0,0,0,0	monster	Poring	1002,10,0,0,0
-moc_fild01.gat,194,51,10,10	monster	Yellow Plant	1081,10,900000,450000,1
-
-moc_fild02.gat,0,0,0,0	monster	Peco Peco	1019,70,0,0,0
-moc_fild02.gat,0,0,0,0	monster	Ant Egg	1097,10,0,0,0
-moc_fild02.gat,0,0,0,0	monster	Peco Peco Egg	1047,40,0,0,0
-moc_fild02.gat,0,0,0,0	monster	Picky	1049,10,0,0,0
-moc_fild02.gat,0,0,0,0	monster	Drops	1113,30,0,0,0
-moc_fild02.gat,89,315,0,0	monster	Yellow Plant	1081,1,180000,90000,1
-moc_fild02.gat,99,261,0,0	monster	Yellow Plant	1081,1,180000,90000,1
-moc_fild02.gat,94,195,0,0	monster	Yellow Plant	1081,1,180000,90000,1
-moc_fild02.gat,139,222,0,0	monster	Yellow Plant	1081,1,180000,90000,1
-moc_fild02.gat,132,307,0,0	monster	Yellow Plant	1081,1,180000,90000,1
-moc_fild02.gat,194,294,0,0	monster	Yellow Plant	1081,1,180000,90000,1
-moc_fild02.gat,275,241,0,0	monster	Yellow Plant	1081,1,180000,90000,1
-moc_fild02.gat,342,267,0,0	monster	Green Plant	1080,1,180000,90000,1
-moc_fild02.gat,359,215,0,0	monster	Green Plant	1080,1,180000,90000,1
-moc_fild02.gat,313,149,0,0	monster	Green Plant	1080,1,180000,90000,1
-moc_fild02.gat,230,62,0,0	monster	Green Plant	1080,1,180000,90000,1
-moc_fild02.gat,299,61,0,0	monster	Green Plant	1080,1,180000,90000,1
-moc_fild02.gat,353,103,0,0	monster	Green Plant	1080,1,180000,90000,1
-moc_fild02.gat,337,35,0,0	monster	Green Plant	1080,1,180000,90000,1
-
-moc_fild03.gat,0,0,0,0	monster	Elder Willow	1033,70,0,0,0
-moc_fild03.gat,0,0,0,0	monster	Greatest General	1277,30,0,0,0
-moc_fild03.gat,0,0,0,0	monster	Poporing	1031,20,0,0,0
-moc_fild03.gat,0,0,0,0	monster	Eggyra	1116,10,0,0,0
-moc_fild03.gat,0,0,0,0	monster	Willow	1010,20,0,0,0
-moc_fild03.gat,0,0,0,0	monster	Vagabond Wolf	1092,1,1800000,1200000,0
-moc_fild03.gat,77,311,5,5	monster	Green Plant	1080,2,180000,90000,1
-moc_fild03.gat,108,199,5,5	monster	Green Plant	1080,2,180000,90000,1
-moc_fild03.gat,96,65,5,5	monster	Green Plant	1080,2,180000,90000,1
-moc_fild03.gat,216,69,5,5	monster	Green Plant	1080,2,180000,90000,1
-moc_fild03.gat,261,161,5,5	monster	Green Plant	1080,2,180000,90000,1
-moc_fild03.gat,213,201,5,5	monster	Green Plant	1080,2,180000,90000,1
-moc_fild03.gat,200,263,5,5	monster	Green Plant	1080,2,180000,90000,1
-
-moc_fild04.gat,0,0,0,0	monster	Desert Wolf	1106,20,0,0,0
-moc_fild04.gat,0,0,0,0	monster	Scorpion	1001,30,0,0,0
-moc_fild04.gat,0,0,0,0	monster	Metaller	1058,20,0,0,0
-moc_fild04.gat,0,0,0,0	monster	Magnolia	1138,40,0,0,0
-moc_fild04.gat,0,0,0,0	monster	Ant Egg	1097,10,0,0,0
-moc_fild04.gat,0,0,0,0	monster	Andre	1095,20,0,0,0
-moc_fild04.gat,0,0,0,0	monster	Deniro	1105,20,0,0,0
-moc_fild04.gat,0,0,0,0	monster	Piere	1160,20,0,0,0
-moc_fild04.gat,313,84,10,10	monster	Yellow Plant	1081,10,900000,450000,1
-
-moc_fild05.gat,0,0,0,0	monster	Magnolia	1138,30,0,0,0
-moc_fild05.gat,0,0,0,0	monster	Metaller	1058,20,0,0,0
-moc_fild05.gat,0,0,0,0	monster	Golem	1040,70,0,0,0
-moc_fild05.gat,0,0,0,0	monster	Ant Egg	1097,10,0,0,0
-moc_fild05.gat,0,0,0,0	monster	Andre	1095,10,0,0,0
-moc_fild05.gat,0,0,0,0	monster	Deniro	1105,10,0,0,0
-moc_fild05.gat,0,0,0,0	monster	Piere	1160,10,0,0,0
-moc_fild05.gat,208,233,10,10	monster	Yellow Plant	1081,5,360000,180000,1
-
-moc_fild06.gat,0,0,0,0	monster	Peco Peco	1019,70,0,0,0
-moc_fild06.gat,0,0,0,0	monster	Muka	1055,30,0,0,0
-moc_fild06.gat,0,0,0,0	monster	Condor	1009,50,0,0,0
-moc_fild06.gat,0,0,0,0	monster	Magnolia	1138,10,0,0,0
-moc_fild06.gat,0,0,0,0	monster	Andre	1095,5,0,0,0
-moc_fild06.gat,0,0,0,0	monster	Deniro	1105,5,0,0,0
-moc_fild06.gat,0,0,0,0	monster	Piere	1160,5,0,0,0
-moc_fild06.gat,0,0,0,0	monster	Ant Egg	1097,10,0,0,0
-moc_fild06.gat,193,203,10,10	monster	Yellow Plant	1081,10,900000,450000,1
-
-moc_fild07.gat,0,0,0,0	monster	Drops	1113,70,0,0,0
-moc_fild07.gat,0,0,0,0	monster	Peco Peco Egg	1047,50,0,0,0
-moc_fild07.gat,0,0,0,0	monster	Picky	1050,30,0,0,0
-moc_fild07.gat,0,0,0,0	monster	Picky	1049,30,0,0,0
-moc_fild07.gat,162,333,12,12	monster	Yellow Plant	1081,5,360000,180000,1
-
-moc_fild08.gat,0,0,0,0	monster	Magnolia	1138,30,0,0,0
-moc_fild08.gat,0,0,0,0	monster	Scorpion	1001,80,0,0,0
-moc_fild08.gat,0,0,0,0	monster	Desert Wolf	1106,30,0,0,0
-moc_fild08.gat,0,0,0,0	monster	Anacondaq	1030,30,0,0,0
-moc_fild08.gat,0,0,0,0	monster	Baby Desert Wolf	1107,10,0,0,0
-moc_fild08.gat,0,0,0,0	monster	Drops	1113,10,0,0,0
-
-moc_fild09.gat,0,0,0,0	monster	Desert Wolf	1106,10,0,0,0
-moc_fild09.gat,0,0,0,0	monster	Metaller	1058,70,0,0,0
-moc_fild09.gat,0,0,0,0	monster	Magnolia	1138,50,0,0,0
-moc_fild09.gat,0,0,0,0	monster	Ant Egg	1097,10,0,0,0
-moc_fild09.gat,0,0,0,0	monster	Andre	1095,5,0,0,0
-moc_fild09.gat,0,0,0,0	monster	Deniro	1105,5,0,0,0
-moc_fild09.gat,0,0,0,0	monster	Piere	1160,5,0,0,0
-moc_fild09.gat,0,0,0,0	monster	Ant Egg	1097,10,0,0,0
-moc_fild09.gat,0,0,0,0	monster	Frilldora	1119,6,0,0,0
-moc_fild09.gat,332,341,5,5	monster	Yellow Plant	1081,2,180000,90000,1
-moc_fild09.gat,240,313,5,5	monster	Yellow Plant	1081,2,180000,90000,1
-moc_fild09.gat,305,62,5,5	monster	Yellow Plant	1081,2,180000,90000,1
-moc_fild09.gat,64,78,5,5	monster	Yellow Plant	1081,2,180000,90000,1
-moc_fild09.gat,54,325,5,5	monster	Yellow Plant	1081,2,180000,90000,1
-
-moc_fild10.gat,0,0,0,0	monster	Drops	1113,30,0,0,0
-moc_fild10.gat,0,0,0,0	monster	Peco Peco Egg	1047,70,0,0,0
-moc_fild10.gat,0,0,0,0	monster	Picky	1049,50,0,0,0
-moc_fild10.gat,0,0,0,0	monster	Picky	1050,50,0,0,0
-moc_fild10.gat,0,0,0,0	monster	Magnolia	1138,1,0,0,0
-moc_fild10.gat,0,0,0,0	monster	Ant Egg	1097,10,0,0,0
-moc_fild10.gat,198,150,40,30	monster	Yellow Plant	1081,10,180000,90000,1
-moc_fild10.gat,198,150,40,30	monster	Green Plant	1080,5,180000,90000,1
-
-moc_fild11.gat,0,0,0,0	monster	Hode	1127,10,0,0,0
-moc_fild11.gat,0,0,0,0	monster	Golem	1040,70,0,0,0
-moc_fild11.gat,0,0,0,0	monster	Andre	1095,10,0,0,0
-moc_fild11.gat,0,0,0,0	monster	Deniro	1105,10,0,0,0
-moc_fild11.gat,0,0,0,0	monster	Piere	1160,10,0,0,0
-moc_fild11.gat,0,0,0,0	monster	Ant Egg	1097,10,0,0,0
-moc_fild11.gat,0,0,0,0	monster	Magnolia	1138,20,0,0,0
-moc_fild11.gat,0,0,0,0	monster	Muka	1055,20,0,0,0
-moc_fild11.gat,197,216,0,0	monster	Shining Plant	1083,1,1800000,900000,1
-
-moc_fild12.gat,0,0,0,0	monster	Picky	1050,50,0,0,0
-moc_fild12.gat,0,0,0,0	monster	Picky	1049,50,0,0,0
-moc_fild12.gat,0,0,0,0	monster	Peco Peco Egg	1047,35,0,0,0
-moc_fild12.gat,0,0,0,0	monster	Drops	1113,35,0,0,0
-moc_fild12.gat,181,336,40,20	monster	Yellow Plant	1081,10,180000,90000,1
-
-moc_fild13.gat,0,0,0,0	monster	Desert Wolf	1106,30,0,0,0
-moc_fild13.gat,0,0,0,0	monster	Anacondaq	1030,70,0,0,0
-moc_fild13.gat,0,0,0,0	monster	Boa	1025,25,0,0,0
-moc_fild13.gat,0,0,0,0	monster	Side Winder	1037,35,0,0,0
-moc_fild13.gat,0,0,0,0	monster	Poporing	1031,20,0,0,0
-moc_fild13.gat,0,0,0,0	monster	Drops	1113,10,0,0,0
-moc_fild13.gat,280,99,0,0	monster	Red Mushroom	1085,1,180000,90000,1
-moc_fild13.gat,264,64,0,0	monster	Red Mushroom	1085,1,180000,90000,1
-moc_fild13.gat,305,91,0,0	monster	Red Mushroom	1085,1,180000,90000,1
-moc_fild13.gat,264,136,0,0	monster	Red Mushroom	1085,1,180000,90000,1
-moc_fild13.gat,282,155,0,0	monster	Red Mushroom	1085,1,180000,90000,1
-moc_fild13.gat,265,197,0,0	monster	Red Mushroom	1085,1,180000,90000,1
-moc_fild13.gat,284,227,0,0	monster	Red Mushroom	1085,1,180000,90000,1
-moc_fild13.gat,304,244,0,0	monster	Red Mushroom	1085,1,180000,90000,1
-moc_fild13.gat,266,289,0,0	monster	Red Mushroom	1085,1,180000,90000,1
-moc_fild13.gat,307,307,0,0	monster	Red Mushroom	1085,1,180000,90000,1
-moc_fild13.gat,281,333,0,0	monster	Red Mushroom	1085,1,180000,90000,1
-moc_fild13.gat,304,333,0,0	monster	Red Mushroom	1085,1,180000,90000,1
-moc_fild13.gat,295,358,0,0	monster	Red Mushroom	1085,1,180000,90000,1
-moc_fild13.gat,84,329,0,0	monster	Yellow Plant	1081,1,180000,90000,1
-moc_fild13.gat,93,301,0,0	monster	Yellow Plant	1081,1,180000,90000,1
-moc_fild13.gat,101,297,0,0	monster	Yellow Plant	1081,1,180000,90000,1
-moc_fild13.gat,89,92,0,0	monster	Yellow Plant	1081,1,180000,90000,1
-moc_fild13.gat,108,150,0,0	monster	Yellow Plant	1081,1,180000,90000,1
-moc_fild13.gat,109,168,0,0	monster	Yellow Plant	1081,1,180000,90000,1
-moc_fild13.gat,101,185,5,5	monster	Yellow Plant	1081,3,180000,90000,1
-moc_fild13.gat,106,258,5,5	monster	Yellow Plant	1081,3,180000,90000,1
-moc_fild13.gat,161,273,5,5	monster	Yellow Plant	1081,3,180000,90000,1
-
-moc_fild14.gat,0,0,0,0	monster	Desert Wolf	1106,80,0,0,0
-moc_fild14.gat,0,0,0,0	monster	Side Winder	1037,20,0,0,0
-moc_fild14.gat,0,0,0,0	monster	Baby Desert Wolf	1107,40,0,0,0
-moc_fild14.gat,0,0,0,0	monster	Magnolia	1138,25,0,0,0
-moc_fild14.gat,124,93,5,5	monster	Shining Plant	1083,1,1800000,900000,1
-moc_fild14.gat,85,271,0,0	monster	Yellow Plant	1081,1,180000,90000,1
-moc_fild14.gat,165,282,0,0	monster	Yellow Plant	1081,1,180000,90000,1
-moc_fild14.gat,149,333,0,0	monster	Yellow Plant	1081,1,180000,90000,1
-moc_fild14.gat,64,342,0,0	monster	Yellow Plant	1081,1,180000,90000,1
-moc_fild14.gat,160,366,0,0	monster	Yellow Plant	1081,1,180000,90000,1
-
-moc_fild15.gat,0,0,0,0	monster	Hode	1127,30,0,0,0
-moc_fild15.gat,0,0,0,0	monster	Scorpion	1001,10,0,0,0
-moc_fild15.gat,0,0,0,0	monster	Desert Wolf	1106,10,0,0,0
-moc_fild15.gat,0,0,0,0	monster	Magnolia	1138,25,0,0,0
-moc_fild15.gat,0,0,0,0	monster	Andre	1095,40,0,0,0
-moc_fild15.gat,0,0,0,0	monster	Ant Egg	1097,10,0,0,0
-moc_fild15.gat,0,0,0,0	monster	Phreeoni	1159,1,7200000,3600000,1
-moc_fild15.gat,40,126,0,0	monster	Yellow Plant	1081,1,180000,90000,1
-moc_fild15.gat,57,39,0,0	monster	Yellow Plant	1081,1,180000,90000,1
-moc_fild15.gat,46,250,0,0	monster	Yellow Plant	1081,1,180000,90000,1
-moc_fild15.gat,104,347,0,0	monster	Yellow Plant	1081,1,180000,90000,1
-moc_fild15.gat,195,373,0,0	monster	Yellow Plant	1081,1,180000,90000,1
-moc_fild15.gat,341,365,0,0	monster	Yellow Plant	1081,1,180000,90000,1
-moc_fild15.gat,353,230,0,0	monster	Yellow Plant	1081,1,180000,90000,1
-moc_fild15.gat,341,164,0,0	monster	Yellow Plant	1081,1,180000,90000,1
-moc_fild15.gat,370,85,0,0	monster	Yellow Plant	1081,1,180000,90000,1
-moc_fild15.gat,158,144,0,0	monster	Yellow Plant	1081,1,180000,90000,1
-moc_fild15.gat,232,126,0,0	monster	Yellow Plant	1081,1,180000,90000,1
-moc_fild15.gat,294,74,0,0	monster	Yellow Plant	1081,1,180000,90000,1
-
-moc_fild16.gat,0,0,0,0	monster	Sandman	1165,70,0,0,0
-moc_fild16.gat,0,0,0,0	monster	Hode	1127,30,0,0,0
-moc_fild16.gat,0,0,0,0	monster	Magnolia	1138,25,0,0,0
-moc_fild16.gat,0,0,0,0	monster	Andre	1095,10,0,0,0
-moc_fild16.gat,0,0,0,0	monster	Deniro	1105,20,0,0,0
-moc_fild16.gat,0,0,0,0	monster	Ant Egg	1097,10,0,0,0
-
-moc_fild17.gat,0,0,0,0	monster	Hode	1127,50,0,0,0
-moc_fild17.gat,0,0,0,0	monster	Steel Chonchon	1042,40,0,0,0
-moc_fild17.gat,0,0,0,0	monster	Magnolia	1138,15,0,0,0
-moc_fild17.gat,0,0,0,0	monster	Frilldora	1119,15,0,0,0
-moc_fild17.gat,0,0,0,0	monster	Andre	1095,10,0,0,0
-moc_fild17.gat,0,0,0,0	monster	Deniro	1105,20,0,0,0
-moc_fild17.gat,0,0,0,0	monster	Piere	1160,20,0,0,0
-moc_fild17.gat,0,0,0,0	monster	Ant Egg	1097,10,0,0,0
-moc_fild17.gat,0,0,0,0	monster	Scorpion	1001,5,0,0,0
-moc_fild17.gat,0,0,0,0	monster	Sandman	1165,5,0,0,0
-moc_fild17.gat,40,258,0,0	monster	Yellow Plant	1081,1,180000,90000,1
-moc_fild17.gat,144,151,0,0	monster	Yellow Plant	1081,1,180000,90000,1
-moc_fild17.gat,243,138,0,0	monster	Yellow Plant	1081,1,180000,90000,1
-moc_fild17.gat,270,106,0,0	monster	Blue Plant	1079,1,180000,90000,1
-moc_fild17.gat,335,191,0,0	monster	Yellow Plant	1081,1,180000,90000,1
-moc_fild17.gat,347,224,0,0	monster	Yellow Plant	1081,1,180000,90000,1
-moc_fild17.gat,359,258,0,0	monster	Yellow Plant	1081,1,180000,90000,1
-
-moc_fild18.gat,0,0,0,0	monster	Steel Chonchon	1042,70,0,0,0
-moc_fild18.gat,0,0,0,0	monster	Chonchon	1011,40,0,0,0
-moc_fild18.gat,0,0,0,0	monster	Muka	1055,40,0,0,0
-moc_fild18.gat,0,0,0,0	monster	Metaller	1058,10,0,0,0
-moc_fild18.gat,0,0,0,0	monster	Magnolia	1138,25,0,0,0
-moc_fild18.gat,0,0,0,0	monster	Andre	1095,5,0,0,0
-moc_fild18.gat,0,0,0,0	monster	Deniro	1105,5,0,0,0
-moc_fild18.gat,0,0,0,0	monster	Piere	1160,5,0,0,0
-moc_fild18.gat,0,0,0,0	monster	Ant Egg	1097,5,0,0,0
-moc_fild18.gat,0,0,0,0	monster	Dragon Fly	1091,1,3600000,1800000,1
-moc_fild18.gat,0,0,0,0	monster	Hunter Fly	1035,1,7200000,3600000,1
-moc_fild18.gat,143,352,0,0	monster	Yellow Plant	1081,1,180000,90000,1
-moc_fild18.gat,72,333,0,0	monster	Yellow Plant	1081,1,180000,90000,1
-moc_fild18.gat,119,285,0,0	monster	Yellow Plant	1081,1,180000,90000,1
-moc_fild18.gat,71,210,0,0	monster	Yellow Plant	1081,1,180000,90000,1
-moc_fild18.gat,135,119,0,0	monster	Yellow Plant	1081,1,180000,90000,1
-moc_fild18.gat,230,144,0,0	monster	Yellow Plant	1081,1,180000,90000,1
-moc_fild18.gat,325,207,0,0	monster	Yellow Plant	1081,1,180000,90000,1
-moc_fild18.gat,325,272,0,0	monster	Yellow Plant	1081,1,180000,90000,1
-
-
-//--------------------------------------------------------------
-// Mt. Mjolnir Monster Spawns
+// Mt. Mjolnir Field Spawns - [Tsuyuki]
 //--------------------------------------------------------------
 
 mjolnir_01.gat,0,0,0,0	monster	Horn	1128,20,0,0,0
@@ -1101,7 +891,7 @@ mjolnir_03.gat,91,161,0,0	monster	Green Plant	1080,1,180000,90000,1
 mjolnir_04.gat,0,0,0,0	monster	Mantis	1139,20,0,0,0
 mjolnir_04.gat,0,0,0,0	monster	Hornet	1004,70,0,0,0
 mjolnir_04.gat,0,0,0,0	monster	Poporing	1031,10,0,0,0
-mjolnir_04.gat,0,0,0,0	monster	Poporing	1031,30,0,0,0
+mjolnir_04.gat,0,0,0,0	monster	Flora	1118,30,0,0,0
 mjolnir_04.gat,0,0,0,0	monster	Argiope	1099,20,0,0,0
 mjolnir_04.gat,0,0,0,0	monster	Mistress	1059,1,7200000,3600000,1
 mjolnir_04.gat,200,200,30,30	monster	Shining Plant	1083,3,1800000,900000,1
@@ -1230,7 +1020,227 @@ mjolnir_12.gat,0,0,0,0	monster	Thief Bug Female	1053,20,0,0,0
 
 
 //--------------------------------------------------------------
-// Niflheim Monster Spawns
+// Morroc Field Spawns - [Tsuyuki]
+//--------------------------------------------------------------
+
+moc_fild01.gat,0,0,0,0	monster	Baby Desert Wolf	1107,70,0,0,0
+moc_fild01.gat,0,0,0,0	monster	Ant Egg	1097,20,0,0,0
+moc_fild01.gat,0,0,0,0	monster	Peco Peco Egg	1047,20,0,0,0
+moc_fild01.gat,0,0,0,0	monster	Picky	1049,10,0,0,0
+moc_fild01.gat,0,0,0,0	monster	Drops	1113,30,0,0,0
+moc_fild01.gat,0,0,0,0	monster	Poring	1002,10,0,0,0
+moc_fild01.gat,194,51,10,10	monster	Yellow Plant	1081,10,900000,450000,1
+
+moc_fild02.gat,0,0,0,0	monster	Peco Peco	1019,70,0,0,0
+moc_fild02.gat,0,0,0,0	monster	Ant Egg	1097,10,0,0,0
+moc_fild02.gat,0,0,0,0	monster	Peco Peco Egg	1047,40,0,0,0
+moc_fild02.gat,0,0,0,0	monster	Picky	1049,10,0,0,0
+moc_fild02.gat,0,0,0,0	monster	Drops	1113,30,0,0,0
+moc_fild02.gat,89,315,0,0	monster	Yellow Plant	1081,1,180000,90000,1
+moc_fild02.gat,99,261,0,0	monster	Yellow Plant	1081,1,180000,90000,1
+moc_fild02.gat,94,195,0,0	monster	Yellow Plant	1081,1,180000,90000,1
+moc_fild02.gat,139,222,0,0	monster	Yellow Plant	1081,1,180000,90000,1
+moc_fild02.gat,132,307,0,0	monster	Yellow Plant	1081,1,180000,90000,1
+moc_fild02.gat,194,294,0,0	monster	Yellow Plant	1081,1,180000,90000,1
+moc_fild02.gat,275,241,0,0	monster	Yellow Plant	1081,1,180000,90000,1
+moc_fild02.gat,342,267,0,0	monster	Green Plant	1080,1,180000,90000,1
+moc_fild02.gat,359,215,0,0	monster	Green Plant	1080,1,180000,90000,1
+moc_fild02.gat,313,149,0,0	monster	Green Plant	1080,1,180000,90000,1
+moc_fild02.gat,230,62,0,0	monster	Green Plant	1080,1,180000,90000,1
+moc_fild02.gat,299,61,0,0	monster	Green Plant	1080,1,180000,90000,1
+moc_fild02.gat,353,103,0,0	monster	Green Plant	1080,1,180000,90000,1
+moc_fild02.gat,337,35,0,0	monster	Green Plant	1080,1,180000,90000,1
+
+moc_fild03.gat,0,0,0,0	monster	Elder Willow	1033,70,0,0,0
+moc_fild03.gat,0,0,0,0	monster	Greatest General	1277,30,0,0,0
+moc_fild03.gat,0,0,0,0	monster	Poporing	1031,20,0,0,0
+moc_fild03.gat,0,0,0,0	monster	Eggyra	1116,10,0,0,0
+moc_fild03.gat,0,0,0,0	monster	Willow	1010,20,0,0,0
+moc_fild03.gat,0,0,0,0	monster	Vagabond Wolf	1092,1,1800000,1200000,0
+moc_fild03.gat,77,311,5,5	monster	Green Plant	1080,2,180000,90000,1
+moc_fild03.gat,108,199,5,5	monster	Green Plant	1080,2,180000,90000,1
+moc_fild03.gat,96,65,5,5	monster	Green Plant	1080,2,180000,90000,1
+moc_fild03.gat,216,69,5,5	monster	Green Plant	1080,2,180000,90000,1
+moc_fild03.gat,261,161,5,5	monster	Green Plant	1080,2,180000,90000,1
+moc_fild03.gat,213,201,5,5	monster	Green Plant	1080,2,180000,90000,1
+moc_fild03.gat,200,263,5,5	monster	Green Plant	1080,2,180000,90000,1
+
+moc_fild04.gat,0,0,0,0	monster	Desert Wolf	1106,20,0,0,0
+moc_fild04.gat,0,0,0,0	monster	Scorpion	1001,30,0,0,0
+moc_fild04.gat,0,0,0,0	monster	Metaller	1058,20,0,0,0
+moc_fild04.gat,0,0,0,0	monster	Magnolia	1138,40,0,0,0
+moc_fild04.gat,0,0,0,0	monster	Ant Egg	1097,10,0,0,0
+moc_fild04.gat,0,0,0,0	monster	Andre	1095,20,0,0,0
+moc_fild04.gat,0,0,0,0	monster	Deniro	1105,20,0,0,0
+moc_fild04.gat,0,0,0,0	monster	Piere	1160,20,0,0,0
+moc_fild04.gat,313,84,10,10	monster	Yellow Plant	1081,10,900000,450000,1
+
+moc_fild05.gat,0,0,0,0	monster	Magnolia	1138,30,0,0,0
+moc_fild05.gat,0,0,0,0	monster	Metaller	1058,20,0,0,0
+moc_fild05.gat,0,0,0,0	monster	Golem	1040,70,0,0,0
+moc_fild05.gat,0,0,0,0	monster	Ant Egg	1097,10,0,0,0
+moc_fild05.gat,208,233,10,10	monster	Yellow Plant	1081,5,360000,180000,1
+
+moc_fild06.gat,0,0,0,0	monster	Peco Peco	1019,85,0,0,0
+moc_fild06.gat,0,0,0,0	monster	Muka	1055,30,0,0,0
+moc_fild06.gat,0,0,0,0	monster	Condor	1009,50,0,0,0
+moc_fild06.gat,0,0,0,0	monster	Magnolia	1138,10,0,0,0
+moc_fild06.gat,0,0,0,0	monster	Ant Egg	1097,10,0,0,0
+moc_fild06.gat,193,203,10,10	monster	Yellow Plant	1081,10,900000,450000,1
+
+moc_fild07.gat,0,0,0,0	monster	Drops	1113,70,0,0,0
+moc_fild07.gat,0,0,0,0	monster	Peco Peco Egg	1047,50,0,0,0
+moc_fild07.gat,0,0,0,0	monster	Picky	1050,30,0,0,0
+moc_fild07.gat,0,0,0,0	monster	Picky	1049,30,0,0,0
+moc_fild07.gat,162,333,12,12	monster	Yellow Plant	1081,5,360000,180000,1
+
+moc_fild08.gat,0,0,0,0	monster	Magnolia	1138,30,0,0,0
+moc_fild08.gat,0,0,0,0	monster	Scorpion	1001,80,0,0,0
+moc_fild08.gat,0,0,0,0	monster	Desert Wolf	1106,30,0,0,0
+moc_fild08.gat,0,0,0,0	monster	Anacondaq	1030,30,0,0,0
+moc_fild08.gat,0,0,0,0	monster	Baby Desert Wolf	1107,10,0,0,0
+moc_fild08.gat,0,0,0,0	monster	Drops	1113,10,0,0,0
+
+moc_fild09.gat,0,0,0,0	monster	Desert Wolf	1106,10,0,0,0
+moc_fild09.gat,0,0,0,0	monster	Metaller	1058,70,0,0,0
+moc_fild09.gat,0,0,0,0	monster	Magnolia	1138,50,0,0,0
+moc_fild09.gat,0,0,0,0	monster	Ant Egg	1097,10,0,0,0
+moc_fild09.gat,0,0,0,0	monster	Andre	1095,5,0,0,0
+moc_fild09.gat,0,0,0,0	monster	Deniro	1105,5,0,0,0
+moc_fild09.gat,0,0,0,0	monster	Piere	1160,5,0,0,0
+moc_fild09.gat,0,0,0,0	monster	Ant Egg	1097,10,0,0,0
+moc_fild09.gat,0,0,0,0	monster	Frilldora	1119,6,0,0,0
+moc_fild09.gat,332,341,5,5	monster	Yellow Plant	1081,2,180000,90000,1
+moc_fild09.gat,240,313,5,5	monster	Yellow Plant	1081,2,180000,90000,1
+moc_fild09.gat,305,62,5,5	monster	Yellow Plant	1081,2,180000,90000,1
+moc_fild09.gat,64,78,5,5	monster	Yellow Plant	1081,2,180000,90000,1
+moc_fild09.gat,54,325,5,5	monster	Yellow Plant	1081,2,180000,90000,1
+
+moc_fild10.gat,0,0,0,0	monster	Drops	1113,30,0,0,0
+moc_fild10.gat,0,0,0,0	monster	Peco Peco Egg	1047,70,0,0,0
+moc_fild10.gat,0,0,0,0	monster	Picky	1049,50,0,0,0
+moc_fild10.gat,0,0,0,0	monster	Picky	1050,50,0,0,0
+moc_fild10.gat,0,0,0,0	monster	Magnolia	1138,1,0,0,0
+moc_fild10.gat,0,0,0,0	monster	Ant Egg	1097,10,0,0,0
+moc_fild10.gat,198,150,40,30	monster	Yellow Plant	1081,10,180000,90000,1
+moc_fild10.gat,198,150,40,30	monster	Green Plant	1080,5,180000,90000,1
+
+moc_fild11.gat,0,0,0,0	monster	Hode	1127,10,0,0,0
+moc_fild11.gat,0,0,0,0	monster	Golem	1040,70,0,0,0
+moc_fild11.gat,0,0,0,0	monster	Andre	1095,10,0,0,0
+moc_fild11.gat,0,0,0,0	monster	Deniro	1105,10,0,0,0
+moc_fild11.gat,0,0,0,0	monster	Piere	1160,10,0,0,0
+moc_fild11.gat,0,0,0,0	monster	Ant Egg	1097,10,0,0,0
+moc_fild11.gat,0,0,0,0	monster	Magnolia	1138,20,0,0,0
+moc_fild11.gat,0,0,0,0	monster	Muka	1055,20,0,0,0
+moc_fild11.gat,197,216,0,0	monster	Shining Plant	1083,1,1800000,900000,1
+
+moc_fild12.gat,0,0,0,0	monster	Picky	1050,50,0,0,0
+moc_fild12.gat,0,0,0,0	monster	Picky	1049,50,0,0,0
+moc_fild12.gat,0,0,0,0	monster	Peco Peco Egg	1047,35,0,0,0
+moc_fild12.gat,0,0,0,0	monster	Drops	1113,35,0,0,0
+moc_fild12.gat,181,336,40,20	monster	Yellow Plant	1081,10,180000,90000,1
+
+moc_fild13.gat,0,0,0,0	monster	Desert Wolf	1106,30,0,0,0
+moc_fild13.gat,0,0,0,0	monster	Anacondaq	1030,75,0,0,0
+moc_fild13.gat,0,0,0,0	monster	Boa	1025,30,0,0,0
+moc_fild13.gat,0,0,0,0	monster	Side Winder	1037,5,0,0,0
+moc_fild13.gat,0,0,0,0	monster	Poporing	1031,20,0,0,0
+moc_fild13.gat,0,0,0,0	monster	Drops	1113,10,0,0,0
+moc_fild13.gat,280,99,0,0	monster	Red Mushroom	1085,1,180000,90000,1
+moc_fild13.gat,264,64,0,0	monster	Red Mushroom	1085,1,180000,90000,1
+moc_fild13.gat,305,91,0,0	monster	Red Mushroom	1085,1,180000,90000,1
+moc_fild13.gat,264,136,0,0	monster	Red Mushroom	1085,1,180000,90000,1
+moc_fild13.gat,282,155,0,0	monster	Red Mushroom	1085,1,180000,90000,1
+moc_fild13.gat,265,197,0,0	monster	Red Mushroom	1085,1,180000,90000,1
+moc_fild13.gat,284,227,0,0	monster	Red Mushroom	1085,1,180000,90000,1
+moc_fild13.gat,304,244,0,0	monster	Red Mushroom	1085,1,180000,90000,1
+moc_fild13.gat,266,289,0,0	monster	Red Mushroom	1085,1,180000,90000,1
+moc_fild13.gat,307,307,0,0	monster	Red Mushroom	1085,1,180000,90000,1
+moc_fild13.gat,281,333,0,0	monster	Red Mushroom	1085,1,180000,90000,1
+moc_fild13.gat,304,333,0,0	monster	Red Mushroom	1085,1,180000,90000,1
+moc_fild13.gat,295,358,0,0	monster	Red Mushroom	1085,1,180000,90000,1
+moc_fild13.gat,84,329,0,0	monster	Yellow Plant	1081,1,180000,90000,1
+moc_fild13.gat,93,301,0,0	monster	Yellow Plant	1081,1,180000,90000,1
+moc_fild13.gat,101,297,0,0	monster	Yellow Plant	1081,1,180000,90000,1
+moc_fild13.gat,89,92,0,0	monster	Yellow Plant	1081,1,180000,90000,1
+moc_fild13.gat,108,150,0,0	monster	Yellow Plant	1081,1,180000,90000,1
+moc_fild13.gat,109,168,0,0	monster	Yellow Plant	1081,1,180000,90000,1
+moc_fild13.gat,101,185,5,5	monster	Yellow Plant	1081,3,180000,90000,1
+moc_fild13.gat,106,258,5,5	monster	Yellow Plant	1081,3,180000,90000,1
+moc_fild13.gat,161,273,5,5	monster	Yellow Plant	1081,3,180000,90000,1
+
+moc_fild14.gat,0,0,0,0	monster	Desert Wolf	1106,80,0,0,0
+moc_fild14.gat,0,0,0,0	monster	Side Winder	1037,20,0,0,0
+moc_fild14.gat,0,0,0,0	monster	Baby Desert Wolf	1107,40,0,0,0
+moc_fild14.gat,0,0,0,0	monster	Magnolia	1138,25,0,0,0
+moc_fild14.gat,124,93,5,5	monster	Shining Plant	1083,1,1800000,900000,1
+moc_fild14.gat,85,271,0,0	monster	Yellow Plant	1081,1,180000,90000,1
+moc_fild14.gat,165,282,0,0	monster	Yellow Plant	1081,1,180000,90000,1
+moc_fild14.gat,149,333,0,0	monster	Yellow Plant	1081,1,180000,90000,1
+moc_fild14.gat,64,342,0,0	monster	Yellow Plant	1081,1,180000,90000,1
+moc_fild14.gat,160,366,0,0	monster	Yellow Plant	1081,1,180000,90000,1
+
+moc_fild15.gat,0,0,0,0	monster	Hode	1127,30,0,0,0
+moc_fild15.gat,0,0,0,0	monster	Scorpion	1001,10,0,0,0
+moc_fild15.gat,0,0,0,0	monster	Desert Wolf	1106,10,0,0,0
+moc_fild15.gat,0,0,0,0	monster	Magnolia	1138,25,0,0,0
+moc_fild15.gat,0,0,0,0	monster	Andre	1095,40,0,0,0
+moc_fild15.gat,0,0,0,0	monster	Ant Egg	1097,10,0,0,0
+moc_fild15.gat,0,0,0,0	monster	Phreeoni	1159,1,7200000,3600000,1
+moc_fild15.gat,40,126,0,0	monster	Yellow Plant	1081,1,180000,90000,1
+moc_fild15.gat,57,39,0,0	monster	Yellow Plant	1081,1,180000,90000,1
+moc_fild15.gat,46,250,0,0	monster	Yellow Plant	1081,1,180000,90000,1
+moc_fild15.gat,104,347,0,0	monster	Yellow Plant	1081,1,180000,90000,1
+moc_fild15.gat,195,373,0,0	monster	Yellow Plant	1081,1,180000,90000,1
+moc_fild15.gat,341,365,0,0	monster	Yellow Plant	1081,1,180000,90000,1
+moc_fild15.gat,353,230,0,0	monster	Yellow Plant	1081,1,180000,90000,1
+moc_fild15.gat,341,164,0,0	monster	Yellow Plant	1081,1,180000,90000,1
+moc_fild15.gat,370,85,0,0	monster	Yellow Plant	1081,1,180000,90000,1
+moc_fild15.gat,158,144,0,0	monster	Yellow Plant	1081,1,180000,90000,1
+moc_fild15.gat,232,126,0,0	monster	Yellow Plant	1081,1,180000,90000,1
+moc_fild15.gat,294,74,0,0	monster	Yellow Plant	1081,1,180000,90000,1
+
+moc_fild16.gat,0,0,0,0	monster	Sandman	1165,70,0,0,0
+moc_fild16.gat,0,0,0,0	monster	Hode	1127,30,0,0,0
+moc_fild16.gat,0,0,0,0	monster	Magnolia	1138,25,0,0,0
+moc_fild16.gat,0,0,0,0	monster	Andre	1095,10,0,0,0
+moc_fild16.gat,0,0,0,0	monster	Deniro	1105,20,0,0,0
+moc_fild16.gat,0,0,0,0	monster	Ant Egg	1097,10,0,0,0
+
+moc_fild17.gat,0,0,0,0	monster	Hode	1127,100,0,0,0
+moc_fild17.gat,0,0,0,0	monster	Steel Chonchon	1042,30,0,0,0
+moc_fild17.gat,0,0,0,0	monster	Magnolia	1138,15,0,0,0
+moc_fild17.gat,0,0,0,0	monster	Frilldora	1119,25,0,0,0
+moc_fild17.gat,0,0,0,0	monster	Ant Egg	1097,10,0,0,0
+moc_fild17.gat,0,0,0,0	monster	Scorpion	1001,5,0,0,0
+moc_fild17.gat,40,258,0,0	monster	Yellow Plant	1081,1,180000,90000,1
+moc_fild17.gat,144,151,0,0	monster	Yellow Plant	1081,1,180000,90000,1
+moc_fild17.gat,243,138,0,0	monster	Yellow Plant	1081,1,180000,90000,1
+moc_fild17.gat,270,106,0,0	monster	Blue Plant	1079,1,180000,90000,1
+moc_fild17.gat,335,191,0,0	monster	Yellow Plant	1081,1,180000,90000,1
+moc_fild17.gat,347,224,0,0	monster	Yellow Plant	1081,1,180000,90000,1
+moc_fild17.gat,359,258,0,0	monster	Yellow Plant	1081,1,180000,90000,1
+
+moc_fild18.gat,0,0,0,0	monster	Steel Chonchon	1042,70,0,0,0
+moc_fild18.gat,0,0,0,0	monster	Chonchon	1011,40,0,0,0
+moc_fild18.gat,0,0,0,0	monster	Muka	1055,80,0,0,0
+moc_fild18.gat,0,0,0,0	monster	Metaller	1058,10,0,0,0
+moc_fild18.gat,0,0,0,0	monster	Ant Egg	1097,5,0,0,0
+moc_fild18.gat,0,0,0,0	monster	Dragon Fly	1091,1,3600000,1800000,1
+moc_fild18.gat,0,0,0,0	monster	Hunter Fly	1035,1,7200000,3600000,1
+moc_fild18.gat,143,352,0,0	monster	Yellow Plant	1081,1,180000,90000,1
+moc_fild18.gat,72,333,0,0	monster	Yellow Plant	1081,1,180000,90000,1
+moc_fild18.gat,119,285,0,0	monster	Yellow Plant	1081,1,180000,90000,1
+moc_fild18.gat,71,210,0,0	monster	Yellow Plant	1081,1,180000,90000,1
+moc_fild18.gat,135,119,0,0	monster	Yellow Plant	1081,1,180000,90000,1
+moc_fild18.gat,230,144,0,0	monster	Yellow Plant	1081,1,180000,90000,1
+moc_fild18.gat,325,207,0,0	monster	Yellow Plant	1081,1,180000,90000,1
+moc_fild18.gat,325,272,0,0	monster	Yellow Plant	1081,1,180000,90000,1
+
+
+//--------------------------------------------------------------
+// Niflheim Field Spawns - [Tsuyuki]
 //--------------------------------------------------------------
 
 nif_fild01.gat,0,0,0,0	monster	Disguise	1506,20,0,0,0
@@ -1257,21 +1267,15 @@ nif_fild02.gat,0,0,0,0	monster	Dullahan	1504,5,0,0,0
 nif_fild02.gat,0,0,0,0	monster	Heirozoist	1510,6,0,0,0
 nif_fild02.gat,0,0,0,0	monster	Gibbet	1503,10,0,0,0
 
-niflheim.gat,0,0,0,0	monster	Dullahan	1504,5,1800000,1200000,0
-niflheim.gat,0,0,0,0	monster	Gibbet	1503,10,1200000,600000,0
-niflheim.gat,0,0,0,0	monster	Heirozoist	1510,10,1200000,600000,0
-niflheim.gat,0,0,0,0	monster	Quve	1508,20,300000,150000,0
-niflheim.gat,0,0,0,0	monster	Lude	1509,20,300000,150000,0
-
 
 //--------------------------------------------------------------
-// Payon Field Monster Spawns
+// Payon Field Spawns - [Tsuyuki]
 //--------------------------------------------------------------
 
-pay_fild01.gat,0,0,0,0	monster	Willow	1010,50,0,0,0
+pay_fild01.gat,0,0,0,0	monster	Willow	1010,10,0,0,0
 pay_fild01.gat,0,0,0,0	monster	Poporing	1031,10,0,0,0
-pay_fild01.gat,0,0,0,0	monster	Poring	1002,60,0,0,0
-pay_fild01.gat,0,0,0,0	monster	Spore	1014,20,0,0,0
+pay_fild01.gat,0,0,0,0	monster	Poring	1002,10,0,0,0
+pay_fild01.gat,0,0,0,0	monster	Spore	1014,100,0,0,0
 pay_fild01.gat,340,89,0,0	monster	Black Mushroom	1084,1,180000,90000,1
 pay_fild01.gat,336,116,0,0	monster	Black Mushroom	1084,1,180000,90000,1
 pay_fild01.gat,231,258,0,0	monster	Black Mushroom	1084,1,180000,90000,1
@@ -1320,7 +1324,7 @@ pay_fild05.gat,0,0,0,0	monster	Poison Spore	1077,65,0,0,0
 pay_fild05.gat,95,147,5,5	monster	Green Plant	1080,4,900000,450000,1
 pay_fild05.gat,86,90,5,5	monster	Green Plant	1080,4,900000,450000,1
 
-pay_fild06.gat,0,0,0,0	monster	Wormtail	1024,70,0,0,0
+pay_fild06.gat,0,0,0,0	monster	Wormtail	1024,90,0,0,0
 pay_fild06.gat,0,0,0,0	monster	Spore	1014,20,0,0,0
 pay_fild06.gat,0,0,0,0	monster	Poporing	1031,20,0,0,0
 pay_fild06.gat,0,0,0,0	monster	Thief Bug Female	1053,40,0,0,0
@@ -1336,27 +1340,22 @@ pay_fild07.gat,0,0,0,0	monster	Bigfoot	1060,30,0,0,0
 pay_fild07.gat,171,331,20,20	monster	Green Plant	1080,8,900000,450000,1
 
 pay_fild08.gat,0,0,0,0	monster	Poring	1002,30,0,0,0
-pay_fild08.gat,0,0,0,0	monster	Willow	1010,70,0,0,0
+pay_fild08.gat,0,0,0,0	monster	Willow	1010,50,0,0,0
 pay_fild08.gat,0,0,0,0	monster	Pupa	1008,20,0,0,0
-pay_fild08.gat,0,0,0,0	monster	Spore	1014,50,0,0,0
+pay_fild08.gat,0,0,0,0	monster	Spore	1014,70,0,0,0
 pay_fild08.gat,0,0,0,0	monster	Green Plant	1080,10,60000,30000,1
 pay_fild08.gat,143,156,40,40	monster	Shining Plant	1083,1,3600000,1800000,1
 
-pay_fild09.gat,0,0,0,0	monster	Spore	1014,20,0,0,0
-pay_fild09.gat,0,0,0,0	monster	Wormtail	1024,20,0,0,0
 pay_fild09.gat,0,0,0,0	monster	Poporing	1031,20,0,0,0
-pay_fild09.gat,0,0,0,0	monster	Boa	1025,30,0,0,0
-pay_fild09.gat,0,0,0,0	monster	Sohee	1170,3,0,0,0
-pay_fild09.gat,0,0,0,0	monster	Smokie	1056,50,0,0,0
-pay_fild09.gat,0,0,0,0	monster	Bigfoot	1060,50,0,0,0
+pay_fild09.gat,0,0,0,0	monster	Smokie	1056,80,0,0,0
+pay_fild09.gat,0,0,0,0	monster	Bigfoot	1060,70,0,0,0
 pay_fild09.gat,198,217,30,30	monster	Green Plant	1080,10,360000,180000,0
 pay_fild09.gat,198,217,30,30	monster	Shining Plant	1083,1,1800000,900000,1
 
 pay_fild10.gat,0,0,0,0	monster	Greatest General	1277,65,0,0,0
-pay_fild10.gat,0,0,0,0	monster	Horong	1129,40,0,0,0
+pay_fild10.gat,0,0,0,0	monster	Dokebi	1110,70,0,0,0
 pay_fild10.gat,0,0,0,0	monster	Poison Spore	1077,20,0,0,0
-pay_fild10.gat,0,0,0,0	monster	Poporing	1031,30,0,0,0
-pay_fild10.gat,0,0,0,0	monster	Nine Tail	1180,3,0,0,0
+pay_fild10.gat,0,0,0,0	monster	Nine Tail	1180,2,0,0,0
 pay_fild10.gat,0,0,0,0	monster	Nine Tail	1180,1,1800000,900000,1
 pay_fild10.gat,0,0,0,0	monster	Nine Tail	1180,1,900000,450000,1
 pay_fild10.gat,213,157,10,10	monster	Green Plant	1080,5,360000,180000,1
@@ -1366,27 +1365,24 @@ pay_fild10.gat,213,157,10,10	monster	Blue Plant	1079,1,360000,180000,1
 pay_fild10.gat,281,307,10,10	monster	Blue Plant	1079,1,360000,180000,1
 pay_fild10.gat,66,332,10,10	monster	Blue Plant	1079,1,360000,180000,1
 
-pay_fild11.gat,0,0,0,0	monster	Horong	1129,50,0,0,0
 pay_fild11.gat,0,0,0,0	monster	Greatest General	1277,30,0,0,0
-pay_fild11.gat,0,0,0,0	monster	Elder Willow	1033,10,0,0,0
-pay_fild11.gat,0,0,0,0	monster	Nine-Tail	1180,25,0,0,0
-pay_fild11.gat,0,0,0,0	monster	Poporing	1031,20,0,0,0
-pay_fild11.gat,0,0,0,0	monster	Dragon Tail	1321,10,0,0,0
+pay_fild11.gat,0,0,0,0	monster	Nine Tail	1180,60,180000,0,0
+pay_fild11.gat,0,0,0,0	monster	Dragon Tail	1321,50,180000,0,0
 pay_fild11.gat,0,0,0,0	monster	Eddga	1115,1,7200000,3600000,1
 pay_fild11.gat,241,162,5,5	monster	Red Mushroom	1085,3,360000,180000,1
 pay_fild11.gat,66,293,5,5	monster	Red Mushroom	1085,3,360000,180000,1
 
 
 //--------------------------------------------------------------
-// Prontera Field Monster Spawns
+// Prontera Field Spawns - [Tsuyuki]
 //--------------------------------------------------------------
 
 prt_fild00.gat,0,0,0,0	monster	Creamy	1018,10,0,0,0
 prt_fild00.gat,0,0,0,0	monster	Fabre	1007,20,0,0,0
-prt_fild00.gat,0,0,0,0	monster	Pupa	1008,50,0,0,0
+prt_fild00.gat,0,0,0,0	monster	Pupa	1008,30,0,0,0
 prt_fild00.gat,0,0,0,0	monster	Lunatic	1063,30,0,0,0
 prt_fild00.gat,0,0,0,0	monster	Poring	1002,40,0,0,0
-prt_fild00.gat,0,0,0,0	monster	Hornet	1004,40,0,0,0
+prt_fild00.gat,0,0,0,0	monster	Hornet	1004,70,0,0,0
 prt_fild00.gat,227,212,0,0	monster	Shining Plant	1083,1,1800000,900000,1
 prt_fild00.gat,285,138,10,10	monster	Green Plant	1080,5,360000,180000,1
 
@@ -1407,15 +1403,14 @@ prt_fild02.gat,0,0,0,0	monster	Eclipse	1093,1,1800000,1200000,0
 prt_fild02.gat,339,309,3,3	monster	Shining Plant	1083,1,1800000,900000,1
 prt_fild02.gat,0,0,0,0	monster	Shining Plant	1083,2,1800000,900000,1
 
-prt_fild03.gat,0,0,0,0	monster	Yoyo	1057,70,0,0,0
+prt_fild03.gat,0,0,0,0	monster	Yoyo	1057,80,0,0,0
 prt_fild03.gat,0,0,0,0	monster	Smokie	1056,40,0,0,0
-prt_fild03.gat,0,0,0,0	monster	Choco	1214,3,1800000,900000,0
-prt_fild03.gat,0,0,0,0	monster	Fabre	1007,10,0,0,0
-prt_fild03.gat,0,0,0,0	monster	Poporing	1031,30,0,0,0
+prt_fild03.gat,0,0,0,0	monster	Choco	1214,1,0,0,0
+prt_fild03.gat,0,0,0,0	monster	Poporing	1031,10,0,0,0
 prt_fild03.gat,296,58,15,15	monster	Green Plant	1080,5,180000,90000,1
 prt_fild03.gat,296,58,15,15	monster	Blue Plant	1079,2,900000,450000,1
 prt_fild03.gat,307,75,5,5	monster	Green Plant	1080,5,360000,180000,1
-prt_fild03.gat,0,0,0,0	monster	Green Plant	1080,5,360000,180000,1
+prt_fild03.gat,147,319,5,5	monster	Green Plant	1080,5,360000,180000,1
 prt_fild03.gat,148,107,5,5	monster	Green Plant	1080,5,360000,180000,1
 
 prt_fild04.gat,0,0,0,0	monster	Rocker	1052,70,0,0,0
@@ -1440,8 +1435,9 @@ prt_fild06.gat,0,0,0,0	monster	Pupa	1008,20,0,0,0
 prt_fild06.gat,0,0,0,0	monster	Poring	1002,60,0,0,0
 prt_fild06.gat,222,30,40,10	monster	Green Plant	1080,15,900000,450000,1
 
-prt_fild07.gat,0,0,0,0	monster	Rocker	1052,70,0,0,0
+prt_fild07.gat,0,0,0,0	monster	Rocker	1052,80,0,0,0
 prt_fild07.gat,0,0,0,0	monster	Poporing	1031,30,0,0,0
+prt_fild07.gat,0,0,0,0	monster	Vocal	1088,1,1800000,1200000,0
 prt_fild07.gat,225,110,5,5	monster	Black Mushroom	1084,3,360000,180000,1
 
 prt_fild08.gat,0,0,0,0	monster	Lunatic	1063,40,0,0,0
@@ -1475,90 +1471,89 @@ prt_fild11.gat,0,0,0,0	monster	Red Mushroom	1085,10,180000,90000,1
 
 
 //--------------------------------------------------------------
-// Rachel Field Monster Spawns
+// Rachel Field Spawns - [Tsuyuki]
 //--------------------------------------------------------------
 
-ra_fild01.gat,0,0,0,0	monster	Muscipular	1780,50,0,0,0
-ra_fild01.gat,0,0,0,0	monster	Geographer	1368,30,0,0,0
-ra_fild01.gat,0,0,0,0	monster	Drosera	1781,20,0,0,0
-ra_fild01.gat,0,0,0,0	monster	Roween	1782,10,0,0,0
-ra_fild01.gat,0,0,0,0	monster	Gryphon	1259,3,3600000,1800000,1
-ra_fild01.gat,0,0,0,0	monster	Galion	1783,2,0,0,0
+ra_fild01.gat,0,0,0,0	monster	Muscipular	1780,60,0,0,1
+ra_fild01.gat,173,170,106,80	monster	Geographer	1368,30,300000,120000,1
+ra_fild01.gat,0,0,0,0	monster	Drosera	1781,20,0,0,1
+ra_fild01.gat,0,0,0,0	monster	Galion	1783,5,0,0,0
+ra_fild01.gat,0,0,0,0	monster	Gryphon	1259,3,3600000,0,1
 
-ra_fild02.gat,0,0,0,0	monster	Muscipular	1780,40,0,0,0
-ra_fild02.gat,0,0,0,0	monster	Galion	1783,20,0,0,0
+ra_fild02.gat,0,0,0,0	monster	Muscipular	1780,60,0,0,0
 ra_fild02.gat,0,0,0,0	monster	Drosera	1781,20,0,0,0
-ra_fild02.gat,0,0,0,0	monster	Atroce	1785,1,14400000,7200000,1
+ra_fild02.gat,0,0,0,0	monster	Galion	1783,15,0,0,0
+ra_fild02.gat,0,0,0,0	monster	Atroce	1785,1,14400000,10800000,1
 
-ra_fild03.gat,0,0,0,0	monster	Galion	1783,30,0,0,0
+ra_fild03.gat,0,0,0,0	monster	Galion	1783,35,0,0,0
+ra_fild03.gat,0,0,0,0	monster	Drosera	1781,10,0,0,1
 ra_fild03.gat,0,0,0,0	monster	Roween	1782,10,0,0,0
-ra_fild03.gat,0,0,0,0	monster	Drosera	1781,10,0,0,0
 ra_fild03.gat,0,0,0,0	monster	Stapo	1784,10,0,0,0
-ra_fild03.gat,0,0,0,0	monster	Atroce	1785,1,10800000,5400000,1
+ra_fild03.gat,0,0,0,0	monster	Atroce	1785,1,10800000,10200000,1
 
 ra_fild04.gat,0,0,0,0	monster	Roween	1782,60,0,0,0
+ra_fild04.gat,0,0,0,0	monster	Galion	1783,3,0,0,0
 ra_fild04.gat,0,0,0,0	monster	Stapo	1784,20,0,0,0
 ra_fild04.gat,0,0,0,0	monster	Wild Rose	1261,10,0,0,0
-ra_fild04.gat,0,0,0,0	monster	Galion	1783,3,0,0,0
-ra_fild04.gat,0,0,0,0	monster	Atroce	1785,1,18000000,9000000,1
+ra_fild04.gat,0,0,0,0	monster	Atroce	1785,1,18000000,10200000,1
 
-ra_fild05.gat,0,0,0,0	monster	Hill Wind	1680,50,0,0,0
-ra_fild05.gat,0,0,0,0	monster	Drosera	1781,25,0,0,0
-ra_fild05.gat,0,0,0,0	monster	Geographer	1368,15,0,0,0
+ra_fild05.gat,0,0,0,0	monster	Hill Wind	1680,70,0,0,0
+ra_fild05.gat,0,0,0,0	monster	Drosera	1781,20,0,0,0
+ra_fild05.gat,170,200,106,115	monster	Geographer	1368,10,0,0,1
 
-ra_fild06.gat,0,0,0,0	monster	Hill Wind	1680,30,0,0,0
+ra_fild06.gat,0,0,0,0	monster	Hill Wind	1680,50,0,0,0
 ra_fild06.gat,0,0,0,0	monster	Anopheles	1627,20,0,0,0
-ra_fild06.gat,0,0,0,0	monster	Drosera	1781,10,0,0,0
+ra_fild06.gat,0,0,0,0	monster	Drosera	1781,10,0,0,1
 
-ra_fild07.gat,0,0,0,0	monster	Roween	1782,40,0,0,0
-ra_fild07.gat,0,0,0,0	monster	Stapo	1784,30,0,0,0
+ra_fild07.gat,0,0,0,0	monster	Roween	1782,50,0,0,0
 ra_fild07.gat,0,0,0,0	monster	Galion	1783,20,0,0,0
+ra_fild07.gat,0,0,0,0	monster	Stapo	1784,10,0,0,1
 
-ra_fild08.gat,0,0,0,0	monster	Stapo	1784,60,0,0,0
-ra_fild08.gat,0,0,0,0	monster	Drops	1113,30,0,0,0
-ra_fild08.gat,0,0,0,0	monster	Drosera	1781,15,0,0,0
+ra_fild08.gat,0,0,0,0	monster	Stapo	1784,100,0,0,1
+ra_fild08.gat,0,0,0,0	monster	Drops	1113,40,0,0,0
+ra_fild08.gat,0,0,0,0	monster	Drosera	1781,20,0,0,1
 
-ra_fild09.gat,0,0,0,0	monster	Drosera	1781,60,0,0,0
+ra_fild09.gat,0,0,0,0	monster	Drosera	1781,60,0,0,1
 ra_fild09.gat,0,0,0,0	monster	Metaling	1613,20,0,0,0
 ra_fild09.gat,0,0,0,0	monster	Hill Wind	1680,10,0,0,0
-ra_fild09.gat,0,0,0,0	monster	Harpy	1376,1,0,0,0
+ra_fild09.gat,0,0,0,0	monster	Harpy	1376,1,3600000,0,0
 
-ra_fild10.gat,0,0,0,0	monster	Stapo	1784,35,0,0,0
-ra_fild10.gat,0,0,0,0	monster	Galion	1783,15,0,0,0
+ra_fild10.gat,0,0,0,0	monster	Galion	1783,20,0,0,0
+ra_fild10.gat,0,0,0,0	monster	Stapo	1784,30,0,0,1
 ra_fild10.gat,0,0,0,0	monster	Roween	1782,10,0,0,0
 
-ra_fild11.gat,0,0,0,0	monster	Drops	1113,35,0,0,0
-ra_fild11.gat,0,0,0,0	monster	Stapo	1784,25,0,0,0
-ra_fild11.gat,0,0,0,0	monster	Roween	1782,10,0,0,0
-ra_fild11.gat,0,0,0,0	monster	Red Plant	1078,10,180000,90000,1
-ra_fild11.gat,0,0,0,0	monster	Yellow Plant	1081,10,180000,90000,1
+ra_fild11.gat,0,0,0,0	monster	Drops	1113,100,0,0,1
+ra_fild11.gat,0,0,0,0	monster	Stapo	1784,40,0,0,0
+ra_fild11.gat,0,0,0,0	monster	Roween	1782,2,0,0,0
+ra_fild11.gat,0,0,0,0	monster	Yellow Plant	1081,15,0,0,1
+ra_fild11.gat,0,0,0,0	monster	Red Plant	1078,5,0,0,1
 
-ra_fild12.gat,0,0,0,0	monster	Drops	1113,65,0,0,0
-ra_fild12.gat,0,0,0,0	monster	Stapo	1784,40,0,0,0
+ra_fild12.gat,0,0,0,0	monster	Drops	1113,100,0,0,0
 ra_fild12.gat,0,0,0,0	monster	Poporing	1031,5,0,0,0
-ra_fild12.gat,0,0,0,0	monster	Yellow Plant	1081,15,180000,90000,1
-ra_fild12.gat,0,0,0,0	monster	Red Plant	1078,5,180000,90000,1
+ra_fild12.gat,0,0,0,0	monster	Stapo	1784,40,0,0,1
+ra_fild12.gat,0,0,0,0	monster	Yellow Plant	1081,15,0,0,1
+ra_fild12.gat,0,0,0,0	monster	Red Plant	1078,5,0,0,1
 
-ra_fild13.gat,0,0,0,0	monster	Stapo	1784,60,0,0,0
+ra_fild13.gat,0,0,0,0	monster	Stapo	1784,60,0,0,1
 ra_fild13.gat,0,0,0,0	monster	Drops	1113,40,0,0,0
 ra_fild13.gat,0,0,0,0	monster	Roween	1782,5,0,0,0
 
 
 //--------------------------------------------------------------
-// Umbala Field Monster Spawns
+// Umbala Field Spawns - [Tsuyuki]
 //--------------------------------------------------------------
 
-um_fild01.gat,0,0,0,0	monster	Dryad	1493,40,0,0,0
-um_fild01.gat,0,0,0,0	monster	Stem Worm	1215,30,0,0,0
-um_fild01.gat,0,0,0,0	monster	Harpy	1376,2,0,0,0
-um_fild01.gat,0,0,0,0	monster	Dustiness	1114,20,0,0,0
 um_fild01.gat,0,0,0,0	monster	Wootan Fighter	1499,10,0,0,0
+um_fild01.gat,0,0,0,0	monster	Stem Worm	1215,15,0,0,0
+um_fild01.gat,0,0,0,0	monster	Harpy	1376,2,0,0,0
+um_fild01.gat,0,0,0,0	monster	Dryad	1493,65,0,0,0
+um_fild01.gat,0,0,0,0	monster	Dustiness	1114,10,0,0,0
 um_fild01.gat,0,0,0,0	monster	Green Plant	1080,10,180000,90000,1
 um_fild01.gat,0,0,0,0	monster	Yellow Plant	1081,10,180000,90000,1
-um_fild01.gat,0,0,0,0	monster	Shining Plant	1083,6,180000,90000,1
+um_fild01.gat,0,0,0,0	monster	Shining Plant	1083,5,180000,90000,1
 
 um_fild02.gat,0,0,0,0	monster	Coco	1104,10,0,0,0
-um_fild02.gat,0,0,0,0	monster	Choco	1214,3,0,0,0
+um_fild02.gat,0,0,0,0	monster	Choco	1214,5,0,0,0
 um_fild02.gat,0,0,0,0	monster	Beetle King	1494,30,0,0,0
 um_fild02.gat,0,0,0,0	monster	Dustiness	1114,20,0,0,0
 um_fild02.gat,0,0,0,0	monster	Wootan Fighter	1499,26,0,0,0
@@ -1591,12 +1586,10 @@ um_fild02.gat,360,320,20,30	monster	Flora	1118,3,180000,120000,0
 um_fild02.gat,0,0,0,0	monster	Red Plant	1078,5,180000,90000,1
 um_fild02.gat,0,0,0,0	monster	Yellow Plant	1081,5,180000,90000,1
 
-um_fild03.gat,0,0,0,0	monster	Parasite	1500,60,0,0,0
-um_fild03.gat,0,0,0,0	monster	Dragon Tail	1321,45,0,0,0
-um_fild03.gat,0,0,0,0	monster	Alligator	1271,15,0,0,0
-um_fild03.gat,0,0,0,0	monster	Stainer	1174,10,0,0,0
+um_fild03.gat,0,0,0,0	monster	Parasite	1500,95,0,0,0
+um_fild03.gat,0,0,0,0	monster	Dragon Tail	1321,20,0,0,0
+um_fild03.gat,0,0,0,0	monster	Alligator	1271,10,0,0,0
 um_fild03.gat,0,0,0,0	monster	Gryphon	1259,1,3500000,1900000,0
-um_fild03.gat,0,0,0,0	monster	Pest	1256,2,0,0,0
 um_fild03.gat,0,0,0,0	monster	Blue Plant	1079,5,180000,90000,1
 um_fild03.gat,0,0,0,0	monster	Green Plant	1080,10,180000,90000,1
 um_fild03.gat,0,0,0,0	monster	Shining Plant	1083,2,180000,90000,1
@@ -1605,14 +1598,12 @@ um_fild04.gat,0,0,0,0	monster	Beetle King	1494,30,0,0,0
 um_fild04.gat,0,0,0,0	monster	Horn	1128,15,0,0,0
 um_fild04.gat,0,0,0,0	monster	Choco	1214,2,0,0,0
 um_fild04.gat,0,0,0,0	monster	Wootan Shooter	1498,7,0,0,0
-um_fild04.gat,264,293,10,10	monster	Beetle King	1494,4,120000,60000,0
 um_fild04.gat,264,293,10,10	monster	Horn	1128,2,1200000,60000,0
+um_fild04.gat,264,293,10,10	monster	Beetle King	1494,4,120000,60000,0
 um_fild04.gat,121,239,10,10	monster	Beetle King	1494,2,120000,60000,0
 um_fild04.gat,91,79,10,10	monster	Beetle King	1494,2,120000,60000,0
-um_fild04.gat,91,79,10,10	monster	Wootan Shooter	1498,1,300000,60000,0
 um_fild04.gat,244,339,10,10	monster	Beetle King	1494,2,120000,60000,0
 um_fild04.gat,295,93,10,10	monster	Beetle King	1494,2,120000,60000,0
-um_fild04.gat,295,93,10,10	monster	Wootan Shooter	1498,1,300000,60000,0
 um_fild04.gat,118,237,10,10	monster	Beetle King	1494,2,120000,60000,0
 um_fild04.gat,118,237,10,10	monster	Horn	1128,1,120000,60000,0
 um_fild04.gat,311,285,10,10	monster	Beetle King	1494,2,120000,60000,0
@@ -1622,8 +1613,16 @@ um_fild04.gat,206,188,10,10	monster	Horn	1128,1,120000,60000,0
 um_fild04.gat,239,245,10,10	monster	Beetle King	1494,2,120000,60000,0
 um_fild04.gat,239,245,10,10	monster	Horn	1128,1,120000,60000,0
 um_fild04.gat,239,245,10,10	monster	Wootan Shooter	1498,1,300000,60000,0
+um_fild04.gat,91,79,10,10	monster	Wootan Shooter	1498,1,300000,60000,0
+um_fild04.gat,295,93,10,10	monster	Wootan Shooter	1498,1,300000,60000,0
 um_fild04.gat,0,0,0,0	monster	Red Plant	1078,5,180000,90000,1
 um_fild04.gat,0,0,0,0	monster	Yellow Plant	1081,5,180000,90000,1
+um_fild01.gat,0,0,0,0	monster	Shining Plant	1083,1,180000,90000,1
+
+
+//--------------------------------------------------------------
+// Yggdrasil Field Spawns - [Tsuyuki]
+//--------------------------------------------------------------
 
 yggdrasil01.gat,234,256,10,10	monster	Blue Plant	1079,5,1800000,600000,0
 yggdrasil01.gat,273,234,3,3	monster	Shining Plant	1083,1,1800000,600000,0
@@ -1644,49 +1643,3 @@ yggdrasil01.gat,257,63,10,10	monster	Shining Plant	1083,3,1800000,1200000,0
 yggdrasil01.gat,0,0,0,0	monster	Shining Plant	1083,10,3600000,2300000,0
 yggdrasil01.gat,0,0,0,0	monster	Green Plant	1080,25,60000,30000,0
 yggdrasil01.gat,0,0,0,0	monster	Red Plant	1078,15,60000,30000,0
-
-
-//--------------------------------------------------------------
-// Veins Field Monster Spawns
-//--------------------------------------------------------------
-
-ve_fild01.gat,0,0,0,0	monster	Side Winder	1037,1,0,0,0
-ve_fild01.gat,0,0,0,0	monster	Muka	1055,40,0,0,0
-ve_fild01.gat,0,0,0,0	monster	Red Plant	1078,10,180000,90000,1
-ve_fild01.gat,0,0,0,0	monster	Blue Plant	1079,3,1800000,900000,1
-ve_fild01.gat,0,0,0,0	monster	Yellow Plant	1081,10,180000,90000,1
-ve_fild01.gat,0,0,0,0	monster	Shining Plant	1083,1,1800000,900000,1
-ve_fild01.gat,0,0,0,0	monster	Drops	1113,20,0,0,0
-ve_fild01.gat,0,0,0,0	monster	Stapo	1784,20,0,0,0
-
-ve_fild02.gat,0,0,0,0	monster	Side Winder	1037,10,0,0,0
-ve_fild02.gat,0,0,0,0	monster	Savage	1166,60,0,0,0
-ve_fild02.gat,0,0,0,0	monster	Roween	1782,30,0,0,0
-ve_fild02.gat,0,0,0,0	monster	Atroce	1785,1,7200000,3600000,1
-
-ve_fild03.gat,0,0,0,0	monster	Sleeper	1386,40,0,0,0
-ve_fild03.gat,0,0,0,0	monster	Magmaring	1836,30,0,0,0
-
-ve_fild04.gat,0,0,0,0	monster	Desert Wolf	1106,30,0,0,0
-ve_fild04.gat,0,0,0,0	monster	Muscipular	1780,10,0,0,0
-ve_fild04.gat,0,0,0,0	monster	Roween	1782,15,0,0,0
-ve_fild04.gat,0,0,0,0	monster	Stapo	1784,30,0,0,0
-
-ve_fild05.gat,0,0,0,0	monster	Red Plant	1078,10,180000,90000,1
-ve_fild05.gat,0,0,0,0	monster	Desert Wolf	1106,10,0,0,0
-ve_fild05.gat,0,0,0,0	monster	Sleeper	1386,10,0,0,0
-ve_fild05.gat,0,0,0,0	monster	Muscipular	1780,10,0,0,0
-ve_fild05.gat,0,0,0,0	monster	Drosera	1781,10,0,0,0
-ve_fild05.gat,0,0,0,0	monster	Roween	1782,20,0,0,0
-ve_fild05.gat,0,0,0,0	monster	Galion	1783,5,0,0,0
-
-ve_fild06.gat,0,0,0,0	monster	Red Plant	1078,3,180000,90000,1
-ve_fild06.gat,0,0,0,0	monster	Shining Plant	1083,1,1800000,900000,1
-ve_fild06.gat,0,0,0,0	monster	Stapo	1784,5,120000,60000,1
-
-ve_fild07.gat,0,0,0,0	monster	Side Winder	1037,1,0,0,0
-ve_fild07.gat,0,0,0,0	monster	Shellfish	1074,40,0,0,0
-ve_fild07.gat,0,0,0,0	monster	White Plant	1082,5,180000,90000,1
-ve_fild07.gat,0,0,0,0	monster	Raggler	1254,20,0,0,0
-ve_fild07.gat,0,0,0,0	monster	Aster	1266,30,0,0,0
-ve_fild07.gat,0,0,0,0	monster	Stapo	1784,20,0,0,0

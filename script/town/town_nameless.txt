@@ -65,11 +65,11 @@ ve_fild07.gat,56,73,4	script	Sailor#veins	934,{
 		}
 		set Zeny,Zeny-500;
 		close2;
-		set '@i,rand(1,2);
-		// To-Do: Should be based on whether it's night or day and not random
-		// jAthena doesn't support 'isday'/'isnight' script commands..
-		if ('@i == 1) warp "nameless_i.gat",257,215;
-		else warp "nameless_n.gat",257,215;
+		if ((gettime(3) < 6) || (gettime(3) > 18)) {
+			warp "nameless_n.gat",257,215;
+		} else {
+			warp "nameless_i.gat",257,215;
+		}
 		end;
 	case 2:
 		mes "[Sailor]";

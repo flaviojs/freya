@@ -7,7 +7,7 @@
 //              /_/  |_|\____|_|  \___/|_|  \__,_|              
 //                 http://aurora.deltaanime.net                 
 //--------------------------------------------------------------
-// Script Title: Job Quest Warps	Author: A Lot of People
+// Script Title: Job Quest Warp Portals	Author: A Lot of People
 //--------------------------------------------------------------
 // Revision History: v2.6
 //--------------------------------------------------------------

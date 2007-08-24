@@ -129,8 +129,6 @@ alde_gld.gat,183,204,0	script	turbowarp1001	45,1,1,{
 
 turbo_room.gat,100,62,0	warp	turbowarp1002	1,1,alde_gld.gat,183,198
 
-turbo_room.gat,124,86,7	shop	Turbo Track Merchant	90,501:50,502:200,503:550,504:1200,645:800,656:1500,1065:100,1750:1
-
 turbo_room.gat,75,95,5	script	Solo Mode#1	857,{
 
 	mes "^2F4F4FSolo Mode Record^000000";

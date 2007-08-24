@@ -7,7 +7,7 @@
 //              /_/  |_|\____|_|  \___/|_|  \__,_|              
 //                 http://aurora.deltaanime.net                 
 //--------------------------------------------------------------
-// Script Title: Miscellaneous Warps	Author: A Lot of People
+// Script Title: Miscellaneous Warp Portals	Author: A Lot of People
 //--------------------------------------------------------------
 // Revision History: v1.3
 //--------------------------------------------------------------
@@ -21,7 +21,7 @@
 
 
 //--------------------------------------------------------------
-// Airship System Warps - * Aegis-certified * - [Tsuyuki]
+// Airship System Warp Portals - * Aegis-certified * - [Tsuyuki]
 //--------------------------------------------------------------
 
 airport.gat,124,13,0	warp	airwarp01	1,1,airport.gat,19,21
@@ -40,7 +40,7 @@ lhz_airport.gat,142,13,0	warp	airwarp12	1,1,lighthalzen.gat,262,75
 
 
 //--------------------------------------------------------------
-// Kiel Hyre Warps - [L0ne_W0lf]
+// Kiel Hyre Warp Portals - [L0ne_W0lf]
 //--------------------------------------------------------------
 
 kh_school.gat,76,156,0	warp	kh_school_01	1,1,yuno_fild08.gat,155,189
@@ -115,7 +115,7 @@ kh_mansion.gat,21,11,0	warp	kh_mansion_02	1,1,kh_mansion.gat,72,49
 
 
 //--------------------------------------------------------------
-// God Seal Quest Warps - [Unknown]
+// God Seal Quest Warp Portals - [Unknown]
 //--------------------------------------------------------------
 
 yuno.gat,218,180,0	warp	yuno_god01	1,1,que_god01.gat,99,84
@@ -128,7 +128,7 @@ que_god01.gat,50,55,0	warp	god_sl_w4-1	1,1,que_god01.gat,47,83
 
 
 //--------------------------------------------------------------
-// The Sign Quest Warps - * Aegis-certified * - [Tsuyuki]
+// The Sign Quest Warp Portals - * Aegis-certified * - [Tsuyuki]
 //--------------------------------------------------------------
 
 prontera.gat,263,279,0	warp	signwarp01	1,1,prt_in.gat,227,18

@@ -7,25 +7,23 @@
 //              /_/  |_|\____|_|  \___/|_|  \__,_|              
 //                 http://aurora.deltaanime.net                 
 //--------------------------------------------------------------
-// Script Title: Guild Castle Warps	Author: Athena
+// Script Title: GvG System Warp Portals	Author: jAthena/Lupus
 //--------------------------------------------------------------
 // Revision History: v1.4
 //--------------------------------------------------------------
-//	1.0 First version [Athena]
-//	1.1 Fixed aldg504-1 warp [Lupus]
-//	1.2 Added Novice Guilds warps, optimized aldg408r warp [Lupus]
-//	1.3 Fixed some warps positions [Yor]
-//	1.4 Changed all break commands to end commands [Skotlex]
+//	1.0 First version [jAthena/Lupus]
 //--------------------------------------------------------------
 // Additional Notes: * Official-certified *
 //--------------------------------------------------------------
 
 
-// Aldebaran Guild Castles Map Connection
+//--------------------------------------------------------------
+// Guild Castle Warp Portals - [jAthena]
+//--------------------------------------------------------------
+
 aldebaran.gat,35,140,0	warp	aldg001	1,1,alde_gld.gat,280,160
 alde_gld.gat,284,160,0	warp	aldg002	1,1,aldebaran.gat,39,140
 
-// Aldebaran Guild Castles Map
 alde_gld.gat,48,79,0	warp	aldg01	1,1,aldeg_cas01.gat,34,248
 aldeg_cas01.gat,34,252,0	warp	aldg01-1	1,1,alde_gld.gat,48,83
 alde_gld.gat,95,253,0	warp	aldg02	1,1,aldeg_cas02.gat,88,163
@@ -37,7 +35,6 @@ aldeg_cas04.gat,145,17,0	warp	aldg04-1	1,1,alde_gld.gat,239,242
 alde_gld.gat,259,90,0	warp	aldg05	1,1,aldeg_cas05.gat,216,103
 aldeg_cas05.gat,216,107,0	warp	aldg05-1	1,1,alde_gld.gat,264,90
 
-// Aldebaran Guild Castles
 aldeg_cas01.gat,50,222,0	warp	aldg101	1,1,aldeg_cas01.gat,104,108
 aldeg_cas01.gat,104,112,0	warp	aldg101-1	1,1,aldeg_cas01.gat,45,224
 aldeg_cas01.gat,66,191,0	warp	aldg102	1,1,aldeg_cas01.gat,122,61
@@ -123,7 +120,6 @@ aldeg_cas05.gat,166,194,0	warp	aldg506-1	1,1,aldeg_cas05.gat,13,179
 aldeg_cas05.gat,156,231,0	warp	aldg507	1,1,aldeg_cas05.gat,18,88
 aldeg_cas05.gat,14,88,0	warp	aldg507-1	1,1,aldeg_cas05.gat,156,227
 
-// Geffen Castles Map		
 gef_fild13.gat,112,269,0	warp	gefg05	1,1,gefg_cas03.gat,100,280	
 gef_fild13.gat,139,240,0	warp	gefg06	1,1,gefg_cas03.gat,125,250	
 gef_fild13.gat,150,54,0	warp	gefg01	1,1,gefg_cas01.gat,34,140	
@@ -135,7 +131,6 @@ gef_fild13.gat,308,244,0	warp	gefg03	1,1,gefg_cas02.gat,70,143
 gef_fild13.gat,77,284,0	warp	gefg04	1,1,gefg_cas03.gat,60,286	
 gef_fild13.gat,83,185,0	warp	gefg07	1,1,gefg_cas03.gat,89,159	
 
-// Geffen Guild Castles
 gefg_cas01.gat,170,14,0	warp	gefg106-1	1,1,gefg_cas01.gat,50,84	
 gefg_cas01.gat,170,34,0	warp	gefg105-1	1,1,gefg_cas01.gat,30,167	
 gefg_cas01.gat,181,52,0	warp	gefg107	1,1,gefg_cas01.gat,198,160	
@@ -238,11 +233,9 @@ gefg_cas05.gat,88,62,0	warp	gefg502-1	1,1,gefg_cas05.gat,83,165
 gefg_cas05.gat,93,16,0	warp	gefg507	1,1,gefg_cas05.gat,202,44	
 gefg_cas05.gat,99,204,0	warp	gefg10-1	1,1,gef_fild13.gat,305,87
 
-// Payon Guild Castles Map Connection
 moc_fild02.gat,378,272,0	warp	payg002	1,1,pay_gld.gat,20,276
 pay_gld.gat,16,276,0	warp	payg002-1	1,1,moc_fild02.gat,374,272
 
-// Payon Guild Castles Map
 pay_gld.gat,121,238,0	warp	payg01	1,1,payg_cas01.gat,214,48
 payg_cas01.gat,214,44,0	warp	payg01-1	1,1,pay_gld.gat,121,233
 pay_gld.gat,291,116,0	warp	payg02	1,1,payg_cas02.gat,272,57
@@ -254,7 +247,6 @@ payg_cas04.gat,252,275,0	warp	payg04-1	1,1,pay_gld.gat,140,160
 pay_gld.gat,204,269,0	warp	payg05	3,1,payg_cas05.gat,62,225
 payg_cas05.gat,62,222,0	warp	payg05-1	5,1,pay_gld.gat,204,266
 
-// Payon Guild Castles
 payg_cas01.gat,201,125,0	warp	payg101	1,1,payg_cas01.gat,102,19
 payg_cas01.gat,102,16,0	warp	payg101-1	3,1,payg_cas01.gat,201,122
 payg_cas01.gat,222,130,0	warp	payg102	1,1,payg_cas01.gat,130,43
@@ -313,7 +305,6 @@ payg_cas05.gat,290,43,0	warp	payg504-1	1,1,payg_cas05.gat,287,256
 payg_cas05.gat,242,41,0	warp	payg505	1,1,payg_cas05.gat,18,18
 payg_cas05.gat,14,14,0	warp	payg505-1	1,1,payg_cas05.gat,246,41
 
-// Prontera Castles Map
 prt_gld.gat,107,240,0	warp	prtg04-1	1,1,prtg_cas04.gat,86,13
 prt_gld.gat,129,65,0	warp	prtg01	1,1,prtg_cas01.gat,99,32
 prt_gld.gat,153,141,0	warp	prtg03-1	1,1,prtg_cas03.gat,168,12
@@ -322,7 +313,6 @@ prt_gld.gat,159,298,0	warp	prtg001	1,1,prt_fild01.gat,199,30
 prt_gld.gat,212,240,0	warp	prtg05-1	1,1,prtg_cas05.gat,17,235
 prt_gld.gat,240,124,0	warp	prtg02-1	1,1,prtg_cas02.gat,43,229
 
-// Prontera Guild Castles
 prtg_cas01.gat,103,32,0	warp	prtg01-1	1,1,prt_gld.gat,134,65
 prtg_cas01.gat,109,163,0	warp	prtg107	1,1,prtg_cas01.gat,202,183
 prtg_cas01.gat,147,120,0	warp	prtg106	1,1,prtg_cas01.gat,75,187
@@ -395,7 +385,11 @@ prtg_cas05.gat,58,7,0	warp	prtg506	1,1,prtg_cas05.gat,253,290
 prtg_cas05.gat,66,225,0	warp	prtg503	1,1,prtg_cas05.gat,260,92
 prtg_cas05.gat,76,242,0	warp	prtg502	1,1,prtg_cas05.gat,288,13
 
-// Novice Guild: Aldebaran Guild Castles Map
+
+//--------------------------------------------------------------
+// Novice Guild Castle Warp Portals - [Lupus]
+//--------------------------------------------------------------
+
 n_castle.gat,184,16,0	warp	naldg01	1,1,nguild_alde.gat,34,248
 nguild_alde.gat,34,252,0	warp	naldg01-1	1,1,n_castle.gat,187,16
 
@@ -417,7 +411,6 @@ nguild_alde.gat,46,197,0	warp	naldg107-1	1,1,nguild_alde.gat,232,182
 nguild_alde.gat,171,175,0	warp	naldg108	1,1,nguild_alde.gat,35,197
 nguild_alde.gat,31,197,0	warp	naldg108-1	1,1,nguild_alde.gat,175,175
 
-// Novice Guild: Geffen Castles Map		
 n_castle.gat,183,183,0	script	ngefg01	45,1,1,{
 	if (rand(2)) goto w2;
 	warp "nguild_gef.gat",34,140; end;
@@ -441,7 +434,6 @@ nguild_gef.gat,59,170,0	warp	ngefg103	1,1,nguild_gef.gat,205,34
 nguild_gef.gat,62,9,0	warp	ngefg101-1	1,1,nguild_gef.gat,39,192	
 nguild_gef.gat,90,51,0	warp	ngefg102-1	1,1,nguild_gef.gat,54,185	
 
-// Novice Guild: Payon Guild Castles Map
 n_castle.gat,18,181,0	warp	npayg01	1,1,nguild_pay.gat,214,48
 nguild_pay.gat,214,44,0	warp	npayg01-1	1,1,n_castle.gat,18,178
 
@@ -458,7 +450,6 @@ nguild_pay.gat,11,115,0	warp	npayg105-1	1,1,nguild_pay.gat,81,15
 nguild_pay.gat,53,111,0	warp	npayg106	1,1,nguild_pay.gat,115,147
 nguild_pay.gat,115,151,0	warp	npayg106-1	1,1,nguild_pay.gat,53,115
 
-// Novice Guild: Prontera Castles Map
 n_castle.gat,16,14,0	warp	nprtg01	1,1,nguild_prt.gat,99,32
 nguild_prt.gat,103,32,0	warp	nprtg01-1	1,1,n_castle.gat,19,14
 
@@ -479,7 +470,11 @@ nguild_prt.gat,75,183,0	warp	nprtg106-1	1,1,nguild_prt.gat,147,116
 nguild_prt.gat,84,19,0	warp	nprtg109	1,1,nguild_prt.gat,192,65
 nguild_prt.gat,84,49,0	warp	nprtg101-1	1,1,nguild_prt.gat,61,19
 
-// Guild Dungeons
+
+//--------------------------------------------------------------
+// Guild Dungeon Warp Portals - [Unknown]
+//--------------------------------------------------------------
+
 gld_dun01.gat,119,14,0	warp	gldd_001	1,1,pay_gld.gat,53,141
 gld_dun02.gat,180,112,0	warp	gldd_002	1,1,alde_gld.gat,242,121
 gld_dun02.gat,20,160,0	warp	gldd_003	1,1,alde_gld.gat,229,185
@@ -487,26 +482,3 @@ gld_dun03.gat,42,30,0	warp	gldd_004	1,1,prt_gld.gat,63,66
 gld_dun03.gat,238,274,0	warp	gldd_005	1,1,prt_gld.gat,252,247
 gld_dun04.gat,37,230,0	warp	gldd_006	1,1,gef_fild13.gat,42,331
 gld_dun04.gat,110,20,0	warp	gldd_007	1,1,gef_fild13.gat,373,62
-
-// Disabled GvG Warps
-// guild_room.gat,0,0,0	warp	warp4	0,0,hoge.gat,0,0
-// guild_vs1.gat,0,0,0	warp	warp4	0,0,hoge.gat,0,0
-// guild_vs1.gat,0,0,0	warp	warp4	0,0,hoge.gat,0,0
-// guild_vs1.gat,0,0,0	warp	warp4	0,0,hoge.gat,0,0
-// guild_vs1.gat,0,0,0	warp	warp4	0,0,hoge.gat,0,0
-// guild_vs2.gat,50,88,0	warp	warp4	0,0,hoge.gat,0,0
-// guild_vs2.gat,0,0,0	warp	warp4	0,0,hoge.gat,0,0
-// guild_vs2.gat,0,0,0	warp	warp4	0,0,hoge.gat,0,0
-// guild_vs2.gat,0,0,0	warp	warp4	0,0,hoge.gat,0,0
-// guild_vs3.gat,0,0,0	warp	warp4	0,0,hoge.gat,0,0
-// guild_vs3.gat,0,0,0	warp	warp4	0,0,hoge.gat,0,0
-// guild_vs3.gat,0,0,0	warp	warp4	0,0,hoge.gat,0,0
-// guild_vs3.gat,0,0,0	warp	warp4	0,0,hoge.gat,0,0
-// guild_vs4.gat,7,50,0	warp	warp4	0,0,hoge.gat,0,0
-// guild_vs4.gat,50,7,0	warp	warp4	0,0,hoge.gat,0,0
-// guild_vs4.gat,92,50,0	warp	warp4	0,0,hoge.gat,0,0
-// guild_vs4.gat,50,92,0	warp	warp4	0,0,hoge.gat,0,0
-// guild_vs5.gat,0,0,0	warp	warp4	0,0,hoge.gat,0,0
-// guild_vs5.gat,0,0,0	warp	warp4	0,0,hoge.gat,0,0
-// guild_vs5.gat,0,0,0	warp	warp4	0,0,hoge.gat,0,0
-// guild_vs5.gat,0,0,0	warp	warp4	0,0,hoge.gat,0,0
