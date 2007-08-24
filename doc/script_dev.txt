@@ -41,7 +41,6 @@
  Aurora's euRO Dialogue Aegis Scripts:
 ---------------------------------------------------------------------------
 
-- job/job_rogue.txt			<- Optional? - No access to an iRO Aegis version [*]
 - quest/quest_bard.txt			<- Optional? [*]
 - quest/quest_expanded.txt		<- Optional? [*]
 - quest/quest_god_seal.txt		<- Optional? [*]
@@ -50,7 +49,6 @@
 - town/town_comodo.txt			<- Optional? - Only Comodo Gambling is euRO [*]
 - town/town_hugel.txt			<- Optional? - Only Rebellion Quest is euRO - No access to an iRO Aegis version [*]
 - town/town_kunlun.txt			<- Optional? - [*]
-- town/town_lutie.txt			<- Optional? - No access to an iRO Aegis version [*]
 - town/town_payon.txt			<- Optional? - Only Fortune Teller is euRO [*]
 
 
