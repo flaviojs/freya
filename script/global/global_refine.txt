@@ -547,7 +547,7 @@ CONTINUE:
 	if (@ammount <= 0) goto L_BELOW;
 	if (@ammount > 999) goto L_ABOVE;
 	if (zeny < @value * @ammount) goto L_NOZENY;
-	if (checkweight(@itemid,@ammount) == 0) goto L_WEIGHT;
+	if (checkweight(1201,1) == 0) goto L_WEIGHT;
 	set Zeny,Zeny-@value*@ammount;
 	getitem @itemid,@ammount;
 	mes "[" + @name$ + "]";

@@ -479,6 +479,7 @@ jawaii_in.gat,27,91,4	script	jawaiiwarp006	45,1,1,{
 	} else {
 		warp "jawaii.gat",192,218;
 		end;
+	}
 }
 
 

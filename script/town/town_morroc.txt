@@ -857,15 +857,15 @@ moc_fild16.gat,211,254,4	script	New Assassin	118,{
 
 morocc_in.gat,146,99,3	script	Java Dullihan	58,{
 
-	/*set '@max_max_c,CheckMaxCount 1201,1;
-	if ('@max_max_c == 1) {
+	set '@max_max_c,checkweight(1201,1);
+	if ('@max_max_c == 0) {
 		mes "- Wait a moment! -";
 		mes "- Currently you're carrying -";
 		mes "- too many items with you. -";
 		mes "- Please come back later -";
 		mes "- after you put some items into kafra storage. -";
 		close;
-	}*/
+	}
 	mes "[Dye Maker Java Dullihan]";
 	mes "Wow...";
 	mes "Such a nice day. Days like this are perfect to make dyes.";

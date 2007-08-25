@@ -2126,13 +2126,13 @@ payon_in02.gat,47,13,3	script	Master Kavaruk	55,{
 
 pay_arche.gat,103,165,5	script	Reidin Corse#tu	832,{
 
-	/*set '@max_max_c1,CheckMaxCount 1201,1;
-	if ('@max_max_c1 == 1) {
+	set '@max_max_c1,checkweight(1201,1);
+	if ('@max_max_c1 == 0) {
 		mes "[Reidin Corse]";
 		mes "Why are you carrying";
 		mes "so much stuff? You better put everything you don't need into Kafra Storage.";
 		close;
-	}*/
+	}
 	set '@now_weight,MaxWeight - Weight;
 	if ('@now_weight < 2000) {
 		mes "[Reidin Corse]";

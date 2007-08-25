@@ -3494,12 +3494,12 @@ new_5-3.gat,96,174,3	duplicate(NovExaminer1)	Test Examiner::NovExaminer5	85,0,0
 
 new_1-4.gat,100,29,1	script	Hanson	46,{
 
-	/*set '@max_max_c,CheckMaxCount 1201,1;
-	if ('@max_max_c == 1) {
+	set '@max_max_c,checkweight(1201,1);
+	if ('@max_max_c == 0) {
 		mes "^FF0000- !! Caution !! -^000000";
 		mes "You are carrying too many items. Please remove unnecessary items from your inventory before trying again.";
 		close;
-	}*/
+	}
 	set '@now_weight,MaxWeight - Weight;
 	if ('@now_weight < 4001) {
 		mes "[Hanson]";

@@ -10406,16 +10406,6 @@ hu_in01.gat,16,20,4	script	Ashe	95,{
 	}
 }
 
-/*hu_in01.gat,174,90,0	script	Entrance	139,2,2,{
-
-OnTouch:
-	mes "[Laura]";
-	mes "So it means that everyone fooled me!";
-	next;
-	mes "== Laura is violently wielding a thick file in the air. ==";
-	close;
-}*/
-
 hu_in01.gat,159,84,3	script	Laura#2	70,{
 
 	if ((hg_alex == 22) || (hg_alex == 23)) {
@@ -11349,15 +11339,7 @@ OnTouch:
 		warp "que_hugel.gat",163,31;
 		end;
 	}
-	/*mes "[Giantes]";
-	mes "...It is a human...finally.";
-	mes "You are later than I thought.";
-	next;
-	mes "[Giantes]";
-	mes "What you hear is not an actual voice.";
-	mes "I am sending you my message directly to your brain.";
-	mes "Human's language is meaningless to us.";
-	close;*/
+	end;
 }
 
 que_hugel.gat,163,31,0	script	object_2	139,3,3,{
@@ -13220,13 +13202,13 @@ einbech.gat,208,124,3	script	Bomb Maker	851,{
 
 	if (hg_tre == 54)
 	{
-		/*set '@max_max_c1,CheckMaxCount 1201,1;
-		if ('@max_max_c1 == 1) {
+		set '@max_max_c1,checkweight(1201,1);
+		if ('@max_max_c1 == 0) {
 			mes "[Boomer]";
 			mes "Hey, you look pretty heavy, huh?";
 			mes "Do you want me to help you?";
 			close;
-		}*/
+		}
 		set '@now_weight,MaxWeight-Weight;
 		if ('@now_weight < 2000) {
 			mes "[Boomer]";

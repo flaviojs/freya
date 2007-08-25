@@ -9815,8 +9815,8 @@ yuno_in04.gat,168,117,3	script	Book	111,{
 
 yuno_in04.gat,96,106,5	script	Passionate Student	754,{
 
-	/*set '@max_max_c1,CheckMaxCount 1201 1;
-	if ('@max_max_c1 == 1) {
+	set '@max_max_c1,checkweight(1201,1);
+	if ('@max_max_c1 == 0) {
 		mes "^3355FFWait a second!";
 		mes "Right now, you're carrying";
 		mes "too many things with you.";
@@ -9824,7 +9824,7 @@ yuno_in04.gat,96,106,5	script	Passionate Student	754,{
 		mes "using the Kafra Service";
 		mes "to store some of your items.^000000";
 		close;
-	}*/
+	}
 	set '@now_weight,MaxWeight - Weight;
 	if ('@now_weight < 300) {
 		mes "^3355FFWait a second!";

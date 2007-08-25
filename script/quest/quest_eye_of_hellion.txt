@@ -20,7 +20,7 @@
 morocc_in.gat,116,101,3	script	Old Scholar Tyus#hellion	735,3,3,{
 
 	set '@max_max_c,checkweight(1201,1);
-	if ('@max_max_c == 1) {
+	if ('@max_max_c == 0) {
 		mes "^3355FFHold it right there!";
 		mes "You're carrying too many items and don't have enough inventory space to receive any rewards. Please make more inventory space available and come back to take this challenge.";
 		close;
@@ -703,7 +703,7 @@ OnTouch:
 prontera.gat,269,326,3	script	Clanux Heffron#hellion	50,{
 
 	set '@max_max_c,checkweight(1201,1);
-	if ('@max_max_c == 1) {
+	if ('@max_max_c == 0) {
 		mes "^3355FFHold it right there!";
 		mes "You're carrying too many items and don't have enough inventory space to receive any rewards. Please make more inventory space available and come back to take this challenge.";
 		close;
@@ -1274,7 +1274,7 @@ OnTouch:
 prt_in.gat,128,79,0	script	Unknown Machine#prt_key-2	111,{
 
 	set '@max_max_c,checkweight(1201,1);
-	if ('@max_max_c == 1) {
+	if ('@max_max_c == 0) {
 		mes "^3355FFHold it right there!";
 		mes "You're carrying too many items and don't have enough inventory space to receive any rewards. Please make more inventory space available and come back to take this challenge.";
 		close;
@@ -1419,7 +1419,7 @@ prt_in.gat,128,79,0	script	Unknown Machine#prt_key-2	111,{
 payon.gat,182,132,3	script	Grout'he Tuccok#hellion	48,{
 
 	set '@max_max_c,checkweight(1201,1);
-	if ('@max_max_c == 1) {
+	if ('@max_max_c == 0) {
 		mes "^3355FFHold it right there!";
 		mes "You're carrying too many items and don't have enough inventory space to receive any rewards. Please make more inventory space available and come back to take this challenge.";
 		close;
@@ -1943,7 +1943,7 @@ payon.gat,159,129,3	script	Wooden Floor#paypuzz5	111,{
 pay_arche.gat,142,28,0	script	Buddha Statue#paypuzz6	111,5,5,{
 
 	set '@max_max_c,checkweight(1201,1);
-	if ('@max_max_c == 1) {
+	if ('@max_max_c == 0) {
 		mes "^3355FFHold it right there!";
 		mes "You're carrying too many items and don't have enough inventory space to receive any rewards. Please make more inventory space available and come back to take this challenge.";
 		close;
@@ -2052,7 +2052,7 @@ OnTouch:
 geffen.gat,110,200,3	script	Sage Welshyun	754,3,3,{
 
 	set '@max_max_c,checkweight(1201,1);
-	if ('@max_max_c == 1) {
+	if ('@max_max_c == 0) {
 		mes "^3355FFHold it right there!";
 		mes "You're carrying too many items and don't have enough inventory space to receive any rewards. Please make more inventory space available and come back to take this challenge.";
 		close;

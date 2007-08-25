@@ -25,7 +25,7 @@
 alde_alche.gat,88,180,0	script	Muscle Man#Alarm Mask Man	748,{
 
 	set '@max_max_c,checkweight(1201,1);
-	if ('@max_max_c == 1) {
+	if ('@max_max_c == 0) {
 		mes "[Muscle Man]";
 		mes "Hmmm...";
 		mes "It's seems you're carrying too much stuff for me to give anything to you.";
@@ -873,7 +873,7 @@ alberta_in.gat,122,53,4	script	Cherokee	47,4,5,{
 lighthalzen.gat,360,313,3	script	Kid#Pacifier	706,{
 
 	set '@max_max_c,checkweight(1201,1);
-	if ('@max_max_c == 1) {
+	if ('@max_max_c == 0) {
 		mes "^3355FFWait a second!";
 		mes "Right now, you're carrying";
 		mes "too many things with you.";
@@ -1013,7 +1013,7 @@ lighthalzen.gat,360,313,3	script	Kid#Pacifier	706,{
 prontera.gat,165,232,3	script	Nephia	744,{
 
 	set '@max_max_c1,checkweight(1201,1);
-	if ('@max_max_c1 == 1) {
+	if ('@max_max_c1 == 0) {
 		mes "- Wait a minute! -";
 		mes "- Currently you're carrying -";
 		mes "- too many items with you. -";
@@ -1210,7 +1210,7 @@ morocc_in.gat,76,163,4	script	Alchemist	64,5,5,{
 payon.gat,115,131,3	script	Neko Neko	725,{
 
 	set '@max_max_c1,checkweight(1201,1);
-	if ('@max_max_c1 == 1) {
+	if ('@max_max_c1 == 0) {
 		mes "- Wait a minute! -";
 		mes "- Currently you're carrying -";
 		mes "- too many items with you. -";
@@ -2010,7 +2010,7 @@ comodo.gat,273,137,4	script	Traveler	702,4,5,{
 yuno.gat,222,116,3	script	Kasis#crunch	851,{
 
 	set '@max_max_c1,checkweight(1201,1);
-	if ('@max_max_c1 == 1) {
+	if ('@max_max_c1 == 0) {
 		mes "^3355FFWait a second!";
 		mes "Right now, you're carrying";
 		mes "too many things with you.";
@@ -3271,7 +3271,7 @@ rachel.gat,152,131,3	script	Sakjul	928,{
 geffen.gat,129,148,3	script	Argen	779,{
 
 	set '@max_max_c1,checkweight(1201,1);
-	if ('@max_max_c1 == 1) {
+	if ('@max_max_c1 == 0) {
 		mes "[Argen]";
 		mes "Hey~ why are you carrying so many items?";
 		mes "You mind sharing them with me?";
@@ -3546,7 +3546,7 @@ geffen_in.gat,30,71,4	script	Eric	83,5,5,{
 yuno.gat,300,188,5	script	Zhenbolt	753,{
 
 	set '@max_max_c1,checkweight(1201,1);
-	if ('@max_max_c1 == 1) {
+	if ('@max_max_c1 == 0) {
 		mes "- Wait a minute! -";
 		mes "- Currently you're carrying -";
 		mes "- too many items with you. -";
@@ -3648,7 +3648,7 @@ yuno.gat,300,188,5	script	Zhenbolt	753,{
 comodo.gat,237,217,5	script	Meruntei	732,{
 
 	set '@max_max_c1,checkweight(1201,1);
-	if ('@max_max_c1 == 1) {
+	if ('@max_max_c1 == 0) {
 		mes "- Wait a minute! -";
 		mes "- Currently you're carrying -";
 		mes "- too many items with you. -";
@@ -3709,7 +3709,7 @@ comodo.gat,237,217,5	script	Meruntei	732,{
 yuno_in03.gat,20,18,6	script	Nehris	726,{
 
 	set '@max_max_c,checkweight(1201,1);
-	if ('@max_max_c == 1) {
+	if ('@max_max_c == 0) {
 		mes "- Wait a minute! -";
 		mes "- Currently you're carrying -";
 		mes "- too many items with you. -";
@@ -3885,7 +3885,7 @@ yuno_in03.gat,20,18,6	script	Nehris	726,{
 yuno.gat,241,52,3	script	Old Blacksmith#hgear	813,{
 
 	set '@max_max_c,checkweight(1201,1);
-	if ('@max_max_c == 1) {
+	if ('@max_max_c == 0) {
 		mes "- Wait a minute! -";
 		mes "- Currently you're carrying -";
 		mes "- too many items with you. -";
@@ -4307,7 +4307,7 @@ OnMyMobDead:
 pay_dun03.gat,48,84,4	script	Nine Tails#Kitsune Man	762,{
 
 	set '@max_max_c,checkweight(1201,1);
-	if ('@max_max_c == 1) {
+	if ('@max_max_c == 0) {
 		mes "- Wait a moment! -";
 		mes "- Currently you are carrying -";
 		mes "- too many items with you. -";
@@ -4441,7 +4441,7 @@ OnInit:
 xmas_in.gat,35,30,3	script	Hat Merchant#zero	797,{
 
 	set '@max_max_c,checkweight(1201,1);
-	if ('@max_max_c == 1) {
+	if ('@max_max_c == 0) {
 		mes "- Wait a minute !! -";
 		mes "- Currently you're carrying -";
 		mes "- too many items with you. -";
@@ -5200,7 +5200,7 @@ xmas.gat,117,295,4	script	Vending Machine Man	704,5,5,{
 payon_in03.gat,8,193,4	script	Nanhyang	77,{
 
 	set '@max_max_c,checkweight(1201,1);
-	if ('@max_max_c == 1) {
+	if ('@max_max_c == 0) {
 		mes "- Wait a minute! -";
 		mes "- Currently you're carrying -";
 		mes "- too many items with you. -";
@@ -5375,7 +5375,7 @@ payon_in03.gat,8,193,4	script	Nanhyang	77,{
 morocc.gat,273,79,4	script	Educated Traveller	99,{
 
 	set '@max_max_c1,checkweight(1201,1);
-	if ('@max_max_c1 == 1) {
+	if ('@max_max_c1 == 0) {
 		mes "- Wait a minute! -";
 		mes "- Currently you're carrying -";
 		mes "- too many items with you. -";
@@ -6329,7 +6329,7 @@ izlude.gat,129,118,4	script	Smile Assistance	92,4,5,{
 geffen.gat,67,87,3	script	Ipore	700,{
 
 	set '@max_max_c1,checkweight(1201,1);
-	if ('@max_max_c1 == 1) {
+	if ('@max_max_c1 == 0) {
 		mes "- Wait a minute! -";
 		mes "- Currently you're carrying -";
 		mes "- too many items with you. -";
@@ -6414,7 +6414,7 @@ geffen.gat,67,87,3	script	Ipore	700,{
 lhz_in02.gat,91,38,5	script	Margaret Merry#hat	90,{
 
 	set '@max_max_c1,checkweight(1201,1);
-	if ('@max_max_c1 == 1) {
+	if ('@max_max_c1 == 0) {
 		mes "^3355FFWait a second!";
 		mes "Right now, you're carrying";
 		mes "too many things with you.";
@@ -6534,7 +6534,7 @@ in_orcs01.gat,31,93,1	script	Orc Warrior#1	1023,2,2,{
 
 OnTouch:
 	set '@max_max_c,checkweight(1201,1);
-	if ('@max_max_c == 1) {
+	if ('@max_max_c == 0) {
 		mes "- Wait a minute !! -";
 		mes "- Currently you're carrying -";
 		mes "- too many items with you. -";
@@ -7424,7 +7424,7 @@ in_orcs01.gat,162,33,1	script	Orc Hero#1	1087,2,2,{
 
 OnTouch:
 	set '@max_max_c,checkweight(1201,1);
-	if ('@max_max_c == 1) {
+	if ('@max_max_c == 0) {
 		mes "- Wait a minute !! -";
 		mes "- Currently you're carrying -";
 		mes "- too many items with you. -";
@@ -8567,7 +8567,7 @@ prt_in.gat,38,108,4	script	Teacher	53,5,5,{
 payon_in01.gat,99,72,4	script	Granny	103,{
 
 	set '@max_max_c,checkweight(1201,1);
-	if ('@max_max_c == 1) {
+	if ('@max_max_c == 0) {
 		mes "^3355FFWait a second! Right now, you're carrying too many items with you. Please come back after putting some of your things into Kafra Storage.^000000";
 		close;
 	}
@@ -8921,7 +8921,7 @@ lighthalzen.gat,182,89,0	script	Relaxed-Looking Lady	91,{
 xmas.gat,183,267,3	script	Pretty Lindsay	793,{
 
 	set '@max_max_c,checkweight(1201,1);
-	if ('@max_max_c == 1) {
+	if ('@max_max_c == 0) {
 		mes "- Wait a minute! -";
 		mes "- Currently you're carrying -";
 		mes "- too many items with you. -";
@@ -9094,7 +9094,7 @@ xmas.gat,175,156,3	script	Fuzzy Fuzz	712,{
 
 	set '@now_weight,MaxWeight - Weight;
 	set '@max_max_c,checkweight(1201,1);
-	if ('@max_max_c == 1) {
+	if ('@max_max_c == 0) {
 		mes "- Wait a minute! -";
 		mes "- Currently you're carrying -";
 		mes "- too many items with you. -";
@@ -9212,7 +9212,7 @@ xmas.gat,175,156,3	script	Fuzzy Fuzz	712,{
 geffen.gat,83,189,5	script	Seth	716,{
 
 	set '@max_max_c1,checkweight(1201,1);
-	if ('@max_max_c1 == 1) {
+	if ('@max_max_c1 == 0) {
 		mes " [Seth]";
 		mes "Whoa, why are you carrying so many items with you?";
 		mes "You look so heavy...! Maybe you can walk more easily if you put some of your stuff away?";
@@ -9774,7 +9774,7 @@ geffen_in.gat,144,166,4	script	Blacksmith	63,4,5,{
 einbech.gat,70,222,5	script	Metelle	91,{
 
 	set '@max_max_c,checkweight(1201,1);
-	if ('@max_max_c == 1) {
+	if ('@max_max_c == 0) {
 		mes "^3355FFWait a second!";
 		mes "Right now, you're carrying";
 		mes "too many things with you.";

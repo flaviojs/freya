@@ -12,37 +12,35 @@
 // Revision History: v1.2
 //--------------------------------------------------------------
 //	1.0 First version [Tsuyuki]
-//	1.1 Updated, now warps you to Nameless Island randomly based on whether it's night or day [Tsuyuki]
-//	1.2 Added official base level requirement to go to Nameless Island [Tsuyuki]
+//	1.1 Now warps player to Nameless Island / Nightmare based on whether it's night or day [Tsuyuki]
+//	1.2 Added official base level 80 requirement to go to Nameless Island [Tsuyuki]
+//	1.3 Added special hidden warpers to warp players during night to Nightmare, and back to Nameless during the day [Tsuyuki]
 //--------------------------------------------------------------
 // Additional Notes: Highly incomplete/inaccurate.
 //--------------------------------------------------------------
 
 
 //--------------------------------------------------------------
-// Nameless Island Town NPCs - [Tsuyuki]
+// Nameless Island Town NPCs (Temporary) - [Tsuyuki]
 //--------------------------------------------------------------
 
-// Temp Warper to Nameless Island
-ve_fild07.gat,56,73,4	script	Sailor#veins	934,{
+ve_fild07.gat,127,133,3	script	Sailor#veins	934,{
 
 	mes "[Sailor]";
 	mes "Hello there!";
 	mes "Would you like to";
 	mes "board my ship and";
-	mes "travel to the Nameless";
-	mes "Island?";
+	mes "travel to the";
+	mes "Nameless Island?";
 	next;
 	mes "[Sailor]";
-	mes "I must warn you";
-	mes "however, Nameless";
-	mes "Island is very";
-	mes "dangerous, so";
+	mes "I must warn you however,";
+	mes "Nameless Island is very";
+	mes "dangerous.";
 	next;
 	mes "[Sailor]";
-	mes "only high level";
-	mes "players are";
-	mes "permitted to";
+	mes "Only high level players";
+	mes "are permitted to";
 	mes "venture there.";
 	next;
 	switch(select("Nameless Island -> 500z.","Cancel.")) {
@@ -64,7 +62,6 @@ ve_fild07.gat,56,73,4	script	Sailor#veins	934,{
 			close;
 		}
 		set Zeny,Zeny-500;
-		close2;
 		if ((gettime(3) < 6) || (gettime(3) > 18)) {
 			warp "nameless_n.gat",257,215;
 		} else {
@@ -80,17 +77,16 @@ ve_fild07.gat,56,73,4	script	Sailor#veins	934,{
 	}
 }
 
-// Temp Warper back to Veins
 nameless_i.gat,255,217,6	script	Sailor#nameless	934,{
 
 	mes "[Sailor]";
-	mes "Want to go back";
-	mes "to Veins?";
+	mes "Would you like to";
+	mes "go back to the";
+	mes "mainland?";
 	next;
-	switch(select("Travel back.","Cancel.")) {
+	switch(select("Sail back.","Cancel.")) {
 	case 1:
-		close2;
-		warp "ve_fild07.gat",53,69;
+		warp "ve_fild07.gat",129,131;
 		end;
 	case 2:
 		mes "[Sailor]";
@@ -102,3 +98,89 @@ nameless_i.gat,255,217,6	script	Sailor#nameless	934,{
 }
 
 nameless_n.gat,255,217,6	duplicate(Sailor#nameless)	Sailor#nightmare	934
+
+
+//--------------------------------------------------------------
+// Day / Night Warpers (Temporary) - [Tsuyuki]
+//--------------------------------------------------------------
+
+nameless_i.gat,184,212,0	script	NamelessManager	139,1,1,{
+
+OnInit:
+	set 'nmwarpfix,0;
+	if ((gettime(3) < 6) || (gettime(3) > 18)) {
+		set 'nmtimecheck,1;
+	} else if ((gettime(3) > 6) || (gettime(3) < 18)) {
+		set 'nmtimecheck,0;
+	}
+	initnpctimer;
+	end;
+
+OnTimer1800000:
+	if (((gettime(3) < 6) || (gettime(3) > 18)) && ('nmtimecheck == 0)) {
+		mapannounce "nameless_i.gat","Night has fallen..",8;
+		set 'nmtimecheck,1;
+		sleep 10000;
+		set 'nmwarpfix,1;
+		areawarp "nameless_i.gat",0,0,300,300,"nameless_n.gat",184,212;
+		sleep 3000;
+	} else if (((gettime(3) > 6) || (gettime(3) < 18)) && ('nmtimecheck == 1)) {
+		mapannounce "nameless_n.gat","Day has risen..",8;
+		set 'nmtimecheck,0;
+		sleep 10000;
+		set 'nmwarpfix,1;
+		areawarp "nameless_n.gat",0,0,300,300,"nameless_i.gat",184,212;
+		sleep 3000;
+	}
+	set 'nmwarpfix,0;
+	initnpctimer;
+	end;
+
+OnTouch:
+	if ('nmwarpfix == 1) {
+		warp "Random",0,0;
+		end;
+	} else {
+		end;
+	}
+}
+
+nameless_in.gat,1,1,0	script	NamelessManager2	139,{
+
+OnInit:
+	if ((gettime(3) < 6) || (gettime(3) > 18)) {
+		set 'nmtimecheck,1;
+	} else if ((gettime(3) > 6) || (gettime(3) < 18)) {
+		set 'nmtimecheck,0;
+	}
+	initnpctimer;
+	end;
+
+OnTimer1800000:
+	if (((gettime(3) < 6) || (gettime(3) > 18)) && ('nmtimecheck == 0)) {
+		mapannounce "nameless_in.gat","Night has fallen..",8;
+		set 'nmtimecheck,1;
+		sleep 10000;
+		set 'nmwarpfix,1;
+		areawarp "nameless_in.gat",0,0,300,300,"nameless_n.gat",184,212;
+		sleep 3000;
+	} else if (((gettime(3) > 6) || (gettime(3) < 18)) && ('nmtimecheck == 1)) {
+		set 'nmtimecheck,0;
+	}
+	initnpctimer;
+	end;
+}
+
+nameless_n.gat,184,212,0	script	NamelessManager3	139,1,1,{
+
+OnTouch:
+	if ((getvariableofnpc('nmwarpfix,"NamelessManager") == 1) && (getvariableofnpc('nmtimecheck,"NamelessManager") == 1)) {
+		warp "Random",0,0;
+		end;
+	} else if ((getvariableofnpc('nmwarpfix,"NamelessManager") == 1) && (getvariableofnpc('nmtimecheck,"NamelessManager") == 0)) {
+		warp "Random",0,0;
+		end;
+	} else {
+		end;
+	}
+}

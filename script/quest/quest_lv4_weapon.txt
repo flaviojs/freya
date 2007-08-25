@@ -19,11 +19,11 @@
 
 umbala.gat,117,285,3	script	Bazo	85,{
 
-	/*set '@max_max_c1,CheckMaxCount 1201,1;
-	if ('@max_max_c1 == 1) {
+	set '@max_max_c1,checkweight(1201,1);
+	if ('@max_max_c1 == 0) {
 		mes "^3355FFWait a second! Right now, you're carrying too many items with you. Please come back after putting some of your things into Kafra Storage.^000000";
 		close;
-	}*/
+	}
 	set '@now_weight,MaxWeight - Weight;
 	if ('@now_weight < 3000) {
 		mes "^3355FFWait a second! Right now, you're carrying too many items with you. Please come back after putting some of your things into Kafra Storage.^000000";
@@ -1385,11 +1385,11 @@ umbala.gat,117,285,3	script	Bazo	85,{
 
 umbala.gat,163,257,3	script	Hibilaithan	785,{
 
-	/*set '@max_max_c1,CheckMaxCount 1201,1;
-	if ('@max_max_c1 == 1) {
+	set '@max_max_c1,checkweight(1201,1);
+	if ('@max_max_c1 == 0) {
 		mes "^3355FFWait a second! Right now, you're carrying too many items with you. Please come back after putting some of your things into Kafra Storage.^000000";
 		close;
-	}*/
+	}
 	set '@now_weight,MaxWeight - Weight;
 	if ('@now_weight < 3000) {
 		mes "^3355FFWait a second! Right now, you're carrying too many items with you. Please come back after putting some of your things into Kafra Storage.^000000";
@@ -2794,11 +2794,11 @@ umbala.gat,163,257,3	script	Hibilaithan	785,{
 
 um_in.gat,156,77,5	script	Tabezthan	788,{
 
-	/*set '@max_max_c1,CheckMaxCount 1201,1;
-	if ('@max_max_c1 == 1) {
+	set '@max_max_c1,checkweight(1201,1);
+	if ('@max_max_c1 == 0) {
 		mes "^3355FFWait a second! Right now, you're carrying too many items with you. Please come back after putting some of your things into Kafra Storage.^000000";
 		close;
-	}*/
+	}
 	set '@now_weight,MaxWeight - Weight;
 	if ('@now_weight < 3000) {
 		mes "^3355FFWait a second! Right now, you're carrying too many items with you. Please come back after putting some of your things into Kafra Storage.^000000";
@@ -4443,11 +4443,11 @@ morocc.gat,289,230,3	script	Citizen	92,{
 
 niflheim.gat,240,193,3	script	Kayron	794,{
 
-	/*set '@max_max_c1,CheckMaxCount 1201,1;
-	if ('@max_max_c1 == 1) {
+	set '@max_max_c1,checkweight(1201,1);
+	if ('@max_max_c1 == 0) {
 		mes "^3355FFWait a second! Right now, you're carrying too many items with you. Please come back after putting some of your things into Kafra Storage.^000000";
 		close;
-	}*/
+	}
 	set '@now_weight,MaxWeight - Weight;
 	if ('@now_weight < 3000) {
 		mes "^3355FFWait a second! Right now, you're carrying too many items with you. Please come back after putting some of your things into Kafra Storage.^000000";
@@ -5167,11 +5167,11 @@ niflheim.gat,240,193,3	script	Kayron	794,{
 
 niflheim.gat,99,268,5	script	Reyghema	794,{
 
-	/*set '@max_max_c1,CheckMaxCount 1201,1;
-	if ('@max_max_c1 == 1) {
+	set '@max_max_c1,checkweight(1201,1);
+	if ('@max_max_c1 == 0) {
 		mes "^3355FFWait a second! Right now, you're carrying too many items with you. Please come back after putting some of your things into Kafra Storage.^000000";
 		close;
-	}*/
+	}
 	set '@now_weight,MaxWeight - Weight;
 	if ('@now_weight < 3000) {
 		mes "^3355FFWait a second! Right now, you're carrying too many items with you. Please come back after putting some of your things into Kafra Storage.^000000";
@@ -5912,11 +5912,11 @@ niflheim.gat,99,268,5	script	Reyghema	794,{
 
 niflheim.gat,187,280,3	script	Hein	794,{
 
-	/*set '@max_max_c1,CheckMaxCount 1201,1;
-	if ('@max_max_c1 == 1) {
+	set '@max_max_c1,checkweight(1201,1);
+	if ('@max_max_c1 == 0) {
 		mes "^3355FFWait a second! Right now, you're carrying too many items with you. Please come back after putting some of your things into Kafra Storage.^000000";
 		close;
-	}*/
+	}
 	set '@now_weight,MaxWeight - Weight;
 	if ('@now_weight < 3000) {
 		mes "^3355FFWait a second! Right now, you're carrying too many items with you. Please come back after putting some of your things into Kafra Storage.^000000";
@@ -6622,11 +6622,11 @@ niflheim.gat,187,280,3	script	Hein	794,{
 
 niflheim.gat,331,72,3	script	Waltboughst	794,{
 
-	/*set '@max_max_c1,CheckMaxCount 1201,1;
-	if ('@max_max_c1 == 1) {
+	set '@max_max_c1,checkweight(1201,1);
+	if ('@max_max_c1 == 0) {
 		mes "^3355FFWait a second! Right now, you're carrying too many items with you. Please come back after putting some of your things into Kafra Storage.^000000";
 		close;
-	}*/
+	}
 	set '@now_weight,MaxWeight - Weight;
 	if ('@now_weight < 3000) {
 		mes "^3355FFWait a second! Right now, you're carrying too many items with you. Please come back after putting some of your things into Kafra Storage.^000000";

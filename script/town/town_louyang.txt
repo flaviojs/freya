@@ -400,12 +400,11 @@ OnTouch:
 
 lou_in02.gat,265,69,5	script	Doctor#lyang	814,{
 
-	/*set '@max_max_c1,CheckMaxCount 1201 1;
-	if ('@max_max_c1 == 1) {
+	set '@max_max_c1,checkweight(1201,1);
+	if ('@max_max_c1 == 0) {
 		mes "^3355FFWait a minute! Right now, you're carrying too many items. Please place some of your things in Kafra Storage and then come here again.^000000";
 		close;
 	}
-	*/
 	set '@now_weight,MaxWeight - Weight;
 	if ('@now_weight < 2000) {
 		mes "^3355FFWait a minute! Right now, you're over weight, so you cannot receive more items. Please store some of your things in Kafra Storage and try again.^000000";
@@ -902,12 +901,12 @@ lou_in02.gat,248,166,2	script	Tool Shop Master	824,{
 
 lou_in02.gat,201,166,4	script	Storage Keeper	819,{
 
-	/*set '@max_max_c1,CheckMaxCount 1201 1;
-	if ('@max_max_c1 == 1) {
+	set '@max_max_c1,checkweight(1201,1);
+	if ('@max_max_c1 == 0) {
 		mes "^3355FF* Wait a moment!! *";
 		mes "Currently you're carryingtoo many items with you. Please store some of your items into Kafra Storage and try again.^000000";
 		close;
-	}*/
+	}
 	set '@now_weight,MaxWeight - Weight;
 	if ('@now_weight < 2000) {
 		mes "^3355FF * Wait a moment!! *";
@@ -3048,12 +3047,12 @@ louyang.gat,174,150,5	script	Jiu Chi Ling	815,{
 
 lou_in02.gat,123,39,4	script	Poison King	824,{
 
-	/*set '@max_max_c,CheckMaxCount 1201,1;
-	if ('@max_max_c == 1) {
+	set '@max_max_c,checkweight(1201,1);
+	if ('@max_max_c == 0) {
 		mes "^3355FF * Wait a minute! *";
 		mes "Right now, you are carrying too many items with you. Please place some of your items into Kafra Storage and try again.^000000";
 		close;
-	}*/
+	}
 	if (ch_poison < 6) {
 		mes "[Nagash Arses]";
 		mes "It's been 40 years since I came here. Hahaha, but it doesn't feel like it's been that long.";
@@ -4252,12 +4251,12 @@ lou_in02.gat,123,39,4	script	Poison King	824,{
 
 lou_in02.gat,253,45,0	script	Employee#poison	822,{
 
-	/*set '@max_max_c,CheckMaxCount 1201,1;
-	if ('@max_max_c == 1) {
+	set '@max_max_c,checkweight(1201,1);
+	if ('@max_max_c == 0) {
 		mes "^3355FF * Wait a minute! *";
 		mes "You're carrying too many items with you right now. Please put some of your things into Kafra Storage and try again.^000000";
 		close;
-	}*/
+	}
 	if ((ch_par < 10) && (ch_poison < 6)) {
 		set '@r_o_o_f,0;
 		while(1) {
@@ -4936,12 +4935,12 @@ lou_in02.gat,253,45,0	script	Employee#poison	822,{
 
 lou_fild01.gat,224,348,0	script	Lady#delivery	817,{
 
-	/*set '@max_max_c,CheckMaxCount 1201,1;
-	if ('@max_max_c == 1) {
+	set '@max_max_c,checkweight(1201,1);
+	if ('@max_max_c == 0) {
 		mes "^3355FF * Wait a minute! *";
 		mes "Currently, you're carrying too many items. Please put some of your things into Kafra Storage and try again.^000000";
 		close;
-	}*/
+	}
 	if (ch_poison < 8) {
 		set '@pokj,rand(1,10);
 		if ('@pokj > 5) {
@@ -5255,12 +5254,12 @@ lou_in01.gat,118,167,0	script	#lou_drink2	111,{
 
 lou_in01.gat,99,158,4	script	Lord#bailong	821,{
 
-	/*set '@max_max_c,CheckMaxCount 1201,1;
-	if ('@max_max_c == 1) {
+	set '@max_max_c,checkweight(1201,1);
+	if ('@max_max_c == 0) {
 		mes "^3355FF * Wait a minute! *";
 		mes "Right now you're carrying too many items. Please put some of your things into Kafra Storage and try again.^000000";
 		close;
-	}*/
+	}
 	if ((ch_poison == 12) || (ch_poison == 16)) {
 		mes "[Lord Bai Long]";
 		mes "Hey...!";

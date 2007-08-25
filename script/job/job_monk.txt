@@ -984,65 +984,6 @@ monk_in.gat,99,58,1	script	Sensei Moohae	60,{
 	}
 }
 
-/*monk_in.gat,99,58,0	script	effect#monk	139,{
-
-OnCommandOn:
-	initnpctimer;
-	end;
-OnCommandOff:
-	stopnpctimer;
-	disablenpc "effect#monk";
-	end;
-OnTimer500:
-	enablenpc "effect#monk";
-	end;
-OnTimer800:
-	disablenpc "effect#monk";
-	end;
-OnTimer1100:
-	enablenpc "effect#monk";
-	end;
-OnTimer1400:
-	disablenpc "effect#monk";
-	end;
-OnTimer1700:
-	enablenpc "effect#monk";
-	end;
-OnTimer2000:
-	disablenpc "effect#monk";
-	end;
-OnTimer2300:
-	enablenpc "effect#monk";
-	end;
-OnTimer2600:
-	disablenpc "effect#monk";
-	end;
-OnTimer2900:
-	enablenpc "effect#monk";
-	end;
-OnTimer3200:
-	disablenpc "effect#monk";
-	end;
-OnTimer3500:
-	enablenpc "effect#monk";
-	end;
-OnTimer3800:
-	disablenpc "effect#monk";
-	end;
-OnTimer4100:
-	enablenpc "effect#monk";
-	end;
-OnTimer4400:
-	disablenpc "effect#monk";
-	end;
-OnTimer4700:
-	enablenpc "effect#monk";
-	end;
-OnTimer5000:
-	disablenpc "effect#monk";
-	end;
-}*/
-
 prt_monk.gat,251,255,1	script	Touha	79,{
 
 	if (job_monk_q == 10) {

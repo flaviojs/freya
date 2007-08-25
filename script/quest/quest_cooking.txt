@@ -2249,7 +2249,7 @@ OnWhat:
 
 payon.gat,209,127,3	script	Servant	88,{
 
-	if (!checkweight(555,1)) {
+	if (!checkweight(1201,1)) {
 		mes "[Chulsoo]";
 		mes "Hold on, you're carrying";
 		mes "too many items with you.";

@@ -1320,7 +1320,7 @@ prontera.gat,78,150,3	script	Dairenne	91,{
 prontera.gat,73,140,0	script	Milk Vendor	86,{
 
 	set '@max_max_c,checkweight(1201,1);
-	if ('@max_max_c == 1) goto L_Case01;
+	if ('@max_max_c == 0) goto L_Case01;
 	goto L_Case02;
 
 	L_Case01:
@@ -7068,7 +7068,7 @@ S_GetBooks:
 
 sF_CheckWeight:
 	set '@max_max_c1,checkweight(1201,1);
-	if ('@max_max_c1 == 1) {
+	if ('@max_max_c1 == 0) {
 		mes "^3355FFWait a second!";
 		mes "Right now, you're carrying";
 		mes "too many things with you.";
@@ -7093,7 +7093,7 @@ sF_CheckWeight:
 yuno.gat,311,195,3	script	Historian#prt01	754,{
 
 	set '@max_max_c1,checkweight(1201,1);
-	if ('@max_max_c1 == 1) {
+	if ('@max_max_c1 == 0) {
 		mes "^3355FFWait a second!";
 		mes "Right now, you're carrying";
 		mes "too many things with you.";
@@ -7448,7 +7448,7 @@ yuno.gat,311,195,3	script	Historian#prt01	754,{
 morocc_in.gat,45,126,3	script	Historian#prt02	702,{
 
 	set '@max_max_c1,checkweight(1201,1);
-	if ('@max_max_c1 == 1) {
+	if ('@max_max_c1 == 0) {
 		mes "^3355FFWait a second!";
 		mes "Right now, you're carrying";
 		mes "too many things with you.";
@@ -7878,7 +7878,7 @@ S_GiveName:
 mjolnir_01.gat,135,168,3	script	Historian#prt03	754,{
 
 	set '@max_max_c1,checkweight(1201,1);
-	if ('@max_max_c1 == 1) {
+	if ('@max_max_c1 == 0) {
 		mes "^3355FFWait a second!";
 		mes "Right now, you're carrying";
 		mes "too many things with you.";
@@ -8283,7 +8283,7 @@ mjolnir_01.gat,313,269,5	script	Dazed Boy#prt	706,{
 mjolnir_01.gat,316,268,3	script	Exhausted-Looking Woman#prt	879,{
 
 	set '@max_max_c1,checkweight(1201,1);
-	if ('@max_max_c1 == 1) {
+	if ('@max_max_c1 == 0) {
 		mes "^3355FFWait a second!";
 		mes "Right now, you're carrying";
 		mes "too many things with you.";
@@ -9923,7 +9923,7 @@ OnTouch:
 prt_in.gat,162,99,4	script	Librarian#curse	67,{
 
 	set '@max_max_c1,checkweight(1201,1);
-	if ('@max_max_c1 == 1) {
+	if ('@max_max_c1 == 0) {
 		mes "^3355FFWait a second!";
 		mes "Right now, you're carrying";
 		mes "too many things with you.";

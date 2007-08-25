@@ -2471,15 +2471,15 @@ ama_in01.gat,180,173,3	script	Kitsune Mask	762,{
 
 amatsu.gat,223,236,3	script	Publisher	763,{
 
-	/*set '@max_max_c,CheckMaxCount 1201,1;
-	if ('@max_max_c == 1) {
+	set '@max_max_c,checkweight(1201,1);
+	if ('@max_max_c == 0) {
 		mes "- Wait a moment!! -";
 		mes "- Currently you are carrying -";
 		mes "- too many items with you. -";
 		mes "- Please store some items into your Kafra storage -";
 		mes "- and try again. -";
 		close;
-	}*/
+	}
 	if (mm_q < 2) {
 		mes "[Publisher]";
 		mes "Hello~!!";

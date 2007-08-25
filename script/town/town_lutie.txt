@@ -94,7 +94,7 @@ xmas_in.gat,100,96,4	script	Santa Claus	718,{
 xmas.gat,134,112,4	script	Snowman	710,{
 
 	set '@max_max_c,checkweight(1201,1);
-	if ('@max_max_c == 1) {
+	if ('@max_max_c == 0) {
 		cutin "rutie_snownow01",2;
 		mes "- Wait a minute !! -";
 		mes "- Currently you're carrying -";

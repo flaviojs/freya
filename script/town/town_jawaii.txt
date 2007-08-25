@@ -498,15 +498,15 @@ OnTouch:
 
 jawaii_in.gat,15,104,0	script	Waitress#jawaii	80,{
 
-	/*set '@max_max_c,CheckMaxCount 1201,1;
-	if ('@max_max_c == 1) {
+	set '@max_max_c,checkweight(1201,1);
+	if ('@max_max_c == 0) {
 		mes "- Hold it right there!! -";
 		mes "- You're carrying so many items, -";
 		mes "- you'll not be able to obtain any reward -";
 		mes "- Please take off some of your loads -";
 		mes "- and come for the challenge again!";
 		close;
-	}*/
+	}
 	if (PartnerID) {
 		mes "[Waitress]";
 		mes "Welcome. What kind of service do you seek?";

@@ -3226,7 +3226,7 @@ ein_in01.gat,261,241,3	script	Elle Cherno	703,3,3,{
 	} else if (ein_tre == 13) {
 		next;
 		set '@max_max_c1,checkweight(1201,1);
-		if ('@max_max_c1 == 1) {
+		if ('@max_max_c1 == 0) {
 			mes "[Elle Cherno]";
 			mes "Hey! I have something";
 			mes "to give you, but you have";
@@ -3318,7 +3318,7 @@ OnTouch:
 	} else if (ein_tre == 13) {
 		next;
 		set '@max_max_c1,checkweight(1201,1);
-		if ('@max_max_c1 == 1) {
+		if ('@max_max_c1 == 0) {
 			mes "[Elle Cherno]";
 			mes "Hey! I have something";
 			mes "to give you, but you have";
@@ -6423,7 +6423,7 @@ ein_in01.gat,95,239,3	script	Conveyor #inspection6	111,{
 ein_in01.gat,31,138,3	script	Calla	90,{
 
 	set '@max_max_c,checkweight(1201,1);
-	if ('@max_max_c == 1) {
+	if ('@max_max_c == 0) {
 		mes "^3355FFWait a second!";
 		mes "Right now, you're carrying";
 		mes "too many things with you.";
@@ -11542,7 +11542,7 @@ einbroch.gat,215,180,6	script	Uwe Kleine	85,{
 					break;
 				}
 				set '@maz,checkweight(1201,1);
-				if ('@maz == 1) {
+				if ('@maz == 0) {
 					mes "[Uwe]";
 					mes "Oh, I was going to give";
 					mes "you a little something,";
@@ -11605,7 +11605,7 @@ einbroch.gat,215,180,6	script	Uwe Kleine	85,{
 				case 1:
 					if (countitem(7126) > 5) {
 						set '@maz,checkweight(1201,1);
-						if ('@maz == 1) {
+						if ('@maz == 0) {
 							mes "[Uwe]";
 							mes "Oh, I was going to give";
 							mes "you a little something,";
@@ -11657,7 +11657,7 @@ einbroch.gat,215,180,6	script	Uwe Kleine	85,{
 						switch(select("Give him all.","Cancel.")) {
 						case 1:
 							set '@maz,checkweight(1201,1);
-							if ('@maz == 1) {
+							if ('@maz == 0) {
 								mes "[Uwe]";
 								mes "Oh, I was going to give";
 								mes "you a little something,";
@@ -11696,7 +11696,7 @@ einbroch.gat,215,180,6	script	Uwe Kleine	85,{
 							close;
 						case 2:
 							set '@maz,checkweight(1201,1);
-							if ('@maz == 1) {
+							if ('@maz == 0) {
 								mes "[Uwe]";
 								mes "Oh, I was going to give";
 								mes "you a little something,";
@@ -11751,7 +11751,7 @@ einbroch.gat,215,180,6	script	Uwe Kleine	85,{
 					}
 				case 2:
 					set '@maz,checkweight(1201,1);
-					if ('@maz == 1) {
+					if ('@maz == 0) {
 						mes "[Uwe]";
 						mes "Oh, I was going to give";
 						mes "you a little something,";
@@ -11799,7 +11799,7 @@ einbroch.gat,215,180,6	script	Uwe Kleine	85,{
 					switch(select("Here you go~","I want to quit.")) {
 					case 1:
 						set '@maz,checkweight(1201,1);
-						if ('@maz == 1) {
+						if ('@maz == 0) {
 							mes "[Uwe]";
 							mes "Oh, I was going to give";
 							mes "you a little something,";
@@ -11843,7 +11843,7 @@ einbroch.gat,215,180,6	script	Uwe Kleine	85,{
 							switch(select("Give them all.","Cancel.")) {
 							case 1:
 								set '@maz,checkweight(1201,1);
-								if ('@maz == 1) {
+								if ('@maz == 0) {
 									mes "[Uwe]";
 									mes "Oh, I was going to give";
 									mes "you a little something,";
@@ -11882,7 +11882,7 @@ einbroch.gat,215,180,6	script	Uwe Kleine	85,{
 								close;
 							case 2:
 								set '@maz,checkweight(1201,1);
-								if ('@maz == 1) {
+								if ('@maz == 0) {
 									mes "[Uwe]";
 									mes "Oh, I was going to give";
 									mes "you a little something,";
@@ -11936,7 +11936,7 @@ einbroch.gat,215,180,6	script	Uwe Kleine	85,{
 						}
 					case 2:
 						set '@maz,checkweight(1201,1);
-						if ('@maz == 1) {
+						if ('@maz == 0) {
 							mes "[Uwe]";
 							mes "Oh, I was going to give";
 							mes "you a little something,";

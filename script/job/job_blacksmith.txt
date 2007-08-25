@@ -2587,15 +2587,15 @@ geffen_in.gat,109,170,3	script	Blacksmith Guildsman#gef	726,{
 
 ein_in01.gat,38,29,0	script	Paul Spanner	63,{
 
-	/*set '@max_max_c,CheckMaxCount 1201,1;
-	if ('@max_max_c == 1) {
+	set '@max_max_c,checkweight(1201,1);
+	if ('@max_max_c == 0) {
 		mes "- Wait a minute !! -";
 		mes "- Currently you're carrying -";
 		mes "- too many items with you. -";
 		mes "- Please try again -";
 		mes "- after you loose some weight. -";
 		close;
-	}*/
+	}
 	mes "[Paul Spanner]";
 	mes "Welcome, my friend.";
 	mes "In my shop, you will find everything that you need in forging.";

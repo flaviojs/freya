@@ -3120,7 +3120,7 @@ L_Input:
 	if (@input <= 0) goto L_NoBuy;
 	if (@input > 500) goto L_TooMany;
 	if (Zeny < (@input*55000)) goto L_NoZeny;
-	if (checkweight(732, @input) == 0) goto L_OverWeight;
+	if (checkweight(1201,1) == 0) goto L_OverWeight;
 	set Zeny,Zeny-(@input*55000);
 	getitem 732, @input;
 	mes "[Dwayne]";

@@ -1521,7 +1521,7 @@ prt_in.gat,248,23,0	script	Maid	111,{
 morocc_in.gat,115,154,5	script	Rogue#s	810,{
 
 	set '@max_max_c1,checkweight(1201,1);
-	if ('@max_max_c1 == 1) {
+	if ('@max_max_c1 == 0) {
 		mes "^3355FFWait a second! Right now,";
 		mes "you have too many items in your inventory. Please come back after you've freed up more inventory space.^000000";
 		close;
@@ -7722,7 +7722,7 @@ geffen_in.gat,159,48,5	script	Lonely-looking Woman	711,{
 geffen_in.gat,171,42,3	script	Cute Girl	703,{
 
 	set '@max_max_c1,checkweight(1201,1);
-	if ('@max_max_c1 == 1) {
+	if ('@max_max_c1 == 0) {
 		mes "^3355FFWait a second! Right now,";
 		mes "you have too many items in your inventory. Please come back after you've made more available inventory space.^000000";
 		close;
@@ -7891,7 +7891,7 @@ geffen_in.gat,171,42,3	script	Cute Girl	703,{
 mjo_dun02.gat,88,295,4	script	Flaming Spirit Man	85,{
 
 	set '@max_max_c1,checkweight(1201,1);
-	if ('@max_max_c1 == 1) {
+	if ('@max_max_c1 == 0) {
 		mes "^3355FFWait a second! Right now,";
 		mes "you have too many items in your inventory. Please come back after you've made more available inventory space.^000000";
 		close;
@@ -8736,7 +8736,7 @@ umbala.gat,163,256,3	script	Native#_s	781,{
 um_in.gat,27,23,3	script	Fastidious-Looking Guy	121,{
 
 	set '@max_max_c1,checkweight(1201,1);
-	if ('@max_max_c1 == 1) {
+	if ('@max_max_c1 == 0) {
 		mes "^3355FFWait a second! Right now,";
 		mes "you have too many items in your inventory. Please come back after you've freed up more inventory space.^000000";
 		close;
@@ -8927,7 +8927,7 @@ um_in.gat,27,23,3	script	Fastidious-Looking Guy	121,{
 alberta.gat,165,83,4	script	Fastidious Old Man	755,{
 
 	set '@max_max_c1,checkweight(1201,1);
-	if ('@max_max_c1 == 1) {
+	if ('@max_max_c1 == 0) {
 		mes "^3355FFWait a second! Right now,";
 		mes "you have too many items in your inventory. Please come back after you've freed up more inventory space.^000000";
 		close;
@@ -10967,7 +10967,7 @@ niflheim.gat,313,70,4	script	Pleasant-Featured Lady#s	90,{
 que_sign01.gat,122,141,4	script	Witch#s	792,{
 
 	set '@max_max_c1,checkweight(1201,1);
-	if ('@max_max_c1 == 1) {
+	if ('@max_max_c1 == 0) {
 		mes "- Wait a minute !! -";
 		mes "- Currently you're carrying -";
 		mes "- too many items with you. -";
