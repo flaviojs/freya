@@ -9,11 +9,12 @@
 //--------------------------------------------------------------
 // Script Title: GvG Monster System	Author: jAthena/Yor/Tsuyuki
 //--------------------------------------------------------------
-// Revision History: v1.1
+// Revision History: v1.3
 //--------------------------------------------------------------
 //	1.0 First version [jAthena]
 //	1.1 Translated into English [Yor]
 //	1.2 Updated dialogue to iRO Aegis [Tsuyuki]
+//	1.3 Updated all Emperium spawn coordinates to official [Tsuyuki]
 //--------------------------------------------------------------
 // Additional Notes: * Official-certified *
 //--------------------------------------------------------------
@@ -27,7 +28,6 @@
 
 function	script	F_AgitSummon	{
 
-	// This function changes AgitCode into a numerical value.
 	function sF_Enum {
 		if (getarg(0)=="L1") return 11;
 		if (getarg(0)=="L2") return 12;
@@ -51,33 +51,31 @@ function	script	F_AgitSummon	{
 		if (getarg(0)=="V5") return 45;
 		return 0;
 	}
-	// Summoning of the Emperium.
 	switch(sF_Enum(getarg(0))) {
-		case 11: monster "aldeg_cas01.gat",216,24,"Emperium",1288,1,"AgitExe#L1::OnAgitBreak"; 	break;
-		case 12: monster "aldeg_cas02.gat",214,24,"Emperium",1288,1,"AgitExe#L2::OnAgitBreak"; 	break;
-		case 13: monster "aldeg_cas03.gat",206,32,"Emperium",1288,1,"AgitExe#L3::OnAgitBreak"; 	break;
-		case 14: monster "aldeg_cas04.gat",36,218,"Emperium",1288,1,"AgitExe#L4::OnAgitBreak"; 	break;
-		case 15: monster "aldeg_cas05.gat",28,102,"Emperium",1288,1,"AgitExe#L5::OnAgitBreak"; 	break;
-		case 21: monster "gefg_cas01.gat",198,182,"Emperium",1288,1,"AgitExe#B1::OnAgitBreak"; 	break;
+		case 11: monster "aldeg_cas01.gat",216,23,"Emperium",1288,1,"AgitExe#L1::OnAgitBreak"; 	break;
+		case 12: monster "aldeg_cas02.gat",213,23,"Emperium",1288,1,"AgitExe#L2::OnAgitBreak"; 	break;
+		case 13: monster "aldeg_cas03.gat",205,31,"Emperium",1288,1,"AgitExe#L3::OnAgitBreak"; 	break;
+		case 14: monster "aldeg_cas04.gat",36,217,"Emperium",1288,1,"AgitExe#L4::OnAgitBreak"; 	break;
+		case 15: monster "aldeg_cas05.gat",27,101,"Emperium",1288,1,"AgitExe#L5::OnAgitBreak"; 	break;
+		case 21: monster "gefg_cas01.gat",197,181,"Emperium",1288,1,"AgitExe#B1::OnAgitBreak"; 	break;
 		case 22: monster "gefg_cas02.gat",176,178,"Emperium",1288,1,"AgitExe#B2::OnAgitBreak"; 	break;
-		case 23: monster "gefg_cas03.gat",245,167,"Emperium",1288,1,"AgitExe#B3::OnAgitBreak"; 	break;
-		case 24: monster "gefg_cas04.gat",174,178,"Emperium",1288,1,"AgitExe#B4::OnAgitBreak"; 	break;
+		case 23: monster "gefg_cas03.gat",244,166,"Emperium",1288,1,"AgitExe#B3::OnAgitBreak"; 	break;
+		case 24: monster "gefg_cas04.gat",174,177,"Emperium",1288,1,"AgitExe#B4::OnAgitBreak"; 	break;
 		case 25: monster "gefg_cas05.gat",194,184,"Emperium",1288,1,"AgitExe#B5::OnAgitBreak"; 	break;
-		case 31: monster "payg_cas01.gat",139,139,"Emperium",1288,1,"AgitExe#C1::OnAgitBreak"; 	break;
-		case 32: monster "payg_cas02.gat",39,25,"Emperium",1288,1,"AgitExe#C2::OnAgitBreak"; 	break;
-		case 33: monster "payg_cas03.gat",269,265,"Emperium",1288,1,"AgitExe#C3::OnAgitBreak"; 	break;
-		case 34: monster "payg_cas04.gat",271,29,"Emperium",1288,1,"AgitExe#C4::OnAgitBreak"; 	break;
+		case 31: monster "payg_cas01.gat",138,138,"Emperium",1288,1,"AgitExe#C1::OnAgitBreak"; 	break;
+		case 32: monster "payg_cas02.gat",38,25,"Emperium",1288,1,"AgitExe#C2::OnAgitBreak"; 	break;
+		case 33: monster "payg_cas03.gat",268,264,"Emperium",1288,1,"AgitExe#C3::OnAgitBreak"; 	break;
+		case 34: monster "payg_cas04.gat",270,28,"Emperium",1288,1,"AgitExe#C4::OnAgitBreak"; 	break;
 		case 35: monster "payg_cas05.gat",30,30,"Emperium",1288,1,"AgitExe#C5::OnAgitBreak"; 	break;
 		case 41: monster "prtg_cas01.gat",197,197,"Emperium",1288,1,"AgitExe#V1::OnAgitBreak"; 	break;
-		case 42: monster "prtg_cas02.gat",158,174,"Emperium",1288,1,"AgitExe#V2::OnAgitBreak"; 	break;
-		case 43: monster "prtg_cas03.gat",17,221,"Emperium",1288,1,"AgitExe#V3::OnAgitBreak"; 	break;
-		case 44: monster "prtg_cas04.gat",292,14,"Emperium",1288,1,"AgitExe#V4::OnAgitBreak"; 	break;
+		case 42: monster "prtg_cas02.gat",157,174,"Emperium",1288,1,"AgitExe#V2::OnAgitBreak"; 	break;
+		case 43: monster "prtg_cas03.gat",16,220,"Emperium",1288,1,"AgitExe#V3::OnAgitBreak"; 	break;
+		case 44: monster "prtg_cas04.gat",291,14,"Emperium",1288,1,"AgitExe#V4::OnAgitBreak"; 	break;
 		case 45: monster "prtg_cas05.gat",266,266,"Emperium",1288,1,"AgitExe#V5::OnAgitBreak"; 	break;
 	}
-	set '@dummy,getmapxy('@map$,'@dummy,'@dummy,1);	// Only '@map$ is used.
+	set '@dummy,getmapxy('@map$,'@dummy,'@dummy,1);
 	if (getcastledata('@map$,1))
-		return;	// Stop here if castle have a guild.
-	// Setup of the monsters' coordinates for each castle.
+		return;
 	switch(sF_Enum(getarg(0))) {
 		case 11: setarray '@pos,216,23; 	break;
 		case 12: setarray '@pos,213,23; 	break;
@@ -100,9 +98,8 @@ function	script	F_AgitSummon	{
 		case 44: setarray '@pos,291,14; 	break;
 		case 45: setarray '@pos,266,266; 	break;
 	}
-	// Summoning of monsters when castle has no guild.
 	switch(sF_Enum(getarg(0))/10) {
-	case 1:	// Aldebaran
+	case 1:
 		areamonster '@map$,0,0,0,0,"Evil Druid",1117,10;
 		areamonster '@map$,0,0,0,0,"Khalitzburg",1132,4;
 		areamonster '@map$,0,0,0,0,"Abysmal Knight",1219,2;
@@ -121,7 +118,7 @@ function	script	F_AgitSummon	{
 		monster '@map$,'@pos[0],'@pos[1],"Abysmal Knight",1219,1;
 		monster '@map$,'@pos[0],'@pos[1],"Raydric Archer",1276,5;
 		break;
-	case 2:	// Geffen
+	case 2:
 		areamonster '@map$,0,0,0,0,"Evil Druid",1117,10;
 		areamonster '@map$,0,0,0,0,"Wind Ghost",1263,11;
 		areamonster '@map$,0,0,0,0,"Bathory",1102,10;
@@ -137,7 +134,7 @@ function	script	F_AgitSummon	{
 		monster '@map$,'@pos[0],'@pos[1],"High Orc",1213,10;
 		monster '@map$,'@pos[0],'@pos[1],"Orc Archer",1189,10;
 		break;
-	case 3:	// Payon
+	case 3:
 		areamonster '@map$,0,0,0,0,"Greatest General",1277,10;
 		areamonster '@map$,0,0,0,0,"Wanderer",1208,10;
 		areamonster '@map$,0,0,0,0,"Mutant Dragonoid",1262,5;
@@ -153,7 +150,7 @@ function	script	F_AgitSummon	{
 		monster '@map$,'@pos[0],'@pos[1],"Wanderer",1208,6;
 		monster '@map$,'@pos[0],'@pos[1],"Raydric Archer",1276,5;
 		break;
-	case 4:	// Prontera
+	case 4:
 		areamonster '@map$,0,0,0,0,"Raydric",1163,15;
 		areamonster '@map$,0,0,0,0,"Khalitzburg",1132,10;
 		areamonster '@map$,0,0,0,0,"Abysmal Knight",1219,5;
@@ -194,23 +191,23 @@ function	script	F_GuardianCall	{
 			case 10: monster "aldeg_cas01.gat",17,218,"--ja--",1287,1,"#GuardianKilled::On_L1_10"; 	break;
 			case 11: monster "aldeg_cas01.gat",39,205,"--ja--",1285,1,"#GuardianKilled::On_L1_11"; 	break;
 			case 12: monster "aldeg_cas01.gat",38,196,"--ja--",1285,1,"#GuardianKilled::On_L1_12"; 	break;
-			case 13: monster "aldeg_cas01.gat",21,194,"--ja--",1286,1,"#GuardianKilled::On_L1_13"; 	break;
-			case 14: monster "aldeg_cas01.gat",218,24,"--ja--",1286,1,"#GuardianKilled::On_L1_14"; 	break;
-			case 15: monster "aldeg_cas01.gat",213,24,"--ja--",1286,1,"#GuardianKilled::On_L1_15"; 	break;
-			case 16: monster "aldeg_cas01.gat",73,70,"--ja--",1286,1,"#GuardianKilled::On_L1_16"; 	break;
-			case 17: monster "aldeg_cas01.gat",45,228,"--ja--",1285,1,"#GuardianKilled::On_L1_17"; 	break;
+			case 13: monster "aldeg_cas01.gat",45,228,"--ja--",1285,1,"#GuardianKilled::On_L1_17"; 	break;
+			case 14: monster "aldeg_cas01.gat",21,194,"--ja--",1286,1,"#GuardianKilled::On_L1_13"; 	break;
+			case 15: monster "aldeg_cas01.gat",218,24,"--ja--",1286,1,"#GuardianKilled::On_L1_14"; 	break;
+			case 16: monster "aldeg_cas01.gat",213,24,"--ja--",1286,1,"#GuardianKilled::On_L1_15"; 	break;
+			case 17: monster "aldeg_cas01.gat",73,70,"--ja--",1286,1,"#GuardianKilled::On_L1_16"; 	break;
 		}
 	}
 	if (getarg(0)=="L2") {
 		switch(getarg(1)) {
-			case 10: monster "aldeg_cas02.gat",51,183,"--ja--",1287,1,"#GuardianKilled::On_L2_10"; 	break;
-			case 11: monster "aldeg_cas02.gat",27,184,"--ja--",1286,1,"#GuardianKilled::On_L2_11"; 	break;
-			case 12: monster "aldeg_cas02.gat",88,43,"--ja--",1286,1,"#GuardianKilled::On_L2_12"; 	break;
-			case 13: monster "aldeg_cas02.gat",210,7,"--ja--",1285,1,"#GuardianKilled::On_L2_13"; 	break;
-			case 14: monster "aldeg_cas02.gat",60,203,"--ja--",1287,1,"#GuardianKilled::On_L2_14"; 	break;
+			case 10: monster "aldeg_cas02.gat",27,184,"--ja--",1286,1,"#GuardianKilled::On_L2_11"; 	break;
+			case 11: monster "aldeg_cas02.gat",88,43,"--ja--",1286,1,"#GuardianKilled::On_L2_12"; 	break;
+			case 12: monster "aldeg_cas02.gat",117,46,"--ja--",1286,1,"#GuardianKilled::On_L2_16"; 	break;
+			case 13: monster "aldeg_cas02.gat",60,203,"--ja--",1287,1,"#GuardianKilled::On_L2_14"; 	break;
+			case 14: monster "aldeg_cas02.gat",51,183,"--ja--",1287,1,"#GuardianKilled::On_L2_10"; 	break;
 			case 15: monster "aldeg_cas02.gat",21,177,"--ja--",1285,1,"#GuardianKilled::On_L2_15"; 	break;
-			case 16: monster "aldeg_cas02.gat",117,46,"--ja--",1286,1,"#GuardianKilled::On_L2_16"; 	break;
-			case 17: monster "aldeg_cas02.gat",36,183,"--ja--",1285,1,"#GuardianKilled::On_L2_17"; 	break;
+			case 16: monster "aldeg_cas02.gat",36,183,"--ja--",1285,1,"#GuardianKilled::On_L2_17"; 	break;
+			case 17: monster "aldeg_cas02.gat",210,7,"--ja--",1285,1,"#GuardianKilled::On_L2_13"; 	break;
 		}
 	}
 	if (getarg(0)=="L3") {
@@ -446,7 +443,6 @@ function	script	F_GuardianCall	{
 
 -	script	#GuardianKilled	139,{
 
-	// Aldebaran
 	On_L1_10: setcastledata "aldeg_cas01.gat",10,0; end;
 	On_L1_11: setcastledata "aldeg_cas01.gat",11,0; end;
 	On_L1_12: setcastledata "aldeg_cas01.gat",12,0; end;
@@ -487,8 +483,6 @@ function	script	F_GuardianCall	{
 	On_L5_15: setcastledata "aldeg_cas05.gat",15,0; end;
 	On_L5_16: setcastledata "aldeg_cas05.gat",16,0; end;
 	On_L5_17: setcastledata "aldeg_cas05.gat",17,0; end;
-
-	// Geffen
 	On_B1_10: setcastledata "gefg_cas01.gat",10,0; end;
 	On_B1_11: setcastledata "gefg_cas01.gat",11,0; end;
 	On_B1_12: setcastledata "gefg_cas01.gat",12,0; end;
@@ -529,8 +523,6 @@ function	script	F_GuardianCall	{
 	On_B5_15: setcastledata "gefg_cas05.gat",15,0; end;
 	On_B5_16: setcastledata "gefg_cas05.gat",16,0; end;
 	On_B5_17: setcastledata "gefg_cas05.gat",17,0; end;
-
-	// Payon
 	On_C1_10: setcastledata "payg_cas01.gat",10,0; end;
 	On_C1_11: setcastledata "payg_cas01.gat",11,0; end;
 	On_C1_12: setcastledata "payg_cas01.gat",12,0; end;
@@ -571,8 +563,6 @@ function	script	F_GuardianCall	{
 	On_C5_15: setcastledata "payg_cas05.gat",15,0; end;
 	On_C5_16: setcastledata "payg_cas05.gat",16,0; end;
 	On_C5_17: setcastledata "payg_cas05.gat",17,0; end;
-
-	// Prontera
 	On_V1_10: setcastledata "prtg_cas01.gat",10,0; end;
 	On_V1_11: setcastledata "prtg_cas01.gat",11,0; end;
 	On_V1_12: setcastledata "prtg_cas01.gat",12,0; end;

@@ -9,14 +9,11 @@
 //--------------------------------------------------------------
 // Script Title: Hugel Town NPCs / Quests	Author: Tsuyuki/SinSloth/MoM
 //--------------------------------------------------------------
-// Revision History: v1.2
+// Revision History: v1.0
 //--------------------------------------------------------------
 //	1.0 First version, converted from Aegis [Tsuyuki]
-//	1.1 Added the Bingo Game System/Abyss Lake Entrance, both converted from Aegis by SinSloth [Tsuyuki]
-//	1.2 Added the Rebellion Quest, converted from Aegis by MasterOfMuppets (euRO dialogue) [Tsuyuki]
 //--------------------------------------------------------------
 // Additional Notes: * Offical-certified / Aegis-certified *
-// - Monster Races are incomplete.
 //--------------------------------------------------------------
 
 
@@ -120,7 +117,7 @@ que_bingo.gat,48,84,5	script	Bingo Waiting Room	124,{
 OnInit:
 	waitingroom "Bingo Waiting Room - 5 People",50,"Bingo Waiting Room::OnWarp",5;
 	end;
-	
+
 OnWarp:
 	warpwaitingpc "que_bingo.gat",46,141;
 	donpcevent "start#bingo::OnStart";
@@ -131,7 +128,7 @@ OnWarp:
 	enablenpc "plate5#bingo";
 	disablewaitingroomevent;
 	end;
-	
+
 OnStart:
 	enablewaitingroomevent;
 	end;
@@ -177,17 +174,18 @@ OnTouch:
 	set @bingo_case,1;
 L_Fill:
 	set @bingo_fill,callfunc("F_Bingo",@bingo_case);
-	if (!@bingo_fill)
-	{
+	if (!@bingo_fill) {
 		mes "The numbers you have entered";
-  	mes "exceed the limit, or you have";
+		mes "exceed the limit, or you have";
 		mes "already entered these numbers.";
 		mes "Please enter your numbers again.";
 		next;
-	}
-	else if(@bingo_fill)
-	{
-		if (@bingoplate[25] < 10) set @bingo_e5$,"0"+@bingoplate[25]+""; else set @bingo_e5$,@bingoplate[25];
+	} else if (@bingo_fill) {
+		if (@bingoplate[25] < 10) {
+			set @bingo_e5$,"0"+@bingoplate[25]+"";
+		} else {
+			set @bingo_e5$,@bingoplate[25];
+		}
 		donpcevent "start#bingo::OnEnter";
 		mes "["+@bingo_a1$+"] ["+@bingo_a2$+"] ["+@bingo_a3$+"] ["+@bingo_a4$+"] ["+@bingo_a5$+"]";
 		mes "["+@bingo_b1$+"] ["+@bingo_b2$+"] ["+@bingo_b3$+"] ["+@bingo_b4$+"] ["+@bingo_b5$+"]";
@@ -195,10 +193,8 @@ L_Fill:
 		mes "["+@bingo_d1$+"] ["+@bingo_d2$+"] ["+@bingo_d3$+"] ["+@bingo_d4$+"] ["+@bingo_d5$+"]";
 		mes "["+@bingo_e1$+"] ["+@bingo_e2$+"] ["+@bingo_e3$+"] ["+@bingo_e4$+"] ["+@bingo_e5$+"]";
 		close;
-
 	}	
 	goto L_Fill;
-	
 }
 
 que_bingo.gat,53,121,0	duplicate(plate1#bingo)	plate2#bingo	139,1,1
@@ -213,8 +209,7 @@ OnStart:
 	end;
 	
 OnEnter:
-	if($hu_bingoa == 4)
-	{
+	if ($hu_bingoa == 4) {
 		set $@hu_bingoa,5;
 		donpcevent "start2#bingo::OnStart";
 		stopnpctimer;
@@ -222,27 +217,27 @@ OnEnter:
 	}
 	set $@hu_bingoa,$@hu_bingoa +1;
 	end;
-	
+
 OnTimer1000:
 	mapannounce "que_bingo.gat","Eukran: Hello, everyone! I'm Eukran, your Bingo Guide~",1,0xFFAB54;
 	end;
-	
+
 OnTimer6000:
 	mapannounce "que_bingo.gat","Eukran: Game participants, please enter the Warp Portal at the bottom of your screen and choose a Bingo Plate by entering a number.",1,0xFFAB54;
 	end;
-	
+
 OnTimer11000:
 	mapannounce "que_bingo.gat","Eukran: All participants must choose their Bingo Plates within 3 minutes, or the game will be canceled.",1,0xFFAB54;
 	end;
-	
+
 OnTimer192000:
 	mapannounce "que_bingo.gat","Eukran: Please enter a number in 5 seconds, or the game will be canceled.",1,0xFFAB54;
 	end;
-	
+
 OnTimer200000:
 	mapannounce "que_bingo.gat","Eukran: I'm sorry, but the game has been canceled. Please come again and enjoy a game of Bingo with us!",1,0xFFAB54;
 	end;
-	
+
 OnTimer202000:
 	disablenpc "plate1#bingo";
 	disablenpc "plate2#bingo";
@@ -250,7 +245,7 @@ OnTimer202000:
 	disablenpc "plate4#bingo";
 	disablenpc "plate5#bingo";
 	end;
-	
+
 OnTimer203000:
 	areawarp "que_bingo.gat",44,115,54,126,"que_bingo.gat",40,124;
 	enablenpc "out3#bingo";
@@ -268,11 +263,11 @@ que_bingo.gat,52,52,0	script	start2#bingo	139,{
 OnStop:
 	stopnpctimer;
 	end;
-	
+
 OnStart:
 	initnpctimer;
 	end;
-	
+
 OnTimer2000:
 	mapannounce "que_bingo.gat","Eukran: Great, everyone seems to be ready~",1,0xFFAB54;
 	disablenpc "plate1#bingo";
@@ -281,12 +276,11 @@ OnTimer2000:
 	disablenpc "plate4#bingo";
 	disablenpc "plate5#bingo";
 	end;
-	
+
 OnTimer5000:
 	mapannounce "que_bingo.gat","Eukran: Now, let the game begin!",1,0xFFAB54;
 	setarray $@bingoarray[0],1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25;
-	for(set @i,0; @i < 25; set @i,@i +1)
-	{
+	for(set @i,0; @i < 25; set @i,@i +1) {
 L_Roll:
 		set $@bingo0,rand(0,24);
 		setarray $bingo[@i],$@bingoarray[$@bingo0];
@@ -294,16 +288,16 @@ L_Roll:
 		cleararray $@bingoarray[$@bingo0],0,1;
 	}
 	end;
-	
+
 OnTimer8000:
 	mapannounce "que_bingo.gat","Eukran: I'll announce the Bingo Numbers. If you get 5 lines by matching 5 Bingo Numbers in a straight line on your Bingo Plate, yell out ''Bingo'' to win~",1,0xFFAB54;
 	end;
-	
+
 OnTimer10000:
 	set $@bingoresult,1;
 	callfunc "F_BingoResult",$@bingoresult;
 	end;
-	
+
 OnTimer15000:
 	donpcevent "1a#bingo::OnInit";
 	end;
@@ -311,23 +305,23 @@ OnTimer15000:
 OnTimer20000:
 	callfunc "F_BingoResult",$@bingoresult;
 	end;
-	
+
 OnTimer25000:
 	donpcevent "1a#bingo::OnInit";
 	end;
-	
+
 OnTimer30000:
 	callfunc "F_BingoResult",$@bingoresult;
 	end;
-	
+
 OnTimer35000:
 	donpcevent "1a#bingo::OnInit";
 	end;
-	
+
 OnTimer40000:
 	callfunc "F_BingoResult",$@bingoresult;
 	end;
-	
+
 OnTimer45000:
 	donpcevent "1a#bingo::OnInit";
 	end;
@@ -335,43 +329,43 @@ OnTimer45000:
 OnTimer50000:
 	callfunc "F_BingoResult",$@bingoresult;
 	end;
-	
+
 OnTimer55000:
 	donpcevent "1a#bingo::OnInit";
 	end;
-	
+
 OnTimer60000:
 	callfunc "F_BingoResult",$@bingoresult;
 	end;
-	
+
 OnTimer65000:
 	donpcevent "1a#bingo::OnInit";
 	end;
-	
+
 OnTimer70000:
 	callfunc "F_BingoResult",$@bingoresult;
 	end;
-	
+
 OnTimer75000:
 	donpcevent "1a#bingo::OnInit";
 	end;
-	
+
 OnTimer80000:
 	callfunc "F_BingoResult",$@bingoresult;
 	end;
-	
+
 OnTimer85000:
 	donpcevent "1a#bingo::OnInit";
 	end;
-	
+
 OnTimer90000:
 	callfunc "F_BingoResult",$@bingoresult;
 	end;
-	
+
 OnTimer95000:
 	donpcevent "1a#bingo::OnInit";
 	end;
-	
+
 OnTimer100000:
 	callfunc "F_BingoResult",$@bingoresult;
 	end;
@@ -379,31 +373,31 @@ OnTimer100000:
 OnTimer105000:
 	donpcevent "1a#bingo::OnInit";
 	end;
-	
+
 OnTimer110000:
 	callfunc "F_BingoResult",$@bingoresult;
 	end;
-	
+
 OnTimer115000:
 	donpcevent "1a#bingo::OnInit";
 	end;
-	
+
 OnTimer120000:
 	callfunc "F_BingoResult",$@bingoresult;
 	end;
-	
+
 OnTimer125000:
 	donpcevent "1a#bingo::OnInit";
 	end;
-	
+
 OnTimer130000:
 	callfunc "F_BingoResult",$@bingoresult;
 	end;
-	
+
 OnTimer135000:
 	donpcevent "1a#bingo::OnInit";
 	end;
-	
+
 OnTimer140000:
 	callfunc "F_BingoResult",$@bingoresult;
 	end;
@@ -411,99 +405,99 @@ OnTimer140000:
 OnTimer145000:
 	donpcevent "1a#bingo::OnInit";
 	end;
-	
+
 OnTimer150000:
 	callfunc "F_BingoResult",$@bingoresult;
 	end;
-	
+
 OnTimer155000:
 	donpcevent "1a#bingo::OnInit";
 	end;
-	
+
 OnTimer160000:
 	callfunc "F_BingoResult",$@bingoresult;
 	end;
-	
+
 OnTimer179000:
 	donpcevent "1a#bingo::OnInit";
 	end;
-	
+
 OnTimer180000:
 	callfunc "F_BingoResult",$@bingoresult;
 	end;
-	
+
 OnTimer199000:
 	donpcevent "1a#bingo::OnInit";
 	end;
-	
+
 OnTimer200000:
 	callfunc "F_BingoResult",$@bingoresult;
 	end;
-	
+
 OnTimer219000:
 	donpcevent "1a#bingo::OnInit";
 	end;
-	
+
 OnTimer220000:
 	callfunc "F_BingoResult",$@bingoresult;
 	end;
-	
+
 OnTimer239000:
 	donpcevent "1a#bingo::OnInit";
 	end;
-	
+
 OnTimer240000:
 	callfunc "F_BingoResult",$@bingoresult;
 	end;
-	
+
 OnTimer259000:
 	donpcevent "1a#bingo::OnInit";
 	end;
-	
+
 OnTimer260000:
 	callfunc "F_BingoResult",$@bingoresult;
 	end;
-	
+
 OnTimer279000:
 	donpcevent "1a#bingo::OnInit";
 	end;
-	
+
 OnTimer280000:
 	callfunc "F_BingoResult",$@bingoresult;
 	end;
-	
+
 OnTimer299000:
 	donpcevent "1a#bingo::OnInit";
 	end;
-	
+
 OnTimer300000:
 	callfunc "F_BingoResult",$@bingoresult;
 	end;
-	
+
 OnTimer319000:
 	donpcevent "1a#bingo::OnInit";
 	end;
-	
+
 OnTimer320000:
 	callfunc "F_BingoResult",$@bingoresult;
 	end;
-	
+
 OnTimer339000:
 	donpcevent "1a#bingo::OnInit";
 	end;
-	
+
 OnTimer340000:
 	callfunc "F_BingoResult",$@bingoresult;
 	end;
-	
+
 OnTimer440000:
 	mapannounce "que_bingo.gat","Eukran: I've announced all of the selected numbers, but I haven't heard anyone yell ''Bingo.''",1,0xFFAB54;
 	end;
-	
+
 OnTimer445000:
 	mapannounce "que_bingo.gat","Eukran: I'll give you all 10 seconds to check if any of you have won. If no one can yell ''Bingo'' in 10 seconds, this game will end without a winner.",1,0xFFAB54;
 	end;
-	
+
 OnTimer460000:
 	mapannounce "que_bingo.gat","Eukran: I'm sorry, but this game has ended without a winner. Thanks for playing, everyone~",1,0xFFAB54;
 	donpcevent "1a#bingo::OnInit";
@@ -648,33 +642,33 @@ OnInit:
 	disablenpc "24e#bingo";
 	disablenpc "25e#bingo";
 	end;
-	
+
 OnTouch:
 	if (@bingoplate[1] == $bingo[$@bingoresult -1]) { set @bingo_a1$,"^ff0000-  -^000000"; setarray @bingoplate[1],99; }
-	else if(@bingoplate[2] == $bingo[$@bingoresult -1]) { set @bingo_a2$,"^ff0000-  -^000000"; setarray @bingoplate[2],99; }
-	else if(@bingoplate[3] == $bingo[$@bingoresult -1]) { set @bingo_a3$,"^ff0000-  -^000000"; setarray @bingoplate[3],99; }
-	else if(@bingoplate[4] == $bingo[$@bingoresult -1]) { set @bingo_a4$,"^ff0000-  -^000000"; setarray @bingoplate[4],99; }
-	else if(@bingoplate[5] == $bingo[$@bingoresult -1]) { set @bingo_a5$,"^ff0000-  -^000000"; setarray @bingoplate[5],99; }
-	else if(@bingoplate[6] == $bingo[$@bingoresult -1]) { set @bingo_b1$,"^ff0000-  -^000000"; setarray @bingoplate[6],99; }
-	else if(@bingoplate[7] == $bingo[$@bingoresult -1]) { set @bingo_b2$,"^ff0000-  -^000000"; setarray @bingoplate[7],99; }
-	else if(@bingoplate[8] == $bingo[$@bingoresult -1]) { set @bingo_b3$,"^ff0000-  -^000000"; setarray @bingoplate[8],99; }
-	else if(@bingoplate[9] == $bingo[$@bingoresult -1]) { set @bingo_b4$,"^ff0000-  -^000000"; setarray @bingoplate[9],99; }
-	else if(@bingoplate[10] == $bingo[$@bingoresult -1]) { set @bingo_b5$,"^ff0000-  -^000000"; setarray @bingoplate[10],99; }
-	else if(@bingoplate[11] == $bingo[$@bingoresult -1]) { set @bingo_c1$,"^ff0000-  -^000000"; setarray @bingoplate[11],99; }
-	else if(@bingoplate[12] == $bingo[$@bingoresult -1]) { set @bingo_c2$,"^ff0000-  -^000000"; setarray @bingoplate[12],99; }
-	else if(@bingoplate[13] == $bingo[$@bingoresult -1]) { set @bingo_c3$,"^ff0000-  -^000000"; setarray @bingoplate[13],99; }
-	else if(@bingoplate[14] == $bingo[$@bingoresult -1]) { set @bingo_c4$,"^ff0000-  -^000000"; setarray @bingoplate[14],99; }
-	else if(@bingoplate[15] == $bingo[$@bingoresult -1]) { set @bingo_c5$,"^ff0000-  -^000000"; setarray @bingoplate[15],99; }
-	else if(@bingoplate[16] == $bingo[$@bingoresult -1]) { set @bingo_d1$,"^ff0000-  -^000000"; setarray @bingoplate[16],99; }
-	else if(@bingoplate[17] == $bingo[$@bingoresult -1]) { set @bingo_d2$,"^ff0000-  -^000000"; setarray @bingoplate[17],99; }
-	else if(@bingoplate[18] == $bingo[$@bingoresult -1]) { set @bingo_d3$,"^ff0000-  -^000000"; setarray @bingoplate[18],99; }
-	else if(@bingoplate[19] == $bingo[$@bingoresult -1]) { set @bingo_d4$,"^ff0000-  -^000000"; setarray @bingoplate[19],99; }
-	else if(@bingoplate[20] == $bingo[$@bingoresult -1]) { set @bingo_d5$,"^ff0000-  -^000000"; setarray @bingoplate[20],99; }
-	else if(@bingoplate[21] == $bingo[$@bingoresult -1]) { set @bingo_e1$,"^ff0000-  -^000000"; setarray @bingoplate[21],99; }
-	else if(@bingoplate[22] == $bingo[$@bingoresult -1]) { set @bingo_e2$,"^ff0000-  -^000000"; setarray @bingoplate[22],99; }
-	else if(@bingoplate[23] == $bingo[$@bingoresult -1]) { set @bingo_e3$,"^ff0000-  -^000000"; setarray @bingoplate[23],99; }
-	else if(@bingoplate[24] == $bingo[$@bingoresult -1]) { set @bingo_e4$,"^ff0000-  -^000000"; setarray @bingoplate[24],99; }
-	else if(@bingoplate[25] == $bingo[$@bingoresult -1]) { set @bingo_e5$,"^ff0000-  -^000000"; setarray @bingoplate[25],99; }
+	else if (@bingoplate[2] == $bingo[$@bingoresult -1]) { set @bingo_a2$,"^ff0000-  -^000000"; setarray @bingoplate[2],99; }
+	else if (@bingoplate[3] == $bingo[$@bingoresult -1]) { set @bingo_a3$,"^ff0000-  -^000000"; setarray @bingoplate[3],99; }
+	else if (@bingoplate[4] == $bingo[$@bingoresult -1]) { set @bingo_a4$,"^ff0000-  -^000000"; setarray @bingoplate[4],99; }
+	else if (@bingoplate[5] == $bingo[$@bingoresult -1]) { set @bingo_a5$,"^ff0000-  -^000000"; setarray @bingoplate[5],99; }
+	else if (@bingoplate[6] == $bingo[$@bingoresult -1]) { set @bingo_b1$,"^ff0000-  -^000000"; setarray @bingoplate[6],99; }
+	else if (@bingoplate[7] == $bingo[$@bingoresult -1]) { set @bingo_b2$,"^ff0000-  -^000000"; setarray @bingoplate[7],99; }
+	else if (@bingoplate[8] == $bingo[$@bingoresult -1]) { set @bingo_b3$,"^ff0000-  -^000000"; setarray @bingoplate[8],99; }
+	else if (@bingoplate[9] == $bingo[$@bingoresult -1]) { set @bingo_b4$,"^ff0000-  -^000000"; setarray @bingoplate[9],99; }
+	else if (@bingoplate[10] == $bingo[$@bingoresult -1]) { set @bingo_b5$,"^ff0000-  -^000000"; setarray @bingoplate[10],99; }
+	else if (@bingoplate[11] == $bingo[$@bingoresult -1]) { set @bingo_c1$,"^ff0000-  -^000000"; setarray @bingoplate[11],99; }
+	else if (@bingoplate[12] == $bingo[$@bingoresult -1]) { set @bingo_c2$,"^ff0000-  -^000000"; setarray @bingoplate[12],99; }
+	else if (@bingoplate[13] == $bingo[$@bingoresult -1]) { set @bingo_c3$,"^ff0000-  -^000000"; setarray @bingoplate[13],99; }
+	else if (@bingoplate[14] == $bingo[$@bingoresult -1]) { set @bingo_c4$,"^ff0000-  -^000000"; setarray @bingoplate[14],99; }
+	else if (@bingoplate[15] == $bingo[$@bingoresult -1]) { set @bingo_c5$,"^ff0000-  -^000000"; setarray @bingoplate[15],99; }
+	else if (@bingoplate[16] == $bingo[$@bingoresult -1]) { set @bingo_d1$,"^ff0000-  -^000000"; setarray @bingoplate[16],99; }
+	else if (@bingoplate[17] == $bingo[$@bingoresult -1]) { set @bingo_d2$,"^ff0000-  -^000000"; setarray @bingoplate[17],99; }
+	else if (@bingoplate[18] == $bingo[$@bingoresult -1]) { set @bingo_d3$,"^ff0000-  -^000000"; setarray @bingoplate[18],99; }
+	else if (@bingoplate[19] == $bingo[$@bingoresult -1]) { set @bingo_d4$,"^ff0000-  -^000000"; setarray @bingoplate[19],99; }
+	else if (@bingoplate[20] == $bingo[$@bingoresult -1]) { set @bingo_d5$,"^ff0000-  -^000000"; setarray @bingoplate[20],99; }
+	else if (@bingoplate[21] == $bingo[$@bingoresult -1]) { set @bingo_e1$,"^ff0000-  -^000000"; setarray @bingoplate[21],99; }
+	else if (@bingoplate[22] == $bingo[$@bingoresult -1]) { set @bingo_e2$,"^ff0000-  -^000000"; setarray @bingoplate[22],99; }
+	else if (@bingoplate[23] == $bingo[$@bingoresult -1]) { set @bingo_e3$,"^ff0000-  -^000000"; setarray @bingoplate[23],99; }
+	else if (@bingoplate[24] == $bingo[$@bingoresult -1]) { set @bingo_e4$,"^ff0000-  -^000000"; setarray @bingoplate[24],99; }
+	else if (@bingoplate[25] == $bingo[$@bingoresult -1]) { set @bingo_e5$,"^ff0000-  -^000000"; setarray @bingoplate[25],99; }
 	set @bingowin,0;
 	if (@bingoplate[1] == @bingoplate[2] && @bingoplate[1] == @bingoplate[3] && @bingoplate[1] == @bingoplate[4] && @bingoplate[1] == @bingoplate[5]) set @bingowin,@bingowin +1;
 	if (@bingoplate[6] == @bingoplate[7] && @bingoplate[6] == @bingoplate[8] && @bingoplate[6] == @bingoplate[9] && @bingoplate[6] == @bingoplate[10]) set @bingowin,@bingowin +1;
@@ -689,8 +683,8 @@ OnTouch:
 	if (@bingoplate[1] == @bingoplate[7] && @bingoplate[1] == @bingoplate[13] && @bingoplate[1] == @bingoplate[19] && @bingoplate[1] == @bingoplate[25]) set @bingowin,@bingowin +1;
 	if (@bingoplate[5] == @bingoplate[9] && @bingoplate[5] == @bingoplate[13] && @bingoplate[5] == @bingoplate[17] && @bingoplate[5] == @bingoplate[21]) set @bingowin,@bingowin +1;
 	if ($@bingoresult == 1 || $@bingoresult == 21) mes "[ "+$@bingoresult+"st Number - "+$bingo[$@bingoresult -1]+" ]";
-	else if($@bingoresult == 2 || $@bingoresult == 22) mes "[ "+$@bingoresult+"nd Number - "+$bingo[$@bingoresult -1]+" ]";
-	else if($@bingoresult == 3 || $@bingoresult == 23) mes "[ "+$@bingoresult+"rd Number - "+$bingo[$@bingoresult -1]+" ]";
+	else if ($@bingoresult == 2 || $@bingoresult == 22) mes "[ "+$@bingoresult+"nd Number - "+$bingo[$@bingoresult -1]+" ]";
+	else if ($@bingoresult == 3 || $@bingoresult == 23) mes "[ "+$@bingoresult+"rd Number - "+$bingo[$@bingoresult -1]+" ]";
 	else mes "[ "+$@bingoresult+"th Number - "+$bingo[$@bingoresult -1]+" ]"; 
 	mes "["+@bingo_a1$+"] ["+@bingo_a2$+"] ["+@bingo_a3$+"] ["+@bingo_a4$+"] ["+@bingo_a5$+"]";
 	mes "["+@bingo_b1$+"] ["+@bingo_b2$+"] ["+@bingo_b3$+"] ["+@bingo_b4$+"] ["+@bingo_b5$+"]";
@@ -698,10 +692,8 @@ OnTouch:
 	mes "["+@bingo_d1$+"] ["+@bingo_d2$+"] ["+@bingo_d3$+"] ["+@bingo_d4$+"] ["+@bingo_d5$+"]";
 	mes "["+@bingo_e1$+"] ["+@bingo_e2$+"] ["+@bingo_e3$+"] ["+@bingo_e4$+"] ["+@bingo_e5$+"]";
 	mes "[Currently Finished Lines - "+@bingowin+" ]";
-	if ($@bingoresult > 15)
-	{
-		if (@bingowin > 4)
-		{
+	if ($@bingoresult > 15) {
+		if (@bingowin > 4) {
 			next;
 			mes "We just have made 5 lines!";
 			mes "Say ^ff0000Bingo^000000!";
@@ -711,19 +703,15 @@ OnTouch:
 			mes "Remember, you'll only";
 			mes "have one chance to say it!";
 			input @bingoyell$;
-			if (@bingoyell$ == "Bingo")
-			{
-				if ($@hu_bingoa == 5)
-				{
+			if (@bingoyell$ == "Bingo") {
+				if ($@hu_bingoa == 5) {
 					set $@hu_bingoa,6;
 					donpcevent "start2#bingo::OnStop";
 					set $@bingowinner$,strcharinfo(0);
 					donpcevent "win1a#bingo::OnWin";
 					close;
 
-				}
-				else if($@hu_bingoa == 6)
-				{
+				} else if ($@hu_bingoa == 6) {
 					next;
 					mes "Oh no! I'm sorry, but";
 					mes "someone already yelled";
@@ -733,9 +721,7 @@ OnTouch:
 					mes "next time, alright?";
 					close;
 				}
-			}
-			else
-			{
+			} else {
 				next;
 				mes "I'm sorry, but you";
 				mes "said it wrong. Next time,";
@@ -874,7 +860,6 @@ que_bingo.gat,45,121,0	duplicate(1a#bingo)	23e#bingo	139,1,1
 que_bingo.gat,45,121,0	duplicate(1a#bingo)	24e#bingo	139,1,1
 que_bingo.gat,45,121,0	duplicate(1a#bingo)	25e#bingo	139,1,1
 
-
 que_bingo.gat,79,19,0	script	win1a#bingo	139,4,4,{
 
 	end;
@@ -882,7 +867,7 @@ que_bingo.gat,79,19,0	script	win1a#bingo	139,4,4,{
 OnWin:
 	initnpctimer;
 	end;
-	
+
 OnTimer1000:
 	donpcevent "1a#bingo::OnInit";
 	enablenpc "win2a#bingo";
@@ -1004,8 +989,7 @@ OnTouch:
 que_bingo.gat,49,136,0	script	go3#bingo	45,1,1,{
 
 OnTouch:
-	switch($@hu_bingob)
-	{
+	switch($@hu_bingob) {
 		case 0:
 			warp "que_bingo.gat",49,125;
 			break;
@@ -1030,18 +1014,15 @@ OnTouch:
 function	script	F_Bingo	{
 
 
-	for( set @i,getarg(0); @i < 26; set @i,@i +1)
-	{
+	for(set @i,getarg(0); @i < 26; set @i,@i +1) {
 		if (@bingoplate[1] < 10) set @bingo_a1$,"0"+@bingoplate[1]+""; else set @bingo_a1$,@bingoplate[1];
 		if (@bingoplate[2] < 10) set @bingo_a2$,"0"+@bingoplate[2]+""; else set @bingo_a2$,@bingoplate[2];
 		if (@bingoplate[3] < 10) set @bingo_a3$,"0"+@bingoplate[3]+""; else set @bingo_a3$,@bingoplate[3];
 		if (@bingoplate[4] < 10) set @bingo_a4$,"0"+@bingoplate[4]+""; else set @bingo_a4$,@bingoplate[4];
 		if (@bingoplate[5] < 10) set @bingo_a5$,"0"+@bingoplate[5]+""; else set @bingo_a5$,@bingoplate[5];
 		if (@i > 5) mes "["+@bingo_a1$+"] ["+@bingo_a2$+"] ["+@bingo_a3$+"] ["+@bingo_a4$+"] ["+@bingo_a5$+"]";
-		else
-		{
-			switch(@i)
-			{
+		else {
+			switch(@i) {
 				case 1:
 					mes "^ff0000[__]^000000 [   ] [   ] [   ] [   ]";
 					break;
@@ -1065,11 +1046,9 @@ function	script	F_Bingo	{
 		if (@bingoplate[9] < 10) set @bingo_b4$,"0"+@bingoplate[9]+""; else set @bingo_b4$,@bingoplate[9];
 		if (@bingoplate[10] < 10) set @bingo_b5$,"0"+@bingoplate[10]+""; else set @bingo_b5$,@bingoplate[10];
 		if (@i > 10) mes "["+@bingo_b1$+"] ["+@bingo_b2$+"] ["+@bingo_b3$+"] ["+@bingo_b4$+"] ["+@bingo_b5$+"]";
-		else if(@i < 6) mes "[   ] [   ] [   ] [   ] [   ]";
-		else
-		{
-			switch(@i)
-			{
+		else if (@i < 6) mes "[   ] [   ] [   ] [   ] [   ]";
+		else {
+			switch(@i) {
 				case 6:
 					mes "^ff0000[__]^000000 [   ] [   ] [   ] [   ]";
 					break;
@@ -1093,11 +1072,9 @@ function	script	F_Bingo	{
 		if (@bingoplate[14] < 10) set @bingo_c4$,"0"+@bingoplate[14]+""; else set @bingo_c4$,@bingoplate[14];
 		if (@bingoplate[15] < 10) set @bingo_c5$,"0"+@bingoplate[15]+""; else set @bingo_c5$,@bingoplate[15];
 		if (@i > 15) mes "["+@bingo_c1$+"] ["+@bingo_c2$+"] ["+@bingo_c3$+"] ["+@bingo_c4$+"] ["+@bingo_c5$+"]";
-		else if(@i < 11) mes "[   ] [   ] [   ] [   ] [   ]";
-		else
-		{
-			switch(@i)
-			{
+		else if (@i < 11) mes "[   ] [   ] [   ] [   ] [   ]";
+		else {
+			switch(@i) {
 				case 11:
 					mes "^ff0000[__]^000000 [   ] [   ] [   ] [   ]";
 					break;
@@ -1121,11 +1098,9 @@ function	script	F_Bingo	{
 		if (@bingoplate[19] < 10) set @bingo_d4$,"0"+@bingoplate[19]+""; else set @bingo_d4$,@bingoplate[19];
 		if (@bingoplate[20] < 10) set @bingo_d5$,"0"+@bingoplate[20]+""; else set @bingo_d5$,@bingoplate[20];	
 		if (@i > 20) mes "["+@bingo_d1$+"] ["+@bingo_d2$+"] ["+@bingo_d3$+"] ["+@bingo_d4$+"] ["+@bingo_d5$+"]";
-		else if(@i < 16) mes "[   ] [   ] [   ] [   ] [   ]";
-		else
-		{
-			switch(@i)
-			{
+		else if (@i < 16) mes "[   ] [   ] [   ] [   ] [   ]";
+		else {
+			switch(@i) {
 				case 16:
 					mes "^ff0000[__]^000000 [   ] [   ] [   ] [   ]";
 					break;
@@ -1148,10 +1123,8 @@ function	script	F_Bingo	{
 		if (@bingoplate[23] < 10) set @bingo_e3$,"0"+@bingoplate[23]+""; else set @bingo_e3$,@bingoplate[23];
 		if (@bingoplate[24] < 10) set @bingo_e4$,"0"+@bingoplate[24]+""; else set @bingo_e4$,@bingoplate[24];
 		if (@i < 21) mes "[   ] [   ] [   ] [   ] [   ]";
-		else
-		{
-			switch(@i)
-			{
+		else {
+			switch(@i) {
 				case 21:
 					mes "^ff0000[__]^000000 [   ] [   ] [   ] [   ]";
 					break;
@@ -1172,10 +1145,8 @@ function	script	F_Bingo	{
 		next;
 		input @bingoinput;
 		if (@bingoinput < 1 || @bingoinput > 25) { set @bingo_case,@i; return 0; }
-		if (@i > 1)
-		{
-			for(set @j,@i; @j > 0; set @j,@j -1)
-			{
+		if (@i > 1) {
+			for(set @j,@i; @j > 0; set @j,@j -1) {
 				if (@bingoinput == @bingoplate[@j -1]) { set @bingo_case,@i; return 0; }
 			}
 		}
@@ -1187,8 +1158,8 @@ function	script	F_Bingo	{
 function	script	F_BingoResult	{
 
 	if (getarg(0) == 1 || getarg(0) == 21) mapannounce "que_bingo.gat","Eukran: The "+getarg(0)+"st number is "+$bingo[getarg(0) -1]+". Please check your Bingo Plate.",4,0xFFAB54;
-	else if(getarg(0) == 2 || getarg(0) == 22) mapannounce "que_bingo.gat","Eukran: The "+getarg(0)+"nd number is "+$bingo[getarg(0) -1]+". Please check your Bingo Plate.",4,0xFFAB54;
-	else if(getarg(0) == 3 || getarg(0) == 23) mapannounce "que_bingo.gat","Eukran: The "+getarg(0)+"rd number is "+$bingo[getarg(0) -1]+". Please check your Bingo Plate.",4,0xFFAB54;
+	else if (getarg(0) == 2 || getarg(0) == 22) mapannounce "que_bingo.gat","Eukran: The "+getarg(0)+"nd number is "+$bingo[getarg(0) -1]+". Please check your Bingo Plate.",4,0xFFAB54;
+	else if (getarg(0) == 3 || getarg(0) == 23) mapannounce "que_bingo.gat","Eukran: The "+getarg(0)+"rd number is "+$bingo[getarg(0) -1]+". Please check your Bingo Plate.",4,0xFFAB54;
 	else mapannounce "que_bingo.gat","Eukran: The "+getarg(0)+"th number is "+$bingo[getarg(0) -1]+". Please check your Bingo Plate.",4,0xFFAB54;
 	enablenpc ""+getarg(0)+"a#bingo";
 	enablenpc ""+getarg(0)+"b#bingo";
@@ -1197,648 +1168,6 @@ function	script	F_BingoResult	{
 	enablenpc ""+getarg(0)+"e#bingo";
 	set getarg(0),getarg(0) +1;
 	end;
-}
-
-
-//--------------------------------------------------------------
-// Monster Races System (Incomplete) - [Tsuyuki]
-//--------------------------------------------------------------
-
-airplane.gat,246,47,1	script	Eocatt#decoy01	878,{
-
-	mes "[Eocatt]";
-	mes "In the Republic of Schwaltzvalt,";
-	mes "at the far edge of the kingdom,";
-	mes "there lies an isolated village, forgotten by the realm of men.";
-	mes "Only a true warrior like me,";
-	mes "is able to travel through the land of dragons";
-	mes "and find this village.";
-	next;
-	mes "[Eocatt]";
-	mes "Without the interference of outsiders,";
-	mes "the village seems to have ceased from evolving since it's established.";
-	mes "There are a lot of interesting games in the village";
-	mes "and one of them is the Monster Race.";
-	next;
-	mes "[Eocatt]";
-	mes "Those who won the Race";
-	mes "will be given a medal as reward.";
-	mes "It is said that the medal";
-	mes "is made of rare and precious metal.";
-	next;
-	mes "[Eocatt]";
-	mes "I was wondering whether this metal";
-	mes "can be used in other places and";
-	mes "decided to send it to the factory in Einbroch.";
-	next;
-	mes "[Eocatt]";
-	mes "If you ever visit that village,";
-	mes "how about taking part in the race?";
-	mes "It's a quiet village,";
-	mes "and you won't find much entertainment there.";
-	close;
-}
-
-hugel.gat,85,93,3	script	Mudie#dummy01	866,{
-
-	mes "[Mudie]";
-	mes "The Monster Races";
-	mes "are probably the biggest";
-	mes "attraction here in Hugel.";
-	mes "We don't have much else";
-	mes "going on here, I'm afraid.";
-	next;
-	mes "[Mudie]";
-	mes "If you want to go visit";
-	mes "the Monster Race Arena,";
-	mes "just head towards the";
-	mes "7 'o clock direction on";
-	mes "your Mini-Map, and look for";
-	mes "the hill surrounded by a fence.";
-	next;
-	mes "[Mudie]";
-	mes "You should find the arena";
-	mes "somewhere around that area.";
-	mes "Anyway, if you want to wager";
-	mes "or just watch the races, just";
-	mes "ask one of the Eckar brothers.";
-	mes "I hope you enjoy our little town~";
-	close;
-}
-
-p_track02.gat,32,45,3	script	Eccentric Scholar#double	755,{
-
-	mes "[Eccentric Scholar]";
-	mes "Mumbling...Hmmm...This one...";
-	mes "Hmmm, with this speed and length";
-	mes "Time consumed when they passed.";
-	mes "2 pets from 6 pets...";
-	mes "The rate of getting to the finishing points..............";
-	mes "..Mumbling...So...Mumble...";
-	next;
-	mes "["+strcharinfo(0)+"]";
-	mes "...Excuse me......?";
-	next;
-	mes "[Eccentric Scholar]";
-	mes "Hey! Don't speak to me!!";
-	mes "You've messed up my calculation!!!!!";
-	misceffect 107,"Eccentric Scholar#double";
-	emotion ET_FRET,"Eccentric Scholar#double";
-	close;
-}
-
-p_track02.gat,69,31,1	script	Blacksmith Guildsman#double1	726,{
-
-	if ($051101_mon_time_2_2 == 0) {
-		mes "[Blacksmith Guildsman]";
-		mes "Hmmm....Hahaha...";
-		mes "I'll be successful this time...";
-		mes "I wonder how many times have I tried.";
-		emotion ET_CRY,"Blacksmith Guildsman#double1";
-		next;
-		mes "[Blacksmith Guildsman]";
-		mes "Do you know that the";
-		mes "medal for the winners";
-		mes "contains a rare type of substance?";
-		mes "I come from the factory in Einbroch";
-		mes "to study this kind of metal...";
-		mes "I am not sure whether I can do it...Hehehe...";
-		next;
-		mes "[Blacksmith Guildsman]";
-		mes "...If there's any medal left...";
-		mes "Do you think you can send them to the factory...";
-		mes "Oh no...";
-		mes "How can I say this...";
-		emotion ET_PROFUSELY_SWAT,"Blacksmith Guildsman#double1";
-		close;
-	} else {
-		mes "[Blacksmith Guildsman]";
-		mes "Run! Run!";
-		mes "Run for my research! My medal!";
-		mes "Please run quickly!!!";
-		emotion ET_FLAG,"Blacksmith Guildsman#double1";
-		close;
-	}
-}
-
-p_track02.gat,53,45,3	script	Valiant Knight#double	733,{
-
-	mes "[Valiant Knight]";
-	mes "Huh? Have we met before?";
-	mes "Oh, whatever.";
-	mes "Have you played the Monster Race before?";
-	mes "Why don't we make a bet?";
-	mes "When the monster you've chosen won the race,";
-	mes "the one who've lost the race will buy a drink";
-	mes "for the one who've won?";
-	next;
-	mes "[Valiant Knight]";
-	mes "Well, this reminds me of";
-	mes "the Tropical Sograt from";
-	mes "Morocc of Rune Midgard.";
-	mes "That' so tasty.";
-	mes "My ancestors are mercenary.";
-	mes "That must be why I like to travel too.";
-	next;
-	mes "[Valiant Knight]";
-	mes "Looks like you're an adventurer too.";
-	mes "You should go out when you're young";
-	mes "to widen up your view.";
-	mes "Look at the world,";
-	mes "there're lot of things out there!";
-	emotion ET_BEST,"Valiant Knight#double";
-	close;
-}
-
-p_track01.gat,27,47,5	script	Drunkard#single	853,{
-
-	mes "[Familiar Drunkard]";
-	mes "Hmmmm...";
-	mes "I make the right guess this time!";
-	mes "Hiccups.";
-	mes "What pet should I pick this time.";
-	mes "Guess what pet are you going to pick.";
-	mes "Ok! I'll pick this one!";
-	next;
-	mes "["+strcharinfo(0)+"]";
-	mes "...Excuse me......?";
-	next;
-	mes "[Familiar Drunkard]";
-	mes "Run! Run faster!!";
-	mes "You must be the first!";
-	mes "Hehehehe.";
-	close;
-}
-
-p_track01.gat,69,31,1	script	Blacksmith Guildsman#single	107,{
-
-	mes "[Blacksmith Guildsman]";
-	mes "Hmmm....Hahaha...";
-	mes "I'll be successful this time...";
-	mes "I wonder how many times have I tried.";
-	next;
-	mes "[Blacksmith Guildsman]";
-	mes "Do you know that the";
-	mes "medal for the winners";
-	mes "contains a rare type of substance?";
-	mes "I come from the factory in Einbroch";
-	mes "to study this kind of metal...";
-	mes "I am not sure whether I can do it...Hehehe...";
-	next;
-	mes "[Blacksmith Guildsman]";
-	mes "...If there's any medal left...";
-	mes "Do you think you can send them to the factory...";
-	mes "Oh no...";
-	mes "How can I say this...";
-	next;
-	mes "[Blacksmith Guildsman]";
-	mes "I might need this at the end of the traininig.";
-	mes "But I don't think I can see the result...";
-	close;
-}
-
-p_track01.gat,45,24,3	script	Absent Minded Man#single	881,{
-
-	mes "[Absent Minded Man]";
-	mes "...";
-	mes "Are you here to play";
-	mes "the monster race too?";
-	mes "I was in a journey";
-	mes "when I was given a task to come for the";
-	mes "medal of this place.";
-	next;
-	mes "[Absent Minded Man]";
-	mes "Look,";
-	mes "I've been playing here for more than 100 times.";
-	mes "However,";
-	mes "I haven't won a single match.";
-	next;
-	mes "[Absent Minded Man]";
-	mes "According to the ration calculation,";
-	mes "I should have won at least for a time.";
-	mes "Is that too much to ask for?";
-	mes "I think that man is still waiting for me";
-	mes "How am I going to do this?";
-	close;
-}
-
-// Eckar Erenes (Incomplete)
-hugel.gat,62,69,1	script	Eckar Erenes	86,{
-
-	mes "[Eckar Erenes]";
-	mes "Welcome to the";
-	mes "Monster Race Arena,";
-	mes "the pride and joy of";
-	mes "the village of Hugel!";
-	mes "How may I help you?";
-	next;
-	menu	"Monster Race Info",L_RaceInfo,
-		"Enter Monster Race",L_EnterRace;
-
-	L_RaceInfo:
-		mes "[Eckar Erenes]";
-		mes "Monster Races originated from";
-		mes "simple children's games in which";
-		mes "Cute Pets would race against each";
-		mes "other. This grew into an adult";
-		mes "pastime that is so popular, we've";
-		mes "built a racing arena in Hugel.";
-		next;
-		mes "[Eckar Erenes]";
-		mes "Our Monster Race Arena hosts";
-		mes "two types of monster races. First,";
-		mes "we have the Single Monster Race,";
-		mes "in which those that wagered on the";
-		mes "1st place monster are rewarded.";
-		next;
-		mes "[Eckar Erenes]";
-		mes "Then, we have the Dual Monster";
-		mes "Race in which the house odds and";
-		mes "rewards are greater than in Single";
-		mes "Monster Races: you must wager on";
-		mes "2 monsters, and they must place in";
-		mes "1st and 2nd for you to win.";
-		next;
-		mes "[Eckar Erenes]";
-		mes "Although a small entrance";
-		mes "fee is required, we only use";
-		mes "the money to give rewards to";
-		mes "participants and maintain this";
-		mes "arena. Therefore, we're not";
-		mes "profiting from this enterprise.";
-		next;
-		mes "[Eckar Erenes]";
-		mes "Also, we prohibit others";
-		mes "from making personal bets";
-		mes "and wagers, using items and";
-		mes "zeny, based on the outcomes";
-		mes " of these races. That kind of";
-		mes "gambling is illegal here...";
-		next;
-		mes "[Eckar Erenes]";
-		mes "Once you enter the Race Arena,";
-		mes "you will receive a Racing Ticket.";
-		mes "Keep in mind that winning Racing";
-		mes "Tickets can only be exchanged for";
-		mes "Prize Medals during a 5 minute";
-		mes "windows after the end of the race.";
-		next;
-		goto L_EnterRace;
-
-	L_EnterRace:
-		mes "[Eckar Erenes]";
-		mes "The entrance fee for all races";
-		mes "in the Monster Race Arena is";
-		mes "2,000 zeny. If you'd like to wager";
-		mes "on a Single Monster Race,";
-		mes "then please ask my brother";
-		mes "Ellebird to help you.";
-		next;
-		mes "[Eckar Erenes]";
-		mes "Otherwise, I'll help get you";
-		mes "started if you're interested";
-		mes "in a Dual Monster Race.";
-		mes "Would you like to wager";
-		mes "on a Dual Monster Race?";
-		next;
-		menu	"Yes, please.",L_DualRace,
-			"No, thanks.",L_NoThanks;
-
-		L_DualRace:
-			if (Zeny < 2000) goto L_NotEnoughZeny;
-
-			// Incomplete + Unofficial dialogue
-			// Should take your Zeny and take you
-			// to the Dual Monster Race Arena [Tsuyuki]
-
-			mes "[Eckar Erenes]";
-			mes "I'm sorry, but the Monster Race";
-			mes "Arena is currently undergoing";
-			mes "renovations so it's shut down";
-			mes "for now.";
-			close;
-
-		L_NoThanks:
-			mes "[Eckar Erenes]";
-			mes "Very well. I hope that";
-			mes "you enjoy your time here";
-			mes "in the Monster Race Arena~";
-			close;
-		
-	L_NotEnoughZeny:
-		mes "[Eckar Erenes]";
-		mes "I'm sorry, but you";
-		mes "don't have enough";
-		mes "money to pay the";
-		mes "2,000 zeny entrance fee.";
-		close;
-}
-
-// Eckar Ellebird (Incomplete)
-hugel.gat,58,72,5	script	Eckar Ellebird	86,{
-
-	mes "[Eckar Ellebird]";
-	mes "Welcome to the biggest";
-	mes "attraction in Hugel, the";
-	mes "Monster Race Arena.";
-	mes "How may I help you today?";
-	next;
-	menu	"Monster Race Info",L_RaceInfo,
-		"Enter Monster Race",L_EnterRace;
-
-	L_RaceInfo:
-		mes "[Eckar Ellebird]";
-		mes "Monster Races originated from";
-		mes "simple children's games in which";
-		mes "Cute Pets would race against each";
-		mes "other. This grew into an adult";
-		mes "pastime that is so popular, we've";
-		mes "built a racing arena in Hugel.";
-		next;
-		mes "[Eckar Ellebird]";
-		mes "Our Monster Race Arena hosts";
-		mes "two types of monster races. First,";
-		mes "we have the Single Monster Race,";
-		mes "in which those that wagered on the";
-		mes "1st place monster are rewarded.";
-		next;
-		mes "[Eckar Ellebird]";
-		mes "Then, we have the Dual Monster";
-		mes "Race in which the house odds and";
-		mes "rewards are greater than in Single";
-		mes "Monster Races: you must wager on";
-		mes "2 monsters, and they must place in";
-		mes "1st and 2nd for you to win.";
-		next;
-		mes "[Eckar Ellebird]";
-		mes "Although a small entrance";
-		mes "fee is required, we only use";
-		mes "the money to give rewards to";
-		mes "participants and maintain this";
-		mes "arena. Therefore, we're not";
-		mes "profiting from this enterprise.";
-		next;
-		mes "[Eckar Ellebird]";
-		mes "Also, we prohibit others";
-		mes "from making personal bets";
-		mes "and wagers, using items and";
-		mes "zeny, based on the outcomes";
-		mes " of these races. That kind of";
-		mes "gambling is illegal here...";
-		next;
-		mes "[Eckar Ellebird]";
-		mes "Once you enter the Race Arena,";
-		mes "you will receive a Racing Ticket.";
-		mes "Keep in mind that winning Racing";
-		mes "Tickets can only be exchanged for";
-		mes "Prize Medals during a 5 minute";
-		mes "windows after the end of the race.";
-		next;
-		goto L_EnterRace;
-
-	L_EnterRace:
-		mes "[Eckar Ellebird]";
-		mes "The entrance fee for all races";
-		mes "in the Monster Race Arena is";
-		mes "2,000 zeny. If you'd like to wager";
-		mes "on a Dual Monster Race, then";
-		mes "please ask my brother Erenes,";
-		mes "and he will help you.";
-		next;
-		mes "[Eckar Ellebird]";
-		mes "Otherwise, I'll help get you";
-		mes "started if you're interested";
-		mes "in a Single Monster Race.";
-		mes "Would you like to wager";
-		mes "on a Single Monster Race?";
-		next;
-		menu	"Yes, please.",L_SingleRace,
-			"No, thanks.",L_NoThanks;
-
-		L_SingleRace:
-			if (Zeny < 2000) goto L_NotEnoughZeny;
-
-			// Incomplete + Unofficial dialogue
-			// Should take your Zeny and take you
-			// to the Dual Monster Race Arena [Tsuyuki]
-
-			mes "[Eckar Ellebird]";
-			mes "I'm sorry, but the Monster Race";
-			mes "Arena is currently undergoing";
-			mes "renovations so it's shut down";
-			mes "for now.";
-			close;
-
-		L_NoThanks:
-			mes "[Eckar Ellebird]";
-			mes "Very well. I hope that";
-			mes "you enjoy your time here";
-			mes "in the Monster Race Arena~";
-			close;
-		
-	L_NotEnoughZeny:
-		mes "[Eckar Ellebird]";
-		mes "I'm sorry, but you";
-		mes "don't have enough";
-		mes "money to pay the";
-		mes "2,000 zeny entrance fee.";
-		close;
-}
-
-// Wayne - Prize Medal Exchanger (Incomplete)
-hugel.gat,71,83,3	script	Wayne	900,{
-
-	if (!checkweight(1201,1)) {
-		mes "- Please wait for a while!! -";
-		mes "- You're carrying too many items-";
-		mes "- and you won't be able to receive any item now.-";
-		mes "- Please take off some of your loads-";
-		mes "- and come for the challenge again.-";
-		close;
-	}
-	mes "[Wayne]";
-	mes "Hello, there! Ever wonder";
-	mes "what you could do with all";
-	mes "the Prize Medals you can win";
-	mes "in Monster Race Arena? You";
-	mes "can donate them in Einbroch";
-	mes "to the Blacksmith Guild...";
-	next;
-	mes "[Wayne]";
-	mes "...Or you can exchange them";
-	mes "for items, right here and right";
-	mes "now, with me. As always, the";
-	mes "choice is really up to you.";
-	next;
-	menu "Prize Medal Exchange",L_Exchange,"Cancel",L_Cancel;
-
-	L_Exchange:
-		set '@now_weight,MaxWeight-Weight;
-		if ('@now_weight < 5500) {
-			mes "[Wayne]";
-			mes "Looks like you've been carrying too many items...";
-			mes "Why don't you put it in the storage before you come again.";
-			close;
-		}
-		mes "[Wayne]";
-		mes "Now, how many Prize Medals";
-		mes "would you like to exchange?";
-		mes "It doesn't take a genius to";
-		mes "figure out that you can get";
-		mes "more valuable items by trading";
-		mes "more Prize Medals at a time.";
-		next;
-		menu	"1 Prize Medal",L_Prize01,
-			"3 Prize Medals",L_Prize02,
-			"7 Prize Medals",L_Prize03,
-			"8 Prize Medals",L_Prize04,
-			"16 Prize Medals",L_Prize05,
-			"25 Prize Medals",L_Prize06,
-			"42 Prize Medals",L_Prize07,
-			"59 Prize Medals",L_Prize08;
-
-		L_Prize01:
-			mes "[Wayne]";
-			mes "Now, please choose";
-			mes "which of the following item";
-			mes "sets that you'd like to receive";
-			mes "in exchange for 1 Prize Medal.";
-			next;
-			menu	"2 Hinale Leaflets",L_PrzOpt01,
-				"2 Aloe Leaflets",L_PrzOpt02,
-				"1 Mastela Fruit",L_PrzOpt03,
-				"5 Witch Starsands",L_PrzOpt04,
-				"4 Condensed Red Potions",L_PrzOpt05;
-
-			// Incomplete
-			L_PrzOpt01:
-			L_PrzOpt02:
-			L_PrzOpt03:
-			L_PrzOpt04:
-			L_PrzOpt05:
-				goto L_NotEnoughMedals;
-
-		L_Prize02:
-			mes "[Wayne]";
-			mes "Now, please choose";
-			mes "which of the following item";
-			mes "sets that you'd like to receive";
-			mes "in exchange for 3 Prize Medals.";
-			next;
-			menu	"1 Royal Jelly",L_PrzOpt06,
-				"6 Holy Waters",L_PrzOpt07;
-
-			// Incomplete
-			L_PrzOpt06:
-			L_PrzOpt07:
-				goto L_NotEnoughMedals;
-
-		L_Prize03:
-			mes "[Wayne]";
-			mes "Now, please choose";
-			mes "which of the following item";
-			mes "sets that you'd like to receive";
-			mes "in exchange for 7 Prize Medals.";
-			next;
-			menu	"1 Cookie Bag",L_PrzOpt08,
-				"1 First Aid Kit",L_PrzOpt09;
-
-			// Incomplete
-			L_PrzOpt08:
-			L_PrzOpt09:
-				goto L_NotEnoughMedals;
-
-		L_Prize04:
-			mes "[Wayne]";
-			mes "Now, please choose";
-			mes "which of the following item";
-			mes "sets that you'd like to receive";
-			mes "in exchange for 8 Prize Medals.";
-			mes "Well, we have only 1 set, but...";
-			next;
-			menu "1 Gift Box",-;
-
-				// Incomplete
-				goto L_NotEnoughMedals;
-
-		L_Prize05:
-			mes "[Wayne]";
-			mes "Now, please choose";
-			mes "which of the following item";
-			mes "sets that you'd like to receive";
-			mes "in exchange for 16 Prize Medals.";
-			mes "Well, we have only 1 set, but...";
-			next;
-			menu "1 Old Blue Box",-;
-
-				// Incomplete
-				goto L_NotEnoughMedals;
-
-		L_Prize06:
-			mes "[Wayne]";
-			mes "Now, please choose";
-			mes "which of the following item";
-			mes "sets that you'd like to receive";
-			mes "in exchange for 25 Prize Medals.";
-			mes "Well, we have only 1 set, but...";
-			next;
-			menu "1 Taming Gift Set",-;
-
-				// Incomplete
-				goto L_NotEnoughMedals;
-
-		L_Prize07:
-			mes "[Wayne]";
-			mes "Now, please choose";
-			mes "which of the following item";
-			mes "sets that you'd like to receive";
-			mes "in exchange for 42 Prize Medals.";
-			mes "Well, we have only 1 set, but...";
-			next;
-			menu "1 Old Purple Box",-;
-
-				// Incomplete
-				goto L_NotEnoughMedals;
-
-		L_Prize08:
-			mes "[Wayne]";
-			mes "Now, please choose";
-			mes "which of the following item";
-			mes "sets that you'd like to receive";
-			mes "in exchange for 59 Prize Medals.";
-			mes "Well, we have only 1 set, but...";
-			next;
-			menu "1 Poring Box",-;
-
-				// Incomplete
-				goto L_NotEnoughMedals;
-
-	L_NotEnoughMedals:
-		mes "[Wayne]";
-		mes "Hey, you don't have";
-		mes "enough Prize Medals with";
-		mes "you. Go and get some more";
-		mes "if you want to exchange";
-		mes "them with me for anything.";
-		close;
-
-	L_Cancel:
-		mes "[Wayne]";
-		mes "Well, just keep in mind";
-		mes "that you can always come";
-		mes "to me to trade in your Prize";
-		mes "Medals for consumable items.";
-		mes "That guy in Einbroch? Not sure";
-		mes "what he'd give you for them...";
-		next;
-		mes "[Wayne]";
-		mes "All I know is that he";
-		mes "needs a whole lot of medals";
-		mes "for the work that he's doing.";
-		mes "Still, I hear that he just may";
-		mes "make your donations worth";
-		mes "all your effort, you know?";
-		close;
 }
 
 
@@ -11697,7 +11026,7 @@ hugel.gat,70,137,5	script	Shede	879,{
 			end;
 		}
 	}
-	else if(hg_tre > 9 && hg_tre < 15)
+	else if (hg_tre > 9 && hg_tre < 15)
 	{
 		mes "[Shede]";
 		mes "Can you please go gather \"^3131FF5 Moks Mushroom Solution^000000\" from \"^3131FFMoks Mushrooms^000000\"?";
@@ -11707,7 +11036,7 @@ hugel.gat,70,137,5	script	Shede	879,{
 		cutin "",255;
 		end;
 	}
-	else if(hg_tre > 19 && hg_tre < 25)
+	else if (hg_tre > 19 && hg_tre < 25)
 	{
 		mes "[Shede]";
 		mes "Please pick up \"^3131FF5 Clams^000000\" from a fish trap in the ferry.";
@@ -11716,7 +11045,7 @@ hugel.gat,70,137,5	script	Shede	879,{
 		cutin "",255;
 		end;
 	}
-	else if(hg_tre > 29 && hg_tre < 35)
+	else if (hg_tre > 29 && hg_tre < 35)
 	{
 		mes "[Shede]";
 		mes "Please bring \"^3131FF5 Moks Bug Shells^000000\" from outside of Hugel.";
@@ -11725,7 +11054,7 @@ hugel.gat,70,137,5	script	Shede	879,{
 		cutin "",255;
 		end;
 	}
-	else if(hg_tre == 15)
+	else if (hg_tre == 15)
 	{
 		mes "[Shede]";
 		mes "Oh! You came back earlier than I thought.";
@@ -11737,7 +11066,7 @@ hugel.gat,70,137,5	script	Shede	879,{
 		cutin "",255;
 		end;
 	}
-	else if(hg_tre == 25)
+	else if (hg_tre == 25)
 	{
 		mes "[Shede]";
 		mes "Oh! You came back earlier than I thought.";
@@ -11749,7 +11078,7 @@ hugel.gat,70,137,5	script	Shede	879,{
 		cutin "",255;
 		end;
 	}
-	else if(hg_tre == 35)
+	else if (hg_tre == 35)
 	{
 		mes "[Shede]";
 		mes "Oh! You came back earlier than I thought.";
@@ -11766,7 +11095,7 @@ hugel.gat,70,137,5	script	Shede	879,{
 		cutin "",255;
 		end;
 	}
-	else if(hg_tre == 40)
+	else if (hg_tre == 40)
 	{
 		if (lhz_boss == 44 && lhz_curse > 30)
 		{
@@ -11792,7 +11121,7 @@ hugel.gat,70,137,5	script	Shede	879,{
 			end;
 		}
 	}
-	else if(hg_tre == 41)
+	else if (hg_tre == 41)
 	{
 		mes "[Shede]";
 		mes "Mr. Herico has an impediment in movement, so he usually stays in his room.";
@@ -11829,7 +11158,7 @@ hu_in01.gat,256,40,3	script	Herico	897,{
 		cutin "",255;
 		end;
 	}
-	else if(hg_tre == 41)
+	else if (hg_tre == 41)
 	{
 		mes "[Herico]";
 		mes "The weather is beautiful today. *Sigh* But my body aches too badly to go out...";
@@ -11905,7 +11234,7 @@ hu_in01.gat,256,40,3	script	Herico	897,{
 			end;
 		}
 	}
-	else if(hg_tre == 42)
+	else if (hg_tre == 42)
 	{
 		mes "[Herico]";
 		mes "Hmm...can you tell me your name once again?";
@@ -11936,7 +11265,7 @@ hu_in01.gat,256,40,3	script	Herico	897,{
 		cutin "",255;
 		end;
 	}
-	else if(hg_tre == 43)
+	else if (hg_tre == 43)
 	{
 		if (hg_odin == 60)
 		{
@@ -11985,7 +11314,7 @@ hu_in01.gat,256,40,3	script	Herico	897,{
 			end;
 		}
 	}
-	else if(hg_tre == 44)
+	else if (hg_tre == 44)
 	{
 		mes "[Herico]";
 		mes "Hmm...I don't know where to start.";
@@ -12095,7 +11424,7 @@ hu_in01.gat,256,40,3	script	Herico	897,{
 		cutin "",255;
 		end;
 	}
-	else if(hg_tre == 45)
+	else if (hg_tre == 45)
 	{
 		mes "[Herico]";
 		mes "Please go to Lighthalzen and find a news reporter";
@@ -12106,7 +11435,7 @@ hu_in01.gat,256,40,3	script	Herico	897,{
 		cutin "",255;
 		end;
 	}
-	else if(hg_tre > 45 && hg_tre < 49)
+	else if (hg_tre > 45 && hg_tre < 49)
 	{
 		mes "[Herico]";
 		mes "How have you been doing?";
@@ -12114,7 +11443,7 @@ hu_in01.gat,256,40,3	script	Herico	897,{
 		cutin "",255;
 		end;
 	}
-	else if(hg_tre == 49)
+	else if (hg_tre == 49)
 	{
 		mes "[Herico]";
 		mes "Did you find Sage Varmunt's research documents?";
@@ -12292,7 +11621,7 @@ hu_in01.gat,256,40,3	script	Herico	897,{
 		cutin "",255;
 		end;
 	}
-	else if(hg_tre == 50)
+	else if (hg_tre == 50)
 	{
 		mes "[Herico]";
 		mes "Can you guess what I am thinking right now?";
@@ -12348,7 +11677,7 @@ hu_in01.gat,256,40,3	script	Herico	897,{
 			end;
 		}
 	}
-	else if(hg_tre == 51)
+	else if (hg_tre == 51)
 	{
 		mes "[Herico]";
 		mes "We must find out how we can stop them";
@@ -12371,7 +11700,7 @@ hu_in01.gat,256,40,3	script	Herico	897,{
 		cutin "",255;
 		end;
 	}
-	else if(hg_tre == 52)
+	else if (hg_tre == 52)
 	{
 		mes "[Herico]";
 		mes "Regenschirm is located at the underground level";
@@ -12381,7 +11710,7 @@ hu_in01.gat,256,40,3	script	Herico	897,{
 		cutin "heri1",255;
 		end;
 	}
-	else if(hg_tre == 53)
+	else if (hg_tre == 53)
 	{
 		mes "[Herico]";
 		mes "Ah, you are back.";
@@ -12438,7 +11767,7 @@ hu_in01.gat,256,40,3	script	Herico	897,{
 		cutin "",255;
 		end;
 	}
-	else if(hg_tre == 54)
+	else if (hg_tre == 54)
 	{
 		mes "[Herico]";
 		mes "Please go meet with ^3131FFthe Marine Sphere Bottle manufacturer^000000,";
@@ -12455,7 +11784,7 @@ hu_in01.gat,256,40,3	script	Herico	897,{
 		cutin "",255;
 		end;
 	}
-	else if(hg_tre == 55)
+	else if (hg_tre == 55)
 	{
 		mes "["+strcharinfo(0)+"]";
 		mes "The machine was blown up.";
@@ -12642,7 +11971,7 @@ lhz_in03.gat,39,44,3	script	Enquro Carson	97,{
 		mes "which I am delivering to them.";
 		close;
 	}
-	else if(hg_tre == 45)
+	else if (hg_tre == 45)
 	{
 		mes "[Enquro Carson]";
 		mes "Hello, everyone. This is Enquro Carson";
@@ -12732,7 +12061,7 @@ lhz_in03.gat,39,44,3	script	Enquro Carson	97,{
 			close;
 		}
 	}
-	else if(hg_tre == 46)
+	else if (hg_tre == 46)
 	{
 		if (!countitem(12112) || !countitem(12113))
 		{
@@ -12795,7 +12124,7 @@ lhz_in03.gat,39,44,3	script	Enquro Carson	97,{
 			close;
 		}
 	}
-	else if(hg_tre == 47)
+	else if (hg_tre == 47)
 	{
 		mes "[Enquro Carson]";
 		mes "Just get on to the airship and go to Hugel.";
@@ -12823,7 +12152,7 @@ hu_in01.gat,310,380,5	script	Girl	891,{
 		mes "Bah, I am bored.";
 		close;
 	}
-	else if(hg_tre == 47)
+	else if (hg_tre == 47)
 	{
 		mes "[Girl]";
 		mes "Hehe...are you from another city?";
@@ -12926,7 +12255,7 @@ hu_in01.gat,310,380,5	script	Girl	891,{
 		set hg_tre,48;
 		close;
 	}
-	else if(hg_tre > 48)
+	else if (hg_tre > 48)
 	{
 		mes "[Wintzil Trony]";
 		mes "I am bored and bored! When is my mom coming back?";
@@ -13305,13 +12634,13 @@ hu_fild06.gat,168,359,3	script	Moks Mushrooms#Mush1	111,{
 			set hg_tre,hg_tre+1;
 			if (hg_tre == 11)
 				mes "Collected Moks Mushroom Solution: 1ea ";
-			else if(hg_tre == 12)
+			else if (hg_tre == 12)
 				mes "Collected Moks Mushroom Solution: 2ea ";
-			else if(hg_tre == 13)
+			else if (hg_tre == 13)
 				mes "Collected Moks Mushroom Solution: 3ea ";
-			else if(hg_tre == 14)
+			else if (hg_tre == 14)
 				mes "Collected Moks Mushroom Solution: 4ea ";
-			else if(hg_tre == 15)
+			else if (hg_tre == 15)
 				mes "Collected Moks Mushroom Solution: 5ea ";
 			initnpctimer;
 			disablenpc "Moks Mushroom#Mush1";
@@ -13321,7 +12650,7 @@ hu_fild06.gat,168,359,3	script	Moks Mushrooms#Mush1	111,{
 			close;
 		}
 	}
-	else if(hg_tre == 15)
+	else if (hg_tre == 15)
 	{
 		mes "["+strcharinfo(0)+"]";
 		mes "I think that this will do.";
@@ -13366,13 +12695,13 @@ hu_fild06.gat,194,341,3	script	Moks Mushrooms#Mush2	111,{
 			set hg_tre,hg_tre+1;
 			if (hg_tre == 11)
 				mes "Collected Moks Mushroom Solution: 1ea ";
-			else if(hg_tre == 12)
+			else if (hg_tre == 12)
 				mes "Collected Moks Mushroom Solution: 2ea ";
-			else if(hg_tre == 13)
+			else if (hg_tre == 13)
 				mes "Collected Moks Mushroom Solution: 3ea ";
-			else if(hg_tre == 14)
+			else if (hg_tre == 14)
 				mes "Collected Moks Mushroom Solution: 4ea ";
-			else if(hg_tre == 15)
+			else if (hg_tre == 15)
 				mes "Collected Moks Mushroom Solution: 5ea ";
 			initnpctimer;
 			disablenpc "Moks Mushroom#Mush2";
@@ -13382,7 +12711,7 @@ hu_fild06.gat,194,341,3	script	Moks Mushrooms#Mush2	111,{
 			close;
 		}
 	}
-	else if(hg_tre == 15)
+	else if (hg_tre == 15)
 	{
 		mes "["+strcharinfo(0)+"]";
 		mes "I think that this will do.";
@@ -13427,13 +12756,13 @@ hu_fild06.gat,198,339,3	script	Moks Mushrooms#Mush3	111,{
 			set hg_tre,hg_tre+1;
 			if (hg_tre == 11)
 				mes "Collected Moks Mushroom Solution: 1ea ";
-			else if(hg_tre == 12)
+			else if (hg_tre == 12)
 				mes "Collected Moks Mushroom Solution: 2ea ";
-			else if(hg_tre == 13)
+			else if (hg_tre == 13)
 				mes "Collected Moks Mushroom Solution: 3ea ";
-			else if(hg_tre == 14)
+			else if (hg_tre == 14)
 				mes "Collected Moks Mushroom Solution: 4ea ";
-			else if(hg_tre == 15)
+			else if (hg_tre == 15)
 				mes "Collected Moks Mushroom Solution: 5ea ";
 			initnpctimer;
 			disablenpc "Moks Mushroom#Mush3";
@@ -13443,7 +12772,7 @@ hu_fild06.gat,198,339,3	script	Moks Mushrooms#Mush3	111,{
 			close;
 		}
 	}
-	else if(hg_tre == 15)
+	else if (hg_tre == 15)
 	{
 		mes "["+strcharinfo(0)+"]";
 		mes "I think that this will do.";
@@ -13488,13 +12817,13 @@ hugel.gat,209,163,3	script	Clam#C1	111,{
 			set hg_tre,hg_tre+1;
 			if (hg_tre == 21)
 				mes "Collected Clam Flesh: 1ea ";
-			else if(hg_tre == 22)
+			else if (hg_tre == 22)
 				mes "Collected Clam Flesh: 2ea ";
-			else if(hg_tre == 23)
+			else if (hg_tre == 23)
 				mes "Collected Clam Flesh: 3ea ";
-			else if(hg_tre == 24)
+			else if (hg_tre == 24)
 				mes "Collected Clam Flesh: 4ea ";
-			else if(hg_tre == 25)
+			else if (hg_tre == 25)
 				mes "Collected Clam Flesh: 5ea ";
 			initnpctimer;
 			disablenpc "Clam#C1";
@@ -13504,7 +12833,7 @@ hugel.gat,209,163,3	script	Clam#C1	111,{
 			close;
 		}
 	}
-	else if(hg_tre == 25)
+	else if (hg_tre == 25)
 	{
 		mes "["+strcharinfo(0)+"]";
 		mes "I think that this will do.";
@@ -13549,13 +12878,13 @@ hugel.gat,203,166,3	script	Clam#C2	111,{
 			set hg_tre,hg_tre+1;
 			if (hg_tre == 21)
 				mes "Collected Clam Flesh: 1ea ";
-			else if(hg_tre == 22)
+			else if (hg_tre == 22)
 				mes "Collected Clam Flesh: 2ea ";
-			else if(hg_tre == 23)
+			else if (hg_tre == 23)
 				mes "Collected Clam Flesh: 3ea ";
-			else if(hg_tre == 24)
+			else if (hg_tre == 24)
 				mes "Collected Clam Flesh: 4ea ";
-			else if(hg_tre == 25)
+			else if (hg_tre == 25)
 				mes "Collected Clam Flesh: 5ea ";
 			initnpctimer;
 			disablenpc "Clam#C2";
@@ -13565,7 +12894,7 @@ hugel.gat,203,166,3	script	Clam#C2	111,{
 			close;
 		}
 	}
-	else if(hg_tre == 25)
+	else if (hg_tre == 25)
 	{
 		mes "["+strcharinfo(0)+"]";
 		mes "I think that this will do.";
@@ -13610,13 +12939,13 @@ hugel.gat,217,158,3	script	Clam#C3	111,{
 			set hg_tre,hg_tre+1;
 			if (hg_tre == 21)
 				mes "Collected Clam Flesh: 1ea ";
-			else if(hg_tre == 22)
+			else if (hg_tre == 22)
 				mes "Collected Clam Flesh: 2ea ";
-			else if(hg_tre == 23)
+			else if (hg_tre == 23)
 				mes "Collected Clam Flesh: 3ea ";
-			else if(hg_tre == 24)
+			else if (hg_tre == 24)
 				mes "Collected Clam Flesh: 4ea ";
-			else if(hg_tre == 25)
+			else if (hg_tre == 25)
 				mes "Collected Clam Flesh: 5ea ";
 			initnpctimer;
 			disablenpc "Clam#C3";
@@ -13626,7 +12955,7 @@ hugel.gat,217,158,3	script	Clam#C3	111,{
 			close;
 		}
 	}
-	else if(hg_tre == 25)
+	else if (hg_tre == 25)
 	{
 		mes "["+strcharinfo(0)+"]";
 		mes "I think that this will do.";
@@ -13671,13 +13000,13 @@ hugel.gat,204,150,3	script	Clam#C4	111,{
 			set hg_tre,hg_tre+1;
 			if (hg_tre == 21)
 				mes "Collected Clam Flesh: 1ea ";
-			else if(hg_tre == 22)
+			else if (hg_tre == 22)
 				mes "Collected Clam Flesh: 2ea ";
-			else if(hg_tre == 23)
+			else if (hg_tre == 23)
 				mes "Collected Clam Flesh: 3ea ";
-			else if(hg_tre == 24)
+			else if (hg_tre == 24)
 				mes "Collected Clam Flesh: 4ea ";
-			else if(hg_tre == 25)
+			else if (hg_tre == 25)
 				mes "Collected Clam Flesh: 5ea ";
 			initnpctimer;
 			disablenpc "Clam#C4";
@@ -13687,7 +13016,7 @@ hugel.gat,204,150,3	script	Clam#C4	111,{
 			close;
 		}
 	}
-	else if(hg_tre == 25)
+	else if (hg_tre == 25)
 	{
 		mes "["+strcharinfo(0)+"]";
 		mes "I think that this will do.";
@@ -13732,13 +13061,13 @@ hu_fild06.gat,155,309,1	script	Moks Bugs#Bug1	1053,{
 			set hg_tre,hg_tre+1;
 			if (hg_tre == 31)
 				mes "Collected Moks Bugs Shells: 1ea ";
-			else if(hg_tre == 32)
+			else if (hg_tre == 32)
 				mes "Collected Moks Bugs Shells: 2ea ";
-			else if(hg_tre == 33)
+			else if (hg_tre == 33)
 				mes "Collected Moks Bugs Shells: 3ea ";
-			else if(hg_tre == 34)
+			else if (hg_tre == 34)
 				mes "Collected Moks Bugs Shells: 4ea ";
-			else if(hg_tre == 35)
+			else if (hg_tre == 35)
 				mes "Collected Moks Bugs Shells: 5ea ";
 			initnpctimer;
 			disablenpc "Moks Bugs#Bug1";
@@ -13748,7 +13077,7 @@ hu_fild06.gat,155,309,1	script	Moks Bugs#Bug1	1053,{
 			close;
 		}
 	}
-	else if(hg_tre == 35)
+	else if (hg_tre == 35)
 	{
 		mes "["+strcharinfo(0)+"]";
 		mes "Aww...I don't want to touch dirty things like bugs!";
@@ -13793,13 +13122,13 @@ hu_fild06.gat,218,320,1	script	Moks Bugs#Bug2	1053,{
 			set hg_tre,hg_tre+1;
 			if (hg_tre == 31)
 				mes "Collected Moks Bugs Shells: 1ea ";
-			else if(hg_tre == 32)
+			else if (hg_tre == 32)
 				mes "Collected Moks Bugs Shells: 2ea ";
-			else if(hg_tre == 33)
+			else if (hg_tre == 33)
 				mes "Collected Moks Bugs Shells: 3ea ";
-			else if(hg_tre == 34)
+			else if (hg_tre == 34)
 				mes "Collected Moks Bugs Shells: 4ea ";
-			else if(hg_tre == 35)
+			else if (hg_tre == 35)
 				mes "Collected Moks Bugs Shells: 5ea ";
 			initnpctimer;
 			disablenpc "Moks Bugs#Bug2";
@@ -13809,7 +13138,7 @@ hu_fild06.gat,218,320,1	script	Moks Bugs#Bug2	1053,{
 			close;
 		}
 	}
-	else if(hg_tre == 35)
+	else if (hg_tre == 35)
 	{
 		mes "["+strcharinfo(0)+"]";
 		mes "Aww...I don't want to touch dirty things like bugs!";
@@ -13854,13 +13183,13 @@ hu_fild06.gat,249,329,1	script	Moks Bugs#Bug3	1053,{
 			set hg_tre,hg_tre+1;
 			if (hg_tre == 31)
 				mes "Collected Moks Bugs Shells: 1ea ";
-			else if(hg_tre == 32)
+			else if (hg_tre == 32)
 				mes "Collected Moks Bugs Shells: 2ea ";
-			else if(hg_tre == 33)
+			else if (hg_tre == 33)
 				mes "Collected Moks Bugs Shells: 3ea ";
-			else if(hg_tre == 34)
+			else if (hg_tre == 34)
 				mes "Collected Moks Bugs Shells: 4ea ";
-			else if(hg_tre == 35)
+			else if (hg_tre == 35)
 				mes "Collected Moks Bugs Shells: 5ea ";
 			initnpctimer;
 			disablenpc "Moks Bugs#Bug3";
@@ -13870,7 +13199,7 @@ hu_fild06.gat,249,329,1	script	Moks Bugs#Bug3	1053,{
 			close;
 		}
 	}
-	else if(hg_tre == 35)
+	else if (hg_tre == 35)
 	{
 		mes "["+strcharinfo(0)+"]";
 		mes "Aww...I don't want to touch dirty things like bugs!";
@@ -13915,13 +13244,13 @@ hu_fild06.gat,218,373,1	script	Moks Bugs#Bug4	1053,{
 			set hg_tre,hg_tre+1;
 			if (hg_tre == 31)
 				mes "Collected Moks Bugs Shells: 1ea ";
-			else if(hg_tre == 32)
+			else if (hg_tre == 32)
 				mes "Collected Moks Bugs Shells: 2ea ";
-			else if(hg_tre == 33)
+			else if (hg_tre == 33)
 				mes "Collected Moks Bugs Shells: 3ea ";
-			else if(hg_tre == 34)
+			else if (hg_tre == 34)
 				mes "Collected Moks Bugs Shells: 4ea ";
-			else if(hg_tre == 35)
+			else if (hg_tre == 35)
 				mes "Collected Moks Bugs Shells: 5ea ";
 			initnpctimer;
 			disablenpc "Moks Bugs#Bug4";
@@ -13931,7 +13260,7 @@ hu_fild06.gat,218,373,1	script	Moks Bugs#Bug4	1053,{
 			close;
 		}
 	}
-	else if(hg_tre == 35)
+	else if (hg_tre == 35)
 	{
 		mes "["+strcharinfo(0)+"]";
 		mes "Aww...I don't want to touch dirty things like bugs!";

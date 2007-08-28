@@ -13,10 +13,15 @@
 
 Date	Added
 
+2007/08/28
+	* Added: The Hugel Monster Races system, converted from Aegis [Tsuyuki]
+	* Added: Cash Item Refinery, converted from Aegis [Tsuyuki]
+	* Updated: GvG System Warp Portals to official, converted from Aegis [Tsuyuki]
+
 2007/08/24
 	* Updated: The Rogue Job Change Quest with iRO dialogue, reconverted from Aegis [Tsuyuki]
 	* Updated: Lutie Town NPCs / Quests with iRO dialogue, reconverted from Aegis [Tsuyuki]
-	* Removed: Quiz Revolution script [Tsuyuki]
+	* Removed: Quiz Revolution event script [Tsuyuki]
 	* Updated: All Monster Spawns to official, converted from Aegis [Tsuyuki]
 	 - Source: iRO Aegis Episode 11.1 spawn scripts
 	* Updated: The Poring Box summon list to official, converted from Aegis [Tsuyuki]
@@ -26,7 +31,7 @@ Date	Added
 
 2007/08/22
 	* Updated: Headgear Quests to official, converted from Aegis [Tsuyuki]
-	 - Thanks to Intervention for converting all the item enums to IDs for me!
+	 - Thanks to Intervention for converting all the item enums to IDs for me
 	* Updated: The Eye of Hellion Quest to official, converted from Aegis [Tsuyuki]
 	* Updated: The Sign Quest to official, converted from Aegis [Tsuyuki]
 	* Updated: Einbroch/Einbech Town NPCs / Quests to official, converted from Aegis [Tsuyuki]

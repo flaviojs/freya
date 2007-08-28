@@ -97,16 +97,19 @@ npc: script/job/job_wizard.txt
 //--------------------------------------------------------------
 
 npc: script/misc/misc_auction.txt
+// npc: script/misc/misc_battle_arena.txt
 // npc: script/misc/misc_cash_item.txt
 npc: script/misc/misc_function.txt
 npc: script/misc/misc_mapflag.txt
 npc: script/misc/misc_marriage.txt
+// npc: script/misc/misc_monster_race.txt
 npc: script/misc/misc_potion_exchange.txt
 npc: script/misc/misc_rental.txt
 npc: script/misc/misc_reset_skill.txt
 npc: script/misc/misc_sign.txt
 npc: script/misc/misc_socket_enchant.txt
 npc: script/misc/misc_stylist.txt
+// npc: script/misc/misc_turbo_track.txt
 npc: script/misc/misc_vote.txt
 
 
@@ -129,7 +132,6 @@ npc: script/mob/mob_town.txt
 
 npc: script/quest/quest_airship.txt
 npc: script/quest/quest_bard.txt
-npc: script/quest/quest_battle_arena.txt
 npc: script/quest/quest_cooking.txt
 npc: script/quest/quest_doomed_swords.txt
 npc: script/quest/quest_eye_of_hellion.txt
@@ -145,7 +147,6 @@ npc: script/quest/quest_skill.txt
 npc: script/quest/quest_thai_hat.txt
 npc: script/quest/quest_thanatos.txt
 npc: script/quest/quest_the_sign.txt
-npc: script/quest/quest_turbo_track.txt
 npc: script/quest/quest_turtle.txt
 
 
