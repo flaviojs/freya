@@ -14,6 +14,8 @@
 Date	Added
 
 2007/08/28
+	* Updated: The Kiel Hyre Quest to official, converted from Aegis [Tsuyuki]
+	 - Imported iRO dialogue from L0ne_W0lf's custom version
 	* Added: The Hugel Monster Races system, converted from Aegis [Tsuyuki]
 	* Added: Cash Item Refinery, converted from Aegis [Tsuyuki]
 	* Updated: GvG System Warp Portals to official, converted from Aegis [Tsuyuki]

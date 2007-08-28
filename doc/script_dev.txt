@@ -26,7 +26,6 @@
 - mob/mob_future.txt			<- Placeholder file for non-Aegis spawn entires
 
 - quest/quest_juperos.txt		<- Good enough? - Juperos History Quest is already Aegis-certified
-- quest/quest_kiel_hyre.txt		<- Good enough? - No access to an iRO Aegis version
 
 - town/town_nameless.txt		<- Requires conversion - No access to an Aegis version [*]
 - town/town_veins.txt			<- Requires conversion - No access to an Aegis version [*]
