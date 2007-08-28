@@ -1585,7 +1585,7 @@ gef_tower.gat,102,24,2	script	Gloomy Wizard	735,{
 			mes "Ok then, here's a proposition. Since you're probably worn out as it is, and I can clearly see the lust for Greater Magic burning in your eyes...";
 			mes "Hahahahaha~ yeah! Go bring me a ^3355FFWorn Out Scroll^000000.";
 			next;
-			getitem asn_skill,1;
+			set asn_skill,asn_skill + 1;
 			mes "[Raulel]";
 			mes "If not, you can take the test again...";
 			mes "Well, I'll send you to take the test for now. Hahahaha~";
@@ -1850,7 +1850,7 @@ OnCommandReset:
 OnMyMobDead:
 	set 'mobcount1,'mobcount1+1;
 	if ('mobcount1 > 7) {
-		getitem asn_skill,1;
+		set asn_skill,asn_skill + 1;
 		mapannounce "job_wiz.gat",""+strcharinfo(0)+" has succeeded in eliminating the monsters.",8;
 		donpcevent "Room of Water#Main::OnCommandReset";
 		stopnpctimer;
