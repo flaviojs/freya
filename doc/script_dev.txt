@@ -32,7 +32,6 @@
 
 - warp/warp_dungeon.txt			<- Good enough?
 - warp/warp_field.txt			<- Good enough?
-- warp/warp_misc.txt			<- Good enough?
 - warp/warp_town.txt			<- Good enough?
 
 
