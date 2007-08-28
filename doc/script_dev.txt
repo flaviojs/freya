@@ -40,7 +40,6 @@
 ---------------------------------------------------------------------------
 
 - misc/misc_cash_item.txt		<- Optional? [*]
-- quest/quest_bard.txt			<- Optional? [*]
 - quest/quest_expanded.txt		<- Optional? [*]
 - quest/quest_god_seal.txt		<- Optional? [*]
 - quest/quest_job_tutorial.txt		<- Optional? [*]
