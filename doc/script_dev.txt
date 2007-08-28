@@ -48,7 +48,6 @@
 - town/town_comodo.txt			<- Optional? - Only Comodo Gambling is euRO [*]
 - town/town_hugel.txt			<- Optional? - Only Rebellion Quest is euRO - No access to an iRO Aegis version [*]
 - town/town_kunlun.txt			<- Optional? - [*]
-- town/town_payon.txt			<- Optional? - Only Fortune Teller is euRO [*]
 
 
 ---------------------------------------------------------------------------

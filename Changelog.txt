@@ -14,6 +14,7 @@
 Date	Added
 
 2007/08/28
+	* Updated: The Fortune Telling System with iRO dialogue, reconverted from Aegis [Tsuyuki]
 	* Updated: The Kiel Hyre Quest to official, converted from Aegis [Tsuyuki]
 	 - Imported iRO dialogue from L0ne_W0lf's custom version
 	* Updated: The Kiel Hyre Warp Portals to official, converted from Aegis [Tsuyuki]
