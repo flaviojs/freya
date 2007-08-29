@@ -5156,13 +5156,13 @@ OnTouchNPC:
 	set '@do_race2,$051101_mon_race_2_2;
 	if ('@do_race1 == 0) {
 		emotion ET_THROB,"#poring1";
-		misceffect EF_MVP,"#poring1";
+		misceffect 68,"#poring1";
 		mapannounce "p_track02.gat","Monster No. 1 has reached the finishing point",8,0x66FFCC;
 		set $051101_mon_race_2_1,1;
 		donpcevent "#poring1::OnCommandoff";
 	} else {
 		emotion ET_THROB,"#poring1";
-		misceffect EF_MVP,"#poring1";
+		misceffect 68,"#poring1";
 		mapannounce "p_track02.gat","The race will ends after monster no.1 reaches the finishing point.",8,0x66FFCC;
 		set $051101_mon_race_2_2,1;
 		donpcevent "#poring1::OnCommandoff";
@@ -5199,13 +5199,13 @@ OnTouchNPC:
 	set '@do_race2,$051101_mon_race_2_2;
 	if ('@do_race1 == 0) {
 		emotion ET_DELIGHT,"#lunatic1";
-		misceffect EF_MVP,"#lunatic1";
+		misceffect 68,"#lunatic1";
 		mapannounce "p_track02.gat","Monster No. 2 has reached the finishing point",8,0x66FFCC;
 		set $051101_mon_race_2_1,2;
 		donpcevent "#lunatic1::OnCommandoff";
 	} else {
 		emotion ET_DELIGHT,"#lunatic1";
-		misceffect EF_MVP,"#lunatic1";
+		misceffect 68,"#lunatic1";
 		mapannounce "p_track02.gat","The race will ends after monster no.2 reaches the finishing point.",8,0x66FFCC;
 		set $051101_mon_race_2_2,2;
 		donpcevent "#lunatic1::OnCommandoff";
@@ -5242,13 +5242,13 @@ OnTouchNPC:
 	set '@do_race2,$051101_mon_race_2_2;
 	if ('@do_race1 == 0) {
 		emotion ET_SMILE,"#savagebebe1";
-		misceffect EF_MVP,"#savagebebe1";
+		misceffect 68,"#savagebebe1";
 		mapannounce "p_track02.gat","Monster No. 3 has reached the finishing point",8,0x66FFCC;
 		set $051101_mon_race_2_1,3;
 		donpcevent "#savagebebe1::OnCommandoff";
 	} else {
 		emotion ET_SMILE,"#savagebebe1";
-		misceffect EF_MVP,"#savagebebe1";
+		misceffect 68,"#savagebebe1";
 		mapannounce "p_track02.gat","The race will ends after monster no.3 reaches the finishing point.",8,0x66FFCC;
 		set $051101_mon_race_2_2,3;
 		donpcevent "#savagebebe1::OnCommandoff";
@@ -5285,13 +5285,13 @@ OnTouchNPC:
 	set '@do_race2,$051101_mon_race_2_2;
 	if ('@do_race1 == 0) {
 		emotion ET_CHUP,"#desertwolf1";
-		misceffect EF_MVP,"#desertwolf1";
+		misceffect 68,"#desertwolf1";
 		mapannounce "p_track02.gat","Monster No. 4 has reached the finishing point",8,0x66FFCC;
 		set $051101_mon_race_2_1,4;
 		donpcevent "#desertwolf1::OnCommandoff";
 	} else {
 		emotion ET_CHUP,"#desertwolf1";
-		misceffect EF_MVP,"#desertwolf1";
+		misceffect 68,"#desertwolf1";
 		mapannounce "p_track02.gat","The race will ends after monster no.4 reaches the finishing point.",8,0x66FFCC;
 		set $051101_mon_race_2_2,4;
 		donpcevent "#desertwolf1::OnCommandoff";
@@ -5328,13 +5328,13 @@ OnTouchNPC:
 	set '@do_race2,$051101_mon_race_2_2;
 	if ('@do_race1 == 0) {
 		emotion ET_KIK,"#deviruchi1";
-		misceffect EF_MVP,"#deviruchi1";
+		misceffect 68,"#deviruchi1";
 		mapannounce "p_track02.gat","Monster No. 5 has reached the finishing point",8,0x66FFCC;
 		set $051101_mon_race_2_1,5;
 		donpcevent "#deviruchi1::OnCommandoff";
 	} else {
 		emotion ET_KIK,"#deviruchi1";
-		misceffect EF_MVP,"#deviruchi1";
+		misceffect 68,"#deviruchi1";
 		mapannounce "p_track02.gat","The race will ends after monster no.5 reaches the finishing point.",8,0x66FFCC;
 		set $051101_mon_race_2_2,5;
 		donpcevent "#deviruchi1::OnCommandoff";
@@ -5371,13 +5371,13 @@ OnTouchNPC:
 	set '@do_race2,$051101_mon_race_2_2;
 	if ('@do_race1 == 0) {
 		emotion ET_HNG,"#baphomet1";
-		misceffect EF_MVP,"#baphomet1";
+		misceffect 68,"#baphomet1";
 		mapannounce "p_track02.gat","Monster No. 6 has reached the finishing point",8,0x66FFCC;
 		set $051101_mon_race_2_1,6;
 		donpcevent "#baphomet1::OnCommandoff";
 	} else {
 		emotion ET_HNG,"#baphomet1";
-		misceffect EF_MVP,"#baphomet1";
+		misceffect 68,"#baphomet1";
 		mapannounce "p_track02.gat","The race will ends after monster no.6 reaches the finishing point.",8,0x66FFCC;
 		set $051101_mon_race_2_2,6;
 		donpcevent "#baphomet1::OnCommandoff";
@@ -16349,7 +16349,7 @@ p_track02.gat,32,45,3	script	Eccentric Scholar#double	755,{
 	mes "[Eccentric Scholar]";
 	mes "Hey! Don't speak to me!!";
 	mes "You've messed up my calculation!!!!!";
-	misceffect EF_CLAYMORE,"Eccentric Scholar#double";
+	misceffect 107,"Eccentric Scholar#double";
 	emotion ET_FRET,"Eccentric Scholar#double";
 	close;
 }

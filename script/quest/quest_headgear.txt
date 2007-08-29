@@ -42,16 +42,16 @@ alde_alche.gat,88,180,0	script	Muscle Man#Alarm Mask Man	748,{
 	mes "It's...";
 	mes "It's sexy time!";
 	next;
-	misceffect EF_FLASHER,"Muscle Man#Alarm Mask Man";
+	misceffect 99,"Muscle Man#Alarm Mask Man";
 	classchange 1193,0;
 	hideoffnpc "#Alarm Mask Man1";
-	misceffect EF_CLAYMORE,"#Alarm Mask Man1";
+	misceffect 107,"#Alarm Mask Man1";
 	hideoffnpc "#Alarm Mask Man2";
-	misceffect EF_CLAYMORE,"#Alarm Mask Man2";
+	misceffect 107,"#Alarm Mask Man2";
 	hideoffnpc "#Alarm Mask Man3";
-	misceffect EF_CLAYMORE,"#Alarm Mask Man3";
+	misceffect 107,"#Alarm Mask Man3";
 	hideoffnpc "#Alarm Mask Man4";
-	misceffect EF_CLAYMORE,"#Alarm Mask Man4";
+	misceffect 107,"#Alarm Mask Man4";
 	initnpctimer;
 	if ((countitem(1095) > 2999) && (countitem(2288) > 0)) {
 		switch(select("Give him items","Cancel")) {
@@ -161,16 +161,16 @@ alde_alche.gat,88,180,0	script	Muscle Man#Alarm Mask Man	748,{
 	}
 
 OnTimer4000:
-	misceffect EF_FLASHER,"Muscle Man#Alarm Mask Man";
+	misceffect 99,"Muscle Man#Alarm Mask Man";
 	classchange 748,0;
 	hideonnpc "#Alarm Mask Man1";
-	misceffect EF_CLAYMORE,"#Alarm Mask Man1";
+	misceffect 107,"#Alarm Mask Man1";
 	hideonnpc "#Alarm Mask Man2";
-	misceffect EF_CLAYMORE,"#Alarm Mask Man2";
+	misceffect 107,"#Alarm Mask Man2";
 	hideonnpc "#Alarm Mask Man3";
-	misceffect EF_CLAYMORE,"#Alarm Mask Man3";
+	misceffect 107,"#Alarm Mask Man3";
 	hideonnpc "#Alarm Mask Man4";
-	misceffect EF_CLAYMORE,"#Alarm Mask Man4";
+	misceffect 107,"#Alarm Mask Man4";
 	stopnpctimer;
 	end;
 }
@@ -3940,11 +3940,11 @@ yuno.gat,241,52,3	script	Old Blacksmith#hgear	813,{
 					mes "Why are you carrying so many items with you? Leave all your extra baggage somewhere else and come back.";
 					close;
 				} else {
-					if ((countitem(Angelic_Chain) > 0) && (countitem(Elven_Ears) > 0) && (Zeny > 19999)) {
+					if ((countitem(2254) > 0) && (countitem(2286) > 0) && (Zeny > 19999)) {
 						mes "[Hatbyr Mhore]";
 						mes "Alright...";
 						mes "Let's get a groove on!";
-						misceffect EF_REPAIRWEAPON,"Old Blacksmith#hgear";
+						misceffect 101,"Old Blacksmith#hgear";
 						next;
 						mes "[Hatbyr Mhore]";
 						mes "There you go, buddy.";
@@ -4004,7 +4004,7 @@ yuno.gat,241,52,3	script	Old Blacksmith#hgear	813,{
 					if ((countitem(2255) > 0) && (countitem(2286) > 0) && (Zeny > 19999)) {
 						mes "[Hatbyr Mhore]";
 						mes "Alright, it's time to roll!";
-						misceffect EF_REPAIRWEAPON,"Old Blacksmith#hgear";
+						misceffect 101,"Old Blacksmith#hgear";
 						next;
 						mes "[Hatbyr Mhore]";
 						mes "There you go, buddy. I am proud to say this is my masterpiece. I call it... 'Devil Wing Ears!'";
@@ -4075,7 +4075,7 @@ yuno.gat,241,52,3	script	Old Blacksmith#hgear	813,{
 						mes "[Hatbyr Mhore]";
 						mes "Alright...";
 						mes "Let's get a groove on!";
-						misceffect EF_REPAIRWEAPON,"Old Blacksmith#hgear";
+						misceffect 101,"Old Blacksmith#hgear";
 						next;
 						mes "[Hatbyr Mhore]";
 						mes "There you go, buddy.";
@@ -4132,7 +4132,7 @@ yuno.gat,241,52,3	script	Old Blacksmith#hgear	813,{
 					if ((countitem(2254) > 0) && (countitem(2286) > 0) && (Zeny > 19999)) {
 						mes "Alright...";
 						mes "Let's get a groove on!";
-						misceffect EF_REPAIRWEAPON,"Old Blacksmith#hgear";
+						misceffect 101,"Old Blacksmith#hgear";
 						next;
 						mes "[Hatbyr Mhore]";
 						mes "There you go, buddy.";
@@ -4289,11 +4289,11 @@ OnTouch:
 		} else {
 			monster "pay_dun03.gat",154,130,"Nine Tail",1180,1,"Nine Tails#Kitsune Fox::OnMyMobDead";
 		}
-		misceffect EF_FLASHER,"Nine Tails#Kitsune Fox";
+		misceffect 99,"Nine Tails#Kitsune Fox";
 		hideoffnpc;
 		end;
 	case 2:
-		misceffect EF_FLASHER,"Nine Tails#Kitsune Fox";
+		misceffect 99,"Nine Tails#Kitsune Fox";
 		hideonnpc "Nine Tails#Kitsune Man";
 		hideoffnpc;
 		end;
@@ -4417,7 +4417,7 @@ pay_dun03.gat,48,84,4	script	Nine Tails#Kitsune Man	762,{
 	} else {
 		monster "pay_dun03.gat",154,130,"Nine Tail",1180,1,"Nine Tails#Kitsune Man::OnMyMobDead";
 	}
-	misceffect EF_BLASTMINEBOMB,"Nine Tails#Kitsune Man";
+	misceffect 106,"Nine Tails#Kitsune Man";
 	hideoffnpc;
 	end;
 
@@ -7936,7 +7936,7 @@ payon_in03.gat,139,124,3	script	Han Garam	88,{
 		mes "He is waving his tail, and showing me future!";
 		mes "Aaaaaahhhhhhh!";
 		next;
-		misceffect EF_LORD,"Han Garam";
+		misceffect 90,"Han Garam";
 		mes "[Han Garam]";
 		mes "Waaaahhhh!";
 		next;
@@ -7968,7 +7968,7 @@ payon_in03.gat,139,124,3	script	Han Garam	88,{
 		mes "Anyone who brings these, I will create hat for him!";
 		mes "Ahhh~ Dragon God!";
 		next;
-		misceffect EF_EXIT,"Han Garam";
+		misceffect 7,"Han Garam";
 		mes "[Han Garam]";
 		mes ".............";
 		next;
@@ -8950,7 +8950,7 @@ xmas.gat,183,267,3	script	Pretty Lindsay	793,{
 		mes "^FF0000Lindsay put the Raccoon Hat on the ground, threw the Smokie Leaf onto the hat and mumbled some words while hugging herself.^000000";
 		next;
 		mes "^FF0000Then, suddenly with a dazzling light, the Raccoon Hat turned blue and slowly transformed into a Sea-Otter Hat.^000000";
-		misceffect EF_FLASHER,"Pretty Lindsay";
+		misceffect 99,"Pretty Lindsay";
 		next;
 		mes "[Pretty Lindsay]";
 		mes "Phew! It's done!";
@@ -9338,7 +9338,7 @@ hugel.gat,147,103,3	script	Ghenirhemin	897,{
 	if (moza_valkylie == 5) {
 		set '@val2,rand(1,10);
 		if ('@val2 == 3) {
-			misceffect EF_LIGHTSPHERE,"Ghenirhemin";
+			misceffect 348,"Ghenirhemin";
 			mes "[Ghenirhemin]";
 			mes "The materials are still being fused.";
 			next;
@@ -9346,7 +9346,7 @@ hugel.gat,147,103,3	script	Ghenirhemin	897,{
 			mes "Umm?! Oh...oh?! Isn't this...";
 			mes "Isn't this...?!";
 			next;
-			misceffect EF_FORESTLIGHT2,"Ghenirhemin";
+			misceffect 322,"Ghenirhemin";
 			mes "[Ghenirhemin]";
 			mes "Ah...ahahaha, we've made it! We've made it!";
 			mes "Valkyre's Helm...We've recreated Valkyre's Helm,";
@@ -9378,7 +9378,7 @@ hugel.gat,147,103,3	script	Ghenirhemin	897,{
 			mes "who is now heading toward the new history.";
 			close;
 		} else {
-			misceffect EF_LIGHTSPHERE,"Ghenirhemin";
+			misceffect 348,"Ghenirhemin";
 			mes "[Ghenirhemin]";
 			mes "The materials are still being fused.";
 			close;
@@ -9390,7 +9390,7 @@ hugel.gat,147,103,3	script	Ghenirhemin	897,{
 			mes "[Ghenirhemin]";
 			mes "............";
 			next;
-			misceffect EF_LIGHTSPHERE,"Ghenirhemin";
+			misceffect 348,"Ghenirhemin";
 			mes "[Ghenirhemin]";
 			mes "Oh...oh? They....they just have started being fused!";
 			mes "Look at this shining light!";
@@ -10058,8 +10058,8 @@ OnTouch:
 		mes "in my power. Those that";
 		mes "bow to me must also bow";
 		mes "to "+strcharinfo(0)+". It shall be done. ^FFFFFFspacer^000000";
-		gmcommand "@misceffect EF_DEVIL";
-		gmcommand "@misceffect EF_POISONHIT";
+		gmcommand "@misceffect 372";
+		gmcommand "@misceffect 53";
 		next;
 		mes "[Zealotus]";
 		mes "Human, take this";
@@ -10281,7 +10281,7 @@ OnTouch:
 		mes "[Phendark]";
 		mes "...";
 		mes "Grrrrr...!";
-		misceffect EF_SUMMONSLAVE,"Phendark#hat";
+		misceffect 215,"Phendark#hat";
 		next;
 		mes "[Phendark]";
 		mes "^333333*Pant pant*^000000";
