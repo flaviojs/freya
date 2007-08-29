@@ -416,4 +416,3 @@
 1867,Banshee,1000000
 1869,Flame Skull,1000000
 1870,Necromancer,1000000
-1872,Hell Fly,1000000

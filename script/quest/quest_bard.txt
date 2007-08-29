@@ -7,15 +7,19 @@
 //              /_/  |_|\____|_|  \___/|_|  \__,_|              
 //                 http://aurora.deltaanime.net                 
 //--------------------------------------------------------------
-// Script Title: adsf	Author: adsf
+// Script Title: The Bard Quest	Author: Tsuyuki
 //--------------------------------------------------------------
 // Revision History: v1.0
 //--------------------------------------------------------------
-//	1.0 First version, converted from Aegis [adsf]
+//	1.0 First version, converted from Aegis [Tsuyuki]
 //--------------------------------------------------------------
 // Additional Notes: * Official-certified / Aegis-certified *
 //--------------------------------------------------------------
 
+
+//--------------------------------------------------------------
+// The Bard Quest - [Tsuyuki]
+//--------------------------------------------------------------
 
 geffen.gat,132,38,3	script	Bard#2	51,{
 

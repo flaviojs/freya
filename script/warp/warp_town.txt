@@ -7,731 +7,875 @@
 //              /_/  |_|\____|_|  \___/|_|  \__,_|              
 //                 http://aurora.deltaanime.net                 
 //--------------------------------------------------------------
-// Script Title: Town Warp Portals	Author: A Lot of People
+// Script Title: Town Warp Portals	Author: Tsuyuki
 //--------------------------------------------------------------
-// Revision History: v1.7
+// Revision History: v1.0
 //--------------------------------------------------------------
-//	1.0 First version, merged together [Tsuyuki]
-//	1.1 Updated Nameless Island and Veins warp portals (Credits to jAthena) [Tsuyuki]
-//	1.2 Fixed Izlude Battle Arena warps [Tsuyuki]
-//	1.3 Updated Hugel warps for the Odin's Excavation Quest [Tsuyuki]
-//	1.4 Updated Lighthalzen warps for the Cursed Spirit Quest [Tsuyuki]
-//	1.5 Updated Juno warps for the President's Quest [Tsuyuki]
-//	1.6 Removed a duplicate Rachel warp [Tsuyuki]
-//	1.7 Added official Aegis Rachel warps by Playtester [Tsuyuki]
+//	1.0 First version, converted from Aegis [Tsuyuki]
 //--------------------------------------------------------------
-// Additional Notes: * Official-certified *
+// Additional Notes: * Official-certified / Aegis-certified *
 //--------------------------------------------------------------
 
 
 //--------------------------------------------------------------
-// Alberta Town Warp Portals
+// Alberta Town Warp Portals - [Tsuyuki]
 //--------------------------------------------------------------
 
-alberta.gat,15,234,0	warp	alb001	2,5,pay_fild03.gat,388,63
-alberta.gat,117,38,0	warp	alb01	2,2,alberta_in.gat,180,30
-alberta.gat,134,38,0	warp	alb02	1,1,alberta_in.gat,70,141
-alberta.gat,170,170,0	warp	alb03	1,1,alb_ship.gat,26,168
-alberta.gat,178,165,0	warp	alb04	1,2,alb_ship.gat,39,163
-alberta.gat,209,173,0	warp	alb05	1,2,alb_ship.gat,162,171
-alberta.gat,33,42,0	warp	alb06	2,2,alberta_in.gat,74,44
-alberta.gat,65,233,0	warp	alb07	2,2,alberta_in.gat,18,141
-alberta.gat,93,205,0	warp	alb08	2,2,alberta_in.gat,114,134
-alberta.gat,99,153,0	warp	alb09	2,2,alberta_in.gat,185,89
-alberta.gat,99,221,0	warp	alb10	2,2,alberta_in.gat,122,161
-alb_ship.gat,26,166,0	warp	alb03-1	4,1,alberta.gat,170,168
-alb_ship.gat,41,163,0	warp	alb04-1	1,3,alberta.gat,180,165
-alb_ship.gat,160,171,0	warp	alb05-1	1,3,alberta.gat,207,173
-alb_ship.gat,37,174,0	warp	alb20	1,2,alb_ship.gat,70,99
-alb_ship.gat,68,99,0	warp	alb20-1	1,3,alb_ship.gat,35,173
-alberta_in.gat,189,89,0	warp	alb09-1	2,2,alberta.gat,102,153
-alberta_in.gat,114,130,0	warp	alb08-1	2,2,alberta.gat,93,201
-alberta_in.gat,14,141,0	warp	alb07-1	2,3,alberta.gat,61,233
-alberta_in.gat,180,33,0	warp	alb01-1	2,2,alberta.gat,117,42
-alberta_in.gat,73,141,0	warp	alb02-1	2,3,alberta.gat,137,37
-alberta_in.gat,78,44,0	warp	alb06-1	2,5,alberta.gat,37,41
-alberta_in.gat,125,161,0	warp	alb10-1	2,2,alberta.gat,102,222
-alberta_in.gat,114,183,0	warp	alb11	1,1,alberta_in.gat,148,186
-alberta_in.gat,152,186,0	warp	alb11-1	1,1,alberta_in.gat,118,183
-alberta_in.gat,114,49,0	warp	alb12	2,2,alberta_in.gat,155,153
-alberta_in.gat,159,153,0	warp	alb12-1	2,2,alberta_in.gat,117,49
-alberta_in.gat,114,97,0	warp	alb13	2,2,alberta_in.gat,155,175
-alberta_in.gat,159,175,0	warp	alb13-1	2,2,alberta_in.gat,117,97
-alberta_in.gat,22,113,0	warp	alb14	3,2,alberta_in.gat,22,134
-alberta_in.gat,22,130,0	warp	alb14-1	3,2,alberta_in.gat,22,109
-alberta_in.gat,22,153,0	warp	alb15	3,2,alberta_in.gat,22,174
-alberta_in.gat,22,170,0	warp	alb15-1	3,2,alberta_in.gat,22,149
-alberta_in.gat,24,33,0	warp	alb16	3,2,alberta_in.gat,64,35
-alberta_in.gat,64,31,0	warp	alb16-1	3,2,alberta_in.gat,24,29
-alberta_in.gat,24,54,0	warp	alb17	3,2,alberta_in.gat,64,53
-alberta_in.gat,64,57,0	warp	alb17-1	3,2,alberta_in.gat,24,58
-alberta_in.gat,66,113,0	warp	alb18	3,1,alberta_in.gat,66,132
-alberta_in.gat,66,130,0	warp	alb18-1	3,1,alberta_in.gat,66,111
-alberta_in.gat,66,153,0	warp	alb19	3,2,alberta_in.gat,66,173
-alberta_in.gat,66,170,0	warp	alb19-1	3,2,alberta_in.gat,66,149
-
-
-//--------------------------------------------------------------
-// Aldebaran Town Warp Portals
-//--------------------------------------------------------------
-
-aldebaran.gat,118,63,0	warp	ald01	1,1,aldeba_in.gat,211,117
-aldebaran.gat,139,34,0	warp	ald001	3,2,mjolnir_12.gat,199,375
-aldebaran.gat,197,70,0	warp	ald02	1,1,aldeba_in.gat,94,41
-aldebaran.gat,233,105,0	warp	ald04	1,1,aldeba_in.gat,157,190
-aldebaran.gat,51,218,0	warp	ald05	1,1,aldeba_in.gat,24,227
-aldebaran.gat,61,229,0	warp	ald06	1,1,aldeba_in.gat,148,227
-aldebaran.gat,72,197,0	warp	ald07	1,1,aldeba_in.gat,27,37
-aldebaran.gat,89,234,0	warp	ald08	1,1,aldeba_in.gat,242,237
-aldeba_in.gat,103,157,0	warp	ald09	2,2,aldeba_in.gat,137,237
-aldeba_in.gat,103,61,0	warp	ald10	2,2,aldeba_in.gat,97,105
-aldeba_in.gat,134,237,0	warp	ald09-1	2,2,aldeba_in.gat,100,157
-aldeba_in.gat,144,92,0	warp	ald11	2,2,aldeba_in.gat,149,52
-aldeba_in.gat,148,224,0	warp	ald06-1	2,2,aldebaran.gat,63,227
-aldeba_in.gat,149,55,0	warp	ald11-1	2,2,aldeba_in.gat,144,95
-aldeba_in.gat,157,193,0	warp	ald04-1	3,2,aldebaran.gat,231,107
-aldeba_in.gat,208,117,0	warp	ald01-1	2,2,aldebaran.gat,116,63
-aldeba_in.gat,217,131,0	warp	ald12	2,2,aldeba_in.gat,217,163
-aldeba_in.gat,217,160,0	warp	ald12-1	2,2,aldeba_in.gat,217,128
-aldeba_in.gat,217,71,0	warp	ald13-1	2,2,aldeba_in.gat,218,107
-aldeba_in.gat,218,104,0	warp	ald13	2,2,aldeba_in.gat,218,68
-aldeba_in.gat,24,224,0	warp	ald05-1	2,2,aldebaran.gat,53,216
-aldeba_in.gat,245,237,0	warp	ald08-1	2,2,aldebaran.gat,91,234
-aldeba_in.gat,27,102,0	warp	ald14-1	2,2,aldeba_in.gat,27,68
-aldeba_in.gat,27,34,0	warp	ald07-1	2,2,aldebaran.gat,72,195
-aldeba_in.gat,27,71,0	warp	ald14	2,2,aldeba_in.gat,27,105
-aldeba_in.gat,37,238,0	warp	ald15	2,2,aldeba_in.gat,67,157
-aldeba_in.gat,64,157,0	warp	ald15-1	2,2,aldeba_in.gat,34,238
-aldeba_in.gat,83,191,0	warp	ald16	2,2,aldeba_in.gat,83,227
-aldeba_in.gat,83,224,0	warp	ald16-1	2,2,aldeba_in.gat,83,188
-aldeba_in.gat,94,38,0	warp	ald02-1	3,2,aldebaran.gat,197,68
-aldeba_in.gat,97,102,0	warp	ald10-1	2,2,aldeba_in.gat,103,58
-alde_gld.gat,183,204,0	warp	turbo01	1,1,turbo_room.gat,100,64
-turbo_room.gat,100,61,0	warp	turbo02	1,1,alde_gld.gat,183,198
+pay_fild03.gat,392,63,0	warp	To Albertai	2,7,alberta.gat,19,233
+alberta.gat,15,234,0	warp	To Albertao	2,5,pay_fild03.gat,388,63
+alberta_in.gat,78,44,0	warp	Merchant Guild-o	2,5,alberta.gat,37,41
+alberta.gat,33,42,0	warp	Merchant Guild-i	2,2,alberta_in.gat,74,44
+alberta_in.gat,64,57,0	warp	Merchant Guild-a	3,2,alberta_in.gat,24,58
+alberta_in.gat,24,54,0	warp	Merchant Guild-a'	3,2,alberta_in.gat,64,53
+alberta_in.gat,64,31,0	warp	Merchant Guild-b	3,2,alberta_in.gat,24,29
+alberta_in.gat,24,33,0	warp	Merchant Guild-b'	3,2,alberta_in.gat,64,35
+alberta_in.gat,14,141,0	warp	InnA-o	2,3,alberta.gat,61,233
+alberta.gat,65,233,0	warp	InnA-i	2,2,alberta_in.gat,18,141
+alberta_in.gat,22,153,0	warp	InnA-a	3,2,alberta_in.gat,22,174
+alberta_in.gat,22,170,0	warp	InnA-a'	3,2,alberta_in.gat,22,149
+alberta_in.gat,22,130,0	warp	InnA-b	3,2,alberta_in.gat,22,109
+alberta_in.gat,22,113,0	warp	InnA-b'	3,2,alberta_in.gat,22,134
+alberta_in.gat,73,141,0	warp	InnB-o	2,3,alberta.gat,137,37
+alberta.gat,134,37,0	warp	InnB-i	1,1,alberta_in.gat,70,141
+alberta_in.gat,66,153,0	warp	InnB-a	3,2,alberta_in.gat,66,173
+alberta_in.gat,66,170,0	warp	InnB-a'	3,2,alberta_in.gat,66,149
+alberta_in.gat,66,130,0	warp	InnB-b	3,1,alberta_in.gat,66,111
+alberta_in.gat,66,113,0	warp	InnB-b'	3,1,alberta_in.gat,66,132
+alberta_in.gat,125,160,0	warp	EntranceA-o	2,2,alberta.gat,102,222
+alberta.gat,99,221,0	warp	EntranceA-i	2,2,alberta_in.gat,122,161
+alberta_in.gat,114,130,0	warp	EntranceB-o	2,2,alberta.gat,93,201
+alberta.gat,93,205,0	warp	EntranceB-i	2,2,alberta_in.gat,114,134
+alberta_in.gat,114,183,0	warp	Villa2B-i	1,1,alberta_in.gat,148,186
+alberta_in.gat,152,186,0	warp	Villa2B-o	1,1,alberta_in.gat,118,183
+alberta_in.gat,159,175,0	warp	RoomA-i	2,2,alberta_in.gat,117,97
+alberta_in.gat,114,97,0	warp	RoomA-o	2,2,alberta_in.gat,155,175
+alberta_in.gat,159,153,0	warp	RoomB-i	2,2,alberta_in.gat,117,49
+alberta_in.gat,114,49,0	warp	RoomB-o	2,2,alberta_in.gat,155,153
+alberta_in.gat,180,34,0	warp	Armory-o	2,2,alberta.gat,117,42
+alberta.gat,117,38,0	warp	Armory-i	2,2,alberta_in.gat,180,30
+alberta_in.gat,189,89,0	warp	Kit Shop-o	2,2,alberta.gat,102,153
+alberta.gat,98,153,0	warp	Kit Shop-i	2,2,alberta_in.gat,185,89
+alb_ship.gat,26,166,0	warp	Ship2F-o	3,1,alberta.gat,170,168
+alberta.gat,170,170,0	warp	Ship2F-i	1,1,alb_ship.gat,26,168
+alb_ship.gat,41,163,0	warp	Ship1F -o	1,3,alberta.gat,180,165
+alberta.gat,178,165,0	warp	Ship1F -i	1,2,alb_ship.gat,39,163
+alb_ship.gat,160,171,0	warp	Ship1F -o	1,3,alberta.gat,207,173
+alberta.gat,209,173,0	warp	Ship1F -i	1,2,alb_ship.gat,162,171
+alb_ship.gat,37,174,0	warp	Ship -o	1,2,alb_ship.gat,70,99
+alb_ship.gat,68,99,0	warp	Ship -i	1,3,alb_ship.gat,35,173
 
 
 //--------------------------------------------------------------
-// Amatsu Town Warp Portals
+// Aldebaran Town Warp Portals - [Tsuyuki]
 //--------------------------------------------------------------
 
-ama_in01.gat,157,25,0	warp	warp1969	1,1,amatsu.gat,213,116
-ama_in01.gat,161,34,0	warp	warp1970	1,1,ama_in01.gat,166,77
-ama_in01.gat,166,73,0	warp	warp1971	1,1,ama_in01.gat,162,32
-ama_in01.gat,174,120,0	warp	warp2011	1,1,amatsu.gat,217,146
-ama_in01.gat,174,170,0	warp	warp2012	1,1,ama_fild01.gat,174,328
-ama_in01.gat,31,176,0	warp	warp2010	1,1,amatsu.gat,42,110
-ama_in01.gat,32,23,0	warp	warp1963	1,1,amatsu.gat,98,117
-ama_in01.gat,34,97,0	warp	warp1965	1,1,amatsu.gat,168,178
-ama_in01.gat,77,177,0	warp	warp1967	1,1,amatsu.gat,246,160
-ama_in01.gat,86,23,0	warp	warp2009	1,1,amatsu.gat,130,148
-ama_in01.gat,88,94,0	warp	warp2008	1,1,amatsu.gat,52,145
-ama_in02.gat,127,163,0	warp	warp1980	1,1,ama_in02.gat,220,161
-ama_in02.gat,195,44,0	warp	warp1973	1,1,ama_in02.gat,65,40
-ama_in02.gat,215,150,0	warp	warp1978	1,1,ama_in02.gat,59,156
-ama_in02.gat,222,161,0	warp	warp1979	1,1,ama_in02.gat,130,163
-ama_in02.gat,227,45,0	warp	warp1973	1,1,amatsu.gat,88,235
-ama_in02.gat,56,44,0	warp	warp1975	1,1,ama_in02.gat,59,144
-ama_in02.gat,59,142,0	warp	warp1976	1,1,ama_in02.gat,56,41
-ama_in02.gat,59,159,0	warp	warp1977	1,1,ama_in02.gat,215,152
-ama_in02.gat,65,38,0	warp	warp1974	1,1,ama_in02.gat,195,41
-amatsu.gat,133,148,0	warp	warp1989	1,1,ama_in01.gat,88,22
-amatsu.gat,168,180,0	warp	warp1964	1,1,ama_in01.gat,34,99
-amatsu.gat,216,116,0	warp	warp1968	1,1,ama_in01.gat,162,25
-amatsu.gat,217,149,0	warp	warp1987	1,1,ama_in01.gat,174,122
-amatsu.gat,247,290,0	warp	warp1960	1,1,ama_fild01.gat,73,32
-amatsu.gat,249,160,0	warp	warp1966	1,1,ama_in01.gat,79,178
-amatsu.gat,40,110,0	warp	warp1995	1,1,ama_in01.gat,28,176
-amatsu.gat,52,148,0	warp	warp1994	1,1,ama_in01.gat,88,97
-amatsu.gat,85,235,0	warp	warp1972	1,1,ama_in02.gat,224,45
-amatsu.gat,96,117,0	warp	warp1962	1,1,ama_in01.gat,30,23
-
-
-//--------------------------------------------------------------
-// Ayothaya Town Warp Portals
-//--------------------------------------------------------------
-
-ayothaya.gat,277,176,0	warp	ayothayawarp001	2,2,ayo_fild01.gat,36,239
-ayo_fild01.gat,32,241,0	warp	ayothayawarp002	2,2,ayothaya.gat,274,176
-ayothaya.gat,207,285,0	warp	ayothayawarp007	2,2,ayo_in02.gat,99,149
-ayo_in02.gat,99,146,0	warp	ayothayawarp008	2,2,ayothaya.gat,207,282
-ayothaya.gat,128,86,0	warp	ayothayawarp009	2,2,ayo_in01.gat,27,172
-ayo_in01.gat,29,170,0	warp	ayothayawarp010	2,2,ayothaya.gat,132,86
-ayothaya.gat,129,96,0	warp	ayothayawarp011	2,2,ayo_in01.gat,44,183
-ayo_in01.gat,47,183,0	warp	ayothayawarp012	2,2,ayothaya.gat,131,98
-ayothaya.gat,130,75,0	warp	ayothayawarp013	2,2,ayo_in01.gat,17,155
-ayo_in01.gat,17,152,0	warp	ayothayawarp014	2,2,ayothaya.gat,132,73
-ayothaya.gat,229,70,0	warp	ayothayawarp015	2,2,ayo_in01.gat,137,191
-ayo_in01.gat,137,194,0	warp	ayothayawarp016	2,2,ayothaya.gat,232,75
-ayothaya.gat,176,90,0	warp	ayothayawarp017	2,2,ayo_in01.gat,92,174
-ayo_in01.gat,97,174,0	warp	ayothayawarp018	2,2,ayothaya.gat,180,90
-ayothaya.gat,172,77,0	warp	ayothayawarp019	2,2,ayo_in01.gat,88,154
-ayo_in01.gat,84,149,0	warp	ayothayawarp020	2,2,ayothaya.gat,172,74
-ayothaya.gat,166,90,0	warp	ayothayawarp021	2,2,ayo_in01.gat,75,174
-ayo_in01.gat,73,174,0	warp	ayothayawarp022	2,2,ayothaya.gat,163,90
-ayothaya.gat,61,104,0	warp	ayothayawarp029	2,2,ayo_in01.gat,191,183
-ayo_in01.gat,194,183,0	warp	ayothayawarp030	2,2,ayothaya.gat,66,104
-ayothaya.gat,111,109,0	warp	ayothayawarp033	2,2,ayo_in01.gat,180,128
-ayo_in01.gat,177,128,0	warp	ayothayawarp034	2,2,ayothaya.gat,111,105
-ayothaya.gat,202,158,0	warp	ayothayawarp035	2,2,ayo_in01.gat,30,107
-ayo_in01.gat,30,110,0	warp	ayothayawarp036	2,2,ayothaya.gat,202,161
-ayothaya.gat,193,149,0	warp	ayothayawarp037	2,2,ayo_in01.gat,14,94
-ayo_in01.gat,11,94,0	warp	ayothayawarp038	2,2,ayothaya.gat,189,149
-ayothaya.gat,202,141,0	warp	ayothayawarp039	2,2,ayo_in01.gat,30,82
-ayo_in01.gat,30,79,0	warp	ayothayawarp040	2,2,ayothaya.gat,202,138
-ayothaya.gat,211,149,0	warp	ayothayawarp041	2,2,ayo_in01.gat,47,94
-ayo_in01.gat,50,94,0	warp	ayothayawarp042	2,2,ayothaya.gat,214,149 
-ayo_in01.gat,48,83,0	warp	ayothayawarp043	2,2,ayo_in01.gat,61,15
-ayo_in01.gat,59,15,0	warp	ayothayawarp044	2,2,ayo_in01.gat,45,83
-ayo_in01.gat,48,107,0	warp	ayothayawarp045	2,2,ayo_in01.gat,177,27
-ayo_in01.gat,175,27,0	warp	ayothayawarp046	2,2,ayo_in01.gat,45,107
-ayo_in01.gat,13,83,0	warp	ayothayawarp047	2,2,ayo_in01.gat,19,15
-ayo_in01.gat,22,15,0	warp	ayothayawarp048	2,2,ayo_in01.gat,16,83
-ayo_in01.gat,13,107,0	warp	ayothayawarp049	2,2,ayo_in01.gat,133,27
-ayo_in01.gat,136,27,0	warp	ayothayawarp050	2,2,ayo_in01.gat,16,107
+mjolnir_12.gat,199,378,0	warp	m12north-alde	2,2,aldebaran.gat,138,37
+aldebaran.gat,138,34,0	warp	alde-m12north	2,2,mjolnir_12.gat,199,375
+aldebaran.gat,140,243,0	warp	aldeNorthGate_yuno01c	1,1,yuno_fild01.gat,208,22
+yuno_fild01.gat,208,18,0	warp	yuno01c_AldeNorthGate	1,1,aldebaran.gat,140,239
+aldebaran.gat,61,229,0	warp	al-kapra	1,1,aldeba_in.gat,148,227
+aldeba_in.gat,148,224,0	warp	al-kapra	2,2,aldebaran.gat,63,227
+aldebaran.gat,51,218,0	warp	al-kapra	1,1,aldeba_in.gat,24,227
+aldeba_in.gat,24,224,0	warp	al-kapra	2,2,aldebaran.gat,53,216
+aldeba_in.gat,37,238,0	warp	al-kapra	2,2,aldeba_in.gat,67,157
+aldeba_in.gat,64,157,0	warp	al-kapra	2,2,aldeba_in.gat,34,238
+aldeba_in.gat,83,191,0	warp	al-kapra	2,2,aldeba_in.gat,83,227
+aldeba_in.gat,83,224,0	warp	al-kapra	2,2,aldeba_in.gat,83,188
+aldeba_in.gat,134,237,0	warp	al-kapra	2,2,aldeba_in.gat,100,157
+aldeba_in.gat,103,157,0	warp	al-kapra	2,2,aldeba_in.gat,137,237
+aldebaran.gat,89,234,0	warp	minga1	1,1,aldeba_in.gat,242,237
+aldeba_in.gat,245,237,0	warp	minga1	2,2,aldebaran.gat,91,234
+aldebaran.gat,72,197,0	warp	weapon	1,1,aldeba_in.gat,27,37
+aldeba_in.gat,27,34,0	warp	weapon	2,2,aldebaran.gat,72,195
+aldeba_in.gat,27,71,0	warp	weapon	2,2,aldeba_in.gat,27,105
+aldeba_in.gat,27,102,0	warp	weapon	2,2,aldeba_in.gat,27,68
+aldebaran.gat,118,63,0	warp	minga2	1,1,aldeba_in.gat,211,117
+aldeba_in.gat,208,117,0	warp	minga2	2,2,aldebaran.gat,116,63
+aldeba_in.gat,218,104,0	warp	minga2	2,2,aldeba_in.gat,218,68
+aldeba_in.gat,217,71,0	warp	minga2	2,2,aldeba_in.gat,218,107
+aldeba_in.gat,217,131,0	warp	minga2	2,2,aldeba_in.gat,217,163
+aldeba_in.gat,217,160,0	warp	minga2	2,2,aldeba_in.gat,217,128
+aldebaran.gat,197,70,0	warp	goods	1,1,aldeba_in.gat,94,41
+aldeba_in.gat,94,38,0	warp	goods	3,2,aldebaran.gat,197,68
+aldeba_in.gat,103,61,0	warp	goods	2,2,aldeba_in.gat,97,105
+aldeba_in.gat,97,102,0	warp	goods	2,2,aldeba_in.gat,103,58
+aldebaran.gat,225,54,0	warp	minga3	1,1,aldeba_in.gat,149,120
+aldeba_in.gat,149,123,0	warp	minga3	3,2,aldebaran.gat,223,56
+aldeba_in.gat,144,92,0	warp	minga3	2,2,aldeba_in.gat,149,52
+aldeba_in.gat,149,55,0	warp	minga3	2,2,aldeba_in.gat,144,95
+aldebaran.gat,233,105,0	warp	bar	1,1,aldeba_in.gat,157,190
+aldeba_in.gat,157,193,0	warp	bar	3,2,aldebaran.gat,231,107
 
 
 //--------------------------------------------------------------
-// Comodo Town Warp Portals
+// Amatsu Town Warp Portals - [Tsuyuki]
 //--------------------------------------------------------------
 
-comodo.gat,115,291,0	warp	cmd09	1,1,cmd_in02.gat,67,132
-comodo.gat,126,98,0	warp	cmd02	1,1,cmd_in02.gat,144,97
-comodo.gat,130,195,0	warp	cmd05	1,1,cmd_in02.gat,143,173
-comodo.gat,140,111,0	warp	cmd04	1,1,cmd_in02.gat,178,132
-comodo.gat,140,90,0	warp	cmd01	1,1,cmd_in02.gat,74,25
-comodo.gat,145,328,0	warp	cmd11	1,1,cmd_in01.gat,120,71
-comodo.gat,153,97,0	warp	cmd03	1,1,cmd_in02.gat,212,97
-comodo.gat,176,358,0	warp	cmd002	1,1,beach_dun2.gat,154,25
-comodo.gat,192,294,0	warp	cmd17	1,1,cmd_in01.gat,177,123
-comodo.gat,236,298,0	warp	cmd08	1,1,cmd_in01.gat,179,81
-comodo.gat,25,214,0	warp	cmd001	1,1,beach_dun.gat,266,67
-comodo.gat,265,74,0	warp	cmd06	1,1,cmd_in01.gat,123,180
-comodo.gat,271,271,0	warp	cmd10	1,1,cmd_in01.gat,113,125
-comodo.gat,332,175,0	warp	cmd003	1,1,beach_dun3.gat,23,260
-comodo.gat,92,128,0	warp	cmd07	1,1,cmd_in01.gat,85,174
-cmd_in01.gat,109,125,0	warp	cmd10-1	1,1,comodo.gat,269,273
-cmd_in01.gat,120,67,0	warp	cmd11-1	1,1,comodo.gat,145,324
-cmd_in01.gat,123,186,0	warp	cmd06-1	1,1,comodo.gat,265,79
-cmd_in01.gat,183,123,0	warp	cmd17-1	1,1,comodo.gat,195,294
-cmd_in01.gat,183,81,0	warp	cmd08-1	1,1,comodo.gat,239,296
-cmd_in01.gat,90,174,0	warp	cmd07-1	1,1,comodo.gat,97,128
-cmd_in02.gat,139,169,0	warp	cmd05-1	1,1,comodo.gat,127,191
-cmd_in02.gat,139,97,0	warp	cmd02-1	1,1,comodo.gat,122,98
-cmd_in02.gat,168,113,0	warp	cmd15-1	1,1,cmd_in02.gat,63,73
-cmd_in02.gat,178,136,0	warp	cmd04-1	1,1,comodo.gat,140,115
-cmd_in02.gat,187,78,0	warp	cmd14-2	1,1,cmd_in02.gat,84,37
-cmd_in02.gat,208,206,0	warp	cmd16	1,1,cmd_in02.gat,97,211
-cmd_in02.gat,216,97,0	warp	cmd03-1	1,1,comodo.gat,157,97
-cmd_in02.gat,58,74,0	warp	cmd15	1,1,cmd_in02.gat,166,116
-cmd_in02.gat,69,129,0	warp	cmd09-1	4,4,comodo.gat,115,288
-cmd_in02.gat,74,21,0	warp	cmd01-1	1,1,comodo.gat,140,86
-cmd_in02.gat,90,37,0	warp	cmd14	1,1,cmd_in02.gat,191,77
-cmd_in02.gat,98,216,0	warp	cmd16-1	1,1,cmd_in02.gat,207,210
-
-
-//--------------------------------------------------------------
-// Einbech Town Warp Portals
-//--------------------------------------------------------------
-
-einbech.gat,177,136,0	warp	eib_wp01	1,1,ein_in01.gat,190,35
-ein_in01.gat,190,38,0	warp	eib_wp01a	1,1,einbech.gat,177,133
-einbech.gat,207,135,0	warp	eib_hu01	1,1,ein_in01.gat,190,99
-ein_in01.gat,187,99,0	warp	eib_hu01a	1,1,einbech.gat,204,135
-einbech.gat,214,121,0	warp	eib_hu02	1,1,ein_in01.gat,205,86
-ein_in01.gat,205,83,0	warp	eib_hu02a	1,1,einbech.gat,214,118
-einbech.gat,154,106,0	warp	eib_b01	1,1,ein_in01.gat,285,89
-ein_in01.gat,288,89,0	warp	eib_b01a	1,1,einbech.gat,157,106
-einbech.gat,145,112,0	warp	eib_b02	1,1,ein_in01.gat,268,104
-ein_in01.gat,265,104,0	warp	eib_b02a	1,1,einbech.gat,141,112
-einbech.gat,256,109,0	warp	eib_js01	1,1,ein_in01.gat,148,153
-ein_in01.gat,148,150,0	warp	eib_js01a	1,1,einbech.gat,253,109
-einbech.gat,62,29,0	warp	ein_fd09	1,1,ein_fild09.gat,72,351
+amatsu.gat,177,138,0	warp	house1Gate_house1	1,1,ama_in01.gat,28,176
+amatsu.gat,248,160,0	warp	house2Gate_house2	1,1,ama_in01.gat,79,178
+amatsu.gat,168,182,0	warp	warriorGate_warrior	1,1,ama_in01.gat,34,99
+amatsu.gat,52,148,0	warp	deluxeGate_deluxe	1,1,ama_in01.gat,88,97
+amatsu.gat,94,117,0	warp	toolGate_tool	1,1,ama_in01.gat,30,24
+amatsu.gat,132,117,0	warp	weaponGate_weapon	1,1,ama_in01.gat,89,23
+amatsu.gat,217,116,0	warp	tavernGate_1f_tavern	1,1,ama_in01.gat,162,25
+amatsu.gat,85,235,0	warp	castleGate_castle	1,1,ama_in02.gat,223,45
+amatsu.gat,248,292,0	warp	fildGate_fild	1,1,ama_fild01.gat,75,33
+ama_in01.gat,3,1,0	warp	house1_house1Gate	176,1,amatsu.gat,180,138
+ama_in01.gat,76,178,0	warp	house2_house2Gate	1,1,amatsu.gat,245,160
+ama_in01.gat,175,171,0	warp	shrine_shrineGate	1,1,ama_fild01.gat,174,328
+ama_in01.gat,34,96,0	warp	warrior_warriorGate	1,1,amatsu.gat,168,179
+ama_in01.gat,88,94,0	warp	deluxe_deluxeGate	1,1,amatsu.gat,52,145
+ama_in01.gat,174,121,0	warp	craftsman_craftsmanGate	1,1,ama_fild01.gat,330,138
+ama_in01.gat,166,73,0	warp	2f_inn_innGate	1,1,ama_in01.gat,162,31
+ama_in01.gat,162,34,0	warp	innGate_2f_inn	1,1,ama_in01.gat,166,77
+ama_in01.gat,33,24,0	warp	tool_toolGate	1,1,amatsu.gat,97,117
+ama_in01.gat,86,23,0	warp	weapon_weaponGate	1,1,amatsu.gat,129,117
+ama_in01.gat,157,25,0	warp	1f_tavern_tavernGate	1,1,amatsu.gat,214,116
+ama_in02.gat,226,45,0	warp	castle_castleGate	1,1,amatsu.gat,88,235
+ama_in02.gat,195,44,0	warp	TO1f_FORM2f	1,1,ama_in02.gat,65,40
+ama_in02.gat,65,37,0	warp	TO2f_FORM1f	1,1,ama_in02.gat,195,41
+ama_in02.gat,56,44,0	warp	TO2f_FORM3f	1,1,ama_in02.gat,59,144
+ama_in02.gat,59,14,0	warp	TO3f_FORM2f	1,1,ama_in02.gat,56,41
+ama_in02.gat,59,160,0	warp	TO3f_FORM4f	1,1,ama_in02.gat,215,152
+ama_in02.gat,215,149,0	warp	TO4f_FORM3f	1,1,ama_in02.gat,59,156
+ama_in02.gat,222,161,0	warp	TO4f_FORM5f	1,1,ama_in02.gat,129,164
+ama_in02.gat,126,164,0	warp	TO5f_FORM4f	1,1,ama_in02.gat,219,161
+ama_fild01.gat,75,30,0	warp	ToFild01_FormAmatsu	1,1,amatsu.gat,248,289
+ama_fild01.gat,174,331,0	warp	ShrineGate_FormShrine	1,1,ama_in01.gat,175,174
+ama_fild01.gat,330,141,0	warp	ToFild01_FormCraftsman	1,1,ama_in01.gat,174,124
 
 
 //--------------------------------------------------------------
-// Einbroch Town Warp Portals
+// Ayothaya Town Warp Portals - [Tsuyuki]
 //--------------------------------------------------------------
 
-einbroch.gat,132,79,0	warp	ein_fa01	1,1,ein_in01.gat,17,213
-ein_in01.gat,13,213,0	warp	ein_fa01a	1,1,einbroch.gat,129,79
-ein_in01.gat,81,198,0	warp	ein_fa02	1,1,einbroch.gat,179,70
-einbroch.gat,179,73,0	warp	ein_fa02a	1,1,ein_in01.gat,81,203
-einbroch.gat,214,263,0	warp	ein_to01	1,1,einbroch.gat,233,315
-einbroch.gat,233,312,0	warp	ein_to01a	1,1,einbroch.gat,214,260
-einbroch.gat,250,263,0	warp	ein_to02	1,1,einbroch.gat,269,315
-einbroch.gat,269,312,0	warp	ein_to02a	1,1,einbroch.gat,250,260
-einbroch.gat,216,214,0	warp	ein_wp01	1,1,ein_in01.gat,108,17
-ein_in01.gat,108,13,0	warp	ein_wp01a	1,1,einbroch.gat,216,211
-einbroch.gat,257,199,0	warp	ein_h01	1,1,ein_in01.gat,198,224
-ein_in01.gat,195,224,0	warp	ein_h01a	1,1,einbroch.gat,254,199
-ein_in01.gat,211,216,0	warp	ein_h02	1,1,ein_in01.gat,274,218
-ein_in01.gat,271,218,0	warp	ein_h02a	1,1,ein_in01.gat,208,216
-ein_in01.gat,211,232,0	warp	ein_h03	1,1,ein_in01.gat,274,232
-ein_in01.gat,271,232,0	warp	ein_h03a	1,1,ein_in01.gat,208,232
-ein_in01.gat,274,246,0	warp	ein_h04	1,1,ein_in01.gat,273,276
-ein_in01.gat,273,273,0	warp	ein_h04a	1,1,ein_in01.gat,274,243
-ein_in01.gat,264,246,0	warp	ein_h05	1,1,ein_in01.gat,231,276
-ein_in01.gat,231,273,0	warp	ein_h05a	1,1,ein_in01.gat,264,243
-ein_in01.gat,274,203,0	warp	ein_h06	1,1,ein_in01.gat,274,173
-ein_in01.gat,274,176,0	warp	ein_h06a	1,1,ein_in01.gat,274,206
-ein_in01.gat,264,203,0	warp	ein_h07	1,1,ein_in01.gat,232,173
-ein_in01.gat,232,176,0	warp	ein_h07a	1,1,ein_in01.gat,264,206
-ein_in01.gat,284,224,0	warp	ein_h08	1,1,ein_in01.gat,177,277
-ein_in01.gat,180,277,0	warp	ein_h08a	1,1,ein_in01.gat,280,224
-einbroch.gat,278,233,0	warp	ein_ho01	1,1,ein_in01.gat,107,95
-ein_in01.gat,103,95,0	warp	ein_ho01a	1,1,einbroch.gat,275,233
-ein_in01.gat,126,88,0	warp	ein_ho02	1,1,ein_in01.gat,100,139
-ein_in01.gat,100,142,0	warp	ein_ho02a	1,1,ein_in01.gat,123,85
-einbroch.gat,290,222,0	warp	ein_ho03	1,1,ein_in01.gat,121,80
-ein_in01.gat,121,77,0	warp	ein_ho03a	1,1,einbroch.gat,290,219
-einbroch.gat,129,229,0	warp	ein_kf01	1,1,ein_in01.gat,14,147
-ein_in01.gat,11,147,0	warp	ein_kf01a	1,1,einbroch.gat,126,229
-ein_in01.gat,286,25,0	warp	ein_lab	1,1,einbroch.gat,54,52
-einbroch.gat,255,107,0	warp	ein_jb01	1,1,ein_in01.gat,14,17
-ein_in01.gat,14,14,0	warp	ein_jb01a	1,1,einbroch.gat,255,110
-ein_in01.gat,39,36,0	warp	ein_jb02	1,1,ein_in01.gat,35,83
-ein_in01.gat,39,85,0	warp	ein_jb02a	1,1,ein_in01.gat,36,36
-einbroch.gat,157,331,0	warp	ein_fd01	1,1,ein_fild04.gat,184,31
-ein_fild04.gat,184,26,0	warp	ein_fd01a	1,1,einbroch.gat,157,327
-einbroch.gat,150,25,0	warp	ein_fd02	1,1,ein_fild08.gat,164,377
-ein_fild08.gat,164,380,0	warp	ein_fd02a	1,1,einbroch.gat,150,28
+ayothaya.gat,130,97,0	warp	toolUpGate_toolUp	1,1,ayo_in01.gat,43,183
+ayothaya.gat,129,86,0	warp	toolMIddleGate_toolMIddle	1,1,ayo_in01.gat,21,178
+ayothaya.gat,130,75,0	warp	toolBottomGate_toolBottom	1,1,ayo_in01.gat,17,156
+ayothaya.gat,165,90,0	warp	weaponLeftGate_weaponLeft	1,1,ayo_in01.gat,77,174
+ayothaya.gat,177,90,0	warp	weaponRightGate_weaponRight	1,1,ayo_in01.gat,95,175
+ayothaya.gat,173,77,0	warp	weaponBottomGate_weaponBottom	1,1,ayo_in01.gat,85,152
+ayothaya.gat,229,69,0	warp	pubGate_pub	1,1,ayo_in01.gat,137,192
+ayothaya.gat,202,161,0	warp	innTopGate_innTop	1,1,ayo_in01.gat,3,1 108
+ayothaya.gat,21,1,0	warp	innRightGate_innRight	150,1,ayo_in01.gat,47,94
+ayothaya.gat,202,140,0	warp	innBottomGate_innBottom	1,1,ayo_in01.gat,31,81
+ayothaya.gat,192,150,0	warp	innLeftGate_innLeft	1,1,ayo_in01.gat,13,94
+ayothaya.gat,276,176,0	warp	gateway_fild01	1,1,ayo_fild01.gat,37,241
+ayothaya.gat,11,1,0	warp	house1Gate_house1	109,1,ayo_in01.gat,180,129
+ayothaya.gat,62,104,0	warp	house2Gate_house2	1,1,ayo_in01.gat,19,1 183
+ayothaya.gat,208,283,0	warp	shrineGate_shrine	1,1,ayo_in02.gat,100,152
+ayo_in01.gat,46,183,0	warp	toolUp_toolUpGate	1,1,ayothaya.gat,132,99
+ayo_in01.gat,23,176,0	warp	toolMIddle_toolMIddleGate	1,1,ayothaya.gat,132,86
+ayo_in01.gat,17,153,0	warp	toolBottom_toolBottomGate	1,1,ayothaya.gat,132,73
+ayo_in01.gat,73,174,0	warp	weaponLeft_weaponLeftGate	1,1,ayothaya.gat,162,90
+ayo_in01.gat,98,175,0	warp	weaponRight_weaponRightGate	1,1,ayothaya.gat,180,90
+ayo_in01.gat,85,149,0	warp	weaponBottom_weaponBottomGate	1,1,ayothaya.gat,173,74
+ayo_in01.gat,137,195,0	warp	pub_pubGate	1,1,ayothaya.gat,229,72
+ayo_in01.gat,177,129,0	warp	house1_house1Gate	1,1,ayothaya.gat,11,1 106
+ayo_in01.gat,194,183,0	warp	house2_house2Gate	1,1,ayothaya.gat,65,104
+ayo_in01.gat,3,1,0	warp	innTop_innTopGate	111,1,ayothaya.gat,202,164
+ayo_in01.gat,50,94,0	warp	innRight_innRightGate	1,1,ayothaya.gat,214,150
+ayo_in01.gat,31,78,0	warp	innBottom_innBottomGate	1,1,ayothaya.gat,202,137
+ayo_in01.gat,10,94,0	warp	innLeft_innLeftGate	1,1,ayothaya.gat,189,150
+ayo_in01.gat,13,107,0	warp	stairNW_roomNW	1,1,ayo_in01.gat,132,27
+ayo_in01.gat,48,107,0	warp	stairNE_roomNE	1,1,ayo_in01.gat,179,27
+ayo_in01.gat,13,82,0	warp	stairSW_roomSW	1,1,ayo_in01.gat,18,14
+ayo_in01.gat,48,82,0	warp	stairSE_roomSE	1,1,ayo_in01.gat,63,14
+ayo_in01.gat,135,27,0	warp	roomNW_stairNW	1,1,ayo_in01.gat,17,107
+ayo_in01.gat,176,27,0	warp	roomNE_stairNE	1,1,ayo_in01.gat,45,107
+ayo_in01.gat,2,1,0	warp	roomSW_stairSW	14,1,ayo_in01.gat,17,82
+ayo_in01.gat,60,14,0	warp	roomSE_stairSE	1,1,ayo_in01.gat,45,82
+ayo_in02.gat,100,148,0	warp	shrine_shrineGate	1,1,ayothaya.gat,208,280
+ayo_fild01.gat,32,240,0	warp	Fild01_gateway	1,1,ayothaya.gat,273,176
 
 
 //--------------------------------------------------------------
-// Geffen Town Warp Portals
+// Comodo Town Warp Portals - [Tsuyuki]
 //--------------------------------------------------------------
 
-geffen.gat,119,213,0	warp	gef001	3,2,gef_fild04.gat,187,42
-geffen.gat,120,114,0	warp	gef002	3,1,gef_tower.gat,52,177
-geffen.gat,217,119,0	warp	gef003	2,4,gef_fild00.gat,46,199
-geffen.gat,26,119,0	warp	gef004	2,3,gef_fild07.gat,336,187
-geffen.gat,138,138,0	warp	gef01	1,1,geffen_in.gat,28,110
-geffen.gat,172,174,0	warp	gef02	2,2,geffen_in.gat,70,52
-geffen.gat,182,59,0	warp	gef03	2,2,geffen_in.gat,106,177
-geffen.gat,43,85,0	warp	gef04	2,2,geffen_in.gat,70,138
-geffen.gat,61,180,0	warp	gef05	3,3,geffen_in.gat,162,97
-geffen.gat,98,141,0	warp	gef06	2,2,geffen_in.gat,28,160
-geffen_in.gat,28,156,0	warp	gef06-1	3,1,geffen.gat,101,138
-geffen_in.gat,100,67,0	warp	gef07	2,3,geffen_in.gat,84,65
-geffen_in.gat,87,66,0	warp	gef07-1	2,3,geffen_in.gat,103,67
-geffen_in.gat,104,109,0	warp	gef08	2,2,geffen_in.gat,76,107
-geffen_in.gat,79,107,0	warp	gef08-1	2,2,geffen_in.gat,107,109
-geffen_in.gat,113,163,0	warp	gef09	2,2,geffen_in.gat,139,169
-geffen_in.gat,136,169,0	warp	gef09-1	2,2,geffen_in.gat,110,163
-geffen_in.gat,114,37,0	warp	gef10	1,1,geffen_in.gat,114,63
-geffen_in.gat,114,60,0	warp	gef10-1	1,2,geffen_in.gat,114,34
-geffen_in.gat,138,149,0	warp	gef11	2,2,geffen_in.gat,138,165
-geffen_in.gat,138,162,0	warp	gef11-1	2,2,geffen_in.gat,138,146
-geffen_in.gat,26,60,0	warp	gef12	1,2,geffen_in.gat,26,34
-geffen_in.gat,26,37,0	warp	gef12-1	1,1,geffen_in.gat,26,63
-geffen_in.gat,52,65,0	warp	gef13	2,3,geffen_in.gat,38,67
-geffen_in.gat,41,67,0	warp	gef13-1	2,3,geffen_in.gat,55,65
-geffen_in.gat,70,149,0	warp	gef14	3,2,geffen_in.gat,70,161
-geffen_in.gat,70,158,0	warp	gef14-1	3,2,geffen_in.gat,70,146
-geffen_in.gat,70,83,0	warp	gef15	3,2,geffen_in.gat,72,101
-geffen_in.gat,72,98,0	warp	gef15-1	3,2,geffen_in.gat,70,80
-geffen_in.gat,163,94,0	warp	gef05-1	4,2,geffen.gat,65,176
-geffen_in.gat,70,132,0	warp	gef04-1	3,1,geffen.gat,46,88
-geffen_in.gat,106,181,0	warp	gef03-1	2,2,geffen.gat,180,61
-geffen_in.gat,28,106,0	warp	gef01-1	1,3,geffen.gat,136,136
-geffen_in.gat,70,48,0	warp	gef02-1	3,2,geffen.gat,168,170
-gef_tower.gat,106,115,0	warp	geft01	1,1,gef_tower.gat,106,72
-gef_tower.gat,106,69,0	warp	geft01-1	1,1,gef_tower.gat,106,112
-gef_tower.gat,44,36,0	warp	geft02	1,1,gef_tower.gat,106,162
-gef_tower.gat,106,158,0	warp	geft02-1	1,1,gef_tower.gat,44,33
-gef_tower.gat,118,68,0	warp	geft03	1,1,gef_tower.gat,116,28
-gef_tower.gat,116,31,0	warp	geft03-1	1,1,gef_tower.gat,118,71
-gef_tower.gat,120,158,0	warp	geft04	1,1,gef_tower.gat,118,111
-gef_tower.gat,118,114,0	warp	geft04-1	1,1,gef_tower.gat,120,161
-gef_tower.gat,158,104,0	warp	geft05	2,2,gef_tower.gat,156,90
-gef_tower.gat,156,93,0	warp	geft05-1	2,2,gef_tower.gat,158,107
-gef_tower.gat,158,151,0	warp	geft06	1,2,gef_tower.gat,158,124
-gef_tower.gat,158,127,0	warp	geft06-1	2,1,gef_tower.gat,158,154
-gef_tower.gat,158,173,0	warp	geft07	2,1,gef_tower.gat,52,140
-gef_tower.gat,52,137,0	warp	geft07-1	2,1,gef_tower.gat,158,170
-gef_tower.gat,38,160,0	warp	geft08	2,1,gef_tower.gat,42,90
-gef_tower.gat,42,86,0	warp	geft08-1	1,1,gef_tower.gat,38,157
-gef_tower.gat,66,156,0	warp	geft08-2	2,1,gef_tower.gat,42,90
-gef_tower.gat,153,28,0	warp	gef005	4,2,gef_dun00.gat,104,99
-gef_tower.gat,52,181,0	warp	gef006	4,1,geffen.gat,120,110
-gef_tower.gat,60,32,0	warp	geft09	1,1,gef_tower.gat,62,90
-gef_tower.gat,62,87,0	warp	geft09-1	1,1,gef_tower.gat,60,30
+comodo.gat,92,128,0	warp	cmd to itemshop	1,1,cmd_in01.gat,85,174
+comodo.gat,265,74,0	warp	cmd to wepshop	1,1,cmd_in01.gat,123,180
+comodo.gat,271,271,0	warp	cmd to house1	1,1,cmd_in01.gat,113,125
+comodo.gat,192,294,0	warp	cmd to house2	1,1,cmd_in01.gat,177,123
+comodo.gat,145,328,0	warp	cmd to house3	1,1,cmd_in01.gat,120,71
+comodo.gat,236,298,0	warp	cmd to house4	1,1,cmd_in01.gat,179,81
+comodo.gat,130,195,0	warp	cmd to KAFRA	1,1,cmd_in02.gat,143,173
+comodo.gat,115,291,0	warp	cmd to chiefhouse	1,1,cmd_in02.gat,67,132
+comodo.gat,140,111,0	warp	cmd to Kasino_gate_North	1,1,cmd_in02.gat,178,132
+comodo.gat,153,97,0	warp	cmd to Kasino_gate_East	1,1,cmd_in02.gat,212,97
+comodo.gat,126,98,0	warp	cmd to Kasino_gate_West	1,1,cmd_in02.gat,144,97
+comodo.gat,140,90,0	warp	cmd to Kasino_gate_South	1,1,cmd_in02.gat,74,25
+cmd_in01.gat,90,174,0	warp	itmshp to cmd	1,1,comodo.gat,97,128
+cmd_in01.gat,123,186,0	warp	wpnshp to cmd	1,1,comodo.gat,265,79
+cmd_in01.gat,109,125,0	warp	house1 to cmd	1,1,comodo.gat,269,273
+cmd_in01.gat,183,123,0	warp	house2 to cmd	1,1,comodo.gat,195,294
+cmd_in01.gat,120,67,0	warp	house3 to cmd	1,1,comodo.gat,145,324
+cmd_in01.gat,183,81,0	warp	house4 to cmd	1,1,comodo.gat,239,296
+cmd_in02.gat,139,169,0	warp	KAFRA to cmd	1,1,comodo.gat,127,191
+cmd_in02.gat,208,206,0	warp	KAFRA1 to b1	1,1,cmd_in02.gat,97,211
+cmd_in02.gat,98,216,0	warp	b1 to KAFRA1	1,1,cmd_in02.gat,207,210
+cmd_in02.gat,69,129,0	warp	chiefroom to cmd	1,1,comodo.gat,115,288
+cmd_in02.gat,178,136,0	warp	KASINO_North to cmd	1,1,comodo.gat,140,115
+cmd_in02.gat,216,97,0	warp	KASINO_East to cmd	1,1,comodo.gat,157,97
+cmd_in02.gat,139,97,0	warp	KASINO_West to cmd	1,1,comodo.gat,122,98
+cmd_in02.gat,74,21,0	warp	KASINO_South to cmd	1,1,comodo.gat,140,86
+cmd_in02.gat,168,113,0	warp	KASINO to 2f_1	1,1,cmd_in02.gat,63,73
+cmd_in02.gat,58,74,0	warp	2f_1 to KASINO	1,1,cmd_in02.gat,166,116
+cmd_in02.gat,187,78,0	warp	KASINO to 2f_2	1,1,cmd_in02.gat,84,37
+cmd_in02.gat,90,37,0	warp	2f_2 to KASINO	1,1,cmd_in02.gat,191,77
 
 
 //--------------------------------------------------------------
-// Hugel Town Warp Portals
+// Einbech / Einbroch Town Warp Portals - [Tsuyuki]
 //--------------------------------------------------------------
 
-hu_fild06.gat,199,373,0	warp	hugel01	1,1,hugel.gat,95,34
-hugel.gat,95,32,0	warp	hugel02	1,1,hu_fild06.gat,199,371
-hugel.gat,155,114,0	warp	hugel03	1,1,hu_in01.gat,211,177
-hu_in01.gat,211,173,0	warp	hugel04	1,1,hugel.gat,159,113
-hu_in01.gat,162,228,0	warp	hugel05	1,1,hu_in01.gat,200,220
-hu_in01.gat,194,219,0	warp	hugel06	1,1,hu_in01.gat,159,228
-hu_in01.gat,162,168,0	warp	hugel07	1,1,hu_in01.gat,199,193
-hu_in01.gat,195,192,0	warp	hugel08	1,1,hu_in01.gat,158,168
-hugel.gat,153,153,0	warp	hugel09	1,1,hu_in01.gat,287,231
-hu_in01.gat,287,227,0	warp	hugel10	1,1,hugel.gat,153,149
-hu_in01.gat,263,252,0	warp	hugel11	1,1,hu_in01.gat,362,253
-hu_in01.gat,365,253,0	warp	hugel12	1,1,hu_in01.gat,268,252
-hugel.gat,92,167,0	warp	hugel13	1,1,hu_in01.gat,246,363
-hu_in01.gat,246,359,0	warp	hugel14	1,1,hugel.gat,92,165
-hu_in01.gat,244,315,0	warp	hugel15	1,1,hu_in01.gat,245,389
-hu_in01.gat,248,388,0	warp	hugel16	1,1,hu_in01.gat,250,315
-hu_in01.gat,229,313,0	warp	hugel17	1,1,hu_in01.gat,164,315
-hu_in01.gat,168,315,0	warp	hugel18	1,1,hu_in01.gat,233,313
-hu_in01.gat,168,307,0	warp	hugel19	1,1,hu_in01.gat,167,376
-hu_in01.gat,168,379,0	warp	hugel20	1,1,hu_in01.gat,168,312
-hugel.gat,70,157,0	warp	hugel23	1,1,hu_in01.gat,110,373
-hu_in01.gat,110,369,0	warp	hugel24	1,1,hugel.gat,73,153
-hu_in01.gat,108,390,0	warp	hugel25	1,1,hu_in01.gat,107,322
-hu_in01.gat,114,322,0	warp	hugel26	1,1,hu_in01.gat,111,390
-hugel.gat,91,104,0	warp	hugel27	1,1,hu_in01.gat,30,304
-hu_in01.gat,30,299,0	warp	hugel28	1,1,hugel.gat,94,103
-hu_in01.gat,33,318,0	warp	hugel29	1,1,hu_in01.gat,34,251
-hu_in01.gat,34,246,0	warp	hugel30	1,1,hu_in01.gat,33,314
-hugel.gat,104,79,0	warp	hugel31	1,1,hu_in01.gat,235,107
-hu_in01.gat,231,107,0	warp	hugel32	1,1,hugel.gat,99,77
-hu_in01.gat,268,123,0	warp	hugel33	1,1,hu_in01.gat,265,36
-hu_in01.gat,265,42,0	warp	hugel34	1,1,hu_in01.gat,265,123
-hu_in01.gat,37,90,0	warp	hugel36	1,1,hugel.gat,52,95
-hu_in01.gat,15,70,0	warp	hugel37	1,1,hu_in01.gat,15,25
-hu_in01.gat,15,29,0	warp	hugel38	1,1,hu_in01.gat,15,74
-hu_in01.gat,177,90,0	warp	hugel39	1,1,hugel.gat,52,95
-hu_in01.gat,15,151,0	warp	hugel40	1,1,hu_in01.gat,15,104
-hugel.gat,206,228,0	warp	hugel41	1,1,hu_in01.gat,381,368
-hu_in01.gat,381,363,0	warp	hugel42	1,1,hugel.gat,207,225
-hu_in01.gat,380,319,0	warp	hugel43	1,1,hu_in01.gat,384,388
-hu_in01.gat,388,388,0	warp	hugel44	1,1,hu_in01.gat,385,319
-hu_in01.gat,107,90,0	warp	hugel46	1,1,hugel.gat,52,95
-hu_in01.gat,85,108,0	warp	hugel47	1,1,hu_in01.gat,85,155
-hu_in01.gat,84,151,0	warp	hugel48	1,1,hu_in01.gat,85,104
-hu_in01.gat,85,70,0	warp	hugel49	1,1,hu_in01.gat,85,25
-hu_in01.gat,85,29,0	warp	hugel50	1,1,hu_in01.gat,85,74
-hugel.gat,129,65,0	warp	hugel51	1,1,hu_in01.gat,347,108
-hu_in01.gat,345,108,0	warp	hugel52	1,1,hugel.gat,127,65
-hu_in01.gat,380,118,0	warp	hugel53	1,1,hu_in01.gat,378,176
-hu_in01.gat,378,178,0	warp	hugel54	1,1,hu_in01.gat,378,118
-hu_in01.gat,314,386,0	warp	hugel55	1,1,hu_in01.gat,309,322
-hu_in01.gat,307,322,0	warp	hugel56	1,1,hu_in01.gat,312,386
-hugel.gat,80,230,0	warp	hugel57	1,1,hu_in01.gat,24,363
-hu_in01.gat,24,361,0	warp	hugel58	1,1,hugel.gat,82,230
-hu_in01.gat,301,380,0	warp	hugel59	1,1,hugel.gat,93,199
-hugel.gat,93,201,0	warp	hugel60	1,1,hu_in01.gat,303,380
-hugel.gat,55,207,0    warp    hugelwarp1051    1,1,que_bingo.gat,49,9
-que_bingo.gat,49,7,0    warp    hugelwarp1052    1,1,hugel.gat,57,207
-que_bingo.gat,39,34,0    warp    hugelwarp1053    1,1,que_bingo.gat,34,109
-que_bingo.gat,34,105,0    warp    hugelwarp1054    1,1,que_bingo.gat,38,28
-que_bingo.gat,53,34,0    warp    hugelwarp1055    1,1,que_bingo.gat,49,71
-que_bingo.gat,48,66,0    warp    hugelwarp1056    1,1,que_bingo.gat,53,29
-
-
-//--------------------------------------------------------------
-// Izlude Town Warp Portals
-//--------------------------------------------------------------
-
-izlude.gat,109,151,0	warp	iz01	3,3,izlude_in.gat,65,87
-izlude.gat,148,148,0	warp	iz02	2,2,izlude_in.gat,116,49
-izlude.gat,216,129,0	warp	iz03	3,2,izlude_in.gat,151,127
-izlude.gat,30,78,0	warp	iz001	3,3,prt_fild08.gat,367,212
-izlude.gat,52,140,0	warp	iz04	2,2,izlude_in.gat,74,161
-izlude_in.gat,108,169,0	warp	iz05	2,3,izlude_in.gat,84,169
-izlude_in.gat,116,46,0	warp	iz02-1	3,2,izlude.gat,145,145
-izlude_in.gat,148,127,0	warp	iz03-1	2,5,izlude.gat,212,129
-izlude_in.gat,171,97,0	warp	iz06	3,2,izlude_in.gat,172,119
-izlude_in.gat,172,116,0	warp	iz06-1	3,2,izlude_in.gat,172,94
-izlude_in.gat,172,139,0	warp	iz07	3,2,izlude_in.gat,172,161
-izlude_in.gat,172,158,0	warp	iz07-1	3,2,izlude_in.gat,172,136
-izlude_in.gat,43,169,0	warp	w219	2,3,izlude_in.gat,64,169
-izlude_in.gat,65,84,0	warp	iz01-1	5,2,izlude.gat,113,147
-izlude_in.gat,74,158,0	warp	iz04-1	3,2,izlude.gat,52,136
-izlude_in.gat,87,169,0	warp	iz05-1	2,3,izlude_in.gat,111,169
-izlude.gat,149,39,0	warp	izair1	1,1,izlude.gat,180,56
-izlude.gat,176,56,0	warp	lizair2	1,1,izlude.gat,145,39
-izlude.gat,128,226,0	warp	welcome_arena	1,1,arena_room.gat,100,30
-arena_room.gat,99,24,0	warp	bye_arena	2,2,izlude.gat,128,220
-arena_room.gat,84,103,0	warp	arn_room_11_1	1,1,arena_room.gat,63,130
-arena_room.gat,63,126,0	warp	arn_room_11_2	1,1,arena_room.gat,87,100
-arena_room.gat,76,87,0	warp	arn_room_9_1	1,1,arena_room.gat,46,87
-arena_room.gat,49,87,0	warp	arn_room_9_2	1,1,arena_room.gat,78,87
-arena_room.gat,84,71,0	warp	arn_room_7_1	1,1,arena_room.gat,60,50
-arena_room.gat,63,53,0	warp	arn_room_7_2	1,1,arena_room.gat,86,74
-arena_room.gat,115,71,0	warp	arn_room_5_1	1,1,arena_room.gat,139,50
-arena_room.gat,136,53,0	warp	arn_room_5_2	1,1,arena_room.gat,113,74
-arena_room.gat,123,88,0	warp	arn_room_3_1	1,1,arena_room.gat,153,87
-arena_room.gat,150,87,0	warp	arn_room_3_2	1,1,arena_room.gat,120,87
-prt_are_in.gat,54,13,0	warp	toarn_room	1,1,arena_room.gat,100,77
+ein_fild08.gat,164,380,0	warp	EinF08A_einbroch	1,1,einbroch.gat,150,28
+ein_fild09.gat,71,352,0	warp	EinF09A_einbech	1,1,einbech.gat,62,32
+ein_in01.gat,288,25,0	warp	lab_labGate	1,1,einbroch.gat,54,52
+ein_in01.gat,13,213,0	warp	factoryA_factoryGateA	1,1,einbroch.gat,129,79
+ein_in01.gat,81,198,0	warp	factoryB_factoryGateB	1,1,einbroch.gat,179,70
+ein_in01.gat,14,14,0	warp	BSguild_BSguildGate	1,1,einbroch.gat,255,110
+ein_in01.gat,39,85,0	warp	BSgudidStore_BSguildSGate	1,1,ein_in01.gat,36,36
+ein_in01.gat,195,224,0	warp	hotel_hotelGate	1,1,einbroch.gat,254,199
+ein_in01.gat,271,232,0	warp	hotelF2A_hotelF2GateA	1,1,ein_in01.gat,208,232
+ein_in01.gat,271,218,0	warp	hotelF2B_hotelF2GateB	1,1,ein_in01.gat,208,216
+ein_in01.gat,180,277,0	warp	hotelF3_hotelF3Gate	1,1,ein_in01.gat,280,224
+ein_in01.gat,231,273,0	warp	roomA_roomAGate	1,1,ein_in01.gat,264,243
+ein_in01.gat,273,273,0	warp	roomB_roomBGate	1,1,ein_in01.gat,274,243
+ein_in01.gat,232,176,0	warp	roomC_roomCGate	1,1,ein_in01.gat,264,206
+ein_in01.gat,274,176,0	warp	roomD_roomDGate	1,1,ein_in01.gat,274,206
+ein_in01.gat,103,95,0	warp	house2A_house2GateA	1,1,einbroch.gat,275,233
+ein_in01.gat,121,77,0	warp	house2B_house2GateB	1,1,einbroch.gat,290,219
+ein_in01.gat,100,142,0	warp	house2F2_house2F2Gate	1,1,ein_in01.gat,123,85
+ein_in01.gat,11,147,0	warp	house1_house1GateA	1,1,einbroch.gat,126,229
+ein_in01.gat,187,99,0	warp	EinHouse03A_house3GateA	1,1,einbech.gat,204,135
+ein_in01.gat,205,83,0	warp	EinHouse03B_house3GateB	1,1,einbech.gat,214,118
+ein_in01.gat,108,13,0	warp	weapon_weaponGate	1,1,einbroch.gat,216,211
+airport.gat,143,14,0	warp	ariport_airportGate	1,1,einbroch.gat,64,204
+airport.gat,19,18,0	warp	2FA_2FGateA	1,1,airport.gat,122,16
+airport.gat,47,18,0	warp	2FB_2FGateB	1,1,airport.gat,163,16
+einbroch.gat,233,312,0	warp	tunnelA_2_tunnelA_1	1,1,einbroch.gat,214,260
+einbroch.gat,269,312,0	warp	tunnelB_2_tunnelB_1	1,1,einbroch.gat,250,260
+ein_in01.gat,265,104,0	warp	barA_barAGate	1,1,einbech.gat,141,112
+ein_in01.gat,288,89,0	warp	barB_barBGate	1,1,einbech.gat,157,106
+ein_in01.gat,190,38,0	warp	tool_toolGate	1,1,einbech.gat,177,133
+ein_in01.gat,145,153,0	warp	swordGuild_swordGGate	1,1,einbech.gat,253,109
+einbroch.gat,150,25,0	warp	einbroch_EinF08A	1,1,ein_fild08.gat,164,377
+einbech.gat,62,29,0	warp	einbech_EinF09A	1,1,ein_fild09.gat,74,350
+einbroch.gat,132,79,0	warp	factoryGateA_factoryA	1,1,ein_in01.gat,17,213
+einbroch.gat,179,73,0	warp	factoryGateB_factoryB	1,1,ein_in01.gat,81,203
+einbroch.gat,255,107,0	warp	BSguildGate_BSguild	1,1,ein_in01.gat,14,17
+ein_in01.gat,39,36,0	warp	BSguildSGate_BSgudidStore	1,1,ein_in01.gat,35,83
+einbroch.gat,257,199,0	warp	hotelGate_hotel	1,1,ein_in01.gat,198,224
+ein_in01.gat,211,232,0	warp	hotelF2GateA_hotelF2A	1,1,ein_in01.gat,274,232
+ein_in01.gat,211,216,0	warp	hotelF2GateB_hotelF2B	1,1,ein_in01.gat,274,218
+ein_in01.gat,284,224,0	warp	hotelF3Gate_hotelF3	1,1,ein_in01.gat,177,277
+ein_in01.gat,264,246,0	warp	roomAGate_roomA	1,1,ein_in01.gat,231,276
+ein_in01.gat,274,246,0	warp	roomBGate_roomB	1,1,ein_in01.gat,273,276
+ein_in01.gat,264,203,0	warp	roomCGate_roomC	1,1,ein_in01.gat,232,173
+ein_in01.gat,274,203,0	warp	roomDGate_roomD	1,1,ein_in01.gat,274,173
+einbroch.gat,278,233,0	warp	house2GateA_house2A	1,1,ein_in01.gat,107,95
+einbroch.gat,290,222,0	warp	house2GateB_house2B	1,1,ein_in01.gat,121,80
+ein_in01.gat,126,88,0	warp	house2F2Gate_house2F2	1,1,ein_in01.gat,100,139
+einbroch.gat,129,229,0	warp	house1GateA_house1	1,1,ein_in01.gat,14,147
+einbech.gat,207,135,0	warp	house3GateA_EinHouse03A	1,1,ein_in01.gat,190,99
+einbech.gat,214,121,0	warp	house3GateB_EinHouse03B	1,1,ein_in01.gat,205,86
+einbroch.gat,216,214,0	warp	weaponGate_weapon	1,1,ein_in01.gat,108,17
+einbroch.gat,64,207,0	warp	airportGate_ariport	1,1,airport.gat,143,17
+airport.gat,124,13,0	warp	2FGateA_2FA	1,1,airport.gat,19,21
+airport.gat,161,13,0	warp	2FGateB_2FB	1,1,airport.gat,47,21
+einbroch.gat,214,263,0	warp	tunnelA_1_tunnelA_2	1,1,einbroch.gat,233,315
+einbroch.gat,250,263,0	warp	tunnelB_1_tunnelB_2	1,1,einbroch.gat,269,315
+einbech.gat,145,112,0	warp	barAGate_barA	1,1,ein_in01.gat,268,104
+einbech.gat,154,106,0	warp	barBGate_barB	1,1,ein_in01.gat,285,89
+einbech.gat,177,136,0	warp	toolGate_tool	1,1,ein_in01.gat,190,35
+einbech.gat,256,109,0	warp	swordGGate_swordGuild	1,1,ein_in01.gat,148,153
 
 
 //--------------------------------------------------------------
-// Jawaii Town Warp Portals
+// Geffen Town Warp Portals - [Tsuyuki]
 //--------------------------------------------------------------
 
-jawaii_in.gat,90,78,0	warp	jawaiiwarp001	1,1,jawaii.gat,115,172
-jawaii_in.gat,113,61,0	warp	jawaiiwarp002	1,1,jawaii.gat,138,202
-jawaii_in.gat,133,107,0	warp	jawaiiwarp003	1,1,jawaii.gat,111,199
-jawaii_in.gat,88,117,0	warp	jawaiiwarp004	1,1,jawaii.gat,109,186
-jawaii.gat,192,215,0	warp	jawaiiwarp005	1,1,jawaii_in.gat,28,94
-jawaii_in.gat,27,91,4	script	jawaiiwarp006	45,1,1,{
-	if (!PartnerId) {
-		warp "jawaii_in.gat",27,94;
-		end;
-	} else {
-		warp "jawaii.gat",192,218;
-		end;
-	}
+gef_fild00.gat,40,199,0	warp	Western Field-gef	2,7,geffen.gat,213,119
+geffen.gat,217,119,0	warp	gef-Western Field	2,4,gef_fild00.gat,46,199
+geffen_in.gat,28,156,0	warp	Armoryo	3,1,geffen.gat,101,138
+geffen.gat,98,141,0	warp	Armoryi	2,2,geffen_in.gat,28,160
+geffen_in.gat,28,106,0	warp	Pubo	3,1,geffen.gat,136,136
+geffen.gat,138,138,0	warp	Pubi	1,1,geffen_in.gat,28,110
+geffen_in.gat,70,132,0	warp	Kit Shopo	3,1,geffen.gat,46,88
+geffen.gat,43,85,0	warp	Kit Shopi	2,2,geffen_in.gat,70,138
+geffen_in.gat,70,149,0	warp	Kit ShopA	3,2,geffen_in.gat,70,161
+geffen_in.gat,70,158,0	warp	Kit ShopA'	3,2,geffen_in.gat,70,146
+geffen_in.gat,163,94,0	warp	Mage Academyo	4,2,geffen.gat,65,176
+geffen.gat,61,180,0	warp	Mage Academyi	3,3,geffen_in.gat,162,97
+geffen_in.gat,70,48,0	warp	PubInno	3,2,geffen.gat,168,170
+geffen.gat,172,174,0	warp	PubInni	2,2,geffen_in.gat,70,52
+geffen_in.gat,52,65,0	warp	PubInn A	2,3,geffen_in.gat,38,67
+geffen_in.gat,41,67,0	warp	PubInn A'	2,3,geffen_in.gat,55,65
+geffen_in.gat,26,60,0	warp	PubInn A-	1,2,geffen_in.gat,26,34
+geffen_in.gat,26,37,0	warp	PubInn A-'	1,1,geffen_in.gat,26,63
+geffen_in.gat,87,65,0	warp	PubInn B	2,3,geffen_in.gat,103,67
+geffen_in.gat,100,67,0	warp	PubInn B'	2,3,geffen_in.gat,84,65
+geffen_in.gat,114,60,0	warp	PubInn B-	1,2,geffen_in.gat,114,34
+geffen_in.gat,114,37,0	warp	PubInn B-'	1,1,geffen_in.gat,114,63
+geffen_in.gat,70,83,0	warp	PubInn C	3,2,geffen_in.gat,72,101
+geffen_in.gat,72,98,0	warp	PubInn C'	3,2,geffen_in.gat,70,80
+geffen_in.gat,79,107,0	warp	PubInn C-	2,1,geffen_in.gat,107,109
+geffen_in.gat,104,109,0	warp	PubInn C-'	2,1,geffen_in.gat,76,107
+geffen_in.gat,106,181,0	warp	Forgeo	2,2,geffen.gat,178,63
+geffen.gat,182,59,0	warp	Forgei	2,2,geffen_in.gat,106,177
+geffen_in.gat,113,163,0	warp	Forge B	2,1,geffen_in.gat,139,169
+geffen_in.gat,136,169,0	warp	Forge B'	2,1,geffen_in.gat,110,163
+geffen_in.gat,138,162,0	warp	Forge C	2,2,geffen_in.gat,138,146
+geffen_in.gat,138,149,0	warp	Forge C'	2,2,geffen_in.gat,138,165
+gef_tower.gat,52,181,0	warp	Towero	4,1,geffen.gat,120,110
+geffen.gat,120,114,0	warp	Toweri	3,1,gef_tower.gat,52,177
+gef_tower.gat,158,174,0	warp	Undergroundo	2,1,gef_tower.gat,52,140
+gef_tower.gat,52,135,0	warp	Undergroundi	2,1,gef_tower.gat,158,169
+gef_tower.gat,158,150,0	warp	UndergroundA	1,2,gef_tower.gat,158,124
+gef_tower.gat,158,128,0	warp	UndergroundA'	2,1,gef_tower.gat,158,153
+gef_tower.gat,158,104,0	warp	UndergroundB	2,2,gef_tower.gat,156,90
+gef_tower.gat,156,93,0	warp	UndergroundB'	2,2,gef_tower.gat,158,107
+gef_tower.gat,38,160,0	warp	1F-L-U	2,1,gef_tower.gat,42,90
+gef_tower.gat,66,156,0	warp	1F-R-U	2,1,gef_tower.gat,42,90
+gef_tower.gat,42,86,0	warp	2F-L-D	1,1,gef_tower.gat,38,157
+gef_tower.gat,62,87,0	warp	2F-R-U	1,1,gef_tower.gat,60,30
+gef_tower.gat,60,34,0	warp	3F-R-D	1,1,gef_tower.gat,60,90
+gef_tower.gat,44,36,0	warp	3F-L-U	1,1,gef_tower.gat,106,162
+gef_tower.gat,106,158,0	warp	4F-L-D	1,1,gef_tower.gat,44,33
+gef_tower.gat,120,158,0	warp	4F-R-U	1,1,gef_tower.gat,118,111
+gef_tower.gat,118,114,0	warp	5F-R-D	1,1,gef_tower.gat,120,161
+gef_tower.gat,106,115,0	warp	5F-L-U	1,1,gef_tower.gat,106,72
+gef_tower.gat,106,69,0	warp	6F-L-D	1,1,gef_tower.gat,106,112
+gef_tower.gat,118,68,0	warp	6F-R-U	1,1,gef_tower.gat,116,28
+gef_tower.gat,116,31,0	warp	7F-R-D	1,1,gef_tower.gat,118,71
+
+
+//--------------------------------------------------------------
+// Hugel Town Warp Portals - [Tsuyuki]
+//--------------------------------------------------------------
+
+hu_fild06.gat,200,372,0	warp	HuF06Up01_HuDoor	1,1,hugel.gat,95,37
+hugel.gat,95,33,0	warp	HuDoor_HuF06Up01	1,1,hu_fild06.gat,200,367
+hugel.gat,153,153,0	warp	HuH01_HuH1I01	1,1,hu_in01.gat,287,231
+hu_in01.gat,263,252,0	warp	HuH1I02_HuH1I03	1,1,hu_in01.gat,360,253
+hugel.gat,153,216,0	warp	HuH02_HuH2I01	1,1,hu_in01.gat,305,379
+hu_in01.gat,314,386,0	warp	HuH2I02_HuH2I03	1,1,hu_in01.gat,312,322
+hugel.gat,92,167,0	warp	HuStore_HuStoI01	1,1,hu_in01.gat,246,363
+hu_in01.gat,248,388,0	warp	HuStoI02_HuStoI03	1,1,hu_in01.gat,250,315
+hu_in01.gat,229,313,0	warp	HuStoI04_HuStoI05	1,1,hu_in01.gat,164,315
+hu_in01.gat,168,307,0	warp	HuStoI06_HuStoI07	1,1,hu_in01.gat,167,376
+hugel.gat,70,157,0	warp	HuWeapon_HuWPI01	1,1,hu_in01.gat,110,373
+hu_in01.gat,108,390,0	warp	HuWPI02_HuWPI03	1,1,hu_in01.gat,107,322
+hugel.gat,129,66,0	warp	HuPub_HuPubI01	1,1,hu_in01.gat,350,107
+hu_in01.gat,381,118,0	warp	HuPubI02_HuPubI03	1,1,hu_in01.gat,379,173
+hugel.gat,104,79,0	warp	HuInn_HuInnI01	1,1,hu_in01.gat,235,107
+hu_in01.gat,268,123,0	warp	HuInnI02_HuInnI03	1,1,hu_in01.gat,265,36
+hugel.gat,91,104,0	warp	HuFes_HuFesI01	1,1,hu_in01.gat,30,304
+hu_in01.gat,34,318,0	warp	HuFesI02_HuFesI03	1,1,hu_in01.gat,34,251
+hugel.gat,155,114,0	warp	HuChurch_HuChuI01	1,1,hu_in01.gat,211,177
+hu_in01.gat,195,192,0	warp	HuChuI02_HuChuI03	1,1,hu_in01.gat,158,168
+hu_in01.gat,195,219,0	warp	HuChuI04_HuChuI05	1,1,hu_in01.gat,159,228
+hugel.gat,206,228,0	warp	HuArc_HuArcI01	1,1,hu_in01.gat,381,368
+hu_in01.gat,388,388,0	warp	HuArcI02_HuArcI03	1,1,hu_in01.gat,385,319
+hu_in01.gat,287,227,0	warp	HuH1I01_HuH01	1,1,hugel.gat,153,149
+hu_in01.gat,365,253,0	warp	HuH1I03_HuH1I02	1,1,hu_in01.gat,268,252
+hu_in01.gat,301,379,0	warp	HuH2I01_HuH02	1,1,hugel.gat,147,216
+hu_in01.gat,307,322,0	warp	HuH2I03_HuH2I02	1,1,hu_in01.gat,310,386
+hu_in01.gat,246,359,0	warp	HuStoI01_HuStore	1,1,hugel.gat,92,163
+hu_in01.gat,244,315,0	warp	HuStoI03_HuStoI02	1,1,hu_in01.gat,243,388
+hu_in01.gat,168,315,0	warp	HuStoI05_HuStoI04	1,1,hu_in01.gat,234,313
+hu_in01.gat,168,379,0	warp	HuStoI07_HuStoI06	1,1,hu_in01.gat,168,311
+hu_in01.gat,110,369,0	warp	HuWPI01_HuWeapon	1,1,hugel.gat,73,155
+hu_in01.gat,114,322,0	warp	HuWPI03_HuWPI02	1,1,hu_in01.gat,113,389
+hu_in01.gat,345,107,0	warp	HuPubI01_HuPub	1,1,hugel.gat,126,64
+hu_in01.gat,379,178,0	warp	HuPubI03_HuPubI02	1,1,hu_in01.gat,376,118
+hu_in01.gat,231,107,0	warp	HuInnI01_HuInn	1,1,hugel.gat,101,77
+hu_in01.gat,265,42,0	warp	HuInnI03_HuInnI02	1,1,hu_in01.gat,262,123
+hu_in01.gat,30,299,0	warp	HuFesI01_HuFes	1,1,hugel.gat,95,103
+hu_in01.gat,34,246,0	warp	HuFesI03_HuFesI02	1,1,hu_in01.gat,34,313
+hu_in01.gat,211,173,0	warp	HuChuI01_HuChurch	1,1,hugel.gat,159,114
+hu_in01.gat,162,168,0	warp	HuChuI03_HuChuI02	1,1,hu_in01.gat,200,192
+hu_in01.gat,162,228,0	warp	HuChuI05_HuChuI04	1,1,hu_in01.gat,199,219
+hu_in01.gat,381,363,0	warp	HuArcI01_HuArc	1,1,hugel.gat,209,224
+hu_in01.gat,380,319,0	warp	HuArcI03_HuArcI02	1,1,hu_in01.gat,382,388
+hugel.gat,80,230,0	warp	hugel_inodeng	1,1,hu_in01.gat,24,364
+hu_in01.gat,24,362,0	warp	hugel_outoedeng	1,1,hugel.gat,83,228
+hu_in01.gat,15,70,0	warp	alex01	1,1,hu_in01.gat,15,25
+hu_in01.gat,15,29,0	warp	alex02	1,1,hu_in01.gat,15,74
+hu_in01.gat,15,151,0	warp	alex04	1,1,hu_in01.gat,15,104
+hu_in01.gat,37,90,0	warp	alex05	1,1,hugel.gat,52,95
+hu_in01.gat,85,70,0	warp	alex09	1,1,hu_in01.gat,85,25
+hu_in01.gat,85,29,0	warp	alex10	1,1,hu_in01.gat,85,74
+hu_in01.gat,85,108,0	warp	alex11	1,1,hu_in01.gat,85,155
+hu_in01.gat,85,151,0	warp	alex12	1,1,hu_in01.gat,85,104
+hu_in01.gat,107,90,0	warp	alex13	1,1,hugel.gat,52,95
+hu_in01.gat,177,90,0	warp	alex14	1,1,hugel.gat,52,95
+
+
+//--------------------------------------------------------------
+// Izlude Town Warp Portals - [Tsuyuki]
+//--------------------------------------------------------------
+
+prt_fild08.gat,371,212,0	warp	Field-Iz	3,3,izlude.gat,35,78
+izlude.gat,30,78,0	warp	Iz-Field	3,3,prt_fild08.gat,367,212
+izlude.gat,148,148,0	warp	Kit Shopi	2,2,izlude_in.gat,116,49
+izlude_in.gat,116,46,0	warp	Kit Shopo	3,2,izlude.gat,145,145
+izlude.gat,109,151,0	warp	Armoryi	3,3,izlude_in.gat,65,87
+izlude_in.gat,65,84,0	warp	Armoryo	5,2,izlude.gat,113,147
+izlude.gat,52,140,0	warp	Swordman Associationi	2,2,izlude_in.gat,74,161
+izlude_in.gat,74,158,0	warp	Swordman Associationo	3,2,izlude.gat,52,136
+izlude_in.gat,43,169,0	warp	Swordman AssociationL'-L	2,3,izlude_in.gat,63,169
+izlude_in.gat,87,169,0	warp	Swordman AssociationR-R'	2,3,izlude_in.gat,111,169
+izlude_in.gat,108,169,0	warp	Swordman AssociationR'-R	2,3,izlude_in.gat,84,169
+izlude.gat,216,129,0	warp	Swordman Associationi	3,2,izlude_in.gat,151,127
+izlude_in.gat,148,127,0	warp	Swordman Associationo	2,5,izlude.gat,212,129
+izlude_in.gat,172,139,0	warp	Swordman AssociationL-L'	3,2,izlude_in.gat,172,161
+izlude_in.gat,172,158,0	warp	Swordman AssociationL'-L	3,2,izlude_in.gat,172,136
+izlude_in.gat,172,116,0	warp	Swordman AssociationR-R'	3,2,izlude_in.gat,172,94
+izlude_in.gat,171,97,0	warp	Swordman AssociationR'-R	3,2,izlude_in.gat,172,119
+izlude_in.gat,63,165,0	script	sword_out	139,1,1,{
+OnTouch:
+	savepoint "izlude_in.gat",68,165;
+	warp "izlude_in.gat",68,165;
+	end;
 }
 
 
 //--------------------------------------------------------------
-// Juno Town Warp Portals
+// Jawaii Town Warp Portals - [Tsuyuki]
 //--------------------------------------------------------------
 
-yuno.gat,158,14,0	warp	yun-yunfild	10,1,yuno_fild04.gat,232,286
-yuno.gat,117,135,0	warp	yun01	1,1,yuno_in01.gat,116,37
-yuno_in01.gat,116,40,0	warp	yun02	1,1,yuno.gat,120,138
-yuno.gat,48,105,0	warp	yun03	1,1,yuno_in01.gat,37,176
-yuno_in01.gat,40,176,0	warp	yun04	1,1,yuno.gat,51,105
-yuno_in01.gat,31,182,0	warp	yun05	1,1,yuno_in01.gat,86,164
-yuno_in01.gat,81,164,0	warp	yun06	1,1,yuno_in01.gat,28,182
-yuno.gat,48,151,0	warp	yun07	1,1,yuno_in01.gat,30,100
-yuno_in01.gat,34,100,0	warp	yun08	1,1,yuno.gat,51,151
-yuno.gat,93,180,0	warp	yun09	1,1,yuno_in04.gat,33,127
-yuno_in04.gat,33,130,0	warp	yun10	1,1,yuno.gat,95,184
-yuno.gat,196,139,0	warp	yun11	1,1,yuno_in01.gat,32,34
-yuno_in01.gat,32,37,0	warp	yun12	1,1,yuno.gat,195,141
-yuno.gat,264,87,0	warp	yun13	1,1,yuno_in01.gat,168,101
-yuno_in01.gat,168,104,0	warp	yun14	1,1,yuno.gat,264,90
-yuno.gat,342,203,0	warp	yun15	1,1,yuno_in04.gat,32,58
-yuno_in04.gat,28,58,0	warp	yun16	1,1,yuno.gat,338,203
-yuno_in04.gat,52,58,0	warp	yun17	1,1,yuno_in04.gat,97,58
-yuno_in04.gat,95,58,0	warp	yun18	1,1,yuno_in04.gat,50,58
-yuno_in04.gat,103,64,0	warp	yun19	1,1,yuno_in04.gat,103,95
-yuno_in04.gat,103,93,0	warp	yun20	1,1,yuno_in04.gat,103,62
-yuno_in04.gat,115,64,0	warp	yun21	1,1,yuno_in04.gat,115,95
-yuno_in04.gat,115,93,0	warp	yun22	1,1,yuno_in04.gat,115,62
-yuno_in04.gat,115,51,0	warp	yun23	1,1,yuno_in04.gat,115,20
-yuno_in04.gat,115,22,0	warp	yun24	1,1,yuno_in04.gat,115,53
-yuno_in04.gat,103,51,0	warp	yun25	1,1,yuno_in04.gat,103,20
-yuno_in04.gat,103,22,0	warp	yun26	1,1,yuno_in04.gat,103,53
-yuno_in04.gat,122,57,0	warp	yun27	1,1,yuno_in04.gat,164,110
-yuno_in04.gat,161,110,0	warp	yun28	1,1,yuno_in04.gat,120,57
-yuno.gat,323,284,0	warp	yun29	1,1,yuno_in03.gat,167,22
-yuno_in03.gat,167,19,0	warp	yun30	1,1,yuno.gat,323,280
-yuno_in03.gat,167,72,0	warp	yun31	1,1,yuno_in03.gat,179,113
-yuno_in03.gat,179,109,0	warp	yun32	1,1,yuno_in03.gat,167,69
-yuno_in03.gat,186,119,0	warp	yun33	1,1,yuno_in03.gat,162,174
-yuno_in03.gat,160,174,0	warp	yun34	1,1,yuno_in03.gat,183,119
-yuno_in03.gat,186,131,0	warp	yun35	1,1,yuno_in03.gat,163,186
-yuno_in03.gat,160,186,0	warp	yun36	1,1,yuno_in03.gat,183,131
-yuno_in03.gat,172,118,0	warp	yun37	1,1,yuno_in03.gat,120,178
-yuno_in03.gat,124,178,0	warp	yun38	1,1,yuno_in03.gat,176,118
-yuno_in03.gat,111,192,0	warp	yun39	1,1,yuno_in03.gat,162,132
-yuno_in03.gat,162,129,0	warp	yun40	1,1,yuno_in03.gat,111,189
-yuno_in03.gat,153,134,0	warp	yun41	1,1,yuno_in03.gat,62,186
-yuno_in03.gat,66,186,0	warp	yun42	1,1,yuno_in03.gat,155,134
-yuno.gat,278,293,0	warp	yun43	1,1,yuno_in03.gat,25,15
-yuno_in03.gat,25,11,0	warp	yun44	1,1,yuno.gat,278,290
-yuno_in03.gat,32,89,0	warp	yun45	1,1,yuno_in03.gat,25,53
-yuno_in03.gat,25,56,0	warp	yun46	1,1,yuno_in03.gat,32,92
-yuno.gat,284,366,0	warp	yun47	1,1,yuno_in03.gat,224,23
-yuno_in03.gat,224,19,0	warp	yun48	1,1,yuno.gat,284,363
-yuno_in03.gat,219,50,0	warp	yun49	1,1,yuno_in03.gat,104,118
-yuno_in03.gat,104,115,0	warp	yun50	1,1,yuno_in03.gat,219,47
-yuno_in03.gat,244,52,0	warp	yun51	1,1,yuno_in03.gat,235,94
-yuno_in03.gat,235,91,0	warp	yun52	1,1,yuno_in03.gat,244,49
-yuno_in03.gat,231,61,0	warp	yun53	1,1,yuno_in03.gat,239,144
-yuno_in03.gat,239,141,0	warp	yun54	1,1,yuno_in03.gat,231,57
-yuno_in03.gat,223,167,0	warp	yun55	1,1,yuno_in03.gat,96,54
-yuno_in03.gat,96,58,0	warp	yun56	1,1,yuno_in03.gat,223,170
-yuno.gat,87,321,0	warp	yun57	1,1,yuno_in02.gat,168,61
-yuno_in02.gat,172,61,0	warp	yun58	1,1,yuno.gat,90,321
-yuno_in02.gat,82,14,0	warp	yun59	1,1,yuno_in05.gat,192,194
-yuno_in05.gat,196,194,0	warp	yun60	1,1,yuno_in02.gat,85,14
-yuno_in05.gat,153,142,0	warp	yun61	1,1,yuno_in05.gat,145,83
-yuno_in05.gat,148,83,0	warp	yun62	1,1,yuno_in05.gat,156,142
-yuno_in05.gat,137,71,0	warp	yun63	1,1,yuno_in05.gat,15,185
-yuno_in05.gat,16,188,0	warp	yun64	1,1,yuno_in05.gat,137,74
-yuno_in05.gat,181,91,0	warp	yun65	1,1,yuno_in05.gat,177,49
-yuno_in05.gat,177,52,0	warp	yun66	1,1,yuno_in05.gat,181,94
-yuno_in05.gat,177,9,0	warp	yun67	1,1,yuno_in05.gat,177,49
-yuno_in05.gat,165,103,0	warp	yun68	1,1,yuno_in05.gat,145,83
-yuno_in05.gat,125,83,0	warp	yun69	1,1,yuno_in05.gat,193,102
-yuno_in05.gat,181,116,0	warp	yun70	1,1,yuno_in05.gat,177,12
-yuno_in05.gat,47,185,0	warp	yun71	1,1,yuno_in05.gat,181,94
-yuno_in05.gat,31,167,0	warp	yun72	1,1,yuno_in05.gat,50,85
-yuno_in05.gat,50,87,0	warp	yun73	1,1,yuno_in02.gat,85,14
-yuno_in01.gat,88,36,0	warp	yun74	1,1,yuno_in01.gat,173,34
-yuno_in01.gat,176,34,0	warp	yun75	1,1,yuno_in01.gat,91,36
-yuno_in05.gat,197,102,0	warp	yun76	1,1,yuno_in05.gat,168,103
-yuno_pre.gat,52,22,0	warp	yungvn01	1,1,yuno_pre.gat,37,23
-yuno_pre.gat,87,22,0	warp	yungvn02	1,1,yuno_pre.gat,102,22
-yuno_pre.gat,41,23,0	warp	yungvn03	1,1,yuno_pre.gat,56,22
-yuno_pre.gat,18,35,0	warp	yungvn04	1,1,yuno_pre.gat,18,53
-yuno_pre.gat,98,22,0	warp	yungvn05	1,1,yuno_pre.gat,83,22
-yuno_pre.gat,18,48,0	warp	yungvn06	1,1,yuno_pre.gat,18,31
-yuno_pre.gat,18,77,0	warp	yungvn07	1,1,yuno_pre.gat,18,96
-yuno_pre.gat,113,48,0	warp	yungvn08	1,1,yuno_pre.gat,84,22
-yuno_pre.gat,81,68,0	warp	yungvn09	1,1,yuno_pre.gat,95,68
-yuno_pre.gat,18,92,0	warp	yungvn10	1,1,yuno_pre.gat,18,73
-yuno.gat,157,322,0	warp	yungvn11	1,1,yuno_pre.gat,69,13
-yuno_pre.gat,69,10,0	warp	yungvn12	1,1,yuno.gat,157,317
+jawaii.gat,192,215,0	warp	cabaretGate_cabaret	1,1,jawaii_in.gat,27,94
+jawaii_in.gat,90,78,0	warp	room101_room101Gate	1,1,jawaii.gat,117,175
+jawaii_in.gat,89,117,0	warp	room102_room102Gate	1,1,jawaii.gat,111,186
+jawaii_in.gat,132,107,0	warp	room103_room103Gate	1,1,jawaii.gat,114,196
+jawaii_in.gat,113,61,0	warp	room104_room104Gate	1,1,jawaii.gat,136,203
+jawaii_in.gat,27,91,0	script	cabaret_cabaretGate	45,1,1,{
+OnTouch:
+	if (PartnerID) {
+		warp "jawaii.gat",192,218;
+	} else {
+		warp "jawaii_in.gat",27,94;
+	}
+	end;
+}
 
 
 //--------------------------------------------------------------
-// Kunlun Town Warp Portals
+// Juno Town Warp Portals - [Tsuyuki]
 //--------------------------------------------------------------
 
-gonryun.gat,195,93,0	warp	gon03	1,1,gon_in.gat,95,23
-gonryun.gat,109,131,0	warp	gon15	1,1,gon_in.gat,44,24
-gonryun.gat,215,114,0	warp	gon05	1,1,gon_in.gat,152,24
-gonryun.gat,107,184,0	warp	gon13	1,1,gon_in.gat,72,70
-gonryun.gat,221,162,0	warp	gon11	1,1,gon_in.gat,112,98
-gonryun.gat,159,201,0	warp	gon19	1,1,gon_dun01.gat,153,48
-gon_in.gat,95,26,0	warp	gon04	1,1,gonryun.gat,195,96
-gon_in.gat,149,24,0	warp	gon06	1,1,gonryun.gat,212,114
-gon_in.gat,184,11,0	warp	gon07	1,1,gon_in.gat,189,85
-gon_in.gat,186,85,0	warp	gon08	1,1,gon_in.gat,181,11
-gon_in.gat,186,107,0	warp	gon09	1,1,gon_in.gat,181,36
-gon_in.gat,184,36,0	warp	gon10	1,1,gon_in.gat,189,107
-gon_in.gat,109,98,0	warp	gon12	1,1,gonryun.gat,218,162
-gon_in.gat,72,67,0	warp	gon14	1,1,gonryun.gat,107,181
-gon_in.gat,47,24,0	warp	gon16	1,1,gonryun.gat,112,131
-gon_in.gat,42,35,0	warp	gon17	1,1,gon_in.gat,34,97
-gon_in.gat,31,97,0	warp	gon18	1,1,gon_in.gat,39,35
+yuno_fild04.gat,231,288,0	warp	yuno04a_yunoGate	1,1,yuno.gat,158,16
+yuno.gat,158,13,0	warp	yunoGate_yuno04b	1,1,yuno_fild04.gat,231,284
+yuno.gat,48,105,0	warp	wineGate_wine	1,1,yuno_in01.gat,37,176
+yuno.gat,48,151,0	warp	houseLeftGate_houseLeft	1,1,yuno_in01.gat,30,100
+yuno.gat,245,147,0	warp	houseUpGate_houseUp	1,1,yuno_in01.gat,101,88
+yuno.gat,264,87,0	warp	bookstoreGate_bookstore	1,1,yuno_in01.gat,168,101
+yuno.gat,196,138,0	warp	toolGate_tool	1,1,yuno_in01.gat,32,33
+yuno.gat,117,135,0	warp	weaponGate_weapon	1,1,yuno_in01.gat,116,37
+yuno.gat,87,321,0	warp	castleGate_castle	1,1,yuno_in02.gat,168,61
+yuno.gat,278,293,0	warp	museumGate_museum	1,1,yuno_in03.gat,25,15
+yuno.gat,323,284,0	warp	academyGate_academy	1,1,yuno_in03.gat,167,22
+yuno.gat,93,180,0	warp	officeGate_villageOffice	1,1,yuno_in04.gat,33,127
+yuno.gat,342,203,0	warp	libGate_library	1,1,yuno_in04.gat,32,58
+yuno.gat,195,87,0	warp	houseGate_house	1,1,yuno_in04.gat,189,28
+yuno.gat,284,366,0	warp	labGate_lab9	1,1,yuno_in03.gat,224,23
+yuno_in01.gat,40,176,0	warp	wine_wineGate	1,1,yuno.gat,5,1 105
+yuno_in01.gat,32,182,0	warp	wine_inn	1,1,yuno_in01.gat,86,164
+yuno_in01.gat,82,164,0	warp	inn_wine	1,1,yuno_in01.gat,28,182
+yuno_in01.gat,34,100,0	warp	houseLeft_houseLeftGate	1,1,yuno.gat,5,1 151
+yuno_in01.gat,101,85,0	warp	houseUp_houseUpGate	1,1,yuno.gat,245,144
+yuno_in01.gat,168,104,0	warp	bookstore_bookstoreGate	1,1,yuno.gat,264,90
+yuno_in01.gat,32,36,0	warp	tool_toolGate	1,1,yuno.gat,193,142
+yuno_in01.gat,116,40,0	warp	weapon_weaponGate	1,1,yuno.gat,120,138
+yuno_in01.gat,88,36,0	warp	weapon_refinery	1,1,yuno_in01.gat,173,34
+yuno_in01.gat,176,34,0	warp	refinery_weapon	1,1,yuno_in01.gat,91,36
+yuno_in02.gat,172,61,0	warp	castle_castleGate	1,1,yuno.gat,90,318
+yuno_in02.gat,82,14,0	warp	engineGate_eMaze	1,1,yuno_in05.gat,192,194
+yuno_in03.gat,25,11,0	warp	museum_museumGate	1,1,yuno.gat,278,290
+yuno_in03.gat,25,56,0	warp	museum_museumB	1,1,yuno_in03.gat,32,92
+yuno_in03.gat,32,89,0	warp	museumB_museum	1,1,yuno_in03.gat,25,53
+yuno_in03.gat,167,19,0	warp	academy_academyGate	1,1,yuno.gat,323,280
+yuno_in03.gat,167,72,0	warp	ac1-1_ac2-3	1,1,yuno_in03.gat,179,113
+yuno_in03.gat,186,131,0	warp	ac2-1_ac3-1	1,1,yuno_in03.gat,163,187
+yuno_in03.gat,186,119,0	warp	ac2-2_ac3-2	1,1,yuno_in03.gat,163,174
+yuno_in03.gat,179,109,0	warp	ac2-3_ac1-1	1,1,yuno_in03.gat,167,68
+yuno_in03.gat,173,118,0	warp	ac2-4_ac4-2	1,1,yuno_in03.gat,120,178
+yuno_in03.gat,162,129,0	warp	ac2-5_ac4-1	1,1,yuno_in03.gat,11,1 188
+yuno_in03.gat,153,134,0	warp	ac2-6_ac5-1	1,1,yuno_in03.gat,62,186
+yuno_in03.gat,16,1,0	warp	ac3-1_ac2-1	187,1,yuno_in03.gat,183,131
+yuno_in03.gat,16,1,0	warp	ac3-2_ac2-2	174,1,yuno_in03.gat,183,119
+yuno_in03.gat,11,1,0	warp	ac4-1_ac2-5	192,1,yuno_in03.gat,162,132
+yuno_in03.gat,124,178,0	warp	ac4-2_ac2-4	1,1,yuno_in03.gat,176,118
+yuno_in03.gat,66,186,0	warp	ac5-1_ac2-6	1,1,yuno_in03.gat,156,134
+yuno_in03.gat,104,115,0	warp	lab1_lab7	1,1,yuno_in03.gat,219,48
+yuno_in03.gat,223,167,0	warp	lab2_lab4	1,1,yuno_in03.gat,96,59
+yuno_in03.gat,239,141,0	warp	lab3_lab6	1,1,yuno_in03.gat,231,59
+yuno_in03.gat,96,62,0	warp	lab4_lab2	1,1,yuno_in03.gat,223,170
+yuno_in03.gat,235,91,0	warp	lab5_lab8	1,1,yuno_in03.gat,244,50
+yuno_in03.gat,231,62,0	warp	lab6_lab3	1,1,yuno_in03.gat,239,144
+yuno_in03.gat,219,50,0	warp	lab7_lab1	1,1,yuno_in03.gat,104,118
+yuno_in03.gat,244,52,0	warp	lab8_lab5	1,1,yuno_in03.gat,235,94
+yuno_in03.gat,224,19,0	warp	lab9_labGate	1,1,yuno.gat,282,363
+yuno_in04.gat,33,130,0	warp	villageOffice_officeGate	1,1,yuno.gat,95,184
+yuno_in04.gat,29,58,0	warp	library_libGate	1,1,yuno.gat,338,203
+yuno_in04.gat,52,58,0	warp	lib1-1a_lib1-1b	1,1,yuno_in04.gat,97,58
+yuno_in04.gat,95,58,0	warp	lib1-1b_lib1-1a	1,1,yuno_in04.gat,50,58
+yuno_in04.gat,103,93,0	warp	lib1-2a_lib1-2b	1,1,yuno_in04.gat,103,62
+yuno_in04.gat,103,64,0	warp	lib1-2b_lia1-2a	1,1,yuno_in04.gat,103,95
+yuno_in04.gat,115,93,0	warp	lib1-3a_lib1-3b	1,1,yuno_in04.gat,115,62
+yuno_in04.gat,115,64,0	warp	lib1-3b_lia1-3a	1,1,yuno_in04.gat,115,95
+yuno_in04.gat,103,51,0	warp	lib1-4a_lib1-4b	1,1,yuno_in04.gat,103,20
+yuno_in04.gat,103,22,0	warp	lib1-4b_lia1-4a	1,1,yuno_in04.gat,103,53
+yuno_in04.gat,115,51,0	warp	lib1-5a_lib1-5b	1,1,yuno_in04.gat,115,20
+yuno_in04.gat,115,22,0	warp	lib1-5b_lia1-5a	1,1,yuno_in04.gat,115,53
+yuno_in04.gat,122,57,0	warp	lib1-6a_lib1-6b	1,1,yuno_in04.gat,164,110
+yuno_in04.gat,16,1,0	warp	lib1-6b_lia1-6a	110,1,yuno_in04.gat,120,57
+yuno_in04.gat,192,28,0	warp	house_houseGate	1,1,yuno.gat,198,87
+yuno_in05.gat,196,194,0	warp	eMaze1_engineGate	1,1,yuno_in02.gat,85,14
+yuno_in05.gat,153,142,0	script	random_eMaze2	45,1,1,{
+OnTouch:
+	set '@ranc2_3,rand(1,2);
+	if ('@ranc2_3 == 1) {
+		warp "yuno_in05.gat",192,103;
+	} else if ('@ranc2_3 == 2) {
+		warp "yuno_in05.gat",145,83;
+	}
+	end;
+}
+
+yuno_in05.gat,16,188,0	script	random_eMaze3	45,1,1,{
+OnTouch:
+	set '@ranc2_3,rand(1,2);
+	if ('@ranc2_3 == 1) {
+		warp "yuno_in05.gat",181,94;
+	} else if ('@ranc2_3 == 2) {
+		warp "yuno_in05.gat",177,12;
+	}
+	end;
+}
+
+yuno_in05.gat,47,185,0	script	random_eMaze4	45,1,1,{
+OnTouch:
+	set '@ranc2_3,rand(1,2);
+	if ('@ranc2_3 == 1) {
+		warp "yuno_in05.gat",181,94;
+	} else if ('@ranc2_3 == 2) {
+		warp "yuno_in05.gat",177,12;
+	}
+	end;
+}
+
+yuno_in05.gat,40,178,0	script	random_eMaze5	45,1,1,{
+OnTouch:
+	set '@ranc2_3,rand(1,2);
+	if ('@ranc2_3 == 1) {
+		warp "yuno_in05.gat",181,94;
+	} else if ('@ranc2_3 == 2) {
+		warp "yuno_in05.gat",177,12;
+	}
+	end;
+}
+yuno_in05.gat,3,1,0	warp	eMaze6_engineRoom	167,1,yuno_in05.gat,50,85
+yuno_in05.gat,50,88,0	warp	engineRoom_engineGate	1,1,yuno_in02.gat,85,14
+yuno_in05.gat,18,1,0	script	random_up1	45,116,1,{
+OnTouch:
+	set '@ranc2_3,rand(1,2);
+	if ('@ranc2_3 == 1) {
+		warp "yuno_in05.gat",181,94;
+	} else if ('@ranc2_3 == 2) {
+		warp "yuno_in05.gat",177,12;
+	}
+	end;
+}
+yuno_in05.gat,177,52,0	script	random_up3	45,1,1,{
+OnTouch:
+	set '@ranc2_3,rand(1,2);
+	if ('@ranc2_3 == 1) {
+		warp "yuno_in05.gat",181,94;
+	} else if ('@ranc2_3 == 2) {
+		warp "yuno_in05.gat",177,12;
+	}
+	end;
+}
+
+yuno_in05.gat,165,103,0	script	random_left1	45,1,1,{
+OnTouch:
+	set '@ranc2_3,rand(1,2);
+	if ('@ranc2_3 == 1) {
+		warp "yuno_in05.gat",192,103;
+	} else if ('@ranc2_3 == 2) {
+		warp "yuno_in05.gat",145,83;
+	}
+	end;
+}
+
+yuno_in05.gat,125,83,0	script	random_left2	45,1,1,{
+OnTouch:
+	set '@ranc2_3,rand(1,2);
+	if ('@ranc2_3 == 1) {
+		warp "yuno_in05.gat",192,103;
+	} else if ('@ranc2_3 == 2) {
+		warp "yuno_in05.gat",145,83;
+	}
+	end;
+}
+
+yuno_in05.gat,196,103,0	script	random_right1	45,1,1,{
+OnTouch:
+	set '@ranc2_3,rand(1,3);
+	if ('@ranc2_3 == 1) {
+		warp "yuno_in05.gat",168,103;
+	} else if ('@ranc2_3 == 2) {
+		warp "yuno_in05.gat",156,142;
+	} else if ('@ranc2_3 == 3) {
+		warp "yuno_in05.gat",128,83;
+	}
+	end;
+}
+
+yuno_in05.gat,148,83,0	script	random_right2	45,1,1,{
+OnTouch:
+	set '@ranc2_3,rand(1,3);
+	if ('@ranc2_3 == 1) {
+		warp "yuno_in05.gat",168,103;
+	} else if ('@ranc2_3 == 2) {
+		warp "yuno_in05.gat",156,142;
+	} else if ('@ranc2_3 == 3) {
+		warp "yuno_in05.gat",128,83;
+	}
+	end;
+}
+
+yuno_in05.gat,181,91,0	script	random_down1	45,1,1,{
+OnTouch:
+	set '@ranc2_3,rand(1,2);
+	if ('@ranc2_3 == 1) {
+		warp "yuno_in05.gat",181,113;
+	} else if ('@ranc2_3 == 2) {
+		warp "yuno_in05.gat",177,49;
+	}
+	end;
+}
+
+yuno_in05.gat,137,71,0	script	random_down2	45,1,1,{
+OnTouch:
+	set '@ranc2_3,rand(1,4);
+	if ('@ranc2_3 == 1) {
+		warp "yuno_in05.gat",181,113;
+	} else if ('@ranc2_3 == 2) {
+		warp "yuno_in05.gat",15,185;
+	} else if ('@ranc2_3 == 3) {
+		warp "yuno_in05.gat",15,185;
+	} else if ('@ranc2_3 == 4) {
+		warp "yuno_in05.gat",177,49;
+	}
+	end;
+}
+
+yuno_in05.gat,177,9,0	script	random_down3	45,1,1,{
+OnTouch:
+	set '@ranc2_3,rand(1,2);
+	if ('@ranc2_3 == 1) {
+		warp "yuno_in05.gat",181,113;
+	} else if ('@ranc2_3 == 2) {
+		warp "yuno_in05.gat",177,49;
+	}
+	end;
+}
+yuno.gat,157,322,0	warp	Governmental Buildings Entrance	1,1,yuno_pre.gat,69,13
+yuno_pre.gat,69,10,0	warp	Governmental Buildings Exit	1,1,yuno.gat,157,317
+yuno_pre.gat,113,48,0	warp	Building Hallway Exit	1,1,yuno_pre.gat,84,22
+yuno_pre.gat,81,68,0	warp	President's Office Exit	1,1,yuno_pre.gat,95,68
 
 
 //--------------------------------------------------------------
-// Lighthalzen Town Warp Portals
+// Kunlun Town Warp Portals - [Tsuyuki]
 //--------------------------------------------------------------
 
-lighthalzen.gat,196,46,0	warp	lhz010	1,1,lhz_in02.gat,282,83
-lhz_in02.gat,282,79,0	warp	lhz010a	1,1,lighthalzen.gat,193,47
-lighthalzen.gat,197,36,0	warp	lhz011	1,1,lhz_in02.gat,284,30
-lhz_in02.gat,288,30,0	warp	lhz011a	1,1,lighthalzen.gat,194,35
-lhz_in02.gat,265,14,0	warp	lhz012	1,1,lhz_in02.gat,269,82
-lhz_in02.gat,274,82,0	warp	lhz012a	1,1,lhz_in02.gat,269,14
-lhz_in02.gat,108,26,0	warp	lhz013	1,1,lighthalzen.gat,98,110
-lighthalzen.gat,92,110,0	warp	lhz013a	1,1,lhz_in02.gat,104,26
-lighthalzen.gat,50,87,0	warp	lhz014	1,1,lhz_in03.gat,45,31
-lhz_in03.gat,50,31,0	warp	lhz014a	1,1,lighthalzen.gat,54,87
-lhz_in03.gat,20,99,0	warp	lhz015	1,1,lhz_in03.gat,17,31
-lhz_in03.gat,13,31,0	warp	lhz015a	1,1,lhz_in03.gat,15,99
-lighthalzen.gat,159,133,0	warp	lhz016	1,1,lhz_in02.gat,232,265
-lhz_in02.gat,232,261,0	warp	lhz016a	1,1,lighthalzen.gat,159,129
-lhz_in02.gat,210,284,0	warp	lhz017	1,1,lhz_in02.gat,241,219
-lhz_in02.gat,236,219,0	warp	lhz017a	1,1,lhz_in02.gat,206,284
-lhz_in02.gat,269,212,0	warp	lhz018	1,1,lhz_in02.gat,250,212
-lhz_in02.gat,254,212,0	warp	lhz018a	1,1,lhz_in02.gat,273,212
-lhz_in02.gat,231,200,0	warp	lhz019	1,1,lhz_in02.gat,212,200
-lhz_in02.gat,216,200,0	warp	lhz019a	1,1,lhz_in02.gat,233,200
-lhz_in02.gat,231,182,0	warp	lhz020	1,1,lhz_in02.gat,212,182
-lhz_in02.gat,216,182,0	warp	lhz020a	1,1,lhz_in02.gat,235,182
-lhz_in02.gat,238,169,0	warp	lhz021	1,1,lhz_in02.gat,238,150
-lhz_in02.gat,238,154,0	warp	lhz021a	1,1,lhz_in02.gat,238,173
-lhz_in02.gat,261,278,0	warp	lhz022	1,1,lhz_in02.gat,246,278
-lhz_in02.gat,250,278,0	warp	lhz022a	1,1,lhz_in02.gat,265,278
-lighthalzen.gat,238,220,0	warp	lhz023	1,1,lhz_in02.gat,28,270
-lhz_in02.gat,27,265,0	warp	lhz023a	1,1,lighthalzen.gat,238,213
-lhz_in02.gat,13,284,0	warp	lhz024	1,1,lhz_in02.gat,89,285
-lhz_in02.gat,95,285,0	warp	lhz024a	1,1,lhz_in02.gat,19,284
-lhz_in02.gat,114,272,0	warp	lhz025	1,1,lhz_in02.gat,153,282
-lhz_in02.gat,149,282,0	warp	lhz025a	1,1,lhz_in02.gat,110,272
-lighthalzen.gat,198,257,0	warp	lhz026	1,1,lhz_in02.gat,39,28
-lhz_in02.gat,44,28,0	warp	lhz026a	1,1,lighthalzen.gat,203,257
-lighthalzen.gat,236,276,0	warp	lhz027	1,1,lhz_in02.gat,133,199
-lhz_in02.gat,129,199,0	warp	lhz027a	1,1,lighthalzen.gat,232,276
-lighthalzen.gat,251,299,0	warp	lhz028	1,1,lhz_in03.gat,97,21
-lhz_in03.gat,93,21,0	warp	lhz028a	1,1,lighthalzen.gat,247,299
-lhz_in03.gat,134,14,0	warp	lhz029	1,1,lhz_in03.gat,125,90
-lhz_in03.gat,120,90,0	warp	lhz029a	1,1,lhz_in03.gat,130,14
-lighthalzen.gat,198,163,0	warp	lhz030	1,1,lhz_in02.gat,21,195
-lhz_in02.gat,21,191,0	warp	lhz030a	1,1,lighthalzen.gat,202,160
-lhz_in02.gat,39,204,0	warp	lhz031	1,1,lhz_in02.gat,41,136
-lhz_in02.gat,36,136,0	warp	lhz031a	1,1,lhz_in02.gat,34,204
-lhz_in02.gat,49,154,0	warp	lhz032	1,1,lhz_in02.gat,98,155
-lhz_in02.gat,103,155,0	warp	lhz032a	1,1,lhz_in02.gat,44,154
-lhz_in02.gat,88,144,0	warp	lhz033	1,1,lhz_in02.gat,89,212
-lhz_in02.gat,94,212,0	warp	lhz033a	1,1,lhz_in02.gat,94,144
-lhz_in02.gat,79,223,0	warp	lhz034	1,1,lhz_in02.gat,17,155
-lhz_in02.gat,13,155,0	warp	lhz034a	1,1,lhz_in02.gat,84,223
-lighthalzen.gat,101,248,0	warp	lhz035	1,1,lhz_in01.gat,111,126
-lhz_in01.gat,111,121,0	warp	lhz035a	1,1,lighthalzen.gat,101,243
-lighthalzen.gat,106,248,0	warp	lhz036	1,1,lhz_in01.gat,116,126
-lhz_in01.gat,116,121,0	warp	lhz036a	1,1,lighthalzen.gat,106,243
-lhz_in01.gat,88,215,0	warp	lhz037	1,1,lhz_in01.gat,106,18
-lhz_in01.gat,106,15,0	warp	lhz037a	1,1,lhz_in01.gat,88,211
-lhz_in01.gat,140,215,0	warp	lhz038	1,1,lhz_in01.gat,158,18
-lhz_in01.gat,158,15,0	warp	lhz038a	1,1,lhz_in01.gat,140,211
-lhz_in01.gat,194,55,0	warp	lhz039	1,1,lhz_in01.gat,188,250
-lhz_in01.gat,188,254,0	warp	lhz039a	1,1,lhz_in01.gat,191,52
-lhz_in01.gat,230,226,0	warp	lhz040	1,1,lhz_in01.gat,257,226
-lhz_in01.gat,251,226,0	warp	lhz040a	1,1,lhz_in01.gat,225,226
-lhz_in01.gat,98,55,0	warp	lhz041	1,1,lhz_in01.gat,76,250
-lhz_in01.gat,76,254,0	warp	lhz041a	1,1,lhz_in01.gat,100,52
-lhz_in01.gat,149,179,0	warp	lhz042	1,1,lhz_in01.gat,15,24
-lhz_in01.gat,11,24,0	warp	lhz042a	1,1,lhz_in01.gat,145,178
-lighthalzen.gat,346,232,0	warp	lhz043	1,1,lhz_in03.gat,188,14
-lhz_in03.gat,188,11,0	warp	lhz043a	1,1,lighthalzen.gat,346,229
-lhz_in03.gat,191,35,0	warp	lhz044	1,1,lhz_in03.gat,190,103
-lhz_in03.gat,190,100,0	warp	lhz044a	1,1,lhz_in03.gat,189,34
-lighthalzen.gat,339,240,0	warp	lhz045	1,1,lhz_in03.gat,180,87
-lhz_in03.gat,180,90,0	warp	lhz045a	1,1,lighthalzen.gat,339,242
-lhz_in01.gat,40,224,0	warp	lhz046	1,1,lhz_in01.gat,19,129
-lhz_in01.gat,15,129,0	warp	lhz046a	1,1,lhz_in01.gat,34,224
-lhz_in01.gat,58,130,0	warp	lhz047	1,1,lhz_in01.gat,193,127
-lhz_in01.gat,191,127,0	warp	lhz047a	1,1,lhz_in01.gat,56,130
-lighthalzen.gat,324,301,0	warp	lhz050	1,1,lhz_in03.gat,239,101
-lhz_in03.gat,237,101,0	warp	lhz050a	1,1,lighthalzen.gat,324,299
-lhz_in01.gat,44,144,0	warp	lhz051	1,1,lhz_in01.gat,277,159
-lhz_in01.gat,277,156,0	warp	lhz051a	1,1,lhz_in01.gat,44,141
-auction_02.gat,43,17,0	warp	auc_light01	1,1,lighthalzen.gat,209,169
+gonryun.gat,221,162,0	warp	house1Gate_house1	1,1,gon_in.gat,112,98
+gonryun.gat,195,93,0	warp	house2Gate_house2	1,1,gon_in.gat,95,23
+gonryun.gat,107,184,0	warp	teaGate_tea	1,1,gon_in.gat,72,70
+gonryun.gat,215,114,0	warp	tavernGate_1f_tavern	1,1,gon_in.gat,152,24
+gonryun.gat,109,131,0	warp	castleGate_castle	1,1,gon_in.gat,44,24
+gonryun.gat,161,8,0	warp	fildGate_fild	1,1,gon_fild01.gat,191,261
+gon_in.gat,109,98,0	warp	house1_house1Gate	1,1,gonryun.gat,218,162
+gon_in.gat,95,26,0	warp	house2_house2Gate	1,1,gonryun.gat,195,96
+gon_in.gat,72,67,0	warp	tea_teaGate	1,1,gonryun.gat,107,181
+gon_in.gat,149,24,0	warp	1f_tavern_tavernGate	1,1,gonryun.gat,212,114
+gon_in.gat,184,36,0	warp	innGateA_2f_innA	1,1,gon_in.gat,189,107
+gon_in.gat,186,107,0	warp	2f_innA_innGateA	1,1,gon_in.gat,181,36
+gon_in.gat,184,11,0	warp	innGateB_2f_innB	1,1,gon_in.gat,189,85
+gon_in.gat,186,85,0	warp	2f_innB_innGateB	1,1,gon_in.gat,181,11
+gon_in.gat,47,24,0	warp	castle_castleGate	1,1,gonryun.gat,112,131
+gon_in.gat,42,35,0	warp	2f_Gate_2f_castle	1,1,gon_in.gat,34,97
+gon_in.gat,31,97,0	warp	2f_castle_2f_Gate	1,1,gon_in.gat,39,35
+gon_fild01.gat,192,265,0	warp	ToFild01_FormGonryun	1,1,gonryun.gat,161,11
 
 
 //--------------------------------------------------------------
-// Louyang Town Warp Portals
+// Lighthalzen Town Warp Portals - [Tsuyuki]
 //--------------------------------------------------------------
 
-louyang.gat,37,270,0	warp	louwarp002	3,3,lou_dun01.gat,218,196
-louyang.gat,218,253,0	warp	louwarp005	3,3,lou_in01.gat,101,122
-louyang.gat,279,168,0	warp	louwarp006	3,3,lou_in02.gat,57,174
-louyang.gat,309,80,0	warp	louwarp007	3,3,lou_in02.gat,189,78
-louyang.gat,124,121,0	warp	louwarp009	3,3,lou_in02.gat,197,162
-louyang.gat,129,121,0	warp	louwarp009a	3,3,lou_in02.gat,203,162
-louyang.gat,145,175,0	warp	louwarp010	3,3,lou_in02.gat,125,168
-louyang.gat,135,96,0	warp	louwarp011	3,3,lou_in02.gat,248,172
-louyang.gat,317,177,0	warp	louwarp014	3,3,lou_in02.gat,118,34
-louyang.gat,130,64,0	warp	louwarp015	1,1,lou_in02.gat,71,31
-louyang.gat,263,93,0	warp	louwarp018	3,3,lou_in02.gat,246,58
-louyang.gat,133,245,0	warp	louwarp020	1,1,lou_in01.gat,25,19
-lou_in01.gat,27,19,0	warp	louwarp020a	1,1,louyang.gat,135,245
-lou_in01.gat,125,141,0	warp	louwarp016	3,3,lou_in01.gat,156,141
-lou_in01.gat,152,141,0	warp	louwarp016a	3,3,lou_in01.gat,120,141
-lou_in01.gat,78,141,0	warp	louwarp017	3,3,lou_in01.gat,47,141
-lou_in01.gat,51,141,0	warp	louwarp017a	3,3,lou_in01.gat,82,141
-lou_in01.gat,101,118,0	warp	louwarp005a	3,3,louyang.gat,218,249
-lou_in01.gat,14,18,0	warp	louwarp021	1,1,louyang.gat,90,253
-lou_in02.gat,57,170,0	warp	louwarp006a	3,3,louyang.gat,279,164
-lou_in02.gat,200,93,0	warp	louwarp008	3,3,lou_in02.gat,170,46
-lou_in02.gat,174,46,0	warp	louwarp008a	3,3,lou_in02.gat,206,94
-lou_in02.gat,197,158,0	warp	louwarp009b	3,3,louyang.gat,124,117
-lou_in02.gat,203,158,0	warp	louwarp009c	3,3,louyang.gat,129,117
-lou_in02.gat,125,164,0	warp	louwarp010a	3,3,louyang.gat,145,171
-lou_in02.gat,251,175,0	warp	louwarp011a	3,3,louyang.gat,140,101
-lou_in02.gat,242,59,0	warp	louwarp018a	3,3,louyang.gat,260,93
-lou_in02.gat,80,190,0	warp	louwarp012	3,3,lou_in02.gat,74,140
-lou_in02.gat,71,140,0	warp	louwarp012a	3,3,lou_in02.gat,77,190
-lou_in02.gat,35,190,0	warp	louwarp013	3,3,lou_in02.gat,37,138
-lou_in02.gat,43,138,0	warp	louwarp013a	3,3,lou_in02.gat,39,190
-lou_in02.gat,121,32,0	warp	louwarp014a	3,3,louyang.gat,317,173
-lou_in02.gat,71,28,0	warp	louwarp015a	3,3,louyang.gat,130,57
-lou_in02.gat,189,74,0	warp	louwarp007a	3,3,louyang.gat,309,76
+lighthalzen.gat,214,329,0	warp	LightzDoor_LhzF01Dn	1,1,lhz_fild01.gat,209,23
+lhz_fild01.gat,210,18,0	warp	LhzF01Dn_LightzDoor	1,1,lighthalzen.gat,214,324
+lighthalzen.gat,101,248,0	warp	LightzReken01_RekI101	1,1,lhz_in01.gat,111,126
+lighthalzen.gat,106,248,0	warp	LightzReken02_RekI111	1,1,lhz_in01.gat,116,126
+lighthalzen.gat,198,257,0	warp	LightzBank_LhzBankI	1,1,lhz_in02.gat,39,28
+lighthalzen.gat,236,276,0	warp	LightzPolice_LhzPoliI	1,1,lhz_in02.gat,133,199
+lighthalzen.gat,238,220,0	warp	LightzTcom_LhzTCI101	1,1,lhz_in02.gat,28,270
+lighthalzen.gat,93,110,0	warp	LightzJewel_LhzJwI	1,1,lhz_in02.gat,104,26
+lighthalzen.gat,197,36,0	warp	LightzWeapon01_LhzWpI101	1,1,lhz_in02.gat,284,30
+lighthalzen.gat,196,46,0	warp	LightzWeapon02_LhzWpI201	1,1,lhz_in02.gat,282,83
+lighthalzen.gat,159,133,0	warp	LightzInn_LhzInnI101	1,1,lhz_in02.gat,232,265
+lighthalzen.gat,198,163,0	warp	LightzGstore_LhzGStoI101	1,1,lhz_in02.gat,21,195
+lighthalzen.gat,50,86,0	warp	LightzGH1_LhzGH1I101	1,1,lhz_in03.gat,45,31
+lighthalzen.gat,251,299,0	warp	LightzGH2_LhzGH2I101	1,1,lhz_in03.gat,97,21
+lighthalzen.gat,324,301,0	warp	LightzBstore_LhzBStoI101	1,1,lhz_in03.gat,241,100
+lighthalzen.gat,347,261,0	warp	LightzBH2_LhzBH2I	1,1,lhz_in03.gat,14,218
+lighthalzen.gat,345,231,0	warp	LightzPub01_LhzPubI101	1,1,lhz_in03.gat,188,15
+lighthalzen.gat,340,240,0	warp	LightzPub02_LhzPubI201	1,1,lhz_in03.gat,180,86
+lighthalzen.gat,267,75,0	warp	LightzAirport_LhzAirpoI101	1,1,lhz_airport.gat,142,17
+lhz_in01.gat,88,215,0	warp	RekI102_RekI208	1,1,lhz_in01.gat,106,18
+lhz_in01.gat,140,215,0	warp	RekI103_RekI209	1,1,lhz_in01.gat,158,18
+lhz_in01.gat,149,179,0	warp	RekI104_RekI105	1,1,lhz_in01.gat,15,24
+lhz_in01.gat,76,254,0	warp	RekI106_RekI206	1,1,lhz_in01.gat,100,52
+lhz_in01.gat,188,254,0	warp	RekI107_RekI207	1,1,lhz_in01.gat,191,52
+lhz_in01.gat,231,226,0	warp	RekI108_RekI109	1,1,lhz_in01.gat,257,226
+lhz_in01.gat,40,224,0	warp	RekI110_RekI201	1,1,lhz_in01.gat,19,129
+lhz_in01.gat,43,144,0	warp	RekI202_RekI205	1,1,lhz_in01.gat,278,161
+lhz_in01.gat,58,129,0	warp	RekI203_RekI204	1,1,lhz_in01.gat,196,127
+lhz_in02.gat,13,284,0	warp	LhzTCI102_LhzTCI201	1,1,lhz_in02.gat,89,285
+lhz_in02.gat,114,272,0	warp	LhzTCI202_LhzTCI203	1,1,lhz_in02.gat,153,282
+lhz_in02.gat,39,204,0	warp	LhzGStoI102_LhzGStoI201	1,1,lhz_in02.gat,41,136
+lhz_in02.gat,13,155,0	warp	LhzGStoI202_LhzGStoI301	1,1,lhz_in02.gat,84,223
+lhz_in02.gat,49,154,0	warp	LhzGStoI203_LhzGStoI303	1,1,lhz_in02.gat,98,155
+lhz_in02.gat,94,212,0	warp	LhzGStoI302_LhzGStoI304	1,1,lhz_in02.gat,94,144
+lhz_in02.gat,210,284,0	warp	LhzInnI102_LhzInnI201	1,1,lhz_in02.gat,241,219
+lhz_in02.gat,250,278,0	warp	LhzInnI103_LhzInnI104	1,1,lhz_in02.gat,265,278
+lhz_in02.gat,254,212,0	warp	LhzInnI202_LhzInnI203	1,1,lhz_in02.gat,273,212
+lhz_in02.gat,238,169,0	warp	LhzInnI204_LhzInnI205	1,1,lhz_in02.gat,238,150
+lhz_in02.gat,231,182,0	warp	LhzInnI206_LhzInnI207	1,1,lhz_in02.gat,212,182
+lhz_in02.gat,231,200,0	warp	LhzInnI208_LhzInnI209	1,1,lhz_in02.gat,212,200
+lhz_in02.gat,265,14,0	warp	LhzWpI102_LhzWpI202	1,1,lhz_in02.gat,269,82
+lhz_in03.gat,13,31,0	warp	LhzGH1I102_LhzGH1I201	1,1,lhz_in03.gat,15,99
+lhz_in03.gat,134,14,0	warp	LhzGH2I102_LhzGH2I201	1,1,lhz_in03.gat,125,90
+lhz_in03.gat,191,35,0	warp	LhzPubI102_LhzPubI202	1,1,lhz_in03.gat,191,103
+lhz_in03.gat,257,83,0	warp	LhzBStoI102_LhzBStoI201	1,1,lhz_in03.gat,255,14
+lhz_airport.gat,125,13,0	warp	LhzAirpoI102_LhzAirpoI201	1,1,lhz_airport.gat,19,23
+lhz_airport.gat,160,13,0	warp	LhzAirpoI103_LhzAirpoI202	1,1,lhz_airport.gat,47,23
+lhz_airport.gat,19,18,0	warp	LhzAirpoI201_LhzAirpoI102	1,1,lhz_airport.gat,121,16
+lhz_airport.gat,47,18,0	warp	LhzAirpoI202_LhzAirpoI103	1,1,lhz_airport.gat,163,16
+lhz_airport.gat,142,13,0	warp	LhzAirpoI101_LightzAirport	1,1,lighthalzen.gat,262,75
+lhz_in01.gat,111,121,0	warp	RekI101_LightzReken01	1,1,lighthalzen.gat,101,243
+lhz_in01.gat,116,121,0	warp	RekI111_LightzReken02	1,1,lighthalzen.gat,106,243
+lhz_in02.gat,44,28,0	warp	LhzBankI_LightzBank	1,1,lighthalzen.gat,203,257
+lhz_in02.gat,129,199,0	warp	LhzPoliI_LightzPolice	1,1,lighthalzen.gat,232,275
+lhz_in02.gat,27,265,0	warp	LhzTCI101_LightzTcom	1,1,lighthalzen.gat,238,217
+lhz_in02.gat,108,26,0	warp	LhzJwI_LightzJewel	1,1,lighthalzen.gat,96,110
+lhz_in02.gat,288,30,0	warp	LhzWpI101_LightzWeapon01	1,1,lighthalzen.gat,194,35
+lhz_in02.gat,282,79,0	warp	LhzWpI201_LightzWeapon02	1,1,lighthalzen.gat,194,48
+lhz_in02.gat,232,261,0	warp	LhzInnI101_LightzInn	1,1,lighthalzen.gat,158,129
+lhz_in02.gat,21,191,0	warp	LhzGStoI101_LightzGstore	1,1,lighthalzen.gat,202,160
+lhz_in03.gat,50,31,0	warp	LhzGH1I101_LightzGH1	1,1,lighthalzen.gat,55,86
+lhz_in03.gat,93,21,0	warp	LhzGH2I101_LightzGH2	1,1,lighthalzen.gat,247,299
+lhz_in03.gat,237,100,0	warp	LhzBStoI101_LightzBstore	1,1,lighthalzen.gat,322,296
+lhz_in03.gat,10,216,0	warp	LhzBH2I_LightzBH2	1,1,lighthalzen.gat,341,261
+lhz_in03.gat,188,11,0	warp	LhzPubI101_LightzPub01	1,1,lighthalzen.gat,344,227
+lhz_in03.gat,180,90,0	warp	LhzPubI201_LightzPub02	1,1,lighthalzen.gat,339,245
+lhz_in01.gat,106,15,0	warp	RekI208_RekI102	1,1,lhz_in01.gat,88,211
+lhz_in01.gat,158,15,0	warp	RekI209_RekI103	1,1,lhz_in01.gat,140,211
+lhz_in01.gat,11,24,0	warp	RekI105_RekI104	1,1,lhz_in01.gat,145,178
+lhz_in01.gat,98,55,0	warp	RekI206_RekI106	1,1,lhz_in01.gat,76,250
+lhz_in01.gat,194,55,0	warp	RekI207_RekI107	1,1,lhz_in01.gat,188,250
+lhz_in01.gat,251,226,0	warp	RekI109_RekI108	1,1,lhz_in01.gat,225,226
+lhz_in01.gat,15,129,0	warp	RekI201_RekI110	1,1,lhz_in01.gat,34,224
+lhz_in01.gat,278,157,0	warp	RekI205_RekI202	1,1,lhz_in01.gat,43,139
+lhz_in01.gat,191,127,0	warp	RekI204_RekI203	1,1,lhz_in01.gat,53,129
+lhz_in02.gat,95,285,0	warp	LhzTCI201_LhzTCI102	1,1,lhz_in02.gat,18,284
+lhz_in02.gat,149,282,0	warp	LhzTCI203_LhzTCI202	1,1,lhz_in02.gat,109,272
+lhz_in02.gat,36,136,0	warp	LhzGStoI201_LhzGStoI102	1,1,lhz_in02.gat,34,204
+lhz_in02.gat,79,223,0	warp	LhzGStoI301_LhzGStoI202	1,1,lhz_in02.gat,17,155
+lhz_in02.gat,103,155,0	warp	LhzGStoI303_LhzGStoI203	1,1,lhz_in02.gat,44,154
+lhz_in02.gat,89,144,0	warp	LhzGStoI304_LhzGStoI302	1,1,lhz_in02.gat,89,212
+lhz_in02.gat,236,219,0	warp	LhzInnI201_LhzInnI102	1,1,lhz_in02.gat,206,284
+lhz_in02.gat,261,278,0	warp	LhzInnI104_LhzInnI103	1,1,lhz_in02.gat,246,278
+lhz_in02.gat,269,212,0	warp	LhzInnI203_LhzInnI202	1,1,lhz_in02.gat,250,212
+lhz_in02.gat,238,154,0	warp	LhzInnI205_LhzInnI204	1,1,lhz_in02.gat,238,173
+lhz_in02.gat,216,182,0	warp	LhzInnI207_LhzInnI206	1,1,lhz_in02.gat,235,182
+lhz_in02.gat,216,200,0	warp	LhzInnI209_LhzInnI208	1,1,lhz_in02.gat,235,200
+lhz_in02.gat,274,82,0	warp	LhzWpI202_LhzWpI102	1,1,lhz_in02.gat,270,14
+lhz_in03.gat,20,99,0	warp	LhzGH1I201_LhzGH1I102	1,1,lhz_in03.gat,17,31
+lhz_in03.gat,120,90,0	warp	LhzGH2I201_LhzGH2I102	1,1,lhz_in03.gat,130,14
+lhz_in03.gat,190,100,0	warp	LhzPubI202_LhzPubI102	1,1,lhz_in03.gat,190,31
+lhz_in03.gat,250,14,0	warp	LhzBStoI201_LhzBStoI102	1,1,lhz_in03.gat,252,83
+
+
+//--------------------------------------------------------------
+// Louyang Town Warp Portals - [Tsuyuki]
+//--------------------------------------------------------------
+
+louyang.gat,218,19,0	warp	gate_Fild01	1,1,lou_fild01.gat,233,353
+louyang.gat,218,255,0	warp	palaceGate_palace	1,1,lou_in01.gat,101,122
+louyang.gat,280,167,0	warp	pubGate_pub	1,1,lou_in02.gat,58,173
+louyang.gat,145,174,0	warp	weaponGate_weapon	1,1,lou_in02.gat,126,168
+louyang.gat,136,97,0	warp	toolGate_tool	1,1,lou_in02.gat,247,171
+louyang.gat,263,93,0	warp	hospitalGate_hospital	1,1,lou_in02.gat,245,59
+louyang.gat,309,80,0	warp	officeGate_office	1,1,lou_in02.gat,189,77
+louyang.gat,130,63,0	warp	house1Gate_house1	1,1,lou_in02.gat,72,31
+louyang.gat,317,176,0	warp	house2Gate_house2	1,1,lou_in02.gat,121,31
+louyang.gat,133,245,0	warp	towerGate_tower	1,1,lou_in01.gat,25,19
+lou_in01.gat,101,119,0	warp	palace_palaceGate	1,1,louyang.gat,218,252
+lou_in01.gat,125,141,0	warp	pRight_rRight	1,1,lou_in01.gat,156,141
+lou_in01.gat,79,141,0	script	pLeft_rLeft	45,1,1,{
+OnTouch:
+	if ((countitem(7068) > 0) || (countitem(7096) > 0) || (countitem(7004) > 0)) {
+		warp "lou_in01.gat",83,141;
+	} else {
+		warp "lou_in01.gat",47,141;
+	}
+	end;
+}
+lou_in01.gat,153,141,0	warp	rRight_pRight	1,1,lou_in01.gat,122,141
+lou_in01.gat,50,141,0	script	rLeft_pLeft	45,1,1,{
+OnTouch:
+	if (countitem(7204) > 0) {
+		warp "lou_in01.gat",46,141;
+	} else {
+		warp "lou_in01.gat",82,141;
+	}
+	end;
+}
+lou_in01.gat,28,19,0	warp	tower_towerGate	1,1,louyang.gat,136,245
+lou_in02.gat,58,170,0	warp	pub_pubGate	1,1,louyang.gat,280,164
+lou_in02.gat,35,190,0	warp	PubLeft_innLeft	1,1,lou_in02.gat,41,138
+lou_in02.gat,80,190,0	warp	PubRight_innRight	1,1,lou_in02.gat,73,140
+lou_in02.gat,44,138,0	warp	innLeft_PubLeft	1,1,lou_in02.gat,37,190
+lou_in02.gat,71,140,0	warp	innRight_PubRight	1,1,lou_in02.gat,77,190
+lou_in02.gat,126,165,0	warp	weapon_weaponGate	1,1,louyang.gat,145,171
+lou_in02.gat,249,173,0	warp	tool_toolGate	1,1,louyang.gat,136,99
+lou_in02.gat,242,59,0	warp	hospital_hospitalGate	1,1,louyang.gat,260,93
+lou_in02.gat,189,74,0	warp	office_officeGate	1,1,louyang.gat,309,77
+lou_in02.gat,201,94,0	warp	office1F_office2F	1,1,lou_in02.gat,173,46
+lou_in02.gat,176,46,0	warp	office2F_office1F	1,1,lou_in02.gat,203,94
+lou_in02.gat,72,28,0	warp	house1_house1Gate	1,1,louyang.gat,130,60
+lou_in02.gat,121,28,0	warp	house2_house2Gate	1,1,louyang.gat,317,173
+lou_fild01.gat,233,356,0	warp	Fild01_gate	1,1,louyang.gat,218,22
+lou_in01.gat,14,18,0	warp	Tower1	0,0,louyang.gat,90,254
+louyang.gat,129,121,0	warp	Storage Warp	1,1,lou_in02.gat,203,161
+louyang.gat,125,121,0	warp	Storage Warp	1,1,lou_in02.gat,198,161
+lou_in02.gat,198,159,0	warp	Storage Warp	1,1,louyang.gat,124,118
+lou_in02.gat,203,159,0	warp	Storage Warp	1,1,louyang.gat,129,118
 
 
 //--------------------------------------------------------------
 // Lutie Town Warp Portals - [Tsuyuki]
 //--------------------------------------------------------------
 
+xmas_fild01.gat,69,252,0	warp	x_fild_in	10,2,xmas.gat,149,44
+xmas_fild01.gat,90,252,0	warp	x_fild_in01	10,2,xmas.gat,149,44
+xmas.gat,149,41,0	warp	x_fild_out	8,1,xmas_fild01.gat,80,248
 xmas.gat,120,131,0	warp	xmas_01	1,1,xmas_in.gat,43,33
 xmas_in.gat,46,33,0	warp	xmas_02	1,1,xmas.gat,123,131
 xmas.gat,174,131,0	warp	xmas_03	1,1,xmas_in.gat,155,32
@@ -754,460 +898,429 @@ xmas.gat,104,289,0	warp	xmas_19	1,1,xmas_in.gat,30,163
 xmas_in.gat,30,161,0	warp	xmas_20	1,1,xmas.gat,104,286
 xmas.gat,189,278,0	warp	xmas_21	1,1,xmas_in.gat,168,164
 xmas_in.gat,168,160,0	warp	xmas_22	1,1,xmas.gat,189,275
+xmas_fild01.gat,84,48,0	warp	xmas_27	10,2,aldebaran.gat,140,234
 
 
 //--------------------------------------------------------------
-// Morroc Town Warp Portals
+// Morroc Town Warp Portals - [Tsuyuki]
 //--------------------------------------------------------------
 
-morocc.gat,160,17,0	warp	moc001	2,2,moc_fild12.gat,159,378
-morocc.gat,160,183,0	warp	moc002	2,1,moc_castle.gat,94,181
-morocc.gat,160,297,0	warp	moc003	2,2,moc_fild07.gat,198,25
-morocc.gat,197,66,0	warp	moc01	1,1,morocc_in.gat,83,92
-morocc.gat,22,294,0	warp	moc02	2,5,moc_ruins.gat,156,42
-morocc.gat,24,164,0	warp	moc004	1,2,moc_fild19.gat,164,107
-morocc.gat,253,56,0	warp	moc03	2,1,morocc_in.gat,134,74
-morocc.gat,26,297,0	warp	moc02-1	5,2,moc_ruins.gat,156,42
-morocc.gat,274,269,0	warp	moc04	2,2,morocc_in.gat,138,136
-morocc.gat,283,170,0	warp	moc07	2,2,morocc_in.gat,108,176
-morocc.gat,302,207,0	warp	moc005	2,2,moc_fild10.gat,22,207
-morocc.gat,46,46,0	warp	moc05	2,1,morocc_in.gat,68,72
-morocc.gat,52,259,0	warp	moc06	1,2,morocc_in.gat,180,65
-morocc.gat,85,55,0	warp	moc08	2,2,morocc_in.gat,44,149
-morocc.gat,98,68,0	warp	moc09	1,1,morocc_in.gat,44,174
-morocc_in.gat,106,95,0	warp	moc10-1	1,3,morocc_in.gat,90,95
-morocc_in.gat,106,123,0	warp	moc11-1	1,3,morocc_in.gat,90,123
-morocc_in.gat,108,179,0	warp	moc07-1	2,2,morocc.gat,283,173
-morocc_in.gat,134,77,0	warp	moc03-1	3,1,morocc.gat,251,59
-morocc_in.gat,136,136,0	warp	moc04-1	1,4,morocc.gat,271,269
-morocc_in.gat,144,109,0	warp	moc12-1	3,1,morocc_in.gat,144,125
-morocc_in.gat,144,122,0	warp	moc12	3,1,morocc_in.gat,144,106
-morocc_in.gat,144,151,0	warp	moc13	3,1,morocc_in.gat,144,169
-morocc_in.gat,144,166,0	warp	moc13-1	3,1,morocc_in.gat,144,148
-morocc_in.gat,149,129,0	warp	moc14	1,2,morocc_in.gat,169,129
-morocc_in.gat,166,130,0	warp	moc14-1	1,3,morocc_in.gat,146,130
-morocc_in.gat,171,37,0	warp	moc15-1	4,1,morocc_in.gat,171,52
-morocc_in.gat,171,50,0	warp	moc15	4,1,morocc_in.gat,171,35
-morocc_in.gat,174,109,0	warp	moc22	3,1,morocc_in.gat,174,125
-morocc_in.gat,174,122,0	warp	moc22-1	3,1,morocc_in.gat,174,106
-morocc_in.gat,174,151,0	warp	moc16	3,1,morocc_in.gat,174,169
-morocc_in.gat,174,166,0	warp	moc16-1	3,1,morocc_in.gat,174,148
-morocc_in.gat,183,65,0	warp	moc06-1	2,3,morocc.gat,55,259
-morocc_in.gat,23,161,0	warp	moc17	1,2,morocc_in.gat,37,161
-morocc_in.gat,34,161,0	warp	moc17-1	1,2,morocc_in.gat,20,161
-morocc_in.gat,44,146,0	warp	moc08-1	3,2,morocc.gat,82,52
-morocc_in.gat,44,177,0	warp	moc09-1	2,2,morocc.gat,100,70
-morocc_in.gat,55,123,0	warp	moc18-1	1,3,morocc_in.gat,71,123
-morocc_in.gat,55,95,0	warp	moc19-1	1,3,morocc_in.gat,71,95
-morocc_in.gat,57,161,0	warp	moc20	1,3,morocc_in.gat,73,161
-morocc_in.gat,68,123,0	warp	moc18	1,3,morocc_in.gat,52,123
-morocc_in.gat,67,41,0	warp	moc21-1	2,1,morocc_in.gat,68,65
-morocc_in.gat,68,63,0	warp	moc21	2,1,morocc_in.gat,67,39
-morocc_in.gat,68,75,0	warp	moc05-1	2,1,morocc.gat,49,49
-morocc_in.gat,68,95,0	warp	moc19	1,3,morocc_in.gat,52,95
-morocc_in.gat,70,161,0	warp	moc20-1	1,3,morocc_in.gat,54,161
-morocc_in.gat,83,90,0	warp	moc01-1	4,1,morocc.gat,199,64
-morocc_in.gat,86,101,0	warp	moc23	2,1,morocc_in.gat,86,121
-morocc_in.gat,86,118,0	warp	moc23-1	2,1,morocc_in.gat,86,99
-morocc_in.gat,93,123,0	warp	moc11	1,3,morocc_in.gat,109,123
-morocc_in.gat,93,95,0	warp	moc10	1,3,morocc_in.gat,109,95
-moc_ruins.gat,161,40,0	warp	moc02-2	2,4,morocc.gat,26,293
-moc_ruins.gat,157,37,0	warp	moc02-3	5,2,morocc.gat,26,293
-moc_ruins.gat,54,161,0	warp	moc006	2,3,moc_pryd01.gat,192,9
-moc_ruins.gat,71,16,0	warp	moc007	8,2,moc_fild19.gat,71,167
-moc_castle.gat,94,183,0	warp	mocc001	2,1,morocc.gat,160,185
-moc_castle.gat,107,163,0	warp	mocc01	2,3,moc_castle.gat,124,163
-moc_castle.gat,120,163,0	warp	mocc01-1	2,3,moc_castle.gat,103,163
-moc_castle.gat,120,75,0	warp	mocc02	2,3,moc_castle.gat,56,33
-moc_castle.gat,59,34,0	warp	mocc02-1	2,3,moc_castle.gat,124,75
-moc_castle.gat,134,101,0	warp	mocc03	1,1,moc_castle.gat,134,128
-moc_castle.gat,134,124,0	warp	mocc-03	2,2,moc_castle.gat,134,98
-moc_castle.gat,133,139,0	warp	mocc04	1,1,moc_castle.gat,134,159
-moc_castle.gat,134,157,0	warp	mocc04-1	2,2,moc_castle.gat,133,137
-moc_castle.gat,149,163,0	warp	mocc05	2,3,moc_castle.gat,162,163
-moc_castle.gat,158,163,0	warp	mocc05-1	2,3,moc_castle.gat,145,163
-moc_castle.gat,16,131,0	warp	mocc06	1,2,moc_castle.gat,16,164
-moc_castle.gat,16,160,0	warp	mocc06-1	1,2,moc_castle.gat,16,125
-moc_castle.gat,170,131,0	warp	mocc07	2,2,moc_castle.gat,170,163
-moc_castle.gat,170,160,0	warp	mocc07-1	1,1,moc_castle.gat,170,128
-moc_castle.gat,29,163,0	warp	mocc08	2,2,moc_castle.gat,44,163
-moc_castle.gat,40,163,0	warp	mocc08-1	2,2,moc_castle.gat,25,163
-moc_castle.gat,51,114,0	warp	mocc09	3,2,moc_castle.gat,54,65
-moc_castle.gat,54,69,0	warp	mocc09-1	3,2,moc_castle.gat,52,117
-moc_castle.gat,53,139,0	warp	mocc10	2,2,moc_castle.gat,54,159
-moc_castle.gat,54,157,0	warp	mocc10-1	2,2,moc_castle.gat,53,136
-moc_castle.gat,63,89,0	warp	mocc11	2,3,moc_castle.gat,83,89
-moc_castle.gat,80,89,0	warp	mocc11-1	2,3,moc_castle.gat,60,89
-moc_castle.gat,69,163,0	warp	mocc12	2,2,moc_castle.gat,86,163
-moc_castle.gat,82,163,0	warp	mocc12-1	2,2,moc_castle.gat,66,163
-moc_castle.gat,88,93,0	warp	mocc13	1,1,moc_castle.gat,94,119
-moc_castle.gat,94,116,0	warp	mocc13-1	1,1,moc_castle.gat,88,90
-moc_castle.gat,96,90,0	warp	mocc13-2	1,1,moc_castle.gat,94,119
-moc_castle.gat,92,67,0	warp	mocc14	3,2,moc_castle.gat,92,85
-moc_castle.gat,92,82,0	warp	mocc14-1	3,2,moc_castle.gat,92,63
-moc_castle.gat,94,143,0	warp	mocc15	3,2,moc_castle.gat,94,160
-moc_castle.gat,94,156,0	warp	mocc15-1	3,2,moc_castle.gat,94,140
-
-
-//--------------------------------------------------------------
-// Nameless Island Town Warp Portals
-//--------------------------------------------------------------
-
-nameless_i.gat,168,257,0    warp    namelesswarp1001    1,1,nameless_in.gat,12,43
-nameless_in.gat,12,40,0        warp    namelesswarp1002    1,1,nameless_i.gat,168,254
-nameless_i.gat,252,130,0    warp    namelesswarp1003    1,1,nameless_in.gat,26,128
-nameless_in.gat,23,128,0    warp    namelesswarp1004    1,1,nameless_i.gat,249,130
-nameless_i.gat,79,256,0        warp    namelesswarp1005    1,1,nameless_in.gat,12,172
-nameless_in.gat,12,169,0    warp    namelesswarp1006    1,1,nameless_i.gat,82,256
-nameless_i.gat,78,94,0        warp    namelesswarp1007    1,1,nameless_in.gat,96,180
-nameless_in.gat,96,177,0    warp    namelesswarp1008    1,1,nameless_i.gat,81,96
+moc_fild07.gat,198,21,0	warp	m07a-moc	2,2,morocc.gat,160,294
+morocc.gat,160,297,0	warp	moc-m07b	2,2,moc_fild07.gat,198,25
+moc_fild10.gat,19,207,0	warp	m10a-morocc	2,2,morocc.gat,299,207
+morocc.gat,302,207,0	warp	morocc-m10a	2,2,moc_fild10.gat,22,207
+moc_fild19.gat,169,107,0	warp	West Field-moc	1,4,morocc.gat,27,164
+morocc.gat,24,164,0	warp	moc-West Field	1,2,moc_fild19.gat,164,107
+moc_fild12.gat,159,381,0	warp	m12a-morocc	2,2,morocc.gat,160,20
+morocc.gat,160,17,0	warp	morocc-m12a	2,2,moc_fild12.gat,159,378
+morocc_in.gat,174,151,0	warp	Inn 2F/A	3,1,morocc_in.gat,174,169
+morocc_in.gat,174,166,0	warp	Inn 2F/A'	3,1,morocc_in.gat,174,148
+morocc_in.gat,174,122,0	warp	Inn 2F/B	3,1,morocc_in.gat,174,106
+morocc_in.gat,174,109,0	warp	Inn 2F/B'	3,1,morocc_in.gat,174,125
+morocc_in.gat,166,130,0	warp	Inn 1F/C	1,3,morocc_in.gat,146,130
+morocc_in.gat,144,151,0	warp	Inn 1F/A	3,1,morocc_in.gat,144,169
+morocc_in.gat,144,166,0	warp	Inn 1F/A'	3,1,morocc_in.gat,144,148
+morocc_in.gat,144,122,0	warp	Inn 1F/B	3,1,morocc_in.gat,144,106
+morocc_in.gat,144,109,0	warp	Inn 1F/B'	3,1,morocc_in.gat,144,125
+morocc_in.gat,149,129,0	warp	Inn 2F/C	1,2,morocc_in.gat,169,129
+morocc_in.gat,136,136,0	warp	Inn 1Fo	1,4,morocc.gat,271,269
+morocc.gat,274,269,0	warp	Inn 1Fi	2,2,morocc_in.gat,138,136
+morocc_in.gat,68,123,0	warp	Inn 2F/A	1,3,morocc_in.gat,52,123
+morocc_in.gat,55,123,0	warp	Inn 2F/A'	1,3,morocc_in.gat,71,123
+morocc_in.gat,93,123,0	warp	Inn 2F/B	1,3,morocc_in.gat,109,123
+morocc_in.gat,106,123,0	warp	Inn 2F/B'	1,3,morocc_in.gat,90,123
+morocc_in.gat,86,117,0	warp	Inn 1F/C	3,1,morocc_in.gat,86,98
+morocc_in.gat,68,95,0	warp	Inn 1F/A	1,3,morocc_in.gat,52,95
+morocc_in.gat,55,95,0	warp	Inn 1F/A'	1,3,morocc_in.gat,71,95
+morocc_in.gat,93,95,0	warp	Inn 1F/B	1,3,morocc_in.gat,109,95
+morocc_in.gat,105,95,0	warp	Inn 1F/B'	1,3,morocc_in.gat,90,95
+morocc_in.gat,86,101,0	warp	Inn 2F/C	2,1,morocc_in.gat,86,120
+morocc_in.gat,83,90,0	warp	Inn 1Fo	4,1,morocc.gat,199,64
+morocc.gat,197,66,0	warp	Inn 1Fi	1,1,morocc_in.gat,83,92
+morocc_in.gat,68,62,0	warp	A Part of Castle B1	2,1,morocc_in.gat,68,38
+morocc_in.gat,68,42,0	warp	A Part of Castle B1'	2,1,morocc_in.gat,68,65
+morocc_in.gat,68,75,0	warp	A Part of Castle 1Fo	2,1,morocc.gat,49,49
+morocc.gat,46,46,0	warp	A Part of Castle 1Fi	2,1,morocc_in.gat,68,72
+morocc_in.gat,134,77,0	warp	Armoryo	3,1,morocc.gat,251,59
+morocc.gat,253,56,0	warp	Armoryi	2,1,morocc_in.gat,134,74
+morocc_in.gat,183,65,0	warp	Pubo	2,3,morocc.gat,55,259
+morocc.gat,52,259,0	warp	Pubi	1,2,morocc_in.gat,180,65
+morocc_in.gat,171,50,0	warp	PubB	4,1,morocc_in.gat,171,35
+morocc_in.gat,171,37,0	warp	PubB'	4,1,morocc_in.gat,171,52
+morocc_in.gat,34,161,0	warp	Bard GuildA	1,2,morocc_in.gat,20,161
+morocc_in.gat,23,161,0	warp	Bard GuildA'	1,2,morocc_in.gat,37,161
+morocc_in.gat,57,161,0	warp	Bard GuildB	1,3,morocc_in.gat,73,161
+morocc_in.gat,70,161,0	warp	Bard GuildB'	1,3,morocc_in.gat,54,161
+morocc_in.gat,44,178,0	warp	Bard GuildCo1	2,2,morocc.gat,100,70
+morocc.gat,98,68,0	warp	Bard GuildCi1	1,1,morocc_in.gat,44,175
+morocc_in.gat,44,146,0	warp	Bard GuildCo2	3,2,morocc.gat,82,52
+morocc.gat,85,55,0	warp	Bard GuildCi2	2,2,morocc_in.gat,44,149
+morocc_in.gat,108,179,0	warp	Mercenary Guildo	2,2,morocc.gat,283,173
+morocc.gat,284,170,0	warp	Mercenary Guildi	2,2,morocc_in.gat,108,176
+moc_castle.gat,94,183,0	warp	Ao	2,1,morocc.gat,160,185
+morocc.gat,160,183,0	warp	Ai	2,1,moc_castle.gat,94,181
+moc_castle.gat,82,163,0	warp	A	2,2,moc_castle.gat,66,163
+moc_castle.gat,69,163,0	warp	A'	2,2,moc_castle.gat,86,163
+moc_castle.gat,40,163,0	warp	B	2,2,moc_castle.gat,25,163
+moc_castle.gat,29,163,0	warp	B'	2,2,moc_castle.gat,44,163
+moc_castle.gat,16,160,0	warp	C	1,2,moc_castle.gat,16,125
+moc_castle.gat,16,131,0	warp	C'	1,2,moc_castle.gat,16,164
+moc_castle.gat,54,156,0	warp	D	2,2,moc_castle.gat,54,134
+moc_castle.gat,54,139,0	warp	D'	2,2,moc_castle.gat,54,160
+moc_castle.gat,51,114,0	warp	E	3,2,moc_castle.gat,54,65
+moc_castle.gat,54,69,0	warp	E'	3,2,moc_castle.gat,52,117
+moc_castle.gat,59,34,0	warp	F	2,3,moc_castle.gat,124,75
+moc_castle.gat,120,75,0	warp	F'	2,3,moc_castle.gat,56,33
+moc_castle.gat,107,163,0	warp	G	2,3,moc_castle.gat,124,163
+moc_castle.gat,120,163,0	warp	G'	2,3,moc_castle.gat,103,163
+moc_castle.gat,149,163,0	warp	H	2,3,moc_castle.gat,162,163
+moc_castle.gat,158,163,0	warp	H'	2,3,moc_castle.gat,145,163
+moc_castle.gat,170,160,0	warp	I	1,1,moc_castle.gat,170,128
+moc_castle.gat,170,131,0	warp	I'	2,2,moc_castle.gat,170,163
+moc_castle.gat,134,156,0	warp	J	2,2,moc_castle.gat,134,136
+moc_castle.gat,134,139,0	warp	J'	1,1,moc_castle.gat,134,160
+moc_castle.gat,134,124,0	warp	K	2,2,moc_castle.gat,134,98
+moc_castle.gat,134,101,0	warp	K'	1,1,moc_castle.gat,134,128
+moc_castle.gat,94,156,0	warp	L	3,2,moc_castle.gat,94,140
+moc_castle.gat,94,143,0	warp	L'	3,2,moc_castle.gat,94,160
+moc_castle.gat,94,116,0	warp	M	1,1,moc_castle.gat,88,90
+moc_castle.gat,88,93,0	warp	M'	1,1,moc_castle.gat,94,119
+moc_castle.gat,96,90,0	warp	M''	1,1,moc_castle.gat,94,119
+moc_castle.gat,80,89,0	warp	O	2,3,moc_castle.gat,60,89
+moc_castle.gat,63,89,0	warp	O'	2,3,moc_castle.gat,83,89
+moc_castle.gat,92,82,0	warp	N	3,2,moc_castle.gat,92,63
+moc_castle.gat,92,67,0	warp	N'	3,2,moc_castle.gat,92,85
+morocc_in.gat,72,67,0	warp	Exit	2,2,morocc_in.gat,44,162
 
 
 //--------------------------------------------------------------
-// Niflheim Town Warp Portals
+// Niflheim Town Warp Portals - [Tsuyuki]
 //--------------------------------------------------------------
 
-niflheim.gat,220,169,0	warp	nwarp11	1,1,nif_in.gat,14,88
-nif_in.gat,11,88,0	warp	nwarp12	1,1,niflheim.gat,218,170
-niflheim.gat,219,199,0	warp	nwarp13	1,1,nif_in.gat,136,14
-nif_in.gat,134,12,0	warp	nwarp14	1,1,niflheim.gat,218,197
-niflheim.gat,190,241,0	warp	nwarp19	1,1,nif_in.gat,81,77
-nif_in.gat,78,74,0	warp	nwarp20	1,1,niflheim.gat,187,241
-niflheim.gat,189,211,0	warp	nwarp21	1,1,nif_in.gat,20,14
-nif_in.gat,23,12,0	warp	nwarp22	1,1,niflheim.gat,189,207
-nif_in.gat,34,34,0	warp	nwarp23	1,1,nif_in.gat,88,31
-nif_in.gat,88,29,0	warp	nwarp24	1,1,nif_in.gat,34,31
-niflheim.gat,255,194,0	warp	nwarp15	1,1,nif_in.gat,20,156
-nif_in.gat,18,154,0	warp	nwarp16	1,1,niflheim.gat,254,192
-nif_in.gat,65,168,0	warp	nwarp17	1,1,nif_in.gat,141,174
-nif_in.gat,140,171,0	warp	nwarp18	1,1,nif_in.gat,65,165
-niflheim.gat,165,162,0	warp	nwarp19	1,1,nif_in.gat,156,80
-nif_in.gat,169,82,0	warp	nwarp20	1,1,nif_in.gat,189,105
-nif_in.gat,186,105,0	warp	nwarp21	1,1,nif_in.gat,167,82
-nif_in.gat,154,78,0	warp	nwarp22	1,1,niflheim.gat,167,161
-
-
-//--------------------------------------------------------------
-// Payon Town Warp Portals
-//--------------------------------------------------------------
-
-payon.gat,16,142,0		warp	payonwarp001	1,1,pay_gld.gat,370,149
-pay_gld.gat,374,149,0		warp	payonwarp002	1,1,payon.gat,20,142
-payon.gat,122,27,0		warp	payonwarp003	5,3,pay_fild01.gat,333,356
-pay_fild01.gat,333,360,0	warp	payonwarp004	5,3,payon.gat,122,31
-payon.gat,267,90,0		warp	payonwarp005	2,4,pay_fild08.gat,20,74
-payon.gat,223,117,0		warp	payonwarp009	2,2,payon_in01.gat,175,11
-payon_in01.gat,172,11,0		warp	payonwarp010	2,2,payon.gat,219,117
-payon_in01.gat,180,43,0		warp	payonwarp011	2,2,payon_in01.gat,181,73
-payon_in01.gat,181,70,0		warp	payonwarp012	2,2,payon_in01.gat,180,40
-payon_in01.gat,193,92,0		warp	payonwarp013	2,2,payon_in01.gat,143,61
-payon_in01.gat,146,61,0		warp	payonwarp014	2,2,payon_in01.gat,193,89
-payon_in01.gat,133,42,0		warp	payonwarp015	2,2,payon_in01.gat,133,18
-payon_in01.gat,133,21,0		warp	payonwarp016	2,2,payon_in01.gat,133,45
-payon.gat,140,85,0		warp	payonwarp017	2,2,payon_in01.gat,14,51
-payon_in01.gat,17,51,0		warp	payonwarp018	2,2,payon.gat,143,85
-payon_in01.gat,10,59,0		warp	payonwarp019	2,2,payon_in01.gat,10,83
-payon_in01.gat,10,80,0		warp	payonwarp021	2,2,payon_in01.gat,10,56
-payon_in01.gat,10,38,0		warp	payonwarp022	2,2,payon_in01.gat,10,14
-payon_in01.gat,10,17,0		warp	payonwarp023	2,2,payon_in01.gat,10,41
-payon.gat,135,158,0		warp	payonwarp024	2,2,payon_in01.gat,20,129
-payon_in01.gat,23,129,0		warp	payonwarp025	2,2,payon.gat,138,158
-payon.gat,130,169,0		warp	payonwarp026	2,2,payon_in01.gat,13,136
-payon_in01.gat,13,139,0		warp	payonwarp027	2,2,payon.gat,130,172
-payon.gat,151,127,0		warp	payonwarp028	2,2,payon_in01.gat,56,53
-payon_in01.gat,56,50,0		warp	payonwarp029	2,2,payon.gat,151,124
-payon.gat,156,247,0		warp	payonwarp030	4,1,payon_in03.gat,98,116
-payon_in03.gat,98,114,0		warp	payonwarp031	5,1,payon.gat,156,245
-payon_in03.gat,90,124,0		warp	payonwarp032	2,2,payon_in03.gat,80,124
-payon_in03.gat,83,124,0		warp	payonwarp033	2,2,payon_in03.gat,93,124
-payon_in03.gat,99,133,0		warp	payonwarp034	2,2,payon_in03.gat,99,151
-payon_in03.gat,99,148,0		warp	payonwarp035	2,2,payon_in03.gat,99,130
-payon_in03.gat,107,124,0	warp	payonwarp036	2,2,payon_in03.gat,117,124
-payon_in03.gat,114,124,0	warp	payonwarp037	2,2,payon_in03.gat,104,124
-payon.gat,189,233,0		warp	payonwarp038	2,2,payon_in03.gat,149,39
-payon_in03.gat,146,39,0		warp	payonwarp039	2,2,payon.gat,186,233
-payon_in03.gat,158,32,0		warp	payonwarp040	2,2,payon_in03.gat,130,14
-payon_in03.gat,130,17,0		warp	payonwarp041	2,2,payon_in03.gat,158,35
-payon_in03.gat,172,32,0		warp	payonwarp042	2,2,payon_in03.gat,160,14
-payon_in03.gat,160,17,0		warp	payonwarp043	2,2,payon_in03.gat,172,35
-payon_in03.gat,186,32,0		warp	payonwarp044	2,2,payon_in03.gat,190,13
-payon_in03.gat,190,17,0		warp	payonwarp045	2,2,payon_in03.gat,186,35
-payon.gat,256,285,0		warp	payonwarp046	2,2,payon_in01.gat,45,11
-payon_in01.gat,42,11,0		warp	payonwarp047	2,2,payon.gat,253,285
-payon.gat,127,204,0		warp	payonwarp061	2,2,payon_in03.gat,81,19
-payon_in03.gat,85,19,0		warp	payonwarp062	2,2,payon.gat,131,204
-payon_in03.gat,74,18,0		warp	payonwarp063	2,2,payon_in03.gat,62,18
-payon_in03.gat,67,18,0		warp	payonwarp064	2,2,payon_in03.gat,78,18
-payon_in03.gat,46,18,0		warp	payonwarp065	2,2,payon_in03.gat,35,18
-payon_in03.gat,39,18,0		warp	payonwarp066	2,2,payon_in03.gat,51,18
-payon_in03.gat,28,18,0		warp	payonwarp067	2,2,payon_in03.gat,17,18
-payon_in03.gat,21,18,0		warp	payonwarp068	2,2,payon_in03.gat,32,18
-payon.gat,155,327,0		warp	payonwarp069	2,2,payon_in03.gat,165,143
-payon_in03.gat,165,140,0	warp	payonwarp070	2,2,payon.gat,155,324
-payon_in03.gat,185,178,0	warp	payonwarp071	2,2,payon_in03.gat,185,149
-payon_in03.gat,185,153,0	warp	payonwarp072	2,2,payon_in03.gat,185,182
-payon.gat,107,326,0		warp	payonwarp073	2,2,payon_in03.gat,20,63
-payon_in03.gat,20,60,0		warp	payonwarp074	2,2,payon.gat,107,323
-payon_in03.gat,20,73,0		warp	payonwarp075	2,2,payon_in03.gat,20,89
-payon_in03.gat,20,86,0		warp	payonwarp076	2,2,payon_in03.gat,20,70
-payon_in03.gat,20,103,0		warp	payonwarp077	2,2,payon_in03.gat,20,121
-payon_in03.gat,20,118,0		warp	payonwarp078	2,2,payon_in03.gat,19,99
-payon_in03.gat,12,131,0		warp	payonwarp079	2,2,payon_in03.gat,12,145
-payon_in03.gat,12,142,0		warp	payonwarp080	2,2,payon_in03.gat,11,127
-payon_in03.gat,28,131,0		warp	payonwarp081	2,2,payon_in03.gat,28,145
-payon_in03.gat,28,142,0		warp	payonwarp082	2,2,payon_in03.gat,27,127
-payon_in03.gat,12,161,0		warp	payonwarp083	2,2,payon_in03.gat,12,175
-payon_in03.gat,12,172,0		warp	payonwarp084	2,2,payon_in03.gat,11,157
-payon_in03.gat,28,161,0		warp	payonwarp085	2,2,payon_in03.gat,28,175
-payon_in03.gat,28,172,0		warp	payonwarp086	2,2,payon_in03.gat,27,157
-payon_in01.gat,86,9,0		warp	payonwarp087	2,2,payon.gat,266,152
-payon.gat,270,152,0		warp	payonwarp088	2,2,payon_in01.gat,90,9
-payon_in01.gat,107,71,0		warp	payonwarp089	2,2,payon_in01.gat,96,37
-payon_in01.gat,93,37,0		warp	payonwarp090	2,2,payon_in01.gat,104,71
-payon.gat,228,330,0		warp	payonwarp007	4,2,pay_arche.gat,81,22
-pay_arche.gat,81,18,0		warp	payonwarp008	5,2,payon.gat,228,326
-pay_arche.gat,36,131,0		warp	payonwarp048	2,2,pay_dun00.gat,21,183
-pay_arche.gat,71,156,0		warp	payonwarp049	2,2,payon_in02.gat,82,41
-pay_arche.gat,92,170,0		warp	payonwarp050	2,2,payon_in02.gat,50,7
-pay_arche.gat,145,165,0		warp	payonwarp051	2,2,payon_in02.gat,64,60
-payon_in02.gat,10,25,0		warp	payonwarp052	2,2,payon_in02.gat,72,67
-payon_in02.gat,35,67,0		warp	payonwarp053	2,2,payon_in02.gat,55,67
-payon_in02.gat,50,4,0		warp	payonwarp054	3,1,pay_arche.gat,92,166
-payon_in02.gat,52,67,0		warp	payonwarp055	2,2,payon_in02.gat,32,67
-payon_in02.gat,61,33,0		warp	payonwarp056	2,2,payon_in02.gat,73,33
-payon_in02.gat,64,56,0		warp	payonwarp057	2,2,pay_arche.gat,141,161
-payon_in02.gat,70,33,0		warp	payonwarp058	2,2,payon_in02.gat,58,33
-payon_in02.gat,75,67,0		warp	payonwarp059	2,2,payon_in02.gat,13,25
-payon_in02.gat,82,45,0		warp	payonwarp060	2,2,pay_arche.gat,74,153
+nif_fild02.gat,378,235,0	warp	nf02b_nif	1,1,niflheim.gat,23,154
+niflheim.gat,19,154,0	warp	nif_nf02b	1,1,nif_fild02.gat,375,235
+niflheim.gat,255,194,0	warp	witchGate_witch 	1,1,nif_in.gat,21,157
+niflheim.gat,219,169,0	warp	waeponGate_waepon	1,1,nif_in.gat,14,88
+niflheim.gat,189,241,0	warp	houseA1Gate_houseA1	1,1,nif_in.gat,81,77
+niflheim.gat,202,248,0	warp	houseA2Gate_houseA2	1,1,nif_in.gat,95,102
+niflheim.gat,166,162,0	warp	houseBGate_houseB	1,1,nif_in.gat,157,81
+niflheim.gat,189,210,0	warp	pubGate_pub	1,1,nif_in.gat,23,14
+niflheim.gat,219,198,0	warp	toolGate_tool	1,1,nif_in.gat,137,15
+nif_in.gat,18,154,0	warp	witch _witchGate	1,1,niflheim.gat,253,191
+nif_in.gat,65,174,0	warp	witch1f_witch2f	1,1,nif_in.gat,140,174
+nif_in.gat,140,171,0	warp	witch2f_witch1f	1,1,nif_in.gat,65,170
+nif_in.gat,11,88,0	warp	waepon_waeponGate	1,1,niflheim.gat,216,171
+nif_in.gat,78,74,0	warp	houseA1_houseA1Gate	1,1,niflheim.gat,186,241
+nif_in.gat,95,106,0	warp	houseA2_houseA2Gate	1,1,niflheim.gat,202,254
+nif_in.gat,154,78,0	warp	houseB_houseBGate	1,1,niflheim.gat,169,162
+nif_in.gat,169,82,0	warp	houseB1f_houseB2f	1,1,nif_in.gat,189,106
+nif_in.gat,186,106,0	warp	houseB2f_houseB1f	1,1,nif_in.gat,166,82
+nif_in.gat,23,11,0	warp	pub_pubGate	1,1,niflheim.gat,189,207
+nif_in.gat,34,34,0	warp	pub1f_inn	1,1,nif_in.gat,88,32
+nif_in.gat,88,29,0	warp	inn_pub1f	1,1,nif_in.gat,34,30
+nif_in.gat,135,13,0	warp	tool_toolGate	1,1,niflheim.gat,217,196
 
 
 //--------------------------------------------------------------
-// Prontera Town Warp Portals
+// Payon / Archer's Village Town Warp Portals - [Tsuyuki]
 //--------------------------------------------------------------
 
-prontera.gat,22,203,0      warp   pronterawarp0502   2,3,prt_fild05.gat,367,205
-prontera.gat,289,203,0      warp   pronterawarp0503   2,3,prt_fild06.gat,27,193
-prontera.gat,156,22,0      warp   pronterawarp0504   3,2,prt_fild08.gat,170,375
-prontera.gat,156,360,0		warp	pronterawarp1001	4,2,prt_castle.gat,102,20
-prt_castle.gat,102,16,0		warp	pronterawarp1002	6,2,prontera.gat,156,356
-prt_castle.gat,102,129,0	warp	pronterawarp1003	3,2,prt_castle.gat,102,143
-prt_castle.gat,102,140,0   warp   pronterawarp1004   3,2,prt_castle.gat,102,126
-prt_castle.gat,102,73,0		warp	pronterawarp1005	3,2,prt_castle.gat,102,91
-prt_castle.gat,102,88,0		warp	pronterawarp1006	3,2,prt_castle.gat,102,70
-prt_castle.gat,113,107,0	warp	pronterawarp1007	2,3,prt_castle.gat,134,107
-prt_castle.gat,130,107,0	warp	pronterawarp1008	2,3,prt_castle.gat,110,107
-prt_castle.gat,121,29,0		warp	pronterawarp1009	1,1,prt_castle.gat,148,29
-prt_castle.gat,144,29,0		warp	pronterawarp1010	2,2,prt_castle.gat,117,29
-prt_castle.gat,135,153,0	warp	pronterawarp1011	1,1,prt_castle.gat,167,145
-prt_castle.gat,164,145,0	warp	pronterawarp1012	1,1,prt_castle.gat,132,153
-prt_castle.gat,149,113,0	warp	pronterawarp1013	1,1,prt_castle.gat,175,113
-prt_castle.gat,172,113,0	warp	pronterawarp1014	1,1,prt_castle.gat,146,113
-prt_castle.gat,170,138,0	warp	pronterawarp1015	3,2,prt_castle.gat,176,118
-prt_castle.gat,176,121,0	warp	pronterawarp1016	3,2,prt_castle.gat,170,141
-prt_castle.gat,28,121,0		warp	pronterawarp1017	2,2,prt_castle.gat,40,141
-prt_castle.gat,40,138,0		warp	pronterawarp1018	3,2,prt_castle.gat,28,118
-prt_castle.gat,31,113,0		warp	pronterawarp1019	1,1,prt_castle.gat,58,113
-prt_castle.gat,54,113,0		warp	pronterawarp1020	1,1,prt_castle.gat,27,113
-prt_castle.gat,45,145,0		warp	pronterawarp1021	1,1,prt_castle.gat,72,153
-prt_castle.gat,68,153,0		warp	pronterawarp1022	1,1,prt_castle.gat,42,145
-prt_castle.gat,59,29,0		warp	pronterawarp1023	2,2,prt_castle.gat,85,29
-prt_castle.gat,82,29,0		warp	pronterawarp1024	1,1,prt_castle.gat,56,29
-prt_castle.gat,75,107,0		warp	pronterawarp1025	2,3,prt_castle.gat,95,107
-prt_castle.gat,92,107,0		warp	pronterawarp1026	2,3,prt_castle.gat,72,107
-prontera.gat,237,317,0		warp	pronterawarp1027	2,2,prt_church.gat,100,60
-prt_church.gat,100,56,0		warp	pronterawarp1028	7,1,prontera.gat,234,314
-prt_church.gat,109,81,0		warp	pronterawarp1029	1,2,prt_church.gat,172,19
-prt_church.gat,168,19,0		warp	pronterawarp1030	1,2,prt_church.gat,105,81
-prt_church.gat,31,19,0		warp	pronterawarp1031	1,2,prt_church.gat,94,81
-prt_church.gat,90,81,0		warp	pronterawarp1032	1,2,prt_church.gat,27,19
-prontera.gat,107,215,0		warp	pronterawarp1033	2,2,prt_in.gat,240,139
-prt_in.gat,240,141,0		warp	pronterawarp1034	3,1,prontera.gat,107,218
-prontera.gat,120,267,0		warp	pronterawarp1035	2,2,prt_in.gat,180,97
-prt_in.gat,183,97,0		warp	pronterawarp1036	1,2,prontera.gat,120,264
-prontera.gat,133,183,0		warp	pronterawarp1037	2,2,prt_in.gat,50,105
-prt_in.gat,53,105,0		warp	pronterawarp1038	1,2,prontera.gat,136,186
-prontera.gat,134,221,0		warp	pronterawarp1039	1,1,prt_in.gat,131,71
-prt_in.gat,135,71,0		warp	pronterawarp1040	1,2,prontera.gat,136,219
-prontera.gat,177,221,0		warp	pronterawarp1041	2,2,prt_in.gat,168,128
-prt_in.gat,168,124,0		warp	pronterawarp1042	2,1,prontera.gat,174,218
-prontera.gat,179,184,0		warp	pronterawarp1043	2,2,prt_in.gat,60,73
-prt_in.gat,60,77,0		warp	pronterawarp1044	2,1,prontera.gat,175,188
-prontera.gat,192,267,0		warp	pronterawarp1045	2,2,prt_in.gat,178,55
-prt_in.gat,181,55,0		warp	pronterawarp1046	1,2,prontera.gat,192,264
-prontera.gat,204,192,0		warp	pronterawarp1047	2,2,prt_in.gat,68,134
-prt_in.gat,68,130,0		warp	pronterawarp1048	2,1,prontera.gat,204,188
-prontera.gat,208,154,0		warp	pronterawarp1049	2,2,prt_in.gat,172,29
-prt_in.gat,172,33,0		warp	pronterawarp1050	2,1,prontera.gat,205,157
-prontera.gat,42,67,0		warp	pronterawarp1051	2,2,prt_in.gat,44,29
-prt_in.gat,47,29,0		warp	pronterawarp1052	2,1,prontera.gat,46,67
-prontera.gat,45,346,0		warp	pronterawarp1053	2,2,prt_in.gat,80,110
-prt_in.gat,80,113,0		warp	pronterawarp1054	2,1,prontera.gat,48,343
-prontera.gat,73,100,0		warp	pronterawarp1055	1,1,prt_in.gat,208,176
-prt_in.gat,208,179,0		warp	pronterawarp1056	3,1,prontera.gat,76,102
-prontera.gat,74,90,0		warp	pronterawarp1057	2,2,prt_in.gat,248,170
-prt_in.gat,248,173,0		warp	pronterawarp1058	3,2,prontera.gat,77,93
-prt_in.gat,282,179,0		warp	pronterawarp1059	3,1,prontera.gat,87,91
-prontera.gat,84,89,0		warp	pronterawarp1060	1,1,prt_in.gat,282,176
-prt_in.gat,217,163,0		warp	pronterawarp1061	1,3,prt_in.gat,236,163
-prt_in.gat,234,163,0		warp	pronterawarp1062	1,3,prt_in.gat,215,163
-prt_in.gat,254,113,0		warp	pronterawarp1063	3,2,prt_in.gat,256,134
-prt_in.gat,256,131,0		warp	pronterawarp1064	2,2,prt_in.gat,254,110
-prt_in.gat,263,163,0		warp	pronterawarp1065	1,3,prt_in.gat,276,163
-prt_in.gat,274,163,0		warp	pronterawarp1066	1,3,prt_in.gat,261,163
-prt_in.gat,37,65,0		warp	pronterawarp1067	1,3,prt_in.gat,51,65
-prt_in.gat,48,65,0		warp	pronterawarp1068	1,3,prt_in.gat,34,65
-prt_in.gat,69,65,0		warp	pronterawarp1069	1,3,prt_in.gat,85,65
-prt_in.gat,82,65,0		warp	pronterawarp1070	1,3,prt_in.gat,66,65
-prt_in.gat,70,143,0		warp	pronterawarp1071	2,1,prt_in.gat,70,165
-prt_in.gat,70,162,0		warp	pronterawarp1072	2,1,prt_in.gat,70,140
-prt_church.gat,115,122,0	warp	pronterawarp1073	1,2,prt_church.gat,168,106
-prt_church.gat,166,106,0	warp	pronterawarp1074	1,2,prt_church.gat,112,122
-
-
-//--------------------------------------------------------------
-// Rachel Town Warp Portals
-//--------------------------------------------------------------
-
-rachel.gat,150,249,0	warp	rachel01	1,1,ra_temple.gat,120,30
-rachel.gat,81,33,0	warp	rachel02	1,1,ra_in01.gat,237,198
-rachel.gat,61,33,0	warp	rachel03	1,1,ra_in01.gat,181,198
-rachel.gat,217,55,0	warp	rachel04	1,1,ra_in01.gat,250,34
-rachel.gat,179,220,0	warp	rachel05	1,1,ra_in01.gat,295,352
-rachel.gat,103,240,0	warp	rachel06	1,1,ra_in01.gat,343,193
-rachel.gat,216,160,0	warp	rachel07	1,1,ra_in01.gat,135,282
-rachel.gat,42,87,0	warp	rachel08	1,1,ra_in01.gat,171,359
-rachel.gat,42,109,0	warp	rachel09	1,1,ra_in01.gat,171,388
-rachel.gat,83,78,0	warp	rachel10	1,1,ra_in01.gat,249,266
-rachel.gat,115,149,0	warp	rachel11	1,1,ra_in01.gat,386,43
-rachel.gat,90,189,0	warp	rachel12	1,1,ra_in01.gat,192,148
-rachel.gat,108,200,0	warp	rachel13	1,1,ra_in01.gat,213,83
-ra_in01.gat,188,189,0	warp	rachel14	1,1,ra_in01.gat,263,144
-ra_in01.gat,296,144,0	warp	rachel15	1,1,ra_in01.gat,235,189
-ra_in01.gat,175,189,0	warp	rachel16	1,1,ra_in01.gat,132,189
-ra_in01.gat,244,189,0	warp	rachel17	1,1,ra_in01.gat,291,189
-ra_in01.gat,235,21,0	warp	rachel18	1,1,ra_in01.gat,187,31
-ra_in01.gat,312,374,0	warp	rachel19	1,1,ra_in01.gat,359,374
-ra_in01.gat,291,371,0	warp	rachel20	1,1,ra_in01.gat,225,380
-ra_in01.gat,381,200,0	warp	rachel21	1,1,ra_in01.gat,377,268
-ra_in01.gat,367,255,0	warp	rachel22	1,1,ra_in01.gat,326,296
-ra_in01.gat,319,303,0	warp	rachel23	1,1,ra_in01.gat,381,320
-ra_in01.gat,178,370,0	warp	rachel24	1,1,ra_in01.gat,113,385
-ra_in01.gat,165,369,0	warp	rachel25	1,1,ra_in01.gat,122,334
-ra_in01.gat,241,299,0	warp	rachel26	1,1,ra_in01.gat,193,312
-ra_in01.gat,185,303,0	warp	rachel27	1,1,ra_in01.gat,194,249
-ra_in01.gat,357,61,0	warp	rachel28	1,1,ra_in01.gat,310,62
-ra_in01.gat,297,59,0	warp	rachel29	1,1,ra_in01.gat,339,116
-ra_temin.gat,130,93,0	warp	rachel30	1,1,ra_temin.gat,239,258
-ra_temin.gat,206,93,0	warp	rachel31	1,1,ra_temin.gat,312,258
-ra_temin.gat,275,332,0	warp	rachel32	1,1,ra_temin.gat,27,305
-ra_temin.gat,275,226,0	warp	rachel33	1,1,ra_temsky.gat,99,11
-ra_temsky.gat,99,118,0	warp	rachel34	1,1,ra_temsky.gat,99,140
-ra_temsky.gat,112,143,0	warp	rachel35	1,1,ra_temsky.gat,141,139
-ra_temsky.gat,87,143,0	warp	rachel36	1,1,ra_temsky.gat,58,139
-ra_temple.gat,120,22,0	warp	rachel37	1,1,rachel.gat,150,243
-ra_in01.gat,237,202,0	warp	rachel38	1,1,rachel.gat,81,38
-ra_in01.gat,181,202,0	warp	rachel39	1,1,rachel.gat,61,38
-ra_in01.gat,250,38,0	warp	rachel40	1,1,rachel.gat,217,60
-ra_in01.gat,295,348,0	warp	rachel41	1,1,rachel.gat,179,215
-ra_in01.gat,339,193,0	warp	rachel42	1,1,rachel.gat,98,238
-ra_in01.gat,135,286,0	warp	rachel43	1,1,rachel.gat,216,164
-ra_in01.gat,171,355,0	warp	rachel44	1,1,rachel.gat,42,82
-ra_in01.gat,172,392,0	warp	rachel45	1,1,rachel.gat,42,114
-ra_in01.gat,249,262,0	warp	rachel46	1,1,rachel.gat,83,73
-ra_in01.gat,386,39,0	warp	rachel47	1,1,rachel.gat,115,144
-ra_in01.gat,192,152,0	warp	rachel48	1,1,rachel.gat,90,193
-ra_in01.gat,213,79,0	warp	rachel49	1,1,rachel.gat,108,195
-ra_in01.gat,259,144,0	warp	rachel50	1,1,ra_in01.gat,184,189
-ra_in01.gat,231,189,0	warp	rachel51	1,1,ra_in01.gat,292,144
-ra_in01.gat,136,189,0	warp	rachel52	1,1,ra_in01.gat,179,189
-ra_in01.gat,287,189,0	warp	rachel53	1,1,ra_in01.gat,240,189
-ra_in01.gat,183,31,0	warp	rachel54	1,1,ra_in01.gat,239,21
-ra_in01.gat,355,374,0	warp	rachel55	1,1,ra_in01.gat,308,374
-ra_in01.gat,221,380,0	warp	rachel56	1,1,ra_in01.gat,287,371
-ra_in01.gat,381,268,0	warp	rachel57	1,1,ra_in01.gat,387,200
-ra_in01.gat,330,296,0	warp	rachel58	1,1,ra_in01.gat,371,255
-ra_in01.gat,381,324,0	warp	rachel59	1,1,ra_in01.gat,319,299
-ra_in01.gat,109,385,0	warp	rachel60	1,1,ra_in01.gat,174,370
-ra_in01.gat,126,334,0	warp	rachel61	1,1,ra_in01.gat,169,369
-ra_in01.gat,197,312,0	warp	rachel62	1,1,ra_in01.gat,245,299
-ra_in01.gat,194,245,0	warp	rachel63	1,1,ra_in01.gat,190,302
-ra_in01.gat,314,62,0	warp	rachel64	1,1,ra_in01.gat,361,61
-ra_in01.gat,339,120,0	warp	rachel65	1,1,ra_in01.gat,297,63
-ra_temin.gat,169,18,0	warp	rachel66	1,1,ra_temple.gat,119,175
-ra_temin.gat,239,253,0	warp	rachel67	1,1,ra_temin.gat,130,88
-ra_temin.gat,312,253,0	warp	rachel68	1,1,ra_temin.gat,206,88
-ra_temin.gat,27,299,0	warp	rachel69	1,1,ra_temin.gat,275,328
-ra_temsky.gat,99,8,0	warp	rachel70	1,1,ra_temin.gat,275,231
-ra_temsky.gat,99,135,0	warp	rachel71	1,1,ra_temsky.gat,99,113
-ra_temsky.gat,137,139,0	warp	rachel72	1,1,ra_temsky.gat,109,143
-ra_temsky.gat,62,139,0	warp	rachel73	1,1,ra_temsky.gat,91,143
-rachel.gat,25,125,0	warp	rachel74	1,1,ra_fild11.gat,353,226
-rachel.gat,275,125,0	warp	rachel75	1,1,ra_fild12.gat,40,226
-rachel.gat,130,20,0	warp	rachel76	1,1,ve_fild02.gat,196,379
-que_rachel.gat,130,93,0	warp	rachel77	1,1,que_rachel.gat,239,258
-que_rachel.gat,206,93,0	warp	rachel78	1,1,que_rachel.gat,312,258
-que_rachel.gat,275,332,0	warp	rachel79	1,1,que_rachel.gat,27,305
-que_rachel.gat,239,253,0	warp	rachel80	1,1,que_rachel.gat,130,88
-que_rachel.gat,312,253,0	warp	rachel81	1,1,que_rachel.gat,206,88
-que_rachel.gat,27,299,0	warp	rachel82	1,1,que_rachel.gat,275,328
-ra_in01.gat,309,70,0	warp	rachel83	1,1,rachel.gat,108,175
-rachel.gat,105,171,0	warp	rachel84	1,1,ra_in01.gat,309,65
-ra_in01.gat,375,109,0	warp	rachel85	1,1,rachel.gat,116,154
-rachel.gat,116,158,0	warp	rachel86	1,1,ra_in01.gat,375,114
-ra_temin.gat,275,243,0	warp	rachel87	1,1,ra_temin.gat,131,131
+pay_fild01.gat,333,361,0	warp	pay-South Field	5,3,payon.gat,122,31
+payon.gat,122,27,0	warp	South Field-pay	5,3,pay_fild01.gat,333,356
+payon.gat,156,247,0	warp	emperor_payER7	1,1,payon_in03.gat,98,117
+payon.gat,107,326,0	warp	empress_payES13	1,1,payon_in03.gat,20,63
+payon.gat,155,328,0	warp	kitchen_payK3	1,1,payon_in03.gat,165,143
+payon.gat,189,233,0	warp	magazine_payM1	1,1,payon_in03.gat,149,39
+payon.gat,127,204,0	warp	annex_payA7	1,1,payon_in03.gat,82,19
+payon.gat,136,158,0	warp	weapon_payW	1,1,payon_in01.gat,20,129
+payon.gat,130,169,0	warp	smith_payS	1,1,payon_in01.gat,13,136
+payon.gat,141,85,0	warp	tool_payT3	1,1,payon_in01.gat,14,51
+payon.gat,223,117,0	warp	inn_payI3	1,1,payon_in01.gat,175,11
+payon.gat,269,152,0	warp	house1_payH1i3	1,1,payon_in01.gat,89,9
+payon.gat,151,127,0	warp	house2_payH2i	1,1,payon_in01.gat,56,53
+payon.gat,256,285,0	warp	house3_payH3i	1,1,payon_in01.gat,45,11
+payon_in01.gat,13,139,0	warp	payS_smith	1,1,payon.gat,130,172
+payon_in01.gat,23,129,0	warp	payW_weapon	1,1,payon.gat,139,158
+payon_in01.gat,10,80,0	warp	payT1_payT2	1,1,payon_in01.gat,10,56
+payon_in01.gat,10,59,0	warp	payT2_payT1	1,1,payon_in01.gat,10,83
+payon_in01.gat,17,51,0	warp	payT3_tool	1,1,payon.gat,144,85
+payon_in01.gat,10,38,0	warp	payT4_payT5	1,1,payon_in01.gat,10,14
+payon_in01.gat,10,17,0	warp	payT5_payT4	1,1,payon_in01.gat,10,41
+payon_in01.gat,107,71,0	warp	payH1i1_payH1i2	1,1,payon_in01.gat,95,37
+payon_in01.gat,92,37,0	warp	payH1i2_payH1i1	1,1,payon_in01.gat,104,71
+payon_in01.gat,86,9,0	warp	payH1i3_house1	1,1,payon.gat,266,152
+payon_in01.gat,56,50,0	warp	payH2i_house2	1,1,payon.gat,151,124
+payon_in01.gat,42,11,0	warp	payH3i_house3	1,1,payon.gat,253,285
+payon_in01.gat,181,70,0	warp	payI1_payI2	1,1,payon_in01.gat,181,40
+payon_in01.gat,181,43,0	warp	payI2_payI1	1,1,payon_in01.gat,181,73
+payon_in01.gat,172,11,0	warp	payI3_inn	1,1,payon.gat,220,117
+payon_in01.gat,193,92,0	warp	payI4_payI5	1,1,payon_in01.gat,143,61
+payon_in01.gat,146,61,0	warp	payI5_payI4	1,1,payon_in01.gat,193,89
+payon_in01.gat,133,42,0	warp	payI6_payI7	1,1,payon_in01.gat,133,18
+payon_in01.gat,133,21,0	warp	payI7_payI6	1,1,payon_in01.gat,133,45
+payon_in03.gat,12,172,0	warp	payES1_payES2	1,1,payon_in03.gat,12,158
+payon_in03.gat,12,161,0	warp	payES2_payES1	1,1,payon_in03.gat,12,175
+payon_in03.gat,28,172,0	warp	payES3_payES4	1,1,payon_in03.gat,28,158
+payon_in03.gat,28,161,0	warp	payES4_payES3	1,1,payon_in03.gat,28,175
+payon_in03.gat,12,142,0	warp	payES5_payES6	1,1,payon_in03.gat,12,128
+payon_in03.gat,12,131,0	warp	payES6_payES5	1,1,payon_in03.gat,12,145
+payon_in03.gat,28,142,0	warp	payES7_payES8	1,1,payon_in03.gat,28,128
+payon_in03.gat,28,131,0	warp	payES8_payES7	1,1,payon_in03.gat,28,145
+payon_in03.gat,20,118,0	warp	payES9_payES10	1,1,payon_in03.gat,20,100
+payon_in03.gat,20,103,0	warp	payES10_payES9	1,1,payon_in03.gat,20,121
+payon_in03.gat,20,86,0	warp	payES11_payES12	1,1,payon_in03.gat,20,70
+payon_in03.gat,20,73,0	warp	payES12_payES11	1,1,payon_in03.gat,20,89
+payon_in03.gat,20,60,0	warp	payES13_empress	1,1,payon.gat,107,323
+payon_in03.gat,99,148,0	warp	payER1_payER2	1,1,payon_in03.gat,99,130
+payon_in03.gat,99,133,0	warp	payER2_payER1	1,1,payon_in03.gat,99,151
+payon_in03.gat,83,124,0	warp	payER3_payER4	1,1,payon_in03.gat,93,124
+payon_in03.gat,90,124,0	warp	payER4_payER3	1,1,payon_in03.gat,80,124
+payon_in03.gat,107,124,0	warp	payER5_payER6	1,1,payon_in03.gat,117,124
+payon_in03.gat,114,124,0	warp	payER6_payER5	1,1,payon_in03.gat,104,124
+payon_in03.gat,98,114,0	warp	payER7_emperor	1,1,payon.gat,156,244
+payon_in03.gat,186,178,0	warp	payK1_payK2	1,1,payon_in03.gat,186,150
+payon_in03.gat,186,153,0	warp	payK2_payK1	1,1,payon_in03.gat,186,181
+payon_in03.gat,165,140,0	warp	payK3_kitchen	1,1,payon.gat,155,325
+payon_in03.gat,21,19,0	warp	payA1_payA2	1,1,payon_in03.gat,31,19
+payon_in03.gat,28,19,0	warp	payA2_payA1	1,1,payon_in03.gat,18,19
+payon_in03.gat,39,19,0	warp	payA3_payA4	1,1,payon_in03.gat,49,19
+payon_in03.gat,46,19,0	warp	payA4_payA3	1,1,payon_in03.gat,36,19
+payon_in03.gat,67,19,0	warp	payA5_payA6	1,1,payon_in03.gat,77,19
+payon_in03.gat,74,19,0	warp	payA6_payA5	1,1,payon_in03.gat,64,19
+payon_in03.gat,85,19,0	warp	payA7_annex	1,1,payon.gat,130,204
+payon_in03.gat,146,39,0	warp	payM1_magazine	1,1,payon.gat,186,233
+payon_in03.gat,158,32,0	warp	payM2_payM3	1,1,payon_in03.gat,130,14
+payon_in03.gat,130,17,0	warp	payM3_payM2	1,1,payon_in03.gat,158,35
+payon_in03.gat,172,32,0	warp	payM4_payM5	1,1,payon_in03.gat,160,14
+payon_in03.gat,160,17,0	warp	payM5_payM4	1,1,payon_in03.gat,172,35
+payon_in03.gat,186,32,0	warp	payM6_payM7	1,1,payon_in03.gat,190,13
+payon_in03.gat,190,17,0	warp	payM7_payM6	1,1,payon_in03.gat,186,35
+payon.gat,228,329,0	warp	Archer Villagei	4,2,pay_arche.gat,81,22
+pay_arche.gat,81,17,0	warp	Archer Villageo	5,2,payon.gat,228,326
+payon_in02.gat,82,45,0	warp	Kit Shopo	2,2,pay_arche.gat,74,153
+pay_arche.gat,71,156,0	warp	Kit Shopi	2,2,payon_in02.gat,82,41
+payon_in02.gat,70,33,0	warp	Kit ShopA	2,2,payon_in02.gat,58,33
+payon_in02.gat,61,33,0	warp	Kit Shop A'	2,2,payon_in02.gat,73,33
+payon_in02.gat,64,56,0	warp	Archer Guildo	2,2,pay_arche.gat,141,161
+pay_arche.gat,145,165,0	warp	Archer Guildi	2,2,payon_in02.gat,64,60
+payon_in02.gat,52,67,0	warp	Archer Guild A	2,2,payon_in02.gat,32,67
+payon_in02.gat,35,67,0	warp	Archer Guild A'	2,2,payon_in02.gat,55,67
+payon_in02.gat,75,67,0	warp	Archer Guild B	2,2,payon_in02.gat,13,25
+payon_in02.gat,10,25,0	warp	Archer Guild B'	2,2,payon_in02.gat,72,67
+payon_in02.gat,50,4,0	warp	Dwellingo	3,1,pay_arche.gat,92,166
+pay_arche.gat,92,170,0	warp	Dwellingi	2,2,payon_in02.gat,50,7
 
 
 //--------------------------------------------------------------
-// Umbala Town Warp Portals
+// Prontera Town Warp Portals - [Tsuyuki]
 //--------------------------------------------------------------
 
-umbala.gat,219,189,0	warp	umba0027	0,0,um_in.gat,32,70
-um_in.gat,28,70,0	warp	umba0028	1,1,umbala.gat,217,187
-umbala.gat,125,157,0	warp	umba0029	1,1,um_in.gat,155,114
-um_in.gat,155,110,0	warp	umba0030	1,1,umbala.gat,126,152
-umbala.gat,138,129,0	warp	umba0031	1,1,um_in.gat,99,114
-um_in.gat,99,110,0	warp	umba0032	1,1,umbala.gat,136,127
-umbala.gat,95,186,0	warp	umba0033	1,1,um_in.gat,142,42
-um_in.gat,141,39,0	warp	umba0034	1,1,umbala.gat,95,183
-umbala.gat,100,202,0	warp	umba0035	1,1,um_in.gat,163,70
-um_in.gat,166,70,0	warp	umba0036	1,1,umbala.gat,102,204
-umbala.gat,156,249,0	warp	umba0037	1,1,um_in.gat,99,67
-um_in.gat,99,63,0	warp	umba0038	1,1,umbala.gat,160,247
-umbala.gat,108,164,0	warp	umba0039	1,1,um_in.gat,38,112
-um_in.gat,38,110,0	warp	umba0040	1,1,umbala.gat,104,163
+prt_fild01.gat,199,24,0	warp	North Field-Siege	3,2,prt_gld.gat,159,293
+prt_castle.gat,102,181,0	warp	Siege-North Field	6,2,prt_gld.gat,159,29
+prontera.gat,289,203,0	warp	prt-East Field	2,3,prt_fild06.gat,27,193
+prt_fild06.gat,23,193,0	warp	East Field-prt	2,3,prontera.gat,285,203
+prontera.gat,156,22,0	warp	prt-South Field	3,2,prt_fild08.gat,170,375
+prt_fild08.gat,170,378,0	warp	South Field-prt	3,2,prontera.gat,156,26
+prontera.gat,22,203,0	warp	prt-West Field	2,3,prt_fild05.gat,367,205
+prt_fild05.gat,373,205,0	warp	West Field-prt	3,3,prontera.gat,26,203
+prt_in.gat,234,163,0	warp	City HallA	1,3,prt_in.gat,215,163
+prt_in.gat,217,163,0	warp	City HallA'	1,3,prt_in.gat,236,163
+prt_in.gat,208,179,0	warp	City HallAo	3,1,prontera.gat,76,102
+prontera.gat,73,100,0	warp	City HallAi	1,1,prt_in.gat,208,176
+prt_in.gat,263,163,0	warp	City HallB	1,3,prt_in.gat,276,163
+prt_in.gat,274,163,0	warp	City HallB'	1,3,prt_in.gat,261,163
+prt_in.gat,282,179,0	warp	City HallBo	3,1,prontera.gat,87,91
+prontera.gat,84,89,0	warp	City HallBi	1,1,prt_in.gat,282,176
+prt_in.gat,248,173,0	warp	City HallCo	3,2,prontera.gat,77,93
+prontera.gat,74,90,0	warp	City HallCi	2,2,prt_in.gat,248,170
+prt_church.gat,100,56,0	warp	Churcho	7,1,prontera.gat,234,314
+prontera.gat,237,317,0	warp	Churchi	2,2,prt_church.gat,100,60
+prt_in.gat,240,141,0	warp	Inno	3,1,prontera.gat,107,218
+prontera.gat,107,215,0	warp	Inni	2,2,prt_in.gat,240,139
+prt_in.gat,256,131,0	warp	Inn2F'	2,2,prt_in.gat,254,110
+prt_in.gat,254,113,0	warp	Inn1F'	3,2,prt_in.gat,256,134
+prt_in.gat,68,130,0	warp	Inno	2,1,prontera.gat,204,188
+prontera.gat,204,192,0	warp	Inni	2,2,prt_in.gat,68,134
+prt_in.gat,70,143,0	warp	Inn2F'	2,1,prt_in.gat,70,165
+prt_in.gat,70,162,0	warp	Inn1F'	2,1,prt_in.gat,70,140
+prt_in.gat,48,65,0	warp	Trading PostA	1,3,prt_in.gat,34,65
+prt_in.gat,37,65,0	warp	Trading PostA'	1,3,prt_in.gat,51,65
+prt_in.gat,69,65,0	warp	Trading PostB	1,3,prt_in.gat,85,65
+prt_in.gat,82,65,0	warp	Trading PostB'	1,3,prt_in.gat,66,65
+prt_in.gat,60,77,0	warp	Trading PostCo	2,1,prontera.gat,175,188
+prontera.gat,179,184,0	warp	Trading PostCi	2,2,prt_in.gat,60,73
+prt_in.gat,168,124,0	warp	Armoryo	2,1,prontera.gat,174,218
+prontera.gat,177,221,0	warp	Armoryi	2,2,prt_in.gat,168,128
+prt_in.gat,183,97,0	warp	Libraryo	1,2,prontera.gat,120,264
+prontera.gat,120,267,0	warp	Libraryi	2,2,prt_in.gat,180,97
+prt_in.gat,181,55,0	warp	Libraryo	1,2,prontera.gat,192,264
+prontera.gat,192,267,0	warp	Libraryi	2,2,prt_in.gat,178,55
+prt_in.gat,47,29,0	warp	Pubo	2,1,prontera.gat,46,67
+prontera.gat,42,67,0	warp	Pubi	2,2,prt_in.gat,44,29
+prt_in.gat,172,33,0	warp	Pubo	2,1,prontera.gat,205,157
+prontera.gat,208,154,0	warp	Pubi	2,2,prt_in.gat,172,29
+prt_in.gat,135,71,0	warp	Kit Shopo	1,2,prontera.gat,136,219
+prontera.gat,132,222,0	warp	Kit Shopi	1,1,prt_in.gat,131,71
+prt_in.gat,53,105,0	warp	Job Agencyo	1,2,prontera.gat,136,186
+prontera.gat,133,183,0	warp	Job Agencyi	2,2,prt_in.gat,50,105
+prt_in.gat,80,113,0	warp	Chivarlyo	2,1,prontera.gat,48,343
+prontera.gat,45,346,0	warp	Chivarlyi	2,2,prt_in.gat,80,110
+prt_in.gat,285,130,0	warp	Upper	6,6,prontera.gat,147,287
+prt_in.gat,282,100,0	warp	2nd	6,6,prontera.gat,147,287
+prt_in.gat,280,68,0	warp	3rd	6,6,prontera.gat,147,287
+prt_in.gat,281,36,0	warp	3rd	6,6,prontera.gat,147,287
+prontera.gat,156,360,0	warp	PronteraCastlei	4,2,prt_castle.gat,102,20
+prt_castle.gat,102,16,0	warp	PronteraCastleo	6,2,prontera.gat,156,356
+prt_castle.gat,82,29,0	warp	A	1,1,prt_castle.gat,56,29
+prt_castle.gat,59,29,0	warp	A'	2,2,prt_castle.gat,85,29
+prt_castle.gat,121,29,0	warp	B	1,1,prt_castle.gat,148,29
+prt_castle.gat,144,29,0	warp	B'	2,2,prt_castle.gat,117,29
+prt_castle.gat,102,73,0	warp	C	3,2,prt_castle.gat,102,91
+prt_castle.gat,102,88,0	warp	C'	3,2,prt_castle.gat,102,70
+prt_castle.gat,92,107,0	warp	D-L1	2,3,prt_castle.gat,72,107
+prt_castle.gat,75,107,0	warp	D-L1'	2,3,prt_castle.gat,95,107
+prt_castle.gat,54,113,0	warp	D-L2	1,1,prt_castle.gat,27,113
+prt_castle.gat,31,113,0	warp	D-L2'	1,1,prt_castle.gat,58,113
+prt_castle.gat,28,121,0	warp	D-L3	2,2,prt_castle.gat,40,141
+prt_castle.gat,40,138,0	warp	D-L3'	3,2,prt_castle.gat,28,118
+prt_castle.gat,45,145,0	warp	D-L4	1,1,prt_castle.gat,72,153
+prt_castle.gat,68,153,0	warp	D-L4'	1,1,prt_castle.gat,42,145
+prt_castle.gat,113,107,0	warp	D-R1	2,3,prt_castle.gat,134,107
+prt_castle.gat,130,107,0	warp	D-R1'	2,3,prt_castle.gat,110,107
+prt_castle.gat,149,113,0	warp	D-R2	1,1,prt_castle.gat,175,113
+prt_castle.gat,172,113,0	warp	D-R2'	1,1,prt_castle.gat,146,113
+prt_castle.gat,176,121,0	warp	D-R3	3,2,prt_castle.gat,170,141
+prt_castle.gat,170,138,0	warp	D-R3'	3,2,prt_castle.gat,176,118
+prt_castle.gat,164,145,0	warp	D-R4	1,1,prt_castle.gat,132,153
+prt_castle.gat,135,153,0	warp	D-R4'	1,1,prt_castle.gat,167,145
+prt_castle.gat,102,129,0	warp	D	3,2,prt_castle.gat,102,143
+prt_castle.gat,102,140,0	warp	D'	3,2,prt_castle.gat,102,126
+prt_church.gat,90,81,0	warp	RoomPi-RoomPo	1,2,prt_church.gat,27,19
+prt_church.gat,31,19,0	warp	RoomPo-RoomPi	1,2,prt_church.gat,94,81
+prt_church.gat,109,81,0	warp	RoomAi-RoomAo	1,2,prt_church.gat,172,19
+prt_church.gat,168,19,0	warp	RoomAo-RoomAi	1,2,prt_church.gat,105,81
+prt_church.gat,115,122,0	warp	#sazekan	1,1,prt_church.gat,168,106
+prt_church.gat,166,106,0	warp	#prtchhall	1,1,prt_church.gat,112,122
 
 
 //--------------------------------------------------------------
-// Veins Town Warp Portals
+// Rachel Town Warp Portals - [Tsuyuki]
 //--------------------------------------------------------------
 
-veins.gat,218,361,0    warp    veinswarp0501    1,1,ve_fild06.gat,152,221
-veins.gat,146,24,0        warp    veinswarp0502    1,1,ve_fild07.gat,148,370
-veins.gat,196,260,0    warp    veinswarp1001    1,1,ve_in.gat,351,320
-ve_in.gat,351,317,0    warp    veinswarp1002    1,1,veins.gat,196,257
-veins.gat,116,277,0    warp    veinswarp1003    1,1,ve_in.gat,99,218
-ve_in.gat,99,215,0    warp    veinswarp1004    1,1,veins.gat,113,277
-ve_in.gat,76,229,0    warp    veinswarp1005    1,1,ve_in.gat,74,160
-ve_in.gat,71,160,0    warp    veinswarp1006    1,1,ve_in.gat,73,229
-veins.gat,148,220,0    warp    veinswarp1007    1,1,ve_in.gat,253,127
-ve_in.gat,256,127,0    warp    veinswarp1008    1,1,veins.gat,150,217
-ve_in.gat,224,115,0    warp    veinswarp1009    1,1,ve_in.gat,312,114
-ve_in.gat,309,114,0    warp    veinswarp1010    1,1,ve_in.gat,221,115
-veins.gat,230,166,0    warp    veinswarp1011    1,1,ve_in.gat,251,286
-ve_in.gat,251,283,0    warp    veinswarp1012    1,1,veins.gat,230,163
-ve_in.gat,261,315,0    warp    veinswarp1013    1,1,ve_in.gat,177,296
-ve_in.gat,177,293,0    warp    veinswarp1014    1,1,ve_in.gat,261,312
-veins.gat,138,190,0    warp    veinswarp1015    1,1,ve_in.gat,349,251
-ve_in.gat,346,251,0    warp    veinswarp1016    1,1,veins.gat,135,190
-veins.gat,88,174,0    warp    veinswarp1017    1,1,ve_in.gat,77,294
-ve_in.gat,77,291,0    warp    veinswarp1018    1,1,veins.gat,88,171
-ve_in.gat,97,298,0    warp    veinswarp1019    1,1,ve_in.gat,125,372
-ve_in.gat,128,372,0    warp    veinswarp1020    1,1,ve_in.gat,100,298
-veins.gat,199,165,0    warp    veinswarp1021    1,1,ve_in.gat,183,206
-ve_in.gat,183,203,0    warp    veinswarp1022    1,1,veins.gat,199,162
-veins.gat,210,167,0    warp    veinswarp1023    1,1,ve_in.gat,203,211
-ve_in.gat,206,211,0    warp    veinswarp1024    1,1,veins.gat,213,167
-veins.gat,267,230,0    warp    veinswarp1025    1,1,ve_in.gat,283,223
-ve_in.gat,286,223,0    warp    veinswarp1026    1,1,veins.gat,268,227
-veins.gat,338,230,0    warp    veinswarp1027    1,1,ve_in.gat,194,372
-ve_in.gat,194,369,0    warp    veinswarp1028    1,1,veins.gat,335,230
+ra_fild11.gat,360,226,0	warp	raF11E_raWGate	1,1,rachel.gat,30,125
+rachel.gat,25,125,0	warp	raWGate_raF11E	1,1,ra_fild11.gat,353,226
+ra_fild12.gat,36,225,0	warp	raF12W_raEGate	1,1,rachel.gat,270,125
+rachel.gat,275,125,0	warp	raEGate_raF12W	1,1,ra_fild12.gat,40,226
+rachel.gat,150,249,0	warp	raNGate_raTemGate	1,1,ra_temple.gat,120,30
+rachel.gat,81,33,0	warp	raHouse1r_raInHouse1r	1,1,ra_in01.gat,237,198
+rachel.gat,61,33,0	warp	raHouse1l_raInHouse1l	1,1,ra_in01.gat,181,198
+rachel.gat,217,55,0	warp	raHouse2_raInHouse2	1,1,ra_in01.gat,250,34
+rachel.gat,179,220,0	warp	raHouse3_raInHouse3	1,1,ra_in01.gat,295,352
+rachel.gat,103,240,0	warp	raHouse4_raInHouse4	1,1,ra_in01.gat,343,193
+rachel.gat,216,160,0	warp	raHouse5_raInHouse5	1,1,ra_in01.gat,135,282
+rachel.gat,42,87,0	warp	raWeaDn_raInWeaDn	1,1,ra_in01.gat,171,359
+rachel.gat,42,109,0	warp	raWeaUp_raInWeaUp	1,1,ra_in01.gat,171,388
+rachel.gat,83,78,0	warp	raTool_raInTool	1,1,ra_in01.gat,249,266
+rachel.gat,115,149,0	warp	raInn_raInInn	1,1,ra_in01.gat,386,43
+rachel.gat,90,189,0	warp	raInnS1_raInInnS1	1,1,ra_in01.gat,192,148
+rachel.gat,108,200,0	warp	raInnS2_raInInnS2	1,1,ra_in01.gat,213,83
+ra_in01.gat,188,189,0	warp	raInHou101_raInHou102	1,1,ra_in01.gat,263,144
+ra_in01.gat,296,144,0	warp	raInHou103_raInHou104	1,1,ra_in01.gat,235,189
+ra_in01.gat,175,189,0	warp	raInHou105_raInHou106	1,1,ra_in01.gat,132,189
+ra_in01.gat,244,189,0	warp	raInHou107_raInHou108	1,1,ra_in01.gat,291,189
+ra_in01.gat,235,21,0	warp	raInHou201_raInHou202	1,1,ra_in01.gat,187,31
+ra_in01.gat,312,374,0	warp	raInHou301_raInHou302	1,1,ra_in01.gat,359,374
+ra_in01.gat,291,371,0	warp	raInHou303_raInHou304	1,1,ra_in01.gat,225,380
+ra_in01.gat,381,200,0	warp	raInHou401_raInHou402	1,1,ra_in01.gat,377,268
+ra_in01.gat,367,255,0	warp	raInHou403_raInHou404	1,1,ra_in01.gat,326,296
+ra_in01.gat,319,303,0	warp	raInHou405_raInHou406	1,1,ra_in01.gat,381,320
+ra_in01.gat,178,370,0	warp	raInWea01_raInWea02	1,1,ra_in01.gat,113,385
+ra_in01.gat,165,369,0	warp	raInWea03_raInWea04	1,1,ra_in01.gat,122,334
+ra_in01.gat,241,299,0	warp	raInTool01_raInTool02	1,1,ra_in01.gat,193,312
+ra_in01.gat,185,303,0	warp	raInTool03_raInTool04	1,1,ra_in01.gat,194,249
+ra_in01.gat,357,61,0	warp	raInInn01_raInInn02	1,1,ra_in01.gat,310,62
+ra_in01.gat,297,59,0	warp	raInInn03_raInInn04	1,1,ra_in01.gat,339,116
+ra_san01.gat,139,139,0	warp	saint2#rachel	1,1,ra_temin.gat,27,314
+ra_temin.gat,275,243,0	warp	gyoout1#rachel	1,1,ra_temin.gat,131,131
+ra_temin.gat,130,93,0	warp	raTemIn01_raTemIn02	1,1,ra_temin.gat,239,258
+ra_temin.gat,206,93,0	warp	raTemIn03_raTemIn04	1,1,ra_temin.gat,312,258
+ra_temin.gat,275,332,0	warp	raTemIn05_raTemIn06	1,1,ra_temin.gat,27,305
+ra_temin.gat,275,226,0	warp	raTemIn07_raTemSGate	1,1,ra_temsky.gat,99,11
+ra_temsky.gat,99,118,0	warp	raTemS01_raTemS02	1,1,ra_temsky.gat,99,140
+ra_temsky.gat,112,143,0	warp	raTemS03_raTemS04	1,1,ra_temsky.gat,141,139
+ra_temsky.gat,87,143,0	warp	raTemS05_raTemS06	1,1,ra_temsky.gat,58,139
+ra_temple.gat,120,22,0	warp	raTemGate_raNGate	1,1,rachel.gat,150,243
+ra_in01.gat,237,202,0	warp	raInHouse1r_raHouse1r	1,1,rachel.gat,81,38
+ra_in01.gat,181,202,0	warp	raInHouse1l_raHouse1l	1,1,rachel.gat,61,38
+ra_in01.gat,250,38,0	warp	raInHouse2_raHouse2	1,1,rachel.gat,217,60
+ra_in01.gat,295,348,0	warp	raInHouse3_raHouse3	1,1,rachel.gat,179,215
+ra_in01.gat,339,193,0	warp	raInHouse4_raHouse4	1,1,rachel.gat,98,238
+ra_in01.gat,135,286,0	warp	raInHouse5_raHouse5	1,1,rachel.gat,216,164
+ra_in01.gat,171,355,0	warp	raInWeaDn_raWeaDn	1,1,rachel.gat,42,82
+ra_in01.gat,172,392,0	warp	raInWeaUp_raWeaUp	1,1,rachel.gat,42,114
+ra_in01.gat,249,262,0	warp	raInTool_raTool	1,1,rachel.gat,83,73
+ra_in01.gat,386,39,0	warp	raInInn_raInn	1,1,rachel.gat,115,144
+ra_in01.gat,192,152,0	warp	raInInnS1_raInnS1	1,1,rachel.gat,90,193
+ra_in01.gat,213,79,0	warp	raInInnS2_raInnS2	1,1,rachel.gat,108,195
+ra_in01.gat,259,144,0	warp	raInHou102_raInHou101	1,1,ra_in01.gat,184,189
+ra_in01.gat,231,189,0	warp	raInHou104_raInHou103	1,1,ra_in01.gat,292,144
+ra_in01.gat,136,189,0	warp	raInHou106_raInHou105	1,1,ra_in01.gat,179,189
+ra_in01.gat,287,189,0	warp	raInHou108_raInHou107	1,1,ra_in01.gat,240,189
+ra_in01.gat,183,31,0	warp	raInHou202_raInHou201	1,1,ra_in01.gat,239,21
+ra_in01.gat,355,374,0	warp	raInHou302_raInHou301	1,1,ra_in01.gat,308,374
+ra_in01.gat,221,380,0	warp	raInHou304_raInHou303	1,1,ra_in01.gat,287,371
+ra_in01.gat,381,268,0	warp	raInHou402_raInHou401	1,1,ra_in01.gat,387,200
+ra_in01.gat,330,296,0	warp	raInHou404_raInHou403	1,1,ra_in01.gat,371,255
+ra_in01.gat,381,324,0	warp	raInHou406_raInHou405	1,1,ra_in01.gat,319,299
+ra_in01.gat,109,385,0	warp	raInWea02_raInWea01	1,1,ra_in01.gat,174,370
+ra_in01.gat,126,334,0	warp	raInWea04_raInWea03	1,1,ra_in01.gat,169,369
+ra_in01.gat,197,312,0	warp	raInTool02_raInTool01	1,1,ra_in01.gat,245,299
+ra_in01.gat,194,245,0	warp	raInTool04_raInTool03	1,1,ra_in01.gat,190,302
+ra_in01.gat,314,62,0	warp	raInInn02_raInInn01	1,1,ra_in01.gat,361,61
+ra_in01.gat,339,120,0	warp	raInInn04_raInInn03	1,1,ra_in01.gat,297,63
+ra_temin.gat,169,18,0	warp	raTemInDoor_raTemDoor	1,1,ra_temple.gat,119,175
+ra_temin.gat,239,253,0	warp	raTemIn02_raTemIn01	1,1,ra_temin.gat,130,88
+ra_temin.gat,312,253,0	warp	raTemIn04_raTemIn03	1,1,ra_temin.gat,206,88
+ra_temin.gat,27,299,0	warp	raTemIn06_raTemIn05	1,1,ra_temin.gat,275,328
+ra_temsky.gat,99,8,0	warp	raTemSGate_raTemIn07	1,1,ra_temin.gat,275,231
+ra_temsky.gat,99,135,0	warp	raTemS02_raTemS01	1,1,ra_temsky.gat,99,113
+ra_temsky.gat,137,139,0	warp	raTemS04_raTemS03	1,1,ra_temsky.gat,109,143
+ra_temsky.gat,62,139,0	warp	raTemS06_raTemS05	1,1,ra_temsky.gat,91,143
+que_rachel.gat,130,93,0	warp	raQue01_raQue02	1,1,que_rachel.gat,239,258
+que_rachel.gat,206,93,0	warp	raQue03_raQue04	1,1,que_rachel.gat,312,258
+que_rachel.gat,275,332,0	warp	raQue05_raQue06	1,1,que_rachel.gat,27,305
+que_rachel.gat,239,253,0	warp	raQue02_raQue01	1,1,que_rachel.gat,130,88
+que_rachel.gat,312,253,0	warp	raQue04_raQue03	1,1,que_rachel.gat,206,88
+que_rachel.gat,27,299,0	warp	raQue06_raQue05	1,1,que_rachel.gat,275,328
+ra_in01.gat,309,70,0	warp	raInInn05_raInnB	1,1,rachel.gat,108,175
+rachel.gat,105,171,0	warp	raInnB_raInInn05	1,1,ra_in01.gat,309,65
+ra_in01.gat,375,109,0	warp	raInInn06_raInnT	1,1,rachel.gat,116,154
+rachel.gat,116,158,0	warp	raInnT_raInInn06	1,1,ra_in01.gat,375,114
+
+
+//--------------------------------------------------------------
+// Umbala Town Warp Portals - [Tsuyuki]
+//--------------------------------------------------------------
+
+um_fild04.gat,215,339,0	warp	f04a_umbala	1,1,umbala.gat,130,82
+umbala.gat,130,79,0	warp	umbala_f04a	1,1,um_fild04.gat,215,336
+umbala.gat,68,253,0	warp	chiefGate_chief	1,1,um_in.gat,38,113
+umbala.gat,220,189,0	script	shamanGate_shaman	45,1,1,{
+OnTouch:
+	if (um_shaman == 4) {
+		warp "um_in.gat",32,71;
+	}
+	end;
+}
+umbala.gat,138,129,0	warp	toolGate_tool	1,1,um_in.gat,99,114
+umbala.gat,125,157,0	warp	waeponGate_waepon	1,1,um_in.gat,155,114
+umbala.gat,94,186,0	warp	houseA1Gate_houseA1	1,1,um_in.gat,141,42
+umbala.gat,100,203,0	warp	houseA2Gate_houseA2	1,1,um_in.gat,163,69
+umbala.gat,107,130,0	warp	houseBGate_houseB	1,1,um_in.gat,99,66
+um_in.gat,38,110,0	warp	chief_chiefGate	1,1,umbala.gat,66,250
+um_in.gat,29,71,0	warp	shaman_shamanGate	1,1,umbala.gat,217,186
+um_in.gat,99,111,0	warp	tool_toolGate	1,1,umbala.gat,136,127
+um_in.gat,155,111,0	warp	waepon_waeponGate	1,1,umbala.gat,126,154
+um_in.gat,141,39,0	warp	houseA1_houseA1Gate	1,1,umbala.gat,94,183
+um_in.gat,166,69,0	warp	houseA2_houseA2Gate	1,1,umbala.gat,102,205
+um_in.gat,99,63,0	warp	houseB_houseBGate	1,1,umbala.gat,108,127

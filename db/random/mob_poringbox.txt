@@ -19,3 +19,4 @@
 1582,Deviling,100000
 1613,Metaling,500000
 1784,Stapo,500000
+1836,Magmaring,500000

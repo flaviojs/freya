@@ -13,6 +13,10 @@
 
 Date	Added
 
+2007/08/29
+	* Changed: Disabled content past Episode 11.1 by default [Tsuyuki]
+	* Updated: All Warp Portals to official, converted from Aegis [Tsuyuki]
+
 2007/08/28
 	* Updated: The Comodo Gambling System with iRO dialogue, reconverted from Aegis [Tsuyuki]
 	 - Thanks to Ryan for converting all the item enums to IDs for me
@@ -20,7 +24,6 @@ Date	Added
 	* Updated: The Fortune Telling System with iRO dialogue, reconverted from Aegis [Tsuyuki]
 	* Updated: The Kiel Hyre Quest to official, converted from Aegis [Tsuyuki]
 	 - Imported iRO dialogue from L0ne_W0lf's custom version
-	* Updated: The Kiel Hyre Warp Portals to official, converted from Aegis [Tsuyuki]
 	* Added: The Hugel Monster Races System, converted from Aegis [Tsuyuki]
 	* Added: Cash Item Refinery, converted from Aegis [Tsuyuki]
 	* Updated: GvG System Warp Portals to official, converted from Aegis [Tsuyuki]
@@ -230,7 +233,7 @@ Date	Added
 	* Updated: Auction System NPCs, converted from Aegis [Tsuyuki]
 
 2007/06/15
-	* Updated: Bulletin Boards/Sign Posts, converted from Aegis [Tsuyuki]
+	* Updated: Bulletin Boards/Sign Posts to official, converted from Aegis [Tsuyuki]
 	* Added: The Heart Fragment Quest, converted from Aegis by SinSloth [Tsuyuki]
 	* Added: The Hugel Rebellion Quest, converted from Aegis by MasterOfMuppets [Tsuyuki]
 	* Updated: The Turtle Island Quest to official, converted from Aegis [Tsuyuki]
@@ -246,7 +249,7 @@ Date	Added
 	 - Mage Job Change Quest is still to-do, coming soon
 
 2007/06/11
-	* Updated: New item names in the item database [Rikter]
+	* Updated: New item names in the item database (Thanks to Rikter) [Tsuyuki]
 	* Updated: Monster database and fixed a major bug with it [Tsuyuki]
 	* Changed: Moved all current Moscovia script data to 'script/event/event_moscovia.txt' [Tsuyuki]
 	* Updated: Some warp portals by Playtester [Tsuyuki]

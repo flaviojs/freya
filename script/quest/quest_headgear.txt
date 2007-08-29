@@ -726,7 +726,7 @@ aldeba_in.gat,152,166,4	script	Trader	86,4,5,{
 			close;
 		}
 	case 4:
-		if ((countitem(Wooden_Block) > 119) && (Zeny > 9999)) {
+		if ((countitem(1019) > 119) && (Zeny > 9999)) {
 			delitem 1019,120;
 			set Zeny,Zeny-10000;
 			mes "[Trader]";
@@ -1290,7 +1290,7 @@ alberta_in.gat,28,145,4	script	Grampa	120,5,5,{
 	mes "[Grampa]";
 	mes "But my soul still burns with youthful vigor! It's just... This old body can't keep up anymore... *Hack! Wheeeeze~*";
 	next;
-	if (countitem(Tiger_Footskin) > 9) {
+	if (countitem(1030) > 9) {
 		switch(select("Show him Tiger's Footskin.","Exchange it with Boys Cap.","Cancel")) {
 		case 1:
 			mes "[Grampa]";
@@ -2232,7 +2232,7 @@ airport.gat,148,41,3	script	Freight Manager#toast	852,{
 	mes "yet. Where could h--Oh!";
 	mes "Hello, welcome to Einbroch~";
 	next;
-	if ((equippeditem(Well_Baked_Toast)) || (countitem(Well_Baked_Toast) > 0)) {
+	if ((equippeditem(5107)) || (countitem(5107) > 0)) {
 		mes "[Kirishu]";
 		mes "Wait a sec, that";
 		mes "Crunch Toast! You must";
@@ -3506,7 +3506,7 @@ geffen_in.gat,30,71,4	script	Eric	83,5,5,{
 		mes "These are the things I need for Grandfather's masterpiece.";
 		close;
 	case 3:
-		if ((countitem(999) > 39) && (countitem(984) > 0) && (countitem(Alchol) > 0) && (countitem(1003) > 0)) {
+		if ((countitem(999) > 39) && (countitem(984) > 0) && (countitem(970) > 0) && (countitem(1003) > 0)) {
 			delitem 999,40;
 			delitem 984,1;
 			delitem 970,1;
@@ -3814,7 +3814,7 @@ yuno_in03.gat,20,18,6	script	Nehris	726,{
 		mes "[Nehris]";
 		mes "This crown is an imitation of the one worn by the 'Mistress' monster. Wearing this will give you a look of brusque authority.";
 		next;
-		if ((countitem(Coronet) > 0) && (countitem(714) > 0) && (countitem(969) > 2) && (Zeny > 39999)) {
+		if ((countitem(2249) > 0) && (countitem(714) > 0) && (countitem(969) > 2) && (Zeny > 39999)) {
 			mes "[Nehris]";
 			mes "Thank you for";
 			mes "bringing everything.";
@@ -4315,7 +4315,7 @@ pay_dun03.gat,48,84,4	script	Nine Tails#Kitsune Man	762,{
 		mes "- you put some items into Kafra Storage. -";
 		close;
 	}
-	if (countitem(Fox_Tail) > 998) {
+	if (countitem(1022) > 998) {
 		mes "[Nine Tails]";
 		mes "Oh! You finally brought what I've asked, human. Okay, now I can bring her back to life!";
 		next;
@@ -7161,7 +7161,7 @@ OnTouch:
 	} else if ((orcs_hero_hat > 99) && (orcs_hero_hat < 10000)) {
 		set '@vic_now,orcs_hero_hat;
 		if (countitem(931) > 0) {
-			set '@vic_add,countitem(Orcish_Voucher);
+			set '@vic_add,countitem(931);
 			set '@vic_total,'@vic_now + '@vic_add;
 			set '@vic_remain,10000 - '@vic_total;
 			if ('@vic_total > 9999) {

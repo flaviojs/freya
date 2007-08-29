@@ -14,9 +14,13 @@
 //	1.0 First version, converted from Aegis [Tsuyuki]
 //--------------------------------------------------------------
 // Additional Notes: * Official-certified / Aegis-certified *
-// Activated every summer in official servers.
+// Only activated during the summer in official servers.
 //--------------------------------------------------------------
 
+
+//--------------------------------------------------------------
+// Ice Cream Makers - [Tsuyuki]
+//--------------------------------------------------------------
 
 morocc.gat,160,143,4	script	Ice Cream Maker	85,{
 

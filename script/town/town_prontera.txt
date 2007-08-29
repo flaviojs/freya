@@ -1357,7 +1357,7 @@ prontera.gat,73,140,0	script	Milk Vendor	86,{
 				close;
 
 		L_Case06:
-			set @bottle,countitem(Empty_Bottle);
+			set @bottle,countitem(713);
 			set @item_weight,@bottle*50;
 			set @gap,bottle*15;
 			if (Zeny < gap) goto L_Case07;

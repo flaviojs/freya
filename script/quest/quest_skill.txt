@@ -18,7 +18,7 @@
 
 
 //--------------------------------------------------------------
-// Acolyte -> Holy Light Skill Quest
+// Acolyte -> Holy Light Skill Quest - [Tsuyuki]
 //--------------------------------------------------------------
 
 prt_church.gat,173,23,4	script	Cleric	79,{
@@ -121,7 +121,7 @@ prt_church.gat,173,23,4	script	Cleric	79,{
 
 
 //--------------------------------------------------------------
-// Alchemist - Bio Ethics Homunculus Skill Quest
+// Alchemist - Bio Ethics Homunculus Skill Quest - [Tsuyuki]
 //--------------------------------------------------------------
 
 lhz_in01.gat,224,140,3	script	Kellasus	57,{
@@ -1253,7 +1253,7 @@ lhz_in01.gat,218,141,7	script	Alchemist	98,{
 
 
 //--------------------------------------------------------------
-// Alchemist -> Elemental Potion Creation Manual Quest
+// Alchemist -> Elemental Potion Creation Manual Quest - [Tsuyuki]
 //--------------------------------------------------------------
 
 yuno_in04.gat,33,108,4	script	Pisruik	883,{
@@ -2382,7 +2382,7 @@ yuno_in04.gat,33,106,4	script	Pile of Books	111,{
 
 
 //--------------------------------------------------------------
-// Archer -> Arrow Creation Skill Quest
+// Archer -> Arrow Creation Skill Quest - [Tsuyuki]
 //--------------------------------------------------------------
 
 morocc.gat,121,109,5	script	Roberto	88,{
@@ -2527,7 +2527,7 @@ morocc.gat,121,109,5	script	Roberto	88,{
 
 
 //--------------------------------------------------------------
-// Archer -> Arrow Repel Skill Quest
+// Archer -> Arrow Repel Skill Quest - [Tsuyuki]
 //--------------------------------------------------------------
 
 payon.gat,103,63,3	script	Jason	88,3,3,{
@@ -2661,7 +2661,7 @@ OnTouch:
 
 
 //--------------------------------------------------------------
-// Assassin -> Sonic Acceleration/Throw Venom Knife Skill Quest
+// Assassin -> Sonic Acceleration/Throw Venom Knife Skill Quest - [Tsuyuki]
 //--------------------------------------------------------------
 
 in_moc_16.gat,14,27,5	script	Assassin#realman	884,{
@@ -3653,7 +3653,7 @@ OnTouch:
 
 
 //--------------------------------------------------------------
-// Bard -> Pang Voice Skill Quest
+// Bard -> Pang Voice Skill Quest - [Tsuyuki]
 //--------------------------------------------------------------
 
 //que_job01.gat,65,92,3	script	Young Man#bard_q1	89,3,3,{
@@ -5337,7 +5337,7 @@ morocc_in.gat,166,76,7	script	Bartender#bard_qskill	46,{
 
 
 //--------------------------------------------------------------
-// Blacksmith -> Greed Skill Quest
+// Blacksmith -> Greed Skill Quest - [Tsuyuki]
 //--------------------------------------------------------------
 
 geffen.gat,172,52,1	script	Goodman	826,{
@@ -5625,7 +5625,7 @@ geffen.gat,172,52,1	script	Goodman	826,{
 
 
 //--------------------------------------------------------------
-// Blacksmith -> Unfair Trick Skill Quest
+// Blacksmith -> Unfair Trick Skill Quest - [Tsuyuki]
 //--------------------------------------------------------------
 
 geffen.gat,178,72,3	script	Akkie	726,{
@@ -6445,7 +6445,7 @@ geffen.gat,178,72,3	script	Akkie	726,{
 
 
 //--------------------------------------------------------------
-// Crusader -> Shrink Skill Quest
+// Crusader -> Shrink Skill Quest - [Tsuyuki]
 //--------------------------------------------------------------
 
 geffen.gat,110,117,3	script	Ford#11	752,{
@@ -8033,7 +8033,7 @@ prt_church.gat,87,127,3	script	Pastor#1011	755,{
 
 
 //--------------------------------------------------------------
-// Dancer -> Wink of Charm Skill Quest
+// Dancer -> Wink of Charm Skill Quest - [Tsuyuki]
 //--------------------------------------------------------------
 
 comodo.gat,204,172,5	script	Canell#qsk_dan01	724,{
@@ -9086,7 +9086,7 @@ prontera.gat,183,333,1	script	Aelle#qsk_dan02	79,{
 
 
 //--------------------------------------------------------------
-// Hunter -> Phantasmic Arrow Skill Quest
+// Hunter -> Phantasmic Arrow Skill Quest - [Tsuyuki]
 //--------------------------------------------------------------
 
 pay_arche.gat,109,169,3	script	Arpesto	712,{
@@ -9442,7 +9442,7 @@ pay_arche.gat,109,169,3	script	Arpesto	712,{
 
 
 //--------------------------------------------------------------
-// Knight -> Charge Attack Skill Quest
+// Knight -> Charge Attack Skill Quest - [Tsuyuki]
 //--------------------------------------------------------------
 
 prt_in.gat,85,99,3	script	Knight#kabuto	734,{
@@ -10056,7 +10056,7 @@ prontera.gat,66,358,5	script	Knight#gattack	733,{
 
 
 //--------------------------------------------------------------
-// Mage -> Energy Coat Skill Quest
+// Mage -> Energy Coat Skill Quest - [Tsuyuki]
 //--------------------------------------------------------------
 
 geffen_in.gat,151,119,4	script	Great Wizard	64,{
@@ -10206,7 +10206,7 @@ geffen_in.gat,151,119,4	script	Great Wizard	64,{
 
 
 //--------------------------------------------------------------
-// Merchant -> Crazy Uproar Skill Quest
+// Merchant -> Crazy Uproar Skill Quest - [Tsuyuki]
 //--------------------------------------------------------------
 
 alberta.gat,83,96,5	script	Necko	98,7,7,{
@@ -10377,7 +10377,7 @@ OnTouch:
 
 
 //--------------------------------------------------------------
-// Merchant -> Change Cart Skill Quest
+// Merchant -> Change Cart Skill Quest - [Tsuyuki]
 //--------------------------------------------------------------
 
 alberta.gat,119,221,6	script	Charlron	107,{
@@ -10539,7 +10539,7 @@ alberta.gat,119,221,6	script	Charlron	107,{
 
 
 //--------------------------------------------------------------
-// Merchant -> Cart Revolution Skill Quest
+// Merchant -> Cart Revolution Skill Quest - [Tsuyuki]
 //--------------------------------------------------------------
 
 alberta.gat,232,106,6	script	Gershaun	57,{
@@ -10936,7 +10936,7 @@ alberta.gat,232,106,6	script	Gershaun	57,{
 
 
 //--------------------------------------------------------------
-// Monk -> Ki Explosion/Ki Translation Skill Quests
+// Monk -> Ki Explosion/Ki Translation Skill Quests - [Tsuyuki]
 //--------------------------------------------------------------
 
 prt_monk.gat,270,198,3	script	Apprentice Monk	753,{
@@ -11363,7 +11363,7 @@ monk_test.gat,316,69,5	script	Monk	823,{
 
 
 //--------------------------------------------------------------
-// Novice -> First Aid/Act Dead Skill Quests
+// Novice -> First Aid/Act Dead Skill Quests - [Tsuyuki]
 //--------------------------------------------------------------
 
 prt_in.gat,234,133,4	script	Nami	66,{
@@ -11832,7 +11832,7 @@ prt_castle.gat,175,146,4	script	Nursing Instructor	50,{
 
 
 //--------------------------------------------------------------
-// Priest -> Redemptio Skill Quest
+// Priest -> Redemptio Skill Quest - [Tsuyuki]
 //--------------------------------------------------------------
 
 prt_church.gat,111,112,1	script	Sister Linus	79,{
@@ -12228,7 +12228,7 @@ prt_church.gat,111,112,1	script	Sister Linus	79,{
 
 
 //--------------------------------------------------------------
-// Rogue -> Close Confine Skill Quest
+// Rogue -> Close Confine Skill Quest - [Tsuyuki]
 //--------------------------------------------------------------
 
 in_rogue.gat,359,177,0	script	#killershow01	139,{
@@ -13851,7 +13851,7 @@ OnStartArena:
 
 
 //--------------------------------------------------------------
-// Sage -> Create Elemental Converter/Elemental Change Skill Quests
+// Sage -> Create Elemental Converter/Elemental Change Skill Quests - [Tsuyuki]
 //--------------------------------------------------------------
 
 yuno_in03.gat,176,24,3	script	Mishuna	755,{
@@ -14921,7 +14921,7 @@ yuno_in03.gat,176,24,3	script	Mishuna	755,{
 
 
 //--------------------------------------------------------------
-// Swordsman -> Fatal Blow Skill Quest
+// Swordsman -> Fatal Blow Skill Quest - [Tsuyuki]
 //--------------------------------------------------------------
 
 prt_in.gat,75,88,5	script	Leon Von Frich	85,3,3,{
@@ -15085,7 +15085,7 @@ OnTouch:
 
 
 //--------------------------------------------------------------
-// Swordsman -> Moving HP Recovery Skill Quest
+// Swordsman -> Moving HP Recovery Skill Quest - [Tsuyuki]
 //--------------------------------------------------------------
 
 izlude_in.gat,175,130,2	script	Knight De Thomas	98,{
@@ -15225,7 +15225,7 @@ izlude_in.gat,175,130,2	script	Knight De Thomas	98,{
 
 
 //--------------------------------------------------------------
-// Swordsman -> Auto-Berserk Skill Quest
+// Swordsman -> Auto-Berserk Skill Quest - [Tsuyuki]
 //--------------------------------------------------------------
 
 prt_in.gat,94,57,3	script	Juan	85,{
@@ -15402,7 +15402,7 @@ prt_in.gat,94,57,3	script	Juan	85,{
 
 
 //--------------------------------------------------------------
-// Thief -> Sand Attack/Find Stone/Stone Fling/Back Slide Skill Quests
+// Thief -> Sand Attack/Find Stone/Stone Fling/Back Slide Skill Quests - [Tsuyuki]
 //--------------------------------------------------------------
 
 moc_prydb1.gat,154,128,4	script	Alcouskou	118,{
@@ -15899,7 +15899,7 @@ payon.gat,91,77,3	script	Bag Seller	99,{
 
 
 //--------------------------------------------------------------
-// Wizard -> Sight Blaster Skill Quest
+// Wizard -> Sight Blaster Skill Quest - [Tsuyuki]
 //--------------------------------------------------------------
 
 gef_tower.gat,115,36,4	script	Meow	876,{

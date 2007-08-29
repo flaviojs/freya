@@ -19,18 +19,6 @@
 
 
 //--------------------------------------------------------------
-// Event Scripts
-//--------------------------------------------------------------
-
-// Event scripts are disabled by default
-// npc: script/event/event_crystal.txt
-// npc: script/event/event_ice_cream.txt
-// npc: script/event/event_moscovia.txt
-// npc: script/event/event_skill_reset.txt
-// npc: script/event/event_xmas.txt
-
-
-//--------------------------------------------------------------
 // Global Town Scripts
 //--------------------------------------------------------------
 
@@ -96,10 +84,11 @@ npc: script/job/job_wizard.txt
 // Miscellaneous Scripts
 //--------------------------------------------------------------
 
-npc: script/misc/misc_auction.txt
+// npc: script/misc/misc_auction.txt
 // npc: script/misc/misc_battle_arena.txt
 // npc: script/misc/misc_cash_item.txt
 npc: script/misc/misc_function.txt
+// npc: script/misc/misc_ice_cream.txt
 npc: script/misc/misc_mapflag.txt
 npc: script/misc/misc_marriage.txt
 // npc: script/misc/misc_monster_race.txt
@@ -119,7 +108,7 @@ npc: script/misc/misc_vote.txt
 
 npc: script/mob/mob_dungeon.txt
 npc: script/mob/mob_field.txt
-npc: script/mob/mob_future.txt
+// npc: script/mob/mob_future.txt
 npc: script/mob/mob_gvg.txt
 npc: script/mob/mob_job.txt
 npc: script/mob/mob_misc.txt
@@ -170,13 +159,13 @@ npc: script/town/town_lighthalzen.txt
 npc: script/town/town_louyang.txt
 npc: script/town/town_lutie.txt
 npc: script/town/town_morroc.txt
-npc: script/town/town_nameless.txt
+// npc: script/town/town_nameless.txt
 npc: script/town/town_niflheim.txt
 npc: script/town/town_payon.txt
 npc: script/town/town_prontera.txt
 npc: script/town/town_rachel.txt
 npc: script/town/town_umbala.txt
-npc: script/town/town_veins.txt
+// npc: script/town/town_veins.txt
 
 
 //--------------------------------------------------------------
@@ -185,8 +174,8 @@ npc: script/town/town_veins.txt
 
 npc: script/warp/warp_dungeon.txt
 npc: script/warp/warp_field.txt
+// npc: script/warp/warp_future.txt
 npc: script/warp/warp_gvg.txt
 npc: script/warp/warp_job.txt
 npc: script/warp/warp_misc.txt
-npc: script/warp/warp_pvp.txt
 npc: script/warp/warp_town.txt

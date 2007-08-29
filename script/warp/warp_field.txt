@@ -7,680 +7,593 @@
 //              /_/  |_|\____|_|  \___/|_|  \__,_|              
 //                 http://aurora.deltaanime.net                 
 //--------------------------------------------------------------
-// Script Title: Field Warp Portals	Author: A Lot of People
+// Script Title: Field Warp Portals	Author: Tsuyuki
 //--------------------------------------------------------------
 // Revision History: v1.0
 //--------------------------------------------------------------
-//	1.0 First version, merged together [Tsuyuki]
+//	1.0 First version, converted from Aegis [Tsuyuki]
 //--------------------------------------------------------------
-// Additional Notes: * Official-certified / Partially Aegis-certified *
+// Additional Notes: * Official-certified / Aegis-certified *
 //--------------------------------------------------------------
-
-
-//--------------------------------------------------------------
-// Amatsu Field Warp Portals
-//--------------------------------------------------------------
-
-ama_fild01.gat,174,332,0	warp	warp8003	1,1,ama_in01.gat,175,174
-ama_fild01.gat,75,29,0	warp	warp1961	1,1,amatsu.gat,247,287
 
 
 //--------------------------------------------------------------
-// Ayothaya Field Warp Portals
+// Comodo Field Warps - [Tsuyuki]
 //--------------------------------------------------------------
 
-ayo_fild02.gat,285,150,0	warp	ayodunwrp001	2,2,ayo_dun01.gat,275,17
-ayo_dun01.gat,275,14,0	warp	ayodunwrp002	2,2,ayo_fild02.gat,282,150
-
-
-//--------------------------------------------------------------
-// Comodo Field Warp Portals
-//--------------------------------------------------------------
-
-cmd_fild01.gat,222,24,0	warp	cmdf01	1,1,cmd_fild02.gat,222,372
-cmd_fild01.gat,26,318,0	warp	cmdf001	1,1,beach_dun3.gat,281,56
-cmd_fild01.gat,362,263,0	warp	cmdf03	1,1,cmd_fild03.gat,27,269
-cmd_fild01.gat,362,73,0	warp	cmdf02	1,1,cmd_fild03.gat,27,68
-cmd_fild02.gat,222,376,0	warp	cmdf01-1	1,1,cmd_fild01.gat,222,30
-cmd_fild02.gat,358,95,0	warp	cmdf04	1,1,cmd_fild04.gat,35,94
-cmd_fild02.gat,382,269,0	warp	cmdf05	1,1,cmd_fild04.gat,25,275
-cmd_fild03.gat,181,17,0	warp	cmdf06	1,1,cmd_fild04.gat,181,367
-cmd_fild03.gat,23,269,0	warp	cmdf03-1	1,1,cmd_fild01.gat,359,260
-cmd_fild03.gat,23,68,0	warp	cmdf02-1	1,1,cmd_fild01.gat,359,76
-cmd_fild03.gat,384,165,0	warp	cmdf07	1,1,cmd_fild05.gat,26,161
-cmd_fild04.gat,180,372,0	warp	cmdf06-1	1,1,cmd_fild03.gat,183,23
-cmd_fild04.gat,21,275,0	warp	cmdf05-1	1,1,cmd_fild02.gat,378,264
-cmd_fild04.gat,31,92,0	warp	cmdf04-1	1,1,cmd_fild02.gat,351,92
-cmd_fild04.gat,376,287,0	warp	cmdf08	1,1,cmd_fild06.gat,26,288
-cmd_fild05.gat,148,19,0	warp	cmdf09	1,1,cmd_fild06.gat,150,374
-cmd_fild05.gat,21,163,0	warp	cmdf07-1	1,1,cmd_fild03.gat,377,167
-cmd_fild06.gat,150,380,0	warp	cmdf09-1	1,1,cmd_fild05.gat,146,27
-cmd_fild06.gat,151,27,0	warp	cmfd10	1,1,cmd_fild07.gat,147,370
-cmd_fild06.gat,21,285,0	warp	cmdf08-1	1,1,cmd_fild04.gat,371,288
-cmd_fild06.gat,368,96,0	warp	cmdf11	1,1,cmd_fild08.gat,25,102
-cmd_fild06.gat,372,359,0	warp	cmdf12	1,1,cmd_fild08.gat,31,359
-cmd_fild06.gat,379,174,0	warp	cmdf13	1,1,cmd_fild08.gat,28,166
-cmd_fild07.gat,149,379,0	warp	cmdf10-1	10,1,cmd_fild06.gat,147,36
-cmd_fild07.gat,389,186,0	warp	cmdf14-1	1,3,cmd_fild09.gat,18,170
-cmd_fild08.gat,15,102,0	warp	cmdf11-1	1,1,cmd_fild06.gat,361,96
-cmd_fild08.gat,25,170,0	warp	cmdf13-1	1,1,cmd_fild06.gat,374,167
-cmd_fild08.gat,25,355,0	warp	cmdf12-1	1,1,cmd_fild06.gat,369,359
-cmd_fild08.gat,309,48,0	warp	cmdf16	2,1,cmd_fild09.gat,307,374
-cmd_fild08.gat,76,31,0	warp	cmdf15	2,1,cmd_fild09.gat,76,375
-cmd_fild09.gat,12,170,0	warp	cmdf14-2	1,4,cmd_fild07.gat,382,184
-cmd_fild09.gat,309,381,0	warp	cmdf16-1	2,1,cmd_fild08.gat,309,60
-cmd_fild09.gat,75,382,0	warp	cmdf15-1	2,1,cmd_fild08.gat,75,42
-cmd_fild08.gat,354,324,0	warp	cmd008	1,1,moc_fild12.gat,26,305
-cmd_fild09.gat,369,164,0	warp	cmd009	2,2,moc_fild18.gat,55,170
-moc_fild18.gat,51,170,0	warp	cmd010	1,3,cmd_fild09.gat,363,164
+cmd_fild01.gat,222,24,0	warp	fild01 to fild02	1,1,cmd_fild02.gat,222,372
+cmd_fild01.gat,362,73,0	warp	fild01 to fild03_bottom	1,1,cmd_fild03.gat,27,68
+cmd_fild01.gat,362,263,0	warp	fild01 to fild03_top	1,1,cmd_fild03.gat,27,269
+cmd_fild02.gat,222,376,0	warp	fild02 to 01	1,1,cmd_fild01.gat,222,30
+cmd_fild02.gat,382,269,0	warp	fild02 to 04_top	1,1,cmd_fild04.gat,25,275
+cmd_fild02.gat,358,95,0	warp	fild02 to 04_bottom	1,1,cmd_fild04.gat,35,94
+cmd_fild03.gat,23,269,0	warp	fild03 to 01_top	1,1,cmd_fild01.gat,359,260
+cmd_fild03.gat,23,68,0	warp	fild03 to 01_bottom	1,1,cmd_fild01.gat,359,76
+cmd_fild03.gat,181,17,0	warp	fild03 to 04	1,1,cmd_fild04.gat,181,367
+cmd_fild03.gat,384,165,0	warp	fild03 to 05	1,1,cmd_fild05.gat,26,161
+cmd_fild04.gat,21,275,0	warp	fild04 to 02_top	1,1,cmd_fild02.gat,378,264
+cmd_fild04.gat,31,92,0	warp	fild04 to 02_bottom	1,1,cmd_fild02.gat,351,92
+cmd_fild04.gat,376,287,0	warp	fild04 to 06	1,1,cmd_fild06.gat,26,288
+cmd_fild04.gat,180,372,0	warp	fild04 to 03	1,1,cmd_fild03.gat,183,23
+cmd_fild05.gat,21,163,0	warp	fild05 to 03	1,1,cmd_fild03.gat,377,167
+cmd_fild05.gat,148,19,0	warp	fild05 to 06	1,1,cmd_fild06.gat,150,374
+cmd_fild06.gat,150,380,0	warp	fild06 to 05	1,1,cmd_fild05.gat,146,27
+cmd_fild06.gat,21,285,0	warp	fild06 to 04	1,1,cmd_fild04.gat,371,288
+cmd_fild06.gat,151,27,0	warp	fild60 to 07	1,1,cmd_fild07.gat,147,370
+cmd_fild06.gat,368,96,0	warp	fild06 to 08_bottom	1,1,cmd_fild08.gat,25,102
+cmd_fild06.gat,379,174,0	warp	fild06 to 08_middle	1,1,cmd_fild08.gat,28,166
+cmd_fild06.gat,372,359,0	warp	fild06 to 08_top	1,1,cmd_fild08.gat,31,359
+cmd_fild07.gat,149,379,0	warp	fild07 to 06	10,1,cmd_fild06.gat,147,36
+cmd_fild07.gat,389,186,0	warp	fild07 to 09	1,3,cmd_fild09.gat,18,170
+cmd_fild08.gat,25,355,0	warp	fild08 to 06_top	1,1,cmd_fild06.gat,366,359
+cmd_fild08.gat,25,170,0	warp	fild08 to 06_mid	1,1,cmd_fild06.gat,374,167
+cmd_fild08.gat,15,102,0	warp	fild08 to 06_bottom	1,1,cmd_fild06.gat,361,96
+cmd_fild08.gat,76,31,0	warp	fild08 to 09_left	2,1,cmd_fild09.gat,76,375
+cmd_fild08.gat,309,48,0	warp	fild08 to 09_right	2,1,cmd_fild09.gat,307,374
+cmd_fild08.gat,354,324,0	warp	fild08 to moc_fild12	1,1,moc_fild12.gat,26,305
+cmd_fild09.gat,12,170,0	warp	fild09 to 07_top	1,4,cmd_fild07.gat,382,184
+cmd_fild09.gat,369,164,0	warp	fild09 to moc_fild18	2,2,moc_fild18.gat,55,170
+cmd_fild09.gat,309,381,0	warp	fild09 to 08_right	2,1,cmd_fild08.gat,309,60
+cmd_fild09.gat,75,382,0	warp	fild09 to 08_left	2,1,cmd_fild08.gat,75,42
+moc_fild18.gat,51,170,0	warp	moc_fild18 to cmd_fild09	1,3,cmd_fild09.gat,363,164
 
 
 //--------------------------------------------------------------
-// Einbroch Field Warp Portals
+// Einbroch Field Warps - [Tsuyuki]
 //--------------------------------------------------------------
 
-yuno_fild04.gat,251,21,0	warp	ein001	1,1,ein_fild06.gat,252,363
-ein_fild06.gat,252,365,0	warp	ein001a	1,1,yuno_fild04.gat,251,23
-yuno_fild07.gat,73,219,0	warp	ein002	1,1,ein_fild06.gat,338,170
-ein_fild06.gat,340,170,0	warp	ein002a	1,1,yuno_fild07.gat,75,219
-yuno_fild07.gat,56,76,0	warp	ein003	1,1,ein_fild06.gat,354,94
-ein_fild06.gat,356,94,0	warp	ein003a	1,1,yuno_fild07.gat,58,76
-yuno_fild11.gat,28,266,0	warp	ein004	1,1,ein_fild07.gat,380,263
-ein_fild07.gat,382,263,0	warp	ein004a	1,1,yuno_fild11.gat,30,266
-ein_fild06.gat,135,35,0	warp	ein005	1,1,ein_fild07.gat,147,360
-ein_fild07.gat,145,362,0	warp	ein005a	1,1,ein_fild06.gat,135,37
-ein_fild07.gat,191,42,0	warp	ein006	1,1,ein_fild10.gat,194,370
-ein_fild10.gat,194,372,0	warp	ein006a	1,1,ein_fild07.gat,191,44
-ein_fild10.gat,24,331,0	warp	ein007	1,1,ein_fild09.gat,327,346
-ein_fild09.gat,329,346,0	warp	ein007a	1,1,ein_fild10.gat,26,331
-ein_fild09.gat,34,132,0	warp	ein008	1,1,ein_fild08.gat,361,128
-ein_fild08.gat,363,128,0	warp	ein008a	1,1,ein_fild09.gat,36,132
-ein_fild09.gat,70,353,0	warp	ein009	1,1,einbech.gat,62,33
-ein_fild04.gat,20,251,0	warp	ein046	1,1,ein_fild03.gat,361,257
-ein_fild03.gat,363,257,0	warp	ein046a	1,1,ein_fild04.gat,22,251
-ein_fild04.gat,14,215,0	warp	ein047	1,1,ein_fild03.gat,359,219
-ein_fild03.gat,361,219,0	warp	ein047a	1,1,ein_fild04.gat,16,215
-ein_fild04.gat,14,205,0	warp	ein048	1,1,ein_fild03.gat,359,204
-ein_fild03.gat,361,204,0	warp	ein048a	1,1,ein_fild04.gat,16,205
-ein_fild03.gat,142,32,0	warp	ein049	1,1,lhz_fild02.gat,166,365
-lhz_fild02.gat,166,367,0	warp	ein049a	1,1,ein_fild03.gat,142,34
-lhz_fild02.gat,164,37,0	warp	ein050	1,1,lhz_fild03.gat,158,347
-lhz_fild03.gat,158,349,0	warp	ein050a	1,1,lhz_fild02.gat,164,39
-lhz_fild03.gat,363,283,0	warp	ein051	1,1,ein_fild08.gat,25,275
-ein_fild08.gat,23,275,0	warp	ein051a	1,1,lhz_fild03.gat,361,283
+ein_fild06.gat,251,365,0	warp	EinF06A_YunoF04a	1,1,yuno_fild04.gat,249,25
+ein_fild06.gat,335,176,0	warp	EinF06B_YunoF07b	1,1,yuno_fild07.gat,76,220
+ein_fild06.gat,355,95,0	warp	EinF06C_YunoF07a	1,1,yuno_fild07.gat,60,79
+ein_fild06.gat,135,36,0	warp	EinF06D_EinF07A	1,1,ein_fild07.gat,147,359
+ein_fild07.gat,381,264,0	warp	EinF07B_YunoF11a	1,1,yuno_fild11.gat,31,266
+ein_fild07.gat,183,43,0	warp	EinF07C_EinF10A	1,1,ein_fild10.gat,196,368
+ein_fild09.gat,328,344,0	warp	EinF09B_EinF10C	1,1,ein_fild10.gat,28,330
+ein_fild09.gat,34,135,0	warp	EinF09D_EinF08B	1,1,ein_fild08.gat,358,130
+
+yuno_fild04.gat,249,22,0	warp	YunoF04a_EinF06A	1,1,ein_fild06.gat,251,362
+yuno_fild07.gat,73,220,0	warp	YunoF07b_EinF06B	1,1,ein_fild06.gat,332,176
+yuno_fild07.gat,57,79,0	warp	YunoF07a_EinF06C	1,1,ein_fild06.gat,352,95
+ein_fild07.gat,144,362,0	warp	EinF07A_EinF06D	1,1,ein_fild06.gat,135,39
+yuno_fild11.gat,28,266,0	warp	YunoF11a_EinF07B	1,1,ein_fild07.gat,378,264
+ein_fild10.gat,196,371,0	warp	EinF10A_EinF07C	1,1,ein_fild07.gat,179,46
+ein_fild10.gat,25,330,0	warp	EinF10C_EinF09B	1,1,ein_fild09.gat,325,344
+ein_fild08.gat,361,129,0	warp	EinF08B_EinF09D	1,1,ein_fild09.gat,37,135
 
 
 //--------------------------------------------------------------
-// Geffen Field Warp Portals
+// Geffen Field Warp Portals - [Tsuyuki]
 //--------------------------------------------------------------
 
-gef_fild00.gat,267,382,0	warp	gef007	4,2,mjolnir_06.gat,265,32
-gef_fild00.gat,381,137,0	warp	gef008	3,9,prt_fild00.gat,24,125
-gef_fild00.gat,40,199,0	warp	gef009	2,7,geffen.gat,213,119
-gef_fild01.gat,382,111,0	warp	gef010	2,9,prt_fild04.gat,20,114
-gef_fild01.gat,16,102,0	warp	geff01	2,4,gef_fild09.gat,368,92
-gef_fild01.gat,69,17,0	warp	geff02	4,2,gef_fild03.gat,66,379
-gef_fild02.gat,380,156,0	warp	gef011	3,7,prt_fild07.gat,21,143
-gef_fild02.gat,380,289,0	warp	gef012	3,12,prt_fild07.gat,18,289
-gef_fild02.gat,380,68,0	warp	gef013	3,10,prt_fild07.gat,17,64
-gef_fild02.gat,266,18,0	warp	gef026	5,2,prt_fild10.gat,227,296
-gef_fild02.gat,14,78,0	warp	geff03	2,4,gef_fild03.gat,379,77
-gef_fild02.gat,16,275,0	warp	geff04	2,4,gef_fild03.gat,379,277
-gef_fild03.gat,312,16,0	warp	gef014	5,2,prt_fild11.gat,302,298
-gef_fild03.gat,66,382,0	warp	geff02-1	4,2,gef_fild01.gat,69,20
-gef_fild03.gat,382,77,0	warp	geff03-1	2,4,gef_fild02.gat,17,78
-gef_fild03.gat,382,277,0	warp	geff04-1	2,4,gef_fild02.gat,19,275
-gef_fild03.gat,18,52,0	warp	geff05	2,4,gef_fild10.gat,367,56
-gef_fild04.gat,187,39,0	warp	gef015	4,2,geffen.gat,119,210
-gef_fild04.gat,261,362,0	warp	gef016	4,2,mjolnir_01.gat,284,21
-gef_fild04.gat,362,322,0	warp	gef017	2,4,mjolnir_06.gat,21,331
-gef_fild04.gat,16,309,0	warp	geff06	2,6,gef_fild05.gat,361,309
-gef_fild05.gat,364,309,0	warp	geff06-1	2,8,gef_fild04.gat,19,309
-gef_fild05.gat,15,201,0	warp	geff07	2,4,gef_fild06.gat,379,211
-gef_fild05.gat,64,15,0	warp	geff08	4,2,gef_fild07.gat,64,360
-gef_fild06.gat,382,211,0	warp	geff07-1	2,4,gef_fild05.gat,18,201
-gef_fild06.gat,218,17,0	warp	geff09	4,2,gef_fild08.gat,200,352
-gef_fild07.gat,339,187,0	warp	gef025	2,4,geffen.gat,29,119
-gef_fild07.gat,64,363,0	warp	geff08-1	4,2,gef_fild05.gat,64,18
-gef_fild07.gat,18,191,0	warp	geff10	2,4,gef_fild08.gat,357,187
-gef_fild07.gat,40,19,0	warp	geff13	1,1,gef_fild13.gat,41,369
-gef_fild08.gat,200,355,0	warp	geff09-1	4,2,gef_fild06.gat,218,20
-gef_fild08.gat,360,187,0	warp	geff10-1	2,4,gef_fild07.gat,21,191
-gef_fild08.gat,215,18,0	warp	geff14	1,1,gef_fild12.gat,221,369
-gef_fild09.gat,23,56,0	warp	geff18-1	1,1,gef_fild13.gat,376,56
-gef_fild09.gat,225,25,0	warp	geff11	3,2,gef_fild10.gat,251,368
-gef_fild09.gat,368,95,0	warp	geff01-1	4,2,gef_fild01.gat,19,102
-gef_fild10.gat,251,371,0	warp	geff11-1	5,2,gef_fild09.gat,225,28
-gef_fild10.gat,104,21,0	warp	geff12	5,2,gef_fild11.gat,114,360
-gef_fild10.gat,370,56,0	warp	geff05-1	2,5,gef_fild03.gat,21,52
-gef_fild10.gat,136,331,0	warp	gef018	1,1,in_orcs01.gat,122,171
-gef_fild10.gat,138,284,0	warp	gef019	1,1,in_orcs01.gat,29,114
-gef_fild10.gat,215,51,0	warp	gef020	1,1,in_orcs01.gat,162,53
-gef_fild10.gat,223,205,0	warp	gef021	1,1,in_orcs01.gat,108,89
-gef_fild10.gat,63,337,0	warp	gef022	1,1,in_orcs01.gat,30,157
-gef_fild10.gat,27,219,0	warp	geff19-1	1,1,gef_fild14.gat,367,219
-gef_fild11.gat,377,293,0	warp	gef023	2,4,prt_fild11.gat,20,281
-gef_fild11.gat,111,364,0	warp	geff12-1	6,3,gef_fild10.gat,104,24
-gef_fild12.gat,221,374,0	warp	geff14-1	1,1,gef_fild08.gat,215,25
-gef_fild12.gat,368,180,0	warp	geff15	1,1,gef_fild13.gat,29,202
-gef_fild12.gat,372,50,0	warp	geff16	1,1,gef_fild13.gat,29,59
-gef_fild13.gat,200,25,0	warp	geff17	1,1,gef_fild14.gat,180,357
-gef_fild13.gat,25,202,0	warp	geff15-1	1,1,gef_fild12.gat,364,180
-gef_fild13.gat,26,59,0	warp	geff16-1	1,1,gef_fild12.gat,370,50
-gef_fild13.gat,380,56,0	warp	geff18	1,1,gef_fild09.gat,27,56
-gef_fild13.gat,41,373,0	warp	geff13-1	1,1,gef_fild07.gat,40,23
-gef_fild14.gat,180,360,0	warp	geff17-1	1,1,gef_fild13.gat,200,29
-gef_fild14.gat,371,219,0	warp	geff19	1,1,gef_fild10.gat,31,219
+gef_fild07.gat,40,19,0	warp	gef07a_gef13a	1,1,gef_fild13.gat,41,369
+gef_fild08.gat,215,18,0	warp	gef08a_gef12a	1,1,gef_fild12.gat,221,369
+gef_fild09.gat,23,56,0	warp	gef09a_gef13b	1,1,gef_fild13.gat,376,56
+gef_fild10.gat,27,219,0	warp	gef10a_gef14b	1,1,gef_fild14.gat,367,219
+gef_fild12.gat,221,374,0	warp	gef12a_gef08a	1,1,gef_fild08.gat,215,25
+gef_fild12.gat,368,180,0	warp	gef12b_gef13e	1,1,gef_fild13.gat,29,202
+gef_fild12.gat,373,50,0	warp	gef12c_gef13d	1,1,gef_fild13.gat,29,59
+gef_fild13.gat,41,373,0	warp	gef13a_gef07a	1,1,gef_fild07.gat,40,23
+gef_fild13.gat,380,56,0	warp	gef13b_gef09a	1,1,gef_fild09.gat,27,56
+gef_fild13.gat,200,25,0	warp	gef13c_gef14a	1,1,gef_fild14.gat,180,357
+gef_fild13.gat,25,59,0	warp	gef13d_gef12c	1,1,gef_fild12.gat,369,50
+gef_fild13.gat,25,202,0	warp	gef13e_gef12b	1,1,gef_fild12.gat,364,180
+gef_fild14.gat,180,360,0	warp	gef14a_gef13c	1,1,gef_fild13.gat,200,29
+gef_fild14.gat,371,219,0	warp	gef14b_gef10a	1,1,gef_fild10.gat,31,219
+
+gef_fild07.gat,18,191,0	warp	g07b-g08b	2,4,gef_fild08.gat,357,187
+gef_fild08.gat,360,187,0	warp	g08b-g07b	2,4,gef_fild07.gat,21,191
+gef_fild07.gat,339,187,0	warp	g07a-geffen	2,4,geffen.gat,29,119
+geffen.gat,26,119,0	warp	geffen-g07a	2,3,gef_fild07.gat,336,187
+gef_fild05.gat,364,309,0	warp	g05c-g04c	2,8,gef_fild04.gat,19,309
+gef_fild04.gat,16,309,0	warp	g04c-g05c	2,6,gef_fild05.gat,361,309
+gef_fild05.gat,64,15,0	warp	g05d-g07d	4,2,gef_fild07.gat,64,360
+gef_fild07.gat,64,363,0	warp	g07d-g05d	4,2,gef_fild05.gat,64,18
+gef_fild05.gat,15,201,0	warp	g05b-g06b	2,4,gef_fild06.gat,379,211
+gef_fild06.gat,382,211,0	warp	g06b-g05b	2,4,gef_fild05.gat,18,201
+gef_fild06.gat,218,17,0	warp	g06a-g08a	4,2,gef_fild08.gat,200,352
+gef_fild08.gat,200,355,0	warp	g08a-g06a	4,2,gef_fild06.gat,218,20
+
+gef_fild10.gat,251,371,0	warp	g10a-g09a	5,2,gef_fild09.gat,225,28
+gef_fild09.gat,225,25,0	warp	g09a-g10a	3,2,gef_fild10.gat,251,368
+gef_fild03.gat,18,52,0	warp	g03b-g10b	2,4,gef_fild10.gat,367,56
+gef_fild10.gat,370,56,0	warp	g10b-g03b	2,5,gef_fild03.gat,21,52
+gef_fild03.gat,66,382,0	warp	g03c-g01c	4,2,gef_fild01.gat,69,20
+gef_fild01.gat,69,17,0	warp	g01c-g03c	4,2,gef_fild03.gat,66,379
+gef_fild02.gat,16,275,0	warp	g02e-g03e	2,4,gef_fild03.gat,379,277
+gef_fild03.gat,382,277,0	warp	g03e-g02e	2,4,gef_fild02.gat,19,275
+gef_fild02.gat,14,78,0	warp	g02d-g03d	2,4,gef_fild03.gat,379,77
+gef_fild03.gat,382,77,0	warp	g03d-g02d	2,4,gef_fild02.gat,17,78
+prt_fild11.gat,302,301,0	warp	p11a-g03a	5,2,gef_fild03.gat,312,19
+gef_fild03.gat,312,16,0	warp	g03a-p11a	5,2,prt_fild11.gat,302,298
 
 
 //--------------------------------------------------------------
-// Hugel Field Warp Portals
+// Hugel Field Warp Portals - [Tsuyuki]
 //--------------------------------------------------------------
 
-ein_fild04.gat,343,293,0	warp	hugel001	1,1,ein_fild05.gat,80,294
-ein_fild05.gat,76,294,0	warp	hugel001a	1,1,ein_fild04.gat,336,292
-ein_fild05.gat,376,183,0	warp	hugel002	1,1,ein_fild06.gat,47,166
-ein_fild06.gat,42,171,0	warp	hugel002a	1,1,ein_fild05.gat,371,183
-ein_fild02.gat,357,251,0	warp	hugel003	1,1,yuno_fild04.gat,38,280
-yuno_fild04.gat,33,279,0	warp	hugel003a	1,1,ein_fild02.gat,350,250
-ein_fild01.gat,349,369,0	warp	hugel003	1,1,yuno_fild05.gat,43,346
-yuno_fild05.gat,41,350,0	warp	hugel003a	1,1,ein_fild01.gat,345,367
-ein_fild01.gat,106,34,0	warp	hugel004	1,1,ein_fild02.gat,109,358
-ein_fild02.gat,108,364,0	warp	hugel004a	1,1,ein_fild01.gat,106,40
-ein_fild01.gat,234,34,0	warp	hugel005	1,1,ein_fild02.gat,258,343
-ein_fild02.gat,257,350,0	warp	hugel005a	1,1,ein_fild01.gat,231,40
-ein_fild02.gat,170,29,0	warp	hugel006	1,1,ein_fild05.gat,172,366
-ein_fild05.gat,172,371,0	warp	hugel006a	1,1,ein_fild02.gat,170,37
-hu_fild01.gat,366,185,0	warp	hugel007	1,1,hu_fild02.gat,22,168
-hu_fild02.gat,17,168,0	warp	hugel007a	1,1,hu_fild01.gat,361,189
-hu_fild04.gat,47,372,0	warp	hugel008	1,1,hu_fild02.gat,40,27
-hu_fild02.gat,40,22,0	warp	hugel008a	1,1,hu_fild04.gat,48,368
-hu_fild04.gat,294,379,0	warp	hugel009	1,1,hu_fild02.gat,280,31
-hu_fild02.gat,283,28,0	warp	hugel009a	1,1,hu_fild04.gat,289,376
-hu_fild05.gat,284,356,0	warp	hugel010	1,1,hu_fild03.gat,288,26
-hu_fild03.gat,288,19,0	warp	hugel010a	1,1,hu_fild05.gat,276,346
-hu_fild05.gat,353,126,0	warp	hugel011	1,1,hu_fild06.gat,34,119
-hu_fild06.gat,28,119,0	warp	hugel011a	1,1,hu_fild05.gat,347,130
-hu_fild02.gat,374,339,0	warp	hugel012	1,1,hu_fild03.gat,24,337
-hu_fild03.gat,20,338,0	warp	hugel012a	1,1,hu_fild02.gat,370,339
-hu_fild02.gat,378,162,0	warp	hugel013	1,1,hu_fild03.gat,30,163
-hu_fild03.gat,25,163,0	warp	hugel013a	1,1,hu_fild02.gat,373,160
-yuno_fild09.gat,377,184,0	warp	hugel014	1,1,yuno_fild10.gat,44,183
-yuno_fild10.gat,39,183,0	warp	hugel014a	1,1,yuno_fild09.gat,371,184
+yuno_fild02.gat,117,375,0	warp	YunoF02Up_HuF04Dn	1,1,hu_fild04.gat,122,35
+yuno_fild02.gat,383,339,0	warp	YunoF02R_HuF07L	1,1,hu_fild07.gat,42,351
+yuno_fild03.gat,215,382,0	warp	YunoF03Up_YunoF06Dn	1,1,yuno_fild06.gat,218,33
+yuno_fild05.gat,370,321,0	warp	YunoF05R_YunoF06L	1,1,yuno_fild06.gat,48,322
+yuno_fild06.gat,151,370,0	warp	YunoF06Up_HuF01Dn	1,1,hu_fild01.gat,135,42
+yuno_fild06.gat,369,132,0	warp	YunoF06R_HuF04L	1,1,hu_fild04.gat,34,126
+yuno_fild09.gat,48,376,0	warp	YunoF09Up1_HuF07Dn1	1,1,hu_fild07.gat,58,42
+yuno_fild09.gat,220,373,0	warp	YunoF09Up2_HuF07Dn2	1,1,hu_fild07.gat,224,43
+hu_fild04.gat,380,183,0	warp	HuF04R_HuF05L	1,1,hu_fild05.gat,39,206
+hu_fild05.gat,89,43,0	warp	HuF05Dn_HuF07Up	1,1,hu_fild07.gat,80,365
+hu_fild04.gat,122,27,0	warp	HuF04Dn_YunoF02Up	1,1,yuno_fild02.gat,114,370
+hu_fild07.gat,36,352,0	warp	HuF07L_YunoF02R	1,1,yuno_fild02.gat,378,336
+yuno_fild06.gat,214,27,0	warp	YunoF06Dn_YunoF03Up	1,1,yuno_fild03.gat,215,375
+yuno_fild06.gat,41,319,0	warp	YunoF06L_YunoF05R	1,1,yuno_fild05.gat,366,319
+hu_fild01.gat,141,36,0	warp	HuF01Dn_YunoF06Up	1,1,yuno_fild06.gat,156,368
+hu_fild04.gat,27,126,0	warp	HuF04L_YunoF06R	1,1,yuno_fild06.gat,362,132
+hu_fild07.gat,57,37,0	warp	HuF07Dn1_YunoF09Up1	1,1,yuno_fild09.gat,48,370
+hu_fild07.gat,226,38,0	warp	HuF07Dn2_YunoF09Up2	1,1,yuno_fild09.gat,220,368
+hu_fild05.gat,33,198,0	warp	HuF05L_HuF04R	1,1,hu_fild04.gat,373,181
+hu_fild07.gat,81,370,0	warp	HuF07Up_HuF05Dn	1,1,hu_fild05.gat,89,50
 
+hu_fild02.gat,374,339,0	warp	HuF02R01_HuF03L01	1,1,hu_fild03.gat,24,337
+hu_fild02.gat,378,162,0	warp	HuF02R02_HuF03L02	1,1,hu_fild03.gat,30,163
+hu_fild02.gat,40,22,0	warp	HuF02Dn01_HuF04Up01	1,1,hu_fild04.gat,48,368
+hu_fild02.gat,283,28,0	warp	HuF02Dn02_HuF04Up02	1,1,hu_fild04.gat,289,376
+hu_fild02.gat,17,168,0	warp	HuF02L01_HuF01R01	1,1,hu_fild01.gat,361,189
+hu_fild03.gat,288,19,0	warp	HuF03Dn01_HuF05Up01	1,1,hu_fild05.gat,276,346
 
-//--------------------------------------------------------------
-// Juno Field Warp Portals
-//--------------------------------------------------------------
+hu_fild06.gat,28,119,0	warp	HuF06L01_HuF05R01	1,1,hu_fild05.gat,347,130
+ein_fild01.gat,349,369,0	warp	EinF01R01_YuF05L01	1,1,yuno_fild05.gat,43,346
+ein_fild02.gat,357,251,0	warp	EinF02R01_YuF04L01	1,1,yuno_fild04.gat,38,280
+ein_fild02.gat,170,29,0	warp	EinF02Dn01_EinF05Up01	1,1,ein_fild05.gat,172,366
+ein_fild05.gat,376,183,0	warp	EinF05R01_EinF06L01	1,1,ein_fild06.gat,47,166
+ein_fild05.gat,76,294,0	warp	EinF05L01_EinF04R01	1,1,ein_fild04.gat,336,292
 
-yuno_fild02.gat,18,337,0	warp	yunfild03	1,1,yuno_fild03.gat,381,331
-yuno_fild03.gat,383,331,0	warp	yunfild03-1	1,1,yuno_fild02.gat,20,337
-yuno_fild03.gat,19,79,0	warp	yunfild04	1,1,yuno_fild04.gat,373,84
-yuno_fild04.gat,375,84,0	warp	yunfild04-1	1,1,yuno_fild03.gat,21,79
-yuno_fild03.gat,20,155,0	warp	yunfild05	1,1,yuno_fild04.gat,373,150
-yuno_fild04.gat,375,150,0	warp	yunfild05-1	1,1,yuno_fild03.gat,22,155
-yuno_fild04.gat,232,289,0	warp	yunfild-yun	10,1,yuno.gat,158,17
-yuno_fild03.gat,32,139,0	warp	yunfild-mag01	1,1,mag_dun01.gat,126,68
-yuno_fild01.gat,26,246,0	warp	newjun01	1,1,yuno_fild12.gat,373,239
-yuno_fild12.gat,375,239,0	warp	newjun01a	1,1,yuno_fild01.gat,28,246
-yuno_fild12.gat,23,338,0	warp	newjun02	1,1,yuno_fild11.gat,366,361
-yuno_fild11.gat,368,361,0	warp	newjun02a	1,1,yuno_fild12.gat,25,338
-yuno_fild12.gat,24,225,0	warp	newjun03	1,1,yuno_fild11.gat,363,218
-yuno_fild11.gat,365,218,0	warp	newjun03a	1,1,yuno_fild12.gat,24,227
-yuno_fild07.gat,92,12,0	warp	newjun04	1,1,yuno_fild11.gat,92,369
-yuno_fild11.gat,92,371,0	warp	newjun04a	1,1,yuno_fild07.gat,92,14
-yuno_fild12.gat,193,371,0	warp	newjun05	1,1,yuno_fild08.gat,143,21
-yuno_fild08.gat,145,21,0	warp	newjun05a	1,1,yuno_fild12.gat,195,371
-yuno_fild01.gat,70,378,0	warp	newjun06	1,1,yuno_fild09.gat,70,19
-yuno_fild09.gat,70,17,0	warp	newjun06a	1,1,yuno_fild01.gat,70,376
-yuno_fild01.gat,286,368,0	warp	newjun07	1,1,yuno_fild09.gat,280,30
-yuno_fild09.gat,280,28,0	warp	newjun07a	1,1,yuno_fild01.gat,286,366
-yuno_fild09.gat,19,194,0	warp	newjun08	1,1,yuno_fild08.gat,374,193
-yuno_fild08.gat,376,193,0	warp	newjun08a	1,1,yuno_fild09.gat,21,194
-yuno_fild08.gat,20,278,0	warp	newjun09	1,1,yuno_fild07.gat,352,291
-yuno_fild07.gat,354,291,0	warp	newjun09a	1,1,yuno_fild08.gat,22,278
-yuno_fild08.gat,31,58,0	warp	newjun10	1,1,yuno_fild07.gat,358,72
-yuno_fild07.gat,360,72,0	warp	newjun10a	1,1,yuno_fild08.gat,33,58
-yuno_fild07.gat,179,354,0	warp	newjun11	1,1,yuno_fild03.gat,179,17
-yuno_fild03.gat,179,15,0	warp	newjun11a	1,1,yuno_fild07.gat,179,352
-yuno_fild08.gat,74,376,0	warp	newjun12	1,1,yuno_fild02.gat,70,25
-yuno_fild02.gat,70,23,0	warp	newjun12a	1,1,yuno_fild08.gat,74,374
-yuno_fild08.gat,286,386,0	warp	newjun13	1,1,yuno_fild02.gat,294,26
-yuno_fild02.gat,294,24,0	warp	newjun13a	1,1,yuno_fild08.gat,286,384
-yuno_fild04.gat,42,369,0	warp	newjun14	1,1,yuno_fild05.gat,59,30
-yuno_fild05.gat,59,28,0	warp	newjun14a	1,1,yuno_fild04.gat,42,367
-yuno_fild05.gat,372,325,0	warp	hu001	1,1,yuno_fild06.gat,42,319
-yuno_fild06.gat,40,319,0	warp	hu001a	1,1,yuno_fild05.gat,370,325
-yuno_fild06.gat,217,27,0	warp	hu002	1,1,yuno_fild03.gat,214,381
-yuno_fild03.gat,214,383,0	warp	hu002a	1,1,yuno_fild06.gat,217,29
-yuno_fild06.gat,369,136,0	warp	hu003	1,1,hu_fild04.gat,28,126
-hu_fild04.gat,26,126,0	warp	hu003a	1,1,yuno_fild06.gat,367,136
-hu_fild04.gat,121,26,0	warp	hu004	1,1,yuno_fild02.gat,110,374
-yuno_fild02.gat,115,376,0	warp	hu004a	1,1,hu_fild04.gat,121,28
-yuno_fild06.gat,149,369,0	warp	hu005	1,1,hu_fild01.gat,139,37
-hu_fild01.gat,139,35,0	warp	hu005a	1,1,yuno_fild06.gat,151,369
-hu_fild04.gat,381,187,0	warp	hu006	1,1,hu_fild05.gat,34,202
-hu_fild05.gat,32,202,0	warp	hu006a	1,1,hu_fild04.gat,379,187
-hu_fild05.gat,91,42,0	warp	hu007	1,1,hu_fild07.gat,80,369
-hu_fild07.gat,80,371,0	warp	hu007a	1,1,hu_fild05.gat,91,44
-hu_fild07.gat,35,351,0	warp	hu008	1,1,yuno_fild02.gat,380,337
-yuno_fild02.gat,384,340,0	warp	hu008a	1,1,hu_fild07.gat,37,351
-hu_fild07.gat,56,36,0	warp	hu009	1,1,yuno_fild09.gat,47,375
-yuno_fild09.gat,47,377,0	warp	hu009a	1,1,hu_fild07.gat,56,38
-hu_fild07.gat,226,36,0	warp	hu010	1,1,yuno_fild09.gat,220,372
-yuno_fild09.gat,220,374,0	warp	hu010a	1,1,hu_fild07.gat,226,38
-aldebaran.gat,140,244,0	warp	alde-yunfild	1,1,yuno_fild01.gat,208,19
-yuno_fild01.gat,208,17,0	warp	yunfild-alde	1,1,aldebaran.gat,140,242
+ein_fild01.gat,106,34,0	warp	EinF01Dn01_EinF02Up01	1,1,ein_fild02.gat,109,358
+ein_fild01.gat,234,34,0	warp	EinF01Dn02_EinF02Up02	1,1,ein_fild02.gat,258,343
+hu_fild03.gat,20,338,0	warp	HuF03L01_HuF02R01	1,1,hu_fild02.gat,370,339
+hu_fild03.gat,25,163,0	warp	HuF03L02_HuF02R02	1,1,hu_fild02.gat,373,160
+hu_fild04.gat,47,372,0	warp	HuF04Up01_HuF02Dn01	1,1,hu_fild02.gat,40,27
+hu_fild04.gat,294,379,0	warp	HuF04Up02_HuF02Dn02	1,1,hu_fild02.gat,280,31
+hu_fild01.gat,366,185,0	warp	HuF01R01_HuF02L01	1,1,hu_fild02.gat,22,168
+hu_fild05.gat,284,356,0	warp	HuF05Up01_HuF03Dn01	1,1,hu_fild03.gat,288,26
+hu_fild05.gat,353,126,0	warp	HuF05R01_HuF06L01	1,1,hu_fild06.gat,34,119
+yuno_fild05.gat,41,350,0	warp	YuF05L01_EinF01R01	1,1,ein_fild01.gat,345,367
+yuno_fild04.gat,33,279,0	warp	YuF04L01_EinF02R01	1,1,ein_fild02.gat,350,250
+ein_fild05.gat,172,371,0	warp	EinF05Up01_EinF02Dn01	1,1,ein_fild02.gat,170,37
+ein_fild06.gat,42,171,0	warp	EinF06L01_EinF05R01	1,1,ein_fild05.gat,371,183
+ein_fild04.gat,343,293,0	warp	EinF04R01_EinF05L01	1,1,ein_fild05.gat,80,294
+
+ein_fild02.gat,108,364,0	warp	EinF02Up01_EinF01Dn01	1,1,ein_fild01.gat,106,40
+ein_fild02.gat,257,350,0	warp	EinF02Up02_EinF01Dn02	1,1,ein_fild01.gat,231,40
+yuno_fild09.gat,377,184,0	warp	YuF09R01_YuF10L01	1,1,yuno_fild10.gat,44,183
+yuno_fild10.gat,39,183,0	warp	YuF10L01_YuF09R01	1,1,yuno_fild09.gat,371,184
 
 
 //--------------------------------------------------------------
-// Kunlun Field Warp Portals
+// Juno Field Warp Portals - [Tsuyuki]
 //--------------------------------------------------------------
 
-gonryun.gat,161,8,0	warp	gon02	1,1,gon_fild01.gat,191,261
-gon_fild01.gat,192,266,0	warp	gon01	1,1,gonryun.gat,161,11
-
-
-//--------------------------------------------------------------
-// Lighthalzen Field Warp Portals
-//--------------------------------------------------------------
-
-lhz_fild01.gat,210,18,0	warp	lhz043	1,1,lighthalzen.gat,214,324
-lighthalzen.gat,214,329,0	warp	lhz043a	1,1,lhz_fild01.gat,210,23
-lhz_fild01.gat,367,222,0	warp	lhz044	1,1,lhz_fild02.gat,36,221
-lhz_fild02.gat,29,219,0	warp	lhz044a	1,1,lhz_fild01.gat,361,222
-
-
-//--------------------------------------------------------------
-// Louyang Field Warp Portals
-//--------------------------------------------------------------
-
-louyang.gat,217,22,0	warp	louwarp001	3,3,lou_fild01.gat,232,353
-lou_fild01.gat,232,357,0	warp	louwarp001a	3,3,louyang.gat,217,26
-
-
-//--------------------------------------------------------------
-// Lutie Field Warp Portals - [Tsuyuki]
-//--------------------------------------------------------------
-
-xmas_fild01.gat,69,252,0	warp	x_fild_in	10,2,xmas.gat,149,44
-xmas_fild01.gat,90,252,0	warp	x_fild_in01	10,2,xmas.gat,149,44
-xmas.gat,149,41,0	warp	x_fild_out	8,1,xmas_fild01.gat,80,248
-xmas_fild01.gat,84,48,0	warp	xmas_27	10,2,aldebaran.gat,140,234
-
-
-//--------------------------------------------------------------
-// Morroc Field Warp Portals
-//--------------------------------------------------------------
-
-moc_fild01.gat,101,16,0	warp	mocf01-1	15,3,moc_fild04.gat,317,376
-moc_fild01.gat,22,242,0	warp	mocf005	2,2,prt_fild09.gat,380,237
-moc_fild01.gat,239,382,0	warp	mocf006	12,1,prt_fild08.gat,233,20
-moc_fild01.gat,301,16,0	warp	mocf02	18,1,moc_fild02.gat,67,338
-moc_fild01.gat,321,16,0	warp	mocf02-1	18,1,moc_fild02.gat,79,338
-moc_fild01.gat,341,16,0	warp	mocf02-2	18,1,moc_fild02.gat,92,338
-moc_fild01.gat,379,162,0	warp	mocf011	2,12,pay_fild04.gat,20,165
-moc_fild01.gat,56,384,0	warp	moc007	3,2,prt_fild08.gat,54,24
-moc_fild01.gat,68,16,0	warp	mocf01	15,3,moc_fild04.gat,317,376
-moc_fild02.gat,228,29,0	warp	mocf03	4,2,moc_fild13.gat,298,367
-moc_fild02.gat,332,19,0	warp	mocf04	5,3,moc_fild03.gat,70,336
-moc_fild02.gat,350,339,0	warp	mocf012	6,2,pay_fild04.gat,194,20
-moc_fild02.gat,67,340,0	warp	mocf02-3	22,1,moc_fild01.gat,310,18
-moc_fild02.gat,71,18,0	warp	mocf05	4,2,moc_fild13.gat,146,365
-moc_fild02.gat,92,340,0	warp	mocf02-4	22,1,moc_fild01.gat,330,18
-moc_fild03.gat,17,37,0	warp	mocf06	2,4,moc_fild13.gat,305,49
-moc_fild03.gat,179,16,0	warp	mocf013	4,2,pay_fild11.gat,38,327
-moc_fild03.gat,303,170,0	warp	mocf014	2,7,pay_fild01.gat,17,152
-moc_fild03.gat,70,341,0	warp	mocf04-1	5,2,moc_fild02.gat,332,23
-moc_fild04.gat,14,122,0	warp	mocf07-1	1,11,moc_fild05.gat,378,119
-moc_fild04.gat,14,146,0	warp	mocf07-2	1,11,moc_fild05.gat,378,119
-moc_fild04.gat,14,98,0	warp	mocf07	1,11,moc_fild05.gat,378,119
-moc_fild04.gat,175,18,0	warp	mocf08	3,2,moc_fild08.gat,170,380
-moc_fild04.gat,19,206,0	warp	mocf09	3,15,moc_fild05.gat,373,208
-moc_fild04.gat,219,327,0	script	mocf016	45,3,4,{ set anthell,0; warp "anthell01.gat",35,262; }
-moc_fild04.gat,292,381,0	warp	mocf01-2	10,1,moc_fild01.gat,76,25
-moc_fild04.gat,314,381,0	warp	mocf01-3	10,1,moc_fild01.gat,76,25
-moc_fild04.gat,336,381,0	warp	mocf01-4	10,1,moc_fild01.gat,76,25
-moc_fild04.gat,92,381,0	warp	mocf008	9,2,prt_fild09.gat,246,19
-moc_fild05.gat,144,375,0	warp	mocf009	11,2,prt_fild10.gat,263,23
-moc_fild05.gat,18,136,0	warp	mocf10	1,8,moc_fild06.gat,367,317
-moc_fild05.gat,18,154,0	warp	mocf10-1	1,8,moc_fild06.gat,367,317
-moc_fild05.gat,18,172,0	warp	mocf10-2	1,8,moc_fild06.gat,367,317
-moc_fild05.gat,268,18,0	warp	mocf11	4,2,moc_fild09.gat,267,368
-moc_fild05.gat,325,382,0	warp	mocf010	6,2,prt_fild09.gat,95,19
-moc_fild05.gat,378,208,0	warp	mocf09-1	3,14,moc_fild04.gat,26,206
-moc_fild05.gat,384,108,0	warp	mocf07-3	1,8,moc_fild04.gat,22,123
-moc_fild05.gat,384,126,0	warp	mocf07-4	1,8,moc_fild04.gat,22,123
-moc_fild05.gat,384,144,0	warp	mocf07-5	1,8,moc_fild04.gat,22,123
-moc_fild05.gat,82,16,0	warp	mocf12	5,2,moc_fild09.gat,80,366
-moc_fild06.gat,18,199,0	warp	mocf13	1,20,moc_fild07.gat,377,201
-moc_fild06.gat,207,18,0	warp	mocf14	11,2,moc_fild10.gat,208,295
-moc_fild06.gat,377,316,0	warp	mocf10-3	1,15,moc_fild05.gat,24,153
-moc_fild07.gat,198,21,0	warp	mocf001	2,2,morocc.gat,160,294
-moc_fild07.gat,380,201,0	warp	mocf13-1	1,16,moc_fild06.gat,21,199
-moc_fild08.gat,16,207,0	warp	mocf15	2,4,moc_fild09.gat,371,195
-moc_fild08.gat,170,383,0	warp	mocf08-1	3,2,moc_fild04.gat,175,21
-moc_fild08.gat,204,16,0	warp	mocf16	4,2,moc_fild14.gat,196,379
-moc_fild08.gat,383,211,0	warp	mocf17	2,4,moc_fild13.gat,32,171
-moc_fild09.gat,126,20,0	warp	mocf18	4,2,moc_fild15.gat,158,360
-moc_fild09.gat,267,371,0	warp	mocf11-1	4,2,moc_fild05.gat,268,21
-moc_fild09.gat,30,162,0	warp	mocf19	2,3,moc_fild10.gat,381,258
-moc_fild09.gat,374,195,0	warp	mocf15-1	2,8,moc_fild08.gat,19,207
-moc_fild09.gat,80,369,0	warp	mocf12-1	7,2,moc_fild05.gat,82,19
-moc_fild10.gat,189,23,0	warp	mocf20	3,2,moc_fild11.gat,189,360
-moc_fild10.gat,19,207,0	warp	mocf002	2,2,morocc.gat,299,207
-moc_fild10.gat,208,298,0	warp	mocf14-1	10,2,moc_fild06.gat,207,21
-moc_fild10.gat,384,258,0	warp	mocf19-1	2,3,moc_fild09.gat,33,162
-moc_fild11.gat,189,363,0	warp	mocf20-1	3,2,moc_fild10.gat,189,26
-moc_fild11.gat,212,29,0	warp	mocf21	4,2,moc_fild17.gat,218,366
-moc_fild11.gat,26,161,0	warp	mocf22	2,10,moc_fild12.gat,286,168
-moc_fild11.gat,379,197,0	warp	mocf23	2,6,moc_fild15.gat,41,105
-moc_fild12.gat,118,30,0	warp	mocf24	4,2,moc_fild18.gat,158,379
-moc_fild12.gat,159,381,0	warp	mocf003	2,2,morocc.gat,160,20
-moc_fild12.gat,289,168,0	warp	mocf22-1	2,3,moc_fild11.gat,29,161
-moc_fild13.gat,146,368,0	warp	mocf05-1	5,2,moc_fild02.gat,71,21
-moc_fild13.gat,29,171,0	warp	mocf17-1	2,4,moc_fild08.gat,380,211
-moc_fild13.gat,298,370,0	warp	mocf03-1	4,2,moc_fild02.gat,228,32
-moc_fild13.gat,308,49,0	warp	mocf06-1	2,4,moc_fild03.gat,20,37
-moc_fild14.gat,16,278,0	warp	mocf25	2,6,moc_fild15.gat,364,276
-moc_fild14.gat,196,382,0	warp	mocf16-1	4,2,moc_fild08.gat,204,19
-moc_fild15.gat,104,16,0	warp	mocf26	9,2,moc_fild16.gat,125,380
-moc_fild15.gat,158,363,0	warp	mocf18-1	6,2,moc_fild09.gat,126,23
-moc_fild15.gat,258,253,0	script	mocf017	45,3,3,{ set anthell,1; warp "anthell01.gat",35,262; }
-moc_fild15.gat,348,18,0	warp	mocf27	5,2,moc_fild16.gat,334,379
-moc_fild15.gat,367,276,0	warp	mocf25-1	2,4,moc_fild14.gat,19,278
-moc_fild15.gat,38,105,0	warp	mocf23-1	2,4,moc_fild11.gat,376,197
-moc_fild16.gat,125,383,0	warp	mocf26-1	5,2,moc_fild15.gat,104,19
-moc_fild16.gat,16,179,0	warp	mocf28	2,6,moc_fild17.gat,366,272
-moc_fild16.gat,334,382,0	warp	mocf27-1	4,2,moc_fild15.gat,348,21
-moc_fild17.gat,218,369,0	warp	mocf21-1	5,2,moc_fild11.gat,212,32
-moc_fild17.gat,30,300,0	warp	moc29	2,5,moc_fild18.gat,379,305
-moc_fild17.gat,369,272,0	warp	mocf28-1	2,3,moc_fild16.gat,19,179
-moc_fild18.gat,158,382,0	warp	mocf24-1	4,2,moc_fild12.gat,118,33
-moc_fild18.gat,382,305,0	warp	moc29-1	2,4,moc_fild17.gat,33,300
-moc_fild19.gat,169,107,0	warp	mocf004	1,4,morocc.gat,27,164
-moc_fild19.gat,71,170,0	warp	mocf018	8,2,moc_ruins.gat,71,19
+yuno_fild01.gat,70,377,0	warp	yuno01a_yuno02b	1,1,yuno_fild02.gat,69,27
+yuno_fild01.gat,286,367,0	warp	yuno01b_yuno02a	1,1,yuno_fild02.gat,290,20
+yuno_fild02.gat,287,16,0	warp	yuno02a_yuno01b	1,1,yuno_fild01.gat,286,364
+yuno_fild02.gat,69,23,0	warp	yuno02b_yuno01a	1,1,yuno_fild01.gat,70,373
+yuno_fild02.gat,19,340,0	warp	yuno02c_yuno03a	1,1,yuno_fild03.gat,378,331
+yuno_fild03.gat,382,331,0	warp	yuno03a_yuno02c	1,1,yuno_fild02.gat,23,340
+yuno_fild03.gat,20,79,0	warp	yuno03b_yuno04c	1,1,yuno_fild04.gat,370,81
+yuno_fild03.gat,2,1,0	warp	yuno03c_yuno04b	162,1,yuno_fild04.gat,37,1 147
+yuno_fild04.gat,374,149,0	warp	yuno04b_yuno03c	1,1,yuno_fild03.gat,25,162
+yuno_fild04.gat,374,82,0	warp	yuno04c_yuno03b	1,1,yuno_fild03.gat,24,79
+yuno_fild01.gat,70,377,0	warp	fild01a_fild09b	1,1,yuno_fild09.gat,70,21
+yuno_fild01.gat,287,367,0	warp	fild01b_fild09a	1,1,yuno_fild09.gat,280,32
+yuno_fild01.gat,27,247,0	warp	fild01c_fild12b	1,1,yuno_fild12.gat,366,244
+yuno_fild02.gat,287,16,0	warp	fild02a_fild08b	1,1,yuno_fild08.gat,285,382
+yuno_fild02.gat,69,23,0	warp	fild02b_fild08a	1,1,yuno_fild08.gat,75,372
+yuno_fild03.gat,178,15,0	warp	fild03b_Fild07a	1,1,yuno_fild07.gat,179,351
+yuno_fild04.gat,42,370,0	warp	fild04a_Fild05a	1,1,yuno_fild05.gat,61,33
+yuno_fild05.gat,61,29,0	warp	fild05a_Fild04a	1,1,yuno_fild04.gat,42,366
+yuno_fild07.gat,179,354,0	warp	fild07a_fild03b	1,1,yuno_fild03.gat,178,18
+yuno_fild07.gat,352,292,0	warp	fild07b_fild08f	1,1,yuno_fild08.gat,27,275
+yuno_fild07.gat,360,72,0	warp	fild07c_fild08e	1,1,yuno_fild08.gat,35,61
+yuno_fild07.gat,92,28,0	warp	fild07d_fild11a	1,1,yuno_fild11.gat,91,369
+yuno_fild08.gat,75,375,0	warp	fild08a_fild02b	1,1,yuno_fild02.gat,69,25
+yuno_fild08.gat,285,385,0	warp	fild08b_fild02a	1,1,yuno_fild02.gat,290,20
+yuno_fild08.gat,375,194,0	warp	fild08c_fild09c	1,1,yuno_fild09.gat,23,193
+yuno_fild08.gat,134,29,0	warp	fild08d_fild12a	1,1,yuno_fild12.gat,197,371
+yuno_fild08.gat,31,58,0	warp	fild08e_fild07c	1,1,yuno_fild07.gat,357,75
+yuno_fild08.gat,24,275,0	warp	fild08f_fild07b	1,1,yuno_fild07.gat,348,288
+yuno_fild09.gat,280,29,0	warp	fild09a_fild01b	1,1,yuno_fild01.gat,287,364
+yuno_fild09.gat,70,18,0	warp	fild09b_fild01a	1,1,yuno_fild01.gat,70,374
+yuno_fild09.gat,20,193,0	warp	fild09c_fild08c	1,1,yuno_fild08.gat,372,194
+yuno_fild11.gat,91,372,0	warp	fild11a_fild07d	1,1,yuno_fild07.gat,92,31
+yuno_fild11.gat,368,361,0	warp	fild11b_fild12d	1,1,yuno_fild12.gat,27,336
+yuno_fild11.gat,364,218,0	warp	fild11c_fild12c	1,1,yuno_fild12.gat,26,230
+yuno_fild12.gat,193,372,0	warp	fild12a_fild08d	1,1,yuno_fild08.gat,134,33
+yuno_fild12.gat,369,244,0	warp	fild12b_fild01c	1,1,yuno_fild01.gat,31,248
+yuno_fild12.gat,23,226,0	warp	fild12c_fild11c	1,1,yuno_fild11.gat,361,218
+yuno_fild12.gat,23,339,0	warp	fild12d_fild11b	1,1,yuno_fild11.gat,364,356
 
 
 //--------------------------------------------------------------
-// Mt. Mjolnir Field Warp Portals
+// Lighthalzen Field Warp Portals - [Tsuyuki]
 //--------------------------------------------------------------
 
-mjolnir_01.gat,284,18,0	warp	mjol001	4,2,gef_fild04.gat,261,359
-mjolnir_01.gat,381,256,0	warp	mjol01	1,1,mjolnir_02.gat,30,258
-mjolnir_02.gat,28,258,0	warp	mjol01-1	1,1,mjolnir_01.gat,379,256
-mjolnir_02.gat,326,289,0	warp	mjol02	1,1,mjolnir_03.gat,24,258
-mjolnir_02.gat,361,18,0	warp	mjol03	4,2,mjolnir_06.gat,366,380
-mjolnir_02.gat,79,365,0	warp	mjol013	2,1,mjo_dun01.gat,52,17
-mjolnir_03.gat,21,258,0	warp	mjol02-1	2,2,mjolnir_02.gat,323,289
-mjolnir_03.gat,212,22,0	warp	mjol04	4,1,mjolnir_07.gat,214,380
-mjolnir_03.gat,242,204,0	warp	mjol05	1,1,mjolnir_04.gat,126,208
-mjolnir_04.gat,123,208,0	warp	mjol05-1	1,1,mjolnir_03.gat,239,204
-mjolnir_04.gat,160,47,0	warp	mjol06	4,1,mjolnir_08.gat,159,370
-mjolnir_04.gat,385,173,0	warp	mjol07	1,3,mjolnir_05.gat,19,171
-mjolnir_05.gat,16,171,0	warp	mjol07-1	1,1,mjolnir_04.gat,382,173
-mjolnir_05.gat,220,382,0	warp	mjol08	4,2,mjolnir_12.gat,220,29
-mjolnir_05.gat,235,16,0	warp	mjol09	4,2,mjolnir_10.gat,235,378
-mjolnir_06.gat,18,331,0	warp	mjol002	2,4,gef_fild04.gat,359,322
-mjolnir_06.gat,265,29,0	warp	mjol003	2,2,gef_fild00.gat,267,379
-mjolnir_06.gat,366,383,0	warp	mjol03-1	4,2,mjolnir_02.gat,361,21
-mjolnir_06.gat,382,377,0	warp	mjol10	2,4,mjolnir_07.gat,19,377
-mjolnir_06.gat,383,74,0	warp	mjol11	2,4,mjolnir_07.gat,20,77
-mjolnir_07.gat,156,16,0	warp	mjol004	4,2,prt_fild00.gat,159,380
-mjolnir_07.gat,16,377,0	warp	mjol10-1	2,4,mjolnir_06.gat,379,377
-mjolnir_07.gat,17,77,0	warp	mjol11-1	2,4,mjolnir_06.gat,380,74
-mjolnir_07.gat,214,383,0	warp	mjol04-1	9,1,mjolnir_03.gat,212,25
-mjolnir_07.gat,383,233,0	warp	mjol12	2,4,mjolnir_08.gat,33,234
-mjolnir_07.gat,383,362,0	warp	mjol13	2,4,mjolnir_08.gat,32,346
-mjolnir_08.gat,159,373,0	warp	mjol06	3,1,mjolnir_04.gat,160,50
-mjolnir_08.gat,185,28,0	warp	mjol14	17,2,mjolnir_09.gat,196,364
-mjolnir_08.gat,29,346,0	warp	mjol13-1	2,4,mjolnir_07.gat,380,362
-mjolnir_08.gat,30,234,0	warp	mjol12-1	2,4,mjolnir_07.gat,380,233
-mjolnir_08.gat,369,257,0	warp	mjol15	2,4,mjolnir_10.gat,18,258
-mjolnir_09.gat,106,28,0	warp	mjol005	4,2,prt_fild05.gat,105,378
-mjolnir_09.gat,194,367,0	warp	mjol14-1	8,2,mjolnir_08.gat,185,31
-mjolnir_09.gat,30,249,0	warp	mjol006	2,4,prt_fild00.gat,380,249
-mjolnir_09.gat,300,28,0	warp	mjol007	4,2,prt_fild05.gat,292,382
-mjolnir_09.gat,373,288,0	warp	mjol011	2,2,prt_fild01.gat,23,292
-mjolnir_10.gat,15,258,0	warp	mjol15-1	2,4,mjolnir_08.gat,366,257
-mjolnir_10.gat,235,381,0	warp	mjol09-1	4,2,mjolnir_05.gat,235,19
-mjolnir_10.gat,265,13,0	warp	mjol008	3,2,prt_fild01.gat,261,370
-mjolnir_10.gat,384,220,0	warp	mjol16	2,4,mjolnir_11.gat,23,220
-mjolnir_10.gat,66,15,0	warp	mjol009	4,2,prt_fild01.gat,66,370
-mjolnir_11.gat,174,20,0	warp	mjol010	4,2,prt_fild02.gat,173,379
-mjolnir_11.gat,20,220,0	warp	mjol16-1	2,4,mjolnir_10.gat,381,220
-mjolnir_12.gat,199,378,0	warp	mjol012	2,2,aldebaran.gat,139,37
-mjolnir_12.gat,220,26,0	warp	mjol08-1	3,2,mjolnir_05.gat,220,379
+einbroch.gat,157,331,0	warp	EinbrUp_EinF04Dn	1,1,ein_fild04.gat,184,31
+lhz_fild03.gat,158,350,0	warp	LhzF03Up_LhzF02Dn	1,1,lhz_fild02.gat,164,44
+lhz_fild03.gat,364,282,0	warp	LhzF03R_EinF08L	1,1,ein_fild08.gat,29,276
+ein_fild03.gat,361,204,0	warp	EinF03R3_EinF04L3	1,1,ein_fild04.gat,19,205
+ein_fild03.gat,361,219,0	warp	EinF03R2_EinF04L2	1,1,ein_fild04.gat,19,215
+ein_fild03.gat,363,257,0	warp	EinF03R1_EinF04L1	1,1,ein_fild04.gat,26,251
+ein_fild03.gat,142,31,0	warp	EinF03Dn_LhzF02Up	1,1,lhz_fild02.gat,163,360
+lhz_fild02.gat,29,219,0	warp	LhzF02L_LhzF01R	1,1,lhz_fild01.gat,361,222
+
+ein_fild04.gat,184,26,0	warp	EinF04Dn_EinbrUp	1,1,einbroch.gat,157,327
+lhz_fild02.gat,164,37,0	warp	LhzF02Dn_LhzF03Up	1,1,lhz_fild03.gat,158,343
+ein_fild08.gat,23,275,0	warp	EinF08L_LhzF03R	1,1,lhz_fild03.gat,357,284
+ein_fild04.gat,14,205,0	warp	EinF04L3_EinF03R3	1,1,ein_fild03.gat,355,204
+ein_fild04.gat,14,215,0	warp	EinF04L2_EinF03R2	1,1,ein_fild03.gat,355,219
+ein_fild04.gat,20,250,0	warp	EinF04L1_EinF03R1	1,1,ein_fild03.gat,357,261
+lhz_fild02.gat,166,366,0	warp	LhzF02Up_EinF03Dn	1,1,ein_fild03.gat,143,40
+lhz_fild01.gat,367,222,0	warp	LhzF01R_LhzF02L	1,1,lhz_fild02.gat,36,221
 
 
 //--------------------------------------------------------------
-// Niflheim Field Warp Portals
+// Morroc Field Warp Portals - [Tsuyuki]
 //--------------------------------------------------------------
 
-nif_fild01.gat,345,323,0	warp	nwarp7	1,1,nif_fild02.gat,23,312
-nif_fild02.gat,21,312,0	warp	nwarp8	1,1,nif_fild01.gat,343,322
-nif_fild02.gat,379,235,0	warp	nwarp9	1,1,niflheim.gat,20,153
-niflheim.gat,18,151,0	warp	nwarp10	1,1,nif_fild02.gat,376,235
+prt_fild08.gat,233,16,0	warp	08c1-m01a	12,1,moc_fild01.gat,238,378
+moc_fild01.gat,239,382,0	warp	m01-08c	12,1,prt_fild08.gat,233,20
+prt_fild08.gat,55,21,0	warp	08d-m01d	4,2,moc_fild01.gat,56,380
+moc_fild01.gat,56,384,0	warp	m01d-08d	3,2,prt_fild08.gat,54,24
+moc_fild01.gat,68,16,0	warp	m01b1-m04a	15,3,moc_fild04.gat,317,376
+moc_fild01.gat,101,16,0	warp	m01b2-m04a	15,3,moc_fild04.gat,317,376
+moc_fild04.gat,292,381,0	warp	m04a1-m01b	10,1,moc_fild01.gat,76,25
+moc_fild04.gat,314,381,0	warp	m04a2-m01b	10,1,moc_fild01.gat,76,25
+moc_fild04.gat,336,381,0	warp	m04a3-m01b	10,1,moc_fild01.gat,76,25
+moc_fild01.gat,301,16,0	warp	m01c1-m02a	10,1,moc_fild02.gat,77,338
+moc_fild01.gat,321,16,0	warp	m01c2-m02a	10,1,moc_fild02.gat,77,338
+moc_fild01.gat,341,16,0	warp	m01c2-m02a	10,1,moc_fild02.gat,77,338
+moc_fild02.gat,67,342,0	warp	m02c1-m01a	11,3,moc_fild01.gat,315,25
+moc_fild02.gat,92,342,0	warp	m02c2-m01a	11,3,moc_fild01.gat,315,25
+moc_fild04.gat,19,206,0	warp	m04b-m05b	3,15,moc_fild05.gat,373,208
+moc_fild05.gat,378,208,0	warp	m05b-m04b	3,14,moc_fild04.gat,26,206
+moc_fild04.gat,14,146,0	warp	m04c1-m05c	1,11,moc_fild05.gat,378,119
+moc_fild04.gat,14,122,0	warp	m04c2-m05c	1,11,moc_fild05.gat,378,119
+moc_fild04.gat,14,98,0	warp	m04c3-m05c	1,11,moc_fild05.gat,378,119
+moc_fild05.gat,384,144,0	warp	m05c1-m04c	1,8,moc_fild04.gat,22,123
+moc_fild05.gat,384,126,0	warp	m05c3-m04c	1,8,moc_fild04.gat,22,123
+moc_fild05.gat,384,108,0	warp	m05c3-m04c	1,8,moc_fild04.gat,22,123
+moc_fild05.gat,18,172,0	warp	m05a1-m06b	1,8,moc_fild06.gat,367,317
+moc_fild05.gat,18,154,0	warp	m05a2-m06b	1,8,moc_fild06.gat,367,317
+moc_fild05.gat,18,136,0	warp	m05a2-m06b	1,8,moc_fild06.gat,367,317
+moc_fild06.gat,377,316,0	warp	m06b-m05a	1,15,moc_fild05.gat,24,153
+moc_fild06.gat,18,198,0	warp	m06a1-m07a	1,18,moc_fild07.gat,378,201
+moc_fild07.gat,381,201,0	warp	m07a-m06a	2,16,moc_fild06.gat,28,201
+moc_fild02.gat,332,19,0	warp	m02b-m03a	5,3,moc_fild03.gat,70,336
+moc_fild03.gat,70,341,0	warp	m03a-m02b	5,2,moc_fild02.gat,332,23
+moc_fild01.gat,22,242,0	warp	m01d-p09c	2,2,prt_fild09.gat,380,237
+prt_fild09.gat,383,223,0	warp	p09c-m01d	2,15,moc_fild01.gat,25,242
+prt_fild09.gat,383,251,0	warp	p09c-m01d	2,15,moc_fild01.gat,25,242
+pay_fild04.gat,17,165,0	warp	p04e-m01e	2,8,moc_fild01.gat,376,162
+moc_fild01.gat,379,162,0	warp	m01e-p04e	2,12,pay_fild04.gat,20,165
+moc_fild02.gat,350,339,0	warp	m02e-p04a	6,2,pay_fild04.gat,194,20
+pay_fild04.gat,194,17,0	warp	p04a-m02e	7,2,moc_fild02.gat,350,336
+moc_fild13.gat,146,368,0	warp	m13c-m02c	5,2,moc_fild02.gat,71,21
+moc_fild02.gat,71,18,0	warp	m02c-m13c	4,2,moc_fild13.gat,146,365
+moc_fild02.gat,228,29,0	warp	m02d-m13d	4,2,moc_fild13.gat,298,367
+moc_fild13.gat,298,370,0	warp	m13d-m02d	4,2,moc_fild02.gat,228,32
+moc_fild03.gat,17,37,0	warp	m03c-m13b	2,4,moc_fild13.gat,305,49
+moc_fild13.gat,308,49,0	warp	m13b-m03c	2,4,moc_fild03.gat,20,37
+pay_fild11.gat,38,330,0	warp	p11d-m03d	4,2,moc_fild03.gat,179,19
+moc_fild03.gat,179,16,0	warp	m03d-p11d	4,2,pay_fild11.gat,38,327
+pay_fild02.gat,16,175,0	warp	p02e-p11a	2,4,pay_fild11.gat,294,135
+pay_fild11.gat,297,135,0	warp	p11a-p02e	2,4,pay_fild02.gat,19,175
+pay_fild05.gat,127,378,0	warp	p05d-p02d	4,2,pay_fild02.gat,134,19
+pay_fild02.gat,134,16,0	warp	p02d-p05d	5,2,pay_fild05.gat,127,375
+pay_fild06.gat,28,288,0	warp	p06a-p05a	2,2,pay_fild05.gat,268,284
+pay_fild05.gat,271,284,0	warp	p05a-p06a	2,4,pay_fild06.gat,31,288
+pay_fild06.gat,305,375,0	warp	p06c-p03c	6,2,pay_fild03.gat,313,19
+pay_fild03.gat,313,16,0	warp	p03c-p06c	4,2,pay_fild06.gat,305,372
+moc_fild04.gat,92,381,0	warp	m04d-p09d	9,2,prt_fild09.gat,246,19
+prt_fild09.gat,246,16,0	warp	p09d-m04d	7,2,moc_fild04.gat,92,378
+moc_fild05.gat,144,375,0	warp	m05a-p10e	11,2,prt_fild10.gat,263,23
+prt_fild10.gat,263,20,0	warp	p10e-m05a	6,2,moc_fild05.gat,144,372
+moc_fild05.gat,325,382,0	warp	m05b-p09e	6,2,prt_fild09.gat,95,19
+prt_fild09.gat,95,16,0	warp	p09e-m05b	7,2,moc_fild05.gat,325,379
+moc_fild10.gat,208,298,0	warp	m10c-m06c	10,2,moc_fild06.gat,207,21
+moc_fild06.gat,207,18,0	warp	m06c-m10c	11,2,moc_fild10.gat,208,295
 
-
-//--------------------------------------------------------------
-// Payon Field Warp Portals
-//--------------------------------------------------------------
-
-pay_fild01.gat,14,152,0	warp	payf001	2,7,moc_fild03.gat,299,170
-pay_fild01.gat,278,14,0	warp	payf01	13,2,pay_fild02.gat,83,382
-pay_fild01.gat,351,14,0	warp	payf02	20,2,pay_fild02.gat,164,385
-pay_fild01.gat,379,201,0	warp	payf03	2,6,pay_fild07.gat,23,207
-pay_fild02.gat,134,16,0	warp	payf04	5,2,pay_fild05.gat,127,375
-pay_fild02.gat,16,175,0	warp	payf06	2,4,pay_fild11.gat,294,135
-pay_fild02.gat,164,389,0	warp	payf02-1	20,2,pay_fild01.gat,352,17
-pay_fild02.gat,284,108,0	warp	payf07	2,7,pay_fild03.gat,20,110
-pay_fild02.gat,83,386,0	warp	payf01-1	13,2,pay_fild01.gat,278,18
-pay_fild03.gat,15,110,0	warp	payf07-1	2,10,pay_fild02.gat,280,108
-pay_fild03.gat,172,281,0	warp	payf08	5,2,pay_fild07.gat,167,20
-pay_fild03.gat,313,16,0	warp	payf09	4,2,pay_fild06.gat,305,372
-pay_fild03.gat,392,63,0	warp	payf005	2,7,alberta.gat,19,233
-pay_fild04.gat,17,165,0	warp	payf002	2,8,moc_fild01.gat,376,162
-pay_fild04.gat,194,17,0	warp	payf003	7,2,moc_fild02.gat,350,336
-pay_fild05.gat,127,378,0	warp	payf04-1	4,2,pay_fild02.gat,134,19
-pay_fild05.gat,271,284,0	warp	payf10	2,4,pay_fild06.gat,32,289
-pay_fild06.gat,29,288,0	warp	payf10-1	2,2,pay_fild05.gat,268,284
-pay_fild06.gat,305,375,0	warp	payf09-1	6,2,pay_fild03.gat,313,19
-pay_fild07.gat,16,200,0	warp	payf03-1	3,3,pay_fild01.gat,371,205
-pay_fild07.gat,163,17,0	warp	payf08-1	5,2,pay_fild03.gat,177,275
-pay_fild07.gat,280,382,0	warp	payf11	4,2,pay_fild08.gat,160,19
-pay_fild07.gat,382,290,0	warp	payf12	2,5,pay_fild10.gat,19,290
-pay_fild08.gat,160,16,0	warp	payf11-1	4,2,pay_fild07.gat,280,379
-pay_fild08.gat,17,75,0	warp	payf006	2,4,payon.gat,263,92
-pay_fild08.gat,262,91,0	warp	payf13	2,4,pay_fild09.gat,19,91
-pay_fild09.gat,112,16,0	warp	pay14	4,2,pay_fild10.gat,112,379
-pay_fild09.gat,16,91,0	warp	payf13-1	2,4,pay_fild08.gat,259,91
-pay_fild10.gat,112,382,0	warp	pay14-1	3,2,pay_fild09.gat,112,19
-pay_fild10.gat,16,290,0	warp	payf12-1	2,5,pay_fild07.gat,379,290
-pay_fild11.gat,297,135,0	warp	payf06-1	2,4,pay_fild02.gat,19,175
-pay_fild11.gat,38,330,0	warp	payf004	4,2,moc_fild03.gat,179,19
-
-
-//--------------------------------------------------------------
-// Prontera Field Warp Portals
-//--------------------------------------------------------------
-
-prt_fild00.gat,159,383,0	warp	prtf007	4,2,mjolnir_07.gat,156,19
-prt_fild00.gat,165,18,0	warp	prtf01	9,3,prt_fild04.gat,158,384
-prt_fild00.gat,18,129,0	warp	prtf015	2,6,gef_fild00.gat,376,140
-prt_fild00.gat,317,18,0	warp	prtf02	8,2,prt_fild04.gat,323,384
-prt_fild00.gat,383,249,0	warp	prtf008	2,4,mjolnir_09.gat,33,248
-prt_fild01.gat,199,24,0	warp	prtf001	3,2,prt_gld.gat,159,295
-prt_fild01.gat,20,292,0	warp	prtf009	2,3,mjolnir_09.gat,370,288
-prt_fild01.gat,261,373,0	warp	prtf010	6,2,mjolnir_10.gat,265,16
-prt_fild01.gat,380,243,0	warp	prtf03	2,5,prt_fild02.gat,20,242
-prt_fild01.gat,382,304,0	warp	prtf04	2,10,prt_fild02.gat,20,305
-prt_fild01.gat,382,351,0	warp	prtf05	2,8,prt_fild02.gat,20,350
-prt_fild01.gat,66,373,0	warp	prtf011	2,2,mjolnir_10.gat,66,18
-prt_fild02.gat,17,242,0	warp	prtf03-1	2,5,prt_fild01.gat,377,243
-prt_fild02.gat,17,305,0	warp	prtf04-1	2,5,prt_fild01.gat,379,302
-prt_fild02.gat,17,350,0	warp	prtf05-1	2,7,prt_fild01.gat,379,351
-prt_fild02.gat,173,382,0	warp	prtf012	4,2,mjolnir_11.gat,174,23
-prt_fild02.gat,305,17,0	warp	prtf06	10,2,prt_fild06.gat,277,315
-prt_fild02.gat,380,347,0	warp	prtf07	2,10,prt_fild03.gat,23,249
-prt_fild03.gat,16,249,0	warp	prtf07-1	2,10,prt_fild02.gat,373,353
-prt_fild03.gat,371,256,0	warp	prtf006	2,2,prt_monk.gat,25,248
-prt_fild04.gat,160,387,0	warp	prtf01-1	10,2,prt_fild00.gat,164,24
-prt_fild04.gat,17,114,0	warp	prtf016	2,10,gef_fild01.gat,375,111
-prt_fild04.gat,323,387,0	warp	prtf02-1	7,2,prt_fild00.gat,315,21
-prt_fild04.gat,378,72,0	warp	prtf08	2,6,prt_fild05.gat,17,59
-prt_fild04.gat,384,155,0	warp	prtf09	2,7,prt_fild05.gat,20,134
-prt_fild04.gat,384,334,0	warp	prtf10	2,6,prt_fild05.gat,20,333
-prt_fild05.gat,105,381,0	warp	prtf013	5,2,mjolnir_09.gat,106,34
-prt_fild05.gat,13,63,0	warp	prtf08-1	2,15,prt_fild04.gat,374,73
-prt_fild05.gat,134,14,0	warp	prtf11	14,3,prt_fild07.gat,129,374
-prt_fild05.gat,14,141,0	warp	prtf09-1	2,18,prt_fild04.gat,380,158
-prt_fild05.gat,15,333,0	warp	prtf10-1	2,8,prt_fild04.gat,380,332
-prt_fild05.gat,255,14,0	warp	prtf12	12,2,prt_fild07.gat,248,369
-prt_fild05.gat,292,385,0	warp	prtf014	4,2,mjolnir_09.gat,305,33
-prt_fild05.gat,373,205,0	warp	prtf002	3,3,prontera.gat,26,203
-prt_fild06.gat,23,193,0	warp	prtf003	2,3,prontera.gat,285,203
-prt_fild06.gat,277,320,0	warp	prtf06-1	10,2,prt_fild02.gat,305,22
-prt_fild07.gat,13,64,0	warp	prtf017	3,8,gef_fild02.gat,376,69
-prt_fild07.gat,132,381,0	warp	prtf11-1	9,3,prt_fild05.gat,142,18
-prt_fild07.gat,14,289,0	warp	prtf018	3,10,gef_fild02.gat,375,292
-prt_fild07.gat,17,145,0	warp	prtf019	3,12,gef_fild02.gat,376,156
-prt_fild07.gat,206,12,0	warp	prtf13	4,2,prt_fild09.gat,224,377
-prt_fild07.gat,248,376,0	warp	prtf12-1	8,2,prt_fild05.gat,257,18
-prt_fild07.gat,383,239,0	warp	prtf14	3,20,prt_fild08.gat,20,239
-prt_fild07.gat,385,186,0	warp	prtf15	3,20,prt_fild08.gat,20,186
-prt_fild07.gat,84,13,0	warp	prtf16	4,2,prt_fild09.gat,87,377
-prt_fild08.gat,16,187,0	warp	prtf15-1	3,17,prt_fild07.gat,380,186
-prt_fild08.gat,16,239,0	warp	prtf14-1	3,15,prt_fild07.gat,379,239
-prt_fild08.gat,170,378,0	warp	prtf004	3,2,prontera.gat,156,26
-prt_fild08.gat,233,16,0	warp	prtf023	12,1,moc_fild01.gat,238,378
-prt_fild08.gat,371,212,0	warp	prtf005	3,3,izlude.gat,35,78
-prt_fild08.gat,55,21,0	warp	prtf024	4,2,moc_fild01.gat,56,380
-prt_fild09.gat,14,124,0	warp	prtf17	2,6,prt_fild10.gat,336,126
-prt_fild09.gat,14,139,0	warp	prtf17-1	2,8,prt_fild10.gat,336,126
-prt_fild09.gat,224,380,0	warp	prtf13-1	4,2,prt_fild07.gat,206,15
-prt_fild09.gat,246,16,0	warp	prtf025	7,2,moc_fild04.gat,92,378
-prt_fild09.gat,383,223,0	warp	prtf026	2,15,moc_fild01.gat,25,242
-prt_fild09.gat,383,251,0	warp	prtf027	2,15,moc_fild01.gat,25,242
-prt_fild09.gat,87,380,0	warp	prtf16-1	5,2,prt_fild07.gat,84,16
-prt_fild09.gat,95,16,0	warp	prtf028	7,2,moc_fild05.gat,325,379
-prt_fild10.gat,20,122,0	warp	prtf19	2,4,prt_fild11.gat,359,111
-prt_fild10.gat,20,196,0	warp	prtf20	2,4,prt_fild11.gat,358,184
-prt_fild10.gat,227,299,0	warp	prtf020	5,2,gef_fild02.gat,266,21
-prt_fild10.gat,263,20,0	warp	prtf029	6,2,moc_fild05.gat,144,372
-prt_fild10.gat,339,126,0	warp	prtf17-2	2,8,prt_fild09.gat,17,133
-prt_fild11.gat,17,281,0	warp	prtf021	2,4,gef_fild11.gat,374,293
-prt_fild11.gat,302,301,0	warp	prtf022	5,2,gef_fild03.gat,312,19
-prt_fild11.gat,361,184,0	warp	prtf20-1	2,5,prt_fild10.gat,23,196
-prt_fild11.gat,362,111,0	warp	prtf19-1	2,6,prt_fild10.gat,23,122
-monk_in.gat,128,46,0	warp	monk03	1,3,monk_in.gat,161,38
-monk_in.gat,128,84,0	warp	monk04	1,3,monk_in.gat,161,90
-monk_in.gat,159,38,0	warp	monk03-1	1,3,monk_in.gat,126,46
-monk_in.gat,159,90,0	warp	monk04-1	1,3,monk_in.gat,126,84
-monk_in.gat,40,38,0	warp	monk05	1,3,monk_in.gat,71,46
-monk_in.gat,40,92,0	warp	monk06	1,3,monk_in.gat,71,84
-monk_in.gat,69,46,0	warp	monk05-1	1,3,monk_in.gat,38,38
-monk_in.gat,69,84,0	warp	monk06-1	1,3,monk_in.gat,38,92
-monk_in.gat,98,186,0	warp	monk02-1	3,2,prt_monk.gat,245,139
-monk_in.gat,98,27,0	warp	monk01-1	5,2,prt_monk.gat,245,104
-monk_in.gat,99,102,0	warp	monk07	5,1,monk_in.gat,99,143
-monk_in.gat,99,141,0	warp	monk07-1	3,1,monk_in.gat,99,100
-prt_monk.gat,22,248,0	warp	monk001	2,2,prt_fild03.gat,368,256
-prt_monk.gat,245,106,0	warp	monk01	1,1,monk_in.gat,98,30
-prt_monk.gat,245,137,0	warp	monk02	1,1,monk_in.gat,98,183
+moc_fild09.gat,30,162,0	warp	m09d-m10d	2,3,moc_fild10.gat,381,258
+moc_fild10.gat,384,258,0	warp	m10d-m09d	2,3,moc_fild09.gat,33,162
+moc_fild09.gat,80,369,0	warp	m09e-m05e	7,2,moc_fild05.gat,82,19
+moc_fild05.gat,82,16,0	warp	m05e-m09e	5,2,moc_fild09.gat,80,366
+moc_fild09.gat,267,371,0	warp	m09c-m05d	4,2,moc_fild05.gat,268,21
+moc_fild05.gat,268,18,0	warp	m05d-m09c	4,2,moc_fild09.gat,267,368
+moc_fild08.gat,16,207,0	warp	m08b-m09b	2,4,moc_fild09.gat,371,195
+moc_fild09.gat,374,195,0	warp	m09b-m08b	2,8,moc_fild08.gat,19,207
+moc_fild08.gat,170,383,0	warp	m08e-m04e	3,2,moc_fild04.gat,175,21
+moc_fild04.gat,175,18,0	warp	m04e-m08e	3,2,moc_fild08.gat,170,380
+moc_fild08.gat,383,211,0	warp	m08a-m13a	2,4,moc_fild13.gat,32,171
+moc_fild13.gat,29,171,0	warp	m13a-m08a	2,4,moc_fild08.gat,380,211
+moc_fild11.gat,26,161,0	warp	m11b-m12b	2,10,moc_fild12.gat,286,168
+moc_fild12.gat,289,168,0	warp	m12b-m11b	2,3,moc_fild11.gat,29,161
+moc_fild11.gat,189,363,0	warp	m11a-m10b	3,2,moc_fild10.gat,189,26
+moc_fild10.gat,189,23,0	warp	m10b-m11a	3,2,moc_fild11.gat,189,360
+moc_fild15.gat,38,105,0	warp	m15c-m11c	2,4,moc_fild11.gat,376,197
+moc_fild11.gat,379,197,0	warp	m11c-m15c	2,6,moc_fild15.gat,41,105
+moc_fild15.gat,158,363,0	warp	m15a-m09a	6,2,moc_fild09.gat,126,23
+moc_fild09.gat,126,20,0	warp	m09a-m15a	4,2,moc_fild15.gat,158,360
+moc_fild14.gat,16,278,0	warp	m14b-m15b	2,6,moc_fild15.gat,364,276
+moc_fild15.gat,367,276,0	warp	m15b-m14b	2,4,moc_fild14.gat,19,278
+moc_fild14.gat,196,382,0	warp	m14c-m08c	4,2,moc_fild08.gat,204,19
+moc_fild08.gat,204,16,0	warp	m08c-m14c	4,2,moc_fild14.gat,196,379
+moc_fild18.gat,158,382,0	warp	m18c-m12c	4,2,moc_fild12.gat,118,33
+moc_fild12.gat,118,30,0	warp	m12c-m18c	4,2,moc_fild18.gat,158,379
+moc_fild17.gat,30,300,0	warp	m17a-m18a	2,5,moc_fild18.gat,379,305
+moc_fild18.gat,382,305,0	warp	m18a-m17a	2,4,moc_fild17.gat,33,300
+moc_fild17.gat,218,369,0	warp	m17d-m11d	5,2,moc_fild11.gat,212,32
+moc_fild11.gat,212,29,0	warp	m11d-m17d	4,2,moc_fild17.gat,218,366
+moc_fild16.gat,16,179,0	warp	m16b-m17b	2,6,moc_fild17.gat,366,272 2 3
+moc_fild17.gat,369,272,0	warp	m17b-m16b	2,3,moc_fild16.gat,19,179
+moc_fild16.gat,125,383,0	warp	m16d-m15d	5,2,moc_fild15.gat,104,19
+moc_fild15.gat,104,16,0	warp	m15d-m16d	9,2,moc_fild16.gat,125,380
+moc_fild16.gat,334,382,0	warp	m16e-m15e	4,2,moc_fild15.gat,348,21
+moc_fild15.gat,348,18,0	warp	m15e-m16e	5,2,moc_fild16.gat,334,379
 
 
 //--------------------------------------------------------------
-// Rachel Field Warp Portals
+// Mt. Mjolnir Field Warp Portals - [Tsuyuki]
 //--------------------------------------------------------------
 
-ra_fild01.gat,233,333,0	warp	ra000	1,1,ice_dun01.gat,157,15
-ra_fild01.gat,306,38,0	warp	ra001	1,1,ra_fild04.gat,322,371
-ra_fild04.gat,322,378,0	warp	ra002	1,1,ra_fild01.gat,306,43
-ra_fild04.gat,362,351,0	warp	ra003	1,1,ra_fild05.gat,39,353
-ra_fild05.gat,33,353,0	warp	ra004	1,1,ra_fild04.gat,356,351
-ra_fild05.gat,27,13,0	warp	ra005	1,1,ra_fild09.gat,30,337
-ra_fild09.gat,29,343,0	warp	ra006	1,1,ra_fild05.gat,31,17
-ra_fild04.gat,263,54,0	warp	ra007	1,1,ra_fild08.gat,287,365
-ra_fild08.gat,287,370,0	warp	ra008	1,1,ra_fild04.gat,263,60
-ra_fild09.gat,27,238,0	warp	ra009	1,1,ra_fild08.gat,360,234
-ra_fild08.gat,368,234,0	warp	ra010	1,1,ra_fild09.gat,35,238
-ra_fild04.gat,23,176,0	warp	ra011	1,1,ra_fild03.gat,370,172
-ra_fild03.gat,374,168,0	warp	ra012	1,1,ra_fild04.gat,29,176
-ra_fild05.gat,348,274,0	warp	ra013	1,1,ra_fild06.gat,24,277
-ra_fild06.gat,19,277,0	warp	ra014	1,1,ra_fild05.gat,341,273
-ra_fild06.gat,294,21,0	warp	ra015	1,1,lhz_fild01.gat,296,376
-lhz_fild01.gat,296,382,0	warp	ra016	1,1,ra_fild06.gat,298,25
-ra_fild12.gat,36,225,0	warp	ra017	1,1,rachel.gat,270,125
-ra_fild08.gat,165,29,0	warp	ra018	1,1,ra_fild12.gat,149,369
-ra_fild12.gat,149,374,0	warp	ra019	1,1,ra_fild08.gat,165,36
-ra_fild12.gat,303,27,0	warp	ra020	1,1,ra_fild13.gat,295,341
-ra_fild13.gat,295,346,0	warp	ra021	1,1,ra_fild12.gat,303,33
-ra_fild11.gat,360,226,0	warp	ra022	1,1,rachel.gat,30,125
-ra_fild11.gat,21,290,0	warp	ra023	1,1,ra_fild10.gat,379,283
-ra_fild10.gat,384,287,0	warp	ra024	1,1,ra_fild11.gat,28,290
-ra_fild11.gat,202,335,0	warp	ra025	1,1,ra_fild07.gat,215,32
-ra_fild07.gat,215,27,0	warp	ra025	1,1,ra_fild11.gat,201,329
-ra_fild07.gat,168,353,0	warp	ra026	1,1,ra_fild02.gat,171,45
-ra_fild02.gat,168,36,0	warp	ra027	1,1,ra_fild07.gat,168,349
-ra_fild02.gat,373,275,0	warp	ra028	1,1,ra_fild03.gat,28,294
-ra_fild03.gat,23,294,0	warp	ra029	1,1,ra_fild02.gat,367,270
+mjolnir_05.gat,16,171,0	warp	m05c-m04c	2,2,mjolnir_04.gat,384,174
+mjolnir_04.gat,387,174,0	warp	m04c-m05c	2,2,mjolnir_05.gat,19,171
+mjolnir_03.gat,242,204,0	warp	m03a-m04a	1,1,mjolnir_04.gat,125,208
+mjolnir_04.gat,122,208,0	warp	m04a-m03a	1,1,mjolnir_03.gat,239,204
+mjolnir_02.gat,326,289,0	warp	m02c-m03c	1,1,mjolnir_03.gat,24,258
+mjolnir_03.gat,21,258,0	warp	m03c-m02c	2,2,mjolnir_02.gat,323,289
+mjolnir_01.gat,381,256,0	warp	m01a-m02a	2,2,mjolnir_02.gat,31,258
+mjolnir_02.gat,28,258,0	warp	m02a-m01a	2,2,mjolnir_01.gat,378,256
+gef_fild04.gat,261,362,0	warp	g04b-m01b	4,2,mjolnir_01.gat,284,21
+mjolnir_01.gat,284,18,0	warp	m01b-g04b	4,2,gef_fild04.gat,261,359
+gef_fild04.gat,187,39,0	warp	g04d-geffen	4,2,geffen.gat,119,210
+geffen.gat,119,213,0	warp	geffen-g04d	3,2,gef_fild04.gat,187,42
+mjolnir_06.gat,18,331,0	warp	m06a-g04a	2,4,gef_fild04.gat,359,322
+gef_fild04.gat,362,322,0	warp	g04a-m06a	2,4,mjolnir_06.gat,21,331
+mjolnir_06.gat,366,383,0	warp	m06b-m02b	4,2,mjolnir_02.gat,361,21
+mjolnir_02.gat,361,18,0	warp	m02b-m06b	4,2,mjolnir_06.gat,366,380
+mjolnir_07.gat,214,383,0	warp	m07b-m03b	4,2,mjolnir_03.gat,212,20
+mjolnir_03.gat,212,17,0	warp	m03b-m07b	4,2,mjolnir_07.gat,214,380
+mjolnir_07.gat,16,377,0	warp	m07c-m06c	2,4,mjolnir_06.gat,379,377
+mjolnir_06.gat,382,377,0	warp	m06c-m07c	2,4,mjolnir_07.gat,19,377
+mjolnir_07.gat,17,77,0	warp	m07d-m06d	2,4,mjolnir_06.gat,380,74
+mjolnir_06.gat,383,74,0	warp	m06d-m07d	2,4,mjolnir_07.gat,20,77
+mjolnir_08.gat,29,346,0	warp	m08e-m07e	2,4,mjolnir_07.gat,380,362
+mjolnir_07.gat,383,362,0	warp	m07e-m08e	2,4,mjolnir_08.gat,32,346
+mjolnir_08.gat,30,234,0	warp	m08f-m07f	2,4,mjolnir_07.gat,380,233 2 4
+mjolnir_07.gat,383,233,0	warp	m07f-m08f	2,4,mjolnir_08.gat,33,234
+mjolnir_08.gat,159,373,0	warp	m08b-m04b	1,1,mjolnir_04.gat,160,49
+mjolnir_04.gat,160,46,0	warp	m04b-m08b	4,2,mjolnir_08.gat,159,370
+
+gef_fild00.gat,267,382,0	warp	g00e-m06e	4,2,mjolnir_06.gat,265,32
+mjolnir_06.gat,265,29,0	warp	m06e-g00e	2,2,gef_fild00.gat,267,379
+prt_fild00.gat,159,383,0	warp	p00b-m07a	4,2,mjolnir_07.gat,156,19
+mjolnir_07.gat,156,16,0	warp	m07a-p00b	4,2,prt_fild00.gat,159,380
+mjolnir_09.gat,30,249,0	warp	m09c-p00c	2,4,prt_fild00.gat,380,249
+prt_fild00.gat,383,249,0	warp	p00c-m09c	2,4,mjolnir_09.gat,33,248
+mjolnir_09.gat,194,367,0	warp	m09b-m08c	8,2,mjolnir_08.gat,185,31
+mjolnir_08.gat,185,28,0	warp	m08c-m09b	17,2,mjolnir_09.gat,196,364
+prt_fild01.gat,20,292,0	warp	p01d-m09a	2,3,mjolnir_09.gat,370,288
+mjolnir_09.gat,373,288,0	warp	m09a-p01d	2,2,prt_fild01.gat,23,292
+prt_fild02.gat,173,382,0	warp	p02a-m11a	4,2,mjolnir_11.gat,174,23
+mjolnir_11.gat,174,20,0	warp	m11a-p02a	4,2,prt_fild02.gat,173,379
+prt_fild03.gat,371,256,0	warp	p03-Monk	2,2,prt_monk.gat,25,248
+prt_monk.gat,22,248,0	warp	Monk-p03	2,2,prt_fild03.gat,368,256
+gef_fild01.gat,16,102,0	warp	g01b-g09b	2,4,gef_fild09.gat,368,92
+gef_fild09.gat,368,95,0	warp	g09b-g01b	4,2,gef_fild01.gat,19,102
+prt_fild05.gat,105,381,0	warp	p05f-m09d	5,2,mjolnir_09.gat,106,34
+mjolnir_09.gat,106,28,0	warp	m09d-p05f	4,2,prt_fild05.gat,105,378
+prt_fild05.gat,292,385,0	warp	p05g-m09e	4,2,mjolnir_09.gat,305,33
+mjolnir_09.gat,300,28,0	warp	m09e-p05g	4,2,prt_fild05.gat,292,382
+
+mjolnir_10.gat,384,220,0	warp	m10-m11	2,4,mjolnir_11.gat,23,220
+mjolnir_11.gat,20,220,0	warp	m11-m10	2,4,mjolnir_10.gat,381,220
+mjolnir_10.gat,235,381,0	warp	m10-m05	4,2,mjolnir_05.gat,235,19
+mjolnir_05.gat,235,16,0	warp	m05-m10	4,2,mjolnir_10.gat,235,378
+mjolnir_10.gat,15,258,0	warp	m10-m08	2,4,mjolnir_08.gat,366,257
+mjolnir_08.gat,369,257,0	warp	m08-m10	2,4,mjolnir_10.gat,18,258
+mjolnir_10.gat,265,13,0	warp	m10-p01	3,2,prt_fild01.gat,261,370
+prt_fild01.gat,261,373,0	warp	p01-m10	6,2,mjolnir_10.gat,265,16
+mjolnir_10.gat,66,15,0	warp	m10-p01	4,2,prt_fild01.gat,66,370
+prt_fild01.gat,66,373,0	warp	p01-m10	2,2,mjolnir_10.gat,66,18
 
 
 //--------------------------------------------------------------
-// Umbala Field Warp Portals
+// Niflheim Field Warp Portals - [Tsuyuki]
 //--------------------------------------------------------------
 
-um_fild04.gat,215,340,0	warp	umba0055	1,1,umbala.gat,130,80
-umbala.gat,129,78,0	warp	umba0001	1,1,um_fild04.gat,215,337
-cmd_fild01.gat,179,370,0	warp	umba0041	1,1,um_fild03.gat,239,27
-cmd_fild01.gat,78,367,0	warp	umba0043	1,1,um_fild03.gat,117,51
-um_fild01.gat,30,274,0	warp	umba0051	1,1,beach_dun2.gat,255,244
-um_fild03.gat,119,50,0	warp	umba0044	1,1,cmd_fild01.gat,78,365
-um_fild03.gat,239,25,0	warp	umba0042	1,1,cmd_fild01.gat,179,368
-um_fild01.gat,368,275,0	warp	umba0010	1,1,um_fild02.gat,24,271
-um_fild02.gat,188,374,0	warp	umba0053	10,1,um_fild04.gat,179,15
-um_fild02.gat,21,270,0	warp	umba0009	1,1,um_fild01.gat,365,275
-um_fild02.gat,374,149,0	warp	umba0008	1,10,um_fild03.gat,34,146
-um_fild02.gat,374,326,0	warp	umba0005	1,1,um_fild03.gat,21,334
-um_fild03.gat,18,334,0	warp	umba0006	1,1,um_fild02.gat,371,326
-um_fild03.gat,31,146,0	warp	umba0007	1,10,um_fild02.gat,371,149
-um_fild04.gat,179,12,0	warp	umba0054	10,1,um_fild02.gat,189,371
-um_dun02.gat,125,163,0	warp	nwarp1	1,1,yggdrasil01.gat,40,63
-yggdrasil01.gat,36,62,0	warp	nwarp2	1,1,um_dun02.gat,126,147
-yggdrasil01.gat,249,262,0	warp	nwarp5	1,1,nif_fild01.gat,315,66
-nif_fild01.gat,315,63,0	warp	nwarp6	1,1,yggdrasil01.gat,247,262
-yggdrasil01.gat,271,51,0	warp	nwarp3	1,1,yggdrasil01.gat,26,196
-yggdrasil01.gat,26,193,0	warp	nwarp4	1,1,yggdrasil01.gat,269,53
+um_dun02.gat,126,162,0	warp	ygGate_yg1	1,1,yggdrasil01.gat,39,63
+yggdrasil01.gat,270,52,0	warp	yg2a_yg2b	1,1,yggdrasil01.gat,30,196
+yggdrasil01.gat,27,195,0	warp	yg2b_yg2a	1,1,yggdrasil01.gat,267,56
+yggdrasil01.gat,248,259,0	warp	yg3_nf01a	1,1,nif_fild01.gat,315,67
+nif_fild01.gat,344,322,0	warp	nf01b_nf02a	1,1,nif_fild02.gat,26,311
+nif_fild02.gat,22,311,0	warp	nf02a_nf01b	1,1,nif_fild01.gat,340,322
+
 
 //--------------------------------------------------------------
-// Veins Field Warp Portals
+// Payon Field Warp Portals - [Tsuyuki]
 //--------------------------------------------------------------
 
-ve_fild02.gat,196,382,0    warp    veinswarp5001    1,1,rachel.gat,130,23
-ve_fild06.gat,154,219,0    warp    veinswarp5002    1,1,veins.gat,218,358
-ve_fild07.gat,147,372,0    warp    veinswarp5003    1,1,veins.gat,146,27
-ve_fild03.gat,168,241,0    warp    veinswarp5004    1,1,thor_v01.gat,21,226
-ve_fild01.gat,243,369,0    warp    veinswarp5005    1,1,ra_fild11.gat,232,29
-ra_fild11.gat,232,26,0    warp    veinswarp5006    1,1,ve_fild01.gat,243,366
-ve_fild01.gat,367,263,0    warp    veinswarp5007    1,1,ve_fild02.gat,33,259
-ve_fild02.gat,30,259,0    warp    veinswarp5008    1,1,ve_fild01.gat,364,263
-ve_fild01.gat,351,95,0    warp    veinswarp5009    1,1,ve_fild02.gat,76,133
-ve_fild02.gat,73,133,0    warp    veinswarp5010    1,1,ve_fild01.gat,348,95
-ve_fild01.gat,185,19,0    warp    veinswarp5011    1,1,ve_fild04.gat,174,337
-ve_fild04.gat,174,340,0    warp    veinswarp5012    1,1,ve_fild01.gat,185,22
-ve_fild02.gat,385,309,0    warp    veinswarp5013    1,1,ra_fild13.gat,31,311
-ra_fild13.gat,28,311,0    warp    veinswarp5014    1,1,ve_fild02.gat,382,309
-ve_fild03.gat,355,222,0    warp    veinswarp5015    1,1,ve_fild04.gat,46,249
-ve_fild04.gat,43,249,0    warp    veinswarp5016    1,1,ve_fild03.gat,353,221
-ve_fild03.gat,222,42,0    warp    veinswarp5017    1,1,ve_fild05.gat,204,330
-ve_fild05.gat,206,331,0    warp    veinswarp5018    1,1,ve_fild03.gat,222,45
-ve_fild04.gat,115,50,0    warp    veinswarp5019    1,1,ve_fild06.gat,78,183
-ve_fild05.gat,359,192,0    warp    veinswarp5020    1,1,ve_fild06.gat,78,183
-ve_fild06.gat,88,176,0	script	#veinswarp5021	45,2,2,{
-OnTouch:
-	set @w,rand(1,2);
-	if (@w == 1) warp "ve_fild04.gat",115,55;
-	if (@w == 2) warp "ve_fild05.gat",354,192;
-	end;
-}
+moc_fild03.gat,303,170,0	warp	m03b-p01a	2,7,pay_fild01.gat,17,152
+pay_fild01.gat,13,152,0	warp	p01a-m03b	2,7,moc_fild03.gat,299,170
+pay_fild01.gat,278,14,0	warp	p01b-p02a	13,2,pay_fild02.gat,83,382
+pay_fild02.gat,83,386,0	warp	p02a-p01b	13,2,pay_fild01.gat,278,18
+pay_fild01.gat,353,14,0	warp	p01d-p02c	20,3,pay_fild02.gat,160,381
+pay_fild02.gat,167,390,0	warp	p02c-p01d	20,3,pay_fild01.gat,354,18
+pay_fild02.gat,284,108,0	warp	p02b-p03a	2,7,pay_fild03.gat,20,110
+pay_fild03.gat,15,110,0	warp	p03a-p02b	2,10,pay_fild02.gat,280,108
+
+pay_fild07.gat,16,200,0	warp	p07e-p01e	3,3,pay_fild01.gat,371,205
+pay_fild01.gat,379,201,0	warp	p01e-p07e	2,6,pay_fild07.gat,23,207
+pay_fild07.gat,163,17,0	warp	p07d-p03d	5,2,pay_fild03.gat,177,275
+pay_fild03.gat,172,281,0	warp	p03d-p07d	5,2,pay_fild07.gat,167,20
+pay_fild10.gat,16,290,0	warp	p10c-p07c	2,5,pay_fild07.gat,379,290
+pay_fild07.gat,382,290,0	warp	p07c-p10c	2,5,pay_fild10.gat,19,290
+pay_fild09.gat,112,16,0	warp	p09a-p10a	4,2,pay_fild10.gat,112,379
+pay_fild10.gat,112,382,0	warp	p10a-p09a	3,2,pay_fild09.gat,112,19
+pay_fild08.gat,262,91,0	warp	p08b-p09b	2,4,pay_fild09.gat,19,91
+pay_fild09.gat,16,91,0	warp	p09b-p08b	2,4,pay_fild08.gat,259,91
+pay_fild08.gat,17,75,0	warp	p08-Town	1,1,payon.gat,265,92
+payon.gat,267,89,0	warp	Town-p08	1,1,pay_fild08.gat,20,74
+pay_fild08.gat,160,16,0	warp	p08a-p07a	4,2,pay_fild07.gat,280,379 4 2
+pay_fild07.gat,280,382,0	warp	p07a-p08a	4,2,pay_fild08.gat,160,19
+mjolnir_12.gat,220,26,0	warp	m12b-m05b	3,2,mjolnir_05.gat,220,379
+mjolnir_05.gat,220,382,0	warp	m05b-m12b	4,2,mjolnir_12.gat,220,29
+gef_fild11.gat,377,293,0	warp	g11b-p11b	2,4,prt_fild11.gat,20,281
+prt_fild11.gat,17,281,0	warp	p11b-g11b	2,4,gef_fild11.gat,374,293
+gef_fild11.gat,111,364,0	warp	g11c-g10c	6,3,gef_fild10.gat,104,24
+gef_fild10.gat,104,21,0	warp	g10c-g11c	5,2,gef_fild11.gat,114,360
+
+pay_fild10.gat,99,13,0	warp	Outside the hunter guild	1,1,pay_fild10.gat,148,252
+
+
+//--------------------------------------------------------------
+// Prontera Field Warp Portals - [Tsuyuki]
+//--------------------------------------------------------------
+
+prt_fild01.gat,382,351,0	warp	01a-02a	2,8,prt_fild02.gat,20,350
+prt_fild02.gat,17,350,0	warp	02a-01a	2,7,prt_fild01.gat,379,351
+prt_fild01.gat,382,304,0	warp	01b-02b	2,10,prt_fild02.gat,20,305
+prt_fild02.gat,17,305,0	warp	02b-01b	2,5,prt_fild01.gat,379,302
+prt_fild01.gat,380,243,0	warp	01c-02e	2,5,prt_fild02.gat,20,242
+prt_fild02.gat,17,242,0	warp	02e-01c	2,5,prt_fild01.gat,377,243
+prt_fild02.gat,380,347,0	warp	02c-03a	2,10,prt_fild03.gat,23,249
+prt_fild03.gat,16,249,0	warp	03a-02c	2,10,prt_fild02.gat,373,353
+prt_fild02.gat,305,17,0	warp	02d-06a	10,2,prt_fild06.gat,277,315
+prt_fild06.gat,277,320,0	warp	06a-02d	10,2,prt_fild02.gat,305,22
+prt_fild05.gat,15,333,0	warp	05a-04a	2,8,prt_fild04.gat,380,332
+prt_fild04.gat,384,334,0	warp	04a-05a	2,6,prt_fild05.gat,20,333
+prt_fild05.gat,14,141,0	warp	05e-04f	2,18,prt_fild04.gat,380,158
+prt_fild04.gat,384,155,0	warp	04f-05e	2,7,prt_fild05.gat,20,134
+prt_fild05.gat,13,63,0	warp	05b-04b	2,15,prt_fild04.gat,374,73
+prt_fild04.gat,378,72,0	warp	04b-05b	2,6,prt_fild05.gat,17,59
+prt_fild05.gat,134,14,0	warp	05c-07c	14,3,prt_fild07.gat,129,374
+prt_fild07.gat,132,381,0	warp	07c-05c	9,3,prt_fild05.gat,142,18
+prt_fild05.gat,255,14,0	warp	05d-07d	12,2,prt_fild07.gat,248,369
+prt_fild07.gat,248,376,0	warp	07d-05d	8,2,prt_fild05.gat,257,18
+prt_fild04.gat,160,387,0	warp	04c-00b	10,2,prt_fild00.gat,164,24
+prt_fild00.gat,165,18,0	warp	00b-04c	9,3,prt_fild04.gat,158,384
+prt_fild04.gat,323,387,0	warp	04e-00c	7,2,prt_fild00.gat,315,21
+prt_fild00.gat,317,18,0	warp	00c-04e	8,2,prt_fild04.gat,323,384
+
+prt_fild00.gat,18,129,0	warp	00a-g00a	2,6,gef_fild00.gat,376,140
+gef_fild00.gat,381,137,0	warp	g00a-00a	3,9,prt_fild00.gat,24,125
+prt_fild04.gat,17,114,0	warp	04d-g01a	2,10,gef_fild01.gat,375,111
+gef_fild01.gat,382,111,0	warp	g01a-04d	2,9,prt_fild04.gat,20,114
+prt_fild07.gat,14,289,0	warp	07a-g02a	3,10,gef_fild02.gat,375,292
+gef_fild02.gat,380,289,0	warp	g02a-07a	3,12,prt_fild07.gat,18,289
+prt_fild07.gat,17,145,0	warp	07b-g02b	3,12,gef_fild02.gat,376,156
+gef_fild02.gat,380,156,0	warp	g02b-07b	3,7,prt_fild07.gat,21,143
+prt_fild07.gat,13,64,0	warp	07g-g02c	3,8,gef_fild02.gat,376,69
+gef_fild02.gat,380,68,0	warp	g02c-07g	3,10,prt_fild07.gat,17,64
+prt_fild07.gat,383,239,0	warp	07e-08a	3,20,prt_fild08.gat,20,239
+prt_fild08.gat,16,239,0	warp	08a-07e	3,15,prt_fild07.gat,379,239
+prt_fild07.gat,385,186,0	warp	07f-08b	3,20,prt_fild08.gat,20,186
+prt_fild08.gat,16,187,0	warp	08b-07f	3,17,prt_fild07.gat,380,186
+
+prt_fild10.gat,20,196,0	warp	p10d-p11d	2,4,prt_fild11.gat,358,184
+prt_fild11.gat,361,184,0	warp	p11d-p10d	2,5,prt_fild10.gat,23,196
+prt_fild10.gat,20,122,0	warp	p10c-p11c	2,4,prt_fild11.gat,359,111
+prt_fild11.gat,362,111,0	warp	p11c-p10c	2,6,prt_fild10.gat,23,122
+prt_fild10.gat,227,299,0	warp	p10a-g02a	5,2,gef_fild02.gat,266,21
+gef_fild02.gat,266,18,0	warp	g02a-p10a	5,2,prt_fild10.gat,227,296
+prt_fild09.gat,14,139,0	warp	p09b-p10b	2,8,prt_fild10.gat,336,126
+prt_fild09.gat,14,124,0	warp	p09b-p10b	2,6,prt_fild10.gat,336,126
+prt_fild10.gat,339,126,0	warp	p10b-p09b	2,8,prt_fild09.gat,17,133
+prt_fild09.gat,87,380,0	warp	p09g-p07g	5,2,prt_fild07.gat,84,16
+prt_fild07.gat,84,13,0	warp	p07g-p09g	4,2,prt_fild09.gat,87,377
+prt_fild09.gat,224,380,0	warp	p09h-p07h	4,2,prt_fild07.gat,206,15
+prt_fild07.gat,206,12,0	warp	p07h-p09h	4,2,prt_fild09.gat,224,377
+
+prt_monk.gat,245,137,0	warp	monkout-in	1,1,monk_in.gat,98,183
+monk_in.gat,98,186,0	warp	monkin-out	3,2,prt_monk.gat,245,139
+prt_monk.gat,245,106,0	warp	monkout-in	1,1,monk_in.gat,98,30
+monk_in.gat,98,27,0	warp	monkin-out	5,2,prt_monk.gat,245,104
+monk_in.gat,69,84,0	warp	monk_in	1,3,monk_in.gat,38,92
+monk_in.gat,40,92,0	warp	monk_in	1,3,monk_in.gat,71,84
+monk_in.gat,69,46,0	warp	monk_in	1,3,monk_in.gat,38,38
+monk_in.gat,40,38,0	warp	monk_in	1,3,monk_in.gat,71,46
+monk_in.gat,128,46,0	warp	monk_in	1,3,monk_in.gat,161,38
+monk_in.gat,159,38,0	warp	monk_in	1,3,monk_in.gat,126,46
+monk_in.gat,128,84,0	warp	monk_in	1,3,monk_in.gat,161,90
+monk_in.gat,159,90,0	warp	monk_in	1,3,monk_in.gat,126,84
+monk_in.gat,99,141,0	warp	monk_in	3,1,monk_in.gat,99,100
+monk_in.gat,99,102,0	warp	monk_in	5,1,monk_in.gat,99,143
+
+
+//--------------------------------------------------------------
+// Rachel Field Warp Portals - [Tsuyuki]
+//--------------------------------------------------------------
+
+ra_fild01.gat,306,38,0	warp	raF01S_raF04N	1,1,ra_fild04.gat,322,371
+ra_fild02.gat,373,275,0	warp	raF02E_raF03W	1,1,ra_fild03.gat,28,294
+ra_fild02.gat,168,36,0	warp	raF02S_raF07N	1,1,ra_fild07.gat,168,349
+ra_fild03.gat,374,168,0	warp	raF03E_raF04W	1,1,ra_fild04.gat,29,176
+ra_fild04.gat,362,351,0	warp	raF04E_raF05W	1,1,ra_fild05.gat,39,353
+ra_fild04.gat,263,54,0	warp	raF04S_raF08N	1,1,ra_fild08.gat,287,365
+ra_fild05.gat,348,274,0	warp	raF05E_raF06W	1,1,ra_fild06.gat,24,277
+ra_fild05.gat,27,13,0	warp	raF05S_raF09N	1,1,ra_fild09.gat,30,337
+ra_fild06.gat,294,21,0	warp	raF06S_lhzF01N	1,1,lhz_fild01.gat,296,376
+ra_fild07.gat,215,27,0	warp	raF07S_raF11N	1,1,ra_fild11.gat,201,329
+ra_fild08.gat,368,234,0	warp	raF08E_raF09W	1,1,ra_fild09.gat,35,238
+ra_fild08.gat,165,29,0	warp	raF08S_raF12N	1,1,ra_fild12.gat,149,369
+ra_fild10.gat,384,287,0	warp	raF10E_raF11W	1,1,ra_fild11.gat,28,290
+ra_fild12.gat,303,27,0	warp	raF12S_raF13N	1,1,ra_fild13.gat,295,341
+ra_fild04.gat,322,378,0	warp	raF04N_raF01S	1,1,ra_fild01.gat,306,43
+ra_fild03.gat,23,294,0	warp	raF03W_raF02E	1,1,ra_fild02.gat,367,270
+ra_fild07.gat,168,353,0	warp	raF07N_raF02S	1,1,ra_fild02.gat,171,45
+ra_fild04.gat,23,176,0	warp	raF04W_raF03E	1,1,ra_fild03.gat,370,172
+ra_fild05.gat,33,353,0	warp	raF05W_raF04E	1,1,ra_fild04.gat,356,351
+ra_fild08.gat,287,370,0	warp	raF08N_raF04S	1,1,ra_fild04.gat,263,60
+ra_fild06.gat,19,277,0	warp	raF06W_raF05E	1,1,ra_fild05.gat,341,273
+ra_fild09.gat,29,343,0	warp	raF09N_raF05S	1,1,ra_fild05.gat,31,17
+lhz_fild01.gat,296,382,0	warp	lhzF01N_raF06S	1,1,ra_fild06.gat,298,25
+ra_fild11.gat,202,335,0	warp	raF11N_raF07S	1,1,ra_fild07.gat,215,32
+ra_fild09.gat,27,238,0	warp	raF09W_raF08E	1,1,ra_fild08.gat,360,234
+ra_fild12.gat,149,374,0	warp	raF12N_raF08S	1,1,ra_fild08.gat,165,36
+ra_fild11.gat,21,290,0	warp	raF11W_raF10E	1,1,ra_fild10.gat,379,283
+ra_fild13.gat,295,346,0	warp	raF13N_raF12S	1,1,ra_fild12.gat,303,33
+
+
+//--------------------------------------------------------------
+// Umbala Field Warp Portals - [Tsuyuki]
+//--------------------------------------------------------------
+
+cmd_fild01.gat,77,366,0	warp	cmdF01a_A_f03c	1,1,um_fild03.gat,114,53
+cmd_fild01.gat,178,370,0	warp	cmdF01b_A_f03d	1,1,um_fild03.gat,243,29
+um_fild01.gat,369,277,0	warp	f01b_f02a	1,1,um_fild02.gat,25,272
+um_fild02.gat,22,272,0	warp	f02a_f01b	1,1,um_fild01.gat,366,277
+um_fild02.gat,188,374,0	warp	f02b_f04b	1,1,um_fild04.gat,182,16
+um_fild02.gat,373,329,0	warp	f02c_f03a	1,1,um_fild03.gat,23,334
+um_fild02.gat,373,148,0	warp	f02d_f03b	1,1,um_fild03.gat,36,145
+um_fild03.gat,19,334,0	warp	f03a_f02c	1,1,um_fild02.gat,370,329
+um_fild03.gat,32,145,0	warp	f03b_f02d	1,1,um_fild02.gat,370,148
+um_fild03.gat,114,50,0	warp	f03c_cmdF01a_A	1,1,cmd_fild01.gat,74,363
+um_fild03.gat,243,26,0	warp	f03d_cmdF01b_A	1,1,cmd_fild01.gat,176,367
+um_fild04.gat,182,13,0	warp	f04b_f02b	1,1,um_fild02.gat,190,371

@@ -17,6 +17,10 @@
 //--------------------------------------------------------------
 
 
+//--------------------------------------------------------------
+// Thanatos Tower Quest - [GreenGoblin]
+//--------------------------------------------------------------
+
 hu_fild01.gat,140,163,5	script	Tower Keeper	852,3,3,{
 
 	mes "[Gatei]";
@@ -166,7 +170,6 @@ OnTouch:
 	close;
 
 }
-
 
 // Tour Guide - 1st Floor
 tha_t01.gat,149,78,3	script	Guide#1	90,{
@@ -651,7 +654,6 @@ L_End:
 
 }
 
-
 // Tour Guide - 2nd Floor
 tha_t02.gat,231,161,5	script	Entrance Guide	874,{
 
@@ -826,7 +828,6 @@ L_End:
 
 }
 
-
 // Mechanical Device - Red Key
 tha_t03.gat,67,70,0	script	Mechanical Device#1	111,{
 
@@ -928,7 +929,6 @@ RedKey:
 	close;
 
 }
-
 
 // Mechanical Device - Yellow Key
 tha_t04.gat,195,195,0	script	Mechanical Device#2	111,{
@@ -1095,7 +1095,6 @@ YellowKey:
 
 }
 
-
 // Mechanical Device - Blue Key
 tha_t05.gat,101,37,0	script	Mechanical Device#3	111,{
 
@@ -1193,7 +1192,6 @@ BlueKey:
 	close;
 
 }
-
 
 // Mechanical Device - Green Key
 tha_t06.gat,43,152,0	script	Mechanical Device#4	111,{
@@ -1430,7 +1428,6 @@ GreenKey:
 
 }
 
-
 // Mechanical Device - Black Key
 tha_t09.gat,19,158,0	script	Mechanical Device#5	111,{
 
@@ -1523,7 +1520,6 @@ L_Cancel:
 
 }
 
-
 // Seal - Blue Magical Stone
 tha_t04.gat,150,44,0	script	Seal#1	111,{
 
@@ -1606,7 +1602,6 @@ L_NoBreak:
 
 }
 
-
 // Seal - Red Magical Stone
 tha_t05.gat,218,116,0	script	Seal#2	111,{
 
@@ -1680,7 +1675,6 @@ L_NoBreak:
 	close;
 
 }
-
 
 // Seal - Black Magical Stone
 tha_t06.gat,226,230,0	script	Seal#3	111,{
@@ -1756,7 +1750,6 @@ L_NoBreak:
 	close;
 
 }
-
 
 // Seal - Yellow Magical Stone
 tha_t07.gat,113,129,0	script	Seal#4	111,{
@@ -1921,7 +1914,6 @@ L_NoBreak:
 
 }
 
-
 // Stone Statue - Red Magical Stone
 tha_t12.gat,96,58,0	script	Stone Statue#1	111,{
 
@@ -1983,7 +1975,6 @@ L_Cancel:
 
 }
 
-
 // Stone Statue - Yellow Magical Stone
 tha_t12.gat,161,58,0	script	Stone Statue#2	111,{
 
@@ -2037,7 +2028,6 @@ L_Cancel:
 	close;
 
 }
-
 
 // Stone Statue - Blue Magical Stone
 tha_t12.gat,104,18,0	script	Stone Statue#3	111,{
@@ -2093,7 +2083,6 @@ L_Cancel:
 
 }
 
-
 // Stone Statue - Black Magical Stone
 tha_t12.gat,128,86,0	script	Stone Statue#4	111,{
 
@@ -2146,7 +2135,6 @@ L_Cancel:
 	close;
 
 }
-
 
 // Stone Statue - Green Magical Stone
 tha_t12.gat,154,18,0	script	Stone Statue#5	111,{
@@ -2210,7 +2198,6 @@ L_Cancel:
 
 }
 
-
 // Black Seal Glow Effect
 tha_t12.gat,129,56,0	script	tteffect1	139,{
 end;
@@ -2251,7 +2238,6 @@ OnTimer3000:
 	end;
 
 }
-
 
 // Red Seal Glow Effect
 tha_t12.gat,125,52,0	script	tteffect2	139,{
@@ -2294,7 +2280,6 @@ OnTimer3000:
 
 }
 
-
 // Yellow Seal Glow Effect
 tha_t12.gat,134,52,0	script	tteffect3	139,{
 end;
@@ -2335,7 +2320,6 @@ OnTimer3000:
 	end;
 
 }
-
 
 // Green Seal Glow Effect
 tha_t12.gat,132,47,0	script	tteffect4	139,{
@@ -2378,7 +2362,6 @@ OnTimer3000:
 
 }
 
-
 // Blue Seal Glow Effect
 tha_t12.gat,127,47,0	script	tteffect5	139,{
 end;
@@ -2419,7 +2402,6 @@ OnTimer3000:
 	end;
 
 }
-
 
 // Seal of Sorrow
 thana_boss.gat,217,167,0	script	Carvings#1	139,3,3,{
@@ -2466,7 +2448,6 @@ L_Glow:
 
 }
 
-
 // Seal of Agony
 thana_boss.gat,202,75,0	script	Carvings#2	139,3,3,{
 end;
@@ -2511,7 +2492,6 @@ L_Glow:
 	close;
 
 }
-
 
 // Seal of Hatred
 thana_boss.gat,80,76,0	script	Carvings#3	139,3,3,{
@@ -2558,7 +2538,6 @@ L_Glow:
 
 }
 
-
 // Seal of Despair
 thana_boss.gat,62,171,0	script	Carvings#4	139,3,3,{
 end;
@@ -2604,7 +2583,6 @@ L_Glow:
 
 }
 
-
 // Seal of Thanatos
 thana_boss.gat,141,217,0	script	Carvings#5	139,3,3,{
 end;
@@ -2635,7 +2613,6 @@ Carving6:
 
 }
 
-
 // Thanatos Summon Section
 thana_boss.gat,0,0,0	script	#Death1	139,{
 end;
@@ -2648,7 +2625,6 @@ OnWaveDead1:
 	set $@thanaboss2,10;
 	end;
 }
-
 
 // Thanatos Death
 thana_boss.gat,0,0,0	script	#Death2	139,{
@@ -2691,5 +2667,43 @@ OnTimer60000:
 OnTimer7200000:
 	set $@thanaboss1,0;
 	stopnpctimer;
+	end;
+}
+
+tha_t02.gat,227,163,0	script	ThanaWarp3	45,1,1,{
+OnInit:
+	disablenpc "ThanaWarp3";
+	end;
+OnTouch:
+	if (ThanaQuest == 0) {
+		warp "tha_t02.gat",227,158;
+		end;
+	}
+	warp "tha_t03.gat",219,159;
+	end;
+}
+
+tha_t06.gat,119,120,0	script	thana_step	45,1,1,{
+OnTouch:
+	if (Upper == 1) {
+		warp "thana_step.gat",69,369;
+		end;
+	}
+	mes "^3355FFAn overwhelming force";
+	mes "acts against you, preventing";
+	mes "you from proceeding this way...^000000";
+	close;
+}
+
+tha_t12.gat,130,52,0	script	WarpToBoss	45,1,1,{
+OnInit:
+	disablenpc "WarpToBoss";
+	end;
+OnTouch:
+	if ($Thanaboss == 5) {
+		warp "thana_boss.gat",136,116;
+		end;
+	}
+	disablenpc "WarpToBoss";
 	end;
 }

@@ -11,7 +11,7 @@
 //--------------------------------------------------------------
 // Revision History: v1.0
 //--------------------------------------------------------------
-//	1.0 First version, merged together [Tsuyuki]
+//	1.0 First version, converted from Aegis [Tsuyuki]
 //--------------------------------------------------------------
 // Additional Notes: * Official-certified / Aegis-certified *
 //--------------------------------------------------------------
@@ -36,6 +36,27 @@ lhz_airport.gat,142,13,0	warp	airwarp12	1,1,lighthalzen.gat,262,75
 
 
 //--------------------------------------------------------------
+// Bingo System Warps - [Tsuyuki]
+//--------------------------------------------------------------
+
+que_bingo.gat,53,34,0	script	go1#bingo	45,1,1,{
+OnTouch:
+	set '@max_max_c,checkweight(7515,1);
+	if ('@max_max_c == 0) {
+		mes "You are carrying too many items with you. Please lighten your weight and come back.";
+		close;
+	}
+	warp "que_bingo.gat",49,71;
+	end;
+}
+que_bingo.gat,39,34,0	warp	go2#bingo	1,1,que_bingo.gat,34,109
+que_bingo.gat,48,66,0	warp	out1#bingo	1,1,que_bingo.gat,53,29
+que_bingo.gat,34,105,0	warp	out2#bingo	1,1,que_bingo.gat,38,28
+hugel.gat,55,208,0	warp	outbingo	1,1,que_bingo.gat,49,9
+que_bingo.gat,49,7,0	warp	tobingo	1,1,hugel.gat,57,207
+
+
+//--------------------------------------------------------------
 // God Seal Quest Warp Portals - [Unknown]
 //--------------------------------------------------------------
 
@@ -46,6 +67,36 @@ que_god01.gat,62,116,0	warp	god_sl_w1-1	1,1,que_god01.gat,46,94
 que_god01.gat,12,116,0	warp	god_sl_w2-1	1,1,que_god01.gat,16,94
 que_god01.gat,12,55,0	warp	god_sl_w3-1	1,1,que_god01.gat,17,83
 que_god01.gat,50,55,0	warp	god_sl_w4-1	1,1,que_god01.gat,47,83
+
+
+//--------------------------------------------------------------
+// Izlude Battle Arena Warp Portals - [Tsuyuki]
+//--------------------------------------------------------------
+
+izlude.gat,128,226,0	warp	welcome_arena	1,1,arena_room.gat,100,30
+arena_room.gat,99,24,0	warp	bye_arena	2,2,izlude.gat,128,220
+arena_room.gat,84,103,0	warp	arn_room_11_1	1,1,arena_room.gat,63,130
+arena_room.gat,63,126,0	warp	arn_room_11_2	1,1,arena_room.gat,87,100
+arena_room.gat,76,87,0	warp	arn_room_9_1	1,1,arena_room.gat,46,87
+arena_room.gat,49,87,0	warp	arn_room_9_2	1,1,arena_room.gat,78,87
+arena_room.gat,84,71,0	warp	arn_room_7_1	1,1,arena_room.gat,60,50
+arena_room.gat,63,53,0	warp	arn_room_7_2	1,1,arena_room.gat,86,74
+arena_room.gat,115,71,0	warp	arn_room_5_1	1,1,arena_room.gat,139,50
+arena_room.gat,136,53,0	warp	arn_room_5_2	1,1,arena_room.gat,113,74
+arena_room.gat,123,88,0	warp	arn_room_3_1	1,1,arena_room.gat,153,87
+arena_room.gat,150,87,0	warp	arn_room_3_2	1,1,arena_room.gat,120,87
+prt_are_in.gat,54,13,0	warp	toarn_room	1,1,arena_room.gat,100,77
+arena_room.gat,114,102,0	script	onlyaco#arena	45,1,1,{
+OnTouch:
+	if (BaseClass == Job_Acolyte) {
+		warp "arena_room.gat",135,129;
+	} else {
+		mes "Only Acolyte class are applicable to join this mode.";
+		close;
+	}
+	end;
+}
+arena_room.gat,135,126,0	warp	byeaco#arena	1,1,arena_room.gat,111,99
 
 
 //--------------------------------------------------------------
@@ -117,21 +168,22 @@ kh_rossi.gat,148,279,0	warp	KhRos219_KhRos218	1,1,kh_rossi.gat,188,235
 kh_rossi.gat,204,279,0	warp	KhRos221_KhRos220	1,1,kh_rossi.gat,204,235
 kh_rossi.gat,260,279,0	warp	KhRos223_KhRos222	1,1,kh_rossi.gat,220,235
 kh_rossi.gat,87,25,0	warp	KhRos112_KhRos111	1,1,kh_rossi.gat,36,26
-kh_dun01.gat,232,226,0	warp	KhD01M01_KhD01M02	1,1,kh_dun01.gat,13,12
-kh_dun01.gat,232,176,0	warp	KhD01M03_KhD01M04	1,1,kh_dun01.gat,63,12
-kh_dun01.gat,63,7,0	warp	KhD01M04_KhD01M03	1,1,kh_dun01.gat,227,176
-kh_dun01.gat,3,234,0	warp	KhD01ed_yuFild8in	1,1,yuno_fild08.gat,74,174
-kh_dun02.gat,43,195,0	script	KhD02Door_KhD01Door	45,1,1,{
-OnTouch:
-	set '@khdun2_1,rand(1,2);
-	if ('@khdun2_1 == 1) {
-		warp "kh_dun01.gat",41,206;
-	} else {
-		warp "kh_dun01.gat",32,199;
-	}
-	end;
-}
 kh_vila.gat,191,18,0	warp	KhVilaC_yuFild02v	1,1,yuno_fild02.gat,74,215
+
+
+//--------------------------------------------------------------
+// PvP Nightmare Mode Warp Portals - [L0ne_W0lf]
+//--------------------------------------------------------------
+
+pvp_n_8-4.gat,33,122,0	warp	Link#pt_link_1-11	0,2,pvp_n_8-4.gat,0,0
+pvp_n_8-4.gat,62,84,0	warp	Link#pt_link_1-12	1,1,pvp_n_8-4.gat,0,0
+pvp_n_8-4.gat,49,71,0	warp	Link#pt_link_1-21	1,1,pvp_n_8-4.gat,0,0
+pvp_n_8-4.gat,56,166,0	warp	Link#pt_link_1-22	1,1,pvp_n_8-4.gat,0,0
+pvp_n_8-4.gat,99,180,0	warp	Link#pt_link_1-31	2,1,pvp_n_8-4.gat,0,0
+pvp_n_8-4.gat,137,84,0	warp	Link#pt_link_1-32	1,1,pvp_n_8-4.gat,0,0
+pvp_n_8-4.gat,150,71,0	warp	Link#pt_link_1-41	1,1,pvp_n_8-4.gat,0,0
+pvp_n_8-4.gat,144,166,0	warp	Link#pt_link_1-42	1,1,pvp_n_8-4.gat,0,0
+pvp_n_8-5.gat,30,30,0	warp	 a	3,3,pvp_n_8-5.gat,100,100
 
 
 //--------------------------------------------------------------

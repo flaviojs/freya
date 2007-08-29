@@ -8,9 +8,10 @@
  Aurora's Non-Aegis Scripts:
 ---------------------------------------------------------------------------
 
-- event/event_crystal.txt		<- Good enough? - No access to an Aegis version
-- event/event_moscovia.txt		<- Requires conversion - No access to an Aegis version [*]
-- event/event_xmas.txt			<- Good enough? - No access to an Aegis version
+- mob/mob_future.txt			<- Placeholder file for non-Aegis spawn entries
+- warp/warp_future.txt			<- Placeholder file for non-Aegis portal entries
+
+---------------------------------------------------------------------------
 
 - global/global_refine.txt		<- Requires conversion [Assigned ~ Tsuyuki]
 
@@ -23,16 +24,10 @@
 - gvg/gvg_steward.txt			<- Good enough - Need to import Aegis dialogue/function [*]
 - gvg/gvg_tbox.txt			<- Good enough
 
-- mob/mob_future.txt			<- Placeholder file for non-Aegis spawn entires
-
 - quest/quest_juperos.txt		<- Good enough? - Juperos History Quest is already Aegis-certified
 
 - town/town_nameless.txt		<- Requires conversion - No access to an Aegis version [*]
 - town/town_veins.txt			<- Requires conversion - No access to an Aegis version [*]
-
-- warp/warp_dungeon.txt			<- Good enough?
-- warp/warp_field.txt			<- Good enough?
-- warp/warp_town.txt			<- Good enough?
 
 
 ---------------------------------------------------------------------------
@@ -60,13 +55,13 @@
  Aurora's Missing No Access Aegis Scripts:
 ---------------------------------------------------------------------------
 
-- Episode 11.2	<- All Veins Town NPCs [*]
+- Episode 11.2	<- All Veins Town NPCs / Shops [*]
 - Episode 11.2	<- Veins Old Person Aid Quest [*]
 - Episode 11.2	<- Arunafeltz Spy Quest [*]
 - Episode 11.2	<- Sibling Search Quest [*]
 - Episode 11.2	<- Logistic Base Quest [*]
 
-- Episode 11.3	<- All Nameless Island Town NPCs [*]
+- Episode 11.3	<- All Nameless Island Town NPCs / Shops [*]
 - Episode 11.3	<- Nameless Island Admission Quest [*]
 - Episode 11.3	<- Peace Teaching of Arunafeltz Republic Quest [*]
 - Episode 11.3	<- Z Group Quest [*]

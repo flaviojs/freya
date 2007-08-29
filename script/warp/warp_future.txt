@@ -1,0 +1,167 @@
+//--------------------------------------------------------------
+//               (c)2004-2007 Aurora Team Presents:             
+//                  ___                                         
+//                 /   |_   _ _ __ ___  _ __ __ _               
+//                / /| | | | | '__/ _ \| '__/ _` |              
+//               / ___ | |_| | | | (_) | | | (_| |              
+//              /_/  |_|\____|_|  \___/|_|  \__,_|              
+//                 http://aurora.deltaanime.net                 
+//--------------------------------------------------------------
+// Script Title: Future Warp Portals	Author: A Lot of People
+//--------------------------------------------------------------
+// Revision History: v1.0
+//--------------------------------------------------------------
+//	1.0 First version, merged together [Tsuyuki]
+//--------------------------------------------------------------
+// Additional Notes: * Official-certified *
+//--------------------------------------------------------------
+
+
+//--------------------------------------------------------------
+// Abbey Dungeon Warp Portals - [Unknown]
+//--------------------------------------------------------------
+
+nameless_n.gat,156,184,0	warp	abbeywarp01	1,1,abbey01.gat,51,12
+nameless_i.gat,156,184,0	warp	abbeywarp02	1,1,abbey01.gat,51,12
+abbey01.gat,51,9,0	warp	abbeywarp03	1,1,nameless_n.gat,159,184
+abbey01.gat,88,122,0	warp	abbeywarp04	1,1,abbey01.gat,16,195
+abbey01.gat,12,195,0	warp	abbeywarp05	1,1,abbey01.gat,88,118
+abbey01.gat,322,100,0	warp	abbeywarp06	1,1,abbey02.gat,150,13
+abbey02.gat,150,8,0	warp	abbeywarp07	1,1,abbey01.gat,322,96
+abbey02.gat,150,290,0	warp	abbeywarp08	1,1,abbey03.gat,120,10
+abbey03.gat,120,6,0	warp	abbeywarp09	1,1,abbey02.gat,150,285
+
+
+//--------------------------------------------------------------
+// Moscovia Region Warp Portals - [Azazel/$ephiroth]
+//--------------------------------------------------------------
+
+moscovia.gat,224,235,0    warp    moscoviawarp01    1,1,mosk_in.gat,96,91
+mosk_in.gat,93,91,0    warp    moscoviawarp02    1,1,moscovia.gat,224,232
+mosk_in.gat,100,126,0    warp    moscoviawarp03    1,1,mosk_in.gat,21,116
+mosk_in.gat,21,113,0    warp    moscoviawarp04    1,1,mosk_in.gat,100,123
+moscovia.gat,185,189,0    warp    moscoviawarp05    1,1,mosk_in.gat,16,179
+mosk_in.gat,13,179,0    warp    moscoviawarp06    1,1,moscovia.gat,188,193
+moscovia.gat,203,171,0    warp    moscoviawarp07    1,1,mosk_in.gat,85,179
+mosk_in.gat,88,179,0    warp    moscoviawarp08    1,1,moscovia.gat,205,168
+moscovia.gat,223,174,0    warp    moscoviawarp09    1,1,mosk_in.gat,14,245
+mosk_in.gat,11,245,0    warp    moscoviawarp10    1,1,moscovia.gat,220,177
+moscovia.gat,229,207,0    warp    moscoviawarp11    1,1,mosk_in.gat,141,178
+mosk_in.gat,141,175,0    warp    moscoviawarp12    1,1,moscovia.gat,226,204
+mosk_in.gat,150,191,0    warp    moscoviawarp13    1,1,mosk_in.gat,206,187
+mosk_in.gat,203,187,0    warp    moscoviawarp14    1,1,mosk_in.gat,147,191
+moscovia.gat,256,138,0    warp    moscoviawarp15    1,1,mosk_in.gat,211,114
+mosk_in.gat,211,111,0    warp    moscoviawarp16    1,1,moscovia.gat,254,141
+mosk_in.gat,221,128,0    warp    moscoviawarp17    1,1,mosk_in.gat,287,120
+mosk_in.gat,287,117,0    warp    moscoviawarp18    1,1,mosk_in.gat,221,125
+moscovia.gat,195,80,0    warp    moscoviawarp19    1,1,mosk_in.gat,215,40
+mosk_in.gat,215,37,0    warp    moscoviawarp20    1,1,moscovia.gat,194,78
+moscovia.gat,146,112,0    warp    moscoviawarp21    1,1,mosk_in.gat,213,256
+mosk_in.gat,213,253,0    warp    moscoviawarp22    1,1,moscovia.gat,146,109
+mosk_in.gat,219,272,0    warp    moscoviawarp23    1,1,mosk_in.gat,151,276
+mosk_in.gat,151,273,0    warp    moscoviawarp24    1,1,mosk_in.gat,219,269
+mosk_fild02.gat,190,257,0	warp	moscoviawarp25	1,1,mosk_dun01.gat,189,45
+mosk_dun01.gat,189,42,0	warp	moscoviawarp26	1,1,mosk_fild02.gat,190,254
+mosk_dun01.gat,200,273,0	warp	moscoviawarp27	1,1,mosk_dun02.gat,164,31
+mosk_dun02.gat,167,28,0	warp	moscoviawarp28	1,1,mosk_dun01.gat,200,270
+mosk_dun02.gat,267,117,0	warp	moscoviawarp28	1,1,mosk_dun03.gat,32,135
+mosk_dun03.gat,29,132,0	warp	moscoviawarp29	1,1,mosk_dun02.gat,264,117
+
+
+//--------------------------------------------------------------
+// Nameless Island Town Warp Portals - [Unknown]
+//--------------------------------------------------------------
+
+nameless_i.gat,168,257,0	warp	namelesswarp01	1,1,nameless_in.gat,12,43
+nameless_in.gat,12,40,0		warp	namelesswarp02	1,1,nameless_i.gat,168,254
+nameless_i.gat,252,130,0	warp	namelesswarp03	1,1,nameless_in.gat,26,128
+nameless_in.gat,23,128,0	warp	namelesswarp04	1,1,nameless_i.gat,249,130
+nameless_i.gat,79,256,0		warp	namelesswarp05	1,1,nameless_in.gat,12,172
+nameless_in.gat,12,169,0	warp	namelesswarp06	1,1,nameless_i.gat,82,256
+nameless_i.gat,78,94,0		warp	namelesswarp07	1,1,nameless_in.gat,96,180
+nameless_in.gat,96,177,0	warp	namelesswarp08	1,1,nameless_i.gat,81,96
+
+
+//--------------------------------------------------------------
+// Thor Volcano Dungeon Warp Portals - [Unknown]
+//--------------------------------------------------------------
+
+ve_fild03.gat,168,241,0	warp	thorwarp01	1,1,thor_v01.gat,21,226
+thor_v01.gat,21,223,0	warp	thorwarp02	1,1,ve_fild03.gat,168,238
+thor_v01.gat,202,34,0	warp	thorwarp03	1,1,thor_v02.gat,74,205
+thor_v02.gat,72,206,0	warp	thorwarp04	1,1,thor_v01.gat,199,34
+thor_v02.gat,191,55,0	warp	thorwarp05	1,1,thor_v03.gat,31,272
+thor_v03.gat,28,272,0	warp	thorwarp06	1,1,thor_v02.gat,190,57
+thor_v02.gat,143,78,0	warp	thorwarp07	1,1,thor_camp.gat,284,289
+thor_camp.gat,288,289,0	warp	thorwarp08	1,1,thor_v02.gat,146,86
+
+
+//--------------------------------------------------------------
+// Veins Field Warp Portals - [Unknown]
+//--------------------------------------------------------------
+
+rachel.gat,130,20,0	warp	vefildwarp01	1,1,ve_fild02.gat,196,379
+ve_fild02.gat,196,382,0	warp	vefildwarp02	1,1,rachel.gat,130,23
+veins.gat,218,361,0	warp	vefildwarp03	1,1,ve_fild06.gat,152,221
+veins.gat,146,24,0	warp	vefildwarp04	1,1,ve_fild07.gat,148,370
+ve_fild06.gat,154,219,0	warp	vefildwarp05	1,1,veins.gat,218,358
+ve_fild07.gat,147,372,0	warp	vefildwarp06	1,1,veins.gat,146,27
+ve_fild01.gat,243,369,0	warp	vefildwarp07	1,1,ra_fild11.gat,232,29
+ra_fild11.gat,232,26,0	warp	vefildwarp08	1,1,ve_fild01.gat,243,366
+ve_fild01.gat,367,263,0	warp	vefildwarp09	1,1,ve_fild02.gat,33,259
+ve_fild02.gat,30,259,0	warp	vefildwarp10	1,1,ve_fild01.gat,364,263
+ve_fild01.gat,351,95,0	warp	vefildwarp11	1,1,ve_fild02.gat,76,133
+ve_fild02.gat,73,133,0	warp	vefildwarp12	1,1,ve_fild01.gat,348,95
+ve_fild01.gat,185,19,0	warp	vefildwarp13	1,1,ve_fild04.gat,174,337
+ve_fild04.gat,174,340,0	warp	vefildwarp14	1,1,ve_fild01.gat,185,22
+ve_fild02.gat,385,309,0	warp	vefildwarp15	1,1,ra_fild13.gat,31,311
+ra_fild13.gat,28,311,0	warp	vefildwarp16	1,1,ve_fild02.gat,382,309
+ve_fild03.gat,355,222,0	warp	vefildwarp17	1,1,ve_fild04.gat,46,249
+ve_fild04.gat,43,249,0	warp	vefildwarp18	1,1,ve_fild03.gat,353,221
+ve_fild03.gat,222,42,0	warp	vefildwarp19	1,1,ve_fild05.gat,204,330
+ve_fild05.gat,206,331,0	warp	vefildwarp20	1,1,ve_fild03.gat,222,45
+ve_fild04.gat,115,50,0	warp	vefildwarp21	1,1,ve_fild06.gat,78,183
+ve_fild05.gat,359,192,0	warp	vefildwarp22	1,1,ve_fild06.gat,78,183
+ve_fild06.gat,88,176,0	script	vefildwarp23	45,2,2,{
+OnTouch:
+	if (rand(1,2) == 1) {
+		warp "ve_fild04.gat",115,55;
+	} else {
+		warp "ve_fild05.gat",354,192;
+	}
+	end;
+}
+
+
+//--------------------------------------------------------------
+// Veins Town Warp Portals - [Unknown]
+//--------------------------------------------------------------
+
+veins.gat,196,260,0	warp	veinswarp01	1,1,ve_in.gat,351,320
+ve_in.gat,351,317,0	warp	veinswarp02	1,1,veins.gat,196,257
+veins.gat,116,277,0	warp	veinswarp03	1,1,ve_in.gat,99,218
+ve_in.gat,99,215,0	warp	veinswarp04	1,1,veins.gat,113,277
+ve_in.gat,76,229,0	warp	veinswarp05	1,1,ve_in.gat,74,160
+ve_in.gat,71,160,0	warp	veinswarp06	1,1,ve_in.gat,73,229
+veins.gat,148,220,0	warp	veinswarp07	1,1,ve_in.gat,253,127
+ve_in.gat,256,127,0	warp	veinswarp08	1,1,veins.gat,150,217
+ve_in.gat,224,115,0	warp	veinswarp09	1,1,ve_in.gat,312,114
+ve_in.gat,309,114,0	warp	veinswarp10	1,1,ve_in.gat,221,115
+veins.gat,230,166,0	warp	veinswarp11	1,1,ve_in.gat,251,286
+ve_in.gat,251,283,0	warp	veinswarp12	1,1,veins.gat,230,163
+ve_in.gat,261,315,0	warp	veinswarp13	1,1,ve_in.gat,177,296
+ve_in.gat,177,293,0	warp	veinswarp14	1,1,ve_in.gat,261,312
+veins.gat,138,190,0	warp	veinswarp15	1,1,ve_in.gat,349,251
+ve_in.gat,346,251,0	warp	veinswarp16	1,1,veins.gat,135,190
+veins.gat,88,174,0	warp	veinswarp17	1,1,ve_in.gat,77,294
+ve_in.gat,77,291,0	warp	veinswarp18	1,1,veins.gat,88,171
+ve_in.gat,97,298,0	warp	veinswarp19	1,1,ve_in.gat,125,372
+ve_in.gat,128,372,0	warp	veinswarp20	1,1,ve_in.gat,100,298
+veins.gat,199,165,0	warp	veinswarp21	1,1,ve_in.gat,183,206
+ve_in.gat,183,203,0	warp	veinswarp22	1,1,veins.gat,199,162
+veins.gat,210,167,0	warp	veinswarp23	1,1,ve_in.gat,203,211
+ve_in.gat,206,211,0	warp	veinswarp24	1,1,veins.gat,213,167
+veins.gat,267,230,0	warp	veinswarp25	1,1,ve_in.gat,283,223
+ve_in.gat,286,223,0	warp	veinswarp26	1,1,veins.gat,268,227
+veins.gat,338,230,0	warp	veinswarp27	1,1,ve_in.gat,194,372
+ve_in.gat,194,369,0	warp	veinswarp28	1,1,veins.gat,335,230

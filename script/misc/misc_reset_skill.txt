@@ -7,7 +7,7 @@
 //              /_/  |_|\____|_|  \___/|_|  \__,_|              
 //                 http://aurora.deltaanime.net                 
 //--------------------------------------------------------------
-// Script Title: 1st Class Skill Reset	Author: Tsuyuki
+// Script Title: Skill Reset NPCs	Author: Tsuyuki
 //--------------------------------------------------------------
 // Revision History: v1.0
 //--------------------------------------------------------------
@@ -17,7 +17,11 @@
 //--------------------------------------------------------------
 
 
-prontera.gat,146,232,4	script	Hypnotist#2	124,{
+//--------------------------------------------------------------
+// 1st Class Skill Reset - [Tsuyuki]
+//--------------------------------------------------------------
+
+prontera.gat,146,232,4	script	Hypnotist#1	124,{
 
 	mes "[Hypnotist]";
 	mes "Greetings, adventurer.";
@@ -146,3 +150,110 @@ prontera.gat,146,232,4	script	Hypnotist#2	124,{
 		close;
 	}
 }
+
+
+//--------------------------------------------------------------
+// Any Class Skill Reset (Only activated in Sakray) - [Tsuyuki]
+//--------------------------------------------------------------
+
+/*yuno.gat,138,187,5	script	Hypnotist#2	124,{
+
+	if (skreset) {
+		mes "[Hypnotist]";
+		mes "You already have went through a ^FF0000 Skill^000000 rearrangement service.";
+		mes "Thank you for";
+		mes "using.";
+		close;
+	}
+	if (Basejob == Job_Novice) {
+		mes "[Hypnotist]";
+		mes "I perceive that you have come here to rearrange your skill status.";
+		mes "But I am sorry to tell you that the beginners are";
+		mes "not allowed to undergo this";
+		mes "process..";
+		mes "Please change your occupation and";
+		mes "visit again. Thank you";
+		close;
+	}
+	if (BaseLevel < 70) {
+		mes "[Hypnotist]";
+		mes "I perceive that you have come here to rearrange your skill status.";
+		mes "But I am sorry to tell you that adventurers below Lv. 70";
+		mes "are not allowed to receive this";
+		mes "service.";
+		mes "Please raise your level and";
+		mes "visit again. Thank you.";
+		close;
+	}
+	if (SkillPoint != 0) {
+		mes "[Hypnotist]";
+		mes "You will need to use up all of your skill points if you want me to continue.";
+		mes "Please come again soon!";
+		close;
+	}
+	if (Weight || checkfalcon() || checkcart() || checkriding()) {
+		mes "[Hypnotist]";
+		mes "Please remove your Cart, Falcon,";
+		mes "or Peco Peco before";
+		mes "you undergo this process.";
+		mes "Or you will not be able";
+		mes "to receive the.";
+		mes "service.";
+		close;
+	}
+	mes "[Hypnotist]";
+	mes "Hello. I am a Hypnotist who was sent";
+	mes "to rearrange the skill status.";
+	mes "Please select the service you";
+	mes "want.";
+	next;
+	switch(select("^009500Information about Reset skills.^000000","^00B6FFReset skills.^000000","^000088Nevermind^000000")) {
+	case 1:
+		mes "[Hypnotist]";
+		mes "It is only possible to rearrange your skill status";
+		mes "when you don't have any belongings with you.";
+		mes "Please use storage service to reduce your weight to ^FF00000^000000 and";
+		mes "then it will be possible to rearrange your ^FF0000 Skills^000000.";
+		next;
+		mes "[Hypnotist]";
+		mes "You need to have";
+		mes "^FF000020000 Zenies^000000 per one base level.";
+		mes "And once you rearrange the status, you can't not";
+		mes "use this service anymore.";
+		next;
+		mes "[Hypnotist]";
+		mes "One more thing,, ^FF0000Adventurers using Cart, Falcon, or,";
+		mes "^FF0000Peco Peco, are not able to undergo this process.";
+		mes "^FF0000Please take care of this before";
+		mes "^FF0000you use the";
+		mes "^FF0000service.^000000";
+		close;
+	case 2:
+		mes "[Hypnotist]";
+		mes "This is ^FF0000Skill^000000 Rearrangement service.";
+		mes "Once you use this service, it";
+		mes "will not be usable anymore.";
+		next;
+		mes "[Hypnotist]";
+		mes "Your current level is " + BaseLevel + "."; 
+		set '@zeny,BaseLevel*20000;
+		mes "The required amount of money is " + '@zeny + "Zeny.";
+		mes "Would you like to use it?";
+		next;
+		if (Zeny < '@zeny) {
+			mes "[Hypnotist]";
+			mes "You don't have enough money.";
+			close;
+		}
+		set Zeny,Zeny-'@zeny;
+		set skreset,1;
+		resetskill;
+		mes "[Hypnotist]";
+		mes "Thank you for your time.";
+		close;
+	case 3:
+		mes "[Hypnotist]";
+		mes "Thank you for your time.";
+		close;
+	}
+}*/

@@ -17,6 +17,10 @@
 //--------------------------------------------------------------
 
 
+//--------------------------------------------------------------
+// The Sign Quest - [Tsuyuki]
+//--------------------------------------------------------------
+
 prontera.gat,147,305,0	script	Sign	111,{
 
 	if (sign_q < 1) {
@@ -8048,7 +8052,7 @@ mjo_dun02.gat,88,295,4	script	Flaming Spirit Man	85,{
 		mes "[Engel]";
 		mes "As I've told you before, I'm more likely to succeed in my work if I'm able to use a higher quality anvil. Let's me see what you've brought...";
 		next;
-		if ((countitem(612) > 4) && (countitem(615) > 1) && ((countitem(Anvil) > 0) || (countitem(987) > 0) || (countitem(988) > 0) || (countitem(989) > 0))) {
+		if ((countitem(612) > 4) && (countitem(615) > 1) && ((countitem(986) > 0) || (countitem(987) > 0) || (countitem(988) > 0) || (countitem(989) > 0))) {
 			if (countitem(986) > 0) {
 				mes "[Engel]";
 				mes "A...";

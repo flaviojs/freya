@@ -4462,7 +4462,7 @@ OnTimer60000:
 	end;
 }
 
-ice_dun03.gat,150,132,0	script	#ice_4f_1	45,2,2,{
+ice_dun03.gat,150,137,0	script	#ice_4f_1	45,2,2,{
 
 OnTouch:
 	warp "ice_dun04.gat",33,144;

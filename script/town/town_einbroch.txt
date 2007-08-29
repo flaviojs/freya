@@ -9222,7 +9222,7 @@ airplane.gat,31,77,5	script	Drunken Man#ein	853,{
 			mes "this is a high stakes game!";
 			close;
 		} else {
-			set '@apple,countitem(Apple);
+			set '@apple,countitem(512);
 			delitem 512,'@apple;
 			next;
 			mes "["+strcharinfo(0)+"]";

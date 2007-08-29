@@ -7,982 +7,966 @@
 //              /_/  |_|\____|_|  \___/|_|  \__,_|              
 //                 http://aurora.deltaanime.net                 
 //--------------------------------------------------------------
-// Script Title: Dungeon Warp Portals	Author: A Lot of People
+// Script Title: Dungeon Warp Portals	Author: Tsuyuki
 //--------------------------------------------------------------
 // Revision History: v1.0
 //--------------------------------------------------------------
-//	1.0 First version, merged together [Tsuyuki]
+//	1.0 First version, converted from Aegis [Tsuyuki]
 //--------------------------------------------------------------
-// Additional Notes: * Official-certified / Partially Aegis-certified *
+// Additional Notes: * Official-certified / Aegis-certified *
 //--------------------------------------------------------------
-
-
-//--------------------------------------------------------------
-// Abbey Dungeon Warp Portals
-//--------------------------------------------------------------
-
-nameless_n.gat,156,184,0	warp	nameless01	1,1,abbey01.gat,51,12
-nameless_i.gat,156,184,0	warp	nameless02	1,1,abbey01.gat,51,12
-abbey01.gat,51,9,0	warp	nameless03	1,1,nameless_n.gat,159,184
-abbey01.gat,88,122,0	warp	nameless04	1,1,abbey01.gat,16,195
-abbey01.gat,12,195,0	warp	nameless05	1,1,abbey01.gat,88,118
-abbey01.gat,322,100,0	warp	nameless06	1,1,abbey02.gat,150,13
-abbey02.gat,150,8,0	warp	nameless07	1,1,abbey01.gat,322,96
-abbey02.gat,150,290,0	warp	nameless08	1,1,abbey03.gat,120,10
-abbey03.gat,120,6,0	warp	nameless09	1,1,abbey02.gat,150,285
 
 
 //--------------------------------------------------------------
-// Abyss Lake Dungeon Warp Portals
+// Abyss Lake Dungeon Warp Portals - [Tsuyuki]
 //--------------------------------------------------------------
 
-hu_fild05.gat,197,210,0	warp	abysslakedunwarp001	2,3,abyss_01.gat,264,271
-abyss_01.gat,267,274,0	warp	abysslakedunwarp002	1,1,hu_fild05.gat,192,207
-abyss_01.gat,26,23,0	warp	abysslakedunwarp003	1,1,abyss_02.gat,275,270
-abyss_02.gat,278,270,0	warp	abysslakedunwarp004	1,1,abyss_01.gat,26,26
-abyss_02.gat,145,281,0	warp	abysslakedunwarp005	1,1,abyss_03.gat,116,27
-abyss_03.gat,116,24,0	warp	abysslakedunwarp006	1,1,abyss_02.gat,145,278
-hu_fild05.gat,180,190,0	warp	warpabyss	1,1,hu_fild05.gat,168,300
+abyss_01.gat,25,24,0	warp	aby0102_aby0201	1,1,abyss_02.gat,271,270
+abyss_02.gat,145,280,0	warp	aby0202_aby0301	1,1,abyss_03.gat,115,30
+abyss_02.gat,277,270,0	warp	aby0201_aby0102	1,1,abyss_01.gat,25,30
+abyss_03.gat,115,25,0	warp	aby0301_aby0202	1,1,abyss_02.gat,145,275
+abyss_01.gat,265,274,0	warp	aby0101_HuF05M	1,1,hu_fild05.gat,177,211
 
 
 //--------------------------------------------------------------
-// Aldebaran Dungeon Warp Portals
+// Amatsu Dungeon Warp Portals - [Tsuyuki]
 //--------------------------------------------------------------
 
-alde_dun01.gat,292,306,0	warp	aldd01	2,1,alde_dun02.gat,43,24
-alde_dun01.gat,167,158,0	warp	ald002	2,2,c_tower2.gat,148,283
-alde_dun01.gat,302,25,0	warp	ald003	2,2,c_tower1.gat,125,22
-alde_dun02.gat,43,20,0	warp	aldd04	1,1,alde_dun01.gat,292,300
-alde_dun02.gat,279,250,0	warp	aldd05	2,2,alde_dun03.gat,18,267
-alde_dun02.gat,122,169,0	warp	ald006	2,2,c_tower3.gat,47,41
-alde_dun02.gat,187,234,0	warp	ald007	2,2,c_tower3.gat,65,147
-alde_dun02.gat,267,41,4	script	clt008r	45,1,1,{
-	set @r,rand(2);
-	if (@r==0) goto w1;
-	if (@r==1) goto w2;
-	w1:	warp "c_tower3.gat",168,252; end;
-	w2:	warp "alde_dun02.gat",262,141; end;
-}
-alde_dun03.gat,12,267,0	warp	aldd09	2,2,alde_dun02.gat,273,250
-alde_dun03.gat,277,183,0	warp	ald010	2,2,c_tower2.gat,27,27
-alde_dun03.gat,191,31,0	warp	ald011	2,2,c_tower3.gat,217,159
-alde_dun03.gat,276,48,0	warp	ald012	2,2,c_tower1.gat,235,223
-alde_dun03.gat,130,125,4	script	clt014r	45,1,1,{
-
-	set @r,rand(3);
-	if (@r==0) goto w1;
-	if (@r==1) goto w2;
-	if (@r==2) goto w3;
-	w1:	warp "c_tower2.gat",228,267; end;
-	w2:	warp "alde_dun03.gat",130,130; end;
-	w3:	warp "c_tower3.gat",252,29; end;
-}
-alde_dun03.gat,171,127,4	script	clt015r	45,1,1,{
-
-	set @r,rand(4);
-	if (@r==0) goto w1;
-	if (@r==1) goto w2;
-	if (@r==2) goto w3;
-	w1:	warp "c_tower2.gat",13,282; end;
-	w2:	warp "alde_dun03.gat",175,131; end;
-	w3:	warp "c_tower3.gat",235,7; end;
-}
-alde_dun04.gat,80,273,0	warp	aldd016	2,2,alde_dun03.gat,263,26
-alde_dun04.gat,207,225,0	warp	ald017	1,1,c_tower3.gat,7,34
-alde_dun04.gat,215,192,0	warp	ald018	1,1,c_tower2.gat,148,283
-alde_dun04.gat,32,74,0	warp	aldd19	1,1,alde_dun02.gat,187,239
-alde_dun04.gat,208,58,0	warp	aldd20	2,2,alde_dun04.gat,268,74
-alde_dun04.gat,272,74,0	warp	aldd021	2,2,alde_dun04.gat,204,62
-alde_dun04.gat,80,34,4	script	clt022r	45,1,1,{
-
-	set @r,rand(4);
-	if (@r==0) goto w1;
-	if (@r==1) goto w2;
-	if (@r==2) goto w3;
-	if (@r==3) goto w4;
-	w1:	warp "c_tower2.gat",13,282; end;
-	w2:	warp "alde_dun03.gat",175,131; end;
-	w3:	warp "c_tower3.gat",235,7; end;
-	w4:	warp "alde_dun04.gat",84,36; end;
-}
+ama_dun01.gat,235,144,0	warp	ama01a_ama02a	1,1,ama_dun02.gat,33,40
+ama_dun02.gat,30,40,0	warp	ama02a_ama01a	1,1,ama_dun01.gat,232,144
+ama_dun02.gat,196,123,0	warp	ama02a_ama01a	1,1,ama_dun03.gat,120,12
+ama_dun03.gat,120,9,0	warp	ama03a_ama02a	1,1,ama_dun02.gat,196,120
 
 
 //--------------------------------------------------------------
-// Amatsu Dungeon Warp Portals
+// Ant Hell Dungeon Warp Portals - [Tsuyuki]
 //--------------------------------------------------------------
 
-ama_dun01.gat,234,143,0	warp	warp8008	1,1,ama_dun02.gat,31,41
-ama_dun02.gat,196,124,0	warp	warp8010	1,1,ama_dun03.gat,119,14
-ama_dun02.gat,29,41,0	warp	warp8009	1,1,ama_dun01.gat,231,143
-ama_dun03.gat,119,9,0	warp	warp8011	1,1,ama_dun02.gat,196,121
-
-
-//--------------------------------------------------------------
-// Ant Hell Dungeon Warp Portals
-//--------------------------------------------------------------
-
-anthell01.gat,253,32,0	warp	ant01	5,1,anthell02.gat,35,263
-anthell02.gat,34,265,0	warp	ant01-1	1,1,anthell01.gat,253,35
-anthell01.gat,35,267,0	script	ant001	45,1,1,{
-	if (anthell == 1) goto L_Ant01;
-	warp "moc_fild04.gat",213,327;
-	end;
-	L_Ant01:
-		warp "moc_fild15.gat",251,248;
-		end;
-}
-anthell02.gat,171,169,0	script	ant002	45,1,2,{
-	if (anthell == 0) goto L_Ant02;
-	warp "moc_fild04.gat",213,327;
-	end;
-	L_Ant02:
-		warp "moc_fild15.gat",251,248;
-		end;
-}
-
-
-//--------------------------------------------------------------
-// Ayothaya Dungeon Warp Portals
-//--------------------------------------------------------------
-
-ayo_dun02.gat,24,21,0	warp	ayodunwrp003	2,2,ayo_dun01.gat,24,281
-ayo_dun02.gat,275,21,0	warp	ayodunwrp004	2,2,ayo_dun01.gat,24,281
-
-
-//--------------------------------------------------------------
-// Comodo Caves Dungeon Warp Portals
-//--------------------------------------------------------------
-
-beach_dun.gat,276,67,0	warp	cmd004	1,1,comodo.gat,31,215
-beach_dun2.gat,154,13,0	warp	cmd005	2,1,comodo.gat,176,353
-beach_dun2.gat,258,244,0	warp	umba0052	1,1,um_fild01.gat,35,276
-beach_dun3.gat,17,265,0	warp	cmd007	1,1,comodo.gat,328,175
-beach_dun3.gat,286,57,0	warp	cmd006	1,1,cmd_fild01.gat,30,317
-
-
-//--------------------------------------------------------------
-// Biolabs Dungeon Warp Portals
-//--------------------------------------------------------------
-
-lhz_dun03.gat,140,139,0	warp	lhz003	1,1,lhz_dun02.gat,150,145
-lhz_dun02.gat,18,150,0	warp	lhz004	1,1,lhz_dun01.gat,18,148
-lhz_dun01.gat,18,146,0	warp	lhz004a	1,1,lhz_dun02.gat,18,148
-lhz_dun02.gat,282,155,0	warp	lhz005	1,1,lhz_dun01.gat,281,152
-lhz_dun01.gat,281,150,0	warp	lhz005a	1,1,lhz_dun02.gat,282,153
-lhz_dun02.gat,148,18,0	warp	lhz006	1,1,lhz_dun01.gat,146,10
-lhz_dun01.gat,148,10,0	warp	lhz006a	1,1,lhz_dun02.gat,150,18
-lhz_dun01.gat,150,290,0	warp	lhz007	1,1,lhz_in01.gat,23,137
-
-
-//--------------------------------------------------------------
-// Byalan Island Dungeon Warp Portals
-//--------------------------------------------------------------
-
-izlu2dun.gat,108,83,0	warp	izd01	3,2,iz_dun00.gat,168,168
-iz_dun00.gat,168,173,0	warp	izd01-1	3,3,izlu2dun.gat,108,88
-iz_dun00.gat,352,342,0	warp	izd02	5,2,iz_dun01.gat,253,252
-iz_dun00.gat,39,41,0	warp	izd03	5,2,iz_dun01.gat,41,37
-iz_dun01.gat,118,170,0	warp	izd04	5,2,iz_dun02.gat,236,204
-iz_dun01.gat,253,258,0	warp	izd02-1	2,2,iz_dun00.gat,352,337
-iz_dun01.gat,41,32,0	warp	izd03-1	2,2,iz_dun00.gat,39,46
-iz_dun02.gat,236,198,0	warp	izd04-1	5,3,iz_dun01.gat,118,165
-iz_dun02.gat,339,331,0	warp	izd05	2,2,iz_dun03.gat,32,63
-iz_dun03.gat,264,245,0	warp	izd06	1,2,iz_dun04.gat,26,27
-iz_dun03.gat,29,63,0	warp	izd05-1	2,2,iz_dun02.gat,339,328
-iz_dun04.gat,26,24,0	warp	izd06-1	2,2,iz_dun03.gat,261,245
-
-
-//--------------------------------------------------------------
-// Cheshrumnir Sanctuary Dungeon Warp Portals
-//--------------------------------------------------------------
-
-ra_san01.gat,139,13,0	script	sanctuary01	45,1,1,{
-	if (ra_tem_q == 21) { warp "que_san04.gat",119,110; end; }
-	switch(rand(3)) {
-		case 1:  warp "ra_san02.gat",213,275; break;
-		case 2:  warp "ra_san03.gat",119,283; break;
-		default: warp "ra_san04.gat",119,110; break;
-	}
-}
-ra_san02.gat,213,280,0	warp	sanctuary02	1,1,ra_san01.gat,140,19
-ra_san03.gat,123,283,0	warp	sanctuary03	1,1,ra_san01.gat,140,19
-ra_san04.gat,119,104,0	warp	sanctuary04	1,1,ra_san01.gat,140,19
-ra_san03.gat,279,21,0	warp	sanctuary05	1,1,ra_san05.gat,282,149
-ra_san03.gat,85,15,0	warp	sanctuary06	1,1,ra_san04.gat,203,216
-ra_san04.gat,203,221,0	warp	sanctuary07	1,1,ra_san03.gat,85,20
-ra_san04.gat,120,48,0	warp	sanctuary08	1,1,ra_san05.gat,150,282
-ra_san05.gat,150,7,0	warp	sanctuary09	1,1,ra_temple.gat,119,153
-ra_san02.gat,289,149,0	warp	sanctuary10	1,1,ra_san03.gat,10,149
-ra_san03.gat,5,149,0	warp	sanctuary11	1,1,ra_san02.gat,284,149
-ra_san02.gat,213,4,0	warp	sanctuary12	1,1,ra_san04.gat,35,216
-ra_san04.gat,35,221,0	warp	sanctuary13	1,1,ra_san02.gat,213,9
-ra_san02.gat,30,21,0	warp	sanctuary14	1,1,ra_san05.gat,14,149
-ra_san01.gat,139,139,0	warp	sanctuary15	1,1,ra_temin.gat,27,314
-
-
-//--------------------------------------------------------------
-// Clock Tower Dungeon Warp Portals
-//--------------------------------------------------------------
-
-aldebaran.gat,139,135,0	warp	ald002	1,1,c_tower1.gat,199,159
-c_tower1.gat,200,157,0	warp	ald003	1,1,aldebaran.gat,139,131
-c_tower1.gat,235,226,0	warp	clt001	1,1,c_tower2.gat,268,26
-c_tower1.gat,123,22,0	warp	clt002	1,1,alde_dun01.gat,297,25
-c_tower2.gat,142,283,0	warp	clt003	1,1,c_tower3.gat,65,147
-c_tower2.gat,24,24,0	warp	clt004	1,1,alde_dun03.gat,277,178
-c_tower2.gat,273,26,0	warp	clt005	1,1,c_tower1.gat,235,223
-c_tower2.gat,13,288,4	script	clt006r	45,1,1,{
-	set @r,rand(3);
-	if (@r==0) goto w1;
-	if (@r==1) goto w2;
-	if (@r==2) goto w3;
-	w1:	warp "c_tower2.gat",13,282; end;
-	w2:	warp "alde_dun03.gat",175,131; end;
-	w3:	warp "c_tower3.gat",235,7; end;
-}
-c_tower2.gat,223,267,4	script	clt007r	45,1,1,{
-	set @r,rand(3);
-	if (@r==0) goto w1;
-	if (@r==1) goto w2;
-	if (@r==2) goto w3;
-	w1:	warp "c_tower2.gat",288,267; end;
-	w2:	warp "alde_dun03.gat",130,130; end;
-	w3:	warp "c_tower3.gat",252,29; end;
-}
-c_tower3.gat,60,147,0	warp	clt009	1,1,c_tower2.gat,148,283
-c_tower3.gat,212,159,0	warp	clt010	1,1,alde_dun03.gat,276,53
-c_tower3.gat,7,39,0	warp	clt011	1,1,alde_dun01.gat,171,158
-c_tower3.gat,42,41,0	warp	clt012	1,1,alde_dun02.gat,127,169
-c_tower3.gat,146,8,0	warp	clt013	1,1,c_tower1.gat,235,223
-c_tower3.gat,163,252,4	script	clt014r	45,1,1,{
-
-	set @r,rand(2);
-	if (@r==0) goto w1;
-	if (@r==1) goto w2;
-	w1:	warp "c_tower3.gat",168,252; end;
-	w2:	warp "alde_dun02.gat",262,41; end;
-}
-c_tower3.gat,240,7,4	script	clt015r	45,1,1,{
-
-	set @r,rand(3);
-	if (@r==0) goto w1;
-	if (@r==1) goto w2;
-	if (@r==2) goto w3;
-	w1:	warp "c_tower2.gat",13,282; end;
-	w2:	warp "alde_dun03.gat",175,131; end;
-	w3:	warp "c_tower3.gat",235,7; end;
-}
-c_tower3.gat,252,24,4	script	clt016r	45,1,1,{
-
-	set @r,rand(3);
-	if (@r==0) goto w1;
-	if (@r==1) goto w2;
-	if (@r==2) goto w3;
-	w1:	warp "c_tower2.gat",228,267; end;
-	w2:	warp "alde_dun03.gat",130,130; end;
-	w3:	warp "c_tower3.gat",252,29; end;
-}
-c_tower4.gat,37,70,0	warp	clt017	1,1,alde_dun03.gat,277,54
-c_tower4.gat,51,156,0	warp	clt018	1,1,alde_dun01.gat,171,158
-c_tower4.gat,68,46,0	warp	clt019	1,1,c_tower4.gat,73,154
-c_tower4.gat,70,19,0	warp	clt020	2,2,c_tower3.gat,151,8
-c_tower4.gat,79,49,0	warp	clt021	2,2,c_tower4.gat,204,60
-c_tower4.gat,133,202,0	warp	clt022	1,1,c_tower4.gat,140,149
-c_tower4.gat,153,107,0	warp	clt023	1,1,c_tower2.gat,228,267
-c_tower4.gat,171,179,0	warp	clt024	1,1,alde_dun03.gat,276,53
-c_tower4.gat,198,59,0	warp	clt025	1,1,c_tower4.gat,152,98
-c_tower4.gat,204,57,0	warp	clt026	1,1,c_tower4.gat,65,77
-c_tower4.gat,75,156,4	script	clt027r	45,0,0,{
-
-	set @r,rand(4);
-	if (@r==0) goto w1;
-	if (@r==1) goto w2;
-	if (@r==2) goto w3;
-	if (@r==3) goto w4;
-	w1:	warp "c_tower3.gat",168,252; end;
-	w2:	warp "alde_dun02.gat",262,41; end;
-	w3:	warp "c_tower4.gat",73,154; end;
-	w4:	warp "c_tower4.gat",140,149; end;
-}
-c_tower4.gat,68,79,4	script	clt028r	45,0,0,{
-
-	set @r,rand(4);
-	if (@r==0) goto w1;
-	if (@r==1) goto w2;
-	if (@r==2) goto w3;
-	if (@r==3) goto w4;
-	w1:	warp "c_tower2.gat",13,282; end;
-	w2:	warp "alde_dun03.gat",175,131; end;
-	w3:	warp "c_tower3.gat",235,7; end;
-	w4:	warp "c_tower4.gat",65,77; end;
-}
-c_tower4.gat,142,151,4	script	clt029r	45,0,0,{
-
-	set @r,rand(4);
-	if (@r==0) goto w1;
-	if (@r==1) goto w2;
-	if (@r==2) goto w3;
-	if (@r==3) goto w4;
-	w1:	warp "c_tower3.gat",168,252; end;
-	w2:	warp "alde_dun02.gat",262,41; end;
-	w3:	warp "c_tower4.gat",73,154; end;
-	w4: warp "c_tower4.gat",140,149; end;
-}
-c_tower4.gat,151,96,4	script	clt030r	45,0,0,{
-
-	set @r,rand(4);
-	if (@r==0) goto w1;
-	if (@r==1) goto w2;
-	if (@r==2) goto w3;
-	if (@r==3) goto w4;
-	w1:	warp "c_tower2.gat",228,267; end;
-	w2:	warp "alde_dun03.gat",130,130; end;
-	w3:	warp "c_tower3.gat",252,29; end;
-	w4:	warp "c_tower4.gat",152,95; end;
-}
-c_tower4.gat,189,40,4	script	clt031r	45,2,2,{
-
-	set @r,rand(4);
-	if (@r==0) goto w1;
-	if (@r==1) goto w2;
-	if (@r==2) goto w3;
-	if (@r==3) goto w4;
-	w1:	warp "c_tower2.gat",228,267; end;
-	w2:	warp "alde_dun03.gat",130,130; end;
-	w3:	warp "c_tower3.gat",252,29; end;
-	w4:	warp "c_tower4.gat",152,95; end;
-}
-
-
-//--------------------------------------------------------------
-// Coal Mine Dungeon Warp Portals
-//--------------------------------------------------------------
-
-mjo_dun01.gat,14,283,0	warp	mjod01	2,4,mjo_dun02.gat,381,343
-mjo_dun01.gat,52,14,0	warp	mjod001	4,2,mjolnir_02.gat,79,363
-mjo_dun02.gat,31,21,0	warp	mjod02	1,1,mjo_dun03.gat,302,262
-mjo_dun02.gat,384,343,0	warp	mjod01-1	2,4,mjo_dun01.gat,17,283
-mjo_dun02.gat,39,21,0	warp	mjod03	1,1,mjo_dun03.gat,308,262
-mjo_dun03.gat,302,264,0	warp	mjod02-1	1,1,mjo_dun02.gat,31,23
-mjo_dun03.gat,308,264,0	warp	mjod03-1	1,1,mjo_dun02.gat,39,23
-
-
-//--------------------------------------------------------------
-// Culvert Dungeon Warp Portals (Prontera Sewers)
-//--------------------------------------------------------------
-
-prt_sewb1.gat,135,248,0	warp	prts001	2,2,prt_fild05.gat,274,208
-prt_sewb1.gat,188,247,0	warp	prts01	1,3,prt_sewb2.gat,19,19
-prt_sewb2.gat,100,176,0	warp	prts02	4,2,prt_sewb2.gat,140,28
-prt_sewb2.gat,140,24,0	warp	prts02-1	4,2,prt_sewb2.gat,100,172
-prt_sewb2.gat,180,24,0	warp	prts03	4,2,prt_sewb3.gat,180,169
-prt_sewb2.gat,19,12,0	warp	prts01-1	2,2,prt_sewb1.gat,192,247
-prt_sewb2.gat,19,175,0	warp	prts04	4,2,prt_sewb2.gat,60,28
-prt_sewb2.gat,60,24,0	warp	prts04-1	4,2,prt_sewb2.gat,19,171
-prt_sewb3.gat,180,173,0	warp	prts03-1	4,2,prt_sewb2.gat,180,28
-prt_sewb3.gat,20,185,0	warp	prts05	3,1,prt_sewb4.gat,100,92
-prt_sewb4.gat,100,95,0	warp	prts05-1	3,1,prt_sewb3.gat,19,183
-
-
-//--------------------------------------------------------------
-// Einbroch Dungeon Warp Portals
-//--------------------------------------------------------------
-
-einbech.gat,139,253,0	warp	ein011	1,1,ein_dun01.gat,22,17
-ein_dun01.gat,22,15,0	warp	ein011a	1,1,einbech.gat,139,251
-ein_dun01.gat,262,256,0	warp	ein012	1,1,ein_dun02.gat,292,290
-ein_dun02.gat,292,292,0	warp	ein012a	1,1,ein_dun01.gat,262,258
-
-
-//--------------------------------------------------------------
-// Geffenia Dungeon Warp Portals
-//--------------------------------------------------------------
-
-gefenia01.gat,37,103,0	warp	gefeniawarp014	1,1,gefenia04.gat,283,95
-gefenia01.gat,199,269,0	warp	gefeniawarp001	1,1,gefenia02.gat,203,34
-gefenia01.gat,220,256,0	warp	gefeniawarp003	1,1,gefenia02.gat,240,23
-gefenia02.gat,17,175,0	warp	gefeniawarp005	1,1,gefenia03.gat,266,168
-gefenia02.gat,19,237,0	warp	gefeniawarp007	1,1,gefenia03.gat,264,236
-gefenia02.gat,203,31,0	warp	gefeniawarp002	1,1,gefenia01.gat,199,266
-gefenia02.gat,240,20,0	warp	gefeniawarp004	1,1,gefenia01.gat,223,256
-gefenia03.gat,58,26,0	warp	gefeniawarp011	1,1,gefenia04.gat,33,270
-gefenia03.gat,145,27,0	warp	gefeniawarp009	1,1,gefenia04.gat,130,272
-gefenia03.gat,267,236,0	warp	gefeniawarp008	1,1,gefenia02.gat,22,237
-gefenia03.gat,269,168,0	warp	gefeniawarp006	1,1,gefenia02.gat,20,175
-gefenia04.gat,130,275,0	warp	gefeniawarp010	1,1,gefenia03.gat,145,30
-gefenia04.gat,33,273,0	warp	gefeniawarp012	1,1,gefenia03.gat,58,29
-gefenia04.gat,287,95,0	warp	gefeniawarp013	1,1,gefenia01.gat,40,103
-
-
-//--------------------------------------------------------------
-// Geffen Dungeon Warp Portals
-//--------------------------------------------------------------
-
-gef_dun00.gat,104,102,0	warp	gef024	3,3,gef_tower.gat,153,31
-gef_dun00.gat,107,168,0	warp	gefd01	2,1,gef_dun01.gat,115,236
-gef_dun01.gat,115,240,0	warp	gefd01-1	2,2,gef_dun00.gat,107,165
-gef_dun01.gat,197,38,0	warp	gefd02	2,1,gef_dun02.gat,106,132
-gef_dun02.gat,106,134,0	warp	gefd02-1	2,1,gef_dun01.gat,197,40
-gef_dun03.gat,203,204,0	warp	gefd03	2,1,gef_dun02.gat,215,63
-
-
-//--------------------------------------------------------------
-// Glast Heim Dungeon Warp Portals
-//--------------------------------------------------------------
-
-gef_fild06.gat,20,304,0	warp	gef027	2,5,glast_01.gat,375,304
-gl_cas01.gat,135,40,0	warp	gl01	1,1,gl_cas01.gat,144,314
-gl_cas01.gat,149,314,0	warp	gl02	1,1,gl_prison.gat,14,70
-gl_cas01.gat,167,191,0	warp	gl03	1,1,gl_prison.gat,14,70
-gl_cas01.gat,185,236,0	warp	gl06	1,1,gl_cas01.gat,163,191
-gl_cas01.gat,200,165,0	warp	gl10	1,1,gl_cas02.gat,104,25
-gl_cas01.gat,200,18,0	warp	gl7-1	2,2,glast_01.gat,200,294
-gl_cas01.gat,215,236,0	warp	gl07	1,1,gl_cas01.gat,238,192
-gl_cas01.gat,234,192,0	warp	gl04	1,1,gl_prison.gat,14,70
-gl_cas01.gat,371,301,0	warp	gl05	1,1,gl_prison.gat,14,70
-gl_cas01.gat,372,39,0	warp	gl08	1,1,gl_cas01.gat,367,301
-gl_cas02.gat,104,15,0	warp	gl10-1	1,1,gl_cas01.gat,200,160
-gl_cas02.gat,104,193,0	warp	gl8-1	1,1,glast_01.gat,199,325
-gl_church.gat,156,4,0	warp	gl9-1	1,1,glast_01.gat,200,134
-gl_church.gat,16,299,0	warp	gl11	1,1,gl_chyard.gat,147,284
-gl_church.gat,301,46,0	warp	gl12	1,1,gl_chyard.gat,147,15
-gl_chyard.gat,12,149,0	warp	gl22	1,1,gl_sew02.gat,29,270
-gl_chyard.gat,147,12,0	warp	gl12-1	1,1,gl_church.gat,295,46
-gl_chyard.gat,147,287,0	warp	gl11-1	1,1,gl_church.gat,16,295
-gl_dun01.gat,133,277,0	warp	gl25-1	1,1,gl_sew04.gat,101,78
-gl_dun01.gat,225,18,0	warp	gl13	1,1,gl_dun02.gat,224,274
-gl_dun02.gat,224,277,0	warp	gl13-1	1,1,gl_dun01.gat,225,22
-gl_in01.gat,106,125,0	warp	gl5-1	1,1,glast_01.gat,219,357
-gl_in01.gat,118,59,0	warp	gl6-1	1,1,glast_01.gat,234,330
-gl_in01.gat,81,68,0	warp	gl3-1	1,1,glast_01.gat,165,330
-gl_in01.gat,83,174,0	warp	gl4-1	1,1,glast_01.gat,181,357
-gl_knt01.gat,104,204,0	warp	gl15	1,1,gl_knt01.gat,123,292
-gl_knt01.gat,12,148,0	warp	gl14	1,1,gl_knt02.gat,15,140
-gl_knt01.gat,128,292,0	warp	gl15-1	1,1,gl_knt01.gat,104,199
-gl_knt01.gat,150,291,0	warp	gl16	1,1,gl_knt02.gat,157,287
-gl_knt01.gat,150,6,0	warp	gl2-1	2,2,glast_01.gat,74,193
-gl_knt01.gat,231,197,0	warp	gl24-1	1,1,gl_sew02.gat,296,22
-gl_knt01.gat,287,144,0	warp	gl17	1,1,gl_knt02.gat,283,140
-gl_knt02.gat,10,138,0	warp	gl14-1	1,1,gl_knt01.gat,7,148
-gl_knt02.gat,157,292,0	warp	gl16-1	1,1,gl_knt01.gat,150,286
-gl_knt02.gat,289,138,0	warp	gl17-1	1,1,gl_knt01.gat,292,144
-gl_prison.gat,149,183,0	warp	gl18-1	1,1,gl_prison1.gat,150,14
-gl_prison.gat,10,70,4	script	gl18-2	45,1,1,{
-if (rand(2)==1) goto w2;
-	warp "gl_cas01",236,192; end;
-w2: warp "gl_cas01",164,191; end;
-}
-gl_prison1.gat,150,10,0	warp	gl18	1,1,gl_prison.gat,149,178
-gl_prison1.gat,62,187,0	warp	gl10	1,1,gl_sew01.gat,258,255
-gl_sew01.gat,19,18,0	warp	gl19	5,1,gl_sew02.gat,108,291
-gl_sew01.gat,258,258,0	warp	gl09	1,1,gl_prison1.gat,61,183
-gl_sew02.gat,109,293,0	warp	gl19-1	5,1,gl_sew01.gat,19,20
-gl_sew02.gat,16,26,0	warp	gl11	1,1,gl_prison1.gat,61,183
-gl_sew02.gat,290,157,0	warp	gl23	1,5,gl_step.gat,117,123
-gl_sew02.gat,296,18,0	warp	gl24	1,1,gl_knt01.gat,231,192
-gl_sew02.gat,299,294,0	warp	gl20	1,1,gl_sew03.gat,171,283
-gl_sew02.gat,30,273,0	warp	gl22-1	1,1,gl_chyard.gat,15,149
-gl_sew03.gat,171,286,0	warp	gl20-1	1,1,gl_sew02.gat,295,294
-gl_sew03.gat,64,10,0	warp	gl21	1,1,gl_sew04.gat,68,277
-gl_sew04.gat,104,78,0	warp	gl25	1,1,gl_dun01.gat,133,271
-gl_sew04.gat,68,280,0	warp	gl21-1	1,1,gl_sew03.gat,64,13
-gl_step.gat,119,123,0	warp	gl23-1	1,1,gl_sew02.gat,287,157
-gl_step.gat,8,7,0	warp	gl1-1	1,1,glast_01.gat,54,108
-glast_01.gat,162,330,0	warp	gl3	1,1,gl_in01.gat,77,68
-glast_01.gat,179,360,0	warp	gl4	1,1,gl_in01.gat,80,174
-glast_01.gat,199,322,0	warp	gl8	1,1,gl_cas02.gat,104,189
-glast_01.gat,200,137,0	warp	gl9	1,1,gl_church.gat,156,7
-glast_01.gat,200,297,0	warp	gl7	1,1,gl_cas01.gat,199,29
-glast_01.gat,220,360,0	warp	gl5	1,1,gl_in01.gat,110,125
-glast_01.gat,237,330,0	warp	gl6	1,1,gl_in01.gat,122,59
-glast_01.gat,379,304,0	warp	glst001	2,5,gef_fild06.gat,23,304
-glast_01.gat,51,108,0	warp	gl1	1,1,gl_step.gat,12,7
-glast_01.gat,77,193,0	warp	gl2	1,1,gl_knt01.gat,150,15
-
-
-//--------------------------------------------------------------
-// Prontera Maze Warp Portals
-//--------------------------------------------------------------
-
-prt_fild01.gat,136,373,0	warp	prtf030	2,2,prt_maze01.gat,176,7
-mjolnir_12.gat,44,17,0	warp	mjol17	1,1,prt_maze01.gat,17,111
-prt_maze01.gat,14,45,0	warp	mazewarp5137	1,1,mjolnir_12.gat,44,21
-prt_maze01.gat,177,74,0	warp	mazewarp5147	1,1,prt_fild01.gat,136,368
-prt_maze01.gat,22,194,0	warp	mazewarp5101	1,1,prt_maze01.gat,16,31
-prt_maze01.gat,5,186,0	warp	mazewarp5102	1,1,prt_maze01.gat,182,88
-prt_maze01.gat,58,194,0	warp	mazewarp5103	1,1,prt_maze01.gat,23,128
-prt_maze01.gat,102,165,0	warp	mazewarp5104	1,1,prt_maze01.gat,99,31
-prt_maze01.gat,85,174,0	warp	mazewarp5105	1,1,prt_maze02.gat,93,20
-prt_maze01.gat,154,181,0	warp	mazewarp5106	1,1,prt_maze01.gat,191,175
-prt_maze01.gat,125,171,0	warp	mazewarp5107	1,1,prt_maze01.gat,8,186
-prt_maze01.gat,175,165,0	warp	mazewarp5108	1,1,prt_maze01.gat,48,104
-prt_maze01.gat,194,175,0	warp	mazewarp5109	1,1,prt_maze01.gat,23,128
-prt_maze01.gat,18,154,0	warp	mazewarp5110	1,1,prt_maze01.gat,177,71
-prt_maze01.gat,23,125,0	warp	mazewarp5111	1,1,prt_maze01.gat,151,22
-prt_maze01.gat,5,140,0	warp	mazewarp5112	1,1,prt_maze01.gat,58,48
-prt_maze01.gat,54,154,0	warp	mazewarp5113	1,1,prt_maze01.gat,191,175
-prt_maze01.gat,63,125,0	warp	mazewarp5114	1,1,prt_maze01.gat,182,88
-prt_maze01.gat,98,154,0	warp	mazewarp5115	1,1,prt_maze01.gat,102,168
-prt_maze01.gat,114,145,0	warp	mazewarp5116	1,1,prt_maze01.gat,23,128
-prt_maze01.gat,85,146,0	warp	mazewarp5117	1,1,prt_maze01.gat,142,111
-prt_maze01.gat,137,125,0	warp	mazewarp5118	1,1,prt_maze01.gat,191,139
-prt_maze01.gat,154,134,0	warp	mazewarp5119	1,1,prt_maze01.gat,58,191
-prt_maze01.gat,194,139,0	warp	mazewarp5120	1,1,prt_maze01.gat,22,88
-prt_maze01.gat,166,139,0	warp	mazewarp5121	1,1,prt_maze01.gat,128,173
-prt_maze01.gat,17,114,0	warp	mazewarp5122	1,1,prt_maze01.gat,8,186
-prt_maze01.gat,22,85,0	warp	mazewarp5123	1,1,prt_maze01.gat,137,128
-prt_maze01.gat,63,114,0	warp	mazewarp5124	1,1,prt_maze01.gat,111,56
-prt_maze01.gat,63,85,0	warp	mazewarp5125	1,1,prt_maze01.gat,151,22
-prt_maze01.gat,74,97,0	warp	mazewarp5126	1,1,prt_maze01.gat,71,11
-prt_maze01.gat,45,104,0	warp	mazewarp5127	1,1,prt_maze01.gat,63,128
-prt_maze01.gat,105,114,0	warp	mazewarp5128	1,1,prt_maze01.gat,111,145
-prt_maze01.gat,114,95,0	warp	mazewarp5129	1,1,prt_maze01.gat,14,48
-prt_maze01.gat,85,97,0	warp	mazewarp5130	1,1,prt_maze01.gat,63,128
-prt_maze01.gat,142,114,0	warp	mazewarp5131	1,1,prt_maze01.gat,23,128
-prt_maze01.gat,125,105,0	warp	mazewarp5132	1,1,prt_maze01.gat,14,48
-prt_maze01.gat,182,85,0	warp	mazewarp5133	1,1,prt_maze01.gat,58,48
-prt_maze01.gat,194,94,0	warp	mazewarp5134	1,1,prt_maze01.gat,58,191
-prt_maze01.gat,168,94,0	warp	mazewarp5135	1,1,prt_maze01.gat,191,139
-prt_maze01.gat,14,74,0	warp	mazewarp5136	1,1,prt_maze01.gat,151,22
-prt_maze01.gat,5,58,0	warp	mazewarp5138	1,1,prt_maze01.gat,48,104
-prt_maze01.gat,74,74,0	warp	mazewarp5139	1,1,prt_maze01.gat,58,191
-prt_maze01.gat,52,45,0	warp	mazewarp5140	1,1,prt_maze01.gat,139,48
-prt_maze01.gat,104,74,0	warp	mazewarp5141	1,1,prt_maze01.gat,14,48
-prt_maze01.gat,96,45,0	warp	mazewarp5142	1,1,prt_maze01.gat,63,128
-prt_maze01.gat,114,56,0	warp	mazewarp5143	1,1,prt_maze01.gat,176,8
-prt_maze01.gat,85,56,0	warp	mazewarp5144	1,1,prt_maze01.gat,105,111
-prt_maze01.gat,137,74,0	warp	mazewarp5145	1,1,prt_maze01.gat,182,88
-prt_maze01.gat,139,45,0	warp	mazewarp5146	1,1,prt_maze01.gat,71,11
-prt_maze01.gat,175,45,0	warp	mazewarp5148	1,1,prt_maze01.gat,58,48
-prt_maze01.gat,194,54,0	warp	mazewarp5149	1,1,prt_maze01.gat,99,31	
-prt_maze01.gat,16,34,0	warp	mazewarp5150	1,1,prt_maze01.gat,128,173
-prt_maze01.gat,23,5,0	warp	mazewarp5151	1,1,prt_maze01.gat,176,8
-prt_maze01.gat,54,5,0	warp	mazewarp5152	1,1,prt_maze01.gat,128,173
-prt_maze01.gat,74,12,0	warp	mazewarp5153	1,1,prt_maze01.gat,58,48
-prt_maze01.gat,45,21,0	warp	mazewarp5154	1,1,prt_maze01.gat,142,111
-prt_maze01.gat,99,34,0	warp	mazewarp5155	1,1,prt_maze01.gat,137,128
-prt_maze01.gat,114,22,0	warp	mazewarp5156	1,1,prt_maze01.gat,177,71
-prt_maze01.gat,85,13,0	warp	mazewarp5157	1,1,prt_maze01.gat,22,88
-prt_maze01.gat,154,22,0	warp	mazewarp5158	1,1,prt_maze01.gat,139,48
-prt_maze01.gat,176,34,0	warp	mazewarp5159	1,1,prt_maze01.gat,8,186
-prt_maze01.gat,176,5,0	warp	mazewarp5160	1,1,prt_maze01.gat,137,128
-prt_maze01.gat,194,15,0	warp	mazewarp5161	1,1,prt_maze01.gat,52,48
-prt_maze01.gat,165,22,0	warp	mazewarp5162	1,1,prt_maze01.gat,63,128
-prt_maze02.gat,93,16,0	warp	mazewarp5201	1,1,prt_maze01.gat,102,168
-prt_maze02.gat,100,182,0	warp	mazewarp5202	1,1,prt_maze03.gat,182,88
-prt_maze03.gat,22,194,0	warp	mazewarp5301	1,1,prt_maze03.gat,175,48
-prt_maze03.gat,5,186,0	warp	mazewarp5302	1,1,prt_maze03.gat,151,134
-prt_maze03.gat,58,194,0	script	#mazewarp5303	45,1,1,{
-	set	@w,rand(4);
-	if (@w==1) goto w2;
-	if (@w==2) goto w3;
-	if (@w==3) goto w4;
-		warp "prt_maze03.gat",98,151; end;
-	w2:	warp "prt_maze03.gat",137,128; end;
-	w3:	warp "prt_maze03.gat",14,71; end;
-	w4:	warp "prt_maze03.gat",54,8; end;
-}
-prt_maze03.gat,102,165,0	warp	mazewarp5304	1,1,prt_maze03.gat,137,71
-prt_maze03.gat,85,174,0	warp	mazewarp5305	1,1,prt_maze03.gat,14,47
-prt_maze03.gat,154,181,0	warp	mazewarp5306	1,1,prt_maze03.gat,139,48
-prt_maze03.gat,125,171,0	warp	mazewarp5307	1,1,prt_maze03.gat,105,111
-prt_maze03.gat,175,165,0	warp	mazewarp5308	1,1,prt_maze03.gat,71,12
-prt_maze03.gat,194,175,0	warp	mazewarp5309	1,1,prt_maze03.gat,191,139
-prt_maze03.gat,18,154,0	warp	mazewarp5310	1,1,prt_maze03.gat,48,21
-prt_maze03.gat,23,125,0	warp	mazewarp5311	1,1,prt_maze03.gat,177,71
-prt_maze03.gat,5,140,0	warp	mazewarp5312	1,1,prt_maze03.gat,111,56
-prt_maze03.gat,54,154,0	warp	mazewarp5313	1,1,prt_maze03.gat,142,111
-prt_maze03.gat,63,125,0	warp	mazewarp5314	1,1,prt_maze03.gat,88,97
-prt_maze03.gat,98,154,0	warp	mazewarp5315	1,1,prt_maze03.gat,99,31
-prt_maze03.gat,114,145,0	warp	mazewarp5316	1,1,prt_maze03.gat,168,22
-prt_maze03.gat,85,146,0	warp	mazewarp5317	1,1,prt_maze03.gat,22,88
-prt_maze03.gat,137,125,0	warp	mazewarp5318	1,1,prt_maze03.gat,71,71
-prt_maze03.gat,154,134,0	warp	mazewarp5319	1,1,prt_maze03.gat,8,186
-prt_maze03.gat,194,139,0	warp	mazewarp5320	1,1,prt_maze03.gat,191,175
-prt_maze03.gat,166,139,0	warp	mazewarp5321	1,1,prt_maze03.gat,63,88
-prt_maze03.gat,17,114,0	warp	mazewarp5322	1,1,prt_maze03.gat,128,105
-prt_maze03.gat,22,85,0	warp	mazewarp5323	1,1,prt_maze03.gat,88,146
-prt_maze03.gat,63,114,0	warp	mazewarp5324	1,1,prt_maze03.gat,14,71
-prt_maze03.gat,63,85,0	warp	mazewarp5325	1,1,prt_maze03.gat,169,139
-prt_maze03.gat,74,97,0	warp	mazewarp5326	1,1,prt_maze03.gat,54,8
-prt_maze03.gat,45,104,0	warp	mazewarp5327	1,1,prt_maze03.gat,96,48
-prt_maze03.gat,105,114,0	warp	mazewarp5328	1,1,prt_maze03.gat,128,171
-prt_maze03.gat,114,95,0	warp	mazewarp5329	1,1,prt_maze03.gat,176,8
-prt_maze03.gat,85,97,0	warp	mazewarp5330	1,1,prt_maze03.gat,63,128
-prt_maze03.gat,142,114,0	warp	mazewarp5331	1,1,prt_maze03.gat,54,151
-prt_maze03.gat,125,105,0	warp	mazewarp5332	1,1,prt_maze03.gat,58,191
-prt_maze03.gat,182,85,0	warp	mazewarp5333	1,1,prt_maze02.gat,100,179
-prt_maze03.gat,194,94,0	warp	mazewarp5334	1,1,prt_maze03.gat,151,22
-prt_maze03.gat,168,94,0	warp	mazewarp5335	1,1,prt_maze03.gat,191,54
-prt_maze03.gat,14,74,0	warp	mazewarp5336	1,1,prt_maze03.gat,63,111
-prt_maze03.gat,14,45,0	warp	mazewarp5337	1,1,prt_maze03.gat,88,174
-prt_maze03.gat,5,58,0	warp	mazewarp5338	1,1,prt_maze03.gat,191,15
-prt_maze03.gat,74,74,0	script	#mazewarp5339	45,1,1,{
-set	@w,rand(4);
-	if (@w==1) goto w2;
-	if (@w==2) goto w3;
-	if (@w==3) goto w4;
-		warp "prt_maze03.gat",98,151; end;
-	w2:	warp "prt_maze03.gat",137,128; end;
-	w3:	warp "prt_maze03.gat",14,71; end;
-	w4:	warp "prt_maze03.gat",54,8; end;
-}
-prt_maze03.gat,52,45,0	warp	mazewarp5340	1,1,prt_maze03.gat,16,31
-prt_maze03.gat,104,74,0	warp	mazewarp5341	1,1,prt_maze03.gat,111,22
-prt_maze03.gat,96,45,0	warp	mazewarp5342	1,1,prt_maze03.gat,48,104
-prt_maze03.gat,114,56,0	warp	mazewarp5343	1,1,prt_maze03.gat,8,140
-prt_maze03.gat,85,56,0	warp	mazewarp5344	1,1,prt_maze03.gat,176,31
-prt_maze03.gat,137,74,0	warp	mazewarp5345	1,1,prt_maze03.gat,102,168
-prt_maze03.gat,139,45,0	script	#mazewarp5346	45,1,1,{
-	set	@w,rand(4);
-	if (@w==1) goto w2;
-	if (@w==2) goto w3;
-	if (@w==3) goto w4;
-		warp "prt_maze03.gat",98,151; end;
-	w2:	warp "prt_maze03.gat",137,128; end;
-	w3:	warp "prt_maze03.gat",14,71; end;
-	w4:	warp "prt_maze03.gat",54,8; end;
-}
-prt_maze03.gat,177,74,0	warp	mazewarp5347	1,1,prt_maze03.gat,23,128
-prt_maze03.gat,175,45,0	warp	mazewarp5348	1,1,prt_maze03.gat,22,191
-prt_maze03.gat,194,54,0	warp	mazewarp5349	1,1,prt_maze03.gat,171,94
-prt_maze03.gat,16,34,0	warp	mazewarp5350	1,1,prt_maze03.gat,52,48
-prt_maze03.gat,23,5,0	warp	mazewarp5351	1,1,prt_maze03.gat,88,13
-prt_maze03.gat,54,5,0	warp	mazewarp5352	1,1,prt_maze03.gat,71,97
-prt_maze03.gat,74,12,0	warp	mazewarp5353	1,1,prt_maze03.gat,175,168
-prt_maze03.gat,45,21,0	warp	mazewarp5354	1,1,prt_maze03.gat,18,151
-prt_maze03.gat,99,34,0	warp	mazewarp5355	1,1,prt_maze03.gat,98,151
-prt_maze03.gat,114,22,0	warp	mazewarp5356	1,1,prt_maze03.gat,104,71
-prt_maze03.gat,85,13,0	warp	mazewarp5357	1,1,prt_maze03.gat,23,8
-prt_maze03.gat,154,22,0	script	#mazewarp5358	45,1,1,{
-	set	@w,rand(4);
-	if (@w==1) goto w2;
-	if (@w==2) goto w3;
-	if (@w==3) goto w4;
-		warp "prt_maze03.gat",98,151; end;
-	w2:	warp "prt_maze03.gat",137,128; end;
-	w3:	warp "prt_maze03.gat",14,71; end;
-	w4:	warp "prt_maze03.gat",54,8; end;
-}
-prt_maze03.gat,176,34,0	warp	mazewarp5359	1,1,prt_maze03.gat,88,56
-prt_maze03.gat,176,5,0	warp	mazewarp5360	1,1,prt_maze03.gat,111,95
-prt_maze03.gat,194,15,0	warp	mazewarp5361	1,1,prt_maze03.gat,8,58
-prt_maze03.gat,165,22,0	warp	mazewarp5362	1,1,prt_maze03.gat,111,145
-
-
-//--------------------------------------------------------------
-// Ice Cave Dungeon Warp Portals
-//--------------------------------------------------------------
-
-ice_dun01.gat,157,10,0	warp	ice001	1,1,ra_fild01.gat,233,327
-ice_dun01.gat,146,161,0	warp	ice002	1,1,ice_dun02.gat,151,139
-ice_dun02.gat,151,145,0	warp	ice003	1,1,ice_dun01.gat,146,157
-ice_dun02.gat,150,285,0	warp	ice004	1,1,ice_dun03.gat,149,24
-ice_dun03.gat,149,19,0	warp	ice005	1,1,ice_dun02.gat,150,280
-ice_dun04.gat,33,140,0	warp	ice006	1,1,ice_dun03.gat,149,130
-
-
-//--------------------------------------------------------------
-// Kiel Hyre Dungeon Warp Portals
-//--------------------------------------------------------------
-
-kh_dun01.gat,3,234,0	warp	kh_dun_00	1,1,yuno_fild08.gat,74,174
-kh_dun01.gat,232,226,0	warp	kh_dun_01	1,1,kh_dun01.gat,13,12
-kh_dun01.gat,63,7,0	warp	kh_dun_02	1,1,kh_dun01.gat,227,176
-kh_dun01.gat,232,176,0	warp	kh_dun_03	1,1,kh_dun01.gat,63,12
-kh_dun02.gat,43,195,0	script	kh_dun04	45,1,1,{
+moc_fild04.gat,219,327,0	script	moc4-anthell	45,3,4,{
 OnTouch:
-	if (rand(1,2) == 1) {
+	set anthell,0;
+	warp "anthell01.gat",35,262;
+	end;
+}
+moc_fild15.gat,258,253,0	script	moc15-anthell	45,3,3,{
+OnTouch:
+	set anthell,1;
+	warp "anthell01.gat",35,262;
+	end;
+}
+anthell01.gat,35,267,0	script	Ant Hell-Outside	45,1,1,{
+OnTouch:
+	if (anthell == 0) {
+		warp "moc_fild04.gat",213,327;
+	} else {
+		warp "moc_fild15.gat",251,248;
+	}
+	end;
+}
+anthell01.gat,253,32,0	warp	ant1-2	2,1,anthell02.gat,34,263
+anthell02.gat,32,267,0	warp	ant2-1	2,2,anthell01.gat,253,35
+anthell02.gat,171,169,0	script	ant2-Outside	45,1,2,{
+OnTouch:
+	if (anthell == 0) {
+		warp "moc_fild15.gat",251,248;
+	} else {
+		warp "moc_fild04.gat",213,327;
+	}
+	end;
+}
+
+
+//--------------------------------------------------------------
+// Ayothaya Dungeon Warp Portals - [Tsuyuki]
+//--------------------------------------------------------------
+
+ayo_fild02.gat,285,149,0	warp	Fild02_Dun01toFild	1,1,ayo_dun01.gat,275,18
+ayo_dun01.gat,274,14,0	warp	Dun01toFild_Fild02	1,1,ayo_fild02.gat,279,150
+ayo_dun02.gat,24,22,0	warp	Dun02Lto01_Dun01to02	1,1,ayo_dun01.gat,24,279
+ayo_dun02.gat,276,22,0	warp	Dun02Rto01_Dun01to02	1,1,ayo_dun01.gat,24,279
+
+
+//--------------------------------------------------------------
+// Biolabs Dungeon Warp Portals - [Tsuyuki]
+//--------------------------------------------------------------
+
+lhz_dun02.gat,282,161,0	warp	LhzD02R_LhzD01R	1,1,lhz_dun01.gat,281,154
+lhz_dun02.gat,146,19,0	warp	LhzD02Dn_LhzD01Dn	1,1,lhz_dun01.gat,144,9
+lhz_dun02.gat,17,156,0	warp	LhzD02L_LhzD01L	1,1,lhz_dun01.gat,18,150
+lhz_dun03.gat,139,137,0	warp	LhzD03M_LhzD02M	1,1,lhz_dun02.gat,149,142
+lhz_dun01.gat,149,291,0	warp	LhzD01Up_RekI201	1,1,lhz_in01.gat,19,129
+lhz_dun01.gat,281,150,0	warp	LhzD01R_LhzD02R	1,1,lhz_dun02.gat,282,153
+lhz_dun01.gat,149,9,0	warp	LhzD01Dn_LhzD02Dn	1,1,lhz_dun02.gat,153,19
+lhz_dun01.gat,18,145,0	warp	LhzD01L_LhzD02L	1,1,lhz_dun02.gat,17,150
+
+
+//--------------------------------------------------------------
+// Byalan Island Dungeon Warp Portals - [Tsuyuki]
+//--------------------------------------------------------------
+
+izlu2dun.gat,108,83,0	warp	Field-Dungeon	3,2,iz_dun00.gat,168,168
+iz_dun00.gat,168,173,0	warp	Dungeon-Field	3,3,izlu2dun.gat,108,88
+iz_dun00.gat,39,41,0	warp	SW-1F->2F	5,2,iz_dun01.gat,41,37
+iz_dun01.gat,41,32,0	warp	SW-2F->1F	2,2,iz_dun00.gat,39,46
+iz_dun00.gat,352,342,0	warp	NE-1F->2F	5,2,iz_dun01.gat,253,252
+iz_dun01.gat,253,258,0	warp	NE-2F->1F	2,2,iz_dun00.gat,352,337
+iz_dun01.gat,118,170,0	warp	2F->3F	5,2,iz_dun02.gat,236,204
+iz_dun02.gat,236,198,0	warp	3F->2F	5,3,iz_dun01.gat,118,165
+iz_dun02.gat,339,331,0	warp	Iz Dungeon3-4	2,2,iz_dun03.gat,32,63
+iz_dun03.gat,29,63,0	warp	Iz Dungeon4-3	2,2,iz_dun02.gat,339,328
+iz_dun03.gat,264,245,0	warp	Iz Dungeon3-4	1,2,iz_dun04.gat,26,27
+iz_dun04.gat,26,24,0	warp	Iz Dungeon4-3	2,2,iz_dun03.gat,261,245
+
+
+//--------------------------------------------------------------
+// Cheshrumnir Sanctuary Dungeon Warp Portals - [Tsuyuki]
+//--------------------------------------------------------------
+
+ra_san01.gat,139,13,0	script	raSan01S_02N03N04M	45,1,1,{
+OnTouch:
+	if (rachel_ma1 == 9) {
+		warp "que_san04.gat",119,115;
+		end;
+	}
+	set '@rasan1_234,rand(1,3);
+	if ('@rasan1_234 == 1) {
+		warp "ra_san02.gat",213,275;
+	} else if ('@rasan1_234 == 2) {
+		warp "ra_san03.gat",119,283;
+	} else {
+		warp "ra_san04.gat",119,110;
+	}
+	end;
+}
+ra_san02.gat,213,280,0	warp	raSan02N_raSan01S	1,1,ra_san01.gat,140,19
+ra_san03.gat,123,283,0	warp	raSan03N_raSan01S	1,1,ra_san01.gat,140,19
+ra_san04.gat,119,104,0	warp	raSan04N_raSan01S	1,1,ra_san01.gat,140,19
+ra_san03.gat,279,21,0	warp	raSan03S1_raSan05E	1,1,ra_san05.gat,282,149
+ra_san03.gat,85,15,0	warp	raSan03S2_raSan04N2	1,1,ra_san04.gat,203,216
+ra_san04.gat,203,221,0	warp	raSan04N2_raSan03S2	1,1,ra_san03.gat,85,20
+ra_san04.gat,120,48,0	warp	raSan04S_raSan05N	1,1,ra_san05.gat,150,282
+ra_san05.gat,150,7,0	warp	raSan05S_raTemOut	1,1,ra_temple.gat,119,153
+ra_san02.gat,289,149,0	warp	raSan02E_raSan03W	1,1,ra_san03.gat,10,149
+ra_san03.gat,5,149,0	warp	raSan03W_raSan02E	1,1,ra_san02.gat,284,149
+ra_san02.gat,213,4,0	warp	raSan02S_raSan04N1	1,1,ra_san04.gat,35,216
+ra_san04.gat,35,221,0	warp	raSan04N1_raSan02S	1,1,ra_san02.gat,213,9
+ra_san02.gat,30,21,0	warp	raSan02W_raSan05W	1,1,ra_san05.gat,14,149
+
+
+//--------------------------------------------------------------
+// Clock Tower Dungeon Warp Portals - [Tsuyuki]
+//--------------------------------------------------------------
+
+aldebaran.gat,140,135,0	warp	alde->c_tower1	1,1,c_tower1.gat,199,159
+c_tower1.gat,200,157,0	warp	c_tower->alde-C1-4	1,1,aldebaran.gat,139,131
+c_tower1.gat,123,22,0	warp	c_tower1->alde_dun1-C1-3-1-2	1,1,alde_dun01.gat,297,25
+c_tower1.gat,235,226,0	warp	c_tower1->c_tower2-c1-2-c2-5	1,1,c_tower2.gat,268,26
+c_tower2.gat,273,26,0	warp	c_tower2->c_tower1-c2-5-c1-2	1,1,c_tower1.gat,235,223
+c_tower2.gat,142,283,0	warp	c_tower2->c_tower3-c2-2-c3-1	1,1,c_tower3.gat,65,147
+c_tower2.gat,24,24,0	warp	c_tower2->alde_dun03-c2-4-3-2	1,1,alde_dun03.gat,277,178
+c_tower2.gat,13,288,0	script	c_tower2->RandomB-c2-1-RandomB	45,1,1,{
+OnTouch:
+	set '@ranc2_1,rand(1,3);
+	if ('@ranc2_1 == 1) {
+		warp "c_tower2.gat",13,282;
+	} else if ('@ranc2_1 == 2) {
+		warp "alde_dun03.gat",175,131;
+	} else {
+		warp "c_tower3.gat",235,7;
+	}
+	end;
+}
+c_tower2.gat,223,267,0	script	c_tower2->RandomA-c2-3-RandomA	45,1,1,{
+OnTouch:
+	set '@ranc2_3,rand(1,3);
+	if ('@ranc2_3 == 1) {
+		warp "c_tower2.gat",228,267;
+	} else if ('@ranc2_3 == 2) {
+		warp "alde_dun03.gat",130,130;
+	} else {
+		warp "c_tower3.gat",252,29;
+	}
+	end;
+}
+c_tower3.gat,60,147,0	warp	c_tower3->c_tower2-c3-1-c2-2	1,1,c_tower2.gat,148,283
+c_tower3.gat,42,41,0	warp	c_tower3->alde_dun02-c3-4-2-1	1,1,alde_dun02.gat,127,169
+c_tower3.gat,7,39,0	warp	c_tower3->alde_dun01-c3-3-1-1	1,1,alde_dun01.gat,171,158
+c_tower3.gat,146,8,0	warp	c_tower3->c_tower1-c3-6-c1-2	1,1,c_tower1.gat,235,223
+c_tower3.gat,212,159,0	warp	c_tower3->alde_dun03-c3-5-3-5	1,1,alde_dun03.gat,276,53
+c_tower3.gat,163,252,0	script	c_tower3->RandomC-c3-9-Randomc	45,1,1,{
+OnTouch:
+	set '@ranc3_9,rand(1,2);
+	if ('@ranc3_9 == 1) {
+		warp "c_tower3.gat",168,252;
+	} else {
+		warp "alde_dun02.gat",262,41;
+	}
+	end;
+}
+c_tower3.gat,240,7,0	script	c_tower3->RandomB-c3-7-RandomB	45,1,1,{
+OnTouch:
+	set '@ranc3_7,rand(1,3);
+	if ('@ranc3_7 == 1) {
+		warp "c_tower2.gat",13,282;
+	} else if ('@ranc3_7 == 2) {
+		warp "alde_dun03.gat",175,131;
+	} else {
+		warp "c_tower3.gat",235,7;
+	}
+	end;
+}
+c_tower3.gat,252,24,0	script	c_tower3->RandomA-c3-8-RandomA	45,1,1,{
+OnTouch:
+	set '@ranc3_8,rand(1,3);
+	if ('@ranc3_8 == 1) {
+		warp "c_tower2.gat",228,267;
+	} else if ('@ranc3_8 == 2) {
+		warp "alde_dun03.gat",130,130;
+	} else {
+		warp "c_tower3.gat",252,29;
+	}
+	end;
+}
+c_tower4.gat,51,156,0	warp	c4-7->1-1	1,1,alde_dun01.gat,171,158
+c_tower4.gat,37,70,0	warp	c4-8->3-4	1,1,alde_dun03.gat,277,54
+c_tower4.gat,68,46,0	warp	c4-14->c4-6	1,1,c_tower4.gat,73,154
+c_tower4.gat,75,156,0	script	c4-6->RandomC	45,0,0,{
+OnTouch:
+	set '@ranc4_6,rand(1,4);
+	if ('@ranc4_6 == 1) {
+		warp "c_tower3.gat",168,252;
+	} else if ('@ranc4_6 == 2) {
+		warp "alde_dun02.gat",262,41;
+	} else if ('@ranc4_6 == 3) {
+		warp "c_tower4.gat",73,154;
+	} else {
+		warp "c_tower4.gat",140,149;
+	}
+	end;
+}
+c_tower4.gat,68,79,0	script	c4-12->RandomB	45,0,0,{
+OnTouch:
+	set '@ranc4_12,rand(1,5);
+	if ('@ranc4_12 == 1) {
+		warp "c_tower2.gat",13,282;
+	} else if ('@ranc4_12 == 2) {
+		warp "alde_dun03.gat",175,131;
+	} else if ('@ranc4_12 == 3) {
+		warp "c_tower3.gat",235,7;
+	} else if ('@ranc4_12 == 4) {
+		warp "alde_dun04.gat",84,36;
+	} else {
+		warp "c_tower4.gat",65,77;
+	}
+	end;
+}
+c_tower4.gat,79,49,0	warp	c4-9->c4-3	2,2,c_tower4.gat,204,60
+c_tower4.gat,70,19,0	warp	c4-10->c3-6	2,2,c_tower3.gat,151,8
+c_tower4.gat,133,202,0	warp	c4-5->c4-11	1,1,c_tower4.gat,140,149
+c_tower4.gat,142,151,0	script	c4-11->RandomC	45,0,0,{
+OnTouch:
+	set '@ranc4_11,rand(1,4);
+	if ('@ranc4_11 == 1) {
+		warp "c_tower3.gat",168,252;
+	} else if ('@ranc4_11 == 2) {
+		warp "alde_dun02.gat",262,41;
+	} else if ('@ranc4_11 == 3) {
+		warp "c_tower4.gat",73,154;
+	} else {
+		warp "c_tower4.gat",140,149;
+	}
+	end;
+}
+c_tower4.gat,153,107,0	warp	c4-4->c2-3	1,1,c_tower2.gat,228,267
+c_tower4.gat,151,96,0	script	c4-13->RandomA	45,0,0,{
+OnTouch:
+	set '@ranc4_13,rand(1,4);
+	if ('@ranc4_13 == 1) {
+		warp "c_tower2.gat",228,267;
+	} else if ('@ranc4_13 == 2) {
+		warp "alde_dun03.gat",130,130;
+	} else if ('@ranc4_13 == 3) {
+		warp "c_tower3.gat",252,29;
+	} else {
+		warp "c_tower4.gat",152,95;
+	}
+	end;
+}
+c_tower4.gat,198,59,0	warp	c4-2->c4-13	1,1,c_tower4.gat,152,98
+c_tower4.gat,204,57,0	warp	c4-3->c4-12	1,1,c_tower4.gat,65,77
+c_tower4.gat,189,40,0	script	c4-1->RandomA	45,2,2,{
+OnTouch:
+	set '@ranc4_1,rand(1,4);
+	if ('@ranc4_1 == 1) {
+		warp "c_tower2.gat",228,267;
+	} else if ('@ranc4_1 == 2) {
+		warp "alde_dun03.gat",130,130;
+	} else if ('@ranc4_1 == 3) {
+		warp "c_tower3.gat",252,29;
+	} else {
+		warp "c_tower4.gat",152,95;
+	}
+	end;
+}
+c_tower4.gat,171,179,0	warp	c4-15->3-5	1,1,alde_dun03.gat,276,53
+alde_dun01.gat,302,25,0	warp	1-2->c1-3	2,2,c_tower1.gat,125,22
+alde_dun01.gat,167,158,0	warp	1-1->c2-2	2,2,c_tower2.gat,148,283
+alde_dun01.gat,292,306,0	warp	1-3->2-0	2,1,alde_dun02.gat,43,24
+alde_dun02.gat,43,20,0	warp	2-0->1-3	1,1,alde_dun01.gat,292,300
+alde_dun02.gat,122,169,0	warp	2-1->c3-4	2,2,c_tower3.gat,47,41
+alde_dun02.gat,187,234,0	warp	2-2->c3-1	2,2,c_tower3.gat,65,147
+alde_dun02.gat,267,41,0	script	2-3->RandomC	45,1,1,{
+OnTouch:
+	set '@ranb2_3,rand(1,2);
+	if ('@ranb2_3 == 1) {
+		warp "c_tower3.gat",168,252;
+	} else {
+		warp "alde_dun02.gat",262,41;
+	}
+	end;
+}
+alde_dun02.gat,279,250,0	warp	2-4->3-0	2,2,alde_dun03.gat,18,267
+alde_dun03.gat,12,267,0	warp	3-0->2-4	2,2,alde_dun02.gat,273,250
+alde_dun03.gat,130,125,0	script	3-1->RandomA	45,1,1,{
+OnTouch:
+	set '@ranb3_1,rand(1,3);
+	if ('@ranb3_1 == 1) {
+		warp "c_tower2.gat",228,267;
+	} else if ('@ranb3_1 == 2) {
+		warp "alde_dun03.gat",130,130;
+	} else {
+		warp "c_tower3.gat",252,29;
+	}
+	end;
+}
+alde_dun03.gat,191,31,0	warp	3-4->c3-5	2,2,c_tower3.gat,217,159
+alde_dun03.gat,277,183,0	warp	3-2->c2-4	2,2,c_tower2.gat,27,27
+alde_dun03.gat,171,127,0	script	3-3->RandomB	45,1,1,{
+OnTouch:
+	set '@ranb3_3,rand(1,3);
+	if ('@ranb3_3 == 1) {
+		warp "c_tower2.gat",13,282;
+	} else if ('@ranb3_3 == 2) {
+		warp "alde_dun03.gat",175,131;
+	} else {
+		warp "c_tower3.gat",235,7;
+	}
+	end;
+}
+alde_dun03.gat,276,48,0	warp	3-5->c1-2	2,2,c_tower1.gat,235,223
+alde_dun04.gat,80,273,0	warp	4-1->3-6	2,2,alde_dun03.gat,263,26
+alde_dun04.gat,32,74,0	warp	4-2->2-2	1,1,alde_dun02.gat,187,239
+alde_dun04.gat,208,58,0	warp	4-4->4-7	2,2,alde_dun04.gat,268,74
+alde_dun04.gat,272,74,0	warp	4-7->4-4	2,2,alde_dun04.gat,204,62
+alde_dun04.gat,207,225,0	warp	4-5->c3-3	1,1,c_tower3.gat,7,34
+alde_dun04.gat,215,192,0	warp	4-6->c2-2	1,1,c_tower2.gat,148,283
+alde_dun04.gat,80,34,0	script	4-3->RandomB	45,1,1,{
+OnTouch:
+	set '@ranb4_3,rand(1,4);
+	if ('@ranb4_3 == 1) {
+		warp "c_tower2.gat",13,282;
+	} else if ('@ranb4_3 == 2) {
+		warp "alde_dun03.gat",175,131;
+	} else if ('@ranb4_3 == 3) {
+		warp "c_tower3.gat",235,7;
+	} else {
+		warp "alde_dun04.gat",84,36;
+	}
+	end;
+}
+
+
+//--------------------------------------------------------------
+// Coal Mine Dungeon Warp Portals - [Tsuyuki]
+//--------------------------------------------------------------
+
+mjolnir_02.gat,79,365,0	warp	m02-mdun	2,1,mjo_dun01.gat,52,17
+mjo_dun01.gat,52,14,0	warp	mdun-m02	4,2,mjolnir_02.gat,79,363
+mjo_dun01.gat,14,283,0	warp	mdun01-02	2,4,mjo_dun02.gat,381,343
+mjo_dun02.gat,384,343,0	warp	mdun02-01	2,4,mjo_dun01.gat,17,283
+mjo_dun02.gat,31,21,0	warp	mdun02-03	1,1,mjo_dun03.gat,302,262
+mjo_dun03.gat,302,264,0	warp	mdun03-02	1,1,mjo_dun02.gat,31,23
+mjo_dun02.gat,39,21,0	warp	mdun02-03	1,1,mjo_dun03.gat,308,262
+mjo_dun03.gat,308,264,0	warp	mdun03-02	1,1,mjo_dun02.gat,39,23
+
+
+//--------------------------------------------------------------
+// Comodo Caves Dungeon Warp Portals - [Tsuyuki]
+//--------------------------------------------------------------
+
+cmd_fild01.gat,26,318,0	warp	fild01 to beach_dun3	1,1,beach_dun3.gat,281,56
+beach_dun3.gat,286,57,0	warp	dun3 to fild01	1,1,cmd_fild01.gat,30,317
+um_fild01.gat,31,274,0	warp	f01a_beachD_A	1,1,beach_dun2.gat,254,244
+beach_dun2.gat,258,244,0	warp	beachD_A_f01a	1,1,um_fild01.gat,35,276
+comodo.gat,24,214,0	warp	comodo to beach_dun	1,1,beach_dun.gat,266,67
+comodo.gat,176,358,0	warp	comodo to dun2	1,1,beach_dun2.gat,154,25
+comodo.gat,333,175,0	warp	comodo to dun3	1,1,beach_dun3.gat,23,260
+beach_dun3.gat,17,265,0	warp	dun3 to comodo	1,1,comodo.gat,328,175
+beach_dun2.gat,154,13,0	warp	dun2 to comodo	2,1,comodo.gat,176,353
+beach_dun.gat,276,67,0	warp	dun to comodo	1,1,comodo.gat,31,215
+
+
+//--------------------------------------------------------------
+// Culvert Dungeon Warp Portals - [Tsuyuki]
+//--------------------------------------------------------------
+
+prt_sewb1.gat,135,248,0	warp	B1-Exit	2,2,prt_fild05.gat,274,208
+prt_sewb1.gat,188,247,0	warp	B1-B2	1,3,prt_sewb2.gat,19,19
+prt_sewb2.gat,19,12,0	warp	B2-B1	2,2,prt_sewb1.gat,192,247
+prt_sewb2.gat,19,175,0	warp	CulvertB2a	4,2,prt_sewb2.gat,60,28
+prt_sewb2.gat,60,24,0	warp	CulvertB2a'	4,2,prt_sewb2.gat,19,171
+prt_sewb2.gat,100,176,0	warp	CulvertB2b	4,2,prt_sewb2.gat,140,28
+prt_sewb2.gat,140,24,0	warp	CulvertB2b'	4,2,prt_sewb2.gat,100,172
+prt_sewb2.gat,180,24,0	warp	B2 - B3	4,2,prt_sewb3.gat,180,169
+prt_sewb3.gat,180,173,0	warp	B3 - B2	4,2,prt_sewb2.gat,180,28
+prt_sewb3.gat,20,185,0	warp	B3 - B4	3,2,prt_sewb4.gat,100,92
+prt_sewb4.gat,100,96,0	warp	B4 - B3	3,2,prt_sewb3.gat,19,180
+
+
+//--------------------------------------------------------------
+// Einbroch Dungeon Warp Portals - [Tsuyuki]
+//--------------------------------------------------------------
+
+einbech.gat,138,252,0	warp	dunGate_EinD01	1,1,ein_dun01.gat,22,14
+ein_dun01.gat,22,11,0	warp	EinD01_dunGate	1,1,einbech.gat,138,249
+ein_dun01.gat,261,255,0	warp	EinD02Gate_EinD02	1,1,ein_dun02.gat,291,292
+ein_dun02.gat,286,292,0	warp	EinD02_EinD02Gate	1,1,ein_dun01.gat,261,258
+ein_dun02.gat,216,210,0	warp	EinCave01A_EinCave01B	1,1,ein_dun02.gat,208,228
+ein_dun02.gat,228,109,0	warp	EinCave02A_EinCave02B	1,1,ein_dun02.gat,191,130
+ein_dun02.gat,210,225,0	warp	EinCave01B_EinCave01A	1,1,ein_dun02.gat,216,207
+ein_dun02.gat,195,130,0	warp	EinCave02B_EinCave02A	1,1,ein_dun02.gat,233,109
+
+//--------------------------------------------------------------
+// Geffenia Dungeon Warp Portals - [Tsuyuki]
+//--------------------------------------------------------------
+
+gefenia01.gat,199,268,0	warp	g01a_g02c	1,1,gefenia02.gat,203,31
+gefenia01.gat,236,258,0	warp	g01b_g02d	1,1,gefenia02.gat,249,25
+gefenia01.gat,38,103,0	warp	g01c_g04c	1,1,gefenia04.gat,264,85
+gefenia02.gat,30,232,0	warp	g02a_g03a	1,1,gefenia03.gat,265,235
+gefenia02.gat,18,167,0	warp	g02b_g03b	1,1,gefenia03.gat,266,171
+gefenia02.gat,204,29,0	warp	g02c_g01a	1,1,gefenia01.gat,199,265
+gefenia02.gat,249,20,0	warp	g02d_g01b	1,1,gefenia01.gat,236,255
+gefenia03.gat,268,235,0	warp	g03a_g02a	1,1,gefenia02.gat,34,229
+gefenia03.gat,269,171,0	warp	g03b_g02b	1,1,gefenia02.gat,20,164
+gefenia03.gat,145,27,0	warp	g03c_g04b	1,1,gefenia04.gat,130,270
+gefenia03.gat,58,27,0	warp	g03d_g04a	1,1,gefenia04.gat,39,269
+gefenia04.gat,39,272,0	warp	g04a_g03d	1,1,gefenia03.gat,58,31
+gefenia04.gat,130,274,0	warp	g04b_g03c	1,1,gefenia03.gat,145,31
+gefenia04.gat,286,85,0	warp	g04c_g01c	1,1,gefenia01.gat,41,103
+
+
+//--------------------------------------------------------------
+// Geffen Dungeon Warp Portals - [Tsuyuki]
+//--------------------------------------------------------------
+
+gef_tower.gat,153,28,0	warp	UndergroundC	4,2,gef_dun00.gat,104,99
+gef_dun00.gat,104,103,0	warp	UndergroundC'	3,3,gef_tower.gat,153,31
+gef_dun00.gat,107,169,0	warp	1F-2F	2,1,gef_dun01.gat,115,236
+gef_dun01.gat,115,240,0	warp	2F-1F	2,2,gef_dun00.gat,107,165
+gef_dun01.gat,197,38,0	warp	Geffen Dungeon2-3	2,1,gef_dun02.gat,106,132
+gef_dun02.gat,106,134,0	warp	Geffen Dungeon3-2	2,1,gef_dun01.gat,197,40
+
+
+//--------------------------------------------------------------
+// Glast Heim Dungeon Warp Portals - [Tsuyuki]
+//--------------------------------------------------------------
+
+gef_fild06.gat,18,304,0	warp	gef_fild06->glast_01	1,1,glast_01.gat,376,304
+glast_01.gat,380,304,0	warp	glast_01->gef_fild06	1,1,gef_fild06.gat,22,304
+glast_01.gat,51,108,0	warp	glast_01->gl_step-g1-2-step-1	1,1,gl_step.gat,12,7
+glast_01.gat,200,137,0	warp	glast_01->gl_church-gl1-3-chu-1	1,1,gl_church.gat,156,7
+glast_01.gat,77,193,0	warp	glast_01->gl_knt01-gl1-4-knt1-1	1,1,gl_knt01.gat,150,15
+glast_01.gat,200,297,0	warp	glast_01->gl_cas01-gl1-5-cas1-1	1,1,gl_cas01.gat,199,29
+glast_01.gat,199,322,0	warp	glast_01->gl_cas02-gl1-6-cas2-2	1,1,gl_cas02.gat,104,189
+glast_01.gat,179,360,0	warp	glast_01->gl_in01-gl1-7-in-3	1,1,gl_in01.gat,80,174
+glast_01.gat,162,330,0	warp	glast_01->gl_in01-gl_1-8-in-1	1,1,gl_in01.gat,77,68
+glast_01.gat,220,360,0	warp	glast_01->gl_in01-gl_1-9-in-4	1,1,gl_in01.gat,110,125
+glast_01.gat,237,330,0	warp	glast_01->gl_in01-gl_1-10-in-2	1,1,gl_in01.gat,122,59
+gl_in01.gat,81,68,0	warp	in-1->gl-8	1,1,glast_01.gat,165,330
+gl_in01.gat,118,59,0	warp	in-2->gl-10	1,1,glast_01.gat,234,330
+gl_in01.gat,83,174,0	warp	in-3->gl-7	1,1,glast_01.gat,181,357
+gl_in01.gat,106,125,0	warp	in-4->gl-9	1,1,glast_01.gat,219,357
+gl_cas01.gat,200,18,0	warp	cas1-1->gl-5	2,2,glast_01.gat,200,294
+gl_cas01.gat,149,314,0	warp	cas1-8>pri1-1	1,1,gl_prison.gat,14,70
+gl_cas01.gat,371,301,0	warp	cas1-9>pri1-1	1,1,gl_prison.gat,14,70
+gl_cas01.gat,185,236,0	warp	cas1-10>cas1-5	1,1,gl_cas01.gat,163,191
+gl_cas01.gat,215,236,0	warp	cas1-7>cas1-6	1,1,gl_cas01.gat,238,192
+gl_cas01.gat,167,191,0	warp	cas1-5>pri1-1	1,1,gl_prison.gat,14,70
+gl_cas01.gat,234,192,0	warp	cas1-6>pri1-1	1,1,gl_prison.gat,14,70
+gl_cas01.gat,200,165,0	warp	cas1-2>cas2-1	1,1,gl_cas02.gat,104,25
+gl_cas01.gat,135,40,0	warp	cas1-3>cas1-8	1,1,gl_cas01.gat,144,314
+gl_cas01.gat,372,39,0	warp	cas1-4>cas1-9	1,1,gl_cas01.gat,367,301
+gl_cas02.gat,104,15,0	warp	cas2-1>cas1-2	1,1,gl_cas01.gat,200,160
+gl_cas02.gat,104,193,0	warp	cas2-2>gl-6	1,1,glast_01.gat,199,325
+gl_prison.gat,11,70,0	script	pri1-1>cas1-5~9	45,1,1,{
+OnTouch:
+	set '@pri1,rand(1,4);
+	if ('@pri1 == 1) {
+		warp "gl_cas01.gat",163,193;
+	} else if ('@pri1 == 2) {
+		warp "gl_cas01.gat",238,192;
+	} else if ('@pri1 == 3) {
+		warp "gl_cas01.gat",144,314;
+	} else {
+		warp "gl_cas01.gat",367,301;
+	}
+	end;
+}
+gl_prison.gat,149,183,0	warp	pri1-2>pri2-1	1,1,gl_prison1.gat,150,14
+gl_prison1.gat,150,10,0	warp	pri2-1>pri1-2	1,1,gl_prison.gat,149,178
+gl_prison1.gat,62,187,0	warp	pri2-2>j1-1	1,1,gl_sew01.gat,258,255
+gl_sew01.gat,258,258,0	warp	j1-1>pri2-2	1,1,gl_prison1.gat,61,183
+gl_sew01.gat,19,21,0	warp	j1-2>j2-1	1,1,gl_sew02.gat,108,291
+gl_sew02.gat,109,294,0	warp	j2-1>j1-2	1,1,gl_sew01.gat,19,24
+gl_sew02.gat,30,273,0	warp	j2-2>chy-3	1,1,gl_chyard.gat,15,149
+gl_sew02.gat,16,26,0	warp	j2-3>pri2-2	1,1,gl_prison1.gat,61,183
+gl_sew02.gat,299,294,0	warp	j2-4>j3-1	1,1,gl_sew03.gat,171,283
+gl_sew02.gat,290,156,0	warp	j2-5>step-2	1,1,gl_step.gat,117,124
+gl_sew02.gat,296,18,0	warp	j2-6>knt1-2	1,1,gl_knt01.gat,231,192
+gl_sew03.gat,171,286,0	warp	j3-1>j2-4	1,1,gl_sew02.gat,295,294
+gl_sew03.gat,64,10,0	warp	j3-2>j4-1	1,1,gl_sew04.gat,68,277
+gl_sew04.gat,68,280,0	warp	j4-1>j3-2	1,1,gl_sew03.gat,64,13
+gl_sew04.gat,104,78,0	warp	j4-2>dun1-1	1,1,gl_dun01.gat,133,271
+gl_step.gat,8,7,0	warp	step-1>gl-2	1,1,glast_01.gat,54,108
+gl_step.gat,120,124,0	warp	step-2>j2-5	1,1,gl_sew02.gat,285,158
+gl_dun01.gat,133,277,0	warp	dun1-1>j4-2	1,1,gl_sew04.gat,101,78
+gl_dun01.gat,225,18,0	warp	dun1-2>dun2-1	1,1,gl_dun02.gat,224,274
+gl_dun02.gat,224,277,0	warp	dun2-1>dun1-2	1,1,gl_dun01.gat,225,22
+gl_knt01.gat,150,6,0	warp	knt1-1>gl-4	2,2,glast_01.gat,74,193
+gl_knt01.gat,12,148,0	warp	knt1-4>knt2-2	1,1,gl_knt02.gat,15,140
+gl_knt01.gat,287,144,0	warp	knt1-5>knt2-3	1,1,gl_knt02.gat,283,140
+gl_knt01.gat,150,291,0	warp	knt1-3>knt2-1	1,1,gl_knt02.gat,157,287
+gl_knt01.gat,231,197,0	warp	knt1-2>j2-6	1,1,gl_sew02.gat,296,22
+gl_knt01.gat,128,292,0	warp	knt1-6>knt1-7	1,1,gl_knt01.gat,104,199
+gl_knt01.gat,104,204,0	warp	knt1-7>knt1-6	1,1,gl_knt01.gat,123,292
+gl_knt02.gat,157,292,0	warp	knt2-1>knt1-3	1,1,gl_knt01.gat,150,286
+gl_knt02.gat,10,138,0	warp	knt2-2>knt1-4	1,1,gl_knt01.gat,7,148
+gl_knt02.gat,289,138,0	warp	knt2-3>knt1-5	1,1,gl_knt01.gat,292,144
+gl_church.gat,156,4,0	warp	chu-1>gl-3	1,1,glast_01.gat,200,134
+gl_church.gat,16,299,0	warp	chu-3>chy-1	1,1,gl_chyard.gat,147,284
+gl_church.gat,301,46,0	warp	chu-2>chy-2	1,1,gl_chyard.gat,147,15
+gl_chyard.gat,147,287,0	warp	chy-1>chu-3	1,1,gl_church.gat,16,295
+gl_chyard.gat,147,12,0	warp	chy-2>chu-2	1,1,gl_church.gat,295,46
+gl_chyard.gat,12,149,0	warp	chy-3>j2-2	1,1,gl_sew02.gat,29,270
+
+
+//--------------------------------------------------------------
+// Ice Cave Dungeon Warp Portals - [Tsuyuki]
+//--------------------------------------------------------------
+
+ra_fild01.gat,233,333,0	warp	raF01N_iceD01S	1,1,ice_dun01.gat,157,15
+ice_dun01.gat,157,10,0	warp	iceD01S_raF01N	1,1,ra_fild01.gat,233,327
+ice_dun01.gat,146,161,0	warp	iceD01M_iceD02M	1,1,ice_dun02.gat,151,139
+ice_dun02.gat,151,145,0	warp	iceD02M_iceD01M	1,1,ice_dun01.gat,146,157
+ice_dun02.gat,150,285,0	warp	iceD02N_iceD03S	1,1,ice_dun03.gat,149,24
+ice_dun03.gat,149,19,0	warp	iceD03S_iceD02N	1,1,ice_dun02.gat,150,280
+
+
+//--------------------------------------------------------------
+// Kiel Hyre Dungeon Warp Portals - [Tsuyuki]
+//--------------------------------------------------------------
+
+kh_dun01.gat,3,234,0	warp	KhD01ed_yuFild8in	1,1,yuno_fild08.gat,74,174
+kh_dun01.gat,232,226,0	warp	KhD01M01_KhD01M02	1,1,kh_dun01.gat,13,12
+kh_dun01.gat,232,176,0	warp	KhD01M03_KhD01M04	1,1,kh_dun01.gat,63,12
+kh_dun01.gat,63,7,0	warp	KhD01M04_KhD01M03	1,1,kh_dun01.gat,227,176
+kh_dun02.gat,43,195,0	script	KhD02Door_KhD01Door	45,1,1,{
+OnTouch:
+	set '@khdun2_1,rand(1,2);
+	if ('@khdun2_1 == 1) {
 		warp "kh_dun01.gat",41,206;
 	} else {
 		warp "kh_dun01.gat",32,199;
 	}
-}
-
-
-//--------------------------------------------------------------
-// Kunlun Dungeon Warp Portals
-//--------------------------------------------------------------
-
-gon_dun01.gat,153,45,0	warp	gon20	1,1,gonryun.gat,159,198
-gon_dun01.gat,162,273,0	warp	gon21	1,1,gon_dun02.gat,17,113
-gon_dun02.gat,14,113,0	warp	gon22	1,1,gon_dun01.gat,162,270
-gon_dun02.gat,56,119,0	warp	gon23	1,1,gon_dun02.gat,47,210
-gon_dun02.gat,92,190,0	warp	gon24	1,1,gon_dun02.gat,199,20
-gon_dun02.gat,44,213,0	warp	gon25	1,1,gon_dun02.gat,51,119
-gon_dun02.gat,44,166,0	warp	gon26	1,1,gon_dun02.gat,97,121
-gon_dun02.gat,94,118,0	warp	gon27	1,1,gon_dun02.gat,177,189
-gon_dun02.gat,76,100,0	warp	gon28	1,1,gon_dun02.gat,145,62
-gon_dun02.gat,63,66,0	warp	gon29	1,1,gon_dun02.gat,203,94
-gon_dun02.gat,86,44,0	warp	gon30	1,1,gon_dun02.gat,145,233
-gon_dun02.gat,148,236,0	warp	gon31	1,1,gon_dun02.gat,234,194
-gon_dun02.gat,171,258,0	warp	gon32	1,1,gon_dun02.gat,76,96
-gon_dun02.gat,180,189,0	warp	gon33	1,1,gon_dun02.gat,170,164
-gon_dun02.gat,165,189,0	warp	gon34	1,1,gon_dun02.gat,235,135
-gon_dun02.gat,170,161,0	warp	gon35	1,1,gon_dun02.gat,89,41
-gon_dun02.gat,168,92,0	warp	gon36	1,1,gon_dun02.gat,273,76
-gon_dun02.gat,145,66,0	warp	gon37	1,1,gon_dun02.gat,199,20
-gon_dun02.gat,234,191,0	warp	gon38	1,1,gon_dun02.gat,145,233
-gon_dun02.gat,235,138,0	warp	gon39	1,1,gon_dun02.gat,168,189
-gon_dun02.gat,199,94,0	warp	gon40	1,1,gon_dun02.gat,60,70
-gon_dun02.gat,276,76,0	warp	gon41	1,1,gon_dun02.gat,163,87
-gon_dun02.gat,196,20,0	warp	gon42	1,1,gon_dun02.gat,95,190
-gon_dun02.gat,251,268,0	warp	gon43	1,1,gon_dun03.gat,68,9
-gon_dun03.gat,68,6,0	warp	gon44	1,1,gon_dun02.gat,251,265
-
-
-//--------------------------------------------------------------
-// Louyang Dungeon Warp Portals
-//--------------------------------------------------------------
-
-lou_dun01.gat,222,196,0	warp	louwarp002a	3,3,louyang.gat,41,270
-lou_dun01.gat,38,205,0	warp	louwarp003	3,3,lou_dun02.gat,282,20
-lou_dun02.gat,286,20,0	warp	louwarp003a	3,3,lou_dun01.gat,38,209
-lou_dun02.gat,165,270,0	warp	louwarp004	3,3,lou_dun03.gat,165,38
-lou_dun03.gat,165,34,0	warp	louwarp004a	3,3,lou_dun02.gat,165,266
-
-
-//--------------------------------------------------------------
-// Magma Dungeon Warp Portals
-//--------------------------------------------------------------
-
-mag_dun01.gat,126,66,0	warp	mag01-yunfild	1,1,yuno_fild03.gat,34,139
-mag_dun01.gat,242,241,0	warp	mag01-02	1,1,mag_dun02.gat,47,30
-mag_dun02.gat,47,28,0	warp	mag02-01	1,1,mag_dun01.gat,242,239
-
-
-//--------------------------------------------------------------
-// Odin Shrine Dungeon Warp Portals
-//--------------------------------------------------------------
-
-odin_tem01.gat,378,182,0	warp	odin01	1,1,odin_tem02.gat,28,180
-odin_tem02.gat,21,180,0	warp	odin02	1,1,odin_tem01.gat,373,182
-odin_tem01.gat,383,334,0	warp	odin03	1,1,odin_tem02.gat,27,334
-odin_tem02.gat,21,334,0	warp	odin04	1,1,odin_tem01.gat,379,334
-odin_tem02.gat,153,349,0	warp	odin05	1,1,odin_tem03.gat,120,54
-odin_tem03.gat,121,49,0	warp	odin06	1,1,odin_tem02.gat,154,345
-odin_tem02.gat,261,377,0	warp	odin07	1,1,odin_tem03.gat,247,40
-odin_tem03.gat,247,34,0	warp	odin08	1,1,odin_tem02.gat,263,372
-
-
-//--------------------------------------------------------------
-// Orc Dungeon Warp Portals
-//--------------------------------------------------------------
-
-in_orcs01.gat,108,86,0	warp	orc001	3,2,gef_fild10.gat,223,203
-in_orcs01.gat,124,171,0	warp	orc002	1,3,gef_fild10.gat,138,329
-in_orcs01.gat,162,55,0	warp	orc003	4,1,gef_fild10.gat,214,53
-in_orcs01.gat,29,116,0	warp	orc004	4,1,gef_fild10.gat,137,286
-in_orcs01.gat,30,154,0	warp	orc005	3,2,gef_fild10.gat,65,335
-in_orcs01.gat,30,182,0	warp	orc01	2,1,orcsdun01.gat,32,170
-orcsdun01.gat,32,172,0	warp	orc01-1	3,1,in_orcs01.gat,30,180
-in_orcs01.gat,108,114,0	warp	orc02	2,1,orcsdun02.gat,180,17
-orcsdun02.gat,180,15,0	warp	orc02-1	2,1,in_orcs01.gat,108,112
-orcsdun01.gat,183,8,0	warp	orc03	4,2,orcsdun02.gat,21,185
-orcsdun02.gat,21,188,0	warp	orc03-1	8,2,orcsdun01.gat,183,11
-
-
-//--------------------------------------------------------------
-// Payon Dungeon Warp Portals
-//--------------------------------------------------------------
-
-pay_dun00.gat,184,33,0	warp	payd01	2,7,pay_dun01.gat,19,33
-pay_dun00.gat,21,186,0	warp	pay005	2,2,pay_arche.gat,39,131
-pay_dun01.gat,15,33,0	warp	payd01-1	2,6,pay_dun00.gat,181,33
-pay_dun01.gat,286,25,0	warp	payd02	2,7,pay_dun02.gat,19,63
-pay_dun02.gat,137,128,0	warp	payd03	4,1,pay_dun03.gat,155,159
-pay_dun02.gat,16,63,0	warp	payd02-1	2,7,pay_dun01.gat,283,28
-pay_dun03.gat,155,161,0	warp	payd03-1	2,1,pay_dun02.gat,137,126
-pay_dun03.gat,128,62,4	script	payd04r	45,1,1,{
-	set @r,rand(4);
-	if (@r==0) goto w1;
-	if (@r==1) goto w2;
-	if (@r==2) goto w3;
-	if (@r==3) goto w4;
-	w1:	warp "pay_dun04.gat",200,204; end;
-	w2:	warp "pay_dun04.gat",189,43; end;
-	w3:	warp "pay_dun04.gat",42,39; end;
-	w4:	warp "pay_dun04.gat",34,203; end;
-}
-pay_dun04.gat,191,41,0	warp	payd04-2	1,1,pay_dun03.gat,126,62
-pay_dun04.gat,202,206,0	warp	payd04-3	1,1,pay_dun03.gat,126,62
-pay_dun04.gat,32,205,0	warp	payd04-4	1,1,pay_dun03.gat,126,62
-pay_dun04.gat,40,37,0	warp	payd04-1	1,1,pay_dun03.gat,126,62
-
-
-//--------------------------------------------------------------
-// Pyramids Dungeon Warp Portals
-//--------------------------------------------------------------
-
-moc_pryd01.gat,10,195,0	warp	mocp01	5,2,moc_pryd02.gat,10,192
-moc_pryd01.gat,195,9,0	warp	mocp001	2,5,moc_ruins.gat,60,161
-moc_pryd01.gat,90,109,0	warp	mocp02	1,2,moc_prydb1.gat,100,185
-moc_pryd02.gat,10,195,0	warp	mocp01-1	5,2,moc_pryd01.gat,10,192
-moc_pryd02.gat,100,99,0	warp	mocp03	3,2,moc_pryd03.gat,100,92
-moc_pryd03.gat,100,97,0	warp	mocp03-1	3,2,moc_pryd02.gat,100,92
-moc_pryd03.gat,12,15,0	warp	mocp04	3,2,moc_pryd04.gat,12,18
-moc_pryd03.gat,15,187,0	warp	mocp05	2,3,moc_pryd04.gat,18,187
-moc_pryd03.gat,184,11,0	warp	mocp06	2,3,moc_pryd04.gat,181,11
-moc_pryd03.gat,188,184,0	warp	mocp07	3,2,moc_pryd04.gat,188,181
-moc_pryd04.gat,12,15,0	warp	mocp04-1	3,2,moc_pryd03.gat,12,18
-moc_pryd04.gat,15,187,0	warp	mocp05-1	2,3,moc_pryd03.gat,18,187
-moc_pryd04.gat,184,11,0	warp	mocp06-1	2,3,moc_pryd03.gat,181,11
-moc_pryd04.gat,188,184,0	warp	mocp07-1	3,2,moc_pryd03.gat,188,181
-moc_pryd05.gat,223,9,0	warp	mocp08	2,2,moc_pryd06.gat,192,8
-moc_pryd05.gat,94,98,0	warp	mocp09	2,1,moc_prydb1.gat,100,57
-moc_pryd06.gat,195,8,0	warp	mocp08-1	2,3,moc_pryd05.gat,220,9
-moc_prydb1.gat,100,104,0	warp	mocp10	5,2,moc_prydb1.gat,100,74
-moc_prydb1.gat,100,191,0	warp	moco02-1	2,2,moc_pryd01.gat,90,105
-moc_prydb1.gat,100,55,0	warp	mocp09-1	2,1,moc_pryd05.gat,94,96
-moc_prydb1.gat,100,77,0	warp	mocp10-1	5,2,moc_prydb1.gat,100,107
-moc_prydb1.gat,111,115,0	warp	mocp11	2,6,moc_prydb1.gat,145,115
-moc_prydb1.gat,142,115,0	warp	mocp11-1	2,6,moc_prydb1.gat,108,115
-moc_prydb1.gat,59,115,0	warp	mocp12	2,6,moc_prydb1.gat,91,115
-moc_prydb1.gat,88,115,0	warp	mocp12-1	2,6,moc_prydb1.gat,56,115
-
-
-//--------------------------------------------------------------
-// Sphinx Dungeon Warp Portals
-//--------------------------------------------------------------
-
-moc_fild19.gat,98,99,0	warp	mocf019	1,1,in_sphinx1.gat,288,9
-in_sphinx1.gat,288,6,0	warp	sphx001	5,1,moc_fild19.gat,100,99
-in_sphinx1.gat,80,191,0	warp	sphx01	2,1,in_sphinx2.gat,149,81
-in_sphinx2.gat,149,77,0	warp	sphx01-1	3,2,in_sphinx1.gat,80,189
-in_sphinx2.gat,276,272,0	warp	sphx02	1,3,in_sphinx3.gat,210,54
-in_sphinx3.gat,210,57,0	warp	sphx02-1	4,1,in_sphinx2.gat,274,272
-in_sphinx3.gat,35,227,0	warp	sphx03	2,4,in_sphinx3.gat,62,227
-in_sphinx3.gat,60,227,0	warp	sphx03-1	1,4,in_sphinx3.gat,32,227
-in_sphinx3.gat,70,111,0	warp	sphx04	1,1,in_sphinx3.gat,70,81
-in_sphinx3.gat,70,83,0	warp	sphx04-1	4,1,in_sphinx3.gat,70,113
-in_sphinx3.gat,12,69,0	warp	sphx05	4,1,in_sphinx4.gat,10,222
-in_sphinx4.gat,10,224,0	warp	sphx05-1	2,1,in_sphinx3.gat,12,71
-in_sphinx4.gat,120,113,0	warp	sphx06	4,2,in_sphinx5.gat,100,99
-in_sphinx5.gat,100,96,0	warp	sphx06-1	4,2,in_sphinx4.gat,120,116
-in_sphinx5.gat,11,16,0	warp	sphx07	3,1,in_sphinx5.gat,189,181
-in_sphinx5.gat,11,183,0	warp	sphx07-1	3,1,in_sphinx5.gat,11,18
-in_sphinx5.gat,189,16,0	warp	sphx08-1	3,1,in_sphinx5.gat,11,181
-in_sphinx5.gat,16,188,0	warp	sphx08-2	1,3,in_sphinx5.gat,181,188
-in_sphinx5.gat,16,10,0	warp	sphx08-3	1,3,in_sphinx5.gat,181,10
-in_sphinx5.gat,183,10,0	warp	sphx08-4	1,3,in_sphinx5.gat,18,188
-in_sphinx5.gat,183,188,0	warp	sphx08-5	1,3,in_sphinx5.gat,18,10
-in_sphinx5.gat,189,183,0	warp	sphx08-6	3,1,in_sphinx5.gat,189,18
-
-
-//--------------------------------------------------------------
-// Sunken Ship Dungeon Warp Portals
-//--------------------------------------------------------------
-
-alb2trea.gat,88,111,0	warp	alb002	1,1,treasure01.gat,69,24
-treasure01.gat,112,164,0	warp	tre01	1,4,treasure01.gat,97,164
-treasure01.gat,125,161,0	warp	tre02	1,3,treasure01.gat,144,161
-treasure01.gat,142,161,0	warp	tre02-1	1,3,treasure01.gat,123,161
-treasure01.gat,164,114,0	warp	tre03	3,1,treasure01.gat,164,88
-treasure01.gat,164,91,0	warp	tre03-1	5,1,treasure01.gat,164,116
-treasure01.gat,99,164,0	warp	tre01-1	1,4,treasure01.gat,114,164
-treasure01.gat,75,111,0	warp	tre10	1,3,treasure01.gat,101,111
-treasure01.gat,38,164,0	warp	tre04-1	1,4,treasure01.gat,25,164
-treasure01.gat,41,111,0	warp	tre05	1,3,treasure01.gat,65,111
-treasure01.gat,62,111,0	warp	tre05-1	1,3,treasure01.gat,38,111
-treasure01.gat,27,164,0	warp	tre04	1,4,treasure01.gat,40,164
-treasure01.gat,69,75,0	warp	tre07	2,1,treasure01.gat,69,106
-treasure01.gat,69,125,0	warp	tre08	4,1,treasure01.gat,69,142
-treasure01.gat,69,140,0	warp	tre08-1	4,1,treasure01.gat,69,123
-treasure01.gat,99,111,0	warp	tre10-1	1,1,treasure01.gat,73,111
-treasure01.gat,69,177,0	warp	tre002	3,1,treasure02.gat,102,27
-treasure01.gat,41,37,0	warp	tre06	1,3,treasure01.gat,61,37
-treasure01.gat,58,37,0	warp	tre06-1	1,3,treasure01.gat,39,37
-treasure01.gat,69,102,0	warp	tre07-1	2,1,treasure01.gat,69,77
-treasure01.gat,79,37,0	warp	tre09	1,3,treasure01.gat,98,37
-treasure01.gat,96,37,0	warp	tre09-1	1,3,treasure01.gat,77,37
-treasure01.gat,69,22,0	warp	tre001	4,1,alb2trea.gat,85,107
-treasure02.gat,102,103,0	warp	tre11	5,1,treasure02.gat,102,120
-treasure02.gat,102,118,0	warp	tre11-1	5,1,treasure02.gat,102,101
-treasure02.gat,155,128,0	warp	tre13-1	1,1,treasure02.gat,155,97
-treasure02.gat,155,99,0	warp	tre13	1,1,treasure02.gat,155,130
-treasure02.gat,49,99,0	warp	tre14-1	1,1,treasure02.gat,49,130
-treasure02.gat,102,24,0	warp	tre003	3,1,treasure01.gat,69,179
-treasure02.gat,123,72,0	warp	tre12	1,4,treasure02.gat,140,72
-treasure02.gat,138,72,0	warp	tre12-1	1,4,treasure02.gat,121,72
-treasure02.gat,49,128,0	warp	tre14	1,1,treasure02.gat,49,97
-treasure02.gat,65,72,0	warp	tre15	1,4,treasure02.gat,82,72
-treasure02.gat,80,72,0	warp	tre15-1	1,4,treasure02.gat,63,72
-
-
-//--------------------------------------------------------------
-// Thanatos Tower Dungeon Warp Portals
-//--------------------------------------------------------------
-
-tha_scene01.gat,144,198,0	warp	tha_t01	1,1,tha_t01.gat,149,38
-tha_t01.gat,149,33,0	warp	hu_fild01	1,1,hu_fild01.gat,140,158
-tha_t01.gat,150,150,0	warp	tha_t02	1,1,tha_t02.gat,149,136
-tha_t02.gat,149,125,0	warp	tha_t01	1,1,tha_t01.gat,150,145
-tha_t02.gat,227,163,0	script	ThanaWarp3	45,1,1,{
-OnInit:
-	disablenpc "ThanaWarp3";
 	end;
+}
+
+
+//--------------------------------------------------------------
+// Kunlun Dungeon Warp Portals - [Tsuyuki]
+//--------------------------------------------------------------
+
+gonryun.gat,159,201,0	warp	dun01Gate_dun01	1,1,gon_dun01.gat,153,48
+gon_dun01.gat,153,45,0	warp	FormDun01_ToGonryun	1,1,gonryun.gat,159,198
+gon_dun01.gat,162,273,0	warp	FormDun01_ToDun02	1,1,gon_dun02.gat,17,113
+gon_dun02.gat,14,113,0	warp	FormDun02_ToDun01	1,1,gon_dun01.gat,162,270
+gon_dun02.gat,44,213,0	warp	A1_F	1,1,gon_dun02.gat,51,119
+gon_dun02.gat,92,190,0	warp	A2_L	1,1,gon_dun02.gat,199,20
+gon_dun02.gat,44,166,0	warp	A3_G	1,1,gon_dun02.gat,97,121
+gon_dun02.gat,148,236,0	warp	B1_C	1,1,gon_dun02.gat,234,194
+gon_dun02.gat,171,258,0	warp	B2_H	1,1,gon_dun02.gat,76,96
+gon_dun02.gat,234,191,0	warp	C_B1	1,1,gon_dun02.gat,145,233
+gon_dun02.gat,165,189,0	warp	D1_K1	1,1,gon_dun02.gat,235,135
+gon_dun02.gat,180,189,0	warp	D2_E	1,1,gon_dun02.gat,170,164
+gon_dun02.gat,170,161,0	warp	E_I2	1,1,gon_dun02.gat,89,41
+gon_dun02.gat,56,119,0	warp	F_A1	1,1,gon_dun02.gat,47,210
+gon_dun02.gat,94,118,0	warp	G_D2	1,1,gon_dun02.gat,177,189
+gon_dun02.gat,76,100,0	warp	H_J2	1,1,gon_dun02.gat,145,62
+gon_dun02.gat,63,66,0	warp	I1_K2	1,1,gon_dun02.gat,203,94
+gon_dun02.gat,86,44,0	warp	I2_B1	1,1,gon_dun02.gat,145,233
+gon_dun02.gat,168,92,0	warp	J1_K3	1,1,gon_dun02.gat,273,76
+gon_dun02.gat,145,66,0	warp	J2_L	1,1,gon_dun02.gat,199,20
+gon_dun02.gat,235,138,0	warp	K1_D1	1,1,gon_dun02.gat,168,189
+gon_dun02.gat,199,94,0	warp	K2_I1	1,1,gon_dun02.gat,60,70
+gon_dun02.gat,276,76,0	warp	K3_J1	1,1,gon_dun02.gat,163,87
+gon_dun02.gat,196,20,0	warp	L_A2	1,1,gon_dun02.gat,95,190
+gon_dun02.gat,251,268,0	warp	FormDun02_Todun03	1,1,gon_dun03.gat,68,9
+gon_dun03.gat,68,6,0	warp	FormDun03_ToDun02	1,1,gon_dun02.gat,251,265
+
+
+//--------------------------------------------------------------
+// Louyang Dungeon Warp Portals - [Tsuyuki]
+//--------------------------------------------------------------
+
+louyang.gat,37,271,0	warp	dunGate_Dun01toTown	1,1,lou_dun01.gat,218,195
+lou_dun01.gat,221,195,0	warp	Dun01toTown_dunGate	1,1,louyang.gat,40,273
+lou_dun01.gat,40,201,0	warp	Dun01to02_dun02to01	1,1,lou_dun02.gat,285,18
+lou_dun02.gat,288,18,0	warp	Dun02to01_Dun01to02	1,1,lou_dun01.gat,38,203
+lou_dun02.gat,165,269,0	warp	Dun02to03_dun03to02	1,1,lou_dun03.gat,165,38
+lou_dun03.gat,165,35,0	warp	Dun03to02_Dun02to03	1,1,lou_dun02.gat,165,266
+
+
+//--------------------------------------------------------------
+// Magma Dungeon Warp Portals - [Tsuyuki]
+//--------------------------------------------------------------
+
+yuno_fild03.gat,33,140,0	warp	yuno03d_mag01b	1,1,mag_dun01.gat,125,71
+mag_dun01.gat,125,67,0	warp	mag01b_yuno03c	1,1,yuno_fild03.gat,37,140
+mag_dun01.gat,243,240,0	warp	mag01a_mag02a	1,1,mag_dun02.gat,48,37
+mag_dun02.gat,48,33,0	warp	mag02a_mag01a	1,1,mag_dun01.gat,239,240
+
+
+//--------------------------------------------------------------
+// Odin Shrine Dungeon Warp Portals - [Tsuyuki]
+//--------------------------------------------------------------
+
+odin_tem01.gat,383,334,0	warp	OT01R01_OT02L01	1,1,odin_tem02.gat,27,334
+odin_tem01.gat,377,182,0	warp	OT01R02_OT02L02	1,1,odin_tem02.gat,28,180
+odin_tem02.gat,153,349,0	warp	OT02Up01_OT03Dn01	1,1,odin_tem03.gat,120,54
+odin_tem02.gat,261,377,0	warp	OT02Up02_OT03Dn02	1,1,odin_tem03.gat,247,40
+odin_tem02.gat,21,334,0	warp	OT02L01_OT01R01	1,1,odin_tem01.gat,379,334
+odin_tem02.gat,21,180,0	warp	OT02L02_OT01R02	1,1,odin_tem01.gat,373,182
+odin_tem03.gat,121,49,0	warp	OT03Dn01_OT02Up01	1,1,odin_tem02.gat,154,345
+odin_tem03.gat,247,34,0	warp	OT03Dn02_OT02Up02	1,1,odin_tem02.gat,263,372
+
+
+//--------------------------------------------------------------
+// Orc Dungeon Warp Portals - [Tsuyuki]
+//--------------------------------------------------------------
+
+gef_fild10.gat,63,337,0	warp	g10-in_orcs	1,1,in_orcs01.gat,30,157
+in_orcs01.gat,30,154,0	warp	in_orcs-g10	3,2,gef_fild10.gat,65,335
+gef_fild10.gat,223,205,0	warp	g10-in_orcs	1,1,in_orcs01.gat,108,89
+in_orcs01.gat,108,86,0	warp	in_orcs-g10	3,2,gef_fild10.gat,223,203
+in_orcs01.gat,30,182,0	warp	orcs-dun01	2,1,orcsdun01.gat,32,170
+orcsdun01.gat,32,172,0	warp	dun01-orcs	3,1,in_orcs01.gat,30,180
+in_orcs01.gat,108,114,0	warp	orcs-dun02	2,1,orcsdun02.gat,180,17
+orcsdun02.gat,180,15,0	warp	dun02-orcs	2,1,in_orcs01.gat,108,112
+orcsdun02.gat,21,188,0	warp	dun02-01	8,2,orcsdun01.gat,183,11
+orcsdun01.gat,183,8,0	warp	dun01-02	4,2,orcsdun02.gat,21,185
+gef_fild10.gat,136,331,0	warp	g10-orc_in	1,1,in_orcs01.gat,122,171
+in_orcs01.gat,124,171,0	warp	orc_in-g10	1,3,gef_fild10.gat,138,329
+gef_fild10.gat,138,284,0	warp	g10-orc_in	1,1,in_orcs01.gat,29,114
+in_orcs01.gat,29,116,0	warp	orc_in-g10	4,1,gef_fild10.gat,137,286
+gef_fild10.gat,215,51,0	warp	g10-orc_in	1,1,in_orcs01.gat,162,53
+in_orcs01.gat,162,55,0	warp	orc_in-g10	4,1,gef_fild10.gat,214,53
+
+
+//--------------------------------------------------------------
+// Payon Dungeon Warp Portals - [Tsuyuki]
+//--------------------------------------------------------------
+
+pay_arche.gat,36,131,0	warp	Dungeon Fronti	2,2,pay_dun00.gat,21,183
+pay_dun00.gat,21,186,0	warp	Dungeon Fronto	2,2,pay_arche.gat,39,131
+pay_dun00.gat,184,33,0	warp	d0-d1	2,7,pay_dun01.gat,19,33
+pay_dun01.gat,15,33,0	warp	d1-d0	2,6,pay_dun00.gat,181,33
+pay_dun01.gat,286,25,0	warp	d1-d2	2,7,pay_dun02.gat,19,63
+pay_dun02.gat,16,63,0	warp	d2-d1	2,7,pay_dun01.gat,283,28
+pay_dun02.gat,137,128,0	warp	Payon3-4F	4,1,pay_dun03.gat,155,159
+pay_dun03.gat,155,161,0	warp	Payon4-3F	2,1,pay_dun02.gat,137,126
+pay_dun03.gat,127,62,0	script	Payon4-5F	45,1,2,{
 OnTouch:
-	if (ThanaQuest == 0) goto L_NoWarp;
-	warp "tha_t03.gat",219,159;
-	end;
-L_NoWarp:
-	warp "tha_t02.gat",227,158;
-	end;
-}
-tha_t03.gat,217,165,0	warp	tha_t02	1,1,tha_t02.gat,227,157
-tha_t03.gat,59,140,0	warp	tha_t04	1,1,tha_t04.gat,60,142
-tha_t04.gat,60,137,0	warp	tha_t03	1,1,tha_t03.gat,59,135
-tha_t04.gat,81,36,0	warp	tha_t05	1,1,tha_t05.gat,62,8
-tha_t05.gat,208,97,0	warp	tha_t05	1,1,tha_t05.gat,62,162
-tha_t05.gat,62,157,0	warp	tha_t05_2	1,1,tha_t05.gat,213,97
-tha_t05.gat,185,235,0	warp	tha_t06	1,1,tha_t06.gat,206,11
-tha_t06.gat,119,120,0	script	thana_step	45,1,1,{
-OnTouch:
-	if (Upper == 1) goto L_Enter;
-	mes "^3355FFAn overwhelming force";
-	mes "acts against you, preventing";
-	mes "you from proceeding this way...^000000";
-	close;
-L_Enter:
-	warp "thana_step.gat",69,369;
+	set '@gil,rand(1,4);
+	if ('@gil == 1) {
+		warp "pay_dun04.gat",43,40;
+	} else if ('@gil == 2) {
+		warp "pay_dun04.gat",34,202;
+	} else if ('@gil == 3) {
+		warp "pay_dun04.gat",201,204;
+	} else {
+		warp "pay_dun04.gat",189,43;
+	}
 	end;
 }
-thana_step.gat,173,372,0 warp tha_t07 1,1,tha_t07.gat,30,166
-tha_t07.gat,114,166,0	warp	thana_step	1,1,thana_step.gat,69,287
-thana_step.gat,174,288,0 warp tha_t08 1,1,tha_t08.gat,28,43
-tha_t08.gat,114,43,0	warp	thana_step	1,1,thana_step.gat,30,223
-thana_step.gat,32,166,0 warp tha_t09 1,1,tha_t09.gat,20,96
-tha_t09.gat,92,146,0	warp	thana_step	1,1,thana_step.gat,180,223
-thana_step.gat,182,166,0 warp tha_t10 1,1,tha_t10.gat,155,100
-tha_t10.gat,170,138,0	warp	thana_step	1,1,thana_step.gat,14,73
-thana_step.gat,15,15,0 warp tha_t11 1,1,tha_t11.gat,50,17
-tha_t11.gat,92,36,0	warp	thana_step	1,1,thana_step.gat,180,73
-thana_step.gat,181,15,0 warp tha_t12 1,1,tha_t12.gat,115,16
-tha_t12.gat,130,52,0	script	WarpToBoss	45,1,1,{
-OnInit:
-	disablenpc "WarpToBoss";
-	end;
-OnTouch:
-	if ($Thanaboss == 5)  goto L_Boss;
-	disablenpc "WarpToBoss";
-	end;
-L_Boss:
-	warp "thana_boss.gat",136,116;
-	end;
-}
+pay_dun04.gat,40,37,0	warp	Payon5-4Fa	2,2,pay_dun03.gat,125,62
+pay_dun04.gat,32,204,0	warp	Payon5-4Fb	2,1,pay_dun03.gat,125,62
+pay_dun04.gat,202,206,0	warp	Payon5-4Fc	1,1,pay_dun03.gat,125,62
+pay_dun04.gat,191,41,0	warp	Payon 5-4Fd	1,1,pay_dun03.gat,125,62
 
 
 //--------------------------------------------------------------
-// Thor Volcano Dungeon Warp Portals
+// Prontera Maze Warp Portals - [Tsuyuki]
 //--------------------------------------------------------------
 
-thor_v01.gat,21,223,0    warp    veinswarp0504    1,1,ve_fild03.gat,168,238
-thor_v01.gat,202,34,0    warp    veinswarp4001    1,1,thor_v02.gat,74,205
-thor_v02.gat,72,206,0    warp    veinswarp4002    1,1,thor_v01.gat,199,34
-thor_v02.gat,191,55,0    warp    veinswarp4003    1,1,thor_v03.gat,31,272
-thor_v03.gat,28,272,0    warp    veinswarp4004    1,1,thor_v02.gat,190,57
-thor_v02.gat,143,78,0    warp    veinswarp4005    1,1,thor_camp.gat,284,289
-thor_camp.gat,288,289,0    warp    veinswarp4006    1,1,thor_v02.gat,146,86
+prt_fild01.gat,136,373,0	warp	Entrance	2,2,prt_maze01.gat,176,7
+prt_maze01.gat,176,4,0	warp	Exit	8,2,prt_fild01.gat,136,368
+prt_maze01.gat,176,35,0	warp	A-A'	5,3,prt_maze01.gat,182,88
+prt_maze01.gat,182,84,0	warp	A'-A	5,2,prt_maze01.gat,177,31
+prt_maze01.gat,164,22,0	warp	C-C'	2,5,prt_maze01.gat,112,21
+prt_maze01.gat,115,21,0	warp	C'-C	2,5,prt_maze01.gat,167,22
+prt_maze01.gat,195,15,0	warp	D-D'	2,5,prt_maze01.gat,47,105
+prt_maze01.gat,44,105,0	warp	D'-D	2,5,prt_maze01.gat,192,15
+prt_maze01.gat,155,21,0	warp	H-H'	2,12,prt_maze01.gat,87,13
+prt_maze01.gat,84,10,0	warp	H'-H	2,5,prt_maze01.gat,152,25
+prt_maze01.gat,63,84,0	warp	Q-Q'	6,2,prt_maze01.gat,58,192
+prt_maze01.gat,51,195,0	warp	Q'-Q1	7,2,prt_maze01.gat,63,88
+prt_maze01.gat,63,195,0	warp	Q'-Q2	7,2,prt_maze01.gat,63,88
+prt_maze01.gat,100,35,0	warp	G-G'	5,2,prt_maze01.gat,139,47
+prt_maze01.gat,139,44,0	warp	G'-G	5,2,prt_maze01.gat,100,32
+prt_maze01.gat,75,11,0	warp	B-B'	2,5,prt_maze01.gat,167,93
+prt_maze01.gat,164,93,0	warp	B'-B	2,5,prt_maze01.gat,72,11
+prt_maze01.gat,54,4,0	warp	I-I'	5,2,prt_maze01.gat,105,71
+prt_maze01.gat,105,75,0	warp	I'-I	5,2,prt_maze01.gat,54,8
+prt_maze01.gat,44,23,0	warp	J-J'	2,5,prt_maze01.gat,192,174
+prt_maze01.gat,195,174,0	warp	J'-J	2,5,prt_maze01.gat,47,23
+prt_maze01.gat,17,34,0	warp	O-O'	5,3,prt_maze01.gat,23,128
+prt_maze01.gat,23,124,0	warp	O'-O	5,2,prt_maze01.gat,17,30
+prt_maze01.gat,25,5,0	warp	P-P'	5,3,prt_maze01.gat,65,113
+prt_maze01.gat,65,116,0	warp	P'-P	5,2,prt_maze01.gat,23,9
+prt_maze01.gat,195,55,0	warp	e-e'	2,5,prt_maze01.gat,87,97
+prt_maze01.gat,84,97,0	warp	e'-e	2,5,prt_maze01.gat,192,55
+prt_maze01.gat,176,44,0	warp	f-f'	5,2,prt_maze01.gat,18,152
+prt_maze01.gat,18,155,0	warp	f'-f	5,2,prt_maze01.gat,176,47
+prt_maze01.gat,140,75,0	warp	F-F'	5,2,prt_maze01.gat,96,47
+prt_maze01.gat,96,44,0	warp	F'-F	5,2,prt_maze01.gat,140,72
+prt_maze01.gat,115,56,0	warp	b-b'	2,5,prt_maze01.gat,7,57
+prt_maze01.gat,4,57,0	warp	b'-b	2,5,prt_maze01.gat,112,56
+prt_maze01.gat,84,55,0	warp	E-E'	2,5,prt_maze01.gat,191,93
+prt_maze01.gat,195,93,0	warp	E'-E	2,5,prt_maze01.gat,88,55
+prt_maze01.gat,70,75,0	warp	X1-X'	7,3,prt_maze01.gat,169,140
+prt_maze01.gat,75,66,0	warp	X2-X'	3,10,prt_maze01.gat,169,140
+prt_maze01.gat,164,140,0	warp	X'-X	2,5,prt_maze01.gat,70,68
+prt_maze01.gat,50,44,0	warp	Y-Y'	4,2,prt_maze01.gat,17,111
+prt_maze01.gat,17,115,0	warp	Y'-Y	5,2,prt_maze01.gat,50,48
+prt_maze01.gat,14,75,0	warp	a-a'	5,2,prt_maze01.gat,63,128
+prt_maze01.gat,63,124,0	warp	a'-a	5,2,prt_maze01.gat,14,71
+prt_maze01.gat,142,115,0	warp	M-M'	5,2,prt_maze01.gat,138,128
+prt_maze01.gat,138,124,0	warp	M'-M	5,2,prt_maze01.gat,142,111
+prt_maze01.gat,124,105,0	warp	L-L'	2,5,prt_maze01.gat,111,96
+prt_maze01.gat,115,96,0	warp	L'-L	2,5,prt_maze01.gat,128,105
+prt_maze01.gat,105,115,0	warp	K-K'	5,2,prt_maze01.gat,175,168
+prt_maze01.gat,175,164,0	warp	K'-K	5,2,prt_maze01.gat,105,111
+prt_maze01.gat,75,95,0	warp	R-R'	2,5,prt_maze01.gat,88,173
+prt_maze01.gat,84,173,0	warp	R'-R	2,5,prt_maze01.gat,71,95
+prt_maze01.gat,22,84,0	warp	Z-Z'	5,2,prt_maze01.gat,55,151
+prt_maze01.gat,55,155,0	warp	Z'-Z	5,2,prt_maze01.gat,22,88
+prt_maze01.gat,195,139,0	warp	V-V'	2,5,prt_maze01.gat,129,174
+prt_maze01.gat,124,169,0	warp	V'-V	2,5,prt_maze01.gat,191,139
+prt_maze01.gat,155,133,0	warp	N-N'	2,5,prt_maze01.gat,8,140
+prt_maze01.gat,4,140,0	warp	N'-N	2,5,prt_maze01.gat,151,133
+prt_maze01.gat,115,145,0	warp	g-g'	2,5,prt_maze01.gat,8,186
+prt_maze01.gat,4,186,0	warp	g'-g	2,5,prt_maze01.gat,111,145
+prt_maze01.gat,98,155,0	warp	S-S'	5,2,prt_maze01.gat,102,169
+prt_maze01.gat,102,165,0	warp	S'-S	5,2,prt_maze01.gat,98,151
+prt_maze01.gat,84,145,0	warp	T-T'	2,5,prt_maze01.gat,151,181
+prt_maze01.gat,155,181,0	warp	T'-T	2,5,prt_maze01.gat,88,145
+prt_maze01.gat,19,195,0	warp	Maze1-2	10,2,prt_maze02.gat,94,19
+prt_maze02.gat,84,15,0	warp	Maze21-1	12,2,prt_maze01.gat,22,191
+prt_maze02.gat,103,15,0	warp	Maze22-1	12,2,prt_maze01.gat,22,191
+prt_maze02.gat,80,182,0	warp	Maze21-3	12,2,prt_maze03.gat,23,8
+prt_maze02.gat,108,182,0	warp	Maze22-3	12,2,prt_maze03.gat,23,8
+prt_maze03.gat,25,4,0	warp	Maze3-2	8,3,prt_maze02.gat,95,177
+prt_maze03.gat,18,34,0	warp	A-A'	5,3,prt_maze03.gat,175,168
+prt_maze03.gat,175,164,0	warp	A'-A	5,2,prt_maze03.gat,18,30
+prt_maze03.gat,44,22,0	warp	G-G'	2,5,prt_maze03.gat,151,25
+prt_maze03.gat,155,21,0	warp	G'-G	2,15,prt_maze03.gat,48,22
+prt_maze03.gat,54,4,0	warp	F-F'	5,2,prt_maze03.gat,14,71
+prt_maze03.gat,14,75,0	warp	F'-F	5,2,prt_maze03.gat,54,8
+prt_maze03.gat,75,12,0	warp	H-H'	2,5,prt_maze03.gat,88,13
+prt_maze03.gat,84,10,0	warp	H'-H	2,5,prt_maze03.gat,71,12
+prt_maze03.gat,100,35,0	warp	D-D'	4,2,prt_maze03.gat,63,88
+prt_maze03.gat,63,84,0	warp	D'-D	4,2,prt_maze03.gat,100,31
+prt_maze03.gat,115,21,0	warp	I-I'	2,4,prt_maze03.gat,128,105
+prt_maze03.gat,124,105,0	warp	I'-I	2,4,prt_maze03.gat,111,21
+prt_maze03.gat,176,35,0	warp	X-X'	5,2,prt_maze03.gat,137,127
+prt_maze03.gat,137,124,0	warp	X'-X	10,2,prt_maze03.gat,177,32
+prt_maze03.gat,195,16,0	warp	U-U'	2,4,prt_maze03.gat,168,139
+prt_maze03.gat,164,139,0	warp	U'-U	2,4,prt_maze03.gat,191,16
+prt_maze03.gat,4,57,0	warp	E-E'	2,4,prt_maze03.gat,71,95
+prt_maze03.gat,75,95,0	warp	E'-E	2,4,prt_maze03.gat,8,57
+prt_maze03.gat,49,44,0	warp	R-R'	10,2,prt_maze03.gat,17,112
+prt_maze03.gat,17,115,0	warp	R'-R	8,2,prt_maze03.gat,49,47
+prt_maze03.gat,71,75,0	warp	Q1-Q'	6,2,prt_maze03.gat,127,173
+prt_maze03.gat,75,64,0	warp	Q2-Q'	2,10,prt_maze03.gat,127,173
+prt_maze03.gat,124,168,0	warp	Q'-Q	2,8,prt_maze03.gat,69,69
+prt_maze03.gat,84,56,0	warp	O-O'	2,3,prt_maze03.gat,151,181
+prt_maze03.gat,155,181,0	warp	O'-O	2,3,prt_maze03.gat,88,56
+prt_maze03.gat,105,75,0	warp	P-P'	6,2,prt_maze03.gat,140,47
+prt_maze03.gat,140,44,0	warp	P'-P	6,2,prt_maze03.gat,105,72
+prt_maze03.gat,97,44,0	warp	N-N'	3,2,prt_maze03.gat,140,71
+prt_maze03.gat,140,75,0	warp	N'-N	3,2,prt_maze03.gat,97,48
+prt_maze03.gat,115,56,0	warp	M-M'	2,3,prt_maze03.gat,88,145
+prt_maze03.gat,84,145,0	warp	M'-M	2,3,prt_maze03.gat,111,56
+prt_maze03.gat,178,75,0	warp	g-g'	3,2,prt_maze03.gat,182,88
+prt_maze03.gat,182,84,0	warp	g'-g	3,2,prt_maze03.gat,178,71
+prt_maze03.gat,195,54,0	warp	T-T'	2,3,prt_maze03.gat,88,96
+prt_maze03.gat,84,96,0	warp	T'-T	2,3,prt_maze03.gat,191,54
+prt_maze03.gat,176,44,0	warp	z-z'	7,2,prt_maze03.gat,55,151
+prt_maze03.gat,55,155,0	warp	z'-z	3,2,prt_maze03.gat,176,48
+prt_maze03.gat,22,84,0	warp	S-S'	6,2,prt_maze03.gat,104,111
+prt_maze03.gat,104,115,0	warp	S'-S	4,2,prt_maze03.gat,22,88
+prt_maze03.gat,44,105,0	warp	B-B'	2,4,prt_maze03.gat,191,174
+prt_maze03.gat,195,174,0	warp	B'-B	2,5,prt_maze03.gat,48,105
+prt_maze03.gat,143,115,0	warp	J-J'	3,2,prt_maze03.gat,102,168
+prt_maze03.gat,102,164,0	warp	J'-J	3,2,prt_maze03.gat,143,111
+prt_maze03.gat,4,140,0	warp	Y-Y'	2,3,prt_maze03.gat,60,192
+prt_maze03.gat,53,195,0	warp	Y'1-Y	10,2,prt_maze03.gat,7,140
+prt_maze03.gat,63,195,0	warp	Y'2-Y	10,2,prt_maze03.gat,7,140
+prt_maze03.gat,18,155,0	warp	Z-Z'	4,2,prt_maze03.gat,63,128
+prt_maze03.gat,63,124,0	warp	Z'-Z	4,2,prt_maze03.gat,18,151
+prt_maze03.gat,23,124,0	warp	L-L'	5,2,prt_maze03.gat,98,151
+prt_maze03.gat,98,155,0	warp	L'-L	3,2,prt_maze03.gat,23,128
+prt_maze03.gat,115,145,0	warp	K-K'	2,3,prt_maze03.gat,88,173
+prt_maze03.gat,84,173,0	warp	K'-K	2,3,prt_maze03.gat,111,145
+prt_maze03.gat,155,133,0	warp	W-W'	2,3,prt_maze03.gat,8,186
+prt_maze03.gat,4,186,0	warp	W'-W	2,4,prt_maze03.gat,151,133
+prt_maze03.gat,115,96,0	warp	V-V''	2,7,prt_maze03.gat,167,22
+prt_maze03.gat,163,22,0	warp	V''-V	2,8,prt_maze03.gat,111,95
+prt_maze03.gat,195,139,0	warp	V'-V''	2,13,prt_maze03.gat,167,22
+prt_maze03.gat,65,115,0	warp	C-C'	4,2,prt_maze03.gat,22,191
+prt_maze03.gat,22,195,0	warp	C'-C	4,2,prt_maze03.gat,65,111
+
+
+//--------------------------------------------------------------
+// Pyramids Dungeon Warp Portals - [Tsuyuki]
+//--------------------------------------------------------------
+
+moc_fild19.gat,71,170,0	warp	m19a-ruins	8,2,moc_ruins.gat,71,19
+moc_ruins.gat,71,16,0	warp	ruins-m19a	8,2,moc_fild19.gat,71,167
+morocc.gat,25,294,0	warp	moc-ruin	3,3,moc_ruins.gat,156,42
+moc_ruins.gat,159,37,0	warp	ruin-moc	3,3,morocc.gat,30,289
+moc_ruins.gat,54,161,0	warp	ruin-01	2,3,moc_pryd01.gat,192,9
+moc_pryd01.gat,195,9,0	warp	01-ruin	2,5,moc_ruins.gat,60,161
+moc_pryd01.gat,10,195,0	warp	01-02	5,2,moc_pryd02.gat,10,192
+moc_pryd02.gat,10,195,0	warp	02d01	5,2,moc_pryd01.gat,10,192
+moc_pryd02.gat,100,99,0	warp	02-03	3,2,moc_pryd03.gat,100,92
+moc_pryd03.gat,100,97,0	warp	03-02	3,2,moc_pryd02.gat,100,92
+moc_pryd03.gat,15,187,0	warp	03-04nw	2,3,moc_pryd04.gat,18,187
+moc_pryd04.gat,15,187,0	warp	04nw-03	2,3,moc_pryd03.gat,18,187
+moc_pryd03.gat,12,15,0	warp	03-04sw	3,2,moc_pryd04.gat,12,18
+moc_pryd04.gat,12,15,0	warp	04sw-03	3,2,moc_pryd03.gat,12,18
+moc_pryd03.gat,184,11,0	warp	03-04se	2,3,moc_pryd04.gat,181,11
+moc_pryd04.gat,184,11,0	warp	04se-03	2,3,moc_pryd03.gat,181,11
+moc_pryd03.gat,188,184,0	warp	03-04ne	3,2,moc_pryd04.gat,188,181
+moc_pryd04.gat,188,184,0	warp	04se-03	3,2,moc_pryd03.gat,188,181
+moc_pryd01.gat,90,109,0	warp	pd01-Guild	1,2,moc_prydb1.gat,100,185
+moc_prydb1.gat,100,191,0	warp	Guild-pd01	2,2,moc_pryd01.gat,90,105
+moc_prydb1.gat,87,115,0	warp	A-A'	2,6,moc_prydb1.gat,56,115
+moc_prydb1.gat,59,115,0	warp	A'-A	2,6,moc_prydb1.gat,90,115
+moc_prydb1.gat,111,115,0	warp	B-B'	2,6,moc_prydb1.gat,145,115
+moc_prydb1.gat,142,115,0	warp	B'-B	2,6,moc_prydb1.gat,108,115
+moc_prydb1.gat,100,104,0	warp	C-C'	5,2,moc_prydb1.gat,100,74
+moc_prydb1.gat,100,77,0	warp	C'-C	5,2,moc_prydb1.gat,100,107
+moc_prydb1.gat,100,55,0	warp	prydb1-05	2,1,moc_pryd05.gat,94,96
+moc_pryd05.gat,94,98,0	warp	pryd05-b1	2,1,moc_prydb1.gat,100,57
+moc_pryd05.gat,223,9,0	warp	Pyramids5-6F	2,2,moc_pryd06.gat,192,8
+moc_pryd06.gat,195,8,0	warp	Pyramids6-5F	2,3,moc_pryd05.gat,220,9
+
+
+//--------------------------------------------------------------
+// Sphinx Dungeon Warp Portals - [Tsuyuki]
+//--------------------------------------------------------------
+
+moc_fild19.gat,98,99,0	warp	m19-sphinx1	1,1,in_sphinx1.gat,288,9
+in_sphinx1.gat,288,6,0	warp	sphinx1-m19	5,1,moc_fild19.gat,100,99
+in_sphinx1.gat,80,191,0	warp	sph1-sph2	2,1,in_sphinx2.gat,149,81
+in_sphinx2.gat,149,77,0	warp	sph2-sph1	3,2,in_sphinx1.gat,80,189
+in_sphinx2.gat,276,272,0	warp	sph2-3	1,3,in_sphinx3.gat,210,54
+in_sphinx3.gat,210,57,0	warp	sph3-2	4,1,in_sphinx2.gat,274,272
+in_sphinx3.gat,70,83,0	warp	sph3a-b	4,1,in_sphinx3.gat,70,113
+in_sphinx3.gat,70,111,0	warp	sph3b-a	1,1,in_sphinx3.gat,70,81
+in_sphinx3.gat,60,227,0	warp	sph3c-d	1,4,in_sphinx3.gat,32,227
+in_sphinx3.gat,35,227,0	warp	sph3d-c	2,4,in_sphinx3.gat,62,227
+in_sphinx3.gat,12,69,0	warp	sph3-sph4	4,1,in_sphinx4.gat,10,222
+in_sphinx4.gat,10,224,0	warp	sph4-3	2,1,in_sphinx3.gat,12,71
+in_sphinx4.gat,120,113,0	warp	sph4-5	4,2,in_sphinx5.gat,100,99
+in_sphinx5.gat,100,96,0	warp	sph5-4	4,2,in_sphinx4.gat,120,116
+in_sphinx5.gat,11,183,0	warp	sph5	3,1,in_sphinx5.gat,11,18
+in_sphinx5.gat,11,16,0	warp	sph5	3,1,in_sphinx5.gat,189,181
+in_sphinx5.gat,189,183,0	warp	sph5	3,1,in_sphinx5.gat,189,18
+in_sphinx5.gat,189,16,0	warp	sph5	3,1,in_sphinx5.gat,11,181
+in_sphinx5.gat,16,188,0	warp	sph5	1,3,in_sphinx5.gat,181,188
+in_sphinx5.gat,183,188,0	warp	sph5	1,3,in_sphinx5.gat,18,10
+in_sphinx5.gat,16,10,0	warp	sph5	1,3,in_sphinx5.gat,181,10
+in_sphinx5.gat,183,10,0	warp	sph5	1,3,in_sphinx5.gat,18,188
+
+
+//--------------------------------------------------------------
+// Sunken Ship Dungeon Warp Portals - [Tsuyuki]
+//--------------------------------------------------------------
+
+alb2trea.gat,88,111,0	warp	Treasure Ship-enter_i	1,1,treasure01.gat,69,24
+treasure01.gat,69,22,0	warp	Treasure Ship-enter_o	4,1,alb2trea.gat,85,107
+treasure01.gat,58,37,0	warp	A-A'	1,3,treasure01.gat,39,37
+treasure01.gat,41,37,0	warp	A'-A	1,3,treasure01.gat,61,37
+treasure01.gat,79,37,0	warp	B-B'	1,3,treasure01.gat,98,37
+treasure01.gat,96,37,0	warp	B'-B	1,3,treasure01.gat,77,37
+treasure01.gat,69,75,0	warp	C-C'	2,1,treasure01.gat,69,106
+treasure01.gat,69,102,0	warp	C'-C	2,1,treasure01.gat,69,77
+treasure01.gat,61,111,0	warp	D-D'	1,3,treasure01.gat,39,111
+treasure01.gat,41,111,0	warp	D'-D	1,3,treasure01.gat,63,111
+treasure01.gat,76,111,0	warp	E-E'	1,3,treasure01.gat,100,111
+treasure01.gat,98,111,0	warp	E'-E	1,3,treasure01.gat,74,111
+treasure01.gat,69,125,0	warp	F-F'	4,1,treasure01.gat,69,142
+treasure01.gat,69,140,0	warp	F'-F	4,1,treasure01.gat,69,123
+treasure01.gat,38,164,0	warp	G-G'	1,4,treasure01.gat,25,164
+treasure01.gat,27,164,0	warp	G'-G	1,4,treasure01.gat,40,164
+treasure01.gat,69,177,0	warp	H-H'	3,1,treasure02.gat,102,27
+treasure02.gat,102,24,0	warp	H'-H	3,1,treasure01.gat,69,179
+treasure01.gat,99,164,0	warp	I-I'	1,4,treasure01.gat,114,164
+treasure01.gat,112,164,0	warp	I'-I	1,4,treasure01.gat,97,164
+treasure01.gat,125,161,0	warp	J-J'	1,3,treasure01.gat,144,161
+treasure01.gat,142,161,0	warp	J'-J	1,3,treasure01.gat,123,161
+treasure01.gat,164,114,0	warp	K-K'	3,1,treasure01.gat,164,88
+treasure01.gat,164,91,0	warp	K'-K	5,1,treasure01.gat,164,116
+treasure02.gat,80,72,0	warp	A-A'	1,4,treasure02.gat,63,72
+treasure02.gat,65,72,0	warp	A'-A	1,4,treasure02.gat,82,72
+treasure02.gat,49,99,0	warp	AA-AA'	1,1,treasure02.gat,49,130
+treasure02.gat,49,128,0	warp	AA'-AA	1,1,treasure02.gat,49,97
+treasure02.gat,123,72,0	warp	B-B'	1,4,treasure02.gat,140,72
+treasure02.gat,138,72,0	warp	B'-B	1,4,treasure02.gat,121,72
+treasure02.gat,155,99,0	warp	BB-BB'	1,1,treasure02.gat,155,130
+treasure02.gat,155,128,0	warp	BB'-BB	1,1,treasure02.gat,155,97
+treasure02.gat,102,103,0	warp	C-C'	5,1,treasure02.gat,102,120
+treasure02.gat,102,118,0	warp	C'-C	5,1,treasure02.gat,102,101
+
+
+//--------------------------------------------------------------
+// Thanatos Tower Dungeon Warp Portals - [Tsuyuki]
+//--------------------------------------------------------------
+
+tha_scene01.gat,144,198,0	warp	TTSc_TT101	1,1,tha_t01.gat,149,38
+tha_t01.gat,149,33,0	warp	TT101_HuF01M	1,1,hu_fild01.gat,140,158
+tha_t01.gat,150,150,0	warp	TT102_TT201	1,1,tha_t02.gat,149,130
+tha_t02.gat,149,125,0	warp	TT201_TT102	1,1,tha_t01.gat,150,145
+tha_t03.gat,217,165,0	warp	TT301_TT202	1,1,tha_t02.gat,227,157
+tha_t03.gat,59,140,0	warp	TT302_TT401	1,1,tha_t04.gat,60,142
+tha_t04.gat,60,137,0	warp	TT401_TT302	1,1,tha_t03.gat,59,135
+tha_t05.gat,62,157,0	warp	TT502_TT503	1,1,tha_t05.gat,213,97
+tha_t05.gat,208,97,0	warp	TT503_TT502	1,1,tha_t05.gat,62,162
+tha_t05.gat,185,235,0	warp	TT504_TT601	1,1,tha_t06.gat,206,11
+thana_step.gat,173,372,0	warp	TTS10_TT7in	1,1,tha_t07.gat,30,166
+tha_t07.gat,114,166,0	warp	TT7out_TTS11	1,1,thana_step.gat,69,287
+thana_step.gat,174,288,0	warp	TTS12_TT8in	1,1,tha_t08.gat,28,43
+tha_t08.gat,114,43,0	warp	TT8out_TTS01	1,1,thana_step.gat,30,223
+thana_step.gat,32,166,0	warp	TTS02_TT9in	1,1,tha_t09.gat,20,96
+tha_t09.gat,92,146,0	warp	TT9out_TTS03	1,1,thana_step.gat,180,223
+thana_step.gat,182,166,0	warp	TTS04_TT10in	1,1,tha_t10.gat,155,100
+tha_t10.gat,170,138,0	warp	TT10out_TTS05	1,1,thana_step.gat,14,73
+thana_step.gat,15,15,0	warp	TTS06_TT11in	1,1,tha_t11.gat,50,17
+tha_t11.gat,92,36,0	warp	TT11out_TTS07	1,1,thana_step.gat,180,73
+thana_step.gat,181,15,0	warp	TTS08_TT12in	1,1,tha_t12.gat,115,16
 
 
 //--------------------------------------------------------------
@@ -996,36 +980,36 @@ xmas_dun02.gat,129,130,0	warp	xmas_26	1,1,xmas_dun01.gat,132,130
 
 
 //--------------------------------------------------------------
-// Turtle Island Dungeon Warp Portals
+// Turtle Island Dungeon Warp Portals - [Tsuyuki]
 //--------------------------------------------------------------
 
-tur_dun01.gat,154,241,0	warp	ttl01	1,1,tur_dun02.gat,148,264
-tur_dun02.gat,148,268,0	warp	ttl01-1	1,1,tur_dun01.gat,154,237
-tur_dun02.gat,167,19,0	warp	ttl02	1,1,tur_dun03.gat,132,189
-tur_dun03.gat,132,193,0	warp	ttl02-1	1,1,tur_dun02.gat,167,23
-tur_dun03.gat,217,71,0	warp	ttl03	1,1,tur_dun04.gat,100,192
-tur_dun04.gat,100,196,0	warp	ttl03-1	1,1,tur_dun03.gat,215,75
-tur_dun05.gat,89,69,0	warp	ttl05	1,1,tur_dun02.gat,148,264
-tur_dun05.gat,9,45,0	warp	ttl06	1,1,tur_dun01.gat,154,237
+tur_dun01.gat,154,241,0	warp	tur_dun01_tur_dun02	1,1,tur_dun02.gat,148,264
+tur_dun02.gat,148,268,0	warp	tur_dun02_tur_dun01	1,1,tur_dun01.gat,154,237
+tur_dun02.gat,167,19,0	warp	tur_dun02_tur_dun03	1,1,tur_dun03.gat,132,189
+tur_dun03.gat,132,193,0	warp	tur_dun03_tur_dun02	1,1,tur_dun02.gat,167,23
+tur_dun03.gat,217,71,0	warp	tur_dun03_tur_dun04	1,1,tur_dun04.gat,100,192
+tur_dun04.gat,100,196,0	warp	tur_dun04_tur_dun03	1,1,tur_dun03.gat,215,75
+tur_dun05.gat,9,45,0	warp	tur_dun05_tur_dun01	1,1,tur_dun01.gat,154,237
+tur_dun05.gat,89,69,0	warp	tur_dun05_tur_dun02	1,1,tur_dun02.gat,148,264
 
 
 //--------------------------------------------------------------
-// Umbala Dungeon Warp Portals
+// Umbala Dungeon Warp Portals - [Tsuyuki]
 //--------------------------------------------------------------
 
-umbala.gat,106,286,0	warp	umba0011	1,1,um_dun01.gat,42,31
-um_dun01.gat,150,198,0	warp	umba0013	1,1,um_dun02.gat,48,30
-um_dun01.gat,42,26,0	warp	umba0012	1,1,umbala.gat,111,283
-um_dun02.gat,103,208,0	warp	umba0020	1,1,um_dun02.gat,116,208
-um_dun02.gat,113,208,0	warp	umba0019	1,1,um_dun02.gat,100,208
-um_dun02.gat,169,38,0	warp	umba0025	1,1,um_dun02.gat,180,38
-um_dun02.gat,177,38,0	warp	umba0026	1,1,um_dun02.gat,166,38
-um_dun02.gat,216,77,0	warp	umba0018	1,1,um_dun02.gat,217,88
-um_dun02.gat,216,84,0	warp	umba0017	1,1,um_dun02.gat,214,74
-um_dun02.gat,222,259,0	warp	umba0015	1,1,um_dun02.gat,234,255
-um_dun02.gat,231,255,0	warp	umba0016	1,1,um_dun02.gat,219,260
-um_dun02.gat,25,244,0	warp	umba0022	1,1,um_dun02.gat,35,251
-um_dun02.gat,33,249,0	warp	umba0021	1,1,um_dun02.gat,23,242
-um_dun02.gat,51,26,0	warp	umba0022	1,1,um_dun01.gat,153,201
-um_dun02.gat,60,88,0	warp	umba0023	1,1,um_dun02.gat,66,77
-um_dun02.gat,63,80,0	warp	umba0024	1,1,um_dun02.gat,59,92
+umbala.gat,106,285,0	warp	dunGate_d01b	1,1,um_dun01.gat,42,30
+um_dun01.gat,42,27,0	warp	d01b_dungate	1,1,umbala.gat,109,284
+um_dun01.gat,149,198,0	warp	d01a_d02a	1,1,um_dun02.gat,52,22
+um_dun02.gat,55,19,0	warp	d02a_d01a	1,1,um_dun01.gat,152,198
+um_dun02.gat,60,89,0	warp	d02b_d02k	1,1,um_dun02.gat,215,74
+um_dun02.gat,64,79,0	warp	d02c_d02h	1,1,um_dun02.gat,219,261
+um_dun02.gat,26,244,0	warp	d02d_d02i	1,1,um_dun02.gat,233,253
+um_dun02.gat,103,208,0	warp	d02e_d02l	1,1,um_dun02.gat,180,38
+um_dun02.gat,32,249,0	warp	d02f_d02g	1,1,um_dun02.gat,117,208
+um_dun02.gat,113,208,0	warp	d02g_d02f	1,1,um_dun02.gat,35,252
+um_dun02.gat,222,259,0	warp	d02h_d02c	1,1,um_dun02.gat,67,77
+um_dun02.gat,231,255,0	warp	d02i_d02d	1,1,um_dun02.gat,25,241
+um_dun02.gat,215,85,0	warp	d02j_d02m	1,1,um_dun02.gat,166,38
+um_dun02.gat,215,77,0	warp	d02k_d02b	1,1,um_dun02.gat,60,92
+um_dun02.gat,177,38,0	warp	d02l_d02e	1,1,um_dun02.gat,100,208
+um_dun02.gat,169,38,0	warp	d02m_d02j	1,1,um_dun02.gat,215,88
