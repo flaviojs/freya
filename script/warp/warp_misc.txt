@@ -36,7 +36,7 @@ lhz_airport.gat,142,13,0	warp	airwarp12	1,1,lighthalzen.gat,262,75
 
 
 //--------------------------------------------------------------
-// Bingo System Warps - [Tsuyuki]
+// Bingo System Warp Portals - [Tsuyuki]
 //--------------------------------------------------------------
 
 que_bingo.gat,53,34,0	script	go1#bingo	45,1,1,{
@@ -73,7 +73,7 @@ que_god01.gat,50,55,0	warp	god_sl_w4-1	1,1,que_god01.gat,47,83
 // Izlude Battle Arena Warp Portals - [Tsuyuki]
 //--------------------------------------------------------------
 
-izlude.gat,128,226,0	warp	welcome_arena	1,1,arena_room.gat,100,30
+/*izlude.gat,128,226,0	warp	welcome_arena	1,1,arena_room.gat,100,30
 arena_room.gat,99,24,0	warp	bye_arena	2,2,izlude.gat,128,220
 arena_room.gat,84,103,0	warp	arn_room_11_1	1,1,arena_room.gat,63,130
 arena_room.gat,63,126,0	warp	arn_room_11_2	1,1,arena_room.gat,87,100
@@ -96,7 +96,7 @@ OnTouch:
 	}
 	end;
 }
-arena_room.gat,135,126,0	warp	byeaco#arena	1,1,arena_room.gat,111,99
+arena_room.gat,135,126,0	warp	byeaco#arena	1,1,arena_room.gat,111,99*/
 
 
 //--------------------------------------------------------------
