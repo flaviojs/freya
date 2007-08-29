@@ -44,7 +44,6 @@
 - quest/quest_god_seal.txt		<- Optional? [*]
 - quest/quest_job_tutorial.txt		<- Optional? [*]
 - quest/quest_thanatos.txt		<- Optional? [*]
-- town/town_comodo.txt			<- Optional? - Only Comodo Gambling is euRO [*]
 - town/town_hugel.txt			<- Optional? - Only Rebellion Quest is euRO - No access to an iRO Aegis version [*]
 - town/town_kunlun.txt			<- Optional? - [*]
 

@@ -14,6 +14,8 @@
 Date	Added
 
 2007/08/28
+	* Updated: The Comodo Gambling System with iRO dialogue, reconverted from Aegis [Tsuyuki]
+	 - Thanks to Ryan for converting all the item enums to IDs for me
 	* Updated: The Bard Quest with iRO dialogue, reconverted from Aegis [Tsuyuki]
 	* Updated: The Fortune Telling System with iRO dialogue, reconverted from Aegis [Tsuyuki]
 	* Updated: The Kiel Hyre Quest to official, converted from Aegis [Tsuyuki]
