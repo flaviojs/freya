@@ -6951,7 +6951,7 @@ OnTimer120000:
 
 }
 
-rachel.gat,163,152,0	script	imir3#rachel	139,3,3,{
+rachel.gat,163,152,0	script	imir4#rachel	139,3,3,{
 
 OnTouch:
 	if (ra_tem_q == 22) {
