@@ -7,7 +7,7 @@
 //              /_/  |_|\____|_|  \___/|_|  \__,_|              
 //                 http://aurora.deltaanime.net                 
 //--------------------------------------------------------------
-// Script Title: Future Monster Spawns	Author: Tsuyuki/jAthena
+// Script Title: Future Monster Spawns	Author: Various People
 //--------------------------------------------------------------
 // Revision History: v1.0
 //--------------------------------------------------------------
@@ -18,36 +18,42 @@
 
 
 //--------------------------------------------------------------
-// Abbey Dungeon Monster Spawns - [Tsuyuki]
+// Abbey Dungeon Monster Spawns - [Playtester]
 //--------------------------------------------------------------
 
+abbey01.gat,0,0,0,0	monster	Banshee	1867,30,0,0,0
+abbey01.gat,0,0,0,0	monster	Ghoul	1036,20,0,0,0
 abbey01.gat,0,0,0,0	monster	Zombie Slaughter	1864,20,0,0,0
-abbey01.gat,0,0,0,0	monster	Ragged Zombie	1865,40,0,0,0
-abbey01.gat,0,0,0,0	monster	Banshee	1867,20,0,0,0
+abbey01.gat,0,0,0,0	monster	Ragged Zombie	1865,20,0,0,0
+abbey01.gat,0,0,0,0	monster	Hell Poodle	1866,20,0,0,0
+abbey01.gat,0,0,0,0	monster	Flame Skull	1869,20,0,0,0
 
-abbey02.gat,0,0,0,0	monster	Zombie Slaughter	1864,30,0,0,0
-abbey02.gat,0,0,0,0	monster	Ragged Zombie	1865,50,0,0,0
-abbey02.gat,0,0,0,0	monster	Banshee	1867,30,0,0,0
+abbey02.gat,0,0,0,0	monster	Zombie Slaughter	1864,60,0,0,0
+abbey02.gat,0,0,0,0	monster	Ragged Zombie	1865,30,0,0,0
+abbey02.gat,0,0,0,0	monster	Flame Skull	1869,20,0,0,0
 abbey02.gat,0,0,0,0	monster	Necromancer	1870,10,0,0,0
 abbey02.gat,0,0,0,0	monster	Falling Bishop	1871,1,7200000,3600000,1
 
-abbey03.gat,0,0,0,0	monster	Zombie Slaughter	1864,30,0,0,0
-abbey03.gat,0,0,0,0	monster	Banshee	1867,30,0,0,0
-abbey03.gat,0,0,0,0	monster	Necromancer	1870,15,0,0,0
-abbey03.gat,0,0,0,0	monster	Beelzebub	1873,1,39600000,19800000,1
+abbey03.gat,0,0,0,0	monster	Necromancer	1870,30,0,0,0
+abbey03.gat,0,0,0,0	monster	Banshee	1867,20,0,0,0
+abbey03.gat,0,0,0,0	monster	Flame Skull	1869,20,0,0,0
+abbey03.gat,0,0,0,0	monster	Beelzebub	1873,1,43200000,19800000,1
 
 
 //--------------------------------------------------------------
-// Nameless Island Nightmare Monster Spawns - [Tsuyuki]
+// Nameless Island Nightmare Monster Spawns - [Playtester]
 //--------------------------------------------------------------
 
-nameless_n.gat,0,0,0,0	monster	Ragged Zombie	1865,25,0,0,0
-nameless_n.gat,0,0,0,0	monster	Hell Poodle	1866,25,0,0,0
-nameless_n.gat,0,0,0,0	monster	Flame Skull	1869,25,0,0,0
+nameless_n.gat,0,0,0,0	monster	Ragged Zombie	1865,30,0,0,0
+nameless_n.gat,0,0,0,0	monster	Hell Poodle	1866,30,0,0,0
+nameless_n.gat,0,0,0,0	monster	Ghoul	1036,20,0,0,0
+nameless_n.gat,0,0,0,0	monster	Zombie Slaughter	1864,20,0,0,0
+nameless_n.gat,0,0,0,0	monster	Flame Skull	1869,20,0,0,0
+nameless_n.gat,0,0,0,0	monster	Banshee	1867,10,0,0,0
 
 
 //--------------------------------------------------------------
-// Thor Volcano Dungeon Monster Spawns - [jAthena]
+// Thor Volcano Dungeon Monster Spawns - [Playtester]
 //--------------------------------------------------------------
 
 thor_v01.gat,0,0,0,0	monster	Kasa	1833,30,0,0,0
@@ -93,46 +99,54 @@ veins.gat,0,0,0,0	monster	Wild Rose	1261,1,7200000,3600000,0
 
 
 //--------------------------------------------------------------
-// Veins Field Monster Spawns - [jAthena]
+// Veins Field Monster Spawns - [Playtester]
 //--------------------------------------------------------------
 
-ve_fild01.gat,0,0,0,0	monster	Sidewinder	1037,1,0,0,0
-ve_fild01.gat,0,0,0,0	monster	Muka	1055,40,0,0,0
-ve_fild01.gat,0,0,0,0	monster	Red Plant	1078,10,180000,90000,1
-ve_fild01.gat,0,0,0,0	monster	Blue Plant	1079,3,1800000,900000,1
-ve_fild01.gat,0,0,0,0	monster	Yellow Plant	1081,10,180000,90000,1
-ve_fild01.gat,0,0,0,0	monster	Shining Plant	1083,1,1800000,900000,1
+ve_fild01.gat,0,0,0,0	monster	Muka	1055,70,0,0,0
 ve_fild01.gat,0,0,0,0	monster	Drops	1113,20,0,0,0
 ve_fild01.gat,0,0,0,0	monster	Stapo	1784,20,0,0,0
+ve_fild01.gat,0,0,0,0	monster	Side Winder	1037,10,0,0,0
+ve_fild01.gat,0,0,0,0	monster	Red Plant	1078,10,180000,90000,1
+ve_fild01.gat,0,0,0,0	monster	Yellow Plant	1081,10,180000,90000,1
+ve_fild01.gat,0,0,0,0	monster	Blue Plant	1079,3,1800000,900000,1
+ve_fild01.gat,0,0,0,0	monster	Shining Plant	1083,1,1800000,900000,1
+ve_fild01.gat,0,0,0,0	monster	Atroce	1785,1,39600000,39000000,1
 
-ve_fild02.gat,0,0,0,0	monster	Sidewinder	1037,10,0,0,0
 ve_fild02.gat,0,0,0,0	monster	Savage	1166,60,0,0,0
-ve_fild02.gat,0,0,0,0	monster	Roween	1782,30,0,0,0
-ve_fild02.gat,0,0,0,0	monster	Atroce	1785,1,7200000,3600000,1
+ve_fild02.gat,0,0,0,0	monster	Side Winder	1037,20,0,0,0
+ve_fild02.gat,0,0,0,0	monster	Roween	1782,20,0,0,0
+ve_fild02.gat,0,0,0,0	monster	Stapo	1784,30,0,0,0
+ve_fild02.gat,0,0,0,0	monster	Yellow Plant	1081,10,180000,90000,1
+ve_fild02.gat,0,0,0,0	monster	Atroce	1785,1,39600000,39000000,1
 
-ve_fild03.gat,0,0,0,0	monster	Sleeper	1386,40,0,0,0
-ve_fild03.gat,0,0,0,0	monster	Magmaring	1836,30,0,0,0
+ve_fild03.gat,0,0,0,0	monster	Sandman	1165,20,600000,300000,1
+ve_fild03.gat,0,0,0,0	monster	Sleeper	1386,20,600000,300000,1
+ve_fild03.gat,0,0,0,0	monster	Stapo	1784,10,600000,300000,1
+ve_fild03.gat,200,250,100,50	monster	Magmaring	1836,10,600000,300000,1
+ve_fild03.gat,0,0,0,0	monster	Red Plant	1078,10,180000,90000,1
+ve_fild03.gat,0,0,0,0	monster	Yellow Plant	1081,10,180000,90000,1
 
-ve_fild04.gat,0,0,0,0	monster	Desert Wolf	1106,30,0,0,0
+ve_fild04.gat,0,0,0,0	monster	Desert Wolf	1106,50,0,0,0
+ve_fild04.gat,0,0,0,0	monster	Roween	1782,40,0,0,0
 ve_fild04.gat,0,0,0,0	monster	Muscipular	1780,10,0,0,0
-ve_fild04.gat,0,0,0,0	monster	Roween	1782,15,0,0,0
-ve_fild04.gat,0,0,0,0	monster	Stapo	1784,30,0,0,0
+ve_fild04.gat,0,0,0,0	monster	Stapo	1784,10,0,0,0
+ve_fild04.gat,0,0,0,0	monster	Yellow Plant	1081,10,180000,90000,1
+ve_fild04.gat,0,0,0,0	monster	Blue Plant	1079,3,1800000,900000,1
 
-ve_fild05.gat,0,0,0,0	monster	Red Plant	1078,10,180000,90000,1
-ve_fild05.gat,0,0,0,0	monster	Desert Wolf	1106,10,0,0,0
-ve_fild05.gat,0,0,0,0	monster	Sleeper	1386,10,0,0,0
-ve_fild05.gat,0,0,0,0	monster	Muscipular	1780,10,0,0,0
-ve_fild05.gat,0,0,0,0	monster	Drosera	1781,10,0,0,0
+ve_fild05.gat,0,0,0,0	monster	Sleeper	1386,40,0,0,0
+ve_fild05.gat,0,0,0,0	monster	Sandman	1165,20,0,0,0
 ve_fild05.gat,0,0,0,0	monster	Roween	1782,20,0,0,0
+ve_fild05.gat,0,0,0,0	monster	Drosera	1781,10,0,0,0
 ve_fild05.gat,0,0,0,0	monster	Galion	1783,5,0,0,0
+ve_fild05.gat,0,0,0,0	monster	White Plant	1082,5,180000,90000,1
+ve_fild05.gat,0,0,0,0	monster	Shining Plant	1083,1,1800000,900000,1
 
-ve_fild06.gat,0,0,0,0	monster	Red Plant	1078,3,180000,90000,1
+ve_fild06.gat,0,0,0,0	monster	Stapo	1784,5,600000,300000,1
 ve_fild06.gat,0,0,0,0	monster	Shining Plant	1083,1,1800000,900000,1
-ve_fild06.gat,0,0,0,0	monster	Stapo	1784,5,120000,60000,1
 
-ve_fild07.gat,0,0,0,0	monster	Sidewinder	1037,1,0,0,0
-ve_fild07.gat,0,0,0,0	monster	Shellfish	1074,40,0,0,0
-ve_fild07.gat,0,0,0,0	monster	White Plant	1082,5,180000,90000,1
+ve_fild07.gat,0,0,0,0	monster	Side Winder	1037,50,0,0,0
+ve_fild07.gat,0,0,0,0	monster	Shellfish	1074,20,0,0,0
 ve_fild07.gat,0,0,0,0	monster	Raggler	1254,20,0,0,0
-ve_fild07.gat,0,0,0,0	monster	Aster	1266,30,0,0,0
+ve_fild07.gat,0,0,0,0	monster	Aster	1266,20,0,0,0
 ve_fild07.gat,0,0,0,0	monster	Stapo	1784,20,0,0,0
+ve_fild07.gat,0,0,0,0	monster	White Plant	1082,5,180000,90000,1
