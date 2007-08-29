@@ -7,14 +7,96 @@
 //              /_/  |_|\____|_|  \___/|_|  \__,_|              
 //                 http://aurora.deltaanime.net                 
 //--------------------------------------------------------------
-// Script Title: Job Quest Warp Portals	Author: A Lot of People
+// Script Title: Job Quest Warp Portals	Author: Tsuyuki
 //--------------------------------------------------------------
 // Revision History: v1.0
 //--------------------------------------------------------------
-//	1.0 First version, merged together [Tsuyuki]
+//	1.0 First version, converted from Aegis [Tsuyuki]
 //--------------------------------------------------------------
-// Additional Notes: * Official-certified / Partially Aegis-certified *
+// Additional Notes: * Official-certified / Aegis-certified *
 //--------------------------------------------------------------
+
+
+//--------------------------------------------------------------
+// Alchemist Job Change Quest Warp Portals - [Tsuyuki]
+//--------------------------------------------------------------
+
+aldebaran.gat,65,53,0	warp	alche#1	1,1,alde_alche.gat,20,175
+aldebaran.gat,53,65,0	warp	alche#2	1,1,alde_alche.gat,42,175
+alde_alche.gat,19,171,0	warp	alche#1	1,1,aldebaran.gat,68,56
+alde_alche.gat,42,171,0	warp	alche#1	1,1,aldebaran.gat,56,68
+alde_alche.gat,41,186,0	warp	alche#1F_2F	1,1,alde_alche.gat,113,178
+alde_alche.gat,114,183,0	warp	alche#2F_1F	1,1,alde_alche.gat,42,182
+alde_alche.gat,13,184,0	warp	alche#1F_B1	1,1,alde_alche.gat,88,113
+alde_alche.gat,88,117,0	warp	alche#B1_1F	1,1,alde_alche.gat,13,181
+alde_alche.gat,46,104,0	warp	alche#B1_r1	1,1,alde_alche.gat,157,17
+alde_alche.gat,160,17,0	warp	alche#r1_b1	1,1,alde_alche.gat,50,103
+alde_alche.gat,46,77,0	warp	alche#B1_r2	1,1,alde_alche.gat,88,17
+alde_alche.gat,93,17,0	warp	alche#r2_b1	1,1,alde_alche.gat,50,77
+alde_alche.gat,89,62,0	warp	alche#B1_r3	1,1,alde_alche.gat,17,23
+alde_alche.gat,17,29,0	warp	alche#r3_b1	1,1,alde_alche.gat,89,67
+alde_alche.gat,133,77,0	warp	alche#B1_r4	1,1,alde_alche.gat,162,107
+alde_alche.gat,158,107,0	warp	alche#r4_b1	1,1,alde_alche.gat,129,77
+alde_alche.gat,133,103,0	warp	alche#B1_r5	1,1,alde_alche.gat,164,164
+alde_alche.gat,158,163,0	warp	alche#r5_b1	1,1,alde_alche.gat,129,103
+
+
+//--------------------------------------------------------------
+// Assassin Job Change Quest Warp Portals - [Tsuyuki]
+//--------------------------------------------------------------
+
+in_moc_16.gat,18,8,0	warp	guild_to_16	1,1,moc_fild16.gat,205,291
+moc_fild16.gat,205,296,0	warp	16_to_guild	1,1,in_moc_16.gat,18,11
+
+
+//--------------------------------------------------------------
+// Dancer Job Change Quest Warp Portals - [Tsuyuki]
+//--------------------------------------------------------------
+
+job_duncer.gat,69,43,0	warp	warp_dance	1,1,comodo.gat,185,156
+
+
+//--------------------------------------------------------------
+// Gunslinger Job Change Quest Warp Portals - [Tsuyuki]
+//--------------------------------------------------------------
+
+einbroch.gat,137,199,0	warp	gunlink_a	1,1,que_ng.gat,138,167
+que_ng.gat,130,166,0	warp	gunlink_b	1,1,einbroch.gat,130,197
+que_ng.gat,165,137,0	warp	gunlink_c	1,1,que_ng.gat,177,41
+que_ng.gat,172,42,0	warp	gunlink_d	1,1,que_ng.gat,160,139
+que_ng.gat,178,162,0	warp	gunlink_e	1,1,que_ng.gat,176,86
+que_ng.gat,170,85,0	warp	gunlink_f	1,1,que_ng.gat,182,161
+
+
+//--------------------------------------------------------------
+// Hunter Job Change Quest Warp Portals - [Tsuyuki]
+//--------------------------------------------------------------
+
+in_hunter.gat,100,13,0	warp	Huntero	1,2,pay_fild10.gat,143,250
+
+
+//--------------------------------------------------------------
+// Monk Job Change Quest Warp Portals - [Tsuyuki]
+//--------------------------------------------------------------
+
+prt_monk.gat,192,172,0	warp	monktotest	1,1,monk_test.gat,329,50
+monk_test.gat,329,47,0	warp	test_to_prtmonk	1,1,prt_monk.gat,193,166
+monk_test.gat,329,76,0	warp	way_to_stair	1,1,monk_test.gat,259,118
+monk_test.gat,259,115,0	warp	stair_to_#1	1,1,monk_test.gat,329,71
+monk_test.gat,272,125,0	warp	way_to_last	1,1,monk_test.gat,301,127
+monk_test.gat,298,127,0	warp	last_to_st	1,1,monk_test.gat,268,125
+
+
+//--------------------------------------------------------------
+// Ninja Job Change Quest Warp Portals - [Tsuyuki]
+//--------------------------------------------------------------
+
+amatsu.gat,148,140,0	warp	ninjalink_a	1,1,que_ng.gat,20,142
+que_ng.gat,20,138,0	warp	ninjalink_b	1,1,amatsu.gat,147,136
+que_ng.gat,10,183,0	warp	ninjalink_c	1,1,que_ng.gat,33,64
+que_ng.gat,37,64,0	warp	ninjalink_d	1,1,que_ng.gat,15,182
+que_ng.gat,30,37,0	warp	ninjalink_e	1,1,que_ng.gat,67,28
+que_ng.gat,63,30,0	warp	ninjalink_f	1,1,que_ng.gat,25,37
 
 
 //--------------------------------------------------------------
@@ -58,6 +140,23 @@ new_5-2.gat,46,172,0	warp	novgrounds06-5	2,2,new_5-2.gat,78,106
 
 
 //--------------------------------------------------------------
+// Rogue Job Change Quest Warp Portals - [Tsuyuki]
+//--------------------------------------------------------------
+
+cmd_fild07.gat,355,286,0	warp	rogue01	1,1,in_rogue.gat,247,126
+cmd_fild07.gat,193,117,0	warp	rogue02	1,1,in_rogue.gat,379,46
+in_rogue.gat,8,9,0	warp	rogue03	1,1,in_rogue.gat,389,389
+in_rogue.gat,244,21,0	warp	rogue04	1,1,in_rogue.gat,106,191
+in_rogue.gat,375,33,0	warp	rogue05	1,1,in_rogue.gat,380,125
+in_rogue.gat,375,125,0	warp	rogue06	1,1,in_rogue.gat,379,33
+in_rogue.gat,161,103,0	warp	rogue07	1,1,cmd_fild04.gat,302,177
+in_rogue.gat,375,46,0	warp	rogue08	1,1,cmd_fild07.gat,196,117
+in_rogue.gat,247,122,0	warp	rogue09	1,1,cmd_fild07.gat,349,285
+in_rogue.gat,172,34,0	warp	rogue10	1,1,cmd_fild09.gat,341,143
+in_rogue.gat,244,21,0	warp	rogue11	1,1,cmd_fild09.gat,106,191
+
+
+//--------------------------------------------------------------
 // Swordsman Job Change Quest Warp Portals - [Tsuyuki]
 //--------------------------------------------------------------
 
@@ -82,114 +181,15 @@ sword_3-1.gat,239,117,0	warp	swd306	1,1,sword_3-1.gat,11,169
 
 
 //--------------------------------------------------------------
-// Thief Job Change Quest Warp Portals
+// Thief Job Change Quest Warp Portals - [Tsuyuki]
 //--------------------------------------------------------------
 
-job_thief1.gat,180,15,0	warp	jthf	7,1,moc_ruins.gat,145,117
-
-
-//--------------------------------------------------------------
-// Assassin Job Change Quest Warp Portals
-//--------------------------------------------------------------
-
-in_moc_16.gat,18,8,0	warp	guild_to_16	2,2,moc_fild16.gat,205,291
-moc_fild16.gat,205,296,0	warp	16_to_guild	2,2,in_moc_16.gat,18,11
+job_thief1.gat,180,15,0	warp	Thief Test Hall o	7,1,moc_ruins.gat,145,117
 
 
 //--------------------------------------------------------------
-// Hunter Job Change Quest Warp Portals
+// Transcendence Rebirth Quest Warp Portals - [Tsuyuki]
 //--------------------------------------------------------------
 
-in_hunter.gat,100,15,0	warp	jhun01	0,0,pay_fild10.gat,143,250
-
-
-//--------------------------------------------------------------
-// Monk Job Change Quest Warp Portals
-//--------------------------------------------------------------
-
-prt_monk.gat,192,172,0	warp	monk15	1,1,monk_test.gat,329,50
-monk_test.gat,329,47,0	warp	monk16	1,1,prt_monk.gat,193,166
-monk_test.gat,329,76,0	warp	monk17	1,1,monk_test.gat,259,118
-monk_test.gat,259,115,0	warp	monk18	1,1,monk_test.gat,329,71
-monk_test.gat,271,126,0	warp	monk19	1,1,monk_test.gat,301,127
-monk_test.gat,298,127,0	warp	monk20	1,1,monk_test.gat,268,126
-
-
-//--------------------------------------------------------------
-// Alchemist Job Change Quest Warp Portals
-//--------------------------------------------------------------
-
-aldebaran.gat,54,66,0	warp	alche01	1,1,alde_alche.gat,41,174
-alde_alche.gat,41,171,0	warp	alche02	1,1,aldebaran.gat,56,68
-alde_alche.gat,129,104,0	warp	alche03	1,1,alde_alche.gat,163,163
-alde_alche.gat,159,163,0	warp	alche04	1,1,alde_alche.gat,126,104
-alde_alche.gat,131,77,0	warp	alche05	1,1,alde_alche.gat,162,107
-alde_alche.gat,159,107,0	warp	alche06	1,1,alde_alche.gat,128,77
-alde_alche.gat,47,103,0	warp	alche07	1,1,alde_alche.gat,88,18
-alde_alche.gat,92,18,0	warp	alche08	1,1,alde_alche.gat,50,103
-alde_alche.gat,47,77,0	warp	alche09	1,1,alde_alche.gat,155,18
-alde_alche.gat,159,18,0	warp	alche10	1,1,alde_alche.gat,50,77
-alde_alche.gat,14,184,0	warp	alche11	1,1,alde_alche.gat,88,113
-alde_alche.gat,88,117,0	warp	alche12	1,1,alde_alche.gat,14,180
-alde_alche.gat,19,171,0	warp	alche13	1,1,aldebaran.gat,68,56
-aldebaran.gat,66,54,0	warp	alche14	1,1,alde_alche.gat,19,175
-alde_alche.gat,18,28,0	warp	alche15	1,1,alde_alche.gat,89,66
-alde_alche.gat,89,63,0	warp	alche16	1,1,alde_alche.gat,18,24
-alde_alche.gat,41,187,0	warp	alche17	1,1,alde_alche.gat,114,178
-alde_alche.gat,114,182,0	warp	alche18	1,1,alde_alche.gat,41,183
-
-
-//--------------------------------------------------------------
-// Rogue Job Change Quest Warp Portals - [Tsuyuki]
-//--------------------------------------------------------------
-
-cmd_fild07.gat,355,286,0	warp	rogue01	1,1,in_rogue.gat,247,126
-cmd_fild07.gat,193,117,0	warp	rogue02	1,1,in_rogue.gat,379,46
-in_rogue.gat,8,9,0	warp	rogue03	1,1,in_rogue.gat,389,389
-in_rogue.gat,244,21,0	warp	rogue04	1,1,in_rogue.gat,106,191
-in_rogue.gat,375,33,0	warp	rogue05	1,1,in_rogue.gat,380,125
-in_rogue.gat,375,125,0	warp	rogue06	1,1,in_rogue.gat,379,33
-in_rogue.gat,161,103,0	warp	rogue07	1,1,cmd_fild04.gat,302,177
-in_rogue.gat,375,46,0	warp	rogue08	1,1,cmd_fild07.gat,196,117
-in_rogue.gat,247,122,0	warp	rogue09	1,1,cmd_fild07.gat,349,285
-in_rogue.gat,172,34,0	warp	rogue10	1,1,cmd_fild09.gat,341,143
-in_rogue.gat,244,21,0	warp	rogue11	1,1,cmd_fild09.gat,106,191
-
-
-//--------------------------------------------------------------
-// Dancer Job Change Quest Warp Portals - [Tsuyuki]
-//--------------------------------------------------------------
-
-job_duncer.gat,69,43,0	warp	warp_dance	1,1,comodo.gat,185,156
-
-
-//--------------------------------------------------------------
-// Transcendence Rebirth Quest Warp Portals
-//--------------------------------------------------------------
-
-valkyrie.gat,48,73,0	warp	valk01	1,1,valkyrie.gat,48,64
-valkyrie.gat,48,66,0	warp	valk01	1,1,valkyrie.gat,48,75
-
-
-//--------------------------------------------------------------
-// Gunslinger Job Change Quest Warp Portals
-//--------------------------------------------------------------
-
-einbroch.gat,136,199,0	warp	gswarp1	1,1,que_ng.gat,138,167
-que_ng.gat,130,166,0	warp	gswarp2	1,1,einbroch.gat,130,197
-que_ng.gat,178,162,0	warp	gswarp3	1,1,que_ng.gat,172,86
-que_ng.gat,166,85,0	warp	gswarp4	1,1,que_ng.gat,182,161
-que_ng.gat,165,137,0	warp	gswarp5	1,1,que_ng.gat,177,41
-que_ng.gat,172,42,0	warp	gswarp6	1,1,que_ng.gat,160,139
-
-
-//--------------------------------------------------------------
-// Ninja Job Change Quest Warp Portals
-//--------------------------------------------------------------
-
-amatsu.gat,149,140,0	warp	ninja01	1,1,que_ng.gat,20,142
-que_ng.gat,20,138,0	warp	ninja02	1,1,amatsu.gat,147,136
-que_ng.gat,10,183,0	warp	ninja03	1,1,que_ng.gat,33,64
-que_ng.gat,37,64,0	warp	ninja04	1,1,que_ng.gat,15,182
-que_ng.gat,30,37,0	warp	ninja05	1,1,que_ng.gat,67,28
-que_ng.gat,63,30,0	warp	ninja06	1,1,que_ng.gat,25,37
+valkyrie.gat,49,72,0	warp	valkyrie1	1,1,valkyrie.gat,49,63
+valkyrie.gat,49,67,0	warp	valkyre	1,1,valkyrie.gat,49,75
