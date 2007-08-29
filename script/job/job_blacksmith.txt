@@ -63,24 +63,24 @@ ein_in01.gat,18,28,4	script	Guildsman#BLS	731,{
 			close;
 		}
 		close;
-	} else if (BaseClass == Job_Swordsman) {
+	} else if ((BaseJob == Job_Swordsman) || (BaseJob == Job_Knight) || (BaseJob == Job_Crusader)) {
 		mes "[Altiregen]";
 		mes "Oh, are you interested in having a weapon forged? I'm sorry to disappoint you, but I actually have a lot of business to attend to.";
 		close;
-	} else if (BaseClass == Job_Archer) {
+	} else if ((BaseJob == Job_Archer) || (BaseJob == Job_Hunter) || (BaseJob == Job_Bard) || (BaseJob == Job_Dancer)) {
 		mes "[Altiregen]";
 		mes "Oh...";
 		mes "There's not much we can offer you here. And you can't really help out around here unless you know how to make stuff...";
 		close;
-	} else if (BaseClass == Job_Mage) {
+	} else if ((BaseJob == Job_Mage) || (BaseJob == Job_Wizard) || (BaseJob == Job_Sage)) {
 		mes "[Altiregen]";
 		mes "Oh? What's a magic user doing here? I'm surprised. Usually this kind of rough work is beneath you intellectual types.";
 		close;
-	} else if (BaseClass == Job_Acolyte) {
+	} else if ((BaseJob == Job_Acolyte) || (BaseJob == Job_Priest) || (BaseJob == Job_Monk)) {
 		mes "[Altiregen]";
 		mes "Oh! Am I correct in assuming you're a member of the Clergy? Would you please bless me before you leave!";
 		close;
-	} else if (BaseClass == Job_Thief) {
+	} else if ((BaseJob == Job_Thief) || (BaseJob == Job_Assassin) || (BaseJob == Job_Rogue)) {
 		mes "[Altiregen]";
 		mes "I'm sorry...";
 		mes "But there really isn't anything for you to steal here. Well, there are the Daggers we keep in the back, but...";

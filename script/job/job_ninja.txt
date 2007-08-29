@@ -23,7 +23,7 @@
 
 alberta.gat,30,65,3	script	Akagi#nq	730,{
 
-	if (Class == Job_Novice) {
+	if ((Basejob == Job_Novice) && (Upper == 0)) {
 		if (JobLevel > 9) {
 			mes "[Akagi]";
 			mes "Hmm...";
@@ -63,7 +63,7 @@ alberta.gat,30,65,3	script	Akagi#nq	730,{
 
 que_ng.gat,30,65,3	script	Cougar Gai	730,{
 
-	if (Class == Job_Novice && JobLevel > 9) {
+	if ((BaseJob == Job_Novice) && (Upper == 0) && (JobLevel > 9)) {
 		switch(hg_nin) {
 			case 0:
 				mes "["+strcharinfo(0)+"]";
@@ -397,12 +397,12 @@ que_ng.gat,30,65,3	script	Cougar Gai	730,{
 				getitem 13010,1;
 				close;
 		}
-	} else if (Class == Job_Novice && JobLevel < 10) {
+	} else if ((BaseJob == Job_Novice) && (Upper == 0) && (JobLevel < 10)) {
 		mes "[Cougar Gai]";
 		mes "It looks like you need to train more.";
 		mes "Come back after you gained more muscle.";
 		close;
-	} else if (Class == Job_Ninja) {
+	} else if (BaseJob == Job_Ninja) {
 		mes "[Cougar Gai]";
 		mes "Hmm, how have you been?";
 		mes "You don't know when and where you may be asked to go on a mission, so don't put off your training for a single day.";
@@ -425,7 +425,7 @@ que_ng.gat,30,65,3	script	Cougar Gai	730,{
 
 einbroch.gat,184,194,3	script	Suspicious Guy	881,{
 
-	if (Class == Job_Ninja) {
+	if (BaseJob == Job_Ninja) {
 		mes "[Crimson Panther Joe]";
 		mes "Oh, I see you've become a Ninja";
 		mes "There will be many hardships in the future, so don't slack off in training.";

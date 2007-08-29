@@ -583,7 +583,7 @@ gonryun.gat,180,118,4	script	Iron man#gnp	85,{
 					mes "You are yet lack of training.";
 					mes "Come after more practice.";
 				}
-			} else if (BaseClass == Job_Swordman || BaseClass == Job_Thief || BaseClass == Job_Merchant || BaseJob == Job_Monk) {
+			} else if ((BaseJob == Job_Swordsman) || (BaseJob == Job_Knight) || (BaseJob == Job_Crusader) || (BaseJob == Job_Thief) || (BaseJob == Job_Assassin) || (BaseJob == Job_Rogue) || (BaseJob == Job_Merchant) || (BaseJob == Job_Blacksmith) || (BaseJob == Job_Alchemist) || (BaseJob == Job_Monk)) {
 				if (checkweight(7049,1100)) {
 					mes "^0000FFYou lifted the Stone lightly.^000000";
 					set in_battle,1;

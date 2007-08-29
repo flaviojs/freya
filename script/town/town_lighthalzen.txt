@@ -7821,13 +7821,17 @@ OnTouch:
 		mes "^FF0000Regenschirm Laboratory^000000.";
 		set lhz_curse,26;
 		if (BaseLevel < 70) {
-			getexp 800000,300000;
+			set BaseExp,BaseExp+800000;
+			set JobExp,JobExp+300000;
 		} else if (BaseLevel < 80) {
-			getexp 1000000,500000;
+			set BaseExp,BaseExp+1000000;
+			set JobExp,JobExp+500000;
 		} else if (BaseLevel < 90) {
-			getexp 1500000,800000;
+			set BaseExp,BaseExp+1500000;
+			set JobExp,JobExp+800000;
 		} else {
-			getexp 2000000,1000000;
+			set BaseExp,BaseExp+2000000;
+			set JobExp,JobExp+1000000;
 		}
 		close;
 	}
@@ -11328,7 +11332,7 @@ lighthalzen.gat,179,170,4	script	Ordinary Man	98,{
 		mes "what we set out to do. Still...";
 		set lhz_boss,44;
 		getitem 617,1;
-		getexp 1800000,0;
+		set BaseExp,BaseExp+1800000;
 		next;
 		mes "[Ghalstein]";
 		mes "I'd like to thank you";

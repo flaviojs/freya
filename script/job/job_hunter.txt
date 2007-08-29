@@ -92,24 +92,24 @@ hu_in01.gat,386,373,4	script	Hunter Guildsman#hnt	727,{
 		mes "You must be...";
 		mes "a Novice? Wow, you've got a long way ahead of you. I don't think there's much you can do here.";
 		close;
-	} else if (BaseClass == Job_Swordsman) {
+	} else if ((BaseJob == Job_Swordsman) || (BaseJob == Job_Knight) || (BaseJob == Job_Crusader)) {
 		mes "[Hunter Guildsman]";
 		mes "You have chosen the path of the sword. I can respect the strength of your blade. Of course, from far away, you can't really afford to throw your sword at enemies, can you?";
 		close;
-	} else if (BaseClass == Job_Mage) {
+	} else if ((BaseJob == Job_Mage) || (BaseJob == Job_Wizard) || (BaseJob == Job_Sage)) {
 		mes "[Hunter Guildsman]";
 		mes "You deal with magic? It must feel great to be able to wield mystic power.";
 		close;
-	} else if (BaseClass == Job_Acolyte) {
+	} else if ((BaseJob == Job_Acolyte) || (BaseJob == Job_Priest) || (BaseJob == Job_Monk)) {
 		mes "[Hunter Guildsman]";
 		mes "Oh, a person who serves God! Nice to meet you. There aren't many people like you that visit this place~ Hehe.";
 		close;
-	} else if (BaseClass == Job_Merchant) {
+	} else if ((BaseJob == Job_Merchant) || (BaseJob == Job_Blacksmith) || (BaseJob == Job_Alchemist)) {
 		mes "[Hunter Guildsman]";
 		mes "Oh...";
 		mes "How's your business coming along?";
 		close;
-	} else if (BaseClass == Job_Thief) {
+	} else if ((BaseJob == Job_Thief) || (BaseJob == Job_Assassin) || (BaseJob == Job_Rogue)) {
 		mes "[Hunter Guildsman]";
 		mes "Agh?!";
 		mes "This place doesn't have anything worth stealing or anyone worth killing!!";

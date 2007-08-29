@@ -1209,7 +1209,7 @@ izlude.gat,103,106,3	script	Guildsman#1	48,3,3,{
 		mes "to store some of your items.^000000";
 		close;
 	}
-	if (!(BaseLevel > 59) || !(BaseJob == Job_Novice || BaseJob == Job_SuperNovice || BaseClass == Job_Swordsman))
+	if (!(BaseLevel > 59) || !(BaseJob == Job_Novice || BaseJob == Job_SuperNovice || (BaseJob == Job_Swordsman) || (BaseJob == Job_Knight) || (BaseJob == Job_Crusader)))
 	{
 		mes "[Guildsman]";
 		mes "There are rumors";
@@ -1650,7 +1650,7 @@ prontera.gat,237,313,3	script	Nun	79,3,3,{
 		mes "united in our humanity.";
 		close;
 	}
-	if (!(BaseClass == Job_Acolyte))
+	if ((BaseJob != Job_Acolyte) && (BaseJob != Job_Priest) && (BaseJob != Job_Monk))
 	{
 		mes "[Nun]";
 		mes "Ah, hello. Would you ask";
@@ -1774,7 +1774,7 @@ OnTouch:
 	{
 		if (!mao_morocc)
 		{
-			if (BaseClass == Job_Acolyte)
+			if ((BaseJob == Job_Acolyte) || (BaseJob == Job_Priest) || (BaseJob == Job_Monk))
 			{
 				mes "[Nun]";
 				mes "Oh, " + strcharinfo(0) + "!";
@@ -1843,7 +1843,7 @@ alberta.gat,129,59,3	script	Guildsman#2	49,3,3,{
 		mes "something major going on...";
 		close;
 	}
-	if (!(BaseJob == Job_Soul_Linker || BaseClass == Job_Merchant))
+	if (!(BaseJob == Job_Soul_Linker || (BaseJob == Job_Merchant) || (BaseJob == Job_Blacksmith) || (BaseJob == Job_Alchemist)))
 	{
 		mes "[Guildsman]";
 		mes "Goodness, there's so";
@@ -2157,7 +2157,7 @@ alberta.gat,129,59,3	script	Guildsman#2	49,3,3,{
 			mes "him forever! So... thanks, man.";
 			close;
 		}
-		else if (BaseClass == Job_Merchant)
+		else if ((BaseJob == Job_Merchant) || (BaseJob == Job_Blacksmith) || (BaseJob == Job_Alchemist))
 		{
 			mes "[Guildsman]";
 			mes "It's a nice, quiet";
@@ -2369,7 +2369,7 @@ geffen.gat,123,109,3	script	Academy Staff	742,3,3,{
 		mes "to store some of your items.^000000";
 		close;
 	}
-	if (!(BaseLevel > 59) || !(BaseClass == Job_Mage))
+	if (!(BaseLevel > 59) || !((BaseJob == Job_Mage) || (BaseJob == Job_Wizard) || (BaseJob == Job_Sage)))
 	{
 		mes "[Academy Staff]";
 		mes "Are you headed to the";
@@ -2478,7 +2478,7 @@ OnTouch:
 	{
 		if (!mao_morocc)
 		{
-			if (BaseClass == Job_Mage)
+			if ((BaseJob == Job_Mage) || (BaseJob == Job_Wizard) || (BaseJob == Job_Sage))
 			{
 				mes "[Academy Staff]";
 				mes "Whoa, would you wait";
@@ -2547,7 +2547,7 @@ morocc.gat,155,56,3	script	Miya	93,3,3,{
 		mes "away from strangers, okay?";
 		close;
 	}
-	if (!(BaseJob == Job_Taekwon_Master || BaseClass == Job_Thief))
+	if (!(BaseJob == Job_Taekwon_Master || (BaseJob == Job_Thief) || (BaseJob == Job_Assassin) || (BaseJob == Job_Rogue)))
 	{
 		mes "[Girl]";
 		mes "...............................";
@@ -2586,7 +2586,7 @@ morocc.gat,155,56,3	script	Miya	93,3,3,{
 			getitem 7416,1;
 			close;
 		}
-		else if (BaseClass == Job_Thief)
+		else if ((BaseJob == Job_Thief) || (BaseJob == Job_Assassin) || (BaseJob == Job_Rogue))
 		{
 			mes "[Miya]";
 			mes "Hey, " + strcharinfo(0) + ",";
@@ -2651,7 +2651,7 @@ morocc.gat,155,56,3	script	Miya	93,3,3,{
 			mes "all he told me, so I'll seeya~";
 			close;
 		}
-		else if (BaseClass == Job_Thief)
+		else if ((BaseJob == Job_Thief) || (BaseJob == Job_Assassin) || (BaseJob == Job_Rogue))
 		{
 			mes "[Miya]";
 			mes "There's supposed to be";
@@ -2675,7 +2675,7 @@ morocc.gat,155,56,3	script	Miya	93,3,3,{
 	}
 	else if (((mao_morocc > 2) && (mao_morocc < 27)) || ((mao_morocc > 102) && (mao_morocc < 125)))
 	{
-		if ((BaseJob == Job_Taekwon_Master) || BaseClass == Job_Thief)
+		if ((BaseJob == Job_Taekwon_Master) || (BaseJob == Job_Thief) || (BaseJob == Job_Assassin) || (BaseJob == Job_Rogue))
 		{
 			mes "[Miya]";
 			mes "So how's it been going?";
@@ -2750,7 +2750,7 @@ OnTouch:
 				getitem 7416,1;
 				close;
 			}
-			else if (BaseClass == Job_Thief)
+			else if ((BaseJob == Job_Thief) || (BaseJob == Job_Assassin) || (BaseJob == Job_Rogue))
 			{
 				mes "[Miya]";
 				mes "Hey, " + strcharinfo(0) + ",";
@@ -2827,7 +2827,7 @@ payon.gat,231,323,3	script	Guildsman#3	59,3,3,{
 		mes "children there...";
 		close;
 	}
-	if (!(BaseJob == Job_Taekwon) || !(BaseClass == Job_Archer))
+	if (!(BaseJob == Job_Taekwon) || !((BaseJob == Job_Archer) || (BaseJob == Job_Hunter) || (BaseJob == Job_Bard) || (BaseJob == Job_Dancer)))
 	{
 		mes "[Guildsman]";
 		mes "Excuse me, but if you happen";
@@ -2873,7 +2873,7 @@ payon.gat,231,323,3	script	Guildsman#3	59,3,3,{
 			mes "Good luck, my friend, and please represent Taekwon Do with pride.";
 			close;
 		}
-		else if (BaseClass == Job_Archer)
+		else if ((BaseJob == Job_Archer) || (BaseJob == Job_Hunter) || (BaseJob == Job_Bard) || (BaseJob == Job_Dancer))
 		{
 			mes "[Guildsman]";
 			mes "" + strcharinfo(0) + "...?";
@@ -3000,7 +3000,7 @@ payon.gat,231,323,3	script	Guildsman#3	59,3,3,{
 			mes "Good luck, my friend, and please represent Taekwon Do with pride.";
 			close;
 		}
-		else if (BaseClass == Job_Archer)
+		else if ((BaseJob == Job_Archer) || (BaseJob == Job_Hunter) || (BaseJob == Job_Bard) || (BaseJob == Job_Dancer))
 		{
 			mes "[Guildsman]";
 			mes "Please take your";
@@ -3053,7 +3053,7 @@ payon.gat,231,323,3	script	Guildsman#3	59,3,3,{
 			mes "mission is accomplished.";
 			close;
 		}
-		else if (BaseClass == Job_Thief)
+		else if ((BaseJob == Job_Thief) || (BaseJob == Job_Assassin) || (BaseJob == Job_Rogue))
 		{
 			mes "[Guildsman]";
 			mes "It's good to see that";
@@ -3146,7 +3146,7 @@ OnTouch:
 				mes "Good luck, my friend, and please represent Taekwon Do with pride.";
 				close;
 			}
-			else if (BaseClass == Job_Archer)
+			else if ((BaseJob == Job_Archer) || (BaseJob == Job_Hunter) || (BaseJob == Job_Bard) || (BaseJob == Job_Dancer))
 			{
 				mes "[Guildsman]";
 				mes "" + strcharinfo(0) + "...?";
@@ -3590,7 +3590,7 @@ que_job01.gat,82,95,3	script	Bar Master	46,{
 		mes "little pub. What";
 		mes "will you be having?";
 	}
-	else if (BaseClass == Job_Thief)
+	else if ((BaseJob == Job_Thief) || (BaseJob == Job_Assassin) || (BaseJob == Job_Rogue))
 	{
 		mes "[Master]";
 		mes "Huh. How did";
@@ -4460,8 +4460,8 @@ que_job01.gat,16,21,5	script	Valdes#1	55,{
 		}
 		delitem 7416,countitem(7416);
 		delitem 7417,countitem(7417);
-		if (mao_morocc == 28) getexp 1050000,0;
-		else if (mao_morocc == 29) getexp 1280000,0;
+		if (mao_morocc == 28) set BaseExp,BaseExp+1050000;
+		else if (mao_morocc == 29) set BaseExp,BaseExp+1280000;
 		set mao_morocc,30;
 		getitem 12107,1;
 		next;
@@ -4601,8 +4601,8 @@ que_job01.gat,16,21,5	script	Valdes#1	55,{
 		}
 		delitem 7416,countitem(7416);
 		delitem 7418,countitem(7418);
-		if (mao_morocc == 126) getexp 1050000,0;
-		else if (mao_morocc == 127) getexp 1280000,0;
+		if (mao_morocc == 126) set BaseExp,BaseExp+1050000;
+		else if (mao_morocc == 127) set BaseExp,BaseExp+1280000;
 		set mao_morocc,128;
 		getitem 12106,1;
 		next;

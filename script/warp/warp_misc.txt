@@ -88,7 +88,7 @@ arena_room.gat,150,87,0	warp	arn_room_3_2	1,1,arena_room.gat,120,87
 prt_are_in.gat,54,13,0	warp	toarn_room	1,1,arena_room.gat,100,77
 arena_room.gat,114,102,0	script	onlyaco#arena	45,1,1,{
 OnTouch:
-	if (BaseClass == Job_Acolyte) {
+	if ((BaseJob == Job_Acolyte) || (BaseJob == Job_Priest) || (BaseJob == Job_Monk)) {
 		warp "arena_room.gat",135,129;
 	} else {
 		mes "Only Acolyte class are applicable to join this mode.";
