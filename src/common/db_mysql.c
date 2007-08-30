@@ -27,9 +27,7 @@ static MYSQL_RES* mysql_db_res = NULL;
 static MYSQL_ROW mysql_db_row = NULL;
 
 void sql_init() {
-#ifdef __DEBUG
-	printf("Init mysql connection.\n");
-#endif
+
 	memset(last_request, 0, sizeof(last_request));
 	mysql_init(&mysql_handle);
 	if (!mysql_real_connect(&mysql_handle, db_mysql_server_ip, db_mysql_server_id, db_mysql_server_pw,
@@ -43,9 +41,7 @@ void sql_init() {
 }
 
 void sql_close(void) {
-#ifdef __DEBUG
-	printf("Closing mysql connection.\n");
-#endif
+
 	mysql_close(&mysql_handle);
 
 	return;
@@ -115,13 +111,12 @@ int sql_get_row(void) {
 }
 
 char *sql_get_string(int num_col) {
+
 	if (!mysql_db_res)
 		return NULL;
 
 	if (!mysql_db_row) {
-#ifdef __DEBUG
 		printf(CL_RED "[SQLERR]" CL_RESET " Access to null sql row ? (col: %d), last req:%s\n", num_col, last_request);
-#endif
 		return NULL;
 	}
 
@@ -132,13 +127,12 @@ char *sql_get_string(int num_col) {
 }
 
 int sql_get_integer(int num_col) {
+
 	if (!mysql_db_res)
 		return -1;
 
 	if (!mysql_db_row) {
-#ifdef __DEBUG
 		printf(CL_RED "[SQLERR]" CL_RESET " Access to null sql row ? (col: %d), last req:%s\n", num_col, last_request);
-#endif
 		return -1;
 	}
 

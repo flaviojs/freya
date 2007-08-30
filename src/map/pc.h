@@ -38,7 +38,6 @@ int pc_isGM(struct map_session_data *sd);
 int pc_iskiller(struct map_session_data *src, struct map_session_data *target);
 
 void pc_setrestartvalue(struct map_session_data *sd, int type);
-int pc_cant_move(struct map_session_data *sd);
 void pc_makesavestatus(struct map_session_data *);
 void pc_setnewpc(struct map_session_data*, int, int, int, int, unsigned char, int);
 void pc_authok(int, int, struct mmo_charstatus *);
@@ -72,7 +71,7 @@ int pc_movepos(struct map_session_data*, int, int, int);
 int pc_setpos(struct map_session_data*, char*, int, int, int, unsigned int);
 int pc_setsavepoint(struct map_session_data*, char*, int, int);
 void pc_randomwarp(struct map_session_data *sd);
-void pc_memo(struct map_session_data *sd); // , int i); // i always -1
+void pc_memo(struct map_session_data *sd);
 int pc_randomxy(struct map_session_data*);
 
 int pc_checkadditem(struct map_session_data*, int, int);
@@ -186,7 +185,6 @@ struct map_session_data *pc_get_child(struct map_session_data *sd);
 void pc_set_gm_level(int account_id, unsigned char level);
 void pc_set_gm_level_by_gm(int account_id, signed char level, int account_id_of_gm);
 void pc_setstand(struct map_session_data *sd);
-// int pc_break_equip(struct map_session_data *sd, unsigned short where);
 int pc_candrop(struct map_session_data *sd, int item_id);
 
 struct pc_base_job{

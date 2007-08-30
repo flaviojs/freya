@@ -484,14 +484,12 @@ static int itemdb_readdb(void)
 			nameid = atoi(str[0]);
 			if (nameid <= 0 || nameid >= 20000)
 				continue;
-#ifdef __DEBUG
 			if (battle_config.etc_log) {
 				if (strlen(str[1]) > 24)
 					printf(CL_YELLOW "Warning: " CL_RESET "Invalid item name (id: %d) - Name too long (> 24 char.) -> only 24 first characters are used.\n", nameid);
 				if (strlen(str[2]) > 24)
 					printf(CL_YELLOW "Warning: " CL_RESET "Invalid item jname (id: %d) - Name too long (> 24 char.) -> only 24 first characters are used.\n", nameid);
 			}
-#endif
 
 			ln++;
 			if (ln % 20 == 19) {
@@ -1306,14 +1304,12 @@ static int itemdb_read_sqldb(void) {
 		// If the identifier is not within the valid range, process the next row
 		if (nameid == 0 || nameid >= 20000)
 			continue;
-#ifdef __DEBUG
 		if (battle_config.etc_log) {
 			if (strlen(sql_get_string(1)) > 24)
 				printf(CL_YELLOW "WARNING: Invalid item name" CL_RESET" (id: %d) - Name too long (> 24 char.) -> only 24 first characters are used.\n", nameid);
 			if (strlen(sql_get_string(2)) > 24)
 				printf(CL_YELLOW "WARNING: Invalid item jname" CL_RESET" (id: %d) - Name too long (> 24 char.) -> only 24 first characters are used.\n", nameid);
 		}
-#endif
 
 		ln++;
 		if (ln % 20 == 19) {

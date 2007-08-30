@@ -50,22 +50,13 @@
 #include "pet.h"
 #include "status.h"
 #include "ranking.h"
+#include "unit.h"
 
 #ifdef MEMWATCH
 #include "memwatch.h"
 #endif
 
 #define STATE_BLIND 0x10
-
-#ifdef ANTIBOT_SYSTEM
-int fake_mob_list[] = { // Set here mobs that do not sound when they don't move
-	1001, // Scorpion
-	1002, // Poring
-	1007, // Fabre
-	1031, // Poporing
-	1022  // Werewolf
-};
-#endif
 
 #define MAX_PACKET_DB   0x350
 #define MAX_PACKET_VERSION 16
@@ -7939,207 +7930,6 @@ void clif_parse_WantToConnection(int fd, struct map_session_data *sd) { // S 0x0
 	return;
 }
 
-#ifdef ANTIBOT_SYSTEM
-/*==========================================
- * antibot actions
- *------------------------------------------
- */
-void antibot_action(struct map_session_data *sd) {
-	int fake_mob, i, x, y;
-	int level;
-
-	//printf("antibot_action: Account %d, char %d (%s), action: %d.\n", sd->status.account_id, sd->status.char_id, sd->status.name, sd->state.bot_flag);
-	switch (sd->state.bot_flag) { // 0: no bot action done, 1: far fake player sended, 2: far fake player deleted, 3: hiden fake player sended, 4: hiden fake player deleted, 5: like 1, 6: like 2
-	case 0:
-	case 4:
-		// if player moves -> do another time
-		if (sd->walktimer != -1)
-			return;
-		// not immediatly
-		if ((rand() % 10) != 0) // 0: no bot action done, 1: far fake player sended, 2: far fake player deleted, 3: hiden fake player sended, 4: hiden fake player deleted, 5: like 1, 6: like 2
-			return;
-		// send fake player (outside of view and char_id of the wisp server name)
-		memset(WPACKETP(0), 0, packet_len_table[0x1d8]);
-		WPACKETW( 0) = 0x1d8;
-		WPACKETL( 2) = server_char_id;
-		WPACKETW( 6) = DEFAULT_WALK_SPEED; // sd->speed;
-		//WPACKETW( 8) = 0; // opt1
-		//WPACKETW(10) = 0; // opt2
-		//WPACKETW(12) = 0; // status.option
-		WPACKETW(14) = (rand() % 13); // class: 0-12
-		WPACKETW(16) = (rand() % 19) + 1; // hair style: 1 - 19
-		//WPACKETW(18) = 0; // sd->inventory_data[sd->equip_index[9]]->view_id
-		//WPACKETW(20) = 0; // sd->inventory_data[sd->equip_index[8]]->view_id
-		WPACKETW(22) = sd->status.head_bottom;
-		WPACKETW(24) = sd->status.head_top;
-		WPACKETW(26) = sd->status.head_mid;
-		WPACKETW(28) = (rand() % 8) + 1; // hair color: 1-8
-		//WPACKETW(30) = 0; // clothes color
-		WPACKETW(32) = sd->head_dir;
-		//WPACKETL(34) = 0; // guild_id
-		//WPACKETW(38) = 0; // guild_emblem_id
-		//WPACKETW(40) = 0; // manner
-		//WPACKETW(42) = 0; // sd->opt3
-		//WPACKETB(44) = 0; // karma
-		WPACKETB(45) = (rand() % 2); // sex
-		// show it anywhere outside the 'normal' screen (normal user can not look it) 30 tiles are visible on screen of big resolution -> 38 (+8 for security)
-		i = 0;
-		do {
-			if ((rand() % 2) == 0) {
-				x = sd->bl.x + 38 + (rand() % AREA_SIZE); // outside area limit (not visible in normal client)
-			} else {
-				x = sd->bl.x - 38 - (rand() % AREA_SIZE); // outside area limit (not visible in normal client)
-			}
-			if ((rand() % 2) == 0) {
-				y = sd->bl.y + 38 + (rand() % AREA_SIZE); // outside area limit (not visible in normal client)
-			} else {
-				y = sd->bl.y - 38 - (rand() % AREA_SIZE); // outside area limit (not visible in normal client)
-			}
-			i++;
-		} while ((x < 0 || x >= map[sd->bl.m].xs || y < 0 || y >= map[sd->bl.m].ys) && i < 100);
-		// don't send it if not in correct coordinates
-		if (i < 100) {
-			//printf("antibot_action: char coord %d,%d, fake char coord %d,%d.\n", sd->bl.x, sd->bl.y, x, y);
-			WBUFPOS(WPACKETP(0), 46, x, y);
-			WPACKETB(48) |= sd->dir & 0x0f;
-			WPACKETB(49) = 5;
-			WPACKETB(50) = 5;
-			WPACKETB(51) = (rand() % 2) * 2; // dead_sit: 0: standup, 1: dead, 2: sit
-			WPACKETW(52) = (rand() % 98) + 1; // level -> not do 99 to avoid 'lightning area'
-			SENDPACKET(sd->fd, packet_len_table[0x1d8]);
-			// update flag
-			sd->state.bot_flag++; // 0: no bot action done, 1: far fake player sended, 2: far fake player deleted, 3: hiden fake player sended, 4: hiden fake player deleted, 5: like 1, 6: like 2
-		// not send it -> not removed it after
-		} else {
-			// update flag
-			sd->state.bot_flag += 2; // 0: no bot action done, 1: far fake player sended, 2: far fake player deleted, 3: hiden fake player sended, 4: hiden fake player deleted, 5: like 1, 6: like 2
-		}
-		break;
-
-	case 1:
-	case 5:
-		// if player not walks -> wait a moment
-		if (sd->walktimer == -1 && (rand() % 10) != 0)
-			return;
-		// just after:
-		// take fake player out of screen
-		clif_clearchar_id(server_char_id, 0, sd->fd);
-		// update flag
-		sd->state.bot_flag++; // 0: no bot action done, 1: far fake player sended, 2: far fake player deleted, 3: hiden fake player sended, 4: hiden fake player deleted, 5: like 1, 6: like 2
-		break;
-
-	case 2:
-		// if player moves -> do another time
-		if (sd->walktimer != -1)
-			return;
-		// not immediatly
-		if ((rand() % 10) != 0)
-			return;
-		// send fake player (exactly same of the player, with);HIDE option and char_id of the wisp server name)
-		memset(WPACKETP(0), 0, packet_len_table[0x1d8]);
-		WPACKETW( 0) = 0x1d8;
-		WPACKETL( 2) = server_char_id;
-		WPACKETW( 6) = DEFAULT_WALK_SPEED; // sd->speed;
-		//WPACKETW( 8) = 0; // sd->opt1
-		//WPACKETW(10) = 0; // sd->opt2
-		WPACKETW(12) = OPTION_HIDE;
-		WPACKETW(14) = sd->view_class;
-		WPACKETW(16) = sd->status.hair;
-		if (sd->equip_index[9] >= 0 && sd->inventory_data[sd->equip_index[9]] && sd->view_class != 22) {
-			if (sd->inventory_data[sd->equip_index[9]]->view_id > 0)
-				WPACKETW(18) = sd->inventory_data[sd->equip_index[9]]->view_id;
-			else
-				WPACKETW(18) = sd->status.inventory[sd->equip_index[9]].nameid;
-//		} else {
-//			WPACKETW(18) = 0;
-		}
-		if (sd->equip_index[8] >= 0 && sd->equip_index[8] != sd->equip_index[9] && sd->inventory_data[sd->equip_index[8]] && sd->view_class != 22) {
-			if (sd->inventory_data[sd->equip_index[8]]->view_id > 0)
-				WPACKETW(20) = sd->inventory_data[sd->equip_index[8]]->view_id;
-			else
-				WPACKETW(20) = sd->status.inventory[sd->equip_index[8]].nameid;
-//		} else {
-//			WPACKETW(20) = 0;
-		}
-		WPACKETW(22) = sd->status.head_bottom;
-		WPACKETW(24) = sd->status.head_top;
-		WPACKETW(26) = sd->status.head_mid;
-		WPACKETW(28) = sd->status.hair_color;
-		WPACKETW(30) = sd->status.clothes_color;
-		WPACKETW(32) = sd->head_dir;
-		WPACKETL(34) = sd->status.guild_id;
-		WPACKETW(38) = sd->guild_emblem_id;
-		//WPACKETW(40) = 0; // sd->status.manner
-		//WPACKETW(42) = 0; // sd->opt3
-		//WPACKETB(44) = 0; // sd->status.karma
-		WPACKETB(45) = sd->sex;
-		// show it anywhere because it's removed in next loop (normal user can not look it)
-		i = 0;
-		do {
-			x = sd->bl.x + rand() % AREA_SIZE - AREA_SIZE / 2; // not in area limit, near the player
-			y = sd->bl.y + rand() % AREA_SIZE - AREA_SIZE / 2; // not in area limit, near the player
-			i++;
-		} while ((x < 0 || x >= map[sd->bl.m].xs || y < 0 || y >= map[sd->bl.m].ys || (x == sd->bl.x && y == sd->bl.y)) && i < 100);
-		if (i < 100) {
-			WBUFPOS(WPACKETP(0), 46, x, y);
-		} else {
-			WBUFPOS(WPACKETP(0), 46, sd->bl.x, sd->bl.y);
-		}
-		WPACKETB(48) |= sd->dir & 0x0f;
-		WPACKETB(49) = 5;
-		WPACKETB(50) = 5;
-		WPACKETB(51) = sd->state.dead_sit; // 0: standup, 1: dead, 2: sit
-		WPACKETW(52) = ((level = sd->status.base_level) > battle_config.max_lv) ? battle_config.max_lv : level;
-		SENDPACKET(sd->fd, packet_len_table[0x1d8]);
-
-		// send a fake monster
-		memset(WPACKETP(0), 0, packet_len_table[0x7c]);
-		WPACKETW( 0) = 0x7c;
-		WPACKETL( 2) = server_fake_mob_id;
-		WPACKETW( 6) = sd->speed;
-		//WPACKETW( 8) = 0;
-		//WPACKETW(10) = 0;
-		WPACKETW(12) = OPTION_HIDE;
-		fake_mob = fake_mob_list[(sd->bl.m + sd->fd + sd->status.char_id) % (sizeof(fake_mob_list) / sizeof(fake_mob_list[0]))]; // never same mob
-		if (mobdb_checkid(fake_mob) == 0)
-			fake_mob = 1002; // poring (default)
-		WPACKETW(20) = fake_mob;
-		// show it anywhere because it's removed in next loop (normal user can not look it)
-		i = 0;
-		do {
-			x = sd->bl.x + rand() % AREA_SIZE - AREA_SIZE / 2; // not in area limit, near the player
-			y = sd->bl.y + rand() % AREA_SIZE - AREA_SIZE / 2; // not in area limit, near the player
-			i++;
-		} while ((x < 0 || x >= map[sd->bl.m].xs || y < 0 || y >= map[sd->bl.m].ys) && i < 100);
-		if (i < 100) {
-			WBUFPOS(WPACKETP(0), 36, x, y);
-		} else {
-			WBUFPOS(WPACKETP(0), 36, sd->bl.x, sd->bl.y);
-		}
-		SENDPACKET(sd->fd, packet_len_table[0x7c]);
-
-		// update flag
-		sd->state.bot_flag++; // 0: no bot action done, 1: far fake player sended, 2: far fake player deleted, 3: hiden fake player sended, 4: hiden fake player deleted, 5: like 1, 6: like 2
-		break;
-
-	case 3:
-		// not immediatly
-		if ((rand() % 10) != 0)
-			return;
-		// take fake mob out of screen
-		clif_clearchar_id(server_fake_mob_id, 0, sd->fd);
-		// take fake player out of screen
-		clif_clearchar_id(server_char_id, 0, sd->fd);
-		// update flag
-		sd->state.bot_flag++; // 0: no bot action done, 1: far fake player sended, 2: far fake player deleted, 3: hiden fake player sended, 4: hiden fake player deleted, 5: like 1, 6: like 2
-		break;
-	}
-	//printf("antibot_action: account %d, char %d (%s), new flag: %d.\n", sd->status.account_id, sd->status.char_id, sd->status.name, sd->state.bot_flag);
-
-	return;
-}
-#endif
-
 /*==========================================
  * 007d �N���C�A���g���}�b�v�ǂݍ��݊���
  * map�N��ɕK�v�ȃf�[�^��S�đ������
@@ -8159,22 +7949,6 @@ void clif_parse_LoadEndAck(int fd, struct map_session_data *sd) { // S 0x007d
 		clif_changemap(sd, map[sd->bl.m].name, sd->bl.x, sd->bl.y);
 		return;
 	}
-
-#ifdef ANTIBOT_SYSTEM
-	// restart all anti-bot system every time you change of map
-	// remove fake people from screen, because with flying wings, you can se them
-	if ((sd->state.bot_flag % 2) == 1) { // 0: no bot action done, 1: far fake player sended, 2: far fake player deleted, 3: hiden fake player sended, 4: hiden fake player deleted, 5: like 1, 6: like 2
-		// remove fake people from screen, because with flying wings, you can se them
-		// take fake mob out of screen
-		clif_clearchar_id(server_fake_mob_id, 0, sd->fd);
-		// take fake player out of screen
-		clif_clearchar_id(server_char_id, 0, sd->fd);
-	}
-	if (!battle_config.ban_bot) // if ban bot destect disabled
-		sd->state.bot_flag = 6; // 0: no bot action done, 1: far fake player sended, 2: far fake player deleted, 3: hiden fake player sended, 4: hiden fake player deleted, 5: like 1, 6: like 2
-	else
-		sd->state.bot_flag = 0; // 0: no bot action done, 1: far fake player sended, 2: far fake player deleted, 3: hiden fake player sended, 4: hiden fake player deleted, 5: like 1, 6: like 2
-#endif
 
 	// �ڑ�ok��
 	//clif_authok();
@@ -8303,10 +8077,7 @@ void clif_parse_LoadEndAck(int fd, struct map_session_data *sd) { // S 0x007d
 
 	if ((npc = npc_name2id(script_config.loadmap_event_name))) {
 		if(npc->bl.m == sd->bl.m) {
-			run_script(npc->u.scr.script, 0, sd->bl.id, npc->bl.id); // PCLoadMapEvent
-	#ifdef __DEBUG
-			printf("Event '" CL_WHITE "%s" CL_RESET "' executed.\n", script_config.loadmap_event_name);
-	#endif
+			run_script(npc->u.scr.script, 0, sd->bl.id, npc->bl.id);
 		}
 	}
 
@@ -8422,40 +8193,34 @@ void clif_parse_TickSend(int fd, struct map_session_data *sd) { // S 0x007e <cli
 }
 
 /*==========================================
- *
+ * S 0x0085 <X_Y>.3B
  *------------------------------------------
  */
-void clif_parse_WalkToXY(int fd, struct map_session_data *sd) { // S 0x0085 <X_Y>.3B
+void clif_parse_WalkToXY(int fd, struct map_session_data *sd) {
+
 	int x, y;
 
-//	nullpo_retv(sd); // checked before to call function
-
+	// Dead players cannot move
 	if (pc_isdead(sd)) {
 		clif_clearchar_area(&sd->bl, 1);
 		return;
 	}
 
-	if (pc_issit(sd)) // Client cannot send walk packet if player is sitting. But with hacker and latency... do a check
-		return; // To avoid: Have regeneration of a sitting man, but not be sit down.
+	// Sitting players cannot move
+	if (pc_issit(sd))
+		return;
 
+	// Players vending, in a trade, in a chatroom, or speaking with an NPC cannot move
 	if (sd->bl.prev == NULL || sd->npc_id != 0|| sd->vender_id != 0 || sd->trade_partner != 0 || sd->chatID != 0)
 		return;
 
-	if (sd->skilltimer != -1 && pc_checkskill(sd, SA_FREECAST) <= 0)
+	// Players in Sprint-mode cannot click-move
+	if (sd->sc_data[SC_RUN].timer != -1)
 		return;
 
-	if(pc_cant_move(sd))
+	// Additional checks to make sure the player can move
+	if (!unit_can_move(&sd->bl))
 		return;
-
-	if((sd->status.option&2) && pc_checkskill(sd, RG_TUNNELDRIVE) <= 0)
-		return;
-
-	if(sd->sc_data[SC_RUN].timer != -1)
-		return;
-
-	pc_delinvincibletimer(sd);
-
-	pc_stopattack(sd);
 
 	switch (sd->packet_ver) { // 0: old, 1: 7july04, 2: 13july04, 3: 26july04, 4: 9aug04/16aug04/17aug04, 5: 6sept04, 6: 21sept04, 7: 18oct04, 8: 25oct04/08nov04, 9: 6dec04, 10: 10jan05, 11: 9may05, 12: 28jun05, 13: 4april06
 	case 13:
@@ -8515,9 +8280,19 @@ void clif_parse_WalkToXY(int fd, struct map_session_data *sd) { // S 0x0085 <X_Y
 		y = ((RFIFOB(fd,3) & 0x3f) << 4) + (RFIFOB(fd,4) >> 4);
 		break;
 	}
-	// If player don't click always the same position
-	if (sd->to_x != x || sd->to_y != y)
-		pc_walktoxy(sd, x, y);
+
+	// If the target position is the same as the current position, cannot move
+	if (sd->to_x == x && sd->to_y == y)
+		return;
+
+	// Players within the 3 second map change invincible time limit will no longer be protected upon moving
+	pc_delinvincibletimer(sd);
+
+	// Players attacking an enemy will cease attacking upon moving
+	pc_stopattack(sd);
+
+	// Move the player
+	pc_walktoxy(sd, x, y);
 
 	return;
 }
@@ -8561,85 +8336,6 @@ void clif_parse_QuitGame(int fd, struct map_session_data *sd) { // S 0x018a ?.w
  *------------------------------------------
  */
 void check_fake_id(struct map_session_data *sd, int target_id) {
-#ifdef ANTIBOT_SYSTEM	//Lagged clients could request names of already gone mobs/players = misban!	
-	// if player asks for the fake player (only bot and modified client can see a hiden player)
-	if (target_id == server_char_id) {
-		char message_to_gm[MAX_MSG_LEN + 100]; // max size of msg_txt + security (char name, char id, etc...) (100)
-		// to avoid some possible problem with players, don't accept detection if player is not in the process of detection
-		// note: always detect if it's for a HIDDEN id.
-		if (sd->state.bot_flag == 0 || sd->state.bot_flag == 2 || sd->state.bot_flag == 6) // 0: no bot action done, 1: far fake player sended, 2: far fake player deleted, 3: hiden fake player sended, 4: hiden fake player deleted, 5: like 1, 6: like 2
-			return;
-
-		sprintf(message_to_gm, msg_txt(622), sd->status.name, sd->status.account_id); // Character '%s' (account: %d) try to use a bot (it tries to detect a fake player).
-		intif_wis_message_to_gm(wisp_server_name, battle_config.hack_info_GM_level, message_to_gm);
-		// if we block people
-		if (battle_config.ban_bot < 0) {
-			chrif_char_ask_name(-1, sd->status.name, 1, 0, 0, 0, 0, 0, 0); // type: 1 - block
-			clif_setwaitclose(sd->fd); // forced to disconnect because of the hack
-			// message about the ban
-			sprintf(message_to_gm, msg_txt(540)); //  This player has been definitivly blocked.
-		// if we ban people
-		} else if (battle_config.ban_bot > 0) {
-			chrif_char_ask_name(-1, sd->status.name, 2, 0, 0, 0, 0, battle_config.ban_bot, 0); // type: 2 - ban (year, month, day, hour, minute, second)
-			clif_setwaitclose(sd->fd); // forced to disconnect because of the hack
-			// message about the ban
-			sprintf(message_to_gm, msg_txt(507), battle_config.ban_bot); //  This player has been banned for %d minute(s).
-		} else { // impossible to display: we don't send fake player if battle_config.ban_bot is == 0
-			// message about the ban
-			sprintf(message_to_gm, msg_txt(508)); //  This player hasn't been banned (Ban option is disabled).
-		}
-		intif_wis_message_to_gm(wisp_server_name, battle_config.hack_info_GM_level, message_to_gm);
-		// send this info cause the bot ask until get an answer, damn spam
-		WPACKETW(0) = 0x95;
-		WPACKETL(2) = server_char_id;
-		strncpy(WPACKETP(6), sd->status.name, 24);
-		SENDPACKET(sd->fd, packet_len_table[0x95]);
-		// take fake player out of screen
-		clif_clearchar_id(server_char_id, 0, sd->fd);
-		// take fake mob out of screen
-		clif_clearchar_id(server_fake_mob_id, 0, sd->fd);
-		// update flag
-		sd->state.bot_flag = 6; // 0: no bot action done, 1: far fake player sended, 2: far fake player deleted, 3: hiden fake player sended, 4: hiden fake player deleted, 5: like 1, 6: like 2
-		// if player asks for the fake mob (only bot and modified client can see a hiden mob)
-
-	} else if (target_id == server_fake_mob_id) {
-		int fake_mob;
-		char message_to_gm[MAX_MSG_LEN + 100]; // max size of msg_txt + security (char name, char id, etc...) (100)
-		sprintf(message_to_gm, msg_txt(623), sd->status.name, sd->status.account_id); // Character '%s' (account: %d) try to use a bot (it tries to detect a fake mob).
-		intif_wis_message_to_gm(wisp_server_name, battle_config.hack_info_GM_level, message_to_gm);
-		// if we block people
-		if (battle_config.ban_bot < 0) {
-			chrif_char_ask_name(-1, sd->status.name, 1, 0, 0, 0, 0, 0, 0); // type: 1 - block
-			clif_setwaitclose(sd->fd); // forced to disconnect because of the hack
-			// message about the ban
-			sprintf(message_to_gm, msg_txt(540)); //  This player has been definitivly blocked.
-		// if we ban people
-		} else if (battle_config.ban_bot > 0) {
-			chrif_char_ask_name(-1, sd->status.name, 2, 0, 0, 0, 0, battle_config.ban_bot, 0); // type: 2 - ban (year, month, day, hour, minute, second)
-			clif_setwaitclose(sd->fd); // forced to disconnect because of the hack
-			// message about the ban
-			sprintf(message_to_gm, msg_txt(507), battle_config.ban_bot); //  This player has been banned for %d minute(s).
-		} else { // impossible to display: we don't send fake player if battle_config.ban_bot is == 0
-			// message about the ban
-			sprintf(message_to_gm, msg_txt(508)); //  This player hasn't been banned (Ban option is disabled).
-		}
-		intif_wis_message_to_gm(wisp_server_name, battle_config.hack_info_GM_level, message_to_gm);
-		// send this info cause the bot ask until get an answer, damn spam
-		WPACKETW(0) = 0x95;
-		WPACKETL(2) = server_fake_mob_id;
-		fake_mob = fake_mob_list[(sd->bl.m + sd->fd + sd->status.char_id) % (sizeof(fake_mob_list) / sizeof(fake_mob_list[0]))]; // never same mob
-		if (mobdb_checkid(fake_mob) == 0)
-			fake_mob = 1002; // poring (default)
-		strncpy(WPACKETP(6), mob_db[fake_mob].name, 24);
-		SENDPACKET(sd->fd, packet_len_table[0x95]);
-		// take fake mob out of screen
-		clif_clearchar_id(server_fake_mob_id, 0, sd->fd);
-		// take fake player out of screen
-		clif_clearchar_id(server_char_id, 0, sd->fd);
-		// update flag
-		sd->state.bot_flag = 6; // 0: no bot action done, 1: far fake player sended, 2: far fake player deleted, 3: hiden fake player sended, 4: hiden fake player deleted, 5: like 1, 6: like 2
-	}
-#endif
 
 	return;
 }
@@ -11980,17 +11676,6 @@ void clif_parse_GMReqNoChat(int fd, struct map_session_data *sd) { // S 0149 <ID
 	if (!bl || bl->type != BL_PC)
 		return;
 	nullpo_retv(dstsd =(struct map_session_data *)bl);
-	
-	//printf("player id:%d, type:%d, limit:%d.\n", tid, type, limit);
-
-	if (type == 2 && limit == 60 && battle_config.check_ban_bot < 100) {
-		if (tid == dstsd->bl.id && dstsd->followtimer == -1) { // if not follow someone (@follow GM command)
-			char message_to_gm[MAX_MSG_LEN + 100]; // max size of msg_txt + security (char name, char id, etc...) (100)
-			sprintf(message_to_gm, "Possible BOT usage with player '%s' (account: %d; GM lvl: %d).", dstsd->status.name, dstsd->status.account_id, sd->GM_level);
-			intif_wis_message_to_gm(wisp_server_name, battle_config.check_ban_bot, message_to_gm);
-			//printf("Bot usage on connection %d: player '%s' (account: %d; GM lvl: %d).\n", fd, sd->status.name, sd->status.account_id, sd->GM_level);
-		}
-	}
 
 	if (!battle_config.muting_players) {
 		// don't display message if player follows another
@@ -13072,11 +12757,6 @@ static int clif_parse(int fd) {
 					clif_parse_func_table[packet_ver][cmd](fd, sd);
 					// if not tick (automatic packet)
 					if (clif_parse_func_table[packet_ver][cmd] != clif_parse_TickSend) {
-#ifdef ANTIBOT_SYSTEM						
-						// check antibot
-						if (sd->state.bot_flag < 6) // 0: no bot action done, 1: far fake player sended, 2: far fake player deleted, 3: hiden fake player sended, 4: hiden fake player deleted, 5: like 1, 6: like 2
-							antibot_action(sd); // IMPORTANT: after parse, to know if player is moving
-#endif
 						// check inactiv player
 						if (battle_config.idle_disconnect != 0 &&
 						    clif_parse_func_table[packet_ver][cmd] != clif_parse_GetCharNameRequest) // not charname solve (mouse can stay in front, and player doesn't ask for)

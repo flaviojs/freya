@@ -30,6 +30,7 @@
 #include "grfio.h"
 #include "status.h"
 #include "ranking.h"
+#include "unit.h"
 
 #ifdef MEMWATCH
 #include "memwatch.h"
@@ -2664,26 +2665,19 @@ int skill_cleartimerskill(struct block_list *src)
 	return 0;
 }
 
-/* 範囲スキル使用処理小分けここまで
- * -------------------------------------------------------------------------
- */
-
-
 /*==========================================
- * スキル使用（詠唱完了、ID指定攻撃系）
- * （スパゲッティに向けて１歩前進！(ダメポ)）
+ *
  *------------------------------------------
  */
-int skill_castend_damage_id(struct block_list* src, struct block_list *bl, int skillid, int skilllv, unsigned int tick, int flag)
-{
+int skill_castend_damage_id(struct block_list* src, struct block_list *bl, int skillid, int skilllv, unsigned int tick, int flag) {
+
 	struct map_session_data *sd = NULL;
 	struct status_change *sc_data;
-	int i;
-	int ninjacalc;
+	int i = 0;
+	int njcalc = 0;
 	int race = status_get_race(bl);
 
 	if (skillid < 0) {
-		//printf("skill_castend_damage_id: skillid=%i(lvl:%d)\ncall: %p %p %i %i %i %i", skillid, skilllv, src, bl, skillid, skilllv, tick, flag);
 		return 0;
 	}
 	if (skillid > 0 && skilllv <= 0) return 0;
@@ -2732,7 +2726,6 @@ int skill_castend_damage_id(struct block_list* src, struct block_list *bl, int s
 	case WS_CARTTERMINATION:
 	case AS_VENOMKNIFE:
 	case HT_PHANTASMIC:
-
 	case NPC_PIERCINGATT:
 	case NPC_MENTALBREAKER:
 	case NPC_RANGEATTACK:
@@ -2760,13 +2753,10 @@ int skill_castend_damage_id(struct block_list* src, struct block_list *bl, int s
 	case NPC_BREAKWEAPON:
 	case NPC_BREAKHELM:
 	case NPC_BREAKSHIELD:
-
 	case LK_AURABLADE:
 	case LK_SPIRALPIERCE:
 	case LK_HEADCRUSH:
 	case LK_JOINTBEAT:
-//	case PA_SACRIFICE:
-//	case SN_SHARPSHOOTING:
 	case CG_ARROWVULCAN:
 	case HW_MAGICCRASHER:
 	case ITM_TOMAHAWK:
@@ -2815,20 +2805,6 @@ int skill_castend_damage_id(struct block_list* src, struct block_list *bl, int s
 		else
 			map_foreachinpath(skill_attack_area, src->m, src->x, src->y, bl->x, bl->y, 2, 0, BF_WEAPON, src, src, skillid, skilllv, tick, flag, BCT_ENEMY);
 		break;
-
-	/*case PA_PRESSURE:
-		skill_attack(BF_WEAPON, src, src, bl, skillid, skilllv, tick, flag);
-		if (rand() % 100 < 50)
-			status_change_start(bl, SC_STUN, skilllv, 0, 0, 0, skill_get_time2(PA_PRESSURE, skilllv), 0);
-		else
-			if (rand() % 100 < (50 - (status_get_vit(bl) / 10)))
-				status_change_start(bl, SC_BLEEDING, skilllv, 0, 0, 0, skill_get_time2(PA_PRESSURE, skilllv), 0);
-		if (bl->type == BL_PC) {
-			struct map_session_data *tsd = (struct map_session_data *)bl;
-			tsd->status.sp -= (tsd->status.sp * (15 + 5 * skilllv) / 100);
-			clif_updatestatus(tsd, SP_SP);
-		}
-		break;*/
 
 	case NPC_DARKBREATH:
 		clif_emotion(src,7);
@@ -3338,10 +3314,10 @@ int skill_castend_damage_id(struct block_list* src, struct block_list *bl, int s
 
 	// Experimental Implementation (Should use Unit Skill mode, currently does not), also missing graphical effects [Tsuyuki]
 	case NJ_TATAMIGAESHI:
-		if (skilllv == 1) ninjacalc = 1;
-		if (skilllv == 2 || skilllv == 3) ninjacalc = 2;
-		if (skilllv >= 4) ninjacalc = 3;
-		map_foreachinarea(skill_attack_area, src->m, src->x-ninjacalc, bl->y-ninjacalc, bl->x+ninjacalc, bl->y+ninjacalc, 0, BF_WEAPON, src, src, skillid, skilllv, tick, flag, BCT_ENEMY);
+		if (skilllv == 1) njcalc = 1;
+		if (skilllv == 2 || skilllv == 3) njcalc = 2;
+		if (skilllv >= 4) njcalc = 3;
+		map_foreachinarea(skill_attack_area, src->m, src->x-njcalc, bl->y-njcalc, bl->x+njcalc, bl->y+njcalc, 0, BF_WEAPON, src, src, skillid, skilllv, tick, flag, BCT_ENEMY);
 		status_change_start(bl, SkillStatusChangeTable[skillid], skilllv, 0, 0, 0, skill_get_time(skillid, skilllv), 0);
 		clif_specialeffect(bl, 631, 0);
 		break;
@@ -3353,11 +3329,11 @@ int skill_castend_damage_id(struct block_list* src, struct block_list *bl, int s
 		break;
 
 	case NJ_RAIGEKISAI:
-		ninjacalc = 5;
-		if(skilllv == 1 || skilllv == 2) ninjacalc = 5;
-		else if(skilllv == 3 || skilllv == 4) ninjacalc = 7;
-		else if(skilllv >= 5) ninjacalc = 9;
-		map_foreachinarea(skill_attack_area, src->m, src->x-ninjacalc, bl->y-ninjacalc, bl->x+ninjacalc, bl->y+ninjacalc, 0, BF_MAGIC, src, src, skillid, skilllv, tick, flag, BCT_ENEMY);
+		njcalc = 5;
+		if(skilllv == 1 || skilllv == 2) njcalc = 5;
+		else if(skilllv == 3 || skilllv == 4) njcalc = 7;
+		else if(skilllv >= 5) njcalc = 9;
+		map_foreachinarea(skill_attack_area, src->m, src->x-njcalc, bl->y-njcalc, bl->x+njcalc, bl->y+njcalc, 0, BF_MAGIC, src, src, skillid, skilllv, tick, flag, BCT_ENEMY);
 		skill_castend_pos2(src,bl->x,bl->y,skillid,skilllv,tick,0);
 		clif_specialeffect(bl, 622, 0);
 		break;
@@ -4908,7 +4884,7 @@ int skill_castend_nodamage_id(struct block_list *src, struct block_list *bl, int
 	case RG_STRIPHELM:
 	case ST_FULLSTRIP:
 	{
-		int equip, strip_fix;
+		int equip = 0, strip_fix = 0;
 		int sclist[4] = {0, 0, 0, 0};
 
 		/* dex effects the success rate */
@@ -6823,7 +6799,7 @@ void skill_castend_map(struct map_session_data *sd, int skill_num, const char *m
 struct skill_unit_group *skill_unitsetting(struct block_list *src, int skillid, int skilllv, int x, int y, int flag)
 {
 	struct skill_unit_group *group;
-	int i,limit, val1 = 0, val2 = 0, val3 = 0;
+	int i = 0,limit, val1 = 0, val2 = 0, val3 = 0;
 	int count = 0;
 	int target, interval, range, unit_flag;
 	struct skill_unit_layout *layout;
@@ -8865,7 +8841,7 @@ int skill_check_condition(struct map_session_data *sd, int type) {
 	case ST_MOVE_ENABLE:
 		{
 			struct walkpath_data wpd;
-			if(pc_cant_move(sd)) {
+			if(!unit_can_move(&sd->bl)) {
 				clif_skill_fail(sd, skill, 0, 0);
 				return 0;
 			}

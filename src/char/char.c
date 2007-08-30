@@ -6685,10 +6685,6 @@ void do_init(const int argc, char **argv) {
 	addons_enable_all();
 #endif
 
-#ifdef __DEBUG
-	printf("The char-server is running in " CL_WHITE "Debug Mode" CL_RESET ".\n");
-#endif
-
 	if (strcmp(listen_ip, "0.0.0.0") == 0) {
 		char_log("The char-server is ready (listening on the port %d - from any ip)." RETCODE, char_port);
 		printf("The char-server is " CL_GREEN "ready" CL_RESET " (listening on the port " CL_WHITE "%d" CL_RESET " - from any ip).\n", char_port);

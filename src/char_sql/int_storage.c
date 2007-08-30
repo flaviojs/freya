@@ -549,11 +549,6 @@ void load_storage(const int account_id, struct storage *s) {
 	for (i = 0; i < storage_num; i++)
 		if (storagedb[i].account_id == account_id) {
 			storage_fromstr(storagedb[i].s_line, s);
-#ifdef USE_SQL
-#ifdef __DEBUG
-			//printf("Storage already in memory - account_id: %d - no SQL request.\n", account_id);
-#endif /* __DEBUG */
-#endif /* USE_SQL */
 			break;
 		}
 
@@ -586,9 +581,6 @@ void load_storage(const int account_id, struct storage *s) {
 			}
 		}
 		s->storage_amount = i;
-#ifdef __DEBUG
-		//printf("Storage load complete from DB - account_id: %d.\n", account_id);
-#endif /* __DEBUG */
 #endif /* USE_SQL */
 		// add storage in memory
 		storage_tostr(line, s);
@@ -619,11 +611,6 @@ void load_guild_storage(const int guild_id, struct guild_storage *gs) {
 	for (i = 0; i < guild_storage_num; i++)
 		if (guild_storagedb[i].guild_id == guild_id) {
 			guild_storage_fromstr(guild_storagedb[i].s_line, gs);
-#ifdef USE_SQL
-#ifdef __DEBUG
-			//printf("Guild storage already in memory - guild_id: %d - no SQL request.\n", guild_id);
-#endif /* __DEBUG */
-#endif /* USE_SQL */
 			break;
 		}
 
@@ -657,9 +644,6 @@ void load_guild_storage(const int guild_id, struct guild_storage *gs) {
 			}
 		}
 		gs->storage_amount = i;
-#ifdef __DEBUG
-		//printf("Guild storage load complete from DB - guild_id: %d.\n", guild_id);
-#endif /* __DEBUG */
 #endif /* USE_SQL */
 		// add guild storage in memory
 		guild_storage_tostr(line, gs);

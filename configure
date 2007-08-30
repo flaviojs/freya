@@ -22,10 +22,8 @@ WITH_MYSQL="no"
 WITH_MYSQL_PATH="/usr/local/mysql:/usr/local:/usr:/"
 WITH_LIBM="/usr/local"
 WITH_ZLIB="yes"
-WITH_DEBUG="yes"
 WITH_OPTIMIZE="std"
 WITH_WIN32="no"
-WITH_ANTIBOT="no"
 WITH_PRO="no"
 WITH_FDS=1024
 WITH_C99="no"
@@ -159,10 +157,6 @@ do
 		echo ' --with-fds=n             set maximum number of connections [1024]'
 		echo ' --with-optimize=LEVEL    set compiler optimization level (read below) [std]'
 		echo ' --with-c99               enable C99 standard for compiling'
-		echo ' --with-debug             enable debugging'
-		echo ' --with-debug=gprof       enable debugging and profiling'
-		echo ' --without-debug          disable debugging (and profiling)'
-		echo ' --with-antibot           enable the embedded antibot system (experimental code)'
 		echo ' --with-win32             cross-compile for Win32'
 		echo
 		echo 'You can pass parameters to --with-mysql to say where you have'
@@ -197,9 +191,6 @@ cd $TEMP
 
 # first : lowercase it
 WITH_OPTIMIZE=`echo $WITH_OPTIMIZE | sed -e 'y/ABCDEFGHIJKLMNOPQRSTUVWXYZ/abcdefghijklmnopqrstuvwxyz/'`
-if [ "$WITH_DEBUG" != "no" ]; then
-	WITH_OPTIMIZE="none"
-fi
 # then test the value
 if [ "$WITH_OPTIMIZE" = "low" ]; then
 	CC_OPTIONS="$CC_OPTIONS -O1"
@@ -216,14 +207,6 @@ if [ "$WITH_OPTIMIZE" = "size" ]; then
 fi
 
 ##### ENABLE -g GCC FLAG ?
-
-if [ x"$WITH_DEBUG" != x"no" ]; then
-	CC_OPTIONS="$CC_OPTIONS -g -ggdb"
-	if [ x"$WITH_DEBUG" = x"gprof" ]; then
-		CC_OPTIONS="$CC_OPTIONS -pg"
-		COMP_OPTIONS="-pg"
-	fi
-fi
 
 ##### C99 ?
 
@@ -915,24 +898,12 @@ if [ "$WITH_MYSQL" != no ]; then
 	echo "#undef TXT_ONLY" >>$CONFIGFILE
 	echo "#define USE_SQL" >>$CONFIGFILE
 	echo "#define USE_MYSQL" >>$CONFIGFILE
-	echo "#undef USE_SQLITE" >>$CONFIGFILE
 	echo >>$CONFIGFILE
 else
 	echo "/* MySQL support disabled */" >>$CONFIGFILE
 	echo "#define TXT_ONLY" >>$CONFIGFILE
 	echo "#undef USE_SQL" >>$CONFIGFILE
 	echo "#undef USE_MYSQL" >>$CONFIGFILE
-	echo "#undef USE_SQLITE" >>$CONFIGFILE
-	echo >>$CONFIGFILE
-fi
-
-if [ x"$WITH_PRO" != x"no" ]; then
-	echo "/* FreyaPro enabled */" >>$CONFIGFILE
-	echo "#define FREYA_PRO" >>$CONFIGFILE
-	echo >>$CONFIGFILE
-else
-	echo "/* FreyaPro disabled */" >>$CONFIGFILE
-	echo "#undef FREYA_PRO" >>$CONFIGFILE
 	echo >>$CONFIGFILE
 fi
 
@@ -983,26 +954,6 @@ fi
 echo "/* enable dynamic addon linking */" >>$CONFIGFILE
 echo "#define DYNAMIC_LINKING" >>$CONFIGFILE
 echo >>$CONFIGFILE
-
-if [ "$WITH_DEBUG" != "no" ]; then
-	echo "/* Debug mode enabled */" >>$CONFIGFILE
-	echo "#define __DEBUG" >>$CONFIGFILE
-	echo >>$CONFIGFILE
-else
-	echo "/* Debug mode disabled */" >>$CONFIGFILE
-	echo "#undef __DEBUG" >>$CONFIGFILE
-	echo >>$CONFIGFILE
-fi
-
-if [ x"$WITH_ANTIBOT" != x"no" ]; then
-	echo "/* Experimental Anti-Bot System Enabled */" >>$CONFIGFILE
-	echo "#define ANTIBOT_SYSTEM" >>$CONFIGFILE
-	echo >>$CONFIGFILE
-else
-	echo "/* Experimental Anti-Bot System Disabled */" >>$CONFIGFILE
-	echo "#undef ANTIBOT_SYSTEM" >>$CONFIGFILE
-	echo >>$CONFIGFILE
-fi
 
 # usage of standard ISO/IEC 9899:1999
 if [ x"$WITH_C99" = x"yes" ]; then

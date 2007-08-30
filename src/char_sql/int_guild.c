@@ -454,9 +454,6 @@ void read_castles_data() {
 					gc->Ghp5 = tmp_int[23];
 					gc->Ghp6 = tmp_int[24];
 					gc->Ghp7 = tmp_int[25]; // end additions [Valaris]
-#ifdef __DEBUG
-//					printf("read_castles_data: castle id #%d (guild: %d) [%s] read.\n", tmp_int[0], tmp_int[1], castle_txt);
-#endif
 				} else
 					printf("read_castles_data: invalid castle id (%d) [%s] line %d.\n", tmp_int[0], castle_txt, c);
 			// old structure of guild castle
@@ -516,9 +513,6 @@ void read_castles_data() {
 						gc->Ghp7 = 28634 + 2000 * gc->defense;
 					else
 						gc->Ghp7 = 0;
-#ifdef __DEBUG
-//					printf("read_castles_data: castle id #%d (guild: %d) [%s] read.\n", tmp_int[0], tmp_int[1], castle_txt);
-#endif
 				} else
 					printf("read_castles_data: invalid castle id (%d) [%s] line %d.\n", tmp_int[0], castle_txt, c);
 			} else {
@@ -564,9 +558,6 @@ void read_castles_data() {
 				gc->Ghp5 = sql_get_integer(23);
 				gc->Ghp6 = sql_get_integer(24);
 				gc->Ghp7 = sql_get_integer(25);
-#ifdef __DEBUG
-//				printf("read_castles_data: castle id #%d (guild: %d) [%s] read.\n", c, sql_get_integer(1), guild_castle_db);
-#endif
 			} else {
 				printf("read_castles_data: invalid castle id (%d) [%s].\n", c, guild_castle_db);
 				sql_request("DELETE FROM `%s` WHERE `castle_id`='%d'", guild_castle_db, c);
@@ -608,39 +599,6 @@ void castles_save() {
 //		printf("castles_save: %s saved.\n", castle_txt);
 	}
 #endif /* TXT_ONLY */
-
-#ifdef USE_SQL
-/* ---------- not used
-	struct guild_castle *gc; // speed up
-	int i;
-	char line[65536];
-
-	memset(tmp_sql, 0, sizeof(tmp_sql));
-	for (i = 0; i < MAX_GUILDCASTLE; i++) {
-		gc = &castle_db[i];
-		if (tmp_sql[0] == '\0') {
-			tmp_sql_len = sprintf(tmp_sql, "REPLACE INTO `%s` "
-			              "(`castle_id`, `guild_id`, `economy`, `defense`, `triggerE`, `triggerD`, `nextTime`, `payTime`, `createTime`,"
-			              "`visibleC`, `visibleG0`, `visibleG1`, `visibleG2`, `visibleG3`, `visibleG4`, `visibleG5`, `visibleG6`, `visibleG7`,"
-			              "`Ghp0`, `Ghp1`, `Ghp2`, `Ghp3`, `Ghp4`, `Ghp5`, `Ghp6`, `Ghp7`)"
-			              "VALUES ('%d','%d','%d','%d','%d','%d','%d','%d','%d','%d','%d','%d','%d','%d','%d','%d','%d','%d','%d','%d','%d','%d','%d','%d','%d','%d')",
-			              guild_castle_db,
-			              gc->castle_id, gc->guild_id, gc->economy, gc->defense, gc->triggerE, gc->triggerD, gc->nextTime, gc->payTime,
-			              gc->createTime, gc->visibleC, gc->visibleG0, gc->visibleG1, gc->visibleG2, gc->visibleG3, gc->visibleG4, gc->visibleG5,
-			              gc->visibleG6, gc->visibleG7, gc->Ghp0, gc->Ghp1, gc->Ghp2, gc->Ghp3, gc->Ghp4, gc->Ghp5, gc->Ghp6, gc->Ghp7);
-		} else
-			tmp_sql_len += sprintf(tmp_sql + tmp_sql_len, ", ('%d','%d','%d','%d','%d','%d','%d','%d','%d','%d','%d','%d','%d','%d','%d','%d','%d','%d','%d','%d','%d','%d','%d','%d','%d','%d')",
-			               gc->castle_id, gc->guild_id, gc->economy, gc->defense, gc->triggerE, gc->triggerD, gc->nextTime, gc->payTime,
-			               gc->createTime, gc->visibleC, gc->visibleG0, gc->visibleG1, gc->visibleG2, gc->visibleG3, gc->visibleG4, gc->visibleG5,
-			               gc->visibleG6, gc->visibleG7, gc->Ghp0, gc->Ghp1, gc->Ghp2, gc->Ghp3, gc->Ghp4, gc->Ghp5, gc->Ghp6, gc->Ghp7);
-		// don't check length here, 65536 is enough for all information.
-	}
-	if (tmp_sql[0] != '\0') {
-		//printf("%s\n", tmp_sql);
-		sql_request(tmp_sql);
-	}
-//	printf("castles_save: %s saved.\n", guild_castle_db);*/
-#endif /* USE_SQL */
 
 #ifdef TXT_ONLY
 	return;

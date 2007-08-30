@@ -31,9 +31,8 @@ ve_fild07.gat,56,73,4	script	Sailor#veins	934,{
 
 		if (Zeny < 500) goto L_NeedZeny;
 		set Zeny,Zeny-500;
-		// close2;
-		if (isday(0)) warp "nameless_i.gat",257,215;
-		if (isnight(0)) warp "nameless_n.gat",257,215;
+		if ((gettime(3) > 6) || (gettime(3) < 18)) warp "nameless_i.gat",257,215;
+		if ((gettime(3) < 6) || (gettime(3) > 18)) warp "nameless_n.gat",257,215;
 		end;
 
 	L_Cancel:

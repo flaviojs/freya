@@ -12,8 +12,8 @@
 #include <windows.h>
 #else
 #ifdef WITH_C99
-#include <sys/utsname.h> // uname
-#include <netdb.h> // gethostbyname
+#include <sys/utsname.h>
+#include <netdb.h>
 #endif
 #include <sys/socket.h>
 #include <netinet/in.h>
@@ -21,9 +21,9 @@
 #include <net/if.h>
 #include <sys/time.h>
 #include <sys/ioctl.h>
-#include <arpa/inet.h> /* for inet_addr */
+#include <arpa/inet.h>
 #ifndef SIOCGIFCONF
-#include <sys/sockio.h> // SIOCGIFCONF on Solaris, maybe others? [Shinomori]
+#include <sys/sockio.h>
 #endif
 #endif
 
@@ -31,7 +31,7 @@
 #include <string.h>
 #include <unistd.h>
 #include <errno.h>
-#include <ctype.h> // iscntrl
+#include <ctype.h>
 
 #include "mmo.h"
 #include "socket.h"
@@ -44,8 +44,8 @@
 
 fd_set readfds; //, sendpacketfd;
 
-#define RFIFO_SIZE (2*1024) /* a player that send more than 2k is probably a hacker without be parsed */
-                            /* biggest known packet: S 0153 <len>.w <emblem data>.?B -> 24x24 256 color .bmp (0153 + len.w + 1618/1654/1756 bytes) */
+#define RFIFO_SIZE (2*1024)
+
 #define WFIFO_SIZE (4*1024)
 
 char listen_ip[16] = "0.0.0.0"; // by default: any adresses are binded // 15 + NULL
@@ -74,8 +74,6 @@ static int recv_to_fifo(int fd) {
 	struct socket_data *s = session[fd];
 	int len;
 
-//	printf("recv_to_fifo : %d %d\n", fd, s->eof);
-
 	if (s->eof)
 		return -1;
 	if (s->max_rdata == s->rdata_size)
@@ -85,43 +83,27 @@ static int recv_to_fifo(int fd) {
 	len = recv(fd, s->rdata + s->rdata_size, s->max_rdata - s->rdata_size, 0);
 	if (len == SOCKET_ERROR) {
 		if (WSAGetLastError() != WSAEWOULDBLOCK) {
-//			printf("Error %d, set eof at reading of connection #%d\n", WSAGetLastError(), fd);
 			s->eof = 1;
 		}
 		return 0;
-	} else if (len <= 0) { // If the connection has been gracefully closed, the return value is zero. (http://msdn.microsoft.com/library/default.asp?url=/library/en-us/winsock/winsock/recv_2.asp)
+	} else if (len <= 0) { // If the connection has been gracefully closed, the return value is zero.
 #else
 	len = read(fd, s->rdata + s->rdata_size, s->max_rdata - s->rdata_size);
 	if (len <= 0) {
 #endif
 
-//		printf("Set eof at reading of connection #%d\n", fd);
 		s->eof = 1;
 		return 0;
 	} else {
 
-//		printf("recv %d : \n", fd);
-
 		s->rdata_size += len;
-//		printf("Session #%d, read %d, total read %d, max possible %d\n", fd, len, s->rdata_size, s->max_rdata);
-		// if Server FIFO
 		if (s->max_rdata > RFIFO_SIZE) {
 			if (s->max_rdata == s->rdata_size) {
-#ifdef __DEBUG
-//				unsigned char *sin_addr = (unsigned char *)&s->client_addr.sin_addr;
-//				printf("socket #%d (ip: %d.%d.%d.%d):\n", fd, sin_addr[0], sin_addr[1], sin_addr[2], sin_addr[3]);
-//				printf("  rdata, all bytes (%d) are used -> expanded to %d bytes.\n", s->max_rdata, s->max_rdata << 1);
-#endif
 				realloc_fifo(fd, s->max_rdata << 1, s->max_wdata);
 				s->not_used_big_rdata = 0;
 			// if big buffer is not more used
 			} else if (s->max_rdata > RFIFOSIZE_SERVER && s->rdata_size < s->max_rdata / 4) {
 				if (s->not_used_big_rdata++ >= 16) { // need 16 times to verify
-#ifdef __DEBUG
-//					unsigned char *sin_addr = (unsigned char *)&s->client_addr.sin_addr;
-//					printf("socket #%d (ip: %d.%d.%d.%d): increased rdata (%d bytes) not more used:\n", fd, sin_addr[0], sin_addr[1], sin_addr[2], sin_addr[3], s->max_rdata);
-//					printf("  used: %d bytes, free: %d bytes, reduced to %d bytes.\n", s->rdata_size, s->max_rdata - s->rdata_size, s->max_rdata >> 1);
-#endif
 					s->max_rdata = s->max_rdata >> 1;
 					REALLOC(s->rdata, char, s->max_rdata);
 					/* not need to set at 0 new bytes */
@@ -137,15 +119,12 @@ static int recv_to_fifo(int fd) {
 
 // ----------------------------------
 static int send_from_fifo(int fd) {
+
 	struct socket_data *s = session[fd];
 	int len, resized_value, step_size;
 #ifndef __WIN32
 	int counter;
 #endif
-
-//	printf("send_from_fifo : %d\n", fd);
-//	if (s->eof) // if we close connection, we can not send last information (you're been disconnected, etc...)
-//		return -1;
 
 	// if client FIFO
 	if (s->max_rdata == RFIFO_SIZE)
@@ -156,16 +135,9 @@ static int send_from_fifo(int fd) {
 		// if big buffer is not more used
 		if (s->wdata_size < s->max_wdata / 4) {
 			if (s->not_used_big_wdata++ >= 32) { // need 32 times to verify
-#ifdef __DEBUG
-//				unsigned char *sin_addr = (unsigned char *)&s->client_addr.sin_addr;
-//				printf("socket #%d (ip: %d.%d.%d.%d): increased wdata (%d bytes) not more used:\n", fd, sin_addr[0], sin_addr[1], sin_addr[2], sin_addr[3], s->max_wdata);
-#endif
 				resized_value = step_size;
 				while (resized_value < s->wdata_size)
 					resized_value += step_size;
-#ifdef __DEBUG
-//				printf("  used: %d bytes, free: %d bytes, reduced to %d bytes.\n", s->wdata_size, s->max_wdata - s->wdata_size, resized_value);
-#endif
 				REALLOC(s->wdata, char, resized_value);
 				s->max_wdata = resized_value;
 				/* not need to set at 0 new bytes */
@@ -179,7 +151,6 @@ static int send_from_fifo(int fd) {
 		len = send(fd, s->wdata, s->wdata_size, 0);
 		if (len == SOCKET_ERROR) {
 			if (WSAGetLastError() != WSAEWOULDBLOCK) {
-//				printf("Error %d, set eof at writing on connection #%d.\n", WSAGetLastError(), fd);
 #else
 	counter = 0;
 	do {
@@ -188,16 +159,12 @@ static int send_from_fifo(int fd) {
 		len = write(fd, s->wdata, s->wdata_size);
 		if (len < 0) {
 			if (errno != EAGAIN) {
-//				printf("Error %d, set eof at writing on connection #%d.\n", errno, fd);
 #endif
 
 				s->eof = 1;
 			}
 			return 0;
 		} else if (len > 0) {
-//			printf("send %d : \n", fd);
-
-//			printf("Session #%d, writen %d, total to write %d, rest: %d\n", fd, len, s->wdata_size, s->wdata_size - len);
 			if (len < s->wdata_size) {
 				memmove(s->wdata, s->wdata + len, s->wdata_size - len);
 				s->wdata_size -= len;
@@ -320,9 +287,6 @@ static int connect_client(int listen_fd) {
 	socklen_t len;
 #endif
 	int yes;
-//	unsigned char *p;
-
-	//printf("connect_client: %d\n", listen_fd);
 
 	len = sizeof(client_address);
 
@@ -332,13 +296,11 @@ static int connect_client(int listen_fd) {
 #else
 	if (fd == -1) {
 #endif
-		//perror("connect_client: accept error.");
 		return -1;
 	}
 
 	yes = 1;
 	if (setsockopt(fd, SOL_SOCKET, SO_REUSEADDR, (char *)&yes, sizeof yes) != 0) {
-		//perror("connect_client: setsockopt (SOL_SOCKET) error.");
 #ifdef __WIN32
 		closesocket(fd); // not started, not use shutdown(fd, SD_BOTH);
 #else
@@ -349,7 +311,6 @@ static int connect_client(int listen_fd) {
 #ifdef SO_REUSEPORT
 	yes = 1;
 	if (setsockopt(fd, SOL_SOCKET, SO_REUSEPORT, (char *)&yes, sizeof yes) != 0) {
-		//perror("connect_client: setsockopt (SO_REUSEPORT) error.");
 #ifdef __WIN32
 		closesocket(fd); // not started, not use shutdown(fd, SD_BOTH);
 #else
@@ -360,7 +321,6 @@ static int connect_client(int listen_fd) {
 #endif
 	yes = 1;
 	if (setsockopt(fd, IPPROTO_TCP, TCP_NODELAY, (char *)&yes, sizeof yes) != 0) {
-		//perror("connect_client: setsockopt (TCP_NODELAY) error.");
 #ifdef __WIN32
 		closesocket(fd); // not started, not use shutdown(fd, SD_BOTH);
 #else
@@ -378,28 +338,24 @@ static int connect_client(int listen_fd) {
 	// If iMode = 0, blocking is enabled;
 	// If iMode != 0, non-blocking mode is enabled.
 	unsigned long iMode = 1;
-	if (ioctlsocket(fd, FIONBIO, &iMode) != 0) { // http://msdn.microsoft.com/library/default.asp?url=/library/en-us/winsock/winsock/ioctlsocket_2.asp
-		//perror("connect_client: ioctlsocket error.");
+	if (ioctlsocket(fd, FIONBIO, &iMode) != 0) {
 		closesocket(fd); // not started, not use shutdown(fd, SD_BOTH);
 		return -1;
 	}
   }
 #else
 	if (fcntl(fd, F_SETFL, O_NONBLOCK) == -1) { // error
-		//perror("connect_client: fcntl error.");
 		close(fd);
 		return -1;
 	}
 #endif
 
 #ifdef __WIN32
-	// set SO_LINGER option (http://msdn.microsoft.com/library/default.asp?url=/library/en-us/winsock/winsock/closesocket_2.asp)
   {
 	struct linger opt;
 	opt.l_onoff = 1; // If SO_LINGER is enabled with a zero time-out: it always returns immediately —connection is reset/terminated.
 	opt.l_linger = 0;
 	if (setsockopt(fd, SOL_SOCKET, SO_LINGER, (char*)&opt, sizeof(opt)) != 0) {
-		//perror("connect_client: setsockopt (SO_LINGER) error.");
 		closesocket(fd); // not started, not use shutdown(fd, SD_BOTH);
 		return -1;
 	}
@@ -408,7 +364,6 @@ static int connect_client(int listen_fd) {
 
 	// check array
 	if (fd < 1 || fd >= FD_SETSIZE) { // it's possible with windows! (don't check fd = 0, keyboard)
-		//perror("connect_client: fd < 0 || fd >= FD_SETSIZE error.");
 #ifdef __WIN32
 		closesocket(fd); // not started, not use shutdown(fd, SD_BOTH);
 #else
@@ -433,9 +388,6 @@ static int connect_client(int listen_fd) {
 	session[fd]->func_parse  = default_func_parse;
 	session[fd]->client_addr = client_address;
 
-//	p = (unsigned char*) &session[fd]->client_addr.sin_addr;
-//	printf("New session #%d from  from %d.%d.%d.%d.\n", fd, p[0], p[1], p[2], p[3]);
-
 	return fd;
 }
 
@@ -450,7 +402,7 @@ int make_listen_port(int port) {
 		exit(1);
 	}
 
-	fd = socket(AF_INET, SOCK_STREAM, 0); // under winsock: SOCKET type is unsigned (http://msdn.microsoft.com/library/default.asp?url=/library/en-us/winsock/winsock/porting_socket_applications_to_winsock.asp)
+	fd = socket(AF_INET, SOCK_STREAM, 0); // under winsock: SOCKET type is unsigned
 #ifdef __WIN32
 	if (fd == INVALID_SOCKET) {
 #else
@@ -487,7 +439,7 @@ int make_listen_port(int port) {
 	// If iMode = 0, blocking is enabled;
 	// If iMode != 0, non-blocking mode is enabled.
 	unsigned long iMode = 1;
-	if (ioctlsocket(fd, FIONBIO, &iMode) != 0) { // http://msdn.microsoft.com/library/default.asp?url=/library/en-us/winsock/winsock/ioctlsocket_2.asp
+	if (ioctlsocket(fd, FIONBIO, &iMode) != 0) {
 		perror("ioctlsocket error (socket.c: make_listen_port).");
 		exit(1);
 	}
@@ -500,7 +452,6 @@ int make_listen_port(int port) {
 #endif
 
 #ifdef __WIN32
-	// set SO_LINGER option (http://msdn.microsoft.com/library/default.asp?url=/library/en-us/winsock/winsock/closesocket_2.asp)
   {
 	struct linger opt;
 	opt.l_onoff = 1; // If SO_LINGER is enabled with a zero time-out: it always returns immediately —connection is reset/terminated.
@@ -514,7 +465,6 @@ int make_listen_port(int port) {
 
 	server_address.sin_family        = AF_INET;
 	server_address.sin_addr.s_addr   = inet_addr(listen_ip);
-	/*server_address.sin_addr.s_addr = htonl(INADDR_ANY);*/
 	server_address.sin_port          = htons(port);
 
 	if (bind(fd, (struct sockaddr*)&server_address, sizeof(server_address)) != 0) { // error when not 0 (can be -1 or any other value)
@@ -681,7 +631,7 @@ int make_connection(long ip, int port) {
 	int fd;
 	int yes;
 
-	fd = socket(AF_INET, SOCK_STREAM, 0); // under winsock: SOCKET type is unsigned (http://msdn.microsoft.com/library/default.asp?url=/library/en-us/winsock/winsock/porting_socket_applications_to_winsock.asp)
+	fd = socket(AF_INET, SOCK_STREAM, 0); // under winsock: SOCKET type is unsigned
 #ifdef __WIN32
 	if (fd == INVALID_SOCKET) {
 #else
@@ -735,7 +685,7 @@ int make_connection(long ip, int port) {
 	// If iMode = 0, blocking is enabled;
 	// If iMode != 0, non-blocking mode is enabled.
 	unsigned long iMode = 1;
-	if (ioctlsocket(fd, FIONBIO, &iMode) != 0) { // http://msdn.microsoft.com/library/default.asp?url=/library/en-us/winsock/winsock/ioctlsocket_2.asp
+	if (ioctlsocket(fd, FIONBIO, &iMode) != 0) {
 		perror("ioctlsocket error (socket.c: make_connection).");
 		closesocket(fd); // not started, not use shutdown(fd, SD_BOTH);
 		return -1;
@@ -750,7 +700,6 @@ int make_connection(long ip, int port) {
 #endif
 
 #ifdef __WIN32
-	// set SO_LINGER option (http://msdn.microsoft.com/library/default.asp?url=/library/en-us/winsock/winsock/closesocket_2.asp)
   {
 	struct linger opt;
 	opt.l_onoff = 1; // If SO_LINGER is enabled with a zero time-out: it always returns immediately —connection is reset/terminated.
@@ -862,20 +811,11 @@ void SENDPACKET(const int fd, const int len) {
 
 	// if buffer is too short
 	if (s->wdata_size + len > s->max_wdata) {
-#ifdef __DEBUG
-//		unsigned char *sin_addr = (unsigned char *)&session[fd]->client_addr.sin_addr;
-//		printf("Socket #%d (ip: %d.%d.%d.%d): too short wdata (%d bytes).\n", fd, sin_addr[0], sin_addr[1], sin_addr[2], sin_addr[3], s->max_wdata);
-//		printf("  used: %d bytes, free: %d bytes.\n", s->wdata_size, s->max_wdata - s->wdata_size);
-//		printf("  packet 0x%X (%d bytes) need mode space -> need to be expanded.\n", *(unsigned short*)WPACKETBUF, len);
-#endif
 		resized_value = s->max_wdata;
 		// if client FIFO
 		if (s->max_rdata == RFIFO_SIZE) {
 			// if already more than 4 Mb, when disconnect player
 			if (s->max_wdata > 4 * 1024 * 1024) { /* more than 4 Mb ??? */
-#ifdef __DEBUG
-//				printf("  Client's socket #%d: Too big wdata -> disconnection.\n", fd);
-#endif
 				s->eof = 1;
 				return;
 			}
@@ -887,9 +827,6 @@ void SENDPACKET(const int fd, const int len) {
 		REALLOC(s->wdata, char, resized_value);
 		/* not need to set at 0 new bytes */
 		s->max_wdata = resized_value;
-#ifdef __DEBUG
-//		printf("  wdata expanded to %d bytes.\n", s->max_wdata);
-#endif
 		s->not_used_big_wdata = 0;
 	}
 
@@ -904,7 +841,7 @@ void SENDPACKET(const int fd, const int len) {
 int do_sendrecv(int next) {
 	fd_set rfd, wfd;
 #ifdef __WIN32
-	fd_set err_fd; // exceptfds: * If processing a connect call (nonblocking), connection attempt failed. (http://msdn.microsoft.com/library/default.asp?url=/library/en-us/winsock/winsock/closesocket_2.asp)
+	fd_set err_fd; // exceptfds: * If processing a connect call (nonblocking), connection attempt failed.
 #endif
 	struct timeval timeout;
 	int ret, i;
@@ -933,7 +870,7 @@ int do_sendrecv(int next) {
 	memcpy(&rfd, &readfds, sizeof(rfd)); // copy read fd of console too ;)
 //	rfd = readfds;
 #ifdef __WIN32
-	memcpy(&err_fd, &readfds, sizeof(err_fd)); // exceptfds: * If processing a connect call (nonblocking), connection attempt failed. (http://msdn.microsoft.com/library/default.asp?url=/library/en-us/winsock/winsock/closesocket_2.asp)
+	memcpy(&err_fd, &readfds, sizeof(err_fd)); // exceptfds: * If processing a connect call (nonblocking), connection attempt failed.
 	ret = select(fd_max, &rfd, &wfd, &err_fd, &timeout);
 #else
 	ret = select(fd_max, &rfd, &wfd, NULL, &timeout);
@@ -945,7 +882,7 @@ int do_sendrecv(int next) {
 		FD_ZERO(&rfd);
 		FD_ZERO(&wfd);
 #ifdef __WIN32
-		FD_ZERO(&err_fd); // exceptfds: * If processing a connect call (nonblocking), connection attempt failed. (http://msdn.microsoft.com/library/default.asp?url=/library/en-us/winsock/winsock/closesocket_2.asp)
+		FD_ZERO(&err_fd); // exceptfds: * If processing a connect call (nonblocking), connection attempt failed.
 #endif
 		for(i = 1; i < fd_max; i++) { // without keyboard (fd = 0)
 			if (!session[i])
@@ -995,7 +932,7 @@ int do_sendrecv(int next) {
 			if (!session[i])
 				continue;
 #ifdef __WIN32
-			if (FD_ISSET(i, &err_fd)) { // exceptfds: * If processing a connect call (nonblocking), connection attempt failed. (http://msdn.microsoft.com/library/default.asp?url=/library/en-us/winsock/winsock/closesocket_2.asp)
+			if (FD_ISSET(i, &err_fd)) { // exceptfds: * If processing a connect call (nonblocking), connection attempt failed.
 				session[i]->eof = 1; // set eof
 				continue;
 			}
@@ -1124,7 +1061,7 @@ int Net_Init(void) {
 #else // WITH_C99
 
 	int pos;
-	int fdes = socket(AF_INET, SOCK_STREAM, 0); // under winsock: SOCKET type is unsigned (http://msdn.microsoft.com/library/default.asp?url=/library/en-us/winsock/winsock/porting_socket_applications_to_winsock.asp)
+	int fdes = socket(AF_INET, SOCK_STREAM, 0); // under winsock: SOCKET type is unsigned
 	char buf[16 * sizeof(struct ifreq)];
 	struct ifconf ic;
 

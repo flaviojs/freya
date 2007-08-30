@@ -462,7 +462,6 @@ int status_get_guild_id(struct block_list *bl);
 int status_get_race(struct block_list *bl);
 int status_get_size(struct block_list *bl);
 int status_get_mode(struct block_list *bl);
-// int status_get_mexp(struct block_list *bl);
 int status_get_race2(struct block_list *bl);
 int status_isdead(struct block_list *bl);
 int status_isimmune(struct block_list *bl);

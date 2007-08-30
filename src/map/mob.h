@@ -102,8 +102,6 @@ int mob_spawn_guardian(struct map_session_data *sd, char *mapname,
 
 
 int mob_walktoxy(struct mob_data *md, int x, int y, int easy);
-// int mob_randomwalk(struct mob_data *md, unsigned int tick);
-// int mob_can_move(struct mob_data *md);
 
 int mob_target(struct mob_data *md, struct block_list *bl, int dist);
 void mob_stop_walking(struct mob_data *md, int type);

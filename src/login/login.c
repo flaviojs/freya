@@ -5085,10 +5085,6 @@ void do_init(const int argc, char **argv) {
 	addons_enable_all();
 #endif
 
-#ifdef __DEBUG
-	printf("The login-server is running in " CL_WHITE "Debug Mode" CL_RESET ".\n");
-#endif
-
 	/* server port open & binding */
 	login_fd = make_listen_port(login_port);
 	if (strcmp(listen_ip, "0.0.0.0") == 0) {

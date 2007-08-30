@@ -318,8 +318,6 @@ int buildin_logmes(struct script_state *st);
 int buildin_summon(struct script_state *st);
 int buildin_night(struct script_state *st);
 int buildin_day(struct script_state *st);
-int buildin_isnight(struct script_state *st);
-int buildin_isday(struct script_state *st);
 int buildin_isequipped(struct script_state *st);
 int buildin_isequippedcnt(struct script_state *st);
 int buildin_getusersname(struct script_state *st);
@@ -347,10 +345,7 @@ struct {
 	char *arg;
 } buildin_func[] = {
 	{buildin_mes,"mes","s"},
-	{buildin_mes,"dialog","s"},
-	{buildin_mes,"show","s"},
 	{buildin_next,"next",""},
-	{buildin_next,"wait",""},
 	{buildin_close,"close",""},
 	{buildin_close2,"close2",""},
 	{buildin_menu,"menu","*"},
@@ -360,15 +355,11 @@ struct {
 	{buildin_return,"return","*"},
 	{buildin_getarg,"getarg","i"},
 	{buildin_jobchange,"jobchange","i*"},
-	{buildin_jobchange,"setjob","i*"},
 	{buildin_input,"input","*"},
-	{buildin_input,"digit","*"},
 	{buildin_warp,"warp","sii"},
-	{buildin_warp,"moveto","sii"},
 	{buildin_areawarp,"areawarp","siiiisii"},
 	{buildin_setlook,"setlook","ii"},
 	{buildin_set,"set","ii"},
-	{buildin_set,"var","ii"},
 	{buildin_setarray,"setarray","ii*"},
 	{buildin_cleararray,"cleararray","iii"},
 	{buildin_copyarray,"copyarray","iii"},
@@ -377,12 +368,9 @@ struct {
 	{buildin_getelementofarray,"getelementofarray","ii"},
 	{buildin_if,"if","i*"},
 	{buildin_getitem,"getitem","ii**"},
-	{buildin_getitem,"additem","ii**"},
 	{buildin_getitem2,"getitem2","iiiiiiiii*"},
-	{buildin_getitem2,"additem2","iiiiiiiii*"},
 	{buildin_makeitem,"makeitem","iisii"},
 	{buildin_delitem,"delitem","ii"},
-	{buildin_delitem,"dropitem","ii"},
 	{buildin_cutin,"cutin","si"},
 	{buildin_cutincard,"cutincard","i"},
 	{buildin_viewpoint,"viewpoint","iiiii"},
@@ -401,7 +389,6 @@ struct {
 	{buildin_getguildmaster,"getguildmaster","i"},
 	{buildin_getguildmasterid,"getguildmasterid","i"},
 	{buildin_strcharinfo,"strcharinfo","i"},
-	{buildin_strcharinfo,"pcname","i"},
 	{buildin_getequipid,"getequipid","i"},
 	{buildin_getequipname,"getequipname","i"},
 	{buildin_getbrokenid,"getbrokenid","i"},
@@ -469,7 +456,6 @@ struct {
 	{buildin_areaannounce,"areaannounce","siiiisi"},
 	{buildin_getusers,"getusers","i"},
 	{buildin_getmapusers,"getmapusers","s"},
-	{buildin_getmapusers,"getmapallusers","s"},
 	{buildin_getmapusers2,"getmapusers2","s"},
 	{buildin_getmapusers2,"getmapaliveusers","s"},
 	{buildin_getmapusers3,"getmapusers3","s"},
@@ -590,8 +576,6 @@ struct {
 	{buildin_summon,"summon","si*"},
 	{buildin_night,"night","i"},
 	{buildin_day,"day","i"},
-	{buildin_isnight,"isnight","i"},
-	{buildin_isday,"isday","i"},
 	{buildin_isequipped,"isequipped","i*"},
 	{buildin_isequipped,"equippeditem","*"},
 	{buildin_isequippedcnt,"isequippedcnt","i*"},
@@ -1848,6 +1832,7 @@ int buildin_rand(struct script_state *st) {
  *------------------------------------------
  */
 int buildin_warp(struct script_state *st) {
+
 	int x, y;
 	char *str;
 	struct map_session_data *sd = script_rid2sd(st);
@@ -1856,8 +1841,7 @@ int buildin_warp(struct script_state *st) {
 	x = conv_num(st, &(st->stack->stack_data[st->start + 3]));
 	y = conv_num(st, &(st->stack->stack_data[st->start + 4]));
 
-	// Fly/Buttlerfly Wings will no longer work while casting, kRO Patch 2/1/2006 [Proximus]
-	// Reference: http://ragnainfo.net/forums/viewtopic.php?t=95973
+	// Fly/Buttlerfly Wings do not work while casting
 	if(sd == NULL || sd->skilltimer != -1)
 		return 0;
 
@@ -7590,33 +7574,15 @@ int buildin_summon(struct script_state *st)
 	return 0;
 }
 
-int buildin_night(struct script_state *st)
-{
+int buildin_night(struct script_state *st) {
 	if (night_flag != 1)
 		map_night_timer(night_timer_tid, 0, 0, 1);
 
 	return 0;
 }
-int buildin_day(struct script_state *st)
-{
+int buildin_day(struct script_state *st) {
 	if (night_flag != 0)
 		map_day_timer(day_timer_tid, 0, 0, 1);
-
-	return 0;
-}
-
-/*==========================================
- * Checks whether it is day-time/night-time
- *------------------------------------------
- */
-int buildin_isnight(struct script_state *st) {
-	push_val(st->stack, C_INT, (night_flag == 1));
-
-	return 0;
-}
-
-int buildin_isday(struct script_state *st) {
-	push_val(st->stack, C_INT, (night_flag == 0));
 
 	return 0;
 }

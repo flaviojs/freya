@@ -4664,10 +4664,6 @@ void do_init(const int argc, char **argv) {
 		printf("(for Freya version %d.%d.%d.).\n", FREYA_MAJORVERSION, FREYA_MINORVERSION, FREYA_REVISION);
 	}
 
-#ifdef __DEBUG
-	printf("Ladmin is running in " CL_WHITE "Debug Mode" CL_RESET ".\n");
-#endif
-
 	Connect_login_server();
 
 	if (defaultlanguage == 'F') {

@@ -127,9 +127,6 @@ struct map_session_data {
 	struct block_list bl;
 	struct {
 		unsigned auth : 1;
-#ifdef ANTIBOT_SYSTEM		
-		unsigned bot_flag : 3; // 0: no bot action done, 1: wait answer of player, 2: far fake player sended, 3: far fake player deleted, 4: hiden fake player sended, 5: hiden fake player deleted, 6: like 1, 7: like 2
-#endif
 		unsigned change_walk_target : 1;
 		unsigned attack_continue : 1;
 		unsigned menu_or_input : 1;

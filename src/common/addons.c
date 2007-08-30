@@ -98,7 +98,7 @@ int addons_enable_all(void) {
 }
 
 int addons_load(char *addon_file, char addon_target) {
-	// load addon...
+
 	char *modulename;
 	struct _Module *mod;
 	ModuleHeader *mod_header;
@@ -107,9 +107,6 @@ int addons_load(char *addon_file, char addon_target) {
 	if (!call_table) init_calltable();
 	CALLOC(modulename, char, strlen(addon_file) + 7 + 5); // 7 = "addons/", 5 = ".so\0" or ".dll\0"
 	sprintf(modulename, "addons/%s" ADDONS_EXT, addon_file);
-#ifdef __DEBUG
-	printf("Loading addon: %s\n", modulename);
-#endif
 	CALLOC(mod, struct _Module, 1);
 
 	mod->dll = mod_dlopen(modulename, RTLD_NOW);

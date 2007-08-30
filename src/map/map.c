@@ -594,59 +594,6 @@ void map_foreachinmovearea(int (*func)(struct block_list*,va_list), int m, int x
 	bl_list_count = blockcount;
 }
 
-/*// -- moonsoul	(added map_foreachincell which is a rework of map_foreachinarea but
-//			 which only checks the exact single x/y passed to it rather than an
-//			 area radius - may be more useful in some instances)
-//
-void map_foreachincell(int (*func)(struct block_list*,va_list), int m, int x, int y, int type,...) {
-	int bx, by;
-	struct block_list *bl;
-	va_list ap;
-	int blockcount = bl_list_count, i;
-
-	va_start(ap,type);
-
-	by = y / BLOCK_SIZE;
-	bx = x / BLOCK_SIZE;
-
-	// any blocks
-	if (type == 0) {
-		for(bl = map[m].block[bx + by * map[m].bxs]; bl; bl = bl->next) {
-			if (bl->x == x && bl->y == y && bl_list_count < BL_LIST_MAX)
-				bl_list[bl_list_count++] = bl;
-		}
-		for(bl = map[m].block_mob[bx + by * map[m].bxs]; bl; bl = bl->next) {
-			if (bl->x == x && bl->y == y && bl_list_count < BL_LIST_MAX)
-				bl_list[bl_list_count++] = bl;
-		}
-	// only monsters
-	} else if (type == BL_MOB) {
-		for(bl = map[m].block_mob[bx + by * map[m].bxs]; bl; bl = bl->next) {
-			if (bl->x == x && bl->y == y && bl_list_count < BL_LIST_MAX)
-				bl_list[bl_list_count++] = bl;
-		}
-	// only 1 type, except monsters
-	} else {
-		for(bl = map[m].block[bx + by * map[m].bxs]; bl; bl = bl->next) {
-			if (bl->type != type)
-				continue;
-			if (bl->x == x && bl->y == y && bl_list_count < BL_LIST_MAX)
-				bl_list[bl_list_count++] = bl;
-		}
-	}
-
-	map_freeblock_lock(); // �����������̉������֎~����
-
-	for(i = blockcount; i < bl_list_count; i++)
-		if (bl_list[i]->prev) // �L�����ǂ����`�F�b�N
-			func(bl_list[i],ap);
-
-	map_freeblock_unlock(); // ���������
-
-	va_end(ap);
-	bl_list_count = blockcount;
-}*/
-
 /*============================================================
 * For checking a path between two points (x0, y0) and (x1, y1)
 *------------------------------------------------------------
@@ -1112,15 +1059,13 @@ void map_deliddb(struct block_list *bl) {
  *------------------------------------------
  */
 void map_quit(struct map_session_data *sd) {
+
 	nullpo_retv(sd);
 
 	if (sd->state.event_disconnect) {
 		struct npc_data *npc;
 		if ((npc = npc_name2id(script_config.logout_event_name))) {
 			run_script(npc->u.scr.script, 0, sd->bl.id, npc->bl.id); // PCLogoutNPC
-#ifdef __DEBUG
-			printf("Event '" CL_WHITE "%s" CL_RESET "' executed.\n", script_config.logout_event_name);
-#endif
 		}
 	}
 
@@ -3027,10 +2972,6 @@ void do_init(const int argc, char *argv[])
 
 	if (battle_config.pk_mode)
 		printf(CL_WHITE "Server: " CL_RESET "The server is running in " CL_RED "PK Mode" CL_RESET ".\n");
-
-#ifdef __DEBUG
-	printf(CL_WHITE "Server: " CL_RESET "The map-server is running in " CL_WHITE "Debug Mode" CL_RESET ".\n");
-#endif
 
 	if (strcmp(listen_ip, "0.0.0.0") == 0) {
 		//map_log("The map-server is ready (listening on the port %d - from any ip)." RETCODE, map_port);

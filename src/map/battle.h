@@ -340,7 +340,6 @@ extern struct Battle_Config {
 	unsigned short ban_spoof_namer;
 	int ban_hack_trade;
 	int ban_bot;
-	unsigned short check_ban_bot;
 	unsigned short max_message_length;
 	unsigned short max_global_message_length;
 	unsigned short hack_info_GM_level;

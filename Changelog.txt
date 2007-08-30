@@ -10,6 +10,15 @@
 
 Date	Added
 
+08/30/2007
+	* Added: A few more statuses to be dispelled upon map change [Tsuyuki]
+	* Fixed: OnTouch: is now checked for when players warp / teleport / change maps [Tsuyuki]
+	* Merged: mob_can_move and pc_cant_move functions into one -> unit_can_move [Tsuyuki]
+	 - Updated mechanics as well
+	* Removed: Some unnecessary duplicate script commands (dialog, wait, additem, etc) [Tsuyuki]
+	* Removed: Unnecessary isday / isnight script commands (Use gettime() instead) [Tsuyuki]
+	* Removed: Ancient Anti-Bot system [Tsuyuki]
+
 08/29/2007
 	* Fixed: Safety Wall blocking close-ranged magic attacks [Tsuyuki]
 	* Fixed: Stone Curse is now dispelled upon map changing if it's in its second phase [Tsuyuki]
