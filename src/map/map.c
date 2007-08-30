@@ -8,7 +8,7 @@
 #include <string.h>
 #include <stdarg.h>
 #include <unistd.h>
-#include <math.h> // floor
+#include <math.h>
 #include <locale.h>
 #ifdef __WIN32
 #define __USE_W32_SOCKETS
@@ -67,10 +67,8 @@ char mob_db_db[32] = "mob_db"; // need in TXT too to generate SQL DB script (not
 char create_item_db_script = 0; // generate a script file to create SQL item_db (0: no, 1: yes)
 char create_mob_db_script = 0; // generate a script file to create SQL mob_db (0: no, 1: yes)
 
-// �ɗ� static�Ń��[�J���Ɏ��߂�
 static struct dbt * id_db;
 static struct dbt * map_db;
-//static struct dbt * nick_db; // not used
 static struct dbt * charid_db;
 
 static int users;
@@ -85,7 +83,6 @@ static int block_free_count = 0, block_free_lock = 0;
 static struct block_list *bl_list[BL_LIST_MAX];
 static int bl_list_count = 0;
 
-//struct map_data map[MAX_MAP_PER_SERVER];
 struct map_data *map = NULL;
 int map_num = 0;
 
@@ -116,32 +113,29 @@ int console = 0;
 char console_pass[1024] = "consoleon"; /* password to enable console */
 
 /*==========================================
- * �Smap�I���v�ł̐ڑ����ݒ�
- * (char�I���瑗�����Ă���)
+ *
  *------------------------------------------
  */
 void map_setusers(int n) {
+
 	users = n;
 }
 
 /*==========================================
- * �Smap�I���v�ł̐ڑ����擾 (/w�ւ̉����p)
+ *
  *------------------------------------------
  */
 int map_getusers(void) {
+
 	return users;
 }
 
-//
-// block�폜�̈�S���m�ۏ���
-//
-
 /*==========================================
- * block��free�����Ƃ�free�̕ς����ɌĂ�
- * ���b�N�����Ă����Ƃ��̓o�b�t�@�ɂ��߂�
+ *
  *------------------------------------------
  */
 int map_freeblock(void *bl) {
+
 	if (block_free_lock == 0) {
 		FREE(bl);
 	} else {
@@ -156,58 +150,48 @@ int map_freeblock(void *bl) {
 }
 
 /*==========================================
- * block��free���ꎞ�I�ɋ֎~����
+ *
  *------------------------------------------
  */
 void map_freeblock_lock(void) {
+
 	++block_free_lock;
 
 	return;
 }
 
 /*==========================================
- * block��free�̃��b�N�������
- * ���̂Ƃ��A���b�N�����S�ɂȂ��Ȃ���
- * �o�b�t�@�ɂ��܂�Ă���block���S���폜
+ *
  *------------------------------------------
  */
 void map_freeblock_unlock(void) {
+
 	int i;
 
 	if ((--block_free_lock) == 0) {
-//		printf("map_freeblock_unlock for %d blocks.\n", block_free_count);
 		for(i = 0; i < block_free_count; i++) {
-//			if (i != 0)
-//				printf("map_freeblock_unlock for %d blocks.\n", block_free_count);
 			FREE(block_free[i]);
 		}
 		block_free_count = 0;
-	}else if (block_free_lock < 0){
-		// error in code! always display //
+	} else if (block_free_lock < 0){
 		printf("map_freeblock_unlock: lock count < 0 !\n");
 	}
 
 	return;
 }
 
-//
-// block������
-//
 /*==========================================
- * map[]��block_list�����q����Ă����ꍇ��
- * bl->prev��bl_head�̃A�h���X�������Ă���
+ *
  *------------------------------------------
  */
 static struct block_list bl_head;
 
 /*==========================================
- * map[]��block_list�ɒǉ�
- * mob�͐��������̂ŕʃ��X�g
  *
- * ����link�ς݂��̊m�F�������B�댯����
  *------------------------------------------
  */
 int map_addblock(struct block_list *bl) {
+
 	int m, x, y;
 	int b;
 
@@ -248,18 +232,15 @@ int map_addblock(struct block_list *bl) {
 }
 
 /*==========================================
- * map[]��block_list�����O��
- * prev��NULL�̏ꍇlist�Ɍq����ĂȂ�
+ *
  *------------------------------------------
  */
 int map_delblock(struct block_list *bl) {
 
 	nullpo_retr(0, bl);
 
-	// ����blocklist���甲���Ă���
 	if (bl->prev == NULL) {
 		if (bl->next != NULL) {
-			// prev��NULL��next��NULL�łȂ��̂͗L��Ă͂Ȃ��Ȃ�
 			if (battle_config.error_log)
 				printf("map_delblock error : bl->next!=NULL\n");
 		}
@@ -271,8 +252,7 @@ int map_delblock(struct block_list *bl) {
 	if (bl->next)
 		bl->next->prev = bl->prev;
 	if (bl->prev == &bl_head) {
-		// ���X�g�̓��Ȃ̂ŁAmap[]��block_list���X�V����
-		if(bl->type == BL_MOB){
+		if (bl->type == BL_MOB){
 			map[bl->m].block_mob[bl->x / BLOCK_SIZE + (bl->y / BLOCK_SIZE) * map[bl->m].bxs] = bl->next;
 		} else {
 			map[bl->m].block[bl->x / BLOCK_SIZE + (bl->y / BLOCK_SIZE) * map[bl->m].bxs] = bl->next;
@@ -287,44 +267,11 @@ int map_delblock(struct block_list *bl) {
 }
 
 /*==========================================
- * ���͂�PC�l���𐔂��� (���ݖ��g�p)
- *------------------------------------------
- */
-/*int map_countnearpc(int m, int x, int y) {
-	int bx, by, bx_max, by_max, c;
-	struct block_list *bl;
-
-	if (map[m].users == 0)
-		return 0;
-
-	c = 0;
-	bx_max = x / BLOCK_SIZE + AREA_SIZE / BLOCK_SIZE + 1;
-	if (bx_max >= map[m].bxs)
-		bx_max = map[m].bxs - 1;
-	by_max = y / BLOCK_SIZE + AREA_SIZE / BLOCK_SIZE + 1;
-	if (by_max >= map[m].bys)
-		by_max = map[m].bys - 1;
-	for(by = y / BLOCK_SIZE - AREA_SIZE / BLOCK_SIZE - 1; by < by_max; by++) {
-		if (by < 0)
-			continue;
-		for(bx = x / BLOCK_SIZE - AREA_SIZE / BLOCK_SIZE - 1; bx < bx_max; bx++) {
-			if (bx < 0)
-				continue;
-			for(bl = map[m].block[bx + by * map[m].bxs]; bl; bl = bl->next){
-				if (bl->type == BL_PC)
-					c++;
-			}
-		}
-	}
-
-	return c;
-}*/
-
-/*==========================================
- * �Z������PC��MOB�̐��𐔂��� (�O�����h�N���X�p)
+ *
  *------------------------------------------
  */
 int map_count_oncell(int m, int x, int y) {
+
 	int b;
 	struct block_list *bl;
 	int count = 0;
@@ -347,10 +294,12 @@ int map_count_oncell(int m, int x, int y) {
 	return count;
 }
 
-/*
- * ����߾��������̸�Ī������������˫ëȪ�����
+/*==========================================
+ *
+ *------------------------------------------
  */
 struct skill_unit *map_find_skill_unit_oncell(struct block_list *target, int x, int y, int skill_id, struct skill_unit *out_unit) {
+
 	int m, b;
 	struct block_list *bl;
 	struct skill_unit *unit;
@@ -376,12 +325,11 @@ struct skill_unit *map_find_skill_unit_oncell(struct block_list *target, int x, 
 }
 
 /*==========================================
- * map m (x0,y0)-(x1,y1)���̑Sobj�ɑ΂���
- * func���Ă�
- * type!=0 �Ȃ炻�̎��ނ̂�
+ *
  *------------------------------------------
  */
 void map_foreachinarea(int (*func)(struct block_list*, va_list), int m, int x0, int y_0, int x1, int y_1, int type, ...) {
+
 	struct map_data *md;
 	int bx, by;
 	struct block_list *bl;
@@ -435,27 +383,24 @@ void map_foreachinarea(int (*func)(struct block_list*, va_list), int m, int x0, 
 		}
 	}
 
-	map_freeblock_lock(); // �����������̉������֎~����
+	map_freeblock_lock();
 
 	for(i = blockcount; i < bl_list_count; i++)
-		if (bl_list[i]->prev) // �L�����ǂ����`�F�b�N
+		if (bl_list[i]->prev)
 			func(bl_list[i], ap);
 
-	map_freeblock_unlock(); // ���������
+	map_freeblock_unlock();
 
 	va_end(ap);
 	bl_list_count = blockcount;
 }
 
 /*==========================================
- * ���`(x0,y0)-(x1,y1)��(dx,dy)�ړ���������
- * �̈��O�ɂȂ��̈�(���`��L���`)����obj��
- * �΂���func���Ă�
  *
- * dx,dy��-1,0,1�݂̂Ƃ����i�ǂ��Ȓl�ł�����ۂ��H�j
  *------------------------------------------
  */
 void map_foreachinmovearea(int (*func)(struct block_list*,va_list), int m, int x0, int y_0, int x1, int y_1, int dx, int dy, int type, ...) {
+
 	struct map_data *md;
 	int bx, by;
 	struct block_list *bl;
@@ -467,7 +412,6 @@ void map_foreachinmovearea(int (*func)(struct block_list*,va_list), int m, int x
 	md = &map[m];
 
 	if (dx == 0 || dy == 0) {
-		// ���`�̈��̏ꍇ
 		if (dx == 0) {
 			if (dy < 0) {
 				y_0 = y_1 + dy + 1;
@@ -521,7 +465,6 @@ void map_foreachinmovearea(int (*func)(struct block_list*,va_list), int m, int x
 			}
 		}
 	} else {
-		// L���̈��̏ꍇ
 		if (x0  < 0) x0  = 0;
 		if (y_0 < 0) y_0 = 0;
 		if (x1  >= md->xs) x1  = md->xs - 1;
@@ -582,23 +525,24 @@ void map_foreachinmovearea(int (*func)(struct block_list*,va_list), int m, int x
 		}
 	}
 
-	map_freeblock_lock(); // �����������̉������֎~����
+	map_freeblock_lock();
 
 	for(i = blockcount; i < bl_list_count; i++)
-		if (bl_list[i]->prev) // �L�����ǂ����`�F�b�N
+		if (bl_list[i]->prev)
 			func(bl_list[i], ap);
 
-	map_freeblock_unlock(); // ���������
+	map_freeblock_unlock();
 
 	va_end(ap);
 	bl_list_count = blockcount;
 }
 
-/*============================================================
-* For checking a path between two points (x0, y0) and (x1, y1)
-*------------------------------------------------------------
+/*==========================================
+ *
+ *------------------------------------------
  */
-void map_foreachinpath(int (*func)(struct block_list*, va_list), int m, int x0, int y_0, int x1, int y_1, int range, int type, ...) { // range not used
+void map_foreachinpath(int (*func)(struct block_list*, va_list), int m, int x0, int y_0, int x1, int y_1, int range, int type, ...) {
+
 	va_list ap;
 	int i, blockcount = bl_list_count;
 	struct block_list *bl;
@@ -694,26 +638,24 @@ void map_foreachinpath(int (*func)(struct block_list*, va_list), int m, int x0, 
 	}
 
 	va_start(ap,type);
-	map_freeblock_lock(); // �����������̉������֎~����
+	map_freeblock_lock();
 
 	for(i = blockcount; i < bl_list_count; i++)
-		if (bl_list[i]->prev) // �L�����ǂ����`�F�b�N
+		if (bl_list[i]->prev)
 			func(bl_list[i], ap);
 
-	map_freeblock_unlock(); // ���������
+	map_freeblock_unlock();
 
 	va_end(ap);
 	bl_list_count = blockcount;
 }
 
 /*==========================================
- * ���A�C�e�����G�t�F�N�g�p�̈ꎞobj���蓖��
- * object[]�ւ̕ۑ���id_db�o�^�܂�
  *
- * bl->id���̒��Őݒ肵�Ė��薳��?
  *------------------------------------------
  */
 int map_addobject(struct block_list *bl) {
+
 	int i;
 
 	if (bl == NULL) {
@@ -740,11 +682,11 @@ int map_addobject(struct block_list *bl) {
 }
 
 /*==========================================
- * �ꎞobject�̉���
- *	map_delobject��free���Ȃ��o�[�W����
+ *
  *------------------------------------------
  */
 int map_delobjectnofree(int id) {
+
 	struct block_list *obj = object[id];
 
 	if (obj == NULL)
@@ -765,14 +707,11 @@ int map_delobjectnofree(int id) {
 }
 
 /*==========================================
- * �ꎞobject�̉���
- * block_list�����̍폜�Aid_db�����̍폜
- * object data��free�Aobject[]�ւ�NULL����
  *
- * add�Ƃ̑Ώ̐��������̂��C�ɂȂ�
  *------------------------------------------
  */
 int map_delobject(int id) {
+
 	struct block_list *obj = object[id];
 
 	if (obj == NULL)
@@ -793,11 +732,11 @@ int map_delobject(int id) {
 }
 
 /*==========================================
- * �S�ꎞobj������func���Ă�
  *
  *------------------------------------------
  */
 void map_foreachobject(int (*func)(struct block_list*, va_list), int type, ...) {
+
 	int i;
 	int blockcount = bl_list_count;
 	va_list ap;
@@ -819,7 +758,6 @@ void map_foreachobject(int (*func)(struct block_list*, va_list), int type, ...) 
 	map_freeblock_lock();
 
 	for(i = blockcount; i < bl_list_count; i++)
-//		if (bl_list[i]->prev || bl_list[i]->next)
 		if (bl_list[i]->prev)
 			func(bl_list[i], ap);
 
@@ -830,16 +768,11 @@ void map_foreachobject(int (*func)(struct block_list*, va_list), int type, ...) 
 }
 
 /*==========================================
- * ���A�C�e�������
  *
- * data==0�̎���timer�ŏ������
- * data!=0�̎��͏E�����ŏ�������Ƃ��ē���
- *
- * ���҂́Amap_clearflooritem(id)��
- * map.h����#define���Ă���
  *------------------------------------------
  */
-int map_clearflooritem_timer(int tid, unsigned int tick, int id, int data) { // if data is set, timer is called before to be executed -> delete it
+int map_clearflooritem_timer(int tid, unsigned int tick, int id, int data) {
+
 	struct flooritem_data *fitem;
 
 	fitem = (struct flooritem_data *)object[id];
@@ -859,17 +792,15 @@ int map_clearflooritem_timer(int tid, unsigned int tick, int id, int data) { // 
 }
 
 /*==========================================
- * (m,x,y)�̎���range�}�X���̋���(=�N���\)cell��
- * �����K���ȃ}�X�ڂ̍�W��x+(y<<16)�ŕԂ�
  *
- * ����range=1�ŃA�C�e���h���b�v�p�r�̂�
  *------------------------------------------
  */
 int map_searchrandfreecell(int m, int x, int y, int range) {
+
 	int free_cell, i, j;
 
 	for(free_cell = 0, i = -range; i <= range; i++) {
-		if(i + y < 0 || i + y >=map[m].ys)
+		if (i + y < 0 || i + y >=map[m].ys)
 			continue;
 		for(j = - range; j <= range; j++){
 			if (j + x < 0 || j + x >= map[m].xs)
@@ -879,11 +810,11 @@ int map_searchrandfreecell(int m, int x, int y, int range) {
 			free_cell++;
 		}
 	}
-	if(free_cell==0)
+	if (free_cell==0)
 		return -1;
 	free_cell=rand()%free_cell;
 	for(i=-range;i<=range;i++){
-		if(i+y<0 || i+y>=map[m].ys)
+		if (i+y<0 || i+y>=map[m].ys)
 			continue;
 		for(j=-range;j<=range;j++){
 			if (j + x < 0 || j + x >= map[m].xs)
@@ -904,13 +835,12 @@ int map_searchrandfreecell(int m, int x, int y, int range) {
 }
 
 /*==========================================
- * (m,x,y)�𒆐S��3x3�ȓ��ɏ��A�C�e���ݒu
  *
- * item_data��amount�ȊO��copy����
  *------------------------------------------
  */
 int map_addflooritem(struct item *item_data, int amount, int m, int x, int y, struct map_session_data *first_sd,
     struct map_session_data *second_sd, struct map_session_data *third_sd, int owner_id, int type) {
+
 	int xy, r;
 	struct flooritem_data *fitem;
 
@@ -955,7 +885,7 @@ int map_addflooritem(struct item *item_data, int amount, int m, int x, int y, st
 	}
 	if (third_sd) {
 		fitem->third_get_id = third_sd->bl.id;
-		if(type)
+		if (type)
 			fitem->third_get_tick = gettick_cache + battle_config.mvp_item_first_get_time + battle_config.mvp_item_second_get_time + battle_config.mvp_item_third_get_time;
 		else
 			fitem->third_get_tick = gettick_cache + battle_config.item_first_get_time + battle_config.item_second_get_time + battle_config.item_third_get_time;
@@ -975,15 +905,16 @@ int map_addflooritem(struct item *item_data, int amount, int m, int x, int y, st
 }
 
 /*==========================================
- * charid_db�֒ǉ�(�ԐM�҂��������ΕԐM)
+ *
  *------------------------------------------
  */
 void map_addchariddb(int charid, char *name) {
+
 	struct charid2nick *p;
 	int req;
 
 	p = numdb_search(charid_db, charid);
-	if (p == NULL) { // �f�[�^�x�[�X�ɂȂ�
+	if (p == NULL) {
 		CALLOC(p, struct charid2nick, 1);
 		p->req_id = 0;
 	} else
@@ -994,7 +925,7 @@ void map_addchariddb(int charid, char *name) {
 	strncpy(p->nick, name, 24);
 	p->req_id = 0;
 	numdb_insert(charid_db, charid, p);
-	if (req) { // �ԐM�҂��������ΕԐM
+	if (req) {
 		struct map_session_data *sd = map_id2sd(req);
 		if (sd != NULL)
 			clif_solved_charname(sd, charid);
@@ -1004,16 +935,17 @@ void map_addchariddb(int charid, char *name) {
 }
 
 /*==========================================
- * charid_db�֒ǉ�i�ԐM�v���̂݁j
+ *
  *------------------------------------------
  */
 int map_reqchariddb(struct map_session_data * sd,int charid) {
+
 	struct charid2nick *p;
 
 	nullpo_retr(0, sd);
 
 	p = numdb_search(charid_db, charid);
-	if(p!=NULL) // �f�[�^�x�[�X�ɂ��łɂ���
+	if (p!=NULL)
 		return 0;
 	CALLOC(p, struct charid2nick, 1);
 	p->req_id=sd->bl.id;
@@ -1023,39 +955,29 @@ int map_reqchariddb(struct map_session_data * sd,int charid) {
 }
 
 /*==========================================
- * id_db��bl���ǉ�
+ *
  *------------------------------------------
  */
 void map_addiddb(struct block_list *bl) {
+
 	nullpo_retv(bl);
 
 	numdb_insert(id_db, bl->id, bl);
 }
 
 /*==========================================
- * id_db����bl���폜
+ *
  *------------------------------------------
  */
 void map_deliddb(struct block_list *bl) {
+
 	nullpo_retv(bl);
 
 	numdb_erase(id_db, bl->id);
 }
 
 /*==========================================
- * nick_db��sd���ǉ�
- *------------------------------------------
- */
-/*void map_addnickdb(struct map_session_data *sd) {
-	nullpo_retv(sd);
-
-	strdb_insert(nick_db, sd->status.name, sd); // not used
-}*/
-
-/*==========================================
- * PC��quit���� map.c��
  *
- * quit�����̎��̂��Ⴄ�悤�ȋC���Ă���
  *------------------------------------------
  */
 void map_quit(struct map_session_data *sd) {
@@ -1065,83 +987,82 @@ void map_quit(struct map_session_data *sd) {
 	if (sd->state.event_disconnect) {
 		struct npc_data *npc;
 		if ((npc = npc_name2id(script_config.logout_event_name))) {
-			run_script(npc->u.scr.script, 0, sd->bl.id, npc->bl.id); // PCLogoutNPC
+			run_script(npc->u.scr.script, 0, sd->bl.id, npc->bl.id);
 		}
 	}
 
-	if (sd->chatID) // �`���b�g�����o��
+	if (sd->chatID)
 		chat_leavechat(sd);
 
-	if (sd->trade_partner) // �����𒆒f����
+	if (sd->trade_partner)
 		trade_tradecancel(sd);
 
 	if (sd->friend_num > 0)
 		clif_friend_send_online(sd, 0);
 
-	if (sd->party_invite > 0) // �p�[�e�B���U��ۂ���
+	if (sd->party_invite > 0)
 		party_reply_invite(sd, sd->party_invite_account, 0); // 0: invitation was denied, 1: accepted
 
-	if (sd->guild_invite > 0) // �M���h���U��ۂ���
+	if (sd->guild_invite > 0)
 		guild_reply_invite(sd, sd->guild_invite, 0);
-	if (sd->guild_alliance > 0) // �M���h�������U��ۂ���
+	if (sd->guild_alliance > 0)
 		guild_reply_reqalliance(sd, sd->guild_alliance_account, 0); // flag: 0 deny, 1:accepted
 
-	party_send_logout(sd); // �p�[�e�B�̃��O�A�E�g���b�Z�[�W���M
+	party_send_logout(sd);
 
-	guild_send_memberinfoshort(sd, 0); // �M���h�̃��O�A�E�g���b�Z�[�W���M
+	guild_send_memberinfoshort(sd, 0);
 
-	pc_cleareventtimer(sd); // �C�x���g�^�C�}���j������
+	pc_cleareventtimer(sd);
 
 	if (sd->state.storage_flag)
 		storage_guild_storage_quit(sd);
 	else
-		storage_storage_quit(sd); // �q�ɂ��J���Ă��Ȃ��ۑ�����
+		storage_storage_quit(sd);
 
-	skill_castcancel(&sd->bl, 0, 0); // �r���𒆒f����
-	skill_stop_dancing(&sd->bl, 1);// �_���X/���t���f
+	skill_castcancel(&sd->bl, 0, 0);
+	skill_stop_dancing(&sd->bl, 1);
 
-	//Status that are not saved...
-	if(sd->sc_count) {
-		if(sd->sc_data[SC_HIDING].timer != -1)
+	// Statuses that are not saved...
+	if (sd->sc_count) {
+		if (sd->sc_data[SC_HIDING].timer != -1)
 			status_change_end(&sd->bl, SC_HIDING, -1);
-		if(sd->sc_data[SC_CLOAKING].timer != -1)
+		if (sd->sc_data[SC_CLOAKING].timer != -1)
 			status_change_end(&sd->bl, SC_CLOAKING, -1);
 		if (sd->sc_data[SC_BLADESTOP].timer != -1)
 			status_change_end(&sd->bl, SC_BLADESTOP, -1);
-		if(sd->sc_data[SC_RUN].timer != -1)
+		if (sd->sc_data[SC_RUN].timer != -1)
 			status_change_end(&sd->bl, SC_RUN,-1);
-		if(sd->sc_data[SC_SPURT].timer != -1)
+		if (sd->sc_data[SC_SPURT].timer != -1)
 			status_change_end(&sd->bl, SC_SPURT, -1);
-		if(sd->sc_data[SC_CONCENTRATION].timer != -1) //Aegis X.2 does not saves it when logging off
+		if (sd->sc_data[SC_CONCENTRATION].timer != -1)
 			status_change_end(&sd->bl, SC_CONCENTRATION, -1);
-		if(sd->sc_data[SC_BERSERK].timer != -1) {
+		if (sd->sc_data[SC_BERSERK].timer != -1) {
 			status_change_end(&sd->bl, SC_BERSERK, -1);
 			sd->status.hp = 100;
 		}
-		if(sd->sc_data[SC_RIDING].timer != -1)
+		if (sd->sc_data[SC_RIDING].timer != -1)
 			status_change_end(&sd->bl, SC_RIDING, -1);
-		if(sd->sc_data[SC_FALCON].timer != -1)
+		if (sd->sc_data[SC_FALCON].timer != -1)
 			status_change_end(&sd->bl, SC_FALCON, -1);
-		if(sd->sc_data[SC_WEIGHT50].timer != -1)
+		if (sd->sc_data[SC_WEIGHT50].timer != -1)
 			status_change_end(&sd->bl, SC_WEIGHT50, -1);
-		if(sd->sc_data[SC_WEIGHT90].timer != -1)
+		if (sd->sc_data[SC_WEIGHT90].timer != -1)
 			status_change_end(&sd->bl, SC_WEIGHT90, -1);
-		if(sd->sc_data[SC_BROKENWEAPON].timer != -1)
+		if (sd->sc_data[SC_BROKENWEAPON].timer != -1)
 			status_change_end(&sd->bl, SC_BROKENWEAPON, -1);
-		if(sd->sc_data[SC_BROKENARMOR].timer != -1)
+		if (sd->sc_data[SC_BROKENARMOR].timer != -1)
 			status_change_end(&sd->bl, SC_BROKENARMOR, -1);
-		if(sd->sc_data[SC_GUILDAURA].timer != -1)
+		if (sd->sc_data[SC_GUILDAURA].timer != -1)
 			status_change_end(&sd->bl, SC_GUILDAURA, -1);
-		if(sd->sc_data[SC_GOSPEL].timer != -1)
+		if (sd->sc_data[SC_GOSPEL].timer != -1)
 			status_change_end(&sd->bl, SC_GOSPEL, -1);
-		// Marionette Control: Remove the effect off your target when logging out - [Aalye]
-		if(sd->sc_data[SC_MARIONETTE].timer != -1) {
+		if (sd->sc_data[SC_MARIONETTE].timer != -1) {
 			struct block_list *bl = map_id2bl(sd->sc_data[SC_MARIONETTE].val3);
 			status_change_end(bl, SC_MARIONETTE2, -1);
 		}
 	}
 
-	skill_clear_unitgroup(&sd->bl); // �X�L�����j�b�g�O���[�v�̍폜
+	skill_clear_unitgroup(&sd->bl);
 	skill_cleartimerskill(&sd->bl);
 	
 	if (sd->followtimer != -1) {
@@ -1165,7 +1086,6 @@ void map_quit(struct map_session_data *sd) {
 	skill_unit_move(&sd->bl, gettick_cache, 0);
 
 	status_calc_pc(sd, 4);
-//	skill_clear_unitgroup(&sd->bl);
 
 	if (sd->status.option & OPTION_HIDE)
 		clif_clearchar_area(&sd->bl, 4); // no display // need to send information to authorize people in area to go in the square
@@ -1175,21 +1095,18 @@ void map_quit(struct map_session_data *sd) {
 #ifdef USE_SQL //TXT version of this is still in dev
 	chrif_save_scdata(sd); // save status changes
 #endif
-	status_change_clear(&sd->bl, 1); // �X�e�[�^�X�ُ��������
+	status_change_clear(&sd->bl, 1);
 	
 	if (sd->status.pet_id > 0 && sd->pd) {
 		pet_lootitem_drop(sd->pd, sd);
 		if (sd->pet.intimate <= 0) {
 			intif_delete_petdata(sd->status.pet_id);
 			pet_remove_map(sd);
-			//sd->pd = NULL; // done in pet_remove_map
 			sd->status.pet_id = 0;
 			sd->petDB = NULL;
 		} else {
 			intif_save_petdata(sd->status.account_id, &sd->pet);
 			pet_remove_map(sd);
-			//sd->pd = NULL; // done in pet_remove_map
-			//sd->status.pet_id = 0; // DON'T reset this value, to save pet with Char (chrif_save)
 			sd->petDB = NULL;
 		}
 	}
@@ -1201,25 +1118,27 @@ void map_quit(struct map_session_data *sd) {
 	map_delblock(&sd->bl);
 
 	numdb_erase(id_db, sd->bl.id);
-  {
-	void *p = numdb_search(charid_db, sd->status.char_id);
-	if (p) {
-		numdb_erase(charid_db, sd->status.char_id);
-		FREE(p);
-	}
-  }
-//	strdb_erase(nick_db, sd->status.name); // not used
-	if (numdb_search(charid_db, sd->status.char_id) != NULL) /* from freya' forum by LebrEf[TaVu] */
+
+  	{
+		void *p = numdb_search(charid_db, sd->status.char_id);
+		if (p) {
+			numdb_erase(charid_db, sd->status.char_id);
+			FREE(p);
+		}
+  	}
+
+	if (numdb_search(charid_db, sd->status.char_id) != NULL)
 		numdb_erase(charid_db, sd->status.char_id);
 
 	return;
 }
 
 /*==========================================
- * to free memory of dynamic allocation in session (even if player is auth or not)
+ *
  *------------------------------------------
  */
 void map_quit2(struct map_session_data *sd) {
+
 	nullpo_retv(sd);
 
 	storage_delete(sd->bl.id);
@@ -1241,6 +1160,7 @@ void map_quit2(struct map_session_data *sd) {
  *------------------------------------------
  */
 struct map_session_data * map_charid2sd(int char_id) {
+
 	int i;
 	struct map_session_data *sd;
 
@@ -1252,25 +1172,11 @@ struct map_session_data * map_charid2sd(int char_id) {
 }
 
 /*==========================================
- * id�ԍ���PC���T���B���Ȃ�����NULL
+ *
  *------------------------------------------
  */
 struct map_session_data * map_id2sd(int id) {
-// remove search from db, because:
-// 1 - all players, npc, items and mob are in this db (to search, it's not speed, and search in session is more sure)
-// 2 - DB seems not always correct. Sometimes, when a player disconnects, its id (account value) is not removed and structure
-//     point to a memory area that is not more a session_data and value are incorrect (or out of available memory) -> crash
-// replaced by searching in all session.
-// by searching in session, we are sure that fd, session, and account exist.
-/*
-	struct block_list *bl;
 
-	bl = numdb_search(id_db, id);
-	if (bl && bl->type == BL_PC)
-		return (struct map_session_data*)bl;
-
-	return NULL;
-*/
 	int i;
 	struct map_session_data *sd;
 
@@ -1282,10 +1188,11 @@ struct map_session_data * map_id2sd(int id) {
 }
 
 /*==========================================
- * char_id�ԍ��̖��O���T��
+ *
  *------------------------------------------
  */
 char * map_charid2nick(int id) {
+
 	struct charid2nick *p = numdb_search(charid_db, id);
 
 	if (p == NULL)
@@ -1297,12 +1204,11 @@ char * map_charid2nick(int id) {
 }
 
 /*==========================================
- * Search session data from a nick name
- * (without sensitive case if necessary)
- * return map_session_data pointer or NULL
+ *
  *------------------------------------------
  */
 struct map_session_data * map_nick2sd(char *nick) {
+
 	int i, quantity;
 	struct map_session_data *sd;
 	struct map_session_data *pl_sd;
@@ -1334,11 +1240,11 @@ struct map_session_data * map_nick2sd(char *nick) {
 }
 
 /*==========================================
- * id�ԍ��̕����T��
- * �ꎞobject�̏ꍇ�͔z���������̂�
+ *
  *------------------------------------------
  */
 struct block_list * map_id2bl(int id) {
+
 	if (id >= 0 && id < sizeof(object) / sizeof(object[0]))
 		return object[id];
 	else
@@ -1346,10 +1252,11 @@ struct block_list * map_id2bl(int id) {
 }
 
 /*==========================================
- * id_db���̑S�Ă�func����s
+ *
  *------------------------------------------
  */
 void map_foreachiddb(int (*func)(void*,void*,va_list),...) {
+
 	va_list ap;
 
 	va_start(ap, func);
@@ -1360,10 +1267,11 @@ void map_foreachiddb(int (*func)(void*,void*,va_list),...) {
 }
 
 /*==========================================
- * map.npc�֒ǉ� (warp���̗̈掝���̂�)
+ *
  *------------------------------------------
  */
 int map_addnpc(int m, struct npc_data *nd) {
+
 	int i;
 
 	if (m < 0 || m >= map_num)
@@ -1388,7 +1296,12 @@ int map_addnpc(int m, struct npc_data *nd) {
 	return i;
 }
 
+/*==========================================
+ *
+ *------------------------------------------
+ */
 void map_removenpc(void) {
+
 	int i, m, n = 0;
 
 	for(m = 0; m < map_num; m++) {
@@ -1397,10 +1310,6 @@ void map_removenpc(void) {
 				clif_clearchar_area(&map[m].npc[i]->bl, 2);
 				map_delblock(&map[m].npc[i]->bl);
 				numdb_erase(id_db, map[m].npc[i]->bl.id);
-				if (map[m].npc[i]->bl.subtype == SCRIPT) {
-//					FREE(map[m].npc[i]->u.scr.script);
-//					FREE(map[m].npc[i]->u.scr.label_list);
-				}
 				FREE(map[m].npc[i]);
 				n++;
 			}
@@ -1412,28 +1321,30 @@ void map_removenpc(void) {
 }
 
 /*==========================================
- * map������map�ԍ��֕ϊ�
+ *
  *------------------------------------------
  */
-int map_mapname2mapid(const char *name) { // map id on this server (m == -1 if not in actual map-server)
+int map_mapname2mapid(const char *name) {
+
 	struct map_data *md;
 
-	if(name == NULL || name[0] == '\0')
+	if (name == NULL || name[0] == '\0')
 		return -1;
 
 	md = strdb_search(map_db, name);
 
-	if(md == NULL || md->gat == NULL)
+	if (md == NULL || md->gat == NULL)
 		return -1;
 
 	return md->m;
 }
 
 /*==========================================
- * ���Imap������ip,port�ϊ�
+ *
  *------------------------------------------
  */
 int map_mapname2ipport(const char *name, int *ip, int *port) {
+
 	struct map_data_other_server *mdos;
 
 	mdos = strdb_search(map_db, name);
@@ -1446,18 +1357,15 @@ int map_mapname2ipport(const char *name, int *ip, int *port) {
 }
 
 /*==========================================
- * Check if a map is in game (on any map-servers)
- * result:
- *        0+: id of server on actual map-server
- *        -1: doesn't exist
- *        -2: exist on another map-server
+ *
  *------------------------------------------
  */
 short map_checkmapname(const char *mapname) {
+
 	int m;
 	struct map_data_other_server *mdos;
 
-	if ((m = map_mapname2mapid(mapname)) >= 0) // map id on this server (m == -1 if not in actual map-server)
+	if ((m = map_mapname2mapid(mapname)) >= 0)
 		return m;
 
 	mdos = strdb_search(map_db, mapname);
@@ -1472,39 +1380,40 @@ short map_checkmapname(const char *mapname) {
  *------------------------------------------
  */
 int map_check_dir(int s_dir,int t_dir) {
-	if(s_dir == t_dir)
+
+	if (s_dir == t_dir)
 		return 0;
 	switch(s_dir) {
 		case 0:
-			if(t_dir == 7 || t_dir == 1 || t_dir == 0)
+			if (t_dir == 7 || t_dir == 1 || t_dir == 0)
 				return 0;
 			break;
 		case 1:
-			if(t_dir == 0 || t_dir == 2 || t_dir == 1)
+			if (t_dir == 0 || t_dir == 2 || t_dir == 1)
 				return 0;
 			break;
 		case 2:
-			if(t_dir == 1 || t_dir == 3 || t_dir == 2)
+			if (t_dir == 1 || t_dir == 3 || t_dir == 2)
 				return 0;
 			break;
 		case 3:
-			if(t_dir == 2 || t_dir == 4 || t_dir == 3)
+			if (t_dir == 2 || t_dir == 4 || t_dir == 3)
 				return 0;
 			break;
 		case 4:
-			if(t_dir == 3 || t_dir == 5 || t_dir == 4)
+			if (t_dir == 3 || t_dir == 5 || t_dir == 4)
 				return 0;
 			break;
 		case 5:
-			if(t_dir == 4 || t_dir == 6 || t_dir == 5)
+			if (t_dir == 4 || t_dir == 6 || t_dir == 5)
 				return 0;
 			break;
 		case 6:
-			if(t_dir == 5 || t_dir == 7 || t_dir == 6)
+			if (t_dir == 5 || t_dir == 7 || t_dir == 6)
 				return 0;
 			break;
 		case 7:
-			if(t_dir == 6 || t_dir == 0 || t_dir == 7)
+			if (t_dir == 6 || t_dir == 0 || t_dir == 7)
 				return 0;
 			break;
 	}
@@ -1513,10 +1422,11 @@ int map_check_dir(int s_dir,int t_dir) {
 }
 
 /*==========================================
- * �މ��̕������v�Z
+ *
  *------------------------------------------
  */
 int map_calc_dir(struct block_list *src, int x, int y) {
+
 	int dir = 0;
 	int dx, dy;
 
@@ -1524,42 +1434,46 @@ int map_calc_dir(struct block_list *src, int x, int y) {
 
 	dx = x - src->x;
 	dy = y - src->y;
-	if (dx == 0 && dy == 0) { // �މ��̏ꏊ���v
-		dir = 0; // ��
-	} else if (dx >= 0 && dy >= 0) { // �����I�ɉE��
-		dir = 7; // �E��
-		if (dx * 3 - 1 < dy) dir = 0; // ��
-		if (dx > dy * 3) dir = 6; // �E
-	} else if (dx >= 0 && dy <= 0) { // �����I�ɉE��
-		dir = 5; // �E��
-		if (dx * 3 - 1 < -dy) dir = 4; // ��
-		if (dx > -dy * 3) dir = 6; // �E
-	} else if (dx <= 0 && dy <= 0) { // �����I�ɍ���
-		dir = 3; // ����
-		if (dx * 3 + 1 > dy) dir = 4; // ��
-		if (dx < dy * 3) dir = 2; // ��
-	} else { // �����I�ɍ���
-		dir = 1; // ����
-		if (-dx * 3 - 1 < dy) dir = 0; // ��
-		if (-dx > dy * 3) dir = 2; // ��
+	if (dx == 0 && dy == 0) {
+		dir = 0;
+	} else if (dx >= 0 && dy >= 0) {
+		dir = 7;
+		if (dx * 3 - 1 < dy) dir = 0;
+		if (dx > dy * 3) dir = 6;
+	} else if (dx >= 0 && dy <= 0) {
+		dir = 5;
+		if (dx * 3 - 1 < -dy) dir = 4;
+		if (dx > -dy * 3) dir = 6;
+	} else if (dx <= 0 && dy <= 0) {
+		dir = 3;
+		if (dx * 3 + 1 > dy) dir = 4;
+		if (dx < dy * 3) dir = 2;
+	} else {
+		dir = 1;
+		if (-dx * 3 - 1 < dy) dir = 0;
+		if (-dx > dy * 3) dir = 2;
 	}
 
 	return dir;
 }
 
-// gat�n
 /*==========================================
- * (m,x,y)�̏��Ԃ𒲂ׂ�
+ *
  *------------------------------------------
  */
 int map_getcell(int m, int x, int y, cell_t cellchk) {
-	//return (m < 0 || m > MAX_MAP_PER_SERVER) ? 0 : map_getcellp(&map[m], x, y, cellchk);
+
 	return (m < 0 || m >= map_num) ?
 	                                 ((cellchk == CELL_CHKNOPASS || cellchk == CELL_CHKNOPASS_NPC) ? 1 : 0) :
 	                                 map_getcellp(&map[m], x, y, cellchk);
 }
 
+/*==========================================
+ *
+ *------------------------------------------
+ */
 int map_getcellp(struct map_data* m, int x, int y, cell_t cellchk) {
+
 	int type;
 
 	nullpo_ret(m);
@@ -1600,10 +1514,11 @@ int map_getcellp(struct map_data* m, int x, int y, cell_t cellchk) {
 }
 
 /*==========================================
- * (m,x,y)�̏��Ԃ�t�ɂ���
+ *
  *------------------------------------------
  */
 void map_setcell(int m, int x, int y, int cell) {
+
 	int j;
 
 	if (x < 0 || x >= map[m].xs || y < 0 || y >= map[m].ys)
@@ -1630,10 +1545,11 @@ void map_setcell(int m, int x, int y, int cell) {
 }
 
 /*==========================================
- * ���I�Ǘ��̃}�b�v��db�ɒǉ�
+ *
  *------------------------------------------
  */
 int map_setipport(char *name, unsigned long ip, int port) {
+
 	struct map_data *md;
 	struct map_data_other_server *mdos;
 
@@ -1648,7 +1564,6 @@ int map_setipport(char *name, unsigned long ip, int port) {
 		strdb_insert(map_db, mdos->name, mdos);
 	} else if (md->gat){
 		if (ip != clif_getip() || port != clif_getport()){
-			// �ǂݍ����ł������ǁA�S���O�ɂȂ���}�b�v
 			CALLOC(mdos, struct map_data_other_server, 1);
 			strncpy(mdos->name, name, 24);
 			mdos->gat  = NULL;
@@ -1656,27 +1571,21 @@ int map_setipport(char *name, unsigned long ip, int port) {
 			mdos->port = port;
 			mdos->map  = md;
 			strdb_insert(map_db, mdos->name, mdos);
-			// printf("from char server : %s -> %08lx:%d\n",name,ip,port);
 		} else {
-			// �ǂݍ����ł��āA�S���ɂȂ���}�b�v�i�����Ȃ��j
 			;
 		}
 	} else {
 		mdos = (struct map_data_other_server *)md;
 		if (ip == clif_getip() && port == clif_getport()) {
-			// �����̒S���ɂȂ���}�b�v
 			if (mdos->map == NULL) {
-				// �ǂݍ����ł��Ȃ��̂ŏI������
 				printf("map_setipport : %s is not loaded.\n", name);
 				exit(1);
 			} else {
-				// �ǂݍ����ł����̂Œu��������
 				md = mdos->map;
 				FREE(mdos);
 				strdb_insert(map_db, md->name, md);
 			}
 		} else {
-			// ���̎I�̒S���}�b�v�Ȃ̂Œu�������邾��
 			mdos->ip   = ip;
 			mdos->port = port;
 		}
@@ -1686,10 +1595,11 @@ int map_setipport(char *name, unsigned long ip, int port) {
 }
 
 /*==========================================
- * ���I�Ǘ��̃}�b�v���S�č폜
+ *
  *------------------------------------------
  */
 int map_eraseallipport_sub(void *key, void *data, va_list va) {
+
 	struct map_data_other_server *mdos = (struct map_data_other_server*)data;
 
 	if (mdos->gat == NULL && mdos->map == NULL) {
@@ -1700,20 +1610,25 @@ int map_eraseallipport_sub(void *key, void *data, va_list va) {
 	return 0;
 }
 
+/*==========================================
+ *
+ *------------------------------------------
+ */
 int map_eraseallipport(void) {
+
 	strdb_foreach(map_db, map_eraseallipport_sub);
 
 	return 1;
 }
 
 /*==========================================
- * ���I�Ǘ��̃}�b�v��db�����폜
+ *
  *------------------------------------------
  */
 int map_eraseipport(char *name, unsigned long ip, int port) {
+
 	struct map_data *md;
 	struct map_data_other_server *mdos;
-//	unsigned char *p = (unsigned char *)&ip;
 
 	md=strdb_search(map_db, name);
 	if (md) {
@@ -1723,14 +1638,11 @@ int map_eraseipport(char *name, unsigned long ip, int port) {
 			mdos = (struct map_data_other_server *)md;
 			if (mdos->ip == ip && mdos->port == port) {
 				if (mdos->map) {
-					// ���̃}�b�v�I�ł��ǂݍ����ł����̂ňړ��ł���
-					return 1; // �Ăяo������ chrif_sendmap() ���
+					return 1;
 				} else {
 					strdb_erase(map_db, name);
 					FREE(mdos);
 				}
-//				if (battle_config.etc_log)
-//					printf("erase map %s %d.%d.%d.%d:%d\n", name, p[0], p[1], p[2], p[3], port);
 			}
 		}
 	}
@@ -1738,9 +1650,8 @@ int map_eraseipport(char *name, unsigned long ip, int port) {
 	return 0;
 }
 
-// ����������
 /*==========================================
- * ���ꍂ���ݒ�
+ *
  *------------------------------------------
  */
 static struct waterlist {
@@ -1750,7 +1661,12 @@ static struct waterlist {
 int waterlist_num = 0;
 #define NO_WATER 1000000
 
+/*==========================================
+ *
+ *------------------------------------------
+ */
 static int map_waterheight(char *mapname) {
+
 	int i;
 
 	for(i = 0; i < waterlist_num; i++)
@@ -1760,7 +1676,12 @@ static int map_waterheight(char *mapname) {
 	return NO_WATER;
 }
 
+/*==========================================
+ *
+ *------------------------------------------
+ */
 static void map_readwater(char *watertxt) {
+
 	char line[1024], w1[1024];
 	FILE *fp;
 
@@ -1770,11 +1691,10 @@ static void map_readwater(char *watertxt) {
 		return;
 	}
 
-	while(fgets(line, sizeof(line), fp)) { // fgets reads until maximum one less than size and add '\0' -> so, it's not necessary to add -1
+	while(fgets(line, sizeof(line), fp)) {
 		int wh, count;
 		if ((line[0] == '/' && line[1] == '/') || line[0] == '\0' || line[0] == '\n' || line[0] == '\r')
 			continue;
-		// it's not necessary to remove 'carriage return ('\n' or '\r')
 		if ((count = sscanf(line, "%s%d", w1, &wh)) < 1)
 			continue;
 		if (waterlist_num == 0) {
@@ -1797,27 +1717,24 @@ static void map_readwater(char *watertxt) {
 }
 
 /*==========================================
-* �}�b�v�L���b�V���ɒǉ����
-*===========================================*/
-
-// �}�b�v�L���b�V���̍ő��l
+ *
+ *------------------------------------------
+ */
 #define MAX_MAP_CACHE 768
 
-//�e�}�b�v���Ƃ̍ŏ�����������������́AREAD_FROM_BITMAP�p
 struct map_cache_info {
-	char fn[32];//�t�@�C����
-	int xs, ys; //���ƍ���
+	char fn[32];
+	int xs, ys;
 	int water_height;
-	int pos; // �f�[�^�������Ă����ꏊ
-	int compressed; // zilb�ʂ����悤�ɂ����ׂ̗\��
-	int compressed_len; // zilb�ʂ����悤�ɂ����ׂ̗\��
-}; // 56 byte
+	int pos;
+	int compressed;
+	int compressed_len;
+};
 
 struct map_cache_head {
 	int sizeof_header;
 	int sizeof_map;
-	// ���̂Q���ϕs��
-	int nmaps; // �}�b�v�̌�
+	int nmaps;
 	int filesize;
 };
 struct {
@@ -1832,7 +1749,12 @@ static void map_cache_close(void);
 static int map_cache_read(struct map_data *m);
 static int map_cache_write(struct map_data *m);
 
+/*==========================================
+ *
+ *------------------------------------------
+ */
 static int map_cache_open(char *fn) {
+
 	atexit(map_cache_close);
 	if (map_cache.fp) {
 		map_cache_close();
@@ -1844,7 +1766,6 @@ static int map_cache_open(char *fn) {
 		if (map_cache.head.sizeof_header == sizeof(struct map_cache_head) &&
 		    map_cache.head.sizeof_map    == sizeof(struct map_cache_info) &&
 		    map_cache.head.filesize      == ftell(map_cache.fp)) {
-			// �L���b�V���ǂݍ��ݐ���
 			CALLOC(map_cache.map, struct map_cache_info, map_cache.head.nmaps);
 			fseek(map_cache.fp, sizeof(struct map_cache_head), SEEK_SET);
 			fread(map_cache.map, sizeof(struct map_cache_info), map_cache.head.nmaps, map_cache.fp);
@@ -1856,7 +1777,6 @@ static int map_cache_open(char *fn) {
 	} else if (map_read_flag == READ_FROM_BITMAP_COMPRESSED)
 		map_read_flag = CREATE_BITMAP_COMPRESSED; // READ_FROM_BITMAP_COMPRESSED + 1
 
-	// �ǂݍ��݂Ɏ��s�����̂ŐV�K�ɍ쐬����
 	map_cache.fp = fopen(fn, "wb");
 	if (map_cache.fp) {
 		memset(&map_cache.head, 0, sizeof(struct map_cache_head));
@@ -1875,7 +1795,12 @@ static int map_cache_open(char *fn) {
 	return 0;
 }
 
+/*==========================================
+ *
+ *------------------------------------------
+ */
 static void map_cache_close(void) {
+
 	if (!map_cache.fp)
 		return;
 
@@ -1891,16 +1816,20 @@ static void map_cache_close(void) {
 	return;
 }
 
+/*==========================================
+ *
+ *------------------------------------------
+ */
 int map_cache_read(struct map_data *m) {
+
 	int i;
 
-	if(!map_cache.fp)
+	if (!map_cache.fp)
 		return 0;
 
 	for(i = 0; i < map_cache.head.nmaps; i++) {
 		if (!strcmp(m->name, map_cache.map[i].fn)) {
 			if (map_cache.map[i].water_height != map_waterheight(m->name)) {
-				// �����̍������Ⴄ�̂œǂݒ���
 				return 0;
 			} else if (map_cache.map[i].compressed == 0) {
 				int size = map_cache.map[i].xs * map_cache.map[i].ys;
@@ -1909,17 +1838,14 @@ int map_cache_read(struct map_data *m) {
 				CALLOC(m->gat, char, m->xs * m->ys);
 				fseek(map_cache.fp, map_cache.map[i].pos, SEEK_SET);
 				if (fread(m->gat, 1, size,map_cache.fp) == size) {
-					// ����
 					return 1;
 				} else {
-					// �Ȃ����t�@�C���㔼�������Ă��̂œǂݒ���
 					m->xs = 0;
 					m->ys = 0;
 					FREE(m->gat);
 					return 0;
 				}
 			} else if (map_cache.map[i].compressed == 1) {
-				// ���k�t���O=1 : zlib
 				char *buf;
 				unsigned long dest_len;
 				int size_compress = map_cache.map[i].compressed_len;
@@ -1929,7 +1855,6 @@ int map_cache_read(struct map_data *m) {
 				MALLOC(buf, char, size_compress);
 				fseek(map_cache.fp, map_cache.map[i].pos, SEEK_SET);
 				if (fread(buf, 1, size_compress,map_cache.fp) != size_compress) {
-					// �Ȃ����t�@�C���㔼�������Ă��̂œǂݒ���
 					printf("fread error\n");
 					m->xs = 0;
 					m->ys = 0;
@@ -1940,7 +1865,6 @@ int map_cache_read(struct map_data *m) {
 				dest_len = m->xs * m->ys;
 				decode_zip(m->gat, &dest_len, buf, size_compress);
 				if (dest_len != map_cache.map[i].xs * map_cache.map[i].ys) {
-					// �����ɉ𓀂��o���ĂȂ�
 					m->xs = 0;
 					m->ys = 0;
 					FREE(m->gat);
@@ -1956,7 +1880,12 @@ int map_cache_read(struct map_data *m) {
 	return 0;
 }
 
+/*==========================================
+ *
+ *------------------------------------------
+ */
 static int map_cache_write(struct map_data *m) {
+
 	int i;
 	unsigned long len_new, len_old;
 	char *write_buf;
@@ -1966,18 +1895,14 @@ static int map_cache_write(struct map_data *m) {
 
 	for(i = 0; i < map_cache.head.nmaps; i++) {
 		if (!strcmp(m->name, map_cache.map[i].fn)) {
-			// �����G���g���[�������Ώ㏑��
 			if (map_cache.map[i].compressed == 0) {
 				len_old = map_cache.map[i].xs * map_cache.map[i].ys;
 			} else if (map_cache.map[i].compressed == 1) {
 				len_old = map_cache.map[i].compressed_len;
 			} else {
-				// �T�|�[�g�����ĂȂ��`���Ȃ̂Œ����O
 				len_old = 0;
 			}
-			if (map_read_flag >= READ_FROM_BITMAP_COMPRESSED) { // if (map_read_flag == 2) { ???
-				// ���k�ۑ�
-				// �������ɂQ�{�ɖc���鎖�͂Ȃ��Ƃ�������
+			if (map_read_flag >= READ_FROM_BITMAP_COMPRESSED) {
 				MALLOC(write_buf, char, m->xs * m->ys * 2);
 				len_new = m->xs * m->ys * 2;
 				encode_zip(write_buf, &len_new, m->gat, m->xs * m->ys);
@@ -1990,11 +1915,9 @@ static int map_cache_write(struct map_data *m) {
 				map_cache.map[i].compressed_len = 0;
 			}
 			if (len_new <= len_old) {
-				// �T�C�Y���������������Ȃ���̂ŏꏊ�͕ς����Ȃ�
 				fseek(map_cache.fp, map_cache.map[i].pos, SEEK_SET);
 				fwrite(write_buf, 1, len_new, map_cache.fp);
 			} else {
-				// �V�����ꏊ�ɓo�^
 				fseek(map_cache.fp, map_cache.head.filesize, SEEK_SET);
 				fwrite(write_buf, 1, len_new, map_cache.fp);
 				map_cache.map[i].pos = map_cache.head.filesize;
@@ -2004,17 +1927,15 @@ static int map_cache_write(struct map_data *m) {
 			map_cache.map[i].ys  = m->ys;
 			map_cache.map[i].water_height = map_waterheight(m->name);
 			map_cache.dirty = 1;
-			if (map_read_flag >= READ_FROM_BITMAP_COMPRESSED) { // if (map_read_flag == 2) { ???
+			if (map_read_flag >= READ_FROM_BITMAP_COMPRESSED) {
 				FREE(write_buf);
 			}
 			return 0;
 		}
 	}
-	// �����G���g�����������Ώ������߂��ꏊ���T��
 	for(i = 0; i < map_cache.head.nmaps; i++) {
 		if (map_cache.map[i].fn[0] == 0) {
-			// �V�����ꏊ�ɓo�^
-			if (map_read_flag >= READ_FROM_BITMAP_COMPRESSED) { // if (map_read_flag == 2) { ???
+			if (map_read_flag >= READ_FROM_BITMAP_COMPRESSED) {
 				MALLOC(write_buf, char, m->xs * m->ys * 2);
 				len_new = m->xs * m->ys * 2;
 				encode_zip(write_buf, &len_new, m->gat, m->xs * m->ys);
@@ -2035,22 +1956,22 @@ static int map_cache_write(struct map_data *m) {
 			map_cache.map[i].water_height = map_waterheight(m->name);
 			map_cache.head.filesize += len_new;
 			map_cache.dirty = 1;
-			if (map_read_flag >= READ_FROM_BITMAP_COMPRESSED) { // if (map_read_flag == 2) { ???
+			if (map_read_flag >= READ_FROM_BITMAP_COMPRESSED) {
 				FREE(write_buf);
 			}
 			return 0;
 		}
 	}
 
-	// �������߂Ȃ����
 	return 1;
 }
 
 /*==========================================
- * �}�b�v1���ǂݍ���
+ *
  *------------------------------------------
  */
 static int map_readmap(int m, char *fn, char *alias, int *map_cache_count) {
+
 	unsigned char *gat;
 	int x, y, xs, ys, y_xs;
 	struct gat_1cell {float high[4]; int type;} *p;
@@ -2058,7 +1979,6 @@ static int map_readmap(int m, char *fn, char *alias, int *map_cache_count) {
 	size_t size;
 
 	if (map_cache_read(&map[m])) {
-		// �L���b�V�������ǂݍ��߂�
 		(*map_cache_count)++;
 	} else {
 		// read & convert fn
@@ -2082,7 +2002,6 @@ static int map_readmap(int m, char *fn, char *alias, int *map_cache_count) {
 			p = (struct gat_1cell*)(gat + y_xs * 20 + 14);
 			for(x = 0; x < xs; x++) {
 				if (wh != NO_WATER && p->type == 0) {
-					// ���ꔻ��
 					map[m].gat[x + y_xs] = (p->high[0] > wh || p->high[1] > wh || p->high[2] > wh || p->high[3] > wh) ? 3 : 0;
 				} else {
 					map[m].gat[x + y_xs] = p->type;
@@ -2101,9 +2020,9 @@ static int map_readmap(int m, char *fn, char *alias, int *map_cache_count) {
 	map[m].npc_num = 0;
 	map[m].users = 0;
 	memset(&map[m].flag, 0, sizeof(map[m].flag));
-	if (battle_config.pk_mode) // make all maps pvp for pk_mode [Valaris]
+	if (battle_config.pk_mode)
 		map[m].flag.pvp = 1;
-	map[m].flag.nogmcmd = 100; // All gm commands can be used
+	map[m].flag.nogmcmd = 100;
 
 	map[m].bxs = (map[m].xs + BLOCK_SIZE - 1) / BLOCK_SIZE;
 	map[m].bys = (map[m].ys + BLOCK_SIZE - 1) / BLOCK_SIZE;
@@ -2113,26 +2032,24 @@ static int map_readmap(int m, char *fn, char *alias, int *map_cache_count) {
 	CALLOC(map[m].block, struct block_list *, size);
 	CALLOC(map[m].block_mob, struct block_list *, size);
 
-	if (alias != NULL) { // [MouseJstr]
+	if (alias != NULL) {
 		strdb_insert(map_db, alias, &map[m]);
 	} else {
 		strdb_insert(map_db, map[m].name, &map[m]);
 	}
 
-//	printf("%s read done.\n",fn);
-
 	return 0;
 }
 
 /*==========================================
- * �ǂݍ���map���폜����
+ *
  *------------------------------------------
  */
 void map_delmap(char *mapname) {
+
 	int i;
 
 	if (strcasecmp(mapname, "all") == 0) {
-		// unnecessary to reset alias name (not yet created)
 		FREE(map);
 		map_num = 0;
 		return;
@@ -2140,7 +2057,6 @@ void map_delmap(char *mapname) {
 
 	for(i = 0; i < map_num; i++) {
 		if (strcmp(map[i].name, mapname) == 0) {
-			//printf("Removing map#%d/%d [ %s ] from maplist.\n", i, map_num, map[i].name);
 			FREE(map[i].alias);
 			if (i < map_num - 1)
 				memmove(map + i, map + (i + 1), sizeof(struct map_data) * (map_num - i - 1));
@@ -2151,7 +2067,7 @@ void map_delmap(char *mapname) {
 			} else {
 				REALLOC(map, struct map_data, map_num);
 			}
-			i--; // recheck same map after (it is now a new mapname)
+			i--;
 		}
 	}
 
@@ -2159,16 +2075,16 @@ void map_delmap(char *mapname) {
 }
 
 /*==========================================
- * �S�Ă�map�f�[�^���ǂݍ���
+ *
  *------------------------------------------
  */
 int map_readallmap(void) {
+
 	int i, maps_removed = 0;
 	char fn[256];
 	int map_cache_count = 0;
 	char *p;
 
-	// �}�b�v�L���b�V�����J��
 	if (map_read_flag >= READ_FROM_BITMAP)
 		map_cache_open(map_cache_file);
 
@@ -2177,20 +2093,16 @@ int map_readallmap(void) {
 	        map_read_flag == CREATE_BITMAP ? " (Generating Map Cache)" :
 	        map_read_flag >= READ_FROM_BITMAP ? " (Reading Map Cache)" : ""));
 
-	// ���ɑS���̃�b�v�̑��݂��m�F
-	for(i = 0; i < map_num; i++)
-	{
+	for(i = 0; i < map_num; i++) {
 		map[i].alias = NULL;
 
 		for(p = &fn[0]; *p != 0; p++) // * At the time of Unix
 			if (*p == '\\')
 				*p = '/';
 
-		if(strstr(map[i].name, ".gat") != NULL)
-		{
-			p = strstr(map[i].name, "<"); // [MouseJstr]
-			if(p != NULL)
-			{
+		if (strstr(map[i].name, ".gat") != NULL) {
+			p = strstr(map[i].name, "<");
+			if (p != NULL) {
 				char buf[64];
 				*p++ = '\0';
 				sprintf(buf, "data\\%s", p);
@@ -2199,7 +2111,6 @@ int map_readallmap(void) {
 			}
 
 			sprintf(fn, "data\\%s", map[i].name);
-			//printf("map to read: %s\n", fn);
 			if (map_readmap(i, fn, p, &map_cache_count) == -1) {
 				map_delmap(map[i].name);
 				maps_removed++;
@@ -2233,12 +2144,12 @@ int map_readallmap(void) {
 }
 
 /*==========================================
- * �ǂݍ���map���ǉ����
+ *
  *------------------------------------------
  */
 void map_addmap(char *mapname) {
+
 	if (strcasecmp(mapname, "clear") == 0) {
-		// unnecessary to reset alias name (not yet created)
 		FREE(map);
 		map_num = 0;
 		return;
@@ -2251,18 +2162,18 @@ void map_addmap(char *mapname) {
 		memset(map + map_num, 0, sizeof(struct map_data));
 	}
 
-	//memset(map[map_num].name, 0, sizeof(map[map_num].name));
 	strncpy(map[map_num].name, mapname, 16); // 17 - NULL
 	map_num++;
 
 	return;
 }
 
-/*================================
- * Console Command Parser
- *--------------------------------
+/*==========================================
+ *
+ *------------------------------------------
  */
 int parse_console(char *buf) {
+
 	static int console_on = 1;
 	char command[4096], param[4096], mapname[4096], buf2[4096];
 	int x = 0, y = 0;
@@ -2274,10 +2185,7 @@ int parse_console(char *buf) {
 	memset(mapname, 0, sizeof(mapname));
 	memset(buf2, 0, sizeof(buf2));
 
-	/* get param of command */
 	sscanf(buf, "%s %[^\n]", command, param);
-
-/*	printf("Console command: %s %s\n", command, param); */
 
 	if (!console_on) {
 
@@ -2351,13 +2259,11 @@ int parse_console(char *buf) {
 		} else {
 			n = sscanf(buf, "%[^:]:%99s %d %d[^\n]", command, mapname, &x, &y);
 
-//			printf(CL_DARK_CYAN "Console: " CL_RESET "Command: %s || Map: %s Coords: %d %d\n", command, mapname, x, y);
-
 			m = 0;
 			if (n > 1) {
 				if (strstr(mapname, ".gat") == NULL && strlen(mapname) < 13) // 16 - 4 (.gat)
 					strcat(mapname, ".gat");
-				if ((m = map_mapname2mapid(mapname)) < 0) { // map id on this server (m == -1 if not in actual map-server)
+				if ((m = map_mapname2mapid(mapname)) < 0) {
 					printf(CL_DARK_CYAN "Console: " CL_RESET CL_BOLD "Unknown map on this map-server." CL_RESET "\n");
 					return 0;
 				}
@@ -2386,13 +2292,13 @@ int parse_console(char *buf) {
 }
 
 /*==========================================
- * remove ended comments
+ *
  *------------------------------------------
  */
 void remove_ended_comments(char *line) {
+
 	int i;
 
-	// removed endline comments
 	i = 0;
 	while(line[i] && line[i + 1]) {
 		if (line[i] == '/' && line[i + 1] == '/') {
@@ -2409,25 +2315,23 @@ static int map_ip_set_ = 0;
 static int char_ip_set_ = 0;
 
 /*==========================================
- * �ݒ��t�@�C�����ǂݍ���
+ *
  *------------------------------------------
  */
 int map_config_read(char *cfgName) {
+
 	char line[1024], w1[1024], w2[1024];
 	FILE *fp;
 	struct hostent *h = NULL;
 
 	if ((fp = fopen(cfgName, "r")) == NULL) {
-//		if ((fp = fopen("conf/map_freya.conf", "r")) == NULL) { // not try default, possible infinite loop with import
 			printf("Map configuration file not found at: %s\n", cfgName);
 			exit(1);
-//		}
 	}
 
-	while(fgets(line, sizeof(line), fp)) { // fgets reads until maximum one less than size and add '\0' -> so, it's not necessary to add -1
+	while(fgets(line, sizeof(line), fp)) {
 		if ((line[0] == '/' && line[1] == '/') || line[0] == '\0' || line[0] == '\n' || line[0] == '\r')
 			continue;
-		// it's not necessary to remove 'carriage return ('\n' or '\r')
 
 		memset(w2, 0, sizeof(w2));
 		if (sscanf(line, "%[^:]: %[^\r\n]", w1, w2) == 2) {
@@ -2544,7 +2448,6 @@ int map_config_read(char *cfgName) {
 				} else {
 					memset(npc_language, 0, sizeof(npc_language));
 					strcpy(npc_language, w2);
-					//printf("Set NPC language to '%s'.\n", npc_language);
 				}
 			} else if (strcasecmp(w1, "console") == 0) {
 				remove_ended_comments(w2); // remove ended comments
@@ -2569,7 +2472,6 @@ int map_config_read(char *cfgName) {
 			} else if (strcasecmp(w1, "addon") == 0) {
 				remove_ended_comments(w2); // remove ended comments
 				addons_load(w2, ADDONS_MAP);
-// import
 			} else if (strcasecmp(w1, "import") == 0) {
 				remove_ended_comments(w2); // remove ended comments
 				printf(CL_GREEN "Loaded: " CL_RESET "map_config_read: Import file: %s.\n", w2);
@@ -2583,46 +2485,45 @@ int map_config_read(char *cfgName) {
 }
 
 #ifndef TXT_ONLY
-/*=======================================
- *  MySQL Init
- *---------------------------------------
+/*==========================================
+ *
+ *------------------------------------------
  */
 int map_sql_init(void){
-	// DB connection start
+
 	sql_init();
 
 	return 0;
 }
 
-/*=======================================
- *  MySQL Close
- *---------------------------------------
+/*==========================================
+ *
+ *------------------------------------------
  */
 int map_sql_close(void){
+
 	sql_close();
 	printf("Close Map DB Connection...\n");
 
 	return 0;
 }
 
-/*=======================================
- *  MySQL Configuration
- *---------------------------------------
+/*==========================================
+ *
+ *------------------------------------------
  */
 int sql_config_read(char *cfgName) {
+
 	char line[1024], w1[1024], w2[1024];
 	FILE *fp;
 
 	if ((fp = fopen(cfgName, "r")) == NULL) {
-//		if ((fp = fopen("conf/inter_freya.conf", "r")) == NULL) { // not try default, possible infinite loop with import
 			printf("File not found: %s.\n", cfgName);
 			return 1;
-//		}
 	}
-	while(fgets(line, sizeof(line), fp)) { // fgets reads until maximum one less than size and add '\0' -> so, it's not necessary to add -1
+	while(fgets(line, sizeof(line), fp)) {
 		if ((line[0] == '/' && line[1] == '/') || line[0] == '\0' || line[0] == '\n' || line[0] == '\r')
 			continue;
-		// it's not necessary to remove 'carriage return ('\n' or '\r')
 
 		memset(w2, 0, sizeof(w2));
 		if (sscanf(line, "%[^:]: %[^\r\n]", w1, w2) != 2)
@@ -2635,7 +2536,7 @@ int sql_config_read(char *cfgName) {
 		} else if (strcasecmp(w1, "char_db") == 0) {
 			strcpy(char_db, w2);
 
-		//Map Server SQL DB
+		// Map Server SQL DB
 		} else if (strcasecmp(w1, "mysql_server_ip") == 0) {
 			strcpy(db_mysql_server_ip, w2);
 		} else if (strcasecmp(w1, "mysql_server_port") == 0) {
@@ -2647,12 +2548,11 @@ int sql_config_read(char *cfgName) {
 		} else if (strcasecmp(w1, "mysql_map_db") == 0) {
 			strcpy(db_mysql_server_db, w2);
 
-		//Map server option to use SQL db or not
+		// Map server option to use SQL db or not
 		} else if (strcasecmp(w1, "use_sql_db") == 0) {
 			db_use_sqldbs = config_switch(w2);
 			printf ("Using SQL dbs: " CL_WHITE "%s" CL_RESET ".\n", w2);
 
-// import
 		} else if (strcasecmp(w1, "import") == 0) {
 			printf("sql_config_read: Import file: %s.\n", w2);
 			sql_config_read(w2);
@@ -2666,21 +2566,27 @@ int sql_config_read(char *cfgName) {
 }
 #endif /* not TXT_ONLY */
 
+/*==========================================
+ *
+ *------------------------------------------
+ */
 int id_db_final(void *k, void *d, va_list ap){ return 0; }
 int map_db_final(void *k, void *d, va_list ap){ return 0; }
 
-/*int nick_db_final(void *k, void *d, va_list ap) { // not used
-	FREE(d);
-
-	return 0;
-}*/
-
+/*==========================================
+ *
+ *------------------------------------------
+ */
 int charid_db_final(void *k, void *d, va_list ap) {
 	FREE(d);
 
 	return 0;
 }
 
+/*==========================================
+ *
+ *------------------------------------------
+ */
 static int cleanup_sub(struct block_list *bl, va_list ap) {
 	nullpo_retr(0, bl);
 
@@ -2711,10 +2617,11 @@ static int cleanup_sub(struct block_list *bl, va_list ap) {
 }
 
 /*==========================================
- * map�I�I��������
+ *
  *------------------------------------------
  */
 void do_final(void) {
+
 	int map_id, i, j;
 	struct map_session_data *sd;
 
@@ -2769,7 +2676,6 @@ void do_final(void) {
 	delete_manner();
 
 	do_final_npc();
-//	map_removenpc();
 	timer_final();
 
 	do_final_atcommand();
@@ -2790,7 +2696,6 @@ void do_final(void) {
 
 	numdb_final(id_db, id_db_final);
 	strdb_final(map_db, map_db_final);
-//	strdb_final(nick_db, nick_db_final); // not used
 	numdb_final(charid_db, charid_db_final);
 
 	/* restore console parameters */
@@ -2809,11 +2714,12 @@ void do_final(void) {
 	printf("Finished.\n");
 }
 
-/*======================================================
- * Map-Server Init and Command-line Arguments
- *------------------------------------------------------
+/*==========================================
+ *
+ *------------------------------------------
  */
 void map_helpscreen() {
+
 	printf("\n");
 	puts(CL_DARK_GREEN "Usage: map-server [options]" CL_RESET "");
 	puts("  " CL_DARK_CYAN "Options                  " CL_RESET " Description");
@@ -2833,12 +2739,11 @@ void map_helpscreen() {
 	return;
 }
 
-/*======================================================
- * Map-Server Init and Command-line Arguments [Valaris]
- *------------------------------------------------------
+/*==========================================
+ *
+ *------------------------------------------
  */
-void do_init(const int argc, char *argv[])
-{
+void do_init(const int argc, char *argv[]) {
 	register int i;
 
 #ifndef TXT_ONLY
@@ -2919,7 +2824,6 @@ void do_init(const int argc, char *argv[])
 
 	id_db = numdb_init();
 	map_db = strdb_init(17); // 16 + NULL
-//	nick_db = strdb_init(25); // 24 + NULL // not used
 	charid_db = numdb_init();
 #ifdef USE_SQL
 	if (db_use_sqldbs) {
@@ -2968,20 +2872,17 @@ void do_init(const int argc, char *argv[])
 	// Begin loading scripts
 	do_init_npc();
 
-	npc_event_do_oninit(); // npc��OnInit�C�x���g��s
+	npc_event_do_oninit();
 
 	if (battle_config.pk_mode)
 		printf(CL_WHITE "Server: " CL_RESET "The server is running in " CL_RED "PK Mode" CL_RESET ".\n");
 
 	if (strcmp(listen_ip, "0.0.0.0") == 0) {
-		//map_log("The map-server is ready (listening on the port %d - from any ip)." RETCODE, map_port);
 		printf(CL_WHITE "Server: " CL_RESET "The map-server is " CL_GREEN "ready" CL_RESET " (listening on the port " CL_WHITE "%d" CL_RESET " - from any ip).\n", map_port);
 	} else {
-		//map_log("The map-server is ready (listening on %s:%d)." RETCODE, listen_ip, map_port);
 		printf(CL_WHITE "Server: " CL_RESET "The map-server is " CL_GREEN "ready" CL_RESET " (listening on " CL_WHITE "%s:%d" CL_RESET ").\n", listen_ip, map_port);
 	}
 
-	/* console */
 	if (console) {
 		start_console(parse_console);
 		if (term_input_status == 0) {
