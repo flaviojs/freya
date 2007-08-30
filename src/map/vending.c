@@ -24,16 +24,15 @@
 unsigned char log_vending_level = 0;
 
 /*==========================================
- * òIìXï¬çΩ
+ *
  *------------------------------------------
 */
 void vending_closevending(struct map_session_data *sd) {
-//	nullpo_retv(sd); // checked before to call function
 
 	sd->vender_id = 0;
 
-	// if player close shop (damage, auto-close, all items sold), reset disconnection timer to not disconnect the player just after last selled item
-	sd->lastpackettime = time(NULL); // for disconnection if player is inactive
+	// If player close shop (damage, auto-close, all items sold), reset disconnection timer to not disconnect the player just after last selled item
+	sd->lastpackettime = time(NULL); // For disconnection if player is inactive
 
 	clif_closevendingboard(&sd->bl, 0);
 
@@ -41,13 +40,12 @@ void vending_closevending(struct map_session_data *sd) {
 }
 
 /*==========================================
- * òIìXÉAÉCÉeÉÄÉäÉXÉgóvãÅ
+ *
  *------------------------------------------
- */
+*/
 void vending_vendinglistreq(struct map_session_data *sd, int id) {
-	struct map_session_data *vsd;
 
-//	nullpo_retv(sd); // checked before to call function
+	struct map_session_data *vsd;
 
 	if ((vsd = map_id2sd(id)) == NULL || !vsd->state.auth)
 		return;
@@ -60,18 +58,17 @@ void vending_vendinglistreq(struct map_session_data *sd, int id) {
 }
 
 /*==========================================
- * òIìXÉAÉCÉeÉÄçwì¸
+ *
  *------------------------------------------
- */
+*/
 void vending_purchasereq(struct map_session_data *sd, short len, int id, char *p) {
+
 	int i, j, w, new = 0, blank, vend_list[MAX_VENDING];
 	double z;
 	unsigned short amount;
 	short idx;
 	struct map_session_data *vsd;
-	struct vending vending[MAX_VENDING]; // against duplicate packets
-
-//	nullpo_retv(sd); // checked before to call function
+	struct vending vending[MAX_VENDING]; // Against duplicate packets
 
 	vsd = map_id2sd(id);
 	if (vsd == NULL)
@@ -81,18 +78,18 @@ void vending_purchasereq(struct map_session_data *sd, short len, int id, char *p
 	if (vsd->vender_id == sd->bl.id)
 		return;
 
-	// check number of buying items
+	// Check number of buying items
 	if (len < 8 + 4 || len > 8 + 4 * MAX_VENDING) {
-		clif_buyvending(sd, 0, 32767, 4); // not enough quantity (index and amount are unknown)
+		clif_buyvending(sd, 0, 32767, 4); //Not enough quantity (index and amount are unknown)
 		return;
 	}
 
 	blank = pc_inventoryblank(sd);
 
-	// duplicate item in vending to check hacker with multiple packets
-	memcpy(&vending, &vsd->vending, sizeof(struct vending) * MAX_VENDING); // copy vending list
+	// Duplicate item in vending to check hacker with multiple packets
+	memcpy(&vending, &vsd->vending, sizeof(struct vending) * MAX_VENDING); // Copy vending list
 
-	// some checks
+	// Some checks
 	z = 0.;
 	w = 0;
 	for(i = 0; 8 + 4 * i < len; i++) {
@@ -102,7 +99,7 @@ void vending_purchasereq(struct map_session_data *sd, short len, int id, char *p
 		if (amount <= 0)
 			return;
 
-		// check of index
+		// Check of index
 		if (idx < 0 || idx >= MAX_CART)
 			return;
 
@@ -116,23 +113,23 @@ void vending_purchasereq(struct map_session_data *sd, short len, int id, char *p
 			return; // îÑÇËêÿÇÍ
 
 		z += ((double)vsd->vending[j].value * (double)amount);
-		if (z > (double)sd->status.zeny || z < 0. || z > (double)MAX_ZENY) { // Fix positive overflow (buyer)
-			clif_buyvending(sd, idx, amount, 1); // you don't have enough zenys
+		if (z > (double)sd->status.zeny || z < 0. || z > (double)MAX_ZENY) {
+			clif_buyvending(sd, idx, amount, 1); // You don't have enough zeny
 			return; // zenyïsë´
 		}
-		if (z + (double)vsd->status.zeny > (double)MAX_ZENY) { // Fix positive overflow (merchand)
-			clif_buyvending(sd, idx, vsd->vending[j].amount, 4); // not enough quantity
+		if (z + (double)vsd->status.zeny > (double)MAX_ZENY) {
+			clif_buyvending(sd, idx, vsd->vending[j].amount, 4); // Not enough quantity
 			return; // zenyïsë´
 		}
 		w += itemdb_weight(vsd->status.cart[idx].nameid) * amount;
 		if (w + sd->weight > sd->max_weight) {
-			clif_buyvending(sd, idx, amount, 2); // you can not buy, because overweight
-			return; // èdó í¥âﬂ
+			clif_buyvending(sd, idx, amount, 2); // You cannot buy, because overweight
+			return;
 		}
-		// if they try to add packets (example: get twice or more 2 apples if marchand has only 3 apples).
-		// here, we check cumulativ amounts
-		if (vending[j].amount < amount) { // send more quantity is not a hack (an other player can have buy items just before)
-			clif_buyvending(sd, idx, vsd->vending[j].amount, 4); // not enough quantity
+		// If they try to add packets (example: get twice or more 2 apples if marchand has only 3 apples).
+		// Here, we check cumulative amounts
+		if (vending[j].amount < amount) { // Send more quantity is not a hack (an other player can have buy items just before)
+			clif_buyvending(sd, idx, vsd->vending[j].amount, 4); // Not enough quantity
 			return;
 		} else
 			vending[j].amount -= amount;
@@ -143,14 +140,14 @@ void vending_purchasereq(struct map_session_data *sd, short len, int id, char *p
 		case ADDITEM_NEW:
 			new++;
 			if (new > blank)
-				return; // éÌóﬁêîí¥âﬂ
+				return;
 			break;
 		case ADDITEM_OVERAMOUNT:
-			return; // ÉAÉCÉeÉÄêîí¥âﬂ
+			return;
 		}
 	}
 
-  { // for log variables
+  { // For logging variables
 	char tmpstr[8192]; // max lines: trade (1) + players names (2) + 10x2 items + total (2) = 25
 	                   // longest line: (24x2x4)(cart names)+4(cart #)+5(amount)+46(other) = 247
 	                   // 247 * 25 = 6175 (8192)
@@ -230,19 +227,18 @@ void vending_purchasereq(struct map_session_data *sd, short len, int id, char *p
 }
 
 /*==========================================
- * òIìXäJê›
+ *
  *------------------------------------------
- */
-void vending_openvending(struct map_session_data *sd, unsigned short len, char *message, unsigned char flag, char *p) { // S 01b2 <len>.w <message>.80B <flag>.B {<index>.w <amount>.w <value>.l}.8B*
+*/
+void vending_openvending(struct map_session_data *sd, unsigned short len, char *message, unsigned char flag, char *p) {
+
 	char *shop_title;
 	int shop_title_len;
 	int vending_skill_lvl;
 	int i, j;
 
-//	nullpo_retv(sd); // checked before to call function
-
 	vending_skill_lvl = pc_checkskill(sd, MC_VENDING);
-	if (vending_skill_lvl < 1 || !pc_iscarton(sd)) { // cart skill and cart check [Valaris]
+	if (vending_skill_lvl < 1 || !pc_iscarton(sd)) {
 		clif_skill_fail(sd, MC_VENDING, 0, 0);
 		return;
 	}
@@ -320,4 +316,3 @@ void vending_openvending(struct map_session_data *sd, unsigned short len, char *
 
 	return;
 }
-

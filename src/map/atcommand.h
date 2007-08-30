@@ -285,4 +285,3 @@ int msg_config_read(const char *cfgName);
 void do_final_atcommand(void);
 
 #endif // _ATCOMMAND_H_
-

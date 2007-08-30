@@ -44,7 +44,6 @@ enum {
 	BF_SKILLMASK = 0x0f00
 };
 
-// int battle_delay_damage(unsigned int tick, struct block_list *src, struct block_list *target, int damage, int flag);
 int battle_delay_damage (unsigned int tick, struct block_list *src, struct block_list *target, int attack_type, int skill_id, int skill_lv, int damage, int dmg_lv, int flag);
 int battle_damage(struct block_list *bl, struct block_list *target, int damage, int flag);
 int battle_heal(struct block_list *bl, struct block_list *target, int hp, int sp, int flag);
@@ -59,30 +58,15 @@ int battle_counttargeted(struct block_list *bl, struct block_list *src, int targ
 int battle_getcurrentskill(struct block_list *bl);
 
 #define BCT_ENEMY 0x020000
-// This should be (~BCT_ENEMY&BCT_ALL)
 #define BCT_NOENEMY 0x1d0000
 #define BCT_PARTY	0x040000
-// This should be (~BCT_PARTY&BCT_ALL)
 #define BCT_NOPARTY 0x1b0000
 #define BCT_GUILD	0x080000
-// This should be (~BCT_GUILD&BCT_ALL)
 #define BCT_NOGUILD 0x170000
 #define BCT_ALL 0x1f0000
 #define BCT_NOONE 0x000000
 #define BCT_SELF 0x010000
 #define BCT_NEUTRAL 0x100000
-
-/*
-enum {
-	BCT_NOENEMY = 0x00000,
-	BCT_PARTY   = 0x10000,
-	BCT_ENEMY   = 0x40000,
-	BCT_NOPARTY = 0x50000,
-	BCT_ALL     = 0x20000,
-	BCT_NOONE   = 0x60000,
-	BCT_SELF    = 0x60000
-};
-*/
 
 int battle_check_undead(int race, int element);
 int battle_check_target(struct block_list *src, struct block_list *target, int flag);
@@ -266,8 +250,6 @@ extern struct Battle_Config {
 	unsigned short mob_warpportal;
 	unsigned short dead_branch_active;
 	int vending_max_value;
-// unsigned short pet_lootitem; // Removed
-// unsigned short pet_weight; // Removed
 	unsigned short show_steal_in_same_party;
 	unsigned short enable_upper_class;
 	unsigned short pet_attack_attr_none;
@@ -281,9 +263,7 @@ extern struct Battle_Config {
 	unsigned short item_drop_mvp_min, item_drop_mvp_max;
 	unsigned short item_drop_heal_min, item_drop_heal_max;
 	unsigned short item_drop_use_min, item_drop_use_max;
-
 	unsigned short prevent_logout;
-
 	unsigned short alchemist_summon_reward;
 	unsigned short maximum_level;
 	unsigned short atcommand_max_job_level_novice;
@@ -307,10 +287,8 @@ extern struct Battle_Config {
 	unsigned short multi_level_up;
 	unsigned short pk_mode;
 	unsigned short show_mob_hp;
-
 	unsigned short agi_penalty_count_lv;
 	unsigned short vit_penalty_count_lv;
-
 	unsigned short gx_allhit;
 	unsigned short gx_cardfix;
 	unsigned short gx_dupele;
@@ -333,7 +311,6 @@ extern struct Battle_Config {
 	unsigned short gm_can_drop_lv;
 	unsigned short display_hpmeter;
 	unsigned short bone_drop;
-
 	unsigned short night_at_start;
 	int day_duration;
 	int night_duration;
@@ -347,7 +324,6 @@ extern struct Battle_Config {
 	unsigned short any_warp_GM_min_level;
 	unsigned short packet_ver_flag;
 	unsigned short muting_players;
-
 	unsigned short min_hair_style;
 	unsigned short max_hair_style;
 	unsigned short min_hair_color;
@@ -355,16 +331,13 @@ extern struct Battle_Config {
 	unsigned short min_cloth_color;
 	unsigned short max_cloth_color;
 	unsigned short clothes_color_for_assassin;
-
 	unsigned short castrate_dex_scale;
 	unsigned short area_size;
-
 	unsigned short zeny_from_mobs;
 	unsigned short mobs_level_up;
 	unsigned short pk_min_level;
 	unsigned short skill_steal_type;
 	unsigned short skill_steal_rate;
-// unsigned short night_darkness_level;
 	unsigned short skill_range_leniency;
 	unsigned short motd_type;
 	unsigned short allow_atcommand_when_mute;
@@ -391,7 +364,6 @@ extern struct Battle_Config {
 	unsigned short max_icewall;
 	unsigned short ignore_items_gender;
 	unsigned short party_invite_same_account;
-
 	unsigned short atcommand_main_channel_at_start;
 	int atcommand_main_channel_type;
 	unsigned short atcommand_main_channel_on_gvg_map_woe;
@@ -401,13 +373,9 @@ extern struct Battle_Config {
 	unsigned short atcommand_add_local_message_info;
 	unsigned short atcommand_storage_on_pvp_map;
 	unsigned short atcommand_gstorage_on_pvp_map;
-
 	unsigned short pm_gm_not_ignored;
-
 	unsigned short char_disconnect_mode;
-
 	unsigned short extra_system_flag;
-
 } battle_config;
 
 int battle_config_read(const char *cfgName);

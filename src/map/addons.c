@@ -10,6 +10,7 @@
 #include "addons.h"
 
 void init_localcalltable(void) {
+
 #ifdef DYNAMIC_LINKING
 	local_table = malloc(LFNC_COUNT * 4);
 	// Put here list of exported functions...
