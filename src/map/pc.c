@@ -4015,10 +4015,9 @@ int pc_setpos(struct map_session_data *sd, char *mapname_org, int x, int y, int 
 */
 
 // Remove following statuses when warped/changing maps
-		// Commented Stone Curse since you can walk around during the first part of it..
-		// Need to make it Dispell only on the second part [Tsuyuki]
-		/*if(sd->sc_data[SC_STONE].timer != -1)
-			status_change_end(&sd->bl, SC_STONE, -1);*/
+		// Only dispell Stone Curse if it's in its second phase
+		if(sd->sc_data[SC_STONE].timer != -1 && sd->opt1 != 6)
+			status_change_end(&sd->bl, SC_STONE, -1);
 		if(sd->sc_data[SC_FREEZE].timer != -1)
 			status_change_end(&sd->bl, SC_FREEZE, -1);
 		if(sd->sc_data[SC_STUN].timer != -1)
