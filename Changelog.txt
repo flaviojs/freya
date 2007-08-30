@@ -10,6 +10,9 @@
 
 Date	Added
 
+08/29/2007
+	* Fixed: Safety Wall blocking close-ranged magic attacks [Tsuyuki]
+
 08/13/2007
 	* Updated: Some packetry [Tsuyuki]
 

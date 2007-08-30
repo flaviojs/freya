@@ -468,7 +468,7 @@ int battle_calc_damage(struct block_list *src, struct block_list *bl, int damage
 		if(tsc_data[SC_SAFETYWALL].timer != -1)
 		{
 			// Blocks Short-ranged attacks, does not block monster skill Guided Attack or Demonstration, and blocks Level 2 or lower Grimtooth
-			if((flag&BF_SHORT && skill_num != NPC_GUIDEDATTACK && skill_num != AM_DEMONSTRATION) || (skill_num == AS_GRIMTOOTH && skill_lv <= 2))
+			if((flag&BF_SHORT && !(flag&BF_MAGIC) && skill_num != NPC_GUIDEDATTACK && skill_num != AM_DEMONSTRATION) || (skill_num == AS_GRIMTOOTH && skill_lv <= 2))
 			{
 				// Works as a unit skill (one cell)
 				struct skill_unit *unit = (struct skill_unit *)tsc_data[SC_SAFETYWALL].val2;
