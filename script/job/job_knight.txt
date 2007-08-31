@@ -1801,11 +1801,11 @@ OnStartArena:
 	killmonster "job_knt.gat","Knight1::OnMyMobDead";
 	killmonster "job_knt.gat","Knight2::OnMyMobDead";
 	killmonster "job_knt.gat","Knight3::OnMyMobDead";
-	disablenpc "Out1-1";
-	disablenpc "Out2-1";
-	disablenpc "Out3-1";
+	hideonnpc "Out1-1";
+	hideonnpc "Out2-1";
+	hideonnpc "Out3-1";
 	warpwaitingpc "job_knt.gat",43,146;
-	enablenpc "Knight1";
+	hideoffnpc "Knight1";
 	donpcevent "Knight1::OnCommandOn";
 	disablewaitingroomevent;
 	end;
@@ -1818,7 +1818,7 @@ OnCommandOn:
 job_knt.gat,1,1,1	script	Knight1	139,{
 
 OnInit:
-	disablenpc "Knight1";
+	hideonnpc "Knight1";
 	end;
 
 OnCommandOn:
@@ -1846,7 +1846,7 @@ OnMyMobDead:
 	set 'mobcount1,'mobcount1+1;
 	if ('mobcount1 > 11) {
 		warp "job_knt.gat",43,146; // Custom fix..
-		enablenpc "Out1-1";
+		hideoffnpc "Out1-1";
 	}
 	end;
 
@@ -1860,14 +1860,14 @@ OnTimer181000:
 
 OnTimer182000:
 	donpcevent "Windsor Benedict::OnCommandOn";
-	disablenpc "Knight1";
+	hideonnpc "Knight1";
 	end;
 }
 
 job_knt.gat,43,146,0	script	Out1-1	139,22,22,{
 
 OnInit:
-	disablenpc "Out1-1";
+	hideonnpc "Out1-1";
 	end;
 
 OnTouch:
@@ -1881,17 +1881,17 @@ OnTouch:
 	warp "job_knt.gat",43,52;
 	stopnpctimer "Knight1";
 	donpcevent "Knight1::OnCommandReset";
-	enablenpc "Knight2";
+	hideoffnpc "Knight2";
 	donpcevent "Knight2::OnCommandOn";
-	disablenpc "Knight1";
-	disablenpc "Out1-1";
+	hideonnpc "Knight1";
+	hideonnpc "Out1-1";
 	end;
 }
 
 job_knt.gat,1,2,1	script	Knight2	139,{
 
 OnInit:
-	disablenpc "Knight2";
+	hideonnpc "Knight2";
 	end;
 
 OnCommandOn:
@@ -1919,7 +1919,7 @@ OnMyMobDead:
 	set 'mobcount2,'mobcount2+1;
 	if ('mobcount2 > 11) {
 		warp "job_knt.gat",42,52; // Custom fix..
-		enablenpc "Out2-1";
+		hideoffnpc "Out2-1";
 	}
 	end;
 
@@ -1933,14 +1933,14 @@ OnTimer181000:
 
 OnTimer182000:
 	donpcevent "Windsor Benedict::OnCommandOn";
-	disablenpc "Knight2";
+	hideonnpc "Knight2";
 	end;
 }
 
 job_knt.gat,42,52,0	script	Out2-1	139,22,22,{
 
 OnInit:
-	disablenpc "Out2-1";
+	hideonnpc "Out2-1";
 	end;
 
 OnTouch:
@@ -1953,17 +1953,17 @@ OnTouch:
 	warp "job_knt.gat",143,152;
 	stopnpctimer "Knight2";
 	donpcevent "Knight2::OnCommandReset";
-	enablenpc "Knight3";
+	hideoffnpc "Knight3";
 	donpcevent "Knight3::OnCommandOn";
-	disablenpc "Knight2";
-	disablenpc "Out2-1";
+	hideonnpc "Knight2";
+	hideonnpc "Out2-1";
 	end;
 }
 
 job_knt.gat,1,3,1	script	Knight3	139,{
 
 OnInit:
-	disablenpc "Knight3";
+	hideonnpc "Knight3";
 	end;
 
 OnCommandOn:
@@ -1986,7 +1986,7 @@ OnMyMobDead:
 	set 'mobcount3,'mobcount3+1;
 	if ('mobcount3 > 6) {
 		warp "job_knt.gat",143,152; // Custom fix..
-		enablenpc "Out3-1";
+		hideoffnpc "Out3-1";
 	}
 	end;
 
@@ -2000,14 +2000,14 @@ OnTimer181000:
 
 OnTimer182000:
 	donpcevent "Windsor Benedict::OnCommandOn";
-	disablenpc "Knight3";
+	hideonnpc "Knight3";
 	end;
 }
 
 job_knt.gat,143,152,0	script	Out3-1	139,22,22,{
 
 OnInit:
-	disablenpc "Out3-1";
+	hideonnpc "Out3-1";
 	end;
 
 OnTouch:
@@ -2026,8 +2026,8 @@ OnTouch:
 	stopnpctimer "Knight3";
 	donpcevent "Knight3::OnCommandReset";
 	donpcevent "Windsor Benedict::OnCommandOn";
-	disablenpc "Knight3";
-	disablenpc "Out3-1";
+	hideonnpc "Knight3";
+	hideonnpc "Out3-1";
 	end;
 }
 
@@ -3015,7 +3015,7 @@ prt_in.gat,70,99,6	script	Sir Edmond	734,{
 job_knt.gat,1,1,1	script	Timer#knt	139,{
 
 OnTimer300000:
-	enablenpc "KntPeaceWarp";
+	hideoffnpc "KntPeaceWarp";
 	end;
 
 OnTimer300500:
@@ -3023,7 +3023,7 @@ OnTimer300500:
 	end;
 
 OnTimer301000:
-	disablenpc "KntPeaceWarp";
+	hideonnpc "KntPeaceWarp";
 	end;
 
 OnTimer301500:
@@ -3064,7 +3064,7 @@ OnMyMobDead:
 job_knt.gat,143,57,0	script	KntPeaceWarp	139,22,22,{
 
 OnInit:
-	disablenpc "KntPeaceWarp";
+	hideonnpc "KntPeaceWarp";
 	end;
 
 OnTouch:

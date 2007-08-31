@@ -1038,7 +1038,7 @@ job_prist.gat,23,187,1	script	Peter S. Alberto#n2	110,{
 job_prist.gat,1,1,1	script	Zombie_Generator	139,{
 
 OnInit:
-	disablenpc "Peter S. Alberto#n2";
+	hideonnpc "Peter S. Alberto#n2";
 	end;
 
 OnMyMobDead:
@@ -1052,21 +1052,21 @@ OnCommandOn:
 	set 'mobcount,0;
 	initnpctimer;
 	set 'prstwarpfix,0;
-	enablenpc "Zombie1_1";
-	enablenpc "Zombie2_1";
-	enablenpc "Zombie3_1";
-	enablenpc "Zombie4_1";
-	enablenpc "Zombie5_1";
-	enablenpc "Peter S. Alberto#n2";
-	disablenpc "Peter S. Alberto";
+	hideoffnpc "Zombie1_1";
+	hideoffnpc "Zombie2_1";
+	hideoffnpc "Zombie3_1";
+	hideoffnpc "Zombie4_1";
+	hideoffnpc "Zombie5_1";
+	hideoffnpc "Peter S. Alberto#n2";
+	hideonnpc "Peter S. Alberto";
 	end;
 
 OnCommandReset:
 		stopnpctimer;
 		killmonster "job_prist.gat","Zombie_Generator::OnMyMobDead";
 		set 'prstwarpfix,0;
-		disablenpc "Peter S. Alberto#n2";
-		enablenpc "Peter S. Alberto";
+		hideonnpc "Peter S. Alberto#n2";
+		hideoffnpc "Peter S. Alberto";
 		end;
 
 OnTimer300000:
@@ -1074,8 +1074,8 @@ OnTimer300000:
 		areawarp "job_prist.gat",8,34,39,109,"prontera.gat",234,318;
 		killmonster "job_prist.gat","Zombie_Generator::OnMyMobDead";
 		set 'prstwarpfix,0;
-		disablenpc "Peter S. Alberto#n2";
-		enablenpc "Peter S. Alberto";
+		hideonnpc "Peter S. Alberto#n2";
+		hideoffnpc "Peter S. Alberto";
 		end;
 }
 
@@ -1113,7 +1113,7 @@ OnTouch:
 		monster "job_prist.gat",24,52,"Theft",1015,1,"Zombie_Generator::OnMyMobDead";
 		monster "job_prist.gat",18,52,"Want of Virtue",1015,1,"Zombie_Generator::OnMyMobDead";
 		monster "job_prist.gat",30,52,"Jealousy",1015,1,"Zombie_Generator::OnMyMobDead";
-		disablenpc "Zombie1_1";
+		hideonnpc "Zombie1_1";
 		end;
 	}
 }
@@ -1124,7 +1124,7 @@ OnTouch:
 	if (Basejob == Job_Acolyte) {
 		monster "job_prist.gat",21,62,"Fury",1015,1,"Zombie_Generator::OnMyMobDead";
 		monster "job_prist.gat",27,62,"Envy",1015,1,"Zombie_Generator::OnMyMobDead";
-		disablenpc "Zombie2_1";
+		hideonnpc "Zombie2_1";
 		end;
 	}
 }
@@ -1136,7 +1136,7 @@ OnTouch:
 		monster "job_prist.gat",24,72,"Arrogance",1015,1,"Zombie_Generator::OnMyMobDead";
 		monster "job_prist.gat",18,72,"Lewdness",1015,1,"Zombie_Generator::OnMyMobDead";
 		monster "job_prist.gat",30,72,"Sloth",1015,1,"Zombie_Generator::OnMyMobDead";
-		disablenpc "Zombie3_1";
+		hideonnpc "Zombie3_1";
 		end;
 	}
 }
@@ -1147,7 +1147,7 @@ OnTouch:
 	if (Basejob == Job_Acolyte) {
 		monster "job_prist.gat",21,82,"Gluttony",1015,1,"Zombie_Generator::OnMyMobDead";
 		monster "job_prist.gat",27,82,"Greed",1015,1,"Zombie_Generator::OnMyMobDead";
-		disablenpc "Zombie4_1";
+		hideonnpc "Zombie4_1";
 		end;
 	}
 }
@@ -1159,7 +1159,7 @@ OnTouch:
 		monster "job_prist.gat",24,92,"Despair",1015,1,"Zombie_Generator::OnMyMobDead";
 		monster "job_prist.gat",18,92,"Distrust",1015,1,"Zombie_Generator::OnMyMobDead";
 		monster "job_prist.gat",30,92,"Fear",1015,1,"Zombie_Generator::OnMyMobDead";
-		disablenpc "Zombie5_1";
+		hideonnpc "Zombie5_1";
 		end;
 	}
 }
@@ -1449,9 +1449,9 @@ OnMyMobDead:
 	end;
 
 OnCommandOn:
-	enablenpc "Mummy1_1";
-	enablenpc "Mummy2_1";
-	enablenpc "Mummy3_1";
+	hideoffnpc "Mummy1_1";
+	hideoffnpc "Mummy2_1";
+	hideoffnpc "Mummy3_1";
 	end;
 
 OnCommandOff:
@@ -1479,7 +1479,7 @@ OnTouch:
 	if (Basejob == Job_Acolyte) {
 		monster "job_prist.gat",90,55,"Khamoz",1041,1,"Mummy_Generator::OnMyMobDead";
 		monster "job_prist.gat",105,55,"Amocsis",1041,1,"Mummy_Generator::OnMyMobDead";
-		disablenpc "Mummy1_1";
+		hideonnpc "Mummy1_1";
 	}
 	end;
 }
@@ -1490,7 +1490,7 @@ OnTouch:
 	if (Basejob == Job_Acolyte) {
 		monster "job_prist.gat",90,70,"Mentuhoteph",1041,1,"Mummy_Generator::OnMyMobDead";
 		monster "job_prist.gat",105,70,"Akenaten",1041,1,"Mummy_Generator::OnMyMobDead";
-		disablenpc "Mummy2_1";
+		hideonnpc "Mummy2_1";
 	}
 	end;
 }
@@ -1501,7 +1501,7 @@ OnTouch:
 	if (Basejob == Job_Acolyte) {
 		monster "job_prist.gat",90,85,"Mehnes",1041,1,"Mummy_Generator::OnMyMobDead";
 		monster "job_prist.gat",105,85,"Snepheru",1041,1,"Mummy_Generator::OnMyMobDead";
-		disablenpc "Mummy3_1";
+		hideonnpc "Mummy3_1";
 	}
 	end;
 }

@@ -4477,7 +4477,7 @@ OnInit:
 
 OnStartArena:
 	warpwaitingpc "job_sage.gat",116,97;
-	enablenpc "SageArena1";
+	hideoffnpc "SageArena1";
 	donpcevent "SageArena1::OnCommandOn";
 	disablewaitingroomevent;
 	end;
@@ -4492,7 +4492,7 @@ job_sage.gat,1,2,1	script	Arena#1::SageArena1	66,{
 	end;
 
 OnInit:
-	disablenpc "SageArena1";
+	hideonnpc "SageArena1";
 	end;
 
 OnCommandOn:
@@ -4524,7 +4524,7 @@ OnMyMobDead:
 	set 'mobcount1,'mobcount1 + 1;
 	if ('mobcount1 > 15) {
 		mapannounce "job_sage.gat"," " +strcharinfo(0)+", successfully defeat all the monsters.",8;
-		enablenpc "SageArena2";
+		hideoffnpc "SageArena2";
 		donpcevent "SageArena2::OnCommandOn";
 		stopnpctimer;
 		set 'mobcount1,0;
@@ -4573,7 +4573,7 @@ OnTimer183000:
 	end;
 
 OnTimer184000:
-	enablenpc "SageFail";
+	hideoffnpc "SageFail";
 	end;
 
 OnTimer185000:
@@ -4581,8 +4581,8 @@ OnTimer185000:
 	end;
 
 OnTimer186000:
-	disablenpc "SageFail";
-	disablenpc "SageArena1";
+	hideonnpc "SageFail";
+	hideonnpc "SageArena1";
 	donpcevent "Waiting Room#sg::OnCommandOn";
 	end;
 }
@@ -4592,12 +4592,12 @@ job_sage.gat,1,3,1	script	Arena#2::SageArena2	66,{
 	end;
 
 OnInit:
-	disablenpc "SageArena2";
+	hideonnpc "SageArena2";
 	end;
 
 OnCommandOn:
 	donpcevent "SageArena1::OnCommandReset";
-	disablenpc "SageArena1";
+	hideonnpc "SageArena1";
 	monster "job_sage.gat",111,102,"Numerical Value",1063,1,"SageArena2::OnMyMobDead";
 	monster "job_sage.gat",111,102,"Physics",1063,1,"SageArena2::OnMyMobDead";
 	monster "job_sage.gat",111,102,"History",1063,1,"SageArena2::OnMyMobDead";
@@ -4634,9 +4634,9 @@ OnMyMobDead:
 	set 'mobcount2,'mobcount2 + 1;
 	if ('mobcount2 > 23) {
 		mapannounce "job_sage.gat"," " +strcharinfo(0)+", successfully defeat all the monsters.",8;
-		enablenpc "SageKeeper";
+		hideoffnpc "SageKeeper";
 		donpcevent "SageKeeper::OnCommandOn";
-		enablenpc "SageArena3";
+		hideoffnpc "SageArena3";
 		donpcevent "SageArena3::OnCommandOn";
 		stopnpctimer;
 		set 'mobcount2,0;
@@ -4681,7 +4681,7 @@ OnTimer183000:
 	end;
 
 OnTimer184000:
-	enablenpc "SageFail";
+	hideoffnpc "SageFail";
 	end;
 
 OnTimer185000:
@@ -4689,8 +4689,8 @@ OnTimer185000:
 	end;
 
 OnTimer186000:
-	disablenpc "SageFail";
-	disablenpc "SageArena2";
+	hideonnpc "SageFail";
+	hideonnpc "SageArena2";
 	donpcevent "Waiting Room#sg::OnCommandOn";
 	end;
 }
@@ -4700,12 +4700,12 @@ job_sage.gat,1,4,1	script	Arena#Doorkeeper::SageKeeper	66,{
 	end;
 
 OnInit:
-	disablenpc "SageKeeper";
+	hideonnpc "SageKeeper";
 	end;
 
 OnCommandOn:
 	donpcevent "SageArena2::OnCommandReset";
-	disablenpc "SageArena2";
+	hideonnpc "SageArena2";
 	monster "job_sage.gat",116,97,"Academic Probation",1179,1,"SageKeeper::OnMyMobDead";
 	initnpctimer;
 	end;
@@ -4717,7 +4717,7 @@ OnCommandReset:
 
 OnCommandOff:
 	donpcevent "SageArena3::OnCommandOff";
-	disablenpc "SageKeeper";
+	hideonnpc "SageKeeper";
 	end;
 
 OnMyMobDead:
@@ -4747,7 +4747,7 @@ OnTimer60000:
 	end;
 
 OnTimer61000:
-	enablenpc "SageFail";
+	hideoffnpc "SageFail";
 	end;
 
 OnTimer62000:
@@ -4755,7 +4755,7 @@ OnTimer62000:
 	end;
 
 OnTimer63000:
-	disablenpc "SageFail";
+	hideonnpc "SageFail";
 	donpcevent "SageKeeper::OnCommandOff";
 	donpcevent "Waiting Room#sg::OnCommandOn";
 	end;
@@ -4764,7 +4764,7 @@ OnTimer63000:
 job_sage.gat,116,97,0	script	Arena#Fail::SageFail	139,16,16,{
 
 OnInit:
-	disablenpc "SageFail";
+	hideonnpc "SageFail";
 	end;
 
 OnTouch:
@@ -4778,7 +4778,7 @@ job_sage.gat,1,4,1	script	Arena#3::SageArena3	66,{
 	end;
 
 OnInit:
-	disablenpc "SageArena3";
+	hideonnpc "SageArena3";
 	end;
 
 OnCommandOn:
@@ -4796,14 +4796,14 @@ OnCommandReset:
 	end;
 
 OnCommandOff:
-	disablenpc "SageArena3";
+	hideonnpc "SageArena3";
 	end;
 }
 
 job_sage.gat,116,97,0	script	SageSucceeded	139,16,16,{
 
 OnInit:
-	disablenpc "SageSucceeded";
+	hideonnpc "SageSucceeded";
 	end;
 
 OnTouch:
@@ -4816,7 +4816,7 @@ job_sage.gat,1,6,1	script	Test Helper#sg	66,{
 	end;
 
 OnInit:
-	disablenpc "Test Helper#sg";
+	hideonnpc "Test Helper#sg";
 	end;
 
 OnCommandOn:
@@ -4832,11 +4832,11 @@ OnTimer4000:
 	end;
 
 OnTimer5000:
-	enablenpc "SageSucceeded";
+	hideoffnpc "SageSucceeded";
 	end;
 
 OnTimer6000:
-	disablenpc "SageSucceeded";
+	hideonnpc "SageSucceeded";
 	end;
 
 OnTimer7000:
@@ -4844,7 +4844,7 @@ OnTimer7000:
 	end;
 
 OnTimer9000:
-	disablenpc "Test Helper#sg";
+	hideonnpc "Test Helper#sg";
 	donpcevent "Waiting Room#sg::OnCommandOn";
 	stopnpctimer;
 	end;

@@ -1165,11 +1165,11 @@ OnInit:
 	end;
 
 OnStartArena:
-	disablenpc "dance#up";
-	disablenpc "dance#down";
-	disablenpc "dance#left";
-	disablenpc "dance#right";
-	disablenpc "dance#cen";
+	hideonnpc "dance#up";
+	hideonnpc "dance#down";
+	hideonnpc "dance#left";
+	hideonnpc "dance#right";
+	hideonnpc "dance#cen";
 	donpcevent "dance#return::OnCommandOff";
 	warpwaitingpc "job_duncer.gat",69,110;
 	donpcevent "Bijou#dance_timer::OnCommandOn";
@@ -1216,83 +1216,83 @@ OnTimer5000:
 	end;
 
 OnTimer7000:
-	disablenpc "dance#up";
-	enablenpc "dance#down";
-	enablenpc "dance#left";
-	enablenpc "dance#right";
-	enablenpc "dance#cen";
+	hideonnpc "dance#up";
+	hideoffnpc "dance#down";
+	hideoffnpc "dance#left";
+	hideoffnpc "dance#right";
+	hideoffnpc "dance#cen";
 	end;
 
 OnTimer8000:
 	donpcevent "Backdancer#1::OnCommandSmile";
-	disablenpc "dance#up";
-	disablenpc "dance#down";
-	disablenpc "dance#left";
-	disablenpc "dance#right";
-	disablenpc "dance#cen";
+	hideonnpc "dance#up";
+	hideonnpc "dance#down";
+	hideonnpc "dance#left";
+	hideonnpc "dance#right";
+	hideonnpc "dance#cen";
 	mapannounce "job_duncer.gat"," Down!",8;
 	end;
 
 OnTimer11000:
-	enablenpc "dance#up";
-	disablenpc "dance#down";
-	enablenpc "dance#left";
-	enablenpc "dance#right";
-	enablenpc "dance#cen";
+	hideoffnpc "dance#up";
+	hideonnpc "dance#down";
+	hideoffnpc "dance#left";
+	hideoffnpc "dance#right";
+	hideoffnpc "dance#cen";
 	end;
 
 OnTimer12000:
 	donpcevent "Backdancer#1::OnCommandSmile";
-	disablenpc "dance#up";
-	disablenpc "dance#down";
-	disablenpc "dance#left";
-	disablenpc "dance#right";
-	disablenpc "dance#cen";
+	hideonnpc "dance#up";
+	hideonnpc "dance#down";
+	hideonnpc "dance#left";
+	hideonnpc "dance#right";
+	hideonnpc "dance#cen";
 	mapannounce "job_duncer.gat"," Left~!",8;
 	end;
 
 OnTimer15000:
-	enablenpc "dance#up";
-	enablenpc "dance#down";
-	disablenpc "dance#left";
-	enablenpc "dance#right";
-	enablenpc "dance#cen";
+	hideoffnpc "dance#up";
+	hideoffnpc "dance#down";
+	hideonnpc "dance#left";
+	hideoffnpc "dance#right";
+	hideoffnpc "dance#cen";
 	end;
 
 OnTimer16000:
 	donpcevent "Backdancer#1::OnCommandSmile";
-	disablenpc "dance#up";
-	disablenpc "dance#down";
-	disablenpc "dance#left";
-	disablenpc "dance#right";
-	disablenpc "dance#cen";
+	hideonnpc "dance#up";
+	hideonnpc "dance#down";
+	hideonnpc "dance#left";
+	hideonnpc "dance#right";
+	hideonnpc "dance#cen";
 	mapannounce "job_duncer.gat"," Left, then Right~!",8;
 	end;
 
 OnTimer19000:
-	enablenpc "dance#up";
-	enablenpc "dance#down";
-	enablenpc "dance#left";
-	disablenpc "dance#right";
-	enablenpc "dance#cen";
+	hideoffnpc "dance#up";
+	hideoffnpc "dance#down";
+	hideoffnpc "dance#left";
+	hideonnpc "dance#right";
+	hideoffnpc "dance#cen";
 	end;
 
 OnTimer20000:
 	donpcevent "Backdancer#1::OnCommandSmile";
-	disablenpc "dance#up";
-	disablenpc "dance#down";
-	disablenpc "dance#left";
-	disablenpc "dance#right";
-	disablenpc "dance#cen";
+	hideonnpc "dance#up";
+	hideonnpc "dance#down";
+	hideonnpc "dance#left";
+	hideonnpc "dance#right";
+	hideonnpc "dance#cen";
 	mapannounce "job_duncer.gat"," Back to the Center~ !",8;
 	end;
 
 OnTimer23000:
-	enablenpc "dance#up";
-	enablenpc "dance#down";
-	enablenpc "dance#left";
-	enablenpc "dance#right";
-	disablenpc "dance#cen";
+	hideoffnpc "dance#up";
+	hideoffnpc "dance#down";
+	hideoffnpc "dance#left";
+	hideoffnpc "dance#right";
+	hideonnpc "dance#cen";
 	end;
 
 OnTimer23500:
@@ -1311,29 +1311,29 @@ OnTimer28500:
 
 OnTimer30000:
 	donpcevent "Backdancer#1::OnCommandSmile";
-	disablenpc "dance#up";
-	disablenpc "dance#down";
-	disablenpc "dance#left";
-	disablenpc "dance#right";
-	disablenpc "dance#cen";
+	hideonnpc "dance#up";
+	hideonnpc "dance#down";
+	hideonnpc "dance#left";
+	hideonnpc "dance#right";
+	hideonnpc "dance#cen";
 	mapannounce "job_duncer.gat"," Left!",8;
 	end;
 
 OnTimer34000:
-	enablenpc "dance#up";
-	enablenpc "dance#down";
-	disablenpc "dance#left";
-	enablenpc "dance#right";
-	enablenpc "dance#cen";
+	hideoffnpc "dance#up";
+	hideoffnpc "dance#down";
+	hideonnpc "dance#left";
+	hideoffnpc "dance#right";
+	hideoffnpc "dance#cen";
 	end;
 
 OnTimer35000:
 	donpcevent "Backdancer#1::OnCommandSmile";
-	disablenpc "dance#up";
-	disablenpc "dance#down";
-	disablenpc "dance#left";
-	disablenpc "dance#right";
-	disablenpc "dance#cen";
+	hideonnpc "dance#up";
+	hideonnpc "dance#down";
+	hideonnpc "dance#left";
+	hideonnpc "dance#right";
+	hideonnpc "dance#cen";
 	mapannounce "job_duncer.gat"," Down!",8;
 	end;
 
@@ -1342,147 +1342,147 @@ OnTimer38500:
 	end;
 
 OnTimer40000:
-	enablenpc "dance#up";
-	enablenpc "dance#down";
-	enablenpc "dance#left";
-	disablenpc "dance#right";
-	enablenpc "dance#cen";
+	hideoffnpc "dance#up";
+	hideoffnpc "dance#down";
+	hideoffnpc "dance#left";
+	hideonnpc "dance#right";
+	hideoffnpc "dance#cen";
 	mapannounce "job_duncer.gat"," Hold it~",8;
 	end;
 
 OnTimer43000:
 	donpcevent "Backdancer#1::OnCommandSmile";
-	disablenpc "dance#up";
-	disablenpc "dance#down";
-	disablenpc "dance#left";
-	disablenpc "dance#right";
-	disablenpc "dance#cen";
+	hideonnpc "dance#up";
+	hideonnpc "dance#down";
+	hideonnpc "dance#left";
+	hideonnpc "dance#right";
+	hideonnpc "dance#cen";
 	mapannounce "job_duncer.gat"," Left, Center, Right, Up!",8;
 	end;
 
 OnTimer49000:
-	disablenpc "dance#up";
-	enablenpc "dance#down";
-	enablenpc "dance#left";
-	enablenpc "dance#right";
-	enablenpc "dance#cen";
+	hideonnpc "dance#up";
+	hideoffnpc "dance#down";
+	hideoffnpc "dance#left";
+	hideoffnpc "dance#right";
+	hideoffnpc "dance#cen";
 	end;
 
 OnTimer50000:
 	donpcevent "Backdancer#1::OnCommandSmile";
-	disablenpc "dance#up";
-	disablenpc "dance#down";
-	disablenpc "dance#left";
-	disablenpc "dance#right";
-	disablenpc "dance#cen";
+	hideonnpc "dance#up";
+	hideonnpc "dance#down";
+	hideonnpc "dance#left";
+	hideonnpc "dance#right";
+	hideonnpc "dance#cen";
 	mapannounce "job_duncer.gat"," Right!",8;
 	end;
 
 OnTimer53000:
-	enablenpc "dance#up";
-	enablenpc "dance#down";
-	enablenpc "dance#left";
-	disablenpc "dance#right";
-	enablenpc "dance#cen";
+	hideoffnpc "dance#up";
+	hideoffnpc "dance#down";
+	hideoffnpc "dance#left";
+	hideonnpc "dance#right";
+	hideoffnpc "dance#cen";
 	end;
 
 OnTimer54000:
 	donpcevent "Backdancer#1::OnCommandSmile";
-	disablenpc "dance#up";
-	disablenpc "dance#down";
-	disablenpc "dance#left";
-	disablenpc "dance#right";
-	disablenpc "dance#cen";
+	hideonnpc "dance#up";
+	hideonnpc "dance#down";
+	hideonnpc "dance#left";
+	hideonnpc "dance#right";
+	hideonnpc "dance#cen";
 	mapannounce "job_duncer.gat"," Left, Center, Down, Up~!",8;
 	end;
 
 OnTimer60000:
-	disablenpc "dance#up";
-	enablenpc "dance#down";
-	enablenpc "dance#left";
-	enablenpc "dance#right";
-	enablenpc "dance#cen";
+	hideonnpc "dance#up";
+	hideoffnpc "dance#down";
+	hideoffnpc "dance#left";
+	hideoffnpc "dance#right";
+	hideoffnpc "dance#cen";
 	end;
 
 OnTimer61000:
 	donpcevent "Backdancer#1::OnCommandSmile";
-	disablenpc "dance#up";
-	disablenpc "dance#down";
-	disablenpc "dance#left";
-	disablenpc "dance#right";
-	disablenpc "dance#cen";
+	hideonnpc "dance#up";
+	hideonnpc "dance#down";
+	hideonnpc "dance#left";
+	hideonnpc "dance#right";
+	hideonnpc "dance#cen";
 	mapannounce "job_duncer.gat"," Once again~ Left, Center, Down, Up~ !",8;
 	end;
 
 OnTimer66000:
-	disablenpc "dance#up";
-	enablenpc "dance#down";
-	enablenpc "dance#left";
-	enablenpc "dance#right";
-	enablenpc "dance#cen";
+	hideonnpc "dance#up";
+	hideoffnpc "dance#down";
+	hideoffnpc "dance#left";
+	hideoffnpc "dance#right";
+	hideoffnpc "dance#cen";
 	end;
 
 OnTimer67000:
 	donpcevent "Backdancer#1::OnCommandSmile";
-	disablenpc "dance#up";
-	disablenpc "dance#down";
-	disablenpc "dance#left";
-	disablenpc "dance#right";
-	disablenpc "dance#cen";
+	hideonnpc "dance#up";
+	hideonnpc "dance#down";
+	hideonnpc "dance#left";
+	hideonnpc "dance#right";
+	hideonnpc "dance#cen";
 	mapannounce "job_duncer.gat"," Down~!",8;
 	end;
 
 OnTimer69000:
-	enablenpc "dance#up";
-	disablenpc "dance#down";
-	enablenpc "dance#left";
-	enablenpc "dance#right";
-	enablenpc "dance#cen";
+	hideoffnpc "dance#up";
+	hideonnpc "dance#down";
+	hideoffnpc "dance#left";
+	hideoffnpc "dance#right";
+	hideoffnpc "dance#cen";
 	end;
 
 OnTimer70000:
 	donpcevent "Backdancer#1::OnCommandSmile";
-	disablenpc "dance#up";
-	disablenpc "dance#down";
-	disablenpc "dance#left";
-	disablenpc "dance#right";
-	disablenpc "dance#cen";
+	hideonnpc "dance#up";
+	hideonnpc "dance#down";
+	hideonnpc "dance#left";
+	hideonnpc "dance#right";
+	hideonnpc "dance#cen";
 	mapannounce "job_duncer.gat"," Left!",8;
 	end;
 
 OnTimer74000:
-	enablenpc "dance#up";
-	enablenpc "dance#down";
-	disablenpc "dance#left";
-	enablenpc "dance#right";
-	enablenpc "dance#cen";
+	hideoffnpc "dance#up";
+	hideoffnpc "dance#down";
+	hideonnpc "dance#left";
+	hideoffnpc "dance#right";
+	hideoffnpc "dance#cen";
 	end;
 
 OnTimer75000:
 	donpcevent "Backdancer#1::OnCommandSmile";
-	disablenpc "dance#up";
-	disablenpc "dance#down";
-	disablenpc "dance#left";
-	disablenpc "dance#right";
-	disablenpc "dance#cen";
+	hideonnpc "dance#up";
+	hideonnpc "dance#down";
+	hideonnpc "dance#left";
+	hideonnpc "dance#right";
+	hideonnpc "dance#cen";
 	mapannounce "job_duncer.gat"," Center!",8;
 	end;
 
 OnTimer80000:
-	enablenpc "dance#up";
-	enablenpc "dance#down";
-	enablenpc "dance#left";
-	enablenpc "dance#right";
-	disablenpc "dance#cen";
+	hideoffnpc "dance#up";
+	hideoffnpc "dance#down";
+	hideoffnpc "dance#left";
+	hideoffnpc "dance#right";
+	hideonnpc "dance#cen";
 	end;
 
 OnTimer81000:
 	donpcevent "Backdancer#1::OnCommandSmile";
-	disablenpc "dance#up";
-	disablenpc "dance#down";
-	disablenpc "dance#left";
-	disablenpc "dance#right";
-	disablenpc "dance#cen";
+	hideonnpc "dance#up";
+	hideonnpc "dance#down";
+	hideonnpc "dance#left";
+	hideonnpc "dance#right";
+	hideonnpc "dance#cen";
 	mapannounce "job_duncer.gat"," Okay, Finish~ 'Arrow Shower!'",8;
 	end;
 
@@ -1491,7 +1491,7 @@ OnTimer82000:
 	end;
 
 OnTimer89000:
-	enablenpc "dance#return";
+	hideoffnpc "dance#return";
 	donpcevent "dance#return::OnCommandOn";
 	donpcevent "dance#poring::OnCommandReset";
 	stopnpctimer;
@@ -1507,13 +1507,13 @@ OnTouch:
 	end;
 
 OnCommandOff:
-	disablenpc "dance#return#2";
-	disablenpc "dance#return#3";
-	disablenpc "dance#return";
+	hideonnpc "dance#return#2";
+	hideonnpc "dance#return#3";
+	hideonnpc "dance#return";
 	end;
 
 OnCommandOn:
-	enablenpc "dance#return#2";
+	hideoffnpc "dance#return#2";
 	donpcevent "dance#return#2::OnCommandOn";
 	end;
 }
@@ -1526,7 +1526,7 @@ OnTouch:
 	end;
 
 OnCommandOn:
-	enablenpc "dance#return#3";
+	hideoffnpc "dance#return#3";
 	donpcevent "dance#return#3::OnCommandOn";
 	end;
 }

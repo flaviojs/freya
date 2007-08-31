@@ -1975,7 +1975,7 @@ OnInit:
 OnStartArena:
 	donpcevent "CrusaderWait::OnCommandReset";
 	warpwaitingpc "job_cru.gat",168,17;
-	enablenpc "CrusaderMob0";
+	hideoffnpc "CrusaderMob0";
 	donpcevent "CrusaderMob0::OnCommandOn";
 	disablewaitingroomevent;
 	end;
@@ -1992,15 +1992,15 @@ OnCommandReset:
 	set getvariableofnpc('mobswitch,"CrusaderMob0"),0;
 	set getvariableofnpc('mobfix,"CrusaderMob3"),0;
 	set getvariableofnpc('mobfix,"CrusaderMob4"),0;
-	disablenpc "CrusaderMob0";
-	disablenpc "CrusaderMob1";
-	disablenpc "CrusaderMob2";
-	disablenpc "CrusaderMob3";
-	disablenpc "CrusaderMob4";
-	disablenpc "CrusaderMob5";
-	disablenpc "CrusaderMob6";
-	disablenpc "CrusaderMob7";
-	disablenpc "CrusaderMob8";
+	hideonnpc "CrusaderMob0";
+	hideonnpc "CrusaderMob1";
+	hideonnpc "CrusaderMob2";
+	hideonnpc "CrusaderMob3";
+	hideonnpc "CrusaderMob4";
+	hideonnpc "CrusaderMob5";
+	hideonnpc "CrusaderMob6";
+	hideonnpc "CrusaderMob7";
+	hideonnpc "CrusaderMob8";
 	end;
 }
 
@@ -2025,15 +2025,15 @@ job_cru.gat,2,1,1	script	CrusaderMob0	110,{
 	end;
 
 OnInit:
-	disablenpc "CrusaderMob0";
+	hideonnpc "CrusaderMob0";
 	end;
 
 OnCommandOn:
-	enablenpc "CrusaderMob1";
-	enablenpc "CrusaderMob2";
-	enablenpc "CrusaderMob3";
-	enablenpc "CrusaderMob4";
-	enablenpc "CrusaderMob6";
+	hideoffnpc "CrusaderMob1";
+	hideoffnpc "CrusaderMob2";
+	hideoffnpc "CrusaderMob3";
+	hideoffnpc "CrusaderMob4";
+	hideoffnpc "CrusaderMob6";
 	donpcevent "CrusaderMob6::OnCommandOn";
 	end;
 
@@ -2078,31 +2078,31 @@ OnCommandReset:
 job_cru.gat,168,45,0	script	CrusaderMob1	139,15,1,{
 
 OnInit:
-	disablenpc "CrusaderMob1";
+	hideonnpc "CrusaderMob1";
 	end;
 
 OnTouch:
 	donpcevent "CrusaderMob0::OnCommandM1";
-	disablenpc "CrusaderMob1";
+	hideonnpc "CrusaderMob1";
 	end;
 }
 
 job_cru.gat,168,80,0	script	CrusaderMob2	139,15,1,{
 
 OnInit:
-	disablenpc "CrusaderMob2";
+	hideonnpc "CrusaderMob2";
 	end;
 
 OnTouch:
 	donpcevent "CrusaderMob0::OnCommandM2";
-	disablenpc "CrusaderMob2";
+	hideonnpc "CrusaderMob2";
 	end;
 }
 
 job_cru.gat,168,115,0	script	CrusaderMob3	139,15,1,{
 
 OnInit:
-	disablenpc "CrusaderMob3";
+	hideonnpc "CrusaderMob3";
 	end;
 
 OnTouch:
@@ -2127,7 +2127,7 @@ OnCommandReset:
 job_cru.gat,168,150,0	script	CrusaderMob4	139,15,1,{
 
 OnInit:
-	disablenpc "CrusaderMob4";
+	hideonnpc "CrusaderMob4";
 	end;
 
 OnTouch:
@@ -2139,7 +2139,7 @@ OnTouch:
 	end;
 
 OnMyMobDead:
-	enablenpc "CrusaderMob5";
+	hideoffnpc "CrusaderMob5";
 	set 'mobfix,0;
 	end;
 
@@ -2152,17 +2152,17 @@ OnCommandReset:
 job_cru.gat,168,180,4	script	CrusaderMob5	45,3,3,{
 
 OnInit:
-	disablenpc "CrusaderMob5";
+	hideonnpc "CrusaderMob5";
 	end;
 
 OnTouch:
 	warp "prt_castle.gat",35,147;
 	donpcevent "CrusaderMob0::OnCommandReset";
-	disablenpc "CrusaderMob0";
+	hideonnpc "CrusaderMob0";
 	donpcevent "CrusaderMob6::OnCommandStop";
-	disablenpc "CrusaderMob6";
+	hideonnpc "CrusaderMob6";
 	donpcevent "CrusaderWait::OnCommandOn";
-	disablenpc "CrusaderMob5";
+	hideonnpc "CrusaderMob5";
 	end;
 }
 
@@ -2171,15 +2171,15 @@ job_cru.gat,2,2,1	script	CrusaderMob6	110,{
 	end;
 
 OnTimer60000:
-	enablenpc "CrusaderMob8";
+	hideoffnpc "CrusaderMob8";
 	end;
 
 OnTimer61000:
-	disablenpc "CrusaderMob8";
+	hideonnpc "CrusaderMob8";
 	end;
 
 OnTimer240000:
-	enablenpc "CrusaderMob7";
+	hideoffnpc "CrusaderMob7";
 	end;
 
 OnTimer241000:
@@ -2189,20 +2189,20 @@ OnTimer241000:
 	end;
 
 OnTimer242000:
-	disablenpc "CrusaderMob0";
-	disablenpc "CrusaderMob3";
-	disablenpc "CrusaderMob4";
-	disablenpc "CrusaderMob7";
+	hideonnpc "CrusaderMob0";
+	hideonnpc "CrusaderMob3";
+	hideonnpc "CrusaderMob4";
+	hideonnpc "CrusaderMob7";
 	end;
 
 OnTimer243000:
 	donpcevent "CrusaderWait::OnCommandOn";
-	disablenpc "CrusaderMob6";
+	hideonnpc "CrusaderMob6";
 	stopnpctimer;
 	end;
 
 OnInit:
-	disablenpc "CrusaderMob6";
+	hideonnpc "CrusaderMob6";
 	end;
 
 OnCommandOn:
@@ -2217,7 +2217,7 @@ OnCommandStop:
 job_cru.gat,168,110,0	script	CrusaderMob7	139,14,82,{
 
 OnInit:
-	disablenpc "CrusaderMob7";
+	hideonnpc "CrusaderMob7";
 	end;
 
 OnTouch:
@@ -2228,7 +2228,7 @@ OnTouch:
 job_cru.gat,168,17,0	script	CrusaderMob8	139,14,5,{
 
 OnInit:
-	disablenpc "CrusaderMob8";
+	hideonnpc "CrusaderMob8";
 	end;
 
 OnTouch:

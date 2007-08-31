@@ -1802,12 +1802,12 @@ OnInit:
 
 OnStartArena:
 	warpwaitingpc "in_moc_16.gat",66,151;
-	enablenpc "ASNTEST1";
+	hideoffnpc "ASNTEST1";
 	donpcevent "ASNTEST1::OnCommandOn";
-	enablenpc "ASNTEST2";
+	hideoffnpc "ASNTEST2";
 	donpcevent "ASNTEST2::OnCommandOn";
-	disablenpc "Keeper of the Door#ASN";
-	disablenpc "backers#ASN";
+	hideonnpc "Keeper of the Door#ASN";
+	hideonnpc "backers#ASN";
 	donpcevent "traps#ASN::OnCommandOn";
 	disablewaitingroomevent;
 	end;
@@ -1893,7 +1893,7 @@ OnTouch:
 in_moc_16.gat,1,1,0	script	Beholder#ASNTEST1::ASNTEST1	139,{
 
 OnInit:
-	disablenpc "ASNTEST1";
+	hideonnpc "ASNTEST1";
 	end;
 
 OnCommandOn:
@@ -1924,13 +1924,13 @@ OnMyMobDead:
 		mapannounce "in_moc_16.gat","You seem to be doing quite well. Keep it up!",8;
 		set job_assassin_q,3;
 		donpcevent "timestopper#1::OnCommandOn";
-		enablenpc "Keeper of the Door#ASN";
+		hideoffnpc "Keeper of the Door#ASN";
 		donpcevent "Keeper of the Door#ASN::OnCommandOn";
 		donpcevent "ASNTEST1::OnCommandResetMob";
 		donpcevent "ASNTEST2::OnCommandReset";
 		stopnpctimer;
-		disablenpc "ASNTEST1";
-		disablenpc "ASNTEST2";
+		hideonnpc "ASNTEST1";
+		hideonnpc "ASNTEST2";
 	} else {
 		mapannounce "in_moc_16.gat","Okay, you're doing good! Hang in there, you're almost there!",8;
 	}
@@ -1994,113 +1994,113 @@ OnTimer185500:
 	end;
 
 OnTimer186000:
-	enablenpc "backers#ASN";
+	hideoffnpc "backers#ASN";
 	donpcevent "backers#ASN::OnCommandOn";
 	end;
 
 OnTimer186500:
-	disablenpc "backers#ASN";
+	hideonnpc "backers#ASN";
 	end;
 
 OnTimer187000:
 	donpcevent "ASNTEST1::OnCommandReset";
 	donpcevent "ASNTEST2::OnCommandReset";
-	disablenpc "ASNTEST1";
-	disablenpc "ASNTEST2";
+	hideonnpc "ASNTEST1";
+	hideonnpc "ASNTEST2";
 	end;
 }
 
 in_moc_16.gat,76,158,0	script	backers#ASN	139,20,20,{
 
 OnInit:
-	disablenpc "backers#ASN";
+	hideonnpc "backers#ASN";
 	end;
 
 OnCommandOn:
-	disablenpc "01_1";
-	disablenpc "01_2";
-	disablenpc "01_3";
-	disablenpc "01_4";
-	disablenpc "02_1";
-	disablenpc "02_2";
-	disablenpc "02_3";
-	disablenpc "02_4";
-	disablenpc "03_1";
-	disablenpc "03_2";
-	disablenpc "03_3";
-	disablenpc "03_4";
-	disablenpc "04_1";
-	disablenpc "04_2";
-	disablenpc "04_3";
-	disablenpc "04_4";
-	disablenpc "05_1";
-	disablenpc "05_2";
-	disablenpc "05_3";
-	disablenpc "05_4";
-	disablenpc "06_1";
-	disablenpc "06_2";
-	disablenpc "06_3";
-	disablenpc "06_4";
-	disablenpc "07_1";
-	disablenpc "07_2";
-	disablenpc "07_3";
-	disablenpc "07_4";
-	disablenpc "08_1";
-	disablenpc "08_2";
-	disablenpc "08_3";
-	disablenpc "08_4";
-	disablenpc "09_1";
-	disablenpc "09_2";
-	disablenpc "09_3";
-	disablenpc "09_4";
-	disablenpc "10_1";
-	disablenpc "10_2";
-	disablenpc "10_3";
-	disablenpc "10_4";
-	disablenpc "10_5";
-	disablenpc "10_6";
-	disablenpc "10_7";
-	disablenpc "10_8";
-	disablenpc "11_1";
-	disablenpc "11_2";
-	disablenpc "11_3";
-	disablenpc "11_4";
-	disablenpc "12_1";
-	disablenpc "12_2";
-	disablenpc "12_3";
-	disablenpc "12_4";
-	disablenpc "13_1";
-	disablenpc "13_2";
-	disablenpc "13_3";
-	disablenpc "13_4";
-	disablenpc "14_1";
-	disablenpc "14_2";
-	disablenpc "14_3";
-	disablenpc "14_4";
-	disablenpc "14_5";
-	disablenpc "14_6";
-	disablenpc "14_7";
-	disablenpc "14_8";
-	disablenpc "14_9";
-	disablenpc "14_10";
-	disablenpc "14_11";
-	disablenpc "14_12";
-	disablenpc "15_1";
-	disablenpc "15_2";
-	disablenpc "15_3";
-	disablenpc "15_4";
-	disablenpc "16_1";
-	disablenpc "16_2";
-	disablenpc "16_3";
-	disablenpc "16_4";
-	disablenpc "17_1";
-	disablenpc "17_2";
-	disablenpc "17_3";
-	disablenpc "17_4";
-	disablenpc "18_1";
-	disablenpc "18_2";
-	disablenpc "18_3";
-	disablenpc "18_4";
+	hideonnpc "01_1";
+	hideonnpc "01_2";
+	hideonnpc "01_3";
+	hideonnpc "01_4";
+	hideonnpc "02_1";
+	hideonnpc "02_2";
+	hideonnpc "02_3";
+	hideonnpc "02_4";
+	hideonnpc "03_1";
+	hideonnpc "03_2";
+	hideonnpc "03_3";
+	hideonnpc "03_4";
+	hideonnpc "04_1";
+	hideonnpc "04_2";
+	hideonnpc "04_3";
+	hideonnpc "04_4";
+	hideonnpc "05_1";
+	hideonnpc "05_2";
+	hideonnpc "05_3";
+	hideonnpc "05_4";
+	hideonnpc "06_1";
+	hideonnpc "06_2";
+	hideonnpc "06_3";
+	hideonnpc "06_4";
+	hideonnpc "07_1";
+	hideonnpc "07_2";
+	hideonnpc "07_3";
+	hideonnpc "07_4";
+	hideonnpc "08_1";
+	hideonnpc "08_2";
+	hideonnpc "08_3";
+	hideonnpc "08_4";
+	hideonnpc "09_1";
+	hideonnpc "09_2";
+	hideonnpc "09_3";
+	hideonnpc "09_4";
+	hideonnpc "10_1";
+	hideonnpc "10_2";
+	hideonnpc "10_3";
+	hideonnpc "10_4";
+	hideonnpc "10_5";
+	hideonnpc "10_6";
+	hideonnpc "10_7";
+	hideonnpc "10_8";
+	hideonnpc "11_1";
+	hideonnpc "11_2";
+	hideonnpc "11_3";
+	hideonnpc "11_4";
+	hideonnpc "12_1";
+	hideonnpc "12_2";
+	hideonnpc "12_3";
+	hideonnpc "12_4";
+	hideonnpc "13_1";
+	hideonnpc "13_2";
+	hideonnpc "13_3";
+	hideonnpc "13_4";
+	hideonnpc "14_1";
+	hideonnpc "14_2";
+	hideonnpc "14_3";
+	hideonnpc "14_4";
+	hideonnpc "14_5";
+	hideonnpc "14_6";
+	hideonnpc "14_7";
+	hideonnpc "14_8";
+	hideonnpc "14_9";
+	hideonnpc "14_10";
+	hideonnpc "14_11";
+	hideonnpc "14_12";
+	hideonnpc "15_1";
+	hideonnpc "15_2";
+	hideonnpc "15_3";
+	hideonnpc "15_4";
+	hideonnpc "16_1";
+	hideonnpc "16_2";
+	hideonnpc "16_3";
+	hideonnpc "16_4";
+	hideonnpc "17_1";
+	hideonnpc "17_2";
+	hideonnpc "17_3";
+	hideonnpc "17_4";
+	hideonnpc "18_1";
+	hideonnpc "18_2";
+	hideonnpc "18_3";
+	hideonnpc "18_4";
 	end;
 
 OnTouch:
@@ -2111,97 +2111,97 @@ OnTouch:
 in_moc_16.gat,1,1,0	script	traps#ASN	139,{
 
 OnCommandOn:
-	enablenpc "01_1";
-	enablenpc "01_2";
-	enablenpc "01_3";
-	enablenpc "01_4";
-	enablenpc "02_1";
-	enablenpc "02_2";
-	enablenpc "02_3";
-	enablenpc "02_4";
-	enablenpc "03_1";
-	enablenpc "03_2";
-	enablenpc "03_3";
-	enablenpc "03_4";
-	enablenpc "04_1";
-	enablenpc "04_2";
-	enablenpc "04_3";
-	enablenpc "04_4";
-	enablenpc "05_1";
-	enablenpc "05_2";
-	enablenpc "05_3";
-	enablenpc "05_4";
-	enablenpc "06_1";
-	enablenpc "06_2";
-	enablenpc "06_3";
-	enablenpc "06_4";
-	enablenpc "07_1";
-	enablenpc "07_2";
-	enablenpc "07_3";
-	enablenpc "07_4";
-	enablenpc "08_1";
-	enablenpc "08_2";
-	enablenpc "08_3";
-	enablenpc "08_4";
-	enablenpc "09_1";
-	enablenpc "09_2";
-	enablenpc "09_3";
-	enablenpc "09_4";
-	enablenpc "10_1";
-	enablenpc "10_2";
-	enablenpc "10_3";
-	enablenpc "10_4";
-	enablenpc "10_5";
-	enablenpc "10_6";
-	enablenpc "10_7";
-	enablenpc "10_8";
-	enablenpc "11_1";
-	enablenpc "11_2";
-	enablenpc "11_3";
-	enablenpc "11_4";
-	enablenpc "12_1";
-	enablenpc "12_2";
-	enablenpc "12_3";
-	enablenpc "12_4";
-	enablenpc "13_1";
-	enablenpc "13_2";
-	enablenpc "13_3";
-	enablenpc "13_4";
-	enablenpc "14_1";
-	enablenpc "14_2";
-	enablenpc "14_3";
-	enablenpc "14_4";
-	enablenpc "14_5";
-	enablenpc "14_6";
-	enablenpc "14_7";
-	enablenpc "14_8";
-	enablenpc "14_9";
-	enablenpc "14_10";
-	enablenpc "14_11";
-	enablenpc "14_12";
-	enablenpc "15_1";
-	enablenpc "15_2";
-	enablenpc "15_3";
-	enablenpc "15_4";
-	enablenpc "16_1";
-	enablenpc "16_2";
-	enablenpc "16_3";
-	enablenpc "16_4";
-	enablenpc "17_1";
-	enablenpc "17_2";
-	enablenpc "17_3";
-	enablenpc "17_4";
-	enablenpc "18_1";
-	enablenpc "18_2";
-	enablenpc "18_3";
-	enablenpc "18_4";
+	hideoffnpc "01_1";
+	hideoffnpc "01_2";
+	hideoffnpc "01_3";
+	hideoffnpc "01_4";
+	hideoffnpc "02_1";
+	hideoffnpc "02_2";
+	hideoffnpc "02_3";
+	hideoffnpc "02_4";
+	hideoffnpc "03_1";
+	hideoffnpc "03_2";
+	hideoffnpc "03_3";
+	hideoffnpc "03_4";
+	hideoffnpc "04_1";
+	hideoffnpc "04_2";
+	hideoffnpc "04_3";
+	hideoffnpc "04_4";
+	hideoffnpc "05_1";
+	hideoffnpc "05_2";
+	hideoffnpc "05_3";
+	hideoffnpc "05_4";
+	hideoffnpc "06_1";
+	hideoffnpc "06_2";
+	hideoffnpc "06_3";
+	hideoffnpc "06_4";
+	hideoffnpc "07_1";
+	hideoffnpc "07_2";
+	hideoffnpc "07_3";
+	hideoffnpc "07_4";
+	hideoffnpc "08_1";
+	hideoffnpc "08_2";
+	hideoffnpc "08_3";
+	hideoffnpc "08_4";
+	hideoffnpc "09_1";
+	hideoffnpc "09_2";
+	hideoffnpc "09_3";
+	hideoffnpc "09_4";
+	hideoffnpc "10_1";
+	hideoffnpc "10_2";
+	hideoffnpc "10_3";
+	hideoffnpc "10_4";
+	hideoffnpc "10_5";
+	hideoffnpc "10_6";
+	hideoffnpc "10_7";
+	hideoffnpc "10_8";
+	hideoffnpc "11_1";
+	hideoffnpc "11_2";
+	hideoffnpc "11_3";
+	hideoffnpc "11_4";
+	hideoffnpc "12_1";
+	hideoffnpc "12_2";
+	hideoffnpc "12_3";
+	hideoffnpc "12_4";
+	hideoffnpc "13_1";
+	hideoffnpc "13_2";
+	hideoffnpc "13_3";
+	hideoffnpc "13_4";
+	hideoffnpc "14_1";
+	hideoffnpc "14_2";
+	hideoffnpc "14_3";
+	hideoffnpc "14_4";
+	hideoffnpc "14_5";
+	hideoffnpc "14_6";
+	hideoffnpc "14_7";
+	hideoffnpc "14_8";
+	hideoffnpc "14_9";
+	hideoffnpc "14_10";
+	hideoffnpc "14_11";
+	hideoffnpc "14_12";
+	hideoffnpc "15_1";
+	hideoffnpc "15_2";
+	hideoffnpc "15_3";
+	hideoffnpc "15_4";
+	hideoffnpc "16_1";
+	hideoffnpc "16_2";
+	hideoffnpc "16_3";
+	hideoffnpc "16_4";
+	hideoffnpc "17_1";
+	hideoffnpc "17_2";
+	hideoffnpc "17_3";
+	hideoffnpc "17_4";
+	hideoffnpc "18_1";
+	hideoffnpc "18_2";
+	hideoffnpc "18_3";
+	hideoffnpc "18_4";
 	end;
 }
 
 in_moc_16.gat,2,1,0	script	Beholder2#ASNTEST2::ASNTEST2	139,{
 
 OnInit:
-	disablenpc "ASNTEST2";
+	hideonnpc "ASNTEST2";
 	end;
 
 OnCommandReset:
@@ -2251,8 +2251,8 @@ OnMyMobDead:
 	warp "in_moc_16.gat",19,161;
 	donpcevent "ASNTEST1::OnCommandReset";
 	donpcevent "ASNTEST2::OnCommandReset";
-	disablenpc "ASNTEST1";
-	disablenpc "ASNTEST2";
+	hideonnpc "ASNTEST1";
+	hideonnpc "ASNTEST2";
 	end;
 }
 
@@ -2264,8 +2264,8 @@ OnTouch:
 	warp "in_moc_16.gat",19,161;
 	donpcevent "ASNTEST1::OnCommandReset";
 	donpcevent "ASNTEST2::OnCommandReset";
-	disablenpc "ASNTEST1";
-	disablenpc "ASNTEST2";
+	hideonnpc "ASNTEST1";
+	hideonnpc "ASNTEST2";
 	end;
 }
 
@@ -2358,7 +2358,7 @@ in_moc_16.gat,87,137,0	script	Keeper of the Door#ASN	45,2,1,{
 	end;
 
 OnInit:
-	disablenpc "Keeper of the Door#ASN";
+	hideonnpc "Keeper of the Door#ASN";
 	end;
 
 OnTouch:
@@ -2874,13 +2874,13 @@ OnTouch:
 		mes "They will";
 		mes "be here soon.";
 		next;
-		enablenpc "[Huey]";
-		enablenpc "[Khai]";
-		enablenpc "[The Anonymous One]";
-		enablenpc "[Barcardi]";
-		enablenpc "[Beholder]";
-		enablenpc "[Thomas]";
-		enablenpc "[Gayle Maroubitz]";
+		hideoffnpc "[Huey]";
+		hideoffnpc "[Khai]";
+		hideoffnpc "[The Anonymous One]";
+		hideoffnpc "[Barcardi]";
+		hideoffnpc "[Beholder]";
+		hideoffnpc "[Thomas]";
+		hideoffnpc "[Gayle Maroubitz]";
 		mes "[The Anonymous One]";
 		mes "I am here.";
 		next;
@@ -2925,7 +2925,7 @@ OnTouch:
 		mes "'Beholder,' what";
 		mes "is your opinion?";
 		next;
-		disablenpc "[Huey]";
+		hideonnpc "[Huey]";
 		mes "[Beholder]";
 		mes "Well, I don't like the course score. But, somehow the whole test was passed. I'm okay with this person.";
 		next;
@@ -3047,13 +3047,13 @@ OnTouch:
 		next;
 		mes "[Guildmaster]";
 		mes "Okay, all of you may go back to your positions. I will send you to the entrance as well. Let's move...";
-		disablenpc "[Huey]";
-		disablenpc "[Khai]";
-		disablenpc "[The Anonymous One]";
-		disablenpc "[Barcardi]";
-		disablenpc "[Beholder]";
-		disablenpc "[Thomas]";
-		disablenpc "[Gayle Maroubitz]";
+		hideonnpc "[Huey]";
+		hideonnpc "[Khai]";
+		hideonnpc "[The Anonymous One]";
+		hideonnpc "[Barcardi]";
+		hideonnpc "[Beholder]";
+		hideonnpc "[Thomas]";
+		hideonnpc "[Gayle Maroubitz]";
 		close2;
 		warp "in_moc_16.gat",17,19;
 		end;
@@ -3169,7 +3169,7 @@ in_moc_16.gat,156,87,1	script	[Huey]	55,{
 	end;
 
 OnInit:
-	disablenpc "[Huey]";
+	hideonnpc "[Huey]";
 	end;
 }
 
@@ -3178,7 +3178,7 @@ in_moc_16.gat,156,85,1	script	[Khai]	730,{
 	end;
 
 OnInit:
-	disablenpc "[Khai]";
+	hideonnpc "[Khai]";
 	end;
 }
 
@@ -3187,7 +3187,7 @@ in_moc_16.gat,156,83,1	script	[The Anonymous One]	106,{
 	end;
 
 OnInit:
-	disablenpc "[The Anonymous One]";
+	hideonnpc "[The Anonymous One]";
 	end;
 }
 
@@ -3196,7 +3196,7 @@ in_moc_16.gat,156,81,2	script	[Barcardi]	725,{
 	end;
 
 OnInit:
-	disablenpc "[Barcardi]";
+	hideonnpc "[Barcardi]";
 	end;
 }
 
@@ -3205,7 +3205,7 @@ in_moc_16.gat,156,79,1	script	[Beholder]	118,{
 	end;
 
 OnInit:
-	disablenpc "[Beholder]";
+	hideonnpc "[Beholder]";
 	end;
 }
 
@@ -3214,7 +3214,7 @@ in_moc_16.gat,156,77,1	script	[Thomas]	118,{
 	end;
 
 OnInit:
-	disablenpc "[Thomas]";
+	hideonnpc "[Thomas]";
 	end;
 }
 
@@ -3223,6 +3223,6 @@ in_moc_16.gat,156,75,1	script	[Gayle Maroubitz]	55,{
 	end;
 
 OnInit:
-	disablenpc "[Gayle Maroubitz]";
+	hideonnpc "[Gayle Maroubitz]";
 	end;
 }

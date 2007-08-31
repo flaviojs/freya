@@ -1814,7 +1814,7 @@ OnInit:
 
 OnStartArena:
 	warpwaitingpc "job_wiz.gat",114,169;
-	enablenpc "Room of Water#Main";
+	hideoffnpc "Room of Water#Main";
 	donpcevent "Room of Water#Main::OnCommandOn";
 	disablewaitingroomevent;
 	end;
@@ -1827,7 +1827,7 @@ OnCommandOn:
 job_wiz.gat,1,1,1	script	Room of Water#Main	139,{
 
 OnInit:
-	disablenpc "Room of Water#Main";
+	hideonnpc "Room of Water#Main";
 	end;
 
 OnCommandOn:
@@ -1854,9 +1854,9 @@ OnMyMobDead:
 		mapannounce "job_wiz.gat",""+strcharinfo(0)+" has succeeded in eliminating the monsters.",8;
 		donpcevent "Room of Water#Main::OnCommandReset";
 		stopnpctimer;
-		enablenpc "Room of Water#DoorKeeper";
+		hideoffnpc "Room of Water#DoorKeeper";
 		donpcevent "Room of Water#DoorKeeper::OnCommandOn";
-		disablenpc "Room of Water#Main";
+		hideonnpc "Room of Water#Main";
 	}
 	end;
 
@@ -1902,7 +1902,7 @@ OnTimer183000:
 	end;
 
 OnTimer184000:
-	enablenpc "Room of Water#Failed";
+	hideoffnpc "Room of Water#Failed";
 	end;
 
 OnTimer185000:
@@ -1910,8 +1910,8 @@ OnTimer185000:
 	end;
 
 OnTimer186000:
-	disablenpc "Room of Water#Failed";
-	disablenpc "Room of Water#Main";
+	hideonnpc "Room of Water#Failed";
+	hideonnpc "Room of Water#Main";
 	donpcevent "Arena Assistant#Wizard::OnCommandOn";
 	end;
 }
@@ -1919,7 +1919,7 @@ OnTimer186000:
 job_wiz.gat,1,2,1	script	Room of Water#DoorKeeper	139,{
 
 OnInit:
-	disablenpc "Room of Water#DoorKeeper";
+	hideonnpc "Room of Water#DoorKeeper";
 	end;
 
 OnCommandOn:
@@ -1944,9 +1944,9 @@ OnMyMobDead:
 		percentheal 100,100;
 		donpcevent "Room of Water#DoorKeeper::OnCommandReset";
 		stopnpctimer;
-		enablenpc "Room of Earth#Main";
+		hideoffnpc "Room of Earth#Main";
 		donpcevent "Room of Earth#Main::OnCommandOn";
-		disablenpc "Room of Water#DoorKeeper";
+		hideonnpc "Room of Water#DoorKeeper";
 	}
 	end;
 
@@ -1968,7 +1968,7 @@ OnTimer60000:
 	end;
 
 OnTimer61000:
-	enablenpc "Room of Water#Failed";
+	hideoffnpc "Room of Water#Failed";
 	end;
 
 OnTimer62000:
@@ -1976,8 +1976,8 @@ OnTimer62000:
 	end;
 
 OnTimer63000:
-	disablenpc "Room of Water#Failed";
-	disablenpc "Room of Water#DoorKeeper";
+	hideonnpc "Room of Water#Failed";
+	hideonnpc "Room of Water#DoorKeeper";
 	donpcevent "Arena Assistant#Wizard::OnCommandOn";
 	end;
 }
@@ -1985,7 +1985,7 @@ OnTimer63000:
 job_wiz.gat,114,169,0	script	Room of Water#Failed	139,16,16,{
 
 OnInit:
-	disablenpc "Room of Water#Failed";
+	hideonnpc "Room of Water#Failed";
 	end;
 
 OnTouch:
@@ -1997,7 +1997,7 @@ OnTouch:
 job_wiz.gat,1,3,1	script	Room of Earth#Main	139,{
 
 OnInit:
-	disablenpc "Room of Earth#Main";
+	hideonnpc "Room of Earth#Main";
 	end;
 
 OnCommandOn:
@@ -2025,9 +2025,9 @@ OnMyMobDead:
 		mapannounce "job_wiz.gat",""+strcharinfo(0)+" has succeeded in eliminating the monsters.",8;
 		donpcevent "Room of Earth#Main::OnCommandReset";
 		stopnpctimer;
-		enablenpc "Room of Earth#DoorKeeper";
+		hideoffnpc "Room of Earth#DoorKeeper";
 		donpcevent "Room of Earth#DoorKeeper::OnCommandOn";
-		disablenpc "Room of Earth#Main";
+		hideonnpc "Room of Earth#Main";
 	}
 	end;
 
@@ -2073,7 +2073,7 @@ OnTimer183000:
 	end;
 
 OnTimer184000:
-	enablenpc "Room of Earth#Failed";
+	hideoffnpc "Room of Earth#Failed";
 	end;
 
 OnTimer185000:
@@ -2081,8 +2081,8 @@ OnTimer185000:
 	end;
 
 OnTimer186000:
-	disablenpc "Room of Earth#Failed";
-	disablenpc "Room of Earth#Main";
+	hideonnpc "Room of Earth#Failed";
+	hideonnpc "Room of Earth#Main";
 	donpcevent "Arena Assistant#Wizard::OnCommandOn";
 	end;
 }
@@ -2090,7 +2090,7 @@ OnTimer186000:
 job_wiz.gat,1,4,1	script	Room of Earth#DoorKeeper	139,{
 
 OnInit:
-	disablenpc "Room of Earth#DoorKeeper";
+	hideonnpc "Room of Earth#DoorKeeper";
 	end;
 
 OnCommandOn:
@@ -2117,9 +2117,9 @@ OnMyMobDead:
 		percentheal 100,100;
 		donpcevent "Room of Earth#DoorKeeper::OnCommandReset";
 		stopnpctimer;
-		enablenpc "Room of Fire#Main";
+		hideoffnpc "Room of Fire#Main";
 		donpcevent "Room of Fire#Main::OnCommandOn";
-		disablenpc "Room of Earth#DoorKeeper";
+		hideonnpc "Room of Earth#DoorKeeper";
 	}
 	end;
 
@@ -2141,7 +2141,7 @@ OnTimer60000:
 	end;
 
 OnTimer61000:
-	enablenpc "Room of Earth#Failed";
+	hideoffnpc "Room of Earth#Failed";
 	end;
 
 OnTimer62000:
@@ -2149,8 +2149,8 @@ OnTimer62000:
 	end;
 
 OnTimer63000:
-	disablenpc "Room of Earth#Failed";
-	disablenpc "Room of Earth#DoorKeeper";
+	hideonnpc "Room of Earth#Failed";
+	hideonnpc "Room of Earth#DoorKeeper";
 	donpcevent "Arena Assistant#Wizard::OnCommandOn";
 	end;
 }
@@ -2158,7 +2158,7 @@ OnTimer63000:
 job_wiz.gat,116,97,0	script	Room of Earth#Failed	139,16,16,{
 
 OnInit:
-	disablenpc "Room of Earth#Failed";
+	hideonnpc "Room of Earth#Failed";
 	end;
 
 OnTouch:
@@ -2170,7 +2170,7 @@ OnTouch:
 job_wiz.gat,1,5,1	script	Room of Fire#Main	139,{
 
 OnInit:
-	disablenpc "Room of Fire#Main";
+	hideonnpc "Room of Fire#Main";
 	end;
 
 OnCommandOn:
@@ -2196,9 +2196,9 @@ OnMyMobDead:
 		mapannounce "job_wiz.gat",""+strcharinfo(0)+" has succeeded in eliminating the monsters.",8;
 		donpcevent "Room of Fire#Main::OnCommandReset";
 		stopnpctimer;
-		enablenpc "Room of Fire#DoorKeeper";
+		hideoffnpc "Room of Fire#DoorKeeper";
 		donpcevent "Room of Fire#DoorKeeper::OnCommandOn";
-		disablenpc "Room of Fire#Main";
+		hideonnpc "Room of Fire#Main";
 	}
 	end;
 
@@ -2244,7 +2244,7 @@ OnTimer183000:
 	end;
 
 OnTimer184000:
-	enablenpc "Room of Fire#Failed";
+	hideoffnpc "Room of Fire#Failed";
 	end;
 
 OnTimer185000:
@@ -2252,8 +2252,8 @@ OnTimer185000:
 	end;
 
 OnTimer186000:
-	disablenpc "Room of Fire#Failed";
-	disablenpc "Room of Fire#Main";
+	hideonnpc "Room of Fire#Failed";
+	hideonnpc "Room of Fire#Main";
 	donpcevent "Arena Assistant#Wizard::OnCommandOn";
 	end;
 }
@@ -2261,7 +2261,7 @@ OnTimer186000:
 job_wiz.gat,1,6,1	script	Room of Fire#DoorKeeper	139,{
 
 OnInit:
-	disablenpc "Room of Fire#DoorKeeper";
+	hideonnpc "Room of Fire#DoorKeeper";
 	end;
 
 OnCommandOn:
@@ -2282,9 +2282,9 @@ OnMyMobDead:
 		mapannounce "job_wiz.gat","Congratulations, " +strcharinfo(0)+". You have passed the job change test.",8;
 		set job_wizard_q,7;
 		donpcevent "Room of Fire#DoorKeeper::OnCommandReset";
-		enablenpc "Test Helper";
+		hideoffnpc "Test Helper";
 		donpcevent "Test Helper::OnCommandOn";
-		disablenpc "Room of Fire#DoorKeeper";
+		hideonnpc "Room of Fire#DoorKeeper";
 		stopnpctimer;
 	}
 	end;
@@ -2315,7 +2315,7 @@ OnTimer120000:
 	end;
 
 OnTimer121000:
-	enablenpc "Room of Fire#Failed";
+	hideoffnpc "Room of Fire#Failed";
 	end;
 
 OnTimer122000:
@@ -2323,8 +2323,8 @@ OnTimer122000:
 	end;
 
 OnTimer123000:
-	disablenpc "Room of Fire#Failed";
-	disablenpc "Room of Fire#DoorKeeper";
+	hideonnpc "Room of Fire#Failed";
+	hideonnpc "Room of Fire#DoorKeeper";
 	donpcevent "Arena Assistant#Wizard::OnCommandOn";
 	end;
 }
@@ -2332,7 +2332,7 @@ OnTimer123000:
 job_wiz.gat,46,99,0	script	Room of Fire#Failed	139,16,16,{
 
 OnInit:
-	disablenpc "Room of Fire#Failed";
+	hideonnpc "Room of Fire#Failed";
 	end;
 
 OnTouch:
@@ -2343,7 +2343,7 @@ OnTouch:
 job_wiz.gat,1,7,1	script	Test Helper	139,1,1,{
 
 OnInit:
-	disablenpc "Test Helper";
+	hideonnpc "Test Helper";
 	end;
 
 OnCommandOn:
@@ -2369,7 +2369,7 @@ OnTimer7000:
 OnTimer9000:
 	donpcevent "Arena Assistant#Wizard::OnCommandOn";
 	stopnpctimer;
-	disablenpc "Test Helper";
+	hideonnpc "Test Helper";
 	end;
 }
 

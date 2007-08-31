@@ -1580,12 +1580,12 @@ OnInit:
 OnStartArena:
 	killmonsterall "job_hunte.gat";
 	warpwaitingpc "job_hunte.gat",90,67;
-	enablenpc "Manager#hnt";
+	hideoffnpc "Manager#hnt";
 	donpcevent "Manager#hnt::OnCommandOn";
 	donpcevent "Manager#hnt2::OnCommandOn";
-	enablenpc "Manager#hnt2";
+	hideoffnpc "Manager#hnt2";
 	donpcevent "Switch#hnt::OnCommandOff";
-	disablenpc "hnt_backers";
+	hideonnpc "hnt_backers";
 	disablewaitingroomevent;
 	end;
 
@@ -1597,7 +1597,7 @@ OnCommandReset:
 job_hunte.gat,1,1,1	script	Manager#hnt	139,{
 
 OnInit:
-	disablenpc "Manager#hnt";
+	hideonnpc "Manager#hnt";
 	end;
 
 OnCommandOn:
@@ -1620,11 +1620,11 @@ OnMyMobDead:
 	if ('count >= 4) {
 		mapannounce "job_hunte.gat","Okay, good job... Now, find the switch in the center of the map!! Be careful of the traps!!",8;
 		set job_hunter_q,14;
-		enablenpc "Switch#hnt";
+		hideoffnpc "Switch#hnt";
 		donpcevent "Manager#hnt::OnCommandReset";
 		donpcevent "Manager#hnt2::OnCommandReset";
-		disablenpc "Manager#hnt";
-		disablenpc "Manager#hnt2";
+		hideonnpc "Manager#hnt";
+		hideonnpc "Manager#hnt2";
 	} else {
 		mapannounce "job_hunte.gat","Okay~ You're almost there!!",8;
 	}
@@ -1703,19 +1703,19 @@ OnTimer194000:
 	end;
 
 OnTimer195000:
-	enablenpc "hnt_backers";
+	hideoffnpc "hnt_backers";
 	end;
 
 OnTimer196000:
-	disablenpc "hnt_backers";
+	hideonnpc "hnt_backers";
 	end;
 
 OnTimer196500:
-	enablenpc "hnt_backers";
+	hideoffnpc "hnt_backers";
 	end;
 
 OnTimer197000:
-	disablenpc "hnt_backers";
+	hideonnpc "hnt_backers";
 	donpcevent "Manager#hnt::OnCommandReset";
 	donpcevent "Manager#hnt2::OnCommandReset";
 	donpcevent "hntwait::OnCommandReset";
@@ -1725,7 +1725,7 @@ OnTimer197000:
 job_hunte.gat,1,2,1	script	Manager#hnt2	139,{
 
 OnInit:
-	disablenpc "Manager#hnt2";
+	hideonnpc "Manager#hnt2";
 	end;
 
 OnCommandOn:
@@ -1772,9 +1772,9 @@ OnMyMobDead:
 	stopnpctimer "Manager#hnt";
 	donpcevent "Manager#hnt::OnCommandReset";
 	donpcevent "Manager#hnt2::OnCommandReset";
-	disablenpc "Manager#hnt";
+	hideonnpc "Manager#hnt";
 	donpcevent "hntwait::OnCommandReset";
-	disablenpc "Manager#hnt2";
+	hideonnpc "Manager#hnt2";
 	warp "job_hunte.gat",176,22;
 	end;
 }
@@ -1791,7 +1791,7 @@ job_hunte.gat,93,101,1	script	Switch#hnt	723,1,1,{
 		mes "has now been activated.^000000";
 		close2;
 		mapannounce "job_hunte.gat","Escape Warp Portal activation complete.",8;
-		enablenpc "exit#hnttest";
+		hideoffnpc "exit#hnttest";
 		end;
 	case 2:
 		mes "^3355FFCanceling";
@@ -1822,7 +1822,7 @@ OnTouch:
 		mes "has now been activated.^000000";
 		close2;
 		mapannounce "job_hunte.gat","Escape Warp Portal activation complete.",8;
-		enablenpc "exit#hnttest";
+		hideoffnpc "exit#hnttest";
 		end;
 	case 2:
 		mes "^3355FFCanceling";
@@ -1843,8 +1843,8 @@ OnTouch:
 	}
 
 OnCommandOff:
-	disablenpc "exit#hnttest";
-	disablenpc "Switch#hnt";
+	hideonnpc "exit#hnttest";
+	hideonnpc "Switch#hnt";
 	end;
 }
 
@@ -1863,14 +1863,14 @@ OnTouch:
 	end;
 
 OnInit:
-	disablenpc "exit#hnttest";
+	hideonnpc "exit#hnttest";
 	end;
 }
 
 job_hunte.gat,89,103,0	script	hnt_backers	139,42,42,{
 
 OnInit:
-	disablenpc "hnt_backers";
+	hideonnpc "hnt_backers";
 	end;
 
 OnTouch:
@@ -4966,7 +4966,7 @@ function	script	F_HunterTrap	{
 	donpcevent "hntwait::OnCommandReset";
 	donpcevent "Manager#hnt::OnCommandReset";
 	donpcevent "Manager#hnt2::OnCommandReset";
-	disablenpc "Manager#hnt";
-	disablenpc "Manager#hnt2";
+	hideonnpc "Manager#hnt";
+	hideonnpc "Manager#hnt2";
 	return;
 }
