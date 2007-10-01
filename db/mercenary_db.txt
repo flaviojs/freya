@@ -1,9 +1,0 @@
-//óbï∫ÉfÅ[É^
-//ID,view_class,Name,JName,Job_ID,Base_Level,MaxHP,MaxSP,str,agi,vit,int,dex,luk,atk_min,atk_max,matk_min,matk_max,def,mdef,aspd,size,race,element,range,script
-//
-//åïóbï∫
-10001,6009,Mercenary,óbï∫,0,98,10000,400,120,1,100,1,60,1,170,170,0,0,38,0,500,0,0,80,2,{}
-//ëÑóbï∫
-10002,6012,Mercenary,óbï∫,1,98,12000,400,120,1,100,1,60,1,160,160,0,0,38,0,600,0,0,80,3,{}
-//ã|óbï∫
-10003,6011,Mercenary,óbï∫,2,98,10000,400,1,60,100,1,120,1,150,150,0,0,28,0,700,0,0,80,12,{}
