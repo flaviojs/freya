@@ -2236,8 +2236,15 @@ struct Damage battle_calc_weapon_attack(
 						if(t_vit < 1) t_vit = 1;
 					}
 				}
+
 				t_def = t_def2*8/10;
 				vitbonusmax = (t_vit/20)*(t_vit/20)-1;
+
+				// ディバインプロテクション
+				if(target_sd && battle_check_undead(status_get_race(src),status_get_elem_type(src)) || status_get_race(src)==6) {
+					if(target_sd && pc_checkskill(target_sd,AL_DP) > 0 )
+						t_def += (int)(floor( ( 3 + 0.04 * target_sd->status.base_level ) * pc_checkskill(target_sd,AL_DP)));
+				}
 
 				// シャープシューティングはCRI+20(計算済み)でDEF無視
 				// 位置ここでいいのか…？
