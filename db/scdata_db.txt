@@ -103,7 +103,7 @@
 //
 128,SC_STONE,0			// Petrifaction
 129,SC_FREEZE,0			// Freezing
-130,SC_STAN,0			// Stan
+130,SC_STUN,0			// Stun
 131,SC_SLEEP,0			// Sleep
 132,SC_POISON,1			// Poison
 133,SC_CURSE,1			// Cursing
@@ -318,7 +318,7 @@
 341,SC_FOGWALLPENALTY,0		// Penalty due to Wall of Fog
 342,SC_REDEMPTIO,-1		// Redemptio
 343,SC_TAROTCARD,0		// Tarot card
-344,SC_HOLDWEB,-1		// Holding Web
+344,SC_STOP,-1			// Stop
 345,SC_INVISIBLE,0		// Invisible
 346,SC_DETECTING,0		// For Detect identification
 347,SC_FLING,0			// Fling
