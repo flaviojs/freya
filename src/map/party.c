@@ -278,6 +278,15 @@ void party_invite2(struct map_session_data *sd, char *name)
 		return;
 	}
 
+	for(i=0;i<MAX_PARTY;i++){	// 同アカウント確認
+		if (p->member[i].account_id == tsd->status.account_id) {
+			if (battle_config.party_join_limit || strncmp(p->member[i].name, tsd->status.name, 24) == 0){
+				clif_party_inviteack(sd,tsd->status.name,0);
+				return;
+			}
+		}
+	}
+
 	tsd->party_invite=sd->status.party_id;
 	tsd->party_invite_account=sd->status.account_id;
 
