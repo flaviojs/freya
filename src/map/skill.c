@@ -331,20 +331,13 @@ int SkillStatusChangeTable[]={	/* skill.hのenumのSC_***とあわせること */
 	-1,-1,-1,-1,-1,-1,-1,-1,
 };
 
-/* (スキル番号 - HM_SKILLBASE)＝＞ステータス異常番号変換テーブル */
+/* (スキル番号 - GD_SKILLBASE)＝＞ステータス異常番号変換テーブル */
 /* */
 int HomSkillStatusChangeTable[]={	/* skill.hのenumのSC_***とあわせること */
 /* 0- */
 	-1,SC_AVOID,-1,SC_CHANGE,-1,SC_DEFENCE,-1,SC_BLOODLUST,-1,SC_FLEET,
 /* 10- */
 	SC_SPEED,-1,-1,-1,-1,-1,-1,-1,-1,-1,
-};
-
-/* (スキル番号 - MEC_SKILLBASE)＝＞ステータス異常番号変換テーブル */
-/* */
-int MecSkillStatusChangeTable[]={	/* skill.hのenumのSC_***とあわせること */
-/* 0- */
-	SC_TWOHANDQUICKEN,-1,-1,-1,-1,-1,SC_STAN,-1,-1,-1,
 };
 
 /* (スキル番号 - GD_SKILLBASE)＝＞ステータス異常番号変換テーブル */
@@ -360,7 +353,7 @@ static const int dirx[8]={0,-1,-1,-1, 0, 1,1,1};
 static const int diry[8]={1, 1, 0,-1,-1,-1,0,1};
 
 /* スキルデータベース */
-struct skill_db skill_db[MAX_SKILL_DB+MAX_HOMSKILL_DB+MAX_MECSKILL_DB+MAX_GUILDSKILL_DB];
+struct skill_db skill_db[MAX_SKILL_DB+MAX_HOMSKILL_DB+MAX_GUILDSKILL_DB];
 
 /* アイテム作成データベース */
 struct skill_produce_db skill_produce_db[MAX_SKILL_PRODUCE_DB];
@@ -427,9 +420,7 @@ struct skill_unit_layout *skill_get_unit_layout(int skillid,int skilllv,struct b
 int skill_get_skilldb_id(int id)
 {
 	if(id>=GD_SKILLBASE)
-		id = id -GD_SKILLBASE + MAX_MECSKILL_DB + MAX_HOMSKILL_DB + MAX_SKILL_DB;
-	if(id >= MEC_SKILLBASE)
-		id = id -MEC_SKILLBASE + MAX_HOMSKILL_DB + MAX_SKILL_DB;
+		id = id -GD_SKILLBASE + MAX_HOMSKILL_DB + MAX_SKILL_DB;
 	if(id >= HM_SKILLBASE)
 		id = id -HM_SKILLBASE + MAX_SKILL_DB;
 	return id;
@@ -442,9 +433,6 @@ int GetSkillStatusChangeTable(int id)
 
 	if(id < GD_SKILLBASE)
 		return HomSkillStatusChangeTable[id - HM_SKILLBASE];
-
-	if(id >= MEC_SKILLBASE)
-		return MecSkillStatusChangeTable[id - MEC_SKILLBASE];
 
 	return 	GuildSkillStatusChangeTable[id - GD_SKILLBASE];
 }
@@ -1547,7 +1535,7 @@ static int skill_check_unit_range2_sub( struct block_list *bl,va_list ap )
 	nullpo_retr(0, ap);
 	nullpo_retr(0, c = va_arg(ap,int *));
 
-	if(bl->prev == NULL || (bl->type != BL_PC && bl->type != BL_MOB && bl->type != BL_HOM && bl->type != BL_MEC))
+	if(bl->prev == NULL || (bl->type != BL_PC && bl->type != BL_MOB && bl->type != BL_HOM))
 		return 0;
 
 	if(bl->type == BL_PC && unit_isdead(bl))
@@ -1846,7 +1834,6 @@ int skill_castend_damage_id( struct block_list* src, struct block_list *bl,int s
 	struct map_session_data *sd = NULL;
 	struct mob_data         *md = NULL;
 	struct homun_data       *hd = NULL;
-	struct mercenary_data	*mcd = NULL;
 
 	nullpo_retr(1, src);
 	nullpo_retr(1, bl);
@@ -1854,7 +1841,6 @@ int skill_castend_damage_id( struct block_list* src, struct block_list *bl,int s
 	sd = BL_DOWNCAST( BL_PC,  src );
 	md = BL_DOWNCAST( BL_MOB, src );
 	hd = BL_DOWNCAST( BL_HOM, src );
-	mcd = BL_DOWNCAST( BL_MEC, src );
 
 	if(bl->prev == NULL)
 		return 1;
@@ -2760,7 +2746,7 @@ int skill_castend_damage_id( struct block_list* src, struct block_list *bl,int s
 					bl = src;
 					break;
 				case NJ_RAIGEKISAI:			/* 雷撃砕 */
-					ar = ((skilllv+1)/2)*2+3;
+					ar = (skilllv+1)/2+1;
 					skill_area_temp[2]=bl->x;
 					skill_area_temp[3]=bl->y;
 					bl = src;
@@ -2970,11 +2956,6 @@ int skill_castend_damage_id( struct block_list* src, struct block_list *bl,int s
 				battle_heal(NULL,src,heal,0,0);
 			}
 		}
-		break;
-	case MEC_CRASH:
-		battle_skill_attack(BF_WEAPON,src,src,bl,skillid,skilllv,tick,flag);
-		if(atn_rand()%100 < skilllv*6)
-			status_change_start(bl,GetSkillStatusChangeTable(skillid),skilllv,0,0,0,skill_get_time(skillid,skilllv),0);
 		break;
 	case 0:
 		if(sd) {
@@ -5708,42 +5689,6 @@ int skill_castend_nodamage_id( struct block_list *src, struct block_list *bl,int
 			}
 		}
 		break;
-	case MEC_WQ:
-		clif_skill_nodamage(src,bl,skillid,skilllv,1);
-		status_change_start(bl,MecSkillStatusChangeTable[skillid - MEC_SKILLBASE],skilllv,0,0,0,skill_get_time(skillid,skilllv),0 );
-		break;
-	case MEC_REGAIN:
-		clif_skill_nodamage(src,bl,skillid,skilllv,1);
-		status_change_end(bl,SC_STAN,-1);
-		status_change_end(bl,SC_SLEEP,-1);
-		break;
-	case MEC_BENEDICTION:
-		clif_skill_nodamage(src,bl,skillid,skilllv,1);
-		status_change_end(bl,SC_STONE,-1);
-		status_change_end(bl,SC_FREEZE,-1);
-		break;
-	case MEC_RECUPERATE:
-		clif_skill_nodamage(src,bl,skillid,skilllv,1);
-		status_change_end(bl,SC_DPOISON,-1);
-		status_change_end(bl,SC_POISON,-1);
-		status_change_end(bl,SC_SILENCE,-1);
-		break;
-	case MEC_MENTALCURE:
-		clif_skill_nodamage(src,bl,skillid,skilllv,1);
-		status_change_end(bl,SC_STAN,-1);
-		status_change_end(bl,SC_SLEEP,-1);
-		break;
-	case MEC_COMPRESS:
-		clif_skill_nodamage(src,bl,skillid,skilllv,1);
-		status_change_end(bl,SC_BLEED,-1);
-		break;
-	case MEC_SCAPEGOAD:
-		{
-			int src_hp = status_get_hp(src);
-			battle_heal(src,bl,src_hp,0,0);
-			battle_damage(src,src,src_hp,0);
-		}
-		break;
 	default:
 		printf("skill_castend_nodamage_id: Unknown skill used:%d\n",skillid);
 		map_freeblock_unlock();
@@ -5880,10 +5825,8 @@ int skill_castend_id( int tid, unsigned int tick, int id,int data )
 		if(src_hd && !skill_check_condition(&src_hd->bl,1))		/* 使用条件チェック */
 			break;
 
-		if(src->type == BL_PC && battle_config.pc_skill_log)
+		if(battle_config.pc_skill_log)
 			printf("PC %d skill castend skill=%d\n",src->id,src_ud->skillid);
-		if(src->type == BL_MEC && battle_config.mec_skill_log)
-			printf("MEC %d skill castend skill=%d\n",src->id,src_ud->skillid);
 		unit_stop_walking(src,0);
 
 		switch( skill_get_nk(src_ud->skillid)&3 )
@@ -7279,7 +7222,7 @@ int skill_unit_onplace_timer(struct skill_unit *src,struct block_list *bl,unsign
 		int target = md->target_id;
 		if(battle_config.mob_changetarget_byskill == 1 || target == 0)
 		{
-			if(ss->type == BL_PC || ss->type == BL_HOM || ss->type == BL_MEC)
+			if(ss->type == BL_PC || ss->type == BL_HOM)
 				md->target_id = ss->id;
 		}
 		mobskill_use(md,tick,MSC_SKILLUSED|(sg->skill_id<<16));
@@ -7631,8 +7574,6 @@ int skill_castend_pos( int tid, unsigned int tick, int id,int data )
 			printf("PC %d skill castend skill=%d\n",src->id,src_ud->skillid);
 		if(src_md && battle_config.mob_skill_log)
 			printf("MOB skill castend skill=%d, class = %d\n",src_ud->skillid,src_md->class);
-		if(src->type==BL_MEC && battle_config.mec_skill_log)
-			printf("MEC skill castend skill=%d, class = %d\n",src_ud->skillid,src_md->class);
 
 		unit_stop_walking(src,0);
 		skill_castend_pos2(src,src_ud->skillx,src_ud->skilly,src_ud->skillid,src_ud->skilllv,tick,0);
@@ -7843,7 +7784,6 @@ static int skill_check_condition2_pc(struct map_session_data *sd, struct skill_c
 static int skill_check_condition2_mob(struct mob_data *md, struct skill_condition *sc, int type);
 static int skill_check_condition2_pet(struct pet_data *pd, struct skill_condition *sc, int type);
 static int skill_check_condition2_hom(struct homun_data *hd, struct skill_condition *sc, int type);
-static int skill_check_condition2_mec(struct mercenary_data *mcd, struct skill_condition *sc, int type);
 
 
 int skill_check_condition(struct block_list *bl, int type) {
@@ -7881,8 +7821,8 @@ int skill_check_condition2(struct block_list *bl, struct skill_condition *sc, in
 	nullpo_retr( 0, sc );
 
 	target = map_id2bl( sc->target );
-	if( target && target->type != BL_PC && target->type != BL_MOB && target->type != BL_HOM && target->type != BL_MEC) {
-		// スキル対象はPC,MOB,HOM,MECのみ
+	if( target && target->type != BL_PC && target->type != BL_MOB && target->type != BL_HOM ) {
+		// スキル対象はPC,MOB,HOMのみ
 		target = NULL;
 	}
 
@@ -7895,7 +7835,7 @@ int skill_check_condition2(struct block_list *bl, struct skill_condition *sc, in
 	if( sd && battle_config.gm_skilluncond>0 && pc_isGM(sd)>= battle_config.gm_skilluncond )
 		return 1;
 
-	// PC, MOB, PET, HOM, MEC 共通の失敗はここに記述
+	// PC, MOB, PET, HOM 共通の失敗はここに記述
 
 	// 状態異常関連
 	if(sc_data){
@@ -8239,8 +8179,6 @@ int skill_check_condition2(struct block_list *bl, struct skill_condition *sc, in
 		return skill_check_condition2_hom((struct homun_data*)bl, sc, type);
 	} else if( bl->type == BL_PET ) {
 		return skill_check_condition2_pet((struct pet_data*)bl, sc, type);
-	} else if( bl->type == BL_MEC ) {
-		return skill_check_condition2_mec((struct mercenary_data *)bl, sc, type);
 	}else {
 		return 0;
 	}
@@ -9471,149 +9409,6 @@ ITEM_NOCOST:
 		pc_payzeny(msd,zeny);	
 	return 1;
 }
-
-static int skill_check_condition2_mec(struct mercenary_data *mcd, struct skill_condition *sc, int type)
-{
-	int i,hp,sp,hp_rate,sp_rate,zeny,weapon,state,spiritball,coin,skilldb_id;
-	struct map_session_data* msd=NULL;
-	struct block_list *bl=NULL;
-	int index[10],itemid[10],amount[10];
-	nullpo_retr( 0, mcd );
-	nullpo_retr( 0, sc );
-	nullpo_retr( 0, msd=mcd->msd );
-	bl=&mcd->bl;
-
-	skilldb_id = skill_get_skilldb_id(sc->id);
-
-	hp=skill_get_hp(sc->id, sc->lv);	/* 消費HP */
-	sp=skill_get_sp(sc->id, sc->lv);	/* 消費SP */
-	hp_rate = (sc->lv <= 0)? 0:skill_db[skilldb_id].hp_rate[sc->lv-1];
-	sp_rate = (sc->lv <= 0)? 0:skill_db[skilldb_id].sp_rate[sc->lv-1];
-	zeny = skill_get_zeny(sc->id,sc->lv);
-	weapon = skill_db[skilldb_id].weapon;
-	state = skill_db[skilldb_id].state;
-	spiritball = (sc->lv <= 0)? 0:skill_db[skilldb_id].spiritball[sc->lv-1];
-	coin = (sc->lv <= 0)? 0:skill_db[skilldb_id].coin[sc->lv-1];
-	for(i=0;i<10;i++) {
-		itemid[i] = skill_db[skilldb_id].itemid[i];
-		amount[i] = skill_db[skilldb_id].amount[i];
-	}
-
-	switch( sc->id ) {
-		default:
-			break;
-	}
-
-	if(!(type&2)){
-		if( hp>0 && status_get_hp(&mcd->bl) < hp) {				/* HPチェック */
-			return 0;
-		}
-		if( sp>0 && status_get_sp(&mcd->bl) < sp) {				/* SPチェック */
-			return 0;
-		}
-		if( zeny>0 && msd->status.zeny < zeny) {
-			return 0;
-		}
-	}
-
-	switch(state) {
-	case ST_MOVE_ENABLE:
-		{
-			struct walkpath_data wpd;
-			if(path_search(&wpd,bl->m,bl->x,bl->y,sc->x,sc->y,1)==-1) {
-				return 0;
-			}
-		}
-		break;
-	}
-
-	if(skill_get_inf2(sc->id)&8192){
-		int idx = sc->lv-1;
-		index[idx] = -1;
-		if(itemid[idx] <= 0)
-			goto ITEM_NOCOST;//消費なさそうなので
-
-		//ウィザードの魂
-		if(itemid[idx] >= 715 && itemid[idx] <= 717 && mcd->sc_data[SC_WIZARD].timer!=-1 )
-			goto ITEM_NOCOST;
-
-		if(((itemid[idx] >= 715 && itemid[idx] <= 717) || itemid[idx] == 1065) && mcd->sc_data[SC_INTOABYSS].timer != -1)
-			goto ITEM_NOCOST;
-
-		index[idx] = pc_search_inventory(msd,itemid[idx]);
-		if(index[idx] < 0 || msd->status.inventory[index[idx]].amount < amount[idx]) {
-			if(itemid[idx] == 716 || itemid[idx] == 717)
-				clif_skill_fail(msd,sc->id,(7+(itemid[idx]-716)),0);
-			else
-				clif_skill_fail(msd,sc->id,0,0);
-			return 0;
-		}
-	}else{
-		for(i=0;i<10;i++) {
-			int x = sc->lv%11 - 1;
-			index[i] = -1;
-			if(itemid[i] <= 0)
-				continue;
-
-			if(itemid[i] >= 715 && itemid[i] <= 717) {
-				if(mcd->sc_data[SC_WIZARD].timer != -1)		//ウィザードの魂
-					continue;
-				if(sc->id == MG_STONECURSE && sc->lv > 5)					//ストーンカースでLv6以上はジェム消費なし
-					continue;
-			}
-
-			if(((itemid[i] >= 715 && itemid[i] <= 717) || itemid[i] == 1065) && mcd->sc_data[SC_INTOABYSS].timer != -1)
-				continue;
-			if((sc->id == AM_POTIONPITCHER || sc->id == CR_SLIMPITCHER) && i != x)
-				continue;
-
-			index[i] = pc_search_inventory(msd,itemid[i]);
-			if(index[i] < 0 || msd->status.inventory[index[i]].amount < amount[i]) {
-				if(itemid[i] == 716 || itemid[i] == 717)
-					clif_skill_fail(msd,sc->id,(7+(itemid[i]-716)),0);
-				else
-					clif_skill_fail(msd,sc->id,0,0);
-				return 0;
-			}
-		}
-	}
-	if(!(type&1))
-		return 1;
-
-	if(skill_get_inf2(sc->id)&8192){
-		int idx = sc->lv -1;
-		if(sc->id == AL_WARP && !(type&2))
-			return 1;
-		if(index[idx] >= 0)
-			pc_delitem(msd,index[idx],amount[idx],0);	// アイテム消費
-	}else{
-		if(sc->id != AM_POTIONPITCHER && sc->id != CR_SLIMPITCHER) {
-			if(sc->id == AL_WARP && !(type&2))
-				return 1;
-			for(i=0;i<10;i++) {
-				if(index[i] >= 0)
-					pc_delitem(msd,index[i],amount[i],0);		// アイテム消費
-			}
-		}
-	}
-ITEM_NOCOST:
-	if(!(type&1))
-		return 1;
-
-	if(type&2)
-		return 1;
-
-	if(sp > 0) {					// SP消費
-		mcd->sp-=sp;
-		clif_send_mecstatus(msd,0);
-	}
-	if(hp > 0) {					// HP消費
-		mcd->hp-=hp;
-		clif_send_mecstatus(msd,0);
-	}
-	return 1;
-}
-
 /*==========================================
  * 詠唱時間計算
  *------------------------------------------
@@ -12749,7 +12544,6 @@ void skill_init_unit_layout(void)
  * abra_db.txt アブラカダブラ発動スキルデータ
  *------------------------------------------
  */
-#define skill_id_is_vaild(a)	((0<=i && i<=MAX_SKILL_DB) ||  (HM_SKILLBASE <= i && i<= (HM_SKILLBASE+MAX_HOMSKILL_DB)) || (MEC_SKILLBASE <= i && i <= (MEC_SKILLBASE+MAX_MECSKILL_DB)) || (GD_SKILLBASE <= i && i<= (GD_SKILLBASE+MAX_GUILDSKILL_DB)))
 int skill_readdb(void)
 {
 	int i,j,k,m;
@@ -12781,7 +12575,7 @@ int skill_readdb(void)
 				continue;
 
 			i=atoi(split[0]);
-			if(skill_id_is_vaild(i)==0)
+			if(! ( (0<=i && i<=MAX_SKILL_DB) ||  (HM_SKILLBASE <= i && i<= (HM_SKILLBASE+MAX_HOMSKILL_DB)) || (GD_SKILLBASE <= i && i<= (GD_SKILLBASE+MAX_GUILDSKILL_DB)) ))
 				continue;
 
 			i = skill_get_skilldb_id(i);
@@ -12833,7 +12627,7 @@ int skill_readdb(void)
 
 		i=atoi(split[0]);
 
-		if(skill_id_is_vaild(i)==0)
+		if(! ( (0<=i && i<=MAX_SKILL_DB) ||  (HM_SKILLBASE <= i && i<= (HM_SKILLBASE+MAX_HOMSKILL_DB)) || (GD_SKILLBASE <= i && i<= (GD_SKILLBASE+MAX_GUILDSKILL_DB)) ))
 			continue;
 		i = skill_get_skilldb_id(i);
 		skill_db[i].cloneable=atoi(split[1]);
@@ -12865,7 +12659,7 @@ int skill_readdb(void)
 				continue;
 
 			i=atoi(split[0]);
-			if(skill_id_is_vaild(i)==0)
+			if(! ( (0<=i && i<=MAX_SKILL_DB) ||  (HM_SKILLBASE <= i && i<= (HM_SKILLBASE+MAX_HOMSKILL_DB)) || (GD_SKILLBASE <= i && i<= (GD_SKILLBASE+MAX_GUILDSKILL_DB)) ))
 				continue;
 
 			i = skill_get_skilldb_id(i);
@@ -12948,7 +12742,7 @@ int skill_readdb(void)
 			continue;
 
 		i=atoi(split[0]);
-		if(skill_id_is_vaild(i)==0)
+		if(! ( (0<=i && i<=MAX_SKILL_DB) ||  (HM_SKILLBASE <= i && i<= (HM_SKILLBASE+MAX_HOMSKILL_DB)) || (GD_SKILLBASE <= i && i<= (GD_SKILLBASE+MAX_GUILDSKILL_DB)) ))
 			continue;
 
 		i = skill_get_skilldb_id(i);
@@ -12980,7 +12774,7 @@ int skill_readdb(void)
 				continue;
 
 			i=atoi(split[0]);
-			if(skill_id_is_vaild(i)==0)
+			if(! ( (0<=i && i<=MAX_SKILL_DB) ||  (HM_SKILLBASE <= i && i<= (HM_SKILLBASE+MAX_HOMSKILL_DB)) || (GD_SKILLBASE <= i && i<= (GD_SKILLBASE+MAX_GUILDSKILL_DB)) ))
 				continue;
 
 			i = skill_get_skilldb_id(i);

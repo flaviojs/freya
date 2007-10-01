@@ -710,7 +710,7 @@ int unit_stop_walking(struct block_list *bl,int type)
 	}
 	if( ud == NULL) return 0;
 
-	if((hitstop_rate < battle_config.mob_hitstop_rate && type&0x02 && ud->walktimer != -1) || !md) {
+	if((hitstop_rate < battle_config.mob_hitstop_rate || !(md && type&0x02))) {
 		ud->walkpath.path_len = 0;
 		ud->walkpath.path_pos = 0;
 		ud->to_x              = bl->x;
@@ -719,7 +719,7 @@ int unit_stop_walking(struct block_list *bl,int type)
 
 	if(ud->walktimer == -1) return 0;
 
-	if(!(md && type&0x02) && hitstop_rate < battle_config.mob_hitstop_rate) {
+	if(hitstop_rate < battle_config.mob_hitstop_rate || !(md && type&0x02)) {
 		delete_timer(ud->walktimer, unit_walktoxy_timer);
 		ud->walktimer         = -1;
 	}
