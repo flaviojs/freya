@@ -128,7 +128,7 @@ bcc32 -j255 -M -e..\..\char-server.exe %__warning__% %__define__% %__include__% 
 
 @echo マップサーバーコンパイル
 cd ..\map
-bcc32 -j255 -M -e..\..\map-server.exe %__warning__% %__define__% %__include__% map.c npc.c battle.c chat.c chrif.c clif.c guild.c intif.c itemdb.c mob.c atcommand.c party.c path.c pc.c pet.c status.c script.c skill.c storage.c trade.c vending.c friend.c date.c ranking.c unit.c mail.c homun.c mercenary.c %__common__%
+bcc32 -j255 -M -e..\..\map-server.exe %__warning__% %__define__% %__include__% map.c npc.c battle.c chat.c chrif.c clif.c guild.c intif.c itemdb.c mob.c atcommand.c party.c path.c pc.c pet.c status.c script.c skill.c storage.c trade.c vending.c friend.c date.c ranking.c unit.c mail.c homun.c %__common__%
 
 cd ..\..\
 @echo オブジェクトファイル等のクリーンアップ
