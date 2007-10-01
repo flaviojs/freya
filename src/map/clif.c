@@ -8692,6 +8692,8 @@ static void clif_parse_WantToConnection(int fd,struct map_session_data *sd, int 
 
 	pc_setnewpc(sd, account_id, char_id, login_id1, client_tick, sex);
 	if((old_sd=map_id2sd(account_id)) != NULL){
+		// 自動露店を開いている時にloginしたので自動露店を切断
+		if(old_sd && old_sd->state.autotrade){ map_quit(old_sd); }
 		// 2重loginなので切断用のデータを保存する
 		old_sd->new_fd=fd;
 		sd->new_fd = -1; // 新しいデータはセーブしないフラグ
@@ -10655,6 +10657,12 @@ static void clif_parse_PartyInvite(int fd,struct map_session_data *sd, int cmd)
 
 	return;
 }
+static void clif_parse_PartyInvite2(int fd,struct map_session_data *sd, int cmd)
+{
+	party_invite2(sd,RFIFOP(fd,GETPACKETPOS(cmd,0)));
+
+	return;
+}
 
 /*==========================================
  * パーティ勧誘返答
@@ -10664,6 +10672,18 @@ static void clif_parse_ReplyPartyInvite(int fd,struct map_session_data *sd, int 
 {
 	if(battle_config.basic_skill_check == 0 || pc_checkskill(sd,NV_BASIC) >= 5){
 		party_reply_invite(sd,RFIFOL(fd,GETPACKETPOS(cmd,0)),RFIFOL(fd,GETPACKETPOS(cmd,1)));
+	}
+	else {
+		party_reply_invite(sd,RFIFOL(fd,GETPACKETPOS(cmd,0)),-1);
+		clif_skill_fail(sd,1,0,4);
+	}
+
+	return;
+}
+static void clif_parse_ReplyPartyInvite2(int fd,struct map_session_data *sd, int cmd)
+{
+	if(battle_config.basic_skill_check == 0 || pc_checkskill(sd,NV_BASIC) >= 5){
+		party_reply_invite(sd,RFIFOL(fd,GETPACKETPOS(cmd,0)),RFIFOB(fd,GETPACKETPOS(cmd,1)));
 	}
 	else {
 		party_reply_invite(sd,RFIFOL(fd,GETPACKETPOS(cmd,0)),-1);
@@ -12103,15 +12123,23 @@ void clif_send_hotkey(struct map_session_data *sd)
 
 int clif_disconnect(int fd) {
 	struct map_session_data *sd = session[fd]->session_data;
+	if(sd && sd->state.autotrade){
+		session[fd]->session_data = NULL; sd->fd = 0;
+		return 0;
+	}
+
 	if(sd && sd->state.auth)
 		clif_quitsave(fd,sd);
-	close(fd);
+
+	if(sd && !sd->state.at_users)
+		close(fd);
+
 	if (sd) {
 		struct map_session_data *tmpsd = map_id2sd(sd->bl.id);
-		if (tmpsd == sd)
-			map_deliddb(&sd->bl);
-		if( sd->bl.prev )
-			map_delblock( &sd->bl );
+			if(tmpsd == sd)
+				map_deliddb(&sd->bl);
+			if(sd->bl.prev)
+				map_delblock( &sd->bl );
 	}
 
 	return 0;
@@ -12192,7 +12220,9 @@ struct {
 	{clif_parse_CreateParty,"createparty"},
 	{clif_parse_CreateParty2,"createparty2"},
 	{clif_parse_PartyInvite,"partyinvite"},
+	{clif_parse_PartyInvite2,"partyinvite2"},
 	{clif_parse_ReplyPartyInvite,"replypartyinvite"},
+	{clif_parse_ReplyPartyInvite2,"replypartyinvite2"},
 	{clif_parse_LeaveParty,"leaveparty"},
 	{clif_parse_RemovePartyMember,"removepartymember"},
 	{clif_parse_PartyChangeOption,"partychangeoption"},

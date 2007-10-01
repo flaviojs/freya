@@ -913,6 +913,8 @@ int pc_authok(int id,struct mmo_charstatus *st,struct registry *reg)
 		sd->skillstatictimer[i] = tick;
 
 	sd->state.autoloot = (battle_config.item_auto_get)? 1: 0;
+	sd->state.autotrade = 0;
+	sd->state.at_users = 0;
 
 	//memset(&sd->dev,0,sizeof(struct square));
 	for(i=0;i<5;i++){
@@ -4935,8 +4937,11 @@ int pc_damage(struct block_list *src,struct map_session_data *sd,int damage)
 	//
 	sd->status.hp = 0;
 	//
-	if(sd->vender_id)
-		vending_closevending(sd);
+		if(sd->vender_id && sd->state.autotrade)
+			map_quit(sd);
+	else
+		if(sd->vender_id && !sd->state.autotrade)
+			vending_closevending(sd);
 
 	if(sd->status.pet_id > 0 && sd->pd && sd->petDB) {
 		sd->pet.intimate -= sd->petDB->die;

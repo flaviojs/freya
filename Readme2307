@@ -1,3 +1,19 @@
+//2322 by Quapla
+
+・eAthenaのコマンド「@autotrade」と「@at」を移植
+　自動露店時、死亡したら切断する処理を追加
+	(clif.c、atcommand.h、atcommand.c、intif.c、vending.c、map.h、pc.c)
+・ホムンクルスの名前変更に関する設定を追加
+	(homun.c、battle.c、battle.h、battle_athena.conf)
+・@autotrade使用中の露店をログイン人数に含めるか否か設定を追加
+	(conf/battle_athena.conf、clif.c、battle.c、battle.h
+	 atcommand.c、map.h、pc.c)
+・パケットDBの追加(新PT勧誘、勧誘応答追加)
+	(packet_db.txt)
+・新クライアントによるPT勧誘、勧誘返答の動作を実装
+	(clif.c party.c party.h)
+
+----------------------------------------
 //2321 by Blaze
 
 ・一部内部処理名称を変更

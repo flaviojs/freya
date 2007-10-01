@@ -77,7 +77,6 @@ enum {
 	BL_SKILL = 0x020,
 	BL_NPC   = 0x040,
 	BL_CHAT  = 0x080,
-	BL_MEC	 = 0x100,
 };
 
 enum { WARP, SHOP, SCRIPT, MONS };
@@ -85,8 +84,8 @@ struct block_list {
 	struct block_list *next,*prev;
 	int id;
 	short m,x,y;
-	unsigned int type;
-	unsigned int subtype;
+	unsigned char type;
+	unsigned char subtype;
 };
 
 struct walkpath_data {
@@ -248,6 +247,8 @@ struct map_session_data {
 		unsigned autoloot : 1;
 		unsigned refuse_emergencycall : 1;
 		unsigned reg_dirty : 1;
+		unsigned autotrade : 1;	//自動露店
+		unsigned at_users : 1;
 	} state;
 	struct {
 		unsigned restart_full_recover : 1;
@@ -486,8 +487,6 @@ struct map_session_data {
 	int homun_hungry_timer;
 	struct mmo_homunstatus hom;
 
-	struct mercenary_data *mcd;
-
 	//ギルドスキル計算用 0:影響外 0>影響下
 	//移動時の判定に使用
 	short under_the_influence_of_the_guild_skill;
@@ -705,7 +704,7 @@ struct homun_data {
 	short hit,critical,flee,aspd;
 	short equip;
 	int   intimate;
-	int   target_id;
+	int target_id;
 	unsigned int homskillstatictimer[MAX_HOMSKILL];
 	struct status_change sc_data[MAX_STATUSCHANGE];
 	short sc_count, opt1, opt2, opt3;
@@ -718,37 +717,6 @@ struct homun_data {
 	int hungry_cry_timer;
 
 	struct map_session_data *msd;
-};
-
-struct mercenary_data{
-	struct block_list bl;
-	struct unit_data  ud;
-	struct map_session_data *msd;
-	char name[24];
-	short dir;
-	short speed;
-	int   db_idx;
-	int   view_class;
-	short view_size;
-	int   attaker_id;
-	int   move_fail_count;
-	short option;
-	short equip;
-	int   base_level;
-	int hp,max_hp,sp,max_sp;
-	int str,agi,vit,int_,dex,luk;
-	short atk,matk,def,mdef,def2,mdef2;
-	short hit,critical,flee,aspd;
-	int size,race,element,range;
-	struct status_change sc_data[MAX_STATUSCHANGE];
-	short sc_count, opt1, opt2, opt3;
-	unsigned int next_walktime,last_thinktime;
-	int nhealhp,nhealsp;
-	int natural_heal_hp,natural_heal_sp;
-	int mercenary_free_tid;
-	int job_id;
-
-	int state;
 };
 
 enum { MS_IDLE,MS_WALK,MS_ATTACK,MS_DEAD,MS_DELAY };
@@ -959,7 +927,6 @@ extern int agit_flag;
 // gat関連
 int map_getcell(int,int,int,cell_t);
 int map_getcellp(struct map_data*,int,int,cell_t);
-int map_searchrandfreecell(int m,int x,int y,int range);
 void map_setcell(int,int,int,int);
 extern int map_read_flag;	// 0: grfファイル 1: キャッシュ 2: キャッシュ(圧縮)
 
@@ -1014,7 +981,6 @@ char * map_charid2nick(int);
 struct map_session_data * map_id2sd(int);
 struct mob_data * map_id2md(int);
 struct homun_data * map_id2hd(int);
-struct mercenary_data * map_id2mcd(int);
 struct npc_data * map_id2nd(int);
 struct chat_data * map_id2cd(int);
 struct skill_unit * map_id2su(int);
@@ -1072,7 +1038,6 @@ typedef struct chat_data        TBL_CHAT;
 typedef struct skill_unit       TBL_SKILL;
 typedef struct pet_data         TBL_PET;
 typedef struct homun_data       TBL_HOM;
-typedef struct mercenary_data       TBL_MEC;
 
 #define BL_DOWNCAST(type_, bl) \
 	((bl) == (struct block_list*)NULL || (bl)->type != (type_) ? (T ## type_ *)(NULL) : (T ## type_ *)(bl))

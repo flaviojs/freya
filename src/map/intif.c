@@ -1070,6 +1070,8 @@ int intif_parse_WisMessage(int fd)
 		}
 		if(sd->wis_all)
 			intif_wis_replay(id,3);	// óM‹‘”Û
+		if(sd->state.autotrade)
+			intif_wis_replay(id,3);	// óM‹‘”Û
 		else if(j>0)
 			intif_wis_replay(id,2);	// óM‹‘”Û
 		else{
