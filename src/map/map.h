@@ -247,6 +247,8 @@ struct map_session_data {
 		unsigned autoloot : 1;
 		unsigned refuse_emergencycall : 1;
 		unsigned reg_dirty : 1;
+		unsigned autotrade : 1;	//Ž©“®˜I“X
+		unsigned at_users : 1;
 	} state;
 	struct {
 		unsigned restart_full_recover : 1;

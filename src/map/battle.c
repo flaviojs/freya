@@ -5186,6 +5186,8 @@ int battle_config_read(const char *cfgName)
 		battle_config.mvpmob_card_drop_rate = 100;
 		battle_config.mob_delay_rate_middle_boss = 100;
 		battle_config.mob_delay_rate_mvp_boss = 100;
+		battle_config.autotrade_users = 1;
+		battle_config.hom_rename_flag = 0;
 	}
 
 	fp=fopen(cfgName,"r");
@@ -5638,6 +5640,8 @@ int battle_config_read(const char *cfgName)
 			{ "mvpmob_card_drop_rate",						&battle_config.mvpmob_card_drop_rate						},
 			{ "mob_delay_rate_middle_boss",						&battle_config.mob_delay_rate_middle_boss						},
 			{ "mob_delay_rate_mvp_boss",						&battle_config.mob_delay_rate_mvp_boss						},
+			{ "autotrade_users",						&battle_config.autotrade_users						},
+			{ "hom_rename",							&battle_config.hom_rename_flag						},
 		};
 		const int max = sizeof(data)/sizeof(data[0]);
 

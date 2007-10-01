@@ -4,6 +4,48 @@
 ---------------------------------------------------------------------------
 
 ----------------------------------------
+//2322 by Quapla
+
+・eAthenaのコマンド「@autotrade」と「@at」を移植
+　自動露店時、死亡したら切断する処理を追加
+	(clif.c、atcommand.h、atcommand.c、intif.c、vending.c、map.h、pc.c)
+・ホムンクルスの名前変更に関する設定を追加
+	(homun.c、battle.c、battle.h、battle_athena.conf)
+・@autotrade使用中の露店をログイン人数に含めるか否か設定を追加
+	(conf/battle_athena.conf、clif.c、battle.c、battle.h
+	 atcommand.c、map.h、pc.c)
+・パケットDBの追加(新PT勧誘、勧誘応答追加)
+	(packet_db.txt)
+・新クライアントによるPT勧誘、勧誘返答の動作を実装
+	(clif.c party.c party.h)
+----------------------------------------
+//2321 by Blaze
+
+・一部内部処理名称を変更
+　SC_STAN → SC_STUN
+	(battle.c、mob.c、script.c、skill.c、status.c、status.h、
+		db/const.txt、db/scdata_db.txt、db/item_db.txt、npc_quest_turbo.txt、doc/item_bonus.txt)
+　NPC_EXPLOSIONSPIRITS → NPC_POWERUP
+　NPC_INCREASEFLEE → NPC_AGIUP
+　NPC_ELEMENTUNDEAD → NPC_CHANGEUNDEAD
+　NPC_DARKSOULSTRIKE → NPC_DARKSTRIKE
+	(skill.c、skill.h)
+　NPC_RUNAWAY → NPC_RUN
+	(skill.c、skill.h、unit.c)
+　NPC_DARKGRANDCROSS → NPC_GRANDDARKNESS
+　NPC_DARKJUPITEL → NPC_DARKTHUNDER
+	(battle.c、skill.c、skill.h)
+　SC_HOLDWEB → SC_STOP
+	(skill.c、skill.h、pc.c、unit.c、status.c、status.h)
+・ホールドウェブの効果時間が切れてもエフェクトが残存していた不具合を修正
+	(skill.c、status.c、status.h)
+・NPCスキル、モードチェンジ「NPC_EMOTION_ON」実装
+	(skill.c、skill.h、status.c、status.h、skill_db.txt)
+・skill_db.txtを上記の修正分と次期更新予定の予約分を修正追記
+	(skill_db.txt)
+・トムヤンクンクエストの一部不具合でクエストが進行しなかったのを修正
+	(npc_town_ayothaya.txt)
+----------------------------------------
 //2320 by free
 
 ・2318アンクルskill関係fix修正

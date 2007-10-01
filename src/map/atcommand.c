@@ -208,6 +208,7 @@ ATCOMMAND_FUNC(homrecalc);
 ATCOMMAND_FUNC(makehomun);
 ATCOMMAND_FUNC(homfriendly);
 ATCOMMAND_FUNC(autoloot);
+ATCOMMAND_FUNC(autotrade);
 
 /*==========================================
  *AtCommandInfo atcommand_info[]\‘¢‘Ì‚Ì’è‹`
@@ -375,6 +376,8 @@ static AtCommandInfo atcommand_info[] = {
 	{ AtCommand_MakeHomun,          "@makehomun",        0, atcommand_makehomun	},
 	{ AtCommand_HomFriendly,        "@homfriendly",      0, atcommand_homfriendly },
 	{ AtCommand_AutoLoot,           "@autoloot",         0, atcommand_autoloot	},
+	{ AtCommand_Autotrade,           "@autotrade",         0, atcommand_autotrade	},
+	{ AtCommand_Autotrade,           "@at",         0, atcommand_autotrade	},
 		// add here
 	{ AtCommand_MapMove,            "@mapmove",          0, NULL },
 	{ AtCommand_Broadcast,          "@broadcast",        0, NULL },
@@ -6096,4 +6099,30 @@ atcommand_autoloot(
 	}
 
 	return 0;
+}
+
+/*==========================================
+ * ©“®˜I“XƒRƒ}ƒ“ƒh(ƒvƒŒƒCƒ„[‚ªØ’f‚µ‚Ä‚à˜I“XˆÛ)
+ * from eAthena by durf (changed by Lupus)
+ *------------------------------------------*/
+int
+atcommand_autotrade(
+	const int fd, struct map_session_data* sd,
+	const char* command, const char* message)
+{
+	nullpo_retr(-1, sd);
+	if(sd->vender_id) {
+		sd->state.autotrade = 1;
+
+		if(!battle_config.autotrade_users){
+			sd->state.at_users = 1;
+		}else{
+			sd->state.at_users = 0;
+		}
+
+		clif_authfail_fd(fd, 15);
+	} else {
+		clif_displaymessage(fd, msg_txt(183));
+	}
+	return 0;  
 }

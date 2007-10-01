@@ -170,6 +170,7 @@ enum AtCommandType {
 	AtCommand_MakeHomun,
 	AtCommand_HomFriendly,
 	AtCommand_AutoLoot,
+	AtCommand_Autotrade,
 	AtCommand_Unknown,
 	AtCommand_MAX,
 };

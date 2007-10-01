@@ -776,6 +776,7 @@ int homun_return_embryo(struct map_session_data *sd)
 		if(battle_config.save_homun_temporal_intimate)
 			pc_setglobalreg(sd,"HOM_TEMP_INTIMATE",hd->intimate);
 		hd->status.incubate = 0;
+		pc_setglobalreg(sd,"HOM_RENAME_FLAG",sd->hd->status.rename_flag);
 		homun_save_data(sd);
 		unit_free(&hd->bl,0);
 	}
@@ -890,6 +891,7 @@ int homun_delete_data(struct map_session_data *sd)
 		unit_free(&sd->hd->bl,0);
 		intif_delete_homdata(sd->status.account_id,sd->status.char_id,sd->status.homun_id);
 		sd->status.homun_id = 0;
+		pc_setglobalreg(sd,"HOM_RENAME_FLAG",0);//ƒtƒ‰ƒO‰Šú‰»
 		memset(&sd->hom,0,sizeof(struct mmo_homunstatus));
 		pc_makesavestatus(sd);
 		chrif_save(sd);
@@ -948,7 +950,7 @@ int homun_change_name(struct map_session_data *sd,char *name)
 	}
 	if(!sd->hd)
 		return 1;
-	if(sd->hd->status.rename_flag == 1 && battle_config.pet_rename == 0)
+	if(sd->hd->status.rename_flag == 1 && battle_config.hom_rename_flag == 0)
 		return 1;
 
 	unit_stop_walking(&sd->hd->bl,1);
@@ -960,6 +962,7 @@ int homun_change_name(struct map_session_data *sd,char *name)
 	clif_send_homstatus(sd,0);
 	sd->hd->status.rename_flag = 1;
 //	clif_hom_equip(sd->hd,sd->hom.equip);
+	pc_setglobalreg(sd,"HOM_RENAME_FLAG",sd->hd->status.rename_flag);
 	clif_send_homstatus(sd,0);
 
 	return 0;

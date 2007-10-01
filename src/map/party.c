@@ -251,6 +251,41 @@ void party_invite(struct map_session_data *sd, int account_id)
 	return;
 }
 
+void party_invite2(struct map_session_data *sd, char *name)
+{
+	struct map_session_data *tsd;
+	struct party *p;
+	int i;
+
+	nullpo_retv(sd);
+
+	p = party_search(sd->status.party_id);
+	if (p == NULL)
+		return;
+
+	tsd = map_nick2sd(name);
+	if (tsd == NULL)
+		return;
+
+	if(!battle_config.invite_request_check) {
+		if (tsd->guild_invite>0 || tsd->trade_partner || tsd->adopt_invite) {	// 相手が取引中かどうか
+			clif_party_inviteack(sd,tsd->status.name,0);
+			return;
+		}
+	}
+	if( tsd->status.party_id>0 || tsd->party_invite>0 ){	// 相手の所属確認
+		clif_party_inviteack(sd,tsd->status.name,0);
+		return;
+	}
+
+	tsd->party_invite=sd->status.party_id;
+	tsd->party_invite_account=sd->status.account_id;
+
+	clif_party_invite(sd,tsd);
+
+	return;
+}
+
 // パーティ勧誘への返答
 void party_reply_invite(struct map_session_data *sd, int account_id, int flag)
 {

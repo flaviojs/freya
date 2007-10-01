@@ -18,6 +18,7 @@ void party_create(struct map_session_data *sd, char *name);
 void party_created(int account_id, unsigned char fail, int party_id, char *name);
 void party_request_info(int party_id);
 void party_invite(struct map_session_data *sd, int account_id);
+void party_invite2(struct map_session_data *sd, char *name);
 void party_recv_noinfo(int party_id);
 void party_recv_info(struct party *sp);
 void party_reply_invite(struct map_session_data *sd, int account_id, int flag);

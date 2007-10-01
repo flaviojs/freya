@@ -26,7 +26,6 @@
 */
 void vending_closevending(struct map_session_data *sd)
 {
-
 	nullpo_retv(sd);
 
 	sd->vender_id = 0;
@@ -174,6 +173,19 @@ void vending_purchasereq(struct map_session_data *sd, unsigned short len, int id
 	// save both players to avoid crash: they always have no advantage/disadvantage between the 2 players
 	chrif_save(sd);
 	chrif_save(vsd);
+
+	//check for @AUTOTRADE users [durf]
+	// from eAthena
+	if (vsd->state.autotrade)
+	{
+		//Close Vending (this was automatically done by the client, we have to do it manually for autovenders) [Skotlex]
+		for(i = 0; i < vsd->vend_num && vsd->vending[i].amount < 1; i++);
+		if (i == vsd->vend_num)
+		{
+			vending_closevending(vsd);
+			map_quit(vsd);	//They have no reason to stay around anymore, do they?
+		}
+	}
 
 	return;
 }

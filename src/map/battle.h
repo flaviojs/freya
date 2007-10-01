@@ -524,6 +524,12 @@ extern struct Battle_Config {
 	int mob_hitstop_rate;
 	int mob_delay_rate_middle_boss;
 	int mob_delay_rate_mvp_boss;
+
+	//autotrade_config
+	int autotrade_users;
+
+	int hom_rename_flag;
+
 } battle_config;
 
 #define BATTLE_CONF_FILENAME "conf/battle_athena.conf"
