@@ -1417,8 +1417,8 @@ atcommand_item2(
 				}
 				if (item_data->type == 8)
 					refine = 0;
-				if (refine > 10)
-					refine = 10;
+				if (refine > MAX_REFINE)
+					refine = MAX_REFINE;
 			} else {
 				identify = 1;
 				refine = 0;
@@ -1602,7 +1602,7 @@ atcommand_baselevelup(
 		if (level <= 0)
 			return -1;
 		for (i = 1; i <= level; i++)
-			sd->status.status_point += (sd->status.base_level + i + 14) / 5;
+			sd->status.status_point += GET_STATUSPOINT_INC(sd->status.base_level,i);
 		sd->status.base_level += level;
 		clif_updatestatus(sd, SP_BASELEVEL);
 		clif_updatestatus(sd, SP_NEXTBASEEXP);
@@ -2238,10 +2238,10 @@ atcommand_refine(
 	if (sscanf(message, "%d %d", &position, &refine) < 2)
 		return -1;
 
-	if (refine < -10)
-		refine = -10;
-	else if (refine > 10)
-		refine = 10;
+	if (refine < -MAX_REFINE)
+		refine = -MAX_REFINE;
+	else if (refine > MAX_REFINE)
+		refine = MAX_REFINE;
 	else if (refine == 0)
 		refine = 1;
 
@@ -2256,8 +2256,8 @@ atcommand_refine(
 			continue;
 		current_refine = data->refine;
 		data->refine += refine;
-		if (data->refine > 10)
-			data->refine = 10;
+		if (data->refine > MAX_REFINE)
+			data->refine = MAX_REFINE;
 		else if (data->refine < 0)
 			data->refine = 0;
 		if (current_refine == data->refine)

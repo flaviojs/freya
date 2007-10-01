@@ -51,6 +51,7 @@
 #define MAX_ATTRIBUTE 4
 #define ATTRIBUTE_NORMAL 0
 #define MIN_STAR 0							//武器製造時、星のかけら最小数
+#define MAX_REFINE 10						//精錬できる回数(デフォルト：10)
 #define MAX_STAR 3							//武器製造時、星のかけら最大数
 
 #define MAX_PORTAL_MEMO 3					//ワープポータルのメモ最大数
@@ -67,8 +68,17 @@
 #define HOM_SKILLID 8001		// ホムスキルIDの開始値
 #define MAX_HOM_SKILLID (HOM_SKILLID+MAX_HOMSKILL)	// ホムスキルIDの最大値
 
+#define MAX_HOTKEYS 27	//9×3ページ
+
 #define GRF_PATH_FILENAME "conf/grf-files.txt"
 
+#define GET_STATUSPOINT_INC(lv,n)	((lv + n + 14) / 5)
+
+struct hotkey {
+	int type;
+	int id;
+	int skill_lv;
+};
 struct item {
 	int id;
 	short nameid;
@@ -141,6 +151,7 @@ struct mmo_charstatus {
 	struct skill skill[MAX_SKILL];
 	int friend_num;
 	struct friend_data friend_data[MAX_FRIEND];
+	struct hotkey hotkey[MAX_HOTKEYS];
 };
 
 struct registry {

@@ -3528,6 +3528,7 @@ int buildin_homunevolution(struct script_state *st);
 int buildin_recalcstatus(struct script_state *st);
 int buildin_dropitem(struct script_state *st);
 int buildin_getexp(struct script_state *st);
+int buildin_get_maxrefine(struct script_state *st);
 
 struct script_function buildin_func[] = {
 	{buildin_mes,"mes","s"},
@@ -3770,6 +3771,7 @@ struct script_function buildin_func[] = {
 	{buildin_recalcstatus,"recalcstatus","*"},
 	{buildin_dropitem,"dropitem","iisii"},
 	{buildin_getexp,"getexp","ii"},
+	{buildin_get_maxrefine,"get_maxrefine",""},
 	{NULL,NULL,NULL}
 };
 
@@ -4828,7 +4830,7 @@ int buildin_getitem2(struct script_state *st)
 		memset(&item_tmp,0,sizeof(item_tmp));
 		item_data=itemdb_search(nameid);
 		if(item_data->type==4 || item_data->type==5){
-			if(ref > 10) ref = 10;
+			if(ref > MAX_REFINE) ref = MAX_REFINE;
 		}
 		else if(item_data->type==7) {
 			iden = 1;
@@ -10359,5 +10361,15 @@ int buildin_getexp(struct script_state *st)
 		return 0;
 	pc_gainexp(sd,NULL,base,job);
 
+	return 0;
+}
+
+/*=========================================
+ *¸˜BŒÀŠE’l‚ðŽæ“¾
+ *-----------------------------------------
+ */
+int buildin_get_maxrefine(struct script_state *st)
+{
+	push_val(st->stack,C_INT,MAX_REFINE);
 	return 0;
 }

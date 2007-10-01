@@ -4,6 +4,15 @@
 ---------------------------------------------------------------------------
 
 ----------------------------------------
+//2319 by free
+
+・hotkeyを実装(2007.6.28 Sakexe仕様変更に伴う対応）
+(char.c,char-converter.c,clif.c,main.sql,drop_table.sql,hotkey_chagetable.sql)
+・精錬最大値をMAX_REFINEで定義。
+(status.c,mmo.h,atcommand.c,script.c)
+・レベルアップ時のステータスポイントの計算部分を一つに集約
+(mmo.h,atcommand.c,pc.c)
+----------------------------------------
 //2318 by ICO
 
 ・ディバインプロテクションの効果が現れない不都合を修正

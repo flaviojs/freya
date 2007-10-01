@@ -2241,7 +2241,7 @@ struct Damage battle_calc_weapon_attack(
 				vitbonusmax = (t_vit/20)*(t_vit/20)-1;
 
 				// ディバインプロテクション
-				if(target_sd && battle_check_undead(status_get_race(src),status_get_elem_type(src)) || status_get_race(src)==6) {
+				if((target_sd && battle_check_undead(status_get_race(src),status_get_elem_type(src))) || status_get_race(src)==6) {
 					if(target_sd && pc_checkskill(target_sd,AL_DP) > 0 )
 						t_def += (int)(floor( ( 3 + 0.04 * target_sd->status.base_level ) * pc_checkskill(target_sd,AL_DP)));
 				}

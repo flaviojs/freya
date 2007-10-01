@@ -11904,7 +11904,7 @@ static void clif_parse_ReturnMail(int fd,struct map_session_data *sd, int cmd)
 // homun
 static void clif_parse_HomMenu(int fd,struct map_session_data *sd, int cmd)
 {
-	homun_menu(sd,RFIFOB(fd,GETPACKETPOS(cmd,0)));
+	if(sd->hd)	homun_menu(sd,RFIFOB(fd,GETPACKETPOS(cmd,0)));
 }
 static void clif_parse_HomWalkMaster(int fd,struct map_session_data *sd, int cmd)
 {
@@ -12047,6 +12047,51 @@ static void clif_parse_BabyReply(int fd,struct map_session_data *sd, int cmd)
 static void clif_parse_FeelSaveAck(int fd,struct map_session_data *sd, int cmd)
 {
 	clif_feel_saveack(sd,(int)RFIFOB(fd,GETPACKETPOS(cmd,0)));
+	return;
+}
+
+ /*==========================================
+ * ホットキーのセッション保持
+ * クライアントがホットキーを割り当てた時の挙動
+ *------------------------------------------
+ */
+static void clif_parse_HotKeySave(int fd,struct map_session_data *sd, int cmd)
+{
+	int pos = RFIFOW(fd,GETPACKETPOS(cmd,0));
+	nullpo_retv(sd);
+	if(pos >= MAX_HOTKEYS)
+		return;
+
+	sd->status.hotkey[pos].type     = RFIFOB(fd,GETPACKETPOS(cmd,1));
+	sd->status.hotkey[pos].id       = RFIFOL(fd,GETPACKETPOS(cmd,2));
+	sd->status.hotkey[pos].skill_lv = RFIFOW(fd,GETPACKETPOS(cmd,3));
+
+	return;
+}
+
+/*==========================================
+ * ホットキーの送信
+ * クライアントログイン時に送信
+ * pc_authok()実行に組み込む
+ * clif.hに記述しておく
+ *------------------------------------------
+ */
+void clif_send_hotkey(struct map_session_data *sd)
+{
+	int i, fd;	
+	nullpo_retv(sd);
+	fd = sd->fd;
+	
+	WFIFOW(fd,0) = 0x2b9;
+	
+	for(i = 0; i < MAX_HOTKEYS; i++) {		
+		WFIFOB(fd,7*i+2) = sd->status.hotkey[i].type;
+		WFIFOL(fd,7*i+3) = sd->status.hotkey[i].id;
+		WFIFOW(fd,7*i+7) = sd->status.hotkey[i].skill_lv;
+	}
+	
+	WFIFOSET(fd,packet_db[0x02b9].len);
+	
 	return;
 }
 
@@ -12222,6 +12267,7 @@ struct {
 	{clif_parse_DeleteMail,"deletemail"},
 	{clif_parse_ReturnMail,"returnmail"},
 	{clif_parse_FeelSaveAck,"feelsaveack"},
+	{clif_parse_HotKeySave,"hotkeysave"},
 	{NULL,NULL}
 };
 

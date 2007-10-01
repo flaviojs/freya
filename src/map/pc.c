@@ -1085,6 +1085,8 @@ int pc_authok(int id,struct mmo_charstatus *st,struct registry *reg)
 		}
 	}
 
+	clif_send_hotkey(sd);
+
 	return 0;
 }
 

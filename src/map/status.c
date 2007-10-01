@@ -31,7 +31,7 @@ static int hp_sigma_val[MAX_PC_CLASS][MAX_LEVEL];
 static int sp_coefficient[MAX_PC_CLASS];
 static int aspd_base[MAX_PC_CLASS][30];
 static int refinebonus[5][3];	// 精錬ボーナステーブル(refine_db.txt)
-static int percentrefinery[5][10];	// 精錬成功率(refine_db.txt)
+static int percentrefinery[5][MAX_REFINE];	// 精錬成功率(refine_db.txt)
 static int atkmods[3][30];	// 武器ATKサイズ修正(size_fix.txt)
 static char job_bonus[3][MAX_PC_CLASS][MAX_LEVEL];
 int current_equip_item_index;//ステータス計算用
@@ -7107,7 +7107,7 @@ int status_readdb(void) {
 
 	// 精錬データテーブル
 	for(i=0;i<5;i++){
-		for(j=0;j<10;j++)
+		for(j=0;j<MAX_REFINE;j++)
 			percentrefinery[i][j]=100;
 		refinebonus[i][0]=0;
 		refinebonus[i][1]=0;
@@ -7120,13 +7120,13 @@ int status_readdb(void) {
 	}
 	i=0;
 	while(fgets(line,1020,fp)){
-		char *split[16];
+		char *split[MAX_REFINE+3];
 		if(line[0]=='/' && line[1]=='/')
 			continue;
 		if(atoi(line)<=0)
 			continue;
 		memset(split,0,sizeof(split));
-		for(j=0,p=line;j<16 && p;j++){
+		for(j=0,p=line;j<MAX_REFINE+3 && p;j++){
 			split[j]=p;
 			p=strchr(p,',');
 			if(p) *p++=0;
@@ -7134,7 +7134,7 @@ int status_readdb(void) {
 		refinebonus[i][0]=atoi(split[0]);	// 精錬ボーナス
 		refinebonus[i][1]=atoi(split[1]);	// 過剰精錬ボーナス
 		refinebonus[i][2]=atoi(split[2]);	// 安全精錬限界
-		for(j=0;j<10 && split[j];j++)
+		for(j=0;j<MAX_REFINE && split[j+3];j++)
 			percentrefinery[i][j]=atoi(split[j+3]);
 		i++;
 	}

@@ -31,3 +31,4 @@ drop table `storage`;
 drop table `homunculus`;
 drop table `homunculus_skill`;
 drop table `status_change`;
+drop table `hotkey`;

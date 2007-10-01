@@ -211,6 +211,11 @@ static int mmo_char_tostr(char *str,struct mmo_chardata *p)
 
 	*(str_p++)='\t';
 
+	for(i=0;i<MAX_HOTKEYS;i++){
+		str_p += sprintf(str_p,"%d,%d,%d ",p->st.hotkey[i].type,p->st.hotkey[i].id,p->st.hotkey[i].skill_lv);
+	}
+	*(str_p++)='\t';
+
 	*str_p='\0';
 
 	return 0;
@@ -502,6 +507,22 @@ static int mmo_char_fromstr(char *str,struct mmo_chardata *p)
 			return 0;
 		if(tmp_int[0] >= 0 && tmp_int[0] < 3)
 			strncpy(p->st.feel_map[tmp_int[0]], tmp_str, 24);
+		next+=len;
+		if(str[next]==' ')
+			next++;
+	}
+	next++;
+
+ 	for(i = 0; str[next] && str[next] != '\t' && str[next] != '\n' && str[next] != '\r'; i++) {
+		set=sscanf(str+next,"%d,%d,%d%n",&tmp_int[0],&tmp_int[1],&tmp_int[2],&len);
+		if(set!=3)
+			return 0;
+		if(i < MAX_HOTKEYS)
+		{
+			p->st.hotkey[i].type     = tmp_int[0];
+			p->st.hotkey[i].id       = tmp_int[1];
+			p->st.hotkey[i].skill_lv = tmp_int[2];
+		}
 		next+=len;
 		if(str[next]==' ')
 			next++;
@@ -1362,6 +1383,28 @@ const struct mmo_chardata* char_sql_load(int char_id) {
 		mysql_free_result(sql_res);
 	}
 
+	// ホットキー
+	memset(&p->st.hotkey, '\0', sizeof(&p->st.hotkey));
+	sprintf(tmp_sql, "SELECT `type`,`hotkey`,`id`,`skill_lv` FROM `hotkey` WHERE `char_id` = %d", char_id);
+	if (mysql_query(&mysql_handle, tmp_sql)) {
+		printf("DB server Error (select `hotkey`)- %s\n", mysql_error(&mysql_handle));
+	}
+	sql_res = mysql_store_result(&mysql_handle);
+
+	if (sql_res) {
+		int pos;
+		for(i = 0; (sql_row = mysql_fetch_row(sql_res)) && i < MAX_HOTKEYS; i++) {
+			pos = atoi(sql_row[1]);
+			if(pos > MAX_HOTKEYS){
+				printf("hotkey is overflow(%d)!\n",pos);
+				continue;
+			}
+			p->st.hotkey[pos].type     = atoi(sql_row[0]);
+			p->st.hotkey[pos].id       = atoi(sql_row[2]);
+			p->st.hotkey[pos].skill_lv = atoi(sql_row[3]);
+		}
+		mysql_free_result(sql_res);
+	}
 	// printf("]\n");	//ok. all data load successfuly!
 
 	return p;
@@ -1401,6 +1444,41 @@ int char_sql_save_reg(int account_id,int char_id,int num,struct global_reg *reg)
 		if(cd2) {
 			memcpy(&cd2->reg.global,reg,sizeof(cd2->reg.global));
 			cd2->reg.global_num = num;
+		}
+	}
+
+	return 0;
+}
+
+/**
+ * ホットキーを保存する。
+ * @return 0 正常終了時
+ * 　　　　1 異常発生時
+ */
+int char_sql_save_hotkey(const struct mmo_charstatus *st1, struct mmo_charstatus *st2)
+{
+	char *p;
+	char sep = ' ';
+	int i;
+
+	sprintf( tmp_sql, "DELETE FROM `%s` WHERE `char_id`='%d'", "hotkey", st2->char_id );
+	if (mysql_query(&mysql_handle, tmp_sql)) {
+		printf("DB server Error (delete `hotkey`)- %s\n", mysql_error(&mysql_handle));
+
+		return 1;
+	}
+	p  = tmp_sql;
+	p += sprintf(p,"INSERT INTO `%s`(`char_id`, `hotkey`, `type`, `id`, `skill_lv`) VALUES", "hotkey");
+	sep = ' ';
+	for(i=0;i<MAX_HOTKEYS;i++){
+		p += sprintf(p,"%c(%d,%d,%d,%d,%d)",sep,st2->char_id,i,st2->hotkey[i].type,st2->hotkey[i].id,st2->hotkey[i].skill_lv);
+		sep = ',';
+	}
+	if(sep == ',') {
+		if(mysql_query(&mysql_handle, tmp_sql)) {
+			printf("DB server Error (insert `hotkey`)- %s\n", mysql_error(&mysql_handle));
+
+			return 1;
 		}
 	}
 
@@ -1592,6 +1670,9 @@ int  char_sql_save(struct mmo_charstatus *st2) {
 		}
 	}
 
+	//hotkey
+	char_sql_save_hotkey(st1,st2);
+
 	// printf("]\n");
 	{
 		struct mmo_chardata *cd2 = numdb_search(char_db_,st2->char_id);
@@ -1782,6 +1863,12 @@ int  char_sql_delete_sub(int char_id) {
 	sprintf( tmp_sql, "DELETE FROM `%s` WHERE `char_id`='%d'", friend_db, char_id );
 	if (mysql_query(&mysql_handle, tmp_sql)) {
 		printf("DB server Error - %s\n", mysql_error(&mysql_handle));
+	}
+
+	// hotkey
+	sprintf(tmp_sql, "DELETE FROM `hotkey` WHERE `char_id` = %d", char_id);
+	if (mysql_query(&mysql_handle, tmp_sql)) {
+		printf("DB server Error (delete `mercenary_intimate`)- %s\n", mysql_error(&mysql_handle));
 	}
 
 	return 1;
