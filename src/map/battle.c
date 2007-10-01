@@ -5186,7 +5186,7 @@ int battle_config_read(const char *cfgName)
 		battle_config.mvpmob_card_drop_rate = 100;
 		battle_config.mob_delay_rate_middle_boss = 100;
 		battle_config.mob_delay_rate_mvp_boss = 100;
-		battle_config.autotrade_users = 1;
+		battle_config.autotrade_users = 0;
 		battle_config.hom_rename_flag = 0;
 	}
 
