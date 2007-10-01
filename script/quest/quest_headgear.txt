@@ -1178,7 +1178,7 @@ morocc_in.gat,76,163,4	script	Alchemist	64,5,5,{
 			mes "[Marius]";
 			mes "Here you are!";
 			mes "Binoculars !";
-			getitem Binoculars,1;
+			getitem 2296,1;
 			next;
 			mes "[Marius]";
 			mes "Just remember...";
