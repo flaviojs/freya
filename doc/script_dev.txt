@@ -18,7 +18,7 @@
 - gvg/gvg_adswitch.txt			<- Good enough
 - gvg/gvg_config.txt			<- Good enough
 - gvg/gvg_exe.txt			<- Good enough
-- gvg/gvg_flag.txt			<- Good enough - Need to import Aegis dialogue/function [Assigned ~ Tsuyuki]
+- gvg/gvg_flag.txt			<- Good enough - Need to import Aegis dialogue/function [*]
 - gvg/gvg_monster.txt			<- Good enough
 - gvg/gvg_roomswitch.txt		<- Good enough
 - gvg/gvg_steward.txt			<- Good enough - Need to import Aegis dialogue/function [*]
@@ -34,7 +34,7 @@
  Aurora's euRO Dialogue Aegis Scripts:
 ---------------------------------------------------------------------------
 
-- misc/misc_cash_item.txt		<- Optional? [*]
+- misc/misc_cash_item.txt		<- Optional? [*] - No access to an iRO Aegis version [*]
 - quest/quest_expanded.txt		<- Optional? [*]
 - quest/quest_god_seal.txt		<- Optional? [*]
 - quest/quest_job_tutorial.txt		<- Optional? [*]
