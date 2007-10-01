@@ -916,13 +916,8 @@ atcommand_jump(
 
 	nullpo_retr(-1, sd);
 
-	// Simplified @jump [Aurora]
 	if (sscanf(message, "%d %d", &x, &y) < 2)
-	{
-		x = 0;
-		y = 0;
-	}
-	// End custom changes [Aurora]
+		return -1;
 
 	if (x >= 0 && x < map[sd->bl.m].xs && y >= 0 && y < map[sd->bl.m].ys) {
 		char output[200];
@@ -1149,76 +1144,18 @@ atcommand_jobchange(
 	const int fd, struct map_session_data* sd,
 	const char* command, const char* message)
 {
-	// Improved to use string constants as well as IDs [Aurora]
-	int job = 0, upper = -1, i = 0;
-	char jobname[100];
-
-	const struct {
-		char name[20]; 
-		int id; 
-	} jobs[] = {
-		{ "novice",                    0 },
-		{ "swordsman",                 1 },
-		{ "swordman",                  1 },
-		{ "mage",                      2 },
-		{ "magician",                  2 },
-		{ "archer",                    3 },
-		{ "acolyte",                   4 },
-		{ "merchant",                  5 },
-		{ "thief",                     6 },
-		{ "knight",                    7 },
-		{ "priest",                    8 },
-		{ "wizard",                    9 },
-		{ "blacksmith",               10 },
-		{ "hunter",                   11 },
-		{ "assassin",                 12 },
-		{ "crusader",                 14 },
-		{ "monk",                     15 },
-		{ "sage",                     16 },
-		{ "rogue",                    17 },
-		{ "alchemist",                18 },
-		{ "bard",                     19 },
-		{ "dancer",                   20 },
-		{ "super novice",             23 },
-		{ "supernovice",              23 },
-		{ "taekwon",                  24 },
-		{ "taekwon kid",              24 },
-		{ "taekwon boy",              24 },
-		{ "taekwon girl",             24 },
-		{ "star gladiator",           25 },
-		{ "star knight",              25 },
-		{ "taekwon master",           25 },
-		{ "soul linker",              27 },
-		{ "gunslinger",               28 },
-		{ "gunner",                   28 },
-		{ "ninja",                    29 },
-		{ "death knight",             30 },
-		{ "dark collector",           31 },
-	};
-
-	if (!message || !*message || sscanf(message, "%u %u", &job, &upper) < 1 || job < 0 || job >= MAX_VALID_PC_CLASS) {
-		i = (int)(sizeof(jobs) / sizeof(jobs[0]));
-		if (sscanf(message, "\"%[^\"]\" %d", jobname, &upper) >= 1 ||
-		    sscanf(message, "%s %d", jobname, &upper) >= 1) {
-			for (i = 0; i < (int)(sizeof(jobs) / sizeof(jobs[0])); i++) {
-				if (strcasecmp(jobname, jobs[i].name) == 0 || strcasecmp(message, jobs[i].name) == 0) {
-					job = jobs[i].id;
-					break;
-				}
-			}
-		}
-	}
-
-	if ((i == (int)(sizeof(jobs) / sizeof(jobs[0])))) {
+	int job, upper = -1;
+	if (!message || !*message)
 		return -1;
+	if (sscanf(message, "%d %d", &job, &upper) < 1)
+		return -1;
+
+	if ((job >= 0 && job < MAX_VALID_PC_CLASS)) {
+		if (job >= 23 && upper != 2)
+			upper = 0;
+		if (pc_jobchange(sd, job, upper) == 0)
+			clif_displaymessage(fd, msg_txt(12));
 	}
-
-	if (job >= 23 && upper != 2)
-		upper = 0;
-	if (pc_jobchange(sd, job, upper) == 0)
-		clif_displaymessage(fd, msg_txt(12));
-
-	// End custom changes [Aurora]
 
 	return 0;
 }
@@ -2145,7 +2082,7 @@ atcommand_monster(
 	const int fd, struct map_session_data* sd,
 	const char* command, const char* message)
 {
-	// Simplified to skip forced 'name' parameter [Aurora]
+	char name[100];
 	char monster[100];
 	int mob_id = 0;
 	int number = 0;
@@ -2160,9 +2097,9 @@ atcommand_monster(
 	if (!message || !*message)
 		return -1;
 
-	if (sscanf(message, "%s %d %d %d", monster, &number, &x, &y) < 1 &&
-	    sscanf(message, "%s %d %d %d", monster, &number, &x, &y) < 1 &&
-	    sscanf(message, "%99s %d %d %d", monster, &number, &x, &y) < 1)
+	if (sscanf(message, "\"%[^\"]\" %s %d %d %d", name, monster, &number, &x, &y) < 2 &&
+	    sscanf(message, "%s \"%[^\"]\" %d %d %d", monster, name, &number, &x, &y) < 2 &&
+	    sscanf(message, "%99s %99s %d %d %d", name, monster, &number, &x, &y) < 2)
 		return -1;
 
 	if ((mob_id = atoi(monster)) == 0)
@@ -2175,11 +2112,11 @@ atcommand_monster(
 
 	if (battle_config.etc_log) {
 		if (on_map)
-			printf("%s monster=%s id=%d count=%d (on entire map)\n",
-				command, mob_db[mob_id].jname, mob_id, number);
+			printf("%s monster=%s name=%s id=%d count=%d (on entire map)\n",
+				command, monster, name, mob_id, number);
 		else
-			printf("%s monster=%s id=%d count=%d (%d,%d)\n",
-				command, mob_db[mob_id].jname, mob_id, number, x, y);
+			printf("%s monster=%s name=%s id=%d count=%d (%d,%d)\n",
+				command, monster, name, mob_id, number, x, y);
 	}
 
 	for (i = 0; i < number; i++) {
@@ -2207,13 +2144,12 @@ atcommand_monster(
 			if (y > 0)
 				my = y;
 		}
-		count += (mob_once_spawn(sd, "this", mx, my, mob_db[mob_id].jname, mob_id, 1, "") != 0) ? 1 : 0;
+		count += (mob_once_spawn(sd, "this", mx, my, name, mob_id, 1, "") != 0) ? 1 : 0;
 	}
 	if (count != 0)
 		clif_displaymessage(fd, msg_txt(39));
 	else
 		clif_displaymessage(fd, msg_txt(40));
-	// End custom changes [Aurora]
 
 	return 0;
 }

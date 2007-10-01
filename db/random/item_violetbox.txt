@@ -8,8 +8,7 @@
 // 1000000 = 100%
 
 0,Guard,2102
-603,Old Blue Box,1000
-617,Old Purple Box,10000
+617,Old Purple Box,100000
 1102,Sword,10000
 1105,Falchion,10000
 1108,Blade,10000
@@ -89,7 +88,7 @@
 1754,Crystal Arrow,10000
 1755,Arrow of Wind,10000
 1756,Stone Arrow,10000
-1757,Immaterial Arrow,10000
+1757,Immaterial Arrow,10
 1758,Stun Arrow,10000
 1759,Frozen Arrow,10000
 1760,Flash Arrow,10000
@@ -116,7 +115,7 @@
 1959,Tail Whip,10000
 1961,Whip,10000
 1962,Lariat Whip,10000
-2102,Guard,10000
+2102,Guard,2102
 2104,Buckler,10000
 2106,Shield,10000
 2108,Mirror Shield,10000
@@ -217,7 +216,7 @@
 2612,Flower Ring,10000
 2613,Diamond Ring,10000
 2614,Eye of Dullahan,10000
-2617,Celebrant's Mitten,1000
+2617,Celebrant's Mitten,10000
 2621,Ring,100
 2622,Earring,100
 2623,Necklace,100

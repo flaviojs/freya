@@ -25,14 +25,14 @@ ifneq ($(findstring LOCALZLIB,$(CFLAGS)), LOCALZLIB)
 endif
 
 char-server: char.o inter.o int_party.o int_guild.o int_storage.o int_pet.o int_mail.o int_homun.o int_status.o $(COMMON_OBJ)
-	$(CC) -o ../../$@ $> $(LIBS)
+	$(CC) -o ../../bin/$@ $> $(LIBS)
 
 clean:
 	rm -f *.o
 	rm -f GNUmakefile
 
 ifeq ($(findstring CYGWIN,$(shell uname)), CYGWIN)
-		rm -f ../../char-server.exe
+		rm -f ../../bin/char-server.exe
 else
-		rm -f ../../char-server
+		rm -f ../../bin/char-server
 endif

@@ -295,13 +295,13 @@ int main(int argc,char **argv)
 
 	// Added Aurora logo to startup [Aurora]
 	printf("          (=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=)\n");
-	printf("          (            (c)2004-2007 Freya Team Presents:            )\n");
+	printf("          (            (c)2004-2007 Aurora Team Presents:           )\n");
 	printf("          (               ___                                       )\n");
 	printf("          (              /   |_   _ _ __ ___  _ __ __ _             )\n");
 	printf("          (             / /| | | | | '__/ _ \\| '__/ _` |            )\n");
 	printf("          (            / ___ | |_| | | | (_) | | | (_| |            )\n");
 	printf("          (           /_/  |_|\\____|_|  \\___/|_|  \\__,_|            )\n");
-	printf("          (                 http://www.ro-freya.net                 )\n");
+	printf("          (               http://aurora.deltaanime.net              )\n");
 	printf("          (=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=)\n\n");
 	// End of custom changes [Aurora]
 

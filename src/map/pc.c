@@ -5290,59 +5290,9 @@ int pc_readparam(struct map_session_data *sd,int type)
 	case SP_JOBLEVEL:
 		val= sd->status.job_level;
 		break;
-	// Changed SP_CLASS ('Class' script command) to return absolute class ID [Aurora]
 	case SP_CLASS:
-		val = sd->status.class;
+		val= s_class.job;
 		break;
-	// End of custom changes [Aurora]
-	// Changed SP_BASEJOB ('Basejob' script command) to return absolute job (Baby Merchant -> Merchant, etc) [Aurora]
-	case SP_BASEJOB:
-		val = s_class.job;
-		break;
-	// End of custom changes [Aurora]
-	// Changed SP_BASECLASS ('Baseclass' script command) to return first job (Hunter -> Archer, High Wizard -> Mage, etc) [Aurora]
-	case SP_BASECLASS:
-		switch(s_class.job) {
-			case 23:
-				val = 0;
-				break;
-			case 7:
-			case 13:
-			case 14:
-			case 21:
-				val = 1;
-				break;
-			case 9:
-			case 16:
-				val = 2;
-				break;
-			case 11:
-			case 19:
-			case 20:
-				val = 3;
-				break;
-			case 8:
-			case 15:
-				val = 4;
-				break;
-			case 10:
-			case 18:
-				val = 5;
-				break;
-			case 12:
-			case 17:
-				val = 6;
-				break;
-			case 25:
-			case 26:
-			case 27:
-				val = 24;
-				break;
-			default:
-				val = s_class.job;
-		}
-		break;
-	// End of custom changes [Aurora]
 	case SP_UPPER:
 		val= s_class.upper;
 		break;

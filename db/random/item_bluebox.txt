@@ -8,8 +8,6 @@
 // 1000000 = 100%
 
 0,Guard,2102
-525,Panacea,20000
-526,Royal Jelly,10000
 528,Monster Food,30000
 529,Candy,20000
 530,Candy Cane,20000
@@ -46,7 +44,7 @@
 708,Ment,10000
 710,Illusion Flower,10000
 711,Shoot,100000
-712,Flower,100000
+712,Flower,500000
 713,Empty Bottle,100000
 714,Emperium,10000
 715,Yellow Gemstone,70000
