@@ -216,15 +216,6 @@ static int mmo_char_tostr(char *str,struct mmo_chardata *p)
 	}
 	*(str_p++)='\t';
 
-	for(i = 0; i < MECENARY_MAX_JOB_ID; i++)
-	{
-		int intimate = p->st.mec_intimate[i];
-		if(intimate < 0)	intimate = 0;
-		else if(intimate > 	MERCENARY_MAX_INTIMATE)	intimate = MERCENARY_MAX_INTIMATE;
-		str_p += sprintf(str_p,"%d ",intimate);
-	}
-	*(str_p++)='\t';
-
 	*str_p='\0';
 
 	return 0;
@@ -532,19 +523,6 @@ static int mmo_char_fromstr(char *str,struct mmo_chardata *p)
 			p->st.hotkey[i].id       = tmp_int[1];
 			p->st.hotkey[i].skill_lv = tmp_int[2];
 		}
-		next+=len;
-		if(str[next]==' ')
-			next++;
-	}
-	next++;
-
-	for(i = 0; str[next] && str[next] != '\t' && str[next] != '\n' && str[next] != '\r'; i++) {
-		set=sscanf(str+next,"%d%n",&tmp_int[0],&len);
-		if(set!=1)
-			return 0;
-		p->st.mec_intimate[i] = tmp_int[0];
-		if(p->st.mec_intimate[i] < 0)	p->st.mec_intimate[i] = 0;
-		else if(p->st.mec_intimate[i] > 	MERCENARY_MAX_INTIMATE)	p->st.mec_intimate[i] = MERCENARY_MAX_INTIMATE;
 		next+=len;
 		if(str[next]==' ')
 			next++;
@@ -1009,7 +987,6 @@ static char charlog_db[256]         = "charlog";
 // static char interlog_db[256]        = "interlog";
 static char skill_db[256]           = "skill";
 static char memo_db[256]            = "memo";
-static char mec_intimate_db[256]            = "mec_intimate";
 
 char* strecpy (char* pt,const char* spt) {
 	//copy from here
@@ -1276,23 +1253,6 @@ const struct mmo_chardata* char_sql_load(int char_id) {
 	}
 	// printf("char ");
 
-	//read mec_intimate data
-	sprintf( tmp_sql, "SELECT `intimate` FROM `%s` WHERE `char_id`='%d'", mec_intimate_db, char_id );
-	if (mysql_query(&mysql_handle, tmp_sql)) {
-		printf("DB server Error (select `mercenary_intimate`)- %s\n", mysql_error(&mysql_handle));
-	}
-	sql_res = mysql_store_result( &mysql_handle );
-	if( sql_res )
-	{
-		for( i=0; i < MECENARY_MAX_JOB_ID && (sql_row = mysql_fetch_row(sql_res)); i++ )
-		{
-			p->st.mec_intimate[i] = atoi( sql_row[0] );
-			if(p->st.mec_intimate[i] < 0)	p->st.mec_intimate[i] = 0;
-			else if(p->st.mec_intimate[i] > MERCENARY_MAX_INTIMATE)	p->st.mec_intimate[i] = 0;
-		}
-		mysql_free_result( sql_res );
-	}
-
 	//read memo data
 	//`memo` (`memo_id`,`char_id`,`type`,`map`,`x`,`y`)
 	sprintf(tmp_sql, "SELECT `map`,`x`,`y` FROM `%s` WHERE `type`='W' AND `char_id`='%d'",memo_db, char_id); // TBR
@@ -1425,17 +1385,23 @@ const struct mmo_chardata* char_sql_load(int char_id) {
 
 	// ホットキー
 	memset(&p->st.hotkey, '\0', sizeof(&p->st.hotkey));
-	sprintf(tmp_sql, "SELECT `type`,`id`,`skill_lv` FROM `hotkey` WHERE `char_id` = %d", char_id);
+	sprintf(tmp_sql, "SELECT `type`,`hotkey`,`id`,`skill_lv` FROM `hotkey` WHERE `char_id` = %d", char_id);
 	if (mysql_query(&mysql_handle, tmp_sql)) {
 		printf("DB server Error (select `hotkey`)- %s\n", mysql_error(&mysql_handle));
 	}
 	sql_res = mysql_store_result(&mysql_handle);
 
 	if (sql_res) {
+		int pos;
 		for(i = 0; (sql_row = mysql_fetch_row(sql_res)) && i < MAX_HOTKEYS; i++) {
-			p->st.hotkey[i].type     = atoi(sql_row[0]);
-			p->st.hotkey[i].id       = atoi(sql_row[1]);
-			p->st.hotkey[i].skill_lv = atoi(sql_row[2]);
+			pos = atoi(sql_row[1]);
+			if(pos > MAX_HOTKEYS){
+				printf("hotkey is overflow(%d)!\n",pos);
+				continue;
+			}
+			p->st.hotkey[pos].type     = atoi(sql_row[0]);
+			p->st.hotkey[pos].id       = atoi(sql_row[2]);
+			p->st.hotkey[pos].skill_lv = atoi(sql_row[3]);
 		}
 		mysql_free_result(sql_res);
 	}
@@ -1707,24 +1673,6 @@ int  char_sql_save(struct mmo_charstatus *st2) {
 	//hotkey
 	char_sql_save_hotkey(st1,st2);
 
-	// mercenary intimate
-	if( memcmp(st1->mec_intimate, st2->mec_intimate, sizeof(st1->mec_intimate)) != 0 )
-	{
-		sprintf( tmp_sql, "DELETE FROM `%s` WHERE `char_id`='%d'", mec_intimate_db, st2->char_id );
-		if (mysql_query(&mysql_handle, tmp_sql)) {
-			printf("DB server Error (delete `mercenary_intimate`)- %s\n", mysql_error(&mysql_handle));
-		}
-
-		for( i=0; i < MECENARY_MAX_JOB_ID; i++ )
-		{
-			sprintf( tmp_sql, "INSERT INTO `%s` (`char_id`,`intimate`) VALUES ('%d', '%d')",
-				mec_intimate_db, st2->char_id,st2->mec_intimate[i] );
-			if(mysql_query(&mysql_handle, tmp_sql)) {
-				printf("DB server Error (insert `mercenary`)- %s\n", mysql_error(&mysql_handle));
-			}
-		}
-	}
-
 	// printf("]\n");
 	{
 		struct mmo_chardata *cd2 = numdb_search(char_db_,st2->char_id);
@@ -1919,12 +1867,6 @@ int  char_sql_delete_sub(int char_id) {
 
 	// hotkey
 	sprintf(tmp_sql, "DELETE FROM `hotkey` WHERE `char_id` = %d", char_id);
-	if (mysql_query(&mysql_handle, tmp_sql)) {
-		printf("DB server Error (delete `mercenary_intimate`)- %s\n", mysql_error(&mysql_handle));
-	}
-
-	// mercenary_intimate
-	sprintf( tmp_sql, "DELETE FROM `%s` WHERE `char_id`='%d'", mec_intimate_db, char_id );
 	if (mysql_query(&mysql_handle, tmp_sql)) {
 		printf("DB server Error (delete `mercenary_intimate`)- %s\n", mysql_error(&mysql_handle));
 	}

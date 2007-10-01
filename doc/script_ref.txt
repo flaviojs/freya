@@ -1661,8 +1661,8 @@ AthenaNPCScript
 
 			指定したギルドの情報をInterサーバに要求し取得します。
 
-		successremovecard命令
-			successremovecard <num>[,<position>];
+		successremovecards命令
+			successremovecards <num>[,<position>];
 
 			<num>		1-11までの整数を指定します。詳しくはgetequipidを参照のこと。
 			<position>	カードの位置番号。省略時は0になります。
@@ -1709,6 +1709,24 @@ AthenaNPCScript
 			@inventorylist_card3 : アイテムに挿しているカードデータ(3枚目)
 			@inventorylist_card4 : アイテムに挿しているカードデータ(4枚目)
 			@inventorylist_count : プレイヤーの所持している総アイテム種類数
+
+		getcartlist命令
+			getcartlist;
+
+			現在アタッチされているプレイヤーのカート内の装備品含むアイテムデータを
+			配列変数@cartlist_***にロードします。
+			以下変数の説明
+			@cartlist_id : アイテムのID
+			@cartlist_amount : カート内のアイテムの量
+			@cartlist_equip : 装備している場合の装備箇所
+			@cartlist_refine : アイテムの精錬値
+			@cartlist_identify : アイテムの鑑定状態
+			@cartlist_attribute : アイテムの破損の有無
+			@cartlist_card1 : アイテムに挿しているカードデータ(1枚目)
+			@cartlist_card2 : アイテムに挿しているカードデータ(2枚目)
+			@cartlist_card3 : アイテムに挿しているカードデータ(3枚目)
+			@cartlist_card4 : アイテムに挿しているカードデータ(4枚目)
+			@cartlist_count : プレイヤーのカート内の総アイテム種類数
 
 		getskilllist命令
 			getskilllist;
@@ -2712,6 +2730,12 @@ AthenaNPCScript
 			0:homun_id 1:homun_base_lv 2:homun_name 3:friendly 4:hungry 5:class
 			連れてない時は、いずれの場合も0を返します。
 
+		get_maxrefine 関数
+			get_maxrefine()
+
+			精錬限界値(MAX_REFINE)を返します。
+
+
 	＊csv アクセス命令 / 関数
 
 		csv とはカンマで区切られたテキストファイルのことで、表計算ソフトなどで
@@ -2844,17 +2868,6 @@ AthenaNPCScript
 			ただし、セキュリティの面から書き込むファイル名には、[A-Za-z0-9]のみが
 			使用できる(ディレクトリや拡張子が含まれていると失敗する)。
 
-		call_mercenary命令
-			call_mercenary <id>
-
-			id	mercenary_db.txtに記載されている番号
-
-			傭兵を呼び出します。
-
-		get_maxrefine
-			get_maxrefine
-
-			精錬限界値を取得します。
 
 	＊定数ラベル
 		-ラベル

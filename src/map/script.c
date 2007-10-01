@@ -51,7 +51,6 @@
 #include "unit.h"
 #include "nullpo.h"
 #include "homun.h"
-#include "mercenary.h"
 
 #ifdef MEMWATCH
 #include "memwatch.h"
@@ -3529,7 +3528,6 @@ int buildin_homunevolution(struct script_state *st);
 int buildin_recalcstatus(struct script_state *st);
 int buildin_dropitem(struct script_state *st);
 int buildin_getexp(struct script_state *st);
-int buildin_call_mercenary(struct script_state *st);
 int buildin_get_maxrefine(struct script_state *st);
 
 struct script_function buildin_func[] = {
@@ -3773,7 +3771,6 @@ struct script_function buildin_func[] = {
 	{buildin_recalcstatus,"recalcstatus","*"},
 	{buildin_dropitem,"dropitem","iisii"},
 	{buildin_getexp,"getexp","ii"},
-	{buildin_call_mercenary,"call_mercenary","i"},
 	{buildin_get_maxrefine,"get_maxrefine",""},
 	{NULL,NULL,NULL}
 };
@@ -10363,24 +10360,6 @@ int buildin_getexp(struct script_state *st)
 	if(base < 0 || job < 0)
 		return 0;
 	pc_gainexp(sd,NULL,base,job);
-
-	return 0;
-}
-/*=========================================
- *—b•ºŒÄ‚Ño‚µ
- *-----------------------------------------
- */
-int buildin_call_mercenary(struct script_state *st)
-{
-	struct map_session_data *sd=script_rid2sd(st);
-	int id;
-
-	nullpo_retr(0, sd);
-
-	id=conv_num(st,& (st->stack->stack_data[st->start+2]));
-
-	if(id<0)	return 0;
-	mercenary_call(sd,id);
 
 	return 0;
 }
