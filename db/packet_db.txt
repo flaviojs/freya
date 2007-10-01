@@ -1036,6 +1036,10 @@
 //0x0190,10,actionrequest,4:9
 //0x0193,2,closekafra,0
 
+//2007-01-22aSakexe
+//0x02a3,18
+//0x02a4,2
+
 //2007-02-12aSakexe
 //0x006d,110
 //0x0072,25,useskilltoid,6:10:21
@@ -1064,7 +1068,7 @@
 //2007-05-07aSakexe
 //0x01fd,15,repairitem,2
 
-//2007-07-11aSakexe(2007-02-12aSakexe,2007-05-07aSakexeの所もコメントアウトすること)
+//2007-07-11aSakexe
 //0x0288,10
 //0x0289,12
 //0x02a6,22

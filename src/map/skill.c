@@ -2746,7 +2746,7 @@ int skill_castend_damage_id( struct block_list* src, struct block_list *bl,int s
 					bl = src;
 					break;
 				case NJ_RAIGEKISAI:			/* —‹Œ‚Ó */
-					ar = ((skilllv+1)/2)*2+3;
+					ar = (skilllv+1)/2+1;
 					skill_area_temp[2]=bl->x;
 					skill_area_temp[3]=bl->y;
 					bl = src;
