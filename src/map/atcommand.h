@@ -170,10 +170,6 @@ enum AtCommandType {
 	AtCommand_MakeHomun,
 	AtCommand_HomFriendly,
 	AtCommand_AutoLoot,
-	AtCommand_CallMercenary,
-	AtCommand_FreeMercenary,
-	AtCommand_GetMercenaryStatus,
-	AtCommand_IncMecIntimate,
 	AtCommand_Unknown,
 	AtCommand_MAX,
 };

@@ -25,14 +25,14 @@ ifneq ($(findstring LOCALZLIB,$(CFLAGS)), LOCALZLIB)
 endif
 
 login-server: login.o $(COMMON_OBJ)
-	$(CC) -o ../../bin/$@ login.o $(COMMON_OBJ) $(LIBS)
+	$(CC) -o ../../$@ login.o $(COMMON_OBJ) $(LIBS)
 
 clean:
 	rm -f *.o
 	rm -f GNUmakefile
 
 ifeq ($(findstring CYGWIN,$(shell uname)), CYGWIN)
-		rm -f ../../bin/login-server.exe
+		rm -f ../../login-server.exe
 else
-		rm -f ../../bin/login-server
+		rm -f ../../login-server
 endif

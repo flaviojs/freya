@@ -48,7 +48,6 @@
 #include "unit.h"
 #include "mail.h"
 #include "homun.h"
-#include "mercenary.h"
 #include "grfio.h"
 
 #ifdef MEMWATCH
@@ -1461,66 +1460,6 @@ static int clif_hom007b(struct homun_data *hd,unsigned char *buf)
  *
  *------------------------------------------
  */
-static int clif_mec0078(struct mercenary_data *mcd,unsigned char *buf)
-{
-	int level;
-
-	nullpo_retr(0, mcd);
-
-	memset(buf,0,packet_db[0x78].len);
-
-	WBUFW(buf,0) =0x78;
-	WBUFL(buf,2) =mcd->bl.id;
-	WBUFW(buf,6) =mcd->speed;
-	WBUFW(buf,8) =mcd->opt1;
-	WBUFW(buf,10)=mcd->opt2;
-	WBUFW(buf,12)=mcd->option;
-	WBUFW(buf,14)=mcd->view_class;
-	WBUFW(buf,16)=battle_config.pet0078_hair_id;
-	WBUFW(buf,20)=0;
-	WBUFW(buf,42)=mcd->opt3;
-	WBUFPOS(buf,46,mcd->bl.x,mcd->bl.y);
-	WBUFB(buf,48)=mcd->dir&0x0f;
-	WBUFB(buf,49)=0;
-	WBUFB(buf,50)=0;
-	WBUFW(buf,52)=((level = status_get_lv(&mcd->bl))>99)? 99:level;
-
-	return packet_db[0x78].len;
-}
-
-static int clif_mec007b(struct mercenary_data *mcd,unsigned char *buf)
-{
-	int view,level;
-
-	nullpo_retr(0, mcd);
-
-	memset(buf,0,packet_db[0x7b].len);
-
-	WBUFW(buf,0) =0x7b;
-	WBUFL(buf,2) =mcd->bl.id;
-	WBUFW(buf,6) =mcd->speed;
-	WBUFW(buf,8) =mcd->opt1;
-	WBUFW(buf,10)=mcd->opt2;
-	WBUFW(buf,12)=mcd->option;
-	WBUFW(buf,14)=mcd->view_class;
-	WBUFW(buf,16)=battle_config.pet0078_hair_id;
-	if((view = itemdb_viewid(mcd->equip)) > 0)
-		WBUFW(buf,20)=view;
-	else
-		WBUFW(buf,20)=mcd->equip;
-	WBUFL(buf,22)=gettick();
-	WBUFW(buf,46)=mcd->opt3;
-	WBUFPOS2(buf,50,mcd->bl.x,mcd->bl.y,mcd->ud.to_x,mcd->ud.to_y);
-	WBUFB(buf,56)=0;
-	WBUFB(buf,57)=0;
-	WBUFW(buf,58)=((level = status_get_lv(&mcd->bl))>99)? 99:level;
-
-	return packet_db[0x7b].len;
-}
-/*==========================================
- *
- *------------------------------------------
- */
 static void clif_set01e1(struct map_session_data *sd, unsigned char *buf)
 {
 	nullpo_retv(sd);
@@ -1926,85 +1865,6 @@ void clif_homskillup(struct map_session_data *sd, int skill_num)
  *
  *------------------------------------------
  */
-void clif_send_mecdata(struct mercenary_data *mcd, int type, int param)
-{
-	int fd;
-	nullpo_retv(mcd);
-	nullpo_retv(mcd->msd);
-
-	fd=mcd->msd->fd;
-	WFIFOW(fd,0)=0x230;
-	WFIFOW(fd,2)=type;
-	WFIFOL(fd,4)=mcd->bl.id;
-	WFIFOL(fd,8)=param;
-	WFIFOSET(fd,packet_db[0x230].len);
-
-	return;
-}
-/*==========================================
- *
- *------------------------------------------
- */
-void clif_spawnmec(struct mercenary_data *mcd)
-{
-	unsigned char buf[64];
-//	int len;
-
-	nullpo_retv(mcd);
-
-	memset(buf,0,packet_db[0x7c].len);
-
-	//とりえあずMOBのを流用
-	WBUFW(buf,0)=0x7c;
-	WBUFL(buf,2)=mcd->bl.id;
-	WBUFW(buf,6)=mcd->speed;
-	WBUFW(buf,8)=mcd->opt1;
-	WBUFW(buf,10)=mcd->opt2;
-	WBUFW(buf,12)=mcd->option;
-	WBUFW(buf,20)=mcd->view_class;
-	WBUFPOS(buf,36,mcd->bl.x,mcd->bl.y);
-	clif_send(buf,packet_db[0x7c].len,&mcd->bl,AREA);
-
-//	len = clif_mec0078(mcd,buf);
-//	clif_send(buf,len,&mcd->bl,AREA);
-
-	if(mcd->view_size!=0)
-		clif_misceffect2(&mcd->bl,422+mcd->view_size);
-
-	return;
-}
-
-void clif_movemec(struct mercenary_data *mcd)
-{
-	unsigned char buf[128];
-	int len;
-
-	nullpo_retv(mcd);
-
-	len = clif_mec007b(mcd,buf);
-	clif_send(buf,len,&mcd->bl,AREA);
-
-	return;
-}
-
-void clif_send_mecstatus(struct map_session_data *sd, int flag)
-{
-	unsigned char buf[100];
-
-	if(!sd->mcd)	return;
-	memset(buf,0,sizeof(buf));
-
-	WBUFW(buf,0) = 0x195;
-	WBUFL(buf,2) = sd->mcd->bl.id;
-	memcpy(WBUFP(buf,6),sd->mcd->name,24);
-	snprintf(WBUFP(buf,30),24,"%d/%d %d/%d",status_get_hp(&sd->mcd->bl),status_get_max_hp(&sd->mcd->bl),status_get_sp(&sd->mcd->bl),status_get_max_sp(&sd->mcd->bl));
-	clif_send(buf,packet_db[0x195].len,&sd->mcd->bl,AREA_WOS);
-	return;
-}
-/*==========================================
- *
- *------------------------------------------
- */
 static void clif_servertick(struct map_session_data *sd)
 {
 	int fd;
@@ -2239,13 +2099,6 @@ int clif_fixpos2(struct block_list *bl, int x[4], int y[4])
 				len = clif_hom007b(hd,buf);
 			} else {
 				len = clif_hom0078(hd,buf);
-			}
-		} else if( bl->type == BL_MEC ) {
-			struct mercenary_data *mcd = (struct mercenary_data *)bl;
-			if(mcd->ud.walktimer != -1) {
-				len = clif_mec007b(mcd,buf);
-			} else {
-				len = clif_mec0078(mcd,buf);
 			}
 		} else {
 			WBUFW(buf,0)=0x88;
@@ -4578,31 +4431,6 @@ static void clif_getareachar_hom(struct map_session_data* sd, struct homun_data*
  *
  *------------------------------------------
  */
-static void clif_getareachar_mec(struct map_session_data* sd, struct mercenary_data* mcd)
-{
-	int len;
-
-	nullpo_retv(sd);
-	nullpo_retv(mcd);
-
-	if(mcd->ud.walktimer != -1){
-		len = clif_mec007b(mcd,WFIFOP(sd->fd,0));
-		WFIFOSET(sd->fd,len);
-	} else {
-		//len = clif_mec0078(mcd,WFIFOP(sd->fd,0));
-		len = clif_mec007b(mcd,WFIFOP(sd->fd,0));
-		WFIFOSET(sd->fd,len);
-	}
-
-	if(mcd->view_size!=0)
-		clif_misceffect2(&mcd->bl,422+mcd->view_size);
-
-	return;
-}
-/*==========================================
- *
- *------------------------------------------
- */
 static void clif_getareachar_item(struct map_session_data* sd, struct flooritem_data* fitem)
 {
 	int view,fd;
@@ -4751,9 +4579,6 @@ static int clif_getareachar(struct block_list* bl, va_list ap)
 	case BL_HOM:
 		clif_getareachar_hom(sd,(struct homun_data*) bl);
 		break;
-	case BL_MEC:
-		clif_getareachar_mec(sd,(struct mercenary_data*) bl);
-		break;
 	default:
 		if(battle_config.error_log)
 			printf("get area char ??? %d\n",bl->type);
@@ -4798,7 +4623,6 @@ int clif_pcoutsight(struct block_list *bl,va_list ap)
 	case BL_MOB:
 	case BL_PET:
 	case BL_HOM:
-	case BL_MEC:
 		clif_clearchar_id(bl->id,0,sd->fd);
 		break;
 	case BL_ITEM:
@@ -4849,9 +4673,6 @@ int clif_pcinsight(struct block_list *bl,va_list ap)
 		break;
 	case BL_HOM:
 		clif_getareachar_hom(sd,(struct homun_data*)bl);
-		break;
-	case BL_MEC:
-		clif_getareachar_mec(sd,(struct mercenary_data*) bl);
 		break;
 	}
 
@@ -4972,41 +4793,6 @@ int clif_homoutsight(struct block_list *bl,va_list ap)
 
 	if(bl->type==BL_PC && (sd = (struct map_session_data*) bl)){
 		clif_clearchar_id(hd->bl.id,0,sd->fd);
-	}
-
-	return 0;
-}
-
-
-int clif_mecinsight(struct block_list *bl,va_list ap)
-{
-	struct map_session_data *sd;
-	struct mercenary_data *mcd;
-
-	nullpo_retr(0, bl);
-	nullpo_retr(0, ap);
-
-	mcd=va_arg(ap,struct mercenary_data*);
-	if(bl->type==BL_PC && (sd = (struct map_session_data *)bl)){
-		clif_getareachar_mec(sd,mcd);
-	}
-	return 0;
-}
-/*==========================================
- *
- *------------------------------------------
- */
-int clif_mecoutsight(struct block_list *bl,va_list ap)
-{
-	struct map_session_data *sd;
-	struct mercenary_data *mcd;
-
-	nullpo_retr(0, bl);
-	nullpo_retr(0, ap);
-	nullpo_retr(0, mcd=va_arg(ap,struct mercenary_data*));
-
-	if(bl->type==BL_PC && (sd = (struct map_session_data*) bl)){
-		clif_clearchar_id(mcd->bl.id,0,sd->fd);
 	}
 
 	return 0;
@@ -9020,13 +8806,6 @@ static void clif_parse_LoadEndAck(int fd,struct map_session_data *sd, int cmd)
 		clif_send_homstatus(sd,1);
 		clif_send_homstatus(sd,0);
 	}
-	//傭兵
-	if(sd->mcd) {
-		map_addblock(&sd->mcd->bl);
-		mob_ai_hard_spawn( &sd->mcd->bl, 1 );
-		clif_spawnmec(sd->mcd);
-		clif_send_mecstatus(sd,0);
-	}
 	if(sd->state.connect_new) {
 		// ステータス異常データ要求
 		// pc_authok() で呼び出すとクライアントにエフェクトが反映されない
@@ -9268,14 +9047,6 @@ static void clif_parse_GetCharNameRequest(int fd,struct map_session_data *sd, in
 		{
 			memcpy(WFIFOP(fd,6),((struct homun_data*)bl)->status.name,24);
 			WFIFOSET(fd,packet_db[0x95].len);
-		}
-		break;
-	case BL_MEC:
-		{
-			WFIFOW(fd,0) = 0x195;
-			memcpy(WFIFOP(fd,6),((struct mercenary_data*)bl)->name,24);
-			snprintf(WFIFOP(fd,30),24,"%d/%d %d/%d",status_get_hp(bl),status_get_max_hp(bl),status_get_sp(bl),status_get_max_sp(bl));
-			WFIFOSET(fd,packet_db[0x195].len);
 		}
 		break;
 	default:
@@ -9531,8 +9302,6 @@ static void clif_parse_Restart(int fd,struct map_session_data *sd, int cmd)
 			unit_free( &sd->pd->bl, 0);
 		if( sd->hd )
 			unit_free( &sd->hd->bl, 0);
-		if( sd->mcd )
-			unit_free( &sd->mcd->bl, 0);
 		unit_free(&sd->bl, 0);
 		chrif_save(sd);
 		chrif_charselectreq(sd);
@@ -12135,8 +11904,7 @@ static void clif_parse_ReturnMail(int fd,struct map_session_data *sd, int cmd)
 // homun
 static void clif_parse_HomMenu(int fd,struct map_session_data *sd, int cmd)
 {
-	if(sd->hd)	homun_menu(sd,RFIFOB(fd,GETPACKETPOS(cmd,0)));
-	else if(sd->mcd)	mercenary_menu(sd,RFIFOB(fd,GETPACKETPOS(cmd,0)));
+	homun_menu(sd,RFIFOB(fd,GETPACKETPOS(cmd,0)));
 }
 static void clif_parse_HomWalkMaster(int fd,struct map_session_data *sd, int cmd)
 {
@@ -12279,50 +12047,6 @@ static void clif_parse_BabyReply(int fd,struct map_session_data *sd, int cmd)
 static void clif_parse_FeelSaveAck(int fd,struct map_session_data *sd, int cmd)
 {
 	clif_feel_saveack(sd,(int)RFIFOB(fd,GETPACKETPOS(cmd,0)));
-	return;
-}
-
- /*==========================================
- * ホットキーのセッション保持
- * クライアントがホットキーを割り当てた時の挙動
- *------------------------------------------
- */
-static void clif_parse_HotKeySave(int fd,struct map_session_data *sd, int cmd)
-{
-	nullpo_retv(sd);	
-	if(MAX_HOTKEYS <= GETPACKETPOS(cmd,0))
-		return;
-
-	sd->status.hotkey[RFIFOW(fd,GETPACKETPOS(cmd,0))].type     = RFIFOB(fd,GETPACKETPOS(cmd,1));
-	sd->status.hotkey[RFIFOW(fd,GETPACKETPOS(cmd,0))].id       = RFIFOL(fd,GETPACKETPOS(cmd,2));
-	sd->status.hotkey[RFIFOW(fd,GETPACKETPOS(cmd,0))].skill_lv = RFIFOW(fd,GETPACKETPOS(cmd,3));
-
-	return;
-}
-
-/*==========================================
- * ホットキーの送信
- * クライアントログイン時に送信
- * pc_authok()実行に組み込む
- * clif.hに記述しておく
- *------------------------------------------
- */
-void clif_send_hotkey(struct map_session_data *sd)
-{
-	int i, fd;	
-	nullpo_retv(sd);
-	fd = sd->fd;
-	
-	WFIFOW(fd,0) = 0x2b9;
-	
-	for(i = 0; i < MAX_HOTKEYS; i++) {		
-		WFIFOB(fd,7*i+2) = sd->status.hotkey[i].type;
-		WFIFOL(fd,7*i+3) = sd->status.hotkey[i].id;
-		WFIFOW(fd,7*i+7) = sd->status.hotkey[i].skill_lv;
-	}
-	
-	WFIFOSET(fd,packet_db[0x02b9].len);
-	
 	return;
 }
 
@@ -12498,7 +12222,6 @@ struct {
 	{clif_parse_DeleteMail,"deletemail"},
 	{clif_parse_ReturnMail,"returnmail"},
 	{clif_parse_FeelSaveAck,"feelsaveack"},
-	{clif_parse_HotKeySave,"hotkeysave"},
 	{NULL,NULL}
 };
 

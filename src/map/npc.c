@@ -1698,20 +1698,20 @@ int npc_parse_mob(char *w1,char *w2,char *w3,char *w4)
 			num=1;
 	}
 
-	if(100 != battle_config.mob_delay_rate && delay1<1800000 && mob_db[class].mexp==0) {
-		if(0 >= battle_config.mob_delay_rate) {
+	if(100 != battle_config.mob_delay_rate_mvp_boss && mob_db[class].mexp>0 && mob_db[class].mode&0x20) {
+		if(0 >= battle_config.mob_delay_rate_mvp_boss) {
 			delay1 = 0;
 			delay2 = 0;
 		} else {
 			if(0 > delay1) {
 				delay1 = 0;
 			} else {
-				delay1 = delay1 * battle_config.mob_delay_rate / 100;
+				delay1 = delay1 * battle_config.mob_delay_rate_mvp_boss / 100;
 			}
 			if(0 > delay2) {
 				delay2 = 0;
 			} else {
-				delay2 = delay2 * battle_config.mob_delay_rate / 100;
+				delay2 = delay2 * battle_config.mob_delay_rate_mvp_boss / 100;
 			}
 		}
 	} else if(100 != battle_config.mob_delay_rate_middle_boss && delay1>=1800000 && mob_db[class].mexp==0 && mob_db[class].mode&0x20) {
@@ -1730,20 +1730,20 @@ int npc_parse_mob(char *w1,char *w2,char *w3,char *w4)
 				delay2 = delay2 * battle_config.mob_delay_rate_middle_boss / 100;
 			}
 		}
-	} else if(100 != battle_config.mob_delay_rate_mvp_boss && mob_db[class].mexp>0 && mob_db[class].mode&0x20) {
-		if(0 >= battle_config.mob_delay_rate_mvp_boss) {
+	} else if(100 != battle_config.mob_delay_rate) {
+		if(0 >= battle_config.mob_delay_rate) {
 			delay1 = 0;
 			delay2 = 0;
 		} else {
 			if(0 > delay1) {
 				delay1 = 0;
 			} else {
-				delay1 = delay1 * battle_config.mob_delay_rate_mvp_boss / 100;
+				delay1 = delay1 * battle_config.mob_delay_rate / 100;
 			}
 			if(0 > delay2) {
 				delay2 = 0;
 			} else {
-				delay2 = delay2 * battle_config.mob_delay_rate_mvp_boss / 100;
+				delay2 = delay2 * battle_config.mob_delay_rate / 100;
 			}
 		}
 	}

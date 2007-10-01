@@ -7,7 +7,6 @@
 #define MAX_SKILL_DB			MAX_SKILL
 #define MAX_HOMSKILL_DB			MAX_HOMSKILL
 #define MAX_GUILDSKILL_DB		MAX_GUILDSKILL
-#define MAX_MECSKILL_DB			MERCENARY_SKILL_MAX
 #define MAX_SKILL_PRODUCE_DB	300
 #define MAX_PRODUCE_RESOURCE	10
 #define MAX_SKILL_ARROW_DB	 150
@@ -56,7 +55,7 @@ enum {
 	UF_ENSEMBLE			= 0x0200,	// 合奏スキル
 };
 
-extern struct skill_db skill_db[MAX_SKILL_DB+MAX_HOMSKILL_DB+MAX_MECSKILL_DB+MAX_GUILDSKILL_DB];
+extern struct skill_db skill_db[MAX_SKILL_DB+MAX_HOMSKILL_DB+MAX_GUILDSKILL_DB];
 
 // アイテム作成データベース
 struct skill_produce_db {
@@ -954,15 +953,6 @@ enum {
 	HVAN_INSTRUCT	=8015,//#チェンジインストラクション#
 	HVAN_EXPLOSION	=8016,//#バイオエクスプロージョン#
 
-	MEC_SKILLBASE	=9001,
-	MEC_WQ			=9001,//#ウェポンクイッケン#
-	MEC_REGAIN		=9002,//#リゲイン#
-	MEC_BENEDICTION	=9003,//#ベネディクション#
-	MEC_RECUPERATE	=9004,//#リキュポレイト#
-	MEC_MENTALCURE	=9005,//#メンタルキュア#
-	MEC_COMPRESS	=9006,//#コンプレス#
-	MEC_CRASH		=9007,//#クラッシュ#
-	MEC_SCAPEGOAD	=9008,//#身代わり#
 //	move to common/mmo.h
 //	GD_APPROVAL=10000,
 //	GD_KAFRACONTACT,

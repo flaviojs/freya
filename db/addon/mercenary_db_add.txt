@@ -1,5 +1,0 @@
-// mercenary_db_add.txt, Custom Mercenary Database (Overwrites Normal Database)
-//
-// Structure of Database:
-//
-//ID,View_Class,Name,JName,Job_ID,Base_Level,MaxHP,MaxSP,STR,AGI,VIT,INT,DEX,LUK,ATK_Min,ATK_Max,MATK_Min,MATK_Max,Def,MDEF,ASPD,Size,Race,Element,Range,Script

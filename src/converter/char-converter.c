@@ -498,67 +498,8 @@ int mmo_char_fromstr(char *str, struct mmo_chardata *p) {
 		if(str[next]==' ')
 			next++;
 	}
-	next++;
-
- 	for(i = 0; str[next] && str[next] != '\t' && str[next] != '\n' && str[next] != '\r'; i++) {
-		set=sscanf(str+next,"%d,%d,%d%n",&tmp_int[0],&tmp_int[1],&tmp_int[2],&len);
-		if(set!=3)
-			return 0;
-		if(i < MAX_HOTKEYS)
-		{
-			p->st.hotkey[i].type     = tmp_int[0];
-			p->st.hotkey[i].id       = tmp_int[1];
-			p->st.hotkey[i].skill_lv = tmp_int[2];
-		}
-		next+=len;
-		if(str[next]==' ')
-			next++;
-	}
-	next++;
-
-	for(i = 0; str[next] && str[next] != '\t' && str[next] != '\n' && str[next] != '\r'; i++) {
-		set=sscanf(str+next,"%d%n",&tmp_int[0],&len);
-		if(set!=1)
-			return 0;
-		p->st.mec_intimate[i] = tmp_int[0];
-		if(p->st.mec_intimate[i] < 0)	p->st.mec_intimate[i] = 0;
-		else if(p->st.mec_intimate[i] > 	MERCENARY_MAX_INTIMATE)	p->st.mec_intimate[i] = MERCENARY_MAX_INTIMATE;
-		next+=len;
-		if(str[next]==' ')
-			next++;
-	}
-	next++;
 
 	return 1;
-}
-
-int char_sql_save_hotkey(const struct mmo_charstatus *st)
-{
-	char *p;
-	char sep = ' ';
-	int i;
-
-	sprintf( tmp_sql, "DELETE FROM `%s` WHERE `char_id`='%d'", "hotkey", st->char_id );
-	if (mysql_query(&mysql_handle, tmp_sql)) {
-		printf("DB server Error (delete `hotkey`)- %s\n", mysql_error(&mysql_handle));
-		return 1;
-	}
-	p  = tmp_sql;
-	p += sprintf(p,"INSERT INTO `%s`(`char_id`, `hotkey`, `type`, `id`, `skill_lv`) VALUES", "hotkey");
-	sep = ' ';
-	for(i=0;i<MAX_HOTKEYS;i++){
-		p += sprintf(p,"%c(%d,%d,%d,%d,%d)",sep,st->char_id,i,st->hotkey[i].type,st->hotkey[i].id,st->hotkey[i].skill_lv);
-		sep = ',';
-	}
-	if(sep == ',') {
-		if(mysql_query(&mysql_handle, tmp_sql)) {
-			printf("DB server Error (insert `hotkey`)- %s\n", mysql_error(&mysql_handle));
-
-			return 1;
-		}
-	}
-
-	return 0;
 }
 
 //==========================================================================================================
@@ -672,21 +613,6 @@ int mmo_char_tosql(int char_id, struct mmo_chardata *p){
 		}
 	}
 
-	char_sql_save_hotkey(&(p->st));
-
-	//—b•º‚ÌM—Š“x
-	sprintf( tmp_sql, "DELETE FROM `mec_intimate` WHERE `char_id`='%d'", p->st.char_id );
-	if (mysql_query(&mysql_handle, tmp_sql)) {
-		printf("DB server Error (delete `mercenary_intimate`)- %s\n", mysql_error(&mysql_handle));
-	}
-	for( i=0; i < MECENARY_MAX_JOB_ID; i++ )
-	{
-		sprintf( tmp_sql, "INSERT INTO `mec_intimate` (`char_id`,`intimate`) VALUES ('%d', '%d')",
-			char_id,p->st.mec_intimate[i] );
-		if(mysql_query(&mysql_handle, tmp_sql)) {
-			printf("DB server Error (insert `mercenary`)- %s\n", mysql_error(&mysql_handle));
-		}
-	}
 	return 0;
 }
 

@@ -15,7 +15,6 @@ int status_get_group(struct block_list *bl);
 int status_get_hp(struct block_list *bl);
 int status_get_sp(struct block_list *bl);
 int status_get_max_hp(struct block_list *bl);
-int status_get_max_sp(struct block_list *bl);
 int status_get_str(struct block_list *bl);
 int status_get_agi(struct block_list *bl);
 int status_get_vit(struct block_list *bl);
@@ -502,13 +501,6 @@ enum {	// struct map_session_data の status_changeの番号テーブル
 	SC_MEAL_INCDEX2			= 374,
 	SC_MEAL_INCINT2			= 375,
 	SC_MEAL_INCLUK2			= 376,
-	//傭兵関連
-	SC_MERCENAY_INCATK		= 377,
-	SC_MERCENAY_INCFLEE		= 378,
-	SC_MERCENAY_INCDEF		= 379,
-	SC_MERCENAY_INCHP		= 380,
-	SC_MERCENAY_INCSP		= 381,
-	SC_MERCENAY_INCHIT		= 382,
 
 	//startでは使えないresistをアイテム側で全てクリアするための物
 	SC_RESISTCLEAR			= 1001,

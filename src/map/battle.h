@@ -524,11 +524,6 @@ extern struct Battle_Config {
 	int mob_hitstop_rate;
 	int mob_delay_rate_middle_boss;
 	int mob_delay_rate_mvp_boss;
-	int mercenary_free_time;
-	int mec_incinitimate_count;
-	int mec_incstat_lowrest_rate;
-	int mec_skill_log;
-	int critial_when_skill;
 } battle_config;
 
 #define BATTLE_CONF_FILENAME "conf/battle_athena.conf"

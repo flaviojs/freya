@@ -11,7 +11,6 @@
 #include "map.h"
 #include "pet.h"
 #include "homun.h"
-#include "mercenary.h"
 #include "mob.h"
 #include "clif.h"
 #include "timer.h"
@@ -32,7 +31,7 @@ static int hp_sigma_val[MAX_PC_CLASS][MAX_LEVEL];
 static int sp_coefficient[MAX_PC_CLASS];
 static int aspd_base[MAX_PC_CLASS][30];
 static int refinebonus[5][3];	// 精錬ボーナステーブル(refine_db.txt)
-static int percentrefinery[5][MAX_REFINE];	// 精錬成功率(refine_db.txt)
+static int percentrefinery[5][10];	// 精錬成功率(refine_db.txt)
 static int atkmods[3][30];	// 武器ATKサイズ修正(size_fix.txt)
 static char job_bonus[3][MAX_PC_CLASS][MAX_LEVEL];
 int current_equip_item_index;//ステータス計算用
@@ -2188,8 +2187,6 @@ int status_get_class(struct block_list *bl)
 		return ((struct pet_data *)bl)->class;
 	else if(bl->type==BL_HOM && (struct homun_data *)bl)
 		return ((struct homun_data *)bl)->status.class;
-	else if(bl->type==BL_MEC && (struct mercenary_data *)bl)
-		return ((struct mercenary_data *)bl)->view_class;
 	else
 		return 0;
 }
@@ -2209,8 +2206,6 @@ int status_get_dir(struct block_list *bl)
 		return ((struct pet_data *)bl)->dir;
 	else if(bl->type==BL_HOM && (struct homun_data *)bl)
 		return ((struct homun_data *)bl)->dir;
-	else if(bl->type==BL_MEC && (struct mercenary_data *)bl)
-		return ((struct mercenary_data *)bl)->dir;
 	else
 		return 0;
 }
@@ -2230,8 +2225,6 @@ int status_get_lv(struct block_list *bl)
 		return ((struct pet_data *)bl)->msd->pet.level;
 	else if(bl->type==BL_HOM && (struct homun_data *)bl)
 		return ((struct homun_data *)bl)->status.base_level;
-	else if(bl->type==BL_MEC && (struct mercenary_data *)bl)
-		return ((struct mercenary_data *)bl)->base_level;
 	else
 		return 0;
 }
@@ -2252,8 +2245,6 @@ int status_get_range(struct block_list *bl)
 		return mob_db[((struct pet_data *)bl)->class].range;
 	else if(bl->type==BL_HOM && (struct homun_data *)bl)
 		return 2;//((struct homun_data *)bl)->attackrange;
-	else if(bl->type==BL_MEC && (struct mercenary_data *)bl)
-		return ((struct mercenary_data *)bl)->range;
 	else
 		return 0;
 }
@@ -2271,8 +2262,6 @@ int status_get_hp(struct block_list *bl)
 		return ((struct map_session_data *)bl)->status.hp;
 	else if(bl->type==BL_HOM && (struct homun_data *)bl)
 		return ((struct homun_data *)bl)->status.hp;
-	else if(bl->type==BL_MEC && (struct mercenary_data *)bl)
-		return ((struct mercenary_data *)bl)->hp;
 	else
 		return 1;
 }
@@ -2289,8 +2278,6 @@ int status_get_sp(struct block_list *bl)
 		return ((struct map_session_data *)bl)->status.sp;
 	else if(bl->type==BL_HOM && (struct homun_data *)bl)
 		return ((struct homun_data *)bl)->status.sp;
-	else if(bl->type==BL_MEC && (struct mercenary_data *)bl)
-		return ((struct mercenary_data *)bl)->sp;
 	else
 		return 0;
 }
@@ -2306,8 +2293,6 @@ int status_get_max_hp(struct block_list *bl)
 		return ((struct map_session_data *)bl)->status.max_hp;
 	else if(bl->type==BL_HOM && ((struct homun_data *)bl))
 		return ((struct homun_data *)bl)->max_hp;
-	else if(bl->type==BL_MEC && (struct mercenary_data *)bl)
-		return ((struct mercenary_data *)bl)->max_hp;
 	else {
 		struct status_change *sc_data=status_get_sc_data(bl);
 		int max_hp=1;
@@ -2348,22 +2333,6 @@ int status_get_max_hp(struct block_list *bl)
 
 	return 1;
 }
-/*===================================================
- * 対象の最大SPを返す。
- * 返される値は１以上。
- *--------------------------------------------------
- */
-int status_get_max_sp(struct block_list *bl)
-{
-	nullpo_retr(1, bl);
-	if(bl->type==BL_PC && ((struct map_session_data *)bl))
-		return ((struct map_session_data *)bl)->status.max_sp;
-	else if(bl->type==BL_HOM && ((struct homun_data *)bl))
-		return ((struct homun_data *)bl)->max_sp;
-	else if(bl->type==BL_MEC && (struct mercenary_data *)bl)
-		return ((struct mercenary_data *)bl)->max_sp;
-	return 1;
-}
 /*==========================================
  * 対象のStrを返す(汎用)
  * 戻りは整数で0以上
@@ -2384,8 +2353,6 @@ int status_get_str(struct block_list *bl)
 		str = mob_db[((struct pet_data *)bl)->class].str;
 	else if(bl->type==BL_HOM && ((struct homun_data *)bl))
 		str = ((struct homun_data *)bl)->status.str;
-	else if(bl->type==BL_MEC && (struct mercenary_data *)bl)
-		str = ((struct mercenary_data *)bl)->str;
 
 	if(sc_data && bl->type!=BL_HOM) {
 		if(sc_data[SC_LOUD].timer!=-1 && sc_data[SC_QUAGMIRE].timer == -1 && bl->type != BL_PC)
@@ -2424,8 +2391,6 @@ int status_get_agi(struct block_list *bl)
 		agi=mob_db[((struct pet_data *)bl)->class].agi;
 	else if(bl->type==BL_HOM && ((struct homun_data *)bl))
 		agi = ((struct homun_data *)bl)->agi;
-	else if(bl->type==BL_MEC && (struct mercenary_data *)bl)
-		agi = ((struct mercenary_data *)bl)->agi;
 
 	if(sc_data && bl->type!=BL_HOM) {
 		if(sc_data[SC_INCFLEE].timer!=-1 && bl->type != BL_PC) //速度強化
@@ -2471,8 +2436,6 @@ int status_get_vit(struct block_list *bl)
 		vit=mob_db[((struct pet_data *)bl)->class].vit;
 	else if(bl->type==BL_HOM && ((struct homun_data *)bl))
 		vit = ((struct homun_data *)bl)->vit;
-	else if(bl->type==BL_MEC && (struct mercenary_data *)bl)
-		vit = ((struct mercenary_data *)bl)->vit;
 	if(sc_data && bl->type!=BL_HOM) {
 		if(sc_data[SC_STRIPARMOR].timer != -1 && bl->type!=BL_PC)
 			vit = vit*60/100;
@@ -2503,8 +2466,6 @@ int status_get_int(struct block_list *bl)
 		int_=mob_db[((struct pet_data *)bl)->class].int_;
 	else if(bl->type==BL_HOM && ((struct homun_data *)bl))
 		int_= ((struct homun_data *)bl)->int_;
-	else if(bl->type==BL_MEC && (struct mercenary_data *)bl)
-		int_ = ((struct mercenary_data *)bl)->int_;
 
 	if(sc_data && bl->type!=BL_HOM) {
 		if( sc_data[SC_BLESSING].timer != -1 && bl->type != BL_PC){	// ブレッシング
@@ -2540,8 +2501,6 @@ int status_get_dex(struct block_list *bl)
 		dex=mob_db[((struct pet_data *)bl)->class].dex;
 	else if(bl->type==BL_HOM && ((struct homun_data *)bl))
 		dex = ((struct homun_data *)bl)->dex;
-	else if(bl->type==BL_MEC && (struct mercenary_data *)bl)
-		dex = ((struct mercenary_data *)bl)->dex;
 
 	if(sc_data && bl->type!=BL_HOM) {
 		if(sc_data[SC_EXPLOSIONSPIRITS].timer!=-1 && bl->type != BL_PC)
@@ -2584,8 +2543,6 @@ int status_get_luk(struct block_list *bl)
 		luk=mob_db[((struct pet_data *)bl)->class].luk;
 	else if(bl->type==BL_HOM && ((struct homun_data *)bl))
 		luk = ((struct homun_data *)bl)->luk;
-	else if(bl->type==BL_MEC && (struct mercenary_data *)bl)
-		luk = ((struct mercenary_data *)bl)->luk;
 
 	if(sc_data && bl->type!=BL_HOM) {
 		if(sc_data[SC_GLORIA].timer!=-1 && bl->type != BL_PC)	// グロリア(PCはpc.cで)
@@ -2615,8 +2572,6 @@ int status_get_flee(struct block_list *bl)
 		flee=((struct map_session_data *)bl)->flee;
 	else if(bl->type==BL_HOM && ((struct homun_data *)bl))
 		flee = ((struct homun_data *)bl)->flee;
-	else if(bl->type==BL_MEC && (struct mercenary_data *)bl)
-		flee = ((struct mercenary_data *)bl)->flee;
 	else
 		flee=status_get_agi(bl) + status_get_lv(bl);
 
@@ -2681,8 +2636,6 @@ int status_get_hit(struct block_list *bl)
 		return ((struct map_session_data *)bl)->hit;
 	else if(bl->type==BL_HOM && ((struct homun_data *)bl))
 		return ((struct homun_data *)bl)->hit;
-	else if(bl->type==BL_MEC && (struct mercenary_data *)bl)
-		return ((struct mercenary_data *)bl)->hit;
 	else
 		hit=status_get_dex(bl) + status_get_lv(bl);
 
@@ -2751,8 +2704,6 @@ int status_get_critical(struct block_list *bl)
 	}
 	else if(bl->type==BL_HOM && ((struct homun_data *)bl))
 		critical = ((struct homun_data *)bl)->critical;
-	else if(bl->type==BL_MEC && (struct mercenary_data *)bl)
-		critical = ((struct mercenary_data *)bl)->critical;
 	else
 		critical=status_get_luk(bl)*3 + 1;
 
@@ -2788,8 +2739,6 @@ int status_get_baseatk(struct block_list *bl)
 			batk += sd->weapon_atk[sd->status.weapon];
 		}
 	}else if(bl->type==BL_HOM && ((struct homun_data *)bl))
-		batk = 1;
-	else if(bl->type==BL_MEC && (struct mercenary_data *)bl)
 		batk = 1;
 	else { //それ以外なら
 		int str,dstr;
@@ -2838,8 +2787,6 @@ int status_get_atk(struct block_list *bl)
 		atk = ((struct map_session_data*)bl)->watk;
 	else if(bl->type==BL_HOM && ((struct homun_data *)bl))
 		atk = ((struct homun_data *)bl)->atk-((struct homun_data *)bl)->atk/10;
-	else if(bl->type==BL_MEC && (struct mercenary_data *)bl)
-		atk = ((struct mercenary_data *)bl)->atk-((struct mercenary_data *)bl)->atk/10;
 	else if(bl->type==BL_MOB)
 	{
 		struct mob_data *md = (struct mob_data *)bl;
@@ -2914,8 +2861,6 @@ int status_get_atk2(struct block_list *bl)
 		return ((struct map_session_data*)bl)->watk2;
 	else if(bl->type==BL_HOM && (struct homun_data *)bl)
 		return ((struct homun_data *)bl)->atk;
-	else if(bl->type==BL_MEC && (struct mercenary_data *)bl)
-		return ((struct mercenary_data *)bl)->atk;
 	else {
 		struct status_change *sc_data=status_get_sc_data(bl);
 		int atk2=0;
@@ -2997,8 +2942,6 @@ int status_get_matk1(struct block_list *bl)
 		return ((struct map_session_data *)bl)->matk1;
 	else if (bl->type==BL_HOM)
 		return ((struct homun_data *)bl)->matk-((struct homun_data *)bl)->matk/10;
-	else if(bl->type==BL_MEC && (struct mercenary_data *)bl)
-		return ((struct mercenary_data *)bl)->matk-((struct mercenary_data *)bl)->matk/10;
 	else if (bl->type!=BL_PET && bl->type!=BL_MOB)
 		return 0;
 
@@ -3044,8 +2987,6 @@ int status_get_matk2(struct block_list *bl)
 		return ((struct map_session_data *)bl)->matk2;
 	else if (bl->type==BL_HOM)
 		return ((struct homun_data *)bl)->matk;
-	else if(bl->type==BL_MEC && (struct mercenary_data *)bl)
-		return ((struct mercenary_data *)bl)->matk;
 	else if (bl->type!=BL_PET && bl->type!=BL_MOB)
 		return 0;
 
@@ -3100,9 +3041,6 @@ int status_get_def(struct block_list *bl)
 	}
 	else if(bl->type==BL_PET && (struct pet_data *)bl) {
 		def = mob_db[((struct pet_data *)bl)->class].def;
-	}
-	else if(bl->type==BL_MEC && (struct pet_data *)bl) {
-		def = ((struct mercenary_data *)bl)->def;
 	}
 	else {
 		def = 0;
@@ -3179,8 +3117,6 @@ int status_get_mdef(struct block_list *bl)
 		mdef = ((struct homun_data *)bl)->mdef;
 	else if(bl->type==BL_PET && (struct pet_data *)bl)
 		mdef = mob_db[((struct pet_data *)bl)->class].mdef;
-	else if(bl->type==BL_MEC && (struct mercenary_data *)bl)
-		mdef = ((struct mercenary_data *)bl)->mdef;
 
 	if(mdef < 1000000) {
 		if(sc_data) {
@@ -3217,8 +3153,6 @@ int status_get_def2(struct block_list *bl)
 		def2 = mob_db[((struct pet_data *)bl)->class].vit;
 	else if(bl->type==BL_HOM && (struct homun_data *)bl)
 		def2 = ((struct homun_data *)bl)->def;
-	else if(bl->type==BL_MEC && (struct mercenary_data *)bl)
-		def2 = ((struct mercenary_data *)bl)->def2;
 
 	if(sc_data) {
 		if( sc_data[SC_ANGELUS].timer!=-1 && bl->type != BL_PC)
@@ -3272,8 +3206,6 @@ int status_get_mdef2(struct block_list *bl)
 		mdef2 = mob_db[((struct pet_data *)bl)->class].int_ + (mob_db[((struct pet_data *)bl)->class].vit>>1);
 	else if (bl->type==BL_HOM && (struct homun_data *)bl)
 		mdef2 = ((struct homun_data *)bl)->mdef;
-	else if(bl->type==BL_MEC && (struct mercenary_data *)bl)
-		mdef2 = ((struct mercenary_data *)bl)->mdef2 + (((struct mercenary_data *)bl)->vit >> 1);
 
 	if(sc_data) {
 		//エスカ
@@ -3299,8 +3231,6 @@ int status_get_speed(struct block_list *bl)
 			return ((struct homun_data *)bl)->msd->speed;
 		else
 			return ((struct homun_data *)bl)->speed;
-	}else if(bl->type==BL_MEC && (struct mercenary_data *)bl){
-		return ((struct mercenary_data *)bl)->speed;
 	}else {
 		struct status_change *sc_data=status_get_sc_data(bl);
 		int speed = 1000;
@@ -3398,8 +3328,6 @@ int status_get_adelay(struct block_list *bl)
 			adelay = mob_db[((struct pet_data *)bl)->class].adelay;
 		else if(bl->type==BL_HOM && (struct homun_data *)bl)
 			adelay = (((struct homun_data *)bl)->aspd<<1);
-		else if(bl->type==BL_MEC && (struct mercenary_data *)bl)
-			adelay = (((struct mercenary_data *)bl)->aspd<<1);
 
 		if(sc_data) {
 			//ツーハンドクイッケン使用時でクァグマイアでも私を忘れないで…でもない時は3割減算
@@ -3494,8 +3422,6 @@ int status_get_amotion(struct block_list *bl)
 			amotion = mob_db[((struct pet_data *)bl)->class].amotion;
 		else if(bl->type==BL_HOM && (struct homun_data *)bl && ((struct homun_data *)bl)->msd)
 			amotion = ((struct homun_data *)bl)->aspd;
-		else if(bl->type==BL_MEC && (struct mercenary_data *)bl && ((struct mercenary_data *)bl)->msd)
-			amotion = ((struct mercenary_data *)bl)->aspd;
 
 		if(sc_data) {
 			if(sc_data[SC_TWOHANDQUICKEN].timer != -1 && sc_data[SC_QUAGMIRE].timer == -1 && sc_data[SC_DONTFORGETME].timer == -1)	// 2HQ
@@ -3584,11 +3510,6 @@ int status_get_dmotion(struct block_list *bl)
 	}
 	else if(bl->type==BL_PET && (struct pet_data *)bl)
 		ret=mob_db[((struct pet_data *)bl)->class].dmotion;
-	else if(bl->type==BL_MEC && (struct mercenary_data *)bl && ((struct mercenary_data *)bl)->msd){
-		ret = 800 - ((struct mercenary_data *)bl)->agi*4;
-		if( ret < 400 )
-			ret = 400;
-	}
 
 	return ret;
 }
@@ -3608,8 +3529,6 @@ int status_get_element(struct block_list *bl)
 		ret = mob_db[((struct pet_data *)bl)->class].element;
 	else if(bl->type==BL_HOM && (struct homun_data *)bl)
 		ret = homun_db[((struct homun_data *)bl)->status.class-HOM_ID].element;
-	else if(bl->type==BL_MEC && (struct mercenary_data *)bl)
-		ret = ((struct mercenary_data *)bl)->element;
 
 	if(sc_data) {
 		if( sc_data[SC_BENEDICTIO].timer!=-1 )	// 聖体降福
@@ -3657,8 +3576,6 @@ int status_get_attack_element(struct block_list *bl)
 		ret=0;
 	else if(bl->type==BL_HOM && (struct homun_data *)bl)
 		ret=-1;// 無属性
-	else if(bl->type==BL_MEC && (struct mercenary_data *)bl)
-		ret=-1;
 
 	if(sc_data) {
 		if( sc_data[SC_FROSTWEAPON].timer!=-1)		// フロストウェポン
@@ -3728,8 +3645,6 @@ int status_get_attack_element_nw(struct block_list *bl)
 
        if(bl->type==BL_HOM && (struct homun_data *)bl)
                ret=-1;// 無属性
-       else if(bl->type==BL_MEC && (struct mercenary_data *)bl)
-	           ret=-1;
 
        if(sc_data) {
                if( sc_data[SC_FROSTWEAPON].timer!=-1)          // フロストウェポン
@@ -3770,8 +3685,6 @@ int status_get_party_id(struct block_list *bl)
 		//return status_get_party_id(&hd->msd->bl);
 		return 0;
 	}
-	else if(bl->type==BL_MEC && (struct mercenary_data *)bl)
-		return 0;
 	else if(bl->type==BL_SKILL && (struct skill_unit *)bl)
 		return ((struct skill_unit *)bl)->group->party_id;
 	else
@@ -3789,8 +3702,6 @@ int status_get_guild_id(struct block_list *bl)
 		//return status_get_guild_id(&hd->msd->bl);
 		return 0;
 	}
-	else if(bl->type==BL_MEC && (struct mercenary_data *)bl)
-		return 0;
 	else if(bl->type==BL_SKILL && (struct skill_unit *)bl)
 		return ((struct skill_unit *)bl)->group->guild_id;
 	else
@@ -3811,8 +3722,6 @@ int status_get_race(struct block_list *bl)
 		return mob_db[((struct pet_data *)bl)->class].race;
 	else if(bl->type==BL_HOM && (struct homun_data *)bl)
 		return homun_db[((struct homun_data *)bl)->status.class-HOM_ID].race;
-	else if(bl->type==BL_MEC && (struct mercenary_data *)bl)
-		return ((struct mercenary_data *)bl)->race;
 	else
 		return 0;
 
@@ -3858,8 +3767,6 @@ int status_get_size(struct block_list *bl)
 		return mob_db[((struct pet_data *)bl)->class].size;
 	else if(bl->type==BL_HOM && (struct homun_data *)bl)
 		return homun_db[((struct homun_data *)bl)->status.class-HOM_ID].size;
-	else if(bl->type==BL_MEC && (struct mercenary_data *)bl)
-		return ((struct mercenary_data *)bl)->view_size;
 	else
 		return 1;
 }
@@ -3896,8 +3803,6 @@ int status_get_enemy_type(struct block_list *bl)
 		return 2;
 	else if( bl->type == BL_HOM )
 		return 3;
-	else if(bl->type==BL_MEC)
-		return 3;	//とりあえず3
 	else
 		return 0;
 }
@@ -3932,8 +3837,6 @@ struct status_change *status_get_sc_data(struct block_list *bl)
 		return ((struct map_session_data*)bl)->sc_data;
 	else if(bl->type==BL_HOM && (struct homun_data *)bl)
 		return ((struct homun_data*)bl)->sc_data;
-	else if(bl->type==BL_MEC && (struct mercenary_data *)bl)
-		return ((struct mercenary_data *)bl)->sc_data;
 	return NULL;
 }
 short *status_get_sc_count(struct block_list *bl)
@@ -3945,8 +3848,6 @@ short *status_get_sc_count(struct block_list *bl)
 		return &((struct map_session_data*)bl)->sc_count;
 	else if(bl->type==BL_HOM && (struct homun_data *)bl)
 		return &((struct homun_data*)bl)->sc_count;
-	else if(bl->type==BL_MEC && (struct mercenary_data *)bl)
-		return &((struct mercenary_data *)bl)->sc_count;
 	return NULL;
 }
 short *status_get_opt1(struct block_list *bl)
@@ -3960,8 +3861,6 @@ short *status_get_opt1(struct block_list *bl)
 		return &((struct npc_data*)bl)->opt1;
 	else if(bl->type==BL_HOM && (struct homun_data *)bl)
 		return &((struct homun_data*)bl)->opt1;
-	else if(bl->type==BL_MEC && (struct mercenary_data *)bl)
-		return &((struct mercenary_data *)bl)->opt1;
 	return 0;
 }
 short *status_get_opt2(struct block_list *bl)
@@ -3975,8 +3874,6 @@ short *status_get_opt2(struct block_list *bl)
 		return &((struct npc_data*)bl)->opt2;
 	else if(bl->type==BL_HOM && (struct homun_data *)bl)
 		return &((struct homun_data*)bl)->opt2;
-	else if(bl->type==BL_MEC && (struct mercenary_data *)bl)
-		return &((struct mercenary_data *)bl)->opt2;
 	return 0;
 }
 short *status_get_opt3(struct block_list *bl)
@@ -3990,8 +3887,6 @@ short *status_get_opt3(struct block_list *bl)
 		return &((struct npc_data*)bl)->opt3;
 	else if(bl->type==BL_HOM && (struct homun_data *)bl)
 		return &((struct homun_data*)bl)->opt3;
-	else if(bl->type==BL_MEC && (struct mercenary_data *)bl)
-		return &((struct mercenary_data *)bl)->opt3;
 	return 0;
 }
 short *status_get_option(struct block_list *bl)
@@ -4005,8 +3900,6 @@ short *status_get_option(struct block_list *bl)
 		return &((struct npc_data*)bl)->option;
 	else if(bl->type==BL_HOM && (struct homun_data *)bl)
 		return &((struct homun_data*)bl)->status.option;
-	else if(bl->type==BL_MEC && (struct mercenary_data *)bl)
-		return &((struct mercenary_data *)bl)->option;
 	return 0;
 }
 
@@ -4073,7 +3966,6 @@ int status_change_start(struct block_list *bl,int type,int val1,int val2,int val
 	struct map_session_data *sd = NULL;
 	struct mob_data *md = NULL;
 	struct homun_data *hd = NULL;
-	struct mercenary_data *mcd = NULL;
 	struct status_change* sc_data;
 	short *sc_count, *option, *opt1, *opt2, *opt3;
 	int opt_flag = 0, calc_flag = 0, race, mode, elem;
@@ -4170,7 +4062,7 @@ int status_change_start(struct block_list *bl,int type,int val1,int val2,int val
 	if(!(flag&8) && scdef>=100)	//flagが+8なら完全耐性計算しない
 		return 0;
 
-	if( bl->type != BL_PC && bl->type != BL_MOB && bl->type != BL_HOM && bl->type != BL_MEC) {
+	if( bl->type != BL_PC && bl->type != BL_MOB && bl->type != BL_HOM ) {
 		if(battle_config.error_log)
 			printf("status_change_start: neither MOB nor PC !\n");
 		return 0;
@@ -4179,7 +4071,6 @@ int status_change_start(struct block_list *bl,int type,int val1,int val2,int val
 	sd = BL_DOWNCAST( BL_PC,  bl );
 	md = BL_DOWNCAST( BL_MOB, bl );
 	hd = BL_DOWNCAST( BL_HOM, bl );
-	mcd = BL_DOWNCAST( BL_MEC, bl );
 
 	if( sd ) {
 		// アドレナリンラッシュの武器判定
@@ -5171,54 +5062,6 @@ int status_change_start(struct block_list *bl,int type,int val1,int val2,int val
 		case SC_SPEED://#オーバードスピード#
 			calc_flag = 1;
 			break;
-		case SC_MERCENAY_INCATK:
-			if(mcd && mcd->msd) {
-				char output[64];
-				sprintf(output,"傭兵のATKが上昇しました(level:%d)",val1);
-				clif_disp_onlyself(mcd->msd,output,strlen(output));
-				calc_flag = 1;
-			}
-			break;
-		case SC_MERCENAY_INCFLEE:
-			if(mcd && mcd->msd) {
-				char output[64];
-				sprintf(output,"傭兵のFLEEが上昇しました(level:%d)",val1);
-				clif_disp_onlyself(mcd->msd,output,strlen(output));
-				calc_flag = 1;
-			}
-			break;
-		case SC_MERCENAY_INCDEF:
-			if(mcd && mcd->msd) {
-				char output[64];
-				sprintf(output,"傭兵のDEFが上昇しました(level:%d)",val1);
-				clif_disp_onlyself(mcd->msd,output,strlen(output));
-				calc_flag = 1;
-			}
-			break;
-		case SC_MERCENAY_INCHP:
-			if(mcd && mcd->msd) {
-				char output[64];
-				sprintf(output,"傭兵のHPが上昇しました(level:%d)",val1);
-				clif_disp_onlyself(mcd->msd,output,strlen(output));
-				calc_flag = 1;
-			}
-			break;
-		case SC_MERCENAY_INCSP:
-			if(mcd && mcd->msd) {
-				char output[64];
-				sprintf(output,"傭兵のSPが上昇しました(level:%d)",val1);
-				clif_disp_onlyself(mcd->msd,output,strlen(output));
-				calc_flag = 1;
-			}
-			break;
-		case SC_MERCENAY_INCHIT:
-			if(mcd && mcd->msd) {
-				char output[64];
-				sprintf(output,"傭兵のHITが上昇しました(level:%d)",val1);
-				clif_disp_onlyself(mcd->msd,output,strlen(output));
-				calc_flag = 1;
-			}
-			break;
 		default:
 			if(battle_config.error_log)
 				printf("UnknownStatusChange [%d]\n", type);
@@ -5407,11 +5250,6 @@ int status_change_start(struct block_list *bl,int type,int val1,int val2,int val
 	{
 		homun_calc_status(hd);
 		clif_send_homstatus(hd->msd,0);
-	}
-	if(mcd && calc_flag)
-	{
-		mercenary_status_calc(mcd);
-		clif_send_mecstatus(mcd->msd,0);
 	}
 	//計算後に走らせる
 	switch(type){
@@ -5705,7 +5543,7 @@ int status_change_end( struct block_list* bl , int type,int tid)
 
 	nullpo_retr(0, bl);
 	if(type == -1) return 0;
-	if(bl->type!=BL_PC && bl->type!=BL_MOB && bl->type!=BL_HOM && bl->type!=BL_MEC) {
+	if(bl->type!=BL_PC && bl->type!=BL_MOB && bl->type!=BL_HOM) {
 		if(battle_config.error_log)
 			printf("status_change_end: neither MOB nor PC !\n");
 		return 0;
@@ -5862,12 +5700,6 @@ int status_change_end( struct block_list* bl , int type,int tid)
 			case SC_ADJUSTMENT:			/* アジャストメント */
 			case SC_INCREASING:			/* インクリージングアキュアラシー */
 			case SC_FULLBUSTER:			/* フルバスター */
-			case SC_MERCENAY_INCATK:
-			case SC_MERCENAY_INCFLEE:
-			case SC_MERCENAY_INCDEF:
-			case SC_MERCENAY_INCHP:
-			case SC_MERCENAY_INCSP:
-			case SC_MERCENAY_INCHIT:
 				calc_flag = 1;
 				break;
 			case SC_COMBAT_HAN://戦闘教範
@@ -6276,11 +6108,6 @@ int status_change_end( struct block_list* bl , int type,int tid)
 		{
 			homun_calc_status((struct homun_data*)bl);
 			clif_send_homstatus(((struct homun_data*)bl)->msd,0);
-		}
-		if(bl->type==BL_MEC && calc_flag)
-		{
-			mercenary_status_calc((struct mercenary_data*)bl);
-			clif_send_mecstatus(((struct mercenary_data*)bl)->msd,0);
 		}
 
 	}
@@ -7280,7 +7107,7 @@ int status_readdb(void) {
 
 	// 精錬データテーブル
 	for(i=0;i<5;i++){
-		for(j=0;j<MAX_REFINE;j++)
+		for(j=0;j<10;j++)
 			percentrefinery[i][j]=100;
 		refinebonus[i][0]=0;
 		refinebonus[i][1]=0;
@@ -7293,25 +7120,22 @@ int status_readdb(void) {
 	}
 	i=0;
 	while(fgets(line,1020,fp)){
-		char *split[MAX_REFINE + 6];
+		char *split[16];
 		if(line[0]=='/' && line[1]=='/')
 			continue;
 		if(atoi(line)<=0)
 			continue;
 		memset(split,0,sizeof(split));
-		for(j=0,p=line;j<sizeof(split)/sizeof(split[0]) && p;j++){
+		for(j=0,p=line;j<16 && p;j++){
 			split[j]=p;
 			p=strchr(p,',');
 			if(p) *p++=0;
-			else split[j] = NULL;
 		}
 		refinebonus[i][0]=atoi(split[0]);	// 精錬ボーナス
 		refinebonus[i][1]=atoi(split[1]);	// 過剰精錬ボーナス
 		refinebonus[i][2]=atoi(split[2]);	// 安全精錬限界
-		for(j=0;j<MAX_REFINE && split[j];j++)
-		{
-			if(split[j+3])	percentrefinery[i][j]=atoi(split[j+3]);
-		}
+		for(j=0;j<10 && split[j];j++)
+			percentrefinery[i][j]=atoi(split[j+3]);
 		i++;
 	}
 	fclose(fp);

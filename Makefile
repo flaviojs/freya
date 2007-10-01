@@ -12,8 +12,8 @@ PACKETDEF = -DPACKETVER=8 -DNEW_006b
 
 PLATFORM = $(shell uname)
 
-MYSQL_INCLUDE = /usr/include/mysql
-MYSQL_LIBS = /usr/lib/mysql
+MYSQL_INCLUDE = /usr/local/include/mysql
+MYSQL_LIBS = /usr/local/lib/mysql
 
 ifeq ($(findstring CYGWIN,$(PLATFORM)), CYGWIN)
 OS_TYPE = -DCYGWIN -DFD_SETSIZE=4096

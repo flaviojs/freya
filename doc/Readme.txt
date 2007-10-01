@@ -4,31 +4,22 @@
 ---------------------------------------------------------------------------
 
 ----------------------------------------
-//2317fix2 by 24
-・改行コードがLFになっていたのを直した(*.c,*.h)
-・マージ時に起こった不具合を修正(battle.c)
-----------------------------------------
-//2317fix by 24
-・get_maxrefine命令を追加(script.c,script_ref.txt,npc_misc_refine.txt)
-・db_ref.txtにrefine_db.txtの仕様を追加
-----------------------------------------
-//2317 by 24
+//2318 by ICO
 
-・傭兵システムを暫定実装
-(atcommand_athena.conf,battle_athena.conf,help.txt
- skill_cast_db.txt,skill_db.txt,skill_db2.txt,skill_require_db.txt,
- conf_ref.txt,db_ref.txt,script_ref.txt,main.sql,mec_changetable.sql,
- mec_changetable.sql,atcommand.*,battle.*,clif.*,map.*,mercenary.*,
- mob.c,pc.c,script.c,skill.*,status.*,unit.c)
-・hotkey関連の実装 thanks to ViVi
-(char.c,char-converter.c,clif.c,main.sql,drop_table.sql,hotkey_chagetable.sql)
-・スキル使用時にクリティカルするかしないかを切り替えられるようにした
-(battle.*,battle_athena.conf)
-・精錬最大値をMAX_REFINEで定義するようにした
-(status.c,mmo.h,atcommand.c,script.c)
-・レベルアップ時のステータスポイントの計算部分を一つにまとめた
-(mmo.h,atcommand.c,pc.c)
+・ディバインプロテクションの効果が現れない不都合を修正
+	(src/map/battle.c)
+・mob_hitstop_rateの値に関係なく、mobがヒットストップで止まる不都合を修正
+	(src/map/unit.c)
+・おいしい血の炭酸ソーダの材料を修正
+	(db/produce_db.txt)
+----------------------------------------
+//2317 by ルーシェ
 
+・出現間隔1800ms以上の非BOSS属性mobに対して
+	mob_delay_rate系列が適用されない不具合を修正(Thx BTS712)
+	(src/map/npc.c)
+・エスマのLv10以外の倍率について修正(Thx Cocoa BTS710)
+	(src/map/battle.c)
 ----------------------------------------
 //2316 by 片山
 
