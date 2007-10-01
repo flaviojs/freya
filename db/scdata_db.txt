@@ -97,7 +97,7 @@
 //
 128,SC_STONE,0			// 石化
 129,SC_FREEZE,0			// 氷結
-130,SC_STAN,0			// スタン
+130,SC_STUN,0			// スタン
 131,SC_SLEEP,0			// 睡眠
 132,SC_POISON,1			// 毒
 133,SC_CURSE,1			// 呪い
@@ -311,7 +311,7 @@
 341,SC_FOGWALLPENALTY,0		// ウォールオブフォグによるペナルティ
 342,SC_REDEMPTIO,-1		// レディムプティオ
 343,SC_TAROTCARD,0		// タロットカード
-344,SC_HOLDWEB,-1		// ホールドウェブ
+344,SC_STOP,-1		// ホールドウェブ
 345,SC_INVISIBLE,0		// インビジブル
 346,SC_DETECTING,0		// ディテクティング識別用
 347,SC_FLING,0			// フライング

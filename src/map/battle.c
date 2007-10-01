@@ -622,7 +622,7 @@ int battle_calc_damage(struct block_list *src,struct block_list *bl,int damage,i
 				//対象に状態異常
 				if(i==SC_STONE || i==SC_FREEZE)
 					sc_def_card=sc_def_mdef;
-				else if(i==SC_STAN || i==SC_POISON || i==SC_SILENCE || i==SC_BLEED)
+				else if(i==SC_STUN || i==SC_POISON || i==SC_SILENCE || i==SC_BLEED)
 					sc_def_card=sc_def_vit;
 				else if(i==SC_SLEEP || i==SC_CONFUSION || i==SC_BLIND)
 					sc_def_card=sc_def_int;
@@ -920,7 +920,7 @@ struct Damage battle_calc_weapon_attack(
 		hitrate -= 50;
 	}
 
-	if(src_sd && skill_num != CR_GRANDCROSS && skill_num != NPC_DARKGRANDCROSS) //グランドクロスでないなら
+	if(src_sd && skill_num != CR_GRANDCROSS && skill_num != NPC_GRANDDARKNESS) //グランドクロスでないなら
 		src_sd->state.attack_type = BF_WEAPON; //攻撃タイプは武器攻撃
 
 	//強制移動中もしくはウィンク中は駄目
@@ -940,7 +940,7 @@ struct Damage battle_calc_weapon_attack(
 		(target_md && battle_config.monster_auto_counter_type&2))
 	) {
 		if(
-			skill_num != CR_GRANDCROSS && skill_num != NPC_DARKGRANDCROSS &&
+			skill_num != CR_GRANDCROSS && skill_num != NPC_GRANDDARKNESS &&
 			t_sc_data && t_sc_data[SC_AUTOCOUNTER].timer != -1
 		) { //グランドクロスでなく、対象がオートカウンター状態の場合
 			int dir   = map_calc_dir(src,target->x,target->y);
@@ -1617,7 +1617,7 @@ struct Damage battle_calc_weapon_attack(
 				damage2 = damage2*(100+ 35*skill_lv)/100;
 				break;
 			case CR_GRANDCROSS:
-			case NPC_DARKGRANDCROSS:
+			case NPC_GRANDDARKNESS:
 				hitrate= 1000000;
 				if (!battle_config.gx_cardfix)
 					no_cardfix = 1;
@@ -2380,7 +2380,7 @@ struct Damage battle_calc_weapon_attack(
 	if( src_sd && skill_num != MO_INVESTIGATE &&
 	              skill_num != MO_EXTREMITYFIST &&
 	              skill_num != CR_GRANDCROSS &&
-	              skill_num != NPC_DARKGRANDCROSS &&
+	              skill_num != NPC_GRANDDARKNESS &&
 	              skill_num != LK_SPIRALPIERCE &&
 	              skill_num != CR_ACIDDEMONSTRATION &&
 	              skill_num != NJ_ZENYNAGE ) {			//修練ダメージ無視
@@ -2404,7 +2404,7 @@ struct Damage battle_calc_weapon_attack(
 	hitrate = (hitrate<battle_config.min_hitrate)?battle_config.min_hitrate:hitrate;
 	if(	hitrate < 1000000 && // 必中攻撃
 		(t_sc_data != NULL && (t_sc_data[SC_SLEEP].timer!=-1 ||	// 睡眠は必中
-		t_sc_data[SC_STAN].timer!=-1 ||		// スタンは必中
+		t_sc_data[SC_STUN].timer!=-1 ||		// スタンは必中
 		t_sc_data[SC_FREEZE].timer!=-1 || (t_sc_data[SC_STONE].timer!=-1 && t_sc_data[SC_STONE].val2==0) ) ) )	// 凍結は必中
 		hitrate = 1000000;
 
@@ -2786,10 +2786,10 @@ struct Damage battle_calc_weapon_attack(
 	}
 
 	//bNoWeaponDamageでグランドクロスじゃない場合はダメージが0
-	if( target_sd && target_sd->special_state.no_weapon_damage && skill_num != CR_GRANDCROSS && skill_num != NPC_DARKGRANDCROSS)
+	if( target_sd && target_sd->special_state.no_weapon_damage && skill_num != CR_GRANDCROSS && skill_num != NPC_GRANDDARKNESS)
 		damage = damage2 = 0;
 
-	if(skill_num != CR_GRANDCROSS && skill_num != NPC_DARKGRANDCROSS) {
+	if(skill_num != CR_GRANDCROSS && skill_num != NPC_GRANDDARKNESS) {
 		if(damage2<1)		// ダメージ最終修正
 			damage=battle_calc_damage(src,target,damage,div_,skill_num,skill_lv,flag);
 		else if(damage<1)	// 右手がミス？
@@ -3054,7 +3054,7 @@ struct Damage battle_calc_magic_attack(
 			break;
 		case WZ_METEOR:
 		case WZ_JUPITEL:	// ユピテルサンダー
-		case NPC_DARKJUPITEL:	//闇ユピテル
+		case NPC_DARKTHUNDER:	// ダークサンダー
 			break;
 		case WZ_VERMILION:	// ロードオブバーミリオン
 			MATK_FIX( skill_lv*20+80, 100 );
@@ -3218,7 +3218,7 @@ struct Damage battle_calc_magic_attack(
 
 	damage=battle_attr_fix(damage, ele, status_get_element(target) );		// 属性修正
 
-	if(skill_num == CR_GRANDCROSS || skill_num ==NPC_DARKGRANDCROSS) {	// グランドクロス
+	if(skill_num == CR_GRANDCROSS || skill_num ==NPC_GRANDDARKNESS) {	// グランドクロス
 		static struct Damage wd = { 0, 0, 0, 0, 0, 0, 0, 0, 0 };
 		wd=battle_calc_weapon_attack(bl,target,skill_num,skill_lv,flag);
 		damage = (damage + wd.damage) * (100 + 40*skill_lv)/100;
@@ -3389,7 +3389,7 @@ struct Damage  battle_calc_misc_attack(
 			int hitrate=status_get_hit(bl) - status_get_flee(target) + 80;
 			int t_hp=status_get_hp(target);
 			hitrate = ( (hitrate>95)?95: ((hitrate<5)?5:hitrate) );
-			if(sc_data && (sc_data[SC_SLEEP].timer!=-1 || sc_data[SC_STAN].timer!=-1 ||
+			if(sc_data && (sc_data[SC_SLEEP].timer!=-1 || sc_data[SC_STUN].timer!=-1 ||
 				sc_data[SC_FREEZE].timer!=-1 || (sc_data[SC_STONE].timer!=-1 && sc_data[SC_STONE].val2==0) ) )
 				hitrate = 1000000;
 			if(atn_rand()%100 < hitrate)
@@ -4033,7 +4033,7 @@ int battle_skill_attack(int attack_type,struct block_list* src,struct block_list
 	if(damage <= 0 || damage < dmg.div_)	//吹き飛ばし判定？※
 		dmg.blewcount = 0;
 
-	if(skillid == CR_GRANDCROSS || skillid == NPC_DARKGRANDCROSS) {	//グランドクロス
+	if(skillid == CR_GRANDCROSS || skillid == NPC_GRANDDARKNESS) {	//グランドクロス
 		if(battle_config.gx_disptype) dsrc = src;		// 敵ダメージ白文字表示
 		if( src == bl) type = 4;	// 反動はダメージモーションなし
 	}

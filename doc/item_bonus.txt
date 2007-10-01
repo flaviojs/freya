@@ -271,7 +271,7 @@ bAutoSpell,bAutoSelfSpell,bRevAutoSpell,bRevAutoSelfSpell‚Í16ŒÂ‚Ü‚Å—LŒø‚Å‚·B16‚
 	bonus2 bResEff,e,n;					ó‘ÔˆÙíe‚Ì‘Ï«+n%(n‚Í–œ•ª—¦)
 					Eff_Blind		ˆÃ•			Eff_Sleep		‡–°
 					Eff_Poison		“Å				Eff_Freeze		“€Œ‹
-					Eff_Silenc		’¾–Ù			Eff_Stan		ƒXƒ^ƒ“
+					Eff_Silenc		’¾–Ù			Eff_Stun		ƒXƒ^ƒ“
 					Eff_Curse		Žô‚¢			Eff_Confusion	¬—
 					Eff_Stone		Î‰»			Eff_Bleed		oŒŒ)
 	bonus bCurseByMuramasa,n;			LV>LUK‚ÌŽž,n%‚ÌŠm—¦‚ÅŽô‚¢‚É‚©‚©‚é(n‚Í–œ•ª—¦)

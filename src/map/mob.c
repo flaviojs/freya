@@ -25,7 +25,6 @@
 #include "status.h"
 #include "date.h"
 #include "unit.h"
-#include "mercenary.h"
 
 #ifdef MEMWATCH
 #include "memwatch.h"
@@ -441,10 +440,14 @@ int mob_spawn(int id)
  */
 int mob_can_reach(struct mob_data *md,struct block_list *bl,int range)
 {
+	int dx,dy;
 	struct walkpath_data wpd;
 
 	nullpo_retr(0, md);
 	nullpo_retr(0, bl);
+
+	dx=abs(bl->x - md->bl.x);
+	dy=abs(bl->y - md->bl.y);
 
 	//=========== guildcastle guardian no search start===========
 	//when players are the guild castle member not attack them !
@@ -482,7 +485,7 @@ int mob_can_reach(struct mob_data *md,struct block_list *bl,int range)
 	if( md->bl.m != bl-> m)	// 違うマップ
 		return 0;
 
-	if( range>0 && range < unit_distance(md->bl.x,md->bl.y,bl->x,bl->y) )	// 遠すぎる
+	if( range>0 && range < ((dx>dy)?dx:dy) )	// 遠すぎる
 		return 0;
 
 	if( md->bl.x==bl->x && md->bl.y==bl->y )	// 同じマス
@@ -545,7 +548,7 @@ int mob_target(struct mob_data *md,struct block_list *bl,int dist)
 				return 0;
 		}
 
-		if(bl->type == BL_PC || bl->type == BL_MOB || bl->type == BL_HOM || bl->type == BL_MEC)
+		if(bl->type == BL_PC || bl->type == BL_MOB || bl->type == BL_HOM)
 			md->target_id=bl->id;	// 妨害がなかったのでロック
 		md->min_chase=dist+13;
 		if(md->min_chase>26)
@@ -581,7 +584,6 @@ static int mob_ai_sub_hard_search(struct block_list *bl,va_list ap)
 	struct map_session_data *tsd=NULL;
 	struct mob_data *smd, *tmd=NULL;
 	struct homun_data *thd=NULL;
-	struct mercenary_data *tmcd=NULL;
 	int mode,race,dist,range,flag;
 	int *cnt;
 
@@ -594,7 +596,6 @@ static int mob_ai_sub_hard_search(struct block_list *bl,va_list ap)
 	tsd = BL_DOWNCAST( BL_PC , bl );
 	tmd = BL_DOWNCAST( BL_MOB, bl );
 	thd = BL_DOWNCAST( BL_HOM, bl );
-	tmcd = BL_DOWNCAST( BL_MEC, bl );
 
 	cnt[3]++; // 範囲内のオブジェクト数
 	if( smd->bl.id == bl->id ) return 0; // self
@@ -619,8 +620,6 @@ static int mob_ai_sub_hard_search(struct block_list *bl,va_list ap)
 		} else if(tmd && dist<=range) {
 			active_flag = 1;
 		} else if(thd && !unit_isdead(&thd->bl) && dist<=range) {
-			active_flag = 1;
-		} else if(tmcd && !unit_isdead(&tmcd->bl) && dist<=range) {
 			active_flag = 1;
 		}
 		if(active_flag) {
@@ -758,7 +757,6 @@ static int mob_ai_sub_hard_slavemob(struct mob_data *md,unsigned int tick)
 		if(tbl && !unit_isdead(tbl)){
 	                struct map_session_data *sd=BL_DOWNCAST(BL_PC,tbl);
         	        struct homun_data *thd=BL_DOWNCAST(BL_HOM,tbl);
-        	        struct mercenary_data *tmcd=BL_DOWNCAST(BL_MEC,tbl);
 			
 			race=mob_db[md->class].race;
 			
@@ -773,7 +771,7 @@ static int mob_ai_sub_hard_slavemob(struct mob_data *md,unsigned int tick)
 				!sd->state.gangsterparadise &&
 				!(pc_ishiding(sd) && race != 4 && race != 6) ) ||
 				//HOM系判定
-				thd || tmcd) && 
+				thd ) && 
 				//共通判定
 				mmd->sc_data[SC_WINKCHARM].timer == -1) )
 			{
@@ -917,16 +915,14 @@ static int mob_ai_sub_hard(struct mob_data *md,unsigned int tick)
 		struct block_list *abl=map_id2bl(md->attacked_id);
 		struct map_session_data *asd=NULL;
 		struct homun_data *ahd=NULL;
-		struct mercenary_data *amcd=NULL;
+
 		md->attacked_players = 0;
 		if(abl){
 			if(abl->type==BL_PC)
 				asd=(struct map_session_data *)abl;
 			else if(abl->type==BL_HOM)
 				ahd=(struct homun_data *)abl;
-			else if(abl->type==BL_MEC)
-				amcd=(struct mercenary_data *)abl;
-			if((ahd==NULL && amcd==NULL) || md->bl.m != abl->m || abl->prev == NULL ||
+			if(ahd==NULL || md->bl.m != abl->m || abl->prev == NULL ||
 				(dist=unit_distance(md->bl.x,md->bl.y,abl->x,abl->y))>=32 || battle_check_target(&md->bl,abl,BCT_ENEMY)==0)
 				if(asd==NULL || md->bl.m != abl->m || abl->prev == NULL || asd->invincible_timer != -1 || pc_isinvisible(asd) ||
 					(dist=unit_distance(md->bl.x,md->bl.y,abl->x,abl->y))>=32 || battle_check_target(&md->bl,abl,BCT_ENEMY)==0)
@@ -996,8 +992,8 @@ static int mob_ai_sub_hard(struct mob_data *md,unsigned int tick)
 				unit_stop_walking(&md->bl,5);	// 歩行中なら停止
 			return search_flag;
 		}
-	} else if(tbl->type==BL_PC || tbl->type==BL_MOB || tbl->type==BL_HOM || tbl->type==BL_MEC) {
-		// 対象がPC、MOB、HOM、MEC
+	} else if(tbl->type==BL_PC || tbl->type==BL_MOB || tbl->type==BL_HOM) {
+		// 対象がPC、MOB、もしくはHOM
 		struct map_session_data *tsd = BL_DOWNCAST( BL_PC,  tbl );
 
 		// スキルなどによる策敵妨害判定
@@ -1216,7 +1212,7 @@ int mob_ai_hard_spawn_sub(struct block_list *tbl, va_list ap) {
 	sbl  = va_arg(ap, struct block_list*);
 	flag = va_arg(ap, int);
 
-	if( (sbl->type == BL_PC || sbl->type == BL_HOM || sbl->type == BL_MEC) && tbl->type == BL_MOB && (md = (struct mob_data *)tbl) ) {
+	if( (sbl->type == BL_PC || sbl->type == BL_HOM) && tbl->type == BL_MOB && (md = (struct mob_data *)tbl) ) {
 		if( flag ) {
 			if( md->ai_pc_count++ == 0 ) {
 				mob_ai_hard_add( md );
@@ -1227,7 +1223,7 @@ int mob_ai_hard_spawn_sub(struct block_list *tbl, va_list ap) {
 			}
 		}
 	}
-	if( sbl->type == BL_MOB && (tbl->type == BL_PC || tbl->type == BL_HOM || tbl->type == BL_MEC) && (md = (struct mob_data *)sbl) ) {
+	if( sbl->type == BL_MOB && (tbl->type == BL_PC || tbl->type == BL_HOM) && (md = (struct mob_data *)sbl) ) {
 		if( flag ) {
 			if( md->ai_pc_count++ == 0 ) {
 				mob_ai_hard_add( md );
@@ -1243,17 +1239,17 @@ int mob_ai_hard_spawn_sub(struct block_list *tbl, va_list ap) {
 }
 
 /*==========================================
- * MOB、PC、HOM、MECの出現・消滅処理( flag = 0: 消滅、1: 出現 )
+ * MOB とPCの出現・消滅処理( flag = 0: 消滅、1: 出現 )
  *------------------------------------------
  */
 int mob_ai_hard_spawn( struct block_list *bl, int flag ) {
 	nullpo_retr(0, bl);
 	
-	if( bl->type == BL_PC || bl->type == BL_MOB || bl->type == BL_HOM || bl->type == BL_MEC) {
+	if( bl->type == BL_PC || bl->type == BL_MOB || bl->type == BL_HOM ) {
 		map_foreachinarea( mob_ai_hard_spawn_sub , bl->m,
 			bl->x - AREA_SIZE * 2, bl->y - AREA_SIZE * 2,
 			bl->x + AREA_SIZE * 2, bl->y + AREA_SIZE * 2,
-			bl->type == BL_MOB ? BL_PC|BL_HOM|BL_MEC : BL_MOB, bl, flag
+			bl->type == BL_MOB ? BL_PC|BL_HOM : BL_MOB, bl, flag
 		);
 	}
 	return 0;
@@ -1677,19 +1673,6 @@ int mob_damage(struct block_list *src,struct mob_data *md,int damage,int type)
 				md->attacked_id = hd->bl.id;
 			}
 		}
-		if(src && src->type == BL_MEC) {
-			struct mercenary_data *mcd = (struct mercenary_data *)src;
-			int damage2;
-			nullpo_retr(0, mcd);
-			damage2 = damage;
-			damage2 += (int)linkdb_search( &md->dmglog, (void*)mcd->bl.id );
-			linkdb_replace( &md->dmglog, (void*)mcd->bl.id, (void*)damage2 );
-			if(md->attacked_id <= 0 && md->state.special_mob_ai==0 &&
-				atn_rand() % 1000 < 1000 / (++md->attacked_players)
-			) {
-				md->attacked_id = mcd->bl.id;
-			}
-		}
 	}
 
 	md->hp-=damage;
@@ -1791,7 +1774,7 @@ int mob_damage(struct block_list *src,struct mob_data *md,int damage,int type)
 		struct block_list *tbl;
 		int damage2;
 		tbl = map_id2bl((int)node->key);
-		if(tbl && (tbl->type==BL_PC || tbl->type==BL_HOM || tbl->type==BL_MEC))
+		if(tbl && (tbl->type==BL_PC || tbl->type==BL_HOM))
 			tmpbl[i] = tbl;
 		if( tmpbl[i] == NULL)
 			continue;
@@ -1873,11 +1856,6 @@ int mob_damage(struct block_list *src,struct mob_data *md,int damage,int type)
 				struct homun_data *thd = (struct homun_data *)tmpbl[i];
 				if(thd)
 					homun_gainexp(thd,md,(int)base_exp,(int)job_exp);
-				continue;
-			}else if(tmpbl[i]->type==BL_MEC){
-				struct mercenary_data *tmcd = (struct mercenary_data *)tmpbl[i];
-				if(tmcd)
-					mercenary_gainexp(tmcd,md,(int)base_exp,(int)job_exp);
 				continue;
 			}
 			if(!tmpsd)
@@ -2026,12 +2004,11 @@ int mob_damage(struct block_list *src,struct mob_data *md,int damage,int type)
 	}
 
 	// mvp処理
-	if(mvp[0].bl && mob_db[md->class].mexp > 0 && !md->state.nomvp && (mvp[0].bl->type == BL_PC || mvp[0].bl->type == BL_HOM || mvp[0].bl->type == BL_MEC)){
+	if(mvp[0].bl && mob_db[md->class].mexp > 0 && !md->state.nomvp && (mvp[0].bl->type == BL_PC || mvp[0].bl->type == BL_HOM)){
 		int j;
 		int mexp;
 		struct map_session_data *mvpsd;
 		struct homun_data *mvphd=NULL;
-		struct mercenary_data *mvpmcd=NULL;
 		atn_bignumber temp;
 
 		temp = ((atn_bignumber)mob_db[md->class].mexp * battle_config.mvp_exp_rate * (9+count)/1000);
@@ -2039,9 +2016,6 @@ int mob_damage(struct block_list *src,struct mob_data *md,int damage,int type)
 		if(mvp[0].bl->type == BL_HOM){
 			mvphd = (struct homun_data*)mvp[0].bl;
 			mvpsd = mvphd->msd;	// ホムが取ったMVPは、主人へ
-		}else if(mvp[0].bl->type == BL_MEC){
-			mvpmcd = (struct mercenary_data*)mvp[0].bl;
-			mvpsd = mvpmcd->msd;	// 傭兵が取ったMVPは、主人へ
 		}else
 			mvpsd = (struct map_session_data*)mvp[0].bl;
 		if( mvpsd ){
@@ -2057,8 +2031,6 @@ int mob_damage(struct block_list *src,struct mob_data *md,int damage,int type)
 			}
 			if(mvphd)	// エフェクト
 				clif_mvp_effect(&mvphd->bl);
-			else if(mvpmcd)	// エフェクト
-				clif_mvp_effect(&mvpmcd->bl);
 			else
 				clif_mvp_effect(&mvpsd->bl);
 			if(mob_db[md->class].mexpper > atn_rand()%10000){
@@ -2109,8 +2081,6 @@ int mob_damage(struct block_list *src,struct mob_data *md,int damage,int type)
 			sd = ((struct pet_data *)src)->msd;
 		if(src && src->type == BL_HOM)
 			sd = ((struct homun_data *)src)->msd;
-		if(src && src->type == BL_MEC)
-			sd = ((struct mercenary_data *)src)->msd;
 		if(sd == NULL) {
 			if(mvp[0].bl != NULL && mvp[0].bl->type==BL_PC)
 				sd = (struct map_session_data*)mvp[0].bl;
@@ -2558,7 +2528,7 @@ static int mobskill_command_use_id_sub(struct block_list *bl, va_list ap )
 	switch(target_type)
 	{
 		case MCT_TARGET:
-			if(bl->type!=BL_PC && bl->type != BL_MOB && bl->type != BL_HOM && bl->type != BL_MEC)
+			if(bl->type!=BL_PC && bl->type != BL_MOB && bl->type != BL_HOM)
 				return 0;
 			if(md->bl.id == bl->id)
 				return 0;
@@ -2805,7 +2775,7 @@ static int mobskill_anothertarget(struct block_list *bl, va_list ap)
 	c         = va_arg(ap,int *);
 	target_id = va_arg(ap,int *);
 
-	if(bl->type != BL_PC && bl->type != BL_MOB && bl->type != BL_HOM && bl->type != BL_MEC)
+	if(bl->type != BL_PC && bl->type != BL_MOB && bl->type != BL_HOM)
 		return 0;
 
 	if(bl->id == md->bl.id || bl->id == md->target_id || unit_isdead(bl))
@@ -3838,7 +3808,7 @@ static int mob_readskilldb(void)
 		{	"anybad",		-1				},
 		{	"stone",		SC_STONE		},
 		{	"freeze",		SC_FREEZE		},
-		{	"stan",			SC_STAN			},
+		{	"stun",			SC_STUN			},
 		{	"sleep",		SC_SLEEP		},
 		{	"poison",		SC_POISON		},
 		{	"curse",		SC_CURSE		},

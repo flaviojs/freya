@@ -15,7 +15,6 @@ int status_get_group(struct block_list *bl);
 int status_get_hp(struct block_list *bl);
 int status_get_sp(struct block_list *bl);
 int status_get_max_hp(struct block_list *bl);
-int status_get_max_sp(struct block_list *bl);
 int status_get_str(struct block_list *bl);
 int status_get_agi(struct block_list *bl);
 int status_get_vit(struct block_list *bl);
@@ -248,7 +247,7 @@ enum {	// struct map_session_data の status_changeの番号テーブル
 	//
 	SC_STONE				=128,	/* 状態異常：石化 */
 	SC_FREEZE				=129,	/* 状態異常：氷結 */
-	SC_STAN					=130,	/* 状態異常：スタン */
+	SC_STUN					=130,	/* 状態異常：スタン */
 	SC_SLEEP				=131,	/* 状態異常：睡眠 */
 	SC_POISON				=132,	/* 状態異常：毒 */
 	SC_CURSE				=133,	/* 状態異常：呪い */
@@ -465,7 +464,7 @@ enum {	// struct map_session_data の status_changeの番号テーブル
 	SC_FOGWALLPENALTY		= 341,
 	SC_REDEMPTIO			= 342,
 	SC_TAROTCARD			= 343,
-	SC_HOLDWEB				= 344,
+	SC_STOP				= 344,
 	SC_INVISIBLE			= 345,
 	SC_DETECTING			= 346,
 	//
@@ -502,13 +501,7 @@ enum {	// struct map_session_data の status_changeの番号テーブル
 	SC_MEAL_INCDEX2			= 374,
 	SC_MEAL_INCINT2			= 375,
 	SC_MEAL_INCLUK2			= 376,
-	//傭兵関連
-	SC_MERCENAY_INCATK		= 377,
-	SC_MERCENAY_INCFLEE		= 378,
-	SC_MERCENAY_INCDEF		= 379,
-	SC_MERCENAY_INCHP		= 380,
-	SC_MERCENAY_INCSP		= 381,
-	SC_MERCENAY_INCHIT		= 382,
+	SC_MODECHANGE			= 377,
 
 	//startでは使えないresistをアイテム側で全てクリアするための物
 	SC_RESISTCLEAR			= 1001,
@@ -585,6 +578,7 @@ enum {
 	SI_FROSTWEAPON			=91,	/* フロストウェポン */
 	SI_LIGHTNINGLOADER		=92,	/* ライトニングローダー */
 	SI_SEISMICWEAPON		=93,	/* サイズミックウェポン */
+	SI_STOP				=95,	/* ホールドウェブ */
 	SI_UNDEAD			=97,	/* 不死属性付与 */
 	SI_AURABLADE			=103,	/* オーラブレード */
 	SI_PARRYING				=104,	/* パリイング */

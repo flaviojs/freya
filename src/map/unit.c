@@ -1076,7 +1076,7 @@ int unit_skilluse_id2(struct block_list *src, int target_id, int skill_num, int 
 		src_ud->canact_tick  = tick + casttime + delay;
 		src_ud->canmove_tick = tick;
 	} else {
-		if(skill_num != NPC_EMOTION && skill_num != NPC_SELFDESTRUCTION && skill_num !=NPC_SELFDESTRUCTION2 && skill_num != NPC_RUNAWAY) {
+		if(skill_num != NPC_EMOTION && skill_num != NPC_SELFDESTRUCTION && skill_num !=NPC_SELFDESTRUCTION2 && skill_num != NPC_RUN) {
 			if(status_get_amotion(src) < status_get_adelay(src)) {
 				src_ud->canact_tick = tick + casttime + status_get_amotion(src);
 				src_ud->canmove_tick = tick + status_get_amotion(src);
@@ -1430,7 +1430,7 @@ int unit_can_move(struct block_list *bl)
 			sc_data[SC_BLADESTOP].timer != -1 ||		// 白刃取り
 			sc_data[SC_SPIDERWEB].timer != -1 ||		// スパイダーウェッブ
 			sc_data[SC_TIGERFIST].timer != -1 ||		// 伏虎拳
-			sc_data[SC_HOLDWEB].timer != -1 ||		// ホールドウェブ
+			sc_data[SC_STOP].timer != -1 ||		// ホールドウェブ
 			sc_data[SC_MADNESSCANCEL].timer != -1 ||	// マッドネスキャンセラー
 			sc_data[SC_CLOSECONFINE].timer != -1 ||		// クローズコンファイン
 			(sc_data[SC_GRAVITATION_USER].timer != -1 && battle_config.player_gravitation_type < 2) ||	//グラビテーションフィールド使用者

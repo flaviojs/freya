@@ -4954,8 +4954,8 @@ int pc_damage(struct block_list *src,struct map_session_data *sd,int damage)
 		status_change_end(&sd->bl,SC_BLADESTOP,-1);
 	if(sd->sc_data[SC_CLOSECONFINE].timer!=-1)//白刃は事前に解除
 		status_change_end(&sd->bl,SC_CLOSECONFINE,-1);
-	if(sd->sc_data[SC_HOLDWEB].timer!=-1)
-		status_change_end(&sd->bl,SC_HOLDWEB,-1);
+	if(sd->sc_data[SC_STOP].timer!=-1)
+		status_change_end(&sd->bl,SC_STOP,-1);
 	if(sd->sc_data[SC_WARM].timer!=-1)//温もり効果解除
 		skill_delunitgroup((struct skill_unit_group *)sd->sc_data[SC_WARM].val3);
 	pc_setglobalreg(sd,"PC_DIE_COUNTER",++sd->die_counter); //死にカウンター書き込み
