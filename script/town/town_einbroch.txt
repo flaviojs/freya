@@ -11511,7 +11511,7 @@ airplane.gat,32,61,4	script	John B.#ein	51,{
 
 einbroch.gat,215,180,6	script	Uwe Kleine	85,{
 
-	if (Basejob == Job_Blacksmith) {
+	if (Class == Job_Blacksmith) {
 		if (ein_cook > 999) {
 			set '@ccc,ein_cook - 1000;
 			if ('@ccc > 199) {
@@ -11683,7 +11683,7 @@ einbroch.gat,215,180,6	script	Uwe Kleine	85,{
 								close;
 							}
 							mes "[Uwe]";
-							if (Basejob == Job_Blacksmith && Upper == 1) {
+							if (Class == Job_Blacksmith && Upper == 1) {
 								mes "I usually give you cutie MasterSmiths 10 Mini Furnaces, but you can have ^EEA9B811^000000. There's the little something extra I was talking about.";
 							} else {
 								mes "I usually give you cutie Blacksmiths 10 Mini Furnaces, but you can have ^EEA9B811^000000. There's the little something extra I was talking about.";
@@ -11709,7 +11709,7 @@ einbroch.gat,215,180,6	script	Uwe Kleine	85,{
 							mes "[Uwe]";
 							mes "Well... Then... Anyway,";
 							mes "Congratulation to became";
-							if (Basejob == Job_Blacksmith && Upper == 1) {
+							if (Class == Job_Blacksmith && Upper == 1) {
 								mes "a Master Smith!!";
 							} else {
 								mes "a Black Smith!!";
@@ -11869,7 +11869,7 @@ einbroch.gat,215,180,6	script	Uwe Kleine	85,{
 								mes "Don't be so nervous, I don't really need those anymore. But since I know you're hard working, I'll throw in a little something extra...";
 								next;
 								mes "[Uwe]";
-								if (Basejob == Job_Blacksmith && Upper == 1) {
+								if (Class == Job_Blacksmith && Upper == 1) {
 										mes "I usually give you cutie MasterSmiths 10 Mini Furnaces, but you can have ^EEA9B811^000000. There's the little something extra I was talking about.";
 								} else {
 									mes "I usually give you cutie Blacksmiths 10 Mini Furnaces, but you can have ^EEA9B811^000000. There's the little something extra I was talking about.";
@@ -11960,7 +11960,7 @@ einbroch.gat,215,180,6	script	Uwe Kleine	85,{
 						mes "[Uwe]";
 						mes "Well... Then... Anyway,";
 						mes "Congratulation to became";
-						if (Basejob == Job_Blacksmith && Upper == 1) {
+						if (Class == Job_Blacksmith && Upper == 1) {
 							mes "a Master Smith!!";
 							mes "This is my present for it. Huhuhu.";
 						} else {
@@ -13276,7 +13276,7 @@ einbroch.gat,215,180,6	script	Uwe Kleine	85,{
 				close;
 			}
 		} else if (ein_cook > 299) {
-			if (Basejob == Job_Blacksmith && Upper == 1) {
+			if (Class == Job_Blacksmith && Upper == 1) {
 				mes "[Uwe]";
 				mes "Oooh...!";
 				mes "Congratulations!";

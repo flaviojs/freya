@@ -24,7 +24,7 @@ payon.gat,157,141,5	script	Phoenix#Taekwon	753,{
 		mes "Hello, child.";
 		close;
 	}
-	if ((BaseJob == Job_Taekwon) || (BaseJob == Job_Star_Gladiator) || (BaseJob == Job_Soul_Linker)) {
+	if ((Class == Job_Taekwon) || (Class == Job_Star_Gladiator) || (Class == Job_Soul_Linker)) {
 		mes "[Phoenix]";
 		mes "How is your training";
 		mes "coming along? As your";
@@ -34,7 +34,7 @@ payon.gat,157,141,5	script	Phoenix#Taekwon	753,{
 		mes "always rely on the basics.";
 		close;
 	}
-	if (Basejob == Job_Novice && job_taekwon_q == 3) {
+	if (Class == Job_Novice && job_taekwon_q == 3) {
 		mes "[Phoenix]";
 		mes "Are you feeling calm";
 		mes "and at peace? I will ask";
@@ -118,7 +118,7 @@ payon.gat,157,141,5	script	Phoenix#Taekwon	753,{
 			close;
 		}
 	}
-	if (Basejob == Job_Novice && job_taekwon_q == 2) {
+	if (Class == Job_Novice && job_taekwon_q == 2) {
 		mes "[Phoenix]";
 		mes "For your spiritual training,";
 		mes "I will ask you a series of";
@@ -299,7 +299,7 @@ payon.gat,157,141,5	script	Phoenix#Taekwon	753,{
 		set job_taekwon_q,3;
 		close;
 	}
-	if (Basejob == Job_Novice && job_taekwon_q == 1 && BaseLevel > taekwon_lv) {
+	if (Class == Job_Novice && job_taekwon_q == 1 && BaseLevel > taekwon_lv) {
 		set job_taekwon_q,2;
 		mes "[Phoenix]";
 		mes "Good. I sense that you";
@@ -310,7 +310,7 @@ payon.gat,157,141,5	script	Phoenix#Taekwon	753,{
 		mes "the next portion of training.";
 		close;
 	}
-	if (Basejob == Job_Novice && job_taekwon_q == 1) {
+	if (Class == Job_Novice && job_taekwon_q == 1) {
 		mes "[Phoenix]";
 		mes "You must gain ^FF00001 more";
 		mes "Base Level^000000 to prove that";
@@ -319,7 +319,7 @@ payon.gat,157,141,5	script	Phoenix#Taekwon	753,{
 		mes "neglect your training.";
 		close;
 	}
-	if (Basejob == Job_Novice) {
+	if (Class == Job_Novice) {
 		mes "[Phoenix]";
 		mes "This land. Our once";
 		mes "beautiful world has been";

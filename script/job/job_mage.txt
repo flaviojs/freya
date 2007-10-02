@@ -21,7 +21,7 @@ geffen_in.gat,164,124,4	script	Mage Guildsman	123,{
 
 	if (Upper == 1) {
 		if (OLD_CLASS == Job_Wizard || OLD_CLASS == Job_Sage) {
-			if (Basejob == Job_Novice && Upper == 1) {
+			if (Class == Job_Novice && Upper == 1) {
 				mes "[Mage Guildsman]";
 				mes "Whoa, long time no see! But weren't you supposed to be dead?";
 				next;
@@ -64,14 +64,14 @@ geffen_in.gat,164,124,4	script	Mage Guildsman	123,{
 	switch(select("I want to be a Mage.","Tell me the Requirements.","Pretty much nothing.")) {
 	case 1:
 		mes "[Mage Guildsman]";
-		if (Basejob == Job_Mage) {
+		if (Class == Job_Mage) {
 			mes "Hey, haven't you realized? You're aleady a Mage, silly!";
 			next;
 			mes "[Mage Guildsman]";
 			mes "One of these days you'll realize the power inside of you when you can make Fire with your mind!";
 			close;
 		}
-		if (Basejob != Job_Novice) {
+		if (Class != Job_Novice) {
 			mes "Hey~ C'mon. Quit playing games. You can't be a Mage because you already have another Job.";
 			close;
 		}

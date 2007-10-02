@@ -3021,7 +3021,7 @@ lhz_in01.gat,139,48,7	script	Leimi#mimir	73,{
 	mes "Good heavens!";
 	mes "Um, may I help you?";
 	emotion ET_HUK,"Leimi#mimir";
-	if ((Basejob == Job_Assassin) || (Basejob == Job_Assassin && Upper == 1)) {
+	if ((Class == Job_Assassin) || (Class == Job_Assassin && Upper == 1)) {
 		if (Sex == Male) {
 			next;
 			mes "[Leimi]";
@@ -3044,7 +3044,7 @@ lhz_in01.gat,139,48,7	script	Leimi#mimir	73,{
 lhz_in01.gat,138,47,0	script	#mimir_camera	139,2,2,{
 
 OnTouch:
-	if ((Basejob == Job_Assassin) || (Basejob == Job_Assassin && Upper == 1)) {
+	if ((Class == Job_Assassin) || (Class == Job_Assassin && Upper == 1)) {
 		if (Sex == Male) {
 			mes "^3355FF*Click*^000000";
 			next;

@@ -75,7 +75,7 @@ prt_church.gat,173,23,4	script	Cleric	79,{
 			mes "this skill for the work of good . .";
 			close;
 		} else {
-			if (countitem(727) > 0 && countitem(991) > 0 && countitem(2608) > 0 && ((JobLevel > 29 && Basejob == Job_Acolyte) || Basejob == Job_Priest || Basejob == Job_Monk)) {
+			if (countitem(727) > 0 && countitem(991) > 0 && countitem(2608) > 0 && ((JobLevel > 29 && Class == Job_Acolyte) || Class == Job_Priest || Class == Job_Monk)) {
 				mes "[Acolyte Klift]";
 				mes "Your faith has proven worthy";
 				mes "for you to gain the ' Holy Light ' skill.";
@@ -126,7 +126,7 @@ prt_church.gat,173,23,4	script	Cleric	79,{
 
 lhz_in01.gat,224,140,3	script	Kellasus	57,{
 
-	if ((Basejob == Job_Alchemist) && (qskill_homun == 13)) {
+	if ((Class == Job_Alchemist) && (qskill_homun == 13)) {
 		mes "[Kellasus]";
 		mes "Keep up the";
 		mes "good work. I get";
@@ -135,7 +135,7 @@ lhz_in01.gat,224,140,3	script	Kellasus	57,{
 		mes "be depending on you...";
 		close;
 	}
-	if ((Basejob == Job_Alchemist) && (qskill_homun == 12)) {
+	if ((Class == Job_Alchemist) && (qskill_homun == 12)) {
 		mes "[Kellasus]";
 		mes "Alright then, I'll begin";
 		mes "by teaching you ^FF0000Bioethics^000000,";
@@ -191,7 +191,7 @@ lhz_in01.gat,224,140,3	script	Kellasus	57,{
 		mes "the world of Alchemy someday.";
 		close;
 	}
-	if ((Basejob == Job_Alchemist) && (qskill_homun == 11)) {
+	if ((Class == Job_Alchemist) && (qskill_homun == 11)) {
 		mes "[Kellasus]";
 		mes "Our viewpoints may be";
 		mes "different, but I'll agree that";
@@ -235,7 +235,7 @@ lhz_in01.gat,224,140,3	script	Kellasus	57,{
 		mes "time since I've done this...";
 		close;
 	}
-	if ((Basejob == Job_Alchemist) && (qskill_homun == 10)) {
+	if ((Class == Job_Alchemist) && (qskill_homun == 10)) {
 		set qskill_homun,11;
 		mes "[Kellasus]";
 		mes "^333333*Sigh*^000000";
@@ -246,7 +246,7 @@ lhz_in01.gat,224,140,3	script	Kellasus	57,{
 		mes "I should believe...";
 		close;
 	}
-	if ((Basejob == Job_Alchemist) && (qskill_homun == 9)) {
+	if ((Class == Job_Alchemist) && (qskill_homun == 9)) {
 		mes "[Kellasus]";
 		mes "Have you come to";
 		mes "ask me again to teach";
@@ -347,7 +347,7 @@ lhz_in01.gat,224,140,3	script	Kellasus	57,{
 		mes "some time alone...";
 		close;
 	}
-	if ((Basejob == Job_Alchemist) && (qskill_homun == 8)) {
+	if ((Class == Job_Alchemist) && (qskill_homun == 8)) {
 		mes "[Kellasus]";
 		mes "Although I admit that";
 		mes "you're capable of learning";
@@ -357,7 +357,7 @@ lhz_in01.gat,224,140,3	script	Kellasus	57,{
 		mes "sorry, but please give up.";
 		close;
 	}
-	if ((Basejob == Job_Alchemist) && (qskill_homun == 7)) {
+	if ((Class == Job_Alchemist) && (qskill_homun == 7)) {
 		mes "[Kellasus]";
 		mes "How many times must I tell";
 		mes "you? I'm sorry, but I can't teach you anything related to Homunculi.";
@@ -478,7 +478,7 @@ lhz_in01.gat,224,140,3	script	Kellasus	57,{
 			close;
 		}
 	}
-	if ((Basejob == Job_Alchemist) && (qskill_homun > 3)) {
+	if ((Class == Job_Alchemist) && (qskill_homun > 3)) {
 		mes "[Kellasus]";
 		mes "I'm sorry, but";
 		mes "I refuse to teach";
@@ -494,7 +494,7 @@ lhz_in01.gat,224,140,3	script	Kellasus	57,{
 		mes "views are much different now...";
 		close;
 	}
-	if ((Basejob == Job_Alchemist) && (qskill_homun == 3)) {
+	if ((Class == Job_Alchemist) && (qskill_homun == 3)) {
 		mes "[Kellasus]";
 		mes "Oh, hello, what";
 		mes "brings you this way?";
@@ -555,7 +555,7 @@ lhz_in01.gat,224,140,3	script	Kellasus	57,{
 			close;
 		}
 	}
-	if ((Basejob == Job_Alchemist) && (qskill_homun == 2)) {
+	if ((Class == Job_Alchemist) && (qskill_homun == 2)) {
 		mes "[Kellasus]";
 		mes "Ah, you've returned...";
 		mes "Now, you must be wondering";
@@ -618,7 +618,7 @@ lhz_in01.gat,224,140,3	script	Kellasus	57,{
 		mes "and if you work for the greater^FFFFFF ^000000 good of mankind, you'll be fine.";
 		close;
 	}
-	if ((Basejob == Job_Alchemist) && (qskill_homun == 1)) {
+	if ((Class == Job_Alchemist) && (qskill_homun == 1)) {
 		mes "[Kellasus]";
 		mes "Ah, it's you again.";
 		mes "Since you're here, let";
@@ -666,7 +666,7 @@ lhz_in01.gat,224,140,3	script	Kellasus	57,{
 		mes "can, and never forget that you^FFFFFF ^000000 have responsibilities to mankind.";
 		close;
 	}
-	if (Basejob == Job_Alchemist) {
+	if (Class == Job_Alchemist) {
 		mes "[Kellasus]";
 		mes "You're another";
 		mes "practitioner of";
@@ -720,7 +720,7 @@ lhz_in01.gat,224,140,3	script	Kellasus	57,{
 
 lhz_in01.gat,225,122,5	script	Skrajjad	754,{
 
-	if ((Basejob == Job_Alchemist) && (qskill_homun > 4)) {
+	if ((Class == Job_Alchemist) && (qskill_homun > 4)) {
 		mes "[Skrajjad]";
 		mes "I've taught you everything";
 		mes "I can about the Homunculi.";
@@ -736,7 +736,7 @@ lhz_in01.gat,225,122,5	script	Skrajjad	754,{
 		mes "way to help young scientists.";
 		close;
 	}
-	if ((Basejob == Job_Alchemist) && (qskill_homun == 4)) {
+	if ((Class == Job_Alchemist) && (qskill_homun == 4)) {
 		mes "[Skrajjad]";
 		mes "Ah, you're the one";
 		mes "who had the courage";
@@ -836,7 +836,7 @@ lhz_in01.gat,225,122,5	script	Skrajjad	754,{
 
 lhz_in01.gat,204,138,5	script	Keshibien	750,{
 
-	if ((Basejob == Job_Alchemist) && (qskill_homun > 5)) {
+	if ((Class == Job_Alchemist) && (qskill_homun > 5)) {
 		mes "[Keshibien]";
 		mes "I hope that you";
 		mes "can make good use";
@@ -861,7 +861,7 @@ lhz_in01.gat,204,138,5	script	Keshibien	750,{
 		mes "alcohol in Lighthalzen?";
 		close;
 	}
-	if ((Basejob == Job_Alchemist) && (qskill_homun == 5)) {
+	if ((Class == Job_Alchemist) && (qskill_homun == 5)) {
 		mes "[Keshibien]";
 		mes "Oh! You must be the";
 		mes "one Skrajjad told me";
@@ -949,7 +949,7 @@ lhz_in01.gat,204,138,5	script	Keshibien	750,{
 
 lhz_in02.gat,278,273,3	script	Broncher	709,{
 
-	if ((Basejob == Job_Alchemist) && (qskill_homun > 6)) {
+	if ((Class == Job_Alchemist) && (qskill_homun > 6)) {
 		mes "[Broncher]";
 		mes "You again? Didn't I already";
 		mes "teach you the Homunculus";
@@ -967,7 +967,7 @@ lhz_in02.gat,278,273,3	script	Broncher	709,{
 		mes "me up! Go on, get outta here!";
 		close;
 	}
-	if ((Basejob == Job_Alchemist) && (qskill_homun == 6)) {
+	if ((Class == Job_Alchemist) && (qskill_homun == 6)) {
 		mes "[Broncher]";
 		mes "^333333*Hiccup!*^000000";
 		mes "Oh man...";
@@ -1042,7 +1042,7 @@ lhz_in02.gat,278,273,3	script	Broncher	709,{
 
 lhz_in03.gat,106,34,3	script	Koring	706,{
 
-	if ((Basejob == Job_Alchemist) && (qskill_homun == 9)) {
+	if ((Class == Job_Alchemist) && (qskill_homun == 9)) {
 		mes "[Koring]";
 		mes "My daddy is the bestest";
 		mes "Alchemist! He's sooooo";
@@ -1077,7 +1077,7 @@ lhz_in03.gat,106,34,3	script	Koring	706,{
 		mes "I hope he feels better soon.";
 		close;
 	}
-	if ((Basejob == Job_Alchemist) && (qskill_homun == 8)) {
+	if ((Class == Job_Alchemist) && (qskill_homun == 8)) {
 		mes "[Koring]";
 		mes "My daddy is the bestest";
 		mes "Alchemist! He's sooooo";
@@ -1124,7 +1124,7 @@ lhz_in03.gat,106,34,3	script	Koring	706,{
 
 lhz_in03.gat,109,31,5	script	Beninne	90,{
 
-	if ((Basejob == Job_Alchemist) && (qskill_homun == 9)) {
+	if ((Class == Job_Alchemist) && (qskill_homun == 9)) {
 		mes "[Beninne]";
 		mes "You've met my husband,";
 		mes "Kellasus? He's either a";
@@ -1157,7 +1157,7 @@ lhz_in03.gat,109,31,5	script	Beninne	90,{
 		mes "more. Amazing, isn't it?";
 		close;
 	}
-	if ((Basejob == Job_Alchemist) && (qskill_homun == 8)) {
+	if ((Class == Job_Alchemist) && (qskill_homun == 8)) {
 		mes "[Beninne]";
 		mes "You've met my husband,";
 		mes "Kellasus? He's either a";
@@ -1258,8 +1258,8 @@ lhz_in01.gat,218,141,7	script	Alchemist	98,{
 
 yuno_in04.gat,33,108,4	script	Pisruik	883,{
 
-	if (Basejob == Job_Alchemist) {
-		if (JobLevel < 40 && Basejob == Job_Alchemist) {
+	if (Class == Job_Alchemist) {
+		if (JobLevel < 40 && Class == Job_Alchemist) {
 			mes "[Pisruik]";
 			mes "^333333*Cough cough*^000000";
 			mes "Damn, if only I had";
@@ -2387,7 +2387,7 @@ yuno_in04.gat,33,106,4	script	Pile of Books	111,{
 
 morocc.gat,121,109,5	script	Roberto	88,{
 
-	if ((BaseJob == Job_Archer) || (BaseJob == Job_Hunter) || (BaseJob == Job_Bard) || (BaseJob == Job_Dancer)) {
+	if ((Class == Job_Archer) || (Class == Job_Hunter) || (Class == Job_Bard) || (Class == Job_Dancer)) {
 		if (ac_makingarrow_x == 1) {
 			mes "[Roberto]";
 			mes "Ooh, you're from my home town!";
@@ -2404,13 +2404,13 @@ morocc.gat,121,109,5	script	Roberto	88,{
 			mes "with news from home.";
 			mes "Then byebye~";
 			close;
-		} else if ((BaseJob == Job_Archer && JobLevel >= 30) || Basejob == Job_Hunter || Basejob == Job_Dancer || Basejob == Job_Bard) {
+		} else if ((Class == Job_Archer && JobLevel >= 30) || Class == Job_Hunter || Class == Job_Dancer || Class == Job_Bard) {
 			mes "[Roberto]";
 			mes "Eh!";
 			mes "";
 			mes "You are...";
 			next;
-			if (countitem(907) > 19 && countitem(921) > 6 && countitem(7012) > 40 && countitem(1019) > 12 && countitem(501) > 0 && ((BaseJob == Job_Archer && JobLevel >= 30) || Basejob == Job_Hunter || Basejob == Job_Dancer || Basejob == Job_Bard)) {
+			if (countitem(907) > 19 && countitem(921) > 6 && countitem(7012) > 40 && countitem(1019) > 12 && countitem(501) > 0 && ((Class == Job_Archer && JobLevel >= 30) || Class == Job_Hunter || Class == Job_Dancer || Class == Job_Bard)) {
 				mes "[Roberto]";
 				mes "You brought them!";
 				mes "Thank you very much.";
@@ -2532,7 +2532,7 @@ morocc.gat,121,109,5	script	Roberto	88,{
 
 payon.gat,103,63,3	script	Jason	88,3,3,{
 
-	if ((BaseJob == Job_Archer) || (BaseJob == Job_Hunter) || (BaseJob == Job_Bard) || (BaseJob == Job_Dancer)) {
+	if ((Class == Job_Archer) || (Class == Job_Hunter) || (Class == Job_Bard) || (Class == Job_Dancer)) {
 		if (ac_chargearrow_x == 1) {
 			mes "[Jason]";
 			mes "Eh, we meet again.";
@@ -2542,7 +2542,7 @@ payon.gat,103,63,3	script	Jason	88,3,3,{
 			mes "Ehhh... anyways nice to see you again.";
 			mes "Ehhhh... don't come any more ehh...";
 			close;
-		} else if ((BaseJob == Job_Archer) || (BaseJob == Job_Hunter) || (BaseJob == Job_Bard) || (BaseJob == Job_Dancer)) {
+		} else if ((Class == Job_Archer) || (Class == Job_Hunter) || (Class == Job_Bard) || (Class == Job_Dancer)) {
 			mes "[Jason]";
 			mes "Darn... my wound isn't healing.";
 			mes "Bleh.. I was too careless...";
@@ -2666,7 +2666,7 @@ OnTouch:
 
 in_moc_16.gat,14,27,5	script	Assassin#realman	884,{
 
-	if ((Basejob == Job_Assassin && Upper == 1) && (qskill_assassin02 == 1)) {
+	if ((Class == Job_Assassin && Upper == 1) && (qskill_assassin02 == 1)) {
 		if (getskilllv(1004)) {
 			mes "[Killtin]";
 			mes "Ah yes, that's why you";
@@ -2746,7 +2746,7 @@ in_moc_16.gat,14,27,5	script	Assassin#realman	884,{
 		mes "deserve what you give them!";
 		close;
 	} else {
-		if (Basejob == Job_Assassin) {
+		if (Class == Job_Assassin) {
 			mes "[Killtin]";
 			mes "Hm? Ah, you're definitely";
 			mes "a member of the Assassin";
@@ -2915,7 +2915,7 @@ in_moc_16.gat,14,27,5	script	Assassin#realman	884,{
 				}
 			}
 			close;
-		} else if (Basejob == Job_Thief) {
+		} else if (Class == Job_Thief) {
 			mes "[Killtin]";
 			mes "A Thief...? Huh.";
 			mes "That's a respectable";
@@ -2935,7 +2935,7 @@ in_moc_16.gat,14,27,5	script	Assassin#realman	884,{
 
 in_moc_16.gat,23,27,5	script	Assassin#realgirl	885,{
 
-	if (Basejob == Job_Assassin && Upper == 1 && qskill_assassin01 == 7) {
+	if (Class == Job_Assassin && Upper == 1 && qskill_assassin01 == 7) {
 		if (!getskilllv(1003)) {
 			mes "[Esmille]";
 			mes "Mm? Ah, you've transcended";
@@ -3349,7 +3349,7 @@ in_moc_16.gat,23,27,5	script	Assassin#realgirl	885,{
 		}
 		close;
 	} else {
-		if (Basejob == Job_Assassin && Upper == 1) {
+		if (Class == Job_Assassin && Upper == 1) {
 			mes "[Assassin]";
 			mes "Ah. Hello, comrade.";
 			mes "Have you heard about";
@@ -3659,14 +3659,14 @@ OnTouch:
 //que_job01.gat,65,92,3	script	Young Man#bard_q1	89,3,3,{
 prontera.gat,174,238,3	script	Young Man#bard_q1	89,3,3,{
 
-	if (Basejob == Job_Bard) {
+	if (Class == Job_Bard) {
 		emotion ET_HUK,"Young Man#bard_q1";
 		mes "[Timid Young Man]";
 		mes "Eh? Wwwaaaah--!";
 		mes "Y-you're--it's-it's--";
-		if (Basejob == Job_Bard && Upper == 0) {
+		if (Class == Job_Bard && Upper == 0) {
 			mes "It's a freakin' Bard!";
-		} else if (Basejob == Job_Bard && Upper == 1) {
+		} else if (Class == Job_Bard && Upper == 1) {
 			mes "It's a freakin' Minstrel!";
 		}
 		mes "D-don't come any closer!";
@@ -4002,7 +4002,7 @@ prontera.gat,174,238,3	script	Young Man#bard_q1	89,3,3,{
 	}
 
 OnTouch:
-	if (Basejob == Job_Bard) {
+	if (Class == Job_Bard) {
 		emotion ET_HUK,"Young Man#bard_q1";
 	}
 	end;
@@ -4011,8 +4011,8 @@ OnTouch:
 //que_job01.gat,77,90,7	script	Spiteful-Looking Bard#skill_bard02	741,3,3,{
 morocc_in.gat,169,72,7	script	Spiteful-Looking Bard#skill_bard02	741,3,3,{
 
-	if (Basejob == Job_Bard) {
-		if ((Basejob == Job_Bard && Upper == 1) && (qskill_bard == 9)) {
+	if (Class == Job_Bard) {
+		if ((Class == Job_Bard && Upper == 1) && (qskill_bard == 9)) {
 			if (getskilllv(1010)) {
 				mes "[Riott]";
 				mes "Geh heh heh~";
@@ -5342,7 +5342,7 @@ morocc_in.gat,166,76,7	script	Bartender#bard_qskill	46,{
 
 geffen.gat,172,52,1	script	Goodman	826,{
 
-	if (Basejob == Job_Blacksmith && Upper == 1) {
+	if (Class == Job_Blacksmith && Upper == 1) {
 		if (brack_greed == 2) {
 			mes "[Goodman]";
 			mes "Ah, I see that you have";
@@ -5495,7 +5495,7 @@ geffen.gat,172,52,1	script	Goodman	826,{
 				close;
 			}
 		}
-	} else if (Basejob == Job_Blacksmith && Upper != 1) {
+	} else if (Class == Job_Blacksmith && Upper != 1) {
 		if (brack_greed == 0) {
 			mes "[Goodman]";
 			mes "Hey. I'm a Blacksmith";
@@ -5630,7 +5630,7 @@ geffen.gat,172,52,1	script	Goodman	826,{
 
 geffen.gat,178,72,3	script	Akkie	726,{
 
-	if (Basejob == Job_Blacksmith && Upper == 1) {
+	if (Class == Job_Blacksmith && Upper == 1) {
 		if (blackss == 7) {
 			mes "[Akkie]";
 			mes "I see that you've";
@@ -6047,7 +6047,7 @@ geffen.gat,178,72,3	script	Akkie	726,{
 				close;
 			}
 		}
-	} else if (Basejob == Job_Blacksmith && Upper != 1) {
+	} else if (Class == Job_Blacksmith && Upper != 1) {
 		if (JobLevel > 29) {
 			if (blackss == 0) {
 				mes "[Akkie]";
@@ -6450,7 +6450,7 @@ geffen.gat,178,72,3	script	Akkie	726,{
 
 geffen.gat,110,117,3	script	Ford#11	752,{
 
-	if (Basejob == Job_Crusader && Upper == 1) {
+	if (Class == Job_Crusader && Upper == 1) {
 		if (cru_jobq == 8) {
 			mes "[Ford]";
 			mes "Hey, it's been a while~";
@@ -6696,7 +6696,7 @@ geffen.gat,110,117,3	script	Ford#11	752,{
 				close;
 			}
 		}
-	} else if (Basejob == Job_Crusader && Upper != 1) {
+	} else if (Class == Job_Crusader && Upper != 1) {
 		if (cru_jobq == 0) {
 			mes "[Ford]";
 			mes "Damn! Why is it";
@@ -6925,7 +6925,7 @@ geffen.gat,110,117,3	script	Ford#11	752,{
 
 gef_fild13.gat,297,242,3	script	Soldier#277	751,{
 
-	if (Basejob == Job_Crusader && Upper == 1) {
+	if (Class == Job_Crusader && Upper == 1) {
 		if (cru_jobq_H == 1) {
 			mes "[Soldier]";
 			mes "Arrrrrghhh!";
@@ -7286,7 +7286,7 @@ gef_fild13.gat,297,242,3	script	Soldier#277	751,{
 			mes "they've been getting even more violent, so stay on the lookout.";
 			close;
 		}
-	} else if (Basejob == Job_Crusader && Upper != 1) {
+	} else if (Class == Job_Crusader && Upper != 1) {
 		if (cru_jobq == 1) {
 			mes "[Soldier]";
 			mes "Arrrrrghhh!";
@@ -7635,7 +7635,7 @@ gef_fild13.gat,297,242,3	script	Soldier#277	751,{
 
 prt_church.gat,87,127,3	script	Pastor#1011	755,{
 
-	if (Basejob == Job_Crusader && Upper == 1) {
+	if (Class == Job_Crusader && Upper == 1) {
 		if (cru_jobq_H == 4) {
 			mes "[Father Arthur]";
 			mes "Greetings.";
@@ -7843,7 +7843,7 @@ prt_church.gat,87,127,3	script	Pastor#1011	755,{
 			mes "spiritual calm into your heart.";
 			close;
 		}
-	} else if (Basejob == Job_Crusader && Upper != 1) {
+	} else if (Class == Job_Crusader && Upper != 1) {
 		if (cru_jobq == 4) {
 			mes "[Father Arthur]";
 			mes "Greetings.";
@@ -8038,7 +8038,7 @@ prt_church.gat,87,127,3	script	Pastor#1011	755,{
 
 comodo.gat,204,172,5	script	Canell#qsk_dan01	724,{
 
-	if ((Basejob == Job_Dancer) && (JobLevel > 39)) {
+	if ((Class == Job_Dancer) && (JobLevel > 39)) {
 		if (qskill_dancer01 == 0) {
 			mes "[Canell]";
 			mes "It's well known that we must";
@@ -8374,7 +8374,7 @@ comodo.gat,204,172,5	script	Canell#qsk_dan01	724,{
 		} else {
 			end;
 		}
-	} else if ((Basejob == Job_Dancer && Upper != 1) && (JobLevel < 40)) {
+	} else if ((Class == Job_Dancer && Upper != 1) && (JobLevel < 40)) {
 		mes "[Canell]";
 		mes "Oh, you're such an";
 		mes "adorable little girl! Ah,";
@@ -8383,7 +8383,7 @@ comodo.gat,204,172,5	script	Canell#qsk_dan01	724,{
 		mes "know, Job Level 40, then I'll";
 		mes "be able to teach you something~";
 		close;
-	} else if (Basejob == Job_Dancer && Upper == 1) {
+	} else if (Class == Job_Dancer && Upper == 1) {
 		if (qskill_dancer01 == 0) {
 			mes "[Canell]";
 			mes "It's well known that we must";
@@ -8695,7 +8695,7 @@ comodo.gat,204,172,5	script	Canell#qsk_dan01	724,{
 				close;
 			}
 		} else if (qskill_dancer01 == 9) {
-			if ((Basejob == Job_Dancer && Upper == 1) && (!getskilllv(1011))) {
+			if ((Class == Job_Dancer && Upper == 1) && (!getskilllv(1011))) {
 				mes "[Canell]";
 				mes "Hm? Oh, I remember you!";
 				mes "A Gypsy now, I see~ That";
@@ -8717,7 +8717,7 @@ comodo.gat,204,172,5	script	Canell#qsk_dan01	724,{
 				gmcommand "@misceffect 253";
 				skill 1011,1,0;
 				close;
-			} else if ((Basejob == Job_Dancer && Upper == 1) && (qskill_dan != 0)) {
+			} else if ((Class == Job_Dancer && Upper == 1) && (qskill_dan != 0)) {
 				mes "[Canell]";
 				mes "Hm...?";
 				mes "Is there anything";
@@ -8740,7 +8740,7 @@ comodo.gat,204,172,5	script	Canell#qsk_dan01	724,{
 		} else {
 			end;
 		}
-	} else if (Basejob != Job_Dancer) {
+	} else if (Class != Job_Dancer) {
 		if (Sex != Male) {
 			mes "[Canell]";
 			mes "Oh, what a cute";
@@ -8768,7 +8768,7 @@ comodo.gat,204,172,5	script	Canell#qsk_dan01	724,{
 
 prontera.gat,183,333,1	script	Aelle#qsk_dan02	79,{
 
-	if (Basejob == Job_Dancer) {
+	if (Class == Job_Dancer) {
 		if (qskill_dancer01 == 3) {
 			mes "[Aelle]";
 			mes "Pssst, hey! I got";
@@ -9091,7 +9091,7 @@ prontera.gat,183,333,1	script	Aelle#qsk_dan02	79,{
 
 pay_arche.gat,109,169,3	script	Arpesto	712,{
 
-	if (Basejob == Job_Hunter) {
+	if (Class == Job_Hunter) {
 		if (qskill_hunter == 100) {
 			if (getskilllv(1009) == 1) {
 				mes "[Arpesto]";
@@ -9447,7 +9447,7 @@ pay_arche.gat,109,169,3	script	Arpesto	712,{
 
 prt_in.gat,85,99,3	script	Knight#kabuto	734,{
 
-	if (Basejob == Job_Knight) {
+	if (Class == Job_Knight) {
 		if (qskill_knight == 10) {
 			mes "[Essofeit]";
 			mes "Ah, it must be grand to";
@@ -10138,7 +10138,7 @@ geffen_in.gat,151,119,4	script	Great Wizard	64,{
 			mes "I have nothing more to teach you ...";
 			close;
 		} else {
-			if (countitem(746) > 2 && countitem(730) > 0 && countitem(935) > 4 && countitem(943) > 0 && ((JobLevel > 34 && Basejob == Job_Mage) || Basejob == Job_Wizard || Basejob == Job_Sage)) {
+			if (countitem(746) > 2 && countitem(730) > 0 && countitem(935) > 4 && countitem(943) > 0 && ((JobLevel > 34 && Class == Job_Mage) || Class == Job_Wizard || Class == Job_Sage)) {
 				mes "[BLIZZARDRISS]";
 				mes "Okay, I have received your request.";
 				mes "I will now awaken your hidden energies . .";
@@ -10211,7 +10211,7 @@ geffen_in.gat,151,119,4	script	Great Wizard	64,{
 
 alberta.gat,83,96,5	script	Necko	98,7,7,{
 
-	if ((BaseJob == Job_Merchant) || (BaseJob == Job_Blacksmith) || (BaseJob == Job_Alchemist)) {
+	if ((Class == Job_Merchant) || (Class == Job_Blacksmith) || (Class == Job_Alchemist)) {
 		if (mc_loud_x == 1) {
 			mes "[Necko]";
 			mes "I'm sorry. Necko's store is...";
@@ -10235,7 +10235,7 @@ alberta.gat,83,96,5	script	Necko	98,7,7,{
 			mes "Pukakakakakakakakakaka!!!";
 			mes "Ppyakikakikakakakakakakaka!!";
 			close;
-		} else if (Basejob == Job_Merchant && JobLevel < 15) {
+		} else if (Class == Job_Merchant && JobLevel < 15) {
 			mes "[Necko]";
 			mes "Oh, did you come because";
 			mes "you are infatuated with my voice?";
@@ -10255,7 +10255,7 @@ alberta.gat,83,96,5	script	Necko	98,7,7,{
 			mes "Uahahahahahahahahahahahaha!";
 			mes "Kyukwakakakakakakakakakaka!";
 			close;
-		} else if (countitem(722) > 6 && countitem(532) > 0 && countitem(921) > 49 && ((Basejob == Job_Merchant && JobLevel >= 15) || Basejob == Job_Blacksmith || Basejob == Job_Alchemist)) {
+		} else if (countitem(722) > 6 && countitem(532) > 0 && countitem(921) > 49 && ((Class == Job_Merchant && JobLevel >= 15) || Class == Job_Blacksmith || Class == Job_Alchemist)) {
 			mes "[Necko]";
 			mes "Oh! You!";
 			mes "You are qualified to learn how to shout!";
@@ -10382,7 +10382,7 @@ OnTouch:
 
 alberta.gat,119,221,6	script	Charlron	107,{
 
-	if ((BaseJob == Job_Merchant) || (BaseJob == Job_Blacksmith) || (BaseJob == Job_Alchemist)) {
+	if ((Class == Job_Merchant) || (Class == Job_Blacksmith) || (Class == Job_Alchemist)) {
 		if (mc_changecart_x == 1) {
 			mes "[Charlron]";
 			mes "Mmm? I was wondering who was making all";
@@ -10402,7 +10402,7 @@ alberta.gat,119,221,6	script	Charlron	107,{
 			mes "[Charlron]";
 			mes "Be healthy~";
 			close;
-		} else if ((Basejob == Job_Merchant && JobLevel >= 30) || Basejob == Job_Blacksmith || Basejob == Job_Alchemist) {
+		} else if ((Class == Job_Merchant && JobLevel >= 30) || Class == Job_Blacksmith || Class == Job_Alchemist) {
 			mes "[Charlron]";
 			mes "Nice to see you fellow merchant";
 			mes "If I remember correctly,";
@@ -10544,7 +10544,7 @@ alberta.gat,119,221,6	script	Charlron	107,{
 
 alberta.gat,232,106,6	script	Gershaun	57,{
 
-	if ((BaseJob == Job_Merchant) || (BaseJob == Job_Blacksmith) || (BaseJob == Job_Alchemist)) {
+	if ((Class == Job_Merchant) || (Class == Job_Blacksmith) || (Class == Job_Alchemist)) {
 		if (mc_cartrevolution_x == 1) {
 			mes "[Gershaun]";
 			mes "Ah, long time no see!";
@@ -10558,7 +10558,7 @@ alberta.gat,232,106,6	script	Gershaun	57,{
 			mes "I'm happy! Scratch my back!";
 			mes "Here! Hurry!";
 			close;
-		} else if ((Basejob == Job_Merchant && JobLevel >= 35) || Basejob == Job_Blacksmith || Basejob == Job_Alchemist) {
+		} else if ((Class == Job_Merchant && JobLevel >= 35) || Class == Job_Blacksmith || Class == Job_Alchemist) {
 			mes "[Gershaun]";
 			mes "Ooh. You have a firm body";
 			mes "for a merchant. You must be";
@@ -10941,7 +10941,7 @@ alberta.gat,232,106,6	script	Gershaun	57,{
 
 prt_monk.gat,270,198,3	script	Apprentice Monk	753,{
 
-	if (Basejob == Job_Monk) {
+	if (Class == Job_Monk) {
 		if (qskill_monk == 7) {
 			mes "[Monk]";
 			mes "To take the time to";
@@ -11140,7 +11140,7 @@ prt_monk.gat,270,198,3	script	Apprentice Monk	753,{
 
 monk_test.gat,316,69,5	script	Monk	823,{
 
-	if (Basejob == Job_Monk) {
+	if (Class == Job_Monk) {
 		if (qskill_monk == 6) {
 			mes "[Monk]";
 			mes "How did you convince";
@@ -11368,7 +11368,7 @@ monk_test.gat,316,69,5	script	Monk	823,{
 
 prt_in.gat,234,133,4	script	Nami	66,{
 
-	if (Basejob == Job_Novice && JobLevel > 3 || BaseLevel > 11 && skill_nov < 3) {
+	if (Class == Job_Novice && JobLevel > 3 || BaseLevel > 11 && skill_nov < 3) {
 		mes "[Nami]";
 		mes "Hello!";
 		mes "I want to be a nurse so bad!";
@@ -11546,7 +11546,7 @@ prt_in.gat,234,133,4	script	Nami	66,{
 
 prt_in.gat,73,87,4	script	Chivalry Member	65,{
 
-	if (Basejob == Job_Novice && JobLevel > 6 && (skill_nov == 3 || skill_nov == 4 || skill_nov == 5)) {
+	if (Class == Job_Novice && JobLevel > 6 && (skill_nov == 3 || skill_nov == 4 || skill_nov == 5)) {
 		mes "[Bulma]";
 		mes "Yeah. . . I look great. . .";
 		mes "I am a knight in the knight's";
@@ -11837,7 +11837,7 @@ prt_castle.gat,175,146,4	script	Nursing Instructor	50,{
 
 prt_church.gat,111,112,1	script	Sister Linus	79,{
 
-	if (Basejob == Job_Priest) {
+	if (Class == Job_Priest) {
 		if (qskill_priest == 100) {
 			if (!getskilllv(1014)) {
 				mes "[Sister Linus]";
@@ -12444,8 +12444,8 @@ OnTouch:
 
 in_rogue.gat,355,179,0	script	Haijara Greg#rogueguild	46,{
 
-	if (Basejob == Job_Rogue) {
-		if ((qskill_rogue01 == 12) && (Basejob == Job_Rogue && Upper == 1)) {
+	if (Class == Job_Rogue) {
+		if ((qskill_rogue01 == 12) && (Class == Job_Rogue && Upper == 1)) {
 			mes "[Haijara Greg]";
 			mes "Hm? Ah, amnesia as";
 			mes "resulting from transcending,";
@@ -12455,7 +12455,7 @@ in_rogue.gat,355,179,0	script	Haijara Greg#rogueguild	46,{
 			skill 1005,1,0;
 			set qskill_rogue01,13;
 			close;
-		} else if ((qskill_rogue01 == 13) && (Basejob == Job_Rogue && Upper == 1)) {
+		} else if ((qskill_rogue01 == 13) && (Class == Job_Rogue && Upper == 1)) {
 			mes "[Haijara Greg]";
 			mes "A Stalker, eh?";
 			mes "Make sure that you";
@@ -12496,7 +12496,7 @@ in_rogue.gat,355,179,0	script	Haijara Greg#rogueguild	46,{
 					case 1:
 						mes "[Haijara Greg]";
 						mes "Hmm... Well, I suppose";
-						if (Basejob == Job_Rogue) {
+						if (Class == Job_Rogue) {
 							mes "I can trust a fellow Rogue";
 						} else {
 							mes "I can trust a fellow Stalker";
@@ -12856,7 +12856,7 @@ in_rogue.gat,355,179,0	script	Haijara Greg#rogueguild	46,{
 
 in_rogue.gat,152,29,0	script	Louis Greg#rogueguild	84,{
 
-	if (Basejob == Job_Rogue || (Basejob == Job_Thief && Upper == 1)) {
+	if (Class == Job_Rogue || (Class == Job_Thief && Upper == 1)) {
 		if (qskill_rogue01 < 1) {
 			mes "[Louis Greg]";
 			mes "My father just...";
@@ -13004,7 +13004,7 @@ in_rogue.gat,152,29,0	script	Louis Greg#rogueguild	84,{
 
 in_rogue.gat,268,125,2	script	Thor Greg#rogueguild	86,{
 
-	if (Basejob == Job_Rogue || (Basejob == Job_Thief && Upper == 1)) {
+	if (Class == Job_Rogue || (Class == Job_Thief && Upper == 1)) {
 		if (qskill_rogue01 < 1) {
 			mes "[Thor Greg]";
 			mes "Where did father go?";
@@ -13192,7 +13192,7 @@ in_rogue.gat,268,125,2	script	Thor Greg#rogueguild	86,{
 
 in_rogue.gat,181,114,3	script	Jay Greg#rogueguild	85,{
 
-	if (Basejob == Job_Rogue || (Basejob == Job_Thief && Upper == 1)) {
+	if (Class == Job_Rogue || (Class == Job_Thief && Upper == 1)) {
 		if (qskill_rogue01 < 1) {
 			mes "[Jay Greg]";
 			mes "My father must be hidden";
@@ -13856,7 +13856,7 @@ OnStartArena:
 
 yuno_in03.gat,176,24,3	script	Mishuna	755,{
 
-	if (Basejob == Job_Sage) {
+	if (Class == Job_Sage) {
 		if (qskill_sage01 == 100) {
 			if ((!getskilllv(1018)) && (!getskilllv(1017)) && (!getskilllv(1019)) && (!getskilllv(1008)) && (!getskilllv(1007))) {
 				mes "[Mishuna]";
@@ -14926,7 +14926,7 @@ yuno_in03.gat,176,24,3	script	Mishuna	755,{
 
 prt_in.gat,75,88,5	script	Leon Von Frich	85,3,3,{
 
-	if ((Basejob == Job_Swordsman && JobLevel >= 25) || Basejob == Job_Knight || Basejob == Job_Crusader) {
+	if ((Class == Job_Swordsman && JobLevel >= 25) || Class == Job_Knight || Class == Job_Crusader) {
 		if (sm_fatalblow_x == 1) {
 			mes "[Leon]";
 			mes "Eh?";
@@ -14935,7 +14935,7 @@ prt_in.gat,75,88,5	script	Leon Von Frich	85,3,3,{
 			mes "Nice to see you again! How are you?";
 			mes "Be careful! Hahaha!";
 			close;
-		} else if (countitem(1752) > 9 && countitem(1751) > 9 && countitem(532) > 0 && countitem(962) > 29 && countitem(526) > 4 && ((Basejob == Job_Swordsman && JobLevel >= 25) || Basejob == Job_Knight || Basejob == Job_Crusader)) {
+		} else if (countitem(1752) > 9 && countitem(1751) > 9 && countitem(532) > 0 && countitem(962) > 29 && countitem(526) > 4 && ((Class == Job_Swordsman && JobLevel >= 25) || Class == Job_Knight || Class == Job_Crusader)) {
 			mes "[Leon]";
 			mes "Ooh! You are more than ready";
 			mes "to learn Fatal Blow!";
@@ -15090,7 +15090,7 @@ OnTouch:
 
 izlude_in.gat,175,130,2	script	Knight De Thomas	98,{
 
-	if ((BaseJob == Job_Swordsman) || (BaseJob == Job_Knight) || (BaseJob == Job_Crusader) && (sm_movingrecovery_x < 1)) {
+	if ((Class == Job_Swordsman) || (Class == Job_Knight) || (Class == Job_Crusader) && (sm_movingrecovery_x < 1)) {
 		mes "[De Thomas]";
 		mes "Oh, no! You must have been hurt! Are you ok?";
 		mes "You must have fought hard to get such serious injuries..";
@@ -15150,7 +15150,7 @@ izlude_in.gat,175,130,2	script	Knight De Thomas	98,{
 			close;
 		}
 			end;
-	} else if ((BaseJob == Job_Swordsman) || (BaseJob == Job_Knight) || (BaseJob == Job_Crusader) && (sm_movingrecovery_x > 1)) {
+	} else if ((Class == Job_Swordsman) || (Class == Job_Knight) || (Class == Job_Crusader) && (sm_movingrecovery_x > 1)) {
 		mes "[De Thomas]";
 		mes "Oh, it's you?";
 		mes "Long time no see!";
@@ -15158,7 +15158,7 @@ izlude_in.gat,175,130,2	script	Knight De Thomas	98,{
 		mes "Hahahaha!";
 		mes "Take care! See you again!";
 		close;
-	} else if ((BaseJob == Job_Swordsman) || (BaseJob == Job_Knight) || (BaseJob == Job_Crusader) && (sm_movingrecovery_x == 1)) {
+	} else if ((Class == Job_Swordsman) || (Class == Job_Knight) || (Class == Job_Crusader) && (sm_movingrecovery_x == 1)) {
 		mes "[De Thomas]";
 		mes "Welcome back...";
 		mes "are you ready to learn Body Movin'?";
@@ -15230,7 +15230,7 @@ izlude_in.gat,175,130,2	script	Knight De Thomas	98,{
 
 prt_in.gat,94,57,3	script	Juan	85,{
 
-	if ((BaseJob == Job_Swordsman) || (BaseJob == Job_Knight) || (BaseJob == Job_Crusader)) {
+	if ((Class == Job_Swordsman) || (Class == Job_Knight) || (Class == Job_Crusader)) {
 		if (sm_autoberserk_x == 1) {
 			mes "[Juan]";
 			mes "Mmm? Long time no see!";
@@ -15239,19 +15239,19 @@ prt_in.gat,94,57,3	script	Juan	85,{
 			mes "Many expect great things from you.";
 			mes "You can do it.";
 			close;
-		} else if (Basejob == Job_Swordsman && JobLevel < 10) {
+		} else if (Class == Job_Swordsman && JobLevel < 10) {
 			mes "[?]";
 			mes "What are you?";
 			mes "Eh, still a beginner.";
 			mes "I'm busy, so go train a little more";
 			mes "before coming back.";
 			close;
-		} else if (Basejob == Job_Swordsman && JobLevel > 10 && JobLevel < 30) {
+		} else if (Class == Job_Swordsman && JobLevel > 10 && JobLevel < 30) {
 			mes "[Juan]";
 			mes "Oh, nice to meet you.";
 			mes "You can be on your way. (smiley~(";
 			close;
-		} else if (countitem(924) > 34 && countitem(958) > 9 && countitem(957) > 9 && countitem(518) > 9 && ((Basejob == Job_Swordsman && JobLevel >= 30) || Basejob == Job_Knight || Basejob == Job_Crusader)) {
+		} else if (countitem(924) > 34 && countitem(958) > 9 && countitem(957) > 9 && countitem(518) > 9 && ((Class == Job_Swordsman && JobLevel >= 30) || Class == Job_Knight || Class == Job_Crusader)) {
 			mes "[Juan]";
 			mes "Ooh. Young swordsman!";
 			mes "You are ready to learn the";
@@ -15407,7 +15407,7 @@ prt_in.gat,94,57,3	script	Juan	85,{
 
 moc_prydb1.gat,154,128,4	script	Alcouskou	118,{
 
-	if ((BaseJob == Job_Thief) || (BaseJob == Job_Assassin) || (BaseJob == Job_Rogue)) {
+	if ((Class == Job_Thief) || (Class == Job_Assassin) || (Class == Job_Rogue)) {
 		mes "[Alcouskou]";
 		mes "As you live life you will encounter";
 		mes "many things. Sometimes you will";
@@ -15420,7 +15420,7 @@ moc_prydb1.gat,154,128,4	script	Alcouskou	118,{
 		case 1:
 			switch(skill_thief_1) {
 			case 0:
-				if (countitem(7041) > 4 && ((Basejob == Job_Thief && JobLevel > 24) || Basejob == Job_Assassin || Basejob == Job_Rogue)) {
+				if (countitem(7041) > 4 && ((Class == Job_Thief && JobLevel > 24) || Class == Job_Assassin || Class == Job_Rogue)) {
 					mes "[Alcouskou]";
 					mes "Luckily, you have brought some";
 					mes "sand with you. It is very important";
@@ -15543,7 +15543,7 @@ moc_prydb1.gat,154,128,4	script	Alcouskou	118,{
 				close;
 			}
 		case 2:
-			if (countitem(940) > 19 && ((Basejob == Job_Thief && JobLevel > 34) || Basejob == Job_Assassin || Basejob == Job_Rogue)) {
+			if (countitem(940) > 19 && ((Class == Job_Thief && JobLevel > 34) || Class == Job_Assassin || Class == Job_Rogue)) {
 				mes "[Alcouskou]";
 				mes "Okay! Let's practice!";
 				next;
@@ -15621,7 +15621,7 @@ moc_prydb1.gat,154,128,4	script	Alcouskou	118,{
 				close;
 			}
 		case 3:
-			if (countitem(912) > 0 && countitem(948) > 0 && countitem(908) > 4 && ((Basejob == Job_Thief && JobLevel > 19) || Basejob == Job_Assassin || Basejob == Job_Rogue)) {
+			if (countitem(912) > 0 && countitem(948) > 0 && countitem(908) > 4 && ((Class == Job_Thief && JobLevel > 19) || Class == Job_Assassin || Class == Job_Rogue)) {
 				mes "[Alcouskou]";
 				mes "Wow, you have already prepared?";
 				mes "Great, I see promise in you. -";
@@ -15712,7 +15712,7 @@ moc_prydb1.gat,154,128,4	script	Alcouskou	118,{
 				close;
 			}
 		case 4:
-			if (countitem(910) > 1 && countitem(911) > 1 && ((Basejob == Job_Thief && JobLevel > 14) || Basejob == Job_Assassin || Basejob == Job_Rogue)) {
+			if (countitem(910) > 1 && countitem(911) > 1 && ((Class == Job_Thief && JobLevel > 14) || Class == Job_Assassin || Class == Job_Rogue)) {
 				mes "[Alcouskou]";
 				mes "Wow! Have you already gathered the items!";
 				mes "Very well, do you wish to begin?";
@@ -15904,7 +15904,7 @@ payon.gat,91,77,3	script	Bag Seller	99,{
 
 gef_tower.gat,115,36,4	script	Meow	876,{
 
-	if (Basejob == Job_Wizard) {
+	if (Class == Job_Wizard) {
 		if (qskill_wizard01 == 100) {
 			if (!getskilllv(1006)) {
 				mes "[Meow]";

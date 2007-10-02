@@ -71,14 +71,14 @@ geffen_in.gat,164,109,0	script	Wizard Stanza	64,{
 	mes "[Stanza]";
 	mes "I sense the presence of a mighty spirit. Can it be you...?";
 	next;
-	if ((Basejob == Job_Mage) || (Basejob == Job_Wizard) || (Basejob == Job_Sage)) {
+	if ((Class == Job_Mage) || (Class == Job_Wizard) || (Class == Job_Sage)) {
 		mes "[Stanza]";
 		mes "It seems that you are trained in the mystic arts. Magic... Its power is governed by the law of cause and effect.";
-	} else if ((Basejob == Job_Acolyte) || (Basejob == Job_Priest) || (Basejob == Job_Monk)) {
+	} else if ((Class == Job_Acolyte) || (Class == Job_Priest) || (Class == Job_Monk)) {
 		mes "[Stanza]";
 		mes "Ah...";
 		mes "I see that you wield holy power in one way or another. I suppose Holy power may be considered one form of mystical energy.";
-	} else if (Basejob == Job_Novice) {
+	} else if (Class == Job_Novice) {
 		mes "[Stanza]";
 		mes "Although you may not be able to use magic or any other kind of powerful skills for now, this knowledge may be helpful in the future, young Novice...";
 	} else {
@@ -678,10 +678,10 @@ geffen_in.gat,22,125,1	script	Crumpler	52,{
 	mes "You sure are dressed pretty,";
 	mes "ya fancy schmancy Mage!";
 	next;
-	if (Basejob == Job_Mage) {
+	if (Class == Job_Mage) {
 		mes "^3355FFSomeday, you swear to yourself, you will have your bloody revenge on this belligerent drunk for besmirching the proud Mage profession. Someday...^000000";
 		close;
-	} else if (Basejob == Job_Wizard) {
+	} else if (Class == Job_Wizard) {
 		switch(select("Actually, I'm a Wizard.")) {
 		case 1:
 			mes "[Crumpler]";
@@ -740,7 +740,7 @@ geffen_in.gat,22,125,1	script	Crumpler	52,{
 				close;
 			}
 		}
-	} else if (Basejob == Job_Sage) {
+	} else if (Class == Job_Sage) {
 		switch(select("Actually, sir, I'm a Sage.")) {
 		case 1:
 			mes "[Crumpler]";
@@ -1080,12 +1080,12 @@ geffen_in.gat,79,76,2	script	Merchant Daven	120,{
 	next;
 	switch(select("Mages...?","Economy?","Who are you?")) {
 	case 1:
-		if (Basejob == Job_Mage || Basejob == Job_Wizard) {
+		if (Class == Job_Mage || Class == Job_Wizard) {
 			mes "[Merchant Daven]";
 			mes "Mages are wielders of magic. But you would know more about that topic now, wouldn't you?";
 			close;
 		}
-		if (Basejob != Job_Mage && Basejob != Job_Wizard) {
+		if (Class != Job_Mage && Class != Job_Wizard) {
 			mes "[Merchant Daven]";
 			mes "Mages and Wizards are always carrying books and studying magic. That's just the way they are.";
 			next;
@@ -1100,13 +1100,13 @@ geffen_in.gat,79,76,2	script	Merchant Daven	120,{
 			close;
 		}
 	case 2:
-		if (Basejob == Job_Blacksmith) {
+		if (Class == Job_Blacksmith) {
 			mes "[Merchant Daven]";
 			mes "The economy...?";
 			mes "Why, that's all thanks to Blacksmiths! But you should know that already, shouldn't you?";
 			close;
 		}
-		if (Basejob != Job_Blacksmith) {
+		if (Class != Job_Blacksmith) {
 			mes "[Merchant Daven]";
 			mes "Well, I guess you can thank the Blacksmiths for the economy here in Geffen. Sure, they always dirty, sweaty, smelly and talk kind of rudely...";
 			next;
@@ -1123,7 +1123,7 @@ geffen_in.gat,79,76,2	script	Merchant Daven	120,{
 		next;
 		switch(select("...^EE0000Magnum Break^000000!")) {
 		case 1:
-			if (Basejob == Job_Swordsman) {
+			if (Class == Job_Swordsman) {
 				mes "[Merchant Daven]";
 				mes "Whoa, whoa!";
 				mes "It was just a joke!";
@@ -1170,10 +1170,10 @@ geffen_in.gat,114,73,5	script	Hadenheim	709,{
 		mes "I mean, all these new cities are being discovered by explorers, so import and export trade is really booming!";
 		next;
 		
-		if ((Basejob == Job_Merchant) || (Basejob == Job_Blacksmith) || (Basejob == Job_Alchemist)) {
+		if ((Class == Job_Merchant) || (Class == Job_Blacksmith) || (Class == Job_Alchemist)) {
 			mes "[Hans Hadenheim]";
 			mes "You're in the trading business yourself, right? So of course you'd understand that we're in a Golden Age of trade!";
-		} else if (Basejob == Job_Novice) {
+		} else if (Class == Job_Novice) {
 			mes "[Hans Handenheim]";
 			mes "I guess...";
 			mes "Those kinds of concepts might be too high brow for a rookie like you.";

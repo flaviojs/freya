@@ -36,7 +36,7 @@ prt_castle.gat,43,30,3	script	Charles Orleans#cook	878,{
 		//EnableItemMove;
 		end;
 	}
-	if (BaseJob == Job_Novice) {
+	if (Class == Job_Novice) {
 		if (sex) {
 			cutin "orleans_5",0;
 			mes "[Charles Orleans]";

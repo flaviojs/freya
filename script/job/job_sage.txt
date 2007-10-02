@@ -32,8 +32,8 @@ yuno_in02.gat,38,61,5	script	Dean of the Academy	743,{
 		cutin "job_sage_kayron",255;
 		end;
 	}
-	if (Basejob != Job_Mage) {
-		if (Basejob == Job_Sage) {
+	if (Class != Job_Mage) {
+		if (Class == Job_Sage) {
 			cutin "job_sage_kayron",2;
 			mes "[Kayron Grik]";
 			mes "What brings you here? Is there anything bothering you recently?";
@@ -45,7 +45,7 @@ yuno_in02.gat,38,61,5	script	Dean of the Academy	743,{
 			close2;
 			cutin "job_sage_kayron",255;
 			end;
-		} else if (Basejob == Job_Novice) {
+		} else if (Class == Job_Novice) {
 			cutin "job_sage_kayron",2;
 			mes "[Kayron Grik]";
 			mes "Hahah, so my little Novice, what brings you this way? ...I guess you're on a sightseeing trip?";
@@ -227,8 +227,8 @@ yuno_in03.gat,154,35,4	script	Staff of the Academy	742,{
 		mes "have a good day, adventurer~";
 		close;
 	}
-	if (Basejob != Job_Mage) {
-		if (Basejob == Job_Sage) {
+	if (Class != Job_Mage) {
+		if (Class == Job_Sage) {
 			mes "[Metheus Sylphe]";
 			mes "Oh nice to meet you again, long time no see.";
 			mes "So how's it going with the studying?";
@@ -241,7 +241,7 @@ yuno_in03.gat,154,35,4	script	Staff of the Academy	742,{
 			mes "If you know any Sage candidates, please give them some advice...";
 			mes "Also, please give my regards to your colleagues as well.";
 			close;
-		} else if (Basejob == Job_Novice) {
+		} else if (Class == Job_Novice) {
 			mes "[Metheus Sylphe]";
 			mes "Welcome to the Schweicherbil Magic Academy.";
 			next;
@@ -771,8 +771,8 @@ yuno_in03.gat,154,35,4	script	Staff of the Academy	742,{
 
 yuno_in03.gat,105,177,5	script	Written Test Professor	754,{
 
-	if (Basejob != Job_Mage) {
-		if (Basejob == Job_Sage) {
+	if (Class != Job_Mage) {
+		if (Class == Job_Sage) {
 			mes "[Claytos Verdo]";
 			mes "Eh? What? Why are you back here?";
 			mes "Do you want to enter the school again?";
@@ -785,7 +785,7 @@ yuno_in03.gat,105,177,5	script	Written Test Professor	754,{
 			mes "Don't forget to record everything you've experienced.";
 			mes "You must share your knowledge with others by taking excellent notes.";
 			close;
-		} else if (Basejob == Job_Novice) {
+		} else if (Class == Job_Novice) {
 			mes "[Claytos Verdo]";
 			mes "What are you doing here, kid?";
 			mes "This is a Magic Academy, not a day care center.";
@@ -794,7 +794,7 @@ yuno_in03.gat,105,177,5	script	Written Test Professor	754,{
 			mes "Go outside and play with the Porings. That's your job.";
 			mes "Go out, chop chop!!";
 			close;
-		} else if (Basejob == Job_Wizard) {
+		} else if (Class == Job_Wizard) {
 			mes "[Claytos Verdo]";
 			mes "Well...look who came crawling back. Magic addict.";
 			mes "Yeah yeah, so it's not so bad to be devoted to magic.";
@@ -2531,8 +2531,8 @@ yuno_in03.gat,105,177,5	script	Written Test Professor	754,{
 
 yuno_in03.gat,169,180,3	script	Practical Examination Professor	755,{
 
-	if (Basejob != Job_Mage) {
-		if (Basejob == Job_Sage) {
+	if (Class != Job_Mage) {
+		if (Class == Job_Sage) {
 			mes "[Hermes Tris]";
 			mes "Welcome. How have you been?";
 			mes "I guess you've been through a lot of hard times...I can tell by your appearance.";
@@ -2545,7 +2545,7 @@ yuno_in03.gat,169,180,3	script	Practical Examination Professor	755,{
 			mes "However, it's a very dangerous idea to go deep inside a dungeon alone.";
 			mes "You'd better look for trustworthy comrades.";
 			close;
-		} else if (Basejob == Job_Novice) {
+		} else if (Class == Job_Novice) {
 			mes "[Hermes Tris]";
 			mes "Heh heh, now ain't that a cute little Novice?";
 			next;
@@ -2739,8 +2739,8 @@ yuno_in03.gat,169,180,3	script	Practical Examination Professor	755,{
 
 yuno_in03.gat,62,176,2	script	History Professor	109,{
 
-	if (Basejob != Job_Mage) {
-		if (Basejob == Job_Sage) {
+	if (Class != Job_Mage) {
+		if (Class == Job_Sage) {
 			mes "[Saphien Layless]";
 			mes "Do I know you? Were you one of my students?";
 			mes "Oh, it doesn't matter anyway. You wouldn't be a Sage without graduating from this academy...";
@@ -2753,7 +2753,7 @@ yuno_in03.gat,62,176,2	script	History Professor	109,{
 			mes "I guess you're treading the right path...";
 			mes "One of these days you'll look back to this moment and realize it changed your life.";
 			close;
-		} else if (Basejob == Job_Novice) {
+		} else if (Class == Job_Novice) {
 			mes "[Saphien Layless]";
 			mes "A Novice? Why is a novice here?";
 			next;
@@ -3178,8 +3178,8 @@ yuno_in03.gat,62,176,2	script	History Professor	109,{
 
 yuno_in03.gat,32,102,1	script	Biology Professor	755,{
 
-	if (Basejob != Job_Mage) {
-		if (Basejob == Job_Sage) {
+	if (Class != Job_Mage) {
+		if (Class == Job_Sage) {
 			mes "[Lucius Celsus]";
 			mes "What is your business with me?";
 			mes "You must make a reservation a week in advance if you have any questions.";
@@ -3192,7 +3192,7 @@ yuno_in03.gat,32,102,1	script	Biology Professor	755,{
 			mes "You have too much time on your hands. Go explore some dungeons.";
 			mes "I think it will be more helpful than wasting your time on me.";
 			close;
-		} else if (Basejob == Job_Novice) {
+		} else if (Class == Job_Novice) {
 			mes "[Lucius Celsus]";
 			mes "What brings you to me, kid?";
 			next;
@@ -4033,8 +4033,8 @@ yuno_in03.gat,32,102,1	script	Biology Professor	755,{
 
 yuno_in03.gat,244,31,3	script	Physics Professor	120,{
 
-	if (Basejob != Job_Mage) {
-		if (Basejob == Job_Sage) {
+	if (Class != Job_Mage) {
+		if (Class == Job_Sage) {
 			mes "[Aebecee George]";
 			mes "Tee hee, hello there! What brings you here again, sweetie?";
 			mes "Oh, I see... you're just excited because you finally became a Sage? Tee hee~";
@@ -4047,7 +4047,7 @@ yuno_in03.gat,244,31,3	script	Physics Professor	120,{
 			mes "Okay, is there anything you want to talk about?";
 			mes "Oh dearie, don't be nervous...where's your sense of adventure?";
 			close;
-		} else if (Basejob == Job_Novice) {
+		} else if (Class == Job_Novice) {
 			mes "[Aebecee George]";
 			mes "Well, aren't you the cutest little Novice~";
 			next;

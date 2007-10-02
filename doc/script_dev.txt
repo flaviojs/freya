@@ -13,8 +13,6 @@
 
 ---------------------------------------------------------------------------
 
-- global/global_refine.txt		<- Requires conversion [Assigned ~ Tsuyuki]
-
 - gvg/gvg_adswitch.txt			<- Good enough
 - gvg/gvg_config.txt			<- Good enough
 - gvg/gvg_exe.txt			<- Good enough
@@ -40,7 +38,7 @@
 - quest/quest_job_tutorial.txt		<- Optional? [*]
 - quest/quest_thanatos.txt		<- Optional? [*]
 - town/town_hugel.txt			<- Optional? - Only Rebellion Quest is euRO - No access to an iRO Aegis version [*]
-- town/town_kunlun.txt			<- Optional? - [*]
+- town/town_kunlun.txt			<- Optional? - Only Broken Sword Quest is euRO [*]
 
 
 ---------------------------------------------------------------------------
@@ -49,26 +47,6 @@
 
 - local/arena/ *			<- Izlude Battle Arena - jAthena has it (In Japanese.. translate?) - Requires conversion [*]
 - local/turbotrack/ *			<- Al De Baran Turbo Track - jAthena has it (In Japanese.. translate?) - Requires conversion [*]
-
-
----------------------------------------------------------------------------
- Aurora's Missing No Access Aegis Scripts:
----------------------------------------------------------------------------
-
-- Episode 11.2	<- All Veins Town NPCs / Shops [*]
-- Episode 11.2	<- Veins Old Person Aid Quest [*]
-- Episode 11.2	<- Arunafeltz Spy Quest [*]
-- Episode 11.2	<- Sibling Search Quest [*]
-- Episode 11.2	<- Logistic Base Quest [*]
-
-- Episode 11.3	<- All Nameless Island Town NPCs / Shops [*]
-- Episode 11.3	<- Nameless Island Admission Quest [*]
-- Episode 11.3	<- Peace Teaching of Arunafeltz Republic Quest [*]
-- Episode 11.3	<- Z Group Quest [*]
-- Episode 11.3	<- Investigation Cooperation Quest [*]
-- Episode 11.3	<- Loan Book of Mirv Quest [*]
-- Episode 11.3	<- Diamond of Ruin Quest [*]
-- Episode 11.3	<- Emerald of Misfortune Quest [*]
 
 
 ---------------------------------------------------------------------------
@@ -93,9 +71,6 @@
 -> Hugel Bingo System (town/town_hugel.txt)
 - $@hu_bingoa
 - $@hu_bingob
-
--> Kunlun Power System (town/town_kunlun.txt)
-- $@in_battle
 
 -> Mobster Security Quest (town/town_lighthalzen.txt)
 - $@mobstersecurity

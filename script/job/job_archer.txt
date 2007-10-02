@@ -20,7 +20,7 @@
 payon_in02.gat,64,71,4	script	Archer Guildsman	85,{
 
 	if (Upper == 1) {
-		if (Basejob == Job_Novice && Upper == 1 && (OLD_CLASS == Job_Hunter || OLD_CLASS == Job_Bard || OLD_CLASS == Job_Dancer)) {
+		if (Class == Job_Novice && Upper == 1 && (OLD_CLASS == Job_Hunter || OLD_CLASS == Job_Bard || OLD_CLASS == Job_Dancer)) {
 			mes "[Archer Guildsman]";
 			mes "Hey, I know you.";
 			mes "You took this test";
@@ -69,11 +69,11 @@ payon_in02.gat,64,71,4	script	Archer Guildsman	85,{
 	next;
 	switch(select("I want to be an Archer.","I need the requirements, please.","Nothing, thanks.")) {
 	case 1:
-		if (Basejob == Job_Archer) {
+		if (Class == Job_Archer) {
 			mes "[Archer Guildsman]";
 			mes "You've already become an Archer...";
 			close;
-		} else if (Basejob != Job_Novice) {
+		} else if (Class != Job_Novice) {
 			mes "[Archer Guildsman]";
 			mes "Hmm...";
 			mes "You don't look much like a Novice at all...";
@@ -218,8 +218,8 @@ payon_in02.gat,64,71,4	script	Archer Guildsman	85,{
 	case 2:
 		mes "[Archer Guildsman]";
 		mes "I will explain the requirements for being an Archer.";
-		if (Basejob != Job_Novice) {
-			if (Basejob == Job_Archer) {
+		if (Class != Job_Novice) {
+			if (Class == Job_Archer) {
 				next;
 				mes "[Archer Guildsman]";
 				mes "But...";

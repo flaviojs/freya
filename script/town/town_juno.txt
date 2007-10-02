@@ -1789,7 +1789,7 @@ yuno_in01.gat,17,30,5	script	Wagan	85,{
 		next;
 		switch(select("Leave it to me.","I wish your village luck in doing so.")) {
 		case 1:
-			if (Basejob == Job_Novice) {
+			if (Class == Job_Novice) {
 				mes "[Wagan]";
 				mes "Hmm...";
 				mes "Thanks for the offer, but I don't think this is something that you could do...";
@@ -1851,7 +1851,7 @@ yuno_in01.gat,17,30,5	script	Wagan	85,{
 				mes "[Wagan]";
 				mes "I'm sure the people of Juno are very thankful. Here is a little token of our appreciation...";
 				next;
-				if (Basejob == Job_Sage) {
+				if (Class == Job_Sage) {
 					set '@now_weight,(MaxWeight - Weight);
 					if ('@now_weight < 300) {
 						mes "[Wagan]";

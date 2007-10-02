@@ -21,7 +21,7 @@
 yuno_in02.gat,88,164,5	script	Metheus Sylphe#Library	742,{
 
 	if (TRANSMIGRATE == 0) {
-		if (BaseLevel < 99 || JobLevel < 50 || Basejob < 7 || Basejob > 21 || Upper != 0) {
+		if (BaseLevel < 99 || JobLevel < 50 || Class < 7 || Class > 21 || Upper != 0) {
 			mes "[Metheus Sylphe]";
 			mes "Welcome to the Library of the Schweicherbil Magic Academy.";
 			mes "Here, we have a countless number of books. Please take your time and look around.";
@@ -168,7 +168,7 @@ valkyrie.gat,48,86,4	script	Valkyrie	811,{
 		mes "Honor to the warriors!";
 		close;
 	}
-	if (BaseLevel < 99 || JobLevel < 50 || Basejob < 7 || Basejob > 21 || Upper != 0) {
+	if (BaseLevel < 99 || JobLevel < 50 || Class < 7 || Class > 21 || Upper != 0) {
 		mes "[Valkyrie]";
 		mes "Welcome";
 		mes "to Valhalla,";
@@ -281,7 +281,7 @@ valkyrie.gat,48,86,4	script	Valkyrie	811,{
 	mes "One...";
 	mes "Two......";
 	mes "And Three.";
-	set OLD_CLASS,Basejob;
+	set OLD_CLASS,Class;
 	unequip;
 	jobchange Job_Novice,1;
 	set BaseLevel,1;
@@ -405,7 +405,7 @@ valkyrie.gat,44,39,5	script	Lord Knight#Valkyrie	56,{
 			mes "well being of our comrades.";
 			close;
 		}
-	} else if (OLD_CLASS == Job_Knight && Basejob == Job_Swordsman && Upper == 1 && JobLevel > 39) {
+	} else if (OLD_CLASS == Job_Knight && Class == Job_Swordsman && Upper == 1 && JobLevel > 39) {
 		mes "[Lord Knight]";
 		mes "Your time has come!";
 		mes "The world still needs you.";
@@ -474,7 +474,7 @@ valkyrie.gat,53,39,3	script	Paladin#Valkyrie	752,{
 			mes "always brighten our path!";
 			close;
 		}
-	} else if (OLD_CLASS == Job_Crusader && Basejob == Job_Swordsman && Upper == 1 && JobLevel > 39) {
+	} else if (OLD_CLASS == Job_Crusader && Class == Job_Swordsman && Upper == 1 && JobLevel > 39) {
 		mes "[Paladin]";
 		mes "The Holy War will";
 		mes "be upon us before we";
@@ -546,7 +546,7 @@ valkyrie.gat,44,42,5	script	High Priest#Valkyrie	60,{
 			mes "us from the forces of evil...";
 			close;
 		}
-	} else if (OLD_CLASS == Job_Priest && Basejob == Job_Acolyte && Upper == 1 && JobLevel > 39) {
+	} else if (OLD_CLASS == Job_Priest && Class == Job_Acolyte && Upper == 1 && JobLevel > 39) {
 		mes "[High Priest]";
 		mes "Our world is in";
 		mes "need of people of";
@@ -622,7 +622,7 @@ valkyrie.gat,53,42,3	script	Champion#Valkyrie	52,{
 			mes "so much in life...";
 			close;
 		}
-	} else if (OLD_CLASS == Job_Monk && Basejob == Job_Acolyte && Upper == 1 && JobLevel > 39) {
+	} else if (OLD_CLASS == Job_Monk && Class == Job_Acolyte && Upper == 1 && JobLevel > 39) {
 		mes "[Champion]";
 		mes "It's time.";
 		mes "Time for great heroes";
@@ -697,7 +697,7 @@ valkyrie.gat,44,47,5	script	High Wizard#Valkyrie	735,{
 			mes "was placed in the wrong hands?!";
 			close;
 		}
-	} else if (OLD_CLASS == Job_Wizard && Basejob == Job_Mage && Upper == 1 && JobLevel > 39) {
+	} else if (OLD_CLASS == Job_Wizard && Class == Job_Mage && Upper == 1 && JobLevel > 39) {
 		mes "[High Wizard]";
 		mes "It is time.";
 		mes "And Rune-Midgard has";
@@ -773,7 +773,7 @@ valkyrie.gat,53,47,3	script	Scholar#Valkyrie	743,{
 			mes "process of learning...";
 			close;
 		}
-	} else if (OLD_CLASS == Job_Sage && Basejob == Job_Mage && Upper == 1 && JobLevel > 39) {
+	} else if (OLD_CLASS == Job_Sage && Class == Job_Mage && Upper == 1 && JobLevel > 39) {
 		mes "[Scholar]";
 		mes "Rune-Midgard doesn't";
 		mes "have enough Scholars to";
@@ -853,7 +853,7 @@ valkyrie.gat,44,50,5	script	MasterSmith#Valkyrie	731,{
 			mes "crafting...";
 			close;
 		}
-	} else if (OLD_CLASS == Job_Blacksmith && Basejob == Job_Merchant && Upper == 1 && JobLevel > 39) {
+	} else if (OLD_CLASS == Job_Blacksmith && Class == Job_Merchant && Upper == 1 && JobLevel > 39) {
 		mes "[MasterSmith]";
 		mes "The time has come!";
 		mes "Our world needs brave,";
@@ -929,7 +929,7 @@ valkyrie.gat,53,50,3	script	Biochemist#Valkyrie	122,{
 			mes "a place in Valhalla...";
 			close;
 		}
-	} else if (OLD_CLASS == Job_Alchemist && Basejob == Job_Merchant && Upper == 1 && JobLevel > 39) {
+	} else if (OLD_CLASS == Job_Alchemist && Class == Job_Merchant && Upper == 1 && JobLevel > 39) {
 		mes "[Biochemist]";
 		mes "Yes...";
 		mes "It's about time.";
@@ -965,7 +965,7 @@ valkyrie.gat,53,50,3	script	Biochemist#Valkyrie	122,{
 			}
 		}
 	} else {
-		if (Basejob == Job_Alchemist && Upper == 1 && qskill_homun == 13 && getskilllv(238) == 0) {
+		if (Class == Job_Alchemist && Upper == 1 && qskill_homun == 13 && getskilllv(238) == 0) {
 			mes "[Biochemist]";
 			mes "Ah, have you come to";
 			mes "retrieve the memories";
@@ -1046,7 +1046,7 @@ valkyrie.gat,44,55,5	script	Sniper#Valkyrie	727,{
 			mes "of battling.";
 			close;
 		}
-	} else if (OLD_CLASS == Job_Hunter && Basejob == Job_Archer && Upper == 1 && JobLevel > 39) {
+	} else if (OLD_CLASS == Job_Hunter && Class == Job_Archer && Upper == 1 && JobLevel > 39) {
 		mes "[Sniper]";
 		mes "The world is in";
 		mes "need of mighty Bowmen";
@@ -1114,7 +1114,7 @@ valkyrie.gat,53,54,3	script	Minstrel#Valkyrie	741,{
 			mes "Sha la la la la~";
 			close;
 		}
-	} else if (OLD_CLASS == Job_Bard && Basejob == Job_Archer && Upper == 1 && JobLevel > 39) {
+	} else if (OLD_CLASS == Job_Bard && Class == Job_Archer && Upper == 1 && JobLevel > 39) {
 		mes "[Minstrel]";
 		mes "The dreary world";
 		mes "of mortals is in need";
@@ -1186,7 +1186,7 @@ valkyrie.gat,53,56,3	script	Gypsy#Valkyrie	101,{
 			mes "For me, it's a way of life~";
 			close;
 		}
-	} else if (OLD_CLASS == Job_Dancer && Basejob == Job_Archer && Upper == 1 && JobLevel > 39) {
+	} else if (OLD_CLASS == Job_Dancer && Class == Job_Archer && Upper == 1 && JobLevel > 39) {
 		mes "[Gypsy]";
 		mes "The land of Rune-Midgard";
 		mes "is in need of talented women";
@@ -1267,7 +1267,7 @@ valkyrie.gat,44,58,5	script	Assassin Cross#Valkyrie	725,{
 			mes "Nobody...";
 			close;
 		}
-	} else if (OLD_CLASS == Job_Assassin && Basejob == Job_Thief && Upper == 1 && JobLevel > 39) {
+	} else if (OLD_CLASS == Job_Assassin && Class == Job_Thief && Upper == 1 && JobLevel > 39) {
 		mes "[Assassin Cross]";
 		mes "The time has come.";
 		mes "The world needs you...";
@@ -1353,7 +1353,7 @@ valkyrie.gat,53,58,3	script	Stalker#Valkyrie	747,{
 			mes "they need me.";
 			close;
 		}
-	} else if (OLD_CLASS == Job_Rogue && Basejob == Job_Thief && Upper == 1 && JobLevel > 39) {
+	} else if (OLD_CLASS == Job_Rogue && Class == Job_Thief && Upper == 1 && JobLevel > 39) {
 		mes "[Stalker]";
 		mes "This world needs";
 		mes "more heroes who are";

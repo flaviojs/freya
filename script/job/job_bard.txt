@@ -35,8 +35,8 @@ comodo.gat,226,123,5	script	Roaming Bard	741,{
 		cutin "job_bard_aiolo01",255;
 		end;
 	}
-	if (Basejob != Job_Archer) {
-		if (Basejob == Job_Bard) {
+	if (Class != Job_Archer) {
+		if (Class == Job_Bard) {
 			mes "[Lalo]";
 			mes "Ooh hey! How's your singing these days?";
 			mes "I wonder if your voice got any better.";
@@ -51,7 +51,7 @@ comodo.gat,226,123,5	script	Roaming Bard	741,{
 			close2;
 			cutin "job_bard_aiolo01",255;
 			end;
-		} else if (Basejob == Job_Novice) {
+		} else if (Class == Job_Novice) {
 			cutin "job_bard_aiolo01",2;
 			mes "[Lalo]";
 			mes "The sadness that overcomes my heart..";

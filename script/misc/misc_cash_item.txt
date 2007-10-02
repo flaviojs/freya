@@ -74,52 +74,52 @@ morocc.gat,183,94,0	script	Mr. Long	85,{
 	set '@strRetPart8$,getequipname(8);
 	set '@strRetPart9$,getequipname(9);
 	set '@strRetPart10$,getequipname(10);
-	if ('@strRetPart1$ == 0) {
+	if ('@strRetPart1$ == "0") {
 		set '@strPart1$,"Head -[Not equipped]";
 	} else {
 		set '@strPart1$,'@strRetPart1$;
 	}
-	if ('@strRetPart2$ == 0) {
+	if ('@strRetPart2$ == "0") {
 		set '@strPart2$,"Body-[Not equipped]";
 	} else {
 		set '@strPart2$,'@strRetPart2$;
 	}
-	if ('@strRetPart3$ == 0) {
+	if ('@strRetPart3$ == "0") {
 		set '@strPart3$,"Left Hand -[Not equipped]";
 	} else {
 		set '@strPart3$,'@strRetPart3$;
 	}
-	if ('@strRetPart4$ == 0) {
+	if ('@strRetPart4$ == "0") {
 		set '@strPart4$,"Right Hand -[Not equipped]";
 	} else {
 		set '@strPart4$,'@strRetPart4$;
 	}
-	if ('@strRetPart5$ == 0) {
+	if ('@strRetPart5$ == "0") {
 		set '@strPart5$,"Robe -[Not equipped]";
 	} else {
 		set '@strPart5$,'@strRetPart5$;
 	}
-	if ('@strRetPart6$ == 0) {
+	if ('@strRetPart6$ == "0") {
 		set '@strPart6$,"Shoes -[Not equipped]";
 	} else {
 		set '@strPart6$,'@strRetPart6$;
 	}
-	if ('@strRetPart7$ == 0) {
+	if ('@strRetPart7$ == "0") {
 		set '@strPart7$,"Accessory 1-[Not equipped]";
 	} else {
 		set '@strPart7$,'@strRetPart7$;
 	}
-	if ('@strRetPart8$ == 0) {
+	if ('@strRetPart8$ == "0") {
 		set '@strPart8$,"Accessory 2-[Not equipped]";
 	} else {
 		set '@strPart8$,'@strRetPart8$;
 	}
-	if ('@strRetPart9$ == 0) {
+	if ('@strRetPart9$ == "0") {
 		set '@strPart9$,"Head 2-[Not equipped]";
 	} else {
 		set '@strPart9$,'@strRetPart9$;
 	}
-	if ('@strRetPart10$ == 0) {
+	if ('@strRetPart10$ == "0") {
 		set '@strPart10$,"Head 3-[Not equipped]";
 	} else {
 		set '@strPart10$,'@strRetPart10$;
@@ -127,7 +127,7 @@ morocc.gat,183,94,0	script	Mr. Long	85,{
 	switch(select(""+'@strPart1$+"",""+'@strPart2$+"",""+'@strPart3$+"",""+'@strPart4$+"",""+'@strPart5$+"",""+'@strPart6$+"",""+'@strPart7$+"",""+'@strPart8$+"",""+'@strPart9$+"",""+'@strPart10$+"")) {
 	case 1:
 		set '@part,1;
-		if ('@strRetPart1$ == 0) {
+		if ('@strRetPart1$ == "0") {
 			mes "[Mr. Long]";
 			mes "Do I need to refine your brain and make you smarter?";
 			close;
@@ -135,7 +135,7 @@ morocc.gat,183,94,0	script	Mr. Long	85,{
 		break;
 	case 2:
 		set '@part,2;
-		if ('@strRetPart2$ == 0) {
+		if ('@strRetPart2$ == "0") {
 			mes "[Mr. Long]";
 			mes "Come! Let me refine your body with my passion.";
 			close;
@@ -143,7 +143,7 @@ morocc.gat,183,94,0	script	Mr. Long	85,{
 		break;
 	case 3:
 		set '@part,3;
-		if ('@strRetPart3$ == 0) {
+		if ('@strRetPart3$ == "0") {
 			mes "[Mr. Long]";
 			mes "I'm sorry but I don't think I can install a rocket launcher on your left hand...";
 			close;
@@ -151,7 +151,7 @@ morocc.gat,183,94,0	script	Mr. Long	85,{
 		break;
 	case 4:
 		set '@part,4;
-		if ('@strRetPart4$ == 0) {
+		if ('@strRetPart4$ == "0") {
 			mes "[Mr. Long]";
 			mes "I'm sorry but I don't think I can install a rocket launcher on your right hand!";
 			close;
@@ -159,7 +159,7 @@ morocc.gat,183,94,0	script	Mr. Long	85,{
 		break;
 	case 5:
 		set '@part,5;
-		if ('@strRetPart5$ == 0) {
+		if ('@strRetPart5$ == "0") {
 			mes "[Mr. Long]";
 			mes "You don't have a robe with you, don't you?";
 			close;
@@ -167,7 +167,7 @@ morocc.gat,183,94,0	script	Mr. Long	85,{
 		break;
 	case 6:
 		set '@part,6;
-		if ('@strRetPart6$ == 0) {
+		if ('@strRetPart6$ == "0") {
 			mes "[Mr. Long]";
 			mes "Holy! What's that stench on your feet!";
 			close;
@@ -175,7 +175,7 @@ morocc.gat,183,94,0	script	Mr. Long	85,{
 		break;
 	case 7:
 		set '@part,7;
-		if ('@strRetPart7$ == 0) {
+		if ('@strRetPart7$ == "0") {
 			mes "[Mr. Long]";
 			mes "Which kind of accessory are you referring to?";
 			close;
@@ -183,7 +183,7 @@ morocc.gat,183,94,0	script	Mr. Long	85,{
 		break;
 	case 8:
 		set '@part,8;
-		if ('@strRetPart8$ == 0) {
+		if ('@strRetPart8$ == "0") {
 			mes "[Mr. Long]";
 			mes "Which kind of accessory are you referring to?";
 			close;
@@ -191,7 +191,7 @@ morocc.gat,183,94,0	script	Mr. Long	85,{
 		break;
 	case 9:
 		set '@part,9;
-		if ('@strRetPart9$ == 0) {
+		if ('@strRetPart9$ == "0") {
 			mes "[Mr. Long]";
 			mes "Which kind of accessory are you referring to? Are you talking about your head or something?";
 			close;
@@ -199,7 +199,7 @@ morocc.gat,183,94,0	script	Mr. Long	85,{
 		break;
 	case 10:
 		set '@part,10;
-		if ('@strRetPart10$ == 0) {
+		if ('@strRetPart10$ == "0") {
 			mes "[Mr. Long]";
 			mes "...Do you want me to refine your skull?";
 			close;

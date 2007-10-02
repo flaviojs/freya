@@ -27,13 +27,13 @@ prt_in.gat,88,101,4	script	Chivalry Captain	56,{
 		mes "May god bless your body and soul, warrior. I hope you will show your courage and protect those who are weaker than you.";
 		close;
 	}
-	if (Basejob != Job_Swordsman) {
-		if (Basejob == Job_Knight) {
+	if (Class != Job_Swordsman) {
+		if (Class == Job_Knight) {
 			mes "[Captain Herman]";
 			mes "Ah, a member of our Chivalry.";
 			mes "I hope you are living up to my expectations. We have vowed to be strong for our kingdom, even if death is upon us...";
 			close;
-		} else if (Basejob == Job_Novice) {
+		} else if (Class == Job_Novice) {
 			mes "[Captain Herman]";
 			mes "Welcome,";
 			mes "this is the";
@@ -525,8 +525,8 @@ prt_in.gat,88,101,4	script	Chivalry Captain	56,{
 
 prt_in.gat,75,107,4	script	Sir Andrew	65,{
 
-	if (Basejob != Job_Swordsman) {
-		if (Basejob == Job_Knight) {
+	if (Class != Job_Swordsman) {
+		if (Class == Job_Knight) {
 			mes "[Sir Andrew]";
 			mes "You must be";
 			mes "a member of";
@@ -542,7 +542,7 @@ prt_in.gat,75,107,4	script	Sir Andrew	65,{
 			mes "to be too greedy.";
 			mes "After all, we are Knights.";
 			close;
-		} else if (Basejob == Job_Novice) {
+		} else if (Class == Job_Novice) {
 			mes "[Sir Andrew]";
 			mes "Hey there,";
 			mes "little Novice.";
@@ -769,8 +769,8 @@ prt_in.gat,75,107,4	script	Sir Andrew	65,{
 
 prt_in.gat,71,91,0	script	Sir Siracuse	65,{
 
-	if (Basejob != Job_Swordsman) {
-		if (Basejob == Job_Knight) {
+	if (Class != Job_Swordsman) {
+		if (Class == Job_Knight) {
 			mes "[Sir Siracuse]";
 			mes "Hey there!";
 			mes "How are you doing?";
@@ -791,7 +791,7 @@ prt_in.gat,71,91,0	script	Sir Siracuse	65,{
 			mes "[Sir Siracuse]";
 			mes "If you catch any of the new guys acting in a way unbecoming of a Knight, scold them for me please?";
 			close;
-		} else if (Basejob == Job_Novice) {
+		} else if (Class == Job_Novice) {
 			mes "[Sir Siracuse]";
 			mes "Oh?";
 			mes "What is a Novice";
@@ -1536,8 +1536,8 @@ prt_in.gat,71,91,0	script	Sir Siracuse	65,{
 
 prt_in.gat,79,94,4	script	Sir Windsor	733,{
 
-	if (Basejob != Job_Swordsman) {
-		if (Basejob == Job_Knight) {
+	if (Class != Job_Swordsman) {
+		if (Class == Job_Knight) {
 			mes "[Sir Windsor]";
 			mes "...";
 			next;
@@ -1548,7 +1548,7 @@ prt_in.gat,79,94,4	script	Sir Windsor	733,{
 			mes "[Sir Windsor]";
 			mes "Protect.";
 			close;
-		} else if (Basejob == Job_Novice) {
+		} else if (Class == Job_Novice) {
 			mes "[Sir Windsor]";
 			mes "...";
 			next;
@@ -2033,8 +2033,8 @@ OnTouch:
 
 prt_in.gat,69,107,6	script	Lady Amy	728,{
 
-	if (Basejob != Job_Swordsman) {
-		if (Basejob == Job_Knight) {
+	if (Class != Job_Swordsman) {
+		if (Class == Job_Knight) {
 			mes "[Lady Amy]";
 			mes "Oh...!";
 			mes "I wonder, why";
@@ -2052,7 +2052,7 @@ prt_in.gat,69,107,6	script	Lady Amy	728,{
 			mes "You're a member of";
 			mes "the Prontera Chivalry~";
 			close;
-		} else if (Basejob == Job_Novice) {
+		} else if (Class == Job_Novice) {
 			mes "[Lady Amy]";
 			mes "Aww~";
 			mes "What a cute";
@@ -2661,8 +2661,8 @@ prt_in.gat,69,107,6	script	Lady Amy	728,{
 
 prt_in.gat,70,99,6	script	Sir Edmond	734,{
 
-	if (Basejob != Job_Swordsman) {
-		if (Basejob == Job_Knight) {
+	if (Class != Job_Swordsman) {
+		if (Class == Job_Knight) {
 			mes "[Sir Edmond]";
 			mes "Think of your";
 			mes "mind as if it were";
@@ -2679,7 +2679,7 @@ prt_in.gat,70,99,6	script	Sir Edmond	734,{
 			mes "like calm water, in";
 			mes "any situation.";
 			close;
-		} else if (Basejob == Job_Novice) {
+		} else if (Class == Job_Novice) {
 			mes "[Sir Edmond]";
 			mes "Trees with deep roots don't sway with the wind. The fact that powerful skills must be built on strong basics is immutable...";
 			next;
@@ -3075,8 +3075,8 @@ OnTouch:
 
 prt_in.gat,87,92,4	script	Sir Gray	119,{
 
-	if (Basejob != Job_Swordsman) {
-		if (Basejob == Job_Knight) {
+	if (Class != Job_Swordsman) {
+		if (Class == Job_Knight) {
 			mes "[Sir Gray]";
 			mes "The glint of light";
 			mes "that shines off this blade cannot be put into words. This is the weapon every Knight must have.";
@@ -3112,7 +3112,7 @@ prt_in.gat,87,92,4	script	Sir Gray	119,{
 					mes "your items first.";
 					close;
 				} else {
-					if (Zeny > 73999 && countitem(999) > 0 && (Basejob == Job_Knight || Basejob == Job_Swordsman)) {
+					if (Zeny > 73999 && countitem(999) > 0 && (Class == Job_Knight || Class == Job_Swordsman)) {
 						mes "[Sir Gray]";
 						mes "You are ready!";
 						mes "You must know the";
@@ -3158,7 +3158,7 @@ prt_in.gat,87,92,4	script	Sir Gray	119,{
 				mes "Any Knight should be able to wield a Claymore as if it were an extension of their body. I used to look forward to brandishing my Claymore in battle...";
 				close;
 			}
-		} else if (Basejob == Job_Novice) {
+		} else if (Class == Job_Novice) {
 			mes "[Sir Gray]";
 			mes "Believe it";
 			mes "or not, I was";

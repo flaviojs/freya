@@ -29,8 +29,8 @@ gef_tower.gat,111,37,4	script	Wizard Guildsman	70,{
 		mes "Congratulations and good luck with your life!";
 		close;
 	}
-	if (Basejob != Job_Mage) {
-		if (Basejob == Job_Wizard) {
+	if (Class != Job_Mage) {
+		if (Class == Job_Wizard) {
 			if (Sex == Male) {
 				mes "[Catherine]";
 				mes "Since you're already a Wizard, you don't have any more business with me...?";
@@ -48,7 +48,7 @@ gef_tower.gat,111,37,4	script	Wizard Guildsman	70,{
 				mes "Well, if you fix me up with a cute guy... I'd appreciate it...hohoho!.";
 				close;
 			}
-		} else if (Basejob == Job_Novice) {
+		} else if (Class == Job_Novice) {
 			mes "[Wizard Guildsman]";
 			mes "Oh my goodness, it's a novice~ ain't you the cutest little thing.";
 			mes "By the way honey, this place is for Wizards.";
@@ -433,8 +433,8 @@ gef_tower.gat,111,37,4	script	Wizard Guildsman	70,{
 
 gef_tower.gat,102,24,2	script	Gloomy Wizard	735,{
 
-	if (Basejob != Job_Mage) {
-		if (Basejob == Job_Wizard) {
+	if (Class != Job_Mage) {
+		if (Class == Job_Wizard) {
 			mes "[Raulel]";
 			mes "*Cough* *cough* what do you want?";
 			mes "If you are a person that uses magic, then you need to make sure you are well informed about it.";
@@ -457,7 +457,7 @@ gef_tower.gat,102,24,2	script	Gloomy Wizard	735,{
 				mes "If you don't pay attention to yourself, you'll be engulfed by magic one day...";
 				close;
 			}
-		} else if (Basejob == Job_Priest) {
+		} else if (Class == Job_Priest) {
 			mes "[Raulel]";
 			mes "Go away, one who works for the Church!";
 			mes "Magic repels Holy power, jeez...you're messing up my aura.";
@@ -466,7 +466,7 @@ gef_tower.gat,102,24,2	script	Gloomy Wizard	735,{
 			mes "And plus, *cough* *cough* my health isn't all that good right now either...";
 			mes "Don't come any closer, just leave!";
 			close;
-		} else if (Basejob == Job_Novice) {
+		} else if (Class == Job_Novice) {
 			mes "[Raulel]";
 			mes "Why did a little one like you come here?!";
 			mes "Get lost! ~Hahahahaha";
@@ -2375,8 +2375,8 @@ OnTimer9000:
 
 gef_tower.gat,107,36,4	script	White Dog	81,{
 
-	if (Basejob != Job_Mage) {
-		if (Basejob == Job_Wizard) {
+	if (Class != Job_Mage) {
+		if (Class == Job_Wizard) {
 			mes "[Maria]";
 			mes "Instead of sticking around here, wouldn't it be better to go out and test how strong you've become?";
 			next;
@@ -2385,7 +2385,7 @@ gef_tower.gat,107,36,4	script	White Dog	81,{
 			close2;
 			cutin "job_wizard_maria01",255;
 			end;
-		} else if (Basejob == Job_Novice) {
+		} else if (Class == Job_Novice) {
 			mes "[Dog]";
 			mes "What? Kiddo!";
 			mes "Is a Dog talking so amusing to you?";

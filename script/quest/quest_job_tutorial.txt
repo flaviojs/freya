@@ -25,7 +25,7 @@
 prt_church.gat,179,15,1	script	Priest Praupin	110,{
 
 	mes "[Priest Praupin]";
-	if ((BaseJob != Job_Acolyte) && (BaseJob != Job_Priest) && (BaseJob != Job_Monk)) {
+	if ((Class != Job_Acolyte) && (Class != Job_Priest) && (Class != Job_Monk)) {
 		if (tu_acolyte01 == 25) {
 			mes "Oh...!";
 			mes "You're "+strcharinfo(0)+" !";
@@ -361,7 +361,7 @@ prt_monk.gat,230,106,3	script	Asthe#tu	79,{
 				emotion e_heh;
 				set tu_acolyte01, 5;
 				delitem 1504, 1;
-				if (Basejob == Job_Acolyte && Upper == 1) {
+				if (Class == Job_Acolyte && Upper == 1) {
 					set JobExp,JobExp+1000; 
 					set BaseExp, BaseExp + 2000;
 					//misceffect EF_CONE;
@@ -1277,7 +1277,7 @@ monk_in.gat,103,176,7	script	Karven	60,{
 prt_monk.gat,219,164,3	script	Gloria#tu	95,{
 
 	mes "[Gloria]";
-	if (BaseJob != Job_Acolyte) {
+	if (Class != Job_Acolyte) {
 		mes "Hi, hi~";
 		mes "I'm Gloria.";
 		mes "You wanna know";
@@ -1351,7 +1351,7 @@ prt_monk.gat,219,164,3	script	Gloria#tu	95,{
 prt_monk.gat,153,210,3	script	Cleope Verce	95,{
 
 	mes "[Cleope Verce]";
-	if (BaseJob != Job_Acolyte) {
+	if (Class != Job_Acolyte) {
 		mes "Hello hello.";
 		mes "The sun is very";
 		mes "warm today, don't";
@@ -1532,7 +1532,7 @@ prt_monk.gat,153,210,3	script	Cleope Verce	95,{
 prt_monk.gat,217,123,4	script	#tu_monk	139,10,10{
 
 OnTouch:
-	if (BaseJob == Job_Acolyte) {
+	if (Class == Job_Acolyte) {
 		switch(tu_acolyte01) {
 		case 0:
 			mes "[Sound by Window]";
@@ -1551,7 +1551,7 @@ OnTouch:
 			mes "yonder window...^000000";
 			close;
 		}
-	} else if ((BaseJob == Job_Archer) || (BaseJob == Job_Hunter) || (BaseJob == Job_Bard) || (BaseJob == Job_Dancer)) {
+	} else if ((Class == Job_Archer) || (Class == Job_Hunter) || (Class == Job_Bard) || (Class == Job_Dancer)) {
 		mes "[Sound by Window]";
 		mes "Oh...no.. ....so.....";
 		close;
@@ -1561,7 +1561,7 @@ OnTouch:
 
 prt_monk.gat,223,123,3	script	Eavesdrop#tu	111,{
 
-	if (BaseJob != Job_Acolyte) {
+	if (Class != Job_Acolyte) {
 		mes "^3355FFThere's nothing here.^000000";
 		close;
 	}
@@ -1741,7 +1741,7 @@ payon_in02.gat,67,65,3	script	Bard Jet#tu	51,{
 	mes "Goddess of immortality.";
 	next;
 	mes "[Jet]";
-	if (Basejob == Job_Archer) {
+	if (Class == Job_Archer) {
 		mes "Ooh, you're an Archer?";
 		mes "There was a time when I too";
 		mes "was an Archer. But I've changed jobs, so now I entertain the masses with my songs and humor.";
@@ -1818,7 +1818,7 @@ payon_in02.gat,67,65,3	script	Bard Jet#tu	51,{
 		mes "jobs so that you can";
 		mes "come play with me!";
 		close;
-	} else if (Basejob == Job_Bard) {
+	} else if (Class == Job_Bard) {
 		mes "Ooh...!";
 		mes "You're...!";
 		next;
@@ -1845,7 +1845,7 @@ payon_in02.gat,67,65,3	script	Bard Jet#tu	51,{
 		mes "sounds-- wait. It's not funny";
 		mes "if I have to explain it, huh?";
 		close;
-	} else if (Basejob == Job_Dancer) {
+	} else if (Class == Job_Dancer) {
 		mes "Ooh...!";
 		mes "Hello, hello!";
 		mes "Wouldn't it be";
@@ -1912,17 +1912,17 @@ payon_in02.gat,47,13,3	script	Master Kavaruk	55,{
 		mes "The members of our guild are those who not only wish to be brave, but to reach out for our dreams like Icarus did. Our members are aspiring Archers, former Archers and current Archers.";
 		next;
 		mes "[Master Kavaruk]";
-		if (Basejob == Job_Novice && Upper != 1) {
+		if (Class == Job_Novice && Upper != 1) {
 			mes "If you'd like to become an Archer, why don't you go around and learn";
 			mes "a few things about the profession? I'm sure you'll be able to hear plenty of stories around here.";
 			close;
 
-		} else if (Basejob == Job_Archer) {
+		} else if (Class == Job_Archer) {
 			mes "Since you're an Archer, you might";
 			mes "benefit from going around and listening to everyone else's battle experiences. Becoming familiar with different fight scenarios will help you in the future.";
 			close;
 
-		} else if (Basejob == Job_Hunter) {
+		} else if (Class == Job_Hunter) {
 			mes "In fact, there are a few members in our guild who handle Falcons and Arrows, just like you.";
 			next;
 			mes "[Master Kavaruk]";
@@ -1930,7 +1930,7 @@ payon_in02.gat,47,13,3	script	Master Kavaruk	55,{
 			mes "here sometime, though.";
 			close;
 
-		} else if (Basejob == Job_Dancer) {
+		} else if (Class == Job_Dancer) {
 			mes "In fact, a few of our";
 			mes "members specialize in";
 			mes "capturing the fascination";
@@ -1944,7 +1944,7 @@ payon_in02.gat,47,13,3	script	Master Kavaruk	55,{
 			mes "one of these days.";
 			close;
 
-		} else if (Basejob == Job_Bard) {
+		} else if (Class == Job_Bard) {
 			mes "In fact, a few of our members";
 			mes "are highly skilled in singing and entertaining their allies, much in the same way you do.";
 			next;
@@ -1959,7 +1959,7 @@ payon_in02.gat,47,13,3	script	Master Kavaruk	55,{
 		break;
 	case 2:
 		mes "[Master Kavaruk]";
-		if (Basejob == Job_Archer) {
+		if (Class == Job_Archer) {
 			if (tu_archer02 == 0) {
 				mes "Oh, it's a good thing";
 				mes "you're here, "+strcharinfo(0)+".";
@@ -2039,16 +2039,16 @@ payon_in02.gat,47,13,3	script	Master Kavaruk	55,{
 	case 3:
 		mes "[Master Kavaruk]";
 		if (tu_archer01 < 1) {
-			if (Basejob == Job_Novice && Upper != 1) {
+			if (Class == Job_Novice && Upper != 1) {
 				mes "Ah...";
 				mes "So are you";
 				mes "interested in";
 				mes "becoming an Archer?";
 
-			} else if ((BaseJob == Job_Archer) || (BaseJob == Job_Hunter) || (BaseJob == Job_Bard) || (BaseJob == Job_Dancer)) {
+			} else if ((Class == Job_Archer) || (Class == Job_Hunter) || (Class == Job_Bard) || (Class == Job_Dancer)) {
 				mes "Although I can't deny that you're an expert, I suppose it is a good idea to review the basics of archery from time to time. Would you like to try some refresher training?";
 
-			} else if (Basejob == Job_Archer && Upper != 1) {
+			} else if (Class == Job_Archer && Upper != 1) {
 				mes "As an Archer, I can see that you'd want to make sure that you have a strong grasp on the fundamentals";
 				mes "of our job. Would you like some specialized instruction?";
 
@@ -2103,7 +2103,7 @@ payon_in02.gat,47,13,3	script	Master Kavaruk	55,{
 			mes "Did you have a good experience? Learning theory alone is never too enjoyable, but it is necessary.";
 			next;
 			mes "[Master Kavaruk]";
-			if (Basejob == Job_Archer) {
+			if (Class == Job_Archer) {
 				mes "Now it is time to experience the principles you've just learned firsthand. Go speak to ^3131FFRaiden Karus^000000, who is just outside of this building, and he'll tell you about the different skills.";
 				set tu_archer01, 4;
 			} else {
@@ -2143,7 +2143,7 @@ pay_arche.gat,103,165,5	script	Reidin Corse#tu	832,{
 		close;
 	}
 	if (tu_archer01 > 0) {
-		if (Basejob == Job_Hunter || Basejob == Job_Dancer || Basejob == Job_Bard) {
+		if (Class == Job_Hunter || Class == Job_Dancer || Class == Job_Bard) {
 			mes "[Reidin Corse]";
 			mes "I really like this town.";
 			mes "Everything is green and birds singing all around.. such a peaceful place Payon is.";
@@ -3714,7 +3714,7 @@ geffen.gat,61,174,4	script	Sign#M	111,{
 geffen.gat,67,180,4	script	New Mage Manager#M	102,{
 
 	mes "[Mana]";
-	if (Basejob == Job_Novice) {
+	if (Class == Job_Novice) {
 		mes "[Mana]";
 		mes "You're not";
 		mes "ready yet.";
@@ -3722,7 +3722,7 @@ geffen.gat,67,180,4	script	New Mage Manager#M	102,{
 		mes "you've trained more.";
 		close;
 	}
-	if ((BaseJob != Job_Mage) && (BaseJob != Job_Wizard) && (BaseJob != Job_Sage)) {
+	if ((Class != Job_Mage) && (Class != Job_Wizard) && (Class != Job_Sage)) {
 		mes "Be more confident in your job.";
 		mes "Sometimes other jobs may seem";
 		mes "better but take a look back at yourself";
@@ -4459,7 +4459,7 @@ geffen.gat,67,180,4	script	New Mage Manager#M	102,{
 alberta_in.gat,70,51,5	script	Guarnien	98,{
 
 	mes "[Guarnien]";
-	if (Basejob == Job_Merchant && Upper != 1) goto L_JobFix;
+	if (Class == Job_Merchant && Upper != 1) goto L_JobFix;
 		mes "Hello stranger.";
 		mes "I wish I could";
 		mes "offer you help";
@@ -4467,7 +4467,7 @@ alberta_in.gat,70,51,5	script	Guarnien	98,{
 		next;
 		mes "[Guarnien]";
 		mes "However, what I have to teach would only benefit Merchants. Trading and monkey making are my areas of expertise. If you have any Merchant friends, send them to me.";
-		if (Basejob == Job_Merchant && Upper == 1) {
+		if (Class == Job_Merchant && Upper == 1) {
 			next;
 			mes "[Guarnien]";
 			mes "Technically, yes, you're a Merchant, but I know an expert when I see one. You've been through the Merchant life before, I can tell!";
@@ -5865,7 +5865,7 @@ prt_in.gat,251,129,3	script	Maos	709,{
 izlude_in.gat,82,163,3	script	Shurank	733,{
 
 	mes "[Shurank]";
-	if (Basejob == Job_Novice && Upper != 1) {
+	if (Class == Job_Novice && Upper != 1) {
 		mes "Still wondering";
 		mes "what to do with";
 		mes "your future, eh?";
@@ -5885,7 +5885,7 @@ izlude_in.gat,82,163,3	script	Shurank	733,{
 		mes "come back to me...";
 		close;
 	}
-	if ((BaseJob == Job_Swordsman) || (BaseJob == Job_Knight) || (BaseJob == Job_Crusader) && (Upper == 1)) {
+	if ((Class == Job_Swordsman) || (Class == Job_Knight) || (Class == Job_Crusader) && (Upper == 1)) {
 		mes "From your raiment,";
 		mes "I see that you are";
 		if (Sex == Male)
@@ -5899,7 +5899,7 @@ izlude_in.gat,82,163,3	script	Shurank	733,{
 		mes "There's nothing that I can actually offer to teach you. But if you know any new Swordmen that show potential, please direct them to me.";
 		close;
 	}
-	if ((BaseJob != Job_Swordsman) && (BaseJob != Job_Knight) && (BaseJob != Job_Crusader)) {
+	if ((Class != Job_Swordsman) && (Class != Job_Knight) && (Class != Job_Crusader)) {
 		mes "Greetings adventurer.";
 		mes "If you happen to know";
 		mes "any new Swordmen,";
@@ -6757,7 +6757,7 @@ izlude_in.gat,82,163,3	script	Shurank	733,{
 
 geffen.gat,154,143,3	script	Dequ'ee	734,{
 
-	if (BaseJob == Job_Novice) {
+	if (Class == Job_Novice) {
 		mes "[Dequ'ee]";
 		mes "Hey there.";
 		mes "Frustrated with";
@@ -6775,7 +6775,7 @@ geffen.gat,154,143,3	script	Dequ'ee	734,{
 		mes "I don't know how you want to live your life, but you should give the Swordman job some serious thought...";
 		close;
 	}
-	if ((BaseJob == Job_Swordsman) || (BaseJob == Job_Knight) || (BaseJob == Job_Crusader) && (Upper == 1)) {
+	if ((Class == Job_Swordsman) || (Class == Job_Knight) || (Class == Job_Crusader) && (Upper == 1)) {
 		mes "[Dequ'ee]";
 		mes "Ah...";
 		mes "A fellow sword wielder!";
@@ -6786,7 +6786,7 @@ geffen.gat,154,143,3	script	Dequ'ee	734,{
 		mes "depend on the strength of your blade. It's an awesome responsibility, but we can never let our allies down in battle...";
 		close;
 	}
-	if ((BaseJob != Job_Swordsman) && (BaseJob != Job_Knight) && (BaseJob != Job_Crusader)) {
+	if ((Class != Job_Swordsman) && (Class != Job_Knight) && (Class != Job_Crusader)) {
 		mes "[Dequ'ee]";
 		mes "Hello there.";
 		mes "Not a fan of swords, are you?";
@@ -8305,7 +8305,7 @@ morocc_in.gat,12,156,3	script	Bankley	97,{
 moc_ruins.gat,66,164,4	script	Thief Trainer#T	84,{
 
 	mes "[Yierhan]";
-	if (Basejob == Job_Novice) {
+	if (Class == Job_Novice) {
 		mes "Eh...?";
 		mes "A Novice?";
 		mes "Still thinking";
@@ -8318,8 +8318,8 @@ moc_ruins.gat,66,164,4	script	Thief Trainer#T	84,{
 		mes "I might add--come and talk to me. I'll show you the ropes!";
 		close;
 
-	} else if ((BaseJob == Job_Thief) || (BaseJob == Job_Assassin) || (BaseJob == Job_Rogue)) {
-		if ((Basejob == Job_Thief && Upper == 1) || Basejob == Job_Assassin || Basejob == Job_Rogue) {
+	} else if ((Class == Job_Thief) || (Class == Job_Assassin) || (Class == Job_Rogue)) {
+		if ((Class == Job_Thief && Upper == 1) || Class == Job_Assassin || Class == Job_Rogue) {
 			if (tu_thief01 < 8) {
 				mes "Whaaaat are you";
 				mes "doin' here? There's";
@@ -8895,7 +8895,7 @@ moc_ruins.gat,66,164,4	script	Thief Trainer#T	84,{
 			mes "Life without a dream cannot become a perfect one.";
 			close2;
 		}
-	} else if ((BaseJob == Job_Mage) || (BaseJob == Job_Wizard) || (BaseJob == Job_Sage)) {
+	} else if ((Class == Job_Mage) || (Class == Job_Wizard) || (Class == Job_Sage)) {
 		if (tu_magician01 < 7) {
 			mes "I am a thief trainer.";
 			mes "And I can tell you are not a thief.";
@@ -9018,7 +9018,7 @@ moc_ruins.gat,66,164,4	script	Thief Trainer#T	84,{
 
 moc_fild12.gat,166,369,0	script	Battle Traces#1	844,{
 
-	if ((BaseJob == Job_Thief) || (BaseJob == Job_Assassin) || (BaseJob == Job_Rogue)) {
+	if ((Class == Job_Thief) || (Class == Job_Assassin) || (Class == Job_Rogue)) {
 		if (tu_thief01 < 5) {
 			mes "^3355FFThere are traces of poison used in a battle. You can sense its power and decide that it would be safer not to get too close to it.^000000";
 			close;
@@ -9045,7 +9045,7 @@ moc_fild12.gat,166,369,0	script	Battle Traces#1	844,{
 			close;
 		}
 	}
-	if ((BaseJob == Job_Mage) || (BaseJob == Job_Wizard) || (BaseJob == Job_Sage)) {
+	if ((Class == Job_Mage) || (Class == Job_Wizard) || (Class == Job_Sage)) {
 		if (tu_magician01 < 8) {
 			mes "There are traces of poison used in a battle. You can sense its power and decide that it would be safer not to get too close to it.^000000";
 			//misceffect EF_VENOMDUST2;
@@ -9065,7 +9065,7 @@ moc_fild12.gat,166,369,0	script	Battle Traces#1	844,{
 
 moc_fild12.gat,173,215,0	script	Battle Traces#2	844,{
 
-	if ((BaseJob == Job_Thief) || (BaseJob == Job_Assassin) || (BaseJob == Job_Rogue)) {
+	if ((Class == Job_Thief) || (Class == Job_Assassin) || (Class == Job_Rogue)) {
 		if (tu_thief01 < 9) {
 			mes "There are traces of many people going by.";
 			close;
@@ -9077,7 +9077,7 @@ moc_fild12.gat,173,215,0	script	Battle Traces#2	844,{
 			mes "The traces lead to the east.";
 			close;
 		}
-	} else if ((BaseJob == Job_Mage) || (BaseJob == Job_Wizard) || (BaseJob == Job_Sage)) {
+	} else if ((Class == Job_Mage) || (Class == Job_Wizard) || (Class == Job_Sage)) {
 		if (tu_magician01 < 9) {
 			mes "There are traces of many people going by.";
 			close;
@@ -9096,7 +9096,7 @@ moc_fild12.gat,173,215,0	script	Battle Traces#2	844,{
 
 moc_fild12.gat,276,165,0	script	Battle Traces#3	844,{
 
-	if ((BaseJob == Job_Thief) || (BaseJob == Job_Assassin) || (BaseJob == Job_Rogue)) {
+	if ((Class == Job_Thief) || (Class == Job_Assassin) || (Class == Job_Rogue)) {
 		if (tu_thief01 < 10) {
 			mes "There are traces of several who have went by.";
 			close;
@@ -9108,7 +9108,7 @@ moc_fild12.gat,276,165,0	script	Battle Traces#3	844,{
 			mes "There are a peculiar set up footsteps.";
 			close;
 		}
-	} else if ((BaseJob == Job_Mage) || (BaseJob == Job_Wizard) || (BaseJob == Job_Sage)) {
+	} else if ((Class == Job_Mage) || (Class == Job_Wizard) || (Class == Job_Sage)) {
 		if (tu_magician01 < 10) {
 			mes "There are traces of many people going by.";
 			close;
@@ -9127,7 +9127,7 @@ moc_fild12.gat,276,165,0	script	Battle Traces#3	844,{
 
 moc_fild11.gat,39,163,0	script	Battle Traces#4	844,{
 
-	if ((BaseJob == Job_Thief) || (BaseJob == Job_Assassin) || (BaseJob == Job_Rogue)) {
+	if ((Class == Job_Thief) || (Class == Job_Assassin) || (Class == Job_Rogue)) {
 		if (tu_thief01 < 11) {
 			mes "There are traces of many that have gone by.";
 			close;
@@ -9139,7 +9139,7 @@ moc_fild11.gat,39,163,0	script	Battle Traces#4	844,{
 			mes "A new trace has been added.";
 			close;
 		}
-	} else if ((BaseJob == Job_Mage) || (BaseJob == Job_Wizard) || (BaseJob == Job_Sage)) {
+	} else if ((Class == Job_Mage) || (Class == Job_Wizard) || (Class == Job_Sage)) {
 		if (tu_magician01 < 11) {
 			mes "There are traces of many that have gone by.";
 			close;
@@ -9160,7 +9160,7 @@ moc_fild11.gat,39,163,0	script	Battle Traces#4	844,{
 
 moc_fild11.gat,205,52,0	script	Battle Traces#5	844,{
 
-	if ((BaseJob == Job_Thief) || (BaseJob == Job_Assassin) || (BaseJob == Job_Rogue)) {
+	if ((Class == Job_Thief) || (Class == Job_Assassin) || (Class == Job_Rogue)) {
 		if (tu_thief01 < 12) {
 			mes "There are traces of many that have gone by.";
 			close;
@@ -9205,7 +9205,7 @@ moc_fild11.gat,205,52,0	script	Battle Traces#5	844,{
 			mes "Can't find anything else. Only the traces split into two remain.";
 			close;
 		}
-	} else if ((BaseJob == Job_Mage) || (BaseJob == Job_Wizard) || (BaseJob == Job_Sage)) {
+	} else if ((Class == Job_Mage) || (Class == Job_Wizard) || (Class == Job_Sage)) {
 		if (tu_magician01 < 12) {
 			mes "There are traces of many that have gone by.";
 			close;
@@ -9262,7 +9262,7 @@ moc_fild11.gat,205,52,0	script	Battle Traces#5	844,{
 
 moc_fild11.gat,226,235,0	script	Battle Traces#6	844,{
 
-	if ((BaseJob == Job_Thief) || (BaseJob == Job_Assassin) || (BaseJob == Job_Rogue)) {
+	if ((Class == Job_Thief) || (Class == Job_Assassin) || (Class == Job_Rogue)) {
 		if (tu_thief01 < 13) {
 			mes "There are traces of many that have gone by.";
 			close;
@@ -9270,7 +9270,7 @@ moc_fild11.gat,226,235,0	script	Battle Traces#6	844,{
 			mes "There is a trace from the south. It seems to be leading to the north but I can't seem to be able to tell as of yet.";
 			close;
 		}
-	} else if ((BaseJob == Job_Mage) || (BaseJob == Job_Wizard) || (BaseJob == Job_Sage)) {
+	} else if ((Class == Job_Mage) || (Class == Job_Wizard) || (Class == Job_Sage)) {
 		if (tu_magician01 < 13) {
 			mes "There are traces of many that have gone by.";
 			close;
@@ -9285,7 +9285,7 @@ moc_fild11.gat,226,235,0	script	Battle Traces#6	844,{
 
 moc_fild11.gat,184,342,0	script	Battle Traces#7	844,{
 
-	if ((BaseJob == Job_Thief) || (BaseJob == Job_Assassin) || (BaseJob == Job_Rogue)) {
+	if ((Class == Job_Thief) || (Class == Job_Assassin) || (Class == Job_Rogue)) {
 		if (tu_thief01 < 13) {
 			mes "There are traces of several that have stopped by.";
 			close;
@@ -9293,7 +9293,7 @@ moc_fild11.gat,184,342,0	script	Battle Traces#7	844,{
 			mes "Many of the traces are connected. They seemed to have stopped here for a while, but headed north.";
 			close;
 		}
-	} else if ((BaseJob == Job_Mage) || (BaseJob == Job_Wizard) || (BaseJob == Job_Sage)) {
+	} else if ((Class == Job_Mage) || (Class == Job_Wizard) || (Class == Job_Sage)) {
 		if (tu_magician01 < 13) {
 			mes "There are traces of several that have stopped by.";
 			close;
@@ -9308,7 +9308,7 @@ moc_fild11.gat,184,342,0	script	Battle Traces#7	844,{
 
 moc_fild17.gat,213,358,0	script	Battle Traces#8	844,{
 
-	if ((BaseJob == Job_Thief) || (BaseJob == Job_Assassin) || (BaseJob == Job_Rogue)) {
+	if ((Class == Job_Thief) || (Class == Job_Assassin) || (Class == Job_Rogue)) {
 		if (tu_thief01 < 13) {
 			mes "There are traces of about two people that stopped by.";
 			close;
@@ -9320,7 +9320,7 @@ moc_fild17.gat,213,358,0	script	Battle Traces#8	844,{
 			mes "There are traces of a small amont of people.";
 			close;
 		}
-	} else if ((BaseJob == Job_Mage) || (BaseJob == Job_Wizard) || (BaseJob == Job_Sage)) {
+	} else if ((Class == Job_Mage) || (Class == Job_Wizard) || (Class == Job_Sage)) {
 		if (tu_magician01 < 13) {
 			mes "There seem to be traces of approximately two people that stopped by.";
 			close;
@@ -9339,7 +9339,7 @@ moc_fild17.gat,213,358,0	script	Battle Traces#8	844,{
 
 moc_fild17.gat,228,274,0	script	Battle Traces#9	844,{
 
-	if ((BaseJob == Job_Thief) || (BaseJob == Job_Assassin) || (BaseJob == Job_Rogue)) {
+	if ((Class == Job_Thief) || (Class == Job_Assassin) || (Class == Job_Rogue)) {
 		if (tu_thief01 < 14) {
 			mes "There are traces of a small battle.";
 			close;
@@ -9365,7 +9365,7 @@ moc_fild17.gat,228,274,0	script	Battle Traces#9	844,{
 			mes "There are no other peculiar traces other than one leading west.";
 			close;
 		}
-	} else if ((BaseJob == Job_Mage) || (BaseJob == Job_Wizard) || (BaseJob == Job_Sage)) {
+	} else if ((Class == Job_Mage) || (Class == Job_Wizard) || (Class == Job_Sage)) {
 		if (tu_magician01 < 14) {
 			mes "There are traces of a small battle.";
 			close;
@@ -9398,7 +9398,7 @@ moc_fild17.gat,228,274,0	script	Battle Traces#9	844,{
 
 moc_fild17.gat,34,292,0	script	Battle Traces#10	844,{
 
-	if ((BaseJob == Job_Thief) || (BaseJob == Job_Assassin) || (BaseJob == Job_Rogue)) {
+	if ((Class == Job_Thief) || (Class == Job_Assassin) || (Class == Job_Rogue)) {
 		if (tu_thief01 < 16) {
 			mes "A large group of people seem to have gone by.";
 			close;
@@ -9410,7 +9410,7 @@ moc_fild17.gat,34,292,0	script	Battle Traces#10	844,{
 			mes "There are traces leading to the east.";
 			close;
 		}
-	} else if ((BaseJob == Job_Mage) || (BaseJob == Job_Wizard) || (BaseJob == Job_Sage)) {
+	} else if ((Class == Job_Mage) || (Class == Job_Wizard) || (Class == Job_Sage)) {
 		if (tu_magician01 < 16) {
 			mes "A large group of people seem to have gone by.";
 			close;
@@ -9429,7 +9429,7 @@ moc_fild17.gat,34,292,0	script	Battle Traces#10	844,{
 
 moc_fild18.gat,346,296,0	script	Battle Traces#11	844,{
 
-	if ((BaseJob == Job_Thief) || (BaseJob == Job_Assassin) || (BaseJob == Job_Rogue)) {
+	if ((Class == Job_Thief) || (Class == Job_Assassin) || (Class == Job_Rogue)) {
 		if (tu_thief01 < 17) {
 			mes "A large group of people seem to have gone by.";
 			close;
@@ -9441,7 +9441,7 @@ moc_fild18.gat,346,296,0	script	Battle Traces#11	844,{
 			mes "There is blood here and there so other traces should be easy to find.";
 			close;
 		}
-	} else if ((BaseJob == Job_Mage) || (BaseJob == Job_Wizard) || (BaseJob == Job_Sage)) {
+	} else if ((Class == Job_Mage) || (Class == Job_Wizard) || (Class == Job_Sage)) {
 		if (tu_magician01 < 17) {
 			mes "A large group of people seem to have gone by.";
 			close;
@@ -9460,7 +9460,7 @@ moc_fild18.gat,346,296,0	script	Battle Traces#11	844,{
 
 moc_fild18.gat,309,257,0	script	Battle Traces#12	844,{
 
-	if ((BaseJob == Job_Thief) || (BaseJob == Job_Assassin) || (BaseJob == Job_Rogue)) {
+	if ((Class == Job_Thief) || (Class == Job_Assassin) || (Class == Job_Rogue)) {
 		if (tu_thief01 < 18) {
 			mes "A large group of people seem to have gone by.";
 			close;
@@ -9472,7 +9472,7 @@ moc_fild18.gat,309,257,0	script	Battle Traces#12	844,{
 			mes "There are traces leading to the north.";
 			close;
 		}
-	} else if ((BaseJob == Job_Mage) || (BaseJob == Job_Wizard) || (BaseJob == Job_Sage)) {
+	} else if ((Class == Job_Mage) || (Class == Job_Wizard) || (Class == Job_Sage)) {
 		if (tu_magician01 < 18) {
 			mes "A large group of people seem to have gone by.";
 			close;
@@ -9491,7 +9491,7 @@ moc_fild18.gat,309,257,0	script	Battle Traces#12	844,{
 
 moc_fild18.gat,177,333,0	script	Battle Traces#13	844,{
 
-	if ((BaseJob == Job_Thief) || (BaseJob == Job_Assassin) || (BaseJob == Job_Rogue)) {
+	if ((Class == Job_Thief) || (Class == Job_Assassin) || (Class == Job_Rogue)) {
 		if (tu_thief01 < 19) {
 			mes "A large group of people seem to have gone by.";
 			close;
@@ -9503,7 +9503,7 @@ moc_fild18.gat,177,333,0	script	Battle Traces#13	844,{
 			mes "Within the traces of the battle, there are some leading to the southwest.";
 			close;
 		}
-	} else if ((BaseJob == Job_Mage) || (BaseJob == Job_Wizard) || (BaseJob == Job_Sage)) {
+	} else if ((Class == Job_Mage) || (Class == Job_Wizard) || (Class == Job_Sage)) {
 		if (tu_magician01 < 19) {
 			mes "A large group of people seem to have gone by.";
 			close;
@@ -9522,7 +9522,7 @@ moc_fild18.gat,177,333,0	script	Battle Traces#13	844,{
 
 moc_fild18.gat,111,303,0	script	Battle Traces#14	844,{
 
-	if ((BaseJob == Job_Thief) || (BaseJob == Job_Assassin) || (BaseJob == Job_Rogue)) {
+	if ((Class == Job_Thief) || (Class == Job_Assassin) || (Class == Job_Rogue)) {
 		if (tu_thief01 < 20) {
 			mes "A large group of people seem to have gone by.";
 			close;
@@ -9534,7 +9534,7 @@ moc_fild18.gat,111,303,0	script	Battle Traces#14	844,{
 			mes "Traces lead to the south.";
 			close;
 		}
-	} else if ((BaseJob == Job_Mage) || (BaseJob == Job_Wizard) || (BaseJob == Job_Sage)) {
+	} else if ((Class == Job_Mage) || (Class == Job_Wizard) || (Class == Job_Sage)) {
 		if (tu_magician01 < 20) {
 			mes "A large group of people seem to have gone by.";
 			close;
@@ -9553,7 +9553,7 @@ moc_fild18.gat,111,303,0	script	Battle Traces#14	844,{
 
 moc_fild18.gat,109,197,0	script	Battle Traces#15	844,{
 
-	if ((BaseJob == Job_Thief) || (BaseJob == Job_Assassin) || (BaseJob == Job_Rogue)) {
+	if ((Class == Job_Thief) || (Class == Job_Assassin) || (Class == Job_Rogue)) {
 		if (tu_thief01 < 21) {
 			mes "A large group of people seem to have gone by.";
 			close;
@@ -9630,7 +9630,7 @@ moc_fild18.gat,109,197,0	script	Battle Traces#15	844,{
 			mes "There seem to be no other Traps. Traces lead to the south.";
 			close;
 		}
-	} else if ((BaseJob == Job_Mage) || (BaseJob == Job_Wizard) || (BaseJob == Job_Sage)) {
+	} else if ((Class == Job_Mage) || (Class == Job_Wizard) || (Class == Job_Sage)) {
 		if (tu_magician01 < 21) {
 			mes "A large group of people seem to have gone by.";
 			close;
@@ -9715,7 +9715,7 @@ moc_fild18.gat,109,197,0	script	Battle Traces#15	844,{
 
 moc_fild18.gat,156,96,0	script	Battle Traces#16	844,{
 
-	if ((BaseJob == Job_Thief) || (BaseJob == Job_Assassin) || (BaseJob == Job_Rogue)) {
+	if ((Class == Job_Thief) || (Class == Job_Assassin) || (Class == Job_Rogue)) {
 		if (tu_thief01 < 25) {
 			mes "A large group of people seem to have gone by.";
 			close;
@@ -9733,7 +9733,7 @@ moc_fild18.gat,156,96,0	script	Battle Traces#16	844,{
 			mes "No more traces other than ones from the north.";
 			close;
 		}
-	} else if ((BaseJob == Job_Mage) || (BaseJob == Job_Wizard) || (BaseJob == Job_Sage)) {
+	} else if ((Class == Job_Mage) || (Class == Job_Wizard) || (Class == Job_Sage)) {
 		if (tu_magician01 < 25) {
 			mes "A large group of people seem to have gone by.";
 			close;

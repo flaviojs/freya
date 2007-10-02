@@ -98,8 +98,8 @@ job_duncer.gat,43,93,4	script	Aile	724,{
 		cutin "job_dancer_eir03",255;
 		end;
 	}
-	if ((Basejob != Job_Archer) && (Sex == Male)) {
-		if (Basejob == Job_Bard) {
+	if ((Class != Job_Archer) && (Sex == Male)) {
+		if (Class == Job_Bard) {
 			cutin "job_dancer_eir01",2;
 			mes "[Aile]";
 			mes "Welcome~!";
@@ -108,7 +108,7 @@ job_duncer.gat,43,93,4	script	Aile	724,{
 			close2;
 			cutin "job_dancer_eir01",255;
 			end;
-		} else if (Basejob == Job_Dancer) {
+		} else if (Class == Job_Dancer) {
 			cutin "job_dancer_eir01",2;
 			mes "[Aile]";
 			mes "Welcome~!";
@@ -131,7 +131,7 @@ job_duncer.gat,43,93,4	script	Aile	724,{
 		cutin "job_dancer_eir03",255;
 		end;
 	}
-	if ((job_dancer_q == 0) && (Sex == Female) && (Basejob == Job_Archer)) {
+	if ((job_dancer_q == 0) && (Sex == Female) && (Class == Job_Archer)) {
 		cutin "job_dancer_eir01",2;
 		mes "[Aile]";
 		mes "Welcome~!";
@@ -443,13 +443,13 @@ job_duncer.gat,95,93,4	script	Bijou	101,{
 		mes "and come back later.";
 		close;
 	}
-	if (Basejob != Job_Archer) {
-		if (Basejob == Job_Bard) {
+	if (Class != Job_Archer) {
+		if (Class == Job_Bard) {
 			mes "[Bijou]";
 			mes "Welcome~";
 			mes "Ooh, a Bard! Do you have any new songs to show us? We can always use some musical accompaniment for our dances.";
 			close;
-		} else if (Basejob == Job_Dancer) {
+		} else if (Class == Job_Dancer) {
 			mes "[Bijou]";
 			mes "Oh my...!";
 			mes "Welcome back~";

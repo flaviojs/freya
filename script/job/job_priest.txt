@@ -28,8 +28,8 @@ prt_church.gat,16,41,4	script	High Bishop	60,{
 		mes "Do not let evil conquer your soul. You have enough courage and power to overcome the hardest situation. May God bless you...";
 		close;
 	}
-	if (Basejob != Job_Acolyte) {
-		if (Basejob == Job_Priest) {
+	if (Class != Job_Acolyte) {
+		if (Class == Job_Priest) {
 			mes "[Bishop Paul]";
 			mes "Ah...";
 			if (Sex == Male) {
@@ -98,7 +98,7 @@ prt_church.gat,16,41,4	script	High Bishop	60,{
 				mes "I hope my invocation has eased your pain. Now please go forth and spread God's message. May God be with you...";
 				close;
 			} 
-		} else if (Basejob == Job_Novice) {
+		} else if (Class == Job_Novice) {
 			mes "[Bishop Paul]";
 			if (Sex == Male) {
 				mes "May God be with you, brother.";
@@ -484,16 +484,16 @@ prt_church.gat,16,41,4	script	High Bishop	60,{
 
 prt_church.gat,27,24,1	script	Sister Cecilia	79,{
 
-	if (Basejob != Job_Acolyte) {
+	if (Class != Job_Acolyte) {
 		mes "[Sister Cecilia]";
 		if (Sex == Male) {
 			mes "May god bless you, brother.";
 		} else {
 			mes "May god bless you, sister.";
 		}
-		if (Basejob == Job_Priest) {
+		if (Class == Job_Priest) {
 			mes "It brings my heart joy to see that you working hard to carry out the will of God.";
-		} else if (Basejob == Job_Novice) {
+		} else if (Class == Job_Novice) {
 			mes "Prontera parish welcomes you.";
 			next;
 			mes "[Sister Cecilia]";
@@ -521,7 +521,7 @@ prt_church.gat,27,24,1	script	Sister Cecilia	79,{
 				next;
 				mes "[Sister Cecilia]";
 				mes "Servants of God are prohibited to use weapons based on blades. For us, the meaning of battle with monsters is not in the killing, but in the enlightening of their souls.";
-				if (Basejob == Job_Acolyte) {
+				if (Class == Job_Acolyte) {
 					next;
 					mes "[Sister Cecilia]";
 					mes "Well, it will be better that you meet Priests for yourself and speak with them. If you are ready to become a Priest, speak with Bishop Paul in this room.";
@@ -831,7 +831,7 @@ prt_church.gat,27,24,1	script	Sister Cecilia	79,{
 
 job_prist.gat,24,187,4	script	Peter S. Alberto	110,{
 
-	if (Basejob == Job_Priest) {
+	if (Class == Job_Priest) {
 		mes "[Father Peter]";
 		mes "Welcome!";
 		if (Sex == Male) {
@@ -992,7 +992,7 @@ job_prist.gat,24,187,4	script	Peter S. Alberto	110,{
 
 job_prist.gat,23,187,1	script	Peter S. Alberto#n2	110,{
 
-	if (Basejob == Job_Priest) {
+	if (Class == Job_Priest) {
 		mes "[Father Peter]";
 		mes "Welcome!";
 		if (Sex == Male) {
@@ -1082,7 +1082,7 @@ OnTimer300000:
 job_prist.gat,24,44,0	script	Zombie Info	139,1,1,{
 
 OnTouch:
-	if (Basejob == Job_Priest && @zombiecheck == 0) {
+	if (Class == Job_Priest && @zombiecheck == 0) {
 		mes "[Father Peter]";
 		mes "When the Priest applicant enters, 5 minutes will be given to complete this trial. Proceed slowly and help your Acolyte.";
 		next;
@@ -1094,7 +1094,7 @@ OnTouch:
 		mes "This trial must be completed within 5 minutes. Best of luck~";
 		set @zombiecheck,1;
 		close;
-	} else if (Basejob == Job_Acolyte && @zombiecheck == 0) {
+	} else if (Class == Job_Acolyte && @zombiecheck == 0) {
 		mes "[Father Peter]";
 		mes "I will give you exactly 5 minutes! You must proceed slowly and eliminate the Zombies.";
 		next;
@@ -1109,7 +1109,7 @@ OnTouch:
 job_prist.gat,24,52,0	script	Zombie1_1	139,14,1,{
 
 OnTouch:
-	if (Basejob == Job_Acolyte) {
+	if (Class == Job_Acolyte) {
 		monster "job_prist.gat",24,52,"Theft",1015,1,"Zombie_Generator::OnMyMobDead";
 		monster "job_prist.gat",18,52,"Want of Virtue",1015,1,"Zombie_Generator::OnMyMobDead";
 		monster "job_prist.gat",30,52,"Jealousy",1015,1,"Zombie_Generator::OnMyMobDead";
@@ -1121,7 +1121,7 @@ OnTouch:
 job_prist.gat,21,62,0	script	Zombie2_1	139,17,1,{
 
 OnTouch:
-	if (Basejob == Job_Acolyte) {
+	if (Class == Job_Acolyte) {
 		monster "job_prist.gat",21,62,"Fury",1015,1,"Zombie_Generator::OnMyMobDead";
 		monster "job_prist.gat",27,62,"Envy",1015,1,"Zombie_Generator::OnMyMobDead";
 		hideonnpc "Zombie2_1";
@@ -1132,7 +1132,7 @@ OnTouch:
 job_prist.gat,24,72,0	script	Zombie3_1	139,14,1,{
 
 OnTouch:
-	if (Basejob == Job_Acolyte) {
+	if (Class == Job_Acolyte) {
 		monster "job_prist.gat",24,72,"Arrogance",1015,1,"Zombie_Generator::OnMyMobDead";
 		monster "job_prist.gat",18,72,"Lewdness",1015,1,"Zombie_Generator::OnMyMobDead";
 		monster "job_prist.gat",30,72,"Sloth",1015,1,"Zombie_Generator::OnMyMobDead";
@@ -1144,7 +1144,7 @@ OnTouch:
 job_prist.gat,21,82,0	script	Zombie4_1	139,17,1,{
 
 OnTouch:
-	if (Basejob == Job_Acolyte) {
+	if (Class == Job_Acolyte) {
 		monster "job_prist.gat",21,82,"Gluttony",1015,1,"Zombie_Generator::OnMyMobDead";
 		monster "job_prist.gat",27,82,"Greed",1015,1,"Zombie_Generator::OnMyMobDead";
 		hideonnpc "Zombie4_1";
@@ -1155,7 +1155,7 @@ OnTouch:
 job_prist.gat,24,92,0	script	Zombie5_1	139,14,1,{
 
 OnTouch:
-	if (Basejob == Job_Acolyte) {
+	if (Class == Job_Acolyte) {
 		monster "job_prist.gat",24,92,"Despair",1015,1,"Zombie_Generator::OnMyMobDead";
 		monster "job_prist.gat",18,92,"Distrust",1015,1,"Zombie_Generator::OnMyMobDead";
 		monster "job_prist.gat",30,92,"Fear",1015,1,"Zombie_Generator::OnMyMobDead";
@@ -1169,9 +1169,9 @@ job_prist.gat,24,109,4	script	prst1_1	45,3,3,{
 	end;
 
 OnTouch:
-	if (Basejob == Job_Priest) {
+	if (Class == Job_Priest) {
 		warp "job_prist.gat",168,17;
-	} else if (Basejob == Job_Acolyte && getvariableofnpc('prstwarpfix,"Zombie_Generator") == 1) {
+	} else if (Class == Job_Acolyte && getvariableofnpc('prstwarpfix,"Zombie_Generator") == 1) {
 		warp "job_prist.gat",168,17;
 		donpcevent "Zombie_Generator::OnCommandReset";
 	}
@@ -1183,7 +1183,7 @@ job_prist.gat,168,45,4	script	Deviruchi	1109,8,1,{
 	end;
 
 OnTouch:
-	if (Basejob == Job_Priest) {
+	if (Class == Job_Priest) {
 		mes "[Deviruchi]";
 		mes "Whaaaaat...?";
 		mes "What are you doing back here?";
@@ -1197,7 +1197,7 @@ OnTouch:
 		mes "[Deviruchi]";
 		mes "Alright, alright, for old time's sake, I'll let you pass me. But only this once. But I better not catch you again! This is evil turf, you hear?!";
 		close;
-	} else if (Basejob == Job_Acolyte) {
+	} else if (Class == Job_Acolyte) {
 		mes "[Deviruchi]";
 		mes "Why...";
 		mes "Hello little Aco.";
@@ -1271,14 +1271,14 @@ job_prist.gat,168,80,4	script	Doppelganger	1046,8,1,{
 	end;
 
 OnTouch:
-	if (Basejob == Job_Priest) {
+	if (Class == Job_Priest) {
 		mes "[Doppelganger]";
 		mes "What are you doing here? You've already made your choice, there's no going back... Priest.";
 		next;
 		mes "[Doppelganger]";
 		mes "Besides, this is none of your business. Whether or not this Acolyte becomes a Priest isn't up to you. Now get out of here, before I get violent.";
 		close;
-	} else if (Basejob == Job_Acolyte) {
+	} else if (Class == Job_Acolyte) {
 		mes "[Doppelganger]";
 		mes "Hold on there, Acolyte. I'm not like Deviruchi, so I won't mince words with you.";
 		next;
@@ -1333,14 +1333,14 @@ job_prist.gat,168,115,4	script	Dark Lord	1272,8,1,{
 	end;
 
 OnTouch:
-	if (Basejob == Job_Priest) {
+	if (Class == Job_Priest) {
 		mes "[Dark Lord]";
 		mes "^330033All is doom, darkness and despair! Those who love you will betray you, and all that will be left is grieving and fury!^000000";
 		next;
 		mes "[Dark Lord]";
 		mes "^330033To choose to become a servant of God is to choose eternal pain! I shall personally see to that, mortal.^000000";
 		close;
-	} else if (Basejob == Job_Acolyte) {
+	} else if (Class == Job_Acolyte) {
 		mes "[Dark Lord]";
 		mes "^330033Halt, human. Who has granted you passage?^000000";
 		next;
@@ -1388,14 +1388,14 @@ job_prist.gat,168,150,4	script	Baphomet	736,8,1,{
 	end;
 
 OnTouch:
-	if (Basejob == Job_Priest) {
+	if (Class == Job_Priest) {
 		mes "[Baphomet]";
 		mes "I hate Priests...";
 		next;
 		mes "[Baphomet]";
 		mes "I don't have any business with you, servant of God. Just pass through.";
 		close;
-	} else if (Basejob == Job_Acolyte) {
+	} else if (Class == Job_Acolyte) {
 		mes "[Baphomet]";
 		mes "Greetings.";
 		next;
@@ -1464,9 +1464,9 @@ job_prist.gat,168,180,4	script	prst2_1	45,3,3,{
 	end;
 
 OnTouch:
-	if (Basejob == Job_Priest) {
+	if (Class == Job_Priest) {
 		warp "job_prist.gat",98,40;
-	} else if (Basejob == Job_Acolyte) {
+	} else if (Class == Job_Acolyte) {
 		warp "job_prist.gat",98,40;
 		donpcevent "Mummy_Generator::OnCommandOn";
 	}
@@ -1476,7 +1476,7 @@ OnTouch:
 job_prist.gat,90,55,0	script	Mummy1_1	139,15,1,{
 
 OnTouch:
-	if (Basejob == Job_Acolyte) {
+	if (Class == Job_Acolyte) {
 		monster "job_prist.gat",90,55,"Khamoz",1041,1,"Mummy_Generator::OnMyMobDead";
 		monster "job_prist.gat",105,55,"Amocsis",1041,1,"Mummy_Generator::OnMyMobDead";
 		hideonnpc "Mummy1_1";
@@ -1487,7 +1487,7 @@ OnTouch:
 job_prist.gat,90,70,0	script	Mummy2_1	139,15,1,{
 
 OnTouch:
-	if (Basejob == Job_Acolyte) {
+	if (Class == Job_Acolyte) {
 		monster "job_prist.gat",90,70,"Mentuhoteph",1041,1,"Mummy_Generator::OnMyMobDead";
 		monster "job_prist.gat",105,70,"Akenaten",1041,1,"Mummy_Generator::OnMyMobDead";
 		hideonnpc "Mummy2_1";
@@ -1498,7 +1498,7 @@ OnTouch:
 job_prist.gat,90,85,0	script	Mummy3_1	139,15,1,{
 
 OnTouch:
-	if (Basejob == Job_Acolyte) {
+	if (Class == Job_Acolyte) {
 		monster "job_prist.gat",90,85,"Mehnes",1041,1,"Mummy_Generator::OnMyMobDead";
 		monster "job_prist.gat",105,85,"Snepheru",1041,1,"Mummy_Generator::OnMyMobDead";
 		hideonnpc "Mummy3_1";
@@ -1511,9 +1511,9 @@ job_prist.gat,98,105,4	script	prst3_1	45,3,3,{
 	end;
 
 OnTouch:
-	if (Basejob == Job_Priest) {
+	if (Class == Job_Priest) {
 		warp "prt_church.gat",15,36;
-	} else if (Basejob == Job_Acolyte) {
+	} else if (Class == Job_Acolyte) {
 		set job_priest_q,7;
 		warp "prt_church.gat",16,37;
 		donpcevent "Mummy_Generator::OnCommandOff";

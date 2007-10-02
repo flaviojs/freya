@@ -184,7 +184,7 @@ prt_fild08.gat,175,374,3	script	Bard#brising	51,{
 						next;
 						mes "[Nelliorde]";
 						mes "I'm talking about the Assassin Guild. Supposedly, it's hidden behind a sandstorm in the Morroc Desert!";
-						if ((BaseJob == Job_Assassin) && (Upper != 2)) {
+						if ((Class == Job_Assassin) && (Upper != 2)) {
 							mes "But you should know what I am talking about! So when are you gonna take me to the guild, eh?";
 						} else {
 							mes "Have you ever been there before?";
@@ -637,7 +637,7 @@ prt_fild08.gat,175,374,3	script	Bard#brising	51,{
 						next;
 						mes "[Nelliorde]";
 						mes "I'm talking about the Assassin Guild. Supposedly, it's hidden behind a sandstorm in the Morroc Desert!";
-						if ((BaseJob == Job_Assassin) && (Upper != 2)) {
+						if ((Class == Job_Assassin) && (Upper != 2)) {
 							mes "But you should know what I am talking about! So when are you gonna take me to the guild, eh?";
 						} else {
 							mes "Have you ever been there before?";
@@ -7937,7 +7937,7 @@ alberta.gat,196,146,0	script	Crusader#megin2	751,{
 }
 	else
 {
-		if (BaseJob == Job_Swordsman)
+		if (Class == Job_Swordsman)
 	{
 		mes "[Jack O]";
 		mes "Hey kid!";
@@ -9032,19 +9032,19 @@ prontera.gat,124,297,3	script	Tialfi	706,{
 		{
 				if (countitem(756) > 49 && countitem(757) > 49)
 			{
-				if (Basejob == Job_Knight && Upper != 2) set @gift,1;
-				if (Basejob == Job_Priest && Upper != 2) set @gift,2;
-				if (Basejob == Job_Wizard && Upper != 2) set @gift,3;
-				if (Basejob == Job_Blacksmith && Upper != 2) set @gift,4;
-				if (Basejob == Job_Hunter && Upper != 2) set @gift,5;
-				if (Basejob == Job_Assassin && Upper != 2) set @gift,6;
-				if (Basejob == Job_Crusader && Upper != 2) set @gift,7;
-				if (Basejob == Job_Monk && Upper != 2) set @gift,8;
-				if (Basejob == Job_Sage && Upper != 2) set @gift,9;
-				if (Basejob == Job_Alchemist && Upper != 2) set @gift,10;
-				if (Basejob == Job_Rogue && Upper != 2) set @gift,11;
-				if (Basejob == Job_Bard && Upper != 2) set @gift,12;
-				if (Basejob == Job_Dancer && Upper != 2) set @gift,13;
+				if (Class == Job_Knight && Upper != 2) set @gift,1;
+				if (Class == Job_Priest && Upper != 2) set @gift,2;
+				if (Class == Job_Wizard && Upper != 2) set @gift,3;
+				if (Class == Job_Blacksmith && Upper != 2) set @gift,4;
+				if (Class == Job_Hunter && Upper != 2) set @gift,5;
+				if (Class == Job_Assassin && Upper != 2) set @gift,6;
+				if (Class == Job_Crusader && Upper != 2) set @gift,7;
+				if (Class == Job_Monk && Upper != 2) set @gift,8;
+				if (Class == Job_Sage && Upper != 2) set @gift,9;
+				if (Class == Job_Alchemist && Upper != 2) set @gift,10;
+				if (Class == Job_Rogue && Upper != 2) set @gift,11;
+				if (Class == Job_Bard && Upper != 2) set @gift,12;
+				if (Class == Job_Dancer && Upper != 2) set @gift,13;
 				mes "[Tialfi]";
 				mes "You came back.";
 				mes "In exchange for the ores that";

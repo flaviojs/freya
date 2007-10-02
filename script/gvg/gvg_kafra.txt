@@ -160,7 +160,7 @@ aldeg_cas01.gat,218,170,0	script	Kafra Employee::AgitKafra_L0	117,{
 				end;
 			}
 		case 3:
-			if ((Basejob != Job_Merchant) && (Basejob != Job_Blacksmith)) {
+			if ((Class != Job_Merchant) && (Class != Job_Blacksmith)) {
 				mes "[Kafra Employee]";
 				mes "I am sorry. The cart service is only provided for the Merchant and Blacksmith class.";
 				close2;
@@ -262,7 +262,7 @@ aldeg_cas02.gat,84,74,0	script	Kafra Staff::AgitKafra_L1	117,{
 				end;
 			}
 		case 3:
-			if ((Basejob != Job_Merchant) && (Basejob != Job_Blacksmith)) {
+			if ((Class != Job_Merchant) && (Class != Job_Blacksmith)) {
 				mes "[Kafra Staff]";
 				mes "I am sorry. The Cart Service is only provided for the Merchant and Blacksmith class.";
 				close2;
@@ -364,7 +364,7 @@ aldeg_cas03.gat,118,76,0	script	Kafra Employee::AgitKafra_L2	117,{
 				end;
 			}
 		case 3:
-			if ((Basejob != Job_Merchant) && (Basejob != Job_Blacksmith)) {
+			if ((Class != Job_Merchant) && (Class != Job_Blacksmith)) {
 				mes "[Kafra Employee]";
 				mes "I am sorry. The Cart Service is only provided for the Merchant and Blacksmith class.";
 				close2;
@@ -466,7 +466,7 @@ aldeg_cas04.gat,45,88,0	script	Kafra Staff::AgitKafra_L3	117,{
 				end;
 			}
 		case 3:
-			if ((Basejob != Job_Merchant) && (Basejob != Job_Blacksmith)) {
+			if ((Class != Job_Merchant) && (Class != Job_Blacksmith)) {
 				mes "[Kafra Staff]";
 				mes "[Kafra Staff]";
 				mes "I am sorry. The Cart Service is only provided for the Merchant and Blacksmith class.";
@@ -569,7 +569,7 @@ aldeg_cas05.gat,31,190,0	script	Kafra Staff::AgitKafra_L4	117,{
 				end;
 			}
 		case 3:
-			if ((Basejob != Job_Merchant) && (Basejob != Job_Blacksmith)) {
+			if ((Class != Job_Merchant) && (Class != Job_Blacksmith)) {
 				mes "[Kafra Staff]";
 				mes "I am sorry. The Cart Service is only provided for the Merchant and Blacksmith class.";
 				close2;
@@ -767,7 +767,7 @@ gefg_cas01.gat,83,47,3	script	Kafra Staff::AgitKafra_B0	117,{
 				end;
 			}
 		case 3:
-			if ((Basejob != Job_Merchant) && (Basejob != Job_Blacksmith)) {
+			if ((Class != Job_Merchant) && (Class != Job_Blacksmith)) {
 				mes "[Kafra Staff]";
 				mes "I am sorry. The Cart service is only provided for Merchant and Blacksmith Class.";
 				close2;
@@ -869,7 +869,7 @@ gefg_cas02.gat,23,66,3	script	Kafra Staff::AgitKafra_B1	117,{
 				end;
 			}
 		case 3:
-			if ((Basejob != Job_Merchant) && (Basejob != Job_Blacksmith)) {
+			if ((Class != Job_Merchant) && (Class != Job_Blacksmith)) {
 				mes "[Kafra Staff]";
 				mes "I am sorry. The Cart service is only provided for Merchant and Blacksmith Class.";
 				close2;
@@ -971,7 +971,7 @@ gefg_cas03.gat,116,89,5	script	Kafra Staff::AgitKafra_B2	117,{
 				end;
 			}
 		case 3:
-			if ((Basejob != Job_Merchant) && (Basejob != Job_Blacksmith)) {
+			if ((Class != Job_Merchant) && (Class != Job_Blacksmith)) {
 				mes "[Kafra Staff]";
 				mes "I am sorry. The Cart Service is only provided for the Merchant and Blacksmith class.";
 				close2;
@@ -1073,7 +1073,7 @@ gefg_cas04.gat,59,70,3	script	Kafra Staff::AgitKafra_B3	117,{
 				end;
 			}
 		case 3:
-			if ((Basejob != Job_Merchant) && (Basejob != Job_Blacksmith)) {
+			if ((Class != Job_Merchant) && (Class != Job_Blacksmith)) {
 				mes "[Kafra Staff]";
 				mes "I am sorry. The Cart Service is only provided for the Merchant and Blacksmith class.";
 				close2;
@@ -1173,7 +1173,7 @@ gefg_cas05.gat,61,52,5	script	Kafra Staff::AgitKafra_B4	117,{
 				end;
 			}
 		case 3:
-			if ((Basejob != Job_Merchant) && (Basejob != Job_Blacksmith)) {
+			if ((Class != Job_Merchant) && (Class != Job_Blacksmith)) {
 				mes "[Kafra Staff]";
 				mes "I am sorry. The Cart Service is only provided for the Merchant and Blacksmith class.";
 				close2;
@@ -1371,7 +1371,7 @@ payg_cas01.gat,128,58,3	script	Kafra Staff::AgitKafra_C0	117,{
 				end;
 			}
 		case 3:
-			if ((Basejob != Job_Merchant) && (Basejob != Job_Blacksmith)) {
+			if ((Class != Job_Merchant) && (Class != Job_Blacksmith)) {
 				mes "[Kafra Staff]";
 				mes "I am sorry. The Cart Service is only provided for the Merchant and Blacksmith class.";
 				close2;
@@ -1473,7 +1473,7 @@ payg_cas02.gat,22,275,5	script	Kafra Staff::AgitKafra_C1	117,{
 				end;
 			}
 		case 3:
-			if ((Basejob != Job_Merchant) && (Basejob != Job_Blacksmith)) {
+			if ((Class != Job_Merchant) && (Class != Job_Blacksmith)) {
 				mes "[Kafra Staff]";
 				mes "I am sorry. The Cart service is only provided for Merchant and Blacksmith Classes.";
 				close2;
@@ -1575,7 +1575,7 @@ payg_cas03.gat,9,263,5	script	Kafra Staff::AgitKafra_C2	117,{
 				end;
 			}
 		case 3:
-			if ((Basejob != Job_Merchant) && (Basejob != Job_Blacksmith)) {
+			if ((Class != Job_Merchant) && (Class != Job_Blacksmith)) {
 				mes "[Kafra Staff]";
 				mes "I am sorry. The Cart Service is only provided for the Merchant and Blacksmith class.";
 				close2;
@@ -1677,7 +1677,7 @@ payg_cas04.gat,40,235,1	script	Kafra Staff::AgitKafra_C3	117,{
 				end;
 			}
 		case 3:
-			if ((Basejob != Job_Merchant) && (Basejob != Job_Blacksmith)) {
+			if ((Class != Job_Merchant) && (Class != Job_Blacksmith)) {
 				mes "[Kafra Staff]";
 				mes "I am sorry. The Cart Service is only provided for the Merchant and Blacksmith class.";
 				close2;
@@ -1777,7 +1777,7 @@ payg_cas05.gat,276,227,1	script	Kafra Staff::AgitKafra_C4	117,{
 				end;
 			}
 		case 3:
-			if ((Basejob != Job_Merchant) && (Basejob != Job_Blacksmith)) {
+			if ((Class != Job_Merchant) && (Class != Job_Blacksmith)) {
 				mes "[Kafra Staff]";
 				mes "I am sorry. The Cart Service is only provided for the Merchant and Blacksmith class.";
 				close2;
@@ -1975,7 +1975,7 @@ prtg_cas01.gat,96,173,0	script	Kafra Staff::AgitKafra_V0	117,{
 				end;
 			}
 		case 3:
-			if ((Basejob != Job_Merchant) && (Basejob != Job_Blacksmith)) {
+			if ((Class != Job_Merchant) && (Class != Job_Blacksmith)) {
 				mes "[Kafra Staff]";
 				mes "I am sorry, but the Cart service is only available for the Merchant and Blacksmith Class.";
 				close2;
@@ -2077,7 +2077,7 @@ prtg_cas02.gat,71,36,4	script	Kafra Staff::AgitKafra_V1	117,{
 				end;
 			}
 		case 3:
-			if ((Basejob != Job_Merchant) && (Basejob != Job_Blacksmith)) {
+			if ((Class != Job_Merchant) && (Class != Job_Blacksmith)) {
 				mes "[Kafra Staff]";
 				mes "I am sorry, but the Cart service is only available for the Merchant and Blacksmith Class.";
 				close2;
@@ -2179,7 +2179,7 @@ prtg_cas03.gat,181,215,4	script	Kafra Staff::AgitKafra_V2	117,{
 				end;
 			}
 		case 3:
-			if ((Basejob != Job_Merchant) && (Basejob != Job_Blacksmith)) {
+			if ((Class != Job_Merchant) && (Class != Job_Blacksmith)) {
 				mes "[Kafra Staff]";
 				mes "I am sorry, but the Cart service is only available for the Merchant and Blacksmith Class.";
 				close2;
@@ -2281,7 +2281,7 @@ prtg_cas04.gat,258,247,4	script	Kafra Staff::AgitKafra_V3	117,{
 				end;
 			}
 		case 3:
-			if ((Basejob != Job_Merchant) && (Basejob != Job_Blacksmith)) {
+			if ((Class != Job_Merchant) && (Class != Job_Blacksmith)) {
 				mes "[Kafra Staff]";
 				mes "I am sorry, but the Cart service is only available for the Merchant and Blacksmith Class.";
 				close2;
@@ -2383,7 +2383,7 @@ prtg_cas05.gat,52,41,4	script	Kafra Staff::AgitKafra_V4	117,{
 				end;
 			}
 		case 3:
-			if ((Basejob != Job_Merchant) && (Basejob != Job_Blacksmith)) {
+			if ((Class != Job_Merchant) && (Class != Job_Blacksmith)) {
 				mes "[Kafra Staff]";
 				mes "I am sorry, but the Cart service is only available for the Merchant and Blacksmith Class.";
 				close2;

@@ -23,7 +23,7 @@ prt_church.gat,184,41,4	script	Cleric	60,{
 
 	if (Upper == 1) {
 		if (OLD_CLASS == Job_Priest || OLD_CLASS == Job_Monk) {
-			if (Basejob == Job_Novice && Upper == 1) {
+			if (Class == Job_Novice && Upper == 1) {
 				mes "[Father Mareusis]";
 				mes "Ah, I sense you have endured";
 				mes "a past life experience. You must have learned many things before entering Valhalla.";
@@ -70,12 +70,12 @@ prt_church.gat,184,41,4	script	Cleric	60,{
 	next;
 	switch(select("Father, I want to be a Acolyte.","Acolyte Requirements.","Just looking around.")) {
 	case 1:
-		if (Basejob == Job_Acolyte) {
+		if (Class == Job_Acolyte) {
 			mes "[Father Mareusis]";
 			mes "Are you feeling okay today? I can tell by your attire that you are already an Acolyte. You're not joking around, are you?";
 			close;
 		}
-		if (Basejob != Job_Novice) {
+		if (Class != Job_Novice) {
 			mes "[Father Mareusis]";
 			mes "I'm sorry, but we can only accept Novices as applicants for the job change to Acolyte.";
 			close;
@@ -222,7 +222,7 @@ prt_church.gat,184,41,4	script	Cleric	60,{
 
 prt_fild03.gat,365,255,2	script	Ascetic	89,{
 
-	if (Basejob == Job_Novice) {
+	if (Class == Job_Novice) {
 		if (job_acolyte_q == 6) {
 			mes "[Father Rubalkabara]";
 			mes "Please take care. They should know that you've met me by the time you arrive at the Prontera Sanctuary.";
@@ -278,7 +278,7 @@ prt_fild03.gat,365,255,2	script	Ascetic	89,{
 			mes "Huh? What brings you here? This is a very dangerous place for a Novice like yourself!";
 		}
 		close;
-	} else if (Basejob == Job_Acolyte) {
+	} else if (Class == Job_Acolyte) {
 		if (job_priest_q != 0) {
 			if (job_priest_q == 1) {
 				mes "[Father Rubalkabara]";
@@ -311,7 +311,7 @@ prt_fild03.gat,365,255,2	script	Ascetic	89,{
 			close;
 		}
 	} else {
-		if (Basejob == Job_Priest) {
+		if (Class == Job_Priest) {
 			mes "[Father Rubalkabara]";
 			mes "Greetings.";
 			next;
@@ -332,7 +332,7 @@ prt_fild03.gat,365,255,2	script	Ascetic	89,{
 
 moc_fild07.gat,41,355,4	script	Ascetic	95,{
 
-	if (Basejob == Job_Novice) {
+	if (Class == Job_Novice) {
 		if (job_acolyte_q == 7) {
 			mes "[Mother Marthilda]";
 			mes "I will send a carrier pigeon to the Prontera Sanctuary. When you return, the Priest there should already have received my message.";
@@ -383,7 +383,7 @@ moc_fild07.gat,41,355,4	script	Ascetic	95,{
 			mes "...";
 			close;
 		}
-	} else if (Basejob == Job_Acolyte) {
+	} else if (Class == Job_Acolyte) {
 		if (job_priest_q != 0) {
 			if (job_priest_q == 1) {
 				mes "[Mother Marthilda]";
@@ -437,7 +437,7 @@ moc_fild07.gat,41,355,4	script	Ascetic	95,{
 			close;
 		}
 	} else {
-		if (Basejob == Job_Priest) {
+		if (Class == Job_Priest) {
 			mes "[Mother Marthilda]";
 			mes "Hello there~";
 			next;
@@ -455,7 +455,7 @@ moc_fild07.gat,41,355,4	script	Ascetic	95,{
 
 prt_fild00.gat,208,218,6	script	Ascetic	98,{
 
-	if (Basejob == Job_Novice) {
+	if (Class == Job_Novice) {
 		if (job_acolyte_q == 8) {
 			mes "[Father Yosuke]";
 			mes "What?";
@@ -512,7 +512,7 @@ prt_fild00.gat,208,218,6	script	Ascetic	98,{
 			mes "you wanna tell me?";
 			close;
 		}
-	} else if (Basejob == Job_Acolyte) {
+	} else if (Class == Job_Acolyte) {
 		if (job_priest_q != 0) {
 			if (job_priest_q == 1) {
 				mes "[Father Yosuke]";
@@ -575,7 +575,7 @@ prt_fild00.gat,208,218,6	script	Ascetic	98,{
 			close;
 		}
 	} else {
-		if (Basejob == Job_Priest) {
+		if (Class == Job_Priest) {
 			mes "[Father Yosuke]";
 			mes "Hey...";
 			next;

@@ -71,7 +71,7 @@ hu_in01.gat,386,373,4	script	Hunter Guildsman#hnt	727,{
 		mes "Oops! I'm sorry, I could have sworn that we've met before. Huh. How weird.";
 		close;
 	}
-	if (Basejob == Job_Archer && JobLevel < 40) {
+	if (Class == Job_Archer && JobLevel < 40) {
 		mes "[Hunter Guildsman]";
 		mes "Eh? You haven't had enough training as an Archer yet. To become a Hunter, you must gain a certain level of experience as an Archer first.";
 		next;
@@ -87,39 +87,39 @@ hu_in01.gat,386,373,4	script	Hunter Guildsman#hnt	727,{
 		mes "You can't change jobs without using all your skill points. Please use all of your skill points before applying to change jobs~";
 		close;
 	}
-	if (Basejob == Job_Novice) {
+	if (Class == Job_Novice) {
 		mes "[Hunter Guildsman]";
 		mes "You must be...";
 		mes "a Novice? Wow, you've got a long way ahead of you. I don't think there's much you can do here.";
 		close;
-	} else if ((BaseJob == Job_Swordsman) || (BaseJob == Job_Knight) || (BaseJob == Job_Crusader)) {
+	} else if ((Class == Job_Swordsman) || (Class == Job_Knight) || (Class == Job_Crusader)) {
 		mes "[Hunter Guildsman]";
 		mes "You have chosen the path of the sword. I can respect the strength of your blade. Of course, from far away, you can't really afford to throw your sword at enemies, can you?";
 		close;
-	} else if ((BaseJob == Job_Mage) || (BaseJob == Job_Wizard) || (BaseJob == Job_Sage)) {
+	} else if ((Class == Job_Mage) || (Class == Job_Wizard) || (Class == Job_Sage)) {
 		mes "[Hunter Guildsman]";
 		mes "You deal with magic? It must feel great to be able to wield mystic power.";
 		close;
-	} else if ((BaseJob == Job_Acolyte) || (BaseJob == Job_Priest) || (BaseJob == Job_Monk)) {
+	} else if ((Class == Job_Acolyte) || (Class == Job_Priest) || (Class == Job_Monk)) {
 		mes "[Hunter Guildsman]";
 		mes "Oh, a person who serves God! Nice to meet you. There aren't many people like you that visit this place~ Hehe.";
 		close;
-	} else if ((BaseJob == Job_Merchant) || (BaseJob == Job_Blacksmith) || (BaseJob == Job_Alchemist)) {
+	} else if ((Class == Job_Merchant) || (Class == Job_Blacksmith) || (Class == Job_Alchemist)) {
 		mes "[Hunter Guildsman]";
 		mes "Oh...";
 		mes "How's your business coming along?";
 		close;
-	} else if ((BaseJob == Job_Thief) || (BaseJob == Job_Assassin) || (BaseJob == Job_Rogue)) {
+	} else if ((Class == Job_Thief) || (Class == Job_Assassin) || (Class == Job_Rogue)) {
 		mes "[Hunter Guildsman]";
 		mes "Agh?!";
 		mes "This place doesn't have anything worth stealing or anyone worth killing!!";
 		close;
-	} else if (Basejob == Job_Dancer || Basejob == Job_Bard) {
+	} else if (Class == Job_Dancer || Class == Job_Bard) {
 		mes "[Hunter Guildsman]";
 		mes "Phew...sometimes it is really hard for being a hunter, you know...";
 		mes "So how do you like your bohemian life? Yeah, I am envious of you for having so much freedom...";
 		close;
-	} else if (Basejob == Job_Hunter) {
+	} else if (Class == Job_Hunter) {
 		mes "[Hunter Sherin]";
 		mes "Oh~ "+strcharinfo(0)+"!!";
 		mes "Long time no see~ What brings you here? Did your Falcon run away or something?";
@@ -127,7 +127,7 @@ hu_in01.gat,386,373,4	script	Hunter Guildsman#hnt	727,{
 		mes "[Hunter Sherin]";
 		mes "I don't really have any official notices from the guild at the moment, so I hope you didn't come here just for that...";
 		close;
-	} else if (Basejob == Job_Archer) {
+	} else if (Class == Job_Archer) {
 		if (SkillPoint != 0) {
 			mes "[Hunter Sherin]";
 			mes "You can't apply to change jobs if you still have unused skill points. Use your remaining skill points first.";

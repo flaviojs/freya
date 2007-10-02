@@ -9265,7 +9265,7 @@ geffen.gat,83,189,5	script	Seth	716,{
 			mes "I'm done!";
 			mes "I did a good job, didn't I?";
 			next;
-			if ((Basejob == Job_Novice) || (Basejob == Job_Super_Novice)) {
+			if ((Class == Job_Novice) || (Class == Job_Super_Novice)) {
 				mes "[Seth]";
 				mes "Oh, here's the leftovers. Mommy says that we should always save things. Heh heh~";
 				getitem 935,1;

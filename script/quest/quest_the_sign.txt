@@ -8591,7 +8591,7 @@ gef_tower.gat,118,36,4	script	Annoyed Man	64,{
 		emotion ET_HNG,"Annoyed Man";
 		close;
 	} else if (sign_q == 72) {
-		if ((BaseJob == Job_Mage) || (BaseJob == Job_Wizard) || (BaseJob == Job_Sage)) {
+		if ((Class == Job_Mage) || (Class == Job_Wizard) || (Class == Job_Sage)) {
 			mes "[Dhota]";
 			mes "Wah~";
 			mes "Why the hell did he even go there...!";

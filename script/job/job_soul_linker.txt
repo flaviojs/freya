@@ -19,7 +19,7 @@
 
 morocc_in.gat,174,30,6	script	Kid#link1	716,{
 
-	if (Basejob == Job_Soul_Linker) {
+	if (Class == Job_Soul_Linker) {
 		mes "[Maia]";
 		mes "Best of luck in your";
 		mes "journeys. As you master";
@@ -29,7 +29,7 @@ morocc_in.gat,174,30,6	script	Kid#link1	716,{
 		mes "to endow upon your allies...";
 		close;
 	}
-	if (Basejob == Job_Star_Gladiator) {
+	if (Class == Job_Star_Gladiator) {
 		mes "[Kid]";
 		if (Sex == Male) {
 			mes "Aren't you a warrior";
@@ -44,7 +44,7 @@ morocc_in.gat,174,30,6	script	Kid#link1	716,{
 		mes "Taekwon Do job, right?";
 		close;
 	}
-	if (Basejob != Job_Taekwon) {
+	if (Class != Job_Taekwon) {
 		mes "[Kid]";
 		mes "Mm? I've got nothing to";
 		mes "offer you. But if you know";
@@ -182,7 +182,7 @@ morocc_in.gat,174,30,6	script	Kid#link1	716,{
 				close;
 			}
 		} else if (job_linker == 1) {
-			if (Basejob == Job_Taekwon) {
+			if (Class == Job_Taekwon) {
 				mes "[Kid]";
 				mes "You're back, eh?";
 				mes "So did you bring";
@@ -336,7 +336,7 @@ OnCommandEffect:
 	end;
 
 OnTouch:
-	if (Basejob == Job_Taekwon) {
+	if (Class == Job_Taekwon) {
 		if (JobLevel < 40) {
 			mes "[Maia]";
 			mes "Hm? How did you come";
@@ -456,7 +456,7 @@ OnTouch:
 			end;
 		}
 	} else {
-		if (Basejob == Job_Soul_Linker) {
+		if (Class == Job_Soul_Linker) {
 			mes "[Maia]";
 			mes "The time has come for";
 			mes "you to venture out into the";
@@ -477,7 +477,7 @@ OnTouch:
 
 job_soul.gat,35,30,6	script	Maia#link6	716,{
 
-	if (Basejob == Job_Taekwon) {
+	if (Class == Job_Taekwon) {
 		if (JobLevel < 40) {
 			mes "[Maia]";
 			mes "Hm? How did you come";
@@ -596,7 +596,7 @@ job_soul.gat,35,30,6	script	Maia#link6	716,{
 			end;
 		}
 	} else {
-		if (Basejob == Job_Soul_Linker) {
+		if (Class == Job_Soul_Linker) {
 			mes "[Maia]";
 			mes "The time has come for";
 			mes "you to venture out into the";

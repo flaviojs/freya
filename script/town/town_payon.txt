@@ -342,7 +342,7 @@ payon.gat,246,158,5	script	Woman	66,{
 
 payon.gat,210,110,1	script	Drunkard	120,{
 
-	if (Basejob != Job_Archer) {
+	if (Class != Job_Archer) {
 		mes "[Drunkard]";
 		mes "Hey...";
 		mes "H-Hey...!";
@@ -358,7 +358,7 @@ payon.gat,210,110,1	script	Drunkard	120,{
 		mes "Bwahahahaha!";
 		mes "Buy me a drink?!";
 	}
-	if (Basejob == Job_Archer) {
+	if (Class == Job_Archer) {
 		mes "[Drunkard]";
 		mes "An Archer!";
 		mes "Oh man, you guys!";

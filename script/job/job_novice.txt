@@ -5918,7 +5918,7 @@ new_1-4.gat,100,29,1	script	Hanson	46,{
 
 new_1-4.gat,91,22,4	script	Bruce	57,{
 
-	if (Basejob == Job_Novice) {
+	if (Class == Job_Novice) {
 		if (nov_3_swordman == 20) {
 			mes "[Bruce]";
 			mes "Let me explain the";

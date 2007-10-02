@@ -7,24 +7,22 @@
 //              /_/  |_|\____|_|  \___/|_|  \__,_|              
 //                 http://aurora.deltaanime.net                 
 //--------------------------------------------------------------
-// Script Title: Kunlun Town NPCs / Quests	Author: GreenGoblin/KarLaeda
+// Script Title: Kunlun Town NPCs / Quests	Author: Tsuyuki/KarLaeda
 //--------------------------------------------------------------
-// Revision History: v1.3
+// Revision History: v1.1
 //--------------------------------------------------------------
-//	1.0 First version, converted from Aegis (euRO dialogue) [GreenGoblin]
+//	1.0 First version, converted from Aegis [Tsuyuki]
 //	1.1 Added Broken Sword quest, converted from Aegis by KarLaeda (euRO dialogue) [Tsuyuki]
-//	1.2 Added Power NPC, converted from Aegis by KarLaeda (euRO dialogue) [Tsuyuki]
-//	1.3 Disabled Power NPC for now, broken array declarations [Tsuyuki]
 //--------------------------------------------------------------
 // Additional Notes: * Official-certified / Aegis-certified *
 //--------------------------------------------------------------
 
 
 //--------------------------------------------------------------
-// Kunlun Town NPCs - [GreenGoblin]
+// Kunlun Town NPCs - [Tsuyuki]
 //--------------------------------------------------------------
 
-alberta.gat,245,69,3	script	Kunlun Envoy#1	776,{
+alberta.gat,245,69,3	script	Kunlun Envoy#0	776,{
 
 	mes "[Wa Bai Hu]";
 	mes "Good day~";
@@ -34,136 +32,141 @@ alberta.gat,245,69,3	script	Kunlun Envoy#1	776,{
 	mes "such distinguished quests from";
 	mes "the Rune-Midgard kingdom.";
 	next;
-	menu "About Kunlun...",-,"Visit Kunlun",L_Visit,"Cancel",L_Cancel;
-	mes "[Wa Bai Hu]";
-	mes "Kunlun is a beautiful place,";
-	mes "rich with history, and it's";
-	mes "own traditions. I also think";
-	mes "Kunlun is the best place for";
-	mes "sightseeing.";
-	next;
-	mes "[Wa Bai Hu]";
-	mes "When you arrive at the harbor of";
-	mes "Kunlun, you'll be able to see";
-	mes "miniature replicas of";
-	mes "buildings found in Alberta";
-	mes "and Prontera.";
-	next;
-	mes "[Wa Bai Hu]";
-	mes "After enjoying a nice, leisurely";
-	mes "stroll, step into the beautiful";
-	mes "colomn of light that will take";
-	mes "you up into the clouds to";
-	mes "Kunlun Village.";
-	next;
-	mes "[Wa Bai Hu]";
-	mes "I've heard that on the";
-	mes "Rune-Midgarts continent,";
-	mes "there is another city that is";
-	mes "is kept aloft in the sky by";
-	mes "an ancient. mysterious power...";
-	next;
-	mes "[Wa Bai Hu]";
-	mes "Well, my kunlun also floats";
-	mes "in the air, but without any";
-	mes "so called technology or";
-	mes "power syupply. We considder";
-	mes "our land especially blessed...";
-	next;
-	mes "[Wa Bai Hu]";
-	mes "When you're in Kunlun, don't";
-	mes "forget to try our specialties";
-	mes "such as the giant dumpling ot the";
-	mes "heaven peach.";
-	next;
-	mes "[Wa Bai Hu]";
-	mes "You'd better prepare yourself";
-	mes "if you are planning to visit";
-	mes "the Kunlun dungeon. I must";
-	mes "say, that is not a safe place to go";
-	mes "for fun.";
-	next;
-	mes "[Wa Bai Hu]";
-	mes "If you are interested in visiting";
-	mes "Kunlun, do not hesitate to let";
-	mes "me know. It's my great pleasure";
-	mes "to serve you, honorable guest.";
-	close;
-
-L_Visit:
-	mes "[Wa Bai Hu]";
-	mes "Excellent choice, I am glad";
-	mes "to have you as our guest~";
-	mes "However, s small fee is required";
-	mes "to board the ship to Kunlun.";
-	next;
-	mes "[Wa Bai Hu]";
-	mes "We ask that you pay 10,000 zeny";
-	mes "prior to departure. That fee also";
-	mes "covers the cost of returning";
-	mes "to Alberta. I am ready to guide";
-	mes "you to Kunlun at any time.";
-	next;
-	mes "[Wa Bai Hu]";
-	mes "Would you like to board?";
-	next;
-	menu "To Kunlun~!",-,"No.",L_Cancel;
-	if (Zeny < 10000) goto L_NoZeny;
-	mes "[Wa Bai Hu]";
-	mes "Thank you, let me guide you there";
-	mes "immediately.";
-	close2;
-	set Zeny,Zeny-10000;
-	warp "gon_fild01.gat",258,82;
-	end;
-
-L_NoZeny:
-	mes "[Wa Bai Hu]";
-	mes "I am sorry, but you must have";
-	mes "10,000 zeny to travel to Kunlun.";
-	mes "Please make sure you have enough";
-	mes "zeny with you. Thank you, and";
-	mes "please come again.";
-	close;
-
-L_Cancel:
-	mes "[Wa Bai Hu]";
-	mes "I see. However, whenever you";
-	mes "change your mind, please let me";
-	mes "know. It would be a great pleasure";
-	mes "to serve you, most honorable";
-	mes "guest.";
-	close;
+	switch(select("About Kunlun","Visit Kunlun","Cancel")) {
+	case 1:
+		mes "[Wa Bai Hu]";
+		mes "Kunlun is a beautiful place,";
+		mes "rich with history, and its";
+		mes "own traditions. I also think";
+		mes "Kunlun is the best place for";
+		mes "sightseeing.";
+		next;
+		mes "[Wa Bai Hu]";
+		mes "When you arrive at the harbor of";
+		mes "Kunlun, you'll be able to see";
+		mes "miniature replicas of";
+		mes "buildings found in Alberta";
+		mes "and Prontera.";
+		next;
+		mes "[Wa Bai Hu]";
+		mes "After enjoying a nice, leisurely";
+		mes "stroll, step into the beautiful";
+		mes "column of light that will take";
+		mes "you up into the clouds to";
+		mes "Kunlun Village.";
+		next;
+		mes "[Wa Bai Hu]";
+		mes "I've heard that on the";
+		mes "Rune-Midgarts continent,";
+		mes "there is another city that is";
+		mes "is kept aloft in the sky by";
+		mes "an ancient, mysterious power...";
+		next;
+		mes "[Wa Bai Hu]";
+		mes "Well, my Kunlun also floats";
+		mes "in the air, but without any";
+		mes "so called technology or";
+		mes "power supply. We consider";
+		mes "our land especially blessed...";
+		next;
+		mes "[Wa Bai Hu]";
+		mes "When you're in Kunlun, don't";
+		mes "forget to try our specialties";
+		mes "such as the giant dumpling or the heaven peach.";
+		next;
+		mes "[Wa Bai Hu]";
+		mes "You'd better prepare yourself";
+		mes "if you are planning to visit";
+		mes "the Kunlun dungeon. I must";
+		mes "say, that is not a safe place to go for fun.";
+		next;
+		mes "[Wa Bai Hu]";
+		mes "If you are interested in visiting";
+		mes "Kunlun, do not hesitate to let";
+		mes "me know. It's my great pleasure";
+		mes "to serve you, honorable guest.";
+		close;
+	case 2:
+		mes "[Wa Bai Hu]";
+		mes "Excellent choice, I am glad";
+		mes "to have you as our guest~";
+		mes "However, a small fee is required";
+		mes "to board the ship to Kunlun.";
+		next;
+		mes "[Wa Bai Hu]";
+		mes "We ask that you pay 10,000 zeny";
+		mes "prior to departure. That fee also";
+		mes "covers the cost of returning";
+		mes "to Alberta. I am ready to guide";
+		mes "you to Kunlun at any time.";
+		next;
+		mes "[Wa Bai Hu]";
+		mes "Would you like to board?";
+		next;
+		switch(select("To Kunlun~!","No.")) {
+		case 1:
+			if (Zeny > 9999) {
+				mes "[Wa Bai Hu]";
+				mes "Thank you, let me guide you there immediately.";
+				close2;
+				set Zeny,Zeny - 10000;
+				warp "gon_fild01.gat",258,82;
+				end;
+			} else {
+				mes "[Wa Bai Hu]";
+				mes "I am sorry, but you must have";
+				mes "10,000 zeny to travel to Kunlun.";
+				mes "Please make sure you have enough";
+				mes "zeny with you. Thank you, and";
+				mes "please come again.";
+				close;
+			}
+		case 2:
+			mes "[Wa Bai Hu]";
+			mes "I see. However, whenever you";
+			mes "change your mind, please let";
+			mes "me know. It would be a great";
+			mes "please to serve you, most";
+			mes "honorable guest.";
+			close;
+		}
+	case 3:
+		mes "[Wa Bai Hu]";
+		mes "I see. However, whenever you";
+		mes "change your mind, please let me";
+		mes "know. It would be a great pleasure to serve you, most honorable guest.";
+		close;
+	}
 }
 
-gon_fild01.gat,255,79,7	script	Kunlun Envoy#2	776,{
+gon_fild01.gat,255,79,7	script	Kunlun Envoy#1	776,{
 
 	mes "[Wa Bai Hu]";
 	mes "So, did you enjoy your trip?";
 	mes "I guess it's the time for you to";
-	mes "go home. The ship to Rune-Midgard";
-	mes "is ready to depart at any time.";
+	mes "go home. The ship to Rune-Midgard is ready to depart at any time.";
 	next;
-	menu "Go back to Alberta",-,"Cancel",L_Cancel;
-	mes "[Wa Bai Hu]";
-	mes "Please come again.";
-	mes "I hope you will let your friends";
-	mes "know about Kunlun when you get";
-	mes "back. Now. let me guide you";
-	mes "back to Alberta.";
-	close2;
-	warp "alberta.gat",243,67;
-	end;
-
-L_Cancel:
-	mes "[Wa Bai Hu]";
-	mes "Take your time, my guest.";
-	mes "There should be many places";
-	mes "you may have missed.";
-	close;
+	switch(select("Go back to Alberta","Cancel")) {
+	case 1:
+		mes "[Wa Bai Hu]";
+		mes "Please come again.";
+		mes "I hope you will let your friends";
+		mes "know about Kunlun when you get";
+		mes "back. Now, let me guide you";
+		mes "back to Alberta.";
+		close2;
+		warp "alberta.gat",243,67;
+		end;
+	case 2:
+		mes "[Wa Bai Hu]";
+		mes "Take your time, my guest.";
+		mes "There should be many places";
+		mes "you may have missed.";
+		close;
+	}
 }
 
-gon_fild01.gat,187,239,7	script	Kunlun Envoy#3	776,{
+gon_fild01.gat,187,239,7	script	Kunlun Envoy#1	776,{
 
 	mes "[Zhang Quing Long]";
 	mes "Please head north to enter Kunlun.";
@@ -172,688 +175,1324 @@ gon_fild01.gat,187,239,7	script	Kunlun Envoy#3	776,{
 	close;
 }
 
-gonryun.gat,153,64,7	script	Kunlun Envoy#4	776,{
+gonryun.gat,153,64,7	script	Kunlun Envoy#3	776,{
 
 	mes "[Zhang Quing Long]";
 	mes "Please make yourself comfortable.";
 	mes "If you want to go back, I will";
-	mes "be more then happy to guide you";
+	mes "be more than happy to guide you";
 	mes "to the ship to Alberta.";
 	next;
-	menu "Go back to the harbor",-,"Cancel",L_Cancel;
-	mes "[Zhang Quing Long]";
-	mes "I hope you enjoyed your trip.";
-	mes "Now, let me guide you back";
-	mes "to the harbor.";
-	close2;
-	warp "gon_fild01.gat",258,82;
-	end;
+	switch(select("Go back to the harbor","Cancel")) {
+	case 1:
+		mes "[Zhang Quing Long]";
+		mes "I hope you enjoyed your trip.";
+		mes "Now, let me guide you back";
+		mes "to the harbor.";
+		close2;
+		warp "gon_fild01.gat",258,82;
+		break;
+	case 2:
+		mes "[Zhang Quing Long]";
+		mes "Take your time, my guest.";
+		mes "There should be many places";
+		mes "you may have missed.";
+		close;
+	}
+}
 
-L_Cancel:
-	mes "[Zhang Quing Long]";
-	mes "Take your time, my guest.";
-	mes "There should be many places";
-	mes "you may have missed.";
+gonryun.gat,237,226,3	script	Han Ran Jiao	776,{
+
+	if (nakha == 0) {
+		mes "[Han Ran Jiao]";
+		mes "Oh no! What will I do?!";
+		mes "I can't believe I dropped";
+		mes "my irreplaceable knife! Ahhhhhh!";
+		next;
+		if (BaseLevel >= 20) {
+			set nakha,1;
+			mes "[Han Ran Jiao]";
+			mes "I need to go down to get it";
+			mes "but...the monsters...";
+			mes "I'm so scared... What should I do?!";
+			close;
+		}
+	}
+	if (nakha == 1) {
+		mes "[Han Ran Jiao]";
+		mes "Oh no! What will I do?";
+		mes "I can't believe I dropped";
+		mes "my irreplaceable knife! Ahhhhhh!";
+		next;
+		mes "[Han Ran Jiao]";
+		mes "I need to go down to get it";
+		mes "but...the monsters...";
+		mes "I'm so scared... What should I do?!";
+		close;
+	}
+	if ((nakha == 2) && (countitem(1201) > 0)) {
+		mes "[Han Ran Jiao]";
+		mes "Ehhhh... what should I do...";
+		mes "Oh~! I didn't notice you there.";
+		mes "Can I help you with anything?";
+		mes "Hmm?";
+		next;
+		mes "[Han Ran Jiao]";
+		mes "That...that knife!";
+		mes "That's my ancestor's sacred knife";
+		mes "that I accidentally dropped from";
+		mes "here! Where did you get it!?";
+		next;
+		mes "[Han Ran Jiao]";
+		mes "I dropped that knife from being";
+		mes "careless. It belongs to one of my";
+		mes "ancestors. I know it looks like";
+		mes "a cheap knife...";
+		next;
+		mes "[Han Ran Jiao]";
+		mes "But it has been in the";
+		mes "family for a very long time.";
+		mes "Would you please return that";
+		mes "knife to me?";
+		next;
+		switch(select("Return the knife.","Refuse.")) {
+		case 1:
+			set nakha,3;
+			delitem 1201,1;
+			mes "[Han Ran Jiao]";
+			mes "Thank you! Thank you so much!";
+			mes "Please take these potions.";
+			mes "They may not be much, but they";
+			mes "are the best I can give you.";
+			getitem 505,2;
+			next;
+			mes "[Han Ran Jiao]";
+			mes "You kept my family heirloom safe!";
+			mes "I give you my deepest gratitude";
+			mes "for returning this.";
+			close;
+		case 2:
+			mes "[Han Ran Jiao]";
+			mes "No~! My family heirloom!!";
+			mes "You scoundrel! May the spirits";
+			mes "forever haunt you! My curse shall be upon your head!";
+			close;
+		}
+	}
+	if (nakha == 2) {
+		mes "[Han Ran Jiao]";
+		mes "Oh no! What will I do?";
+		mes "I can't believe I dropped";
+		mes "my irreplaceable knife! Ahhhhhh!";
+		next;
+		mes "[Han Ran Jiao]";
+		mes "I need to go down to get it";
+		mes "but...the monsters...";
+		mes "I'm so scared... What should I do?!";
+		close;
+	}
+	if (nakha == 3) {
+		mes "[Han Ran Jiao]";
+		mes "My neighbor seemed looked pretty bothered about something...";
+		mes "Oh well, I have better things to worry about than his fancy tea.";
+		close;
+	}
 	close;
 }
 
-gonryun.gat,237,64,3	script	YunKyoHam	776,{
-
-	if (nakha == 3) goto L_Sword3;
-	if (nakha == 2 && countitem(1201) > 0) goto L_Sword2;
-	if (nakha == 2) goto L_Sword2;
-	mes "[YunKyoHam]";
-	mes "Oh no! What should I do?";
-	mes "I have lost";
-	mes "the short sword that is important to me!";
-	if (BaseLevel >= 20) goto L_Level;
-	close;
-
-L_Level:
-	next;
-	if (nakha == 0) set nakha,1;
-	mes "[YunKyoHam]";
-	mes "I want to go down there,";
-	mes "but I'm afraid of the monsters.";
-	mes "It's so terrible..";
-	close;
-		
-L_Sword1:
-	mes "[YunKyoHam]";
-	mes "Oh no! What should I do?";
-	mes "I have lost";
-	mes "the short sword that is important to me!";
-	next;
-	mes "[YunKyoHam]";
-	mes "I want to go down there,";
-	mes "but I'm afraid of the monsters.";
-	mes "It's so terrible..";
-	close;
-
-L_Sword2:
-	mes "[YunKyoHam]";
-	mes "Sob....Sob...What should I do?";
-	mes "What?";
-	mes "What do you want from me?";
-	mes "Huh?";
-	next;
-	mes "[YunKyoHam]";
-	mes "...Ah.. That short sword";
-	mes "was passed down by my ancestors.";
-	mes "The short sword!";
-	mes "Where did you find it?";
-	next;
-	mes "[YunKyoHam]";
-	mes "Actually,";
-	mes "It is a family heirloom";
-	mes "that I dropped here accidentally.";
-	mes "Although,";
-	mes "it is a cheap sword that you can buy on street;";
-	mes "it is important to me.";
-	next; 
-	mes "[YunKyoHam]";
-	mes "Can you";
-	mes "give the short sword to me?";
-	next;
-	menu "Give it to him",-,"Don't give him",L_Deny;
-	set nakha,3;
-	delitem 1201,1;
-	mes "[YunKyoHam]";
-	mes "Oh! Oh! Thank you!";
-	mes "Please take this.";
-	mes "It might not be very precious";
-	mes "but it's a medicine that I have always used.";
-	getitem 505,2;
-	next;
-	mes "[YunKyoHam]";
-	mes "I really don't know how to thank you.";
-	mes "If it wasn't for you,";
-	mes "I will be scolded by my ancestors.";
-	close;
-
-L_Deny:
-	mes "[YunKyoHam]";
-	mes "How can you do this to my family heirloom...sob!";
-	mes "Demon! Satan! Beast! Worm!";
-	mes "I'll hate you!";
-	close;
-
-L_Sword3:
-	mes "[YunKyoHam]";
-	mes "Hmmm,";
-	mes "The neighbour is having problems too,";
-	mes "I wonder what's their problems?";
-	mes "But I don't think I should interfere.";
-	close;
-}
-
-gon_fild01.gat,245,257,0	script	Short Sword	139,3,3{
-end;
+gon_fild01.gat,245,257,0	script	 ::Knife	111,3,3,{
 
 OnTouch:
-	if (nakha == 1) goto L_Discover;
+	if (nakha == 1) {
+		set nakha,2;
+		mes "^3355FFHm? What's this?";
+		mes " ";
+		mes "Something was hidden beneath the leaves...^000000";
+		mes " ";
+		mes "- You have found an old knife -";
+		close2;
+		getitem 1201,1;
+		end;
+	}
 	end;
+}
 
-L_Discover:
-	set nakha, 2;
-	mes "-Something was buried underneath the sand-";
-	mes " ";
-	mes "-You have discovered-";
-	mes "-an unidentified short sword-";
-	getitem 1201,1;
+gonryun.gat,200,82,3	script	Jian Chung Xun	774,{
+
+	mes "[Jian Chung Xun]";
+	mes "I simply adore festivals.";
+	mes "That's why I love this town.";
+	mes "This town makes me feel like I am";
+	mes "in the middle of a festival all year round.";
 	close;
 }
 
-gonryun.gat,200,82,3	script	Sungson Gam	744,{
+gonryun.gat,268,88,3	script	Liang Zhun Bu	776,{
 
-	mes "[Sungson Gam]";
-	mes "What an enjoyable celebration party.";
-	mes "That's why I like it so much.";
-	mes "There's always a celebration party";
-	mes "in this village, hehe.";
+	mes "[Liang Zhun Bu]";
+	mes "We are proud to be an independent";
+	mes "nation, and have been fighting";
+	mes "against the evil invaders who've";
+	mes "wanted to conquer this blessed land for many years...";
+	next;
+	mes "[Liang Zhun Bu]";
+	mes "But we have victoriously fended";
+	mes "off every invasion! As long";
+	mes "as we believe in ourselves,";
+	mes "we shall never forget the";
+	mes "Trumphal Song that has helped us in our struggles.";
 	close;
 }
 
-gonryun.gat,268,88,3	script	Joonpo Lyang	776,{
+gonryun.gat,118,111,5	script	Qian Yuen Shuang	89,{
 
-	mes "[Joonpo Lyang]";
-	mes "We are an independent race.";
-	mes "We have never been defeated";
-	mes "by the enemies who are jealous of our blessed land.";
-	mes "As a matter of fact, we've always beaten them.";
+	mes "[Qian Yuen Shuang]";
+	mes "The chief of this town is a man";
+	mes "who opens his heart to others.";
+	mes "However, I have heard that there";
+	mes "are some people who don't like his personality...";
 	next;
-	mes "[Joonpo Lyang]";
-	mes "I belive, the song of victory";
-	mes "is like a the sun of the dawn!";
+	mes "[Qian Yuen Shuang]";
+	mes "Well, I like my town. The Chief's";
+	mes "efforts have made our town safer.";
+	mes "I just hope other people feel the";
+	mes "same way about what he has done.";
 	close;
 }
 
-gonryun.gat,118,111,5	script	Wonsuk Chen	89,{
+gonryun.gat,181,161,3	script	Jing Wen Zhen	773,{
 
-	mes "[Wonsuk Chen]";
-	mes "The leader is an open-minded person.";
-	mes "However, some people don't like him";
-	mes "due to his open-minded thinking.";
-	mes "Hmm.......";
+	mes "[Jing Wen Zhen]";
+	mes "The men in our town, Kunlun, are";
+	mes "all brave and courageous.";
+	mes "But, they are unable to get";
+	mes "married. It's quite a shame really...";
 	next;
-	mes "[Wonsuk Chen]";
-	mes "But because of him";
-	mes "the culture of our village become open minded too...";
-	mes "I just hope that";
-	mes "there won't be some crazy people around.";
+	mes "[Jing Wen Zhen]";
+	mes "It's all because there are";
+	mes "more men than women.";
+	mes "I am not even sure whether";
+	mes "or not my son will be able to";
+	mes "find me a daughter in law.";
 	close;
 }
 
-gonryun.gat,181,161,3	script	Moonjin Chung	773,{
+gonryun.gat,113,135,6	script	Gatekeeper#gon	780,{
 
-	mes "[Moonjin Chung]";
-	mes "The man of Kunlun";
-	mes "are healthy and energetic.";
-	mes "But recently,";
-	mes "they cannot find a wife..." ;
+	mes "[Kunlun Guard]";
+	mes "Welcome.";
+	mes "This is the residence of Shi Yan Wen, the chief of Kunlun.";
 	next;
-	mes "[Moonjin Chung]";
-	mes "That's because,";
-	mes "the number of men has increased,";
-	mes "while the girls become fewer.";
-	mes "I wonder";
-	mes "if my son will be able to find a wife...";
+	mes "[Kunlun Guard]";
+	mes "You better behave yourself while";
+	mes "you are here. If we see anything";
+	mes "suspicious, we'll arrest you in a heartbeat.";
+	next;
+	mes "[Kunlun Guard]";
+	mes "However, rest assured, you seem";
+	mes "like a trustworthy person.";
+	mes "I'm sure nothing will happen. Enjoy your visit.";
 	close;
 }
 
-gonryun.gat,113,135,6	script	Gatekeeper#1	780,{
- 
-	mes "[Gatekeeper]";
-	mes "Welcome";
-	mes "This is the residence of SaYumMoon,";
-	mes "leader of Kunlun.";
+gonryun.gat,113,127,6	script	Gatekeeper#gon	780,{
+
+	mes "[Kunlun Guard]";
+	mes "Welcome.";
+	mes "This is the residence of Shi Yan Wen, the chief of Kunlun.";
 	next;
-	mes "[Gatekeeper]";
-	mes "Don't do anything evil here.";
-	mes "If you do so,";
-	mes "we will stab you immediately.";
+	mes "[Kunlun Guard]";
+	mes "You better behave yourself while";
+	mes "you are here. If we see anything";
+	mes "suspicious, we'll arrest you in a heartbeat.";
 	next;
-	mes "[Gatekeeper]";
-	mes "But don't worry.";
-	mes "I don't think that will happen.";
-	mes "I hope you will have a pleasant visit.";
+	mes "[Kunlun Guard]";
+	mes "However, rest assured, you seem";
+	mes "like a trustworthy person.";
+	mes "I'm sure nothing will happen. Enjoy your visit.";
 	close;
 }
 
-gonryun.gat,113,127,6	script	Gatekeeper#2	780,{
+gon_in.gat,73,82,5	script	Ji Chung Zhe	778,{
 
-	mes "[Gatekeeper]";
-	mes "Welcome";
-	mes "This is the residence of SaYumMoon,";
-	mes "leader of Kunlun.";
-	next;
-	mes "[Gatekeeper]";
-	mes "Don't do anything evil here.";
-	mes "If you do so,";
-	mes "we will stab you immediately.";
-	next;
-	mes "[Gatekeeper]";
-	mes "But don't worry.";
-	mes "I don't think that will happen.";
-	mes "I hope you will have a pleasant visit.";
+	if (nakha == 0) {
+		mes "[Ji Chung Zhe]";
+		mes "............";
+		next;
+		mes "[Ji Chung Zhe]";
+		mes "puuuuu....This sure is";
+		mes "something to worry about.";
+		close;
+	}
+	if (nakha == 1) {
+		mes "[Ji Chung Zhe]";
+		mes "............";
+		next;
+		mes "[Ji Chung Zhe]";
+		mes "puuuuu....This sure is";
+		mes "something to worry about.";
+		close;
+	}
+	if (nakha == 2) {
+		mes "[Ji Chung Zhe]";
+		mes "............";
+		next;
+		mes "[Ji Chung Zhe]";
+		mes "puuuuu....This sure is";
+		mes "something to worry about.";
+		close;
+	}
+	if (nakha == 3) {
+		set cha,1;
+		mes "[Ji Chung Zhe]";
+		mes "I am Ji Chung Zhe, a renown brewer";
+		mes "of teas. Everyday, I put all my";
+		mes "efforts in making scrumptious, delicious tea.";
+		next;
+		mes "[Ji Chung Zhe]";
+		mes "*Sigh* But lately, the tea I've";
+		mes "been making hasn't been that";
+		mes "great... If I only had some special ingredients...";
+		next;
+		mes "[Ji Chung Zhe]";
+		mes "I've been told that if you use";
+		mes "a snake, you can concoct a truly";
+		mes "extraordinary beverage~";
+		mes "But...where can I find one";
+		mes "and how can I catch one?";
+		mes "Hmm...";
+		close;
+	}
 	close;
 }
 
-gon_in.gat,73,82,5	script	SungChul Ki	778,{
+gon_in.gat,173,27,3	script	Yu Jiu Xia	774,{
 
-	if (nakha == 3) goto L_Sword3;
-	mes "[SungChul Ki]";
-	mes "............";
+	mes "[Yu Jiu Xia]";
+	mes "Geez, just as I thought.";
+	mes "They won't sell alcohol to me.";
+	mes "Maybe its cuz I'm too young...";
+	mes "Hmmm...I wonder how it tastes...";
 	next;
-	mes "[SungChul Ki]";
-	mes "Oh.....";
-	mes "It makes me worry, so worry.";
-	close;
-	 
-L_Sword3:	
-	set cha,1;
-	mes "[SungChul Ki]";
-	mes "My name is SungChul Ki,";
-	mes "I am a researcher in tea";
-	mes "who want to create tea of great taste.";
-	mes "I am doing research currently";
-	mes "to create a tea of great taste.";
-	next;
-	mes "[SungChul Ki]";
-	mes "Oh...there's no progress";
-	mes "in my research recently.";
-	mes "That's because I am looking for";
-	mes "some special ingredients...";
-	next;
-	mes "[SungChul Ki]";
-	mes "There are rumors that,";
-	mes "you can make good tea using snakes.";
-	mes "But, how do I catch snakes,";
-	mes "and how am I going to use it to make good tea.";
-	mes "Oh... sigh";
-	close;
-}
-	
-gon_in.gat,173,27,3	script	Kuha Woo	774,{
-
-	mes "[Kuha Woo]";
-	mes "So,";
-	mes "They are not selling wine to customers of my age.";
-	mes "I wonder how it tastes";
-	mes "because the adults seems really enjoying it... Sigh";
-	next;
-	mes "[Kuha Woo]";
-	mes "But I heard that they are producing tea";
-	mes "that is suitable for kids like me.";
-	mes "I wonder when";
-	mes "will I be able to drink this tea.";
-	mes "It just turns me on thinking about it.";
+	mes "[Yu Jiu Xia]";
+	mes "However, I know they're making";
+	mes "some tasty tea that even kids";
+	mes "like me can enjoy.";
+	mes "It makes my mouth water just";
+	mes "thinking about this new tea.";
 	close;
 }
 
 gonryun.gat,166,196,3	script	Soldier	780,{
 
-	if (b_sword < 7) goto L_BSword1;
-	if (b_sword > 6 && b_sword < 10) goto L_BSword2;
-	mes "[Waguo]";
-	mes "Do you know?";
-	mes "This used to be a temple";
-	mes "and since some fake fairies";
-	mes "started to take over this place,";
-	mes "it becomes a nest of monsters";
-	mes "and the temple is abandoned..";
-	next;
-	mes "[Waguo]";
-	mes "The activing is beginning soon.";
-	mes "I wonder why was it delayed";
-	mes "This had never happened before.";
-	close;
-
-L_BSword1:
-	mes "[Waguo]";
-	mes "Do you know?";
-	mes "This used to be a temple";
-	mes "and since some fake fairies";
-	mes "started to take over this place,";
-	mes "it becomes a nest of monsters";
-	mes "and the temple is abandoned..";
-	close;
-
-L_BSword2:
-	mes "[Waguo]";
-	mes "Was it too noisy last night?";
-	mes "That's because of a burglar, the whole village become chaotic.";
-	mes "It is even noisier ";
-	mes "than the time we had a celebration party.";
-	next;
-	mes "[Waguo]";
-	mes "Argh~~~!";
-	mes "I was on duty last night.";
-	mes "When I was working,";
-	mes "something rushed";
-	mes "into the temple." ;
-	next;
-	mes "[Waguo]";
-	mes "It is huge and moved swiftly.";
-	mes "It looked like an injured man.";
-	mes "Althought it seemed to be cripple,";
-	mes "it moved very fast.";
-	mes "Therefore, I dare not go to take a closer look.";
-	close;
-}
-
-gonryun.gat,169,71,3	script	Soldier	770,{
-
-	mes "[Leeheemin]";
-	mes "Welcome";
-	mes "Before you enter the village,";
-	mes "have you pay a visit to the lower area of the village?";
-	mes "The buildings out there";
-	mes "is the best design we have ever created.";
-	next;
-	mes "[Leeheemin]";
-	mes "In order to get a clear view of";
-	mes "the cities of Rune Midgard Kingdom";
-	mes "we made this small model...";
-	mes "However, it is a tiring job because";
-	mes "we have not communicated with the outside world for a long time.";
-	mes "Anyway, we're making it the best we can.";
-	next;
-	mes "[Leeheemin]";
-	mes "Have a look around,";
-	mes "and you'll discover";
-	mes "some tremendous view there.";
-	close;
-}
-
-
-//--------------------------------------------------------------
-// Power NPC (Disabled - Broken array declarations) - [KarLaeda]
-//--------------------------------------------------------------
-/*
-gonryun.gat,180,118,4	script	Iron man#gnp	85,{
-
-	if (countitem(1201) > 0) {
-		mes "- Wait a minute !! -";
-		mes "- Currently you're carrying -";
-		mes "- too many items with you. -";
-		mes "- Please try again -";
-		mes "- after you loose some weight. -";
-		close;
-	}
-	if (BaseJob == Job_Novice) {
-		mes "[Songmoodoo]";
-		mes "Children are not allowed in here.";
-		close;
-	}
-	if (in_battle == 3) set in_battle,1;
-	if (in_battle < 1) {
-		mes "[Songmoodoo]";
-		mes "Hey hey~ This is not something";
-		mes "You can see everyday.";
-		mes "Oh~ you look strong!";
-		mes "Wanna try?";
+	if (b_sword < 7) {
+		mes "[Wa Qiu Wu]";
+		mes "Let me tell you something";
+		mes "interesting about this place~";
+		mes "Long ago, this entire area used to be a shrine.";
 		next;
-		switch(select("Why not?","?????","No thanks.")) {
+		mes "[Wa Qiu Wu]";
+		mes "In those days, Taoist hermits";
+		mes "used to gather here in order to";
+		mes "reach the Sky Kingdom. However,";
+		mes "they failed miserably...slowly the monsters began to come...";
+		close;
+	} else if ((b_sword > 6) && (b_sword < 10)) {
+		mes "[Wa Qiu Wu]";
+		mes "Don't you think it was quite noisy";
+		mes "last night? It was all because";
+		mes "of that thief. He made quite";
+		mes "a scene...It was so loud that";
+		mes "I couldn't sleep at all...";
+		next;
+		mes "[Wa Qiu Wu]";
+		mes "Ahh~~~~!";
+		mes "In the middle of all that";
+		mes "commotion, I saw";
+		mes "something running straight";
+		mes "into the shrine.";
+		next;
+		mes "[Wa Qiu Wu]";
+		mes "It was moving so fast that";
+		mes "I couldn't even tell what it was.";
+		mes "From what I could recognize, it";
+		mes "looked human. I wonder";
+		mes "what it was...";
+		next;
+		mes "[Wa Qiu Wi]";
+		mes "It might have been the";
+		mes "thief, but it moved";
+		mes "so fast, it seemed like";
+		mes "just a blur.";
+		close;
+	} else {
+		mes "[Wa Qiu Wu]";
+		mes "Let me tell you something";
+		mes "interesting~ This entire area";
+		mes "used to be a shrine.";
+		next;
+		mes "[Wa Qiu Wu]";
+		mes "A long time ago, Taoist hermits";
+		mes "used to gather here in order to";
+		mes "reach the Sky Kingdom. However,";
+		mes "they failed miserably...slowly the monsters began to come.";
+		next;
+		mes "[Wa Qiu Wu]";
+		mes "The town is getting ready for the";
+		mes "Festival, but something is delaying";
+		mes "it. This has never happened before...";
+		close;
+	}
+}
+
+gonryun.gat,169,71,3	script	Guide	770,{
+
+	mes "[Li Xi Jiao]";
+	mes "Welcome to Kunlun!";
+	mes "Did you enjoy all the incredible";
+	mes "scenery on your way here?";
+	mes "The buildings may be small, but we";
+	mes "all worked hard to build this city.";
+	next;
+	mes "[Li Xi Jiao]";
+	mes "I have some miniatures of";
+	mes "the Rune-Midgarts Kingdom.";
+	mes "You can view all of Prontera in a";
+	mes "single glance. The craftsmanship";
+	mes "on these masterpieces is quite stunning!";
+	next;
+	mes "[Li Xi Jiao]";
+	mes "If you look around carefully,";
+	mes "You'll find all sorts of beautiful";
+	mes "sights throughout the town.";
+	close;
+}
+
+
+//--------------------------------------------------------------
+// Power NPC - [Tsuyuki]
+//--------------------------------------------------------------
+
+gonryun.gat,180,118,4	script	Iron Man	85,{
+
+	if (in_battle == 3) {
+		set in_battle,1;
+	}
+	set '@now_weight,MaxWeight - Weight;
+	if (Class == Job_Novice) {
+		mes "[Song Mao Tou]";
+		mes "Hey you...!";
+		mes "This isn't a place for kids!";
+		next;
+		if (Sex == Female) {
+			mes "[Song Mao Tou]";
+			mes "Listen...little girl.";
+			mes "You might wanna try";
+			mes "learning to fight,";
+			mes "or maybe getting";
+			mes "some muscles...";
+			next;
+			mes "[Song Mao Tou]";
+			mes "I mean, come on...";
+			mes "You're a Novice!";
+			mes "All of you guys bruise too easily!";
+		} else {
+			mes "[Song Mao Tou]";
+			mes "Listen fellah...";
+			mes "Why don't you take your";
+			mes "cute little backpack and";
+			mes "your widdle camping boots...";
+			next;
+			mes "[Song Mao Tou]";
+			mes " ";
+			mes " ";
+			mes "...AND TAKE A HIKE!";
+			next;
+			mes "[Song Mao Tou]";
+			mes "When you can do more";
+			mes "than just sitting down,";
+			mes "then we can talk like men.";
+		}
+		close;
+	} else if (in_battle < 1) {
+		mes "[Song Mao Tou]";
+		mes "*Grunt*";
+		mes "Hey...";
+		mes "You look like you've";
+		mes "seen your fair share";
+		mes "of battles.";
+		next;
+		mes "[Song Mao Tou]";
+		mes "Hmm...show me your";
+		mes "strength. If you've";
+		mes "got the stuff, then";
+		mes "maybe we can be pals.";
+		next;
+		switch(select("You're on.","Maybe later.","Friends? With you??")) {
 		case 1:
-			mes "[Songmoodoo]";
-			mes "Haha~ I knew you would try.";
-			mes "If you could lift this up,";
-			mes "I'll tell you something interesting.";
+			mes "[Song Mao Tou]";
+			mes "Haha! Alright! I knew you'd be up";
+			mes "for a challenge! Okay, see that";
+			mes "pile of rocks over there?";
+			mes "See if you can pick that up.";
 			mes "Ready?";
 			next;
-			mes "^0000FFSongmoodoo pointed to a rock";
-			mes "and asked you to lift.";
-			if (BaseJob < Job_Knight) {
-				if (checkweight(7049,690)) {
-					mes "^0000FFYou lifted the Stone lightly.^000000";
-					set in_battle,1;
-					getitem 7049,690; // Stone
+			mes "^0000FFSongmoodoo points a pile of rocks, and asks you to lift them.";
+			if ((Class == Job_Swordsman) || (Class == Job_Mage) || (Class == Job_Archer) || (Class == Job_Thief) || (Class == Job_Acolyte) || (Class == Job_Merchant)) {
+				if ('@now_weight < 19010) {
+					mes "They're too heavy for you to budge!^000000";
 					next;
-					emotion e_no1;
-					mes "[Songmoodoo]";
-					mes "Wow~ Excellent~";
-					mes "I'll take you to someplace nice";
-					mes "next time I see you.";
-					mes "See ya~";
+					mes "[Song Mao Tou]";
+					mes "Huh...I guess you're still pretty ";
+					mes "green...Come back and try again when you get stronger, yeah?";
+					emotion ET_HNG,"Iron Man";
+					close;
 				} else {
-					mes "Looks too heavy for you.^000000";
+					mes "^0000FFYou lift the Stones quite easily.^000000";
+					set in_battle,1;
+					getitem 7049,690;
 					next;
-					mes "[Songmoodoo]";
-					mes "You are yet lack of training.";
-					mes "Come after more practice.";
+					emotion ET_BEST,"Iron Man";
+					mes "[Song Mao Tou]";
+					mes "Whoa...";
+					mes "...Oh man, you ARE strong!";
+					next;
+					mes "[Song Mao Tou]";
+					mes "You can only be that";
+					mes "strong by fighting a lot...";
+					mes "And to fight that much,";
+					mes "You've gotta love it...";
+					next;
+					mes "[Song Mao Tou]";
+					mes "Say...";
+					mes "Do you like fighting?!";
+					next;
+					switch(select("YEAH!!","It's okay.","I'm a creature of peace.")) {
+					case 1:
+						mes "[Song Mao Tou]";
+						mes "Finally! I've found someone";
+						mes "who likes to punch things";
+						mes "and beat stuff up just as";
+						mes "much as I do!";
+						next;
+						mes "[Song Mao Tou]";
+						mes "I know a great place where";
+						mes "we can fight as much as we want!";
+						mes "Talk to me sometime, and we'll";
+						mes "head over to the Battle Arena.";
+						mes "We'll have a great time~!";
+						close;
+					case 2:
+						mes "[Song Mao Tou]";
+						mes "Just 'okay?'";
+						mes "...";
+						mes "Oh man...";
+						mes "FIGHTING IS THE BEST!";
+						next;
+						mes "[Song Mao Tou]";
+						mes "Come on, you're a strong fighter.";
+						mes "Whenever you're itching for a ";
+						mes "brawl, talk to me and we'll";
+						mes "visit the Battle Arena.";
+						close;
+					case 3:
+						mes "[Song Mao Tou]";
+						mes "...";
+						mes "Sorry, what? I don't think I heard that right.";
+						next;
+						switch(select("Fighting sucks.")) {
+						case 1:
+							mes "[Song Mao Tou]";
+							mes "WHAT?!";
+							mes "You take that back!!!";
+							next;
+							mes "[Song Mao Tou]";
+							mes "Look, when you stop";
+							mes "talking crazy talk,";
+							mes "come see me, and we'll";
+							mes "go to the Battle Arena...";
+							emotion ET_HNG,"Iron Man";
+							next;
+							mes "[Song Mao Tou]";
+							mes "We could watch some brawling,";
+							mes "get some punching in ourselves...it'll help you relax~";
+							close;
+						}
+					}
 				}
-			} else if ((BaseJob == Job_Swordsman) || (BaseJob == Job_Knight) || (BaseJob == Job_Crusader) || (BaseJob == Job_Thief) || (BaseJob == Job_Assassin) || (BaseJob == Job_Rogue) || (BaseJob == Job_Merchant) || (BaseJob == Job_Blacksmith) || (BaseJob == Job_Alchemist) || (BaseJob == Job_Monk)) {
-				if (checkweight(7049,1100)) {
-					mes "^0000FFYou lifted the Stone lightly.^000000";
-					set in_battle,1;
-					getitem 7049,1100; // Stone
+			} else if ((Class == Job_Knight) || (Class == Job_Crusader) || (Class == Job_Assassin) || (Class == Job_Rogue) || (Class == Job_Monk) || (Class == Job_Blacksmith) || (Class == Job_Alchemist)) {
+				if ('@now_weight < 33010) {
+					mes "Its too heavy for you to even budge!^000000";
 					next;
-					emotion e_no1;
-					mes "[Songmoodoo]";
-					mes "Wow~ Excellent~";
-					mes "I'll take you to someplace nice";
-					mes "next time I see you.";
-					mes "See ya~";
+					mes "[Song Mao Tou]";
+					mes "Huh...I guess you're still pretty";
+					mes "green...Come back and try again when you get stronger, yeah?";
+					emotion ET_HNG,"Iron Man";
+					close;
 				} else {
-					mes "Seemed too heavy to lift.^000000";
+					mes "^0000FFYou lift the Stones quite easily.^000000";
+					set in_battle,1;
+					getitem 7049,1100;
 					next;
-					mes "[Songmoodoo]";
-					mes "You are yet lack of training.";
-					mes "come after more practice.";
+					emotion ET_BEST,"Iron Man";
+					mes "[Song Mao Tou]";
+					mes "Whoa...";
+					mes " ";
+					mes "...Oh man, you ARE strong!";
+					next;
+					mes "[Song Mao Tou]";
+					mes "You can only be that";
+					mes "strong by fighting a lot...";
+					mes "And to fight that much,";
+					mes "You've gotta love it...";
+					next;
+					mes "[Song Mao Tou]";
+					mes "Say...";
+					mes "Do you like fighting?!";
+					next;
+					switch(select("YEAH!!","It's okay.","I'm a creature of peace.")) {
+					case 1:
+						mes "[Song Mao Tou]";
+						mes "Finally, I've found someone";
+						mes "who likes to punch things";
+						mes "and beat stuff up just as";
+						mes "much as I do!";
+						next;
+						mes "[Song Mao Tou]";
+						mes "I know a great place where";
+						mes "we can fight as much as we want!";
+						mes "Talk to me sometime, and we'll";
+						mes "head over to the Battle Arena.";
+						mes "We'll have a great time~!";
+						close;
+					case 2:
+						mes "[Song Mao Tou]";
+						mes "Just 'okay?'";
+						mes " ";
+						mes "Oh man...";
+						mes "FIGHTING IS THE BEST!";
+						next;
+						mes "[Song Mao Tou]";
+						mes "Come on, you're a strong fighter.";
+						mes "Whenever you're itching for a ";
+						mes "brawl, talk to me and";
+						mes "And we'll visit the Battle Arena.";
+						close;
+					case 3:
+						mes "[Song Mao Tou]";
+						mes "...";
+						mes "Sorry, what? I don't think I heard that right.";
+						next;
+						switch(select("Fighting sucks.")) {
+						case 1:
+							mes "[Song Mao Tou]";
+							mes "WHAT?!";
+							mes "You take that back!!!";
+							next;
+							mes "[Song Mao Tou]";
+							mes "Look, when you stop";
+							mes "talking crazy talk,";
+							mes "come see me, and we'll";
+							mes "go to the Battle Arena...";
+							emotion ET_HNG,"Iron Man";
+							next;
+							mes "[Song Mao Tou;";
+							mes "We could watch some brawling,";
+							mes "get some punching in";
+							mes "ourselves...";
+							mes "It'll help you relax~";
+							close;
+						}
+					}
 				}
 			} else {
-				if (checkweight(7049,730)) {
-					mes "^0000FFYou lifted the Stone lightly.^000000";
-					set in_battle,1;
-					getitem 7049,730; // Stone
+				if ('@now_weight < 22010) {
+					mes "Your arms buckle beneath the massive weight!^000000";
 					next;
-					emotion e_no1;
-					mes "[Songmoodoo]";
-					mes "Wow~ Excellent~";
-					mes "I'll take you to someplace nice";
-					mes "next time I see you.";
-					mes "See ya~";
+					mes "[Song Mao Tou]";
+					mes "Huh...I guess you're still pretty";
+					mes "green...Come back and try again when you get stronger, yeah?";
+					emotion ET_HNG,"Iron Man";
+					close;
 				} else {
-					mes "Seemed too heavy to lift.^000000";
+					mes "^0000FFYou lift the Stones easily.^000000";
+					set in_battle,1;
+					getitem 7049,730;
 					next;
-					mes "[Songmoodoo]";
-					mes "You are yet lack of training.";
-					mes "come after more practice.";
+					emotion ET_BEST,"Iron Man";
+					mes "[Song Mao Tou]";
+					mes "Whoa...";
+					mes " ";
+					mes "...Oh man, you ARE strong!";
+					next;
+					mes "[Song Mao Tou]";
+					mes "You can only be that";
+					mes "strong by fighting a lot...";
+					mes "And to fight that much,";
+					mes "You've gotta love it...";
+					next;
+					mes "[Song Mao Tou]";
+					mes "Say...";
+					mes "Do you like fighting?!";
+					next;
+					switch(select("YEAH!!","It's okay.","I'm a creature of peace.")) {
+					case 1:
+						mes "[Song Mao Tou]";
+						mes "Finally, I've found someone";
+						mes "who likes to punch things";
+						mes "and beat stuff up just as much as I do!";
+						next;
+						mes "[Song Mao Tou]";
+						mes "I know a great place where";
+						mes "we can fight as much as we want!";
+						mes "Talk to me sometime, and we'll";
+						mes "head over to the Battle Arena.";
+						mes "We'll have a great time~!";
+						close;
+					case 2:
+						mes "[Song Mao Tou]";
+						mes "Just 'okay?'";
+						mes " ";
+						mes "Oh man...";
+						mes "FIGHTING IS THE BEST!";
+						next;
+						mes "[Song Mao Tou]";
+						mes "Come on, you're a strong fighter.";
+						mes "Whenever you're itching for a ";
+						mes "brawl, talk to me and";
+						mes "And we'll visit the Battle Arena.";
+						close;
+					case 3:
+						mes "[Song Mao Tou]";
+						mes "...";
+						mes "Sorry, what? I don't think I heard that right.";
+						next;
+						switch(select("Fighting sucks.")) {
+						case 1:
+							mes "[Song Mao Tou]";
+							mes "WHAT?!";
+							mes "You take that back!!!";
+							next;
+							mes "[Song Mao Tou]";
+							mes "Look, when you stop";
+							mes "talking crazy talk,";
+							mes "come see me, and we'll";
+							mes "go to the Battle Arena...";
+							emotion ET_HNG,"Iron Man";
+							next;
+							mes "[Song Mao Tou;";
+							mes "We could watch some brawling,";
+							mes "get some punching in";
+							mes "ourselves...It'll help you relax~";
+							close;
+						}
+					}
 				}
+			}
+		case 2:
+			mes "[Song Mao Tou]";
+			mes "...";
+			mes "Whatsa matter?? ";
+			mes "...You chicken?";
+			close;
+		case 3:
+			mes "[Song Mao Tou]";
+			mes "What!?";
+			mes "Oh...I see how it is...";
+			close;
+		}
+	} else if (in_battle == 1) {
+		mes "[Song Mao Tou]";
+		mes "*Grunt*";
+		mes "Good to see you again!";
+		mes "Wanna go to the Battle Arena??";
+		next;
+		switch(select("Let's do it!","Uhhh, maybe next time.")) {
+		case 1:
+			mes "[Song Mao Tou]";
+			mes "Excellent! Ha ha ha!";
+			mes "I like your style!";
+			mes "Good luck to you!";
+			next;
+			set in_battle,1;
+			warp "gon_test.gat",53,6;
+			end;
+		case 2:
+			mes "[Song Mao Tou]";
+			mes "Oh...alright...";
+			mes "Okay then~";
+			mes "Maybe next time...";
+			emotion ET_HNG,"Iron Man";
+			close;
+		}
+	} else {
+		mes "[Song Mao Tou]";
+		mes "You ran away from there?";
+		mes "Monsters too strong for you??";
+		mes "Ah well, there's always next time~";
+		emotion ET_HNG,"Iron Man";
+		set in_battle,1;
+		close;
+	}
+}
+
+gon_test.gat,50,14,4	script	Administrator::PowerAdmin	780,{
+
+OnInit:
+	waitingroom "[Burn the Mobs down~!!]",10,"PowerAdmin::OnStartArena",1;
+	enablewaitingroomevent;
+	end;
+
+OnStartArena:
+	warpwaitingpc "gon_test.gat",42,86;
+	disablewaitingroomevent;
+	donpcevent " #timer01::OnCommandon";
+	end;
+
+OnCommandon:
+	donpcevent "warp01::OnCommandoff";
+	enablewaitingroomevent;
+	end;
+}
+
+gon_test.gat,57,86,0	script	warp01	139,17,5,{
+
+OnInit:
+	hideonnpc "warp01";
+	end;
+
+OnTouch:
+	set in_battle,1;
+	warp "gon_test.gat",45,4;
+	end;
+
+OnCommandon:
+	hideoffnpc "warp01";
+	donpcevent "PowerAdmin::OnCommandon";
+	end;
+
+OnCommandoff:
+	hideonnpc "warp01";
+	end;
+}
+
+gon_test.gat,60,70,0	script	 #timer01	111,{
+
+OnInit:
+	hideoffnpc " #timer01";
+	initnpctimer;
+	hideonnpc " #timer01";
+	end;
+
+OnTimer120000:
+	mapannounce "gon_test.gat","1 min. left",8;
+	end;
+
+OnTimer180000:
+	donpcevent "PowerSummoner::OnCommandreset";
+	end;
+
+OnTimer182000:
+	mapannounce "gon_test.gat","time over.",8;
+	end;
+
+OnTimer184000:
+	donpcevent " #timer01::OnCommandoff";
+	end;
+
+OnCommandon:
+	hideoffnpc " #timer01";
+	initnpctimer;
+	end;
+
+OnCommandoff:
+	donpcevent "warp01::OnCommandon";
+	stopnpctimer;
+	hideonnpc " #timer01";
+	end;
+
+OnCommandoff2:
+	stopnpctimer;
+	hideonnpc " #timer01";
+	end;
+}
+
+gon_test.gat,42,89,4	script	PowerSummoner::PowerSummoner	774,{
+
+	if (in_battle == 3) {
+		mes "[Song Ran You]";
+		mes "Welcome to the";
+		mes "Battle Arena.";
+		mes "We thank you for";
+		mes "for your patronage.";
+		next;
+		mes "[Song Ran You]";
+		mes "If you would like to";
+		mes "participate, please";
+		mes "register with the";
+		mes "Administrator at";
+		mes "the front.";
+		close;
+	} else if (in_battle == 2) {
+		mes "[Song Ran You]";
+		mes "We can only hold one";
+		mes "match at a time in the";
+		mes "Arena. Please re-register";
+		mes "with the Administrator";
+		mes "if you would like to";
+		mes "fight more monsters.";
+		close;
+	} else {
+		mes "[Song Ran You]";
+		mes "Welcome!";
+		mes "Which monster would you like to battle?";
+		next;
+		switch(select("Group 1","Group 2","Group 3","Group 4","Group 5","Group 6","Group 7","Group 8","Group 9","Group 10","Group 11")) {
+		case 1:
+			switch(select("Leather Ribbon","Sitotoxism ","Certificate of Blood Donation","Tarantula","DangRangKwon","Desert Fang")) {
+			case 1:
+				monster "gon_test.gat",56,86,"Leather ribbon",1419,1,"PowerSummoner::OnMyMobDead";
+				set in_battle,2;
+				break;
+			case 2:
+				monster "gon_test.gat",56,86,"sitotoxism",1428,1,"PowerSummoner::OnMyMobDead";
+				set in_battle,2;
+				break;
+			case 3:
+				monster "gon_test.gat",56,86,"Certificate of Blood Donation",1434,1,"PowerSummoner::OnMyMobDead";
+				set in_battle,2;
+				break;
+			case 4:
+				monster "gon_test.gat",56,86,"Tarantula",1430,1,"PowerSummoner::OnMyMobDead";
+				set in_battle,2;
+				break;
+			case 5:
+				monster "gon_test.gat",56,86,"DangRangKwon",1457,1,"PowerSummoner::OnMyMobDead";
+				set in_battle,2;
+				break;
+			case 6:
+				monster "gon_test.gat",56,86,"Desert Fang",1432,1,"PowerSummoner::OnMyMobDead";
+				set in_battle,2;
+				break;
 			}
 			break;
 		case 2:
-			mes "[Songmoodoo]";
-			mes "That's not a big deal.";
-			mes "If you believe you're strong,";
-			mes "This might be a good chance to experience";
-			mes "something new. Wanna try??";
+			switch(select("Hog Skeleton","Man-Eating Bear","Miner","Fighting Dog ","Mermaid Princess","Only Son")) {
+			case 1:
+				monster "gon_test.gat",56,86,"Hog Skeleton",1462,1,"PowerSummoner::OnMyMobDead";
+				set in_battle,2;
+				break;
+			case 2:
+				monster "gon_test.gat",56,86,"Man-Eating Bear",1442,1,"PowerSummoner::OnMyMobDead";
+				set in_battle,2;
+				break;
+			case 3:
+				monster "gon_test.gat",56,86,"Miner",1469,1,"PowerSummoner::OnMyMobDead";
+				set in_battle,2;
+				break;
+			case 4:
+				monster "gon_test.gat",56,86,"Fighting Dog",1460,1,"PowerSummoner::OnMyMobDead";
+				set in_battle,2;
+				break;
+			case 5:
+				monster "gon_test.gat",56,86,"Mermaid Princess",1425,1,"PowerSummoner::OnMyMobDead";
+				set in_battle,2;
+				break;
+			case 6:
+				monster "gon_test.gat",56,86,"Only Son",1472,1,"PowerSummoner::OnMyMobDead";
+				set in_battle,2;
+				break;
+			}
 			break;
 		case 3:
-			mes "[Songmoodoo]";
-			mes "I guess not..";
-			mes "....";
-			emotion e_pif;
+			switch(select("SamYeupchoom","Hunting Dog","Nutcracker","Sea Horse","JAKK","Corpse")) {
+			case 1:
+				monster "gon_test.gat",56,86,"SamYeupchoom",1454,1,"PowerSummoner::OnMyMobDead";
+				set in_battle,2;
+				break;
+			case 2:
+				monster "gon_test.gat",56,86,"Hunting Dog",1455,1,"PowerSummoner::OnMyMobDead";
+				set in_battle,2;
+				break;
+			case 3:
+				monster "gon_test.gat",56,86,"Nutcracker",1443,1,"PowerSummoner::OnMyMobDead";
+				set in_battle,2;
+				break;
+			case 4:
+				monster "gon_test.gat",56,86,"Sea Horse",1426,1,"PowerSummoner::OnMyMobDead";
+				set in_battle,2;
+				break;
+			case 5:
+				monster "gon_test.gat",56,86,"JAKK",1436,1,"PowerSummoner::OnMyMobDead";
+				set in_battle,2;
+				break;
+			case 6:
+				monster "gon_test.gat",56,86,"Corpse",1423,1,"PowerSummoner::OnMyMobDead";
+				set in_battle,2;
+				break;
+			}
+			break;
+		case 4:
+			switch(select("Marduk","Onion Stem","Worm","AutoDoll","Girl with Matches","Red Evil")) {
+			case 1:
+				monster "gon_test.gat",56,86,"Marduk",1458,1,"PowerSummoner::OnMyMobDead";
+				set in_battle,2;
+				break;
+			case 2:
+				monster "gon_test.gat",56,86,"Onion Stem",1440,1,"PowerSummoner::OnMyMobDead";
+				set in_battle,2;
+				break;
+			case 3:
+				monster "gon_test.gat",56,86,"Worm",1429,1,"PowerSummoner::OnMyMobDead";
+				set in_battle,2;
+				break;
+			case 4:
+				monster "gon_test.gat",56,86,"AutoDoll",1459,1,"PowerSummoner::OnMyMobDead";
+				set in_battle,2;
+				break;
+			case 5:
+				monster "gon_test.gat",56,86,"Girl with Matches",1444,1,"PowerSummoner::OnMyMobDead";
+				set in_battle,2;
+				break;
+			case 6:
+				monster "gon_test.gat",56,86,"Red Evil",1422,1,"PowerSummoner::OnMyMobDead";
+				set in_battle,2;
+				break;
+			}
+			break;
+		case 5:
+			switch(select("Naga","Mold","Tracing Missiles","Aryong","Abiryong","Bacterium")) {
+			case 1:
+				monster "gon_test.gat",56,86,"Naga",1421,1,"PowerSummoner::OnMyMobDead";
+				set in_battle,2;
+				break;
+			case 2:
+				monster "gon_test.gat",56,86,"Mold",1481,1,"PowerSummoner::OnMyMobDead";
+				set in_battle,2;
+				break;
+			case 3:
+				monster "gon_test.gat",56,86,"Tracing Missiles",1424,1,"PowerSummoner::OnMyMobDead";
+				set in_battle,2;
+				break;
+			case 4:
+				monster "gon_test.gat",56,86,"Aryong",1465,1,"PowerSummoner::OnMyMobDead";
+				set in_battle,2;
+				break;
+			case 5:
+				monster "gon_test.gat",56,86,"Abiryong",1466,1,"PowerSummoner::OnMyMobDead";
+				set in_battle,2;
+				break;
+			case 6:
+				monster "gon_test.gat",56,86,"Bacterium",1433,1,"PowerSummoner::OnMyMobDead";
+				set in_battle,2;
+				break;
+			}
+			break;
+		case 6:
+			switch(select("Winning System","Fat Archer","Little Black Goat","Perverted","Treasure Box","Greenhorn")) {
+			case 1:
+				monster "gon_test.gat",56,86,"Winning System",1427,1,"PowerSummoner::OnMyMobDead";
+				set in_battle,2;
+				break;
+			case 2:
+				monster "gon_test.gat",56,86,"Fat Archer",1473,1,"PowerSummoner::OnMyMobDead";
+				set in_battle,2;
+				break;
+			case 3:
+				monster "gon_test.gat",56,86,"Little Black Goat",1431,1,"PowerSummoner::OnMyMobDead";
+				set in_battle,2;
+				break;
+			case 4:
+				monster "gon_test.gat",56,86,"Perverted",1446,1,"PowerSummoner::OnMyMobDead";
+				set in_battle,2;
+				break;
+			case 5:
+				monster "gon_test.gat",56,86,"Treasure Box",1474,1,"PowerSummoner::OnMyMobDead";
+				set in_battle,2;
+				break;
+			case 6:
+				monster "gon_test.gat",56,86,"Greenhorn",1471,1,"PowerSummoner::OnMyMobDead";
+				set in_battle,2;
+				break;
+			}
+			break;
+		case 7:
+			switch(select("Hurricane","External Hog","Landlord of Maze","Knight of grudge","Archer of grudge","Papillon")) {
+			case 1:
+				monster "gon_test.gat",56,86,"Hurricane",1450,1,"PowerSummoner::OnMyMobDead";
+				set in_battle,2;
+				break;
+			case 2:
+				monster "gon_test.gat",56,86,"External Hog",1439,1,"PowerSummoner::OnMyMobDead";
+				set in_battle,2;
+				break;
+			case 3:
+				monster "gon_test.gat",56,86,"Landlord of Maze",1461,1,"PowerSummoner::OnMyMobDead";
+				set in_battle,2;
+				break;
+			case 4:
+				monster "gon_test.gat",56,86,"Knight of grudge",1467,1,"PowerSummoner::OnMyMobDead";
+				set in_battle,2;
+				break;
+			case 5:
+				monster "gon_test.gat",56,86,"Archer of grudge",1453,1,"PowerSummoner::OnMyMobDead";
+				set in_battle,2;
+				break;
+			case 6:
+				monster "gon_test.gat",56,86,"Papillon",1479,1,"PowerSummoner::OnMyMobDead";
+				set in_battle,2;
+				break;
+			}
+			break;
+		case 8:
+			switch(select("Lip","Wendigo","E Card","Tentacle Monster","Muscular Alarm","Devil Cross")) {
+			case 1:
+				monster "gon_test.gat",56,86,"Lip",1451,1,"PowerSummoner::OnMyMobDead";
+				set in_battle,2;
+				break;
+			case 2:
+				monster "gon_test.gat",56,86,"Wendigo",1475,1,"PowerSummoner::OnMyMobDead";
+				set in_battle,2;
+				break;
+			case 3:
+				monster "gon_test.gat",56,86,"E Card",1437,1,"PowerSummoner::OnMyMobDead";
+				set in_battle,2;
+				break;
+			case 4:
+				monster "gon_test.gat",56,86,"Tentacle Monster",1441,1,"PowerSummoner::OnMyMobDead";
+				set in_battle,2;
+				break;
+			case 5:
+				monster "gon_test.gat",56,86,"Muscular Alarm",1476,1,"PowerSummoner::OnMyMobDead";
+				set in_battle,2;
+				break;
+			case 6:
+				monster "gon_test.gat",56,86,"Devil Cross",1435,1,"PowerSummoner::OnMyMobDead";
+				set in_battle,2;
+				break;
+			}
+			break;
+		case 9:
+			switch(select("Maggot","Large Frame","Season of Reading","Shining Fingers","Handbag","Major knight of grudge")) {
+			case 1:
+				monster "gon_test.gat",56,86,"Maggot",1477,1,"PowerSummoner::OnMyMobDead";
+				set in_battle,2;
+				break;
+			case 2:
+				monster "gon_test.gat",56,86,"Large Frame",1448,1,"PowerSummoner::OnMyMobDead";
+				set in_battle,2;
+				break;
+			case 3:
+				monster "gon_test.gat",56,86,"Season of Reading",1478,1,"PowerSummoner::OnMyMobDead";
+				set in_battle,2;
+				break;
+			case 4:
+				monster "gon_test.gat",56,86,"Shining Fingers",1489,1,"PowerSummoner::OnMyMobDead";
+				set in_battle,2;
+				break;
+			case 5:
+				monster "gon_test.gat",56,86,"Handbag",1488,1,"PowerSummoner::OnMyMobDead";
+				set in_battle,2;
+				break;
+			case 6:
+				monster "gon_test.gat",56,86,"Major knight of grudge",1438,1,"PowerSummoner::OnMyMobDead";
+				set in_battle,2;
+				break;
+			}
+			break;
+		case 10:
+			switch(select("Queen","Man of Fire","Sword of Executor","Mutant Dragon","Mixed Soup","Great Sword")) {
+			case 1:
+				monster "gon_test.gat",56,86,"Queen",1482,1,"PowerSummoner::OnMyMobDead";
+				set in_battle,2;
+				break;
+			case 2:
+				monster "gon_test.gat",56,86,"Man of Fire",1464,1,"PowerSummoner::OnMyMobDead";
+				set in_battle,2;
+				break;
+			case 3:
+				monster "gon_test.gat",56,86,"Sword of Executor",1487,1,"PowerSummoner::OnMyMobDead";
+				set in_battle,2;
+				break;
+			case 4:
+				monster "gon_test.gat",56,86,"Mutant Dragon",1449,1,"PowerSummoner::OnMyMobDead";
+				set in_battle,2;
+				break;
+			case 5:
+				monster "gon_test.gat",56,86,"Mixed Soup",1456,1,"PowerSummoner::OnMyMobDead";
+				set in_battle,2;
+				break;
+			case 6:
+				monster "gon_test.gat",56,86,"Great Sword",1486,1,"PowerSummoner::OnMyMobDead";
+				set in_battle,2;
+				break;
+			}
+			break;
+		case 11:
+			switch(select("Monster Bird","Torturer","Warrior","Vice-Torturer","Huge Sword")) {
+			case 1:
+				monster "gon_test.gat",56,86,"Monster Bird",1447,1,"PowerSummoner::OnMyMobDead";
+				set in_battle,2;
+				break;
+			case 2:
+				monster "gon_test.gat",56,86,"Torturer",1483,1,"PowerSummoner::OnMyMobDead";
+				set in_battle,2;
+				break;
+			case 3:
+				monster "gon_test.gat",56,86,"Warrior",1490,1,"PowerSummoner::OnMyMobDead";
+				set in_battle,2;
+				break;
+			case 4:
+				monster "gon_test.gat",56,86,"Vice-Torturer",1484,1,"PowerSummoner::OnMyMobDead";
+				set in_battle,2;
+				break;
+			case 5:
+				monster "gon_test.gat",56,86,"Huge Sword",1485,1,"PowerSummoner::OnMyMobDead";
+				set in_battle,2;
+				break;
+			}
 			break;
 		}
-	} else if (in_battle == 1) {
-		mes "[Songmoodoo]";
-		mes "Good to see you again!";
-		mes "Wanna go??";
-		next;
-		if (select("Sure","Maybe next time") == 1) {
-			mes "[Songmoodoo]";
-			mes "Good! Haha.";
-			mes "I like your confidence.";
-			mes "Good luck on you~";
-			close2;
-			warp "gon_test.gat",53,6;
-			end;
-		} else {
-			mes "[Songmoodoo]";
-			mes "well..";
-			mes "alright.";
-			mes "I'll see you next time then.";
-		}
-	} else {
-		mes "[Songmoodoo]";
-		mes "You ran away from there?";
-		mes "Guess you're not strong enough?";
-		mes "I'll give you another chance.";
-		mes "See you again.";
-		emotion e_pif;
-		set in_battle,1;
+		end;
 	}
-	close;
-}
 
-gon_test.gat,50,14,4	script	Administrator#gnp	780,{
+OnCommandreset:
+	killmonster "gon_test.gat","PowerSummoner::OnMyMobDead";
+	end;
 
-	mes "[Administrator]";
-	if (BaseJob == Job_Novice) {
-		mes "Children are not allowed in here.";
-		close;
-	}
-	if ($@in_battle) {
-		mes "Sorry, a field of fight";
-		mes "is occupied right now.";
-		mes "Try again later.";
-		close;
-	}
-	mes "Are you ready?";
-	mes "";
-	mes "Remember, you have to pay";
-	mes "500z to fight.";
-	next;
-	if (select("Yes, let me fight!","One moment, please.") == 2) {
-		mes "[Administrator]";
-		mes "Ok, see you later.";
-		close;
-	}
-	if (Zeny < 500) {
-		mes "[Administrator]";
-		mes "I'm sorry but you don't have enough zeny.";
-		close;
-	}
-	set Zeny,Zeny - 500;
-	set in_battle,1;
-	warp "gon_test.gat",42,86;
-	set $@in_battle,1;
-	setnpctimer 0,"Summoner#gnp";
-	startnpctimer "Summoner#gnp";
+OnMyMobDead:
+	mapannounce "gon_test.gat","Thank you. Please come again.",8;
+	donpcevent " #timer02::OnCommandon";
 	end;
 }
 
-gon_test.gat,42,89,4	script	Summoner#gnp	774,{
+gon_test.gat,2,2,0	script	 #timer02	111,{
 
-	mes "[SongYeunWoo]";
-	if (in_battle == 3) {
-		mes "Please come back after registration.";
-		close;
-	} else if (in_battle == 2) {
-		mes "You had a single match already.";
-		mes "You can have a match once at a time.";
-		mes "Please re-enter if you want a match";
-		mes "with other monsters.";
-		close;
-	}
-	mes "Welcome.";
-	mes "Which monster would you recall?";
-	next;
-	set @gnpGroup,select("Group 1","Group 2","Group 3","Group 4","Group 5","Group 6","Group 7","Group 8","Group 9","Group 10","Group 11");
-	set @gnpGroupMob$,gnpMobsName$[(@gnpGroup-1)*6];
-	for(set @i,1; @i < 6; set @i, @i+1) {
-		set @gnpGroupMob$, @gnpGroupMob$ + ":" + gnpMobsName$[(@gnpGroup-1)*6 + @i];
-	}
-	set @gnpMob,select(@gnpGroupMob$);
-	mes "[SongYeunWoo]";
-	mes "Let the fight begin!";
-	close2;
-	set in_battle,2;
-	if (getnpctimer(0) < 180000) monster "gon_test.gat",56,86,gnpMobsName$[(@gnpGroup-1)*6 + @gnpMob - 1],gnpMobsId[(@gnpGroup-1)*6 + @gnpMob - 1],1,"Summoner#gnp::OnGnpMobDead";
+OnInit:
+	hideoffnpc " #timer02";
+	initnpctimer;
+	hideonnpc " #timer02";
 	end;
 
-	OnInit:
-		initnpctimer;
-		stopnpctimer;
-		setarray gnpMobsName$[0],"Leather ribbon","Sitotoxism","Certificate of blood donation","Tarantulla","DangRangKwon","Molar of Desert";
-		setarray gnpMobsId[0],1419,1428,1434,1430,1457,1432;
-		setarray gnpMobsName$[6],"Hog Skeleton","Cannibal Bear","Miner","Fighting Dog","Mermaid Princess","Only Son";
-		setarray gnpMobsId[6],1462,1442,1469,1460,1425,1472;
-		setarray gnpMobsName$[12],"SamYeupchoom","Hunting Dog","Nutcracker","Sea Horse","JAKK","Corpse";
-		setarray gnpMobsId[12],1454,1455,1443,1426,1436,1423;
-		setarray gnpMobsName$[18],"Marduk","Onion Stem","Worm","Autodoll","Girl with Matches","Red Evil";
-		setarray gnpMobsId[18],1458,1440,1429,1459,1444,1422;
-		setarray gnpMobsName$[24],"Naga","Mold","Tracing Missiles","Aryong","Abiryong","Bacterium";
-		setarray gnpMobsId[24],1421,1481,1424,1465,1466,1433;
-		setarray gnpMobsName$[30],"Winning System","Fat Archer","Little black goat","Perverted","Treasure Box","Greenhorn";
-		setarray gnpMobsId[30],1427,1473,1431,1446,1474,1471;
-		setarray gnpMobsName$[36],"Hurricane","External Hog","Landlord of Maze","Knight of grudge","Archer of grudge","Papillon";
-		setarray gnpMobsId[36],1450,1439,1461,1467,1453,1479;
-		setarray gnpMobsName$[42],"Lip","Wendigo","E Card","Tentacle Monster","Muscular Alarm","Devil Cross";
-		setarray gnpMobsId[42],1451,1475,1437,1441,1476,1435;
-		setarray gnpMobsName$[48],"Maggot","Large Frame","Season of reading","Shining Fingers","Handbag","Major knight of grudge";
-		setarray gnpMobsId[48],1477,1448,1478,1489,1488,1438;
-		setarray gnpMobsName$[54],"Queen","Man of Fire","Sword of Executor","Mutant Dragon","Mixed Soup","Great Sword";
-		setarray gnpMobsId[54],1482,1464,1487,1449,1456,1486;
-		setarray gnpMobsName$[60],"Monster Bird","Torturer","Warrior","Vice-Torturer","Huge Sword";
-		setarray gnpMobsId[60],1447,1483,1490,1484,1485;
+OnCommandon:
+	hideoffnpc " #timer02";
+	donpcevent " #timer01::OnCommandoff2";
+	initnpctimer;
 	end;
 
-	OnTimer120000:
-		areaannounce "gon_test.gat",41,81,74,92,"1 min. left",0;
-	end;
-
-	OnTimer180000:
-		killmonster "gon_test.gat","Summoner#gnp::OnGnpMobDead";
-	end;
-
-	OnTimer182000:
-		areaannounce "gon_test.gat",41,81,74,92,"Time Over.",0;
-	end;
-
-	OnGnpMobDead:
-		setnpctimer 0;
-		set in_battle,1;
-		areaannounce "gon_test.gat",41,81,74,92,"Thank you. Please, come again.",0;
-		sleep 4000;
-	OnTimer184000:
-		stopnpctimer;
-		areawarp "gon_test.gat",41,81,74,92,"gon_test.gat",44,4;
-		set $@in_battle,0;
+OnTimer4000:
+	donpcevent "warp01::OnCommandon";
+	stopnpctimer;
+	hideonnpc " #timer02";
 	end;
 }
 
-gon_test.gat,46,14,3	script	Guide of field of fight#gnp	770,{
+gon_test.gat,46,14,3	script	Guide to Battle Arena	770,{
 
-	mes "[SongHeeYeon]";
+	mes "[Song Xi Ran]";
 	mes ".....";
-	mes "Hi, there~";
-	mes "This is a field of fight.";
-	mes "Got any questions?";
+	mes "Hi, there!";
+	mes "This is the Battle Arena.";
+	mes "Do you have any questions?";
 	next;
-	switch(select("A field of fight?","You got a minute lady?","Get in.","Out.","Nope.")) {
+	switch(select("Battle Arena?","So...you got a minute, lady?","I'd like to watch.","Leave Arena","Nope!")) {
 	case 1:
-		mes "[SongHeeYeon]";
-		mes "Just like the name of this place,";
-		mes "it is a field for matches.";
-		mes "We have various monsters";
-		mes "in different levels.";
+		mes "[Song Xi Ran]";
+		mes "Just as the name of this place";
+		mes "suggests, this is an arena for";
+		mes "battles. We have monsters of";
+		mes "varying levels of strength.";
+		mes "1st Class Boss Monsters are";
+		mes "still being prepared...";
 		next;
-		mes "[SongHeeYeon]";
-		mes "1st Class Boss Monsters are in middle of preparation yet.";
-		mes "We charge you a small fee to enter here.";
-		break;
+		mes "[Song Xi Ran]";
+		mes "Those who wish to be";
+		mes "combatants register with";
+		mes "the Administrator of the";
+		mes "Battle Arena. There is a";
+		mes "small registration fee of";
+		mes "500 zeny.";
+		close;
 	case 2:
-		mes "[SongHeeYeon]";
-		mes "eh.... excuse me?";
-		mes "ah..I'm afraid I have to work right now...";
-		mes "I am sorry..";
-		break;
+		mes "[Song Xi Ran]";
+		mes "Eh.... excuse me?";
+		mes "Ah..I'm afraid I'm busy now...";
+		next;
+		mes "[Song Xi Ran]";
+		mes "Way too busy...";
+		close;
 	case 3:
-		mes "[SongHeeYeon]";
-		mes "Yes, Thank you.";
-		mes "Have a good time.";
-		close2;
+		mes "[Song Xi Ran]";
+		mes "Wonderful~!";
+		mes "Thank you, and";
+		mes "have a good time~";
+		next;
 		set in_battle,3;
 		warp "gon_test.gat",25,98;
 		end;
 	case 4:
-		mes "[SongHeeYeon]";
+		mes "[Song Xi Ran]";
 		mes "Thank you.";
 		mes "Please come again.";
-		close2;
+		next;
 		warp "gonryun.gat",177,112;
 		end;
 	case 5:
-		mes "[SongHeeYeon]";
-		mes "........";
-		mes "Good bye..";
-		break;
+		mes "[Song Xi Ran]";
+		mes "Well then, I guess you know";
+		mes "what the Battle Arena is all";
+		mes "about! Would you like to";
+		mes "participate?";
+		next;
+		switch(select("Of course.","Nah~!")) {
+		case 1:
+			mes "[Song Xi Ran]";
+			mes "Very well~";
+			mes "Please register with";
+			mes "the Administrator,";
+			mes "and prepare yourself";
+			mes "for battle. Good luck~";
+			close;
+		case 2:
+			mes "[Song Xi Ran]";
+			mes "Well then...";
+			mes "If you would like to watch";
+			mes "the fight, please talk";
+			mes "to me so that I can let";
+			mes "you into the Spectator";
+			mes "Area.";
+			next;
+			mes "[Song Xi Ran]";
+			mes "If you would like to";
+			mes "be a combatant, please";
+			mes "talk to the Administrator";
+			mes "so that you can register.";
+			mes "Thank you.";
+			close;
+		}
 	}
-	close;
 }
 
-gon_test.gat,70,103,3	script	ChowAnAn#gnp	773,{
+gon_test.gat,70,103,4	script	Exit Guide	773,{
 
-	mes "[ChowAnAn]";
-	mes "Want to go back?";
+	mes "[Chao Ying Ying]";
+	mes "Do you want to go back?";
 	next;
-	if (select("Yes.","No.") == 1) {
-		mes "[ChowAnAn]";
+	switch(select("Yes.","No.")) {
+	case 1:
+		mes "[Chao Ying Ying]";
 		mes "Thank you.";
 		mes "Please come again.";
-		close2;
+		next;
 		set in_battle,1;
 		warp "gon_test.gat",44,4;
 		end;
+	case 2:
+		mes "[Chao Ying Ying]";
+		mes "Okay then, have a good time~";
+		close;
 	}
-	mes "[ChowAnAn]";
-	mes "Thank you.";
-	close;
 }
-*/
 
 
 //--------------------------------------------------------------

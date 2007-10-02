@@ -1812,7 +1812,7 @@ ayo_in01.gat,181,193,4	script	Shaman#thai	840,{
 				mes "[Boonthom]";
 				mes "If you wish to enter the ancient building, you must have protection against evil spirits and malice.";
 				next;
-				if ((Basejob == Job_Priest) || (Basejob == Job_Acolyte) || (Basejob == Job_Crusader)) {
+				if ((Class == Job_Priest) || (Class == Job_Acolyte) || (Class == Job_Crusader)) {
 					mes "[Boonthom]";
 					mes "Even if you can";
 					mes "wield the power of";

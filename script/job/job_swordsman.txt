@@ -20,7 +20,7 @@
 izlude_in.gat,74,172,4	script	Swordman	119,{
 
 	if (Upper == 1) {
-		if (Basejob == Job_Novice && Upper == 1 && (OLD_CLASS == Job_Knight || OLD_CLASS == Job_Crusader)) {
+		if (Class == Job_Novice && Upper == 1 && (OLD_CLASS == Job_Knight || OLD_CLASS == Job_Crusader)) {
 			mes "[Swordman]";
 			mes "It...";
 			mes "Can't be...";
@@ -74,11 +74,11 @@ izlude_in.gat,74,172,4	script	Swordman	119,{
 	next;
 	switch(select("Job Change.","About Swordman.","About the Job requirements.","Cancel.")) {
 	case 1:
-		if (Basejob == Job_Swordsman) {
+		if (Class == Job_Swordsman) {
 			mes "[Swordman]";
 			mes "Job change? Muhahaha! But you're already a Swordman! Be proud and be strong!";
 			close;
-		} else if (Basejob != Job_Novice) {
+		} else if (Class != Job_Novice) {
 			mes "[Swordman]";
 			mes "Haha! Oh boy. I'm flattered, but you already have another job! Still, I can't blame you...";
 			close;
@@ -155,8 +155,8 @@ izlude_in.gat,74,172,4	script	Swordman	119,{
 	case 3:
 		mes "[Swordman]";
 		mes "Hmmm...";
-		if (Basejob != Job_Novice) {
-			if (Basejob == Job_Swordsman) {
+		if (Class != Job_Novice) {
+			if (Class == Job_Swordsman) {
 				mes "But there's no need to tell you the requirements. You've met them and already became a Swordman! Well, anyway...";
 			} else {
 				mes "It's too late for you to become a Swordman. You already have another job. Still, there's no harm in telling you...";
@@ -183,10 +183,10 @@ izlude_in.gat,74,172,4	script	Swordman	119,{
 izlude_in.gat,62,170,6	script	Swordman	85,{
 
 	mes "[Swordman]";
-	if (Basejob == Job_Swordsman) {
+	if (Class == Job_Swordsman) {
 		mes "Sorry guy, but I can only allow Novices to enter the Test Hall.";
 		close;
-	} else if (Basejob != Job_Novice) {
+	} else if (Class != Job_Novice) {
 		mes "Who the hell are you?! Nobody, other than Novices, is permitted to come in here!";
 		close;
 	} else if (getskilllv(1) < 9) {
@@ -239,12 +239,12 @@ izlude_in.gat,30,175,4	script	Swordman	92,{
 izlude_in.gat,30,163,0	script	Test Hall Staff	105,{
 
 	mes "[Test Hall Staff]";
-	if (Basejob == Job_Swordsman) {
+	if (Class == Job_Swordsman) {
 		mes "Hm? How did you get inside? You're not supposed to be in here, so please leave now.";
 		close2;
 		warp "izlude_in.gat",66,170;
 		end;
-	} else if (Basejob != Job_Novice) {
+	} else if (Class != Job_Novice) {
 		mes "Who are you?! This place is for the Swordman Test! You're not allowed to be in here! Leave now!";
 		close2;
 		warp "izlude_in.gat",66,170;

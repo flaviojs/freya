@@ -21,7 +21,7 @@ moc_prydb1.gat,39,129,2	script	Thief Guide	69,{
 
 	if (Upper == 1) {
 		if (OLD_CLASS == Job_Assassin || OLD_CLASS == Job_Rogue) {
-			if (Basejob == Job_Novice && Upper == 1) {
+			if (Class == Job_Novice && Upper == 1) {
 				mes "[Thief Guide]";
 				mes "Huh? Do I know you? It's creepy that you seem so familiar. You don't have a twin, do you?";
 				next;
@@ -64,14 +64,14 @@ moc_prydb1.gat,39,129,2	script	Thief Guide	69,{
 			close;
 		}
 	}
-	if (Basejob == Job_Thief) {
+	if (Class == Job_Thief) {
 		mes "[Thief Guide]";
 		mes "If you have a problem, feel free to speak to me anytime, alright?";
 		close;
-	} else if (Basejob != Job_Novice && Basejob != Job_Thief) {
+	} else if (Class != Job_Novice && Class != Job_Thief) {
 		mes "[Thief Guide]";
 		mes "What the heck...?";
-		switch(Basejob) {
+		switch(Class) {
 		case Job_Swordsman:
 			mes "Huh.";
 			mes "Now, that's";
@@ -349,11 +349,11 @@ moc_prydb1.gat,39,129,2	script	Thief Guide	69,{
 
 moc_prydb1.gat,42,133,2	script	Comrade	118,{
 
-	if (Basejob == Job_Thief) {
+	if (Class == Job_Thief) {
 		mes "[Brad]";
 		mes "We don't have any special events yet. Come some other time when there's news, alright?";
 		close;
-	} else if (Basejob != Job_Novice && Basejob != Job_Thief) {
+	} else if (Class != Job_Novice && Class != Job_Thief) {
 		mes "[Comrade]";
 		mes "Um...";
 		mes "You don't look";
@@ -450,14 +450,14 @@ moc_prydb1.gat,42,133,2	script	Comrade	118,{
 
 moc_ruins.gat,141,125,3	script	Mr. Irrelevant	83,{
 
-	if (Basejob == Job_Thief) {
+	if (Class == Job_Thief) {
 		mes "[Mr. Irrelevant]";
 		mes "Ah, I see that you are now a Thief. I always knew you'd join us.";
 		next;
 		mes "[Mr. Irrelevant]";
 		mes "Stealing from a Mushroom farm is too easy for you now. You should build up your skills and master our craft.";
 		close;
-	} else if (Basejob != Job_Novice && Basejob != Job_Thief) {
+	} else if (Class != Job_Novice && Class != Job_Thief) {
 		mes "[Mr. Irrelevant]";
 		if (doubt_npc == 0) {
 			mes "Today looks like a good day to go to the pyramids and hunt with some of my friends.";

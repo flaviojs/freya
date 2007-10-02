@@ -19,7 +19,7 @@
 
 payon.gat,215,102,3	script	Moohyun#job_star	828,3,3,{
 
-	if (Basejob == Job_Taekwon) {
+	if (Class == Job_Taekwon) {
 		if (job_star == 0) {
 			mes "[Moohyun]";
 			if (Sex == Male) {
@@ -269,7 +269,7 @@ payon.gat,215,102,3	script	Moohyun#job_star	828,3,3,{
 			mes "I'm expecting great things.";
 			close;
 		}
-	} else if (Basejob == Job_Taekwon_Master) {
+	} else if (Class == Job_Taekwon_Master) {
 		mes "[Moohyun]";
 		mes "Hey, how have you";
 		mes "been doing? Attuned";
@@ -278,7 +278,7 @@ payon.gat,215,102,3	script	Moohyun#job_star	828,3,3,{
 		mes "isn't the cosmos such";
 		mes "a wonderful thing?";
 		close;
-	} else if (Basejob == Job_Novice) {
+	} else if (Class == Job_Novice) {
 		mes "[Moohyun]";
 		mes "Hey, kid. Do you want";
 		mes "to learn Taekwon Do?";
@@ -334,7 +334,7 @@ payon.gat,215,102,3	script	Moohyun#job_star	828,3,3,{
 	}
 
 OnTouch:
-	if (Basejob == Job_Taekwon) {
+	if (Class == Job_Taekwon) {
 		if (job_star == 0) {
 			mes "[Moohyun]";
 			mes "Hm...? Oh, you're just";
@@ -344,7 +344,7 @@ OnTouch:
 			mes "you're willing to listen...";
 			close;
 		}
-	} else if (Basejob == Job_Taekwon_Master) {
+	} else if (Class == Job_Taekwon_Master) {
 		mes "[Moohyun]";
 		mes "How's it going, warrior?";
 		mes "Please continue to use";
@@ -363,7 +363,7 @@ OnTouch:
 
 comodo.gat,172,230,3	script	Wandering Master#job_star	730,{
 
-	if (Basejob == Job_Taekwon) {
+	if (Class == Job_Taekwon) {
 		if (job_star == 1) {
 			mes "[Moogang]";
 			mes ""+strcharinfo(0)+"...";
@@ -741,7 +741,7 @@ comodo.gat,172,230,3	script	Wandering Master#job_star	730,{
 			mes "be the warrior I'm seeking!";
 			close;
 		}
-	} else if (Basejob == Job_Taekwon_Master) {
+	} else if (Class == Job_Taekwon_Master) {
 		mes "[Moogang]";
 		mes "Oh, it's very nice to";
 		mes "see you again. So where";
@@ -827,7 +827,7 @@ comodo.gat,172,230,3	script	Wandering Master#job_star	730,{
 
 job_star.gat,29,33,0	script	Daru#job_star	59,{
 
-	if (Basejob == Job_Taekwon) {
+	if (Class == Job_Taekwon) {
 		if (job_star == 3) {
 			mes "[Daru]";
 			mes "Ah, greetings.";
@@ -1130,7 +1130,7 @@ job_star.gat,29,33,0	script	Daru#job_star	59,{
 
 job_star.gat,95,33,0	script	Beeryu#job_star	106,{
 
-	if (Basejob == Job_Taekwon) {
+	if (Class == Job_Taekwon) {
 		if (job_star == 4) {
 			mes "[Beeryu]";
 			mes "Welcome to the Moon Room.";
@@ -1460,7 +1460,7 @@ job_star.gat,95,33,0	script	Beeryu#job_star	106,{
 
 job_star.gat,161,33,0	script	Cheehee#job_star	77,{
 
-	if (Basejob == Job_Taekwon) {
+	if (Class == Job_Taekwon) {
 		if (job_star == 6) {
 			mes "[Cheehee]";
 			mes "Don't you think stars";

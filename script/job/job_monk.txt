@@ -37,7 +37,7 @@ prt_monk.gat,59,247,1	script	Guarding Monk	120,6,2,{
 		mes "It is odd...I never misunderstand people...oh, well. Have a good day.";
 		close;
 	}
-	if ((Basejob == Job_Acolyte) && (job_monk_q == 0)) {
+	if ((Class == Job_Acolyte) && (job_monk_q == 0)) {
 		mes "[Tohobu]";
 		mes "Hmm? What business do you have here?";
 		mes "If you wish to enter this sacred area,";
@@ -76,14 +76,14 @@ prt_monk.gat,59,247,1	script	Guarding Monk	120,6,2,{
 			set job_monk_q,1;
 			close;
 		case 2:
-			if ((Basejob == Job_Acolyte) && (JobLevel > 39)) {
+			if ((Class == Job_Acolyte) && (JobLevel > 39)) {
 				mes "[Tohobu]";
 				mes "Hmm you seem as though you have been training for this...";
 				mes "That is good. Go see our sensei Moohae. Speak with him.";
 				mes "He will help you start your training.";
 				set job_monk_q,2;
 				close;
-			} else if ((Basejob == Job_Acolyte) && (JobLevel < 40)) {
+			} else if ((Class == Job_Acolyte) && (JobLevel < 40)) {
 				mes "[Tohobu]";
 				mes "Hmm, you do not seem ready to become a monk.";
 				mes "To become a monk you must be,";
@@ -121,7 +121,7 @@ prt_monk.gat,59,247,1	script	Guarding Monk	120,6,2,{
 			close;
 		}
 	} else {
-		if ((job_monk_q == 1) && (Basejob == Job_Acolyte)) {
+		if ((job_monk_q == 1) && (Class == Job_Acolyte)) {
 			mes "[Tohobu]";
 			mes "What do you think? Did your visit reveal anything to your spirit?";
 			next;
@@ -135,14 +135,14 @@ prt_monk.gat,59,247,1	script	Guarding Monk	120,6,2,{
 				set job_monk_q,1;
 				close;
 			case 2:
-				if ((Basejob == Job_Acolyte) && (JobLevel > 39)) {
+				if ((Class == Job_Acolyte) && (JobLevel > 39)) {
 					mes "[Tohobu]";
 					mes "Hmm you seem as though you have been training for this...";
 					mes "That is good. Go see our sensei Moohae. Speak with him.";
 					mes "He will help you start your training.";
 					set job_monk_q,2;
 					close;
-				} else if ((Basejob == Job_Acolyte) && (JobLevel < 40)) {
+				} else if ((Class == Job_Acolyte) && (JobLevel < 40)) {
 					mes "[Tohobu]";
 					mes "Hmm, you do not seem ready to become a monk.";
 					mes "To become a monk you must be,";
@@ -219,14 +219,14 @@ prt_monk.gat,59,247,1	script	Guarding Monk	120,6,2,{
 				set job_monk_q,1;
 				close;
 			case 2:
-				if ((Basejob == Job_Acolyte) && (JobLevel > 39)) {
+				if ((Class == Job_Acolyte) && (JobLevel > 39)) {
 					mes "[Tohobu]";
 					mes "Hmm you seem as though you have been training for this...";
 					mes "That is good. Go see our sensei Moohae, speak with him";
 					mes "and he will help you start new training.";
 					set job_monk_q,2;
 					close;
-				} else if ((Basejob == Job_Acolyte) && (JobLevel < 40)) {
+				} else if ((Class == Job_Acolyte) && (JobLevel < 40)) {
 					mes "[Tohobu]";
 					mes "Hmm, you do not seem ready to become a monk.";
 					mes "To become a monk you must be,";
@@ -268,12 +268,12 @@ prt_monk.gat,59,247,1	script	Guarding Monk	120,6,2,{
 			mes "Listen carefully on your journey.";
 			mes "There is much to learn.";
 			close;
-		} else if ((Basejob == Job_Acolyte) && (job_monk_q == 2)) {
+		} else if ((Class == Job_Acolyte) && (job_monk_q == 2)) {
 			mes "[Tohobu]";
 			mes "Hmm... would you like to meet sensei Moohae?";
 			mes "He is in the south east area in 'The Hall of Monks'.";
 			close;
-		} else if ((Basejob == Job_Acolyte) && (job_monk_q > 2)) {
+		} else if ((Class == Job_Acolyte) && (job_monk_q > 2)) {
 			mes "[Tohobu]";
 			mes "I hope you do well in your training and I look forward to seeing you again.";
 			close;
@@ -303,13 +303,13 @@ OnTouch:
 		mes "You may learn something...";
 		close;
 	}
-	if ((Basejob == Job_Acolyte) && (job_monk_q == 2)) {
+	if ((Class == Job_Acolyte) && (job_monk_q == 2)) {
 		mes "[Tohobu]";
 		mes "Hmm.....you wish to see our sensei Moohae?";
 		mes "He is in the south east section of this building.";
 		close;
 	}
-	if ((Basejob == Job_Acolyte) && (job_monk_q > 2)) {
+	if ((Class == Job_Acolyte) && (job_monk_q > 2)) {
 		mes "[Tohobu]";
 		mes "I look forward to seeing you become a monk and joining us.";
 		close;
@@ -328,7 +328,7 @@ monk_in.gat,99,58,1	script	Sensei Moohae	60,{
 		mes "Make sure to use any skill points you have.";
 		close;
 	}
-	if ((Basejob == Job_Acolyte) && (job_monk_q == 2) && (JobLevel > 39)) {
+	if ((Class == Job_Acolyte) && (job_monk_q == 2) && (JobLevel > 39)) {
 		mes "[Sensei Moohae]";
 		mes "I sense a fighting spirit, do you wish to become a monk?";
 		next;
@@ -703,12 +703,12 @@ monk_in.gat,99,58,1	script	Sensei Moohae	60,{
 		mes "I hear good things coming from your training.";
 		mes "Good luck and work hard. You will do great things as a monk.";
 		close;
-	} else if ((job_monk_q == 27) && (Basejob == Job_Acolyte)) {
+	} else if ((job_monk_q == 27) && (Class == Job_Acolyte)) {
 		mes "[Sensei Moohae]";
 		mes ".......Hmmm.....";
 		mes "Go to Tomoon, get a special potion from him. It will look like a green potion, but it isn't. Bring it to me...";
 		close;
-	} else if ((job_monk_q == 28) && (Basejob == Job_Acolyte)) {
+	} else if ((job_monk_q == 28) && (Class == Job_Acolyte)) {
 		if (countitem(506) > 0) {
 			mes "[Sensei Moohae]";
 			mes "Do you still have the medicine you were supposed to bring?";
@@ -957,13 +957,13 @@ monk_in.gat,99,58,1	script	Sensei Moohae	60,{
 			}
 			close;
 		}
-	} else if (Basejob == Job_Acolyte) {
+	} else if (Class == Job_Acolyte) {
 		mes "[Sensei Moohae]";
 		mes "You are...an acolyte..?";
 		mes "If you seek consultation, go to the Sanctuary in Prontera. This place is for Monks, not for you.";
 		mes "Unless you intend to become a monk....please leave.";
 		close;
-	} else if (Basejob == Job_Monk) {
+	} else if (Class == Job_Monk) {
 		mes "[Sensei Moohae]";
 		mes "How's your practice going?";
 		mes "I hope you are still training and keeping your vows.";
@@ -3404,7 +3404,7 @@ prt_monk.gat,251,255,1	script	Touha	79,{
 		mes "You wear my patience thin...";
 		mes "... go visit Boohae.";
 		close;
-	} else if ((job_monk_q > 14) && (Basejob == Job_Acolyte)) {
+	} else if ((job_monk_q > 14) && (Class == Job_Acolyte)) {
 		mes "[Touha]";
 		mes "...do your best for the final test.";
 		close;
@@ -3432,7 +3432,7 @@ prt_monk.gat,251,255,1	script	Touha	79,{
 
 prt_monk.gat,57,179,1	script	Boohae	110,{
 
-	if ((job_monk_q == 14) && (Basejob == Job_Acolyte)) {
+	if ((job_monk_q == 14) && (Class == Job_Acolyte)) {
 		mes "[Boohae]";
 		mes "...";
 		next;
@@ -4135,7 +4135,7 @@ prt_monk.gat,225,180,1	script	Hyunmoo	89,{
 		mes "[Hyunmoo]";
 		mes "Don't forget to thank them as you go by for their hard work.";
 		close;
-	} else if ((job_monk_q > 24) && (Basejob == Job_Acolyte)) {
+	} else if ((job_monk_q > 24) && (Class == Job_Acolyte)) {
 		mes "[Hyunmoo]";
 		mes "Didn't I tell you to go meet Tomoon? Or do you want to pick more mushrooms?";
 		mes "Tomoon is staying in the deepest room inside a building near this abbey.";

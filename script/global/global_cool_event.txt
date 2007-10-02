@@ -69,7 +69,7 @@ hugel.gat,88,168,4	script	Cool Event Corp. Staff	874,{
 			}
 		}
 	case 3:
-		if ((BaseJob != Job_Merchant) && (BaseJob != Job_Blacksmith) && (BaseJob != Job_Alchemist)) {
+		if ((Class != Job_Merchant) && (Class != Job_Blacksmith) && (Class != Job_Alchemist)) {
 			mes "[Cool Event Corp. Staff]";
 			mes "I'm sorry, but the";
 			mes "Pushcart rental service";
@@ -186,7 +186,7 @@ lighthalzen.gat,94,248,4	script	Cool Event Corp. Staff	874,{
 			}
 		}
 	case 3:
-		if ((BaseJob != Job_Merchant) && (BaseJob != Job_Blacksmith) && (BaseJob != Job_Alchemist)) {
+		if ((Class != Job_Merchant) && (Class != Job_Blacksmith) && (Class != Job_Alchemist)) {
 			mes "[Cool Event Corp. Staff]";
 			mes "I'm sorry, but the";
 			mes "Pushcart rental service";
@@ -302,7 +302,7 @@ rachel.gat,109,138,5	script	Cool Event Corp. Staff	874,{
 			}
 		}
 	case 3:
-		if ((BaseJob != Job_Merchant) && (BaseJob != Job_Blacksmith) && (BaseJob != Job_Alchemist)) {
+		if ((Class != Job_Merchant) && (Class != Job_Blacksmith) && (Class != Job_Alchemist)) {
 			mes "[Cool Event Corp. Staff]";
 			mes "I'm sorry, but the";
 			mes "Pushcart rental service";
@@ -418,7 +418,7 @@ veins.gat,207,127,6	script	Cool Event Corp. Staff	874,{
 			}
 		}
 	case 3:
-		if ((BaseJob != Job_Merchant) && (BaseJob != Job_Blacksmith) && (BaseJob != Job_Alchemist)) {
+		if ((Class != Job_Merchant) && (Class != Job_Blacksmith) && (Class != Job_Alchemist)) {
 			mes "[Cool Event Corp. Staff]";
 			mes "I'm sorry, but the";
 			mes "Pushcart rental service";

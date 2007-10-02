@@ -35,8 +35,8 @@ alde_alche.gat,27,185,5	script	Alchemist Guildsman	744,{
 		mes "feeling about you...";
 		close;
 	}
-	if (Basejob != Job_Merchant) {
-		if (Basejob == Job_Alchemist) {
+	if (Class != Job_Merchant) {
+		if (Class == Job_Alchemist) {
 			mes "[Parmy Gianino]";
 			mes "Welcome, " +strcharinfo(0)+".";
 			mes "The Alchemist Union";
@@ -49,7 +49,7 @@ alde_alche.gat,27,185,5	script	Alchemist Guildsman	744,{
 			mes "[Parmy Gianino]";
 			mes "Everyone is hoping that the biotechnological studies will yield positive results. Speaking of which, I wonder how the Alchemists working on artificial life are doing...";
 			close;
-		} else if (Basejob == Job_Novice) {
+		} else if (Class == Job_Novice) {
 			mes "[Parmy Gianino]";
 			mes "Welcome to the";
 			mes "Alchemist Union.";
@@ -412,8 +412,8 @@ alde_alche.gat,27,185,5	script	Alchemist Guildsman	744,{
 
 alde_alche.gat,175,107,3	script	Fastidious Alchemist	749,{
 
-	if (Basejob != Job_Merchant) {
-		if (Basejob == Job_Alchemist) {
+	if (Class != Job_Merchant) {
+		if (Class == Job_Alchemist) {
 			mes "[Raspuchin Gregory]";
 			mes "Heeheehee";
 			mes "keheheh~!";
@@ -430,7 +430,7 @@ alde_alche.gat,175,107,3	script	Fastidious Alchemist	749,{
 			mes "tolerated here in the";
 			mes "Alchemist Union!";
 			close;
-		} else if (Basejob == Job_Novice) {
+		} else if (Class == Job_Novice) {
 			mes "[Raspuchin Gregory]";
 			mes "Heeheehee";
 			mes "keheheh~!";
@@ -1275,8 +1275,8 @@ alde_alche.gat,13,15,7	script	Studying Man#Darwin	750,{
 		mes "- after you store some items into kafra storage. -";
 		close;
 	}
-	if (Basejob != Job_Merchant) {
-		if (Basejob == Job_Alchemist) {
+	if (Class != Job_Merchant) {
+		if (Class == Job_Alchemist) {
 			mes "[Darwin]";
 			mes "Ah...";
 			mes "You...";
@@ -1814,8 +1814,8 @@ OnMyMobDead:
 
 alde_alche.gat,79,19,5	script	Experiment Expert	748,{
 
-	if (Basejob != Job_Merchant) {
-		if (Basejob == Job_Alchemist) {
+	if (Class != Job_Merchant) {
+		if (Class == Job_Alchemist) {
 			mes "[Van Helmont]";
 			mes "What do you want?";
 			mes "I'm busy!! Don't";
@@ -2125,8 +2125,8 @@ alde_alche.gat,101,184,4	script	Master Alchemist	122,{
 		cutin "job_alche_vincent",255;
 		end;
 	}
-	if (Basejob != Job_Merchant) {
-		if (Basejob == Job_Alchemist) {
+	if (Class != Job_Merchant) {
+		if (Class == Job_Alchemist) {
 			mes "[Vincent Carsciallo]";
 			mes "Welcome!";
 			mes "So how is your";
@@ -2141,7 +2141,7 @@ alde_alche.gat,101,184,4	script	Master Alchemist	122,{
 			close2;
 			cutin "job_alche_vincent",255;
 			end;
-		} else if (Basejob == Job_Novice) {
+		} else if (Class == Job_Novice) {
 			mes "[Vincent Carsciallo]";
 			mes "Hm...";
 			mes "A Novice?";
@@ -2806,7 +2806,7 @@ alde_alche.gat,145,19,1	script	Chief Researcher	57,{
 		mes "Good work!";
 		mes "All you have to do now is speak to the Union Leader on the 2nd floor! Congratulations, you'll become an Alchemist very soon!";
 		close;
-	} else if (job_alchemist_q == 40 && Basejob == Job_Merchant) {
+	} else if (job_alchemist_q == 40 && Class == Job_Merchant) {
 		mes "[Nicholas Flamel]";
 		mes "All you have to do now is speak to the Union Leader on the 2nd floor! Congratulations, you'll become an Alchemist very soon!";
 		close;

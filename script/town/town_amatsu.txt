@@ -1015,7 +1015,7 @@ ama_in01.gat,162,17,1	script	Sushi Master	765,{
 			close;
 		}
 	case 3:
-		if (Basejob == Job_Novice) {
+		if (Class == Job_Novice) {
 			mes "[Magumagu]";
 			mes "Haha~ YOU are the one who needs";
 			mes "assistance! Help others";
@@ -2158,14 +2158,14 @@ ama_in01.gat,22,111,0	script	Grandma#1	761,{
 		next;
 		switch(select("Taaaah!!")) {
 		case 1:
-			if (Basejob == Job_Priest) {
+			if (Class == Job_Priest) {
 				set '@fox_fight,rand(1,4);
 				if ('@fox_fight == 1) {
 					set '@fox_kill,0;
 				} else {
 					set '@fox_kill,1;
 				}
-			} else if ((Basejob == Job_Acolyte) || (Basejob == Job_Monk)) {
+			} else if ((Class == Job_Acolyte) || (Class == Job_Monk)) {
 				set '@fox_fight,rand(1,2);
 				if ('@fox_fight == 1) {
 					set '@fox_kill,0;

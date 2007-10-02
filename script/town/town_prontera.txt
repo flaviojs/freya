@@ -383,7 +383,7 @@ prt_in.gat,173,24,2	script	Shevild	85,{
 		mes "mysterious dungeon or that";
 		mes "dangerous forest?!";
 		next;
-		if (Basejob == Job_Novice) goto L_Case03;
+		if (Class == Job_Novice) goto L_Case03;
 		goto L_Case04;
 
 		L_Case03:
@@ -1099,8 +1099,8 @@ prontera.gat,149,202,2	script	YuNa	700,{
 
 prontera.gat,216,70,2	script	Strife	48,{
 
-	if (Basejob == JOB_NOVICE) goto L_Case01;
-	if (Basejob != JOB_NOVICE) goto L_Case06;
+	if (Class == JOB_NOVICE) goto L_Case01;
+	if (Class != JOB_NOVICE) goto L_Case06;
 
 	L_Case01:
 		if (event_prt_nov_dreamtalk == 0) goto L_Case02;

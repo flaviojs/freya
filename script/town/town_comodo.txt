@@ -1670,7 +1670,7 @@ cmd_in02.gat,189,99,4	script	Manzi	85,{
 			close;
 		}
 	} else {
-		if (Basejob == Job_Novice) {
+		if (Class == Job_Novice) {
 			mes "[Manzi]";
 			mes "What th...?";
 			mes "What's a kid like";
@@ -3364,7 +3364,7 @@ comodo.gat,204,148,7	script	Devellin	90,{
 
 comodo.gat,210,154,2	script	Suspicious Guy	118,{
 
-	if ((BaseJob == Job_Thief) || (BaseJob == Job_Assassin) || (BaseJob == Job_Rogue)) {
+	if ((Class == Job_Thief) || (Class == Job_Assassin) || (Class == Job_Rogue)) {
 		mes "[Cain]";
 		mes "Heeeey...";
 		mes "It seems we share the same line of work, you and me. Heh heh, lemme give you a hot tip.";

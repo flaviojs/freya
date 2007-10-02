@@ -28,15 +28,15 @@ prt_castle.gat,45,169,5	script	Senior Crusader	752,{
 		mes "Be adviced to continue practicing yourself.";
 		close;
 	}
-	if (Basejob != Job_Swordsman) {
-		if (Basejob == Job_Crusader) {
+	if (Class != Job_Swordsman) {
+		if (Class == Job_Crusader) {
 			mes "[Michael Halig]";
 			mes "Go and train yourself in preparation for the holy war that is coming. Victory will be in the hands of those who are most ready to receive it.";
 			next;
 			mes "[Michael Halig]";
 			mes "Chaos will one day arise to challenge our principles of peace, justice and order. Until we have eliminated evil and created our ideal world, we must not cease training.";
 			close;
-		} else if (Basejob == Job_Novice) {
+		} else if (Class == Job_Novice) {
 			mes "[Michael Halig]";
 			mes "We are Crusaders,";
 			mes "warriors preparing";
@@ -410,12 +410,12 @@ prt_castle.gat,45,169,5	script	Senior Crusader	752,{
 
 prt_castle.gat,164,32,1	script	Man in Anguish	733,{
 
-	if (Basejob != Job_Swordsman) {
-		if (Basejob == Job_Crusader) {
+	if (Class != Job_Swordsman) {
+		if (Class == Job_Crusader) {
 			mes "[Murnak Mijoul]";
 			mes "Don't linger around in a place like this and forge your own path towards discovering your own strengths. The day that we will join hands in battle will come soon.";
 			close;
-		} else if (Basejob == Job_Novice) {
+		} else if (Class == Job_Novice) {
 			mes "[Murnak Mijoul]";
 			mes "A Novice...?";
 			mes "So green, and yet,";
@@ -584,8 +584,8 @@ prt_castle.gat,164,32,1	script	Man in Anguish	733,{
 
 prt_church.gat,95,127,5	script	Crusader	745,{
 
-	if (Basejob != Job_Swordsman) {
-		if (Basejob == Job_Crusader) {
+	if (Class != Job_Swordsman) {
+		if (Class == Job_Crusader) {
 			mes "[Gabriel Valentine]";
 			mes "Welcome, fellow Crusader.";
 			mes "How is your training";
@@ -594,7 +594,7 @@ prt_church.gat,95,127,5	script	Crusader	745,{
 			mes "[Gabriel Valentine]";
 			mes "You must not forget to train everyday, and prepare for the day the Holy War will come upon us.";
 			close;
-		} else if (Basejob == Job_Novice) {
+		} else if (Class == Job_Novice) {
 			mes "[Gabriel Valentine]";
 			mes "Welcome, I am a Crusader.";
 			mes "I am preparing for the";
@@ -1638,8 +1638,8 @@ prt_church.gat,95,127,5	script	Crusader	745,{
 
 prt_castle.gat,35,151,5	script	Patron Kinght	751,{
 
-	if (Basejob != Job_Swordsman) {
-		if (Basejob == Job_Crusader) {
+	if (Class != Job_Swordsman) {
+		if (Class == Job_Crusader) {
 			mes "[Bliant Piyord]";
 			mes "Welcome.";
 			mes "How goes";
@@ -1648,7 +1648,7 @@ prt_castle.gat,35,151,5	script	Patron Kinght	751,{
 			mes "[Bliant Piyord]";
 			mes "Develop your faith. From faith springs strength and discipline. Day after day, train yourself and become a great Crusader.";
 			close;
-		} else if (Basejob == Job_Novice) {
+		} else if (Class == Job_Novice) {
 			mes "[Bliant Piyord]";
 			mes "Welcome.";
 			mes "We are Crusaders,";

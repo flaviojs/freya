@@ -20,7 +20,7 @@
 que_ng.gat,152,167,3	script	Master Miller	901,{
 
 	if (Upper == 0 || Upper == 1) {
-		if ((BaseJob == Job_Novice) && (Upper == 0)) {
+		if ((Class == Job_Novice) && (Upper == 0)) {
 			if ((JobLevel < 10) || (getskilllv(1) < 9)) {
 				mes "[Master Miller]";
 				mes "Well, I think that";
@@ -199,7 +199,7 @@ que_ng.gat,152,167,3	script	Master Miller	901,{
 				close;
 			}
 		} else {
-			if (Basejob == Job_Gunslinger) {
+			if (Class == Job_Gunslinger) {
 				mes "[Master Miller]";
 				mes "Ho~ it's been some time~";
 				mes "how are your travels,";

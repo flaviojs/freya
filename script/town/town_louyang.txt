@@ -3579,7 +3579,7 @@ lou_in02.gat,123,39,4	script	Poison King	824,{
 							mes "Bah! I forgot what I was just talking about! This bad memory of mine frustrates me so much!";
 							close;
 						} else {
-							if (Basejob == Job_Assassin) {
+							if (Class == Job_Assassin) {
 								mes "[Nagash Arses]";
 								mes "How could you not know what the 'Canine of Desert' is?! Just how long have you been an Assassin?!";
 								next;
@@ -3730,7 +3730,7 @@ lou_in02.gat,123,39,4	script	Poison King	824,{
 							mes "Do not forget that.";
 							close;
 						} else {
-							if (Basejob == Job_Assassin) {
+							if (Class == Job_Assassin) {
 								mes "[Nagash Arses]";
 								mes "How could you not know what the 'Canine of Desert' is?! Just how long have you been an Assassin?!";
 								next;
@@ -3922,7 +3922,7 @@ lou_in02.gat,123,39,4	script	Poison King	824,{
 				mes "my worst memories.";
 				next;
 				set ch_poison,1;
-				if ((Basejob == Job_Thief) || (Basejob == Job_Assassin) || (Basejob == Job_Rogue)) {
+				if ((Class == Job_Thief) || (Class == Job_Assassin) || (Class == Job_Rogue)) {
 					mes "[Nagash Arses]";
 					mes "Ah, you look just like I did when";
 					mes "I was young. It seems you know";

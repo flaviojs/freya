@@ -25,7 +25,7 @@ que_ng.gat,187,149,3	script	Magazine Dealer Kenny	83,{
 
 	mes "[Kenny]";
 	mes "I am the Casing Dealer, Kenny!";
-	if (BaseJob != Job_Gunslinger) {
+	if (Class != Job_Gunslinger) {
 		mes "I'm here to package the Shells";
 		mes "and Bullets for Gunslingers.";
 		next;
@@ -134,7 +134,7 @@ function	script		F_BoxCasing	{
 que_ng.gat,187,156,3	script	Bullet Dealer Tony	86,{
 
 	mes "[Tony]";
-	if (BaseJob == Job_Gunslinger) {
+	if (Class == Job_Gunslinger) {
 		mes "I'm Bullet-tooth Tony!";
 		mes "Whenever your out of bullets,";
 		mes "Visit me!!!";
@@ -224,7 +224,7 @@ function	script	F_BulletTrade	{
 que_ng.gat,182,85,3	script	Garrison#gungun	109,{
 
 L_Start:
-	if (BaseJob != Job_Gunslinger) {
+	if (Class != Job_Gunslinger) {
 		mes "[Garrison]";
 		mes "You're not a gunslinger.";
 		mes "You're distracting me from my work. Go on.";
@@ -598,7 +598,7 @@ L_Start:
 
 que_ng.gat,187,163,3	script	Ingrid	744,{
 
-	if (BaseJob != Job_Gunslinger)
+	if (Class != Job_Gunslinger)
 	{
 		mes "[Ingrid]";
 		mes "How are you!";
@@ -776,7 +776,7 @@ SF_Inferno:
 
 que_ng.gat,185,180,3	script	Vanessa#gungun	726,{
 
-	if ((gunst == 0) && (BaseJob == Job_Gunslinger)) {
+	if ((gunst == 0) && (Class == Job_Gunslinger)) {
 		mes "[Vanessa]";
 		mes "Ha!Hyaa!!";
 		mes "Vale Tudo!Commando Sambo!";
@@ -912,10 +912,10 @@ que_ng.gat,185,180,3	script	Vanessa#gungun	726,{
 			close;
 		}
 	} else {
-		if ((gunst == 1) && (BaseJob == Job_Gunslinger)) { 
+		if ((gunst == 1) && (Class == Job_Gunslinger)) { 
 			callfunc "F_Destroyer",10;
 		} else {
-			if ((gunst == 2) && (BaseJob == Job_Gunslinger)) {
+			if ((gunst == 2) && (Class == Job_Gunslinger)) {
 				mes "[Vanessa]";
 				mes "Oh~ You're back.?";
 				mes "How are you nowadays?";
@@ -980,7 +980,7 @@ que_ng.gat,185,180,3	script	Vanessa#gungun	726,{
 					close;
 				}
 			} else {
-				if (BaseJob != Job_Gunslinger) {
+				if (Class != Job_Gunslinger) {
 					mes "[Vanessa]";
 					mes "Hah !Hah !!";
 					mes "Ballitude! Commander Sambo!";
@@ -1423,7 +1423,7 @@ que_ng.gat,149,178,4	script	Lab Director	744,{
 	mes "My name is 'Lab Director'.";
 	mes "Do you need something?";
 	next;
-	if (BaseJob != Job_Gunslinger) {
+	if (Class != Job_Gunslinger) {
 		menu "Talk to him.",-;
 		mes "[N. A]";
 		mes "If you see Gunslingers around,";
@@ -1742,7 +1742,7 @@ lighthalzen.gat,205,284,6	script	F. Harrison	85,{
 		close;
 	}
 	else if(gun_na == 0) {
-		if (BaseJob != Job_Gunslinger) goto L_BORED;
+		if (Class != Job_Gunslinger) goto L_BORED;
 		if (BaseLevel > 67 && countitem(13158) > 0) {
 			mes "[F. Harrison]";
 			mes "Man, I'm so bored...";
@@ -1807,7 +1807,7 @@ L_BORED:
 que_ng.gat,72,29,3	script	Kunai Merchant Kashin	83,{
 
 	mes "[Kashin]";	
-	if (BaseJob != Job_Ninja) {
+	if (Class != Job_Ninja) {
 		mes "I am Kashin of the Wind. I distribute trade items to the shadows.";
 		next;
 		mes "[Kashin]";
@@ -1888,7 +1888,7 @@ function	script	F_KunaiTrade	{
 
 que_ng.gat,28,50,3	script	Boshuu	709,{
 
-	if (BaseJob != JOB_NINJA) {
+	if (Class != JOB_NINJA) {
 		mes "[Boshuu]";
 		mes "I'm the best craftsman out of what people call the Three Craftsmen of Ninja Tools.";
 		mes "They call me Murata Boshuu.";
@@ -2240,7 +2240,7 @@ que_ng.gat,28,50,3	script	Boshuu	709,{
 
 que_ng.gat,28,45,3	script	Basshu	86,{
 
-	if (BaseJob != JOB_NINJA) {
+	if (Class != JOB_NINJA) {
 		mes "[Basshu]";
 		mes "I am one of the brothers of the three brothers";
 		mes "in charge of crafting shields in the east named Murata Basshu";
@@ -2601,7 +2601,7 @@ que_ng.gat,28,45,3	script	Basshu	86,{
 
 que_ng.gat,27,18,3	script	Toshu	709,{
 	
-	if (BaseJob != JOB_NINJA) {
+	if (Class != JOB_NINJA) {
 		mes "[Toshu]";
 		mes "How are you~";
 		mes "My young friend~";
@@ -2742,7 +2742,7 @@ que_ng.gat,27,18,3	script	Toshu	709,{
 
 que_ng.gat,72,34,3	script	Craftsman Kaibara	847,{
 
-	if (BaseJob != Job_Ninja) {
+	if (Class != Job_Ninja) {
 		mes "[Kaibara]";
 		mes "I am a Craftsman called Kaibara";
 		mes "I create weapons for Ninjas.";
@@ -3027,7 +3027,7 @@ que_ng.gat,72,34,3	script	Craftsman Kaibara	847,{
 que_ng.gat,22,62,3	script	Tetsu	709,{
 
 	mes "[Tetsu]";
-	if (BaseJob != Job_Ninja) {
+	if (Class != Job_Ninja) {
 		mes "I'm The Craftman of Fuuma Ninjas called Tetsu.";
 		next;
 		mes "[Tetsu]";

@@ -20,7 +20,7 @@
 alberta_in.gat,53,43,6	script	Merchant	86,{
 
 	if (Upper == 1) {
-		if (Basejob == Job_Novice && Upper == 1 && (OLD_CLASS == Job_Blacksmith || OLD_CLASS == Job_Alchemist)) {
+		if (Class == Job_Novice && Upper == 1 && (OLD_CLASS == Job_Blacksmith || OLD_CLASS == Job_Alchemist)) {
 			mes "[Chief Mahnsoo]";
 			mes "Long time no see!";
 			mes "Hey, you didn't quit";
@@ -58,7 +58,7 @@ alberta_in.gat,53,43,6	script	Merchant	86,{
 			close;
 		}
 	}
-	if (Basejob == Job_Merchant) {
+	if (Class == Job_Merchant) {
 		mes "[Chief Mahnsoo]";
 		mes "Hello there!";
 		mes "How do you like";
@@ -70,7 +70,7 @@ alberta_in.gat,53,43,6	script	Merchant	86,{
 		mes "has its perks,";
 		mes "does it not?";
 		close;
-	} else if (Basejob != Job_Merchant && Basejob != Job_Novice) {
+	} else if (Class != Job_Merchant && Class != Job_Novice) {
 		mes "[Chief Mahnsoo]";
 		mes "We Merchants hate people who are two faced. It's bad for business.";
 		next;
@@ -490,12 +490,12 @@ alberta_in.gat,53,43,6	script	Merchant	86,{
 
 alberta_in.gat,28,29,2	script	Merchant Guildsman	83,{
 
-	if (Basejob == Job_Merchant) {
+	if (Class == Job_Merchant) {
 		mes "[Union Staff Kay]";
 		mes "Heya pal.";
 		mes "How ya doin'?";
 		close;
-	} else if (Basejob != Job_Merchant && Basejob != Job_Novice) {
+	} else if (Class != Job_Merchant && Class != Job_Novice) {
 		mes "[Union Staff Kay]";
 		mes "Hey you. We don't have any open positions for part time work. If you wanna earn some zeny, you'll hafta look elsewhere.";
 		close;

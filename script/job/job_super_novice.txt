@@ -144,7 +144,7 @@ aldeba_in.gat,223,167,3	script	Tzerero	709,{
 		mes "^FF000030 Resin^000000.";
 		close;
 	}
-	if (Basejob == Job_Novice) {
+	if (Class == Job_Novice) {
 		mes "[Tzerero]";
 		mes "...Hmm?";
 		mes "Stop.";
@@ -310,7 +310,7 @@ aldeba_in.gat,223,167,3	script	Tzerero	709,{
 			close;
 		}
 	} else {
-		if (Basejob == Job_Super_Novice) {
+		if (Class == Job_Super_Novice) {
 			mes "[Tzerero]";
 			mes "How do you like living";
 			mes "life simply as a Super";
@@ -366,7 +366,7 @@ aldeba_in.gat,223,167,3	script	Tzerero	709,{
 
 aldeba_in.gat,216,169,5	script	Esseray	86,{
 
-	if (Basejob == Job_Super_Novice) {
+	if (Class == Job_Super_Novice) {
 		mes "[Esseray]";
 		mes "Hm? Hey, you're a member";
 		mes "of our great Novice Society,";
@@ -388,7 +388,7 @@ aldeba_in.gat,216,169,5	script	Esseray	86,{
 		mes "course!";
 		close;
 	}
-	if (Basejob == Job_Novice) {
+	if (Class == Job_Novice) {
 		mes "[Esseray]";
 		mes "Hah~ you don't know anything";
 		mes "about being a normal person yet!";
