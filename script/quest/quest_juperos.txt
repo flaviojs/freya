@@ -7,385 +7,307 @@
 //              /_/  |_|\____|_|  \___/|_|  \__,_|              
 //                 http://aurora.deltaanime.net                 
 //--------------------------------------------------------------
-// Script Title: Juperos Ruins Quests	Author: Tsuyuki/Blaze
+// Script Title: Juperos Ruins Quests	Author: Tsuyuki
 //--------------------------------------------------------------
-// Revision History: v1.2
+// Revision History: v1.0
 //--------------------------------------------------------------
-//	1.0 First version [Blaze]
-//	1.1 Translated with iRO Aegis dialogue [Tsuyuki]
-//	1.2 Added the Juperos History Quest, converted from Aegis [Tsuyuki]
+//	1.0 First version, converted from Aegis [Tsuyuki]
 //--------------------------------------------------------------
-// Additional Notes: * Official-certified / Partially Aegis-certified *
-// Regarding the Juperos Ruins Quest, only Area #1 is in. Area #2
-// is disabled for now, and monsters won't spawn there yet either. 
+// Additional Notes: * Official-certified / Aegis-certified *
 //--------------------------------------------------------------
 
 
 //--------------------------------------------------------------
-// Juperos Ruins Quest - [Tsuyuki/Blaze]
+// Juperos Ruins Quest - [Tsuyuki]
 //--------------------------------------------------------------
 
-yuno_fild07.gat,208,175,0	script	juperoswarp0401		139,2,2,{ warp "jupe_cave.gat",143,52; end; }
-jupe_cave.gat,147,52,0		script	juperoswarp0501		139,2,2,{ warp "yuno_fild07.gat",212,175; end; }
-jupe_cave.gat,29,52,0		warp	juperoswarp4001		3,3,juperos_01.gat,54,246
-juperos_01.gat,51,249,0		warp	juperoswarp4002		3,3,jupe_cave.gat,36,51
+juperos_01.gat,100,91,0	script	jupe_goto#1	139,2,2,{
 
-juperos_01.gat,100,91,0		script	juperoswarp4003		139,2,2,{
+OnCommandon:
+	hideoffnpc "jupe_goto#1";
+	end;
 
+OnCommandoff:
+	hideonnpc "jupe_goto#1";
+	end;
+
+OnTouch:
 	initnpctimer;
-	mes "^3355FF["+strcharinfo(0)+"]^000000";
-	mes "^000000This light...";
+	mes "^777777[" + strcharinfo(0) + "]^000000";
+	mes "This light...";
 	mes "It feels like...";
 	mes "Its warmth is...";
 	mes "Wrapping all over me...";
 	next;
-	if (select("Ah, it's so nice...","No! This is wrong!")==1) {
-		gmcommand "@misceffect 348";
-		mes "^3355FF["+strcharinfo(0)+"]^000000";
+	switch(select("Ah, it's so nice...","No! This is wrong!")) {
+	case 1:
+		mes "^777777[" + strcharinfo(0) + "]^000000";
 		mes "Ahhhh...";
 		mes "It feels like";
 		mes "I'm floating...";
-		close2;
-		warp "juperos_02.gat",128,278;
-		end;
-	}
-	mes "^3355FF["+strcharinfo(0)+"]^000000";
-	mes "N-No! This is";
-	mes "wrong! Something";
-	mes "weird's happening!";
-	mes "I gotta get away!";
-	next;
-	warp "juperos_01.gat",96,91;
-	end;
-
-OnTimer10000:
-	areawarp "juperos_01.gat",98,89,102,93,"juperos_02.gat",128,278;
-	stopnpctimer;
-	end;
-}
-
-juperos_02.gat,33,59,0		script	juperoswarp4004		45,2,2{
-	switch(rand(4)) {
-	case 0: warp "juperos_01.gat",79,72; end;
-	case 1: warp "juperos_01.gat",79,112; end;
-	case 2: warp "juperos_01.gat",120,72; end;
-	case 3: warp "juperos_01.gat",120,112; end;
-	}
-}
-
-juperos_02.gat,130,149,0	script	juperoswarp4005		139,2,2{ warp "jupe_gate.gat",50,167; end; }
-
-jupe_gate.gat,50,171,0		script	juperoswarp4006		139,4,0{
-
-	initnpctimer;
-	mes "^3355FF["+strcharinfo(0)+"]^000000";
-	mes "^3355FFIt's a Warp Portal";
-	mes "that will teleport you";
-	mes "to the previous floor.^000000";
-	next;
-	if (select("Use it.","Ignore it.")==1) {
 		gmcommand "@misceffect 348";
 		next;
-		warp "juperos_02.gat",130,142;
+		stopnpctimer;
+		warp "juperos_02.gat",128,278;
 		end;
+	case 2:
+		mes "^777777[" + strcharinfo(0) + "]^000000";
+		mes "N-No! This is";
+		mes "wrong! Something";
+		mes "weird's happening!";
+		mes "I gotta get away!";
+		next;
+		warp "juperos_01.gat",96,91;
+		stopnpctimer;
+		close;
 	}
-	mes "^3355FF["+strcharinfo(0)+"]^000000";
-	mes "Not now!";
-	mes "I can't leave yet!";
-	next;
-	warp "jupe_gate.gat",50,168;
-	end;
 
 OnTimer10000:
-	areawarp "jupe_gate.gat",46,171,53,171,"juperos_02.gat",130,142;
-	stopnpctimer;
+	warp "juperos_02.gat",128,278;
+	donpcevent "jupe_goto#2::OnCommandon";
+	hideonnpc "jupe_goto#1";
 	end;
 }
 
-jupe_gate.gat,28,145,0		warp	juperoswarp4007		1,1,jupe_area1.gat,101,222
-jupe_area1.gat,103,222,0	warp	juperoswarp4008		1,1,jupe_gate.gat,30,145
-jupe_gate.gat,71,145,0		warp	juperoswarp4009		1,1,jupe_area2.gat,63,222
-jupe_area2.gat,60,222,0		warp	juperoswarp4010		1,1,jupe_gate.gat,69,145
-jupe_gate.gat,49,55,0		warp	juperoswarp4011		1,1,jupe_ele_r.gat,49,29
-jupe_ele_r.gat,49,27,0		warp	juperoswarp4012		1,1,jupe_gate.gat,49,53
-jupe_ele.gat,41,33,0		warp	juperoswarp4013		4,4,jupe_core.gat,150,286
-
-juperos_02.gat,0,0,0	script	#juperosgateswitch	139,{
+juperos_01.gat,100,91,0	script	jupe_goto#2	139,2,2,{
 
 OnInit:
-	hideonnpc "juperoswarp4005";
-	set 'jupe_gate,3;
-	monster "juperos_02.gat",24,275,"1st Gate Switch",1674,1,"#juperosgateswitch::OnKilled";
-	monster "juperos_02.gat",240,29,"2nd Gate Switch",1674,1,"#juperosgateswitch::OnKilled";
-	monster "juperos_02.gat",282,183,"3rd Gate Switch",1674,1,"#juperosgateswitch::OnKilled";
+	hideonnpc "jupe_goto#2";
 	end;
 
-OnKilled:
-	set 'jupe_gate,'jupe_gate-1;
-	switch('jupe_gate) {
-	case 2: announce "Who are you to come here?",9,0xFF0000; break;
-	case 1: announce "Have you come seeking Juperos?! It no longer exists...",9,0xFF0000; break;
-	default:
-		announce "Have you come to see me? Fine! Find me first!",9,0xFF0000;
-		areamisceffect "juperos_02.gat",0,0,300,300,563;
-		areasoundeffect "juperos_02.gat",0,0,300,300,"earth_quake.wav",0;
-		sleep 5000;
-		announce "Vroom! Vroom!",9,0xE55AA4;
-		areasoundeffect "juperos_02.gat",0,0,300,300,"jupe_warning.wav",0;
-		sleep 2000;
-		announce "Attention, visitors.",9,0xE55AA4;
-		sleep 2000;
-		announce "You are allowed to enter the next zone for a short period of time.",9,0xE55AA4;
-		announce "Please use the portal in the center of the map.",9,0xE55AA4;
-		hideoffnpc "juperoswarp4005";
-		misceffect 561,"juperoswarp4005";
-		set 't,26;
-		initnpctimer;
+OnCommandon:
+	hideoffnpc "jupe_goto#2";
+	initnpctimer;
+	end;
+
+OnCommandoff:
+	hideonnpc "jupe_goto#2";
+	end;
+
+OnTouch:
+	warp "juperos_02.gat",128,278;
+	end;
+
+OnTimer2000:
+	donpcevent "jupe_goto#1::OnCommandon";
+	hideonnpc "jupe_goto#2";
+	end;
+}
+
+juperos_02.gat,97,70,0	script	3F Gate Switch#jupe	139,{
+
+OnInit:
+	set 'mobcount,0;
+	initnpctimer;
+	end;
+
+OnCommandreset:
+	killmonster "this",strnpcinfo(0)+"::OnMyMobDead";
+	set 'mobcount,0;
+	end;
+
+OnCommandoff:
+	hideonnpc "3F Gate Switch#jupe";
+	end;
+
+OnCommandon:
+	hideoffnpc "3F Gate Switch#jupe";
+	initnpctimer;
+	end;
+
+OnTimer5000:
+	monster "juperos_02.gat",24,275,"1st Gate Switch",1674,1,"3F Gate Switch#jupe::OnMyMobDead";
+	monster "juperos_02.gat",240,29,"2nd Gate Switch",1674,1,"3F Gate Switch#jupe::OnMyMobDead";
+	monster "juperos_02.gat",282,183,"3rd Gate Switch",1674,1,"3F Gate Switch#jupe::OnMyMobDead";
+	set 'mobcount,0;
+	end;
+
+OnMyMobDead:
+	set 'mobcount,'mobcount + 1;
+	if ('mobcount == 1) {
+		mapannounce "juperos_02.gat","Who are you to come here?",8,0xFF0000;
+	} else if ('mobcount == 2) {
+		mapannounce "juperos_02.gat","Have you come seeking Juperos?! It no longer exists...",8,0xFF0000;
+	} else if ('mobcount == 3) {
+		mapannounce "juperos_02.gat","Have you come to see me? Fine! Find me first!",8,0xFF0000;
+		gmcommand "@misceffect 563";
+		soundeffect "earth_quake.wav",0;
+		donpcevent "3F Gate Switch#jupe::OnCommandoff";
+		donpcevent "3F Gate Switch2nd#jupe::OnCommandon";
 	}
+	end;
+}
+
+juperos_02.gat,97,70,0	script	3F Gate Switch2nd#jupe	139,{
+
+OnCommandoff:
+	hideonnpc "3F Gate Switch2nd#jupe";
+	end;
+
+OnCommandon:
+	hideoffnpc "3F Gate Switch2nd#jupe";
+	initnpctimer;
+	end;
+
+OnTimer5000:
+	mapannounce "juperos_02.gat","Vroom! Vroom!",8,0xE559A2;
+	end;
+
+OnTimer7000:
+	mapannounce "juperos_02.gat","Attention, visitors.",8,0xE559A2;
+	end;
+
+OnTimer9000:
+	mapannounce "juperos_02.gat","You are allowed to enter the next zone for a short period of time. Please use the portal in the center of the map.",8,0xE559A2;
+	end;
+
+OnTimer9001:
+	donpcevent "Restricted Area Entrance#jupe::OnCommandon";
+	end;
+}
+
+juperos_02.gat,130,149,0	script	Restricted Area Entrance#jupe	139,2,2,{
+
+OnInit:
+	hideonnpc "Restricted Area Entrance#jupe";
+	end;
+
+OnCommandoff:
+	hideonnpc "Restricted Area Entrance#jupe";
+	end;
+
+OnCommandon:
+	hideoffnpc "Restricted Area Entrance#jupe";
+	misceffect 561,"Restricted Area Entrance#jupe";
+	initnpctimer;
 	end;
 
 OnTimer23000:
-	set 't,'t-1;
-	misceffect 561,"juperoswarp4005";
-	if ('t == 2) {
-		sleep 4000;
-		announce "Attention, visitors. The gate to the next zone will close shortly.",9,0xE55AA4;
-		sleep 5000;
-		announce "1 minute remaining until Gate Closure.",9,0xE55AA4;
-	}
-	if ('t == 0) {
-		sleep 2000;
-		hideonnpc "juperoswarp4005";
-		announce "The gate is being closed...",9,0xE55AA4;
-		sleep 3000;
-		announce "Switches will reactivate shortly.",9,0xE55AA4;
-		end;
-	}
-	initnpctimer;
+	misceffect 561,"Restricted Area Entrance#jupe";
 	end;
 
-OnTimer602000:
-	stopnpctimer;
-	donpcevent "#juperosgateswitch::OnInit";
-	end;
-}
-
-jupe_area1.gat,0,0,0	script	jupe_area1	139,{
-
-OnSummon1:
-	set 'flag,1;
-	initnpctimer;
-	sleep 1000;
-	announce "Those of you who have come here...",9,0xFF0000;
-	sleep 2000;
-	announce "I do not intend to stop you.",9,0xFF0000;
-	areasoundeffect "this",0,0,164,300,"jupe_warning.wav",0;
-	sleep 2000;
-	announce "But I assume you are prepared for a few obstacles...",9,0xFF0000;
-	sleep 2000;
-	announce "After all, you are venturing through a forbidden area!",9,0xFF0000;
-	set 'mob,8;
-	monster "jupe_area1.gat",30,263,"Security Guard",1675,1,"jupe_area1::OnKilled";
-	monster "jupe_area1.gat",30,262,"Security Guard",1669,1,"jupe_area1::OnKilled";
-	monster "jupe_area1.gat",30,261,"Security Guard",1675,1,"jupe_area1::OnKilled";
-	monster "jupe_area1.gat",30,260,"Security Guard",1669,1,"jupe_area1::OnKilled";
-	monster "jupe_area1.gat",30,259,"Security Guard",1675,1,"jupe_area1::OnKilled";
-	monster "jupe_area1.gat",30,258,"Security Guard",1669,1,"jupe_area1::OnKilled";
-	monster "jupe_area1.gat",30,257,"Security Guard",1675,1,"jupe_area1::OnKilled";
-	monster "jupe_area1.gat",30,256,"Security Guard",1669,1,"jupe_area1::OnKilled";
-	sleep 1000;
-	areasoundeffect "this",0,0,164,300,"jupe_warning.wav",0;
+OnTimer46000:
+	misceffect 561,"Restricted Area Entrance#jupe";
 	end;
 
-OnSummon2:
-	announce "How about now?",9,0xFF0000;
-	areasoundeffect "this",0,0,164,300,"jupe_warning.wav",0;
-	sleep 2000;
-	announce "Let me see...",9,0xFF0000;
-	sleep 2000;
-	announce "Just how strong you are!",9,0xFF0000;
-	areasoundeffect "this",0,0,164,300,"jupe_warning.wav",0;
-	set 'mob,8;
-	monster "jupe_area1.gat",30,238,"Security Guard",1675,1,"jupe_area1::OnKilled";
-	monster "jupe_area1.gat",31,238,"Security Guard",1669,1,"jupe_area1::OnKilled";
-	monster "jupe_area1.gat",32,238,"Security Guard",1675,1,"jupe_area1::OnKilled";
-	monster "jupe_area1.gat",33,238,"Security Guard",1669,1,"jupe_area1::OnKilled";
-	monster "jupe_area1.gat",34,238,"Security Guard",1675,1,"jupe_area1::OnKilled";
-	monster "jupe_area1.gat",35,238,"Security Guard",1669,1,"jupe_area1::OnKilled";
-	monster "jupe_area1.gat",36,238,"Security Guard",1675,1,"jupe_area1::OnKilled";
-	monster "jupe_area1.gat",37,238,"Security Guard",1669,1,"jupe_area1::OnKilled";
+OnTimer69000:
+	misceffect 561,"Restricted Area Entrance#jupe";
 	end;
 
-OnSummon3:
-	set 'flag,4;
-	initnpctimer;
-	announce "Come on, come on!",9,0xFF0000;
-	sleep 2000;
-	announce "Yes. Run... Right into my hands!",9,0xFF0000;
-	sleep 2000;
-	announce "Do you want to know who I am?",9,0xFF0000;
-	sleep 2000;
-	announce "You will know, once you defeat all of my minions!",9,0xFF0000;
-	set 'mob,8;
-	monster "jupe_area1.gat",30,176,"Security Guard",1669,1,"jupe_area1::OnKilled";
-	monster "jupe_area1.gat",31,176,"Security Guard",1675,1,"jupe_area1::OnKilled";
-	monster "jupe_area1.gat",32,176,"Security Guard",1669,1,"jupe_area1::OnKilled";
-	monster "jupe_area1.gat",33,176,"Security Guard",1675,1,"jupe_area1::OnKilled";
-	monster "jupe_area1.gat",34,176,"Security Guard",1669,1,"jupe_area1::OnKilled";
-	monster "jupe_area1.gat",35,176,"Security Guard",1675,1,"jupe_area1::OnKilled";
-	monster "jupe_area1.gat",36,176,"Security Guard",1669,1,"jupe_area1::OnKilled";
-	monster "jupe_area1.gat",37,176,"Security Guard",1675,1,"jupe_area1::OnKilled";
+OnTimer92000:
+	misceffect 561,"Restricted Area Entrance#jupe";
 	end;
 
-OnSummon4:
-	announce "I was the head of this underground laboratory.",9,0xFF0000;
-	sleep 2000;
-	announce "But that was a long time ago, back when I was merely a human.",9,0xFF0000;
-	sleep 2000;
-	announce "I was called Vesper Newton. Hahah, they called me a mad man back then.",9,0xFF0000;
-	set 'mob,13;
-	monster "jupe_area1.gat",30,152,"Security Guard",1669,1,"jupe_area1::OnKilled";
-	monster "jupe_area1.gat",31,152,"Security Guard",1675,1,"jupe_area1::OnKilled";
-	monster "jupe_area1.gat",32,152,"Security Guard",1669,1,"jupe_area1::OnKilled";
-	monster "jupe_area1.gat",33,152,"Security Guard",1675,1,"jupe_area1::OnKilled";
-	monster "jupe_area1.gat",34,152,"Security Guard",1669,1,"jupe_area1::OnKilled";
-	monster "jupe_area1.gat",35,152,"Security Guard",1675,1,"jupe_area1::OnKilled";
-	monster "jupe_area1.gat",36,152,"Security Guard",1669,1,"jupe_area1::OnKilled";
-	monster "jupe_area1.gat",37,152,"Security Guard",1675,1,"jupe_area1::OnKilled";
-	monster "jupe_area1.gat",30,150,"Security Guard",1669,1,"jupe_area1::OnKilled";
-	monster "jupe_area1.gat",31,150,"Security Guard",1675,1,"jupe_area1::OnKilled";
-	monster "jupe_area1.gat",32,150,"Security Guard",1669,1,"jupe_area1::OnKilled";
-	monster "jupe_area1.gat",33,150,"Security Guard",1675,1,"jupe_area1::OnKilled";
-	monster "jupe_area1.gat",34,150,"Security Guard",1669,1,"jupe_area1::OnKilled";
+OnTimer115000:
+	misceffect 561,"Restricted Area Entrance#jupe";
 	end;
 
-OnSummon5:
-	set 'flag,7;
-	initnpctimer;
-	announce "These security systems...",9,0xFF0000;
-	sleep 2000;
-	announce "They're not really for protection.",9,0xFF0000;
-	sleep 2000;
-	announce "It's sort of just a hobby to pass the time...",9,0xFF0000;
-	sleep 2000;
-	announce "Being immortal, I have a lot of time on my hands...",9,0xFF0000;
-	set 'mob,8;
-	monster "jupe_area1.gat",30,89,"Security Guard",1675,1,"jupe_area1::OnKilled";
-	monster "jupe_area1.gat",31,89,"Security Guard",1669,1,"jupe_area1::OnKilled";
-	monster "jupe_area1.gat",32,89,"Security Guard",1675,1,"jupe_area1::OnKilled";
-	monster "jupe_area1.gat",33,89,"Security Guard",1669,1,"jupe_area1::OnKilled";
-	monster "jupe_area1.gat",34,89,"Security Guard",1675,1,"jupe_area1::OnKilled";
-	monster "jupe_area1.gat",35,89,"Security Guard",1669,1,"jupe_area1::OnKilled";
-	monster "jupe_area1.gat",36,89,"Security Guard",1675,1,"jupe_area1::OnKilled";
-	monster "jupe_area1.gat",37,89,"Security Guard",1669,1,"jupe_area1::OnKilled";
+OnTimer161000:
+	misceffect 561,"Restricted Area Entrance#jupe";
 	end;
 
-OnSummon6:
-	announce "Why have you come?",9,0xFF0000;
-	sleep 2000;
-	announce "Were you hoping to find something wonderful? Something miraculous?",9,0xFF0000;
-	sleep 2000;
-	announce "You're wrong! Welcome to Hell!",9,0xFF0000;
-	set 'mob,15;
-	monster "jupe_area1.gat",42,64,"Security Guard",1669,1,"jupe_area1::OnKilled";
-	monster "jupe_area1.gat",43,64,"Security Guard",1675,1,"jupe_area1::OnKilled";
-	monster "jupe_area1.gat",44,64,"Security Guard",1669,1,"jupe_area1::OnKilled";
-	monster "jupe_area1.gat",45,64,"Security Guard",1675,1,"jupe_area1::OnKilled";
-	monster "jupe_area1.gat",46,64,"Security Guard",1669,1,"jupe_area1::OnKilled";
-	monster "jupe_area1.gat",47,64,"Security Guard",1675,1,"jupe_area1::OnKilled";
-	monster "jupe_area1.gat",48,64,"Security Guard",1669,1,"jupe_area1::OnKilled";
-	monster "jupe_area1.gat",49,64,"Security Guard",1675,1,"jupe_area1::OnKilled";
-	monster "jupe_area1.gat",42,62,"Security Guard",1669,1,"jupe_area1::OnKilled";
-	monster "jupe_area1.gat",43,62,"Security Guard",1675,1,"jupe_area1::OnKilled";
-	monster "jupe_area1.gat",44,62,"Security Guard",1669,1,"jupe_area1::OnKilled";
-	monster "jupe_area1.gat",45,62,"Security Guard",1675,1,"jupe_area1::OnKilled";
-	monster "jupe_area1.gat",46,62,"Security Guard",1669,1,"jupe_area1::OnKilled";
-	monster "jupe_area1.gat",47,62,"Security Guard",1675,1,"jupe_area1::OnKilled";
-	monster "jupe_area1.gat",48,62,"Security Guard",1669,1,"jupe_area1::OnKilled";
-	monster "jupe_area1.gat",49,62,"Security Guard",1675,1,"jupe_area1::OnKilled";
+OnTimer184000:
+	misceffect 561,"Restricted Area Entrance#jupe";
 	end;
 
-OnSummon7:
-	set 'flag,10;
-	initnpctimer;
-	announce "I've been waiting for someone strong enough to compete with me.",9,0xFF0000;
-	sleep 2000;
-	announce "If you hear this, I wish you will be the one...",9,0xFF0000;
-	sleep 2000;
-	announce "Perhaps, a mere shadow of my former self...",9,0xFF0000;
-	sleep 2000;
-	announce "Is somewhere down here, wandering...",9,0xFF0000;
-	set 'mob,8;
-	monster "jupe_area1.gat",92,154,"Security Guard",1669,1,"jupe_area1::OnKilled";
-	monster "jupe_area1.gat",96,154,"Security Guard",1675,1,"jupe_area1::OnKilled";
-	monster "jupe_area1.gat",100,154,"Security Guard",1669,1,"jupe_area1::OnKilled";
-	monster "jupe_area1.gat",104,154,"Security Guard",1675,1,"jupe_area1::OnKilled";
-	monster "jupe_area1.gat",92,161,"Security Guard",1669,1,"jupe_area1::OnKilled";
-	monster "jupe_area1.gat",96,161,"Security Guard",1675,1,"jupe_area1::OnKilled";
-	monster "jupe_area1.gat",100,161,"Security Guard",1669,1,"jupe_area1::OnKilled";
-	monster "jupe_area1.gat",104,161,"Security Guard",1675,1,"jupe_area1::OnKilled";
+OnTimer207000:
+	misceffect 561,"Restricted Area Entrance#jupe";
 	end;
 
-OnSummon8:
-	announce "I can never rest in peace...",9,0xFF0000;
-	sleep 2000;
-	announce "I'll wait forever or until someone can put me out of my misery...",9,0xFF0000;
-	sleep 2000;
-	announce "I will be waiting for you!",9,0xFF0000;
-	set 'mob,10;
-	monster "jupe_area1.gat",104,161,"Security Guard",1669,1,"jupe_area1::OnKilled";
-	monster "jupe_area1.gat",108,161,"Security Guard",1675,1,"jupe_area1::OnKilled";
-	monster "jupe_area1.gat",111,161,"Security Guard",1669,1,"jupe_area1::OnKilled";
-	monster "jupe_area1.gat",112,161,"Security Guard",1675,1,"jupe_area1::OnKilled";
-	monster "jupe_area1.gat",115,161,"Security Guard",1669,1,"jupe_area1::OnKilled";
-	monster "jupe_area1.gat",104,154,"Security Guard",1669,1,"jupe_area1::OnKilled";
-	monster "jupe_area1.gat",108,154,"Security Guard",1675,1,"jupe_area1::OnKilled";
-	monster "jupe_area1.gat",111,154,"Security Guard",1669,1,"jupe_area1::OnKilled";
-	monster "jupe_area1.gat",112,154,"Security Guard",1675,1,"jupe_area1::OnKilled";
-	monster "jupe_area1.gat",115,154,"Security Guard",1669,1,"jupe_area1::OnKilled";
+OnTimer230000:
+	misceffect 561,"Restricted Area Entrance#jupe";
 	end;
 
-OnKilled:
-	set 'mob,'mob-1;
-	if ('mob == 0) {
-		sleep 2000;
-		switch('flag) {
-		case 1: donpcevent "jupe_area1::OnSummon2"; break;
-		case 2: announce "Zzzzt. Zzzzt.....",9,0xFF0000; break;
-		case 4: donpcevent "jupe_area1::OnSummon4"; break;
-		case 5: announce "Not yet!",9,0xFF0000; break;
-		case 7: donpcevent "jupe_area1::OnSummon6"; break;
-		case 8: announce "Do you still have your courage? Come. Prove it.",9,0xFF0000; break;
-		case 10: donpcevent "jupe_area1::OnSummon8"; break;
-		case 11: announce "It's funny... Isn't it?",9,0xFF0000; break;
-		}
-		set 'flag,'flag+1;
-	}
+OnTimer253000:
+	misceffect 561,"Restricted Area Entrance#jupe";
+	end;
+
+OnTimer276000:
+	misceffect 561,"Restricted Area Entrance#jupe";
+	end;
+
+OnTimer299000:
+	misceffect 561,"Restricted Area Entrance#jupe";
+	end;
+
+OnTimer322000:
+	misceffect 561,"Restricted Area Entrance#jupe";
+	end;
+
+OnTimer345000:
+	misceffect 561,"Restricted Area Entrance#jupe";
+	end;
+
+OnTimer368000:
+	misceffect 561,"Restricted Area Entrance#jupe";
+	end;
+
+OnTimer391000:
+	misceffect 561,"Restricted Area Entrance#jupe";
+	end;
+
+OnTimer414000:
+	misceffect 561,"Restricted Area Entrance#jupe";
+	end;
+
+OnTimer460000:
+	misceffect 561,"Restricted Area Entrance#jupe";
+	end;
+
+OnTimer483000:
+	misceffect 561,"Restricted Area Entrance#jupe";
+	end;
+
+OnTimer506000:
+	misceffect 561,"Restricted Area Entrance#jupe";
+	end;
+
+OnTimer529000:
+	misceffect 561,"Restricted Area Entrance#jupe";
+	end;
+
+OnTimer552000:
+	misceffect 561,"Restricted Area Entrance#jupe";
+	end;
+
+OnTimer556000:
+	mapannounce "juperos_02.gat","Attention, visitors. The gate to the next zone will close shortly.",8,0xE559A2;
+	end;
+
+OnTimer561000:
+	mapannounce "juperos_02.gat","1 minute remaining until Gate Closure. ",8,0xE559A2;
+	end;
+
+OnTimer598000:
+	misceffect 561,"Restricted Area Entrance#jupe";
 	end;
 
 OnTimer600000:
-	set '@rand,rand(0,3);
-	if ('@rand == 0)
-		announce "Do you realize this is a hallucination?",9,0xFF0000;
-	else if ('@rand == 1)
-		announce "Bwahaha! You're only good at running away!",9,0xFF0000;
-	else
-		announce "I can't believe how cowardly you really are...",9,0xFF0000;
-	sleep 2000;
-	stopnpctimer;
-	areawarp "this",0,0,70,300,"jupe_gate.gat",49,138;
-	areawarp "this",70,0,164,200,"jupe_gate.gat",49,138;
-	killmonster "this","All";
-	set 'mob,0;
-	set 'flag,0;
+	mapannounce "juperos_02.gat","The gate is being closed...",8,0xE559A2;
+	end;
+
+OnTimer603000:
+	mapannounce "juperos_02.gat"," Switches will reactivate shortly.",8,0xE559A2;
+	end;
+
+OnTimer621000:
+	hideonnpc "Restricted Area Entrance#jupe";
+	end;
+
+OnTimer1200000:
+	donpcevent "3F Gate Switch#jupe::OnCommandon";
+	end;
+
+OnTouch:
+	warp "jupe_gate.gat",50,167;
 	end;
 }
 
-jupe_area1.gat,88,224,0	script	#jupe_area1-1	844,{
+jupe_area1.gat,88,224,0	script	#hole#1-1	111,{
 
-	set '@id,strcut(strnpcinfo(2),11);
-	cutin strcut(strnpcinfo(2),11),2;
-	if (getvariableofnpc('flag,"jupe_area1") != ('@id-1)*3) {
+	set '@gameing,$050420_jupe_area1;
+	cutin "1",2;
+	if ('@gameing == 1) {
 		mes "^3355FFThis seems like";
 		mes "some kind of device";
 		mes "that will allow you to";
@@ -394,243 +316,3093 @@ jupe_area1.gat,88,224,0	script	#jupe_area1-1	844,{
 		mes "probably need to insert";
 		mes "some kind of object...^000000";
 		close2;
-		cutin strcut(strnpcinfo(2),11),255;
+		cutin "1",255;
+		end;
+	} else if ((countitem(7356) > 0) || (countitem(7357) > 0) || (countitem(7358) > 0) || (countitem(7359) > 0)) {
+		mes "^3355FFThis seems like";
+		mes "some kind of device";
+		mes "that will allow you to";
+		mes "pass to the other side.";
+		mes "There's a slot where you";
+		mes "probably need to insert";
+		mes "some kind of object...^000000";
+		next;
+		switch(select("Insert a Crest Piece.","Cancel.")) {
+		case 1:
+			if (countitem(7356) > 0) {
+				mes "^3355FFYou take out your";
+				mes "Crest Piece and place";
+				mes "it into the slot where it";
+				mes "happens to fit perfectly.^000000";
+				misceffect 159,"#hole#1-1";
+				cutin "1-1",2;
+				next;
+				set '@gameing,$050420_jupe_area1;
+				if ('@gameing == 1) {
+					mes "^3355FFNothing happens.";
+					mes "Perhaps an alarm or";
+					mes "some other safety measure";
+					mes "was activated to keep the";
+					mes "Crest Piece from activating";
+					mes "this transportation device.";
+					mes "You retrieve the Crest Piece.^000000";
+					close2;
+					cutin "1-1",255;
+					end;
+				} else {
+					mes "^3355FFThe slot rotates and";
+					mes "the Crest Piece moves as";
+					mes "if it were turning a key. You";
+					mes "feel a weak tremor as a Warp";
+					mes "Portal to the other side is";
+					mes "activated. You then retrieve";
+					mes "your Crest Piece.^000000";
+					initnpctimer;
+					donpcevent "Warp#1-1::OnCommandon";
+					donpcevent "Red Alarm#1-1::OnCommandon";
+					hideonnpc "#hole#1-1";
+					close2;
+					cutin "1-1",255;
+					end;
+				}
+			} else {
+				mes "^3355FFUnfortunately, you're";
+				mes "not carrying anything";
+				mes "that might be able to fit";
+				mes "into the slot and activate";
+				mes "this mechanical device.^000000";
+				close2;
+				cutin "1",255;
+				end;
+			}
+		case 2:
+			mes "[" + strcharinfo(0) + "]";
+			mes "Hmmm...";
+			mes "Do I have anything";
+			mes "that might make this";
+			mes "weird machine work?";
+			close2;
+			cutin "1",255;
+			end;
+		}
+	} else {
+		mes "^3355FFThis seems like";
+		mes "some kind of device";
+		mes "that will allow you to";
+		mes "pass to the other side.";
+		mes "There's a slot where you";
+		mes "probably need to insert";
+		mes "some kind of object...^000000";
+		close2;
+		cutin "1",255;
 		end;
 	}
-	mes "^3355FFThis seems like";
-	mes "some kind of device";
-	mes "that will allow you to";
-	mes "pass to the other side.";
-	mes "There's a slot where you";
-	mes "probably need to insert";
-	mes "some kind of object...^000000";
-	next;
-	if (select("Insert a Crest Piece.","Cancel.")==1) {
-		set '@id,7355+'@id;
-		if (countitem('@id)) {
-			cutin strcut(strnpcinfo(2),11)+"-1",2;
-			misceffect 159;
-			mes "^3355FFYou take out your";
-			mes "Crest Piece and place";
-			mes "it into the slot where it";
-			mes "happens to fit perfectly.^000000";
-			next;
-			mes "^3355FFThe slot rotates and";
-			mes "the Crest Piece moves as";
-			mes "if it were turning a key. You";
-			mes "feel a weak tremor as a Warp";
-			mes "Portal to the other side is";
-			mes "activated. You then retrieve";
-			mes "your Crest Piece.^000000";
-			hideonnpc;
-			hideoffnpc "juperoswarp" +strcut(strnpcinfo(2),11)+ "#jupe_area1";
-			misceffect 561,"juperoswarp" +strcut(strnpcinfo(2),11)+ "#jupe_area1";
-			soundeffect "jupe_warp.wav",0;
-			initnpctimer;
-		}
-		else {
-			mes "^3355FFUnfortunately, you're";
-			mes "not carrying anything";
-			mes "that might be able to fit";
-			mes "into the slot and activate";
-			mes "this mechanical device.^000000";
-		}
-	}
-	else {
-		mes "[" +strcharinfo(0)+ "]";
-		mes "Hmmm...";
-		mes "Do I have anything";
-		mes "that might make this";
-		mes "weird machine work?";
-	}
-	close2;
-	cutin strcut(strnpcinfo(2),11),255;
+
+OnTimer22500:
+	hideoffnpc;
+	donpcevent "Red Alarm#1-1::OnCommandoff";
 	end;
 
-OnTimer22000:
+OnCommandon:
+	hideoffnpc "#hole#1-1";
+	end;
+
+OnCommandoff:
+	hideonnpc "#hole#1-1";
+	end;
+
+OnCommandstop_timer:
 	stopnpctimer;
-	hideonnpc "juperoswarp" +strcut(strnpcinfo(2),11)+ "#jupe_area1";
-	hideoffnpc;
 	end;
 }
 
-jupe_area1.gat,25,238,0	duplicate(#jupe_area1-1)	#jupe_area1-2	844
-jupe_area1.gat,36,146,0	duplicate(#jupe_area1-1)	#jupe_area1-3	844
-jupe_area1.gat,50,49,0	duplicate(#jupe_area1-1)	#jupe_area1-4	844
+jupe_area1.gat,83,221,0	script	Warp#1-1	139,2,2,{
 
-jupe_area1.gat,112,162,0	script	Lever#jupe_area1	844,{
+OnInit:
+	hideonnpc "Warp#1-1";
+	end;
+
+OnCommandoff:
+	hideonnpc "Warp#1-1";
+	end;
+
+OnCommandreset:
+	hideonnpc "Warp#1-1";
+	end;
+
+OnCommandon:
+	hideoffnpc "Warp#1-1";
+	misceffect 561,"Warp#1-1";
+	soundeffect "jupe_warp.wav",0;
+	initnpctimer;
+	end;
+
+OnTouch:
+	warp "jupe_area1.gat",47,259;
+	end;
+
+OnTimer22500:
+	donpcevent "Warp#1-1::OnCommandreset";
+	end;
+}
+
+jupe_area1.gat,47,259,0	script	Red Alarm#1-1	139,2,2,{
+
+OnInit:
+	hideonnpc "Red Alarm#1-1";
+	end;
+
+OnCommandoff:
+	hideonnpc "Red Alarm#1-1";
+	end;
+
+OnCommandon:
+	hideoffnpc "Red Alarm#1-1";
+	end;
+
+OnTouch:
+	set '@gameing,$050420_jupe_area1;
+	set '@gameing,'@gameing + 1;
+	set $050420_jupe_area1,1;
+	donpcevent "Red Alarm Start#1-1::OnCommandon";
+	donpcevent "Red Alarm#1-1::OnCommandoff";
+	donpcevent "#hole#1-1::OnCommandstop_timer";
+	end;
+}
+
+jupe_area1.gat,60,230,0	script	Red Alarm Start#1-1	139,{
+
+OnInit:
+	hideonnpc "Red Alarm Start#1-1";
+	end;
+
+OnCommandoff:
+	hideonnpc "Red Alarm Start#1-1";
+	end;
+
+OnCommandreset:
+	hideonnpc "Red Alarm Start#1-1";
+	end;
+
+OnCommandon:
+	hideoffnpc "Red Alarm Start#1-1";
+	donpcevent "Red Alarm On#1-1::OnCommandon";
+	end;
+}
+
+jupe_area1.gat,61,230,0	script	Red Alarm On#1-1	139,{
+
+OnInit:
+	hideonnpc "Red Alarm On#1-1";
+	end;
+
+OnCommandoff:
+	hideonnpc "Red Alarm On#1-1";
+	end;
+
+OnCommandon:
+	hideoffnpc "Red Alarm On#1-1";
+	initnpctimer;
+	end;
+
+OnTimer1000:
+	mapannounce "jupe_area1.gat","Those of you who have come here...",8,0xFF0000;
+	end;
+
+OnTimer3000:
+	mapannounce "jupe_area1.gat","I do not intend to stop you.",8,0xFF0000;
+	soundeffect "jupe_warning.wav",0;
+	soundeffect "jupe_warning.wav",0;
+	donpcevent "#hole#1-1::OnCommandoff";
+	end;
+
+OnTimer5000:
+	mapannounce "jupe_area1.gat","But I assume you are prepared for a few obstacles...",8,0xFF0000;
+	donpcevent "Monster1#1-1::OnCommandon";
+	end;
+
+OnTimer7000:
+	mapannounce "jupe_area1.gat","After all, you are venturing through a forbidden area!",8,0xFF0000;
+	end;
+
+OnTimer8000:
+	donpcevent "Red Alarm On#1-1::OnCommandoff";
+	soundeffect "jupe_warning.wav",0;
+	soundeffect "jupe_warning.wav",0;
+	end;
+}
+
+jupe_area1.gat,62,230,0	script	Monster1#1-1	139,{
+
+OnInit:
+	hideonnpc "Monster1#1-1";
+	set 'mobcount,0;
+	end;
+
+OnCommandreset:
+	killmonster "this",strnpcinfo(0)+"::OnMyMobDead";
+	set 'mobcount,0;
+	end;
+
+OnCommandoff:
+	hideonnpc "Monster1#1-1";
+	end;
+
+OnCommandon:
+	set '@gameing,$050420_jupe_area1;
+	initnpctimer;
+	hideoffnpc "Monster1#1-1";
+	set 'mobcount,0;
+	monster "jupe_area1.gat",30,263,"Security Guard",1675,1,"Monster1#1-1::OnMyMobDead";
+	monster "jupe_area1.gat",30,262,"Security Guard",1669,1,"Monster1#1-1::OnMyMobDead";
+	monster "jupe_area1.gat",30,261,"Security Guard",1675,1,"Monster1#1-1::OnMyMobDead";
+	monster "jupe_area1.gat",30,260,"Security Guard",1669,1,"Monster1#1-1::OnMyMobDead";
+	monster "jupe_area1.gat",30,259,"Security Guard",1675,1,"Monster1#1-1::OnMyMobDead";
+	monster "jupe_area1.gat",30,258,"Security Guard",1669,1,"Monster1#1-1::OnMyMobDead";
+	monster "jupe_area1.gat",30,257,"Security Guard",1675,1,"Monster1#1-1::OnMyMobDead";
+	monster "jupe_area1.gat",30,256,"Security Guard",1669,1,"Monster1#1-1::OnMyMobDead";
+	end;
+
+OnTimer300000:
+	mapannounce "jupe_area1.gat","Do you realize this is a hallucination?",8,0xFF0000;
+	set $050420_jupe_area1,0;
+	end;
+
+OnTimer300002:
+	donpcevent "Monster1#1-1::OnCommandreset";
+	donpcevent "#hole#1-1::OnCommandon";
+	end;
+
+OnMyMobDead:
+	set 'mobcount,'mobcount + 1;
+	if ('mobcount >= 8) {
+		donpcevent "Monster2#1-1::OnCommandon";
+		donpcevent "Monster1#1-1::OnCommandreset";
+		stopnpctimer;
+	}
+	end;
+}
+
+jupe_area1.gat,64,230,0	script	Monster2#1-1	139,{
+
+OnInit:
+	hideonnpc "Monster2#1-1";
+	set 'mobcount,0;
+	end;
+
+OnCommandreset:
+	killmonster "this",strnpcinfo(0)+"::OnMyMobDead";
+	set 'mobcount,0;
+	end;
+
+OnCommandoff:
+	hideonnpc "Monster2#1-1";
+	set 'mobcount,0;
+	end;
+
+OnCommandon:
+	set '@gameing,$050420_jupe_area1;
+	initnpctimer;
+	end;
+
+OnTimer2000:
+	mapannounce "jupe_area1.gat","How about now?",8,0xFF0000;
+	soundeffect "jupe_warning.wav",0;
+	soundeffect "jupe_warning.wav",0;
+	end;
+
+OnTimer4000:
+	mapannounce "jupe_area1.gat","Let me see...",8,0xFF0000;
+	end;
+
+OnTimer7000:
+	mapannounce "jupe_area1.gat","Just how strong you are!",8,0xFF0000;
+	soundeffect "jupe_warning.wav",0;
+	soundeffect "jupe_warning.wav",0;
+	hideoffnpc "Monster2#1-1";
+	set 'mobcount,0;
+	monster "jupe_area1.gat",30,238,"Security Guard",1675,1,"Monster2#1-1::OnMyMobDead";
+	monster "jupe_area1.gat",31,238,"Security Guard",1669,1,"Monster2#1-1::OnMyMobDead";
+	monster "jupe_area1.gat",32,238,"Security Guard",1675,1,"Monster2#1-1::OnMyMobDead";
+	monster "jupe_area1.gat",33,238,"Security Guard",1669,1,"Monster2#1-1::OnMyMobDead";
+	monster "jupe_area1.gat",34,238,"Security Guard",1675,1,"Monster2#1-1::OnMyMobDead";
+	monster "jupe_area1.gat",35,238,"Security Guard",1669,1,"Monster2#1-1::OnMyMobDead";
+	monster "jupe_area1.gat",36,238,"Security Guard",1675,1,"Monster2#1-1::OnMyMobDead";
+	monster "jupe_area1.gat",37,238,"Security Guard",1669,1,"Monster2#1-1::OnMyMobDead";
+	end;
+
+OnTimer300000:
+	mapannounce "jupe_area1.gat","Bwahaha! You're only good at running away!",8,0xFF0000;
+	donpcevent "Monster2#1-1::OnCommandreset";
+	donpcevent "#hole#1-1::OnCommandon";
+	donpcevent "Red Alarm#1-1::OnCommandoff";
+	set $050420_jupe_area1,0;
+	end;
+
+OnTimer300002:
+	donpcevent "Monster2#1-1::OnCommandreset";
+	end;
+
+OnMyMobDead:
+	set 'mobcount,'mobcount + 1;
+	if ('mobcount >= 8) {
+		mapannounce "jupe_area1.gat","Zzzzt. Zzzzt..... ",8,0xFF0000;
+		donpcevent "Monster2#1-1::OnCommandreset";
+		donpcevent "#hole#1-1::OnCommandon";
+		donpcevent "Red Alarm#1-1::OnCommandoff";
+		set $050420_jupe_area1,0;
+		stopnpctimer;
+	}
+	end;
+}
+
+jupe_area1.gat,25,238,0	script	#hole#1-2	111,{
+
+	set '@gameing,$050420_jupe_area1;
+	cutin "2",2;
+	if ('@gameing == 1) {
+		mes "^3355FFThis seems like";
+		mes "some kind of device";
+		mes "that will allow you to";
+		mes "pass to the other side.";
+		mes "There's a slot where you";
+		mes "probably need to insert";
+		mes "some kind of object...^000000";
+		close2;
+		cutin "2",255;
+		end;
+	} else if ((countitem(7356) > 0) || (countitem(7357) > 0) || (countitem(7358) > 0) || (countitem(7359) > 0)) {
+		mes "^3355FFThis seems like";
+		mes "some kind of device";
+		mes "that will allow you to";
+		mes "pass to the other side.";
+		mes "There's a slot where you";
+		mes "probably need to insert";
+		mes "some kind of object...^000000";
+		next;
+		switch(select("Insert a Crest Piece.","Cancel.")) {
+		case 1:
+			if (countitem(7357) > 0) {
+				mes "^3355FFYou take out your";
+				mes "Crest Piece and place";
+				mes "it into the slot where it";
+				mes "happens to fit perfectly.^000000";
+				misceffect 159,"#hole#1-2";
+				cutin "2-1",2;
+				next;
+				set '@gameing,$050420_jupe_area1;
+				if ('@gameing == 1) {
+					mes "^3355FFNothing happens.";
+					mes "Perhaps an alarm or";
+					mes "some other safety measure";
+					mes "was activated to keep the";
+					mes "Crest Piece from activating";
+					mes "this transportation device.";
+					mes "You retrieve the Crest Piece.^000000";
+					close2;
+					cutin "2-1",255;
+					end;
+				} else {
+					mes "^3355FFThe slot rotates and";
+					mes "the Crest Piece moves as";
+					mes "if it were turning a key. You";
+					mes "feel a weak tremor as a Warp";
+					mes "Portal to the other side is";
+					mes "activated. You then retrieve";
+					mes "your Crest Piece.^000000";
+					initnpctimer;
+					donpcevent "Warp#1-2::OnCommandon";
+					donpcevent "Red Alarm#1-2::OnCommandon";
+					hideonnpc "#hole#1-2";
+					close2;
+					cutin "2-1",255;
+					end;
+				}
+			} else {
+				mes "^3355FFUnfortunately, you're";
+				mes "not carrying anything";
+				mes "that might be able to fit";
+				mes "into the slot and activate";
+				mes "this mechanical device.^000000";
+				close2;
+				cutin "2",255;
+				end;
+			}
+		case 2:
+			mes "[" + strcharinfo(0) + "]";
+			mes "Hmmm...";
+			mes "Do I have anything";
+			mes "that might make this";
+			mes "weird machine work?";
+			close2;
+			cutin "2",255;
+			end;
+		}
+	} else {
+		mes "^3355FFThis seems like";
+		mes "some kind of device";
+		mes "that will allow you to";
+		mes "pass to the other side.";
+		mes "There's a slot where you";
+		mes "probably need to insert";
+		mes "some kind of object...^000000";
+		close2;
+		cutin "2",255;
+		end;
+	}
+
+OnTimer22500:
+	hideoffnpc;
+	donpcevent "Red Alarm#1-2::OnCommandoff";
+	end;
+
+OnCommandon:
+	hideoffnpc "#hole#1-2";
+	end;
+
+OnCommandoff:
+	hideonnpc "#hole#1-2";
+	end;
+
+OnCommandstop_timer:
+	stopnpctimer;
+	end;
+}
+
+jupe_area1.gat,21,225,0	script	Warp#1-2	139,2,2,{
+
+OnInit:
+	hideonnpc "Warp#1-2";
+	end;
+
+OnCommandoff:
+	hideonnpc "Warp#1-2";
+	end;
+
+OnCommandreset:
+	hideonnpc "Warp#1-2";
+	end;
+
+OnCommandon:
+	hideoffnpc "Warp#1-2";
+	misceffect 561,"Warp#1-2";
+	soundeffect "jupe_warp.wav",0;
+	initnpctimer;
+	end;
+
+OnTouch:
+	warp "jupe_area1.gat",21,191;
+	end;
+
+OnTimer22500:
+	donpcevent "Warp#1-2::OnCommandreset";
+	end;
+}
+
+jupe_area1.gat,21,191,0	script	Red Alarm#1-2	139,2,2,{
+
+OnInit:
+	hideonnpc "Red Alarm#1-2";
+	end;
+
+OnCommandoff:
+	hideonnpc "Red Alarm#1-2";
+	end;
+
+OnCommandon:
+	hideoffnpc "Red Alarm#1-2";
+	end;
+
+OnTouch:
+	set '@gameing,$050420_jupe_area1;
+	set '@gameing,'@gameing + 1;
+	set $050420_jupe_area1,1;
+	donpcevent "Red Alarm Start#1-2::OnCommandon";
+	donpcevent "Red Alarm#1-2::OnCommandoff";
+	donpcevent "#hole#1-2::OnCommandstop_timer";
+	end;
+}
+
+jupe_area1.gat,60,231,0	script	Red Alarm Start#1-2	139,{
+
+OnInit:
+	hideonnpc "Red Alarm Start#1-2";
+	end;
+
+OnCommandoff:
+	hideonnpc "Red Alarm Start#1-2";
+	end;
+
+OnCommandreset:
+	hideonnpc "Red Alarm Start#1-2";
+	end;
+
+OnCommandon:
+	hideoffnpc "Red Alarm Start#1-2";
+	donpcevent "Red Alarm On#1-2::OnCommandon";
+	end;
+}
+
+jupe_area1.gat,61,231,0	script	Red Alarm On#1-2	139,{
+
+OnInit:
+	hideonnpc "Red Alarm On#1-2";
+	end;
+
+OnCommandoff:
+	hideonnpc "Red Alarm On#1-2";
+	end;
+
+OnCommandon:
+	hideoffnpc "Red Alarm On#1-2";
+	initnpctimer;
+	end;
+
+OnTimer1000:
+	mapannounce "jupe_area1.gat","Come on, come on!",8,0xFF0000;
+	end;
+
+OnTimer3000:
+	mapannounce "jupe_area1.gat","Yes. Run... Right into my hands!",8,0xFF0000;
+	donpcevent "#hole#1-2::OnCommandoff";
+	end;
+
+OnTimer5000:
+	mapannounce "jupe_area1.gat","Do you want to know who I am?",8,0xFF0000;
+	donpcevent "Monster1#1-2::OnCommandon";
+	end;
+
+OnTimer7000:
+	mapannounce "jupe_area1.gat","You will know, once you defeat all of my minions!",8,0xFF0000;
+	end;
+
+OnTimer8000:
+	donpcevent "Red Alarm On#1-2::OnCommandoff";
+	end;
+}
+
+jupe_area1.gat,62,231,0	script	Monster1#1-2	139,{
+
+OnInit:
+	hideonnpc "Monster1#1-2";
+	set 'mobcount,0;
+	end;
+
+OnCommandreset:
+	killmonster "this",strnpcinfo(0)+"::OnMyMobDead";
+	set 'mobcount,0;
+	end;
+
+OnCommandoff:
+	hideonnpc "Monster1#1-2";
+	set 'mobcount,0;
+	end;
+
+OnCommandon:
+	set '@gameing,$050420_jupe_area1;
+	initnpctimer;
+	hideoffnpc "Monster1#1-2";
+	set 'mobcount,0;
+	monster "jupe_area1.gat",30,176,"High Guard",1669,1,"Monster1#1-2::OnMyMobDead";
+	monster "jupe_area1.gat",31,176,"High Guard",1675,1,"Monster1#1-2::OnMyMobDead";
+	monster "jupe_area1.gat",32,176,"High Guard",1669,1,"Monster1#1-2::OnMyMobDead";
+	monster "jupe_area1.gat",33,176,"High Guard",1675,1,"Monster1#1-2::OnMyMobDead";
+	monster "jupe_area1.gat",34,176,"High Guard",1669,1,"Monster1#1-2::OnMyMobDead";
+	monster "jupe_area1.gat",35,176,"High Guard",1675,1,"Monster1#1-2::OnMyMobDead";
+	monster "jupe_area1.gat",36,176,"High Guard",1669,1,"Monster1#1-2::OnMyMobDead";
+	monster "jupe_area1.gat",37,176,"High Guard",1675,1,"Monster1#1-2::OnMyMobDead";
+	end;
+
+OnTimer300000:
+	mapannounce "jupe_area1.gat","I can't believe how cowardly you really are...",8,0xFF0000;
+	set $050420_jupe_area1,0;
+	end;
+
+OnTimer300002:
+	donpcevent "Monster1#1-2::OnCommandreset";
+	donpcevent "#hole#1-2::OnCommandon";
+	end;
+
+OnMyMobDead:
+	set 'mobcount,'mobcount + 1;
+	if ('mobcount >= 8) {
+		donpcevent "Monster2#1-2::OnCommandon";
+		donpcevent "Monster1#1-2::OnCommandreset";
+		stopnpctimer;
+	}
+	end;
+}
+
+jupe_area1.gat,63,231,0	script	Monster2#1-2	139,{
+
+OnInit:
+	hideonnpc "Monster2#1-2";
+	set 'mobcount,0;
+	end;
+
+OnCommandreset:
+	killmonster "this",strnpcinfo(0)+"::OnMyMobDead";
+	set 'mobcount,0;
+	end;
+
+OnCommandoff:
+	hideonnpc "Monster2#1-2";
+	set 'mobcount,0;
+	end;
+
+OnCommandon:
+	set '@gameing,$050420_jupe_area1;
+	initnpctimer;
+	end;
+
+OnTimer2000:
+	mapannounce "jupe_area1.gat","I was the head of this underground laboratory.",8,0xFF0000;
+	end;
+
+OnTimer4000:
+	mapannounce "jupe_area1.gat","But that was a long time ago, back when I was merely a human.",8,0xFF0000;
+	end;
+
+OnTimer6000:
+	mapannounce "jupe_area1.gat","I was called Vesper Newton. Hahah, they called me a mad man back then.",8,0xFF0000;
+	hideoffnpc "Monster2#1-2";
+	set 'mobcount,0;
+	monster "jupe_area1.gat",30,152,"Security Guard",1669,1,"Monster2#1-2::OnMyMobDead";
+	monster "jupe_area1.gat",31,152,"Security Guard",1675,1,"Monster2#1-2::OnMyMobDead";
+	monster "jupe_area1.gat",32,152,"Security Guard",1669,1,"Monster2#1-2::OnMyMobDead";
+	monster "jupe_area1.gat",33,152,"Security Guard",1675,1,"Monster2#1-2::OnMyMobDead";
+	monster "jupe_area1.gat",34,152,"Security Guard",1669,1,"Monster2#1-2::OnMyMobDead";
+	monster "jupe_area1.gat",35,152,"Security Guard",1675,1,"Monster2#1-2::OnMyMobDead";
+	monster "jupe_area1.gat",36,152,"Security Guard",1669,1,"Monster2#1-2::OnMyMobDead";
+	monster "jupe_area1.gat",37,152,"Security Guard",1675,1,"Monster2#1-2::OnMyMobDead";
+	monster "jupe_area1.gat",30,150,"Security Guard",1669,1,"Monster2#1-2::OnMyMobDead";
+	monster "jupe_area1.gat",31,150,"Security Guard",1675,1,"Monster2#1-2::OnMyMobDead";
+	monster "jupe_area1.gat",32,150,"Security Guard",1669,1,"Monster2#1-2::OnMyMobDead";
+	monster "jupe_area1.gat",33,150,"Security Guard",1675,1,"Monster2#1-2::OnMyMobDead";
+	monster "jupe_area1.gat",34,150,"Security Guard",1669,1,"Monster2#1-2::OnMyMobDead";
+	end;
+
+OnTimer300000:
+	mapannounce "jupe_area1.gat","...Not yet.",8,0xFF0000;
+	donpcevent "Monster2#1-2::OnCommandreset";
+	donpcevent "#hole#1-2::OnCommandon";
+	donpcevent "Red Alarm#1-2::OnCommandoff";
+	set $050420_jupe_area1,0;
+	end;
+
+OnTimer300002:
+	donpcevent "Monster2#1-2::OnCommandreset";
+	end;
+
+OnMyMobDead:
+	set 'mobcount,'mobcount + 1;
+	if ('mobcount >= 13) {
+		mapannounce "jupe_area1.gat","Not yet!",8,0xFF0000;
+		donpcevent "Monster2#1-2::OnCommandreset";
+		donpcevent "#hole#1-2::OnCommandon";
+		donpcevent "Red Alarm#1-2::OnCommandoff";
+		set $050420_jupe_area1,0;
+		stopnpctimer;
+	}
+	end;
+}
+
+jupe_area1.gat,36,146,0	script	#hole#1-3	111,{
+
+	set '@gameing,$050420_jupe_area1;
+	cutin "3",2;
+	if ('@gameing == 1) {
+		mes "^3355FFThis seems like";
+		mes "some kind of device";
+		mes "that will allow you to";
+		mes "pass to the other side.";
+		mes "There's a slot where you";
+		mes "probably need to insert";
+		mes "some kind of object...^000000";
+		close2;
+		cutin "3",255;
+		end;
+	} else if ((countitem(7356) > 0) || (countitem(7357) > 0) || (countitem(7358) > 0) || (countitem(7359) > 0)) {
+		mes "^3355FFThis seems like";
+		mes "some kind of device";
+		mes "that will allow you to";
+		mes "pass to the other side.";
+		mes "There's a slot where you";
+		mes "probably need to insert";
+		mes "some kind of object...^000000";
+		next;
+		switch(select("Insert a Crest Piece.","Cancel.")) {
+		case 1:
+			if (countitem(7358) > 0) {
+				mes "^3355FFYou take out your";
+				mes "Crest Piece and place";
+				mes "it into the slot where it";
+				mes "happens to fit perfectly.^000000";
+				misceffect 159,"#hole#1-3";
+				cutin "3-1",2;
+				next;
+				set '@gameing,$050420_jupe_area1;
+				if ('@gameing == 1) {
+					mes "^3355FFNothing happens.";
+					mes "Perhaps an alarm or";
+					mes "some other safety measure";
+					mes "was activated to keep the";
+					mes "Crest Piece from activating";
+					mes "this transportation device.";
+					mes "You retrieve the Crest Piece.^000000";
+					close2;
+					cutin "3-1",255;
+					end;
+				} else {
+					mes "^3355FFThe slot rotates and";
+					mes "the Crest Piece moves as";
+					mes "if it were turning a key. You";
+					mes "feel a weak tremor as a Warp";
+					mes "Portal to the other side is";
+					mes "activated. You then retrieve";
+					mes "your Crest Piece.^000000";
+					initnpctimer;
+					donpcevent "Warp#1-3::OnCommandon";
+					donpcevent "Red Alarm#1-3::OnCommandon";
+					hideonnpc "#hole#1-3";
+					close2;
+					cutin "3-1",255;
+					end;
+				}
+			} else {
+				mes "^3355FFUnfortunately, you're";
+				mes "not carrying anything";
+				mes "that might be able to fit";
+				mes "into the slot and activate";
+				mes "this mechanical device.^000000";
+				close2;
+				cutin "3",255;
+				end;
+			}
+		case 2:
+			mes "[" + strcharinfo(0) + "]";
+			mes "Hmmm...";
+			mes "Do I have anything";
+			mes "that might make this";
+			mes "weird machine work?";
+			close2;
+			cutin "3",255;
+			end;
+		}
+	} else {
+		mes "^3355FFThis seems like";
+		mes "some kind of device";
+		mes "that will allow you to";
+		mes "pass to the other side.";
+		mes "There's a slot where you";
+		mes "probably need to insert";
+		mes "some kind of object...^000000";
+		close2;
+		cutin "3",255;
+		end;
+	}
+
+OnTimer22500:
+	hideoffnpc;
+	donpcevent "Red Alarm#1-3::OnCommandoff";
+	end;
+
+OnCommandon:
+	hideoffnpc "#hole#1-3";
+	end;
+
+OnCommandoff:
+	hideonnpc "#hole#1-3";
+	end;
+
+OnCommandstop_timer:
+	stopnpctimer;
+	end;
+}
+
+jupe_area1.gat,33,137,0	script	Warp#1-3	139,2,2,{
+
+OnInit:
+	hideonnpc "Warp#1-3";
+	end;
+
+OnCommandoff:
+	hideonnpc "Warp#1-3";
+	end;
+
+OnCommandreset:
+	hideonnpc "Warp#1-3";
+	end;
+
+OnCommandon:
+	hideoffnpc "Warp#1-3";
+	misceffect 561,"Warp#1-3";
+	soundeffect "jupe_warp.wav",0;
+	initnpctimer;
+	end;
+
+OnTouch:
+	warp "jupe_area1.gat",33,105;
+	end;
+
+OnTimer22500:
+	donpcevent "Warp#1-3::OnCommandreset";
+	end;
+}
+
+jupe_area1.gat,33,105,0	script	Red Alarm#1-3	139,0,4,{
+
+OnInit:
+	hideonnpc "Red Alarm#1-3";
+	end;
+
+OnCommandoff:
+	hideonnpc "Red Alarm#1-3";
+	end;
+
+OnCommandon:
+	hideoffnpc "Red Alarm#1-3";
+	end;
+
+OnTouch:
+	set '@gameing,$050420_jupe_area1;
+	set '@gameing,'@gameing + 1;
+	set $050420_jupe_area1,1;
+	donpcevent "Red Alarm Start#1-3::OnCommandon";
+	donpcevent "Red Alarm#1-3::OnCommandoff";
+	donpcevent "#hole#1-3::OnCommandstop_timer";
+	end;
+}
+
+jupe_area1.gat,60,232,0	script	Red Alarm Start#1-3	139,{
+
+OnInit:
+	hideonnpc "Red Alarm Start#1-3";
+	end;
+
+OnCommandoff:
+	hideonnpc "Red Alarm Start#1-3";
+	end;
+
+OnCommandreset:
+	hideonnpc "Red Alarm Start#1-3";
+	end;
+
+OnCommandon:
+	hideoffnpc "Red Alarm Start#1-3";
+	donpcevent "Red Alarm On#1-3::OnCommandon";
+	end;
+}
+
+jupe_area1.gat,61,232,0	script	Red Alarm On#1-3	139,{
+
+OnInit:
+	hideonnpc "Red Alarm On#1-3";
+	end;
+
+OnCommandoff:
+	hideonnpc "Red Alarm On#1-3";
+	end;
+
+OnCommandon:
+	hideoffnpc "Red Alarm On#1-3";
+	initnpctimer;
+	end;
+
+OnTimer1000:
+	mapannounce "jupe_area1.gat","These security systems...",8,0xFF0000;
+	end;
+
+OnTimer3000:
+	mapannounce "jupe_area1.gat","They're not really for protection.",8,0xFF0000;
+	donpcevent "#hole#1-3::OnCommandoff";
+	end;
+
+OnTimer5000:
+	mapannounce "jupe_area1.gat","It's sort of just a hobby to pass the time...",8,0xFF0000;
+	donpcevent "Monster1#1-3::OnCommandon";
+	end;
+
+OnTimer7000:
+	mapannounce "jupe_area1.gat","Being immortal, I have a lot of time on my hands...",8,0xFF0000;
+	end;
+
+OnTimer8000:
+	donpcevent "Red Alarm On#1-3::OnCommandoff";
+	end;
+}
+
+jupe_area1.gat,62,232,0	script	Monster1#1-3	139,{
+
+OnInit:
+	hideonnpc "Monster1#1-3";
+	set 'mobcount,0;
+	end;
+
+OnCommandreset:
+	killmonster "this",strnpcinfo(0)+"::OnMyMobDead";
+	set 'mobcount,0;
+	end;
+
+OnCommandoff:
+	hideonnpc "Monster1#1-3";
+	set 'mobcount,0;
+	end;
+
+OnCommandon:
+	set '@gameing,$050420_jupe_area1;
+	initnpctimer;
+	hideoffnpc "Monster1#1-3";
+	set 'mobcount,0;
+	monster "jupe_area1.gat",30,89,"Security Guard",1675,1,"Monster1#1-3::OnMyMobDead";
+	monster "jupe_area1.gat",31,89,"Security Guard",1669,1,"Monster1#1-3::OnMyMobDead";
+	monster "jupe_area1.gat",32,89,"Security Guard",1675,1,"Monster1#1-3::OnMyMobDead";
+	monster "jupe_area1.gat",33,89,"Security Guard",1669,1,"Monster1#1-3::OnMyMobDead";
+	monster "jupe_area1.gat",34,89,"Security Guard",1675,1,"Monster1#1-3::OnMyMobDead";
+	monster "jupe_area1.gat",35,89,"Security Guard",1669,1,"Monster1#1-3::OnMyMobDead";
+	monster "jupe_area1.gat",36,89,"Security Guard",1675,1,"Monster1#1-3::OnMyMobDead";
+	monster "jupe_area1.gat",37,89,"Security Guard",1669,1,"Monster1#1-3::OnMyMobDead";
+	end;
+
+OnTimer300000:
+	mapannounce "jupe_area1.gat","Zzzzt...Zzzzt....",8,0xFF0000;
+	set $050420_jupe_area1,0;
+	end;
+
+OnTimer300002:
+	donpcevent "Monster1#1-3::OnCommandreset";
+	donpcevent "#hole#1-3::OnCommandon";
+	end;
+
+OnMyMobDead:
+	set 'mobcount,'mobcount + 1;
+	if ('mobcount >= 8) {
+		donpcevent "Monster2#1-3::OnCommandon";
+		donpcevent "Monster1#1-3::OnCommandreset";
+		stopnpctimer;
+	}
+	end;
+}
+
+jupe_area1.gat,63,232,0	script	Monster2#1-3	139,{
+
+OnInit:
+	hideonnpc "Monster2#1-3";
+	set 'mobcount,0;
+	end;
+
+OnCommandreset:
+	killmonster "this",strnpcinfo(0)+"::OnMyMobDead";
+	set 'mobcount,0;
+	end;
+
+OnCommandoff:
+	hideonnpc "Monster2#1-3";
+	set 'mobcount,0;
+	end;
+
+OnCommandon:
+	set '@gameing,$050420_jupe_area1;
+	initnpctimer;
+	end;
+
+OnTimer2000:
+	mapannounce "jupe_area1.gat","Why have you come?",8,0xFF0000;
+	end;
+
+OnTimer5000:
+	mapannounce "jupe_area1.gat","Were you hoping to find something wonderful? Something miraculous?",8,0xFF0000;
+	end;
+
+OnTimer8000:
+	mapannounce "jupe_area1.gat","You're wrong! Welcome to Hell!",8,0xFF0000;
+	hideoffnpc "Monster2#1-3";
+	set 'mobcount,0;
+	monster "jupe_area1.gat",42,64,"Security Guard",1669,1,"Monster2#1-3::OnMyMobDead";
+	monster "jupe_area1.gat",43,64,"Security Guard",1675,1,"Monster2#1-3::OnMyMobDead";
+	monster "jupe_area1.gat",44,64,"Security Guard",1669,1,"Monster2#1-3::OnMyMobDead";
+	monster "jupe_area1.gat",45,64,"Security Guard",1675,1,"Monster2#1-3::OnMyMobDead";
+	monster "jupe_area1.gat",46,64,"Security Guard",1669,1,"Monster2#1-3::OnMyMobDead";
+	monster "jupe_area1.gat",47,64,"Security Guard",1675,1,"Monster2#1-3::OnMyMobDead";
+	monster "jupe_area1.gat",48,64,"Security Guard",1669,1,"Monster2#1-3::OnMyMobDead";
+	monster "jupe_area1.gat",49,64,"Security Guard",1675,1,"Monster2#1-3::OnMyMobDead";
+	monster "jupe_area1.gat",42,62,"Security Guard",1669,1,"Monster2#1-3::OnMyMobDead";
+	monster "jupe_area1.gat",43,62,"Security Guard",1675,1,"Monster2#1-3::OnMyMobDead";
+	monster "jupe_area1.gat",44,62,"Security Guard",1669,1,"Monster2#1-3::OnMyMobDead";
+	monster "jupe_area1.gat",45,62,"Security Guard",1675,1,"Monster2#1-3::OnMyMobDead";
+	monster "jupe_area1.gat",46,62,"Security Guard",1669,1,"Monster2#1-3::OnMyMobDead";
+	monster "jupe_area1.gat",47,62,"Security Guard",1675,1,"Monster2#1-3::OnMyMobDead";
+	monster "jupe_area1.gat",48,62,"Security Guard",1669,1,"Monster2#1-3::OnMyMobDead";
+	end;
+
+OnTimer300000:
+	mapannounce "jupe_area1.gat","Do you still have your courage? Come. Prove it.",8,0xFF0000;
+	donpcevent "Monster2#1-3::OnCommandreset";
+	donpcevent "#hole#1-3::OnCommandon";
+	donpcevent "Red Alarm#1-3::OnCommandoff";
+	set $050420_jupe_area1,0;
+	end;
+
+OnTimer300002:
+	donpcevent "Monster2#1-3::OnCommandreset";
+	end;
+
+OnMyMobDead:
+	set 'mobcount,'mobcount + 1;
+	if ('mobcount >= 15) {
+		mapannounce "jupe_area1.gat","Do you still have your courage? Come. Prove it.",8,0xFF0000;
+		donpcevent "Monster2#1-3::OnCommandreset";
+		donpcevent "#hole#1-3::OnCommandon";
+		donpcevent "Red Alarm#1-3::OnCommandoff";
+		set $050420_jupe_area1,0;
+		stopnpctimer;
+	}
+	end;
+}
+
+jupe_area1.gat,50,49,0	script	#hole#1-4	111,{
+
+	set '@gameing,$050420_jupe_area1;
+	cutin "4",2;
+	if ('@gameing == 1) {
+		mes "^3355FFThis seems like";
+		mes "some kind of device";
+		mes "that will allow you to";
+		mes "pass to the other side.";
+		mes "There's a slot where you";
+		mes "probably need to insert";
+		mes "some kind of object...^000000";
+		close2;
+		cutin "4",255;
+		end;
+	} else if ((countitem(7356) > 0) || (countitem(7357) > 0) || (countitem(7358) > 0) || (countitem(7359) > 0)) {
+		mes "^3355FFThis seems like";
+		mes "some kind of device";
+		mes "that will allow you to";
+		mes "pass to the other side.";
+		mes "There's a slot where you";
+		mes "probably need to insert";
+		mes "some kind of object...^000000";
+		next;
+		switch(select("Insert a Crest Piece.","Cancel.")) {
+		case 1:
+			if (countitem(7359) > 0) {
+				mes "^3355FFYou take out your";
+				mes "Crest Piece and place";
+				mes "it into the slot where it";
+				mes "happens to fit perfectly.^000000";
+				misceffect 159,"#hole#1-4";
+				cutin "4-1",2;
+				next;
+				set '@gameing,$050420_jupe_area1;
+				if ('@gameing == 1) {
+					mes "^3355FFNothing happens.";
+					mes "Perhaps an alarm or";
+					mes "some other safety measure";
+					mes "was activated to keep the";
+					mes "Crest Piece from activating";
+					mes "this transportation device.";
+					mes "You retrieve the Crest Piece.^000000";
+					close2;
+					cutin "4-1",255;
+					end;
+				} else {
+					mes "^3355FFThe slot rotates and";
+					mes "the Crest Piece moves as";
+					mes "if it were turning a key. You";
+					mes "feel a weak tremor as a Warp";
+					mes "Portal to the other side is";
+					mes "activated. You then retrieve";
+					mes "your Crest Piece.^000000";
+					initnpctimer;
+					donpcevent "Warp#1-4::OnCommandon";
+					donpcevent "Red Alarm#1-4::OnCommandon";
+					hideonnpc "#hole#1-4";
+					close2;
+					cutin "4-1",255;
+					end;
+				}
+			} else {
+				mes "^3355FFUnfortunately, you're";
+				mes "not carrying anything";
+				mes "that might be able to fit";
+				mes "into the slot and activate";
+				mes "this mechanical device.^000000";
+				close2;
+				cutin "4",255;
+				end;
+			}
+		case 2:
+			mes "[" + strcharinfo(0) + "]";
+			mes "Hmmm...";
+			mes "Do I have anything";
+			mes "that might make this";
+			mes "weird machine work?";
+			close2;
+			cutin "4",255;
+			end;
+		}
+	} else {
+		mes "^3355FFThis seems like";
+		mes "some kind of device";
+		mes "that will allow you to";
+		mes "pass to the other side.";
+		mes "There's a slot where you";
+		mes "probably need to insert";
+		mes "some kind of object...^000000";
+		close2;
+		cutin "4",255;
+		end;
+	}
+
+OnTimer5000:
+	hideoffnpc;
+	donpcevent "Red Alarm#1-4::OnCommandoff";
+	end;
+
+OnCommandon:
+	hideoffnpc "#hole#1-4";
+	end;
+
+OnCommandoff:
+	hideonnpc "#hole#1-4";
+	end;
+
+OnCommandstop_timer:
+	stopnpctimer;
+	end;
+}
+
+jupe_area1.gat,57,53,0	script	Warp#1-4	139,2,2,{
+
+OnInit:
+	hideonnpc "Warp#1-4";
+	end;
+
+OnCommandoff:
+	hideonnpc "Warp#1-4";
+	end;
+
+OnCommandreset:
+	hideonnpc "Warp#1-4";
+	end;
+
+OnCommandon:
+	hideoffnpc "Warp#1-4";
+	misceffect 561,"Warp#1-4";
+	soundeffect "jupe_warp.wav",0;
+	initnpctimer;
+	end;
+
+OnTouch:
+	warp "jupe_area1.gat",83,157;
+	end;
+
+OnTimer5000:
+	donpcevent "Warp#1-4::OnCommandreset";
+	end;
+}
+
+jupe_area1.gat,83,157,0	script	Red Alarm#1-4	139,2,2,{
+
+OnInit:
+	hideonnpc "Red Alarm#1-4";
+	end;
+
+OnCommandoff:
+	hideonnpc "Red Alarm#1-4";
+	end;
+
+OnCommandon:
+	hideoffnpc "Red Alarm#1-4";
+	end;
+
+OnTouch:
+	set '@gameing,$050420_jupe_area1;
+	set '@gameing,'@gameing + 1;
+	set $050420_jupe_area1,1;
+	donpcevent "Red Alarm Start#1-4::OnCommandon";
+	donpcevent "Red Alarm#1-4::OnCommandoff";
+	donpcevent "#hole#1-4::OnCommandstop_timer";
+	end;
+}
+
+jupe_area1.gat,60,233,0	script	Red Alarm Start#1-4	139,{
+
+OnInit:
+	hideonnpc "Red Alarm Start#1-4";
+	end;
+
+OnCommandoff:
+	hideonnpc "Red Alarm Start#1-4";
+	end;
+
+OnCommandreset:
+	hideonnpc "Red Alarm Start#1-4";
+	end;
+
+OnCommandon:
+	hideoffnpc "Red Alarm Start#1-4";
+	donpcevent "Red Alarm On#1-4::OnCommandon";
+	end;
+}
+
+jupe_area1.gat,61,233,0	script	Red Alarm On#1-4	139,{
+
+OnInit:
+	hideonnpc "Red Alarm On#1-4";
+	end;
+
+OnCommandoff:
+	hideonnpc "Red Alarm On#1-4";
+	end;
+
+OnCommandon:
+	hideoffnpc "Red Alarm On#1-4";
+	initnpctimer;
+	end;
+
+OnTimer1000:
+	mapannounce "jupe_area1.gat","I've been waiting for someone strong enough to compete with me.",8,0xFF0000;
+	end;
+
+OnTimer3000:
+	mapannounce "jupe_area1.gat","If you hear this, I wish you will be the one...",8,0xFF0000;
+	donpcevent "#hole#1-4::OnCommandoff";
+	end;
+
+OnTimer5000:
+	mapannounce "jupe_area1.gat","Perhaps, a mere shadow of my former self...",8,0xFF0000;
+	donpcevent "Monster1#1-4::OnCommandon";
+	end;
+
+OnTimer7000:
+	mapannounce "jupe_area1.gat","Is somewhere down here, wandering...",8,0xFF0000;
+	end;
+
+OnTimer8000:
+	donpcevent "Red Alarm On#1-4::OnCommandoff";
+	end;
+}
+
+jupe_area1.gat,62,233,0	script	Monster1#1-4	139,{
+
+OnInit:
+	hideonnpc "Monster1#1-4";
+	set 'mobcount,0;
+	end;
+
+OnCommandreset:
+	killmonster "this",strnpcinfo(0)+"::OnMyMobDead";
+	set 'mobcount,0;
+	end;
+
+OnCommandoff:
+	hideonnpc "Monster1#1-4";
+	set 'mobcount,0;
+	end;
+
+OnCommandon:
+	set '@gameing,$050420_jupe_area1;
+	initnpctimer;
+	hideoffnpc "Monster1#1-4";
+	set 'mobcount,0;
+	monster "jupe_area1.gat",92,154,"Security Guard",1669,1,"Monster1#1-4::OnMyMobDead";
+	monster "jupe_area1.gat",96,154,"Security Guard",1675,1,"Monster1#1-4::OnMyMobDead";
+	monster "jupe_area1.gat",100,154,"Security Guard",1669,1,"Monster1#1-4::OnMyMobDead";
+	monster "jupe_area1.gat",104,154,"Security Guard",1675,1,"Monster1#1-4::OnMyMobDead";
+	monster "jupe_area1.gat",92,161,"Security Guard",1669,1,"Monster1#1-4::OnMyMobDead";
+	monster "jupe_area1.gat",96,161,"Security Guard",1675,1,"Monster1#1-4::OnMyMobDead";
+	monster "jupe_area1.gat",100,161,"Security Guard",1669,1,"Monster1#1-4::OnMyMobDead";
+	monster "jupe_area1.gat",104,161,"Security Guard",1675,1,"Monster1#1-4::OnMyMobDead";
+	end;
+
+OnTimer300000:
+	mapannounce "jupe_area1.gat","Zzzzt...Zzzzt....",8,0xFF0000;
+	set $050420_jupe_area1,0;
+	end;
+
+OnTimer300002:
+	donpcevent "Monster1#1-4::OnCommandreset";
+	donpcevent "#hole#1-4::OnCommandon";
+	end;
+
+OnMyMobDead:
+	set 'mobcount,'mobcount + 1;
+	if ('mobcount >= 8) {
+		donpcevent "Monster2#1-4::OnCommandon";
+		donpcevent "Monster1#1-4::OnCommandreset";
+		stopnpctimer;
+	}
+	end;
+}
+
+jupe_area1.gat,63,233,0	script	Monster2#1-4	139,{
+
+OnInit:
+	hideonnpc "Monster2#1-4";
+	set 'mobcount,0;
+	end;
+
+OnCommandreset:
+	killmonster "this",strnpcinfo(0)+"::OnMyMobDead";
+	set 'mobcount,0;
+	end;
+
+OnCommandoff:
+	hideonnpc "Monster2#1-4";
+	set 'mobcount,0;
+	end;
+
+OnCommandon:
+	set '@gameing,$050420_jupe_area1;
+	initnpctimer;
+	end;
+
+OnTimer2000:
+	mapannounce "jupe_area1.gat","I can never rest in peace...",8,0xFF0000;
+	end;
+
+OnTimer4000:
+	mapannounce "jupe_area1.gat","I'll wait forever or until someone can put me out of my misery...",8,0xFF0000;
+	end;
+
+OnTimer6000:
+	mapannounce "jupe_area1.gat","I will be waiting for you!",8,0xFF0000;
+	hideoffnpc "Monster2#1-4";
+	set 'mobcount,0;
+	monster "jupe_area1.gat",104,161,"Security Guard",1675,1,"Monster2#1-4::OnMyMobDead";
+	monster "jupe_area1.gat",108,161,"Security Guard",1669,1,"Monster2#1-4::OnMyMobDead";
+	monster "jupe_area1.gat",111,161,"Security Guard",1675,1,"Monster2#1-4::OnMyMobDead";
+	monster "jupe_area1.gat",112,161,"Security Guard",1669,1,"Monster2#1-4::OnMyMobDead";
+	monster "jupe_area1.gat",115,161,"Security Guard",1675,1,"Monster2#1-4::OnMyMobDead";
+	monster "jupe_area1.gat",104,154,"Security Guard",1669,1,"Monster2#1-4::OnMyMobDead";
+	monster "jupe_area1.gat",108,154,"Security Guard",1675,1,"Monster2#1-4::OnMyMobDead";
+	monster "jupe_area1.gat",111,154,"Security Guard",1669,1,"Monster2#1-4::OnMyMobDead";
+	monster "jupe_area1.gat",112,154,"Security Guard",1675,1,"Monster2#1-4::OnMyMobDead";
+	monster "jupe_area1.gat",115,154,"Security Guard",1669,1,"Monster2#1-4::OnMyMobDead";
+	end;
+
+OnTimer300000:
+	mapannounce "jupe_area1.gat","It's funny... Isn't it?",8,0xFF0000;
+	donpcevent "Monster2#1-4::OnCommandreset";
+	donpcevent "#hole#1-4::OnCommandon";
+	donpcevent "Red Alarm#1-4::OnCommandoff";
+	set $050420_jupe_area1,0;
+	end;
+
+OnTimer300002:
+	donpcevent "Monster2#1-4::OnCommandreset";
+	end;
+
+OnMyMobDead:
+	set 'mobcount,'mobcount + 1;
+	if ('mobcount >= 10) {
+		mapannounce "jupe_area1.gat","It's funny... Isn't it?",8,0xFF0000;
+		donpcevent "Monster2#1-4::OnCommandreset";
+		donpcevent "#hole#1-4::OnCommandon";
+		donpcevent "Red Alarm#1-4::OnCommandoff";
+		set $050420_jupe_area1,0;
+		stopnpctimer;
+	}
+	end;
+}
+
+jupe_area1.gat,112,162,0	script	Lever1#ufe	111,{
 
 	mes "^3355FFIt's a lever";
 	mes "whose function";
 	mes "is not known to you.^000000";
-	if (getvariableofnpc('flag,"jupe_area1") != 12)
-		close;
 	next;
-	if (select("Pull.","Cance.")==1) {
-		hideonnpc;
-		hideoffnpc "juperoswarp5#jupe_area1";
-		misceffect 561,"juperoswarp5#jupe_area1";
-		soundeffect "jupe_warp.wav",0;
+	switch(select("Pull.","Cancel.")) {
+	case 1:
 		initnpctimer;
+		donpcevent "LeverWarp#ufe::OnCommandon";
+		hideonnpc "Lever1#ufe";
+		close;
+	case 2:
+		mes "[" + strcharinfo(0) + "]";
+		mes "Pull this lever?";
+		mes "I don't even know";
+		mes "what will happen...";
 		close;
 	}
-	mes "[" +strcharinfo(0)+ "]";
-	mes "Pull this lever?";
-	mes "I don't even know";
-	mes "what will happen...";
 	close;
 
-OnTimer22000:
+OnTimer3000:
+	hideoffnpc "Lever1#ufe";
+	end;
+
+OnCommandon:
+	hideoffnpc "Lever1#ufe";
+	end;
+
+OnCommandoff:
+	hideonnpc "Lever1#ufe";
+	end;
+
+OnCommandstop_timer:
 	stopnpctimer;
-	hideonnpc "juperoswarp5#jupe_area1";
-	hideoffnpc;
 	end;
 }
 
-jupe_area1.gat,83,221,0	script	juperoswarp1#jupe_area1	139,2,2{
-
-	set '@n,strcut(strnpcinfo(1),11);
-	switch('@n) {
-	case 1: warp "jupe_area1.gat",47,259; break;
-	case 2: warp "jupe_area1.gat",21,191; break;
-	case 3: warp "jupe_area1.gat",33,105; break;
-	case 4: warp "jupe_area1.gat",83,157; break;
-	}
-	if (getvariableofnpc('flag,"jupe_area1") == ('@n-1)*3)
-		donpcevent "jupe_area1::OnSummon"+('@n*2-1)+"";
-	end;
+jupe_area1.gat,117,157,0	script	LeverWarp#ufe	139,2,2,{
 
 OnInit:
-	hideonnpc;
-	end;
-}
-
-jupe_area1.gat,21,225,0	duplicate(juperoswarp1#jupe_area1)	juperoswarp2#jupe_area1	139,2,2
-jupe_area1.gat,33,137,0	duplicate(juperoswarp1#jupe_area1)	juperoswarp3#jupe_area1	139,2,2
-jupe_area1.gat,57,53,0	duplicate(juperoswarp1#jupe_area1)	juperoswarp4#jupe_area1	139,2,2
-
-jupe_area1.gat,117,157,0	script	juperoswarp5#jupe_area1	139,2,2,{
-
-	warp "jupe_gate.gat",28,29;
+	hideonnpc "LeverWarp#ufe";
 	end;
 
-OnInit:
-	hideonnpc;
+OnCommandoff:
+	hideonnpc "LeverWarp#ufe";
 	end;
-}
 
-jupe_ele_r.gat,51,98,0	script	Switch#jupe_ele	844,{
+OnCommandreset:
+	hideonnpc "LeverWarp#ufe";
+	end;
 
-	cutin "5",2;
-	mes "^3355FFIt's some sort of";
-	mes "lever that's located";
-	mes "next to four empty slots.^000000";
-	next;
-	if (select("Pull the lever.","Leave it alone.")==2) {
-		mes "^3355FFWho knows what";
-		mes "this lever may do?";
-		mes "You'll never know unless";
-		mes "you have the courage to try.^000000";
-		close2;
-		cutin "5",255;
-		end;
-	}
-	mes "^3355FF*Snap Snap*^000000-";
-	next;
-	mes "^3355FFYou pull the lever,";
-	mes "but nothing happened.";
-	mes "You probably need to";
-	mes "insert the correct objects";
-	mes "into the slots in order";
-	mes "for the lever to operate.^000000";
-	if (countitem(7356) < 1 && countitem(7357) < 1 && countitem(7358) < 1 && countitem(7359) < 1) {
-		mes "^3355FFYou need to find";
-		mes "some kind of object";
-		mes "that you can fit into";
-		mes "each of these four slots...^000000";
-		close2;
-		cutin "5",255;
-		end;
-	}
-	next;
-	menu "Insert all of your Crest Pieces.",-;
-	if (countitem(7356) < 1 || countitem(7357) < 1 || countitem(7358) < 1 || countitem(7359) < 1) {
-		mes "^3355FFRight now, you don't";
-		mes "have enough Crest Pieces";
-		mes "to place into all four of these";
-		mes "slots. You'll need to find and^FFFFFF ^3355FF bring them all to make this work.^000000";
-		close2;
-		cutin "5",255;
-		end;
-	}
+OnCommandon:
+	hideoffnpc "LeverWarp#ufe";
+	misceffect 561,"LeverWarp#ufe";
+	soundeffect "jupe_warp.wav",0;
 	initnpctimer;
-	hideonnpc;
-	hideoffnpc "Switch On#jupe_ele";
-	misceffect 72;
-	areamisceffect "jupe_ele_r.gat",0,0,100,160,563;
-	delitem 7356,1;
-	delitem 7357,1;
-	delitem 7358,1;
-	delitem 7359,1;
-	cutin "5-1",2;
-	mes "^3300FF*Snap!*^000000";
-	mes "^3300FFStrangely enough,";
-	mes "all four of the Crest";
-	mes "Pieces fit perfectly into";
-	mes "the slots and begin to";
-	mes "emit a strange light.^000000";
-	close2;
-	cutin "5",255;
+	end;
+
+OnTouch:
+	warp "jupe_gate.gat",28,30;
+	end;
+
+OnTimer3000:
+	hideonnpc "LeverWarp#ufe";
+	end;
+}
+
+jupe_area2.gat,74,224,0	script	#hole#2-1	111,{
+
+	set '@gameing2,$050420_jupe_area2;
+	cutin "1",2;
+	if ('@gameing2 == 1) {
+		mes "^3355FFThis seems like";
+		mes "some kind of device";
+		mes "that will allow you to";
+		mes "pass to the other side.";
+		mes "There's a slot where you";
+		mes "probably need to insert";
+		mes "some kind of object...^000000";
+		close2;
+		cutin "1",255;
+		end;
+	} else if ((countitem(7356) > 0) || (countitem(7357) > 0) || (countitem(7358) > 0) || (countitem(7359) > 0)) {
+		mes "^3355FFThis seems like";
+		mes "some kind of device";
+		mes "that will allow you to";
+		mes "pass to the other side.";
+		mes "There's a slot where you";
+		mes "probably need to insert";
+		mes "some kind of object...^000000";
+		next;
+		switch(select("Insert a Crest Piece.","Cancel.")) {
+		case 1:
+			if (countitem(7356) > 0) {
+				mes "^3355FFYou take out your";
+				mes "Crest Piece and place";
+				mes "it into the slot where it";
+				mes "happens to fit perfectly.^000000";
+				misceffect 159,"#hole#2-1";
+				cutin "1-1",2;
+				next;
+				set '@gameing2,$050420_jupe_area2;
+				if ('@gameing2 == 1) {
+					mes "^3355FFNothing happens.";
+					mes "Perhaps an alarm or";
+					mes "some other safety measure";
+					mes "was activated to keep the";
+					mes "Crest Piece from activating";
+					mes "this transportation device.";
+					mes "You retrieve the Crest Piece.^000000";
+					close2;
+					cutin "1-1",255;
+					end;
+				} else {
+					mes "^3355FFThe slot rotates and";
+					mes "the Crest Piece moves as";
+					mes "if it were turning a key. You";
+					mes "feel a weak tremor as a Warp";
+					mes "Portal to the other side is";
+					mes "activated. You then retrieve";
+					mes "your Crest Piece.^000000";
+					initnpctimer;
+					donpcevent "Warp#2-1::OnCommandon";
+					donpcevent "Red Alarm#2-1::OnCommandon";
+					hideonnpc "#hole#2-1";
+					close2;
+					cutin "1-1",255;
+					end;
+				}
+			} else {
+				mes "^3355FFUnfortunately, you're";
+				mes "not carrying anything";
+				mes "that might be able to fit";
+				mes "into the slot and activate";
+				mes "this mechanical device.^000000";
+				close2;
+				cutin "1",255;
+				end;
+			}
+		case 2:
+			mes "[" + strcharinfo(0) + "]";
+			mes "Hmmm...";
+			mes "Do I have anything";
+			mes "that might make this";
+			mes "weird machine work?";
+			close2;
+			cutin "1",255;
+			end;
+		}
+	} else {
+		mes "^3355FFThis seems like";
+		mes "some kind of device";
+		mes "that will allow you to";
+		mes "pass to the other side.";
+		mes "There's a slot where you";
+		mes "probably need to insert";
+		mes "some kind of object...^000000";
+		close2;
+		cutin "1",255;
+		end;
+	}
+
+OnTimer22500:
+	hideoffnpc;
+	donpcevent "Red Alarm#2-1::OnCommandoff";
+	end;
+
+OnCommandon:
+	hideoffnpc "#hole#2-1";
+	end;
+
+OnCommandoff:
+	hideonnpc "#hole#2-1";
+	end;
+
+OnCommandstop_timer:
+	stopnpctimer;
+	end;
+}
+
+jupe_area2.gat,80,221,0	script	Warp#2-1	139,2,2,{
+
+OnInit:
+	hideonnpc "Warp#2-1";
+	end;
+
+OnCommandoff:
+	hideonnpc "Warp#2-1";
+	end;
+
+OnCommandreset:
+	hideonnpc "Warp#2-1";
+	end;
+
+OnCommandon:
+	hideoffnpc "Warp#2-1";
+	misceffect 561,"Warp#2-1";
+	soundeffect "jupe_warp.wav",0;
+	initnpctimer;
+	end;
+
+OnTouch:
+	warp "jupe_area2.gat",116,259;
+	end;
+
+OnTimer22500:
+	donpcevent "Warp#2-1::OnCommandreset";
+	end;
+}
+
+jupe_area2.gat,116,259,0	script	Red Alarm#2-1	139,2,2,{
+
+OnInit:
+	hideonnpc "Red Alarm#2-1";
+	end;
+
+OnCommandoff:
+	hideonnpc "Red Alarm#2-1";
+	end;
+
+OnCommandon:
+	hideoffnpc "Red Alarm#2-1";
+	end;
+
+OnTouch:
+	set '@gameing2,$050420_jupe_area2;
+	set '@gameing2,'@gameing2 + 1;
+	set $050420_jupe_area2,1;
+	donpcevent "Red Alarm Start#2-1::OnCommandon";
+	donpcevent "Red Alarm#2-1::OnCommandoff";
+	donpcevent "#hole#2-1::OnCommandstop_timer";
+	end;
+}
+
+jupe_area2.gat,27,188,0	script	Red Alarm Start#2-1	139,{
+
+OnInit:
+	hideonnpc "Red Alarm Start#2-1";
+	end;
+
+OnCommandoff:
+	hideonnpc "Red Alarm Start#2-1";
+	end;
+
+OnCommandreset:
+	hideonnpc "Red Alarm Start#2-1";
+	end;
+
+OnCommandon:
+	hideoffnpc "Red Alarm Start#2-1";
+	donpcevent "Red Alarm On#2-1::OnCommandon";
+	end;
+}
+
+jupe_area2.gat,28,188,0	script	Red Alarm On#2-1	139,{
+
+OnInit:
+	hideonnpc "Red Alarm On#2-1";
+	end;
+
+OnCommandoff:
+	hideonnpc "Red Alarm On#2-1";
+	end;
+
+OnCommandon:
+	hideoffnpc "Red Alarm On#2-1";
+	initnpctimer;
+	end;
+
+OnTimer1000:
+	mapannounce "jupe_area2.gat","Those of you who have come here...",8,0xFF0000;
+	end;
+
+OnTimer3000:
+	mapannounce "jupe_area2.gat","I do not intend to stop you.",8,0xFF0000;
+	soundeffect "jupe_warning.wav",0;
+	soundeffect "jupe_warning.wav",0;
+	donpcevent "#hole#2-1::OnCommandoff";
+	end;
+
+OnTimer5000:
+	mapannounce "jupe_area2.gat","But I assume you are prepared for a few obstacles...",8,0xFF0000;
+	donpcevent "Monster1#2-1::OnCommandon";
+	end;
+
+OnTimer7000:
+	mapannounce "jupe_area2.gat","After all, you are venturing through a forbidden area!",8,0xFF0000;
+	end;
+
+OnTimer8000:
+	donpcevent "Red Alarm On#2-1::OnCommandoff";
+	soundeffect "jupe_warning.wav",0;
+	soundeffect "jupe_warning.wav",0;
+	end;
+}
+
+jupe_area2.gat,29,188,0	script	Monster1#2-1	139,{
+
+OnInit:
+	hideonnpc "Monster1#2-1";
+	set 'mobcount,0;
+	end;
+
+OnCommandreset:
+	killmonster "this",strnpcinfo(0)+"::OnMyMobDead";
+	set 'mobcount,0;
+	end;
+
+OnCommandoff:
+	hideonnpc "Monster1#2-1";
+	set 'mobcount,0;
+	end;
+
+OnCommandon:
+	set '@gameing2,$050420_jupe_area2;
+	initnpctimer;
+	hideoffnpc "Monster1#2-1";
+	set 'mobcount,0;
+	monster "jupe_area2.gat",126,252,"Security Guard",1669,1,"Monster1#2-1::OnMyMobDead";
+	monster "jupe_area2.gat",127,252,"Security Guard",1675,1,"Monster1#2-1::OnMyMobDead";
+	monster "jupe_area2.gat",128,252,"Security Guard",1669,1,"Monster1#2-1::OnMyMobDead";
+	monster "jupe_area2.gat",129,252,"Security Guard",1675,1,"Monster1#2-1::OnMyMobDead";
+	monster "jupe_area2.gat",130,252,"Security Guard",1669,1,"Monster1#2-1::OnMyMobDead";
+	monster "jupe_area2.gat",131,252,"Security Guard",1675,1,"Monster1#2-1::OnMyMobDead";
+	monster "jupe_area2.gat",132,252,"Security Guard",1669,1,"Monster1#2-1::OnMyMobDead";
+	monster "jupe_area2.gat",133,252,"Security Guard",1675,1,"Monster1#2-1::OnMyMobDead";
+	end;
+
+OnTimer300000:
+	mapannounce "jupe_area2.gat","Do you realize this is a hallucination?",8,0xFF0000;
+	set $050420_jupe_area2,0;
+	end;
+
+OnTimer300002:
+	donpcevent "Monster1#2-1::OnCommandreset";
+	donpcevent "#hole#2-1::OnCommandon";
+	end;
+
+OnMyMobDead:
+	set 'mobcount,'mobcount + 1;
+	if ('mobcount >= 8) {
+		donpcevent "Monster2#2-1::OnCommandon";
+		donpcevent "Monster1#2-1::OnCommandreset";
+		stopnpctimer;
+	}
+	end;
+}
+
+jupe_area2.gat,30,188,0	script	Monster2#2-1	139,{
+
+OnInit:
+	hideonnpc "Monster1#2-1";
+	set 'mobcount,0;
+	end;
+
+OnCommandreset:
+	killmonster "this",strnpcinfo(0)+"::OnMyMobDead";
+	set 'mobcount,0;
+	end;
+
+OnCommandoff:
+	hideonnpc "Monster1#2-1";
+	set 'mobcount,0;
+	end;
+
+OnCommandon:
+	set '@gameing2,$050420_jupe_area2;
+	initnpctimer;
+	end;
+
+OnTimer2000:	
+	mapannounce "jupe_area2.gat","How about now?",8,0xFF0000;
+	soundeffect "jupe_warning.wav",0;
+	soundeffect "jupe_warning.wav",0;
+	end;
+
+OnTimer4000:
+	mapannounce "jupe_area2.gat","Let me see...",8,0xFF0000;
+	end;
+
+OnTimer7000:
+	mapannounce "jupe_area2.gat","Just how strong you are!",8,0xFF0000;
+	soundeffect "jupe_warning.wav",0;
+	soundeffect "jupe_warning.wav",0;
+	hideoffnpc "Monster2#2-1";
+	set 'mobcount,0;
+	monster "jupe_area2.gat",126,236,"Security Guard",1675,1,"Monster2#2-1::OnMyMobDead";
+	monster "jupe_area2.gat",127,236,"Security Guard",1669,1,"Monster2#2-1::OnMyMobDead";
+	monster "jupe_area2.gat",128,236,"Security Guard",1675,1,"Monster2#2-1::OnMyMobDead";
+	monster "jupe_area2.gat",129,236,"Security Guard",1669,1,"Monster2#2-1::OnMyMobDead";
+	monster "jupe_area2.gat",130,236,"Security Guard",1675,1,"Monster2#2-1::OnMyMobDead";
+	monster "jupe_area2.gat",131,236,"Security Guard",1669,1,"Monster2#2-1::OnMyMobDead";
+	monster "jupe_area2.gat",132,236,"Security Guard",1675,1,"Monster2#2-1::OnMyMobDead";
+	monster "jupe_area2.gat",133,236,"Security Guard",1669,1,"Monster2#2-1::OnMyMobDead";
+	end;
+
+OnTimer300000:
+	mapannounce "jupe_area2.gat","Bwahaha! You're only good at running away!",8,0xFF0000;
+	donpcevent "Monster2#2-1::OnCommandreset";
+	donpcevent "#hole#2-1::OnCommandon";
+	donpcevent "Red Alarm#2-1::OnCommandoff";
+	set $050420_jupe_area2,0;
+	end;
+
+OnTimer300002:
+	donpcevent "Monster2#2-1::OnCommandreset";
+	end;
+
+OnMyMobDead:
+	set 'mobcount,'mobcount + 1;
+	if ('mobcount >= 8) {
+		mapannounce "jupe_area2.gat"," Zzzzt. Zzzzt..... ",8,0xFF0000;
+		donpcevent "Monster2#2-1::OnCommandreset";
+		donpcevent "#hole#2-1::OnCommandon";
+		donpcevent "Red Alarm#2-1::OnCommandoff";
+		set $050420_jupe_area2,0;
+		stopnpctimer;
+	}
+	end;
+}
+
+jupe_area2.gat,138,238,0	script	#hole#2-2	111,{
+
+	set '@gameing2,$050420_jupe_area2;
+	cutin "2",2;
+	if ('@gameing2 == 1) {
+		mes "^3355FFThis seems like";
+		mes "some kind of device";
+		mes "that will allow you to";
+		mes "pass to the other side.";
+		mes "There's a slot where you";
+		mes "probably need to insert";
+		mes "some kind of object...^000000";
+		close;
+	} else if ((countitem(7356) > 0) || (countitem(7357) > 0) || (countitem(7358) > 0) || (countitem(7359) > 0)) {
+		mes "^3355FFThis seems like";
+		mes "some kind of device";
+		mes "that will allow you to";
+		mes "pass to the other side.";
+		mes "There's a slot where you";
+		mes "probably need to insert";
+		mes "some kind of object...^000000";
+		next;
+		switch(select("Insert a Crest Piece.","Cancel.")) {
+		case 1:
+			if (countitem(7357) > 0) {
+				mes "^3355FFYou take out your";
+				mes "Crest Piece and place";
+				mes "it into the slot where it";
+				mes "happens to fit perfectly.^000000";
+				misceffect 159,"#hole#2-2";
+				cutin "2-1",2;
+				next;
+				set '@gameing2,$050420_jupe_area2;
+				if ('@gameing2 == 1) {
+					mes "^3355FFNothing happens.";
+					mes "Perhaps an alarm or";
+					mes "some other safety measure";
+					mes "was activated to keep the";
+					mes "Crest Piece from activating";
+					mes "this transportation device.";
+					mes "You retrieve the Crest Piece.^000000";
+					close2;
+					cutin "2-1",255;
+					end;
+				} else {
+					mes "^3355FFThe slot rotates and";
+					mes "the Crest Piece moves as";
+					mes "if it were turning a key. You";
+					mes "feel a weak tremor as a Warp";
+					mes "Portal to the other side is";
+					mes "activated. You then retrieve";
+					mes "your Crest Piece.^000000";
+					initnpctimer;
+					donpcevent "Warp#2-2::OnCommandon";
+					donpcevent "Red Alarm#2-2::OnCommandon";
+					hideonnpc "#hole#2-2";
+					close2;
+					cutin "2-1",255;
+					end;
+				}
+			} else {
+				mes "^3355FFUnfortunately, you're";
+				mes "not carrying anything";
+				mes "that might be able to fit";
+				mes "into the slot and activate";
+				mes "this mechanical device.^000000";
+				close2;
+				cutin "2",255;
+				end;
+			}
+		case 2:
+			mes "[" + strcharinfo(0) + "]";
+			mes "Hmmm...";
+			mes "Do I have anything";
+			mes "that might make this";
+			mes "weird machine work?";
+			close2;
+			cutin "2",255;
+			end;
+		}
+	} else {
+		mes "^3355FFThis seems like";
+		mes "some kind of device";
+		mes "that will allow you to";
+		mes "pass to the other side.";
+		mes "There's a slot where you";
+		mes "probably need to insert";
+		mes "some kind of object...^000000";
+		close2;
+		cutin "2",255;
+		end;
+	}
+
+OnTimer22500:
+	hideoffnpc;
+	donpcevent "Red Alarm#2-2::OnCommandoff";
+	end;
+
+OnCommandon:
+	hideoffnpc "#hole#2-2";
+	end;
+
+OnCommandoff:
+	hideonnpc "#hole#2-2";
+	end;
+
+OnCommandstop_timer:
+	stopnpctimer;
+	end;
+}
+
+jupe_area2.gat,142,225,0	script	Warp#2-2	139,2,2,{
+
+OnInit:
+	hideonnpc "Warp#2-2";
+	end;
+
+OnCommandoff:
+	hideonnpc "Warp#2-2";
+	end;
+
+OnCommandreset:
+	hideonnpc "Warp#2-2";
+	end;
+
+OnCommandon:
+	hideoffnpc "Warp#2-2";
+	misceffect 561,"Warp#2-2";
+	soundeffect "jupe_warp.wav",0;
+	initnpctimer;
+	end;
+
+OnTouch:
+	warp "jupe_area2.gat",142,191;
+	end;
+
+OnTimer22500:
+	donpcevent "Warp#2-2::OnCommandreset";
+	end;
+}
+
+jupe_area2.gat,142,191,0	script	Red Alarm#2-2	139,2,2,{
+
+OnInit:
+	hideonnpc "Red Alarm#2-2";
+	end;
+
+OnCommandoff:
+	hideonnpc "Red Alarm#2-2";
+	end;
+
+OnCommandon:
+	hideoffnpc "Red Alarm#2-2";
+	end;
+
+OnTouch:
+	set '@gameing2,$050420_jupe_area2;
+	set '@gameing2,'@gameing2 + 1;
+	set $050420_jupe_area2,1;
+	donpcevent "Red Alarm Start#2-2::OnCommandon";
+	donpcevent "Red Alarm#2-2::OnCommandoff";
+	donpcevent "#hole#2-2::OnCommandstop_timer";
+	end;
+}
+
+jupe_area2.gat,27,189,0	script	Red Alarm Start#2-2	139,{
+
+OnInit:
+	hideonnpc "Red Alarm Start#2-2";
+	end;
+
+OnCommandoff:
+	hideonnpc "Red Alarm Start#2-2";
+	end;
+
+OnCommandreset:
+	hideonnpc "Red Alarm Start#2-2";
+	end;
+
+OnCommandon:
+	hideoffnpc "Red Alarm Start#2-2";
+	donpcevent "Red Alarm On#2-2::OnCommandon";
+	end;
+}
+
+jupe_area2.gat,28,189,0	script	Red Alarm On#2-2	139,{
+
+OnInit:
+	hideonnpc "Red Alarm On#2-2";
+	end;
+
+OnCommandoff:
+	hideonnpc "Red Alarm On#2-2";
+	end;
+
+OnCommandon:
+	hideoffnpc "Red Alarm On#2-2";
+	initnpctimer;
+	end;
+
+OnTimer1000:
+	mapannounce "jupe_area2.gat","Come on, come on!",8,0xFF0000;
+	end;
+
+OnTimer3000:
+	mapannounce "jupe_area2.gat","Yes. Run... Right into my hands!",8,0xFF0000;
+	donpcevent "#hole#2-2::OnCommandoff";
+	end;
+
+OnTimer5000:
+	mapannounce "jupe_area2.gat","Do you want to know who I am?",8,0xFF0000;
+	donpcevent "Monster1#2-2::OnCommandon";
+	end;
+
+OnTimer7000:
+	mapannounce "jupe_area2.gat","You will know, once you defeat all of my minions!",8,0xFF0000;
+	end;
+
+OnTimer8000:
+	donpcevent "Red Alarm On#2-2:OnCommandoff";
+	end;
+}
+
+jupe_area2.gat,29,189,0	script	Monster1#2-2	139,{
+
+OnInit:
+	hideonnpc "Monster1#2-2";
+	set 'mobcount,0;
+	end;
+
+OnCommandreset:
+	killmonster "this",strnpcinfo(0)+"::OnMyMobDead";
+	set 'mobcount,0;
+	end;
+
+OnCommandoff:
+	hideonnpc "Monster1#2-2";
+	set 'mobcount,0;
+	end;
+
+OnCommandon:
+	set '@gameing2,$050420_jupe_area2;
+	initnpctimer;
+	hideoffnpc "Monster1#2-2";
+	set 'mobcount,0;
+	monster "jupe_area2.gat",126,176,"High Guard",1669,1,"Monster1#2-2::OnMyMobDead";
+	monster "jupe_area2.gat",127,176,"High Guard",1675,1,"Monster1#2-2::OnMyMobDead";
+	monster "jupe_area2.gat",128,176,"High Guard",1669,1,"Monster1#2-2::OnMyMobDead";
+	monster "jupe_area2.gat",129,176,"High Guard",1675,1,"Monster1#2-2::OnMyMobDead";
+	monster "jupe_area2.gat",130,176,"High Guard",1669,1,"Monster1#2-2::OnMyMobDead";
+	monster "jupe_area2.gat",131,176,"High Guard",1675,1,"Monster1#2-2::OnMyMobDead";
+	monster "jupe_area2.gat",132,176,"High Guard",1669,1,"Monster1#2-2::OnMyMobDead";
+	monster "jupe_area2.gat",133,176,"High Guard",1675,1,"Monster1#2-2::OnMyMobDead";
+	end;
+
+OnTimer300000:
+	mapannounce "jupe_area2.gat","I can't believe how cowardly you really are...",8,0xFF0000;
+	set $050420_jupe_area2,0;
+	end;
+
+OnTimer300002:
+	donpcevent "Monster1#2-2::OnCommandreset";
+	donpcevent "#hole#2-2::OnCommandon";
+	end;
+
+OnMyMobDead:
+	set 'mobcount,'mobcount + 1;
+	if ('mobcount >= 8) {
+		donpcevent "Monster2#2-2::OnCommandon";
+		donpcevent "Monster1#2-2::OnCommandreset";
+		stopnpctimer;
+	}
+	end;
+}
+
+jupe_area2.gat,30,189,0	script	Monster2#2-2	139,{
+
+OnInit:
+	hideonnpc "Monster2#2-2";
+	set 'mobcount,0;
+	end;
+
+OnCommandreset:
+	killmonster "this",strnpcinfo(0)+"::OnMyMobDead";
+	set 'mobcount,0;
+	end;
+
+OnCommandoff:
+	hideonnpc "Monster2#2-2";
+	set 'mobcount,0;
+	end;
+
+OnCommandon:
+	set '@gameing2,$050420_jupe_area2;
+	initnpctimer;
 	end;
 
 OnTimer2000:
-	announce "My descendents...",9,0x66FF00;
-	sleep 3000;
-	announce "Do you want to know why this city was buried beneath the earth...?",9,0x66FF00;
-	sleep 4000;
-	announce "If so, follow my voice...",9,0x66FF00;
-	sleep 3000;
-	announce "I shall let you see for yourself what you desire to know...",9,0x66FF00;
-	sleep 7000;
-	announce "Overcome all the hallucinations.",9,0xFF9900;
-	sleep 3000;
-	announce "Open your eyes and see past all of the lies.",9,0xFF0000;
-	sleep 3000;
-	announce "I can only maintain this vision for you for 20 minutes.",9,0xFF0000;
-	sleep 1000;
-	set getvariableofnpc('mob,"Switch On#jupe_ele"),9;
-	monster "jupe_ele_r.gat",44,99,"Security Guard",1669,1,"Switch On#jupe_ele::OnKilled";
-	sleep 200;
-	monster "jupe_ele_r.gat",55,99,"Security Guard",1675,1,"Switch On#jupe_ele::OnKilled";
-	sleep 200;
-	monster "jupe_ele_r.gat",45,84,"Security Guard",1683,1,"Switch On#jupe_ele::OnKilled";
-	sleep 200;
-	monster "jupe_ele_r.gat",54,84,"Security Guard",1675,1,"Switch On#jupe_ele::OnKilled";
-	sleep 200;
-	monster "jupe_ele_r.gat",45,99,"Security Guard",1669,1,"Switch On#jupe_ele::OnKilled";
-	sleep 200;
-	monster "jupe_ele_r.gat",54,99,"Security Guard",1683,1,"Switch On#jupe_ele::OnKilled";
-	sleep 200;
-	monster "jupe_ele_r.gat",48,84,"Security Guard",1669,1,"Switch On#jupe_ele::OnKilled";
-	sleep 200;
-	monster "jupe_ele_r.gat",52,84,"Security Guard",1683,1,"Switch On#jupe_ele::OnKilled";
-	sleep 200;
-	monster "jupe_ele_r.gat",50,84,"Chief Guard",1684,1,"Switch On#jupe_ele::OnKilled";
-	announce "Look! And remember!",9,0xFF0000;
+	mapannounce "jupe_area2.gat","I was the head of this underground laboratory.",8,0xFF0000;
 	end;
 
-OnTimer144000:
-	stopnpctimer;
-	announce "It is disappointing to see that you are too weak to even defeat a hallucination...",9,0x66FF00;
-	sleep 2000;
-	areawarp "jupe_ele_r.gat",0,0,100,160,"jupe_gate.gat",49,138;
-	killmonster "this","All";
-	hideonnpc "Switch On#jupe_ele";
-	hideoffnpc "Switch#jupe_ele";
+OnTimer4000:
+	mapannounce "jupe_area2.gat","But that was a long time ago, back when I was merely a human.",8,0xFF0000;
+	end;
+
+OnTimer6000:
+	mapannounce "jupe_area2.gat","I was called Vesper Newton. Hahah, they called me a mad man back then.",8,0xFF0000;
+	hideoffnpc "Monster2#2-2";
+	set 'mobcount,0;
+	monster "jupe_area2.gat",126,156,"Security Guard",1675,1,"Monster2#2-2::OnMyMobDead";
+	monster "jupe_area2.gat",127,156,"Security Guard",1669,1,"Monster2#2-2::OnMyMobDead";
+	monster "jupe_area2.gat",128,156,"Security Guard",1675,1,"Monster2#2-2::OnMyMobDead";
+	monster "jupe_area2.gat",129,156,"Security Guard",1669,1,"Monster2#2-2::OnMyMobDead";
+	monster "jupe_area2.gat",130,156,"Security Guard",1675,1,"Monster2#2-2::OnMyMobDead";
+	monster "jupe_area2.gat",131,156,"Security Guard",1669,1,"Monster2#2-2::OnMyMobDead";
+	monster "jupe_area2.gat",132,156,"Security Guard",1675,1,"Monster2#2-2::OnMyMobDead";
+	monster "jupe_area2.gat",133,156,"Security Guard",1669,1,"Monster2#2-2::OnMyMobDead";
+	monster "jupe_area2.gat",133,156,"Security Guard",1675,1,"Monster2#2-2::OnMyMobDead";
+	monster "jupe_area2.gat",127,152,"Security Guard",1669,1,"Monster2#2-2::OnMyMobDead";
+	monster "jupe_area2.gat",129,152,"Security Guard",1675,1,"Monster2#2-2::OnMyMobDead";
+	monster "jupe_area2.gat",130,152,"Security Guard",1669,1,"Monster2#2-2::OnMyMobDead";
+	monster "jupe_area2.gat",132,152,"Security Guard",1675,1,"Monster2#2-2::OnMyMobDead";
+	end;
+
+OnTimer300000:
+	mapannounce "jupe_area2.gat","...Not yet.",8,0xFF0000;
+	donpcevent "Monster2#2-2::OnCommandreset";
+	donpcevent "#hole#2-2::OnCommandon";
+	donpcevent "Red Alarm#2-2::OnCommandoff";
+	set $050420_jupe_area2,0;
+	end;
+
+OnTimer300002:
+	donpcevent "Monster2#2-2::OnCommandreset";
+	end;
+
+OnMyMobDead:
+	set 'mobcount,'mobcount + 1;
+	if ('mobcount >= 13) {
+		mapannounce "jupe_area2.gat","Not yet!",8,0xFF0000;
+		donpcevent "Monster2#2-2::OnCommandreset";
+		donpcevent "#hole#2-2::OnCommandon";
+		donpcevent "Red Alarm#2-2::OnCommandoff";
+		set $050420_jupe_area2,0;
+		stopnpctimer;
+	}
 	end;
 }
 
-jupe_ele_r.gat,51,98,0	script	Switch On#jupe_ele	844,{
+jupe_area2.gat,127,146,0	script	#hole#2-3	111,{
+
+	set '@gameing2,$050420_jupe_area2;
+	cutin "3",2;
+	if ('@gameing2 == 1) {
+		mes "^3355FFThis seems like";
+		mes "some kind of device";
+		mes "that will allow you to";
+		mes "pass to the other side.";
+		mes "There's a slot where you";
+		mes "probably need to insert";
+		mes "some kind of object...^000000";
+		close2;
+		cutin "3",255;
+		end;
+	} else if ((countitem(7356) > 0) || (countitem(7357) > 0) || (countitem(7358) > 0) || (countitem(7359) > 0)) {
+		mes "^3355FFThis seems like";
+		mes "some kind of device";
+		mes "that will allow you to";
+		mes "pass to the other side.";
+		mes "There's a slot where you";
+		mes "probably need to insert";
+		mes "some kind of object...^000000";
+		next;
+		switch(select("Insert a Crest Piece.","Cancel.")) {
+		case 1:
+			if (countitem(7358) > 0) {
+				mes "^3355FFYou take out your";
+				mes "Crest Piece and place";
+				mes "it into the slot where it";
+				mes "happens to fit perfectly.^000000";
+				misceffect 159,"#hole#2-3";
+				cutin "3-1",2;
+				next;
+				set '@gameing2,$050420_jupe_area2;
+				if ('@gameing2 == 1) {
+					mes "^3355FFNothing happens.";
+					mes "Perhaps an alarm or";
+					mes "some other safety measure";
+					mes "was activated to keep the";
+					mes "Crest Piece from activating";
+					mes "this transportation device.";
+					mes "You retrieve the Crest Piece.^000000";
+					close2;
+					cutin "3-1",255;
+					end;
+				} else {
+					mes "^3355FFThe slot rotates and";
+					mes "the Crest Piece moves as";
+					mes "if it were turning a key. You";
+					mes "feel a weak tremor as a Warp";
+					mes "Portal to the other side is";
+					mes "activated. You then retrieve";
+					mes "your Crest Piece.^000000";
+					initnpctimer;
+					donpcevent "Warp#2-3::OnCommandon";
+					donpcevent "Red Alarm#2-3::OnCommandon";
+					hideonnpc "#hole#2-3";
+					close2;
+					cutin "3-1",255;
+					end;
+				}
+			} else {
+				mes "^3355FFUnfortunately, you're";
+				mes "not carrying anything";
+				mes "that might be able to fit";
+				mes "into the slot and activate";
+				mes "this mechanical device.^000000";
+				close2;
+				cutin "3",255;
+				end;
+			}
+		case 2:
+			mes "[" + strcharinfo(0) + "]";
+			mes "Hmmm...";
+			mes "Do I have anything";
+			mes "that might make this";
+			mes "weird machine work?";
+			close2;
+			cutin "3",255;
+			end;
+		}
+	} else {
+		mes "^3355FFThis seems like";
+		mes "some kind of device";
+		mes "that will allow you to";
+		mes "pass to the other side.";
+		mes "There's a slot where you";
+		mes "probably need to insert";
+		mes "some kind of object...^000000";
+		close2;
+		cutin "3",255;
+		end;
+	}
+
+OnTimer22500:
+	hideoffnpc;
+	donpcevent "Red Alarm#2-3::OnCommandoff";
+	end;
+
+OnCommandon:
+	hideoffnpc "#hole#2-3";
+	end;
+
+OnCommandoff:
+	hideonnpc "#hole#2-3";
+	end;
+
+OnCommandstop_timer:
+	stopnpctimer;
+	end;
+}
+
+jupe_area2.gat,130,137,0	script	Warp#2-3	139,2,2,{
+
+OnInit:
+	hideonnpc "Warp#2-3";
+	end;
+
+OnCommandoff:
+	hideonnpc "Warp#2-3";
+	end;
+
+OnCommandreset:
+	hideonnpc "Warp#2-3";
+	end;
+
+OnCommandon:
+	hideoffnpc "Warp#2-3";
+	misceffect 561,"Warp#2-3";
+	soundeffect "jupe_warp.wav",0;
+	initnpctimer;
+	end;
+
+OnTouch:
+	warp "jupe_area2.gat",130,105;
+	end;
+
+OnTimer22500:
+	donpcevent "Warp#2-3::OnCommandreset";
+	end;
+}
+
+jupe_area2.gat,130,105,0	script	Red Alarm#2-3	139,0,4,{
+
+OnInit:
+	hideonnpc "Red Alarm#2-3";
+	end;
+
+OnCommandoff:
+	hideonnpc "Red Alarm#2-3";
+	end;
+
+OnCommandon:
+	hideoffnpc "Red Alarm#2-3";
+	end;
+
+OnTouch:
+	set '@gameing2,$050420_jupe_area2;
+	set '@gameing2,'@gameing2 + 1;
+	set $050420_jupe_area2,1;
+	donpcevent "Red Alarm Start#2-3::OnCommandon";
+	donpcevent "Red Alarm#2-3::OnCommandoff";
+	donpcevent "#hole#2-3::OnCommandstop_timer";
+	end;
+}
+
+jupe_area2.gat,27,190,0	script	Red Alarm Start#2-3	139,{
+
+OnInit:
+	hideonnpc "Red Alarm Start#2-3";
+	end;
+
+OnCommandoff:
+	hideonnpc "Red Alarm Start#2-3";
+	end;
+
+OnCommandreset:
+	hideonnpc "Red Alarm Start#2-3";
+	end;
+
+OnCommandon:
+	hideoffnpc "Red Alarm Start#2-3";
+	donpcevent "Red Alarm On#2-3::OnCommandon";
+	end;
+}
+
+jupe_area2.gat,28,1900,0	script	Red Alarm On#2-3	139,{
+
+OnInit:
+	hideonnpc "Red Alarm On#2-3";
+	end;
+
+OnCommandoff:
+	hideonnpc "Red Alarm On#2-3";
+	end;
+
+OnCommandon:
+	hideoffnpc "Red Alarm On#2-3";
+	initnpctimer;
+	end;
+
+OnTimer1000:
+	mapannounce "jupe_area2.gat","These security systems...",8,0xFF0000;
+	end;
+
+OnTimer3000:
+	mapannounce "jupe_area2.gat","They're not really for protection.",8,0xFF0000;
+	donpcevent "#hole#2-3::OnCommandoff";
+	end;
+
+OnTimer5000:
+	mapannounce "jupe_area2.gat","It's sort of just a hobby to pass the time...",8,0xFF0000;
+	donpcevent "Monster1#2-3::OnCommandon";
+	end;
+
+OnTimer7000:
+	mapannounce "jupe_area2.gat","Being immortal, I have a lot of time on my hands...",8,0xFF0000;
+	end;
+
+OnTimer8000:
+	donpcevent "Red Alarm On#2-3::OnCommandoff";
+	end;
+}
+
+jupe_area2.gat,29,190,0	script	Monster1#2-3	139,{
+
+OnInit:
+	hideonnpc "Monster1#2-3";
+	set 'mobcount,0;
+	end;
+
+OnCommandreset:
+	killmonster "this",strnpcinfo(0)+"::OnMyMobDead";
+	set 'mobcount,0;
+	end;
+
+OnCommandoff:
+	hideonnpc "Monster1#2-3";
+	set 'mobcount,0;
+	end;
+
+OnCommandon:
+	set '@gameing2,$050420_jupe_area2;
+	initnpctimer;
+	hideoffnpc "Monster1#2-3";
+	set 'mobcount,0;
+	monster "jupe_area2.gat",126,89,"Security Guard",1675,1,"Monster1#2-3::OnMyMobDead";
+	monster "jupe_area2.gat",127,89,"Security Guard",1669,1,"Monster1#2-3::OnMyMobDead";
+	monster "jupe_area2.gat",128,89,"Security Guard",1675,1,"Monster1#2-3::OnMyMobDead";
+	monster "jupe_area2.gat",129,89,"Security Guard",1669,1,"Monster1#2-3::OnMyMobDead";
+	monster "jupe_area2.gat",130,89,"Security Guard",1675,1,"Monster1#2-3::OnMyMobDead";
+	monster "jupe_area2.gat",131,89,"Security Guard",1669,1,"Monster1#2-3::OnMyMobDead";
+	monster "jupe_area2.gat",132,89,"Security Guard",1675,1,"Monster1#2-3::OnMyMobDead";
+	monster "jupe_area2.gat",133,89,"Security Guard",1669,1,"Monster1#2-3::OnMyMobDead";
+	end;
+
+OnTimer300000:
+	mapannounce "jupe_area2.gat","Zzzzt... Zzzzt...",8,0xFF0000;
+	set $050420_jupe_area2,0;
+	end;
+
+OnTimer300002:
+	donpcevent "Monster1#2-3::OnCommandreset";
+	donpcevent "#hole#2-3::OnCommandon";
+	end;
+
+OnMyMobDead:
+	set 'mobcount,'mobcount + 1;
+	if ('mobcount >= 8) {
+		donpcevent "Monster2#2-3::OnCommandon";
+		donpcevent "Monster1#2-3::OnCommandreset";
+		stopnpctimer;
+	}
+	end;
+}
+
+jupe_area2.gat,30,190,0	script	Monster2#2-3	139,{
+
+OnInit:
+	hideonnpc "Monster2#2-3";
+	set 'mobcount,0;
+	end;
+
+OnCommandreset:
+	killmonster "this",strnpcinfo(0)+"::OnMyMobDead";
+	set 'mobcount,0;
+	end;
+
+OnCommandoff:
+	hideonnpc "Monster2#2-3";
+	set 'mobcount,0;
+	end;
+
+OnCommandon:
+	set '@gameing2,$050420_jupe_area2;
+	initnpctimer;
+	end;
+
+OnTimer2000:
+	mapannounce "jupe_area2.gat","Why have you come?",8,0xFF0000;
+	end;
+
+OnTimer5000:
+	mapannounce "jupe_area2.gat","Were you hoping to find something wonderful? Something miraculous?",8,0xFF0000;
+	end;
+
+OnTimer8000:
+	mapannounce "jupe_area2.gat","You're wrong! Welcome to Hell!",8,0xFF0000;
+	hideoffnpc "Monster2#2-3";
+	set 'mobcount,0;
+	monster "jupe_area2.gat",114,64,"Security Guard",1675,1,"Monster2#2-3::OnMyMobDead";
+	monster "jupe_area2.gat",115,64,"Security Guard",1669,1,"Monster2#2-3::OnMyMobDead";
+	monster "jupe_area2.gat",116,64,"Security Guard",1675,1,"Monster2#2-3::OnMyMobDead";
+	monster "jupe_area2.gat",117,64,"Security Guard",1669,1,"Monster2#2-3::OnMyMobDead";
+	monster "jupe_area2.gat",118,64,"Security Guard",1675,1,"Monster2#2-3::OnMyMobDead";
+	monster "jupe_area2.gat",119,64,"Security Guard",1669,1,"Monster2#2-3::OnMyMobDead";
+	monster "jupe_area2.gat",120,64,"Security Guard",1675,1,"Monster2#2-3::OnMyMobDead";
+	monster "jupe_area2.gat",121,64,"Security Guard",1669,1,"Monster2#2-3::OnMyMobDead";
+	monster "jupe_area2.gat",114,62,"Security Guard",1675,1,"Monster2#2-3::OnMyMobDead";
+	monster "jupe_area2.gat",115,62,"Security Guard",1669,1,"Monster2#2-3::OnMyMobDead";
+	monster "jupe_area2.gat",116,62,"Security Guard",1675,1,"Monster2#2-3::OnMyMobDead";
+	monster "jupe_area2.gat",117,62,"Security Guard",1669,1,"Monster2#2-3::OnMyMobDead";
+	monster "jupe_area2.gat",118,62,"Security Guard",1675,1,"Monster2#2-3::OnMyMobDead";
+	monster "jupe_area2.gat",119,62,"Security Guard",1669,1,"Monster2#2-3::OnMyMobDead";
+	monster "jupe_area2.gat",120,62,"Security Guard",1675,1,"Monster2#2-3::OnMyMobDead";
+	monster "jupe_area2.gat",121,62,"Security Guard",1669,1,"Monster2#2-3::OnMyMobDead";
+	end;
+
+OnTimer300000:
+	mapannounce "jupe_area2.gat","Do you still have your courage? Come. Prove it.",8,0xFF0000;
+	donpcevent "Monster2#2-3::OnCommandreset";
+	donpcevent "#hole#2-3::OnCommandon";
+	donpcevent "Red Alarm#2-3::OnCommandoff";
+	set $050420_jupe_area2,0;
+	end;
+
+OnTimer300002:
+	donpcevent "Monster2#2-3::OnCommandreset";
+	end;
+
+OnMyMobDead:
+	set 'mobcount,'mobcount + 1;
+	if ('mobcount >= 16) {
+		mapannounce "jupe_area2.gat","Do you still have your courage? Come. Prove it.",8,0xFF0000;
+		donpcevent "Monster2#2-3::OnCommandreset";
+		donpcevent "#hole#2-3::OnCommandon";
+		donpcevent "Red Alarm#2-3::OnCommandoff";
+		set $050420_jupe_area2,0;
+		stopnpctimer;
+	}
+	end;
+}
+
+jupe_area2.gat,113,49,0	script	#hole#2-4	111,{
+
+	set '@gameing2,$050420_jupe_area2;
+	cutin "4",2;
+	if ('@gameing2 == 1) {
+		mes "^3355FFThis seems like";
+		mes "some kind of device";
+		mes "that will allow you to";
+		mes "pass to the other side.";
+		mes "There's a slot where you";
+		mes "probably need to insert";
+		mes "some kind of object...^000000";
+		close2;
+		cutin "4",255;
+		end;
+	} else if ((countitem(7356) > 0) || (countitem(7357) > 0) || (countitem(7358) > 0) || (countitem(7359) > 0)) {
+		mes "^3355FFThis seems like";
+		mes "some kind of device";
+		mes "that will allow you to";
+		mes "pass to the other side.";
+		mes "There's a slot where you";
+		mes "probably need to insert";
+		mes "some kind of object...^000000";
+		next;
+		switch(select("Insert a Crest Piece.","Cancel.")) {
+		case 1:
+			if (countitem(7359) > 0) {
+				mes "^3355FFYou take out your";
+				mes "Crest Piece and place";
+				mes "it into the slot where it";
+				mes "happens to fit perfectly.^000000";
+				misceffect 159,"#hole#2-4";
+				cutin "4-1",2;
+				next;
+				set '@gameing2,$050420_jupe_area2;
+				if ('@gameing2 == 1) {
+					mes "^3355FFNothing happens.";
+					mes "Perhaps an alarm or";
+					mes "some other safety measure";
+					mes "was activated to keep the";
+					mes "Crest Piece from activating";
+					mes "this transportation device.";
+					mes "You retrieve the Crest Piece.^000000";
+					close2;
+					cutin "4-1",255;
+					end;
+				} else {
+					mes "^3355FFThe slot rotates and";
+					mes "the Crest Piece moves as";
+					mes "if it were turning a key. You";
+					mes "feel a weak tremor as a Warp";
+					mes "Portal to the other side is";
+					mes "activated. You then retrieve";
+					mes "your Crest Piece.^000000";
+					initnpctimer;
+					donpcevent "Warp#2-4::OnCommandon";
+					donpcevent "Red Alarm#2-4::OnCommandon";
+					hideonnpc "#hole#2-4";
+					close2;
+					cutin "4-1",255;
+					end;
+				}
+			} else {
+				mes "^3355FFUnfortunately, you're";
+				mes "not carrying anything";
+				mes "that might be able to fit";
+				mes "into the slot and activate";
+				mes "this mechanical device.^000000";
+				close2;
+				cutin "4",255;
+				end;
+			}
+		case 2:
+			mes "[" + strcharinfo(0) + "]";
+			mes "Hmmm...";
+			mes "Do I have anything";
+			mes "that might make this";
+			mes "weird machine work?";
+			close2;
+			cutin "4",255;
+			end;
+		}
+	} else {
+		mes "^3355FFThis seems like";
+		mes "some kind of device";
+		mes "that will allow you to";
+		mes "pass to the other side.";
+		mes "There's a slot where you";
+		mes "probably need to insert";
+		mes "some kind of object...^000000";
+		close2;
+		cutin "4",255;
+		end;
+	}
+
+OnTimer22500:
+	hideoffnpc;
+	donpcevent "Red Alarm#2-4::OnCommandoff";
+	end;
+
+OnCommandon:
+	hideoffnpc "#hole#2-4";
+	end;
+
+OnCommandoff:
+	hideonnpc "#hole#2-4";
+	end;
+
+OnCommandstop_timer:
+	stopnpctimer;
+	end;
+}
+
+jupe_area2.gat,106,53,0	script	Warp#2-4	139,2,2,{
+
+OnInit:
+	hideonnpc "Warp#2-4";
+	end;
+
+OnCommandoff:
+	hideonnpc "Warp#2-4";
+	end;
+
+OnCommandreset:
+	hideonnpc "Warp#2-4";
+	end;
+
+OnCommandon:
+	hideoffnpc "Warp#2-4";
+	misceffect 561,"Warp#2-4";
+	soundeffect "jupe_warp.wav",0;
+	initnpctimer;
+	end;
+
+OnTouch:
+	warp "jupe_area2.gat",80,157;
+	end;
+
+OnTimer22500:
+	donpcevent "Warp#2-4::OnCommandreset";
+	end;
+}
+
+jupe_area2.gat,80,157,0	script	Red Alarm#2-4	139,2,2,{
+
+OnInit:
+	hideonnpc "Red Alarm#2-4";
+	end;
+
+OnCommandoff:
+	hideonnpc "Red Alarm#2-4";
+	end;
+
+OnCommandon:
+	hideoffnpc "Red Alarm#2-4";
+	end;
+
+OnTouch:
+	set '@gameing2,$050420_jupe_area2;
+	set '@gameing2,'@gameing2 + 1;
+	set $050420_jupe_area2,1;
+	donpcevent "Red Alarm Start#2-4::OnCommandon";
+	donpcevent "Red Alarm#2-4::OnCommandoff";
+	donpcevent "#hole#2-4::OnCommandstop_timer";
+	end;
+}
+
+jupe_area2.gat,27,191,0	script	Red Alarm Start#2-4	139,{
+
+OnInit:
+	hideonnpc "Red Alarm Start#2-4";
+	end;
+
+OnCommandoff:
+	hideonnpc "Red Alarm Start#2-4";
+	end;
+
+OnCommandreset:
+	hideonnpc "Red Alarm Start#2-4";
+	end;
+
+OnCommandon:
+	hideoffnpc "Red Alarm Start#2-4";
+	donpcevent "Red Alarm On#2-4::OnCommandon";
+	end;
+}
+
+jupe_area2.gat,28,191,0	script	Red Alarm On#2-4	139,{
+
+OnInit:
+	hideonnpc "Red Alarm On#2-4";
+	end;
+
+OnCommandoff:
+	hideonnpc "Red Alarm On#2-4";
+	end;
+
+OnCommandon:
+	hideoffnpc "Red Alarm On#2-4";
+	initnpctimer;
+	end;
+
+OnTimer1000:
+	mapannounce "jupe_area2.gat","I've been waiting for someone strong enough to compete with me.",8,0xFF0000;
+	end;
+
+OnTimer3000:
+	mapannounce "jupe_area2.gat","If you hear this, I wish you will be the one...",8,0xFF0000;
+	donpcevent "#hole#2-4::OnCommandoff";
+	end;
+
+OnTimer5000:
+	mapannounce "jupe_area2.gat","Perhaps, a mere shadow of my former self...",8,0xFF0000;
+	donpcevent "Monster1#2-4::OnCommandon";
+	end;
+
+OnTimer7000:
+	mapannounce "jupe_area2.gat","Is somewhere down here, wandering...",8,0xFF0000;
+	end;
+
+OnTimer8000:
+	donpcevent "Red Alarm On#2-4::OnCommandoff";
+	end;
+}
+
+jupe_area2.gat,29,191,0	script	Monster1#2-4	139,{
+
+OnInit:
+	hideonnpc "Monster1#2-4";
+	set 'mobcount,0;
+	end;
+
+OnCommandreset:
+	killmonster "this",strnpcinfo(0)+"::OnMyMobDead";
+	set 'mobcount,0;
+	end;
+
+OnCommandoff:
+	hideonnpc "Monster1#2-4";
+	set 'mobcount,0;
+	end;
+
+OnCommandon:
+	set '@gameing2,$050420_jupe_area2;
+	initnpctimer;
+	hideoffnpc "Monster1#2-4";
+	set 'mobcount,0;
+	monster "jupe_area2.gat",75,161,"Security Guard",1675,1,"Monster1#2-4::OnMyMobDead";
+	monster "jupe_area2.gat",72,161,"Security Guard",1669,1,"Monster1#2-4::OnMyMobDead";
+	monster "jupe_area2.gat",71,161,"Security Guard",1675,1,"Monster1#2-4::OnMyMobDead";
+	monster "jupe_area2.gat",68,161,"Security Guard",1669,1,"Monster1#2-4::OnMyMobDead";
+	monster "jupe_area2.gat",75,154,"Security Guard",1675,1,"Monster1#2-4::OnMyMobDead";
+	monster "jupe_area2.gat",72,154,"Security Guard",1669,1,"Monster1#2-4::OnMyMobDead";
+	monster "jupe_area2.gat",71,154,"Security Guard",1675,1,"Monster1#2-4::OnMyMobDead";
+	monster "jupe_area2.gat",68,154,"Security Guard",1669,1,"Monster1#2-4::OnMyMobDead";
+	end;
+
+OnTimer300000:
+	mapannounce "jupe_area2.gat","Zzzzt... Zzzzt...",8,0xFF0000;
+	set $050420_jupe_area2,0;
+	end;
+
+OnTimer300002:
+	donpcevent "Monster1#2-4::OnCommandreset";
+	donpcevent "#hole#2-4::OnCommandon";
+	end;
+
+OnMyMobDead:
+	set 'mobcount,'mobcount + 1;
+	if ('mobcount >= 8) {
+		donpcevent "Monster2#2-4::OnCommandon";
+		donpcevent "Monster1#2-4::OnCommandreset";
+		stopnpctimer;
+	}
+	end;
+}
+
+jupe_area2.gat,30,191,0	script	Monster2#2-4	139,{
+
+OnInit:
+	hideonnpc "Monster2#2-4";
+	set 'mobcount,0;
+	end;
+
+OnCommandreset:
+	killmonster "this",strnpcinfo(0)+"::OnMyMobDead";
+	set 'mobcount,0;
+	end;
+
+OnCommandoff:
+	hideonnpc "Monster2#2-4";
+	set 'mobcount,0;
+	end;
+
+OnCommandon:
+	set '@gameing2,$050420_jupe_area2;
+	initnpctimer;
+	end;
+
+OnTimer2000:
+	mapannounce "jupe_area2.gat","I can never rest in peace...",8,0xFF0000;
+	end;
+
+OnTimer4000:
+	mapannounce "jupe_area2.gat","I'll wait forever or until someone can put me out of my misery...",8,0xFF0000;
+	end;
+
+OnTimer6000:
+	mapannounce "jupe_area2.gat","I will be waiting for you!",8,0xFF0000;
+	hideoffnpc "Monster2#2-4";
+	set 'mobcount,0;
+	monster "jupe_area2.gat",63,161,"Security Guard",1675,1,"Monster2#2-4::OnMyMobDead";
+	monster "jupe_area2.gat",61,161,"Security Guard",1669,1,"Monster2#2-4::OnMyMobDead";
+	monster "jupe_area2.gat",59,161,"Security Guard",1675,1,"Monster2#2-4::OnMyMobDead";
+	monster "jupe_area2.gat",57,161,"Security Guard",1669,1,"Monster2#2-4::OnMyMobDead";
+	monster "jupe_area2.gat",55,161,"Security Guard",1675,1,"Monster2#2-4::OnMyMobDead";
+	monster "jupe_area2.gat",53,161,"Security Guard",1669,1,"Monster2#2-4::OnMyMobDead";
+	monster "jupe_area2.gat",53,154,"Security Guard",1675,1,"Monster2#2-4::OnMyMobDead";
+	monster "jupe_area2.gat",55,154,"Security Guard",1669,1,"Monster2#2-4::OnMyMobDead";
+	monster "jupe_area2.gat",57,154,"Security Guard",1675,1,"Monster2#2-4::OnMyMobDead";
+	monster "jupe_area2.gat",59,154,"Security Guard",1669,1,"Monster2#2-4::OnMyMobDead";
+	monster "jupe_area2.gat",61,154,"Security Guard",1675,1,"Monster2#2-4::OnMyMobDead";
+	monster "jupe_area2.gat",63,154,"Security Guard",1669,1,"Monster2#2-4::OnMyMobDead";
+	end;
+
+OnTimer300000:
+	mapannounce "jupe_area2.gat","It's funny... Isn't it?",8,0xFF0000;
+	donpcevent "Monster2#2-4::OnCommandreset";
+	donpcevent "#hole#2-4::OnCommandon";
+	donpcevent "Red Alarm#2-4::OnCommandoff";
+	set $050420_jupe_area2,0;
+	end;
+
+OnTimer300002:
+	donpcevent "Monster2#2-4::OnCommandreset";
+	end;
+
+OnMyMobDead:
+	set 'mobcount,'mobcount + 1;
+	if ('mobcount >= 12) {
+		mapannounce "jupe_area2.gat","It's funny... Isn't it?",8,0xFF0000;
+		donpcevent "Monster2#2-4::OnCommandreset";
+		donpcevent "#hole#2-4::OnCommandon";
+		donpcevent "Red Alarm#2-4::OnCommandoff";
+		set $050420_jupe_area2,0;
+		stopnpctimer;
+	}
+	end;
+}
+
+jupe_area2.gat,51,162,0	script	Lever2#ufe	111,{
+
+	mes "^3355FFIt's a lever";
+	mes "whose function";
+	mes "is not known to you.^000000";
+	next;
+	switch(select("Pull.","Cancel.")) {
+	case 1:
+		initnpctimer;
+		donpcevent "LeverWarp2#ufe::OnCommandon";
+		hideonnpc "Lever2#ufe";
+		close;
+	case 2:
+		mes "[" + strcharinfo(0) + "]";
+		mes "Pull this lever?";
+		mes "I don't even know";
+		mes "what will happen...";
+		close;
+	}
+	close;
+
+OnTimer5000:
+	hideoffnpc "Lever2#ufe";
+	end;
+
+OnCommandon:
+	hideoffnpc "Lever2#ufe";
+	end;
+
+OnCommandoff:
+	hideonnpc "Lever2#ufe";
+	end;
+
+OnCommandstop_timer:
+	stopnpctimer;
+	end;
+}
+
+jupe_area2.gat,46,157,0	script	LeverWarp2#ufe	139,2,2,{
+
+OnInit:
+	hideonnpc "LeverWarp2#ufe";
+	end;
+
+OnCommandoff:
+	hideonnpc "LeverWarp2#ufe";
+	end;
+
+OnCommandon:
+	hideoffnpc "LeverWarp2#ufe";
+	misceffect 561,"LeverWarp2#ufe";
+	soundeffect "jupe_warp.wav",0;
+	initnpctimer;
+	end;
+
+OnTouch:
+	warp "jupe_gate.gat",71,29;
+	end;
+
+OnTimer5000:
+	hideonnpc "LeverWarp2#ufe";
+	end;
+}
+
+jupe_ele_r.gat,51,98,0	script	Switch#ufe	111,{
+
+	set '@gameing2,$050420_jupe_ele_r;
+	if ('@gameing2 == 1) {
+		mes "^3355FFIt's some sort of";
+		mes "lever that looks like";
+		mes "it was already pulled";
+		mes "by someone else.^000000";
+		close;
+	} else {
+		cutin "5",2;
+		mes "^3355FFIt's some sort of";
+		mes "lever that's located";
+		mes "next to four empty slots.^000000";
+		next;
+		switch(select("Pull the lever.","Leave it alone.")) {
+		case 1:
+			mes "^3355FF*Snap Snap*^000000";
+			next;
+			mes "^3355FFYou pull the lever,";
+			mes "but nothing happened.";
+			mes "You probably need to";
+			mes "insert the correct objects";
+			mes "into the slots in order";
+			mes "for the lever to operate.^000000";
+			next;
+			if ((countitem(7356) > 0) && (countitem(7359) > 0) && (countitem(7357) > 0) && (countitem(7358) > 0)) {
+				switch(select("Insert all of your Crest Pieces.")) {
+				case 1:
+					mes "^3300FF*Snap!*^000000";
+					mes "^3300FFStrangely enough,";
+					mes "all four of the Crest";
+					mes "Pieces fit perfectly into";
+					mes "the slots and begin to";
+					mes "emit a strange light.^000000";
+					cutin "5-1",2;
+					misceffect 72,"Switch#ufe";
+					delitem 7356,1;
+					delitem 7359,1;
+					delitem 7357,1;
+					delitem 7358,1;
+					next;
+					switch(select("Pull out the Crest Pieces.","Pull the lever.")) {
+					case 1:
+						cutin "5",2;
+						mes "^3355FFYou pull out all";
+						mes "the Crest Pieces";
+						mes "that you inserted";
+						mes "into the slots.^000000";
+						getitem 7356,1;
+						getitem 7359,1;
+						getitem 7357,1;
+						getitem 7358,1;
+						close2;
+						cutin "5",255;
+						end;
+					case 2:
+						set '@gameing,$050420_jupe_ele_r;
+						if ('@gameing == 1) {
+							mes "^3355FFIt's strange,";
+							mes "but this lever has";
+							mes "already been pulled.^000000";
+							close2;
+							cutin "5",255;
+							end;
+						} else {
+							mes "^3355FFOnce you pull the lever,";
+							mes "the Crest Piece slots are";
+							mes "suddenly covered, making";
+							mes "them irretrievable, and the";
+							mes "ground begins to shake";
+							mes "violently. This isn't normal!^000000";
+							next;
+							set $050420_jupe_ele_r,1;
+							donpcevent "Switch#ufe::OnCommandoff";
+							donpcevent "Switch On#ufe::OnCommandon";
+							initnpctimer;
+							gmcommand "@misceffect 563";
+							soundeffect "earth_quake.wav",0;
+							close2;
+							cutin "5-1",255;
+							end;
+						}
+					}
+				}
+			} else if ((countitem(7356) > 0) || (countitem(7357) > 0) || (countitem(7358) > 0) || (countitem(7359) > 0)) {
+				switch(select("Insert Crest Pieces.")) {
+				case 1:
+					mes "^3355FFRight now, you don't";
+					mes "have enough Crest Pieces";
+					mes "to place into all four of these";
+					mes "slots. You'll need to find and^FFFFFF ^3355FF bring them all to make this work.^000000";
+					close2;
+					cutin "5-1",255;
+					end;
+				}
+			} else {
+				mes "^3355FFYou need to find";
+				mes "some kind of object";
+				mes "that you can fit into";
+				mes "each of these four slots...^000000";
+				close2;
+				cutin "5-1",255;
+				end;
+			}
+		case 2:
+			mes "^3355FFWho knows what";
+			mes "this lever may do?";
+			mes "You'll never know unless";
+			mes "you have the courage to try.^000000";
+			close2;
+			cutin "5",255;
+			end;
+		}
+	}
+
+OnTimer2000:
+	mapannounce "jupe_ele_r.gat","My descendents...",8,0x66FF00;
+	end;
+
+OnTimer3000:
+	mapannounce "jupe_ele_r.gat","Do you want to know why this city was buried beneath the earth...?",8,0x66FF00;
+	end;
+
+OnTimer7000:
+	mapannounce "jupe_ele_r.gat","If so, follow my voice...",8,0x66FF00;
+	end;
+
+OnTimer10000:
+	mapannounce "jupe_ele_r.gat","I shall let you see for yourself what you desire to know...",8,0x66FF00;
+	end;
+
+OnTimer17000:
+	mapannounce "jupe_ele_r.gat","Overcome all the hallucinations.",8,0xCC6600;
+	end;
+
+OnTimer20000:
+	mapannounce "jupe_ele_r.gat","Open your eyes and see past all of the lies.",8,0xFF0000;
+	end;
+
+OnTimer23000:
+	mapannounce "jupe_ele_r.gat","I can only maintain this vision for you for 20 minutes.",8,0xFF0000;
+	donpcevent "Elevator Guard1#ufe::OnCommandon";
+	mapannounce "jupe_ele_r.gat","Look! And remember!",8,0xFF0000;
+	end;
+
+OnCommandoff:
+	hideonnpc "Switch#ufe";
+	end;
+
+OnCommandon:
+	hideoffnpc "Switch#ufe";
+	end;
+}
+
+jupe_ele_r.gat,51,98,0	script	Switch On#ufe	111,{
 
 	mes "^3355FFIt seems like";
 	mes "someone else is";
@@ -638,143 +3410,793 @@ jupe_ele_r.gat,51,98,0	script	Switch On#jupe_ele	844,{
 	close;
 
 OnInit:
-	hideonnpc;
+	hideonnpc "Switch On#ufe";
 	end;
 
-OnKilled:
-	set 'mob,'mob-1;
-	if ('mob == 0) {
-		stopnpctimer "Switch#jupe_ele";
-		sleep 5000;
-		announce "Those of you who have defeated the hallucination, step forward.",9,0x66FF00;
-		areasoundeffect "jupe_ele_r.gat",0,0,100,160,"earth_quake.wav",0;
-		sleep 4000;
-		disablenpc "juperoswarp4013";
-		areawarp "jupe_ele_r.gat",0,0,100,160,"jupe_ele.gat",42,47;
-		donpcevent "jupe_ele::OnSummon1";
-		initnpctimer "jupe_ele";
-		end;
+OnCommandoff:
+	hideonnpc "Switch On#ufe";
+	end;
+
+OnCommandon:
+	hideoffnpc "Switch On#ufe";
+	end;
+}
+
+jupe_ele_r.gat,10,50,0	script	Elevator Guard1#ufe	139,{
+
+OnInit:
+	hideonnpc "Elevator Guard1#ufe";
+	set 'mobcount,0;
+	end;
+
+OnCommandreset:
+	killmonster "this",strnpcinfo(0)+"::OnMyMobDead";
+	set 'mobcount,0;
+	end;
+
+OnCommandoff:
+	hideonnpc "Elevator Guard1#ufe";
+	set 'mobcount,0;
+	end;
+
+OnCommandon:
+	initnpctimer;
+	set 'mobcount,0;
+	end;
+
+OnTimer1000:
+	monster "jupe_ele_r.gat",44,99,"Guard",1669,1,"Elevator Guard1#ufe::OnMyMobDead";
+	end;
+
+OnTimer1200:
+	monster "jupe_ele_r.gat",55,99,"Guard",1675,1,"Elevator Guard1#ufe::OnMyMobDead";
+	end;
+
+OnTimer1400:
+	monster "jupe_ele_r.gat",45,84,"Guard",1683,1,"Elevator Guard1#ufe::OnMyMobDead";
+	end;
+
+OnTimer1600:
+	monster "jupe_ele_r.gat",54,84,"Guard",1675,1,"Elevator Guard1#ufe::OnMyMobDead";
+	end;
+
+OnTimer1800:
+	monster "jupe_ele_r.gat",45,99,"Guard",1669,1,"Elevator Guard1#ufe::OnMyMobDead";
+	end;
+
+OnTimer2000:
+	monster "jupe_ele_r.gat",54,99,"Guard",1683,1,"Elevator Guard1#ufe::OnMyMobDead";
+	end;
+
+OnTimer2200:
+	monster "jupe_ele_r.gat",48,84,"Guard",1669,1,"Elevator Guard1#ufe::OnMyMobDead";
+	end;
+
+OnTimer2400:
+	monster "jupe_ele_r.gat",52,84,"Guard",1683,1,"Elevator Guard1#ufe::OnMyMobDead";
+	end;
+
+OnTimer2600:
+	monster "jupe_ele_r.gat",50,84,"Chief Guard",1684,1,"Elevator Guard1#ufe::OnMyMobDead";
+	end;
+
+OnTimer120000:
+	mapannounce "jupe_ele_r.gat","It is disappointing to see that you are too weak to even defeat a hallucination...",8,0x66FF00;
+	donpcevent "Switch#ufe::OnCommandon";
+	donpcevent "Switch On#ufe::OnCommandoff";
+	donpcevent "Annihilation#ufe::OnCommandon";
+	set $050420_jupe_ele_r,0;
+	end;
+
+OnTimer120005:
+	donpcevent "Elevator Guard1#ufe::OnCommandreset";
+	stopnpctimer;
+	end;
+
+OnMyMobDead:
+	set 'mobcount,'mobcount + 1;
+	if ('mobcount >= 9) {
+		set $050420_jupe_ele_r,0;
+		donpcevent "Elevator Guard1#ufe::OnCommandreset";
+		donpcevent "Elevator Safety#ufe::OnCommandon";
+		stopnpctimer;
 	}
 	end;
 }
 
-jupe_ele.gat,0,0,0	script	jupe_ele	139,{
+jupe_ele_r.gat,10,52,0	script	Elevator Safety#ufe	139,{
 
-OnSummon1:
-	sleep 2000;
-	announce "I admire your patience.",9,0xFF0000;
-	sleep 3000;
-	announce "Let's see if everything you have experienced",9,0xFF0000;
-	sleep 3000;
-	announce "were traps for intruders...",9,0xFF0000;
-	sleep 4000;
-	set 'mob,8;
-	monster "jupe_ele.gat",48,44,"Security Guard",1675,1,"jupe_ele::OnKilled";
-	monster "jupe_ele.gat",45,42,"Security Guard",1669,1,"jupe_ele::OnKilled";
-	monster "jupe_ele.gat",38,42,"Security Guard",1675,1,"jupe_ele::OnKilled";
-	monster "jupe_ele.gat",35,44,"Security Guard",1669,1,"jupe_ele::OnKilled";
-	monster "jupe_ele.gat",35,51,"Security Guard",1675,1,"jupe_ele::OnKilled";
-	monster "jupe_ele.gat",38,53,"Security Guard",1669,1,"jupe_ele::OnKilled";
-	monster "jupe_ele.gat",45,53,"Security Guard",1675,1,"jupe_ele::OnKilled";
-	monster "jupe_ele.gat",48,51,"Security Guard",1669,1,"jupe_ele::OnKilled";
+OnInit:
+	hideonnpc "Elevator Safety#ufe";
 	end;
 
-OnSummon2:
-	sleep 2000;
-	announce "This city was not",9,0xFF0000;
-	sleep 3000;
-	announce "as magnificient as you thought.",9,0xFF0000;
-	sleep 3000;
-	announce "This is a place where all the fears of humans flourish.",9,0xFF0000;
-	sleep 3000;
-	announce "Yes. Nobody leaves alive!",9,0xFF0000;
-	sleep 1000;
-	set 'mob,8;
-	monster "jupe_ele.gat",48,44,"Security Guard",1683,1,"jupe_ele::OnKilled";
-	monster "jupe_ele.gat",45,42,"Security Guard",1669,1,"jupe_ele::OnKilled";
-	monster "jupe_ele.gat",38,42,"Security Guard",1683,1,"jupe_ele::OnKilled";
-	monster "jupe_ele.gat",35,44,"Security Guard",1669,1,"jupe_ele::OnKilled";
-	monster "jupe_ele.gat",35,51,"Security Guard",1683,1,"jupe_ele::OnKilled";
-	monster "jupe_ele.gat",38,53,"Security Guard",1669,1,"jupe_ele::OnKilled";
-	monster "jupe_ele.gat",45,53,"Security Guard",1683,1,"jupe_ele::OnKilled";
-	monster "jupe_ele.gat",48,51,"Security Guard",1669,1,"jupe_ele::OnKilled";
+OnCommandoff:
+	hideonnpc "Elevator Safety#ufe";
 	end;
 
-OnSummon3:
-	sleep 2000;
-	announce "What do you see?",9,0xFF0000;
-	sleep 3000;
-	announce "Are your eyes actually seeing something?",9,0xFF0000;
-	sleep 3000;
-	announce "Or do you just believe you are seeing?",9,0xFF0000;
-	sleep 4000;
-	set 'mob,8;
-	monster "jupe_ele.gat",48,44,"Security Guard",1675,1,"jupe_ele::OnKilled";
-	monster "jupe_ele.gat",45,42,"Security Guard",1669,1,"jupe_ele::OnKilled";
-	monster "jupe_ele.gat",38,42,"Security Guard",1683,1,"jupe_ele::OnKilled";
-	monster "jupe_ele.gat",35,44,"Security Guard",1675,1,"jupe_ele::OnKilled";
-	monster "jupe_ele.gat",35,51,"Security Guard",1669,1,"jupe_ele::OnKilled";
-	monster "jupe_ele.gat",38,53,"Security Guard",1683,1,"jupe_ele::OnKilled";
-	monster "jupe_ele.gat",45,53,"Security Guard",1675,1,"jupe_ele::OnKilled";
-	monster "jupe_ele.gat",48,51,"Security Guard",1669,1,"jupe_ele::OnKilled";
+OnCommandon:
+	hideoffnpc "Elevator Safety#ufe";
+	initnpctimer;
 	end;
 
-OnSummon4:
-	sleep 2000;
-	announce "Do not forget. That which limits you is nothing but yourself.",9,0xFF0000;
-	sleep 3000;
-	announce "Nothing is what you fear and you have nothing to fear...",9,0xFF0000;
-	sleep 3000;
-	set 'mob,8;
-	monster "jupe_ele.gat",48,44,"Security Guard",1684,1,"jupe_ele::OnKilled";
-	monster "jupe_ele.gat",45,42,"Security Guard",1669,1,"jupe_ele::OnKilled";
-	monster "jupe_ele.gat",38,42,"Security Guard",1684,1,"jupe_ele::OnKilled";
-	monster "jupe_ele.gat",35,44,"Security Guard",1669,1,"jupe_ele::OnKilled";
-	monster "jupe_ele.gat",35,51,"Security Guard",1675,1,"jupe_ele::OnKilled";
-	monster "jupe_ele.gat",38,53,"Security Guard",1669,1,"jupe_ele::OnKilled";
-	monster "jupe_ele.gat",45,53,"Security Guard",1683,1,"jupe_ele::OnKilled";
-	monster "jupe_ele.gat",48,51,"Security Guard",1675,1,"jupe_ele::OnKilled";
+OnTimer5000:
+	mapannounce "jupe_ele_r.gat","Those of you who have defeated the hallucination, step forward.",8,0x66FF00;
+	soundeffect "earth_quake.wav",0;
 	end;
 
-OnClear:
-	sleep 2000;
-	announce "I am not going to tell you anything.",9,0x66FF00;
-	sleep 3000;
-	announce "My city, my people are now but a memory.",9,0x66FF00;
-	sleep 3000;
-	announce "Everything was a mistake. We were not supposed to be here.",9,0x66FF00;
-	sleep 3000;
-	announce "Is this a place where humans are forbidden?",9,0x66FF00;
-	sleep 1000;
-	announce "You want to know, don't you? Go ahead... Go deeper.",9,0x66FF00;
-	sleep 10000;
-	announce "It's not real anyway. All of it's safe, it can't hurt you...",9,0x66FF00;
-	enablenpc "juperoswarp4013";
+OnTimer8000:
+	donpcevent "Elevator On#ufe::OnCommandon";
 	end;
 
-OnKilled:
-	set 'mob,'mob-1;
-	if ('mob == 0) {
-		sleep 2000;
-		switch('flag) {
-		case 0: donpcevent "jupe_ele::OnSummon2"; break;
-		case 1: donpcevent "jupe_ele::OnSummon3"; break;
-		case 2: donpcevent "jupe_ele::OnSummon4"; break;
-		case 3: donpcevent "jupe_ele::OnClear"; break;
-		}
-		set 'flag,'flag+1;
+OnTimer10000:
+	donpcevent "Elevator Safety#ufe::OnCommandoff";
+	stopnpctimer;
+	end;
+}
+
+jupe_ele_r.gat,50,89,0	script	Annihilation#ufe	139,35,50,{
+
+OnInit:
+	hideonnpc "Annihilation#ufe";
+	end;
+
+OnCommandon:
+	hideonnpc "Annihilation#ufe";
+	initnpctimer;
+	end;
+
+OnCommandoff:
+	hideonnpc "Annihilation#ufe";
+	end;
+
+OnTouch:
+	percentheal -99,0;
+	percentheal 0,-100;
+	end;
+
+OnTimer1000:
+	areawarp "this",0,0,400,400,"jupe_gate.gat",49,138;
+	areawarp "this",0,0,400,400,"jupe_gate.gat",49,138;
+	end;
+
+OnTimer1100:
+	hideoffnpc "Annihilation#ufe";
+	end;
+
+OnTimer1600:
+	donpcevent "Elevator Escape#ufe::OnCommandon";
+	end;
+
+OnTimer3000:
+	hideonnpc "Annihilation#ufe";
+	donpcevent "Elevator Escape#ufe::OnCommandoff";
+	end;
+}
+
+jupe_ele_r.gat,50,89,0	script	Elevator Escape#ufe	139,35,50,{
+
+OnInit:
+	hideonnpc "Elevator Escape#ufe";
+	end;
+
+OnCommandoff:
+	hideonnpc "Elevator Escape#ufe";
+	end;
+
+OnCommandon:
+	hideoffnpc "Elevator Escape#ufe";
+	end;
+
+OnTouch:
+	areawarp "this",0,0,400,400,"jupe_gate.gat",49,138;
+	end;
+}
+
+jupe_ele_r.gat,10,54,0	script	Elevator On#ufe	139,{
+
+OnInit:
+	hideonnpc "Elevator On#ufe";
+	end;
+
+OnCommandoff:
+	hideonnpc "Elevator On#ufe";
+	end;
+
+OnCommandon:
+	hideoffnpc "Elevator On#ufe";
+	initnpctimer;
+	end;
+
+OnTimer1000:
+	areawarp "this",0,0,400,400,"jupe_ele.gat",42,47;
+	set $050425_ufe_elev,0;
+	donpcevent "TimeOut#ufe::OnCommandon";
+	donpcevent "Guard-1#ufe::OnCommandon";
+	end;
+
+OnTimer10000:
+	hideonnpc "Elevator On#ufe";
+	end;
+}
+
+jupe_ele.gat,14,6,1	script	TimeOut#ufe	111,{
+
+OnCommandon:
+	initnpctimer;
+	set '@mapcount,0;
+	end;
+
+OnCommandoff:
+	stopnpctimer;
+	end;
+
+OnTimer59000:
+	set '@mapcount,getmapusers("jupe_ele.gat");
+	if ('@mapcount == 0) {
+		set $050425_ufe_elev,5;
+		donpcevent "Guard-1#ufe::OnCommandoff";
+		donpcevent "Guard-2#ufe::OnCommandoff";
+		donpcevent "Guard-3#ufe::OnCommandoff";
+		donpcevent "Guard-4#ufe::OnCommandoff";
+		donpcevent "Guard-1#ufe::OnCommandreset";
+		donpcevent "Guard-2#ufe::OnCommandreset";
+		donpcevent "Guard-3#ufe::OnCommandreset";
+		donpcevent "Guard-4#ufe::OnCommandreset";
+		stopnpctimer;
+		set $050425_ufe_elev,0;
+		set $050420_jupe_ele_r,0;
+		donpcevent "Switch On#ufe::OnCommandoff";
+		donpcevent "Switch#ufe::OnCommandon";
 	}
 	end;
 
-OnTimer144000:
+OnTimer120000:
+	donpcevent "Guard-1#ufe::OnCommandoff";
+	donpcevent "Guard-2#ufe::OnCommandoff";
+	donpcevent "Guard-3#ufe::OnCommandoff";
+	donpcevent "Guard-4#ufe::OnCommandoff";
+	donpcevent "Guard-1#ufe::OnCommandreset";
+	donpcevent "Guard-2#ufe::OnCommandreset";
+	donpcevent "Guard-3#ufe::OnCommandreset";
+	donpcevent "Guard-4#ufe::OnCommandreset";
+	mapannounce "jupe_ele.gat","In the end, you can't even overcome your inner fear...",8,0xFF0000;
+	end;
+
+OnTimer122000:
+	mapannounce "jupe_ele.gat","You have never encountered your inner fears, have you?",8,0xFF0000;
+	end;
+
+OnTimer125000:
+	mapannounce "jupe_ele.gat","Did you expect this would be the end of the hallucination?",8,0xFF0000;
+	end;
+
+OnTimer127000:
+	mapannounce "jupe_ele.gat","What if the voice you're hearing is also a hallucination?",8,0xFF0000;
+	end;
+
+OnTimer129000:
+	mapannounce "jupe_ele.gat","What if you're just dreaming all of this?",8,0xFF0000;
+	end;
+
+OnTimer131000:
+	mapannounce "jupe_ele.gat","What if the existence of this city is a lie?",8,0xFF0000;
+	end;
+
+OnTimer133000:
+	mapannounce "jupe_ele.gat","Are you even real?",8,0xFF0000;
+	end;
+
+OnTimer134000:
+	areawarp "this",0,0,400,400,"jupe_gate.gat",49,138;
+	end;
+
+OnTimer135000:
+	areawarp "this",0,0,400,400,"jupe_gate.gat",49,138;
+	end;
+
+OnTimer132000:
+	donpcevent "GuardEnd#ufe::OnCommandoff";
+	donpcevent "4F Enter#ufe::OnCommandoff";
+	donpcevent "TimeOut#ufe::OnCommandoff";
+	set $050425_ufe_elev,0;
+	set $050420_jupe_ele_r,0;
+	donpcevent "Switch On#ufe::OnCommandoff";
+	donpcevent "Switch#ufe::OnCommandon";
 	stopnpctimer;
-	announce "It is disappointing to see that you are too weak to even defeat a hallucination...",9,0x66FF00;
-	sleep 2000;
-	areawarp "jupe_ele.gat",0,0,100,124,"jupe_gate.gat",49,138;
-	killmonster "this","All";
-	set 'flag,0;
-	hideonnpc "Switch On#jupe_ele";
-	hideoffnpc "Switch#jupe_ele";
+	end;
+}
+
+jupe_ele.gat,15,6,1	script	Guard-1#ufe	111,{
+
+OnCommandon:
+	initnpctimer;
+	end;
+
+OnCommandoff:
+	stopnpctimer;
+	end;
+
+OnCommandreset:
+	killmonster "this",strnpcinfo(0)+"::OnMyMobDead";
+	end;
+
+OnTimer2000:
+	mapannounce "jupe_ele.gat","I admire your patience.",8,0xFF0000;
+	end;
+
+OnTimer5000:
+	mapannounce "jupe_ele.gat","Let's see if everything you have experienced",8,0xFF0000;
+	end;
+
+OnTimer8000:
+	mapannounce "jupe_ele.gat","were traps for intruders...",8,0xFF0000;
+	end;
+
+OnTimer12000:
+	monster "jupe_ele.gat",48,44,"Guard",1675,1,"Guard-1#ufe::OnMyMobDead";
+	monster "jupe_ele.gat",45,42,"Guard",1669,1,"Guard-1#ufe::OnMyMobDead";
+	monster "jupe_ele.gat",38,42,"Guard",1675,1,"Guard-1#ufe::OnMyMobDead";
+	monster "jupe_ele.gat",35,44,"Guard",1669,1,"Guard-1#ufe::OnMyMobDead";
+	monster "jupe_ele.gat",35,51,"Guard",1675,1,"Guard-1#ufe::OnMyMobDead";
+	monster "jupe_ele.gat",38,53,"Guard",1669,1,"Guard-1#ufe::OnMyMobDead";
+	monster "jupe_ele.gat",45,53,"Guard",1675,1,"Guard-1#ufe::OnMyMobDead";
+	monster "jupe_ele.gat",48,51,"Guard",1669,1,"Guard-1#ufe::OnMyMobDead";
+	end;
+
+OnTimer30000:
+	set '@aa,$050425_ufe_elev;
+	if ('@aa == 0) {
+		set $050425_ufe_elev,1;
+		donpcevent "Guard-2#ufe::OnCommandon";
+		stopnpctimer;
+	}
+	end;
+
+OnMyMobDead:
+	set 'mobcount,'mobcount + 1;
+	if ('mobcount >= 8) {
+		set '@aa,$050425_ufe_elev;
+		if ('@aa == 0) {
+			set $050425_ufe_elev,1;
+			donpcevent "Guard-2#ufe::OnCommandon";
+			stopnpctimer;
+		} else if ('@aa == 4) {
+			if (getvariableofnpc('mobcount,"Guard-4#ufe") >= 8) {
+				if (getvariableofnpc('mobcount,"Guard-3#ufe") >= 8) {
+					if (getvariableofnpc('mobcount,"Guard-2#ufe") >= 8) {
+						donpcevent "GuardEnd#ufe::OnCommandon";
+						stopnpctimer;
+						end;
+					}
+				}
+			}
+		}
+	}
+	end;
+}
+
+jupe_ele.gat,16,6,1	script	Guard-2#ufe	111,{
+
+OnCommandon:
+	initnpctimer;
+	end;
+
+OnCommandoff:
+	stopnpctimer;
+	end;
+
+OnCommandreset:
+	killmonster "this",strnpcinfo(0)+"::OnMyMobDead";
+	end;
+
+OnTimer2000:
+	mapannounce "jupe_ele.gat","This city was not",8,0xFF0000;
+	end;
+
+OnTimer5000:
+	mapannounce "jupe_ele.gat","as magnificient as you thought.",8,0xFF0000;
+	end;
+
+OnTimer8000:
+	mapannounce "jupe_ele.gat","This is a place where all the fears of humans flourish.",8,0xFF0000;
+	end;
+
+OnTimer11000:
+	mapannounce "jupe_ele.gat","Yes. Nobody leaves alive!",8,0xFF0000;
+	end;
+
+OnTimer12000:
+	monster "jupe_ele.gat",48,44,"Guard",1683,1,"Guard-2#ufe::OnMyMobDead";
+	monster "jupe_ele.gat",45,42,"Guard",1669,1,"Guard-2#ufe::OnMyMobDead";
+	monster "jupe_ele.gat",38,42,"Guard",1683,1,"Guard-2#ufe::OnMyMobDead";
+	monster "jupe_ele.gat",35,44,"Guard",1669,1,"Guard-2#ufe::OnMyMobDead";
+	monster "jupe_ele.gat",35,51,"Guard",1683,1,"Guard-2#ufe::OnMyMobDead";
+	monster "jupe_ele.gat",38,53,"Guard",1669,1,"Guard-2#ufe::OnMyMobDead";
+	monster "jupe_ele.gat",45,53,"Guard",1683,1,"Guard-2#ufe::OnMyMobDead";
+	monster "jupe_ele.gat",48,51,"Guard",1669,1,"Guard-2#ufe::OnMyMobDead";
+	end;
+
+OnTimer30000:
+	set '@aa,$050425_ufe_elev;
+	if ('@aa == 1) {
+		set $050425_ufe_elev,2;
+		donpcevent "Guard-3#ufe::OnCommandon";
+		stopnpctimer;
+	}
+	end;
+
+OnMyMobDead:
+	set 'mobcount,'mobcount + 1;
+	if ('mobcount >= 8) {
+		set '@aa,$050425_ufe_elev;
+		if ('@aa == 1) {
+			set $050425_ufe_elev,2;
+			donpcevent "Guard-3#ufe::OnCommandon";
+			stopnpctimer;
+		} else if ('@aa == 4) {
+			if (getvariableofnpc('mobcount,"Guard-4#ufe") >= 8) {
+				if (getvariableofnpc('mobcount,"Guard-3#ufe") >= 8) {
+					if (getvariableofnpc('mobcount,"Guard-1#ufe") >= 8) {
+						donpcevent "GuardEnd#ufe::OnCommandon";
+						stopnpctimer;
+						end;
+					}
+				}
+			}
+		}
+	}
+	end;
+}
+
+jupe_ele.gat,17,6,1	script	Guard-3#ufe	111,{
+
+OnCommandon:
+	initnpctimer;
+	end;
+
+OnCommandoff:
+	stopnpctimer;
+	end;
+
+OnCommandreset:
+	killmonster "this",strnpcinfo(0)+"::OnMyMobDead";
+	end;
+
+OnTimer2000:
+	mapannounce "jupe_ele.gat","What do you see?",8,0xFF0000;
+	end;
+
+OnTimer5000:
+	mapannounce "jupe_ele.gat","Are your eyes actually seeing something?",8,0xFF0000;
+	end;
+
+OnTimer8000:
+	mapannounce "jupe_ele.gat","Or do you just believe you are seeing?",8,0xFF0000;
+	end;
+
+OnTimer12000:
+	monster "jupe_ele.gat",48,44,"Guard",1675,1,"Guard-3#ufe::OnMyMobDead";
+	monster "jupe_ele.gat",45,42,"Guard",1669,1,"Guard-3#ufe::OnMyMobDead";
+	monster "jupe_ele.gat",38,42,"Guard",1683,1,"Guard-3#ufe::OnMyMobDead";
+	monster "jupe_ele.gat",35,44,"Guard",1675,1,"Guard-3#ufe::OnMyMobDead";
+	monster "jupe_ele.gat",35,51,"Guard",1669,1,"Guard-3#ufe::OnMyMobDead";
+	monster "jupe_ele.gat",38,53,"Guard",1683,1,"Guard-3#ufe::OnMyMobDead";
+	monster "jupe_ele.gat",45,53,"Guard",1675,1,"Guard-3#ufe::OnMyMobDead";
+	monster "jupe_ele.gat",48,51,"Guard",1669,1,"Guard-3#ufe::OnMyMobDead";
+	end;
+
+OnTimer30000:
+	set '@aa,$050425_ufe_elev;
+	if ('@aa == 2) {
+		set $050425_ufe_elev,3;
+		donpcevent "Guard-4#ufe::OnCommandon";
+		stopnpctimer;
+	}
+	end;
+
+OnMyMobDead:
+	set 'mobcount,'mobcount + 1;
+	if ('mobcount >= 8) {
+		set '@aa,$050425_ufe_elev;
+		if ('@aa == 2) {
+			set $050425_ufe_elev,3;
+			donpcevent "Guard-4#ufe::OnCommandon";
+			stopnpctimer;
+		} else if ('@aa == 4) {
+			if (getvariableofnpc('mobcount,"Guard-4#ufe") >= 8) {
+				if (getvariableofnpc('mobcount,"Guard-2#ufe") >= 8) {
+					if (getvariableofnpc('mobcount,"Guard-1#ufe") >= 8) {
+						donpcevent "GuardEnd#ufe::OnCommandon";
+						stopnpctimer;
+						end;
+					}
+				}
+			}
+		}
+	}
+	end;
+}
+
+jupe_ele.gat,18,6,1	script	Guard-4#ufe	111,{
+
+OnCommandon:
+	initnpctimer;
+	end;
+
+OnCommandoff:
+	stopnpctimer;
+	end;
+
+OnCommandreset:
+	killmonster "this",strnpcinfo(0)+"::OnMyMobDead";
+	end;
+
+OnTimer2000:
+	mapannounce "jupe_ele.gat","Do not forget. That which limits you is nothing but yourself.",8,0xFF0000;
+	end;
+
+OnTimer5000:
+	mapannounce "jupe_ele.gat","Nothing is what you fear and you have nothing to fear...",8,0xFF0000;
+	end;
+
+OnTimer8000:
+	set $050425_ufe_elev,4;
+	monster "jupe_ele.gat",48,44,"Guard",1684,1,"Guard-4#ufe::OnMyMobDead";
+	monster "jupe_ele.gat",45,42,"Guard",1669,1,"Guard-4#ufe::OnMyMobDead";
+	monster "jupe_ele.gat",38,42,"Guard",1684,1,"Guard-4#ufe::OnMyMobDead";
+	monster "jupe_ele.gat",35,44,"Guard",1669,1,"Guard-4#ufe::OnMyMobDead";
+	monster "jupe_ele.gat",35,51,"Guard",1675,1,"Guard-4#ufe::OnMyMobDead";
+	monster "jupe_ele.gat",38,53,"Guard",1669,1,"Guard-4#ufe::OnMyMobDead";
+	monster "jupe_ele.gat",45,53,"Guard",1683,1,"Guard-4#ufe::OnMyMobDead";
+	monster "jupe_ele.gat",48,51,"Guard",1675,1,"Guard-4#ufe::OnMyMobDead";
+	end;
+
+OnMyMobDead:
+	set 'mobcount,'mobcount + 1;
+	if ('mobcount >= 8) {
+		if (getvariableofnpc('mobcount,"Guard-3#ufe") >= 8) {
+			if (getvariableofnpc('mobcount,"Guard-2#ufe") >= 8) {
+				if (getvariableofnpc('mobcount,"Guard-1#ufe") >= 8) {
+					donpcevent "GuardEnd#ufe::OnCommandon";
+					stopnpctimer;
+				}
+			}
+		}
+	}
+	end;
+}
+
+jupe_ele.gat,19,6,1	script	GuardEnd#ufe	111,{
+
+OnInit:
+	hideonnpc "GuardEnd#ufe";
+	end;
+
+OnCommandon:
+	hideoffnpc "GuardEnd#ufe";
+	donpcevent "TimeOut#ufe::OnCommandoff";
+	initnpctimer;
+	end;
+
+OnCommandoff:
+	hideonnpc "GuardEnd#ufe";
+	stopnpctimer;
+	end;
+
+OnTimer2000:
+	mapannounce "jupe_ele.gat","I am not going to tell you anything.",8,0x66FF00;
+	end;
+
+OnTimer5000:
+	mapannounce "jupe_ele.gat","My city, my people are now but a memory.",8,0x66FF00;
+	end;
+
+OnTimer8000:
+	mapannounce "jupe_ele.gat","Everything was a mistake. We were not supposed to be here.",8,0x66FF00;
+	end;
+
+OnTimer11000:
+	mapannounce "jupe_ele.gat","Is this a place where humans are forbidden?",8,0x66FF00;
+	end;
+
+OnTimer12000:
+	mapannounce "jupe_ele.gat","You want to know, don't you? Go ahead... Go deeper.",8,0x66FF00;
+	hideoffnpc "4F Enter#ufe";
+	end;
+
+OnTimer22000:
+	mapannounce "jupe_ele.gat","It's not real anyway. All of it's safe, it can't hurt you...",8,0x66FF00;
+	soundeffect "earth_quake.wav",0;
+	donpcevent "4F Enter#ufe::OnCommandoff";
+	end;
+
+OnTimer24000:
+	areawarp "this",0,0,400,400,"jupe_core.gat",150,286;
+	end;
+
+OnTimer25000:
+	areawarp "this",0,0,400,400,"jupe_core.gat",151,286;
+	end;
+
+OnTimer26000:
+	donpcevent "GuardEnd#ufe::OnCommandoff";
+	donpcevent "4F Enter#ufe::OnCommandoff";
+	donpcevent "TimeOut#ufe::OnCommandoff";
+	set $050425_ufe_elev,0;
+	set $050420_jupe_ele_r,0;
+	donpcevent "Switch On#ufe::OnCommandoff";
+	donpcevent "Switch#ufe::OnCommandon";
+	stopnpctimer;
+	end;
+}
+
+jupe_ele.gat,41,33,0	script	4F Enter#ufe	45,4,4,{
+
+OnInit:
+	hideonnpc "4F Enter#ufe";
+	end;
+
+OnCommandon:
+	hideoffnpc "4F Enter#ufe";
+	end;
+
+OnCommandoff:
+	hideonnpc "4F Enter#ufe";
+	end;
+
+OnTouch:
+	set '@dochak,rand(1,3);
+	if ('@dochak == 1) {
+		warp "jupe_core.gat",149,286;
+	} else if ('@dochak == 2) {
+		warp "jupe_core.gat",150,286;
+	} else {
+		warp "jupe_core.gat",151,286;
+	}
+	end;
+}
+
+yuno_fild07.gat,208,175,0	script	jupe_entrance1	139,2,2,{
+
+OnTouch:
+	warp "jupe_cave.gat",143,52;
+	end;
+}
+
+jupe_cave.gat,29,52,0	script	jupe_entrance#2	45,2,2,{
+
+OnTouch:
+	warp "juperos_01.gat",54,246;
+	end;
+}
+
+jupe_cave.gat,147,52,0	script	jupe_entrance#3	139,2,2,{
+
+OnTouch:
+	warp "yuno_fild07.gat",212,175;
+	end;
+}
+
+juperos_01.gat,51,249,0	script	jupe_exit	45,2,2,{
+
+OnTouch:
+	warp "jupe_cave.gat",36,51;
+	end;
+}
+
+jupe_gate.gat,50,173,0	script	gate#start	139,2,3,{
+
+OnCommandon:
+	hideoffnpc "gate#start";
+	end;
+
+OnCommandoff:
+	hideonnpc "gate#start";
+	end;
+
+OnTouch:
+	initnpctimer;
+	mes "^3355FFIt's a Warp Portal";
+	mes "that will teleport you";
+	mes "to the previous floor.^000000";
+	next;
+	switch(select("Use it.","Ignore it.")) {
+	case 1:
+		gmcommand "@misceffect 348";
+		next;
+		stopnpctimer;
+		warp "juperos_02.gat",130,142;
+		end;
+	case 2:
+		mes "[" + strcharinfo(0) + "]";
+		mes "Not now!";
+		mes "I can't leave yet!";
+		next;
+		warp "jupe_gate.gat",50,168;
+		stopnpctimer;
+		close;
+	}
+
+OnTimer10000:
+	warp "juperos_02.gat",128,278;
+	donpcevent "gate#start#2::OnCommandon";
+	hideonnpc "gate#start";
+	end;
+}
+
+jupe_gate.gat,50,171,0	script	gate#start#2	139,2,2,{
+
+OnInit:
+	hideonnpc "gate#start#2";
+	end;
+
+OnCommandon:
+	hideoffnpc "gate#start#2";
+	initnpctimer;
+	end;
+
+OnCommandoff:
+	hideonnpc "gate#start#2";
+	end;
+
+OnTouch:
+	warp "juperos_02.gat",130,142;
+	end;
+
+OnTimer2000:
+	donpcevent "gate#start::OnCommandon";
+	hideonnpc "gate#start#2";
+	end;
+}
+
+jupe_gate.gat,28,145,0	script	gate#left1	45,2,4,{
+
+OnTouch:
+	warp "jupe_area1.gat",100,222;
+	end;
+}
+
+jupe_area1.gat,103,222,0	script	gate#left2	45,2,4,{
+
+OnTouch:
+	warp "jupe_gate.gat",31,145;
+	end;
+}
+
+jupe_gate.gat,71,145,0	script	gate#right1	45,2,4,{
+
+OnTouch:
+	warp "jupe_area2.gat",63,222;
+	end;
+}
+
+jupe_area2.gat,60,222,0	script	gate#right2	45,2,4,{
+
+OnTouch:
+	warp "jupe_gate.gat",68,145;
+	end;
+}
+
+jupe_gate.gat,49,55,0	script	gate#ele	45,4,2,{
+
+OnTouch:
+	warp "jupe_ele_r.gat",49,30;
+	end;
+}
+
+juperos_02.gat,33,59,0	script	jupe_goto2F	45,2,2,{
+
+OnTouch:
+	set '@warp_jufe,rand(1,4);
+	if (('@warp_jufe > 0) && ('@warp_jufe < 2)) {
+		warp "juperos_01.gat",120,72;
+	} else if (('@warp_jufe > 1) && ('@warp_jufe < 3)) {
+		warp "juperos_01.gat",120,112;
+	} else if (('@warp_jufe > 2) && ('@warp_jufe < 4)) {
+		warp "juperos_01.gat",79,112;
+	} else if (('@warp_jufe > 3) && ('@warp_jufe < 5)) {
+		warp "juperos_01.gat",79,72;
+	}
 	end;
 }
 

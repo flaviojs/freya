@@ -22,8 +22,6 @@
 - gvg/gvg_steward.txt			<- Good enough - Need to import Aegis dialogue/function [*]
 - gvg/gvg_tbox.txt			<- Good enough
 
-- quest/quest_juperos.txt		<- Good enough? - Juperos History Quest is already Aegis-certified
-
 - town/town_nameless.txt		<- Requires conversion - No access to an Aegis version [*]
 - town/town_veins.txt			<- Requires conversion - No access to an Aegis version [*]
 

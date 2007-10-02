@@ -14,6 +14,7 @@
 Date	Added
 
 2007/10/02
+	* Updated: The Juperos Quest to official, converted from Aegis [Tsuyuki]
 	* Updated: Kunlun Power NPC to official, converted from Aegis [Tsuyuki]
 	* Updated: Kunlun Town NPCs to official, converted from Aegis [Tsuyuki]
 	* Updated: The Equipment Refinery script to official, converted from Aegis [Tsuyuki]
