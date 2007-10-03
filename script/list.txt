@@ -36,15 +36,13 @@ npc: script/global/global_shop.txt
 // Guild vs Guild (The War of Emperium) Scripts
 //--------------------------------------------------------------
 
-npc: script/gvg/gvg_adswitch.txt
-npc: script/gvg/gvg_config.txt
-npc: script/gvg/gvg_exe.txt
+npc: script/gvg/gvg_core.txt
+npc: script/gvg/gvg_dungeon.txt
 npc: script/gvg/gvg_flag.txt
 npc: script/gvg/gvg_kafra.txt
 npc: script/gvg/gvg_monster.txt
-npc: script/gvg/gvg_roomswitch.txt
 npc: script/gvg/gvg_steward.txt
-npc: script/gvg/gvg_tbox.txt
+npc: script/gvg/gvg_treasure.txt
 
 
 //--------------------------------------------------------------
@@ -84,6 +82,7 @@ npc: script/job/job_wizard.txt
 // Miscellaneous Scripts
 //--------------------------------------------------------------
 
+// npc: script/misc/misc_admin.txt
 // npc: script/misc/misc_auction.txt
 // npc: script/misc/misc_battle_arena.txt
 // npc: script/misc/misc_cash_item.txt

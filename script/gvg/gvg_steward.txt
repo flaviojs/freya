@@ -1,56 +1,41 @@
 //--------------------------------------------------------------
-//			   (c)2004-2007 Aurora Team Presents:			 
-//				  ___										 
-//				 /   |_   _ _ __ ___  _ __ __ _			   
-//				/ /| | | | | '__/ _ \| '__/ _` |			  
-//			   / ___ | |_| | | | (_) | | | (_| |			  
-//			  /_/  |_|\____|_|  \___/|_|  \__,_|			  
-//				 http://aurora.deltaanime.net				 
+//               (c)2004-2007 Aurora Team Presents:             
+//                  ___                                         
+//                 /   |_   _ _ __ ___  _ __ __ _               
+//                / /| | | | | '__/ _ \| '__/ _` |              
+//               / ___ | |_| | | | (_) | | | (_| |              
+//              /_/  |_|\____|_|  \___/|_|  \__,_|              
+//                 http://aurora.deltaanime.net                 
 //--------------------------------------------------------------
-// Script Title: GvG Steward System	Author: jAthena/Yor
+// Script Title: GvG Steward System	Author: jAthena
 //--------------------------------------------------------------
-// Revision History: v1.2
+// Revision History: v1.0
 //--------------------------------------------------------------
 //	1.0 First version [jAthena]
-//	1.1 Translated into English [Yor]
-//	1.2 Fixed some issueus with investment [kosai]
 //--------------------------------------------------------------
 // Additional Notes: * Official-certified *
 //--------------------------------------------------------------
 
 
-//==============================================================
-// Steward Package Functions.
-//	callfunc "sF_StewardMain","AgitCode",MasterRoomX,MasterRoomY;
-//
-// * Parse End Processing.
-//	Everery thing contains a 'close' or an 'end', but we have add a 'end' after each 'call' function.
-//
-// * Functions.
-//	"Guardian installation" is set with the function "GuardianCall".
-//	Function "F_AgitGiveUp" is called when a guild leaves a castle.
-//
-// * Using strnpcinfo() to get a NPC name, using getmapxy() to know map name of NPC.
+//--------------------------------------------------------------
+// GvG Castle Steward Function - [jAthena]
 //--------------------------------------------------------------
 
 function	script	sF_StewardMain	{
 
 	function sF_StewardSpeech {
-		set '@dummy,getmapxy('@map$,'@dummy,'@dummy,1);	// Only '@map$ is used.
+		set '@dummy,getmapxy('@map$,'@dummy,'@dummy,1);
 		set '@gid,getcastledata('@map$,1);
 		if ('@gid <= 0) {
 			mes "[Steward "+strnpcinfo(0)+"]";
 			mes "I am waiting for my master.";
-			//mes "";
 			mes "Brave adventurer, follow your destiny!";
-			//mes "";
 			close;
 		}
 		if (getcharid(0) != getguildmasterid('@gid)) {
 			mes "[Steward "+strnpcinfo(0)+"]";
 			mes "I am here to follow";
-			//mes "";
-			mes "^ff0000" +getguildmaster('@gid)+ "^000000's command!";
+			mes "^ff0000"+getguildmaster('@gid)+"^000000's command!";
 			mes "Hey! You're not even member of the guild!!";
 			mes "Where are the Guardians?";
 			mes "Destroy this intruder!";
@@ -68,12 +53,12 @@ function	script	sF_StewardMain	{
 		mes "[Steward "+strnpcinfo(0)+"]";
 		mes "I will inform you on the state of the Castle:";
 		mes " ";
-		mes "^0000ffCurrent Commerce Investment is " +getcastledata('@map$,2)+ " point(s).";
+		mes "^0000ffCurrent Commerce Investment is "+getcastledata('@map$,2)+" point(s).";
 		if (getcastledata('@map$,4) != 0)
-			mes "- You have invested " +getcastledata('@map$,4)+ " times today.";
-			mes "Current Defense Investment is " +getcastledata('@map$,3)+ " point(s).^000000";
+			mes "- You have invested "+getcastledata('@map$,4)+" times today.";
+			mes "Current Defense Investment is "+getcastledata('@map$,3)+" point(s).^000000";
 		if (getcastledata('@map$,5) != 0)
-			mes "^0000ff- You have invested " +getcastledata('@map$,5)+ " times today.^000000";
+			mes "^0000ff- You have invested "+getcastledata('@map$,5)+" times today.^000000";
 		mes " ";
 		mes "That is about it.";
 		return;
@@ -91,14 +76,12 @@ function	script	sF_StewardMain	{
 		mes "Usually, only one investment ispossible.";
 		mes "However, you can invest up to two times a day,";
 		mes "but the second investment need an additional cost.";
-		//mes "";
 		next;
 		set '@count,getcastledata('@map$,4);
 		if ('@count == 2) {
 			mes "[Steward "+strnpcinfo(0)+"]";
 			mes "^ff0000You have already invested twice today,";
 			mes "and that's the limit.";
-			//mes "";
 			mes "^000000I'm expecting to see our riches grow";
 			mes "at a high level.";
 			close;
@@ -111,25 +94,24 @@ function	script	sF_StewardMain	{
 			mes "You don't have to invest any further.^000000";
 			 close;
 		}
-		set '@tmp,('@val-'@count)/5;
-		set '@price,5000*(1+(1+'@tmp)*'@tmp/2)*(1+3*'@count);
+		set '@tmp,('@val - '@count) / 5;
+		set '@price,5000 * (1 + (1 + '@tmp) * '@tmp / 2) * (1 + 3 * '@count);
 		switch('@count) {
 		case 0:
 			mes "[Steward "+strnpcinfo(0)+"]";
 			mes "The needed investment amount is";
-			mes "^ff0000" +'@price+ "^000000 Zenys.";
+			mes "^ff0000"+'@price+"^000000 Zenys.";
 			mes "Would you like to invest?";
 			break;
 		case 1:
 			mes "[Steward "+strnpcinfo(0)+"]";
 			mes "You've already invested once today,";
 			mes "but you can invest again at";
-			mes "^ff0000" +'@price+ "^000000 Zenys";
-			//mes "";
+			mes "^ff0000"+'@price+"^000000 Zenys";
 			break;
 		}
 		next;
-		if (select("Invest Commerce.","Cancel.")==2) {
+		if (select("Invest Commerce.","Cancel.") == 2) {
 			mes "[Steward "+strnpcinfo(0)+"]";
 			mes "I'll wait for you.";
 			mes "There's no need to be in a hurry.";
@@ -143,9 +125,9 @@ function	script	sF_StewardMain	{
 			mes "Investment has been cancelled.";
 			close;
 		}
-		set Zeny,Zeny-'@price;
-		setcastledata '@map$,4,'@count+1;
-		set '@tmp,getcastledata('@map$,2)+1;
+		set Zeny,Zeny - '@price;
+		setcastledata '@map$,4,'@count + 1;
+		set '@tmp,getcastledata('@map$,2) + 1;
 		if (getgdskilllv(getcharid(2),GD_DEVELOPMENT) == 1 && (rand(100) >= 50) && ('@tmp < 100)) {
 			set '@tmp,'@tmp+1;
 		}
@@ -176,7 +158,6 @@ function	script	sF_StewardMain	{
 			mes "[Steward "+strnpcinfo(0)+"]";
 			mes "^ff0000You have already invested twice today,";
 			mes "and that's the limit.";
-			//mes "";
 			mes "^000000I'm expecting to see our development grow";
 			mes "at a high level.";
 			close;
@@ -188,25 +169,25 @@ function	script	sF_StewardMain	{
 			mes "You can not invest any further.^000000";
 			close;
 		}
-		set '@tmp,('@val-'@count)/5;
-		set '@price,10000*(1+(1+'@tmp)*'@tmp/2)*(1+3*'@count);
+		set '@tmp,('@val - '@count) / 5;
+		set '@price,10000 * (1 + (1 + '@tmp) * '@tmp / 2) * (1 + 3 * '@count);
 		switch('@count) {
 		case 0:
 			mes "[Steward "+strnpcinfo(0)+"]";
 			mes "The needed investment amount is";
-			mes "^ff0000" +'@price+ "^000000 Zenys.";
+			mes "^ff0000"+'@price+"^000000 Zenys.";
 			mes "Would you like to invest?";
 			break;
 		case 1:
 			mes "[Steward "+strnpcinfo(0)+"]";
 			mes "You've already invested once today,";
 			mes "but you can invest again at";
-			mes "^ff0000" +'@price+ "^000000 Zenys.";
+			mes "^ff0000"+'@price+"^000000 Zenys.";
 			mes "Would you like to invest again?";
 			break;
 		}
 		next;
-		if (select("Invest Defense.","Cancel.")==2) {
+		if (select("Invest Defense.","Cancel.") == 2) {
 			mes "[Steward "+strnpcinfo(0)+"]";
 			mes "I'll wait for you.";
 			mes "There's no need to be in a hurry.";
@@ -220,10 +201,10 @@ function	script	sF_StewardMain	{
 			mes "Investment has been cancelled.";
 			close;
 		}
-		set Zeny,Zeny-'@price;
-		setcastledata '@map$,5,'@count+1; //+1 times invested
-		set '@tmp,getcastledata('@map$,3)+1; //+1 to Def points (saved in tmp)
-		setcastledata '@map$,3,'@tmp; //New Def points value after investment
+		set Zeny,Zeny - '@price;
+		setcastledata '@map$,5,'@count + 1;
+		set '@tmp,getcastledata('@map$,3) + 1;
+		setcastledata '@map$,3,'@tmp;
 		mes "[Steward "+strnpcinfo(0)+"]";
 		mes "Investment was successful!";
 		mes "I hope we will gain more and more goods.";
@@ -238,19 +219,10 @@ function	script	sF_StewardMain	{
 		mes "Guardians will protect the Castle";
 		mes "from enemies.";
 		mes "Please choose a Guardian.";
-		//mes "";
 		next;
-		// Actual Menu(B5 reference)
-		//menu	 "Install Archer Guardian.",L_MENU_1,"Install Archer Guardian.",L_MENU_2,
-		//	"Install Soldier Guardian.",L_MENU_3,"Install Soldier Guardian.",L_MENU_4,
-		//	"Install Knight Guardian.",L_MENU_5,"Install Soldier Guardian.",L_MENU_6,
-		//	"Install Knight Guardian.",L_MENU_7,"Master Guardian can't be install. (31214/31214)",L_MENU_8;
-		//
-		// It will check if a Guardian can be installed or not, and will indicate his HP.
-		// Moreover, you can install a Guardian even if it is already present, in this case, it will recover his HP.
-		set '@ret,select("Guardian 1","Guardian 2","Guardian 3","Guardian 4","Guardian 5","Guardian 6","Guardian 7","Guardian 8")+9;
+		set '@ret,select("Guardian 1","Guardian 2","Guardian 3","Guardian 4","Guardian 5","Guardian 6","Guardian 7","Guardian 8") + 9;
 		if (getcastledata('@map$,'@ret)) {
-			mes "[Steward "+strnpcinfo(0)+"]"; // Guardian is already installed.
+			mes "[Steward "+strnpcinfo(0)+"]";
 			mes "Master!";
 			mes "This Guardian has already been installed.";
 			mes " ";
@@ -262,7 +234,7 @@ function	script	sF_StewardMain	{
 		mes "this Guardian? You need";
 		mes "^ff000010000^000000Zenys.";
 		next;
-		if (select("Install the Guardian.","Cancel.")==2) {
+		if (select("Install the Guardian.","Cancel.") == 2) {
 			mes "[Steward "+strnpcinfo(0)+"]";
 			mes "I'll wait for you.";
 			mes "When some room will be made";
@@ -275,19 +247,18 @@ function	script	sF_StewardMain	{
 			mes "I'm sorry Master but you cannot install";
 			mes "any Guardians right now.";
 			mes "Your guild must learn the Guild skill";
-			//mes "";
 			mes "^ff0000Guardian Research^000000 first.";
 			mes "Guardian installation has been cancelled.";
 			close;
 		}
-		if (Zeny < 10000) {	// Not enough money
+		if (Zeny < 10000) {
 			mes "[Steward "+strnpcinfo(0)+"]";
 			mes "Master!";
 			mes "You do not have enough money to install this Guardian.";
 			mes "Guardian installation has been cancelled.";
 			close;
 		}
-		set Zeny,Zeny-10000;
+		set Zeny,Zeny - 10000;
 		setcastledata '@map$,'@ret,1;
 		callfunc "F_GuardianCall",getarg(0),'@ret,1;
 		return;
@@ -295,13 +266,13 @@ function	script	sF_StewardMain	{
 
 	function sF_StewardKafra {
 		set '@dummy,getmapxy('@map$,'@dummy,'@dummy,1);
-		if (getcastledata('@map$,9)==0) {
+		if (getcastledata('@map$,9) == 0) {
 			mes "[Steward "+strnpcinfo(0)+"]";
 			mes "Would you like to employ";
 			mes "the services of a Kafra?";
 			mes "You will need ^ff000010000^000000 Zenys to do so...";
 			next;
-			if (select("Employ Kafra.","Cancel.")==2) {
+			if (select("Employ Kafra.","Cancel.") == 2) {
 				mes "[Steward "+strnpcinfo(0)+"]";
 				mes "I'll wait for you.";
 				mes "But the convenience of";
@@ -328,7 +299,7 @@ function	script	sF_StewardMain	{
 				mes "Master! You don't have enough money!";
 				close;
 			}
-			set Zeny,Zeny-10000;
+			set Zeny,Zeny - 10000;
 			enablenpc "AgitKafra_"+getarg(0);
 			setcastledata '@map$,9,1;
 			mes "[Steward "+strnpcinfo(0)+"]";
@@ -345,12 +316,11 @@ function	script	sF_StewardMain	{
 			mes "Every month you have to pay Zeny";
 			mes "in order to maintain the contract.";
 			mes "(not now)";
-		}
-		else {
+		} else {
 			mes "[Steward "+strnpcinfo(0)+"]";
 			mes "Would you like to lay off the current Kafra?";
 			next;
-			if (select("Lay off the Kafra.","Cancel.")==2) {
+			if (select("Lay off the Kafra.","Cancel.") == 2) {
 				mes "[Steward "+strnpcinfo(0)+"]";
 				mes "Understood.";
 				close;
@@ -359,9 +329,8 @@ function	script	sF_StewardMain	{
 			mes "[Kafra]";
 			mes "Have I done anything wrong?";
 			mes "If I did, will you please forgive me?";
-			//mes "";
 			next;
-			if (select("Lay off the Kafra.","Cancel.")==2) {
+			if (select("Lay off the Kafra.","Cancel.") == 2) {
 				mes "[Kafra]";
 				mes "Thank you Master!";
 				mes "I'll do my best!";
@@ -386,12 +355,10 @@ function	script	sF_StewardMain	{
 		set '@dummy,getmapxy('@map$,'@dummy,'@dummy,1);
 		mes "[Steward "+strnpcinfo(0)+"]";
 		mes "Would you like to go to our Treasure Room?";
-		//mes "";
-		//mes "";
 		mes "Only you, the Guild Master,";
 		mes "are allowed to enter this room.";
 		next;
-		if (select("Enter in Treasure Room.","Cancel.")==1) {
+		if (select("Enter in Treasure Room.","Cancel.") == 1) {
 			mes "[Steward "+strnpcinfo(0)+"]";
 			mes "I will guide you.";
 			mes "Please follow me.";
@@ -424,12 +391,12 @@ function	script	sF_StewardMain	{
 			mes "Oh please reconsider one more time.";
 			mes "Please I beg you!!!!!!!!";
 			next;
-			if (select("Cancel.","Abandon the Castle.")==2) {
+			if (select("Cancel.","Abandon the Castle.") == 2) {
 				mes "[Steward "+strnpcinfo(0)+"]";
 				mes "Master!...";
 				mes "... it is... it is... the end...";
 				close2;
-				announce "Castle [" +getcastlename('@map$)+ "] has been abandonned by [" +getguildname(getcharid(2))+ "] guild.",0;
+				announce "Castle ["+getcastlename('@map$)+"] has been abandonned by ["+getguildname(getcharid(2))+"] guild.",0;
 				callfunc "F_AgitGiveUp",getarg(0);
 				end;
 			}
@@ -441,7 +408,7 @@ function	script	sF_StewardMain	{
 	}
 
 	sF_StewardSpeech;
-	switch(select("Display Castle state","Commercial investment","Defense investment","Install Guardians","Contract/Lay off with kafra","Enter in Treasure Room.","Abandon the Castle.")) {
+		switch(select("Display Castle state","Commercial investment","Defense investment","Install Guardians","Contract/Lay off with kafra","Enter in Treasure Room.","Abandon the Castle.")) {
 		case 1:
 			sF_StewardConf;
 			close;
@@ -468,8 +435,8 @@ function	script	sF_StewardMain	{
 }
 
 
-//==============================================================
-// Aldebaran
+//--------------------------------------------------------------
+// Al De Baran Castle Stewards - [jAthena]
 //--------------------------------------------------------------
 
 aldeg_cas01.gat,218,175,0	script	Arl Fredo	55,{
@@ -498,8 +465,8 @@ aldeg_cas05.gat,51,179,0	script	Brimhemsen	55,{
 }
 
 
-//==============================================================
-// Geffen
+//--------------------------------------------------------------
+// Geffen Castle Stewards - [jAthena]
 //--------------------------------------------------------------
 
 gefg_cas01.gat,40,48,5		script	Gnaucher	55,{
@@ -528,8 +495,8 @@ gefg_cas05.gat,70,52,3		script	Beeor	55,{
 }
 
 
-//==============================================================
-// Payon
+//--------------------------------------------------------------
+// Payon Castle Stewards - [jAthena]
 //--------------------------------------------------------------
 
 payg_cas01.gat,120,58,4		script	Grunday	55,{
@@ -558,8 +525,8 @@ payg_cas05.gat,277,249,3	script	Najarf	55,{
 }
 
 
-//==============================================================
-// Prontera
+//--------------------------------------------------------------
+// Prontera Castle Stewards - [jAthena]
 //--------------------------------------------------------------
 
 prtg_cas01.gat,112,181,0	script	Abrai	55,{

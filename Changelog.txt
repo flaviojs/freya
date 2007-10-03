@@ -13,6 +13,13 @@
 
 Date	Added
 
+2007/10/03
+	* Added: The GvG Ban Stealer security system, converted from Aegis [Tsuyuki]
+	* Added: The GM Valhalla Administration Center, converted from Aegis [Tsuyuki]
+	 - Contains all GM-related NPCs, mostly in sec_in01.gat / sec_in02.gat
+	 - Fully password-protected/secure, as well as disabled by default for security purposes
+	 - No script left behind
+
 2007/10/02
 	* Updated: The Broken Sword Quest with iRO dialogue, converted from Aegis [Tsuyuki/Jyosua]
 	* Updated: The Juperos Quest to official, converted from Aegis [Tsuyuki]

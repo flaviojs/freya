@@ -1,0 +1,510 @@
+//--------------------------------------------------------------
+//               (c)2004-2007 Aurora Team Presents:             
+//                  ___                                         
+//                 /   |_   _ _ __ ___  _ __ __ _               
+//                / /| | | | | '__/ _ \| '__/ _` |              
+//               / ___ | |_| | | | (_) | | | (_| |              
+//              /_/  |_|\____|_|  \___/|_|  \__,_|              
+//                 http://aurora.deltaanime.net                 
+//--------------------------------------------------------------
+// Script Title: GvG Treasure System	Author: jAthena/Tsuyuki
+//--------------------------------------------------------------
+// Revision History: v1.1
+//--------------------------------------------------------------
+//	1.0 First version [jAthena]
+//	1.1 Added Treasure Room Security (Ban Stealers), converted from Aegis [Tsuyuki]
+//--------------------------------------------------------------
+// Additional Notes: * Official-certified / Partially Aegis-certified *
+//--------------------------------------------------------------
+
+
+//--------------------------------------------------------------
+// GvG Treasure Box Generation - [jAthena]
+//--------------------------------------------------------------
+
+-	script	#TresureBox	139,{
+
+	function sF_MakeTBox {
+		setcastledata getarg(0),2,getcastledata(getarg(0),2) + getcastledata(getarg(0),4);
+		setcastledata getarg(0),3,getcastledata(getarg(0),3) + getcastledata(getarg(0),5);
+		setcastledata getarg(0),4,0;
+		setcastledata getarg(0),5,0;
+		killmonster getarg(0),"#TresureBox::OnMyMobDead";
+		set '@num1,2 + (getcastledata(getarg(0),2) + 5) / 10;
+		set '@num2,2 + getcastledata(getarg(0),2) / 10;
+		if ('@num1 > 12)
+			set '@num1,12;
+		if ('@num2 > 12)
+			set '@num2,12;
+		areamonster getarg(0),getarg(1),getarg(2),getarg(3),getarg(4),"Treasure box",getarg(5),'@num1,"#TresureBox::OnMyMobDead";
+		areamonster getarg(0),getarg(1),getarg(2),getarg(3),getarg(4),"Treasure box",getarg(6),'@num2,"#TresureBox::OnMyMobDead";
+		return;
+	}
+	end;
+
+OnClock0000:
+	sF_MakeTBox "aldeg_cas01.gat",114,218,123,227,1324,1325;
+	sF_MakeTBox "aldeg_cas02.gat",130,226,139,235,1326,1327;
+	sF_MakeTBox "aldeg_cas03.gat",220,264,229,273,1328,1329;
+	sF_MakeTBox "aldeg_cas04.gat",80,8,89,17,1330,1331;
+	sF_MakeTBox "aldeg_cas05.gat",58,8,67,17,1332,1333;
+	sF_MakeTBox "gefg_cas01.gat",150,108,157,115,1334,1335;
+	sF_MakeTBox "gefg_cas02.gat",136,112,145,118,1336,1337;
+	sF_MakeTBox "gefg_cas03.gat",266,286,273,293,1338,1339;
+	sF_MakeTBox "gefg_cas04.gat",112,114,119,123,1340,1341;
+	sF_MakeTBox "gefg_cas05.gat",140,106,147,113,1342,1343;
+	sF_MakeTBox "payg_cas01.gat",286,4,295,7,1344,1345;
+	sF_MakeTBox "payg_cas02.gat",140,140,149,143,1346,1347;
+	sF_MakeTBox "payg_cas03.gat",154,164,162,172,1348,1349;
+	sF_MakeTBox "payg_cas04.gat",142,44,151,51,1350,1351;
+	sF_MakeTBox "payg_cas05.gat",152,128,161,131,1352,1353;
+	sF_MakeTBox "prtg_cas01.gat",7,205,15,212,1354,1355;
+	sF_MakeTBox "prtg_cas02.gat",198,224,205,231,1356,1357;
+	sF_MakeTBox "prtg_cas03.gat",184,128,192,135,1358,1359;
+	sF_MakeTBox "prtg_cas04.gat",266,158,273,165,1360,1361;
+	sF_MakeTBox "prtg_cas05.gat",272,174,279,181,1362,1363;
+	end;
+
+OnMyMobDead:
+	end;
+}
+
+
+//--------------------------------------------------------------
+// GvG Treasure Room Return Switch Function - [jAthena]
+//--------------------------------------------------------------
+
+function	script	F_RoomSwitch	{
+
+	mes "";
+	mes "There's a small lever. Will you pull it?";
+	next;
+	switch(Select("Pull.","Do not pull.")) {
+	case 1:
+		set '@dummy,getmapxy('@map$,'@dummy,'@dummy,1);
+		warp '@map$,getarg(0),getarg(1);
+		end;
+	case 2:
+		return;
+	}
+}
+
+
+//--------------------------------------------------------------
+// Al De Baran Treasure Room Return Switches - [jAthena]
+//--------------------------------------------------------------
+
+aldeg_cas01.gat,123,223,0	script	#RoomSwitch_L1	111,{
+
+	callfunc "F_RoomSwitch",218,176;
+	close;
+}
+
+aldeg_cas02.gat,139,234,0	script	#RoomSwitch_L2	111,{
+
+	callfunc "F_RoomSwitch",78,75;
+	close;
+}
+
+aldeg_cas03.gat,229,267,0	script	#RoomSwitch_L3	111,{
+
+	callfunc "F_RoomSwitch",110,119;
+	close;
+}
+
+aldeg_cas04.gat,83,17,0		script	#RoomSwitch_L4	111,{
+
+	callfunc "F_RoomSwitch",67,117;
+	close;
+}
+
+aldeg_cas05.gat,64,8,0		script	#RoomSwitch_L5	111,{
+
+	callfunc "F_RoomSwitch",51,179;
+	close;
+}
+
+
+//--------------------------------------------------------------
+// Geffen Treasure Room Return Switches - [jAthena]
+//--------------------------------------------------------------
+
+gefg_cas01.gat,152,117,0	script	#RoomSwitch_B1	111,{
+
+	callfunc "F_RoomSwitch",40,49;
+	close;
+}
+
+gefg_cas02.gat,145,115,0	script	#RoomSwitch_B2	111,{
+
+	callfunc "F_RoomSwitch",12,67;
+	close;
+}
+
+gefg_cas03.gat,275,290,0	script	#RoomSwitch_B3	111,{
+
+	callfunc "F_RoomSwitch",106,24;
+	close;
+}
+
+gefg_cas04.gat,116,123,0	script	#RoomSwitch_B4	111,{
+
+	callfunc "F_RoomSwitch",73,47;
+	close;
+}
+
+gefg_cas05.gat,149,106,0	script	#RoomSwitch_B5	111,{
+
+	callfunc "F_RoomSwitch",70,53;
+	close;
+}
+
+
+//--------------------------------------------------------------
+// Payon Treasure Room Return Switches - [jAthena]
+//--------------------------------------------------------------
+
+payg_cas01.gat,295,8,0		script	#RoomSwitch_C1	111,{
+
+	callfunc "F_RoomSwitch",120,59;
+	close;
+}
+
+payg_cas02.gat,149,149,0	script	#RoomSwitch_C2	111,{
+
+	callfunc "F_RoomSwitch",22,261;
+	close;
+}
+
+payg_cas03.gat,163,167,0	script	#RoomSwitch_C3	111,{
+
+	callfunc "F_RoomSwitch",50,262;
+	close;
+}
+
+payg_cas04.gat,151,47,0		script	#RoomSwitch_C4	111,{
+
+	callfunc "F_RoomSwitch",38,285;
+	close;
+}
+
+payg_cas05.gat,161,137,0	script	#RoomSwitch_C5	111,{
+
+	callfunc "F_RoomSwitch",277,250;
+	close;
+}
+
+
+//--------------------------------------------------------------
+// Prontera Treasure Room Return Switches - [jAthena]
+//--------------------------------------------------------------
+
+prtg_cas01.gat,15,209,0		script	#RoomSwitch_V1	111,{
+
+	callfunc "F_RoomSwitch",111,181;
+	close;
+}
+
+prtg_cas02.gat,206,228,0	script	#RoomSwitch_V2	111,{
+
+	callfunc "F_RoomSwitch",94,62;
+	close;
+}
+
+prtg_cas03.gat,193,130,0	script	#RoomSwitch_V3	111,{
+
+	callfunc "F_RoomSwitch",51,101;
+	close;
+}
+
+prtg_cas04.gat,275,160,0	script	#RoomSwitch_V4	111,{
+
+	callfunc "F_RoomSwitch",260,265;
+	close;
+}
+
+prtg_cas05.gat,281,176,0	script	#RoomSwitch_V5	111,{
+
+	callfunc "F_RoomSwitch",36,38;
+	close;
+}
+
+
+//--------------------------------------------------------------
+// Al De Baran Guild Castles Treasure Room Security - [Tsuyuki]
+//--------------------------------------------------------------
+
+aldeg_cas01.gat,118,223,0	script	ban_warp#11	139,8,8,{
+
+OnTouch:
+	set '@dummy,getmapxy('@map$,'@dummy,'@dummy,1);
+	set '@guildID,getcastledata('@map$,1);
+	if (getcharid(0) != getguildmasterid('@guildID)) {
+		warp "aldebaran.gat",143,112;
+		end;
+	} else {
+		end;
+	}
+}
+
+aldeg_cas02.gat,135,230,0	script	ban_warp#12	139,8,8,{
+
+OnTouch:
+	set '@dummy,getmapxy('@map$,'@dummy,'@dummy,1);
+	set '@guildID,getcastledata('@map$,1);
+	if (getcharid(0) != getguildmasterid('@guildID)) {
+		warp "aldebaran.gat",143,112;
+		end;
+	} else {
+		end;
+	}
+}
+
+aldeg_cas03.gat,225,269,0	script	ban_warp#13	139,8,8,{
+
+OnTouch:
+	set '@dummy,getmapxy('@map$,'@dummy,'@dummy,1);
+	set '@guildID,getcastledata('@map$,1);
+	if (getcharid(0) != getguildmasterid('@guildID)) {
+		warp "aldebaran.gat",143,112;
+		end;
+	} else {
+		end;
+	}
+}
+
+aldeg_cas04.gat,84,13,0	script	ban_warp#14	139,8,8,{
+
+OnTouch:
+	set '@dummy,getmapxy('@map$,'@dummy,'@dummy,1);
+	set '@guildID,getcastledata('@map$,1);
+	if (getcharid(0) != getguildmasterid('@guildID)) {
+		warp "aldebaran.gat",143,112;
+		end;
+	} else {
+		end;
+	}
+}
+
+aldeg_cas05.gat,62,12,0	script	ban_warp#15	139,8,8,{
+
+OnTouch:
+	set '@dummy,getmapxy('@map$,'@dummy,'@dummy,1);
+	set '@guildID,getcastledata('@map$,1);
+	if (getcharid(0) != getguildmasterid('@guildID)) {
+		warp "aldebaran.gat",143,112;
+		end;
+	} else {
+		end;
+	}
+}
+
+
+//--------------------------------------------------------------
+// Geffen Guild Castles Treasure Room Security - [Tsuyuki]
+//--------------------------------------------------------------
+
+gefg_cas01.gat,154,112,0	script	ban_warp#16	139,6,6,{
+
+OnTouch:
+	set '@dummy,getmapxy('@map$,'@dummy,'@dummy,1);
+	set '@guildID,getcastledata('@map$,1);
+	if (getcharid(0) != getguildmasterid('@guildID)) {
+		warp "geffen.gat",120,38;
+		end;
+	} else {
+		end;
+	}
+}
+
+gefg_cas02.gat,140,116,0	script	ban_warp#17	139,6,6,{
+
+OnTouch:
+	set '@dummy,getmapxy('@map$,'@dummy,'@dummy,1);
+	set '@guildID,getcastledata('@map$,1);
+	if (getcharid(0) != getguildmasterid('@guildID)) {
+		warp "geffen.gat",120,38;
+		end;
+	} else {
+		end;
+	}
+}
+
+gefg_cas03.gat,271,290,0	script	ban_warp#18	139,6,6,{
+
+OnTouch:
+	set '@dummy,getmapxy('@map$,'@dummy,'@dummy,1);
+	set '@guildID,getcastledata('@map$,1);
+	if (getcharid(0) != getguildmasterid('@guildID)) {
+		warp "geffen.gat",120,38;
+		end;
+	} else {
+		end;
+	}
+}
+
+gefg_cas04.gat,116,119,0	script	ban_warp#19	139,6,6,{
+
+OnTouch:
+	set '@dummy,getmapxy('@map$,'@dummy,'@dummy,1);
+	set '@guildID,getcastledata('@map$,1);
+	if (getcharid(0) != getguildmasterid('@guildID)) {
+		warp "geffen.gat",120,38;
+		end;
+	} else {
+		end;
+	}
+}
+
+gefg_cas05.gat,144,110,0	script	ban_warp#20	139,6,6,{
+
+OnTouch:
+	set '@dummy,getmapxy('@map$,'@dummy,'@dummy,1);
+	set '@guildID,getcastledata('@map$,1);
+	if (getcharid(0) != getguildmasterid('@guildID)) {
+		warp "geffen.gat",120,38;
+		end;
+	} else {
+		end;
+	}
+}
+
+
+//--------------------------------------------------------------
+// Payon Guild Castles Treasure Room Security - [Tsuyuki]
+//--------------------------------------------------------------
+
+payg_cas01.gat,291,8,0	script	ban_warp#6	139,6,6,{
+
+OnTouch:
+	set '@dummy,getmapxy('@map$,'@dummy,'@dummy,1);
+	set '@guildID,getcastledata('@map$,1);
+	if (getcharid(0) != getguildmasterid('@guildID)) {
+		warp "payon.gat",100,100;
+		end;
+	} else {
+		end;
+	}
+}
+
+payg_cas02.gat,145,144,0	script	ban_warp#7	139,6,6,{
+
+OnTouch:
+	set '@dummy,getmapxy('@map$,'@dummy,'@dummy,1);
+	set '@guildID,getcastledata('@map$,1);
+	if (getcharid(0) != getguildmasterid('@guildID)) {
+		warp "payon.gat",100,100;
+		end;
+	} else {
+		end;
+	}
+}
+
+payg_cas03.gat,159,168,0	script	ban_warp#8	139,6,6,{
+
+OnTouch:
+	set '@dummy,getmapxy('@map$,'@dummy,'@dummy,1);
+	set '@guildID,getcastledata('@map$,1);
+	if (getcharid(0) != getguildmasterid('@guildID)) {
+		warp "payon.gat",100,100;
+		end;
+	} else {
+		end;
+	}
+}
+
+payg_cas04.gat,147,48,0	script	ban_warp#9	139,6,6,{
+
+OnTouch:
+	set '@dummy,getmapxy('@map$,'@dummy,'@dummy,1);
+	set '@guildID,getcastledata('@map$,1);
+	if (getcharid(0) != getguildmasterid('@guildID)) {
+		warp "payon.gat",100,100;
+		end;
+	} else {
+		end;
+	}
+}
+
+payg_cas05.gat,157,132,0	script	ban_warp#10	139,6,6,{
+
+OnTouch:
+	set '@dummy,getmapxy('@map$,'@dummy,'@dummy,1);
+	set '@guildID,getcastledata('@map$,1);
+	if (getcharid(0) != getguildmasterid('@guildID)) {
+		warp "payon.gat",100,100;
+		end;
+	} else {
+		end;
+	}
+}
+
+
+//--------------------------------------------------------------
+// Prontera Guild Castles Treasure Room Security - [Tsuyuki]
+//--------------------------------------------------------------
+
+prtg_cas01.gat,11,208,0	script	ban_warp#1	139,6,6,{
+
+OnTouch:
+	set '@dummy,getmapxy('@map$,'@dummy,'@dummy,1);
+	set '@guildID,getcastledata('@map$,1);
+	if (getcharid(0) != getguildmasterid('@guildID)) {
+		warp "prontera.gat",119,64;
+		end;
+	} else {
+		end;
+	}
+}
+
+prtg_cas02.gat,202,228,0	script	ban_warp#2	139,6,6,{
+
+OnTouch:
+	set '@dummy,getmapxy('@map$,'@dummy,'@dummy,1);
+	set '@guildID,getcastledata('@map$,1);
+	if (getcharid(0) != getguildmasterid('@guildID)) {
+		warp "prontera.gat",119,64;
+		end;
+	} else {
+		end;
+	}
+}
+
+prtg_cas03.gat,189,132,0	script	ban_warp#3	139,6,6,{
+
+OnTouch:
+	set '@dummy,getmapxy('@map$,'@dummy,'@dummy,1);
+	set '@guildID,getcastledata('@map$,1);
+	if (getcharid(0) != getguildmasterid('@guildID)) {
+		warp "prontera.gat",119,64;
+		end;
+	} else {
+		end;
+	}
+}
+
+prtg_cas04.gat,271,162,0	script	ban_warp#4	139,6,6,{
+
+OnTouch:
+	set '@dummy,getmapxy('@map$,'@dummy,'@dummy,1);
+	set '@guildID,getcastledata('@map$,1);
+	if (getcharid(0) != getguildmasterid('@guildID)) {
+		warp "prontera.gat",119,64;
+		end;
+	} else {
+		end;
+	}
+}
+
+prtg_cas05.gat,276,178,0	script	ban_warp#5	139,6,6,{
+
+OnTouch:
+	set '@dummy,getmapxy('@map$,'@dummy,'@dummy,1);
+	set '@guildID,getcastledata('@map$,1);
+	if (getcharid(0) != getguildmasterid('@guildID)) {
+		warp "prontera.gat",119,64;
+		end;
+	} else {
+		end;
+	}
+}

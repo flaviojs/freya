@@ -18,7 +18,7 @@
 
 
 //--------------------------------------------------------------
-// Aldebaran Guild Castle Kafra Employees - [Tsuyuki]
+// Al De Baran Guild Castle Kafra Employees - [Tsuyuki]
 //--------------------------------------------------------------
 
 aldeg_cas01.gat,218,170,0	script	Kafra Employee::AgitKafra_L0	117,{

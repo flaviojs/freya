@@ -7,36 +7,31 @@
 //              /_/  |_|\____|_|  \___/|_|  \__,_|              
 //                 http://aurora.deltaanime.net                 
 //--------------------------------------------------------------
-// Script Title: GvG Flag System	Author: jAthena/Yor
+// Script Title: GvG Flag System	Author: jAthena
 //--------------------------------------------------------------
-// Revision History: v1.1
+// Revision History: v1.0
 //--------------------------------------------------------------
 //	1.0 First version [jAthena]
-//	1.1 Translated into English [Yor]
 //--------------------------------------------------------------
 // Additional Notes: N/A
 //--------------------------------------------------------------
 
 
-//=========================================================================
-// Guild Flag common functions
-//	callfunc "F_FlagSrc",AreaIndex,"MAP",X,Y;
-//
-// * Detail of an argument:
-//	AreaIndex -> 0:Aldebaran, 1:Others
-//-------------------------------------------------------------------------
+//--------------------------------------------------------------
+// GvG Flag Main Function - [jAthena]
+//--------------------------------------------------------------
 
 function	script	F_FlagSrc	{
+
 	set '@gid,getcastledata(getarg(1),1);
-	if ('@gid > 0 && getcharid(2)=='@gid && getarg(2)) {	// It's true when a X coordinate is set and when the Castle has a guild.
+	if ('@gid > 0 && getcharid(2) == '@gid && getarg(2)) {
 		mes "[Ringing Voice]";
 		mes "Brave one...";
 		mes "Would you return to your land?";
 		next;
 		if (select("Yes, please.","No, not now.")==1) {
-			// Check again, because the Castle can change of Guild while the time of the choice of the player
 			set '@gid,getcastledata(getarg(1),1);
-			if ('@gid > 0 && getcharid(2)=='@gid && getarg(2)) {
+			if ('@gid > 0 && getcharid(2) == '@gid && getarg(2)) {
 				warp getarg(1),getarg(2),getarg(3);
 				end;
 			}
@@ -66,8 +61,7 @@ function	script	F_FlagSrc	{
 		mes "you must defeat all the Guardians";
 		mes "that are protecting the guild base";
 		mes "and eliminate the Emperium.";
-	}
-	else {
+	} else {
 		mes "Guild ^ff0000" +getguildname('@gid)+ "^000000";
 		mes "is the righteous owner of this Castle.";
 		next;
@@ -82,17 +76,15 @@ function	script	F_FlagSrc	{
 }
 
 
-//-------------------------------------------
-// * OnAgitInit is called at Inter-server connection,
-//   and OnFlagEmb_XY is called when owner of the Castle changes.
-//-------------------------------------------
+//--------------------------------------------------------------
+// Al De Baran Guild Castle #1 Flags - [jAthena]
+//--------------------------------------------------------------
 
-//==========================================
-// L1 : Aldebaran
-//------------------------------------------
 -	script	GdFlag_L1	722,{
+
 	callfunc "F_FlagSrc",0,"aldeg_cas01.gat",0,0;
 	close;
+
 OnAgitInit:
 OnFlagEmb_L1:
 	if (strnpcinfo(0) != "GdFlag_L1")
@@ -101,8 +93,10 @@ OnFlagEmb_L1:
 }
 
 alde_gld.gat,257,153,7	script	Guild Flag#L1-00	722,{
+
 	callfunc "F_FlagSrc",0,"aldeg_cas01.gat",218,170;
 	close;
+
 OnAgitInit:
 OnFlagEmb_L1:
 	flagemblem getcastledata("aldeg_cas01.gat",1);
@@ -129,12 +123,16 @@ aldeg_cas01.gat,74,64,2		duplicate(GdFlag_L1)	Guild Flag#L1-17	722
 aldeg_cas01.gat,203,150,4	duplicate(GdFlag_L1)	Guild Flag#L1-18	722
 aldeg_cas01.gat,210,150,4	duplicate(GdFlag_L1)	Guild Flag#L1-19	722
 
-//==========================================
-// L2 : Aldebaran
-//------------------------------------------
+
+//--------------------------------------------------------------
+// Al De Baran Guild Castle #2 Flags - [jAthena]
+//--------------------------------------------------------------
+
 -	script	GdFlag_L2	722,{
+
 	callfunc "F_FlagSrc",0,"aldeg_cas02.gat",0,0;
 	close;
+
 OnAgitInit:
 OnFlagEmb_L2:
 	if (strnpcinfo(0) != "GdFlag_L2")
@@ -143,8 +141,10 @@ OnFlagEmb_L2:
 }
 
 alde_gld.gat,257,166,5	script	Guild Flag#L2-00	722,{
+
 	callfunc "F_FlagSrc",0,"aldeg_cas02.gat",84,74;
 	close;
+
 OnAgitInit:
 OnFlagEmb_L2:
 	flagemblem getcastledata("aldeg_cas02.gat",1);
@@ -168,12 +168,16 @@ aldeg_cas02.gat,32,213,2	duplicate(GdFlag_L2)	Guild Flag#L2-14	722
 aldeg_cas02.gat,88,180,2	duplicate(GdFlag_L2)	Guild Flag#L2-15	722
 aldeg_cas02.gat,121,29,2	duplicate(GdFlag_L2)	Guild Flag#L2-16	722
 
-//==========================================
-// L3 : Aldebaran
-//------------------------------------------
+
+//--------------------------------------------------------------
+// Al De Baran Guild Castle #3 Flags - [jAthena]
+//--------------------------------------------------------------
+
 -	script	GdFlag_L3	722,{
+
 	callfunc "F_FlagSrc",0,"aldeg_cas03.gat",0,0;
 	close;
+
 OnAgitInit:
 OnFlagEmb_L3:
 	if (strnpcinfo(0) != "GdFlag_L3")
@@ -182,8 +186,10 @@ OnFlagEmb_L3:
 }
 
 alde_gld.gat,262,153,7	script	Guild Flag#L3-00	722,{
+
 	callfunc "F_FlagSrc",0,"aldeg_cas03.gat",118,76;
 	close;
+
 OnAgitInit:
 OnFlagEmb_L3:
 	flagemblem getcastledata("aldeg_cas03.gat",1);
@@ -210,12 +216,16 @@ aldeg_cas03.gat,208,145,2	duplicate(GdFlag_L3)	Guild Flag#L3-17	722
 aldeg_cas03.gat,207,75,2	duplicate(GdFlag_L3)	Guild Flag#L3-18	722
 aldeg_cas03.gat,96,62,2		duplicate(GdFlag_L3)	Guild Flag#L3-19	722
 
-//==========================================
-// L4 : Aldebaran
-//------------------------------------------
+
+//--------------------------------------------------------------
+// Al De Baran Guild Castle #4 Flags - [jAthena]
+//--------------------------------------------------------------
+
 -	script	GdFlag_L4	722,{
+
 	callfunc "F_FlagSrc",0,"aldeg_cas04.gat",0,0;
 	close;
+
 OnAgitInit:
 OnFlagEmb_L4:
 	if (strnpcinfo(0) != "GdFlag_L4")
@@ -224,8 +234,10 @@ OnFlagEmb_L4:
 }
 
 alde_gld.gat,262,166,5	script	Guild Flag#L4-00	722,{
+
 	callfunc "F_FlagSrc",0,"aldeg_cas04.gat",45,88;
 	close;
+
 OnAgitInit:
 OnFlagEmb_L4:
 	flagemblem getcastledata("aldeg_cas04.gat",1);
@@ -252,12 +264,16 @@ aldeg_cas04.gat,133,220,2	duplicate(GdFlag_L4)	Guild Flag#L4-17	722
 aldeg_cas04.gat,169,22,2	duplicate(GdFlag_L4)	Guild Flag#L4-18	722
 aldeg_cas04.gat,169,15,2	duplicate(GdFlag_L4)	Guild Flag#L4-19	722
 
-//==========================================
-// L5 : Aldebaran
-//------------------------------------------
+
+//--------------------------------------------------------------
+// Al De Baran Guild Castle #5 Flags - [jAthena]
+//--------------------------------------------------------------
+
 -	script	GdFlag_L5	722,{
+
 	callfunc "F_FlagSrc",0,"aldeg_cas05.gat",0,0;
 	close;
+
 OnAgitInit:
 OnFlagEmb_L5:
 	if (strnpcinfo(0) != "GdFlag_L5")
@@ -266,8 +282,10 @@ OnFlagEmb_L5:
 }
 
 alde_gld.gat,267,153,7	script	Guild Flag#L5-00	722,{
+
 	callfunc "F_FlagSrc",0,"aldeg_cas05.gat",31,190;
 	close;
+
 OnAgitInit:
 OnFlagEmb_L5:
 	flagemblem getcastledata("aldeg_cas05.gat",1);
@@ -292,12 +310,16 @@ aldeg_cas05.gat,154,51,2	duplicate(GdFlag_L5)	Guild Flag#L5-15	722
 aldeg_cas05.gat,22,211,2	duplicate(GdFlag_L5)	Guild Flag#L5-16	722
 aldeg_cas05.gat,150,202,2	duplicate(GdFlag_L5)	Guild Flag#L5-17	722
 
-//==========================================
-// B1 : Geffen
-//------------------------------------------
+
+//--------------------------------------------------------------
+// Geffen Guild Castle #1 Flags - [jAthena]
+//--------------------------------------------------------------
+
 -	script	GdFlag_B1	722,{
+
 	callfunc "F_FlagSrc",1,"gefg_cas01.gat",0,0;
 	close;
+
 OnAgit:
 OnFlagEmb_B1:
 	if (strnpcinfo(0) != "GdFlag_B1")
@@ -306,8 +328,10 @@ OnFlagEmb_B1:
 }
 
 gef_fild07.gat,330,199,2	script	Guild Flag#B1-00	722,{
+
 	callfunc "F_FlagSrc",1,"gefg_cas01.gat",83,47;
 	close;
+
 OnAgitInit:
 OnFlagEmb_B1:
 	flagemblem getcastledata("gefg_cas01.gat",1);
@@ -325,12 +349,16 @@ gefg_cas01.gat,17,171,5		duplicate(GdFlag_B1)	Guild Flag#B1-08	722
 gefg_cas01.gat,59,16,4		duplicate(GdFlag_B1)	Guild Flag#B1-09	722
 gefg_cas01.gat,64,16,4		duplicate(GdFlag_B1)	Guild Flag#B1-10	722
 
-//==========================================
-// B2 : Geffen
-//------------------------------------------
+
+//--------------------------------------------------------------
+// Geffen Guild Castle #2 Flags - [jAthena]
+//--------------------------------------------------------------
+
 -	script	GdFlag_B2	722,{
+
 	callfunc "F_FlagSrc",1,"gefg_cas02.gat",0,0;
 	close;
+
 OnAgitInit:
 OnFlagEmb_B2:
 	if (strnpcinfo(0) != "GdFlag_B2")
@@ -339,8 +367,10 @@ OnFlagEmb_B2:
 }
 
 gef_fild07.gat,330,204,2	script	Guild Flag#B2-00	722,{
+
 	callfunc "F_FlagSrc",1,"gefg_cas02.gat",23,66;
 	close;
+
 OnAgitInit:
 OnFlagEmb_B2:
 	flagemblem getcastledata("gefg_cas02.gat",1);
@@ -359,12 +389,16 @@ gefg_cas02.gat,37,168,6		duplicate(GdFlag_B2)	Guild Flag#B2-09	722
 gefg_cas02.gat,68,47,2		duplicate(GdFlag_B2)	Guild Flag#B2-10	722
 gefg_cas02.gat,68,36,2		duplicate(GdFlag_B2)	Guild Flag#B2-11	722
 
-//==========================================
-// B3 : Geffen
-//------------------------------------------
+
+//--------------------------------------------------------------
+// Geffen Guild Castle #3 Flags - [jAthena]
+//--------------------------------------------------------------
+
 -	script	GdFlag_B3	722,{
+
 	callfunc "F_FlagSrc",1,"gefg_cas03.gat",0,0;
 	close;
+
 OnAgitInit:
 OnFlagEmb_B3:
 	if (strnpcinfo(0) != "GdFlag_B3")
@@ -373,8 +407,10 @@ OnFlagEmb_B3:
 }
 
 gef_fild07.gat,330,176,2	script	Guild Flag#B3-00	722,{
+
 	callfunc "F_FlagSrc",1,"gefg_cas03.gat",116,89;
 	close;
+
 OnAgitInit:
 OnFlagEmb_B3:
 	flagemblem getcastledata("gefg_cas03.gat",1);
@@ -396,12 +432,16 @@ gefg_cas03.gat,65,164,4		duplicate(GdFlag_B3)	Guild Flag#B3-12	722
 gefg_cas03.gat,37,214,1		duplicate(GdFlag_B3)	Guild Flag#B3-13	722
 gefg_cas03.gat,34,208,1		duplicate(GdFlag_B3)	Guild Flag#B3-14	722
 
-//==========================================
-// B4 : Geffen
-//------------------------------------------
+
+//--------------------------------------------------------------
+// Geffen Guild Castle #4 Flags - [jAthena]
+//--------------------------------------------------------------
+
 -	script	GdFlag_B4	722,{
+
 	callfunc "F_FlagSrc",1,"gefg_cas04.gat",0,0;
 	close;
+
 OnAgitInit:
 OnFlagEmb_B4:
 	if (strnpcinfo(0) != "GdFlag_B4")
@@ -410,8 +450,10 @@ OnFlagEmb_B4:
 }
 
 gef_fild07.gat,330,171,2	script	Guild Flag#B4-00	722,{
+
 	callfunc "F_FlagSrc",1,"gefg_cas04.gat",59,70;
 	close;
+
 OnAgitInit:
 OnFlagEmb_B4:
 	flagemblem getcastledata("gefg_cas04.gat",1);
@@ -429,12 +471,16 @@ gefg_cas04.gat,29,212,1		duplicate(GdFlag_B4)	Guild Flag#B4-08	722
 gefg_cas04.gat,24,73,1		duplicate(GdFlag_B4)	Guild Flag#B4-09	722
 gefg_cas04.gat,35,73,4		duplicate(GdFlag_B4)	Guild Flag#B4-10	722
 
-//==========================================
-// B5 : Geffen
-//------------------------------------------
+
+//--------------------------------------------------------------
+// Geffen Guild Castle #5 Flags - [jAthena]
+//--------------------------------------------------------------
+
 -	script	GdFlag_B5	722,{
+
 	callfunc "F_FlagSrc",1,"gefg_cas05.gat",0,0;
 	close;
+
 OnAgitInit:
 OnFlagEmb_B5:
 	if (strnpcinfo(0) != "GdFlag_B5")
@@ -443,8 +489,10 @@ OnFlagEmb_B5:
 }
 
 gef_fild07.gat,330,166,2	script	Guild Flag#B5-00	722,{
+
 	callfunc "F_FlagSrc",1,"gefg_cas05.gat",61,52;
 	close;
+
 OnAgitInit:
 OnFlagEmb_B5:
 	flagemblem getcastledata("gefg_cas05.gat",1);
@@ -462,12 +510,16 @@ gefg_cas05.gat,62,144,7		duplicate(GdFlag_B5)	Guild Flag#B5-08	722
 gefg_cas05.gat,62,66,4		duplicate(GdFlag_B5)	Guild Flag#B5-09	722
 gefg_cas05.gat,69,66,4		duplicate(GdFlag_B5)	Guild Flag#B5-10	722
 
-//==========================================
-// C1 : Payon
-//------------------------------------------
+
+//--------------------------------------------------------------
+// Payon Guild Castle #1 Flags - [jAthena]
+//--------------------------------------------------------------
+
 -	script	GdFlag_C1	722,{
+
 	callfunc "F_FlagSrc",1,"payg_cas01.gat",0,0;
 	close;
+
 OnAgitInit:
 OnFlagEmb_C1:
 	if (strnpcinfo(0) != "GdFlag_C1")
@@ -476,8 +528,10 @@ OnFlagEmb_C1:
 }
 
 pay_gld.gat,347,125,2	script	Guild Flag#C1-00	722,{
+
 	callfunc "F_FlagSrc",1,"payg_cas01.gat",212,108;
 	close;
+
 OnAgitInit:
 OnFlagEmb_C1:
 	flagemblem getcastledata("payg_cas01.gat",1);
@@ -495,12 +549,16 @@ payg_cas01.gat,221,116,4	duplicate(GdFlag_C1)	Guild Flag#C1-08	722
 payg_cas01.gat,206,108,4	duplicate(GdFlag_C1)	Guild Flag#C1-09	722
 payg_cas01.gat,212,108,4	duplicate(GdFlag_C1)	Guild Flag#C1-10	722
 
-//==========================================
-// C2 : Payon
-//------------------------------------------
+
+//--------------------------------------------------------------
+// Payon Guild Castle #2 Flags - [jAthena]
+//--------------------------------------------------------------
+
 -	script	GdFlag_C2	722,{
+
 	callfunc "F_FlagSrc",1,"payg_cas02.gat",0,0;
 	close;
+
 OnAgitInit:
 OnFlagEmb_C2:
 	if (strnpcinfo(0) != "GdFlag_C2")
@@ -509,8 +567,10 @@ OnFlagEmb_C2:
 }
 
 pay_gld.gat,347,116,2	script	Guild Flag#C2-00	722,{
+
 	callfunc "F_FlagSrc",1,"payg_cas02.gat",22,275;
 	close;
+
 OnAgitInit:
 OnFlagEmb_C2:
 	flagemblem getcastledata("payg_cas02.gat",1);
@@ -528,12 +588,16 @@ payg_cas02.gat,209,49,0		duplicate(GdFlag_C2)	Guild Flag#C2-08	722
 payg_cas02.gat,59,282,4		duplicate(GdFlag_C2)	Guild Flag#C2-09	722
 payg_cas02.gat,70,282,4		duplicate(GdFlag_C2)	Guild Flag#C2-10	722
 
-//==========================================
-// C3 : Payon
-//------------------------------------------
+
+//--------------------------------------------------------------
+// Payon Guild Castle #3 Flags - [jAthena]
+//--------------------------------------------------------------
+
 -	script	GdFlag_C3	722,{
+
 	callfunc "F_FlagSrc",1,"payg_cas03.gat",0,0;
 	close;
+
 OnAgitInit:
 OnFlagEmb_C3:
 	if (strnpcinfo(0) != "GdFlag_C3")
@@ -542,8 +606,10 @@ OnFlagEmb_C3:
 }
 
 pay_gld.gat,341,106,0	script	Guild Flag#C3-00	722,{
+
 	callfunc "F_FlagSrc",1,"payg_cas03.gat",9,263;
 	close;
+
 OnAgitInit:
 OnFlagEmb_C3:
 	flagemblem getcastledata("payg_cas03.gat",1);
@@ -561,12 +627,16 @@ payg_cas03.gat,266,66,4		duplicate(GdFlag_C3)	Guild Flag#C3-08	722
 payg_cas03.gat,34,31,4		duplicate(GdFlag_C3)	Guild Flag#C3-09	722
 payg_cas03.gat,43,31,4		duplicate(GdFlag_C3)	Guild Flag#C3-10	722
 
-//==========================================
-// C4 : Payon
-//------------------------------------------
+
+//--------------------------------------------------------------
+// Payon Guild Castle #4 Flags - [jAthena]
+//--------------------------------------------------------------
+
 -	script	GdFlag_C4	722,{
+
 	callfunc "F_FlagSrc",1,"payg_cas04.gat",0,0;
 	close;
+
 OnAgitInit:
 OnFlagEmb_C4:
 	if (strnpcinfo(0) != "GdFlag_C4")
@@ -575,8 +645,10 @@ OnFlagEmb_C4:
 }
 
 pay_gld.gat,330,106,0	script	Guild Flag#C4-00	722,{
+
 	callfunc "F_FlagSrc",1,"payg_cas04.gat",40,235;
 	close;
+
 OnAgitInit:
 OnFlagEmb_C4:
 	flagemblem getcastledata("payg_cas04.gat",1);
@@ -594,12 +666,16 @@ payg_cas04.gat,248,160,6	duplicate(GdFlag_C4)	Guild Flag#C4-08	722
 payg_cas04.gat,232,181,4	duplicate(GdFlag_C4)	Guild Flag#C4-09	722
 payg_cas04.gat,239,181,4	duplicate(GdFlag_C4)	Guild Flag#C4-10	722
 
-//==========================================
-// C5 : Payon
-//------------------------------------------
+
+//--------------------------------------------------------------
+// Payon Guild Castle #5 Flags - [jAthena]
+//--------------------------------------------------------------
+
 -	script	GdFlag_C5	722,{
+
 	callfunc "F_FlagSrc",1,"payg_cas05.gat",0,0;
 	close;
+
 OnAgitInit:
 OnFlagEmb_C5:
 	if (strnpcinfo(0) != "GdFlag_C5")
@@ -608,8 +684,10 @@ OnFlagEmb_C5:
 }
 
 pay_gld.gat,318,106,0	script	Guild Flag#C5-00	722,{
+
 	callfunc "F_FlagSrc",1,"payg_cas05.gat",276,227;
 	close;
+
 OnAgitInit:
 OnFlagEmb_C5:
 	flagemblem getcastledata("payg_cas05.gat",1);
@@ -627,12 +705,16 @@ payg_cas05.gat,57,271,0		duplicate(GdFlag_C5)	Guild Flag#C5-08	722
 payg_cas05.gat,55,252,2		duplicate(GdFlag_C5)	Guild Flag#C5-09	722
 payg_cas05.gat,55,260,2		duplicate(GdFlag_C5)	Guild Flag#C5-10	722
 
-//==========================================
-// V1 : Prontera
-//------------------------------------------
+
+//--------------------------------------------------------------
+// Prontera Guild Castle #1 Flags - [jAthena]
+//--------------------------------------------------------------
+
 -	script	GdFlag_V1	722,{
+
 	callfunc "F_FlagSrc",1,"prtg_cas01.gat",0,0;
 	close;
+
 OnAgitInit:
 OnFlagEmb_V1:
 	if (strnpcinfo(0) != "GdFlag_V1")
@@ -641,8 +723,10 @@ OnFlagEmb_V1:
 }
 
 prt_gld.gat,160,210,4	script	Guild Flag#V1-00	722,{
+
 	callfunc "F_FlagSrc",1,"prtg_cas01.gat",97,174;
 	close;
+
 OnAgitInit:
 OnFlagEmb_V1:
 	flagemblem getcastledata("prtg_cas01.gat",1);
@@ -664,12 +748,16 @@ prtg_cas01.gat,73,6,4		duplicate(GdFlag_V1)	Guild Flag#V1-12	722
 prtg_cas01.gat,55,46,4		duplicate(GdFlag_V1)	Guild Flag#V1-13	722
 prtg_cas01.gat,45,46,4		duplicate(GdFlag_V1)	Guild Flag#V1-14	722
 
-//==========================================
-// V2 : Prontera
-//------------------------------------------
+
+//--------------------------------------------------------------
+// Prontera Guild Castle #2 Flags - [jAthena]
+//--------------------------------------------------------------
+
 -	script	GdFlag_V2	722,{
+
 	callfunc "F_FlagSrc",1,"prtg_cas02.gat",0,0;
 	close;
+
 OnAgitInit:
 OnFlagEmb_V2:
 	if (strnpcinfo(0) != "GdFlag_V2")
@@ -678,8 +766,10 @@ OnFlagEmb_V2:
 }
 
 prt_gld.gat,153,213,3	script	Guild Flag#V2-00	722,{
+
 	callfunc "F_FlagSrc",1,"prtg_cas02.gat",71,36;
 	close;
+
 OnAgitInit:
 OnFlagEmb_V2:
 	flagemblem getcastledata("prtg_cas02.gat",1);
@@ -703,12 +793,16 @@ prtg_cas02.gat,34,189,8		duplicate(GdFlag_V2)	Guild Flag#V2-14	722
 prtg_cas02.gat,153,161,4	duplicate(GdFlag_V2)	Guild Flag#V2-15	722
 prtg_cas02.gat,162,161,4	duplicate(GdFlag_V2)	Guild Flag#V2-16	722
 
-//==========================================
-// V3 : Prontera
-//------------------------------------------
+
+//--------------------------------------------------------------
+// Prontera Guild Castle #3 Flags - [jAthena]
+//--------------------------------------------------------------
+
 -	script	GdFlag_V3	722,{
+
 	callfunc "F_FlagSrc",1,"prtg_cas03.gat",0,0;
 	close;
+
 OnAgitInit:
 OnFlagEmb_V3:
 	if (strnpcinfo(0) != "GdFlag_V3")
@@ -717,8 +811,10 @@ OnFlagEmb_V3:
 }
 
 prt_gld.gat,150,220,2	script	Guild Flag#V3-00	722,{
+
 	callfunc "F_FlagSrc",1,"prtg_cas03.gat",181,215;
 	close;
+
 OnAgitInit:
 OnFlagEmb_V3:
 	flagemblem getcastledata("prtg_cas03.gat",1);
@@ -740,12 +836,16 @@ prtg_cas03.gat,169,210,4	duplicate(GdFlag_V3)	Guild Flag#V3-12	722
 prtg_cas03.gat,162,201,4	duplicate(GdFlag_V3)	Guild Flag#V3-13	722
 prtg_cas03.gat,165,201,4	duplicate(GdFlag_V3)	Guild Flag#V3-14	722
 
-//==========================================
-// V4 : Prontera
-//------------------------------------------
+
+//--------------------------------------------------------------
+// Prontera Guild Castle #4 Flags - [jAthena]
+//--------------------------------------------------------------
+
 -	script	GdFlag_V4	722,{
+
 	callfunc "F_FlagSrc",1,"prtg_cas04.gat",0,0;
 	close;
+
 OnAgitInit:
 OnFlagEmb_V4:
 	if (strnpcinfo(0) != "GdFlag_V4")
@@ -754,8 +854,10 @@ OnFlagEmb_V4:
 }
 
 prt_gld.gat,169,220,6	script	Guild Flag#V4-00	722,{
+
 	callfunc "F_FlagSrc",1,"prtg_cas04.gat",258,247;
 	close;
+
 OnAgitInit:
 OnFlagEmb_V4:
 	flagemblem getcastledata("prtg_cas04.gat",1);
@@ -777,12 +879,16 @@ prtg_cas04.gat,258,20,4		duplicate(GdFlag_V4)	Guild Flag#V4-12	722
 prtg_cas04.gat,263,20,4		duplicate(GdFlag_V4)	Guild Flag#V4-13	722
 prtg_cas04.gat,263,27,4		duplicate(GdFlag_V4)	Guild Flag#V4-14	722
 
-//==========================================
-// V5 : Prontera
-//------------------------------------------
+
+//--------------------------------------------------------------
+// Prontera Guild Castle #5 Flags - [jAthena]
+//--------------------------------------------------------------
+
 -	script	GdFlag_V5	722,{
+
 	callfunc "F_FlagSrc",1,"prtg_cas05.gat",0,0;
 	close;
+
 OnAgitInit:
 OnFlagEmb_V5:
 	if (strnpcinfo(0) != "GdFlag_V5")
@@ -791,8 +897,10 @@ OnFlagEmb_V5:
 }
 
 prt_gld.gat,167,213,5	script	Guild Flag#V5-00	722,{
+
 	callfunc "F_FlagSrc",1,"prtg_cas05.gat",52,41;
 	close;
+
 OnAgitInit:
 OnFlagEmb_V5:
 	flagemblem getcastledata("prtg_cas05.gat",1);
