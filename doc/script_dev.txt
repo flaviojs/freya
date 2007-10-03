@@ -13,14 +13,12 @@
 
 ---------------------------------------------------------------------------
 
-- gvg/gvg_adswitch.txt			<- Good enough
-- gvg/gvg_config.txt			<- Good enough
-- gvg/gvg_exe.txt			<- Good enough
+- gvg/gvg_core.txt			<- Good enough
+- gvg/gvg_dungeon.txt			<- Good enough
 - gvg/gvg_flag.txt			<- Good enough - Need to import Aegis dialogue/function [*]
 - gvg/gvg_monster.txt			<- Good enough
-- gvg/gvg_roomswitch.txt		<- Good enough
 - gvg/gvg_steward.txt			<- Good enough - Need to import Aegis dialogue/function [*]
-- gvg/gvg_tbox.txt			<- Good enough
+- gvg/gvg_treasure.txt			<- Good enough
 
 - town/town_nameless.txt		<- Requires conversion - No access to an Aegis version [*]
 - town/town_veins.txt			<- Requires conversion - No access to an Aegis version [*]
