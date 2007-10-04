@@ -414,13 +414,6 @@ function	script	F_GuardianCall	{
 			case 17: monster "prtg_cas05.gat",44,248,"Archer Guardian",1285,1,"#GuardianKilled::On_V5_17";	break;
 		}
 	}
-	if (getarg(2)) {
-		mes "[Steward "+strnpcinfo(0)+"]";
-		mes "The Guardian was set up.";
-		mes "The Guardian will defend our castle";
-		mes "from the enemy.";
-		close;
-	}
 	return;
 }
 
