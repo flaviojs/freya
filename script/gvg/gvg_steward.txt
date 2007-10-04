@@ -56,7 +56,7 @@ function	script	sF_StewardMain	{
 		mes "^0000ffCurrent Commerce Investment is "+getcastledata('@map$,2)+" point(s).";
 		if (getcastledata('@map$,4) != 0)
 			mes "- You have invested "+getcastledata('@map$,4)+" times today.";
-			mes "Current Defense Investment is "+getcastledata('@map$,3)+" point(s).^000000";
+		mes "Current Defense Investment is "+getcastledata('@map$,3)+" point(s).^000000";
 		if (getcastledata('@map$,5) != 0)
 			mes "^0000ff- You have invested "+getcastledata('@map$,5)+" times today.^000000";
 		mes " ";

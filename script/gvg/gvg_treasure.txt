@@ -76,7 +76,7 @@ OnMyMobDead:
 
 function	script	F_RoomSwitch	{
 
-	mes "";
+	mes " ";
 	mes "There's a small lever. Will you pull it?";
 	next;
 	switch(Select("Pull.","Do not pull.")) {
@@ -201,7 +201,7 @@ payg_cas05.gat,161,137,0	script	#RoomSwitch_C5	111,{
 
 prtg_cas01.gat,15,209,0		script	#RoomSwitch_V1	111,{
 
-	callfunc "F_RoomSwitch",111,181;
+	callfunc "F_RoomSwitch",112,183;
 	close;
 }
 

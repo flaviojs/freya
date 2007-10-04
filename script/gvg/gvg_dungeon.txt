@@ -24,11 +24,11 @@
 function	script	F_DungeonSwitch	{
 
 	if (!getcharid(2)) {
-		mes "[ Ringing Voice ]";
+		mes "[Ringing Voice]";
 		mes " ' Those who overcome an ordeal shows a great deal of bravery... and will find their way to another ordeal. '";
 		close;
 	}
-	mes "[ Ringing Voice ]";
+	mes "[Ringing Voice]";
 	mes " ' Only the truly brave can take the test. '";
 	next;
 	mes "";
