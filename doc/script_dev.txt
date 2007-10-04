@@ -14,10 +14,10 @@
 ---------------------------------------------------------------------------
 
 - gvg/gvg_core.txt			<- Good enough
-- gvg/gvg_dungeon.txt			<- Good enough
+- gvg/gvg_dungeon.txt			<- Good enough - Need to import Aegis dialogue/function [*]
 - gvg/gvg_flag.txt			<- Good enough - Need to import Aegis dialogue/function [*]
-- gvg/gvg_monster.txt			<- Good enough
-- gvg/gvg_treasure.txt			<- Good enough
+- gvg/gvg_monster.txt			<- Good enough - Need to import Aegis coordinates [*]
+- gvg/gvg_treasure.txt			<- Good enough - Need to import Aegis coordinates [*]
 
 - town/town_nameless.txt		<- Requires conversion - No access to an Aegis version [*]
 - town/town_veins.txt			<- Requires conversion - No access to an Aegis version [*]
