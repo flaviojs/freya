@@ -13,6 +13,9 @@
 
 Date	Added
 
+2007/10/04
+	* Updated: The GvG Steward System to official, converted from Aegis [Tsuyuki]
+
 2007/10/03
 	* Added: The GvG Ban Stealer security system, converted from Aegis [Tsuyuki]
 	* Added: The GM Valhalla Administration Center, converted from Aegis [Tsuyuki]
