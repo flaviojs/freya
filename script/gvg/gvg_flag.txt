@@ -7,11 +7,12 @@
 //              /_/  |_|\____|_|  \___/|_|  \__,_|              
 //                 http://aurora.deltaanime.net                 
 //--------------------------------------------------------------
-// Script Title: GvG Flag System	Author: jAthena
+// Script Title: GvG Flag System	Author: jAthena/Tsuyuki
 //--------------------------------------------------------------
-// Revision History: v1.0
+// Revision History: v1.1
 //--------------------------------------------------------------
 //	1.0 First version [jAthena]
+//	1.1 Added Town GvG Flags, converted from Aegis [Tsuyuki]
 //--------------------------------------------------------------
 // Additional Notes: N/A
 //--------------------------------------------------------------
@@ -21,58 +22,51 @@
 // GvG Flag Main Function - [jAthena]
 //--------------------------------------------------------------
 
-function	script	F_FlagSrc	{
+function	script	F_GvGFlag	{
 
 	set '@gid,getcastledata(getarg(1),1);
 	if ('@gid > 0 && getcharid(2) == '@gid && getarg(2)) {
-		mes "[Ringing Voice]";
-		mes "Brave one...";
-		mes "Would you return to your land?";
+		mes "[Echoing Voice]";
+		mes "Brave ones...";
+		mes "Do you wish to return to your honorable place?";
 		next;
-		if (select("Yes, please.","No, not now.")==1) {
+		switch(select("Return to the guild castle.","Quit.")) {
+		case 1:
 			set '@gid,getcastledata(getarg(1),1);
 			if ('@gid > 0 && getcharid(2) == '@gid && getarg(2)) {
 				warp getarg(1),getarg(2),getarg(3);
 				end;
 			}
+			close;
+		case 2:
+			close;
 		}
-		return;
-	}
-	mes "[Edict of the Divine Rune Midgard Kingdom]";
-	mes " ";
-	mes "1.";
-	switch(getarg(0)) {
-	case 0:
-		mes "Honoring the ordinance of the";
-		mes "Divine Rune Midgard Kingdom and the Republic of Schwarzwald";
-		break;
-	case 1:
-		mes "Honoring the ordinance of the";
-		mes "Divine Rune Midgard Kingdom.";
-		break;
-	}
-	if ('@gid <= 0) {
-		mes "This guild base has not been taken";
-		mes "by any Guild yet.";
-		next;
+	} else if ('@gid <= 0) {
+		mes "[Edict of the Divine Rune Midgard Kingdom]";
 		mes " ";
-		mes "2.";
-		mes "In order to take this guild base,";
-		mes "you must defeat all the Guardians";
-		mes "that are protecting the guild base";
-		mes "and eliminate the Emperium.";
+		mes "1. Follow the ordinance of The Divine Rune Midgard Kingdom, ";
+		mes "We declare that";
+		mes "there is no formal master of this castle.";
+		mes " ";
+		mes "2. To the one who can ";
+		mes "overcome all trials";
+		mes "and destroy the Emperium,";
+		mes "the king will endow the one with";
+		mes "ownership of this castle.";
+		close;
 	} else {
-		mes "Guild ^ff0000" +getguildname('@gid)+ "^000000";
-		mes "is the righteous owner of this Castle.";
-		next;
+		mes "[Edict of the Divine Rune Midgard Kingdom]";
 		mes " ";
-		mes "2.";
-		mes "The guild master of the ^ff0000" +getguildname('@gid)+ "^000000";
-		mes "is ^ff0000" +getguildmaster('@gid)+ "^000000.";
-		mes "If anyone objects to that,";
-		mes "raise your sword to honor yourself.";
+		mes "1. Follow the ordinance of the Divine Rune Midgard Kingdom, ";
+		mes "we approve that this place is in";
+		mes "the private prossession of ^ff0000"+getguildname('@gid)+"^000000 Guild.";
+		mes " ";
+		mes "2. The guild Master of ^ff0000"+getguildname('@gid)+"^000000 Guild is";
+		mes "^ff0000"+getguildmaster('@gid)+"^000000";
+		mes "If there is anyone who objects to this,";
+		mes "prove your strength and honor with a steel blade in your hand.";
+		close;
 	}
-	return;
 }
 
 
@@ -82,23 +76,20 @@ function	script	F_FlagSrc	{
 
 -	script	GdFlag_L1	722,{
 
-	callfunc "F_FlagSrc",0,"aldeg_cas01.gat",0,0;
+	callfunc "F_GvGFlag",0,"aldeg_cas01.gat",0,0;
 	close;
 
-OnAgitInit:
-OnFlagEmb_L1:
-	if (strnpcinfo(0) != "GdFlag_L1")
-		flagemblem getcastledata("aldeg_cas01.gat",1);
+OnInit:
+	flagemblem getcastledata("aldeg_cas01.gat",1);
 	end;
 }
 
 alde_gld.gat,257,153,7	script	Guild Flag#L1-00	722,{
 
-	callfunc "F_FlagSrc",0,"aldeg_cas01.gat",218,170;
+	callfunc "F_GvGFlag",0,"aldeg_cas01.gat",218,170;
 	close;
 
-OnAgitInit:
-OnFlagEmb_L1:
+OnInit:
 	flagemblem getcastledata("aldeg_cas01.gat",1);
 	end;
 }
@@ -130,23 +121,20 @@ aldeg_cas01.gat,210,150,4	duplicate(GdFlag_L1)	Guild Flag#L1-19	722
 
 -	script	GdFlag_L2	722,{
 
-	callfunc "F_FlagSrc",0,"aldeg_cas02.gat",0,0;
+	callfunc "F_GvGFlag",0,"aldeg_cas02.gat",0,0;
 	close;
 
-OnAgitInit:
-OnFlagEmb_L2:
-	if (strnpcinfo(0) != "GdFlag_L2")
-		flagemblem getcastledata("aldeg_cas02.gat",1);
+OnInit:
+	flagemblem getcastledata("aldeg_cas02.gat",1);
 	end;
 }
 
 alde_gld.gat,257,166,5	script	Guild Flag#L2-00	722,{
 
-	callfunc "F_FlagSrc",0,"aldeg_cas02.gat",84,74;
+	callfunc "F_GvGFlag",0,"aldeg_cas02.gat",84,74;
 	close;
 
-OnAgitInit:
-OnFlagEmb_L2:
+OnInit:
 	flagemblem getcastledata("aldeg_cas02.gat",1);
 	end;
 }
@@ -175,23 +163,20 @@ aldeg_cas02.gat,121,29,2	duplicate(GdFlag_L2)	Guild Flag#L2-16	722
 
 -	script	GdFlag_L3	722,{
 
-	callfunc "F_FlagSrc",0,"aldeg_cas03.gat",0,0;
+	callfunc "F_GvGFlag",0,"aldeg_cas03.gat",0,0;
 	close;
 
-OnAgitInit:
-OnFlagEmb_L3:
-	if (strnpcinfo(0) != "GdFlag_L3")
-		flagemblem getcastledata("aldeg_cas03.gat",1);
+OnInit:
+	flagemblem getcastledata("aldeg_cas03.gat",1);
 	end;
 }
 
 alde_gld.gat,262,153,7	script	Guild Flag#L3-00	722,{
 
-	callfunc "F_FlagSrc",0,"aldeg_cas03.gat",118,76;
+	callfunc "F_GvGFlag",0,"aldeg_cas03.gat",118,76;
 	close;
 
-OnAgitInit:
-OnFlagEmb_L3:
+OnInit:
 	flagemblem getcastledata("aldeg_cas03.gat",1);
 	end;
 }
@@ -223,23 +208,20 @@ aldeg_cas03.gat,96,62,2		duplicate(GdFlag_L3)	Guild Flag#L3-19	722
 
 -	script	GdFlag_L4	722,{
 
-	callfunc "F_FlagSrc",0,"aldeg_cas04.gat",0,0;
+	callfunc "F_GvGFlag",0,"aldeg_cas04.gat",0,0;
 	close;
 
-OnAgitInit:
-OnFlagEmb_L4:
-	if (strnpcinfo(0) != "GdFlag_L4")
-		flagemblem getcastledata("aldeg_cas04.gat",1);
+OnInit:
+	flagemblem getcastledata("aldeg_cas04.gat",1);
 	end;
 }
 
 alde_gld.gat,262,166,5	script	Guild Flag#L4-00	722,{
 
-	callfunc "F_FlagSrc",0,"aldeg_cas04.gat",45,88;
+	callfunc "F_GvGFlag",0,"aldeg_cas04.gat",45,88;
 	close;
 
-OnAgitInit:
-OnFlagEmb_L4:
+OnInit:
 	flagemblem getcastledata("aldeg_cas04.gat",1);
 	end;
 }
@@ -271,23 +253,20 @@ aldeg_cas04.gat,169,15,2	duplicate(GdFlag_L4)	Guild Flag#L4-19	722
 
 -	script	GdFlag_L5	722,{
 
-	callfunc "F_FlagSrc",0,"aldeg_cas05.gat",0,0;
+	callfunc "F_GvGFlag",0,"aldeg_cas05.gat",0,0;
 	close;
 
-OnAgitInit:
-OnFlagEmb_L5:
-	if (strnpcinfo(0) != "GdFlag_L5")
-		flagemblem getcastledata("aldeg_cas05.gat",1);
+OnInit:
+	flagemblem getcastledata("aldeg_cas05.gat",1);
 	end;
 }
 
 alde_gld.gat,267,153,7	script	Guild Flag#L5-00	722,{
 
-	callfunc "F_FlagSrc",0,"aldeg_cas05.gat",31,190;
+	callfunc "F_GvGFlag",0,"aldeg_cas05.gat",31,190;
 	close;
 
-OnAgitInit:
-OnFlagEmb_L5:
+OnInit:
 	flagemblem getcastledata("aldeg_cas05.gat",1);
 	end;
 }
@@ -317,23 +296,20 @@ aldeg_cas05.gat,150,202,2	duplicate(GdFlag_L5)	Guild Flag#L5-17	722
 
 -	script	GdFlag_B1	722,{
 
-	callfunc "F_FlagSrc",1,"gefg_cas01.gat",0,0;
+	callfunc "F_GvGFlag",1,"gefg_cas01.gat",0,0;
 	close;
 
-OnAgit:
-OnFlagEmb_B1:
-	if (strnpcinfo(0) != "GdFlag_B1")
-		flagemblem getcastledata("gefg_cas01.gat",1);
+OnInit:
+	flagemblem getcastledata("gefg_cas01.gat",1);
 	end;
 }
 
 gef_fild07.gat,330,199,2	script	Guild Flag#B1-00	722,{
 
-	callfunc "F_FlagSrc",1,"gefg_cas01.gat",83,47;
+	callfunc "F_GvGFlag",1,"gefg_cas01.gat",83,47;
 	close;
 
-OnAgitInit:
-OnFlagEmb_B1:
+OnInit:
 	flagemblem getcastledata("gefg_cas01.gat",1);
 	end;
 }
@@ -356,23 +332,20 @@ gefg_cas01.gat,64,16,4		duplicate(GdFlag_B1)	Guild Flag#B1-10	722
 
 -	script	GdFlag_B2	722,{
 
-	callfunc "F_FlagSrc",1,"gefg_cas02.gat",0,0;
+	callfunc "F_GvGFlag",1,"gefg_cas02.gat",0,0;
 	close;
 
-OnAgitInit:
-OnFlagEmb_B2:
-	if (strnpcinfo(0) != "GdFlag_B2")
-		flagemblem getcastledata("gefg_cas02.gat",1);
+OnInit:
+	flagemblem getcastledata("gefg_cas02.gat",1);
 	end;
 }
 
 gef_fild07.gat,330,204,2	script	Guild Flag#B2-00	722,{
 
-	callfunc "F_FlagSrc",1,"gefg_cas02.gat",23,66;
+	callfunc "F_GvGFlag",1,"gefg_cas02.gat",23,66;
 	close;
 
-OnAgitInit:
-OnFlagEmb_B2:
+OnInit:
 	flagemblem getcastledata("gefg_cas02.gat",1);
 	end;
 }
@@ -396,23 +369,20 @@ gefg_cas02.gat,68,36,2		duplicate(GdFlag_B2)	Guild Flag#B2-11	722
 
 -	script	GdFlag_B3	722,{
 
-	callfunc "F_FlagSrc",1,"gefg_cas03.gat",0,0;
+	callfunc "F_GvGFlag",1,"gefg_cas03.gat",0,0;
 	close;
 
-OnAgitInit:
-OnFlagEmb_B3:
-	if (strnpcinfo(0) != "GdFlag_B3")
-		flagemblem getcastledata("gefg_cas03.gat",1);
+OnInit:
+	flagemblem getcastledata("gefg_cas03.gat",1);
 	end;
 }
 
 gef_fild07.gat,330,176,2	script	Guild Flag#B3-00	722,{
 
-	callfunc "F_FlagSrc",1,"gefg_cas03.gat",116,89;
+	callfunc "F_GvGFlag",1,"gefg_cas03.gat",116,89;
 	close;
 
-OnAgitInit:
-OnFlagEmb_B3:
+OnInit:
 	flagemblem getcastledata("gefg_cas03.gat",1);
 	end;
 }
@@ -439,23 +409,20 @@ gefg_cas03.gat,34,208,1		duplicate(GdFlag_B3)	Guild Flag#B3-14	722
 
 -	script	GdFlag_B4	722,{
 
-	callfunc "F_FlagSrc",1,"gefg_cas04.gat",0,0;
+	callfunc "F_GvGFlag",1,"gefg_cas04.gat",0,0;
 	close;
 
-OnAgitInit:
-OnFlagEmb_B4:
-	if (strnpcinfo(0) != "GdFlag_B4")
-		flagemblem getcastledata("gefg_cas04.gat",1);
+OnInit:
+	flagemblem getcastledata("gefg_cas04.gat",1);
 	end;
 }
 
 gef_fild07.gat,330,171,2	script	Guild Flag#B4-00	722,{
 
-	callfunc "F_FlagSrc",1,"gefg_cas04.gat",59,70;
+	callfunc "F_GvGFlag",1,"gefg_cas04.gat",59,70;
 	close;
 
-OnAgitInit:
-OnFlagEmb_B4:
+OnInit:
 	flagemblem getcastledata("gefg_cas04.gat",1);
 	end;
 }
@@ -478,23 +445,20 @@ gefg_cas04.gat,35,73,4		duplicate(GdFlag_B4)	Guild Flag#B4-10	722
 
 -	script	GdFlag_B5	722,{
 
-	callfunc "F_FlagSrc",1,"gefg_cas05.gat",0,0;
+	callfunc "F_GvGFlag",1,"gefg_cas05.gat",0,0;
 	close;
 
-OnAgitInit:
-OnFlagEmb_B5:
-	if (strnpcinfo(0) != "GdFlag_B5")
-		flagemblem getcastledata("gefg_cas05.gat",1);
+OnInit:
+	flagemblem getcastledata("gefg_cas05.gat",1);
 	end;
 }
 
 gef_fild07.gat,330,166,2	script	Guild Flag#B5-00	722,{
 
-	callfunc "F_FlagSrc",1,"gefg_cas05.gat",61,52;
+	callfunc "F_GvGFlag",1,"gefg_cas05.gat",61,52;
 	close;
 
-OnAgitInit:
-OnFlagEmb_B5:
+OnInit:
 	flagemblem getcastledata("gefg_cas05.gat",1);
 	end;
 }
@@ -517,23 +481,20 @@ gefg_cas05.gat,69,66,4		duplicate(GdFlag_B5)	Guild Flag#B5-10	722
 
 -	script	GdFlag_C1	722,{
 
-	callfunc "F_FlagSrc",1,"payg_cas01.gat",0,0;
+	callfunc "F_GvGFlag",1,"payg_cas01.gat",0,0;
 	close;
 
-OnAgitInit:
-OnFlagEmb_C1:
-	if (strnpcinfo(0) != "GdFlag_C1")
-		flagemblem getcastledata("payg_cas01.gat",1);
+OnInit:
+	flagemblem getcastledata("payg_cas01.gat",1);
 	end;
 }
 
 pay_gld.gat,347,125,2	script	Guild Flag#C1-00	722,{
 
-	callfunc "F_FlagSrc",1,"payg_cas01.gat",212,108;
+	callfunc "F_GvGFlag",1,"payg_cas01.gat",212,108;
 	close;
 
-OnAgitInit:
-OnFlagEmb_C1:
+OnInit:
 	flagemblem getcastledata("payg_cas01.gat",1);
 	end;
 }
@@ -556,23 +517,20 @@ payg_cas01.gat,212,108,4	duplicate(GdFlag_C1)	Guild Flag#C1-10	722
 
 -	script	GdFlag_C2	722,{
 
-	callfunc "F_FlagSrc",1,"payg_cas02.gat",0,0;
+	callfunc "F_GvGFlag",1,"payg_cas02.gat",0,0;
 	close;
 
-OnAgitInit:
-OnFlagEmb_C2:
-	if (strnpcinfo(0) != "GdFlag_C2")
-		flagemblem getcastledata("payg_cas02.gat",1);
+OnInit:
+	flagemblem getcastledata("payg_cas02.gat",1);
 	end;
 }
 
 pay_gld.gat,347,116,2	script	Guild Flag#C2-00	722,{
 
-	callfunc "F_FlagSrc",1,"payg_cas02.gat",22,275;
+	callfunc "F_GvGFlag",1,"payg_cas02.gat",22,275;
 	close;
 
-OnAgitInit:
-OnFlagEmb_C2:
+OnInit:
 	flagemblem getcastledata("payg_cas02.gat",1);
 	end;
 }
@@ -595,23 +553,20 @@ payg_cas02.gat,70,282,4		duplicate(GdFlag_C2)	Guild Flag#C2-10	722
 
 -	script	GdFlag_C3	722,{
 
-	callfunc "F_FlagSrc",1,"payg_cas03.gat",0,0;
+	callfunc "F_GvGFlag",1,"payg_cas03.gat",0,0;
 	close;
 
-OnAgitInit:
-OnFlagEmb_C3:
-	if (strnpcinfo(0) != "GdFlag_C3")
-		flagemblem getcastledata("payg_cas03.gat",1);
+OnInit:
+	flagemblem getcastledata("payg_cas03.gat",1);
 	end;
 }
 
 pay_gld.gat,341,106,0	script	Guild Flag#C3-00	722,{
 
-	callfunc "F_FlagSrc",1,"payg_cas03.gat",9,263;
+	callfunc "F_GvGFlag",1,"payg_cas03.gat",9,263;
 	close;
 
-OnAgitInit:
-OnFlagEmb_C3:
+OnInit:
 	flagemblem getcastledata("payg_cas03.gat",1);
 	end;
 }
@@ -634,23 +589,20 @@ payg_cas03.gat,43,31,4		duplicate(GdFlag_C3)	Guild Flag#C3-10	722
 
 -	script	GdFlag_C4	722,{
 
-	callfunc "F_FlagSrc",1,"payg_cas04.gat",0,0;
+	callfunc "F_GvGFlag",1,"payg_cas04.gat",0,0;
 	close;
 
-OnAgitInit:
-OnFlagEmb_C4:
-	if (strnpcinfo(0) != "GdFlag_C4")
-		flagemblem getcastledata("payg_cas04.gat",1);
+OnInit:
+	flagemblem getcastledata("payg_cas04.gat",1);
 	end;
 }
 
 pay_gld.gat,330,106,0	script	Guild Flag#C4-00	722,{
 
-	callfunc "F_FlagSrc",1,"payg_cas04.gat",40,235;
+	callfunc "F_GvGFlag",1,"payg_cas04.gat",40,235;
 	close;
 
-OnAgitInit:
-OnFlagEmb_C4:
+OnInit:
 	flagemblem getcastledata("payg_cas04.gat",1);
 	end;
 }
@@ -673,23 +625,20 @@ payg_cas04.gat,239,181,4	duplicate(GdFlag_C4)	Guild Flag#C4-10	722
 
 -	script	GdFlag_C5	722,{
 
-	callfunc "F_FlagSrc",1,"payg_cas05.gat",0,0;
+	callfunc "F_GvGFlag",1,"payg_cas05.gat",0,0;
 	close;
 
-OnAgitInit:
-OnFlagEmb_C5:
-	if (strnpcinfo(0) != "GdFlag_C5")
-		flagemblem getcastledata("payg_cas05.gat",1);
+OnInit:
+	flagemblem getcastledata("payg_cas05.gat",1);
 	end;
 }
 
 pay_gld.gat,318,106,0	script	Guild Flag#C5-00	722,{
 
-	callfunc "F_FlagSrc",1,"payg_cas05.gat",276,227;
+	callfunc "F_GvGFlag",1,"payg_cas05.gat",276,227;
 	close;
 
-OnAgitInit:
-OnFlagEmb_C5:
+OnInit:
 	flagemblem getcastledata("payg_cas05.gat",1);
 	end;
 }
@@ -712,23 +661,20 @@ payg_cas05.gat,55,260,2		duplicate(GdFlag_C5)	Guild Flag#C5-10	722
 
 -	script	GdFlag_V1	722,{
 
-	callfunc "F_FlagSrc",1,"prtg_cas01.gat",0,0;
+	callfunc "F_GvGFlag",1,"prtg_cas01.gat",0,0;
 	close;
 
-OnAgitInit:
-OnFlagEmb_V1:
-	if (strnpcinfo(0) != "GdFlag_V1")
-		flagemblem getcastledata("prtg_cas01.gat",1);
+OnInit:
+	flagemblem getcastledata("prtg_cas01.gat",1);
 	end;
 }
 
 prt_gld.gat,160,210,4	script	Guild Flag#V1-00	722,{
 
-	callfunc "F_FlagSrc",1,"prtg_cas01.gat",97,174;
+	callfunc "F_GvGFlag",1,"prtg_cas01.gat",97,174;
 	close;
 
-OnAgitInit:
-OnFlagEmb_V1:
+OnInit:
 	flagemblem getcastledata("prtg_cas01.gat",1);
 	end;
 }
@@ -755,23 +701,20 @@ prtg_cas01.gat,45,46,4		duplicate(GdFlag_V1)	Guild Flag#V1-14	722
 
 -	script	GdFlag_V2	722,{
 
-	callfunc "F_FlagSrc",1,"prtg_cas02.gat",0,0;
+	callfunc "F_GvGFlag",1,"prtg_cas02.gat",0,0;
 	close;
 
-OnAgitInit:
-OnFlagEmb_V2:
-	if (strnpcinfo(0) != "GdFlag_V2")
-		flagemblem getcastledata("prtg_cas02.gat",1);
+OnInit:
+	flagemblem getcastledata("prtg_cas02.gat",1);
 	end;
 }
 
 prt_gld.gat,153,213,3	script	Guild Flag#V2-00	722,{
 
-	callfunc "F_FlagSrc",1,"prtg_cas02.gat",71,36;
+	callfunc "F_GvGFlag",1,"prtg_cas02.gat",71,36;
 	close;
 
-OnAgitInit:
-OnFlagEmb_V2:
+OnInit:
 	flagemblem getcastledata("prtg_cas02.gat",1);
 	end;
 }
@@ -800,23 +743,20 @@ prtg_cas02.gat,162,161,4	duplicate(GdFlag_V2)	Guild Flag#V2-16	722
 
 -	script	GdFlag_V3	722,{
 
-	callfunc "F_FlagSrc",1,"prtg_cas03.gat",0,0;
+	callfunc "F_GvGFlag",1,"prtg_cas03.gat",0,0;
 	close;
 
-OnAgitInit:
-OnFlagEmb_V3:
-	if (strnpcinfo(0) != "GdFlag_V3")
-		flagemblem getcastledata("prtg_cas03.gat",1);
+OnInit:
+	flagemblem getcastledata("prtg_cas03.gat",1);
 	end;
 }
 
 prt_gld.gat,150,220,2	script	Guild Flag#V3-00	722,{
 
-	callfunc "F_FlagSrc",1,"prtg_cas03.gat",181,215;
+	callfunc "F_GvGFlag",1,"prtg_cas03.gat",181,215;
 	close;
 
-OnAgitInit:
-OnFlagEmb_V3:
+OnInit:
 	flagemblem getcastledata("prtg_cas03.gat",1);
 	end;
 }
@@ -843,23 +783,20 @@ prtg_cas03.gat,165,201,4	duplicate(GdFlag_V3)	Guild Flag#V3-14	722
 
 -	script	GdFlag_V4	722,{
 
-	callfunc "F_FlagSrc",1,"prtg_cas04.gat",0,0;
+	callfunc "F_GvGFlag",1,"prtg_cas04.gat",0,0;
 	close;
 
-OnAgitInit:
-OnFlagEmb_V4:
-	if (strnpcinfo(0) != "GdFlag_V4")
-		flagemblem getcastledata("prtg_cas04.gat",1);
+OnInit:
+	flagemblem getcastledata("prtg_cas04.gat",1);
 	end;
 }
 
 prt_gld.gat,169,220,6	script	Guild Flag#V4-00	722,{
 
-	callfunc "F_FlagSrc",1,"prtg_cas04.gat",258,247;
+	callfunc "F_GvGFlag",1,"prtg_cas04.gat",258,247;
 	close;
 
-OnAgitInit:
-OnFlagEmb_V4:
+OnInit:
 	flagemblem getcastledata("prtg_cas04.gat",1);
 	end;
 }
@@ -886,23 +823,20 @@ prtg_cas04.gat,263,27,4		duplicate(GdFlag_V4)	Guild Flag#V4-14	722
 
 -	script	GdFlag_V5	722,{
 
-	callfunc "F_FlagSrc",1,"prtg_cas05.gat",0,0;
+	callfunc "F_GvGFlag",1,"prtg_cas05.gat",0,0;
 	close;
 
-OnAgitInit:
-OnFlagEmb_V5:
-	if (strnpcinfo(0) != "GdFlag_V5")
-		flagemblem getcastledata("prtg_cas05.gat",1);
+OnInit:
+	flagemblem getcastledata("prtg_cas05.gat",1);
 	end;
 }
 
 prt_gld.gat,167,213,5	script	Guild Flag#V5-00	722,{
 
-	callfunc "F_FlagSrc",1,"prtg_cas05.gat",52,41;
+	callfunc "F_GvGFlag",1,"prtg_cas05.gat",52,41;
 	close;
 
-OnAgitInit:
-OnFlagEmb_V5:
+OnInit:
 	flagemblem getcastledata("prtg_cas05.gat",1);
 	end;
 }
@@ -919,3 +853,234 @@ prtg_cas05.gat,249,289,4	duplicate(GdFlag_V5)	Guild Flag#V5-09	722
 prtg_cas05.gat,256,289,4	duplicate(GdFlag_V5)	Guild Flag#V5-10	722
 prtg_cas05.gat,253,271,4	duplicate(GdFlag_V5)	Guild Flag#V5-11	722
 prtg_cas05.gat,273,257,4	duplicate(GdFlag_V5)	Guild Flag#V5-12	722
+
+
+//--------------------------------------------------------------
+// GvG Town Flags - [Tsuyuki]
+//--------------------------------------------------------------
+
+
+prontera.gat,155,190,4	script	Kriemhild	722,{
+
+	close;
+
+OnInit:
+	flagemblem getcastledata("prtg_cas01.gat",1);
+	end;
+}
+
+prontera.gat,146,194,3	script	Swanhild	722,{
+
+	close;
+
+OnInit:
+	flagemblem getcastledata("prtg_cas02.gat",1);
+	end;
+}
+
+prontera.gat,143,203,2	script	Fadhgridh	722,{
+
+	close;
+
+OnInit:
+	flagemblem getcastledata("prtg_cas03.gat",1);
+	end;
+}
+
+prontera.gat,167,203,6	script	Skoegul	722,{
+
+	close;
+
+OnInit:
+	flagemblem getcastledata("prtg_cas04.gat",1);
+	end;
+}
+
+prontera.gat,165,194,5	script	Gondul	722,{
+
+	close;
+
+OnInit:
+	flagemblem getcastledata("prtg_cas05.gat",1);
+	end;
+}
+
+payon.gat,90,322,4	script	Bright Arbor#1	722,{
+
+	close;
+
+OnInit:
+	flagemblem getcastledata("payg_cas01.gat",1);
+	end;
+}
+
+payon.gat,97,322,4	script	Sacred Altar#1	722,{
+
+	close;
+
+OnInit:
+	flagemblem getcastledata("payg_cas02.gat",1);
+	end;
+}
+
+payon.gat,113,322,4	script	Holy Shadow#1	722,{
+
+	close;
+
+OnInit:
+	flagemblem getcastledata("payg_cas03.gat",1);
+	end;
+}
+
+payon.gat,118,322,4	script	Scarlet Palace#1	722,{
+
+	close;
+
+OnInit:
+	flagemblem getcastledata("payg_cas04.gat",1);
+	end;
+}
+
+payon.gat,123,322,4	script	Bamboo Grove Hill#1	722,{
+
+	close;
+
+OnInit:
+	flagemblem getcastledata("payg_cas05.gat",1);
+	end;
+}
+
+payon.gat,166,177,3	script	Bright Arbor#2	722,{
+
+	close;
+
+OnInit:
+	flagemblem getcastledata("payg_cas01.gat",1);
+	end;
+}
+
+payon.gat,166,173,3	script	Sacred Altar#2	722,{
+
+	close;
+
+OnInit:
+	flagemblem getcastledata("payg_cas02.gat",1);
+	end;
+}
+
+payon.gat,166,169,3	script	Holy Shadow#2	722,{
+
+	close;
+
+OnInit:
+	flagemblem getcastledata("payg_cas03.gat",1);
+	end;
+}
+
+payon.gat,166,165,3	script	Scarlet Palace#2	722,{
+
+	close;
+
+OnInit:
+	flagemblem getcastledata("payg_cas04.gat",1);
+	end;
+}
+
+payon.gat,166,161,3	script	Bamboo Grove Hill#2	722,{
+
+	close;
+
+OnInit:
+	flagemblem getcastledata("payg_cas05.gat",1);
+	end;
+}
+
+aldebaran.gat,152,97,4	script	Neuschwanstein	722,{
+
+	close;
+
+OnInit:
+	flagemblem getcastledata("aldeg_cas01.gat",1);
+	end;
+}
+
+aldebaran.gat,149,97,4	script	Hohenschwangau	722,{
+
+	close;
+
+OnInit:
+	flagemblem getcastledata("aldeg_cas02.gat",1);
+	end;
+}
+
+aldebaran.gat,134,97,4	script	Nuernberg	722,{
+
+	close;
+
+OnInit:
+	flagemblem getcastledata("aldeg_cas03.gat",1);
+	end;
+}
+
+aldebaran.gat,131,97,4	script	Wuerzburg	722,{
+
+	close;
+
+OnInit:
+	flagemblem getcastledata("aldeg_cas04.gat",1);
+	end;
+}
+
+aldebaran.gat,128,97,4	script	Rothenburg	722,{
+
+	close;
+
+OnInit:
+	flagemblem getcastledata("aldeg_cas05.gat",1);
+	end;
+}
+
+geffen.gat,109,123,2	script	Repherion	722,{
+
+	close;
+
+OnInit:
+	flagemblem getcastledata("gefg_cas01.gat",1);
+	end;
+}
+
+geffen.gat,112,129,1	script	Eeyorbriggar	722,{
+
+	close;
+
+OnInit:
+	flagemblem getcastledata("gefg_cas02.gat",1);
+	end;
+}
+
+geffen.gat,120,132,8	script	Yesnelph	722,{
+
+	close;
+
+OnInit:
+	flagemblem getcastledata("gefg_cas03.gat",1);
+	end;
+}
+
+geffen.gat,127,130,7	script	Bergel	722,{
+
+	close;
+
+OnInit:
+	flagemblem getcastledata("gefg_cas04.gat",1);
+	end;
+}
+
+geffen.gat,131,123,6	script	Mersetzdeitz	722,{
+
+	close;
+
+OnInit:
+	flagemblem getcastledata("gefg_cas05.gat",1);
+	end;
+}
