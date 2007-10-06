@@ -28,7 +28,6 @@
 ---------------------------------------------------------------------------
 
 - misc/misc_cash_item.txt		<- Optional? [*] - No access to an iRO Aegis version [*]
-- quest/quest_expanded.txt		<- Optional? [*]
 - quest/quest_god_seal.txt		<- Optional? [*]
 - quest/quest_job_tutorial.txt		<- Optional? [*]
 - quest/quest_thanatos.txt		<- Optional? [*]
