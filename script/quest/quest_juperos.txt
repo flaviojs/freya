@@ -6402,7 +6402,7 @@ yuno_in04.gat,190,125,4	script	Scholar	700,{
 			close;
 		}
 	} else if ((yuno_book == 8) || (yuno_book == 9)) {
-		if (yuno_book  == 8) {
+		if (yuno_book == 8) {
 			mes "[Fayruz]";
 			mes ""+strcharinfo(0)+"...";
 			mes "I'm having great difficulty in";

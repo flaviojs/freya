@@ -12679,7 +12679,7 @@ que_god01.gat,66,125,6	script	Investigator#God1	89,{
 
       if(god_sl_1 == 11 || god_sl_1 == 22 || god_sl_1 == 33 || god_sl_1 == 44)
       {
-        if(god_sl_2  == 0)
+        if(god_sl_2 == 0)
 	{
           mes "[Hallandaute]";
           mes "Ah...are you the one who Ms. Kirin was talking about?";

@@ -1154,7 +1154,7 @@ morocc_in.gat,146,99,3	script	Java Dullihan	58,{
 			next;
 			switch(select("Make Dyestuffs","Quit")) {
 			case 1:
-				if (countitem(507) < 30 || countitem(973) == 0 || countitem(713) == 0 || Zeny < 7000 || countitem(510) < 5 || countitem(508) < 30 || countitem(974)  == 0 || countitem(511) < 30) {
+				if (countitem(507) < 30 || countitem(973) == 0 || countitem(713) == 0 || Zeny < 7000 || countitem(510) < 5 || countitem(508) < 30 || countitem(974) == 0 || countitem(511) < 30) {
 					mes "[Dye Maker Java Dullihan]";
 					mes "Hmm. Not enough...";
 					mes "I don't think I'll be able to make the color with only these materials. Why don't you go gather some more materials?";

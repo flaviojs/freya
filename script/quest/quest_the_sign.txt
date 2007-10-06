@@ -7334,7 +7334,7 @@ alberta.gat,43,49,5	script	Poor-looking Merchant	89,{
 		mes "as the biggest business owners";
 		mes "here. It's our biggest shame...";
 		close;
-	} else if ((sign_q < 52) || (sign_q  == 98)) {
+	} else if ((sign_q < 52) || (sign_q == 98)) {
 		mes "[Machen]";
 		mes "^333333*Sigh...*^000000";
 		mes "How did it happen?";
@@ -9853,7 +9853,7 @@ que_sign01.gat,197,195,4	script	Serin#witch	90,{
 			}
 		}
 	} else if (sign_q == 125) {
-		if (countitem(2643)  == 1) {
+		if (countitem(2643) == 1) {
 			mes "[Serin]";
 			mes "If you think that";
 			mes "I can't summon Dark Lord";
