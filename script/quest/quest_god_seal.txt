@@ -14437,7 +14437,6 @@ que_god01.gat,47,80,0	script	god_sl_w4	45,1,1,{
 // God Equipment Creation - [SinSloth/MasterOfMuppets]
 //--------------------------------------------------------------
 
-
 gld_dun01.gat,28,85,0	script	Grunburti	826,{
 
 	mes "[Dwarf Grunburti]";
