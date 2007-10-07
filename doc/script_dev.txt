@@ -25,7 +25,6 @@
 
 - misc/misc_cash_item.txt		<- No access to an iRO Aegis version [*]
 - quest/quest_god_seal.txt		<- Need to reconvert from Aegis [*]
-- quest/quest_thanatos.txt		<- Need to reconvert from Aegis [*]
 - town/town_hugel.txt			<- Only Rebellion Quest is euRO - No access to an iRO Aegis version [*]
 
 

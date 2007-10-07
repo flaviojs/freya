@@ -14,6 +14,7 @@
 Date	Added
 
 2007/10/07
+	* Updated: The Thanatos Tower Quest with iRO dialogue, converted from Aegis [Tsuyuki]
 	* Updated: The Job Tutorial Quests with iRO dialogue, converted from Aegis [Tsuyuki/Articulus]
 	* Improved: Database header formatting [Tsuyuki]
 
