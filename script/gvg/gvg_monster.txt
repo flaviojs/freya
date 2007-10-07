@@ -179,43 +179,43 @@ function	script	F_GuardianCall	{
 			case 10: monster "aldeg_cas01.gat",17,218,"Guardian Soldier",1287,1,"#GuardianKilled::On_L1_10";	break;
 			case 11: monster "aldeg_cas01.gat",39,205,"Guardian Archer",1285,1,"#GuardianKilled::On_L1_11";	break;
 			case 12: monster "aldeg_cas01.gat",38,196,"Guardian Archer",1285,1,"#GuardianKilled::On_L1_12";	break;
-			case 13: monster "aldeg_cas01.gat",45,228,"Guardian Archer",1285,1,"#GuardianKilled::On_L1_17";	break;
-			case 14: monster "aldeg_cas01.gat",21,194,"Guardian Knight",1286,1,"#GuardianKilled::On_L1_13";	break;
-			case 15: monster "aldeg_cas01.gat",218,24,"Guardian Knight",1286,1,"#GuardianKilled::On_L1_14";	break;
-			case 16: monster "aldeg_cas01.gat",213,24,"Guardian Knight",1286,1,"#GuardianKilled::On_L1_15";	break;
-			case 17: monster "aldeg_cas01.gat",73,70,"Guardian Knight",1286,1,"#GuardianKilled::On_L1_16";	break;
+			case 13: monster "aldeg_cas01.gat",21,194,"Guardian Knight",1286,1,"#GuardianKilled::On_L1_13";	break;
+			case 14: monster "aldeg_cas01.gat",218,24,"Guardian Knight",1286,1,"#GuardianKilled::On_L1_14";	break;
+			case 15: monster "aldeg_cas01.gat",213,24,"Guardian Knight",1286,1,"#GuardianKilled::On_L1_15";	break;
+			case 16: monster "aldeg_cas01.gat",73,70,"Guardian Knight",1286,1,"#GuardianKilled::On_L1_16";	break;
+			case 17: monster "aldeg_cas01.gat",45,228,"Guardian Archer",1285,1,"#GuardianKilled::On_L1_17";	break;
 		}
 	}
 	if (getarg(0) == "L2") {
 		switch(getarg(1)) {
-			case 10: monster "aldeg_cas02.gat",27,184,"Guardian Knight",1286,1,"#GuardianKilled::On_L2_11";	break;
-			case 11: monster "aldeg_cas02.gat",88,43,"Guardian Knight",1286,1,"#GuardianKilled::On_L2_12";	break;
-			case 12: monster "aldeg_cas02.gat",117,46,"Guardian Knight",1286,1,"#GuardianKilled::On_L2_16";	break;
-			case 13: monster "aldeg_cas02.gat",60,203,"Guardian Soldier",1287,1,"#GuardianKilled::On_L2_14";	break;
-			case 14: monster "aldeg_cas02.gat",51,183,"Guardian Soldier",1287,1,"#GuardianKilled::On_L2_10";	break;
+			case 10: monster "aldeg_cas02.gat",51,183,"Guardian Soldier",1287,1,"#GuardianKilled::On_L2_10";	break;
+			case 11: monster "aldeg_cas02.gat",27,184,"Guardian Knight",1286,1,"#GuardianKilled::On_L2_11";	break;
+			case 12: monster "aldeg_cas02.gat",88,43,"Guardian Knight",1286,1,"#GuardianKilled::On_L2_12";	break;
+			case 13: monster "aldeg_cas02.gat",210,7,"Guardian Archer",1285,1,"#GuardianKilled::On_L2_13";	break;
+			case 14: monster "aldeg_cas02.gat",60,203,"Guardian Soldier",1287,1,"#GuardianKilled::On_L2_14";	break;
 			case 15: monster "aldeg_cas02.gat",21,177,"Guardian Archer",1285,1,"#GuardianKilled::On_L2_15";	break;
-			case 16: monster "aldeg_cas02.gat",36,183,"Guardian Archer",1285,1,"#GuardianKilled::On_L2_17";	break;
-			case 17: monster "aldeg_cas02.gat",210,7,"Guardian Archer",1285,1,"#GuardianKilled::On_L2_13";	break;
+			case 16: monster "aldeg_cas02.gat",117,46,"Guardian Knight",1286,1,"#GuardianKilled::On_L2_16";	break;
+			case 17: monster "aldeg_cas02.gat",36,183,"Guardian Archer",1285,1,"#GuardianKilled::On_L2_17";	break;
 		}
 	}
 	if (getarg(0) == "L3") {
 		switch(getarg(1)) {
-			case 10: monster "aldeg_cas03.gat",110,217,"Guardian Archer",1285,1,"#GuardianKilled::On_L3_10"; break;
+			case 10: monster "aldeg_cas03.gat",110,217,"Guardian Archer",1285,1,"#GuardianKilled::On_L3_10";	break;
 			case 11: monster "aldeg_cas03.gat",90,112,"Guardian Knight",1286,1,"#GuardianKilled::On_L3_11";	break;
 			case 12: monster "aldeg_cas03.gat",86,120,"Guardian Soldier",1287,1,"#GuardianKilled::On_L3_12";	break;
-			case 13: monster "aldeg_cas03.gat",195,151,"Guardian Archer",1285,1,"#GuardianKilled::On_L3_13"; break;
-			case 14: monster "aldeg_cas03.gat",116,112,"Guardian Knight",1286,1,"#GuardianKilled::On_L3_14"; break;
+			case 13: monster "aldeg_cas03.gat",195,151,"Guardian Archer",1285,1,"#GuardianKilled::On_L3_13";	break;
+			case 14: monster "aldeg_cas03.gat",116,112,"Guardian Knight",1286,1,"#GuardianKilled::On_L3_14";	break;
 			case 15: monster "aldeg_cas03.gat",116,76,"Guardian Soldier",1287,1,"#GuardianKilled::On_L3_15";	break;
 			case 16: monster "aldeg_cas03.gat",64,103,"Guardian Soldier",1287,1,"#GuardianKilled::On_L3_16";	break;
-			case 17: monster "aldeg_cas03.gat",212,160,"Guardian Archer",1285,1,"#GuardianKilled::On_L3_17"; break;
+			case 17: monster "aldeg_cas03.gat",212,160,"Guardian Archer",1285,1,"#GuardianKilled::On_L3_17";	break;
 		}
 	}
 	if (getarg(0) == "L4") {
 		switch(getarg(1)) {
-			case 10: monster "aldeg_cas04.gat",187,100,"Guardian Archer",1285,1,"#GuardianKilled::On_L4_10"; break;
+			case 10: monster "aldeg_cas04.gat",187,100,"Guardian Archer",1285,1,"#GuardianKilled::On_L4_10";	break;
 			case 11: monster "aldeg_cas04.gat",192,42,"Guardian Archer",1285,1,"#GuardianKilled::On_L4_11";	break;
 			case 12: monster "aldeg_cas04.gat",55,88,"Guardian Knight",1286,1,"#GuardianKilled::On_L4_12";	break;
-			case 13: monster "aldeg_cas04.gat",145,209,"Guardian Soldier",1287,1,"#GuardianKilled::On_L4_13"; break;
+			case 13: monster "aldeg_cas04.gat",145,209,"Guardian Soldier",1287,1,"#GuardianKilled::On_L4_13";	break;
 			case 14: monster "aldeg_cas04.gat",169,53,"Guardian Soldier",1287,1,"#GuardianKilled::On_L4_14";	break;
 			case 15: monster "aldeg_cas04.gat",198,77,"Guardian Soldier",1287,1,"#GuardianKilled::On_L4_15";	break;
 			case 16: monster "aldeg_cas04.gat",148,88,"Guardian Archer",1285,1,"#GuardianKilled::On_L4_16";	break;
@@ -227,7 +227,7 @@ function	script	F_GuardianCall	{
 			case 10: monster "aldeg_cas05.gat",51,202,"Guardian Archer",1285,1,"#GuardianKilled::On_L5_10";	break;
 			case 11: monster "aldeg_cas05.gat",27,221,"Guardian Knight",1286,1,"#GuardianKilled::On_L5_11";	break;
 			case 12: monster "aldeg_cas05.gat",145,78,"Guardian Knight",1286,1,"#GuardianKilled::On_L5_12";	break;
-			case 13: monster "aldeg_cas05.gat",157,192,"Guardian Soldier",1287,1,"#GuardianKilled::On_L5_13"; break;
+			case 13: monster "aldeg_cas05.gat",157,192,"Guardian Soldier",1287,1,"#GuardianKilled::On_L5_13";	break;
 			case 14: monster "aldeg_cas05.gat",157,74,"Guardian Soldier",1287,1,"#GuardianKilled::On_L5_14";	break;
 			case 15: monster "aldeg_cas05.gat",188,79,"Guardian Archer",1285,1,"#GuardianKilled::On_L5_15";	break;
 			case 16: monster "aldeg_cas05.gat",156,73,"Guardian Knight",1286,1,"#GuardianKilled::On_L5_16";	break;
