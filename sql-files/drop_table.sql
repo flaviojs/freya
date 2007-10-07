@@ -1,7 +1,4 @@
-#Athena SQL Table Drop Sprict
-#2005/12/02 yoran
-#まれにテーブル構築失敗するので、その時は下記スプリクトを実行してから
-#再度、main.sqlを実行してください。
+#Athena SQL Table Drop Script
 drop table `cart_inventory`;
 drop table `char`;
 drop table `charlog`;
