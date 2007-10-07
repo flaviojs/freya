@@ -13,6 +13,9 @@
 
 Date	Added
 
+2007/10/07
+	* Improved: Database header formatting [Tsuyuki]
+
 2007/10/06
 	* Updated: GvG castle names from euRO to iRO, in castle_db.txt [Tsuyuki]
 	* Updated: Most of the GvG script system to official, based on iRO Aegis 11.1 [Tsuyuki]
