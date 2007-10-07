@@ -254,6 +254,7 @@ OnTimer203000:
 OnTimer204000:
 	disablenpc "out3#bingo";
 	set $@hu_bingoa,0;
+	set $@hu_bingob,0; 
 	donpcevent "Bingo Waiting Room::OnStart";
 	end;
 }
@@ -1007,7 +1008,7 @@ OnTouch:
 			break;
 	}
 	set $@hu_bingob,$@hu_bingob +1;
-	if ($@hu_bingob == 4) set $@hu_bingob,0;
+	if ($@hu_bingob == 5) set $@hu_bingob,0;
 	end;
 }
 
