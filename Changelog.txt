@@ -15,7 +15,7 @@ Date	Added
 
 2007/10/06
 	* Updated: GvG castle names from euRO to iRO, in castle_db.txt [Tsuyuki]
-	* Updated: Most of the GvG system to official, based on iRO Aegis 11.1 [Tsuyuki]
+	* Updated: Most of the GvG script system to official, based on iRO Aegis 11.1 [Tsuyuki]
 	 - Just about everything with the exception of the gvg_flag.txt file which still needs some work
 
 2007/10/05
