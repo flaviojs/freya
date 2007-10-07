@@ -1,7 +1,24 @@
-// skill_require_db.txt, Skill Requirements Database #1
+//--------------------------------------------------------------
+//               (c)2004-2007 Aurora Team Presents:             
+//                  ___                                         
+//                 /   |_   _ _ __ ___  _ __ __ _               
+//                / /| | | | | '__/ _ \| '__/ _` |              
+//               / ___ | |_| | | | (_) | | | (_| |              
+//              /_/  |_|\____|_|  \___/|_|  \__,_|              
+//                 http://aurora.deltaanime.net                 
+//--------------------------------------------------------------
 //
+// skill_require_db.txt
+// Skill Requirements Database #1
+
+//--------------------------------------------------------------
 // Structure of Database:
-// SkillID,List_HP,List_SP,List_HP_Rate,List_SP_Rate,List_Zeny,List_Weapon,State,Spiritball,ItemID1,Amount1,ItemID2,Amount2,ItemID3,Amount3,ItemID4,Amount4,ItemID5,Amount5,ItemID6,Amount6,ItemID7,Amount7,ItemID8,Amount8,ItemID9,Amount9,ItemID10,Amount10
+//--------------------------------------------------------------
+// <SkillID>,<ListHP>,<ListSP>,<ListHPRate>,<ListSPRate>,<ListZeny>,<ListWeapon>,<State>,<SpiritBall>,<ItemID1>,<Amount1>,<ItemID2>,<Amount2>,<ItemID3>,<Amount3>,<ItemID4>,<Amount4>,<ItemID5>,<Amount5>,<ItemID6>,<Amount6>,<ItemID7>,<Amount7>,<ItemID8>,<Amount8>,<ItemID9>,<Amount9>,<ItemID10>,<Amount10>
+
+//--------------------------------------------------------------
+// Database Entries:
+//--------------------------------------------------------------
 
 5,0,8:8:8:8:8:15:15:15:15:15,0,0,0,0:1:2:3:4:5:6:7:8:9:10:11:12:13:14:15:16:17:18:19:20:21:22,none,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0	//SM_BASH#Bash#
 6,0,4:5:6:7:8:9:10:11:12:13,0,0,0,99,none,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0	//SM_PROVOKE#Provoke#

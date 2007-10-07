@@ -1,8 +1,25 @@
-// skill_cast_db.txt, Skill Duration Database
+//--------------------------------------------------------------
+//               (c)2004-2007 Aurora Team Presents:             
+//                  ___                                         
+//                 /   |_   _ _ __ ___  _ __ __ _               
+//                / /| | | | | '__/ _ \| '__/ _` |              
+//               / ___ | |_| | | | (_) | | | (_| |              
+//              /_/  |_|\____|_|  \___/|_|  \__,_|              
+//                 http://aurora.deltaanime.net                 
+//--------------------------------------------------------------
 //
+// skill_cast_db.txt
+// Skill Duration Database
+
+//--------------------------------------------------------------
 // Structure of Database:
+//--------------------------------------------------------------
 //
-// SkillID,CastingTime,FixedCastingTime,AfterCastDelay,Duration1,Duration2
+// <SkillID>,<CastTime>,<FixedCastTime>,<AfterCastDelay>,<Duration1>,<Duration2>
+
+//--------------------------------------------------------------
+// Database Entries:
+//--------------------------------------------------------------
 
 6,0,0,0,30000,0	//SM_PROVOKE#Provoke#
 7,0,0,2000,10000,0	//SM_MAGNUM#Magnum Break#
@@ -446,7 +463,6 @@
 8014,0,0,1000,0,0	//HVAN_CHAOTIC#Benediction of Chaos#
 8016,0,0,1000,0,0	//HVAN_EXPLOSION#Homunculus Explosion#
 
-//id,cast_list,fixed_cast_list,delay_list,upkeep_time,upkeep_time2
 10010,0,0,0,60000,0	//GD_BATTLEORDER#Battle Orders#
 10011,0,1000,0,60000,0	//GD_REGENERATION#Regeneration#
 10012,0,1000,0,0,0	//GD_RESTORE#Restore#
