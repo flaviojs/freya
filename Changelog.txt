@@ -24,7 +24,7 @@ Date	Added
 
 2007/10/05
 	* Updated: The Gunslinger/Ninja Merchants/Quests with iRO dialogue, converted from Aegis [Tsuyuki]
-	 - Thanks to Articulus for Item enumeration conversion for me
+	 - Thanks to Articulus for doing the item enumeration conversion for me
 
 2007/10/04
 	* Added: Veins Shops / Inn, credits to L0ne_W0lf [Tsuyuki]
