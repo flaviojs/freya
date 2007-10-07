@@ -1,6 +1,19 @@
-// abra,db.txt, Hocus-Pocus Castable Skills Database
+//--------------------------------------------------------------
+//               (c)2004-2007 Aurora Team Presents:             
+//                  ___                                         
+//                 /   |_   _ _ __ ___  _ __ __ _               
+//                / /| | | | | '__/ _ \| '__/ _` |              
+//               / ___ | |_| | | | (_) | | | (_| |              
+//              /_/  |_|\____|_|  \___/|_|  \__,_|              
+//                 http://aurora.deltaanime.net                 
+//--------------------------------------------------------------
 //
+// abra_db.txt
+// Hocus-Pocus Castable Skills Database
+
+//--------------------------------------------------------------
 // Structure of Database:
+//--------------------------------------------------------------
 //
 // <Skill_ID>,<Dummy_Name>,<Required_HocusPocus_Level>,<Rate>
 //
@@ -10,6 +23,10 @@
 // Rate: Chance rate. The rate is *10000. However, a 100% rate will not result in this skill always beeing choosen.
 //
 // If Rate is made very low, skill selection processing may take more time and will be heavy on CPU with the server.
+
+//--------------------------------------------------------------
+// Database Entries:
+//--------------------------------------------------------------
 
 1,Basic Skill,1,5000
 

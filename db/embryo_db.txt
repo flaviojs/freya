@@ -1,10 +1,27 @@
-// embryo_db.txt, Homunculus Creation Database
+//--------------------------------------------------------------
+//               (c)2004-2007 Aurora Team Presents:             
+//                  ___                                         
+//                 /   |_   _ _ __ ___  _ __ __ _               
+//                / /| | | | | '__/ _ \| '__/ _` |              
+//               / ___ | |_| | | | (_) | | | (_| |              
+//              /_/  |_|\____|_|  \___/|_|  \__,_|              
+//                 http://aurora.deltaanime.net                 
+//--------------------------------------------------------------
 //
+// embryo_db.txt
+// Homunculus Creation Database
+//
+//--------------------------------------------------------------
 // Structure of Database:
+//--------------------------------------------------------------
 //
-// HomunID, HomunName(Dummy), Rate
+// <HomunID>,<HomunName(Dummy)>,<Rate>
 //
-// Homun ID, Homun's Name (Dummy), the probability is (*10000) so if 500000 then it is 50% and if 1000000 then it is 100%.
+// The rate is (*10000), so if it is set to 500000 then it is 50%, if it is set to 1000000 then it is 100%, etc.
+//
+//--------------------------------------------------------------
+// Database Entries:
+//--------------------------------------------------------------
 //
 0,Lif,6001
 6001,Lif,200000

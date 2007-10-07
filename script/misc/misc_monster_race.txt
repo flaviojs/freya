@@ -15,7 +15,7 @@
 //--------------------------------------------------------------
 // Additional Notes: * Official-certified / Aegis-certified *
 // Currently not fully functional due to the lack of OnTouchNPC,
-// changespeed, and // sc_start for mobs.
+// changespeed, and sc_start for mobs.
 //--------------------------------------------------------------
 
 

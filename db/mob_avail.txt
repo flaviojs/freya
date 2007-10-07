@@ -45,7 +45,3 @@
 //
 // Upper:
 //    0:Nomal job      1:Advanced Job      2:Adopted Child
-
-// Easter Event
-1920,1047
-1921,1093

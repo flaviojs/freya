@@ -7,13 +7,14 @@
 //              /_/  |_|\____|_|  \___/|_|  \__,_|              
 //                 http://aurora.deltaanime.net                 
 //--------------------------------------------------------------
-// Script Title: GvG Core System	Author: jAthena
+// Script Title: GvG Core System	Author: jAthena/Tsuyuki
 //--------------------------------------------------------------
-// Revision History: v1.0
+// Revision History: v1.1
 //--------------------------------------------------------------
 //	1.0 First version [jAthena]
+//	1.1 Updated to iRO Aegis/official [Tsuyuki]
 //--------------------------------------------------------------
-// Additional Notes: * Official-certified *
+// Additional Notes: * Official-certified / Aegis-certified *
 //--------------------------------------------------------------
 
 
@@ -26,7 +27,7 @@
 
 
 //--------------------------------------------------------------
-// GvG Global Initialization/End Timer - [jAthena]
+// GvG System Activation/Deactivation Clock - [jAthena]
 //--------------------------------------------------------------
 
 -	script	#AgitConfig	139,{
@@ -81,7 +82,7 @@ OnTimer60000:
 
 
 //--------------------------------------------------------------
-// GvG Castle Main Execution - [jAthena]
+// GvG System Core Execution - [jAthena]
 //--------------------------------------------------------------
 
 -	script	AgitExe	139,{
@@ -100,8 +101,9 @@ OnAgitInit:
 
 OnAgitStart:
 	set '@dummy,getmapxy('@map$,'@dummy,'@dummy,1);
-	if ('@map$ == "-")
+	if ('@map$ == "-") {
 		end;
+	}
 	maprespawnguildid '@map$,getcastledata('@map$,1),2;
 	callfunc "F_AgitSummon",strnpcinfo(2);
 	gvgon '@map$;
@@ -109,19 +111,22 @@ OnAgitStart:
 
 OnAgitBreak:
 	set '@dummy,getmapxy('@map$,'@dummy,'@dummy,1);
-	if ('@map$ == "-")
+	if ('@map$ == "-") {
 		end;
+	}
 	killmonsterall '@map$;
 	set '@gid,getcharid(2);
-	if ('@gid <= 0)
+	if ('@gid <= 0) {
 		end;
+	}
 	setcastledata '@map$,1,'@gid;
 	for(set '@i,2; '@i <= 17; set '@i,'@i + 1) {
 		if ('@i == 2 || '@i == 3) {
 			set '@val,getcastledata('@map$,'@i) - 5;
 			setcastledata '@map$,'@i,('@val < 1) ? 1 : '@val;
-		} else
+		} else {
 			setcastledata '@map$,'@i,0;
+		}
 	}
 	announce "The ["+getcastlename('@map$)+"] castle has been conquered by the ["+getguildname('@gid)+"] guild.",0;
 	announce "The Emperium has been destroyed.",9,0x00ff00;
@@ -130,23 +135,35 @@ OnAgitBreak:
 
 OnAgitEliminate:
 	set '@dummy,getmapxy('@map$,'@dummy,'@dummy,1);
-	if ('@map$ == "-")
+	if ('@map$ == "-") {
 		end;
+	}
 	maprespawnguildid '@map$,getcastledata('@map$,1),6;
 	callfunc "F_AgitSummon",strnpcinfo(2);
 	end;
 
 OnGuildBreak:
 	set '@dummy,getmapxy('@map$,'@dummy,'@dummy,1);
-	if ('@map$ == "-")
+	if ('@map$ == "-") {
 		end;
-	callfunc "F_AgitGiveUp",strnpcinfo(2);
+	}
+	killmonsterall '@map$;
+	disablenpc "AgitKafra_"+strnpcinfo(2);
+	for(set '@i,1; '@i <= 17; set '@i,'@i + 1) {
+		setcastledata '@map$,'@i,('@i == 2 || '@i == 3) ? 1 : 0;
+	}
+	donpcevent "::OnFlagEmb_"+strnpcinfo(2);
+	maprespawnguildid '@map$,0,7;
+	if (agitcheck()) {
+		callfunc "F_AgitSummon",getarg(0);
+	}
 	end;
 
 OnAgitEnd:
 	set '@dummy,getmapxy('@map$,'@dummy,'@dummy,1);
-	if ('@map$ == "-")
+	if ('@map$ == "-") {
 		end;
+	}
 	maprespawnguildid '@map$,getcastledata('@map$,1),4;
 	killmonster '@map$,strnpcinfo(0)+"::OnAgitBreak";
 	gvgoff '@map$;
@@ -155,7 +172,7 @@ OnAgitEnd:
 
 
 //--------------------------------------------------------------
-// GvG Castle Main Execution Duplicates - [jAthena]
+// GvG System Core Castle Duplicates - [jAthena]
 //--------------------------------------------------------------
 
 aldeg_cas01.gat,0,0,0	duplicate(AgitExe)	AgitExe#L1	139
@@ -181,23 +198,3 @@ prtg_cas02.gat,0,0,0	duplicate(AgitExe)	AgitExe#V2	139
 prtg_cas03.gat,0,0,0	duplicate(AgitExe)	AgitExe#V3	139
 prtg_cas04.gat,0,0,0	duplicate(AgitExe)	AgitExe#V4	139
 prtg_cas05.gat,0,0,0	duplicate(AgitExe)	AgitExe#V5	139
-
-
-//--------------------------------------------------------------
-// GvG Castle Surrender Function - [jAthena]
-//--------------------------------------------------------------
-
-function	script	F_AgitGiveUp	{
-
-	set '@dummy,getmapxy('@map$,'@dummy,'@dummy,1);
-	killmonsterall '@map$;
-	disablenpc "AgitKafra_"+getarg(0);
-	for(set '@i,1; '@i <= 17; set '@i,'@i + 1) {
-		setcastledata '@map$,'@i,('@i == 2 || '@i == 3) ? 1 : 0;
-	}
-	donpcevent "::OnFlagEmb_"+getarg(0);
-	maprespawnguildid '@map$,0,7;
-	if (agitcheck())
-		callfunc "F_AgitSummon",getarg(0);
-	return;
-}

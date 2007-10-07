@@ -1,8 +1,25 @@
-// guild_skill_tree.txt, Guild Skill Tree Database
+//--------------------------------------------------------------
+//               (c)2004-2007 Aurora Team Presents:             
+//                  ___                                         
+//                 /   |_   _ _ __ ___  _ __ __ _               
+//                / /| | | | | '__/ _ \| '__/ _` |              
+//               / ___ | |_| | | | (_) | | | (_| |              
+//              /_/  |_|\____|_|  \___/|_|  \__,_|              
+//                 http://aurora.deltaanime.net                 
+//--------------------------------------------------------------
 //
+// guild_skill_tree.txt
+// GvG Guild Skill Tree Database
+//
+//--------------------------------------------------------------
 // Structure of Database:
+//--------------------------------------------------------------
 //
-// SkillID,MaxLV,Prerequisite SkillID1,Prerequisite SkillID1Lv,PrereqSkill-ID2,PrereqSkillID2Lv,PrereqSkillID3,PrereqSkillID3Lv,PrereqSkillID4,PrereqSkillID4Lv,PrereqSkillID5,PrereqSkillID5Lv //GD_SKILLNAME#Skill Name#
+// <SkillID>,<MaxLv>,<PrereqSkillID1>,<PrereqSkillID1Lv>,<PrereqSkill-ID2>,<PrereqSkillID2Lv>,<PrereqSkillID3>,<PrereqSkillID3Lv>,<PrereqSkillID4>,<PrereqSkillID4Lv>,<PrereqSkillID5>,<PrereqSkillID5Lv> //GD_SKILLNAME#Skill Name#
+//
+//--------------------------------------------------------------
+// Database Entries:
+//--------------------------------------------------------------
 //
 10000,1,0,0,0,0,0,0,0,0,0,0	//GD_APPROVAL#Approval#
 10001,1,10000,1,0,0,0,0,0,0,0,0	//GD_KAFRACONTRACT#Contract with Kafra#

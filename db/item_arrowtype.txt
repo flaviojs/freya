@@ -1,8 +1,30 @@
-// Arrow Type Database
+//--------------------------------------------------------------
+//               (c)2004-2007 Aurora Team Presents:             
+//                  ___                                         
+//                 /   |_   _ _ __ ___  _ __ __ _               
+//                / /| | | | | '__/ _ \| '__/ _` |              
+//               / ___ | |_| | | | (_) | | | (_| |              
+//              /_/  |_|\____|_|  \___/|_|  \__,_|              
+//                 http://aurora.deltaanime.net                 
+//--------------------------------------------------------------
+//
+// item_arrowtype.txt
+// Ammunition Type Database
+//
+//--------------------------------------------------------------
+// Structure of Database:
+//--------------------------------------------------------------
+//
+// <ItemID>,<DatabaseName>,<DisplayName>,<Type>
 //
 // 1:Arrow,2:Throwing Knife (used for the Assassin skill),
 // 4:Pistol Bullet,8:Riffle Bullet,16:Shootgun Bullet,
 // 32:Gatling Gun Bullet,64:Grenade Launcher Bullet,128:Shuriken,256:Kunai
+//
+//--------------------------------------------------------------
+// Database Entries:
+//--------------------------------------------------------------
+//
 1750,Arrow,Arrow,1
 1751,Silver_Arrow,Silver Arrow,1
 1752,Fire_Arrow,Fire Arrow,1

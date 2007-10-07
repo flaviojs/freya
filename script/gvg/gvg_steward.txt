@@ -18,6 +18,19 @@
 
 
 //--------------------------------------------------------------
+// Documentation:
+//--------------------------------------------------------------
+// Guardian names are not correct right now. They're currently
+// shown as Guardian 1, Guardian 2, Guardian 3, etc..
+// They should be Guardian Archer, Guardian Soldier, etc..
+// All castles are different so they will all need to be matched
+// up correctly. Also, Guardian HP/Max HP values are not shown,
+// the jA script engine doesn't seem to support retrieving the
+// stat values.
+//--------------------------------------------------------------
+
+
+//--------------------------------------------------------------
 // Al De Baran Guild Castle Stewards - [Tsuyuki]
 //--------------------------------------------------------------
 

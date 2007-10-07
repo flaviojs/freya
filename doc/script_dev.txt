@@ -13,33 +13,29 @@
 
 ---------------------------------------------------------------------------
 
-- gvg/gvg_core.txt			<- Good enough
-- gvg/gvg_dungeon.txt			<- Good enough - Need to import Aegis dialogue/function [*]
-- gvg/gvg_flag.txt			<- Good enough - Need to import Aegis dialogue/function [*]
-- gvg/gvg_monster.txt			<- Good enough - Need to import Aegis coordinates [*]
-- gvg/gvg_treasure.txt			<- Good enough - Need to import Aegis coordinates [*]
+- gvg/gvg_flag.txt			<- Need to fully import Aegis function [*]
 
-- town/town_nameless.txt		<- Requires conversion - No access to an Aegis version [*]
-- town/town_veins.txt			<- Requires conversion - No access to an Aegis version [*]
+- town/town_nameless.txt		<- No access to an Aegis version [*]
+- town/town_veins.txt			<- No access to an Aegis version [*]
 
 
 ---------------------------------------------------------------------------
  Aurora's euRO Dialogue Aegis Scripts:
 ---------------------------------------------------------------------------
 
-- misc/misc_cash_item.txt		<- Optional? [*] - No access to an iRO Aegis version [*]
-- quest/quest_god_seal.txt		<- Optional? [*]
-- quest/quest_job_tutorial.txt		<- Optional? [*]
-- quest/quest_thanatos.txt		<- Optional? [*]
-- town/town_hugel.txt			<- Optional? - Only Rebellion Quest is euRO - No access to an iRO Aegis version [*]
+- misc/misc_cash_item.txt		<- No access to an iRO Aegis version [*]
+- quest/quest_god_seal.txt		<- Need to reconvert from Aegis [*]
+- quest/quest_job_tutorial.txt		<- Need to reconvert from Aegis [*]
+- quest/quest_thanatos.txt		<- Need to reconvert from Aegis [*]
+- town/town_hugel.txt			<- Only Rebellion Quest is euRO - No access to an iRO Aegis version [*]
 
 
 ---------------------------------------------------------------------------
  Aurora's Missing Aegis Scripts:
 ---------------------------------------------------------------------------
 
-- local/arena/ *			<- Izlude Battle Arena - jAthena has it (In Japanese.. translate?) - Requires conversion [*]
-- local/turbotrack/ *			<- Al De Baran Turbo Track - jAthena has it (In Japanese.. translate?) - Requires conversion [*]
+- local/arena/ *			<- Izlude Battle Arena - Need to convert from Aegis [*]
+- local/turbotrack/ *			<- Al De Baran Turbo Track - Need to convert from Aegis [*]
 
 
 ---------------------------------------------------------------------------

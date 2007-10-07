@@ -1417,7 +1417,7 @@ yuno_pre.gat	mapflag	nopenalty	dummy
 
 
 //--------------------------------------------------------------
-// Non-jAthena New Mapflags
+// Aurora Mapflags
 //--------------------------------------------------------------
 
 abbey01.gat	mapflag	nomemo	dummy
@@ -1428,6 +1428,14 @@ nameless_in.gat	mapflag	nopenalty	dummy
 nameless_in.gat	mapflag	noteleport	dummy
 nameless_in.gat	mapflag	nobranch	dummy
 nameless_n.gat	mapflag	nomemo	dummy
+sec_in01.gat	mapflag	nomemo	dummy
+sec_in01.gat	mapflag	noteleport	dummy
+sec_in01.gat	mapflag	nosave	SavePoint
+sec_in01.gat	mapflag	nopenalty	dummy
+sec_in02.gat	mapflag	nomemo	dummy
+sec_in02.gat	mapflag	noteleport	dummy
+sec_in02.gat	mapflag	nosave	SavePoint
+sec_in02.gat	mapflag	nopenalty	dummy
 thor_v01.gat	mapflag	nomemo	dummy
 thor_v02.gat	mapflag	nomemo	dummy
 thor_v03.gat	mapflag	nomemo	dummy

@@ -1,8 +1,25 @@
-// create_arrow_db.txt, Arrow Creation Database
+//--------------------------------------------------------------
+//               (c)2004-2007 Aurora Team Presents:             
+//                  ___                                         
+//                 /   |_   _ _ __ ___  _ __ __ _               
+//                / /| | | | | '__/ _ \| '__/ _` |              
+//               / ___ | |_| | | | (_) | | | (_| |              
+//              /_/  |_|\____|_|  \___/|_|  \__,_|              
+//                 http://aurora.deltaanime.net                 
+//--------------------------------------------------------------
 //
+// create_arrow_db.txt
+// Arrow Creation Database
+
+//--------------------------------------------------------------
 // Structure of Database:
+//--------------------------------------------------------------
 //
-// SourceID, MakeID1, MakeNum1, MakeID2, MakeNum2, MakeID3, MakeNum3, MakeID4, MakeNum4, MakeID5, MakeNum5
+// <SourceID>,<MakeID1>,<MakeNum1>,<MakeID2>,<MakeNum2>,<MakeID3>,<MakeNum3>,<MakeID4>,<MakeNum4>,<MakeID5>,<MakeNum5>
+
+//--------------------------------------------------------------
+// Database Entries:
+//--------------------------------------------------------------
 
 603,1764,50,1768,50
 604,1769,40

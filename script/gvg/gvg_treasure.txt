@@ -12,9 +12,23 @@
 // Revision History: v1.1
 //--------------------------------------------------------------
 //	1.0 First version [jAthena]
-//	1.1 Added Treasure Room Security (Ban Stealers), converted from Aegis [Tsuyuki]
+//	1.1 Updated to iRO Aegis/official [Tsuyuki]
 //--------------------------------------------------------------
-// Additional Notes: * Official-certified / Partially Aegis-certified *
+// Additional Notes: * Official-certified / Aegis-certified *
+//--------------------------------------------------------------
+
+
+//--------------------------------------------------------------
+// Documentation:
+//--------------------------------------------------------------
+// Aegis Treasure Chest spawns are always on exact, specific
+// cells. In this script they're always random, though
+// within the same cell area as Aegis. Therefore they do not
+// currently match Aegis 100%. Also, in the Treasure Room exit
+// switches, there is a slight dialogue variation. Most of the
+// rooms have this menu: "Pull.","Do not pull.", but some have
+// this menu instead: "Pull.","Do not.". Minor but still
+// worthy of mention.
 //--------------------------------------------------------------
 
 
@@ -22,25 +36,33 @@
 // GvG Treasure Box Generation - [jAthena]
 //--------------------------------------------------------------
 
--	script	#TresureBox	139,{
+-	script	#TreasureBox	139,{
 
 	function sF_MakeTBox {
 		setcastledata getarg(0),2,getcastledata(getarg(0),2) + getcastledata(getarg(0),4);
 		setcastledata getarg(0),3,getcastledata(getarg(0),3) + getcastledata(getarg(0),5);
 		setcastledata getarg(0),4,0;
 		setcastledata getarg(0),5,0;
-		killmonster getarg(0),"#TresureBox::OnMyMobDead";
+		killmonster getarg(0),"#TreasureBox::OnMyMobDead";
 		set '@num1,2 + (getcastledata(getarg(0),2) + 5) / 10;
 		set '@num2,2 + getcastledata(getarg(0),2) / 10;
-		if ('@num1 > 12)
+		if ('@num1 > 12) {
 			set '@num1,12;
-		if ('@num2 > 12)
+		}
+		if ('@num2 > 12) {
 			set '@num2,12;
-		areamonster getarg(0),getarg(1),getarg(2),getarg(3),getarg(4),"Treasure box",getarg(5),'@num1,"#TresureBox::OnMyMobDead";
-		areamonster getarg(0),getarg(1),getarg(2),getarg(3),getarg(4),"Treasure box",getarg(6),'@num2,"#TresureBox::OnMyMobDead";
+		}
+		// 
+		while('@num1 > 0) {
+			areamonster getarg(0),getarg(1),getarg(2),getarg(3),getarg(4),"Treasure Chest",getarg(5),1,"#TreasureBox::OnMyMobDead";
+			set '@num1,'@num1 - 1;
+		}
+		while('@num2 > 0) {
+			areamonster getarg(0),getarg(1),getarg(2),getarg(3),getarg(4),"Treasure Chest",getarg(6),1,"#TreasureBox::OnMyMobDead";
+			set '@num2,'@num2 - 1;
+		}
 		return;
 	}
-	end;
 
 OnClock0000:
 	sF_MakeTBox "aldeg_cas01.gat",114,218,123,227,1324,1325;
@@ -141,7 +163,7 @@ gefg_cas02.gat,145,115,0	script	#RoomSwitch_B2	111,{
 	close;
 }
 
-gefg_cas03.gat,275,290,0	script	#RoomSwitch_B3	111,{
+gefg_cas03.gat,275,289,0	script	#RoomSwitch_B3	111,{
 
 	callfunc "F_RoomSwitch",106,24;
 	close;
@@ -153,7 +175,7 @@ gefg_cas04.gat,116,123,0	script	#RoomSwitch_B4	111,{
 	close;
 }
 
-gefg_cas05.gat,149,106,0	script	#RoomSwitch_B5	111,{
+gefg_cas05.gat,149,107,0	script	#RoomSwitch_B5	111,{
 
 	callfunc "F_RoomSwitch",70,53;
 	close;
@@ -178,7 +200,7 @@ payg_cas02.gat,149,149,0	script	#RoomSwitch_C2	111,{
 
 payg_cas03.gat,163,167,0	script	#RoomSwitch_C3	111,{
 
-	callfunc "F_RoomSwitch",50,262;
+	callfunc "F_RoomSwitch",50,261;
 	close;
 }
 
@@ -188,7 +210,7 @@ payg_cas04.gat,151,47,0		script	#RoomSwitch_C4	111,{
 	close;
 }
 
-payg_cas05.gat,161,137,0	script	#RoomSwitch_C5	111,{
+payg_cas05.gat,161,136,0	script	#RoomSwitch_C5	111,{
 
 	callfunc "F_RoomSwitch",277,250;
 	close;
@@ -199,13 +221,13 @@ payg_cas05.gat,161,137,0	script	#RoomSwitch_C5	111,{
 // Prontera Treasure Room Return Switches - [jAthena]
 //--------------------------------------------------------------
 
-prtg_cas01.gat,15,209,0		script	#RoomSwitch_V1	111,{
+prtg_cas01.gat,15,208,0		script	#RoomSwitch_V1	111,{
 
 	callfunc "F_RoomSwitch",112,183;
 	close;
 }
 
-prtg_cas02.gat,206,228,0	script	#RoomSwitch_V2	111,{
+prtg_cas02.gat,207,228,0	script	#RoomSwitch_V2	111,{
 
 	callfunc "F_RoomSwitch",94,62;
 	close;
@@ -219,7 +241,7 @@ prtg_cas03.gat,193,130,0	script	#RoomSwitch_V3	111,{
 
 prtg_cas04.gat,275,160,0	script	#RoomSwitch_V4	111,{
 
-	callfunc "F_RoomSwitch",260,265;
+	callfunc "F_RoomSwitch",259,265;
 	close;
 }
 

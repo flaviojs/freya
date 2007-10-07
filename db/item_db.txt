@@ -2823,7 +2823,7 @@
 7789,Free_Coupon_6,Free Coupon 6,3,,,10,,,,,,,,,,,,{},{}
 7790,Free_Coupon_7,Free Coupon 7,3,,,10,,,,,,,,,,,,{},{}
 7791,Free_Coupon_8,Free Coupon 8,3,,,10,,,,,,,,,,,,{},{}
-7792,备距,备距,3,,,10,,,,,,,,,,,,{},{}
+7792,Unknown_Item窾nknown Item,3,,,10,,,,,,,,,,,,{},{}
 7793,Golden_Apple,Golden Apple,3,,,10,,,,,,,,,,,,{},{}
 7794,Fate_Crow,Fate Crow,3,,,0,,,,,,,,,,,,{},{}
 7795,Ami's_Photograph_Collection,Ami's Photograph Collection,3,,,10,,,,,,,,,,,,{},{}
@@ -2871,7 +2871,7 @@
 7883,Reed_Pipe,Reed Pipe,3,,,0,,,,,,,,,,,,{},{}
 7884,Jade_Plate,Jade Plate,3,,,0,,,,,,,,,,,,{},{}
 7885,Sacred_Arrow,Sacred Arrow,3,,,0,,,,,,,,,,,,{},{}
-7886,葡家,葡家,3,,,10,,,,,,,,,,,,{},{}
+7886,Unknown_Item,Unknown Item,3,,,10,,,,,,,,,,,,{},{}
 7887,Dried_Fruit_Box,Dried Fruit Box,3,,,30,,,,,,,,,,,,{},{}
 7888,Nut_Bag,Nut Bag,3,,,30,,,,,,,,,,,,{},{}
 7889,Chicken_Feed,Chicken Feed,3,,,20,,,,,,,,,,,,{},{}

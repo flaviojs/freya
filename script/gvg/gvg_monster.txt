@@ -7,13 +7,31 @@
 //              /_/  |_|\____|_|  \___/|_|  \__,_|              
 //                 http://aurora.deltaanime.net                 
 //--------------------------------------------------------------
-// Script Title: GvG Monster System	Author: jAthena
+// Script Title: GvG Monster System	Author: jAthena/Tsuyuki
 //--------------------------------------------------------------
-// Revision History: v1.0
+// Revision History: v1.1
 //--------------------------------------------------------------
 //	1.0 First version [jAthena]
+//	1.1 Updated to iRO Aegis/official [Tsuyuki]
 //--------------------------------------------------------------
-// Additional Notes: * Official-certified *
+// Additional Notes: * Official-certified / Aegis-certified *
+//--------------------------------------------------------------
+
+
+//--------------------------------------------------------------
+// Documentation:
+//--------------------------------------------------------------
+// The value the castle stewards send to the guardian summon
+// function determines which guardian is to be summoned.
+// Currently the guardians are jumbled, though still specific to
+// each castle. They do not match up to Aegis.
+// Also in the Prontera castle monster spawns, in Aegis three
+// of the Emperium protection spawns have alternate names:
+// 1) "Stormy Knight" -> "Guardian Master"
+// 2) "Abysmal Knight" -> "Guardian Knight"
+// 3) "Bloody Knight" -> "Guardian Knight"
+// This is exclusive to the Prontera castles, so in Aurora
+// they've been changed back to their normal names.
 //--------------------------------------------------------------
 
 

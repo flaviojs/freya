@@ -7,13 +7,14 @@
 //              /_/  |_|\____|_|  \___/|_|  \__,_|              
 //                 http://aurora.deltaanime.net                 
 //--------------------------------------------------------------
-// Script Title: GvG Dungeon Entrance Switches	Author: jAthena
+// Script Title: GvG Dungeon Entrance Switches	Author: jAthena/Tsuyuki
 //--------------------------------------------------------------
-// Revision History: v1.0
+// Revision History: v1.1
 //--------------------------------------------------------------
 //	1.0 First version [jAthena]
+//	1.1 Updated to iRO Aegis/official [Tsuyuki]
 //--------------------------------------------------------------
-// Additional Notes: * Official-certified *
+// Additional Notes: * Official-certified / Aegis-certified *
 //--------------------------------------------------------------
 
 
@@ -55,7 +56,7 @@ function	script	F_DungeonSwitch	{
 // Al De Baran Dungeon Switch Entrances - [jAthena]
 //--------------------------------------------------------------
 
-aldeg_cas01.gat,211,179,0	script	#DungeonSwitch_L1	111,{
+aldeg_cas01.gat,211,181,0	script	#DungeonSwitch_L1	111,{
 
 	callfunc "F_DungeonSwitch","gld_dun02.gat",32,122;
 	close;
@@ -79,7 +80,7 @@ aldeg_cas04.gat,76,64,0		script	#DungeonSwitch_L4	111,{
 	close;
 }
 
-aldeg_cas05.gat,23,205,0	script	#DungeonSwitch_L5	111,{
+aldeg_cas05.gat,22,205,0	script	#DungeonSwitch_L5	111,{
 
 	callfunc "F_DungeonSwitch","gld_dun02.gat",103,169;
 	close;
@@ -149,7 +150,7 @@ payg_cas04.gat,52,48,0		script	#DungeonSwitch_C4	111,{
 	close;
 }
 
-payg_cas05.gat,238,11,0		script	#DungeonSwitch_C5	111,{
+payg_cas05.gat,249,15,0		script	#DungeonSwitch_C5	111,{
 
 	callfunc "F_DungeonSwitch","gld_dun01.gat",223,202;
 	close;

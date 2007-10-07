@@ -1,24 +1,41 @@
-// castle_db.txt, Guild Castles Database
+//--------------------------------------------------------------
+//               (c)2004-2007 Aurora Team Presents:             
+//                  ___                                         
+//                 /   |_   _ _ __ ___  _ __ __ _               
+//                / /| | | | | '__/ _ \| '__/ _` |              
+//               / ___ | |_| | | | (_) | | | (_| |              
+//              /_/  |_|\____|_|  \___/|_|  \__,_|              
+//                 http://aurora.deltaanime.net                 
+//--------------------------------------------------------------
 //
+// castle_db.txt
+// GvG Castle Database
+//
+//--------------------------------------------------------------
 // Structure of Database:
+//--------------------------------------------------------------
 //
 // <Castle_ID>,<Map_Name>,<Castle_Name>,<Event_Name>
 //
+//--------------------------------------------------------------
+// Database Entries:
+//--------------------------------------------------------------
+//
 0,aldeg_cas01.gat,Neuschwanstein,AgitExe#L1
 1,aldeg_cas02.gat,Hohenschwangau,AgitExe#L2
-2,aldeg_cas03.gat,Nuenberg,AgitExe#L3
+2,aldeg_cas03.gat,Nuernberg,AgitExe#L3
 3,aldeg_cas04.gat,Wuerzburg,AgitExe#L4
 4,aldeg_cas05.gat,Rothenburg,AgitExe#L5
 5,gefg_cas01.gat,Repherion,AgitExe#B1
-6,gefg_cas02.gat,Eeyolbriggar,AgitExe#B2
+6,gefg_cas02.gat,Eeyorbriggar,AgitExe#B2
 7,gefg_cas03.gat,Yesnelph,AgitExe#B3
 8,gefg_cas04.gat,Bergel,AgitExe#B4
 9,gefg_cas05.gat,Mersetzdeitz,AgitExe#B5
 10,payg_cas01.gat,Bright Arbor,AgitExe#C1
-11,payg_cas02.gat,Scarlet Palace,AgitExe#C2
+11,payg_cas02.gat,Sacred Palace,AgitExe#C2
 12,payg_cas03.gat,Holy Shadow,AgitExe#C3
-13,payg_cas04.gat,Sacred Altar,AgitExe#C4
-14,payg_cas05.gat,Bamboo Grove,AgitExe#C5
+13,payg_cas04.gat,Scarlet Palace,AgitExe#C4
+14,payg_cas05.gat,Bamboo Grove Hill,AgitExe#C5
 15,prtg_cas01.gat,Kriemhild,AgitExe#V1
 16,prtg_cas02.gat,Swanhild,AgitExe#V2
 17,prtg_cas03.gat,Fadhgridh,AgitExe#V3

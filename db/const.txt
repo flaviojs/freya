@@ -1,32 +1,54 @@
-// const.txt, Const Script Enumeration Database
+//--------------------------------------------------------------
+//               (c)2004-2007 Aurora Team Presents:             
+//                  ___                                         
+//                 /   |_   _ _ __ ___  _ __ __ _               
+//                / /| | | | | '__/ _ \| '__/ _` |              
+//               / ___ | |_| | | | (_) | | | (_| |              
+//              /_/  |_|\____|_|  \___/|_|  \__,_|              
+//                 http://aurora.deltaanime.net                 
+//--------------------------------------------------------------
 //
+// const.txt
+// Script Enumeration Database
+
+//--------------------------------------------------------------
 // Structure of Database:
+//--------------------------------------------------------------
 //
 // <Dummy_Name> <tab> <Actual_ID>
 
-// GvG Settings
-// GvG holding day during the week
-// None = 0, Sunday = +1, Monday = +2, Tuesday = +4, Wednesday = +8, Thursday = +16, Friday = +32, Saturday = +64
-// Add the day of the week when there is GvG. If no GvG put 0.
-// Set the GvGWeekDay to 127 if it happens every day
-// It's 10 if it happens Monday and Wednesday, and 65 If it's Saturday and Sunday
+//--------------------------------------------------------------
+// Database Entries:
+//--------------------------------------------------------------
+
+//--------------------------------------------------------------
+// GvG Clock Settings Part #1 -> Days in which GvG occurs:
+//--------------------------------------------------------------
+//
+// Disabled = 0, Sunday = +1, Monday = +2, Tuesday = +4, Wednesday = +8, Thursday = +16, Friday = +32, Saturday = +64
+// For every day that you want GvG to be activated, add the values above and set GvGWeekDay to the total value
+//	Example #1: Set GvGWeekDay to 127 if you want GvG to occur every single day of the week
+//	Example #2: Set it to 10 for Monday/Wednesday, or 65 for Saturday/Sunday
 
 GvGWeekDay	1
 
+//--------------------------------------------------------------
+// GvG Clock Settings Part #2 - Hours in which GvG occurs:
+//--------------------------------------------------------------
+//
+// This part of the configuration uses military/global time (0:00~23:59)
+// When setting time, make sure you follow this format:
+//	Example #1: 12:54 -> 1254
+//	Example #2: 09:03 -> 903
+// 	Example #3: 12:54 -> 1254
+// If you want GvG to end at 12:00 AM (24:00 / 24 o'Clock), indicate 2400 (not 0)
+// And if the following day GvG beginning activation is set to 0, GvG will continue through without interruption
+// If you want GvG to activate at different times each day, set GvGTimeST/GvGTimeED to 0, and use the settings below them instead
+// Otherwise GvG will always start at the same time and the settings below GvGTimeST/GvGTimeED will be disregarded
 
-// --------------GvG time Setup (0:00 ~23:59)-------------------
-// Hour and minutes are specified.
-// 	Exemple 12:54 -> 1254
-// 					 9:03 -> 903 (do not set it to 0903!)
-// When you want to end at 24 o'clock indicate 2400 (0 is useless).
-// If you specify a beginning at 0 the next day the GvG will continue without interruption.
-
-// If you want the same time every time put it there (0 for both if you want different times every days).
+// Universal
 GvGTimeST	2000
 GvGTimeED	2200
-
-// --------------GvG time Setup (0:00 ~23:59) individual settings-------------------
-// For example: if you want GvG every day from Monday to Friday from 20:00 to 22:00 and from Saturday 22:00 to Sunday 2:00.
 
 // Sunday
 GvGTime0ST	0
@@ -56,6 +78,7 @@ GvGTime5ED	2200
 GvGTime6ST	2200
 GvGTime6ED	2400
 
+//--------------------------------------------------------------
 
 Job_Novice	0
 Job_Swordsman	1
