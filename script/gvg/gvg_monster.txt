@@ -100,7 +100,7 @@ function	script	F_AgitSummon	{
 		areamonster '@map$,0,0,0,0,"Abysmal Knight",1219,2;
 		areamonster '@map$,0,0,0,0,"Executioner",1205,1;
 		areamonster '@map$,0,0,0,0,"Penomena",1216,10;
-		areamonster '@map$,0,0,0,0,"Alarm",1193,17;
+		areamonster '@map$,0,0,0,0,"Alarm",1193,18;
 		areamonster '@map$,0,0,0,0,"Clock",1269,9;
 		areamonster '@map$,0,0,0,0,"Raydric Archer",1276,7;
 		areamonster '@map$,0,0,0,0,"Wanderer",1208,3;
@@ -130,7 +130,7 @@ function	script	F_AgitSummon	{
 		monster '@map$,'@pos[0],'@pos[1],"Orc Archer",1189,10;
 		break;
 	case 3:
-		areamonster '@map$,0,0,0,0,"Greatest General",1277,10;
+		areamonster '@map$,0,0,0,0,"Greatest General",1277,9;
 		areamonster '@map$,0,0,0,0,"Wanderer",1208,10;
 		areamonster '@map$,0,0,0,0,"Mutant Dragonoid",1262,5;
 		areamonster '@map$,0,0,0,0,"Bathory",1102,5;
