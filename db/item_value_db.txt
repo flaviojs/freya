@@ -1,7 +1,24 @@
-// item_value_db.txt, Item Value Database
+//--------------------------------------------------------------
+//               (c)2004-2007 Aurora Team Presents:             
+//                  ___                                         
+//                 /   |_   _ _ __ ___  _ __ __ _               
+//                / /| | | | | '__/ _ \| '__/ _` |              
+//               / ___ | |_| | | | (_) | | | (_| |              
+//              /_/  |_|\____|_|  \___/|_|  \__,_|              
+//                 http://aurora.deltaanime.net                 
+//--------------------------------------------------------------
 //
+// item_value_db.txt
+// Item Value Database
+//
+//--------------------------------------------------------------
 // Structure of Database:
+//--------------------------------------------------------------
 //
-// ItemID,Name,Jname,Price,Sell,Not_DC,Not_OC
+// <ItemID>,<DatabaseName>,<DisplayName>,<Price>,<Sell>,<NoDiscount>,<NoOvercharge>
 //
-// Item Price Data (Rreplaces item_db.txt prices)
+// Item Price Data (Replaces item_db.txt prices)
+//
+//--------------------------------------------------------------
+// Database Entries:
+//--------------------------------------------------------------

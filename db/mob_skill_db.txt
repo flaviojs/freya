@@ -1,11 +1,23 @@
-// mob_skill_db.txt, Monster Skill Database
+//--------------------------------------------------------------
+//               (c)2004-2007 Aurora Team Presents:             
+//                  ___                                         
+//                 /   |_   _ _ __ ___  _ __ __ _               
+//                / /| | | | | '__/ _ \| '__/ _` |              
+//               / ___ | |_| | | | (_) | | | (_| |              
+//              /_/  |_|\____|_|  \___/|_|  \__,_|              
+//                 http://aurora.deltaanime.net                 
+//--------------------------------------------------------------
 //
+// mob_skill_db.txt
+// Monster Skill Database
+
+//--------------------------------------------------------------
 // Structure of Database:
+//--------------------------------------------------------------
 //
-// Mob_ID,Dummy skill and monster name,STATE,SKILL_ID,SKILL_LV,rate,casttime,delay,can stop the target,Condition,Condition value,Value 1,Value 2,Value 3,Value 4,Value 5,Emotion associate with the skill
-// Dummy skill and monster name : when you can see the skill and mob name isn't it good?
+<MobID>,<MobName@SkillName>,<State>,<SkillID>,<SkillLV>,<Rate>,<CastTime>,<Delay>,<Interruptable>,<Condition>,<ConditionValue>,<Value1>,<Value2>,<Value3>,<Value4>,<Value5>,<Emotion>
 //
-// STATE: any At any time / idle Idle/standing / walk Walking / attack Attacking /
+// State: any At any time / idle Idle/standing / walk Walking / attack Attacking /
 //        dead Dead / loot Loot / chase Following or pursuiting / Attacking back(?)
 //        command
 //
@@ -65,6 +77,10 @@
 //	sight      Using Sight
 //	stone      Stone Cursed»(beeing completly stone cursed/pertified)
 //	lexaeterna State of LA
+
+//--------------------------------------------------------------
+// Database Entries:
+//--------------------------------------------------------------
 
 1001,Scorpion@NPC_POISON,attack,176,3,500,800,5000,no,target,always,0,,,,,,
 1001,Scorpion@NPC_FIREATTACK,attack,186,1,2000,0,5000,no,target,always,0,,,,,,

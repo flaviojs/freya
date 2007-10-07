@@ -1,15 +1,31 @@
-// item_db.txt, Item Database
+//--------------------------------------------------------------
+//               (c)2004-2007 Aurora Team Presents:             
+//                  ___                                         
+//                 /   |_   _ _ __ ___  _ __ __ _               
+//                / /| | | | | '__/ _ \| '__/ _` |              
+//               / ___ | |_| | | | (_) | | | (_| |              
+//              /_/  |_|\____|_|  \___/|_|  \__,_|              
+//                 http://aurora.deltaanime.net                 
+//--------------------------------------------------------------
 //
+// item_db.txt
+// Item Database #1
+
+//--------------------------------------------------------------
 // Structure of Database:
-//
-//ID,DatabaseName,DisplayName,Type,Price,Sell,Weight,ATK,DEF,Range,Slot,Job,Gender,Loc,wLV,eLV,View,Refinable,{UseScript},{EquipScript}
+//--------------------------------------------------------------
+// <ItemID>,<DatabaseName>,<DisplayName>,<Type>,<Price>,<Sell>,<Weight>,<ATK>,<DEF>,<Range>,<Slot>,<JobReq>,<Gender>,<Location>,<WeaponLv>,<LevelReq>,<ViewID>,<Refinable>,<{UseScript}>,<{EquipScript}>
 //
 // Type: 0: Healing, 2: Usable, 3: Misc, 4: Weapon, 5: Armor, 6: Card, 7: Pet Egg,
 //       8: Pet Equip, 10: Arrow
 //
 // Elements: 0: Nothing, 1: Water, 2: Earth , 3: Fire, 4: Wind, 5: Poison, 6: Holy, 7: Dark, 8: Sense, 9: Immortality
 //
-// Loc/Location (Cards): 2: Weapon, 4: Garment, 16: Armor, 32: Shield, 64: Shoes, 136: Accessory, 769: Headgear
+// Location (Cards): 2: Weapon, 4: Garment, 16: Armor, 32: Shield, 64: Shoes, 136: Accessory, 769: Headgear
+
+//--------------------------------------------------------------
+// Database Entries:
+//--------------------------------------------------------------
 
 501,Red_Potion,Red Potion,0,50,,70,,,,,1000333311,2,,,,,,{ itemheal rand(45,65),0; },{}
 502,Orange_Potion,Orange Potion,0,200,,100,,,,,1000333311,2,,,,,,{ itemheal rand(105,145),0; },{}

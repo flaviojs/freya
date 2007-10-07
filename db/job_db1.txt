@@ -1,7 +1,25 @@
-// job_db1.txt, Job-specific Values Database
-// 
+//--------------------------------------------------------------
+//               (c)2004-2007 Aurora Team Presents:             
+//                  ___                                         
+//                 /   |_   _ _ __ ___  _ __ __ _               
+//                / /| | | | | '__/ _ \| '__/ _` |              
+//               / ___ | |_| | | | (_) | | | (_| |              
+//              /_/  |_|\____|_|  \___/|_|  \__,_|              
+//                 http://aurora.deltaanime.net                 
+//--------------------------------------------------------------
+//
+// job_db1.txt
+// Job-specific Values Database #1
+//
+//--------------------------------------------------------------
 // Structure of Database:
-// Weight,HPFactor,HPMultiplicator,SPFactor,BareFist,Dagger,1HSword,2HSword,1HSpear,2HSpear,1HAxe,2HAxe,1HMace,2HMace(Unused),Rod,Bow,Knuckle,Instrument,Whip,Book,Katar,Revolver,Rifle,GatlingGun,Shotgun,GrenadeLauncher,FuumaShuriken
+//--------------------------------------------------------------
+//
+// <Weight>,<HPFactor>,<HPMultiplicator>,<SPFactor>,<BareFist>,<Dagger>,<1HSword>,<2HSword>,<1HSpear>,<2HSpear>,<1HAxe>,<2HAxe>,<1HMace>,<2HMace(Unused)>,<Rod>,<Bow>,<Knuckle>,<Instrument>,<Whip>,<Book>,<Katar>,<Revolver>,<Rifle>,<GatlingGun>,<Shotgun>,<GrenadeLauncher>,<FuumaShuriken>
+//
+//--------------------------------------------------------------
+// Database Entries:
+//--------------------------------------------------------------
 //
 //	#0	Novice, Novice High, Baby Novice
 20000,  0,500,100, 500, 650, 700,2000,2000,2000, 800,2000, 700, 700, 650,2000,2000,2000,2000,2000,2000,2000,2000,2000,2000,2000,2000

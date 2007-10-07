@@ -1,19 +1,33 @@
-// item_avail.txt, Item Disguise Database
+//--------------------------------------------------------------
+//               (c)2004-2007 Aurora Team Presents:             
+//                  ___                                         
+//                 /   |_   _ _ __ ___  _ __ __ _               
+//                / /| | | | | '__/ _ \| '__/ _` |              
+//               / ___ | |_| | | | (_) | | | (_| |              
+//              /_/  |_|\____|_|  \___/|_|  \__,_|              
+//                 http://aurora.deltaanime.net                 
+//--------------------------------------------------------------
 //
+// item_avail.txt
+// Item Disguise Database
+
+//--------------------------------------------------------------
 // Structure of Database:
+//--------------------------------------------------------------
 //
-// ItemID,ReplacementSpriteItemID
+// <ItemID>,<ReplacementSpriteItemID>
 //
 // Client will use "ReplacementSpriteItemID" to display the particular item
 // Use '0' for the ReplacementID to disable the item
 
-2237,0	//Weird_Goatee,Bandit Beard
-5054,0	//Assassin_Mask,Assassin Mask
+//--------------------------------------------------------------
+// Database Entries:
+//--------------------------------------------------------------
 
-2240,2241 // Beard - Grampa Beard
-
-// Treasure Hunters Quest Items
-7500,7021 // THG Membership - Foolishness of the Blind
-7501,7042 // Token Bag - Leather Bag of Infinity
-1998,1250 // Jeramiah's Jur - Jur
-1999,1472 // Zed's Staff - Soul Staff
+1998,1250	// Jeramiah's Jur - Jur
+1999,1472	// Zed's Staff - Soul Staff
+2237,0		// Weird Goatee - Bandit Beard
+2240,2241	// Beard - Grampa Beard
+5054,0		// Assassin Mask - Assassin Mask
+7500,7021	// THG Membership - Foolishness of the Blind
+7501,7042	// Token Bag - Leather Bag of Infinity

@@ -1,10 +1,27 @@
+//--------------------------------------------------------------
+//               (c)2004-2007 Aurora Team Presents:             
+//                  ___                                         
+//                 /   |_   _ _ __ ___  _ __ __ _               
+//                / /| | | | | '__/ _ \| '__/ _` |              
+//               / ___ | |_| | | | (_) | | | (_| |              
+//              /_/  |_|\____|_|  \___/|_|  \__,_|              
+//                 http://aurora.deltaanime.net                 
+//--------------------------------------------------------------
+//
 // item_group_db.txt
+// Item Group Database
 //
+//--------------------------------------------------------------
 // Structure of Database:
+//--------------------------------------------------------------
 //
-// ItemID,Name,Jname,Group
+// <ItemID>,<DatabaseName>,<DisplayName>,<GroupID>
 //
-// Group: 1: Potion 2: Herb 3: Candy 4: Juice 5: Meat 6: Raw Fish
+// GroupID: 1: Potion 2: Herb 3: Candy 4: Juice 5: Meat 6: Raw Fish
+//
+//--------------------------------------------------------------
+// Database Entries:
+//--------------------------------------------------------------
 //
 501,Red_Potion,Red Potion,1
 502,Orange_Potion,Orange Potion,0

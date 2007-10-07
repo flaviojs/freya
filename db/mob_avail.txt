@@ -1,8 +1,21 @@
-// mob_avail.txt, Monster ID Disguise Database
+//--------------------------------------------------------------
+//               (c)2004-2007 Aurora Team Presents:             
+//                  ___                                         
+//                 /   |_   _ _ __ ___  _ __ __ _               
+//                / /| | | | | '__/ _ \| '__/ _` |              
+//               / ___ | |_| | | | (_) | | | (_| |              
+//              /_/  |_|\____|_|  \___/|_|  \__,_|              
+//                 http://aurora.deltaanime.net                 
+//--------------------------------------------------------------
 //
+// mob_avail.txt
+// Monster Disguise Database
+//
+//--------------------------------------------------------------
 // Structure of Database:
+//--------------------------------------------------------------
 //
-// Mob_ID,Appearance_ID
+// <MobID>,<ReplacementSpriteItemID>
 //
 // Disguises a monster with a different sprite.
 // 1001-2000 must be used for now as any other ID is invalid.
@@ -45,3 +58,7 @@
 //
 // Upper:
 //    0:Nomal job      1:Advanced Job      2:Adopted Child
+//
+//--------------------------------------------------------------
+// Database Entries:
+//--------------------------------------------------------------
