@@ -1,12 +1,29 @@
-// sc_data_db.txt, Status Change Database
+//--------------------------------------------------------------
+//               (c)2004-2007 Aurora Team Presents:             
+//                  ___                                         
+//                 /   |_   _ _ __ ___  _ __ __ _               
+//                / /| | | | | '__/ _ \| '__/ _` |              
+//               / ___ | |_| | | | (_) | | | (_| |              
+//              /_/  |_|\____|_|  \___/|_|  \__,_|              
+//                 http://aurora.deltaanime.net                 
+//--------------------------------------------------------------
 //
+// sc_data_db.txt
+// Status Change Database
+//
+//--------------------------------------------------------------
 // Structure of Database:
+//--------------------------------------------------------------
 //
-// ID,Dummy_Name,SaveFlag	// Description
+// <StatusChangeID>,<DummyName>,<SaveFlag>	// Description
 //
 // SaveFlag: (0: Not saved, 1: Saved, -1: Undefined, but should be 1 (Not saved))
 //
 // * Note: Do not modify the '-1' SaveFlag or the server will crash.
+//
+//--------------------------------------------------------------
+// Database Entries:
+//--------------------------------------------------------------
 //
 0,SC_PROVOKE,1			// Provoke
 1,SC_ENDURE,1			// Endure

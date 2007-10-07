@@ -1,7 +1,0 @@
-// produce_db_add.txt, Custom Item Creation Database (Overwrites Normal Database)
-//
-// Structure of Database:
-// ID,ItemLV,RequireSkillid,Skilllv,MaterialID1,MaterialAmount1,MaterialID2,MaterialAmount2,MaterialID3,MaterialAmount3,MaterialID4,MaterialAmount4,MaterialID5,MaterialAmount5
-//
-// Only the group level is checked by ItemLV
-// Skill = 0 -> No skill level check

@@ -1,13 +1,30 @@
-// refine_db.txt, Refine Chances Database
+//--------------------------------------------------------------
+//               (c)2004-2007 Aurora Team Presents:             
+//                  ___                                         
+//                 /   |_   _ _ __ ___  _ __ __ _               
+//                / /| | | | | '__/ _ \| '__/ _` |              
+//               / ___ | |_| | | | (_) | | | (_| |              
+//              /_/  |_|\____|_|  \___/|_|  \__,_|              
+//                 http://aurora.deltaanime.net                 
+//--------------------------------------------------------------
 //
+// refine_db.txt
+// Refinery Rate Database
+//
+//--------------------------------------------------------------
 // Structure of Database:
+//--------------------------------------------------------------
 //
-// StatsPerLvForSafeUpgrade,StatsPerLvlAfterSafeLimit,SafeLvlLimit,Lv1%,Lv2%,Lv3%, Ect..
+// StatsPerLvForSafeUpgrade>,<StatsPerLvlAfterSafeLimit>,<SafeLvlLimit>,<Lv1%>,<Lv2%>,<Lv3%>,...
 //
 // Armor Defense Is Done In Percentage (ex: 70 = .7 def)
 // Weapons Are Whole Numbers (ex: 3 = 3 atk)
 //
 // (The SafeLvlLimit may be different from the actual success rate, but only the StatsPerLvlAfterSafeLimit will be taken into account)
+//
+//--------------------------------------------------------------
+// Database Entries:
+//--------------------------------------------------------------
 //
  70, 4,4, 100,100,100,100, 60, 40, 40, 20, 20, 10,	// Armor
   2, 3,7, 100,100,100,100,100,100,100, 60, 40, 20,	// Lv1 Weapons

@@ -1,5 +1,0 @@
-// skill_cast_db_add.txt, Custom Skill Duration Database (Overwrites Normal Database)
-//
-// Structure of Database:
-//
-// SkillID,CastingTime,FixedCastingTime,AfterCastDelay,Duration1,Duration2

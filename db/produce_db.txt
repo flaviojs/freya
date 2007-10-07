@@ -1,10 +1,27 @@
-// produce_db.txt, Item Creation Database
+//--------------------------------------------------------------
+//               (c)2004-2007 Aurora Team Presents:             
+//                  ___                                         
+//                 /   |_   _ _ __ ___  _ __ __ _               
+//                / /| | | | | '__/ _ \| '__/ _` |              
+//               / ___ | |_| | | | (_) | | | (_| |              
+//              /_/  |_|\____|_|  \___/|_|  \__,_|              
+//                 http://aurora.deltaanime.net                 
+//--------------------------------------------------------------
 //
+// produce_db.txt
+// Item Creation Database
+
+//--------------------------------------------------------------
 // Structure of Database:
-// ID,ItemLV,RequireSkillid,Skilllv,MaterialID1,MaterialAmount1,MaterialID2,MaterialAmount2,MaterialID3,MaterialAmount3,MaterialID4,MaterialAmount4,MaterialID5,MaterialAmount5
+//--------------------------------------------------------------
+// <ItemID>,<ItemLv>,<RequireSkillID>,<SkillLv>,<MaterialID1>,<MaterialAmount1>,<MaterialID2>,<MaterialAmount2>,<MaterialID3>,<MaterialAmount3>,<MaterialID4>,<MaterialAmount4>,<MaterialID5>,<MaterialAmount5>
 //
-// Only the group level is checked by ItemLV
+// Only the group level is checked by ItemLv
 // Skill = 0 -> No skill level check
+
+//--------------------------------------------------------------
+// Database Entries:
+//--------------------------------------------------------------
 
 // Ore -> ItemLV: 16
 998,16,94,1,1002,1
@@ -208,6 +225,5 @@
 12003,1001,26,1,7433,1
 
 // Potion Creation -> ItemLV: 1002
-// ID,ItemLV,RequireSkillid,Skilllv,MaterialID1,MaterialAmount1,MaterialID2,MaterialAmount2,MaterialID3,MaterialAmount3,MaterialID4,MaterialAmount4,MaterialID5,MaterialAmount5
 13513,1002,393,1,547,1,546,1,545,1
 13514,1002,393,1,547,1,546,1

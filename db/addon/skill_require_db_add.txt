@@ -1,4 +1,0 @@
-// skill_require_db_add.txt, Custom Skill Requirements Database #1 (Overwrites Normal Database)
-//
-// Structure of Database:
-// SkillID,List_HP,List_SP,List_HP_Rate,List_SP_Rate,List_Zeny,List_Weapon,State,Spiritball,ItemID1,Amount1,ItemID2,Amount2,ItemID3,Amount3,ItemID4,Amount4,ItemID5,Amount5,ItemID6,Amount6,ItemID7,Amount7,ItemID8,Amount8,ItemID9,Amount9,ItemID10,Amount10

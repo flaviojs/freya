@@ -1,8 +1,25 @@
-// size_fix.txt, Size Fix Weapon Damage Database
+//--------------------------------------------------------------
+//               (c)2004-2007 Aurora Team Presents:             
+//                  ___                                         
+//                 /   |_   _ _ __ ___  _ __ __ _               
+//                / /| | | | | '__/ _ \| '__/ _` |              
+//               / ___ | |_| | | | (_) | | | (_| |              
+//              /_/  |_|\____|_|  \___/|_|  \__,_|              
+//                 http://aurora.deltaanime.net                 
+//--------------------------------------------------------------
 //
+// size_fix.txt
+// Size Fix Weapon Damage Database
+//
+//--------------------------------------------------------------
 // Structure of Database:
+//--------------------------------------------------------------
 //
-// Base,Dagger,1H-Sword,2H-Sword,1H-Spear,2H-Spear,1H-Axe,2H-Axe,1H-Mace,2H-Mace(Unused),Staff,Bow,Knuckle,Instrument,Whip,Book,Katar,Revolver,Rifle,Shotgun,GatlingGun,GrenadeLauncher,FuumaShuriken
+// <BareFist>,<Dagger>,<1HSword>,<2HSword>,<1HSpear>,<2HSpear>,<1HAxe>,<2HAxe>,<1HMace>,<2HMace(Unused)>,<Rod>,<Bow>,<Knuckle>,<Instrument>,<Whip>,<Book>,<Katar>,<Revolver>,<Rifle>,<GatlingGun>,<Shotgun>,<GrenadeLauncher>,<FuumaShuriken>
+//
+//--------------------------------------------------------------
+// Database Entries:
+//--------------------------------------------------------------
 //
 100,100, 75, 75, 75, 75, 50, 50, 75,100,100,100,100, 75, 75,100, 75,100,100,100,100,100,100,	// Small
 100, 75,100, 75, 75, 75, 75, 75,100,100,100,100, 75,100,100,100,100,100,100,100,100,100,100,	// Medium

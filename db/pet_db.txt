@@ -1,7 +1,24 @@
-// pet_db.txt, Pet Database
+//--------------------------------------------------------------
+//               (c)2004-2007 Aurora Team Presents:             
+//                  ___                                         
+//                 /   |_   _ _ __ ___  _ __ __ _               
+//                / /| | | | | '__/ _ \| '__/ _` |              
+//               / ___ | |_| | | | (_) | | | (_| |              
+//              /_/  |_|\____|_|  \___/|_|  \__,_|              
+//                 http://aurora.deltaanime.net                 
+//--------------------------------------------------------------
 //
+// pet_db.txt
+// Pet Database
+//
+//--------------------------------------------------------------
 // Structure of Database:
-// MobID,DatabaseName,DisplayName,ItemID,EggID,AcceID,FoodID,Fullness,HungryDeray,R_Hungry,R_Full,Intimate,Die,Capture,Speed,S_Performance,talk_convert_class,attack_rate,defence_attack_rate,change_target_rate,pet_script
+//--------------------------------------------------------------
+// <MobID>,<DatabaseName>,<DisplayName>,<ItemID>,<EggID>,<AcceID>,<FoodID>,<Fullness>,<HungryDelay>,<R_Hungry>,<R_Full>,<Intimate>,<Die>,<Capture>,<Speed>,<S_Performance>,<TalkConvertClass>,<AttackRate>,<DefenseAttackRate>,<ChangeTargetRate>,<{PetScript}>
+//
+//--------------------------------------------------------------
+// Database Entries:
+//--------------------------------------------------------------
 //
 1002,PORING,Poring,619,9001,10013,531,80,20,50,100,250,20,2000,400,1,0,100,100,100,{}
 1011,CHONCHON,Chonchon,624,9006,10002,537,80,10,30,100,250,20,1500,200,1,0,100,100,100,{}
