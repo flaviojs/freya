@@ -17,10 +17,14 @@
 //--------------------------------------------------------------
 
 
+//--------------------------------------------------------------
+// Mage Job Change Quest - [Tsuyuki]
+//--------------------------------------------------------------
+
 geffen_in.gat,164,124,4	script	Mage Guildsman	123,{
 
 	if (Upper == 1) {
-		if (OLD_CLASS == Job_Wizard || OLD_CLASS == Job_Sage) {
+		if (job_karma == 3 || job_karma == 9) {
 			if (Class == Job_Novice && Upper == 1) {
 				mes "[Mage Guildsman]";
 				mes "Whoa, long time no see! But weren't you supposed to be dead?";

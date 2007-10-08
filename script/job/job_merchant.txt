@@ -17,10 +17,14 @@
 //--------------------------------------------------------------
 
 
+//--------------------------------------------------------------
+// Merchant Job Change Quest - [Tsuyuki]
+//--------------------------------------------------------------
+
 alberta_in.gat,53,43,6	script	Merchant	86,{
 
 	if (Upper == 1) {
-		if (Class == Job_Novice && Upper == 1 && (OLD_CLASS == Job_Blacksmith || OLD_CLASS == Job_Alchemist)) {
+		if (Class == Job_Novice && Upper == 1 && (job_karma == 4 || job_karma == 10)) {
 			mes "[Chief Mahnsoo]";
 			mes "Long time no see!";
 			mes "Hey, you didn't quit";

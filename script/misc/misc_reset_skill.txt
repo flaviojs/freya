@@ -83,7 +83,7 @@ prontera.gat,146,232,4	script	Hypnotist#1	124,{
 				mes "Skill Reset service I provide.";
 				close;
 			} else {
-				if ((Class == Job_Swordsman) || (Class == Job_Archer) || (Class == Job_Acolyte) || (Class == Job_Thief) || (Class == Job_Mage) || (Class == Job_Merchant) || (Class == Job_Taekwon) || (Class == Job_Gunslinger) || (Class == Job_Ninja)) {
+				if ((Class == Job_Swordman) || (Class == Job_Archer) || (Class == Job_Acolyte) || (Class == Job_Thief) || (Class == Job_Mage) || (Class == Job_Merchant) || (Class == Job_Taekwon) || (Class == Job_Gunslinger) || (Class == Job_Ninja)) {
 					if (Cart) {
 						mes "[Hypnotist]";
 						mes "Oh! Please remove your";

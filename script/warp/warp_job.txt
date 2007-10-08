@@ -157,7 +157,7 @@ in_rogue.gat,244,21,0	warp	rogue11	1,1,cmd_fild09.gat,106,191
 
 
 //--------------------------------------------------------------
-// Swordsman Job Change Quest Warp Portals - [Tsuyuki]
+// Swordman Job Change Quest Warp Portals - [Tsuyuki]
 //--------------------------------------------------------------
 
 sword_1-1.gat,65,117,0	warp	swd101	1,1,sword_1-1.gat,10,245

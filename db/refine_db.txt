@@ -9,18 +9,18 @@
 //--------------------------------------------------------------
 //
 // refine_db.txt
-// Refinery Rate Database
+// Refinery Database
 //
 //--------------------------------------------------------------
 // Structure of Database:
 //--------------------------------------------------------------
 //
-// StatsPerLvForSafeUpgrade>,<StatsPerLvlAfterSafeLimit>,<SafeLvlLimit>,<Lv1%>,<Lv2%>,<Lv3%>,...
+// <StatsPerLvForSafeUpgrade>,<StatsPerLvAfterSafeLimit>,<SafeLvLimit>,<Lv1%>,<Lv2%>,<Lv3%>,...
 //
-// Armor Defense Is Done In Percentage (ex: 70 = .7 def)
-// Weapons Are Whole Numbers (ex: 3 = 3 atk)
+// Armor defense is done in percentage (Example: 70 = .7 DEF)
+// Weapons are whole numbers (Example: 3 = 3 ATK)
 //
-// (The SafeLvlLimit may be different from the actual success rate, but only the StatsPerLvlAfterSafeLimit will be taken into account)
+// The SafeLvLimit may be different from the actual success rate, but only the StatsPerLvAfterSafeLimit will be taken into account
 //
 //--------------------------------------------------------------
 // Database Entries:

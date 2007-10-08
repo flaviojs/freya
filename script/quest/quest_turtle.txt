@@ -551,7 +551,7 @@ alberta.gat,248,93,4	script	Voyage log	111,{
 				mes "His notes were so hard to find because only one man, rather than a whole team, came to Turtle Island before us!";
 				next;
 				mes "[Voyage Log]";
-				mes "This man was a swordsman simply known as 'One.' His records tell much about what can be found on Turtle Island.";
+				mes "This man was a swordman simply known as 'One.' His records tell much about what can be found on Turtle Island.";
 				next;
 				mes "[Voyage Log]";
 				mes "His records were written on animals skin, but they were durable and still easy to read after all this time.";
@@ -745,7 +745,7 @@ tur_dun02.gat,46,125,4	script	A pile of turtle crystal	111,{
 		mes "^3355FFin engraved.^000000";
 		next;
 		mes "[Crystal Plate]";
-		mes "^3355AAI, the swordsman,^000000";
+		mes "^3355AAI, the swordman,^000000";
 		mes "^3355AA'One,' has succeeded.^000000";
 		mes "^3355AAI've cut the turtle's shell.^000000";
 		mes "^3355AANow I shall try to^000000";
@@ -812,7 +812,7 @@ tur_dun02.gat,49,158,4	script	Turtle Pillar	111,{
 		mes "I've developed my mental skills, and trained using materials on this island. Sharpening my mind, I now know that I can cut this pillar in two.";
 		next;
 		mes "[Turtle Stone Bead]";
-		mes "Can this be the pinnacle of swordsmanship? Of the sword arts?";
+		mes "Can this be the pinnacle of swordmanship? Of the sword arts?";
 		next;
 		mes "[Turtle Stone Bead]";
 		mes "For this final accomplishment, I leave behind an offering.";

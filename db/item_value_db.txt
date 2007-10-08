@@ -17,7 +17,7 @@
 //
 // <ItemID>,<DatabaseName>,<DisplayName>,<Price>,<Sell>,<NoDiscount>,<NoOvercharge>
 //
-// Item Price Data (Replaces item_db.txt prices)
+// Entries in this database replace item_db.txt prices
 //
 //--------------------------------------------------------------
 // Database Entries:

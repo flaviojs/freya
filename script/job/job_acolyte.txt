@@ -14,15 +14,17 @@
 //	1.0 First version, converted from Aegis [Tsuyuki]
 //--------------------------------------------------------------
 // Additional Notes: * Official-certified / Aegis-certified *
-// Part of this quest is also used for the Priest Job Change
-// quest, as per the official servers.
 //--------------------------------------------------------------
 
+
+//--------------------------------------------------------------
+// Acolyte Job Change Quest - [Tsuyuki]
+//--------------------------------------------------------------
 
 prt_church.gat,184,41,4	script	Cleric	60,{
 
 	if (Upper == 1) {
-		if (OLD_CLASS == Job_Priest || OLD_CLASS == Job_Monk) {
+		if (job_karma == 2 || job_karma == 8) {
 			if (Class == Job_Novice && Upper == 1) {
 				mes "[Father Mareusis]";
 				mes "Ah, I sense you have endured";

@@ -15,7 +15,7 @@
 // Structure of Database:
 //--------------------------------------------------------------
 //
-// <SkillID>,<CoinConsumption>,<ArrowType>,<ArrowConsumption>,<Reserve1>,<Reserve2>
+// <SkillID>,<CoinConsumption>,<AmmoType>,<AmmoConsumption>,<Reserve1>,<Reserve2>
 
 //--------------------------------------------------------------
 // Database Entries:

@@ -16,23 +16,23 @@
 //--------------------------------------------------------------
 // <SkillID>,<Range>,<Hit>,<Target>,<Element>,<SkillInf1>,<MaxLv>,<ListNum>,<Interruptable>,<CastDefenseRate>,<SkillInf2>,<MaxCount>,<SkillType>,<BlowCount>
 //
-// 01 SkillID: Skill ID
-// 02 Range: Described in Cells
-// 03 Hit: 8-Repeated Hitting, 6-Single-Hit
-// 04 Target: 0-Passive, 1-Enemy, 2-Place, 4-Self, 16-Friend, 32-Trap
-// 05 Element: 0-Nothing, 1-Water, 2-Earth, 3-Fire, 4-Wind, 5-Poison, 6-Holy, 7-Dark, 8-Sense, 9-Immortal
-// 06 Skill Information #1: 0-Normal Skill, 1-No Damage Skill, 2-Splash Damage Skill
-// 07 MaxLv: Maximum Skill Level
-// 08 ListNum: Number of hits the skill does
-// 09 Interruptable: Interruptable-1, Not Interruptable-0
-// 10 CastDefenseRate: Ratio of the defensive power which decreases in 10 castings (Defense-Reduction rate during cast)
-// 11 Skill Information #2: 1-Quest Skill, 2-Npc Skill, 4-Wedding Skill
+// SkillID: Skill ID
+// Range: Described in Cells
+// Hit: 8-Repeated Hitting, 6-Single-Hit
+// Target: 0-Passive, 1-Enemy, 2-Place, 4-Self, 16-Friend, 32-Trap
+// Element: 0-Neutral, 1-Water, 2-Earth , 3-Fire, 4-Wind, 5-Poison, 6-Holy, 7-Dark, 8-Ghost, 9-Undead
+// Skill Information #1: 0-Normal Skill, 1-No Damage Skill, 2-Splash Damage Skill
+// MaxLv: Maximum skill level
+// ListNum: Number of hits the skill does
+// Interruptable: Interruptable-1, Not Interruptable-0
+// CastDefenseRate: Ratio of the defensive power which decreases in 10 castings (Defense reduction rate during cast)
+// Skill Information #2: 1-Quest Skill, 2-Npc Skill, 4-Wedding Skill
 //    8-Spirit Skill, 16-Guild Skill, 32-Song/Dance, 64-Ensemble Skill
 //    128-Trap (Targetable), 256-Skill That Damages/Targets Yourself
 //    512-Cannot Be Casted On Self (if 06 = 4, auto-select target skill)
-// 12 MaxCount: Special multi-use param for certain skills
-// 12 SkillType: none, weapon, magic, misc
-// 13 BlowCount: Number of cells the skill knocks back
+// MaxCount: Special multi-use param for certain skills
+// SkillType: none, weapon, magic, misc
+// BlowCount: Knock back cell count
 
 //--------------------------------------------------------------
 // Database Entries:

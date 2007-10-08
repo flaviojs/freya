@@ -14921,12 +14921,12 @@ yuno_in03.gat,176,24,3	script	Mishuna	755,{
 
 
 //--------------------------------------------------------------
-// Swordsman -> Fatal Blow Skill Quest - [Tsuyuki]
+// Swordman -> Fatal Blow Skill Quest - [Tsuyuki]
 //--------------------------------------------------------------
 
 prt_in.gat,75,88,5	script	Leon Von Frich	85,3,3,{
 
-	if ((Class == Job_Swordsman && JobLevel >= 25) || Class == Job_Knight || Class == Job_Crusader) {
+	if ((Class == Job_Swordman && JobLevel >= 25) || Class == Job_Knight || Class == Job_Crusader) {
 		if (sm_fatalblow_x == 1) {
 			mes "[Leon]";
 			mes "Eh?";
@@ -14935,7 +14935,7 @@ prt_in.gat,75,88,5	script	Leon Von Frich	85,3,3,{
 			mes "Nice to see you again! How are you?";
 			mes "Be careful! Hahaha!";
 			close;
-		} else if (countitem(1752) > 9 && countitem(1751) > 9 && countitem(532) > 0 && countitem(962) > 29 && countitem(526) > 4 && ((Class == Job_Swordsman && JobLevel >= 25) || Class == Job_Knight || Class == Job_Crusader)) {
+		} else if (countitem(1752) > 9 && countitem(1751) > 9 && countitem(532) > 0 && countitem(962) > 29 && countitem(526) > 4 && ((Class == Job_Swordman && JobLevel >= 25) || Class == Job_Knight || Class == Job_Crusader)) {
 			mes "[Leon]";
 			mes "Ooh! You are more than ready";
 			mes "to learn Fatal Blow!";
@@ -14978,7 +14978,7 @@ prt_in.gat,75,88,5	script	Leon Von Frich	85,3,3,{
 			}
 		} else {
 			mes "[Leon]";
-			mes "Ooh! A young and strong swordsman!";
+			mes "Ooh! A young and strong swordman!";
 			next;
 			mes "[Leon]";
 			mes "Wow, seeing your arm, you must enjoy using bash?";
@@ -14997,7 +14997,7 @@ prt_in.gat,75,88,5	script	Leon Von Frich	85,3,3,{
 				mes "I'm glad I met someone strong like you.";
 				next;
 				mes "[Leon]";
-				mes "Yes, I would like to give a present to an awesome swordsman like you.";
+				mes "Yes, I would like to give a present to an awesome swordman like you.";
 				next;
 				switch(select("What present?","It's ok.")) {
 				case 1:
@@ -15019,7 +15019,7 @@ prt_in.gat,75,88,5	script	Leon Von Frich	85,3,3,{
 				mes "You have learned bash, haven't you?";
 				next;
 				mes "[Leon]";
-				mes "When I was a swordsman like you,";
+				mes "When I was a swordman like you,";
 				mes "I used to enjoy using Bash. Every time, I thought";
 				mes "- maybe the attack would be more powerful";
 				mes "if I use stun at the same time.";
@@ -15085,16 +15085,16 @@ OnTouch:
 
 
 //--------------------------------------------------------------
-// Swordsman -> Moving HP Recovery Skill Quest - [Tsuyuki]
+// Swordman -> Moving HP Recovery Skill Quest - [Tsuyuki]
 //--------------------------------------------------------------
 
 izlude_in.gat,175,130,2	script	Knight De Thomas	98,{
 
-	if ((Class == Job_Swordsman) || (Class == Job_Knight) || (Class == Job_Crusader) && (sm_movingrecovery_x < 1)) {
+	if ((Class == Job_Swordman) || (Class == Job_Knight) || (Class == Job_Crusader) && (sm_movingrecovery_x < 1)) {
 		mes "[De Thomas]";
 		mes "Oh, no! You must have been hurt! Are you ok?";
 		mes "You must have fought hard to get such serious injuries..";
-		mes "Being a swordsman must come with a lot of responsibility and sacrifice.";
+		mes "Being a swordman must come with a lot of responsibility and sacrifice.";
 		next;
 		mes "[De Thomas]";
 		if (Sex == Female) {
@@ -15150,7 +15150,7 @@ izlude_in.gat,175,130,2	script	Knight De Thomas	98,{
 			close;
 		}
 			end;
-	} else if ((Class == Job_Swordsman) || (Class == Job_Knight) || (Class == Job_Crusader) && (sm_movingrecovery_x > 1)) {
+	} else if ((Class == Job_Swordman) || (Class == Job_Knight) || (Class == Job_Crusader) && (sm_movingrecovery_x > 1)) {
 		mes "[De Thomas]";
 		mes "Oh, it's you?";
 		mes "Long time no see!";
@@ -15158,7 +15158,7 @@ izlude_in.gat,175,130,2	script	Knight De Thomas	98,{
 		mes "Hahahaha!";
 		mes "Take care! See you again!";
 		close;
-	} else if ((Class == Job_Swordsman) || (Class == Job_Knight) || (Class == Job_Crusader) && (sm_movingrecovery_x == 1)) {
+	} else if ((Class == Job_Swordman) || (Class == Job_Knight) || (Class == Job_Crusader) && (sm_movingrecovery_x == 1)) {
 		mes "[De Thomas]";
 		mes "Welcome back...";
 		mes "are you ready to learn Body Movin'?";
@@ -15225,12 +15225,12 @@ izlude_in.gat,175,130,2	script	Knight De Thomas	98,{
 
 
 //--------------------------------------------------------------
-// Swordsman -> Auto-Berserk Skill Quest - [Tsuyuki]
+// Swordman -> Auto-Berserk Skill Quest - [Tsuyuki]
 //--------------------------------------------------------------
 
 prt_in.gat,94,57,3	script	Juan	85,{
 
-	if ((Class == Job_Swordsman) || (Class == Job_Knight) || (Class == Job_Crusader)) {
+	if ((Class == Job_Swordman) || (Class == Job_Knight) || (Class == Job_Crusader)) {
 		if (sm_autoberserk_x == 1) {
 			mes "[Juan]";
 			mes "Mmm? Long time no see!";
@@ -15239,21 +15239,21 @@ prt_in.gat,94,57,3	script	Juan	85,{
 			mes "Many expect great things from you.";
 			mes "You can do it.";
 			close;
-		} else if (Class == Job_Swordsman && JobLevel < 10) {
+		} else if (Class == Job_Swordman && JobLevel < 10) {
 			mes "[?]";
 			mes "What are you?";
 			mes "Eh, still a beginner.";
 			mes "I'm busy, so go train a little more";
 			mes "before coming back.";
 			close;
-		} else if (Class == Job_Swordsman && JobLevel > 10 && JobLevel < 30) {
+		} else if (Class == Job_Swordman && JobLevel > 10 && JobLevel < 30) {
 			mes "[Juan]";
 			mes "Oh, nice to meet you.";
 			mes "You can be on your way. (smiley~(";
 			close;
-		} else if (countitem(924) > 34 && countitem(958) > 9 && countitem(957) > 9 && countitem(518) > 9 && ((Class == Job_Swordsman && JobLevel >= 30) || Class == Job_Knight || Class == Job_Crusader)) {
+		} else if (countitem(924) > 34 && countitem(958) > 9 && countitem(957) > 9 && countitem(518) > 9 && ((Class == Job_Swordman && JobLevel >= 30) || Class == Job_Knight || Class == Job_Crusader)) {
 			mes "[Juan]";
-			mes "Ooh. Young swordsman!";
+			mes "Ooh. Young swordman!";
 			mes "You are ready to learn the";
 			mes "newest skill, Auto Berserk?!";
 			next;
@@ -15269,7 +15269,7 @@ prt_in.gat,94,57,3	script	Juan	85,{
 				skill 146,1,0;
 				set sm_autoberserk_x,1;
 				mes "[Juan]";
-				mes "You have just become a swordsman";
+				mes "You have just become a swordman";
 				mes "that can use Auto Berserk.";
 				mes "You can go about";
 				mes "and achieve great things!";

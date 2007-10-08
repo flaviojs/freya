@@ -15,12 +15,7 @@
 // Structure of Database:
 //--------------------------------------------------------------
 //
-// <SkillID>,<Cloneable>,<Misfire>,<Zone>,<DamageRate>,<Reserve1>,<Reserve2>,<Reserve3>,<Reserve4>
-//
-// SkillID,Clone(+1:Before Transcending +2:After Transcending +4:Adopted caracter,Misfired Skill,
-// 	Skill Limitation by Place (+1:Fields +2:PVP +4:GVG +8:PK +16:Turbo Track),
-// 	Damage Correction (Normal:PVP:GVG:PK->100:100:60:100),
-// 	Reservation1,Reservation2,Reservation3,Reservation4
+// <SkillID>,<Cloneable(+1:Normal,+2:Rebirth,+4:Baby)>,<MisfiredSkill>,<MapRestriction(+1:Fields,+2:PvP,+4:GvG,+8:PK,+16:TurboTrack)>,<DamageRate(Normal:PvP:GvG:PK->100:100:60:100)>,<Reserve1>,<Reserve2>,<Reserve3>,<Reserve4>
 
 //--------------------------------------------------------------
 // Database Entries:

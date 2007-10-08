@@ -140,7 +140,7 @@ geffen.gat,132,38,3	script	Bard#2	51,{
 					next;
 					cutin "bard_eland02",2;
 					mes "[Errende]";
-					mes "In that journal are details about an ultimate swordsman, and the exploration of Turtle Island. I'm sure that anyone seeking treasure in that place will find exciting adventure.";
+					mes "In that journal are details about an ultimate swordman, and the exploration of Turtle Island. I'm sure that anyone seeking treasure in that place will find exciting adventure.";
 					close;
 				}
 			case 2:
@@ -699,7 +699,7 @@ geffen.gat,132,38,3	script	Bard#2	51,{
 						mes "Still, that didn't stop me from visiting that place. By sheer accident, I found the journal of an adventurer who had already been there. It seems he's a famous scholar now.";
 						next;
 						mes "[Errende]";
-						mes "In that journal are details about an ultimate swordsman, and the exploration of Turtle Island. I'm sure that anyone seeking treasure in that place will find exciting adventure.";
+						mes "In that journal are details about an ultimate swordman, and the exploration of Turtle Island. I'm sure that anyone seeking treasure in that place will find exciting adventure.";
 						close;
 					}
 				case 2:
@@ -1336,7 +1336,7 @@ geffen.gat,132,38,3	script	Bard#2	51,{
 					mes "Still, that didn't stop me from visiting that place. By sheer accident, I found the journal of an adventurer who had already been there. It seems he's a famous scholar now.";
 					next;
 					mes "[Errende]";
-					mes "In that journal are details about an ultimate swordsman, and the exploration of Turtle Island. I'm sure that anyone seeking treasure in that place will find exciting adventure.";
+					mes "In that journal are details about an ultimate swordman, and the exploration of Turtle Island. I'm sure that anyone seeking treasure in that place will find exciting adventure.";
 					close;
 				}
 			case 2:
@@ -1976,7 +1976,7 @@ geffen.gat,132,38,3	script	Bard#2	51,{
 						mes "Still, that didn't stop me from visiting that place. By sheer accident, I found the journal of an adventurer who had already been there. It seems he's a famous scholar now.";
 						next;
 						mes "[Errende]";
-						mes "In that journal are details about an ultimate swordsman, and the exploration of Turtle Island. I'm sure that anyone seeking treasure in that place will find exciting adventure.";
+						mes "In that journal are details about an ultimate swordman, and the exploration of Turtle Island. I'm sure that anyone seeking treasure in that place will find exciting adventure.";
 						close;
 					}
 				case 2:
@@ -2344,7 +2344,7 @@ geffen.gat,132,38,3	script	Bard#2	51,{
 								mes "Still, that didn't stop me from visiting that place. By sheer accident, I found the journal of an adventurer who had already been there. It seems he's a famous scholar now.";
 								next;
 								mes "[Errende]";
-								mes "In that journal are details about an ultimate swordsman, and the exploration of Turtle Island. I'm sure that anyone seeking treasure in that place will find exciting adventure.";
+								mes "In that journal are details about an ultimate swordman, and the exploration of Turtle Island. I'm sure that anyone seeking treasure in that place will find exciting adventure.";
 								close;
 							}
 						case 2:
@@ -3059,7 +3059,7 @@ morocc.gat,134,111,3	script	Bard#3	741,{
 			mes "Everything's okay.";
 			next;
 			mes "[Mysterious Bard]";
-			if ((Class == Job_Knight) || (Class == Job_Swordsman) || (Class == Job_Crusader)) {
+			if ((Class == Job_Knight) || (Class == Job_Swordman) || (Class == Job_Crusader)) {
 				mes "There's no reason to be scared. The scary people with swords only use them on monsters, okay?";
 			} else if ((Class == Job_Priest) || (Class == Job_Acolyte) || (Class == Job_Monk)) {
 				mes "You don't need to be scared, that person is a servant of God, okay?";

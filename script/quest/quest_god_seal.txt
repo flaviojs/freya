@@ -7784,7 +7784,7 @@ alberta.gat,196,146,0	script	Crusader#megin2	751,{
 		{
 			mes "[Jack O]";
 			mes "*yawn*...so boring.";
-			mes "Let's see...if there is any swordsman I can recruit...?";
+			mes "Let's see...if there is any swordman I can recruit...?";
 			next;
 			mes "[Jack O]";
 			mes "Umm...?";
@@ -7937,7 +7937,7 @@ alberta.gat,196,146,0	script	Crusader#megin2	751,{
 }
 	else
 {
-		if (Class == Job_Swordsman)
+		if (Class == Job_Swordman)
 	{
 		mes "[Jack O]";
 		mes "Hey kid!";

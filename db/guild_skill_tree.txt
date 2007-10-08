@@ -15,24 +15,24 @@
 // Structure of Database:
 //--------------------------------------------------------------
 //
-// <SkillID>,<MaxLv>,<PrereqSkillID1>,<PrereqSkillID1Lv>,<PrereqSkill-ID2>,<PrereqSkillID2Lv>,<PrereqSkillID3>,<PrereqSkillID3Lv>,<PrereqSkillID4>,<PrereqSkillID4Lv>,<PrereqSkillID5>,<PrereqSkillID5Lv> //GD_SKILLNAME#Skill Name#
+// <SkillID>,<MaxLv>,<PrereqSkillID1>,<PrereqSkillID1Lv>,<PrereqSkill-ID2>,<PrereqSkillID2Lv>,<PrereqSkillID3>,<PrereqSkillID3Lv>,<PrereqSkillID4>,<PrereqSkillID4Lv>,<PrereqSkillID5>,<PrereqSkillID5Lv>	// SkillDatabaseName#SkillDisplayName#
 //
 //--------------------------------------------------------------
 // Database Entries:
 //--------------------------------------------------------------
 //
-10000,1,0,0,0,0,0,0,0,0,0,0	//GD_APPROVAL#Approval#
-10001,1,10000,1,0,0,0,0,0,0,0,0	//GD_KAFRACONTRACT#Contract with Kafra#
-10002,1,10000,1,0,0,0,0,0,0,0,0	//GD_GUARDRESEARCH#Guardian Research#
-10003,3,10000,1,0,0,0,0,0,0,0,0	//GD_GUARDUP#Build Up the Guardian#
-10004,10,0,0,0,0,0,0,0,0,0,0	//GD_EXTENSION#Guild Extension#
-10005,0,0,0,0,0,0,0,0,0,0,0	//GD_GLORY#Guild's Glory#
-10006,5,0,0,0,0,0,0,0,0,0,0	//GD_LEADERSHIP#Great Leadership#
-10007,5,0,0,0,0,0,0,0,0,0,0	//GD_GLORYWOUNDS#Wounds of Glory#
-10008,5,10007,1,0,0,0,0,0,0,0,0	//GD_SOULCOLD#Soul of Cold#
-10009,5,10006,1,0,0,0,0,0,0,0,0	//GD_HAWKEYES#Sharp Owk Eyes#
-10010,1,10000,1,10004,2,0,0,0,0,0,0	//GD_BATTLEORDER#Battle Orders#
-10011,3,10000,1,10004,5,10010,1,0,0,0,0	//GD_REGENERATION#Regeneration#
-10012,1,10011,2,0,0,0,0,0,0,0,0	//GD_RESTORE#Restore#
-10013,1,10000,1,10002,1,10004,5,10010,1,10011,1	//GD_EMERGENCYCALL#Emergency Call#
-10014,1,0,0,0,0,0,0,0,0,0,0	//GD_DEVELOPMENT#Permanent Development#
+10000,1,0,0,0,0,0,0,0,0,0,0	// GD_APPROVAL#Approval#
+10001,1,10000,1,0,0,0,0,0,0,0,0	// GD_KAFRACONTRACT#Contract with Kafra#
+10002,1,10000,1,0,0,0,0,0,0,0,0	// GD_GUARDRESEARCH#Guardian Research#
+10003,3,10000,1,0,0,0,0,0,0,0,0	// GD_GUARDUP#Build Up the Guardian#
+10004,10,0,0,0,0,0,0,0,0,0,0	// GD_EXTENSION#Guild Extension#
+10005,0,0,0,0,0,0,0,0,0,0,0	// GD_GLORY#Guild's Glory#
+10006,5,0,0,0,0,0,0,0,0,0,0	// GD_LEADERSHIP#Great Leadership#
+10007,5,0,0,0,0,0,0,0,0,0,0	// GD_GLORYWOUNDS#Wounds of Glory#
+10008,5,10007,1,0,0,0,0,0,0,0,0	// GD_SOULCOLD#Soul of Cold#
+10009,5,10006,1,0,0,0,0,0,0,0,0	// GD_HAWKEYES#Sharp Owk Eyes#
+10010,1,10000,1,10004,2,0,0,0,0,0,0	// GD_BATTLEORDER#Battle Orders#
+10011,3,10000,1,10004,5,10010,1,0,0,0,0	// GD_REGENERATION#Regeneration#
+10012,1,10011,2,0,0,0,0,0,0,0,0	// GD_RESTORE#Restore#
+10013,1,10000,1,10002,1,10004,5,10010,1,10011,1	// GD_EMERGENCYCALL#Emergency Call#
+10014,1,0,0,0,0,0,0,0,0,0,0	// GD_DEVELOPMENT#Permanent Development#

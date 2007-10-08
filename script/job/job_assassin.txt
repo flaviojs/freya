@@ -17,6 +17,10 @@
 //--------------------------------------------------------------
 
 
+//--------------------------------------------------------------
+// Assassin Job Change Quest - [Tsuyuki]
+//--------------------------------------------------------------
+
 moc_fild16.gat,200,257,4	script	Assassin Guardian	106,{
 
 	mes "[Assassin Guardian]";
@@ -193,7 +197,7 @@ in_moc_16.gat,19,33,1	script	Guildsman	55,{
 			mes "[Ferocious-looking guy]";
 			mes "Hey Newbie. You should really get out of here as soon as you can. I can't guarantee your safety.";
 			close;
-		} else if ((Class == Job_Swordsman) || (Class == Job_Knight) || (Class == Job_Crusader)) {
+		} else if ((Class == Job_Swordman) || (Class == Job_Knight) || (Class == Job_Crusader)) {
 			mes "[Ferocious-looking guy]";
 			mes "What brings a man of the sword to this place? Why don't you try smashing stuff somewhere else, ya lunkhead.";
 			close;

@@ -1,6 +1,6 @@
 Readme notes from Tsuyuki:
 
-This is a database translator setup created to translate jAthena databases from Japanese into English, originally created for fAthena, but now being used for Aurora. The translation scripts can be used to translate jAthena's databases into other languages as well quite easily.
+This is a database translation setup created to translate jAthena databases from Japanese into English, originally created for fAthena, but now being used for Aurora. The translation scripts can be used to translate jAthena's databases into other languages as well quite easily.
 
 The .pl files are Perl scripts which translate jAthena's Japanese databases in ./japanese to another language based on the files in ./english. The database files in ./english can be imported from any and all of the up-to-date, mainstream Athena-based emulators, including Aurora, jAthena, eAthena, Freya, Nezumi, cAthena, Cronus, and the rest. Once the files are translated, they are placed in ./output by the converter. The database (./db) folder structure is also converted from jAthena's to Aurora's.
 
@@ -9,4 +9,3 @@ If you cannot run the .pl files, you don't have the Perl environment active on y
 Also note before translation, make sure your databases in ./english and ./japanese are fully up-to-date. Report any program bugs to me.
 
 -> Original Script Author: Yor (DarkRaven)
--> Tsuyuki's Contact Information: http://aurora.deltaanime.net/

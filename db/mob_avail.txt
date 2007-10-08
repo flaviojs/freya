@@ -15,7 +15,7 @@
 // Structure of Database:
 //--------------------------------------------------------------
 //
-// <MobID>,<ReplacementSpriteItemID>
+// <MobID>,<ReplacementSpriteMobID>
 //
 // Disguises a monster with a different sprite.
 // 1001-2000 must be used for now as any other ID is invalid.
@@ -23,14 +23,13 @@
 // With ID from 1+ (PC) or 46+ (NPC), monster will be displayed like a player character or an existing NPC.
 //
 // Example:
-// 1002,1039,0	//Poring,Baphomet (Make Poring(1002) look like Baphomet(1039))
+// 1002,1039,0	// Poring,Baphomet,0 (Make Poring(1002) look like Baphomet(1039))
 //
 // The following format is used if a class sprite is used:
 //
-// Mob_ID,Appearance_ID,Size(-1:Small,0:Normal,1:Large),Sex(0:Female,1:Male),Hair_Type,Hair_Color,Clothes_Color,Weapon,Shield,Head_Top,Head_Middle,Head_Bottom,Option,Upper
+// <MobID>,<ReplacementSpriteClassID>,<Size(-1:Small,0:Normal,1:Large)>,<Sex(0:Female,1:Male)>,<HairStyle>,<HairColor>,<ClothesColor>,<WeaponItemID>,<ShieldItemID>,<HeadTopItemID>,<HeadMiddleItemID>,<HeadBottomItemID>,<Option>,<Upper>
 //
-// Sprite_ID for class ID selection:
-//
+// ReplacementSpriteClassID:
 //    0:Novice       23:Super Novice     22:Wedding
 //    1:Swordman      7:Knight           14:Crusader
 //    2:Mage          9:Wizard           16:Sage
@@ -38,26 +37,22 @@
 //    4:Acolyte       8:Priest           15:Monk
 //    5:Merchant     10:Blacksmith       18:Alchemist
 //    6:Thief        12:Assassin         17:Rogue
-//   24:Taekwon Kid  25:Star Gladiator   27:Soul Linker
+//   24:Taekwon      25:Taekwon Master   27:Soul Linker
 //   28:Gunslinger
 //   29:Ninja
 //   30:Death Knight
 //   31:Dark Collector
 //
-// For the weapon and the shield, set the Item_ID as it is defined in item_db.txt.
-// For the headgear equip, also set the Item_ID as it is defined in item_db.txt.
-//
-// Option parameter:
-//
+// Option:
 //     1:Sight                2:Hide               4:Cloak
-//     8:Level 1 Cart        16:Falcon            32:Peco Peco riding
+//     8:Level 1 Cart        16:Falcon            32:Peco Peco Riding
 //    64:GM Perfect Hide    128:Level 2 Cart     256:Level 3 Cart
 //   512:Level 4 Cart      1024:Level 5 Cart    2048:Orc Head
-//  4096:Wedding Sprites   8192:Ruwach         16384:Footprints walking
-// 32768:Santa clothes
+//  4096:Wedding Sprites   8192:Ruwach         16384:Footprints Walking
+// 32768:Santa Clothes
 //
 // Upper:
-//    0:Nomal job      1:Advanced Job      2:Adopted Child
+//    0:Normal       1:Transcendent      2:Baby
 //
 //--------------------------------------------------------------
 // Database Entries:

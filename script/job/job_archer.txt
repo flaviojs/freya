@@ -17,10 +17,14 @@
 //--------------------------------------------------------------
 
 
+//--------------------------------------------------------------
+// Archer Job Change Quest - [Tsuyuki]
+//--------------------------------------------------------------
+
 payon_in02.gat,64,71,4	script	Archer Guildsman	85,{
 
 	if (Upper == 1) {
-		if (Class == Job_Novice && Upper == 1 && (OLD_CLASS == Job_Hunter || OLD_CLASS == Job_Bard || OLD_CLASS == Job_Dancer)) {
+		if (Class == Job_Novice && Upper == 1 && (job_karma == 5 || job_karma == 12 || job_karma == 13)) {
 			mes "[Archer Guildsman]";
 			mes "Hey, I know you.";
 			mes "You took this test";

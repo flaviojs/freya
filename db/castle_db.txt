@@ -15,7 +15,7 @@
 // Structure of Database:
 //--------------------------------------------------------------
 //
-// <Castle_ID>,<Map_Name>,<Castle_Name>,<Event_Name>
+// <CastleID>,<MapName>,<CastleName>,<ScriptEventName>
 //
 //--------------------------------------------------------------
 // Database Entries:
@@ -32,7 +32,7 @@
 8,gefg_cas04.gat,Bergel,AgitExe#B4
 9,gefg_cas05.gat,Mersetzdeitz,AgitExe#B5
 10,payg_cas01.gat,Bright Arbor,AgitExe#C1
-11,payg_cas02.gat,Sacred Palace,AgitExe#C2
+11,payg_cas02.gat,Sacred Altar,AgitExe#C2
 12,payg_cas03.gat,Holy Shadow,AgitExe#C3
 13,payg_cas04.gat,Scarlet Palace,AgitExe#C4
 14,payg_cas05.gat,Bamboo Grove Hill,AgitExe#C5

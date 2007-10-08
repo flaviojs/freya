@@ -17,10 +17,14 @@
 //--------------------------------------------------------------
 
 
+//--------------------------------------------------------------
+// Swordman Job Change Quest - [Tsuyuki]
+//--------------------------------------------------------------
+
 izlude_in.gat,74,172,4	script	Swordman	119,{
 
 	if (Upper == 1) {
-		if (Class == Job_Novice && Upper == 1 && (OLD_CLASS == Job_Knight || OLD_CLASS == Job_Crusader)) {
+		if (Class == Job_Novice && Upper == 1 && (job_karma == 1 || job_karma == 7)) {
 			mes "[Swordman]";
 			mes "It...";
 			mes "Can't be...";
@@ -40,7 +44,7 @@ izlude_in.gat,74,172,4	script	Swordman	119,{
 			mes "[Swordman]";
 			mes "Excellent! Let me promote you to a Swordman right away!";
 			next;
-			callfunc "F_JobChange",Job_Swordsman;
+			callfunc "F_JobChange",Job_Swordman;
 			skill 144,1,0;
 			skill 145,1,0;
 			skill 146,1,0;
@@ -74,7 +78,7 @@ izlude_in.gat,74,172,4	script	Swordman	119,{
 	next;
 	switch(select("Job Change.","About Swordman.","About the Job requirements.","Cancel.")) {
 	case 1:
-		if (Class == Job_Swordsman) {
+		if (Class == Job_Swordman) {
 			mes "[Swordman]";
 			mes "Job change? Muhahaha! But you're already a Swordman! Be proud and be strong!";
 			close;
@@ -132,7 +136,7 @@ izlude_in.gat,74,172,4	script	Swordman	119,{
 		} else if (job_sword_q == 4) {
 			mes "Hahaha! Congratulations! Now you are fully qualified to be a real Swordman! I will transform you right away!";
 			next;
-			callfunc "F_JobChange",Job_Swordsman;
+			callfunc "F_JobChange",Job_Swordman;
 			set job_sword_q,0;
 			mes "[Swordman]";
 			mes "Once again, congratulations. I expect that you will be a good representative of the Swordman Association.";
@@ -156,7 +160,7 @@ izlude_in.gat,74,172,4	script	Swordman	119,{
 		mes "[Swordman]";
 		mes "Hmmm...";
 		if (Class != Job_Novice) {
-			if (Class == Job_Swordsman) {
+			if (Class == Job_Swordman) {
 				mes "But there's no need to tell you the requirements. You've met them and already became a Swordman! Well, anyway...";
 			} else {
 				mes "It's too late for you to become a Swordman. You already have another job. Still, there's no harm in telling you...";
@@ -183,7 +187,7 @@ izlude_in.gat,74,172,4	script	Swordman	119,{
 izlude_in.gat,62,170,6	script	Swordman	85,{
 
 	mes "[Swordman]";
-	if (Class == Job_Swordsman) {
+	if (Class == Job_Swordman) {
 		mes "Sorry guy, but I can only allow Novices to enter the Test Hall.";
 		close;
 	} else if (Class != Job_Novice) {
@@ -239,7 +243,7 @@ izlude_in.gat,30,175,4	script	Swordman	92,{
 izlude_in.gat,30,163,0	script	Test Hall Staff	105,{
 
 	mes "[Test Hall Staff]";
-	if (Class == Job_Swordsman) {
+	if (Class == Job_Swordman) {
 		mes "Hm? How did you get inside? You're not supposed to be in here, so please leave now.";
 		close2;
 		warp "izlude_in.gat",66,170;

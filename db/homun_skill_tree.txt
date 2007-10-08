@@ -15,80 +15,80 @@
 // Structure of Database:
 //--------------------------------------------------------------
 //
-// <HomunID>,<SkillID>,<MaxLv>,<PrereqSkillID1>,<PrereqSkillID1Lv>,<PrereqSkill-ID2>,<PrereqSkillID2Lv>,<PrereqSkillID3>,<PrereqSkillID3Lv>,<PrereqSkillID4>,<PrereqSkillID4Lv>,<PrereqSkillID5>,<PrereqSkillID5Lv>,<RequiredBaseLv>,<RequiredIntimacy> //GD_SKILLNAME#Skill Name#
+// <HomunID>,<SkillID>,<MaxLv>,<PrereqSkillID1>,<PrereqSkillID1Lv>,<PrereqSkill-ID2>,<PrereqSkillID2Lv>,<PrereqSkillID3>,<PrereqSkillID3Lv>,<PrereqSkillID4>,<PrereqSkillID4Lv>,<PrereqSkillID5>,<PrereqSkillID5Lv>,<BaseLvReq>,<IntimacyReq> //GD_SKILLNAME#Skill Name#
 
 //--------------------------------------------------------------
 // Database Entries:
 //--------------------------------------------------------------
 
-6001,8001,5,0,0,0,0,0,0,0,0,0,0,0,0//HLIF_HEAL#Healing Touch(Heal)#
-6001,8002,5,8001,3,0,0,0,0,0,0,0,0,0,0//HLIF_AVOID#Emergency Evasion#
-6001,8003,5,8001,5,0,0,0,0,0,0,0,0,0,0//HLIF_BRAIN#Brain Surgery#
+6001,8001,5,0,0,0,0,0,0,0,0,0,0,0,0	// HLIF_HEAL#Healing Touch(Heal)#
+6001,8002,5,8001,3,0,0,0,0,0,0,0,0,0,0	// HLIF_AVOID#Emergency Evasion#
+6001,8003,5,8001,5,0,0,0,0,0,0,0,0,0,0	// HLIF_BRAIN#Brain Surgery#
 
-6002,8005,5,0,0,0,0,0,0,0,0,0,0,0,0//HAMI_CASTLE#Castling#
-6002,8006,5,8005,5,0,0,0,0,0,0,0,0,0,0//HAMI_DEFENCE#Defence#
-6002,8007,5,8006,3,0,0,0,0,0,0,0,0,0,0//HAMI_SKIN#Adamantium Skin#
+6002,8005,5,0,0,0,0,0,0,0,0,0,0,0,0	// HAMI_CASTLE#Castling#
+6002,8006,5,8005,5,0,0,0,0,0,0,0,0,0,0	// HAMI_DEFENCE#Defence#
+6002,8007,5,8006,3,0,0,0,0,0,0,0,0,0,0	// HAMI_SKIN#Adamantium Skin#
 
-6003,8009,5,0,0,0,0,0,0,0,0,0,0,0,0//HFLI_MOON#Moonlight#
-6003,8010,5,8009,3,0,0,0,0,0,0,0,0,0,0//HFLI_FLEET#Fleeting Move#
-6003,8011,5,8010,3,0,0,0,0,0,0,0,0,0,0//HFLI_SPEED#Over Speed#
+6003,8009,5,0,0,0,0,0,0,0,0,0,0,0,0	// HFLI_MOON#Moonlight#
+6003,8010,5,8009,3,0,0,0,0,0,0,0,0,0,0	// HFLI_FLEET#Fleeting Move#
+6003,8011,5,8010,3,0,0,0,0,0,0,0,0,0,0	// HFLI_SPEED#Over Speed#
 
-6004,8013,5,0,0,0,0,0,0,0,0,0,0,0,0//HVAN_CAPRICE#Caprice#
-6004,8014,5,8013,3,0,0,0,0,0,0,0,0,0,0//HVAN_CHAOTIC#Benediction of Chaos#
-6004,8015,5,8013,5,0,0,0,0,0,0,0,0,0,0//HVAN_INSTRUCT#Change Instruction#
+6004,8013,5,0,0,0,0,0,0,0,0,0,0,0,0	// HVAN_CAPRICE#Caprice#
+6004,8014,5,8013,3,0,0,0,0,0,0,0,0,0,0	// HVAN_CHAOTIC#Benediction of Chaos#
+6004,8015,5,8013,5,0,0,0,0,0,0,0,0,0,0	// HVAN_INSTRUCT#Change Instruction#
 
-6005,8001,5,0,0,0,0,0,0,0,0,0,0,0,0//HLIF_HEAL#Healing Touch(Heal)#
-6005,8002,5,8001,3,0,0,0,0,0,0,0,0,0,0//HLIF_AVOID#Emergency Evasion#
-6005,8003,5,8001,5,0,0,0,0,0,0,0,0,0,0//HLIF_BRAIN#Brain Surgery#
+6005,8001,5,0,0,0,0,0,0,0,0,0,0,0,0	// HLIF_HEAL#Healing Touch(Heal)#
+6005,8002,5,8001,3,0,0,0,0,0,0,0,0,0,0	// HLIF_AVOID#Emergency Evasion#
+6005,8003,5,8001,5,0,0,0,0,0,0,0,0,0,0	// HLIF_BRAIN#Brain Surgery#
 
-6006,8005,5,0,0,0,0,0,0,0,0,0,0,0,0//HAMI_CASTLE#Castling#
-6006,8006,5,8005,5,0,0,0,0,0,0,0,0,0,0//HAMI_DEFENCE#Defence#
-6006,8007,5,8006,3,0,0,0,0,0,0,0,0,0,0//HAMI_SKIN#Adamantium Skin#
+6006,8005,5,0,0,0,0,0,0,0,0,0,0,0,0	// HAMI_CASTLE#Castling#
+6006,8006,5,8005,5,0,0,0,0,0,0,0,0,0,0	// HAMI_DEFENCE#Defence#
+6006,8007,5,8006,3,0,0,0,0,0,0,0,0,0,0	// HAMI_SKIN#Adamantium Skin#
 
-6007,8009,5,0,0,0,0,0,0,0,0,0,0,0,0//HFLI_MOON#Moonlight#
-6007,8010,5,8009,3,0,0,0,0,0,0,0,0,0,0//HFLI_FLEET#Fleeting Move#
-6007,8011,5,8010,3,0,0,0,0,0,0,0,0,0,0//HFLI_SPEED#Over Speed#
+6007,8009,5,0,0,0,0,0,0,0,0,0,0,0,0	// HFLI_MOON#Moonlight#
+6007,8010,5,8009,3,0,0,0,0,0,0,0,0,0,0	// HFLI_FLEET#Fleeting Move#
+6007,8011,5,8010,3,0,0,0,0,0,0,0,0,0,0	// HFLI_SPEED#Over Speed#
 
-6008,8013,5,0,0,0,0,0,0,0,0,0,0,0,0//HVAN_CAPRICE#Caprice#
-6008,8014,5,8013,3,0,0,0,0,0,0,0,0,0,0//HVAN_CHAOTIC#Benediction of Chaos#
-6008,8015,5,8013,5,0,0,0,0,0,0,0,0,0,0//HVAN_INSTRUCT#Change Instruction#
+6008,8013,5,0,0,0,0,0,0,0,0,0,0,0,0	// HVAN_CAPRICE#Caprice#
+6008,8014,5,8013,3,0,0,0,0,0,0,0,0,0,0	// HVAN_CHAOTIC#Benediction of Chaos#
+6008,8015,5,8013,5,0,0,0,0,0,0,0,0,0,0	// HVAN_INSTRUCT#Change Instruction#
 
-6009,8001,5,0,0,0,0,0,0,0,0,0,0,0,0//HLIF_HEAL#Healing Touch(Heal)#
-6009,8002,5,8001,3,0,0,0,0,0,0,0,0,0,0//HLIF_AVOID#Emergency Evasion#
-6009,8003,5,8001,5,0,0,0,0,0,0,0,0,0,0//HLIF_BRAIN#Brain Surgery#
-6009,8004,3,8001,5,8002,5,8003,5,0,0,0,0,0,100000//HLIF_CHANGE#Change Instruction#
+6009,8001,5,0,0,0,0,0,0,0,0,0,0,0,0	// HLIF_HEAL#Healing Touch(Heal)#
+6009,8002,5,8001,3,0,0,0,0,0,0,0,0,0,0	// HLIF_AVOID#Emergency Evasion#
+6009,8003,5,8001,5,0,0,0,0,0,0,0,0,0,0	// HLIF_BRAIN#Brain Surgery#
+6009,8004,3,8001,5,8002,5,8003,5,0,0,0,0,0,100000	// HLIF_CHANGE#Change Instruction#
 
-6010,8005,5,0,0,0,0,0,0,0,0,0,0,0,0//HAMI_CASTLE#Castling#
-6010,8006,5,8005,5,0,0,0,0,0,0,0,0,0,0//HAMI_DEFENCE#Defence#
-6010,8007,5,8006,3,0,0,0,0,0,0,0,0,0,0//HAMI_SKIN#Adamantium Skin#
-6010,8008,3,8005,5,8006,5,8007,5,0,0,0,0,0,100000//HAMI_BLOODLUST#Bloodlust#
+6010,8005,5,0,0,0,0,0,0,0,0,0,0,0,0	// HAMI_CASTLE#Castling#
+6010,8006,5,8005,5,0,0,0,0,0,0,0,0,0,0	// HAMI_DEFENCE#Defence#
+6010,8007,5,8006,3,0,0,0,0,0,0,0,0,0,0	// HAMI_SKIN#Adamantium Skin#
+6010,8008,3,8005,5,8006,5,8007,5,0,0,0,0,0,100000	// HAMI_BLOODLUST#Bloodlust#
 
-6011,8009,5,0,0,0,0,0,0,0,0,0,0,0,0//HFLI_MOON#Moonlight#
-6011,8010,5,8009,3,0,0,0,0,0,0,0,0,0,0//HFLI_FLEET#Fleeting Move#
-6011,8011,5,8010,3,0,0,0,0,0,0,0,0,0,0//HFLI_SPEED#Over Speed#
-6011,8012,3,8009,5,8010,5,8011,5,0,0,0,0,0,100000//HFLI_SBR44#S.B.R.44#
+6011,8009,5,0,0,0,0,0,0,0,0,0,0,0,0	// HFLI_MOON#Moonlight#
+6011,8010,5,8009,3,0,0,0,0,0,0,0,0,0,0	// HFLI_FLEET#Fleeting Move#
+6011,8011,5,8010,3,0,0,0,0,0,0,0,0,0,0	// HFLI_SPEED#Over Speed#
+6011,8012,3,8009,5,8010,5,8011,5,0,0,0,0,0,100000	// HFLI_SBR44#S.B.R.44#
 
-6012,8013,5,0,0,0,0,0,0,0,0,0,0,0,0//HVAN_CAPRICE#Caprice#
-6012,8014,5,8013,3,0,0,0,0,0,0,0,0,0,0//HVAN_CHAOTIC#Benediction of Chaos#
-6012,8015,5,8013,5,0,0,0,0,0,0,0,0,0,0//HVAN_INSTRUCT#Change Instruction#
-6012,8016,3,8013,5,8014,5,8015,5,0,0,0,0,0,100000//HVAN_EXPLOSION#Homunculus Explosion#
+6012,8013,5,0,0,0,0,0,0,0,0,0,0,0,0	// HVAN_CAPRICE#Caprice#
+6012,8014,5,8013,3,0,0,0,0,0,0,0,0,0,0	// HVAN_CHAOTIC#Benediction of Chaos#
+6012,8015,5,8013,5,0,0,0,0,0,0,0,0,0,0	// HVAN_INSTRUCT#Change Instruction#
+6012,8016,3,8013,5,8014,5,8015,5,0,0,0,0,0,100000	// HVAN_EXPLOSION#Homunculus Explosion#
 
-6013,8001,5,0,0,0,0,0,0,0,0,0,0,0,0//HLIF_HEAL#Healing Touch(Heal)#
-6013,8002,5,8001,3,0,0,0,0,0,0,0,0,0,0//HLIF_AVOID#Emergency Evasion#
-6013,8003,5,8001,5,0,0,0,0,0,0,0,0,0,0//HLIF_BRAIN#Brain Surgery#
-6013,8004,3,8001,5,8002,5,8003,5,0,0,0,0,0,100000//HLIF_CHANGE#Change Instruction#
+6013,8001,5,0,0,0,0,0,0,0,0,0,0,0,0	// HLIF_HEAL#Healing Touch(Heal)#
+6013,8002,5,8001,3,0,0,0,0,0,0,0,0,0,0	// HLIF_AVOID#Emergency Evasion#
+6013,8003,5,8001,5,0,0,0,0,0,0,0,0,0,0	// HLIF_BRAIN#Brain Surgery#
+6013,8004,3,8001,5,8002,5,8003,5,0,0,0,0,0,100000	// HLIF_CHANGE#Change Instruction#
 
-6014,8005,5,0,0,0,0,0,0,0,0,0,0,0,0//HAMI_CASTLE#Castling#
-6014,8006,5,8005,5,0,0,0,0,0,0,0,0,0,0//HAMI_DEFENCE#Defence#
-6014,8007,5,8006,3,0,0,0,0,0,0,0,0,0,0//HAMI_SKIN#Adamantium Skin#
-6014,8008,3,8005,5,8006,5,8007,5,0,0,0,0,0,100000//HAMI_BLOODLUST#Bloodlust#
+6014,8005,5,0,0,0,0,0,0,0,0,0,0,0,0	// HAMI_CASTLE#Castling#
+6014,8006,5,8005,5,0,0,0,0,0,0,0,0,0,0	// HAMI_DEFENCE#Defence#
+6014,8007,5,8006,3,0,0,0,0,0,0,0,0,0,0	// HAMI_SKIN#Adamantium Skin#
+6014,8008,3,8005,5,8006,5,8007,5,0,0,0,0,0,100000	// HAMI_BLOODLUST#Bloodlust#
 
-6015,8009,5,0,0,0,0,0,0,0,0,0,0,0,0//HFLI_MOON#Moonlight#
-6015,8010,5,8009,3,0,0,0,0,0,0,0,0,0,0//HFLI_FLEET#Fleeting Move#
-6015,8011,5,8010,3,0,0,0,0,0,0,0,0,0,0//HFLI_SPEED#Over Speed#
-6015,8012,3,8009,5,8010,5,8011,5,0,0,0,0,0,100000//HFLI_SBR44#S.B.R.44#
+6015,8009,5,0,0,0,0,0,0,0,0,0,0,0,0	// HFLI_MOON#Moonlight#
+6015,8010,5,8009,3,0,0,0,0,0,0,0,0,0,0	// HFLI_FLEET#Fleeting Move#
+6015,8011,5,8010,3,0,0,0,0,0,0,0,0,0,0	// HFLI_SPEED#Over Speed#
+6015,8012,3,8009,5,8010,5,8011,5,0,0,0,0,0,100000	// HFLI_SBR44#S.B.R.44#
 
-6016,8013,5,0,0,0,0,0,0,0,0,0,0,0,0//HVAN_CAPRICE#Caprice#
-6016,8014,5,8013,3,0,0,0,0,0,0,0,0,0,0//HVAN_CHAOTIC#Benediction of Chaos#
-6016,8015,5,8013,5,0,0,0,0,0,0,0,0,0,0//HVAN_INSTRUCT#Change Instruction#
-6016,8016,3,8013,5,8014,5,8015,5,0,0,0,0,0,100000//HVAN_EXPLOSION#Homunculus Explosion#
+6016,8013,5,0,0,0,0,0,0,0,0,0,0,0,0	// HVAN_CAPRICE#Caprice#
+6016,8014,5,8013,3,0,0,0,0,0,0,0,0,0,0	// HVAN_CHAOTIC#Benediction of Chaos#
+6016,8015,5,8013,5,0,0,0,0,0,0,0,0,0,0	// HVAN_INSTRUCT#Change Instruction#
+6016,8016,3,8013,5,8014,5,8015,5,0,0,0,0,0,100000	// HVAN_EXPLOSION#Homunculus Explosion#

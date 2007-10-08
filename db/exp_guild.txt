@@ -17,7 +17,9 @@
 //
 // <ExpRequired>
 //
-// ExpRequired is the amount of experience needed to advance to the next guild level
+// Each line incrementally represents a certain level
+// Each field represents the amount of experience required to advance to the next level
+//
 // Levels 1-49 are in the database
 
 //--------------------------------------------------------------

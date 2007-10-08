@@ -17,6 +17,10 @@
 //--------------------------------------------------------------
 
 
+//--------------------------------------------------------------
+// Knight Job Change Quest - [Tsuyuki]
+//--------------------------------------------------------------
+
 prt_in.gat,88,101,4	script	Chivalry Captain	56,{
 
 	if (Upper == 1) {
@@ -27,7 +31,7 @@ prt_in.gat,88,101,4	script	Chivalry Captain	56,{
 		mes "May god bless your body and soul, warrior. I hope you will show your courage and protect those who are weaker than you.";
 		close;
 	}
-	if (Class != Job_Swordsman) {
+	if (Class != Job_Swordman) {
 		if (Class == Job_Knight) {
 			mes "[Captain Herman]";
 			mes "Ah, a member of our Chivalry.";
@@ -54,7 +58,7 @@ prt_in.gat,88,101,4	script	Chivalry Captain	56,{
 				}
 				next;
 				mes "[Captain Herman]";
-				mes "This isn't the Swordsman guild, it's the Prontera Chivalry! If you wish to become a Swordman, visit the Swordman Guild located in Izlude.";
+				mes "This isn't the Swordman guild, it's the Prontera Chivalry! If you wish to become a Swordman, visit the Swordman Guild located in Izlude.";
 				close;
 			case 2:
 				mes "[Captain Herman]";
@@ -394,7 +398,7 @@ prt_in.gat,88,101,4	script	Chivalry Captain	56,{
 			mes "What can I say?";
 			mes "I approve!";
 			mes "Having lived as";
-			mes "a Swordsman up";
+			mes "a Swordman up";
 			mes "until now";
 			mes "is enough.";
 		} else {
@@ -525,7 +529,7 @@ prt_in.gat,88,101,4	script	Chivalry Captain	56,{
 
 prt_in.gat,75,107,4	script	Sir Andrew	65,{
 
-	if (Class != Job_Swordsman) {
+	if (Class != Job_Swordman) {
 		if (Class == Job_Knight) {
 			mes "[Sir Andrew]";
 			mes "You must be";
@@ -610,7 +614,7 @@ prt_in.gat,75,107,4	script	Sir Andrew	65,{
 				mes "Hold on there.";
 				mes "You look like you've";
 				mes "mastered being";
-				mes "a Swordsman.";
+				mes "a Swordman.";
 				next;
 				mes "[Sir Andrew]";
 				mes "Impressive...!";
@@ -769,7 +773,7 @@ prt_in.gat,75,107,4	script	Sir Andrew	65,{
 
 prt_in.gat,71,91,0	script	Sir Siracuse	65,{
 
-	if (Class != Job_Swordsman) {
+	if (Class != Job_Swordman) {
 		if (Class == Job_Knight) {
 			mes "[Sir Siracuse]";
 			mes "Hey there!";
@@ -1536,7 +1540,7 @@ prt_in.gat,71,91,0	script	Sir Siracuse	65,{
 
 prt_in.gat,79,94,4	script	Sir Windsor	733,{
 
-	if (Class != Job_Swordsman) {
+	if (Class != Job_Swordman) {
 		if (Class == Job_Knight) {
 			mes "[Sir Windsor]";
 			mes "...";
@@ -2033,7 +2037,7 @@ OnTouch:
 
 prt_in.gat,69,107,6	script	Lady Amy	728,{
 
-	if (Class != Job_Swordsman) {
+	if (Class != Job_Swordman) {
 		if (Class == Job_Knight) {
 			mes "[Lady Amy]";
 			mes "Oh...!";
@@ -2087,7 +2091,7 @@ prt_in.gat,69,107,6	script	Lady Amy	728,{
 	if (job_knight_q == 0) {
 		mes "[Lady Amy]";
 		mes "Ooh, you're";
-		mes "a Swordsman...?";
+		mes "a Swordman...?";
 		mes "Did you come to";
 		mes "change jobs to";
 		mes "a Knight?";
@@ -2661,7 +2665,7 @@ prt_in.gat,69,107,6	script	Lady Amy	728,{
 
 prt_in.gat,70,99,6	script	Sir Edmond	734,{
 
-	if (Class != Job_Swordsman) {
+	if (Class != Job_Swordman) {
 		if (Class == Job_Knight) {
 			mes "[Sir Edmond]";
 			mes "Think of your";
@@ -3075,7 +3079,7 @@ OnTouch:
 
 prt_in.gat,87,92,4	script	Sir Gray	119,{
 
-	if (Class != Job_Swordsman) {
+	if (Class != Job_Swordman) {
 		if (Class == Job_Knight) {
 			mes "[Sir Gray]";
 			mes "The glint of light";
@@ -3112,7 +3116,7 @@ prt_in.gat,87,92,4	script	Sir Gray	119,{
 					mes "your items first.";
 					close;
 				} else {
-					if (Zeny > 73999 && countitem(999) > 0 && (Class == Job_Knight || Class == Job_Swordsman)) {
+					if (Zeny > 73999 && countitem(999) > 0 && (Class == Job_Knight || Class == Job_Swordman)) {
 						mes "[Sir Gray]";
 						mes "You are ready!";
 						mes "You must know the";

@@ -1,117 +1,37 @@
 ===========================================================================
 ===========================================================================
-			Aurora Script Development Information
+                  Aurora Script Development Information                    
 ---------------------------------------------------------------------------
 
 
----------------------------------------------------------------------------
- Aurora's Non-Aegis Scripts:
+===========================================================================
+	Aurora's Non-Aegis Scripts:
 ---------------------------------------------------------------------------
 
 - mob/mob_future.txt			<- Placeholder file for non-Aegis spawn entries
 - warp/warp_future.txt			<- Placeholder file for non-Aegis portal entries
 
----------------------------------------------------------------------------
-
-- gvg/gvg_flag.txt			<- Need to fully import Aegis function [*]
-
 - town/town_nameless.txt		<- No access to an Aegis version [*]
 - town/town_veins.txt			<- No access to an Aegis version [*]
 
 
----------------------------------------------------------------------------
- Aurora's euRO Dialogue Aegis Scripts:
+===========================================================================
+	Aurora's euRO Dialogue Aegis Scripts:
 ---------------------------------------------------------------------------
 
 - misc/misc_cash_item.txt		<- No access to an iRO Aegis version [*]
 - quest/quest_god_seal.txt		<- Need to reconvert from Aegis [*]
+- quest/quest_headgear.txt		<- Only 11.1 Headgear Quests are euRO - No access to an iRO Aegis version [*]
+- quest/quest_kiel_hyre.txt		<- Only a few instances of euRO dialogue exist - No access to an iRO Aegis version [*]
 - town/town_hugel.txt			<- Only Rebellion Quest is euRO - No access to an iRO Aegis version [*]
 
 
----------------------------------------------------------------------------
- Aurora's Missing Aegis Scripts:
+===========================================================================
+	Aurora's Missing Aegis Scripts:
 ---------------------------------------------------------------------------
 
 - local/arena/ *			<- Izlude Battle Arena - Need to convert from Aegis [*]
 - local/turbotrack/ *			<- Al De Baran Turbo Track - Need to convert from Aegis [*]
-
-
----------------------------------------------------------------------------
- Aurora's Global Temporary Script Variables:
----------------------------------------------------------------------------
-
--> To-Do: Major cleanup
-
--> God Seal Equipment Quests (quest/quest_god_seal.txt)
-- $@BrisinRID$
-
--> Kiel Hyre Quest (quest/quest_kiel_hyre.txt)
-- $@KHQuestBusy
-
--> Rogue Close Confine Skill Quest (quest/quest_skill.txt)
-- $@kienna
-
--> Thanatos Tower Quest (quest/quest_thanatos.xt)
-- $@thanaboss1
-- $@thanaboss2
-
--> Hugel Bingo System (town/town_hugel.txt)
-- $@hu_bingoa
-- $@hu_bingob
-
--> Mobster Security Quest (town/town_lighthalzen.txt)
-- $@mobstersecurity
-
--> Morroc Dandelion's Request Quest (town/town_morroc.txt)
-- $@maobar_room
-- $@maobar_room2
-- $@maogate1mobs
-- $@maogate2mobs
-
--> Ice Necklace/Ktullanux Summoning Quest (town/town_rachel.txt)
-- $@ktullanux_summon
-
-
----------------------------------------------------------------------------
- Aurora's Global Permanent Script Variables:
----------------------------------------------------------------------------
-
--> To-Do: Further cleanup
-
--> GM Valhalla Administration Center (misc/misc_admin.txt)
-- $gmpassword1$
-- $gmpassword2$
-
--> Cool Event vs Kafra Voting Event (misc/misc_vote.txt)
-- $050530_minus1_tupyo1
-- $050530_minus1_tupyo2
-- $050530_minus1_tupyo3
-- $050530_minus1_tupyo4
-- $050530_minus1_tupyo5
-- $050530_minus1_tupyo6
-- $050530_minus1_tupyo7
-- $050530_minus1_tupyo8
-
--> Einbroch Town Script (town/town_einbroch.txt)
-- $050320_minus1_typing$
-- $050320_ein_typing
-- $050318_ryu_ein
-
--> God Seal Equipment Quests (quest/quest_god_seal.txt)
-- $God1
-- $God2
-- $God3
-- $God4
-
--> The Sign Quest (quest/quest_the_sign.txt)
-- $040915_sign_dup
-- $040915_sign_ddown
-- $040915_sign_dleft
-- $040915_sign_dright
-- $040915_sign_dcenter
-- $040915_sign_dcheck
-- $050304_sign_w1
-- $050304_sign_w2
 
 
 ===========================================================================

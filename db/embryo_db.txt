@@ -15,7 +15,7 @@
 // Structure of Database:
 //--------------------------------------------------------------
 //
-// <HomunID>,<HomunName(Dummy)>,<Rate>
+// <HomunID>,<DummyName>,<Rate>
 //
 // The rate is (*10000), so if it is set to 500000 then it is 50%, if it is set to 1000000 then it is 100%, etc.
 //

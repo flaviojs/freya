@@ -15,7 +15,7 @@
 // Structure of Database:
 //--------------------------------------------------------------
 //
-// <SourceID>,<MakeID1>,<MakeNum1>,<MakeID2>,<MakeNum2>,<MakeID3>,<MakeNum3>,<MakeID4>,<MakeNum4>,<MakeID5>,<MakeNum5>
+// <ItemID>,<MakeID1>,<MakeNum1>,<MakeID2>,<MakeNum2>,<MakeID3>,<MakeNum3>,<MakeID4>,<MakeNum4>,<MakeID5>,<MakeNum5>
 
 //--------------------------------------------------------------
 // Database Entries:

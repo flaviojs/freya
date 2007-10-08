@@ -23,7 +23,7 @@
 
 prt_castle.gat,43,30,3	script	Charles Orleans#cook	878,{
 
-	set @now_weight,MaxWeight-Weight;
+	set @now_weight,MaxWeight - Weight;
 	if (@now_weight < 2000) {
 		mes "[Charles Orleans]";
 		mes "Just one second.";
@@ -32,12 +32,10 @@ prt_castle.gat,43,30,3	script	Charles Orleans#cook	878,{
 		mes "right now, so you better";
 		mes "place some of your things";
 		mes "into Kafra Storage, yes?";
-		close2;
-		//EnableItemMove;
-		end;
+		close;
 	}
 	if (Class == Job_Novice) {
-		if (sex) {
+		if (Sex) {
 			cutin "orleans_5",0;
 			mes "[Charles Orleans]";
 			mes "Excuse me, monsieur?";
@@ -71,10 +69,11 @@ prt_castle.gat,43,30,3	script	Charles Orleans#cook	878,{
 		mes "be careful and watch your";
 		mes "step when you climb up";
 		mes "the stairs for me, alright?";
-		goto L_End;
-	}
-	else if (getequipid(1) != 5026) {
-		if (sex) {
+		close2;
+		cutin "",255;
+		end;
+	} else if (getequipid(1) != 5026) {
+		if (Sex) {
 			cutin "orleans_5",0;
 			emotion e_an;
 			mes "[Charles Orleans]";
@@ -109,7 +108,9 @@ prt_castle.gat,43,30,3	script	Charles Orleans#cook	878,{
 			mes "But I do find that you";
 			mes "adventurers do have";
 			mes "your strong points...";
-			goto L_End;
+			close2;
+			cutin "",255;
+			end;
 		}
 		cutin "orleans_1",0;
 		mes "[Charles Orleans]";
@@ -222,9 +223,10 @@ prt_castle.gat,43,30,3	script	Charles Orleans#cook	878,{
 		mes "treats that only I can offer.";
 		mes "Until that day comes, I shall";
 		mes "reluctantly bid you adieu.";
-		goto L_End;
-	}
-	else if (cooking == 0) {
+		close2;
+		cutin "",255;
+		end;
+	} else if (cooking == 0) {
 		cutin "orleans_5",0;
 		emotion e_dots;
 		mes "[Charles Orleans]";
@@ -328,9 +330,10 @@ prt_castle.gat,43,30,3	script	Charles Orleans#cook	878,{
 			mes "^4D4DFF1 Cooking Oil^000000, and";
 			mes "^4D4DFF1 Old Frying Pan^000000.";
 			mes "Then, we can begin.";
-			goto L_End;
-		}
-		else if (@cook_m1 == 2) {
+			close2;
+			cutin "",255;
+			end;
+		} else if (@cook_m1 == 2) {
 			set cooking,2;
 			mes "[Charles Orleans]";
 			mes "Ah, I've got it!";
@@ -345,9 +348,10 @@ prt_castle.gat,43,30,3	script	Charles Orleans#cook	878,{
 			mes "^4D4DFF2 Red Potions^000000";
 			mes "so that we can";
 			mes "begin the lesson~";
-			goto L_End;
-		}
-		else if (@cook_m1 == 3) {
+			close2;
+			cutin "",255;
+			end;
+		} else if (@cook_m1 == 3) {
 			set cooking,3;
 			mes "[Charles Orleans]";
 			mes "I've got it~";
@@ -361,9 +365,10 @@ prt_castle.gat,43,30,3	script	Charles Orleans#cook	878,{
 			mes "^4D4DFF1 Honey^000000,";
 			mes "^4D4DFF2 Grapes^000000, and";
 			mes "^4D4DFF1 Red Potion^000000.";
-			goto L_End;
-		}
-		else if (@cook_m1 == 4) {
+			close2;
+			cutin "",255;
+			end;
+		} else if (@cook_m1 == 4) {
 			set cooking,4;
 			mes "[Charles Orleans]";
 			mes "Mmm, why don't we";
@@ -379,9 +384,10 @@ prt_castle.gat,43,30,3	script	Charles Orleans#cook	878,{
 			mes "^4D4DFF1 Bag of Grain^000000,";
 			mes "^4D4DFF10 Spawns^000000, and";
 			mes "^4D4DFF1 Squid Ink^000000.";
-			goto L_End;
-		}
-		else if (@cook_m1 == 5) {
+			close2;
+			cutin "",255;
+			end;
+		} else if (@cook_m1 == 5) {
 			set cooking,5;
 			mes "[Charles Orleans]";
 			mes "Ah, I know what";
@@ -396,7 +402,9 @@ prt_castle.gat,43,30,3	script	Charles Orleans#cook	878,{
 			mes "^4D4DFF10 Green Herbs^000000,";
 			mes "^4D4DFF10 Nippers^000000, and";
 			mes "^4D4DFF1 Yellow Potion^000000.";
-			goto L_End;
+			close2;
+			cutin "",255;
+			end;
 		}
 		set cooking,6;
 		mes "[Charles Orleans]";
@@ -412,9 +420,10 @@ prt_castle.gat,43,30,3	script	Charles Orleans#cook	878,{
 		mes "^4D4DFF1 Frying Pan^000000,";
 		mes "^4D4DFF5 Yoyo Tails^000000, and";
 		mes "^4D4DFF1 Cooking Oil^000000.";
-		goto L_End;
-	}
-	else if (cooking == 1) {
+		close2;
+		cutin "",255;
+		end;
+	} else if (cooking == 1) {
 		if (countitem(940) > 4 && countitem(7031) > 0 && countitem(7457) > 0) {
 			cutin "orleans_4",0;
 			emotion e_an;
@@ -448,12 +457,14 @@ prt_castle.gat,43,30,3	script	Charles Orleans#cook	878,{
 			mes "know this recipe now. That's";
 			mes "all for today, so please go";
 			mes "and practice on your own now.";
-			delitem 940,5; //Grasshopper's_Leg
-			delitem 7031,1; //Old_Frying_Pan
-			delitem 7457,1; //Cooking_Oil
+			delitem 940,5;
+			delitem 7031,1;
+			delitem 7457,1;
 			set cooking,7;
-			getitem 12041,1; //Str_Dish01
-			goto L_End;
+			getitem 12041,1;
+			close2;
+			cutin "",255;
+			end;
 		}
 		cutin "orleans_6",0;
 		set @talk_j,rand(1,2);
@@ -465,16 +476,19 @@ prt_castle.gat,43,30,3	script	Charles Orleans#cook	878,{
 			mes "If a restaurant patron had";
 			mes "ordered this, then you'd";
 			mes "already be making him wait!";
-			goto L_End;
+			close2;
+			cutin "",255;
+			end;
 		}
 		mes "[Charles Orleans]";
 		mes "Just go and ambush those";
 		mes "happy-go-lucky grasshoppers";
 		mes "just playing in the fields. Hurry and smash them, then rip their";
 		mes "legs off--but be humane about it! ";
-		goto L_End;
-	}
-	else if (cooking == 2) {
+		close2;
+		cutin "",255;
+		end;
+	} else if (cooking == 2) {
 		if (countitem(514) > 2 && countitem(501) > 1) {
 			cutin "orleans_4",0;
 			mes "[Charles Orleans]";
@@ -506,11 +520,13 @@ prt_castle.gat,43,30,3	script	Charles Orleans#cook	878,{
 			mes "know this recipe now. That's";
 			mes "all for today, so please go";
 			mes "and practice on your own now.";
-			delitem 514,3; //Grape
-			delitem 501,2; //Red_Potion
+			delitem 514,3;
+			delitem 501,2;
 			set cooking,7;
-			getitem 12046,1; //Int_Dish01
-			goto L_End;
+			getitem 12046,1;
+			close2;
+			cutin "",255;
+			end;
 		}
 		cutin "orleans_6",0;
 		set @talk_j,rand(1,2);
@@ -521,7 +537,9 @@ prt_castle.gat,43,30,3	script	Charles Orleans#cook	878,{
 			mes "ingredients for Grape Juice";
 			mes "Herbal Tea! At a real restaurant, you'd never be able to take your";
 			mes "time like this! Quickly, now!";
-			goto L_End;
+			close2;
+			cutin "",255;
+			end;
 		}
 		mes "[Charles Orleans]";
 		mes "Having trouble finding";
@@ -529,9 +547,10 @@ prt_castle.gat,43,30,3	script	Charles Orleans#cook	878,{
 		mes "those cute little Poporings...";
 		mes "Of course, you should try to";
 		mes "be humane when you hunt them...";
-		goto L_End;
-	}
-	else if (cooking == 3) {
+		close2;
+		cutin "",255;
+		end;
+	} else if (cooking == 3) {
 		if (countitem(518) > 0 && countitem(514) > 1 && countitem(501) > 0) {
 			cutin "orleans_4",0;
 			mes "[Charles Orleans]";
@@ -566,12 +585,14 @@ prt_castle.gat,43,30,3	script	Charles Orleans#cook	878,{
 			mes "know this recipe now. That's";
 			mes "all for today, so please go";
 			mes "and practice on your own now.";
-			delitem 518,1; //Honey
-			delitem 514,2; //Grape
-			delitem 501,1; //Red_Potion
+			delitem 518,1;
+			delitem 514,2;
+			delitem 501,1;
 			set cooking,7;
-			getitem 12061,1; //Dex_Dish01
-			goto L_End;
+			getitem 12061,1;
+			close2;
+			cutin "",255;
+			end;
 		}
 		cutin "orleans_6",0;
 		set @talk_j,rand(1,2);
@@ -582,7 +603,9 @@ prt_castle.gat,43,30,3	script	Charles Orleans#cook	878,{
 			mes "brought me the ingredients";
 			mes "to make Honey Grape Juice";
 			mes "a while ago. Hurry it up!";
-			goto L_End;
+			close2;
+			cutin "",255;
+			end;
 		}
 		mes "[Charles Orleans]";
 		mes "You're having trouble";
@@ -591,9 +614,10 @@ prt_castle.gat,43,30,3	script	Charles Orleans#cook	878,{
 		mes "Just go and hunt some bears,";
 		mes "they're always carrying some";
 		mes "of that Honey around.";
-		goto L_End;
-	}
-	else if (cooking == 4) {
+		close2;
+		cutin "",255;
+		end;
+	} else if (cooking == 4) {
 		if (countitem(577) > 0 && countitem(908) > 9 && countitem(1024) > 0) {
 			cutin "orleans_4",0;
 			mes "[Charles Orleans]";
@@ -627,12 +651,14 @@ prt_castle.gat,43,30,3	script	Charles Orleans#cook	878,{
 			mes "know this recipe now. That's";
 			mes "all for today, so please go";
 			mes "and practice on your own now.";
-			delitem 577,1; //Grain
-			delitem 908,10; //Spawn
-			delitem 1024,1; //Chinese_ink
+			delitem 577,1;
+			delitem 908,10;
+			delitem 1024,1;
 			set cooking,7;
-			getitem 12056,1; //Agi_Dish01
-			goto L_End;
+			getitem 12056,1;
+			close2;
+			cutin "",255;
+			end;
 		}
 		cutin "orleans_6",0;
 		set @talk_j,rand(1,2);
@@ -643,7 +669,9 @@ prt_castle.gat,43,30,3	script	Charles Orleans#cook	878,{
 			mes "preparing ingredients";
 			mes "for Frog Egg and Squid";
 			mes "Ink Soup right now!";
-			goto L_End;
+			close2;
+			cutin "",255;
+			end;
 		}
 		mes "[Charles Orleans]";
 		mes "You have to be careful";
@@ -651,9 +679,10 @@ prt_castle.gat,43,30,3	script	Charles Orleans#cook	878,{
 		mes "Eggs. If you feed them raw to";
 		mes "somebody, well, their flavor is";
 		mes "decidely less than magnifique.";
-		goto L_End;
-	}
-	else if (cooking == 5) {
+		close2;
+		cutin "",255;
+		end;
+	} else if (cooking == 5) {
 		if (countitem(960) > 9 && countitem(511) > 9 && countitem(503) > 0) {
 			cutin "orleans_4",0;
 			mes "[Charles Orleans]";
@@ -687,12 +716,14 @@ prt_castle.gat,43,30,3	script	Charles Orleans#cook	878,{
 			mes "know this recipe now. That's";
 			mes "all for today, so please go";
 			mes "and practice on your own now.";
-			delitem 960,10; //Nipper
-			delitem 511,10; //Green_Herb
-			delitem 503,1; //Yellow_Potion
+			delitem 960,10;
+			delitem 511,10;
+			delitem 503,1;
 			set cooking,7;
-			getitem 12051,1; //Vit_Dish01
-			goto L_End;
+			getitem 12051,1;
+			close2;
+			cutin "",255;
+			end;
 		}
 		cutin "orleans_6",0;
 		set @talk_j,rand(1,2);
@@ -704,7 +735,9 @@ prt_castle.gat,43,30,3	script	Charles Orleans#cook	878,{
 			mes "Crab Nippers? You need";
 			mes "to work quickly for those";
 			mes "hungry restaurant patrons!";
-			goto L_End;
+			close2;
+			cutin "",255;
+			end;
 		}
 		mes "[Charles Orleans]";
 		mes "It shouldn't be too hard";
@@ -712,9 +745,10 @@ prt_castle.gat,43,30,3	script	Charles Orleans#cook	878,{
 		mes "find some Vadons and crush";
 		mes "them, making sure to rip off";
 		mes "their Nippers. That sounds strange, I know, but just do it.";
-		goto L_End;
-	}
-	else if (cooking == 6) {
+		close2;
+		cutin "",255;
+		end;
+	} else if (cooking == 6) {
 		if (countitem(942) > 4 && countitem(7031) > 0 && countitem(7457) > 0) {
 			cutin "orleans_4",0;
 			mes "[Charles Orleans]";
@@ -748,12 +782,14 @@ prt_castle.gat,43,30,3	script	Charles Orleans#cook	878,{
 			mes "know this recipe now. That's";
 			mes "all for today, so please go";
 			mes "and practice on your own now.";
-			delitem 942,5; //Yoyo_Tail
-			delitem 7031,1; //Old_Frying_Pan
-			delitem 7457,1; //Cooking_Oil
+			delitem 942,5;
+			delitem 7031,1;
+			delitem 7457,1;
 			set cooking,7;
-			getitem 12066,1; //Luk_Dish01
-			goto L_End;
+			getitem 12066,1;
+			close2;
+			cutin "",255;
+			end;
 		}
 		cutin "orleans_6",0;
 		set @talk_j,rand(1,2);
@@ -765,7 +801,9 @@ prt_castle.gat,43,30,3	script	Charles Orleans#cook	878,{
 			mes "you can. In a real restaurant,";
 			mes "you'd never able to take your";
 			mes "time like this. Toute allure!";
-			goto L_End;
+			close2;
+			cutin "",255;
+			end;
 		}
 		mes "[Charles Orleans]";
 		mes "You need more tails?";
@@ -774,9 +812,10 @@ prt_castle.gat,43,30,3	script	Charles Orleans#cook	878,{
 		mes "and then slice off their tails.";
 		mes "You're a beginner, but I won't";
 		mes "allow you to be inhumane!";
-		goto L_End;
-	}
-	else if (cooking == 7) {
+		close2;
+		cutin "",255;
+		end;
+	} else if (cooking == 7) {
 		cutin "orleans_7",0;
 		mes "[Charles Orleans]";
 		mes "Oh... I'm so exhausted!";
@@ -794,9 +833,10 @@ prt_castle.gat,43,30,3	script	Charles Orleans#cook	878,{
 		mes "teaching until one of you can";
 		mes "become a worthy successor.";
 		mes "It will take some time...";
-		goto L_End;
-	}
-	else if (cooking == 8) {
+		close2;
+		cutin "",255;
+		end;
+	} else if (cooking == 8) {
 		cutin "orleans_5",0;
 		mes "[Charles Orleans]";
 		mes "Strange, strange...";
@@ -833,7 +873,9 @@ prt_castle.gat,43,30,3	script	Charles Orleans#cook	878,{
 			mes ".....Who told you";
 			mes "to ask her name?";
 			mes "You don't even understand what she is saying.";
-			goto L_End;
+			close2;
+			cutin "",255;
+			end;
 		case 2:
 			cutin "nyuang_2",2;
 			donpcevent "Child with Cat#cook::OnPif";
@@ -849,7 +891,9 @@ prt_castle.gat,43,30,3	script	Charles Orleans#cook	878,{
 			mes "the child won't talk to us...";
 			mes "Still, we need to get those";
 			mes "two out of the kitchen.";
-			goto L_End;
+			close2;
+			cutin "",255;
+			end;
 		case 3:
 			cutin "nyuang_3",2;
 			donpcevent "Child with Cat#cook::OnHeh";
@@ -862,7 +906,9 @@ prt_castle.gat,43,30,3	script	Charles Orleans#cook	878,{
 			mes "[Charles Orleans]";
 			mes "...Are you playing with that kid...?";
 			mes "...Then I don't need you to be here.";
-			goto L_End;
+			close2;
+			cutin "",255;
+			end;
 		case 4:
 			donpcevent "Child with Cat#cook::OnDot";
 			mes "[Child with Cat]";
@@ -883,10 +929,11 @@ prt_castle.gat,43,30,3	script	Charles Orleans#cook	878,{
 			mes "You should have";
 			mes "been more careful";
 			mes "handling that cat...";
-			goto L_End;
+			close2;
+			cutin "",255;
+			end;
 		}
-	}
-	else if (cooking == 9) {
+	} else if (cooking == 9) {
 		cutin "orleans_5",0;
 		emotion e_an;
 		mes "[Charles Orleans]";
@@ -1015,9 +1062,10 @@ prt_castle.gat,43,30,3	script	Charles Orleans#cook	878,{
 		mes "Ah...";
 		mes "There goes a true";
 		mes "lady... Madam Wickebine...";
-		goto L_End;
-	}
-	else if (cooking == 10) {
+		close2;
+		cutin "",255;
+		end;
+	} else if (cooking == 10) {
 		cutin "orleans_5",0;
 		mes "[Charles Orleans]";
 		mes "It's been bothering";
@@ -1057,9 +1105,10 @@ prt_castle.gat,43,30,3	script	Charles Orleans#cook	878,{
 		mes "Praise the glories of the";
 		mes "Rune-Midgarts Kingdom!";
 		mes "Long live King Tristram III!";
-		goto L_End;
-	}
-	else if (cooking == 11) {
+		close2;
+		cutin "",255;
+		end;
+	} else if (cooking == 11) {
 		cutin "orleans_5",0;
 		emotion e_dots;
 		mes "[Charles Orleans]";
@@ -1088,8 +1137,8 @@ prt_castle.gat,43,30,3	script	Charles Orleans#cook	878,{
 			mes "but I'm not lending those out.";
 			mes "Oh, and enter 0 to cancel.";
 			next;
-			input @new_book;
-			if (@new_book < 0 || @new_book > 5) {
+			input '@new_book;
+			if ('@new_book < 0 || '@new_book > 5) {
 				cutin "orleans_5",0;
 				mes "[Charles Orleans]";
 				mes "Hmm...";
@@ -1098,9 +1147,10 @@ prt_castle.gat,43,30,3	script	Charles Orleans#cook	878,{
 				mes "1 to 5. Those are the";
 				mes "only cookbooks that I will";
 				mes "lend out to my students.";
-				goto L_End;
-			}
-			else if (@new_book == 0) {
+				close2;
+				cutin "",255;
+				end;
+			} else if ('@new_book == 0) {
 				cutin "orleans_5",0;
 				mes "[Charles Orleans]";
 				mes "So you changed your mind?";
@@ -1108,11 +1158,13 @@ prt_castle.gat,43,30,3	script	Charles Orleans#cook	878,{
 				mes "study the recipes that you";
 				mes "have right now before trying";
 				mes "something new, I suppose.";
-				goto L_End;
+				close2;
+				cutin "",255;
+				end;
 			}
 			mes "[Charles Orleans]";;
 			mes "So you wanted to borrow a";;
-			mes "Level " + @new_book + " Cookbook, eh?";;
+			mes "Level " + '@new_book + " Cookbook, eh?";;
 			mes "Oh, would you please tell";;
 			mes "me the level of the cookbook";
 			mes "that you are returning to me?";
@@ -1126,9 +1178,10 @@ prt_castle.gat,43,30,3	script	Charles Orleans#cook	878,{
 				mes "levels 1 to 5. Hmm, well, ask";
 				mes "me again when you remember";
 				mes "which cookbook you have, okay?";
-				goto L_End;
-			}
-			else if (@old_book == 0) {
+				close2;
+				cutin "",255;
+				end;
+			} else if (@old_book == 0) {
 				cutin "orleans_5",0;
 				mes "[Charles Orleans]";
 				mes "So you changed your mind?";
@@ -1136,9 +1189,10 @@ prt_castle.gat,43,30,3	script	Charles Orleans#cook	878,{
 				mes "study the recipes that you";
 				mes "have right now before trying";
 				mes "something new, I suppose.";
-				goto L_End;
-			}
-			else if (@old_book == @new_book) {
+				close2;
+				cutin "",255;
+				end;
+			} else if (@old_book == '@new_book) {
 				cutin "orleans_4",0;
 				mes "[Charles Orleans]";
 				mes "Wait, wait...";
@@ -1147,9 +1201,10 @@ prt_castle.gat,43,30,3	script	Charles Orleans#cook	878,{
 				mes "cookbook that you already";
 				mes "have? I guess you made";
 				mes "some sort of mistake?";
-				goto L_End;
-			}
-			else {
+				close2;
+				cutin "",255;
+				end;
+			} else {
 				if (@old_book == 1) {
 					if (countitem(7472) < 1) {
 						mes "[Charles Orleans]";
@@ -1159,7 +1214,9 @@ prt_castle.gat,43,30,3	script	Charles Orleans#cook	878,{
 						mes "that you'd return to me?";
 						mes "Find it first, and then I can";
 						mes "lend another cookbook to you.";
-						goto L_End;
+						close2;
+						cutin "",255;
+						end;
 					}
 					cutin "orleans_2",0;
 					mes "[Charles Orleans]";
@@ -1170,8 +1227,7 @@ prt_castle.gat,43,30,3	script	Charles Orleans#cook	878,{
 					mes "basic of basics. From now on,";
 					mes "the recipes will be harder...";
 					next;
-				}
-				else if (@old_book == 2) {
+				} else if (@old_book == 2) {
 					if (countitem(7473) < 1) {
 						mes "[Charles Orleans]";
 						mes "Wait, wait...";
@@ -1180,7 +1236,9 @@ prt_castle.gat,43,30,3	script	Charles Orleans#cook	878,{
 						mes "that you'd return to me?";
 						mes "Find it first, and then I can";
 						mes "lend another cookbook to you.";
-						goto L_End;
+						close2;
+						cutin "",255;
+						end;
 					}
 					cutin "orleans_2",0;
 					mes "[Charles Orleans]";
@@ -1191,8 +1249,7 @@ prt_castle.gat,43,30,3	script	Charles Orleans#cook	878,{
 					mes "simple, but it should never";
 					mes "be neglected by chefs.";
 					next;
-				}
-				else if (@old_book == 3) {
+				} else if (@old_book == 3) {
 					if (countitem(7474) < 1) {
 						mes "[Charles Orleans]";
 						mes "Wait, wait...";
@@ -1201,7 +1258,9 @@ prt_castle.gat,43,30,3	script	Charles Orleans#cook	878,{
 						mes "that you'd return to me?";
 						mes "Find it first, and then I can";
 						mes "lend another cookbook to you.";
-						goto L_End;
+						close2;
+						cutin "",255;
+						end;
 					}
 					cutin "orleans_2",0;
 					mes "[Charles Orleans]";
@@ -1211,8 +1270,7 @@ prt_castle.gat,43,30,3	script	Charles Orleans#cook	878,{
 					mes "They'll come in handy someday,";
 					mes "if you know what I mean.";
 					next;
-				}
-				else if (@old_book == 4) {
+				} else if (@old_book == 4) {
 					if (countitem(7475) < 1) {
 						mes "[Charles Orleans]";
 						mes "Wait, wait...";
@@ -1221,7 +1279,9 @@ prt_castle.gat,43,30,3	script	Charles Orleans#cook	878,{
 						mes "that you'd return to me?";
 						mes "Find it first, and then I can";
 						mes "lend another cookbook to you.";
-						goto L_End;
+						close2;
+						cutin "",255;
+						end;
 					}
 					cutin "orleans_2",0;
 					mes "[Charles Orleans]";
@@ -1231,8 +1291,7 @@ prt_castle.gat,43,30,3	script	Charles Orleans#cook	878,{
 					mes "use very strange ingredients";
 					mes "to create delicious cuisine!";
 					next;
-				}
-				else if (@old_book == 5) {
+				} else if (@old_book == 5) {
 					if (countitem(7476) < 1) {
 						mes "[Charles Orleans]";
 						mes "Wait, wait...";
@@ -1241,7 +1300,9 @@ prt_castle.gat,43,30,3	script	Charles Orleans#cook	878,{
 						mes "that you'd return to me?";
 						mes "Find it first, and then I can";
 						mes "lend another cookbook to you.";
-						goto L_End;
+						close2;
+						cutin "",255;
+						end;
 					}
 					cutin "orleans_2",0;
 					mes "[Charles Orleans]";
@@ -1261,7 +1322,7 @@ prt_castle.gat,43,30,3	script	Charles Orleans#cook	878,{
 			mes "cookbooks, I have a small";
 			mes "condition that you must fulfill. ";
 			next;
-			if (@new_book == 1) {
+			if ('@new_book == 1) {
 				cutin "orleans_7",0;
 				mes "[Charles Orleans]";
 				mes "When I was a young child,";
@@ -1294,18 +1355,21 @@ prt_castle.gat,43,30,3	script	Charles Orleans#cook	878,{
 						mes "that I used to experience";
 						mes "everyday in my childhood.";
 						next;
-					}
-					else {
+					} else {
 						mes "[Charles Orleans]";
 						mes "Oh, how I miss the";
 						mes "taste of Pumpkins!";
 						mes "Ahhh, how nostalgic~";
-						goto L_End;
+						close2;
+						cutin "",255;
+						end;
 					}
+				} else {
+					close2;
+					cutin "",255;
+					end;
 				}
-				else goto L_End;
-			}
-			else if (@new_book== 2) {
+			} else if ('@new_book == 2) {
 				cutin "orleans_7",0;
 				mes "[Charles Orleans]";
 				mes "Today, I have a craving";
@@ -1326,20 +1390,23 @@ prt_castle.gat,43,30,3	script	Charles Orleans#cook	878,{
 						mes "the tea on, relax, then";
 						mes "enjoy a delicious snack~";
 						next;
-					}
-					else {
+					} else {
 						mes "[Charles Orleans]";
 						mes "Ohh...";
 						mes "I must have some tea";
 						mes "soon... But the experience";
 						mes "isn't complete without any";
 						mes "Well-Baked Cookies to munch~";
-						goto L_End;
+						close2;
+						cutin "",255;
+						end;
 					}
+				} else {
+					close2;
+					cutin "",255;
+					end;
 				}
-				else goto L_End;
-			}
-			else if (@new_book== 3) {
+			} else if ('@new_book == 3) {
 				cutin "orleans_7",0;
 				mes "[Charles Orleans]";
 				mes "You know that specialty";
@@ -1358,20 +1425,23 @@ prt_castle.gat,43,30,3	script	Charles Orleans#cook	878,{
 						mes "wonderful! These must have";
 						mes "been prepared by a skilled chef! ";
 						next;
-					}
-					else {
+					} else {
 						mes "[Charles Orleans]";
 						mes "Ahhh, Sushi...";
 						mes "It's one of the few";
 						mes "things I don't know";
 						mes "how to make extremely";
 						mes "well. Can you believe that?";
-						goto L_End;
+						close2;
+						cutin "",255;
+						end;
 					}
+				} else {
+					close2;
+					cutin "",255;
+					end;
 				}
-				else goto L_End;
-			}
-			else if (@new_book== 4) {
+			} else if ('@new_book == 4) {
 				cutin "orleans_7",0;
 				mes "[Charles Orleans]";
 				mes "Oh, I'm in the mood for";
@@ -1391,8 +1461,7 @@ prt_castle.gat,43,30,3	script	Charles Orleans#cook	878,{
 						mes "scrumptious! I can't";
 						mes "wait to have a taste!";
 						next;
-					}
-					else {
+					} else {
 						mes "[Charles Orleans]";
 						mes "Oh...";
 						mes "It's been so long";
@@ -1400,12 +1469,16 @@ prt_castle.gat,43,30,3	script	Charles Orleans#cook	878,{
 						mes "of that delicious Bao.";
 						mes "I'd cook it myself, but";
 						mes "I don't know the secret!";
-						goto L_End;
+						close2;
+						cutin "",255;
+						end;
 					}
+				} else {
+					close2;
+					cutin "",255;
+					end;
 				}
-				else goto L_End;
-			}
-			else if (@new_book== 5) {
+			} else if ('@new_book == 5) {
 				cutin "orleans_7",0;
 				mes "[Charles Orleans]";
 				mes "Lately, my pantry has been";
@@ -1425,43 +1498,48 @@ prt_castle.gat,43,30,3	script	Charles Orleans#cook	878,{
 						mes "sure that you you can";
 						mes "even eat them raw!";
 						next;
-					}
-					else {
+					} else {
 						mes "[Charles Orleans]";
 						mes "I'm going to need to";
 						mes "cook with those Shoots";
 						mes "soon, so I'd appreciate it";
 						mes "if you'd do this little favor~";
-						goto L_End;
+						close2;
+						cutin "",255;
+						end;
 					}
+				} else {
+					close2;
+					cutin "",255;
+					end;
 				}
-				else goto L_End;
 			}
-
-			if (@old_book == 1) delitem 7472,1; //Cookbook01
-			else if (@old_book == 2) delitem 7473,1; //Cookbook02
-			else if (@old_book == 3) delitem 7474,1; //Cookbook03
-			else if (@old_book == 4) delitem 7475,1; //Cookbook04
-			else if (@old_book == 5) delitem 7476,1; //Cookbook05
-			if (@new_book == 1) {
-				delitem 535,10; //Pumpkin
-				getitem 7472,1; //Cookbook01
+			if (@old_book == 1) {
+				delitem 7472,1;
+			} else if (@old_book == 2) {
+				delitem 7473,1;
+			} else if (@old_book == 3) {
+				delitem 7474,1;
+			} else if (@old_book == 4) {
+				delitem 7475,1;
+			} else if (@old_book == 5) {
+				delitem 7476,1;
 			}
-			else if (@new_book== 2) {
-				delitem 538,5; //Well_Baked_Cookie
-				getitem 7473,1; //Cookbook02
-			}
-			else if (@new_book== 3) {
-				delitem 551,5; //Shusi
-				getitem 7474,1; //Cookbook03
-			}
-			else if (@new_book== 4) {
-				delitem 553,5; //Bun
-				getitem 7475,1; //Cookbook05
-			}
-			else if (@new_book== 5) {
-				delitem 711,10; //Shoot
-				getitem 7476,1; //Cookbook05
+			if ('@new_book == 1) {
+				delitem 535,10;
+				getitem 7472,1;
+			} else if ('@new_book == 2) {
+				delitem 538,5;
+				getitem 7473,1;
+			} else if ('@new_book == 3) {
+				delitem 551,5;
+				getitem 7474,1;
+			} else if ('@new_book == 4) {
+				delitem 553,5;
+				getitem 7475,1;
+			} else if ('@new_book == 5) {
+				delitem 711,10;
+				getitem 7476,1;
 			}
 			mes "[Charles Orleans]";
 			mes "Well, as promised,";
@@ -1470,8 +1548,9 @@ prt_castle.gat,43,30,3	script	Charles Orleans#cook	878,{
 			mes "good care of it--don't sell";
 			mes "it or lose it or anything like";
 			mes "that. Good luck cooking now~";
-			goto L_End;
-
+			close2;
+			cutin "",255;
+			end;
 		case 2:
 			cutin "orleans_3",0;
 			mes "[Charles Orleans]";
@@ -1498,35 +1577,33 @@ prt_castle.gat,43,30,3	script	Charles Orleans#cook	878,{
 			mes "why my spirit to create";
 			mes "culinary masterpieces has";
 			mes "been reinvigorated lately...";
-			goto L_End;
-
+			close2;
+			cutin "",255;
+			end;
 		case 3:
 			cutin "orleans_5",0;
 			mes "[Charles Orleans]";
 			mes "Please, do not worry";
 			mes "yourself about it. Just";
 			mes "let me rest for now~";
-			goto L_End;
-
+			close2;
+			cutin "",255;
+			end;
 		}
-	}
-	else {
+	} else {
 		mes "[Charles Orleans]";
 		mes "Mon dieu!";
 		mes "An error has";
 		mes "occurred!";
-		goto L_End;
+		close2;
+		cutin "",255;
+		end;
 	}
-
-L_End:
-	close2;
-	cutin "",255;
-	end;
 }
 
 prt_castle.gat,45,35,5	script	Madeleine Chu#cook	886,{
 
-	set @now_weight,MaxWeight-Weight;
+	set @now_weight,MaxWeight - Weight;
 	if (@now_weight < 2000) {
 		mes "[Madeleine Chu]";
 		mes "I'm sorry, but right now";
@@ -1534,9 +1611,7 @@ prt_castle.gat,45,35,5	script	Madeleine Chu#cook	886,{
 		mes "items. You should put your";
 		mes "extra things in Kafra Storage,";
 		mes "and then talk to me again, okay? ";
-		close2;
-		//EnableItemMove
-		end;
+		close;
 	}
 	if (cooking == 0) {
 		mes "[Madeleine Chu]";
@@ -1569,7 +1644,6 @@ prt_castle.gat,45,35,5	script	Madeleine Chu#cook	886,{
 			mes "at a certain level is much";
 			mes "more difficult than it appears.";
 			close;
-
 		case 2:
 			mes "[Madeleine Chu]";
 			mes "Well, I only know the basic";
@@ -1602,7 +1676,6 @@ prt_castle.gat,45,35,5	script	Madeleine Chu#cook	886,{
 			mes "to master these strange recipes";
 			mes "that he keeps teaching me...";
 			close;
-
 		case 3:
 			mes "[Madeleine Chu]";
 			mes "If you want to learn cooking,";
@@ -1635,8 +1708,7 @@ prt_castle.gat,45,35,5	script	Madeleine Chu#cook	886,{
 			mes "with his teaching methods...";
 			close;
 		}
-	}
-	else if (cooking > 0 && cooking < 7) {
+	} else if (cooking > 0 && cooking < 7) {
 		mes "[Madeleine Chu]";
 		mes "Hello, is there any";
 		mes "way I can help you today?";
@@ -1654,7 +1726,6 @@ prt_castle.gat,45,35,5	script	Madeleine Chu#cook	886,{
 			mes "^4D4DFF1 Old Frying Pan^000000 to make";
 			mes "fried Grasshopper Legs.";
 			break;
-
 		case 2:
 			mes "[Madeleine Chu]";
 			mes "Oh! You'll need";
@@ -1662,7 +1733,6 @@ prt_castle.gat,45,35,5	script	Madeleine Chu#cook	886,{
 			mes "^4D4DFF2 Red Potions^000000 for";
 			mes "Grape Juice Herbal Tea.";
 			break;
-
 		case 3:
 			mes "[Madeleine Chu]";
 			mes "Oh! You'll need";
@@ -1670,7 +1740,6 @@ prt_castle.gat,45,35,5	script	Madeleine Chu#cook	886,{
 			mes "^4D4DFF2 Grapes^000000, and";
 			mes "^4D4DFF1 Red Potion^000000.";
 			break;
-
 		case 4:
 			mes "[Madeleine Chu]";
 			mes "Oh! You'll need";
@@ -1679,7 +1748,6 @@ prt_castle.gat,45,35,5	script	Madeleine Chu#cook	886,{
 			mes "^4D4DFF1 Squid Ink^000000 for Frog";
 			mes "Egg and Squid Ink soup.";
 			break;
-
 		case 5:
 			mes "[Madeleine Chu]";
 			mes "Oh! You'll need";
@@ -1688,7 +1756,6 @@ prt_castle.gat,45,35,5	script	Madeleine Chu#cook	886,{
 			mes "^4D4DFF1 Yellow Potion^000000 for";
 			mes "Steamed Crab Nippers.";
 			break;
-
 		case 6:
 			mes "[Madeleine Chu]";
 			mes "Oh! You'll need";
@@ -1707,8 +1774,7 @@ prt_castle.gat,45,35,5	script	Madeleine Chu#cook	886,{
 		mes "you collect them and complete";
 		mes "the recipe as soon as you can~";
 		close;
-	}
-	else if (cooking == 7) {
+	} else if (cooking == 7) {
 		mes "[Madeleine Chu]";
 		mes "Sir Charles taught you";
 		mes "a recipe? That's great!";
@@ -1739,17 +1805,16 @@ prt_castle.gat,45,35,5	script	Madeleine Chu#cook	886,{
 		mes "Please take this cookbook";
 		mes "with the basic Level 1 recipes.";
 		set cooking,8;
-		getitem 7472,1; //Cookbook01
+		getitem 7472,1;
 		next;
 		mes "[Madeleine Chu]";
 		mes "Once you learn all the recipes,";
 		mes "feel free to come back to me for more, okay? Also, you'll need";
 		mes "these cooking kits to practice.";
 		mes "You can have these for free, and you can buy more from me later~";
-		getitem 12125,10; //Outdoor_Cooking_Kits
+		getitem 12125,10;
 		close;
-	}
-	else if (cooking == 8) {
+	} else if (cooking == 8) {
 		mes "[Madeleine Chu]";
 		mes "So how has your cooking";
 		mes "been coming along? You'll";
@@ -1785,7 +1850,6 @@ prt_castle.gat,45,35,5	script	Madeleine Chu#cook	886,{
 				mes "Kits, alright? See you later~";
 				close;
 			}
-
 		case 2:
 			if (countitem(12041) > 0 && countitem(12046) > 0 && countitem(12061) > 0 && countitem(12056) > 0 && countitem(12051) > 0 && countitem(12066) > 0) {
 				mes "[Madeleine Chu]";
@@ -1810,14 +1874,14 @@ prt_castle.gat,45,35,5	script	Madeleine Chu#cook	886,{
 				mes "them? Here, I'll wrap your";
 				mes "food in this handy cloth...";
 				next;
-				delitem 12041,1; //Str_Dish01
-				delitem 12046,1; //Int_Dish01
-				delitem 12061,1; //Dex_Dish01
-				delitem 12056,1; //Agi_Dish01
-				delitem 12051,1; //Vit_Dish01
-				delitem 12066,1; //Luk_Dish01
+				delitem 12041,1;
+				delitem 12046,1;
+				delitem 12061,1;
+				delitem 12056,1;
+				delitem 12051,1;
+				delitem 12066,1;
 				set cooking,9;
-				getitem 12111,1; //Food_Package
+				getitem 12111,1;
 				mes "[Madeleine Chu]";
 				mes "There you go, it's ready";
 				mes "to be delivered. Now, make";
@@ -1850,7 +1914,6 @@ prt_castle.gat,45,35,5	script	Madeleine Chu#cook	886,{
 			mes "to cover all of the basics.";
 			mes "Please read the cookbook that I gave you very carefully, okay?";
 			close;
-
 		case 3:
 			if (countitem(12041) > 0 || countitem(12046) > 0 || countitem(12061) > 0 || countitem(12056) > 0 || countitem(12051) > 0 || countitem(12066) > 0) {
 				mes "[Madeleine Chu]";
@@ -1871,8 +1934,7 @@ prt_castle.gat,45,35,5	script	Madeleine Chu#cook	886,{
 			mes "can present your dishes~";
 			close;
 		}
-	}
-	else if (cooking == 9) {
+	} else if (cooking == 9) {
 		if (countitem(12111) > 0) {
 			mes "[Madeleine Chu]";
 			mes "Please find my friend";
@@ -1881,8 +1943,7 @@ prt_castle.gat,45,35,5	script	Madeleine Chu#cook	886,{
 			mes "Food so that he can taste";
 			mes "the dishes you've made.";
 			close;
-		}
-		else {
+		} else {
 			mes "[Madeleine Chu]";
 			mes "Ah, hello~ oh, will you give me a second?";
 			mes "Right now, I am frying something so, I need to focus on this work for a while.";
@@ -1912,7 +1973,7 @@ prt_castle.gat,45,35,5	script	Madeleine Chu#cook	886,{
 				mes "arts in that way? I'm so";
 				mes "very ashamed of you...";
 				next;
-				delitem 7474,1; //Cookbook01
+				delitem 7474,1;
 				set cooking,0;
 				mes "[Madeleine Chu]";
 				mes "First of all, I'd like";
@@ -1930,8 +1991,7 @@ prt_castle.gat,45,35,5	script	Madeleine Chu#cook	886,{
 			mes "Bundle of Food to Chulsoo.";
 			close;
 		}
-	}
-	else if (cooking == 10) {
+	} else if (cooking == 10) {
 		mes "[Madeleine Chu]";
 		mes "I just received a";
 		mes "message from Chulsoo";
@@ -1948,7 +2008,7 @@ prt_castle.gat,45,35,5	script	Madeleine Chu#cook	886,{
 		mes "factor in quality cuisine.";
 		next;
 		set cooking,11;
-		getitem 12126,10; //Indoor_Cooking_Kits
+		getitem 12126,10;
 		mes "[Madeleine Chu]";
 		mes "Please try these Indoor";
 		mes "Cooking Kits to help you";
@@ -1963,8 +2023,7 @@ prt_castle.gat,45,35,5	script	Madeleine Chu#cook	886,{
 		mes "Charles again? Okay then,";
 		mes "good luck, and I'll see you later~ ";
 		close;
-	}
-	else if (cooking == 11) {
+	} else if (cooking == 11) {
 		mes "[Madeleine Chu]";
 		mes "How are you? I hope";
 		mes "that you've been honing";
@@ -1984,11 +2043,9 @@ prt_castle.gat,45,35,5	script	Madeleine Chu#cook	886,{
 			case 1:
 				callfunc "F_SellSets",12125;
 				close;
-
 			case 2:
 				callfunc "F_SellSets",12126;
 				close;
-
 			case 3:
 				mes "[Madeleine Chu]";
 				mes "Well, I only have two";
@@ -2012,7 +2069,6 @@ prt_castle.gat,45,35,5	script	Madeleine Chu#cook	886,{
 				mes "believe skill is the most";
 				mes "important ingredient~";
 				close;
-
 			case 4:
 				mes "[Madeleine Chu]";
 				mes "Please come back and";
@@ -2021,7 +2077,6 @@ prt_castle.gat,45,35,5	script	Madeleine Chu#cook	886,{
 				mes "Kits, alright? See you later~";
 				close;
 			}
-
 		case 2:
 			mes "[Madeleine Chu]";
 			mes "Hm? Sir Charles is";
@@ -2047,8 +2102,7 @@ prt_castle.gat,45,35,5	script	Madeleine Chu#cook	886,{
 				mes "disappearance is related to Sir";
 				mes "Charles's change in mood?";
 				close;
-			}
-			else if (@talk_j == 2) {
+			} else if (@talk_j == 2) {
 				mes "[Madeleine Chu]";
 				mes "I mean, Sir Charles seems";
 				mes "to be the type that has trouble";
@@ -2074,7 +2128,6 @@ prt_castle.gat,45,35,5	script	Madeleine Chu#cook	886,{
 			mes "day if she wanted! I'm almost";
 			mes "jealous of her, you know that?";
 			close;
-
 		case 3:
 			mes "[Madeleine Chu]";
 			mes "Oh, you mean the";
@@ -2097,13 +2150,11 @@ prt_castle.gat,45,35,5	script	Madeleine Chu#cook	886,{
 			mes "I just felt a chill down my";
 			mes "spine... Could someone";
 			mes "be talking about me?";
-			close;
+			close2;
 			cutin "orleans_6",255;
+			end;
 		}
 	}
-	mes "[Madeleine Chu]";
-	mes "Error occurred.";
-	close;
 }
 
 function	script	F_SellSets	{
@@ -2111,8 +2162,7 @@ function	script	F_SellSets	{
 	if (getarg(0) == 12125) {
 		set @item_cost,500;
 		set @item_weight,20;
-	}
-	else if (getarg(0) == 12126) {
+	} else if (getarg(0) == 12126) {
 		set @item_cost,1000;
 		set @item_weight,30;
 	}
@@ -2133,20 +2183,20 @@ function	script	F_SellSets	{
 			mes "Kits later, just come back";
 			mes "to me at anytime, alright?";
 			close;
-		}
-		else if (@sell > 100) {
+		} else if (@sell > 100) {
 			mes "[Madeleine Chu]";
 			mes "Oh, I'm sorry, but";
 			mes "I don't sell more than";
 			mes "100 "+getitemname(getarg(0));
 			mes "at a time, just to be safe.";
 			next;
+		} else {
+			break;
 		}
-		else break;
 	}
 	set @total_cost,@sell * @item_cost;
 	set @total_weight,@sell * @item_weight;
-	if (zeny < @total_cost) {
+	if (Zeny < @total_cost) {
 		mes "[Madeleine Chu]";
 		mes "Oh, I'm sorry, but you";
 		mes "can't afford this many";
@@ -2163,7 +2213,7 @@ function	script	F_SellSets	{
 		mes getitemname(getarg(0))+"...";
 		close;
 	}
-	set zeny,zeny-@total_cost;
+	set Zeny,Zeny - @total_cost;
 	getitem getarg(0),@sell;
 	mes "[Madeleine Chu]";
 	mes "Here you are~";
@@ -2260,9 +2310,7 @@ payon.gat,209,127,3	script	Servant	88,{
 		mes "Why don't you put some of";
 		mes "your stuff in Kafra Storage";
 		mes "before coming back to me?";
-		close2;
-		//EnableItemMove;
-		end;
+		close;
 	}
 	if (cooking == 10) {
 		mes "[Chulsoo]";
@@ -2272,8 +2320,7 @@ payon.gat,209,127,3	script	Servant	88,{
 		mes "soon to see her, as well as";
 		mes "make amends with Sir Charles.";
 		close;
-	}
-	else if (cooking == 9) {
+	} else if (cooking == 9) {
 		mes "[Chulsoo]";
 		mes "How would you like";
 		mes "to buy a Rice Cake?";
@@ -2282,7 +2329,7 @@ payon.gat,209,127,3	script	Servant	88,{
 		next;
 		switch(select("Sure, I'll buy one!","No, thanks.","Actually, Madeleine sent me...")) {
 		case 1:
-			if (zeny < 200) {
+			if (Zeny < 200) {
 				mes "[Chulsoo]";
 				mes "Oh, I'm sorry, but";
 				mes "you don't have enough";
@@ -2291,14 +2338,13 @@ payon.gat,209,127,3	script	Servant	88,{
 				mes "raise 200 zeny, right?";
 				close;
 			}
-			set zeny,zeny-200;
-			getitem 555,1; //Rice_Cake
+			set Zeny,Zeny - 200;
+			getitem 555,1;
 			mes "[Chulsoo]";
 			mes "Thank you very";
 			mes "much! I hope you";
 			mes "enjoy your Rice Cake~";
 			close;
-
 		case 2:
 			mes "[Chulsoo]";
 			mes "Are you sure about";
@@ -2308,7 +2354,6 @@ payon.gat,209,127,3	script	Servant	88,{
 			mes "anywhere else. Oh well,";
 			mes "that means more for me~";
 			close;
-
 		case 3:
 			if (countitem(12111) > 0) {
 				mes "["+strcharinfo(0)+"]";
@@ -2382,9 +2427,9 @@ payon.gat,209,127,3	script	Servant	88,{
 				mes "what my old teacher was trying";
 				mes "to tell me. In return, please have one of my humble Rice Cakes.";
 				next;
-				delitem 12111,1; //Food_Package
+				delitem 12111,1;
 				set cooking,10;
-				getitem 555,1; //Rice_Cake
+				getitem 555,1;
 				mes "[Chulsoo]";
 				mes "I better visit Prontera";
 				mes "again soon. It's been a long";
@@ -2407,8 +2452,7 @@ payon.gat,209,127,3	script	Servant	88,{
 			mes "that Bundle of Food?";
 			close;
 		}
-	}
-	else if (cooking == 8) {
+	} else if (cooking == 8) {
 		mes "[Chulsoo]";
 		mes "Lately, it seems that";
 		mes "no one wants to buy my";
@@ -2444,8 +2488,7 @@ payon.gat,209,127,3	script	Servant	88,{
 		mes "what I did. Still, I don't see";
 		mes "what Sir Charles meant...";
 		close;
-	}
-	else {
+	} else {
 		mes "[Chulsoo]";
 		mes "How would you like";
 		mes "to buy a Rice Cake?";
@@ -2453,7 +2496,7 @@ payon.gat,209,127,3	script	Servant	88,{
 		mes "it's oh-so-delicious~";
 		next;
 		if (select("Sure, I'll buy one!","No, thanks.") == 1) {
-			if (zeny < 200) {
+			if (Zeny < 200) {
 				mes "[Chulsoo]";
 				mes "Oh, I'm sorry, but";
 				mes "you don't have enough";
@@ -2462,8 +2505,8 @@ payon.gat,209,127,3	script	Servant	88,{
 				mes "raise 200 zeny, right?";
 				close;
 			}
-			set zeny,zeny-200;
-			getitem 555,1; //Rice_Cake
+			set Zeny,Zeny - 200;
+			getitem 555,1;
 			mes "[Chulsoo]";
 			mes "Thank you very";
 			mes "much! I hope you";

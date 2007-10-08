@@ -17,6 +17,10 @@
 //--------------------------------------------------------------
 
 
+//--------------------------------------------------------------
+// Crusader Job Change Quest - [Tsuyuki]
+//--------------------------------------------------------------
+
 prt_castle.gat,45,169,5	script	Senior Crusader	752,{
 
 	if (Upper == 1) {
@@ -28,7 +32,7 @@ prt_castle.gat,45,169,5	script	Senior Crusader	752,{
 		mes "Be adviced to continue practicing yourself.";
 		close;
 	}
-	if (Class != Job_Swordsman) {
+	if (Class != Job_Swordman) {
 		if (Class == Job_Crusader) {
 			mes "[Michael Halig]";
 			mes "Go and train yourself in preparation for the holy war that is coming. Victory will be in the hands of those who are most ready to receive it.";
@@ -43,7 +47,7 @@ prt_castle.gat,45,169,5	script	Senior Crusader	752,{
 			mes "to fight in the Holy War.";
 			next;
 			mes "[Michael Halig]";
-			mes "If you wish to join us, you must first learn the Swordsman discipline and train yourself thoroughly...";
+			mes "If you wish to join us, you must first learn the Swordman discipline and train yourself thoroughly...";
 			close;
 		} else {
 			mes "[Michael Halig]";
@@ -74,7 +78,7 @@ prt_castle.gat,45,169,5	script	Senior Crusader	752,{
 			mes "I am Michael Halig. I am one of but many Crusaders preparing for the Holy War. We continuously train ourselves with sincere faith and endless loyalty.";
 			next;
 			mes "[Michael Halig]";
-			mes "We recruit Swordsman that express exceptional faith, or those who were born as warriors";
+			mes "We recruit Swordman that express exceptional faith, or those who were born as warriors";
 			mes "by Odin's will.";
 			next;
 			mes "[Michael Halig]";
@@ -98,12 +102,12 @@ prt_castle.gat,45,169,5	script	Senior Crusader	752,{
 					mes "a Crusader.";
 					next;
 					mes "[Michael Halig]";
-					mes "Train yourself more as a Swordsman and wait for your calling. I understand your intent, but as of now, you cannot join us.";
+					mes "Train yourself more as a Swordman and wait for your calling. I understand your intent, but as of now, you cannot join us.";
 					close;
 				}
 				if (SkillPoint != 0) {
 					mes "[Michael Halig]";
-					mes "You haven't finished learning everything as a Swordsman. Use all of your remaining skill points, and then return to me.";
+					mes "You haven't finished learning everything as a Swordman. Use all of your remaining skill points, and then return to me.";
 					close;
 				}
 				mes "[Michael Halig]";
@@ -338,7 +342,7 @@ prt_castle.gat,45,169,5	script	Senior Crusader	752,{
 	} else if (job_crusader_q == 10) {
 		if (SkillPoint != 0) {
 			mes "[Michael Halig]";
-			mes "You haven't finished learning everything as a Swordsman. Use all of your remaining skill points, and then return to me.";
+			mes "You haven't finished learning everything as a Swordman. Use all of your remaining skill points, and then return to me.";
 			close;
 		}
 		if (JobLevel == 50) {
@@ -410,7 +414,7 @@ prt_castle.gat,45,169,5	script	Senior Crusader	752,{
 
 prt_castle.gat,164,32,1	script	Man in Anguish	733,{
 
-	if (Class != Job_Swordsman) {
+	if (Class != Job_Swordman) {
 		if (Class == Job_Crusader) {
 			mes "[Murnak Mijoul]";
 			mes "Don't linger around in a place like this and forge your own path towards discovering your own strengths. The day that we will join hands in battle will come soon.";
@@ -584,7 +588,7 @@ prt_castle.gat,164,32,1	script	Man in Anguish	733,{
 
 prt_church.gat,95,127,5	script	Crusader	745,{
 
-	if (Class != Job_Swordsman) {
+	if (Class != Job_Swordman) {
 		if (Class == Job_Crusader) {
 			mes "[Gabriel Valentine]";
 			mes "Welcome, fellow Crusader.";
@@ -1638,7 +1642,7 @@ prt_church.gat,95,127,5	script	Crusader	745,{
 
 prt_castle.gat,35,151,5	script	Patron Kinght	751,{
 
-	if (Class != Job_Swordsman) {
+	if (Class != Job_Swordman) {
 		if (Class == Job_Crusader) {
 			mes "[Bliant Piyord]";
 			mes "Welcome.";
@@ -1662,7 +1666,7 @@ prt_castle.gat,35,151,5	script	Patron Kinght	751,{
 			mes "women to join our ranks.";
 			next;
 			mes "[Bliant Piyord]";
-			mes "Train as a Swordsman and come to us when you think you are ready. If you have been called by Odin to become a Crusader, that would be even better.";
+			mes "Train as a Swordman and come to us when you think you are ready. If you have been called by Odin to become a Crusader, that would be even better.";
 			close;
 		} else {
 			mes "[Bliant Piyord]";

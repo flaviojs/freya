@@ -17,10 +17,14 @@
 //--------------------------------------------------------------
 
 
+//--------------------------------------------------------------
+// Thief Job Change Quest - [Tsuyuki]
+//--------------------------------------------------------------
+
 moc_prydb1.gat,39,129,2	script	Thief Guide	69,{
 
 	if (Upper == 1) {
-		if (OLD_CLASS == Job_Assassin || OLD_CLASS == Job_Rogue) {
+		if (job_karma == 6 || job_karma == 11) {
 			if (Class == Job_Novice && Upper == 1) {
 				mes "[Thief Guide]";
 				mes "Huh? Do I know you? It's creepy that you seem so familiar. You don't have a twin, do you?";
@@ -72,7 +76,7 @@ moc_prydb1.gat,39,129,2	script	Thief Guide	69,{
 		mes "[Thief Guide]";
 		mes "What the heck...?";
 		switch(Class) {
-		case Job_Swordsman:
+		case Job_Swordman:
 			mes "Huh.";
 			mes "Now, that's";
 			mes "a big sword.";

@@ -7,15 +7,19 @@
 //              /_/  |_|\____|_|  \___/|_|  \__,_|              
 //                    http://www.ro-freya.net                   
 //--------------------------------------------------------------
-// Script Title: Priest Job Change Quest	Author: decayed.cell/Tsuyuki
+// Script Title: Priest Job Change Quest	Author: Tsuyuki/decayed.cell
 //--------------------------------------------------------------
 // Revision History: v1.0
 //--------------------------------------------------------------
-//	1.0 First version, converted from Aegis [decayed.cell/Tsuyuki]
+//	1.0 First version, converted from Aegis [Tsuyuki/decayed.cell]
 //--------------------------------------------------------------
 // Additional Notes: * Official-certified / Aegis-certified *
 //--------------------------------------------------------------
 
+
+//--------------------------------------------------------------
+// Priest Job Change Quest - [Tsuyuki]
+//--------------------------------------------------------------
 
 prt_church.gat,16,41,4	script	High Bishop	60,{
 

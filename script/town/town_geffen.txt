@@ -1123,7 +1123,7 @@ geffen_in.gat,79,76,2	script	Merchant Daven	120,{
 		next;
 		switch(select("...^EE0000Magnum Break^000000!")) {
 		case 1:
-			if (Class == Job_Swordsman) {
+			if (Class == Job_Swordman) {
 				mes "[Merchant Daven]";
 				mes "Whoa, whoa!";
 				mes "It was just a joke!";

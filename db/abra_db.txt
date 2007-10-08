@@ -15,14 +15,12 @@
 // Structure of Database:
 //--------------------------------------------------------------
 //
-// <Skill_ID>,<Dummy_Name>,<Required_HocusPocus_Level>,<Rate>
+// <SkillID>,<DummyName>,<HocusPocusLevelReq>,<Rate>
 //
-// Skill_ID: Applicable skill ID.
-// Dummy_Name: Dummy, comprehensible name.
-// Required_HocusPocus_Level: Required level of Hocus Pocus to obtain this skill.
-// Rate: Chance rate. The rate is *10000. However, a 100% rate will not result in this skill always beeing choosen.
+// HocusPocusLevelReq: Required level of Hocus Pocus to obtain this skill.
+// Rate: Chance rate. The rate is *10000. However, a 100% rate will not always result in the skill being chosen.
 //
-// If Rate is made very low, skill selection processing may take more time and will be heavy on CPU with the server.
+// If rate is set very low, skill selection processing may take more time and will be heavier on the server CPU.
 
 //--------------------------------------------------------------
 // Database Entries:

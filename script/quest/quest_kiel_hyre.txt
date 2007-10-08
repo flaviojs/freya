@@ -12,6 +12,7 @@
 // Revision History: v1.0
 //--------------------------------------------------------------
 //	1.0 First version, converted from Aegis [Tsuyuki]
+//	 - Thanks to L0ne_W0lf for providing the iRO dialogue
 //--------------------------------------------------------------
 // Additional Notes: * Official-certified / Aegis-certified *
 //--------------------------------------------------------------
@@ -846,6 +847,7 @@ lighthalzen.gat,366,299,4	script	Windmill Owner#kh	46,{
 	}
 }
 
+// euRO dialogue ->
 lighthalzen.gat,366,289,2	script	Windmill Owner's Helper#kh	97,{
 
 	if (q_kiel_h < 5) {
@@ -871,6 +873,7 @@ lighthalzen.gat,366,289,2	script	Windmill Owner's Helper#kh	97,{
 		close;
 	}
 }
+// <- End euRO dialogue
 
 yuno_fild02.gat,93,210,4	script	Cottage Keeper#kh	85,{
 
@@ -1568,8 +1571,10 @@ yuno_fild02.gat,75,218,0	script	Door#kh2	111,{
 				warp "kh_vila.gat",188,18;
 				end;
 			} else {
+				// euRO dialogue ->
 				mes "You do not have the key.";
 				close;
+				// <- End euRO dialogue
 			}
 		case 2:
 			mes "......";
@@ -1621,8 +1626,10 @@ OnTouch:
 		getitem 7490,1;
 		close;
 	} else {
+		// euRO dialogue ->
 		mes "There is nothing on the floor board.";
 		close;
+		// <- End euRO dialogue
 	}
 }
 
@@ -1773,8 +1780,10 @@ kh_vila.gat,16,175,0	script	Box#khp1	111,{
 	switch(select("Buy!","Cancel.")) {
 	case 1:
 		if (Zeny < 1100) {
+			// euRO dialogue ->
 			mes "^3355FFYou don't have enough zeny...^000000";
 			close;
+			// <- End euRO dialogue
 		} else {
 			mes "^3355FF1,100 zeny seems kind";
 			mes "^3355FFof expensive for Pet Food,";
@@ -2172,8 +2181,10 @@ kh_vila.gat,115,186,0	script	Drawer#khp1	111,{
 	if (countitem(7492) > 0) {
 		if (countitem(7491) > 0) {
 			if (q_kiel_puzz == 6) {
+				// euRO dialogue ->
 				mes "^3355FFLooks like everything needed has been found.^000000";
 				close;
+				// <- End euRO dialogue
 			} else {
 				mes "^3355FFThis is where you^000000";
 				mes "^3355FFfound the Yellow Keycard.^000000";
@@ -2583,8 +2594,10 @@ kh_vila.gat,136,68,0	script	Sword Hilt#khp1	111,{
 					mes "^3355FFkind of coincidence...^000000";
 					close;
 				case 2:
+					// euRO dialogue ->
 					mes "^3355FFYou have forgotten how to put them back in their original order.^000000";
 					close;
+					// <- End euRO dialogue
 				}
 			}
 		}
@@ -2668,12 +2681,14 @@ kh_vila.gat,185,68,0	script	Test Tube#khp1	111,{
 			mes "^3355FFso you should return to Elly.^000000";
 			close;
 		} else {
+			// euRO dialogue ->
 			mes "^3355FFWhat could the^000000";
 			mes "^3355FFnumber 4772961^000000";
 			mes "^3355FFmean? There should be^000000";
 			mes "^3355FFsomething else needed, let's go check^000000";
 			mes "^3355FFin the house.^000000";
 			close;
+			// <- End euRO dialogue
 		}
 	}
 }
@@ -2979,11 +2994,13 @@ kh_vila.gat,181,138,0	script	Bookshelf#khp1	111,{
 			if (countitem(7491) > 0) {
 				if (countitem(7492) > 0) {
 					if (q_kiel_puzz == 6) {
+						// euRO dialogue ->
 						mes "^3355FFFor now, you've^000000";
 						mes "^3355FFfound everything that^000000";
 						mes "^3355FFyou need from this place,^000000";
 						mes "^3355FFso you should return to Elly.^000000";
 						close;
+						// <- End euRO dialogue
 					}
 				} else {
 					mes "^3355FFThere should be something^000000";
@@ -3004,10 +3021,12 @@ kh_vila.gat,181,138,0	script	Bookshelf#khp1	111,{
 yuno_fild08.gat,69,185,0	script	Window#kh	111,{
 
 	if (q_kiel_h < 4) {
+		// euRO dialogue ->
 		mes "^3355FFIt's someone's room.^000000";
 		mes "^3355FFLooks like a girl's room.^000000";
 		mes "^3355FFYou see flowery curtains through the window.^000000";
 		close;
+		// <- End euRO dialogue
 	} else if (q_kiel_h < 20) {
 		mes "^3355FFThis must be Elly's room.^000000";
 		mes "^3355FFIt doesn't sound like anyone^000000";
@@ -3019,10 +3038,12 @@ yuno_fild08.gat,69,185,0	script	Window#kh	111,{
 		close;
 	} else if (q_kiel_h < 70) {
 		if ((q_kiel_puzz < 6) || (countitem(7492) == 0)) {
+			// euRO dialogue ->
 			mes "^3355FFYou don't seem to have^000000";
 			mes "^3355FFgotten enough info. Let's^000000";
 			mes "^3355FFgo back to the villa.^00000";
 			close;
+			// <- End euRO dialogue
 		}
 		mes "^3355FFThis slightly open window^000000";
 		mes "^3355FFmust lead into Elly's room.^000000";
@@ -3058,17 +3079,21 @@ yuno_fild08.gat,69,185,0	script	Window#kh	111,{
 			close;
 		}
 	} else {
+		// euRO dialogue ->
 		mes "^3355FFYou can't climb up.^000000";
 		close;
+		// <- End euRO dialogue
 	}
 }
 
 kh_school.gat,175,176,0	script	Cookie Basket#kh	111,{
 
 	if (q_kiel_h < 20) {
+		// euRO dialogue ->
 		mes "^3355FFYou see a cookie basket.^000000";
 		mes "^3355FFit's filled with delicious gingerbread cookies.^000000";
 		close;
+		// <- End euRO dialogue
 	} else if (q_kiel_h == 20) {
 		mes "^3355FFThis must be^000000";
 		mes "^3355FFElly's cookie basket.^000000";
@@ -3108,6 +3133,7 @@ kh_school.gat,175,176,0	script	Cookie Basket#kh	111,{
 		mes "^3355FFthen they're a little cold.^000000";
 		close;
 	} else if (q_kiel_h == 69) {
+		// euRO dialogue ->
 		mes "Looking at the gingerbread basket,";
 		mes "and wind blowing in from the window";
 		mes "the basket rocked a little,";
@@ -3145,9 +3171,12 @@ kh_school.gat,175,176,0	script	Cookie Basket#kh	111,{
 		close2;
 		warp "yuno_fild08.gat",69,183;
 		end;
+		// <- End euRO dialogue
 	} else {
+		// euRO dialogue ->
 		mes "^3355FFTime rushes away loaded with bad gingerbread.^000000";
 		close;
+		// <- End euRO dialogue
 	}
 }
 
@@ -3337,12 +3366,14 @@ kh_school.gat,177,180,4	script	Elly	894,{
 yuno_fild08.gat,71,170,0	script	Grave#kh	111,{
 
 	if (q_kiel_h < 23) {
+		// euRO dialogue ->
 		mes "^3355FFIt's just a grave.^000000";
 		mes "^3355FFIt might be important^000000";
 		mes "^3355FFto you later, but now^000000";
 		mes "^3355FFit's not really all that^000000";
 		mes "^3355FFhelpful to you.^000000";
 		close;
+		// <- End euRO dialogue
 	} else if (q_kiel_h == 23) {
 		if (countitem(7492) > 0) {
 			mes "^3355FFThere's a secret door^000000";
@@ -3499,6 +3530,7 @@ kh_dun01.gat,235,48,0	script	Heavy Door#kh1	111,{
 				close;
 			}
 		} else {
+			// euRO dialogue ->
 			mes "^3355FFThe door is already open.^000000";
 			next;
 			switch(select("Enter.","Cancel.")) {
@@ -3511,6 +3543,7 @@ kh_dun01.gat,235,48,0	script	Heavy Door#kh1	111,{
 				mes "............";
 				close;
 			}
+			// <- End euRO dialogue
 		}
 	} else {
 		mes "^3355FFThere is a large, heavy^000000";
@@ -4004,12 +4037,14 @@ kh_school.gat,119,149,4	script	Beautiful Lady#kh1	893,{
 			end;
 		}
 	} else if (q_kiel_h < 28) {
+		// euRO dialogue ->
 		mes "[Allysia]";
 		mes ".... please leave quickly";
 		close2;
 		cutin "kh_ellisia",255;
 		warp "kh_school.gat",120,180;
 		end;
+		// <- End euRO dialogue
 	} else {
 		cutin "kh_ellisia",255;
 		warp "yuno_fild08.gat",71,171;
@@ -4042,6 +4077,7 @@ kh_school.gat,122,186,4	script	Beautiful Lady#kh2	893,{
 	}
 	cutin "kh_ellisia",2;
 	if (q_kiel_h < 25) {
+		// euRO dialogue ->
 		mes "[??????]";
 		mes "This is private property.";
 		mes "Please leave immediately.";
@@ -4049,6 +4085,7 @@ kh_school.gat,122,186,4	script	Beautiful Lady#kh2	893,{
 		cutin "kh_ellisia",255;
 		warp "yuno_fild08.gat",73,172;
 		end;
+		// <- End euRO dialogue
 	} else if (q_kiel_h == 25) {
 		mes "[Allysia]";
 		mes "Friend of prototype Elly,";
@@ -4398,6 +4435,7 @@ kh_mansion.gat,18,30,4	script	Allysia	893,{
 
 	cutin "kh_ellisia",2;
 	if (q_kiel_h < 29) {
+		// euRO dialogue ->
 		mes "[Allysia]";
 		mes "Who are you?";
 		mes "How did you get in here?";
@@ -4405,14 +4443,17 @@ kh_mansion.gat,18,30,4	script	Allysia	893,{
 		close2;
 		cutin "kh_ellisia",255;
 		end;
+		// <- End euRO dialogue
 	} else if (q_kiel_h == 29) {
+		// euRO dialogue ->
 		mes "[Allysia]";
 		mes "I want to thank you for being kind towards me ";
 		mes ""+strcharinfo(0)+", Mr. ^ff0000Kiehl Hyre^000000";
-		mes "wishes to speak to you";
+		mes "wishes to speak to you.";
 		close2;
 		cutin "kh_ellisia",255;
 		end;
+		// <- End euRO dialogue
 	} else if (q_kiel_h < 32) {
 		mes "[Allysia]";
 		mes "You must be surprised";
@@ -5703,11 +5744,13 @@ kh_mansion.gat,25,79,4	script	Mysterious Woman#kh	727,3,3,{
 			close;
 		}
 	} else if (q_kiel_h < 42) {
+		// euRO dialogue ->
 		mes "[Mitchell]";
 		mes "Hm...";
 		mes "Looks like you have not yet collected";
 		mes "the information needed... please try harder.";
 		close;
+		// <- End euRO dialogue
 	} else if (q_kiel_h == 42) {
 		mes "[Mitchell]";
 		mes "Ah, you're back.";
@@ -6020,6 +6063,7 @@ yuno.gat,257,140,4	script	Odd Grandma	846,{
 			mes "The house is so messy,";
 			mes "and the boss is unhappy...";
 			next;
+			// euRO dialogue ->
 			switch(select("Um, I don't see a baby...")) {
 			case 1:
 				mes "[Grandma]";
@@ -6036,7 +6080,9 @@ yuno.gat,257,140,4	script	Odd Grandma	846,{
 				sc_start SC_CURSE,0,0,0,0,30000,10;
 				close;
 			}
+			// <- End euRO dialogue
 		case 2:
+			// euRO dialogue ->
 			mes "[Grandma]";
 			mes "Hm? Hm...";
 			mes "She says she's cold every day and that's why she cries,";
@@ -6053,6 +6099,7 @@ yuno.gat,257,140,4	script	Odd Grandma	846,{
 			mes "If you don't sleep";
 			mes "your mother won't be able to get any housework done..";
 			close;
+			// <- End euRO dialogue
 		}
 	} else if (q_kiel_h < 40) {
 		mes "[Grandma]";
@@ -6285,8 +6332,10 @@ kh_rossi.gat,23,23,0	script	Table#khr2	111,{
 		close;
 	}
 	if (q_kiel_h < 35) {
+		// euRO dialogue ->
 		mes "^3355FFThe drawer is locked.^000000";
 		close;
+		// <- End euRO dialogue
 	} else if (q_kiel_h < 39) {
 		if (countitem(7499) < 1) {
 			mes "^3355FFYou examine the table,^000000";
@@ -6331,9 +6380,11 @@ kh_rossi.gat,92,40,0	script	Shelf#khr1	111,{
 		close;
 	}
 	if (q_kiel_h < 35) {
+		// euRO dialogue ->
 		mes "^3355FFThere are locked^000000";
 		mes "^3355FFboxes on these bookshelves.^000000";
 		close;
+		// <- End euRO dialogue
 	} else if (q_kiel_h < 39) {
 		if (countitem(7500) < 1) {
 			mes "^3355FFThere are locked^000000";
@@ -6405,8 +6456,10 @@ kh_rossi.gat,144,286,0	script	Desk#khr3	111,{
 		close;
 	}
 	if (q_kiel_h < 35) {
+		// euRO dialogue ->
 		mes "^3355FFThere is a desk but the drawer can't be opened.^000000";
 		close;
+		// <- End euRO dialogue
 	} else if (q_kiel_h < 39) {
 		mes "^3355FFThe desk has^000000";
 		mes "^3355FFthree drawers.^000000";
@@ -6444,19 +6497,24 @@ kh_rossi.gat,144,286,0	script	Desk#khr3	111,{
 			close;
 		}
 	} else {
+		// euRO dialogue ->
 		mes "^3355FFThere is a desk with one empty drawer and a drawer that can't be opened.^000000";
 		close;
+		// <- End euRO dialogue
 	}
 }
 
 kh_rossi.gat,154,286,0	script	Bed#khr	111,{
 
 	if (q_kiel_h < 35) {
+		// euRO dialogue ->
 		mes "There is a neatly arranged bed,";
 		mes "but dust has gathered on top the bed.";
 		mes "You don't feel human presence here for some time.";
 		close;
+		// <- End euRO dialogue
 	} else if (q_kiel_h < 39) {
+		// euRO dialogue ->
 		mes "There is a neatly arranged bed,";
 		mes "but dust has collected on top.";
 		mes "you don't feel human presence here for some time.";
@@ -6475,9 +6533,12 @@ kh_rossi.gat,154,286,0	script	Bed#khr	111,{
 			mes "but you don't see any rings.";
 			close;
 		}
+		// <- End euRO dialogue
 	} else {
+		// euRO dialogue ->
 		mes "There is a messy bed.";
 		close;
+		// <- End euRO dialogue
 	}
 }
 
@@ -6502,10 +6563,12 @@ kh_rossi.gat,148,288,0	script	Bookshelf#khr	111,{
 		close;
 	}
 	if (q_kiel_h < 35) {
+		// euRO dialogue ->
 		mes "^3355FFYou encounter a dusty ^000000";
 		mes "^3355FFbookshelf filled with^000000";
 		mes "^3355FFnumerous books.^000000";
 		close;
+		// <- End euRO dialogue
 	} else if (q_kiel_h < 39) {
 		if (countitem(7502) < 1) {
 			mes "^3355FFYou encounter a dusty ^000000";
@@ -6632,11 +6695,13 @@ yuno_fild12.gat,232,222,6	script	Old Fisherman#kh	709,{
 		mes "you check that place out?";
 		close;
 	} else {
+		// euRO dialogue ->
 		mes "[Fisherman]";
 		mes "What a terrible factory..";
 		mes "polluting the river";
 		mes "how can we live...";
 		close;
+		// <- End euRO dialogue
 	}
 }
 

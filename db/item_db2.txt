@@ -15,7 +15,20 @@
 // Structure of Database:
 //--------------------------------------------------------------
 //
-// <ItemID>,<Upper>,<Zone>,<Dropable>,<Storageable>,<Cartable>,<Delay>
+// <ItemID>,<Upper(+1:Normal,+2:Rebirth,+4:Baby)>,<MapRestriction>,<Dropable>,<Storageable>,<Cartable>,<Delay>
+//
+// MapRestriction:
+//      0 = Item can be used anywhere
+//     +1 = Item can not be used in normal maps
+//     +2 = Item can not be used in PvP maps
+//     +4 = Item can not be used in GvG maps
+//     +8 = Item can not be used in PK maps
+//    +16 = Item can not be used in Turbo Track maps
+//    +32 = Item can not be used in maps with the 'noteleport' mapflag
+//    +64 = Item can not be used in maps with the 'noreturn' mapflag
+//   +128 = Item can not be used in maps with the 'nobranch' mapflag
+//
+//   -> For every restriction you would like to place, add the values above and set MapRestriction to the total value
 
 //--------------------------------------------------------------
 // Database Entries:

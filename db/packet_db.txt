@@ -9,13 +9,13 @@
 //--------------------------------------------------------------
 //
 // packet_db.txt
-// Server/Client Packet Database
+// Server/Client Packet Communication Database
 
 //--------------------------------------------------------------
 // Structure of Database:
 //--------------------------------------------------------------
 //
-// <PacketID>,<Length(Bytes)>,<Function>,<ExtraParams>
+// <PacketID>,<Length(Bytes)>,<InternalFunction>,<ExtraParams>
 //
 // Because some packets use same number for a different function, the last read number overwites previously read same number.
 // You must choose the packet that you want to use. Then, after numbers common to all packets, comment or remove packets that you don't use.

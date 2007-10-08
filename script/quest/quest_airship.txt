@@ -8260,14 +8260,14 @@ airplane_01.gat,69,63,2	script	Mendel#01airplane_01	55,{
 	close;
 }
 
-airplane_01.gat,71,31,2	script	Swordsman Shimizu#01airplane_01	106,{
+airplane_01.gat,71,31,2	script	Swordman Shimizu#01airplane_01	106,{
 
-	mes "[Swordsman Shimizu]";
+	mes "[Swordman Shimizu]";
 	mes "Finally, after five";
 	mes "years of waiting...";
 	mes "I can have my revenge!";
 	next;
-	mes "[Swordsman Shimizu]";
+	mes "[Swordman Shimizu]";
 	mes "I just...";
 	mes "Have to make sure that";
 	mes "I don't keep missing my";

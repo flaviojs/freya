@@ -15,7 +15,11 @@
 // Structure of Database:
 //--------------------------------------------------------------
 //
-// <Dummy_Name> <tab> <Actual_ID>
+// <Enumeration>	<ActualValue>
+//
+// Alternate structure for constants that return internal character values:
+//
+// <Enumeration>	<InternalID>	<InternalFlag>
 
 //--------------------------------------------------------------
 // GvG Clock Settings Part #1 -> Days in which GvG occurs:
@@ -79,8 +83,8 @@ GvGTime6ED	2400
 //--------------------------------------------------------------
 
 Job_Novice	0
-Job_Swordsman	1
 Job_Swordman	1
+Job_Swordsman	1
 Job_Mage	2
 Job_Archer	3
 Job_Acolyte	4

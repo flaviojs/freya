@@ -7,11 +7,12 @@
 //              /_/  |_|\____|_|  \___/|_|  \__,_|              
 //                 http://aurora.deltaanime.net                 
 //--------------------------------------------------------------
-// Script Title: First Class Tutorial Quests	Author: Tsuyuki/Articulus
+// Script Title: First Class Tutorial Quests	Author: Tsuyuki
 //--------------------------------------------------------------
 // Revision History: v1.0
 //--------------------------------------------------------------
-//	1.0 First version, converted from Aegis [Tsuyuki/Articulus]
+//	1.0 First version, converted from Aegis [Tsuyuki]
+//	 - Thanks to Articulus for partial conversion
 //--------------------------------------------------------------
 // Additional Notes: * Official-certified / Aegis-certified *
 //--------------------------------------------------------------
@@ -6403,7 +6404,7 @@ izlude_in.gat,82,163,3	script	Shurank	733,{
 		mes "come back to me...";
 		close;
 	}
-	if ((Class == Job_Knight) || (Class == Job_Crusader) || (Class == Job_Swordsman && Upper == 1)) {
+	if ((Class == Job_Knight) || (Class == Job_Crusader) || (Class == Job_Swordman && Upper == 1)) {
 		mes "[Shurank]";
 		mes "From your raiment,";
 		mes "I see that you are";
@@ -6419,7 +6420,7 @@ izlude_in.gat,82,163,3	script	Shurank	733,{
 		mes "There's nothing that I can actually offer to teach you. But if you know any new Swordmen that show potential, please direct them to me.";
 		close;
 	}
-	if (Class != Job_Swordsman) {
+	if (Class != Job_Swordman) {
 		mes "[Shurank]";
 		mes "Greetings adventurer.";
 		mes "If you happen to know";
@@ -7183,7 +7184,7 @@ izlude_in.gat,82,163,3	script	Shurank	733,{
 			close;
 		}
 	}
-	if ((Class == Job_Swordsman) && (tu_swordman == 0)) {
+	if ((Class == Job_Swordman) && (tu_swordman == 0)) {
 		mes "[Shurank]";
 		mes "Ah, a comrade in arms.";
 		mes "Allow me to introduce myself. I am Shurank Chainlier, a Knight in the service of the Prontera Chivalry.";
@@ -7296,7 +7297,7 @@ geffen.gat,154,143,3	script	Dequ'ee	734,{
 		mes "I don't know how you want to live your life, but you should give the Swordman job some serious thought...";
 		close;
 	}
-	if ((Class == Job_Knight) || (Class == Job_Crusader) || (Class == Job_Crusader && Upper == 1) || (Class == Job_Knight && Upper == 1) || (Class == Job_Swordsman && Upper == 1)) {
+	if ((Class == Job_Knight) || (Class == Job_Crusader) || (Class == Job_Crusader && Upper == 1) || (Class == Job_Knight && Upper == 1) || (Class == Job_Swordman && Upper == 1)) {
 		mes "[Dequ'ee]";
 		mes "Ah...";
 		mes "A fellow sword wielder!";
@@ -7307,7 +7308,7 @@ geffen.gat,154,143,3	script	Dequ'ee	734,{
 		mes "depend on the strength of your blade. It's an awesome responsibility, but we can never let our allies down in battle...";
 		close;
 	}
-	if (Class != Job_Swordsman) {
+	if (Class != Job_Swordman) {
 		mes "[Dequ'ee]";
 		mes "Hello there.";
 		mes "Not a fan of swords, are you?";

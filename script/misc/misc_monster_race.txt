@@ -10942,7 +10942,7 @@ ein_in01.gat,85,208,5	script	Ei felle#repay01	854,{
 					delitem 7515,1;
 					if (Class == Job_Novice) {
 						set JobExp,JobExp + 30;
-					} else if ((Class == Job_Swordsman) || (Class == Job_Acolyte) || (Class == Job_Merchant) || (Class == Job_Thief) || (Class == Job_Mage) || (Class == Job_Archer) || (Class == Job_Taekwon)) {
+					} else if ((Class == Job_Swordman) || (Class == Job_Acolyte) || (Class == Job_Merchant) || (Class == Job_Thief) || (Class == Job_Mage) || (Class == Job_Archer) || (Class == Job_Taekwon)) {
 						if (JobLevel < 11) {
 							set JobExp,JobExp + 50;
 						} else if ((JobLevel > 10) && (JobLevel < 21)) {
@@ -10968,7 +10968,7 @@ ein_in01.gat,85,208,5	script	Ei felle#repay01	854,{
 						}
 					} else if (Class == Job_Novice && Upper == 1) {
 						set JobExp,JobExp + 40;
-					} else if ((Class == Job_Swordsman && Upper == 1) || (Class == Job_Acolyte && Upper == 1) || (Class == Job_Merchant && Upper == 1) || (Class == Job_Thief && Upper == 1) || (Class == Job_Mage && Upper == 1) || (Class == Job_Archer && Upper == 1)) {
+					} else if ((Class == Job_Swordman && Upper == 1) || (Class == Job_Acolyte && Upper == 1) || (Class == Job_Merchant && Upper == 1) || (Class == Job_Thief && Upper == 1) || (Class == Job_Mage && Upper == 1) || (Class == Job_Archer && Upper == 1)) {
 						if (JobLevel < 11) {
 							set JobExp,JobExp + 65;
 						} else if ((JobLevel > 10) && (JobLevel < 21)) {
@@ -11313,7 +11313,7 @@ ein_in01.gat,85,208,5	script	Ei felle#repay01	854,{
 					delitem 7515,1;
 					if (Class == Job_Novice) {
 						set JobExp,JobExp + 30;
-					} else if ((Class == Job_Swordsman) || (Class == Job_Acolyte) || (Class == Job_Merchant) || (Class == Job_Thief) || (Class == Job_Mage) || (Class == Job_Archer) || (Class == Job_Taekwon)) {
+					} else if ((Class == Job_Swordman) || (Class == Job_Acolyte) || (Class == Job_Merchant) || (Class == Job_Thief) || (Class == Job_Mage) || (Class == Job_Archer) || (Class == Job_Taekwon)) {
 						if (JobLevel < 11) {
 							set JobExp,JobExp + 50;
 						} else if ((JobLevel > 10) && (JobLevel < 21)) {
@@ -11339,7 +11339,7 @@ ein_in01.gat,85,208,5	script	Ei felle#repay01	854,{
 						}
 					} else if (Class == Job_Novice && Upper == 1) {
 						set JobExp,JobExp + 40;
-					} else if ((Class == Job_Swordsman && Upper == 1) || (Class == Job_Acolyte && Upper == 1) || (Class == Job_Merchant && Upper == 1) || (Class == Job_Thief && Upper == 1) || (Class == Job_Mage && Upper == 1) || (Class == Job_Archer && Upper == 1)) {
+					} else if ((Class == Job_Swordman && Upper == 1) || (Class == Job_Acolyte && Upper == 1) || (Class == Job_Merchant && Upper == 1) || (Class == Job_Thief && Upper == 1) || (Class == Job_Mage && Upper == 1) || (Class == Job_Archer && Upper == 1)) {
 						if (JobLevel < 11) {
 							set JobExp,JobExp + 65;
 						} else if ((JobLevel > 10) && (JobLevel < 21)) {
@@ -11846,7 +11846,7 @@ ein_in01.gat,85,208,5	script	Ei felle#repay01	854,{
 					delitem 7515,1;
 					if (Class == Job_Novice) {
 						set JobExp,JobExp + 30;
-					} else if ((Class == Job_Swordsman) || (Class == Job_Acolyte) || (Class == Job_Merchant) || (Class == Job_Thief) || (Class == Job_Mage) || (Class == Job_Archer) || (Class == Job_Taekwon)) {
+					} else if ((Class == Job_Swordman) || (Class == Job_Acolyte) || (Class == Job_Merchant) || (Class == Job_Thief) || (Class == Job_Mage) || (Class == Job_Archer) || (Class == Job_Taekwon)) {
 						if (JobLevel < 11) {
 							set JobExp,JobExp + 50;
 						} else if ((JobLevel > 10) && (JobLevel < 21)) {
@@ -11872,7 +11872,7 @@ ein_in01.gat,85,208,5	script	Ei felle#repay01	854,{
 						}
 					} else if (Class == Job_Novice && Upper == 1) {
 						set JobExp,JobExp + 40;
-					} else if ((Class == Job_Swordsman && Upper == 1) || (Class == Job_Acolyte && Upper == 1) || (Class == Job_Merchant && Upper == 1) || (Class == Job_Thief && Upper == 1) || (Class == Job_Mage && Upper == 1) || (Class == Job_Archer && Upper == 1)) {
+					} else if ((Class == Job_Swordman && Upper == 1) || (Class == Job_Acolyte && Upper == 1) || (Class == Job_Merchant && Upper == 1) || (Class == Job_Thief && Upper == 1) || (Class == Job_Mage && Upper == 1) || (Class == Job_Archer && Upper == 1)) {
 						if (JobLevel < 11) {
 							set JobExp,JobExp + 65;
 						} else if ((JobLevel > 10) && (JobLevel < 21)) {
@@ -15778,7 +15778,7 @@ ein_in01.gat,85,208,5	script	Ei felle#repay01	854,{
 					delitem 7515,1;
 					if (Class == Job_Novice) {
 						set JobExp,JobExp + 30;
-					} else if ((Class == Job_Swordsman) || (Class == Job_Acolyte) || (Class == Job_Merchant) || (Class == Job_Thief) || (Class == Job_Mage) || (Class == Job_Archer) || (Class == Job_Taekwon)) {
+					} else if ((Class == Job_Swordman) || (Class == Job_Acolyte) || (Class == Job_Merchant) || (Class == Job_Thief) || (Class == Job_Mage) || (Class == Job_Archer) || (Class == Job_Taekwon)) {
 						if (JobLevel < 11) {
 							set JobExp,JobExp + 50;
 						} else if ((JobLevel > 10) && (JobLevel < 21)) {
@@ -15804,7 +15804,7 @@ ein_in01.gat,85,208,5	script	Ei felle#repay01	854,{
 						}
 					} else if (Class == Job_Novice && Upper == 1) {
 						set JobExp,JobExp + 40;
-					} else if ((Class == Job_Swordsman && Upper == 1) || (Class == Job_Acolyte && Upper == 1) || (Class == Job_Merchant && Upper == 1) || (Class == Job_Thief && Upper == 1) || (Class == Job_Mage && Upper == 1) || (Class == Job_Archer && Upper == 1)) {
+					} else if ((Class == Job_Swordman && Upper == 1) || (Class == Job_Acolyte && Upper == 1) || (Class == Job_Merchant && Upper == 1) || (Class == Job_Thief && Upper == 1) || (Class == Job_Mage && Upper == 1) || (Class == Job_Archer && Upper == 1)) {
 						if (JobLevel < 11) {
 							set JobExp,JobExp + 65;
 						} else if ((JobLevel > 10) && (JobLevel < 21)) {

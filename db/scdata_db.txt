@@ -9,7 +9,7 @@
 //--------------------------------------------------------------
 //
 // sc_data_db.txt
-// Status Change Database
+// Status Change Save Database
 //
 //--------------------------------------------------------------
 // Structure of Database:
@@ -19,7 +19,7 @@
 //
 // SaveFlag: (0: Not saved, 1: Saved, -1: Undefined, but should be 1 (Not saved))
 //
-// * Note: Do not modify the '-1' SaveFlag or the server will crash.
+// Do not modify the '-1' SaveFlag or the server will crash.
 //
 //--------------------------------------------------------------
 // Database Entries:
@@ -52,7 +52,7 @@
 24,SC_WEAPONPERFECTION,1	// Weapon Perfection
 25,SC_OVERTHRUST,1		// Over Thrust
 26,SC_MAXIMIZEPOWER,1		// Power Maximize
-27,SC_RIDING,-1			// Pecopeco Ride
+27,SC_RIDING,-1			// Peco Peco Riding
 28,SC_FALCON,-1			// Falconry Mastery
 29,SC_TRICKDEAD,0		// Play Dead
 30,SC_LOUD,1			// Loud Exclamation
@@ -67,7 +67,7 @@
 39,SC_SPEEDPOTION2,1		// Berserk potion
 40,SC_SPEEDPOTION3,0		// Berserk Pitcher
 41,SC_ITEM_DELAY,0		// Item delay
-//
+//42~49
 50,SC_STRIPWEAPON,1		// Strip Weapon
 51,SC_STRIPSHIELD,1		// Strip Shield
 52,SC_STRIPARMOR,1		// Strip Armor
@@ -82,28 +82,31 @@
 61,SC_PROVIDENCE,0		// Providence
 62,SC_DEFENDER,0		// Defender
 63,SC_SANTA,0			// Santa
-//
+//64
 65,SC_AUTOSPELL,0		// Auto Spell
-//
+//66
+//67
 68,SC_SPEARSQUICKEN,1		// Spear Quicken
-//
+//69~85
 86,SC_EXPLOSIONSPIRITS,0	// Critical Explosion
 87,SC_STEELBODY,0		// Steel Body
-//
+//88
 89,SC_COMBO,0			// Monk combo
 90,SC_FLAMELAUNCHER,1		// Flame Launcher
 91,SC_FROSTWEAPON,1		// Frost Weapon
 92,SC_LIGHTNINGLOADER,1		// Lightning Loader
 93,SC_SEISMICWEAPON,1		// Seismic Weapon
-//
+//94~102
 103,SC_AURABLADE,1		// Aura blade
 104,SC_PARRYING,1		// Parrying
 105,SC_CONCENTRATION,1		// Concentration
 106,SC_TENSIONRELAX,0		// Tension Relax
 107,SC_BERSERK,0		// Berserk
-//
+//108
+//109
 110,SC_ASSUMPTIO,1		// Assumptio
-//
+//111
+//112
 113,SC_MAGICPOWER,1		// Amplify Magic Power
 114,SC_EDP,1			// Enchant Deadly Poison
 115,SC_TRUESIGHT,1		// True Sight
@@ -114,10 +117,11 @@
 120,SC_REJECTSWORD,0		// Reject Sword
 121,SC_MARIONETTE,-1		// Marionette Control (By yourself)
 122,SC_MARIONETTE2,-1		// Marionette Control (Partner)
-//
+//123
 124,SC_HEADCRUSH,0		// Head Crush
 125,SC_JOINTBEAT,0		// Joint Beat
-//
+//126
+//127
 128,SC_STONE,0			// Petrifaction
 129,SC_FREEZE,0			// Freezing
 130,SC_STUN,0			// Stun
@@ -128,16 +132,17 @@
 135,SC_CONFUSION,0		// Confusion
 136,SC_BLIND,1			// Darkness
 137,SC_BLEED,1			// Bleeding
-//
+//138
+//139
 140,SC_SAFETYWALL,-1		// Safety wall
 141,SC_PNEUMA,-1		// Pneuma
-//
+//142
 143,SC_ANKLE,-1			// Ankle Snare
 144,SC_DANCING,-1		// State of performance
 145,SC_KEEPING,0		// Keeping
 146,SC_BARRIER,0		// Barrier
 147,SC_TIGERFIST,0		// Tiger Knuckle Fist
-//
+//148
 149,SC_MAGICROD,0		// Magic Rod
 150,SC_SIGHT,0			// Sight
 151,SC_RUWACH,0			// Ruwach
@@ -172,7 +177,7 @@
 180,SC_SPIDERWEB,-1		// Spider Web
 181,SC_MEMORIZE,0		// Memorize
 182,SC_DPOISON,1		// Deadly poison
-//
+//183
 184,SC_SACRIFICE,0		// Sacrifice
 185,SC_INCATK,0			// ATK rise (for Distilled Fithting Spirit)
 186,SC_INCMATK,0		// MATK rise (for Herb of Incantation)
@@ -197,7 +202,7 @@
 205,SC_ASSNCROS_,0		// Assassin Cross of the Sunset (Outside range)
 206,SC_POEMBRAGI_,0		// Poem of Bragi (Outside range)
 207,SC_APPLEIDUN_,0		// Apple of Idun (Outside range)
-//
+//208
 209,SC_HUMMING_,0		// Humming (Outside range)
 210,SC_DONTFORGETME_,0		// Please Don't Forget Me (Outside range)
 211,SC_FORTUNE_,0		// Fortune's Kiss (Outside range)
@@ -322,7 +327,7 @@
 328,SC_RACEBEAST,0		// Animal race
 329,SC_RACEPLANT,0		// Plant race
 330,SC_RACEINSECT,0		// Insect race
-//
+//331
 332,SC_RACEFISH,0		// Fish race
 333,SC_RACEDEVIL,0		// Devil race
 334,SC_RACEHUMAN,0		// Human race
@@ -360,8 +365,8 @@
 366,SC_STATUS_UNCHANGE,0	// State unusual resistance (for gospel)
 367,SC_INCDAMAGE,0		// % rise of damage (for gospel)
 368,SC_LIFE_INSURANCE,1		// Unknown ???
-//369Å Unknown ???
-//370Å Unknown ???
+//369
+//370Å
 371,SC_MEAL_INCSTR2,1		// STR rise (for meal)
 372,SC_MEAL_INCAGI2,1		// AGI rise (for meal)
 373,SC_MEAL_INCVIT2,1		// VIT rise (for meal)

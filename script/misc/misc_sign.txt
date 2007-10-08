@@ -793,7 +793,7 @@ aldebaran.gat,217,222,1	script	Sign	111,{
 izlude.gat,54,139,1	script	Sign	111,{
 
 	mes "^993300- The Sign Reads -^000000";
-	mes "Welcome to the Swordsman Academy.";
+	mes "Welcome to the Swordman Academy.";
 	close;
 }
 

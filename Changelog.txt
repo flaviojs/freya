@@ -14,6 +14,9 @@
 Date	Added
 
 2007/10/07
+	* Note: Aurora now features a fully Aegis, iRO Episode 11.1 script folder!
+	* Added: The /log/ folder by default [Tsuyuki]
+	* Updated: GvG Flags script to official, based on iRO Aegis 11.1 [Tsuyuki]
 	* Updated: The Thanatos Tower Quest with iRO dialogue, converted from Aegis [Tsuyuki]
 	* Updated: The Job Tutorial Quests with iRO dialogue, converted from Aegis [Tsuyuki/Articulus]
 	* Improved: Database header formatting [Tsuyuki]
@@ -445,6 +448,11 @@ Date	Added
 2007/04/13
 	* Updated: Huge CGI databases [Tsuyuki]
 
+
+--------------------------------------------------------------
+ Phaeton Emulator Project Renamed -> Aurora Emulator Project
+--------------------------------------------------------------
+
 2007/04/11
 	* Changed: Project 'Phaeton' -> 'Aurora' [Tsuyuki]
 
@@ -682,5 +690,5 @@ Date	Added
 
 
 --------------------------------------------------------------
- Aurora Emulator Project Begins Here -> Based on jAthena
+ Phaeton Emulator Project Begins Here -> Based on jAthena
 --------------------------------------------------------------

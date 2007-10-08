@@ -637,7 +637,7 @@ gonryun.gat,180,118,4	script	Iron Man	85,{
 			mes "Ready?";
 			next;
 			mes "^0000FFSongmoodoo points a pile of rocks, and asks you to lift them.";
-			if ((Class == Job_Swordsman) || (Class == Job_Mage) || (Class == Job_Archer) || (Class == Job_Thief) || (Class == Job_Acolyte) || (Class == Job_Merchant)) {
+			if ((Class == Job_Swordman) || (Class == Job_Mage) || (Class == Job_Archer) || (Class == Job_Thief) || (Class == Job_Acolyte) || (Class == Job_Merchant)) {
 				if ('@now_weight < 19010) {
 					mes "They're too heavy for you to budge!^000000";
 					next;

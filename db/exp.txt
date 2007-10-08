@@ -17,8 +17,11 @@
 //
 // <Novice-BaseExp>,<FirstClass-BaseExp>,<SecondClass-BaseExp>,<SuperNovice-BaseExp>,<HighNovice-BaseExp>,<HighFirstClass-BaseExp>,<HighSecondClass-BaseExp>,<Novice-JobExp>,<FirstClass-JobExp>,<SecondClass-JobExp>,<SuperNovice-JobExp>,<HighNovice-JobExp>,<HighFirstClass-JobExp>,<HighSecondClass-JobExp>,<StarGladiator-JobExp>,<GS/NJ-JobExp>
 //
+// Each line incrementally represents a certain level
+// Each field represents the amount of experience required to advance to the next level
+//
 // Normal/Baby classes share the same experience values
-// Max levels for Base/Job are in this database (Nothing past L99)
+// Max levels for Base/Job are in this database (Nothing past Lv99)
 
 //--------------------------------------------------------------
 // Database Entries:

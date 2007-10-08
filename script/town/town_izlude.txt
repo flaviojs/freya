@@ -81,7 +81,7 @@ izlude.gat,55,74,2	script	Bonne	90,{
 	mes "Izlude is the satellite city of Prontera, capital of the Rune-Midgarts kingdom.";
 	next;
 	mes "[Bonne]";
-	mes "Izlude is key to our kingdom because of the Swordsman Association located here, as well as the fact that Izlude is in charge of protecting the Rune-Midgard coastline.";
+	mes "Izlude is key to our kingdom because of the Swordman Association located here, as well as the fact that Izlude is in charge of protecting the Rune-Midgard coastline.";
 	next;
 	mes "[Bonne]";
 	mes "I know, this bridge might look weak and fragile, but it is actually state of the art, built with the most sophisticated technology.";
@@ -313,7 +313,7 @@ izlude.gat,56,126,2	script	Red	85,{
 	next;
 	switch(select("Bash","Magnum Break")) {
 	case 1:
-		if (Class == Job_Swordsman || Class == Job_Knight) {
+		if (Class == Job_Swordman || Class == Job_Knight) {
 			mes "[Red]";
 			mes "Hahahaha!!! I knew you'd see things my way!! You ARE a great guy!! Undoubtedly, only ^FF2400Bash^000000 suits a Swordman. Please tell that to this BONEHEAD over here~ Hahaha!";
 			next;
@@ -326,7 +326,7 @@ izlude.gat,56,126,2	script	Red	85,{
 			close;
 		}
 	case 2:
-		if (Class == Job_Swordsman || Class == Job_Knight) {
+		if (Class == Job_Swordman || Class == Job_Knight) {
 			mes "[Cebalis]";
 			mes "Alright!! ^EE0000Magnum Break^000000 is the BEST!! Now you're talking~!! You know the stuff~ HaHaHa!";
 			next;
@@ -391,7 +391,7 @@ izlude.gat,58,126,2	script	Cebalis	98,{
 	next;
 	switch(select("Bash","Magnum Break")) {
 	case 1:
-		if (Class == Job_Swordsman || Class == Job_Knight) {
+		if (Class == Job_Swordman || Class == Job_Knight) {
 			mes "[Red]";
 			mes "Hahahaha!!! I knew you'd see things my way!! You ARE a great guy!! Without a doubt, only ^FF2400Bash^000000 suits a Swordman. Please tell that to FUNBOY over here!! Hahaha.";
 			next;
@@ -408,7 +408,7 @@ izlude.gat,58,126,2	script	Cebalis	98,{
 			close;
 		}
 	case 2:
-		if (Class == Job_Swordsman || Class == Job_Knight) {
+		if (Class == Job_Swordman || Class == Job_Knight) {
 			mes "[Cebalis]";
 			mes " Alright!! ^EE0000Magnum Break^000000 is the BEST!! Now you're talking~!! You know your stuff, kid. HaHaHa~!";
 			next;

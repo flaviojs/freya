@@ -17,9 +17,10 @@
 //
 // <ItemID>,<DatabaseName>,<DisplayName>,<Type>
 //
-// 1:Arrow,2:Throwing Knife (used for the Assassin skill),
-// 4:Pistol Bullet,8:Riffle Bullet,16:Shootgun Bullet,
-// 32:Gatling Gun Bullet,64:Grenade Launcher Bullet,128:Shuriken,256:Kunai
+// Type:
+//  1:Arrow,2:Throwing Knife (Used for the Assassin skill),
+//  4:Pistol Bullet,8:Riffle Bullet,16:Shootgun Bullet,
+//  32:Gatling Gun Bullet,64:Grenade Launcher Bullet,128:Shuriken,256:Kunai
 //
 //--------------------------------------------------------------
 // Database Entries:
@@ -47,7 +48,7 @@
 1769,Silence_Arrow,Mute Arrow,1
 1770,Iron_Arrow,Iron Arrow,1
 1771,Venom_Knife,Venom Knife,2
-1772,Unknown_Item,ê_êπÇ»ñÓÇÃñÓ,1
+1772,Holy_Arrow,Holy Arrow,1
 13200,Bullet,Bullet,124
 13201,Silver_Bullet,Silver Bullet,124
 13202,Cell_of_Blood,Shell of Blood,124

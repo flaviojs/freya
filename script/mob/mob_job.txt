@@ -49,7 +49,7 @@ new_5-3.gat,0,0,0,0	monster	Fabre	1184,5,0,0,0
 
 
 //--------------------------------------------------------------
-// Swordsman Job Change Quest Monster Spawns - [Tsuyuki]
+// Swordman Job Change Quest Monster Spawns - [Tsuyuki]
 //--------------------------------------------------------------
 
 sword_1-1.gat,0,0,0,0	monster	Chonchon	1183,20,0,0,0

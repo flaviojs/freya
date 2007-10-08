@@ -1,4 +1,16 @@
-#Athena SQL Table Drop Script
+#--------------------------------------------------------------
+#               (c)2004-2007 Aurora Team Presents:             
+#                  ___                                         
+#                 /   |_   _ _ __ ___  _ __ __ _               
+#                / /| | | | | '__/ _ \| '__/ _` |              
+#               / ___ | |_| | | | (_) | | | (_| |              
+#              /_/  |_|\____|_|  \___/|_|  \__,_|              
+#                 http://aurora.deltaanime.net                 
+#--------------------------------------------------------------
+#
+# drop_table.sql
+# Aurora SQL Database Drop Table Script
+
 drop table `cart_inventory`;
 drop table `char`;
 drop table `charlog`;

@@ -15,7 +15,7 @@
 // Structure of Database:
 //--------------------------------------------------------------
 //
-// <HomunID>,<ViewID>,<Name>,<JName>,<Lv>,<AcceID>,<FoodID>,<HP>,<SP>,<Str>,<Agi>,<Vit>,<Int>,<Dex>,<Luk>,<[Rate->]Base>,<MaxHP>,<MinHP>,<MaxSP>,<MinSP>,<Str>,<Agi>,<Vit>,<Int>,<Dex>,<Luk>,<ASPD>,<Size>,<Race>,<Element>,<EvoClass>,<ExpTable>,<{HomunScript}>
+// <HomunID>,<ViewID>,<DatabaseName>,<DisplayName>,<Level>,<EquipItemID>,<FoodItemID>,<HP>,<SP>,<Str>,<Agi>,<Vit>,<Int>,<Dex>,<Luk>,<[Rate->]Base>,<MaxHP>,<MinHP>,<MaxSP>,<MinSP>,<Str>,<Agi>,<Vit>,<Int>,<Dex>,<Luk>,<ASPD>,<Size>,<Race>,<Element>,<EvolvedClass>,<ExpTable>,<{HomunScript}>
 
 //--------------------------------------------------------------
 // Database Entries:

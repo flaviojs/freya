@@ -15,7 +15,10 @@
 // Structure of Database:
 //--------------------------------------------------------------
 //
-// <BasicHomunExp>,<EvolvedHomunExp>,<Reserved1>,<Reserved2>,<Reserved3>,<Reserved4>
+// <NormalHomunExp>,<EvolvedHomunExp>,<Reserved1>,<Reserved2>,<Reserved3>,<Reserved4>
+//
+// Each line incrementally represents a certain level
+// Each NormalHomunExp/EvolvedHomunExp field represents the amount of experience required to advance to the next level
 //
 //--------------------------------------------------------------
 // Database Entries:

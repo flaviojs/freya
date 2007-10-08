@@ -1209,7 +1209,7 @@ izlude.gat,103,106,3	script	Guildsman#1	48,3,3,{
 		mes "to store some of your items.^000000";
 		close;
 	}
-	if (!(BaseLevel > 59) || !(Class == Job_Novice || Class == Job_SuperNovice || (Class == Job_Swordsman) || (Class == Job_Knight) || (Class == Job_Crusader)))
+	if (!(BaseLevel > 59) || !(Class == Job_Novice || Class == Job_SuperNovice || (Class == Job_Swordman) || (Class == Job_Knight) || (Class == Job_Crusader)))
 	{
 		mes "[Guildsman]";
 		mes "There are rumors";
@@ -1263,7 +1263,7 @@ izlude.gat,103,106,3	script	Guildsman#1	48,3,3,{
 			getitem 7416,1;
 			close;
 		}
-		else if ((Class == Job_Swordman) || (Class == Job_Swordman_High))
+		else if (Class == Job_Swordman)
 		{
 			mes "[Guildsman]";
 			mes "Hey, " + strcharinfo(0) + "!";
@@ -1402,7 +1402,7 @@ izlude.gat,103,106,3	script	Guildsman#1	48,3,3,{
 			mes "Why don't you go check it out?";
 			close;
 		}
-		else if ((Class == Job_Swordman) || (Class == Job_Swordman_High))
+		else if (Class == Job_Swordman)
 		{
 			mes "[Guildsman]";
 			mes "Right, for this mission,";
@@ -1511,7 +1511,7 @@ OnTouch:
 				getitem 7416,1;
 				close;
 			}
-			else if ((Class == Job_Swordman) || (Class == Job_Swordman_High))
+			else if (Class == Job_Swordman)
 			{
 				mes "[Guildsman]";
 				mes "Hey, " + strcharinfo(0) + "!";
@@ -1921,7 +1921,7 @@ alberta.gat,129,59,3	script	Guildsman#2	49,3,3,{
 			mes "NOOOOOOO! PLEEEEEASE~!";
 			close;
 		}
-		else if ((Class == Job_Merchant) || (Class == Job_Merchant_High))
+		else if (Class == Job_Merchant)
 		{
 			mes "[Guildsman]";
 			mes "Well, if it isn't";
@@ -2043,7 +2043,7 @@ alberta.gat,129,59,3	script	Guildsman#2	49,3,3,{
 			mes "I gonna go, huh? You need me!^000000";
 			close;
 		}
-		else if ((Class == Job_Merchant) || (Class == Job_Merchant_High))
+		else if (Class == Job_Merchant)
 		{
 			mes "[Guildsman]";
 			mes "So you're gonna represent";
@@ -2104,7 +2104,7 @@ alberta.gat,129,59,3	script	Guildsman#2	49,3,3,{
 			mes "Yeah, uh, good luck!";
 			close;
 		}
-		else if ((Class == Job_Merchant) || (Class == Job_Merchant_High))
+		else if (Class == Job_Merchant)
 		{
 			mes "[Guildsman]";
 			mes "So you've been working";
@@ -2261,7 +2261,7 @@ OnTouch:
 				mes "NOOOOOOO! PLEEEEEASE~!";
 				close;
 			}
-			else if ((Class == Job_Merchant) || (Class == Job_Merchant_High))
+			else if (Class == Job_Merchant)
 			{
 				mes "[Guildsman]";
 				mes "Well, if it isn't";

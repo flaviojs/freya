@@ -95,15 +95,15 @@ sec_in01.gat,176,178,5	script	1st Class Job Change Helper	123,{
 		mes "[1st Job Class Assistant]";
 		mes "Select the job class you would like to change to.";
 		next;
-		switch(select("Swordsman","Mage","Archer","Acolyte","Merchant","Thief","Cancel")) {
+		switch(select("Swordman","Mage","Archer","Acolyte","Merchant","Thief","Cancel")) {
 		case 1:
 			mes "[1st Job Class Assistant]";
-			mes "You have chosen to become a ^3355FFSwordsman^000000.";
+			mes "You have chosen to become a ^3355FFSwordman^000000.";
 			mes "Is this correct?";
 			next;
 			switch(select("Yes.","No.")) {
 			case 1:
-				jobchange Job_Swordsman,0;
+				jobchange Job_Swordman,0;
 				mes "[1st Job Class Assistant]";
 				mes "Thank you and have a nice day.";
 				close;
@@ -242,7 +242,7 @@ sec_in02.gat,21,183,5	script	1st Job Change	123,{
 			next;
 			switch(select("Yes","No")) {
 			case 1:
-				jobchange Job_Swordsman,0;
+				jobchange Job_Swordman,0;
 				mes "[1st Job Change]";
 				mes "Thank you for";
 				mes "using this service.";
@@ -1055,7 +1055,7 @@ sec_in02.gat,18,183,1	script	Transcendent Class	748,{
 			switch(select("Swordman","Mage","Archer","Acolyte","Merchant","Thief","Cancel")) {
 			case 1:
 				if ((Class == Job_Novice && Upper == 1) && ((job_karma == 1) || (job_karma == 7))) {
-					jobchange Job_Swordsman,1;
+					jobchange Job_Swordman,1;
 					skill 144,1,0;
 					skill 145,1,0;
 					skill 146,1,0;
@@ -1138,7 +1138,7 @@ sec_in02.gat,18,183,1	script	Transcendent Class	748,{
 			next;
 			switch(select("Lord Knight","High Wizard","Sniper","High Priest","MasterSmith","Assassin Cross","Cancel")) {
 			case 1:
-				if ((Class == Job_Swordsman && Upper == 1) && (job_karma == 1)) {
+				if ((Class == Job_Swordman && Upper == 1) && (job_karma == 1)) {
 					jobchange Job_Knight,1;
 				}
 				mes "[Huozelo]";
@@ -1202,7 +1202,7 @@ sec_in02.gat,18,183,1	script	Transcendent Class	748,{
 			next;
 			switch(select("Paladin","Professor","Minstrel","Gypsy","Champion","Creator","Stalker","Cancel")) {
 			case 1:
-				if ((Class == Job_Swordsman && Upper == 1) && (job_karma == 7)) {
+				if ((Class == Job_Swordman && Upper == 1) && (job_karma == 7)) {
 					jobchange Job_Crusader,1;
 				}
 				mes "[Huozelo]";
@@ -1319,7 +1319,7 @@ sec_in02.gat,18,183,1	script	Transcendent Class	748,{
 
 
 //--------------------------------------------------------------
-// GM Swordsman/Archer Quest Skill Assistant - [Tsuyuki]
+// GM Swordman/Archer Quest Skill Assistant - [Tsuyuki]
 //--------------------------------------------------------------
 
 sec_in02.gat,26,153,1	script	Swordman/Archer Skill	714,{
@@ -1337,7 +1337,7 @@ sec_in02.gat,26,153,1	script	Swordman/Archer Skill	714,{
 	}
 	switch(select("HP Recovery While Moving","Fatal Blow","Berserk","Arrow Crafting","Arrow Repel")) {
 	case 1:
-		if (BaseClass == Job_Swordsman) {
+		if (BaseClass == Job_Swordman) {
 			skill 144,1,0;
 			end;
 		} else {
@@ -1349,7 +1349,7 @@ sec_in02.gat,26,153,1	script	Swordman/Archer Skill	714,{
 			close;
 		}
 	case 2:
-		if (BaseClass == Job_Swordsman) {
+		if (BaseClass == Job_Swordman) {
 			skill 145,1,0;
 			end;
 		} else {
@@ -1361,7 +1361,7 @@ sec_in02.gat,26,153,1	script	Swordman/Archer Skill	714,{
 			close;
 		}
 	case 3:
-		if (BaseClass == Job_Swordsman) {
+		if (BaseClass == Job_Swordman) {
 			skill 146,1,0;
 			end;
 		} else {
@@ -2292,7 +2292,7 @@ sec_in02.gat,17,156,3	script	1st Job Quest Reset	726,{
 	mes "[1st Job Quest]";
 	mes "Which would you like to reset?";
 	next;
-	switch(select("Swordsman","Merchant","Archer","Acolyte","Thief","Mage")) {
+	switch(select("Swordman","Merchant","Archer","Acolyte","Thief","Mage")) {
 	case 1:
 		set tu_swordman,0;
 		break;

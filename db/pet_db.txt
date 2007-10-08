@@ -14,7 +14,7 @@
 //--------------------------------------------------------------
 // Structure of Database:
 //--------------------------------------------------------------
-// <MobID>,<DatabaseName>,<DisplayName>,<ItemID>,<EggID>,<AcceID>,<FoodID>,<Fullness>,<HungryDelay>,<R_Hungry>,<R_Full>,<Intimate>,<Die>,<Capture>,<Speed>,<S_Performance>,<TalkConvertClass>,<AttackRate>,<DefenseAttackRate>,<ChangeTargetRate>,<{PetScript}>
+// <MobID>,<DatabaseName>,<DisplayName>,<ItemID>,<EggItemID>,<EquipItemID>,<FoodItemID>,<Fullness>,<HungerDelay>,<HungerRate>,<FullRate>,<Intimate>,<Die>,<Capture>,<Speed>,<S-Performance>,<TalkConvertClass>,<AttackRate>,<DefenseAttackRate>,<ChangeTargetRate>,<{PetScript}>
 //
 //--------------------------------------------------------------
 // Database Entries:

@@ -14,14 +14,26 @@
 //--------------------------------------------------------------
 // Structure of Database:
 //--------------------------------------------------------------
-// <ItemID>,<DatabaseName>,<DisplayName>,<Type>,<Price>,<Sell>,<Weight>,<ATK>,<DEF>,<Range>,<Slot>,<JobReq>,<Gender>,<Location>,<WeaponLv>,<LevelReq>,<ViewID>,<Refinable>,<{UseScript}>,<{EquipScript}>
 //
-// Type: 0: Healing, 2: Usable, 3: Misc, 4: Weapon, 5: Armor, 6: Card, 7: Pet Egg,
-//       8: Pet Equip, 10: Arrow
+// <ItemID>,<DatabaseName>,<DisplayName>,<Type>,<Price>,<Sell>,<Weight>,<ATK>,<DEF>,<Range>,<SlotCount>,<ClassReq>,<Gender>,<CardSlotLocation>,<WeaponLv>,<LevelReq>,<HeadgearViewID>,<Refineable>,<{UseScript}>,<{OnEquipScript}>
 //
-// Elements: 0: Nothing, 1: Water, 2: Earth , 3: Fire, 4: Wind, 5: Poison, 6: Holy, 7: Dark, 8: Sense, 9: Immortality
+// Type: 0: Healing, 2: Usable, 3: Misc, 4: Weapon, 5: Armor, 6: Card, 7: Pet Egg, 8: Pet Equip, 10: Arrow
 //
-// Location (Cards): 2: Weapon, 4: Garment, 16: Armor, 32: Shield, 64: Shoes, 136: Accessory, 769: Headgear
+// ClassReq:
+//   +1 = Novice
+//   +2 = Swordman, +4 = Mage, +8 = Archer, +16 = Acolyte, +32 = Merchant, +64 = Thief
+//   +128 = Knight, +256 = Priest, +512 = Wizard, +1024 = Blacksmith, +2048 = Hunter, +4096 = Assassin, +8192 = Peco Knight
+//   +16384 = Crusader, +32768 = Monk, +65536 = Sage, +131072 = Rogue, +262144 = Alchemist, +524288 = Bard, +1048576 = Dancer, +2097152 = Peco Crusader
+//   +8388608 = Super Novice
+//   +16777216 = Taekwon Kid, +33554432 = Taekwon Master, +134217728 = Soul Linker, +268435456 = Gunslinger, +536870912 = Ninja
+//   +1073741824 = Death Knight (Unused), +2147483648 = Dark Collector (Unused)
+//
+//   -> For every class that you want to be able to equip/use the specific item, add the values above and set ClassReq to the total value
+//      Example #1: Any job -> 1000333311
+//      Example #2: Any job except Super Novice -> 1000333310
+//      Example #3: Only Knight/Priest -> 768
+//
+// CardSlotLocation: 2: Weapon, 4: Garment, 16: Armor, 32: Shield, 64: Shoes, 136: Accessory, 769: Headgear
 
 //--------------------------------------------------------------
 // Database Entries:
@@ -3127,16 +3139,16 @@
 12160,Merc_Archer_Scroll_Lv8,Archer Mercenary Summon Scroll Level 8,2,,,100,,,,,,2,,,,,,{},{}
 12161,Merc_Archer_Scroll_Lv9,Archer Mercenary Summon Scroll Level 9,2,,,100,,,,,,2,,,,,,{},{}
 12162,Merc_Archer_Scroll_Lv10,Archer Mercenary Summon Scroll Level 10,2,,,100,,,,,,2,,,,,,{},{}
-12163,Merc_Sword_Scroll_Lv1,Swordsman Mercenary Summon Scroll Level 1,2,,,100,,,,,,2,,,,,,{},{}
-12164,Merc_Sword_Scroll_Lv2,Swordsman Mercenary Summon Scroll Level 2,2,,,100,,,,,,2,,,,,,{},{}
-12165,Merc_Sword_Scroll_Lv3,Swordsman Mercenary Summon Scroll Level 3,2,,,100,,,,,,2,,,,,,{},{}
-12166,Merc_Sword_Scroll_Lv4,Swordsman Mercenary Summon Scroll Level 4,2,,,100,,,,,,2,,,,,,{},{}
-12167,Merc_Sword_Scroll_Lv5,Swordsman Mercenary Summon Scroll Level 5,2,,,100,,,,,,2,,,,,,{},{}
-12168,Merc_Sword_Scroll_Lv6,Swordsman Mercenary Summon Scroll Level 6,2,,,100,,,,,,2,,,,,,{},{}
-12169,Merc_Sword_Scroll_Lv7,Swordsman Mercenary Summon Scroll Level 7,2,,,100,,,,,,2,,,,,,{},{}
-12170,Merc_Sword_Scroll_Lv8,Swordsman Mercenary Summon Scroll Level 8,2,,,100,,,,,,2,,,,,,{},{}
-12171,Merc_Sword_Scroll_Lv9,Swordsman Mercenary Summon Scroll Level 9,2,,,100,,,,,,2,,,,,,{},{}
-12172,Merc_Sword_Scroll_Lv10,Swordsman Mercenary Summon Scroll Level 10,2,,,100,,,,,,2,,,,,,{},{}
+12163,Merc_Sword_Scroll_Lv1,Swordman Mercenary Summon Scroll Level 1,2,,,100,,,,,,2,,,,,,{},{}
+12164,Merc_Sword_Scroll_Lv2,Swordman Mercenary Summon Scroll Level 2,2,,,100,,,,,,2,,,,,,{},{}
+12165,Merc_Sword_Scroll_Lv3,Swordman Mercenary Summon Scroll Level 3,2,,,100,,,,,,2,,,,,,{},{}
+12166,Merc_Sword_Scroll_Lv4,Swordman Mercenary Summon Scroll Level 4,2,,,100,,,,,,2,,,,,,{},{}
+12167,Merc_Sword_Scroll_Lv5,Swordman Mercenary Summon Scroll Level 5,2,,,100,,,,,,2,,,,,,{},{}
+12168,Merc_Sword_Scroll_Lv6,Swordman Mercenary Summon Scroll Level 6,2,,,100,,,,,,2,,,,,,{},{}
+12169,Merc_Sword_Scroll_Lv7,Swordman Mercenary Summon Scroll Level 7,2,,,100,,,,,,2,,,,,,{},{}
+12170,Merc_Sword_Scroll_Lv8,Swordman Mercenary Summon Scroll Level 8,2,,,100,,,,,,2,,,,,,{},{}
+12171,Merc_Sword_Scroll_Lv9,Swordman Mercenary Summon Scroll Level 9,2,,,100,,,,,,2,,,,,,{},{}
+12172,Merc_Sword_Scroll_Lv10,Swordman Mercenary Summon Scroll Level 10,2,,,100,,,,,,2,,,,,,{},{}
 12173,Merc_Spear_Scroll_Lv1,Spearman Mercenary Summon Scroll Level 1,2,,,100,,,,,,2,,,,,,{},{}
 12174,Merc_Spear_Scroll_Lv2,Spearman Mercenary Summon Scroll Level 2,2,,,100,,,,,,2,,,,,,{},{}
 12175,Merc_Spear_Scroll_Lv3,Spearman Mercenary Summon Scroll Level 3,2,,,100,,,,,,2,,,,,,{},{}
@@ -3672,8 +3684,8 @@
 14529,Greed_Scroll,Greed Scroll,2,,,10,,,,,1000333311,2,,,,,,{ itemskill 1013,1,""; },{}
 14530,Evasion_Scroll,Evasion Scroll,2,,,10,,,,,1000333311,2,,,,,,{ sc_start SC_MFLEE,1800000,30; },{}
 14531,Concentration_Power_Scroll,Concentration Power Scroll,2,,,10,,,,,1000333311,2,,,,,,{ sc_start SC_MHIT,1800000,30; },{}
-14532,기초_Field_Manual,기초_Field_Manual,2,,,10,,,,,1000333311,2,,,,,,{},{}
-14533,상�?_Field_Manual,상�?_Field_Manual,2,,,10,,,,,1000333311,2,,,,,,{},{}
+14532,Unknown_Item,Unknown Item,2,,,10,,,,,1000333311,2,,,,,,{},{}
+14533,Unknown_Item,Unknown Item,2,,,10,,,,,1000333311,2,,,,,,{},{}
 14534,Small_Water_of_Life,Small Water of Life,2,,,10,,,,,1000333311,2,,,,,,{},{}
 14535,Large_Water_of_Life,Large Water of Life,2,,,10,,,,,1000333311,2,,,,,,{},{}
 14536,Grinder,Grinder,2,,,10,,,,,,2,,,,,,{},{}

@@ -1,11 +1,11 @@
 ===========================================================================
 ===========================================================================
-			Aurora and jAthena Differences
+                       Aurora / jAthena Differences                        
 ---------------------------------------------------------------------------
 
 
 ===========================================================================
-	Source Code (./src)
+	Source Code (src/)
 ---------------------------------------------------------------------------
 
 -> Database File Changes:
@@ -33,7 +33,7 @@
 - src/map/mob.c
 
 ===========================================================================
-	Databases (./db)
+	Databases (db/)
 ---------------------------------------------------------------------------
 
 - All databases generally follow jAthena's, except for the following:
@@ -49,7 +49,7 @@
 
 
 ===========================================================================
-	NPC Scripts (./npc)
+	NPC Scripts (script/)
 ---------------------------------------------------------------------------
 
 - Almost all scripts have been imported from English emulators. We currently only use and update one file from jAthena's scripts:
@@ -57,7 +57,7 @@
 	- ./script/misc/misc_mapflag.txt [Translated]
 
 ===========================================================================
-	Configuration (./conf)
+	Configuration (conf/)
 ---------------------------------------------------------------------------
 
 - Changed all @commands with GM level 0 required to GM level 1.
@@ -71,10 +71,16 @@
 - In ./conf/map_athena.conf, read_map_from_cache is set to active at '2'. Normal jAthena is set to '0', inactive.
 
 ===========================================================================
-	Saved Data (./save)
+	TXT Saved Data (save/)
 ---------------------------------------------------------------------------
 
 - This folder is included by default instead of being generated on the first server launch to prevent user errors.
+- The account ID 2000001 is created by default with the username 'Test', password 'Test' and GM level 99.
+
+===========================================================================
+	SQL Saved Data (sql-files/)
+---------------------------------------------------------------------------
+
 - The account ID 2000001 is created by default with the username 'Test', password 'Test' and GM level 99.
 
 ===========================================================================

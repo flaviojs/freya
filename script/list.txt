@@ -7,7 +7,7 @@
 //              /_/  |_|\____|_|  \___/|_|  \__,_|              
 //                 http://aurora.deltaanime.net                 
 //--------------------------------------------------------------
-//			Aurora Scripts List
+//                      Aurora Scripts List                     
 //--------------------------------------------------------------
 
 
@@ -33,7 +33,7 @@ npc: script/global/global_shop.txt
 
 
 //--------------------------------------------------------------
-// Guild vs Guild (The War of Emperium) Scripts
+// Guild vs Guild (War of Emperium) Scripts
 //--------------------------------------------------------------
 
 npc: script/gvg/gvg_core.txt
@@ -70,7 +70,7 @@ npc: script/job/job_rogue.txt
 npc: script/job/job_sage.txt
 npc: script/job/job_soul_linker.txt
 npc: script/job/job_super_novice.txt
-npc: script/job/job_swordsman.txt
+npc: script/job/job_swordman.txt
 npc: script/job/job_taekwon.txt
 npc: script/job/job_taekwon_master.txt
 npc: script/job/job_thief.txt
