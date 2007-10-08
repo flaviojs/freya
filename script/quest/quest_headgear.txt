@@ -5761,7 +5761,7 @@ morocc.gat,273,79,4	script	Educated Traveller	99,{
 // Mr. Smile Quest - [Tsuyuki]
 //--------------------------------------------------------------
 
-prontera.gat,157,187,4	script	Smile Assistance	92,4,5,{
+prontera.gat,157,187,4	script	Smile Assistance	92,{
 
 	mes "[Smile Girl]";
 	mes "Hi ~ Hi ~";
@@ -5841,7 +5841,7 @@ prontera.gat,157,187,4	script	Smile Assistance	92,4,5,{
 	}
 }
 
-morocc.gat,158,97,4	script	Smile Assistance	92,4,5,{
+morocc.gat,158,97,4	script	Smile Assistance	92,{
 
 	mes "[Smile Girl]";
 	mes "Hi ~ Hi ~";
@@ -5921,7 +5921,7 @@ morocc.gat,158,97,4	script	Smile Assistance	92,4,5,{
 	}
 }
 
-aldebaran.gat,136,135,4	script	Smile Assistance	92,4,5,{
+aldebaran.gat,136,135,4	script	Smile Assistance	92,{
 
 	mes "[Smile Girl]";
 	mes "Hi ~ Hi ~";
@@ -6001,7 +6001,7 @@ aldebaran.gat,136,135,4	script	Smile Assistance	92,4,5,{
 	}
 }
 
-geffen.gat,119,107,4	script	Smile Assistance	92,4,5,{
+geffen.gat,119,107,4	script	Smile Assistance	92,{
 
 	mes "[Smile Girl]";
 	mes "Hi ~ Hi ~";
@@ -6081,7 +6081,7 @@ geffen.gat,119,107,4	script	Smile Assistance	92,4,5,{
 	}
 }
 
-alberta.gat,113,53,4	script	Smile Assistance	92,4,5,{
+alberta.gat,113,53,4	script	Smile Assistance	92,{
 
 	mes "[Smile Girl]";
 	mes "Hi ~ Hi ~";
@@ -6241,7 +6241,7 @@ payon.gat,186,104,5	script	Smile Assistance	92,{
 	}
 }
 
-izlude.gat,129,118,4	script	Smile Assistance	92,4,5,{
+izlude.gat,129,118,4	script	Smile Assistance	92,{
 
 	mes "[Smile Girl]";
 	mes "Hi ~ Hi ~";
