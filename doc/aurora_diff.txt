@@ -5,6 +5,18 @@
 
 
 ===========================================================================
+	Main Differences
+===========================================================================
+
+- All/most existing instances of Japanese have been translated into English, except for those in the src/ folder.
+- Japanese instances in the src/ folder are exclusively comments, everything else is in English.
+- Anything at all seen in-game will be English, and not Japanese.
+- All files currently use DOS (Win32) line endings.
+- Most of jAthena's documentation files in doc/ have been removed due to lack of translation.
+- The jAthena bin/ folder has been removed, and bin/tool/ has been moved to tool/.
+
+
+===========================================================================
 	Configuration (conf/)
 ---------------------------------------------------------------------------
 
@@ -84,20 +96,17 @@
 
 
 ===========================================================================
-	Miscellaneous Changes
+	Miscellaneous Differences
 ---------------------------------------------------------------------------
 
-- The jAthena bin/ folder has been removed, and bin/tool/ has been moved to tool/.
 - There is no LICENCE_JA file in Aurora. In replacement there is an English version, renamed to License.txt.
 - The 'Readme' changelog is stored in doc/ as Readme.txt instead of in the main folder.
-- Most of jAthena's documentation files in doc/ have been removed due to lack of translation.
 - This documentation file doc/aurora_diff.txt does not exist in jAthena.
 - The doc/effect_list.txt documentation file does not exist in jAthena.
-- The doc/aurora_script.txt documentation file does not exist in jAthena.
+- The doc/script_dev.txt documentation file does not exist in jAthena.
 - The Changelog.txt file in the main folder does not exist in jAthena, they use the 'Readme' file as their Changelog.
 - The tool/translate/ folder is a database translation utility for Aurora that does not exist in jAthena.
 - The win32_start.bat batch launcher has been modified to work differently.
-- All files currently use DOS (Win32) line endings.
 
 
 ==========================================================================
