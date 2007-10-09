@@ -1,0 +1,478 @@
+//--------------------------------------------------------------
+//               (c)2004-2007 Aurora Team Presents:             
+//                  ___                                         
+//                 /   |_   _ _ __ ___  _ __ __ _               
+//                / /| | | | | '__/ _ \| '__/ _` |              
+//               / ___ | |_| | | | (_) | | | (_| |++            
+//              /_/  |_|\____|_|  \___/|_|  \__,_|              
+//                 http://aurora.deltaanime.net                 
+//--------------------------------------------------------------
+// Script Title: Cash Item System	Author: Tsuyuki
+//--------------------------------------------------------------
+// Revision History: v1.0
+//--------------------------------------------------------------
+//	1.0 First version, converted from Aegis (euRO dialogue) [Tsuyuki]
+//--------------------------------------------------------------
+// Additional Notes: * Official-certified / Aegis-certified *
+// Not fully functional due to the lack of cash item commands.
+//--------------------------------------------------------------
+
+
+//--------------------------------------------------------------
+// Cash Item Shops - [Tsuyuki]
+//--------------------------------------------------------------
+
+prontera.gat,151,133,4	script	iMall Owner	107,{
+
+	// CashShop "FIRST";
+	end;
+}
+
+payon.gat,200,125,4	script	iMall Owner	107,{
+
+	// CashShop "SECOND";
+	end;
+}
+
+morocc.gat,169,73,4	script	iMall Owner	107,{
+
+	// CashShop "THIRD";
+	end;
+}
+
+alberta.gat,46,37,4	script	iMall Owner	107,{
+
+	// CashShop "FOURTH";
+	end;
+}
+
+aldebaran.gat,116,106,4	script	iMall Owner	107,{
+
+	// CashShop "FIFTH";
+	end;
+}
+
+
+//--------------------------------------------------------------
+// Cash Item Refinery - [Tsuyuki]
+//--------------------------------------------------------------
+
+morocc.gat,183,94,0	script	Mr. Long	85,{
+
+	mes "[Mr. Long]";
+	mes "I am a Blacksmith who expertise in refining weapons and defense equipment.";
+	mes "I can help to refine the items that you're equipping now.";
+	mes "Which equipment do you wish to refine?";
+	next;
+	set '@strRetPart1$,getequipname(1);
+	set '@strRetPart2$,getequipname(2);
+	set '@strRetPart3$,getequipname(3);
+	set '@strRetPart4$,getequipname(4);
+	set '@strRetPart5$,getequipname(5);
+	set '@strRetPart6$,getequipname(6);
+	set '@strRetPart7$,getequipname(7);
+	set '@strRetPart8$,getequipname(8);
+	set '@strRetPart9$,getequipname(9);
+	set '@strRetPart10$,getequipname(10);
+	if ('@strRetPart1$ == "0") {
+		set '@strPart1$,"Head -[Not equipped]";
+	} else {
+		set '@strPart1$,'@strRetPart1$;
+	}
+	if ('@strRetPart2$ == "0") {
+		set '@strPart2$,"Body-[Not equipped]";
+	} else {
+		set '@strPart2$,'@strRetPart2$;
+	}
+	if ('@strRetPart3$ == "0") {
+		set '@strPart3$,"Left Hand -[Not equipped]";
+	} else {
+		set '@strPart3$,'@strRetPart3$;
+	}
+	if ('@strRetPart4$ == "0") {
+		set '@strPart4$,"Right Hand -[Not equipped]";
+	} else {
+		set '@strPart4$,'@strRetPart4$;
+	}
+	if ('@strRetPart5$ == "0") {
+		set '@strPart5$,"Robe -[Not equipped]";
+	} else {
+		set '@strPart5$,'@strRetPart5$;
+	}
+	if ('@strRetPart6$ == "0") {
+		set '@strPart6$,"Shoes -[Not equipped]";
+	} else {
+		set '@strPart6$,'@strRetPart6$;
+	}
+	if ('@strRetPart7$ == "0") {
+		set '@strPart7$,"Accessory 1-[Not equipped]";
+	} else {
+		set '@strPart7$,'@strRetPart7$;
+	}
+	if ('@strRetPart8$ == "0") {
+		set '@strPart8$,"Accessory 2-[Not equipped]";
+	} else {
+		set '@strPart8$,'@strRetPart8$;
+	}
+	if ('@strRetPart9$ == "0") {
+		set '@strPart9$,"Head 2-[Not equipped]";
+	} else {
+		set '@strPart9$,'@strRetPart9$;
+	}
+	if ('@strRetPart10$ == "0") {
+		set '@strPart10$,"Head 3-[Not equipped]";
+	} else {
+		set '@strPart10$,'@strRetPart10$;
+	}
+	switch(select(""+'@strPart1$+"",""+'@strPart2$+"",""+'@strPart3$+"",""+'@strPart4$+"",""+'@strPart5$+"",""+'@strPart6$+"",""+'@strPart7$+"",""+'@strPart8$+"",""+'@strPart9$+"",""+'@strPart10$+"")) {
+	case 1:
+		set '@part,1;
+		if ('@strRetPart1$ == "0") {
+			mes "[Mr. Long]";
+			mes "Do I need to refine your brain and make you smarter?";
+			close;
+		}
+		break;
+	case 2:
+		set '@part,2;
+		if ('@strRetPart2$ == "0") {
+			mes "[Mr. Long]";
+			mes "Come! Let me refine your body with my passion.";
+			close;
+		}
+		break;
+	case 3:
+		set '@part,3;
+		if ('@strRetPart3$ == "0") {
+			mes "[Mr. Long]";
+			mes "I'm sorry but I don't think I can install a rocket launcher on your left hand...";
+			close;
+		}
+		break;
+	case 4:
+		set '@part,4;
+		if ('@strRetPart4$ == "0") {
+			mes "[Mr. Long]";
+			mes "I'm sorry but I don't think I can install a rocket launcher on your right hand!";
+			close;
+		}
+		break;
+	case 5:
+		set '@part,5;
+		if ('@strRetPart5$ == "0") {
+			mes "[Mr. Long]";
+			mes "You don't have a robe with you, don't you?";
+			close;
+		}
+		break;
+	case 6:
+		set '@part,6;
+		if ('@strRetPart6$ == "0") {
+			mes "[Mr. Long]";
+			mes "Holy! What's that stench on your feet!";
+			close;
+		}
+		break;
+	case 7:
+		set '@part,7;
+		if ('@strRetPart7$ == "0") {
+			mes "[Mr. Long]";
+			mes "Which kind of accessory are you referring to?";
+			close;
+		}
+		break;
+	case 8:
+		set '@part,8;
+		if ('@strRetPart8$ == "0") {
+			mes "[Mr. Long]";
+			mes "Which kind of accessory are you referring to?";
+			close;
+		}
+		break;
+	case 9:
+		set '@part,9;
+		if ('@strRetPart9$ == "0") {
+			mes "[Mr. Long]";
+			mes "Which kind of accessory are you referring to? Are you talking about your head or something?";
+			close;
+		}
+		break;
+	case 10:
+		set '@part,10;
+		if ('@strRetPart10$ == "0") {
+			mes "[Mr. Long]";
+			mes "...Do you want me to refine your skull?";
+			close;
+		}
+		break;
+	}
+	if (getequipisenableref('@part) == 0) {
+		mes "[Mr. Long]";
+		mes "This item cannot be refined!...";
+		close;
+	}
+	if (getequipisidentify('@part) == 0) {
+		mes "[Mr. Long]";
+		mes "This is has not been identified. So, it can't be refined...";
+		close;
+	}
+	if (getequiprefinerycnt('@part) >= 9) {
+		mes "[Mr. Long]";
+		mes "This item cannot be refined because it has already reached its maximum level...";
+		close;
+	}
+	if (getequipweaponlv('@part) == 0) {
+		mes "[Mr. Long]";
+		mes "Refining the item that you have selected requires ^ff9999Enriched Elunium^000000 and 2000 zeny processing fee.";
+		mes "Do you wish to continue?";
+		next;
+		switch(select("Yes.","No.")) {
+		case 1:
+			if (getequippercentrefinery('@part) < 100) {
+				mes "[Mr. Long]";
+				mes "Woah!!";
+				mes "It looks like this equipment has gone through many refining... ";
+				mes "It'll be broken if you continue to refine it!";
+				next;
+				mes "You won't be able to use it anymore if it's broken!!";
+				mes "The attribute and card of the equipment ^ff0000will disappear as well!!^000000 ";
+				mes "^ff0000 This means that the equipment will disappear!!^000000 ";
+				mes "Do you wish to continue?";
+				next;
+				switch(select("Yes.","No.")) {
+				case 1:
+					break;
+				case 2:
+					mes "[Mr. Long]";
+					mes "Good.";
+					mes "I won't be happy if the equipment is broken due to the large amount of refining.";
+					close;
+				}
+			}
+			if ((countitem(7619) > 0) && (Zeny > 1999)) {
+				delitem 7619,1;
+				set Zeny,Zeny - 2000;
+			} else {
+				mes "[Mr. Long]";
+				mes "Are these the item that you have?";
+				mes "Unfortunately, you don't have enough materials for the refining process. Sorry I couldn't help you this time!";
+				close;
+			}
+			break;
+		case 2:
+			mes "[Mr. Long]";
+			mes "Well, since you don't want it...";
+			close;
+		}
+	} else if (getequipweaponlv('@part) == 1) {
+		mes "[Mr. Long]";
+		mes "So, you're trying to refine a level 1 weapon!";
+		mes "That will cost you ^ff9999Enriched Oridecon^000000 and 50 zeny.";
+		mes "Do you wish to continue?";
+		next;
+		switch(select("Yes.","No.")) {
+		case 1:
+			if (getequippercentrefinery('@part) < 100) {
+				mes "[Mr. Long]";
+				mes "Woah!!";
+				mes "It looks like this weapon has gone through many refining... ";
+				mes "It'll be broken if you continue to refine it!";
+				next;
+				mes "You won't be able to use it anymore if it's broken!!";
+				mes "The attribute and card of the equipment ^ff0000will disappear as well!!^000000 ";
+				mes "^ff0000 This means that the equipment will disappear!!^000000 ";
+				mes "Do you wish to continue?";
+				next;
+				switch(select("Yes.","No.")) {
+				case 1:
+					break;
+				case 2:
+					mes "[Mr. Long]";
+					mes "Good.";
+					mes "I won't be happy if the equipment is broken due to the large amount of refining.";
+					close;
+				}
+			}
+			if ((countitem(7620) > 0) && (Zeny > 49)) {
+				delitem 7620,1;
+				set Zeny,Zeny - 50;
+			} else {
+				mes "[Mr. Long]";
+				mes "Are these the item that you have?";
+				mes "Unfortunately, you don't have enough materials for the refining process. Sorry I couldn't help you this time!";
+				close;
+			}
+			break;
+		case 2:
+			mes "[Mr. Long]";
+			mes "Well, since you don't want it...";
+			close;
+		}
+	} else if (getequipweaponlv('@part) == 2) {
+		mes "[Mr. Long]";
+		mes "So, you're going to refine a level 2 weapon!";
+		mes "That will need ^ff9999Enriched Oridecon^000000 and 200 zeny.";
+		mes "Do you wish to continue?";
+		next;
+		switch(select("Yes.","No.")) {
+		case 1:
+			if (getequippercentrefinery('@part) < 100) {
+				mes "[Mr. Long]";
+				mes "Woah!!";
+				mes "It looks like this weapon has gone through many refining... ";
+				mes "It'll be broken if you continue to refine it!";
+				next;
+				mes "You won't be able to use it anymore if it's broken!!";
+				mes "The attribute and card of the equipment ^ff0000will disappear as well!!^000000 ";
+				mes "^ff0000 This means that the equipment will disappear!!^000000 ";
+				mes "Do you wish to continue?";
+				next;
+				switch(select("Yes.","No.")) {
+				case 1:
+					break;
+				case 2:
+					mes "[Mr. Long]";
+					mes "Good.";
+					mes "I won't be happy if the equipment is broken due to the large amount of refining.";
+					close;
+				}
+			}
+			if ((countitem(7620) > 0) && (Zeny > 199)) {
+				delitem 7620,1;
+				set Zeny,Zeny - 200;
+			} else {
+				mes "[Mr. Long]";
+				mes "Are these the item that you have?";
+				mes "Unfortunately, you don't have enough materials for the refining process. Sorry I couldn't help you this time!";
+				close;
+			}
+			break;
+		case 2:
+			mes "[Mr. Long]";
+			mes "Well, since you don't want it...";
+			close;
+		}
+	} else if (getequipweaponlv('@part) == 3) {
+		mes "[Mr. Long]";
+		mes "So, you're going to refine a level 3 weapon!";
+		mes "That will require ^ff9999Enriched Oridecon^000000 and 5000 zeny.";
+		mes "Do you wish to continue?";
+		next;
+		switch(select("Yes.","No.")) {
+		case 1:
+			if (getequippercentrefinery('@part) < 100) {
+				mes "[Mr. Long]";
+				mes "Woah!!";
+				mes "It looks like this weapon has gone through many refining... ";
+				mes "It'll be broken if you continue to refine it!";
+				next;
+				mes "You won't be able to use it anymore if it's broken!!";
+				mes "The attribute and card of the equipment ^ff0000will disappear as well!!^000000 ";
+				mes "^ff0000 This means that the equipment will disappear!!^000000 ";
+				mes "Do you wish to continue?";
+				next;
+				switch(select("Yes.","No.")) {
+				case 1:
+					break;
+				case 2:
+					mes "[Mr. Long]";
+					mes "Good.";
+					mes "I won't be happy if the equipment is broken due to the large amount of refining.";
+					close;
+				}
+			}
+			if ((countitem(7620) > 0) && (Zeny > 4999)) {
+				delitem 7620,1;
+				set Zeny,Zeny - 5000;
+			} else {
+				mes "[Mr. Long]";
+				mes "Are these the item that you have?";
+				mes "Unfortunately, you don't have enough materials for the refining process. Sorry I couldn't help you this time!";
+				close;
+			}
+			break;
+		case 2:
+			mes "[Mr. Long]";
+			mes "Well, since you don't want it...";
+			close;
+		}
+	} else if (getequipweaponlv('@part) == 4) {
+		mes "[Mr. Long]";
+		mes "So, you're going to refine a level 4 weapon!";
+		mes "That will require ^ff9999Enriched Oridecon^000000 and 20000 zeny.";
+		mes "Do you wish to continue?";
+		next;
+		switch(select("Yes.","No.")) {
+		case 1:
+			if (getequippercentrefinery('@part) < 100) {
+				mes "[Mr. Long]";
+				mes "Woah!!";
+				mes "It looks like this weapon has gone through many refining... ";
+				mes "It'll be broken if you continue to refine it!";
+				next;
+				mes "You won't be able to use it anymore if it's broken!!";
+				mes "The attribute and card of the equipment ^ff0000will disappear as well!!^000000 ";
+				mes "^ff0000 This means that the equipment will disappear!!^000000 ";
+				mes "Do you wish to continue?";
+				next;
+				switch(select("Yes.","No.")) {
+				case 1:
+					break;
+				case 2:
+					mes "[Mr. Long]";
+					mes "Good.";
+					mes "I won't be happy if the equipment is broken due to the large amount of refining.";
+					close;
+				}
+			}
+			if ((countitem(7620) > 0) && (Zeny > 19999)) {
+				delitem 7620,1;
+				set Zeny,Zeny - 20000;
+			} else {
+				mes "[Mr. Long]";
+				mes "Are these the item that you have?";
+				mes "Unfortunately, you don't have enough materials for the refining process. Sorry I couldn't help you this time!";
+				close;
+			}
+			break;
+		case 2:
+			mes "[Mr. Long]";
+			mes "Well, since you don't want it...";
+			close;
+		}
+	}
+	// No support/information for this command in Aurora: [Tsuyuki]
+	// if (GetAdvEquipIsSuccessRefinery('@part) == 1) {
+	// Using the following line as its replacement for now: [Tsuyuki]
+	if (getequippercentrefinery('@part) > rand(100)) {
+		mes "[Mr. Long]";
+		mes "Clink! Clank! Clunk!";
+		successrefitem '@part;
+		next;
+		emotion ET_BEST,"Mr. Long";
+		mes "[Mr. Long]";
+		mes "Here you are! It's done.";
+		mes "It's been a while since I made such fine weapon. You must be happy because it has become stronger!";
+		close;
+	} else {
+		mes "[Mr. Long]";
+		mes "Clink! Clank! Clunk!";
+		failedrefitem '@part;
+		next;
+		set '@emo,rand(1,5);
+		if ('@emo == 1) {
+			emotion ET_MONEY,"Mr. Long";
+		} else {
+			emotion ET_HUK,"Mr. Long";
+		}
+		mes "[Mr. Long]";
+		mes "Cough!!!!";
+		next;
+		mes "[Mr. Long]";
+		mes "Cough...Cough..";
+		mes "What a shame...";
+		mes "The weapon was broken during the process.";
+		mes "I had told you earlier this might happen!";
+		close;
+	}
+}

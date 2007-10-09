@@ -1,0 +1,3132 @@
+﻿免费版最高支持140人在线。
+如果想获得支持更高人数的VIP版本（功能不断扩展中），请加QQ:5454062联系我（验证信息：申请VIP）
+关于VIP版本的购买，必须通过QQ:5454062进行购买。
+本人只对直接与本人联系购买服务端的VIP版提供技术支持，对于来路不明的VIP版，出了任何问题本人一概不负责。
+注意：要运行Jathena++及其插件必须安装.Net框架v2.0（Microsoft .Net Framework v2.0）
+
+以下为历史更新记录
+
+======================================================================
+【更新说明】Jathena++ v0.85 MySQL/MSSQL/Access	(2007.10.6)
+======================================================================
+·程序更新
+	☆增加几张遗漏了的地图
+	☆加入OnPCSave、OnPCAfterWeaponAtk、OnPCAfterMagicAtk、OnPCAfterMiscAtk事件
+		OnPCSave：自动储存人物数据时执行的事件
+		OnPCAfterWeaponAtk：人物进行物理攻击后执行的事件
+		OnPCAfterMagicAtk：人物进行魔法攻击后执行的事件
+		OnPCAfterMiscAtk：人物进行其他攻击后执行的事件
+	☆更完善的防崩溃系统
+	☆以下状态/技能名称变更：
+		SC_Stan → SC_Stun
+		Eff_Stan → Eff_Stun
+		NPC_EXPLOSIONSPIRITS → NPC_POWERUP
+		NPC_INCREASEFLEE → NPC_AGIUP
+		NPC_ELEMENTUNDEAD → NPC_CHANGEUNDEAD
+		NPC_DARKSOULSTRIKE → NPC_DARKSTRIKE
+		NPC_RUNAWAY → NPC_RUN
+		NPC_DARKGRANDCROSS → NPC_GRANDDARKNESS
+		NPC_DARKJUPITEL → NPC_DARKTHUNDER
+		SC_HOLDWEB → SC_STOP
+	☆getexp的格式从：getexp BaseExp,JobExp,EquipExp[,<char_id>];
+		    改为：getexp BaseExp,JobExp[,EquipExp[,<char_id>]];
+	☆改进type2中物品插卡问题。例如某卡片不能丢弃，那么插了那张卡片的物品不能丢弃。
+	  涉及的type2有：1、2、4、8、16、32、64、128、524288、1048576、2097152。
+	☆支持最新登陆器邀请组队
+	☆修正es_master_get_homun_equip_exp开关设置为no时的BUG
+	☆把遗漏的save文件夹加上
+·conf更新
+	☆更新atcommand_athena.conf
+	☆更新battle_athena.conf
+	☆更新help.txt
+	☆更新map_athena.conf
+·DB更新
+	☆更新const.txt
+	☆更新item_db.txt
+	☆更新JApp_endurance.txt
+	☆更新JApp_endurance_exp.txt
+	☆更新JApp_item_extension.txt
+	☆增加JApp_mob_extension.txt（VIP版专用）
+	☆更新packet_db(v8).txt
+	☆更新scdata_db.txt
+	☆更新skill_db.txt
+	☆更新skill_db2.txt
+	☆更新skill_require_db.txt
+	☆更新skill_require_db2.txt
+	☆更新skill_unit_db.txt
+	☆更新map.info（645张地图）
+·文档更新
+	☆更新「GM指令列表.txt」
+	☆更新「JA++脚本指令说明文档.chm」
+
+0.85fix更新：
+	☆修正无法交易物品的BUG
+
+======================================================================
+【更新说明】Jathena++ v0.84 MySQL/MSSQL/Access	(2007.9.12)
+======================================================================
+·程序更新
+	☆修正DB编辑器和脚本编辑器无法复制文本和使用快捷键等问题。
+	☆更新Athena Studio.Net主程序，修正插件无法复制文本及文件夹对话框不正常显示等问题。
+	☆修正Athena Starter.Net一处没有繁化的地方。
+	☆修正@makehomun无效的问题
+	☆修正rand2函数
+	☆加入string_format脚本函数。作用：格式化字符串。格式：
+		string_format(<format>,<arg0>[,<arg1>[,<arg2>......]])
+		<format>		格式化字符串
+		<arg0>,<arg1>,<arg2>...	参数
+		格式跟.NET中的String.Format一样。更详细的说明请参考脚本指令文档和论坛发布区的帖子。
+	☆加入flagemblem_code命令。作用：设置某公会的图标为某验证码。格式：
+		flagemblem_code <guild_id>,<code>;
+		<guild_id>	公会ID
+		<code>		6位字符串
+	☆加入kick2和kick2id命令。作用：踢出指定人物，回到登录界面。格式：
+		kick2 <char_name>;
+		kick2id <char_id>;
+		<char_name>	人物名字
+		<char_id>	人物ID
+	☆开放#vl和#tl玩家指令
+	☆删除脚本指令setcheckstate、setcheckstateid、setcode、checkcode、checkcodeid、hex、rgb
+	☆删除GM指令@setcode、@setcodeid、@setcodeall
+	☆删除battleconf的fuck_OpenKore、fuck_OpenKore_code_length、no_code_level、dec_zeny_when_code_error、dec_zenyrate_when_code_error选项
+	☆更改mapflag：noskill/noitem/noequip/nocard的限制个数，从原来的100个变为无限。
+·conf更新
+	☆更新atcommand_athena.conf
+	☆更新battle_athena.conf
+	☆更新char_command.conf
+	☆更新help.txt
+	☆更新help_charcommand.txt
+	☆更新login_athena.conf
+	☆更新map_athena.conf
+·DB更新
+	☆更新map.info
+	☆更新packet_db(v8).txt
+·文档更新
+	☆更新「GM指令列表.txt」
+	☆更新「JA++脚本指令说明文档.chm」
+·脚本更新
+	☆增加「npcdata\我的NPC\反外挂.txt」
+	☆更新「npcdata\npc\npc_laba.txt」
+
+======================================================================
+【更新说明】Jathena++ v0.83 MySQL/MSSQL/Access	(2007.8.15)
+======================================================================
+经过连续N天的努力，平均每天写1k多行的代码（包括Athena Studio.Net插件），真的是非常好玩，所以各位有兴
+趣的同学也可以玩玩。本来也打算完全使用.NET重写Athena中的所有代码的，但是因为太过好玩了，我不想玩了，
+所以留给有兴趣的同学们玩。废话了这么多，接下来要感谢玲玲小天使及我们的版主realanan帮助我解决一些技术
+难点，以及以前DVBBS的开发人员迷城浪子解答的部分Access问题，还有感谢微软的MSDN文档，感谢google，感谢各
+位支持我的同学们、小白鼠们……有了以上的同学们支持，才有现在这么完善的MySQL/MSSQL/Access三合一版。
+Jathena++ 0.83开始，已经改为.NET版本，使用C++/CLR编写，在MSSQL/Access版中使用ADO.NET处理数据库，更高
+效！数据更安全！！以前虽然尽量让JA变得更稳定，但是同样的JA代码，Linux下比Win下相对稳定点，原因是由于
+MySQL在Linux下比Win下稳定，Win下的MySQL太容易丢数据了。而现在Win版下使用MSSQL，数据库方面比MySQL稳定
+N多，我看现在有了MSSQL版的话，Windows版才是王道了。
+
+·程序更新
+	☆数据库同时支持MySQL/MSSQL/Access。（为照顾新手，默认为Access版，无须更改任何配置即可运行服务端。对于
+	  会架设数据库的同学们请自行修改char_athena.conf、login_athena.conf、map_athena.conf中的database_save_type
+	  开关，并设置相关的数据库参数。）
+	☆服务端又单线程变为多线程，并且改为.NET架构，用.NET重写部分代码。
+	☆修正JA几个可以说严重也可以无视的BUG。
+	☆修正@petfriendly、@pethungry指令输入量过大时导致宠物消失的BUG。
+	☆全面修正邮件系统（包括JA本身的一些BUG），并且把邮件系统改为数据库储存。
+	☆加入type2：2097152	不能邮寄（不能丢弃的物品也不能邮寄）
+	☆加入GM限制标识：64--不能邮寄物品，但可以寄信；128--不能邮寄金钱，但可以寄信
+	☆修正武器修理技能会断线的BUG
+	☆加入脚本指令：getcartlist、get_maxrefine、get_db_savetype、charcommand。格式如下：
+
+	getcartlist[<char_id>];			----	获取玩家手推车物品的详细资料
+							<char_id>	人物的char_id（数值类型，省略时表示自己） 
+						把玩家手推车物品的详细资料记录在以下变量数组中：
+						    @cartlist_id : 物品ID
+						    @cartlist_amount : 物品数量
+						    @cartlist_equip : 如果装备了物品，则记录装备位置
+						    @cartlist_refine : 物品精炼度
+						    @cartlist_identify : 物品鉴定情况
+						    @cartlist_attribute : 物品损坏情况
+						    @cartlist_card1 : 物品插入的卡片(第1张)
+						    @cartlist_card2 : 物品插入的卡片(第2张)
+						    @cartlist_card3 : 物品插入的卡片(第3张)
+						    @cartlist_card4 : 物品插入的卡片(第4张)
+						    @cartlist_count : 物品种类
+
+	get_maxrefine()				----	获取battle_athena.conf中的max_refine选项的设定值
+
+	get_db_savetype()			----	取得数据库储存方式
+						返回1：MySQL储存
+						返回2：MSSQL储存
+						返回3：Access储存
+
+	charcommand <command>[,<char_id>];	----	执行玩家指令
+							<command>	玩家指令（字符串类型） 
+							<char_id>	人物的char_id（数值类型，省略时表示自己） 
+
+	☆修改mapflag：show_mob_hp的格式。详细格式请查阅脚本指令文档。
+	☆更改脚本加密算法，加密脚本请重新用Athena Script Encryptor.Net插件重新加密。
+	☆修正物品保护时间无效的BUG
+	☆更新Athena Studio.Net：
+		①更新Athena Studio.Net的所有插件
+		②只要把软件的目录复制到AthenaStudio.NET\non-Plug-in下，并且在软件的跟目录中增加
+		  AthenStudio.Net.xml文件（格式可参考Athena DB Editor.Net跟Athena Script Editor.Net中的内容），
+		  即可把非Athena Studio.Net的插件添加到“非插件”的菜单中。
+		③增加Athena Database Converter.Net插件，可用于从旧版转换到新版Jathena++，也可用于从*Athena转换到
+		  Jathena++，也可以在Jathena++的MySQL/MSSQL/Access版本中互相转换。
+		④脚本加密插件改名为：Athena Script Encryptor.Net，并且更改算法，加密后的脚本只能用于0.83或以上。
+·conf更新
+	☆更新battle_athena.conf：
+		取消player_damage_delay选项
+		修改player_damage_delay_rate选项的默认值跟说明
+		取消monster_damage_delay选项
+		修改monster_damage_delay_rate选项的默认值跟说明
+		修改pc_hit_stop_type选项的说明
+		修改show_mob_hp选项的说明跟默认值
+		加入allow_guild_invite_in_agitstart、allow_guild_leave_in_agitstart选项
+	☆更新char_athena.conf：
+		加入database_save_type选项
+		加入MSSQL_char_server_ip选项
+		加入MSSQL_char_server_port选项
+		加入MSSQL_Network_Library选项
+		加入MSSQL_char_server_id选项
+		加入MSSQL_char_server_pw选项
+		加入MSSQL_char_server_db选项
+		加入ACCESS_char_db_path选项
+		加入ACCESS_char_server_pw选项
+	☆更新GM_account.txt：
+		更新说明
+	☆更新login_athena.conf：
+		加入database_save_type选项
+		加入MSSQL_login_server_ip选项
+		加入MSSQL_login_server_port选项
+		加入MSSQL_Network_Library选项
+		加入MSSQL_login_server_id选项
+		加入MSSQL_login_server_pw选项
+		加入MSSQL_login_server_db选项
+		加入ACCESS_login_db_path选项
+		加入ACCESS_login_server_pw选项
+	☆更新map_athena.conf：
+		加入database_save_type选项
+		加入MSSQL_map_server_ip选项
+		加入MSSQL_map_server_port选项
+		加入MSSQL_Network_Library选项
+		加入MSSQL_map_server_id选项
+		加入MSSQL_map_server_pw选项
+		加入MSSQL_map_server_db选项
+		加入ACCESS_map_db_path选项
+		加入ACCESS_map_server_pw选项
+		增加几张地图
+	☆更新mapflag.txt
+	☆更新msg_JApp.conf
+·DB更新
+	☆更新item_bluebox.txt
+	☆更新item_cardalbum.txt
+	☆更新item_db.txt
+	☆更新item_food.txt
+	☆更新item_jewel_box.txt
+	☆更新item_mask.txt
+	☆更新item_petbox.txt
+	☆更新item_violetbox.txt
+	☆更新JApp_item_extension.txt
+	☆更新packet_db(v8).txt
+	☆更新skill_cast_db.txt
+	☆更新skill_db.txt
+	☆更新skill_db2.txt
+	☆更新skill_require_db2.txt
+	☆更新skill_unit_db.txt
+	☆更新map.info
+·文档更新
+	☆更新：JA++脚本指令说明文档.chm
+·NPC更新
+	☆更新npcdata\monster\dungeon\npc_monster_icedun.txt
+	☆更新npcdata\monster\dungeon\npc_monster_rasan.txt
+	☆更新npcdata\monster\field\npc_monster_rafild.txt
+	☆更新npcdata\warp\npc_warp_dun.txt
+	☆更新npcdata\warp\npc_warp_town.txt
+	☆增加npcdata\我的NPC\耐久度修补员.txt
+·SQL脚本/数据库更新
+	☆main.sql改名为Main_MySQL.sql（用于创建MySQL数据库）
+	☆增加Main_MSSQL.sql（用于创建MSSQL数据库）
+	☆MySQL历史升级SQL脚本都扔到sql-files\Upgrade\MySQL目录中，仅供学习
+	☆从其他Athena转换到Jathena++的SQL脚本（旧版）都扔到sql-files\Convert\MySQL目录中，仅供学习
+	☆增加ragnarok.mdb。用于Access版本。
+	☆增加ragnarok.rar。里面为空的ragnarok.mdb数据库（包括一个s1帐号、秘密基地数据，并且创建的帐号ID从2000001
+	  开始，人物ID从15000开始。不要对空数据库进行压缩/修复操作，否则人物ID会从1开始创建，会造成服务端不正常。
+	  若出现这类问题，请使用ragnarok.rar解压出原始数据库使用。）
+	☆更新libmysql.dll（版本：MySQL 5.0.45。注意，以后无特别说明，更新libmysql.dll并写明版本号，表示Jathena++
+	  已经使用指定版本的MySQL编译，建议用户更新数据库到指定版本。）
+
+0.83fix更新：
+	☆修正getsqlinfo指令
+	☆设置默认支持从客户端进行_M/_F注册
+	☆设置邮件系统默认开启
+
+0.83fix2更新：
+	☆char-server：修正公会仓库无法显示超过300个物品
+
+0.83fix3更新：
+	☆login-server/char-server/map-server：
+		由于JA++的物品属性太多，数据太长，公会仓库如果是1000会出现问题，所以恢复回300。
+		恢复回300后不会丢数据，只是读取数量最大是300个。只要取出所有物品，下次重开服务器时会继续读取余下的。
+
+0.83fix4更新：
+	☆让程序支持2G内存以上。
+	  有白鼠同学遇到内存一直增加不减少的情况，上升速度很快，这是由于程序或系统不支持大于2G物理内存导致。
+	  （ps.一般几百人在线，内存也会上升，也会有较慢速度的释放，这时候map一般占200M左右内存。这是.NET本身的内存
+	  自动管理功能，属于正常现象，内存略有上升，换来的是CPU占用率下降跟访问速度的提升。）
+	  操作系统要让程序支持更大的寻址空间要在boot.ini中加入/3GB的选项，例如：
+		[boot loader]
+		timeout=30
+		default=multi(0)disk(0)rdisk(0)partition(2)\WINNT
+		[operating systems]
+		multi(0)disk(0)rdisk(0)partition(2)\WINNT="……" /3GB
+	  64位系统本身支持这功能，不需要加这类参数。
+	  32位系统如果要应用程序支持4G以上的内存，还可以用AWE。不过这方面我不太清楚……
+	☆修正MSSQL2000执行Main_MSSQL.sql出现错误的问题。
+
+0.83fix5更新：
+	☆修正MSSQL/Access会出现储存状态失败的BUG
+
+0.83fix6更新：
+	☆更新Athena Studio.Net及所有插件
+	☆更改脚本加密算法，请发布了加密脚本的用户重新使用新版本的AthenaScriptEncryptor.Net进行加密！！
+	☆增加rand2函数，返回从min到max的随机数（max最大可达2147483647），格式：rand2(min, max)
+	☆修正技能“贪婪的物欲”可以强行捡起有保护时间的物品的BUG
+	☆改进charcommand脚本指令，无视conf\char_command.conf中的设定即可使用
+	☆增加脚本指令mailbox，用于打开邮箱，格式：mailbox[<char_id>];
+	☆更新“JA++脚本指令说明文档.chm”
+
+0.83fix6第二次更新：
+	☆更新Access版的ragnarok.mdb数据库和ragnarok.rar，修正一个字段由于疏忽的BUG。若已经有数据的用户，
+	  可以用以下方法更新：
+		1、用Microsoft Offce Access打开ragnarok.mdb数据库
+		2、右键点击login表，点击“设计视图”菜单
+		3、找到ask字段，修改其属性。删除“有效性规则”的内容，然后修改“默认值”的内容为“""”
+	  因为在制作新版本注册页的时候发现无法在ask字段中插入数据，发现是把“""”的值设错了，对各位
+	  Access用户造成的不便表示抱歉。
+
+0.83fix7更新：
+	☆更新以下DB的某些名称：
+		item_db.txt
+		skill_cast_db.txt
+		skill_db.txt
+		skill_db2.txt
+		skill_require_db.txt
+		skill_require_db2.txt
+		skill_tree.txt
+	☆更新3个exe程序：修正SQL2000无法使用某个SQL2005语法的问题
+
+0.83fix8更新：
+	☆实装热键保存功能
+	☆修正getsqlinfo、readsql脚本指令
+	☆更新ragnarok.mdb、ragnarok.rar，增加hotkey表。（手动更新的话，可以把ragnarok.mdb的hotkey表复制结构跟数据到原有表。）
+	☆更新Main_MSSQL.sql、Main_MySQL.sql。（手动升级数据库结构的用户请自行找到创建hotkey表的代码执行。）
+	☆更新item_db.txt、packet_db(v8).txt、produce_db.txt、skill_require_db2.txt
+	☆更新char-server.exe、login-server.exe、map-server.exe
+	☆更新插件：Athena Database Converter.Net
+
+0.83fix9更新：
+	☆更新3个主程序：修正Access版无法保存人工生命体数据的BUG
+
+0.83fix10更新：
+	☆增加mapflag：autoloot。设定本地图内是否自动捡物。
+	☆修正JA定位陷阱无效的BUG。
+	☆更新const.txt
+	☆修改socket.conf的send_limit_buffer_size开关的预设值为524288。因为某些用户出现断线而不会增大这个数值。
+
+======================================================================
+【更新说明】Jathena++ v0.82 win-MySQL	(2007.6.29)
+======================================================================
+·名字更新
+	☆服务端名字正式统一为Jathena++
+	☆文件名更新
+		conf\msg_MFJA.conf		====>	conf\msg_JApp.conf
+		db\MFJA_item_extension.txt	====>	db\JApp_item_extension.txt
+		db\MFJA_endurance.txt		====>	db\JApp_endurance.txt
+		db\MFJA_endurance_exp.txt	====>	db\JApp_endurance_exp.txt
+		db\MFJA_equip_exp.txt		====>	db\JApp_equip_exp.txt
+		db\char_command.txt		====>	conf\char_command.conf
+	☆GM指令名字更新
+		@reloadmfja			====>	@reloadjapp
+	☆battle_athena.conf开关名字更新
+		MFJA_prevent_hacker_system	====>	JApp_prevent_hacker_system
+	☆socket.conf开关名字更新
+		mfja_min_buffer_size		====>	japp_min_buffer_size
+	☆加密脚本更新
+		所有加密脚本的第一行的“mfja_script”必须改为“ja++_script”
+·程序更新
+	☆更改Athena Studio.Net极其插件的图标，更新的文件如下（也可在线更新软件）：
+		AthenaStudio.NET\AthenaStudio.NET.dll
+		AthenaStudio.NET\Config\Languages\English(US).xml
+		AthenaStudio.NET\Config\Languages\Simplified_Chinese.xml
+		AthenaStudio.NET\Config\Languages\Traditional_Chinese.xml
+		AthenaStudio.NET\Plug-in\AthenaCodePage.NET.dll
+		AthenaStudio.NET\Plug-in\AthenaDatabaseCleaner.NET.dll
+		AthenaStudio.NET\Plug-in\AthenaDBJobCodeCalculator.NET.dll
+		AthenaStudio.NET\Plug-in\AthenaFixName.Net.dll
+		AthenaStudio.NET\Plug-in\AthenaScriptEncoder.Net.dll
+		AthenaStudio.NET\Plug-in\AthenaStarter.NET.dll
+		AthenaStudio.NET\Plug-in\AthenaTimeStampMaker.NET.dll
+		AthenaStudio.NET\Plug-in\AthenaDatabaseCleaner.NET\Languages\English(US).xml
+		AthenaStudio.NET\Plug-in\AthenaDatabaseCleaner.NET\Languages\Simplified_Chinese.xml
+		AthenaStudio.NET\Plug-in\AthenaDatabaseCleaner.NET\Languages\Traditional_Chinese.xml
+		AthenaStudio.NET\Plug-in\AthenaFixName.NET\Languages\English(US).xml
+		AthenaStudio.NET\Plug-in\AthenaFixName.NET\Languages\Simplified_Chinese.xml
+		AthenaStudio.NET\Plug-in\AthenaFixName.NET\Languages\Traditional_Chinese.xml
+		AthenaStudio.NET\Plug-in\AthenaStarter.NET\config.xml
+		AthenaStudio.NET\Plug-in\AthenaStarter.NET\Languages\English(US).xml
+		AthenaStudio.NET\Plug-in\AthenaStarter.NET\Languages\Simplified_Chinese.xml
+		AthenaStudio.NET\Plug-in\AthenaStarter.NET\Languages\Traditional_Chinese.xml
+	☆加入4个启动时需要的文件：Microsoft.VC80.CRT.manifest、msvcm80.dll、msvcp80.dll、msvcr80.dll
+		有了这4个文件，以后就算不安装.Net框架2.0也不会出现“由于应用程序的配置不正确，应用程序未能启动，重新安装应用程序可能会纠正这个问题”的字样了。
+		不过如果要运行Athena Studio.Net极其插件、其他辅助工具时，仍然需要安装.Net框架2.0。
+	☆更新libmysql.dll
+	☆修正一个可能造成不稳定的问题
+	☆修正一个复制物品的问题
+	☆修正同时装备拉链熊+德古拉等卡片组合时，使用阿修罗霸凰拳会出现100%吸收SP的BUG，相关DB也恢复为原样
+	☆增加以下Bonus效果（bonus bFixDamage,n;在旧版中已存在）：
+		bonus bFixDamage,n;		物理攻击伤害固定为n
+		bonus bFixMaxHP,n;		最大HP固定为n
+		bonus bFixMaxSP,n;		最大SP固定为n
+		bonus bFixBaseAtk,n;		攻击力固定为n
+		bonus bFixMatk,n;		魔法攻击力固定为n
+		bonus bFixDef,n;		防御力固定为n(装备)
+		bonus bFixMdef,n;		魔法防御力固定为n(装备)
+		bonus bFixHit,n;		命中率固定为n
+		bonus bFixCritical,n;		爆击率固定为n
+		bonus bFixFlee,n;		回避率固定为n
+		bonus bFixAspd,n;		攻击速度固定为n
+		bonus bFixSpeed,n;		移动速度固定为n
+		bonus2 bAddFixCastRate,n,x;	技能n的固定咏唱时间减少x%
+		bonus2 bAddSkillHealRate,n,x;	技能n的回复量增加x%
+	☆增加mapflag--nocommand，设定指定地图无法使用GM指令，格式如下：
+		<gatname>	mapflag	nocommand	dummy
+·conf更新（在名字更新中更新的内容不再重复）
+	☆更新atcommand_athena.conf：
+		更改@reloadmfja为@reloadjapp
+	☆更新battle_athena.conf：
+		增加mvpmob_item_drop_rate开关
+		增加mvpmob_card_drop_rate开关
+		增加mob_hitstop_rate开关
+		增加mob_delay_rate开关
+		增加mob_delay_rate_middle_boss开关
+		增加mob_delay_rate_mvp_boss开关
+	☆更新help.txt
+	☆更新map_athena.conf
+	☆更新mapflag.txt
+	☆增加mapflag_arena.txt
+	☆增加mapflag_gvg.txt
+	☆增加mapflag_pvp.txt
+	☆增加mapflag_turbo.txt
+	☆更新motd.txt
+	☆更新msg_athena.conf
+	☆更新socket.conf
+·DB更新（在名字更新中更新的内容不再重复）
+	☆更新const.txt
+	☆更新item_db.txt
+	☆更新装备升级系统DB（JApp_endurance.txt、JApp_endurance_exp.txt、JApp_equip_exp.txt）
+	☆更新mob_skill_db.txt
+	☆更新skill_cast_db.txt
+	☆更新skill_db.txt
+	☆更新skill_require_db.txt
+	☆更新addon\homun_db_add.txt
+	☆更新addon\item_db_add.txt
+	☆更新addon\mob_db_add.txt
+	☆更新addon\mob_skill_db_add.txt
+	☆更新addon\pet_db_add.txt
+	☆更新addon\produce_db_add.txt
+	☆更新addon\skill_cast_db_add.txt
+	☆更新addon\skill_db_add.txt
+	☆更新addon\skill_require_db_add.txt
+·文档更新
+	☆更新“GM指令列表.txt”
+	☆更新“JA++脚本指令说明文档.chm”
+·NPC更新
+	☆更新npcdata\JA\town\npc_town_lighthalzen.txt
+	☆删除npcdata\monster\npc_monster.txt
+	☆删除npcdata\monster\npc_monster_future.txt
+	☆加入npcdata\monster\dungeon\npc_monster_abyss.txt
+	☆加入npcdata\monster\dungeon\npc_monster_aldedun.txt
+	☆加入npcdata\monster\dungeon\npc_monster_amadun.txt
+	☆加入npcdata\monster\dungeon\npc_monster_anthell.txt
+	☆加入npcdata\monster\dungeon\npc_monster_ayodun.txt
+	☆加入npcdata\monster\dungeon\npc_monster_beachdun.txt
+	☆加入npcdata\monster\dungeon\npc_monster_ctower.txt
+	☆加入npcdata\monster\dungeon\npc_monster_eindun.txt
+	☆加入npcdata\monster\dungeon\npc_monster_gefdun.txt
+	☆加入npcdata\monster\dungeon\npc_monster_gefenia.txt
+	☆加入npcdata\monster\dungeon\npc_monster_glast.txt
+	☆加入npcdata\monster\dungeon\npc_monster_glddun.txt
+	☆加入npcdata\monster\dungeon\npc_monster_gondun.txt
+	☆加入npcdata\monster\dungeon\npc_monster_icedun.txt
+	☆加入npcdata\monster\dungeon\npc_monster_insphinx.txt
+	☆加入npcdata\monster\dungeon\npc_monster_izdun.txt
+	☆加入npcdata\monster\dungeon\npc_monster_juperos.txt
+	☆加入npcdata\monster\dungeon\npc_monster_khdun.txt
+	☆加入npcdata\monster\dungeon\npc_monster_lhzdun.txt
+	☆加入npcdata\monster\dungeon\npc_monster_loudun.txt
+	☆加入npcdata\monster\dungeon\npc_monster_magdun.txt
+	☆加入npcdata\monster\dungeon\npc_monster_mjodun.txt
+	☆加入npcdata\monster\dungeon\npc_monster_mocpryd.txt
+	☆加入npcdata\monster\dungeon\npc_monster_odintem.txt
+	☆加入npcdata\monster\dungeon\npc_monster_orcsdun.txt
+	☆加入npcdata\monster\dungeon\npc_monster_paydun.txt
+	☆加入npcdata\monster\dungeon\npc_monster_prtmaze.txt
+	☆加入npcdata\monster\dungeon\npc_monster_prtsewb.txt
+	☆加入npcdata\monster\dungeon\npc_monster_rasan.txt
+	☆加入npcdata\monster\dungeon\npc_monster_thanatos.txt
+	☆加入npcdata\monster\dungeon\npc_monster_treasure.txt
+	☆加入npcdata\monster\dungeon\npc_monster_turdun.txt
+	☆加入npcdata\monster\dungeon\npc_monster_umdun.txt
+	☆加入npcdata\monster\dungeon\npc_monster_xmasdun.txt
+	☆加入npcdata\monster\field\npc_monster_amafild.txt
+	☆加入npcdata\monster\field\npc_monster_ayofild.txt
+	☆加入npcdata\monster\field\npc_monster_cmdfild.txt
+	☆加入npcdata\monster\field\npc_monster_einfild.txt
+	☆加入npcdata\monster\field\npc_monster_geffild.txt
+	☆加入npcdata\monster\field\npc_monster_gonfild.txt
+	☆加入npcdata\monster\field\npc_monster_hufild.txt
+	☆加入npcdata\monster\field\npc_monster_lhzfild.txt
+	☆加入npcdata\monster\field\npc_monster_loufild.txt
+	☆加入npcdata\monster\field\npc_monster_mjolnir.txt
+	☆加入npcdata\monster\field\npc_monster_mocfild.txt
+	☆加入npcdata\monster\field\npc_monster_niffild.txt
+	☆加入npcdata\monster\field\npc_monster_payfild.txt
+	☆加入npcdata\monster\field\npc_monster_prtfild.txt
+	☆加入npcdata\monster\field\npc_monster_rafild.txt
+	☆加入npcdata\monster\field\npc_monster_umfild.txt
+	☆加入npcdata\monster\field\npc_monster_xmasfild.txt
+	☆加入npcdata\monster\field\npc_monster_yunofild.txt
+	☆加入npcdata\monster\misc\npc_monster_jawaii.txt
+	☆加入npcdata\monster\misc\npc_monster_job.txt
+	☆加入npcdata\monster\misc\npc_monster_niflheim.txt
+	☆加入npcdata\monster\misc\npc_monster_pvp.txt
+	☆加入npcdata\monster\misc\npc_monster_town.txt
+	☆加入npcdata\monster\misc\npc_monster_yggdrasil.txt
+	☆更新npcdata\warp\npc_warp_dun.txt
+	☆更新npcdata\warp\npc_warp_fild.txt
+	☆更新npcdata\warp\npc_warp_town.txt
+
+======================================================================
+【更新说明】Jathena++ v0.81 win-MySQL	(2007.5.17)
+======================================================================
+·程序更新
+	☆增加@rura指令的一种用法：@rura <地图名>,<x>,<y>
+	☆在JA++防刷包系统中再加入几个开关
+	☆更新Athena TimeStamp Maker.NET插件，修正有数据表为空时出错的BUG
+	☆更新启动器，增加几个筛选项
+·conf更新
+	☆更新battle_athena.conf
+	☆更新help.txt
+·db更新
+	☆更新mob_skill_db.txt
+	☆更新skill_cast_db.txt
+	☆更新skill_db2.txt
+	☆更新skill_db.txt
+	☆更新skill_require_db2.txt
+	☆更新skill_require_db.txt
+·doc更新
+	☆更新“GM指令列表.txt”
+
+======================================================================
+【更新说明】Jathena++ v0.80 win-MySQL	(2007.5.3)
+======================================================================
+·程序更新
+	☆改进非法数据包的处理
+	☆增加2个type2：
+		524288	掉在地上不会消失的物品
+		1048576	死亡时掉落的物品（掉在地上），类似CS中的C4
+	☆加入人物的捡物品、丢物品日志记录
+	☆支持多种版本的封包，允许各种不同封包版本的登陆器连入（不能同时支持不同封包版本的登陆器连入，修改封包版本后必须重启服务端生效）
+	☆增加2个mapflag：show_mob_hp、no_show_mob_hp。
+	  这2个mapflag优先于battle_athena.conf的show_mob_hp开关。
+	  当show_mob_hp、no_show_mob_hp同时存在时，则以show_mob_hp为优先。
+	☆增加脚本指令dropitem，用法和makeitem一样
+·conf更新
+	☆更新battle_athena.conf
+	☆更新char_athena.conf
+·DB更新
+	☆更新const.txt
+	☆更新guild_skill_tree.txt
+	☆更新item_db.txt
+	☆更新MFJA_item_extension.txt
+	☆增加packet_db(v6).txt
+	☆增加packet_db(v7).txt
+	☆更改packet_db.txt的名字为packet_db(v8).txt
+	☆更新skill_cast_db.txt
+	☆更新skill_db2.txt
+	☆更新skill_db.txt
+	☆更新skill_require_db2.txt
+	☆更新skill_require_db.txt
+	☆更新skill_tree.txt
+·文档更新
+	☆更新“JA++脚本指令说明文档.chm”
+
+======================================================================
+【更新说明】Jathena++ v0.79fix win-MySQL	(2007.4.23)
+======================================================================
+·程序更新
+	☆修正@kickall指令的问题
+	☆增加@kickall2指令：踢下所有人，但不踢自己
+·conf更新
+	☆更新atcommand_athena.conf
+	☆更新help.txt
+·文档更新
+	☆更新“GM指令列表.txt”
+
+======================================================================
+【更新说明】Jathena++ v0.79 win-MySQL	(2007.4.23)
+======================================================================
+·程序更新
+	☆增加服务端支持的MaxHP、MaxSP大小最高为1E（原来是100w）
+	☆增加player_no_element_change开关
+	☆更新Athena Studio.Net的所有插件，效率都有不同程度的提高（也可用自动更新升级插件）
+·conf更新
+	☆更新battle_athena.conf
+	☆更新help.txt
+	☆更新help_charcommand.txt
+·DB更新
+	☆更新const.txt
+	☆更新item_db2.txt
+	☆更新item_db.txt
+	☆更新MFJA_endurance.txt
+	☆更新MFJA_endurance_exp.txt
+	☆更新MFJA_equip_exp.txt
+	☆更新mob_db.txt
+	☆更新mob_skill_db.txt
+	☆更新scdata_db.txt
+	☆更新size_fix.txt
+	☆更新skill_cast_db.txt
+	☆更新skill_db.txt
+	☆更新skill_require_db.txt
+	☆更新skill_unit_db.txt
+·文档更新
+	☆更新“GM指令列表.txt”
+	☆更新“JA++脚本指令说明文档.chm”
+
+======================================================================
+【更新说明】Jathena++ v0.78fix win-MySQL	(2007.4.7)
+======================================================================
+·程序更新
+	☆map-server.exe
+
+说明：考虑到现在几乎都是512M内存以上，决定把item的最大ID值增加到65535、
+      mob的最大ID值增加到10000。因此内存占用量上升了30MB，现在map-server
+      的内存使用量大约是150MB。实用才是王道！现在韩国的物品ID已经增加到
+      1.45w了，怪物也增加到接近2k的ID，也有不少人要求增加mobdb和itemdb
+      的上限，所以……还是256MB内存的同学，地图就不要开这么多了，或者增
+      加到512M内存以上吧。
+
+======================================================================
+【更新说明】Jathena++ v0.78 win-MySQL	(2007.4.6)
+======================================================================
+·程序更新
+	☆增加2个mapflag：gvg_cannot_see_hide、gvg_cannot_see_damage。
+	  详细格式请看脚本指明说明文档。
+·config更新
+	☆更新battle_athena.conf
+	☆更新char_athena.conf
+	☆更新map_athena.conf
+	☆更新mapflag.txt
+·DB更新
+	☆更新const.txt
+	☆更新item_db.txt
+	☆更新map.info（共628张地图）
+	☆更新mob_db.txt
+	☆更新pet_db.txt
+	☆更新skill_cast_db.txt
+	☆更新skill_db.txt
+	☆更新skill_require_db.txt
+	☆更新skill_unit_db.txt
+·文档更新
+	☆更新“JA++脚本指令说明文档.chm”
+·NPC更新
+	☆更新npcdata\monster\npc_monster.txt
+	☆更新npcdata\monster\npc_monster_future.txt
+·其他更新
+	☆更新sql-files\main.sql
+
+======================================================================
+【更新说明】Jathena++ v0.77 win-MySQL	(2007.3.23)
+======================================================================
+·程序更新
+	☆修正脚本加密的一个问题
+	☆增加三个mapflag：no_create_party、no_invite_party、no_leave_party。
+	  用于设置地图无法创建队伍、邀请玩家加入队伍、离开队伍。具体格式请看脚本指令说明文档。
+	☆修正es_restore_endurance_when_lvup开关的效果
+	☆增加玩家指令#showexp，用于切换是否显示打怪经验
+·config更新
+	☆更新battle_athena.conf
+	☆更新help_charcommand.txt
+	☆更新msg_MFJA.conf
+·DB更新
+	☆更新char_command.txt
+	☆更新const.txt
+	☆更新item_db.txt
+·NPC更新
+	☆更新npcdata\monster\npc_monster.txt
+·其他更新
+	☆更新“JA++脚本指令说明文档.chm”
+
+======================================================================
+【更新说明】Jathena++ v0.76 win-MySQL	(2007.3.3)
+======================================================================
+·程序更新
+	☆增加功能：打倒玩家后，是否把被打倒的玩家的account_id保留在 PC_VICTIM_ID 里（battle_athena.conf设置开关）
+	☆增加功能：打倒怪物后，是否把被打倒的怪物的ID保留在 PC_KILLMOB_ID 里（battle_athena.conf设置开关）
+	☆增加物品的“自定义掉率”功能，可单独设置某个物品的掉率，优先于battle_athena.conf里的开关。详细说明请参考MFJA_item_extension.txt中的注释。
+·config更新
+	☆更新battle_athena.conf：
+		→修改set_pckillerid开关的注释
+		→增加set_pcvictimid开关
+		→增加set_pckillmobid开关
+·DB更新
+	☆更新item_db.txt
+	☆更新MFJA_item_extension.txt格式
+	☆更新packet_db.txt
+·NPC更新
+	☆更新npcdata\monster\npc_monster.txt
+	☆更新npcdata\quests\npc_headgear_quest.txt
+	☆更新npcdata\warp\npc_warp_town.txt
+·其他更新
+	☆增加JA++脚本指令说明文档
+
+======================================================================
+【更新说明】Jathena++ v0.75 win-MySQL	(2007.2.9)
+======================================================================
+·程序更新
+	☆增加发型、发色支持，最高支持100种
+	☆增加GM指令：@setgm，用于设置临时GM，格式为：
+		@setgm <account_id> <level> <flag>
+	☆修正一个离线挂店引起复制的问题
+	☆修正脚本指令getrepairableitemcount
+	☆修正脚本指令getbrokenid
+	☆修正脚本指令checkoption1、checkoption2、checkoption3
+	☆修正脚本指令ispartneron，返回值略有更改
+	☆修正脚本指令warpmap、warpparty、warpguild
+	☆增加脚本指令getpartymaster，格式为：getpartymaster(<party_id>)。作用和getpartyleader一样，用于取得队长名字。
+	☆增强脚本指令getinventorylist，新格式为：getinventorylist[<char_id>];
+	☆增强脚本指令getskilllist，新格式为：getskilllist[<char_id>];
+	☆增强脚本指令classchange，新格式为：classchange <class>,<type>[,<id>];
+	☆增强脚本指令allowuseitem，新格式为：allowuseitem[<item_id>[,<char_id>]];
+	☆增强脚本指令summon，新格式为：summon <mob_name>,<class>[,<event_name>[,<char_id>]];
+	☆增强脚本指令homundel，新格式为：homundel[<char_id>];
+	☆增强脚本指令homunrename，新格式为：homunrename <name>[,<flag>[,<char_id>]];
+	☆增强脚本指令usediteminfo，新格式为：usediteminfo(<flag>[,<char_id>])
+	☆增强脚本指令geteqlv，新格式为：geteqlv(<pos>[,<char_id>])
+	☆增强脚本指令seteqlv，新格式为：seteqlv <pos>,<lv>[,<char_id>];
+	☆增强脚本指令geteqexp，新格式为：geteqexp(<pos>[,<char_id>])
+	☆增强脚本指令seteqexp，新格式为：seteqexp <pos>,<exp>[,<char_id>];
+	☆增强脚本指令geteqdure，新格式为：geteqdure(<pos>[,<char_id>])
+	☆增强脚本指令seteqdure，新格式为：seteqdure <pos>,<dure>[,<char_id>];
+	☆增强脚本指令geteqmaxdure，新格式为：geteqmaxdure(<pos>[,<char_id>])
+	☆增强脚本指令seteqmaxdure，新格式为：seteqmaxdure <pos>,<maxdure>[,<char_id>];
+	☆修改脚本指令readsql无效时的返回值，从"NULL"改为""（空字符串），请把NULL换成空字符串。
+	☆增加脚本指令npcid2name、name2npcid，用法如下：
+		npcid2name(<npc_id>)：npc_id -> NPC名字。NPC不存在时返回空字符串
+		name2npcid(<npc_name>)：NPC名字 -> npc_id。NPC不存在时返回-1
+·config更新
+	☆更新atcommand_athena.conf：
+		→加入@setgm设置
+	☆更新battle_athena.conf：
+		→修正no_delay_dex开关的注释
+		→补充no_casting_dex开关
+		→加入AS_SONICBLOW_Setting开关
+		→加入no_alliance_change_when_gvg开关
+	☆更新help.txt：
+		→加入@setgm的使用说明
+	☆socket.conf更新
+		→修改packet_lost_mode开关的默认值
+		→增加mfja_min_buffer_size开关
+·DB更新
+	☆更新skill_cast_db.txt、skill_db.txt、skill_unit_db.txt（把这3个DB还原为0.73版本）
+·NPC更新
+	☆更新npcdata\quests\npc_quest_mobtim.txt
+	☆更新npcdata\warp\npc_warp_fild.txt
+	☆更新npcdata\warp\npc_warp_town.txt
+
+======================================================================
+【更新说明】Jathena++ v0.74fix win-MySQL	(2007.1.24)
+======================================================================
+·程序更新
+	☆修正map-server.exe的一个问题
+·conf更新
+	☆更新map_athena.conf，增加15张新地图
+·DB更新
+	☆更新map.info（一共610张地图）
+	☆更新skill_unit_db.txt
+
+======================================================================
+【更新说明】Jathena++ v0.74 win-MySQL	(2007.1.23)
+======================================================================
+·程序更新
+	☆极大提高读取加密脚本的速度
+	☆加入@kickat指令：踢出所有离线挂店的玩家
+	☆加入@whoat指令：显示离线挂店人物信息列表
+	☆加入@banid、@unbanid指令，踢出指定人物并封其帐号、解除封锁的帐号，用法如下：
+		@banid <account_id>		---- 踢出指定人物并封其帐号
+		@unbanid <account_id>		---- 解除封锁的帐号
+	☆增强脚本指令delinventory，新格式如下：
+		delinventory <index>,<count>[,<char_id>];
+	☆加入4个事件：OnPCKill2、OnPCBaseLvup、OnPCJobLvup、OnPCKillMob
+		OnPCKill2	---- 玩家PK时，杀人者执行的事件
+		OnPCBaseLvup	---- 人物Base等级提升时执行的事件
+		OnPCJobLvup	---- 人物Job等级提升时执行的事件
+		OnPCKillMob	---- 人物杀死怪物时执行的事件
+	☆补充setmapflag、removemapflag脚本指令中的3个标识no_char_pvp、no_disguise、nodropitem
+	☆增加@noitem、@noskill，用于查看、修改noitem和noskill的mapflag设定，用法如下：
+		@noitem				---- 查看noitem设置
+		@noitem <item_id> <value>	---- (不)允许当前地图使用指定物品
+		@noskill			---- 查看noskill设置
+		@noskill <skill_id> <value>	---- (不)允许当前地图使用指定技能
+	☆增加2个脚本指令setnoitem、setnoskill用法如下：
+		setnoitem <item_id>,<value>,<map_name>;		---- 把指定物品添加/删除到noitem的mapflag
+		setnoskill <skill_id>,<value>,<map_name>;	---- 把指定技能添加/删除到noskill的mapflag
+	☆增加@setdroprate指令，设置本地图某种类型物品的掉率（万分率，设置为0时表示按照battle_athena.conf的掉率），用法如下：
+		@setdroprate <item_type> <rate>
+		<item_type> = 0：恢复品
+		<item_type> = 2：消耗品
+		<item_type> = 3：收集品
+		<item_type> = 103：精炼材料
+		<item_type> = 4：武器
+		<item_type> = 5：防具
+		<item_type> = 6：卡片
+		<item_type> = 8：宠物装备
+		<item_type> = 10：箭矢
+		<item_type>除以上的：其他
+	☆增加2个mapflag，noequip和nocard，格式如下：
+		<gatname>	mapflag	noequip	<equip_id>	---- 设定地图上不能装备的物品，如果有装备上，则自动卸下
+		<gatname>	mapflag	nocard	<card_id>	---- 设定地图上不能装备插有指定卡片的物品，如果有装备上，则自动卸下
+	☆增加@noequip、@nocard，用于查看、修改noequip和nocard的mapflag设定，用法如下：
+		@noequip			---- 查看noequip设置
+		@noequip <equip_id> <value>	---- (不)允许当前地图装备指定物品
+		@nocard				---- 查看nocard设置
+		@nocard <card_id> <value>	---- (不)允许当前地图装备插有指定卡片的物品
+	☆增加2个脚本指令setnoequip、setnocard用法如下：
+		setnoequip <equip_id>,<value>,<map_name>;	---- 把指定装备添加/删除到noequip的mapflag
+		setnocard <card_id>,<value>,<map_name>;		---- 把指定卡片添加/删除到nocard的mapflag
+·conf更新
+	☆更新atcommand_athena.conf
+	☆更新battle_athena.conf：
+		更改noportal_flag开关的注释
+		加入pc_kill2_script、pc_baselvup_script、pc_joblvup_script、pc_killmob_script开关
+	☆更新help.txt
+	☆更新msg_athena.conf
+·DB更新
+	☆更新const.txt
+	☆更新create_arrow_db.txt
+	☆更新job_db2.txt
+	☆更新skill_cast_db.txt
+	☆更新skill_db.txt
+	☆更新skill_unit_db.txt
+
+======================================================================
+【更新说明】Jathena++ v0.73 win-MySQL	(2006.12.25)
+======================================================================
+·程序更新
+	☆加快读取加密脚本的速度
+	☆优化socket处理
+	☆加入注册为Windows服务支持：
+		inst_winsvc.bat----注册为Windows服务
+		uninst_winsvc.bat----卸载Windows服务
+		doc\windows_service.txt----文档
+	☆修正readsql脚本指令无法读取DBnull的BUG
+·conf更新
+	☆更新battle_athena.conf：加入reconnect_to_char_server开关
+	☆更新mapflag.txt
+	☆更新socket.conf：加入packet_lost_mode开关
+	☆更新char_athena.conf：加入delete_char_need_email开关
+	☆更新login_athena.conf：加入delete_char_need_email开关
+·DB更新
+	☆更新exp.txt
+	☆更新item_db.txt
+	☆更新item_fabox.txt
+	☆更新job_db1.txt
+	☆更新MFJA_item_extension.txt。修正中文注释中一处错误，之前一直未发现。
+	☆更新skill_cast_db.txt
+	☆更新skill_db.txt
+·NPC更新
+	☆更新npcdata\warp\npc_warp_town.txt
+
+======================================================================
+【更新说明】Jathena++ v0.72 win-MySQL	(2006.12.8)
+======================================================================
+·程序更新
+	☆从v0.72开始，服务端支持加密脚本。
+		→发布脚本加密器，Athena Studio.Net的插件：Athena Script Encoder.Net（通过在线更新Athena Studio.Net获得）。
+		→发布的脚本加密器支持1.1.*.*版本的加密算法，可加密出多达400种不同的随机结果。
+		→只要在map_athena.conf中像以前一样添加加密脚本即可。
+		→为了保护加密脚本内容，当Map-Server读取加密脚本时，发现加密脚本有错误，将不提供详细报错信息，并且Map-Server会自动关闭。
+		→加入GM指令：@loadnpc2。为了保护加密脚本内容，当Map-Server发现加密脚本有错误，将不提供详细报错信息，并且Map-Server会自动关闭！请慎用该GM指令。
+		→卸载脚本脚本的NPC或函数时，只要使用原有的@unloadnpc、@unloadnpcid、@unloadfunc指令即可。
+	☆更新AthenaStudio.Net.exe
+	☆更详细记录GM指令日志记录
+	☆加入GM指令：@movenpc、@movenpcid，用于重设NPC位置，用法如下：
+		@movenpc <地图名> <x> <y> <NPC名字>
+		@movenpcid <地图名> <x> <y> <npc_id>
+	☆加入脚本指令getip，解析域名、返回一个字符串数据类型的IP地址，格式如下：
+		getip<ip/host>
+		<ip/host>--IP地址/主机名
+·conf更新
+	☆更新atcommand_athena.conf
+	☆更新help.txt
+	☆更新msg_athena.conf
+·DB更新
+	☆更新item_arrowtype.txt
+
+======================================================================
+【更新说明】Jathena++ v0.71 win-MySQL	(2006.11.28)
+======================================================================
+·程序更新
+	☆从v0.71开始，简体、繁体都使用统一的执行程序
+	☆MySQL版本从5.0.22升级到5.0.27，有时间的用户建议升级。发布v0.71后，会把JA++需要的MySQL和新的MyODBC驱动程序发到论坛
+	☆禁止GVG中使用GM样子的人物看到隐身的玩家
+	☆禁止GVG中使用GM样子的人物看到打出的伤害值
+	☆增加arrayselect指令，把数组中的元素用于菜单选项，格式如下：
+		arrayselect(<menuitem>[, <count>])
+		<menuitem>：数组中的一项
+		<count>：限定个数
+		指令详解请参考npcdata\test\npc_test_arrayselect.txt
+	☆操作SQL的脚本指令有所更改：
+		1、execsql指令的格式和用法不变
+		2、readsql指令变化：
+			作用：返回用querysql指令储存的查询结果（以字符串形式返回结果）
+			格式：readsql(<行>,<列>)
+				如果查询结果为空或者<行>、<列>超出查询结果范围，返回字符串“NULL”
+		3、增加querysql指令：
+			作用：执行有返回的SQL语句并储存查询结果
+			格式：querysql "<字符串>";
+		4、增加getsqlinfo指令：
+			作用：返回用querysql指令储存的查询结果的信息
+			格式：getsqlinfo(<i>)
+				<i>=1：返回SQL结果的行数、<i>=2：返回SQL结果的列数
+				如果没有查询结果，则返回-1
+·DB更新
+	☆更新skill_unit_db.txt
+	☆增加map.info，一共包含595张地图
+·其他更新
+	☆更新Athena Studio.Net，真正实现智能化多语言和自动更新功能。
+	  详细更新内容请留意Athena Studio.Net的更新日志
+	☆更新libmysql.dll
+
+======================================================================
+【更新说明】Jathena++ v0.70 win-MySQL	(2006.11.5)
+======================================================================
+·程序更新
+	☆修正装备耐久度计算公式
+	☆加入几个mapflag，用于设定某个地图某类物品的掉落倍率（当item_rate_details设置为0时）：
+		potion_drop_rate
+		expend_drop_rate
+		refine_drop_rate
+		etc_drop_rate
+		weapon_drop_rate
+		equip_drop_rate
+		card_drop_rate
+		petequip_drop_rate
+		arrow_drop_rate
+		other_drop_rate
+		使用格式：prontera.gat	mapflag	potion_drop_rate	6000
+		这样就表示prontera.gat这个地图的恢复品掉率为60倍
+	☆加入@unloadnpcid，用法：@unloadnpcid <npc_id>，用于卸载指定ID的NPC
+	☆加入贵重物品掉落日志
+	☆调整玩家指令可以在所有聊天频道中使用
+	☆加入脚本指令findstring，用法如下：
+		findstring("<字符串1>","<字符串2>")
+		查找<字符串1>是否包含<字符串2>----返回1：包含、返回0：不包含
+		此脚本指令主要用于判断某些变量中是否包含非法字符，因为某些变量带有非法字符可能会导致脚本漏洞或者脚本不正常运行
+·config更新
+	☆更新atcommand_athena.conf：增加@unloadnpcid
+	☆更新battle_athena.conf：加入boss_no_mindbreaker开关、删除wedding_relog、wedding_time开关
+	☆更新inter_athena.conf
+	☆更新mapflag.txt
+	☆更新water_height.txt
+·DB更新
+	☆更新exp.txt
+	☆更新item_db.txt
+	☆更新item_db2.txt
+	☆更新job_db1.txt
+	☆更新MFJA_item_extension.txt
+	☆更新mob_boss.txt
+	☆更新mob_branch.txt
+	☆更新mob_group_db.txt
+	☆增加scdata_db.txt，用于设定保存的人物状态：
+		人物状态将保存于status_change表中。人物重新上线后，状态仍然可以保留或者不保留。
+	☆更新skill_cast_db.txt
+	☆更新skill_unit_db.txt
+·NPC更新
+	☆更新npcdata\npc\npc_dye.txt
+	☆更新npcdata\warp\npc_warp_fild.txt
+	☆更新npcdata\warp\npc_warp_town.txt
+·SQL脚本更新
+	☆增加sql-files\CA2.0.6 -- JA++0.70.sql（用于CA转换到JA++）
+	☆更新sql-files\main.sql（用于新建数据库）
+	☆增加sql-files\v0.69-v0.70.sql（用于JA++从v0.69升级到v0.70）
+	☆增加sql-files\XA -- JA++0.70.sql（用于XA转换到JA++）
+
+======================================================================
+【更新说明】Jathena++ v0.69 win-MySQL	(2006.10.20)
+======================================================================
+·程序更新
+	☆加入脚本指令：delinventory，用于删除指定的随身物品，用法如下：
+		delinventory <index>,<num>;
+		<index>--随身物品序列，从0开始
+		<num>--数量
+	☆脚本指令变更，原evolution指令变为homunevolution，用法不变，请对应修改itemdb中的“贤者之石”
+	☆加入脚本指令：recalcstatus，用于刷新人物的状态（如aspd、max_hp等等），用法如下：
+		recalcstatus [<account_id>];
+	☆加入物品掉落公告功能：在MFJA_item_extension.txt中设定
+	☆修正warpnpc指令
+	☆解决头饰view值超过255的问题
+	☆加入异常封包过滤功能，防止使用WPE修改、窃取程序，并对目前大部分游戏外挂、内挂免疫
+·config更新
+	☆更新battle_athena.conf：加入kick_when_error_packet开关
+	☆更新msg_MFJA.conf
+·DB更新
+	☆更新const.txt
+	☆更新item_db.txt
+	☆更新job_db1.txt
+	☆更新job_db2.txt
+	☆更新MFJA_item_extension.txt
+	☆更新packet_db.txt
+	☆更新skill_db.txt
+	☆更新skill_db2.txt
+	☆更新skill_require_db.txt
+	☆更新skill_require_db2.txt
+·其他更新
+	☆增加sql-files\CA2.0.6 -- JA++0.69.sql（用于CA转换到JA++）
+	☆更新sql-files\XA -- JA++0.69.sql（用于XA转换到JA++）
+
+======================================================================
+【更新说明】Jathena++ v0.68 win-MySQL	(2006.10.12)
+======================================================================
+·程序更新
+	☆更新到JA2229
+	☆改进delitem指令先删除物品栏物品再删除随身物品
+	☆修正在夜晚退出游戏时出现残像的BUG
+	☆修正个别小BUG
+·config更新
+	☆更新battle_athena.conf
+·DB更新
+	☆更新item_db.txt
+	☆更新mob_db.txt
+	☆更新packet_db.txt
+·NPC更新
+	☆更新npcdata/job/quest/npc_assassin.txt
+	☆更新npcdata/job/quest/npc_clown.txt
+	☆更新npcdata/job/quest/npc_dancer.txt
+	☆更新npcdata/job/quest/npc_priest.txt
+	☆更新npcdata/monster/npc_monster_future.txt
+	☆更新npcdata/npc/npc_dye.txt
+	☆更新npcdata/npc/npc_refine.txt
+	☆更新npcdata/quests/npc_ironcane_quest.txt
+
+======================================================================
+【更新说明】Jathena++ v0.67 win-MySQL	(2006.10.3)
+======================================================================
+·程序更新
+	☆更新到JA2227
+	☆修正玩家指令只识别小写字母的问题
+	☆改进脚本指令getexp，现在用法为：getexp BaseExp,JobExp,EquipExp[,<CharID>];
+	☆改进SQL操作功能，防止超时
+	☆装备升级、耐久度下降、最大耐久度下降时，用另外一种颜色的文字提示，更人性化
+	☆加入宠物饥饿提示设定
+	☆工会到Lv50时继续获得经验会变回1级的改进
+	☆删除脚本指令atcommand，请用gmcommand代替
+	☆修正一个工会可能出现消失的BUG
+	☆修正玩家指令#unlockitem的一个BUG
+	☆解决新夜晚效果和灵魂状态混淆的问题
+	☆继续完善变身功能
+·config更新
+	☆更新atcommand_athena.conf：
+		加入：charequipinfo、charequipinfoid、charequipinfo2、charequipinfo2id
+		删除：itemcheck
+	☆更新battle_athena.conf：
+		加入以下开关：
+			pet_hungry_remind
+			deadly_potion_produce_rate
+			cooking_rate
+			making_rate
+			allow_weaponrearch_to_weaponrefine
+			tarotcard_display_position
+			castle_defense_rate
+			romailuse
+			save_feel_map
+	☆更新converter_athena.conf
+	☆更新help.txt
+	☆更新help_charcommand.txt
+	☆更新map_athena.conf
+	☆更新msg_MFJA.conf
+·DB更新
+	☆更新char_command.txt
+	☆更新item_db.txt
+	☆加入item_db2.txt
+	☆更新item_meiji_almond.txt
+	☆加入item_petbox.txt
+	☆更新item_violetbox.txt
+	☆更新mob_db.txt
+	☆更新mob_skill_db.txt
+	☆更新packet_db.txt
+	☆更新skill_cast_db.txt
+	☆更新skill_db.txt
+	☆更新skill_db2.txt
+	☆更新skill_require_db.txt
+	☆删除item_upper.txt
+	☆删除item_delay.txt
+	☆删除item_prohibition_zone.txt
+·NPC更新
+	☆更新npcdata/cities/npc_town_geffen.txt
+	☆更新npcdata/cities/npc_town_guide.txt
+	☆更新npcdata/cities/npc_town_morroc.txt
+	☆更新npcdata/guild_old/prtg_cas01.txt
+	☆增加npcdata/JA/town/npc_town_lighthalzen.txt
+	☆更新npcdata/JA/town/npc_town_board.txt
+	☆更新npcdata/JA/town/npc_town_niflheim.txt
+	☆更新npcdata/JA/town/npc_town_umbala.txt
+	☆更新npcdata/job/quest/npc_acolyte.txt
+	☆更新npcdata/job/quest/npc_archer.txt
+	☆更新npcdata/job/quest/npc_assassin.txt
+	☆更新npcdata/job/quest/npc_blacksmith.txt
+	☆更新npcdata/job/quest/npc_clown.txt
+	☆更新npcdata/job/quest/npc_crusader.txt
+	☆更新npcdata/job/quest/npc_hunter.txt
+	☆更新npcdata/job/quest/npc_knight.txt
+	☆更新npcdata/job/quest/npc_magican.txt
+	☆更新npcdata/job/quest/npc_merchant.txt
+	☆更新npcdata/job/quest/npc_monk.txt
+	☆更新npcdata/job/quest/npc_reburn.txt
+	☆更新npcdata/job/quest/npc_swordman.txt
+	☆更新npcdata/job/quest/npc_thief.txt
+	☆更新npcdata/npc/npc_kafra.txt
+	☆更新npcdata/npc/npc_shell.txt
+	☆删除npcdata/quests/npc_munak_quest.txt
+	☆更新npcdata/quests/npc_quest_mobtim.txt
+	☆更新npcdata/shops/shop_allcities.txt
+	☆更新npcdata/warp/npc_warp_town.txt
+	☆更新npcdata/warp/npc_warp_vs.txt
+·数据库更新
+	☆更新main.sql----用于新建数据库
+	☆增加v0.66-v0.67.sql----用于从v0.58/v0.59/....../v0.65/v0.66升级到v0.67
+
+======================================================================
+【更新说明】Jathena++ v0.66 win-MySQL	(2006.9.20)
+======================================================================
+·程序更新
+	☆更新到JA2212fix
+	☆修正蝎子无装备经验的BUG
+	☆加入3个动态卸载/加载脚本的指令：
+		@loadnpc <脚本文件位置>
+		加载指定脚本文件（例如：@loadnpc npcdata\npc\npc_deliver.txt）
+
+		@unloadnpc <NPC名字>
+		卸载指定名字的NPC（例如：@unloadnpc 神秘妇人）
+
+		@unloadfunc <函数名字>
+		卸载指定名字的函数（例如：@unloadfunc MFJA_deliver）
+	☆修正装备升级系统中在装备升级时，低机率会另耐久度降为1的BUG
+	☆更新Athena Studio.NET插件：Athena Starter.NET到v0.3：
+		·精简部分功能
+		·改变计算在线人数的方式（仅适用于JA++）
+		·日志记录的效率大大提高
+		·启动服务端时，可以随时选择记录或不记录日志
+		·增加日志筛选实用工具，可筛选各种日志记录
+·config更新
+	☆更新atcommand_athena.conf：增加@loadnpc、@unloadnpc、@unloadfunc
+	☆更新battle_athena.conf：
+		修改sw_def_type、calc_dist_flag、allow_sw_dist、nomanner_mode的默认值
+	☆更新help.txt
+	☆更新map_athena.conf：增加npcdata/warp/npc_warp_MFJA.txt
+	☆更新msg_athena.conf
+·NPC更新
+	☆增加npcdata/warp/npc_warp_MFJA.txt
+
+======================================================================
+【更新说明】Jathena++ v0.65fix win-MySQL	(2006.9.13)
+======================================================================
+·程序更新
+	(从v0.65-v0.65fix，执行档只有一个map-server.exe更新)
+	☆修正变身时使用部分技能造成客户端弹框等问题和别人无法看到自己变身的问题
+·conf更新
+	☆更新battle_athena.conf：
+		删除check_sitting_player_using_skill、check_sitting_player_using_skill_p开关
+		翻译以下选项的说明：
+			sw_def_type
+			calc_dist_flag
+			allow_sw_dist
+			storagesort_by_itemid
+			cancel_race
+			allow_es_magic_all
+	☆更新msg_MFJA.conf
+
+======================================================================
+【更新说明】Jathena++ v0.65 win-MySQL	(2006.9.13)
+======================================================================
+·程序更新
+	☆更新到JA2208
+	☆修正装备升级系统中装备等级改变时没有刷新人物状态的问题
+	☆之前是在装备升级前执行升级事件，导致判断装备等级时与实际等级不符。这一版修正这个问题
+	☆修正在新版本中NPC不能移动的问题，现在NPC能正常移动并且能自动绕过障碍物继续移动到目标地点
+	☆修正变身功能
+	☆本次更新加入对SQL数据库直接操作的指令，这也是为什么不发布TXT的原因。由于TXT
+	  本身有很大局限性，很多功能都只能在SQL上实现，所以不会为了所谓的“调试脚本方
+	  便”而浪费时间发布TXT版本。如果你选择了JA++，就一定不会让你失望。如果你觉得
+	  JA++不好用，也可以选择其他的Athena。
+	☆加入execsql指令（执行无返回的SQL语句），用法如下：
+		execsql "<string>";
+		<string>--任意SQL语句
+	☆加入readsql指令（执行有返回的SQL语句并读取返回结果），用法如下：
+		readsql("<string>",<row>,<field>)
+
+		<string>--任意SQL语句（一般是select等）
+		<row>--第n行（最小是1）
+		<field>--第n列（最小是1）
+
+		每次执行readsql后，会把结果的总行数储存在@rows_num变量中、把总列数储存在@fields_num中
+		当行数或列数不在有效范围内，返回"NULL"字符串；如果执行SQL语句后无结果，也返回"NULL"字符串
+	☆加入atoi指令（把字符串转换为数值），用法如下：
+		atoi("<string>")
+		<string>--字符串
+·conf更新
+	☆更新battle_athena.conf：
+		增加allow_es_magic_all、trade_when_use_npc开关
+		删除changeoption_packet_type开关
+	☆更新map_athena.conf，加入以下开关（用于操作数据库）：
+		map_server_ip
+		map_server_port
+		map_server_id
+		map_server_pw
+		map_server_db
+		map_server_charset
+	☆更新mapflag.txt
+	☆更新msg_MFJA.conf
+·DB更新
+	☆更新MFJA_endurance.txt
+	☆更新MFJA_endurance_exp.txt
+	☆更新MFJA_equip_exp.txt
+	☆更新item_db.txt
+	☆更新mob_db.txt
+	☆更新mob_skill_db.txt
+·NPC更新
+	☆更新npc_monster.txt
+	☆更新npc_monster_future.txt
+
+======================================================================
+【更新说明】Jathena++ v0.64 win-MySQL	(2006.9.6)
+======================================================================
+·程序更新
+	☆更新到JA2200
+	☆提高服务端总体的稳定性并且修正数个BUG。为了获得更佳的性能，强烈推荐使用Win2003
+·conf更新
+	☆更新battle_athena.conf：
+		修改defunit_not_enemy、extra_system_flag开关的默认值
+		增加sw_def_type、calc_dist_flag、allow_sw_dist、storagesort_by_itemid、cancel_race开关
+		更新bone_drop开关
+		删除check_sitting_player_using_skill、check_sitting_player_using_skill_p开关
+	☆更新char_athena.conf：
+		增加max_char_slot开关
+	☆更新help.txt
+·DB更新
+	☆更新abra_db.txt
+	☆更新const.txt
+	☆更新item_db.txt
+	☆更新item_rjc2006.txt
+	☆更新skill_cast_db.txt
+	☆更新skill_db2.txt
+	☆更新skill_db.txt
+	☆删除skill_misfire.txt
+	☆删除skill_prohibition_zone.txt
+	☆更新skill_require_db2.txt
+
+======================================================================
+【更新说明】Jathena++ v0.63fix win-MySQL	(2006.9.1)
+======================================================================
+·程序更新
+	☆修正使用@reloadbattleconf后，所有怪物无敌的BUG
+
+======================================================================
+【更新说明】Jathena++ v0.63 win-MySQL	(2006.8.30)
+======================================================================
+·程序更新
+	☆更新到JA2173
+	☆由于加了离线挂店功能，所以免费版人数限制从120增加到140
+	☆修正装备锁定系统的一个灵异BUG
+	☆改进新的仓库储存模式
+	☆改进resetlvl指令。使用resetlvl后，自动清除抄袭技能。
+	☆增加一个新的mapflag：nodropitem。设置在某个地图玩家无法丢弃物品。
+	☆简化离线挂店指令，#autotrade -> #at。
+	☆增加脚本指令evolution，让生命体进化，用法：evolution [<char_id>];
+		并实装item_db.txt中的“贤者之石”
+	☆增加@charip、@charipid指令，用于查看玩家IP地址，用法如下：
+		@charip <玩家名字>
+		@charipid <char_id>
+	☆改进@kickall指令
+·config更新
+	☆更新atcommand_athena.conf：增加@charip、@charipid指令
+	☆更新battle_athena.conf：增加other_drop_rate、open_autowarp、warp_mapname、warp_to_x、warp_to_y开关
+	☆更新char_command.txt
+	☆更新help.txt
+	☆更新help_charcommand.txt
+	☆更新msg_athena.conf
+·DB更新
+	☆更新item_db.txt，修正几个名字
+	☆更新mob_db.txt，修正几个怪物名字
+	☆更新produce_db.txt
+·NPC更新
+	☆更新npcdata/monster/npc_monster.txt，修正几个怪物名字
+	☆更新npcdata/monster/npc_monster_future.txt，修正几个怪物名字
+
+======================================================================
+【更新说明】Jathena++ v0.62 win-MySQL	(2006.8.22)
+======================================================================
+·程序更新
+	☆更新到JA2172
+	☆在v0.61的更新记录中漏了3个脚本指令（已经在v0.62最新更新日志的v0.61处补上）：setcheckstate、setcheckstateid、getargcount
+	☆在v0.61更新日志中，把mob_skill_db_add.txt写成了mob_skill_add.txt，已经在v0.62最新更新日志的v0.61处更正
+	☆恢复3个脚本指令npcspeed、npcwalkto、npcstop，用于NPC移动，格式如下：
+		npcspeed <speed>;		//设置NPC移动速度(速度甚至可以设置大于1000从而获得更慢的移动速度)
+		npcwalkto <x>,<y>;		//让NPC移动到地图的(x,y)坐标
+		npcstop;			//让NPC停止移动
+	☆加入离线挂店功能，指令是#autotrade
+·config更新
+	☆更新help_charcommand.txt
+	☆更新msg_MFJA.conf
+·DB更新
+	☆更新char_command.txt
+
+======================================================================
+【更新说明】Jathena++ v0.61 win-MySQL	(2006.8.17)
+======================================================================
+·程序更新
+	☆更新到JA2171
+	☆更新warpnpc指令，格式改为：
+		warpnpc "<map_name>",<x>,<y>[,"<NPC_Name>"];
+			<map_name>--地图名
+			<x>--地图的x坐标
+			<y>--地图的y坐标
+			<NPC_Name>--NPC名称（省略时表示当前NPC）
+	☆增加setcheckstate指令，设置人物的验证状态（反外挂系统中），用法如下：
+		setcheckstate "<char_name>",<0/1>;	//<char_name>--玩家名字（省略时表示当前玩家）
+	☆增加setcheckstateid指令，设置人物的验证状态（反外挂系统中），用法如下：
+		setcheckstateid <char_id>,<0/1>;	//<char_id>--玩家的char_id（省略时表示当前玩家）
+	☆增加getargcount指令，获取参数的数量，用法如下：
+		getargcount()
+	☆增加clicknpc指令，用于强制点击NPC，用法如下：
+		clicknpc "<NPC_name>";
+	☆修正人物状态异常被定住的情况下仍然能切换装备的BUG
+	☆更新Athena Studio.NET插件：Athena DB Job-Code Calculator.NET到v0.4：
+		·修正职业代码反查时没有清除计算结果的BUG
+	☆更新Athena Studio.NET插件：Athena FixName.NET到v0.2：
+		·增加屏蔽的字符#
+	☆服务端增加名字不能使用非法字符#
+	☆修正技能“跳高”、“跑步”无效的BUG
+	☆修正JA一直存在的反射BUG
+	☆改进防崩溃系统
+·config更新
+	☆更新atcommand_athena.conf
+	☆更新battle_athena.conf
+	☆更新help.txt
+	☆更新help3.txt
+	☆更新login_athena.conf
+	☆更新map_athena.conf
+	☆更新script_athena.conf
+·DB更新
+	☆变更以下DB名字和位置（请用户自行更改文件名和位置）：
+		db/homun_db2.txt     -> db/addon/homun_db_add.txt
+		db/item_db2.txt      -> db/addon/item_db_add.txt
+		db/mob_db2.txt       -> db/addon/mob_db_add.txt
+		db/mob_skill_db2.txt -> db/addon/mob_skill_db_add.txt
+		db/pet_db2.txt       -> db/addon/pet_db_add.txt
+		db/produce_db2.txt   -> db/addon/produce_db_add.txt
+	☆新增3个DB：
+		db/addon/skill_cast_db_add.txt
+		db/addon/skill_db_add.txt
+		db/addon/skill_require_db_add.txt
+	☆更新item_db.txt
+·NPC更新
+	☆更新npcdata/job/quick/job_reburn.txt
+	☆更新npcdata/monster/npc_monster.txt
+	☆更新npcdata/warp/npc_warp_dun.txt
+	☆更新npcdata/warp/npc_warp_fild.txt
+
+======================================================================
+【更新说明】Jathena++ v0.60fix win-MySQL	(2006.8.6)
+======================================================================
+前言：
+        Jathena++从v0.60开始，为了获得更佳的性能和稳定度，完全使用MySQL5.0作为数据库。
+    原来使用MySQL4.1的用户，只需要把数据库直接复制到5.0使用即可。
+        你见过一年不当机的服务端吗？你见过比官服服务器还要稳定的私服服务端吗？没错，现在已
+    经出现了。她不但在所有Athena当中稳定性最强，而且比Aegis还要稳定得多！这就是加入了防崩
+    溃系统的Jathena++ v0.60。Jathena++ v0.60将完全采用MySQL 5.0。v0.60版不但能保证服务器持
+    续运行，而且在遭受DDOS攻击、利用当机BUG让服务端当机的方法也不会导致服务端当机。
+    原来Jathena的当机日志，能记录造成当机原因的地方，的确很实用，对于查找BUG来说，是必不可
+    少的系统。但是，最新加入的防崩溃系统是更上一层楼；它不但能更准确的报告出错的地方，并且
+    能最大限度的保障服务端持续运行而不至于导致当机。我们一点都没有夸大，信不信由你。以后在
+    Jathena++的后续免费版中（包括v0.60），都会加入这个防崩溃系统。我们会不断努力，尽可能做
+    出优质的服务端，Jathena++的稳定性已经超出“模拟器”的范围，从v0.60开始，她已经成为一款
+    真真正正的服务器！
+
+·程序更新
+	☆更新到JA2164
+	☆修正交易中断线出现物品丢失的BUG
+	☆更新@option指令的格式
+	☆加入enableitems和disableitems脚本指令，用法如下：
+		enableitems [<char_id>];	//允许人物使用所有物品
+		disableitems [<char_id>];	//禁止人物使用所有物品
+		省略<char_id>时表示当前人物
+·config更新
+	☆更新atcommand_athena.conf
+	☆更新battle_athena.conf：增加steal_rate开关
+	☆更新help.txt、help3.txt
+·DB更新
+	☆更新castle_db.txt
+	☆更新const.txt
+	☆取消item_noequip.txt，其中的所有设定都转移到item_prohibition_zone.txt上
+	☆更新item_prohibition_zone.txt
+	☆更新job_db2.txt
+	☆更新mob_avail.txt
+	☆更新skill_db2.txt
+·其他更新
+	☆更新libmySQL.dll
+
+v0.60 - v0.60（2006.8.6 16:20更新）说明：
+	☆更新@option指令的格式
+	☆更新battle_athena.conf：去掉gm_mode_player、gm_mode_mob开关
+	☆更新help.txt、help3.txt
+	☆更新castle_db.txt
+	☆更新mob_avail.txt
+	☆更新3个exe执行文件
+
+v0.60fix 更新说明：
+	☆更新衣服染色为100种（原来是5种）
+	☆修正JA的一个BUG
+	☆更新3个exe执行文件
+
+======================================================================
+【更新说明】Jathena++ v0.59 win-MySQL	(2006.8.1)
+======================================================================
+·程序更新
+	☆更新到JA2148
+	☆修正数个当机BUG
+	☆修正离婚指令导致的当机BUG
+	☆把帐号变量的数量从16个增加到96个
+	☆增加Athena Studio.Net插件：Athena Database Cleaner.NET
+·config更新
+	☆更新atcommand_athena.conf
+	☆更新battle_athena.conf：增加tax_rate开关
+	☆更新msg_MFJA.conf
+·DB更新
+	☆更新const.txt
+	☆更新MFJA_item_extension.txt（增加2种type2：65536 不能进行装备升级（不能获得装备经验）、131072 不消耗耐久度（不会因耐久度不足而损坏、经验下降等等））
+	☆更新mob_avail.txt
+	☆更新mob_db.txt
+	☆更新mob_skill_db.txt
+	☆更新packet_db.txt
+	☆更新skill_cast_db.txt
+	☆更新skill_db.txt
+	☆更新skill_unit_db.txt
+·NPC更新
+	☆更新npcdata/monster/npc_monster.txt
+	☆更新npcdata/monster/npc_monster_future.txt
+	☆更新npcdata/warp/npc_warp_dun.txt
+·其他更新
+	☆增加XA -- JA++0.59.sql（用于XA转换到JA++0.58/0.59）
+
+======================================================================
+【更新说明】Jathena++ v0.58 win-MySQL	(2006.7.24)
+======================================================================
+·程序更新
+	☆更新到JA2133
+	☆修正一些当机BUG
+	☆修正一些技能BUG
+	☆修正封包BUG
+	☆改进怪物显示HP功能
+	☆加入宠物技能（pet_db.txt）
+	☆修正设置为死亡时消失的物品，在人物死亡时没有即时刷新的BUG
+	☆取消npcspeed、npcwalkto、npcstop指令
+	☆加入warpnpc指令，把NPC传送到指定地图的指定坐标，用法如下：
+		warpnpc "<map_name>",<x>,<y>[,<dir>];
+	☆加入getgdlv指令，返回工会等级，工会不存在时返回-1，用法如下：
+		getgdlv(<guild_id>)
+	☆加入getgdavglv指令，返回工会成员平均等级，工会不存在时返回-1，用法如下：
+		getgdavglv(<guild_id>)
+	☆恢复adoption脚本指令为原始JA的格式
+	☆实装养子关系解除
+	☆增加脚本指令：breakadoption，格式如下：
+		breakadoption(["<玩家名字>"])
+		返回0----关系解除失败（没有养子关系）、返回1----关系解除成功
+	☆加入梦幻装备升级系统，并加入10个脚本指令、4个GM指令、2个玩家指令：
+		geteqlv(<pos>)：返回装备等级。返回-1时，表示位置错误或指定位置没有装备
+		seteqlv <pos>,<lv>;：设置装备等级
+		geteqexp(<pos>)：返回装备经验
+		seteqexp <pos>,<exp>;：设置装备经验
+		geteqdure(<pos>)：返回装备耐久度
+		seteqdure <pos>,<dure>;：设置装备耐久度
+		geteqmaxdure(<pos>)：返回装备耐久度上限
+		seteqmaxdure <pos>,<maxdure>;：设置装备耐久度上限
+		getitemexp(<item_id>,<item_lv>)：返回某种物品升级到item_lv时需要的经验值
+		getitemmaxdure(<item_id>,<item_lv>)：返回某种物品在item_lv级时的最大耐久度
+		注意：以上<pos>范围是1-10、lv范围是1-100、exp范围是0-2147483647、耐久度范围是1-2147483647
+
+		@eqlv <位置> <等级>			---- 设置装备等级
+		@eqexp <位置> <经验值>			---- 设置装备经验
+		@eqdure <位置> <耐久度>			---- 设置装备耐久度
+		@eqmaxdure <位置> <耐久度上限>		---- 设置装备耐久度上限
+
+		位置列表如下：
+		================================
+		|    头上: 256    头中：512　  |
+		|    头下:   1    身体： 16    |
+		|    右手:   2    左手： 32    |
+		|    肩膀：  4    脚部： 64    |
+		|    装饰：　8    装饰：128    |
+		--------------------------------
+
+		#equipinfo		---- 查看装备等级、装备经验
+		#equipinfo2		---- 查看装备耐久度、最大耐久度
+
+	☆加入脚本指令getmobinfo，返回指定怪物的属性。返回-1时，表示怪物不存在或类型不正确。用法如下：
+		getmobinfo(<MobID>,<Type>)
+
+		<Type>=1：Name（英文名称）
+		<Type>=2：Jname（日文名字/中文名称）
+		<Type>=3：Lv（等级）
+		<Type>=4：MaxHP（最大HP）
+		<Type>=5：MaxSP（最大SP）
+		<Type>=6：BaseExp（Base经验）
+		<Type>=7：JobExp（Job经验）
+		<Type>=8：Range1（射程距离1）
+		<Type>=9：ATK1（攻击力1）
+		<Type>=10：ATK2（攻击力2）
+		<Type>=11：DEF（物理防御）
+		<Type>=12：MDEF（魔法防御）
+		<Type>=13：Str
+		<Type>=14：Agi
+		<Type>=15：Vit
+		<Type>=16：Int
+		<Type>=17：Dex
+		<Type>=18：Luk
+		<Type>=19：Range2（指定人物攻击技能的范围）
+		<Type>=20：Range3（指定地面攻击技能的范围）
+		<Type>=21：Scale（体型[0:小、1:中、2:大]）
+		<Type>=22：Race（种族[0:无形、1:不死、2:动物、3:植物、4:昆虫、5:鱼贝、6:恶魔、7:人形、8:天使、9:龙族]）
+		<Type>=23：Element（属性[0:无、1:水、2:地、3:火、4:风、5:毒、6:圣、7:暗、8:念、9:不死；20:属性等级1、40:等级2、60:等级3、80:等级4]）
+		<Type>=24：Mode（模式[0:固定、1:移动、2:捡物、4:看到隐身、8:群攻、16:咏唱反击、32:BOSS属性、64:草类、128:主动攻击]）
+		<Type>=25：Speed（速度）
+		<Type>=26：ADelay（基本攻击速度，数值越小速度越快）
+		<Type>=27：aMotion（攻击前延迟）
+		<Type>=28：dMotion（攻击后延迟）
+		<Type>=29：Drop1id（掉落物品1）
+		<Type>=30：Drop1per（掉落物品1的掉率）
+		<Type>=31：Drop2id（掉落物品2）
+		<Type>=32：Drop2per（掉落物品2的掉率）
+		<Type>=33：Drop3id（掉落物品3）
+		<Type>=34：Drop3per（掉落物品3的掉率）
+		<Type>=35：Drop4id（掉落物品4）
+		<Type>=36：Drop4per（掉落物品4的掉率）
+		<Type>=37：Drop5id（掉落物品5）
+		<Type>=38：Drop5per（掉落物品5的掉率）
+		<Type>=39：Drop6id（掉落物品6）
+		<Type>=40：Drop6per（掉落物品6的掉率）
+		<Type>=41：Drop7id（掉落物品7）
+		<Type>=42：Drop7per（掉落物品7的掉率）
+		<Type>=43：Drop8id（掉落物品8）
+		<Type>=44：Drop8per（掉落物品8的掉率）
+		<Type>=45：Drop9id（掉落物品9）
+		<Type>=46：Drop9per（掉落物品9的掉率）
+		<Type>=47：Drop10id（掉落物品10）
+		<Type>=48：Drop10id（掉落物品10的掉率）
+		<Type>=49：MEXP（MVP经验）
+		<Type>=50：MExpPer（MVP经验取得机率[万分率]）
+		<Type>=51：MVP1id（MVP物品1）
+		<Type>=52：MVP1per（MVP物品1的掉率）
+		<Type>=53：MVP2id（MVP物品2）
+		<Type>=54：MVP2per（MVP物品2的掉率）
+		<Type>=55：MVP3id（MVP物品3）
+		<Type>=56：MVP3per（MVP物品3的掉率）
+		<Type>=57：Equip_Exp（装备经验。JA++特有）
+
+·config更新
+	☆更新atcommand_athena.conf
+	☆更新battle_athena.conf：
+		☆加入guild_emblem_colors、check_skillpos_range、pet_speed_is_same_as_pc开关
+		☆修正pt_bonus_b、pt_bonus_j开关的说明
+		☆加入以下16个开关（梦幻装备升级系统）：
+			es_use_equip_system
+			es_exp_log
+			es_exp_rate
+			es_pt_bonus_e
+			es_exec_lvup_script
+			es_max_sp_lv
+			es_next_exp_limit
+			es_master_get_homun_equip_exp
+			es_endurance_loss_log
+			es_endurance_loss_rate
+			es_restore_endurance_when_lvup
+			es_endurance_zero
+			es_endurance_loss_rate_when_zero
+			es_death_penalty_exp
+			es_death_endurance_reduce
+			es_death_endurance_reduce_rate
+	☆更新help.txt
+	☆更新help3.txt
+	☆更新help_charcommand.txt
+	☆更新msg_athena.conf
+	☆更新msg_MFJA.conf
+·DB更新
+	☆更新char_command.txt
+	☆更新const.txt
+	☆更新exp.txt
+	☆更新homun_skill_tree.txt
+	☆更新MFJA_endurance.txt
+	☆更新MFJA_endurance_exp.txt
+	☆更新MFJA_item_extension.txt
+	☆更新mob_db.txt
+	☆更新packet_db.txt
+	☆更新pet_db.txt
+	☆更新skill_cast_db.txt
+	☆更新skill_db.txt
+	☆更新skill_prohibition_zone.txt
+	☆更新skill_require_db.txt
+	☆更新skill_unit_db.txt
+·NPC更新
+	☆更新npcdata/monster/npc_monster.txt
+	☆更新npcdata/monster/npc_monster_future.txt
+	☆更新npcdata/warp/npc_warp_dun.txt
+	☆更新npcdata/warp/npc_warp_fild.txt
+
+	☆加入JA++脚本优化第四期：
+		npcdata/job/other/job_newskills.txt
+		npcdata/job/other/job_pointreset.txt
+		npcdata/job/other/job_supernovice.txt
+		npcdata/job/quest/npc_monk.txt
+		npcdata/job/quest/npc_priest.txt
+		npcdata/job/quest/npc_reburn.txt
+		npcdata/job/quest/npc_sage.txt
+		npcdata/job/quest/npc_swordman.txt
+		npcdata/job/quest/npc_thief.txt
+		npcdata/job/quest/npc_wizard.txt
+		npcdata/job/quick/job_1-1.txt
+		npcdata/job/quick/job_1-1_quic.txt
+		npcdata/job/quick/job_1-2.txt
+		npcdata/job/quick/job_1-2_quic.txt
+		npcdata/job/quick/job_2-2_quic.txt
+		npcdata/job/quick/job_reburn.txt
+		npcdata/pvp/pvp.txt
+		npcdata/pvp/pvproom.txt
+		npcdata/skillquest/npc_arrowcraft.txt
+		npcdata/skillquest/npc_arrowrepel.txt
+		npcdata/skillquest/npc_autoberserk.txt
+		npcdata/skillquest/npc_backslide.txt
+		npcdata/skillquest/npc_cartrevolution.txt
+		npcdata/skillquest/npc_changecart.txt
+		npcdata/skillquest/npc_energycoat.txt
+		npcdata/skillquest/npc_fatalblow.txt
+		npcdata/skillquest/npc_holylight.txt
+		npcdata/skillquest/npc_loud.txt
+		npcdata/skillquest/npc_movinghp.txt
+		npcdata/skillquest/npc_pickstone.txt
+		npcdata/skillquest/npc_sprinklesand.txt
+		npcdata/skillquest/npc_throwstone.txt
+	☆更新npcdata/npc/npc_kafra.txt（修正一处造成刷钱的地方）
+
+·其他更新
+	☆增加v0.57-v0.58.sql（用于JA++ v0.57升级到JA++ v0.58）
+	☆增加CA2.0.3 -- JA++0.57.sql（用于CA2.0.3转换到JA++0.57）
+	☆增加CA2.0.3 -- JA++0.58.sql（用于CA2.0.3转换到JA++0.58）
+	☆增加JA -- JA++0.57.sql（用于把原始JA转换到JA++0.57）
+	☆增加JA -- JA++0.58.sql（用于把原始JA转换到JA++0.58）
+	☆更新main.sql（用于新装数据库）
+
+======================================================================
+【更新说明】Jathena++ v0.57 Final win-MySQL	(2006.7.15)
+======================================================================
+·程序更新
+	☆更新到JA2109
+	☆修正一个封包处理问题
+	☆修正一个交易的问题
+	☆修正怪物变身指令导致服务端当机的BUG
+	☆不正常交易者，系统会自动记录下#ItemHacker为1，并自动踢他下线
+	☆更新Athena Studio.NET插件--启动器。解决有时无响应的问题
+	☆更新Athena Studio.NET插件--DB职业代码计算器。去掉最下面的几个单选按钮，修正使用它们时出现代码计算错误的BUG
+	☆更新拆卡命令：successremovecards、failedremovecards
+		successremovecards格式为：successremovecards <num>[,<position>[,<CharID>]];
+		failedremovecards格式为：failedremovecards <num>,<type>[,<position>[,<CharID>]];
+		<num>--位置（1-11）
+		<type>--0:卡片和装备都损失、1:卡片损失、2:装备损失、3:没有任何损失
+		<position>--卡片位置（默认为0，表示全部卡片，1-4表示第几张卡片）
+		<CharID>--指定人物的char_id
+	☆增加2个实用脚本指令：
+		itemid2name
+		name2itemid
+	用法如下：
+		itemid2name(<item_id>)：item_id -> 物品名字。物品不存在时返回空字符串
+		name2itemid("<item_name>")：物品名字 -> item_id。物品不存在时返回-1
+·config更新
+	☆更新battle_athena.conf：把zeny_penalty选项改为zeny_penalty、zeny_penalty_percent、zeny_penalty_by_lvl选项
+·DB更新
+	☆更新item_db.txt
+·NPC更新
+	☆加入JA++脚本优化第三期：
+		npcdata/job/quest/npc_acolyte.txt
+		npcdata/job/quest/npc_alchemist.txt
+		npcdata/job/quest/npc_archer.txt
+		npcdata/job/quest/npc_assassin.txt
+		npcdata/job/quest/npc_blacksmith.txt
+		npcdata/job/quest/npc_clown.txt
+		npcdata/job/quest/npc_crusader.txt
+		npcdata/job/quest/npc_dancer.txt
+		npcdata/job/quest/npc_hunter.txt
+		npcdata/job/quest/npc_knight.txt
+		npcdata/job/quest/npc_magican.txt
+		npcdata/job/quest/npc_merchant.txt
+
+======================================================================
+【更新说明】Jathena++ v0.57 win-MySQL	(2006.7.9)
+======================================================================
+·程序更新
+	☆更新到JA2106
+	☆修正jobchange指令的格式
+	☆改进mapflag：no_char_pvp、no_disguise。进入包含此mapflag的地图时解除状态
+	☆加入特殊字符过滤，不能包含'"^\/,;
+	☆增加Athena Studio.Net插件：Athena FixName.Net。用于自动修复数据库中的特殊字符
+	☆修正@evolution、@makehomun当机BUG
+	☆增加@whogm指令，查看服务器中的在线GM
+	☆增加12个实用脚本指令：
+		charid2name
+		accountid2name
+		mobid2name
+		guildid2name
+		partyid2name
+		homunid2name
+		name2charid
+		name2accountid
+		name2mobid
+		name2guildid
+		name2partyid
+		name2homunid
+	用法如下：
+		charid2name(<char_id>)：char_id -> 玩家名字。玩家不存在时返回空字符串
+		name2charid("<char_name>")：玩家名字 -> char_id。玩家不存在时返回-1
+		accountid2name(<account_id>)：account_id -> 玩家名字。玩家不存在时返回空字符串
+		name2accountid("<char_name>")：玩家名字 -> account_id。玩家不存在时返回-1
+		mobid2name(<mob_id>)：mob_id -> 怪物名字。怪物不存在时返回空字符串
+		name2mobid("<mob_name>")：怪物名字 -> mob_id。怪物不存在时返回-1
+		guildid2name(<guild_id>)：guild_id -> 工会名字。工会不存在时返回空字符串
+		name2guildid("<guild_name>")：工会名字 -> guild_id。工会不存在时返回-1
+		partyid2name(<party_id>)：party_id -> 队伍名字。队伍不存在时返回空字符串
+		name2partyid("<party_name>")：队伍名字 -> party_id。队伍不存在时返回-1
+		homunid2name(<homun_id>)：homun_id -> 人工生命体名字。人工生命体不存在时返回空字符串
+		name2homunid("<homun_name>")：人工生命体名字 -> homun_id。人工生命体不存在时返回-1
+·config更新
+	☆更新atcommand_athena.conf：增加@whogm指令
+	☆更新battle_athena.conf：加入mob_take_over_sp、party_join_limit开关
+	☆更新help.txt
+	☆更新help1.txt
+	☆更新mapflag.txt
+	☆更新msg_athena.conf
+	☆更新socket.conf的注释
+·DB更新
+	☆更新const.txt
+	☆更新item_db.txt
+	☆更新mob_db.txt
+	☆更新mob_skill_db.txt
+	☆更新packet_db.txt
+	☆更新skill_tree.txt
+·NPC更新
+	☆更新npcdata/monster/npc_monster.txt
+	☆更新npcdata/monster/npc_monster_future.txt
+	加入JA++脚本优化第二期：
+		npcdata/npc/npc_son.txt
+		npcdata/npc/npc_syrup.txt
+		npcdata/npc/npc_train.txt
+		npcdata/npc/npc_wedding.txt
+		npcdata/job/quest/npc_acolyte.txt
+		npcdata/job/quest/npc_alchemist.txt
+		npcdata/job/quest/npc_archer.txt
+		npcdata/job/quest/npc_assassin.txt
+		npcdata/job/quest/npc_blacksmith.txt
+·其他更新
+	☆更新main.sql（仅新建数据库，升级用户不需要理会）
+	☆增加CA2.0.2 -- JA++0.57.sql（CA 2.0.2转换到JA++ v0.57的SQL脚本）
+
+======================================================================
+【更新说明】Jathena++ v0.56 win-MySQL	(2006.7.2)
+======================================================================
+·程序更新
+	☆更新到JA2094
+	☆修正部分脚本指令
+	☆修改@item、@item2、@item3无法刷宠物蛋
+	☆修正max_refine开关在@item2无效的BUG
+	☆修改@mobinfo的显示信息可以繁体化
+	☆修正@mobinfo的当机BUG
+	☆修正设置为不能丢弃的物品，同时也不能交易或放手推车的BUG
+	☆修正can_attack_disguise_player开关无效的BUG
+	☆修正strcharinfo脚本指令
+	☆修正邀请加入工会的BUG
+	☆加入脚本指令rgb，返回16进制颜色代码固定6位字符串，用法：rgb(<R>,<G>,<B>)
+	☆加入脚本指令hex，把10进制<num>换成16进制字符串，用法：hex(<num>)
+	☆加入脚本指令kick，把指定人物踢下线，用法：kick "<人物名字>";
+	☆加入脚本指令kickid，把指定人物踢下线，用法：kickid <char_id>;
+	☆加入脚本指令checkcode，返回人物是否通过了反外挂验证，用法：
+		checkcode("<人物名字>")。返回0：未验证、返回1：已验证、返回-1：指定的人物不存在
+	☆加入脚本指令checkcodeid，返回人物是否通过了反外挂验证，用法：
+		checkcodeid(<char_id>)。返回0：未验证、返回1：已验证、返回-1：指定的人物不存在
+	☆修正@giveitem造成当机的BUG
+	☆在数据库中加入在线人数更新，以便网页读取在线人数
+	☆增加mapflag：no_char_pvp，设置某地图无法使用#pvpon/#pvpoff
+	☆增加mapflag：no_disguise，设置某地图无法使用#disguise/#undisguise
+·config更新
+	☆更新battle_athena.conf
+	☆更新char_athena.conf
+	☆更新login_athena.conf
+	☆更新map_athena.conf
+	☆更新msg_athena.conf
+·NPC更新
+	☆加入JA++脚本优化第一期：
+		npcdata/npc/npc_airplane.txt
+		npcdata/npc/npc_arrow_quiver.txt
+		npcdata/npc/npc_card_remover.txt
+		npcdata/npc/npc_deliver.txt
+		npcdata/npc/npc_dye.txt
+		npcdata/npc/npc_kafra.txt
+		npcdata/npc/npc_laba.txt
+		npcdata/npc/npc_msmile.txt
+		npcdata/npc/npc_newbie.txt
+		npcdata/npc/npc_newsqiz.txt
+		npcdata/npc/npc_rabbit.txt
+		npcdata/npc/npc_refine.txt
+		npcdata/npc/npc_repair.txt
+		npcdata/npc/npc_ridineagle.txt
+		npcdata/npc/npc_sage.txt
+		npcdata/npc/npc_shell.txt
+
+======================================================================
+【更新说明】Jathena++ v0.55fix1 win-MySQL	(2006.6.21)
+======================================================================
+·程序更新
+	☆更新到JA2080
+	☆修正时间戳一个造成当机的BUG
+	☆修正拆卡问题
+	☆修正交易中断线出现装备丢失的BUG
+·数据库更新
+	☆增加v0.55-v0.55fix1.sql（升级需要）
+
+======================================================================
+【更新说明】Jathena++ v0.55 win-MySQL	(2006.6.20)
+======================================================================
+由于MySQL5.0很多人不会使用，EMS SQL Manager 2005 Lite for MySQL是全英文，操作比较复杂，
+很多用户不会使用，绝大部分是用MYSQLCC。太多人不会用的东西也是一个问题，我们不可能一一为
+他们解答。虽然MYSQL5.0支持存储过程，但是由于以上原因（完全无语）决定把数据库改回MYSQL4.1。
+
+Jathena++ v0.55把仓库上限降到300，原来的是1000。
+但是能保证仓库中所有物品都能取出：
+
+例如帐号A的仓库放了301件物品，刚好超出了1件。在服务器开机后，不能马上即时取得多出一件物品。
+当他从仓库拿出2件物品后，能在仓库中看到的物品是298件，但实际仓库中有299件。
+服务器下次开机时，就能把之前多出的那个物品拿出来了。
+
+原理很简单，就是每次服务器开机最多可以取出300件物品，其他物品不会丢失。
+假如有人把仓库放满了1000，那么只需要安排玩家在4次服务器开启中取出仓库所有物品，把仓库物品转移到小号的仓库中，在最后一次时就能取出所有物品了。
+
+注意：此方法只适用于“新储存模式”，旧储存模式会导致超过仓库的物品丢失！！！
+
+·程序更新
+	☆更新到JA2078
+·数据库更新
+	☆增加v0.54-v0.55.sql
+	☆更新main.sql
+·其他更新
+	☆更新libmySQL.dll
+
+======================================================================
+【更新说明】Jathena++ v0.54 win-MySQL	(2006.6.18)
+======================================================================
+·程序更新
+	☆更新到JA2077fix
+·config更新
+	☆更新battle_athena.conf：增加pk_max_aspd、gvg_max_aspd、pvp_max_aspd、extra_system_flag开关
+	☆更新map_athena.conf
+	☆更新mapflag.txt
+	☆更新msg_MFJA.conf
+·DB更新
+	☆更新skill_db.txt
+	☆更新skill_require_db.txt
+·NPC更新
+	☆更新npcdata/npc/npc_kafra.txt
+	☆更新npcdata/monster/npc_monster.txt
+	☆更新npcdata/monster/npc_monster_future.txt
+	☆更新npcdata/warp/npc_warp_dun.txt
+	☆更新npcdata/warp/npc_warp_fild.txt
+	☆更新npcdata/warp/npc_warp_town.txt
+	☆GVG脚本更新：增加新旧GVG脚本选择（默认为旧的GVG脚本）
+·数据库更新
+	☆增加v0.53-v0.54.sql
+	☆更新main.sql
+·其他更新
+	☆更新libmySQL.dll
+	☆JA++从v0.54开始使用存储过程，数据库一律采用MYSQL5.0
+
+======================================================================
+【更新说明】Jathena++ v0.53 win-MySQL	(2006.6.10)
+======================================================================
+·程序更新
+	☆更新到JA2071
+	☆修正濒死效果无效的BUG
+	☆修正一个当机问题（和仓库有关）
+·DB更新
+	☆增加3个新DB，为以后装备升级系统做准备：
+		MFJA_endurance.txt、MFJA_endurance_exp.txt、MFJA_equip_exp.txt
+	☆更新skill_db.txt
+·数据库更新
+	☆增加v0.52-v0.53.sql
+	☆更新main.sql
+
+======================================================================
+【更新说明】Jathena++ v0.52 win-MySQL	(2006.6.7)
+======================================================================
+·程序更新
+	☆更新到JA2068fix
+	☆加入怪物HP显示功能
+	☆修正PK等级限制开关
+	☆增加玩家指令#pvpon和#pvpoff，可以在任意地图进入即时PK状态（VIP用户特有）
+	☆更新npctalk脚本指令
+	☆修正读取char_command.txt时的一个小BUG
+	☆更新Athena DB Job-Code Calculator.NET至v0.2：增加反查功能、修正“全职业”的错误代码
+	☆更新AthenaTimeStampMaker.NET至v0.2：增加MyODBC 3.51和MyODBC 5.0的选择
+	☆改进@kickall指令。当使用@kickall 1时，不会踢自己下线。
+	☆增加玩家指令#disguise、#undisguise
+	☆修正@kickall前几秒使用交易时，双方交易物品丢失的BUG
+	☆彻底修正新储存方式存在的所有BUG，JA++的仓库储存方式将是Athena系列中最高效最稳定的
+	（特别感谢Angelic帮忙测试并提供大量测试结果，有助于快速找出仓库出错的关键所在。特此赠送1年的VIP版本作为奖励！）
+	☆修正交易记录中，broken值显示负数的BUG
+	☆JA++的最后一个TXT版是v0.51。从v0.52开始，不再发布TXT版本。需要转换档案的用户请到论坛下载转换工具。
+
+	☆增加物品锁定系统
+	---------------------------------------------------------------------------------------------
+	增加玩家指令#setlockpass、#lockitem、#unlockitem，用于物品锁定，用法如下：
+		#setlockpass <旧密码> <新密码>	（注意：未设置密码时，旧密码为0。密码长度最大8位。密码记录在account变量#LockItemPass中）
+		#lockitem			（注意：锁定物品后，account变量#IsLockItem为1。如果是别人的物品则无法锁定）
+		#unlockitem <锁定密码>		（注意：解除锁定物品后，account变量#IsLockItem为0。如果是别人的物品则无法解除锁定）
+
+	物品锁定后，物品可以在本帐号中流动，可以放个人仓库、手推车。但不能放工会仓库、不能交易、不能丢弃、不能卖商店。
+	锁定了的物品，会在数据库中记录lockid为本帐号的ID。
+	---------------------------------------------------------------------------------------------
+·config更新
+	☆更新atcommand_athena.conf：增加@reloadcharcommand、@reloadpetdb
+	☆更新battle_athena.conf：
+		增加show_mob_hp开关。是否显示怪物的HP/MAXHP
+		更新no_pk_level开关的说明
+		增加pvpon_size、pvpoff_size、pvp_state_change_announce开关（VIP用户特有）
+		增加can_attack_disguise_player开关，设定玩家变身后能否受到攻击
+		增加max_marionette_pk_str、max_marionette_pk_agi、max_marionette_pk_vit、max_marionette_pk_int、max_marionette_pk_dex、max_marionette_pk_luk开关
+		增加max_marionette_pvp_str、max_marionette_pvp_agi、max_marionette_pvp_vit、max_marionette_pvp_int、max_marionette_pvp_dex、max_marionette_pvp_luk开关
+		增加max_marionette_gvg_str、max_marionette_gvg_agi、max_marionette_gvg_vit、max_marionette_gvg_int、max_marionette_gvg_dex、max_marionette_gvg_luk开关
+	☆更新help.txt
+	☆更新help_charcommand.txt
+	☆更新msg_athena.conf
+	☆更新msg_MFJA.conf
+·DB更新
+	☆更新char_command.txt
+	☆更新item_db.txt
+	☆更新item_prohibition_zone.txt
+	☆更新skill_unit_db.txt
+·数据库更新
+	☆增加v0.51-v0.52.sql
+	☆更新main.sql
+
+======================================================================
+【更新说明】Jathena++ v0.51 win-MySQL/TXT	(2006.6.3)
+======================================================================
+·程序更新
+	☆更新到JA2060
+	☆加入新旧仓库储存方式选择，并修正使用新储存方式时MAP自己挂掉的情况下出现仓库混乱的BUG。
+	☆加入v0.502的内容：
+		v0.502----更新Athena TimeStamp Maker.NET，使时间戳更加随机
+·config更新
+	☆更新battle_athena.conf：
+		增加new_save_mode开关（TXT版无效）。可选择使用新旧数据库储存方式：
+		新储存方式：	让数据库储存效率增加上千倍，数据库能及时储存，解决仓库清空问题。
+				但有可能出现未知的BUG（如MAP服务器突然自己挂掉可能会出现仓库混乱，
+				@kickall、@mapexit或手动关闭等情况一切正常。暂时只有一人反映出现此情况，本人测试时一切无误）
+		旧储存方式：	原始的数据库储存方式。储存效率相对较低，有低机率出现仓库清空问题（突然断电时等特殊情况）
+	☆更新map_athena.conf
+·NPC更新
+	☆加入v0.501的内容：
+		npcdata/npc/npc_function.txt是JA的函数，上次发布新的GVG脚本时漏了这个（只汉化了工会卡普拉等部分，未完全汉化）
+	☆更新npcdata/monster/npc_monster_future.txt
+	☆更新npcdata/guild/npc_gvg_flag.txt
+	☆更新npcdata/warp/npc_warp_vs.txt
+·DB更新
+	☆更新const.txt
+	☆更新MFJA_item_extension.txt。把任务物品的限制设置从程序中取消，转移到DB上
+	☆更新skill_unit_db.txt
+
+======================================================================
+【更新说明】Jathena++ v0.50 win-MySQL/TXT	(2006.5.30)
+======================================================================
+·程序更新
+	☆更新到JA2050
+	☆提高时间戳的精度。在地球爆炸之前都不会出现撑爆导致数据溢出。
+	☆为Map-Server增加版本信息
+	☆增加Athena Studio.NET插件：Athena TimeStamp Maker.NET。用于自动生成时间戳
+	☆增加Athena Studio.NET插件：AthenaStarter.NET。减少程序体积
+·DB更新
+	☆更新skill_db.txt
+·config更新
+	☆更新mapflag.txt
+	☆更新map_athena.conf。增加30张地图
+	☆更新msg_MFJA.conf
+·其他更新
+	☆更新main.sql
+	☆增加v0.49-v0.50.sql，用于v0.49升级到v0.50
+
+======================================================================
+【更新说明】Jathena++ v0.49 win-MySQL/TXT	(2006.5.29)
+======================================================================
+·程序更新
+	☆更新到JA2045
+	☆版权信息改为1行
+	☆修正变身指令变3D怪物会导致客户端出错的问题。已经屏蔽掉3D怪物
+	☆更新Athena Studio.NET相关及插件，更新网站地址
+	☆为物品加入时间戳，方便查看物品流向（仅SQL版）
+	☆改进防复制系统
+	☆改进仓库储存方式，使仓库储存效率可提高至原来的上千倍。和防复制系统结合，储存效率可提高数倍至数百倍不等（仅SQL版）
+	☆改进NPC防刷钱功能，加入自定义价格设定
+	☆增加@kickmap指令。用法：@kickmap [<地图名>]
+·config更新
+	☆更新GM指令帮助文件
+	☆更新玩家指令帮助文件
+	☆更新atcommand_athena.conf：增加kickmap
+	☆更新battle_athena.conf：
+		更新warp_point_debug的说明
+		更新player_damage_delay_rate的数值
+		更新death_penalty_type的说明
+		更新monster_hp_rate的说明
+		更新monster_loot_type的数值
+		更新skill_min_damage的说明
+		更新player_cloak_check_type的说明
+		更新monster_cloak_check_type的说明
+		更新spheremine_no_exp、spheremine_no_drop、spheremine_no_mvp的说明和数值
+		更新hallucianation_off的说明和数值
+		更新serverside_friendlist的说明
+		更新twilight_party_check的说明
+		更新skillup_type的说明
+		更新boss_no_knockbacking的说明
+		更新boss_no_element_change的说明
+		更新extended_abracadabra的说明
+		更新save_player_when_drop_item的说明
+		更新check_sitting_player_using_skill的说明
+		更新check_sitting_player_using_skill_p的说明
+		更新homun_temporal_intimate_resilience的说明
+		增加dec_zeny_when_code_error、dec_zenyrate_when_code_error选项
+		增加npc_shop_price_fix选项
+	☆更新httpd.conf：
+		更新server_max_requests_period的说明
+		更新cgi_ext_list的说明
+		更新max_cgi_process的说明
+		更新cgi_process_timeout的说明
+		更新cgi_kill_timeout的说明
+		更新cgi_temp_dir的说明
+		更新cgi_server_name的说明
+		更新timezone的说明
+		更新log_format的说明
+		更新log_no_flush的说明
+	☆更新inter_athena.conf：
+		更新party_share_level的说明
+		更新guild_extension_increment的说明
+	☆更新char_athena.conf：增加char_loginaccess_autorestart的说明、翻译一段日文注释
+	☆更新converter_athena.conf：修改db_server_charset的编码类型
+	☆更新login_athena.conf：无关紧要的一处格式改动
+	☆更新GM_account.txt：更新注释说明。支持account_id范围
+	☆更新map_athena.conf：
+		删除一段英文注释
+		更新所有GVG脚本
+	☆更新msg_athena.conf
+·DB更新
+	☆更新abra_db.txt
+	☆更新char_command.txt
+	☆更新homun_skill_tree.txt
+	☆更新item_bluebox.txt
+	☆更新item_cardalbum.txt
+	☆更新item_db.txt
+	☆更新item_violetbox.txt
+	☆更新mob_avail.txt
+	☆更新mob_db.txt
+	☆更新mob_skill_db.txt
+	☆更新skill_db.txt
+·NPC更新
+	☆更新npcdata/warp/npc_warp_dun.txt
+	☆更新npcdata/warp/npc_warp_fild.txt
+	☆更新npcdata/monster/npc_monster_future.txt
+	☆删除原来npcdata/guild中的所有NPC，更新为如下NPC：
+		npcdata/guild/aldeg_cas01.txt
+		npcdata/guild/aldeg_cas02.txt
+		npcdata/guild/aldeg_cas03.txt
+		npcdata/guild/aldeg_cas04.txt
+		npcdata/guild/aldeg_cas05.txt
+		npcdata/guild/ev_agit_aldeg.txt
+		npcdata/guild/ev_agit_common.txt
+		npcdata/guild/ev_agit_gefg.txt
+		npcdata/guild/ev_agit_payg.txt
+		npcdata/guild/ev_agit_prtg.txt
+		npcdata/guild/gefg_cas01.txt
+		npcdata/guild/gefg_cas02.txt
+		npcdata/guild/gefg_cas03.txt
+		npcdata/guild/gefg_cas04.txt
+		npcdata/guild/gefg_cas05.txt
+		npcdata/guild/guild_flag.txt
+		npcdata/guild/npc_gvg_adswitch.txt
+		npcdata/guild/npc_gvg_config.txt
+		npcdata/guild/npc_gvg_exe.txt
+		npcdata/guild/npc_gvg_flag.txt
+		npcdata/guild/npc_gvg_kafra.txt
+		npcdata/guild/npc_gvg_monster.txt
+		npcdata/guild/npc_gvg_roomswitch.txt
+		npcdata/guild/npc_gvg_steward.txt
+		npcdata/guild/npc_gvg_tbox.txt
+		npcdata/guild/payg_cas01.txt
+		npcdata/guild/payg_cas02.txt
+		npcdata/guild/payg_cas03.txt
+		npcdata/guild/payg_cas04.txt
+		npcdata/guild/payg_cas05.txt
+		npcdata/guild/prtg_cas01.txt
+		npcdata/guild/prtg_cas02.txt
+		npcdata/guild/prtg_cas03.txt
+		npcdata/guild/prtg_cas04.txt
+		npcdata/guild/prtg_cas05.txt
+·其他更新
+	☆更新main.sql（只适用于新建数据库）
+
+======================================================================
+【更新说明】Jathena++ v0.48 win-MySQL/TXT	(2006.5.19)
+======================================================================
+·程序更新
+	☆更新到JA2023
+	☆修正v0.47中，怪物攻击全部miss的BUG（v0.47fix已解决）
+	☆修正人物交易的一个小问题
+	☆修正变身后，戴头饰时导致图象错乱的BUG
+·NPC更新
+	☆更新npcdata\npc\npc_kafra.txt（v0.47fix2已解决）：
+		把原来的guildopenstorage(Nothing)改为guildopenstorage()，原来的写法有误
+·config更新
+	☆更新battle_athena.conf
+		更新can_attack_when_disguise的说明
+		加入spheremine_no_exp、spheremine_no_drop、spheremine_no_mvp
+
+======================================================================
+【更新说明】Jathena++ v0.47 win-MySQL/TXT	(2006.5.17)
+======================================================================
+·程序更新
+	☆更新到JA2019
+	☆修正丢出物品时，自动丢出2件物品的BUG
+	☆修正传送之阵无法使用的BUG
+	☆加入新功能----人物变怪物、变NPC、变人工生命体的功能
+	☆加入如下GM指令：
+		@disguise <mob_id/npc_id/homun_id>			（让自己变身）
+		@undisguise						（让自己取消变身）
+		@disguiseall						（让所有玩家变身）
+		@undisguiseall						（让所有玩家取消变身）
+		@chardisguise <mob_id/npc_id/homun_id> <玩家名字>	（让指定玩家变身）
+		@charundisguise <玩家名字>				（让指定玩家取消变身）
+		@chardisguiseid <mob_id/npc_id/homun_id> <char_id>	（让指定玩家变身）
+		@charundisguiseid <char_id>				（让指定玩家取消变身）
+	☆加入如下脚本指令：
+		disguise <id>[,<char_id>];				（让指定玩家变身）
+		undisguise [<char_id>];					（让指定玩家取消变身）
+		disguiseall <id>;					（让所有玩家变身）
+		undisguiseall;						（让所有玩家取消变身）
+	☆反外挂系统中，未验证时的伤害值从1变成miss
+·DB更新
+	☆更新const.txt
+	☆更新homun_db.txt
+	☆更新item_upper.txt
+	☆更新item_value_db.txt
+	☆更新job_db2-2.txt
+	☆更新mob_boss.txt
+	☆更新mob_poring.txt
+·NPC更新
+	☆更新“npcdata\我的NPC\自动公告.txt”
+·config更新
+	☆更新atcommand_athena.conf，加入如下指令：
+		@disguise
+		@undisguise
+		@disguiseall
+		@undisguiseall
+		@chardisguise
+		@charundisguise
+		@chardisguiseid
+		@charundisguiseid
+	☆更新battle_athena.conf：
+		取消fuck_OpenKore_dropitem开关，改为输入错误2次验证码，金钱减半
+		加入can_attack_when_disguise开关
+		更新gm_skill_unconditional的说明
+	☆更新msg_athena.conf
+·其他更新
+	☆更新main.sql
+	☆增加v0.46-v0.47.sql。v0.46到v0.47升级的SQL脚本
+
+======================================================================
+【更新说明】Jathena++ v0.46 win-MySQL/TXT	(2006.5.14)
+======================================================================
+·程序更新
+	☆更新到JA2012
+	☆改进防复制系统
+	☆改进部分脚本指令
+	☆增强warp指令的用法。
+		旧用法：warp <gatname>,<x>,<y>;
+		新用法：warp <gatname>,<x>,<y>[,<char_id>];
+	☆把人工生命体的MAX数从16改成500
+	☆把怪物最大的ID改为20000
+·DB更新
+	☆更新packet_db.txt
+·config更新
+	☆更新battle_athena.conf
+·其他更新
+	☆增加v0.45-v0.46.sql
+	☆更新main.sql
+
+======================================================================
+【更新说明】Jathena++ v0.45 win-MySQL/TXT	(2006.5.7)
+======================================================================
+·程序更新
+	☆更新到JA1994
+	☆更新AthenaStarter.NET.dll
+	☆增强gethomuninfo指令的灵活性
+	☆解决一个复制物品的问题
+	☆修正人物仓库有低机率被清空的BUG
+	☆增加2个脚本指令：kill、killid。作用：杀死指定人物
+		kill <char_name>;
+		killid <char_id>;
+·DB更新
+	☆更新abra_db.txt
+	☆增加char_command.txt（玩家指令DB文件）
+	☆更新embryo_db.txt
+	☆更新item_arrowtype.txt
+	☆更新MFJA_item_extension.txt：
+		1、增加一个type2的功能--32768使用物品不消耗
+		2、格式改变。增加{脱下装备}的效果
+	☆更新mob_avail.txt
+	☆更新mob_boss.txt
+	☆更新mob_db.txt
+	☆更新skill_cast_db.txt
+·NPC更新
+	☆更新npcdata\monster\npc_monster.txt
+	☆更新npcdata\monster\npc_monster_future.txt
+	☆更新npcdata\warp\npc_warp_dun.txt
+	☆更新npcdata\warp\npc_warp_town.txt
+·config更新
+	☆更新atcommand_athena.conf
+	☆更新battle_athena.conf
+	☆增加help_charcommand.txt
+	☆更新msg_athena.conf
+	☆更新msg_MFJA.conf
+	☆更新map_athena.conf：删除read_grf_files_txt、data_grf、sdata_grf、adata_grf选项
+·其他更新
+	☆更新“main.sql”。此为SQL安装脚本完整版
+	☆增加“v0.44-v0.45.sql”，Jathena++ v0.44/Jathena v1925(或更后)到Jathena++ v0.45的SQL转换脚本
+	☆增加“CA2.0.0 -- JA++0.45.sql”，cAthena v2.0.0/v1.0.20到Jathena++ v0.45的SQL转换脚本
+	☆增加“CA1.0.19 -- JA++0.45.sql”，cAthena v1.0.19到Jathena++ v0.45的SQL转换脚本
+	☆增加“CA1.0.18 -- JA++0.45.sql”，cAthena v1.0.18到Jathena++ v0.45的SQL转换脚本
+	☆更新JA++指令说明
+
+======================================================================
+【更新说明】Jathena++ v0.44 win-MySQL/TXT	(2006.5.1)
+======================================================================
+    鉴于换了MySQL5.0后，不少人反映服务端不太稳定，但是也有些人说5.0更稳定。
+这其中有很多原因，可能是有些人升级5.0的时候升级步骤有点问题，所以导致服务端
+出现不稳定的情况。有人说5.0还不太普及，大部分还是在使用4.1，就像现在64位的
+操作系统一样还不普及。但是新事物最终还是要取代旧事物的，所以5.0还是以后的方
+向。既然大部分人还在使用4.1，太过超前也不好，那么以后都采用MySQL4.1作为数据
+库，等5.0普及后再更换。给大家造成的麻烦表示抱歉。
+
+·程序更新
+	☆更新到JA1972
+	☆更新Athena Studio.NET主程序：AthenaStudio.NET.exe
+	☆更新Athena Studio.NET插件：AthenaStarter.NET.dll（启动器）
+	☆增加Athena Studio.NET插件：AthenaDB_JobCode_Calculator.dll（DB职业代码计算器）
+	☆增加Athena Studio.NET插件：AthenaCodePage.NET.dll（Athena CodePage.NET）
+	☆免费版同时在线人数上限调整为120
+·config更新
+	☆增加atcommand_athena.conf
+	☆增加battle_athena.conf：
+		增加allow_homun_status_change开关
+		增加homun_intimate_rate开关
+		增加hvan_explosion_intimate开关
+		增加homun_skill_intimate_type开关
+		增加save_homun_temporal_intimate开关
+		增加homun_temporal_intimate_resilience开关
+		增加homun_speed_is_same_as_pc开关
+		增加master_get_homun_base_exp开关
+		增加master_get_homun_job_exp开关
+		增加petequip_drop_rate、arrow_drop_rate开关
+·DB更新
+	☆更新homun_db.txt
+	☆更新homun_skill_tree.txt
+	☆增加item_rjc2006.txt
+	☆更新skill_cast_db.txt
+	☆更新skill_db.txt
+	☆更新skill_unit_db.txt
+·MySQL更新
+	☆数据库更换回MySQL4.1版本
+	☆更新libmySQL.dll
+
+======================================================================
+【更新说明】Jathena++ v0.43 win-MySQL/TXT	(2006.4.24)
+======================================================================
+·程序更新
+	☆更新到JA1954
+	☆更新Athena Studio.NET
+	☆修正menu菜单的BUG
+·DB更新
+	☆更新homun_db.txt
+	☆更新skill_db.txt
+
+======================================================================
+【更新说明】Jathena++ v0.42 win-MySQL/TXT	(2006.4.23)
+======================================================================
+·程序更新
+	☆更新到JA1951
+	☆修正交易和仓库还能同时进行的BUG
+	☆加入Athena Studio.NET免费版并附带部分插件
+	☆修正successremovecards和getequipcardcnt脚本指令不能检测新卡的BUG
+	☆修正工会等级达到MAX时继续升级变回1级的BUG
+	☆修正@allskill技能全部消失的BUG
+·config更新
+	☆更新atcommand_athena.conf
+	☆更新battle_athena.conf
+	☆更新map_athena.conf
+	☆更新msg_athena.conf
+·DB更新
+	☆更新castle_db.txt
+	☆增加embryo_db.txt
+	☆更新exp_homun.txt
+	☆更新homun_db.txt
+	☆更新homun_skill_tree.txt
+	☆更新item_arrowquiver.txt
+	☆更新item_avail.txt
+	☆更新item_bluebox.txt
+	☆更新item_cardalbum.txt
+	☆更新item_db.txt
+	☆更新item_diamond_armor.txt
+	☆更新item_diamond_helm.txt
+	☆更新item_diamond_hood.txt
+	☆更新item_diamond_shield.txt
+	☆更新item_diamond_shoes.txt
+	☆更新item_diamond_weapon.txt
+	☆更新item_fabox.txt
+	☆更新item_food.txt
+	☆更新item_jewel_box.txt
+	☆更新item_mask.txt
+	☆更新item_pet.txt
+	☆更新item_scroll.txt
+	☆更新mob_skill_db.txt
+	☆更新packet_db.txt
+	☆更新produce_db.txt
+	☆更新skill_cast_db.txt
+	☆更新skill_db2.txt
+	☆更新skill_db.txt
+	☆更新skill_require_db2.txt
+	☆更新skill_tree.txt
+	☆更新skill_unit_db.txt
+·其他更新
+	☆更新libmySQL.dll
+	☆SQL数据库从4.1升级到5.0
+
+======================================================================
+【更新说明】Jathena++ v0.41 win-MySQL/TXT	(2006.4.16)
+======================================================================
+·程序更新
+	☆更新到JA1925fix
+	☆修正防复制系统的一个BUG
+	☆在battle_athena.conf加入以下开关：
+		gvg_edp_down_rate
+		show_always_party_name
+		check_player_name_global_msg
+		check_player_name_party_msg
+		check_player_name_guild_msg
+		trade_when_open_storage
+		mob_class_change_guardian
+	☆加入refitem脚本指令。用法：refitem <n>,<val>[,<CharID>];
+	☆加入@chardelitem和@chardelitemid，删除指定人物身上的物品。用法：
+		@chardelitem <物品id> <数量> <人物名>
+		@chardelitemid <物品id> <数量> <char_id>
+	☆加入@charbaselvlid和@charbaselvlid2，调节指定玩家的base等级。用法：
+		@charbaselvlid <数字> <char_id>
+		@charbaselvlid2 <数字> <account_id>
+	☆加入@charjlvlid和@charjlvlid2，调节指定玩家的Job等级。用法：
+		@charjlvlid <数字> <char_id>
+		@charjlvlid2 <数字> <account_id>
+	☆加入@charstatsid和@charstatsid2，列出指定玩家的加点情况。用法：
+		@charstatsid <char_id>
+		@charstatsid2 <account_id>
+	☆加入@charmodel和@charmodelid，修改指定玩家的发型、发色、衣服颜色。用法：
+		@charmodel <x> <y> <z> <玩家名字>
+		@charmodelid <x> <y> <z> <char_id>
+·config更新
+	☆更新atcommand_athena.conf
+	☆更新battle_athena.conf
+	☆更新grf-files.txt
+	☆更新msg_athena.conf
+·DB更新
+	☆更新item_db.txt
+	☆更新skill_db.txt
+	☆更新skill_tree.txt
+·数据库升级
+	☆增加1901-1922.sql
+	☆更新main.sql
+
+======================================================================
+【更新说明】Jathena++ v0.40 win-MySQL/TXT	(2006.4.10)
+======================================================================
+·程序更新
+	☆修正set指令扩展无效的BUG
+
+======================================================================
+【更新说明】Jathena++ v0.39 win-MySQL/TXT	(2006.4.9)
+======================================================================
+·程序更新
+	☆更新到JA1901
+	☆增加GM指令：@charjobid、@charjobid2
+	☆修正关闭反外挂系统时，人物无法使用技能的BUG。验证码从1-9位变为1-8位
+	☆反外挂系统每次发送不同颜色的几个验证码，要求玩家输入不同颜色的一个。输入错误一次，濒死；输入错误两次，死亡+随机掉一种物品
+	☆修正防复制系统的一些问题
+	☆启动器更新
+	☆增加GM指令：cloneskill、cloneskill2
+·脚本更新
+	☆更新npc_monster.txt
+	☆更新npc_monster_future.txt
+·DB更新
+	☆更新homun_db.txt
+	☆更新skill_db.txt
+	☆增加skill_db2.txt
+	☆更新guild_skill_tree.txt
+	☆更新skill_misfire.txt
+	☆更新skill_require_db2.txt
+	☆更新skill_unit_db.txt
+	☆更新item_bluebox.txt
+	☆更新item_db.txt
+	☆更新mob_db.txt
+	☆更新skill_cast_db.txt
+·config更新
+	☆更新atcommand_athena.conf
+	☆更新battle_athena.conf
+	☆更新msg_MFJA.conf
+	☆更新converter_athena.conf
+	☆更新msg_athena.conf
+	☆更新inter_athena.conf
+·数据库升级
+	☆增加1881-1901.sql
+	☆更新main.sql
+
+======================================================================
+【更新说明】Jathena++ v0.38 win-MySQL/TXT	(2006.4.4)
+======================================================================
+·程序更新
+	☆更新到JA1881
+	☆修改distance脚本指令的用发，新用法为：
+		distance(<id>[,<name>])		返回人物与NPC之间的距离
+	☆修正skillup_limit开关
+	☆加入完善的反外挂系统，不再使用反外挂传送点。新的反外挂系统的特点：
+		1、物每次登陆时，系统会以公告形式发送彩色的验证码，玩家必须以<公聊频道>输入正确的验证码，否则将会受到限制
+		2、不输入验证码，移动速度将变成1000（最慢）、每次普通攻击伤害为1、不能使用技能
+		3、输入验证码后，限制马上解除。只要人物不下线，就不需要重新输入验证码
+		4、第一次输入错误，SP=0、HP=1；再输入错误，马上死亡
+		5、可使用GM指令重设玩家的验证码，另其变为未验证状态：
+		格式：	@setcode <玩家名字>	//设置玩家为未验证状态
+			@setcodeid <char_id>	//设置玩家为未验证状态
+			@setcodeall		//设置所有玩家为未验证状态
+	☆启动器更新
+		加入功能：服务器在线人数为0时，可以设置一定时间后自动重启
+		加入功能：可以选择启动Login、Char、Map后的IP地址的序号（主要针对DNS检测功能）
+·脚本更新
+	☆更新npc_warp_alpha.txt
+	☆更新npc_warp_dun.txt
+	☆更新npc_warp_fild.txt
+	☆更新npc_warp_town.txt
+	☆更新npc_warp_vs.txt
+	☆取消“反外挂函数.txt”
+	☆更新“自动公告.txt”
+	☆更新“昼夜系统.txt”
+·DB更新
+	☆更新produce_db.txt
+	☆更新job_db2-2.txt
+	☆更新skill_db.txt
+	☆更新skill_unit_db.txt
+·config更新
+	☆更新map_athena.conf，取消反外挂函数
+	☆更新battle_athena.conf：
+		加入fuck_OpenKore、fuck_OpenKore_code_length、no_code_level开关
+		更新gm_all_skill的说明
+	☆更新char_athena.conf
+	☆更新login_athena.conf
+	☆更新msg_MFJA.conf
+	☆更新msg_athena.conf
+	☆更新atcommand_athena.conf：
+		加入：@monstermap
+		加入：@setcode、@setcodeid、@setcodeall，设置玩家为未验证状态
+		格式：	@setcode <玩家名字>	//设置玩家为未验证状态
+			@setcodeid <char_id>	//设置玩家为未验证状态
+			@setcodeall		//设置所有玩家为未验证状态
+
+======================================================================
+【更新说明】Jathena++ v0.37 win-MySQL/TXT	(2006.4.2)
+======================================================================
+·程序更新
+	☆更新到JA1871
+	★重新优化和简化了代码，修正了不少BUG，稳定性大大提高了。
+	☆修正@reloadmfja时以删除的物品的type2属性仍然保留的BUG
+	☆重新加入了所有脚本指令，并且简化了代码
+	☆@readvars、@writevars追加，可以读取和写入人物变量，用法：
+		@writevars <变量> <数值> <人物名字>
+		@readvars <变量> <人物名字>
+	★重新加入35个脚本指令，并简化和优化了代码，增强了部分指令的灵活性。请查看“JA++指令说明\JA++专用脚本指令.htm”
+	★提高了JA里一共62个脚本指令的灵活性，可以实现很多以前无法实现的任务。请查看“JA++指令说明\JA++增强脚本指令.htm”
+·DB更新
+	☆更新skill_cast_db.txt
+	☆更新skill_require_db2.txt
+	☆更新skill_db.txt
+	☆更新mob_skill_db.txt
+	☆更新job_db1.txt
+	☆更新mob_db.txt
+	☆更新item_db.txt
+	☆更新pet_db.txt
+	☆更新skill_tree.txt
+	☆更新skill_require_db.txt
+	☆新增exp_homun.txt
+	☆新增homun_db.txt
+	☆新增homun_skill_tree.txt
+·脚本更新
+	☆更新npc_monster.txt
+	☆更新npc_monster_future.txt
+	☆更新npc_warp_dun.txt
+	☆更新npc_warp_fild.txt
+	☆更新npc_warp_town.txt
+	☆更新payg_cas01.txt
+	☆更新payg_cas02.txt
+	☆更新payg_cas03.txt
+	☆更新payg_cas04.txt
+	☆更新payg_cas05.txt
+	☆更新prtg_cas01.txt
+	☆更新prtg_cas02.txt
+	☆更新prtg_cas03.txt
+	☆更新prtg_cas04.txt
+	☆更新prtg_cas05.txt
+·config更新
+	☆更新atcommand_athena.conf
+	★更新battle_athena.conf（改动了几处地方，建议以新的battle_athena.conf为基础重新设定里面的设置）
+	☆更新GM_account.txt（更新了2个注释）
+	☆更新mapflag.txt
+	☆更新water_height.txt
+	★更新msg_athena.conf
+	★更新msg_MFJA.conf
+	★更新map_athena.conf（加入各城市不能使用大范围魔法的mapflag文件）
+	★增加mapflag_noskill.txt
+	★增加mapflag_noitem.txt
+·其他更新
+	★更新启动器日志分类的配置文件（记录日志的关键字变了）
+
+======================================================================
+【更新说明】Jathena++ v0.36 win-MySQL/TXT	(2006.3.26)
+======================================================================
+·程序更新
+	☆更新到JA1856
+	☆取消脚本指令charset，并增强set指令，新的set指令用法如下：
+		set <变量>,<数值>[,<人物名字>];
+		简单的说，就是在不改变原来set的用法下，加入<人物名字>可选项
+	☆更新昼夜系统。修正人物登陆时发光的BUG
+	☆修正@whomap指令
+	☆增加GM指令@recallmap。召唤指定地图的玩家，方便捉外挂。用法：@recallmap [<地图名>]
+	☆启动器更新
+	☆加入GM指令@reloadmfja。重读所有JA++特有的设置。
+·脚本更新
+	☆更新转生任务。修正最后一个传送点无限传送不进去的BUG。
+	☆更新反外挂函数
+	☆更新自动公告NPC
+	☆更新npc_monster.txt
+	☆更新npc_monster_future.txt
+·DB更新
+	☆skill_require_db2.txt更新
+	☆skill_db.txt更新。技能520
+	☆item_bluebox.txt更新
+	☆item_cardalbum.txt更新
+	☆item_db.txt更新
+	☆item_violetbox.txt更新
+	☆mob_db.txt更新
+	☆mob_skill_db.txt更新
+	☆skill_cast_db.txt更新
+	☆MFJA_item_extension.txt增加。设置物品的额外属性，现在只有type2属性：
+		<Type2>对照表（可叠加）：
+		0	无限制
+		1	临时物品，退出游戏会消失
+		2	死亡后会消失
+		4	不能丢弃
+		8	不能交易给人
+		16	不能卖NPC商店
+		32	不能放个人仓库
+		64	不能放工会仓库
+		128	不能放手推车
+		256	超重50%时不能使用
+		512	组队时不能使用
+		1024	不组队时不能使用
+		2048	结婚不能使用
+		4096	单身不能使用
+		8192	携带宠物时不能使用
+		16384	不携带宠物时不能使用
+·config更新
+	☆atcommand_athena.conf更新。自定义GM指令(JA中没有的)更新
+	☆battle_athena.conf更新，增加以下选项：
+		casting_penalty_type
+		casting_penalty_weapon
+		casting_penalty_shield
+		casting_penalty_armor
+		casting_penalty_helm
+		casting_penalty_robe
+		casting_penalty_shoes
+		casting_penalty_acce
+		casting_penalty_arrow
+	☆msg_MFJA.conf更新
+
+======================================================================
+【更新说明】Jathena++ v0.35 win-MySQL/TXT	(2006.3.21)
+======================================================================
+·程序更新
+	☆更新到JA1847
+	☆继续完善防复制功能
+	☆添加昼夜系统（可设置新旧效果）
+	☆新增脚本指令isday。返回1时表示服务器是白天状态，返回0时是夜晚状态。格式：isday;
+	☆新增脚本指令isnight。返回1时表示服务器是夜晚状态，返回0时是白天状态。格式：isnight;
+	☆新增脚本指令charset。可设置指定人物的变量。格式：charset "<人物名字>",<变量名>,<数值>;
+·脚本更新
+	☆更新死亡之城NPC
+	☆离婚任务更新。修正离婚后HP、SP不减的BUG。
+	☆更新反外挂函数：
+		输入验证码错误3次才公告到服务器中。3次之前，验证码错误都会陷入濒死状态。
+		把其中announce那一行改掉了，可以方便记录日志。打开GM指令日志文件，搜索“<外挂来啦>”就可以知道有多少人中招了。
+·DB更新
+	☆job_db2-2.txt更新。更新神工匠职业加成
+	☆job_db2.txt更新。加入忍者和枪手的职业加成
+	☆skill_cast_db.txt更新
+	☆skill_db.txt更新
+	☆skill_require_db2.txt增加
+	☆skill_require_db.txt更新
+	☆skill_tree.txt更新
+·config更新
+	☆battle_athena.conf更新
+		加入new_night开关。设置是否应用新的夜晚效果
+		加入itemidentify开关
+		取消skill_arrow_decrement开关(和skill_require_db2.txt重复)
+
+======================================================================
+【更新说明】Jathena++ v0.34 win-MySQL/TXT	(2006.3.19)
+======================================================================
+·程序更新
+	☆更新到JA1841(map-server)
+	☆noskill和noskill限制每个地图最多设置100个
+	☆修正1839内存使用量过大的BUG
+·config更新
+	☆汉化battle_athena.conf的一些文字
+	☆汉化char_athena.conf的一些文字
+	☆汉化httpd.conf的一些文字
+	☆汉化inter_athena.conf的一些文字
+	☆汉化login_athena.conf的一些文字
+	☆汉化socket.conf的一些文字
+·DB更新
+	☆skill_db.txt更新，并汉化了新职业(忍者、枪手)技能的名字
+	☆skill_require_db.txt更新，并汉化了新职业(忍者、枪手)技能的名字
+	☆skill_unit_db.txt更新，并汉化了新职业(忍者、枪手)技能的名字
+	☆汉化const.txt的一些文字
+	☆汉化guild_skill_tree.txt的一些文字
+	☆汉化item_arrowtype.txt的一些文字
+	☆item_db.txt更新。加了一行中文注释
+	☆job_db2.txt更新。更新了中文注释
+	☆汉化mob_avail.txt的一些文字
+	☆汉化mob_db.txt中部分怪物的名字
+	☆汉化mob_poring.txt中“金属波利”的名字
+	☆汉化mob_skill_db.txt的部分注视
+	☆packet_db.txt更新。去掉了2005-05-09aSakexe和2005-01-10bSakexe的注释
+	☆汉化skill_cast_db.txt新职业(忍者、枪手)技能的名字
+	☆汉化skill_misfire.txt新职业(忍者、枪手)技能的名字
+	☆汉化skill_prohibition_zone.txt新职业(忍者、枪手)技能的名字
+	☆汉化skill_tree.txt新职业(忍者、枪手)技能的名字
+
+======================================================================
+【更新说明】Jathena++ v0.33 win-MySQL/TXT	(2006.3.19)
+======================================================================
+·程序更新
+	☆更新到JA1839(char-server、map-server)
+	☆启动器更新。可以自定义最新动态信息
+	☆更新mapflag：
+		----------------------------------
+		原来的noskill改为noskillall，使用格式不变，禁止在某个地图上使用所有技能
+		格式：prontera.gat	mapflag	noskillall
+		意思为禁止在首都使用所有技能。
+
+		现在的noskill为设置单个技能不能使用。
+		格式：prontera.gat	mapflag	noskill	89
+		意思为禁止在首都使用“暴风雪”技能。
+		注意：同一个地图最多能用noskill设置禁止使用2048种技能。
+		----------------------------------
+		增加noitemall和noitem。使用格式和noskillall、noskill一样。
+		注意：同一个地图最多能用noitem设置禁止使用65535种物品。
+		----------------------------------
+·config更新
+	☆battle_athena.conf更新：
+		更新boss_no_knockbacking的说明
+		更新dropitem_itemrate_fix的说明
+·DB更新
+	☆const.txt更新
+
+======================================================================
+【更新说明】Jathena++ v0.32 win-MySQL/TXT	(2006.3.18)
+======================================================================
+·更新到JA1837
+·个人仓库从2000上限变成1000上限（超过1000时，打开仓库和储存仓库有BUG）
+·工会人数上限更新为96。可通过inter_athena.conf的guild_extension_increment选项设置
+·继续改进防复制系统
+·提高自动储存的效率
+
+======================================================================
+【更新说明】Jathena++ v0.31 win-MySQL/TXT	(2006.3.17)
+======================================================================
+·更新到JA1836
+·以公告形式加入“版本信息”，在线人数上限80人。
+·启动器更新
+	加入反外挂传送点生成器（适用于所有Athena）
+	增加Jathena++的最新动态信息
+·让所有传送点带有反外挂功能：
+	人物初次登陆时，经过任何一个传送点都需要输入验证码进行验证。正确输入一次后，只要人物不下线，经过任何一个传送点都不再需要输入验证码。
+·增加脚本指令callnpc，调用商店和NPC，格式如下：
+	callnpc "<NPC Name>",<flag>;
+		<NPC Name>--NPC名字
+		<flag>--1：商店的购买窗口、2：商店的出售窗口、3：点击商店时的窗口、4：NPC
+·修改结婚脚本的一处，可以更好的使用离婚脚本。离婚后，到结婚人员那里选“重新开始”就可以再婚了。
+
+======================================================================
+【更新说明】Jathena++ v0.30 win-MySQL/TXT	(2006.3.15)
+======================================================================
+·更新到JA1831
+·@recall、@recallid、@recallid2日志更新，加入显示<源地图+坐标>到<目标地图+坐标>
+
+======================================================================
+【更新说明】Jathena++ v0.29 win-MySQL/TXT	(2006.3.14)
+======================================================================
+·更新到JA1829
+·在battle_athena.conf中加入几个开关：
+	log_gm_command		是否显示GM指令使用日志(关键字：[GM指令])
+	log_trade		是否显示交易记录日志(关键字：[交易记录])
+	log_GlobalMessage	是否显示公聊频道聊天记录(关键字：<聊天记录>--<公聊频道>)
+	log_GuildMessage	是否显示工会频道聊天记录(关键字：<聊天记录>--<工会频道>)
+	log_PartyMessage	是否显示队伍频道聊天记录(关键字：<聊天记录>--<队伍频道>)
+	log_WhisperMessage	是否显示密聊频道聊天记录(关键字：<聊天记录>--<密聊频道>)
+	log_ChatroomMessage	是否显示聊天室的聊天记录(关键字：<聊天记录>--<聊天室>)
+·启动器更新：
+	把日志分类记录的关键字限制为字符串的开头，不再是任意位置
+	自动备份mapreg.txt更加严密，非0字节的mapreg.txt才进行备份
+·GM_account.txt格式更改：
+	格式：<AccountID> <GM_Level> <flag>
+		<AccountID>--GM的AccountID。默认GM身份为2000000开始
+		<GM_Level>--GM等级，范围1-99级。
+			GM等级必须对应atcommand_athena.conf里面设置使用命令的等级
+			例：2000000 10  在atcommand_athena.conf里面设置item: 10
+			那么在游戏中使用@item命令 只有2000000的GM有权限使用
+		<flag>--标志。限制GM的动作（可叠加）
+			0--无任何限制
+			1--不能交易物品
+			2--不能使用NPC商店
+			4--不能扔物品
+			8--不能把物品放个人仓库
+			16--不能把物品放工会仓库
+			32--不能把物品放手推车
+	可以自行添加其他GM格式如：2000000 1 0
+·增加msg_MFJA.conf文件。把程序部分字符串抽取出来，方便翻译
+
+======================================================================
+【更新说明】Jathena++ v0.28 win-MySQL/TXT	(2006.3.13)
+======================================================================
+·更新到JA1826
+·启动器更新：
+	--软件界面大小改为可以调整
+	--加入自动备份mapreg.txt的功能
+	--日志分类增加“修改”功能
+
+======================================================================
+【更新说明】Jathena++ v0.27 win-MySQL/TXT	(2006.3.11)
+======================================================================
+·更新到JA1819
+·加入交易记录。请使用服务端自带的启动器记录交易记录，设置如下：
+	1、选择Map界面
+	2、选择“日志分类”
+	3、鼠标右键选“增加记录”
+	4、“关键字”那里填写“[交易记录]”，其他输入位置可以自行设置
+ps.JA++暂时支持2种日志分类记录，关键字为“[GM指令]”和“[交易记录]”，可以使用自带的启动器记录在文件中。
+
+======================================================================
+【更新说明】Jathena++ v0.26 win-MySQL/TXT	(2006.3.10)
+======================================================================
+·更新到JA1814
+
+======================================================================
+【更新说明】Jathena++ v0.25 win-MySQL/TXT	(2006.3.9)
+======================================================================
+·程序更新
+	更新到JA1810
+	更新启动器。加入日志分类功能，取消所有限制。修正了长时间使用内存不释放的BUG。
+	完善enable_items、disable_items指令
+	增加以下GM指令：@mute、@unmute
+	玩家死亡时掉落的物品可以最多设定10个，随机掉1个
+	改进@refine指令，最大能精炼到+255。超过+255会变回+0
+	改进battle_athena.conf中的disp_hpmeter选项，可以设定多少级的GM才能看到非组队的血量
+	增强@charstats指令
+	修复冲锋箭不能打飞敌人的BUG
+	battle_athena.conf中加入steal_skillpoint开关，技能升级是否允许偷点：
+		0: 基本技能升到9才会出现一转技能；一转技能点数到49点才会出现二转技能
+		1: 基本技能升到7就会出现一转技能；二转技能的升级只受技能树限制，不需要一转技能点数加到49
+·DB更新
+	item_db.txt更新
+	exp.txt更新
+	job_db1.txt更新
+	mob_db.txt更新
+	size_fix.txt更新
+	skill_cast_db.txt更新
+	skill_db.txt更新
+	skill_tree.txt更新
+	skill_unit_db.txt更新
+·脚本更新
+	更新离婚任务（一些无关紧要的文字描述）
+	添加JA的3个脚本：
+		Ragnarok Online Regional Board Etc Script(汉化:chiho、更新:LKM)
+		死亡之城的NPC和任务(汉化:LKM)
+		汶巴拉的NPC和任务(汉化:LKM)
+
+======================================================================
+【更新说明】Jathena++ v0.24 win-MySQL/TXT	(2006.2.17)
+======================================================================
+·更新到JA1783fix
+·更新启动器，对应这次及今后发布的Jathena++
+·const.txt更新
+
+======================================================================
+【更新说明】Jathena++ v0.23 win-MySQL/TXT	(2006.2.15)
+======================================================================
+·服务端名字改为[M/F]Jathena
+·更新启动器
+·更新到JA1779
+·修正JA的狸猫卡BUG
+
+======================================================================
+【更新说明】Jathena++ v0.22 win-MySQL/TXT	(2006.2.9)
+======================================================================
+·更新到JA1778fix
+·取消旧的启动器，加入新的启动器
+·更新服务器的输出信息流，让启动器能无误读取输出信息
+
+======================================================================
+【更新说明】Jathena++ v0.21 win-MySQL/TXT	(2006.2.5)
+======================================================================
+·更新到JA1774
+·修正防复制功能的一些问题
+
+======================================================================
+【更新说明】Jathena++ v0.20 win-MySQL/TXT	(2006.2.4)
+======================================================================
+·更新到JA1773
+·加入几个时间标签，让脚本支持CA默认的自动GVG脚本。以下是加入了的时间标签：
+	OnSecond
+	OnWeekTime
+	OnDateTime
+	OnDayTime
+·更新自动GVG脚本，脚本更简洁，结构更清晰
+·char_athena.conf、login_athena.conf、map_athena.conf更新：autosave_time选项的单位恢复成秒。
+·修正判断掉落物品类型的一个小问题
+·加强防复制功能
+·skill_db.txt更新
+·skill_cast_db.txt更新
+·把未完全汉化的一些文件汉化：
+	item_db.txt
+	skill_db.txt
+	skill_cast_db.txt
+	skill_misfire.txt
+	skill_require_db.txt
+	skill_tree.txt
+
+======================================================================
+【更新说明】Jathena++ v0.19 win-MySQL/TXT	(2006.2.1)
+======================================================================
+·更新到JA1771-fix
+·脚本中支持三目运算符(?:)，用法如下：
+	格式：(表达式1)?(表达式2):(表达式3)
+	说明：如果表达式1为真，则返回表达式2的值；否则就返回表达式3的值。通常，这个值将赋给某个变量。
+	举例：z=(x>y)?x:y;	//z的值将得到x和y之间较大的一个
+·修正JA无法无限丢出装备的BUG
+
+======================================================================
+【更新说明】Jathena++ v0.18 win-MySQL/TXT	(2006.1.28)
+======================================================================
+·更新到JA1769
+·battle_athena.conf更新，加入joint_struggle_exp_bonus和joint_struggle_limit选项
+·msg_athena.conf更新，加入130字符串
+·map_athena.conf更新，加入新职业快速转职脚本
+
+======================================================================
+【更新说明】Jathena++ v0.17 win-MySQL/TXT	(2006.1.25)
+======================================================================
+·更新到JA1766
+·修正服务器无法掉落武器的BUG
+·加入GM指令：
+	@charcartlist
+	@charitemlist
+	@jumptoid
+	@jumptoid2
+	@recallid
+	@recallid2
+	@kickid
+	@kickid2
+	@reviveid
+	@reviveid2
+	@killid
+	@killid2
+·atcommand_athena.conf更新（加入GM指令）：
+	@charcartlist
+	@charitemlist
+	@jumptoid
+	@jumptoid2
+	@recallid
+	@recallid2
+	@kickid
+	@kickid2
+	@reviveid
+	@reviveid2
+	@killid
+	@killid2
+·msg_athena.conf更新，汉化字符串129
+
+======================================================================
+【更新说明】Jathena++ v0.16 win-MySQL/TXT	(2006.1.23)
+======================================================================
+·FPE's [C/E]Jathena改名为[MIKO/FPE]Jathena
+·更新到JA1759
+·battle_athena.conf更新：
+	取消pet_equip_required开关
+	取消area_size开关
+	取消use_weapon_skill_range开关
+	更改finding_ore_drop_rate开关的说明
+·取消以下脚本指令：
+	petheal、petloot、petrecovery、petskillbonus
+·produce_db.txt更新
+·skill_db.txt更新
+·加入自动公告NPC
+·map_athena.conf
+	加入自动公告NPC
+
+======================================================================
+【更新说明】Jathena++ v0.15 win-MySQL/TXT	(2006.1.20)
+======================================================================
+·更新到JA1757
+·精炼材料加上“强化武器金属-级数一”和“强化武器金属-级数二”
+·produce_db.txt更新
+·battle_athena.conf更新
+	加入npc_shop_price_check开关（shop防刷钱功能）
+·修正自动GVG脚本
+
+======================================================================
+【更新说明】Jathena++ v0.14 win-MySQL/TXT	(2006.1.19)
+======================================================================
+·更新到JA1756
+·修正JA的掉率BUG
+·修正1755中双击物品弹出合成菜单的BUG
+·battle_athena.conf更新
+	取消item_rate
+
+	增加如下4个开关：
+		weapon_drop_rate
+		etc_drop_rate
+		expend_drop_rate
+		potion_drop_rate
+
+	修改equip_drop_rate定义，原来为“装备的掉率”，现在为“防具的掉率”
+
+	现在item_rate_details设置为0，分别计算以下掉率：
+		card_drop_rate（卡片掉率）
+		equip_drop_rate（防具掉率）
+		weapon_drop_rate（武器掉率）
+		etc_drop_rate（收集品掉率）
+		expend_drop_rate（消耗品掉率）
+		potion_drop_rate（恢复品掉率）
+		refine_drop_rate（精炼材料掉率）
+
+======================================================================
+【更新说明】Jathena++ v0.13 win-MySQL/TXT	(2006.1.18)
+======================================================================
+·更新到JA1755
+·produce_db.txt更新
+·skill_tree.txt更新
+·修正JA中使用物品ID判断卡片的问题（现在改为根据物品类型判断，使card_drop_rate真正生效）
+·battle_athena.conf更新
+	player_skillup_limit默认是no，现在改成默认是yes
+	加入weapon_drop_rate开关，控制武器掉落机率。equip_drop_rate现在为防具掉落机率。
+
+======================================================================
+【更新说明】Jathena++ v0.12 win-MySQL/TXT	(2006.1.8)
+======================================================================
+·更新到JA1748
+·atcommand_athena.conf更新	调整item3的位置、加入mailbox
+·battle_athena.conf更新	加入skill_arrow_decrement开关，设置使用技能时是否消耗箭（和普通攻击消耗箭分开）
+
+======================================================================
+【更新说明】Jathena++ v0.11 win-MySQL/TXT	(2005.12.31)
+======================================================================
+·更新JA1746的mob_db.txt
+·更新到JA1747
+·加入离婚任务（仿GF离婚任务，并修改了结婚任务的一处与之相适应）
+·增加GM指令@kamic、@repair
+·增加以下脚本指令：getwaitingpcid、npcskillattack、npcskillsupport、npcskillpos
+
+======================================================================
+【更新说明】Jathena++ v0.10 win-MySQL/TXT	(2005.12.25)
+======================================================================
+·更新到JA1746
+·好友人数上限更新为40
+·组队人数恢复成12
+
+======================================================================
+【更新说明】Jathena++ v0.09 win-MySQL/TXT	(2005.12.25)
+======================================================================
+·更新到JA1739
+·人物金钱数最大值更新为21E
+·修正玩家登陆时，其他玩家也会出现“技术支持”的BUG
+
+======================================================================
+【更新说明】Jathena++ v0.08 win-MySQL/TXT	(2005.12.22)
+======================================================================
+·更新到JA1736
+·修正脚本指令attachnpctimer
+·修正脚本指令detachnpctimer
+·修正脚本指令ispartneron
+·修正脚本指令npcspeed
+·修正脚本指令npcwalkto
+·修正脚本指令npcstop
+·修正脚本指令petloot
+·修正脚本指令sc_start4
+·修正脚本指令warpparty
+·修正脚本指令warpguild
+·强化@charstats指令
+·服务器能加载的地图更新为1024
+·人物金钱数最大值更新为20E
+·人物仓库更新为2000
+·工会仓库更新为1000
+·组队人数上限从12改为50
+·好友人数上限从20改成100
+·怪物最大ID值从2000更新为4000
+·加入技术支持信息
+
+·battle_athena.conf更新：
+	加入pet_equip_required开关，设置宠物是否装备了装备才能使用技能
+	加入area_size控制，设置有效范围（如@cleanmap的范围，宠物影响范围）
+	加入skillrange_from_weapon开关，设置技能范围是根据skill_db还是武器范围（yes为根据武器范围，no为根据skill_db的范围）
+	加入max_walk_speed控制，设置人物最大移动速度（1-1000，快-慢）
+
+======================================================================
+【更新说明】Jathena++ v0.07 win-MySQL/TXT	(2005.12.18)
+======================================================================
+·更新到JA1727-fix
+·加入脚本指令unequip
+·加入脚本指令warpparty
+·加入脚本指令warpguild
+·加入脚本指令warppartner
+·加入脚本指令max
+·加入脚本指令min（取代CA的脚本指令count）
+
+======================================================================
+【更新说明】Jathena++ v0.06 win-MySQL/TXT	(2005.12.18)
+======================================================================
+·更新到JA1722
+·继续修正JA中使用C++关键字new作为变量的问题
+·开放新职业
+
+======================================================================
+【更新说明】Jathena++ v0.05 win-MySQL/TXT	(2005.12.18)
+======================================================================
+·更新到JA1721
+·修正JA中使用C++关键字class作为变量的问题
+·加入脚本指令petskillbonus
+·加入脚本指令playerattached
+·加入脚本指令petskillattack2
+·加入脚本指令sqrt
+·加入脚本指令pow
+·加入脚本指令petstat
+·加入脚本指令sc_start4
+·加入脚本指令soundeffectall
+·加入脚本指令skilleffect
+·加入脚本指令specialeffect
+·加入脚本指令specialeffect2
+
+======================================================================
+【更新说明】Jathena++ v0.04 win-MySQL/TXT	(2005.12.15)
+======================================================================
+·更新到JA1719
+·加入脚本指令petheal
+·加入脚本指令petloot
+·加入脚本指令petrecovery
+
+======================================================================
+【更新说明】Jathena++ v0.03 win-MySQL/TXT	(2005.12.14)
+======================================================================
+·更新到JA1718
+·更新distance指令的算法
+·加入脚本指令hasitems
+·加入脚本指令isequipped
+·加入脚本指令ispartneron
+·加入脚本指令isequippedcnt
+·加入脚本指令makeitem
+·加入脚本指令mapwarp
+·加入脚本指令mobcount
+·加入脚本指令message
+·加入脚本指令npcskilleffect
+·加入脚本指令releaseall（为了和CA脚本兼容）
+·加入脚本指令npctalk
+·加入脚本指令npcspeed（NPC移动指令----设置NPC速度）
+·加入脚本指令npcwalkto（NPC移动指令----使NPC移动到指定的坐标）
+·加入脚本指令npcstop（NPC移动指令----使NPC停止移动）
+
+	NPC移动指令的用法：
+	npcspeed <speed value>;
+	npcwalkto <x>,<y>;
+	npcstop;
+
+======================================================================
+【更新说明】Jathena++ v0.02 win-MySQL/TXT	(2005.12.13)
+======================================================================
+·更新到JA1717
+·把打怪获得经验值的部分汉化
+·加入脚本指令getpartnerid（为了和CA脚本兼容）
+·加入脚本指令getchildid
+·加入脚本指令getitemslots
+·加入脚本指令getexp
+·加入脚本指令getsavepoint
+·加入脚本指令getstrlen
+·加入脚本指令getiteminfo
+·加入脚本指令getequipcardid
+·加入脚本指令atcommand
+·加入脚本指令checkoption1
+·加入脚本指令checkoption2
+·加入脚本指令cardscnt
+·加入脚本指令enable_items
+·加入脚本指令disable_items
+·加入脚本指令attachnpctimer
+·加入脚本指令detachnpctimer
+·加入脚本指令disablearena
+·加入脚本指令enablearena
+·加入脚本指令distance
+·加入脚本指令fakenpcname
+
+======================================================================
+【更新说明】Jathena++ v0.01 win-MySQL/TXT	(2005.12.11)
+======================================================================
+·更新到JA1716
+·@who命令强化
+·@who+命令强化
+·增加@whomap命令
+·加入脚本指令getpcxy（为了和CA脚本兼容）
+·加入脚本指令resetlvl（为了和CA脚本兼容）
+·加入脚本指令getbrokenid（为了和CA脚本兼容）
+·加入脚本指令repair（为了和CA脚本兼容）
+·加入脚本指令getlook（为了和CA脚本兼容）
+·加入脚本指令getitemid（为了和CA脚本兼容）
+·加入脚本指令sendmes2
+·加入脚本指令getweaponinfo

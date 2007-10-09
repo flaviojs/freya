@@ -1,0 +1,86 @@
+//--------------------------------------------------------------
+//               (c)2004-2007 Aurora Team Presents:             
+//                  ___                                         
+//                 /   |_   _ _ __ ___  _ __ __ _               
+//                / /| | | | | '__/ _ \| '__/ _` |              
+//               / ___ | |_| | | | (_) | | | (_| |++            
+//              /_/  |_|\____|_|  \___/|_|  \__,_|              
+//                 http://aurora.deltaanime.net                 
+//--------------------------------------------------------------
+//
+// item_diamond_weapon.txt
+// Diamond Weapon Random Database
+
+//--------------------------------------------------------------
+// Structure of Database:
+//--------------------------------------------------------------
+//
+// <ItemID>,<DummyName>,<Rate>
+//
+// Rate Examples:
+//  10000   = 1%
+//  500000  = 50%
+//  1000000 = 100%
+
+//--------------------------------------------------------------
+// Database Entries:
+//--------------------------------------------------------------
+
+0,Knife,1201
+1201,Knife,600000
+1101,Sword,500000
+1107,Blade,500000
+1116,Katana,500000
+1301,Axe,500000
+1607,Staff,500000
+1601,Rod,500000
+1701,Bow,500000
+1250,Jur,500000
+1108,Blade,50000
+1127,Saber,20000
+1128,Haedonggum,20000
+1155,Bastard Sword,20000
+1163,Claymore,50000
+1208,Main Gauche,50000
+1220,Gladius,20000
+1222,Damascus,20000
+1256,Katar of Frozen Icicle,20000
+1257,Katar of Quaking,20000
+1258,Katar of Raging Blaze,20000
+1259,Katar of Piercing Wind,20000
+1260,Sharpened Legbone of Ghoul,20000
+1261,Infiltrator,20000
+1361,Two Handed Axe,20000
+1408,Pike,50000
+1452,Guisarme,50000
+1461,Trident,20000
+1504,Mace,100000
+1520,Chain,20000
+1522,Stunner,100000
+1550,Book,50000
+1551,Bible,20000
+1552,Tablet,20000
+1553,Book of Billows,20000
+1554,Book of Mother Earth,20000
+1555,Book of the Blazing Sun,20000
+1556,Book of Gust of Wind,20000
+1605,Wand,100000
+1608,Staff,20000
+1711,Crossbow,20000
+1715,Arbalest,20000
+1716,Gakkung Bow,20000
+1802,Waghnak,20000
+1804,Knuckle Dusters,20000
+1806,Studded Knuckles,20000
+1808,Fist,20000
+1951,Rope,20000
+1953,Line,20000
+1955,Wire Whip,20000
+1957,Rante Whip,20000
+1959,Tail Whip,20000
+1902,Violin,20000
+1906,Lute,20000
+1908,Guitar,20000
+1910,Harp,20000
+1912,Gumoongoh,20000
+1529,Iron Driver,1000

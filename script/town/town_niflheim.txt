@@ -1,0 +1,1484 @@
+//--------------------------------------------------------------
+//               (c)2004-2007 Aurora Team Presents:             
+//                  ___                                         
+//                 /   |_   _ _ __ ___  _ __ __ _               
+//                / /| | | | | '__/ _ \| '__/ _` |              
+//               / ___ | |_| | | | (_) | | | (_| |++            
+//              /_/  |_|\____|_|  \___/|_|  \__,_|              
+//                 http://aurora.deltaanime.net                 
+//--------------------------------------------------------------
+// Script Title: Niflheim Town NPCs / Quests	Author: Tsuyuki
+//--------------------------------------------------------------
+// Revision History: v1.0
+//--------------------------------------------------------------
+//	1.0 First version, converted from Aegis [Tsuyuki]
+//--------------------------------------------------------------
+// Additional Notes: * Official-certified / Aegis-certified *
+//--------------------------------------------------------------
+
+
+//--------------------------------------------------------------
+// Niflheim Town NPCs - [Tsuyuki]
+//--------------------------------------------------------------
+
+
+nif_in.gat,16,27,1	script	Dead Chicken	800,{
+
+	percentheal -5,0;
+	mes "[Blind Chicken]";
+	mes "I was eaten by human when I was alive.";
+	mes "Now its time for me to eat you. CooCooCoo.";
+	mes "Haha, I never imagine there's such a world after I was dead. Coocoocoo.";
+	close;
+}
+
+nif_in.gat,16,30,4	script	Dead Vampiric Bat	799,{
+
+	percentheal -5,0;
+	mes "[Bathoman]";
+	mes "Whether you're dead or alive,";
+	mes "blood of human tastes good.";
+	mes "What?";
+	mes "Do you want me to suck your blood too?";
+	close;
+}
+
+niflheim.gat,195,211,6	script	Kikandia	796,3,3,{
+
+	if ((equippeditem(5038)) || (equippeditem(2257)) || (equippeditem(2256))) {
+		mes "["+strcharinfo(0)+"]";
+		mes "What can I do for you?";
+		next;
+		mes "[Kikandia]";
+		mes "I am the one who called you alright.";
+		mes "Come over here.";
+		next;
+		mes "[Kikandia]";
+		mes "Your horn has fallen aside,";
+		mes "You have to make sure that your horn is always at the right position,";
+		mes "because the Lord of Death is looking.";
+		close;
+	} else {
+		mes "[Kikandia]";
+		mes "The Lord of Death sees everything.";
+		close;
+	}
+
+OnTouch:
+	if ((equippeditem(5038)) || (equippeditem(2257)) || (equippeditem(2256))) {
+		mes "[Kikandia]";
+		mes "Wait for me!";
+		close;
+	}
+	end;
+}
+
+prt_in.gat,161,20,3	script	Aleuce	92,{
+
+	if (nif_revive == 0) {
+		mes "[Aleuce]";
+		mes "Wuwuwu...";
+		mes "HmmphHmphHmph...";
+		mes "Aery, you have left me...";
+		emotion ET_CRY,"Aleuce";
+		next;
+		switch(select("Comfort him","Ignore him")) {
+		case 1:
+			mes "[Aleuce]";
+			mes "Oh, thank you";
+			mes "Wuwu, I came back from my journey and find my wife Aery dead,";
+			mes "She hasn't even said good bye. That was so sad.";
+			next;
+			mes "[Aleuce]";
+			mes "I am looking for a way to tell Aery something.";
+			mes "And I heard about the City of Dead from my previous journeys.";
+			mes "Maybe I can find her there,";
+			mes "but I can't just leave the kids and set for there myself.";
+			next;
+			switch(select("Do you want me to help you pass the message?","What a pity.")) {
+			case 1:
+				mes "[Aleuce]";
+				mes "Really?";
+				mes "Uhoh, thank you so much.";
+				mes "I will never forget your kindness.";
+				next;
+				mes "[Aleuce]";
+				mes "If you see her, tell her that the incident a month ago is a misunderstanding.";
+				mes "I am sorry for that.";
+				mes "I am depending on you now.";
+				set nif_revive,1;
+				close;
+			case 2:
+				mes "[Aleuce]";
+				mes "Ah, isn't there any other way?";
+				mes "I am willing to pay any prizes";
+				mes "if someone helps me to pass the message...";
+				close;
+			}
+		case 2:
+			mes "[Aleuce]";
+			mes "Wuwu¡AAeryyyyy~~~~!";
+			mes "I never knew that's our last quarrel...";
+			mes "Wuwuwu...";
+			close;
+		}
+	} else if (nif_revive == 1) {
+		mes "[Aleuce]";
+		mes "I heard that there're always cries from the City of Dead.";
+		mes "It's around the abbey, but I am not so sure about it.";
+		mes "I am depending on you now.";
+		close;
+	} else if ((nif_revive == 5) || (nif_revive == 6)) {
+		mes "[Aleuce]";
+		mes "Ah! You really have gone there and return!";
+		mes "I am so thankful that you help me in this.";
+		mes "So, have you seen Aery?";
+		next;
+		switch(select("Yes","I didn't make it")) {
+		case 1:
+			if ((nif_revive == 6) && (countitem(934) > 0)) {
+				mes "[Aleuce]";
+				mes "Ohoh, what did she say?";
+				mes "Did she forgive me?";
+				next;
+				switch(select("Yes, and she ask me to bring something.")) {
+				case 1:
+					delitem 934,1;
+					mes "[Aleuce]";
+					mes "Ah...This is the present I gave her on our first date.";
+					mes "She was weak and always fell sick,";
+					mes "but I promise to take care of her forever...";
+					next;
+					mes "[Aleuce]";
+					mes "This happens when I went out to find medicine to cure her illness.";
+					mes "...................";
+					mes ".........";
+					next;
+					mes "[Aleuce]";
+					mes "You really can't imagine how grateful I am.";
+					mes "I want to pay your kindness, but all I have is the herb that I've gathered for her.";
+					mes "Please, take it.";
+					next;
+					set '@now_weight,(MaxWeight - Weight);
+					if ('@now_weight > 259) {
+						set nif_revive,7;
+						getitem 7141,2;
+						getitem 608,2;
+						getitem 610,10;
+						mes "[Aleuce]";
+						mes "Thank you so much.";
+						mes "I wish you have a safe journey...";
+						close;
+					} else if ('@now_weight < 260) {
+						mes "[Aleuce]";
+						mes "I want to give you something but you do not seem to be able to take it";
+						mes "Keep the other things and come again please.";
+						close;
+					}
+				}
+			} else if (nif_revive == 6) && (countitem(934) < 1) {
+				mes "[Aleuce]";
+				mes "Uhoh...If you've seen her, there must be some evidence...";
+				mes "Have you forgotten that?";
+				close;
+			} else {
+				mes "[Aleuce]";
+				mes "Are you kidding me?";
+				mes "How can you trick me? You're a bad person.";
+				close;
+			}
+		case 2:
+			if (nif_revive == 5) {
+				mes "[Aleuce]";
+				mes "Hmm...so you've failed...";
+				mes "Maybe it's a hard task after all. And what I asked for is way too much.";
+				next;
+				mes "[Aleuce]";
+				mes "Please take this as you have had a hard time helping me.";
+				next;
+				set '@now_weight,(MaxWeight - Weight);
+				if ('@now_weight > 99) {
+					set nif_revive,7;
+					getitem 610,10;
+					mes "[Aleuce]";
+					mes "Anyway, thank you for your help.";
+					mes "I wish you a safe journey...";
+					close;
+				} else if ('@now_weight < 100) {
+					mes "[Aleuce]";
+					mes "I want to give you something but you do not seem to be able to take it";
+					mes "Keep the other things and come again please.";
+					close;
+				}
+			} else {
+				mes "[Aleuce]";
+				mes "This...";
+				mes "...Isn't this Aery's belongings?";
+				mes "How could you lied to me...";
+				close;
+			}
+		}
+	} else if (nif_revive == 7) {
+		mes "[Aleuce]";
+		mes "I wish you a safe journey...";
+		close;
+	}
+}
+
+umbala.gat,215,181,3	script	Billy	733,{
+
+	if (nif_revive == 1) {
+		mes "[Billy]";
+		mes "City of Dead...";
+		mes "It is very dangerous there, and you better stay away from there.";
+		mes "But why do you want to go there on the first place?";
+		next;
+		switch(select("I need to meet a person","It's part of the adventure.")) {
+		case 1:
+			mes "[Billy]";
+			mes "Meet a person...";
+			mes "Are you going to meet a dead person...";
+			mes "It could be very difficult...";
+			next;
+			mes "[Billy]";
+			mes "Go and find a girl named Fayelyn, tell her I told you so.";
+			mes "She likes rose, get her one and she will surely be happy.";
+			set nif_revive,2;
+			next;
+			mes "[Billy]";
+			mes "Go north from here and you will see the City of Dead. Be careful.";
+			mes "Take note that it will be a dangerous journey even for a highly trained adventurer.";
+			close;
+		case 2:
+			mes "[Billy]";
+			mes "Haha, so you like adventure too.";
+				mes "Although it is a danger zone, the salvation is good. Just be careful and you might be able to return.";
+			close;
+		}
+	} else if (nif_revive == 0) {
+		mes "[Billy]";
+		mes "Anything else? If not, just go away!";
+		close;
+	} else if (nif_revive > 1) {
+		mes "[Billy]";
+		mes "Hey, long time.";
+		mes "Let meets at the City of Dead if we had a chance, hahahaha.";
+		emotion ET_BEST,"Billy";
+		close;
+	}
+}
+
+niflheim.gat,153,215,3	script	Fayelyn	794,{
+
+	if (nif_revive == 2) {
+		mes "[Fayelyn]";
+		mes "Dying young...";
+		mes "How unlucky you are.";
+		next;
+		mes "[Fayelyn]";
+		mes "............";
+		mes "Wait, you're not dead yet.";
+		mes "It must be hard to walk into here. Alive...";
+		next;
+		mes "[Fayelyn]";
+		mes "Are you coming here to save someone? Or you bear another reason?";
+		mes "If you're trying to meet a Dead person, you're wrong.";
+		mes "None of the resident in Niflheim has such ability.";
+		next;
+		mes "[Fayelyn]";
+		mes "Although you have a tough adventure to come here, you can't save anyone here.";
+		mes "Please leave before you encounter any grave danger.";
+		set nif_revive,3;
+		close;
+	} else if (nif_revive == 3) {
+		mes "[Fayelyn]";
+		mes "Which part of leave do you not understand?";
+		mes "I don't know anything even if you ask me.";
+		emotion ET_FRET,"Fayelyn";
+		next;
+		switch(select("But...","I'm sorry")) {
+		case 1:
+			mes "[Fayelyn]";
+			mes "You must have heard something from someone, haven't you?";
+			mes "I don't knwo who tell you this, but that won't work.";
+			mes "I won't tell you a thing.";
+			set nif_revive,4;
+			close;
+		case 2:
+			mes "[Fayelyn]";
+			mes "Be careful on your way back.";
+			mes "It's not good staying here for too long.";
+			close;
+		}
+	} else if (nif_revive == 4) {
+		if (countitem(748) > 0) {
+			mes "[Fayelyn]";
+			mes "Oh...so you heard that from Billy.";
+			mes "He helped me before...";
+			next;
+			mes "Then remember this before I tell you anything,";
+			mes "you might have to pay a higher prize than this.";
+			mes "If you can bear with that, I will tell you.";
+			next;
+			switch(select("I'm ready","I don't think so.")) {
+			case 1:
+				if ((BaseLevel > 79) && (BaseLevel < 100)) {
+					mes "[Fayelyn]";
+					mes "Since you insist, let me tell you.";
+					mes "But don't tell another soul. This spell is forbidden.";
+					next;
+					mes "[Fayelyn]";
+					mes "This spell needs a great sacrifice.";
+					mes "According to the batter system, you need to pay a certain prize and sacrifice,";
+					mes "in order to meet with the dead one.";
+					next;
+					mes "[Fayelyn]";
+					mes "There might be a certain rate of failure though.";
+					mes "The required item is Leaf of Yggdrassil x 10.";
+					mes "Are you ready to cast the spell?";
+					next;
+					switch(select("Yes","No")) {
+					case 1:
+						if (countitem(610) > 9) {
+							mes "[Fayelyn]";
+							mes "Let's begin.";
+							mes "Umbasakasabaha";
+							mes "Umbaumbahubaba!";
+							mes "YeahAikEyYee!";
+							next;
+							set '@nif_revive1,rand(1,100);
+							if (('@nif_revive1 > 0) && ('@nif_revive1 < 88)) {
+								mes "[Fayelyn]";
+								mes "Wahahahaha!";
+								mes "I'm sorry, the summoning has failed.";
+								mes "I am really sorry that you have gone through such hardship.";
+								emotion ET_HUK,"Fayelyn";
+								delitem 748,1;
+								delitem 610,10;
+								set nif_revive,5;
+								percentheal -99,0;
+								close;
+							} else if (('@nif_revive1 > 87) && ('@nif_revive1 < 101)) {
+								delitem 748,1;
+								delitem 610,10;
+								percentheal -50,0;
+								mes "[Fayelyn]";
+								mes "..........";
+								mes "..........";
+								next;
+								mes "[Aery]";
+								mes "..........";
+								mes ".....Hoho";
+								mes "I am a dead person...";
+								mes "Who are you?";
+								next;
+								switch(select("I accept your husband's request.")) {
+								case 1:
+									mes "[Aery]";
+									mes "Is that so...It's a pity I haven't seen him at my last moments...";
+									mes "What does he has to say?";
+									next;
+									switch(select("He is sorry about the incident that happened a month ago")) {
+									case 1:
+										mes "[Aery]";
+										mes "Haiz, what a kind person...";
+										mes "He still took this in his heart.";
+										mes "He don't have to apologize for that. Instead, I should.";
+										next;
+										mes "[Aery]";
+										mes "If you meet him again, tell him to forget about me and move on.";
+										mes "Please give this to him.";
+										set nif_revive,6;
+										getitem 934,1;
+										next;
+										mes "[Aery]";
+										mes "I am glad to hear from him.";
+										mes "Now it's time for me to leave.";
+										mes "Thank you for your help.";
+										mes "Good bye then....";
+										next;
+										mes "[Fayelyn]";
+										mes ".....................";
+										mes "....................";
+										next;
+										mes "[Fayelyn]";
+										mes "You have achieve your goal here.";
+										mes "Be careful on your way back...";
+										close;
+									}
+								}
+							}
+						} else {
+							mes "[Fayelyn]";
+							mes "I can't help you if the ingredients are not enough.";
+							mes "So gather it before you come.";
+							close;
+						}
+					case 2:
+						mes "[Fayelyn]";
+						mes "So bring the ingredient here first.";
+						mes "Even if you do so, I can't guarantee it will work...";
+						close;
+					}
+				} else {
+					mes "[Fayelyn]";
+					mes "Sorry, I don't think you have enough power to handle it.";
+					mes "You will die it I cast it now. I can't do that.";
+					close;
+				}
+			case 2:
+				mes "[Fayelyn]";
+				mes "A correct decision.";
+				mes "I really don't recommend executing a spell with such high risk.";
+				close;
+			}
+		} else {
+			mes "[Fayelyn]";
+			mes "No matter how many times you ask, No is my answer.";
+			mes "Now, leave!";
+			close;
+		}
+	} else {
+		mes "[Fayelyn]";
+		mes "Why do you want to go to a place so risky?";
+		mes "Leave now!";
+		close;
+	}
+}
+
+nif_in.gat,156,93,5	script	Child#nifflheim	793,{
+
+	mes "[Alakina Ann]";
+	mes "Where...where am I...?";
+	mes "I remember I was sleeping";
+	mes "and when I woke up, I was here...";
+	mes "Mommy, have you seen my mommy?";
+	mes "I wanna go home...*Sob*";
+	next;
+	switch(select("About the witch","About the curse","Cancel.")) {
+	case 1:
+		mes "[Alakina Ann]";
+		mes "Witch...? I've never seen a witch, but I've read about them in books. I'm not sure if they exist or not, but it would be so horrifying if they did...";
+		next;
+		mes "[Alakina Ann]";
+		mes "Why is it so cold in here...?";
+		mes "A-aren't you cold, or even scared? I wanna go home... It's warm over there. Could you help me get back... Please...? H-help me...";
+		close;
+	case 2:
+		mes "[Alakina Ann]";
+		mes "A c-curse...?";
+		mes "My grandma says that there are lots of curses in the world. Some of them, you can tell it's a curse. But there are other curses that follow you throughout life...";
+		next;
+		mes "[Alakina Ann]";
+		mes "Grandma says curses can take other forms... Like if someone's always mad at you, and won't forgive you, you can see that as a curse too.";
+		next;
+		mes "[Alakina Ann]";
+		mes "My grandma told me there's only one spell that can break a strong curse that you can't lift with Blessings...";
+		next;
+		mes "[Alakina Ann]";
+		mes "Klaatu...";
+		mes "Verata.....";
+		mes "Ne...ni...umm...?";
+		mes "What was the last part?";
+		mes "I-I can't remember";
+		mes "the last part of the spell!";
+		next;
+		mes "[Alakina Ann]";
+		mes "If you repeat the spell in that order, it will release you from someone's anger and hate. And if you do it near a bad spirit, they might get the curse instead.";
+		next;
+		mes "[Alakina Ann]";
+		mes "Why are you asking me about these scary kind of things...? I just wanna go home...";
+		close;
+	case 3:
+		mes "[Alakina Ann]";
+		mes "It's so cold in here...";
+		mes "I'm freezing...";
+		mes "And I wanna go home and";
+		mes "get away from this scary place...";
+		next;
+		mes "[Alakina Ann]";
+		mes "Please... help me.";
+		mes "Could you take me with you...?";
+		close;
+	}
+}
+
+niflheim.gat,350,258,1	script	Cursed Spirit	802,{
+
+	killmonster "niflheim.gat","Cursed Spirit::OnMyMobDead";
+	mes "[Ashe Bruce]";
+	mes "I sense you're cursed";
+	mes "by a powerful spell...";
+	mes "Hmm... It's clear what";
+	mes "you must be up to....";
+	next;
+	mes "[Ashe Bruce]";
+	mes "You wish to get";
+	mes "rid of your curse....";
+	mes "By giving it to me!!";
+	next;
+	mes "[Ashe Bruce]";
+	mes "Just because I'm a cursed spirit, you adventurers think you can just dump your curses on me?!";
+	emotion ET_FRET,"Cursed Spirit";
+	next;
+	mes "[Ashe Bruce]";
+	mes "I refuse to let";
+	mes "you remain here.....";
+	mes "Leave now, or I will";
+	mes "remove you by force....";
+	next;
+	mes "[Ashe Bruce]";
+	mes "....And...";
+	mes "....Whatever you do...";
+	mes "....Do NOT touch my books...";
+	next;
+	switch(select("Touch the first book.","Touch the second book.","Touch the third book.","Okay, I am leaving.")) {
+	case 1:
+		monster "niflheim.gat",349,259,"Rideword",1478,1,"Cursed Spirit::OnMyMobDead";
+		mes "[Ashe Bruce]";
+		mes "...!...";
+		mes "How dare you touch my books";
+		mes "when I specifically said";
+		mes "'Don't touch my books!'";
+		next;
+		mes "[Ashe Bruce]";
+		mes "....!...Grrrrr!";
+		mes "I shall tear you apart...!";
+		mes "Be bound by an eternal curse...!";
+		close;
+	case 2:
+		mes "[Ashe Bruce]";
+		mes "...!...";
+		mes "You dare touch my books?!";
+		mes "Right after I said not";
+		mes "to touch them...?!";
+		mes "Foolish mortal!";
+		mes "...BEGONE!";
+		close2;
+		warp "niflheim.gat",34,162;
+		end;
+	case 3:
+		mes "[Ashe Bruce]";
+		mes "Muhahahaha....";
+		mes "Stubborn mortal~!";
+		mes "Fine! I will give you";
+		mes "a fighting chance and let";
+		mes "you cast a spell.";
+		next;
+		mes "[Ashe Bruce]";
+		mes "But Blessings won't";
+		mes "work with the curse";
+		mes "that you have...";
+		mes "And the spell to lift";
+		mes "your curse has been";
+		mes "lost to the ages~!";
+		emotion ET_KIK,"Cursed Spirit";
+		next;
+		switch(select("Clover","Klaatu","Klaytos")) {
+		case 1:
+			break;
+		case 2:
+			set '@spell,'@spell + 1;
+			break;
+		case 3:
+			break;
+		}
+		switch(select("Verit","Veritas","Verata")) {
+		case 1:
+			break;
+		case 2:
+			break;
+		case 3:
+			set '@spell,'@spell + 1;
+			break;
+		}
+		switch(select("Necktie","Necklace","Nero","^FFFFFFNictu!!!^000000")) {
+		case 1:
+			break;
+		case 2:
+			break;
+		case 3:
+			break;
+		case 4:
+			set '@spell,'@spell + 1;
+			break;
+		}
+		if ('@spell == 3) {
+			set '@spell_d,rand(1,5);
+			switch('@spell_d) {
+			case 1:
+				if (morison_meat < 15) {
+					set morison_meat,15;
+					mes "[Ashe Bruce]";
+					mes "You... You broke the curse!";
+					mes "How did you know that spell?!";
+					next;
+					mes "[Ashe Bruce]";
+					mes "I suppose you expect for me to";
+					mes "melt in agony about now, don't";
+					mes "you? Well... Sorry to disappoint";
+					mes "you, mortal, but I can never die!";
+					close;
+				} else {
+					mes "[Ashe Bruce]";
+					mes "...! You cast the correct spell?!";
+					mes "...!...";
+					mes "But...You're still cursed...";
+					mes "Umhaaaaaaaaaaaaaaaaa.....!";
+					close;
+				}
+			case 2:
+				if (thai_head == 1) {
+					set thai_head,2;
+					mes "[Ashe Bruce]";
+					mes "What's...";
+					mes "this feeling?";
+					next;
+					mes "[Ashe Bruce]";
+					mes "No...!";
+					mes "NOOOOOOOOOOOOOOOO!";
+					next;
+					mes "[Ashe Bruce]";
+					mes "Why did you spell have to work?!";
+					close;
+				} else {
+					mes "[Ashe Bruce]";
+					mes "You...";
+					mes "cast the correct spell?!";
+					next;
+					mes "[Ashe Bruce]";
+					mes "Hoho~";
+					mes "But you're still cursed...";
+					close;
+				}
+			case 3:
+				if (thai_head == 8) {
+					set thai_head,7;
+					mes "[Ashe Bruce]";
+					mes "You... You broke the curse!";
+					mes "Who taught you that spell?!";
+					next;
+					mes "[Ashe Bruce]";
+					mes "I suppose you expect for me to";
+					mes "melt in agony about now, don't";
+					mes "you? Well... Sorry to disappoint";
+					mes "you, mortal, but I can never die!";
+					next;
+					mes "[Ashe Bruce]";
+					mes "So long as I'm...";
+					mes "still...";
+					mes "cursed.";
+					next;
+					mes "[Ashe Bruce]";
+					mes "NOOOOOOOOOO!";
+					close;
+				} else {
+					mes "[Ashe Bruce]";
+					mes "...! You cast the correct spell?!";
+					mes "...!...";
+					mes "But...You're still cursed...";
+					mes "Umhaaaaaaaaaaaaaaaaa.....!";
+					close;
+				}
+			case 4:
+				mes "[Ashe Bruce]";
+				mes "...! You cast the correct spell?!";
+				mes "...!...";
+				mes "But...You're still cursed...";
+				mes "Mwahahahaaaa.....!";
+				close;
+			}
+		} else {
+			monster "niflheim.gat",345,259,"Orc Skeleton",1462,1,"Cursed Spirit::OnMyMobDead";
+			monster "niflheim.gat",347,261,"Orc Skeleton",1462,1,"Cursed Spirit::OnMyMobDead";
+			monster "niflheim.gat",344,253,"Orc Skeleton",1462,1,"Cursed Spirit::OnMyMobDead";
+			monster "niflheim.gat",346,251,"Orc Skeleton",1462,1,"Cursed Spirit::OnMyMobDead";
+			monster "niflheim.gat",349,249,"Orc Skeleton",1462,1,"Cursed Spirit::OnMyMobDead";
+			monster "niflheim.gat",350,260,"Orc Skeleton",1462,1,"Cursed Spirit::OnMyMobDead";
+			monster "niflheim.gat",353,256,"Orc Skeleton",1462,1,"Cursed Spirit::OnMyMobDead";
+			mes "[Ashe Bruce]";
+			mes "Muhahahahahaha!";
+			mes "That's not the right spell!";
+			mes "Now, death awaits you!";
+			mes "You're eternally bound";
+			mes "to the curse...!";
+			close;
+		}
+	case 4:
+		mes "[Ashe Bruce]";
+		mes "...";
+		mes ".....";
+		next;
+		mes "[Ashe Bruce]";
+		mes "Well then.";
+		mes "Try not to trip on";
+		mes "your feet in your";
+		mes "rush to leave.";
+		close;
+	}
+
+OnMyMobDead:
+	end;
+}
+
+
+//--------------------------------------------------------------
+// Niflheim Piano Quest - [Tsuyuki]
+//--------------------------------------------------------------
+
+nif_in.gat,188,168,3	script	Witch	792,{
+
+	mes "[Kirkena]";
+	mes "Huh? ...You're alive, aren't you?";
+	mes "I'm not sure how more of you are";
+	mes "able to get here and I don't";
+	mes "know your reasons for coming,";
+	mes "but this place is dangerous for";
+	mes "the living.";
+	next;
+	mes "[Kirkena]";
+	mes "I am sending you back";
+	mes "outside of this town.";
+	mes "If you can help it, you";
+	mes "better not come back to";
+	mes "this place.";
+	close2;
+	warp "umbala.gat",138,208;
+	end;
+}
+
+niflheim.gat,224,243,3	script	Alreg	795,{
+
+	if (nif_esc == 0) {
+		set '@piano_root,rand(1,2);
+		mes "[Alreg]";
+		mes "Me like meat, muhehheh~";
+		mes "You! Look tempting.";
+		next;
+		mes "[Alreg]";
+		mes "Me want to taste you.";
+		next;
+		mes "^FF3355*Crunch* Crunch*^000000";
+		percentheal -60,0;
+		next;
+		mes "["+strcharinfo(0)+"]";
+		mes "NooOOoOOoOoO~!";
+		next;
+		if ('@piano_root == 1) {
+			mes "[Alreg]";
+			mes "It long time since I had meat";
+			mes "so... so good. You taste";
+			mes "good. Alreg give you this";
+			mes "for payback. Present!";
+			mes "*Burrrp*";
+			set nif_esc,1;
+			getitem 7184,1;
+			close;
+		}
+		if ('@piano_root == 2) {
+			mes "[Alreg]";
+			mes "It long time since I had meat";
+			mes "so... so good. You taste";
+			mes "good. Alreg give you this";
+			mes "for payback. Present!";
+			mes "*Burrrp*";
+			set nif_esc,2;
+			getitem 7184,1;
+			close;
+		}
+	}
+	mes "[Alreg]";
+	mes "Me like meat, muheh.";
+	mes "You! Look tempting.";
+	next;
+	mes "[Alreg]";
+	mes "Me want to taste you.";
+	next;
+	mes "^FF3355*Crunch* Crunch*^000000";
+	percentheal -30,0;
+	next;
+	mes "["+strcharinfo(0)+"]";
+	mes "Ow~! What are you";
+	mes "trying to do, kill me?!";
+	next;
+	mes "[Alreg]";
+	mes "Hm? Oh, no no no.";
+	mes "Me am trying to eat you.";
+	close;
+}
+
+nif_in.gat,105,81,3	script	Crayu	794,{
+
+	if (nif_esc == 1) {
+		set '@question,rand(1,4);
+		mes "[Crayu]";
+		mes "Living one...";
+		mes "Listen to this song...";
+		mes "It's been sung by many for a";
+		mes "long time, but nobody knows";
+		mes "when it was made or who wrote it.";
+		next;
+		mes "[Crayu]";
+		mes "^FF00001. Mountain sunset to the west";
+		mes "^FF00002. Where the purple dusk falls";
+		mes "^FF00003. Surrounded by beautiful melody";
+		mes "^FF00004. You become the key that ignores its master^000000";
+		next;
+		if ('@question == 1) {
+			mes "[Crayu]";
+			mes "Okay, wait! Here's a test for you!";
+			mes "Write down the first line of the song.";
+			next;
+			input '@input$;
+			if ('@input$ == "Mountain sunset to the west") {
+				mes "[Crayu]";
+				mes "Excellent...!";
+				mes "So you've been listening~!";
+				mes "That makes you one of my";
+				mes "favorite guests. Here's a";
+				mes "little reward for you.";
+				next;
+				set nif_esc,3;
+				getitem 7184,1;
+				mes "[Crayu]";
+				mes "Lastly, I hope you will show your";
+				mes "respect to other Bards, just as";
+				mes "you have done for me.";
+				close;
+			} else {
+				mes "[Crayu]";
+				mes "*Sigh*... If you had only";
+				mes "listened to me, it would";
+				mes "have been easy to answer.";
+				mes "Try to remember the line";
+				mes "and try again!";
+				close;
+			}
+		}
+		if ('@question == 2) {
+			mes "[Crayu]";
+			mes "Okay, wait! Here's a test for you!";
+			mes "Write down the second line of the song.";
+			next;
+			input '@input$;
+			if ('@input$ == "Where the purple dusk falls") {
+				mes "[Crayu]";
+				mes "Excellent...!";
+				mes "So you've been listening~!";
+				mes "That makes you one of my";
+				mes "favorite guests. Here's a";
+				mes "little reward for you.";
+				next;
+				set nif_esc,3;
+				getitem 7184,1;
+				mes "[Crayu]";
+				mes "Lastly, I hope you will show your";
+				mes "respect to other Bards, just as";
+				mes "you have done for me.";
+				close;
+			} else {
+				mes "[Crayu]";
+				mes "*Sigh*... If you had only";
+				mes "listened to me, it would";
+				mes "have been easy to answer.";
+				mes "Try to remember the line";
+				mes "and try again!";
+				close;
+			}
+		}
+		if ('@question == 3) {
+			mes "[Crayu]";
+			mes "Okay, wait! Here's a test for you!";
+			mes "Write down the third line of the song.";
+			next;
+			input '@input$;
+			if ('@input$ == "Surrounded by beautiful melody") {
+				mes "[Crayu]";
+				mes "Excellent...!";
+				mes "So you've been listening~!";
+				mes "That makes you one of my";
+				mes "favorite guests. Here's a";
+				mes "little reward for you.";
+				next;
+				set nif_esc,3;
+				getitem 7184,1;
+				mes "[Crayu]";
+				mes "Lastly, I hope you will show your";
+				mes "respect to other Bards, just as";
+				mes "you have done for me.";
+				close;
+			} else {
+				mes "[Crayu]";
+				mes "*Sigh*... If you had only";
+				mes "listened to me, it would";
+				mes "have been easy to answer.";
+				mes "Try to remember the line";
+				mes "and try again!";
+				close;
+			}
+		}
+		if ('@question == 4) {
+			mes "[Crayu]";
+			mes "Okay, wait! Here's a test for you!";
+			mes "Write down the fourth line of the song.";
+			next;
+			input '@input$;
+			if ('@input$ == "You become the key that ignores its master") {
+				mes "[Crayu]";
+				mes "Excellent...!";
+				mes "So you've been listening~!";
+				mes "That makes you one of my";
+				mes "favorite guests. Here's a";
+				mes "little reward for you.";
+				next;
+				set nif_esc,3;
+				getitem 7184,1;
+				mes "[Crayu]";
+				mes "Lastly, I hope you will show your";
+				mes "respect to other Bards, just as";
+				mes "you have done for me.";
+				close;
+			} else {
+				mes "[Crayu]";
+				mes "*Sigh*... If you had only";
+				mes "listened to me, it would";
+				mes "have been easy to answer.";
+				mes "Try to remember the line";
+				mes "and try again!";
+				close;
+			}
+		}
+	}
+	if (nif_esc == 4) {
+		set '@question,rand(1,4);
+		mes "[Crayu]";
+		mes "Living one...";
+		mes "Listen to this song...";
+		mes "It's been sung by many for a";
+		mes "long time, but nobody knows";
+		mes "when it was made or who wrote it.";
+		next;
+		mes "[Crayu]";
+		mes "^FF00001. Mountain sunset to the west";
+		mes "^FF00002. Where the purple dusk falls";
+		mes "^FF00003. Surrounded by beautiful melody";
+		mes "^FF00004. You become the key that ignores its master^000000";
+		next;
+		if ('@question == 1) {
+			mes "[Crayu]";
+			mes "Okay, wait! Here's a test for you!";
+			mes "Write down the first line of the song.";
+			next;
+			input '@input$;
+			if ('@input$ == "Mountain sunset to the west") {
+				mes "[Crayu]";
+				mes "Excellent...!";
+				mes "So you've been listening~!";
+				mes "That makes you one of my";
+				mes "favorite guests. Here's a";
+				mes "little reward for you.";
+				next;
+				set nif_esc,6;
+				getitem 7184,1;
+				mes "[Crayu]";
+				mes "Lastly, I hope you will show your";
+				mes "respect to other Bards, just as";
+				mes "you have done for me.";
+				close;
+			} else {
+				mes "[Crayu]";
+				mes "*Sigh*... If you had only";
+				mes "listened to me, it would";
+				mes "have been easy to answer.";
+				mes "Try to remember the line";
+				mes "and try again!";
+				close;
+			}
+		}
+		if ('@question == 2) {
+			mes "[Crayu]";
+			mes "Okay, wait! Here's a test for you!";
+			mes "Write down the second line of the song.";
+			next;
+			input '@input$;
+			if ('@input$ == "Where the purple dusk falls") {
+				mes "[Crayu]";
+				mes "Excellent...!";
+				mes "So you've been listening~!";
+				mes "That makes you one of my";
+				mes "favorite guests. Here's a";
+				mes "little reward for you.";
+				next;
+				set nif_esc,6;
+				getitem 7184,1;
+				mes "[Crayu]";
+				mes "Lastly, I hope you will show your";
+				mes "respect to other Bards, just as";
+				mes "you have done for me.";
+				close;
+			} else {
+				mes "[Crayu]";
+				mes "*Sigh*... If you had only";
+				mes "listened to me, it would";
+				mes "have been easy to answer.";
+				mes "Try to remember the line";
+				mes "and try again!";
+				close;
+			}
+		}
+		if ('@question == 3) {
+			mes "[Crayu]";
+			mes "Okay, wait! Here's a test for you!";
+			mes "Write down the third line of the song.";
+			next;
+			input '@input$;
+			if ('@input$ == "Surrounded by beautiful melody") {
+				mes "[Crayu]";
+				mes "Excellent...!";
+				mes "So you've been listening~!";
+				mes "That makes you one of my";
+				mes "favorite guests. Here's a";
+				mes "little reward for you.";
+				next;
+				set nif_esc,6;
+				getitem 7184,1;
+				mes "[Crayu]";
+				mes "Lastly, I hope you will show your";
+				mes "respect to other Bards, just as";
+				mes "you have done for me.";
+				close;
+			} else {
+				mes "[Crayu]";
+				mes "*Sigh*... If you had only";
+				mes "listened to me, it would";
+				mes "have been easy to answer.";
+				mes "Try to remember the line";
+				mes "and try again!";
+				close;
+			}
+		}
+		if ('@question == 4) {
+			mes "[Crayu]";
+			mes "Ok, wait! Here's a test for you!";
+			mes "Write down the fourth line of the song.";
+			next;
+			input '@input$;
+			if ('@input$ == "You become the key that ignores its master.") {
+				mes "[Crayu]";
+				mes "Excellent...!";
+				mes "So you've been listening~!";
+				mes "That makes you one of my";
+				mes "favorite guests. Here's a";
+				mes "little reward for you.";
+				next;
+				set nif_esc,6;
+				getitem 7184,1;
+				mes "[Crayu]";
+				mes "Lastly, I hope you will show your";
+				mes "respect to other Bards, just as";
+				mes "you have done for me.";
+				close;
+			} else {
+				mes "[Crayu]";
+				mes "*Sigh*... If you had only";
+				mes "listened to me, it would";
+				mes "have been easy to answer.";
+				mes "Try to remember the line";
+				mes "and try again!";
+				close;
+			}
+		}
+	}
+	mes "[Crayu]";
+	mes "Living one...";
+	mes "Listen to this song...";
+	mes "It's been sung by many for a";
+	mes "long time, but nobody knows";
+	mes "when it was made or who wrote it.";
+	next;
+	mes "[Crayu]";
+	mes "^FF00001. Mountain sunset to the west";
+	mes "^FF00002. Where the purple dusk falls";
+	mes "^FF00003. Surrounded by beautiful melody";
+	mes "^FF00004. You become the key that ignores its master^000000";
+	next;
+	mes "[Crayu]";
+	mes "I wonder what the lyrics mean...";
+	mes "They seem quite profound...";
+	mes "I have the feeling that this song";
+	mes "carries some secret.";
+	close;
+}
+
+nif_in.gat,31,20,3	script	Kuzkahina	794,{
+
+	if (nif_esc == 3) {
+		mes "[Kuzkahina]";
+		mes "I don't understand";
+		mes "why I can't make any";
+		mes "money with this store...";
+		mes "Even when I was alive";
+		mes "I could never make any";
+		mes "money with my businesses...";
+		next;
+		mes "[Kuzkahina]";
+		mes "Hey you! Make yourself useful";
+		mes "and throw this away when you leave.";
+		set nif_esc,5;
+		getitem 7184,1;
+		next;
+		mes "[Kuzkahina]";
+		mes "Gosh, what's with this store?";
+		mes "How did I end up hiring such useless employees...?";
+		mes "*mumble mumble*";
+		mes "*mumble mumble*";
+		close;
+	}
+	if (nif_esc == 2) {
+		mes "[Kuzkahina]";
+		mes "I don't understand";
+		mes "why I can't make any";
+		mes "money with this store...";
+		mes "Even when I was alive";
+		mes "I could never make any";
+		mes "money with my businesses...";
+		next;
+		mes "[Kuzkahina]";
+		mes "Hey you! Make yourself useful";
+		mes "and throw this away when you leave.";
+		set nif_esc,4;
+		getitem 7184,1;
+		next;
+		mes "[Kuzkahina]";
+		mes "Gosh, what's with this store?";
+		mes "How did I end up hiring such useless employees...";
+		mes "*mumble mumble*";
+		mes "*mumble mumble*";
+		close;
+	}
+	mes "[Kuzkahina]";
+	mes "I don't understand";
+	mes "why I can't make any";
+	mes "money with this store...";
+	mes "Even when I was alive";
+	mes "I could never make any";
+	mes "money with my businesses...";
+	close;
+}
+
+niflheim.gat,208,103,1	script	#Graveyard1	111,1,1,{
+
+OnTouch:
+	if (nif_esc == 5) {
+		mes "^3355FFYou found something";
+		mes "half-buried near a grave.";
+		mes "It looks very well-shaped.^000000";
+		next;
+		mes "^3355FFWould you like to pick it up?^000000";
+		switch(select("Yes","No")) {
+		case 1:
+			set nif_esc,7;
+			getitem 7184,1;
+			close;
+		case 2:
+			close;
+		}
+	}
+	if (nif_esc == 7) {
+		mes "^3355FFYou found something else";
+		mes "at the spot where you picked";
+		mes "up a piano key.";
+		mes "It also looks";
+		mes "very well-shaped.^000000";
+		next;
+		mes "^3355FFWould you like to pick it up?^000000";
+		switch(select("Yes","No")) {
+		case 1:
+			set nif_esc,9;
+			getitem 7184,1;
+			close;
+		case 2:
+			close;
+		}
+	}
+	if (nif_esc == 8) {
+		mes "^3355FFYou found something";
+		mes "half-buried near a grave.";
+		mes "It looks very well-shaped.^000000";
+		next;
+		mes "^3355FFWould you like to pick it up?^000000";
+		switch(select("Yes","No")) {
+		case 1:
+			set nif_esc,10;
+			getitem 7184,1;
+			close;
+		case 2:
+			close;
+		}
+	}
+	if (nif_esc == 10) {
+		mes "^3355FFYou found something else";
+		mes "at the spot where you picked";
+		mes "up a piano key.";
+		mes "It also looks";
+		mes "very well-shaped.^000000";
+		next;
+		mes "^3355FFWould you like to pick it up?^000000";
+		switch(select("Yes","No")) {
+		case 1:
+			set nif_esc,11;
+			getitem 7184,1;
+			close;
+		case 2:
+			close;
+		}
+	}
+	end;
+}
+
+niflheim.gat,169,71,1	script	#Graveyard2	111,1,1,{
+
+OnTouch:
+	if (nif_esc == 9) {
+		mes "^3355FFYou found something";
+		mes "half-buried near a grave.";
+		mes "It looks very well-shaped.^000000";
+		next;
+		mes "^3355FFWould you like to pick it up?^000000";
+		switch(select("Yes","No")) {
+		case 1:
+			set nif_esc,11;
+			getitem 7184,1;
+			close;
+		case 2:
+			close;
+		}
+	}
+	if (nif_esc == 6) {
+		mes "^3355FFYou found something";
+		mes "half-buried near a grave.";
+		mes "It looks very well-shaped.^000000";
+		next;
+		mes "^3355FFWould you like to pick it up?^000000";
+		switch(select("Yes","No")) {
+		case 1:
+			set nif_esc,8;
+			getitem 7184,1;
+			close;
+		case 2:
+			close;
+		}
+	}
+	end;
+}
+
+nif_in.gat,115,181,0	script	#Piano	111,1,1,{
+
+OnTouch:
+	if (nif_esc == 0) {
+		mes "^3355FFYou see a big, heavy piano.";
+		mes "You get the feeling that";
+		mes "its music would sound magnificient.^000000";
+		next;
+		mes "^3355FFAs you examine the piano,";
+		mes "you find that 7 keys";
+		mes "are missing in the";
+		mes "middle of the keyboard.";
+		mes "If you had all the keys,";
+		mes "you could play music...^000000";
+		close;
+	}
+	if (nif_esc == 11) {
+		set nif_esc,12;
+		delitem 7184,6;
+		mes "^3355FFYou took the keys you've found";
+		mes "and inserted them into";
+		mes "each empty space.^000000";
+		next;
+		mes "^3355FFBut then you realize";
+		mes "that you're missing the last";
+		mes "key for the space on the far";
+		mes "left of the keyboard...^000000";
+		close;
+	}
+	end;
+}
+
+nif_in.gat,114,181,0	script	#Piano3	111,1,1,{
+
+OnTouch:
+	if (nif_esc == 12) {
+		mes "^3355FFAs you bend towards";
+		mes "the final empty key space";
+		mes "to take a better look at it...^000000";
+		next;
+		soundeffect "complete.wav",0;
+		next;
+		set nif_esc,13;
+		mes "^3355FFYou begin to feel dizzy and";
+		mes "your body feels as if it were";
+		mes "floating in air. Then, your";
+		mes "vision starts to blur...^000000";
+		close2;
+		warp "nif_in.gat",179,163;
+		end;
+	}
+	if (nif_esc == 13) {
+		mes "^3355FFAs you bend towards";
+		mes "the final empty key space...^000000";
+		next;
+		soundeffect "complete.wav",0;
+		next;
+		mes "^3355FFYou begin to feel dizzy and";
+		mes "your body feels as if it were";
+		mes "floating in air. Then, your";
+		mes "vision starts to blur...^000000";
+		close2;
+		warp "nif_in.gat",179,163;
+		end;
+	}
+	end;
+}
+
+niflheim.gat,52,147,3	script	Keedz	796,{
+
+	mes "[Keedz]";
+	mes "I don't allow any living person";
+	mes "to come in this place!";
+	close;
+}
+
+
+//--------------------------------------------------------------
+// Niflheim Random Invasion - [jAthena/Tsuyuki]
+//--------------------------------------------------------------
+
+niflheim.gat,0,0,0	script	#NifMVP	139,{
+
+OnInit:
+	initnpctimer;
+	end;
+
+OnTimer7980000:
+	switch(rand(7)) {
+	case 0:
+		monster "niflheim.gat",327,193,"Lord Of Death",1373,1,"#NifMVP::OnKilled1";
+		monster "niflheim.gat",330,193,"Bloody Murderer",1507,1,"#NifMVP::OnKilled2";
+		monster "niflheim.gat",324,193,"Bloody Murderer",1507,1,"#NifMVP::OnKilled2";
+		monster "niflheim.gat",327,196,"Bloody Murderer",1507,1,"#NifMVP::OnKilled2";
+		monster "niflheim.gat",327,190,"Bloody Murderer",1507,1,"#NifMVP::OnKilled2";
+		monster "niflheim.gat",324,190,"Loli Ruri",1505,1,"#NifMVP::OnKilled2";
+		monster "niflheim.gat",330,190,"Loli Ruri",1505,1,"#NifMVP::OnKilled2";
+		monster "niflheim.gat",324,196,"Loli Ruri",1505,1,"#NifMVP::OnKilled2";
+		monster "niflheim.gat",330,196,"Loli Ruri",1505,1,"#NifMVP::OnKilled2";
+		break;
+	case 1:
+		monster "niflheim.gat",337,252,"Lord Of Death",1373,1,"#NifMVP::OnKilled1";
+		monster "niflheim.gat",337,255,"Bloody Murderer",1507,1,"#NifMVP::OnKilled2";
+		monster "niflheim.gat",337,249,"Bloody Murderer",1507,1,"#NifMVP::OnKilled2";
+		monster "niflheim.gat",334,252,"Bloody Murderer",1507,1,"#NifMVP::OnKilled2";
+		monster "niflheim.gat",340,252,"Bloody Murderer",1507,1,"#NifMVP::OnKilled2";
+		monster "niflheim.gat",334,249,"Loli Ruri",1505,1,"#NifMVP::OnKilled2";
+		monster "niflheim.gat",340,255,"Loli Ruri",1505,1,"#NifMVP::OnKilled2";
+		monster "niflheim.gat",340,249,"Loli Ruri",1505,1,"#NifMVP::OnKilled2";
+		monster "niflheim.gat",334,255,"Loli Ruri",1505,1,"#NifMVP::OnKilled2";
+		break;
+	case 2:
+		monster "niflheim.gat",190,185,"Lord Of Death",1373,1,"#NifMVP::OnKilled1";
+		monster "niflheim.gat",190,188,"Bloody Murderer",1507,1,"#NifMVP::OnKilled2";
+		monster "niflheim.gat",190,182,"Bloody Murderer",1507,1,"#NifMVP::OnKilled2";
+		monster "niflheim.gat",193,185,"Bloody Murderer",1507,1,"#NifMVP::OnKilled2";
+		monster "niflheim.gat",187,185,"Bloody Murderer",1507,1,"#NifMVP::OnKilled2";
+		monster "niflheim.gat",187,182,"Loli Ruri",1505,1,"#NifMVP::OnKilled2";
+		monster "niflheim.gat",193,182,"Loli Ruri",1505,1,"#NifMVP::OnKilled2";
+		monster "niflheim.gat",193,188,"Loli Ruri",1505,1,"#NifMVP::OnKilled2";
+		monster "niflheim.gat",187,188,"Loli Ruri",1505,1,"#NifMVP::OnKilled2";
+		break;
+	case 3:
+		monster "niflheim.gat",131,138,"Lord Of Death",1373,1,"#NifMVP::OnKilled1";
+		monster "niflheim.gat",131,141,"Bloody Murderer",1507,1,"#NifMVP::OnKilled2";
+		monster "niflheim.gat",131,135,"Bloody Murderer",1507,1,"#NifMVP::OnKilled2";
+		monster "niflheim.gat",128,138,"Bloody Murderer",1507,1,"#NifMVP::OnKilled2";
+		monster "niflheim.gat",134,138,"Bloody Murderer",1507,1,"#NifMVP::OnKilled2";
+		monster "niflheim.gat",134,141,"Loli Ruri",1505,1,"#NifMVP::OnKilled2";
+		monster "niflheim.gat",128,141,"Loli Ruri",1505,1,"#NifMVP::OnKilled2";
+		monster "niflheim.gat",134,135,"Loli Ruri",1505,1,"#NifMVP::OnKilled2";
+		monster "niflheim.gat",128,135,"Loli Ruri",1505,1,"#NifMVP::OnKilled2";
+		break;
+	case 4:
+		monster "niflheim.gat",311,64,"Lord Of Death",1373,1,"#NifMVP::OnKilled1";
+		monster "niflheim.gat",311,67,"Bloody Murderer",1507,1,"#NifMVP::OnKilled2";
+		monster "niflheim.gat",311,61,"Bloody Murderer",1507,1,"#NifMVP::OnKilled2";
+		monster "niflheim.gat",308,64,"Bloody Murderer",1507,1,"#NifMVP::OnKilled2";
+		monster "niflheim.gat",314,64,"Bloody Murderer",1507,1,"#NifMVP::OnKilled2";
+		monster "niflheim.gat",314,61,"Loli Ruri",1505,1,"#NifMVP::OnKilled2";
+		monster "niflheim.gat",314,67,"Loli Ruri",1505,1,"#NifMVP::OnKilled2";
+		monster "niflheim.gat",308,67,"Loli Ruri",1505,1,"#NifMVP::OnKilled2";
+		monster "niflheim.gat",308,61,"Loli Ruri",1505,1,"#NifMVP::OnKilled2";
+		break;
+	case 5:
+		monster "niflheim.gat",238,131,"Lord Of Death",1373,1,"#NifMVP::OnKilled1";
+		monster "niflheim.gat",238,134,"Bloody Murderer",1507,1,"#NifMVP::OnKilled2";
+		monster "niflheim.gat",238,128,"Bloody Murderer",1507,1,"#NifMVP::OnKilled2";
+		monster "niflheim.gat",235,131,"Bloody Murderer",1507,1,"#NifMVP::OnKilled2";
+		monster "niflheim.gat",241,131,"Bloody Murderer",1507,1,"#NifMVP::OnKilled2";
+		monster "niflheim.gat",235,128,"Loli Ruri",1505,1,"#NifMVP::OnKilled2";
+		monster "niflheim.gat",235,134,"Loli Ruri",1505,1,"#NifMVP::OnKilled2";
+		monster "niflheim.gat",241,128,"Loli Ruri",1505,1,"#NifMVP::OnKilled2";
+		monster "niflheim.gat",241,134,"Loli Ruri",1505,1,"#NifMVP::OnKilled2";
+		break;
+	case 6:
+		monster "niflheim.gat",86,219,"Lord Of Death",1373,1,"#NifMVP::OnKilled1";
+		monster "niflheim.gat",86,222,"Bloody Murderer",1507,1,"#NifMVP::OnKilled2";
+		monster "niflheim.gat",86,216,"Bloody Murderer",1507,1,"#NifMVP::OnKilled2";
+		monster "niflheim.gat",89,219,"Bloody Murderer",1507,1,"#NifMVP::OnKilled2";
+		monster "niflheim.gat",83,219,"Bloody Murderer",1507,1,"#NifMVP::OnKilled2";
+		monster "niflheim.gat",89,222,"Loli Ruri",1505,1,"#NifMVP::OnKilled2";
+		monster "niflheim.gat",89,216,"Loli Ruri",1505,1,"#NifMVP::OnKilled2";
+		monster "niflheim.gat",83,222,"Loli Ruri",1505,1,"#NifMVP::OnKilled2";
+		monster "niflheim.gat",83,216,"Loli Ruri",1505,1,"#NifMVP::OnKilled2";
+		break;
+	}
+	monster "niflheim.gat",154,95,"Disguise",1506,1,"#NifMVP::OnKilled2";
+	monster "niflheim.gat",115,65,"Disguise",1506,1,"#NifMVP::OnKilled2";
+	monster "niflheim.gat",330,195,"Disguise",1506,1,"#NifMVP::OnKilled2";
+	monster "niflheim.gat",151,83,"Disguise",1506,1,"#NifMVP::OnKilled2";
+	monster "niflheim.gat",285,245,"Disguise",1506,1,"#NifMVP::OnKilled2";
+	monster "niflheim.gat",235,135,"Disguise",1506,1,"#NifMVP::OnKilled2";
+	monster "niflheim.gat",265,48,"Disguise",1506,1,"#NifMVP::OnKilled2";
+	monster "niflheim.gat",186,139,"Disguise",1506,1,"#NifMVP::OnKilled2";
+	monster "niflheim.gat",166,267,"Disguise",1506,1,"#NifMVP::OnKilled2";
+	monster "niflheim.gat",82,202,"Disguise",1506,1,"#NifMVP::OnKilled2";
+	monster "niflheim.gat",219,44,"Disguise",1506,1,"#NifMVP::OnKilled2";
+	monster "niflheim.gat",287,44,"Disguise",1506,1,"#NifMVP::OnKilled2";
+	monster "niflheim.gat",275,165,"Disguise",1506,1,"#NifMVP::OnKilled2";
+	monster "niflheim.gat",138,204,"Disguise",1506,1,"#NifMVP::OnKilled2";
+	monster "niflheim.gat",299,39,"Disguise",1506,1,"#NifMVP::OnKilled2";
+	monster "niflheim.gat",31,154,"Disguise",1506,1,"#NifMVP::OnKilled2";
+	monster "niflheim.gat",154,96,"Dullahan",1504,1,"#NifMVP::OnKilled2";
+	monster "niflheim.gat",116,65,"Dullahan",1504,1,"#NifMVP::OnKilled2";
+	monster "niflheim.gat",151,84,"Dullahan",1504,1,"#NifMVP::OnKilled2";
+	monster "niflheim.gat",286,245,"Dullahan",1504,1,"#NifMVP::OnKilled2";
+	monster "niflheim.gat",330,196,"Dullahan",1504,1,"#NifMVP::OnKilled2";
+	monster "niflheim.gat",236,135,"Dullahan",1504,1,"#NifMVP::OnKilled2";
+	monster "niflheim.gat",165,49,"Dullahan",1504,1,"#NifMVP::OnKilled2";
+	monster "niflheim.gat",167,267,"Dullahan",1504,1,"#NifMVP::OnKilled2";
+	monster "niflheim.gat",82,203,"Dullahan",1504,1,"#NifMVP::OnKilled2";
+	monster "niflheim.gat",220,44,"Dullahan",1504,1,"#NifMVP::OnKilled2";
+	monster "niflheim.gat",287,45,"Dullahan",1504,1,"#NifMVP::OnKilled2";
+	monster "niflheim.gat",287,44,"Dullahan",1504,1,"#NifMVP::OnKilled2";
+	monster "niflheim.gat",276,166,"Dullahan",1504,1,"#NifMVP::OnKilled2";
+	monster "niflheim.gat",139,205,"Dullahan",1504,1,"#NifMVP::OnKilled2";
+	monster "niflheim.gat",300,39,"Dullahan",1504,1,"#NifMVP::OnKilled2";
+	monster "niflheim.gat",31,155,"Dullahan",1504,1,"#NifMVP::OnKilled2";
+	stopnpctimer;
+	end;
+
+OnKilled1:
+	killmonster "niflheim.gat","#NifMVP::OnKilled2";
+	initnpctimer;
+	end;
+
+OnKilled2:
+	end;
+}

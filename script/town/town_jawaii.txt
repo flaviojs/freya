@@ -1,0 +1,1524 @@
+//--------------------------------------------------------------
+//               (c)2004-2007 Aurora Team Presents:             
+//                  ___                                         
+//                 /   |_   _ _ __ ___  _ __ __ _               
+//                / /| | | | | '__/ _ \| '__/ _` |              
+//               / ___ | |_| | | | (_) | | | (_| |++            
+//              /_/  |_|\____|_|  \___/|_|  \__,_|              
+//                 http://aurora.deltaanime.net                 
+//--------------------------------------------------------------
+// Script Title: Jawaii Town NPCs / Quests	Author: Tsuyuki
+//--------------------------------------------------------------
+// Revision History: v1.0
+//--------------------------------------------------------------
+//	1.0 First version, converted from Aegis [Tsuyuki]
+//--------------------------------------------------------------
+// Additional Notes: * Offcial-certified / Aegis-certified *
+//--------------------------------------------------------------
+
+
+//--------------------------------------------------------------
+// Jawaii Town NPCs - [Tsuyuki]
+//--------------------------------------------------------------
+
+prt_in.gat,173,13,4	script	Customer#SoloHan	86,{
+
+	if (!PartnerID) {
+		mes "[SoloHan]";
+		mes "Oh man...";
+		mes "I think I'm drunk~";
+		mes "*Hiccup...!*";
+		next;
+		mes "[SoloHan]";
+		mes "Hey, you...!";
+		mes "You understand, don't you?!";
+		mes "Aren't you upset looking at all";
+		mes "these happily married couples?!";
+		mes "Yeah~? Me too!";
+		next;
+		mes "[SoloHan]";
+		mes "How dare they show off their";
+		mes "happiness in front of people like";
+		mes "us~!! *Sniff* Just because they";
+		mes "found everlasting love, they think";
+		mes "they're better than we are?!";
+		next;
+		mes "[SoloHan]";
+		mes "I remember when couples were polite";
+		mes "and were lovey dovey behind closed";
+		mes "doors. Nowadays they hold hands,";
+		mes "and even cuddle in public. I mean,";
+		mes "come on! Get a room!";
+		next;
+		mes "[SoloHan]";
+		mes "I mean, *Sniff*, it's not like,";
+		mes "I'm lonely or anything. I don't";
+		mes "neeeeeeeeed a woman~!";
+		mes "Right, Bachewcca!";
+		next;
+		mes "[Bachewcca]";
+		mes "...!";
+		emotion ET_OK,"Customer#Bachewcca";
+		next;
+		mes "[SoloHan]";
+		mes "It doesn't really matter whether";
+		mes "you're married";
+		mes "or not, right buddy? Right?!";
+		mes "Come on! Drink with me!!";
+		next;
+		mes "^3355FFSuddenly he treated me as a close^000000";
+		mes "^3355FFfriend. It's a little embarassing,^000000";
+		mes "^3355FFbut it's not a bad idea to accept^000000";
+		mes "^3355FFa free drink...^000000";
+		next;
+		mes "^3355FF* Gulp Gulp Gulp *^000000";
+		next;
+		percentheal -10,0;
+		next;
+		set '@jaw_roof,0;
+		mes "[SoloHan]";
+		mes "So, what do you say?";
+		mes "Let's go somewhere";
+		mes "with some real liquor.";
+		while(1) {
+			next;
+			switch(select("...One more drink","........What kind of place is it?")) {
+			case 1:
+				mes "[SoloHan]";
+				mes "Yeah~!";
+				mes "That's the spirit!";
+				mes "Hey, Bachewcca...";
+				mes "Let's drink!";
+				next;
+				mes "[Bachewcca]";
+				mes "*Grunt!*";
+				next;
+				mes "";
+				mes "To...";
+				mes "To being single!";
+				mes "F-Forever!!!";
+				next;
+				mes "^3355FF*Gulp Gulp Gulp*^000000";
+				percentheal -10,0;
+				next;
+				set '@jaw_roof,'@jaw_roof + 2;
+				if ('@jaw_roof > 8) {
+					mes "";
+					mes "Whoa...";
+					mes "You alright?";
+					mes "You seem kind of drunk...";
+					next;
+					mes "[SoloHan]";
+					mes "I guess now's the perfect time to";
+					mes "have you sign this! Don't worry,";
+					mes "I'll send you straight to";
+					mes "paradise!";
+					next;
+					switch(select("Sign","Refuse to Sign")) {
+					case 1:
+						mes "[SoloHan]";
+						mes "Alright!";
+						mes "Take care!";
+						mes "Hahaha!";
+						close2;
+						percentheal 100,0;
+						warp "jawaii_in.gat",44,124;
+						end;
+					case 2:
+						mes "[SoloHan]";
+						mes "Oh...";
+						mes "Man.";
+						mes "So, you spoil parties";
+						mes "like this all the time, eh?";
+						close;
+					}
+				} else {
+					continue;
+				}
+			case 2:
+				if ('@jaw_roof > 6) {
+					mes "[SoloHan]";
+					mes "*Hiccup!*";
+					mes "So you feel like having some";
+					mes "real fun? Okay, then just sign over";
+					mes "here. Count on me, I'll send you to";
+					mes "paradise.";
+					next;
+					switch(select("Sign","Refuse to Sign")) {
+					case 1:
+						mes "[SoloHan]";
+						mes "Alright~!";
+						mes "Take care and have fun!";
+						mes "Harass some couples over there for";
+						mes "me, will you?";
+						close2;
+						percentheal 100,0;
+						warp "jawaii_in.gat",44,124;
+						end;
+					case 2:
+						mes "[SoloHan]";
+						mes "Oh...";
+						mes "Man.";
+						mes "No wonder you're single. You can't";
+						mes "even recognise a good time when";
+						mes "it's right in front of you.";
+						close;
+					}
+				} else {
+					set '@jaw_roof,'@jaw_roof + 3;
+					mes "[SoloHan]";
+					mes "Drink, drink!";
+					mes "That's not enough!";
+					mes "Drink more, buddy!";
+					next;
+					mes "";
+					mes "To...";
+					mes "To being single!";
+					mes "FOR EVER.";
+					next;
+					mes "^3355FF*Gulp Gulp Gulp*^000000";
+					percentheal -10,0;
+					next;
+					continue;
+				}
+			}
+		}
+	} else if (PartnerID) {
+		mes "[SoloHan]";
+		mes "UhOh... I'm drunk... Hiccups!";
+		next;
+		mes "[SoloHan]";
+		mes "..............Huh?";
+		next;
+		mes "[SoloHan]";
+		mes "Huh? Go away! Stay away from me! You're choking me with your pathetic happiness!";
+		next;
+		mes "[SoloHan]";
+		mes "QiaoWu- ShaHa- QiaoWu- ShaHa- Curses to you?!!";
+		close;
+	} else { 
+		mes "[SoloHan]";
+		mes "UhOh... I'm drunk... Hiccups!";
+		next;
+		mes "[SoloHan]";
+		mes "Huh? Go away! Stay away from me! You're choking me with your pathetic happiness!";
+		mes "QiaoWu- ShaHa- QiaoWu- ShaHa- Curses to you?!!";
+		close;
+	}
+}
+
+prt_in.gat,170,14,0	script	Customer#Bachewcca	89,{
+
+	mes "[Bachewcca]";
+	mes "..............";
+	mes "*Gulp....gulp...*";
+	mes "Grrrr!! That hit the spot!";
+	emotion ET_CRY,"Customer#Bachewcca";
+	close;
+}
+
+jawaii_in.gat,25,94,0	script	Employee#jaw1	724,{
+
+	mes "[Employee Tryteh]";
+	mes "Welcome to Jawaii Tavern~";
+	if (PartnerID) {
+		mes "There're so many strange people recently, it worries me!";
+		mes "I hope they won't get drunk and cause any troubles later...";
+		next;
+		mes "[Employee Teleteer]";
+		mes "My congratulations to your marriage~";
+		mes "May you be blessed with happiness~";
+		close;
+	} else if (!PartnerID) {
+		mes "I hope you enjoy your stay";
+		mes "over here. But try not";
+		mes "to drink too much~";
+		close;
+	} else {
+		mes "I hope you'll enjoy your stay...";
+		close;
+	}
+
+OnCommandWelcome:
+	emotion ET_CHUP,"Employee#jaw1";
+	end;
+OnCommandSolo:
+	emotion ET_HUK,"Employee#jaw1";
+	end;
+}
+
+jawaii_in.gat,25,96,0	script	Employee#jaw2	724,{
+
+	mes "[Employee Fey]";
+	mes "Welcome to Jawaii Tavern~";
+	if (PartnerID) {
+		next;
+		mes "[Employee Fey]";
+		mes "It is a very comfortable place here~";
+		mes "Although some still declare themselves as single...";
+		next;
+		mes "[Employee Fey]";
+		mes "Congratulations for getting married~";
+		mes "I hope you'll have a sweet memory here~";
+		close;
+	} else if (!PartnerID) {
+		mes "Have a good time! But please,";
+		mes "try not to interrupt the happily";
+		mes "married people here!";
+		close;
+	} else {
+		mes "I hope you'll enjoy your stay here...";
+		close;
+	}
+
+OnCommandWelcome:
+	emotion ET_CHUP,"Employee#jaw2";
+	end;
+OnCommandSolo:
+	emotion ET_HUK,"Employee#jaw2";
+	end;
+}
+
+jawaii_in.gat,25,98,0	script	Employee#jaw3	724,{
+
+	mes "[Employee Buffy]";
+	mes "Welcome to Jawaii Tavern~";
+	if (PartnerID) {
+		next;
+		mes "[Employee Buffy]";
+		mes "Wow! What a well matched couple!";
+		mes "You make me want to get marry too~";
+		close;
+	} else if (!PartnerID) {
+		next;
+		mes "[Employee Buffy]";
+		mes "Hmmm...?";
+		mes "You don't look like";
+		mes "you're married, ar you?";
+		next;
+		mes "[Employee Buffy]";
+		mes "I'm pretty good";
+		mes "at cooking and cleaning";
+		mes "*AHEM* I've got a ^FF3355nice body^000000.";
+		mes "So what do you think...?";
+		close;
+	} else {
+		mes "I hope you'll enjoy your stay here...";
+		close;
+	}
+
+OnCommandWelcome:
+	emotion ET_CHUP,"Employee#jaw3";
+	end;
+OnCommandSolo:
+	emotion ET_HUK,"Employee#jaw3";
+	end;
+}
+
+jawaii_in.gat,25,100,0	script	Employee#jaw4	724,{
+
+	mes "[Employee Itere]";
+	mes "Welcome to Jawaii Tavern~";
+	if (PartnerID) {
+		next;
+		mes "[Employee Itere]";
+		mes "You look really happy.";
+		mes "I hope you won't be disturbed by other people. Enjoy your stay here~";
+		close;
+	} else if (!PartnerID) {
+		mes "I hope you";
+		mes "enjoy your st--";
+		mes "Wait a minute...!";
+		next;
+		mes "[Employee Itere]";
+		mes "You're...";
+		mes "You better not be part of";
+		mes "the Invincible Single Army!";
+		next;
+		mes "[Employee Itere]";
+		mes "Well, whatever you do, don't";
+		mes "despair, get drunk and then";
+		mes "bother the married couples!";
+		close;
+	} else {
+		mes "I hope you'll enjoy your stay here...";
+		close;
+	}
+
+OnCommandWelcome:
+	emotion ET_CHUP,"Employee#jaw4";
+	end;
+OnCommandSolo:
+	emotion ET_HUK,"Employee#jaw4";
+	end;
+}
+
+jawaii_in.gat,30,94,4	script	Employee#jaw5	724,{
+
+	mes "[Employee Tonia]";
+	mes "Welcome to Jawaii Tavern~";
+	if (PartnerID) {
+		next;
+		mes "[Employee Tonia]";
+		mes "Congratulations for getting married~";
+		mes "I hope the single people won't get drunk and cause troubles agains...";
+		close;
+	} else if (!PartnerID) {
+		mes "Wait a sec. You're...!";
+		next;
+		mes "[Employee Tonia]";
+		mes "Hey~!";
+		mes "You're not welcome here!";
+		mes "S-Stop drinking! Right this";
+		mes "instant!";
+		close;
+	} else {
+		mes "I hope you'll enjoy your stay here...";
+		close;
+	}
+
+OnCommandWelcome:
+	emotion ET_CHUP,"Employee#jaw5";
+	end;
+OnCommandSolo:
+	emotion ET_HUK,"Employee#jaw5";
+	end;
+}
+
+jawaii_in.gat,30,96,4	script	Employee#jaw6	724,{
+
+	mes "[Employee Kay]";
+	mes "Welcome to Jawaii Tavern~";
+	if (PartnerID) {
+		mes "There're so many strange people I'm starting to get worry!";
+		mes "It's tiring to call for Kapra every time someone become unconcious..";
+		close;
+	} else if (!PartnerID) {
+		mes "I understand that you want to relax";
+		mes "and take a break, but please be";
+		mes "careful and don't drink too much.";
+		close;
+	} else {
+		mes "I hope you'll enjoy your stay here...";
+		close;
+	}
+
+OnCommandWelcome:
+	emotion ET_CHUP,"Employee#jaw6";
+	end;
+OnCommandSolo:
+	emotion ET_HUK,"Employee#jaw6";
+	end;
+}
+
+jawaii_in.gat,30,98,4	script	Employee#jaw7	724,{
+
+	mes "[Employee Amy]";
+	mes "Welcome to Jawaii Tavern~";
+	if (PartnerID) {
+		mes "You're a well matched couple,";
+		mes "Congratulations~";
+		close;
+	} else if (!PartnerID) {
+		next;
+		mes "[Employee Amy]";
+		mes "Hmmm, I don't think this place is";
+		mes "for you. But, I see no problem in";
+		mes "letting you drink and have a good";
+		mes "time, so long as you don't";
+		mes "make a fuss.";
+		close;
+	} else {
+		mes "I hope you'll enjoy your stay here..";
+		close;
+	}
+
+OnCommandWelcome:
+	emotion ET_CHUP,"Employee#jaw7";
+	end;
+OnCommandSolo:
+	emotion ET_HUK,"Employee#jaw7";
+	end;
+}
+
+jawaii_in.gat,30,100,4	script	Employee#jaw8	724,{
+
+	mes "[Employee Yasmine]";
+	mes "Welcome to Jawaii Tavern~";
+	if (PartnerID) {
+		mes "You're a perfect match,";
+		mes "just like the prince and the princess!";
+		close;
+	} else if (!PartnerID) {
+		next;
+		mes "[Employee Yasmine]";
+		mes "You don't look like you belong";
+		mes "here, but I hope you find your";
+		mes "perfect match one of these days.";
+		mes "Have fun!";
+		close;
+	} else {
+		mes "I hope you'll enjoy your stay here...";
+		close;
+	}
+
+OnCommandWelcome:
+	emotion ET_CHUP,"Employee#jaw8";
+	end;
+OnCommandSolo:
+	emotion ET_HUK,"Employee#jaw8";
+	end;
+}
+
+jawaii_in.gat,28,96,0	script	jaw_em_order	139,3,3,{
+
+OnTouch:
+	if (PartnerID) {
+		donpcevent "Employee#jaw8::OnCommandWelcome";
+		donpcevent "Employee#jaw7::OnCommandWelcome";
+		donpcevent "Employee#jaw6::OnCommandWelcome";
+		donpcevent "Employee#jaw5::OnCommandWelcome";
+		donpcevent "Employee#jaw4::OnCommandWelcome";
+		donpcevent "Employee#jaw3::OnCommandWelcome";
+		donpcevent "Employee#jaw2::OnCommandWelcome";
+		donpcevent "Employee#jaw1::OnCommandWelcome";
+		end;
+	} else {
+		donpcevent "Employee#jaw8::OnCommandSolo";
+		donpcevent "Employee#jaw7::OnCommandSolo";
+		donpcevent "Employee#jaw6::OnCommandSolo";
+		donpcevent "Employee#jaw5::OnCommandSolo";
+		donpcevent "Employee#jaw4::OnCommandSolo";
+		donpcevent "Employee#jaw3::OnCommandSolo";
+		donpcevent "Employee#jaw2::OnCommandSolo";
+		donpcevent "Employee#jaw1::OnCommandSolo";
+		end;
+	}
+}
+
+jawaii_in.gat,15,104,0	script	Waitress#jawaii	80,{
+
+	set '@max_max_c,checkweight(1201,1);
+	if ('@max_max_c == 0) {
+		mes "- Hold it right there!! -";
+		mes "- You're carrying so many items, -";
+		mes "- you'll not be able to obtain any reward -";
+		mes "- Please take off some of your loads -";
+		mes "- and come for the challenge again!";
+		close;
+	}
+	if (PartnerID) {
+		mes "[Waitress]";
+		mes "Welcome. What kind of service do you seek?";
+		emotion ET_CHUP,"Waitress#jawaii";
+		next;
+		switch(select("I want food","I want a drink","Where is the bar?")) {
+			case 1:
+				mes "[Waitress]";
+				mes "1 alice of Meat costs 1000z ~";
+				mes "Do you want it?";
+				next;
+				switch(select("Yes, give me that","No, it's too expensive!")) {
+					case 1:
+						if (Zeny > 999) {
+							set Zeny,Zeny-1000;
+							getitem 517,1;
+							mes "[Employee]";
+							mes "Here, enjoy your meal~";
+							close;
+						} else {
+							mes "[Waitress]";
+							mes "Oh...Well, you can't do anything without zeny!";
+							close;
+						}
+					case 2:
+						mes "[Waitress]";
+						mes "If you ever need anything else, just let me know~";
+						close;
+				}
+			case 2:
+				mes "[Waitress]";
+				mes "A Yellow Potion costs 1000z ~";
+				mes "Do you really need it?";
+				next;
+				switch(select("Bring it on","No, that's too expensive!")) {
+					case 1:
+						if (Zeny > 999) {
+							set Zeny,Zeny-1000;
+							getitem 503,1;
+							mes "[Employee]";
+							mes "Here it is. Please enjoy your drink~";
+							close;
+						} else { 
+							mes "[Waitress]";
+							mes "Well...You can't do anything without zeny!";
+							close;
+						}
+					case 2:
+						mes "[Waitress]";
+						mes "If you still need anything else, just let me know~";
+						close;
+				}
+			case 3:
+				mes "[Waitress]";
+				mes "Just go straight to the center~";
+				mes "Oh, yes. Don't drink too much and made yourself suffer~";
+				mes "You should enjoy the wonderful day instead~";
+				mes "I hope you'll enjoy your stay~";
+				close;
+		}
+	} else {
+		emotion ET_HUK,"Waitress#jawaii";
+		mes "[Waitress]";
+		mes "Hey, hey...!";
+		mes "I have no idea";
+		mes "why you're here...";
+		next;
+		mes "[Waitress]";
+		mes "But we don't tolerate singles";
+		mes "messing around with the happily";
+		mes "married couples around here.";
+		mes "Just have your drink";
+		mes "and then leave!";
+		next;
+		switch(select("I'm a member of Single Army!!","...I just wanted to congratulate them...")) {
+		case 1:
+			mes "[Waitress]";
+			mes "Yeah, right.";
+			mes "Knock it off already.";
+			mes "Why can't you be happy";
+			mes "for other people?!";
+			next;
+			mes "[Waitress]";
+			mes "*Sigh*";
+			mes "You will be welcome";
+			mes "here when you visit";
+			mes "with your partner, okay?";
+			close;
+		case 2:
+			mes "[Waitress]";
+			mes "Huh? Did you just";
+			mes "say you wanted to";
+			mes "congratulate them?";
+			mes "Oh, you must be close";
+			mes "friends with one";
+			mes "of the couples...";
+			next;
+			mes "[Waitress]";
+			mes "I'm sorry!";
+			mes "Let me apologise";
+			mes "for my rudeness.";
+			mes "I hope you have";
+			mes "a good time.";
+			close;
+		}
+	}
+}
+
+jawaii_in.gat,28,124,0	script	Bartender#jaw	46,{
+
+	mes "[Bartender]";
+	mes "Welcome to the";
+	mes "Jawaii Tavern bar.";
+	mes "What would you";
+	mes "like to drink?";
+	next;
+	if (Zeny < 99) {
+		set '@r_jaw,rand(1,100);
+		if ('@r_jaw > 29) {
+			mes "[Bartender]";
+			mes "Hm, I'm sorry";
+			mes "but you do not";
+			mes "have enough";
+			mes "money for a drink.";
+			close;
+		} else {
+			mes "[Bartender]";
+			mes "....Hmm...";
+			next;
+			mes "[" + strcharinfo(0) + "]";
+			mes "Hey...!";
+			mes "Bartender...";
+			mes "Gimme one more.";
+			next;
+			mes "[Bartender]";
+			mes "Okay...";
+			mes "It's on me.";
+			mes "Have a drink.";
+			next;
+			mes "[" + strcharinfo(0) + "]";
+			mes "Thank you";
+			close2;
+			percentheal -100,0;
+			end;
+		}
+	} else {		
+		set '@roof_jaw,0;
+		while(1) {
+			switch(select("Follow Bartender's Recommendation.","I want a Gunslinger.","I want a Cobo.","I want a Bomb.","I want a Boogieman.")) {
+			case 1:
+				set '@roof_jaw,'@roof_jaw + 3;
+				if ('@roof_jaw > 9) {
+					mes "[Bartender]";
+					mes "Hmmm...";
+					mes "You seem to have";
+					mes "had enough to drink.";
+					mes "Are you sure you'll be okay?";
+					mes "wait";
+					next;
+					mes "[" + strcharinfo(0) + "]";
+					mes "Bartender,";
+					mes "I'm so depressed";
+					mes "because of...";
+					input @input$;
+					mes "" + @input$ + "";
+					next;
+					mes "[Bartender]";
+					mes "There you go...";
+					mes "Let ma make";
+					mes "a '^0000FFSpecial J&Z^000000' for you.";
+					mes "And this is on me.";
+					percentheal -100,0;
+					break;
+				} else {
+					set Zeny,Zeny-100;
+					set '@chu,rand(1,4);
+					switch('@) {
+					case 1:
+						mes "[Bartender]";
+						mes "Hmmm...";
+						mes "How about this cocktail?";
+						next;
+						mes "[Bartender]";
+						mes "I recommend";
+						mes "a '^0000FFBarcadie 150^000000.'";
+						mes "It's the drink of pirates!";
+						next;
+						mes "^3355FFYou examined^000000";
+						mes "^3355FFthe small glass^000000";
+						mes "^3355FFcontaining a glossy^000000";
+						mes "^3355FFbrown liquid...^000000";
+						next;
+						mes "^3355FFAlthough the glass is tiny and only^000000";
+						mes "^3355FFholds a small amount, the liquid^000000";
+						mes "^3355FFinside still smells pretty^000000";
+						mes "^3355FFdangerous...^000000";
+						next;
+						mes "[Bartender]";
+						mes "It's strong and flammable,";
+						mes "so you might feel like your";
+						mes "throat is burning.";
+						next;
+						mes "^3355FFYou gulped it down.^000000";
+						misceffect 124;
+						percentheal -20,0;
+						next;
+						mes "[" + strcharinfo(0) + "]";
+						mes "Master...";
+						mes "One more please...";
+						next;
+						continue;
+					case 2:
+						mes "[Bartender]";
+						mes "Hmmm...";
+						mes "How about this cocktail?";
+						next;
+						mes "[Bartender]";
+						mes "I recommend a '^0000FFBlack Russian^000000";
+						mes "^0000FFDouble.^000000' It will make you dream of";
+						mes "lying in a vast Russian field...";
+						next;
+						mes "^3355FFYou examined the large glass^000000";
+						mes "^3355FFholding a dark brown liquid chilled^000000";
+						mes "^3355FFwith ice cubes. There's a faint^000000";
+						mes "^3355FFsweetness in the aroma, as well^000000";
+						mes "^3355FFa musk that reminds you of an old,^000000";
+						mes "^3355FFmustached man.^000000";
+						next;
+						mes "[Bartender]";
+						mes "I suggest you take your time";
+						mes "drinking this since it's very";
+						mes "strong. The Black Rusian Double is";
+						mes "rumoured to be the favourite drink of";
+						mes "the Russian mafia.";
+						next;
+						mes "^3355FFYou drank it sip by sip,^000000";
+						mes "^3355FFsavouring its rich,^000000";
+						mes "^3355FFrobust flavour.^000000";
+						misceffect 118;
+						percentheal -20,0;
+						next;
+						mes "[" + strcharinfo(0) + "]";
+						mes "Master...";
+						mes "One more please...";
+						next;
+						continue;
+					case 3:
+						mes "[Bartender]";
+						mes "So...";
+						mes "How about this...?";
+						next;
+						mes "[Bartender]";
+						mes "Why don't you try";
+						mes "a '^0000FFKis of Fire^000000";
+						mes "^0000FFthe Spinbird Kick^000000'?";
+						next;
+						mes "[Bartender]";
+						mes "Don't be fooled by its sweet scent";
+						mes "or beautiful red colour. This is one";
+						mes "of the strongest drinks around.";
+						next;
+						mes "^3355FFYou receive a crystal cocktail^";
+						mes "^3355FFglass with a little bit of sugar^000000";
+						mes "^3355FFsprinkled around the rim. It has^000000";
+						mes "^3355FFa sweet fragrance that makes your^000000";
+						mes "^3355FFmouth water. However, you can also^000000";
+						mes "^3355FFfeel that it is a dangerously^000000";
+						mes "^3355FFstrong cocktail.^000000";
+						next;
+						mes "[Bartender]";
+						mes "Lick the sugar before taking a sip.";
+						mes "That will make it taste a little";
+						mes "sweeter and will soften the taste.";
+						next;
+						mes "^3355FFYou carefully take a sip^000000";
+						misceffect 38;
+						percentheal -20,0;
+						next;
+						mes "[" + strcharinfo(0) + "]";
+						mes "Master...";
+						mes "One more please...";
+						continue;
+					case 4:
+						mes "[Bartender]";
+						mes "I see...";
+						mes "Let me think";
+						mes "of something";
+						mes "you may like.";
+						next;
+						mes "[Bartender]";
+						mes "Okay, how about";
+						mes "a '^0000FFWhite Margarita^000000'?";
+						next;
+						mes "[Bartender]";
+						mes "You will smell a sourish lemon";
+						mes "scent which makes your mouth water.";
+						mes "As you taste it, you will be filled";
+						mes "with a pleasant, comforting warmth";
+						mes "that spreads throughout your body.";
+						next;
+						mes "^3355FFYou receive a fancy cocktail glass^000000";
+						mes "^3355FFwith salt and lemon juice sprinkled^000000";
+						mes "^3355FFon the rim. Its sour scent does^000000";
+						mes "^3355FFmake your mouth water. How could^000000";
+						mes "^3355FFsomething so appetising be^000000";
+						mes "^3355FFdangerous?^000000";
+						next;
+						mes "[Bartender]";
+						mes "It has a sweet and sour taste so";
+						mes "it's favoured by female customers";
+						mes "as well. I guarantee that you will";
+						mes "enjoy its flavour.";
+						next;
+						mes "You gulp the delicious^000000";
+						mes "Margarita down in one sip.^000000";
+						misceffect 17;
+						percentheal -20,0;
+						next;
+						continue;
+					}
+				}
+			case 2:
+				if ('@roof_jaw > 8) {
+					mes "[Bartender]";
+					mes "It's on me.";
+					percentheal -100,0;
+					break;
+				} else {
+					set Zeny,Zeny-100;
+					set '@roof_jaw,'@roof_jaw + 2;
+					mes "[Bartender]";
+					mes "There you go.";
+					next;
+					mes "[Bartender]";
+					mes "When you want to look super cool,";
+					mes "this will be the best drink for";
+					mes "you. It's a strong drink with a";
+					mes "particular scent, so people who";
+					mes "drink Gunslingers are usually seen";
+					mes "as having impressive taste.";
+					next;
+					mes "^3355FFYou receive a simple glass^000000";
+					mes "^3355FFcontaining a gray liquid. Although^000000";
+					mes "^3355FFit smells fainly sweet, it looks^000000";
+					mes "^3355FFlike industrial strength liquor.^000000";
+					mes "^3355FFIt's time to summon your courage^000000";
+					mes "^3355FFand take a sip~^000000";
+					next;
+					mes "[Bartender]";
+					mes "That drink is bitter and sweet,";
+					mes "just like life. Taste it with your";
+					mes "tongue, don't drink it all at";
+					mes "once.";
+					next;
+					mes "^3355FFYou slowly drink some^000000";
+					mes "^3355FFof your Gunslinger drink.^000000";
+					next;
+					mes "[" + strcharinfo(0) + "]";
+					mes "Yeeehaw~!";
+					mes "I'm a cowboy hero!";
+					mes "Bang Bang Bang!";
+					next;
+					misceffect 18;
+					percentheal -10,0;
+					next;
+					continue;
+				}
+			case 3:
+				if ('@roof_jaw > 8) {
+					mes "[Bartender]";
+					mes "It's on me.";
+					percentheal -100,0;
+					break;
+					close;
+				} else {
+					set Zeny,Zeny-100;
+					set '@roof_jaw,'@roof_jaw + 2;
+					mes "[Bartender]";
+					mes "There you go.";
+					next;
+					mes "[Bartender]";
+					mes "People say that the more you drink";
+					mes "a mixed Cobo, the tastier it will";
+					mes "be. It grows on you, kind of like";
+					mes "the company of an old friend. This";
+					mes "is a nice drink to have with anyone";
+					mes "at anytime.";
+					next;
+					mes "^3355FFThe Bartender bought a beauitfully^000000";
+					mes "^3355FFengraved glass holding a cobalt^000000";
+					mes "^3355FFblue liquid and placed it in front^000000";
+					mes "^3355FFof you. It smells pleasantly sweet^000000";
+					mes "^3355FFand sour.^000000";
+					next;
+					mes "[Bartender]";
+					mes "Once you taste this once, you";
+					mes "almost can't stop drinking. It";
+					mes "tastes so smooth and goes";
+					mes "down even smoother.";
+					next;
+					mes "^3355FFYou finished^000000";
+					mes "^3355FFyour drink in 3 sips.^000000";
+					mes "^3355FFYour mouth was filled^000000";
+					mes "^3355FFwith a luxurious, sweet and^000000";
+					mes "^3355FFsour flavour.^000000";
+					next;
+					mes "[" + strcharinfo(0) + "]";
+					mes "Aaaaaahhhhh~!";
+					mes "This drink is really good!";
+					misceffect 83;
+					percentheal -10,0;
+					next;
+					continue;
+				}
+			case 4:
+				if ('@roof_jaw > 8) {
+					mes "[Bartender]";
+					mes "It's on me.";
+					next;
+					percentheal -100,0;
+					break;
+				} else {
+					set Zeny,Zeny-100;
+					set '@roof_jaw,'@roof_jaw + 2;
+					mes "[Bartender]";
+					mes "There you go.";
+					next;
+					mes "[Bartender]";
+					mes "This is for one who wants to relive";
+					mes "wild, youthful days, honour those";
+					mes "who have fought for justice and";
+					mes "liberty, or just to drink alcohol";
+					mes "until they vomit stomach acid.";
+					next;
+					mes "^3355FFYou receive a tumbler filled with^000000";
+					mes "^3355FFbrown liquid. It has a very^000000";
+					mes "^3355FFthick, machine like smell. It kind^000000";
+					mes "^3355FFof reminds you of gunpowder.^000000";
+					next;
+					mes "[Bartender]";
+					mes "It might look too big to drink at";
+					mes "once, but I suggest that you finish";
+					mes "it in one gulp. If you drink it";
+					mes "slowly, you'll pass out.";
+					next;
+					mes "^3355FFYou firmly grabbed^000000";
+					mes "^3355FFthe tumbler and^000000";
+					mes "^3355FFgulped it down.^000000";
+					next;
+					mes "^3355FFYou feel pretty hammered.^000000";
+					misceffect 106;
+					percentheal -10,0;
+					next;
+					continue;
+				}
+			case 5:
+				if ('@roof_jaw > 8) {
+					mes "[Bartender]";
+					mes "It's on me.";
+					percentheal -100,0;
+					break;
+				} else {
+					set Zeny,Zeny-100;
+					set '@roof_jaw,'@roof_jaw + 1;
+					mes "[Bartender]";
+					mes "There you go.";
+					next;
+					mes "[Bartender]";
+					mes "There are not many people who like";
+					mes "this drink. But the ones that do";
+					mes "like this drink, love it.";
+					next;
+					mes "[Bartender]";
+					mes "Although it has a beautiful,";
+					mes "appetising colour, its appearance";
+					mes "can be misleading. Most people feel";
+					mes "cold and empty after having some";
+					mes "of this.";
+					next;
+					mes "^3355FFYou receive a crooked glass^000000";
+					mes "^3355FFfilled with purple fluid. Although^000000";
+					mes "^3355FFit smells pleasant, you have a^000000";
+					mes "^3355FFstrange feeling of disgust as you^000000";
+					mes "^3355FFdraw it closer to your face.^000000";
+					next;
+					mes "[Bartender]";
+					mes "If you don't want to drink it, tell";
+					mes "me now. But it might be good to try";
+					mes "it once, just to experience it.";
+					next;
+					mes "^3355FFYou took a sip of it and sighed.^000000";
+					next;
+					mes "^3355FFAnd promised yourself that you^000000";
+					mes "^3355FFwould never drink it ever again.^000000";
+					misceffect 5;
+					percentheal -10,0;
+					next;
+					continue;
+				}
+			}
+			mes "[" + strcharinfo(0) + "]";
+			mes "Master...";
+			mes "One more please...";
+			next;
+			continue;
+		}
+	}
+}
+
+jawaii_in.gat,43,115,0	script	Customer#jaw_1	97,{
+
+	if (!PartnerID) {
+		if (Zeny > 99) {
+			mes "[Buchi]";
+			mes "Grrrr...";
+			mes "Damn! I don't";
+			mes "like this place!";
+			mes "I don't like this at all!";
+			next;
+			mes "[Buchi]";
+			mes "I can't believe my eyes! Everyone";
+			mes "else looks disgustingly happy! It";
+			mes "makes me feel so miserable!";
+			mes "You agree, don't you?!";
+			next;
+			mes "[Buchi]";
+			mes "Grrrr...";
+			mes "Bartender!";
+			mes "Give me one more!";
+			close;
+		} else {
+			mes "[Buchi]";
+			mes "Hey, why aren't you drinking?";
+			mes "I guess you're all out of dough.";
+			mes "But I know how you feel. Disgusted";
+			mes "with all the lovey dovey around";
+			mes "this place, aren't you?";
+			next;
+			mes "[Buchi]";
+			mes "Heh.";
+			mes "Lemme buy";
+			mes "you a drink!";
+			next;
+			mes "[Buchi]";
+			mes "Drink this at once, and forget";
+			mes "about your miserable life! Cheer";
+			mes "up, you got the whole future ahead";
+			mes "of you and a drink in front of you!";
+			mes "Come on, now~!";
+			next;
+			mes "^3355FFHe ordered a JJ special for me.^000000";
+			next;
+			mes "[" + strcharinfo(0) + "]";
+			mes "Damn...!";
+			mes "Damn! I will be";
+			mes "the one who laughs last!";
+			next;
+			mes "^3355FFYou drink to your full.^000000";
+			close2;
+			percentheal -100,0;
+			end;
+		}
+	} else {
+		mes "[Buchi]";
+		mes "....You look really happy...";
+		mes "Hopefully, that feeling will last forever.";
+		mes "...Hiccups!";
+		close;
+	}
+}
+
+jawaii_in.gat,41,106,3	script	Customer#Cage	98,{
+
+	if (PartnerID) {
+		mes "[Cage]";
+		mes "....Hey, who are you!";
+		mes "You decide the path of your own fate!";
+		next;
+		mes "[Cage]";
+		mes "As for me, even if none believes me!";
+		mes "I will only walk the path I wanted!";
+		close;
+	} else {
+		mes "[Cage]";
+		mes "Drink, drink...!!";
+		mes "Eat, eat..!!";
+		mes "Join me,";
+		mes "my brother";
+		mes "in singlehood!";
+		next;
+		mes "[Cage]";
+		mes "We are free...!";
+		mes "We are free from";
+		mes "the hell of marriage...!";
+		mes "We are the sincere and";
+		mes "competent singles...!";
+		close;
+	}
+}
+
+izlude.gat,171,185,3	script	Marriage Companion#Izlude Island	71,{
+
+	mes "[Happy Wedding]";
+	mes "Those of you who just got married, those of you who are married";
+	mes "I will take you to a land of dreams, where you can dance around";
+	mes "and rest, to ^3355ffJawaii^000000!";
+	next;
+	switch(select("What is ^3355ffJawaii^000000?","Go to ^3355ffJawaii^000000","Cancel")) {
+	case 1:
+		mes "[Happy Wedding]";
+		mes "There is an island, far far away from Midgard.";
+		mes "People always want to go there on vacation.";
+		mes "It is a great resort!";
+		mes "It is famous amongst the newlyweds,";
+		mes "and many go there on their honeymoon.";
+		next; 
+		mes "[Happy Wedding]";
+		mes "It is a special holiday, so the price is expensive.";
+		mes "It will cost 100,000zeny!";
+		mes "Of course, you will be able to enjoy";
+		mes "the fabulous resort there.";
+		close;
+	case 2:
+		if (!PartnerID) {
+			mes "[Happy Wedding]";
+			mes "Uh oh, I'm sorry.";
+			mes "You can't go there if you're not married...";
+			mes "Why don't you go to the Prontera Inn,";
+			mes "and cheer yourself up?";
+			close;
+		} else if (Zeny > 99999) {
+			set Zeny,Zeny-100000;
+			mes "[Happy Wedding]";
+			mes "Enjoy your trip...!!";
+			mes "Let's go to 'Jawaii'...!!";
+			close2;
+			warp "jawaii.gat",245,125;
+			end;
+		} else {
+			mes "[Happy Wedding]";
+			mes "I've explained about the trip to 'Jawaii'.";
+			mes "You'll need 100,000 zeny.";
+			mes "If you do not have enough zeny,";
+			mes "why don't you seek help from your partner...?";
+			close;
+		}
+	case 3:
+		mes "[Happy Wedding]";
+		mes "Have a pleasant journey!";
+		mes "We will be waiting in Jawaii...!";
+		close;
+	}
+}
+
+jawaii.gat,239,112,7	script	Sailor#Izlude	100,{
+
+	mes "[Sailor]";
+	mes "This ship will bring you back to Izlude Island.";
+	mes "do you enjoy your stay at Jawaii?";
+	mes "Please make sure that,";
+	mes "you haven't left out anything.";
+	next;
+	mes "[Sailor]";
+	mes "Well then, are you ready to return to Izlude Island?";
+	next;
+	switch(select("Yes, I am","Cancel")) {
+	case 1:
+		mes "[Sailor]";
+		mes "Anchors away! Next stop! Izlued Island!!";
+		close2;
+		warp "izlude.gat",176,182;
+		end;
+	case 2:
+		mes "[Sailor]";
+		mes "Well then, spend a little more time before you leave!";
+		mes "It's not like you can come here everyday!";
+		close;
+	}
+}
+
+jawaii.gat,122,263,5	script	Sailor#Alberta	100,{
+
+	mes "[Sailor]";
+	mes "This ship will bring you back to Alberta.";
+	mes "do you enjoy your stay at Jawaii?";
+	mes "Please make sure that,";
+	mes "you haven't left out anything.";
+	next;
+	mes "[Sailor]";
+	mes "Well then, are you ready to return to Alberta?";
+	next;
+	switch(select("Yes, I am","Cancel")) {
+	case 1:
+		mes "[Sailor]";
+		mes "Anchors away! Next stop! Alberta!!";
+		close2;
+		warp "alberta.gat",192,157;
+		end;
+	case 2:
+		mes "[Sailor]";
+		mes "Well then, spend a little more time before you leave!";
+		mes "It's not like you can come here everyday!";
+		close;
+	}
+}
+
+jawaii.gat,188,218,7	script	Inn Receptionist	80,{
+
+	mes "[Receptionist]";
+	mes "Oh, my god. Dear customer,";
+	mes "I think it would be better that you don't go in there.";
+	mes "How could there be a place like this,";
+	mes "in Jawaii, a tourist spot for honey moon trip?";
+	mes "It's totally unbelievable?";
+	next;
+	mes "[Receptionist]";
+	mes "I'm not sure how you get in here...";
+	mes "Sometimes there're unmarried people,";
+	mes "and there's also rumor of missing person in the inn,";
+	mes "as well as the owner selling strange drinks.";
+	mes "What is going on here?";
+	next;
+	mes "[Receptionist]";
+	mes "I know I shouldn't say this,";
+	mes "but I really suggest that you leave now!";
+	mes "Do you understand?";
+	close;
+}
+
+jawaii.gat,220,235,3	script	Jawaii Citizen#Love Boat	724,{
+
+	mes "[JawaJawa]";
+	mes "Do you know where is the most beautiful place in Jawaii?";
+	mes "It's the 'Island of Love',";
+	mes "located at the north of Jawaii.";
+	mes "Since the water is shallow,";
+	mes "you'll be able to reach there if you're careful.";
+	next;
+	mes "[JawaJawa]";
+	mes "It's also a suitable place for a couple to relax and spend some quality time.";
+	mes "If you sat thre alone,";
+	mes "you'll look like a castaway,";
+	mes "stranded on a deserted island!";
+	next;
+	mes "[JawaJawa]";
+	mes "Well, of course you can play Castaway";
+	mes "with the letter in empty bottle!";
+	mes "But don't that look pathetic?";
+	close;
+}
+
+jawaii.gat,240,146,5	script	Jawaii Citizen#Explain1	724,{
+
+	mes "[WaiiWaii]";
+	mes "Welcome to Jawaii!";
+	mes "What would a marriage be without a honeymoon?";
+	mes "At this place,";
+	mes "you can ignore the threat from those pathetic dateless losers.";
+	next;
+	mes "[WaiiWaii]";
+	mes "You might encounter some monsters here.";
+	mes "But as long as you leave them alone, it will be fine!";
+	mes "They have inhabited this place for a long time,";
+	mes "so you can just take them a part of the view.";
+	close;
+}
+
+jawaii.gat,168,247,5	script	Jawaii Citizen#Explain2	724,{
+
+	mes "[WajaWaja]";
+	mes "The hostels are located at the west.";
+	mes "Every room has a different environment.";
+	mes "So choose the one suitable for you.";
+	mes "It would be better if you ask the staff there.";
+	next;
+	mes "[WajaWaja]";
+	mes "Please use the ship at the northwest";
+	mes "and southeast if you want to go back.";
+	mes "There're boats scheduled to";
+	mes "Alberta and Izlude Island.";
+	close;
+}
+
+jawaii.gat,165,121,1	script	Jawaii Citizen#Explain3	724,{
+
+	mes "[IwaIwa]";
+	mes "Jawaii~ Isn't this island of happiness great?";
+	mes "You can just lay down";
+	mes "and do nothing for the whole day.";
+	mes "That what Jawaii is meant for.";
+	next;
+	mes "[IwaIwa]";
+	mes "This is the stage,";
+	mes "wher they hold a performance sometimes.";
+	mes "Do you want to go up there and sing us a song?";
+	mes "Jawaii~ Island of Happiness.";
+	close;
+}
+
+jawaii.gat,141,200,3	script	Employee#Sweetness Suite	798,{
+
+	mes "[Alowawu]";
+	mes "Welcome.";
+	mes "This is the Sweetness suite.";
+	mes "I have cleaned and tidy up the place.";
+	mes "So please feel free to use it.";
+	next;
+	mes "[Alowawu]";
+	mes "The rental is 1000 zeny per person.";
+	mes "If you give it to me,";
+	mes "I'll transfer you inside.";
+	mes "There's no other way to get inside directly.";
+	next;
+	mes "[Alowawu]";
+	mes "I'll help you with the baggages,";
+	mes "or else, my boss will";
+	mes "beat me up with Triple Blows.";
+	mes "That really hurts.";
+	next;
+	switch(select("Use it","Cancel")) {
+	case 1:
+		if (Zeny > 999) {
+			mes "[Alowawu]";
+			mes "Thank you.";
+			mes "I'll open a portal for you right now.";
+			mes "Have a nice stay";
+			close2;
+			set Zeny,Zeny-1000;
+			warp "jawaii_in.gat",116,64;
+			end;
+		} else {
+			mes "[Alowawu]";
+			mes "Ah. Dear customer,";
+			mes "you don't have enough zeny to pay for the room.";
+			mes "I can't let you in. Or else,";
+			mes "my boss with get angry and hit me with Triple Blows.";
+			close;
+		}
+	case 2:
+		mes "[Alowawu]";
+		mes "Haha, this room is better than others.";
+		mes "Believe, it's nice and clean.";
+		mes "If you have any change of mind,";
+		mes "just come and find me.";
+		close;
+	}
+}
+
+jawaii.gat,108,199,5	script	Employee#Classic Suite	74,{
+
+	mes "[Poyi Oland]";
+	mes "Welcome.";
+	mes "This is the Classic suite with two rooms.";
+	mes "It's totally perfect for both of you!";
+	mes "Although the appearances of the houses look alike,";
+	mes "the interior is totally different!";
+	next;
+	mes "[Poyi Oland]";
+	mes "The rental is 1000 zeny per person.";
+	mes "and we're on a post paid basis!";
+	mes "Since you're here on a trip,";
+	mes "I suggest that you choose a better room!";
+	next;
+	mes "[Poyi Oland]";
+	mes "If you ever need anything, just call us.";
+	mes "We'll be at your service immediately.";
+	next;
+	switch(select("Use","Cancel")) {
+	case 1:
+		if (Zeny > 999) {
+			mes "[Poyi Oland]";
+			mes "Thank you for using.";
+			mes "Please enjoy your stay.";
+			close2;
+			set Zeny,Zeny-1000;
+			warp "jawaii_in.gat",129,110;
+			end;
+		} else {
+			mes "[Poyi Oland]";
+			mes "I'm sorry!";
+			mes "You do not have enough zeny.";
+			mes "Please confirm your zeny and come again!";
+			close;
+		}
+	case 2:
+		mes "[Poyi Oland]";
+		mes "So, please come again after you've confirmed it.";
+		mes "Presence of any guest is always welcomed.";
+		close;
+	}
+}
+
+jawaii.gat,107,189,5	script	Employee#Honeymoon Suite	93,{
+
+	mes "[Saroki Lania]";
+	mes "...This is the Honeymoon suite and the cost is 100 zeny.";
+	next;
+	mes "[Saroki Lania]";
+	mes "...Do you want to go in?";
+	next;
+	switch(select("Yes","Cancel")) {
+	case 1:
+		if (Zeny > 999) {
+			mes "[Saroki Lania]";
+			mes "...Please come in.";
+			close2;
+			set Zeny,Zeny-1000;
+			warp "jawaii_in.gat",86,117;
+			end;
+		} else {
+			mes "[Saroki Lania]";
+			mes "...Not enough zeny?";
+			close;
+		}
+	case 2:
+		mes "[Saroki Lania]";
+		mes "...Ok then.";
+		close;
+	}
+}
+
+jawaii.gat,112,173,7	script	Employee#Villa Suite	93,{
+
+	mes "[Lakers Lania]";
+	mes "Saroki, this is rude.";
+	mes "Can't you treat the customer nicely?";
+	mes "This will make them feel uneasy. Oh, customer!";
+	mes "Welcome. Are you here on a trip?";
+	next;
+	mes "[Lakers Lania]";
+	mes "This is the Villa suite.";
+	mes "It is as comfortable as your home.";
+	mes "The rental is only 1000 zeny.";
+	next;
+	mes "[Lakers Lania]";
+	mes "If you want to use it, I can serve you right now.";
+	mes "What do you think?";
+	next;
+	switch(select("Use it","Cancel")) {
+	case 1:
+		if (Zeny > 999) {
+			mes "[Lakers Lania]";
+			mes "Thanks and rest well.";
+			mes "I hope you'll enjoy your trip.";
+			close2;
+			set Zeny,Zeny-1000;
+			warp "jawaii_in.gat",87,75;
+			end;
+		} else {
+			mes "[Lakers Lania]";
+			mes "Oh, you don't have enough zeny for the stay...?";
+			mes "Maybe you can ask from your partner.";
+			mes "Huhuhuhu-";
+			close;
+		}
+	case 2:
+		mes "[Lakers Lania]";
+		mes "Hmm, maybe you can try the honeymoon suite beside us.";
+		mes "Although Saroki is not sociable,";
+		mes "the room is a true masterpiece!";
+		close;
+	}
+}
+
+jawaii.gat,214,168,5	script	Marriage Companion#Jawaii	71,{
+
+	mes "[Happy Wedding]";
+	mes "There is no place better for honeymoon than Jawaii.";
+	mes "Since you're here,";
+	mes "make sure that you return with a nice memory.";
+	next;
+	mes "[Happy Wedding]";
+	mes "A sweet memory that you can always remember,";
+	mes "is far more precious than anything.";
+	mes "The first time you wear a wedding dress or tuxedo,";
+	mes "must be a precious experience too.";
+	next;
+	mes "[Happy Wedding]";
+	mes "Although you can't experience the ceremony again,";
+	mes "whenever you look into the photo album,";
+	mes "I'm sure you will remember every detail of the wedding.";
+	mes "For those who want this,";
+	mes "I've prepared a special item.";
+	next;
+	mes "[Happy Wedding]";
+	mes "That is... 'Memory of Wedding'!!";
+	mes "With the power of magic,";
+	mes "you will be able to feel the environment of the wedding ceremony again.";
+	mes "The price is... 50000z, what do you think?";
+	next;
+	switch(select("Buy it","Cancel")) {
+	case 1:
+		if (Zeny > 49999) {
+			set Zeny,Zeny-50000;
+			getitem 681,1;
+			mes "[Happy Wedding]";
+			mes "Thank you.";
+			mes "Don't simply open it.";
+			mes "Use it with your love one at the place of your sweetest memory!";
+			close;
+		} else {
+			mes "[Happy Wedding]";
+			mes "The price for 'Memory of Wedding' is 50000z.";
+			mes "Looks like you don't have enough zeny.";
+			mes "Do you want to seek the help of your partner?";
+			close;
+		}
+	case 2:
+		mes "[Happy Wedding]";
+		mes "Although the relationship might have changed by now,";
+		mes "the memory and time you spend together,";
+		mes "will never be changed...";
+		close;
+	}
+}

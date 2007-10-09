@@ -1,0 +1,592 @@
+//--------------------------------------------------------------
+//               (c)2004-2007 Aurora Team Presents:             
+//                  ___                                         
+//                 /   |_   _ _ __ ___  _ __ __ _               
+//                / /| | | | | '__/ _ \| '__/ _` |              
+//               / ___ | |_| | | | (_) | | | (_| |++            
+//              /_/  |_|\____|_|  \___/|_|  \__,_|              
+//                 http://aurora.deltaanime.net                 
+//--------------------------------------------------------------
+// Script Title: Inn Employees	Author: Tsuyuki/L0ne_W0lf
+//--------------------------------------------------------------
+// Revision History: v1.1
+//--------------------------------------------------------------
+//	1.0 First version, converted from Aegis [Tsuyuki]
+//	1.1 Added Veins Inn by L0ne_W0lf (Possibly custom?) [Tsuyuki]
+//--------------------------------------------------------------
+// Additional Notes: * Official-certified / Aegis-certified *
+//--------------------------------------------------------------
+
+
+//--------------------------------------------------------------
+// Alberta Inn Employees - [Tsuyuki]
+//--------------------------------------------------------------
+
+alberta_in.gat,32,142,3	script	Inn Employee	53,{
+
+	mes "[Employee Jennie]";
+	mes "Welcome to";
+	mes "'Fisherman Inn!'";
+	mes "How may I help you?";
+	next;
+	switch(select("Save","Take Rest -> 5,000 zeny","Cancel")) {
+	case 1:
+		mes "[Employee Jennie]";
+		mes "Your respawn point";
+		mes "has been saved.";
+		mes "Thank you,";
+		mes "please come again.";
+		savepoint "alberta_in.gat",26,142;
+		close;
+	case 2:
+		if (Zeny > 4999) {
+			mes "[Employee Jennie]";
+			mes "Thank you.";
+			mes "I hope you";
+			mes "enjoy your rest~";
+			close2;
+			set Zeny,Zeny-5000;
+			percentheal 100,100;
+			warp "alberta_in.gat",16,105;
+			end;
+		} else {
+			mes "[Employee Jennie]";
+			mes "I'm sorry, but the service charge is 5,000 zeny. Please make sure that you have enough money to check in next time, okay?";
+			close;
+		}
+	case 3:
+		close;
+	}
+}
+
+
+//--------------------------------------------------------------
+// Al De Baran Inn Employees - [Tsuyuki]
+//--------------------------------------------------------------
+
+aldeba_in.gat,92,58,5	script	Inn Maid	53,{
+
+	mes "[Rilim]";
+	mes "Welcome to Al De Baran Inn.";
+	mes "How may I help you?";
+	next;
+	switch(select("Save Point","Rest - 5,000z","Quit")) {
+	case 1:
+		mes "[Rilim]";
+		mes "Your respawn point has been saved. Thank you.";
+		savepoint "aldeba_in.gat",92,50;
+		close;
+	case 2:
+		if (Zeny > 4999) {
+			mes "[Rilim]";
+			mes "Please enjoy your stay. Thank you.";
+			close2;
+			set Zeny,Zeny-5000;
+			percentheal 100,100;
+			warp "aldeba_in.gat",92,112;
+			end;
+		} else {
+			mes "[Rilim]";
+			mes "The service charge is 5,000 zeny.";
+			mes "Please check your wallet again, thanks.";
+			close;
+		}
+	case 3:
+		close;
+	}
+}
+
+
+//--------------------------------------------------------------
+// Einbroch Inn Employees -> Related to Airship Quest - [Tsuyuki]
+//--------------------------------------------------------------
+
+ein_in01.gat,206,224,3	script	Hotel Employee	855,{
+
+	mes "[Hotel Employee]";
+	mes "Good day, welcome to the";
+	mes "Einbroch Hotel. The staff is";
+	mes "always striving to accomodate";
+	mes "our guests with the highest";
+	mes "standards in cleanliness,";
+	mes "service and convenience~";
+	next;
+	if (ein_tre == 5) {
+		mes "[Hotel Employee]";
+		mes "Are you looking";
+		mes "for Mr. Defru Ark?";
+		mes "Oh right, he did mention";
+		mes "waiting for some package";
+		mes "from the Airport. Now let";
+		mes "me pull up that information...";
+		next;
+		mes "[Hotel Employee]";
+		mes "Ah, here we are.";
+		mes "Mr. Defru Ark is";
+		mes "staying in Room 201.";
+		next;
+	} else {
+		switch(select("Save","Take Rest - 5,000 zeny","Cancel")) {
+		case 1:
+			mes "[Hotel Employee]";
+			mes "Your Respawn Point";
+			mes "has been saved here";
+			mes "in the Einbroch Hotel.";
+			mes "Thank you, and please";
+			mes "come again.";
+			savepoint "ein_in01.gat",200,224;
+			next;
+			break;
+		case 2:
+			if (Zeny > 4999) {
+				mes "[Hotel Employee]";
+				mes "Thank you.";
+				mes "Please enjoy";
+				mes "your rest~";
+				close2;
+				set Zeny,Zeny-5000;
+				percentheal 100,100;
+				warp "ein_in01.gat",272,167;
+				end;
+			} else {
+				mes "[Hotel Employee]";
+				mes "I'm sorry, but the";
+				mes "acommodation fee is";
+				mes "5,000 zeny. Next time,";
+				mes "please make sure that you";
+				mes "bring enough zeny, okay?";
+				close;
+			}
+		case 3:
+			mes "[Hotel Employee]";
+			mes "Thank you and";
+			mes "please come again~";
+			close;
+		}
+	}
+	mes "[Hotel Employee]";
+	mes "Have a good day.";
+	close;
+}
+
+
+//--------------------------------------------------------------
+// Geffen Inn Employees - [Tsuyuki]
+//--------------------------------------------------------------
+
+geffen_in.gat,70,64,3	script	Inn Employee	53,{
+
+	mes "[Employee Cena]";
+	mes "Welcome to 'Ifrit,'";
+	mes "the one and only Inn";
+	mes "in the city of Geffen.";
+	mes "How may I help you?";
+	next;
+	switch(select("Save","Take a Rest -> 5,000 zeny","Cancel")) {
+	case 1:
+		mes "[Employee Cena]";
+		mes "Your respawn point";
+		mes "has been saved.";
+		mes "Thank you,";
+		mes "please come again.";
+		savepoint "geffen_in.gat",70,59;
+		close;
+	case 2:
+		if (Zeny > 4999) {
+			mes "[Employee Cena]";
+			mes "Thank you.";
+			mes "I hope you";
+			mes "enjoy your rest~";
+			close2;
+			set Zeny,Zeny-5000;
+			percentheal 100,100;
+			warp "geffen_in.gat",31,31;
+			end;
+		} else {
+			mes "[Employee Cena]";
+			mes "I'm sorry, but the service charge is 5,000 zeny. Please make sure that you have enough money to check in next time, okay?";
+			close;
+		}
+	case 3:
+		close;
+	}
+}
+
+
+//--------------------------------------------------------------
+// Hugel Inn Employees - [Tsuyuki]
+//--------------------------------------------------------------
+
+hu_in01.gat,246,107,3	script	Inn Staff	53,{
+
+	mes "[Inn Staff]";
+	mes "Welcome to Hugel Inn.";
+	mes "How can I help you?";
+	next;
+	switch(select("Save Point","Rest - 5,000z","Quit")) {
+	case 1:
+		mes "[Inn Staff]";
+		mes "Your respawn point has been saved.";
+		mes "Thank you for your patronage.";
+		savepoint "hu_in01.gat",263,95;
+		next;
+		break;
+	case 2:
+		if (Zeny > 4999) {
+			mes "[Inn Staff]";
+			mes "Enjoy your stay.";
+			close2;
+			set Zeny,Zeny-5000;
+			percentheal 100,100;
+			warp "hu_in01.gat",267,5;
+			end;
+		} else {
+			mes "[Inn Staff]";
+			mes "The service fee is 5,000 zeny.";
+			mes "Please check your wallet again.";
+			close;
+		}
+	case 3:
+		mes "[Inn Staff]";
+		mes "Please come again~";
+		close;
+	}
+	mes "[Inn Staff]";
+	mes "I hope that you will enjoy your stay in Hugel.";
+	close;
+}
+
+
+//--------------------------------------------------------------
+// Morroc Inn Employees - [Tsuyuki]
+//--------------------------------------------------------------
+
+morocc_in.gat,147,141,3	script	Inn Employee	53,{
+
+	mes "[Employee Hasna]";
+	mes "Welcome to";
+	mes "'Morroc Inn!'";
+	mes "How may I help you?";
+	next;
+	switch(select("Save","Take a Rest -> 5,000 zeny","Cancel")) {
+	case 1:
+		mes "[Employee Hasna]";
+		mes "Your respawn point";
+		mes "has been saved.";
+		mes "Thank you,";
+		mes "please come again.";
+		savepoint "morocc_in.gat",142,140;
+		close;
+	case 2:
+		if (Zeny > 4999) {
+			mes "[Employee Hasna]";
+			mes "Thank you.";
+			mes "I hope you";
+			mes "enjoy your rest~";
+			close2;
+			set Zeny,Zeny-5000;
+			percentheal 100,100;
+			warp "morocc_in.gat",173,135;
+			end;
+		} else {
+			mes "[Employee Jennie]";
+			mes "I'm sorry, but the service charge is 5,000 zeny. Please make sure that you have enough money to check in next time, okay?";
+			close;
+		}
+	case 3:
+		close;
+	}
+}
+
+morocc_in.gat,78,100,3	script	Inn Employee	53,{
+
+	mes "[Employee Manar]";
+	mes "Welcome to";
+	mes "'Morroc Inn!'";
+	mes "How may I help you?";
+	next;
+	switch(select("Save","Take a Rest -> 5,000 zeny","Cancel")) {
+	case 1:
+		mes "[Employee Manar]";
+		mes "Your respawn point";
+		mes "has been saved.";
+		mes "Thank you,";
+		mes "please come again.";
+		savepoint "morocc_in.gat",78,95;
+		close;
+	case 2:
+		if (Zeny > 4999) {
+			mes "[Employee Manar]";
+			mes "Thank you.";
+			mes "I hope you";
+			mes "enjoy your rest~";
+			close2;
+			set Zeny,Zeny-5000;
+			percentheal 100,100;
+			warp "morocc_in.gat",79,123;
+			end;
+		} else {
+			mes "[Employee Jennie]";
+			mes "I'm sorry, but the service charge is 5,000 zeny. Please make sure that you have enough money to check in next time, okay?";
+			close;
+		}
+	case 3:
+		close;
+	}
+}
+
+
+//--------------------------------------------------------------
+// Lighthalzen Inn Employees - [Tsuyuki]
+//--------------------------------------------------------------
+
+lhz_in02.gat,230,284,5	script	Hotel Employee	86,{
+
+	mes "[Hotel Employee]";
+	mes "Welcome to";
+	mes "the Royal Dragon,";
+	mes "where you can find the";
+	mes "finest accomodations";
+	mes "and the best service.";
+	next;
+	switch(select("Save Point","Rest - 5,000 zeny","Cancel")) {
+	case 1:
+		mes "[Hotel Employee]";
+		mes "Thank you, your";
+		mes "Respawn Point has";
+		mes "been saved here in";
+		mes "the Royal Dragon.";
+		savepoint "lhz_in02.gat",232,274;
+		close;
+	case 2:
+		if (Zeny > 4999) {
+			mes "[Hotel Employee]";
+			mes "Thank you~";
+			mes "I hope you enjoy";
+			mes "your stay in the";
+			mes "Royal Dragon.";
+			close2;
+			set Zeny,Zeny-5000;
+			percentheal 100,100;
+			sc_start SC_BLESSING,240000,10;
+			warp "lhz_in02.gat",220,150;
+			end;
+		} else {
+			mes "[Hotel Employee]";
+			mes "I'm sorry, but";
+			mes "you need 5,000 zeny";
+			mes "in order to check in.";
+			close;
+		}
+	case 3:
+		mes "[Hotel Employee]";
+		mes "Thank you and";
+		mes "have a nice day.";
+		close;
+	}
+}
+
+
+//--------------------------------------------------------------
+// Payon Inn Employees - [Tsuyuki]
+//--------------------------------------------------------------
+
+payon_in01.gat,132,62,5	script	Inn Employee	53,{
+
+	mes "[Employee Ahee]";
+	mes "Welcome to Payon Inn.";
+	mes "How may I help you?";
+	next;
+	switch(select("Save","Take Rest - 5,000 zeny","Cancel")) {
+	case 1:
+		mes "[Employee Ahee]";
+		mes "Your respawn point";
+		mes "has been saved.";
+		mes "Thank you,";
+		mes "please come again.";
+		savepoint "payon_in01.gat",136,61;
+		close;
+	case 2:
+		if (Zeny > 4999) {
+			mes "[Employee Ahee]";
+			mes "Thank you.";
+			mes "I hope you";
+			mes "enjoy your rest~";
+			close2;
+			set Zeny,Zeny-5000;
+			percentheal 100,100;
+			warp "payon_in01.gat",132,11;
+			end;
+		} else {
+			mes "[Employee Ahee]";
+			mes "I'm sorry, but the service charge is 5,000 zeny. Please make sure that you have enough money to check in next time, okay?";
+			close;
+		}
+	case 3:
+		close;
+	}
+}
+
+
+//--------------------------------------------------------------
+// Prontera Inn Employees - [Tsuyuki]
+//--------------------------------------------------------------
+
+prt_in.gat,244,135,0	script	Inn Employee	53,{
+
+	mes "[Employee Sammy]";
+	mes "Welcome to";
+	mes "Nenkaras.";
+	mes "How may I help you?";
+	next;
+	switch(select("Save","Take a Rest -> 5,000 zeny","Cancel")) {
+	case 1:
+		mes "[Employee Sammy]";
+		mes "Your respawn point";
+		mes "has been saved.";
+		mes "Thank you,";
+		mes "please come again.";
+		savepoint "prt_in.gat",238,130;
+		close;
+	case 2:
+		if (Zeny > 4999) {
+			mes "[Employee Sammy]";
+			mes "Thank you.";
+			mes "I hope you";
+			mes "enjoy your rest~";
+			close2;
+			set Zeny,Zeny-5000;
+			percentheal 100,100;
+			warp "prt_in.gat",247,104;
+			end;
+		} else {
+			mes "[Employee Sammy]";
+			mes "I'm sorry, but the service charge is 5,000 zeny. Please make sure that you have enough money to check in next time, okay?";
+			close;
+		}
+	case 3:
+		close;
+	}
+}
+
+prt_in.gat,61,141,4	script	Inn Employee	53,{
+
+	mes "[Employee Alma]";
+	mes "Welcome to";
+	mes "Nenkaras.";
+	mes "How may I help you?";
+	next;
+	switch(select("Save","Take a Rest -> 5,000 zeny","Cancel")) {
+	case 1:
+		mes "[Employee Alma]";
+		mes "Your respawn point";
+		mes "has been saved.";
+		mes "Thank you,";
+		mes "please come again.";
+		savepoint "prt_in.gat",64,136;
+		close;
+	case 2:
+		if (Zeny > 4999) {
+			mes "[Employee Alma]";
+			mes "Thank you.";
+			mes "I hope you";
+			mes "enjoy your rest~";
+			close2;
+			set Zeny,Zeny-5000;
+			percentheal 100,100;
+			warp "prt_in.gat",60,166;
+			end;
+		} else {
+			mes "[Employee Sammy]";
+			mes "I'm sorry, but the service charge is 5,000 zeny. Please make sure that you have enough money to check in next time, okay?";
+			close;
+		}
+	case 3:
+		close;
+	}
+}
+
+
+//--------------------------------------------------------------
+// Rachel Inn Employees - [Tsuyuki]
+//--------------------------------------------------------------
+
+ra_in01.gat,376,69,5	script	Hotel Employee	931,{
+
+	mes "[Hotel Employee]";
+	mes "May Freya bless you.";
+	mes "Welcome to Rachel Hotel, where make you comfortable as much as Freya's endless love toward humans.";
+	next;
+	switch(select("Save Point","Rest - 5,000z","Quit")) {
+	case 1:
+		mes "[Hotel Employee]";
+		mes "Your respawn point has been saved in this place.";
+		mes "Thank you for your patronage.";
+		savepoint "ra_in01.gat",375,60;
+		next;
+		break;
+	case 2:
+		if (Zeny > 4999) {
+			mes "[Hotel Employee]";
+			mes "Please enjoy your stay.";
+			close2;
+			set Zeny,Zeny-5000;
+			percentheal 100,100;
+			warp "ra_in01.gat",358,130;
+			end;
+		} else {
+			mes "[Hotel Employee]";
+			mes "It is 5,000 Zeny to use this hotel.";
+			mes "Please check your wallet again.";
+			close;
+		}
+	case 3:
+		mes "[Hotel Employee]";
+		mes "Please come again~";
+		close;
+	}
+	mes "[Hotel Employee]";
+	mes "Have a good day.";
+	close;
+}
+
+
+//--------------------------------------------------------------
+// Veins Inn Employees - [L0ne_W0lf]
+//--------------------------------------------------------------
+
+ve_in.gat,157,219,5	script	Inn Master	709,{
+
+	mes "[Inn Master]";
+	mes "Good day~";
+	mes "Welcome to the";
+	mes "most comfortable";
+	mes "inn here in Veins~";
+	next;
+	switch(select("Save.","Take a Rest -> 5000 zeny","Cancel.")) {
+	case 1:
+		mes "[Inn Master]";
+		mes "Your respawn point";
+		mes "has been saved in Veins.";
+		mes "Enjoy your stay in town~";
+		savepoint "ve_in.gat",157,209;
+		close;
+	case 2:
+		mes "[Inn Master]";
+		if (Zeny < 5000) {
+			mes "I'm sorry, but the service charge";
+			mes "is 5,000 zeny. Please make sure";
+			mes "that you have enough money to check";
+			mes "in next time, okay?";
+			close;
+		}
+		mes "Enjoy your stay~";
+		close2;
+		set Zeny,Zeny - 5000;
+		percentheal 100,100;
+		warp "ve_in.gat",184,228;
+		end;
+	case 3:
+		close;
+	}
+}

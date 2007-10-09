@@ -1,0 +1,433 @@
+//--------------------------------------------------------------
+//               (c)2004-2007 Aurora Team Presents:             
+//                  ___                                         
+//                 /   |_   _ _ __ ___  _ __ __ _               
+//                / /| | | | | '__/ _ \| '__/ _` |              
+//               / ___ | |_| | | | (_) | | | (_| |++            
+//              /_/  |_|\____|_|  \___/|_|  \__,_|              
+//                 http://aurora.deltaanime.net                 
+//--------------------------------------------------------------
+// Script Title: Gunslinger Job Change Quest	Author: Tsuyuki
+//--------------------------------------------------------------
+// Revision History: v1.0
+//--------------------------------------------------------------
+//	1.0 First version, converted from Aegis [Tsuyuki]
+//--------------------------------------------------------------
+// Additional Notes: * Official-certified / Aegis-certified *
+//--------------------------------------------------------------
+
+
+//--------------------------------------------------------------
+// Gunslinger Job Change Quest - [Tsuyuki]
+//--------------------------------------------------------------
+
+que_ng.gat,152,167,3	script	Master Miller	901,{
+
+	if (Upper == 0 || Upper == 1) {
+		if ((Class == Job_Novice) && (Upper == 0)) {
+			if ((JobLevel < 10) || (getskilllv(1) < 9)) {
+				mes "[Master Miller]";
+				mes "Well, I think that";
+				mes "you have good potential,";
+				mes "you just need to train harder,";
+				mes "come find me again";
+				mes "after you have learned all the basic skills";
+				close;
+			} else {
+				if (hg_gun == 0) {
+					mes "[Master Miller]";
+					mes "I am Miss Selena's";
+					mes "head of the bodyguards cum drillmaster";
+					mes "of the marksmen, my name is";
+					mes "Master Miller";
+					next;
+					mes "[Master Miller]";
+					mes "I need to be alert and aware";
+					mes "of my surroundings all the time,";
+					mes "Do you have a matter to talk to me about?";
+					next;
+					switch(select("No","I want to become a Gunslinger")) {
+					case 1:
+						mes "[Master Miller]";
+						mes "How dare you waste";
+						mes "El Dorado's time,";
+						mes "Get lost";
+						close;
+					case 2:
+						mes "[Master Miller]";
+						mes "Why,";
+						mes "you might look young,";
+						mes "but you have big and energetic eyes,";
+						mes "you seem to have good explosive energy";
+						next;
+						mes "[Master Miller]";
+						mes "Hmm... alright,";
+						mes "if you want to become a Gunslinger,";
+						mes "you need to go through 2 simple procedures,";
+						mes "the interview and the education";
+						next;
+						mes "[Master Miller]";
+						mes "Are you willing to do so?";
+						next;
+						switch(select("No, I need to consider","Yes")) {
+						case 1:
+							mes "[Master Miller]";
+							mes "Hm.. is that right,";
+							mes "Well it's good to think over carefully,";
+							mes "After you have reconsider,";
+							mes "you can come back if you change your mind";
+							close;
+						case 2:
+							mes "[Master Miller]";
+							mes "Hm, alright,";
+							mes "now first";
+							mes "Take this letter I'm giving you now,";
+							mes "and look for the shaman in payon,";
+							mes "Mr. Wise Bull Horn";
+							next;
+							mes "[Master Miller]";
+							mes "He will observe you and then tell us,";
+							mes "whether he thinks you";
+							mes "are a suitable person";
+							next;
+							mes "["+strcharinfo(0)+"]";
+							mes "Ok, got it";
+							set hg_gun,1;
+							close;
+						}
+					}
+				} else if (hg_gun == 1) {
+					mes "[Master Miller]";
+					mes "Go quick,";
+					mes "the wise Mr. Wise Bull Horn";
+					mes "is in payon";
+					close;
+				} else if (hg_gun == 2) {
+					mes "[Master Miller]";
+					mes "Did the Old Man ask you";
+					mes "to come here";
+					next;
+					mes "[Master Miller]";
+					mes "You seem to have given him a good impression,";
+					mes "go do your best";
+					close;
+				} else if (hg_gun == 3) {
+					mes "[Master Miller]";
+					mes "He has asked you to do quite many tasks,";
+					mes "I guess the Old Man must be";
+					mes "quite pleased with you,";
+					mes "go do your best";
+					close;
+				} else if (hg_gun == 4) {
+					mes "[Master Miller]";
+					mes "Hm~ I'll be waiting for your good news,";
+					mes "I hope you can become one of us";
+					mes "in the guild family soon";
+					close;
+				} else if (hg_gun == 5) {
+					if (SkillPoint != 0) {
+						mes "[Master Miller]";
+						mes "Come back when you have learned all the basic skills!!";
+						close;
+					}
+					mes "[Master Miller]";
+					mes "Hoho~ You've got the mark from the Old Man,";
+					mes "that's great,";
+					mes "he doesn't grant his";
+					mes "permission easily,";
+					mes "you know";
+					next;
+					mes "[Master Miller]";
+					mes "Hm.. alright,";
+					mes "since the Old Man";
+					mes "has already given the green light, I have";
+					mes "no reason to refuse you";
+					next;
+					mes "[Master Miller]";
+					mes "Ok, I now pronounce";
+					mes "you a Gunslinger,";
+					mes "before you become a Gunslinger,";
+					mes "there are some things I need to explain";
+					next;
+					mes "[Master Miller]";
+					mes "When you become a Gunslinger,";
+					mes "your gun must be with you";
+					mes "at all times";
+					mes "every weapons and";
+					mes "all ammunition will";
+					mes "have a set number and manufacturing info,";
+					mes "we will check them one by one";
+					next;
+					mes "[Master Miller]";
+					mes "Not only the use and purchasing of the weapons are regulated,";
+					mes "ammunition may only be bought from";
+					mes "personnel of the Gunslinger Guild placed";
+					mes "all over the country";
+					next;
+					mes "[Master Miller]";
+					mes "Even though this procedure is quite fussy,";
+					mes "but this is to prevent the legendary gun";
+					mes "from being used for evil purposes";
+					mes "by evil people,";
+					mes "I hope you understand";
+					next;
+					mes "[Master Miller]";
+					mes "There are many reasons";
+					mes "for doing this,";
+					mes "you might get a chance";
+					mes "to see her in the future,";
+					mes "I mean Miss Selena who is now";
+					mes "person in charge of the Guild";
+					mes "she made these rules";
+					next;
+					mes "[Master Miller]";
+					mes "Maybe after some time";
+					mes "when you receive quests,";
+					mes "you will get a better understanding";
+					mes "of what I'm talking about";
+					next;
+					mes "[Master Miller]";
+					mes "We will meet often in the future,";
+					mes "I wish that the blessings of Great Nature";
+					mes "will always be with you";
+					set hg_gun,6;
+					callfunc "F_JobChange",Job_Gunslinger;
+					set '@gunex,rand(1,2);
+					if ('@gunex == 1) {
+						getitem 13100,1;
+					} else {
+						getitem 13150,1;
+					}
+					close;
+				}
+				close;
+			}
+		} else {
+			if (Class == Job_Gunslinger) {
+				mes "[Master Miller]";
+				mes "Ho~ it's been some time~";
+				mes "how are your travels,";
+				mes "remember to always";
+				mes "practice your gun skills";
+				close;
+			} else {
+				mes "[Master Miller]";
+				mes "You don't have to be looking at me,";
+				mes "get on your way";
+				close;
+			}
+		}
+	} else {
+		mes "[Master Miller]";
+		mes "Omg~";
+		mes "how did this kid get here~";
+		mes "How cute~ kawaii-ne~";
+		next;
+		mes "[Master Miller]";
+		mes "Where is your mama~";
+		mes "hehe~";
+		mes "It's dangerous here,";
+		mes "don't wander around";
+		close;
+	}
+}
+
+payon.gat,184,65,3	script	Wise Bull Horn	866,{
+
+	if (hg_gun == 1) {
+		mes "[Wise Bull Horn]";
+		mes "...hmm mmm... Wolfling...";
+		mes "Why are you here?";
+		next;
+		mes "["+strcharinfo(0)+"]";
+		mes "Mr. Miller told me";
+		mes "to come here";
+		next;
+		mes "[Wise Bull Horn]";
+		mes "Miller...";
+		mes "hmmm...mm, so it was the Black Fox";
+		mes "that asked you to come here...";
+		next;
+		mes "[Wise Bull Horn]";
+		mes "He is clever and knowledgable...";
+		mes "and his a noble guy that";
+		mes "would sacrifice himself for his comrades,";
+		mes "hmm... since he introduced you,";
+		mes "I think I know why you're here...";
+		next;
+		mes "[Wise Bull Horn]";
+		mes "You... come closer...";
+		next;
+		mes "["+strcharinfo(0)+"]";
+		mes "....";
+		next;
+		mes "[Wise Bull Horn]";
+		mes "Hmmmm...";
+		mes "mmmmmmmm...";
+		next;
+		mes "[Wise Bull Horn]";
+		mes "Mmm... clear eyes";
+		mes "a kind heart... and";
+		mes "a good sense of duty to protect";
+		mes "the needy and those that are important...";
+		mes "just a wee bit young";
+		next;
+		mes "[Wise Bull Horn]";
+		mes "You are not experienced enough...";
+		mes "not yet blessed by the Great Land and Wilderness,";
+		mes "you might get hurt...";
+		next;
+		mes "[Wise Bull Horn]";
+		mes "Alright, let me make you a mark,";
+		mes "if you want to become a warrior";
+		mes "of the Land, please bring me Zargon x3,";
+		mes "Shell x10, Feather x3,";
+		mes "Wooden Block x1, Colorful Shell x3,";
+		mes "Green Herb x3";
+		next;
+		mes "[Wise Bull Horn]";
+		mes "After you bring me the ingredients, I will make you a";
+		mes "mark to bring to Black Fox,";
+		mes "and he will help make";
+		mes "your wish come true";
+		next;
+		mes "["+strcharinfo(0)+"]";
+		mes "-Go bring me Zargon x3, -";
+		mes "-Shell x10, Feather x3, -";
+		mes "-Wooden Block x1, Colorful Shell x3, -";
+		mes "-Green Herb x3-";
+		set hg_gun,2;
+		close;
+	} else if (hg_gun == 2) {
+		if ((countitem(912) > 2) && (countitem(949) > 2) && (countitem(1019) > 0) && (countitem(935) > 9) && (countitem(511) > 2) && (countitem(1013) > 2)) {
+			delitem 912,3;
+			delitem 949,3;
+			delitem 1019,1;
+			delitem 935,10;
+			delitem 511,3;
+			delitem 1013,3;
+			set hg_gun,3;
+			mes "[Wise Bull Horn]";
+			mes "Ok... you have brought everything,";
+			mes "it will take some time to make the mark,";
+			mes "please wait";
+			close;
+		} else {
+			mes "["+strcharinfo(0)+"]";
+			mes "-Go bring me Zargon x3, -";
+			mes "-Shell x10,";
+			mes "-Feather x3, -";
+			mes "-Wooden Block x1, Colorful Shell x3, -";
+			mes "-Green Herb x3-";
+			close;
+		}
+	} else if (hg_gun == 3) {
+		mes "[Wise Bull Horn]";
+		mes "Hmm... you're here at the right time,";
+		mes "it's just ready,";
+		mes "it might look very simple,";
+		mes "but it's quite difficult to make,";
+		mes "in a short time...";
+		next;
+		mes "[Wise Bull Horn]";
+		mes "I've been making this thing,";
+		mes "for a few decades now,";
+		mes "I was once a Warrior of the Land,";
+		mes "wearing the same mark on me";
+		mes "travelling through the plains and sand";
+		next;
+		mes "[Wise Bull Horn]";
+		mes "Meeting Selena's father,";
+		mes "feels like it happened just yesterday,";
+		mes "times flies like the wind";
+		mes "it never stays around to wait";
+		next;
+		mes "[Wise Bull Horn]";
+		mes "In every calamity and misfortune that happened";
+		mes "during this time, I will always be grateful to";
+		mes "Selena and the Black Fox and";
+		mes "all the young friends for continuing";
+		mes "and delivering my will";
+		mes "and for appreciating the will...";
+		next;
+		mes "[Wise Bull Horn]";
+		mes "I am an old man now,";
+		mes "maybe in a time not long after this";
+		mes "I will return to the embrace of our Land";
+		next;
+		mes "[Wise Bull Horn]";
+		mes "I feel tired all of a sudden,";
+		mes "can I ask you";
+		mes "to do me";
+		mes "one favour";
+		next;
+		mes "[Wise Bull Horn]";
+		mes "I am thirsty now..";
+		mes "I wish for a cup of fresh milk";
+		next;
+		mes "[Wise Bull Horn]";
+		mes "This is a cheeky request from an old guy";
+		next;
+		mes "["+strcharinfo(0)+"]";
+		mes "-For the Wise Old Mister Bull Horn-";
+		mes "I will go buy a bottle of milk-";
+		set hg_gun,4;
+		close;
+	} else if (hg_gun == 4) {
+		if (countitem(519) > 0) {
+			delitem 519,1;
+			set hg_gun,5;
+			mes "[Wise Bull Horn]";
+			mes "Thank you,";
+			mes "you are a kind young man,";
+			mes "you can leave now";
+			next;
+			mes "[Wise Bull Horn]";
+			mes "This is the mark I made,";
+			mes "take this to Black Fox,";
+			mes "I allow you to become a";
+			mes "Gunslinger";
+			next;
+			mes "[Wise Bull Horn]";
+			mes "~~Yeah~~~ Hey yoo~ Laaalala~~Nana~~~";
+			mes "~~Yeah~~~ Hey yoo~ Laaalala~~Nana~~~";
+			next;
+			mes "["+strcharinfo(0)+"]";
+			mes "-Singing strange song-";
+			mes "-the Wise Old Mister-";
+			mes "-Bull Horn, what a strange feeling-";
+			mes "-I will take this mark-";
+			mes "-and find Mr. Miller-";
+			close;
+		} else {
+			mes "["+strcharinfo(0)+"]";
+			mes "-Please buy a bottle of Milk for -";
+			mes "-Granpa Wise Bull Horn.-";
+			close;
+		}
+	} else if (hg_gun == 5) {
+		mes "[Wise Bull Horn]";
+		mes "Eeh~Yeah~Eeh~Hooom";
+		mes "Eeh~Yeah~Eeh~Hooom";
+		next;
+		mes "["+strcharinfo(0)+"]";
+		mes "-Singing some strange song-";
+		mes "-the Wise Old Mister-";
+		mes "-Bull Horn-";
+		next;
+		mes "["+strcharinfo(0)+"]";
+		mes "-what a strange feeling-";
+		mes "-I will take this mark-";
+		mes "-and find Mr. Miller-";
+		close;
+	} else if (hg_gun == 6) {
+		mes "[Wise Bull Horn]";
+		mes "Hmm... it's been some time,";
+		mes "may you become a brave and wise beast";
+		close;
+	} else {
+		mes "[Wise Bull Horn]";
+		mes "Roooaarrrr...";
+		close;
+	}
+}

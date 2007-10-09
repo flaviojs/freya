@@ -1,0 +1,5563 @@
+//--------------------------------------------------------------
+//               (c)2004-2007 Aurora Team Presents:             
+//                  ___                                         
+//                 /   |_   _ _ __ ___  _ __ __ _               
+//                / /| | | | | '__/ _ \| '__/ _` |              
+//               / ___ | |_| | | | (_) | | | (_| |++            
+//              /_/  |_|\____|_|  \___/|_|  \__,_|              
+//                 http://aurora.deltaanime.net                 
+//--------------------------------------------------------------
+// Script Title: Refinery System	Author: Tsuyuki
+//--------------------------------------------------------------
+// Revision History: v1.0
+//--------------------------------------------------------------
+//	1.0 First version, converted from Aegis [Tsuyuki]
+//--------------------------------------------------------------
+// Additional Notes: * Official-certified / Aegis-certified *
+//--------------------------------------------------------------
+
+
+//--------------------------------------------------------------
+// Alberta Refinery - [Tsuyuki]
+//--------------------------------------------------------------
+
+alberta_in.gat,21,63,5	script	Xenophon	84,{
+
+	set '@max_max_c,checkweight(1201,1);
+	if ('@max_max_c == 0) {
+		mes "- Wait a minute !! -";
+		mes "- Currently you're carrying -";
+		mes "- too many items with you. -";
+		mes "- Please try again -";
+		mes "- after you loose some weight. -";
+		close;
+	}
+	mes "[Xenophon Zolotas]";
+	mes "I can purify your";
+	mes "Rough Oridecons or";
+	mes "Rough Eluniums. I'll need";
+	mes "5 Rough Stones to make";
+	mes "1 pure one for you.";
+	next;
+	switch(select("Make Oridecon","Make Elunium","Ask about Enchanted Stones")) {
+	case 1:
+		if (countitem(756) > 4) {
+			delitem 756,5;
+			getitem 984,1;
+			mes "[Xenophon Zolotas]";
+			mes "Here's your Oridecon.";
+			mes "You're welcome to come";
+			mes "back whenever you want.";
+			close;
+		} else {
+			mes "[Xenophon Zolotas]";
+			mes "You're kidding me, right?";
+			mes "I just told you that I need 5 Rough Oridecons to make a pure Oridecon.";
+			close;
+		}
+	case 2:
+		if (countitem(757) > 4) {
+			delitem 757,5;
+			getitem 985,1;
+			mes "[Xenophon Zolotas]";
+			mes "Here's your Elunium.";
+			mes "You're welcome to come";
+			mes "back whenever you want.";
+			close;
+		} else {
+			mes "[Xenophon Zolotas]";
+			mes "You're kidding me, right?";
+			mes "I just told you that I need 5 Rough Eluniums to make a pure Elunium.";
+			close;
+		}
+	case 3:
+		mes "[Xenophon Zolotas]";
+		mes "Enchanted Stones...?";
+		mes "I've been a stonesmith for 20 years, so I've heard a lot about them. Supposedly, there are";
+		mes "four different kinds.";
+		next;
+		mes "[Xenophon Zolotas]";
+		mes "Each Enchanted Stone possesses one of the following elemental properties: Earth, Wind, Water and Fire.";
+		next;
+		mes "[Xenophon Zolotas]";
+		mes "If someone combines a Enchanted Stone with a weapon while smithing, that weapon will possess the same property as the Stone.";
+		next;
+		mes "[Xenophon Zolotas]";
+		mes "Needless to say, you need to have some smithing skill to produce this kind of elemental weapon.";
+		close;
+	}
+}
+
+alberta_in.gat,13,71,3	script	Kahlamanlith	86,{
+
+	set '@max_max_c,checkweight(1201,1);
+	if ('@max_max_c == 0) {
+		mes "- Wait a minute !! -";
+		mes "- Currently you're carrying -";
+		mes "- too many items with you. -";
+		mes "- Please try again -";
+		mes "- after you loose some weight. -";
+		close;
+	}
+	set '@item_weight,0;
+	set '@sell,0;
+	set '@now_weight,MaxWeight - Weight;
+	mes "[Kahlamanlith]";
+	mes "I sell 2 kinds of Metal";
+	mes "for tempering weaponry.";
+	mes "I have ^007777Phracon^000000 for Level 1";
+	mes "Weapons, and ^007777Emveretarcon^000000";
+	mes "for Level 2 Weapons.";
+	next;
+	switch(select("Phracon - 200 Zeny","Emveretarcon - 1000 Zeny","Ask about other Metals")) {
+	case 1:
+		mes "[Kahlamanlith]";
+		mes "So how many do you wish to buy?";
+		mes "If you don't want any, please enter the number, '0.'";
+		next;
+		while(1) {
+			input '@input;
+			if ('@input == 0) {
+				mes "[Kahlamanlith]";
+				mes "The deal has";
+				mes "been cancelled.";
+				close;
+			} else if ('@input < 1 || '@input > 500) {
+				mes "[Kahlamanlith]";
+				mes "Alright, you can";
+				mes "puchase up to 500.";
+				mes "No more than that,";
+				mes "got it? Good.";
+				next;
+			} else {
+				break;
+			}
+		}
+		set '@sell,'@input * 200;
+		set '@item_weight,'@input * 200;
+		if (Zeny < '@sell) {
+			mes "[Kahlamanlith]";
+			mes "Err...";
+			mes "You don't have";
+			mes "enough Zeny to buy";
+			mes "" + '@input + " of them.";
+			close;
+		}
+		if ('@now_weight < '@item_weight) {
+			mes "[Kahlamanlith]";
+			mes "Hmm...";
+			mes "I can't give you anything if you don't have enough room in your inventory. Why don't you put your extra things in Kafra Storage and try again?";
+			close;
+		}
+		getitem 1010,'@input;
+		set Zeny,Zeny - '@sell;
+		mes "[Kahlamanlith]";
+		mes "Here you are!";
+		mes "Thank you for";
+		mes "your patronage.";
+		close;
+	case 2:
+		mes "[Kahlamanlith]";
+		mes "So how many do you wish to buy?";
+		mes "If you don't want any, please enter the number, '0.'";
+		next;
+		while(1) {
+			input '@input;
+			if ('@input == 0) {
+				mes "[Kahlamanlith]";
+				mes "The deal has";
+				mes "been cancelled.";
+				close;
+			} else if ('@input < 1 || '@input > 500) {
+				mes "[Kahlamanlith]";
+				mes "Alright, you can";
+				mes "puchase up to 500.";
+				mes "No more than that,";
+				mes "got it? Good.";
+				next;
+			} else {
+				break;
+			}
+		}
+		set '@sell,'@input * 1000;
+		set '@item_weight,'@input * 200;
+		if (Zeny < '@sell) {
+			mes "[Kahlamanlith]";
+			mes "Err...";
+			mes "You don't have";
+			mes "enough Zeny to buy";
+			mes "" + '@input + " of them.";
+			close;
+		}
+		if ('@now_weight < '@item_weight) {
+			mes "[Kahlamanlith]";
+			mes "Hmm...";
+			mes "I can't give you anything if you don't have enough room in your inventory. Why don't you put your extra things in Kafra Storage and try again?";
+			close;
+		}
+		getitem 1011,'@input;
+		set Zeny,Zeny - '@sell;
+		mes "[Kahlamanlith]";
+		mes "Here you are!";
+		mes "Thank you for";
+		mes "your patronage.";
+		close;
+	case 3:
+		mes "[Kahlamanlith]";
+		mes "Other metals?";
+		mes "Well, you'll need special metals to upgrade higher level weapons, or any kind of armor. But you know, Oridecon and Elunium is really";
+		mes "hard to just find...";
+		close;
+	}
+}
+
+alberta_in.gat,28,58,0	script	Fredrik	85,{
+
+	mes "[Fredrik Hermanthorn]";
+	mes "I'm the Armsmith.";
+	mes "I can refine all kinds of weapons, armor and equipment, so let me";
+	mes "know what you want me to refine.";
+	next;
+	set '@strRetPart1$,getequipname(1);
+	set '@strRetPart2$,getequipname(2);
+	set '@strRetPart3$,getequipname(3);
+	set '@strRetPart4$,getequipname(4);
+	set '@strRetPart5$,getequipname(5);
+	set '@strRetPart6$,getequipname(6);
+	set '@strRetPart7$,getequipname(7);
+	set '@strRetPart8$,getequipname(8);
+	set '@strRetPart9$,getequipname(10);
+	set '@strRetPart10$,getequipname(11);
+	if ('@strRetPart1$ == "0") {
+		set '@strPart1$,"Head ^000000[^003366Not Equipped^000000]";
+	} else {
+		set '@strPart1$,'@strRetPart1$;
+	}
+	if ('@strRetPart2$ == "0") {
+		set '@strPart2$,"Torso ^000000[^003366Not Equipped^000000]";
+	} else {
+		set '@strPart2$,'@strRetPart2$;
+	}
+	if ('@strRetPart3$ == "0") {
+		set '@strPart3$,"Left Hand ^000000[^003366Not Equipped^000000]";
+	} else {
+		set '@strPart3$,'@strRetPart3$;
+	}
+	if ('@strRetPart4$ == "0") {
+		set '@strPart4$,"Right Hand ^000000[^003366Not Equipped^000000]";
+	} else {
+		set '@strPart4$,'@strRetPart4$;
+	}
+	if ('@strRetPart5$ == "0") {
+		set '@strPart5$,"Garment ^000000[^003366Not Equipped^000000]";
+	} else {
+		set '@strPart5$,'@strRetPart5$;
+	}
+	if ('@strRetPart6$ == "0") {
+		set '@strPart6$,"Foot ^000000[^003366Not Equipped^000000]";
+	} else {
+		set '@strPart6$,'@strRetPart6$;
+	}
+	if ('@strRetPart7$ == "0") {
+		set '@strPart7$,"Accessory1 ^000000[^003366Not Equipped^000000]";
+	} else {
+		set '@strPart7$,'@strRetPart7$;
+	}
+	if ('@strRetPart8$ == "0") {
+		set '@strPart8$,"Accessory2 ^000000[^003366Not Equipped^000000]";
+	} else {
+		set '@strPart8$,'@strRetPart8$;
+	}
+	if ('@strRetPart9$ == "0") {
+		set '@strPart9$,"Head2 ^000000[^003366Not Equipped^000000]";
+	} else {
+		set '@strPart9$,'@strRetPart9$;
+	}
+	if ('@strRetPart10$ == "0") {
+		set '@strPart10$,"Head3 ^000000[^003366Not Equipped^000000]";
+	} else {
+		set '@strPart10$,'@strRetPart10$;
+	}
+	switch(select("'@strPart1$","'@strPart2$","'@strPart3$","'@strPart4$","'@strPart5$","'@strPart6$","'@strPart7$","'@strPart8$","'@strPart9$","'@strPart10$")) {
+	case 1:
+		set '@part,1;
+		if ('@strRetPart1$ == "0") {
+			mes "[Fredrik Hermanthorn]";
+			mes "Do you want me";
+			mes "to refine your skull?";
+			mes "'Cause I can, and";
+			mes "I'll do it.";
+			close;
+		}
+		break;
+	case 2:
+		set '@part,2;
+		if ('@strRetPart2$ == "0") {
+			mes "[Fredrik Hermanthorn]";
+			mes "You're not wearing";
+			mes "anything there that";
+			mes "I can refine.";
+			close;
+		}
+		break;
+	case 3:
+		set '@part,3;
+		if ('@strRetPart3$ == "0") {
+			mes "[Fredrik Hermanthorn]";
+			mes "I can't refine your";
+			mes "left hand! Go to the";
+			mes "manicurist if you";
+			mes "want that.";
+			close;
+		}
+		break;
+	case 4:
+		set '@part,4;
+		if ('@strRetPart4$ == "0") {
+			mes "[Fredrik Hermanthorn]";
+			mes "I can't refine your";
+			mes "right hand. I'd break";
+			mes "it into pieces with";
+			mes "this big ol' hammer!";
+			close;
+		}
+		break;
+	case 5:
+		set '@part,5;
+		if ('@strRetPart5$ == "0") {
+			mes "[Fredrik Hermanthorn]";
+			mes "You're not even";
+			mes "wearing a garment";
+			mes "that I can refine.";
+			close;
+		}
+		break;
+	case 6:
+		set '@part,6;
+		if ('@strRetPart6$ == "0") {
+			mes "[Fredrik Hermanthorn]";
+			mes "What do I look like,";
+			mes "a makeover artist?!";
+			mes "I can't refine your";
+			mes "bare feet!";
+			close;
+		}
+		break;
+	case 7:
+		set '@part,7;
+		if ('@strRetPart7$ == "0") {
+			mes "[Fredrik Hermanthorn]";
+			mes "Um...";
+			mes "You're not";
+			mes "wearing an";
+			mes "Accessory.";
+			close;
+		}
+		break;
+	case 8:
+		set '@part,8;
+		if ('@strRetPart8$ == "0") {
+			mes "[Fredrik Hermanthorn]";
+			mes "Accessory?";
+			mes "You're not";
+			mes "wearing one";
+			mes "of those.";
+			close;
+		}
+		break;
+	case 9:
+		set '@part,9;
+		if ('@strRetPart9$ == "0") {
+			mes "[Fredrik Hermanthorn]";
+			mes "I refine equipment.";
+			mes "I don't give hair cuts.";
+			close;
+		}
+		break;
+	case 10:
+		set '@part,10;
+		if ('@strRetPart10$ == "0") {
+			mes "[Fredrik Hermanthorn]";
+			mes "What am I, your";
+			mes "personal hairstylist?!";
+			mes "Go to the salon if you";
+			mes "want work done on your";
+			mes "precious hair.";
+			close;
+		}
+		break;
+	}
+	if (getequipisenableref('@part) == 0) {
+		mes "[Fredrik Hermanthorn]";
+		mes "I don't think I can";
+		mes "refine this item at all...";
+		close;
+	}
+	if (getequipisidentify('@part) == 0) {
+		mes "[Fredrik Hermanthorn]";
+		mes "You can't refine this";
+		mes "if you haven't appraised";
+		mes "it first. Make sure your";
+		mes "stuff is identified before";
+		mes "I can refine it.";
+		close;
+	}
+	if (getequiprefinerycnt('@part) >= 10) {
+		mes "[Fredrik Hermanthorn]";
+		mes "I can't refine this";
+		mes "any more. This is as";
+		mes "refined as it gets!";
+		close;
+	}
+	if (getequipweaponlv('@part) == 0) {
+		mes "[Fredrik Hermanthorn]";
+		mes "To refine this I need";
+		mes "one ^003366Elunium^000000 and";
+		mes "a service fee of 2000 Zeny.";
+		mes "Do you really wish to continue?";
+		next;
+		switch(select("Yes","No")) {
+		case 1:
+			if (getequippercentrefinery('@part) < 100) {
+				mes "[Fredrik Hermanthorn]";
+				mes "Oh no! If I continue to";
+				mes "refine this, there's a risk it could be destroyed! That means";
+				mes "that ^FF0000this equipment^000000, and ^FF0000any cards^000000 or special properties added to this armor, ^FF0000will be gone^000000.";
+				next;
+				mes "[Fredrik Hermanthorn]";
+				mes "I can't make it any clearer.";
+				mes "You have a chance to ^FF0000lose this armor^000000. Do you still want me to";
+				mes "try to refine this?";
+				next;
+				switch(select("Yes","No")) {
+				case 1:
+					break;
+				case 2:
+					mes "[Fredrik Hermanthorn]";
+					mes "I completely agree...";
+					mes "I might be a great refiner, but sometimes even I make mistakes.";
+					close;
+				}
+			}
+			if ((countitem(985) > 0) && (Zeny > 1999)) {
+				delitem 985,1;
+				set Zeny,Zeny - 2000;
+			} else {
+				mes "[Fredrik Hermanthorn]";
+				mes "You don't seem to have";
+				mes "enough Zeny or Elunium...";
+				mes "Go get some more. I'll be";
+				mes "here all day if you need me.";
+				close;
+			}
+			break;
+		case 2:
+			mes "[Fredrik Hermanthorn]";
+			mes "Yeah...";
+			mes "There's no need to";
+			mes "rush. Take your time.";
+			close;
+		}
+	} else if (getequipweaponlv('@part) == 1) {
+		mes "[Fredrik Hermanthorn]";
+		mes "Um...";
+		mes "A Level 1 weapon...";
+		mes "I need one ^003366Phracon^000000";
+		mes "and the fee is 50 Zeny.";
+		mes "Do you really wish to continue?";
+		next;
+		switch(select("Yes","No")) {
+		case 1:
+			if (getequippercentrefinery('@part) < 100) {
+				mes "[Fredrik Hermanthorn]";
+				mes "Ohh! It's dangerous to";
+				mes "continue refining this! It could";
+				mes "be destroyed, and you'd ^FF0000lose the weapon^000000, any ^FF0000cards in the weapon^000000,";
+				mes "or any added special properties.";
+				next;
+				mes "[Fredrik Hermanthorn]";
+				mes "I can't make it any clearer.";
+				mes "Once a weapon is destroyed,";
+				mes "there's no getting it back.";
+				mes "You really have a chance to";
+				mes "^FF0000lose this weapon^000000 forever.";
+				mes "Do you still want to refine?";
+				next;
+				switch(select("Yes","No")) {
+				case 1:
+					break;
+				case 2:
+					mes "[Fredrik Hermanthorn]";
+					mes "I completely agree...";
+					mes "I might be a great refiner, but sometimes even I make mistakes.";
+					close;
+				}
+			}
+			if ((countitem(1010) > 0) && (Zeny > 49)) {
+				delitem 1010,1;
+				set Zeny,Zeny - 50;
+			} else {
+				mes "[Fredrik Hermanthorn]";
+				mes "You don't seem to have";
+				mes "enough Zeny or Phracon...";
+				mes "Go get some more. I'll be";
+				mes "here all day if you need me.";
+				close;
+			}
+			break;
+		case 2:
+			mes "[Fredrik Hermanthorn]";
+			mes "Yeah...";
+			mes "There's no need to";
+			mes "rush. Take your time.";
+			close;
+		}
+	} else if (getequipweaponlv('@part) == 2) {
+		mes "[Fredrik Hermanthorn]";
+		mes "Huh...";
+		mes "A Level 2 weapon...";
+		mes "I'll need one ^003366Emveretarcon^000000";
+		mes "and the fee is 200 Zeny.";
+		mes "Do you really wish to continue?";
+		next;
+		switch(select("Yes","No")) {
+		case 1:
+			if (getequippercentrefinery('@part) < 100) {
+				mes "[Fredrik Hermanthorn]";
+				mes "Ohh! It's dangerous to";
+				mes "continue refining this! It could";
+				mes "be destroyed, and you'd ^FF0000lose the weapon^000000, any ^FF0000cards in the weapon^000000,";
+				mes "or any added special properties.";
+				next;
+				mes "[Fredrik Hermanthorn]";
+				mes "I can't make it any clearer.";
+				mes "Once a weapon is destroyed,";
+				mes "there's no getting it back.";
+				mes "You really have a chance to";
+				mes "^FF0000lose this weapon^000000 forever.";
+				mes "Do you still want to refine?";
+				next;
+				switch(select("Yes","No")) {
+				case 1:
+					break;
+				case 2:
+					mes "[Fredrik Hermanthorn]";
+					mes "I completely agree...";
+					mes "I might be a great refiner, but sometimes even I make mistakes.";
+					close;
+				}
+			}
+			if ((countitem(1011) > 0) && (Zeny > 199)) {
+				delitem 1011,1;
+				set Zeny,Zeny - 200;
+			} else {
+				mes "[Fredrik Hermanthorn]";
+				mes "You don't seem to have";
+				mes "enough Emveretarcon or";
+				mes "Zeny. I'll be here all";
+				mes "day if you need me, so";
+				mes "go ahead and get more.";
+				close;
+			}
+			break;
+		case 2:
+			mes "[Fredrik Hermanthorn]";
+			mes "Yeah...";
+			mes "There's no need to";
+			mes "rush. Take your time.";
+			close;
+		}
+	} else if (getequipweaponlv('@part) == 3) {
+		mes "[Fredrik Hermanthorn]";
+		mes "Ah...";
+		mes "A Level 3 weapon...";
+		mes "I need one ^003366Oridecon^000000";
+		mes "and the fee is 5000 Zeny.";
+		mes "Do you really wish to continue?";
+		next;
+		switch(select("Yes","No")) {
+		case 1:
+			if (getequippercentrefinery('@part) < 100) {
+				mes "[Fredrik Hermanthorn]";
+				mes "Ohh! It's dangerous to";
+				mes "continue refining this! It could";
+				mes "be destroyed, and you'd ^FF0000lose the weapon^000000, any ^FF0000cards in the weapon^000000,";
+				mes "or any added special properties.";
+				next;
+				mes "[Fredrik Hermanthorn]";
+				mes "I can't make it any clearer.";
+				mes "Once a weapon is destroyed,";
+				mes "there's no getting it back.";
+				mes "You really have a chance to";
+				mes "^FF0000lose this weapon^000000 forever.";
+				mes "Do you still want to refine?";
+				next;
+				switch(select("Yes","No")) {
+				case 1:
+					break;
+				case 2:
+					mes "[Fredrik Hermanthorn]";
+					mes "I completely agree...";
+					mes "I might be a great refiner, but sometimes even I make mistakes.";
+					close;
+				}
+			}
+			if ((countitem(984) > 0) && (Zeny > 4999)) {
+				delitem 984,1;
+				set Zeny,Zeny - 5000;
+			} else {
+				mes "[Fredrik Hermanthorn]";
+				mes "You don't seem to have";
+				mes "enough Zeny or Oridecon...";
+				mes "Go get some more. I'll be";
+				mes "here all day if you need me.";
+				close;
+			}
+			break;
+		case 2:
+			mes "[Fredrik Hermanthorn]";
+			mes "Yeah...";
+			mes "There's no need to";
+			mes "rush. Take your time.";
+			close;
+		}
+	} else if (getequipweaponlv('@part) == 4) {
+		mes "[Fredrik Hermanthorn]";
+		mes "Whoa...!";
+		mes "A Level 4 weapon!";
+		mes "Fabulous, I almost never see these. I guess one ^003366Oridecon^000000 and 20,000 Zeny will be enough. Do you really wish to Continue?";
+		next;
+		switch(select("Yes","No")) {
+		case 1:
+			if (getequippercentrefinery('@part) < 100) {
+				mes "[Fredrik Hermanthorn]";
+				mes "Ohh! It's dangerous to";
+				mes "continue refining this! It could";
+				mes "be destroyed, and you'd ^FF0000lose the weapon^000000, any ^FF0000cards in the weapon^000000,";
+				mes "or any added special properties.";
+				next;
+				mes "[Fredrik Hermanthorn]";
+				mes "I can't make it any clearer.";
+				mes "Once a weapon is destroyed,";
+				mes "there's no getting it back.";
+				mes "You really have a chance to";
+				mes "^FF0000lose this weapon^000000 forever.";
+				mes "Do you still want to refine?";
+				next;
+				switch(select("Yes","No")) {
+				case 1:
+					break;
+				case 2:
+					mes "[Fredrik Hermanthorn]";
+					mes "I completely agree...";
+					mes "I might be a great refiner, but sometimes even I make mistakes.";
+					close;
+				}
+			}
+			if ((countitem(984) > 0) && (Zeny > 19999)) {
+				delitem 984,1;
+				set Zeny,Zeny - 20000;
+			} else {
+				mes "[Fredrik Hermanthorn]";
+				mes "You don't seem to have";
+				mes "enough Zeny or Oridecon...";
+				mes "Go get some more. I'll be";
+				mes "here all day if you need me.";
+				close;
+			}
+			break;
+		case 2:
+			mes "[Fredrik Hermanthorn]";
+			mes "Yeah...";
+			mes "There's no need to";
+			mes "rush. Take your time.";
+			close;
+		}
+	}
+	if (getequippercentrefinery('@part) > rand(100)) {
+		successrefitem '@part;
+		set '@win,rand(1,3);
+		if ('@win == 1) {
+			mes "[Fredrik Hermanthorn]";
+			emotion ET_SMILE,"Fredrik";
+			mes "Perfect!";
+			mes "Heh heh!";
+			mes "Once again,";
+			mes "flawless work";
+			mes "from the master~";
+		} else if ('@win == 2) {
+			mes "[Fredrik Hermanthorn]";
+			emotion ET_SMILE,"Fredrik";
+			mes "Success...!";
+			mes "Yet again, my amazing";
+			mes "talent truly dazzles";
+			mes "and shines today.";
+		} else {
+			mes "[Fredrik Hermanthorn]";
+			emotion ET_SMILE,"Fredrik";
+			mes "Heh heh!";
+			mes "I'm all done.";
+			mes "No doubt, my work is";
+			mes "to your satisfaction.";
+			mes "Sheer, utter perfection~";
+		}
+		close;
+	} else {
+		failedrefitem '@part;
+		set '@emo,rand(1,5);
+		if ('@emo == 1) {
+			emotion ET_MONEY,"Fredrik";
+		} else {
+			emotion ET_SWEAT,"Fredrik";
+		}
+		set '@lose,rand(1,3);
+		if ('@lose == 1) {
+			mes "[Fredrik Hermanthorn]";
+			mes "OH! MY GOD!";
+			mes "Damn it! Not again!";
+			mes "I'm terribly sorry, but you know practice does make perfect.";
+			mes "Um, right? Heh heh...";
+			close;
+		} else if ('@lose == 2) {
+			mes "[Fredrik Hermanthorn]";
+			mes "Nooooooo!";
+			mes "It broke!";
+			mes "I-I'm sorry!";
+			close;
+		} else {
+			mes "[Fredrik Hermanthorn]";
+			mes "Crap!";
+			mes "It couldn't take";
+			mes "much more tempering!";
+			mes "Sorry about this...";
+			close;
+		}
+	}
+}
+
+
+//--------------------------------------------------------------
+// Einbroch Refinery - [Tsuyuki]
+//--------------------------------------------------------------
+
+ein_in01.gat,18,82,5	script	Matestein	84,{
+
+	set '@max_max_c,checkweight(1201,1);
+	if ('@max_max_c == 0) {
+		mes "- Wait a minute !! -";
+		mes "- Currently you're carrying -";
+		mes "- too many items with you. -";
+		mes "- Please try again -";
+		mes "- after you loose some weight. -";
+		close;
+	}
+	mes "[Matestein]";
+	mes "I can purify your";
+	mes "Rough Oridecons or";
+	mes "Rough Eluniums. I'll need";
+	mes "5 Rough Stones to make";
+	mes "1 pure one for you.";
+	next;
+	switch(select("Make Oridecon","Make Elunium","Ask about Enchanted Stones")) {
+	case 1:
+		if (countitem(756) > 4) {
+			delitem 756,5;
+			getitem 984,1;
+			mes "[Matestein]";
+			mes "Here's your Oridecon.";
+			mes "You're welcome to come";
+			mes "back whenever you want.";
+			close;
+		} else {
+			mes "[Matestein]";
+			mes "You're kidding me, right?";
+			mes "I just told you that I need 5 Rough Oridecons to make a pure Oridecon.";
+			close;
+		}
+	case 2:
+		if (countitem(757) > 4) {
+			delitem 757,5;
+			getitem 985,1;
+			mes "[Matestein]";
+			mes "Here's your Elunium.";
+			mes "You're welcome to come";
+			mes "back whenever you want.";
+			close;
+		} else {
+			mes "[Matestein]";
+			mes "You're kidding me, right?";
+			mes "I just told you that I need 5 Rough Eluniums to make a pure Elunium.";
+			close;
+		}
+	case 3:
+		mes "[Matestein]";
+		mes "Enchanted Stones...?";
+		mes "I've been a stonesmith for 20 years, so I've heard a lot about them. Supposedly, there are";
+		mes "four different kinds.";
+		next;
+		mes "[Matestein]";
+		mes "Each Enchanted Stone possesses one of the following elemental properties: Earth, Wind, Water and Fire.";
+		next;
+		mes "[Matestein]";
+		mes "If someone combines a Enchanted Stone with a weapon while smithing, that weapon will possess the same property as the Stone.";
+		next;
+		mes "[Matestein]";
+		mes "Needless to say, you need to have some smithing skill to produce this kind of elemental weapon.";
+		close;
+	}
+}
+
+ein_in01.gat,15,87,3	script	Tirehaus	86,{
+
+	set '@max_max_c,checkweight(1201,1);
+	if ('@max_max_c == 0) {
+		mes "- Wait a minute !! -";
+		mes "- Currently you're carrying -";
+		mes "- too many items with you. -";
+		mes "- Please try again -";
+		mes "- after you loose some weight. -";
+		close;
+	}
+	set '@item_weight,0;
+	set '@sell,0;
+	set '@now_weight,MaxWeight - Weight;
+	mes "[Tirehaus]";
+	mes "I sell 2 kinds of Metal";
+	mes "for tempering weaponry.";
+	mes "I have ^007777Phracon^000000 for Level 1";
+	mes "Weapons, and ^007777Emveretarcon^000000";
+	mes "for Level 2 Weapons.";
+	next;
+	switch(select("Phracon - 200 Zeny","Emveretarcon - 1000 Zeny","Ask about other Metals")) {
+	case 1:
+		mes "[Tirehaus]";
+		mes "So how many do you wish to buy?";
+		mes "If you don't want any, please enter the number, '0.'";
+		next;
+		while(1) {
+			input '@input;
+			if ('@input == 0) {
+				mes "[Tirehaus]";
+				mes "The deal has";
+				mes "been cancelled.";
+				close;
+			} else if ('@input < 1 || '@input > 500) {
+				mes "[Tirehaus]";
+				mes "Alright, you can";
+				mes "puchase up to 500.";
+				mes "No more than that,";
+				mes "got it? Good.";
+				next;
+			} else {
+				break;
+			}
+		}
+		set '@sell,'@input * 200;
+		set '@item_weight,'@input * 200;
+		if (Zeny < '@sell) {
+			mes "[Tirehaus]";
+			mes "Err...";
+			mes "You don't have";
+			mes "enough Zeny to buy";
+			mes "" + '@input + " of them.";
+			close;
+		}
+		if ('@now_weight < '@item_weight) {
+			mes "[Tirehaus]";
+			mes "Hmm...";
+			mes "I can't give you anything if you don't have enough room in your inventory. Why don't you put your extra things in Kafra Storage and try again?";
+			close;
+		}
+		getitem 1010,'@input;
+		set Zeny,Zeny - '@sell;
+		mes "[Tirehaus]";
+		mes "Here you are!";
+		mes "Thank you for";
+		mes "your patronage.";
+		close;
+	case 2:
+		mes "[Tirehaus]";
+		mes "So how many do you wish to buy?";
+		mes "If you don't want any, please enter the number, '0.'";
+		next;
+		while(1) {
+			input '@input;
+			if ('@input == 0) {
+				mes "[Tirehaus]";
+				mes "The deal has";
+				mes "been cancelled.";
+				close;
+			} else if ('@input < 1 || '@input > 500) {
+				mes "[Tirehaus]";
+				mes "Alright, you can";
+				mes "puchase up to 500.";
+				mes "No more than that,";
+				mes "got it? Good.";
+				next;
+			} else {
+				break;
+			}
+		}
+		set '@sell,'@input * 1000;
+		set '@item_weight,'@input * 200;
+		if (Zeny < '@sell) {
+			mes "[Tirehaus]";
+			mes "Err...";
+			mes "You don't have";
+			mes "enough Zeny to buy";
+			mes "" + '@input + " of them.";
+			close;
+		}
+		if ('@now_weight < '@item_weight) {
+			mes "[Tirehaus]";
+			mes "Hmm...";
+			mes "I can't give you anything if you don't have enough room in your inventory. Why don't you put your extra things in Kafra Storage and try again?";
+			close;
+		}
+		getitem 1011,'@input;
+		set Zeny,Zeny - '@sell;
+		mes "[Tirehaus]";
+		mes "Here you are!";
+		mes "Thank you for";
+		mes "your patronage.";
+		close;
+	case 3:
+		mes "[Tirehaus]";
+		mes "Other metals?";
+		mes "Well, you'll need special metals to upgrade higher level weapons, or any kind of armor. But you know, Oridecon and Elunium is really";
+		mes "hard to just find...";
+		close;
+	}
+}
+
+ein_in01.gat,24,87,5	script	Manthasman	826,{
+
+	mes "[Manthasman Phruhag]";
+	mes "I'm the Armsmith.";
+	mes "I can refine all kinds of weapons, armor and equipment, so let me";
+	mes "know what you want me to refine.";
+	next;
+	set '@strRetPart1$,getequipname(1);
+	set '@strRetPart2$,getequipname(2);
+	set '@strRetPart3$,getequipname(3);
+	set '@strRetPart4$,getequipname(4);
+	set '@strRetPart5$,getequipname(5);
+	set '@strRetPart6$,getequipname(6);
+	set '@strRetPart7$,getequipname(7);
+	set '@strRetPart8$,getequipname(8);
+	set '@strRetPart9$,getequipname(10);
+	set '@strRetPart10$,getequipname(11);
+	if ('@strRetPart1$ == "0") {
+		set '@strPart1$,"Head ^000000[^003366Not Equipped^000000]";
+	} else {
+		set '@strPart1$,'@strRetPart1$;
+	}
+	if ('@strRetPart2$ == "0") {
+		set '@strPart2$,"Torso ^000000[^003366Not Equipped^000000]";
+	} else {
+		set '@strPart2$,'@strRetPart2$;
+	}
+	if ('@strRetPart3$ == "0") {
+		set '@strPart3$,"Left Hand ^000000[^003366Not Equipped^000000]";
+	} else {
+		set '@strPart3$,'@strRetPart3$;
+	}
+	if ('@strRetPart4$ == "0") {
+		set '@strPart4$,"Right Hand ^000000[^003366Not Equipped^000000]";
+	} else {
+		set '@strPart4$,'@strRetPart4$;
+	}
+	if ('@strRetPart5$ == "0") {
+		set '@strPart5$,"Garment ^000000[^003366Not Equipped^000000]";
+	} else {
+		set '@strPart5$,'@strRetPart5$;
+	}
+	if ('@strRetPart6$ == "0") {
+		set '@strPart6$,"Foot ^000000[^003366Not Equipped^000000]";
+	} else {
+		set '@strPart6$,'@strRetPart6$;
+	}
+	if ('@strRetPart7$ == "0") {
+		set '@strPart7$,"Accessory1 ^000000[^003366Not Equipped^000000]";
+	} else {
+		set '@strPart7$,'@strRetPart7$;
+	}
+	if ('@strRetPart8$ == "0") {
+		set '@strPart8$,"Accessory2 ^000000[^003366Not Equipped^000000]";
+	} else {
+		set '@strPart8$,'@strRetPart8$;
+	}
+	if ('@strRetPart9$ == "0") {
+		set '@strPart9$,"Head2 ^000000[^003366Not Equipped^000000]";
+	} else {
+		set '@strPart9$,'@strRetPart9$;
+	}
+	if ('@strRetPart10$ == "0") {
+		set '@strPart10$,"Head3 ^000000[^003366Not Equipped^000000]";
+	} else {
+		set '@strPart10$,'@strRetPart10$;
+	}
+	switch(select("'@strPart1$","'@strPart2$","'@strPart3$","'@strPart4$","'@strPart5$","'@strPart6$","'@strPart7$","'@strPart8$","'@strPart9$","'@strPart10$")) {
+	case 1:
+		set '@part,1;
+		if ('@strRetPart1$ == "0") {
+			mes "[Manthasman Phruhag]";
+			mes "Do you want me";
+			mes "to refine your skull?";
+			mes "'Cause I can, and";
+			mes "I'll do it.";
+			close;
+		}
+		break;
+	case 2:
+		set '@part,2;
+		if ('@strRetPart2$ == "0") {
+			mes "[Manthasman Phruhag]";
+			mes "You're not wearing";
+			mes "anything there that";
+			mes "I can refine.";
+			close;
+		}
+		break;
+	case 3:
+		set '@part,3;
+		if ('@strRetPart3$ == "0") {
+			mes "[Manthasman Phruhag]";
+			mes "I can't refine your";
+			mes "left hand! Go to the";
+			mes "manicurist if you";
+			mes "want that.";
+			close;
+		}
+		break;
+	case 4:
+		set '@part,4;
+		if ('@strRetPart4$ == "0") {
+			mes "[Manthasman Phruhag]";
+			mes "I can't refine your";
+			mes "right hand. I'd break";
+			mes "it into pieces with";
+			mes "this big ol' hammer!";
+			close;
+		}
+		break;
+	case 5:
+		set '@part,5;
+		if ('@strRetPart5$ == "0") {
+			mes "[Manthasman Phruhag]";
+			mes "You're not even";
+			mes "wearing a garment";
+			mes "that I can refine.";
+			close;
+		}
+		break;
+	case 6:
+		set '@part,6;
+		if ('@strRetPart6$ == "0") {
+			mes "[Manthasman Phruhag]";
+			mes "What do I look like,";
+			mes "a makeover artist?!";
+			mes "I can't refine your";
+			mes "bare feet!";
+			close;
+		}
+		break;
+	case 7:
+		set '@part,7;
+		if ('@strRetPart7$ == "0") {
+			mes "[Manthasman Phruhag]";
+			mes "Um...";
+			mes "You're not";
+			mes "wearing an";
+			mes "Accessory.";
+			close;
+		}
+		break;
+	case 8:
+		set '@part,8;
+		if ('@strRetPart8$ == "0") {
+			mes "[Manthasman Phruhag]";
+			mes "Accessory?";
+			mes "You're not";
+			mes "wearing one";
+			mes "of those.";
+			close;
+		}
+		break;
+	case 9:
+		set '@part,9;
+		if ('@strRetPart9$ == "0") {
+			mes "[Manthasman Phruhag]";
+			mes "I refine equipment.";
+			mes "I don't give hair cuts.";
+			close;
+		}
+		break;
+	case 10:
+		set '@part,10;
+		if ('@strRetPart10$ == "0") {
+			mes "[Manthasman Phruhag]";
+			mes "What am I, your";
+			mes "personal hairstylist?!";
+			mes "Go to the salon if you";
+			mes "want work done on your";
+			mes "precious hair.";
+			close;
+		}
+		break;
+	}
+	if (getequipisenableref('@part) == 0) {
+		mes "[Manthasman Phruhag]";
+		mes "I don't think I can";
+		mes "refine this item at all...";
+		close;
+	}
+	if (getequipisidentify('@part) == 0) {
+		mes "[Manthasman Phruhag]";
+		mes "You can't refine this";
+		mes "if you haven't appraised";
+		mes "it first. Make sure your";
+		mes "stuff is identified before";
+		mes "I can refine it.";
+		close;
+	}
+	if (getequiprefinerycnt('@part) >= 10) {
+		mes "[Manthasman Phruhag]";
+		mes "I can't refine this";
+		mes "any more. This is as";
+		mes "refined as it gets!";
+		close;
+	}
+	if (getequipweaponlv('@part) == 0) {
+		mes "[Manthasman Phruhag]";
+		mes "To refine this I need";
+		mes "one ^003366Elunium^000000 and";
+		mes "a service fee of 2000 Zeny.";
+		mes "Do you really wish to continue?";
+		next;
+		switch(select("Yes","No")) {
+		case 1:
+			if (getequippercentrefinery('@part) < 100) {
+				mes "[Manthasman Phruhag]";
+				mes "Oh no! If I continue to";
+				mes "refine this, there's a risk it could be destroyed! That means";
+				mes "that ^FF0000this equipment^000000, and ^FF0000any cards^000000 or special properties added to this armor, ^FF0000will be gone^000000.";
+				next;
+				mes "I can't make it any clearer.";
+				mes "You have a chance to ^FF0000lose this armor^000000. Do you still want me to";
+				mes "try to refine this?";
+				next;
+				switch(select("Yes","No")) {
+				case 1:
+					break;
+				case 2:
+					mes "[Manthasman Phruhag]";
+					mes "I completely agree...";
+					mes "I might be a great refiner, but sometimes even I make mistakes.";
+					close;
+				}
+			}
+			if ((countitem(985) > 0) && (Zeny > 1999)) {
+				delitem 985,1;
+				set Zeny,Zeny - 2000;
+			} else {
+				mes "[Manthasman Phruhag]";
+				mes "You don't seem to have";
+				mes "enough Zeny or Elunium...";
+				mes "Go get some more. I'll be";
+				mes "here all day if you need me.";
+				close;
+			}
+			break;
+		case 2:
+			mes "[Manthasman Phruhag]";
+			mes "Yeah...";
+			mes "There's no need to";
+			mes "rush. Take your time.";
+			close;
+		}
+	} else if (getequipweaponlv('@part) == 1) {
+		mes "[Manthasman Phruhag]";
+		mes "Um...";
+		mes "A Level 1 weapon...";
+		mes "I need one ^003366Phracon^000000";
+		mes "and the fee is 50 Zeny.";
+		mes "Do you really wish to continue?";
+		next;
+		switch(select("Yes","No")) {
+		case 1:
+			if (getequippercentrefinery('@part) < 100) {
+				mes "[Manthasman Phruhag]";
+				mes "Ohh! It's dangerous to";
+				mes "continue refining this! It could";
+				mes "be destroyed, and you'd ^FF0000lose the weapon^000000, any ^FF0000cards in the weapon^000000,";
+				mes "or any added special properties.";
+				next;
+				mes "[Manthasman Phruhag]";
+				mes "I can't make it any clearer.";
+				mes "Once a weapon is destroyed,";
+				mes "there's no getting it back.";
+				mes "You really have a chance to";
+				mes "^FF0000lose this weapon^000000 forever.";
+				mes "Do you still want to refine?";
+				next;
+				switch(select("Yes","No")) {
+				case 1:
+					break;
+				case 2:
+					mes "[Manthasman Phruhag]";
+					mes "I completely agree...";
+					mes "I might be a great refiner, but sometimes even I make mistakes.";
+					close;
+				}
+			}
+			if ((countitem(1010) > 0) && (Zeny > 49)) {
+				delitem 1010,1;
+				set Zeny,Zeny - 50;
+			} else {
+				mes "[Manthasman Phruhag]";
+				mes "You don't seem to have";
+				mes "enough Zeny or Phracon...";
+				mes "Go get some more. I'll be";
+				mes "here all day if you need me.";
+				close;
+			}
+			break;
+		case 2:
+			mes "[Manthasman Phruhag]";
+			mes "Yeah...";
+			mes "There's no need to";
+			mes "rush. Take your time.";
+			close;
+		}
+	} else if (getequipweaponlv('@part) == 2) {
+		mes "[Manthasman Phruhag]";
+		mes "Huh...";
+		mes "A Level 2 weapon...";
+		mes "I'll need one ^003366Emveretarcon^000000";
+		mes "and the fee is 200 Zeny.";
+		mes "Do you really wish to continue?";
+		next;
+		switch(select("Yes","No")) {
+		case 1:
+			if (getequippercentrefinery('@part) < 100) {
+				mes "[Manthasman Phruhag]";
+				mes "Ohh! It's dangerous to";
+				mes "continue refining this! It could";
+				mes "be destroyed, and you'd ^FF0000lose the weapon^000000, any ^FF0000cards in the weapon^000000,";
+				mes "or any added special properties.";
+				next;
+				mes "[Manthasman Phruhag]";
+				mes "I can't make it any clearer.";
+				mes "Once a weapon is destroyed,";
+				mes "there's no getting it back.";
+				mes "You really have a chance to";
+				mes "^FF0000lose this weapon^000000 forever.";
+				mes "Do you still want to refine?";
+				next;
+				switch(select("Yes","No")) {
+				case 1:
+					break;
+				case 2:
+					mes "[Manthasman Phruhag]";
+					mes "I completely agree...";
+					mes "I might be a great refiner, but sometimes even I make mistakes.";
+					close;
+				}
+			}
+			if ((countitem(1011) > 0) && (Zeny > 199)) {
+				delitem 1011,1;
+				set Zeny,Zeny - 200;
+			} else {
+				mes "[Manthasman Phruhag]";
+				mes "You don't seem to have";
+				mes "enough Emveretarcon or";
+				mes "Zeny. I'll be here all";
+				mes "day if you need me, so";
+				mes "go ahead and get more.";
+				close;
+			}
+			break;
+		case 2:
+			mes "[Manthasman Phruhag]";
+			mes "Yeah...";
+			mes "There's no need to";
+			mes "rush. Take your time.";
+			close;
+		}
+	} else if (getequipweaponlv('@part) == 3) {
+		mes "[Manthasman Phruhag]";
+		mes "Ah...";
+		mes "A Level 3 weapon...";
+		mes "I need one ^003366Oridecon^000000";
+		mes "and the fee is 5000 Zeny.";
+		mes "Do you really wish to continue?";
+		next;
+		switch(select("Yes","No")) {
+		case 1:
+			if (getequippercentrefinery('@part) < 100) {
+				mes "[Manthasman Phruhag]";
+				mes "Ohh! It's dangerous to";
+				mes "continue refining this! It could";
+				mes "be destroyed, and you'd ^FF0000lose the weapon^000000, any ^FF0000cards in the weapon^000000,";
+				mes "or any added special properties.";
+				next;
+				mes "[Manthasman Phruhag]";
+				mes "I can't make it any clearer.";
+				mes "Once a weapon is destroyed,";
+				mes "there's no getting it back.";
+				mes "You really have a chance to";
+				mes "^FF0000lose this weapon^000000 forever.";
+				mes "Do you still want to refine?";
+				next;
+				switch(select("Yes","No")) {
+				case 1:
+					break;
+				case 2:
+					mes "[Manthasman Phruhag]";
+					mes "I completely agree...";
+					mes "I might be a great refiner, but sometimes even I make mistakes.";
+					close;
+				}
+			}
+			if ((countitem(984) > 0) && (Zeny > 4999)) {
+				delitem 984,1;
+				set Zeny,Zeny - 5000;
+			} else {
+				mes "[Manthasman Phruhag]";
+				mes "You don't seem to have";
+				mes "enough Zeny or Oridecon...";
+				mes "Go get some more. I'll be";
+				mes "here all day if you need me.";
+				close;
+			}
+			break;
+		case 2:
+			mes "[Manthasman Phruhag]";
+			mes "Yeah...";
+			mes "There's no need to";
+			mes "rush. Take your time.";
+			close;
+		}
+	} else if (getequipweaponlv('@part) == 4) {
+		mes "[Manthasman Phruhag]";
+		mes "Whoa...!";
+		mes "A Level 4 weapon!";
+		mes "Fabulous, I almost never see these. I guess one ^003366Oridecon^000000 and 20,000 Zeny will be enough. Do you really wish to Continue?";
+		next;
+		switch(select("Yes","No")) {
+		case 1:
+			if (getequippercentrefinery('@part) < 100) {
+				mes "[Manthasman Phruhag]";
+				mes "Ohh! It's dangerous to";
+				mes "continue refining this! It could";
+				mes "be destroyed, and you'd ^FF0000lose the weapon^000000, any ^FF0000cards in the weapon^000000,";
+				mes "or any added special properties.";
+				next;
+				mes "[Manthasman Phruhag]";
+				mes "I can't make it any clearer.";
+				mes "Once a weapon is destroyed,";
+				mes "there's no getting it back.";
+				mes "You really have a chance to";
+				mes "^FF0000lose this weapon^000000 forever.";
+				mes "Do you still want to refine?";
+				next;
+				switch(select("Yes","No")) {
+				case 1:
+					break;
+				case 2:
+					mes "[Manthasman Phruhag]";
+					mes "I completely agree...";
+					mes "I might be a great refiner, but sometimes even I make mistakes.";
+					close;
+				}
+			}
+			if ((countitem(984) > 0) && (Zeny > 19999)) {
+				delitem 984,1;
+				set Zeny,Zeny - 20000;
+			} else {
+				mes "[Manthasman Phruhag]";
+				mes "You don't seem to have";
+				mes "enough Zeny or Oridecon...";
+				mes "Go get some more. I'll be";
+				mes "here all day if you need me.";
+				close;
+			}
+			break;
+		case 2:
+			mes "[Manthasman Phruhag]";
+			mes "Yeah...";
+			mes "There's no need to";
+			mes "rush. Take your time.";
+			close;
+		}
+	}
+	if (getequippercentrefinery('@part) > rand(100)) {
+		mes "[Manthasman Phruhag]";
+		mes "Clang! Clang! Clang!";
+		successrefitem '@part;
+		next;
+		emotion ET_SMILE,"Manthasman";
+		mes "[Manthasman Phruhag]";
+		mes "Perfect!";
+		mes "Heh heh!";
+		mes "Once again,";
+		mes "flawless work";
+		mes "from the master~";
+		close;
+	} else {
+		mes "[Manthasman Phruhag]";
+		mes "Clang! Clang! Clang!";
+		failedrefitem '@part;
+		next;
+		set '@emo,rand(1,5);
+		if ('@emo == 1) {
+			emotion ET_MONEY,"Manthasman";
+		} else {
+			emotion ET_SWEAT,"Manthasman";
+		}
+		mes "[Manthasman Phruhag]";
+		mes "OH! MY GOD!";
+		mes "Damn it! Not again!";
+		mes "I'm terribly sorry, but you know practice does make perfect.";
+		mes "Um, right? Heh heh...";
+		close;
+	}
+}
+
+
+//--------------------------------------------------------------
+// Juno Refinery - [Tsuyuki]
+//--------------------------------------------------------------
+
+yuno_in01.gat,164,27,4	script	Delight	88,{
+
+	set '@max_max_c,checkweight(1201,1);
+	if ('@max_max_c == 0) {
+		mes "- Wait a minute !! -";
+		mes "- Currently you're carrying -";
+		mes "- too many items with you. -";
+		mes "- Please try again -";
+		mes "- after you loose some weight. -";
+		close;
+	}
+	mes "[Delight]";
+	mes "I can purify your";
+	mes "Rough Oridecons or";
+	mes "Rough Eluniums. I'll need";
+	mes "5 Rough Stones to make";
+	mes "1 pure one for you.";
+	next;
+	switch(select("Make Oridecon","Make Elunium","Ask about Enchanted Stones")) {
+	case 1:
+		if (countitem(756) > 4) {
+			delitem 756,5;
+			getitem 984,1;
+			mes "[Delight]";
+			mes "Here's your Oridecon.";
+			mes "You're welcome to come";
+			mes "back whenever you want.";
+			close;
+		} else {
+			mes "[Delight]";
+			mes "You're kidding me, right?";
+			mes "I just told you that I need 5 Rough Oridecons to make a pure Oridecon.";
+			close;
+		}
+	case 2:
+		if (countitem(757) > 4) {
+			delitem 757,5;
+			getitem 985,1;
+			mes "[Delight]";
+			mes "Here's your Elunium.";
+			mes "You're welcome to come";
+			mes "back whenever you want.";
+			close;
+		} else {
+			mes "[Delight]";
+			mes "You're kidding me, right?";
+			mes "I just told you that I need 5 Rough Eluniums to make a pure Elunium.";
+			close;
+		}
+	case 3:
+		mes "[Delight]";
+		mes "Enchanted Stones...?";
+		mes "I've been a stonesmith for 20 years, so I've heard a lot about them. Supposedly, there are";
+		mes "four different kinds.";
+		next;
+		mes "[Delight]";
+		mes "Each Enchanted Stone possesses one of the following elemental properties: Earth, Wind, Water and Fire.";
+		next;
+		mes "[Delight]";
+		mes "If someone combines a Enchanted Stone with a weapon while smithing, that weapon will possess the same property as the Stone.";
+		next;
+		mes "[Delight]";
+		mes "Needless to say, you need to have some smithing skill to produce this kind of elemental weapon.";
+		close;
+	}
+}
+
+yuno_in01.gat,171,27,4	script	Dilemma	88,{
+
+	set '@max_max_c,checkweight(1201,1);
+	if ('@max_max_c == 0) {
+		mes "- Wait a minute !! -";
+		mes "- Currently you're carrying -";
+		mes "- too many items with you. -";
+		mes "- Please try again -";
+		mes "- after you loose some weight. -";
+		close;
+	}
+	set '@item_weight,0;
+	set '@sell,0;
+	set '@now_weight,MaxWeight - Weight;
+	mes "[Dilemma]";
+	mes "I sell 2 kinds of Metal";
+	mes "for tempering weaponry.";
+	mes "I have ^007777Phracon^000000 for Level 1";
+	mes "Weapons, and ^007777Emveretarcon^000000";
+	mes "for Level 2 Weapons.";
+	next;
+	switch(select("Phracon - 200 Zeny","Emveretarcon - 1000 Zeny","Ask about other Metals")) {
+	case 1:
+		mes "[Dilemma]";
+		mes "So how many do you wish to buy?";
+		mes "If you don't want any, please enter the number, '0.'";
+		next;
+		while(1) {
+			input '@input;
+			if ('@input == 0) {
+				mes "[Dilemma]";
+				mes "The deal has";
+				mes "been cancelled.";
+				close;
+			} else if ('@input < 1 || '@input > 500) {
+				mes "[Dilemma]";
+				mes "Alright, you can";
+				mes "puchase up to 500.";
+				mes "No more than that,";
+				mes "got it? Good.";
+				next;
+			} else {
+				break;
+			}
+		}
+		set '@sell,'@input * 200;
+		set '@item_weight,'@input * 200;
+		if (Zeny < '@sell) {
+			mes "[Dilemma]";
+			mes "Err...";
+			mes "You don't have";
+			mes "enough Zeny to buy";
+			mes "" + '@input + " of them.";
+			close;
+		}
+		if ('@now_weight < '@item_weight) {
+			mes "[Dilemma]";
+			mes "Hmm...";
+			mes "I can't give you anything if you don't have enough room in your inventory. Why don't you put your extra things in Kafra Storage and try again?";
+			close;
+		}
+		getitem 1010,'@input;
+		set Zeny,Zeny - '@sell;
+		mes "[Dilemma]";
+		mes "Here you are!";
+		mes "Thank you for";
+		mes "your patronage.";
+		close;
+	case 2:
+		mes "[Dilemma]";
+		mes "So how many do you wish to buy?";
+		mes "If you don't want any, please enter the number, '0.'";
+		next;
+		while(1) {
+			input '@input;
+			if ('@input == 0) {
+				mes "[Dilemma]";
+				mes "The deal has";
+				mes "been cancelled.";
+				close;
+			} else if ('@input < 1 || '@input > 500) {
+				mes "[Dilemma]";
+				mes "Alright, you can";
+				mes "puchase up to 500.";
+				mes "No more than that,";
+				mes "got it? Good.";
+				next;
+			} else {
+				break;
+			}
+		}
+		set '@sell,'@input * 1000;
+		set '@item_weight,'@input * 200;
+		if (Zeny < '@sell) {
+			mes "[Dilemma]";
+			mes "Err...";
+			mes "You don't have";
+			mes "enough Zeny to buy";
+			mes "" + '@input + " of them.";
+			close;
+		}
+		if ('@now_weight < '@item_weight) {
+			mes "[Dilemma]";
+			mes "Hmm...";
+			mes "I can't give you anything if you don't have enough room in your inventory. Why don't you put your extra things in Kafra Storage and try again?";
+			close;
+		}
+		getitem 1011,'@input;
+		set Zeny,Zeny - '@sell;
+		mes "[Dilemma]";
+		mes "Here you are!";
+		mes "Thank you for";
+		mes "your patronage.";
+		close;
+	case 3:
+		mes "[Dilemma]";
+		mes "Other metals?";
+		mes "Well, you'll need special metals to upgrade higher level weapons, or any kind of armor. But you know, Oridecon and Elunium is really";
+		mes "hard to just find...";
+		close;
+	}
+}
+
+yuno_in01.gat,171,21,4	script	Lambert	88,{
+
+	mes "[Lambert]";
+	mes "I'm the Armsmith.";
+	mes "I can refine all kinds of weapons, armor and equipment, so let me";
+	mes "know what you want me to refine.";
+	next;
+	set '@strRetPart1$,getequipname(1);
+	set '@strRetPart2$,getequipname(2);
+	set '@strRetPart3$,getequipname(3);
+	set '@strRetPart4$,getequipname(4);
+	set '@strRetPart5$,getequipname(5);
+	set '@strRetPart6$,getequipname(6);
+	set '@strRetPart7$,getequipname(7);
+	set '@strRetPart8$,getequipname(8);
+	set '@strRetPart9$,getequipname(10);
+	set '@strRetPart10$,getequipname(11);
+	if ('@strRetPart1$ == "0") {
+		set '@strPart1$,"Head ^000000[^003366Not Equipped^000000]";
+	} else {
+		set '@strPart1$,'@strRetPart1$;
+	}
+	if ('@strRetPart2$ == "0") {
+		set '@strPart2$,"Torso ^000000[^003366Not Equipped^000000]";
+	} else {
+		set '@strPart2$,'@strRetPart2$;
+	}
+	if ('@strRetPart3$ == "0") {
+		set '@strPart3$,"Left Hand ^000000[^003366Not Equipped^000000]";
+	} else {
+		set '@strPart3$,'@strRetPart3$;
+	}
+	if ('@strRetPart4$ == "0") {
+		set '@strPart4$,"Right Hand ^000000[^003366Not Equipped^000000]";
+	} else {
+		set '@strPart4$,'@strRetPart4$;
+	}
+	if ('@strRetPart5$ == "0") {
+		set '@strPart5$,"Garment ^000000[^003366Not Equipped^000000]";
+	} else {
+		set '@strPart5$,'@strRetPart5$;
+	}
+	if ('@strRetPart6$ == "0") {
+		set '@strPart6$,"Foot ^000000[^003366Not Equipped^000000]";
+	} else {
+		set '@strPart6$,'@strRetPart6$;
+	}
+	if ('@strRetPart7$ == "0") {
+		set '@strPart7$,"Accessory1 ^000000[^003366Not Equipped^000000]";
+	} else {
+		set '@strPart7$,'@strRetPart7$;
+	}
+	if ('@strRetPart8$ == "0") {
+		set '@strPart8$,"Accessory2 ^000000[^003366Not Equipped^000000]";
+	} else {
+		set '@strPart8$,'@strRetPart8$;
+	}
+	if ('@strRetPart9$ == "0") {
+		set '@strPart9$,"Head2 ^000000[^003366Not Equipped^000000]";
+	} else {
+		set '@strPart9$,'@strRetPart9$;
+	}
+	if ('@strRetPart10$ == "0") {
+		set '@strPart10$,"Head3 ^000000[^003366Not Equipped^000000]";
+	} else {
+		set '@strPart10$,'@strRetPart10$;
+	}
+	switch(select("'@strPart1$","'@strPart2$","'@strPart3$","'@strPart4$","'@strPart5$","'@strPart6$","'@strPart7$","'@strPart8$","'@strPart9$","'@strPart10$")) {
+	case 1:
+		set '@part,1;
+		if ('@strRetPart1$ == "0") {
+			mes "[Lambert]";
+			mes "Do you want me";
+			mes "to refine your skull?";
+			mes "'Cause I can, and";
+			mes "I'll do it.";
+			close;
+		}
+		break;
+	case 2:
+		set '@part,2;
+		if ('@strRetPart2$ == "0") {
+			mes "[Lambert]";
+			mes "You're not wearing";
+			mes "anything there that";
+			mes "I can refine.";
+			close;
+		}
+		break;
+	case 3:
+		set '@part,3;
+		if ('@strRetPart3$ == "0") {
+			mes "[Lambert]";
+			mes "I can't refine your";
+			mes "left hand! Go to the";
+			mes "manicurist if you";
+			mes "want that.";
+			close;
+		}
+		break;
+	case 4:
+		set '@part,4;
+		if ('@strRetPart4$ == "0") {
+			mes "[Lambert]";
+			mes "I can't refine your";
+			mes "right hand. I'd break";
+			mes "it into pieces with";
+			mes "this big ol' hammer!";
+			close;
+		}
+		break;
+	case 5:
+		set '@part,5;
+		if ('@strRetPart5$ == "0") {
+			mes "[Lambert]";
+			mes "You're not even";
+			mes "wearing a garment";
+			mes "that I can refine.";
+			close;
+		}
+		break;
+	case 6:
+		set '@part,6;
+		if ('@strRetPart6$ == "0") {
+			mes "[Lambert]";
+			mes "What do I look like,";
+			mes "a makeover artist?!";
+			mes "I can't refine your";
+			mes "bare feet!";
+			close;
+		}
+		break;
+	case 7:
+		set '@part,7;
+		if ('@strRetPart7$ == "0") {
+			mes "[Lambert]";
+			mes "Um...";
+			mes "You're not";
+			mes "wearing an";
+			mes "Accessory.";
+			close;
+		}
+		break;
+	case 8:
+		set '@part,8;
+		if ('@strRetPart8$ == "0") {
+			mes "[Lambert]";
+			mes "Accessory?";
+			mes "You're not";
+			mes "wearing one";
+			mes "of those.";
+			close;
+		}
+		break;
+	case 9:
+		set '@part,9;
+		if ('@strRetPart9$ == "0") {
+			mes "[Lambert]";
+			mes "I refine equipment.";
+			mes "I don't give hair cuts.";
+			close;
+		}
+		break;
+	case 10:
+		set '@part,10;
+		if ('@strRetPart10$ == "0") {
+			mes "[Lambert]";
+			mes "What am I, your";
+			mes "personal hairstylist?!";
+			mes "Go to the salon if you";
+			mes "want work done on your";
+			mes "precious hair.";
+			close;
+		}
+		break;
+	}
+	if (getequipisenableref('@part) == 0) {
+		mes "[Lambert]";
+		mes "I don't think I can";
+		mes "refine this item at all...";
+		close;
+	}
+	if (getequipisidentify('@part) == 0) {
+		mes "[Lambert]";
+		mes "You can't refine this";
+		mes "if you haven't appraised";
+		mes "it first. Make sure your";
+		mes "stuff is identified before";
+		mes "I can refine it.";
+		close;
+	}
+	if (getequiprefinerycnt('@part) >= 10) {
+		mes "[Lambert]";
+		mes "I can't refine this";
+		mes "any more. This is as";
+		mes "refined as it gets!";
+		close;
+	}
+	if (getequipweaponlv('@part) == 0) {
+		mes "[Lambert]";
+		mes "To refine this I need";
+		mes "one ^003366Elunium^000000 and";
+		mes "a service fee of 2000 Zeny.";
+		mes "Do you really wish to continue?";
+		next;
+		switch(select("Yes","No")) {
+		case 1:
+			if (getequippercentrefinery('@part) < 100) {
+				mes "[Lambert]";
+				mes "Oh no! If I continue to";
+				mes "refine this, there's a risk it could be destroyed! That means";
+				mes "that ^FF0000this equipment^000000, and ^FF0000any cards^000000 or special properties added to this armor, ^FF0000will be gone^000000.";
+				next;
+				mes "[Lambert]";
+				mes "I can't make it any clearer.";
+				mes "You have a chance to ^FF0000lose this armor^000000. Do you still want me to";
+				mes "try to refine this?";
+				next;
+				switch(select("Yes","No")) {
+				case 1:
+					break;
+				case 2:
+					mes "[Lambert]";
+					mes "I completely agree...";
+					mes "I might be a great refiner, but sometimes even I make mistakes.";
+					close;
+				}
+			}
+			if ((countitem(985) > 0) && (Zeny > 1999)) {
+				delitem 985,1;
+				set Zeny,Zeny - 2000;
+			} else {
+				mes "[Lambert]";
+				mes "You don't seem to have";
+				mes "enough Zeny or Elunium...";
+				mes "Go get some more. I'll be";
+				mes "here all day if you need me.";
+				close;
+			}
+			break;
+		case 2:
+			mes "[Lambert]";
+			mes "Yeah...";
+			mes "There's no need to";
+			mes "rush. Take your time.";
+			close;
+		}
+	} else if (getequipweaponlv('@part) == 1) {
+		mes "[Lambert]";
+		mes "Um...";
+		mes "A Level 1 weapon...";
+		mes "I need one ^003366Phracon^000000";
+		mes "and the fee is 50 Zeny.";
+		mes "Do you really wish to continue?";
+		next;
+		switch(select("Yes","No")) {
+		case 1:
+			if (getequippercentrefinery('@part) < 100) {
+				mes "[Lambert]";
+				mes "Ohh! It's dangerous to";
+				mes "continue refining this! It could";
+				mes "be destroyed, and you'd ^FF0000lose the weapon^000000, any ^FF0000cards in the weapon^000000,";
+				mes "or any added special properties.";
+				next;
+				mes "[Lambert]";
+				mes "I can't make it any clearer.";
+				mes "Once a weapon is destroyed,";
+				mes "there's no getting it back.";
+				mes "You really have a chance to";
+				mes "^FF0000lose this weapon^000000 forever.";
+				mes "Do you still want to refine?";
+				next;
+				switch(select("Yes","No")) {
+				case 1:
+					break;
+				case 2:
+					mes "[Lambert]";
+					mes "I completely agree...";
+					mes "I might be a great refiner, but sometimes even I make mistakes.";
+					close;
+				}
+			}
+			if ((countitem(1010) > 0) && (Zeny > 49)) {
+				delitem 1010,1;
+				set Zeny,Zeny - 50;
+			} else {
+				mes "[Lambert]";
+				mes "You don't seem to have";
+				mes "enough Zeny or Phracon...";
+				mes "Go get some more. I'll be";
+				mes "here all day if you need me.";
+				close;
+			}
+			break;
+		case 2:
+			mes "[Lambert]";
+			mes "Yeah...";
+			mes "There's no need to";
+			mes "rush. Take your time.";
+			close;
+		}
+	} else if (getequipweaponlv('@part) == 2) {
+		mes "[Lambert]";
+		mes "Huh...";
+		mes "A Level 2 weapon...";
+		mes "I'll need one ^003366Emveretarcon^000000";
+		mes "and the fee is 200 Zeny.";
+		mes "Do you really wish to continue?";
+		next;
+		switch(select("Yes","No")) {
+		case 1:
+			if (getequippercentrefinery('@part) < 100) {
+				mes "[Lambert]";
+				mes "Ohh! It's dangerous to";
+				mes "continue refining this! It could";
+				mes "be destroyed, and you'd ^FF0000lose the weapon^000000, any ^FF0000cards in the weapon^000000,";
+				mes "or any added special properties.";
+				next;
+				mes "[Lambert]";
+				mes "I can't make it any clearer.";
+				mes "Once a weapon is destroyed,";
+				mes "there's no getting it back.";
+				mes "You really have a chance to";
+				mes "^FF0000lose this weapon^000000 forever.";
+				mes "Do you still want to refine?";
+				next;
+				switch(select("Yes","No")) {
+				case 1:
+					break;
+				case 2:
+					mes "[Lambert]";
+					mes "I completely agree...";
+					mes "I might be a great refiner, but sometimes even I make mistakes.";
+					close;
+				}
+			}
+			if ((countitem(1011) > 0) && (Zeny > 199)) {
+				delitem 1011,1;
+				set Zeny,Zeny - 200;
+			} else {
+				mes "[Lambert]";
+				mes "You don't seem to have";
+				mes "enough Emveretarcon or";
+				mes "Zeny. I'll be here all";
+				mes "day if you need me, so";
+				mes "go ahead and get more.";
+				close;
+			}
+			break;
+		case 2:
+			mes "[Lambert]";
+			mes "Yeah...";
+			mes "There's no need to";
+			mes "rush. Take your time.";
+			close;
+		}
+	} else if (getequipweaponlv('@part) == 3) {
+		mes "[Lambert]";
+		mes "Ah...";
+		mes "A Level 3 weapon...";
+		mes "I need one ^003366Oridecon^000000";
+		mes "and the fee is 5000 Zeny.";
+		mes "Do you really wish to continue?";
+		next;
+		switch(select("Yes","No")) {
+		case 1:
+			if (getequippercentrefinery('@part) < 100) {
+				mes "[Lambert]";
+				mes "Ohh! It's dangerous to";
+				mes "continue refining this! It could";
+				mes "be destroyed, and you'd ^FF0000lose the weapon^000000, any ^FF0000cards in the weapon^000000,";
+				mes "or any added special properties.";
+				next;
+				mes "[Lambert]";
+				mes "I can't make it any clearer.";
+				mes "Once a weapon is destroyed,";
+				mes "there's no getting it back.";
+				mes "You really have a chance to";
+				mes "^FF0000lose this weapon^000000 forever.";
+				mes "Do you still want to refine?";
+				next;
+				switch(select("Yes","No")) {
+				case 1:
+					break;
+				case 2:
+					mes "[Lambert]";
+					mes "I completely agree...";
+					mes "I might be a great refiner, but sometimes even I make mistakes.";
+					close;
+				}
+			}
+			if ((countitem(984) > 0) && (Zeny > 4999)) {
+				delitem 984,1;
+				set Zeny,Zeny - 5000;
+			} else {
+				mes "[Lambert]";
+				mes "You don't seem to have";
+				mes "enough Zeny or Oridecon...";
+				mes "Go get some more. I'll be";
+				mes "here all day if you need me.";
+				close;
+			}
+			break;
+		case 2:
+			mes "[Lambert]";
+			mes "Yeah...";
+			mes "There's no need to";
+			mes "rush. Take your time.";
+			close;
+		}
+	} else if (getequipweaponlv('@part) == 4) {
+		mes "[Lambert]";
+		mes "Whoa...!";
+		mes "A Level 4 weapon!";
+		mes "Fabulous, I almost never see these. I guess one ^003366Oridecon^000000 and 20,000 Zeny will be enough. Do you really wish to Continue?";
+		next;
+		switch(select("Yes","No")) {
+		case 1:
+			if (getequippercentrefinery('@part) < 100) {
+				mes "[Lambert]";
+				mes "Ohh! It's dangerous to";
+				mes "continue refining this! It could";
+				mes "be destroyed, and you'd ^FF0000lose the weapon^000000, any ^FF0000cards in the weapon^000000,";
+				mes "or any added special properties.";
+				next;
+				mes "[Lambert]";
+				mes "I can't make it any clearer.";
+				mes "Once a weapon is destroyed,";
+				mes "there's no getting it back.";
+				mes "You really have a chance to";
+				mes "^FF0000lose this weapon^000000 forever.";
+				mes "Do you still want to refine?";
+				next;
+				switch(select("Yes","No")) {
+				case 1:
+					break;
+				case 2:
+					mes "[Lambert]";
+					mes "I completely agree...";
+					mes "I might be a great refiner, but sometimes even I make mistakes.";
+					close;
+				}
+			}
+			if ((countitem(984) > 0) && (Zeny > 19999)) {
+				delitem 984,1;
+				set Zeny,Zeny - 20000;
+			} else {
+				mes "[Lambert]";
+				mes "You don't seem to have";
+				mes "enough Zeny or Oridecon...";
+				mes "Go get some more. I'll be";
+				mes "here all day if you need me.";
+				close;
+			}
+			break;
+		case 2:
+			mes "[Lambert]";
+			mes "Yeah...";
+			mes "There's no need to";
+			mes "rush. Take your time.";
+			close;
+		}
+	}
+	if (getequippercentrefinery('@part) > rand(100)) {
+		successrefitem '@part;
+		set '@win,rand(1,3);
+		if ('@win == 1) {
+			mes "[Lambert]";
+			emotion ET_SMILE,"Lambert";
+			mes "Perfect!";
+			mes "Heh heh!";
+			mes "Once again,";
+			mes "flawless work";
+			mes "from the master~";
+		} else if ('@win == 2) {
+			mes "[Lambert]";
+			emotion ET_SMILE,"Lambert";
+			mes "Success...!";
+			mes "Yet again, my amazing";
+			mes "talent truly dazzles";
+			mes "and shines today.";
+		} else {
+			mes "[Lambert]";
+			emotion ET_SMILE,"Lambert";
+			mes "Heh heh!";
+			mes "I'm all done.";
+			mes "No doubt, my work is";
+			mes "to your satisfaction.";
+			mes "Sheer, utter perfection~";
+		}
+		close;
+	} else {
+		failedrefitem '@part;
+		set '@emo,rand(1,5);
+		if ('@emo == 1) {
+			emotion ET_MONEY,"Lambert";
+		} else {
+			emotion ET_SWEAT,"Lambert";
+		}
+		set '@lose,rand(1,3);
+		if ('@lose == 1) {
+			mes "[Lambert]";
+			mes "OH! MY GOD!";
+			mes "Damn it! Not again!";
+			mes "I'm terribly sorry, but you know practice does make perfect.";
+			mes "Um, right? Heh heh...";
+			close;
+		} else if ('@lose == 2) {
+			mes "[Lambert]";
+			mes "Nooooooo!";
+			mes "It broke!";
+			mes "I-I'm sorry!";
+			close;
+		} else {
+			mes "[Lambert]";
+			mes "Crap!";
+			mes "It couldn't take";
+			mes "much more tempering!";
+			mes "Sorry about this...";
+			close;
+		}
+	}
+}
+
+
+//--------------------------------------------------------------
+// Lighthalzen Refinery - [Tsuyuki]
+//--------------------------------------------------------------
+
+lhz_in02.gat,281,24,5	script	Fruel	84,{
+
+	set '@max_max_c,checkweight(1201,1);
+	if ('@max_max_c == 0) {
+		mes "- Wait a minute !! -";
+		mes "- Currently you're carrying -";
+		mes "- too many items with you. -";
+		mes "- Please try again -";
+		mes "- after you loose some weight. -";
+		close;
+	}
+	mes "[Fruel]";
+	mes "I can purify your";
+	mes "Rough Oridecons or";
+	mes "Rough Eluniums. I'll need";
+	mes "5 Rough Stones to make";
+	mes "1 pure one for you.";
+	next;
+	switch(select("Make Oridecon","Make Elunium","Ask about Enchanted Stones")) {
+	case 1:
+		if (countitem(756) > 4) {
+			delitem 756,5;
+			getitem 984,1;
+			mes "[Fruel]";
+			mes "Here's your Oridecon.";
+			mes "You're welcome to come";
+			mes "back whenever you want.";
+			close;
+		} else {
+			mes "[Fruel]";
+			mes "You're kidding me, right?";
+			mes "I just told you that I need 5 Rough Oridecons to make a pure Oridecon.";
+			close;
+		}
+	case 2:
+		if (countitem(757) > 4) {
+			delitem 757,5;
+			getitem 985,1;
+			mes "[Fruel]";
+			mes "Here's your Elunium.";
+			mes "You're welcome to come";
+			mes "back whenever you want.";
+			close;
+		} else {
+			mes "[Fruel]";
+			mes "You're kidding me, right?";
+			mes "I just told you that I need 5 Rough Eluniums to make a pure Elunium.";
+			close;
+		}
+	case 3:
+		mes "[Fruel]";
+		mes "Enchanted Stones...?";
+		mes "I've been a stonesmith for 20 years, so I've heard a lot about them. Supposedly, there are";
+		mes "four different kinds.";
+		next;
+		mes "[Fruel]";
+		mes "Each Enchanted Stone possesses one of the following elemental properties: Earth, Wind, Water and Fire.";
+		next;
+		mes "[Fruel]";
+		mes "If someone combines a Enchanted Stone with a weapon while smithing, that weapon will possess the same property as the Stone.";
+		next;
+		mes "[Fruel]";
+		mes "Needless to say, you need to have some smithing skill to produce this kind of elemental weapon.";
+		close;
+	}
+}
+
+lhz_in02.gat,278,24,3	script	Krugg	86,{
+
+	set '@max_max_c,checkweight(1201,1);
+	if ('@max_max_c == 0) {
+		mes "- Wait a minute !! -";
+		mes "- Currently you're carrying -";
+		mes "- too many items with you. -";
+		mes "- Please try again -";
+		mes "- after you loose some weight. -";
+		close;
+	}
+	set '@item_weight,0;
+	set '@sell,0;
+	set '@now_weight,MaxWeight - Weight;
+	mes "[Krugg]";
+	mes "I sell 2 kinds of Metal";
+	mes "for tempering weaponry.";
+	mes "I have ^007777Phracon^000000 for Level 1";
+	mes "Weapons, and ^007777Emveretarcon^000000";
+	mes "for Level 2 Weapons.";
+	next;
+	switch(select("Phracon - 200 Zeny","Emveretarcon - 1000 Zeny","Ask about other Metals")) {
+	case 1:
+		mes "[Krugg]";
+		mes "So how many do you wish to buy?";
+		mes "If you don't want any, please enter the number, '0.'";
+		next;
+		while(1) {
+			input '@input;
+			if ('@input == 0) {
+				mes "[Krugg]";
+				mes "The deal has";
+				mes "been cancelled.";
+				close;
+			} else if ('@input < 1 || '@input > 500) {
+				mes "[Krugg]";
+				mes "Alright, you can";
+				mes "puchase up to 500.";
+				mes "No more than that,";
+				mes "got it? Good.";
+				next;
+			} else {
+				break;
+			}
+		}
+		set '@sell,'@input * 200;
+		set '@item_weight,'@input * 200;
+		if (Zeny < '@sell) {
+			mes "[Krugg]";
+			mes "Err...";
+			mes "You don't have";
+			mes "enough Zeny to buy";
+			mes "" + '@input + " of them.";
+			close;
+		}
+		if ('@now_weight < '@item_weight) {
+			mes "[Krugg]";
+			mes "Hmm...";
+			mes "I can't give you anything if you don't have enough room in your inventory. Why don't you put your extra things in Kafra Storage and try again?";
+			close;
+		}
+		getitem 1010,'@input;
+		set Zeny,Zeny - '@sell;
+		mes "[Krugg]";
+		mes "Here you are!";
+		mes "Thank you for";
+		mes "your patronage.";
+		close;
+	case 2:
+		mes "[Krugg]";
+		mes "So how many do you wish to buy?";
+		mes "If you don't want any, please enter the number, '0.'";
+		next;
+		while(1) {
+			input '@input;
+			if ('@input == 0) {
+				mes "[Krugg]";
+				mes "The deal has";
+				mes "been cancelled.";
+				close;
+			} else if ('@input < 1 || '@input > 500) {
+				mes "[Krugg]";
+				mes "Alright, you can";
+				mes "puchase up to 500.";
+				mes "No more than that,";
+				mes "got it? Good.";
+				next;
+			} else {
+				break;
+			}
+		}
+		set '@sell,'@input * 1000;
+		set '@item_weight,'@input * 200;
+		if (Zeny < '@sell) {
+			mes "[Krugg]";
+			mes "Err...";
+			mes "You don't have";
+			mes "enough Zeny to buy";
+			mes "" + '@input + " of them.";
+			close;
+		}
+		if ('@now_weight < '@item_weight) {
+			mes "[Krugg]";
+			mes "Hmm...";
+			mes "I can't give you anything if you don't have enough room in your inventory. Why don't you put your extra things in Kafra Storage and try again?";
+			close;
+		}
+		getitem 1011,'@input;
+		set Zeny,Zeny - '@sell;
+		mes "[Krugg]";
+		mes "Here you are!";
+		mes "Thank you for";
+		mes "your patronage.";
+		close;
+	case 3:
+		mes "[Krugg]";
+		mes "Other metals?";
+		mes "Well, you'll need special metals to upgrade higher level weapons, or any kind of armor. But you know, Oridecon and Elunium is really";
+		mes "hard to just find...";
+		close;
+	}
+}
+
+lhz_in02.gat,282,20,7	script	Fulerr	869,{
+
+	mes "[Fulerr]";
+	mes "I'm the Armsmith.";
+	mes "I can refine all kinds of weapons, armor and equipment, so let me";
+	mes "know what you want me to refine.";
+	next;
+	set '@strRetPart1$,getequipname(1);
+	set '@strRetPart2$,getequipname(2);
+	set '@strRetPart3$,getequipname(3);
+	set '@strRetPart4$,getequipname(4);
+	set '@strRetPart5$,getequipname(5);
+	set '@strRetPart6$,getequipname(6);
+	set '@strRetPart7$,getequipname(7);
+	set '@strRetPart8$,getequipname(8);
+	set '@strRetPart9$,getequipname(10);
+	set '@strRetPart10$,getequipname(11);
+	if ('@strRetPart1$ == "0") {
+		set '@strPart1$,"Head ^000000[^003366Not Equipped^000000]";
+	} else {
+		set '@strPart1$,'@strRetPart1$;
+	}
+	if ('@strRetPart2$ == "0") {
+		set '@strPart2$,"Torso ^000000[^003366Not Equipped^000000]";
+	} else {
+		set '@strPart2$,'@strRetPart2$;
+	}
+	if ('@strRetPart3$ == "0") {
+		set '@strPart3$,"Left Hand ^000000[^003366Not Equipped^000000]";
+	} else {
+		set '@strPart3$,'@strRetPart3$;
+	}
+	if ('@strRetPart4$ == "0") {
+		set '@strPart4$,"Right Hand ^000000[^003366Not Equipped^000000]";
+	} else {
+		set '@strPart4$,'@strRetPart4$;
+	}
+	if ('@strRetPart5$ == "0") {
+		set '@strPart5$,"Garment ^000000[^003366Not Equipped^000000]";
+	} else {
+		set '@strPart5$,'@strRetPart5$;
+	}
+	if ('@strRetPart6$ == "0") {
+		set '@strPart6$,"Foot ^000000[^003366Not Equipped^000000]";
+	} else {
+		set '@strPart6$,'@strRetPart6$;
+	}
+	if ('@strRetPart7$ == "0") {
+		set '@strPart7$,"Accessory1 ^000000[^003366Not Equipped^000000]";
+	} else {
+		set '@strPart7$,'@strRetPart7$;
+	}
+	if ('@strRetPart8$ == "0") {
+		set '@strPart8$,"Accessory2 ^000000[^003366Not Equipped^000000]";
+	} else {
+		set '@strPart8$,'@strRetPart8$;
+	}
+	if ('@strRetPart9$ == "0") {
+		set '@strPart9$,"Head2 ^000000[^003366Not Equipped^000000]";
+	} else {
+		set '@strPart9$,'@strRetPart9$;
+	}
+	if ('@strRetPart10$ == "0") {
+		set '@strPart10$,"Head3 ^000000[^003366Not Equipped^000000]";
+	} else {
+		set '@strPart10$,'@strRetPart10$;
+	}
+	switch(select("'@strPart1$","'@strPart2$","'@strPart3$","'@strPart4$","'@strPart5$","'@strPart6$","'@strPart7$","'@strPart8$","'@strPart9$","'@strPart10$")) {
+	case 1:
+		set '@part,1;
+		if ('@strRetPart1$ == "0") {
+			mes "[Fulerr]";
+			mes "Do you want me";
+			mes "to refine your skull?";
+			mes "'Cause I can, and";
+			mes "I'll do it.";
+			close;
+		}
+		break;
+	case 2:
+		set '@part,2;
+		if ('@strRetPart2$ == "0") {
+			mes "[Fulerr]";
+			mes "You're not wearing";
+			mes "anything there that";
+			mes "I can refine.";
+			close;
+		}
+		break;
+	case 3:
+		set '@part,3;
+		if ('@strRetPart3$ == "0") {
+			mes "[Fulerr]";
+			mes "I can't refine your";
+			mes "left hand! Go to the";
+			mes "manicurist if you";
+			mes "want that.";
+			close;
+		}
+		break;
+	case 4:
+		set '@part,4;
+		if ('@strRetPart4$ == "0") {
+			mes "[Fulerr]";
+			mes "I can't refine your";
+			mes "right hand. I'd break";
+			mes "it into pieces with";
+			mes "this big ol' hammer!";
+			close;
+		}
+		break;
+	case 5:
+		set '@part,5;
+		if ('@strRetPart5$ == "0") {
+			mes "[Fulerr]";
+			mes "You're not even";
+			mes "wearing a garment";
+			mes "that I can refine.";
+			close;
+		}
+		break;
+	case 6:
+		set '@part,6;
+		if ('@strRetPart6$ == "0") {
+			mes "[Fulerr]";
+			mes "What do I look like,";
+			mes "a makeover artist?!";
+			mes "I can't refine your";
+			mes "bare feet!";
+			close;
+		}
+		break;
+	case 7:
+		set '@part,7;
+		if ('@strRetPart7$ == "0") {
+			mes "[Fulerr]";
+			mes "Um...";
+			mes "You're not";
+			mes "wearing an";
+			mes "Accessory.";
+			close;
+		}
+		break;
+	case 8:
+		set '@part,8;
+		if ('@strRetPart8$ == "0") {
+			mes "[Fulerr]";
+			mes "Um...";
+			mes "You're not";
+			mes "wearing an";
+			mes "Accessory.";
+			close;
+		}
+		break;
+	case 9:
+		set '@part,9;
+		if ('@strRetPart9$ == "0") {
+			mes "[Fulerr]";
+			mes "I refine equipment.";
+			mes "I don't give hair cuts.";
+			close;
+		}
+		break;
+	case 10:
+		set '@part,10;
+		if ('@strRetPart10$ == "0") {
+			mes "[Fulerr]";
+			mes "What am I, your";
+			mes "personal hairstylist?!";
+			mes "Go to the salon if you";
+			mes "want work done on your";
+			mes "precious hair.";
+			close;
+		}
+		break;
+	}
+	if (getequipisenableref('@part) == 0) {
+		mes "[Fulerr]";
+		mes "I don't think I can";
+		mes "refine this item at all...";
+		close;
+	}
+	if (getequipisidentify('@part) == 0) {
+		mes "[Fulerr]";
+		mes "You can't refine this";
+		mes "if you haven't appraised";
+		mes "it first. Make sure your";
+		mes "stuff is identified before";
+		mes "I can refine it.";
+		close;
+	}
+	if (getequiprefinerycnt('@part) >= 10) {
+		mes "[Fulerr]";
+		mes "I can't refine this";
+		mes "any more. This is as";
+		mes "refined as it gets!";
+		close;
+	}
+	if (getequipweaponlv('@part) == 0) {
+		mes "[Fulerr]";
+		mes "To refine this I need";
+		mes "one ^003366Elunium^000000 and";
+		mes "a service fee of 2000 Zeny.";
+		mes "Do you really wish to continue?";
+		next;
+		switch(select("Yes","No")) {
+		case 1:
+			if (getequippercentrefinery('@part) < 100) {
+				mes "[Fulerr]";
+				mes "Oh no! If I continue to";
+				mes "refine this, there's a risk it could be destroyed! That means";
+				mes "that ^FF0000this equipment^000000, and ^FF0000any cards^000000 or special properties added to this armor, ^FF0000will be gone^000000.";
+				next;
+				mes "[Fulerr]";
+				mes "I can't make it any clearer.";
+				mes "You have a chance to ^FF0000lose this armor^000000. Do you still want me to";
+				mes "try to refine this?";
+				next;
+				switch(select("Yes","No")) {
+				case 1:
+					break;
+				case 2:
+					mes "[Fulerr]";
+					mes "I completely agree...";
+					mes "I might be a great refiner, but sometimes even I make mistakes.";
+					close;
+				}
+			}
+			if ((countitem(985) > 0) && (Zeny > 1999)) {
+				delitem 985,1;
+				set Zeny,Zeny - 2000;
+			} else {
+				mes "[Fulerr]";
+				mes "You don't seem to have";
+				mes "enough Zeny or Elunium...";
+				mes "Go get some more. I'll be";
+				mes "here all day if you need me.";
+				close;
+			}
+			break;
+		case 2:
+			mes "[Fulerr]";
+			mes "Yeah...";
+			mes "There's no need to";
+			mes "rush. Take your time.";
+			close;
+		}
+	} else if (getequipweaponlv('@part) == 1) {
+		mes "[Fulerr]";
+		mes "Um...";
+		mes "A Level 1 weapon...";
+		mes "I need one ^003366Phracon^000000";
+		mes "and the fee is 50 Zeny.";
+		mes "Do you really wish to continue?";
+		next;
+		switch(select("Yes","No")) {
+		case 1:
+			if (getequippercentrefinery('@part) < 100) {
+				mes "[Fulerr]";
+				mes "Ohh! It's dangerous to";
+				mes "continue refining this! It could";
+				mes "be destroyed, and you'd ^FF0000lose the weapon^000000, any ^FF0000cards in the weapon^000000,";
+				mes "or any added special properties.";
+				next;
+				mes "[Fulerr]";
+				mes "I can't make it any clearer.";
+				mes "Once a weapon is destroyed,";
+				mes "there's no getting it back.";
+				mes "You really have a chance to";
+				mes "^FF0000lose this weapon^000000 forever.";
+				mes "Do you still want to refine?";
+				next;
+				switch(select("Yes","No")) {
+				case 1:
+					break;
+				case 2:
+					mes "[Fulerr]";
+					mes "I completely agree...";
+					mes "I might be a great refiner, but sometimes even I make mistakes.";
+					close;
+				}
+			}
+			if ((countitem(1010) > 0) && (Zeny > 49)) {
+				delitem 1010,1;
+				set Zeny,Zeny - 50;
+			} else {
+				mes "[Fulerr]";
+				mes "You don't seem to have";
+				mes "enough Zeny or Phracon...";
+				mes "Go get some more. I'll be";
+				mes "here all day if you need me.";
+				close;
+			}
+			break;
+		case 2:
+			mes "[Fulerr]";
+			mes "Yeah...";
+			mes "There's no need to";
+			mes "rush. Take your time.";
+			close;
+		}
+	} else if (getequipweaponlv('@part) == 2) {
+		mes "[Fulerr]";
+		mes "Huh...";
+		mes "A Level 2 weapon...";
+		mes "I'll need one ^003366Emveretarcon^000000";
+		mes "and the fee is 200 Zeny.";
+		mes "Do you really wish to continue?";
+		next;
+		switch(select("Yes","No")) {
+		case 1:
+			if (getequippercentrefinery('@part) < 100) {
+				mes "[Fulerr]";
+				mes "Ohh! It's dangerous to";
+				mes "continue refining this! It could";
+				mes "be destroyed, and you'd ^FF0000lose the weapon^000000, any ^FF0000cards in the weapon^000000,";
+				mes "or any added special properties.";
+				next;
+				mes "[Fulerr]";
+				mes "I can't make it any clearer.";
+				mes "Once a weapon is destroyed,";
+				mes "there's no getting it back.";
+				mes "You really have a chance to";
+				mes "^FF0000lose this weapon^000000 forever.";
+				mes "Do you still want to refine?";
+				next;
+				switch(select("Yes","No")) {
+				case 1:
+					break;
+				case 2:
+					mes "[Fulerr]";
+					mes "I completely agree...";
+					mes "I might be a great refiner, but sometimes even I make mistakes.";
+					close;
+				}
+			}
+			if ((countitem(1011) > 0) && (Zeny > 1999)) {
+				delitem 1011,1;
+				set Zeny,Zeny - 200;
+			} else {
+				mes "[Fulerr]";
+				mes "You don't seem to have";
+				mes "enough Emveretarcon or";
+				mes "Zeny. I'll be here all";
+				mes "day if you need me, so";
+				mes "go ahead and get more.";
+				close;
+			}
+			break;
+		case 2:
+			mes "[Fulerr]";
+			mes "Yeah...";
+			mes "There's no need to";
+			mes "rush. Take your time.";
+			close;
+		}
+	} else if (getequipweaponlv('@part) == 3) {
+		mes "[Fulerr]";
+		mes "Ah...";
+		mes "A Level 3 weapon...";
+		mes "I need one ^003366Oridecon^000000";
+		mes "and the fee is 5000 Zeny.";
+		mes "Do you really wish to continue?";
+		next;
+		switch(select("Yes","No")) {
+		case 1:
+			if (getequippercentrefinery('@part) < 100) {
+				mes "[Fulerr]";
+				mes "Ohh! It's dangerous to";
+				mes "continue refining this! It could";
+				mes "be destroyed, and you'd ^FF0000lose the weapon^000000, any ^FF0000cards in the weapon^000000,";
+				mes "or any added special properties.";
+				next;
+				mes "[Fulerr]";
+				mes "I can't make it any clearer.";
+				mes "Once a weapon is destroyed,";
+				mes "there's no getting it back.";
+				mes "You really have a chance to";
+				mes "^FF0000lose this weapon^000000 forever.";
+				mes "Do you still want to refine?";
+				next;
+				switch(select("Yes","No")) {
+				case 1:
+					break;
+				case 2:
+					mes "[Fulerr]";
+					mes "I completely agree...";
+					mes "I might be a great refiner, but sometimes even I make mistakes.";
+					close;
+				}
+			}
+			if ((countitem(984) > 0) && (Zeny > 4999)) {
+				delitem 984,1;
+				set Zeny,Zeny - 5000;
+			} else {
+				mes "[Fulerr]";
+				mes "You don't seem to have";
+				mes "enough Zeny or Oridecon...";
+				mes "Go get some more. I'll be";
+				mes "here all day if you need me.";
+				close;
+			}
+			break;
+		case 2:
+			mes "[Fulerr]";
+			mes "Yeah...";
+			mes "There's no need to";
+			mes "rush. Take your time.";
+			close;
+		}
+	} else if (getequipweaponlv('@part) == 4) {
+		mes "[Fulerr]";
+		mes "Whoa...!";
+		mes "A Level 4 weapon!";
+		mes "Fabulous, I almost never see these. I guess one ^003366Oridecon^000000 and 20,000 Zeny will be enough. Do you really wish to Continue?";
+		next;
+		switch(select("Yes","No")) {
+		case 1:
+			if (getequippercentrefinery('@part) < 100) {
+				mes "[Fulerr]";
+				mes "Ohh! It's dangerous to";
+				mes "continue refining this! It could";
+				mes "be destroyed, and you'd ^FF0000lose the weapon^000000, any ^FF0000cards in the weapon^000000,";
+				mes "or any added special properties.";
+				next;
+				mes "[Fulerr]";
+				mes "I can't make it any clearer.";
+				mes "Once a weapon is destroyed,";
+				mes "there's no getting it back.";
+				mes "You really have a chance to";
+				mes "^FF0000lose this weapon^000000 forever.";
+				mes "Do you still want to refine?";
+				next;
+				switch(select("Yes","No")) {
+				case 1:
+					break;
+				case 2:
+					mes "[Fulerr]";
+					mes "I completely agree...";
+					mes "I might be a great refiner, but sometimes even I make mistakes.";
+					close;
+				}
+			}
+			if ((countitem(984) > 0) && (Zeny > 19999)) {
+				delitem 984,1;
+				set Zeny,Zeny - 20000;
+			} else {
+				mes "[Fulerr]";
+				mes "You don't seem to have";
+				mes "enough Zeny or Oridecon...";
+				mes "Go get some more. I'll be";
+				mes "here all day if you need me.";
+				close;
+			}
+			break;
+		case 2:
+			mes "[Fulerr]";
+			mes "Yeah...";
+			mes "There's no need to";
+			mes "rush. Take your time.";
+			close;
+		}
+	}
+	if (getequippercentrefinery('@part) > rand(100)) {
+		mes "[Fulerr]";
+		mes "Clang! Clang! Clang!";
+		successrefitem '@part;
+		next;
+		emotion ET_SMILE,"Fulerr";
+		mes "[Fulerr]";
+		mes "Perfect!";
+		mes "Heh heh!";
+		mes "Once again,";
+		mes "flawless work";
+		mes "from the master~";
+		close;
+	} else {
+		mes "[Fulerr]";
+		mes "Clang! Clang! Clang!";
+		failedrefitem '@part;
+		next;
+		set '@emo,rand(1,5);
+		if ('@emo == 1) {
+			emotion ET_MONEY,"Fulerr";
+		} else {
+			emotion ET_SWEAT,"Fulerr";
+		}
+		mes "[Fulerr]";
+		mes "OH! MY GOD!";
+		mes "Damn it! Not again!";
+		mes "I'm terribly sorry, but you know practice does make perfect.";
+		mes "Um, right? Heh heh...";
+		mes "............";
+		close;
+	}
+}
+
+
+//--------------------------------------------------------------
+// Morroc Refinery - [Tsuyuki]
+//--------------------------------------------------------------
+
+morocc_in.gat,72,32,6	script	Abdula	99,{
+
+	set '@max_max_c,checkweight(1201,1);
+	if ('@max_max_c == 0) {
+		mes "- Wait a minute !! -";
+		mes "- Currently you're carrying -";
+		mes "- too many items with you. -";
+		mes "- Please try again -";
+		mes "- after you loose some weight. -";
+		close;
+	}
+	mes "[Abdula]";
+	mes "I can purify your";
+	mes "Rough Oridecons or";
+	mes "Rough Eluniums. I'll need";
+	mes "5 Rough Stones to make";
+	mes "1 pure one for you.";
+	next;
+	switch(select("Make Oridecon","Make Elunium","Ask about Enchanted Stones")) {
+	case 1:
+		if (countitem(756) > 4) {
+			delitem 756,5;
+			getitem 984,1;
+			mes "[Abdula]";
+			mes "Here's your Oridecon.";
+			mes "You're welcome to come";
+			mes "back whenever you want.";
+			close;
+		} else {
+			mes "[Abdula]";
+			mes "You're kidding me, right?";
+			mes "I just told you that I need 5 Rough Oridecons to make a pure Oridecon.";
+			close;
+		}
+	case 2:
+		if (countitem(757) > 4) {
+			delitem 757,5;
+			getitem 985,1;
+			mes "[Abdula]";
+			mes "Here's your Elunium.";
+			mes "You're welcome to come";
+			mes "back whenever you want.";
+			close;
+		} else {
+			mes "[Abdula]";
+			mes "You're kidding me, right?";
+			mes "I just told you that I need 5 Rough Eluniums to make a pure Elunium.";
+			close;
+		}
+	case 3:
+		mes "[Abdula]";
+		mes "Enchanted Stones...?";
+		mes "I've been a stonesmith for 20 years, so I've heard a lot about them. Supposedly, there are";
+		mes "four different kinds.";
+		next;
+		mes "[Abdula]";
+		mes "Each Enchanted Stone possesses one of the following elemental properties: Earth, Wind, Water and Fire.";
+		next;
+		mes "[Abdula]";
+		mes "If someone combines a Enchanted Stone with a weapon while smithing, that weapon will possess the same property as the Stone.";
+		next;
+		mes "[Abdula]";
+		mes "Needless to say, you need to have some smithing skill to produce this kind of elemental weapon.";
+		close;
+	}
+}
+
+morocc_in.gat,63,32,6	script	Sade	99,{
+
+	set '@max_max_c,checkweight(1201,1);
+	if ('@max_max_c == 0) {
+		mes "- Wait a minute !! -";
+		mes "- Currently you're carrying -";
+		mes "- too many items with you. -";
+		mes "- Please try again -";
+		mes "- after you loose some weight. -";
+		close;
+	}
+	set '@item_weight,0;
+	set '@sell,0;
+	set '@now_weight,MaxWeight - Weight;
+	mes "[Sade]";
+	mes "I sell 2 kinds of Metal";
+	mes "for tempering weaponry.";
+	mes "I have ^007777Phracon^000000 for Level 1";
+	mes "Weapons, and ^007777Emveretarcon^000000";
+	mes "for Level 2 Weapons.";
+	next;
+	switch(select("Phracon - 200 Zeny","Emveretarcon - 1000 Zeny","Ask about other Metals")) {
+	case 1:
+		mes "[Sade]";
+		mes "So how many do you wish to buy?";
+		mes "If you don't want any, please enter the number, '0.'";
+		next;
+		while(1) {
+			input '@input;
+			if ('@input == 0) {
+				mes "[Sade]";
+				mes "The deal has";
+				mes "been cancelled.";
+				close;
+			} else if ('@input < 1 || '@input > 500) {
+				mes "[Sade]";
+				mes "Alright, you can";
+				mes "puchase up to 500.";
+				mes "No more than that,";
+				mes "got it? Good.";
+				next;
+			} else {
+				break;
+			}
+		}
+		set '@sell,'@input * 200;
+		set '@item_weight,'@input * 200;
+		if (Zeny < '@sell) {
+			mes "[Sade]";
+			mes "Err...";
+			mes "You don't have";
+			mes "enough Zeny to buy";
+			mes "" + '@input + " of them.";
+			close;
+		}
+		if ('@now_weight < '@item_weight) {
+			mes "[Sade]";
+			mes "Hmm...";
+			mes "I can't give you anything if you don't have enough room in your inventory. Why don't you put your extra things in Kafra Storage and try again?";
+			close;
+		}
+		getitem 1010,'@input;
+		set Zeny,Zeny - '@sell;
+		mes "[Sade]";
+		mes "Here you are!";
+		mes "Thank you for";
+		mes "your patronage.";
+		close;
+	case 2:
+		mes "[Sade]";
+		mes "So how many do you wish to buy?";
+		mes "If you don't want any, please enter the number, '0.'";
+		next;
+		while(1) {
+			input '@input;
+			if ('@input == 0) {
+				mes "[Sade]";
+				mes "The deal has";
+				mes "been cancelled.";
+				close;
+			} else if ('@input < 1 || '@input > 500) {
+				mes "[Sade]";
+				mes "Alright, you can";
+				mes "puchase up to 500.";
+				mes "No more than that,";
+				mes "got it? Good.";
+				next;
+			} else {
+				break;
+			}
+		}
+		set '@sell,'@input * 1000;
+		set '@item_weight,'@input * 200;
+		if (Zeny < '@sell) {
+			mes "[Sade]";
+			mes "Err...";
+			mes "You don't have";
+			mes "enough Zeny to buy";
+			mes "" + '@input + " of them.";
+			close;
+		}
+		if ('@now_weight < '@item_weight) {
+			mes "[Sade]";
+			mes "Hmm...";
+			mes "I can't give you anything if you don't have enough room in your inventory. Why don't you put your extra things in Kafra Storage and try again?";
+			close;
+		}
+		getitem 1011,'@input;
+		set Zeny,Zeny - '@sell;
+		mes "[Sade]";
+		mes "Here you are!";
+		mes "Thank you for";
+		mes "your patronage.";
+		close;
+	case 3:
+		mes "[Sade]";
+		mes "Other metals?";
+		mes "Well, you'll need special metals to upgrade higher level weapons, or any kind of armor. But you know, Oridecon and Elunium is really";
+		mes "hard to just find...";
+		close;
+	}
+}
+
+morocc_in.gat,73,38,6	script	Aragham	99,{
+
+	mes "[Aragham]";
+	mes "I'm the Armsmith.";
+	mes "I can refine all kinds of weapons, armor and equipment, so let me";
+	mes "know what you want me to refine.";
+	next;
+	set '@strRetPart1$,getequipname(1);
+	set '@strRetPart2$,getequipname(2);
+	set '@strRetPart3$,getequipname(3);
+	set '@strRetPart4$,getequipname(4);
+	set '@strRetPart5$,getequipname(5);
+	set '@strRetPart6$,getequipname(6);
+	set '@strRetPart7$,getequipname(7);
+	set '@strRetPart8$,getequipname(8);
+	set '@strRetPart9$,getequipname(10);
+	set '@strRetPart10$,getequipname(11);
+	if ('@strRetPart1$ == "0") {
+		set '@strPart1$,"Head ^000000[^003366Not Equipped^000000]";
+	} else {
+		set '@strPart1$,'@strRetPart1$;
+	}
+	if ('@strRetPart2$ == "0") {
+		set '@strPart2$,"Torso ^000000[^003366Not Equipped^000000]";
+	} else {
+		set '@strPart2$,'@strRetPart2$;
+	}
+	if ('@strRetPart3$ == "0") {
+		set '@strPart3$,"Left Hand ^000000[^003366Not Equipped^000000]";
+	} else {
+		set '@strPart3$,'@strRetPart3$;
+	}
+	if ('@strRetPart4$ == "0") {
+		set '@strPart4$,"Right Hand ^000000[^003366Not Equipped^000000]";
+	} else {
+		set '@strPart4$,'@strRetPart4$;
+	}
+	if ('@strRetPart5$ == "0") {
+		set '@strPart5$,"Garment ^000000[^003366Not Equipped^000000]";
+	} else {
+		set '@strPart5$,'@strRetPart5$;
+	}
+	if ('@strRetPart6$ == "0") {
+		set '@strPart6$,"Foot ^000000[^003366Not Equipped^000000]";
+	} else {
+		set '@strPart6$,'@strRetPart6$;
+	}
+	if ('@strRetPart7$ == "0") {
+		set '@strPart7$,"Accessory1 ^000000[^003366Not Equipped^000000]";
+	} else {
+		set '@strPart7$,'@strRetPart7$;
+	}
+	if ('@strRetPart8$ == "0") {
+		set '@strPart8$,"Accessory2 ^000000[^003366Not Equipped^000000]";
+	} else {
+		set '@strPart8$,'@strRetPart8$;
+	}
+	if ('@strRetPart9$ == "0") {
+		set '@strPart9$,"Head2 ^000000[^003366Not Equipped^000000]";
+	} else {
+		set '@strPart9$,'@strRetPart9$;
+	}
+	if ('@strRetPart10$ == "0") {
+		set '@strPart10$,"Head3 ^000000[^003366Not Equipped^000000]";
+	} else {
+		set '@strPart10$,'@strRetPart10$;
+	}
+	switch(select("'@strPart1$","'@strPart2$","'@strPart3$","'@strPart4$","'@strPart5$","'@strPart6$","'@strPart7$","'@strPart8$","'@strPart9$","'@strPart10$")) {
+	case 1:
+		set '@part,1;
+		if ('@strRetPart1$ == "0") {
+			mes "[Aragham]";
+			mes "Do you want me";
+			mes "to refine your skull?";
+			mes "'Cause I can, and";
+			mes "I'll do it.";
+			close;
+		}
+		break;
+	case 2:
+		set '@part,2;
+		if ('@strRetPart2$ == "0") {
+			mes "[Aragham]";
+			mes "You're not wearing";
+			mes "anything there that";
+			mes "I can refine.";
+			close;
+		}
+		break;
+	case 3:
+		set '@part,3;
+		if ('@strRetPart3$ == "0") {
+			mes "[Aragham]";
+			mes "I can't refine your";
+			mes "left hand! Go to the";
+			mes "manicurist if you";
+			mes "want that.";
+			close;
+		}
+		break;
+	case 4:
+		set '@part,4;
+		if ('@strRetPart4$ == "0") {
+			mes "[Aragham]";
+			mes "I can't refine your";
+			mes "right hand. I'd break";
+			mes "it into pieces with";
+			mes "this big ol' hammer!";
+			close;
+		}
+		break;
+	case 5:
+		set '@part,5;
+		if ('@strRetPart5$ == "0") {
+			mes "[Aragham]";
+			mes "You're not even";
+			mes "wearing a garment";
+			mes "that I can refine.";
+			close;
+		}
+		break;
+	case 6:
+		set '@part,6;
+		if ('@strRetPart6$ == "0") {
+			mes "[Aragham]";
+			mes "What do I look like,";
+			mes "a makeover artist?!";
+			mes "I can't refine your";
+			mes "bare feet!";
+			close;
+		}
+		break;
+	case 7:
+		set '@part,7;
+		if ('@strRetPart7$ == "0") {
+			mes "[Aragham]";
+			mes "Um...";
+			mes "You're not";
+			mes "wearing an";
+			mes "Accessory.";
+			close;
+		}
+		break;
+	case 8:
+		set '@part,8;
+		if ('@strRetPart8$ == "0") {
+			mes "[Aragham]";
+			mes "Accessory?";
+			mes "You're not";
+			mes "wearing one";
+			mes "of those.";
+			close;
+		}
+		break;
+	case 9:
+		set '@part,9;
+		if ('@strRetPart9$ == "0") {
+			mes "[Aragham]";
+			mes "I refine equipment.";
+			mes "I don't give hair cuts.";
+			close;
+		}
+		break;
+	case 10:
+		set '@part,10;
+		if ('@strRetPart10$ == "0") {
+			mes "[Aragham]";
+			mes "What am I, your";
+			mes "personal hairstylist?!";
+			mes "Go to the salon if you";
+			mes "want work done on your";
+			mes "precious hair.";
+			close;
+		}
+		break;
+	}
+	if (getequipisenableref('@part) == 0) {
+		mes "[Aragham]";
+		mes "I don't think I can";
+		mes "refine this item at all...";
+		close;
+	}
+	if (getequipisidentify('@part) == 0) {
+		mes "[Aragham]";
+		mes "You can't refine this";
+		mes "if you haven't appraised";
+		mes "it first. Make sure your";
+		mes "stuff is identified before";
+		mes "I can refine it.";
+		close;
+	}
+	if (getequiprefinerycnt('@part) >= 10) {
+		mes "[Aragham]";
+		mes "I can't refine this";
+		mes "any more. This is as";
+		mes "refined as it gets!";
+		close;
+	}
+	if (getequipweaponlv('@part) == 0) {
+		mes "[Aragham]";
+		mes "To refine this I need";
+		mes "one ^003366Elunium^000000 and";
+		mes "a service fee of 2000 Zeny.";
+		mes "Do you really wish to continue?";
+		next;
+		switch(select("Yes","No")) {
+		case 1:
+			if (getequippercentrefinery('@part) < 100) {
+				mes "[Aragham]";
+				mes "Oh no! If I continue to";
+				mes "refine this, there's a risk it could be destroyed! That means";
+				mes "that ^FF0000this equipment^000000, and ^FF0000any cards^000000 or special properties added to this armor, ^FF0000will be gone^000000.";
+				next;
+				mes "[Aragham]";
+				mes "I can't make it any clearer.";
+				mes "You have a chance to ^FF0000lose this armor^000000. Do you still want me to";
+				mes "try to refine this?";
+				next;
+				switch(select("Yes","No")) {
+				case 1:
+					break;
+				case 2:
+					mes "[Aragham]";
+					mes "I completely agree...";
+					mes "I might be a great refiner, but sometimes even I make mistakes.";
+					close;
+				}
+			}
+			if ((countitem(985) > 0) && (Zeny > 1999)) {
+				delitem 985,1;
+				set Zeny,Zeny - 2000;
+			} else {
+				mes "[Aragham]";
+				mes "You don't seem to have";
+				mes "enough Zeny or Elunium...";
+				mes "Go get some more. I'll be";
+				mes "here all day if you need me.";
+				close;
+			}
+			break;
+		case 2:
+			mes "[Aragham]";
+			mes "Yeah...";
+			mes "There's no need to";
+			mes "rush. Take your time.";
+			close;
+		}
+	} else if (getequipweaponlv('@part) == 1) {
+		mes "[Aragham]";
+		mes "Um...";
+		mes "A Level 1 weapon...";
+		mes "I need one ^003366Phracon^000000";
+		mes "and the fee is 50 Zeny.";
+		mes "Do you really wish to continue?";
+		next;
+		switch(select("Yes","No")) {
+		case 1:
+			if (getequippercentrefinery('@part) < 100) {
+				mes "[Aragham]";
+				mes "Ohh! It's dangerous to";
+				mes "continue refining this! It could";
+				mes "be destroyed, and you'd ^FF0000lose the weapon^000000, any ^FF0000cards in the weapon^000000,";
+				mes "or any added special properties.";
+				next;
+				mes "[Aragham]";
+				mes "I can't make it any clearer.";
+				mes "Once a weapon is destroyed,";
+				mes "there's no getting it back.";
+				mes "You really have a chance to";
+				mes "^FF0000lose this weapon^000000 forever.";
+				mes "Do you still want to refine?";
+				next;
+				switch(select("Yes","No")) {
+				case 1:
+					break;
+				case 2:
+					mes "[Aragham]";
+					mes "I completely agree...";
+					mes "I might be a great refiner, but sometimes even I make mistakes.";
+					close;
+				}
+			}
+			if ((countitem(1010) > 0) && (Zeny > 49)) {
+				delitem 1010,1;
+				set Zeny,Zeny - 50;
+			} else {
+				mes "[Aragham]";
+				mes "You don't seem to have";
+				mes "enough Zeny or Phracon...";
+				mes "Go get some more. I'll be";
+				mes "here all day if you need me.";
+				close;
+			}
+			break;
+		case 2:
+			mes "[Aragham]";
+			mes "Yeah...";
+			mes "There's no need to";
+			mes "rush. Take your time.";
+			close;
+		}
+	} else if (getequipweaponlv('@part) == 2) {
+		mes "[Aragham]";
+		mes "Huh...";
+		mes "A Level 2 weapon...";
+		mes "I'll need one ^003366Emveretarcon^000000";
+		mes "and the fee is 200 Zeny.";
+		mes "Do you really wish to continue?";
+		next;
+		switch(select("Yes","No")) {
+		case 1:
+			if (getequippercentrefinery('@part) < 100) {
+				mes "[Aragham]";
+				mes "Ohh! It's dangerous to";
+				mes "continue refining this! It could";
+				mes "be destroyed, and you'd ^FF0000lose the weapon^000000, any ^FF0000cards in the weapon^000000,";
+				mes "or any added special properties.";
+				next;
+				mes "[Aragham]";
+				mes "I can't make it any clearer.";
+				mes "Once a weapon is destroyed,";
+				mes "there's no getting it back.";
+				mes "You really have a chance to";
+				mes "^FF0000lose this weapon^000000 forever.";
+				mes "Do you still want to refine?";
+				next;
+				switch(select("Yes","No")) {
+				case 1:
+					break;
+				case 2:
+					mes "[Aragham]";
+					mes "I completely agree...";
+					mes "I might be a great refiner, but sometimes even I make mistakes.";
+					close;
+				}
+			}
+			if ((countitem(1011) > 0) && (Zeny > 199)) {
+				delitem 1011,1;
+				set Zeny,Zeny - 200;
+			} else {
+				mes "[Aragham]";
+				mes "You don't seem to have";
+				mes "enough Emveretarcon or";
+				mes "Zeny. I'll be here all";
+				mes "day if you need me, so";
+				mes "go ahead and get more.";
+				close;
+			}
+			break;
+		case 2:
+			mes "[Aragham]";
+			mes "Yeah...";
+			mes "There's no need to";
+			mes "rush. Take your time.";
+			close;
+		}
+	} else if (getequipweaponlv('@part) == 3) {
+		mes "[Aragham]";
+		mes "Ah...";
+		mes "A Level 3 weapon...";
+		mes "I need one ^003366Oridecon^000000";
+		mes "and the fee is 5000 Zeny.";
+		mes "Do you really wish to continue?";
+		next;
+		switch(select("Yes","No")) {
+		case 1:
+			if (getequippercentrefinery('@part) < 100) {
+				mes "[Aragham]";
+				mes "Ohh! It's dangerous to";
+				mes "continue refining this! It could";
+				mes "be destroyed, and you'd ^FF0000lose the weapon^000000, any ^FF0000cards in the weapon^000000,";
+				mes "or any added special properties.";
+				next;
+				mes "[Aragham]";
+				mes "I can't make it any clearer.";
+				mes "Once a weapon is destroyed,";
+				mes "there's no getting it back.";
+				mes "You really have a chance to";
+				mes "^FF0000lose this weapon^000000 forever.";
+				mes "Do you still want to refine?";
+				next;
+				switch(select("Yes","No")) {
+				case 1:
+					break;
+				case 2:
+					mes "[Aragham]";
+					mes "I completely agree...";
+					mes "I might be a great refiner, but sometimes even I make mistakes.";
+					close;
+				}
+			}
+			if ((countitem(984) > 0) && (Zeny > 4999)) {
+				delitem 984,1;
+				set Zeny,Zeny - 5000;
+			} else {
+				mes "[Aragham]";
+				mes "You don't seem to have";
+				mes "enough Zeny or Oridecon...";
+				mes "Go get some more. I'll be";
+				mes "here all day if you need me.";
+				close;
+			}
+			break;
+		case 2:
+			mes "[Aragham]";
+			mes "Yeah...";
+			mes "There's no need to";
+			mes "rush. Take your time.";
+			close;
+		}
+	} else if (getequipweaponlv('@part) == 4) {
+		mes "[Aragham]";
+		mes "Whoa...!";
+		mes "A Level 4 weapon!";
+		mes "Fabulous, I almost never see these. I guess one ^003366Oridecon^000000 and 20,000 Zeny will be enough. Do you really wish to Continue?";
+		next;
+		switch(select("Yes","No")) {
+		case 1:
+			if (getequippercentrefinery('@part) < 100) {
+				mes "[Aragham]";
+				mes "Ohh! It's dangerous to";
+				mes "continue refining this! It could";
+				mes "be destroyed, and you'd ^FF0000lose the weapon^000000, any ^FF0000cards in the weapon^000000,";
+				mes "or any added special properties.";
+				next;
+				mes "[Aragham]";
+				mes "I can't make it any clearer.";
+				mes "Once a weapon is destroyed,";
+				mes "there's no getting it back.";
+				mes "You really have a chance to";
+				mes "^FF0000lose this weapon^000000 forever.";
+				mes "Do you still want to refine?";
+				next;
+				switch(select("Yes","No")) {
+				case 1:
+					break;
+				case 2:
+					mes "[Aragham]";
+					mes "I completely agree...";
+					mes "I might be a great refiner, but sometimes even I make mistakes.";
+					close;
+				}
+			}
+			if ((countitem(984) > 0) && (Zeny > 19999)) {
+				delitem 984,1;
+				set Zeny,Zeny - 20000;
+			} else {
+				mes "[Aragham]";
+				mes "You don't seem to have";
+				mes "enough Zeny or Oridecon...";
+				mes "Go get some more. I'll be";
+				mes "here all day if you need me.";
+				close;
+			}
+			break;
+		case 2:
+			mes "[Aragham]";
+			mes "Yeah...";
+			mes "There's no need to";
+			mes "rush. Take your time.";
+			close;
+		}
+	}
+	if (getequippercentrefinery('@part) > rand(100)) {
+		successrefitem '@part;
+		set '@win,rand(1,3);
+		if ('@win == 1) {
+			mes "[Aragham]";
+			emotion ET_SMILE,"Aragham";
+			mes "Perfect!";
+			mes "Heh heh!";
+			mes "Once again,";
+			mes "flawless work";
+			mes "from the master~";
+		} else if ('@win == 2) {
+			mes "[Aragham]";
+			emotion ET_SMILE,"Aragham";
+			mes "Success...!";
+			mes "Yet again, my amazing";
+			mes "talent truly dazzles";
+			mes "and shines today.";
+		} else {
+			mes "[Aragham]";
+			emotion ET_SMILE,"Aragham";
+			mes "Heh heh!";
+			mes "I'm all done.";
+			mes "No doubt, my work is";
+			mes "to your satisfaction.";
+			mes "Sheer, utter perfection~";
+		}
+		close;
+	} else {
+		failedrefitem '@part;
+		set '@emo,rand(1,5);
+		if ('@emo == 1) {
+			emotion ET_MONEY,"Aragham";
+		} else {
+			emotion ET_SWEAT,"Aragham";
+		}
+		set '@lose,rand(1,3);
+		if ('@lose == 1) {
+			mes "[Aragham]";
+			mes "OH! MY GOD!";
+			mes "Damn it! Not again!";
+			mes "I'm terribly sorry, but you know practice does make perfect.";
+			mes "Um, right? Heh heh...";
+			close;
+		} else if ('@lose == 2) {
+			mes "[Aragham]";
+			mes "Nooooooo!";
+			mes "It broke!";
+			mes "I-I'm sorry!";
+			close;
+		} else {
+			mes "[Aragham]";
+			mes "Crap!";
+			mes "It couldn't take";
+			mes "much more tempering!";
+			mes "Sorry about this...";
+			close;
+		}
+	}
+}
+
+
+//--------------------------------------------------------------
+// Payon Refinery - [Tsuyuki]
+//--------------------------------------------------------------
+
+payon.gat,137,178,5	script	Hakhim	88,{
+
+	set '@max_max_c,checkweight(1201,1);
+	if ('@max_max_c == 0) {
+		mes "- Wait a minute !! -";
+		mes "- Currently you're carrying -";
+		mes "- too many items with you. -";
+		mes "- Please try again -";
+		mes "- after you loose some weight. -";
+		close;
+	}
+	mes "[Hakhim]";
+	mes "I can purify your";
+	mes "Rough Oridecons or";
+	mes "Rough Eluniums. I'll need";
+	mes "5 Rough Stones to make";
+	mes "1 pure one for you.";
+	next;
+	switch(select("Make Oridecon","Make Elunium","Ask about Enchanted Stones")) {
+	case 1:
+		if (countitem(756) > 4) {
+			delitem 756,5;
+			getitem 984,1;
+			mes "[Hakhim]";
+			mes "Here's your Oridecon.";
+			mes "You're welcome to come";
+			mes "back whenever you want.";
+			close;
+		} else {
+			mes "[Hakhim]";
+			mes "You're kidding me, right?";
+			mes "I just told you that I need 5 Rough Oridecons to make a pure Oridecon.";
+			close;
+		}
+	case 2:
+		if (countitem(757) > 4) {
+			delitem 757,5;
+			getitem 985,1;
+			mes "[Hakhim]";
+			mes "Here's your Elunium.";
+			mes "You're welcome to come";
+			mes "back whenever you want.";
+			close;
+		} else {
+			mes "[Hakhim]";
+			mes "You're kidding me, right?";
+			mes "I just told you that I need 5 Rough Eluniums to make a pure Elunium.";
+			close;
+		}
+	case 3:
+		mes "[Hakhim]";
+		mes "Enchanted Stones...?";
+		mes "I've been a stonesmith for 20 years, so I've heard a lot about them. Supposedly, there are";
+		mes "four different kinds.";
+		next;
+		mes "[Hakhim]";
+		mes "Each Enchanted Stone possesses one of the following elemental properties: Earth, Wind, Water and Fire.";
+		next;
+		mes "[Hakhim]";
+		mes "If someone combines a Enchanted Stone with a weapon while smithing, that weapon will possess the same property as the Stone.";
+		next;
+		mes "[Hakhim]";
+		mes "Needless to say, you need to have some smithing skill to produce this kind of elemental weapon.";
+		close;
+	}
+}
+
+payon.gat,145,178,3	script	Begnahd	88,{
+
+	set '@max_max_c,checkweight(1201,1);
+	if ('@max_max_c == 0) {
+		mes "- Wait a minute !! -";
+		mes "- Currently you're carrying -";
+		mes "- too many items with you. -";
+		mes "- Please try again -";
+		mes "- after you loose some weight. -";
+		close;
+	}
+	set '@item_weight,0;
+	set '@sell,0;
+	set '@now_weight,MaxWeight - Weight;
+	mes "[Begnahd]";
+	mes "I sell 2 kinds of Metal";
+	mes "for tempering weaponry.";
+	mes "I have ^007777Phracon^000000 for Level 1";
+	mes "Weapons, and ^007777Emveretarcon^000000";
+	mes "for Level 2 Weapons.";
+	next;
+	switch(select("Phracon - 200 Zeny","Emveretarcon - 1000 Zeny","Ask about other Metals")) {
+	case 1:
+		mes "[Begnahd]";
+		mes "So how many do you wish to buy?";
+		mes "If you don't want any, please enter the number, '0.'";
+		next;
+		while(1) {
+			input '@input;
+			if ('@input == 0) {
+				mes "[Begnahd]";
+				mes "The deal has";
+				mes "been cancelled.";
+				close;
+			} else if ('@input < 1 || '@input > 500) {
+				mes "[Begnahd]";
+				mes "Alright, you can";
+				mes "puchase up to 500.";
+				mes "No more than that,";
+				mes "got it? Good.";
+				next;
+			} else {
+				break;
+			}
+		}
+		set '@sell,'@input * 200;
+		set '@item_weight,'@input * 200;
+		if (Zeny < '@sell) {
+			mes "[Begnahd]";
+			mes "Err...";
+			mes "You don't have";
+			mes "enough Zeny to buy";
+			mes "" + '@input + " of them.";
+			close;
+		}
+		if ('@now_weight < '@item_weight) {
+			mes "[Begnahd]";
+			mes "Hmm...";
+			mes "I can't give you anything if you don't have enough room in your inventory. Why don't you put your extra things in Kafra Storage and try again?";
+			close;
+		}
+		getitem 1010,'@input;
+		set Zeny,Zeny - '@sell;
+		mes "[Begnahd]";
+		mes "Here you are!";
+		mes "Thank you for";
+		mes "your patronage.";
+		close;
+	case 2:
+		mes "[Begnahd]";
+		mes "So how many do you wish to buy?";
+		mes "If you don't want any, please enter the number, '0.'";
+		next;
+		while(1) {
+			input '@input;
+			if ('@input == 0) {
+				mes "[Begnahd]";
+				mes "The deal has";
+				mes "been cancelled.";
+				close;
+			} else if ('@input < 1 || '@input > 500) {
+				mes "[Begnahd]";
+				mes "Alright, you can";
+				mes "puchase up to 500.";
+				mes "No more than that,";
+				mes "got it? Good.";
+				next;
+			} else {
+				break;
+			}
+		}
+		set '@sell,'@input * 1000;
+		set '@item_weight,'@input * 200;
+		if (Zeny < '@sell) {
+			mes "[Begnahd]";
+			mes "Err...";
+			mes "You don't have";
+			mes "enough Zeny to buy";
+			mes "" + '@input + " of them.";
+			close;
+		}
+		if ('@now_weight < '@item_weight) {
+			mes "[Begnahd]";
+			mes "Hmm...";
+			mes "I can't give you anything if you don't have enough room in your inventory. Why don't you put your extra things in Kafra Storage and try again?";
+			close;
+		}
+		getitem 1011,'@input;
+		set Zeny,Zeny - '@sell;
+		mes "[Begnahd]";
+		mes "Here you are!";
+		mes "Thank you for";
+		mes "your patronage.";
+		close;
+	case 3:
+		mes "[Begnahd]";
+		mes "Other metals?";
+		mes "Well, you'll need special metals to upgrade higher level weapons, or any kind of armor. But you know, Oridecon and Elunium is really";
+		mes "hard to just find...";
+		close;
+	}
+}
+
+payon.gat,144,173,5	script	Antonio	88,{
+
+	mes "[Antonio]";
+	mes "I'm the Armsmith.";
+	mes "I can refine all kinds of weapons, armor and equipment, so let me";
+	mes "know what you want me to refine.";
+	next;
+	set '@strRetPart1$,getequipname(1);
+	set '@strRetPart2$,getequipname(2);
+	set '@strRetPart3$,getequipname(3);
+	set '@strRetPart4$,getequipname(4);
+	set '@strRetPart5$,getequipname(5);
+	set '@strRetPart6$,getequipname(6);
+	set '@strRetPart7$,getequipname(7);
+	set '@strRetPart8$,getequipname(8);
+	set '@strRetPart9$,getequipname(10);
+	set '@strRetPart10$,getequipname(11);
+	if ('@strRetPart1$ == "0") {
+		set '@strPart1$,"Head ^000000[^003366Not Equipped^000000]";
+	} else {
+		set '@strPart1$,'@strRetPart1$;
+	}
+	if ('@strRetPart2$ == "0") {
+		set '@strPart2$,"Torso ^000000[^003366Not Equipped^000000]";
+	} else {
+		set '@strPart2$,'@strRetPart2$;
+	}
+	if ('@strRetPart3$ == "0") {
+		set '@strPart3$,"Left Hand ^000000[^003366Not Equipped^000000]";
+	} else {
+		set '@strPart3$,'@strRetPart3$;
+	}
+	if ('@strRetPart4$ == "0") {
+		set '@strPart4$,"Right Hand ^000000[^003366Not Equipped^000000]";
+	} else {
+		set '@strPart4$,'@strRetPart4$;
+	}
+	if ('@strRetPart5$ == "0") {
+		set '@strPart5$,"Garment ^000000[^003366Not Equipped^000000]";
+	} else {
+		set '@strPart5$,'@strRetPart5$;
+	}
+	if ('@strRetPart6$ == "0") {
+		set '@strPart6$,"Foot ^000000[^003366Not Equipped^000000]";
+	} else {
+		set '@strPart6$,'@strRetPart6$;
+	}
+	if ('@strRetPart7$ == "0") {
+		set '@strPart7$,"Accessory1 ^000000[^003366Not Equipped^000000]";
+	} else {
+		set '@strPart7$,'@strRetPart7$;
+	}
+	if ('@strRetPart8$ == "0") {
+		set '@strPart8$,"Accessory2 ^000000[^003366Not Equipped^000000]";
+	} else {
+		set '@strPart8$,'@strRetPart8$;
+	}
+	if ('@strRetPart9$ == "0") {
+		set '@strPart9$,"Head2 ^000000[^003366Not Equipped^000000]";
+	} else {
+		set '@strPart9$,'@strRetPart9$;
+	}
+	if ('@strRetPart10$ == "0") {
+		set '@strPart10$,"Head3 ^000000[^003366Not Equipped^000000]";
+	} else {
+		set '@strPart10$,'@strRetPart10$;
+	}
+	switch(select("'@strPart1$","'@strPart2$","'@strPart3$","'@strPart4$","'@strPart5$","'@strPart6$","'@strPart7$","'@strPart8$","'@strPart9$","'@strPart10$")) {
+	case 1:
+		set '@part,1;
+		if ('@strRetPart1$ == "0") {
+			mes "[Antonio]";
+			mes "Do you want me";
+			mes "to refine your skull?";
+			mes "'Cause I can, and";
+			mes "I'll do it.";
+			close;
+		}
+		break;
+	case 2:
+		set '@part,2;
+		if ('@strRetPart2$ == "0") {
+			mes "[Antonio]";
+			mes "You're not wearing";
+			mes "anything there that";
+			mes "I can refine.";
+			close;
+		}
+		break;
+	case 3:
+		set '@part,3;
+		if ('@strRetPart3$ == "0") {
+			mes "[Antonio]";
+			mes "I can't refine your";
+			mes "left hand! Go to the";
+			mes "manicurist if you";
+			mes "want that.";
+			close;
+		}
+		break;
+	case 4:
+		set '@part,4;
+		if ('@strRetPart4$ == "0") {
+			mes "[Antonio]";
+			mes "I can't refine your";
+			mes "right hand. I'd break";
+			mes "it into pieces with";
+			mes "this big ol' hammer!";
+			close;
+		}
+		break;
+	case 5:
+		set '@part,5;
+		if ('@strRetPart5$ == "0") {
+			mes "[Antonio]";
+			mes "You're not even";
+			mes "wearing a garment";
+			mes "that I can refine.";
+			close;
+		}
+		break;
+	case 6:
+		set '@part,6;
+		if ('@strRetPart6$ == "0") {
+			mes "[Antonio]";
+			mes "What do I look like,";
+			mes "a makeover artist?!";
+			mes "I can't refine your";
+			mes "bare feet!";
+			close;
+		}
+		break;
+	case 7:
+		set '@part,7;
+		if ('@strRetPart7$ == "0") {
+			mes "[Antonio]";
+			mes "Um...";
+			mes "You're not";
+			mes "wearing an";
+			mes "Accessory.";
+			close;
+		}
+		break;
+	case 8:
+		set '@part,8;
+		if ('@strRetPart8$ == "0") {
+			mes "[Antonio]";
+			mes "Accessory?";
+			mes "You're not";
+			mes "wearing one";
+			mes "of those.";
+			close;
+		}
+		break;
+	case 9:
+		set '@part,9;
+		if ('@strRetPart9$ == "0") {
+			mes "[Antonio]";
+			mes "I refine equipment.";
+			mes "I don't give hair cuts.";
+			close;
+		}
+		break;
+	case 10:
+		set '@part,10;
+		if ('@strRetPart10$ == "0") {
+			mes "[Antonio]";
+			mes "What am I, your";
+			mes "personal hairstylist?!";
+			mes "Go to the salon if you";
+			mes "want work done on your";
+			mes "precious hair.";
+			close;
+		}
+		break;
+	}
+	if (getequipisenableref('@part) == 0) {
+		mes "[Antonio]";
+		mes "I don't think I can";
+		mes "refine this item at all...";
+		close;
+	}
+	if (getequipisidentify('@part) == 0) {
+		mes "[Antonio]";
+		mes "You can't refine this";
+		mes "if you haven't appraised";
+		mes "it first. Make sure your";
+		mes "stuff is identified before";
+		mes "I can refine it.";
+		close;
+	}
+	if (getequiprefinerycnt('@part) >= 10) {
+		mes "[Antonio]";
+		mes "I can't refine this";
+		mes "any more. This is as";
+		mes "refined as it gets!";
+		close;
+	}
+	if (getequipweaponlv('@part) == 0) {
+		mes "[Antonio]";
+		mes "To refine this I need";
+		mes "one ^003366Elunium^000000 and";
+		mes "a service fee of 2000 Zeny.";
+		mes "Do you really wish to continue?";
+		next;
+		switch(select("Yes","No")) {
+		case 1:
+			if (getequippercentrefinery('@part) < 100) {
+				mes "[Antonio]";
+				mes "Oh no! If I continue to";
+				mes "refine this, there's a risk it could be destroyed! That means";
+				mes "that ^FF0000this equipment^000000, and ^FF0000any cards^000000 or special properties added to this armor, ^FF0000will be gone^000000.";
+				next;
+				mes "[Antonio]";
+				mes "I can't make it any clearer.";
+				mes "You have a chance to ^FF0000lose this armor^000000. Do you still want me to";
+				mes "try to refine this?";
+				next;
+				switch(select("Yes","No")) {
+				case 1:
+					break;
+				case 2:
+					mes "[Antonio]";
+					mes "I completely agree...";
+					mes "I might be a great refiner, but sometimes even I make mistakes.";
+					close;
+				}
+			}
+			if ((countitem(985) > 0) && (Zeny > 1999)) {
+				delitem 985,1;
+				set Zeny,Zeny - 2000;
+			} else {
+				mes "[Antonio]";
+				mes "You don't seem to have";
+				mes "enough Zeny or Elunium...";
+				mes "Go get some more. I'll be";
+				mes "here all day if you need me.";
+				close;
+			}
+			break;
+		case 2:
+			mes "[Antonio]";
+			mes "Yeah...";
+			mes "There's no need to";
+			mes "rush. Take your time.";
+			close;
+		}
+	} else if (getequipweaponlv('@part) == 1) {
+		mes "[Antonio]";
+		mes "Um...";
+		mes "A Level 1 weapon...";
+		mes "I need one ^003366Phracon^000000";
+		mes "and the fee is 50 Zeny.";
+		mes "Do you really wish to continue?";
+		next;
+		switch(select("Yes","No")) {
+		case 1:
+			if (getequippercentrefinery('@part) < 100) {
+				mes "[Antonio]";
+				mes "Ohh! It's dangerous to";
+				mes "continue refining this! It could";
+				mes "be destroyed, and you'd ^FF0000lose the weapon^000000, any ^FF0000cards in the weapon^000000,";
+				mes "or any added special properties.";
+				next;
+				mes "[Antonio]";
+				mes "I can't make it any clearer.";
+				mes "Once a weapon is destroyed,";
+				mes "there's no getting it back.";
+				mes "You really have a chance to";
+				mes "^FF0000lose this weapon^000000 forever.";
+				mes "Do you still want to refine?";
+				next;
+				switch(select("Yes","No")) {
+				case 1:
+					break;
+				case 2:
+					mes "[Antonio]";
+					mes "I completely agree...";
+					mes "I might be a great refiner, but sometimes even I make mistakes.";
+					close;
+				}
+			}
+			if ((countitem(1010) > 0) && (Zeny > 49)) {
+				delitem 1010,1;
+				set Zeny,Zeny - 50;
+			} else {
+				mes "[Antonio]";
+				mes "You don't seem to have";
+				mes "enough Zeny or Phracon...";
+				mes "Go get some more. I'll be";
+				mes "here all day if you need me.";
+				close;
+			}
+			break;
+		case 2:
+			mes "[Antonio]";
+			mes "Yeah...";
+			mes "There's no need to";
+			mes "rush. Take your time.";
+			close;
+		}
+	} else if (getequipweaponlv('@part) == 2) {
+		mes "[Antonio]";
+		mes "Huh...";
+		mes "A Level 2 weapon...";
+		mes "I'll need one ^003366Emveretarcon^000000";
+		mes "and the fee is 200 Zeny.";
+		mes "Do you really wish to continue?";
+		next;
+		switch(select("Yes","No")) {
+		case 1:
+			if (getequippercentrefinery('@part) < 100) {
+				mes "[Antonio]";
+				mes "Ohh! It's dangerous to";
+				mes "continue refining this! It could";
+				mes "be destroyed, and you'd ^FF0000lose the weapon^000000, any ^FF0000cards in the weapon^000000,";
+				mes "or any added special properties.";
+				next;
+				mes "[Antonio]";
+				mes "I can't make it any clearer.";
+				mes "Once a weapon is destroyed,";
+				mes "there's no getting it back.";
+				mes "You really have a chance to";
+				mes "^FF0000lose this weapon^000000 forever.";
+				mes "Do you still want to refine?";
+				next;
+				switch(select("Yes","No")) {
+				case 1:
+					break;
+				case 2:
+					mes "[Antonio]";
+					mes "I completely agree...";
+					mes "I might be a great refiner, but sometimes even I make mistakes.";
+					close;
+				}
+			}
+			if ((countitem(1011) > 0) && (Zeny > 199)) {
+				delitem 1011,1;
+				set Zeny,Zeny - 200;
+			} else {
+				mes "[Antonio]";
+				mes "You don't seem to have";
+				mes "enough Emveretarcon or";
+				mes "Zeny. I'll be here all";
+				mes "day if you need me, so";
+				mes "go ahead and get more.";
+				close;
+			}
+			break;
+		case 2:
+			mes "[Antonio]";
+			mes "Yeah...";
+			mes "There's no need to";
+			mes "rush. Take your time.";
+			close;
+		}
+	} else if (getequipweaponlv('@part) == 3) {
+		mes "[Antonio]";
+		mes "Ah...";
+		mes "A Level 3 weapon...";
+		mes "I need one ^003366Oridecon^000000";
+		mes "and the fee is 5000 Zeny.";
+		mes "Do you really wish to continue?";
+		next;
+		switch(select("Yes","No")) {
+		case 1:
+			if (getequippercentrefinery('@part) < 100) {
+				mes "[Antonio]";
+				mes "Ohh! It's dangerous to";
+				mes "continue refining this! It could";
+				mes "be destroyed, and you'd ^FF0000lose the weapon^000000, any ^FF0000cards in the weapon^000000,";
+				mes "or any added special properties.";
+				next;
+				mes "[Antonio]";
+				mes "I can't make it any clearer.";
+				mes "Once a weapon is destroyed,";
+				mes "there's no getting it back.";
+				mes "You really have a chance to";
+				mes "^FF0000lose this weapon^000000 forever.";
+				mes "Do you still want to refine?";
+				next;
+				switch(select("Yes","No")) {
+				case 1:
+					break;
+				case 2:
+					mes "[Antonio]";
+					mes "I completely agree...";
+					mes "I might be a great refiner, but sometimes even I make mistakes.";
+					close;
+				}
+			}
+			if ((countitem(984) > 0) && (Zeny > 4999)) {
+				delitem 984,1;
+				set Zeny,Zeny - 5000;
+			} else {
+				mes "[Antonio]";
+				mes "You don't seem to have";
+				mes "enough Zeny or Oridecon...";
+				mes "Go get some more. I'll be";
+				mes "here all day if you need me.";
+				close;
+			}
+			break;
+		case 2:
+			mes "[Antonio]";
+			mes "Yeah...";
+			mes "There's no need to";
+			mes "rush. Take your time.";
+			close;
+		}
+	} else if (getequipweaponlv('@part) == 4) {
+		mes "[Antonio]";
+		mes "Whoa...!";
+		mes "A Level 4 weapon!";
+		mes "Fabulous, I almost never see these. I guess one ^003366Oridecon^000000 and 20,000 Zeny will be enough. Do you really wish to Continue?";
+		next;
+		switch(select("Yes","No")) {
+		case 1:
+			if (getequippercentrefinery('@part) < 100) {
+				mes "[Antonio]";
+				mes "Ohh! It's dangerous to";
+				mes "continue refining this! It could";
+				mes "be destroyed, and you'd ^FF0000lose the weapon^000000, any ^FF0000cards in the weapon^000000,";
+				mes "or any added special properties.";
+				next;
+				mes "[Antonio]";
+				mes "I can't make it any clearer.";
+				mes "Once a weapon is destroyed,";
+				mes "there's no getting it back.";
+				mes "You really have a chance to";
+				mes "^FF0000lose this weapon^000000 forever.";
+				mes "Do you still want to refine?";
+				next;
+				switch(select("Yes","No")) {
+				case 1:
+					break;
+				case 2:
+					mes "[Antonio]";
+					mes "I completely agree...";
+					mes "I might be a great refiner, but sometimes even I make mistakes.";
+					close;
+				}
+			}
+			if ((countitem(984) > 0) && (Zeny > 19999)) {
+				delitem 984,1;
+				set Zeny,Zeny - 20000;
+			} else {
+				mes "[Antonio]";
+				mes "You don't seem to have";
+				mes "enough Zeny or Oridecon...";
+				mes "Go get some more. I'll be";
+				mes "here all day if you need me.";
+				close;
+			}
+			break;
+		case 2:
+			mes "[Antonio]";
+			mes "Yeah...";
+			mes "There's no need to";
+			mes "rush. Take your time.";
+			close;
+		}
+	}
+	if (getequippercentrefinery('@part) > rand(100)) {
+		successrefitem '@part;
+		set '@win,rand(1,3);
+		if ('@win == 1) {
+			mes "[Antonio]";
+			emotion ET_SMILE,"Antonio";
+			mes "Perfect!";
+			mes "Heh heh!";
+			mes "Once again,";
+			mes "flawless work";
+			mes "from the master~";
+		} else if ('@win == 2) {
+			mes "[Antonio]";
+			emotion ET_SMILE,"Antonio";
+			mes "Success...!";
+			mes "Yet again, my amazing";
+			mes "talent truly dazzles";
+			mes "and shines today.";
+		} else {
+			mes "[Antonio]";
+			emotion ET_SMILE,"Antonio";
+			mes "Heh heh!";
+			mes "I'm all done.";
+			mes "No doubt, my work is";
+			mes "to your satisfaction.";
+			mes "Sheer, utter perfection~";
+		}
+		close;
+	} else {
+		failedrefitem '@part;
+		set '@emo,rand(1,5);
+		if ('@emo == 1) {
+			emotion ET_MONEY,"Antonio";
+		} else {
+			emotion ET_SWEAT,"Antonio";
+		}
+		set '@lose,rand(1,3);
+		if ('@lose == 1) {
+			mes "[Antonio]";
+			mes "OH! MY GOD!";
+			mes "Damn it! Not again!";
+			mes "I'm terribly sorry, but you know practice does make perfect.";
+			mes "Um, right? Heh heh...";
+			close;
+		} else if ('@lose == 2) {
+			mes "[Antonio]";
+			mes "Nooooooo!";
+			mes "It broke!";
+			mes "I-I'm sorry!";
+			close;
+		} else {
+			mes "[Antonio]";
+			mes "Crap!";
+			mes "It couldn't take";
+			mes "much more tempering!";
+			mes "Sorry about this...";
+			close;
+		}
+	}
+}
+
+
+//--------------------------------------------------------------
+// Prontera Refinery - [Tsuyuki]
+//--------------------------------------------------------------
+
+prt_in.gat,63,69,3	script	Dietrich	84,{
+
+	set '@max_max_c,checkweight(1201,1);
+	if ('@max_max_c == 0) {
+		mes "- Wait a minute !! -";
+		mes "- Currently you're carrying -";
+		mes "- too many items with you. -";
+		mes "- Please try again -";
+		mes "- after you loose some weight. -";
+		close;
+	}
+	mes "[Dietrich]";
+	mes "I can purify your";
+	mes "Rough Oridecons or";
+	mes "Rough Eluniums. I'll need";
+	mes "5 Rough Stones to make";
+	mes "1 pure one for you.";
+	next;
+	switch(select("Make Oridecon","Make Elunium","Ask about Enchanted Stones")) {
+	case 1:
+		if (countitem(756) > 4) {
+			delitem 756,5;
+			getitem 984,1;
+			mes "[Dietrich]";
+			mes "Here's your Oridecon.";
+			mes "You're welcome to come";
+			mes "back whenever you want.";
+			close;
+		} else {
+			mes "[Dietrich]";
+			mes "You're kidding me, right?";
+			mes "I just told you that I need 5 Rough Oridecons to make a pure Oridecon.";
+			close;
+		}
+	case 2:
+		if (countitem(757) > 4) {
+			delitem 757,5;
+			getitem 985,1;
+			mes "[Dietrich]";
+			mes "Here's your Elunium.";
+			mes "You're welcome to come";
+			mes "back whenever you want.";
+			close;
+		} else {
+			mes "[Dietrich]";
+			mes "You're kidding me, right?";
+			mes "I just told you that I need 5 Rough Eluniums to make a pure Elunium.";
+			close;
+		}
+	case 3:
+		mes "[Dietrich]";
+		mes "Enchanted Stones...?";
+		mes "I've been a stonesmith for 20 years, so I've heard a lot about them. Supposedly, there are";
+		mes "four different kinds.";
+		next;
+		mes "[Dietrich]";
+		mes "Each Enchanted Stone possesses one of the following elemental properties: Earth, Wind, Water and Fire.";
+		next;
+		mes "[Dietrich]";
+		mes "If someone combines a Enchanted Stone with a weapon while smithing, that weapon will possess the same property as the Stone.";
+		next;
+		mes "[Dietrich]";
+		mes "Needless to say, you need to have some smithing skill to produce this kind of elemental weapon.";
+		close;
+	}
+}
+
+prt_in.gat,56,68,5	script	Vurewell	86,{
+
+	set '@max_max_c,checkweight(1201,1);
+	if ('@max_max_c == 0) {
+		mes "- Wait a minute !! -";
+		mes "- Currently you're carrying -";
+		mes "- too many items with you. -";
+		mes "- Please try again -";
+		mes "- after you loose some weight. -";
+		close;
+	}
+	set '@item_weight,0;
+	set '@sell,0;
+	set '@now_weight,MaxWeight - Weight;
+	mes "[Vurewell]";
+	mes "I sell 2 kinds of Metal";
+	mes "for tempering weaponry.";
+	mes "I have ^007777Phracon^000000 for Level 1";
+	mes "Weapons, and ^007777Emveretarcon^000000";
+	mes "for Level 2 Weapons.";
+	next;
+	switch(select("Phracon - 200 Zeny","Emveretarcon - 1000 Zeny","Ask about other Metals")) {
+	case 1:
+		mes "[Vurewell]";
+		mes "So how many do you wish to buy?";
+		mes "If you don't want any, please enter the number, '0.'";
+		next;
+		while(1) {
+			input '@input;
+			if ('@input == 0) {
+				mes "[Vurewell]";
+				mes "The deal has";
+				mes "been cancelled.";
+				close;
+			} else if ('@input < 1 || '@input > 500) {
+				mes "[Vurewell]";
+				mes "Alright, you can";
+				mes "puchase up to 500.";
+				mes "No more than that,";
+				mes "got it? Good.";
+				next;
+			} else {
+				break;
+			}
+		}
+		set '@sell,'@input * 200;
+		set '@item_weight,'@input * 200;
+		if (Zeny < '@sell) {
+			mes "[Vurewell]";
+			mes "Err...";
+			mes "You don't have";
+			mes "enough Zeny to buy";
+			mes "" + '@input + " of them.";
+			close;
+		}
+		if ('@now_weight < '@item_weight) {
+			mes "[Vurewell]";
+			mes "Hmm...";
+			mes "I can't give you anything if you don't have enough room in your inventory. Why don't you put your extra things in Kafra Storage and try again?";
+			close;
+		}
+		getitem 1010,'@input;
+		set Zeny,Zeny - '@sell;
+		mes "[Vurewell]";
+		mes "Here you are!";
+		mes "Thank you for";
+		mes "your patronage.";
+		close;
+	case 2:
+		mes "[Vurewell]";
+		mes "So how many do you wish to buy?";
+		mes "If you don't want any, please enter the number, '0.'";
+		next;
+		while(1) {
+			input '@input;
+			if ('@input == 0) {
+				mes "[Vurewell]";
+				mes "The deal has";
+				mes "been cancelled.";
+				close;
+			} else if ('@input < 1 || '@input > 500) {
+				mes "[Vurewell]";
+				mes "Alright, you can";
+				mes "puchase up to 500.";
+				mes "No more than that,";
+				mes "got it? Good.";
+				next;
+			} else {
+				break;
+			}
+		}
+		set '@sell,'@input * 1000;
+		set '@item_weight,'@input * 200;
+		if (Zeny < '@sell) {
+			mes "[Vurewell]";
+			mes "Err...";
+			mes "You don't have";
+			mes "enough Zeny to buy";
+			mes "" + '@input + " of them.";
+			close;
+		}
+		if ('@now_weight < '@item_weight) {
+			mes "[Vurewell]";
+			mes "Hmm...";
+			mes "I can't give you anything if you don't have enough room in your inventory. Why don't you put your extra things in Kafra Storage and try again?";
+			close;
+		}
+		getitem 1011,'@input;
+		set Zeny,Zeny - '@sell;
+		mes "[Vurewell]";
+		mes "Here you are!";
+		mes "Thank you for";
+		mes "your patronage.";
+		close;
+	case 3:
+		mes "[Vurewell]";
+		mes "Other metals?";
+		mes "Well, you'll need special metals to upgrade higher level weapons, or any kind of armor. But you know, Oridecon and Elunium is really";
+		mes "hard to just find...";
+		close;
+	}
+}
+
+prt_in.gat,63,60,0	script	Hollgrehenn	85,{
+
+	mes "[Hollgrehenn]";
+	mes "I'm the Armsmith.";
+	mes "I can refine all kinds of weapons, armor and equipment, so let me";
+	mes "know what you want me to refine.";
+	next;
+	set '@strRetPart1$,getequipname(1);
+	set '@strRetPart2$,getequipname(2);
+	set '@strRetPart3$,getequipname(3);
+	set '@strRetPart4$,getequipname(4);
+	set '@strRetPart5$,getequipname(5);
+	set '@strRetPart6$,getequipname(6);
+	set '@strRetPart7$,getequipname(7);
+	set '@strRetPart8$,getequipname(8);
+	set '@strRetPart9$,getequipname(10);
+	set '@strRetPart10$,getequipname(11);
+	if ('@strRetPart1$ == "0") {
+		set '@strPart1$,"Head ^000000[^003366Not Equipped^000000]";
+	} else {
+		set '@strPart1$,'@strRetPart1$;
+	}
+	if ('@strRetPart2$ == "0") {
+		set '@strPart2$,"Torso ^000000[^003366Not Equipped^000000]";
+	} else {
+		set '@strPart2$,'@strRetPart2$;
+	}
+	if ('@strRetPart3$ == "0") {
+		set '@strPart3$,"Left Hand ^000000[^003366Not Equipped^000000]";
+	} else {
+		set '@strPart3$,'@strRetPart3$;
+	}
+	if ('@strRetPart4$ == "0") {
+		set '@strPart4$,"Right Hand ^000000[^003366Not Equipped^000000]";
+	} else {
+		set '@strPart4$,'@strRetPart4$;
+	}
+	if ('@strRetPart5$ == "0") {
+		set '@strPart5$,"Garment ^000000[^003366Not Equipped^000000]";
+	} else {
+		set '@strPart5$,'@strRetPart5$;
+	}
+	if ('@strRetPart6$ == "0") {
+		set '@strPart6$,"Foot ^000000[^003366Not Equipped^000000]";
+	} else {
+		set '@strPart6$,'@strRetPart6$;
+	}
+	if ('@strRetPart7$ == "0") {
+		set '@strPart7$,"Accessory1 ^000000[^003366Not Equipped^000000]";
+	} else {
+		set '@strPart7$,'@strRetPart7$;
+	}
+	if ('@strRetPart8$ == "0") {
+		set '@strPart8$,"Accessory2 ^000000[^003366Not Equipped^000000]";
+	} else {
+		set '@strPart8$,'@strRetPart8$;
+	}
+	if ('@strRetPart9$ == "0") {
+		set '@strPart9$,"Head2 ^000000[^003366Not Equipped^000000]";
+	} else {
+		set '@strPart9$,'@strRetPart9$;
+	}
+	if ('@strRetPart10$ == "0") {
+		set '@strPart10$,"Head3 ^000000[^003366Not Equipped^000000]";
+	} else {
+		set '@strPart10$,'@strRetPart10$;
+	}
+	switch(select("'@strPart1$","'@strPart2$","'@strPart3$","'@strPart4$","'@strPart5$","'@strPart6$","'@strPart7$","'@strPart8$","'@strPart9$","'@strPart10$")) {
+	case 1:
+		set '@part,1;
+		if ('@strRetPart1$ == "0") {
+			mes "[Hollgrehenn]";
+			mes "Do you want me";
+			mes "to refine your skull?";
+			mes "'Cause I can, and";
+			mes "I'll do it.";
+			close;
+		}
+		break;
+	case 2:
+		set '@part,2;
+		if ('@strRetPart2$ == "0") {
+			mes "[Hollgrehenn]";
+			mes "You're not wearing";
+			mes "anything there that";
+			mes "I can refine.";
+			close;
+		}
+		break;
+	case 3:
+		set '@part,3;
+		if ('@strRetPart3$ == "0") {
+			mes "[Hollgrehenn]";
+			mes "I can't refine your";
+			mes "left hand! Go to the";
+			mes "manicurist if you";
+			mes "want that.";
+			close;
+		}
+		break;
+	case 4:
+		set '@part,4;
+		if ('@strRetPart4$ == "0") {
+			mes "[Hollgrehenn]";
+			mes "I can't refine your";
+			mes "right hand. I'd break";
+			mes "it into pieces with";
+			mes "this big ol' hammer!";
+			close;
+		}
+		break;
+	case 5:
+		set '@part,5;
+		if ('@strRetPart5$ == "0") {
+			mes "[Hollgrehenn]";
+			mes "You're not even";
+			mes "wearing a garment";
+			mes "that I can refine.";
+			close;
+		}
+		break;
+	case 6:
+		set '@part,6;
+		if ('@strRetPart6$ == "0") {
+			mes "[Hollgrehenn]";
+			mes "What do I look like,";
+			mes "a makeover artist?!";
+			mes "I can't refine your";
+			mes "bare feet!";
+			close;
+		}
+		break;
+	case 7:
+		set '@part,7;
+		if ('@strRetPart7$ == "0") {
+			mes "[Hollgrehenn]";
+			mes "Um...";
+			mes "You're not";
+			mes "wearing an";
+			mes "Accessory.";
+			close;
+		}
+		break;
+	case 8:
+		set '@part,8;
+		if ('@strRetPart8$ == "0") {
+			mes "[Hollgrehenn]";
+			mes "Accessory?";
+			mes "You're not";
+			mes "wearing one";
+			mes "of those.";
+			close;
+		}
+		break;
+	case 9:
+		set '@part,9;
+		if ('@strRetPart9$ == "0") {
+			mes "[Hollgrehenn]";
+			mes "I refine equipment.";
+			mes "I don't give hair cuts.";
+			close;
+		}
+		break;
+	case 10:
+		set '@part,10;
+		if ('@strRetPart10$ == "0") {
+			mes "[Hollgrehenn]";
+			mes "What am I, your";
+			mes "personal hairstylist?!";
+			mes "Go to the salon if you";
+			mes "want work done on your";
+			mes "precious hair.";
+			close;
+		}
+		break;
+	}
+	if (getequipisenableref('@part) == 0) {
+		mes "[Hollgrehenn]";
+		mes "I don't think I can";
+		mes "refine this item at all...";
+		close;
+	}
+	if (getequipisidentify('@part) == 0) {
+		mes "[Hollgrehenn]";
+		mes "You can't refine this";
+		mes "if you haven't appraised";
+		mes "it first. Make sure your";
+		mes "stuff is identified before";
+		mes "I can refine it.";
+		close;
+	}
+	if (getequiprefinerycnt('@part) >= 10) {
+		mes "[Hollgrehenn]";
+		mes "I can't refine this";
+		mes "any more. This is as";
+		mes "refined as it gets!";
+		close;
+	}
+	if (getequipweaponlv('@part) == 0) {
+		mes "[Hollgrehenn]";
+		mes "To refine this I need";
+		mes "one ^003366Elunium^000000 and";
+		mes "a service fee of 2000 Zeny.";
+		mes "Do you really wish to continue?";
+		next;
+		switch(select("Yes","No")) {
+		case 1:
+			if (getequippercentrefinery('@part) < 100) {
+				mes "[Hollgrehenn]";
+				mes "Oh no! If I continue to";
+				mes "refine this, there's a risk it could be destroyed! That means";
+				mes "that ^FF0000this equipment^000000, and ^FF0000any cards^000000 or special properties added to this armor, ^FF0000will be gone^000000.";
+				next;
+				mes "[Hollgrehenn]";
+				mes "I can't make it any clearer.";
+				mes "You have a chance to ^FF0000lose this armor^000000. Do you still want me to";
+				mes "try to refine this?";
+				next;
+				switch(select("Yes","No")) {
+				case 1:
+					break;
+				case 2:
+					mes "[Hollgrehenn]";
+					mes "I completely agree...";
+					mes "I might be a great refiner, but sometimes even I make mistakes.";
+					close;
+				}
+			}
+			if ((countitem(985) > 0) && (Zeny > 1999)) {
+				delitem 985,1;
+				set Zeny,Zeny - 2000;
+			} else {
+				mes "[Hollgrehenn]";
+				mes "You don't seem to have";
+				mes "enough Zeny or Elunium...";
+				mes "Go get some more. I'll be";
+				mes "here all day if you need me.";
+				close;
+			}
+			break;
+		case 2:
+			mes "[Hollgrehenn]";
+			mes "Yeah...";
+			mes "There's no need to";
+			mes "rush. Take your time.";
+			close;
+		}
+	} else if (getequipweaponlv('@part) == 1) {
+		mes "[Hollgrehenn]";
+		mes "Um...";
+		mes "A Level 1 weapon...";
+		mes "I need one ^003366Phracon^000000";
+		mes "and the fee is 50 Zeny.";
+		mes "Do you really wish to continue?";
+		next;
+		switch(select("Yes","No")) {
+		case 1:
+			if (getequippercentrefinery('@part) < 100) {
+				mes "[Hollgrehenn]";
+				mes "Ohh! It's dangerous to";
+				mes "continue refining this! It could";
+				mes "be destroyed, and you'd ^FF0000lose the weapon^000000, any ^FF0000cards in the weapon^000000,";
+				mes "or any added special properties.";
+				next;
+				mes "[Hollgrehenn]";
+				mes "I can't make it any clearer.";
+				mes "Once a weapon is destroyed,";
+				mes "there's no getting it back.";
+				mes "You really have a chance to";
+				mes "^FF0000lose this weapon^000000 forever.";
+				mes "Do you still want to refine?";
+				next;
+				switch(select("Yes","No")) {
+				case 1:
+					break;
+				case 2:
+					mes "[Hollgrehenn]";
+					mes "I completely agree...";
+					mes "I might be a great refiner, but sometimes even I make mistakes.";
+					close;
+				}
+			}
+			if ((countitem(1010) > 0) && (Zeny > 49)) {
+				delitem 1010,1;
+				set Zeny,Zeny - 50;
+			} else {
+				mes "[Hollgrehenn]";
+				mes "You don't seem to have";
+				mes "enough Zeny or Phracon...";
+				mes "Go get some more. I'll be";
+				mes "here all day if you need me.";
+				close;
+			}
+			break;
+		case 2:
+			mes "[Hollgrehenn]";
+			mes "Yeah...";
+			mes "There's no need to";
+			mes "rush. Take your time.";
+			close;
+		}
+	} else if (getequipweaponlv('@part) == 2) {
+		mes "[Hollgrehenn]";
+		mes "Huh...";
+		mes "A Level 2 weapon...";
+		mes "I'll need one ^003366Emveretarcon^000000";
+		mes "and the fee is 200 Zeny.";
+		mes "Do you really wish to continue?";
+		next;
+		switch(select("Yes","No")) {
+		case 1:
+			if (getequippercentrefinery('@part) < 100) {
+				mes "[Hollgrehenn]";
+				mes "Ohh! It's dangerous to";
+				mes "continue refining this! It could";
+				mes "be destroyed, and you'd ^FF0000lose the weapon^000000, any ^FF0000cards in the weapon^000000,";
+				mes "or any added special properties.";
+				next;
+				mes "[Hollgrehenn]";
+				mes "I can't make it any clearer.";
+				mes "Once a weapon is destroyed,";
+				mes "there's no getting it back.";
+				mes "You really have a chance to";
+				mes "^FF0000lose this weapon^000000 forever.";
+				mes "Do you still want to refine?";
+				next;
+				switch(select("Yes","No")) {
+				case 1:
+					break;
+				case 2:
+					mes "[Hollgrehenn]";
+					mes "I completely agree...";
+					mes "I might be a great refiner, but sometimes even I make mistakes.";
+					close;
+				}
+			}
+			if ((countitem(1011) > 0) && (Zeny > 199)) {
+				delitem 1011,1;
+				set Zeny,Zeny - 200;
+			} else {
+				mes "[Hollgrehenn]";
+				mes "You don't seem to have";
+				mes "enough Emveretarcon or";
+				mes "Zeny. I'll be here all";
+				mes "day if you need me, so";
+				mes "go ahead and get more.";
+				close;
+			}
+			break;
+		case 2:
+			mes "[Hollgrehenn]";
+			mes "Yeah...";
+			mes "There's no need to";
+			mes "rush. Take your time.";
+			close;
+		}
+	} else if (getequipweaponlv('@part) == 3) {
+		mes "[Hollgrehenn]";
+		mes "Ah...";
+		mes "A Level 3 weapon...";
+		mes "I need one ^003366Oridecon^000000";
+		mes "and the fee is 5000 Zeny.";
+		mes "Do you really wish to continue?";
+		next;
+		switch(select("Yes","No")) {
+		case 1:
+			if (getequippercentrefinery('@part) < 100) {
+				mes "[Hollgrehenn]";
+				mes "Ohh! It's dangerous to";
+				mes "continue refining this! It could";
+				mes "be destroyed, and you'd ^FF0000lose the weapon^000000, any ^FF0000cards in the weapon^000000,";
+				mes "or any added special properties.";
+				next;
+				mes "[Hollgrehenn]";
+				mes "I can't make it any clearer.";
+				mes "Once a weapon is destroyed,";
+				mes "there's no getting it back.";
+				mes "You really have a chance to";
+				mes "^FF0000lose this weapon^000000 forever.";
+				mes "Do you still want to refine?";
+				next;
+				switch(select("Yes","No")) {
+				case 1:
+					break;
+				case 2:
+					mes "[Hollgrehenn]";
+					mes "I completely agree...";
+					mes "I might be a great refiner, but sometimes even I make mistakes.";
+					close;
+				}
+			}
+			if ((countitem(984) > 0) && (Zeny > 4999)) {
+				delitem 984,1;
+				set Zeny,Zeny - 5000;
+			} else {
+				mes "[Hollgrehenn]";
+				mes "You don't seem to have";
+				mes "enough Zeny or Oridecon...";
+				mes "Go get some more. I'll be";
+				mes "here all day if you need me.";
+				close;
+			}
+			break;
+		case 2:
+			mes "[Hollgrehenn]";
+			mes "Yeah...";
+			mes "There's no need to";
+			mes "rush. Take your time.";
+			close;
+		}
+	} else if (getequipweaponlv('@part) == 4) {
+		mes "[Hollgrehenn]";
+		mes "Whoa...!";
+		mes "A Level 4 weapon!";
+		mes "Fabulous, I almost never see these. I guess one ^003366Oridecon^000000 and 20,000 Zeny will be enough. Do you really wish to Continue?";
+		next;
+		switch(select("Yes","No")) {
+		case 1:
+			if (getequippercentrefinery('@part) < 100) {
+				mes "[Hollgrehenn]";
+				mes "Ohh! It's dangerous to";
+				mes "continue refining this! It could";
+				mes "be destroyed, and you'd ^FF0000lose the weapon^000000, any ^FF0000cards in the weapon^000000,";
+				mes "or any added special properties.";
+				next;
+				mes "[Hollgrehenn]";
+				mes "I can't make it any clearer.";
+				mes "Once a weapon is destroyed,";
+				mes "there's no getting it back.";
+				mes "You really have a chance to";
+				mes "^FF0000lose this weapon^000000 forever.";
+				mes "Do you still want to refine?";
+				next;
+				switch(select("Yes","No")) {
+				case 1:
+					break;
+				case 2:
+					mes "[Hollgrehenn]";
+					mes "I completely agree...";
+					mes "I might be a great refiner, but sometimes even I make mistakes.";
+					close;
+				}
+			}
+			if ((countitem(984) > 0) && (Zeny > 19999)) {
+				delitem 984,1;
+				set Zeny,Zeny - 20000;
+			} else {
+				mes "[Hollgrehenn]";
+				mes "You don't seem to have";
+				mes "enough Zeny or Oridecon...";
+				mes "Go get some more. I'll be";
+				mes "here all day if you need me.";
+				close;
+			}
+			break;
+		case 2:
+			mes "[Hollgrehenn]";
+			mes "Yeah...";
+			mes "There's no need to";
+			mes "rush. Take your time.";
+			close;
+		}
+	}
+	if (getequippercentrefinery('@part) > rand(100)) {
+		successrefitem '@part;
+		set '@win,rand(1,3);
+		if ('@win == 1) {
+			mes "[Hollgrehenn]";
+			emotion ET_SMILE,"Hollgrehenn";
+			mes "Perfect!";
+			mes "Heh heh!";
+			mes "Once again,";
+			mes "flawless work";
+			mes "from the master~";
+		} else if ('@win == 2) {
+			mes "[Hollgrehenn]";
+			emotion ET_SMILE,"Hollgrehenn";
+			mes "Success...!";
+			mes "Yet again, my amazing";
+			mes "talent truly dazzles";
+			mes "and shines today.";
+		} else {
+			mes "[Hollgrehenn]";
+			emotion ET_SMILE,"Hollgrehenn";
+			mes "Heh heh!";
+			mes "I'm all done.";
+			mes "No doubt, my work is";
+			mes "to your satisfaction.";
+			mes "Sheer, utter perfection~";
+		}
+		close;
+	} else {
+		failedrefitem '@part;
+		set '@emo,rand(1,5);
+		if ('@emo == 1) {
+			emotion ET_MONEY,"Hollgrehenn";
+		} else {
+			emotion ET_SWEAT,"Hollgrehenn";
+		}
+		set '@lose,rand(1,3);
+		if ('@lose == 1) {
+			mes "[Hollgrehenn]";
+			mes "OH! MY GOD!";
+			mes "Damn it! Not again!";
+			mes "I'm terribly sorry, but you know practice does make perfect.";
+			mes "Um, right? Heh heh...";
+			close;
+		} else if ('@lose == 2) {
+			mes "[Hollgrehenn]";
+			mes "Nooooooo!";
+			mes "It broke!";
+			mes "I-I'm sorry!";
+			close;
+		} else {
+			mes "[Hollgrehenn]";
+			mes "Crap!";
+			mes "It couldn't take";
+			mes "much more tempering!";
+			mes "Sorry about this...";
+			close;
+		}
+	}
+}
+
+
+//--------------------------------------------------------------
+// Repair System - [Tsuyuki]
+//--------------------------------------------------------------
+
+alberta_in.gat,31,65,4	script	Repairman	86,{
+
+	mes "[Repairman]";
+	mes "Hey there!";
+	mes "Do you want me";
+	mes "to repair any items?";
+	mes "You can count on me";
+	mes "for item repairs!";
+	next;
+	switch(select("Actually, I do have some items...","None at the moment.")) {
+	case 1:
+		set '@mugi,getrepairableitemcount();
+		set '@jeni,'@mugi * 5000;
+		if ('@mugi == 0) {
+			mes "[Repairman]";
+			mes "Oh wow, this is incredible!";
+			mes "You must take very good care of your things. None of your items are damaged!";
+			next;
+			mes "[Repairman]";
+			mes "If everyone is like you, I'm going to be unemployed!! Haha~!";
+			close;
+		}
+		mes "[Repairman]";
+		mes "Hmm...";
+		mes "Let's see...";
+		mes "Out of all your items,";
+		mes "" + '@mugi + " are damaged.";
+		next;
+		mes "[Repairman]";
+		mes "Each repair costs 5000 Zeny. So to repair all your damaged items would cost " + '@jeni + " Zeny! Would you like to repair the items?";
+		next;
+		switch(select("Yes","No")) {
+		case 1:
+			if (Zeny < '@jeni) {
+				mes "[Repairman]";
+				mes "Whoa whoa...";
+				mes "Check your wallet before you receive the repair bill! I can't repair anything because you don't have enough Zeny.";
+				close;
+			}
+			if ('@mugi == getrepairableitemcount()) {
+				set Zeny,Zeny - '@jeni;
+				repairitem;
+				mes "[Repairman]";
+				mes "Okay! All done. Now, try to be a little more careful. Items have lives too you know.";
+				close;
+			} else {
+				mes "[Repairman]";
+				mes "Mmm? Something's wrong. Wait... Equip the items you need to repair and then come back to me.";
+				close;
+			}
+		case 2:
+			mes "[Repairman]";
+			mes "Well, it's no skin off my nose, but it's not good to leave items damaged. You should get them repaired as soon as possible!";
+			close;
+		}
+	case 2:
+		mes "[Repairman]";
+		mes "Hohoho...";
+		mes "You don't have";
+		mes "any business with me";
+		mes "if you don't have any";
+		mes "items to repair.";
+		close;
+	}
+}
+
+morocc_in.gat,71,41,4	script	Repairman	99,{
+
+	mes "[Repairman]";
+	mes "Hello traveler!";
+	mes "Do you want me";
+	mes "to repair any items?";
+	mes "You can count on me";
+	mes "for item repairs!";
+	next;
+	switch(select("Actually, I do have some items...","None at the moment.")) {
+	case 1:
+		set '@mugi,getrepairableitemcount();
+		set '@jeni,'@mugi * 5000;
+		if ('@mugi == 0) {
+			mes "[Repairman]";
+			mes "Wow, you must take really good care of your things! Nothing looks damaged to me...";
+			next;
+			mes "[Repairman]";
+			mes "If everyone were like you, I'm going to be unemployed soon!! Hahaha~";
+			close;
+		}
+		mes "[Repairman]";
+		mes "Hmm...";
+		mes "Let's see...";
+		mes "Out of all your items,";
+		mes "" + '@mugi + " are damaged.";
+		next;
+		mes "[Repairman]";
+		mes "Now each repair costs 5000 Zeny, so to repair everything would cost " + '@jeni + " Zeny! Would you like to repair these items?";
+		next;
+		switch(select("Yes","No")) {
+		case 1:
+			if (Zeny < '@jeni) {
+				mes "[Repairman]";
+				mes "You should check your wallet before you decide to pay! I can't repair anything because you don't have enough zeny for my service.";
+				close;
+			}
+			if ('@mugi == getrepairableitemcount()) {
+				set Zeny,Zeny - '@jeni;
+				repairitem;
+				mes "[Repairman]";
+				mes "Okay! I'm all done. Now, be a little careful with your things from now on. Items have lives too, you know.";
+				close;
+			} else {
+				mes "[Repairman]";
+				mes "Wait, something's wrong. Hmm, equip the items you need to repair and come back to me.";
+				close;
+			}
+		case 2:
+			mes "[Repairman]";
+			mes "Well, it doesn't really matter to me, but you shouldn't leave items damaged if you can help it.";
+			next;
+			mes "[Repairman]";
+			mes "I strongly recommend that you have your items repaired as soon as possible!";
+			close;
+		}
+	case 2:
+		mes "[Repairman]";
+		mes "Hohoho...";
+		mes "You don't have any business with me if you have no items to repair.";
+		close;
+	}
+}
+
+payon.gat,143,165,4	script	Repairman	88,{
+
+	mes "[Repairman]";
+	mes "Hey traveler!";
+	mes "Do you want me";
+	mes "to repair any items?";
+	mes "You can count on me";
+	mes "for item repairs!";
+	next;
+	switch(select("Actually, I do have some items...","None at the moment.")) {
+	case 1:
+		set '@mugi,getrepairableitemcount();
+		set '@jeni,'@mugi * 5000;
+		if ('@mugi == 0) {
+			mes "[Repairman]";
+			mes "Oh, wow. This is incredible!";
+			mes "You must take very good care";
+			mes "of your things. Nothing looks";
+			mes "damaged to me!";
+			next;
+			mes "[Repairman]";
+			mes "If everyone is like you, I'm going to be unemployed soon!!";
+			mes "Hahahahaha~!";
+			close;
+		}
+		mes "[Repairman]";
+		mes "Hmm...";
+		mes "Let's see...";
+		mes "Out of all your items,";
+		mes "" + '@mugi + " are damaged.";
+		next;
+		mes "[Repairman]";
+		mes "Now each repair costs 5000 Zeny, so to repair everything would cost " + '@jeni + " Zeny. Would you like to repair these items?";
+		next;
+		switch(select("Yes","No")) {
+		case 1:
+			if (Zeny < '@jeni) {
+				mes "[Repairman]";
+				mes "Hmmm...";
+				mes "You need to check";
+				mes "your wallet more";
+				mes "often. I can't repair";
+				mes "anything if you can't";
+				mes "pay me for my service!";
+				close;
+			}
+			if ('@mugi == getrepairableitemcount()) {
+				set Zeny,Zeny - '@jeni;
+				repairitem;
+				mes "[Repairman]";
+				mes "Ok! All done.";
+				mes "Be a little more careful.";
+				mes "Items have lives too you know..";
+				close;
+			} else {
+				mes "[Repairman]";
+				mes "Mmm...?";
+				mes "Something's wrong.";
+				mes "Equip the items you";
+				mes "need repaired and";
+				mes "come back.";
+				close;
+			}
+		case 2:
+			mes "[Repairman]";
+			mes "Hmm...";
+			mes "It doesn't matter to me, but it's not good to leave items damaged. You should get them repaired as soon as possible!";
+			close;
+		}
+	case 2:
+		mes "[Repairman]";
+		mes "Hohoho...";
+		mes "You don't have any";
+		mes "business with me";
+		mes "if you've no items";
+		mes "that need repair.";
+		close;
+	}
+}
+
+prt_in.gat,63,54,2	script	Repairman	86,{
+
+	mes "[Repairman]";
+	mes "Hello adventurer!";
+	mes "Do you want me";
+	mes "to repair any items?";
+	mes "You can count on me";
+	mes "for item repairs!";
+	next;
+	switch(select("Actually, I do have some items...","None at the moment.")) {
+	case 1:
+		set '@mugi,getrepairableitemcount();
+		set '@jeni,'@mugi * 5000;
+		if ('@mugi == 0) {
+			mes "[Repairman]";
+			mes "Oh, incredible!";
+			mes "It looks like you take very good care of your things. Nothing here looks damaged to me.";
+			next;
+			mes "[Repairman]";
+			mes "If everyone were like you, there'd be no reason for me to work! Hahaha~";
+			close;
+		}
+		mes "[Repairman]";
+		mes "Let's see now...";
+		mes "Out of all your items,";
+		mes "" + '@mugi + " are damaged.";
+		next;
+		mes "[Repairman]";
+		mes "Now each repair costs 5000 Zeny, so it would cost " + '@jeni + " to repair everything. Would you like to repair the items?";
+		next;
+		switch(select("Yes","No")) {
+		case 1:
+			if (Zeny < '@jeni) {
+				mes "[Repairman]";
+				mes "Hmm...";
+				mes "Unfortunately, I can't offer my services to you if you don't have the necessary zeny.";
+				close;
+			}
+			if ('@mugi == getrepairableitemcount()) {
+				set Zeny,Zeny - '@jeni;
+				repairitem;
+				mes "[Repairman]";
+				mes "Alright! I'm all finished. Now, try and be a bit more careful from now on. Items have lives too, you know.";
+				close;
+			} else {
+				mes "[Repairman]";
+				mes "Huh? Something's wrong. Wait, equip the items you need to repair and then come back to me.";
+				close;
+			}
+		case 2:
+			mes "[Repairman]";
+			mes "It's none of my business, but it's not a good idea to leave items damaged. You should have them repaired as soon as possible!";
+			close;
+		}
+	case 2:
+		mes "[Repairman]";
+		mes "Heh heh...";
+		mes "There's no reason to visit me";
+		mes "if you have no items to repair,";
+		mes "I suppose.";
+		close;
+	}
+}
+
+yuno_in01.gat,175,28,3	script	Repairman	86,{
+
+	mes "[Repairman]";
+	mes "Hey there!";
+	mes "Do you want me";
+	mes "to repair any items?";
+	mes "You can count on me";
+	mes "for item repairs!";
+	next;
+	switch(select("Actually, I do have some items...","None at the moment.")) {
+	case 1:
+		set '@mugi,getrepairableitemcount();
+		set '@jeni,'@mugi * 5000;
+		if ('@mugi == 0) {
+			mes "[Repairman]";
+			mes "Oh wow, this is incredible!";
+			mes "You must take very good care of your things. None of your items are damaged!";
+			next;
+			mes "[Repairman]";
+			mes "If everyone is like you, I'm going to be unemployed!! Haha~!";
+			close;
+		}
+		mes "[Repairman]";
+		mes "Hmm...";
+		mes "Let's see...";
+		mes "Out of all your items,";
+		mes "" + '@mugi + " are damaged.";
+		next;
+		mes "[Repairman]";
+		mes "Each repair costs 5000 Zeny. So to repair all your damaged items would cost " + '@jeni + " Zeny! Would you like to repair the items?";
+		next;
+		switch(select("Yes","No")) {
+		case 1:
+			if (Zeny < '@jeni) {
+				mes "[Repairman]";
+				mes "Whoa whoa...";
+				mes "Check your wallet before you receive the repair bill! I can't repair anything because you don't have enough Zeny.";
+				close;
+			}
+			if ('@mugi == getrepairableitemcount()) {
+				set Zeny,Zeny - '@jeni;
+				repairitem;
+				mes "[Repairman]";
+				mes "Okay! All done. Now, try to be a little more careful. Items have lives too you know.";
+				close;
+			} else {
+				mes "[Repairman]";
+				mes "Mmm? Something's wrong. Wait... Equip the items you need to repair and then come back to me.";
+				close;
+			}
+		case 2:
+			mes "[Repairman]";
+			mes "Well, it's no skin off my nose, but it's not good to leave items damaged. You should get them repaired as soon as possible!";
+			close;
+		}
+	case 2:
+		mes "[Repairman]";
+		mes "Hohoho...";
+		mes "You don't have";
+		mes "any business with me";
+		mes "if you don't have any";
+		mes "items to repair.";
+		close;
+	}
+}
+
+geffen_in.gat,34,166,3	script	Repairman	99,{
+
+	mes "[Repairman]";
+	mes "Hello traveler!";
+	mes "Do you want me";
+	mes "to repair any items?";
+	mes "You can count on me";
+	mes "for item repairs!";
+	next;
+	switch(select("Actually, I do have some items...","None at the moment.")) {
+	case 1:
+		set '@mugi,getrepairableitemcount();
+		set '@jeni,'@mugi * 5000;
+		if ('@mugi == 0) {
+			mes "[Repairman]";
+			mes "Wow, you must take really good care of your things! Nothing looks damaged to me...";
+			next;
+			mes "[Repairman]";
+			mes "If everyone were like you, I'm going to be unemployed soon!! Hahaha~";
+			close;
+		}
+		mes "[Repairman]";
+		mes "Hmm...";
+		mes "Let's see...";
+		mes "Out of all your items,";
+		mes "" + '@mugi + " are damaged.";
+		next;
+		mes "[Repairman]";
+		mes "Now each repair costs 5000 Zeny, so to repair everything would cost " + '@jeni + " Zeny! Would you like to repair these items?";
+		next;
+		switch(select("Yes","No")) {
+		case 1:
+			if (Zeny < '@jeni) {
+				mes "[Repairman]";
+				mes "You should check your wallet before you decide to pay! I can't repair anything because you don't have enough zeny for my service.";
+				close;
+			}
+			if ('@mugi == getrepairableitemcount()) {
+				set Zeny,Zeny - '@jeni;
+				repairitem;
+				mes "[Repairman]";
+				mes "Okay! I'm all done. Now, be a little careful with your things from now on. Items have lives too, you know.";
+				close;
+			} else {
+				mes "[Repairman]";
+				mes "Wait, something's wrong. Hmm, equip the items you need to repair and come back to me.";
+				close;
+			}
+		case 2:
+			mes "[Repairman]";
+			mes "Well, it doesn't really matter to me, but you shouldn't leave items damaged if you can help it.";
+			next;
+			mes "[Repairman]";
+			mes "I strongly recommend that you have your items repaired as soon as possible!";
+			close;
+		}
+	case 2:
+		mes "[Repairman]";
+		mes "Hohoho...";
+		mes "You don't have any business with me if you have no items to repair.";
+		close;
+	}
+}
+
+aldeba_in.gat,38,60,3	script	Repairman	86,{
+
+	mes "[Repairman]";
+	mes "Hey traveler!";
+	mes "Do you want me";
+	mes "to repair any items?";
+	mes "You can count on me";
+	mes "for item repairs!";
+	next;
+	switch(select("Actually, I do have some items...","None at the moment.")) {
+	case 1:
+		set '@mugi,getrepairableitemcount();
+		set '@jeni,'@mugi * 5000;
+		if ('@mugi == 0) {
+			mes "[Repairman]";
+			mes "Oh, wow. This is incredible!";
+			mes "You must take very good care";
+			mes "of your things. Nothing looks";
+			mes "damaged to me!";
+			next;
+			mes "[Repairman]";
+			mes "If everyone is like you, I'm going to be unemployed soon!!";
+			mes "Hahahahaha~!";
+			close;
+		}
+		mes "[Repairman]";
+		mes "Hmm...";
+		mes "Let's see...";
+		mes "Out of all your items,";
+		mes "" + '@mugi + " are damaged.";
+		next;
+		mes "[Repairman]";
+		mes "Now each repair costs 5000 Zeny, so to repair everything would cost " + '@jeni + " Zeny. Would you like to repair these items?";
+		next;
+		switch(select("Yes","No")) {
+		case 1:
+			if (Zeny < '@jeni) {
+				mes "[Repairman]";
+				mes "Hmmm...";
+				mes "You need to check";
+				mes "your wallet more";
+				mes "often. I can't repair";
+				mes "anything if you can't";
+				mes "pay me for my service!";
+				close;
+			}
+			if ('@mugi == getrepairableitemcount()) {
+				set Zeny,Zeny - '@jeni;
+				repairitem;
+				mes "[Repairman]";
+				mes "Ok! All done.";
+				mes "Be a little more careful.";
+				mes "Items have lives too you know..";
+				close;
+			} else {
+				mes "[Repairman]";
+				mes "Mmm...?";
+				mes "Something's wrong.";
+				mes "Equip the items you";
+				mes "need repaired and";
+				mes "come back.";
+				close;
+			}
+		case 2:
+			mes "[Repairman]";
+			mes "Hmm...";
+			mes "It doesn't matter to me, but it's not good to leave items damaged. You should get them repaired as soon as possible!";
+			close;
+		}
+	case 2:
+		mes "[Repairman]";
+		mes "Hohoho...";
+		mes "You don't have any";
+		mes "business with me";
+		mes "if you've no items";
+		mes "that need repair.";
+		close;
+	}
+}
+
+lhz_in02.gat,284,14,3	script	Repairman	86,{
+
+	mes "[Repairman]";
+	mes "Hey traveler!";
+	mes "Do you want me";
+	mes "to repair any items?";
+	mes "You can count on me";
+	mes "for item repairs!";
+	next;
+	switch(select("Actually, I do have some items...","None at the moment.")) {
+	case 1:
+		set '@mugi,getrepairableitemcount();
+		set '@jeni,'@mugi * 5000;
+		if ('@mugi == 0) {
+			mes "[Repairman]";
+			mes "Oh, wow. This is incredible!";
+			mes "You must take very good care";
+			mes "of your things. Nothing looks";
+			mes "damaged to me!";
+			next;
+			mes "[Repairman]";
+			mes "If everyone is like you, I'm going to be unemployed soon!!";
+			mes "Hahahahaha~!";
+			close;
+		}
+		mes "[Repairman]";
+		mes "Hmm...";
+		mes "Let's see...";
+		mes "Out of all your items,";
+		mes "" + '@mugi + " are damaged.";
+		next;
+		mes "[Repairman]";
+		mes "Now each repair costs 5000 Zeny, so to repair everything would cost " + '@jeni + " Zeny. Would you like to repair these items?";
+		next;
+		switch(select("Yes","No")) {
+		case 1:
+			if (Zeny < '@jeni) {
+				mes "[Repairman]";
+				mes "Hmmm...";
+				mes "You need to check";
+				mes "your wallet more";
+				mes "often. I can't repair";
+				mes "anything if you can't";
+				mes "pay me for my service!";
+				close;
+			}
+			if ('@mugi == getrepairableitemcount()) {
+				set Zeny,Zeny - '@jeni;
+				repairitem;
+				mes "[Repairman]";
+				mes "Ok! All done.";
+				mes "Be a little more careful.";
+				mes "Items have lives too you know..";
+				close;
+			} else {
+				mes "[Repairman]";
+				mes "Mmm...?";
+				mes "Something's wrong.";
+				mes "Equip the items you";
+				mes "need repaired and";
+				mes "come back.";
+				close;
+			}
+		case 2:
+			mes "[Repairman]";
+			mes "Hmm...";
+			mes "It doesn't matter to me, but it's not good to leave items damaged. You should get them repaired as soon as possible!";
+			close;
+		}
+	case 2:
+		mes "[Repairman]";
+		mes "Hohoho...";
+		mes "You don't have any";
+		mes "business with me";
+		mes "if you've no items";
+		mes "that need repair.";
+		close;
+	}
+}

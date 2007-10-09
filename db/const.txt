@@ -1,0 +1,651 @@
+//--------------------------------------------------------------
+//               (c)2004-2007 Aurora Team Presents:             
+//                  ___                                         
+//                 /   |_   _ _ __ ___  _ __ __ _               
+//                / /| | | | | '__/ _ \| '__/ _` |              
+//               / ___ | |_| | | | (_) | | | (_| |++            
+//              /_/  |_|\____|_|  \___/|_|  \__,_|              
+//                 http://aurora.deltaanime.net                 
+//--------------------------------------------------------------
+//
+// const.txt
+// Script Enumeration Database
+
+//--------------------------------------------------------------
+// Structure of Database:
+//--------------------------------------------------------------
+//
+// <Enumeration>	<ActualValue>
+//
+// Alternate structure for constants that return internal character values:
+//
+// <Enumeration>	<InternalID>	<InternalFlag>
+
+//--------------------------------------------------------------
+// GvG Clock Settings Part #1 -> Days in which GvG occurs:
+//--------------------------------------------------------------
+//
+// Disabled = 0, Sunday = +1, Monday = +2, Tuesday = +4, Wednesday = +8, Thursday = +16, Friday = +32, Saturday = +64
+// For every day that you want GvG to be activated, add the values above and set GvGWeekDay to the total value
+//	Example #1: Set GvGWeekDay to 127 if you want GvG to occur every single day of the week
+//	Example #2: Set it to 10 for Monday/Wednesday, or 65 for Saturday/Sunday
+
+GvGWeekDay	1
+
+//--------------------------------------------------------------
+// GvG Clock Settings Part #2 - Hours in which GvG occurs:
+//--------------------------------------------------------------
+//
+// This part of the configuration uses military/global time (0:00~23:59)
+// When setting time, make sure you follow this format:
+//	Example #1: 12:54 -> 1254
+//	Example #2: 09:03 -> 903
+// 	Example #3: 12:54 -> 1254
+// If you want GvG to end at 12:00 AM (24:00 / 24 o'Clock), indicate 2400 (not 0)
+// And if the following day GvG beginning activation is set to 0, GvG will continue through without interruption
+// If you want GvG to activate at different times each day, set GvGTimeST/GvGTimeED to 0, and use the settings below them instead
+// Otherwise GvG will always start at the same time and the settings below GvGTimeST/GvGTimeED will be disregarded
+
+// Universal
+GvGTimeST	2000
+GvGTimeED	2200
+
+// Sunday
+GvGTime0ST	0
+GvGTime0ED	200
+
+// Monday
+GvGTime1ST	2000
+GvGTime1ED	2200
+
+// Tuesday
+GvGTime2ST	2000
+GvGTime2ED	2200
+
+// Wednesday
+GvGTime3ST	2000
+GvGTime3ED	2200
+
+// Thursday
+GvGTime4ST	2000
+GvGTime4ED	2200
+
+// Friday
+GvGTime5ST	2000
+GvGTime5ED	2200
+
+// Saturday
+GvGTime6ST	2200
+GvGTime6ED	2400
+
+//--------------------------------------------------------------
+// Database Entries:
+//--------------------------------------------------------------
+
+Job_Novice	0
+Job_Swordman	1
+Job_Swordsman	1
+Job_Mage	2
+Job_Archer	3
+Job_Acolyte	4
+Job_Merchant	5
+Job_Thief	6
+Job_Knight	7
+Job_Priest	8
+Job_Wizard	9
+Job_Blacksmith	10
+Job_Hunter	11
+Job_Assassin	12
+Job_Knight2	13
+Job_Crusader	14
+Job_Monk	15
+Job_Sage	16
+Job_Rogue	17
+Job_Alchemist	18
+Job_Alchem	18
+Job_Bard	19
+Job_Dancer	20
+Job_Crusader2	21
+Job_Wedding	22
+Job_Super_Novice	23
+Job_SuperNovice	23
+Job_Taekwon	24
+Job_TaeKwonBoy	24
+Job_Star_Gladiator	25
+Job_StarGladiator	25
+Job_Star_Gladiator2	26
+Job_StarGladiator2	26
+Job_Taekwon_Master	25
+Job_TaekwonMaster	25
+Job_Taekwon_Master2	26
+Job_TaekwonMaster2	26
+Job_Soul_Linker	27
+Job_SoulLinker	27
+Job_Gunslinger  28
+Job_Ninja	29
+Job_Death_Knight	30
+Job_DeathKnight	30
+Job_Dark_Collector	31
+Job_DarkCollector	31
+
+Male	1
+Female	0
+
+mf_nomemo	0
+mf_nocommand	1
+mf_noteleport	2
+mf_noportal	3
+mf_noreturn	4
+mf_monster_noteleport	5
+mf_nobranch	6
+mf_nopenalty	7
+mf_pvp_noparty	8
+mf_pvp_noguild	9
+mf_pvp_nocalcrank	10
+mf_gvg_noparty	11
+mf_nozenypenalty	12
+mf_notrade	13
+//=====Modify by FPE(2006.6.3)=====(S)
+mf_noskillall	14
+mf_noitemall	15
+//=====Modify by FPE(2006.6.3)=====(E)
+mf_noabra	16
+mf_nodrop	17
+mf_noicewall	18
+mf_turbo	19
+mf_norevive	20
+mf_no_char_pvp	21
+mf_no_disguise	22
+mf_nodropitem	23
+mf_no_create_party	24
+mf_no_invite_party	25
+mf_no_leave_party	26
+mf_gvg_cannot_see_hide	27
+mf_gvg_cannot_see_damage	28
+mf_show_mob_hp	29
+mf_no_show_mob_hp	30
+mf_autoloot	31
+
+StatusPoint	9	1
+BaseLevel	11	1
+SkillPoint	12	1
+Class		19	1
+Upper		56	1
+Zeny		20	1
+Sex		21	1
+Weight		24	1
+MaxWeight	25	1
+JobLevel	55	1
+BaseExp		1	1
+JobExp		2	1
+NextBaseExp	22	1
+NextJobExp	23	1
+Hp		5	1
+MaxHp		6	1
+Sp		7	1
+MaxSp		8	1
+PartnerId	57	1
+Cart		58	1
+
+PC_DIE_COUNTER		500	1
+PC_CLONESKILL_ID	501	1
+PC_CLONESKILL_LV	502	1
+PC_BLACKSMITH_POINT	503	1
+PC_ALCHEMIST_POINT	504	1
+PC_TAEKWON_POINT	505	1
+PC_PK_POINT		506	1
+PC_MISSION_TARGET	507	1
+PC_HATE_MOB_SUN		508	1
+PC_HATE_MOB_MOON	509	1
+PC_HATE_MOB_STAR	510	1
+HOM_TEMP_INTIMATE	511	1
+PC_PHARMACY_SUCCESS_COUNT	512	1
+
+bMaxHP		6
+bMaxSP		8
+bStr		13
+bAgi		14
+bVit		15
+bInt		16
+bDex		17
+bLuk		18
+bAtk		41
+bAtk2		42
+bMatk1		43
+bMatk2		44
+bDef		45
+bMdef		47
+bMdef2		48
+bHit		49
+bFlee		50
+bFlee2		51
+bCritical	52
+bAspd		53
+bAtkRange	1000
+bAtkEle		1001
+bDefEle		1002
+bCastrate	1003
+bMaxHPrate	1004
+bMaxSPrate	1005
+bUseSPrate	1006
+bAddEle		1007
+bAddRace	1008
+bAddSize	1009
+bSubEle		1010
+bSubRace	1011
+bAddEff		1012
+bResEff		1013
+bBaseAtk	1014
+bAspdRate	1015
+bHPrecovRate	1016
+bSPrecovRate	1017
+bSpeedRate	1018
+bCriticalDef	1019
+bNearAtkDef	1020
+bLongAtkDef	1021
+bDoubleRate	1022
+bDoubleAddRate	1023
+bMatk		1024
+bMatkRate	1025
+bIgnoreDefEle	1026
+bIgnoreDefRace	1027
+bAtkRate	1028
+bSpeedAddRate	1029
+bAspdAddRate	1030
+bMagicAtkDef	1031
+bMiscAtkDef	1032
+bIgnoreMdefEle	1033
+bIgnoreMdefRace	1034
+bMagicAddEle	1035
+bMagicAddRace	1036
+bMagicSubRace	1037
+bPerfectHitRate	1038
+bPerfectHitAddRate	1039
+bCriticalRate	1040
+bGetZenyNum	1041
+bAddGetZenyNum	1042
+bAddDamageClass	1043
+bAddMagicDamageClass	1044
+bAddDefClass	1045
+bAddMdefClass	1046
+bAddMonsterDropItem	1047
+bDefRatioAtkEle	1048
+bDefRatioAtkRace	1049
+bAddSpeed	1050
+bHitRate	1051
+bFleeRate	1052
+bFlee2Rate	1053
+bDefRate	1054
+bDef2Rate	1055
+bMdefRate	1056
+bMdef2Rate	1057
+bSplashRange	1058
+bSplashAddRange	1059
+bAutoSpell	1060
+bHPDrainRate	1061
+bSPDrainRate	1062
+bShortWeaponDamageReturn	1063
+bLongWeaponDamageReturn	1064
+bWeaponComaEle	1065
+bWeaponComaRace	1066
+bAddEff2	1067
+bBreakWeaponRate	1068
+bBreakArmorRate	1069
+bAddStealRate	1070
+bHPDrainValue	1071
+bSPDrainValue	1072
+bWeaponAtk	1073
+bWeaponAtkRate	1074
+bAutoSpell2	1075
+bAutoSelfSpell	1076
+bAutoSelfSpell2	1077
+bAddRevEff	1078
+bRevAutoSpell	1079
+bRevAutoSpell2	1080
+bRevAutoSelfSpell	1081
+bRevAutoSelfSpell2	1082
+bAddCriticalDamage	1083
+bHPRecovStop	1084
+bSPRecovStop	1085
+bCriticalRace	1086
+bCriticalRaceRate	1087
+bSubSize	1088
+bMagicSubSize	1089
+bExpRate	1090
+bJobRate	1091
+bDefeatHPDrainValue	1092
+bDefeatSPDrainValue	1093
+bAddSkillDamageRate	1094
+bAddGroup	1095
+bSubGroup 	1096
+bHPPenaltyTime	1097
+bSPPenaltyTime 	1098
+bHPPenaltyUnrig 1099
+bSPPenaltyUnrig 1100
+bTigereye	1101
+bRace		1102
+bAddSkillBlow	1103
+bMobClassChange	1104
+bItemHealRate	1105
+bHPVanish	1106
+bSPVanish	1107
+bBonusDamage	1108
+bLossEquipWhenDie	1109
+bRaise		1110
+bCurseByMuramasa 1111
+bLossEquipWhenAttack	1112
+bLossEquipWhenHit	1113
+bBreakMyEquipWhenAttack 1114
+bBreakMyEquipWhenHit 	1115
+bHPRatePenaltyUnrig 1116
+bSPRatePenaltyUnrig 1117
+bMagicDamageReturn	1118
+bAddShortWeaponDamage	1119
+bAddLongWeaponDamage	1120
+bWeaponComaEle2	1121
+bWeaponComaRace2	1122
+bGetZenyNum2	1123
+bAddGetZenyNum2	1124
+bAddEffShort	1125
+bAddEffLong	1126
+bAtkRangeRate	1127
+bAtkRange2	1128
+bAtkRangeRate2	1129
+bAutoStatusCalcPc 1130
+bEternalStatusChange 1131
+bSPGainValue	1132
+bHPGainValue	1133
+bUnbreakableWeapon	1134
+bUnbreakableArmor	1135
+bUnbreakableHelm	1136
+bUnbreakableShield	1137
+bIgnoreDefEnemy		1138
+bIgnoreMDefEnemy	1139
+bDefRatioAtkEnemy	1140
+bAddEnemy		1141
+bMagicAddEnemy		1142
+bSubEnemy		1143
+bSkillDelayRate		1144
+bFixMaxHP		1145
+bFixMaxSP		1146
+bFixBaseAtk		1147
+bFixMatk		1148
+bFixDef			1149
+bFixMdef		1150
+bFixHit			1151
+bFixCritical		1152
+bFixFlee		1153
+bFixAspd		1154
+bFixSpeed		1155
+bAddFixCastRate		1156
+bAddSkillHealRate	1157
+bRestartFullRecover	2000
+bNoCastCancel	2001
+bNoSizeFix	2002
+bNoMagicDamage	2003
+bNoWeaponDamage	2004
+bNoGemStone	2005
+bNoCastCancel2	2006
+bInfiniteEndure	2007
+bItemNoUse	2008
+bFixDamage	2009
+bNoKnockback	2010
+bMaxWeight	3000
+
+Eff_Stone	0
+Eff_Freeze	1
+Eff_Stun	2
+Eff_Sleep	3
+Eff_Poison	4
+Eff_Curse	5
+Eff_Silence	6
+Eff_Confusion	7
+Eff_Blind	8
+Eff_Bleed	9
+
+SC_Stone	128
+SC_Freeze	129
+SC_Stun		130
+SC_Sleep	131
+SC_Poison	132
+SC_Curse	133
+SC_Silence	134
+SC_Confusion	135
+SC_Blind	136
+SC_Bleed	137
+SC_DPoison	182
+SC_Hallucination 34
+SC_SpeedPot0	37
+SC_SpeedPot1	38
+SC_SpeedPot2	39
+SC_ItemDelay	41
+SC_Santa	63
+SC_INCATK	185
+SC_INCMATK	186
+SC_WEDDING	187
+SC_POISONPOTION 219
+SC_MSTR		224
+SC_MAGI		225
+SC_MVIT		226
+SC_MINT		227
+SC_MDEX		228
+SC_MLUK		229
+SC_MHIT		295
+SC_MFLEE	296
+SC_MFLEE2	297
+SC_MCRI		298
+SC_MDEF		299
+SC_MMDEF	300
+SC_MATK		301
+SC_MMATK	302
+SC_COMBATHAN	303
+//SC_MEXP		303
+//SC_MJOB		304
+SC_WaterWeapon	91
+SC_GroundWeapon	93
+SC_WindWeapon	92
+SC_FireWeapon	90
+SC_PoisonWeapon	6
+SC_HolyWeapon	17
+SC_DarkWeapon	282
+SC_TelekinesisWeapon	283
+SC_UndeadWeapon	313
+SC_WaterArmor	294
+SC_GroundArmor	305
+SC_WindArmor	307
+SC_FireArmor	306
+SC_PoisonArmor	309
+SC_HolyArmor	314
+SC_DarkArmor	310
+SC_TelekinesisArmor	311
+SC_UndeadArmor	312
+SC_ResistWater	316
+SC_ResistGround	317
+SC_ResistFire	318
+SC_ResistWind	319
+SC_ResistPoison	320
+SC_ResistHoly	321
+SC_ResistDark	322
+SC_ResistTelekinesis	323
+SC_ResistUndead	324
+SC_ResistAll	325
+SC_RaceUnknown	326
+SC_RaceUndead	327
+SC_RaceBeast	328
+SC_RacePlant	329
+SC_RaceInsect	330
+SC_RaceFish	332
+SC_RaceDevil	333
+SC_RaceHuman	334
+SC_RaceAngel	335
+SC_RaceDragon	336
+SC_Tigereye	337
+SC_REDEMPTIO	342
+SC_INCREASEAGI	12
+SC_DECREASEAGI	13
+SC_LIFEINSURANCE	368
+SC_MSTR2	371
+SC_MAGI2	372
+SC_MVIT2	373
+SC_MDEX2	374
+SC_MINT2	375
+SC_MLUK2	376
+
+//sc_end×¨ÓÃ
+SC_ResistClear	1001
+SC_RaceClear	1002
+SC_Soul		1003
+SC_SoulClear	1004
+
+GD_APPROVAL	10000
+GD_KAFRACONTACT	10001
+GD_GUARDIANRESEARCH	10002
+GD_GUARDUP	10003
+GD_EXTENSION	10004
+GD_LEADERSHIP	10006
+GD_GLORYWOUNDS	10007
+GD_SOULCOLD	10008
+GD_HAWKEYES	10009
+GD_BATTLEORDER	10010
+GD_REGENERATION	10011
+GD_RESTORE	10012
+GD_EMERGENCYCALL	10013
+GD_DEVELOPMENT	10014
+
+EAS_SHORT	1
+EAS_LONG	2
+EAS_WEAPON	3
+EAS_MAGIC	4
+EAS_MISC	8
+EAS_TARGET	16
+EAS_SELF	32
+EAS_TARGET_RAND	64
+EAS_FLUCT	256
+EAS_RANDOM	512
+EAS_USEMAX	1024
+EAS_USEBETTER	2048
+EAS_NOSP	4096
+EAS_SPCOST1	8192
+EAS_SPCOST2	16384
+EAS_SPCOST3	32768
+EAS_ATTACK	65536
+EAS_REVENGE	131072
+EAS_NORMAL	262144
+EAS_SKILL	524288
+
+BLUE_BOX	-1
+VIOLET_BOX	-2
+CARD_ALBUM	-3
+GIFT_BOX	-4
+SCROLL		-5
+FINDING_ORE	-6
+ARROW_QUIVER	-7
+DIAMOND_WEAPON	-8
+DIAMOND_ARMOR	-9
+DIAMOND_HOOD	-10
+DIAMOND_HELM	-11
+DIAMOND_SHOES	-12
+DIAMOND_SHIELD	-13
+JEWEL_BOX	-14
+MEIJI_ALMOND	-15
+PET_BOX		-16
+WRAPPED_MASK	-17
+FA_BOX		-18
+WRAPPED_FOOD	-19
+RJC2006		-20
+
+ET_SURPRISE	0
+ET_QUESTION	1
+ET_DELIGHT	2
+ET_THROB	3
+ET_SWEAT	4
+ET_AHA	5
+ET_FRET	6
+ET_ANGER	7
+ET_MONEY	8
+ET_THINK	9
+ET_SCISSOR	10
+ET_ROCK	11
+ET_WRAP	12
+ET_FLAG	13
+ET_BIGTHROB	14
+ET_THANKS	15
+ET_KEK	16
+ET_SORRY	17
+ET_SMILE	18
+ET_PROFUSELY_SWAT	19
+ET_SCRATCH	20
+ET_BEST	21
+ET_STARE_ABOUT	22
+ET_HUK	23
+ET_O	24
+ET_X	25
+ET_HELP	26
+ET_GO	27
+ET_CRY	28
+ET_KIK	29
+ET_CHUP	30
+ET_CHUPCHUP	31
+ET_HNG	32
+ET_OK	33
+
+
+e_gasp	0
+e_what	1
+e_ho	2
+e_lv	3
+e_swt	4
+e_ic	5
+e_an	6
+e_ag	7
+e_cash	8
+e_dots	9
+e_scissors	10
+e_rock	11
+e_paper	12
+e_korea	13
+e_lv2	14
+e_thx	15
+e_wah	16
+e_sry	17
+e_heh	18
+e_swt2	19
+e_hmm	20
+e_no1	21
+e_no	22
+e_omg	23
+e_oh	24
+e_X	25
+e_hlp	26
+e_go	27
+e_sob	28
+e_gg	29
+e_kis	30
+e_kis2	31
+e_pif	32
+e_ok	33
+
+
+e_bzz	36
+e_rice	37
+e_awsm	38
+e_meh	39
+e_shy	40
+e_pat	41
+e_mp	42
+e_slur	43
+e_com	44
+e_yawn	45
+e_grat	46
+e_hp	47
+e_philippines	48
+e_usa	49
+e_indonesia	50
+e_brazil	51
+e_flash	52
+e_turn	53
+e_sigh	54
+e_proud	55
+e_loud	56
+e_ohnoes	57
+e_dice	58

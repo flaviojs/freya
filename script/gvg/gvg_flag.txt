@@ -1,0 +1,1084 @@
+//--------------------------------------------------------------
+//               (c)2004-2007 Aurora Team Presents:             
+//                  ___                                         
+//                 /   |_   _ _ __ ___  _ __ __ _               
+//                / /| | | | | '__/ _ \| '__/ _` |              
+//               / ___ | |_| | | | (_) | | | (_| |++            
+//              /_/  |_|\____|_|  \___/|_|  \__,_|              
+//                 http://aurora.deltaanime.net                 
+//--------------------------------------------------------------
+// Script Title: GvG Flag System	Author: jAthena/Tsuyuki
+//--------------------------------------------------------------
+// Revision History: v1.1
+//--------------------------------------------------------------
+//	1.0 First version [jAthena]
+//	1.1 Updated to iRO Aegis/official [Tsuyuki]
+//--------------------------------------------------------------
+// Additional Notes: * Official-certified / Aegis-certified *
+//--------------------------------------------------------------
+
+
+//--------------------------------------------------------------
+// GvG Flag Main Function - [jAthena/Tsuyuki]
+//--------------------------------------------------------------
+
+function	script	F_GvGFlag	{
+
+	set '@gid,getcastledata(getarg(1),1);
+	if ('@gid > 0 && getcharid(2) == '@gid && getarg(2)) {
+		mes "[Echoing Voice]";
+		mes "Brave ones...";
+		mes "Do you wish to return to your honorable place?";
+		next;
+		switch(select("Return to the guild castle.","Quit.")) {
+		case 1:
+			set '@gid,getcastledata(getarg(1),1);
+			if ('@gid > 0 && getcharid(2) == '@gid && getarg(2)) {
+				warp getarg(1),getarg(2),getarg(3);
+				end;
+			}
+			close;
+		case 2:
+			close;
+		}
+	} else if ('@gid <= 0) {
+		mes "[Edict of the Divine Rune Midgard Kingdom]";
+		mes " ";
+		mes "1. Follow the ordinance of The Divine Rune Midgard Kingdom, ";
+		mes "We declare that";
+		mes "there is no formal master of this castle.";
+		mes " ";
+		mes "2. To the one who can ";
+		mes "overcome all trials";
+		mes "and destroy the Emperium,";
+		mes "the king will endow the one with";
+		mes "ownership of this castle.";
+		close;
+	} else {
+		mes "[Edict of the Divine Rune Midgard Kingdom]";
+		mes " ";
+		mes "1. Follow the ordinance of the Divine Rune Midgard Kingdom, ";
+		mes "we approve that this place is in";
+		mes "the private prossession of ^ff0000"+getguildname('@gid)+"^000000 Guild.";
+		mes " ";
+		mes "2. The guild Master of ^ff0000"+getguildname('@gid)+"^000000 Guild is";
+		mes "^ff0000"+getguildmaster('@gid)+"^000000";
+		mes "If there is anyone who objects to this,";
+		mes "prove your strength and honor with a steel blade in your hand.";
+		close;
+	}
+}
+
+
+//--------------------------------------------------------------
+// Al De Baran Guild Castle #1 Flags - [jAthena/Tsuyuki]
+//--------------------------------------------------------------
+
+-	script	GvGFlagL1-1	722,{
+
+	callfunc "F_GvGFlag",0,"aldeg_cas01.gat",218,170;
+	close;
+
+OnInit:
+	flagemblem getcastledata("aldeg_cas01.gat",1);
+	end;
+}
+
+-	script	GvGFlagL1-2	722,{
+
+	callfunc "F_GvGFlag",0,"aldeg_cas01.gat",0,0;
+	close;
+
+OnInit:
+	flagemblem getcastledata("aldeg_cas01.gat",1);
+	end;
+}
+
+aldebaran.gat,152,97,4	script	Neuschwanstein#Flag0	722,{
+
+	close;
+
+OnInit:
+	flagemblem getcastledata("aldeg_cas01.gat",1);
+	end;
+}
+
+alde_gld.gat,61,87,6	duplicate(GvGFlagL1-1)	Neuschwanstein#Flag1	722
+alde_gld.gat,61,79,6	duplicate(GvGFlagL1-1)	Neuschwanstein#Flag2	722
+alde_gld.gat,45,87,8	duplicate(GvGFlagL1-1)	Neuschwanstein#Flag3	722
+alde_gld.gat,51,87,8	duplicate(GvGFlagL1-1)	Neuschwanstein#Flag4	722
+aldeg_cas01.gat,30,248,4	duplicate(GvGFlagL1-2)	Neuschwanstein#Flag5	722
+aldeg_cas01.gat,30,248,4	duplicate(GvGFlagL1-2)	Neuschwanstein#Flag6	722
+aldeg_cas01.gat,37,248,4	duplicate(GvGFlagL1-2)	Neuschwanstein#Flag7	722
+aldeg_cas01.gat,37,246,4	duplicate(GvGFlagL1-2)	Neuschwanstein#Flag8	722
+aldeg_cas01.gat,30,246,4	duplicate(GvGFlagL1-2)	Neuschwanstein#Flag9	722
+aldeg_cas01.gat,95,80,2	duplicate(GvGFlagL1-2)	Neuschwanstein#Flag10	722
+aldeg_cas01.gat,95,59,2	duplicate(GvGFlagL1-2)	Neuschwanstein#Flag11	722
+aldeg_cas01.gat,62,75,2	duplicate(GvGFlagL1-2)	Neuschwanstein#Flag12	722
+aldeg_cas01.gat,66,75,2	duplicate(GvGFlagL1-2)	Neuschwanstein#Flag13	722
+aldeg_cas01.gat,70,75,2	duplicate(GvGFlagL1-2)	Neuschwanstein#Flag14	722
+aldeg_cas01.gat,74,75,2	duplicate(GvGFlagL1-2)	Neuschwanstein#Flag15	722
+aldeg_cas01.gat,62,64,2	duplicate(GvGFlagL1-2)	Neuschwanstein#Flag16	722
+aldeg_cas01.gat,66,64,2	duplicate(GvGFlagL1-2)	Neuschwanstein#Flag17	722
+aldeg_cas01.gat,70,64,2	duplicate(GvGFlagL1-2)	Neuschwanstein#Flag18	722
+aldeg_cas01.gat,74,64,2	duplicate(GvGFlagL1-2)	Neuschwanstein#Flag19	722
+aldeg_cas01.gat,74,64,2	duplicate(GvGFlagL1-2)	Neuschwanstein#Flag20	722
+aldeg_cas01.gat,203,150,4	duplicate(GvGFlagL1-2)	Neuschwanstein#Flag21	722
+aldeg_cas01.gat,210,150,4	duplicate(GvGFlagL1-2)	Neuschwanstein#Flag22	722
+
+
+//--------------------------------------------------------------
+// Al De Baran Guild Castle #2 Flags - [jAthena/Tsuyuki]
+//--------------------------------------------------------------
+
+-	script	GvGFlagL2-1	722,{
+
+	callfunc "F_GvGFlag",0,"aldeg_cas02.gat",84,74;
+	close;
+
+OnInit:
+	flagemblem getcastledata("aldeg_cas02.gat",1);
+	end;
+}
+
+-	script	GvGFlagL2-2	722,{
+
+	callfunc "F_GvGFlag",0,"aldeg_cas02.gat",0,0;
+	close;
+
+OnInit:
+	flagemblem getcastledata("aldeg_cas02.gat",1);
+	end;
+}
+
+aldebaran.gat,149,97,4	script	Hohenschwangau#Flag0	722,{
+
+	close;
+
+OnInit:
+	flagemblem getcastledata("aldeg_cas02.gat",1);
+	end;
+}
+
+alde_gld.gat,99,251,4	duplicate(GvGFlagL2-1)	Hohenschwangau#Flag1	722
+alde_gld.gat,99,244,4	duplicate(GvGFlagL2-1)	Hohenschwangau#Flag2	722
+aldeg_cas02.gat,82,71,2	duplicate(GvGFlagL2-2)	Hohenschwangau#Flag3	722
+aldeg_cas02.gat,67,30,2	duplicate(GvGFlagL2-2)	Hohenschwangau#Flag4	722
+aldeg_cas02.gat,183,140,2	duplicate(GvGFlagL2-2)	Hohenschwangau#Flag5	722
+aldeg_cas02.gat,212,152,2	duplicate(GvGFlagL2-2)	Hohenschwangau#Flag6	722
+aldeg_cas02.gat,108,39,2	duplicate(GvGFlagL2-2)	Hohenschwangau#Flag7	722
+aldeg_cas02.gat,57,213,2	duplicate(GvGFlagL2-2)	Hohenschwangau#Flag8	722
+aldeg_cas02.gat,103,53,2	duplicate(GvGFlagL2-2)	Hohenschwangau#Flag9	722
+aldeg_cas02.gat,73,53,2	duplicate(GvGFlagL2-2)	Hohenschwangau#Flag10	722
+aldeg_cas02.gat,63,41,2	duplicate(GvGFlagL2-2)	Hohenschwangau#Flag11	722
+aldeg_cas02.gat,229,6,2	duplicate(GvGFlagL2-2)	Hohenschwangau#Flag12	722
+aldeg_cas02.gat,230,40,2	duplicate(GvGFlagL2-2)	Hohenschwangau#Flag13	722
+aldeg_cas02.gat,197,40,2	duplicate(GvGFlagL2-2)	Hohenschwangau#Flag14	722
+aldeg_cas02.gat,32,213,2	duplicate(GvGFlagL2-2)	Hohenschwangau#Flag15	722
+aldeg_cas02.gat,121,29,2	duplicate(GvGFlagL2-2)	Hohenschwangau#Flag16	722
+
+
+//--------------------------------------------------------------
+// Al De Baran Guild Castle #3 Flags - [jAthena/Tsuyuki]
+//--------------------------------------------------------------
+
+-	script	GvGFlagL3-1	722,{
+
+	callfunc "F_GvGFlag",0,"aldeg_cas03.gat",118,76;
+	close;
+
+OnInit:
+	flagemblem getcastledata("aldeg_cas03.gat",1);
+	end;
+}
+
+-	script	GvGFlagL3-2	722,{
+
+	callfunc "F_GvGFlag",0,"aldeg_cas03.gat",0,0;
+	close;
+
+OnInit:
+	flagemblem getcastledata("aldeg_cas03.gat",1);
+	end;
+}
+
+aldebaran.gat,134,97,4	script	Nuernberg#Flag0	722,{
+
+	close;
+
+OnInit:
+	flagemblem getcastledata("aldeg_cas03.gat",1);
+	end;
+}
+
+alde_gld.gat,146,82,8	duplicate(GvGFlagL3-1)	Nuernberg#Flag1	722
+alde_gld.gat,138,82,8	duplicate(GvGFlagL3-1)	Nuernberg#Flag2	722
+aldeg_cas03.gat,176,175,2	duplicate(GvGFlagL3-2)	Nuernberg#Flag3	722
+aldeg_cas03.gat,77,115,2	duplicate(GvGFlagL3-2)	Nuernberg#Flag4	722
+aldeg_cas03.gat,77,215,2	duplicate(GvGFlagL3-2)	Nuernberg#Flag5	722
+aldeg_cas03.gat,112,107,2	duplicate(GvGFlagL3-2)	Nuernberg#Flag6	722
+aldeg_cas03.gat,112,117,2	duplicate(GvGFlagL3-2)	Nuernberg#Flag7	722
+aldeg_cas03.gat,69,71,2	duplicate(GvGFlagL3-2)	Nuernberg#Flag8	722
+aldeg_cas03.gat,91,69,2	duplicate(GvGFlagL3-2)	Nuernberg#Flag9	722
+aldeg_cas03.gat,108,60,2	duplicate(GvGFlagL3-2)	Nuernberg#Flag10	722
+aldeg_cas03.gat,121,73,2	duplicate(GvGFlagL3-2)	Nuernberg#Flag11	722
+aldeg_cas03.gat,121,73,2	duplicate(GvGFlagL3-2)	Nuernberg#Flag12	722
+aldeg_cas03.gat,75,102,2	duplicate(GvGFlagL3-2)	Nuernberg#Flag13	722
+aldeg_cas03.gat,199,169,2	duplicate(GvGFlagL3-2)	Nuernberg#Flag14	722
+aldeg_cas03.gat,181,179,2	duplicate(GvGFlagL3-2)	Nuernberg#Flag15	722
+aldeg_cas03.gat,192,44,2	duplicate(GvGFlagL3-2)	Nuernberg#Flag16	722
+aldeg_cas03.gat,208,145,2	duplicate(GvGFlagL3-2)	Nuernberg#Flag17	722
+aldeg_cas03.gat,207,75,2	duplicate(GvGFlagL3-2)	Nuernberg#Flag18	722
+aldeg_cas03.gat,96,62,2	duplicate(GvGFlagL3-2)	Nuernberg#Flag19	722
+
+
+//--------------------------------------------------------------
+// Al De Baran Guild Castle #4 Flags - [jAthena/Tsuyuki]
+//--------------------------------------------------------------
+
+-	script	GvGFlagL4-1	722,{
+
+	callfunc "F_GvGFlag",0,"aldeg_cas04.gat",45,88;
+	close;
+
+OnInit:
+	flagemblem getcastledata("aldeg_cas04.gat",1);
+	end;
+}
+
+-	script	GvGFlagL4-2	722,{
+
+	callfunc "F_GvGFlag",0,"aldeg_cas04.gat",0,0;
+	close;
+
+OnInit:
+	flagemblem getcastledata("aldeg_cas04.gat",1);
+	end;
+}
+
+aldebaran.gat,131,97,4	script	Wuerzburg#Flag0	722,{
+
+	close;
+
+OnInit:
+	flagemblem getcastledata("aldeg_cas04.gat",1);
+	end;
+}
+
+alde_gld.gat,239,246,2	duplicate(GvGFlagL4-1)	Wuerzburg#Flag1	722
+alde_gld.gat,239,239,2	duplicate(GvGFlagL4-1)	Wuerzburg#Flag2	722
+aldeg_cas04.gat,167,61,2	duplicate(GvGFlagL4-2)	Wuerzburg#Flag3	722
+aldeg_cas04.gat,164,90,2	duplicate(GvGFlagL4-2)	Wuerzburg#Flag4	722
+aldeg_cas04.gat,129,193,2	duplicate(GvGFlagL4-2)	Wuerzburg#Flag5	722
+aldeg_cas04.gat,112,206,2	duplicate(GvGFlagL4-2)	Wuerzburg#Flag6	722
+aldeg_cas04.gat,113,212,2	duplicate(GvGFlagL4-2)	Wuerzburg#Flag7	722
+aldeg_cas04.gat,77,117,2	duplicate(GvGFlagL4-2)	Wuerzburg#Flag8	722
+aldeg_cas04.gat,186,42,2	duplicate(GvGFlagL4-2)	Wuerzburg#Flag9	722
+aldeg_cas04.gat,30,69,2	duplicate(GvGFlagL4-2)	Wuerzburg#Flag10	722
+aldeg_cas04.gat,55,97,2	duplicate(GvGFlagL4-2)	Wuerzburg#Flag11	722
+aldeg_cas04.gat,45,98,2	duplicate(GvGFlagL4-2)	Wuerzburg#Flag12	722
+aldeg_cas04.gat,33,116,2	duplicate(GvGFlagL4-2)	Wuerzburg#Flag13	722
+aldeg_cas04.gat,130,180,2	duplicate(GvGFlagL4-2)	Wuerzburg#Flag14	722
+aldeg_cas04.gat,129,193,2	duplicate(GvGFlagL4-2)	Wuerzburg#Flag15	722
+aldeg_cas04.gat,33,107,2	duplicate(GvGFlagL4-2)	Wuerzburg#Flag16	722
+aldeg_cas04.gat,133,220,2	duplicate(GvGFlagL4-2)	Wuerzburg#Flag17	722
+aldeg_cas04.gat,169,22,2	duplicate(GvGFlagL4-2)	Wuerzburg#Flag18	722
+aldeg_cas04.gat,169,15,2	duplicate(GvGFlagL4-2)	Wuerzburg#Flag19	722
+
+
+//--------------------------------------------------------------
+// Al De Baran Guild Castle #5 Flags - [jAthena/Tsuyuki]
+//--------------------------------------------------------------
+
+-	script	GvGFlagL5-1	722,{
+
+	callfunc "F_GvGFlag",0,"aldeg_cas05.gat",31,190;
+	close;
+
+OnInit:
+	flagemblem getcastledata("aldeg_cas05.gat",1);
+	end;
+}
+
+-	script	GvGFlagL5-2	722,{
+
+	callfunc "F_GvGFlag",0,"aldeg_cas05.gat",0,0;
+	close;
+
+OnInit:
+	flagemblem getcastledata("aldeg_cas05.gat",1);
+	end;
+}
+
+aldebaran.gat,128,97,4	script	Rothenburg#Flag0	722,{
+
+	close;
+
+OnInit:
+	flagemblem getcastledata("aldeg_cas05.gat",1);
+	end;
+}
+
+alde_gld.gat,265,93,6	duplicate(GvGFlagL5-1)	Rothenburg#Flag1	722
+alde_gld.gat,265,87,6	duplicate(GvGFlagL5-1)	Rothenburg#Flag2	722
+aldeg_cas05.gat,170,85,2	duplicate(GvGFlagL5-2)	Rothenburg#Flag3	722
+aldeg_cas05.gat,142,212,2	duplicate(GvGFlagL5-2)	Rothenburg#Flag4	722
+aldeg_cas05.gat,149,196,2	duplicate(GvGFlagL5-2)	Rothenburg#Flag5	722
+aldeg_cas05.gat,41,180,2	duplicate(GvGFlagL5-2)	Rothenburg#Flag6	722
+aldeg_cas05.gat,38,201,2	duplicate(GvGFlagL5-2)	Rothenburg#Flag7	722
+aldeg_cas05.gat,65,182,2	duplicate(GvGFlagL5-2)	Rothenburg#Flag8	722
+aldeg_cas05.gat,65,205,2	duplicate(GvGFlagL5-2)	Rothenburg#Flag9	722
+aldeg_cas05.gat,10,218,2	duplicate(GvGFlagL5-2)	Rothenburg#Flag10	722
+aldeg_cas05.gat,10,218,2	duplicate(GvGFlagL5-2)	Rothenburg#Flag11	722
+aldeg_cas05.gat,164,201,2	duplicate(GvGFlagL5-2)	Rothenburg#Flag12	722
+aldeg_cas05.gat,14,117,2	duplicate(GvGFlagL5-2)	Rothenburg#Flag13	722
+aldeg_cas05.gat,10,225,2	duplicate(GvGFlagL5-2)	Rothenburg#Flag14	722
+aldeg_cas05.gat,187,59,2	duplicate(GvGFlagL5-2)	Rothenburg#Flag15	722
+aldeg_cas05.gat,154,51,2	duplicate(GvGFlagL5-2)	Rothenburg#Flag16	722
+aldeg_cas05.gat,22,211,2	duplicate(GvGFlagL5-2)	Rothenburg#Flag17	722
+aldeg_cas05.gat,150,202,2	duplicate(GvGFlagL5-2)	Rothenburg#Flag18	722
+
+
+//--------------------------------------------------------------
+// Geffen Guild Castle #1 Flags - [jAthena/Tsuyuki]
+//--------------------------------------------------------------
+
+-	script	GvGFlagB1-1	722,{
+
+	callfunc "F_GvGFlag",1,"gefg_cas01.gat",83,47;
+	close;
+
+OnInit:
+	flagemblem getcastledata("gefg_cas01.gat",1);
+	end;
+}
+
+-	script	GvGFlagB1-2	722,{
+
+	callfunc "F_GvGFlag",1,"gefg_cas01.gat",0,0;
+	close;
+
+OnInit:
+	flagemblem getcastledata("gefg_cas01.gat",1);
+	end;
+}
+
+geffen.gat,109,123,2	script	Repherion#Flag0	722,{
+
+	close;
+
+OnInit:
+	flagemblem getcastledata("gefg_cas01.gat",1);
+	end;
+}
+
+gef_fild13.gat,148,51,5	duplicate(GvGFlagB1-1)	Repherion#Flag1	722
+gef_fild13.gat,155,54,5	duplicate(GvGFlagB1-1)	Repherion#Flag2	722
+gef_fild13.gat,212,79,6	duplicate(GvGFlagB1-1)	Repherion#Flag3	722
+gef_fild13.gat,211,71,6	duplicate(GvGFlagB1-1)	Repherion#Flag4	722
+gefg_cas01.gat,28,157,4	duplicate(GvGFlagB1-2)	Repherion#Flag5	722
+gefg_cas01.gat,22,156,5	duplicate(GvGFlagB1-2)	Repherion#Flag6	722
+gefg_cas01.gat,68,185,3	duplicate(GvGFlagB1-2)	Repherion#Flag7	722
+gefg_cas01.gat,17,171,5	duplicate(GvGFlagB1-2)	Repherion#Flag8	722
+gefg_cas01.gat,59,16,4	duplicate(GvGFlagB1-2)	Repherion#Flag9	722
+gefg_cas01.gat,64,16,4	duplicate(GvGFlagB1-2)	Repherion#Flag10	722
+
+
+//--------------------------------------------------------------
+// Geffen Guild Castle #2 Flags - [jAthena/Tsuyuki]
+//--------------------------------------------------------------
+
+-	script	GvGFlagB2-1	722,{
+
+	callfunc "F_GvGFlag",1,"gefg_cas02.gat",23,66;
+	close;
+
+OnInit:
+	flagemblem getcastledata("gefg_cas02.gat",1);
+	end;
+}
+
+-	script	GvGFlagB2-2	722,{
+
+	callfunc "F_GvGFlag",1,"gefg_cas02.gat",0,0;
+	close;
+
+OnInit:
+	flagemblem getcastledata("gefg_cas02.gat",1);
+	end;
+}
+
+geffen.gat,112,129,1	script	Eeyorbriggar#Flag0	722,{
+
+	close;
+
+OnInit:
+	flagemblem getcastledata("gefg_cas02.gat",1);
+	end;
+}
+
+gef_fild13.gat,303,243,4	duplicate(GvGFlagB2-1)	Eeyorbriggar#Flag1	722
+gef_fild13.gat,312,243,4	duplicate(GvGFlagB2-1)	Eeyorbriggar#Flag2	722
+gef_fild13.gat,290,243,4	duplicate(GvGFlagB2-1)	Eeyorbriggar#Flag3	722
+gef_fild13.gat,324,243,4	duplicate(GvGFlagB2-1)	Eeyorbriggar#Flag4	722
+gefg_cas02.gat,65,130,5	duplicate(GvGFlagB2-2)	Eeyorbriggar#Flag5	722
+gefg_cas02.gat,30,123,5	duplicate(GvGFlagB2-2)	Eeyorbriggar#Flag6	722
+gefg_cas02.gat,65,139,6	duplicate(GvGFlagB2-2)	Eeyorbriggar#Flag7	722
+gefg_cas02.gat,37,177,6	duplicate(GvGFlagB2-2)	Eeyorbriggar#Flag8	722
+gefg_cas02.gat,37,168,6	duplicate(GvGFlagB2-2)	Eeyorbriggar#Flag9	722
+gefg_cas02.gat,68,47,2	duplicate(GvGFlagB2-2)	Eeyorbriggar#Flag10	722
+gefg_cas02.gat,68,36,2	duplicate(GvGFlagB2-2)	Eeyorbriggar#Flag11	722
+
+
+//--------------------------------------------------------------
+// Geffen Guild Castle #3 Flags - [jAthena/Tsuyuki]
+//--------------------------------------------------------------
+
+-	script	GvGFlagB3-1	722,{
+
+	callfunc "F_GvGFlag",1,"gefg_cas03.gat",116,89;
+	close;
+
+OnInit:
+	flagemblem getcastledata("gefg_cas03.gat",1);
+	end;
+}
+
+-	script	GvGFlagB3-2	722,{
+
+	callfunc "F_GvGFlag",1,"gefg_cas03.gat",0,0;
+	close;
+
+OnInit:
+	flagemblem getcastledata("gefg_cas03.gat",1);
+	end;
+}
+
+geffen.gat,120,132,8	script	Yesnelph#Flag0	722,{
+
+	close;
+
+OnInit:
+	flagemblem getcastledata("gefg_cas03.gat",1);
+	end;
+}
+
+gef_fild13.gat,78,182,4	duplicate(GvGFlagB3-1)	Yesnelph#Flag1	722
+gef_fild13.gat,87,182,4	duplicate(GvGFlagB3-1)	Yesnelph#Flag2	722
+gef_fild13.gat,73,295,7	duplicate(GvGFlagB3-1)	Yesnelph#Flag3	722
+gef_fild13.gat,113,274,7	duplicate(GvGFlagB3-1)	Yesnelph#Flag4	722
+gef_fild13.gat,144,235,6	duplicate(GvGFlagB3-1)	Yesnelph#Flag5	722
+gef_fild13.gat,144,244,6	duplicate(GvGFlagB3-1)	Yesnelph#Flag6	722
+gefg_cas03.gat,122,220,6	duplicate(GvGFlagB3-2)	Yesnelph#Flag7	722
+gefg_cas03.gat,122,229,6	duplicate(GvGFlagB3-2)	Yesnelph#Flag8	722
+gefg_cas03.gat,91,257,7	duplicate(GvGFlagB3-2)	Yesnelph#Flag9	722
+gefg_cas03.gat,52,276,7	duplicate(GvGFlagB3-2)	Yesnelph#Flag10	722
+gefg_cas03.gat,56,164,4	duplicate(GvGFlagB3-2)	Yesnelph#Flag11	722
+gefg_cas03.gat,65,164,4	duplicate(GvGFlagB3-2)	Yesnelph#Flag12	722
+gefg_cas03.gat,37,214,1	duplicate(GvGFlagB3-2)	Yesnelph#Flag13	722
+gefg_cas03.gat,34,208,1	duplicate(GvGFlagB3-2)	Yesnelph#Flag14	722
+
+
+//--------------------------------------------------------------
+// Geffen Guild Castle #4 Flags - [jAthena/Tsuyuki]
+//--------------------------------------------------------------
+
+-	script	GvGFlagB4-1	722,{
+
+	callfunc "F_GvGFlag",1,"gefg_cas04.gat",59,70;
+	close;
+
+OnInit:
+	flagemblem getcastledata("gefg_cas04.gat",1);
+	end;
+}
+
+-	script	GvGFlagB4-2	722,{
+
+	callfunc "F_GvGFlag",1,"gefg_cas04.gat",0,0;
+	close;
+
+OnInit:
+	flagemblem getcastledata("gefg_cas04.gat",1);
+	end;
+}
+
+geffen.gat,127,130,7	script	Bergel#Flag0	722,{
+
+	close;
+
+OnInit:
+	flagemblem getcastledata("gefg_cas04.gat",1);
+	end;
+}
+
+gef_fild13.gat,190,283,3	duplicate(GvGFlagB4-1)	Bergel#Flag1	722
+gef_fild13.gat,199,274,3	duplicate(GvGFlagB4-1)	Bergel#Flag2	722
+gefg_cas04.gat,24,157,4	duplicate(GvGFlagB4-2)	Bergel#Flag3	722
+gefg_cas04.gat,35,158,4	duplicate(GvGFlagB4-2)	Bergel#Flag4	722
+gefg_cas04.gat,44,184,4	duplicate(GvGFlagB4-2)	Bergel#Flag5	722
+gefg_cas04.gat,51,184,4	duplicate(GvGFlagB4-2)	Bergel#Flag6	722
+gefg_cas04.gat,39,212,7	duplicate(GvGFlagB4-2)	Bergel#Flag7	722
+gefg_cas04.gat,29,212,1	duplicate(GvGFlagB4-2)	Bergel#Flag8	722
+gefg_cas04.gat,24,73,1	duplicate(GvGFlagB4-2)	Bergel#Flag9	722
+gefg_cas04.gat,35,73,4	duplicate(GvGFlagB4-2)	Bergel#Flag10	722
+
+
+//--------------------------------------------------------------
+// Geffen Guild Castle #5 Flags - [jAthena/Tsuyuki]
+//--------------------------------------------------------------
+
+-	script	GvGFlagB5-1	722,{
+
+	callfunc "F_GvGFlag",1,"gefg_cas05.gat",61,52;
+	close;
+
+OnInit:
+	flagemblem getcastledata("gefg_cas05.gat",1);
+	end;
+}
+
+-	script	GvGFlagB5-2	722,{
+
+	callfunc "F_GvGFlag",1,"gefg_cas05.gat",0,0;
+	close;
+
+OnInit:
+	flagemblem getcastledata("gefg_cas05.gat",1);
+	end;
+}
+
+geffen.gat,131,123,6	script	Mersetzdeitz#Flag0	722,{
+
+	close;
+
+OnInit:
+	flagemblem getcastledata("gefg_cas05.gat",1);
+	end;
+}
+
+gef_fild13.gat,302,87,7	duplicate(GvGFlagB5-1)	Mersetzdeitz#Flag1	722
+gef_fild13.gat,313,83,0	duplicate(GvGFlagB5-1)	Mersetzdeitz#Flag2	722
+gef_fild13.gat,252,51,2	duplicate(GvGFlagB5-1)	Mersetzdeitz#Flag3	722
+gef_fild13.gat,26,147,2	duplicate(GvGFlagB5-1)	Mersetzdeitz#Flag4	722
+gefg_cas05.gat,77,185,7	duplicate(GvGFlagB5-2)	Mersetzdeitz#Flag5	722
+gefg_cas05.gat,92,181,0	duplicate(GvGFlagB5-2)	Mersetzdeitz#Flag6	722
+gefg_cas05.gat,83,158,1	duplicate(GvGFlagB5-2)	Mersetzdeitz#Flag7	722
+gefg_cas05.gat,62,144,7	duplicate(GvGFlagB5-2)	Mersetzdeitz#Flag8	722
+gefg_cas05.gat,62,66,4	duplicate(GvGFlagB5-2)	Mersetzdeitz#Flag9	722
+gefg_cas05.gat,69,66,4	duplicate(GvGFlagB5-2)	Mersetzdeitz#Flag10	722
+
+
+//--------------------------------------------------------------
+// Payon Guild Castle #1 Flags - [jAthena/Tsuyuki]
+//--------------------------------------------------------------
+
+-	script	GvGFlagC1-1	722,{
+
+	callfunc "F_GvGFlag",1,"payg_cas01.gat",212,108;
+	close;
+
+OnInit:
+	flagemblem getcastledata("payg_cas01.gat",1);
+	end;
+}
+
+-	script	GvGFlagC1-2	722,{
+
+	callfunc "F_GvGFlag",1,"payg_cas01.gat",0,0;
+	close;
+
+OnInit:
+	flagemblem getcastledata("payg_cas01.gat",1);
+	end;
+}
+
+payon.gat,90,322,4	script	Bright Arbor#Flag0	722,{
+
+	close;
+
+OnInit:
+	flagemblem getcastledata("payg_cas01.gat",1);
+	end;
+}
+
+payon.gat,166,177,3	script	Bright Arbor#Flag1	722,{
+
+	close;
+
+OnInit:
+	flagemblem getcastledata("payg_cas01.gat",1);
+	end;
+}
+
+pay_gld.gat,125,236,4	duplicate(GvGFlagC1-1)	Bright Arbor#Flag2	722
+pay_gld.gat,110,233,4	duplicate(GvGFlagC1-1)	Bright Arbor#Flag3	722
+pay_gld.gat,116,233,4	duplicate(GvGFlagC1-1)	Bright Arbor#Flag4	722
+pay_gld.gat,91,239,2	duplicate(GvGFlagC1-1)	Bright Arbor#Flag5	722
+payg_cas01.gat,238,67,4	duplicate(GvGFlagC1-2)	Bright Arbor#Flag6	722
+payg_cas01.gat,233,67,4	duplicate(GvGFlagC1-2)	Bright Arbor#Flag7	722
+payg_cas01.gat,221,123,4	duplicate(GvGFlagC1-2)	Bright Arbor#Flag8	722
+payg_cas01.gat,221,116,4	duplicate(GvGFlagC1-2)	Bright Arbor#Flag9	722
+payg_cas01.gat,206,108,4	duplicate(GvGFlagC1-2)	Bright Arbor#Flag10	722
+payg_cas01.gat,212,108,4	duplicate(GvGFlagC1-2)	Bright Arbor#Flag11	722
+
+
+//--------------------------------------------------------------
+// Payon Guild Castle #2 Flags - [jAthena/Tsuyuki]
+//--------------------------------------------------------------
+
+-	script	GvGFlagC2-1	722,{
+
+	callfunc "F_GvGFlag",1,"payg_cas02.gat",22,275;
+	close;
+
+OnInit:
+	flagemblem getcastledata("payg_cas02.gat",1);
+	end;
+}
+
+-	script	GvGFlagC2-2	722,{
+
+	callfunc "F_GvGFlag",1,"payg_cas02.gat",0,0;
+	close;
+
+OnInit:
+	flagemblem getcastledata("payg_cas02.gat",1);
+	end;
+}
+
+payon.gat,97,322,4	script	Sacred Altar#Flag0	722,{
+
+	close;
+
+OnInit:
+	flagemblem getcastledata("payg_cas02.gat",1);
+	end;
+}
+
+payon.gat,166,173,3	script	Sacred Altar#Flag1	722,{
+
+	close;
+
+OnInit:
+	flagemblem getcastledata("payg_cas02.gat",1);
+	end;
+}
+
+pay_gld.gat,292,112,6	duplicate(GvGFlagC2-1)	Sacred Altar#Flag2	722
+pay_gld.gat,292,120,6	duplicate(GvGFlagC2-1)	Sacred Altar#Flag3	722
+pay_gld.gat,291,135,6	duplicate(GvGFlagC2-1)	Sacred Altar#Flag4	722
+pay_gld.gat,271,163,0	duplicate(GvGFlagC2-1)	Sacred Altar#Flag5	722
+payg_cas02.gat,254,40,6	duplicate(GvGFlagC2-2)	Sacred Altar#Flag6	722
+payg_cas02.gat,254,48,6	duplicate(GvGFlagC2-2)	Sacred Altar#Flag7	722
+payg_cas02.gat,202,49,0	duplicate(GvGFlagC2-2)	Sacred Altar#Flag8	722
+payg_cas02.gat,209,49,0	duplicate(GvGFlagC2-2)	Sacred Altar#Flag9	722
+payg_cas02.gat,59,282,4	duplicate(GvGFlagC2-2)	Sacred Altar#Flag10	722
+payg_cas02.gat,70,282,4	duplicate(GvGFlagC2-2)	Sacred Altar#Flag11	722
+
+
+//--------------------------------------------------------------
+// Payon Guild Castle #3 Flags - [jAthena/Tsuyuki]
+//--------------------------------------------------------------
+
+-	script	GvGFlagC3-1	722,{
+
+	callfunc "F_GvGFlag",1,"payg_cas03.gat",9,263;
+	close;
+
+OnInit:
+	flagemblem getcastledata("payg_cas03.gat",1);
+	end;
+}
+
+-	script	GvGFlagC3-2	722,{
+
+	callfunc "F_GvGFlag",1,"payg_cas03.gat",0,0;
+	close;
+
+OnInit:
+	flagemblem getcastledata("payg_cas03.gat",1);
+	end;
+}
+
+payon.gat,113,322,4	script	Holy Shadow#Flag0	722,{
+
+	close;
+
+OnInit:
+	flagemblem getcastledata("payg_cas03.gat",1);
+	end;
+}
+
+payon.gat,166,169,3	script	Holy Shadow#Flag1	722,{
+
+	close;
+
+OnInit:
+	flagemblem getcastledata("payg_cas03.gat",1);
+	end;
+}
+
+pay_gld.gat,321,298,2	duplicate(GvGFlagC3-1)	Holy Shadow#Flag2	722
+pay_gld.gat,321,289,2	duplicate(GvGFlagC3-1)	Holy Shadow#Flag3	722
+pay_gld.gat,327,304,1	duplicate(GvGFlagC3-1)	Holy Shadow#Flag4	722
+pay_gld.gat,333,254,4	duplicate(GvGFlagC3-1)	Holy Shadow#Flag5	722
+payg_cas03.gat,236,54,2	duplicate(GvGFlagC3-2)	Holy Shadow#Flag6	722
+payg_cas03.gat,236,45,2	duplicate(GvGFlagC3-2)	Holy Shadow#Flag7	722
+payg_cas03.gat,259,66,4	duplicate(GvGFlagC3-2)	Holy Shadow#Flag8	722
+payg_cas03.gat,266,66,4	duplicate(GvGFlagC3-2)	Holy Shadow#Flag9	722
+payg_cas03.gat,34,31,4	duplicate(GvGFlagC3-2)	Holy Shadow#Flag10	722
+payg_cas03.gat,43,31,4	duplicate(GvGFlagC3-2)	Holy Shadow#Flag11	722
+
+
+//--------------------------------------------------------------
+// Payon Guild Castle #4 Flags - [jAthena/Tsuyuki]
+//--------------------------------------------------------------
+
+-	script	GvGFlagC4-1	722,{
+
+	callfunc "F_GvGFlag",1,"payg_cas04.gat",40,235;
+	close;
+
+OnInit:
+	flagemblem getcastledata("payg_cas04.gat",1);
+	end;
+}
+
+-	script	GvGFlagC4-2	722,{
+
+	callfunc "F_GvGFlag",1,"payg_cas04.gat",0,0;
+	close;
+
+OnInit:
+	flagemblem getcastledata("payg_cas04.gat",1);
+	end;
+}
+
+payon.gat,118,322,4	script	Scarlet Palace#Flag0	722,{
+
+	close;
+
+OnInit:
+	flagemblem getcastledata("payg_cas04.gat",1);
+	end;
+}
+
+payon.gat,166,165,3	script	Scarlet Palace#Flag1	722,{
+
+	close;
+
+OnInit:
+	flagemblem getcastledata("payg_cas04.gat",1);
+	end;
+}
+
+pay_gld.gat,137,160,0	duplicate(GvGFlagC4-1)	Scarlet Palace#Flag2	722
+pay_gld.gat,143,160,0	duplicate(GvGFlagC4-1)	Scarlet Palace#Flag3	722
+pay_gld.gat,133,151,2	duplicate(GvGFlagC4-1)	Scarlet Palace#Flag4	722
+pay_gld.gat,153,166,1	duplicate(GvGFlagC4-1)	Scarlet Palace#Flag5	722
+payg_cas04.gat,255,259,0	duplicate(GvGFlagC4-2)	Scarlet Palace#Flag6	722
+payg_cas04.gat,248,259,0	duplicate(GvGFlagC4-2)	Scarlet Palace#Flag7	722
+payg_cas04.gat,248,168,6	duplicate(GvGFlagC4-2)	Scarlet Palace#Flag8	722
+payg_cas04.gat,248,160,6	duplicate(GvGFlagC4-2)	Scarlet Palace#Flag9	722
+payg_cas04.gat,232,181,4	duplicate(GvGFlagC4-2)	Scarlet Palace#Flag10	722
+payg_cas04.gat,239,181,4	duplicate(GvGFlagC4-2)	Scarlet Palace#Flag11	722
+
+
+//--------------------------------------------------------------
+// Payon Guild Castle #5 Flags - [jAthena/Tsuyuki]
+//--------------------------------------------------------------
+
+-	script	GvGFlagC5-1	722,{
+
+	callfunc "F_GvGFlag",1,"payg_cas05.gat",276,227;
+	close;
+
+OnInit:
+	flagemblem getcastledata("payg_cas05.gat",1);
+	end;
+}
+
+-	script	GvGFlagC5-2	722,{
+
+	callfunc "F_GvGFlag",1,"payg_cas05.gat",0,0;
+	close;
+
+OnInit:
+	flagemblem getcastledata("payg_cas05.gat",1);
+	end;
+}
+
+payon.gat,123,322,4	script	Bamboo Grove Hill#Flag0	722,{
+
+	close;
+
+OnInit:
+	flagemblem getcastledata("payg_cas05.gat",1);
+	end;
+}
+
+payon.gat,166,161,3	script	Bamboo Grove Hill#Flag1	722,{
+
+	close;
+
+OnInit:
+	flagemblem getcastledata("payg_cas05.gat",1);
+	end;
+}
+
+pay_gld.gat,208,268,4	duplicate(GvGFlagC5-1)	Bamboo Grove Hill#Flag2	722
+pay_gld.gat,199,268,4	duplicate(GvGFlagC5-1)	Bamboo Grove Hill#Flag3	722
+pay_gld.gat,190,277,3	duplicate(GvGFlagC5-1)	Bamboo Grove Hill#Flag4	722
+pay_gld.gat,187,294,2	duplicate(GvGFlagC5-1)	Bamboo Grove Hill#Flag5	722
+payg_cas05.gat,32,249,4	duplicate(GvGFlagC5-2)	Bamboo Grove Hill#Flag6	722
+payg_cas05.gat,24,249,4	duplicate(GvGFlagC5-2)	Bamboo Grove Hill#Flag7	722
+payg_cas05.gat,62,271,0	duplicate(GvGFlagC5-2)	Bamboo Grove Hill#Flag8	722
+payg_cas05.gat,57,271,0	duplicate(GvGFlagC5-2)	Bamboo Grove Hill#Flag9	722
+payg_cas05.gat,55,252,2	duplicate(GvGFlagC5-2)	Bamboo Grove Hill#Flag10	722
+payg_cas05.gat,55,260,2	duplicate(GvGFlagC5-2)	Bamboo Grove Hill#Flag11	722
+
+
+//--------------------------------------------------------------
+// Prontera Guild Castle #1 Flags - [jAthena/Tsuyuki]
+//--------------------------------------------------------------
+
+-	script	GvGFlagV1-1	722,{
+
+	callfunc "F_GvGFlag",1,"prtg_cas01.gat",97,174;
+	close;
+
+OnInit:
+	flagemblem getcastledata("prtg_cas01.gat",1);
+	end;
+}
+
+-	script	GvGFlagV1-2	722,{
+
+	callfunc "F_GvGFlag",1,"prtg_cas01.gat",0,0;
+	close;
+
+OnInit:
+	flagemblem getcastledata("prtg_cas01.gat",1);
+	end;
+}
+
+prontera.gat,155,190,4	script	Kriemhild#0	722,{
+
+	close;
+
+OnInit:
+	flagemblem getcastledata("prtg_cas01.gat",1);
+	end;
+}
+
+prt_gld.gat,131,60,6	duplicate(GvGFlagV1-1)	Kriemhild#Flag2	722
+prt_gld.gat,138,68,6	duplicate(GvGFlagV1-1)	Kriemhild#Flag3	722
+prt_gld.gat,138,60,6	duplicate(GvGFlagV1-1)	Kriemhild#Flag4	722
+prt_gld.gat,135,60,6	duplicate(GvGFlagV1-1)	Kriemhild#Flag5	722
+prtg_cas01.gat,58,56,4	duplicate(GvGFlagV1-2)	Kriemhild#Flag6	722
+prtg_cas01.gat,64,56,4	duplicate(GvGFlagV1-2)	Kriemhild#Flag7	722
+prtg_cas01.gat,76,32,4	duplicate(GvGFlagV1-2)	Kriemhild#Flag8	722
+prtg_cas01.gat,84,32,4	duplicate(GvGFlagV1-2)	Kriemhild#Flag9	722
+prtg_cas01.gat,94,39,4	duplicate(GvGFlagV1-2)	Kriemhild#Flag10	722
+prtg_cas01.gat,94,24,4	duplicate(GvGFlagV1-2)	Kriemhild#Flag11	722
+prtg_cas01.gat,73,14,4	duplicate(GvGFlagV1-2)	Kriemhild#Flag12	722
+prtg_cas01.gat,73,6,4	duplicate(GvGFlagV1-2)	Kriemhild#Flag13	722
+prtg_cas01.gat,55,46,4	duplicate(GvGFlagV1-2)	Kriemhild#Flag14	722
+prtg_cas01.gat,45,46,4	duplicate(GvGFlagV1-2)	Kriemhild#Flag15	722
+
+
+//--------------------------------------------------------------
+// Prontera Guild Castle #2 Flags - [jAthena/Tsuyuki]
+//--------------------------------------------------------------
+
+-	script	GvGFlagV2-1	722,{
+
+	callfunc "F_GvGFlag",1,"prtg_cas02.gat",71,36;
+	close;
+
+OnInit:
+	flagemblem getcastledata("prtg_cas02.gat",1);
+	end;
+}
+
+-	script	GvGFlagV2-2	722,{
+
+	callfunc "F_GvGFlag",1,"prtg_cas02.gat",0,0;
+	close;
+
+OnInit:
+	flagemblem getcastledata("prtg_cas02.gat",1);
+	end;
+}
+
+prontera.gat,146,194,3	script	Swanhild#0	722,{
+
+	close;
+
+OnInit:
+	flagemblem getcastledata("prtg_cas02.gat",1);
+	end;
+}
+
+prt_gld.gat,244,126,8	duplicate(GvGFlagV2-1)	Swanhild#Flag1	722
+prt_gld.gat,244,128,8	duplicate(GvGFlagV2-1)	Swanhild#Flag2	722
+prt_gld.gat,236,126,8	duplicate(GvGFlagV2-1)	Swanhild#Flag3	722
+prt_gld.gat,236,128,8	duplicate(GvGFlagV2-1)	Swanhild#Flag4	722
+prtg_cas02.gat,40,227,4	duplicate(GvGFlagV2-2)	Swanhild#Flag5	722
+prtg_cas02.gat,46,227,4	duplicate(GvGFlagV2-2)	Swanhild#Flag6	722
+prtg_cas02.gat,11,219,4	duplicate(GvGFlagV2-2)	Swanhild#Flag7	722
+prtg_cas02.gat,11,214,4	duplicate(GvGFlagV2-2)	Swanhild#Flag8	722
+prtg_cas02.gat,20,219,4	duplicate(GvGFlagV2-2)	Swanhild#Flag9	722
+prtg_cas02.gat,20,214,4	duplicate(GvGFlagV2-2)	Swanhild#Flag10	722
+prtg_cas02.gat,79,227,8	duplicate(GvGFlagV2-2)	Swanhild#Flag11	722
+prtg_cas02.gat,70,227,8	duplicate(GvGFlagV2-2)	Swanhild#Flag12	722
+prtg_cas02.gat,38,189,8	duplicate(GvGFlagV2-2)	Swanhild#Flag13	722
+prtg_cas02.gat,34,189,8	duplicate(GvGFlagV2-2)	Swanhild#Flag14	722
+prtg_cas02.gat,153,161,4	duplicate(GvGFlagV2-2)	Swanhild#Flag15	722
+prtg_cas02.gat,162,161,4	duplicate(GvGFlagV2-2)	Swanhild#Flag16	722
+
+
+//--------------------------------------------------------------
+// Prontera Guild Castle #3 Flags - [jAthena/Tsuyuki]
+//--------------------------------------------------------------
+
+-	script	GvGFlagV3-1	722,{
+
+	callfunc "F_GvGFlag",1,"prtg_cas03.gat",181,215;
+	close;
+
+OnInit:
+	flagemblem getcastledata("prtg_cas03.gat",1);
+	end;
+}
+
+-	script	GvGFlagV3-2	722,{
+
+	callfunc "F_GvGFlag",1,"prtg_cas03.gat",0,0;
+	close;
+
+OnInit:
+	flagemblem getcastledata("prtg_cas03.gat",1);
+	end;
+}
+
+prontera.gat,143,203,2	script	Fadhgridh#0	722,{
+
+	close;
+
+OnInit:
+	flagemblem getcastledata("prtg_cas03.gat",1);
+	end;
+}
+
+prt_gld.gat,147,140,4	duplicate(GvGFlagV3-1)	Fadhgridh#Flag1	722
+prt_gld.gat,147,136,4	duplicate(GvGFlagV3-1)	Fadhgridh#Flag2	722
+prt_gld.gat,158,140,4	duplicate(GvGFlagV3-1)	Fadhgridh#Flag3	722
+prt_gld.gat,158,136,4	duplicate(GvGFlagV3-1)	Fadhgridh#Flag4	722
+prtg_cas03.gat,168,28,4	duplicate(GvGFlagV3-2)	Fadhgridh#Flag5	722
+prtg_cas03.gat,182,28,4	duplicate(GvGFlagV3-2)	Fadhgridh#Flag6	722
+prtg_cas03.gat,43,50,4	duplicate(GvGFlagV3-2)	Fadhgridh#Flag7	722
+prtg_cas03.gat,48,50,4	duplicate(GvGFlagV3-2)	Fadhgridh#Flag8	722
+prtg_cas03.gat,43,58,4	duplicate(GvGFlagV3-2)	Fadhgridh#Flag9	722
+prtg_cas03.gat,48,58,4	duplicate(GvGFlagV3-2)	Fadhgridh#Flag10	722
+prtg_cas03.gat,158,210,4	duplicate(GvGFlagV3-2)	Fadhgridh#Flag11	722
+prtg_cas03.gat,169,210,4	duplicate(GvGFlagV3-2)	Fadhgridh#Flag12	722
+prtg_cas03.gat,162,201,4	duplicate(GvGFlagV3-2)	Fadhgridh#Flag13	722
+prtg_cas03.gat,165,201,4	duplicate(GvGFlagV3-2)	Fadhgridh#Flag14	722
+
+
+//--------------------------------------------------------------
+// Prontera Guild Castle #4 Flags - [jAthena/Tsuyuki]
+//--------------------------------------------------------------
+
+-	script	GvGFlagV4-1	722,{
+
+	callfunc "F_GvGFlag",1,"prtg_cas04.gat",258,247;
+	close;
+
+OnInit:
+	flagemblem getcastledata("prtg_cas04.gat",1);
+	end;
+}
+
+-	script	GvGFlagV4-2	722,{
+
+	callfunc "F_GvGFlag",1,"prtg_cas04.gat",0,0;
+	close;
+
+OnInit:
+	flagemblem getcastledata("prtg_cas04.gat",1);
+	end;
+}
+
+prontera.gat,167,203,6	script	Skoegul#0	722,{
+
+	close;
+
+OnInit:
+	flagemblem getcastledata("prtg_cas04.gat",1);
+	end;
+}
+
+prt_gld.gat,120,243,6	duplicate(GvGFlagV4-1)	Skoegul#Flag1	722
+prt_gld.gat,120,236,6	duplicate(GvGFlagV4-1)	Skoegul#Flag2	722
+prt_gld.gat,122,243,6	duplicate(GvGFlagV4-1)	Skoegul#Flag3	722
+prt_gld.gat,122,236,6	duplicate(GvGFlagV4-1)	Skoegul#Flag4	722
+prtg_cas04.gat,82,29,4	duplicate(GvGFlagV4-2)	Skoegul#Flag5	722
+prtg_cas04.gat,75,29,4	duplicate(GvGFlagV4-2)	Skoegul#Flag6	722
+prtg_cas04.gat,75,27,4	duplicate(GvGFlagV4-2)	Skoegul#Flag7	722
+prtg_cas04.gat,82,27,4	duplicate(GvGFlagV4-2)	Skoegul#Flag8	722
+prtg_cas04.gat,59,29,4	duplicate(GvGFlagV4-2)	Skoegul#Flag9	722
+prtg_cas04.gat,67,29,4	duplicate(GvGFlagV4-2)	Skoegul#Flag10	722
+prtg_cas04.gat,258,25,4	duplicate(GvGFlagV4-2)	Skoegul#Flag11	722
+prtg_cas04.gat,258,20,4	duplicate(GvGFlagV4-2)	Skoegul#Flag12	722
+prtg_cas04.gat,263,20,4	duplicate(GvGFlagV4-2)	Skoegul#Flag13	722
+prtg_cas04.gat,263,27,4	duplicate(GvGFlagV4-2)	Skoegul#Flag14	722
+
+
+//--------------------------------------------------------------
+// Prontera Guild Castle #5 Flags - [jAthena/Tsuyuki]
+//--------------------------------------------------------------
+
+-	script	GvGFlagV5-1	722,{
+
+	callfunc "F_GvGFlag",1,"prtg_cas05.gat",52,41;
+	close;
+
+OnInit:
+	flagemblem getcastledata("prtg_cas05.gat",1);
+	end;
+}
+
+-	script	GvGFlagV5-2	722,{
+
+	callfunc "F_GvGFlag",1,"prtg_cas05.gat",0,0;
+	close;
+
+OnInit:
+	flagemblem getcastledata("prtg_cas05.gat",1);
+	end;
+}
+
+prontera.gat,165,194,5	script	Gondul#0	722,{
+
+	close;
+
+OnInit:
+	flagemblem getcastledata("prtg_cas05.gat",1);
+	end;
+}
+
+prt_gld.gat,199,243,2	duplicate(GvGFlagV5-1)	Gondul#Flag1	722
+prt_gld.gat,199,236,2	duplicate(GvGFlagV5-1)	Gondul#Flag2	722
+prt_gld.gat,197,243,2	duplicate(GvGFlagV5-1)	Gondul#Flag3	722
+prt_gld.gat,197,236,2	duplicate(GvGFlagV5-1)	Gondul#Flag4	722
+prtg_cas05.gat,19,247,4	duplicate(GvGFlagV5-2)	Gondul#Flag5	722
+prtg_cas05.gat,19,243,4	duplicate(GvGFlagV5-2)	Gondul#Flag6	722
+prtg_cas05.gat,26,247,4	duplicate(GvGFlagV5-2)	Gondul#Flag7	722
+prtg_cas05.gat,26,243,4	duplicate(GvGFlagV5-2)	Gondul#Flag8	722
+prtg_cas05.gat,249,289,4	duplicate(GvGFlagV5-2)	Gondul#Flag9	722
+prtg_cas05.gat,256,289,4	duplicate(GvGFlagV5-2)	Gondul#Flag10	722
+prtg_cas05.gat,253,271,4	duplicate(GvGFlagV5-2)	Gondul#Flag11	722
+prtg_cas05.gat,273,257,4	duplicate(GvGFlagV5-2)	Gondul#Flag12	722

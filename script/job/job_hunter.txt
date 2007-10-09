@@ -1,0 +1,4976 @@
+//--------------------------------------------------------------
+//               (c)2004-2007 Freya Team Presents:              
+//                  ___                                         
+//                 /   |_   _ _ __ ___  _ __ __ _               
+//                / /| | | | | '__/ _ \| '__/ _` |              
+//               / ___ | |_| | | | (_) | | | (_| |++            
+//              /_/  |_|\____|_|  \___/|_|  \__,_|              
+//                    http://www.ro-freya.net                   
+//--------------------------------------------------------------
+// Script Title: Hunter Job Change Quest	Author: Tsuyuki
+//--------------------------------------------------------------
+// Revision History: v1.0
+//--------------------------------------------------------------
+//	1.0 First version, converted from Aegis [Tsuyuki]
+//--------------------------------------------------------------
+// Additional Notes: * Official-certified / Aegis-certified *
+//--------------------------------------------------------------
+
+
+//--------------------------------------------------------------
+// Hunter Job Change Quest - [Tsuyuki]
+//--------------------------------------------------------------
+
+in_hunter.gat,99,99,4	script	Hunter Info	727,{
+
+	mes " == == == == == == Notice == == == == == == ";
+	mes "We would like to inform that the Hunter Job Change Location";
+	mes "has been moved to ^ff0000Hugel^000000 in the Schwaltzvalt Republic.";
+	next;
+	mes "You can now use the Hugel airline, so please use the airship to visit Hugel.";
+	next;
+	mes "You will find the new Job Change Location at ^ff0000 Hugel 208 222 ^000000.";
+	next;
+	mes "^804000(You found a tiny line written at the end of the notice.)^000000";
+	mes "";
+	mes "";
+	mes "";
+	mes "I, the Falcon breeder has moved out as well.";
+	close;
+}
+
+pay_fild10.gat,148,252,3	script	Job Change Location Change Notice#hugel	857,{
+
+	mes " == == == == == == Notice == == == == == == ";
+	mes "We would like to inform that the Hunter Job Change Location";
+	mes "has been moved to ^ff0000Hugel^000000 in the Schwaltzvalt Republic.";
+	next;
+	mes "You can now use the Hugel airline, so please use the airship to visit Hugel.";
+	next;
+	mes "You will find the new Job Change Location at ^ff0000the far upper right side of Hugel000000.";
+	next;
+	mes "^804000(You found a tiny line written at the end of the notice.)^000000";
+	mes "";
+	mes "";
+	mes "";
+	mes "I, the Falcon breeder has moved out as well.";
+	close;
+}
+
+in_hunter.gat,100,13,0	script	Huntero	45,1,2,{
+
+OnTouch:
+	warp "pay_fild10.gat",143,250;
+	end;
+}
+
+hu_in01.gat,386,373,4	script	Hunter Guildsman#hnt	727,{
+
+	if (Upper == 1) {
+		mes "[Hunter Sherin]";
+		mes "Oh, how have you been? It's been a long time, hasn't it?";
+		next;
+		mes "[Hunter Sherin]";
+		mes "...Wait.";
+		mes "Oops! I'm sorry, I could have sworn that we've met before. Huh. How weird.";
+		close;
+	}
+	if (Class == Job_Archer && JobLevel < 40) {
+		mes "[Hunter Guildsman]";
+		mes "Eh? You haven't had enough training as an Archer yet. To become a Hunter, you must gain a certain level of experience as an Archer first.";
+		next;
+		mes "[Hunter Guildsman]";
+		mes "Go out and train yourself a bit more. You'll need to be at least Job Level 40 before you'll be ready to become a Hunter. Of course, you can train more than that if you want.";
+		next;
+		mes "[Hunter Guildsman]";
+		mes "See you next time~";
+		close;
+	}
+	if (SkillPoint != 0) {
+		mes "[Hunter Sherin]";
+		mes "You can't change jobs without using all your skill points. Please use all of your skill points before applying to change jobs~";
+		close;
+	}
+	if (Class == Job_Novice) {
+		mes "[Hunter Guildsman]";
+		mes "You must be...";
+		mes "a Novice? Wow, you've got a long way ahead of you. I don't think there's much you can do here.";
+		close;
+	} else if ((Class == Job_Swordman) || (Class == Job_Knight) || (Class == Job_Crusader)) {
+		mes "[Hunter Guildsman]";
+		mes "You have chosen the path of the sword. I can respect the strength of your blade. Of course, from far away, you can't really afford to throw your sword at enemies, can you?";
+		close;
+	} else if ((Class == Job_Mage) || (Class == Job_Wizard) || (Class == Job_Sage)) {
+		mes "[Hunter Guildsman]";
+		mes "You deal with magic? It must feel great to be able to wield mystic power.";
+		close;
+	} else if ((Class == Job_Acolyte) || (Class == Job_Priest) || (Class == Job_Monk)) {
+		mes "[Hunter Guildsman]";
+		mes "Oh, a person who serves God! Nice to meet you. There aren't many people like you that visit this place~ Hehe.";
+		close;
+	} else if ((Class == Job_Merchant) || (Class == Job_Blacksmith) || (Class == Job_Alchemist)) {
+		mes "[Hunter Guildsman]";
+		mes "Oh...";
+		mes "How's your business coming along?";
+		close;
+	} else if ((Class == Job_Thief) || (Class == Job_Assassin) || (Class == Job_Rogue)) {
+		mes "[Hunter Guildsman]";
+		mes "Agh?!";
+		mes "This place doesn't have anything worth stealing or anyone worth killing!!";
+		close;
+	} else if (Class == Job_Dancer || Class == Job_Bard) {
+		mes "[Hunter Guildsman]";
+		mes "Phew...sometimes it is really hard for being a hunter, you know...";
+		mes "So how do you like your bohemian life? Yeah, I am envious of you for having so much freedom...";
+		close;
+	} else if (Class == Job_Hunter) {
+		mes "[Hunter Sherin]";
+		mes "Oh~ "+strcharinfo(0)+"!!";
+		mes "Long time no see~ What brings you here? Did your Falcon run away or something?";
+		next;
+		mes "[Hunter Sherin]";
+		mes "I don't really have any official notices from the guild at the moment, so I hope you didn't come here just for that...";
+		close;
+	} else if (Class == Job_Archer) {
+		if (SkillPoint != 0) {
+			mes "[Hunter Sherin]";
+			mes "You can't apply to change jobs if you still have unused skill points. Use your remaining skill points first.";
+			close;
+		} else if (job_hunter_q == 17 && countitem(1007) == 0) {
+			mes "[Hunter Sherin]";
+			mes "Hmm... I've been informed that you passed the test. But you don't have the necessary 'Necklace of Wisdom (Penetration)' that proves your accomplishment.";
+			next;
+			mes "[Hunter Sherin]";
+			mes "I'll let you change your job, but you must bring back a 'Necklace of Wisdom (Penetration),' no matter what it takes.";
+			close;
+		} else if (job_hunter_q == 17 && countitem(1007) > 0 && JobLevel > 39) {
+			if (JobLevel > 49) {
+				mes "[Hunter Sherin]";
+				mes "Oh...?";
+				mes "You passed";
+				mes "the job test?!";
+				mes "Congratulations~!!";
+				next;
+				mes "[Hunter Sherin]";
+				mes "Well then,";
+				mes "I will now change";
+				mes "your job to a Hunter~";
+				next;
+				delitem 1007,1;
+				mes "[Hunter Sherin]";
+				mes "Tada~ Congratulations!";
+				mes "You look great as a Hunter!!";
+				callfunc "F_JobChange",Job_Hunter;
+				next;
+				mes "[Hunter Sherin]";
+				mes "Become a noble person and become a worthy representative of our Hunter Guild. Show your love of nature as a Hunter~";
+				next;
+				mes "[Hunter Sherin]";
+				mes "And also, here is a little reward for all the effort you put in. It's from me, of course~";
+				getitem 1718,1;
+				close;
+			} else {
+				mes "[Hunter Sherin]";
+				mes "Oh...?";
+				mes "You passed";
+				mes "the job test?!!";
+				mes "Congratulations~!!";
+				next;
+				mes "[Hunter Sherin]";
+				mes "Well then,";
+				mes "I will now change";
+				mes "your job to a Hunter~*";
+				next;
+				delitem 1007,1;
+				mes "[Hunter Sherin]";
+				mes "Tada~ Congratulations!";
+				mes "You look great as a Hunter!!";
+				callfunc "F_JobChange",Job_Hunter;
+				next;
+				mes "[Hunter Sherin]";
+				mes "Become a noble person and be a worthy representative of the Hunter Guild. Show your love of nature as a Hunter~";
+				next;
+				mes "[Hunter Sherin]";
+				mes "And also, here is a little reward for all the effort you put in. It's from me, of course~";
+				getitem 1710,1;
+				close;
+			}
+		} else if (JobLevel > 39 && job_hunter_q == 0) {
+			mes "[Hunter Guildsman]";
+			mes "Oh, you're an Archer! It seems as if you've trained enough as an Archer... You came here to become a Hunter, right?";
+			next;
+			switch(select("Yes. That's what I'm here for.","What are the requirements to change jobs?","....I don't want to change yet.")) {
+			case 1:
+				mes "[Hunter Guildsman]";
+				mes "Hehe~";
+				mes "I was right! Let me put you on the candidate list. Let's see~*";
+				next;
+				mes "[Hunter Guildsman]";
+				mes "Hmm... Let's start with the interview. Wait and relax a moment. No need to worry, I'll prepare everything~";
+				next;
+				mes "^3355FF*Gathers and flips through papers*^000000";
+				next;
+				mes "^3355FF*Rummage rummage*^000000";
+				next;
+				mes "[Hunter Guildsman]";
+				mes "Ah!";
+				mes "Here they are: the interview questions~ First of all, my name is 'Sherin.' Nice to meet you!";
+				next;
+				mes "[Hunter Sherin]";
+				mes "Well then,";
+				mes "shall we begin?";
+				next;
+				switch(select("Yes~ Let's start now.","No, I'll be back later.")) {
+				case 1:
+					mes "[Hunter Sherin]";
+					mes "Listen carefully to the scenarios I describe. When I ask a question, you choose an answer. Pretty simple, don't you think?";
+					next;
+					mes "[Hunter Sherin]";
+					mes "I just want to know how you think about life, and why you want to become a Hunter, so there's no need to be nervous.";
+					next;
+					set '@knight_t,0;
+					mes "[Hunter Sherin]";
+					mes "Well then,";
+					mes "let's begin.";
+					next;
+					mes "[Hunter Sherin]";
+					mes "You are an Archer, and you don't know where you should go to hunt. What do you do?";
+					next;
+					switch(select("Scream out loud asking where you should go.","Quietly ask a person passing by.","Wander around alone and search for a place.")) {
+					case 1:
+						break;
+					case 2:
+						set '@knight_t,'@knight_t + 10;
+						break;
+					case 3:
+						set '@knight_t,'@knight_t + 10;
+						break;
+					}
+					mes "[Hunter Sherin]";
+					mes "So you've decided on a place to hunt. You're going to hunt the monsters known as Hodes in the Sograt Desert.";
+					next;
+					mes "[Hunter Sherin]";
+					mes "But you are in Payon!!";
+					mes "How do you go to the desert?";
+					next;
+					switch(select("Ask a Priest to open a free warp portal.","Use the Kafra service.","Walk with a friend.")) {
+					case 1:
+						break;
+					case 2:
+						set '@knight_t,'@knight_t + 10;
+						break;
+					case 3:
+						set '@knight_t,'@knight_t + 10;
+						break;
+					}
+					mes "[Hunter Sherin]";
+					mes "There is no Priest to ask for a warp, and no friend is around to walk with you. You must use the Kafra service, but you have no Zeny!";
+					next;
+					mes "[Hunter Sherin]";
+					mes "How would you go";
+					mes "about to make the";
+					mes "Zeny that you need?";
+					next;
+					switch(select("Beg here and there.","Sell items I do not need.","Hunt at a nearby field.")) {
+					case 1:
+						break;
+					case 2:
+						set '@knight_t,'@knight_t + 10;
+						break;
+					case 3:
+						set '@knight_t,'@knight_t + 10;
+						break;
+					}
+					mes "[Hunter Sherin]";
+					mes "So you finally arrive at the Sograt Desert. But you realize that Hodes are a bit too strong for you to hunt alone.";
+					next;
+					mes "[Hunter Sherin]";
+					mes "What is your";
+					mes "solution to this";
+					mes "situation?";
+					next;
+					switch(select("Attack a Hode from the top of a hill.","Go back to town.","Attack someone else's Hode.")) {
+					case 1:
+						break;
+					case 2:
+						set '@knight_t,'@knight_t + 10;
+						break;
+					case 3:
+						break;
+					}
+					mes "[Hunter Sherin]";
+					mes "Let's say you were having too much trouble hunting Hodes and returned to town. Now you are out of HP and a Priest happens to be around. How would you ask for a Heal?";
+					next;
+					switch(select("Would it be possible to get a Heal, please?","Heal, please.","Heal me.")) {
+					case 1:
+						set '@knight_t,'@knight_t + 10;
+						break;
+					case 2:
+						break;
+					case 3:
+						break;
+					}
+					mes "[Hunter Sherin]";
+					mes "This time, you found a rare item while you were going through your inventory. You go out to sell the item, and there are many people with stores and chatrooms open.";
+					next;
+					mes "[Hunter Sherin]";
+					mes "What is the";
+					mes "best way to";
+					mes "sell your item?";
+					next;
+					switch(select("Scream out loud to everyone in sight.","Open a chatroom and wait.","Look to see if anyone already wants it.")) {
+					case 1:
+						break;
+					case 2:
+						set '@knight_t,'@knight_t + 10;
+						break;
+					case 3:
+						set '@knight_t,'@knight_t + 10;
+						break;
+					}
+					mes "[Hunter Sherin]";
+					mes "While you are waiting, someone is begging for items and Zeny. What should you do?";
+					next;
+					switch(select("Give some of my items and Zeny.","Ignore and walk away.","Tell the person about a good place to hunt.")) {
+					case 1:
+						break;
+					case 2:
+						break;
+					case 3:
+						set '@knight_t,'@knight_t + 10;
+						break;
+					}
+					mes "[Hunter Sherin]";
+					mes "By now, you decide to go to the Maze by yourself.";
+					next;
+					mes "[Hunter Sherin]";
+					mes "But on your way, you run";
+					mes "into someone that is lost.";
+					mes "What should you do?";
+					next;
+					switch(select("Tell them which way to go.","Guide them to their destination.","Ignore.")) {
+					case 1:
+						set '@knight_t,'@knight_t + 10;
+						break;
+					case 2:
+						set '@knight_t,'@knight_t + 10;
+						break;
+					case 3:
+						break;
+					}
+					mes "[Hunter Sherin]";
+					mes "After meeting this lost person, you decide to get back to hunting. Just then, you find that someone is attacking a boss!";
+					next;
+					mes "[Hunter Sherin]";
+					mes "What should you do?";
+					next;
+					switch(select("Watch, then attack when asked for help.","Attack and see what happens.","Just go back to town.")) {
+					case 1:
+						set '@knight_t,'@knight_t + 10;
+						break;
+					case 2:
+						break;
+					case 3:
+						break;
+					}
+					mes "[Hunter Sherin]";
+					mes "You are now very exhausted after your day of hunting. It's time to go back to town.";
+					next;
+					mes "[Hunter Sherin]";
+					mes "But what's this!? You find an expensive item lying on the floor! What should you do with it?";
+					next;
+					switch(select("Pick it up and keep it.","Try to find the owner.","Just walk by.")) {
+					case 1:
+						break;
+					case 2:
+						set '@knight_t,'@knight_t + 10;
+						break;
+					case 3:
+						set '@knight_t,'@knight_t + 10;
+						break;
+					}
+					mes "[Hunter Sherin]";
+					mes "Okay, this is the end of the test!";
+					next;
+					if ('@knight_t == 100) {
+						set job_hunter_q,2;
+						mes "[Hunter Sherin]";
+						mes "Well done! Your answers show you've got the right outlook on life. You definitely have the right qualities to become a Hunter~";
+						next;
+						mes "[Hunter Sherin]";
+						mes "I'm glad to say you've passed the interview~ Now, go to that person in the corner and confirm which item is necessary for your job change test~";
+						close;
+					} else if ('@knight_t == 90) {
+						set job_hunter_q,2;
+						mes "[Hunter Sherin]";
+						mes "Well, I'm looking at your answers and your score isn't perfect. But I'll let you pass anyway. I don't know what our Guildmaster will think, though.";
+						next;
+						mes "[Hunter Sherin]";
+						mes "Just remember to always keep basic etiquette in mind. Try harder in the following tests and make me happy, okay?";
+						close;
+					}
+					set job_hunter_q,1;
+					mes "[Hunter Sherin]";
+					mes "Hmm... I don't think this'll work out. You can't become a Hunter without knowing basic etiquette.";
+					next;
+					mes "[Hunter Sherin]";
+					mes "Think about how you answered the questions one more time. In order to value nature, you must first value your relationship with others.";
+					next;
+					mes "[Hunter Sherin]";
+					mes "Then, you'll be more in tune with nature and with other people. It's this kind of harmony that makes the best Hunters.";
+					close;
+				case 2:
+					mes "[Hunter Sherin]";
+					mes "Okay...";
+					mes "Come back";
+					mes "when you're ready~";
+					close;
+				}
+			case 2:
+				mes "[Hunter Guildsman]";
+				mes "Job change";
+				mes "requirements?";
+				mes "First...";
+				mes "You must be an Archer.";
+				next;
+				mes "[Hunter Guildsman]";
+				mes "Second...";
+				mes "You must be";
+				mes "at least Job Level 40.";
+				next;
+				mes "[Hunter Guildsman]";
+				mes "Third...";
+				mes "You must bring all of the items that will be requested by the guild. You can worry about that later.";
+				next;
+				mes "[Hunter Guildsman]";
+				mes "Fourth...";
+				mes "You've gotta pass the test administered by the guild. If you have had enough training as an Archer, you should be able to pass the test~";
+				close;
+			case 3:
+				mes "[Hunter Guildsman]";
+				mes "Okay then,";
+				mes "see you next time~";
+				close;
+			}
+		} else if (JobLevel > 39 && job_hunter_q == 1) {
+			mes "[Hunter Sherin]";
+			mes "Welcome back...!";
+			mes "Well, let's start with the interview. This time, carefully think about the answers to each question.";
+			next;
+			set '@knight_t,0;
+			mes "[Hunter Sherin]";
+			mes "Well then,";
+			mes "let's begin.";
+			next;
+			mes "[Hunter Sherin]";
+			mes "You are an Archer, and you don't know where you should go to hunt. What do you do?";
+			next;
+			switch(select("Scream out loud asking where you should go.","Quietly ask a person passing by.","Wander around alone and search for a place.")) {
+			case 1:
+				break;
+			case 2:
+				set '@knight_t,'@knight_t + 10;
+				break;
+			case 3:
+				set '@knight_t,'@knight_t + 10;
+				break;
+			}
+			mes "[Hunter Sherin]";
+			mes "So you've decided on a place to hunt. You're going to hunt the monsters known as Hodes in the Sograt Desert.";
+			next;
+			mes "[Hunter Sherin]";
+			mes "But you are in Payon!!";
+			mes "How do you go to the desert?";
+			next;
+			switch(select("Ask a Priest to open a free warp portal.","Use the Kafra service.","Walk with a friend.")) {
+			case 1:
+				break;
+			case 2:
+				set '@knight_t,'@knight_t + 10;
+				break;
+			case 3:
+				set '@knight_t,'@knight_t + 10;
+				break;
+			}
+			mes "[Hunter Sherin]";
+			mes "There is no Priest to ask for a warp, and no friend is around to walk with you. You must use the Kafra service, but you have no Zeny!";
+			next;
+			mes "[Hunter Sherin]";
+			mes "How would you go";
+			mes "about to make the";
+			mes "Zeny that you need?";
+			next;
+			switch(select("Beg here and there.","Sell items I do not need.","Hunt at a nearby field.")) {
+			case 1:
+				break;
+			case 2:
+				set '@knight_t,'@knight_t + 10;
+				break;
+			case 3:
+				set '@knight_t,'@knight_t + 10;
+				break;
+			}
+			mes "[Hunter Sherin]";
+			mes "So you finally arrive at the Sograt Desert. But you realize that Hodes are a bit too strong for you to hunt alone.";
+			next;
+			mes "[Hunter Sherin]";
+			mes "What is your";
+			mes "solution to this";
+			mes "situation?";
+			next;
+			switch(select("Attack a Hode from the top of a hill.","Go back to town.","Attack someone else's Hode.")) {
+			case 1:
+				break;
+			case 2:
+				set '@knight_t,'@knight_t + 10;
+				break;
+			case 3:
+				break;
+			}
+			mes "[Hunter Sherin]";
+			mes "Let's say you were having too much trouble hunting Hodes and returned to town. Now you are out of HP and a Priest happens to be around. How would you ask for a Heal?";
+			next;
+			switch(select("Would it be possible to get a Heal, please?","Heal, please.","Heal me.")) {
+			case 1:
+				set '@knight_t,'@knight_t + 10;
+				break;
+			case 2:
+				break;
+			case 3:
+				break;
+			}
+			mes "[Hunter Sherin]";
+			mes "This time, you found a rare item while you were going through your inventory. You go out to sell the item, and there are many people with stores and chatrooms open.";
+			next;
+			mes "[Hunter Sherin]";
+			mes "What is the";
+			mes "best way to";
+			mes "sell your item?";
+			next;
+			switch(select("Scream out loud to everyone in sight.","Open a chatroom and wait.","Look to see if anyone already wants it.")) {
+			case 1:
+				break;
+			case 2:
+				set '@knight_t,'@knight_t + 10;
+				break;
+			case 3:
+				set '@knight_t,'@knight_t + 10;
+				break;
+			}
+			mes "[Hunter Sherin]";
+			mes "While you are waiting, someone is begging for items and Zeny. What should you do?";
+			next;
+			switch(select("Give some of my items and Zeny.","Ignore and walk away.","Tell the person about a good place to hunt.")) {
+			case 1:
+				break;
+			case 2:
+				break;
+			case 3:
+				set '@knight_t,'@knight_t + 10;
+				break;
+			}
+			mes "[Hunter Sherin]";
+			mes "By now, you decide to go to the Maze by yourself.";
+			next;
+			mes "[Hunter Sherin]";
+			mes "But on your way, you run";
+			mes "into someone that is lost.";
+			mes "What should you do?";
+			next;
+			switch(select("Tell them which way to go.","Guide them to their destination.","Ignore.")) {
+			case 1:
+				set '@knight_t,'@knight_t + 10;
+				break;
+			case 2:
+				set '@knight_t,'@knight_t + 10;
+				break;
+			case 3:
+				break;
+			}
+			mes "[Hunter Sherin]";
+			mes "After meeting this lost person, you decide to get back to hunting. Just then, you find that someone is attacking a boss!";
+			next;
+			mes "[Hunter Sherin]";
+			mes "What should you do?";
+			next;
+			switch(select("Watch, then attack when asked for help.","Attack and see what happens.","Just go back to town.")) {
+			case 1:
+				set '@knight_t,'@knight_t + 10;
+				break;
+			case 2:
+				break;
+			case 3:
+				break;
+			}
+			mes "[Hunter Sherin]";
+			mes "You are now very exhausted after your day of hunting. It's time to go back to town.";
+			next;
+			mes "[Hunter Sherin]";
+			mes "But what's this!? You find an expensive item lying on the floor! What should you do with it?";
+			next;
+			switch(select("Pick it up and keep it.","Try to find the owner.","Just walk by.")) {
+			case 1:
+				break;
+			case 2:
+				set '@knight_t,'@knight_t + 10;
+				break;
+			case 3:
+				set '@knight_t,'@knight_t + 10;
+				break;
+			}
+			mes "[Hunter Sherin]";
+			mes "Okay, this is";
+			mes "the end of the test!";
+			next;
+			if ('@knight_t == 100) {
+				set job_hunter_q,2;
+				mes "[Hunter Sherin]";
+				mes "Well done! It seems you've got the right outlook on life. You definitely have what it takes to become a Hunter~";
+				next;
+				mes "[Hunter Sherin]";
+				mes "I'm happy to say you've passed the interview~ Now, go to that person in the corner and confirm which items are necessary for the job change test~";
+				close;
+			} else if ('@knight_t == 90) {
+				set job_hunter_q,2;
+				mes "[Hunter Sherin]";
+				mes "Hmmm... Well, your score isn't exactly perfect, but I'll let you pass anyway. I'm not sure what our Guildmaster will think though...";
+				next;
+				mes "[Hunter Sherin]";
+				mes "Just remember to keep the basics of etiquette in mind. Try harder in the following tests, and make me happy, okay?";
+				close;
+			} else {
+				set job_hunter_q,1;
+				mes "[Hunter Sherin]";
+				mes "Hmm...";
+				mes "I'm sorry but you can't become a Hunter without knowing basic etiquette.";
+				next;
+				mes "[Hunter Sherin]";
+				mes "Think about how you answered the questions once more. In order to be in tune with nature, you must first value your relationship with others.";
+				next;
+				mes "[Hunter Sherin]";
+				mes "Well then...";
+				mes "Come back";
+				mes "when you're ready.";
+				close;
+			}
+		} else if (job_hunter_q > 2 && job_hunter_q < 10) {
+			mes "[Hunter Sherin]";
+			mes "Just give the item to the Demon Hunter, the guy who's all the way to the left in this area~";
+			next;
+			if (Sex == Male) {
+				mes "[Hunter Sherin]";
+				mes "If you decide to become a Hunter, promise to come visit me. I want to see you as a Hunter. You would look great!!";
+				close;
+			} else {
+				mes "[Hunter Sherin]";
+				mes "If you decide to become a Hunter, come and visit me, okay? You're pretty, but... You'd be even prettier as a Hunter. Hehe~";
+				close;
+			}
+		} else if (job_hunter_q == 2) {
+			mes "[Hunter Sherin]";
+			mes "????";
+			next;
+			mes "[Hunter Sherin]";
+			mes "You weren't able to find the Demon Hunter? That guy is just to the left! Hehe~";
+			next;
+			mes "[Hunter Sherin]";
+			mes "I want to see you become a Hunter...! Waaah~ I think you'd look great, so please hurry!";
+			close;
+		} else {
+			mes "[Hunter Sherin]";
+			mes "Hmm, I think you're supposed to visit someone else, not me. Like our Guildmaster who's out for business, you know?";
+			next;
+			mes "[Hunter Sherin]";
+			mes "I heard he's at the Payon Central Palace... Or in the Archer Village, one of those two places. Try visiting those places and find him, okay?";
+			close;
+		}
+	} else {
+		mes "[Hunter Guildsman]";
+		mes "Eh? You haven't trained enough as an Archer. To become a Hunter, you need to gain more experience as an Archer first.";
+		next;
+		mes "[Hunter Guildsman]";
+		mes "Well then, go train some more. You must be at least Job Level 40 to be exact. Of course, you can always go higher. See you next time~";
+		close;
+	}
+}
+
+hu_in01.gat,382,382,4	script	Guild Receptionist#hnt	732,{
+
+	if (job_hunter_q == 2) {
+		mes "[Guild Receptionist]";
+		mes "Greetings. They call me... ^660000The Demon Hunter^000000. I am the one in charge of processing applications. Your name is ... "+strcharinfo(0)+", correct?";
+		next;
+		switch(select("Yes, that is correct.","Nope~~(heeheehee)")) {
+		case 1:
+			mes "[Demon Hunter]";
+			mes "Okay. These are the items you need for the test. Since we provide all the arrows you will be using for this test, we need you to get the materials to make them.";
+			next;
+			mes "[Demon Hunter]";
+			mes "You see, we're having some financial problems. Let's see, we're short on these items...";
+			next;
+			set '@item_need,rand(1,7);
+			if ('@item_need == 1) {
+				mes "[Demon Hunter]";
+				mes "Hmm. ^6600005 Claw of Desert Wolf^000000 to use for arrow tips. ^6600005 Trunk^000000 to use here and there. And ^6600003 White Herb^000000 please.";
+				set job_hunter_q,3;
+				next;
+				mes "[Demon Hunter]";
+				mes "Oh right. Our Guildmaster has gone on an official trip to the Payon Central Palace. You have to go visit him because the one that administers the test.";
+				next;
+				mes "[Demon Hunter]";
+				mes "Alright then, come back to me when you have everything ready~";
+				close;
+			} else if ('@item_need == 2) {
+				mes "[Demon Hunter]";
+				mes "Hmm. ^6600003 Bill of Birds^000000 to use for the arrow tips. ^6600005 Skel-bone^000000 to use here and there. And ^6600003 Green Herbs^000000. That should be enough.";
+				set job_hunter_q,4;
+				next;
+				mes "[Demon Hunter]";
+				mes "Oh right. Our Guildmaster has gone on an official trip to the Payon Central Palace. You have to go visit him since he's the one that administers the test.";
+				next;
+				mes "[Demon Hunter]";
+				mes "Alright then, come back to me when you have everything ready~";
+				close;
+			} else if ('@item_need == 3) {
+				mes "[Demon Hunter]";
+				mes "Mmm. ^6600003 Venom Canine^000000 to use as arrow tips. ^6600003 Animal Skin^000000 to use here and there. And ^6600005 Red Herb^000000. That should be enough.";
+				set job_hunter_q,5;
+				next;
+				mes "[Demon Hunter]";
+				mes "Oh right. Our Guildmaster has gone on an official trip to the Payon Central Palace. You have to go visit him as well since he's the one that administers the test.";
+				next;
+				mes "[Demon Hunter]";
+				mes "Alright then, come back to me when you have everything ready~";
+				close;
+			} else if ('@item_need == 4) {
+				mes "[Demon Hunter]";
+				mes "Mmm. ^6600003 Dokkaebi Horn^000000 to make the arrow tips. ^6600003 Piece of Egg Shell^000000 to use here and there. And ^66000010 Fluff^000000. That should be enough.";
+				set job_hunter_q,6;
+				next;
+				mes "[Demon Hunter]";
+				mes "Oh right. Our Guildmaster has gone on an official trip to the Payon Central Palace. You have to go visit him as well since he's the one that administers the test.";
+				next;
+				mes "[Demon Hunter]";
+				mes "Alright then, come back to me when you have everything ready~";
+				close;
+			} else if ('@item_need == 5) {
+				mes "[Demon Hunter]";
+				mes "Mmm. ^6600009 Shell^000000 to make the arrow tips. ^6600009 Worm Peeling^000000 to use here and there. And ^6600009 Yellow Herb^000000. That should be enough.";
+				set job_hunter_q,7;
+				next;
+				mes "[Demon Hunter]";
+				mes "By the way, a member of our Hunter Guild is at the Archer Guild on official business. I believe you have to go visit this person since he is in charge of the testing.";
+				next;
+				mes "[Demon Hunter]";
+				mes "Alright then, come back when you have everything ready~";
+				close;
+			} else if ('@item_need == 6) {
+				mes "[Demon Hunter]";
+				mes "Mmm. ^6600003 Tooth of Bat^000000 to use for the arrow tips. ^6600001 Sticky Mucus^000000 to use as adhesive. And ^6600001 Bear's Footskin^000000 will do.";
+				set job_hunter_q,8;
+				next;
+				mes "[Demon Hunter]";
+				mes "By the way, a member of our Hunter Guild is at the Archer Guild on official business. I believe you have to go visit the person since he's in charge of the testing.";
+				next;
+				mes "[Demon Hunter]";
+				mes "Alright then, come back when you have everything ready~";
+				close;
+			} else {
+				mes "[Demon Hunter]";
+				mes "Mmm. ^6600002 Porcupine Quill^000000 to use for the arrow tips. ^6600001 Yoyo Tail^000000 to help make the bow string. And ^6600001 Acorn^000000 please.";
+				set job_hunter_q,9;
+				next;
+				mes "[Demon Hunter]";
+				mes "Before I forget. A member of our Hunter Guild is at the Archer Guild for official business. I believe you have to go visit the person since he is in charge of the testing.";
+				next;
+				mes "[Demon Hunter]";
+				mes "Alright then, come back when you have everything ready~";
+				close;
+			}
+		case 2:
+			mes "[Demon Hunter]";
+			mes "Hey, stop messing around.";
+			mes "Your name is "+strcharinfo(0)+", right?";
+			next;
+			switch(select("Yes...","Hehehe. I keep telling you, it's not~~")) {
+			case 1:
+				mes "[Demon Hunter]";
+				mes "Okay, then. These are the items you need for the test. Since we provide all of the necessary arrows you'll use for the test, we need you to get the materials to make them.";
+				next;
+				mes "[Demon Hunter]";
+				mes "You see, right now we're having some financial problems. Let's see, we're short on these items...";
+				next;
+				set '@item_need,rand(1,7);
+				if ('@item_need == 1) {
+					mes "[Demon Hunter]";
+					mes "Hmm. 5 ^660000Claw of Desert Wolf^000000 to use for arrow tips. ^6600005 Trunk^000000 to use here and there. And ^6600003 White Herb^000000 please.";
+					set job_hunter_q,3;
+					next;
+					mes "[Demon Hunter]";
+					mes "Oh right. Our Guildmaster has gone on an official trip to the Payon Central Palace. You have to go visit him because the one that administers the test.";
+					next;
+					mes "[Demon Hunter]";
+					mes "Alright then, come back to me when you have everything ready~";
+					close;
+				} else if ('@item_need == 2) {
+					mes "[Demon Hunter]";
+					mes "Hmm. ^6600003 Bill of Birds^000000 to use for the arrow tips. ^6600005 Skel-bone^000000 to use here and there. And ^6600003 Green Herbs^000000. That should be enough.";
+					set job_hunter_q,4;
+					next;
+					mes "[Demon Hunter]";
+					mes "Oh right. Our Guildmaster has gone on an official trip to the Payon Central Palace. You have to go visit him since he's the one that administers the test.";
+					next;
+					mes "[Demon Hunter]";
+					mes "Alright then, come back to me when you have everything ready~";
+					close;
+				} else if ('@item_need == 3) {
+					mes "[Demon Hunter]";
+					mes "Mmm. ^6600003 Venom Canine^000000 to use as arrow tips. ^6600003 Animal Skin^000000 to use here and there. And ^6600005 Red Herb^000000. That should be enough.";
+					set job_hunter_q,5;
+					next;
+					mes "[Demon Hunter]";
+					mes "Oh right. Our Guildmaster has gone on an official trip to the Payon Central Palace. You have to go visit him as well since he's the one that administers the test.";
+					next;
+					mes "[Demon Hunter]";
+					mes "Alright then, come back to me when you have everything ready~";
+					close;
+				} else if ('@item_need == 4) {
+					mes "[Demon Hunter]";
+					mes "Mmm. ^6600003 Dokkaebi Horn^000000 to make the arrow tips. ^6600003 Piece of Egg Shell^000000 to use here and there. And ^66000010 Fluff^000000. That should be enough.";
+					set job_hunter_q,6;
+					next;
+					mes "[Demon Hunter]";
+					mes "Oh right. Our Guildmaster has gone on an official trip to the Payon Central Palace. You have to go visit him as well since he's the one that administers the test.";
+					next;
+					mes "[Demon Hunter]";
+					mes "Alright then, come back to me when you have everything ready~";
+					close;
+				} else if ('@item_need == 5) {
+					mes "[Demon Hunter]";
+					mes "Mmm. ^6600009 Shell^000000 to make the arrow tips. ^6600009 Worm Peeling^000000 to use here and there. And ^6600009 Yellow Herb^000000. That should be enough.";
+					set job_hunter_q,7;
+					next;
+					mes "[Demon Hunter]";
+					mes "By the way, a member of our Hunter Guild is at the Archer Guild on official business. I believe you have to go visit this person since he is in charge of the testing.";
+					next;
+					mes "[Demon Hunter]";
+					mes "Alright then, come back when you have everything ready~";
+					close;
+				} else if ('@item_need == 6) {
+					mes "[Demon Hunter]";
+					mes "Mmm. ^6600003 Tooth of Bat^000000 to use for the arrow tips. ^6600001 Sticky Mucus^000000 to use as adhesive. And ^6600001 Bear's Footskin^000000 will do.";
+					set job_hunter_q,8;
+					next;
+					mes "[Demon Hunter]";
+					mes "By the way, a member of our Hunter Guild is at the Archer Guild on official business. I believe you have to go visit the person since he's in charge of the testing.";
+					next;
+					mes "[Demon Hunter]";
+					mes "Alright then, come back when you have everything ready~";
+					close;
+				} else {
+					mes "[Demon Hunter]";
+					mes "Mmm. ^6600002 Porcupine Quill^000000 to use for the arrow tips. ^6600001 Yoyo Tail^000000 to help make the bow string. And ^6600001 Acorn^000000 please.";
+					set job_hunter_q,9;
+					next;
+					mes "[Demon Hunter]";
+					mes "Before I forget. A member of our Hunter Guild is at the Archer Guild for official business. I believe you have to go visit the person since he is in charge of the testing.";
+					next;
+					mes "[Demon Hunter]";
+					mes "Alright then, come back when you have everything ready~";
+					close;
+				}
+			case 2:
+				mes "[Demon Hunter]";
+				mes "Leave if you plan to trifle me your petty tricks. Do you not realize that you are toying with ^660000The Demon Hunter^000000?!'";
+				close2;
+				warp "hugel.gat",208,223;
+				end;
+			}
+		}
+	} else if (job_hunter_q == 3) {
+		mes "[Demon Hunter]";
+		mes "Hmm?";
+		next;
+		if (countitem(7030) > 4 && countitem(1019) > 4 && countitem(509) > 2) {
+			mes "[Demon Hunter]";
+			mes "You brought all of the necessary materials... You can get directions to the testing area from our Guildmaster who is currently in the Payon Central Palace.";
+			set job_hunter_q,10;
+			delitem 7030,5;
+			delitem 1019,5;
+			delitem 509,3;
+			close;
+		} else {
+			mes "[Demon Hunter]";
+			mes "You don't have all";
+			mes "of the required materials...";
+			next;
+			mes "[Demon Hunter]";
+			mes "The items you need are";
+			mes "^6600005 Claw of Desert Wolf^000000,";
+			mes "^6600005 Trunk^000000 and";
+			mes "^6600003 White Herb^000000.";
+			mes "Come back once you have";
+			mes "gathered all the items.";
+			close;
+		}
+	} else if (job_hunter_q == 4) {
+		mes "[Demon Hunter]";
+		mes "Ah, you have returned.";
+		next;
+		if (countitem(925) > 2 && countitem(932) > 4 && countitem(511) > 2) {
+			mes "[Demon Hunter]";
+			mes "You brought all the necessary materials... You can get directions to the testing area from our Guildmaster that is currently in the Payon Central Palace.";
+			set job_hunter_q,10;
+			delitem 925,3;
+			delitem 932,5;
+			delitem 511,3;
+			close;
+		} else {
+			mes "[Demon Hunter]";
+			mes "You don't have all";
+			mes "of the required materials...";
+			next;
+			mes "[Demon Hunter]";
+			mes "The items you need are";
+			mes "^6600003 Bill of Birds^000000,";
+			mes "^6600005 Skel-bone^000000 and";
+			mes "^6600003 Green Herb^000000.";
+			mes "Come back once you have";
+			mes "gathered all the items.";
+			close;
+		}
+	} else if (job_hunter_q == 5) {
+		mes "[Demon Hunter]";
+		mes "Hmm...let me see.";
+		next;
+		if (countitem(937) > 2 && countitem(919) > 2 && countitem(507) > 4) {
+			mes "[Demon Hunter]";
+			mes "You brought all of the necessary materials... You can get directions to the testing area from our Guildmaster that is currently in the Payon Central Palace.";
+			set job_hunter_q,10;
+			delitem 937,3;
+			delitem 919,3;
+			delitem 507,5;
+			close;
+		} else {
+			mes "[Demon Hunter]";
+			mes "You don't have all";
+			mes "of the required materials...";
+			next;
+			mes "[Demon Hunter]";
+			mes "The items you need are";
+			mes "^6600003 Venom Canine^000000,";
+			mes "^6600003 Animal Skin^000000 and";
+			mes "^6600005 Red Herb^000000.";
+			mes "Come back once you have";
+			mes "gathered all of the items.";
+			close;
+		}
+	} else if (job_hunter_q == 6) {
+		mes "[Demon Hunter]";
+		mes "Hmm? Let me see...";
+		next;
+		if (countitem(1021) > 2 && countitem(7032) > 2 && countitem(914) > 9) {
+			mes "[Demon Hunter]";
+			mes "You brought all of the necessary materials... You can get directions to the testing area from our Guildmaster that is currently in the Payon Central Palace.";
+			set job_hunter_q,10;
+			delitem 1021,3;
+			delitem 7032,3;
+			delitem 914,10;
+			close;
+		} else {
+			mes "[Demon Hunter]";
+			mes "You don't have all";
+			mes "of the required materials...";
+			next;
+			mes "[Demon Hunter]";
+			mes "The items you need are";
+			mes "^6600003 Dokkaebi Horn^000000,";
+			mes "^6600003 Piece of Egg Shell^000000 and";
+			mes "^66000010 Fluff^000000.";
+			mes "Come back once you have";
+			mes "gathered all the items.";
+			close;
+		}
+	} else if (job_hunter_q == 7) {
+		mes "[Demon Hunter]";
+		mes "Eh? Let me see...";
+		next;
+		if (countitem(935) > 8 && countitem(955) > 8 && countitem(508) > 8) {
+			mes "[Demon Hunter]";
+			mes "You brought all of the necessary materials... To get directions to the testing area, go talk to our Guildmaster who is at the Archer Guild.";
+			set job_hunter_q,11;
+			delitem 935,9;
+			delitem 955,9;
+			delitem 508,9;
+			close;
+		} else {
+			mes "[Demon Hunter]";
+			mes "You don't have all";
+			mes "of the required materials...";
+			next;
+			mes "[Demon Hunter]";
+			mes "The items you need are";
+			mes "^6600009 Shell^000000,";
+			mes "^6600009 Worm Peeling^000000 and";
+			mes "^6600009 Yellow Herb^000000.";
+			mes "Come back once you have";
+			mes "gathered all the items.";
+			close;
+		}
+	} else if (job_hunter_q == 8) {
+		mes "[Demon Hunter]";
+		mes "Huh?";
+		next;
+		if (countitem(913) > 2 && countitem(938) > 0 && countitem(948) > 0) {
+			mes "[Demon Hunter]";
+			mes "You brought all of the necessary materials... To get directions to the testing area, go talk to our Guildmaster who is at the Archer Guild.";
+			set job_hunter_q,11;
+			delitem 913,3;
+			delitem 938,1;
+			delitem 948,1;
+			close;
+		} else {
+			mes "[Demon Hunter]";
+			mes "You don't have all";
+			mes "of the required materials...";
+			next;
+			mes "[Demon Hunter]";
+			mes "The items you need are";
+			mes "^6600003 Tooth of Bat^000000,";
+			mes "^6600001 Sticky Mucus^000000 and";
+			mes "^6600001 Bear's Footskin^000000.";
+			mes "Come back once you have";
+			mes "gathered all the items.";
+			close;
+		}
+	} else if (job_hunter_q == 9) {
+		mes "[Demon Hunter]";
+		mes "Huh?";
+		next;
+		if (countitem(1027) > 1 && countitem(942) > 0 && countitem(1026) > 0) {
+			mes "[Demon Hunter]";
+			mes "You brought all of the necessary materials... To get directions to the testing area, go talk to our Guildmaster who is at the Archer Guild.";
+			set job_hunter_q,11;
+			delitem 1027,2;
+			delitem 942,1;
+			delitem 1026,1;
+			close;
+		} else {
+			mes "[Demon Hunter]";
+			mes "You don't have all";
+			mes "of the required materials...";
+			next;
+			mes "[Demon Hunter]";
+			mes "The items you need are";
+			mes "^6600002 Porcupine Quill^000000,";
+			mes "^6600001 Yoyo Tail^000000 and";
+			mes "^6600001 Acorn^000000.";
+			mes "Come back once you have";
+			mes "gathered all the items.";
+			close;
+		}
+	} else if (job_hunter_q > 9 && job_hunter_q < 17) {
+		mes "[Demon Hunter]";
+		mes "Hmm? You didn't go to the Guildmaster either in Payon Central Palace or at the Archer Guild? He should be at one of the two places, so go look for him.";
+		close;
+	} else if (job_hunter_q == 17) {
+		mes "[Demon Hunter]";
+		mes "Ooh. You passed the test. Congratulations~ You should go talk to Sherin now.";
+		close;
+	} else {
+		mes "[Guild Receptionist]";
+		mes "If you wish to change your job to a Hunter, you must register first.";
+		close;
+	}
+}
+
+payon_in03.gat,131,7,3	script	Hunter#htnGM	59,{
+
+	if (job_hunter_q == 10) {
+		mes "[Hunter Guildmaster]";
+		mes "Hmpf. You must be here for the Hunter job test. Let me tell you about the testing process. What would you like to know?";
+		set @a0,1;
+		next;
+		while(1) {
+			switch(select("What is the test?","What are the passing requirements?","Any warnings?","Begin test.")) {
+			case 1:
+				mes "[Hunter Guildmaster]";
+				mes "You have to hunt down certain monsters with a particular name. But you must avoid all the traps while you're at it.";
+				next;
+				mes "[Hunter Guildmaster]";
+				mes "This is to test your ability to move swiftly and locate targets in various situations.";
+				set @a0,@a0 + 1;
+				close;
+			case 2:
+				mes "[Hunter Guildmaster]";
+				mes "Within the time limit, starting in the 6 o'clock direction of the map, you must hunt the target monsters and then hit the escape switch that will appear in the center of the map.";
+				next;
+				mes "[Hunter Guildmaster]";
+				mes "You will pass if you are able to escape in the 12 o'clock direction of the map after you hit the switch.";
+				set @a0,@a0 + 1;
+				close;
+			case 3:
+				mes "[Hunter Guildmaster]";
+				mes "Hmm. Warnings... Well, if you fall into a trap, you have to start from the beginning. Also, only one person can take the test at a time.";
+				next;
+				mes "[Hunter Guildmaster]";
+				mes "I will send you to the testing place. There will be a waiting room, but if someone else is taking the test, you must wait in the chatroom.";
+				next;
+				mes "[Hunter Guildmaster]";
+				mes "If the person in front succeeds, resigns or fails, the next person waiting in the chatroom is sent to the testing area. If nobody is waiting, the test will begin as soon as you enter the chatroom.";
+				set @a0,@a0 + 1;
+				close;
+			case 4:
+				if (@a0 == 1) {
+					mes "[Hunter Guildmaster]";
+					mes "Okay. I'll send you to the testing area right now. Don't blame me if you get lost or confused because you didn't listen to my explanation.";
+					next;
+				} else {
+					mes "[Hunter Guildmaster]";
+					mes "Okay. Best of luck.";
+					mes "I'll send you right now.";
+					next;
+				}
+				break;
+			}
+			break;
+		}
+		mes "[Hunter Guildmaster]";
+		mes "Well, then. Your arrows are probably still being made, so you can use mine to take the test.";
+		set job_hunter_q,12;
+		getitem 1751,200;
+		close2;
+		warp "job_hunte.gat",176,22;
+		end;
+	} else if (job_hunter_q > 1 && job_hunter_q < 10) {
+		mes "[Hunter Guildmaster]";
+		mes "Mmm...?";
+		mes "What is an Archer";
+		mes "visiting me for?";
+		next;
+		mes "[Hunter Guildmaster]";
+		mes "I wasn't notified about anything in particular from the Hunter Guild. You're not trying to skip the middle part of the Hunter test, are you?";
+		next;
+		mes "[Hunter Guildmaster]";
+		mes "Go gather the items for the test, and come back after you've visited the Hunter Guild.";
+		close;
+	} else if (job_hunter_q == 11) {
+		mes "[Hunter]";
+		mes "Hmm? Can I help you? If you wish to change jobs, you should visit the person at the Archer Guild, not me.";
+		close;
+	} else if (job_hunter_q > 11 && job_hunter_q < 16) {
+		mes "[Hunter Guildmaster]";
+		mes "Hmm. You're the Archer that almost gave up on changing jobs. You do have everything ready, right? Then I'll send you to take the test right away.";
+		next;
+		mes "[Hunter Guildmaster]";
+		mes "If you have any";
+		mes "questions, ask now.";
+		next;
+		while(1) {
+			switch(select("What is the test?","What are the passing requirements?","Any warnings?","Begin test.")) {
+			case 1:
+				mes "[Hunter Guildmaster]";
+				mes "You have to hunt down certain monsters with a particular name, but you also avoid all the traps at the same time. This is to test your ability to move swiftly and locate targets in various situations.";
+				set @a0,@a0 + 1;
+				close;
+			case 2:
+				mes "[Hunter Guildmaster]";
+				mes "Within the given time, you will start at the 6 o'clock direction of the map, hunt the target monsters, and then hit the escape switch that will appear in the center of the map.";
+				next;
+				mes "[Hunter Guildmaster]";
+				mes "You will pass if you are able to escape in the 12 o'clock direction of the map after you hit the switch.";
+				set @a0,@a0 + 1;
+				close;
+			case 3:
+				mes "[Hunter Guildmaster]";
+				mes "Hmm. Warnings... Well, if you fall into a trap, you have to start from the beginning. Also, only one person can take the test at a time.";
+				next;
+				mes "[Hunter Guildmaster]";
+				mes "I'll send you to the testing place. There is a waiting room, but if someone else is taking the test, you must wait in the chatroom.";
+				next;
+				mes "[Hunter Guildmaster]";
+				mes "If the person in front succeeds, resigns or fails, the next person waiting in the chatroom is sent to the testing area. If nobody is waiting, the test will begin as soon as you enter the chatroom.";
+				set @a0,@a0 + 1;
+				close;
+			case 4:
+				mes "[Hunter Guildmaster]";
+				mes "Okay. Good luck.";
+				mes "I'll send you right now.";
+				next;
+				break;
+			}
+			break;
+		}
+		mes "[Hunter Guildmaster]";
+		mes "Eh? Why won't I give you Silver Arrows? Don't expect anything when you don't bring any materials.";
+		next;
+		mes "[Hunter Guildmaster]";
+		mes "Anyway, I believe you've prepared it yourself. Let's begin now.";
+		next;
+		switch(select("Okay. Let's start...","Ah, wait a sec.")) {
+		case 1:
+			mes "[Hunter Guildmaster]";
+			mes "Okay!! I hope";
+			mes "you will pass this time!";
+			close2;
+			set job_hunter_q,12;
+			warp "job_hunte.gat",176,22;
+			end;
+		case 2:
+			mes "[Hunter Guildmaster]";
+			mes "Then hurry and finish";
+			mes "all of your preparations.";
+			close;
+		}
+	} else if (job_hunter_q == 16) {
+		mes "[Hunter Guildmaster]";
+		mes "Wow, you came back in one piece!";
+		mes "I mean, good job. I'll give you the item which proves that you have passed the test.";
+		set job_hunter_q,17;
+		savepoint "payon.gat",104,99;
+		getitem 1007,1;
+		next;
+		mes "[Hunter Guildmaster]";
+		mes "Okay, here it is. Now, go back to the Hunter Guild. I have some more business left to do here, but I hope you can become a Hunter soon.";
+		close;
+	} else if (job_hunter_q == 17) {
+		mes "[Hunter Guildmaster]";
+		mes "I see you aren't in a hurry to become a Hunter? When I first became a Hunter, I ran around for a month wildly brandishing my bow because I was so happy. Hehe~";
+		next;
+		mes "[Hunter Guildmaster]";
+		mes "Now, you should go back to the Hunter Guild~";
+		close;
+	} else {
+		mes "[Hunter]";
+		mes "...Can I help you?";
+		mes "I'm here for official business and am busy at the moment. If you'll excuse me...";
+		close;
+	}
+}
+
+payon_in02.gat,21,31,1	script	Hunter#htnGM2	59,{
+
+	cutin "job_huntermaster",2;
+	if (job_hunter_q == 11) {
+		mes "[Hunter Guildmaster]";
+		mes "Mmm. I see you're here for the Hunter job test. Let me explain the testing process. What would you like to know?";
+		set @a0,1;
+		next;
+		while(1) {
+			switch(select("What is the test?","What are the passing requirements?","Any warnings?","Begin test.")) {
+			case 1:
+				mes "[Hunter Guildmaster]";
+				mes "You have to hunt down certain monsters with a particular name, but you must avoid all of the traps here at the same time.";
+				next;
+				mes "[Hunter Guildmaster]";
+				mes "This is to test your ability to move swiftly and locate targets in various situations.";
+				set @a0,@a0 + 1;
+				close2;
+				cutin "job_huntermaster",255;
+				end;
+			case 2:
+				mes "[Hunter Guildmaster]";
+				mes "Within the given time, you will start in the 6 o'clock direction of the map, hunt the target monsters, and hit the escape switch that will appear in the center of the map.";
+				next;
+				mes "[Hunter Guildmaster]";
+				mes "You will pass if you are able to escape in the 12 o'clock direction of the map when the switch is activated.";
+				set @a0,@a0 + 1;
+				close2;
+				cutin "job_huntermaster",255;
+				end;
+			case 3:
+				mes "[Hunter Guildmaster]";
+				mes "Mmm. Warnings... Well, if you fall into a trap, you have to start the test over from the beginning. And only one person can take the test at a time.";
+				next;
+				mes "[Hunter Guildmaster]";
+				mes "I'll send you to the testing place. There is a waiting room, but if someone else is taking the test, you must wait in the chatroom.";
+				next;
+				mes "[Hunter Guildmaster]";
+				mes "If the person currently taking the test passes or fails, the next person waiting in the chatroom is sent to the testing area. If nobody is waiting, the test will begin as soon as you enter the chatroom.";
+				set @a0,@a0 + 1;
+				close2;
+				cutin "job_huntermaster",255;
+				end;
+			case 4:
+				if (@a0 == 1) {
+					mes "[Hunter Guildmaster]";
+					mes "...Okay. I'll send you to the testing area right now. Don't blame me if you get lost or confused because you didn't listen to the explanation.";
+					next;
+				} else {
+					mes "[Hunter Guildmaster]";
+					mes "Okay, best of luck.";
+					mes "I'll send you right now.";
+					next;
+				}
+				break;
+			}
+			break;
+		}
+		mes "[Hunter Guildmaster]";
+		mes "Well, your arrows are probably still being made, so you can use mine to take the test.";
+		getitem 1751,200;
+		next;
+		mes "[Hunter Guildmaster]";
+		mes "Good luck.";
+		set job_hunter_q,12;
+		warp "job_hunte.gat",176,22;
+		end;
+	} else if (job_hunter_q > 1 && job_hunter_q < 10) {
+		mes "[Hunter Guildmaster]";
+		mes "Mmm...?";
+		mes "Why is an Archer";
+		mes "visiting me?";
+		next;
+		mes "[Hunter Guildmaster]";
+		mes "I wasn't notified by the Hunter Guild about anything. You're not trying to skip the middle part of the Hunter test, are you?";
+		next;
+		mes "[Hunter Guildmaster]";
+		mes "Stop by once you have gathered all the items needed for the test.";
+		close2;
+		cutin "job_huntermaster",255;
+		end;
+	} else if (job_hunter_q == 10) {
+		mes "[Hunter]";
+		mes "Mmm?";
+		mes "Can I help you";
+		mes "with something?";
+		mes "Oh, you must be";
+		mes "a Hunter applicant.";
+		next;
+		mes "[Hunter]";
+		mes "If you wish to change jobs, I think you need to go visit the person at Payon Central Palace.";
+		close2;
+		cutin "job_huntermaster",255;
+		end;
+	} else if (job_hunter_q > 11 && job_hunter_q < 16) {
+		mes "[Hunter Guildmaster]";
+		mes "Mmm? Aren't you the Archer who gave up last time? Now you're ready, right? Then I'll send you to the job change area right now.";
+		next;
+		mes "[Hunter Guildmaster]";
+		mes "If you still";
+		mes "have questions,";
+		mes "feel free to ask.";
+		next;
+		while(1) {
+			switch(select("What is the test?","What are the requirements to pass the test?","Any warnings?","Begin test.")) {
+			case 1:
+				mes "[Hunter Guildmaster]";
+				mes "You have to hunt down certain monsters with a particular name, but you must avoid all of the traps here at the same time.";
+				next;
+				mes "[Hunter Guildmaster]";
+				mes "This is to test your ability to move swiftly and locate targets in various situations.";
+				set @a0,@a0 + 1;
+				close2;
+				cutin "job_huntermaster",255;
+				end;
+			case 2:
+				mes "[Hunter Guildmaster]";
+				mes "Within the given time, you will start in the 6 o'clock direction of the map, hunt the target monsters, and hit the escape switch that will appear in the center of the map.";
+				next;
+				mes "[Hunter Guildmaster]";
+				mes "You will pass if you are able to escape in the 12 o'clock direction of the map when the switch is activated.";
+				set @a0,@a0 + 1;
+				close2;
+				cutin "job_huntermaster",255;
+				end;
+			case 3:
+				mes "[Hunter Guildmaster]";
+				mes "Mmm. Warnings... Well, if you fall into a trap, you have to start the test over from the beginning. And only one person can take the test at a time.";
+				next;
+				mes "[Hunter Guildmaster]";
+				mes "I'll send you to the testing place. There is a waiting room, but if someone else is taking the test, you must wait in the chatroom.";
+				next;
+				mes "[Hunter Guildmaster]";
+				mes "If the person currently taking the test passes or fails, the next person waiting in the chatroom is sent to the testing area. If nobody is waiting, the test will begin as soon as you enter the chatroom.";
+				set @a0,@a0 + 1;
+				close2;
+				cutin "job_huntermaster",255;
+				end;
+			case 4:
+				mes "[Hunter Guildmaster]";
+				mes "Okay, good luck.";
+				mes "I'll send you right now...";
+				next;
+				break;
+			}
+			break;
+		}
+		mes "[Hunter Guildmaster]";
+		mes "Eh? Why don't I give you any Silver Arrows? Well, you shouldn't expect to get anything when you didn't even bring the materials.";
+		next;
+		mes "[Hunter Guildmaster]";
+		mes "Well...";
+		mes "I believe";
+		mes "you're ready.";
+		mes "Let's begin.";
+		next;
+		switch(select("Yes, let's start.","Ah, wait a moment.")) {
+		case 1:
+			mes "[Hunter Guildmaster]";
+			mes "Okay!! Now...";
+			mes "Pass this time!";
+			close2;
+			cutin "job_huntermaster",255;
+			set job_hunter_q,12;
+			warp "job_hunte.gat",176,22;
+			end;
+		case 2:
+			mes "[Hunter Guildmaster]";
+			mes "*Sigh...*";
+			mes "Come back when";
+			mes "you're done with";
+			mes "your preparations.";
+			close2;
+			cutin "job_huntermaster",255;
+			end;
+		}
+	} else if (job_hunter_q == 16) {
+		mes "[Hunter Guildmaster]";
+		mes "Wow. You're back in one piece!";
+		mes "I mean, good job. Well then, I'll give you the item which serves as proof that you passed the test.";
+		set job_hunter_q,17;
+		savepoint "payon.gat",104,99;
+		getitem 1007,1;
+		next;
+		mes "[Hunter Guildmaster]";
+		mes "Well...";
+		mes "There you go.";
+		mes "Now hurry back to the Hunter Guild, and join us~";
+		close2;
+		cutin "job_huntermaster",255;
+		end;
+	} else if (job_hunter_q == 17) {
+		mes "[Hunter Guildmaster]";
+		mes "I see you're not in a hurry to become a Hunter. I was running around with joy, wildly brandishing my bow the first month I became a Hunter. Hehe~";
+		next;
+		mes "[Hunter Guildmaster]";
+		mes "Now hurry~";
+		mes "They're waiting";
+		mes "for you back";
+		mes "at the Hunter Guild.";
+		close2;
+		cutin "job_huntermaster",255;
+		end;
+	} else {
+		mes "[Hunter]";
+		mes "What do you want? I'm on an official trip and am busy at the moment. Now if you'll excuse me.";
+		close2;
+		cutin "job_huntermaster",255;
+		end;
+	}
+}
+
+job_hunte.gat,178,32,1	script	Guide#hnt	107,5,2,{
+
+	if (job_hunter_q == 12) {
+		mes "[Guide]";
+		mes "Good day. Welcome to the Hunter testing site. The test begins when you enter the next room.";
+		next;
+		mes "[Guide]";
+		mes "As explained before, hunt 4 or more of the monsters named ^3355FFJob change monster^000000. Upon doing so, a switch in the center of the map will then appear.";
+		next;
+		mes "[Guide]";
+		mes "When you destroy the switch, the exit will appear in the 12 o'clock direction of the map. Complete everything within the given time and escape.";
+		next;
+		mes "[Guide]";
+		mes "If you faint in the middle, fall into a trap, or go over the time limit, you'll fail. Then you must then retake the test.";
+		next;
+		mes "[Guide]";
+		mes "We will provide the arrows, so just make sure that you bring a bow. Well, then. Please enter when you are ready.";
+		savepoint "job_hunte.gat",176,22;
+		close;
+	} else if (job_hunter_q > 12 && job_hunter_q < 16) {
+		mes "[Guide]";
+		mes "Hmm...";
+		mes "Did you mess up?";
+		mes "I'll recover some";
+		mes "of your HP and SP for now.";
+		percentheal 100,0;
+		percentheal 0,100;
+		next;
+		mes "[Guide]";
+		mes "If it's too hard, it wouldn't hurt to try again next time. Would you like to resign?";
+		next;
+		switch(select("Keep trying.","Resign.")) {
+		case 1:
+			mes "[Guide]";
+			mes "Okay. Do your best to become a great Hunter. Please enter the waiting room. If someone entered already, you must wait until that person is done.";
+			close;
+		case 2:
+			mes "[Guide]";
+			mapannounce "job_hunte.gat",""+strcharinfo(0)+" has resigned. Next person, please enter.",8;
+			mes "Very well. I'll send you to Payon. Hope to see you next time. Don't forget to save when you leave.";
+			donpcevent "hntwait::OnCommandReset";
+			close2;
+			set job_hunter_q,13;
+			savepoint "payon.gat",104,99;
+			warp "payon_in02.gat",21,27;
+			end;
+		}
+	} else if (job_hunter_q > 15) {
+		mes "[Guide]";
+		mes "You shouldn't be here. How about finding the required job change item first?";
+		close2;
+		savepoint "payon.gat",104,99;
+		warp "payon_in02.gat",21,27;
+		end;
+	}
+
+OnTouch:
+	if (job_hunter_q == 12) {
+		mes "[Guide]";
+		mes "Good day. Welcome to the Hunter testing site. The test begins when you enter the next room.";
+		next;
+		mes "[Guide]";
+		mes "As explained before, hunt 4 or more of the monsters named ^3355FFJob change monster^000000. Upon doing so, a switch in the center of the map will then appear.";
+		next;
+		mes "[Guide]";
+		mes "When you destroy the switch, the exit will appear in the 12 o'clock direction of the map. Complete everything within the given time and escape.";
+		next;
+		mes "[Guide]";
+		mes "If you faint in the middle, fall into a trap, or go over the time limit, you'll fail. Then you must then retake the test.";
+		next;
+		mes "[Guide]";
+		mes "We will provide the arrows, so just make sure that you bring a bow. Well, then. Please enter when you are ready.";
+		savepoint "job_hunte.gat",176,22;
+		close;
+	} else if (job_hunter_q > 12 && job_hunter_q < 16) {
+		mes "[Guide]";
+		mes "Hmm...";
+		mes "Did you mess up?";
+		mes "I'll recover some";
+		mes "of your HP and SP for now.";
+		percentheal 100,0;
+		percentheal 0,100;
+		next;
+		mes "[Guide]";
+		mes "If it's too hard, it wouldn't hurt to try again next time. Would you like to resign for now?";
+		next;
+		switch(select("Keep trying.","Resign.")) {
+		case 1:
+			mes "[Guide]";
+			mes "Okay. Do your best and become a great Hunter. Please enter the waiting room. If someone is already taking the test, you must wait until that person is done.";
+			close;
+		case 2:
+			mapannounce "job_hunte.gat",""+strcharinfo(0)+" has resigned. Next person, please enter.",8;
+			mes "[Guide]";
+			mes "Very well. I'll send you to Payon. Hope to see you next time. Don't forget to save when you leave.";
+			donpcevent "hntwait::OnCommandReset";
+			close2;
+			set job_hunter_q,13;
+			savepoint "payon.gat",104,99;
+			warp "payon_in02.gat",21,27;
+			end;
+		}
+	} else if (job_hunter_q > 15) {
+		mes "[Guide]";
+		mes "You shouldn't be here. How about finding the required job change item first?";
+		close2;
+		savepoint "payon.gat",104,99;
+		warp "payon_in02.gat",21,27;
+		end;
+	}
+}
+
+job_hunte.gat,176,38,1	script	Waiting Room#hnt::hntwait	66,{
+
+	end;
+
+OnInit:
+	waitingroom "Waiting Room",10,"hntwait::OnStartArena",1;
+	enablewaitingroomevent;
+	end;
+
+OnStartArena:
+	killmonsterall "job_hunte.gat";
+	warpwaitingpc "job_hunte.gat",90,67;
+	hideoffnpc "Manager#hnt";
+	donpcevent "Manager#hnt::OnCommandOn";
+	donpcevent "Manager#hnt2::OnCommandOn";
+	hideoffnpc "Manager#hnt2";
+	donpcevent "Switch#hnt::OnCommandOff";
+	hideonnpc "hnt_backers";
+	disablewaitingroomevent;
+	end;
+
+OnCommandReset:
+	enablewaitingroomevent;
+	end;
+}
+
+job_hunte.gat,1,1,1	script	Manager#hnt	139,{
+
+OnInit:
+	hideonnpc "Manager#hnt";
+	end;
+
+OnCommandOn:
+	monster "job_hunte.gat",67,80,"Job Change Monster",1015,1,"Manager#hnt::OnMyMobDead";
+	monster "job_hunte.gat",114,78,"Job Change Monster",1015,1,"Manager#hnt::OnMyMobDead";
+	monster "job_hunte.gat",89,127,"Job Change Monster",1002,1,"Manager#hnt::OnMyMobDead";
+	monster "job_hunte.gat",53,73,"Job Change Monster",1041,1,"Manager#hnt::OnMyMobDead";
+	monster "job_hunte.gat",125,70,"Job Change Monster",1016,1,"Manager#hnt::OnMyMobDead";
+	monster "job_hunte.gat",90,92,"Job Change Monster",1015,1,"Manager#hnt::OnMyMobDead";
+	initnpctimer;
+	end;
+
+OnCommandReset:
+	set 'count,0;
+	killmonster "job_hunte.gat","Manager#hnt::OnMyMobDead";
+	end;
+
+OnMyMobDead:
+	set 'count,'count+1;
+	if ('count >= 4) {
+		mapannounce "job_hunte.gat","Okay, good job... Now, find the switch in the center of the map!! Be careful of the traps!!",8;
+		set job_hunter_q,14;
+		hideoffnpc "Switch#hnt";
+		donpcevent "Manager#hnt::OnCommandReset";
+		donpcevent "Manager#hnt2::OnCommandReset";
+		hideonnpc "Manager#hnt";
+		hideonnpc "Manager#hnt2";
+	} else {
+		mapannounce "job_hunte.gat","Okay~ You're almost there!!",8;
+	}
+	end;
+
+OnTimer1000:
+	mapannounce "job_hunte.gat","The test shall now begin.",8;
+	end;
+
+OnTimer3000:
+	mapannounce "job_hunte.gat","As mentioned before, only hunt the monsters labeled 'Job change monster'.",8;
+	end;
+
+OnTimer5000:
+	mapannounce "job_hunte.gat","***** Be careful of the traps when hunting. *****",8;
+	end;
+
+OnTimer7000:
+	mapannounce "job_hunte.gat","Once you hunt 4 'Job change monster' the switch in the center will begin to operate.",8;
+	end;
+
+OnTimer9000:
+	mapannounce "job_hunte.gat","When you activate the escape switch, exit the testing area through the warp portal in the 12 o'clock direction.",8;
+	end;
+
+OnTimer11000:
+	mapannounce "job_hunte.gat","Everything must be completed within 3 minutes.",8;
+	end;
+
+OnTimer13000:
+	mapannounce "job_hunte.gat","You will have 3 minutes from now on. You will be notified after each minute passes.",8;
+	end;
+
+OnTimer14000:
+	mapannounce "job_hunte.gat"," ****** 3 minutes remaining. ******",8;
+	end;
+
+OnTimer74000:
+	mapannounce "job_hunte.gat"," ****** 2 minutes remaining. ******",8;
+	end;
+
+OnTimer134000:
+	mapannounce "job_hunte.gat"," ****** 1 minute remaining. ******",8;
+	end;
+
+OnTimer164000:
+	mapannounce "job_hunte.gat"," ****** 30 seconds remaining. ******",8;
+	end;
+
+OnTimer187000:
+	mapannounce "job_hunte.gat"," Test ends in 5 seconds...",8;
+	end;
+
+OnTimer188000:
+	mapannounce "job_hunte.gat"," Test ends in 4 seconds...",8;
+	end;
+
+OnTimer189000:
+	mapannounce "job_hunte.gat"," Test ends in 3 seconds...",8;
+	end;
+
+OnTimer191000:
+	mapannounce "job_hunte.gat"," Test ends in 2 seconds...",8;
+	end;
+
+OnTimer192000:
+	mapannounce "job_hunte.gat"," Test ends in 1 second.",8;
+	end;
+
+OnTimer193000:
+	mapannounce "job_hunte.gat"," 0",8;
+	end;
+
+OnTimer194000:
+	mapannounce "job_hunte.gat"," Time's up. Please try again.",8;
+	end;
+
+OnTimer195000:
+	hideoffnpc "hnt_backers";
+	end;
+
+OnTimer196000:
+	hideonnpc "hnt_backers";
+	end;
+
+OnTimer196500:
+	hideoffnpc "hnt_backers";
+	end;
+
+OnTimer197000:
+	hideonnpc "hnt_backers";
+	donpcevent "Manager#hnt::OnCommandReset";
+	donpcevent "Manager#hnt2::OnCommandReset";
+	donpcevent "hntwait::OnCommandReset";
+	end;
+}
+
+job_hunte.gat,1,2,1	script	Manager#hnt2	139,{
+
+OnInit:
+	hideonnpc "Manager#hnt2";
+	end;
+
+OnCommandOn:
+	monster "job_hunte.gat",85,100,"Job Test Monster",1016,1,"Manager#hnt2::OnMyMobDead";
+	monster "job_hunte.gat",72,102,"Job Test Monster",1041,1,"Manager#hnt2::OnMyMobDead";
+	monster "job_hunte.gat",108,103,"Job Test Monster",1015,1,"Manager#hnt2::OnMyMobDead";
+	monster "job_hunte.gat",88,127,"Job Test Monster",1002,1,"Manager#hnt2::OnMyMobDead";
+	monster "job_hunte.gat",125,69,"Job Test Monster",1015,1,"Manager#hnt2::OnMyMobDead";
+	monster "job_hunte.gat",77,112,"Job Tester Monster",1016,1,"Manager#hnt2::OnMyMobDead";
+	monster "job_hunte.gat",53,106,"Job Tester Monster",1015,1,"Manager#hnt2::OnMyMobDead";
+	monster "job_hunte.gat",53,73,"Job Tester Monster",1002,1,"Manager#hnt2::OnMyMobDead";
+	monster "job_hunte.gat",125,70,"Job Tester Monster",1015,1,"Manager#hnt2::OnMyMobDead";
+	monster "job_hunte.gat",90,91,"Job Tester Monster",1015,1,"Manager#hnt2::OnMyMobDead";
+	monster "job_hunte.gat",67,80,"Hunter Change Monster",1015,1,"Manager#hnt2::OnMyMobDead";
+	monster "job_hunte.gat",77,112,"Hunter Change Monster",1016,1,"Manager#hnt2::OnMyMobDead";
+	monster "job_hunte.gat",53,106,"Hunter Change Monster",1015,1,"Manager#hnt2::OnMyMobDead";
+	monster "job_hunte.gat",53,73,"Hunter Change Monster",1015,1,"Manager#hnt2::OnMyMobDead";
+	monster "job_hunte.gat",125,70,"Hunter Change Monster",1015,1,"Manager#hnt2::OnMyMobDead";
+	monster "job_hunte.gat",90,91,"Job Transfer Monster",1041,1,"Manager#hnt2::OnMyMobDead";
+	monster "job_hunte.gat",85,100,"Job Transfer Monster",1002,1,"Manager#hnt2::OnMyMobDead";
+	monster "job_hunte.gat",72,102,"Job Transfer Monster",1015,1,"Manager#hnt2::OnMyMobDead";
+	monster "job_hunte.gat",108,103,"Job Transfer Monster",1015,1,"Manager#hnt2::OnMyMobDead";
+	monster "job_hunte.gat",77,112,"Job Transfer Monster",1015,1,"Manager#hnt2::OnMyMobDead";
+	monster "job_hunte.gat",112,139,"Binnie",1015,1,"Manager#hnt2::OnMyMobDead";
+	monster "job_hunte.gat",112,139,"Darrel",1015,1,"Manager#hnt2::OnMyMobDead";
+	monster "job_hunte.gat",112,139,"Rex",1015,1,"Manager#hnt2::OnMyMobDead";
+	monster "job_hunte.gat",112,139,"Anselmo",1015,1,"Manager#hnt2::OnMyMobDead";
+	monster "job_hunte.gat",90,91,"Anolian",1015,1,"Manager#hnt2::OnMyMobDead";
+	monster "job_hunte.gat",53,73,"Monster Sample",1002,1,"Manager#hnt2::OnMyMobDead";
+	monster "job_hunte.gat",53,106,"Not Me",1015,1,"Manager#hnt2::OnMyMobDead";
+	monster "job_hunte.gat",77,112,"Help Me",1015,1,"Manager#hnt2::OnMyMobDead";
+	monster "job_hunte.gat",72,102,"Do Not Hit Me",1015,1,"Manager#hnt2::OnMyMobDead";
+	monster "job_hunte.gat",108,103,"Attack Speed 184",1015,1,"Manager#hnt2::OnMyMobDead";
+	end;
+
+OnCommandReset:
+	killmonster "job_hunte.gat","Manager#hnt2::OnMyMobDead";
+	donpcevent "Manager#hnt::OnCommandReset";
+	end;
+
+OnMyMobDead:
+	mapannounce "job_hunte.gat",""+strcharinfo(0)+"!! You made a mistake...Please try again.",8;
+	set job_hunter_q,13;
+	stopnpctimer "Manager#hnt";
+	donpcevent "Manager#hnt::OnCommandReset";
+	donpcevent "Manager#hnt2::OnCommandReset";
+	hideonnpc "Manager#hnt";
+	donpcevent "hntwait::OnCommandReset";
+	hideonnpc "Manager#hnt2";
+	warp "job_hunte.gat",176,22;
+	end;
+}
+
+job_hunte.gat,93,101,1	script	Switch#hnt	723,1,1,{
+
+	mes "^3355FFThere are 3 buttons";
+	mes "on the escape switch.^000000";
+	set job_hunter_q,15;
+	next;
+	switch(select("Escape","Cancel","Re-test")) {
+	case 1:
+		mes "^3355FFThe Escape Warp Portal";
+		mes "has now been activated.^000000";
+		close2;
+		mapannounce "job_hunte.gat","Escape Warp Portal activation complete.",8;
+		hideoffnpc "exit#hnttest";
+		end;
+	case 2:
+		mes "^3355FFCanceling";
+		mes "Operation.^000000";
+		close2;
+		mapannounce "job_hunte.gat","Operation has been cancelled.",8;
+		end;
+	case 3:
+		mapannounce "job_hunte.gat","Cancellation warp activating...",8;
+		mes "^3355FFYou will soon be";
+		mes "returned to the";
+		mes "waiting room.^000000";
+		close2;
+		set job_hunter_q,13;
+		warp "job_hunte.gat",176,22;
+		donpcevent "hntwait::OnCommandReset";
+		end;
+	}
+
+OnTouch:
+	mes "^3355FFThere are 3 buttons";
+	mes "on the escape switch.^000000";
+	set job_hunter_q,15;
+	next;
+	switch(select("Escape","Cancel","Re-test")) {
+	case 1:
+		mes "^3355FFThe Escape Warp Portal";
+		mes "has now been activated.^000000";
+		close2;
+		mapannounce "job_hunte.gat","Escape Warp Portal activation complete.",8;
+		hideoffnpc "exit#hnttest";
+		end;
+	case 2:
+		mes "^3355FFCanceling";
+		mes "Operation.^000000";
+		close2;
+		mapannounce "job_hunte.gat","Operation has been cancelled.",8;
+		end;
+	case 3:
+		mapannounce "job_hunte.gat","Cancellation warp activating...",8;
+		mes "^3355FFYou will soon be";
+		mes "returned to the";
+		mes "waiting room.^000000";
+		close2;
+		set job_hunter_q,13;
+		warp "job_hunte.gat",176,22;
+		donpcevent "hntwait::OnCommandReset";
+		end;
+	}
+
+OnCommandOff:
+	hideonnpc "exit#hnttest";
+	hideonnpc "Switch#hnt";
+	end;
+}
+
+job_hunte.gat,89,139,0	script	exit#hnttest	45,2,2,{
+
+OnTouch:
+	donpcevent "hntwait::OnCommandReset";
+	set job_hunter_q,16;
+	savepoint "payon.gat",104,99;
+	set '@whe,rand(1,2);
+	if ('@whe == 1) {
+		warp "payon_in02.gat",21,27;
+	} else {
+		warp "payon_in03.gat",128,7;
+	}
+	end;
+
+OnInit:
+	hideonnpc "exit#hnttest";
+	end;
+}
+
+job_hunte.gat,89,103,0	script	hnt_backers	139,42,42,{
+
+OnInit:
+	hideonnpc "hnt_backers";
+	end;
+
+OnTouch:
+	warp "job_hunte.gat",176,22;
+	set job_hunter_q,13;
+	end;
+}
+
+job_hunte.gat,52,140,0	script	1-1	139,0,1,{
+
+OnTouch:
+	mapannounce "job_hunte.gat",""+strcharinfo(0)+", you have fallen into a trap. You will be returned to the starting point.",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,53,140,0	script	1-2	139,0,1,{
+
+OnTouch:
+	mapannounce "job_hunte.gat",""+strcharinfo(0)+", yes you! Go back and start over!",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,54,141,0	script	1-3	139,0,0,{
+
+OnTouch:
+	mapannounce "job_hunte.gat",""+strcharinfo(0)+", you have fallen into a trap. You will be returned to the starting point.",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,55,141,0	script	1-4	139,0,0,{
+
+OnTouch:
+	mapannounce "job_hunte.gat",""+strcharinfo(0)+" has failed!...well...you will if you don't start over...",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,55,140,0	script	1-5	139,0,0,{
+
+OnTouch:
+	mapannounce "job_hunte.gat",""+strcharinfo(0)+", you have fallen into a trap. You will be returned to the starting point.",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,54,140,0	script	1-6	139,0,0,{
+
+OnTouch:
+	mapannounce "job_hunte.gat",""+strcharinfo(0)+", has failed me! Go back to where you started!",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,52,138,0	script	1-7	139,0,0,{
+
+OnTouch:
+	mapannounce "job_hunte.gat",""+strcharinfo(0)+", you have blundered into a trap. I'm sorry, but for now, YOU LOSE.",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,53,138,0	script	1-8	139,0,0,{
+
+OnTouch:
+	mapannounce "job_hunte.gat",""+strcharinfo(0)+", what are you doing!? Go back and do it again!",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,62,140,0	script	2-1	139,0,1,{
+
+OnTouch:
+	mapannounce "job_hunte.gat",""+strcharinfo(0)+", you have fallen into a trap. You will be returned to the starting point.",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,63,140,0	script	2-2	139,0,1,{
+
+OnTouch:
+	mapannounce "job_hunte.gat",""+strcharinfo(0)+", come on! You can do better then this!! Try again!",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,64,140,0	script	2-3	139,0,0,{
+
+OnTouch:
+	mapannounce "job_hunte.gat",""+strcharinfo(0)+", has fallen into a trap...again. But don't worry, you're getting better.",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,64,141,0	script	2-4	139,0,0,{
+
+OnTouch:
+	mapannounce "job_hunte.gat",""+strcharinfo(0)+", fail, fail, fail... Go back to where you started!",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,65,140,0	script	2-5	139,0,0,{
+
+OnTouch:
+	mapannounce "job_hunte.gat",""+strcharinfo(0)+"... aww~ Try again! You can do it!",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,65,141,0	script	2-6	139,0,0,{
+
+OnTouch:
+	mapannounce "job_hunte.gat",""+strcharinfo(0)+", you have fallen into a trap. You will be returned to the starting point.",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,62,138,0	script	2-7	139,0,0,{
+
+OnTouch:
+	mapannounce "job_hunte.gat",""+strcharinfo(0)+", @#$%#^!@ and you wanna be a what? Hunter? Get back there!",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,63,138,0	script	2-8	139,0,0,{
+
+OnTouch:
+	mapannounce "job_hunte.gat",""+strcharinfo(0)+" was defeated by the forces of evil. Don't give up, hero!",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,72,140,0	script	3-1	139,0,1,{
+
+OnTouch:
+	mapannounce "job_hunte.gat","I put a spell on you "+strcharinfo(0)+" and now you're mine! Go start over now.",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,73,140,0	script	3-2	139,0,1,{
+
+OnTouch:
+	mapannounce "job_hunte.gat",""+strcharinfo(0)+", you have fallen into a trap. You will be returned to the starting point.",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,72,138,0	script	3-3	139,0,0,{
+
+OnTouch:
+	mapannounce "job_hunte.gat",""+strcharinfo(0)+". G'day mate, welcome to the land down under. As a present, I'll send you to the starting point...",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,72,138,0	script	3-4	139,0,0,{
+
+OnTouch:
+	mapannounce "job_hunte.gat",""+strcharinfo(0)+", you have fallen into a trap. You will be returned to the starting point.",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,78,140,0	script	4-1	139,0,0,{
+
+OnTouch:
+	mapannounce "job_hunte.gat","That's my nest "+strcharinfo(0)+"! dont step there, squawk~ Start over.",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,78,141,0	script	4-2	139,0,0,{
+
+OnTouch:
+	mapannounce "job_hunte.gat",""+strcharinfo(0)+", you have fallen into a trap. You will be returned to the starting point.",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,79,140,0	script	4-3	139,0,0,{
+
+OnTouch:
+	mapannounce "job_hunte.gat",""+strcharinfo(0)+", another archer down. 3 more to go!",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,79,141,0	script	4-4	139,0,0,{
+
+OnTouch:
+	mapannounce "job_hunte.gat",""+strcharinfo(0)+", you have fallen into a trap. You will be returned to the starting point.",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,82,138,0	script	5-1	139,0,0,{
+
+OnTouch:
+	mapannounce "job_hunte.gat",""+strcharinfo(0)+", have you got what it takes? Then try again.",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,82,139,0	script	5-2	139,0,0,{
+
+OnTouch:
+	mapannounce "job_hunte.gat",""+strcharinfo(0)+", you have fallen into a trap. You will be returned to the starting point.",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,83,138,0	script	5-3	139,0,0,{
+
+OnTouch:
+	mapannounce "job_hunte.gat","Alas, "+strcharinfo(0)+", you have fallen prey to the most feared of traps. The dreaded stink bomb! Run run run awaaaaaay!",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,83,139,0	script	5-4	139,0,0,{
+
+OnTouch:
+	mapannounce "job_hunte.gat",""+strcharinfo(0)+", you have fallen into a trap. You will be returned to the starting point.",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,99,138,0	script	6-1	139,1,0,{
+
+OnTouch:
+	mapannounce "job_hunte.gat",""+strcharinfo(0)+" had too much prune juice to drink today. Back to the starting point~",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,99,139,0	script	6-2	139,1,0,{
+
+OnTouch:
+	mapannounce "job_hunte.gat",""+strcharinfo(0)+", you have fallen into a trap. You will be returned to the starting point.",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,101,138,0	script	6-3	139,0,0,{
+
+OnTouch:
+	mapannounce "job_hunte.gat","No.... "+strcharinfo(0)+", you have fallen into a trap. You will be returned to the starting point.",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,101,139,0	script	6-4	139,0,0,{
+
+OnTouch:
+	mapannounce "job_hunte.gat",""+strcharinfo(0)+", you have fallen into a trap. You will be returned to the starting point.",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,106,140,0	script	7-1	139,0,1,{
+
+OnTouch:
+	mapannounce "job_hunte.gat","Meow *pounce* look my kitties we'll have some "+strcharinfo(0)+" stew. Back to the starting point if you don't want to become stew!",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,107,140,0	script	7-2	139,0,1,{
+
+OnTouch:
+	mapannounce "job_hunte.gat",""+strcharinfo(0)+", you have fallen into a trap. You will be returned to the starting point.",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,106,138,0	script	7-3	139,0,0,{
+
+OnTouch:
+	mapannounce "job_hunte.gat","Sorry "+strcharinfo(0)+", but you've actually found a BAD secret. You will be returned to the starting point.",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,107,138,0	script	7-4	139,0,0,{
+
+OnTouch:
+	mapannounce "job_hunte.gat",""+strcharinfo(0)+", you have fallen into a trap. You will be returned to the starting point.",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,112,140,0	script	8-1	139,0,0,{
+
+OnTouch:
+	mapannounce "job_hunte.gat",""+strcharinfo(0)+", silly Archer...your tenacity is touching. But it's back to the start for you...",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,112,141,0	script	8-2	139,0,0,{
+
+OnTouch:
+	mapannounce "job_hunte.gat",""+strcharinfo(0)+", you have fallen into a trap. You will be returned to the starting point.",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,113,140,0	script	8-3	139,0,0,{
+
+OnTouch:
+	mapannounce "job_hunte.gat",""+strcharinfo(0)+", you've fallen and you can't get up. You'll be carried back to the starting point.",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,113,141,0	script	8-4	139,0,0,{
+
+OnTouch:
+	mapannounce "job_hunte.gat",""+strcharinfo(0)+", you have fallen into a trap. You will be returned to the starting point.",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,116,140,0	script	9-1	139,0,0,{
+
+OnTouch:
+	mapannounce "job_hunte.gat","Skip a turn "+strcharinfo(0)+", go back to start.",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,116,141,0	script	9-2	139,0,0,{
+
+OnTouch:
+	mapannounce "job_hunte.gat",""+strcharinfo(0)+", you have fallen into a trap. You will be returned to the starting point.",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,117,140,0	script	9-3	139,0,0,{
+
+OnTouch:
+	mapannounce "job_hunte.gat",""+strcharinfo(0)+", nya nya, heh heh heh. You will be returned to the starting point.",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,117,141,0	script	9-4	139,0,0,{
+
+OnTouch:
+	mapannounce "job_hunte.gat",""+strcharinfo(0)+", you have fallen into a trap. You will be returned to the starting point.",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,120,138,0	script	10-1	139,0,0,{
+
+OnTouch:
+	mapannounce "job_hunte.gat","Practice is over "+strcharinfo(0)+". This time show me for real.",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,120,139,0	script	10-2	139,0,0,{
+
+OnTouch:
+	mapannounce "job_hunte.gat",""+strcharinfo(0)+", you have fallen into a trap. You will be returned to the starting point.",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,121,138,0	script	10-3	139,0,0,{
+
+OnTouch:
+	mapannounce "job_hunte.gat",""+strcharinfo(0)+", this is a Poring jellopy raid...Get out! Start from the beginning if you wish to continue.",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,121,139,0	script	10-4	139,0,0,{
+
+OnTouch:
+	mapannounce "job_hunte.gat",""+strcharinfo(0)+", you have fallen into a trap. You will be returned to the starting point.",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,126,139,0	script	11-1	139,0,2,{
+
+OnTouch:
+	mapannounce "job_hunte.gat","Disconnected from server. "+strcharinfo(0)+", you have to start over.",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,127,139,0	script	11-2	139,0,2,{
+
+OnTouch:
+	mapannounce "job_hunte.gat",""+strcharinfo(0)+", you have fallen into a trap. You will be returned to the starting point.",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,126,136,0	script	11-3	139,0,0,{
+
+OnTouch:
+	mapannounce "job_hunte.gat",""+strcharinfo(0)+", what does this button do...oops! I'm afraid you have to start over.",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,127,136,0	script	11-4	139,0,0,{
+
+OnTouch:
+	mapannounce "job_hunte.gat",""+strcharinfo(0)+", you have fallen into a trap. You will be returned to the starting point.",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,52,134,0	script	12-1	139,0,1,{
+
+OnTouch:
+	mapannounce "job_hunte.gat",""+strcharinfo(0)+", you have entered the bonus round! Aaaand, you lost. You will be returned to the starting point.",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,53,134,0	script	12-2	139,0,1,{
+
+OnTouch:
+	mapannounce "job_hunte.gat",""+strcharinfo(0)+", you have fallen into a trap. You will be returned to the starting point.",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,52,132,0	script	12-3	139,0,0,{
+
+OnTouch:
+	mapannounce "job_hunte.gat","Oh, no "+strcharinfo(0)+", you've stepped on a hive of bees. You narrowly escaped, all the way back to the beginning.",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,53,132,0	script	12-4	139,0,0,{
+
+OnTouch:
+	mapannounce "job_hunte.gat",""+strcharinfo(0)+", you have fallen into a trap. You will be returned to the starting point.",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,124,130,0	script	13-1	139,0,0,{
+
+OnTouch:
+	mapannounce "job_hunte.gat",""+strcharinfo(0)+", wait wait. That's a trap! Oh wait, that's dog. . . .",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,124,131,0	script	13-2	139,0,0,{
+
+OnTouch:
+	mapannounce "job_hunte.gat",""+strcharinfo(0)+", you have fallen into a trap. You will be returned to the starting point.",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,125,130,0	script	13-3	139,0,0,{
+
+OnTouch:
+	mapannounce "job_hunte.gat","Stop "+strcharinfo(0)+"! For stepping on that trap, I shall punish you!",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,125,131,0	script	13-4	139,0,0,{
+
+OnTouch:
+	mapannounce "job_hunte.gat",""+strcharinfo(0)+", you have fallen into a trap. You will be returned to the starting point.",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,64,128,0	script	14-1	139,0,0,{
+
+OnTouch:
+	mapannounce "job_hunte.gat",""+strcharinfo(0)+", I'll be back. . . I hope you will too.",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,64,129,0	script	14-2	139,0,0,{
+
+OnTouch:
+	mapannounce "job_hunte.gat",""+strcharinfo(0)+", you have fallen into a trap. You will be returned to the starting point.",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,65,128,0	script	14-3	139,0,0,{
+
+OnTouch:
+	mapannounce "job_hunte.gat",""+strcharinfo(0)+", Come with me if you want to live. . to the starting point.",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,65,129,0	script	14-4	139,0,0,{
+
+OnTouch:
+	mapannounce "job_hunte.gat",""+strcharinfo(0)+", you have fallen into a trap. You will be returned to the starting point.",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,68,126,0	script	15-1	139,0,0,{
+
+OnTouch:
+	mapannounce "job_hunte.gat",""+strcharinfo(0)+", my... precious! Go back to the starting point.",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,68,127,0	script	15-2	139,0,0,{
+
+OnTouch:
+	mapannounce "job_hunte.gat",""+strcharinfo(0)+", you have fallen into a trap. You will be returned to the starting point.",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,69,126,0	script	15-3	139,0,0,{
+
+OnTouch:
+	mapannounce "job_hunte.gat","Follow the yellow brick road... No wait, "+strcharinfo(0)+"!! Not that way...Back to the starting point it is.",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,69,127,0	script	15-4	139,0,0,{
+
+OnTouch:
+	mapannounce "job_hunte.gat",""+strcharinfo(0)+", you have fallen into a trap. You will be returned to the starting point.",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,75,128,0	script	16-1	139,1,0,{
+
+OnTouch:
+	mapannounce "job_hunte.gat",""+strcharinfo(0)+", you've really go to get the hang of this 'in tune with nature' thing. Now, you're lost!",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,75,129,0	script	16-2	139,1,0,{
+
+OnTouch:
+	mapannounce "job_hunte.gat",""+strcharinfo(0)+", you have fallen into a trap. You will be returned to the starting point.",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,77,128,0	script	16-3	139,0,0,{
+
+OnTouch:
+	mapannounce "job_hunte.gat",""+strcharinfo(0)+", it's only a story...not real. But you will be returned to the starting point.",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,77,129,0	script	16-4	139,0,0,{
+
+OnTouch:
+	mapannounce "job_hunte.gat",""+strcharinfo(0)+", you have fallen into a trap. And the trap...has fallen into you. Returning you to the starting point.",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,82,126,0	script	17-1	139,0,0,{
+
+OnTouch:
+	mapannounce "job_hunte.gat","Fear not "+strcharinfo(0)+", for you too, shall learn the powers of the dark side. You will now be returned to the starting point.",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,82,127,0	script	17-2	139,0,0,{
+
+OnTouch:
+	mapannounce "job_hunte.gat",""+strcharinfo(0)+", fell into a trap. Quite easily too, I'm afraid. But this hero won't be beaten that easily!",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,83,126,0	script	17-3	139,0,0,{
+
+OnTouch:
+	mapannounce "job_hunte.gat","Tip of the day: Do not step on the traps. You will be returned to the starting point.",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,83,127,0	script	17-4	139,0,0,{
+
+OnTouch:
+	mapannounce "job_hunte.gat",""+strcharinfo(0)+" fell into a trap. Once again, for clarity's sake, the name is "+strcharinfo(0)+".",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,96,128,0	script	18-1	139,0,0,{
+
+OnTouch:
+	mapannounce "job_hunte.gat","Oy oy, "+strcharinfo(0)+".. I've seen blind Porings get further! Go back to the starting point.",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,96,129,0	script	18-2	139,0,0,{
+
+OnTouch:
+	mapannounce "job_hunte.gat","MY EYES!! "+strcharinfo(0)+", you... you.. stepped on them. Go try again...I'd cry for you if I could even shed tears...",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,97,128,0	script	18-3	139,0,0,{
+
+OnTouch:
+	mapannounce "job_hunte.gat",""+strcharinfo(0)+", you have fallen into a trap. You will be returned to the starting point.",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,97,129,0	script	18-4	139,0,0,{
+
+OnTouch:
+	mapannounce "job_hunte.gat",""+strcharinfo(0)+", where are you? Right...NOT at the place where'd you be if you passed the test.",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,100,126,0	script	19-1	139,0,0,{
+
+OnTouch:
+	mapannounce "job_hunte.gat","Wow, they actually paid a guy to think of these comments. "+strcharinfo(0)+", you can go back to the starting point.",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,100,127,0	script	19-2	139,0,0,{
+
+OnTouch:
+	mapannounce "job_hunte.gat","My word, "+strcharinfo(0)+"! You've precariously fallen into a trap! You will be returned back to the start. Cheerio~!",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,101,126,0	script	19-3	139,0,0,{
+
+OnTouch:
+	mapannounce "job_hunte.gat",""+strcharinfo(0)+", do you have any idea where you're going? Start over *sigh*.",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,101,127,0	script	19-4	139,0,0,{
+
+OnTouch:
+	mapannounce "job_hunte.gat",""+strcharinfo(0)+", you have fallen into a trap. You will be returned to the starting point.",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,106,128,0	script	20-1	139,0,0,{
+
+OnTouch:
+	mapannounce "job_hunte.gat",""+strcharinfo(0)+", do you like green tea ice cream? No? Go back to the starting point...*hmph*",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,106,129,0	script	20-2	139,0,0,{
+
+OnTouch:
+	mapannounce "job_hunte.gat",""+strcharinfo(0)+", you have fallen into a trap. You will be returned to the starting point.",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,107,128,0	script	20-3	139,0,0,{
+
+OnTouch:
+	mapannounce "job_hunte.gat","Oh, no.. "+strcharinfo(0)+", are you hurt? Come now, let's go back to the starting point.",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,107,129,0	script	20-4	139,0,0,{
+
+OnTouch:
+	mapannounce "job_hunte.gat",""+strcharinfo(0)+", you have fallen into a trap. You will be returned to the starting point.",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,112,126,0	script	21-1	139,0,0,{
+
+OnTouch:
+	mapannounce "job_hunte.gat","Hi "+strcharinfo(0)+", how are you? Here's a present~ a free warp! Back to the starting point.",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,112,127,0	script	21-2	139,0,0,{
+
+OnTouch:
+	mapannounce "job_hunte.gat",""+strcharinfo(0)+", you have fallen into a trap. You will be returned to the starting point.",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,113,126,0	script	21-3	139,0,0,{
+
+OnTouch:
+	mapannounce "job_hunte.gat",""+strcharinfo(0)+".......... did you know that that was a trap? I hope so, otherwise, I guess you'd be pretty embarassed.",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,113,127,0	script	21-4	139,0,0,{
+
+OnTouch:
+	mapannounce "job_hunte.gat",""+strcharinfo(0)+", you have fallen into a trap. You will be returned to the starting point.",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,126,126,0	script	22-1	139,0,0,{
+
+OnTouch:
+	mapannounce "job_hunte.gat",""+strcharinfo(0)+", what do you think of the interior design? I worked very hard on it... and this lovely feature that sends you back to the starting point.",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,126,127,0	script	22-2	139,0,0,{
+
+OnTouch:
+	mapannounce "job_hunte.gat","BOOM BAM BOOM! "+strcharinfo(0)+", you have fallen into my trap! But I won't kill you...just...humiliate you...",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,127,126,0	script	22-3	139,0,0,{
+
+OnTouch:
+	mapannounce "job_hunte.gat","Oh, "+strcharinfo(0)+".. You can do better. Try again!",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,127,127,0	script	22-4	139,0,0,{
+
+OnTouch:
+	mapannounce "job_hunte.gat","Hello, this is your local Kafra worker... "+strcharinfo(0)+", your mommy is waiting for you at the checkout line.",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,52,122,0	script	23-1	139,0,1,{
+
+OnTouch:
+	mapannounce "job_hunte.gat",""+strcharinfo(0)+", if you do well. I'll have a nice present waiting for you... What is it? You'll see if you pass~ Go try again now!",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,52,122,0	script	23-2	139,0,1,{
+
+OnTouch:
+	mapannounce "job_hunte.gat",""+strcharinfo(0)+", you have fallen into a trap. You will be returned to the starting point.",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,53,120,0	script	23-3	139,1,0,{
+
+OnTouch:
+	mapannounce "job_hunte.gat",""+strcharinfo(0)+" faaaaaaaaaaaaaaaaailed.. Hehe, just kidding. You will be returned to the starting point so try again!",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,54,121,0	script	23-4	139,0,0,{
+
+OnTouch:
+	mapannounce "job_hunte.gat",""+strcharinfo(0)+", you fell into a trap. You should watch your feet more. What? Invisible? That's baby talk! Now go try again!",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,55,121,0	script	23-5	139,0,0,{
+
+OnTouch:
+	mapannounce "job_hunte.gat","Sorry, "+strcharinfo(0)+", you have fallen into a trap. But I'll be nice and send you to the starting point.",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,55,120,0	script	23-6	139,0,0,{
+
+OnTouch:
+	mapannounce "job_hunte.gat",""+strcharinfo(0)+", you have fallen into a trap. You will be returned to the starting point.",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,66,120,0	script	24-1	139,0,0,{
+
+OnTouch:
+	mapannounce "job_hunte.gat",""+strcharinfo(0)+", HAHAHAHAHAHA!!!! I can't believe you fell for that one!",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,66,121,0	script	24-2	139,0,0,{
+
+OnTouch:
+	mapannounce "job_hunte.gat",""+strcharinfo(0)+", you have fallen into a trap. You will be returned to the starting point.",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,67,120,0	script	24-3	139,0,0,{
+
+OnTouch:
+	mapannounce "job_hunte.gat",""+strcharinfo(0)+", I was just about to tell you about that one...but, I didn't? Back to start.",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,67,121,0	script	24-4	139,0,0,{
+
+OnTouch:
+	mapannounce "job_hunte.gat",""+strcharinfo(0)+"...I'm sorry my friend, but you lose. But don't worry, its not like this message is broadcast or anything.",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,114,118,0	script	25-1	139,0,0,{
+
+OnTouch:
+	mapannounce "job_hunte.gat",""+strcharinfo(0)+", I'm not so sure that you qualify for this anymore... Try again and prove me wrong.",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,114,119,0	script	25-2	139,0,0,{
+
+OnTouch:
+	mapannounce "job_hunte.gat",""+strcharinfo(0)+", you have fallen into a trap. You will be returned to the starting point.",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,115,118,0	script	25-3	139,0,0,{
+
+OnTouch:
+	mapannounce "job_hunte.gat",""+strcharinfo(0)+", OW...now that's gotta hurt. Back to the start~",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,115,119,0	script	25-4	139,0,0,{
+
+OnTouch:
+	mapannounce "job_hunte.gat",""+strcharinfo(0)+", you have fallen into a trap. You will be returned to the starting point.",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,124,120,0	script	26-1	139,0,1,{
+
+OnTouch:
+	mapannounce "job_hunte.gat",""+strcharinfo(0)+", I find your lack of faith disturbing... Let's start over.",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,125,120,0	script	26-2	139,0,1,{
+
+OnTouch:
+	mapannounce "job_hunte.gat",""+strcharinfo(0)+", you have fallen into a trap. You will be returned to the starting point.",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,124,118,0	script	26-3	139,0,0,{
+
+OnTouch:
+	mapannounce "job_hunte.gat",""+strcharinfo(0)+", your eyes can deceive you. Don't trust them. Stretch out with your feelings. Try again now.",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,125,118,0	script	26-4	139,0,0,{
+
+OnTouch:
+	mapannounce "job_hunte.gat",""+strcharinfo(0)+", you have fallen into a trap. You will be returned to the starting point.",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,66,116,0	script	27-1	139,0,0,{
+
+OnTouch:
+	mapannounce "job_hunte.gat",""+strcharinfo(0)+", if you once start down the dark path, forever it will dominate your destiny. You shall be returned to the starting point.",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,66,117,0	script	27-2	139,0,0,{
+
+OnTouch:
+	mapannounce "job_hunte.gat",""+strcharinfo(0)+", you have fallen into a trap. You will be returned to the starting point.",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,67,116,0	script	27-3	139,0,0,{
+
+OnTouch:
+	mapannounce "job_hunte.gat",""+strcharinfo(0)+", size doesn't matter. But, the number of traps that caught you do. Try again and win this time!",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,67,117,0	script	27-4	139,0,0,{
+
+OnTouch:
+	mapannounce "job_hunte.gat",""+strcharinfo(0)+", you have fallen into a trap. You will be returned to the starting point.",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,76,114,0	script	28-1	139,0,0,{
+
+OnTouch:
+	mapannounce "job_hunte.gat",""+strcharinfo(0)+", try not. Do or do not. There is no try.",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,76,115,0	script	28-2	139,0,0,{
+
+OnTouch:
+	mapannounce "job_hunte.gat",""+strcharinfo(0)+", you have fallen into a trap. You will be returned to the starting point.",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,77,114,0	script	28-3	139,0,0,{
+
+OnTouch:
+	mapannounce "job_hunte.gat",""+strcharinfo(0)+", that is why you fail. Now try again!",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,77,115,0	script	28-4	139,0,0,{
+
+OnTouch:
+	mapannounce "job_hunte.gat",""+strcharinfo(0)+", you have fallen into a trap. You will be returned to the starting point.",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,82,116,0	script	29-1	139,0,0,{
+
+OnTouch:
+	mapannounce "job_hunte.gat",""+strcharinfo(0)+", look. If its made of metal and looks like it has teeth, you shouldn't put your foot in it. So simple, really...",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,82,117,0	script	29-2	139,0,0,{
+
+OnTouch:
+	mapannounce "job_hunte.gat",""+strcharinfo(0)+", you are beaten. It is useless to resist.",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,83,116,0	script	29-3	139,0,0,{
+
+OnTouch:
+	mapannounce "job_hunte.gat",""+strcharinfo(0)+", you have fallen into a trap. You will be returned to the starting point.",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,83,117,0	script	29-4	139,0,0,{
+
+OnTouch:
+	mapannounce "job_hunte.gat",""+strcharinfo(0)+", I'm looking forward to completing your training. In time you will call me Master.",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,86,114,0	script	30-1	139,0,0,{
+
+OnTouch:
+	mapannounce "job_hunte.gat",""+strcharinfo(0)+", you have fallen into a trap. You will be returned to the starting point.",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,86,115,0	script	30-2	139,0,0,{
+
+OnTouch:
+	mapannounce "job_hunte.gat",""+strcharinfo(0)+", your overconfidence is your weakness.",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,87,114,0	script	30-3	139,0,0,{
+
+OnTouch:
+	mapannounce "job_hunte.gat",""+strcharinfo(0)+", you have fallen into a trap. You will be returned to the starting point.",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,87,115,0	script	30-4	139,0,0,{
+
+OnTouch:
+	mapannounce "job_hunte.gat",""+strcharinfo(0)+", watch your step. This place can be a little rough.",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,92,115,0	script	31-1	139,1,0,{
+
+OnTouch:
+	mapannounce "job_hunte.gat",""+strcharinfo(0)+", you have fallen into a trap. You will be returned to the starting point.",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,92,114,0	script	31-2	139,1,0,{
+
+OnTouch:
+	mapannounce "job_hunte.gat",""+strcharinfo(0)+", oh I told you it was dangerous here.",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,90,115,0	script	31-3	139,0,0,{
+
+OnTouch:
+	mapannounce "job_hunte.gat",""+strcharinfo(0)+", you have fallen into a trap. You will be returned to the starting point.",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,102,116,0	script	32-1	139,0,0,{
+
+OnTouch:
+	mapannounce "job_hunte.gat",""+strcharinfo(0)+", everything is proceeding as I have foreseen.",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,102,117,0	script	32-2	139,0,0,{
+
+OnTouch:
+	mapannounce "job_hunte.gat",""+strcharinfo(0)+", you have fallen into a trap. You will be returned to the starting point.",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,103,116,0	script	32-3	139,0,0,{
+
+OnTouch:
+	mapannounce "job_hunte.gat",""+strcharinfo(0)+", you should have not come back.",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,103,117,0	script	32-4	139,0,0,{
+
+OnTouch:
+	mapannounce "job_hunte.gat",""+strcharinfo(0)+", you have fallen into a trap. You will be returned to the starting point.",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,114,114,0	script	33-1	139,0,0,{
+
+OnTouch:
+	mapannounce "job_hunte.gat",""+strcharinfo(0)+", there are alternatives to fighting. But not to losing to this test. Now try again!",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,114,115,0	script	33-2	139,0,0,{
+
+OnTouch:
+	mapannounce "job_hunte.gat",""+strcharinfo(0)+", you have fallen into a trap. You will be returned to the starting point.",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,115,114,0	script	33-3	139,0,0,{
+
+OnTouch:
+	mapannounce "job_hunte.gat",""+strcharinfo(0)+", now that's a name I haven't heard in a while...let's hope I don't hear it again~!",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,115,115,0	script	33-4	139,0,0,{
+
+OnTouch:
+	mapannounce "job_hunte.gat",""+strcharinfo(0)+", you have fallen into a trap. You will be returned to the starting point.",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,54,110,0	script	34-1	139,0,1,{
+
+OnTouch:
+	mapannounce "job_hunte.gat",""+strcharinfo(0)+", we do not train to be merciful here, mercy is for the weak!",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,55,110,0	script	34-2	139,0,1,{
+
+OnTouch:
+	mapannounce "job_hunte.gat",""+strcharinfo(0)+", you have fallen into a trap. You will be returned to the starting point.",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,54,108,0	script	34-3	139,0,0,{
+
+OnTouch:
+	mapannounce "job_hunte.gat",""+strcharinfo(0)+", defeat does not exist here, does it?!",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,55,108,0	script	34-4	139,0,0,{
+
+OnTouch:
+	mapannounce "job_hunte.gat",""+strcharinfo(0)+", you have fallen into a trap. You will be returned to the starting point.",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,64,112,0	script	35-1	139,0,0,{
+
+OnTouch:
+	mapannounce "job_hunte.gat",""+strcharinfo(0)+", concentrate. Focus your powers!",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,64,113,0	script	35-2	139,0,0,{
+
+OnTouch:
+	mapannounce "job_hunte.gat",""+strcharinfo(0)+", you have fallen into a trap. You will be returned to the starting point.",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,65,112,0	script	35-3	139,0,0,{
+
+OnTouch:
+	mapannounce "job_hunte.gat",""+strcharinfo(0)+", am I going mad, or did the word -think- escape your lips?",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,65,113,0	script	35-4	139,0,0,{
+
+OnTouch:
+	mapannounce "job_hunte.gat",""+strcharinfo(0)+", you have fallen into a trap. You will be returned to the starting point.",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,80,110,0	script	36-1	139,0,0,{
+
+OnTouch:
+	mapannounce "job_hunte.gat",""+strcharinfo(0)+", you're just stalling now.",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,80,111,0	script	36-2	139,0,0,{
+
+OnTouch:
+	mapannounce "job_hunte.gat",""+strcharinfo(0)+", you have fallen into a trap. You will be returned to the starting point.",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,81,110,0	script	36-3	139,0,0,{
+
+OnTouch:
+	mapannounce "job_hunte.gat",""+strcharinfo(0)+", life isn't always fair.",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,81,111,0	script	36-4	139,0,0,{
+
+OnTouch:
+	mapannounce "job_hunte.gat",""+strcharinfo(0)+", you have fallen into a trap. You will be returned to the starting point.",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,90,108,0	script	37-1	139,0,6,{
+
+OnTouch:
+	mapannounce "job_hunte.gat",""+strcharinfo(0)+".... Uhhh...it's not OUR fault....",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,91,108,0	script	37-2	139,0,5,{
+
+OnTouch:
+	mapannounce "job_hunte.gat",""+strcharinfo(0)+", you have fallen into a trap. You will be returned to the starting point.",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,91,102,0	script	37-3	139,0,0,{
+
+OnTouch:
+	mapannounce "job_hunte.gat",""+strcharinfo(0)+", survivability takes priority.",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,98,109,0	script	38-1	139,0,2,{
+
+OnTouch:
+	mapannounce "job_hunte.gat",""+strcharinfo(0)+", you have fallen into a trap. You will be returned to the starting point.",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,99,109,0	script	38-2	139,0,2,{
+
+OnTouch:
+	mapannounce "job_hunte.gat",""+strcharinfo(0)+", people have the strength to overcome their obstacles...everyone can.",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,103,109,0	script	38-3	139,3,0,{
+
+OnTouch:
+	mapannounce "job_hunte.gat",""+strcharinfo(0)+", you have fallen into a trap. You will be returned to the starting point.",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,103,108,0	script	38-4	139,3,0,{
+
+OnTouch:
+	mapannounce "job_hunte.gat",""+strcharinfo(0)+", there is happiness for those who accept their fate, and there is glory for those who resist their fate.",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,97,106,0	script	39-1	139,2,0,{
+
+OnTouch:
+	mapannounce "job_hunte.gat",""+strcharinfo(0)+", you have fallen into a trap. You will be returned to the starting point.",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,96,107,0	script	39-2	139,1,0,{
+
+OnTouch:
+	mapannounce "job_hunte.gat",""+strcharinfo(0)+", some things are real and some things are false. Can't you tell the difference?",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,94,108,0	script	39-3	139,0,1,{
+
+OnTouch:
+	mapannounce "job_hunte.gat",""+strcharinfo(0)+", you have fallen into a trap. You will be returned to the starting point.",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,95,109,0	script	39-4	139,0,0,{
+
+OnTouch:
+	mapannounce "job_hunte.gat",""+strcharinfo(0)+", we are having fun aren't we? Everyday here is like a dream. I really hope it's going to be like this forever.",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,95,108,0	script	40-1	139,0,0,{
+
+OnTouch:
+	mapannounce "job_hunte.gat",""+strcharinfo(0)+", you have fallen into a trap. You will be returned to the starting point.",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,94,106,0	script	40-2	139,0,0,{
+
+OnTouch:
+	mapannounce "job_hunte.gat",""+strcharinfo(0)+", I'll give you just one piece of advice... dying hurts like hell.",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,96,102,0	script	40-3	139,0,3,{
+
+OnTouch:
+	mapannounce "job_hunte.gat",""+strcharinfo(0)+", you have fallen into a trap. You will be returned to the starting point.",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,97,102,0	script	40-4	139,0,3,{
+
+OnTouch:
+	mapannounce "job_hunte.gat",""+strcharinfo(0)+", don't give up the ghost! Just be more careful...",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,95,98,0	script	41-1	139,2,0,{
+
+OnTouch:
+	mapannounce "job_hunte.gat",""+strcharinfo(0)+", you have fallen into a trap. You will be returned to the starting point.",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,94,99,0	script	42-1	139,1,0,{
+
+OnTouch:
+	mapannounce "job_hunte.gat",""+strcharinfo(0)+", death is a gift given at birth. But...these traps won't kill you, don't worry.",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,92,98,0	script	43-1	139,0,0,{
+
+OnTouch:
+	mapannounce "job_hunte.gat",""+strcharinfo(0)+", you have fallen into a trap. You will be returned to the starting point.",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,112,110,0	script	44-1	139,0,0,{
+
+OnTouch:
+	mapannounce "job_hunte.gat",""+strcharinfo(0)+", I was counting on you from the beginning. But I guess you're gonna make me wait longer...",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,112,111,0	script	44-2	139,0,0,{
+
+OnTouch:
+	mapannounce "job_hunte.gat",""+strcharinfo(0)+", you have fallen into a trap. You will be returned to the starting point.",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,113,110,0	script	44-3	139,0,0,{
+
+OnTouch:
+	mapannounce "job_hunte.gat",""+strcharinfo(0)+", always with the end comes hope and rebirth. But it's back to the beginning for you~",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,113,111,0	script	44-4	139,0,0,{
+
+OnTouch:
+	mapannounce "job_hunte.gat",""+strcharinfo(0)+", have I ever told you about the power held in a single tear? Its okay to shed one now, I know its hard...",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,126,108,0	script	45-1	139,0,1,{
+
+OnTouch:
+	mapannounce "job_hunte.gat",""+strcharinfo(0)+", happiness often sneaks in through a door you didn't know you left open. Sort of like...hidden traps!",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,127,108,0	script	45-2	139,0,1,{
+
+OnTouch:
+	mapannounce "job_hunte.gat",""+strcharinfo(0)+", you have fallen into a trap. You will be returned to the starting point.",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,126,106,0	script	45-3	139,0,0,{
+
+OnTouch:
+	mapannounce "job_hunte.gat",""+strcharinfo(0)+", ....Chii?",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,126,106,0	script	45-4	139,0,0,{
+
+OnTouch:
+	mapannounce "job_hunte.gat",""+strcharinfo(0)+", you have fallen into a trap. You will be returned to the starting point.",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,53,102,0	script	46-1	139,1,1,{
+
+OnTouch:
+	mapannounce "job_hunte.gat",""+strcharinfo(0)+", Mine! Mine! Mine! Mine!",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,55,102,0	script	46-2	139,0,1,{
+
+OnTouch:
+	mapannounce "job_hunte.gat",""+strcharinfo(0)+", you have fallen into a trap. You will be returned to the starting point.",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,53,100,0	script	46-3	139,1,0,{
+
+OnTouch:
+	mapannounce "job_hunte.gat",""+strcharinfo(0)+", it's time to duel!",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,55,100,0	script	46-4	139,0,0,{
+
+OnTouch:
+	mapannounce "job_hunte.gat",""+strcharinfo(0)+", you have fallen into a trap. You will be returned to the starting point.",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,64,106,0	script	47-1	139,0,0,{
+
+OnTouch:
+	mapannounce "job_hunte.gat",""+strcharinfo(0)+", I choose you!...wait... uagh...not you!...",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,64,107,0	script	47-2	139,0,0,{
+
+OnTouch:
+	mapannounce "job_hunte.gat",""+strcharinfo(0)+", you have fallen into a trap. You will be returned to the starting point.",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,65,106,0	script	47-3	139,0,0,{
+
+OnTouch:
+	mapannounce "job_hunte.gat",""+strcharinfo(0)+", this isn't the time to be complimenting it!",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,65,107,0	script	47-4	139,0,0,{
+
+OnTouch:
+	mapannounce "job_hunte.gat",""+strcharinfo(0)+", you have fallen into a trap. You will be returned to the starting point.",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,66,100,0	script	48-1	139,0,0,{
+
+OnTouch:
+	mapannounce "job_hunte.gat",""+strcharinfo(0)+"...Oh great, what else could go wrong today?",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,66,101,0	script	48-2	139,0,0,{
+
+OnTouch:
+	mapannounce "job_hunte.gat",""+strcharinfo(0)+", you have fallen into a trap. You will be returned to the starting point.",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,67,100,0	script	48-3	139,0,0,{
+
+OnTouch:
+	mapannounce "job_hunte.gat",""+strcharinfo(0)+", don't worry, I always keep a spare. We're not running out of traps anytime soon...",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,67,101,0	script	48-4	139,0,0,{
+
+OnTouch:
+	mapannounce "job_hunte.gat",""+strcharinfo(0)+", you have fallen into a trap. You will be returned to the starting point.",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,86,106,0	script	49-1	139,0,1,{
+
+OnTouch:
+	mapannounce "job_hunte.gat",""+strcharinfo(0)+", when bad things happen, don't give up. The day will come when you will look back and laugh at them. But not today.",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,87,106,0	script	49-2	139,0,1,{
+
+OnTouch:
+	mapannounce "job_hunte.gat",""+strcharinfo(0)+", you have fallen into a trap. You will be returned to the starting point.",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,82,104,0	script	49-3	139,5,0,{
+
+OnTouch:
+	mapannounce "job_hunte.gat",""+strcharinfo(0)+", don't worry about it. We're good at fighting losing battles, remember?",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,81,105,0	script	49-4	139,4,0,{
+
+OnTouch:
+	mapannounce "job_hunte.gat",""+strcharinfo(0)+", you remember how it was like when you felt really slick? That feeling won't come back for a while...",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,76,105,0	script	50-1	139,0,0,{
+
+OnTouch:
+	mapannounce "job_hunte.gat",""+strcharinfo(0)+", you must forget about your past for the sake of your own happiness.",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,76,104,0	script	50-2	139,0,0,{
+
+OnTouch:
+	mapannounce "job_hunte.gat",""+strcharinfo(0)+", you have fallen into a trap. You will be returned to the starting point.",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,78,101,0	script	50-3	139,0,2,{
+
+OnTouch:
+	mapannounce "job_hunte.gat",""+strcharinfo(0)+", if you can fool your friends, you can fool your enemies.",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,79,101,0	script	50-4	139,0,2,{
+
+OnTouch:
+	mapannounce "job_hunte.gat",""+strcharinfo(0)+", you have fallen into a trap. You will be returned to the starting point.",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,76,99,0	script	51-1	139,1,0,{
+
+OnTouch:
+	mapannounce "job_hunte.gat",""+strcharinfo(0)+", this world is made up of love and peace!",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,77,98,0	script	51-2	139,2,0,{
+
+OnTouch:
+	mapannounce "job_hunte.gat",""+strcharinfo(0)+", you have fallen into a trap. You will be returned to the starting point.",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,74,99,0	script	51-3	139,0,0,{
+
+OnTouch:
+	mapannounce "job_hunte.gat",""+strcharinfo(0)+", if you fail, you must drink this.....*evil grin*",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,74,98,0	script	51-4	139,0,0,{
+
+OnTouch:
+	mapannounce "job_hunte.gat",""+strcharinfo(0)+", you have fallen into a trap. You will be returned to the starting point.",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,82,100,0	script	53-1	139,0,0,{
+
+OnTouch:
+	mapannounce "job_hunte.gat",""+strcharinfo(0)+", don't say we didn't warn you!",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,82,101,0	script	53-2	139,0,0,{
+
+OnTouch:
+	mapannounce "job_hunte.gat",""+strcharinfo(0)+", you have fallen into a trap. You will be returned to the starting point.",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,83,100,0	script	53-3	139,0,0,{
+
+OnTouch:
+	mapannounce "job_hunte.gat",""+strcharinfo(0)+", curiosity killed the cat. Lucky for me I'm not a cat. Oh, and um, you too of course.",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,83,101,0	script	53-4	139,0,0,{
+
+OnTouch:
+	mapannounce "job_hunte.gat",""+strcharinfo(0)+", you have fallen into a trap. You will be returned to the starting point.",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,106,104,0	script	54-1	139,0,0,{
+
+OnTouch:
+	mapannounce "job_hunte.gat",""+strcharinfo(0)+", STUDY!STUDY!STUDY!STUDY!STUDY!STUDY!STUDY!STUDY!STUDY!STUDY!",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,106,105,0	script	54-2	139,0,0,{
+
+OnTouch:
+	mapannounce "job_hunte.gat",""+strcharinfo(0)+", you have fallen into a trap. You will be returned to the starting point.",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,107,104,0	script	54-3	139,0,0,{
+
+OnTouch:
+	mapannounce "job_hunte.gat",""+strcharinfo(0)+", how you like me now? That's right, that was MY trap!",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,107,105,0	script	54-4	139,0,0,{
+
+OnTouch:
+	mapannounce "job_hunte.gat",""+strcharinfo(0)+"...brilliant...just absolutely...genius. Sorry, I was talking about all these crazy traps.",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,112,104,0	script	55-1	139,0,1,{
+
+OnTouch:
+	mapannounce "job_hunte.gat",""+strcharinfo(0)+", you have fallen into a trap. You will be returned to the starting point.",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,113,104,0	script	55-2	139,0,1,{
+
+OnTouch:
+	mapannounce "job_hunte.gat",""+strcharinfo(0)+", it's time to bust out of that trap, Houdini-style! Hey, wait...come back!",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,112,102,0	script	55-3	139,0,0,{
+
+OnTouch:
+	mapannounce "job_hunte.gat",""+strcharinfo(0)+", you have fallen into a trap. You will be returned to the starting point.",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,113,102,0	script	55-4	139,0,0,{
+
+OnTouch:
+	mapannounce "job_hunte.gat",""+strcharinfo(0)+", it looks like you could really be in trouble this time...no worries, just try this again!",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,54,92,0	script	56-1	139,0,0,{
+
+OnTouch:
+	mapannounce "job_hunte.gat",""+strcharinfo(0)+", you have fallen into a trap. You will be returned to the starting point.",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,54,93,0	script	56-2	139,0,0,{
+
+OnTouch:
+	mapannounce "job_hunte.gat",""+strcharinfo(0)+"...not smooth, dude. Go for it again, one more time!",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,55,92,0	script	56-3	139,0,0,{
+
+OnTouch:
+	mapannounce "job_hunte.gat",""+strcharinfo(0)+", you have fallen into a trap. You will be returned to the starting point.",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,55,93,0	script	56-4	139,0,0,{
+
+OnTouch:
+	mapannounce "job_hunte.gat",""+strcharinfo(0)+",it looks like you could really be in a pickle. Back to the starting point...",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,52,90,0	script	56-5	139,0,0,{
+
+OnTouch:
+	mapannounce "job_hunte.gat",""+strcharinfo(0)+", you have fallen into a trap. You will be returned to the starting point.",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,52,91,0	script	56-6	139,0,0,{
+
+OnTouch:
+	mapannounce "job_hunte.gat",""+strcharinfo(0)+", just think of it as Karma. Someday, you'll be setting hundreds of traps of your own...",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,53,90,0	script	56-7	139,0,0,{
+
+OnTouch:
+	mapannounce "job_hunte.gat",""+strcharinfo(0)+", bad news dude...its another trap. You'll get the hang of this, I believe in you!",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,53,91,0	script	56-8	139,0,0,{
+
+OnTouch:
+	mapannounce "job_hunte.gat",""+strcharinfo(0)+", don't give up! The world still needs you!",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,64,92,0	script	57-1	139,0,0,{
+
+OnTouch:
+	mapannounce "job_hunte.gat",""+strcharinfo(0)+", it's okay to cry. Just not too loudly.",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,64,93,0	script	57-2	139,0,0,{
+
+OnTouch:
+	mapannounce "job_hunte.gat",""+strcharinfo(0)+", you have fallen into a trap. You will be returned to the starting point.",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,65,92,0	script	57-3	139,0,0,{
+
+OnTouch:
+	mapannounce "job_hunte.gat",""+strcharinfo(0)+"...oh man. It's tiring setting up all these traps. You guys have got to stop falling into them!",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,65,93,0	script	57-4	139,0,0,{
+
+OnTouch:
+	mapannounce "job_hunte.gat",""+strcharinfo(0)+", has failed me! Go back to where you started!",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,76,94,0	script	58-1	139,0,0,{
+
+OnTouch:
+	mapannounce "job_hunte.gat",""+strcharinfo(0)+", has failed me! Go back to where you started!",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,76,95,0	script	58-2	139,0,0,{
+
+OnTouch:
+	mapannounce "job_hunte.gat",""+strcharinfo(0)+", has failed me! Go back to where you started!",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,77,94,0	script	58-3	139,0,0,{
+
+OnTouch:
+	mapannounce "job_hunte.gat",""+strcharinfo(0)+", has failed me! Go back to where you started!",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,77,95,0	script	58-4	139,0,0,{
+
+OnTouch:
+	mapannounce "job_hunte.gat",""+strcharinfo(0)+", has failed me! Go back to where you started!",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,78,92,0	script	59-1	139,0,0,{
+
+OnTouch:
+	mapannounce "job_hunte.gat",""+strcharinfo(0)+", has failed me! Go back to where you started!",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,78,93,0	script	59-2	139,0,0,{
+
+OnTouch:
+	mapannounce "job_hunte.gat",""+strcharinfo(0)+", has failed me! Go back to where you started!",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,79,92,0	script	59-3	139,0,0,{
+
+OnTouch:
+	mapannounce "job_hunte.gat",""+strcharinfo(0)+", has failed me! Go back to where you started!",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,79,93,0	script	59-4	139,0,0,{
+
+OnTouch:
+	mapannounce "job_hunte.gat",""+strcharinfo(0)+", has failed me! Go back to where you started!",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,86,92,0	script	60-1	139,0,0,{
+
+OnTouch:
+	mapannounce "job_hunte.gat",""+strcharinfo(0)+", has failed me! Go back to where you started!",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,86,93,0	script	60-2	139,0,0,{
+
+OnTouch:
+	mapannounce "job_hunte.gat",""+strcharinfo(0)+", has failed me! Go back to where you started!",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,87,92,0	script	60-3	139,0,0,{
+
+OnTouch:
+	mapannounce "job_hunte.gat",""+strcharinfo(0)+", has failed me! Go back to where you started!",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,87,93,0	script	60-4	139,0,0,{
+
+OnTouch:
+	mapannounce "job_hunte.gat",""+strcharinfo(0)+", has failed me! Go back to where you started!",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,90,96,0	script	61-1	139,0,0,{
+
+OnTouch:
+	mapannounce "job_hunte.gat",""+strcharinfo(0)+", has failed me! Go back to where you started!",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,90,97,0	script	61-2	139,0,0,{
+
+OnTouch:
+	mapannounce "job_hunte.gat",""+strcharinfo(0)+", has failed me! Go back to where you started!",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,91,96,0	script	61-3	139,0,0,{
+
+OnTouch:
+	mapannounce "job_hunte.gat",""+strcharinfo(0)+", has failed me! Go back to where you started!",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,91,97,0	script	61-4	139,0,0,{
+
+OnTouch:
+	mapannounce "job_hunte.gat",""+strcharinfo(0)+", has failed me! Go back to where you started!",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,99,95,0	script	62-1	139,1,0,{
+
+OnTouch:
+	mapannounce "job_hunte.gat",""+strcharinfo(0)+", has failed me! Go back to where you started!",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,99,94,0	script	62-2	139,1,0,{
+
+OnTouch:
+	mapannounce "job_hunte.gat",""+strcharinfo(0)+", has failed me! Go back to where you started!",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,101,94,0	script	62-3	139,0,1,{
+
+OnTouch:
+	mapannounce "job_hunte.gat",""+strcharinfo(0)+", has failed me! Go back to where you started!",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,100,93,0	script	62-4	139,0,0,{
+
+OnTouch:
+	mapannounce "job_hunte.gat",""+strcharinfo(0)+", has failed me! Go back to where you started!",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,100,92,0	script	63-1	139,0,0,{
+
+OnTouch:
+	mapannounce "job_hunte.gat",""+strcharinfo(0)+", has failed me! Go back to where you started!",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,101,92,0	script	63-2	139,0,0,{
+
+OnTouch:
+	mapannounce "job_hunte.gat",""+strcharinfo(0)+", has failed me! Go back to where you started!",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,102,98,0	script	64-1	139,0,0,{
+
+OnTouch:
+	mapannounce "job_hunte.gat",""+strcharinfo(0)+", has failed me! Go back to where you started!",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,102,99,0	script	64-2	139,0,0,{
+
+OnTouch:
+	mapannounce "job_hunte.gat",""+strcharinfo(0)+", has failed me! Go back to where you started!",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,103,98,0	script	64-3	139,0,0,{
+
+OnTouch:
+	mapannounce "job_hunte.gat",""+strcharinfo(0)+", has failed me! Go back to where you started!",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,103,99,0	script	64-4	139,0,0,{
+
+OnTouch:
+	mapannounce "job_hunte.gat",""+strcharinfo(0)+", has failed me! Go back to where you started!",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,102,90,0	script	65-1	139,0,0,{
+
+OnTouch:
+	mapannounce "job_hunte.gat",""+strcharinfo(0)+", has failed me! Go back to where you started!",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,102,91,0	script	65-2	139,0,0,{
+
+OnTouch:
+	mapannounce "job_hunte.gat",""+strcharinfo(0)+", has failed me! Go back to where you started!",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,103,90,0	script	65-3	139,0,0,{
+
+OnTouch:
+	mapannounce "job_hunte.gat",""+strcharinfo(0)+", has failed me! Go back to where you started!",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,103,91,0	script	65-4	139,0,0,{
+
+OnTouch:
+	mapannounce "job_hunte.gat",""+strcharinfo(0)+", has failed me! Go back to where you started!",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,114,96,0	script	66-1	139,0,0,{
+
+OnTouch:
+	mapannounce "job_hunte.gat",""+strcharinfo(0)+", has failed me! Go back to where you started!",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,114,97,0	script	66-2	139,0,0,{
+
+OnTouch:
+	mapannounce "job_hunte.gat",""+strcharinfo(0)+", has failed me! Go back to where you started!",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,115,96,0	script	66-3	139,0,0,{
+
+OnTouch:
+	mapannounce "job_hunte.gat",""+strcharinfo(0)+", has failed me! Go back to where you started!",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,115,97,0	script	66-4	139,0,0,{
+
+OnTouch:
+	mapannounce "job_hunte.gat",""+strcharinfo(0)+", has failed me! Go back to where you started!",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,112,90,0	script	67-1	139,0,0,{
+
+OnTouch:
+	mapannounce "job_hunte.gat",""+strcharinfo(0)+", has failed me! Go back to where you started!",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,112,91,0	script	67-2	139,0,0,{
+
+OnTouch:
+	mapannounce "job_hunte.gat",""+strcharinfo(0)+", has failed me! Go back to where you started!",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,113,90,0	script	67-3	139,0,0,{
+
+OnTouch:
+	mapannounce "job_hunte.gat",""+strcharinfo(0)+", has failed me! Go back to where you started!",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,113,91,0	script	67-4	139,0,0,{
+
+OnTouch:
+	mapannounce "job_hunte.gat",""+strcharinfo(0)+", has failed me! Go back to where you started!",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,125,97,0	script	68-1	139,1,0,{
+
+OnTouch:
+	mapannounce "job_hunte.gat",""+strcharinfo(0)+", has failed me! Go back to where you started!",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,125,96,0	script	68-2	139,1,0,{
+
+OnTouch:
+	mapannounce "job_hunte.gat",""+strcharinfo(0)+", has failed me! Go back to where you started!",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,127,96,0	script	68-3	139,0,0,{
+
+OnTouch:
+	mapannounce "job_hunte.gat",""+strcharinfo(0)+", has failed me! Go back to where you started!",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,127,97,0	script	68-4	139,0,0,{
+
+OnTouch:
+	mapannounce "job_hunte.gat",""+strcharinfo(0)+", has failed me! Go back to where you started!",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,52,86,0	script	69-1	139,0,0,{
+
+OnTouch:
+	mapannounce "job_hunte.gat",""+strcharinfo(0)+", has failed me! Go back to where you started!",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,52,87,0	script	69-2	139,0,0,{
+
+OnTouch:
+	mapannounce "job_hunte.gat",""+strcharinfo(0)+", has failed me! Go back to where you started!",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,53,86,0	script	69-3	139,0,0,{
+
+OnTouch:
+	mapannounce "job_hunte.gat",""+strcharinfo(0)+", has failed me! Go back to where you started!",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,53,87,0	script	69-4	139,0,0,{
+
+OnTouch:
+	mapannounce "job_hunte.gat",""+strcharinfo(0)+", has failed me! Go back to where you started!",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,66,88,0	script	70-1	139,0,0,{
+
+OnTouch:
+	mapannounce "job_hunte.gat",""+strcharinfo(0)+", has failed me! Go back to where you started!",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,66,89,0	script	70-2	139,0,0,{
+
+OnTouch:
+	mapannounce "job_hunte.gat",""+strcharinfo(0)+", has failed me! Go back to where you started!",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,67,88,0	script	70-3	139,0,0,{
+
+OnTouch:
+	mapannounce "job_hunte.gat",""+strcharinfo(0)+", has failed me! Go back to where you started!",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,67,89,0	script	70-4	139,0,0,{
+
+OnTouch:
+	mapannounce "job_hunte.gat",""+strcharinfo(0)+", has failed me! Go back to where you started!",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,114,84,0	script	71-1	139,0,0,{
+
+OnTouch:
+	mapannounce "job_hunte.gat",""+strcharinfo(0)+", has failed me! Go back to where you started!",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,114,85,0	script	71-2	139,0,0,{
+
+OnTouch:
+	mapannounce "job_hunte.gat",""+strcharinfo(0)+", has failed me! Go back to where you started!",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,115,84,0	script	71-3	139,0,0,{
+
+OnTouch:
+	mapannounce "job_hunte.gat",""+strcharinfo(0)+", has failed me! Go back to where you started!",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,115,85,0	script	71-4	139,0,0,{
+
+OnTouch:
+	mapannounce "job_hunte.gat",""+strcharinfo(0)+", has failed me! Go back to where you started!",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,126,86,0	script	72-1	139,0,0,{
+
+OnTouch:
+	mapannounce "job_hunte.gat",""+strcharinfo(0)+", has failed me! Go back to where you started!",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,126,87,0	script	72-2	139,0,0,{
+
+OnTouch:
+	mapannounce "job_hunte.gat",""+strcharinfo(0)+", has failed me! Go back to where you started!",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,127,86,0	script	72-3	139,0,0,{
+
+OnTouch:
+	mapannounce "job_hunte.gat",""+strcharinfo(0)+", has failed me! Go back to where you started!",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,127,87,0	script	72-4	139,0,0,{
+
+OnTouch:
+	mapannounce "job_hunte.gat",""+strcharinfo(0)+", has failed me! Go back to where you started!",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,54,80,0	script	73-1	139,0,1,{
+
+OnTouch:
+	mapannounce "job_hunte.gat",""+strcharinfo(0)+", has failed me! Go back to where you started!",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,55,80,0	script	73-2	139,0,1,{
+
+OnTouch:
+	mapannounce "job_hunte.gat",""+strcharinfo(0)+", has failed me! Go back to where you started!",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,54,78,0	script	73-3	139,0,0,{
+
+OnTouch:
+	mapannounce "job_hunte.gat",""+strcharinfo(0)+", has failed me! Go back to where you started!",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,55,78,0	script	73-4	139,0,0,{
+
+OnTouch:
+	mapannounce "job_hunte.gat",""+strcharinfo(0)+", has failed me! Go back to where you started!",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,64,82,0	script	74-1	139,0,1,{
+
+OnTouch:
+	mapannounce "job_hunte.gat",""+strcharinfo(0)+", has failed me! Go back to where you started!",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,65,82,0	script	74-2	139,0,1,{
+
+OnTouch:
+	mapannounce "job_hunte.gat",""+strcharinfo(0)+", has failed me! Go back to where you started!",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,64,80,0	script	74-3	139,0,0,{
+
+OnTouch:
+	mapannounce "job_hunte.gat",""+strcharinfo(0)+", has failed me! Go back to where you started!",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,65,80,0	script	74-4	139,0,0,{
+
+OnTouch:
+	mapannounce "job_hunte.gat",""+strcharinfo(0)+", has failed me! Go back to where you started!",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,66,78,0	script	75-1	139,0,0,{
+
+OnTouch:
+	mapannounce "job_hunte.gat",""+strcharinfo(0)+", has failed me! Go back to where you started!",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,66,79,0	script	75-2	139,0,0,{
+
+OnTouch:
+	mapannounce "job_hunte.gat",""+strcharinfo(0)+", has failed me! Go back to where you started!",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,67,78,0	script	75-3	139,0,0,{
+
+OnTouch:
+	mapannounce "job_hunte.gat",""+strcharinfo(0)+", has failed me! Go back to where you started!",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,67,79,0	script	75-4	139,0,0,{
+
+OnTouch:
+	mapannounce "job_hunte.gat",""+strcharinfo(0)+", has failed me! Go back to where you started!",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,74,78,0	script	76-1	139,0,0,{
+
+OnTouch:
+	mapannounce "job_hunte.gat",""+strcharinfo(0)+", has failed me! Go back to where you started!",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,74,79,0	script	76-2	139,0,0,{
+
+OnTouch:
+	mapannounce "job_hunte.gat",""+strcharinfo(0)+", has failed me! Go back to where you started!",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,75,78,0	script	76-3	139,0,0,{
+
+OnTouch:
+	mapannounce "job_hunte.gat",""+strcharinfo(0)+", has failed me! Go back to where you started!",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,75,79,0	script	76-4	139,0,0,{
+
+OnTouch:
+	mapannounce "job_hunte.gat",""+strcharinfo(0)+", has failed me! Go back to where you started!",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,78,80,0	script	77-1	139,0,0,{
+
+OnTouch:
+	mapannounce "job_hunte.gat",""+strcharinfo(0)+", has failed me! Go back to where you started!",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,78,81,0	script	77-2	139,0,0,{
+
+OnTouch:
+	mapannounce "job_hunte.gat",""+strcharinfo(0)+", has failed me! Go back to where you started!",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,79,80,0	script	77-3	139,0,0,{
+
+OnTouch:
+	mapannounce "job_hunte.gat",""+strcharinfo(0)+", has failed me! Go back to where you started!",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,79,81,0	script	77-4	139,0,0,{
+
+OnTouch:
+	mapannounce "job_hunte.gat",""+strcharinfo(0)+", has failed me! Go back to where you started!",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,82,78,0	script	78-1	139,0,0,{
+
+OnTouch:
+	mapannounce "job_hunte.gat",""+strcharinfo(0)+", has failed me! Go back to where you started!",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,82,79,0	script	78-2	139,0,0,{
+
+OnTouch:
+	mapannounce "job_hunte.gat",""+strcharinfo(0)+", has failed me! Go back to where you started!",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,83,78,0	script	78-3	139,0,0,{
+
+OnTouch:
+	mapannounce "job_hunte.gat",""+strcharinfo(0)+", has failed me! Go back to where you started!",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,83,79,0	script	78-4	139,0,0,{
+
+OnTouch:
+	mapannounce "job_hunte.gat",""+strcharinfo(0)+", has failed me! Go back to where you started!",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,94,78,0	script	79-1	139,0,0,{
+
+OnTouch:
+	mapannounce "job_hunte.gat",""+strcharinfo(0)+", has failed me! Go back to where you started!",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,94,79,0	script	79-2	139,0,0,{
+
+OnTouch:
+	mapannounce "job_hunte.gat",""+strcharinfo(0)+", has failed me! Go back to where you started!",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,95,78,0	script	79-3	139,0,0,{
+
+OnTouch:
+	mapannounce "job_hunte.gat",""+strcharinfo(0)+", has failed me! Go back to where you started!",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,95,79,0	script	79-4	139,0,0,{
+
+OnTouch:
+	mapannounce "job_hunte.gat",""+strcharinfo(0)+", has failed me! Go back to where you started!",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,101,80,0	script	80-1	139,1,0,{
+
+OnTouch:
+	mapannounce "job_hunte.gat",""+strcharinfo(0)+", has failed me! Go back to where you started!",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,101,81,0	script	80-2	139,1,0,{
+
+OnTouch:
+	mapannounce "job_hunte.gat",""+strcharinfo(0)+", has failed me! Go back to where you started!",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,103,81,0	script	80-3	139,0,0,{
+
+OnTouch:
+	mapannounce "job_hunte.gat",""+strcharinfo(0)+", has failed me! Go back to where you started!",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,103,80,0	script	80-4	139,0,0,{
+
+OnTouch:
+	mapannounce "job_hunte.gat",""+strcharinfo(0)+", has failed me! Go back to where you started!",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,104,78,0	script	81-1	139,0,0,{
+
+OnTouch:
+	mapannounce "job_hunte.gat",""+strcharinfo(0)+", has failed me! Go back to where you started!",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,104,79,0	script	81-2	139,0,0,{
+
+OnTouch:
+	mapannounce "job_hunte.gat",""+strcharinfo(0)+", has failed me! Go back to where you started!",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,105,78,0	script	81-3	139,0,0,{
+
+OnTouch:
+	mapannounce "job_hunte.gat",""+strcharinfo(0)+", has failed me! Go back to where you started!",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,105,79,0	script	81-4	139,0,0,{
+
+OnTouch:
+	mapannounce "job_hunte.gat",""+strcharinfo(0)+", has failed me! Go back to where you started!",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,110,78,0	script	82-1	139,0,0,{
+
+OnTouch:
+	mapannounce "job_hunte.gat",""+strcharinfo(0)+", has failed me! Go back to where you started!",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,110,79,0	script	82-2	139,0,0,{
+
+OnTouch:
+	mapannounce "job_hunte.gat",""+strcharinfo(0)+", has failed me! Go back to where you started!",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,111,78,0	script	82-3	139,0,0,{
+
+OnTouch:
+	mapannounce "job_hunte.gat",""+strcharinfo(0)+", has failed me! Go back to where you started!",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,111,79,0	script	82-4	139,0,0,{
+
+OnTouch:
+	mapannounce "job_hunte.gat",""+strcharinfo(0)+", has failed me! Go back to where you started!",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,114,80,0	script	83-1	139,0,0,{
+
+OnTouch:
+	mapannounce "job_hunte.gat",""+strcharinfo(0)+", has failed me! Go back to where you started!",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,114,81,0	script	83-2	139,0,0,{
+
+OnTouch:
+	mapannounce "job_hunte.gat",""+strcharinfo(0)+", has failed me! Go back to where you started!",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,115,80,0	script	83-3	139,0,0,{
+
+OnTouch:
+	mapannounce "job_hunte.gat",""+strcharinfo(0)+", has failed me! Go back to where you started!",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,115,81,0	script	83-4	139,0,0,{
+
+OnTouch:
+	mapannounce "job_hunte.gat",""+strcharinfo(0)+", has failed me! Go back to where you started!",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,124,78,0	script	84-1	139,0,0,{
+
+OnTouch:
+	mapannounce "job_hunte.gat",""+strcharinfo(0)+", has failed me! Go back to where you started!",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,124,79,0	script	84-2	139,0,0,{
+
+OnTouch:
+	mapannounce "job_hunte.gat",""+strcharinfo(0)+", has failed me! Go back to where you started!",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,125,78,0	script	84-3	139,0,0,{
+
+OnTouch:
+	mapannounce "job_hunte.gat",""+strcharinfo(0)+", has failed me! Go back to where you started!",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,125,79,0	script	84-4	139,0,0,{
+
+OnTouch:
+	mapannounce "job_hunte.gat",""+strcharinfo(0)+", has failed me! Go back to where you started!",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,126,82,0	script	85-1	139,0,0,{
+
+OnTouch:
+	mapannounce "job_hunte.gat",""+strcharinfo(0)+", has failed me! Go back to where you started!",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,126,83,0	script	85-2	139,0,0,{
+
+OnTouch:
+	mapannounce "job_hunte.gat",""+strcharinfo(0)+", has failed me! Go back to where you started!",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,127,82,0	script	85-3	139,0,0,{
+
+OnTouch:
+	mapannounce "job_hunte.gat",""+strcharinfo(0)+", has failed me! Go back to where you started!",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,127,83,0	script	85-4	139,0,0,{
+
+OnTouch:
+	mapannounce "job_hunte.gat",""+strcharinfo(0)+", has failed me! Go back to where you started!",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,52,68,0	script	86-1	139,0,1,{
+
+OnTouch:
+	mapannounce "job_hunte.gat",""+strcharinfo(0)+", has failed me! Go back to where you started!",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,53,68,0	script	86-2	139,0,1,{
+
+OnTouch:
+	mapannounce "job_hunte.gat",""+strcharinfo(0)+", has failed me! Go back to where you started!",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,52,66,0	script	86-3	139,0,0,{
+
+OnTouch:
+	mapannounce "job_hunte.gat",""+strcharinfo(0)+", has failed me! Go back to where you started!",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,53,66,0	script	86-4	139,0,0,{
+
+OnTouch:
+	mapannounce "job_hunte.gat",""+strcharinfo(0)+", has failed me! Go back to where you started!",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,54,70,0	script	87-1	139,0,1,{
+
+OnTouch:
+	mapannounce "job_hunte.gat",""+strcharinfo(0)+", has failed me! Go back to where you started!",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,55,70,0	script	87-2	139,0,1,{
+
+OnTouch:
+	mapannounce "job_hunte.gat",""+strcharinfo(0)+", has failed me! Go back to where you started!",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,54,68,0	script	87-3	139,0,0,{
+
+OnTouch:
+	mapannounce "job_hunte.gat",""+strcharinfo(0)+", has failed me! Go back to where you started!",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,55,68,0	script	87-4	139,0,0,{
+
+OnTouch:
+	mapannounce "job_hunte.gat",""+strcharinfo(0)+", has failed me! Go back to where you started!",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,59,66,0	script	88-1	139,1,0,{
+
+OnTouch:
+	mapannounce "job_hunte.gat",""+strcharinfo(0)+", has failed me! Go back to where you started!",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,59,67,0	script	88-2	139,1,0,{
+
+OnTouch:
+	mapannounce "job_hunte.gat",""+strcharinfo(0)+", has failed me! Go back to where you started!",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,61,67,0	script	88-3	139,0,0,{
+
+OnTouch:
+	mapannounce "job_hunte.gat",""+strcharinfo(0)+", has failed me! Go back to where you started!",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,61,66,0	script	88-4	139,0,0,{
+
+OnTouch:
+	mapannounce "job_hunte.gat",""+strcharinfo(0)+", has failed me! Go back to where you started!",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,68,68,0	script	89-1	139,0,1,{
+
+OnTouch:
+	mapannounce "job_hunte.gat",""+strcharinfo(0)+", has failed me! Go back to where you started!",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,69,68,0	script	89-2	139,0,1,{
+
+OnTouch:
+	mapannounce "job_hunte.gat",""+strcharinfo(0)+", has failed me! Go back to where you started!",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,68,66,0	script	89-3	139,0,0,{
+
+OnTouch:
+	mapannounce "job_hunte.gat",""+strcharinfo(0)+", has failed me! Go back to where you started!",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,69,66,0	script	89-4	139,0,0,{
+
+OnTouch:
+	mapannounce "job_hunte.gat",""+strcharinfo(0)+", has failed me! Go back to where you started!",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,76,66,0	script	90-1	139,0,0,{
+
+OnTouch:
+	mapannounce "job_hunte.gat",""+strcharinfo(0)+", has failed me! Go back to where you started!",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,76,67,0	script	90-2	139,0,0,{
+
+OnTouch:
+	mapannounce "job_hunte.gat",""+strcharinfo(0)+", has failed me! Go back to where you started!",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,77,66,0	script	90-3	139,0,0,{
+
+OnTouch:
+	mapannounce "job_hunte.gat",""+strcharinfo(0)+", has failed me! Go back to where you started!",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,77,67,0	script	90-4	139,0,0,{
+
+OnTouch:
+	mapannounce "job_hunte.gat",""+strcharinfo(0)+", has failed me! Go back to where you started!",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,82,68,0	script	91-1	139,0,0,{
+
+OnTouch:
+	mapannounce "job_hunte.gat",""+strcharinfo(0)+", has failed me! Go back to where you started!",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,82,69,0	script	91-2	139,0,0,{
+
+OnTouch:
+	mapannounce "job_hunte.gat",""+strcharinfo(0)+", has failed me! Go back to where you started!",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,83,68,0	script	91-3	139,0,0,{
+
+OnTouch:
+	mapannounce "job_hunte.gat",""+strcharinfo(0)+", has failed me! Go back to where you started!",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,83,69,0	script	91-4	139,0,0,{
+
+OnTouch:
+	mapannounce "job_hunte.gat",""+strcharinfo(0)+", has failed me! Go back to where you started!",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,96,66,0	script	92-1	139,0,0,{
+
+OnTouch:
+	mapannounce "job_hunte.gat",""+strcharinfo(0)+", has failed me! Go back to where you started!",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,96,67,0	script	92-2	139,0,0,{
+
+OnTouch:
+	mapannounce "job_hunte.gat",""+strcharinfo(0)+", has failed me! Go back to where you started!",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,97,66,0	script	92-3	139,0,0,{
+
+OnTouch:
+	mapannounce "job_hunte.gat",""+strcharinfo(0)+", has failed me! Go back to where you started!",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,97,67,0	script	92-4	139,0,0,{
+
+OnTouch:
+	mapannounce "job_hunte.gat",""+strcharinfo(0)+", has failed me! Go back to where you started!",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,100,68,0	script	93-1	139,0,0,{
+
+OnTouch:
+	mapannounce "job_hunte.gat",""+strcharinfo(0)+", has failed me! Go back to where you started!",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,100,69,0	script	93-2	139,0,0,{
+
+OnTouch:
+	mapannounce "job_hunte.gat",""+strcharinfo(0)+", has failed me! Go back to where you started!",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,101,68,0	script	93-3	139,0,0,{
+
+OnTouch:
+	mapannounce "job_hunte.gat",""+strcharinfo(0)+", has failed me! Go back to where you started!",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,101,69,0	script	93-4	139,0,0,{
+
+OnTouch:
+	mapannounce "job_hunte.gat",""+strcharinfo(0)+", has failed me! Go back to where you started!",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,107,66,0	script	94-1	139,1,0,{
+
+OnTouch:
+	mapannounce "job_hunte.gat",""+strcharinfo(0)+", has failed me! Go back to where you started!",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,107,67,0	script	94-2	139,1,0,{
+
+OnTouch:
+	mapannounce "job_hunte.gat",""+strcharinfo(0)+", has failed me! Go back to where you started!",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,109,67,0	script	94-3	139,0,0,{
+
+OnTouch:
+	mapannounce "job_hunte.gat",""+strcharinfo(0)+", has failed me! Go back to where you started!",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,109,66,0	script	94-4	139,0,0,{
+
+OnTouch:
+	mapannounce "job_hunte.gat",""+strcharinfo(0)+", has failed me! Go back to where you started!",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,117,69,0	script	95-1	139,1,0,{
+
+OnTouch:
+	mapannounce "job_hunte.gat",""+strcharinfo(0)+", has failed me! Go back to where you started!",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,117,68,0	script	95-2	139,1,0,{
+
+OnTouch:
+	mapannounce "job_hunte.gat",""+strcharinfo(0)+", has failed me! Go back to where you started!",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,119,69,0	script	95-3	139,0,0,{
+
+OnTouch:
+	mapannounce "job_hunte.gat",""+strcharinfo(0)+", has failed me! Go back to where you started!",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,119,68,0	script	95-4	139,0,0,{
+
+OnTouch:
+	mapannounce "job_hunte.gat",""+strcharinfo(0)+", has failed me! Go back to where you started!",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,124,66,0	script	96-1	139,0,0,{
+
+OnTouch:
+	mapannounce "job_hunte.gat",""+strcharinfo(0)+", has failed me! Go back to where you started!",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,124,67,0	script	96-2	139,0,0,{
+
+OnTouch:
+	mapannounce "job_hunte.gat",""+strcharinfo(0)+", has failed me! Go back to where you started!",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,125,66,0	script	96-3	139,0,0,{
+
+OnTouch:
+	mapannounce "job_hunte.gat",""+strcharinfo(0)+", has failed me! Go back to where you started!",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,125,67,0	script	96-4	139,0,0,{
+
+OnTouch:
+	mapannounce "job_hunte.gat",""+strcharinfo(0)+", has failed me! Go back to where you started!",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,126,70,0	script	97-1	139,0,0,{
+
+OnTouch:
+	mapannounce "job_hunte.gat",""+strcharinfo(0)+", has failed me! Go back to where you started!",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,126,71,0	script	97-2	139,0,0,{
+
+OnTouch:
+	mapannounce "job_hunte.gat",""+strcharinfo(0)+", has failed me! Go back to where you started!",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,127,70,0	script	97-3	139,0,0,{
+
+OnTouch:
+	mapannounce "job_hunte.gat",""+strcharinfo(0)+", has failed me! Go back to where you started!",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+job_hunte.gat,127,71,0	script	97-4	139,0,0,{
+
+OnTouch:
+	mapannounce "job_hunte.gat",""+strcharinfo(0)+", has failed me! Go back to where you started!",8;
+	callfunc "F_HunterTrap";
+	end;
+}
+
+function	script	F_HunterTrap	{
+
+	set job_hunter_q,13;
+	warp "job_hunte.gat",176,22;
+	donpcevent "hntwait::OnCommandReset";
+	donpcevent "Manager#hnt::OnCommandReset";
+	donpcevent "Manager#hnt2::OnCommandReset";
+	hideonnpc "Manager#hnt";
+	hideonnpc "Manager#hnt2";
+	return;
+}

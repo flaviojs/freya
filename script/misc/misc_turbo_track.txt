@@ -1,0 +1,140 @@
+//--------------------------------------------------------------
+//               (c)2004-2007 Aurora Team Presents:             
+//                  ___                                         
+//                 /   |_   _ _ __ ___  _ __ __ _               
+//                / /| | | | | '__/ _ \| '__/ _` |              
+//               / ___ | |_| | | | (_) | | | (_| |++            
+//              /_/  |_|\____|_|  \___/|_|  \__,_|              
+//                 http://aurora.deltaanime.net                 
+//--------------------------------------------------------------
+// Script Title: Aldebaran Turbo Track	Author: jAthena/Tsuyuki
+//--------------------------------------------------------------
+// Revision History: v1.0
+//--------------------------------------------------------------
+//	1.0 First version [jAthena/Tsuyuki]
+//--------------------------------------------------------------
+// Additional Notes: Highly incomplete.
+//--------------------------------------------------------------
+
+
+//--------------------------------------------------------------
+// Aldebaran Turbo Track-Related NPCs
+//--------------------------------------------------------------
+
+alde_gld.gat,178,180,0	script	Sign#TBT	837,{
+
+	mes "[Al De Baran Turbo Track]";
+	mes "This way...";
+	mes "to the Al De Baran";
+	mes "Turbo Track Arena!";
+	next;
+	mes "[Al De Baran Turbo Track]";
+	mes "Turbo Track is";
+	mes "an arena where";
+	mes "participants compete to be the first to reach the Finish Line! Don't miss the chance to race against your friends!";
+	close;
+}
+
+alde_gld.gat,186,199,3	script	Turbo Track Guide#Entrance	845,{
+
+	mes "[Guide]";
+	mes "Welcome to";
+	mes "the Al De Baran";
+	mes "Turbo Track~";
+	next;
+	mes "[Guide]";
+	mes "Peco Pecos are prohibited inside the Turbo Track Arena. But anyone riding on a Peco Peco will receive a Free Peco Peco Mount Ticket at the Turbo Track Entrance and automatically dismount.";
+	next;
+	mes "[Guide]";
+	mes "Well then,";
+	mes "enjoy your time";
+	mes "in Turbo Track~!";
+	close;
+}
+
+alde_gld.gat,181,199,5	script	Peco Peco Manager	845,{
+
+	if(getskilllv(63)) {
+		mes "[Peco Peco Manager]";
+		mes "Welcome, would you like";
+		mes "to retrieve your Peco Peco?";
+		mes "Please show me your Free";
+		mes "Ticket for Peco Ride. You";
+		mes "may also pay a rental fee";
+		mes "of 2,500 zeny.";
+		next;
+		if(select("Use","Cancel")==2) {
+			mes "[Peco Peco Manager]";
+			mes "Are you going";
+			mes "back to race in";
+			mes "the Turbo Track?";
+			mes "Good luck!";
+			close;
+		}
+		if(checkriding()) {
+			mes "[Peco Peco Manager]";
+			mes "I'm sorry, but you're";
+			mes "not eligible for this";
+			mes "service. Please go learn";
+			mes "the Peco Peco Ride skill first.";
+			close;
+		}
+		if(countitem(7310) < 1 && Zeny < 2500) {
+			mes "[Peco Peco Manager]";
+			mes "I'm sorry, but you";
+			mes "don't have a Free Ticket";
+			mes "for Peco Ride or 2,500 zeny.";
+			mes "to use the Peco rental service.";
+			close;
+		}
+		if(countitem(7310)) 
+			delitem 7310,1;
+		else
+			set Zeny,Zeny-2500;
+		setriding;
+		mes "[Peco Peco Manager]";
+		mes "Thank you for";
+		mes "your patronage~";
+		close;
+	}
+	mes "[Peco Peco Manager]";
+	mes "Thank you for";
+	mes "visiting Al De Baran's";
+	mes "Turbo Track~";
+	close;
+}
+
+alde_gld.gat,183,204,0	script	turbowarp1001	45,1,1,{
+
+	if(checkriding()) {
+		mes "[Helper]";
+		mes "Peco Pecos are prohibited";
+		mes "in the Turbo Track Arena.";
+		mes "Please dismount from your";
+		mes "Peco Peco and you will receive";
+		mes "a Free Ticket for Peco Ride";
+		mes "for retrieving your Peco Peco.";
+		close2;
+		setoption 0x0000;
+		getitem 7310,1;
+	}
+	warp "turbo_room.gat",100,65;
+	end;
+}
+
+
+//--------------------------------------------------------------
+// Turbo Track NPCs
+//--------------------------------------------------------------
+
+turbo_room.gat,100,62,0	warp	turbowarp1002	1,1,alde_gld.gat,183,198
+
+turbo_room.gat,75,95,5	script	Solo Mode#1	857,{
+
+	mes "^2F4F4FSolo Mode Record^000000";
+	mes "";
+	mes "The best player";
+	mes "in Solo Mode...";
+	mes "^4D4DFF"+ $TurboNameN$[0] +"^000000!!";
+	close;
+}

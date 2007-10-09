@@ -1,0 +1,79 @@
+//--------------------------------------------------------------
+//               (c)2004-2007 Aurora Team Presents:             
+//                  ___                                         
+//                 /   |_   _ _ __ ___  _ __ __ _               
+//                / /| | | | | '__/ _ \| '__/ _` |              
+//               / ___ | |_| | | | (_) | | | (_| |++            
+//              /_/  |_|\____|_|  \___/|_|  \__,_|              
+//                 http://aurora.deltaanime.net                 
+//--------------------------------------------------------------
+//
+// item_rjc2006.txt
+// RJC2006 Ragnarok Commemoration Random Database
+
+//--------------------------------------------------------------
+// Structure of Database:
+//--------------------------------------------------------------
+//
+// <ItemID>,<DummyName>,<Rate>
+//
+// Rate Examples:
+//  10000   = 1%
+//  500000  = 50%
+//  1000000 = 100%
+
+//--------------------------------------------------------------
+// Database Entries:
+//--------------------------------------------------------------
+
+0,Jellopy,909
+4054,Angeling Card,1
+4047,Ghostring Card,1
+1230,Ice Pick,1
+1131,Ice Falchion,10
+13001,Dragon Killer,10
+1716,Gakkung,10
+1559,Legacy of Dragon,10
+1520,Chain,10
+1616,Wing Staff,10
+1918,Oriental Flute,10
+1970,Queen's Whip,10
+2506,Manteau,10
+2504,Muffler,10
+2406,Boots,10
+2404,Shoes,10
+2607,Clip,100
+2602,Earring,100
+2604,Ancient Glove,100
+2605,Brooch,100
+2603,Ancient Necklace,100
+2601,Ring,100
+5068,Ears Of Demon,100
+5074,Ears of Angel,10
+5038,Deviruchi Hat,10
+5058,Resting Cat,10
+5020,Kafra's Band,10
+5083,Back Ribbon,10
+5084,Lazy Racoon Hat,10
+5030,Panda Hat,10
+5027,Mage Hat,10
+2223,Turban,10
+5086,Alarm Mask,10
+5029,Spore Hat,10
+5111,Galapago Cap,10
+616,Old Card Album,10
+603,Unknown Item,1000
+617,Old Purple Box,100
+969,Gold,1000
+732,ダイヤモンド3カラット,1000
+644,Gift Box,1000
+714,Emperium,1000
+984,Oridecon,1000
+985,Elunium,1000
+607,Yggdrasilberry,1000
+604,Dead Branch,1000
+660,Red Candle,100
+661,Soft Apron,100
+638,Silver Knife of Chastity,100
+641,Contract in Shadow,1000
+642,Book of Devil,1000

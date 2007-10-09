@@ -1,0 +1,32 @@
+//--------------------------------------------------------------
+//               (c)2004-2007 Aurora Team Presents:             
+//                  ___                                         
+//                 /   |_   _ _ __ ___  _ __ __ _               
+//                / /| | | | | '__/ _ \| '__/ _` |              
+//               / ___ | |_| | | | (_) | | | (_| |++            
+//              /_/  |_|\____|_|  \___/|_|  \__,_|              
+//                 http://aurora.deltaanime.net                 
+//--------------------------------------------------------------
+// Script Title: Miscellaneous Monster Spawns	Author: Tsuyuki
+//--------------------------------------------------------------
+// Revision History: v1.0
+//--------------------------------------------------------------
+//	1.0 First version, converted from Aegis [Tsuyuki]
+//--------------------------------------------------------------
+// Additional Notes: * Official-certified / Aegis-certified *
+//--------------------------------------------------------------
+
+
+//--------------------------------------------------------------
+// The Sign Quest Monster Spawns - [Tsuyuki]
+//--------------------------------------------------------------
+
+que_sign02.gat,0,0,0,0	monster	Ancient Mummy	1522,8,0,0,0
+que_sign02.gat,0,0,0,0	monster	Evil Druid	1435,8,0,0,0
+que_sign02.gat,0,0,0,0	monster	Ghoul	1423,20,0,0,0
+que_sign02.gat,0,0,0,0	monster	Incubus	1580,8,0,0,0
+que_sign02.gat,0,0,0,0	monster	Injustice	1446,8,0,0,0
+que_sign02.gat,0,0,0,0	monster	Skeleton Prisoner	1479,15,0,0,0
+que_sign02.gat,0,0,0,0	monster	Zombie Prisoner	1480,15,0,0,0
+que_sign02.gat,0,0,0,0	monster	Wraith	1475,15,0,0,0
+que_sign02.gat,0,0,0,0	monster	Wraith Dead	1566,8,0,0,0

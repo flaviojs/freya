@@ -1,0 +1,47 @@
+//--------------------------------------------------------------
+//               (c)2004-2007 Aurora Team Presents:             
+//                  ___                                         
+//                 /   |_   _ _ __ ___  _ __ __ _               
+//                / /| | | | | '__/ _ \| '__/ _` |              
+//               / ___ | |_| | | | (_) | | | (_| |++            
+//              /_/  |_|\____|_|  \___/|_|  \__,_|              
+//                 http://aurora.deltaanime.net                 
+//--------------------------------------------------------------
+//
+// item_fabox.txt
+// First Aid Kit Random Database
+
+//--------------------------------------------------------------
+// Structure of Database:
+//--------------------------------------------------------------
+//
+// <ItemID>,<DummyName>,<Rate>
+//
+// Rate Examples:
+//  10000   = 1%
+//  500000  = 50%
+//  1000000 = 100%
+
+//--------------------------------------------------------------
+// Database Entries:
+//--------------------------------------------------------------
+
+0,Red Potion,501
+501,Red Potion,10000
+502,Orange Potion,10000
+503,Yellow Potion,10000
+504,White Potion,10000
+505,Blue Potion,10000
+506,Green Potion,10000
+545,Condensed Red Potion,10000
+546,Condensed Yellow Potion,10000
+547,Condensed White Potion,10000
+569,Novice Potion,10000
+605,Anodyne,10000
+645,Concentration Potion,10000
+656,Awakening Potion,10000
+657,Berserk Potion,10000
+678,Poison Bottle,10000
+12016,Slow Potion,10000
+12017,Slow Potion,10000
+12020,Cursed_Water,10000

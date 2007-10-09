@@ -1,0 +1,180 @@
+//--------------------------------------------------------------
+//               (c)2004-2007 Aurora Team Presents:             
+//                  ___                                         
+//                 /   |_   _ _ __ ___  _ __ __ _               
+//                / /| | | | | '__/ _ \| '__/ _` |              
+//               / ___ | |_| | | | (_) | | | (_| |++            
+//              /_/  |_|\____|_|  \___/|_|  \__,_|              
+//                 http://aurora.deltaanime.net                 
+//--------------------------------------------------------------
+//                      Aurora Scripts List                     
+//--------------------------------------------------------------
+
+
+//--------------------------------------------------------------
+// Custom Scripts
+//--------------------------------------------------------------
+
+// Add your own custom scripts here
+
+
+//--------------------------------------------------------------
+// Global Town Scripts
+//--------------------------------------------------------------
+
+npc: script/global/global_cool_event.txt
+npc: script/global/global_guide.txt
+npc: script/global/global_inn.txt
+npc: script/global/global_kafra.txt
+npc: script/global/global_mail_box.txt
+npc: script/global/global_pvp.txt
+npc: script/global/global_refine.txt
+npc: script/global/global_shop.txt
+
+
+//--------------------------------------------------------------
+// Guild vs Guild (War of Emperium) Scripts
+//--------------------------------------------------------------
+
+npc: script/gvg/gvg_core.txt
+npc: script/gvg/gvg_dungeon.txt
+npc: script/gvg/gvg_flag.txt
+npc: script/gvg/gvg_kafra.txt
+npc: script/gvg/gvg_monster.txt
+npc: script/gvg/gvg_steward.txt
+npc: script/gvg/gvg_treasure.txt
+
+
+//--------------------------------------------------------------
+// Job Quest Scripts
+//--------------------------------------------------------------
+
+npc: script/job/job_acolyte.txt
+npc: script/job/job_alchemist.txt
+npc: script/job/job_archer.txt
+npc: script/job/job_assassin.txt
+npc: script/job/job_bard.txt
+npc: script/job/job_blacksmith.txt
+npc: script/job/job_crusader.txt
+npc: script/job/job_dancer.txt
+npc: script/job/job_gunslinger.txt
+npc: script/job/job_hunter.txt
+npc: script/job/job_knight.txt
+npc: script/job/job_mage.txt
+npc: script/job/job_merchant.txt
+npc: script/job/job_monk.txt
+npc: script/job/job_ninja.txt
+npc: script/job/job_novice.txt
+npc: script/job/job_priest.txt
+npc: script/job/job_rogue.txt
+npc: script/job/job_sage.txt
+npc: script/job/job_soul_linker.txt
+npc: script/job/job_super_novice.txt
+npc: script/job/job_swordman.txt
+npc: script/job/job_taekwon.txt
+npc: script/job/job_taekwon_master.txt
+npc: script/job/job_thief.txt
+npc: script/job/job_transcendence.txt
+npc: script/job/job_wizard.txt
+
+
+//--------------------------------------------------------------
+// Miscellaneous Scripts
+//--------------------------------------------------------------
+
+// npc: script/misc/misc_admin.txt
+// npc: script/misc/misc_auction.txt
+// npc: script/misc/misc_battle_arena.txt
+// npc: script/misc/misc_cash_item.txt
+npc: script/misc/misc_function.txt
+// npc: script/misc/misc_ice_cream.txt
+npc: script/misc/misc_mapflag.txt
+npc: script/misc/misc_marriage.txt
+// npc: script/misc/misc_monster_race.txt
+npc: script/misc/misc_potion_exchange.txt
+npc: script/misc/misc_rental.txt
+npc: script/misc/misc_reset_skill.txt
+npc: script/misc/misc_sign.txt
+npc: script/misc/misc_socket_enchant.txt
+npc: script/misc/misc_stylist.txt
+// npc: script/misc/misc_turbo_track.txt
+npc: script/misc/misc_vote.txt
+
+
+//--------------------------------------------------------------
+// Monster Spawn Scripts
+//--------------------------------------------------------------
+
+npc: script/mob/mob_dungeon.txt
+npc: script/mob/mob_field.txt
+// npc: script/mob/mob_future.txt
+npc: script/mob/mob_gvg.txt
+npc: script/mob/mob_job.txt
+npc: script/mob/mob_misc.txt
+npc: script/mob/mob_town.txt
+
+
+//--------------------------------------------------------------
+// Quest Scripts
+//--------------------------------------------------------------
+
+npc: script/quest/quest_airship.txt
+npc: script/quest/quest_bard.txt
+npc: script/quest/quest_cooking.txt
+npc: script/quest/quest_doomed_swords.txt
+npc: script/quest/quest_eye_of_hellion.txt
+npc: script/quest/quest_god_seal.txt
+npc: script/quest/quest_headgear.txt
+npc: script/quest/quest_job_tutorial.txt
+npc: script/quest/quest_juice_maker.txt
+npc: script/quest/quest_juperos.txt
+npc: script/quest/quest_kiel_hyre.txt
+npc: script/quest/quest_lv4_weapon.txt
+npc: script/quest/quest_pet.txt
+npc: script/quest/quest_skill.txt
+npc: script/quest/quest_thai_hat.txt
+npc: script/quest/quest_thanatos.txt
+npc: script/quest/quest_the_sign.txt
+npc: script/quest/quest_turtle.txt
+
+
+//--------------------------------------------------------------
+// Town Scripts
+//--------------------------------------------------------------
+
+npc: script/town/town_alberta.txt
+npc: script/town/town_aldebaran.txt
+npc: script/town/town_amatsu.txt
+npc: script/town/town_ayothaya.txt
+npc: script/town/town_comodo.txt
+npc: script/town/town_einbroch.txt
+npc: script/town/town_geffen.txt
+npc: script/town/town_hugel.txt
+npc: script/town/town_izlude.txt
+npc: script/town/town_jawaii.txt
+npc: script/town/town_juno.txt
+npc: script/town/town_kunlun.txt
+npc: script/town/town_lighthalzen.txt
+npc: script/town/town_louyang.txt
+npc: script/town/town_lutie.txt
+npc: script/town/town_morroc.txt
+// npc: script/town/town_nameless.txt
+npc: script/town/town_niflheim.txt
+npc: script/town/town_payon.txt
+npc: script/town/town_prontera.txt
+npc: script/town/town_rachel.txt
+npc: script/town/town_umbala.txt
+// npc: script/town/town_veins.txt
+
+
+//--------------------------------------------------------------
+// Warp Scripts
+//--------------------------------------------------------------
+
+npc: script/warp/warp_dungeon.txt
+npc: script/warp/warp_field.txt
+// npc: script/warp/warp_future.txt
+npc: script/warp/warp_gvg.txt
+npc: script/warp/warp_job.txt
+npc: script/warp/warp_misc.txt
+npc: script/warp/warp_town.txt

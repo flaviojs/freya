@@ -1,0 +1,42 @@
+//--------------------------------------------------------------
+//               (c)2004-2007 Aurora Team Presents:             
+//                  ___                                         
+//                 /   |_   _ _ __ ___  _ __ __ _               
+//                / /| | | | | '__/ _ \| '__/ _` |              
+//               / ___ | |_| | | | (_) | | | (_| |++            
+//              /_/  |_|\____|_|  \___/|_|  \__,_|              
+//                 http://aurora.deltaanime.net                 
+//--------------------------------------------------------------
+//
+// item_arrowquiver.txt
+// Arrow Quiver Random Database
+
+//--------------------------------------------------------------
+// Structure of Database:
+//--------------------------------------------------------------
+//
+// <ItemID>,<DummyName>,<Rate>
+//
+// Rate Examples:
+//  10000   = 1%
+//  500000  = 50%
+//  1000000 = 100%
+
+//--------------------------------------------------------------
+// Database Entries:
+//--------------------------------------------------------------
+
+0,Arrow Quiver,12004
+12004,Arrow Quiver,100000
+12005,Iron Arrow Quiver,100000
+12006,Steel Arrow Quiver,100000
+12007,Oridecon Arrow Quiver,100000
+12008,Fire Arrow Quiver,100000
+12009,Silver Arrow Quiver,100000
+12010,Arrow of Wind Quiver,100000
+12011,Stone Arrow Quiver,100000
+12012,Crystal Arrow Quiver,100000
+12013,Shadow Arrow Quiver,100000
+12014,Immaterial Arrow Quiver,100000
+12015,Rusty Arrow Quiver,100000
+12183,Holy Arrow Quiver,100000

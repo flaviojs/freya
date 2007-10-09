@@ -1,0 +1,17 @@
+﻿//怪物扩展属性设置DB，系统读入mobdb后，会再读入这个DB。执行@reloadjapp重读此文件。
+//ID,Name,Jname,ComaHP,DayWeaponAR,DayWeaponDR,DayMagicAR,DayMagicDR,DayMiscAR,DayMiscDR,NightWeaponAR,NightWeaponDR,NightMagicAR,NightMagicDR,NightMiscAR,NightMiscDR,ComaWeaponAR,ComaWeaponDR,ComaMagicAR,ComaMagicDR,ComaMiscAR,ComaMiscDR
+//
+//	ID = 怪物ID	Name = 怪物名称		Jname = 怪物中文名	ComaHP = HP在这个比率或以下时为濒死状态
+//	DayWeaponAR   = 白天时物理攻击的伤害率	DayWeaponDR   = 白天时受到物理攻击的伤害率
+//	DayMagicAR    = 白天时魔法攻击的伤害率	DayMagicDR    = 白天时受到魔法攻击的伤害率
+//	DayMiscAR     = 白天时其他攻击的伤害率	DayMiscDR     = 白天时受到其他攻击的伤害率
+//
+//	NightWeaponAR = 夜晚时物理攻击的伤害率	NightWeaponDR = 夜晚时受到物理攻击的伤害率
+//	NightMagicAR  = 夜晚时魔法攻击的伤害率	NightMagicDR  = 夜晚时受到魔法攻击的伤害率
+//	NightMiscAR   = 夜晚时其他攻击的伤害率	NightMiscDR   = 夜晚时受到其他攻击的伤害率
+//
+//	ComaWeaponAR  = 濒死时物理攻击的伤害率	ComaWeaponDR  = 濒死时受到物理攻击的伤害率
+//	ComaMagicAR   = 濒死时魔法攻击的伤害率	ComaMagicDR   = 濒死时受到魔法攻击的伤害率
+//	ComaMiscAR    = 濒死时其他攻击的伤害率	ComaMiscDR    = 濒死时受到其他攻击的伤害率
+//
+//	注意：所有倍率均为万分率。Day或Night的伤害率跟Coma的伤害率叠加。

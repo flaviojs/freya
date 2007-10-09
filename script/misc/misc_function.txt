@@ -1,0 +1,486 @@
+//--------------------------------------------------------------
+//               (c)2004-2007 Aurora Team Presents:             
+//                  ___                                         
+//                 /   |_   _ _ __ ___  _ __ __ _               
+//                / /| | | | | '__/ _ \| '__/ _` |              
+//               / ___ | |_| | | | (_) | | | (_| |++            
+//              /_/  |_|\____|_|  \___/|_|  \__,_|              
+//                 http://aurora.deltaanime.net                 
+//--------------------------------------------------------------
+// Script Title: Script Global Functions	Author: N/A
+//--------------------------------------------------------------
+// Additional Notes:
+//--------------------------------------------------------------
+//	-> F_ClearJobVariables: Clears quest variables after job change
+//	-> F_ClearGarbageVariables: Clears garbage script variables
+//	-> F_EndAllStatuses: Ends all applicable statuses changes
+//	-> F_JobChange: Changes job to normal or baby in most job quests
+//	-> F_TownAnnounce: Broadcasts a message in all towns
+//--------------------------------------------------------------
+
+
+//--------------------------------------------------------------
+// F_ClearJobVariables -> Clears job change quest variables
+//--------------------------------------------------------------
+
+function	script	F_ClearJobVariables	{
+
+	// Novice Grounds
+	set nov_1st_cos,0;
+	set nov_2nd_cos,0;
+	set nov_3_swordman,0;
+	set nov_3_archer,0;
+	set nov_3_thief,0;
+	set nov_3_magician,0;
+	set nov_3_acolyte,0;
+	set nov_3_merchant,0;
+	set treasure_alb,0;
+	set nov_1_2_cos_c,0;
+	set nov_get_item01,0;
+	set nov_get_item02,0;
+	set nov_get_item03,0;
+	set nov_get_item04,0;
+	set nov_get_item05,0;
+
+	// 1st Class Quests
+	set job_acolyte_q,0;
+	set job_archer_q,0;
+	set job_magician_q,0;
+	set job_merchant_q,0;
+	set job_merchant_q2,0;
+	set quest_alb_01,0;
+	set job_sword_q,0;
+	set job_thief_q,0;
+
+	// 2nd Class Quests
+	set job_wizard_q,0;
+	set job_knight_q,0;
+	set job_priest_q,0;
+	set job_black,0;
+	set job_assasin_q,0;
+	set thief_joblvl,0;
+	set asn_skill,0;
+	set job_hunter_q,0;
+	set job_monk_q,0;
+	set job_rogue_q,0;
+	set job_sage_q,0;
+	set job_alchemist_q,0;
+	set job_crusader_q,0;
+	set job_bard_q,0;
+	set xmas_npc,0;
+	set job_dancer_q,0;
+
+	// Expanded Class Quests
+	set job_taekwon_q,0;
+	set job_star,0;
+	set job_linker,0;
+	set hg_gun,0;
+	set hg_nin,0;
+
+	return;
+}
+
+
+//--------------------------------------------------------------
+// F_ClearGarbageVariables -> Clears misc garbage variables
+//--------------------------------------------------------------
+
+function	script	F_ClearGarbageVariables	{
+
+	return;
+}
+
+
+//--------------------------------------------------------------
+// F_EndAllStatuses -> Ends all applicable status changes
+//--------------------------------------------------------------
+
+function	script	F_EndAllStatuses	{
+
+	sc_end SC_PROVOKE;
+	sc_end SC_ENDURE;
+	sc_end SC_TWOHANDQUICKEN;
+	sc_end SC_CONCENTRATE;
+	sc_end SC_HIDING;
+	sc_end SC_CLOAKING;
+	sc_end SC_ENCPOISON;
+	sc_end SC_POISONREACT;
+	sc_end SC_QUAGMIRE;
+	sc_end SC_ANGELUS;
+	sc_end SC_BLESSING;
+	sc_end SC_SIGNUMCRUCIS;
+	sc_end SC_INCREASEAGI;
+	sc_end SC_DECREASEAGI;
+	sc_end SC_SLOWPOISON;
+	sc_end SC_IMPOSITIO;
+	sc_end SC_SUFFRAGIUM;
+	sc_end SC_ASPERSIO;
+	sc_end SC_BENEDICTIO;
+	sc_end SC_KYRIE;
+	sc_end SC_MAGNIFICAT;
+	sc_end SC_GLORIA;
+	sc_end SC_AETERNA;
+	sc_end SC_ADRENALINE;
+	sc_end SC_WEAPONPERFECTION;
+	sc_end SC_OVERTHRUST;
+	sc_end SC_MAXIMIZEPOWER;
+	// sc_end SC_RIDING;
+	// sc_end SC_FALCON;
+	sc_end SC_TRICKDEAD;
+	sc_end SC_LOUD;
+	sc_end SC_ENERGYCOAT;
+	sc_end SC_PK_PENALTY;
+	sc_end SC_REVERSEORCISH;
+	sc_end SC_HALLUCINATION;
+	// sc_end SC_WEIGHT50;
+	// sc_end SC_WEIGHT90;
+	sc_end SC_SPEEDPOTION0;
+	sc_end SC_SPEEDPOTION1;
+	sc_end SC_SPEEDPOTION2;
+	sc_end SC_SPEEDPOTION3;
+	sc_end SC_ITEM_DELAY;
+	sc_end SC_STRIPWEAPON;
+	sc_end SC_STRIPSHIELD;
+	sc_end SC_STRIPARMOR;
+	sc_end SC_STRIPHELM;
+	sc_end SC_CP_WEAPON;
+	sc_end SC_CP_SHIELD;
+	sc_end SC_CP_ARMOR;
+	sc_end SC_CP_HELM;
+	sc_end SC_AUTOGUARD;
+	sc_end SC_REFLECTSHIELD;
+	sc_end SC_DEVOTION;
+	sc_end SC_PROVIDENCE;
+	sc_end SC_DEFENDER;
+	sc_end SC_SANTA;
+	sc_end SC_AUTOSPELL;
+	sc_end SC_SPEARSQUICKEN;
+	sc_end SC_EXPLOSIONSPIRITS;
+	sc_end SC_STEELBODY;
+	sc_end SC_COMBO;
+	sc_end SC_FLAMELAUNCHER;
+	sc_end SC_FROSTWEAPON;
+	sc_end SC_LIGHTNINGLOADER;
+	sc_end SC_SEISMICWEAPON;
+	sc_end SC_AURABLADE;
+	sc_end SC_PARRYING;
+	sc_end SC_CONCENTRATION;
+	sc_end SC_TENSIONRELAX;
+	sc_end SC_BERSERK;
+	sc_end SC_ASSUMPTIO;
+	sc_end SC_MAGICPOWER;
+	sc_end SC_EDP;
+	sc_end SC_TRUESIGHT;
+	sc_end SC_WINDWALK;
+	sc_end SC_MELTDOWN;
+	sc_end SC_CARTBOOST;
+	sc_end SC_CHASEWALK;
+	sc_end SC_REJECTSWORD;
+	sc_end SC_MARIONETTE;
+	sc_end SC_MARIONETTE2;
+	sc_end SC_HEADCRUSH;
+	sc_end SC_JOINTBEAT;
+	sc_end SC_STONE;
+	sc_end SC_FREEZE;
+	sc_end SC_STAN;
+	sc_end SC_SLEEP;
+	sc_end SC_POISON;
+	sc_end SC_CURSE;
+	sc_end SC_SILENCE;
+	sc_end SC_CONFUSION;
+	sc_end SC_BLIND;
+	sc_end SC_BLEED;
+	sc_end SC_SAFETYWALL;
+	sc_end SC_PNEUMA;
+	sc_end SC_ANKLE;
+	sc_end SC_DANCING;
+	sc_end SC_KEEPING;
+	sc_end SC_BARRIER;
+	sc_end SC_TIGERFIST;
+	sc_end SC_MAGICROD;
+	sc_end SC_SIGHT;
+	sc_end SC_RUWACH;
+	sc_end SC_AUTOCOUNTER;
+	sc_end SC_VOLCANO;
+	sc_end SC_DELUGE;
+	sc_end SC_VIOLENTGALE;
+	sc_end SC_BLADESTOP_WAIT;
+	sc_end SC_BLADESTOP;
+	sc_end SC_EXTREMITYFIST;
+	sc_end SC_GRAFFITI;
+	sc_end SC_LULLABY;
+	sc_end SC_RICHMANKIM;
+	sc_end SC_ETERNALCHAOS;
+	sc_end SC_DRUMBATTLE;
+	sc_end SC_NIBELUNGEN;
+	sc_end SC_ROKISWEIL;
+	sc_end SC_INTOABYSS;
+	sc_end SC_SIEGFRIED;
+	sc_end SC_DISSONANCE;
+	sc_end SC_WHISTLE;
+	sc_end SC_ASSNCROS;
+	sc_end SC_POEMBRAGI;
+	sc_end SC_APPLEIDUN;
+	sc_end SC_UGLYDANCE;
+	sc_end SC_HUMMING;
+	sc_end SC_DONTFORGETME;
+	sc_end SC_FORTUNE;
+	sc_end SC_SERVICE4U;
+	sc_end SC_BASILICA;
+	sc_end SC_MINDBREAKER;
+	sc_end SC_SPIDERWEB;
+	sc_end SC_MEMORIZE;
+	sc_end SC_DPOISON;
+	sc_end SC_SACRIFICE;
+	sc_end SC_INCATK;
+	sc_end SC_INCMATK;
+	sc_end SC_WEDDING;
+	// sc_end SC_NOCHAT;
+	sc_end SC_SPLASHER;
+	sc_end SC_SELFDESTRUCTION;
+	sc_end SC_MAGNUM;
+	sc_end SC_GOSPEL;
+	sc_end SC_INCALLSTATUS;
+	sc_end SC_INCHIT;
+	sc_end SC_INCFLEE;
+	sc_end SC_INCMHP2;
+	sc_end SC_INCMSP2;
+	sc_end SC_INCATK2;
+	sc_end SC_INCHIT2;
+	sc_end SC_INCFLEE2;
+	sc_end SC_PRESERVE;
+	sc_end SC_OVERTHRUSTMAX;
+	sc_end SC_CHASEWALK_STR;
+	sc_end SC_WHISTLE_;
+	sc_end SC_ASSNCROS_;
+	sc_end SC_POEMBRAGI_;
+	sc_end SC_APPLEIDUN_;
+	sc_end SC_HUMMING_;
+	sc_end SC_DONTFORGETME_;
+	sc_end SC_FORTUNE_;
+	sc_end SC_SERVICE4U_;
+	sc_end SC_BATTLEORDER;
+	sc_end SC_REGENERATION;
+	sc_end SC_BATTLEORDER_DELAY;
+	sc_end SC_REGENERATION_DELAY;
+	sc_end SC_RESTORE_DELAY;
+	sc_end SC_EMERGENCYCALL_DELAY;
+	sc_end SC_POISONPOTION;
+	sc_end SC_THE_MAGICIAN;
+	sc_end SC_STRENGTH;
+	sc_end SC_THE_DEVIL;
+	sc_end SC_THE_SUN;
+	sc_end SC_MEAL_INCSTR;
+	sc_end SC_MEAL_INCAGI;
+	sc_end SC_MEAL_INCVIT;
+	sc_end SC_MEAL_INCINT;
+	sc_end SC_MEAL_INCDEX;
+	sc_end SC_MEAL_INCLUK;
+	sc_end SC_RUN;
+	sc_end SC_SPURT;
+	sc_end SC_TKCOMBO;
+	sc_end SC_DODGE;
+	sc_end SC_HERMODE;
+	sc_end SC_TRIPLEATTACK_RATE_UP;
+	sc_end SC_COUNTER_RATE_UP;
+	sc_end SC_SUN_WARM;
+	sc_end SC_MOON_WARM;
+	sc_end SC_STAR_WARM;
+	sc_end SC_SUN_COMFORT;
+	sc_end SC_MOON_COMFORT;
+	sc_end SC_STAR_COMFORT;
+	sc_end SC_FUSION;
+	sc_end SC_ALCHEMIST;
+	sc_end SC_MONK;
+	sc_end SC_STAR;
+	sc_end SC_SAGE;
+	sc_end SC_CRUSADER;
+	sc_end SC_SUPERNOVICE;
+	sc_end SC_KNIGHT;
+	sc_end SC_WIZARD;
+	sc_end SC_PRIEST;
+	sc_end SC_BARDDANCER;
+	sc_end SC_ROGUE;
+	sc_end SC_ASSASIN;
+	sc_end SC_BLACKSMITH;
+	sc_end SC_HUNTER;
+	sc_end SC_SOULLINKER;
+	sc_end SC_HIGH;
+	sc_end SC_DEATHKINGHT;
+	sc_end SC_COLLECTOR;
+	sc_end SC_NINJA;
+	sc_end SC_GUNNER;
+	sc_end SC_KAIZEL;
+	sc_end SC_KAAHI;
+	sc_end SC_KAUPE;
+	sc_end SC_KAITE;
+	sc_end SC_SMA;
+	sc_end SC_SWOO;
+	sc_end SC_SKE;
+	sc_end SC_SKA;
+	sc_end SC_ONEHAND;
+	sc_end SC_READYSTORM;
+	sc_end SC_READYDOWN;
+	sc_end SC_READYTURN;
+	sc_end SC_READYCOUNTER;
+	sc_end SC_DODGE_DELAY;
+	sc_end SC_AUTOBERSERK;
+	sc_end SC_DEVIL;
+	sc_end SC_DOUBLECASTING;
+	sc_end SC_ELEMENTFIELD;
+	sc_end SC_DARKELEMENT;
+	sc_end SC_ATTENELEMENT;
+	sc_end SC_MIRACLE;
+	sc_end SC_ANGEL;
+	sc_end SC_FORCEWALKING;
+	sc_end SC_DOUBLE;
+	sc_end SC_ACTION_DELAY;
+	sc_end SC_BABY;
+	sc_end SC_LONGINGFREEDOM;
+	sc_end SC_SHRINK;
+	sc_end SC_CLOSECONFINE;
+	sc_end SC_SIGHTBLASTER;
+	sc_end SC_ELEMENTWATER;
+	sc_end SC_MEAL_INCHIT;
+	sc_end SC_MEAL_INCFLEE;
+	sc_end SC_MEAL_INCFLEE2;
+	sc_end SC_MEAL_INCCRITICAL;
+	sc_end SC_MEAL_INCDEF;
+	sc_end SC_MEAL_INCMDEF;
+	sc_end SC_MEAL_INCATK;
+	sc_end SC_MEAL_INCMATK;
+	sc_end SC_COMBAT_HAN;
+	sc_end SC_MEAL_INCEXP;
+	sc_end SC_MEAL_INCJOB;
+	sc_end SC_MEAL_INCJOB;
+	sc_end SC_ELEMENTGROUND;
+	sc_end SC_ELEMENTFIRE;
+	sc_end SC_ELEMENTWIND;
+	sc_end SC_WINKCHARM;
+	sc_end SC_ELEMENTPOISON;
+	sc_end SC_ELEMENTDARK;
+	sc_end SC_ELEMENTELEKINESIS;
+	sc_end SC_ELEMENTUNDEAD;
+	sc_end SC_UNDEADELEMENT;
+	sc_end SC_ELEMENTHOLY;
+	sc_end SC_NPC_DEFENDER;
+	sc_end SC_RESISTWATER;
+	sc_end SC_RESISTGROUND;
+	sc_end SC_RESISTFIRE;
+	sc_end SC_RESISTWIND;
+	sc_end SC_RESISTPOISON;
+	sc_end SC_RESISTHOLY;
+	sc_end SC_RESISTDARK;
+	sc_end SC_RESISTTELEKINESIS;
+	sc_end SC_RESISTUNDEAD;
+	sc_end SC_RESISTALL;
+	sc_end SC_RACEUNKNOWN;
+	sc_end SC_RACEUNDEAD;
+	sc_end SC_RACEBEAST;
+	sc_end SC_RACEPLANT;
+	sc_end SC_RACEINSECT;
+	sc_end SC_RACEFISH;
+	sc_end SC_RACEDEVIL;
+	sc_end SC_RACEHUMAN;
+	sc_end SC_RACEANGEL;
+	sc_end SC_RACEDRAGON;
+	sc_end SC_TIGEREYE;
+	sc_end SC_GRAVITATION_USER;
+	sc_end SC_GRAVITATION;
+	sc_end SC_FOGWALL;
+	sc_end SC_FOGWALLPENALTY;
+	sc_end SC_REDEMPTIO;
+	sc_end SC_TAROTCARD;
+	sc_end SC_HOLDWEB;
+	sc_end SC_INVISIBLE;
+	sc_end SC_DETECTING;
+	sc_end SC_FLING;
+	sc_end SC_MADNESSCANCEL;
+	sc_end SC_ADJUSTMENT;
+	sc_end SC_INCREASING;
+	sc_end SC_DISARM;
+	sc_end SC_GATLINGFEVER;
+	sc_end SC_FULLBUSTER;
+	sc_end SC_TATAMIGAESHI;
+	sc_end SC_UTSUSEMI;
+	sc_end SC_BUNSINJYUTSU;
+	sc_end SC_SUITON;
+	sc_end SC_NEN;
+	sc_end SC_AVOID;
+	sc_end SC_CHANGE;
+	sc_end SC_DEFENCE;
+	sc_end SC_BLOODLUST;
+	sc_end SC_FLEET;
+	sc_end SC_SPEED;
+	sc_end SC_ADRENALINE2;
+	sc_end SC_STATUS_UNCHANGE;
+	sc_end SC_INCDAMAGE;
+	sc_end SC_LIFE_INSURANCE;
+	sc_end SC_MEAL_INCSTR2;
+	sc_end SC_MEAL_INCAGI2;
+	sc_end SC_MEAL_INCVIT2;
+	sc_end SC_MEAL_INCDEX2;
+	sc_end SC_MEAL_INCINT2;
+	sc_end SC_MEAL_INCLUK2;
+	sc_end SC_RESISTCLEAR;
+	sc_end SC_RACECLEAR;
+	sc_end SC_SOUL;
+	sc_end SC_SOULCLEAR;
+	return;
+}
+
+
+//--------------------------------------------------------------
+// F_JobChange -> Job change function
+//--------------------------------------------------------------
+
+function	script	F_JobChange	{
+
+	unequip;
+	if (Upper == 0) {
+		jobchange getarg(0),0; // Normal Job Change
+	}
+	else if (Upper == 1) {
+		jobchange getarg(0),1; // Advanced Job Change
+	}
+	else if (Upper == 2) {
+		jobchange getarg(0),2; // Baby Job Change
+	}
+	callfunc "F_ClearJobVariables";
+	return;
+}
+
+
+//--------------------------------------------------------------
+// F_TownAnnounce -> Broadcasts a message in all towns
+//--------------------------------------------------------------
+
+function	script	F_TownAnnounce	{
+
+	mapannounce "prontera.gat",getarg(0),getarg(1);
+	mapannounce "payon.gat",getarg(0),getarg(1);
+	mapannounce "alberta.gat",getarg(0),getarg(1);
+	mapannounce "geffen.gat",getarg(0),getarg(1);
+	mapannounce "morocc.gat",getarg(0),getarg(1);
+	mapannounce "izlude.gat",getarg(0),getarg(1);
+	mapannounce "aldebaran.gat",getarg(0),getarg(1);
+	mapannounce "xmas.gat",getarg(0),getarg(1);
+	mapannounce "comodo.gat",getarg(0),getarg(1);
+	mapannounce "yuno.gat",getarg(0),getarg(1);
+	mapannounce "amatsu.gat",getarg(0),getarg(1);
+	mapannounce "gonryun.gat",getarg(0),getarg(1);
+	mapannounce "umbala.gat",getarg(0),getarg(1);
+	mapannounce "niflheim.gat",getarg(0),getarg(1);
+	mapannounce "louyang.gat",getarg(0),getarg(1);
+	mapannounce "jawaii.gat",getarg(0),getarg(1);
+	mapannounce "einbech.gat",getarg(0),getarg(1);
+	mapannounce "einbroch.gat",getarg(0),getarg(1);
+	mapannounce "lighthalzen.gat",getarg(0),getarg(1);
+	mapannounce "hugel.gat",getarg(0),getarg(1);
+	mapannounce "rachel.gat",getarg(0),getarg(1);
+	mapannounce "veins.gat",getarg(0),getarg(1);
+	mapannounce "nameless_i.gat",getarg(0),getarg(1);
+	mapannounce "nameless_n.gat",getarg(0),getarg(1);
+	//mapannounce "moscovia.gat",getarg(0),getarg(1);
+	return;
+}

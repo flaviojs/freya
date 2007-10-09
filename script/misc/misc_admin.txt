@@ -1,0 +1,5040 @@
+//--------------------------------------------------------------
+//               (c)2004-2007 Aurora Team Presents:             
+//                  ___                                         
+//                 /   |_   _ _ __ ___  _ __ __ _               
+//                / /| | | | | '__/ _ \| '__/ _` |              
+//               / ___ | |_| | | | (_) | | | (_| |++            
+//              /_/  |_|\____|_|  \___/|_|  \__,_|              
+//                 http://aurora.deltaanime.net                 
+//--------------------------------------------------------------
+// Script Title: GM Valhalla Administration Center	Author: Tsuyuki
+//--------------------------------------------------------------
+// Revision History: v1.0
+//--------------------------------------------------------------
+//	1.0 First version, converted from Aegis [Tsuyuki]
+//--------------------------------------------------------------
+// Additional Notes: * Official-certified / Aegis-certified *
+//--------------------------------------------------------------
+
+
+//--------------------------------------------------------------
+// GM Valhalla Password Protection - [Tsuyuki]
+//--------------------------------------------------------------
+
+sec_in02.gat,1,1,0	script	Password Manager	139,{
+
+OnInit:
+	// Passwords are set to random values by default for security purposes.
+	// Please be sure to change them to your own chosen passwords.
+	set $gmpassword1$,""+rand(1,10000)+"";
+	set $gmpassword2$,""+rand(1,10000)+"";
+	end;
+}
+
+
+//--------------------------------------------------------------
+// GM Valhalla Merchant Shops - [Tsuyuki]
+//--------------------------------------------------------------
+
+sec_in01.gat,176,169,3	shop	Tool Dealer	93,504:-1,717:-1
+sec_in02.gat,32,183,3	shop	WoE Merchant	93,714:-1
+sec_in02.gat,38,157,3	shop	Young Heart Seller	914,7561:-1
+
+
+//--------------------------------------------------------------
+// GM Valhalla Monster Spawns - [Tsuyuki]
+//--------------------------------------------------------------
+
+sec_in02.gat,139,80,20,10	monster	Poring	1002,5,0,0,0
+sec_in02.gat,138,54,20,20	monster	Marin	1242,5,0,0,0
+sec_in02.gat,161,46,15,15	monster	Poporing	1031,5,0,0,0
+sec_in02.gat,114,47,10,10	monster	Drops	1113,5,0,0,0
+sec_in02.gat,114,47,10,10	monster	Bigfoot	1060,10,0,0,0
+sec_in02.gat,139,80,30,30	monster	Flora	1118,10,0,0,0
+
+
+//--------------------------------------------------------------
+// GM Valhalla Warp Portals - [Tsuyuki]
+//--------------------------------------------------------------
+
+sec_in01.gat,168,159,0	warp	3_4	1,1,sec_in01.gat,134,113
+sec_in01.gat,134,116,0	warp	4_3	1,1,sec_in01.gat,168,162
+sec_in01.gat,38,88,0	warp	5_6	1,1,sec_in01.gat,74,88
+sec_in01.gat,71,88,0	warp	6_5	1,1,sec_in01.gat,35,88
+sec_in01.gat,100,88,0	warp	7_8	1,1,sec_in01.gat,121,88
+sec_in01.gat,118,88,0	warp	8_7	1,1,sec_in01.gat,97,88
+sec_in01.gat,148,97,0	warp	9_10	1,1,sec_in01.gat,170,100
+sec_in01.gat,167,100,0	warp	10_9	1,1,sec_in01.gat,145,97
+sec_in01.gat,85,57,0	warp	11_12	1,1,sec_in01.gat,85,41
+sec_in01.gat,85,44,0	warp	12_11	1,1,sec_in01.gat,85,60
+sec_in01.gat,136,71,0	warp	13_14	1,1,sec_in01.gat,176,35
+sec_in01.gat,176,38,0	warp	14_13	1,1,sec_in01.gat,136,74
+
+
+//--------------------------------------------------------------
+// GM 1st Class Job Changer Assistant #1 - [Tsuyuki]
+//--------------------------------------------------------------
+
+sec_in01.gat,176,178,5	script	1st Class Job Change Helper	123,{
+
+	mes "[1st Job Class Assistant]";
+	mes "I will assist you with the job change to the 1st Job Class.";
+	mes "Enter the password.";
+	mes "Enter 0 to cancel.";
+	next;
+	input '@input$;
+	if ('@input$ == "0") {
+		mes "[1st Job Class Assistant]";
+		mes "You have canceled.";
+		close;
+	} else if ('@input$ != $gmpassword1$) {
+		mes "[1st Job Class Assistant]";
+		mes "The password is incorrect.";
+		close;
+	} else {
+		mes "[1st Job Class Assistant]";
+		mes "Select the job class you would like to change to.";
+		next;
+		switch(select("Swordman","Mage","Archer","Acolyte","Merchant","Thief","Cancel")) {
+		case 1:
+			mes "[1st Job Class Assistant]";
+			mes "You have chosen to become a ^3355FFSwordman^000000.";
+			mes "Is this correct?";
+			next;
+			switch(select("Yes.","No.")) {
+			case 1:
+				jobchange Job_Swordman,0;
+				mes "[1st Job Class Assistant]";
+				mes "Thank you and have a nice day.";
+				close;
+			case 2:
+				mes "[1st Job Class Assistant]";
+				mes "The request has been canceled.";
+				close;
+			}
+		case 2:
+			mes "[1st Job Class Assistant]";
+			mes "You have chosen to become a ^3355FFMage^000000.";
+			mes "Is this correct?";
+			next;
+			switch(select("Yes.","No.")) {
+			case 1:
+				jobchange Job_Mage,0;
+				mes "[1st Job Class Assistant]";
+				mes "Thank you and have a nice day.";
+				close;
+			case 2:
+				mes "[1st Job Class Assistant]";
+				mes "The request has been canceled.";
+				close;
+			}
+		case 3:
+			mes "[1st Job Class Assistant]";
+			mes "You have chosen to become an ^3355FFArcher^000000.";
+			mes "Is this correct?";
+			next;
+			switch(select("Yes.","No.")) {
+			case 1:
+				jobchange Job_Archer,0;
+				mes "[1st Job Class Assistant]";
+				mes "Thank you and have a nice day.";
+				close;
+			case 2:
+				mes "[1st Job Class Assistant]";
+				mes "The request has been canceled.";
+				close;
+			}
+		case 4:
+			mes "[1st Job Class Assistant]";
+			mes "You have chosen to become an ^3355FFAcolyte^000000.";
+			mes "Is this correct?";
+			next;
+			switch(select("Yes.","No.")) {
+			case 1:
+				jobchange Job_Acolyte,0;
+				mes "[1st Job Class Assistant]";
+				mes "Thank you and have a nice day.";
+				close;
+			case 2:
+				mes "[1st Job Class Assistant]";
+				mes "The request has been canceled.";
+				close;
+			}
+		case 5:
+			mes "[1st Job Class Assistant]";
+			mes "You have chosen to become a ^3355FFMerchant^000000.";
+			mes "Is this correct?";
+			next;
+			switch(select("Yes.","No.")) {
+			case 1:
+				jobchange Job_Merchant,0;
+				mes "[1st Job Class Assistant]";
+				mes "Thank you and have a nice day.";
+				close;
+			case 2:
+				mes "[1st Job Class Assistant]";
+				mes "The request has been canceled.";
+				close;
+			}
+		case 6:
+			mes "[1st Job Class Assistant]";
+			mes "You have chosen to become a ^3355FFThief^000000.";
+			mes "Is this correct?";
+			next;
+			switch(select("Yes.","No.")) {
+			case 1:
+				jobchange Job_Thief,0;
+				mes "[1st Job Class Assistant]";
+				mes "Thank you and have a nice day.";
+				close;
+			case 2:
+				mes "[1st Job Class Assistant]";
+				mes "The request has been canceled.";
+				close;
+			}
+		case 7:
+			mes "[1st Job Class Assistant]";
+			mes "The request has been canceled.";
+			close;
+		}
+	}
+}
+
+
+//--------------------------------------------------------------
+// GM 1st Class Job Changer Assistant #2 - [Tsuyuki]
+//--------------------------------------------------------------
+
+sec_in02.gat,21,183,5	script	1st Job Change	123,{
+
+	mes "[1st Job Change]";
+	mes "I handle changes from";
+	mes "the Novice to the ^3355FFFirst^000000";
+	mes "^3355FFClass Jobs^000000, including";
+	mes "Super Novice. Please";
+	mes "give me the password";
+	mes "or enter ''0'' to cancel.";
+	next;
+	input '@input$;
+	if ('@input$ == "0") {
+		mes "[1st Job Change]";
+		mes "You have canceled.";
+		close;
+	} else if ('@input$ != $gmpassword1$) {
+		mes "[1st Job Change]";
+		mes "I'm sorry, but that's";
+		mes "not the correct password.";
+		close;
+	} else {
+		mes "[1st Job Change]";
+		mes "Please choose";
+		mes "a job from the menu";
+		mes "below. Make sure that";
+		mes "you have all the Basic";
+		mes "Skills and no leftover";
+		mes "Job Skill Points.";
+		next;
+		switch(select("Swordman","Mage","Archer","Acolyte","Merchant","Thief","Super Novice","Cancel")) {
+		case 1:
+			mes "[1st Job Change]";
+			mes "You've chosen ^3355FFSwordman^000000.";
+			mes "Would you like to continue?";
+			next;
+			switch(select("Yes","No")) {
+			case 1:
+				jobchange Job_Swordman,0;
+				mes "[1st Job Change]";
+				mes "Thank you for";
+				mes "using this service.";
+				close;
+			case 2:
+				mes "[1st Job Change]";
+				mes "You have canceled.";
+				close;
+			}
+		case 2:
+			mes "[1st Job Change]";
+			mes "You've chosen ^3355FFMage^000000.";
+			mes "Would you like to continue?";
+			next;
+			switch(select("Yes","No")) {
+			case 1:
+				jobchange Job_Mage,0;
+				mes "[1st Job Change]";
+				mes "Thank you for";
+				mes "using this service.";
+				close;
+			case 2:
+				mes "[1st Job Change]";
+				mes "You have canceled.";
+				close;
+			}
+		case 3:
+			mes "[1st Job Change]";
+			mes "You've chosen ^3355FFArcher^000000.";
+			mes "Would you like to continue?";
+			next;
+			switch(select("Yes","No")) {
+			case 1:
+				jobchange Job_Archer,0;
+				mes "[1st Job Change]";
+				mes "Thank you for";
+				mes "using this service.";
+				close;
+			case 2:
+				mes "[1st Job Change]";
+				mes "You have canceled.";
+				close;
+			}
+		case 4:
+			mes "[1st Job Change]";
+			mes "You've chosen ^3355FFAcolyte^000000.";
+			mes "Would you like to continue?";
+			next;
+			switch(select("Yes","No")) {
+			case 1:
+				jobchange Job_Acolyte,0;
+				mes "[1st Job Change]";
+				mes "Thank you for";
+				mes "using this service.";
+				close;
+			case 2:
+				mes "[1st Job Change]";
+				mes "You have canceled.";
+				close;
+			}
+		case 5:
+			mes "[1st Job Change]";
+			mes "You've chosen ^3355FFMerchant^000000.";
+			mes "Would you like to continue?";
+			next;
+			switch(select("Yes","No")) {
+			case 1:
+				jobchange Job_Merchant,0;
+				mes "[1st Job Change]";
+				mes "Thank you for";
+				mes "using this service.";
+				close;
+			case 2:
+				mes "[1st Job Change]";
+				mes "You have canceled.";
+				close;
+			}
+		case 6:
+			mes "[1st Job Change]";
+			mes "You've chosen ^3355FFThief^000000.";
+			mes "Would you like to continue?";
+			next;
+			switch(select("Yes","No")) {
+			case 1:
+				jobchange Job_Thief,0;
+				mes "[1st Job Change]";
+				mes "Thank you for";
+				mes "using this service.";
+				close;
+			case 2:
+				mes "[1st Job Change]";
+				mes "You have canceled.";
+				close;
+			}
+		case 7:
+			mes "[1st Job Change]";
+			mes "You've chosen";
+			mes "^3355FFSuper Novice^000000.";
+			mes "Don't forget the Base";
+			mes "Level requirement~";
+			mes "Would you like to continue?";
+			next;
+			switch(select("Yes","No")) {
+			case 1:
+				jobchange Job_Super_Novice,0;
+				mes "[1st Job Change]";
+				mes "Thank you for";
+				mes "using this service.";
+				close;
+			case 2:
+				mes "[1st Job Change]";
+				mes "You have canceled.";
+				close;
+			}
+		case 8:
+			mes "[1st Job Change]";
+			mes "You have canceled.";
+			close;
+		}
+	}
+}
+
+
+//--------------------------------------------------------------
+// GM 2-1st Class Job Changer Assistant #1 - [Tsuyuki]
+//--------------------------------------------------------------
+
+sec_in01.gat,176,176,5	script	2-1 Class Job Change Helper	726,{
+
+	mes "[2-1 Job Class Assistant]";
+	mes "I will assist you with the job change to the 2-1 Job Class.";
+	mes "Enter the password.";
+	mes "Enter 0 to cancel.";
+	next;
+	input '@input$;
+	if ('@input$ == "0") {
+		mes "[2-1 Job Class Assistant]";
+		mes "The request has been canceled.";
+		close;
+	} else if ('@input$ != $gmpassword1$) {
+		mes "[2-1 Job Class Assistant]";
+		mes "The password is incorrect.";
+		close;
+	} else {
+		mes "[2-1 Job Class Assistant]";
+		mes "Select the job class you would like to change to.";
+		next;
+		switch(select("Knight","Priest","Wizard","Blacksmith","Hunter","Assassin","Cancel")) {
+		case 1:
+			mes "[2-1 Job Class Assistant]";
+			mes "You have chosen to become a ^3355FFKnight^000000.";
+			mes "Is this correct?";
+			next;
+			switch(select("Yes.","No.")) {
+			case 1:
+				jobchange Job_Knight,0;
+				mes "[2-1 Job Class Assistant]";
+				mes "Thank you and have a nice day.";
+				close;
+			case 2:
+				mes "[2-1 Job Class Assistant]";
+				mes "The request has been canceled.";
+				close;
+			}
+		case 2:
+			mes "[2-1 Job Class Assistant]";
+			mes "You have chosen to become a ^3355FFPriest^000000.";
+			mes "Is this correct?";
+			next;
+			switch(select("Yes.","No.")) {
+			case 1:
+				jobchange Job_Priest,0;
+				mes "[2-1 Job Class Assistant]";
+				mes "Thank you and have a nice day.";
+				close;
+			case 2:
+				mes "[2-1 Job Class Assistant]";
+				mes "The request has been canceled.";
+				close;
+			}
+		case 3:
+			mes "[2-1 Job Class Assistant]";
+			mes "You have chosen to become a ^3355FFWizard^000000.";
+			mes "Is this correct?";
+			next;
+			switch(select("Yes.","No.")) {
+			case 1:
+				jobchange Job_Wizard,0;
+				mes "[2-1 Job Class Assistant]";
+				mes "Thank you and have a nice day.";
+				close;
+			case 2:
+				mes "[2-1 Job Class Assistant]";
+				mes "The request has been canceled.";
+				close;
+			}
+		case 4:
+			mes "[2-1 Job Class Assistant]";
+			mes "You have chosen to become a ^3355FFBlacksmith^000000.";
+			mes "Is this correct?";
+			next;
+			switch(select("Yes.","No.")) {
+			case 1:
+				jobchange Job_Blacksmith,0;
+				mes "[2-1 Job Class Assistant]";
+				mes "Thank you and have a nice day.";
+				close;
+			case 2:
+				mes "[2-1 Job Class Assistant]";
+				mes "The request has been canceled.";
+				close;
+			}
+		case 5:
+			mes "[2-1 Job Class Assistant]";
+			mes "You have chosen to become a ^3355FFHunter^000000.";
+			mes "Is this correct?";
+			next;
+			switch(select("Yes.","No.")) {
+			case 1:
+				jobchange Job_Hunter,0;
+				mes "[2-1 Job Class Assistant]";
+				mes "Thank you and have a nice day.";
+				close;
+			case 2:
+				mes "[2-1 Job Class Assistant]";
+				mes "The request has been canceled.";
+				close;
+			}
+		case 6:
+			mes "[2-1 Job Class Assistant]";
+			mes "You have chosen to become an ^3355FFAssassin^000000.";
+			mes "Is this correct?";
+			next;
+			switch(select("Yes.","No.")) {
+			case 1:
+				jobchange Job_Assassin,0;
+				mes "[2-1 Job Class Assistant]";
+				mes "Thank you and have a nice day.";
+				close;
+			case 2:
+				mes "[2-1 Job Class Assistant]";
+				mes "The request has been canceled.";
+				close;
+			}
+		case 7:
+			mes "[2-1 Job Class Assistant]";
+			mes "The request has been canceled.";
+			close;
+		}
+	}
+}
+
+
+//--------------------------------------------------------------
+// GM 2-1st Class Job Changer Assistant #2 - [Tsuyuki]
+//--------------------------------------------------------------
+
+sec_in02.gat,23,183,5	script	2-1st Job Change	726,{
+
+	mes "[2-1st Job Change]";
+	mes "I handle changes to";
+	mes "the ^3355FF2-1 Jobs^000000 for First";
+	mes "Class characters. Now,";
+	mes "please enter the password";
+	mes "or just input ''0'' to cancel.";
+	next;
+	input '@input$;
+	if ('@input$ == "0") {
+		mes "[2-1st Job Change]";
+		mes "You have canceled.";
+		close;
+	} else if ('@input$ != $gmpassword1$) {
+		mes "[2-1st Job Change]";
+		mes "I'm sorry, but that's";
+		mes "not the correct password.";
+		close;
+	} else {
+		mes "[2-1st Job Change]";
+		mes "Please choose a job";
+		mes "from the menu below.";
+		mes "Remember, this won't";
+		mes "work if you have any";
+		mes "unused Skill Points.";
+		next;
+		switch(select("Knight","Priest","Wizard","Blacksmith","Hunter","Assassin","Cancel")) {
+		case 1:
+			mes "[2-1st Job Change]";
+			mes "You've chosen ^3355FFKnight^000000.";
+			mes "Would you like to continue?";
+			next;
+			switch(select("Yes","No")) {
+			case 1:
+				jobchange Job_Knight,0;
+				mes "[2-1st Job Change]";
+				mes "Thank you for";
+				mes "using this service.";
+				close;
+			case 2:
+				mes "[2-1st Job Change]";
+				mes "You have canceled.";
+				close;
+			}
+		case 2:
+			mes "[2-1st Job Change]";
+			mes "You've chosen ^3355FFPriest^000000.";
+			mes "Would you like to continue?";
+			next;
+			switch(select("Yes","No")) {
+			case 1:
+				jobchange Job_Priest,0;
+				mes "[2-1st Job Change]";
+				mes "Thank you for";
+				mes "using this service.";
+				close;
+			case 2:
+				mes "[2-1st Job Change]";
+				mes "You have canceled.";
+				close;
+			}
+		case 3:
+			mes "[2-1st Job Change]";
+			mes "You've chosen ^3355FFWizard^000000.";
+			mes "Would you like to continue?";
+			next;
+			switch(select("Yes","No")) {
+			case 1:
+				jobchange Job_Wizard,0;
+				mes "[2-1st Job Change]";
+				mes "Thank you for";
+				mes "using this service.";
+				close;
+			case 2:
+				mes "[2-1st Job Change]";
+				mes "You have canceled.";
+				close;
+			}
+		case 4:
+			mes "[2-1st Job Change]";
+			mes "You've chosen ^3355FFBlacksmith^000000.";
+			mes "Would you like to continue?";
+			next;
+			switch(select("Yes","No")) {
+			case 1:
+				jobchange Job_Blacksmith,0;
+				mes "[2-1st Job Change]";
+				mes "Thank you for";
+				mes "using this service.";
+				close;
+			case 2:
+				mes "[2-1st Job Change]";
+				mes "You have canceled.";
+				close;
+			}
+		case 5:
+			mes "[2-1st Job Change]";
+			mes "You've chosen ^3355FFHunter^000000.";
+			mes "Would you like to continue?";
+			next;
+			switch(select("Yes","No")) {
+			case 1:
+				jobchange Job_Hunter,0;
+				mes "[2-1st Job Change]";
+				mes "Thank you for";
+				mes "using this service.";
+				close;
+			case 2:
+				mes "[2-1st Job Change]";
+				mes "You have canceled.";
+				close;
+			}
+		case 6:
+			mes "[2-1st Job Change]";
+			mes "You've chosen ^3355FFAssassin^000000.";
+			mes "Would you like to continue?";
+			next;
+			switch(select("Yes","No")) {
+			case 1:
+				jobchange Job_Assassin,0;
+				mes "[2-1st Job Change]";
+				mes "Thank you for";
+				mes "using this service.";
+				close;
+			case 2:
+				mes "[2-1st Job Change]";
+				mes "You have canceled.";
+				close;
+			}
+		case 7:
+			mes "[2-1st Job Change]";
+			mes "You have canceled.";
+			close;
+		}
+	}
+}
+
+
+//--------------------------------------------------------------
+// GM 2-2nd Class Job Changer Assistant #1 - [Tsuyuki]
+//--------------------------------------------------------------
+
+sec_in01.gat,176,173,5	script	2-2 Job Change Helper	744,{
+
+	mes "[2-2 Job Class Assistant]";
+	mes "I will assist you with the job change to the 2-2 Job Class.";
+	mes "Enter the password.";
+	mes "Enter 0 to cancel.";
+	next;
+	input '@input$;
+	if ('@input$ == "0") {
+		mes "[2-2 Job Class Assistant]";
+		mes "The request has been canceled.";
+		close;
+	} else if ('@input$ != $gmpassword1$) {
+		mes "[2-2 Job Class Assistant]";
+		mes "The password is incorrect.";
+		close;
+	} else {
+		mes "[2-2 Job Class Assistant]";
+		mes "Select the job class you would like to change to.";
+		next;
+		switch(select("Crusader","Sage","Monk","Rogue","Bard","Dancer","Alchemist","Cancel")) {
+		case 1:
+			mes "[2-2 Job Class Assistant]";
+			mes "You have chosen to become a ^3355FFCrusader^000000.";
+			mes "Is this correct?";
+			next;
+			switch(select("Yes.","No.")) {
+			case 1:
+				jobchange Job_Crusader,0;
+				mes "[2-2 Job Class Assistant]";
+				mes "Thank you and have a nice day.";
+				close;
+			case 2:
+				mes "[2-2 Job Class Assistant]";
+				mes "The request has been canceled.";
+				close;
+			}
+		case 2:
+			mes "[2-2 Job Class Assistant]";
+			mes "You have chosen to become a ^3355FFSage^000000.";
+			mes "Is this correct?";
+			next;
+			switch(select("Yes.","No.")) {
+			case 1:
+				jobchange Job_Sage,0;
+				mes "[2-2 Job Class Assistant]";
+				mes "Thank you and have a nice day.";
+				close;
+			case 2:
+				mes "[2-2 Job Class Assistant]";
+				mes "The request has been canceled.";
+				close;
+			}
+		case 3:
+			mes "[2-2 Job Class Assistant]";
+			mes "You have chosen to become a ^3355FFMonk^000000.";
+			mes "Is this correct?";
+			next;
+			switch(select("Yes.","No.")) {
+			case 1:
+				jobchange Job_Monk,0;
+				mes "[2-2 Job Class Assistant]";
+				mes "Thank you and have a nice day.";
+				close;
+			case 2:
+				mes "[2-2 Job Class Assistant]";
+				mes "The request has been canceled.";
+				close;
+			}
+		case 4:
+			mes "[2-2 Job Class Assistant]";
+			mes "You have chosen to become a ^3355FFRogue^000000.";
+			mes "Is this correct?";
+			next;
+			switch(select("Yes.","No.")) {
+			case 1:
+				jobchange Job_Rogue,0;
+				mes "[2-2 Job Class Assistant]";
+				mes "Thank you and have a nice day.";
+				close;
+			case 2:
+				mes "[2-2 Job Class Assistant]";
+				mes "The request has been canceled.";
+				close;
+			}
+		case 5:
+			mes "[2-2 Job Class Assistant]";
+			mes "You have chosen to become a ^3355FFBard^000000.";
+			mes "Is this correct?";
+			next;
+			switch(select("Yes.","No.")) {
+			case 1:
+				jobchange Job_Bard,0;
+				mes "[2-2 Job Class Assistant]";
+				mes "Thank you and have a nice day.";
+				close;
+			case 2:
+				mes "[2-2 Job Class Assistant]";
+				mes "The request has been canceled.";
+				close;
+			}
+		case 6:
+			mes "[2-2 Job Class Assistant]";
+			mes "You have chosen to become a ^3355FFDancer^000000.";
+			mes "Is this correct?";
+			next;
+			switch(select("Yes.","No.")) {
+			case 1:
+				jobchange Job_Dancer,0;
+				mes "[2-2 Job Class Assistant]";
+				mes "Thank you and have a nice day.";
+				close;
+			case 2:
+				mes "[2-2 Job Class Assistant]";
+				mes "The request has been canceled.";
+				close;
+			}
+		case 7:
+			mes "[2-2 Job Class Assistant]";
+			mes "You have chosen to become an ^3355FFAlchemist^000000.";
+			mes "Is this correct?";
+			next;
+			switch(select("Yes.","No.")) {
+			case 1:
+				jobchange Job_Alchemist,0;
+				mes "[2-2 Job Class Assistant]";
+				mes "Thank you and have a nice day.";
+				close;
+			case 2:
+				mes "[2-2 Job Class Assistant]";
+				mes "The request has been canceled.";
+				close;
+			}
+		case 8:
+			mes "[2-2 Job Class Assistant]";
+			mes "The request has been canceled.";
+			close;
+		}
+	}
+}
+
+
+//--------------------------------------------------------------
+// GM 2-2nd Class Job Changer Assistant #2 - [Tsuyuki]
+//--------------------------------------------------------------
+
+sec_in02.gat,25,183,5	script	2-2nd Job Change	744,{
+
+	mes "[2-2nd Job Change]";
+	mes "I handle changes to";
+	mes "the ^3355FF2-2 Jobs^000000 for First";
+	mes "Class characters. Now,";
+	mes "please enter the password";
+	mes "or just input ''0'' to cancel.";
+	next;
+	input '@input$;
+	if ('@input$ == "0") {
+		mes "[2-2nd Job Change]";
+		mes "You have canceled.";
+		close;
+	} else if ('@input$ != $gmpassword1$) {
+		mes "[2-2nd Job Change]";
+		mes "I'm sorry, but that's";
+		mes "not the correct password.";
+		close;
+	} else {
+		mes "[2-2nd Job Change]";
+		mes "Please choose a job";
+		mes "from the menu below.";
+		mes "Remember, this won't";
+		mes "work if you have any";
+		mes "unused Skill Points.";
+		next;
+		switch(select("Crusader","Sage","Monk","Rogue","Bard","Dancer","Alchemist","Cancel")) {
+		case 1:
+			mes "[2-2nd Job Change]";
+			mes "You've chosen ^3355FFCrusader^000000.";
+			mes "Would you like to continue?";
+			next;
+			switch(select("Yes","No")) {
+			case 1:
+				jobchange Job_Crusader,0;
+				mes "[2-2nd Job Change]";
+				mes "Thank you for";
+				mes "using this service.";
+				close;
+			case 2:
+				mes "[2-2nd Job Change]";
+				mes "You have canceled.";
+				close;
+			}
+		case 2:
+			mes "[2-2nd Job Change]";
+			mes "You've chosen ^3355FFSage^000000.";
+			mes "Would you like to continue?";
+			next;
+			switch(select("Yes","No")) {
+			case 1:
+				jobchange Job_Sage,0;
+				mes "[2-2nd Job Change]";
+				mes "Thank you for";
+				mes "using this service.";
+				close;
+			case 2:
+				mes "[2-2nd Job Change]";
+				mes "You have canceled.";
+				close;
+			}
+		case 3:
+			mes "[2-2nd Job Change]";
+			mes "You've chosen ^3355FFMonk^000000.";
+			mes "Would you like to continue?";
+			next;
+			switch(select("Yes","No")) {
+			case 1:
+				jobchange Job_Monk,0;
+				mes "[2-2nd Job Change]";
+				mes "Thank you for";
+				mes "using this service.";
+				close;
+			case 2:
+				mes "[2-2nd Job Change]";
+				mes "You have canceled.";
+				close;
+			}
+		case 4:
+			mes "[2-2nd Job Change]";
+			mes "You've chosen ^3355FFRogue^000000.";
+			mes "Would you like to continue?";
+			next;
+			switch(select("Yes","No")) {
+			case 1:
+				jobchange Job_Rogue,0;
+				mes "[2-2nd Job Change]";
+				mes "Thank you for";
+				mes "using this service.";
+				close;
+			case 2:
+				mes "[2-2nd Job Change]";
+				mes "You have canceled.";
+				close;
+			}
+		case 5:
+			mes "[2-2nd Job Change]";
+			mes "You've chosen ^3355FFBard^000000.";
+			mes "Remember, only male";
+			mes "Archers can become";
+			mes "this class. Would you";
+			mes "like to continue?";
+			next;
+			switch(select("Yes","No")) {
+			case 1:
+				jobchange Job_Bard,0;
+				mes "[2-2nd Job Change]";
+				mes "Thank you for";
+				mes "using this service.";
+				close;
+			case 2:
+				mes "[2-2nd Job Change]";
+				mes "You have canceled.";
+				close;
+			}
+		case 6:
+			mes "[2-2nd Job Change]";
+			mes "You've chosen ^3355FFDancer^000000.";
+			mes "Remember, only female";
+			mes "Archers can become";
+			mes "this class. Would you";
+			mes "like to continue?";
+			next;
+			switch(select("Yes","No")) {
+			case 1:
+				jobchange Job_Dancer,0;
+				mes "[2-2nd Job Change]";
+				mes "Thank you for";
+				mes "using this service.";
+				close;
+			case 2:
+				mes "[2-2nd Job Change]";
+				mes "You have canceled.";
+				close;
+			}
+		case 7:
+			mes "[2-2nd Job Change]";
+			mes "You've chosen ^3355FFAlchemist^000000.";
+			mes "Would you like to continue?";
+			next;
+			switch(select("Yes","No")) {
+			case 1:
+				jobchange Job_Alchemist,0;
+				mes "[2-2nd Job Change]";
+				mes "Thank you for";
+				mes "using this service.";
+				close;
+			case 2:
+				mes "[2-2nd Job Change]";
+				mes "You have canceled.";
+				close;
+			}
+			break;
+		case 8:
+			mes "[2-2nd Job Change]";
+			mes "You have canceled.";
+			close;
+		}
+	}
+}
+
+
+//--------------------------------------------------------------
+// GM Trascendent Class Job Changer Assistant - [Tsuyuki]
+//--------------------------------------------------------------
+
+sec_in02.gat,18,183,1	script	Transcendent Class	748,{
+
+	mes "[Huozelo]";
+	mes "I have the awesome";
+	mes "responsibility of handling all";
+	mes "changes to all Transcendent";
+	mes "Jobs: ^3355FFHigh Novice^000000, ^3355FFHigh First^000000";
+	mes "and the ^3355FFTranscendent Jobs^000000.";
+	next;
+	input '@input$;
+	if ('@input$ == "0") {
+		mes "[Huozelo]";
+		mes "Hey, I didn't";
+		mes "even give you";
+		mes "the option to";
+		mes "cancel, did I?";
+		close;
+	} else if ('@input$ != $gmpassword1$) {
+		mes "[Huozelo]";
+		mes "Wrong! Make like";
+		mes "a tree and get the";
+		mes "hell outta here~";
+		close;
+	} else {
+		mes "[Huozelo]";
+		mes "Okay, choose";
+		mes "something. Ah, but";
+		mes "make sure you meet the";
+		mes "very basic requirements";
+		mes "for that job change, okay?";
+		next;
+		switch(select("High Novice","High 1st","Trans 2-1st","Trans 2-2nd","Cancel","^FFFFFFReset Trans Status^000000")) {
+		case 1:
+			if (Class == Job_Knight) {
+				set job_karma,1;
+				jobchange Job_Novice,1;
+			} else if (Class == Job_Priest) {
+				set job_karma,2;
+				jobchange Job_Novice,1;
+			} else if (Class == Job_Wizard) {
+				set job_karma,3;
+				jobchange Job_Novice,1;
+			} else if (Class == Job_Blacksmith) {
+				set job_karma,4;
+				jobchange Job_Novice,1;
+			} else if (Class == Job_Hunter) {
+				set job_karma,5;
+				jobchange Job_Novice,1;
+			} else if (Class == Job_Assassin) {
+				set job_karma,6;
+				jobchange Job_Novice,1;
+			} else if (Class == Job_Crusader) {
+				set job_karma,7;
+				jobchange Job_Novice,1;
+			} else if (Class == Job_Monk) {
+				set job_karma,8;
+				jobchange Job_Novice,1;
+			} else if (Class == Job_Sage) {
+				set job_karma,9;
+				jobchange Job_Novice,1;
+			} else if (Class == Job_Alchemist) {
+				set job_karma,10;
+				jobchange Job_Novice,1;
+			} else if (Class == Job_Rogue) {
+				set job_karma,11;
+				jobchange Job_Novice,1;
+			} else if (Class == Job_Bard) {
+				set job_karma,12;
+				jobchange Job_Novice,1;
+			} else if (Class == Job_Dancer) {
+				set job_karma,13;
+				jobchange Job_Novice,1;
+			} else {
+				mes "[Huozelo]";
+				mes "Hey...";
+				mes "You really need";
+				mes "to be a 2-1 or 2-2";
+				mes "Class character before";
+				mes "doing this. Capish?";
+				close;
+			}
+			skill 143,1,0;
+			skill 142,1,0;
+			mes "[Huozelo]";
+			mes "Alright, playah.";
+			mes "My work here is done.";
+			close;
+		case 2:
+			mes "[Huozelo]";
+			mes "High First Class?";
+			mes "Alright, make sure";
+			mes "you're a High Novice";
+			mes "first, got it? Otherwise,";
+			mes "I'll just end up looking";
+			mes "completely useless.";
+			next;
+			switch(select("Swordman","Mage","Archer","Acolyte","Merchant","Thief","Cancel")) {
+			case 1:
+				if ((Class == Job_Novice && Upper == 1) && ((job_karma == 1) || (job_karma == 7))) {
+					jobchange Job_Swordman,1;
+					skill 144,1,0;
+					skill 145,1,0;
+					skill 146,1,0;
+				}
+				mes "[Huozelo]";
+				mes "All changed?";
+				mes "Huh. All in a day's";
+				mes "work, my friend.";
+				close;
+			case 2:
+				if ((Class == Job_Novice && Upper == 1) && ((job_karma == 3) || (job_karma == 9))) {
+					jobchange Job_Mage,1;
+					skill 157,1,0;
+				}
+				mes "[Huozelo]";
+				mes "All changed?";
+				mes "Huh. All in a day's";
+				mes "work, my friend.";
+				close;
+			case 3:
+				if ((Class == Job_Novice && Upper == 1) && ((job_karma == 5) || (job_karma == 12) || (job_karma == 13))) {
+					jobchange Job_Archer,1;
+					skill 148,1,0;
+					skill 147,1,0;
+				}
+				mes "[Huozelo]";
+				mes "All changed?";
+				mes "Huh. All in a day's";
+				mes "work, my friend.";
+				close;
+			case 4:
+				if ((Class == Job_Novice && Upper == 1) && ((job_karma == 2) || (job_karma == 8))) {
+					jobchange Job_Acolyte,1;
+					skill 156,1,0;
+				}
+				mes "[Huozelo]";
+				mes "All changed?";
+				mes "Huh. All in a day's";
+				mes "work, my friend.";
+				close;
+			case 5:
+				if ((Class == Job_Novice && Upper == 1) && ((job_karma == 4) || (job_karma == 10))) {
+					jobchange Job_Merchant,1;
+					skill 155,1,0;
+					skill 154,1,0;
+					skill 153,1,0;
+				}
+				mes "[Huozelo]";
+				mes "All changed?";
+				mes "Huh. All in a day's";
+				mes "work, my friend.";
+				close;
+			case 6:
+				if ((Class == Job_Novice && Upper == 1) && ((job_karma == 6) || (job_karma == 11))) {
+					jobchange Job_Thief,1;
+					skill 149,1,0;
+					skill 150,1,0;
+					skill 151,1,0;
+					skill 152,1,0;
+				}
+				mes "[Huozelo]";
+				mes "All changed?";
+				mes "Huh. All in a day's";
+				mes "work, my friend.";
+				close;
+			case 7:
+				mes "[Huozelo]";
+				mes "You have chosen";
+				mes "...Wisely. I guess.";
+				close;
+			}
+		case 3:
+			mes "[Huozelo]";
+			mes "You want to change to a";
+			mes "Transcendent 2-1 Job, eh?";
+			mes "You gotta change to the High";
+			mes "First Class and make sure that";
+			mes "you pick the job that matches";
+			mes "the 2-1 Class you were before.";
+			next;
+			switch(select("Lord Knight","High Wizard","Sniper","High Priest","MasterSmith","Assassin Cross","Cancel")) {
+			case 1:
+				if ((Class == Job_Swordman && Upper == 1) && (job_karma == 1)) {
+					jobchange Job_Knight,1;
+				}
+				mes "[Huozelo]";
+				mes "Huh. That's";
+				mes "more like it!";
+				close;
+			case 2:
+				if ((Class == Job_Mage && Upper == 1) && (job_karma == 3)) {
+					jobchange Job_Wizard,1;
+				}
+				mes "[Huozelo]";
+				mes "Huh. That's";
+				mes "more like it!";
+				close;
+			case 3:
+				if ((Class == Job_Archer && Upper == 1) && (job_karma == 5)) {
+					jobchange Job_Hunter,1;
+				}
+				mes "[Huozelo]";
+				mes "Huh. That's";
+				mes "more like it!";
+				close;
+			case 4:
+				if ((Class == Job_Acolyte && Upper == 1) && (job_karma == 2)) {
+					jobchange Job_Priest,1;
+				}
+				mes "[Huozelo]";
+				mes "Huh. That's";
+				mes "more like it!";
+				close;
+			case 5:
+				if ((Class == Job_Merchant && Upper == 1) && (job_karma == 4)) {
+					jobchange Job_Blacksmith,1;
+				}
+				mes "[Huozelo]";
+				mes "Huh. That's";
+				mes "more like it!";
+				close;
+			case 6:
+				if ((Class == Job_Thief && Upper == 1) && (job_karma == 6)) {
+					jobchange Job_Assassin,1;
+				}
+				mes "[Huozelo]";
+				mes "Huh. That's";
+				mes "more like it!";
+				close;
+			case 7:
+				mes "[Huozelo]";
+				mes "What, not ready";
+				mes "yet? Hurry it up!";
+				close;
+			}
+		case 4:
+			mes "[Huozelo]";
+			mes "You want to change to a";
+			mes "Transcendent 2-2 Job, eh?";
+			mes "You gotta change to the High";
+			mes "First Class and make sure that";
+			mes "you pick the job that matches";
+			mes "the 2-2 Class you were before.";
+			next;
+			switch(select("Paladin","Professor","Minstrel","Gypsy","Champion","Creator","Stalker","Cancel")) {
+			case 1:
+				if ((Class == Job_Swordman && Upper == 1) && (job_karma == 7)) {
+					jobchange Job_Crusader,1;
+				}
+				mes "[Huozelo]";
+				mes "Huh. That's";
+				mes "more like it!";
+				close;
+			case 2:
+				if ((Class == Job_Mage && Upper == 1) && (job_karma == 9)) {
+					jobchange Job_Sage,1;
+				}
+				mes "[Huozelo]";
+				mes "Huh. That's";
+				mes "more like it!";
+				close;
+			case 3:
+				if ((Class == Job_Archer && Upper == 1) && (job_karma == 12)) {
+					jobchange Job_Bard,1;
+				}
+				mes "[Huozelo]";
+				mes "Huh. That's";
+				mes "more like it!";
+				close;
+			case 4:
+				if ((Class == Job_Archer && Upper == 1) && (job_karma == 13)) {
+					jobchange Job_Dancer,1;
+				}
+				mes "[Huozelo]";
+				mes "Huh. That's";
+				mes "more like it!";
+				close;
+			case 5:
+				if ((Class == Job_Acolyte && Upper == 1) && (job_karma == 8)) {
+					jobchange Job_Monk,1;
+				}
+				mes "[Huozelo]";
+				mes "Huh. That's";
+				mes "more like it!";
+				close;
+			case 6:
+				if ((Class == Job_Merchant && Upper == 1) && (job_karma == 10)) {
+					jobchange Job_Alchemist,1;
+				}
+				mes "[Huozelo]";
+				mes "Huh. That's";
+				mes "more like it!";
+				close;
+			case 7:
+				if ((Class == Job_Thief && Upper == 1) && (job_karma == 11)) {
+					jobchange Job_Rogue,1;
+				}
+				mes "[Huozelo]";
+				mes "Huh. That's";
+				mes "more like it!";
+				close;
+			case 8:
+				mes "[Huozelo]";
+				mes "What, not ready";
+				mes "yet? Hurry it up!";
+				close;
+			}
+		case 5:
+			mes "[Huozelo]";
+			mes "Alright. Keep it";
+			mes "real, street soldier.";
+			close;
+		case 6:
+			mes "[Huozelo]";
+			mes "Pal...";
+			mes "This is kinda";
+			mes "dangerous. I'm";
+			mes "gonna ask for the";
+			mes "^3355FFsecond password^000000...";
+			next;
+			input '@input$;
+			if ('@input$ == "0") {
+				mes "[Huozelo]";
+				mes "Canceling?";
+				mes "Smart choice~";
+				close;
+			} else if ('@input$ != $gmpassword2$) {
+				mes "[Huozelo]";
+				mes "Nah, that ain't it.";
+				mes "Good thing too, I guess.";
+				close;
+			} else {
+				mes "[Huozelo]";
+				mes "Okay, currently";
+				mes "your Transcendent";
+				mes "variable is ^3355FF"+ job_karma + "^000000. You might";
+				mes "want to ask what that means.";
+				mes "Anyway, choose a number";
+				mes "between 0 to 13.";
+				next;
+				input '@input;
+				if ('@input < 0 || '@input > 13) {
+					mes "[Huozelo]";
+					mes "Hey...";
+					mes "That wasn't a";
+					mes "number between";
+					mes "0 to 13 like I asked.";
+					close;
+				} else {
+					set job_karma,'@input;
+					mes "[Huozelo]";
+					mes "Alright, I changed";
+					mes "your Transcendent";
+					mes "to ^3355FF"+ '@input +"^000000. Good luck~";
+					close;
+				}
+			}
+		}
+	}
+}
+
+
+//--------------------------------------------------------------
+// GM Swordman/Archer Quest Skill Assistant - [Tsuyuki]
+//--------------------------------------------------------------
+
+sec_in02.gat,26,153,1	script	Swordman/Archer Skill	714,{
+
+	mes "Enter the password.";
+	mes "Enter 0 to cancel.";
+	next;
+	input '@input$;
+	if ('@input$ == "0") {
+		mes "You have canceled.";
+		close;
+	} else if ('@input$ != $gmpassword1$) {
+		mes "Incorrect password.";
+		close;
+	}
+	switch(select("HP Recovery While Moving","Fatal Blow","Berserk","Arrow Crafting","Arrow Repel")) {
+	case 1:
+		if (BaseClass == Job_Swordman) {
+			skill 144,1,0;
+			end;
+		} else {
+			mes "^3355FFYou cannot learn this skill.";
+			mes "It is exclusive to Swordman,";
+			mes "Knight and Crusader jobs.";
+			mes "(Transcendent equivalents";
+			mes "automatically learn this.)^000000";
+			close;
+		}
+	case 2:
+		if (BaseClass == Job_Swordman) {
+			skill 145,1,0;
+			end;
+		} else {
+			mes "^3355FFYou cannot learn this skill.";
+			mes "It is exclusive to Swordman,";
+			mes "Knight and Crusader jobs.";
+			mes "(Transcendent equivalents";
+			mes "automatically learn this.)^000000";
+			close;
+		}
+	case 3:
+		if (BaseClass == Job_Swordman) {
+			skill 146,1,0;
+			end;
+		} else {
+			mes "^3355FFYou cannot learn this skill.";
+			mes "It is exclusive to Swordman,";
+			mes "Knight and Crusader jobs.";
+			mes "(Transcendent equivalents";
+			mes "automatically learn this.)^000000";
+			close;
+		}
+	case 4:
+		if (BaseClass == Job_Archer) {
+			skill 147,1,0;
+			end;
+		} else {
+			mes "^3355FFYou cannot learn this skill.";
+			mes "It is exclusive to Archer,";
+			mes "Bard, Hunter and Dancer jobs.";
+			mes "(Transcendent equivalents";
+			mes "automatically learn this.)^000000";
+			close;
+		}
+	case 5:
+		if (BaseClass == Job_Archer) {
+			skill 148,1,0;
+			end;
+		} else {
+			mes "^3355FFYou cannot learn this skill.";
+			mes "It is exclusive to Archer,";
+			mes "Bard, Hunter and Dancer jobs.";
+			mes "(Transcendent equivalents";
+			mes "automatically learn this.)^000000";
+			close;
+		}
+	}
+}
+
+
+//--------------------------------------------------------------
+// GM Novice/Thief Quest Skill Assistant - [Tsuyuki]
+//--------------------------------------------------------------
+
+sec_in02.gat,28,153,1	script	Novice/Thief Skill	714,{
+
+	mes "Enter the password.";
+	mes "Enter 0 to cancel.";
+	next;
+	input '@input$;
+	if ('@input$ == "0") {
+		mes "You have canceled.";
+		close;
+	} else if ('@input$ != $gmpassword1$) {
+		mes "Incorrect password.";
+		close;
+	}
+	switch(select("First Aid","Play Dead","Sand Attack","Backslide","Find Stone","Stone Fling")) {
+	case 1:
+		skill 142,1,0;
+		end;
+	case 2:
+		if (Class == Job_Novice) {
+			skill 143,1,0;
+			end;
+		} else {
+			mes "^3355FFYou cannot learn this skill.";
+			mes "It is exclusive to Novices.^000000";
+			close;
+		}
+	case 3:
+		if (BaseClass == Job_Thief) {
+			skill 149,1,0;
+			end;
+		} else {
+			mes "^3355FFYou cannot learn this skill.";
+			mes "It is exclusive to the Thief,";
+			mes "Rogue and Assassin jobs.";
+			mes "(Transcendent equivalents";
+			mes "automatically learn this.)^000000";
+			close;
+		}
+	case 4:
+		if ((Class == Job_Thief) || (Class == Job_Rogue) || (Class == Job_Assassin)) {
+			skill 150,1,0;
+			end;
+		} else {
+			mes "^3355FFYou cannot learn this skill.";
+			mes "It is exclusive to the Thief,";
+			mes "Rogue and Assassin jobs.";
+			mes "(Transcendent equivalents";
+			mes "automatically learn this.)^000000";
+			close;
+		}
+	case 5:
+		if (BaseClass == Job_Thief) {
+			skill 151,1,0;
+			end;
+		} else {
+			mes "^3355FFYou cannot learn this skill.";
+			mes "It is exclusive to the Thief,";
+			mes "Rogue and Assassin jobs.";
+			mes "(Transcendent equivalents";
+			mes "automatically learn this.)^000000";
+			close;
+		}
+	case 6:
+		if (BaseClass == Job_Thief) {
+			skill 152,1,0;
+			end;
+		} else {
+			mes "^3355FFYou cannot learn this skill.";
+			mes "It is exclusive to the Thief,";
+			mes "Rogue and Assassin jobs.";
+			mes "(Transcendent equivalents";
+			mes "automatically learn this.)^000000";
+			close;
+		}
+	}
+}
+
+
+//--------------------------------------------------------------
+// GM Mage/Merchant/Acolyte Quest Skill Assistant - [Tsuyuki]
+//--------------------------------------------------------------
+
+sec_in02.gat,30,153,1	script	Mage/Merchant/Acolyte	714,{
+
+	mes "Enter the password.";
+	mes "Enter 0 to cancel.";
+	next;
+	input '@input$;
+	if ('@input$ == "0") {
+		mes "You have canceled.";
+		close;
+	} else if ('@input$ != $gmpassword1$) {
+		mes "Incorrect password.";
+		close;
+	}
+	switch(select("Energy Coat","Cart Revolution","Change Cart","Crazy Uproar","Holy Light")) {
+	case 1:
+		if (BaseClass == Job_Mage) {
+			skill 157,1,0;
+			end;
+		} else {
+			mes "^3355FFYou cannot learn this skill.";
+			mes "It is exclusive to the Mage,";
+			mes "Wizard and Sage jobs.";
+			mes "(Transcendent equivalents";
+			mes "automatically learn this.)^000000";
+			close;
+		}
+	case 2:
+		if (BaseClass == Job_Merchant) {
+			skill 153,1,0;
+			end;
+		} else {
+			mes "^3355FFYou cannot learn this skill.";
+			mes "It is exclusive to Merchant,";
+			mes "Blacksmith and Alchemist jobs.";
+			mes "(Transcendent equivalents";
+			mes "automatically learn this.)^000000";
+			close;
+		}
+	case 3:
+		if (BaseClass == Job_Merchant) {
+			skill 154,1,0;
+			end;
+		} else {
+			mes "^3355FFYou cannot learn this skill.";
+			mes "It is exclusive to Merchant,";
+			mes "Blacksmith and Alchemist jobs.";
+			mes "(Transcendent equivalents";
+			mes "automatically learn this.)^000000";
+			close;
+		}
+	case 4:
+		if (BaseClass == Job_Merchant) {
+			skill 155,1,0;
+			end;
+		} else {
+			mes "^3355FFYou cannot learn this skill.";
+			mes "It is exclusive to Merchant,";
+			mes "Blacksmith and Alchemist jobs.";
+			mes "(Transcendent equivalents";
+			mes "automatically learn this.)^000000";
+			close;
+		}
+	case 5:
+		if (BaseClass == Job_Acolyte) {
+			skill 156,1,0;
+			end;
+		} else {
+			mes "^3355FFYou cannot learn this skill.";
+			mes "It is exclusive to Merchant,";
+			mes "Blacksmith and Alchemist jobs.";
+			mes "(Transcendent equivalents";
+			mes "automatically learn this.)^000000";
+			close;
+		}
+	}
+}
+
+
+//--------------------------------------------------------------
+// GM 2nd Class Quest Skill Assistant - [Tsuyuki]
+//--------------------------------------------------------------
+
+sec_in02.gat,22,177,5	script	Quest Skill Man	853,{
+
+	mes "[Skill Man]";
+	mes "Alright, enter the password.";
+	mes "Enter 0 to cancel.";
+	next;
+	input '@input$;
+	if ('@input$ == "0") {
+		mes "You have canceled.";
+		close;
+	} else if ('@input$ != $gmpassword1$) {
+		mes "Incorrect password.";
+		close;
+	} else {
+		mes "[Skill Man]";
+		mes "Hurry Up!";
+		next;
+		switch(select("Learn","Quit")) {
+		case 1:
+			if (Class == Job_Knight) {
+				skill 1001,1,0;
+				close;
+			} else if (Class == Job_Crusader) {
+				skill 1002,1,0;
+				close;
+			} else if (Class == Job_Assassin) {
+				skill 1003,1,0;
+				skill 1004,1,0;
+				close;
+			} else if (Class == Job_Rogue) {
+				skill 1005,1,0;
+				close;
+			} else if (Class == Job_Sage) {
+				skill 1007,1,0;
+				skill 1008,1,0;
+				skill 1017,1,0;
+				skill 1018,1,0;
+				skill 1019,1,0;
+				close;
+			} else if (Class == Job_Hunter) {
+				skill 1009,1,0;
+				close;
+			} else if (Class == Job_Bard) {
+				skill 1010,1,0;
+				close;
+			} else if (Class == Job_Dancer) {
+				skill 1011,1,0;
+				close;
+			} else if (Class == Job_Blacksmith) {
+				skill 1012,1,0;
+				skill 1013,1,0;
+				close;
+			} else if (Class == Job_Priest) {
+				skill 1014,1,0;
+				close;
+			} else if (Class == Job_Monk) {
+				skill 1015,1,0;
+				skill 1016,1,0;
+				close;
+			} else {
+				mes "[Quest Skill Man]";
+				mes "No, no, no! Not you!";
+				close;
+			}
+		case 2:
+			mes "[Quest Skill Man]";
+			mes "Alright.";
+			close;
+		}
+	}
+}
+
+
+//--------------------------------------------------------------
+// GM Extra Services Assistant #1 - [Tsuyuki]
+//--------------------------------------------------------------
+
+sec_in01.gat,176,171,3	script	Helper	729,{
+
+	mes "[Service Assistant]";
+	mes "I will assist you with services.";
+	mes "Enter the password.";
+	mes "Enter 0 to cancel.";
+	next;
+	input '@input$;
+	if ('@input$ == "0") {
+		mes "[Service Assistant]";
+		mes "The request has been canceled.";
+		close;
+	} else if ('@input$ != $gmpassword1$) {
+		mes "[Service Assistant]";
+		mes "The password is incorrect.";
+		close;
+	} else {
+		mes "[Service Assistant]";
+		mes "Select a service.";
+		next;
+		switch(select("Storage Service","Cart Service","Phalcon Service","PecoPeco Service","Cancel")) {
+		case 1:
+			mes "[Service Assistant]";
+			mes "You have requested to use the ^3355FFStorage Service^000000.";
+			mes "Is this correct?";
+			next;
+			switch(select("Yes.","No.")) {
+			case 1:
+				openstorage;
+				close;
+			case 2:
+				mes "[Service Assistant]";
+				mes "The request has been canceled.";
+				close;
+			}
+		case 2:
+			mes "[Service Assistant]";
+			mes "You have requested to use the ^3355FFCart Service^000000.";
+			mes "Is this correct?";
+			next;
+			switch(select("Yes.","No.")) {
+			case 1:
+				if (BaseClass != Job_Merchant) {
+					mes "[Service Assistant]";
+					mes "Sorry, your job class cannot use a cart.";
+					close;
+				} else if (Cart == 1) {
+					mes "[Service Assistant]";
+					mes "You have already equipped a cart.";
+					close;
+				} else {
+					setcart;
+				}
+				close;
+			case 2:
+				mes "[Service Assistant]";
+				mes "The request has been canceled.";
+				close;
+			}
+		case 3:
+			mes "[Service Assistant]";
+			mes "You have requested to use the ^3355FFPhalcon Service^000000.";
+			mes "Is this correct?";
+			next;
+			switch(select("Yes.","No.")) {
+			case 1:
+				if (Class != Job_Hunter) {
+					mes "[Service Assistant]";
+					mes "Sorry, your job cannot use a Phalcon.";
+					close;
+				} else {
+					setriding;
+				}
+				close;
+			case 2:
+				mes "[Service Assistant]";
+				mes "The request has been canceled.";
+				close;
+			}
+		case 4:
+			mes "[Service Assistant]";
+			mes "You have requested to use the ^3355FFPecoPeco Service^000000.";
+			mes "Is this correct?";
+			next;
+			switch(select("Yes.","No.")) {
+			case 1:
+				if ((Class != Job_Knight) && (Class != Job_Crusader)) {
+					mes "[Service Assistant]";
+					mes "Sorry, your job class cannot use a PecoPeco.";
+					close;
+				} else {
+					setriding;
+				}
+				close;
+			case 2:
+				mes "[Service Assistant]";
+				mes "The request has been canceled.";
+				close;
+			}
+		case 5:
+			mes "[Service Assistant]";
+			mes "The request has been canceled.";
+			close;
+		}
+	}
+}
+
+
+//--------------------------------------------------------------
+// GM Extra Services Assistant #2 - [Tsuyuki]
+//--------------------------------------------------------------
+
+sec_in02.gat,30,183,3	script	Extra Services	729,{
+
+	mes "[Extra Services]";
+	mes "I provide all sorts of";
+	mes "miscellaneous services.";
+	mes "Please enter your password";
+	mes "or just input ''0'' to cancel.";
+	next;
+	input '@input$;
+	if ('@input$ == "0") {
+		mes "[Extra Services]";
+		mes "You have canceled.";
+		close;
+	} else if ('@input$ != $gmpassword1$) {
+		mes "[Extra Services]";
+		mes "I'm sorry, but that's";
+		mes "not the correct password.";
+		close;
+	} else {
+		mes "[Extra Services]";
+		mes "Please select";
+		mes "a service from";
+		mes "the menu below...";
+		next;
+		switch(select("Storage Service","Cart Service","Falcon Service","Peco Peco Service","Cancel")) {
+		case 1:
+			mes "[Extra Services]";
+			mes "You've chosen to";
+			mes "use the ^3355FFKafra Storage^000000.";
+			mes "Shall we continue?";
+			next;
+			switch(select("Yes","No")) {
+			case 1:
+				openstorage;
+				close;
+			case 2:
+				mes "[Extra Services]";
+				mes "You have canceled.";
+				close;
+			}
+		case 2:
+			mes "[Extra Services]";
+			mes "You've chosen to";
+			mes "rent a ^3355FFPushcart^000000.";
+			mes "Shall we continue?";
+			next;
+			switch(select("Yes","No")) {
+			case 1:
+				if (BaseClass != Job_Merchant) {
+					mes "[Extra Services]";
+					mes "Sorry, but only Merchants,";
+					mes "Blacksmiths, Alchemists,";
+					mes "MasterSmiths and Biochemists";
+					mes "are allowed to rent Pushcarts.";
+					close;
+				} else if (Cart) {
+					mes "[Extra Services]";
+					mes "You can only rent one";
+					mes "Pushcart at a time, and";
+					mes "you are already equipped";
+					mes "with a Pushcart.";
+					close;
+				} else {
+					setcart;
+				}
+				close;
+			case 2:
+				mes "[Extra Services]";
+				mes "You have canceled.";
+				close;
+			}
+		case 3:
+			mes "[Extra Services]";
+			mes "You've chosen";
+			mes "to rent a ^3355FFFalcon^000000.";
+			mes "Shall we continue?";
+			next;
+			switch(select("Yes","No")) {
+			case 1:
+				if (Class != Job_Hunter) {
+					mes "[Extra Services]";
+					mes "I'm sorry, but";
+					mes "only Hunters and";
+					mes "Snipers are allowed";
+					mes "to rent Falcons.";
+					close;
+				} else {
+					setfalcon;
+				}
+				close;
+			case 2:
+				mes "[Extra Services]";
+				mes "You have canceled.";
+				close;
+			}
+		case 4:
+			mes "[Extra Services]";
+			mes "You've chosen to";
+			mes "rent a ^3355FFPeco Peco^000000.";
+			mes "Shall we continue?";
+			next;
+			switch(select("Yes","No")) {
+			case 1:
+				if ((Class != Job_Knight) && (Class != Job_Crusader)) {
+					mes "[Extra Services]";
+					mes "I'm sorry, but only";
+					mes "Knights, Crusaders,";
+					mes "Lord Knights and Paladins";
+					mes "are allowed to rent Peco Pecos.";
+					close;
+				} else {
+					setriding;
+				}
+				close;
+			case 2:
+				mes "[Extra Services]";
+				mes "You have canceled.";
+				close;
+			}
+		case 5:
+			mes "[Extra Services]";
+			mes "You have canceled.";
+			close;
+		}
+	}
+}
+
+
+//--------------------------------------------------------------
+// GM Hair Dresser Assistant - [Tsuyuki]
+//--------------------------------------------------------------
+
+sec_in02.gat,37,183,3	script	Hair Dresser#valhala	91,{
+
+	mes "[Jovovich]";
+	mes "Enter the password.";
+	mes "Enter 0 to cancel.";
+	input '@input$;
+	if ('@input$ == "0") {
+		mes "[Jovovich]";
+		mes "You have canceled.";
+		close;
+	} else if ('@input$ != $gmpassword1$) {
+		mes "[Jovovich]";
+		mes "Incorrect password.";
+		close;
+	}
+	mes "[Jovovich]";
+	mes "Hello! I can change";
+	mes "your hairstyle by the";
+	mes "power of ''fashion.''";
+	next;
+	while(1) {
+		if ('@choose_success == 2) {
+			break;
+		}
+		switch(select("Change Hair Color.","Cancel.")) {
+		case 1:
+			mes "[Jovovich]";
+			mes "Please choose";
+			mes "your new hair color.";
+			mes "It's a good thing this";
+			mes "service is free~";
+			next;
+			while(1) {
+				if ('@choose_success == 2) {
+					break;
+				} else if ('@choose_success == 1) {
+					mes "[Jovovich]";
+					mes "So how do you";
+					mes "like it? Did you";
+					mes "still want to try";
+					mes "a different color?";
+					next;
+					switch(select("Yes","No")) {
+					case 1:
+						mes "[Jovovich]";
+						mes "Alright then,";
+						mes "please tell me";
+						mes "which hair color";
+						mes "you'd like to try.";
+						next;
+						break;
+					case 2:
+						mes "[Jovovich]";
+						mes "Great! This hair";
+						mes "color looks wonderful";
+						mes "on you! But then, I think";
+						mes "that about any hair color...";
+						close2;
+						set '@choose_success,2;
+						end;
+					}
+				}
+				while(1) {
+					switch(select("Red","Yellow","Purple","Orange","Green","Blue","White","Dark Brown","Cancel")) {
+					case 1:
+						set '@headpalette,8;
+						break;
+					case 2:
+						set '@headpalette,1;
+						break;
+					case 3:
+						set '@headpalette,2;
+						break;
+					case 4:
+						set '@headpalette,3;
+						break;
+					case 5:
+						set '@headpalette,4;
+						break;
+					case 6:
+						set '@headpalette,5;
+						break;
+					case 7:
+						set '@headpalette,6;
+						break;
+					case 8:
+						set '@headpalette,7;
+						break;
+					case 9:
+						if ('@choose_success != 0) {
+							mes "[Jovovich]";
+							mes "Ah, I see that you";
+							mes "want to stick with";
+							mes "the hair color that";
+							mes "you have right now.";
+							mes "Excellent choice~";
+							close2;
+							set '@choose_success,2;
+							end;
+						} else {
+							mes "[Jovovich]";
+							mes "Oh, you changed";
+							mes "your mind about";
+							mes "changing your hair";
+							mes "color? Oh, alright...";
+							close2;
+							set '@choose_success,2;
+							end;
+						}
+					}
+					if (getlook(6) == '@headpalette) {
+						mes "[Jovovich]";
+						mes "Excuse me, but...";
+						mes "The color you chose";
+						mes "is the color of your hair";
+						mes "right now. Please select";
+						mes "something different.";
+						next;
+					} else {
+						setlook 6,'@headpalette;
+						set '@choose_success,1;
+						break;
+					}
+				}
+			}
+		case 2:
+			mes "[Jovovich]";
+			mes "It doesn't matter";
+			mes "if you're a man or";
+			mes "a woman... Beauty";
+			mes "is everything!";
+			close;
+		}
+	}
+}
+
+
+//--------------------------------------------------------------
+// GM Checker Boy Assistant - [Tsuyuki]
+//--------------------------------------------------------------
+
+sec_in02.gat,25,145,0	script	Checker Boy#1	90,{
+
+	mes "[Checker Boy]";
+	mes "Enter the password.";
+	mes "Enter 0 to cancel.";
+	input '@input$;
+	if ('@input$ == "0") {
+		mes "[Checker Boy]";
+		mes "You have canceled.";
+		close;
+	} else if ('@input$ != $gmpassword1$) {
+		mes "[Checker Boy]";
+		mes "Incorrect password.";
+		close;
+	}
+	set '@clicky,$20040628_eremes;
+	set '@topname$,$20040628_eremes2$;
+	if ('@clicky > 10) {
+		mes "[Checker Boy]";
+		mes "Yeah, the number has reached 10 persons. The Cool Event Corp. has";
+		mes "decided to give away free goods when the number hits the total number 10.";
+		close2;
+		set $20040628_eremes,0;
+		end;
+	} else if ('@clicky == 10) {
+		mes "[Checker Boy]";
+		mes "Wow, grats!";
+		next;
+		mes "[Checker Boy]";
+		mes ""+strcharinfo(0)+" you are the 10th person to visit me!";
+		mapannounce "sec_in02.gat",""+strcharinfo(0)+" is the 10th customer of mine and has been selected as the event winner!",8;
+		next;
+		mes "[Checker Boy]";
+		mes "So, what kind of item would you like to receive?";
+		next;
+		input '@input$;
+		set '@answer$,'@input$;
+		mes "[Checker Boy]";
+		mes ""+'@answer$+"...? What is that?";
+		mes "Hmmm....even if you want it, the prize will be...";
+		next;
+		mes "[Checker Boy]";
+		mes "Determined later. Hehehe, expect next time!";
+		mes "But, I will remember your name, definitely~";
+		set '@clicky,'@clicky + 1;
+		set $20040628_eremes,'@clicky;
+		set $20040628_eremes2$,'@name$;
+		close;
+	} else {
+		set '@clicky,'@clicky + 1;
+		mes "[Checker Boy]";
+		mes "You are the person who has visited me at the "+'@clicky+" time(s).";
+		next;
+		mes "[Checker Boy]";
+		mes "Currently, "+'@topname$+" is recorded as the 10th person, the event winner.";
+		close2;
+		set $20040628_eremes,'@clicky;
+		end;
+	}
+}
+
+
+//--------------------------------------------------------------
+// GM Name Engrave Assistant - [Tsuyuki]
+//--------------------------------------------------------------
+
+sec_in02.gat,38,153,3	script	Engrave Your Name	85,{
+
+	mes "[Namer]";
+	mes "Enter the password.";
+	mes "Enter 0 to cancel.";
+	input '@input$;
+	if ('@input$ == "0") {
+		mes "[Namer]";
+		mes "You have canceled.";
+		close;
+	} else if ('@input$ != $gmpassword1$) {
+		mes "[Namer]";
+		mes "Incorrect password.";
+		close;
+	}
+	mes "[Namer]";
+	mes "If an item is named after a";
+	mes "specific character that's been";
+	mes "deleted, I can give you new ones with the name of the character";
+	mes "you're on right now. But don't be carrying those named items on you!";
+	next;
+	switch(select("20 Hand-Made Chocolate","20 Handmade White Chocolate","Santa Hat","Helmet of Orc Hero","Christmas Gold Ring","Christmas Silver Ring","20 Chocolate Drink","Gift Box")) {
+	case 1:
+		if (countitem(559) > 19) {
+			delitem 559,20;
+			getitem2 559,20,1,0,0,254,0,getcharid(0),(getcharid(0)>>16)&0xffff;
+			mes "[Namer]";
+			mes "Complete.";
+			close;
+		} else {
+			mes "[Namer]";
+			mes "Sorry, but I can't";
+			mes "give you any named";
+			mes "items until you give me";
+			mes "me at least 20 Hand-Made";
+			mes "Chocolates.";
+			close;
+		}
+	case 2:
+		if (countitem(560) > 19) {
+			delitem 560,20;
+			getitem2 560,20,1,0,0,254,0,getcharid(0),(getcharid(0)>>16)&0xffff;
+			mes "[Namer]";
+			mes "Complete.";
+			close;
+		} else {
+			mes "[Namer]";
+			mes "Sorry, but I can't";
+			mes "give you any named";
+			mes "items until you give me";
+			mes "me at least 20 Handmade";
+			mes "White Chocolates.";
+			close;
+		}
+	case 3:
+		if (countitem(2236) > 0) {
+			delitem 2236,1;
+			getitem2 2236,1,1,0,0,254,0,getcharid(0),(getcharid(0)>>16)&0xffff;
+			mes "[Namer]";
+			mes "Complete.";
+			close;
+		} else {
+			mes "[Namer]";
+			mes "Sorry, but I can't";
+			mes "give you any named";
+			mes "items until you give";
+			mes "me at least 1 Santa Hat.";
+			close;
+		}
+	case 4:
+		if (countitem(5094) > 0) {
+			delitem 5094,1;
+			set orcs_hero_hat,10101;
+			getitem2 5094,1,1,0,0,254,0,getcharid(0),(getcharid(0)>>16)&0xffff;
+			mes "[Namer]";
+			mes "Complete.";
+			close;
+		} else {
+			mes "[Namer]";
+			mes "Sorry, but I can't";
+			mes "give you any named";
+			mes "items until you give";
+			mes "me at least 1 Helmet";
+			mes "of Orc Hero.";
+			close;
+		}
+	case 5:
+		if (countitem(2636) > 0) {
+			delitem 2636,1;
+			getitem2 2636,1,1,0,0,254,0,getcharid(0),(getcharid(0)>>16)&0xffff;
+			mes "[Namer]";
+			mes "Complete.";
+			close;
+		} else {
+			mes "[Namer]";
+			mes "Sorry, but I can't";
+			mes "give you any named";
+			mes "items until you give";
+			mes "me at least 1 Gold";
+			mes "Christmas Ring.";
+			close;
+		}
+	case 6:
+		if (countitem(2637) > 0) {
+			delitem 2637,1;
+			getitem2 2637,1,1,0,0,254,0,getcharid(0),(getcharid(0)>>16)&0xffff;
+			mes "[Namer]";
+			mes "Complete.";
+			close;
+		} else {
+			mes "[Namer]";
+			mes "Sorry, but I can't";
+			mes "give you any named";
+			mes "items until you give";
+			mes "me at least 1 Silver";
+			mes "Christmas Ring.";
+			close;
+		}
+	case 7:
+		if (countitem(573) > 19) {
+			delitem 573,20;
+			getitem2 573,20,1,0,0,254,0,getcharid(0),(getcharid(0)>>16)&0xffff;
+			mes "[Namer]";
+			mes "Complete.";
+			close;
+		} else {
+			mes "[Namer]";
+			mes "Sorry, but I can't give";
+			mes "you any named items";
+			mes "until you give me at least";
+			mes "20 Chocolate Drinks.";
+			close;
+		}
+	case 8:
+		if (countitem(644) > 19) {
+			set '@rararan,rand(1,4);
+			if ('@rararan == 1) {
+				delitem 644,20;
+				getitem2 664,20,1,0,0,254,0,getcharid(0),(getcharid(0)>>16)&0xffff;
+				mes "[Namer]";
+				mes "Complete.";
+				close;
+			} else if ('@rararan == 2) {
+				delitem 644,20;
+				getitem2 665,20,1,0,0,254,0,getcharid(0),(getcharid(0)>>16)&0xffff;
+				mes "[Namer]";
+				mes "Complete.";
+				close;
+			} else if ('@rararan == 3) {
+				delitem 644,20;
+				getitem2 666,20,1,0,0,254,0,getcharid(0),(getcharid(0)>>16)&0xffff;
+				mes "[Namer]";
+				mes "Complete.";
+				close;
+			} else {
+				delitem 644,20;
+				getitem2 667,20,1,0,0,254,0,getcharid(0),(getcharid(0)>>16)&0xffff;
+				mes "[Namer]";
+				mes "Complete.";
+				close;
+			}
+		} else {
+			mes "[Namer]";
+			mes "I need at least";
+			mes "20 Gift Boxes. By";
+			mes "the way, I give you";
+			mes "different colored";
+			mes "Gift Boxes randomly.";
+			close;
+		}
+	}
+}
+
+
+//--------------------------------------------------------------
+// GM 1st Class Job Quest Reset Assistant - [Tsuyuki]
+//--------------------------------------------------------------
+
+sec_in02.gat,17,156,3	script	1st Job Quest Reset	726,{
+
+	mes "[1st Job Quest]";
+	mes "Enter the password.";
+	mes "Enter 0 to cancel.";
+	input '@input$;
+	if ('@input$ == "0") {
+		mes "[1st Job Quest]";
+		mes "You have canceled.";
+		close;
+	} else if ('@input$ != $gmpassword1$) {
+		mes "[1st Job Quest]";
+		mes "Incorrect password.";
+		close;
+	}
+	mes "[1st Job Quest]";
+	mes "Which would you like to reset?";
+	next;
+	switch(select("Swordman","Merchant","Archer","Acolyte","Thief","Mage")) {
+	case 1:
+		set tu_swordman,0;
+		break;
+	case 2:
+		set tu_merchant,0;
+		break;
+	case 3:
+		set tu_archer01,0;
+		set tu_archer02,0;
+		break;
+	case 4:
+		set tu_acolyte01,0;
+		break;
+	case 5:
+		set tu_thief01,0;
+		break;
+	case 6:
+		set tu_magician01,0;
+		break;
+	}
+	mes "Completed.";
+	close;
+}
+
+
+//--------------------------------------------------------------
+// GM Aldebaran Turbo Track System Variable Management - [Tsuyuki]
+//--------------------------------------------------------------
+
+sec_in02.gat,25,149,4	script	Point Helper	124,{
+
+	mes "[Turbo Track Yay!]";
+	mes "So...";
+	mes "Give it to me.";
+	mes "You know...";
+	next;
+	input '@input$;
+	if ('@input$ == "0") {
+		mes "[Turbo Track Yay!]";
+		mes "You have canceled.";
+		close;
+	} else if ('@input$ != $gmpassword1$) {
+		mes "[Turbo Track Yay!]";
+		mes "You...";
+		mes "You don't";
+		mes "belong...!";
+		close;
+	} else {
+		mes "[Turbo Track Yay!]";
+		mes "Yes, yes!";
+		mes "That's right!";
+		mes "Now, give me a command!";
+		mes "I specialize in manipulating numbers!";
+		next;
+		switch(select("Arena","Turbo Track","Rank Points")) {
+		case 1:
+			mes "[Turbo Track Yay!]";
+			mes "Now, I can change";
+			mes "your total number";
+			mes "of Arena Points.";
+			mes "So give me a number";
+			mes "from 0 to 29999.";
+			next;
+			input '@input;
+			if ('@input < 0 || '@input > 29999) {
+				mes "[Turbo Track Yay!]";
+				mes "Whoa!";
+				mes "Make sure that";
+				mes "you only enter a";
+				mes "value that isn't";
+				mes "more than 29999";
+				mes "...or a letter.";
+				close;
+			} else {
+				set '@set,'@input;
+				mes "[Turbo Track Yay!]";
+				mes "So...";
+				mes "You want to have";
+				mes "" + '@set + " Arena Points?";
+				mes "SO IT SHALL BE.";
+				set arena_point,'@set;
+				close;
+			}
+		case 2:
+			mes "[Turbo Track Yay!]";
+			mes "I have the uncanny ability to set the total value of Turbo Track Points that you have. Enter a value from 0 to 29999.";
+			next;
+			input '@input;
+			if ('@input < 0 || '@input > 29999) {
+				mes "[Turbo Track Yay!]";
+				mes "Whoa!";
+				mes "Make sure that";
+				mes "you only enter a";
+				mes "value that isn't";
+				mes "more than 29999";
+				mes "...or a letter.";
+				close;
+			} else {
+				set '@set,'@input;
+				mes "[Turbo Track Yay!]";
+				mes "So...";
+				mes "You want to have";
+				mes "" + '@set + " Turbo Track Points?";
+				mes "IT IS DONE.";
+				set tt_point,'@set;
+				close;
+			}
+		case 3:
+			mes "[Turbo Track Yay!]";
+			mes "My, shall we say, powers, allow me to set your total number of Rank Points. Enter a value from 0 to 29999.";
+			next;
+			input '@input;
+			if ('@input < 0 || '@input > 29999) {
+				mes "[Turbo Track Yay!]";
+				mes "Whoa!";
+				mes "Make sure that";
+				mes "you only enter a";
+				mes "value that isn't";
+				mes "more than 29999";
+				mes "...or a letter.";
+				close;
+			} else {
+				set '@set,'@input;
+				mes "[Turbo Track Yay!]";
+				mes "Are you sure you want to receive " + '@set + " points?";
+				mes "I shall give you that then.";
+				mes "Muhahahahahaha.";
+				set tt_rank,'@set;
+				close;
+			}
+		}
+	}
+}
+
+sec_in02.gat,15,175,4	script	TBT Manager	124,{
+
+	mes "[Turbo Track Yay!]";
+	mes "Give it to me.";
+	mes "You know what I'm";
+	mes "talking about, don't you?";
+	next;
+	input '@input$;
+	if ('@input$ == "0") {
+		mes "[Turbo Track Yay!]";
+		mes "You have canceled.";
+		close;
+	} else if ('@input$ != $gmpassword1$) {
+		mes "[Turbo Track Yay!]";
+		mes "You're...";
+		mes "You're not";
+		mes "the chosen one!";
+		close;
+	} else {
+		mes "[Turbo Track Yay!]";
+		mes "Exactly! Now that's the gospel truth! Now, my function is to change Global Variables. What do you want me to do?";
+		next;
+		switch(select("Check Records","Reset Global Var","Reset One by One")) {
+		case 1:
+			set '@rank1$,$050306_att_topname1$;
+			set '@rank2$,$050306_att_topname2$;
+			set '@rank3$,$050306_att_topname3$;
+			set '@rank4$,$050306_att_topname4$;
+			set '@rank5$,$050306_att_topname5$;
+			set '@top1$,$050306_att_greatname1$;
+			set '@top2$,$050306_att_greatname2$;
+			set '@rank1_point,$050306_att_toppoint1;
+			set '@rank2_point,$050306_att_toppoint2;
+			set '@rank3_point,$050306_att_toppoint3;
+			set '@rank4_point,$050306_att_toppoint4;
+			set '@rank5_point,$050306_att_toppoint5;
+			set '@clear_time,$041110_att_n01record;
+			set '@timeAttack_name$,$041110_att_n01name$;
+			set '@name_n4$,$041110_att_n04name$;
+			set '@name_n8$,$041110_att_n08name$;
+			set '@name_n16$,$041110_att_n16name$;
+			set '@name_e4$,$041110_att_e04name$;
+			set '@name_e8$,$041110_att_e08name$;
+			set '@name_e16$,$041110_att_e16name$;
+			mes "[Turbo Track Yay!]";
+			mes "^3355FFGame Winner Ranks...^000000";
+			mes "1st:" + '@rank1$ +"";
+			mes "2nd:" + '@rank2$ +"";
+			mes "3rd:" + '@rank3$ +"";
+			mes "4th:" + '@rank4$ +"";
+			mes "5th:" + '@rank5$ +"";
+			next;
+			mes "[Turbo Track Yay!]";
+			mes "^3355FFGame Winner's";
+			mes "current points...^000000";
+			mes "1st:" + '@rank1_point +"";
+			mes "2nd:" + '@rank2_point +"";
+			mes "3rd:" + '@rank3_point +"";
+			mes "4th:" + '@rank4_point +"";
+			mes "5th:" + '@rank5_point +"";
+			next;
+			mes "[Turbo Track Yay!]";
+			mes "^3355FFTop Record and";
+			mes "Best Player of Solo Mode...^000000";
+			mes "Top Record " + '@clear_time + "";
+			mes "The Best Player";
+			mes "" + '@timeAttack_name$ + "";
+			next;
+			mes "[Turbo Track Yay!]";
+			mes "^3355FFThe Hall of Honor^000000.";
+			mes "The first";
+			mes " " + '@top1$ + "";
+			mes "The last";
+			mes " " + '@top2$ + "";
+			next;
+			mes "[Turbo Track Yay!]";
+			mes "Let's review the top players of Normal Mode.";
+			mes "4 ppl:" + '@name_n4$ + "";
+			mes "8 ppl:" + '@name_n8$ + "";
+			mes "16 ppl:" + '@name_n16$ + "";
+			next;
+			mes "[Turbo Track Yay!]";
+			mes "Let's review the top players of Expert Mode.";
+			mes "4 ppl:" + '@name_e4$ + "";
+			mes "8 ppl:" + '@name_e8$ + "";
+			mes "16 ppl:" + '@name_e16$ + "";
+			next;
+			mes "[Turbo Track Yay!]";
+			mes "That's all. Thank you.";
+			close;
+		case 2:
+			mes "[Turbo Track Yay!]";
+			mes "Are you sure that you want to reset all Global Var?";
+			mes "Are you sure?";
+			next;
+			input '@input$;
+			if ('@input$ == $gmpassword2$) {
+				mes "[Turbo Track Yay!]";
+				mes "I see.";
+				mes "Then I shall reset all Global Var for you!";
+				mes "Salute to my master!";
+				set $041110_att_n01record,999999;
+				set $050306_att_toppoint1,0;
+				set $050306_att_toppoint2,0;
+				set $050306_att_toppoint3,0;
+				set $050306_att_toppoint4,0;
+				set $050306_att_toppoint5,0;
+				set $041110_att_n01name$,"Breezy Havana";
+				set $041110_att_n04name$,"RS125";
+				set $041110_att_n08name$,"Hollgrehenn";
+				set $041110_att_n16name$,"Antonio";
+				set $041110_att_e04name$,"Aragham";
+				set $041110_att_e08name$,"Kafra Jasmine";
+				set $041110_att_e16name$,"Chris";
+				set $050306_att_greatname1$,"Breezy Havana";
+				set $050306_att_greatname2$,"RS125";
+				set $050306_att_topname1$,"Breezy Havana";
+				set $050306_att_topname2$,"Nari";
+				set $050306_att_topname3$,"Senorita Sylvia";
+				set $050306_att_topname4$,"Joo Jahk";
+				set $050306_att_topname5$,"RS125";
+				next;
+				mes "[Turbo Track Yay!]";
+				mes "Everything is done!";
+				close;
+			} else {
+				mes "[Turbo Track Yay!]";
+				mes "Are you kidding me?";
+				mes "You haven't prepared yet!";
+				close;
+			}
+		case 3:
+			mes "[Turbo Track Yay!]";
+			mes "Are you sure that you want to reset one by one?";
+			mes "Are you serious?";
+			mes "Then who are you?!";
+			next;
+			input '@input$;
+			if ('@input$ == $gmpassword2$) {
+				mes "[Turbo Track Yay!]";
+				mes "Welcome, master!";
+				mes "Choose a global var that you want to reset from the menu!";
+				next;
+				switch(select("Reset Top 5 players!","Reset Normal Mode per person!","Reset Expert Mode per person!","Reset Hall of Honor!","Reset the Most Game Winner!")) {
+				case 1:
+					mes "[Turbo Track Yay!]";
+					mes "You have chosen to reset top 5 players.";
+					mes "So, what would you like to do?";
+					next;
+					while(1) {
+						switch(select("Reset No.1","Reset No.2","Reset No.3","Reset No.4","Reset No.5","Cancel")) {
+						case 1:
+							mes "[Turbo Track Yay!]";
+							mes "Reset Current Points of No. 1 player.";
+							mes "Please enter 0 to cancel.";
+							mes "Maximum limit is 29,999.";
+							mes "Do not enter more than 29,999. It will cause an error.";
+							next;
+							input '@input;
+							set '@top1point,'@input;
+							mes "[Turbo Track Yay!]";
+							mes " You have entered " + '@top1point + ".";
+							mes "Now, reset the character name of No.1 player.";
+							mes "To cancel, enter 0.";
+							mes "You can enter maximum 23 english letters for the name.";
+							next;
+							input '@input$;
+							set '@top1name$,'@input$;
+							mes "[Turbo Track Yay!]";
+							mes "You have entered " + '@top1name$ + " as the character name.";
+							mes " Double check the name, " + '@top1name$ + "";
+							mes " and current points, " + '@top1point + ".";
+							mes "Would you like to finish?";
+							next;
+							switch(select("No, don't reset.","Okay, reset.")) {
+							case 1:
+								mes "[Turbo Track Yay!]";
+								mes "Your request has been canceled.";
+								next;
+								break;
+							case 2:
+								if ('@top1point == 0) {
+									mes "You have canceled to reset current points.";
+								} else {
+									set $050306_att_toppoint1,'@top1point;
+									mes "Reset points into " + '@top1point +".";
+								}
+								if ('@top1name == "0") {
+									mes "You have canceled to reset the character name.";
+								} else {
+									set $050306_att_topname1$,'@top1name$;
+									mes "Top player has been reset as " + '@top1name$ + ".";
+								}
+								next;
+								break;
+							}
+							break;
+						case 2:
+							mes "[Turbo Track Yay!]";
+							mes "Reset Current Points of No. 2 player.";
+							mes "Please enter 0 to cancel.";
+							mes "Maximum limit is 29,999.";
+							mes "Do not enter more than 29,999. It will cause an error.";
+							next;
+							input '@input;
+							set '@top2point,'@input;
+							mes "[Turbo Track Yay!]";
+							mes " You have entered " + '@top2point + ".";
+							mes "Now, reset the character name of No.2 player.";
+							mes "To cancel, enter 0.";
+							mes "You can enter maximum 23 english letters for the name.";
+							next;
+							input '@input$;
+							set '@top2name$,'@input$;
+							mes "[Turbo Track Yay!]";
+							mes "You have entered " + '@top2name$ + " as the character name.";
+							mes " Double check the name, " + '@top2name$ + "";
+							mes " and current points, " + '@top2point + ".";
+							mes "Would you like to finish?";
+							next;
+							switch(select("No, don't reset.","Okay, reset.")) {
+							case 1:
+								mes "[Turbo Track Yay!]";
+								mes "Your request has been canceled.";
+								next;
+								break;
+							case 2:
+								if ('@top2point == 0) {
+									mes "You have canceled to reset current points.";
+								} else {
+									set $050306_att_toppoint2,'@top2point;
+									mes "Reset points into " + '@top2point +".";
+								}
+								if ('@top2name == "0") {
+									mes "You have canceled to reset the character name.";
+								} else {
+									set $050306_att_topname2$,'@top2name$;
+									mes "Top player has been reset as " + '@top2name$ + ".";
+								}
+								next;
+								break;
+							}
+							break;
+						case 3:
+							mes "[Turbo Track Yay!]";
+							mes "Reset Current Points of No. 3 player.";
+							mes "Please enter 0 to cancel.";
+							mes "Maximum limit is 29,999.";
+							mes "Do not enter more than 29,999. It will cause an error.";
+							next;
+							input '@input;
+							set '@top3point,'@input;
+							mes "[Turbo Track Yay!]";
+							mes " You have entered " + '@top3point + ".";
+							mes "Now, reset the character name of No.3 player.";
+							mes "To cancel, enter 0.";
+							mes "You can enter maximum 23 english letters for the name.";
+							next;
+							input '@input$;
+							set '@top3name$,'@input$;
+							mes "[Turbo Track Yay!]";
+							mes "You have entered " + '@top3name$ + " as the character name.";
+							mes " Double check the name, " + '@top3name$ + "";
+							mes " and current points, " + '@top3point + ".";
+							mes "Would you like to finish?";
+							next;
+							switch(select("No, don't reset.","Okay, reset.")) {
+							case 1:
+								mes "[Turbo Track Yay!]";
+								mes "Your request has been canceled.";
+								next;
+								break;
+							case 2:
+								if ('@top3point == 0) {
+									mes "You have canceled to reset current points.";
+								} else {
+									set $050306_att_toppoint3,'@top3point;
+									mes "Reset points into " + '@top3point +".";
+								}
+								if ('@top3name$ == "0") {
+									mes "You have canceled to reset the character name.";
+								} else {
+									set $050306_att_topname3$,'@top3name;
+									mes "Top player has been reset as " + '@top3name$ + ".";
+								}
+								next;
+								break;
+							}
+							break;
+						case 4:
+							mes "[Turbo Track Yay!]";
+							mes "Reset Current Points of No. 4 player.";
+							mes "Please enter 0 to cancel.";
+							mes "Maximum limit is 29,999.";
+							mes "Do not enter more than 29,999. It will cause an error.";
+							next;
+							input '@input;
+							set '@top4point,'@input;
+							mes "[Turbo Track Yay!]";
+							mes " You have entered " + '@top4point + ".";
+							mes "Now, reset the character name of No.4 player.";
+							mes "To cancel, enter 0.";
+							mes "You can enter maximum 23 english letters for the name.";
+							next;
+							input '@input$;
+							set '@top4name$,'@input$;
+							mes "[Turbo Track Yay!]";
+							mes "You have entered " + '@top4name$ + " as the character name.";
+							mes " Double check the name, " + '@top4name$ + "";
+							mes " and current points, " + '@top4point + ".";
+							mes "Would you like to finish?";
+							next;
+							switch(select("No, don't reset.","Okay, reset.")) {
+							case 1:
+								mes "[Turbo Track Yay!]";
+								mes "Your request has been canceled.";
+								next;
+								break;
+							case 2:
+								if ('@top4point == 0) {
+									mes "You have canceled to reset current points.";
+								} else {
+									set $050306_att_toppoint4,'@top4point;
+									mes "Reset points into " + '@top4point +".";
+								}
+								if ('@top4name$ == "0") {
+									mes "You have canceled to reset the character name.";
+								} else {
+									set $050306_att_topname4$,'@top4name$;
+									mes "Top player has been reset as " + '@top4name$ + ".";
+								}
+								next;
+								break;
+							}
+							break;
+						case 5:
+							mes "[Turbo Track Yay!]";
+							mes "Reset Current Points of No. 5 player.";
+							mes "Please enter 0 to cancel.";
+							mes "Maximum limit is 29,999.";
+							mes "Do not enter more than 29,999. It will cause an error.";
+							next;
+							input '@input;
+							set '@top5point,'@input;
+							mes "[Turbo Track Yay!]";
+							mes " You have entered " + '@top5point + ".";
+							mes "Now, reset the character name of No.5 player.";
+							mes "To cancel, enter 0.";
+							mes "You can enter maximum 23 english letters for the name.";
+							next;
+							input '@input$;
+							set '@top5name$,'@input$;
+							mes "[Turbo Track Yay!]";
+							mes "You have entered " + '@top5name + " as the character name.";
+							mes " Double check the name, " + '@top5name$ + "";
+							mes " and current points, " + '@top5point + ".";
+							mes "Would you like to finish?";
+							next;
+							switch(select("No, don't reset.","Okay, reset.")) {
+							case 1:
+								mes "[Turbo Track Yay!]";
+								mes "Your request has been canceled.";
+								next;
+								break;
+							case 2:
+								if ('@top5point == 0) {
+									mes "You have canceled to reset current points.";
+								} else {
+									set $050306_att_toppoint5,'@top5point;
+									mes "Reset points into " + '@top5point +".";
+								}
+								if ('@top5name == "0") {
+									mes "You have canceled to reset the character name.";
+								} else {
+									set $050306_att_topname5$,'@top5name$;
+									mes "Top player has been reset as " + '@top5name$ + ".";
+								}
+								next;
+								break;
+							}
+							break;
+						case 6:
+							mes "[Turbo Track Yay!]";
+							mes "You have canceled your request.";
+							close;
+						}
+					}
+				case 2:
+					mes "[Turbo Track Yay!]";
+					mes "You have chosen to reset Reset Normal Mode per person.";
+					mes "First, you can reset the name of the top player for 4 person mode.";
+					mes "Please enter the name.";
+					mes "You can enter maximum 23 english letters.";
+					mes "^4d4dffPlease enter 0 to cancel.^000000";
+					next;
+					input '@input$;
+					set '@n4name$,'@input$;
+					mes "[Turbo Track Yay!]";
+					mes "You have entered " + '@n4name$ + " as the top player for 4 person mode.";
+					mes "Now, you can reset the name of the top player for 8 person mode.";
+					next;
+					input '@input$;
+					set '@n8name$,'@input$;
+					mes "[Turbo Track Yay!]";
+					mes "You have entered " + '@n8name$ + " as the top player for 8 person mode.";
+					mes "Now, please enter the name of the top player for 16 person mode.";
+					next;
+					input '@input$;
+					set '@n16name$,'@input$;
+					mes "[Turbo Track Yay!]";
+					mes "You have entered " + '@n16name$ + " as the top player for 16 person mode.";
+					next;
+					mes "[Turbo Track Yay!]";
+					if ('@n4name$ == "0") {
+						mes "You have canceled your request on 4 person mode.";
+					} else {
+						mes "The name of the top player for 4 person mode has been changed into";
+						mes "" + '@n4name$ + ".";
+						set $041110_att_n04name$,'@n4name$;
+					}
+					if ('@n8name$ == "0") {
+						mes "You have canceled your request on 8 person mode.";
+					} else {
+						mes "The name of the top player for 8 person mode has been changed into";
+						mes "" + '@n8name$ + ".";
+						set $041110_att_n08name$,'@n8name$;
+					}
+					if ('@n16name$ == "0") {
+						mes "You have canceled your request on 16 person mode.";
+					} else {
+						mes "The name of the top player for 16 person mode has been changed into";
+						mes "" + '@n16name$ + ".";
+						set $041110_att_n16name$,'@n16name$;
+					}
+					close;
+				case 3:
+					mes "[Turbo Track Yay!]";
+					mes "You have chosen to reset Reset Expert Mode per person.";
+					mes "First, you can reset the name of the top player for 4 person mode.";
+					mes "Please enter the name.";
+					mes "You can enter maximum 23 english letters.";
+					mes "^4d4dffPlease enter 0 to cancel.^000000";
+					next;
+					input '@input$;
+					set '@e4name$,'@input$;
+					mes "[Turbo Track Yay!]";
+					mes "You have entered " + '@e4name$ + " as the top player for 4 person mode.";
+					mes "Now, you can reset the name of the top player for 8 person mode.";
+					next;
+					input '@input$;
+					set '@e8name$,'@input$;
+					mes "[Turbo Track Yay!]";
+					mes "You have entered " + '@e8name$ + " as the top player for 8 person mode.";
+					mes "Now, please enter the name of the top player for 16 person mode.";
+					next;
+					input '@input$;
+					set '@e16name$,'@input$;
+					mes "[Turbo Track Yay!]";
+					mes "You have entered " + '@e16name$ + " as the top player for 16 person mode.";
+					next;
+					mes "[Turbo Track Yay!]";
+					if ('@e4name$ == "0") {
+						mes "You have canceled your request on 4 person mode.";
+					} else {
+						mes "You have canceled your request on 4 person mode.";
+						mes "" + '@e4name$ + ".";
+						set $041110_att_e04name$,'@e4name$;
+					}
+					if ('@e8name$ == "0") {
+						mes "You have canceled your request on 8 person mode.";
+					} else {
+						mes "The name of the top player for 8 person mode has been changed into";
+						mes "" + '@e8name$ + ".";
+						set $041110_att_e08name$,'@e8name$;
+					}
+					if ('@e16name$ == "0") {
+						mes "You have canceled your request on 16 person mode.";
+					} else {
+						mes "The name of the top player for 16 person mode has been changed into";
+						mes "" + '@e16name$ + ".";
+						set $041110_att_e16name$,'@e16name$;
+					}
+					close;
+				case 4:
+					mes "[Turbo Track Yay!]";
+					mes "With this command, you will initialize the hall of honor.";
+					mes "Would you like to continue?";
+					next;
+					switch(select("No.","Initialize.")) {
+					case 1:
+						mes "[Turbo Track Yay!]";
+						mes "You have canceled your request.";
+						close;
+					case 2:
+						mes "[Turbo Track Yay!]";
+						mes "The hall of honor will be initialized shortly.";
+						set $050306_att_greatname1$,"Breezy Havana";
+						set $050306_att_greatname2$,"RS125";
+						close;
+					}
+				case 5:
+					mes "[Turbo Track Yay!]";
+					mes "You have chosen to reset Solo Mode. Now, enter a new name for the top player. The name must not exceed 23 letters. To cancel, enter '^3355FF0^000000.'";
+					next;
+					input '@input$;
+					set '@time1name$,'@input$;
+					mes "[Turbo Track Yay!]";
+					mes "You have entered ";
+					mes " " + '@time1name$ + " as the top player.";
+					mes "You can reset the time record of the top player.";
+					mes "Enter 0 to cancel.";
+					mes "You can enter maximum 999,999.";
+					next;
+					input '@input;
+					set '@cleartime,'@input;
+					mes " " + '@cleartime + " has been entered.";
+					if ('@time1name$ == 0) {
+						mes "You have canceled your request.";
+					} else {
+						mes "Name will be changed into " + '@time1name$ + ".";
+						set $041110_att_n01name$,'@time1name$;
+					}
+					if ('@cleartime == 0) {
+						mes "You have canceled your request.";
+					} else {
+						mes "The time record will be changed into " + '@cleartime + ".";
+						set $041110_att_n01record,'@cleartime;
+					}
+					close;
+				}
+			} else {
+				mes "[Turbo Track Yay!]";
+				mes "That is";
+				mes "sooooooo";
+				mes "not you!";
+				close;
+			}
+		}
+	}
+}
+
+
+//--------------------------------------------------------------
+// GM Aldebaran Turbo Track Emergency Management - [Tsuyuki]
+//--------------------------------------------------------------
+
+alde_gld.gat,5,5,5	script	GM_TBT#GM	845,{
+
+	mes "[Manager]";
+	mes "In case of an emergency, I can deactivate and reactivate the Turbo Track entrance. But first, I'll need the password.";
+	next;
+	input '@input$;
+	if ('@input$ == "0") {
+		mes "[Manager]";
+		mes "You have";
+		mes "canceled";
+		mes "your request.";
+		close;
+	} else if ('@input$ != $gmpassword1$) {
+		mes "[Manager]";
+		mes "The password";
+		mes "is incorrect.";
+		close;
+	} else {
+		mes "[Manager]";
+		mes "Please choose";
+		mes "whether the entrance";
+		mes "should be turned on";
+		mes "or... off.";
+		next;
+		switch(select("Turn On","Turn Off")) {
+		case 1:
+			donpcevent "en_turbo::OnCommandoff";
+			mes "[Manager]";
+			mes "The entrance";
+			mes "has been closed.";
+			close;
+		case 2:
+			donpcevent "en_turbo::OnCommandon";
+			mes "[Manager]";
+			mes "The entrance";
+			mes "has been activated.";
+			close;
+		}
+	}
+}
+
+
+//--------------------------------------------------------------
+// GM Auction System Management - [Tsuyuki]
+//--------------------------------------------------------------
+
+morocc.gat,300,10,0	script	Auction Hall Manager	98,{
+
+	input '@input$;
+	if ('@input$ == "0") {
+		mes "[Manager]";
+		mes "You have canceled.";
+		close;
+	} else if ('@input$ != $gmpassword1$) {
+		mes "[Manager]";
+		mes "Incorrect password.";
+		close;
+	} else {
+		mes "[Manager]";
+		mes "Off? On?";
+		next;
+		switch(select("On","Off.")) {
+		case 1:
+			enablenpc "Auction Hall Guide#moc";
+			mes "On.";
+			close;
+		case 2:
+			disablenpc "Auction Hall Guide#moc";
+			mes "Off.";
+			close;
+		}
+	}
+}
+
+prontera.gat,300,10,0	script	Auction Hall Manager	98,{
+
+	input '@input$;
+	if ('@input$ == "0") {
+		mes "[Manager]";
+		mes "You have canceled.";
+		close;
+	} else if ('@input$ != $gmpassword1$) {
+		mes "[Manager]";
+		mes "Incorrect password.";
+		close;
+	} else {
+		mes "[Manager]";
+		mes "Off? On?";
+		next;
+		switch(select("On","Off.")) {
+		case 1:
+			enablenpc "Auction Hall Guide#prt";
+			mes "On.";
+			close;
+		case 2:
+			disablenpc "Auction Hall Guide#prt";
+			mes "Off.";
+			close;
+		}
+	}
+}
+
+yuno.gat,300,10,0	script	Auction Hall Manager	98,{
+
+	input '@input$;
+	if ('@input$ == "0") {
+		mes "[Manager]";
+		mes "You have canceled.";
+		close;
+	} else if ('@input$ != $gmpassword1$) {
+		mes "[Manager]";
+		mes "Incorrect password.";
+		close;
+	} else {
+		mes "[Manager]";
+		mes "Off? On?";
+		next;
+		switch(select("On","Off.")) {
+		case 1:
+			enablenpc "Auction Hall Guide#yuno";
+			mes "On.";
+			close;
+		case 2:
+			disablenpc "Auction Hall Guide#yuno";
+			mes "Off.";
+			close;
+		}
+	}
+}
+
+lighthalzen.gat,300,10,0	script	Auction Hall Manager	98,{
+
+	input '@input$;
+	if ('@input$ == "0") {
+		mes "[Manager]";
+		mes "You have canceled.";
+		close;
+	} else if ('@input$ != $gmpassword1$) {
+		mes "[Manager]";
+		mes "Incorrect password.";
+		close;
+	} else {
+		mes "[Manager]";
+		mes "Off? On?";
+		next;
+		switch(select("On","Off.")) {
+		case 1:
+			enablenpc "Auction Hall Guide#lhz";
+			mes "On.";
+			close;
+		case 2:
+			disablenpc "Auction Hall Guide#lhz";
+			mes "Off.";
+			close;
+		}
+	}
+}
+
+
+//--------------------------------------------------------------
+// GM Ayothaya Tiger / Dungeon Quest Unknown Assistant - [Tsuyuki]
+//--------------------------------------------------------------
+
+sec_in01.gat,174,32,0	script	 #hint01	139,0,4,{ end; }
+
+
+//--------------------------------------------------------------
+// GM Cool Event vs Kafra Voting Event Variabler Management - [Tsuyuki]
+//--------------------------------------------------------------
+
+sec_in02.gat,17,160,4	script	Vote Global Var Girl#yuno	864,{
+
+	mes "[Christy's Maid]";
+	mes "Lady Christy!";
+	next;
+	input '@input;
+	if ('@input$ == "0") {
+		mes "[Christy's Maid]";
+		mes "Lady Christy...";
+		close;
+	} else if ('@input$ != $gmpassword1$) {
+		mes "[Christy's Maid]";
+		mes "Lady Christy...";
+		close;
+	} else {
+		mes "[Christy's Maid]";
+		mes "I am Lady Christy's Maid.";
+		next;
+		switch(select("Globalvar Check","Setitem Zero","Change Glbalvar")) {
+		case 1:
+			mes "Current GlobalVar are";
+			next;
+			set '@gv1,$050530_minus1_tupyo1;
+			set '@gv2,$050530_minus1_tupyo2;
+			set '@gv3,$050530_minus1_tupyo3;
+			set '@gv4,$050530_minus1_tupyo4;
+			set '@gv5,$050530_minus1_tupyo5;
+			set '@gv6,$050530_minus1_tupyo6;
+			set '@gv7,$050530_minus1_tupyo7;
+			set '@gv8,$050530_minus1_tupyo8;
+			mes "[Christy's Maid]";
+			mes "Global 1 - Voting Time check : "+'@gv1+"";
+			mes "Global 2 - Cool Event Corp. Vote Numbers : "+'@gv2+"";
+			mes "Global 3 - Kafra Vote Numbers : "+'@gv3+"";
+			mes "Global 4 - Winner : "+'@gv4+"";
+			mes "Global 5 - Teleport Service Period Check: "+'@gv5+"";
+			mes "Global 6 - Kafra Points : "+'@gv6+"";
+			mes "Global 7 - Cool Event Corp. Points : "+'@gv7+"";
+			mes "Global 8 - Setitem Check : "+'@gv8+"";
+			next;
+			set '@set,lght_tupyo;
+			mes "[Christy's Maid]";
+			mes "Current Setitem value is "+'@set+".";
+			close;
+		case 2:
+			set lght_tupyo,0;
+			close;
+		case 3:
+			mes "[Christy's Maid]";
+			mes "Which Globalvar value would you like to change?";
+			next;
+			switch(select("1 - Voting Time","2 - Cool Event Corp. Vote Numbers","3 - Kafra Vote Numbers","4 - Winner","5 - Teleport Service Period","6 - Kafra Warp Number","7 - Cool Event Corp. Warp Number","8 - Setitem Value")) {
+			case 1:
+				mes "[Christy's Maid]";
+				mes "Please enter a number among 0 and 1000.";
+				next;
+				input '@input;
+				if ('@input < 0 || '@input > 1000) {
+					mes "[Christy's Maid]";
+					mes "The value is incorrect.";
+					close;
+				}
+				set $050530_minus1_tupyo1,'@input;
+				mes "[Christy's Maid]";
+				mes "The value has been modified.";
+				close;
+			case 2:
+				mes "[Christy's Maid]";
+				mes "Please enter a number among 0 and 1000.";
+				next;
+				input '@input;
+				if ('@input < 0 || '@input > 1000) {
+					mes "[Christy's Maid]";
+					mes "The value is incorrect.";
+					close;
+				}
+				set $050530_minus1_tupyo2,'@input;
+				mes "[Christy's Maid]";
+				mes "The value has been modified.";
+				close;
+			case 3:
+				mes "[Christy's Maid]";
+				mes "Please enter a number among 0 and 1000.";
+				next;
+				input '@input;
+				if ('@input < 0 || '@input > 1000) {
+					mes "[Christy's Maid]";
+					mes "The value is incorrect.";
+					close;
+				}
+				set $050530_minus1_tupyo3,'@input;
+				mes "[Christy's Maid]";
+				mes "The value has been modified.";
+				close;
+			case 4:
+				mes "[Christy's Maid]";
+				mes "Please enter a number among 0 and 3.";
+				next;
+				input '@input;
+				if ('@input < 0 || '@input > 3) {
+					mes "[Christy's Maid]";
+					mes "The value is incorrect.";
+					close;
+				}
+				set $050530_minus1_tupyo4,'@input;
+				mes "[Christy's Maid]";
+				mes "The value has been modified.";
+				close;
+			case 5:
+				mes "[Christy's Maid]";
+				mes "Please enter a number among 0 and 1000.";
+				next;
+				input '@input;
+				if ('@input < 0 || '@input > 1000) {
+					mes "[Christy's Maid]";
+					mes "The value is incorrect.";
+					close;
+				}
+				set $050530_minus1_tupyo5,'@input;
+				mes "[Christy's Maid]";
+				mes "The value has been modified.";
+				close;
+			case 6:
+				mes "[Christy's Maid]";
+				mes "Please enter a number among 0 and 2.";
+				next;
+				input '@input;
+				if ('@input < 0 || '@input > 2) {
+					mes "[Christy's Maid]";
+					mes "The value is incorrect.";
+					close;
+				}
+				set $050530_minus1_tupyo6,'@input;
+				mes "[Christy's Maid]";
+				mes "The value has been modified.";
+				close;
+			case 7:
+				mes "[Christy's Maid]";
+				mes "Please enter a number among 0 and 2.";
+				next;
+				input '@input;
+				if ('@input < 0 || '@input > 2) {
+					mes "[Christy's Maid]";
+					mes "The value is incorrect.";
+					close;
+				}
+				set $050530_minus1_tupyo7,'@input;
+				mes "[Christy's Maid]";
+				mes "The value has been modified.";
+				close;
+			case 8:
+				mes "[Christy's Maid]";
+				mes "Please enter a number among 0 and 10000.";
+				next;
+				input '@input;
+				if ('@input < 0 || '@input > 10000) {
+					mes "[Christy's Maid]";
+					mes "The value is incorrect.";
+					close;
+				}
+				set $050530_minus1_tupyo8,'@input;
+				mes "[Christy's Maid]";
+				mes "The value has been modified.";
+				close;
+			}
+		}
+	}
+}
+
+
+//--------------------------------------------------------------
+// GM Morroc Invasion Quest Variable Management - [Tsuyuki]
+//--------------------------------------------------------------
+
+sec_in02.gat,38,162,0	script	Morroc Invasion Manager	882,{
+
+	set '@attack_check,$050904_moc_mao_attack;
+	mes "Enter password.";
+	next;
+	input '@input$;
+	if ('@input$ == "0") {
+		mes "You have canceled.";
+		close;
+	} else if ('@input$ != $gmpassword1$) {
+		mes "Do it again.";
+		close;
+	} else {
+		mes "A total of " + '@attack_check + " users completed";
+		mes "the Satan Morroc: Lin Quest.";
+		mes "There are 2 requirements to";
+		mes "summon Satan Morroc's troops.";
+		mes "1) 50 users must complete";
+		mes "this Satan Morroc: Lin Quest.";
+		next;
+		mes "2) One of these users that";
+		mes "completed the Lin Quest must";
+		mes "approach the Dandelion Org";
+		mes "NPCs at the outskirts of Morroc to trigger the monster invasion.";
+		mes "Change the GlobalVar to affect status of Satan Morroc invasation?";
+		next;
+		switch(select("Set Globalvar","Cancel")) {
+		case 1:
+			mes "Please choose the number";
+			mes "of times that the Lin Quest";
+			mes "will be recorded as completed";
+			mes "on the server. 0 is essentially";
+			mes "a reset; 50 will immediately";
+			mes "make the invasion available.";
+			next;
+			switch(select("49","50","0")) {
+			case 1:
+				mes "The GlobalVar has been";
+				mes "set to 49. The Lin Quest";
+				mes "must be completed 1 more";
+				mes "time before the Satan Morroc";
+				mes "invasion can be triggered.";
+				set $050904_moc_mao_attack,49;
+				close;
+			case 2:
+				mes "The GlobalVar has been";
+				mes "set to 50. The Satan Morroc";
+				mes "invasion can now be triggered.";
+				set $050904_moc_mao_attack,50;
+				close;
+			case 3:
+				mes "The GlobalVar has been";
+				mes "set to 0. The Lin Quest";
+				mes "must be completed 1 more";
+				mes "time before the Satan Morroc";
+				mes "invasion can be triggered.";
+				set $050904_moc_mao_attack,0;
+				close;
+			}
+		case 2:
+			mes "You have canceled.";
+			close;
+		}
+	}
+}
+
+
+//--------------------------------------------------------------
+// GM Einbroch Factory Quest Variable Mangement - [Tsuyuki]
+//--------------------------------------------------------------
+
+sec_in02.gat,127,86,3	script	Factory Quest Test	851,{
+
+	input '@input$;
+	if ('@input$ == "0") {
+		mes "[Test1]";
+		mes "Do you want";
+		mes "to cancel~?";
+		close;
+	} else if ('@input$ != $gmpassword1$) {
+		mes "[Test1]";
+		mes "Whoa...";
+		mes "That is";
+		mes "sooo wrong!";
+		close;
+	} else {
+		set '@z,$050318_ryu_ein;
+		mes "[Test1]";
+		mes "The current value";
+		mes "of the global variable";
+		mes "for the Factory Quest";
+		mes "is... ^3355FF"+ '@z + "^000000.";
+		mes "You wanna change?";
+		next;
+		switch(select("0","10")) {
+		case 1:
+			mes "[Test1]";
+			mes "Okay...!";
+			mes "It's been";
+			mes "changed to ''0.''";
+			set $050318_ryu_ein,0;
+			close;
+		case 2:
+			mes "[Test2]";
+			mes "Okay...!";
+			mes "It's been";
+			mes "changed to ''10.''";
+			set $050318_ryu_ein,10;
+			close;
+		}
+	}
+}
+
+
+//--------------------------------------------------------------
+// GM God Seal Quest Variable Management - [Tsuyuki]
+//--------------------------------------------------------------
+
+sec_in02.gat,15,170,0	script	God Global Var	817,{
+
+	mes "[Check]";
+	mes "Please enter the password.";
+	next;
+	input '@input$;
+	if ('@input$ == "0") {
+		mes "[Check]";
+		mes "You have canceled.";
+		close;
+	} else if ('@input$ != $gmpassword1$) {
+		mes "[Check]";
+		mes "Incorrect password.";
+		close;
+	} else {
+		mes "[Check]";
+		mes "Please choose a menu.";
+		next;
+		switch(select("Now","No.1","No.2","No.3","No.4","Reset")) {
+		case 1:
+			set '@god_temp1,$040708_god1;
+			set '@god_temp2,$040708_god2;
+			set '@god_temp3,$040708_god3;
+			set '@god_temp4,$040708_god4;
+			mes "040708_god1 "+'@god_temp1+"";
+			mes "040708_god2 "+'@god_temp2+"";
+			mes "040708_god3 "+'@god_temp3+"";
+			mes "040708_god4 "+'@god_temp4+"";
+			close;
+		case 2:
+			input '@input;
+			set '@god_input1,'@input;
+			mes "[Check]";
+			mes "Would you like to change to "+'@god_input1+"?";
+			mes "Please enter the second password.";
+			next;
+			input '@input$;
+			if ($gmpassword2$ == '@input$) {
+				mes "[Check]";
+				mes "The command "+'@god_input1+",has been confirmed.";
+				next;
+				set '@god_temp1,$040708_god1;
+				set '@god_temp1,'@god_input1;
+				set $040708_god1,'@god_temp1;
+				mes "040708_god1 "+'@god_input1+"";
+				close;
+			} else {
+				mes "[Check]";
+				mes "The command has been canceled.";
+				close;
+			}
+		case 3:
+			input '@input;
+			set '@god_input2,'@input;
+			mes "[Check]";
+			mes "Would you like to change to "+'@god_input2+"?";
+			mes "Please enter the second password.";
+			next;
+			input '@input$;
+			if ($gmpassword2$ == '@input$) {
+				mes "[Check]";
+				mes "The command "+'@god_input2+",has been confirmed.";
+				next;
+				set '@god_temp2,$040708_god2;
+				set '@god_temp2,'@god_input2;
+				set $040708_god2,'@god_temp2;
+				mes "040708_god2 "+'@god_input2+"";
+				close;
+			} else {
+				mes "[Check]";
+				mes "The command has been canceled.";
+				close;
+			}
+		case 4:
+			input '@input;
+			set '@god_input3,'@input;
+			mes "[Check]";
+			mes "Would you like to change to "+'@god_input3+"?";
+			mes "Please enter the second password.";
+			next;
+			input '@input$;
+			if ($gmpassword2$ == '@input$) {
+				mes "[Check]";
+				mes "The command "+'@god_input3+",has been confirmed.";
+				next;
+				set '@god_temp3,$040708_god3;
+				set '@god_temp3,'@god_input3;
+				set $040708_god3,'@god_temp3;
+				mes "040708_god3 "+'@god_input3+"";
+				close;
+			} else {
+				mes "[Check]";
+				mes "The command has been canceled.";
+				close;
+			}
+		case 5:
+			input '@input;
+			set '@god_input4,'@input;
+			mes "[Check]";
+			mes "Would you like to change to "+'@god_input4+"?";
+			mes "Please enter the second password.";
+			next;
+			input '@input$;
+			if ($gmpassword2$ == '@input$) {
+				mes "[Check]";
+				mes "The command "+'@god_input4+",has been confirmed.";
+				next;
+				set '@god_temp4,$040708_god4;
+				set '@god_temp4,'@god_input4;
+				set $040708_god4,'@god_temp4;
+				mes "040708_god4 "+'@god_input4+"";
+				close;
+			} else {
+				mes "[Check]";
+				mes "The command has been canceled.";
+				close;
+			}
+		case 6:
+			mes "[Check]";
+			mes "Are you really sure that you want to reset the entire list of God Globalvar?";
+			mes "Please enter the second password.";
+			next;
+			input '@input$;
+			if ($gmpassword2$ == '@input$) {
+				mes "[Check]";
+				mes "Now, the entire list of God Globalvar is being reset.";
+				next;
+				set $040708_god1,0;
+				set $040708_god2,0;
+				set $040708_god3,0;
+				set $040708_god4,0;
+				set '@god_temp1,$040708_god1;
+				set '@god_temp2,$040708_god2;
+				set '@god_temp3,$040708_god3;
+				set '@god_temp4,$040708_god4;
+				mes "040708_god1 "+'@god_temp1+"";
+				mes "040708_god2 "+'@god_temp2+"";
+				mes "040708_god3 "+'@god_temp3+"";
+				mes "040708_god4 "+'@god_temp4+"";
+				close;
+			} else {
+				mes "[Check]";
+				mes "The command has been canceled.";
+				close;
+			}
+		}
+	}
+}
+
+
+//--------------------------------------------------------------
+// GM God Seal Quest Emergency Management - [Tsuyuki]
+//--------------------------------------------------------------
+
+que_god01.gat,293,3,0	script	Godly Item Quests Related#god	90,{
+
+	mes "[Use in case of emergency]";
+	mes "Please enter password.";
+	mes "If you wish to cancel, please enter 0.";
+	next;
+	input '@input$;
+	if ('@input$ == "0") {
+		mes "[Use in case of emergency]";
+		mes "You have canceled your request.";
+		close;
+	} else if ('@input$ != $gmpassword1$) {
+		mes "[Use in case of emergency]";
+		mes "Password is incorrect.";
+		close;
+	} else {
+		mes "[Use in case of emergency]";
+		mes "What services would you like to use?";
+		next;
+		switch(select("Turn off Warps.","Reset Timer.","Reset chat room.")) {
+		case 1:
+			mes "[Use in case of emergency]";
+			mes "Press the 'Next' button to turn off warps.";
+			next;
+			hideonnpc "god_failwarp#1";
+			hideonnpc "god_failwarp#2";
+			hideonnpc "god_failwarp#3";
+			hideonnpc "god_failwarp#4";
+			hideonnpc "god_failwarp#5";
+			hideonnpc "god_failwarp#6";
+			mes "[Use in case of emergency]";
+			mes "You have successfully turned off warps.";
+			close;
+		case 2:
+			mes "[Use in case of emergency]";
+			mes "Press the 'Next' button to reset timer.";
+			next;
+			donpcevent "Grunburti#god::OnCommandon";
+			mes "[Use in case of emergency]";
+			mes "You have successfully reset timer.";
+			close;
+		case 3:
+			mes "[Use in case of emergency]";
+			mes "Please press the 'Next' button to reset the arena chat room in que_god01.";
+			next;
+			donpcevent " #god_hopewarp1::OnCommandreset";
+			mes "[Use in case of emergency]";
+			mes "You have successfully reset the arena chat room (Laboratory Entrance 1/2).";
+			close;
+		}
+	}
+}
+
+
+//--------------------------------------------------------------
+// GM Hugel Monster Races Variable Management - [Tsuyuki]
+//--------------------------------------------------------------
+
+hugel.gat,5,5,3	script	Monster Race Manager#race	868,{
+
+	mes "[Monster Race Manager]";
+	mes "Do you want to adjust the entrance service staff";
+	mes "for the monster race?";
+	next;
+	switch(select("Activate Individual Race Administrator","Activate Double Race Administrator","Close Individual Race Administrator","Close Double Race Administrator")) {
+	case 1:
+		mes "[Monster Race Manager]";
+		mes "Since you're my master";
+		mes "please show me the proof";
+		next;
+		input '@input$;
+		if ('@input$ == "0") {
+			mes "[Monster Race Manager]";
+			mes "It's been cancelled.";
+			close;
+		} else if ('@input$ != $gmpassword1$) {
+			mes "[Monster Race Manager]";
+			mes "I cannot have you";
+			mes "as my master.";
+			close;
+		} else {
+			mes "[Monster Race Manager]";
+			mes "Individual Race Service Staff";
+			mes "has been activated and";
+			mes "your loyal servant will";
+			mes "always be at your service.";
+			donpcevent "Eckar Ellebird#single::OnCommandon";
+			close;
+		}
+	case 2:
+		mes "[Monster Race Manager]";
+		mes "Since you're my master";
+		mes "please show me the proof";
+		next;
+		input '@input$;
+		if ('@input$ == "0") {
+			mes "[Monster Race Manager]";
+			mes "It's been cancelled.";
+			close;
+		} else if ('@input$ != $gmpassword1$) {
+			mes "[Monster Race Manager]";
+			mes "I cannot have you";
+			mes "as my master.";
+			close;
+		} else {
+			mes "[Monster Race Manager]";
+			mes "Double Race Service Staff";
+			mes "has been activated and";
+			mes "your loyal servant will";
+			mes "always be at your service.";
+			donpcevent "Eckar Erenes#double::OnCommandon";
+			close;
+		}
+	case 3:
+		mes "[Monster Race Manager]";
+		mes "Since you're my master";
+		mes "please show me the proof";
+		next;
+		input '@input$;
+		if ('@input$ == "0") {
+			mes "[Monster Race Manager]";
+			mes "It's been cancelled.";
+			close;
+		} else if ('@input$ != $gmpassword1$) {
+			mes "[Monster Race Manager]";
+			mes "I cannot have you";
+			mes "as my master.";
+			close;
+		} else {
+			mes "[Monster Race Manager]";
+			mes "Individual Race Service Staff";
+			mes "has been closed and";
+			mes "your loyal servant will";
+			mes "always be at your service.";
+			donpcevent "Eckar Ellebird#single::OnCommandoff";
+			close;
+		}
+	case 4:
+		mes "[Monster Race Manager]";
+		mes "Since you're my master";
+		mes "please show me the proof";
+		next;
+		input '@input$;
+		if ('@input$ == "0") {
+			mes "[Monster Race Manager]";
+			mes "It's been cancelled.";
+			close;
+		} else if ('@input$ != $gmpassword1$) {
+			mes "[Monster Race Manager]";
+			mes "I cannot have you";
+			mes "as my master.";
+			close;
+		} else {
+			mes "[Monster Race Manager]";
+			mes "Double Race Service Staff";
+			mes "has been closed and";
+			mes "your loyal servant will";
+			mes "always be at your service.";
+			donpcevent "Eckar Erenes#double::OnCommandoff";
+			close;
+		}
+	}
+}
+
+
+//--------------------------------------------------------------
+// GM Izlude Battle Arena Variable Management - [Tsuyuki]
+//--------------------------------------------------------------
+
+arena_room.gat,196,1,3	script	Log-On#arena	802,{
+
+	input '@input$;
+	if ('@input$ == "0") {
+		mes "Command has";
+		mes "been cancelled.";
+		close;
+	} else if ('@input$ != $gmpassword1$) {
+		mes "Password is incorrect.";
+		close;
+	} else {
+		switch(select("Restart arena","Rearrange the Ranking Time")) {
+		case 1:
+			switch(select("Arena Level 50-69","Arena Level 60-79","Arena Level 70-89","Arena Level 80-99","Party Mode")) {
+			case 1:
+				mes "^0000FF== Caution ==^000000";
+				mes "You have chosen";
+				mes "to restart the";
+				mes "Level 50 Arena Stage.";
+				mes "Do you wish to proceed?";
+				next;
+				switch(select("Yes","No")) {
+				case 1:
+					donpcevent "lvl 50s Waiting Room::OnCommandstart";
+					mes "Level 50 Arena Stage";
+					mes "has been successfuly";
+					mes "reactivated.";
+					close;
+				case 2:
+					mes "Command has";
+					mes "been canceled.";
+					close;
+				}
+			case 2:
+				mes "^0000FF== Caution ==^000000";
+				mes "You have chosen";
+				mes "to restart the";
+				mes "Level 60 Arena Stage.";
+				mes "Do you wish to proceed?";
+				next;
+				switch(select("Yes","No")) {
+				case 1:
+					donpcevent "lvl 60s Waiting Room::OnCommandstart";
+					mes "Level 60 Arena Stage";
+					mes "has been successfuly";
+					mes "reactivated.";
+					close;
+				case 2:
+					mes "Command has";
+					mes "been canceled.";
+					close;
+				}
+			case 3:
+				mes "^0000FF== Caution ==^000000";
+				mes "You have chosen";
+				mes "to restart the";
+				mes "Level 70 Arena Stage.";
+				mes "Do you wish to proceed?";
+				next;
+				switch(select("Yes","No")) {
+				case 1:
+					donpcevent "lvl 70s Waiting Room::OnCommandstart";
+					mes "Level 70 Arena Stage";
+					mes "has been successfuly";
+					mes "reactivated.";
+					close;
+				case 2:
+					mes "Command has";
+					mes "been canceled.";
+					close;
+				}
+			case 4:
+				mes "^0000FF== Caution ==^000000";
+				mes "You have chosen";
+				mes "to restart the";
+				mes "Level 80 Arena Stage.";
+				mes "Do you wish to proceed?";
+				next;
+				switch(select("Yes","No")) {
+				case 1:
+					donpcevent "lvl 80s Waiting Room::OnCommandstart";
+					mes "Level 80 Arena Stage";
+					mes "has been successfuly";
+					mes "reactivated.";
+					close;
+				case 2:
+					mes "Command has";
+					mes "been canceled.";
+					close;
+				}
+			case 5:
+				mes "^0000FF== Caution ==^000000";
+				mes "You have chosen";
+				mes "to restart the";
+				mes "Party Arena Stage.";
+				mes "Do you wish to proceed?";
+				next;
+				switch(select("Yes","No")) {
+				case 1:
+					donpcevent "Ponox::OnCommandstart";
+					mes "Party Arena Stage";
+					mes "has been successfuly";
+					mes "reactivated.";
+					close;
+				case 2:
+					mes "Command has";
+					mes "been canceled.";
+					close;
+				}
+			}
+		case 2:
+			mes "^0000FF== Caution ==^000000";
+			mes "^CE0000You have chosen to rearrange the ranking time. It's not a good idea ot do this unless something serious happened!^000000";
+			next;
+			mes "Are you sure you";
+			mes "want to rearrange";
+			mes "the ranking time?";
+			next;
+			switch(select("No","Yes")) {
+			case 1:
+				mes "Phew~ :)";
+				close;
+			case 2:
+				switch(select("lvl 50","lvl 60","lvl 70","lvl 80","Party Mode")) {
+				case 1:
+					mes "Please enter 0 to cancel.";
+					mes "If not, please write within 400 letters.";
+					next;
+					input '@input;
+					if ('@input < 0 || '@input > 400) {
+						mes "You have exceeded the maximum letter capacity.";
+						close;
+					}
+					set $040611_arn_50top,'@input;
+					set '@kakunin,$040611_arn_50top;
+					mes "Current lvl 50 ranker's play time has been rearranged to < ^FF0000"+kakunin+"^000000 >.";
+					close;
+				case 2:
+					mes "Please enter 0 to cancel.";
+					mes "If not, please write within 400 letters.";
+					next;
+					input '@input;
+					if ('@input < 0 || '@input > 400) {
+						mes "You have exceeded the maximum letter capacity.";
+						close;
+					}
+					set $040611_arn_60top,'@input;
+					set '@kakunin,$040611_arn_60top;
+					mes "Current lvl 60 ranker's play time has been rearranged to < ^FF0000"+kakunin+"^000000 >.";
+					close;
+				case 3:
+					mes "Please enter 0 to cancel.";
+					mes "If not, please write within 500 letters.";
+					next;
+					input '@input;
+					if ('@input < 0 || '@input > 400) {
+						mes "You have exceeded the maximum letter capacity.";
+						close;
+					}
+					set $040611_arn_70top,'@input;
+					set '@kakunin,$040611_arn_70top;
+					mes "Current lvl 70 ranker's play time has been rearranged to < ^FF0000"+kakunin+"^000000 >.";
+					close;
+				case 4:
+					mes "Please enter 0 to cancel.";
+					mes "If not, please write within 500 letters.";
+					next;
+					input '@input;
+					if ('@input < 0 || '@input > 400) {
+						mes "You have exceeded the maximum letter capacity.";
+						close;
+					}
+					set $040611_arn_80top,'@input;
+					set '@kakunin,$040611_arn_80top;
+					mes "Current lvl 80 ranker's play time has been rearranged to < ^FF0000"+kakunin+"^000000 >.";
+					close;
+				case 5:
+					mes "Please enter 0 to cancel.";
+					mes "If not, please write within 600 letters.";
+					next;
+					input '@input;
+					if ('@input < 0 || '@input > 400) {
+						mes "You have exceeded the maximum letter capacity.";
+						close;
+					}
+					set $040611_arn_pttop,'@input;
+					set '@kakunin,$040611_arn_pttop;
+					mes "Current party mode ranker's play time has been rearranged to < ^FF0000"+kakunin+"^000000 >.";
+					close;
+				}
+			}
+		}
+	}
+}
+
+arena_room.gat,195,5,3	script	log-on-aco#arena	802,{
+
+	input '@input$;
+	if ('@input$ == "0") {
+		mes "^3355FFIncorrect Password.^000000";
+		close;
+	} else if ('@input$ != $gmpassword1$) {
+		mes "^3355FFIncorrect Password.^000000";
+		close;
+	} else {
+		set '@time,480;
+		set '@name$,"default";
+		mes "[!!CAUTION!!]";
+		mes "^3355FFThe following menu";
+		mes "the record for that";
+		mes "particular mode in the";
+		mes "Arena Acolyte Class Mode.^000000";
+		next;
+		switch(select("Cancel","Acolyte","~level 70","~level 80","~level 90","~level 99")) {
+		case 1:
+			mes "^3355FFCommand has";
+			mes "been canceled.^000000";
+			close;
+		case 2:
+			set $050406_arn_acotop,'@time;
+			set $050406_arn_acotopn$,'@name;
+			break;
+		case 3:
+			set $050406_arn_pritop60,'@time;
+			set $050406_arn_pritopn60$,'@name;
+			break;
+		case 4:
+			set $050406_arn_pritop70,'@time;
+			set $050406_arn_pritopn70$,'@name;
+			break;
+		case 5:
+			set $050406_arn_pritop80,'@time;
+			set $050406_arn_pritopn80$,'@name;
+			break;
+		case 6:
+			set $050406_arn_pritop90,'@time;
+			set $050406_arn_pritopn90$,'@name;
+			break;
+		}
+		close;
+	}
+}
+
+arena_room.gat,195,10,3	script	acolink#arena	802,{
+
+	input '@input$;
+	if ('@input$ == "0") {
+		mes "Command has";
+		mes "been canceled.";
+		close;
+	} else if ('@input$ != $gmpassword1$) {
+		mes "Incorrect Password.";
+		close;
+	} else {
+		mes "This NPC opens and";
+		mes "closes the Warp Portal";
+		mes "to the Arena's Acolyte";
+		mes "Class Mode. Choose";
+		mes "an option from the menu.";
+		next;
+		switch(select("Cancel","Warp ON","Warp OFF")) {
+		case 1:
+			mes "Command has";
+			mes "been canceled.";
+			close;
+		case 2:
+			hideoffnpc "onlyaco#arena";
+			mes "The Warp Portal";
+			mes "will be opened shortly.";
+			close;
+		case 3:
+			hideonnpc "onlyaco#arena";
+			mes "The Warp Portal";
+			mes "will be closed shortly.";
+			close;
+		}
+	}
+}
+
+
+//--------------------------------------------------------------
+// GM Juperos Ruins Quest Variable Management - [Tsuyuki]
+//--------------------------------------------------------------
+
+sec_in02.gat,39,167,0	script	Juperos Manager	864,{
+
+	mes "[Juperos Manager]";
+	mes "I'm the NPC in";
+	mes "charge of managing";
+	mes "the global variables for";
+	mes "the quests related to";
+	mes "Juperos. GM, please";
+	mes "enter the password.";
+	next;
+	input '@input$;
+	if ('@input$ == "0") {
+		mes "[Juperos Manager]";
+		mes "You have canceled.";
+		close;
+	} else if ('@input$ != $gmpassword1$) {
+		mes "[Juperos Manager]";
+		mes "Incorrect password.";
+		close;
+	} else {
+		mes "[Juperos Manager]";
+		mes "Select a map. Remember:";
+		mes "Make sure that users aren't";
+		mes "doing the quest on the map";
+		mes "you're going to reset, or else";
+		mes "you'll cancel their progress";
+		mes "through the quest.";
+		next;
+		switch(select("jupe_Area1","jupe_Area2","jupe_ele_r","jupe_ele")) {
+		case 1:
+			mes "[Juperos Manager]";
+			mes "You've decided";
+			mes "to reset jupe_Area1.";
+			mes "Shall we proceed?";
+			next;
+			switch(select("Yes.","No.")) {
+			case 1:
+				mes "[Juperos Manager]";
+				mes "The global variable in";
+				mes "jupe_Area1 has been";
+				mes "reset to 0. Thank you.";
+				set $050420_jupe_area1,0;
+				close;
+			case 2:
+				mes "[Juperos Manager]";
+				mes "This command";
+				mes "has been canceled.";
+				close;
+			}
+		case 2:
+			mes "[Juperos Manager]";
+			mes "You've decided";
+			mes "to reset jupe_Area2.";
+			mes "Shall we proceed?";
+			next;
+			switch(select("Yes.","No.")) {
+			case 1:
+				mes "[Juperos Manager]";
+				mes "The global variable in";
+				mes "jupe_Area2 has been";
+				mes "reset to 0. Thank you.";
+				set $050420_jupe_area2,0;
+				close;
+			case 2:
+				mes "[Juperos Manager]";
+				mes "This command";
+				mes "has been canceled.";
+				close;
+			}
+		case 3:
+			mes "[Juperos Manager]";
+			mes "You've decided";
+			mes "to reset jupe_ele_r.";
+			mes "Shall we proceed?";
+			next;
+			switch(select("Yes.","No.")) {
+			case 1:
+				mes "[Juperos Manager]";
+				mes "The global variable in";
+				mes "jupe_ele_r has been";
+				mes "reset to 0. Thank you.";
+				set $050420_jupe_ele_r,0;
+				close;
+			case 2:
+				mes "[Juperos Manager]";
+				mes "Command has been canceled.";
+				close;
+			}
+		case 4:
+			mes "[Juperos Manager]";
+			mes "You've decided";
+			mes "to reset jupe_ele.";
+			mes "Shall we proceed?";
+			next;
+			switch(select("Yes.","No.")) {
+			case 1:
+				mes "[Juperos Manager]";
+				mes "The global variable in";
+				mes "jupe_ele has been";
+				mes "reset to 0. Thank you.";
+				set $050425_ufe_elev,0;
+				close;
+			case 2:
+				mes "[Juperos Manager]";
+				mes "This command";
+				mes "has been canceled.";
+				close;
+			}
+		}
+	}
+
+OnInit:
+	set $050420_jupe_area1,0;
+	set $050420_jupe_area2,0;
+	set $050420_jupe_ele_r,0;
+	set $050425_ufe_elev,0;
+	end;
+}
+
+
+//--------------------------------------------------------------
+// GM Lighthalzen Gangster Security Quest Management - [Tsuyuki]
+//--------------------------------------------------------------
+
+sec_in02.gat,38,159,3	script	Passage Global	869,{
+
+	mes "[Passage]";
+	mes "Enter password.";
+	next;
+	input '@input$;
+	if ('@input$ == "0") {
+		mes "[Passage]";
+		mes "You have canceled.";
+		close;
+	} else if ('@input$ != $gmpassword1$) {
+		mes "[Passage]";
+		mes "Wrong password.";
+		close;
+	} else {
+		set '@g,$@mobstersecurity;
+		mes "[Passage]";
+		mes "Current passage global variable is " + '@g + ".";
+		mes "How would you like to change?";
+		next;
+		switch(select("0","12","100")) {
+		case 1:
+			set $@mobstersecurity,0;
+			close;
+		case 2:
+			set $@mobstersecurity,12;
+			close;
+		case 3:
+			set $@mobstersecurity,100;
+			close;
+		}
+	}
+}
+
+
+//--------------------------------------------------------------
+// GM Lighthalzen Heart Fragment Quest Variable Management - [Tsuyuki]
+//--------------------------------------------------------------
+
+airplane_01.gat,10,10,3	script	#LyozienSwitch	111,{
+
+	mes "[Lyozien Switch]";
+	mes "Input password.";
+	mes "Enter 0 to cancel.";
+	next;
+	input '@input$;
+	if ('@input$ == "0") {
+		mes "[Lyozien Switch]";
+		mes "Canceled.";
+		close;
+	} else if ('@input$ != $gmpassword1$) {
+		mes "[Lyozien Switch]";
+		mes "Incorrect.";
+		close;
+	} else {
+		mes "[Lyozien Switch]";
+		mes "Do you want to";
+		mes "turn the Lyozien";
+		mes "NPC ON or OFF?";
+		next;
+		switch(select("On","OFF")) {
+		case 1:
+			mes "[Lyozien Switch]";
+			mes "Lyozien NPC is";
+			mes "now activated.";
+			mes " ";
+			mes "/mm airplane_01.gat 96 48";
+			donpcevent "Man#Lyozien::OnCommandon";
+			close;
+		case 2:
+			mes "[Lyozien Switch]";
+			mes "Lyozien NPC is";
+			mes "now deactivated.";
+			mes " ";
+			mes "/mm airplane_01.gat 96 48";
+			donpcevent "Man#Lyozien::OnCommandoff";
+			close;
+		}
+	}
+}
+
+
+//--------------------------------------------------------------
+// GM Lighthalzen President's Quest Assistant - [Tsuyuki]
+//--------------------------------------------------------------
+
+sec_in02.gat,17,170,4	script	Boss	809,{
+
+	input '@input$;
+	if ('@input$ == "0") {
+		mes "[Patch]";
+		mes "You have canceled.";
+		close;
+	} else if ('@input$ != $gmpassword1$) {
+		mes "[Patch]";
+		mes "Incorrect password.";
+		close;
+	}
+	set '@set,lght_boss;
+	set '@set1,lght_boss;
+	mes "[Patch]";
+	mes "Tell me what you want.";
+	next;
+	switch(select("Current Variables","How Many","Shinokas - Quest Complete")) {
+	case 1:
+		mes "";
+		mes ""+'@set+"";
+		mes ""+'@set1+"";
+		close;
+	case 2:
+		input '@input;
+		set lght_boss,'@input;
+		set '@set,'@input;
+		mes "";
+		mes ""+'@set+"";
+		close;
+	case 3:
+		set ein_main,11;
+		close;
+	}
+}
+
+
+//--------------------------------------------------------------
+// GM Marriage System Management - [Tsuyuki]
+//--------------------------------------------------------------
+
+prt_church.gat,28,178,4	script	The King of Midgard#Switch	108,{
+
+	mes "[The King of Midgard]";
+	mes "Wh-who are you?";
+	mes "You must know the";
+	mes "password to invoke";
+	mes "my awesome powers.";
+	next;
+	input '@input$;
+	if ('@input$ == "0") {
+		mes "[The King of Midgard]";
+		mes "This is";
+		mes "no place for";
+		mes "fooling around.";
+		close2;
+		warp "prt_church.gat",101,102;
+		end;
+	} else if ('@input$ != $gmpassword1$) {
+		mes "[The King of Midgard]";
+		mes "This is";
+		mes "no place for";
+		mes "fooling around.";
+		close2;
+		warp "prt_church.gat",101,102;
+		end;
+	} else {
+		mes "[Wedding Switch]";
+		mes "Is there a problem with";
+		mes "the wedding ceremony?";
+		mes "I can reset the Bishop";
+		mes "Vomars NPC if you like.";
+		next;
+		switch(select("No, thanks.","Reset.")) {
+		case 1:
+			mes "[Wedding Switch]";
+			mes "Alright, then.";
+			mes "However, if the";
+			mes "Bishop Vomars";
+			mes "NPC is stuck, it may";
+			mes "be best to reset it.";
+			close;
+		case 2:
+			donpcevent "Bishop#w::OnCommandStop";
+			donpcevent "Bishop#w::OnCommandReset";
+			mapannounce "prt_church.gat","You've responded too slowly... Next couple, please proceed.",8;
+			mes "[Wedding Switch]";
+			mes "The Bishop Vomars NPC";
+			mes "has now been reactivated.";
+			mes "It should now be possible";
+			mes "to proceed with weddings.";
+			close;
+		}
+	}
+}
+
+prt_church.gat,20,179,4	script	Divorce Staff	71,{
+
+	mes "[Divorce Staff]";
+	mes "Uh oh...";
+	mes "You know I can't";
+	mes "do anything for you.";
+	next;
+	input '@input$;
+	if ('@input$ == "0") {
+		mes "[Divorce Staff]";
+		mes "Hmm...";
+		mes "You really";
+		mes "shouldn't be";
+		mes "in this place...";
+		close;
+	} else if ('@input$ != $gmpassword1$) {
+		mes "[Divorce Staff]";
+		mes "Hmm...";
+		mes "You really";
+		mes "shouldn't be";
+		mes "in this place...";
+		close;
+	} else {
+		mes "[Bad Ending]";
+		mes "Great, you know the";
+		mes "password! Now, did you";
+		mes "want me to remove the";
+		mes "Wedding Ring in your";
+		mes "inventory?";
+		next;
+		switch(select("Drop 1 Wedding Ring.","Keep it.")) {
+		case 1:
+			if (Sex == Female) {
+				if (countitem(2635) > 0) {
+					delitem 2635,1;
+					mes "[Bad Ending]";
+					mes "It's done!";
+					close;
+				} else {
+					mes "[Bad Ending]";
+					mes "I couldn't find";
+					mes "the Wedding Ring...";
+					mes "Please make sure";
+					mes "that it's not equipped.";
+					close;
+				}
+			} else {
+				if (countitem(2634) > 0) {
+					delitem 2634,1;
+					mes "[Bad Ending]";
+					mes "It's done!";
+					close;
+				} else {
+					mes "[Bad Ending]";
+					mes "I couldn't find";
+					mes "the Wedding Ring...";
+					mes "Please make sure";
+					mes "that it's not equipped.";
+					close;
+				}
+			}
+		case 2:
+			mes "[Bad Ending]";
+			mes "You sure you want";
+			mes "to keep that ring?";
+			mes "Alright, but if it becomes";
+			mes "a problem, you come to me.";
+			close;
+		}
+	}
+}
+
+prt_church.gat,22,179,4	script	Remarry Staff	71,{
+
+	mes "[Remarry Staff]";
+	mes "Hmm...?";
+	mes "What exactly are";
+	mes "you doing here?";
+	next;
+	input '@input$;
+	if ('@input$ == "0") {
+		mes "[Remarry Staff]";
+		mes "Ahk!";
+		mes "An adventurer";
+		mes "like you shouldn't";
+		mes "be in this place!";
+		close;
+	} else if ('@input$ != $gmpassword1$) {
+		mes "[Remarry Staff]";
+		mes "Ahk!";
+		mes "An adventurer";
+		mes "like you shouldn't";
+		mes "be in this place!";
+		close;
+	} else {
+		if (PartnerID == 0) {
+			mes "[Wedding Again]";
+			mes "Hmm...";
+			mes "I can only create";
+			mes "a Wedding Ring if the";
+			mes "character is married.";
+			close;
+		}
+		mes "[Wedding Again]";
+		mes "Ah, I see that you";
+		mes "know the password.";
+		mes "Alright, if you somehow";
+		mes "lost your Wedding Ring,";
+		mes "I can make you a new one.";
+		next;
+		switch(select("Make new Wedding Ring.","Cancel.")) {
+		case 1:
+			if (Sex == Female) {
+				if ((equippeditem(2635) > 0) || (ring == 1)) {
+					mes "[Wedding Again]";
+					mes "Wait, wait...";
+					mes "You're wearing your";
+					mes "Wedding Ring. I better";
+					mes "not make you another since";
+					mes "you don't need more than one.";
+					close;
+				} else {
+					getitem 2635,1;
+					mes "[Wedding Again]";
+					mes "Here you go~";
+					mes "It's your brand";
+					mes "new Wedding Ring!";
+					close;
+				}
+			} else {
+				if ((equippeditem(2634) > 0) || (ring == 1)) {
+					mes "[Wedding Again]]";
+					mes "Wait, wait...";
+					mes "You're wearing your";
+					mes "Wedding Ring. I better";
+					mes "not make you another since";
+					mes "you don't need more than one.";
+					close;
+				} else {
+					getitem 2634,1;
+					mes "[Wedding Again]";
+					mes "Here you go~";
+					mes "It's your brand";
+					mes "new Wedding Ring!";
+					close;
+				}
+			}
+		case 2:
+			mes "[Wedding Again]";
+			mes "Alright. If you ever";
+			mes "lose your Wedding Ring,";
+			mes "come to me if you happen";
+			mes "to need a new one, okay?";
+			close;
+		}
+	}
+}
+
+
+//--------------------------------------------------------------
+// GM Rachel High Priest Quest Variable Management - [Tsuyuki]
+//--------------------------------------------------------------
+
+sec_in02.gat,19,182,5	script	Rachel Priest Quest#rachel	916,{
+
+	input '@input$;
+	if ('@input$ == "0") {
+		mes "You have canceled.";
+		close;
+	} else if ('@input$ != $gmpassword1$) {
+		mes "Incorrect password.";
+		close;
+	} else {
+		set '@ma1,rachel_ma1;
+		set '@oz,rachel_oz;
+		set '@bosuk,rachel_bosuk;
+		mes "ma1= "+'@ma1+"";
+		mes "oz= "+'@oz+"";
+		mes "bosuk= "+'@bosuk+"";
+		next;
+		switch(select("ma1","oz","bosuk")) {
+		case 1:
+			input '@input;
+			set rachel_ma1,'@input;
+			break;
+		case 2:
+			input '@input;
+			set rachel_oz,'@input;
+			break;
+		case 3:
+			input '@input;
+			set rachel_bosuk,'@input;
+			break;
+		}
+		close;
+	}
+}
+
+sec_in02.gat,33,157,5	script	Zeny Collecting Addition	90,{
+
+	input '@input$;
+	if ('@input$ == "0") {
+		mes "You have canceled.";
+		close;
+	} else if ('@input$ != $gmpassword1$) {
+		mes "Incorrect password.";
+		close;
+	}
+	set '@gigiro,$060522_oz_carnival;
+	if ('@gigiro == 0) {
+		mes "[Zeny Collecting Addition]";
+		mes "This is Rachel donation manager.";
+		next;
+		set '@namuco,$060522_oz_money;
+		set '@segagaga,500000000 - '@namuco;
+		mes "[Zeny Collector]";
+		mes "Current donation total:";
+		mes ""+'@namuco+",zeny.";
+		mes ""+'@segagaga+",zeny must be";
+		mes "paid until the temple closes.";
+		close;
+	} else {
+		mes "[Zeny Collector]";
+		mes "Rachel Temple is not";
+		mes "accepting donations now.";
+		close;
+	}
+
+OnInit:
+	set '@kekero,$060522_oz_carnival;
+	if ('@kekero == 0) {
+		initnpctimer;
+	}
+	end;
+
+OnCommandReset:
+	initnpctimer;
+	end;
+
+OnTimer84000000:
+	set '@kekero,$060522_oz_carnival;
+	if ('@kekero == 0) {
+		set '@gasuto,$060522_oz_money;
+		set '@jareko,'@gasuto + 5000000;
+		if ('@jareko > 499999999) {
+			set $060522_oz_carnival,1;
+			set $060522_oz_money,'@jareko;
+		} else {
+			set $060522_oz_money,'@jareko;
+			donpcevent "Zeny Collecting Addition::OnCommandReset";
+		}
+	}
+	end;
+}
+
+sec_in02.gat,31,157,0	script	Zeny Collector	90,{
+
+	set '@gigiro,$060522_oz_carnival;
+	if ('@gigiro == 0) {
+		mes "[Zeny Collector]";
+		mes "I'm the Rachel Temple";
+		mes "donation manager.";
+		next;
+		set '@namuco,$060522_oz_money;
+		set '@segagaga,500000000 - '@namuco;
+		mes "[Zeny Collector]";
+		mes "Current donation total:";
+		mes ""+'@namuco+" zeny.";
+		mes ""+'@segagaga+" zeny must be";
+		mes "paid until the temple closes.";
+		next;
+		mes "[Zeny Collector]";
+		mes "Please enter the";
+		mes "password if you'd like";
+		mes "to edit the donation status.";
+		next;
+		input '@input$;
+		if ('@input$ == "0") {
+			mes "[Zeny Collector]";
+			mes "You have canceled.";
+			close;
+		} else if ('@input$ != $gmpassword1$) {
+			mes "[Zeny Collector]";
+			mes "Yeah, I am better than you.";
+			close;
+		} else {
+			mes "[Zeny Collector]";
+			mes "Would you like to add";
+			mes "or subtract zeny from the";
+			mes "current donation total?";
+			mes "Current Total: "+'@namuco+"";
+			mes "Add "+'@segagaga+",to close temple.";
+			next;
+			switch(select("Add to Total","Subtract from Total")) {
+			case 1:
+				mes "[Zeny Collector]";
+				mes "Please enter a zeny";
+				mes "value up to 100,000,000.";
+				mes "Do not include commas";
+				mes "in this numeric value.";
+				next;
+				input '@input;
+				if ('@input < 0 || '@input > 9999) {
+					mes "[Zeny Collector]";
+					mes "Don't be so stupid.";
+					close;
+				}
+				if ('@input == 0) {
+					mes "[Zeny Collector]";
+					mes "Got it.";
+					close;
+				} else {
+					set '@namuco,'@namuco + '@input;
+					if ('@namuco > 499999999) {
+						set $060522_oz_carnival,1;
+						set $060522_oz_money,'@namuco;
+						mes "[Zeny Collector]";
+						mes "You've added enough";
+						mes "zeny to activate the";
+						mes "switch: the Temple";
+						mes "Gate is now closed.";
+						close;
+					} else {
+						set $060522_oz_money,'@namuco;
+						mes "[Zeny Collector]";
+						mes "Changes implemented...";
+						mes "Current donation total:";
+						mes ""+'@namuco+",zeny.";
+						mes ""+'@segagaga+",zeny must be";
+						mes "paid until the temple closes.";
+						close;
+					}
+				}
+			case 2:
+				mes "[Zeny Collector]";
+				mes "How much zeny would";
+				mes "you like to subtract";
+				mes "from the current total?";
+				mes "Please enter a value up";
+				mes "to 100,000,000 without";
+				mes "entering any commas.";
+				next;
+				input '@input;
+				if ('@input < 0 || '@input > 9999) {
+					mes "[Zeny Collector]";
+					mes "Don't be so stupid.";
+					close;
+				}
+				if ('@input == 0) {
+					mes "[Zeny Collector]";
+					mes "Got it.";
+					close;
+				} else {
+					if ('@namuco < '@input) {
+						mes "[Zeny Collector]";
+						mes "That won't work...";
+						mes "We'll end up with";
+						mes "a negative total.";
+						close;
+					} else {
+						set '@namuco,'@namuco - '@input;
+						set $060522_oz_money,'@namuco;
+						mes "[Zeny Collector]";
+						mes "Changes implemented...";
+						mes "Current donation total:";
+						mes ""+'@namuco+",zeny.";
+						mes ""+'@segagaga+",zeny must be";
+						mes "paid until the temple closes.";
+						close;
+					}
+				}
+			}
+		}
+	} else if ('@gigiro == 1) {
+		mes "[Zeny Collector]";
+		mes "Reset?";
+		next;
+		switch(select("set 1","set 0")) {
+		case 1:
+			end;
+		case 2:
+			mes "[Zeny Collector]";
+			mes "Please enter password.";
+			next;
+			input '@input$;
+			if ('@input$ == "0") {
+				mes "[Zeny Collector]";
+				mes "You have canceled.";
+				close;
+			} else if ('@input$ != $gmpassword1$) {
+				mes "[Zeny Collector]";
+				mes "Yeah...";
+				mes "I'm cooler than you.";
+				close;
+			} else {
+				set $060522_oz_money,0;
+				set $060522_oz_carnival,0;
+				mes "[Zeny Collector]";
+				mes "Got it.";
+				close;
+			}
+		}
+	}
+}
+
+
+//--------------------------------------------------------------
+// GM Rachel Ice Necklace Quest Variable Management - [Tsuyuki]
+//--------------------------------------------------------------
+
+ice_dun03.gat,1,120,3	script	#resetice	802,{
+
+	input '@input$;
+	if ('@input$ == "0") {
+		mes "The command has been canceled.";
+		close;
+	} else if ('@input$ != $gmpassword1$) {
+		mes "Incorrect password.";
+		close;
+	} else {
+		mes "NPCs are now clickable.";
+		mes "GlobalVar has been edited.";
+		next;
+		switch(select("ok","no")) {
+		case 1:
+			mes "Complete.";
+			set $060519_tre_icave,0;
+			enablenpc "Blazing Fire#ice1";
+			enablenpc "Blazing Fire#ice2";
+			enablenpc "Blazing Fire#ice3";
+			enablenpc "Blazing Fire#ice4";
+			close;
+		case 2:
+			mes "no - ok";
+			close;
+		}
+	}
+}
+
+
+//--------------------------------------------------------------
+// GM Rogue Job Change Quest Management - [Tsuyuki]
+//--------------------------------------------------------------
+
+in_rogue.gat,399,286,1	script	switch#rogreset	88,{
+
+	input '@input$;
+	if ('@input$ == "0") {
+		mes "You have canceled.";
+		close;
+	} else if ('@input$ != $gmpassword1$) {
+		mes "Incorrect password.";
+		close;
+	}
+	mes "^F08080Tah dah~";
+	mes "Monsters for the";
+	mes "Rogue Job Change";
+	mes "have been reset^000000.";
+	donpcevent "mob_rogue#1::OnCommandreset";
+	donpcevent "mob_rogue#2::OnCommandreset";
+	donpcevent "mob_rogue#3::OnCommandreset";
+	donpcevent "mob_rogue#4::OnCommandreset";
+	donpcevent "mob_rogue#5::OnCommandreset";
+	donpcevent "mob_rogue#6::OnCommandreset";
+	donpcevent "mob_rogue#7::OnCommandreset";
+	donpcevent "mob_rogue#8::OnCommandreset";
+	donpcevent "mob_rogue#9::OnCommandreset";
+	donpcevent "mob_rogue#10::OnCommandreset";
+	donpcevent "mob_rogue#12::OnCommandreset";
+	donpcevent "mob_rogue#13::OnCommandreset";
+	donpcevent "mob_rogue#15::OnCommandreset";
+	donpcevent "resetter#rogue::OnCommandon";
+	close;
+}
+
+
+//--------------------------------------------------------------
+// GM Soul Linker Job Change Quest Variable Management - [Tsuyuki]
+//--------------------------------------------------------------
+
+sec_in02.gat,35,153,0	script	Soul Linker Var	871,{
+
+	mes "[Soul Linker Var]";
+	mes "I can reset the Soul Linker";
+	mes "NPCs if a Soul Linker candidate";
+	mes "encounters a problem during the";
+	mes "end of the job quest. Please do";
+	mes "not use this function if players are still in the Quest Map.";
+	next;
+	input '@input$;
+	if ('@input$ == "0") {
+		mes "[Soul Linker Var]";
+		mes "You have canceled.";
+		close;
+	} else if ('@input$ != $gmpassword1$) {
+		mes "[Soul Linker Var]";
+		mes "Password";
+		mes "is incorrect.";
+		close;
+	} else {
+		mes "[Soul Linker Var]";
+		mes "Would you like to";
+		mes "reset the Soul Linker";
+		mes "Global Variable?";
+		next;
+		switch(select("Reset","Cancel")) {
+		case 1:
+			mes "[Soul Linker Var]";
+			mes "The Soul Linker";
+			mes "Job Quest NPCs";
+			mes "have been reset.";
+			set $050818_oz_soul,0;
+			close;
+		case 2:
+			mes "[Soul Linker Var]";
+			mes "You have canceled";
+			mes "this command.";
+			close;
+		}
+	}
+}
+
+
+//--------------------------------------------------------------
+// GM Thanatos Tower Quest Variable Management - [Tsuyuki]
+//--------------------------------------------------------------
+
+sec_in02.gat,50,170,0	script	Concept	856,{
+
+	input '@input$;
+	if ('@input$ == "0") {
+		mes "You have canceled.";
+		close;
+	} else if ('@input$ != $gmpassword1$) {
+		mes "Incorrect password.";
+		close;
+	}
+	set '@abc_t,$050903_tha_to_boss1;
+	set '@abc_t1,$050903_tha_to_boss2;
+	mes ""+'@abc_t+"";
+	mes ""+'@abc_t1+"";
+	next;
+	switch(select("1","2")) {
+	case 1:
+		set $050903_tha_to_boss1,0;
+		close;
+	case 2:
+		set $050903_tha_to_boss2,0;
+		close;
+	}
+}
+
+
+//--------------------------------------------------------------
+// GM The Sign Quest Variable Assistant - [Tsuyuki]
+//--------------------------------------------------------------
+
+sec_in02.gat,17,177,4	script	Sign Board Patch	809,{
+
+	input '@input$;
+	if ('@input$ == "0") {
+		mes "[Patch]";
+		mes "You have canceled.";
+		close;
+	} else if ('@input$ != $gmpassword1$) {
+		mes "[Patch]";
+		mes "Incorrect password.";
+		close;
+	}
+	set '@set,sign_q;
+	set '@set1,sign_sq;
+	mes "[Patch]";
+	mes "Choose a menu.";
+	next;
+	switch(select("Now","How much","Item Drop","Sobbing Starlight","Global Check","Gloval Reset1","Global Reset2")) {
+	case 1:
+		mes "";
+		mes ""+'@set+"";
+		mes ""+'@set1+"";
+		close;
+	case 2:
+		switch(select("s","sq")) {
+		case 1:
+			input '@input;
+			set sign_q,'@input;
+			set '@set,'@input;
+			mes "";
+			mes ""+'@set+"";
+			close;
+		case 2:
+			input '@input;
+			set sign_sq,'@input;
+			set '@set,'@input;
+			mes "";
+			mes ""+'@set+"";
+			close;
+		}
+	case 3:
+		input '@input;
+		set '@abc,('@input - 1);
+		if (countitem(7177) > '@abc) {
+			delitem 7177,'@input;
+		}
+		if (countitem(7178) > '@abc) {
+			delitem 7178,'@input;
+		}
+		if (countitem(7304) > '@abc) {
+			delitem 7304,'@input;
+		}
+		if (countitem(7309) > '@abc) {
+			delitem 7309,'@input;
+		}
+		if (countitem(2642) > '@abc) {
+			delitem 2642,'@input;
+		}
+		if (countitem(7305) > '@abc) {
+			delitem 7305,'@input;
+		}
+		if (countitem(7306) > '@abc) {
+			delitem 7306,'@input;
+		}
+		if (countitem(7307) > '@abc) {
+			delitem 7307,'@input;
+		}
+		if (countitem(7314) > '@abc) {
+			delitem 7314,'@input;
+		}
+		end;
+	case 4:
+		getitem 7178,1;
+		mes "There you go.";
+		close;
+	case 5:
+		set '@sign_1,$050304_sign_w1;
+		set '@sign_2,$050304_sign_w2;
+		mes ""+'@sign_1+"";
+		mes ""+'@sign_2+"";
+		close;
+	case 6:
+		set $050304_sign_w1,0;
+		mes "Global Var has been reset.";
+		close;
+	case 7:
+		set $050304_sign_w2,0;
+		mes "Global Var has been reset.";
+		close;
+	}
+}
+
+
+//--------------------------------------------------------------
+// GM Umbala Utan Language Teacher Assistant - [Tsuyuki]
+//--------------------------------------------------------------
+
+sec_in02.gat,39,175,5	script	Utan Language Teacher	784,{
+
+	mes "[Karkatan]";
+	mes "I can teach you the";
+	mes "Utan language or just";
+	mes "make you forget Utan.";
+	mes "Umbaba Booboolah.";
+	next;
+	input '@input$;
+	if ('@input$ == "0") {
+		mes "[Karkatan]";
+		mes "You have canceled.";
+		close;
+	} else if ('@input$ != $gmpassword1$) {
+		mes "[Karkatan]";
+		mes "Incorrect password.";
+		close;
+	}
+	switch(select("Learn Utan Language","Forget Utan Language")) {
+	case 1:
+		set um_trans,10;
+		mes "[Karkatan]";
+		mes "Babaloohooha.";
+		mes "You are now fluent";
+		mes "in the Utan tonuge.";
+		close;
+	case 2:
+		set um_trans,0;
+		mes "[Karkatan]";
+		mes "Shookalakooha?";
+		mes "Your proficiency";
+		mes "in Utan has now";
+		mes "been removed.";
+		close;
+	}
+}

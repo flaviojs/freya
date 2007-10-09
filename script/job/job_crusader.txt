@@ -1,0 +1,2241 @@
+//--------------------------------------------------------------
+//               (c)2004-2007 Aurora Team Presents:             
+//                  ___                                         
+//                 /   |_   _ _ __ ___  _ __ __ _               
+//                / /| | | | | '__/ _ \| '__/ _` |              
+//               / ___ | |_| | | | (_) | | | (_| |++            
+//              /_/  |_|\____|_|  \___/|_|  \__,_|              
+//                 http://aurora.deltaanime.net                 
+//--------------------------------------------------------------
+// Script Title: Crusader Job Change Quest	Author: Tsuyuki
+//--------------------------------------------------------------
+// Revision History: v1.0
+//--------------------------------------------------------------
+//	1.0 First version, converted from Aegis [Tsuyuki]
+//--------------------------------------------------------------
+// Additional Notes: * Official-certified / Aegis-certified *
+//--------------------------------------------------------------
+
+
+//--------------------------------------------------------------
+// Crusader Job Change Quest - [Tsuyuki]
+//--------------------------------------------------------------
+
+prt_castle.gat,45,169,5	script	Senior Crusader	752,{
+
+	if (Upper == 1) {
+		mes "[Michael Halig]";
+		mes "Go and train yourself in preparation for the holy war that is coming. Victory will be in the hands of those who are most ready to receive it.";
+		next;
+		mes "[Michael Halig]";
+		mes "You don't belong here, my friend.";
+		mes "Be adviced to continue practicing yourself.";
+		close;
+	}
+	if (Class != Job_Swordman) {
+		if (Class == Job_Crusader) {
+			mes "[Michael Halig]";
+			mes "Go and train yourself in preparation for the holy war that is coming. Victory will be in the hands of those who are most ready to receive it.";
+			next;
+			mes "[Michael Halig]";
+			mes "Chaos will one day arise to challenge our principles of peace, justice and order. Until we have eliminated evil and created our ideal world, we must not cease training.";
+			close;
+		} else if (Class == Job_Novice) {
+			mes "[Michael Halig]";
+			mes "We are Crusaders,";
+			mes "warriors preparing";
+			mes "to fight in the Holy War.";
+			next;
+			mes "[Michael Halig]";
+			mes "If you wish to join us, you must first learn the Swordman discipline and train yourself thoroughly...";
+			close;
+		} else {
+			mes "[Michael Halig]";
+			mes "We are Crusaders,";
+			mes "warriors preparing";
+			mes "to fight in the Holy War.";
+			next;
+			mes "[Michael Halig]";
+			mes "As it happened one thousand years ago, evil forces will one day attacking in droves in an attempt to take over the world once again.";
+			close;
+		}
+	}
+	if (job_crusader_q == 0) {
+		mes "[Michael Halig]";
+		mes "We are Crusaders, warriors preparing for the Holy War.";
+		mes "What brings you";
+		mes "to this place?";
+		next;
+		switch(select("I want to prepare for the Holy War!","Nothing in particular.")) {
+		case 1:
+			mes "[Michael Halig]";
+			mes "You wish to become";
+			mes "a Crusader...?";
+			mes "Joining us is not as";
+			mes "easy as it sounds.";
+			next;
+			mes "[Michael Halig]";
+			mes "I am Michael Halig. I am one of but many Crusaders preparing for the Holy War. We continuously train ourselves with sincere faith and endless loyalty.";
+			next;
+			mes "[Michael Halig]";
+			mes "We recruit Swordman that express exceptional faith, or those who were born as warriors";
+			mes "by Odin's will.";
+			next;
+			mes "[Michael Halig]";
+			mes "Possessing the ^3355FFChivalry Emblem^000000 and ^3355FFHand of God^000000 is seen as a sign that you have been called to become a Crusader.";
+			next;
+			mes "[Michael Halig]";
+			mes "After obtaining those items and passing our tests, you too, can become a Crusader.";
+			next;
+			mes "[Michael Halig]";
+			mes "I don't know what type of person you are right now though. But";
+			mes "I shall test you if you desire. Are you willing to endure these tests in preparation for the Holy War?";
+			next;
+			switch(select("Yes, I do.","I'd like to think about it.")) {
+			case 1:
+				if (JobLevel < 40) {
+					mes "[Michael Halig]";
+					mes "Wait...";
+					mes "You're not ready yet.";
+					mes "You need to be at least";
+					mes "Job Level 40 to become";
+					mes "a Crusader.";
+					next;
+					mes "[Michael Halig]";
+					mes "Train yourself more as a Swordman and wait for your calling. I understand your intent, but as of now, you cannot join us.";
+					close;
+				}
+				if (SkillPoint != 0) {
+					mes "[Michael Halig]";
+					mes "You haven't finished learning everything as a Swordman. Use all of your remaining skill points, and then return to me.";
+					close;
+				}
+				mes "[Michael Halig]";
+				mes "Then...";
+				mes "I shall test you to see if you are fit to become a Crusader.";
+				next;
+				mes "[Michael Halig]";
+				mes "Your name is";
+				mes ""+strcharinfo(0)+"...?";
+				mes "Let's see...";
+				next;
+				if ((countitem(1004) > 0) && (countitem(1009) > 0)) {
+					mes "[Michael Halig]";
+					mes "Ah...";
+					mes "I see that you have been called to become a Crusader. We are assured of your will, but now we must test your capabilities.";
+					next;
+					mes "[Michael Halig]";
+					mes "Meet with Moorenak Miyol who is training in the underground dungeon of the Prontera Castle. Go, and speak with him first.";
+					next;
+					delitem 1004,1;
+					delitem 1009,1;
+					set job_crusader_q,4;
+					mes "[Michael Halig]";
+					mes "Moorenak and others like him will test the limits of your capabilities and help you find your path. Return to me after you have completed their tests...";
+					close;
+				}
+				mes "[Michael Halig]";
+				mes "Mmm. I can't discern whether or not you have the heart to become a Crusader. However, if you have the will and put forth the effort, you may have what it takes.";
+				next;
+				mes "[Michael Halig]";
+				mes "Now...";
+				mes "This is my test for you. Bring me the following items and prove your determination to me.";
+				next;
+				set '@cru_m1,rand(1,3);
+				if ('@cru_m1 == 1) {
+					set job_crusader_q,1;
+					mes "[Michael Halig]";
+					mes "^3355FF10 Decayed Nail^000000,";
+					mes "^3355FF10 Stinky Scale^000000,";
+					mes "^3355FF10 Worn-out Prison Uniform^000000 and";
+					mes "^3355FF10 Daenggie^000000.";
+					next;
+					mes "[Michael Halig]";
+					mes "Show me the strength of your will by gathering these items. If you prove successful, you will progress to the next test. May Odin protect you.";
+					close;
+				} else if ('@cru_m1 == 2) {
+					set job_crusader_q,2;
+					mes "[Michael Halig]";
+					mes "^3355FF10 Skel-Bone^000000,";
+					mes "^3355FF10 Orc Claw^000000,";
+					mes "^3355FF10 Manacles^000000 and";
+					mes "^3355FF10 Short Daenggie^000000.";
+					next;
+					mes "[Michael Halig]";
+					mes "Show me the strength of your will by gathering these items. If you prove successful, you will progress to the next test. May Odin protect you.";
+					close;
+				} else {
+					set job_crusader_q,3;
+					mes "[Michael Halig]";
+					mes "^3355FF10 Horrendous Mouth^000000,";
+					mes "^3355FF10 Rotten Bandage^000000,";
+					mes "^3355FF10 Lantern^000000 and";
+					mes "^3355FF10 Jack o' Pumpkin^000000.";
+					next;
+					mes "[Michael Halig]";
+					mes "Show me the strength of your will by gathering these items. If you prove successful, you will progress to the next test. May Odin protect you.";
+					close;
+				}
+			case 2:
+				mes "[Michael Halig]";
+				mes "Nobody knows when the Holy War will come. We must prepare in advance and cannot afford to slacken";
+				mes "our training.";
+				next;
+				mes "[Michael Halig]";
+				mes "If you feel that participating in the Holy War is your calling, please come back right away and take the test to become";
+				mes "a Crusader.";
+				close;
+			}
+		case 2:
+			mes "[Michael Halig]";
+			if (Sex == Male) {
+				mes "If you, too, are a man of the sword, constantly train and prepare yourself. No one knows when the Holy War may begin.";
+			} else {
+				mes "As a woman of the sword, you must train diligently and constantly. Prepare yourself, for no one knows when the Holy War may be coming.";
+			}
+			close;
+		}
+	} else if (job_crusader_q == 1) {
+		mes "[Michael Halig]";
+		mes "Have you proven your determination with the task I have given you, or do you possess the items proving that you have received your calling?";
+		next;
+		if ((countitem(1004) > 0) && (countitem(1009) > 0)) {
+			mes "[Michael Halig]";
+			mes "Ah...";
+			mes "I see that you have been called to become a Crusader. We are assured of your will, but now we must test your capabilities.";
+			next;
+			mes "[Micheal Halig]";
+			mes "Meet with Moorenak Miyol who is training in the underground dungeon of the Prontera Castle. Go, and speak with him first.";
+			next;
+			delitem 1004,1;
+			delitem 1009,1;
+			set job_crusader_q,4;
+			mes "[Michael Halig]";
+			mes "Moorenak and others like him will test the limits of your capabilities and help you find your path. Return to me after you have completed their tests...";
+			close;
+		}
+		if ((countitem(957) > 9) && (countitem(959) > 9) && (countitem(1099) > 9) && (countitem(901) > 9)) {
+			mes "[Michael Halig]";
+			mes "Ah, well done.";
+			mes "I must acknowledge your efforts and determination. You may now proceed to take the next test.";
+			next;
+			mes "[Michael Halig]";
+			mes "Meet with Moorenak Miyol who is training in the underground dungeon of the Prontera Castle. Go, and speak with him first.";
+			next;
+			delitem 957,10;
+			delitem 959,10;
+			delitem 1099,10;
+			delitem 901,10;
+			set job_crusader_q,4;
+			mes "[Michael Halig]";
+			mes "Moorenak and others like him will test the limits of your capabilities and help you find your path. Return to me after you have completed their tests...";
+			close;
+		}
+		mes "[Michael Halig]";
+		mes "Ah, you still have not completed the task I have given to you. Bring me the following items, and prove your will to become a Crusader to me...";
+		next;
+		mes "[Michael Halig]";
+		mes "^3355FF10 Decayed Nail^000000,";
+		mes "^3355FF10 Stinky Scale^000000,";
+		mes "^3355FF10 Worn-out Prison Uniform^000000 and";
+		mes "^3355FF10 Daenggie^000000.";
+		next;
+		mes "[Michael Halig]";
+		mes "If you put forth the effort, you'll be able to accomplish this task. May Odin protect you on your journeys.";
+		close;
+	} else if (job_crusader_q == 2) {
+		mes "[Michael Halig]";
+		mes "Have you proven your determination with the task I have given you, or do you possess the items proving that you have received your calling?";
+		next;
+		if ((countitem(1004) > 0) && (countitem(1009) > 0)) {
+			mes "[Michael Halig]";
+			mes "Ah...";
+			mes "I see that you have been called to become a Crusader. We are assured of your will, but now we must test your capabilities.";
+			next;
+			mes "[Micheal Halig]";
+			mes "Meet with Moorenak Miyol who is training in the underground dungeon of the Prontera Castle. Go, and speak with him first.";
+			next;
+			delitem 1004,1;
+			delitem 1009,1;
+			set job_crusader_q,4;
+			mes "[Michael Halig]";
+			mes "Moorenak and others like him will test the limits of your capabilities and help you find your path. Return to me after you have completed their tests...";
+			close;
+		}
+		if ((countitem(932) > 9) && (countitem(1043) > 9) && (countitem(1098) > 9) && (countitem(1094) > 9)) {
+			mes "[Michael Halig]";
+			mes "Ah, well done.";
+			mes "I must acknowledge your efforts and determination. You may now proceed to take the next test.";
+			next;
+			mes "[Michael Halig]";
+			mes "Meet with Moorenak Miyol who is training in the underground dungeon of the Prontera Castle. Go, and speak with him first.";
+			next;
+			delitem 932,10;
+			delitem 1043,10;
+			delitem 1098,10;
+			delitem 1094,10;
+			set job_crusader_q,4;
+			mes "[Michael Halig]";
+			mes "Moorenak and others like him will test the limits of your capabilities and help you find your path. Return to me after you have completed their tests...";
+			close;
+		}
+		mes "[Michael Halig]";
+		mes "Ah, you still have not completed the task I have given to you. Bring me the following items, and prove your will to become a Crusader to me...";
+		next;
+		mes "[Michael Halig]";
+		mes "^3355FF10 Skel-Bone^000000,";
+		mes "^3355FF10 Orc Claw^000000,";
+		mes "^3355FF10 Manacles^000000 and";
+		mes "^3355FF10 Short Daenggie^000000.";
+		next;
+		mes "[Michael Halig]";
+		mes "If you put forth the effort, you'll be able to accomplish this task. May Odin protect you on your journeys.";
+		close;
+	} else if (job_crusader_q == 3) {
+		mes "[Michael Halig]";
+		mes "Have you proven your determination with the task I have given you, or do you possess the items proving that you have received your calling?";
+		next;
+		if ((countitem(1004) > 0) && (countitem(1009) > 0)) {
+			mes "[Michael Halig]";
+			mes "Ah...";
+			mes "I see that you have been called to become a Crusader. We are assured of your will, but now we must test your capabilities.";
+			next;
+			mes "[Micheal Halig]";
+			mes "Meet with Moorenak Miyol who is training in the underground dungeon of the Prontera Castle. Go, and speak with him first.";
+			next;
+			delitem 1004,1;
+			delitem 1009,1;
+			set job_crusader_q,4;
+			mes "[Michael Halig]";
+			mes "Moorenak and others like him will test the limits of your capabilities and help you find your path. Return to me after you have completed their tests...";
+			close;
+		}
+		if ((countitem(958) > 9) && (countitem(930) > 9) && (countitem(1041) > 9) && (countitem(1062) > 9)) {
+			mes "[Michael Halig]";
+			mes "Ah, well done.";
+			mes "I must acknowledge your efforts and determination. You may now proceed to take the next test.";
+			next;
+			mes "[Michael Halig]";
+			mes "Meet with Moorenak Miyol who is training in the underground dungeon of the Prontera Castle. Go, and speak with him first.";
+			next;
+			delitem 958,10;
+			delitem 930,10;
+			delitem 1041,10;
+			delitem 1062,10;
+			set job_crusader_q,4;
+			mes "[Michael Halig]";
+			mes "Moorenak and others like him will test the limits of your capabilities and help you find your path. Return to me after you have completed their tests...";
+			close;
+		}
+		mes "[Michael Halig]";
+		mes "Ah, you still have not completed the task I have given to you. Bring me the following items, and prove your will to become a Crusader to me...";
+		next;
+		mes "[Michael Halig]";
+		mes "^3355FF10 Horrendous Mouth^000000,";
+		mes "^3355FF10 Rotten Bandage^000000,";
+		mes "^3355FF10 Lantern^000000 and";
+		mes "^3355FF10 Jack o' Pumpkin^000000.";
+		next;
+		mes "[Michael Halig]";
+		mes "If you put forth the effort, you'll be able to accomplish this task. May Odin protect you on your journeys.";
+		close2;
+	} else if (job_crusader_q == 10) {
+		if (SkillPoint != 0) {
+			mes "[Michael Halig]";
+			mes "You haven't finished learning everything as a Swordman. Use all of your remaining skill points, and then return to me.";
+			close;
+		}
+		if (JobLevel == 50) {
+			mes "[Michael Halig]";
+			mes "Congratulations on completing all of your tests. You are truly worthy of fighting alongside side us in the Holy War as a Crusader.";
+			next;
+			mes "[Michael Halig]";
+			mes "Together, let us ready ourselves and be victorious over evil and tyranny!";
+			next;
+			set job_crusader_q,0;
+			jobchange Job_Crusader,0;
+			mes "[Michael Halig]";
+			mes "Behold...!";
+			mes "You are now a Crusader!";
+			mes "When the Holy War comes, we shall fight side by side against the forces of evil.";
+			next;
+			mes "[Michael Halig]";
+			mes "Now you are";
+			mes "one of us!";
+			if (Sex == Male) {
+				mes "...Brother.";
+			} else {
+				mes "...Comrade.";
+			}
+			next;
+			getitem 504,12;
+			mes "[Michael Halig]";
+			mes "And use this in times of dire peril. It will give you strength when your wounds are most grievous.";
+			next;
+			mes "[Michael Halig]";
+			mes "Never forget that the Holy War is approaching. We must be prepare for the inevitable tide of evil that will sweep this world. Now, go forth and fight for the principles of freedom and justice!";
+			close;
+		} else {
+			mes "[Michael Halig]";
+			mes "Congratulations on completing all of your tests. You are truly worthy of fighting alongside side us in the Holy War as a Crusader.";
+			next;
+			mes "[Michael Halig]";
+			mes "Together, let us ready ourselves and be victorious over evil and tyranny!";
+			next;
+			set job_crusader_q,0;
+			jobchange Job_Crusader,0;
+			mes "[Michael Halig]";
+			mes "Behold...!";
+			mes "You are now a Crusader!";
+			mes "When the Holy War comes, we shall fight side by side against the forces of evil. Now you are one of us!";
+			if (Sex == Male) {
+				mes "...Brother.";
+			} else {
+				mes "...Comrade.";
+			}
+			next;
+			getitem 504,6;
+			mes "[Michael Halig]";
+			mes "And use this in times of dire peril. It will give you strength when your wounds are most grievous.";
+			next;
+			mes "[Michael Halig]";
+			mes "Never forget that the Holy War is approaching. We must be prepare for the inevitable tide of evil that will sweep this world. Now, go forth and fight for the principles of freedom and justice!";
+			close;
+		}
+	} else {
+		mes "[Michael Halig]";
+		mes "It seems that you have not yet completed all of the testing. You will not be ready to become a Crusader until you have completed the tests set before you.";
+		next;
+		mes "[Michael Halig]";
+		mes "Return to me when you have completed all of your tests. When you finally prove eligible, you will join the proud ranks of the mighty Crusaders.";
+		close;
+	}
+}
+
+prt_castle.gat,164,32,1	script	Man in Anguish	733,{
+
+	if (Class != Job_Swordman) {
+		if (Class == Job_Crusader) {
+			mes "[Murnak Mijoul]";
+			mes "Don't linger around in a place like this and forge your own path towards discovering your own strengths. The day that we will join hands in battle will come soon.";
+			close;
+		} else if (Class == Job_Novice) {
+			mes "[Murnak Mijoul]";
+			mes "A Novice...?";
+			mes "So green, and yet,";
+			mes "so much potential.";
+			next;
+			mes "[Murnak Mijoul]";
+			mes "Let me assure you that I'm no criminal. I'm here merely to train myself. Perhaps as you become stronger, you will understand.";
+			close;
+		} else {
+			mes "[Murnak Mijoul]";
+			mes "Hm. You have no business in a place like this. Please leave, and do not interrupt my training.";
+			close;
+		}
+	}
+	if (job_crusader_q == 0) {
+		mes "[Murnak Mijoul]";
+		mes "What do you want...?";
+		mes "If you have no business here,";
+		mes "then please leave. A tranquil state of mind is essential in self training...";
+		next;
+		mes "[Murnak Mijoul]";
+		mes "I wish to improve the sense of serenity in my heart in preparation for the Holy War that is to come. So please, do not disturb me.";
+		close;
+	} else if (job_crusader_q == 1) {
+		mes "[Murnak Mijoul]";
+		mes "What do you want...?";
+		mes "If you have no business here,";
+		mes "then please leave. A tranquil state of mind is essential in self training...";
+		next;
+		mes "[Murnak Mijoul]";
+		mes "I wish to improve the sense of serenity in my heart in preparation for the Holy War that is to come. So please, do not disturb me.";
+		close;
+	} else if (job_crusader_q == 2) {
+		mes "[Murnak Mijoul]";
+		mes "What do you want...?";
+		mes "If you have no business here,";
+		mes "then please leave. A tranquil state of mind is essential in self training...";
+		next;
+		mes "[Murnak Mijoul]";
+		mes "I wish to improve the sense of serenity in my heart in preparation for the Holy War that is to come. So please, do not disturb me.";
+		close;
+	} else if (job_crusader_q == 3) {
+		mes "[Murnak Mijoul]";
+		mes "What do you want...?";
+		mes "If you have no business here,";
+		mes "then please leave. A tranquil state of mind is essential in self training...";
+		next;
+		mes "[Murnak Mijoul]";
+		mes "I wish to improve the sense of serenity in my heart in preparation for the Holy War that is to come. So please, do not disturb me.";
+		close;
+	} else if (job_crusader_q == 4) {
+		mes "[Murnak Mijoul]";
+		mes "What is it...?";
+		mes "Do you have business";
+		if (Sex == Male) {
+			mes "with me, man of the sword?";
+		} else {
+			mes "with me, woman of the sword?";
+		}
+		next;
+		switch(select("I'd like to take the Crusader test.","Nothing.")) {
+		case 1:
+			mes "[Murnak Mijoul]";
+			mes "You wish to become a Crusader...? Hm, fighting in the Holy War is an admirable goal we may both share.";
+			next;
+			mes "[Murnak Mijoul]";
+			mes "Your name is";
+			mes ""+strcharinfo(0)+"...?";
+			mes "Let me take";
+			mes "a look at your face.";
+			next;
+			if ((equippeditem(2608) == 0) && (equippeditem(2626) == 0) && (equippeditem(2694) == 0)) {
+				mes "[Murnak Mijoul]";
+				mes "Hmm. You wish to become a Crusader, but do not wear a Rosary? I have no business with you if you cannot uphold our customs.";
+				close;
+			} else {
+				mes "[Murnak Mijoul]";
+				mes "Hmm...";
+				mes "You seem so-so, but also young and ambitious. Ambition may work against you if it is not tempered with patience.";
+				next;
+			}
+			mes "[Murnak Mijoul]";
+			mes "Don't give me a reason to doubt you, and show me your patience. You must endure my test with your patience if you wish to become a Crusader.";
+			next;
+			mes "[Murnak Mijoul]";
+			mes "You may take my test right away. It's actually quite simple. All you must do is walk to the end of the corridor.";
+			next;
+			mes "[Murnak Mijoul]";
+			mes "But...";
+			mes "You must keep one thing in mind. Under no condition are you allowed to kill the monsters.";
+			next;
+			set job_crusader_q,5;
+			mes "[Murnak Mijoul]";
+			mes "Well then...";
+			mes "Good luck.";
+			close2;
+			warp "job_cru.gat",98,40;
+			end;
+		case 2:
+			mes "[Murnak Mijoul]";
+			mes "You seem to have a lot of time on your hands. Why don't you do something more productive, like pick Jellopy off the streets or something?";
+			close;
+		}
+	} else if (job_crusader_q == 5) {
+		mes "[Murnak Mijoul]";
+		mes "What is it...?";
+		mes "You're the Swordman from before. What happened, did you fail?";
+		next;
+		switch(select("Let me retake the test.","What kind of test was that?!")) {
+		case 1:
+			mes "[Murnak Mijoul]";
+			mes "I'll let you retake the test as much as you like. But if you continuously fail, there's an inherent problem with your";
+			mes "state of mind.";
+			next;
+			if ((equippeditem(2608) == 0) && (equippeditem(2626) == 0) && (equippeditem(2694) == 0)) {
+				mes "[Murnak Mijoul]";
+				mes "Wait...";
+				mes "Where have you left your Rosary? You can't let that lie around just anywhere. We are supposed to be warriors of holiness.";
+				next;
+				mes "[Murnak Mijoul]";
+				mes "Carelessly losing things is an attitude for mere Swordsmen. If you really want to retake the test, you must respect the Crusader traditions.";
+				close;
+			} else {
+				mes "[Murnak Mijoul]";
+				mes "Your problem is your habit of hitting monsters the moment you see one. You must develop your patience and endurance.";
+				next;
+			}
+			mes "[Murnak Mijoul]";
+			mes "Just focus...";
+			mes "Your only goal is to walk from one end of the corridor to the other. It's simple when you think";
+			mes "about it.";
+			next;
+			mes "[Murnak Mijoul]";
+			mes "No matter what you do, do not kill any of the monsters. This time, think carefully before you draw your sword.";
+			next;
+			set job_crusader_q,5;
+			mes "[Murnak Mijoul]";
+			mes "Well then...";
+			mes "Good luck.";
+			close2;
+			warp "job_cru.gat",98,40;
+			end;
+		case 2:
+			mes "[Murnak Mijoul]";
+			mes "Who are you to say that you don't like my test? With that kind of attitude, you'll never become a Crusader.";
+			next;
+			mes "[Murnak Mijoul]";
+			mes "I can understand if you are easily frustrated, but you must overcome your frustration to pass this test.";
+			close;
+		}
+	} else if (job_crusader_q == 6) {
+		mes "[Murnak Mijoul]";
+		mes "Hmm, seems like you did well. It shouldn't have been too hard. You no longer have any business";
+		mes "with me.";
+		next;
+		mes "[Murnak Mijoul]";
+		mes "For your next test, go look for Gabriel Valentine in the Prontera Sanctuary. Well then, I'll see you around.";
+		close;
+	} else {
+		mes "[Murnak Mijoul]";
+		mes "Hmmm...";
+		mes "You still have tests to complete if you want to become a Crusader, don't you?";
+		close;
+	}
+}
+
+prt_church.gat,95,127,5	script	Crusader	745,{
+
+	if (Class != Job_Swordman) {
+		if (Class == Job_Crusader) {
+			mes "[Gabriel Valentine]";
+			mes "Welcome, fellow Crusader.";
+			mes "How is your training";
+			mes "coming along?";
+			next;
+			mes "[Gabriel Valentine]";
+			mes "You must not forget to train everyday, and prepare for the day the Holy War will come upon us.";
+			close;
+		} else if (Class == Job_Novice) {
+			mes "[Gabriel Valentine]";
+			mes "Welcome, I am a Crusader.";
+			mes "I am preparing for the";
+			mes "foretold Holy War";
+			mes "that is to come.";
+			next;
+			mes "[Gabriel Valentine]";
+			mes "If you are interested in becoming a Crusader, you must train first as a Swordman. Come and visit us again when you believe that you have learned enough as a Swordman...";
+			next;
+			mes "[Gabriel Valentine]";
+			mes "We are located in the Prontera Central Palace, so if you have time, it wouldn't hurt to stop by.";
+			close;
+		} else {
+			mes "[Gabriel Valentine]";
+			mes "Welcome, we are Crusaders.";
+			mes "We are preparing for the";
+			mes "foretold Holy War";
+			mes "that is to come.";
+			next;
+			mes "[Gabriel Valentine]";
+			mes "I hope you will train yourself in preparation for the future as well.";
+			close;
+		}
+	}
+	if (job_crusader_q == 0) {
+		mes "[Gabriel Valentine]";
+		mes "Welcome. We are Crusaders.";
+		mes "We are preparing for the";
+		mes "foretold Holy War";
+		mes "that is to come.";
+		next;
+		mes "[Gabriel Valentine]";
+		mes "If you would like to become a Crusader, please speak with our leader in the Prontera Central Palace.";
+		close;
+	} else if (job_crusader_q == 6) {
+		mes "[Gabriel Valentine]";
+		mes "Welcome.";
+		mes "Did you do well";
+		mes "on those painful tests?";
+		mes "I will be conducting your next test.";
+		next;
+		mes "[Gabriel Valentine]";
+		mes "My name is Gabriel Valentine. I, too, am preparing for the Holy War. For the time being, I act as guard for this church.";
+		next;
+		mes "[Gabriel Valentine]";
+		mes "I will test to see if you have acquired the knowledge that is necessary to become a Crusader.";
+		mes "We can't very well win the Holy War just by swinging a sword.";
+		next;
+		set '@cru_m,rand(1,3);
+		set '@cru_t,0;
+		mes "[Gabriel Valentine]";
+		mes "I will give";
+		mes "you 10 questions.";
+		mes "Answer them correctly.";
+		next;
+		if ('@cru_m == 1) {
+			mes "[Gabriel Valentine]";
+			mes "1. Which attribute is the most effective in atttacking the Undead?";
+			next;
+			switch(select("Neutral","Earth","Undead","Holy")) {
+			case 1:
+				break;
+			case 2:
+				break;
+			case 3:
+				break;
+			case 4:
+				set '@cru_t,'@cru_t + 10;
+				break;
+			}
+			mes "[Gabriel Valentine]";
+			mes "2. If the monster is a Level 2 Undead, how much more damage does a Holy attack do compared to Fire?";
+			next;
+			switch(select("25 %","50 %","75 %","100 %")) {
+			case 1:
+				break;
+			case 2:
+				set '@cru_t,'@cru_t + 10;
+				break;
+			case 3:
+				break;
+			case 4:
+				break;
+			}
+			mes "[Gabriel Valentine]";
+			mes "3. What item can you not get from an Evil Druid?";
+			next;
+			switch(select("Monk Hat","Yggdrasil leaf","White Herb","Amulet")) {
+			case 1:
+				set '@cru_t,'@cru_t + 10;
+				break;
+			case 2:
+				break;
+			case 3:
+				break;
+			case 4:
+				break;
+			}
+			mes "[Gabriel Valentine]";
+			mes "4. Which Undead monster";
+			mes "has the highest HP?";
+			next;
+			switch(select("Ghoul","Skeleton Prisoner","Wraith","Zombie Prisoner")) {
+			case 1:
+				break;
+			case 2:
+				break;
+			case 3:
+				break;
+			case 4:
+				set '@cru_t,'@cru_t + 10;
+				break;
+			}
+			mes "[Gabriel Valentine]";
+			mes "5. Which of the following monsters is a different size than the others?";
+			next;
+			switch(select("Wraith","Khalitzburg","Drake","Evil Druid")) {
+			case 1:
+				break;
+			case 2:
+				break;
+			case 3:
+				set '@cru_t,'@cru_t + 10;
+				break;
+			case 4:
+				break;
+			}
+			mes "[Gabriel Valentine]";
+			mes "6. Which card grants you tolerance to Undead property attacks?";
+			next;
+			switch(select("Orc Skeleton Card","Orc Zombie Card","Ghoul Card","Skel Worker Card")) {
+			case 1:
+				break;
+			case 2:
+				set '@cru_t,'@cru_t + 10;
+				break;
+			case 3:
+				break;
+			case 4:
+				break;
+			}
+			mes "[Gabriel Valentine]";
+			mes "7. What was the relationship between Munak and Bongun before they passed away?";
+			next;
+			switch(select("Big Brother and Little Sister","Childhood friends in the same village","Stepbrother and sister","Complete strangers")) {
+			case 1:
+				break;
+			case 2:
+				set '@cru_t,'@cru_t + 10;
+				break;
+			case 3:
+				break;
+			case 4:
+				break;
+			}
+			mes "[Gabriel Valentine]";
+			mes "8. Which of the following monsters is not aggressive?";
+			next;
+			switch(select("Soldier Skeleton","Orc Skeleton","Skeleton","Skel Worker")) {
+			case 1:
+				break;
+			case 2:
+				break;
+			case 3:
+				set '@cru_t,'@cru_t + 10;
+				break;
+			case 4:
+				break;
+			}
+			mes "[Gabriel Valentine]";
+			mes "9. What is the name of the shield in which a Munak Card has been inserted?";
+			next;
+			switch(select("Atomic Shield","Amulet Shield","Hypnotic Shield","Homeroth Shield")) {
+			case 1:
+				break;
+			case 2:
+				set '@cru_t,'@cru_t + 10;
+				break;
+			case 3:
+				break;
+			case 4:
+				break;
+			}
+			mes "[Gabriel Valentine]";
+			mes "10. Which of the following monsters does not drop Memento?";
+			next;
+			switch(select("Munak","Ghoul","Mummy","Soldier Skeleton")) {
+			case 1:
+				set '@cru_t,'@cru_t + 10;
+				break;
+			case 2:
+				break;
+			case 3:
+				break;
+			case 4:
+				break;
+			}
+		} else if ('@cru_m == 2) {
+			mes "[Gabriel Valentine]";
+			mes "1. Which of the following monsters is a different attribute than the others?";
+			next;
+			switch(select("Karat","Wind Ghost","Isis","Wanderer")) {
+			case 1:
+				break;
+			case 2:
+				break;
+			case 3:
+				set '@cru_t,'@cru_t + 10;
+				break;
+			case 4:
+				break;
+			}
+			mes "[Gabriel Valentine]";
+			mes "2. Which sword is effective in attacking Demon monsters?";
+			next;
+			switch(select("Decussate Tsurugi","Hollowed Tsurugi","Damned Tsurugi","Drowsy Tsurugi")) {
+			case 1:
+				set '@cru_t,'@cru_t + 10;
+				break;
+			case 2:
+				break;
+			case 3:
+				break;
+			case 4:
+				break;
+			}
+			mes "[Gabriel Valentine]";
+			mes "3. Which item is NOT dropped by Dokebi?";
+			next;
+			switch(select("Rough Elunium","Golden Hamer","Sword Mace","Mighty Staff")) {
+			case 1:
+				break;
+			case 2:
+				set '@cru_t,'@cru_t + 10;
+				break;
+			case 3:
+				break;
+			case 4:
+				break;
+			}
+			mes "[Gabriel Valentine]";
+			mes "4. Which Demon monster has the most HP?";
+			next;
+			switch(select("Giearth","Magnolia","Dokebi","Marionette")) {
+			case 1:
+				break;
+			case 2:
+				break;
+			case 3:
+				break;
+			case 4:
+				set '@cru_t,'@cru_t + 10;
+				break;
+			}
+			mes "[Gabriel Valentine]";
+			mes "5. Which Demon monster is a different size than the others?";
+			next;
+			switch(select("Ghostring","Whisper","Deviruchi","Baphomet Junior")) {
+			case 1:
+				set '@cru_t,'@cru_t + 10;
+				break;
+			case 2:
+				break;
+			case 3:
+				break;
+			case 4:
+				break;
+			}
+			mes "[Gabriel Valentine]";
+			mes "6. Which shield reduces damage inflicted by Demon monsters?";
+			next;
+			switch(select("Satanic Shield","Shield from Hell","Amulet Shield","Excellent Shield")) {
+			case 1:
+				break;
+			case 2:
+				set '@cru_t,'@cru_t + 10;
+				break;
+			case 3:
+				break;
+			case 4:
+				break;
+			}
+			mes "[Gabriel Valentine]";
+			mes "7. Which attribute is the most effective on the Wind Ghost?";
+			next;
+			switch(select("Water","Earth","Fire","Wind")) {
+			case 1:
+				break;
+			case 2:
+				set '@cru_t,'@cru_t + 10;
+				break;
+			case 3:
+				break;
+			case 4:
+				break;
+			}
+			mes "[Gabriel Valentine]";
+			mes "8. Which monster is different from the other Demon monsters?";
+			next;
+			switch(select("Sohee","Isis","Dokebi","Whisper")) {
+			case 1:
+				break;
+			case 2:
+				break;
+			case 3:
+				break;
+			case 4:
+				set '@cru_t,'@cru_t + 10;
+				break;
+			}
+			mes "[Gabriel Valentine]";
+			mes "9. What effect does the Marionette Card have?";
+			next;
+			switch(select("Increase defense against Shadow attacks by 30 %","Increase defense against poison attacks by 30 %","Increase defense against Ghost attacks by 30 %","Increase defense against Neutral attacks by 30 %")) {
+			case 1:
+				break;
+			case 2:
+				break;
+			case 3:
+				set '@cru_t,'@cru_t + 10;
+				break;
+			case 4:
+				break;
+			}
+			mes "[Gabriel Valentine]";
+			mes "10. Which of the following is an effective way to react when encountering a demon monster?";
+			next;
+			switch(select("Scream, 'Evil one, go away!'","Offer your soul and get a deal.","Put Holy Water on a weapon and attack.","Put on a Deviruchi hat.")) {
+			case 1:
+				break;
+			case 2:
+				break;
+			case 3:
+				set '@cru_t,'@cru_t + 10;
+				break;
+			case 4:
+				break;
+			}
+		} else {
+			mes "[Gabriel Valentine]";
+			mes "1. What level of 'Divine Protection' do you need to learn 'Demon Bane?'";
+			next;
+			switch(select("Level 1","Level 2","Level 3","Level 4")) {
+			case 1:
+				break;
+			case 2:
+				break;
+			case 3:
+				set '@cru_t,'@cru_t + 10;
+				break;
+			case 4:
+				break;
+			}
+			mes "[Gabriel Valentine]";
+			mes "2. If your INT is 30, including INT bonuses from quipment, at level 55, how much HP does Level 5 Heal recover?";
+			next;
+			switch(select("396","440","484","528")) {
+			case 1:
+				break;
+			case 2:
+				set '@cru_t,'@cru_t + 10;
+				break;
+			case 3:
+				break;
+			case 4:
+				break;
+			}
+			mes "[Gabriel Valentine]";
+			mes "3. With Level 7 Divine Protection, by how much is your defense against the Undead increased?";
+			next;
+			switch(select("21","22","23","24")) {
+			case 1:
+				set '@cru_t,'@cru_t + 10;
+				break;
+			case 2:
+				break;
+			case 3:
+				break;
+			case 4:
+				break;
+			}
+			mes "[Gabriel Valentine]";
+			mes "4. Which of the following spears can attack Nightmare, which is endowed with the Ghost attribute?";
+			next;
+			switch(select("Lance","Bill Guisarme","Cresent scythe","Zephyrus")) {
+			case 1:
+				break;
+			case 2:
+				break;
+			case 3:
+				break;
+			case 4:
+				set '@cru_t,'@cru_t + 10;
+				break;
+			}
+			mes "[Gabriel Valentine]";
+			mes "5. What level of 'Heal' do you need to learn 'Cure?'";
+			next;
+			switch(select("Level 1","Level 2","Level 3","Level 4")) {
+			case 1:
+				break;
+			case 2:
+				set '@cru_t,'@cru_t + 10;
+				break;
+			case 3:
+				break;
+			case 4:
+				break;
+			}
+			mes "[Gabriel Valentine]";
+			mes "6. What is the attack speed when Level 3 Cavalier Mastery is learned?";
+			next;
+			switch(select("70 % of normal speed","80 % of normal speed","90 % of normal speed","100 % of normal speed")) {
+			case 1:
+				break;
+			case 2:
+				set '@cru_t,'@cru_t + 10;
+				break;
+			case 3:
+				break;
+			case 4:
+				break;
+			}
+			mes "[Gabriel Valentine]";
+			mes "7. Which of the following is not correct of the Demon Bane skill?";
+			next;
+			switch(select("Increase attack on Undead","Only Acolytes can learn the skill","When mastered, + 30 increase","Passive Skill")) {
+			case 1:
+				break;
+			case 2:
+				set '@cru_t,'@cru_t + 10;
+				break;
+			case 3:
+				break;
+			case 4:
+				break;
+			}
+			mes "[Gabriel Valentine]";
+			mes "8. How much SP does Level 7 Heal use?";
+			next;
+			switch(select("30","31","33","35")) {
+			case 1:
+				break;
+			case 2:
+				set '@cru_t,'@cru_t + 10;
+				break;
+			case 3:
+				break;
+			case 4:
+				break;
+			}
+			mes "[Gabriel Valentine]";
+			mes "9. What status cannot be";
+			mes "cured with the Cure skill?";
+			next;
+			switch(select("Curse","Silence","Chaos","Blind")) {
+			case 1:
+				set '@cru_t,'@cru_t + 10;
+				break;
+			case 2:
+				break;
+			case 3:
+				break;
+			case 4:
+				break;
+			}
+			mes "[Gabriel Valentine]";
+			mes "10. What best describes a Crusader?";
+			next;
+			switch(select("One preparing for matrimony.","One preparing for the Holy War.","One preparing consummation.","One preparing potions.")) {
+			case 1:
+				break;
+			case 2:
+				set '@cru_t,'@cru_t + 10;
+				break;
+			case 3:
+				break;
+			case 4:
+				break;
+			}
+		}
+		mes "[Gabriel Valentine]";
+		mes "Good work~";
+		mes "Well, first let me";
+		mes "look at your results.";
+		next;
+		mes "[Gabriel Valentine]";
+		mes " " +strcharinfo(0)+"'s score";
+		mes "is " + '@cru_t + " points...";
+		if ('@cru_t == 100) {
+			set job_crusader_q,8;
+			mes "Superb! Now, it's time for";
+			mes "you to take the next test.";
+			next;
+			mes "[Gabriel Valentine]";
+			mes "Go to Prontera Castle";
+			mes "and meet Bliant Piyord.";
+			mes "I will inform him that";
+			mes "he will be testing you next.";
+			close;
+		} else if ('@cru_t == 90) {
+			set job_crusader_q,8;
+			mes "Well done~ Now, it's time for";
+			mes "you to take the next test.";
+			next;
+			mes "[Gabriel Valentine]";
+			mes "Go to Prontera Castle";
+			mes "and meet Bliant Piyord.";
+			mes "I will inform him that";
+			mes "he will be testing you next.";
+			close;
+		} else {
+			set job_crusader_q,7;
+			mes "Hmmm... What a pity.";
+			mes "Go study some more and";
+			mes "take this test again, okay?";
+			next;
+			mes "[Gabriel Valentine]";
+			mes "Don't stress, you need to know a lot in order to pass this test. In any case, I'll be waiting right here. When you think you're ready, come back, alright?";
+			close;
+		}
+	} else if (job_crusader_q == 7) {
+		mes "[Gabriel Valentine]";
+		mes "Welcome back~";
+		mes "Did you prepare";
+		mes "well for this test?";
+		mes "Let's try again,";
+		mes "shall we...?";
+		next;
+		set '@cru_m,rand(1,3);
+		set '@cru_t,0;
+		mes "[Gabriel Valentine]";
+		mes "Once again, I'm going";
+		mes "to give you 10 questions";
+		mes "Listen carefully, and";
+		mes "choose the correct answer.";
+		next;
+		if ('@cru_m == 1) {
+			mes "[Gabriel Valentine]";
+			mes "1. Which attribute is the most effective in atttacking the Undead?";
+			next;
+			switch(select("Neutral","Earth","Undead","Holy")) {
+			case 1:
+				break;
+			case 2:
+				break;
+			case 3:
+				break;
+			case 4:
+				set '@cru_t,'@cru_t + 10;
+				break;
+			}
+			mes "[Gabriel Valentine]";
+			mes "2. If the monster is a level 2 Undead, how much more damage does a Holy attack do compared to Fire?";
+			next;
+			switch(select("25%","50%","75%","100%")) {
+			case 1:
+				break;
+			case 2:
+				set '@cru_t,'@cru_t + 10;
+				break;
+			case 3:
+				break;
+			case 4:
+				break;
+			}
+			mes "[Gabriel Valentine]";
+			mes "3. What item can you not get from an Evil Druid?";
+			next;
+			switch(select("Monk Hat","Yggdrasil leaf","White Herb","Amulet")) {
+			case 1:
+				set '@cru_t,'@cru_t + 10;
+				break;
+			case 2:
+				break;
+			case 3:
+				break;
+			case 4:
+				break;
+			}
+			mes "[Gabriel Valentine]";
+			mes "4. Which Undead monster has the highest HP?";
+			next;
+			switch(select("Ghoul","Skeleton Prisoner","Wraith","Zombie Prisoner")) {
+			case 1:
+				break;
+			case 2:
+				break;
+			case 3:
+				break;
+			case 4:
+				set '@cru_t,'@cru_t + 10;
+				break;
+			}
+			mes "[Gabriel Valentine]";
+			mes "5. Which of the following is a different size?";
+			next;
+			switch(select("Wraith","Khalitzburg","Drake","Evil Druid")) {
+			case 1:
+				break;
+			case 2:
+				break;
+			case 3:
+				set '@cru_t,'@cru_t + 10;
+				break;
+			case 4:
+				break;
+			}
+			mes "[Gabriel Valentine]";
+			mes "6. Which card is immune to undead attacks?";
+			next;
+			switch(select("Orc Skeleton Card","Orc Zombie Card","Ghoul Card","Skel Worker Card")) {
+			case 1:
+				break;
+			case 2:
+				set '@cru_t,'@cru_t + 10;
+				break;
+			case 3:
+				break;
+			case 4:
+				break;
+			}
+			mes "[Gabriel Valentine]";
+			mes "7. What was teh relationship between Munak and Bongun before they passed away?";
+			next;
+			switch(select("Big Brother and Little Sister","Neighborhood Older Sister and Younger Brother","Stepbrother and sister","Did not know each other")) {
+			case 1:
+				break;
+			case 2:
+				set '@cru_t,'@cru_t + 10;
+				break;
+			case 3:
+				break;
+			case 4:
+				break;
+			}
+			mes "[Gabriel Valentine]";
+			mes "8. Which monster is a different type of undead monster?";
+			next;
+			switch(select("Soldier Skeleton","Orc Skeleton","Skeleton","Skel Worker")) {
+			case 1:
+				break;
+			case 2:
+				break;
+			case 3:
+				set '@cru_t,'@cru_t + 10;
+				break;
+			case 4:
+				break;
+			}
+			mes "[Gabriel Valentine]";
+			mes "9. What is the name of a shield with a Munak Card?";
+			next;
+			switch(select("Atomic Shield","Amulet Shield","Hypnotic Shield","Homeroth Shield")) {
+			case 1:
+				break;
+			case 2:
+				set '@cru_t,'@cru_t + 10;
+				break;
+			case 3:
+				break;
+			case 4:
+				break;
+			}
+			mes "[Gabriel Valentine]";
+			mes "10. Which of the following monsters does not drop its article left at death?";
+			next;
+			switch(select("Munak","Ghoul","Mummy","Soldier Skeleton")) {
+			case 1:
+				set '@cru_t,'@cru_t + 10;
+				break;
+			case 2:
+				break;
+			case 3:
+				break;
+			case 4:
+				break;
+			}
+		} else if ('@cru_m == 2) {
+			mes "[Gabriel Valentine]";
+			mes "1. Which of the following monsters has a different attribute?";
+			next;
+			switch(select("Karat","Wind Ghost","Isis","Wanderer")) {
+			case 1:
+				break;
+			case 2:
+				break;
+			case 3:
+				set '@cru_t,'@cru_t + 10;
+				break;
+			case 4:
+				break;
+			}
+			mes "[Gabriel Valentine]";
+			mes "2. Which sword is effective in attacking demon monsters?";
+			next;
+			switch(select("Decussate Tsurugi","Hollowed Tsurugi","Damned Tsurugi","Drowsy Tsurugi")) {
+			case 1:
+				set '@cru_t,'@cru_t + 10;
+				break;
+			case 2:
+				break;
+			case 3:
+				break;
+			case 4:
+				break;
+			}
+			mes "[Gabriel Valentine]";
+			mes "3. Which item does the Dokebi NOT drop?";
+			next;
+			switch(select("Rough Elunium","Golden Hamer","Sword Mace","Mighty Staff")) {
+			case 1:
+				break;
+			case 2:
+				set '@cru_t,'@cru_t + 10;
+				break;
+			case 3:
+				break;
+			case 4:
+				break;
+			}
+			mes "[Gabriel Valentine]";
+			mes "4. Which demon monster has the most HP?";
+			next;
+			switch(select("Giearth","Magnolia","Dokebi","Marionette")) {
+			case 1:
+				break;
+			case 2:
+				break;
+			case 3:
+				break;
+			case 4:
+				set '@cru_t,'@cru_t + 10;
+				break;
+			}
+			mes "[Gabriel Valentine]";
+			mes "5. Which demon monster is a different size?";
+			next;
+			switch(select("Ghostring","Whisper","Deviruchi","Baphomet Junior")) {
+			case 1:
+				set '@cru_t,'@cru_t + 10;
+				break;
+			case 2:
+				break;
+			case 3:
+				break;
+			case 4:
+				break;
+			}
+			mes "[Gabriel Valentine]";
+			mes "6. Which shield decreases attacks from demon monsters?";
+			next;
+			switch(select("Satanic Shield","Shield from Hell","Amulet Shield","Excellent Shield")) {
+			case 1:
+				break;
+			case 2:
+				set '@cru_t,'@cru_t + 10;
+				break;
+			case 3:
+				break;
+			case 4:
+				break;
+			}
+			mes "[Gabriel Valentine]";
+			mes "7. Which attribute is the most effective on the Wind Ghost?";
+			next;
+			switch(select("Water","Earth","Fire","Wind")) {
+			case 1:
+				break;
+			case 2:
+				set '@cru_t,'@cru_t + 10;
+				break;
+			case 3:
+				break;
+			case 4:
+				break;
+			}
+			mes "[Gabriel Valentine]";
+			mes "8. Which monster is different from the other demon monsters?";
+			next;
+			switch(select("Sohee","Isis","Dokebi","Whisper")) {
+			case 1:
+				break;
+			case 2:
+				break;
+			case 3:
+				break;
+			case 4:
+				set '@cru_t,'@cru_t + 10;
+				break;
+			}
+			mes "[Gabriel Valentine]";
+			mes "9. What effect does the Marionette Card have?";
+			next;
+			switch(select("Increase defense against shadow attacks by 30%","Increase defense against poison attacks by 30%","Increase defense against ghost attacks by 30%","Increase defense against neutral attacks by 30%")) {
+			case 1:
+				break;
+			case 2:
+				break;
+			case 3:
+				set '@cru_t,'@cru_t + 10;
+				break;
+			case 4:
+				break;
+			}
+			mes "[Gabriel Valentine]";
+			mes "10. Which of the following is an effective way to react when encountering a demon monster?";
+			next;
+			switch(select("Yell out - Evil one go away!","Offer your soul and get a deal.","Put Holy Water on weapon and attack.","Put on a Deviruchi hat.")) {
+			case 1:
+				break;
+			case 2:
+				break;
+			case 3:
+				set '@cru_t,'@cru_t + 10;
+				break;
+			case 4:
+				break;
+			}
+		} else {
+			mes "[Gabriel Valentine]";
+			mes "1. What level of 'Divine Protection' do you need to learn 'Demon Bane'?";
+			next;
+			switch(select("Lv. 1","Lv. 2","Lv. 3","Lv. 4")) {
+			case 1:
+				break;
+			case 2:
+				break;
+			case 3:
+				set '@cru_t,'@cru_t + 10;
+				break;
+			case 4:
+				break;
+			}
+			mes "[Gabriel Valentine]";
+			mes "2. If your INT is 30 at level 55 (including the INT from equipment) how much HP does Lv. 5 Heal recover?";
+			next;
+			switch(select("396","440","484","528")) {
+			case 1:
+				break;
+			case 2:
+				set '@cru_t,'@cru_t + 10;
+				break;
+			case 3:
+				break;
+			case 4:
+				break;
+			}
+			mes "[Gabriel Valentine]";
+			mes "3. When using Divine Protection Lv. 7, how much does your defense increase by against Undead?";
+			next;
+			switch(select("21","22","23","24")) {
+			case 1:
+				set '@cru_t,'@cru_t + 10;
+				break;
+			case 2:
+				break;
+			case 3:
+				break;
+			case 4:
+				break;
+			}
+			mes "[Gabriel Valentine]";
+			mes "4. Which of the following spears can attack the Nightmare with ghost attributes?";
+			next;
+			switch(select("Lance","Bill Guisarme","Cresent scythe","Zephyrus")) {
+			case 1:
+				break;
+			case 2:
+				break;
+			case 3:
+				break;
+			case 4:
+				set '@cru_t,'@cru_t + 10;
+				break;
+			}
+			mes "[Gabriel Valentine]";
+			mes "5. What level of 'Heal' do you need to learn 'Cure'?";
+			next;
+			switch(select("Lv. 1","Lv. 2","Lv. 3","Lv. 4")) {
+			case 1:
+				break;
+			case 2:
+				set '@cru_t,'@cru_t + 10;
+				break;
+			case 3:
+				break;
+			case 4:
+				break;
+			}
+			mes "[Gabriel Valentine]";
+			mes "6. What is the attack speed with Cavalier Mastery Lv.3?";
+			next;
+			switch(select("70% of normal speed","80% of normal speed","90% of normal speed","100% of normal speed")) {
+			case 1:
+				break;
+			case 2:
+				set '@cru_t,'@cru_t + 10;
+				break;
+			case 3:
+				break;
+			case 4:
+				break;
+			}
+			mes "[Gabriel Valentine]";
+			mes "7. Which of the following is not a correction description of Demon Bane?";
+			next;
+			switch(select("Increase attack on Undead","Only Acolytes can learn the skill.","When mastered, +30 increase.","Passive Skill")) {
+			case 1:
+				break;
+			case 2:
+				set '@cru_t,'@cru_t + 10;
+				break;
+			case 3:
+				break;
+			case 4:
+				break;
+			}
+			mes "[Gabriel Valentine]";
+			mes "8. How much SP does Heal Lv. 7 use?";
+			next;
+			switch(select("30","31","33","35")) {
+			case 1:
+				break;
+			case 2:
+				set '@cru_t,'@cru_t + 10;
+				break;
+			case 3:
+				break;
+			case 4:
+				break;
+			}
+			mes "[Gabriel Valentine]";
+			mes "9. When can you cure with Cure?";
+			next;
+			switch(select("Curse","Silence","Chaos","Blind")) {
+			case 1:
+				set '@cru_t,'@cru_t + 10;
+				break;
+			case 2:
+				break;
+			case 3:
+				break;
+			case 4:
+				break;
+			}
+			mes "[Gabriel Valentine]";
+			mes "10. What best describes a Crusader?";
+			next;
+			switch(select("One preparing a cookie.","One preparing for the Holy War.","One preparing to drink.","One preparing potions.")) {
+			case 1:
+				break;
+			case 2:
+				set '@cru_t,'@cru_t + 10;
+				break;
+			case 3:
+				break;
+			case 4:
+				break;
+			}
+		}
+		mes "[Gabriel Valentine]";
+		mes "Good work~";
+		mes "Well, first let me";
+		mes "look at your results.";
+		next;
+		mes "[Gabriel Valentine]";
+		mes ""+strcharinfo(0)+"'s score";
+		mes "is " + '@cru_t + " points...";
+		if ('@cru_t == 100) {
+			set job_crusader_q,8;
+			mes "Superb! Now, it's time for";
+			mes "you to take the next test.";
+			next;
+			mes "[Gabriel Valentine]";
+			mes "Go to Prontera Castle";
+			mes "and meet Bliant Piyord.";
+			mes "I will inform him that";
+			mes "he will be testing you next.";
+			close;
+		} else if ('@cru_t == 90) {
+			set job_crusader_q,8;
+			mes "Well done~ Now, it's time for";
+			mes "you to take the next test.";
+			next;
+			mes "[Gabriel Valentine]";
+			mes "Go to Prontera Castle";
+			mes "and meet Bliant Piyord.";
+			mes "I will inform him that";
+			mes "he will be testing you next.";
+			close;
+		} else if ('@cru_t == 80) {
+			set job_crusader_q,8;
+			mes "Seems like you prepared a lot so I'll let you pass this time.";
+			mes "Hurry now and go take the next test.";
+			next;
+			mes "[Gabriel Valentine]";
+			mes "Go to the Prontera Castle and meet Bliant Piyord.";
+			mes "I will inform him to prepare the next test.";
+			close;
+		} else {
+			set job_crusader_q,7;
+			mes "Aww, what a pity. Come again after studying some more.";
+			next;
+			mes "[Gabriel Valentine]";
+			mes "I shall wait since there is a lot of preparation required.";
+			mes "Come back when you believe you are ready...";
+			close;
+		}
+	} else if (job_crusader_q == 8) {
+		mes "[Gabriel Valentine]";
+		mes "Like I mentioned before, you should go to Prontera Castle and meet with Bliant Piyord to take your next test. Good luck, and become a Crusder soon, alright?";
+		close;
+	} else if (job_crusader_q == 9) {
+		mes "[Gabriel Valentine]";
+		mes "Like I mentioned before, you should go to Prontera Castle and meet with Bliant Piyord to take your next test. Good luck, and become a Crusder soon, alright?";
+		close;
+	} else if (job_crusader_q == 10) {
+		mes "[Gabriel Valentine]";
+		mes "What are you still doing here? You've already completed all the tests. Go talk to our leader, you're pretty much ready to become a Crusader now.";
+		next;
+		mes "[Gabriel Valentine]";
+		mes "You will soon join us in our preparations for the Holy War. Continue to live with faith after becoming a Crusader.";
+		close;
+	} else {
+		mes "[Gabriel Valentine]";
+		mes "Mmm...?";
+		mes "It seems that you're";
+		mes "an aspiring Crusader...";
+		mes "But, it's not my turn";
+		mes "to test you quite yet.";
+		next;
+		mes "[Gabriel Valentine]";
+		mes "Finish those other tests,";
+		mes "and come to me once you're";
+		mes "instructed. Until then,";
+		mes "I'll see you later~";
+		close;
+	}
+}
+
+prt_castle.gat,35,151,5	script	Patron Kinght	751,{
+
+	if (Class != Job_Swordman) {
+		if (Class == Job_Crusader) {
+			mes "[Bliant Piyord]";
+			mes "Welcome.";
+			mes "How goes";
+			mes "your training?";
+			next;
+			mes "[Bliant Piyord]";
+			mes "Develop your faith. From faith springs strength and discipline. Day after day, train yourself and become a great Crusader.";
+			close;
+		} else if (Class == Job_Novice) {
+			mes "[Bliant Piyord]";
+			mes "Welcome.";
+			mes "We are Crusaders,";
+			mes "warriors of holiness preparing for the great Holy War that is to come.";
+			next;
+			mes "[Bliant Piyord]";
+			mes "Are you interested";
+			mes "in becoming a Crusader?";
+			mes "We are always waiting";
+			mes "for more capable men and";
+			mes "women to join our ranks.";
+			next;
+			mes "[Bliant Piyord]";
+			mes "Train as a Swordman and come to us when you think you are ready. If you have been called by Odin to become a Crusader, that would be even better.";
+			close;
+		} else {
+			mes "[Bliant Piyord]";
+			mes "Welcome.";
+			mes "We are Crusaders,";
+			mes "warriors of holiness preparing for the great Holy War that is to come.";
+			next;
+			mes "[Bliant Piyord]";
+			mes "Even in these relatively peaceful times, our training is ceaseless. We must be ready for the day with the tides of darkness shall rush against mankind...";
+			close;
+		}
+	}
+	if (job_crusader_q == 0) {
+		mes "[Bliant Piyord]";
+		mes "Welcome.";
+		mes "We are Crusaders,";
+		mes "warriors of holiness preparing for the great Holy War that is to come.";
+		next;
+		mes "[Bliant Piyord]";
+		mes "Are you interested";
+		mes "in becoming a Crusader?";
+		mes "We are always waiting";
+		mes "for more capable men and";
+		mes "women to join our ranks.";
+		next;
+		mes "[Bliant Piyord]";
+		mes "To become a Crusader, you must train until you are Job Level 40. For more details, please speak with our leader inside.";
+		next;
+		mes "[Bliant Piyord]";
+		mes "May Odin";
+		mes "be with you...";
+		close;
+	} else if (job_crusader_q == 8) {
+		mes "[Bliant Piyord]";
+		mes "Welcome.";
+		mes "It's nice";
+		mes "to meet you.";
+		mes "It is now time";
+		mes "for your final test.";
+		next;
+		mes "[Bliant Piyord]";
+		mes "My name is Bliant Piyord and I too, am preparing for the Holy War. It must've been quite a hassle to come all this way.";
+		next;
+		mes "[Bliant Piyord]";
+		mes "This test will gauge your skills in battle. Only those with great fighting ability can become Crusaders.";
+		next;
+		mes "[Bliant Piyord]";
+		mes "To take the battle test, bring";
+		mes "1 ^3355FFHoly Water^000000. This will be used to purify you prior to taking the test.";
+		next;
+		mes "[Bliant Piyord]";
+		mes "Well then...";
+		mes "Shall we";
+		mes "begin right away?";
+		mes "Or do you need time";
+		mes "to prepare yourself?";
+		next;
+		switch(select("I would like to begin.","Give me some time to prepare.")) {
+		case 1:
+			if ((equippeditem(2608) == 0) && (equippeditem(2626) == 0) && (equippeditem(2694) == 0)) {
+				set job_crusader_q,9;
+				mes "[Bliant Piyord]";
+				mes "Just a second, you do not have a Rosary equipped. As a Crusader, you must always have a Rosary on your person.";
+				next;
+				mes "[Bliant Piyord]";
+				mes "Come back and take";
+				mes "the test after you";
+				mes "have a Rosary.";
+				close;
+			}
+			if (countitem(523) > 0) {
+				set job_crusader_q,9;
+				delitem 523,1;
+				mes "[Bliant Piyord]";
+				mes "Then, I'll start";
+				mes "the test. You will";
+				mes "be purified with the";
+				mes "Holy Water you prepared.";
+				next;
+				mes "[Bliant Piyord]";
+				mes "...............";
+				next;
+				mes "[Bliant Piyord]";
+				mes "Let's begin.";
+				mes "Go and enter";
+				mes "the waiting room.";
+				mes "Defeat the monsters";
+				mes "that appear in";
+				mes "the 4 stages.";
+				close2;
+				warp "job_cru.gat",24,169;
+				end;
+			} else {
+				set job_crusader_q,9;
+				mes "[Bliant Piyord]";
+				mes "Prepare 1 ^3355FFHoly Water^000000 to take the battle test. As I've said, it will be used to purify you prior to taking the test.";
+				next;
+				mes "[Bliant Piyord]";
+				mes "Come back and take";
+				mes "the test after you";
+				mes "have prepared";
+				mes "1 Holy Water.";
+				mes "I shall be";
+				mes "waiting.";
+				close;
+			}
+		case 2:
+			mes "[Bliant Piyord]";
+			mes "Well then,";
+			mes "take your time.";
+			mes "I shall be waiting.";
+			close;
+		}
+	} else if (job_crusader_q == 9) {
+		mes "[Bliant Piyord]";
+		mes "Welcome.";
+		mes "Are you prepared";
+		mes "for the test now?";
+		next;
+		mes "[Bliant Piyord]";
+		mes "Would you like to begin now, or do you still need time to make preparations?";
+		next;
+		switch(select("I would like to begin.","Give me some time to prepare.")) {
+		case 1:
+			if ((equippeditem(2608) == 0) && (equippeditem(2626) == 0) && (equippeditem(2694) == 0)) {
+				mes "[Bliant Piyord]";
+				mes "Just a second, you do not have a Rosary equipped. As a Crusader, you must always have a Rosary on your person.";
+				next;
+				mes "[Bliant Piyord]";
+				mes "Come back and take";
+				mes "the test after you";
+				mes "have a Rosary.";
+				close;
+			}
+			if (countitem(523) > 0) {
+				delitem 523,1;
+				mes "[Bliant Piyord]";
+				mes "Then, I'll start";
+				mes "the test. You will";
+				mes "be purified with the";
+				mes "Holy Water you prepared.";
+				next;
+				mes "[Bliant Piyord]";
+				mes "...............";
+				next;
+				mes "[Bliant Piyord]";
+				mes "Let's begin.";
+				mes "Go and enter";
+				mes "the waiting room.";
+				mes "Defeat the monsters";
+				mes "that appear in";
+				mes "the 4 stages.";
+				close2;
+				warp "job_cru.gat",24,169;
+				end;
+			} else {
+				mes "[Bliant Piyord]";
+				mes "Prepare 1 ^3355FFHoly Water^000000 to take the battle test. As I've said, it will be used to purify you prior to taking the test.";
+				next;
+				mes "[Bliant Piyord]";
+				mes "Come back and take";
+				mes "the test after you";
+				mes "have prepared";
+				mes "1 Holy Water.";
+				mes "I shall be";
+				mes "waiting.";
+				close;
+			}
+		case 2:
+			mes "[Bliant Piyord]";
+			mes "Well then,";
+			mes "take your time.";
+			mes "I shall be waiting.";
+			close;
+		}
+	} else if (job_crusader_q == 10) {
+		mes "[Bliant Piyord]";
+		mes "Congratulations.";
+		mes "You have completed";
+		mes "all the tests to";
+		mes "become a Crusader.";
+		next;
+		mes "[Bliant Piyord]";
+		mes "Go talk to our";
+		mes "leader inside.";
+		mes "We welcome you into";
+		mes "the ranks of those";
+		mes "preparing for the";
+		mes "coming Holy War.";
+		close;
+	} else {
+		mes "[Bliant Piyord]";
+		mes "Welcome.";
+		mes "Are you not one of the ones in the process of becoming a Crusader?";
+		next;
+		mes "[Bliant Piyord]";
+		mes "It's not your turn";
+		mes "to take my test yet.";
+		mes "Come back after taking";
+		mes "all the other tests.";
+		next;
+		mes "[Bliant Piyord]";
+		mes "I'll see you soon.";
+		mes "May Odin's blessings";
+		mes "be with you.";
+		close;
+	}
+}
+
+job_cru.gat,1,1,1	script	CrusaderPeace	107,{
+
+	end;
+
+OnTimer300000:
+	donpcevent "CrusaderPeace::OnCommandReset";
+	end;
+
+OnTimer301000:
+	donpcevent "CrusaderPeace::OnCommandOn";
+	stopnpctimer;
+	end;
+
+OnInit:
+OnCommandOn:
+	monster "job_cru.gat",94,45,"Mandragora",1020,1,"CrusaderPeace::OnMyMobDead";
+	monster "job_cru.gat",94,55,"Mandragora",1020,1,"CrusaderPeace::OnMyMobDead";
+	monster "job_cru.gat",94,65,"Mandragora",1020,1,"CrusaderPeace::OnMyMobDead";
+	monster "job_cru.gat",94,75,"Mandragora",1020,1,"CrusaderPeace::OnMyMobDead";
+	monster "job_cru.gat",94,85,"Mandragora",1020,1,"CrusaderPeace::OnMyMobDead";
+	monster "job_cru.gat",94,95,"Mandragora",1020,1,"CrusaderPeace::OnMyMobDead";
+	monster "job_cru.gat",101,45,"Mandragora",1020,1,"CrusaderPeace::OnMyMobDead";
+	monster "job_cru.gat",101,55,"Mandragora",1020,1,"CrusaderPeace::OnMyMobDead";
+	monster "job_cru.gat",101,65,"Mandragora",1020,1,"CrusaderPeace::OnMyMobDead";
+	monster "job_cru.gat",101,75,"Mandragora",1020,1,"CrusaderPeace::OnMyMobDead";
+	monster "job_cru.gat",101,85,"Mandragora",1020,1,"CrusaderPeace::OnMyMobDead";
+	monster "job_cru.gat",101,95,"Mandragora",1020,1,"CrusaderPeace::OnMyMobDead";
+	monster "job_cru.gat",98,50,"Flora",1118,1,"CrusaderPeace::OnMyMobDead";
+	monster "job_cru.gat",92,60,"Flora",1118,1,"CrusaderPeace::OnMyMobDead";
+	monster "job_cru.gat",104,60,"Flora",1118,1,"CrusaderPeace::OnMyMobDead";
+	monster "job_cru.gat",98,70,"Flora",1118,1,"CrusaderPeace::OnMyMobDead";
+	monster "job_cru.gat",92,80,"Flora",1118,1,"CrusaderPeace::OnMyMobDead";
+	monster "job_cru.gat",104,80,"Flora",1118,1,"CrusaderPeace::OnMyMobDead";
+	monster "job_cru.gat",98,90,"Flora",1118,1,"CrusaderPeace::OnMyMobDead";
+	monster "job_cru.gat",90,50,"Greatest General",1277,1,"CrusaderPeace::OnMyMobDead";
+	monster "job_cru.gat",105,50,"Greatest General",1277,1,"CrusaderPeace::OnMyMobDead";
+	monster "job_cru.gat",98,60,"Greatest General",1277,1,"CrusaderPeace::OnMyMobDead";
+	monster "job_cru.gat",90,70,"Greatest General",1277,1,"CrusaderPeace::OnMyMobDead";
+	monster "job_cru.gat",105,70,"Greatest General",1277,1,"CrusaderPeace::OnMyMobDead";
+	monster "job_cru.gat",98,80,"Greatest General",1277,1,"CrusaderPeace::OnMyMobDead";
+	monster "job_cru.gat",90,90,"Greatest General",1277,1,"CrusaderPeace::OnMyMobDead";
+	monster "job_cru.gat",105,90,"Greatest General",1277,1,"CrusaderPeace::OnMyMobDead";
+	monster "job_cru.gat",98,50,"Familiar",1005,1,"CrusaderPeace::OnMyMobDead";
+	monster "job_cru.gat",98,55,"Familiar",1005,1,"CrusaderPeace::OnMyMobDead";
+	monster "job_cru.gat",98,60,"Familiar",1005,1,"CrusaderPeace::OnMyMobDead";
+	monster "job_cru.gat",98,65,"Familiar",1005,1,"CrusaderPeace::OnMyMobDead";
+	monster "job_cru.gat",98,70,"Familiar",1005,1,"CrusaderPeace::OnMyMobDead";
+	monster "job_cru.gat",98,75,"Familiar",1005,1,"CrusaderPeace::OnMyMobDead";
+	monster "job_cru.gat",98,80,"Familiar",1005,1,"CrusaderPeace::OnMyMobDead";
+	monster "job_cru.gat",98,85,"Familiar",1005,1,"CrusaderPeace::OnMyMobDead";
+	monster "job_cru.gat",98,90,"Familiar",1005,1,"CrusaderPeace::OnMyMobDead";
+	monster "job_cru.gat",90,34,"Mushroom",1182,1,"CrusaderPeace::OnMyMobDead";
+	monster "job_cru.gat",105,34,"Mushroom",1182,1,"CrusaderPeace::OnMyMobDead";
+	initnpctimer;
+	end;
+
+OnCommandReset:
+	killmonster "job_cru.gat","CrusaderPeace::OnMyMobDead";
+	end;
+
+OnMyMobDead:
+	warp "prt_fild05.gat",353,251;
+	end;
+}
+
+job_cru.gat,98,105,4	script	CrusaderWarp	45,3,3,{
+
+OnTouch:
+	set job_crusader_q,6;
+	warp "prt_castle.gat",164,28;
+	end;
+}
+
+job_cru.gat,24,187,4	script	Patron Knight	751,{
+
+	mes "[Bliant Piyord]";
+	mes "Welcome.";
+	mes "You will take";
+	mes "the last test here.";
+	mes "If you are ready for";
+	mes "the test, enter the";
+	mes "waiting room.";
+	next;
+	mes "[Bliant Piyord]";
+	mes "Only one person can take the test at a time. If someone else is already testing, please wait until the testing area is made available once again.";
+	next;
+	mes "[Bliant Piyord]";
+	mes "Each person will get 4 minutes to complete the test. If you wish to leave in the middle of the test, please disconnect from the game.";
+	close;
+}
+
+job_cru.gat,24,187,2	script	Waiting Room::CrusaderWait	700,1,1,{
+
+	end;
+
+OnInit:
+	waitingroom "Waiting Room",20,"CrusaderWait::OnStartArena",1;
+	enablewaitingroomevent;
+	end;
+
+OnStartArena:
+	donpcevent "CrusaderWait::OnCommandReset";
+	warpwaitingpc "job_cru.gat",168,17;
+	hideoffnpc "CrusaderMob0";
+	donpcevent "CrusaderMob0::OnCommandOn";
+	disablewaitingroomevent;
+	end;
+
+OnCommandOn:
+	enablewaitingroomevent;
+	end;
+
+OnCommandReset:
+	killmonster "job_cru.gat","CrusaderMob0::OnMyMobDead";
+	killmonster "job_cru.gat","CrusaderMob3::OnMyMobDead";
+	killmonster "job_cru.gat","CrusaderMob4::OnMyMobDead";
+	set getvariableofnpc('mobcount,"CrusaderMob0"),0;
+	set getvariableofnpc('mobswitch,"CrusaderMob0"),0;
+	set getvariableofnpc('mobfix,"CrusaderMob3"),0;
+	set getvariableofnpc('mobfix,"CrusaderMob4"),0;
+	hideonnpc "CrusaderMob0";
+	hideonnpc "CrusaderMob1";
+	hideonnpc "CrusaderMob2";
+	hideonnpc "CrusaderMob3";
+	hideonnpc "CrusaderMob4";
+	hideonnpc "CrusaderMob5";
+	hideonnpc "CrusaderMob6";
+	hideonnpc "CrusaderMob7";
+	hideonnpc "CrusaderMob8";
+	end;
+}
+
+job_cru.gat,168,17,0	script	Zombie Guide	139,2,2,{
+
+OnTouch:
+	mes "[Bliant Piyord]";
+	mes "Go forth and defeat all";
+	mes "the monsters that appear.";
+	mes "You will not pass if any";
+	mes "are remaining.";
+	next;
+	mes "[Bliant Piyord]";
+	mes "You will be given";
+	mes "4 minutes. Go forth";
+	mes "and do your best...";
+	close;
+}
+
+job_cru.gat,2,1,1	script	CrusaderMob0	110,{
+
+	end;
+
+OnInit:
+	hideonnpc "CrusaderMob0";
+	end;
+
+OnCommandOn:
+	hideoffnpc "CrusaderMob1";
+	hideoffnpc "CrusaderMob2";
+	hideoffnpc "CrusaderMob3";
+	hideoffnpc "CrusaderMob4";
+	hideoffnpc "CrusaderMob6";
+	donpcevent "CrusaderMob6::OnCommandOn";
+	end;
+
+OnCommandM1:
+	monster "job_cru.gat",168,45,"Zombie",1015,1,"CrusaderMob0::OnMyMobDead";
+	monster "job_cru.gat",168,45,"Zombie",1015,1,"CrusaderMob0::OnMyMobDead";
+	monster "job_cru.gat",168,45,"Zombie",1015,1,"CrusaderMob0::OnMyMobDead";
+	monster "job_cru.gat",168,45,"Zombie",1015,1,"CrusaderMob0::OnMyMobDead";
+	monster "job_cru.gat",168,45,"Zombie",1015,1,"CrusaderMob0::OnMyMobDead";
+	monster "job_cru.gat",168,45,"Zombie",1015,1,"CrusaderMob0::OnMyMobDead";
+	set 'mobswitch,1;
+	end;
+
+OnCommandM2:
+	monster "job_cru.gat",168,80,"Soldier Skeleton",1028,1,"CrusaderMob0::OnMyMobDead";
+	monster "job_cru.gat",168,80,"Soldier Skeleton",1028,1,"CrusaderMob0::OnMyMobDead";
+	monster "job_cru.gat",168,80,"Soldier Skeleton",1028,1,"CrusaderMob0::OnMyMobDead";
+	set 'mobswitch,2;
+	end;
+
+OnCommandM3:
+	monster "job_cru.gat",168,115,"Mummy",1041,1,"CrusaderMob0::OnMyMobDead";
+	set 'mobswitch,3;
+	end;
+
+OnMyMobDead:
+	set 'mobcount,'mobcount + 1;
+	if ((('mobcount > 5) && ('mobswitch == 1)) || (('mobcount > 2) && ('mobswitch == 2)) || (('mobcount > 0) && ('mobswitch == 3))) {
+		set job_crusader_q,10;
+		set 'mobcount,0;
+		set 'mobswitch,0;
+	}
+	end;
+
+OnCommandReset:
+	set 'mobcount,0;
+	set 'mobswitch,0;
+	killmonster "job_cru.gat","CrusaderMob0::OnMyMobDead";
+	end;
+}
+
+job_cru.gat,168,45,0	script	CrusaderMob1	139,15,1,{
+
+OnInit:
+	hideonnpc "CrusaderMob1";
+	end;
+
+OnTouch:
+	donpcevent "CrusaderMob0::OnCommandM1";
+	hideonnpc "CrusaderMob1";
+	end;
+}
+
+job_cru.gat,168,80,0	script	CrusaderMob2	139,15,1,{
+
+OnInit:
+	hideonnpc "CrusaderMob2";
+	end;
+
+OnTouch:
+	donpcevent "CrusaderMob0::OnCommandM2";
+	hideonnpc "CrusaderMob2";
+	end;
+}
+
+job_cru.gat,168,115,0	script	CrusaderMob3	139,15,1,{
+
+OnInit:
+	hideonnpc "CrusaderMob3";
+	end;
+
+OnTouch:
+	if ('mobfix == 1) {
+		end;
+	}
+	monster "job_cru.gat",168,110,"Archer Skeleton",1016,1,"CrusaderMob3::OnMyMobDead";
+	set 'mobfix,1;
+	donpcevent "CrusaderMob0::OnCommandM3";
+	end;
+
+OnMyMobDead:
+	set 'mobfix,0;
+	end;
+
+OnCommandReset:
+	killmonster "job_cru.gat","CrusaderMob3::OnMyMobDead";
+	set 'mobfix,0;
+	end;
+}
+
+job_cru.gat,168,150,0	script	CrusaderMob4	139,15,1,{
+
+OnInit:
+	hideonnpc "CrusaderMob4";
+	end;
+
+OnTouch:
+	if ('mobfix == 1) {
+		end;
+	}
+	monster "job_cru.gat",168,150,"Ghoul",1036,1,"CrusaderMob4::OnMyMobDead";
+	set 'mobfix,1;
+	end;
+
+OnMyMobDead:
+	hideoffnpc "CrusaderMob5";
+	set 'mobfix,0;
+	end;
+
+OnCommandReset:
+	killmonster "job_cru.gat","CrusaderMob4::OnMyMobDead";
+	set 'mobfix,0;
+	end;
+}
+
+job_cru.gat,168,180,4	script	CrusaderMob5	45,3,3,{
+
+OnInit:
+	hideonnpc "CrusaderMob5";
+	end;
+
+OnTouch:
+	warp "prt_castle.gat",35,147;
+	donpcevent "CrusaderMob0::OnCommandReset";
+	hideonnpc "CrusaderMob0";
+	donpcevent "CrusaderMob6::OnCommandStop";
+	hideonnpc "CrusaderMob6";
+	donpcevent "CrusaderWait::OnCommandOn";
+	hideonnpc "CrusaderMob5";
+	end;
+}
+
+job_cru.gat,2,2,1	script	CrusaderMob6	110,{
+
+	end;
+
+OnTimer60000:
+	hideoffnpc "CrusaderMob8";
+	end;
+
+OnTimer61000:
+	hideonnpc "CrusaderMob8";
+	end;
+
+OnTimer240000:
+	hideoffnpc "CrusaderMob7";
+	end;
+
+OnTimer241000:
+	donpcevent "CrusaderMob0::OnCommandReset";
+	donpcevent "CrusaderMob3::OnCommandReset";
+	donpcevent "CrusaderMob4::OnCommandReset";
+	end;
+
+OnTimer242000:
+	hideonnpc "CrusaderMob0";
+	hideonnpc "CrusaderMob3";
+	hideonnpc "CrusaderMob4";
+	hideonnpc "CrusaderMob7";
+	end;
+
+OnTimer243000:
+	donpcevent "CrusaderWait::OnCommandOn";
+	hideonnpc "CrusaderMob6";
+	stopnpctimer;
+	end;
+
+OnInit:
+	hideonnpc "CrusaderMob6";
+	end;
+
+OnCommandOn:
+	initnpctimer;
+	end;
+
+OnCommandStop:
+	stopnpctimer;
+	end;
+}
+
+job_cru.gat,168,110,0	script	CrusaderMob7	139,14,82,{
+
+OnInit:
+	hideonnpc "CrusaderMob7";
+	end;
+
+OnTouch:
+	warp "prontera.gat",234,318;
+	end;
+}
+
+job_cru.gat,168,17,0	script	CrusaderMob8	139,14,5,{
+
+OnInit:
+	hideonnpc "CrusaderMob8";
+	end;
+
+OnTouch:
+	warp "prontera.gat",234,318;
+	end;
+}

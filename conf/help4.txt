@@ -1,0 +1,40 @@
+命令使用方法：在公聊频道内打入这些命令。
+
+@night             ---- 黑夜
+@day               ---- 白天
+
+@mapexit           ---- 关闭map-server。
+
+@gat               ---- 调试用途，查看周围坐标信息
+@packet <封包信息> ---- 调试用途，查看封包
+
+@spiritball <数字> ---- 气弹个数[1--1000]之间
+
+@reloaditemdb      ---- 重新读取itemdb
+@reloadmobdb       ---- 重新读取mobdb
+@reloadskilldb     ---- 重新读取skilldb
+@reloadatcommand   ---- 重新读取atcommand_athena.conf
+@reloadbattleconf  ---- 重新读取battle_athena.conf
+@reloadgmaccount   ---- 重新读取gm_account_filename
+@reloadstatusdb    ---- 重新载入职业属性相关、精炼成功率设定
+@reloadpcdb        ---- 重新载入经验、职业技能树、属性设定
+
+@mapinfo [<数字>]  ---- 查看当前地图信息
+    <数字> ---- 0或省略：mapflag
+                1：mapflag和玩家信息
+                2：mapflag和NPC信息
+                3：mapflag和聊天室信息
+
+@clock	---- 取得服务器的时间
+
+@weather <数字或天气名> <地图名> ---- 在指定地图内设置天气（<地图名>省略时表示当前地图）
+         1:rain 2:snow 3:sakura 4:fog 5:leaves 0:day（清除天气效果）
+@users  ---- 服务器内人数分布
+
+@idsearch <文字列>   ---- 查询含有指定了的文字的物品
+@shuffle <数字>      ---- PC、MOB重新配置（0：PC、1：MOB）
+@maintenance <数字>  ---- 1：维护、2：取消维护
+
+@misceffect <数字>   ---- 表示各种效果
+
+@mailbox             ---- 打开信箱

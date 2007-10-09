@@ -1,0 +1,3646 @@
+//--------------------------------------------------------------
+//               (c)2004-2007 Freya Team Presents:              
+//                  ___                                         
+//                 /   |_   _ _ __ ___  _ __ __ _               
+//                / /| | | | | '__/ _ \| '__/ _` |              
+//               / ___ | |_| | | | (_) | | | (_| |++            
+//              /_/  |_|\____|_|  \___/|_|  \__,_|              
+//                    http://www.ro-freya.net                   
+//--------------------------------------------------------------
+// Script Title: Comodo Town NPCs / Quests	Author: Tsuyuki
+//--------------------------------------------------------------
+// Revision History: v1.0
+//--------------------------------------------------------------
+//	1.0 First version, converted from Aegis [Tsuyuki]
+//--------------------------------------------------------------
+// Additional Notes: * Official-certified / Aegis-certified *
+//--------------------------------------------------------------
+
+
+//--------------------------------------------------------------
+// Comodo Town NPCs - [Tsuyuki]
+//--------------------------------------------------------------
+
+comodo.gat,206,310,4	script	Campground Boy	704,{
+
+	if (comodo_npc < 4) {
+		switch(comodo_npc) {
+		case 0:
+			mes "[Rochito]";
+			mes "Bread, fruits, vegetables...";
+			mes "Bleh. All that other food is";
+			mes "nothing compared to the";
+			mes "hearty flavor of meat. Yeap,";
+			mes "BBQ camping in Comodo is";
+			mes "heaven to a meat lover like me~";
+			next;
+			switch(select("BBQ Camping...?","Cancel")) {
+			case 1:
+				mes "[Rochito]";
+				mes "Yeah man... You can eat";
+				mes "Komodoru meat all day when";
+				mes "you go BBQ camping. Komodoru";
+				mes "is an animal native to Comodo";
+				mes "and every part of it is delicious. Every. Single. Morsel.";
+				next;
+				mes "[Rochito]";
+				mes "What makes this meat even";
+				mes "more delicious is the special";
+				mes "Koserahserah seasoning they";
+				mes "use. That stuff is almost...";
+				mes "addictive. Without it, we";
+				mes "can't start our barbeque!";
+				next;
+				mes "[Rochito]";
+				mes "If we settled on anything";
+				mes "less than the very best BBQ,";
+				mes "then our comrades that died";
+				mes "to help ^FF0000banish that witch^000000 would";
+				mes "surely be ashamed of us!";
+				next;
+				mes "[Rochito]";
+				mes "Say, would you do us a favor?";
+				mes "The Chief of Comodo was going";
+				mes "to bring the Koserahserah and";
+				mes "join us for our barbeque, but";
+				mes "we're guessing he's got to";
+				mes "cancel because of his duties.";
+				next;
+				mes "[Rochito]";
+				mes "Let's see, our Chief lives to";
+				mes "the west of these campgrounds.";
+				mes "Would you visit him and see";
+				mes "what's taking him so long";
+				mes "to get over here?";
+				set comodo_npc,1;
+				close;
+			case 2:
+				mes "[Rochito]";
+				mes "You know, people gather";
+				mes "on these campgrounds in";
+				mes "memory and respect of those";
+				mes "that have fallen in battle";
+				mes "against the witch of Comodo.";
+				next;
+				mes "[Rochito]";
+				mes "Long before Comodo was";
+				mes "built inside this huge cave,";
+				mes "this witch used to live in here.^FFFFFF ^000000 A lot of people died trying to";
+				mes "get rid of her, but there're^FFFFFF ^000000 rumors that she's still around...";
+				close;
+			}
+		case 1:
+			mes "[Rochito]";
+			mes "Komodoru meat is especially";
+			mes "great when it's seasoned with";
+			mes "Koserahserah. That flavoring";
+			mes "is one of Comodo's claims to";
+			mes "fame! You should try some~";
+			next;
+			mes "[Rochito]";
+			mes "Speaking of which, our Chief";
+			mes "still hasn't come and brought";
+			mes "the Koserahserah! Would you";
+			mes "see what's taking him so long?";
+			mes "His house is located west of";
+			mes "these campgrounds.";
+			close;
+		case 2:
+			mes "[Rochito]";
+			mes "Oh, hey, you're back.";
+			mes "Did you speak to our";
+			mes "Chief? Don't tell me";
+			mes "he had to cancel--we've";
+			mes "been planning this outing";
+			mes "with him for a quite a while...";
+			next;
+			mes "^3355FFYou give Rochito the";
+			mes "Koserahserah seasoning,";
+			mes "and explain why the Chief";
+			mes "cannot attend the barbeque.^000000";
+			next;
+			mes "[Rochito]";
+			mes "Awww, nuts. I guess he's";
+			mes "got responsbilities, but it's";
+			mes "still a little disappointing.";
+			mes "He's a buddy, after all. Well,";
+			mes "at least he was kind enough";
+			mes "to send the Koserahserah.";
+			next;
+			mes "[Rochito]";
+			mes "It's really too bad that";
+			mes "he can't join us. Ah, I've got";
+			mes "an idea! Would you please bring";
+			mes "this bottle to Tausupa, er, our";
+			mes "Chief? It's Mureuchieligu, a";
+			mes "special vintage wine~";
+			next;
+			mes "^3355FFYou've received a bottle";
+			mes "of Mureuchieligu wine to";
+			mes "deliver to the Comodo Chief.^000000";
+			set comodo_npc,3;
+			close;
+		case 3:
+			mes "[Rochito]";
+			mes "I know that I should be";
+			mes "delivering that bottle of";
+			mes "wine to the Chief myself,";
+			mes "but I've got to tend to this";
+			mes "barbeque. I hope you";
+			mes "understand...";
+			next;
+			mes "[Rochito]";
+			mes "Anyway, you'd be doing";
+			mes "me a huge favor if you";
+			mes "spoke to the Chief, and gave";
+			mes "him my thanks, along with";
+			mes "that bottle of Mureuchieligu.";
+			close;
+		}
+	} else {
+		mes "[Rochito]";
+		mes "Oh, hey there~";
+		mes "Thanks for helping us";
+		mes "out earlier. I wish the";
+		mes "Chief would join us in our";
+		mes "barbeque, but I understand";
+		mes "that he has to protect Comodo.";
+		next;
+		mes "[Rochito]";
+		mes "Hey, you know what?";
+		mes "I can't exactly repay you";
+		mes "with, you know, actual stuff,";
+		mes "but I can give you a hot tip.";
+		mes "There's some guy at the local";
+		mes "Pub with some precious info.";
+		next;
+		mes "[Rochito]";
+		mes "Yeah, supposedly, this";
+		mes "guy knows more about the";
+		mes "cave that Comodo was built";
+		mes "in... Anyway, I really get the";
+		mes "feeling that it just might";
+		mes "lead to something, you know?";
+		close;
+	}
+}
+
+comodo.gat,204,310,4	script	Camping Youth	65,{
+
+	if (comodo_npc < 5) {
+		switch(comodo_npc) {
+		case 0:
+			mes "[Rockha]";
+			mes "Oh man...";
+			mes "I'm so excited!";
+			mes "My buddies and I've";
+			mes "been planning to get";
+			mes "together for this barbeque";
+			mes "for such a long time~";
+			next;
+			switch(select("Buddies...?","Cancel")) {
+			case 1:
+				mes "[Rockha]";
+				mes "Yeah, some of us know";
+				mes "each other when we fought";
+				mes "together in the War of the";
+				mes "Witch. In fact, one of them";
+				mes "is the Chief of this village!";
+				mes "Huh, why isn't he here yet?";
+				next;
+				mes "[Rockha]";
+				mes "Anyway, even though";
+				mes "our stations in life have";
+				mes "changed, thankfully we're";
+				mes "still friends. It's kinda weird, though, being on a first name";
+				mes "basis with a village chief.";
+				next;
+				mes "[Rockha]";
+				mes "Makes me feel...";
+				mes "Important. I'm hobnobbing";
+				mes "with a major political figure,";
+				mes "after all. Amazing where your";
+				mes "friends can end up in life...";
+				close;
+			case 2:
+				mes "[Rockha]";
+				mes "I've almost forgotten";
+				mes "how much I love hanging";
+				mes "out with these guys. We";
+				mes "should have barbeques";
+				mes "together all the time~";
+				close;
+			}
+		case 1:
+			mes "[Rockha]";
+			mes "Oh man...";
+			mes "I'm so excited!";
+			mes "My buddies and I've";
+			mes "been planning to get";
+			mes "together for this barbeque";
+			mes "for such a long time~";
+			next;
+			switch(select("Buddies...?","Cancel")) {
+			case 1:
+				mes "[Rockha]";
+				mes "Yeah, some of us know";
+				mes "each other when we fought";
+				mes "together in the War of the";
+				mes "Witch. In fact, one of them";
+				mes "is the Chief of this village!";
+				mes "Huh, why isn't he here yet?";
+				next;
+				mes "[Rockha]";
+				mes "Anyway, even though";
+				mes "our stations in life have";
+				mes "changed, thankfully we're";
+				mes "still friends. It's kinda weird, though, being on a first name";
+				mes "basis with a village chief.";
+				next;
+				mes "[Rockha]";
+				mes "Makes me feel...";
+				mes "Important. I'm hobnobbing";
+				mes "with a major political figure,";
+				mes "after all. Amazing where your";
+				mes "friends can end up in life...";
+				close;
+			case 2:
+				mes "[Rockha]";
+				mes "I've almost forgotten";
+				mes "how much I love hanging";
+				mes "out with these guys. We";
+				mes "should have barbeques";
+				mes "together all the time~";
+				close;
+			}
+		case 2:
+			mes "[Rockha]";
+			mes "Wha--? Tausupa can't come,";
+			mes "but he still sent us all of this Koserahserah? What a guy...";
+			mes "I guess... That gives us";
+			mes "a reason to hold another";
+			mes "barbeque here soon, right?";
+			close;
+		case 3:
+			mes "[Rockha]";
+			mes "Hey, when you deliver";
+			mes "that wine to Tausupa, the";
+			mes "Village Chief, would you let";
+			mes "him know that we miss the guy?";
+			mes "He may be busy, but he'll always^FFFFFF ^000000 be our irreplaceable buddy.";
+			close;
+		case 4:
+			mes "[Rockha]";
+			mes "Oh hey, you spoke";
+			mes "to Tausupa? Ah, it's";
+			mes "too bad that he's busy,";
+			mes "but it's great to hear that";
+			mes "he'll enjoy our gift. Okay~";
+			mes "I believe it's time to eat!";
+			next;
+			mes "[Rockha]";
+			mes "But before that, let's";
+			mes "make a toast... to Tausupa!";
+			mes "Guardian of Comodo, and";
+			mes "one of the best friends that";
+			mes "a guy can have! Cheers!";
+			mes "Hahahaha hahahaha~!";
+			set comodo_npc,5;
+			next;
+			mes "[Rockha]";
+			mes "Ahh, you know what would";
+			mes "make this meal perfect?";
+			mes "Some of that legendary";
+			mes "^3355FFComodo Cheese^000000 that I heard";
+			mes "about from ^3355FFToruna^000000. Sure, it";
+			mes "might not exist, but still...!";
+			close;
+		}
+	} else {
+		mes "[Rockha]";
+		mes "You know, you're a really";
+		mes "chill person. Thanks for";
+		mes "helping us keep in touch";
+		mes "with our old friend, the";
+		mes "Village Chief. Man, being";
+		mes "responsible must be rough...";
+		next;
+		mes "[Rockha]";
+		mes "There's two things that";
+		mes "would make our barbeque";
+		mes "absolutely perfect--having";
+		mes "the Village Chief here, and";
+		mes "some of that legendary Comodo^FFFFFF ^000000 Cheese that ^3355FFToruna^000000 told me about.";
+		close;
+	}
+}
+
+comodo.gat,209,305,4	script	Camping Maiden	71,{
+
+	mes "[Emralhandas]";
+	mes "Rockha, let me pour";
+	mes "you another drink. We";
+	mes "always dreamed of this";
+	mes "during the War of the Witch...";
+	mes "Having a good time, all of us";
+	mes "together in a time of peace~";
+	next;
+	switch(select("War of the Witch?","Cancel")) {
+	case 1:
+		mes "[Emralhandas]";
+		mes "Before I tell you about the";
+		mes "War of the Witch, I guess";
+		mes "I should tell you about the";
+		mes "quest to retrieve 4 rare swords";
+		mes "of power, said to be the most";
+		mes "powerful weapons ever made.";
+		next;
+		mes "[Emralhandas]";
+		mes "Now, all 4 swords were";
+		mes "successfully found 10 years";
+		mes "after the search began. Then,";
+		mes "4 protectors were chosen to";
+		mes "ensure that the swords did";
+		mes "not fall into the wrong hands.";
+		next;
+		mes "[Emralhandas]";
+		mes "You might not think so just";
+		mes "by looking at us, but we were";
+		mes "the protectors--me, Rockha,";
+		mes "Rochito, and Tausupa, the chief";
+		mes "of this village. Now, we guarded these weapons very carefully...";
+		next;
+		mes "[Emralhandas]";
+		mes "However, that didn't deter";
+		mes "Mariposum, ancient witch of";
+		mes "Comodo, from attacking us and";
+		mes "trying to steal the swords. She";
+		mes "was incredibly powerful, and";
+		mes "we needed an army to fight her.";
+		next;
+		mes "[Emralhandas]";
+		mes "That was the War of the";
+		mes "Witch, basically. Mariposum";
+		mes "with her own strange weapon";
+		mes "of mass destruction against the";
+		mes "four of us backed by a large";
+		mes "force of courageous soldiers.";
+		next;
+		mes "[Emralhandas]";
+		mes "Many of our comrades died...";
+		mes "But finally we succeeded in";
+		mes "imprisoning the witch by using";
+		mes "the power of the swords. Yeah,";
+		mes "if it weren't for Tausupa, we'd";
+		mes "never have been able to do it.";
+		close;
+		case 2:
+		mes "[Emralhandas]";
+		mes "Rockha, we still have";
+		mes "to finish our mission:";
+		mes "eat all of the barbeque";
+		mes "that that we possibly can!";
+		mes "Let's just stuff ourselves...";
+		mes "All the way until tommorrow!";
+		close;
+	}
+}
+
+comodo.gat,209,314,4	script	Campground Lad	706,{
+
+	if (comodo_npc < 4) {
+		switch(comodo_npc) {
+		case 0:
+			mes "[Rotute]";
+			mes "Years ago, there was a huge";
+			mes "quest to retrieve 4 rare swords";
+			mes "of incredible power, supposedly";
+			mes "the strongest swords ever made!";
+			mes "But you know, there's a strange";
+			mes "rumor about a secret 5th sword.";
+			next;
+			mes "[Rotute]";
+			mes "This 5th sword is supposed";
+			mes "to be hidden near Glastheim.";
+			mes "If it does exist, it might have";
+			mes "the power to change the world!";
+			mes "Isn't that freakin' scary?";
+			close;
+		case 1:
+			mes "[Rotute]";
+			mes "Years ago, there was a huge";
+			mes "quest to retrieve 4 rare swords";
+			mes "of incredible power, supposedly";
+			mes "the strongest swords ever made!";
+			mes "But you know, there's a strange";
+			mes "rumor about a secret 5th sword.";
+			next;
+			mes "[Rotute]";
+			mes "This 5th sword is supposed";
+			mes "to be hidden near Glastheim.";
+			mes "If it does exist, it might have";
+			mes "the power to change the world!";
+			mes "Isn't that freakin' scary?";
+			close;
+		case 2:
+			mes "[Rotute]";
+			mes "Hey, isn't that Koserahserah?";
+			mes "That's the best seasoning that";
+			mes "you can have for meat dishes!";
+			mes "Oh, you got that from the Chief";
+			mes "to give to Rochito? Wow, they";
+			mes "must be really good friends...";
+			close;
+		case 3:
+			mes "[Rotute]";
+			mes "Hey, isn't that Koserahserah?";
+			mes "That's the best seasoning that";
+			mes "you can have for meat dishes!";
+			mes "Oh, you got that from the Chief";
+			mes "to give to Rochito? Wow, they";
+			mes "must be really good friends...";
+			close;
+		}
+	} else {
+		mes "[Rotute]";
+		mes "Hello, thanks for helping";
+		mes "out Rockha, Rochito and";
+		mes "Emralhandas. They've known";
+		mes "me since I was born, so it's";
+		mes "like they're family to me.";
+		next;
+		mes "[Rotute]";
+		mes "One of the reasons that";
+		mes "they brought me here to";
+		mes "Comodo was so that I could";
+		mes "finally meet Tausupa. But...";
+		mes "I guess he's too busy now.";
+		mes "Still, I like this place!";
+		close;
+	}
+}
+
+comodo.gat,221,310,4	script	BBQ Boy	86,{
+
+	mes "[Rinta]";
+	mes "I didn't mean to,";
+	mes "but I accidentally";
+	mes "eavesdropped on those";
+	mes "people over there. Are";
+	mes "they really old friends";
+	mes "with our Village Chief?";
+	next;
+	mes "[Rinta]";
+	mes "In that case, they must";
+	mes "be getting the special";
+	mes "treatment usually reserved";
+	mes "for visiting dignitaries and";
+	mes "the like. Or something like that. ^FFFFFF ^000000";
+	close;
+}
+
+comodo.gat,218,309,4	script	BBQ Visitor	90,{
+
+	mes "[Razy]";
+	mes "Those people over there";
+	mes "are friends of the Village";
+	mes "Chief? I was wondering about";
+	mes "them for the longest time...";
+	mes "I didn't even know our Chief";
+	mes "had friends outside of Comodo.";
+	next;
+	mes "[Razy]";
+	mes "You know, they kind of";
+	mes "strike me as old war buddies,";
+	mes "sprinkling their conversations";
+	mes "with words like ''mission'' all";
+	mes "the time. Then, there's those";
+	mes "little scars they all have...";
+	close;
+}
+
+comodo.gat,216,310,4	script	BBQ Papa	50,{
+
+	mes "[BBQ Boy]";
+	mes "D-daddy! Is what those";
+	mes "people talking about true?";
+	mes "Was there really an evil";
+	mes "witch here in our village?";
+	next;
+	mes "[BBQ Mama]";
+	mes "Honey...";
+	mes "I'm sure those";
+	mes "good people were";
+	mes "just kidding around~";
+	mes "How can that be true?";
+	next;
+	mes "[BBQ Papa]";
+	mes "Now, now, don't tell";
+	mes "me my little man is afraid";
+	mes "of something like a little";
+	mes "witch. It's just an old fairy";
+	mes "tale, son: no reason to";
+	mes "feel frightened at all.";
+	next;
+	mes "[BBQ Boy]";
+	mes "No, Daddy, I'm not";
+	mes "scared! But if the witch";
+	mes "really lived here, then her";
+	mes "home is somewhere around";
+	mes "here in Comodo, right? I'm";
+	mes "gonna go find it someday!";
+	next;
+	mes "[BBQ Mama]";
+	mes "Oh, but I'm sure our";
+	mes "Chief would already know";
+	mes "something about that witch";
+	mes "if she truly exists. Anyway,";
+	mes "let's hurry and eat before";
+	mes "the barbeque burns, okay?";
+	next;
+	mes "[BBQ Boy]";
+	mes "Yay, barbeque!";
+	mes "Mmmmm... Someday,";
+	mes "if that witch is real,";
+	mes "I'm gonna find out";
+	mes "all about her!";
+	close;
+}
+
+comodo.gat,215,307,4	script	BBQ Mama	74,{
+
+	mes "[BBQ Boy]";
+	mes "D-daddy! Is what those";
+	mes "people talking about true?";
+	mes "Was there really an evil";
+	mes "witch here in our village?";
+	next;
+	mes "[BBQ Mama]";
+	mes "Honey...";
+	mes "I'm sure those";
+	mes "good people were";
+	mes "just kidding around~";
+	mes "How can that be true?";
+	next;
+	mes "[BBQ Papa]";
+	mes "Now, now, don't tell";
+	mes "me my little man is afraid";
+	mes "of something like a little";
+	mes "witch. It's just an old fairy";
+	mes "tale, son: no reason to";
+	mes "feel frightened at all.";
+	next;
+	mes "[BBQ Boy]";
+	mes "No, Daddy, I'm not";
+	mes "scared! But if the witch";
+	mes "really lived here, then her";
+	mes "home is somewhere around";
+	mes "here in Comodo, right? I'm";
+	mes "gonna go find it someday!";
+	next;
+	mes "[BBQ Mama]";
+	mes "Oh, but I'm sure our";
+	mes "Chief would already know";
+	mes "something about that witch";
+	mes "if she truly exists. Anyway,";
+	mes "let's hurry and eat before";
+	mes "the barbeque burns, okay?";
+	next;
+	mes "[BBQ Boy]";
+	mes "Yay, barbeque!";
+	mes "Mmmmm... Someday,";
+	mes "if that witch is real,";
+	mes "I'm gonna find out";
+	mes "all about her!";
+	close;
+}
+
+comodo.gat,213,310,4	script	BBQ Boy	706,{
+
+	mes "[BBQ Boy]";
+	mes "D-daddy! Is what those";
+	mes "people talking about true?";
+	mes "Was there really an evil";
+	mes "witch here in our village?";
+	next;
+	mes "[BBQ Mama]";
+	mes "Honey...";
+	mes "I'm sure those";
+	mes "good people were";
+	mes "just kidding around~";
+	mes "How can that be true?";
+	next;
+	mes "[BBQ Papa]";
+	mes "Now, now, don't tell";
+	mes "me my little man is afraid";
+	mes "of something like a little";
+	mes "witch. It's just an old fairy";
+	mes "tale, son: no reason to";
+	mes "feel frightened at all.";
+	next;
+	mes "[BBQ Boy]";
+	mes "No, Daddy, I'm not";
+	mes "scared! But if the witch";
+	mes "really lived here, then her";
+	mes "home is somewhere around";
+	mes "here in Comodo, right? I'm";
+	mes "gonna go find it someday!";
+	next;
+	mes "[BBQ Mama]";
+	mes "Oh, but I'm sure our";
+	mes "Chief would already know";
+	mes "something about that witch";
+	mes "if she truly exists. Anyway,";
+	mes "let's hurry and eat before";
+	mes "the barbeque burns, okay?";
+	next;
+	mes "[BBQ Boy]";
+	mes "Yay, barbeque!";
+	mes "Mmmmm... Someday,";
+	mes "if that witch is real,";
+	mes "I'm gonna find out";
+	mes "all about her!";
+	close;
+}
+
+cmd_in02.gat,32,140,4	script	Chief	49,{
+
+	if (comodo_npc > 4) {
+		mes "[Tausupa]";
+		mes "Maybe you can't tell because";
+		mes "of the way the light reflects,";
+		mes "but Comodo is actually built";
+		mes "inside a huge cave, giving the";
+		mes "illusion of an eternal night.";
+		mes "It's quite beautiful, really...";
+		next;
+		mes "[Tausupa]";
+		mes "People come from all over";
+		mes "the world to experience the";
+		mes "excitement and beauty of";
+		mes "our unique little village.";
+		mes "We've become quite";
+		mes "the tourist attraction~";
+		close;
+	} else {
+		if (comodo_npc > 2) {
+			switch(comodo_npc) {
+			case 3:
+				mes "[Tausupa]";
+				mes "Oh, how are my friends";
+				mes "doing? I really wish that";
+				mes "I could have delivered that";
+				mes "Koserahserah personally,";
+				mes "but I can't shirk my duties as";
+				mes "Village Chief and protector.";
+				next;
+				mes "^3355FFYou give Tausupa the";
+				mes "Meruchieligu wine that";
+				mes "Rochito asked you to deliver.^000000";
+				next;
+				mes "[Tausupa]";
+				mes "Ah... How very kind of";
+				mes "them! They really sent me";
+				mes "this wine? I'm truly touched...";
+				mes "Rockha must have chosen";
+				mes "this--I'll be sure to enjoy it.";
+				next;
+				mes "[Tausupa]";
+				mes "Would you please express my";
+				mes "thanks to my friends, ^3355FFRochito^000000,";
+				mes "and ^3355FFRockha^000000? It's been far too";
+				mes "long since I've seen them, but";
+				mes "I hope that I get a chance to";
+				mes "visit them someday soon.";
+				set comodo_npc,4;
+				close;
+			case 4:
+				mes "[Tausupa]";
+				mes "Would you please express my";
+				mes "thanks to my friends, ^3355FFRochito^000000,";
+				mes "and ^3355FFRockha^000000? It's been far too";
+				mes "long since I've seen them, but";
+				mes "I hope that I get a chance to";
+				mes "visit them someday soon.";
+				close;
+			}
+		} else {
+			mes "[Tausupa]";
+			mes "Greetings, adventurer,";
+			mes "I am Tausupa, the Chief of";
+			mes "Comodo, a city famous for its^FFFFFF ^000000 beauty and nightlife. I hope you";
+			mes "enjoy your stay, whether you are^FFFFFF ^000000 seeking excitement or relaxation~";
+			next;
+			switch(select("About Casino","About Banished Witch","Cancel")) {
+			case 1:
+				mes "[Tausupa]";
+				mes "Ah yes, Comodo is world";
+				mes "famous for its Casino. There";
+				mes "are many games that you can";
+				mes "enjoy, but you'll need to use";
+				mes "the Casino's special Eulwo^FFFFFF ^000000 currency and conversion system...";
+				close;
+			case 2:
+				switch(comodo_npc) {
+				case 0:
+					mes "[Tausupa]";
+					mes "Banished witch...?";
+					mes "Ah ha ha, do not worry,";
+					mes "my friend, that is merely";
+					mes "a very old tale. Not worth";
+					mes "your concern at all...";
+					close;
+				case 1:
+					mes "[Tausupa]";
+					mes "Ah, judging from the scent";
+					mes "of BBQ meat on your clothes,";
+					mes "I'm guessing that you ran into";
+					mes "Rochito in the campgrounds,";
+					mes "right? He must have told you^FFFFFF ^000000 that old story about the witch...";
+					next;
+					mes "[Tausupa]";
+					mes "I'd like nothing better";
+					mes "than to join them, but I must";
+					mes "stay here. The witch does exist, and one my jobs is to make sure";
+					mes "that she does not revive by using my sword's power to suppress her.";
+					next;
+					mes "[Tausupa]";
+					mes "Although I planned to see";
+					mes "them today, my duties must";
+					mes "take priority. Would you please";
+					mes "take this seasoning to Rochito";
+					mes "and let him know that I can't";
+					mes "come, and that I'm sorry...?";
+					next;
+					mes "^3355FFYou have received";
+					mes "the Koserahserah";
+					mes "seasoning from the Chief.^000000";
+					next;
+					mes "[Tausupa]";
+					mes "Thank you so much...";
+					mes "I understand that my";
+					mes "friends cannot begin the";
+					mes "barbeque without Comodo's";
+					mes "world famous seasoning...";
+					set comodo_npc,2;
+					close;
+				case 2:
+					mes "[Tausupa]";
+					mes "Please take this special";
+					mes "Koserserah seasoning to";
+					mes "my friend ^3355FFRochito^000000 at the";
+					mes "barbeque campground. Thanks";
+					mes "again for your help, adventurer. ^FFFFFF ^000000";
+					close;
+				}
+			case 3:
+				mes "[Tausupa]";
+				mes "Maybe you can't tell because";
+				mes "of the way the light reflects,";
+				mes "but Comodo is actually built";
+				mes "inside a huge cave, giving the";
+				mes "illusion of an eternal night.";
+				mes "It's quite beautiful, really...";
+				next;
+				mes "[Tausupa]";
+				mes "People come from all over";
+				mes "the world to experience the";
+				mes "excitement and beauty of";
+				mes "our unique little village.";
+				mes "We've become quite";
+				mes "the tourist attraction~";
+				close;
+			}
+		}
+	}
+}
+
+cmd_in02.gat,73,81,4	script	Martine	48,{
+
+	mes "[Martine]";
+	mes "Gambling...? The games";
+	mes "provided here in the Comodo";
+	mes "Casino are a higher form of";
+	mes "entertainment than gambling.";
+	mes "Do you know what I mean?";
+	next;
+	mes "[Martine]";
+	mes "Granted, I did lose";
+	mes "all of my zeny playing";
+	mes "in this Casino, but I have";
+	mes "no regrets. I'll simply earn";
+	mes "more money, then blow it all";
+	mes "again. Or I just might win big!";
+	next;
+	mes "[Martine]";
+	mes "Bwahahahaahah~!";
+	mes "Yes, I can only lose so";
+	mes "many times until I hit the";
+	mes "jackpot! You see, you see?";
+	mes "I'm playing the freakin' odds.";
+	close;
+}
+
+cmd_in02.gat,48,55,4	script	Scoursege	51,{
+
+	mes "[Scoursege]";
+	mes "Damn it! Where did that";
+	mes "guy go? He promised me that";
+	mes "he'd easily double my money!";
+	mes "Wait. Oh, wait. Oh... Oh no...";
+	next;
+	mes "[Scoursege]";
+	mes "Don't tell me that I just got";
+	mes "conned out of my money!";
+	mes "Oh no! Still, I better report";
+	mes "this to the proper authorities,";
+	mes "no matter how ashamed I feel...";
+	close;
+}
+
+cmd_in02.gat,64,43,4	script	Roberto	709,{
+
+	mes "[Roberto]";
+	mes "Heh heh heh...";
+	mes "Whaaaat a gullible";
+	mes "guy. I took his money";
+	mes "so easily! I mean, I didn't";
+	mes "even come up with that great";
+	mes "of a lie, and he gave it to me!";
+	close;
+}
+
+cmd_in02.gat,89,72,4	script	Deniroz	89,{
+
+	mes "[Deniroz]";
+	mes "All I need is for this";
+	mes "little steel bead to fall";
+	mes "into the right hole. Then,";
+	mes "I'll win the jackpot. Alright.";
+	mes "Here goes. One last time...";
+	next;
+	mes "[Deniroz]";
+	mes "No! No, I was so close!";
+	mes "Alright, next time I should";
+	mes "be even closer, right? Yeah.";
+	mes "Okay, this time will be the";
+	mes "last time. Not again! Alright,";
+	mes "j-just one more t-time...";
+	close;
+}
+
+cmd_in02.gat,178,92,4	script	Shalone	101,{
+
+	mes "[Shalone]";
+	mes "Oh, I'm sorry, sir,";
+	mes "but it looks like you";
+	mes "lost again. Maybe you";
+	mes "should quit for now...";
+	mes "You've been having quite";
+	mes "a run of really bad luck...";
+	close;
+}
+
+cmd_in02.gat,178,86,4	script	Stonae	98,{
+
+	mes "[Stonae]";
+	mes "N-no...";
+	mes "I lost again?!";
+	mes "But I can't quit like";
+	mes "this! I'm gonna keep";
+	mes "going, and I'm gonna";
+	mes "leave this place a winner!";
+	close;
+}
+
+cmd_in02.gat,172,105,4	script	G . J	86,{
+
+	mes "[G . J]";
+	mes "The more I think about it,";
+	mes "it seems easier to become";
+	mes "rich by working, saving, and";
+	mes "making wise investments than";
+	mes "to, you know... Rely on some";
+	mes "kind of huge jackpot prize.";
+	next;
+	mes "[G . J]";
+	mes "Gambling seems fun, but";
+	mes "it seems smarter to make";
+	mes "money in other ways. Sure,";
+	mes "working hard is no fun, but";
+	mes "there are ways to use your^FFFFFF ^000000 money to make more of it, right?";
+	next;
+	mes "[G . J]";
+	mes "There's also the matter of";
+	mes "being smart and responsible";
+	mes "about your money--I mean, you're more likely to blow all your cash";
+	mes "if you win it, right? Yeah, you";
+	mes "gotta be wise about it all...";
+	close;
+}
+
+cmd_in02.gat,174,126,4	script	Loyar	83,{
+
+	mes "[Loyar]";
+	mes "Comodo Casino's interior";
+	mes "design is so pleasing to the";
+	mes "eyes, so clean and simple.";
+	mes "The atmosphere here is perfect,";
+	mes "and it makes me want to play";
+	mes "some more. Alright, let's go!";
+	next;
+	set '@loyar,rand(1,3);
+	switch('@loyar) {
+	case 1:
+		mes "[Loyar]";
+		mes "Hmm... Maybe I better";
+		mes "go home soon. I didn't";
+		mes "spend all the money that";
+		mes "I set aside for gambling";
+		mes "quite yet, but it's not a good";
+		mes "idea to stay out too long.";
+		close;
+	case 2:
+		mes "[Loyar]";
+		mes "I have to admit, the";
+		mes "atmosphere of this place";
+		mes "is exciting and addictive.";
+		mes "Even when you're tired, the";
+		mes "energy of this place just";
+		mes "gets into you, you know?";
+		next;
+		mes "[Loyar]";
+		mes "Although this kind of place";
+		mes "may encourage people with";
+		mes "serious gambling problems,";
+		mes "it's much nicer to gamble";
+		mes "here than in a place that's";
+		mes "dirtier and more questionable.";
+		close;
+	case 3:
+		mes "[Loyar]";
+		mes "Whoa whoa whoa...";
+		mes "Why did that guy make";
+		mes "that bet? What an amateur...";
+		mes "Er, I guess you don't know";
+		mes "too much about this game.";
+		mes "As for me, I'm just a fan~";
+		next;
+		mes "[Loyar]";
+		mes "I'm a big fan of a lot";
+		mes "of these games, but I'll";
+		mes "admit that I'm an even bigger";
+		mes "fan of winning! Still, I have";
+		mes "enough sense to stay out of";
+		mes "those high stakes games.";
+		close;
+	}
+}
+
+cmd_in02.gat,57,62,4	script	Moo	109,{
+
+	set '@mooz,rand(1,10);
+	if ('@mooz == 1) {
+		mes "[Moo]";
+		mes "Those cheating punks!";
+		mes "They'll never show their";
+		mes "faces here again: otherwise";
+		mes "they're gonna hafta get new";
+		mes "ones! Oh--Sorry, I didn't";
+		mes "see you there~ Hahahaha~";
+		close;
+	} else {
+		mes "[Moo]";
+		mes "Greetings, I am Moo,";
+		mes "manager of the Comodo";
+		mes "Casino. We pride ourselves in";
+		mes "serving all of our customers'";
+		mes "needs, doing all we can so that^FFFFFF ^000000 your visit here is unforgettable.";
+		next;
+		mes "[Moo]";
+		mes "All of our guests can enjoy";
+		mes "our general gaming area, and";
+		mes "we also provide a VIP area";
+		mes "where high rollers can play";
+		mes "exciting high stakes games.";
+		next;
+		mes "[Moo]";
+		mes "We always welcome all of";
+		mes "your suggestions, and are";
+		mes "always seeking to improve";
+		mes "your experience here in";
+		mes "the Comodo Casino.";
+		close;
+	}
+}
+
+cmd_fild04.gat,188,74,4	script	Zyosegirl	93,{
+
+	mes "[Zyosegirl]";
+	mes "People call me the";
+	mes "Sea Lady because I'm";
+	mes "always here working,";
+	mes "gathering clams and other";
+	mes "sea creatures to sell. It's";
+	mes "a pretty good living, actually.";
+	next;
+	mes "[Zyosegirl]";
+	mes "It's nice to be able to work";
+	mes "outdoors, but someday, I want";
+	mes "to save enough money and move";
+	mes "to the city. I'm still young, you^FFFFFF ^000000 know, and I've got dreams";
+	mes "that I want to fulfill~";
+	close;
+}
+
+cmd_fild04.gat,248,86,4	script	Ziyaol	709,{
+
+	mes "[Ziyaol]";
+	mes "Ahhh, it's nice being";
+	mes "a fisherman. You just";
+	mes "relax and let the fish";
+	mes "come to you. Well, it takes";
+	mes "some skill to catch as much";
+	mes "fish as I do with no effort~";
+	next;
+	mes "[Ziyaol]";
+	mes "I like the leisure involved";
+	mes "in my job, but if it's not one";
+	mes "thing, it's another. Yeah, that";
+	mes "daughter of mine over there";
+	mes "won't stop harping about";
+	mes "moving to the biiig city.";
+	next;
+	mes "[Ziyaol]";
+	mes "Why does she want to leave";
+	mes "me so badly?! But if I don't";
+	mes "let her go, she'll run away.";
+	mes "What am I going to do with";
+	mes "that girl? Well, I can't really";
+	mes "stop her from dreaming...";
+	close;
+}
+
+cmd_fild04.gat,267,137,4	script	Daeguro	703,{
+
+	mes "[Daeguro]";
+	mes "I love playing in";
+	mes "the sand-- it's so soft";
+	mes "and clean and pretty!";
+	mes "But when I grow up,";
+	mes "I wanna go to Alberta";
+	mes "and see everything I can!";
+	close;
+}
+
+moc_fild12.gat,35,303,4	script	Serutero	59,{
+
+	mes "[Serutero]";
+	mes "Hello, I'm Serutero,";
+	mes "guardian of the roads that";
+	mes "lead to Sandaruman Fortress.";
+	mes "If you really want to go there,";
+	mes "I'll permit you to continue, but^FFFFFF ^000000 you must beware of its dangers...";
+	next;
+	switch(select("I'm going there!","Sandaruman Fortress?","Cancel")) {
+	case 1:
+		mes "[Serutero]";
+		mes "So you're really going";
+		mes "to go to Sandaruman";
+		mes "Fortress. Alright then,";
+		mes "good luck, and be careful!";
+		close2;
+		warp "cmd_fild08.gat",331,319;
+		end;
+	case 2:
+		mes "[Serutero]";
+		mes "Although Sandaruman";
+		mes "Fortress is infested with";
+		mes "monsters now, it used to be";
+		mes "a province where people lived.";
+		mes "However, they were always";
+		mes "invaded and pillaged...";
+		next;
+		mes "[Serutero]";
+		mes "Sandaruman's inhabitants";
+		mes "eventually adapted to the";
+		mes "invasions, developing smoke";
+		mes "signals and fortifications to";
+		mes "withstand the ravages of war.";
+		mes "Then, Comodo was built...";
+		next;
+		mes "[Serutero]";
+		mes "Comodo grew in power and";
+		mes "influence and eventually annexed Sandaruman. More and more people";
+		mes "moved from the fortress to Comodo until Sandaruman Fotress was";
+		mes "essentially abandoned.";
+		next;
+		mes "[Serutero]";
+		mes "There were a few people";
+		mes "remaining in Sandaruman,";
+		mes "but they revolted and some";
+		mes "fledging government came into";
+		mes "power there. The monsters took";
+		mes "the chance to take over...";
+		next;
+		mes "[Serutero]";
+		mes "There's nothing around";
+		mes "Sandaruman now. Well, nothing";
+		mes "except maybe Paros Lighthouse,";
+		mes "which is southwest of here. That place might be of interest to";
+		mes "aspiring Rogues, I hear...";
+		close;
+	case 3:
+		mes "[Serutero]";
+		mes "You know, if you're";
+		mes "tired of traveling, you";
+		mes "can rest in ^3355FFComodo^000000. That";
+		mes "place is a pretty popular";
+		mes "tourist attraction, especially";
+		mes "for you adventurer types.";
+		close;
+	}
+}
+
+cmd_fild07.gat,192,58,4	script	Rahasu	100,{
+
+	mes "[Rahasu]";
+	mes "Hey, I'm Rahasu.";
+	mes "If you want to learn";
+	mes "a little more about";
+	mes "Paros Lighthouse, I'll";
+	mes "be happy to tell you.";
+	next;
+	switch(select("Paros Lighthouse?","Cancel")) {
+	case 1:
+		mes "[Rahasu]";
+		mes "For many years, this";
+		mes "lighthouse guided many";
+		mes "ships to shore. That was";
+		mes "a long time ago: now this";
+		mes "lighthouse sits quietly,";
+		mes "unused, but never unloved.";
+		next;
+		mes "[Rahasu]";
+		mes "Although this place";
+		mes "isn't the center of";
+		mes "trade and commerce that";
+		mes "it used to be, plenty of";
+		mes "people still wander to this";
+		mes "area. I wonder why, exactly...";
+		close;
+	case 2:
+		mes "[Rahasu]";
+		mes "Hey, before you leave,";
+		mes "you really ought to check";
+		mes "the view from the lighthouse.";
+		mes "It's... It's breathtaking...";
+		close;
+	}
+}
+
+cmd_fild07.gat,52,280,4	script	Hallosu	100,{
+
+	mes "[Hallosu]";
+	mes "Hello, this is one of the";
+	mes "lighthouses that make up";
+	mes "Paros Lighthouse. However,";
+	mes "right now it's undergoing";
+	mes "renovation, so it's not";
+	mes "open to the public.";
+	close;
+}
+
+cmd_fild07.gat,299,83,4	script	Zain	100,{
+
+	mes "[Zain]";
+	mes "Would you like to";
+	mes "board a ship on the";
+	mes "Reudelus route? You";
+	mes "can travel on Reudelus";
+	mes "to Alberta or Izlude.";
+	next;
+	switch(select("Alberta - 600 Zeny","Izlude - 800 Zeny","Cancel")) {
+	case 1:
+		if (Zeny < 600) {
+			mes "[Zain]";
+			mes "I'm sorry, but you";
+			mes "don't have enough";
+			mes "zeny for the boarding fare.";
+			close;
+		} else {
+			set Zeny,Zeny-600;
+			warp "alberta.gat",192,169;
+			end;
+		}
+		case 2:
+		if (Zeny < 800) {
+			mes "[Zain]";
+			mes "I'm sorry, but you";
+			mes "don't have enough";
+			mes "zeny for the boarding fare.";
+			close;
+		} else {
+			set Zeny,Zeny-800;
+			warp "izlude.gat",176,182;
+			end;
+		}
+	case 3:
+		mes "[Zain]";
+		mes "Travel by ship is";
+		mes "still one of the safest and";
+		mes "dependable methods of";
+		mes "transportation. I invite you";
+		mes "to try Reudelus travel soon~";
+		close;
+	}
+}
+
+cmd_fild07.gat,94,134,4	script	Sarumane	100,{
+
+	mes "[Sarumane]";
+	mes "Would you like to";
+	mes "board a ship on the";
+	mes "Reudelus route? You";
+	mes "can travel on Reudelus";
+	mes "to Alberta or Izlude.";
+	next;
+	switch(select("Alberta - 600 Zeny","Izlude - 800 Zeny","Cancel")) {
+	case 1:
+		if (Zeny < 600) {
+			mes "[Sarumane]";
+			mes "I'm sorry, but you";
+			mes "don't have enough";
+			mes "zeny for the boarding fare.";
+			close;
+		} else {
+			set Zeny,Zeny-600;
+			warp "alberta.gat",192,169;
+			end;
+		}
+	case 2:
+		if (Zeny < 800) {
+			mes "[Sarumane]";
+			mes "I'm sorry, but you";
+			mes "don't have enough";
+			mes "zeny for the boarding fare.";
+			close;
+		} else {
+			set Zeny,Zeny-800;
+			warp "izlude.gat",176,182;
+			end;
+		}
+	case 3:
+		mes "[Sarumane]";
+		mes "Travel by ship is";
+		mes "still one of the safest and";
+		mes "dependable methods of";
+		mes "transportation. I invite you";
+		mes "to try Reudelus travel soon~";
+		close;
+	}
+}
+
+comodo.gat,88,97,4	script	Toruna	109,{
+
+	mes "[Toruna]";
+	mes "When I think about it,";
+	mes "there are many fascinating";
+	mes "facts about Comodo. Can";
+	mes "you believe this entire city";
+	mes "is built inside a natural cave?";
+	next;
+	switch(select("This cave is huge!","This place sure is strange...","Cancel")) {
+	case 1:
+		mes "[Toruna]";
+		mes "Oh, this is a huge cave,";
+		mes "but it's not impossible for";
+		mes "nature to create something";
+		mes "of this size and scale if given";
+		mes "thousands, maybe even millions";
+		mes "of years. Let me explain...";
+		next;
+		mes "[Toruna]";
+		mes "Now, water is known as";
+		mes "a universal solvent: running";
+		mes "water will carve its own path";
+		mes "in rock, given enough time.";
+		mes "Now, keep in mind that this";
+		mes "cave was once solid limestone.";
+		next;
+		mes "[Toruna]";
+		mes "Years and years of running";
+		mes "water from the rains and the";
+		mes "water table have broken down";
+		mes "this giant pocket of limestone,";
+		mes "clearing out this huge, open";
+		mes "area, the Comodo Cave.";
+		next;
+		mes "[Toruna]";
+		mes "That may sound incredulous,";
+		mes "but cracks in limestone grow";
+		mes "into faults, then spacious gaps";
+		mes "over years and years of erosion. Now, isn't natural science just";
+		mes "amazing? You've got to agree...";
+		close;
+		case 2:
+		if (comodo_npc == 5 || comodo_npc == 6) {
+			switch(comodo_npc) {
+			case 5:
+				mes "[Toruna]";
+				mes "Yes, that is rather";
+				mes "peculiar. What's also";
+				mes "strange is this rumor I've";
+				mes "been hearing about. Now, are^FFFFFF ^000000 you familiar with Comodo Cheese?";
+				next;
+				mes "[Toruna]";
+				mes "It's this urban legend";
+				mes "about this magnificent cheese";
+				mes "that you can only find in Comodo. Now, not too many people believe";
+				mes "it. I mean, you need goats or cows";
+				mes "in order to make any cheese.";
+				next;
+				mes "[Toruna]";
+				mes "However, there's this";
+				mes "strange man that insists";
+				mes "on its existence. The locals";
+				mes "here chalk him up to be some";
+				mes "sort of common loon, but who";
+				mes "knows? Maybe it does exist...";
+				set comodo_npc,6;
+				next;
+				mes "[Toruna]";
+				mes "Well, you can decide for";
+				mes "yourself whether he's off";
+				mes "his rocker. The last time";
+				mes "I saw him, he was in the";
+				mes "Comodo Bar, so you can";
+				mes "probably find him there.";
+				close;
+			case 6:
+				mes "[Toruna]";
+				mes "Well, I like to think of";
+				mes "Comodo as unique. What's";
+				mes "really strange are some of";
+				mes "the locals in this area. I've";
+				mes "already told you about the";
+				mes "man in the Comodo Bar, yes?";
+				next;
+				mes "[Toruna]";
+				mes "He keeps insisting";
+				mes "that there is a special";
+				mes "kind of cheese in Comodo";
+				mes "that you cannot get anywhere";
+				mes "else. It sounds crazy, but his";
+				mes "claim may be worth verifying...";
+				close;
+			}
+		} else {
+			mes "[Toruna]";
+			mes "Ah, did you know that";
+			mes "before it was an exotic";
+			mes "village of excitement and";
+			mes "leisure, Comodo was once";
+			mes "a haven for evil creatures, ruled^FFFFFF ^000000 by a witch named Meropusum?";
+			next;
+			mes "[Toruna]";
+			mes "This witch lay dormant for";
+			mes "years until she was awoken";
+			mes "somehow years ago. She was";
+			mes "a huge threat to the people, but then she was finally defeated";
+			mes "in the famous War of the Witch.";
+			next;
+			mes "[Toruna]";
+			mes "One of the heroes of that";
+			mes "war became the current Chief";
+			mes "of this village, and it was";
+			mes "through his leadership that";
+			mes "Comodo grew into a thriving";
+			mes "tourist attraction.";
+			next;
+			mes "[Toruna]";
+			mes "However, the threat of";
+			mes "Meropusum still exists,";
+			mes "so I would be careful when";
+			mes "exploring the uninhabited";
+			mes "areas of the Comodo region.";
+			close;
+		}
+	case 3:
+		mes "[Toruna]";
+		mes "There's much to do";
+		mes "in this city of Comodo,";
+		mes "as well as much to learn";
+		mes "about it. I can never tire of";
+		mes "visiting this exotic city...";
+		close;
+	}
+}
+
+comodo.gat,164,291,4	script	Rakusa	73,{
+
+	if (comodo_npc == 6 || comodo_npc == 7) {
+		switch(comodo_npc) {
+		case 6:
+			mes "[Rakusa]";
+			mes "See that guy sitting";
+			mes "over there? All he does";
+			mes "is talk about Comodo Cheese,";
+			mes "just mumbling nonsense about";
+			mes "its incredible flavors all day";
+			mes "long. He's nuts, I tell you.";
+			next;
+			mes "[Rakusa]";
+			mes "First of all, you need";
+			mes "freakin' milk to make any";
+			mes "cheese. You see any cows";
+			mes "around here? Nope, I thought";
+			mes "so! Still, I think he really";
+			mes "believes that it exists...";
+			set comodo_npc,7;
+			close;
+		case 7:
+			mes "[Rakusa]";
+			mes "Damn it! I know for a fact";
+			mes "that the idea of Comodo even";
+			mes "having a cheese is crazy, but";
+			mes "that guy's talking has gotten";
+			mes "me curious now! Maybe it does";
+			mes "exist? How would it even taste?";
+			close;
+		}
+	} else {
+		mes "[Rakusa]";
+		mes "You know, Comodo has";
+		mes "a reputation for offering";
+		mes "high class recreation, so";
+		mes "people forget that we actually";
+		mes "have two dangerous dungeons.";
+		next;
+		mes "[Rakusa]";
+		mes "You adventurers need to";
+		mes "be extra careful if you explore";
+		mes "the caves--the monsters there";
+		mes "are unusually strong. Make";
+		mes "sure that you're well prepared";
+		mes "before you even think of going!";
+		close;
+	}
+}
+
+comodo.gat,169,284,4	script	Kichiri	98,{
+
+	if (comodo_npc == 7 || comodo_npc == 8) {
+		switch(comodo_npc) {
+		case 7:
+			mes "[Kichiri]";
+			mes "Freakin' ^3355FFMagatu^000000...!";
+			mes "Can he talk about anything else";
+			mes "aside from Comodo Cheese?";
+			mes "I don't see why he's so excited";
+			mes "about the stuff! Everyone knows";
+			mes "it's just an old wive's tale.";
+			next;
+			mes "[Kichiri]";
+			mes "Would you do";
+			mes "me a favor and get";
+			mes "Magatu to shut up?";
+			mes "I just want to drink";
+			mes "my alcohol in peace!";
+			set comodo_npc,8;
+			close;
+		case 8:
+			mes "[Kichiri]";
+			mes "Cripes! Now Magatu's";
+			mes "got me wondering! I mean,";
+			mes "just because I've never seen";
+			mes "Comodo Cheese doesn't mean";
+			mes "it doesn't exist, right? Curses!^FFFFFF ^000000 Now I'm thinking about it too!";
+			close;
+		}
+	} else {
+		mes "[Kichiri]";
+		mes "There's more to do than";
+		mes "gambling in Comodo, you";
+		mes "know. Sometimes, I love";
+		mes "to watch the Dancers on";
+		mes "stage in the middle of the";
+		mes "village. They're so glamorous~";
+		next;
+		mes "[Kichiri]";
+		mes "I hear that the Dance";
+		mes "Academy only accepts female";
+		mes "Archers to become prospective";
+		mes "Dancers. I guess that makes";
+		mes "sense--they're tone and fit,";
+		mes "but not musclebound either...";
+		close;
+	}
+}
+
+comodo.gat,163,280,4	script	Magatu	55,{
+
+	if (comodo_npc == 8 || comodo_npc == 9) {
+		switch(comodo_npc) {
+		case 8:
+			mes "[Magatu]";
+			mes "Comodo Cheese...";
+			mes "It really exists...!";
+			mes "And I'm so close to";
+			mes "having the proof! Oh...";
+			mes "That look in your eyes...";
+			mes "Y-you really believe me!";
+			next;
+			mes "[Magatu]";
+			mes "At long last, not only";
+			mes "someone who believes me,";
+			mes "but an adventurer to boot!";
+			mes "Great, this is perfect! Now,";
+			mes "listen, you want to learn more";
+			mes "about Comodo Cheese, right?";
+			next;
+			mes "[Magatu]";
+			mes "Well, I happen to know";
+			mes "someone who knows someone";
+			mes "that might be able to give you";
+			mes "the chance to try it for yourself! His name is ^3355FFManzi^000000 , and you can";
+			mes "find him in Comodo's Casino.";
+			next;
+			mes "[Magatu]";
+			mes "Oh, here, before I forget,";
+			mes "take my lucky bottle cap!";
+			mes "Show this to Manzi, and he'll";
+			mes "know that I sent you, and that";
+			mes "you want to learn more about";
+			mes "the elusive Comodo Cheese.";
+			next;
+			mes "^3355FFYou have received";
+			mes "Magatu's lucky bottle";
+			mes "cap to present to Manzi.";
+			set comodo_npc,9;
+			close;
+		case 9:
+			mes "[Magatu]";
+			mes "Oh, don't forget to";
+			mes "show my lucky bottle cap";
+			mes "to Manzi, okay? You can find";
+			mes "him inside Comodo's Casino~";
+			mes "Good luck, and I hope you get";
+			mes "to try that Comodo Cheese~";
+			close;
+		}
+	} else {
+		mes "[Magatu]";
+		mes "It's true, it really";
+		mes "exists... Comodo Cheese!";
+		mes "Its flavor must be incomparably";
+		mes "delicious if adventurers have";
+		mes "quested to obtain it for so";
+		mes "many generations...";
+		close;
+	}
+}
+
+cmd_in02.gat,189,99,4	script	Manzi	85,{
+
+	if (comodo_npc == 9 || comodo_npc == 10) {
+		switch(comodo_npc) {
+		case 9:
+			mes "["+strcharinfo(0)+"]";
+			mes "Excuse, but I'm";
+			mes "looking for someone";
+			mes "named Manzi. Do you";
+			mes "know where I can find him?";
+			next;
+			mes "[Manzi]";
+			mes "Hey guy, I'm right here.";
+			mes "So what exactly do you";
+			mes "want? I'm, um, not in";
+			mes "trouble or anything, am I?";
+			next;
+			mes "^3355FFYou give Manzi the";
+			mes "lucky bottle cap that you";
+			mes "received from Magatsu.^000000";
+			next;
+			mes "[Manzi]";
+			mes "Whoa, Magatsu gave you";
+			mes "this? Ah, okay, so you must";
+			mes "be looking for that Comodo";
+			mes "Cheese he keeps talking about.";
+			mes "Alright, I owe him a favor, so";
+			mes "I'll tell you who to talk to...";
+			next;
+			mes "[Manzi]";
+			mes "From the Casino, go north";
+			mes "towards the center of the";
+			mes "village, and then look to";
+			mes "the right where you'll see";
+			mes "the Dance Stage. You'll see";
+			mes "this old woman right there.";
+			next;
+			mes "[Manzi]";
+			mes "Don't be fooled by the";
+			mes "way she looks--that old";
+			mes "lady is one of Comodo's";
+			mes "wisest elders. Ask her";
+			mes "about the cheese, and";
+			mes "let her know I sent you~";
+			next;
+			mes "[Manzi]";
+			mes "Ah, she won't take you";
+			mes "very seriously unless you";
+			mes "show her this. Magatsu gave";
+			mes "you his lucky bottle cap, so I'm^FFFFFF ^000000 gonna give you my lucky coin!";
+			mes "The old crone'll recognize it~";
+			next;
+			set comodo_npc,10;
+			mes "^3355FFYou received Manzi's";
+			mes "''lucky coin.'' Strangely";
+			mes "enough, both sides";
+			mes "are heads.";
+			close;
+		case 10:
+			mes "[Manzi]";
+			mes "Look for the old crone";
+			mes "near the Dance Stage here";
+			mes "in Comodo and ask her about";
+			mes "Comodo Cheese, alright? Ah,";
+			mes "and try not to insult her, kay?";
+			mes "It'll make me look bad~";
+			close;
+		}
+	} else {
+		if (Class == Job_Novice) {
+			mes "[Manzi]";
+			mes "What th...?";
+			mes "What's a kid like";
+			mes "you doing in a Casino?";
+			mes "Sure, it's not against the";
+			mes "rules, but I think you oughta";
+			mes "scram and play somewhere else!";
+			close;
+		} else {
+			mes "[Manzi]";
+			mes "Hey, have a good time in";
+			mes "the Casino, but don't go buck";
+			mes "wild. You wanna walk out of";
+			mes "here with the shirt on your back,^FFFFFF ^000000 you know? Some people don't";
+			mes "even leave here with that...";
+			close;
+		}
+	}
+}
+
+comodo.gat,187,153,4	script	Hullaris	701,{
+
+	if (comodo_npc == 10 || comodo_npc == 11 || comodo_npc == 12 || comodo_npc == 13) {
+		switch(comodo_npc) {
+		case 10:
+			mes "[Hullaris]";
+			mes "Hula~hula~hula~";
+			mes "Love togther, love together,";
+			mes "we've groovin' on some more~";
+			mes "Love togther, love together,";
+			mes "we've living on the floor~";
+			next;
+			switch(select("Present Muzi's Coin","Um... Comodo Cheese?")) {
+			case 1:
+				mes "^3355FFYou present Muzi's lucky";
+				mes "coin to the old woman.^000000";
+				next;
+				mes "[Hullaris]";
+				mes "Love! Love!";
+				mes "Love together~";
+				mes "Love! Love!";
+				mes "Love togeth-hm?";
+				mes "Oh, that's um, Muzi's";
+				mes "cheat coin, isn't it?";
+				next;
+				mes "[Hullaris]";
+				mes "He always said that he";
+				mes "might send someone with";
+				mes "that coin to me as a sign";
+				mes "of his trust in that person.";
+				mes "I suppose, then, that I'm";
+				mes "at your service. Now...";
+				next;
+				mes "[Hullaris]";
+				mes "What exactly did you need?";
+				mes "I'm guessing you've come";
+				mes "here to ask me something";
+				mes "about Comodo. As one of the";
+				mes "oldest elders, I know more";
+				mes "about this village than most...";
+				next;
+				mes "["+strcharinfo(0)+"]";
+				mes "Actually, I was hoping";
+				mes "you can tell me about";
+				mes "Comodo Cheese. If it really";
+				mes "exists, I'd like to know";
+				mes "where I can get some.";
+				next;
+				mes "[Hullaris]";
+				mes "Oh... That. First of all,";
+				mes "Comodo Cheese does exist,";
+				mes "and it's as precious as the";
+				mes "legends say. However, it's";
+				mes "not a true cheese, although^FFFFFF ^000000 you may think so from its taste.";
+				next;
+				mes "[Hullaris]";
+				mes "Yes, it's a very rare, natural";
+				mes "substance and isn't made from";
+				mes "cow or goat milk or anything";
+				mes "like that. However, Comodo";
+				mes "Cheese isn't merely food.";
+				mes "No, it's much more...";
+				next;
+				mes "[Hullaris]";
+				mes "Those that eat Comodo";
+				mes "Cheese find that their";
+				mes "true potential is unlocked.";
+				mes "Comodo Cheese's true name";
+				mes "is the ^3355FFAwakening Stone^000000. Now,";
+				mes "doesn't that sound impressive?";
+				next;
+				mes "[Hullaris]";
+				mes "The Awakening Stone is";
+				mes "one of the keys to obtaining";
+				mes "some kind of forbidden power.";
+				mes "That's why only the bravest";
+				mes "adventurers can expect the";
+				mes "chance of ever eating it.";
+				next;
+				mes "[Hullaris]";
+				mes "Do you really wish to";
+				mes "eat the Comodo Cheese and";
+				mes "see where its power may lead";
+				mes "you? If so, you'll have to endure great challenges to obtain it...";
+				next;
+				mes "[Hullaris]";
+				mes "When you've decided";
+				mes "to pursue the Awakening";
+				mes "Stone, seek out a man named";
+				mes "^3355FFNigirboran^000000. He will judge";
+				mes "whether you are worthy";
+				mes "of the Comodo Cheese...";
+				set comodo_npc,11;
+				next;
+				mes "[Hullaris]";
+				mes "Now, you should be";
+				mes "able to find Nigiroban";
+				mes "training somewhere in one";
+				mes "of Comodo's Dungeon Caves.";
+				mes "I'll send him a message to";
+				mes "let him know you're coming...";
+				close;
+			case 2:
+				if (Sex == Female) {
+					mes "[Hullaris]";
+					mes "Love! Love!";
+					mes "Love together~";
+					mes "Love! Love!";
+					mes "Love togeth-hm?";
+					mes "Girl, you're ruining";
+					mes "my groove! Get away~";
+					close;
+				} else {
+					mes "[Hullaris]";
+					mes "Love! Love!";
+					mes "Love together~";
+					mes "Love! Love!";
+					mes "Love togeth-hm?";
+					mes "Boy, you're ruining";
+					mes "my groove! Now beat it!";
+					close;
+				}
+			}
+		case 11:
+			mes "[Hullaris]";
+			mes "Do you really wish to";
+			mes "eat the Comodo Cheese and";
+			mes "see where its power may lead";
+			mes "you? If so, you'll have to endure great challenges to obtain it...";
+			next;
+			mes "[Hullaris]";
+			mes "When you've decided";
+			mes "to pursue the Awakening";
+			mes "Stone, seek out a man named";
+			mes "^3355FFNigirboran^000000. He will judge";
+			mes "whether you are worthy";
+			mes "of the Comodo Cheese...";
+			next;
+			mes "[Hullaris]";
+			mes "Now, you should be";
+			mes "able to find Nigiroban";
+			mes "training somewhere in one";
+			mes "of Comodo's Dungeon Caves.";
+			mes "I'll send him a message to";
+			mes "let him know you're coming...";
+			close;
+		case 12:
+			mes "[Hullaris]";
+			mes "Hmm? So you've failed";
+			mes "Nigirboran's test, have";
+			mes "you? Well, you better train";
+			mes "until you can pass it. Otherwise, eating Comodo Cheese could";
+			mes "mean your death, you know.";
+			close;
+		case 13:
+			mes "[Hullaris]";
+			mes "Ah, you've returned.";
+			mes "So were you able to pass";
+			mes "Nigirboran's little test? An";
+			mes "adventurer like you should";
+			mes "be able to have no problem";
+			mes "with it. I've got faith in you~";
+			next;
+			mes "^3355FFYou present the token that";
+			mes "signifies that you passed";
+			mes "Nigirboran's test to Hullaris.^000000";
+			next;
+			mes "[Hullaris]";
+			mes "Ah, I was right after all.";
+			mes "I'm glad to see that you've";
+			mes "proven worthy of eating this";
+			mes "Comodo Cheese, or more";
+			mes "accurately, the Awakening";
+			mes "Stone. Here, let me get it...";
+			next;
+			mes "[Hullaris]";
+			mes "There you are...";
+			mes "Only brave and worthy";
+			mes "adventurers are allowed to";
+			mes "eat this. Understand that";
+			mes "eating Comodo Cheese is";
+			mes "a rare and coveted honor!";
+			next;
+			mes "^3355FFHullaris carefully";
+			mes "hands you a plate of";
+			mes "Comodo Cheese. You enjoy";
+			mes "the rich, smooth flavor of";
+			mes "each and every morsel...";
+			mes "It's sublimely delicious!^000000";
+			next;
+			mes "^3355FFAfter you finish eating the";
+			mes "Comodo Cheese, you feel";
+			mes "a subtle, yet definite energy";
+			mes "gently pulsing through your";
+			mes "body. You feel a powerful, yet";
+			mes "quiet confidence of being able";
+			mes "to accomplish anything.^000000";
+			set comodo_npc,14;
+			next;
+			mes "[Hullaris]";
+			mes "Hahahah! So what";
+			mes "do you think? It's great,";
+			mes "isn't it? It's unreal, how";
+			mes "delicious it is. All other";
+			mes "foods can never match the";
+			mes "quality of Comodo Cheese~";
+			next;
+			mes "[Hullaris]";
+			mes "Now, I know that you probably";
+			mes "have things to do, but might";
+			mes "I suggest that you visit the";
+			mes "town of Al De Baran? There's";
+			mes "a man there that can tell you";
+			mes "about the Slate of Muriniel.";
+			next;
+			mes "[Hullaris]";
+			mes "You've already eaten the";
+			mes "Awakening Stone, so you may";
+			mes "as well obtain the other things";
+			mes "that you need to earn one of";
+			mes "the three forbidden swords.";
+			mes "It's just a thought...";
+			close;
+		}
+	} else {
+		mes "[Hullaris]";
+		mes "Ah... Dance.";
+		mes "It's more than just a form";
+		mes "of entertainment. It's art,";
+		mes "it's seduction, it's battle,";
+		mes "and it's love. Only a true";
+		mes "Dancer can understand this...";
+		next;
+		mes "[Hullaris]";
+		mes "You know, Comodo is famous";
+		mes "for its Dance Academy and the";
+		mes "Dancers that have been trained";
+		mes "there. If you know any female";
+		mes "Archers, why don't you suggest";
+		mes "visiting the school to them?";
+		close;
+	}
+}
+
+beach_dun3.gat,30,220,4	script	Nigirboran	704,{
+
+	if (comodo_npc == 11 || comodo_npc == 12 || comodo_npc == 13 || comodo_npc == 14) {
+		switch(comodo_npc) {
+		case 11:
+			mes "[Nigirboran]";
+			mes "You're the one that";
+			mes "Hullaris sent? So you're";
+			mes "here to earn the right to";
+			mes "eat the Awakening Stone...";
+			mes "Or Comodo Cheese, as it's";
+			mes "more commonly known.";
+			next;
+			mes "[Nigirboran]";
+			mes "Yes, it has many names...";
+			mes "But it's more than a mere";
+			mes "tasty treat--the Awakening";
+			mes "Stone can help you access";
+			mes "your true potential. But if you're not prepared... then you'll die.";
+			next;
+			mes "[Nigirboran]";
+			mes "If your mind and body";
+			mes "aren't sufficiently trained,";
+			mes "your body will reject the";
+			mes "Comodo Cheese and you";
+			mes "would die a slow, painful,";
+			mes "yet incredibly flavorful death.";
+			next;
+			mes "[Nigirboran]";
+			mes "But I'm sure that won't";
+			mes "happen to you! If Hullaris";
+			mes "sent you to me, you must";
+			mes "have a fighting chance, right?";
+			mes "So come back when you're";
+			mes "ready for the testing~";
+			set comodo_npc,12;
+			close;
+		case 12:
+			mes "[Nigirboran]";
+			mes "Good, you have returned--";
+			mes "I'd expect nothing less of";
+			mes "a brave and daring adventurer.";
+			mes "Now hold still as I gauge your";
+			mes "body's internal energies and see^FFFFFF ^000000 if it can handle Comodo Cheese...";
+			next;
+			mes "[Nigirboran]";
+			mes "Alright.";
+			mes "Are you ready?";
+			mes "Now... Brace yourself!";
+			mes "Heeeeeyah! Hoooo-HAH!";
+			next;
+			if (JobLevel > 20 && BaseLevel > 25) {
+				set '@nigirboran,rand(1,3);
+				switch('@nigirboran) {
+				case 1:
+					mes "^3355FFA powerful current of";
+					mes "warmth immediately coarses";
+					mes "through your body from head";
+					mes "to toe, and you struggle to";
+					mes "keep yourself from writhing.^000000";
+					next;
+					mes "[Nigirboran]";
+					mes "Hmm... Your body seems";
+					mes "well trained, but your mind";
+					mes "is still reeling from the test.";
+					mes "If you ate the Comodo Cheese";
+					mes "now, you'd be reduced to an";
+					mes "incoherent invalid...";
+					next;
+					mes "[Nigirboran]";
+					mes "Go and train yourself";
+					mes "a little more, and try";
+					mes "to improve your mind's";
+					mes "sense of clarity. When";
+					mes "you feel ready, come";
+					mes "back to me once more.";
+					close;
+				case 2:
+					mes "^3355FFA powerful current of";
+					mes "warmth immediately coarses";
+					mes "through your body from head";
+					mes "to toe, and you struggle to";
+					mes "keep yourself from writhing.^000000";
+					next;
+					mes "[Nigirboran]";
+					mes "Huh. Your body is";
+					mes "strong, but your spirit";
+					mes "is weak. You need more";
+					mes "training. If you were to eat";
+					mes "the Comodo Cheese now...";
+					mes "You would evaporate.";
+					next;
+					mes "[Nigirboran]";
+					mes "But don't lose heart,";
+					mes "it's too early for you";
+					mes "to give up. Go out and";
+					mes "train some more, and then";
+					mes "come back to me when you";
+					mes "feel like you're ready.";
+					close;
+				case 3:
+					mes "^3355FFA powerful current of";
+					mes "warmth immediately coarses";
+					mes "through your body from head";
+					mes "to toe, and you struggle to";
+					mes "keep yourself from writhing.^000000";
+					next;
+					mes "[Nigirboran]";
+					mes "Yes... Yes...";
+					mes "Your mind, soul, and body";
+					mes "seem well trained. I think you";
+					mes "can eat the Comodo Cheese";
+					mes "without any ill effect. Good,";
+					mes "good, I think you're ready.";
+					next;
+					mes "[Nigirboran]";
+					mes "Here, take this little";
+					mes "token to Hullaris. That";
+					mes "will prove to her that";
+					mes "you've passed my little";
+					mes "test. Congratulations~";
+					next;
+					mes "^3355FFYou've received";
+					mes "a token button to";
+					mes "present to Hullaris";
+					mes "from Nigirboran.^000000";
+					set comodo_npc,13;
+					next;
+					mes "[Nigirboran]";
+					mes "Ah, I almost forgot";
+					mes "to ask you. Why do you";
+					mes "seek the Comodo Cheese,";
+					mes "or the Awakening Stone?";
+					mes "Are you seeking one of";
+					mes "the 3 forbidden swords?";
+					next;
+					mes "[Nigirboran]";
+					mes "I don't know all the details,";
+					mes "but I do know that you'll need";
+					mes "the ^3355FFAwakening Stone^000000, the ^3355FFBook^000000";
+					mes "^3355FFof the Lamb^000000 and the ^3355FFSlate of^000000";
+					mes "^3355FFMurniel^000000 to even have a chance^FFFFFF ^000000 of obtaining one of those swords.";
+					next;
+					mes "[Nigirboran]";
+					mes "Let's see... After you";
+					mes "speak to Hullaris, you";
+					mes "should go to Al De Baran";
+					mes "and find someone named";
+					mes "^3355FFMeteurengut^000000 to learn about";
+					mes "the Slate of Muriniel.";
+					next;
+					mes "[Nigirboran]";
+					mes "Anyway, I wish you";
+					mes "the best of luck in";
+					mes "accomplishing your";
+					mes "goals. Godspeed...";
+					close;
+				}
+			} else {
+				mes "^3355FFA torrent of warmth";
+				mes "coarses through your";
+				mes "entire body, and you";
+				mes "immediately faint from";
+				mes "the rush of energy.^000000";
+				next;
+				mes "[Nigirboran]";
+				mes "Goodness...!";
+				mes "Your mind and body";
+				mes "are far too weak to";
+				mes "handle the Comodo Cheese";
+				mes "now. You must seriously";
+				mes "train yourself much more...";
+				next;
+				mes "[Nigirboran]";
+				mes "After you've developed";
+				mes "some more strength, come";
+				mes "back to me. You can retake";
+				mes "this little test anytime~";
+				close;
+			}
+		case 13:
+			mes "[Nigirboran]";
+			mes "I don't know all the details,";
+			mes "but I do know that you'll need";
+			mes "the ^3355FFAwakening Stone^000000, the ^3355FFBook^000000";
+			mes "^3355FFof the Lamb^000000 and the ^3355FFSlate of^000000";
+			mes "^3355FFMurniel^000000 to even have a chance";
+			mes "of obtaining a forbidden sword.";
+			next;
+			mes "[Nigirboran]";
+			mes "Let's see... After you";
+			mes "speak to Hullaris, you";
+			mes "should go to Al De Baran";
+			mes "and find someone named";
+			mes "^3355FFMeteurengut^000000 to learn about";
+			mes "the Slate of Muriniel.";
+			next;
+			mes "[Nigirboran]";
+			mes "Anyway, I wish you";
+			mes "the best of luck in";
+			mes "accomplishing your";
+			mes "goals. Godspeed...";
+			close;
+		case 14:
+			mes "[Nigirboran]";
+			mes "Somewhere in ^3355FFAl De Baran^000000,";
+			mes "you'll find a man named";
+			mes "^3355FFMeteurengut^000000. He should be";
+			mes "able to help you learn more";
+			mes "about the Slate of Muriniel.";
+			close;
+		}
+	} else {
+		mes "[Nigirboran]";
+		mes "Oh... Hello there.";
+		mes "I guess you could say";
+		mes "that I'm something of";
+		mes "a trainer here in Comodo.";
+		mes "My name is Nigirboran.";
+		mes "I know it's hard to say...";
+		next;
+		mes "[Nigirboran]";
+		mes "If Hullaris hasn't sent";
+		mes "you, then I don't think";
+		mes "I can be of any real help";
+		mes "for you. That seems to be";
+		mes "the case, so I'd appreciate";
+		mes "it if you'd let me train...";
+		close;
+	}
+}
+
+aldebaran.gat,44,53,4	script	Meteurengut	64,{
+
+	if (comodo_npc == 14 || comodo_npc == 15 || comodo_npc == 16 || comodo_npc == 17) {
+		switch(comodo_npc) {
+		case 14:
+			mes "[Meteurengut]";
+			mes "Ah. Your body is surrounded";
+			mes "by the glow of one that has";
+			mes "eaten of the Awakening Stone.";
+			mes "That alone may prove your value";
+			mes "as an adventurer, but are you";
+			mes "free from your selfish desires?";
+			next;
+			mes "[Meteurengut]";
+			mes "Even just the smallest";
+			mes "taint of greed or jealousy";
+			mes "can prove to be a corruptive";
+			mes "influence when power is not";
+			mes "tempered by wisdom and a";
+			mes "sense of true compassion.";
+			next;
+			mes "[Meteurengut]";
+			mes "Others like you have come";
+			mes "before me in hopes of learning";
+			mes "about the Slate of Muriniel and";
+			mes "eventually obtaining one of the";
+			mes "three accursed blades. You are probably no different from them...";
+			next;
+			mes "[Meteurengut]";
+			mes "The Slate of Muriniel is an";
+			mes "alchemic artifact that can";
+			mes "help one access unimaginable";
+			mes "power, originally developed";
+			mes "by a master of alchemy that was";
+			mes "known as Rikaseh Sumarecon.";
+			next;
+			mes "[Meteurengut]";
+			mes "Sumarecon had two apprentices,";
+			mes "and after he had passed down the secrets of the Slate of Muriniel";
+			mes "to only one of his proteges, his other protege killed him and the";
+			mes "other student out of jealousy.";
+			next;
+			mes "[Meteurengut]";
+			mes "Sumarecon's secrets were";
+			mes "thought to be lost forever...";
+			mes "Fortunately, years later, an";
+			mes "Alchemist named Kuprite found";
+			mes "Sumarecon's secret documents";
+			mes "containing his knowledge.";
+			next;
+			mes "[Meteurengut]";
+			mes "Kuprite then taught these";
+			mes "secrets to a select group of";
+			mes "Alchemy students, one of which";
+			mes "was my ancestor, Burukesaemu.";
+			mes "And so, because of my lineage,";
+			mes "I have learned those secrets.";
+			next;
+			mes "[Meteurengut]";
+			mes "If you wish for me to";
+			mes "reproduce the Slate of";
+			mes "Muriniel for you, then";
+			mes "please bring me the items";
+			mes "I require to complete the";
+			mes "secret alchemic procedure.";
+			next;
+			mes "[Meteurengut]";
+			mes "I shall need";
+			mes "^3355FF1 Sapphire^000000,";
+			mes "^3355FF1 Shining Stone^000000,";
+			mes "^3355FF1 Rough Elunium^000000,";
+			mes "^3355FF1 Emerald^000000, and";
+			mes "^3355FF1 Blue Gemstone^000000.";
+			set comodo_npc,15;
+			close;
+		case 15:
+			if (countitem(717) > 0 && countitem(726) > 0 && countitem(721) > 0 && countitem(640) > 0 && countitem(757) > 0) {
+				mes "[Meteurengut]";
+				mes "You've already found";
+				mes "all of the items I require to";
+				mes "create the Slate of Muriniel?";
+				mes "Fantastic. Now I can begin work";
+				mes "on this. However, there is one";
+				mes "more thing I must ask of you.";
+				delitem 717,1;
+				delitem 726,1;
+				delitem 721,1;
+				delitem 640,1;
+				delitem 757,1;
+				set comodo_npc,16;
+				next;
+				mes "[Meteurengut]";
+				mes "Would you please bring me";
+				mes "^3355FF1 Cobweb^000000? You can obtain";
+				mes "them by slaying spiders in";
+				mes "Muriniel Pass which is on the";
+				mes "way to Al De Baran from here.";
+				next;
+				mes "[Meteurengut]";
+				mes "I'd have asked for it";
+				mes "sooner, but I need to prepare";
+				mes "all of these stones, and I need";
+				mes "the freshest Cobwebs I can get.";
+				mes "I'll make sure that these stones^FFFFFF ^000000 are ready when you return.";
+				close;
+			} else {
+				mes "[Meteurengut]";
+				mes "If you wish for me to";
+				mes "reproduce the Slate of";
+				mes "Muriniel for you, then";
+				mes "please bring me the items";
+				mes "I require to complete the";
+				mes "secret alchemic procedure.";
+				next;
+				mes "[Meteurengut]";
+				mes "I shall need";
+				mes "^3355FF1 Sapphire^000000,";
+				mes "^3355FF1 Shining Stone^000000,";
+				mes "^3355FF1 Rough Elunium^000000,";
+				mes "^3355FF1 Emerald^000000, and";
+				mes "^3355FF1 Blue Gemstone^000000.";
+				close;
+			}
+		case 16:
+			if (countitem(1025) > 0) {
+				mes "[Meteurengut]";
+				mes "I see that you've brought";
+				mes "me a Cobweb. It's hard to";
+				mes "believe, but it's integreal to";
+				mes "creating the Slate of Muriniel.";
+				mes "Now, if you'll wait a moment,";
+				mes "I shall complete the slate...";
+				next;
+				delitem 1025,1;
+				mes "*^3355FFClang Clang Clang!*";
+				mes "*Zaaaaaaaaaaaaaap*";
+				mes "*Ching tink t-t-t-tap*^000000";
+				set comodo_npc,17;
+				next;
+				mes "[Meteurengut]";
+				mes "*Whew* It's finished.";
+				mes "Please take care of this";
+				mes "slate, and know that I am";
+				mes "entrusting you with an artifact";
+				mes "that can help you access power";
+				mes "beyond your imagination...";
+				next;
+				mes "^3355FFYou have received";
+				mes "the Slate of Muriniel.^000000";
+				next;
+				mes "[Meteurengut]";
+				mes "There. You have eaten of";
+				mes "the Awakening Stone and you";
+				mes "possess the Slate of Muriniel.";
+				mes "Now, you must try to obtain the";
+				mes "^3355FFBook of the Lamb^000000 if you are";
+				mes "questing for a doomed sword...";
+				next;
+				mes "[Meteurengut]";
+				mes "I know very little about";
+				mes "that artifact, and its secrets";
+				mes "are as well guarded as that of";
+				mes "the Slate of Muriniel. However,";
+				mes "I do know that a man in Morroc^FFFFFF ^000000 can create the Book of the Lamb...";
+				next;
+				mes "[Meteurengut]";
+				mes "If that man is still in";
+				mes "Morroc, then he will probably";
+				mes "recognize the subtle emanation";
+				mes "of the Awakening Stone and the";
+				mes "Slate of Muriniel from you. Best^FFFFFF ^000000 of luck to you, adventurer...";
+				close;
+			} else {
+				mes "[Meteurengut]";
+				mes "Ah, have you brought a";
+				mes "Cobweb? I know it sounds";
+				mes "strange, but I really need the";
+				mes "unique energy found only in";
+				mes "fresh Cobwebs to finish the";
+				mes "Slate of Muriniel for you...";
+				close;
+			}
+		case 17:
+			mes "[Meteurengut]";
+			mes "You've eaten of the";
+			mes "Awakening Stone and";
+			mes "now possess the Slate of";
+			mes "Muriniel. Now, all you must";
+			mes "do is obtain the Book of the";
+			mes "Lamb. I know little about it...";
+			next;
+			mes "[Meteurengut]";
+			mes "All I can tell you is that";
+			mes "there should be a man in";
+			mes "Morroc that can create it";
+			mes "for you. A man like that can";
+			mes "sense the Slate of Muriniel,";
+			mes "so he may call out to you...";
+			close;
+		}
+	} else {
+		mes "[Meteurengut]";
+		mes "The ^3355FFSlate of Muriniel^000000";
+		mes "is an ancient artifact";
+		mes "that can only be created";
+		mes "by the power of Alchemy.";
+		mes "It is one of the best kept";
+		mes "secrets of my family...";
+		next;
+		mes "[Meteurengut]";
+		mes "I'm responsible for guarding";
+		mes "the secrets of its creation, but^FFFFFF ^000000 I must also share the power";
+		mes "of the slate with those that";
+		mes "prove themselves worthy of it.";
+		next;
+		mes "[Meteurengut]";
+		mes "After all, power is useless";
+		mes "if it is never used. However,";
+		mes "if power is never balanced with";
+		mes "wisdom and compassion, then";
+		mes "it will inevitably do more harm";
+		mes "than good in the very end...";
+		close;
+	}
+}
+
+morocc.gat,201,30,4	script	Zaka	99,{
+
+	if (comodo_npc == 17 || comodo_npc == 18 || comodo_npc == 19 || comodo_npc == 20 || comodo_npc == 21 || comodo_npc == 22) {
+		switch(comodo_npc) {
+		case 17:
+			mes "[Zaka]";
+			mes "...You there! Hold it!";
+			mes "Yes, I can feel it from";
+			mes "you... The power of the";
+			mes "Awakening Stone... And...";
+			mes "The Slate of Muriniel?";
+			mes "Finally, you've come.";
+			next;
+			mes "[Zaka]";
+			mes "I'm fully aware that only";
+			mes "those that seek to own one";
+			mes "of the doomed swords would";
+			mes "trouble themselve to obtain";
+			mes "those items. All that is left for^FFFFFF ^000000 you is the Book of the Lamb...";
+			next;
+			mes "[Zaka]";
+			mes "I've been waiting for so";
+			mes "long for the opportunity to";
+			mes "create the Book of the Lamb.";
+			mes "If you really want the book,";
+			mes "I will help you so long as";
+			mes "you will help me.";
+			next;
+			mes "[Zaka]";
+			mes "However, creating the book";
+			mes "is a complicated process and";
+			mes "requires multiple stages of";
+			mes "preparation. Therefore, I shall";
+			mes "ask you to bring me the items";
+			mes "I require in separate batches.";
+			next;
+			mes "[Zaka]";
+			mes "Alright...";
+			mes "What was it now?";
+			mes "Ah, yes. The first thing";
+			mes "I need is ^3355FF2 Snake Scales^000000,";
+			mes "so please bring those soon.";
+			set comodo_npc,18;
+			close;
+		case 18:
+			if (countitem(926) > 1) {
+				delitem 926,2;
+				set comodo_npc,19;
+				mes "[Zaka]";
+				mes "Ah, you've brought";
+				mes "the Snake Scales? Good,";
+				mes "let me take them now and";
+				mes "begin work on the Book of";
+				mes "the Lamb. Now, I need you";
+				mes "to bring me ^3355FF1 Scale Shell^000000.";
+				next;
+				mes "[ZAKA";
+				mes "I know it would be more";
+				mes "convenient for you if I told";
+				mes "you everything I needed at";
+				mes "once, but actually, this way";
+				mes "is much more convenient for";
+				mes "me. I'll be waiting right here!";
+				close;
+			} else {
+				mes "[Zaka]";
+				mes "The first thing I'll";
+				mes "need to begin creating";
+				mes "the Book of the Lamb is";
+				mes "^3355FF2 Snake Scales^000000. Come back";
+				mes "to me once you get them,";
+				mes "alright? I'll be right here.";
+				close;
+			}
+		case 19:
+			if (countitem(936) > 0) {
+				mes "[Zaka]";
+				mes "Oh, nice! You've brought";
+				mes "this Scale Shell for me,";
+				mes "right? Great, great, this will";
+				mes "help enhance the book's";
+				mes "physical durability, but it";
+				mes "still needs magic durability...";
+				next;
+				mes "[Zaka]";
+				mes "Next, you need to bring";
+				mes "me ^3355FF1 Shining Shell^000000. Hurry";
+				mes "and bring you to me before";
+				mes "I finish this part of the process, okay? Wait, actually, I think";
+				mes "you can take your time...";
+				delitem 936,1;
+				set comodo_npc,20;
+				close;
+			} else {
+				mes "[Zaka]";
+				mes "I'll be waiting right";
+				mes "here while you go and";
+				mes "look for a ^3355FFScale Shell^000000";
+				mes "that you can bring to me.";
+				mes "I'll need that in order to";
+				mes "finish this Book of the Lamb.";
+				close;
+			}
+		case 20:
+			if (countitem(954) > 0) {
+				mes "[Zaka]";
+				mes "Ah, you're just in time!";
+				mes "Have you got the Shining";
+				mes "Scale? Perfect. Now, there";
+				mes "is just one more item that";
+				mes "I want to ask you to bring me:";
+				mes "^3355FF1 Stinky Scale^000000. Easy, right?";
+				delitem 954,1;
+				set comodo_npc,21;
+				next;
+				mes "[Zaka]";
+				mes "The energy of a Stinky";
+				mes "Scale can be used to";
+				mes "regulate the power of";
+				mes "incredibly potent artifacts.";
+				mes "Without that item, the Book";
+				mes "of the Lamb isn't much use...";
+				close;
+			} else {
+				mes "[Zaka]";
+				mes "If you want me to";
+				mes "finish this Book of";
+				mes "the Lamb, you need";
+				mes "to come back here with";
+				mes "^3355FF1 Shining Scale^000000. There's";
+				mes "no way to work around it...";
+				close;
+			}
+		case 21:
+			if (countitem(959) > 0) {
+				mes "[Zaka]";
+				mes "What's that sme--?";
+				mes "Oh, right. I asked you to";
+				mes "bring me a Stinky Scale.";
+				mes "Now I can finally complete";
+				mes "this Book of the Lamb! I've";
+				mes "been looking forward to this...";
+				next;
+				mes "^3355FFZaka completes";
+				mes "the creation of the";
+				mes "Book of the Lamb.^000000";
+				delitem 959,1;
+				set comodo_npc,22;
+				next;
+				mes "[Zaka]";
+				mes "What...?!";
+				mes "That's it? Well, um,";
+				mes "it's done. That felt";
+				mes "rather anticlimatic, but";
+				mes "I can finally see this";
+				mes "thing with my own eyes!";
+				next;
+				mes "[Zaka]";
+				mes "Alright, you've eaten of the";
+				mes "Awakening Stone, obtained the";
+				mes "Slate of Muriniel, and now have";
+				mes "the Book of the Lamb. You're";
+				mes "getting very close to owning";
+				mes "one of the doomed swords.";
+				next;
+				mes "[Zaka]";
+				mes "There is man that you";
+				mes "must find in Comodo named";
+				mes "^3355FFWon^000000. He will judge you, and";
+				mes "then give you the proof that";
+				mes "shows you are qualified to";
+				mes "be a doomed sword bearer.";
+				next;
+				mes "[Zaka]";
+				mes "He looks like a simple";
+				mes "man, but he is a true living";
+				mes "legend renown for his wisdom.";
+				mes "If you really want a doomed";
+				mes "sword, you need to speak to";
+				mes "Won and ask him to guide you.";
+				close;
+			} else {
+				mes "[Zaka]";
+				mes "The last thing that I need";
+				mes "to complete the Book of the";
+				mes "Lamb is ^3355FF1 Stinky Scale^000000. Please";
+				mes "bring that to me as soon as";
+				mes "you can. Thank you for being";
+				mes "patient, young adventurer.";
+				close;
+			}
+		case 22:
+			mes "[Zaka]";
+			mes "Now, you need to visit a";
+			mes "man named ^3355FFWon^000000 in Comodo";
+			mes "in order to get the proof that";
+			mes "shows that you're qualified to";
+			mes "possess a doomed sword.";
+			mes "Hopefully, you'll get it...";
+			close;
+		}
+	} else {
+		mes "[Zaka]";
+		mes "Have you heard that swords";
+		mes "with the power to change the";
+		mes "world actually exist? It's true";
+		mes "that three swords contain this";
+		mes "immense power, but they are";
+		mes "also bound to powerful curses.";
+		next;
+		mes "[Zaka]";
+		mes "Therefore, the Mysteltainn,";
+		mes "Ogretooth, and Executioner";
+		mes "have all been sealed away.";
+		mes "Only a truly great adventurer";
+		mes "can release these doomed^FFFFFF ^000000 swords and actually wield them...";
+		close;
+	}
+}
+
+comodo.gat,232,87,4	script	Won	106,{
+
+	if (comodo_npc == 22 || comodo_npc == 23 || comodo_npc == 24) {
+		switch(comodo_npc) {
+		case 22:
+			mes "[Won]";
+			mes "Hmm...? It's been a while";
+			mes "since someone came here to";
+			mes "get the qualification to own a";
+			mes "doomed sword. Yeah, I know";
+			mes "that's why you're here...";
+			next;
+			mes "[Won]";
+			mes "To a man like me, the";
+			mes "presenses of the Book of the";
+			mes "Lamb, the Slate of Muriniel,";
+			mes "and one that has eaten of the";
+			mes "Awakening Stone are unmistakable. ^FFFFFF ^000000";
+			next;
+			mes "[Won]";
+			mes "Now, listen. I personally";
+			mes "don't care why you want a";
+			mes "doomed sword. If you abuse";
+			mes "its power, you'll pay the price";
+			mes "eventually. I'm only here to";
+			mes "make sure you're up to snuff.";
+			next;
+			mes "[Won]";
+			mes "Of course, I also want to";
+			mes "make sure that you don't bring";
+			mes "great suffering to the world";
+			mes "using a doomed sword. So I'm";
+			mes "going to check if you're, you";
+			mes "know, balanced and all that.";
+			next;
+			mes "[Won]";
+			mes "Alright, let me take";
+			mes "a look into your eyes...";
+			mes "Yeah, alright. You seem to";
+			mes "understand the value of the";
+			mes "Awakening Stone, Book of the^FFFFFF ^000000 Lamb, and the Slate of Muriniel.";
+			next;
+			mes "[Won]";
+			mes "Yeah, I can't sense any";
+			mes "ill intent from you at all.";
+			mes "That's very good. Huh, you";
+			mes "seem pretty experienced in battle, so I'm sure you have the stamina";
+			mes "to handle to a doomed sword...";
+			next;
+			mes "[Won]";
+			mes "Ah, but most importantly,";
+			mes "you don't strike me as crazy";
+			mes "at all. Alright, we're done here. Take this Stamp of Muriniel:";
+			mes "it's the official qualification";
+			mes "token to own a doomed sword.";
+			next;
+			mes "^3355FFYou receive the";
+			mes "Stamp of Muriniel.^000000";
+			set comodo_npc,23;
+			next;
+			mes "[Won]";
+			mes "Mysteltainn, Executioner,";
+			mes "and Ogretooth... These are";
+			mes "the forbidden blades, the";
+			mes "doomed swords. Remember";
+			mes "that you cannot choose";
+			mes "which weapon you'll wield...";
+			next;
+			mes "[Won]";
+			mes "These swords have a will";
+			mes "of their own. The doomed";
+			mes "sword that finds you most";
+			mes "worthy of it will choose you.";
+			mes "You can understand that, right?";
+			next;
+			mes "[Won]";
+			mes "Now that you have this";
+			mes "qualification, I'm supposed";
+			mes "to direct you to the Sages";
+			mes "that can help lead you to";
+			mes "the doomed swords.";
+			next;
+			mes "[Won]";
+			mes "The first Sage that you";
+			mes "must visit is ^3355FFSage Yklah^000000";
+			mes "in the city of ^3355FFJuno^000000 in the";
+			mes "Schwaltzvalt Republic.";
+			mes "Your quest to obtain a";
+			mes "doomed sword isn't over yet...";
+			close;
+		case 23:
+			mes "[Won]";
+			mes "Now that you have this";
+			mes "qualification, I'm supposed";
+			mes "to direct you to the Sages";
+			mes "that can help lead you to";
+			mes "the doomed swords.";
+			next;
+			mes "[Won]";
+			mes "The first Sage that you";
+			mes "must visit is ^3355FFSage Yklah^000000";
+			mes "in the city of ^3355FFJuno^000000 in the";
+			mes "Schwaltzvalt Republic.";
+			mes "Your quest to obtain a";
+			mes "doomed sword isn't over yet...";
+			close;
+		case 24:
+			mes "1 2 3 4 5 6 7 8 9 10 1 2 3 4 5";
+			close;
+		}
+	} else {
+		mes "[Won]";
+		mes "The visitors and even the";
+		mes "people that live here always";
+		mes "seem to be having such a good";
+		mes "time, just lounging in leisure.";
+		mes "It's hard to believe the War";
+		mes "of the Witch even happened...";
+		next;
+		mes "[Won]";
+		mes "But not everyone here in";
+		mes "Comodo can afford to relax";
+		mes "so easily. I, for one, have";
+		mes "the responsibility of seeking";
+		mes "out those that are worthy of,^FFFFFF ^000000 well, I don't know if I can say...";
+		next;
+		mes "[Won]";
+		mes "You just have to";
+		mes "trust that I've got an";
+		mes "incredibly important";
+		mes "job to do. I mean, sure,";
+		mes "it doesn't look like I'm doing";
+		mes "anything right now, but...";
+		close;
+	}
+}
+
+
+//--------------------------------------------------------------
+// Comodo Gambling - [Tsuyuki]
+//--------------------------------------------------------------
+
+comodo.gat,219,158,6	script	Kachua	91,{
+
+	set '@max_max_c,checkweight(1201,1);
+	if ('@max_max_c == 0) {
+		mes "^3355FFWait a second! Right now, you're carrying too many items with you. Please come back after putting some of your things into Kafra Storage.^000000";
+		close;
+	}
+	cutin "katsua01",2;
+	mes "[Kachua]";
+	mes "Diamonds...!";
+	mes "I simply can't get my mind off them! Ever since that man showed me that diamond, it's all I think about!";
+	next;
+	switch(select("Would you like to have mine?","Ah, what a shame...")) {
+	case 1:
+		if (countitem(732) > 0) {
+			cutin "katsua02",2;
+			mes "[Kachua]";
+			mes "Are you sure you don't mind";
+			mes "giving this to me? Thank you";
+			mes "so much! I don't have much in";
+			mes "the way of money, but I can give you something from one of my collections~";
+			next;
+			set '@now_weight,(MaxWeight - Weight);
+			if ('@now_weight < 5500) {
+				mes "[Kachua]";
+				mes "Um...";
+				mes "You're carrying too many things on you right now, so I couldn't give you anything, even if I wanted to. Why don't you put some of your things into Kafra Storage?";
+				close2;
+				cutin "katsua01",255;
+				cutin "katsua02",255;
+				cutin "katsua03",255;
+				end;
+			} else {
+				mes "[Kachua]";
+				mes "So what would";
+				mes "you like to have?";
+				next;
+				switch(select("Weapon","Armor","Garment","Helmet","Shoes","Shield")) {
+				case 1:
+					delitem 732,1;
+					set '@gamble_1,rand(1,1000);
+					if (('@gamble_1 > 920) && ('@gamble_1 < 931)) {
+						set '@gamble_2,rand(1,85);
+						if ('@gamble_2 == 1) {
+							getitem 1128,1;
+						} else if ('@gamble_2 == 2) {
+							getitem 1120,1;
+						} else if ('@gamble_2 == 3) {
+							getitem 1127,1;
+						} else if ('@gamble_2 == 4) {
+							getitem 1158,1;
+						} else if ('@gamble_2 == 5) {
+							getitem 1155,1;
+						} else if ('@gamble_2 == 6) {
+							getitem 1220,1;
+						} else if ('@gamble_2 == 7) {
+							getitem 1222,1;
+						} else if ('@gamble_2 == 8) {
+							getitem 1253,1;
+						} else if ('@gamble_2 == 9) {
+							getitem 1529,1;
+						} else if ('@gamble_2 == 10) {
+							getitem 1251,1;
+						} else if ('@gamble_2 == 11) {
+							getitem 1361,1;
+						} else if ('@gamble_2 == 12) {
+							getitem 1258,1;
+						} else if ('@gamble_2 == 13) {
+							getitem 1257,1;
+						} else if ('@gamble_2 == 14) {
+							getitem 1256,1;
+						} else if ('@gamble_2 == 15) {
+							getitem 1259,1;
+						} else if ('@gamble_2 == 16) {
+							getitem 1260,1;
+						} else if ('@gamble_2 == 17) {
+							getitem 1716,1;
+						} else if ('@gamble_2 == 18) {
+							getitem 1715,1;
+						} else if ('@gamble_2 == 19) {
+							getitem 1711,1;
+						} else if ('@gamble_2 == 20) {
+							getitem 1702,1;
+						} else if ('@gamble_2 == 21) {
+							getitem 1520,1;
+						} else if ('@gamble_2 == 22) {
+							getitem 1610,1;
+						} else if ('@gamble_2 == 23) {
+							getitem 1615,1;
+						} else if ('@gamble_2 == 24) {
+							getitem 1602,1;
+						} else if ('@gamble_2 == 25) {
+							getitem 1461,1;
+						} else if ('@gamble_2 == 26) {
+							getitem 1402,1;
+						} else if ('@gamble_2 == 27) {
+							getitem 1961,1;
+						} else if ('@gamble_2 == 28) {
+							getitem 1957,1;
+						} else if ('@gamble_2 == 29) {
+							getitem 1552,1;
+						} else if ('@gamble_2 == 30) {
+							getitem 1551,1;
+						} else if ('@gamble_2 == 31) {
+							getitem 1553,1;
+						} else if ('@gamble_2 == 32) {
+							getitem 1554,1;
+						} else if ('@gamble_2 == 33) {
+							getitem 1555,1;
+						} else if ('@gamble_2 == 34) {
+							getitem 1556,1;
+						} else if ('@gamble_2 == 35) {
+							getitem 1951,1;
+						} else if ('@gamble_2 == 36) {
+							getitem 1951,1;
+						} else if ('@gamble_2 == 37) {
+							getitem Line_,1;
+						} else if ('@gamble_2 == 38) {
+							getitem 1955,1;
+						} else if ('@gamble_2 == 39) {
+							getitem 1810,1;
+						} else if ('@gamble_2 == 40) {
+							getitem 1910,1;
+						} else if ('@gamble_2 == 41) {
+							getitem 1906,1;
+						} else if ('@gamble_2 == 42) {
+							getitem 1902,1;
+						} else if ('@gamble_2 == 43) {
+							getitem 1904,1;
+						} else if ('@gamble_2 == 44) {
+							getitem 1912,1;
+						} else if ('@gamble_2 == 45) {
+							getitem 1908,1;
+						} else if ('@gamble_2 == 46) {
+							getitem 1808,1;
+						} else if ('@gamble_2 == 47) {
+							getitem 1802,1;
+						} else if ('@gamble_2 == 48) {
+							getitem 1812,1;
+						} else if ('@gamble_2 == 49) {
+							getitem 1806,1;
+						} else if ('@gamble_2 == 50) {
+							getitem 1804,1;
+						} else if ('@gamble_2 == 51) {
+							getitem 1550,1;
+						} else if ('@gamble_2 == 52) {
+							getitem 1246,1;
+						} else if ('@gamble_2 == 53) {
+							getitem 1147,1;
+						} else if (('@gamble_2 > 53) && ('@gamble_2 < 56)) {
+							getitem 1264,1;
+						} else if (('@gamble_2 > 55) && ('@gamble_2 < 58)) {
+							getitem 1262,1;
+						} else if (('@gamble_2 > 57) && ('@gamble_2 < 60)) {
+							getitem 1622,1;
+						} else if ('@gamble_2 == 60) {
+							getitem 1723,1;
+						} else if (('@gamble_2 > 60) && ('@gamble_2 < 63)) {
+							getitem 1965,1;
+						} else if (('@gamble_2 > 62) && ('@gamble_2 < 65)) {
+							getitem 1966,1;
+						} else if (('@gamble_2 > 64) && ('@gamble_2 < 67)) {
+							getitem 1967,1;
+						} else if (('@gamble_2 > 66) && ('@gamble_2 < 69)) {
+							getitem 1968,1;
+						} else if (('@gamble_2 > 68) && ('@gamble_2 < 71)) {
+							getitem 1914,1;
+						} else if (('@gamble_2 > 70) && ('@gamble_2 < 73)) {
+							getitem 1915,1;
+						} else if (('@gamble_2 > 72) && ('@gamble_2 < 75)) {
+							getitem 1916,1;
+						} else if (('@gamble_2 > 74) && ('@gamble_2 < 77)) {
+							getitem 1917,1;
+						} else if (('@gamble_2 > 76) && ('@gamble_2 < 79)) {
+							getitem 13004,1;
+						} else if (('@gamble_2 > 78) && ('@gamble_2 < 81)) {
+							getitem 1307,1;
+						} else if ('@gamble_2 == 81) {
+							getitem 1563,1;
+						} else if ('@gamble_2 == 82) {
+							getitem 1618,1;
+						} else if ('@gamble_2 == 83) {
+							getitem 1620,1;
+						}
+					} else if (('@gamble_1 > 0) && ('@gamble_1 < 201)) {
+						getitem 1201,1;
+					} else if (('@gamble_1 > 200) && ('@gamble_1 < 301)) {
+						getitem 1101,1;
+					} else if (('@gamble_1 > 300) && ('@gamble_1 < 401)) {
+						getitem 1601,1;
+					} else if (('@gamble_1 > 400) && ('@gamble_1 < 501)) {
+						getitem 1116,1;
+					} else if (('@gamble_1 > 500) && ('@gamble_1 < 601)) {
+						getitem 1250,1;
+					} else if (('@gamble_1 > 600) && ('@gamble_1 < 701)) {
+						getitem 1301,1;
+					} else if (('@gamble_1 > 700) && ('@gamble_1 < 801)) {
+						getitem 1701,1;
+					} else if (('@gamble_1 > 800) && ('@gamble_1 < 851)) {
+						getitem 1504,1;
+					} else if (('@gamble_1 > 850) && ('@gamble_1 < 901)) {
+						getitem 1604,1;
+					} else if (('@gamble_1 > 900) && ('@gamble_1 < 911)) {
+						getitem 1108,1;
+					} else if (('@gamble_1 > 910) && ('@gamble_1 < 921)) {
+						getitem 1163,1;
+					} else if (('@gamble_1 > 930) && ('@gamble_1 < 961)) {
+						getitem 1522,1;
+					} else if (('@gamble_1 > 960) && ('@gamble_1 < 971)) {
+						getitem 1608,1;
+					} else if (('@gamble_1 > 970) && ('@gamble_1 < 981)) {
+						getitem 1408,1;
+					} else if (('@gamble_1 > 980) && ('@gamble_1 < 991)) {
+						getitem 1452,1;
+					} else if (('@gamble_1 > 990) && ('@gamble_1 < 1001)) {
+						getitem 1208,1;
+					}
+					break;
+				case 2:
+					delitem 732,1;
+					set '@gamble_1,rand(1,500);
+					if (('@gamble_1 > 299) && ('@gamble_1 < 303)) {
+						set '@gamble_2,rand(1,30);
+						if (('@gamble_2 > 0) && ('@gamble_2 < 3)) {
+							getitem 2315,1;
+						} else if (('@gamble_2 > 2) && ('@gamble_2 < 5)) {
+							getitem 2336,1;
+						} else if (('@gamble_2 > 4) && ('@gamble_2 < 7)) {
+							getitem 2318,1;
+						} else if (('@gamble_2 > 6) && ('@gamble_2 < 9)) {
+							getitem 2326,1;
+						} else if (('@gamble_2 > 8) && ('@gamble_2 < 11)) {
+							getitem 2327,1;
+						} else if (('@gamble_2 > 10) && ('@gamble_2 < 13)) {
+							getitem 2342,1;
+						} else if (('@gamble_2 > 12) && ('@gamble_2 < 15)) {
+							getitem 2331,1;
+						} else if (('@gamble_2 > 14) && ('@gamble_2 < 17)) {
+							getitem 2342,1;
+						} else if (('@gamble_2 > 16) && ('@gamble_2 < 19)) {
+							getitem 2311,1;
+						} else if (('@gamble_2 > 18) && ('@gamble_2 < 21)) {
+							getitem 2320,1;
+						} else if (('@gamble_2 > 20) && ('@gamble_2 < 23)) {
+							getitem 2319,1;
+						} else if (('@gamble_2 > 22) && ('@gamble_2 < 25)) {
+							getitem 2344,1;
+						} else if (('@gamble_2 > 24) && ('@gamble_2 < 27)) {
+							getitem 2346,1;
+						} else if (('@gamble_2 > 26) && ('@gamble_2 < 29)) {
+							getitem 2348,1;
+						} else if (('@gamble_2 > 28) && ('@gamble_2 < 31)) {
+							getitem 2350,1;
+						}
+					} else if (('@gamble_1 > 0) && ('@gamble_1 < 51)) {
+						getitem 2301,1;
+					} else if (('@gamble_1 > 50) && ('@gamble_1 < 101)) {
+						getitem 2302,1;
+					} else if (('@gamble_1 > 100) && ('@gamble_1 < 151)) {
+						getitem 2303,1;
+					} else if (('@gamble_1 > 150) && ('@gamble_1 < 201)) {
+						getitem 2304,1;
+					} else if (('@gamble_1 > 200) && ('@gamble_1 < 251)) {
+						getitem 2305,1;
+					} else if (('@gamble_1 > 250) && ('@gamble_1 < 300)) {
+						getitem 2301,1;
+					} else if (('@gamble_1 > 301) && ('@gamble_1 < 351)) {
+						getitem 2307,1;
+					} else if (('@gamble_1 > 350) && ('@gamble_1 < 401)) {
+						getitem 2309,1;
+					} else if (('@gamble_1 > 400) && ('@gamble_1 < 402)) {
+						getitem 2322,1;
+					} else if (('@gamble_1 > 401) && ('@gamble_1 < 403)) {
+						getitem 2310,1;
+					} else if (('@gamble_1 > 402) && ('@gamble_1 < 411)) {
+						getitem 2306,1;
+					} else if (('@gamble_1 > 410) && ('@gamble_1 < 416)) {
+						getitem 2308,1;
+					} else if (('@gamble_1 > 415) && ('@gamble_1 < 421)) {
+						getitem 2313,1;
+					} else if (('@gamble_1 > 420) && ('@gamble_1 < 426)) {
+						getitem 2337,1;
+					} else if (('@gamble_1 > 425) && ('@gamble_1 < 431)) {
+						getitem 2341,1;
+					} else if (('@gamble_1 > 430) && ('@gamble_1 < 436)) {
+						getitem 2325,1;
+					} else if (('@gamble_1 > 435) && ('@gamble_1 < 441)) {
+						getitem 2316,1;
+					} else if (('@gamble_1 > 440) && ('@gamble_1 < 446)) {
+						getitem 2330,1;
+					} else if (('@gamble_1 > 445) && ('@gamble_1 < 451)) {
+						getitem 2314,1;
+					} else if (('@gamble_1 > 450) && ('@gamble_1 < 456)) {
+						getitem 2335,1;
+					} else if (('@gamble_1 > 455) && ('@gamble_1 < 461)) {
+						getitem 2324,1;
+					} else if (('@gamble_1 > 460) && ('@gamble_1 < 466)) {
+						getitem 2329,1;
+					} else if (('@gamble_1 > 465) && ('@gamble_1 < 471)) {
+						getitem 2340,1;
+					} else if (('@gamble_1 > 470) && ('@gamble_1 < 476)) {
+						getitem 2312,1;
+					} else if (('@gamble_1 > 475) && ('@gamble_1 < 481)) {
+						getitem G_Strings,1;
+					} else if (('@gamble_1 > 480) && ('@gamble_1 < 486)) {
+						getitem 2328,1;
+					} else if (('@gamble_1 > 485) && ('@gamble_1 < 491)) {
+						getitem 2321,1;
+					} else if (('@gamble_1 > 490) && ('@gamble_1 < 501)) {
+						getitem 2323,1;
+					}
+					break;
+				case 3:
+					delitem 732,1;
+					set '@gamble_1,rand(1,500);
+					if (('@gamble_1 > 200) && ('@gamble_1 < 204)) {
+						set '@gamble_2,rand(1,16);
+						if (('@gamble_2 > 0) && ('@gamble_2 < 3)) {
+							getitem 2506,1;
+						} else if (('@gamble_2 > 2) && ('@gamble_2 < 5)) {
+							getitem 2504,1;
+						} else if (('@gamble_2 > 4) && ('@gamble_2 < 8)) {
+							getitem 2508,1;
+						} else if (('@gamble_2 > 7) && ('@gamble_2 < 11)) {
+							getitem 2507,1;
+						} else if ('@gamble_2 == 11) {
+							getitem 2513,1;
+						} else if ('@gamble_2 == 12) {
+							getitem 2514,1;
+						} else if (('@gamble_2 > 12) && ('@gamble_2 < 15)) {
+							getitem 2523,1;
+						} else if ('@gamble_2 == 15) {
+							getitem 2509,1;
+						} else if ('@gamble_2 == 16) {
+							getitem 2515,1;
+						}
+					} else if (('@gamble_1 > 0) && ('@gamble_1 < 101)) {
+						getitem 2503,1;
+					} else if (('@gamble_1 > 100) && ('@gamble_1 < 201)) {
+						getitem 2505,1;
+					} else if (('@gamble_1 > 203) && ('@gamble_1 < 451)) {
+						getitem 2501,1;
+					} else if (('@gamble_1 > 450) && ('@gamble_1 < 501)) {
+						getitem 2502,1;
+					}
+					break;
+				case 4:
+					delitem 732,1;
+					set '@gamble_1,rand(1,1000);
+					if (('@gamble_1 > 299) && ('@gamble_1 < 305)) {
+						set '@gamble_2,rand(1,93);
+						if (('@gamble_2 > 0) && ('@gamble_2 < 3)) {
+							getitem 2251,1;
+						} else if (('@gamble_2 > 2) && ('@gamble_2 < 5)) {
+							getitem 2285,1;
+						} else if (('@gamble_2 > 4) && ('@gamble_2 < 7)) {
+							getitem 2255,1;
+						} else if (('@gamble_2 > 6) && ('@gamble_2 < 9)) {
+							getitem 5045,1;
+						} else if (('@gamble_2 > 8) && ('@gamble_2 < 11)) {
+							getitem 2233,1;
+						} else if (('@gamble_2 > 10) && ('@gamble_2 < 13)) {
+							getitem 2231,1;
+						} else if (('@gamble_2 > 12) && ('@gamble_2 < 15)) {
+							getitem 2217,1;
+						} else if (('@gamble_2 > 14) && ('@gamble_2 < 17)) {
+							getitem 2206,1;
+						} else if (('@gamble_2 > 16) && ('@gamble_2 < 19)) {
+							getitem 2246,1;
+						} else if (('@gamble_2 > 18) && ('@gamble_2 < 21)) {
+							getitem 2261,1;
+						} else if (('@gamble_2 > 20) && ('@gamble_2 < 23)) {
+							getitem 2287,1;
+						} else if (('@gamble_2 > 22) && ('@gamble_2 < 25)) {
+							getitem 5012,1;
+						} else if (('@gamble_2 > 24) && ('@gamble_2 < 27)) {
+							getitem 2244,1;
+						} else if (('@gamble_2 > 26) && ('@gamble_2 < 29)) {
+							getitem 2213,1;
+						} else if (('@gamble_2 > 28) && ('@gamble_2 < 31)) {
+							getitem 2248,1;
+						} else if (('@gamble_2 > 30) && ('@gamble_2 < 33)) {
+							getitem 2223,1;
+						} else if (('@gamble_2 > 32) && ('@gamble_2 < 35)) {
+							getitem 2247,1;
+						} else if (('@gamble_2 > 34) && ('@gamble_2 < 37)) {
+							getitem 2245,1;
+						} else if (('@gamble_2 > 36) && ('@gamble_2 < 39)) {
+							getitem 5003,1;
+						} else if (('@gamble_2 > 38) && ('@gamble_2 < 41)) {
+							getitem 2225,1;
+						} else if (('@gamble_2 > 40) && ('@gamble_2 < 43)) {
+							getitem 5017,1;
+						} else if (('@gamble_2 > 42) && ('@gamble_2 < 45)) {
+							getitem 5030,1;
+						} else if (('@gamble_2 > 44) && ('@gamble_2 < 47)) {
+							getitem 5035,1;
+						} else if (('@gamble_2 > 46) && ('@gamble_2 < 49)) {
+							getitem 2250,1;
+						} else if (('@gamble_2 > 48) && ('@gamble_2 < 51)) {
+							getitem 2277,1;
+						} else if (('@gamble_2 > 50) && ('@gamble_2 < 53)) {
+							getitem 5011,1;
+						} else if (('@gamble_2 > 52) && ('@gamble_2 < 55)) {
+							getitem 2290,1;
+						} else if (('@gamble_2 > 54) && ('@gamble_2 < 57)) {
+							getitem 5010,1;
+						} else if (('@gamble_2 > 56) && ('@gamble_2 < 60)) {
+							getitem 2259,1;
+						} else if (('@gamble_2 > 59) && ('@gamble_2 < 62)) {
+							getitem 5008,1;
+						} else if (('@gamble_2 > 61) && ('@gamble_2 < 63)) {
+							getitem 2249,1;
+						} else if (('@gamble_2 > 62) && ('@gamble_2 < 65)) {
+							getitem 2229,1;
+						} else if ('@gamble_2 == 65) {
+							getitem 2258,1;
+						} else if ('@gamble_2 == 66) {
+							getitem 2274,1;
+						} else if ('@gamble_2 == 67) {
+							getitem 5019,1;
+						} else if ('@gamble_2 == 68) {
+							getitem 2254,1;
+						} else if ('@gamble_2 == 69) {
+							getitem 5007,1;
+						} else if ('@gamble_2 == 70) {
+							getitem 5066,1;
+						} else if ('@gamble_2 == 71) {
+							getitem 2235,1;
+						} else if ('@gamble_2 == 72) {
+							getitem 2234,1;
+						} else if ('@gamble_2 == 73) {
+							getitem 2256,1;
+						} else if ('@gamble_2 == 74) {
+							getitem 5093,1;
+						} else if ('@gamble_2 == 75) {
+							getitem 5072,1;
+						} else if ('@gamble_2 == 76) {
+							getitem 5002,1;
+						} else if (('@gamble_2 > 76) && ('@gamble_2 < 80)) {
+							getitem 5118,1;
+						} else if (('@gamble_2 > 79) && ('@gamble_2 < 83)) {
+							getitem 5120,1;
+						} else if (('@gamble_2 > 82) && ('@gamble_2 < 86)) {
+							getitem 5111,1;
+						} else if (('@gamble_2 > 85) && ('@gamble_2 < 89)) {
+							getitem 5116,1;
+						} else if (('@gamble_2 > 88) && ('@gamble_2 < 92)) {
+							getitem 5119,1;
+						} else if (('@gamble_2 > 91) && ('@gamble_2 < 94)) {
+							getitem 5141,1;
+						}
+					} else if (('@gamble_1 > 0) && ('@gamble_1 < 101)) {
+						getitem 2226,1;
+					} else if (('@gamble_1 > 100) && ('@gamble_1 < 201)) {
+						getitem 2211,1;
+					} else if (('@gamble_1 > 200) && ('@gamble_1 < 300)) {
+						getitem 2209,1;
+					} else if (('@gamble_1 > 303) && ('@gamble_1 < 401)) {
+						getitem 2220,1;
+					} else if (('@gamble_1 > 400) && ('@gamble_1 < 501)) {
+						getitem 2232,1;
+					} else if (('@gamble_1 > 500) && ('@gamble_1 < 601)) {
+						getitem 2216,1;
+					} else if (('@gamble_1 > 600) && ('@gamble_1 < 701)) {
+						getitem 2230,1;
+					} else if (('@gamble_1 > 700) && ('@gamble_1 < 801)) {
+						getitem 2224,1;
+					} else if (('@gamble_1 > 800) && ('@gamble_1 < 901)) {
+						getitem 2222,1;
+					} else if (('@gamble_1 > 900) && ('@gamble_1 < 906)) {
+						getitem 2228,1;
+					} else if (('@gamble_1 > 905) && ('@gamble_1 < 911)) {
+						getitem 2252,1;
+					} else if (('@gamble_1 > 910) && ('@gamble_1 < 916)) {
+						getitem 2227,1;
+					} else if (('@gamble_1 > 915) && ('@gamble_1 < 921)) {
+						getitem 2221,1;
+					} else if (('@gamble_1 > 920) && ('@gamble_1 < 926)) {
+						getitem 2299,1;
+					} else if (('@gamble_1 > 925) && ('@gamble_1 < 931)) {
+						getitem 2236,1;
+					} else if (('@gamble_1 > 930) && ('@gamble_1 < 936)) {
+						getitem 2275,1;
+					} else if (('@gamble_1 > 935) && ('@gamble_1 < 941)) {
+						getitem 5015,1;
+					} else if (('@gamble_1 > 940) && ('@gamble_1 < 946)) {
+						getitem 2215,1;
+					} else if (('@gamble_1 > 945) && ('@gamble_1 < 951)) {
+						getitem 5092,1;
+					} else if (('@gamble_1 > 950) && ('@gamble_1 < 1001)) {
+						getitem 2226,1;
+					}
+					break;
+				case 5:
+					delitem 732,1;
+					set '@gamble_1,rand(1,500);
+					if (('@gamble_1 > 299) && ('@gamble_1 < 303)) {
+						set '@gamble_2,rand(1,10);
+						if (('@gamble_2 > 0) && ('@gamble_2 < 3)) {
+							getitem 2406,1;
+						} else if (('@gamble_2 > 2) && ('@gamble_2 < 5)) {
+							getitem 2412,1;
+						} else if (('@gamble_2 > 4) && ('@gamble_2 < 8)) {
+							getitem 2404,1;
+						} else if (('@gamble_2 > 7) && ('@gamble_2 < 11)) {
+							getitem 2407,1;
+						}
+					} else if (('@gamble_1 > 0) && ('@gamble_1 < 201)) {
+						getitem 2401,1;
+					} else if (('@gamble_1 > 200) && ('@gamble_1 < 300)) {
+						getitem 2408,1;
+					} else if (('@gamble_1 > 302) && ('@gamble_1 < 351)) {
+						getitem 2411,1;
+					} else if (('@gamble_1 > 350) && ('@gamble_1 < 401)) {
+						getitem 2403,1;
+					} else if (('@gamble_1 > 400) && ('@gamble_1 < 451)) {
+						getitem 2405,1;
+					} else if (('@gamble_1 > 450) && ('@gamble_1 < 476)) {
+						getitem 2409,1;
+					} else if (('@gamble_1 > 475) && ('@gamble_1 < 501)) {
+						getitem 2402,1;
+					}
+					break;
+				case 6:
+					delitem 732,1;
+					set '@gamble_1,rand(1,500);
+					if (('@gamble_1 > 200) && ('@gamble_1 < 205)) {
+						set '@gamble_2,rand(1,10);
+						if (('@gamble_2 > 0) && ('@gamble_2 < 3)) {
+							getitem 2104,1;
+						} else if (('@gamble_2 > 2) && ('@gamble_2 < 5)) {
+							getitem 2106,1;
+						} else if (('@gamble_2 > 4) && ('@gamble_2 < 7)) {
+							getitem 2102,1;
+						} else if (('@gamble_2 > 6) && ('@gamble_2 < 9)) {
+							getitem 2111,1;
+						} else if (('@gamble_2 > 8) && ('@gamble_2 < 11)) {
+							getitem 2109,1;
+						}
+					} else if (('@gamble_1 > 0) && ('@gamble_1 < 201)) {
+						getitem 2101,1;
+					} else if (('@gamble_1 > 204) && ('@gamble_1 < 301)) {
+						getitem 2103,1;
+					} else if (('@gamble_1 > 300) && ('@gamble_1 < 401)) {
+						getitem 2107,1;
+					} else if (('@gamble_1 > 401) && ('@gamble_1 < 481)) {
+						getitem 2105,1;
+					} else if (('@gamble_1 > 480) && ('@gamble_1 < 501)) {
+						getitem 2108,1;
+					}
+					break;
+				}
+				mes "[Kachua]";
+				mes "Ahhhhh~";
+				mes "Diamonds are";
+				mes "so beautiful.";
+				mes "I want to have as";
+				mes "many of them as I can!";
+				mes "I must have more!";
+				close2;
+				cutin "katsua01",255;
+				cutin "katsua02",255;
+				cutin "katsua03",255;
+				end;
+			}
+		} else {
+			cutin "katsua03",2;
+			mes "[Kachua]";
+			mes "^666666*Piff*^000000";
+			mes "You don't have any";
+			mes "diamonds! Don't even";
+			mes "try to fool me!";
+			close2;
+			cutin "katsua01",255;
+			cutin "katsua02",255;
+			cutin "katsua03",255;
+			end;
+		}
+	case 2:
+		mes "[Kachua]";
+		mes "Yes, I know...";
+		mes "Even among everything";
+		mes "in my collections, nothing";
+		mes "compares to diamonds...";
+		close2;
+		cutin "katsua01",255;
+		cutin "katsua02",255;
+		cutin "katsua03",255;
+		end;
+	}
+}
+
+comodo.gat,204,148,7	script	Devellin	90,{
+
+	mes "[Devellin]";
+	mes "It seems some traveller showed";
+	mes "a huge diamond to Kachua a while ago. Ever since then, all she's been talking about is diamonds and how much she wants them.";
+	next;
+	mes "[Devellin]";
+	mes "She's been getting pretty obsessive about it, which scares me. It seems she's more than willing to sacrifice anything she owns for a diamond.";
+	next;
+	mes "[Devellin]";
+	mes "She's the type of person who'll do anything to get what she wants. I'm worried that she might give away something far more valuable than a diamond in exchange...";
+	close;
+}
+
+comodo.gat,210,154,2	script	Suspicious Guy	118,{
+
+	if ((Class == Job_Thief) || (Class == Job_Assassin) || (Class == Job_Rogue)) {
+		mes "[Cain]";
+		mes "Heeeey...";
+		mes "It seems we share the same line of work, you and me. Heh heh, lemme give you a hot tip.";
+		next;
+		mes "[Cain]";
+		mes "I've been charging other people for this information, but since, shall we say, we work in the same professional field, I don't have the heart to take your zeny.";
+		next;
+		mes "[Cain]";
+		mes "You see that lady over there?";
+		mes "She's just totally in love with diamonds. And from what my sources tell me, she's loaded. Tons and tons of valuables.";
+		next;
+		mes "[Cain]";
+		mes "I'm talkin' rare items.";
+		mes "I took the liberty of sneaking a peek at what she owns, and saw she's got a helmet with goat horns and even a crown! She's so rich it's ridiculous!";
+		next;
+		mes "[Cain]";
+		mes "The buzz that's been going around is that she's got a cache of rare equipment and weapons too! So whaddya say? Wanna be partners in crime and rob her house?";
+		next;
+		switch(select("No, thanks.","Sweet, I'm in!")) {
+		case 1:
+			mes "[Cain]";
+			mes "Wha...?";
+			mes "C'mon! I thought pilfering was something you do! Aw well, I'm gonna do it, but stay hushed on this, got it?";
+			close;
+		case 2:
+			mes "[Cain]";
+			mes "Ha ha ha!";
+			mes "...^660000Dork^000000!";
+			mes "I'm just jivin'";
+			mes "sp fuggedabout it!";
+			next;
+			mes "[Cain]";
+			mes "Ah right. Supposedly, there's a mountain where tons of diamonds are buried. A pal o' mine says there's a mine near the mountain too, so I guess if you went to the mine, you'd find Diamonds.";
+			next;
+			mes "[Cain]";
+			mes "I guess it can't hurt to gather some Diamonds there and try to exchange them for whatever the old lady's got. Take care, pal~";
+			close;
+		}
+	} else {
+		mes "[Cain]";
+		mes "Hey...";
+		mes "I got a hot tip for you.";
+		mes "It'll just cost you 500 zeny";
+		mes "and trust me, it's worth it.";
+		mes "So whaddya say...?";
+		next;
+		switch(select("Alright.","No, thanks.")) {
+		case 1:
+			if (Zeny > 499) {
+				mes "[Cain]";
+				mes "You see that lady over there? She's just totally in love with diamonds. And from what my sources tell me, she's loaded. Tons and tons of valuables.";
+				next;
+				mes "[Cain]";
+				mes "I'm talkin' rare items.";
+				mes "I took the liberty of sneaking a peek at what she owns, and saw she's got a helmet with goat horns and even a crown! She's so rich it's ridiculous!";
+				next;
+				mes "[Cain]";
+				mes "There's a chance that rare equipment and weapons might be yours! She'll give anything for a 3 carat diamond. So if you have any of those, you might as well see her.";
+				next;
+				mes "[Cain]";
+				mes "Ah right. Supposedly, there's a mountain where tons of diamonds";
+				mes "are buried. A pal o' mine says there's a mine near the mountain too, so I guess if you went to the mine, you'd find Diamonds.";
+				next;
+				mes "[Cain]";
+				mes "I guess it can't hurt to gather some Diamonds there and try to exchange them for whatever the old lady's got. Take care, pal~";
+				close;
+			} else {
+				mes "[Cain]";
+				mes "What the hell?!";
+				mes "Don't you have any money? Didn't I say 500 zeny? Hey man, info like this doesn't come cheap!";
+				close;
+			}
+		case 2:
+			mes "[Cain]";
+			mes "Hey hey!";
+			mes "What are you, a cheapskate? You understand that everything has its price and this information is so worth it. C'mon, you can't pass this up, can you?";
+			close;
+		}
+	}
+}
+
+mjolnir_02.gat,85,362,3	script	Blacksmith Miner	726,{
+
+	set '@max_max_c,checkweight(1201,1);
+	if ('@max_max_c == 0) {
+		mes "^3355FFWait a second! Right now, you're carrying too many items with you. Please come back after putting some of your things into Kafra Storage.^000000";
+		close;
+	}
+	set '@now_weight,MaxWeight - Weight;
+	mes "[Dwayne]";
+	mes "Wahahahaha~";
+	mes "I've dug up a fortune!";
+	next;
+	mes "[Dwayne]";
+	mes "Diamonds! Hundreds and";
+	mes "thousands of Diamonds,";
+	mes "all of them mine!";
+	mes "I'm rich!";
+	emotion ET_SMILE,"Blacksmith Miner";
+	next;
+	switch(select("I want to buy some.","Congratulations.")) {
+	case 1:
+		mes "[Dwayne]";
+		mes "Ah, you have an";
+		mes "eye for valuables!";
+		mes "Sure, sure why not!";
+		mes "I'll give you a discount, too!";
+		mes "55,000 Zeny for a diamond,";
+		mes "how does that sound?";
+		next;
+		mes "[Dwayne]";
+		mes "How many";
+		mes "diamonds do you need?";
+		mes "If you change your mind,";
+		mes "please enter '0' to cancel.";
+		next;
+		while(1) {
+			input '@input;
+			if ('@input == 0) {
+				mes "[Dwayne]";
+				mes "Alright, you've";
+				mes "canceled the trade.";
+				mes "Take care!";
+				close;
+			} else if ('@input < 1 || '@input > 500) {
+				mes "[Dwayne]";
+				mes "The maximum";
+				mes "amount is 500.";
+				mes "Please enter 500 or less.";
+				next;
+			} else {
+				break;
+			}
+		}
+		set '@sell,'@input * 55000;
+		set '@item_weight,'@input * 100;
+		if (Zeny < '@sell) {
+			mes "[Dwayne]";
+			mes "Errr...";
+			mes "I'm sorry, but you";
+			mes "do not have enough money.";
+			mes "I'll be losing money if";
+			mes "I sell them at that price.";
+			close;
+		}
+		if ('@now_weight < '@item_weight) {
+			mes "[Dwayne]";
+			mes "Errr...";
+			mes "You're carrying too many items.";
+			mes "I don't think give you anything if there's no room in your inventory. Why don't you put some of your stuff into Kafra Storage?";
+			close;
+		}
+		set Zeny,Zeny - '@sell;
+		getitem 732,'@input;
+		mes "[Dwayne]";
+		mes "Thank you for";
+		mes "buying my diamonds!";
+		mes "You're welcome to";
+		mes "come back anytime.";
+		close;
+	case 2:
+		mes "[Dwayne]";
+		mes "Haha, thank you~";
+		mes "If by any chance";
+		mes "you need a diamond,";
+		mes "please drop by.";
+		mes "I'll sell them to";
+		mes "you at a cheap price.";
+		close;
+	}
+}
+
+
+//--------------------------------------------------------------
+// Munak's Grandma Quest - [Tsuyuki]
+//--------------------------------------------------------------
+
+comodo.gat,112,182,0	script	Munak's Grandma	103,{
+
+	if (countitem(1558) > 0) {
+		mes "[Munak's Grandma]";
+		if (Sex == Male) {
+			mes "Oh my...";
+			mes "Have you seen my granddaughter, boy? My poor granddaughter has been missing...";
+		} else {
+			mes "Oh my...";
+			mes "Have you seen my granddaughter, young lady? My poor granddaughter has been missing...";
+		}
+		next;
+		mes "[Munak's Grandma]";
+		mes "I can't remember exactly when it was, but when I lived in Payon, I had a very cute granddaughter. She was really happy when I made her hair into a ^000077Danggie^000000...";
+		next;
+		mes "[Munak's Grandma]";
+		mes "She was always working with the village chief. She was such a sweet girl, and always got along with the chief's son.";
+		next;
+		mes "[Munak's Grandma]";
+		mes "But one day our deity became angry and cursed the chief's son was cursed with sickness! The village had to offer my granddaughter to him as a companion to lift the curse...";
+		next;
+		mes "[Munak's Grandma]";
+		mes "The chief's son regained his health, but I lost my granddaughter! I can't look at him and not think of her, so I tried to leave my misery behind and came here to Comodo...";
+		next;
+		switch(select("Oh come on! Cheer up!","Um, is this diary...?")) {
+		case 1:
+			mes "[Munak's Grandma]";
+			mes "It seems my granddaughter haunts my dreams every night. I believe I've been trying to cheer up for years now...";
+			close;
+		case 2:
+			if (countitem(901) > 0) {
+				mes "[Munak's Grandma]";
+				mes "Oh god!";
+				mes "It's my granddaughter's diary! Th-This is her writing! Oh my...!";
+				next;
+				mes "[Munak's Grandma]";
+				if (Sex == Male) {
+					mes "Young man, I'll read this to you if you give it to me with a Danggie, please. I no longer have anything that belonged to her now...";
+				} else {
+					mes "Young lady, I'll read this to you if you give it to me with a Danggie, please. I no longer have anything that belonged to her now...";
+				}
+				next;
+				switch(select("No way.","Okay, I'll do it!")) {
+				case 1:
+					mes "[Munak's Grandma]";
+					if (Sex == Male) {
+						mes "Oh...?";
+						mes "Alright, young man.";
+						mes "Thank you anyway.";
+					} else {
+						mes "Oh...?";
+						mes "Thank you anyway,";
+						mes "young lady.";
+					}
+					next;
+					mes "[Munak's Grandma]";
+					mes "It's alright...";
+					mes "I can only hope that the deity is taking good care of her!";
+					close;
+				case 2:
+					delitem 1558,1;
+					delitem 901,1;
+					mes "[Munak's Grandma]";
+					if (Sex == Male) {
+						mes "Oh!";
+						mes "Thank you,";
+						mes "young man~!";
+					} else {
+						mes "Goodness!";
+						mes "Thank you,";
+						mes "young lady...";
+					}
+					next;
+					mes "[Munak's Grandma]";
+					mes "Alright...";
+					mes "I'll read this.";
+					mes "Let me see...";
+					next;
+					mes "[Munak's Grandma]";
+					mes "It seems that my granddaughter was treated by the chief like his own child! There are so many happy memories in this book!";
+					next;
+					getitem 659,1;
+					mes "[Munak's Grandma]";
+					mes "Oh, thank you. I now have a good keepsake of my granddaughter. Thank you so much! May God-Poing bless you!";
+					close;
+				}
+			} else {
+				mes "[Munak's Grandma]";
+				mes "What? A diary? What's that diary...? I don't... I can't remember, oh my...";
+				next;
+				mes "[Munak's Grandma]";
+				mes "I really wish I could make her hair into a ^000077Danggie^000000 again. I really wish... Oh, oh my granddaughter...";
+				close;
+			}
+		}
+	} else {
+		mes "[Munak's Grandma]";
+		mes "My own granddaughter...";
+		mes "Why did she have to leave...?";
+		close;
+	}
+}

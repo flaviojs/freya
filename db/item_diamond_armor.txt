@@ -1,0 +1,61 @@
+//--------------------------------------------------------------
+//               (c)2004-2007 Aurora Team Presents:             
+//                  ___                                         
+//                 /   |_   _ _ __ ___  _ __ __ _               
+//                / /| | | | | '__/ _ \| '__/ _` |              
+//               / ___ | |_| | | | (_) | | | (_| |++            
+//              /_/  |_|\____|_|  \___/|_|  \__,_|              
+//                 http://aurora.deltaanime.net                 
+//--------------------------------------------------------------
+//
+// item_diamond_armor.txt
+// Diamond Armor Random Database
+
+//--------------------------------------------------------------
+// Structure of Database:
+//--------------------------------------------------------------
+//
+// <ItemID>,<DummyName>,<Rate>
+//
+// Rate Examples:
+//  10000   = 1%
+//  500000  = 50%
+//  1000000 = 100%
+
+//--------------------------------------------------------------
+// Database Entries:
+//--------------------------------------------------------------
+
+0,Cotton Shirt,2301
+2301,Cotton Shirt,600000
+2305,Adventurer's Suit,500000
+2303,Leather Jacket,500000
+2307,Mantle,500000
+2309,Coat,500000
+2330,Tights,500000
+2339,Pantie,500000
+2335,Thief Clothes,500000
+2323,Scapulare,500000
+2325,Saint's Robe,500000
+2302,Cotton Shirt,20000
+2304,Leather Jacket,20000
+2307,Mantle,20000
+2310,Coat,20000
+2311,Mink Coat,20000
+2313,Padded Armor,20000
+2315,Chain Mail,20000
+2317,Full Plate,20000
+2318,Lord's Clothes,20000
+2319,Glittering Jacket,20000
+2320,Formal Suit,20000
+2322,Silk Robe,20000
+2324,Scapulare,50000
+2327,Holy Robe,20000
+2329,Wooden Mail,20000
+2337,Ninja Suit,20000
+2340,Novice Breastplate,20000
+2342,Legion Plate Armor,20000
+2344,Lucius's Fierce Armor of Volcano,1000
+2346,Saphien's Armor of Ocean,1000
+2348,Aebecee's Raging Typhoon Armor,1000
+2350,Claytos Cracking Earth Armor,1000

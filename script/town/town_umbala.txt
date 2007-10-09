@@ -1,0 +1,2887 @@
+//--------------------------------------------------------------
+//               (c)2004-2007 Aurora Team Presents:             
+//                  ___                                         
+//                 /   |_   _ _ __ ___  _ __ __ _               
+//                / /| | | | | '__/ _ \| '__/ _` |              
+//               / ___ | |_| | | | (_) | | | (_| |++            
+//              /_/  |_|\____|_|  \___/|_|  \__,_|              
+//                 http://aurora.deltaanime.net                 
+//--------------------------------------------------------------
+// Script Title: Umbala Town NPCs / Quests	Author: Tsuyuki
+//--------------------------------------------------------------
+// Revision History: v1.0
+//--------------------------------------------------------------
+//	1.0 First version, converted from Aegis [Tsuyuki]
+//--------------------------------------------------------------
+// Additional Notes: * Official-certified / Aegis-certified *
+//--------------------------------------------------------------
+
+
+//--------------------------------------------------------------
+// Umbala Town NPCs - [Tsuyuki]
+//--------------------------------------------------------------
+
+comodo.gat,170,137,7	script	La Ed	84,{
+
+	mes "[La Ed]";
+	mes "There MUST be a treasure hidden in that place!";
+	next;
+	mes "[Haith]";
+	mes "If we find it, people will no longer think we're losers~!!";
+	next;
+	mes "[La Ed]";
+	mes "Finally!";
+	next;
+	mes "[Haith]";
+	mes "Let's go find that treasure!";
+	next;
+	mes "[La Ed]";
+	mes "Let's do it~ !!";
+	emotion ET_KIK,"La Ed";
+	emotion ET_KIK,"Haith";
+	next;
+	mes "[Haith]";
+	mes "................";
+	next;
+	mes "[La Ed]";
+	mes "By the way...do you think he";
+	mes "would tell us about such a";
+	mes "great treasure so easily?";
+	emotion ET_SCRATCH,"La Ed";
+	emotion ET_SCRATCH,"Haith";
+	next;
+	switch(select("Hm? What treasure?")) {
+	case 1:
+		mes "[La Ed]";
+		mes "Wha--?! when did you start listening to us?!";
+		next;
+		mes "[Haith]";
+		mes "Huh...seems like you wanna know";
+		mes "more about the treasure. Well,";
+		mes "this information doesn't come cheap...";
+		emotion ET_KIK,"Haith";
+		next;
+		mes "[La Ed]";
+		mes "Plus, we'll need a little";
+		mes "a little something in case";
+		mes "*cough!* ^555555we don't find";
+		mes "anything at all.^000000";
+		next;
+		mes "[La Ed, Haith]";
+		mes "If you pay us 1,000 zeny, we will tell you!";
+		emotion ET_KIK,"La Ed";
+		emotion ET_KIK,"Haith";
+		next;
+		switch(select("Pay 1,000 zeny","Refuse to pay")) {
+		case 1:
+			if (Zeny > 999) {
+				set Zeny,Zeny-1000;
+				mes "[Haith]";
+				mes "Hahahaha! You the man!";
+				next;
+				mes "[La Ed]";
+				mes "Okay, not too long ago, a famous";
+				mes "adventurer named Niels came back from his travels.";
+				next;
+				mes "[Haith]";
+				mes "*Whispers*";
+				mes "^555555He brought a big box with him.^000000";
+				next;
+				mes "[La Ed]";
+				mes "Also, he came back in the middle";
+				mes "of the night without telling";
+				mes "anyone. So, of course he's got";
+				mes "some secret, don't you think?";
+				next;
+				mes "[Haith]";
+				mes "What could be inside that box~?";
+				mes "It just has to be treasure!!";
+				next;
+				mes "[La Ed]";
+				mes "So! We decided to go on a journey to find treasure of our own-!!";
+				next;
+				mes "[Haith]";
+				mes "The problem is, we are not sure";
+				mes "whether or not Niels would tell";
+				mes "us the location of where he";
+				mes "found the treasure...";
+				emotion ET_SCRATCH,"Haith";
+				next;
+				mes "[La Ed]";
+				mes "Because Niels always treat us like";
+				mes "we're stupid!! Bah~!!";
+				next;
+				switch(select("Where is this Niels person?")) {
+				case 1:
+					mes "[La Ed]";
+					mes "He's staying at the northern part";
+					mes "of this village.";
+					next;
+					mes "[Haith]";
+					mes "Since we gave you good information,";
+					mes "we expect that you pay us back!";
+					next;
+					mes "[La Ed, Haith]";
+					mes "Good luck!";
+					close;
+				}
+			} else {
+				mes "[La Ed]";
+				mes "Oh well~! If you don't have the money, then we can't give you the information~";
+				close;
+			}
+		case 2:
+			mes "[Haith]";
+			mes "Bah! Whatever~";
+			emotion ET_SCRATCH,"Haith";
+			emotion ET_SCRATCH,"La Ed";
+			close;
+		}
+	}
+}
+
+comodo.gat,171,137,1	script	Haith	92,{
+
+	mes "[La Ed]";
+	mes "There MUST be a treasure hidden in that place!";
+	next;
+	mes "[Haith]";
+	mes "If we find it, people will no longer think we're losers~!!";
+	next;
+	mes "[La Ed]";
+	mes "Finally!";
+	next;
+	mes "[Haith]";
+	mes "Let's go find that treasure!";
+	next;
+	mes "[La Ed]";
+	mes "Let's do it~ !!";
+	emotion ET_KIK,"La Ed";
+	emotion ET_KIK,"Haith";
+	next;
+	mes "[Haith]";
+	mes "................";
+	next;
+	mes "[La Ed]";
+	mes "By the way...do you think he";
+	mes "would tell us about such a";
+	mes "great treasure so easily?";
+	emotion ET_SCRATCH,"La Ed";
+	emotion ET_SCRATCH,"Haith";
+	next;
+	switch(select("Hm? What treasure?")) {
+	case 1:
+		mes "[La Ed]";
+		mes "Wha--?! when did you start listening to us?!";
+		next;
+		mes "[Haith]";
+		mes "Huh...seems like you wanna know";
+		mes "more about the treasure. Well,";
+		mes "this information doesn't come cheap...";
+		emotion ET_KIK,"Haith";
+		next;
+		mes "[La Ed]";
+		mes "Plus, we'll need a little";
+		mes "a little something in case";
+		mes "*cough!* ^555555we don't find";
+		mes "anything at all.^000000";
+		next;
+		mes "[La Ed, Haith]";
+		mes "If you pay us 1,000 zeny, we will tell you!";
+		emotion ET_KIK,"La Ed";
+		emotion ET_KIK,"Haith";
+		next;
+		switch(select("Pay 1,000 zeny","Refuse to pay")) {
+		case 1:
+			if (Zeny > 999) {
+				set Zeny,Zeny-1000;
+				mes "[Haith]";
+				mes "Hahahaha! You the man!";
+				next;
+				mes "[La Ed]";
+				mes "Okay, not too long ago, a famous";
+				mes "adventurer named Niels came back from his travels.";
+				next;
+				mes "[Haith]";
+				mes "*Whispers*";
+				mes "^555555He brought a big box with him.^000000";
+				next;
+				mes "[La Ed]";
+				mes "Also, he came back in the middle";
+				mes "of the night without telling";
+				mes "anyone. So, of course he's got";
+				mes "some secret, don't you think?";
+				next;
+				mes "[Haith]";
+				mes "What could be inside that box~?";
+				mes "It just has to be treasure!!";
+				next;
+				mes "[La Ed]";
+				mes "So! We decided to go on a journey to find treasure of our own-!!";
+				next;
+				mes "[Haith]";
+				mes "The problem is, we are not sure";
+				mes "whether or not Niels would tell";
+				mes "us the location of where he";
+				mes "found the treasure...";
+				emotion ET_SCRATCH,"Haith";
+				next;
+				mes "[La Ed]";
+				mes "Because Niels always treat us like";
+				mes "we're stupid!! Bah~!!";
+				next;
+				switch(select("Where is this Niels person?")) {
+				case 1:
+					mes "[La Ed]";
+					mes "He's staying at the northern part";
+					mes "of this village.";
+					next;
+					mes "[Haith]";
+					mes "Since we gave you good information,";
+					mes "we expect that you pay us back!";
+					next;
+					mes "[La Ed, Haith]";
+					mes "Good luck!";
+					close;
+				}
+			} else {
+				mes "[La Ed]";
+				mes "Oh well~! If you don't have the money, then we can't give you the information~";
+				close;
+			}
+		case 2:
+			mes "[Haith]";
+			mes "Bah! Whatever~";
+			emotion ET_SCRATCH,"Haith";
+			emotion ET_SCRATCH,"La Ed";
+			close;
+		}
+	}
+}
+
+cmd_in01.gat,164,115,1	script	Niels	731,{
+
+	mes "[Niels]";
+	mes "Hmm? What's that look for?";
+	mes "Ah~ You must of heard the rumors";
+	mes "of me finding some kind of";
+	mes "treasure. Yeah, that's understandable...";
+	next;
+	mes "[Niels]";
+	mes "Well, those rumors of me stumbling";
+	mes "on some wonderful treasure is";
+	mes "just the result of overactive";
+	mes "imaginations. All I've found";
+	mes "was a little something to add";
+	mes "to my collection.";
+	next;
+	mes "[Niels]";
+	mes "But...since I've proven to myself";
+	mes "that 'it' actually exists by";
+	mes "seeing it with my own eyes,";
+	mes "to me, what I've obtained is a";
+	mes "valuable treasure.";
+	next;
+	mes "[Niels]";
+	mes "This village of Comodo!";
+	mes "Don't you think the caves are too";
+	mes "small and narrow for some reason?";
+	next;
+	mes "[Niels]";
+	mes "So I was thinking about it...";
+	mes "And I came to the conclusion that";
+	mes "there should be something hidden";
+	mes "inside the cave...";
+	next;
+	mes "[Niels]";
+	mes "And then!";
+	mes "I finally found it.";
+	mes "The patch to 'the place'";
+	mes "that no one has ever found!";
+	next;
+	mes "[Niels]";
+	mes "................";
+	next;
+	mes "[Niels]";
+	mes ".......Hm?";
+	next;
+	mes "[Niels]";
+	mes "I was expecting a spectacular and";
+	mes "rather dramatic sound effect";
+	mes "for my declaration!";
+	mes "Eh, oh well...";
+	emotion ET_SCRATCH,"Niels";
+	next;
+	mes "[Niels]";
+	mes "Well, in the spirit of discovery,";
+	mes "don't ever think of asking me";
+	mes "about directions to 'the place'";
+	mes "or about what is in 'the place.'";
+	mes "I wouldn't want to spoil the";
+	mes "surprise.";
+	next;
+	mes "[Niels]";
+	mes "If you're a real adventurer,";
+	mes "I expect you to scream at the";
+	mes "top of your lungs...";
+	next;
+	mes "[Niels]";
+	mes "'Ahhhh! I need to know what it";
+	mes "is!!' Kick the door open and run";
+	mes "like hell to find this place on";
+	mes "your own!!";
+	next;
+	mes "[Niels]";
+	mes "Now! Hurry and seek this place";
+	mes "out! Will this place be a totally";
+	mes "new world, or will it be a trap";
+	mes "to hell?! Go forth, meet your";
+	mes "destiny, adventurer!";
+	close;
+}
+
+cmd_in01.gat,175,120,3	script	Iriya	69,{
+
+	mes "[Iriya]";
+	mes "Mr. Niels is at the table in the";
+	mes "corner. He has many interesting";
+	mes "stories about the world.";
+	next;
+	mes "[Iriya]";
+	mes "I am not sure where he has been";
+	mes "this time. He just laughs and";
+	mes "says 'I don't think I am fit";
+	mes "for this teaching job.'";
+	next;
+	mes "[Iriya]";
+	mes "In the meantime, people keep";
+	mes "visiting Mr. Niels... and I";
+	mes "can't help but wonder...";
+	mes "Where has he gone?";
+	close;
+}
+
+um_in.gat,158,71,3	script	Utan villager	787,{
+
+	if (um_trans == 10) {
+		mes "[Mutakutan]";
+		mes "Umbala has many many trees!";
+		mes "I, Mutakutan, like trees so much.";
+		mes "Heh heh~";
+		next;
+		mes "[Mutakutan]";
+		mes "There is one special tree I like";
+		mes "the most! That is the oldest and";
+		mes "biggest tree in Umbala!";
+		mes "No wait, I think it is the oldest";
+		mes "and biggest in the world...";
+		mes "I'm sure it is!";
+		next;
+		mes "[Mutakutan]";
+		mes "It's really really big and old!";
+		mes "It's so tall, even I haven't seen";
+		mes "the top of this tree yet. I tried";
+		mes "climbing it before, but I could";
+		mes "never reach the top...even though";
+		mes "I'm great at tree climbing.";
+		next;
+		mes "[Mutakutan]";
+		mes "Oh, also the fruits from the tree";
+		mes "are very tasty! I bet they are the";
+		mes "most delicious fruit in the world~";
+		mes "Sweet and sour...eating it just";
+		mes "makes you feel refreshed and";
+		mes "invigorated~!";
+		next;
+		mes "[Mutakutan]";
+		mes "There's an amazing story about";
+		mes "this fruit. An old man in my";
+		mes "village was suffering from a";
+		mes "mortal disease...nothing";
+		mes "seemed to help...";
+		next;
+		mes "[Mutakutan]";
+		mes "But after he took medicine made";
+		mes "from the ground leaves of this";
+		mes "tree, he became healthy and sound";
+		mes "again! I think God sent us the";
+		mes "tree to bless us.";
+		next;
+		mes "[Mutakutan]";
+		mes "It's at north of my village, so";
+		mes "why don't you go see the greatness";
+		mes "of this tree for yourself?";
+	} else {
+		mes "[??????]";
+		mes "Umbaumbah umbahbah woomhah!";
+		mes "Umbah umbah umbabah umbah";
+		mes "Umbah umbah umbah";
+		mes "Umbabah umbah umbabbah";
+		next;
+		mes "[??????]";
+		mes "....";
+		mes "......";
+		mes "Umbah balooooga?";
+		mes "Umbah balooooooooga?";
+		next;
+		mes "[??????]";
+		mes "...";
+		mes "Moogahaloo schluloo.";
+	}
+	close;
+}
+
+umbala.gat,70,106,3	script	Utan Kid	781,{
+
+	if (um_trans == 10) {
+		mes "[???]";
+		mes "Huh?";
+		mes "You're not one of us, are you?";
+		next;
+		mes "[???]";
+		mes "Heh! Hi!";
+		mes "My name is Haatan.";
+		emotion ET_SMILE,"Utan Kid";
+		next;
+		mes "[Haatan]";
+		mes "...*Sigh*";
+		mes "I am sorry, but I cannot play with";
+		mes "you right now. My parent's house";
+		mes "was struck by lightning yesterday";
+		mes "and it burned down our roof...";
+		emotion ET_CRY,"Utan Kid";
+		next;
+		mes "[Haatan]";
+		mes " . . . !";
+		next;
+		mes "[Haatan]";
+		mes "Oh yes! Could you help me?";
+		mes "You look pretty well off...";
+		mes "Can donate some money for";
+		mes "re-constructing my parents' house?";
+		mes "You Rune-Midgardians are all";
+		mes "richier than Utans! I beg you!";
+		emotion ET_SMILE,"Utan Kid";
+		next;
+		switch(select("(Nod head(","(Shake head(")) {
+		case 1:
+			mes "[Haatan]";
+			mes "Whoaaaa!!";
+			mes "You the man~!";
+			mes "Thank you so much, yay~!";
+			set '@umbzeny,Zeny;
+			if ('@umbzeny > 1000) {
+				set Zeny,Zeny-1000;
+				set '@gogi,(MaxWeight - Weight);
+				if ('@gogi > 150) {
+					getitem 517,1;
+				}
+				emotion ET_PROFUSELY_SWAT,"Utan Kid";
+			} else {
+				next;
+				mes "[Haatan]";
+				mes "Uh...";
+				mes "It looks like...";
+				mes "You don't have much";
+				mes "yourself...";
+				emotion ET_HNG,"Utan Kid";
+				close;
+			}
+			next;
+			mes "[Haatan]";
+			mes "Thank you so much!";
+			emotion ET_SMILE,"Utan Kid";
+			close;
+		case 2:
+			mes "[Haatan]";
+			mes ".............*Sob*...";
+			emotion ET_CRY,"Utan Kid";
+			close;
+		}
+	} else {
+		mes "[???]";
+		mes "Umbah?";
+		mes "Umbala umbabah umbah?";
+		next;
+		mes "[???]";
+		mes "Umbah! Umbaumbah!";
+		mes "Umbahumbah Haatan babah.";
+		emotion ET_CRY,"Utan Kid";
+		next;
+		mes "[Haatan]";
+		mes "........umbah,";
+		mes "Umbah umbah umbaumbumbah umbah umbah";
+		mes "Babaum babahum woombah umbah umbabah";
+		mes "Umbah umbah";
+		mes "..Umbah umbabah umbah...";
+		emotion ET_SMILE,"Utan Kid";
+		next;
+		mes "[Haatan]";
+		mes " . . . !";
+		next;
+		mes "[Haatan]";
+		mes "Umbah!";
+		mes "Umbah umbah? Umbah umbahbah";
+		mes "abaum babahum woombah!";
+		mes "Umbahumbah umbabahumbaumhumbah! Umbah!";
+		emotion ET_SMILE,"Utan Kid";
+		next;
+		switch(select("(Nod head(","(Shake head(")) {
+		case 1:
+			mes "[Haatan]";
+			mes "Umbaumbah!!";
+			mes "Um~bahumbah~ Um~baumbah~";
+			mes "Um~baumbah~ um~baumbah~";
+			set '@umbzeny,Zeny;
+			if ('@umbzeny > 1000) {
+				set Zeny,Zeny-1000;
+				set '@gogi,(MaxWeight - Weight);
+				if ('@gogi > 150) {
+					getitem 517,1;
+				}
+				emotion ET_PROFUSELY_SWAT,"Utan Kid";
+			} else {
+				next;
+				mes "[Haatan]";
+				mes "...umbah? Umbahumbah!! Umbaum!";
+				emotion ET_HNG,"Utan Kid";
+				close;
+			}
+			next;
+			mes "[Haatan]";
+			mes "Umba umba umbaum.";
+			emotion ET_CRY,"Utan Kid";
+			close;
+		case 2:
+			mes "[Haatan]";
+			mes "........umbah..";
+			emotion ET_SMILE,"Utan Kid";
+			close;
+		}
+	}
+}
+
+umbala.gat,177,153,3	script	Pasto	97,{
+
+	mes "[Pasto]";
+	emotion ET_SURPRISE,"Pasto";
+	mes "Oh my god~! Finally,";
+	mes "another Rune-Midgardian!";
+	mes "I've never seen anyone from";
+	mes "home in this place before!";
+	mes "Nice to meet you, my name is Pasto!";
+	next;
+	mes "[Pasto]";
+	mes "This place is called Umbala.";
+	mes "The local people in this village";
+	mes "have formed a culture that's";
+	mes "totally different from other";
+	mes "places I've been.";
+	next;
+	mes "[Pasto]";
+	mes "I guess it's because this";
+	mes "place has been isolated from";
+	mes "other regions because of its";
+	mes "geographical features.";
+	next;
+	mes "[Pasto]";
+	mes "They look different from us, and";
+	mes "use a language that is still very";
+	mes "confusing to me. I was also";
+	mes "confounded by their different use";
+	mes "of facial expression.";
+	next;
+	mes "[Pasto]";
+	mes "Of course, there are some";
+	mes "similarities. However, you might";
+	mes "want to be careful about certain";
+	mes "issues.";
+	next;
+	mes "[Pasto]";
+	mes "Sometimes, what you say or do";
+	mes "or do could be misinterpreted as";
+	mes "having the totally opposite meaning.";
+	next;
+	mes "[Pasto]";
+	mes "I wish I could speak their";
+	mes "language...*Sigh*";
+	mes "...Or I wish I could meet more";
+	mes "people here that speak my";
+	mes "language...I...I'm...";
+	mes "So very lonely...*Sob*";
+	emotion ET_CRY,"Pasto";
+	close;
+}
+
+umbala.gat,92,159,4	script	Bertan	785,{
+
+	if (um_trans == 10) {
+		mes "[Bertan]";
+		mes "What up, loser!";
+		next;
+		mes "[Bertan]";
+		mes "What's the matter,";
+		mes "ya big Rune-Midgardian?!?!";
+		mes "I just called you a 'loser!'";
+		mes "I guess you're too stupid";
+		mes "to understand!!";
+		mes "Hahahahahahaahahhahaha~!";
+		next;
+		mes "[Bertan]";
+		mes "...";
+		mes "Uh...oh!";
+		next;
+		mes "[Bertan]";
+		mes "It looks like you can understand";
+		mes "me--! Good job, good job!";
+		mes "Alright, by way of apology,";
+		mes "do you want to hear a joke?";
+		next;
+		mes "[Bertan]";
+		mes "Alright, alright.";
+		mes "Here we go.";
+		mes "Ummmm...";
+		mes "Alright, I got one.";
+		next;
+		set '@joke1,rand(1,6);
+		switch('@joke1) {
+		case 1:
+			mes "[Bertan]";
+			mes "What did the Rune-Midgardian";
+			mes "say to the Savage?";
+			mes "...";
+			next;
+			mes "[Bertan]";
+			mes "I don't know...";
+			mes "But they didn't have any";
+			mes "trouble understanding";
+			mes "each other!!! HAHAHAHA~!";
+			mes "Get it? 'Cuz, like,";
+			mes "they're both pigs~!";
+			next;
+			mes "[Bertan]";
+			mes "Not funny, huh?";
+			mes "Oh well. I guess my";
+			mes "sense of humor is just";
+			mes "too sophisticated.";
+			close;
+		case 2:
+			mes "[Bertan]";
+			mes "Okay...what's the best";
+			mes "way to tame an Orc Lady?";
+			mes "Give up..?";
+			next;
+			mes "[Bertan]";
+			mes "With a wedding ring!";
+			mes "HAHAHAHAHAHAHHA!";
+			mes "Oh God~ I'm hilarious!!";
+			next;
+			mes "[Bertan]";
+			mes "...";
+			mes "...Wait.";
+			mes "Wait a minute...";
+			next;
+			mes "[Bertan]";
+			mes "That's not even funny...";
+			mes "Just incredibly...";
+			mes "Scary...";
+			mes "Brrr--!";
+			mes "She's hideous!!";
+			close;
+		case 3:
+			mes "[Bertan]";
+			mes "Actually...forget it.";
+			next;
+			mes "[Bertan]";
+			mes "I was going to say a";
+			mes "knock knock joke about";
+			mes "Isis, but then decided";
+			mes "that kind of humor is";
+			mes "too low brow.";
+			mes "...Zing!";
+			close;
+		case 4:
+			mes "[Bertan]";
+			mes "Why are Rune-Midgardians";
+			mes "SOOoOOoo...";
+			mes "Um, hmmmmm.";
+			mes "Maybe that joke";
+			mes "isn't so good for this";
+			mes "situation, yeah?";
+			close;
+		case 5:
+			mes "[Bertan]";
+			mes "Okay, why is it that";
+			mes "GMs prefer not to be";
+			mes "seen...? Give up?";
+			next;
+			mes "[Bertan]";
+			mes "BECAUSE THOSE GUYS WEAR";
+			mes "SKIRTS ~! HAHAHA!";
+			mes "OH MAN, I MADE A FUNNY!";
+			next;
+			mes "[Bertan]";
+			mes "*Whew* Yowza~";
+			mes "Oh, man.";
+			mes "Utterly classic.";
+			close;
+		case 6:
+			mes "[Bertan]";
+			mes "A Crusader, an Alchemist and a Novice walk into a bar.";
+			next;
+			mes "[Bertan]";
+			mes "Inside, they see a sign that";
+			mes "says '^CC0000Monster Help Agency:";
+			mes "LADIES ONLY.^000000'";
+			next;
+			mes "[Bertan]";
+			mes "'^000099Oh!^000000' says the Crusader.";
+			mes "'^000099It's a lucky thing we are";
+			mes "all ladies.^000000' She goes up";
+			mes "and says '^000099Gimmie a ride.^000000'";
+			mes "Kinda rude for a Crusader,";
+			mes "but whatever.";
+			next;
+			mes "[Bertan]";
+			mes "Out of nowhere, this";
+			mes "Grand PecoPeco appears";
+			mes "and is all '^CC0000I'll give you";
+			mes "a ride, baby. Careful, this";
+			mes "road can get buuuuumpy.^000000'";
+			mes "And then they're off.";
+			next;
+			mes "[Bertan]";
+			mes "Next comes the Alchemist";
+			mes "and she's like '^330099I need";
+			mes "help killing Zombies^000000' and";
+			mes "then this Marine Sphere";
+			mes "comes from out of";
+			mes "nowhere and is all...";
+			next;
+			mes "[Bertan]";
+			mes "'^CC0000I got your fire. Careful";
+			mes "baby, touch me the wrong";
+			mes "way and I might just";
+			mes "exploooode.^000000' So then";
+			mes "they're off on their";
+			mes "merry way too.";
+			next;
+			mes "[Bertan]";
+			mes "Finally, the Novice";
+			mes "comes up and says";
+			mes "'^006633I need someone to";
+			mes "party with.^000000'";
+			next;
+			mes "[Bertan]";
+			mes "Out of nowhere, this";
+			mes "Hode pops up and says...";
+			next;
+			mes "[Bertan]";
+			mes "'^CC0000I know some people";
+			mes "but let me check my";
+			mes "Rolodex. HODE on!^000000'";
+			mes "....";
+			next;
+			mes "[Bertan]";
+			mes ".....";
+			mes "..........";
+			mes "No go?";
+			next;
+			mes "[Bertan]";
+			mes "Well, come on!";
+			mes "I can't be funny";
+			mes "all the time, you know?";
+			close;
+		}
+	} else {
+		mes "[????]";
+		mes "Umbaumba Umbaumbah";
+		next;
+		mes "[????]";
+		mes "Bwahbwah hahbrah!";
+		mes "Umbaumba Umbaumbah";
+		mes "Umbaumba Umbaumbah";
+		next;
+		mes "[????]";
+		mes "Umbaumba Umbaumbah woo~";
+		emotion ET_DELIGHT,"Bertan";
+		close;
+	}
+}
+
+
+//--------------------------------------------------------------
+// Umbala Bungee Jumping - [Tsuyuki]
+//--------------------------------------------------------------
+
+umbala.gat,140,157,6	script	Utan Man#1	785,{
+
+	if (um_trans == 10) {
+		mes "[Jertan]";
+		mes "Bungee jumping can be dangerous,";
+		mes "and you can risk your life doing";
+		mes "it. We Utans have consider";
+		mes "bungee jumping an important";
+		mes "part of the ceremony of";
+		mes "becoming an adult.";
+		close;
+	} else {
+		mes "[???]";
+		mes "Umbaumbah humba.";
+		mes "Woo umbaumbaumbabah woo humbah";
+		mes "Umbababah umba umba.";
+		close;
+	}
+}
+
+umbala.gat,146,157,4	script	Utan Man#2	786,{
+
+	if (um_trans == 10) {
+		mes "[Arotan]";
+		mes "Completing the bungee jump";
+		mes "is very difficult to do.";
+		mes "Today, we are here in celebration";
+		mes "of the people that made it and";
+		mes "have shown their courage.";
+		close;
+	} else {
+		mes "[???]";
+		mes "Woo umbaumbaumbabah woo humbah";
+		mes "Umbababah umba umba.";
+		close;
+	}
+}
+
+umbala.gat,194,104,4	script	Utan Kid#2	787,{
+
+	if (um_trans == 10) {
+		mes "[Boorkatan]";
+		mes "Huh? You're from Rune-Midgard,";
+		mes "aren't you? Have you ever been bungee jumping?";
+		next;
+		switch(select("Yeah","No")) {
+		case 1:
+			mes "[Boorkatan]";
+			mes "Whoa, what a surprise! I never";
+			mes "would have thought someone from";
+			mes "outside would know how to do it.";
+			mes "Okay, I'll take your word for";
+			mes "it and welcome you to our village.";
+			close;
+		case 2:
+			mes "[Boorkatan]";
+			mes "Er, I see...";
+			mes "As part of the ceremony of";
+			mes "adulthood, all Utans have to do";
+			mes "a bungee jump. When I grow up,";
+			mes "I'm gonna do it too, and prove";
+			mes "to everybody that I am a man!";
+			close;
+		}
+	} else {
+		mes "[???]";
+		mes "Umbaumbababah umhumba.";
+		mes "Umbabaumumba umbaumbah?";
+		next;
+		switch(select("Yeah","No")) {
+		case 1:
+			mes "[???]";
+			mes "Umba, Umumbah umbabah.";
+			mes "Umbaumbah umumbabah.";
+			close;
+		case 2:
+			mes "[???]";
+			mes "Er, Umbahumba umumbah.";
+			mes "Umbahumbah umbabah.";
+			mes "Umbahumhumbabahum.";
+			close;
+		}
+	}
+}
+
+umbala.gat,149,165,4	script	Utan Kid#3	781,{
+
+	if (um_trans == 10) {
+		mes "[Klumatan]";
+		mes "It's really scary, falling from";
+		mes "such a high place...";
+		mes "But I guess you have to do it,";
+		mes "otherwise no one will ever";
+		mes "consider you a grownup.";
+		next;
+		mes "[Klumatan]";
+		mes "I guess I don't want to";
+		mes "be a grownup right away.";
+		mes "But some kids my age are";
+		mes "in too big of a hurry";
+		mes "to not be kids anymore.";
+		close;
+	} else {
+		mes "[???]";
+		mes "Umbahumba umumbah.";
+		mes "Umbahumbah umbabah.";
+		mes "Umbahumhumbabahum.";
+		close;
+	}
+}
+
+umbala.gat,193,208,6	script	Utan Man#3	789,{
+
+	if (um_trans == 10) {
+		mes "[Weitan]";
+		mes "I too did the bungee jump when I";
+		mes "was young. I remember it well...";
+		mes "It was my first time, and the";
+		mes "ground rushed up to meet me...";
+		mes "For a moment, I thought I was";
+		mes "going to get myself killed...";
+		next;
+		mes "[Weitan]";
+		mes "But after I made it, I was so";
+		mes "proud of myself~";
+		mes "Some Utans may not agree, but";
+		mes "I think bungee jumping is an";
+		mes "important part of the ceremony";
+		mes "of adulthood.";
+		close;
+	} else {
+		mes "[???]";
+		mes "Umbahumba umumbah.";
+		mes "Umbahumbah umbabah.";
+		mes "Umbahumhumbabahum.";
+		close;
+	}
+}
+
+umbala.gat,59,243,5	script	Utan Kid#1	787,{
+
+	if (um_trans == 10) {
+		mes "[Kotan]";
+		mes "............";
+		mes ".........poop!";
+		mes ".....me like Meat.";
+		mes "....gimme a Meat.";
+		emotion ET_ROCK,"Utan Kid#1";
+		next;
+		switch(select("Give him Meat.","Refuse.")) {
+		case 1:
+			if (countitem(517) > 0) {
+				mes "[Kotan]";
+				mes "Whoa, are you really giving me";
+				mes "Meat? Thanks! I will pay you";
+				mes "back with these.";
+				delitem 517,1;
+				getitem 909,2;
+				getitem 914,2;
+				getitem 705,2;
+				emotion ET_SCISSOR,"Utan Kid#1";
+				close;
+			} else {
+				mes "[Kotan]";
+				mes "Hah! You don't have Meat,";
+				mes "but pretend that you do?!";
+				mes "I hate people who lie";
+				mes "to me!!";
+				percentheal -20,0;
+				emotion ET_FRET,"Utan Kid#1";
+				close;
+			}
+		case 2:
+			mes "[Kotan]";
+			mes ".........";
+			mes ".....hungwee.";
+			mes ".....I want Meat.";
+			percentheal -1,0;
+			emotion ET_CRY,"Utan Kid#1";
+			close;
+		}
+	} else {
+		mes "[???]";
+		mes "............";
+		mes "........umbah.";
+		mes ".......umbabah.";
+		mes "......humbah.";
+		emotion ET_ROCK,"Utan Kid#1";
+		next;
+		switch(select("Umbah","Umbaboo")) {
+		case 1:
+			if (countitem(517) > 0) {
+				mes "[???]";
+				mes "Umbaumbaumbabababah.";
+				mes "Umbababahum.";
+				delitem 517,1;
+				getitem 909,2;
+				getitem 914,2;
+				getitem 705,2;
+				emotion ET_SCISSOR,"Utan Kid#1";
+				close;
+			} else {
+				mes "[???]";
+				mes "Umbahumumhumbubabababah!!";
+				mes "Umbahumbababah umbahumboo!";
+				percentheal -20,0;
+				emotion ET_FRET,"Utan Kid#1";
+				close;
+			}
+		case 2:
+			mes "[???]";
+			mes "...........";
+			mes "......woong bah.";
+			mes "....umbabababah.";
+			emotion ET_CRY,"Utan Kid#1";
+			percentheal -1,0;
+			close;
+		}
+	}
+}
+
+umbala.gat,139,205,4	script	Utan Man#5	785,{
+
+	if (um_trans == 10) {
+		mes "[Jooltan]";
+		mes "It's been a long time since I last";
+		mes "saw a Rune-Midgardian~!";
+		mes "Welcome, stranger.";
+		next;
+		mes "[Jooltan]";
+		mes "We Utans use this place for";
+		mes "bungee jumping. Many Utan";
+		mes "youngsters have shown their";
+		mes "bravery, earned their";
+		mes "self-respect, and became";
+		mes "adults in this very place.";
+		next;
+		mes "[Jooltan]";
+		mes "Oh...right. A few unlucky people";
+		mes "just fell and died after";
+		mes "messing up their bungee jump. And";
+		mes "a few had heart attacks while";
+		mes "looking at other people jumping down...";
+		next;
+		mes "[Jooltan]";
+		mes "So...";
+		mes "Be careful when you walk around,";
+		mes "You don't want to fall off.";
+		mes "And if you want to try a bungee";
+		mes "jump, you should get yourself ready.";
+		next;
+		mes "[Jooltan]";
+		mes "Oh...right. Supposedly,";
+		mes "there's an unidentified";
+		mes "creature living in the water...";
+		mes "So if you happen to get dunked,";
+		mes "get out of there~!";
+		close;
+	} else {
+		mes "[???]";
+		mes "Umbah umbah!";
+		mes "Umbaumbah bababah umbah.";
+		mes "Babaumm Utan umbah umbabah";
+		mes "Umbaba hum.";
+		mes "Umumhumbah umbaumbah umbabah.";
+		next;
+		mes "[???]";
+		mes "Umbaum mahbababh umba,";
+		mes "Umbabatan umbaumbah.";
+		mes "Ba, umbaumbaumumbabaumm.";
+		mes "Umbabah umbaumumum.";
+		mes "Umbaumbaubahum.";
+		close;
+	}
+}
+
+umbala.gat,140,197,0	script	Bungee Jump	139,1,1,{
+
+OnTouch:
+	set '@jump_1,rand(1,3);
+	if ('@jump_1 == 1) {
+		percentheal -100,0;
+		mapannounce "umbala.gat",""+strcharinfo(0)+": Kyaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa~~~~~~~",8;
+	} else if ('@jump_1 == 2) {
+		percentheal -50,0;
+		mapannounce "umbala.gat",""+strcharinfo(0)+": Wooooooaaaaaaaaaaaaaahhhhhhhhhhhh~~~~~~!",8;
+	}
+	end;
+}
+
+umbala.gat,136,195,0	script	 #jump	139,1,1,{
+
+OnTouch:
+	warp "umbala.gat",145,166;
+	end;
+}
+
+
+//--------------------------------------------------------------
+// Umbala Love Quest - [Tsuyuki]
+//--------------------------------------------------------------
+
+um_in.gat,139,48,5	script	Phrenetan	783,{
+
+	if (um_trans == 10) {
+		mes "[Phrenetan]";
+		mes "I am so sick and tired of";
+		mes "my husband!! It's like he";
+		mes "flirts with every girl";
+		mes "in the village!";
+		next;
+		mes "[Phrenetan]";
+		mes "If I see him flirting with";
+		mes "women again...I swear...";
+		mes "I will show him hell!!";
+		close;
+	}
+	if (Class == Job_Novice) {
+		mes "[Phrenetan]";
+		mes "Umba~ umbaumbah!";
+		mes "Umbah woomumum!";
+		mes "Umbah woomum umbabah!";
+		close;
+	}
+	if (um_wind == 1) {
+		emotion ET_FRET,"Phrenetan";
+		mes "[Phrenetan]";
+		mes "Umbaumbah wooga wooga";
+		mes "Umbaumbabah babababah!";
+		mes "Umbaum!";
+		next;
+		emotion ET_O,"Phrenetan";
+		mes "[Phrenetan]";
+		mes "Umbah umbaumba umbah";
+		mes "Umbabababah wooga woo!";
+		mes "Wooga wooga umbabah umbaum!";
+		next;
+		emotion ET_GO,"Phrenetan";
+		close;
+	}
+	if (um_wind == 0) {
+		set um_wind,1;
+		emotion ET_FRET,"Phrenetan";
+		mes "[Phrenetan]";
+		mes "Umbaumbah wooga wooga";
+		mes "Umbaumbabah babababah!";
+		mes "Umbaum!";
+		next;
+		emotion ET_O,"Phrenetan";
+		mes "[Phrenetan]";
+		mes "Umbah umbaumba umbah";
+		mes "Umbabababah wooga woo!";
+		mes "Wooga wooga umbabah umbaum!";
+		next;
+		emotion ET_GO,"Phrenetan";
+		close;
+	}
+	if (um_wind == 2) {
+		emotion ET_FRET,"Phrenetan";
+		mes "[Phrenetan]";
+		mes "Umbaumbah wooga wooga";
+		mes "Umbaumbabah babababah!";
+		mes "Umbaum!";
+		next;
+		emotion ET_O,"Phrenetan";
+		mes "[Phrenetan]";
+		mes "Umbah umbaumba umbah";
+		mes "Umbabababah wooga woo!";
+		mes "Wooga wooga umbabah umbaum!";
+		next;
+		emotion ET_GO,"Phrenetan";
+		close;
+	}
+	if (um_wind == 3) {
+		emotion ET_FRET,"Phrenetan";
+		mes "[Phrenetan]";
+		mes "Umbaumbah wooga wooga";
+		mes "Umbaumbabah babababah!";
+		mes "Umbaum!";
+		next;
+		emotion ET_O,"Phrenetan";
+		mes "[Phrenetan]";
+		mes "Umbah umbaumba umbah";
+		mes "Umbabababah wooga woo!";
+		mes "Wooga wooga umbabah umbaum!";
+		next;
+		emotion ET_GO,"Phrenetan";
+		close;
+	}
+	if (um_wind == 6) {
+		emotion ET_FRET,"Phrenetan";
+		mes "[Phrenetan]";
+		mes "Umbabah! Umbaumbah.....";
+		mes "Umbaum Umbaum Wooga wooga!";
+		mes "Wooga umumum woombababap!!!!!";
+		next;
+		emotion ET_SWEAT,"Umpokoriohtan";
+		end;
+	}
+}
+
+um_in.gat,144,45,5	script	Umpokoriohtan	789,{
+
+	if (um_trans == 10) {
+		set '@love1,rand(1,3);
+		if ('@love1 == 2) {
+			mes "[Umpokoriohtan]";
+			mes "Hey there, cool cat.";
+			mes "Don't mind the wife...";
+			mes "Much as I love her,";
+			mes "I know my obligations, ya dig?";
+			next;
+			mes "[Umpokoriohtan]";
+			mes "If a man's got plenty, he's";
+			mes "got to share it with those";
+			mes "that got nothing to give.";
+			next;
+			mes "[Umpokoriohtan]";
+			mes "If a man's hands are good";
+			mes "at healin', he's got to use";
+			mes "those hands to help folks live.";
+			next;
+			mes "[Umpokoriohtan]";
+			mes "If a man's lips be good at";
+			mes "singin', he's got to croon the";
+			mes "songs we like to hear so much.";
+			next;
+			mes "[Umpokoriohtan]";
+			mes "But if sweet lovin' is golden,";
+			mes "then baby...I got the Midas touch.";
+			next;
+			mes "[Umpokoriohtan]";
+			mes "Ooh...!";
+			mes "...........";
+			mes "My back--!";
+			mes "Simmer down, baby, your turn is comin' in a minute~";
+			emotion ET_ROCK,"Phrenetan";
+			emotion ET_SWEAT,"Umpokoriohtan";
+			close;
+		} else {
+			mes "[Umpokoriohtan]";
+			mes "Man...sometimes my wife can";
+			mes "be a lil' too rough, maybe";
+			mes "even hurtful. But that's cool...";
+			mes "it just means she's got fire.";
+			next;
+			mes "[Umpokoriohtan]";
+			mes "But someday, she'll have to";
+			mes "learn that I gots to share";
+			mes "this heart of mine with the ladies";
+			mes "who really need a dose of vitamin";
+			mes "lovin', ya dig? It's my obligation.";
+			next;
+			mes "[Umpokoriohtan]";
+			mes "Wainatan, Bertztan, Chabimatan...";
+			mes "Those pretty girls been waitin'";
+			mes "toooooo long. Don't worry,";
+			mes "big daddy's comin' soon.";
+			next;
+			mes "[Umpokoriohtan]";
+			mes "OOOH~! Phrenetan!";
+			mes "Baby, why you gotta be rough?";
+			mes "Hit me gently, ya dig??";
+			mes "I don't mean to hurt you~";
+			emotion ET_HUK,"Phrenetan";
+			emotion ET_KEK,"Umpokoriohtan";
+			close;
+		}
+	}
+	emotion ET_SMILE,"Umpokoriohtan";
+	mes "[Umpokoriohtan]";
+	mes "Umbaumbah...........";
+	mes "Umbahwooga woogawoo!";
+	mes "Umbah umumbabah umbawoo gaga.";
+	next;
+	emotion ET_FRET,"Phrenetan";
+	close;
+
+OnInit:
+	disablenpc "Umpokoriohtan";
+	end;
+}
+
+um_in.gat,101,73,3	script	Wainatan	783,{
+
+	if (um_trans == 10) {
+		mes "[Wainatan]";
+		mes "I am sick and tired of this guy";
+		mes "who always appears at night and bugs the hell out of me...";
+		next;
+		mes "[Wainatan]";
+		mes "'Smooth operator that gets the";
+		mes "job done?' Oh my god...!";
+		mes "I hate him with a passion!";
+		mes "I wish Umpokoriohtan would";
+		mes "just drop dead.";
+		close;
+	}
+	if (um_wind == 1) {
+		if (gettime(3) >= 19) {
+			set um_wind,2;
+			emotion ET_FRET,"Wainatan";
+			mes "[Wainatan]";
+			mes "Umbaumbah umgagaga.";
+			mes "Umbaumbawoogawoo gababah.";
+			mes "Umbahumbabah gawoo.";
+			next;
+			emotion ET_O,"Wainatan";
+			mes "[Wainatan]";
+			mes "Wooga wooga woogagagah";
+			mes "Wogagagah woogagagah";
+			mes "Gawoo gawoo gah.";
+			close;
+		} else {
+			mes "[Wainatan]";
+			mes "Umbabah! Umbaumbah wooga";
+			mes "Woogawooga umbawooga umum.";
+			mes "Umbabababababababababah.";
+			close;
+		}
+	} else {
+		mes "[Wainatan]";
+		mes "Umbaumbah umbaumbah umbah";
+		mes "Wooga wooga woogawooga wooga";
+		mes "Umumumum umumumum umum.";
+		close;
+	}
+}
+
+um_in.gat,94,123,5	script	Bertztan	783,{
+
+	if (um_trans == 10) {
+		mes "[Bertztan]";
+		mes "...*Sigh* That sicko";
+		mes "Umpo-whatever! I told him";
+		mes "I don't like him, but he";
+		mes "just doesn't listen!";
+		mes "I wish...I wish he would";
+		mes "just disappear!";
+		close;
+	}
+	if (um_wind == 2) {
+		if (gettime(3) >= 19) {
+			set um_wind,3;
+			emotion ET_FRET,"Bertztan";
+			mes "[Bertztan]";
+			mes "Umbaumbah umgagaga.";
+			mes "Umbaumbawoogawoo gababah.";
+			mes "Umbahumbabah gawoo.";
+			next;
+			emotion ET_O,"Bertztan";
+			mes "[Bertztan]";
+			mes "Wooga umbar umbar umbah!";
+			mes "Umbar woogagaga woo! Woo! Woo!";
+			mes "Wooga~ wooga~ Woo woo woo umbar.";
+			close;
+		} else {
+			mes "[Bertztan]";
+			mes "Umbar woogaumbarumbah um!";
+			mes "Um~ wooga wooga umbarum.";
+			mes "Umbah...wooum.";
+			close;
+		}
+	} else {
+		mes "[Bertztan]";
+		mes "Umbar wooga umbar umbah um!";
+		mes "Um~ woogawooga umbar um.";
+		mes "Umbah...wooum.";
+		close;
+	}
+}
+
+umbala.gat,145,217,3	script	Chabimatan	783,{
+
+	if (um_trans == 10) {
+		mes "[Chabimatan]";
+		mes "...*Sigh* Umpokoriohtan seems";
+		mes "to be married. I have no";
+		mes "idea why he still flirts";
+		mes "with other women. Maybe he's";
+		mes "not very mature, or he's";
+		mes "irresponsible...";
+		next;
+		mes "[Chabimatan]";
+		mes "Well, whatever he is,";
+		mes "he's certainly not";
+		mes "romantic. Those pick-up";
+		mes "lines of his could";
+		mes "some work, maybe";
+		mes "even some clean up.";
+		close;
+	}
+	if (um_wind == 3) {
+		if (gettime(3) >= 19) {
+			set um_wind,4;
+			emotion ET_FRET,"Chabimatan";
+			mes "[Chabimatan]";
+			mes "Umbabah umbarbar woogawooga um";
+			mes "Umbabah umbarbar woogawooga umbah";
+			mes "Umumum! Wooga!";
+			next;
+			emotion ET_O,"Chabimatan";
+			mes "[Chabimatan]";
+			mes "Umbabah~~~~~~~";
+			mes "Woogawooga umbar umbar woo!";
+			mes "Wooga umbar woogawoogagah.";
+			enablenpc "Umpokoriohtan";
+			enablenpc "#!@#$%";
+			close;
+		} else {
+			mes "[Chabimatan]";
+			mes "Umbabah~~~~~~~";
+			mes "Woogawooga umbar umbar woo";
+			mes "woo woo! Nook nook~";
+			mes "Wooga umbar wooga umbar";
+			mes "wooga woogagah.";
+			close;
+		}
+	} else {
+		mes "[Chabimatan]";
+		mes "Umbabah~~~~~~~";
+		mes "Woogawooga umbar umbar";
+		mes "woo woo woo nook nook.";
+		mes "Wooga umbar wooga umbar";
+		mes "wooga woogagah.";
+		close;
+	}
+}
+
+um_in.gat,141,46,0	script	#!@#$%	139,8,8,{
+
+OnInit:
+	disablenpc "#!@#$%";
+	end;
+
+OnTouch:
+	if (um_wind == 4) {
+		set um_wind,5;
+		mes "^3355FFAs you enter the house";
+		mes "you happen to witness";
+		mes "Phrenetan beating a guy";
+		mes "mercilessly.^000000";
+		next;
+		emotion ET_FRET,"Phrenetan";
+		mes "[Phrenetan]";
+		mes "Umbaumbaumbaumbah!";
+		mes "Umbaumbahumbah!!";
+		mes "Umbaumbahumbah!!!!!!";
+		next;
+		mes "^3355FFYou were kicked out of the house";
+		mes "by Phrenetan.^000000";
+		next;
+		enablenpc "Leave#Umbala";
+		disablenpc "#!@#$%";
+		warp "umbala.gat",94,181;
+		end;
+	}
+}
+
+umbala.gat,94,181,0	script	Leave#Umbala	139,1,1,{
+
+OnInit:
+	disablenpc "Leave#Umbala";
+	end;
+
+OnTouch:
+	if (um_wind == 5) {
+		mes "^3355FFAs you realized what happened";
+		mes "after being kicked out of the";
+		mes "house, you see a leaf on the";
+		mes "ground near where you're standing.^000000";
+		next;
+		switch(select("Take it.","Leave it.")) {
+		case 1:
+			set um_wind,6;
+			getitem 610,1;
+			disablenpc "Leave#Umbala";
+			end;
+		case 2:
+			set um_wind,6;
+			mes "["+strcharinfo(0)+"]";
+			mes "I am not supposed to take";
+			mes "what may belong to other people.";
+			next;
+			mes "["+strcharinfo(0)+"]";
+			mes "Yeah, I'm a such good person.";
+			close2;
+			disablenpc "Leave#Umbala";
+			end;
+		}
+	}
+}
+
+umbala.gat,80,146,4	script	Yuwooki	753,{
+
+	mes "[Yuwooki]";
+	mes "Umbah umbah woogawoo...";
+	mes "oops, sorry! I'm so used";
+	mes "to speaking in Utan by now.";
+	mes "It's a pleasure to meet you.";
+	next;
+	mes "[Yuwooki]";
+	mes "I never imagined that I would";
+	mes "meet another person from";
+	mes "the homeland in this village.";
+	mes "Hahahahah~!";
+	next;
+	mes "[Yuwooki]";
+	mes "I came here to seek strong people";
+	mes "to help me master my fighting";
+	mes "skills. But I was soon frustrated";
+	mes "because it took me a long";
+	mes "time to learn the language...";
+	next;
+	mes "[Yuwooki]";
+	mes "Well, now I am kind of used to my";
+	mes "circumstances. Even though it";
+	mes "took me a while to used to";
+	mes "Utan culture. Hahahaha~!";
+	next;
+	mes "[Yuwooki]";
+	mes "But you know what was the weirdest";
+	mes "thing I found out about Utan";
+	mes "culture? At first the Utan men";
+	mes "seemed to have, shall we say, a";
+	mes "strong species preservation instinct.";
+	next;
+	mes "[Yuwooki]";
+	mes "There are many Utan playboys in";
+	mes "this village. Some may think";
+	mes "the Utans are primitive in";
+	mes "this respect, but...";
+	next;
+	mes "[Yuwooki]";
+	mes "As I learned more about them,";
+	mes "I eventually realized that their";
+	mes "courtship rituals are actually";
+	mes "more advanced than anything the";
+	mes "Rune-Midgard culture has to offer.";
+	next;
+	mes "[Yuwooki]";
+	mes "It's really quite fascinating.";
+	mes "I'm actually still learning";
+	mes "quite much from the Utan";
+	mes "playboys and their awesome methods.";
+	close;
+}
+
+
+//--------------------------------------------------------------
+// Umbala Language Quest - [Tsuyuki]
+//--------------------------------------------------------------
+
+um_in.gat,39,122,5	script	Utan Chief	784,{
+
+	if (um_trans == 0) {
+		mes "[Karkatan]";
+		mes "Huh huh, a Rune-Midgardian.";
+		mes "I guess this is your first";
+		mes "visit to my village, isn't it?";
+		next;
+		mes "[Karkatan]";
+		mes "Everyone from Rune-Midgard";
+		mes "that I've met had the same";
+		mes "same expression on their";
+		mes "face as you do right now";
+		mes "when they first came here.";
+		next;
+		mes "[Karkatan]";
+		mes "Maybe it's because they cannot";
+		mes "communicate with us due to";
+		mes "the language barrier, so";
+		mes "they have no idea what's going";
+		mes "on. Yeah, I understand...";
+		mes "Anyway, welcome to my village.";
+		next;
+		mes "[Karkatan]";
+		mes "My name is Karkatan, and I";
+		mes "am the chief of the Utan tribe.";
+		mes "You must be wondering how";
+		mes "I can speak your language.";
+		next;
+		mes "[Karkatan]";
+		mes "It was taught to me long ago";
+		mes "by an adventurer from your";
+		mes "land. It's been a long time,";
+		mes "and I do not know what has";
+		mes "become of him...";
+		next;
+		mes "[Karkatan]";
+		mes "Anyhow, I learned many things";
+		mes "about Rune-Midgardian culture";
+		mes "and language.";
+		next;
+		mes "[Karkatan]";
+		mes "Sometimes, I teach the Utan";
+		mes "langauge, but I do not give";
+		mes "everyone that privilege.";
+		mes "If unscrupulous outsiders";
+		mes "learn the Utan language, they";
+		mes "may bring harm to my tribe.";
+		next;
+		mes "[Karkatan]";
+		mes "Before you can learn the Utan";
+		mes "language, first try to learn";
+		mes "Utan culture by exploring our";
+		mes "village.";
+		next;
+		mes "[Karkatan]";
+		mes "Although you are not able to";
+		mes "communicate with my people";
+		mes "right now, try to understand";
+		mes "our way of life through your";
+		mes "observations.";
+		next;
+		mes "[Karkatan]";
+		mes "Pay attention to the dress,";
+		mes "appearance and life style of the";
+		mes "local people. When you think";
+		mes "you understand enough about Utan";
+		mes "culture, come back to me and show me what you have learned.";
+		set um_trans,1;
+		close;
+	} else if (um_trans == 1) {
+		mes "[Karkatan]";
+		mes "Oh, it's you again. So...";
+		mes "Have you learned about Utan";
+		mes "culture? I want to hear your";
+		mes "opinion, as well as your impression.";
+		next;
+		mes "[Karkatan]";
+		mes "There are still some villagers";
+		mes "who are very naive about Rune-Midgardians.";
+		mes "Usually, they fear encounters";
+		mes "with your people and will";
+		mes "hide themselves.";
+		next;
+		mes "[Karkatan]";
+		mes "So...";
+		mes "May I help you with anything?";
+		mes "I assume you did not have much of";
+		mes "a problem looking around the";
+		mes "village, but it seems you have something to ask of me.";
+		next;
+		switch(select("I want to learn Utan language.","Umbabah Umbabah?","Nothing.")) {
+		case 1:
+			if ((equippeditem(2278)) || (equippeditem(2297)) || (equippeditem(2288)) || (equippeditem(2292)) || (equippeditem(5005)) || (equippeditem(2281)) || (equippeditem(5043))) {
+				mes "[Karkatan]";
+				mes "Hmmm...That's an awesome mask";
+				mes "you're wearing. We Utans like";
+				mes "wearing masks to keep from";
+				mes "showing our facial expressions.";
+				next;
+				mes "[Karkatan]";
+				mes "That's why we wear masks all the";
+				mes "time. We believe that interaction";
+				mes "and treatment of other people";
+				mes "should not depend on how we look.";
+				next;
+				mes "[Karkatan]";
+				mes "Alright. I am sure you are";
+				mes "qualified to learn the Utan";
+				mes "language. I will teach you how";
+				mes "speak and to read in Utan from";
+				mes "now on.";
+				next;
+				mes "[Karkatan]";
+				mes "However, I need you to get some";
+				mes "items ready so that we may proceed";
+				mes "with the lessons. First, we need";
+				mes "two different kinds of paper.";
+				mes "^3377FF10 Oil Paper^000000 and";
+				mes "^3377FF5 Slick Paper^000000.";
+				next;
+				mes "[Karkatan]";
+				mes "We'll also need something to";
+				mes "write with. Let's use";
+				mes "^3377FF1 Squid Ink^000000 and";
+				mes "^3377FF1 Feather of Birds^000000.";
+				mes "Please bring me those, and I will";
+				mes "teach you when you're ready.";
+				set um_trans,2;
+				close;
+			} else {
+				mes "[Karkatan]";
+				mes "You don't seem to understand";
+				mes "our culture yet. You cannot";
+				mes "learn another language if you";
+				mes "do not understand the culture.";
+				next;
+				mes "[Karkatan]";
+				mes "When you have that expression on";
+				mes "your face, Utans will be";
+				mes "intimidated... Since we do";
+				mes "not show our faces to others,";
+				mes "we are actually very";
+				mes "vulnerable to facial expression.";
+				next;
+				mes "[Karkatan]";
+				mes "Go explore the village a little";
+				mes "longer. You can come back";
+				mes "anytime when you think you're ready.";
+				next;
+				mes "[Karkatan]";
+				mes "In any case, what do you think";
+				mes "about my mask? It's the current";
+				mes "trend among us Utans...don't you";
+				mes "think it's awesome?";
+				close;
+			}
+		case 2:
+			mes "[Karkatan]";
+			mes "Haha~ When you're just imitating";
+			mes "the sound, you won't make any";
+			mes "sense. Language is a mutual system";
+			mes "for the communication of thoughts and feelings.";
+			next;
+			mes "[Karkatan]";
+			mes "I regret to say that it seems that";
+			mes "nowadays, all peoples are no";
+			mes "longer sensitive to other cultures";
+			mes "in that respect.";
+			next;
+			mes "[Karkatan]";
+			mes "I see people that despise or";
+			mes "ridicule others that do not";
+			mes "understand them. It's really";
+			mes "sad that such bigotry still exists...";
+			next;
+			mes "[Karkatan]";
+			mes "If you are interested in Utan";
+			mes "language, try to understand our";
+			mes "culture better and come back";
+			mes "when you're ready. I will";
+			mes "teach you the meanings of those sounds you are using.";
+			close;
+		case 3:
+			mes "[Karkatan]";
+			mes "Sometimes it's good to wander";
+			mes "without purpose. But it's";
+			mes "better to set a goal for";
+			mes "a journey if you want to";
+			mes "learn something out of";
+			mes "the experience.";
+			close;
+		}
+	} else if (um_trans == 2) {
+		if ((countitem(7151) > 9) && (countitem(7111) > 4) && (countitem(1024) > 0) && (countitem(916) > 0)) {
+			mes "[Karkatan]";
+			mes "Okay, I guess we're good to go.";
+			mes "Let's get the lesson started.";
+			mes "I hope you will communicate better";
+			mes "with Utans when we are done.";
+			next;
+			mes "[Karkatan]";
+			mes "..............";
+			next;
+			mes "[Karkatan]";
+			mes "..............";
+			mes ".....................";
+			next;
+			mes "[Karkatan]";
+			mes "..............";
+			mes ".....................";
+			mes "............................";
+			next;
+			mes "[Karkatan]";
+			mes "Alright, that's all. Just forget";
+			mes "about how you've felt about Utans";
+			mes "before you learned the language.";
+			mes "Now go try to talk to Utans.";
+			mes "Conversation is a very important method in understanding others.";
+			delitem 7151,10;
+			delitem 7111,5;
+			delitem 1024,1;
+			delitem 916,1;
+			set um_trans,10;
+			next;
+			mes "[Karkatan]";
+			mes "Okay, if you have any business";
+			mes "in our village later, feel free";
+			mes "to talk to me. I will try to help";
+			mes "you as much as I can.";
+			close;
+		} else {
+			mes "[Karkatan]";
+			mes "I guess you are not ready yet...";
+			mes "Did you forget what items you";
+			mes "need? I will let you know";
+			mes "again, so please bring them";
+			mes "so that we can start the lesson.";
+			next;
+			mes "[Karkatan]";
+			mes "^3377FF10 Oil Paper^000000,";
+			mes "^3377FF5 Slick Paper^000000,";
+			mes "^3377FF1 Squid Ink^000000,";
+			mes "^3377FF1 Feather of Birds^000000.";
+			mes "When you bring all of these,";
+			mes "I will teach you our language.";
+			close;
+		}
+	} else if (um_trans == 10) {
+		if (um_shaman == 1) {
+			mes "[Karkatan]";
+			mes "Puchuchartan must have sent you to";
+			mes "me. I need to check whether or not";
+			mes "you are qualified to request";
+			mes "her help...We Utans do not want";
+			mes "to help evil people.";
+			next;
+			mes "[Karkatan]";
+			mes "Hmmmm....";
+			mes "It would be good to have a mask";
+			mes "that was made in Rune-Midgard...";
+			next;
+			mes "[Karkatan]";
+			mes "I wish to have ^3377FF1 Mr. Smile^000000.";
+			mes "To Utans, receiving a mask as a";
+			mes "present is considered an";
+			mes "honor. Maybe Puchuchartan";
+			mes "wants you to show us your respect by doing so.";
+			set um_shaman,2;
+			close;
+		} else if (um_shaman == 2) {
+			if (countitem(2278) > 0) {
+				mes "[Karkatan]";
+				mes "Oh, you brought it! Yes, I've";
+				mes "always wished that I could have";
+				mes "this mask! This is truly an";
+				mes "honor! Thank you, adventurer";
+				mes "from Rune-Midgard.";
+				next;
+				mes "[Karkatan]";
+				mes "I will tell Puchuchartan that I";
+				mes "confirmed your qualification.";
+				mes "Go and speak to her. Though I";
+				mes "am not sure what help she can give";
+				mes "you, I hope we will be able to return this favor.";
+				delitem 2278,1;
+				set um_shaman,3;
+				close;
+			} else {
+				mes "[Karkatan]";
+				mes "Did I tell you that you need";
+				mes "^3377FF1 Mr. Smile^000000?";
+				mes "Please bring that as proof";
+				mes "of your goodwill, as well";
+				mes "as your sense of honor.";
+				close;
+			}
+		} else {
+			mes "[Karkatan]";
+			mes "How's it going?";
+			mes "I wish I could guide you around";
+			mes "the village, but I cannot neglect";
+			mes "my duty as tribal chief.";
+			next;
+			mes "[Karkatan]";
+			mes "Leading a tribe is not as easy";
+			mes "as it looks. You would understand";
+			mes "if you were in the same position";
+			mes "as me. Anyway, I hope you will enjoy your time in our village.";
+			close;
+		}
+	}
+}
+
+
+//--------------------------------------------------------------
+// Umbala Enchanted Stone Forge - [Tsuyuki]
+//--------------------------------------------------------------
+
+um_in.gat,44,71,2	script	Utan Shaman	782,{
+
+	if (um_trans == 10) {
+		if (um_shaman == 0) {
+			mes "[Puchuchartan]";
+			mes "I did not expect that even";
+			mes "more of you Rune-Midgardians";
+			mes "would find my village. I am";
+			mes "afraid that Mother Earth may";
+			mes "be caused suffering because";
+			mes "of this...";
+			next;
+			mes "[Puchuchartan]";
+			mes "You Rune-Midgardians are a very";
+			mes "evil tribe...always accomplishing";
+			mes "your goals whether the means are";
+			mes "foul or fair, never hesitating to";
+			mes "ruin the property of others to get";
+			mes "what you want.";
+			next;
+			mes "[Puchuchartan]";
+			mes "I am worried how continuing";
+			mes "contact with the outside world";
+			mes "will affect our future...";
+			next;
+			mes "[Puchuchartan]";
+			mes "No one from Rune-Midgard has";
+			mes "visited me without some purpose";
+			mes "and I do not think that you";
+			mes "are an exception.";
+			next;
+			mes "[Puchuchartan]";
+			mes "I only use my power for the";
+			mes "service of my tribe, and do not";
+			mes "give my aid to strangers. If you";
+			mes "really need my help, go ask for";
+			mes "the chief's permission.";
+			next;
+			mes "[Puchuchartan]";
+			mes "Also, I do not approve of";
+			mes "outsiders talking to the tribe";
+			mes "more than they have to...";
+			mes "We want to live a peaceful life, so do not disturb us.";
+			set um_shaman,1;
+			close;
+		} else if ((um_shaman == 1) || (um_shaman == 2)) {
+			mes "[Puchuchartan]";
+			mes "I already told you to get the";
+			mes "chief's approval. There is also";
+			mes "the matter of my own business to take care of.";
+			next;
+			mes "[Puchuchartan]";
+			mes "I know that you have gone through";
+			mes "many difficulties to come here,";
+			mes "but you have to leave now.";
+			close;
+		} else if (um_shaman == 3) {
+			mes "[Puchuchartan]";
+			mes "I've heard from the chief that he";
+			mes "has given you his approval...";
+			mes "Although I do not like this, I";
+			mes "will keep my promise. But it's";
+			mes "your call if you really need my help or not.";
+			next;
+			mes "[Puchuchartan]";
+			mes "My power allows me to create rough";
+			mes "enchanted stones and to divide a";
+			mes "pure enchanted stone into rough";
+			mes "ones. So I may be able to help";
+			mes "you in this way.";
+			next;
+			mes "[Puchuchartan]";
+			mes "So come and speak to me when";
+			mes "you think my power may be";
+			mes "of service to you.";
+			set um_shaman,4;
+			close;
+		} else if (um_shaman == 4) {
+			mes "[Puchuchartan]";
+			mes "Rune-Midgardian who has asked for";
+			mes "my help...Although I am not sure";
+			mes "if you really need my power, I";
+			mes "will try to provide my assistance.";
+			next;
+			set '@now_weight,MaxWeight - Weight;
+			if ('@now_weight < 5000) {
+				mes "[Puchuchartan]";
+				mes "Wait--!";
+				mes "something in your possession";
+				mes "is disturbing my peace of";
+				mes "mind. This will not do...";
+				next;
+				mes "[Puchuchartan]";
+				mes "Go leave your belongings";
+				mes "elsewhere, and only bring the";
+				mes "items that you need right now.";
+				next;
+				mes "[Puchuchartan]";
+				mes "If you refuse to do so,";
+				mes "I cannot do anything for you.";
+				mes "Get yourself ready and then";
+				mes "come back.";
+				close;
+			}
+			mes "[Puchuchartan]";
+			mes "Now, what do you wish to do?";
+			mes "My power allows me to create rough";
+			mes "enchanted stones and to divide a";
+			mes "pure enchanted stone into rough ones.";
+			next;
+			switch(select("Create rough enchanted stones","Divide a pure enchanted stone","Quit.")) {
+			case 1:
+				mes "[Puchuchartan]";
+				mes "Do you wish to create rough";
+				mes "enchanted stones? Which";
+				mes "property do you wish to create?";
+				mes "Earth, Water, Fire, Wind...";
+				mes "...choose one.";
+				next;
+				switch(select("Earth","Water","Fire","Wind")) {
+				case 1:
+					if (countitem(947) > 14) {
+						mes "[Puchuchartan]";
+						mes "I will try to amplify the hidden";
+						mes "power of natural objects in";
+						mes "order to create rough enchanted";
+						mes "stones. Choose one number from";
+						mes "'1' to '9.' If you wish to cancel";
+						mes "this request, enter '0.'";
+						next;
+						while(1) {
+							input '@input;
+							if ('@input == 0) {
+								mes "[Puchuchartan]";
+								mes "I see. It's your call.";
+								mes "Come back when you need me.";
+								close;
+							} else if ('@input < 1 || '@input > 9) {
+								mes "[Puchuchartan]";
+								mes "Remember to choose a number";
+								mes "from 1 to 9.";
+								next;
+								continue;
+							} else {
+									break;
+							}
+						}
+						mes "[Puchuchartan]";
+						mes "I am putting these horns into a";
+						mes "boiling pot, and casting a";
+						mes "sacred incantation. Remember";
+						mes "the number you entered.";
+						next;
+						mes "[Puchuchartan]";
+						mes "Amba Omba Zatumba! Umba! Ti!";
+						mes "Umputaun Eulukaba! Umba! Ha!";
+						mes "Julu Humba Rulala! Umba! La!";
+						mes "Datuha Ombabalaka! Umba! Si!";
+						mes "Sunutaba Abulumba! Umba! Si!";
+						next;
+						set '@shaman_p,rand(1,10);
+						if ('@shaman_p == 1) {
+							mes "[Puchuchartan]";
+							mes "I guess my power was not enough.";
+							mes "The natural power I gathered with";
+							mes "my spell lost focus and was scattered...";
+							delitem 947,15;
+							getitem 910,1;
+							next;
+							mes "[Puchuchartan]";
+							mes "It seems the spirits of nature";
+							mes "were not in harmony at the moment.";
+							mes "However, if you come back later,";
+							mes "I will try to help you. Of course,";
+							mes "there will still be the same possibility that I may fail.";
+							close;
+						} else {
+							mes "[Puchuchartan]";
+							mes "Here's the enchanted stone you";
+							mes "wished to have. I created this";
+							mes "with a lot of effort, so make";
+							mes "good use of it.";
+							delitem 947,15;
+							getitem 993,1;
+							close;
+						}
+					} else {
+						mes "[Puchuchartan]";
+						mes "Earth property...I need natural";
+						mes "objects that are filled with";
+						mes "the spirit of the Earth.";
+						next;
+						mes "[Puchuchartan]";
+						mes "Horn...that dwells in the forest";
+						mes "is filled with the spirits of";
+						mes "earth and wood...Horn...";
+						mes "I need ^3377FF15 Horn^000000 from Horns.";
+						next;
+						mes "[Puchuchartan]";
+						mes "That's all I need...";
+						mes "Come back when";
+						mes "you're ready.";
+						mes "I will be here.";
+						close;
+					}
+				case 2:
+					if (countitem(946) > 19) {
+						mes "[Puchuchartan]";
+						mes "I will try to amplify the hidden";
+						mes "power of natural objects in";
+						mes "order to create rough enchanted";
+						mes "stones. Choose one number from";
+						mes "'1' to '9.' If you wish to cancel";
+						mes "this request, enter '0.'";
+						next;
+						while(1) {
+							input '@input;
+							if ('@input == 0) {
+								mes "[Puchuchartan]";
+								mes "I see. It's your call.";
+								mes "Come back when you need me.";
+								close;
+							} else if ('@input < 1 || '@input > 9) {
+								mes "[Puchuchartan]";
+								mes "Remember to choose a number";
+								mes "from 1 to 9.";
+								next;
+								continue;
+							} else {
+									break;
+							}
+						}
+						mes "[Puchuchartan]";
+						mes "I am putting these shells into a";
+						mes "boiling pot, and casting a";
+						mes "sacred incantation. Remember";
+						mes "the number you entered.";
+						next;
+						mes "[Puchuchartan]";
+						mes "Amba Omba Zatumba! Umba! Ti!";
+						mes "Umputaun Eulukaba! Umba! Ha!";
+						mes "Julu Humba Rulala! Umba! La!";
+						mes "Datuha Ombabalaka! Umba! Si!";
+						mes "Sunutaba Abulumba! Umba! Si!";
+						next;
+						set '@shaman_p,rand(1,10);
+						if ('@shaman_p == 1) {
+							mes "[Puchuchartan]";
+							mes "I guess my power was not enough.";
+							mes "The natural power I gathered with";
+							mes "my spell lost focus and was scattered...";
+							delitem 946,20;
+							getitem 910,1;
+							next;
+							mes "[Puchuchartan]";
+							mes "It seems the spirits of nature";
+							mes "were not in harmony at the moment.";
+							mes "However, if you come back later,";
+							mes "I will try to help you. Of course,";
+							mes "there will still be the same";
+							mes "possibility that I may fail.";
+							close;
+						} else {
+							mes "[Puchuchartan]";
+							mes "Here's the enchanted stone you";
+							mes "wished to have. I created this";
+							mes "with a lot of effort, so make";
+							mes "good use of it.";
+							delitem 946,20;
+							getitem 991,1;
+							close;
+						}
+					} else {
+						mes "[Puchuchartan]";
+						mes "Water property...";
+						mes "I will need natural";
+						mes "objects that are filled with";
+						mes "the spirit of water.";
+						next;
+						mes "[Puchuchartan]";
+						mes "Ambernite...the spirit of";
+						mes "water is contained within its";
+						mes "protective shell...";
+						mes "I will need ^3377FF20 Snail's Shell.^000000";
+						next;
+						mes "[Puchuchartan]";
+						mes "That's all I need...";
+						mes "Come back when";
+						mes "you're ready.";
+						mes "I will be here.";
+						close;
+					}
+				case 3:
+					if (countitem(904) > 19) {
+						mes "[Puchuchartan]";
+						mes "I will try to amplify the hidden";
+						mes "power of natural objects in";
+						mes "order to create rough enchanted";
+						mes "stones. Choose one number from";
+						mes "'1' to '9.' If you wish to cancel";
+						mes "this request, enter '0.'";
+						next;
+						while(1) {
+							input '@input;
+							if ('@input == 0) {
+								mes "[Puchuchartan]";
+								mes "I see. It's your call.";
+								mes "Come back when you need me.";
+								close;
+							} else if ('@input < 1 || '@input > 9) {
+								mes "[Puchuchartan]";
+								mes "Remember to choose a number";
+								mes "from 1 to 9.";
+								next;
+								continue;
+							} else {
+									break;
+							}
+						}
+						mes "[Puchuchartan]";
+						mes "I am putting these tails into a";
+						mes "boiling pot, and casting a";
+						mes "sacred incantation. Remember";
+						mes "the number you entered.";
+						next;
+						mes "[Puchuchartan]";
+						mes "Amba Omba Zatumba! Umba! Ti!";
+						mes "Umputaun Eulukaba! Umba! Ha!";
+						mes "Julu Humba Rulala! Umba! La!";
+						mes "Datuha Ombabalaka! Umba! Si!";
+						mes "Sunutaba Abulumba! Umba! Si!";
+						next;
+						set '@shaman_p,rand(1,10);
+						if ('@shaman_p == 1) {
+							mes "[Puchuchartan]";
+							mes "I guess my power was not enough.";
+							mes "The natural power I gathered with";
+							mes "my spell lost focus and was scattered...";
+							delitem 904,20;
+							getitem 910,1;
+							next;
+							mes "[Puchuchartan]";
+							mes "It seems the spirits of nature";
+							mes "were not in harmony at the moment.";
+							mes "However, if you come back later,";
+							mes "I will try to help you. Of course,";
+							mes "there will still be the same";
+							mes "possibility that I may fail.";
+							close;
+						} else {
+							mes "[Puchuchartan]";
+							mes "Here's the enchanted stone you";
+							mes "wished to have. I created this";
+							mes "with a lot of effort, so make";
+							mes "good use of it.";
+							delitem 904,20;
+							getitem 990,1;
+							close;
+						}
+					} else {
+						mes "[Puchuchartan]";
+						mes "Fire property...";
+						mes "I will need natural";
+						mes "objects that are filled with";
+						mes "the spirit of fire.";
+						next;
+						mes "[Puchuchartan]";
+						mes "Scorpion which endures the";
+						mes "blazing heat of the desert";
+						mes "is brimming with fire energy.";
+						mes "I need ^3377FF20 Scorpion Tails^000000.";
+						next;
+						mes "[Puchuchartan]";
+						mes "That's all I need...";
+						mes "Come back when";
+						mes "you're ready.";
+						mes "I will be here.";
+						close;
+					}
+				case 4:
+					if (countitem(1013) > 24) {
+						mes "[Puchuchartan]";
+						mes "I will try to amplify the hidden";
+						mes "power of natural objects in";
+						mes "order to create rough enchanted";
+						mes "stones. Choose one number from";
+						mes "'1' to '9.' If you wish to cancel";
+						mes "this request, enter '0.'";
+						next;
+						while(1) {
+							input '@input;
+							if ('@input == 0) {
+								mes "[Puchuchartan]";
+								mes "I see. It's your call.";
+								mes "Come back when you need me.";
+								close;
+							} else if ('@input < 1 || '@input > 9) {
+								mes "[Puchuchartan]";
+								mes "Remember to choose a number";
+								mes "from 1 to 9.";
+								next;
+								continue;
+							} else {
+									break;
+							}
+						}
+						mes "[Puchuchartan]";
+						mes "I am putting these shells into a";
+						mes "boiling pot, and casting a";
+						mes "sacred incantation. Remember";
+						mes "the number you entered.";
+						next;
+						mes "[Puchuchartan]";
+						mes "Amba Omba Zatumba! Umba! Ti!";
+						mes "Umputaun Eulukaba! Umba! Ha!";
+						mes "Julu Humba Rulala! Umba! La!";
+						mes "Datuha Ombabalaka! Umba! Si!";
+						mes "Sunutaba Abulumba! Umba! Si!";
+						next;
+						set '@shaman_p,rand(1,10);
+						if ('@shaman_p == 1) {
+							mes "[Puchuchartan]";
+							mes "I guess my power was not enough.";
+							mes "The natural power I gathered with";
+							mes "my spell lost focus and was scattered...";
+							delitem 1013,25;
+							getitem 910,1;
+							next;
+							mes "[Puchuchartan]";
+							mes "It seems the spirits of nature";
+							mes "were not in harmony at the moment.";
+							mes "However, if you come back later,";
+							mes "I will try to help you. Of course,";
+							mes "there will still be the same";
+							mes "possibility that I may fail.";
+							close;
+						} else {
+							mes "[Puchuchartan]";
+							mes "Here's the enchanted stone you";
+							mes "wished to have. I created this";
+							mes "with a lot of effort, so make";
+							mes "good use of it.";
+							delitem 1013,25;
+							getitem 992,1;
+							close;
+						}
+					} else {
+						mes "[Puchuchartan]";
+						mes "Wind property...";
+						mes "I will need natural";
+						mes "objects that are filled with";
+						mes "the spirit of wind.";
+						next;
+						mes "[Puchuchartan]";
+						mes "Stainer...the beetle";
+						mes "that flies through the sky";
+						mes "has the wind's spirit.";
+						mes "I need ^3377FF25 Rainbow Shells^000000.";
+						next;
+						mes "[Puchuchartan]";
+						mes "That's all I need...";
+						mes "Come back when";
+						mes "you're ready.";
+						mes "I will be here.";
+						close;
+					}
+				}
+			case 2:
+				mes "[Puchuchartan]";
+				mes "Do you wish to divide a pure";
+				mes "enchanted stone into rough ones?";
+				mes "Which property do you want to";
+				mes "divide? Earth, Water, Fire, Wind...";
+				mes "Choose one.";
+				next;
+				switch(select("Earth","Water","Fire","Wind")) {
+				case 1:
+					if (997 > 0) {
+						mes "[Puchuchartan]";
+						mes "Let me try to return the enchanted";
+						mes "stone to its rough form...";
+						mes "Choose a number from 1 to 9.";
+						mes "If you wish to cancel this";
+						mes "request, enter 0.";
+						next;
+						while(1) {
+							input '@input;
+							if ('@input == 0) {
+								mes "[Puchuchartan]";
+								mes "I see. It's your call.";
+								mes "Come back when you need me.";
+								close;
+							} else if ('@input < 1 || '@input > 9) {
+								mes "[Puchuchartan]";
+								mes "Remember to choose a number";
+								mes "from 1 to 9.";
+								next;
+								continue;
+							} else {
+									break;
+							}
+						}
+						mes "[Puchuchartan]";
+						mes "I will now cast a sacred";
+						mes "incantation. Remember the number you entered.";
+						next;
+						mes "[Puchuchartan]";
+						mes "Umba Umba Kalapum! Umba! Ta!";
+						mes "Lukura Ukulele Um! Umba! Ka!";
+						mes "Abulaka Tabulakan! Umba! La!";
+						mes "Ombaludu Zan Kunu! Umba! Ku!";
+						mes "Kum Tum Lakulakun! Umba! Ha!";
+						next;
+						mes "[Puchuchartan]";
+						mes "Here's the rough enchanted stones";
+						mes "you wished to have. I created this";
+						mes "with a lot of effort, so make good";
+						mes "use of them.";
+						delitem 997,1;
+						set '@shaman_p,rand(1,5);
+						if ('@shaman_p == 1) {
+							getitem 993,10;
+						} else if ('@shaman_p == 2) {
+							getitem 993,8;
+						} else if (('@shaman_p == 3) || ('@shaman_p == 4)) {
+							getitem 993,7;
+						} else {
+							set '@shaman_p2,rand(1,2);
+							if ('@shaman_p2 == 1) {
+								getitem 993,6;
+							} else {
+								getitem 993,7;
+							}
+						}
+						close;
+					} else {
+						mes "[Puchuchartan]";
+						mes "So, you wish to have rough";
+						mes "earth stones? Then I'll need";
+						mes "you to bring a pure earth stone.";
+						mes "^3377FF1 Great Nature^000000.";
+						next;
+						mes "[Puchuchartan]";
+						mes "That's all I need...";
+						mes "Come back when";
+						mes "you're ready.";
+						mes "I will be here.";
+						close;
+					}
+				case 2:
+					if (countitem(995) > 0) {
+						mes "[Puchuchartan]";
+						mes "Let me try to return the enchanted";
+						mes "stone to its rough form...";
+						mes "Choose a number from 1 to 9.";
+						mes "If you wish to cancel this";
+						mes "request, enter 0.";
+						next;
+						while(1) {
+							input '@input;
+							if ('@input == 0) {
+								mes "[Puchuchartan]";
+								mes "I see. It's your call.";
+								mes "Come back when you need me.";
+								close;
+							} else if ('@input < 1 || '@input > 9) {
+								mes "[Puchuchartan]";
+								mes "Remember to choose a number";
+								mes "from 1 to 9.";
+								next;
+								continue;
+							} else {
+									break;
+							}
+						}
+						mes "[Puchuchartan]";
+						mes "I will now cast a sacred";
+						mes "incantation. Remember the";
+						mes "number you entered.";
+						next;
+						mes "[Puchuchartan]";
+						mes "Umba Umba Kalapum! Umba! Ta!";
+						mes "Lukura Ukulele Um! Umba! Ka!";
+						mes "Abulaka Tabulakan! Umba! La!";
+						mes "Ombaludu Zan Kunu! Umba! Ku!";
+						mes "Kum Tum Lakulakun! Umba! Ha!";
+						next;
+						mes "[Puchuchartan]";
+						mes "Here's the rough enchanted stones";
+						mes "you wished to have. I created this";
+						mes "with a lot of effort, so make good";
+						mes "use of them.";
+						delitem 995,1;
+						set '@shaman_p,rand(1,10);
+						if ('@shaman_p == 1) {
+							getitem 991,10;
+						} else if (('@shaman_p == 2) || ('@shaman_p == 3)) {
+							getitem 991,8;
+						} else if (('@shaman_p == 4) || ('@shaman_p == 5) || ('@shaman_p == 6)) {
+							getitem 991,7;
+						} else {
+							getitem 991,6;
+						}
+						close;
+					} else {
+						mes "[Puchuchartan]";
+						mes "So, you wish to have rough";
+						mes "water stones? Then I'll need";
+						mes "you to bring a pure water stone.";
+						mes "^3377FF1 Mystic Frozen^000000.";
+						next;
+						mes "[Puchuchartan]";
+						mes "That's all I need...";
+						mes "Come back when";
+						mes "you're ready.";
+						mes "I will be here.";
+						close;
+					}
+				case 3:
+					if (countitem(994) > 0) {
+						mes "[Puchuchartan]";
+						mes "Let me try to return the enchanted";
+						mes "stone to its rough form...";
+						mes "Choose a number from 1 to 9.";
+						mes "If you wish to cancel this";
+						mes "request, enter 0.";
+						next;
+						while(1) {
+							input '@input;
+							if ('@input == 0) {
+								mes "[Puchuchartan]";
+								mes "I see. It's your call.";
+								mes "Come back when you need me.";
+								close;
+							} else if ('@input < 1 || '@input > 9) {
+								mes "[Puchuchartan]";
+								mes "Remember to choose a number";
+								mes "from 1 to 9.";
+								next;
+								continue;
+							} else {
+									break;
+							}
+						}
+						mes "[Puchuchartan]";
+						mes "I will now cast a sacred";
+						mes "incantation. Remember the";
+						mes "number you entered.";
+						next;
+						mes "[Puchuchartan]";
+						mes "Umba Umba Kalapum! Umba! Ta!";
+						mes "Lukura Ukulele Um! Umba! Ka!";
+						mes "Abulaka Tabulakan! Umba! La!";
+						mes "Ombaludu Zan Kunu! Umba! Ku!";
+						mes "Kum Tum Lakulakun! Umba! Ha!";
+						next;
+						mes "[Puchuchartan]";
+						mes "Here's the rough enchanted stones";
+						mes "you wished to have. I created this";
+						mes "with a lot of effort, so make good";
+						mes "use of them.";
+						delitem 994,1;
+						set '@shaman_p,rand(1,10);
+						if ('@shaman_p == 1) {
+							getitem 990,10;
+						} else if (('@shaman_p == 2) || ('@shaman_p == 3)) {
+							getitem 990,8;
+						} else if (('@shaman_p == 4) || ('@shaman_p == 5) || ('@shaman_p == 6)) {
+							getitem 990,7;
+						} else {
+							getitem 990,6;
+						}
+						close;
+					} else {
+						mes "[Puchuchartan]";
+						mes "So, you wish to have rough";
+						mes "fire stones? Then I will need";
+						mes "you to bring a pure fire stone.";
+						mes "^3377FF1 Flame Heart^000000.";
+						next;
+						mes "[Puchuchartan]";
+						mes "That's all I need...";
+						mes "Come back when";
+						mes "you're ready.";
+						mes "I will be here.";
+						close;
+					}
+				case 4:
+					if (countitem(996) > 0) {
+						mes "[Puchuchartan]";
+						mes "Let me try to return the enchanted";
+						mes "stone to its rough form...";
+						mes "Choose a number from 1 to 9.";
+						mes "If you wish to cancel this";
+						mes "request, enter 0.";
+						next;
+						while(1) {
+							input '@input;
+							if ('@input == 0) {
+								mes "[Puchuchartan]";
+								mes "I see. It's your call.";
+								mes "Come back when you need me.";
+								close;
+							} else if ('@input < 1 || '@input > 9) {
+								mes "[Puchuchartan]";
+								mes "Remember you choose a number";
+								mes "from 1 to 9.";
+								next;
+								continue;
+							} else {
+									break;
+							}
+						}
+						mes "[Puchuchartan]";
+						mes "I will now cast a sacred";
+						mes "incantation. Remember the";
+						mes "number you entered.";
+						next;
+						mes "[Puchuchartan]";
+						mes "Umba Umba Kalapum! Umba! Ta!";
+						mes "Lukura Ukulele Um! Umba! Ka!";
+						mes "Abulaka Tabulakan! Umba! La!";
+						mes "Ombaludu Zan Kunu! Umba! Ku!";
+						mes "Kum Tum Lakulakun! Umba! Ha!";
+						next;
+						mes "[Puchuchartan]";
+						mes "Here's the rough enchanted stones";
+						mes "you wished to have. I created this";
+						mes "with a lot of effort, so make good";
+						mes "use of them.";
+						delitem 996,1;
+						set '@shaman_p,rand(1,10);
+						if ('@shaman_p == 1) {
+							set '@shaman_p2,rand(1,2);
+							if ('@shaman_p2 == 1) {
+								getitem 992,10;
+							} else {
+								getitem 992,6;
+							}
+						} else if (('@shaman_p == 2) || ('@shaman_p == 3)) {
+							getitem 992,8;
+						} else if (('@shaman_p == 4) || ('@shaman_p == 5) || ('@shaman_p == 6)) {
+							getitem 992,7;
+						} else {
+							getitem 992,6;
+						}
+						close;
+					} else {
+						mes "[Puchuchartan]";
+						mes "So, you wish to have rough";
+						mes "wind stones? Then I will need";
+						mes "you to bring a pure wind stone.";
+						mes "^3377FF1 Rough Wind^000000.";
+						next;
+						mes "[Puchuchartan]";
+						mes "That's all I need...";
+						mes "Come back when";
+						mes "you're ready.";
+						mes "I will be here.";
+						close;
+					}
+				}
+			case 3:
+				mes "[Puchuchartan]";
+				mes "I see. It's your call.";
+				mes "Come back when you need me.";
+				close;
+			}
+		}
+	} else {
+		mes "[??????????]";
+		mes "Umbah umbah umbabah Utan umbah";
+		mes "Umbah mookala umbabah..";
+		mes "Umbabahumbah umbabah";
+		mes "Umbabah umbaba umbaumbah umbah";
+		mes "Hum umbah umbah.";
+		close2;
+		warp "umbala.gat",217,186;
+		end;
+	}
+}
+
+umbala.gat,221,193,1	script	#Skulldoor	111,{
+
+	if (um_shaman == 4) {
+		warp "um_in.gat",32,71;
+	} else {
+		mes "^3355FFA human skull disturbingly";
+		mes "hangs beside the door. The door is";
+		mes "locked tight, so you can't get in.";
+		mes "As you peer through the keyhole,";
+		mes "you can see somebody moving inside the room.^000000";
+		next;
+		switch(select("Examine the skull.","Quit.")) {
+		case 1:
+			mes "^3355FFYou see that the eye sockets";
+			mes "of the skull are empty.";
+			mes "How peculiar...";
+			mes "It seems that Gemstones";
+			mes "would fit perfectly inside of";
+			mes "them.^000000";
+			next;
+			mes "^3355FFYou see the left eye socket of the";
+			mes "skull. What do you want to do?^000000";
+			next;
+			switch(select("Leave it as it is.","Insert a Blue Gemstone.","Insert a Yellow Gemstone.","Insert a Red Gemstone.")) {
+			case 1:
+				mes "^3355FFYou left the eye socket as it was.^000000";
+				next;
+				break;
+			case 2:
+				if (countitem(717) > 0) {
+					mes "^3355FFYou inserted a Blue Gemstone";
+					mes "into the eye socket.^000000";
+					next;
+					mes "^3355FFThe gemstone rolled back out of";
+					mes "the mouth of the skull.^000000";
+					set '@skull_door,'@skull_door + 1;
+					set '@skull_b,1;
+					delitem 717,1;
+					getitem 717,1;
+					next;
+				} else {
+					mes "^3355FFYou forgot to carry Blue Gemstones";
+					mes "with you. So you couldn't do what you had intended.^000000";
+					next;
+				}
+				break;
+			case 3:
+				if (countitem(715) > 0) {
+					mes "^3355FFYou inserted a Yellow Gemstone";
+					mes "into the eye socket.^000000";
+					next;
+					mes "^3355FFThe Gemstone rolled back out of";
+					mes "the mouth of the skull.^000000";
+					set '@skull_door,'@skull_door + 1;
+					set '@skull_y,1;
+					delitem 715,1;
+					getitem 715,1;
+					next;
+				} else {
+					mes "^3355FFYou forgot to carry Yellow";
+					mes "Gemstones with you, so";
+					mes "you couldn't do what";
+					mes "you had intended.^000000";
+					next;
+				}
+				break;
+			case 4:
+				if (countitem(716) > 0) {
+					mes "^3355FFYou inserted a Red Gemstone";
+					mes "into the eye socket.^000000";
+					next;
+					mes "^3355FFThe gemstone rolled back out of";
+					mes "the mouth of the skull.^000000";
+					set '@skull_door,'@skull_door + 1;
+					set '@skull_r,1;
+					delitem 716,1;
+					getitem 716,1;
+					next;
+				} else {
+					mes "^3355FFYou forgot to carry Red Gemstones";
+					mes "with you. So you couldn't do what you";
+					mes "had intended.^000000";
+					next;
+				}
+				break;
+			}
+			mes "^3355FFYou see the right eye socket of";
+			mes "the skull. What do you want to do?^000000";
+			next;
+			switch(select("Leave it as it is.","Insert a Blue Gemstone.","Insert a Yellow Gemstone.","Insert a Red Gemstone.")) {
+			case 1:
+				mes "^3355FFYou left the eye socket as it was.^000000";
+				next;
+				break;
+			case 2:
+				if (countitem(717) > 0) {
+					mes "^3355FFYou inserted a Blue Gemstone";
+					mes "into the eye socket.^000000";
+					next;
+					mes "^3355FFThe gemstone rolled back out of";
+					mes "the mouth of the skull.^000000";
+					if ('@skull_b == 1) {
+						set '@skull_door,'@skull_door + 1;
+					} else {
+						set '@skull_door,'@skull_door + 2;
+					}
+					delitem 717,1;
+					getitem 717,1;
+					next;
+				} else {
+					mes "^3355FFYou forgot to carry Blue Gemstones";
+					mes "with you, so you couldn't do what you had intended.^000000";
+					next;
+				}
+				break;
+			case 3:
+				if (countitem(715) > 0) {
+					mes "^3355FFYou inserted a Yellow Gemstone";
+					mes "into the eye socket.^000000";
+					next;
+					mes "^3355FFThe gemstone rolled back out of";
+					mes "the mouth of the skull.^000000";
+					if ('@skull_y == 1) {
+						set '@skull_door,'@skull_door + 1;
+					} else {
+						set '@skull_door,'@skull_door + 2;
+					}
+					delitem 715,1;
+					getitem 715,1;
+					next;
+				} else {
+					mes "^3355FFYou forgot to carry Yellow";
+					mes "Gemstones with you, so";
+					mes "you couldn't do what";
+					mes "you had intended.";
+					next;
+				}
+				break;
+			case 4:
+				if (countitem(716) > 0) {
+					mes "^3355FFYou inserted a Red Gemstone";
+					mes "into the eye socket.^000000";
+					next;
+					mes "^3355FFThe Gemstone rolled back out of";
+					mes "the mouth of the skull.^000000";
+					if ('@skull_r == 1) {
+						set '@skull_door,'@skull_door + 1;
+					} else {
+						set '@skull_door,'@skull_door + 2;
+					}
+					delitem 716,1;
+					getitem 716,1;
+					next;
+				} else {
+					mes "^3355FFYou forgot to carry Yellow";
+					mes "Gemstones with you, so";
+					mes "you couldn't do what you had intended.^000000";
+					next;
+				}
+				break;
+			}
+			mes "^3355FF..............................^000000";
+			next;
+			mes "^3355FF..............................";
+			mes "..............................^000000";
+			next;
+			mes "^3355FF..............................";
+			mes "..............................";
+			mes "..............................^000000";
+			next;
+			if ('@skull_door == 3) {
+				set '@skull_open,rand(1,4);
+				if ('@skull_open == 1) {
+					set '@skull_open,0;
+				} else {
+					set '@skull_open,1;
+				}
+			} else if ('@skull_door == 2) {
+				set '@skull_open,rand(1,2);
+				if ('@skull_open == 1) {
+					set '@skull_open,0;
+				} else {
+					set '@skull_open,1;
+				}
+			} else if ('@skull_door == 1) {
+				set '@skull_open,rand(1,4);
+				if ('@skull_open == 1) {
+					set '@skull_open,1;
+				} else {
+					set '@skull_open,0;
+				}
+			} else {
+				set '@skull_open,0;
+			}
+			if ('@skull_open == 0) {
+				mes "^3355FFNothing happened.";
+				mes "You have the feeling that the";
+				mes "skull is grinning at you. But...";
+				mes "It's probably just a trick of the light.^000000";
+				close;
+			} else {
+				mes "^3355FFSuddenly, a clicking sound comes";
+				mes "from the skull's eye sockets and";
+				mes "the door opens. Before you know";
+				mes "it, you walk inside as if guided";
+				mes "by an unseen force...^000000";
+				close2;
+				warp "um_in.gat",32,71;
+				end;
+			}
+		case 2:
+			mes "^3355FFYou decided to pass by the door.";
+			mes "It looks like it might be too hard to open.^000000";
+			close;
+		}
+	}
+}

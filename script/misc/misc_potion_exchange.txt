@@ -1,0 +1,1483 @@
+//--------------------------------------------------------------
+//               (c)2004-2007 Aurora Team Presents:             
+//                  ___                                         
+//                 /   |_   _ _ __ ___  _ __ __ _               
+//                / /| | | | | '__/ _ \| '__/ _` |              
+//               / ___ | |_| | | | (_) | | | (_| |++            
+//              /_/  |_|\____|_|  \___/|_|  \__,_|              
+//                 http://aurora.deltaanime.net                 
+//--------------------------------------------------------------
+// Script Title: Potion Exchange	Author: Tsuyuki
+//--------------------------------------------------------------
+// Revision History: v1.0
+//--------------------------------------------------------------
+//	1.0 First version, converted from Aegis [Tsuyuki]
+//--------------------------------------------------------------
+// Additional Notes: * Official-certified / Aegis-certified *
+//--------------------------------------------------------------
+
+
+prontera.gat,123,102,5	script	Merchant#pron	85,{
+
+	set '@now_weight,MaxWeight - Weight;
+	if ('@now_weight < 6301) {
+		mes "[Merchant]";
+		mes "Haha!";
+		mes "What are you, superhuman?";
+		mes "You're carrying so much stuff!";
+		mes "You better put some of that";
+		mes "into Kafra Storage~";
+		close;
+	}
+	mes "[Merchant]";
+	mes "Good day!";
+	mes "Have you collected any";
+	mes "items like Shells or Fluff?";
+	mes "What about Jellopies? Oh yeah,";
+	mes "I need those for something.";
+	next;
+	mes "[Merchant]";
+	mes "Of course, I won't ask you";
+	mes "to give me that stuff for free. What about if I trade a Red Potion for 5 Shells, 10 Fluff,";
+	mes "or 10 Jellopies?";
+	next;
+	switch(select("Sure!","I think it's a rip-off!","No, thanks.")) {
+	case 1:
+		mes "[Merchant]";
+		mes "So which item do";
+		mes "you want to bring me?";
+		mes "Shells, Fluffs, or Jellopies?";
+		next;
+		switch(select("Shells","Jellopies","Fluff","Cancel")) {
+		case 1:
+			set '@shellv,countitem(935);
+			set '@c_shellv_max,'@shellv / 5;
+			if (countitem(935) < 5) {
+				mes "[Merchant]";
+				mes "Hey, where are";
+				mes "all those Shells";
+				mes "that you promised?";
+				mes "Give me Shells!";
+				close;
+			} else {
+				mes "[Merchant]";
+				mes "Okay, let me check";
+				mes "how many Shells you";
+				mes "have on you. Hmm...";
+				next;
+				mes "[Merchant]";
+				mes "You have";
+				mes "a total of " + '@shellv + " Shells.";
+				mes "I can give you a total";
+				mes "of " + '@c_shellv_max + " Red Potions for those.";
+				next;
+				mes "[Merchant]";
+				mes "What do you say?";
+				mes "Do we have a deal?";
+				next;
+				switch(select("Deal.","No deal.")) {
+				case 1:
+					mes "[Merchant]";
+					mes "You know the exact";
+					mes "number of Red Potions";
+					mes "you want to receive for";
+					mes "those Shells, don't you?";
+					next;
+					mes "[Merchant]";
+					mes "Now, I can trade you";
+					mes "a minimum of 1 Red Potion";
+					mes "and a maximum of 100 Red Potions";
+					mes "at one time. If you change your";
+					mes "mind, just enter '0' to cancel.";
+					next;
+					while(1) {
+						input '@input;
+						if ('@input == 0) {
+							mes "[Merchant]";
+							mes "What...?";
+							mes "Why the hell do you";
+							mes "even bother to talk to me?";
+							mes "Pretty indecisive, aren't you?";
+							close;
+						} else if ('@input < 0 || '@input > 100) {
+							mes "[Merchant]";
+							mes "I can't give you more";
+							mes "than 100 Red Potions";
+							mes "at once. Let's try";
+							mes "this again.";
+							next;
+						} else {
+							break;
+						}
+					}
+					set '@put_out_item,'@input * 5;
+					set '@put_in_item,'@input;
+					if (countitem(935) < '@put_out_item) {
+						mes "[Merchant]";
+						mes "Uh oh, the number you entered doesn't seem right. You better check the number of Red Potions that you can trade for again.";
+						close;
+					}
+					mes "[Merchant]";
+					mes "There you go!";
+					mes "Check how many Red Potions";
+					mes "I've given you, it should be good. Thanks, that was a good deal~";
+					delitem 935,'@put_out_item;
+					getitem 501,'@put_in_item;
+					close;
+				case 2:
+					mes "[Merchant]";
+					mes "Huh~";
+					mes "Alright.";
+					mes "Though aren't";
+					mes "Red Potions more useful";
+					mes "to an adventurer like you?";
+					close;
+				}
+			}
+		case 2:
+			set '@jellopyv,countitem(909);
+			set '@c_jellopyv_max,'@jellopyv / 10;
+			if (countitem(909) < 10) {
+				mes "[Merchant]";
+				mes "Hey, where's all";
+				mes "that Jellopy that";
+				mes "you promised me?";
+				mes "Give me Jellopy!";
+				close;
+			} else {
+				mes "[Merchant]";
+				mes "Okay, let me check";
+				mes "how much Jellopy you";
+				mes "have on you. Hmm...";
+				next;
+				mes "[Merchant]";
+				mes "You have";
+				mes "a total of " + '@jellopyv + " Jellopies...";
+				mes "For all those, I can give you";
+				mes "a total of " + '@c_jellopyv_max + " Red Potions.";
+				next;
+				mes "[Merchant]";
+				mes "What do you say?";
+				mes "Do we have a deal?";
+				next;
+				switch(select("Deal.","No deal.")) {
+				case 1:
+					mes "[Merchant]";
+					mes "You know the exact";
+					mes "number of Red Potions";
+					mes "you want to receive for";
+					mes "that Jellopy, don't you?";
+					next;
+					mes "[Merchant]";
+					mes "Now, I can trade you";
+					mes "a minimum of 1 Red Potion";
+					mes "and a maximum of 100 Red Potions";
+					mes "at one time. If you change your";
+					mes "mind, just enter '0' to cancel.";
+					next;
+					while(1) {
+						input '@input;
+						if ('@input == 0) {
+							mes "[Merchant]";
+							mes "What...?";
+							mes "Why the hell did you";
+							mes "even bother to talk to me?";
+							mes "Pretty indecisive, aren't you?";
+							close;
+						} else if ('@input < 0 || '@input > 100) {
+							mes "[Merchant]";
+							mes "I can't give you more";
+							mes "than 100 Red Potions";
+							mes "at once. Let's try";
+							mes "this again.";
+							next;
+						} else {
+							break;
+						}
+					}
+					set '@put_out_item,'@input * 10;
+					set '@put_in_item,'@input;
+					if (countitem(909) < '@put_out_item) {
+						mes "[Merchant]";
+						mes "Uh oh, the number you entered doesn't seem right. You better check the number of Red Potions that you can trade for again.";
+						close;
+					}
+					mes "[Merchant]";
+					mes "There you go!";
+					mes "Check how many Red Potions";
+					mes "I've given you, it should be good. Thanks, that was a good deal~";
+					delitem 909,'@put_out_item;
+					getitem 501,'@put_in_item;
+					close;
+				case 2:
+					mes "[Merchant]";
+					mes "Huh~";
+					mes "Alright.";
+					mes "Though aren't";
+					mes "Red Potions more useful";
+					mes "to an adventurer like you?";
+					close;
+				}
+			}
+		case 3:
+			set '@fluffv,countitem(914);
+			set '@c_fluffv_max,'@fluffv / 10;
+			if (countitem(914) < 10) {
+				mes "[Merchant]";
+				mes "Hey, where's";
+				mes "all that Fluff";
+				mes "that you promised?";
+				mes "Give me Fluff!";
+				close;
+			} else {
+				mes "[Merchant]";
+				mes "Okay, let me check";
+				mes "how much Fluff you";
+				mes "have on you. Hmm...";
+				next;
+				mes "[Merchant]";
+				mes "You have";
+				mes "a total of " + '@fluffv + " Fluff.";
+				mes "I can give you a total";
+				mes "of " + '@c_fluffv_max + " Red Potions for those.";
+				next;
+				mes "[Merchant]";
+				mes "What do you say?";
+				mes "Do we have a deal?";
+				next;
+				switch(select("Deal.","No deal.")) {
+				case 1:
+					mes "[Merchant]";
+					mes "You know the exact";
+					mes "number of Red Potions";
+					mes "you want to receive for";
+					mes "that Fluff, don't you?";
+					next;
+					mes "[Merchant]";
+					mes "Now, I can trade you";
+					mes "a minimum of 1 Red Potion";
+					mes "and a maximum of 100 Red Potions";
+					mes "at one time. If you change your";
+					mes "mind, just enter '0' to cancel.";
+					next;
+					while(1) {
+						input '@input;
+						if ('@input == 0) {
+							mes "[Merchant]";
+							mes "What...?";
+							mes "Why the hell did you";
+							mes "even bother to talk to me?";
+							mes "Pretty indecisive, aren't you?";
+							close;
+						} else if ('@input < 0 || '@input > 100) {
+							mes "[Merchant]";
+							mes "I can't give you more";
+							mes "than 100 Red Potions";
+							mes "at once. Let's try";
+							mes "this again.";
+							next;
+						} else {
+							break;
+						}
+					}
+					set '@put_out_item,'@input * 10;
+					set '@put_in_item,'@input;
+					if (countitem(914) < '@put_out_item) {
+						mes "[Merchant]";
+						mes "Uh oh, the number you entered doesn't seem right. You better check the number of Red Potions that you can trade for again.";
+						close;
+					}
+					mes "[Merchant]";
+					mes "There you go!";
+					mes "Check how many Red Potions";
+					mes "I've given you, it should be good. Thanks, that was a good deal~";
+					delitem 914,'@put_out_item;
+					getitem 501,'@put_in_item;
+					close;
+				case 2:
+					mes "[Merchant]";
+					mes "Huh~";
+					mes "Alright.";
+					mes "Though aren't";
+					mes "Red Potions more useful";
+					mes "to an adventurer like you?";
+					close;
+				}
+			}
+		case 4:
+			mes "[Merchant]";
+			mes "Sure~";
+			mes "No problem.";
+			close;
+		}
+	case 2:
+		mes "[Merchant]";
+		mes "A rip-off...?";
+		mes "If you check the market value";
+		mes "of the items being traded, I'm actually the one getting";
+		mes "ripped off here.";
+		close;
+	case 3:
+		mes "[Merchant]";
+		mes "Alright,";
+		mes "no problem.";
+		mes "But come back to me";
+		mes "if you change your mind.";
+		close;
+	}
+}
+
+morocc.gat,180,259,3	script	Merchant#morroc	85,{
+
+	set '@now_weight,MaxWeight - Weight;
+	if ('@now_weight < 6301) {
+		mes "[Merchant]";
+		mes "Haha!";
+		mes "What are you, superhuman?";
+		mes "You're carrying so much stuff!";
+		mes "You better put some of that";
+		mes "into Kafra Storage~";
+		close;
+	}
+	mes "[Merchant]";
+	mes "Good day!";
+	mes "Have you collected any";
+	mes "Shells or Feathers of Bird?";
+	mes "What about Jellopies? Oh yeah,";
+	mes "I need those for something.";
+	next;
+	mes "[Merchant]";
+	mes "Of course, I won't ask you";
+	mes "to give me that stuff for free. What about if I trade a Red Potion for 5 Shells, 7 Feathers of Bird";
+	mes "or 10 Jellopies?";
+	next;
+	switch(select("Sure!","I think it's a rip-off!","No, thanks.")) {
+	case 1:
+		mes "[Merchant]";
+		mes "So which item do";
+		mes "you want to bring me?";
+		mes "Shells, Feathers of Birds,";
+		mes "or Jellopies?";
+		next;
+		switch(select("Shells","Feathers of Birds","Jellopies","Cancel")) {
+		case 1:
+			set '@shellv,countitem(935);
+			set '@c_shellv_max,'@shellv / 5;
+			if (countitem(935) < 5) {
+				mes "[Merchant]";
+				mes "Hey, where are";
+				mes "all those Shells";
+				mes "that you promised?";
+				mes "Give me Shells!";
+				close;
+			} else {
+				mes "[Merchant]";
+				mes "Okay, let me check";
+				mes "how many Shells you";
+				mes "have on you. Hmm...";
+				next;
+				mes "[Merchant]";
+				mes "You have";
+				mes "a total of " + '@shellv + " Shells.";
+				mes "I can give you a total";
+				mes "of " + '@c_shellv_max + " Red Potions for those.";
+				next;
+				mes "[Merchant]";
+				mes "What do you say?";
+				mes "Do we have a deal?";
+				next;
+				switch(select("Deal.","No deal.")) {
+				case 1:
+					mes "[Merchant]";
+					mes "You know the exact";
+					mes "number of Red Potions";
+					mes "you want to receive for";
+					mes "those Shells, don't you?";
+					next;
+					mes "[Merchant]";
+					mes "Now, I can trade you";
+					mes "a minimum of 1 Red Potion";
+					mes "and a maximum of 100 Red Potions";
+					mes "at one time. If you change your";
+					mes "mind, just enter '0' to cancel.";
+					next;
+					while(1) {
+						input '@input;
+						if ('@input == 0) {
+							mes "[Merchant]";
+							mes "What...?";
+							mes "Why the hell do you";
+							mes "even bother to talk to me?";
+							mes "Pretty indecisive, aren't you?";
+							close;
+						} else if ('@input < 0 || '@input > 100) {
+							mes "[Merchant]";
+							mes "I can't give you more";
+							mes "than 100 Red Potions";
+							mes "at once. Let's try";
+							mes "this again.";
+							next;
+						} else {
+							break;
+						}
+					}
+					set '@put_out_item,'@input * 5;
+					set '@put_in_item,'@input;
+					if (countitem(935) < '@put_out_item) {
+						mes "[Merchant]";
+						mes "Uh oh, the number you entered doesn't seem right. You better check the number of Red Potions that you can trade for again.";
+						close;
+					}
+					mes "[Merchant]";
+					mes "There you go!";
+					mes "Check how many Red Potions";
+					mes "I've given you, it should be good. Thanks, that was a good deal~";
+					delitem 935,'@put_out_item;
+					getitem 501,'@put_in_item;
+					close;
+				case 2:
+					mes "[Merchant]";
+					mes "Huh~";
+					mes "Alright.";
+					mes "Though aren't";
+					mes "Red Potions more useful";
+					mes "to an adventurer like you?";
+					close;
+				}
+			}
+		case 2:
+			set '@birdsv,countitem(916);
+			set '@c_birdsv_max,'@birdsv / 7;
+			if (countitem(916) < 7) {
+				mes "[Merchant]";
+				mes "Hey, where's all the";
+				mes "Feathers of Birds you";
+				mes "said that you had?";
+				close;
+			} else {
+				mes "[Merchant]";
+				mes "Okay, let me check how";
+				mes "many Feathers of Birds";
+				mes "that you have. Hmm...";
+				next;
+				mes "[Merchant]";
+				mes "You have a total of";
+				mes ""+ '@birdsv + " Feathers of Birds.";
+				mes "I can give you a total of";
+				mes ""+ '@c_birdsv_max + " Red Potions for those.";
+				next;
+				mes "[Merchant]";
+				mes "What do you say?";
+				mes "Do we have a deal?";
+				next;
+				switch(select("Deal.","No deal.")) {
+				case 1:
+					mes "[Merchant]";
+					mes "You know the exact";
+					mes "number of Red Potions";
+					mes "you want to receive for";
+					mes "those Feathers of Birds,";
+					mes "don't you?";
+					next;
+					mes "[Merchant]";
+					mes "Now, I can trade you";
+					mes "a minimum of 1 Red Potion";
+					mes "and a maximum of 100 Red Potions";
+					mes "at one time. If you change your";
+					mes "mind, just enter '0' to cancel.";
+					next;
+					while(1) {
+						input '@input;
+						if ('@input == 0) {
+							mes "[Merchant]";
+							mes "What...?";
+							mes "Why the hell did you";
+							mes "even bother to talk to me?";
+							mes "Pretty indecisive, aren't you?";
+							close;
+						} else if ('@input < 0 || '@input > 100) {
+							mes "[Merchant]";
+							mes "I can't give you more";
+							mes "than 100 Red Potions";
+							mes "at once. Let's try";
+							mes "this again.";
+							next;
+						} else {
+							break;
+						}
+					}
+					set '@put_out_item,'@input * 7;
+					set '@put_in_item,'@input;
+					if (countitem(916) < '@put_out_item) {
+						mes "[Merchant]";
+						mes "Uh oh, the number you entered doesn't seem right. You better check the number of Red Potions that you can trade for again.";
+						close;
+					}
+					mes "[Merchant]";
+					mes "There you go!";
+					mes "Check how many Red Potions";
+					mes "I've given you, it should be good. Thanks, that was a good deal~";
+					delitem 916,'@put_out_item;
+					getitem 501,'@put_in_item;
+					close;
+				case 2:
+					mes "[Merchant]";
+					mes "Huh~";
+					mes "Alright.";
+					mes "Though aren't";
+					mes "Red Potions more useful";
+					mes "to an adventurer like you?";
+					close;
+				}
+			}
+		case 3:
+			set '@jellopyv,countitem(909);
+			set '@c_jellopyv_max,'@jellopyv / 10;
+			if (countitem(909) < 10) {
+				mes "[Merchant]";
+				mes "Hey, where's all";
+				mes "that Jellopy that";
+				mes "you promised me?";
+				mes "Give me Jellopy!";
+				close;
+			} else {
+				mes "[Merchant]";
+				mes "Okay, let me check";
+				mes "how much Jellopy you";
+				mes "have on you. Hmm...";
+				next;
+				mes "[Merchant]";
+				mes "You have";
+				mes "a total of " + '@jellopyv + " Jellopies...";
+				mes "For all those, I can give you";
+				mes "a total of " + '@c_jellopyv_max + " Red Potions.";
+				next;
+				mes "[Merchant]";
+				mes "What do you say?";
+				mes "Do we have a deal?";
+				next;
+				switch(select("Deal.","No deal.")) {
+				case 1:
+					mes "[Merchant]";
+					mes "You know the exact";
+					mes "number of Red Potions";
+					mes "you want to receive for";
+					mes "that Jellopy, don't you?";
+					next;
+					mes "[Merchant]";
+					mes "Now, I can trade you";
+					mes "a minimum of 1 Red Potion";
+					mes "and a maximum of 100 Red Potions";
+					mes "at one time. If you change your";
+					mes "mind, just enter '0' to cancel.";
+					next;
+					while(1) {
+						input '@input;
+						if ('@input == 0) {
+							mes "[Merchant]";
+							mes "What...?";
+							mes "Why the hell did you";
+							mes "even bother to talk to me?";
+							mes "Pretty indecisive, aren't you?";
+							close;
+						} else if ('@input < 0 || '@input > 100) {
+							mes "[Merchant]";
+							mes "I can't give you more";
+							mes "than 100 Red Potions";
+							mes "at once. Let's try";
+							mes "this again.";
+							next;
+						} else {
+							break;
+						}
+					}
+					set '@put_out_item,'@input * 10;
+					set '@put_in_item,'@input;
+					if (countitem(909) < '@put_out_item) {
+						mes "[Merchant]";
+						mes "Uh oh, the number you entered doesn't seem right. You better check the number of Red Potions that you can trade for again.";
+						close;
+					}
+					mes "[Merchant]";
+					mes "There you go!";
+					mes "Check how many Red Potions";
+					mes "I've given you, it should be good. Thanks, that was a good deal~";
+					delitem 909,'@put_out_item;
+					getitem 501,'@put_in_item;
+					close;
+				case 2:
+					mes "[Merchant]";
+					mes "Huh~";
+					mes "Alright.";
+					mes "Though aren't";
+					mes "Red Potions more useful";
+					mes "to an adventurer like you?";
+					close;
+				}
+			}
+		case 4:
+			mes "[Merchant]";
+			mes "Sure~";
+			mes "No problem.";
+			close;
+		}
+	case 2:
+		mes "[Merchant]";
+		mes "A rip-off...?";
+		mes "If you check the market value";
+		mes "of the items being traded, I'm actually the one getting";
+		mes "ripped off here.";
+		close;
+	case 3:
+		mes "[Merchant]";
+		mes "Alright,";
+		mes "no problem.";
+		mes "But come back to me";
+		mes "if you change your mind.";
+		close;
+	}
+}
+
+payon.gat,200,134,5	script	Merchant#pay	85,{
+
+	set '@now_weight,MaxWeight - Weight;
+	if ('@now_weight < 6301) {
+		mes "[Merchant]";
+		mes "Haha!";
+		mes "What are you, superhuman?";
+		mes "You're carrying so much stuff!";
+		mes "You better put some of that";
+		mes "into Kafra Storage~";
+		close;
+	}
+	mes "[Merchant]";
+	mes "Good day!";
+	mes "Have you collected";
+	mes "items like Tree Roots?";
+	mes "What about Jellopies? Oh yeah,";
+	mes "I need those for something.";
+	next;
+	mes "[Merchant]";
+	mes "Of course, I won't ask you";
+	mes "to give me that stuff for free. What about if I trade a Red Potion for 6 Tree Roots or 10 Jellopies?";
+	next;
+	switch(select("Sure!","I think it's a rip-off!","No, thanks.")) {
+	case 1:
+		mes "[Merchant]";
+		mes "So which item do";
+		mes "you want to bring me?";
+		mes "Tree Roots, or Jellopies?";
+		next;
+		switch(select("Tree Roots","Jellopies","Cancel")) {
+		case 1:
+			set '@treeroots,countitem(902);
+			set '@c_tree_root_max,'@treeroots / 6;
+			if (countitem(902) < 6) {
+				mes "[Merchant]";
+				mes "Hey, where's all";
+				mes "of those Tree Roots";
+				mes "that you promised me?";
+				mes "Give me Tree Roots!";
+				close;
+			} else {
+				mes "[Merchant]";
+				mes "Okay, let me check";
+				mes "how many Tree Roots";
+				mes "you brought. Hmm...";
+				next;
+				mes "[Merchant]";
+				mes "You have";
+				mes "a total of " + '@treeroots + " Tree Roots.";
+				mes "I can give you a total of";
+				mes ""+ '@c_tree_root_max + " Red Potions for those.";
+				next;
+				mes "[Merchant]";
+				mes "What do you say?";
+				mes "Do we have a deal?";
+				next;
+				switch(select("Deal.","No deal.")) {
+				case 1:
+					mes "[Merchant]";
+					mes "You know the exact";
+					mes "number of Red Potions";
+					mes "you want to receive for";
+					mes "those Tree Roots, don't you?";
+					next;
+					mes "[Merchant]";
+					mes "Now, I can trade you";
+					mes "a minimum of 1 Red Potion";
+					mes "and a maximum of 100 Red Potions";
+					mes "at one time. If you change your";
+					mes "mind, just enter '0' to cancel.";
+					next;
+					while(1) {
+						input '@input;
+						if ('@input == 0) {
+							mes "[Merchant]";
+							mes "What...?";
+							mes "Why the hell do you";
+							mes "even bother to talk to me?";
+							mes "Pretty indecisive, aren't you?";
+							close;
+						} else if ('@input < 0 || '@input > 100) {
+							mes "[Merchant]";
+							mes "I can't give you more";
+							mes "than 100 Red Potions";
+							mes "at once. Let's try";
+							mes "this again.";
+							next;
+						} else {
+							break;
+						}
+					}
+					set '@put_out_item,'@input * 6;
+					set '@put_in_item,'@input;
+					if (countitem(902) < '@put_out_item) {
+						mes "[Merchant]";
+						mes "Uh oh, the number you entered doesn't seem right. You better check the number of Red Potions that you can trade for again.";
+						close;
+					}
+					mes "[Merchant]";
+					mes "There you go!";
+					mes "Check how many Red Potions";
+					mes "I've given you, it should be good. Thanks, that was a good deal~";
+					delitem 902,'@put_out_item;
+					getitem 501,'@put_in_item;
+					close;
+				case 2:
+					mes "[Merchant]";
+					mes "Huh~";
+					mes "Alright.";
+					mes "Though aren't";
+					mes "Red Potions more useful";
+					mes "to an adventurer like you?";
+					close;
+				}
+			}
+		case 2:
+			set '@jellopyv,countitem(909);
+			set '@c_jellopyv_max,'@jellopyv / 10;
+			if (countitem(909) < 10) {
+				mes "[Merchant]";
+				mes "Hey, where's all";
+				mes "that Jellopy that";
+				mes "you promised me?";
+				mes "Give me Jellopy!";
+				close;
+			} else {
+				mes "[Merchant]";
+				mes "Okay, let me check";
+				mes "how much Jellopy you";
+				mes "have on you. Hmm...";
+				next;
+				mes "[Merchant]";
+				mes "You have";
+				mes "a total of " + '@jellopyv + " Jellopies...";
+				mes "For all those, I can give you";
+				mes "a total of " + '@c_jellopyv_max + " Red Potions.";
+				next;
+				mes "[Merchant]";
+				mes "What do you say?";
+				mes "Do we have a deal?";
+				next;
+				switch(select("Deal.","No deal.")) {
+				case 1:
+					mes "[Merchant]";
+					mes "You know the exact";
+					mes "number of Red Potions";
+					mes "you want to receive for";
+					mes "that Jellopy, don't you?";
+					next;
+					mes "[Merchant]";
+					mes "Now, I can trade you";
+					mes "a minimum of 1 Red Potion";
+					mes "and a maximum of 100 Red Potions";
+					mes "at one time. If you change your";
+					mes "mind, just enter '0' to cancel.";
+					next;
+					while(1) {
+						input '@input;
+						if ('@input == 0) {
+							mes "[Merchant]";
+							mes "What...?";
+							mes "Why the hell did you";
+							mes "even bother to talk to me?";
+							mes "Pretty indecisive, aren't you?";
+							close;
+						} else if ('@input < 0 || '@input > 100) {
+							mes "[Merchant]";
+							mes "I can't give you more";
+							mes "than 100 Red Potions";
+							mes "at once. Let's try";
+							mes "this again.";
+							next;
+						} else {
+							break;
+						}
+					}
+					set '@put_out_item,'@input * 10;
+					set '@put_in_item,'@input;
+					if (countitem(909) < '@put_out_item) {
+						mes "[Merchant]";
+						mes "Uh oh, the number you entered doesn't seem right. You better check the number of Red Potions that you can trade for again.";
+						close;
+					}
+					mes "[Merchant]";
+					mes "There you go!";
+					mes "Check how many Red Potions";
+					mes "I've given you, it should be good. Thanks, that was a good deal~";
+					delitem 909,'@put_out_item;
+					getitem 501,'@put_in_item;
+					close;
+				case 2:
+					mes "[Merchant]";
+					mes "Huh~";
+					mes "Alright.";
+					mes "Though aren't";
+					mes "Red Potions more useful";
+					mes "to an adventurer like you?";
+					close;
+				}
+			}
+		case 3:
+			mes "[Merchant]";
+			mes "Sure~";
+			mes "No problem.";
+			close;
+		}
+	case 2:
+		mes "[Merchant]";
+		mes "A rip-off...?";
+		mes "If you check the market value";
+		mes "of the items being traded, I'm actually the one getting";
+		mes "ripped off here.";
+		close;
+	case 3:
+		mes "[Merchant]";
+		mes "Alright,";
+		mes "no problem.";
+		mes "But come back to me";
+		mes "if you change your mind.";
+		close;
+	}
+}
+
+aldebaran.gat,152,63,5	script	Merchant#alde	85,{
+
+	set '@now_weight,MaxWeight - Weight;
+	if ('@now_weight < 6301) {
+		mes "[Merchant]";
+		mes "Haha!";
+		mes "What are you, superhuman?";
+		mes "You're carrying so much stuff!";
+		mes "You better put some of that";
+		mes "into Kafra Storage~";
+		close;
+	}
+	mes "[Merchant]";
+	mes "Good day!";
+	mes "Have you collected any";
+	mes "Worm Peelings or Feather of Birds?";
+	mes "How about Jellopies? Oh yeah,";
+	mes "I need those for something.";
+	next;
+	mes "[Merchant]";
+	mes "Of course, I won't ask you";
+	mes "to give me that stuff for free. What about if I trade a Red Potion for 1 Worm Peeling, 7 Feather of Birds, or 10 Jellopies?";
+	next;
+	switch(select("Sure!","I think it's a rip-off!","No, thanks.")) {
+	case 1:
+		mes "[Merchant]";
+		mes "So which item do";
+		mes "you want to bring me?";
+		mes "Feathers of Birds?";
+		mes "Worm Peelings?";
+		mes "Or Jellopies?";
+		next;
+		switch(select("Worm Peelings","Feathers of Birds","Jellopies","Cancel")) {
+		case 1:
+			set '@worm,countitem(955);
+			set '@c_worm_max,'@worm;
+			if (countitem(955) < 1) {
+				mes "[Merchant]";
+				mes "Hey, where's all the";
+				mes "Worm Peelings you";
+				mes "said that you had?";
+				close;
+			} else {
+				mes "[Merchant]";
+				mes "Okay, let me check how";
+				mes "many Worm Peelings that";
+				mes "you have. Hmm...";
+				next;
+				mes "[Merchant]";
+				mes "You have a total of";
+				mes ""+ '@worm + " Worm Peelings.";
+				mes "I can give you a total of";
+				mes ""+ '@c_worm_max + " Red Potions for those.";
+				next;
+				mes "[Merchant]";
+				mes "What do you say?";
+				mes "Do we have a deal?";
+				next;
+				switch(select("Deal.","No deal.")) {
+				case 1:
+					mes "[Merchant]";
+					mes "You know the exact";
+					mes "number of Red Potions";
+					mes "you want to receive for";
+					mes "those Worm Peelings,";
+					mes "don't you?";
+					next;
+					mes "[Merchant]";
+					mes "Now, I can trade you";
+					mes "a minimum of 1 Red Potion";
+					mes "and a maximum of 100 Red Potions";
+					mes "at one time. If you change your";
+					mes "mind, just enter '0' to cancel.";
+					next;
+					while(1) {
+						input '@input;
+						if ('@input == 0) {
+							mes "[Merchant]";
+							mes "What...?";
+							mes "Why the hell did you";
+							mes "even bother to talk to me?";
+							mes "Pretty indecisive, aren't you?";
+							close;
+						} else if ('@input < 0 || '@input > 100) {
+							mes "[Merchant]";
+							mes "I can't give you more";
+							mes "than 100 Red Potions";
+							mes "at once. Let's try";
+							mes "this again.";
+							next;
+						} else {
+							break;
+						}
+					}
+					set '@put_out_item,'@input;
+					set '@put_in_item,'@input;
+					if (countitem(955) < '@put_out_item) {
+						mes "[Merchant]";
+						mes "Uh oh, the number you entered doesn't seem right. You better check the number of Red Potions that you can trade for again.";
+						close;
+					}
+					mes "[Merchant]";
+					mes "There you go!";
+					mes "Check how many Red Potions";
+					mes "I've given you, it should be good. Thanks, that was a good deal~";
+					delitem 955,'@put_out_item;
+					getitem 501,'@put_in_item;
+					close;
+				case 2:
+					mes "[Merchant]";
+					mes "Huh~";
+					mes "Alright.";
+					mes "Though aren't";
+					mes "Red Potions more useful";
+					mes "to an adventurer like you?";
+					close;
+				}
+			}
+		case 2:
+			set '@birdsv,countitem(916);
+			set '@c_birdsv_max,'@birdsv / 7;
+			if (countitem(916) < 7) {
+				mes "[Merchant]";
+				mes "Hey, where's all the";
+				mes "Feathers of Birds you";
+				mes "said that you had?";
+				close;
+			} else {
+				mes "[Merchant]";
+				mes "Okay, let me check how";
+				mes "many Feathers of Birds";
+				mes "that you have. Hmm...";
+				next;
+				mes "[Merchant]";
+				mes "You have a total of";
+				mes ""+ '@birdsv + " Feathers of Birds.";
+				mes "I can give you a total of";
+				mes ""+ '@c_birdsv_max + " Red Potions for those.";
+				next;
+				mes "[Merchant]";
+				mes "What do you say?";
+				mes "Do we have a deal?";
+				next;
+				switch(select("Deal.","No deal.")) {
+				case 1:
+					mes "[Merchant]";
+					mes "You know the exact";
+					mes "number of Red Potions";
+					mes "you want to receive for";
+					mes "those Feathers of Birds,";
+					mes "don't you?";
+					next;
+					mes "[Merchant]";
+					mes "Now, I can trade you";
+					mes "a minimum of 1 Red Potion";
+					mes "and a maximum of 100 Red Potions";
+					mes "at one time. If you change your";
+					mes "mind, just enter '0' to cancel.";
+					next;
+					while(1) {
+						input '@input;
+						if ('@input == 0) {
+							mes "[Merchant]";
+							mes "What...?";
+							mes "Why the hell did you";
+							mes "even bother to talk to me?";
+							mes "Pretty indecisive, aren't you?";
+							close;
+						} else if ('@input < 0 || '@input > 100) {
+							mes "[Merchant]";
+							mes "I can't give you more";
+							mes "than 100 Red Potions";
+							mes "at once. Let's try";
+							mes "this again.";
+							next;
+						} else {
+							break;
+						}
+					}
+					set '@put_out_item,'@input * 7;
+					set '@put_in_item,'@input;
+					if (countitem(916) < '@put_out_item) {
+						mes "[Merchant]";
+						mes "Uh oh, the number you entered doesn't seem right. You better check the number of Red Potions that you can trade for again.";
+						close;
+					}
+					mes "[Merchant]";
+					mes "There you go!";
+					mes "Check how many Red Potions";
+					mes "I've given you, it should be good. Thanks, that was a good deal~";
+					delitem 916,'@put_out_item;
+					getitem 501,'@put_in_item;
+					close;
+				case 2:
+					mes "[Merchant]";
+					mes "Huh~";
+					mes "Alright.";
+					mes "Though aren't";
+					mes "Red Potions more useful";
+					mes "to an adventurer like you?";
+					close;
+				}
+			}
+		case 3:
+			set '@jellopyv,countitem(909);
+			set '@c_jellopyv_max,'@jellopyv / 10;
+			if (countitem(909) < 10) {
+				mes "[Merchant]";
+				mes "Hey, where's all";
+				mes "that Jellopy that";
+				mes "you promised me?";
+				mes "Give me Jellopy!";
+				close;
+			} else {
+				mes "[Merchant]";
+				mes "Okay, let me check";
+				mes "how much Jellopy you";
+				mes "have on you. Hmm...";
+				next;
+				mes "[Merchant]";
+				mes "You have";
+				mes "a total of " + '@jellopyv + " Jellopies...";
+				mes "For all those, I can give you";
+				mes "a total of " + '@c_jellopyv_max + " Red Potions.";
+				next;
+				mes "[Merchant]";
+				mes "What do you say?";
+				mes "Do we have a deal?";
+				next;
+				switch(select("Deal.","No deal.")) {
+				case 1:
+					mes "[Merchant]";
+					mes "You know the exact";
+					mes "number of Red Potions";
+					mes "you want to receive for";
+					mes "that Jellopy, don't you?";
+					next;
+					mes "[Merchant]";
+					mes "Now, I can trade you";
+					mes "a minimum of 1 Red Potion";
+					mes "and a maximum of 100 Red Potions";
+					mes "at one time. If you change your";
+					mes "mind, just enter '0' to cancel.";
+					next;
+					while(1) {
+						input '@input;
+						if ('@input == 0) {
+							mes "[Merchant]";
+							mes "What...?";
+							mes "Why the hell did you";
+							mes "even bother to talk to me?";
+							mes "Pretty indecisive, aren't you?";
+							close;
+						} else if ('@input < 0 || '@input > 100) {
+							mes "[Merchant]";
+							mes "I can't give you more";
+							mes "than 100 Red Potions";
+							mes "at once. Let's try";
+							mes "this again.";
+							next;
+						} else {
+							break;
+						}
+					}
+					set '@put_out_item,'@input * 10;
+					set '@put_in_item,'@input;
+					if (countitem(909) < '@put_out_item) {
+						mes "[Merchant]";
+						mes "Uh oh, the number you entered doesn't seem right. You better check the number of Red Potions that you can trade for again.";
+						close;
+					}
+					mes "[Merchant]";
+					mes "There you go!";
+					mes "Check how many Red Potions";
+					mes "I've given you, it should be good. Thanks, that was a good deal~";
+					delitem 909,'@put_out_item;
+					getitem 501,'@put_in_item;
+					close;
+				case 2:
+					mes "[Merchant]";
+					mes "Huh~";
+					mes "Alright.";
+					mes "Though aren't";
+					mes "Red Potions more useful";
+					mes "to an adventurer like you?";
+					close;
+				}
+			}
+		case 4:
+			mes "[Merchant]";
+			mes "Sure~";
+			mes "No problem.";
+			close;
+		}
+	case 2:
+		mes "[Merchant]";
+		mes "A rip-off...?";
+		mes "If you check the market value";
+		mes "of the items being traded, I'm actually the one getting";
+		mes "ripped off here.";
+		close;
+	case 3:
+		mes "[Merchant]";
+		mes "Alright,";
+		mes "no problem.";
+		mes "But come back to me";
+		mes "if you change your mind.";
+		close;
+	}
+}
+
+geffen.gat,173,88,5	script	Merchant#geff	85,{
+
+	set '@now_weight,MaxWeight - Weight;
+	if ('@now_weight < 6301) {
+		mes "[Merchant]";
+		mes "Haha!";
+		mes "What are you, superhuman?";
+		mes "You're carrying so much stuff!";
+		mes "You better put some of that";
+		mes "into Kafra Storage~";
+		close;
+	}
+	mes "[Merchant]";
+	mes "Good day!";
+	mes "Have you collected any";
+	mes "items like Shells or Chrysalises?";
+	mes "What about Jellopies? Oh yeah,";
+	mes "I need those for something.";
+	next;
+	mes "[Merchant]";
+	mes "Of course, I won't ask you";
+	mes "to give me that stuff for free. What about if I trade a Red Potion for 5 Shells or 6 Chrysalises, or 10 Jellopies?";
+	next;
+	switch(select("Sure!","I think it's a rip-off!","No, thanks.")) {
+	case 1:
+		mes "[Merchant]";
+		mes "So which item do";
+		mes "you want to bring me?";
+		mes "Shells, Chrysalises, or Jellopies?";
+		next;
+		switch(select("Shells","Chrysalises","Jellopies","Cancel")) {
+		case 1:
+			set '@shellv,countitem(935);
+			set '@c_shellv_max,'@shellv / 5;
+			if (countitem(935) < 5) {
+				mes "[Merchant]";
+				mes "Hey, where are";
+				mes "all those Shells";
+				mes "that you promised?";
+				mes "Give me Shells!";
+				close;
+			} else {
+				mes "[Merchant]";
+				mes "Okay, let me check";
+				mes "how many Shells you";
+				mes "have on you. Hmm...";
+				next;
+				mes "[Merchant]";
+				mes "You have";
+				mes "a total of " + '@shellv + " Shells.";
+				mes "I can give you a total";
+				mes "of " + '@c_shellv_max + " Red Potions for those.";
+				next;
+				mes "[Merchant]";
+				mes "What do you say?";
+				mes "Do we have a deal?";
+				next;
+				switch(select("Deal.","No deal.")) {
+				case 1:
+					mes "[Merchant]";
+					mes "You know the exact";
+					mes "number of Red Potions";
+					mes "you want to receive for";
+					mes "those Shells, don't you?";
+					next;
+					mes "[Merchant]";
+					mes "Now, I can trade you";
+					mes "a minimum of 1 Red Potion";
+					mes "and a maximum of 100 Red Potions";
+					mes "at one time. If you change your";
+					mes "mind, just enter '0' to cancel.";
+					next;
+					while(1) {
+						input '@input;
+						if ('@input == 0) {
+							mes "[Merchant]";
+							mes "What...?";
+							mes "Why the hell do you";
+							mes "even bother to talk to me?";
+							mes "Pretty indecisive, aren't you?";
+							close;
+						} else if ('@input < 0 || '@input > 100) {
+							mes "[Merchant]";
+							mes "I can't give you more";
+							mes "than 100 Red Potions";
+							mes "at once. Let's try";
+							mes "this again.";
+							next;
+						} else {
+							break;
+						}
+					}
+					set '@put_out_item,'@input * 5;
+					set '@put_in_item,'@input;
+					if (countitem(935) < '@put_out_item) {
+						mes "[Merchant]";
+						mes "Uh oh, the number you entered doesn't seem right. You better check the number of Red Potions that you can trade for again.";
+						close;
+					}
+					mes "[Merchant]";
+					mes "There you go!";
+					mes "Check how many Red Potions";
+					mes "I've given you, it should be good. Thanks, that was a good deal~";
+					delitem 935,'@put_out_item;
+					getitem 501,'@put_in_item;
+					close;
+				case 2:
+					mes "[Merchant]";
+					mes "Huh~";
+					mes "Alright.";
+					mes "Though aren't";
+					mes "Red Potions more useful";
+					mes "to an adventurer like you?";
+					close;
+				}
+			}
+		case 2:
+			set '@chrysalisv,countitem(915);
+			set '@c_chrysalisv_max,'@chrysalisv / 6;
+			if (countitem(915) < 6) {
+				mes "[Merchant]";
+				mes "Hey, where's all";
+				mes "the Chrysalises you";
+				mes "said that you had?";
+				close;
+			} else {
+				mes "[Merchant]";
+				mes "Okay, let me check how";
+				mes "many Chrysalises that";
+				mes "that you have on you. Hmm...";
+				next;
+				mes "[Merchant]";
+				mes "You have a total of";
+				mes ""+ '@chrysalisv + " Chrysalises.";
+				mes "I can give you a total of";
+				mes ""+ '@c_chrysalisv_max + " Red Potions for those.";
+				next;
+				mes "[Merchant]";
+				mes "What do you say?";
+				mes "Do we have a deal?";
+				next;
+				switch(select("Deal.","No deal.")) {
+				case 1:
+					mes "[Merchant]";
+					mes "You know the exact";
+					mes "number of Red Potions";
+					mes "you want to receive for";
+					mes "those Chrysalises,";
+					mes "don't you?";
+					next;
+					mes "[Merchant]";
+					mes "Now, I can trade you";
+					mes "a minimum of 1 Red Potion";
+					mes "and a maximum of 100 Red Potions";
+					mes "at one time. If you change your";
+					mes "mind, just enter '0' to cancel.";
+					next;
+					while(1) {
+						input '@input;
+						if ('@input == 0) {
+							mes "[Merchant]";
+							mes "What...?";
+							mes "Why the hell did you";
+							mes "even bother to talk to me?";
+							mes "Pretty indecisive, aren't you?";
+							close;
+						} else if ('@input < 0 || '@input > 100) {
+							mes "[Merchant]";
+							mes "I can't give you more";
+							mes "than 100 Red Potions";
+							mes "at once. Let's try";
+							mes "this again.";
+							next;
+						} else {
+							break;
+						}
+					}
+					set '@put_out_item,'@input * 6;
+					set '@put_in_item,'@input;
+					if (countitem(915) < '@put_out_item) {
+						mes "[Merchant]";
+						mes "Uh oh, the number you entered doesn't seem right. You better check the number of Red Potions that you can trade for again.";
+						close;
+					}
+					mes "[Merchant]";
+					mes "There you go!";
+					mes "Check how many Red Potions";
+					mes "I've given you, it should be good. Thanks, that was a good deal~";
+					delitem 915,'@put_out_item;
+					getitem 501,'@put_in_item;
+					close;
+				case 2:
+					mes "[Merchant]";
+					mes "Huh~";
+					mes "Alright.";
+					mes "Though aren't";
+					mes "Red Potions more useful";
+					mes "to an adventurer like you?";
+					close;
+				}
+			}
+		case 3:
+			set '@jellopyv,countitem(909);
+			set '@c_jellopyv_max,'@jellopyv / 10;
+			if (countitem(909) < 10) {
+				mes "[Merchant]";
+				mes "Hey, where's all";
+				mes "that Jellopy that";
+				mes "you promised me?";
+				mes "Give me Jellopy!";
+				close;
+			} else {
+				mes "[Merchant]";
+				mes "Okay, let me check";
+				mes "how much Jellopy you";
+				mes "have on you. Hmm...";
+				next;
+				mes "[Merchant]";
+				mes "You have";
+				mes "a total of " + '@jellopyv + " Jellopies...";
+				mes "For all those, I can give you";
+				mes "a total of " + '@c_jellopyv_max + " Red Potions.";
+				next;
+				mes "[Merchant]";
+				mes "What do you say?";
+				mes "Do we have a deal?";
+				next;
+				switch(select("Deal.","No deal.")) {
+				case 1:
+					mes "[Merchant]";
+					mes "You know the exact";
+					mes "number of Red Potions";
+					mes "you want to receive for";
+					mes "that Jellopy, don't you?";
+					next;
+					mes "[Merchant]";
+					mes "Now, I can trade you";
+					mes "a minimum of 1 Red Potion";
+					mes "and a maximum of 100 Red Potions";
+					mes "at one time. If you change your";
+					mes "mind, just enter '0' to cancel.";
+					next;
+					while(1) {
+						input '@input;
+						if ('@input == 0) {
+							mes "[Merchant]";
+							mes "What...?";
+							mes "Why the hell did you";
+							mes "even bother to talk to me?";
+							mes "Pretty indecisive, aren't you?";
+							close;
+						} else if ('@input < 0 || '@input > 100) {
+							mes "[Merchant]";
+							mes "I can't give you more";
+							mes "than 100 Red Potions";
+							mes "at once. Let's try";
+							mes "this again.";
+							next;
+						} else {
+							break;
+						}
+					}
+					set '@put_out_item,'@input * 10;
+					set '@put_in_item,'@input;
+					if (countitem(909) < '@put_out_item) {
+						mes "[Merchant]";
+						mes "Uh oh, the number you entered doesn't seem right. You better check the number of Red Potions that you can trade for again.";
+						close;
+					}
+					mes "[Merchant]";
+					mes "There you go!";
+					mes "Check how many Red Potions";
+					mes "I've given you, it should be good. Thanks, that was a good deal~";
+					delitem 909,'@put_out_item;
+					getitem 501,'@put_in_item;
+					close;
+				case 2:
+					mes "[Merchant]";
+					mes "Huh~";
+					mes "Alright.";
+					mes "Though aren't";
+					mes "Red Potions more useful";
+					mes "to an adventurer like you?";
+					close;
+				}
+			}
+		case 4:
+			mes "[Merchant]";
+			mes "Sure~";
+			mes "No problem.";
+			close;
+		}
+	case 2:
+		mes "[Merchant]";
+		mes "A rip-off...?";
+		mes "If you check the market value";
+		mes "of the items being traded, I'm actually the one getting";
+		mes "ripped off here.";
+		close;
+	case 3:
+		mes "[Merchant]";
+		mes "Alright,";
+		mes "no problem.";
+		mes "But come back to me";
+		mes "if you change your mind.";
+		close;
+	}
+}

@@ -1,0 +1,812 @@
+//--------------------------------------------------------------
+//               (c)2004-2007 Aurora Team Presents:             
+//                  ___                                         
+//                 /   |_   _ _ __ ___  _ __ __ _               
+//                / /| | | | | '__/ _ \| '__/ _` |              
+//               / ___ | |_| | | | (_) | | | (_| |++            
+//              /_/  |_|\____|_|  \___/|_|  \__,_|              
+//                 http://aurora.deltaanime.net                 
+//--------------------------------------------------------------
+// Script Title: Ninja Job Change Quest	Author: Tsuyuki
+//--------------------------------------------------------------
+// Revision History: v1.0
+//--------------------------------------------------------------
+//	1.0 First version, converted from Aegis [Tsuyuki]
+//--------------------------------------------------------------
+// Additional Notes: * Official-certified / Aegis-certified *
+//--------------------------------------------------------------
+
+
+//--------------------------------------------------------------
+// Ninja Job Change Quest - [Tsuyuki]
+//--------------------------------------------------------------
+
+que_ng.gat,30,65,3	script	Cougar Guy	730,{
+
+	set '@baby_k,IsBaby;
+	if (Upper != 2) {
+		if (Class == Job_Novice && Upper == 0) {
+			if (JobLevel > 9) {
+				if (hg_nin == 0) {
+					mes "["+strcharinfo(0)+"]";
+					mes "Excuse me";
+					next;
+					mes "[Cougar Guy]";
+					mes "What?...";
+					mes "How could you possibly~!!";
+					mes "see me!";
+					next;
+					mes "[Cougar Guy]";
+					mes "Magic chant~!";
+					next;
+					mes "["+strcharinfo(0)+"]";
+					mes "-That guy throwing chopsticks over there-";
+					next;
+					mes "["+strcharinfo(0)+"]";
+					mes "-Dodging about~!-";
+					mes "Awww~!";
+					mes "Ooph~! What's wrong with you!";
+					next;
+					mes "[Cougar Guy]";
+					mes "Hm?... ";
+					mes "Aren't you an assassin here to kill me?";
+					next;
+					mes "["+strcharinfo(0)+"]";
+					mes "Hey~ What's the matter with you~";
+					mes "How could you start throwing those dangerous things around";
+					mes "without first getting the facts straight...";
+					next;
+					mes "[Cougar Guy]";
+					mes "Roarrr~! I'm really mad-mad-mad~";
+					mes "My mortal enemy,";
+					mes "wildcat !";
+					next;
+					mes "["+strcharinfo(0)+"]";
+					mes "........";
+					next;
+					mes "[Cougar Guy]";
+					mes "Woahohaohaahaho~~~!!!";
+					mes "Growl~ Grr~";
+					mes "Clang! Clank! Clunk~";
+					next;
+					mes "["+strcharinfo(0)+"]";
+					mes "-Are you listening at all?-";
+					next;
+					mes "[Cougar Guy]";
+					mes "Mmm...";
+					mes "Hey! Who are you?!";
+					mes "How did you get beside me";
+					mes "without me knowing!";
+					mes "WOoo-waa-CHA Take THIS!";
+					next;
+					mes "["+strcharinfo(0)+"]";
+					mes "Owww~";
+					mes "Stop stop~";
+					mes "Are you trying to kill me with those hand chops...";
+					next;
+					mes "[Cougar Guy]";
+					mes "Huu-huff,";
+					mes "I can see that you're quite skilled~";
+					mes "you managed to dodge my attacks";
+					next;
+					mes "["+strcharinfo(0)+"]";
+					mes "-Hey hey...-";
+					mes "-He's not listening at all-";
+					next;
+					mes "[Cougar Guy]";
+					mes "Ehem~ right~";
+					mes "Do you have any business";
+					mes "with me?";
+					next;
+					mes "["+strcharinfo(0)+"]";
+					mes ".........";
+					next;
+					mes "["+strcharinfo(0)+"]";
+					mes "Ah... that's right...";
+					mes "Yes,";
+					mes "I am here to become a Ninja";
+					next;
+					mes "[Cougar Guy]";
+					mes "Ohh~ well you've come to the right person,";
+					mes "However!";
+					next;
+					mes "["+strcharinfo(0)+"]";
+					mes ".....";
+					next;
+					mes "[Cougar Guy]";
+					mes "There seems to be some problems";
+					next;
+					mes "["+strcharinfo(0)+"]";
+					mes "Ow~ what problems~";
+					next;
+					mes "[Cougar Guy]";
+					mes "Well first I don't trust you,";
+					mes "and I think that you are not experienced enough";
+					mes "to become a Ninja";
+					next;
+					mes "[Cougar Guy]";
+					mes "So,";
+					mes "Go away!!! Please leave~!";
+					next;
+					mes "["+strcharinfo(0)+"]";
+					mes "...........";
+					next;
+					mes "[Cougar Guy]";
+					mes "Tsk tsk...";
+					mes "so...";
+					next;
+					mes "["+strcharinfo(0)+"]";
+					mes "...........";
+					next;
+					mes "[Cougar Guy]";
+					mes "If you heard me,";
+					mes "then GO AWAY";
+					mes "I am very busy...";
+					next;
+					mes "[Cougar Guy]";
+					mes "I have to many enemies,";
+					mes "Therefore I cannot relax and";
+					mes "must stay alert at all times";
+					next;
+					mes "[Cougar Guy]";
+					mes "I need to train some more";
+					mes "to prepare myself for the next battle,";
+					mes "Aiiuee-yooo-ohhhh!";
+					next;
+					mes "[Cougar Guy]";
+					mes "I will win next time!";
+					mes "You just wait and see,";
+					mes "wildcat !";
+					next;
+					mes "["+strcharinfo(0)+"]";
+					mes "wildcat ?";
+					mes "Are you going to fight with a cat?";
+					next;
+					mes "[Cougar Guy]";
+					mes "Umm? Haha~";
+					mes "wildcat is that person's";
+					mes "nickname";
+					next;
+					mes "[Cougar Guy]";
+					mes "He's a smart and crafty guy that one,";
+					mes "and he would try just about anything";
+					mes "just for the sake of winning";
+					next;
+					mes "[Cougar Guy]";
+					mes "What's more his ninjutsu skills";
+					mes "are spectacular and very powerful indeed";
+					next;
+					mes "[Cougar Guy]";
+					mes "It so happens that we both ran out of";
+					mes "shurikens and scrolls";
+					mes "and because of that,";
+					mes "we're having a temporary ceasefire, hahah";
+					next;
+					mes "[Cougar Guy]";
+					mes "If you really want to become";
+					mes "a ninja,";
+					mes "why don't you run an errand for me?";
+					mes "If you do this thing right,";
+					mes "even if you don't become a ninja after that,";
+					mes "you might get to learn a few skills and tricks?";
+					next;
+					switch(select("Ok","No")) {
+					case 1:
+						mes "["+strcharinfo(0)+"]";
+						mes "Hm... right";
+						next;
+						mes "[Cougar Guy]";
+						mes "Oh.. yes,";
+						mes "now, would you help me";
+						mes "take this letter to";
+						mes "wildcat ";
+						next;
+						mes "[Cougar Guy]";
+						mes "The content roughly says that";
+						mes "until our preparations are ready,";
+						mes "we will keep this temporary ceasefire,";
+						mes "and don't return without his reply";
+						next;
+						mes "[Cougar Guy]";
+						mes "News I have is,";
+						mes "that guy has gone to";
+						mes "Einbroch,";
+						mes "for what reason";
+						mes "I wouldn't know...";
+						next;
+						mes "[Cougar Guy]";
+						mes "He is good in the art of Transfiguration";
+						mes "so you might not be able";
+						mes "to recognise him";
+						next;
+						mes "[Cougar Guy]";
+						mes "You will have to open your eyes wide to find him,";
+						mes "He likes to be at high lofty places";
+						mes "Look carefully";
+						next;
+						mes "["+strcharinfo(0)+"]";
+						mes "OK ~";
+						mes "Got it";
+						set hg_nin,1;
+						close;
+					case 2:
+						mes "["+strcharinfo(0)+"]";
+						mes "I'm not here just to learn";
+						mes "a few skills and tricks,";
+						mes "I'm sorry,";
+						mes "you should find someone else";
+						next;
+						mes "[Cougar Guy]";
+						mes "Mmm... fine...";
+						mes "I know,";
+						mes "I've wasted my time,";
+						mes "you can go now";
+						close;
+					}
+				} else if (hg_nin == 1) {
+					mes "[Cougar Guy]";
+					mes "Mmm... it's extremely important or anything,";
+					mes "but you better get going now,";
+					mes "wildcat is in";
+					mes "Einbroch";
+					close;
+				} else if (hg_nin == 2) {
+					mes "[Cougar Guy]";
+					mes "Don't forget to bring back his reply letter,";
+					mes "lest he goes back on his words later";
+					close;
+				} else if (hg_nin == 3) {
+					mes "[Cougar Guy]";
+					mes "Have you brought his reply letter?";
+					next;
+					mes "["+strcharinfo(0)+"]";
+					mes "Yes here it is";
+					next;
+					mes "[Cougar Guy]";
+					mes "Good good, you managed to find him and";
+					mes "got his reply, not bad at all,";
+					mes "now... let me see";
+					mes "-opens letter...-";
+					next;
+					mes "["+strcharinfo(0)+"]";
+					mes "-He reads the contents of the-";
+					mes "-letter I brought carefully-";
+					next;
+					mes "[Cougar Guy]";
+					mes "Pahhh~!!! Drat the guy!";
+					mes "He's refused my proposal for a temporary ceasefire!!!";
+					mes "Don't tell me his finished making his kunais!";
+					mes "Drat it drat it...";
+					next;
+					mes "[Cougar Guy]";
+					mes "What a headache,";
+					mes "hey if you don't mind,";
+					mes "could you do me a favor,";
+					mes "I need to have weapons";
+					mes "for a standoff against Joe,";
+					mes "but there aren't enough ingredients to make them";
+					next;
+					mes "[Cougar Guy]";
+					mes "If you help me find the ingredients,";
+					mes "you can prove yourself to me,";
+					mes "and I will help make you a Ninja,";
+					mes "First please bring me these ingredients";
+					mes "Phracon x1, Cyfar x5,";
+					mes "hurry time is running out";
+					next;
+					mes "["+strcharinfo(0)+"]";
+					mes "What!! ";
+					mes "These ingredients...";
+					next;
+					mes "[Cougar Guy]";
+					mes "What's the matter?";
+					next;
+					mes "["+strcharinfo(0)+"]";
+					mes "Those are the same ingredients";
+					mes "I helped Mr. Guy find, wuu wu wu...";
+					next;
+					mes "[Cougar Guy]";
+					mes "What?!!!";
+					mes "You... so you're the one";
+					mes "helping my enemy!";
+					mes "Oh my God...";
+					mes "You moron~ Fool! Idiot! Twit!! Bakaro!!!";
+					next;
+					mes "[Cougar Guy]";
+					mes "Phew.. I should calm down,";
+					mes "Huff huff...";
+					next;
+					mes "[Cougar Guy]";
+					mes "Now you will have to help me,";
+					mes "since this matter has already got to this point,";
+					mes "we'll talk some other time,";
+					mes "you will set off at once";
+					next;
+					mes "["+strcharinfo(0)+"]";
+					mes "Errr... right..";
+					next;
+					mes "[Cougar Guy]";
+					mes "Be quick~~!!";
+					mes "Waaahh~";
+					next;
+					mes "["+strcharinfo(0)+"]";
+					mes "-I'll go help Mr. Guy find Phracon x1,-";
+					mes "-Cyfar x5-";
+					set hg_nin,4;
+					close;
+				} else if (hg_nin == 4) {
+					if ((countitem(7053) > 4) && (countitem(1010) > 0)) {
+						if (SkillPoint != 0) {
+							mes "[Cougar Guy]";
+							mes "Come back when you've learned the basic skills";
+							close;
+						}
+						mes "[Cougar Guy]";
+						mes "Ooh, have you brought the things,";
+						mes "let's see...";
+						mes "Mmm~ Looks like you've brought";
+						mes "all the things I've instructed";
+						next;
+						mes "[Cougar Guy]";
+						mes "Phew~ look's like we're not too late,";
+						mes "you're more efficient than I would've thought?";
+						next;
+						mes "[Cougar Guy]";
+						mes "OK,";
+						mes "As agreed, I will help you";
+						mes "become a ninja";
+						next;
+						mes "[Cougar Guy]";
+						mes "Let me introduce myself,";
+						mes "I am a High Ninja of the Higashi no Ninja Gundan";
+						mes "My name is Cougar Guy,";
+						mes "my current assignment is to capture";
+						mes "the escaped village head Kazma";
+						mes "and I am leader of this search party";
+						next;
+						mes "[Cougar Guy]";
+						mes "Actually a lot has happened";
+						mes "in our Ninja Corps recently,";
+						mes "and in this case we have";
+						mes "no intent of letting you";
+						mes "join our ranks";
+						next;
+						mes "[Cougar Guy]";
+						mes "But Guy has written in his letter";
+						mes "his high opinions of you,";
+						mes "and you did accomplished the mission I gave you,";
+						mes "so I've decided to change my mind";
+						next;
+						mes "[Cougar Guy]";
+						mes "Ninjas are a lonely profession,";
+						mes "At the same time we make our missions our priority,";
+						mes "we have to protect the lives of those around us";
+						next;
+						mes "[Cougar Guy]";
+						mes "There is a difficult road in front of us,";
+						mes "Many of us ninjas live a normal life in many of the villages";
+						mes "keep our identities secret";
+						next;
+						mes "[Cougar Guy]";
+						mes "Generally the weapons equipped by ninjas,";
+						mes "the methods of making them and how they're used";
+						mes "have always been kept a secret,";
+						mes "so they're quite difficult to come by and";
+						mes "buying or selling is strictly controlled,";
+						mes "keep that in mind";
+						next;
+						mes "[Cougar Guy]";
+						mes "So I will now officially accept you";
+						mes "as a member of the";
+						mes "Higashi no Ninja Gundan";
+						next;
+						mes "[Cougar Guy]";
+						mes "We hope you would be as speedy as an eagle's West-wind flight,";
+						mes "and as light as fallen leaves";
+						mes "dancing in the East-wind!!";
+						next;
+						mes "[Cougar Guy]";
+						mes "Hah!!!!";
+						next;
+						callfunc "F_JobChange",Job_Ninja;
+						set hg_nin,5;
+						getitem 13010,1;
+						close;
+					} else {
+						mes "[Cougar Guy]";
+						mes "Please bring to me Phracon x1 and Cyfar x5,";
+						mes "the amount you have now";
+						mes "is not enough,";
+						mes "make haste, this is an emergency";
+						close;
+					}
+				} else {
+					mes "[Cougar Guy]";
+					mes "Hm, how you been?";
+					mes "you'll get missions";
+					mes "any tiem any day,";
+					mes "so you better not neglect your training";
+					close;
+				}
+			} else {
+				mes "[Cougar Guy]";
+				mes "You've not done enough training,";
+				mes "come back when get stronger";
+				close;
+			}
+		} else {
+			if (Class == Job_Ninja) {
+				mes "[Cougar Guy]";
+				mes "Hm, how you been?";
+				mes "you'll get missions";
+				mes "any time any day";
+				mes "so you better not neglect your training";
+				close;
+			} else {
+				mes "[Cougar Guy]";
+				mes "What's that smell! It stinks!! ";
+				mes "Its coming from you,";
+				mes "I've not seen boys still on their mama's milk";
+				mes "here before as far back as I can remember,";
+				mes "you better get lost pronto";
+				close;
+			}
+		}
+	} else {
+		mes "[Cougar Guy]";
+		mes "What! Crap how did this happen";
+		mes "A Super Baby!";
+		mes "Is our location so exposed";
+		mes "that even babies have";
+		mes "found us,";
+		mes "Gawd~ Oh my goodness~";
+		close;
+	}
+}
+
+einbroch.gat,184,194,3	script	Suspicious Man	881,{
+
+	if (hg_nin == 1) {
+		mes "[Suspicious Man]";
+		mes "Hiya ~ tell me is this sky-high or what?";
+		mes "I've been to many places,";
+		mes "but this skyscraper is the real deal";
+		mes "the first I've come across";
+		next;
+		mes "[Suspicious Man]";
+		mes "I once lived in a peaceful place,";
+		mes "very good air, dainty little houses";
+		mes "pretty and elegant";
+		next;
+		mes "["+strcharinfo(0)+"]";
+		mes "Aah! Is it!";
+		mes "Amatsu?!!!";
+		next;
+		mes "[Suspicious Man]";
+		mes "No";
+		mes "....";
+		next;
+		mes "["+strcharinfo(0)+"]";
+		mes "Mmmmmm~";
+		mes "No...";
+		mes "Then issit Izlude?";
+		next;
+		mes "[Suspicious Man]";
+		mes "Yes that's right,";
+		mes "I was borned on Izlude";
+		next;
+		mes "[Suspicious Man]";
+		mes "For personal reasons I took a trip";
+		mes "to this country of abundant minerals";
+		next;
+		mes "["+strcharinfo(0)+"]";
+		mes "Ohhh...";
+		mes "Ah, do you know someone";
+		mes "called wildcat ?";
+		mes "He's a ninja from Amatsu,";
+		mes "I have to find him";
+		next;
+		mes "[Suspicious Man]";
+		mes "Hmm, I've never heard of this name,";
+		mes "you seem to have an important reason";
+		mes "for seeing him";
+		next;
+		mes "["+strcharinfo(0)+"]";
+		mes "Yes, I need to give him a letter,";
+		mes "and get a reply from him,";
+		mes "only then will I be able";
+		mes "to become a Ninja";
+		next;
+		mes "[Suspicious Man]";
+		mes "Ooh... so that's why I find that";
+		mes "you look like an adventurer";
+		next;
+		mes "[Suspicious Man]";
+		mes "After doing some thinking,";
+		mes "well I think you have a shot";
+		mes "at finding that person";
+		next;
+		mes "[Suspicious Man]";
+		mes "I think I've met this person once";
+		mes "when I got to this village last time";
+		next;
+		mes "[Suspicious Man]";
+		mes "I wish I could help you in your search,";
+		mes "but I came here for some business affairs";
+		mes "and I've not completed my work yet";
+		next;
+		mes "[Suspicious Man]";
+		mes "If you are willing to help me,";
+		mes "I will help you in your search too";
+		next;
+		switch(select("It's fine I can find him myself","Ok, I'll help you")) {
+		case 1:
+			mes "[Suspicious Man]";
+			mes "Right,";
+			mes "it's ok,";
+			mes "try looking around for him,";
+			mes "but if you need any";
+			mes "assistance, you can";
+			mes "find me here before";
+			mes "I leave this place...";
+			close;
+		case 2:
+			mes "[Suspicious Man]";
+			mes "Hmm.. ok,";
+			mes "I am here to find";
+			mes "some minerals,";
+			mes "I need these particular minerals";
+			mes "to make something";
+			next;
+			mes "[Suspicious Man]";
+			mes "I will be looking for them too,";
+			mes "but I haven't found enough of them yet,";
+			mes "so if you can bring me Cyfar x5, and";
+			mes "Phracon x1,";
+			mes "I would be grateful";
+			next;
+			mes "["+strcharinfo(0)+"]";
+			mes "-I will go find Phracon x1 and Cyfar x5-";
+			set hg_nin,2;
+			close;
+		}
+	} else if (hg_nin == 2) {
+		if ((countitem(7053) > 4) && (countitem(1010) > 0)) {
+			mes "[Suspicious Man]";
+			mes "You have found everything,";
+			mes "Very good...";
+			mes "You have gotten";
+			mes "everything I need,";
+			mes "so I should be helping";
+			mes "you too, hmmm...";
+			next;
+			mes "[Suspicious Man]";
+			mes "Let me read the letter";
+			next;
+			mes "["+strcharinfo(0)+"]";
+			mes "?????!!";
+			next;
+			mes "[Suspicious Man]";
+			mes "Hmm? Is it from that fellow Guy";
+			mes "it's him that asked you to bring this here right?";
+			next;
+			mes "["+strcharinfo(0)+"]";
+			mes "Wooh... are you";
+			mes "wildcat ~!";
+			next;
+			mes "[Suspicious Man]";
+			mes "No,";
+			mes "I am not wildcat ";
+			mes "I am Red Leopard Joe,";
+			mes "wildcat is a name";
+			mes "that Guy gave me";
+			mes "for a tease, haha";
+			next;
+			mes "["+strcharinfo(0)+"]";
+			mes "Haha... I finally get it~~";
+			next;
+			mes "[Red Leopard Joe]";
+			mes "If you wish to become a Ninja,";
+			mes "you cannot believe in";
+			mes "everything you see";
+			next;
+			mes "[Red Leopard Joe]";
+			mes "For example those ninja costumes";
+			mes "you see in manga or comic books,";
+			mes "not only they don't really exist, even";
+			mes "if they do, they would be extremely rare";
+			next;
+			mes "[Red Leopard Joe]";
+			mes "Please remember,";
+			mes "once a ninja's identity is made known";
+			mes "to others, it would be the same as";
+			mes "proclaiming your own death";
+			next;
+			mes "[Red Leopard Joe]";
+			mes "How I look right now or even";
+			mes "the name that I told you,";
+			mes "could all be faked";
+			next;
+			mes "["+strcharinfo(0)+"]";
+			mes "What...";
+			mes "...........";
+			next;
+			mes "[Red Leopard Joe]";
+			mes "Ok, let me have a look";
+			mes "at that letter first";
+			next;
+			mes "["+strcharinfo(0)+"]";
+			mes "Ok,";
+			mes "it's here,";
+			mes "-fumble fumble-";
+			next;
+			mes "[Red Leopard Joe]";
+			mes "Hmm~~ let's see...";
+			mes "I thought Guy would be";
+			mes "writing me a challenge letter,";
+			mes "but he's asking for a truce in this letter";
+			next;
+			mes "[Red Leopard Joe]";
+			mes "But I can't help it now,";
+			mes "with your help I've got all the ingredients";
+			mes "I need to make the kunais";
+			mes "haha~";
+			next;
+			mes "[Red Leopard Joe]";
+			mes "I'll write a reply for you now,";
+			mes "you said you wish to become a ninja right,";
+			mes "I can see that you are very efficient in completing";
+			mes "the task I gave you, and if you can sharpen your";
+			mes "keenness on your surroundings, you should make";
+			mes "a very good ninja";
+			next;
+			mes "["+strcharinfo(0)+"]";
+			mes ".....";
+			next;
+			mes "[Red Leopard Joe]";
+			mes "Please wait for awhile,";
+			mes "I will write a replying letter";
+			mes "now for you,";
+			mes "let's see...";
+			mes "hmm... scribble... scribble...";
+			next;
+			mes "[Red Leopard Joe]";
+			mes "Here you go,";
+			mes "he'll understand";
+			mes "once he reads the letter";
+			next;
+			mes "["+strcharinfo(0)+"]";
+			mes "-You received quickly written-";
+			mes "-letter from Mr. Joe-";
+			next;
+			mes "[Red Leopard Joe]";
+			mes "Go quick now,";
+			mes "if you want to become a ninja,";
+			mes "you must learn not to waste time";
+			next;
+			mes "[Red Leopard Joe]";
+			mes "After you become a ninja,";
+			mes "we will meet";
+			mes "each other often,";
+			mes "I look forward to that";
+			next;
+			mes "["+strcharinfo(0)+"]";
+			mes "Ok... bye...";
+			next;
+			mes "[Red Leopard Joe]";
+			mes "Ah, it takes a long time";
+			mes "to get to Amatsu,";
+			mes "I'll send Mr/Miss ["+username+"]";
+			mes "to Amatsu,";
+			mes "see you again";
+			delitem 1010,1;
+			delitem 7053,5;
+			set hg_nin,3;
+			close2;
+			warp "amatsu.gat",113,127;
+			end;
+		} else {
+			mes "[Tourist]";
+			mes "I need Phracon x1 and Cyfar x5,";
+			mes "this is not the right amount,";
+			mes "though I don't need them right away,";
+			mes "but you have to get me the right amount";
+			close;
+		}
+	} else if (hg_nin == 3) {
+		mes "[Red Leopard Joe]";
+		mes "Hmm, for some unknown reason,";
+		mes "you've come back without";
+		mes "seeing Guy";
+		next;
+		mes "[Red Leopard Joe]";
+		mes "If you want,";
+		mes "I can send you to Amatsu again";
+		next;
+		switch(select("No thanks","Ok please send me again")) {
+		case 1:
+			mes "[Red Leopard Joe]";
+			mes "Ok,";
+			mes "you can decide";
+			mes "for yourself";
+			close;
+		case 2:
+			mes "[Red Leopard Joe]";
+			mes "Alright,";
+			mes "off to Amatsu right away";
+			close2;
+			warp "amatsu.gat",113,127;
+			end;
+		}
+		close;
+	} else if (hg_nin == 4) {
+		mes "[Red Leopard Joe]";
+		mes "Guy seem to have told you";
+		mes "to do many tiresome tasks,";
+		mes "put your effort into it, it is";
+		mes "good training for you";
+		close;
+	} else if (hg_nin == 5) {
+		mes "[Red Leopard Joe]";
+		mes "Ooooh, you made it, you're a ninja now,";
+		mes "there will be difficulties";
+		mes "lying in front of you,";
+		mes "so don't slack in training";
+		close;
+	} else {
+		mes "[Suspicious Man]";
+		mes "Hiya ~ tell me is this sky-high or what?";
+		mes "I've been to many places,";
+		mes "but this is the first time I've come across a place this high";
+		mes "it's a real pity not to be able";
+		mes "admire the beautiful nature";
+		mes "from atop this wonderful place";
+		close;
+	}
+}
+
+alberta.gat,30,65,3	script	Akagi	730,{
+
+	if (Class == Job_Novice) {
+		if (JobLevel == 10) {
+			mes "[Akagi]";
+			mes "Hmm...";
+			mes "You are here in this dark alley,";
+			mes "I suppose your instincts";
+			mes "took your feet here,";
+			mes "are you going to patience Load";
+			next;
+			switch(select("No thanks","Yes I'm going")) {
+			case 1:
+				mes "[Akagi]";
+				mes "I know,";
+				mes ".....";
+				mes "Goodbye";
+				close;
+			case 2:
+				mes "[Akagi]";
+				mes "Ok, I'll send you there now";
+				close2;
+				set '@ninin,rand(1,3);
+				if ('@ninin == 1) {
+					warp "amatsu.gat",170,229;
+				} else if ('@ninin == 2) {
+					warp "amatsu.gat",216,188;
+				} else {
+					warp "amatsu.gat",178,164;
+				}
+				end;
+			}
+		} else {
+			mes "[Akagi]";
+			mes "This is not a place where you should be,";
+			mes "come again when you've grown stronger";
+			close;
+		}
+	} else {
+		mes "[Akagi]";
+		mes "I have nothing to say to you,";
+		mes "please turn back";
+		close;
+	}
+}

@@ -1,0 +1,770 @@
+//--------------------------------------------------------------
+//               (c)2004-2007 Aurora Team Presents:             
+//                  ___                                         
+//                 /   |_   _ _ __ ___  _ __ __ _               
+//                / /| | | | | '__/ _ \| '__/ _` |              
+//               / ___ | |_| | | | (_) | | | (_| |++            
+//              /_/  |_|\____|_|  \___/|_|  \__,_|              
+//                 http://aurora.deltaanime.net                 
+//--------------------------------------------------------------
+//
+// mob_group_db.txt
+// Monster Group Database
+//
+//--------------------------------------------------------------
+// Structure of Database:
+//--------------------------------------------------------------
+//
+// <MobID>,<DummyName>,<GroupID>
+//
+// GroupID:
+//  0: Default
+//  1: Goblin
+//  2: Orc (Excluding MvPs)
+//  3: Kobold
+//  4: Golem
+//  5: Guardian
+//  6: Crab
+//  7: Shellfish
+//  8: Aster
+//  9: Munak
+// 10: Prisoners
+//
+//--------------------------------------------------------------
+// Database Entries:
+//--------------------------------------------------------------
+//
+1001,Scorpion,0
+1002,Poring,0
+1003,Test Egg,0
+1004,Hornet,0
+1005,Farmiliar,0
+1006,Thief Bug Male,0
+1007,Fabre,0
+1008,Pupa,0
+1009,Condor,0
+1010,Willow,0
+1011,ChonChon,0
+1012,Roda Frog,0
+1013,Wolf,0
+1014,Spore,0
+1015,Zombie,0
+1016,Skeleton Archer,0
+1017,Thief Bug Male,0
+1018,Creamy,0
+1019,PecoPeco,0
+1020,Mandragora,0
+1021,Thief Bug Male,0
+1022,Werewolf,0
+1023,Orc Warrior,2
+1024,Wormtail,0
+1025,Boa,0
+1026,Munak,9
+1028,Skeleton Soldier,0
+1027,Raptice,0
+1029,Isis,0
+1030,Anacondaq,0
+1031,Poporing,0
+1032,Verit,0
+1033,Elder Willow,0
+1034,Thara Frog,0
+1035,Hunter Fly,0
+1036,Ghoul,0
+1037,Sidewinder,0
+1038,Osiris,0
+1039,Baphomet,0
+1040,Golem,4
+1041,Mummy,0
+1042,Steel ChonChon,0
+1044,Obeaune,0
+1045,Marc,0
+1046,Doppelganger,0
+1047,PecoPeco Egg,0
+1048,Thief Bug Egg,0
+1049,Picky,0
+1050,Shell Picky,0
+1051,Thief Bug Male,0
+1052,Rocker,0
+1053,Thief Bug Female,0
+1054,Thief Bug Male,0
+1055,Muka,0
+1056,Smokie,0
+1057,Yoyo,0
+1058,Metaller,0
+1059,Mistress,0
+1060,Bigfoot,0
+1061,Nightmare,0
+1062,Santa Poring,0
+1063,Lunatic,0
+1064,Megalodon,0
+1065,Strouf,0
+1066,Vadon,0
+1067,Cornutus,0
+1068,Hydra,0
+1069,Swordfish,0
+1070,Kukre,0
+1071,Pirate Skeleton,0
+1072,Kaho,0
+1073,Crab,6
+1074,Shellfish,7
+1075,Turtle,0
+1076,Skeleton,0
+1077,Poison Spore,0
+1078,Red Plant,0
+1079,Blue Plant,0
+1080,Green Plant,0
+1081,Yellow Plant,0
+1083,Shining Plant,0
+1084,Black Mushroom,0
+1085,Red Mushroom,0
+1086,Golden Thief Bug,0
+1087,Orc Hero,0
+1088,Vocal,0
+1089,Toad,0
+1090,Mastering,0
+1091,Dragon Fly,0
+1092,Vagabond Wolf,0
+1093,Eclipse,0
+1094,Ambernite,0
+1095,Andre,0
+1096,Angeling,0
+1097,Ant Egg,0
+1098,Anubis,0
+1099,Argiope,0
+1100,Argos,0
+1101,BaphometJr.,0
+1102,Bathory,0
+1103,Caramel,0
+1104,Coco,0
+1105,Deniro,0
+1106,Desert Wolf,0
+1107,Baby Desert Wolf,0
+1108,Deviace,0
+1109,Deviruchi,0
+1110,Dokebi,0
+1111,Drainliar,0
+1112,Drake,0
+1113,Drops,0
+1114,Dustiness,0
+1115,Eddga,0
+1116,Eggyra,0
+1117,Evil Druid,0
+1118,Flora,0
+1119,Frilldora,0
+1120,Ghostring,0
+1121,Giearth,0
+1122,Goblin 1,1
+1123,Goblin 2,1
+1124,Goblin 3,1
+1125,Goblin 4,1
+1126,Goblin 5,1
+1127,Hode,0
+1128,Horn,0
+1129,Horong,0
+1130,Jakk,0
+1131,Joker,0
+1132,Khalitzburg,0
+1133,Kobold 2,3
+1134,Kobold 2,3
+1135,Kobold 2,3
+1136,Kobold,3
+1137,Kobold,3
+1138,Magnolia,0
+1139,Mantis,0
+1140,Marduk,0
+1141,Marina,0
+1142,Marine Sphere,0
+1143,Marionette,0
+1144,Marse,0
+1145,Martin,0
+1146,Matyr,0
+1147,Maya,0
+1148,Medusa,0
+1149,Minorous,0
+1150,Moonlight Flower,0
+1151,Myst,0
+1152,Orc Skeleton,2
+1153,Orc Zombie,2
+1154,Pasana,0
+1155,Petit,0
+1156,Petit,0
+1157,Pharaoh,0
+1158,Phen,0
+1159,Phreeoni,0
+1160,Piere,0
+1161,Plankton,0
+1162,Rafflesia,0
+1163,Raydric,0
+1164,Requiem,0
+1165,Sandman,0
+1166,Savage,0
+1167,Savage Bebe,0
+1168,Scorpion King,0
+1169,Skeleton Worker,0
+1170,Sohee,0
+1171,Soldier Andre,0
+1172,Soldier Deniro,0
+1173,Soldier Piere,0
+1174,Stainer,0
+1175,Tarou,0
+1176,Vitata,0
+1177,Zenorc,0
+1178,Zerom,0
+1179,Whisper,0
+1180,Nine Tail,0
+1181,Zombie Dragon,0
+1182,Thief Mushroom,0
+1183,ChonChon,0
+1184,Fabre,0
+1185,Whisper,0
+1186,Giant Whisper,0
+1187,Switch,0
+1188,Bon Gun,0
+1189,Orc Archer,2
+1190,Orc Lord,0
+1191,Mimic,0
+1192,Wraith,0
+1193,Alarm,0
+1194,Arclouze,0
+1195,Rideword,0
+1196,Skeleton Prisoner,10
+1197,Zombie Prisoner,10
+1479,Skeleton Prisoner,10
+1480,Zombie Prisoner,10
+1198,Dark Priest,0
+1199,Punk,0
+1200,Zealotus,0
+1201,Rybio,0
+1202,Phendark,0
+1204,Ogretooth,0
+1205,Executioner,0
+1206,Anolian,0
+1207,Sting,0
+1208,Wanderer,0
+1209,Cramp,0
+1210,Filamentous,100000
+1211,Brilight,0
+1212,Iron Fist,0
+1213,High Orc,2
+1214,Choco,0
+1215,Stem Worm,0
+1216,Penomena,0
+1219,Abysmal Knight,0
+// 1220~1241 -> Unused
+1242,Marin,0
+1243,Sasquatch,0
+1244,Xmas Jakk,0
+1245,Xmas Goblin,1
+1246,Cookie Xmas,0
+1247,Antonio,0
+1248,Cruiser,0
+1249,Myst Case,0
+1250,Chepet,0
+1251,Stormy Knight,0
+1252,Hatii,0
+1253,Gargoyle,0
+1254,Raggler,0
+1255,Nereid,0
+1256,Pest,0
+1257,Injustice,0
+1258,Goblin Archer,1
+1259,Gryphon,0
+1260,Dark Frame,0
+1261,Wild Rose,0
+1262,Muntant Dragonoid,0
+1263,Wind Ghost,0
+1264,Merman,0
+1265,Cookie,0
+1266,Aster,8
+1267,Carat,0
+1268,Bloody Knight,0
+1269,Clock,0
+1270,Tower Keeper,0
+1271,Alligator,0
+1272,Dark Lord,0
+1273,Orc Lady,2
+1274,Megalith,0
+1275,Alice,0
+1276,Raydric Archer,0
+1277,Greatest General,0
+1278,Stalactic Golem,4
+1280,Goblin Steamrider,1
+1281,Sageworm,0
+1283,Chimera,0
+// 1284~1288 -> GvG Mobs
+1284,Hugeling,0
+1285,Archer Guardian,5
+1286,Knight Guardian,5
+1287,Soldier Guardian,5
+1288,Emperium,0
+1289,Maya Purple,0
+1290,Skeleton General,0
+1291,Wraith Dead,0
+1292,Mini Demon,0
+1293,Creamy Fear,0
+1294,Killer Mantis,0
+1295,Owl Baron,0
+1296,Kobold Leader,3
+1297,Ancient Mummy,0
+1298,Zombie Master,0
+1299,Goblin Leader,1
+1300,Caterpillar,0
+1301,Am Mut,0
+1302,Dark Illusion,0
+1303,Giant Hornet,0
+1304,Giant Spider,0
+1305,Ancient Worm,0
+1307,Cat o' Nine Tails,0
+1307,Cat o' Nine Tails,0
+1308,Panzer Goblin,1
+1309,Gajomart,0
+1310,Majoruros,0
+1311,Gullinbursti,0
+1312,Turtle General,0
+1313,Mobster,0
+1314,Permeter,0
+1315,Assaulter,0
+1316,Solider,0
+1317,Seal,0
+1318,Heater,0
+1319,Freezer,0
+1320,Owl Duke,0
+1321,Dragon Tail,0
+1322,Spring Rabbit,0
+1323,Sea Otter,0
+// 1324-1363 -> GvG Mobs
+// 1364 -> Unknown
+1365,Apocalypse,0
+1366,Lava Golem,4
+1367,Blazer,0
+1368,Geographer,0
+1369,Grand Peco,0
+1370,Succubus,0
+1371,False Angel,0
+1372,Goat,0
+1373,Lord of Death,0
+1374,Incubus,0
+1375,The Paper,0
+1376,Harpy,0
+1377,Elder,0
+1378,Demon Fungus,0
+1379,Nightmare Terror,0
+1380,Driller,0
+1381,Grizzly,0
+1382,Diabolic,0
+1383,Explosion,0
+1384,Sky Deleter,0
+1385,Sky Deleter,0
+1386,Sleeper,0
+1387,Gig,0
+1388,Arc Angeling,0
+1389,Dracula,0
+1390,Violy,0
+1391,Galapago,0
+1392,Rotar Zairo,0
+1393,Mummy,0
+1394,Zombie,0
+// 1395-1398 -> Event Crystals
+1399,Baphomet,0
+1400,Karakasa,0
+1401,Shinobi,0
+1402,Poisonous Toad,0
+1403,Firelock Soldier,0
+1404,Miyabi Doll,0
+1405,Tengu,0
+1406,Kapha,0
+1407,Dokebi,0
+1492,Samurai Specter,0
+1493,Dryad,0
+1494,Beetle King,0
+1495,Stone Shooter,0
+1496,Stone Shooter Bullet,0
+1497,Wooden Golem,4
+1498,Wootan Shooter,0
+1499,Wootan Fighter,0
+1500,Parasite,0
+1501,Parasite Bullet,0
+1502,Fire Poring,0
+1503,Gibbet,0
+1504,Dullahan,0
+1505,Loli Ruri,0
+1506,Disguise,0
+1507,Bloody Murderer,0
+1508,Quve,0
+1509,Lude,0
+1510,Hylozoist,0
+1511,Amon Ra,0
+1512,Yao Jun,0
+1513,Mao Guai,0
+1514,Zhu Po Long,0
+1515,Hatii Bebe,0
+1516,Mi Gao,0
+1517,Jing Guai,0
+1518,White Lady,0
+1519,Green Maiden,0
+1520,Boiled Rice,0
+1521,Alice,0
+1522,Ancient Mummy,0
+1523,Firelock Soldier,0
+1524,Baby Leopard,0
+1525,Bathory,0
+1526,Bloody Butterfly,0
+1527,Tower Keeper,0
+1528,Clock,0
+1529,Evil Snake Lord,0
+1530,Dracula,0
+1531,Taoist Hermit,0
+1532,Explosion,0
+1533,Seal,0
+1534,Goblin 1,1
+1535,Goblin 2,1
+1536,Goblin 3,1
+1537,Goblin 4,1
+1538,Goblin 5,1
+1539,Goblin Leader,1
+1540,Golem,4
+1541,Greatest General,0
+1542,Samurai Specter,0
+1543,Kapha,0
+1544,Karakasa,0
+1545,Kobold 2,3
+1546,Kobold 2,3
+1547,Kobold 2,3
+1548,Kobold Leader,3
+1549,Lava Golem,4
+1550,Enchanted Peach Tree,0
+1551,Marse,0
+1552,Miyabi Doll,0
+1553,Myst,0
+1554,Nightmare,0
+1555,Parasite,0
+1556,Poisonous Toad,0
+1557,Rotar Zairo,1
+1558,Sandman,0
+1559,Scorpion,0
+1560,Shinobi,0
+1561,Smokie,0
+1562,Thief Bug Male,0
+1563,Tengu,0
+1564,Evil Nymph,0
+1565,Hermit Plant,0
+1566,Wraith Dead,0
+1567,Ancient Worm,0
+1568,Angeling,0
+1569,Bloody Knight,0
+1570,Cramp,0
+1571,Deviace,0
+1572,Drops,0
+1573,Elder,0
+1574,Elder Willow,0
+1575,Flora,0
+1576,Ghostring,0
+1577,Goblin Archer,1
+1578,Horong,0
+1579,Hydra,0
+1580,Incubus,0
+1581,Vocal,0
+1582,Deviling,0
+1583,Tao Gunka,0
+1584,Tamruan,0
+1585,Mime Monkey,0
+1586,Leaf Cat,0
+1587,Kraben,0
+1588,Xmas Orc,2
+1589,Mandragora,0
+1590,Geographer,0
+1591,Lunatic,0
+1592,Mobster,0
+1593,Ancient Mummy,0
+1594,Freezer,0
+1595,Marin,0
+1596,Tamruan,0
+1597,Gargoyle,0
+1598,Blazer,0
+1599,Giant Whisper,0
+1600,Heater,0
+1601,Permeter,0
+1602,Solider,0
+1603,Bigfoot,0
+1604,Giant Hornet,0
+1605,Dark Illusion,0
+1606,Hatii Bebe,0
+1607,Xmas Goblin,1
+1608,Thief Bug Male,0
+1609,Zhu Po Long,0
+1610,Munak,9
+1611,Bon Gun,0
+1612,Yao Jun,0
+1613,Metaling,0
+1614,Mineral,0
+1615,Obsidian,0
+1616,Pitman,0
+1617,Waste Stove,0
+1618,Ungoliant,0
+1619,Porcellio,0
+1620,Noxious,0
+1621,Venomous,0
+1622,Teddy Bear,0
+1623,RSX-0806,0
+1624,Waste Stove,0
+1625,Porcellio,0
+1626,Dark Priest,0
+1627,Anopheles,0
+1628,Holden,0
+1629,Hill Wind,0
+1630,White Lady,0
+1631,Green Maiden,0
+1632,Gremlin,0
+1633,Beholder,0
+1634,Lord Knight Seyren,0
+1635,Eremes Guile,0
+1636,Howard Alt-Eisen,0
+1637,Margaretha Sorin,0
+1638,Cecil Damon,0
+1639,Kathryne Keyron,0
+1640,Lord Knight Seyren,0
+1641,Eremes Guile,0
+1642,Howard Alt-Eisen,0
+1643,Margaretha Sorin,0
+1644,Cecil Damon,0
+1645,Kathryne Keyron,0
+1646,Lord Knight Seyren,0
+1647,Eremes Guile,0
+1648,Howard Alt-Eisen,0
+1649,Margaretha Sorin,0
+1650,Cecil Damon,0
+1651,Kathryne Keyron,0
+1652,Egnigem Cenia,0
+1653,Wickebine Tres,0
+1654,Armeyer Dinze,0
+1655,Errende Ebecee,0
+1656,Kavach Icarus,0
+1657,Laurell Weinder,0
+1658,Egnigem Cenia,0
+1659,Wickebine Tres,0
+1660,Armeyer Dinze,0
+1661,Errende Ebecee,0
+1662,Kavach Icarus,0
+1663,Laurell Weinder,0
+1664,Photon Canon,0
+1665,Photon Canon,0
+1666,Photon Canon,0
+1667,Photon Canon,0
+1668,Archdam,0
+1669,Dimik,0
+1670,Dimik,0
+1671,Dimik,0
+1672,Dimik,0
+1673,Dimik,0
+1674,Monolith,0
+1675,Venatu,0
+1676,Venatu,0
+1677,Venatu,0
+1678,Venatu,0
+1679,Venatu,0
+1680,Hill Wind,0
+1681,Gemini-S58,0
+1682,Remover,0
+1683,Photon Canon,0
+1684,Archdam,0
+1685,Vesper,0
+1686,Orc Baby,2
+1687,Grove,0
+1688,Lady Tanee,0
+1689,White Lady,0
+1690,Spring Rabbit,0
+1691,Kraben,0
+1692,Breeze,0
+1693,Plasma,0
+1694,Plasma,0
+1695,Plasma,0
+1696,Plasma,0
+1697,Plasma,0
+1698,Death Word,0
+1699,Ancient Mimic,0
+1700,Dame of Sentinel,0
+1701,Mistress of Shelter,0
+1702,Baroness of Retribution,0
+1703,Lady Solace,0
+1704,Odium of Thanatos,0
+1705,Despero of Thanatos,0
+1706,Maero of Thanatos,0
+1707,Dolor of Thanatos,0
+1708,Thanatos Phantom,0
+1709,Odium of Thanatos,0
+1710,Despero of Thanatos,0
+1711,Maero of Thanatos,0
+1712,Dolor of Thanatos,0
+1713,Acidus,0
+1714,Ferus,0
+1715,Novus,0
+1716,Acidus,0
+1717,Ferus,0
+1718,Novus,0
+1719,Detardeurus,0
+1720,Hydrolancer,0
+1721,Dragon Egg,0
+1722,Jakk,0
+1723,Cecil Damon,0
+1724,Photon Canon,0
+1725,Poring,0
+1726,Lunatic,0
+1727,Savage Bebe,0
+1728,Desert Wolf,0
+1729,Baphomet Jr.,0
+1730,Deviruchi,0
+1731,Doppelganger,0
+1732,Treasure Chest,0
+1733,Kiehl,0
+1734,Kiel D-01,0
+1735,Alicel,0
+1736,Aliot,0
+1737,Aliza,0
+1738,Constant,0
+1739,Alicel,0
+1740,Aliot,0
+1741,Cookie,0
+1742,Carat,0
+1743,Myst Case,0
+1744,Wild Rose,0
+1745,Constant,0
+1746,Aliza,0
+1747,Boa,0
+1748,Anacondaq,0
+1749,Medusa,0
+1750,Red Plant,0
+1751,Valkyrie Randgris,0
+1752,Skogul,0
+1753,Thruth,0
+1754,Skeggiold,0
+1755,Skeggiold,0
+1756,Hydrolancer,0
+1757,Acidus,0
+1758,Ferus,0
+1759,Acidus,0
+1760,Ferus,0
+1761,Skogul,0
+1762,Thruth,0
+1763,Skeggiold,0
+1764,Skeggiold,0
+1765,Valkyrie,0
+1766,Angeling,0
+1767,Deviling,0
+1768,Gloom Under Night,0
+1769,Agav,0
+1770,Echio,0
+1771,Vanberk,0
+1772,Isilla,0
+1773,Hodremlin,0
+1774,Seeker,0
+1775,Snowier,0
+1776,Shiroma,0
+1777,Ice Titan,0
+1778,Gazeti,0
+1779,Ktullanux,0
+1780,Muscipular,0
+1781,Drosera,0
+1782,Roween,0
+1783,Galion,0
+1784,Stapo,0
+1785,Atroce,0
+1786,Agav,0
+1787,Echio,0
+1788,Ice Titan,0
+1789,Icicle,0
+1790,Rafflesia,0
+1791,Galion,0
+1792,Soccer Ball,0
+1793,Megalith,0
+1794,Roween,0
+1795,Bloody Knight,0
+1796,Aunoe,0
+1797,Fanat,0
+1798,Treasure Chest,0
+1799,Lord Knight Seyren,0
+1800,Eremes Guile,0
+1801,Howard Alt-Eisen,0
+1802,Margaretha Sorin,0
+1803,Cecil Damon,0
+1804,Kathryne Keyron,0
+1805,Lord Knight Seyren,0
+1806,Eremes Guile,0
+1807,Howard Alt-Eisen,0
+1808,Margaretha Sorin,0
+1809,Cecil Damon,0
+1810,Kathryne Keyron,0
+1811,Smokie,0
+1812,Lude,0
+1813,Hydrolancer,0
+1814,Moonlight Flower,0
+1815,Rice Cake,0
+1816,Gourd,0
+1817,Detardeurus,0
+1818,Alarm,0
+1819,Bathory,0
+1820,Bigfoot,0
+1821,Desert Wolf,0
+1822,Deviruchi,0
+1823,Freezer,0
+1824,Hatii Bebe,0
+1825,Xmas Goblin,0
+1826,Myst,0
+1827,Sasquatch,0
+1828,Gullinbursti,0
+1829,Sword Master,0
+1830,Bow Master,0
+1831,Salamander,0
+1832,Ifrit,0
+1833,Kasa,0
+1834,Salamander,0
+1835,Kasa,0
+1836,Magmaring,0
+1837,Imp,0
+1838,Kocker,0
+1839,Byorgue,0
+1840,Golden Savage,0
+1841,Boa,0
+1842,Anacondaq,0
+1843,Sidewinder,0
+1844,Isis,0
+1845,Treasure Chest,0
+1846,Emperium,0
+1847,Poring,0
+1848,Baphomet,0
+1849,Osiris,0
+1850,Orc Hero,0
+1851,Mobster,0
+1852,Angeling,0
+1853,Deviling,0
+1854,Muka,0
+1855,Poison Spore,0
+1856,Magnolia,0
+1857,Marin,0
+1858,Plankton,0
+1859,Mandragora,0
+1860,Coco,0
+1861,Choco,0
+1862,Martin,0
+1863,Spring Rabbit,0
+1864,Zombie Slaughter,0
+1865,Ragged Zombie,0
+1866,Hell Poodle,0
+1867,Banshee,0
+1868,Banshee,0
+1869,Flame Skull,0
+1870,Necromancer,0
+1871,Falling Bishop,0
+1872,Hell Fly,0
+1873,Beelzebub,0
+1874,Beelzebub,0
+1875,Tristan III,0
+// 1876~1879 -> Unknown
+1880,Wood Goblin,0
+1881,Les,0
+1882,Vavayaga,0
+1883,Uzhas,0
+1884,Mavka,0
+1885,Gopinich,0
+1886,Mavka,0
+// 1887~1890 -> Unknown
+1891,Valkyrie,0

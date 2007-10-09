@@ -1,0 +1,437 @@
+//--------------------------------------------------------------
+//               (c)2004-2007 Aurora Team Presents:             
+//                  ___                                         
+//                 /   |_   _ _ __ ___  _ __ __ _               
+//                / /| | | | | '__/ _ \| '__/ _` |              
+//               / ___ | |_| | | | (_) | | | (_| |++            
+//              /_/  |_|\____|_|  \___/|_|  \__,_|              
+//                 http://aurora.deltaanime.net                 
+//--------------------------------------------------------------
+//
+// mob_deadbranch.txt
+// Dead Branch Summon Random Database
+
+//--------------------------------------------------------------
+// Structure of Database:
+//--------------------------------------------------------------
+//
+// <MobID>,<DummyName>,<Rate>
+//
+// Rate Examples:
+//  10000   = 1%
+//  500000  = 50%
+//  1000000 = 100%
+
+//--------------------------------------------------------------
+// Database Entries:
+//--------------------------------------------------------------
+
+0,Poring,1002
+1001,Scorpion,1000000
+1002,Poring,1000000
+1004,Hornet,1000000
+1005,Familiar,1000000
+1007,Fabre,1000000
+1008,Pupa,1000000
+1009,Condor,1000000
+1010,Willow,1000000
+1011,Chonchon,1000000
+1012,Roda Frog,1000000
+1013,Wolf,1000000
+1014,Spore,1000000
+1015,Zombie,1000000
+1016,Archer Skeleton,1000000
+1018,Creamy,1000000
+1019,Peco Peco,1000000
+1020,Mandragora,1000000
+1023,Orc Warrior,1000000
+1024,Worm Tail,1000000
+1025,Boa,1000000
+1026,Munak,1000000
+1027,Raptice,1000000
+1028,Soldier Skeleton,1000000
+1029,Isis,1000000
+1030,Anacondaq,1000000
+1031,Poporing,1000000
+1032,Verit,1000000
+1033,Elder Willow,1000000
+1034,Thara Frog,1000000
+1035,Hunter Fly,1000000
+1036,Ghoul,1000000
+1037,Sidewinder,1000000
+1040,Golem,1000000
+1041,Mummy,1000000
+1042,Steel Chonchon,1000000
+1044,Obeaune,1000000
+1045,Marc,1000000
+1047,Peco Peco Egg,1000000
+1048,Thief Bug Egg,1000000
+1049,Picky,1000000
+1050,Picky,1000000
+1051,Thief Bug,1000000
+1052,Rocker,1000000
+1053,Thief Bug Female,1000000
+1054,Thief Bug Male,1000000
+1055,Muka,1000000
+1056,Smokie,1000000
+1057,Yoyo,1000000
+1058,Metaller,1000000
+1060,Bigfoot,1000000
+1061,Nightmare,1000000
+1062,Santa Poring,1000000
+1063,Lunatic,1000000
+1064,Megalodon,1000000
+1065,Strouf,1000000
+1066,Vadon,1000000
+1067,Cornutus,1000000
+1068,Hydra,1000000
+1069,Swordfish,1000000
+1070,Kukre,1000000
+1071,Pirate Skeleton,1000000
+1076,Skeleton,1000000
+1077,Poison Spore,1000000
+1078,Red Plant,1000000
+1079,Blue Plant,1000000
+1080,Green Plant,1000000
+1081,Yellow Plant,1000000
+1083,Shining Plant,1000000
+1084,Black Mushroom,1000000
+1085,Red Mushroom,1000000
+1088,Vocal,1000000
+1089,Toad,1000000
+1090,Mastering,1000000
+1091,Dragonfly,1000000
+1092,Vagabond Wolf,1000000
+1093,Eclipse,1000000
+1094,Ambernite,1000000
+1095,Andre,1000000
+1096,Angeling,1000000
+1097,Ant Egg,1000000
+1099,Argiope,1000000
+1100,Argos,1000000
+1101,Baphomet Jr.,1000000
+1102,Bathory,1000000
+1103,Caramel,1000000
+1104,Coco,1000000
+1105,Deniro,1000000
+1106,Desert Wolf,1000000
+1107,Baby Desert Wolf,1000000
+1108,Deviace,1000000
+1109,Deviruchi,1000000
+1110,Dokebi,1000000
+1111,Drainliar,1000000
+1113,Drops,1000000
+1114,Dustiness,1000000
+1116,Eggyra,1000000
+1117,Evil Druid,1000000
+1118,Flora,1000000
+1119,Frilldora,1000000
+1120,Ghostring,1000000
+1121,Giearth,1000000
+1122,Goblin,1000000
+1123,Goblin,1000000
+1124,Goblin,1000000
+1125,Goblin,1000000
+1126,Goblin,1000000
+1127,Hode,1000000
+1128,Horn,1000000
+1129,Horong,1000000
+1130,Jakk,1000000
+1131,Joker,1000000
+1132,Khalitzburg,1000000
+1133,Kobold,1000000
+1134,Kobold,1000000
+1135,Kobold,1000000
+1138,Magnolia,1000000
+1139,Mantis,1000000
+1140,Marduk,1000000
+1141,Marina,1000000
+1142,Marine Sphere,1000000
+1143,Marionette,1000000
+1144,Marse,1000000
+1145,Martin,1000000
+1146,Matyr,1000000
+1148,Medusa,1000000
+1149,Minorous,1000000
+1151,Myst,1000000
+1152,Orc Skeleton,1000000
+1153,Orc Zombie,1000000
+1154,Pasana,1000000
+1155,Earth Petite,1000000
+1156,Sky Petite,1000000
+1158,Phen,1000000
+1160,Piere,1000000
+1161,Plankton,1000000
+1162,Rafflesia,1000000
+1163,Raydric,1000000
+1164,Requiem,1000000
+1165,Sandman,1000000
+1166,Savage,1000000
+1167,Savage Babe,1000000
+1169,Skeleton Worker,1000000
+1170,Sohee,1000000
+1174,Stainer,1000000
+1175,Tarou,1000000
+1176,Vitata,1000000
+1177,Zenorc,1000000
+1178,Zerom,1000000
+1179,Whisper,1000000
+1180,Nine Tail,1000000
+1185,Whisper,1000000
+1186,Giant Whisper,1000000
+1188,Bongun,1000000
+1189,Orc Archer,1000000
+1191,Mimic,1000000
+1192,Wraith,1000000
+1193,Alarm,1000000
+1194,Arclouze,1000000
+1195,Rideword,1000000
+1196,Skeleton Prisoner,1000000
+1197,Zombie Prisoner,1000000
+1199,Punk,1000000
+1200,Zealotus,1000000
+1201,Rybio,1000000
+1202,Phendark,1000000
+1204,Ogretooth,1000000
+1205,Executioner,1000000
+1206,Anolian,1000000
+1207,Sting,1000000
+1208,Wanderer,1000000
+1209,Cramp,1000000
+1211,Brilight,1000000
+1212,Iron Fist,1000000
+1213,High Orc,1000000
+1214,Choco,1000000
+1215,Stem Worm,1000000
+1216,Penomena,1000000
+1219,Abysmal Knight,1000000
+1242,Marin,1000000
+1243,Sasquatch,1000000
+1245,Goblin,1000000
+1246,Cookie,1000000
+1247,Antonio,1000000
+1248,Cruiser,1000000
+1249,Myst Case,1000000
+1250,Chepet,1000000
+1253,Gargoyle,1000000
+1254,Raggler,1000000
+1255,Nereid,1000000
+1256,Pest,1000000
+1257,Injustice,1000000
+1258,Goblin Archer,1000000
+1259,Gryphon,1000000
+1260,Dark Frame,1000000
+1261,Wild Rose,1000000
+1262,Mutant Dragonoid,1000000
+1263,Wind Ghost,1000000
+1264,Merman,1000000
+1265,Cookie,1000000
+1266,Aster,1000000
+1267,Carat,1000000
+1268,Blood Knight,1000000
+1269,Clock,1000000
+1270,Tower Keeper,1000000
+1271,Alligator,1000000
+1273,Orc Lady,1000000
+1274,Megalith,1000000
+1275,Alice,1000000
+1276,Raydric Archer,1000000
+1277,Greatest General,1000000
+1278,Stalactic Golem,1000000
+1280,Steam Goblin,1000000
+1281,Sageworm,1000000
+1282,Kobold Archer,1000000
+1283,Chimera,1000000
+1289,Maya Purple,1000000
+1290,Skeleton General,1000000
+1291,Wraith Dead,1000000
+1292,Mini Demon,1000000
+1293,Creamy Fear,1000000
+1294,Killer Mantis,1000000
+1295,Owl Baron,1000000
+1296,Kobold Leader,1000000
+1297,Ancient Mummy,1000000
+1298,Zombie Master,1000000
+1299,Goblin Leader,1000000
+1300,Caterpillar,1000000
+1301,Am Mut,1000000
+1302,Dark Illusion,1000000
+1303,Giant Hornet,1000000
+1304,Giant Spider,1000000
+1305,Ancient Worm,1000000
+1306,Leib Olmai,1000000
+1307,Cat O' Nine Tails,1000000
+1308,Panzer Goblin,1000000
+1309,Gajomart,1000000
+1310,Majoruros,1000000
+1311,Gullinbursti,1000000
+1313,Mobster,1000000
+1314,Perimeter,1000000
+1315,Assaulter,1000000
+1316,Solider,1000000
+1317,Seal,1000000
+1318,Heater,1000000
+1319,Freezer,1000000
+1320,Owl Duke,1000000
+1321,Dragon Tail,1000000
+1322,Spring Rabbit,1000000
+1323,Sea Otter,1000000
+1364,Assaulter,1000000
+1365,Apocalypse,1000000
+1366,Lava Golem,1000000
+1367,Blazer,1000000
+1368,Geographer,1000000
+1369,Grand Peco,1000000
+1370,Succubus,1000000
+1371,Fake Angel,1000000
+1372,Goat,1000000
+1374,Incubus,1000000
+1375,The Paper,1000000
+1376,Harpy,1000000
+1377,Elder,1000000
+1378,Demon Pungus,1000000
+1379,Nightmare Terror,1000000
+1380,Driller,1000000
+1381,Grizzly,1000000
+1382,Diabolic,1000000
+1383,Explosion,1000000
+1384,Sky Deleter,1000000
+1385,Earth Deleter,1000000
+1386,Sleeper,1000000
+1387,Gig,1000000
+1390,Violy,1000000
+1391,Galapago,1000000
+1392,Rotar Zairo,1000000
+1400,Karakasa,1000000
+1401,Shinobi,1000000
+1402,Poison Toad,1000000
+1403,Firelock Soldier,1000000
+1404,Miyabi Doll,1000000
+1405,Tengu,1000000
+1406,Kapha,1000000
+1408,Bloody Butterfly,1000000
+1409,Dumpling Child,1000000
+1410,Enchanted Peach Tree,1000000
+1412,Taoist Hermit,1000000
+1413,Hermit Plant,1000000
+1415,Baby Leopard,1000000
+1416,Evil Nymph,1000000
+1417,Zipper Bear,1000000
+1493,Dryad,1000000
+1494,Beetle King,1000000
+1495,Stone Shooter,1000000
+1497,Wooden Golem,1000000
+1498,Wootan Shooter,1000000
+1499,Wootan Fighter,1000000
+1500,Parasite,1000000
+1503,Gibbet,1000000
+1504,Dullahan,1000000
+1505,Loli Ruri,1000000
+1506,Disguise,1000000
+1507,Bloody Murderer,1000000
+1508,Quve,1000000
+1509,Lude,1000000
+1510,Heirozoist,1000000
+1512,Yao Jun,1000000
+1513,Mao Guai,1000000
+1514,Zhu Po Long,1000000
+1515,Hatii Bebe,1000000
+1516,Mi Gao,1000000
+1517,Jing Guai,1000000
+1519,Green Maiden,1000000
+1520,Boiled Rice,1000000
+1582,Deviling,1000000
+1584,Tamruan,1000000
+1585,Mime Monkey,1000000
+1586,Leaf Cat,1000000
+1587,Kraben,1000000
+1613,Metaling,1000000
+1614,Mineral,1000000
+1615,Obsidian,1000000
+1616,Pitman,1000000
+1617,Old Stove,1000000
+1618,Ungoliant,1000000
+1619,Porcellio,1000000
+1620,Noxious,1000000
+1621,Venomous,1000000
+1622,Teddy Bear,1000000
+1627,Anopheles,1000000
+1628,Holden,1000000
+1629,Hill Wind,1000000
+1634,Seyren Windsor,1000000
+1635,Eremes Guile,1000000
+1636,Howard Alt-Eisen,1000000
+1637,Margaretha Sorin,1000000
+1638,Cecil Damon,1000000
+1639,Kathryne Keyron,1000000
+1652,Egnigem Cenia,1000000
+1653,Wickebine Tres,1000000
+1654,Armeyer Dinze,1000000
+1655,Errende Ebecee,1000000
+1656,Kavac Icarus,1000000
+1657,Laurell Weinder,1000000
+1664,Photon Cannon,1000000
+1668,Archdam,1000000
+1669,Dimik,1000000
+1674,Gate Switch,1000000
+1675,Venatu,1000000
+1680,Hill Wind,1000000
+1681,Gemini-S58,1000000
+1682,Remover,1000000
+1686,Orc Baby,1000000
+1687,Grove,1000000
+1692,Breeze,1000000
+1693,Plasma,1000000
+1698,Death Word,1000000
+1699,Ancient Mimic,1000000
+1700,Dame of Sentinel,1000000
+1701,Mistress of Shelter,1000000
+1702,Baroness of Retribution,1000000
+1703,Lady Solace,1000000
+1704,Odium of Thanatos,1000000
+1705,Despero of Thanatos,1000000
+1706,Maero of Thanatos,1000000
+1707,Dolor of Thanatos,1000000
+1713,Acidus,1000000
+1714,Ferus,1000000
+1715,Novus,1000000
+1720,Hydrolancer,1000000
+1721,Dragon Egg,1000000
+1735,Alicel,1000000
+1736,Aliot,1000000
+1737,Aliza,1000000
+1738,Constant,1000000
+1752,Skogul,1000000
+1753,Thruth,1000000
+1754,Skeggiold,1000000
+1755,Skeggiold,1000000
+1765,Valkyrie,1000000
+1769,Agav,1000000
+1770,Echio,1000000
+1771,Vanberk,1000000
+1772,Isilla,1000000
+1773,Hondremlin,1000000
+1774,Seeker,1000000
+1775,Snowier,1000000
+1776,Shiroma,1000000
+1777,Ice Titan,1000000
+1778,Gazeti,1000000
+1780,Muscipular,1000000
+1781,Drosera,1000000
+1782,Roween,1000000
+1783,Galion,1000000
+1784,Stapo,1000000
+1829,Sword Master,1000000
+1830,Bow Master,1000000
+1831,Salamander,1000000
+1833,Kasa,1000000
+1836,Magmaring,1000000
+1837,Imp,1000000
+1838,Knocker,1000000
+1839,Byrogue,1000000
+1864,Zombie Slaughter,1000000
+1865,Ragged Zombie,1000000
+1866,Hell Poodle,1000000
+1867,Banshee,1000000
+1869,Flame Skull,1000000
+1870,Necromancer,1000000

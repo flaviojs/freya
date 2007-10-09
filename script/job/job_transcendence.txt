@@ -1,0 +1,1487 @@
+//--------------------------------------------------------------
+//               (c)2004-2007 Aurora Team Presents:             
+//                  ___                                         
+//                 /   |_   _ _ __ ___  _ __ __ _               
+//                / /| | | | | '__/ _ \| '__/ _` |              
+//               / ___ | |_| | | | (_) | | | (_| |++            
+//              /_/  |_|\____|_|  \___/|_|  \__,_|              
+//                 http://aurora.deltaanime.net                 
+//--------------------------------------------------------------
+// Script Title: Transcendence Rebirth Quest	Author: Tsuyuki
+//--------------------------------------------------------------
+// Revision History: v1.0
+//--------------------------------------------------------------
+//	1.0 First version, converted from Aegis [Tsuyuki]
+//--------------------------------------------------------------
+// Additional Notes: * Official-certified / Aegis-certified *
+//--------------------------------------------------------------
+
+
+//--------------------------------------------------------------
+// Transcendence Rebirth Quest - [Tsuyuki]
+//--------------------------------------------------------------
+
+valkyrie.gat,48,86,4	script	Valkyrie#	811,{
+
+	if (job_karma != 0) {
+		mes "[Valkyrie]";
+		mes "Welcome";
+		mes "to Valhalla,";
+		mes "the Hall of Honor.";
+		next;
+		mes "[Valkyrie]";
+		mes "Please make";
+		mes "yourself comfortable";
+		mes "while you are here.";
+		mes "Honor to the warriors!";
+		close;
+	} else if (((BaseLevel > 98) && (JobLevel > 49)) && ((Class == Job_Knight) || (Class == Job_Priest) || (Class == Job_Wizard) || (Class == Job_Blacksmith) || (Class == Job_Hunter) || (Class == Job_Assassin) || (Class == Job_Crusader) || (Class == Job_Monk) || (Class == Job_Sage) || (Class == Job_Alchemist) || (Class == Job_Rogue) || (Class == Job_Bard) || (Class == Job_Dancer))) {
+		mes "[Valkyrie]";
+		mes "Welcome";
+		mes "to Valhalla,";
+		mes "the Hall of Honor.";
+		next;
+		mes "[Valkyrie]";
+		mes "You will now end";
+		mes "your present life and";
+		mes "begin an entirely new life.";
+		mes "Honor to the warriors!";
+		next;
+		if ((Weight > 0) || (Zeny > 0) || (Cart != 0) || (Falcon != 0) || (Peco != 0)) {
+			mes "[Valkyrie]";
+			mes "There are a few things you must";
+			mes "do before we start. You must";
+			mes "first empty your mind and body.";
+			mes "Honor comes when you abandon";
+			mes "all your selfish desires...";
+			next;
+			mes "[Valkyrie]";
+			mes "You cannot take anything with you to the next life. Your items, zeny, pets and Pushcart all have to be left behind.";
+			next;
+			mes "[Valkyrie]";
+			mes "When you are ready";
+			mes "please return to me,";
+			mes "brave adventurer.";
+			close2;
+			warp "yuno_in02.gat",93,205;
+			end;
+		} else {
+			mes "I see you've already";
+			mes "released yourself from";
+			mes "all worldy attachments,";
+			mes ""+strcharinfo(0)+".";
+			next;
+			mes "[Valkyrie]";
+			mes "That's an admirable attitude for an adventurer such as yourself. Honor comes when you abandon all personal desires for the sake of mankind.";
+			next;
+			if (SkillPoint != 0) {
+				mes "[Valkyrie]";
+				mes "Hmm... I sense that you have";
+				mes "some lingering attachment or";
+				mes "unfinished business in your";
+				mes "current life. Take care of that,";
+				mes "and bring closure to your present life.";
+				close2;
+				warp "yuno_in02.gat",93,205;
+				end;
+			}
+			mes "[Valkyrie]";
+			mes "Now, let me remove all";
+			mes "of your present memories...";
+			mes "However, you will be able to";
+			mes "remember the most honorable";
+			mes "moments of this life.";
+			next;
+			mes "[Valkyrie]";
+			mes "With one,";
+			mes "I will ask the";
+			mes "goddess Urd to remove";
+			mes "all of your present";
+			mes "memories.";
+			next;
+			mes "[Valkyrie]";
+			mes "With two,";
+			mes "I will ask the";
+			mes "goddess Verdani to keep";
+			mes "and record the most honorable moments of your present life.";
+			next;
+			mes "[Valkyrie]";
+			mes "With three,";
+			mes "I will ask the";
+			mes "goddess Skuld to";
+			mes "guide you to your";
+			mes "next life.";
+			next;
+			mes "[Valkyrie]";
+			mes "One...";
+			next;
+			mes "[Valkyrie]";
+			mes "One...";
+			mes "Two......";
+			set skill_aco,0;
+			set skill_mage,0;
+			set skill_nov,0;
+			set skill_nov,0;
+			set skill_thief_1,0;
+			set sm_movingrecovery_x,0;
+			set sm_fatalblow_x,0;
+			set sm_autoberserk_x,0;
+			set ac_makingarrow_x,0;
+			set ac_chargearrow_x,0;
+			set mc_loud_x,0;
+			set mc_changecart_x,0;
+			set mc_cartrevolution_x,0;
+			next;
+			mes "[Valkyrie]";
+			mes "One...";
+			mes "Two......";
+			mes "And Three.";
+			if (Class == Job_Knight) {
+				set job_karma,1;
+			} else if (Class == Job_Priest) {
+				set job_karma,2;
+			} else if (Class == Job_Wizard) {
+				set job_karma,3;
+			} else if (Class == Job_Blacksmith) {
+				set job_karma,4;
+			} else if (Class == Job_Hunter) {
+				set job_karma,5;
+			} else if (Class == Job_Assassin) {
+				set job_karma,6;
+			} else if (Class == Job_Crusader) {
+				set job_karma,7;
+			} else if (Class == Job_Monk) {
+				set job_karma,8;
+			} else if (Class == Job_Sage) {
+				set job_karma,9;
+			} else if (Class == Job_Alchemist) {
+				set job_karma,10;
+			} else if (Class == Job_Rogue) {
+				set job_karma,11;
+			} else if (Class == Job_Bard) {
+				set job_karma,12;
+			} else if (Class == Job_Dancer) {
+				set job_karma,13;
+			}
+			unequip;
+			jobchange Job_Novice,1;
+			set BaseLevel,1;
+			resetstatus;
+			resetskill;
+			setoption 0x0000;
+			skill 143,1,0;
+			skill 142,1,0;
+			set SkillPoint,0;
+			set StatusPoint,100;
+			callfunc "F_ClearJobVariables";
+			next;
+			mes "[Valkyrie]";
+			mes "Congratulations.";
+			mes "You are now reborn";
+			mes "into a brand new life.";
+			mes "Please take these small gifts";
+			mes "in preparation for your new adventures.";
+			getitem 1202,1;
+			getitem 2302,1;
+			next;
+			mes "[Valkyrie]";
+			mes "I wish that the release the goddess Urd has granted you proves to be a blessing. I hope that the memories Verdandi has recorded will always honor you.";
+			next;
+			mes "[Valkyrie]";
+			mes "And I pray that the new life to which the goddess Skuld will guide you will be even more honorable than your last.";
+			close2;
+			if ((job_karma == 1) || (job_karma == 7)) {
+				warp "izlude.gat",94,103;
+			} else if ((job_karma == 2) || (job_karma == 8)) {
+				warp "prontera.gat",273,354;
+			} else if ((job_karma == 3) || (job_karma == 9)) {
+				warp "geffen.gat",120,60;
+			} else if ((job_karma == 4) || (job_karma == 10)) {
+				warp "alberta.gat",116,57;
+			} else if ((job_karma == 5) || (job_karma == 12) || (job_karma == 13)) {
+				warp "payon.gat",69,100;
+			} else if ((job_karma == 6) || (job_karma == 11)) {
+				warp "morocc.gat",154,50;
+			} else {
+				warp "yuno_in02.gat",93,205;
+			}
+			end;
+		}
+	} else {
+		mes "[Valkyrie]";
+		mes "Welcome";
+		mes "to Valhalla,";
+		mes "the Hall of Honor.";
+		next;
+		mes "[Valkyrie]";
+		mes "Unfortunately, you have not yet been invited here. I ask you to leave immediately. Honor to the warriors!";
+		close2;
+		warp "yuno_in02.gat",93,205;
+		end;
+	}
+}
+
+yuno_in02.gat,88,164,5	script	Metheus Sylphe#Library	742,{
+
+	if (((BaseLevel > 98) && (JobLevel > 49)) && ((Class == Job_Knight) || (Class == Job_Priest) || (Class == Job_Wizard) || (Class == Job_Blacksmith) || (Class == Job_Hunter) || (Class == Job_Assassin) || (Class == Job_Crusader) || (Class == Job_Monk) || (Class == Job_Sage) || (Class == Job_Alchemist) || (Class == Job_Rogue) || (Class == Job_Bard) || (Class == Job_Dancer))) {
+		if (job_k_ready == 0) {
+			mes "[Metheus Sylphe]";
+			mes "Welcome to the Library of the Schweicherbil Magic Academy.";
+			mes "I assume you have come here";
+			mes "to read the 'Book of Ymir.'";
+			next;
+			mes "[Metheus Sylphe]";
+			mes "Unfortunately, the original copy of the book has been damaged over time. We currently only allow the public to view a copy of the book.";
+			next;
+			mes "[Metheus Sylphe]";
+			mes "Also, in order to preserve the original 'Book of Ymir,' we have decided to accept donations from people who wish to read the copy we have provided.";
+			next;
+			mes "[Metheus Sylphe]";
+			mes "The suggested";
+			mes "donation amount is";
+			mes "1,285,000 zeny.";
+			next;
+			switch(select("Donate.","Cancel.")) {
+			case 1:
+				if (Zeny > 1284449) {
+					set Zeny,Zeny - 1285000;
+					set job_k_ready,1;
+					mes "[Metheus Sylphe]";
+					mes "Thank you, your donation will be used for a good cause. You may";
+					mes "now go in and read the book.";
+					close;
+				} else {
+					mes "[Metheus Sylphe]";
+					mes "Unfortunately, you don't seem to possess enough zeny at the moment. Please check your funds and come back again.";
+					close;
+				}
+			case 2:
+				mes "[Metheus Sylphe]";
+				mes "Take your time, and";
+				mes "enjoy your travels.";
+				close;
+			}
+		} else {
+			mes "[Metheus Sylphe]";
+			mes "Once again, thank you for your generous donation. Feel free to read a carbon copy of the 'Book of Ymir' at your leisure.";
+			close;
+		}
+	} else {
+		mes "[Metheus Sylphe]";
+		mes "Welcome to the Library of the Schweicherbil Magic Academy.";
+		mes "Here, we have a countless number of books. Please take your time and look around.";
+		close;
+	}
+}
+
+yuno_in02.gat,93,207,1	script	Book of Ymir	111,{
+
+	if (job_karma != 0) {
+		mes "[The Book of Ymir]";
+		mes "...The entrance to the Hall of Honor is open to anyone who has moved forward into their next life. It is there to help heroes decide what they want to do, and can lead them to anywhere in this world.";
+		next;
+		mes "[The Book of Ymir]";
+		mes "In the Hall of Honor, everything is prepared for heroes. It is rumored that any wish that cannot be fulfilled in our reality can be realized in the Hall of Honor.";
+		next;
+		switch(select("Stop reading.","Continue reading.")) {
+		case 1:
+			mes "[The Book of Ymir]";
+			mes ".....";
+			close;
+		case 2:
+			mes "[The Book of Ymir]";
+			mes "There is a forgotten path which leads to the Hall of Honor, the closest place to the heavens. The ordinary will never discover this place...";
+			close2;
+			warp "valkyrie.gat",48,8;
+			end;
+		}
+	} else if (((BaseLevel > 98) && (JobLevel > 49)) && ((Class == Job_Knight) || (Class == Job_Priest) || (Class == Job_Wizard) || (Class == Job_Blacksmith) || (Class == Job_Hunter) || (Class == Job_Assassin) || (Class == Job_Crusader) || (Class == Job_Monk) || (Class == Job_Sage) || (Class == Job_Alchemist) || (Class == Job_Rogue) || (Class == Job_Bard) || (Class == Job_Dancer))) {
+		if (job_k_ready != 0) {
+			mes "[The Book of Ymir]";
+			mes "...Therefore, ancient heroes were";
+			mes "always in anguish, knowing that";
+			mes "eventually, they were mortal and";
+			mes "would pass from this realm...";
+			next;
+			mes "[The Book of Ymir]";
+			mes "There were no documents,";
+			mes "songs, or remaining folklore that had any information on life after death. However, I recently uncovered an old scroll";
+			mes "about Valkyrie...";
+			next;
+			mes "[The Book of Ymir]";
+			mes "Valkyrie...";
+			mes "The legendary";
+			mes "guardian angel.";
+			mes "Angel of Ragnarok.";
+			next;
+			mes "[The Book of Ymir]";
+			mes "Adventurers of great strength";
+			mes "and bravery will be lead by";
+			mes "Valkyrie to Valhalla, the Hall";
+			mes "of Honor. There, they will be";
+			mes "given a new life.";
+			next;
+			mes "[The Book of Ymir]";
+			mes "Reborn, they will live again as";
+			mes "even greater heroes that will";
+			mes "brighten the world. Bodies that";
+			mes "were exhausted will be filled";
+			mes "with energy...";
+			next;
+			mes "[The Book of Ymir]";
+			mes "And their souls will be given abilities with the heart of Ymir. However, the heart of Ymir was totally destroyed and scattered all over the world after the battle for Rune-Midgarts.";
+			next;
+			mes "[The Book of Ymir]";
+			mes "I have found a small amount of";
+			mes "Ymir heart pieces over a long";
+			mes "long period of time. But I can't";
+			mes "confirm if the story of Valkyrie";
+			mes "and Valhalla is true just";
+			mes "through scientific tests.";
+			next;
+			mes "[The Book of Ymir]";
+			mes "So, I am leaving this record in hope that someone in the future";
+			mes "can confirm that Valkyrie and Valhalla actually exist...";
+			next;
+			set job_k_ready,2;
+			mes "[The book of Ymir]";
+			mes "Let the heroes live new lives";
+			mes "so they can protect the world";
+			mes "from danger. And then...";
+			close;
+		} else {
+			mes "[The Book of Ymir]";
+			mes "...";
+			close;
+		}
+	} else {
+		mes "[The Book of Ymir]";
+		mes "...";
+		close;
+	}
+}
+
+yuno_in05.gat,49,43,1	script	Heart of Ymir	111,{
+
+	if (((BaseLevel > 98) && (JobLevel > 49)) && ((Class == Job_Knight) || (Class == Job_Priest) || (Class == Job_Wizard) || (Class == Job_Blacksmith) || (Class == Job_Hunter) || (Class == Job_Assassin) || (Class == Job_Crusader) || (Class == Job_Monk) || (Class == Job_Sage) || (Class == Job_Alchemist) || (Class == Job_Rogue) || (Class == Job_Bard) || (Class == Job_Dancer))) {
+		if (job_k_ready == 2) {
+			warp "valkyrie.gat",48,8;
+		}
+	}
+	end;
+}
+
+valkyrie.gat,44,39,5	script	Lord Knight#Valkyrie#	56,{
+
+	if (job_karma == 0) {
+		set '@karma_d,rand(1,10);
+		if ('@karma_d > 4) {
+			mes "[Lord Knight]";
+			mes "Congratulations.";
+			mes "Honor to the warriors!";
+			close;
+		} else {
+			mes "[Lord Knight]";
+			mes "We Knights have an";
+			mes "awesome responsibility...";
+			mes "To serve and protect.";
+			next;
+			mes "[Lord Knight]";
+			mes "Even at the cost";
+			mes "of our own lives,";
+			mes "we must safeguard the";
+			mes "well being of our comrades.";
+			close;
+		}
+	} else if ((job_karma == 1) && (Class == Job_Swordman && Upper == 1) && (JobLevel > 39)) {
+		mes "[Lord Knight]";
+		mes "Your time has come!";
+		mes "The world still needs you.";
+		mes "Please continue your life";
+		mes "as a hero with a new appearance.";
+		next;
+		mes "[Lord Knight]";
+		mes "Would you like";
+		mes "to become a Lord Knight?";
+		next;
+		switch(select("No.","Yes.")) {
+		case 1:
+			mes "[Lord Knight]";
+			mes "When you're ready,";
+			mes "feel free to come back.";
+			mes "Honor to the warriors!";
+			close;
+		case 2:
+			if (SkillPoint != 0) {
+				mes "[Lord Knight]";
+				mes "It is still possible for you to learn more skills. Please use";
+				mes "all of your remaining Skill Points before returning to me.";
+				close;
+			} else {
+				callfunc "F_JobChange",Job_Knight;
+				mes "[Lord Knight]";
+				mes "Congratulations!";
+				mes "As a Lord Knight,";
+				mes "I hope that you will be";
+				mes "at the forefront of battle,";
+				mes "and lead your allies to victory!";
+				close;
+			}
+		}
+	} else {
+		mes "[Lord Knight]";
+		mes "Welcome";
+		mes "to Valhalla,";
+		mes "the Hall of Honor.";
+		next;
+		mes "[Lord Knight]";
+		mes "Please make";
+		mes "yourself comfortable";
+		mes "while you are here.";
+		mes "Honor to the warriors!";
+		close;
+	}
+}
+
+valkyrie.gat,53,39,3	script	Paladin#Valkyrie#	752,{
+
+	if (job_karma == 0) {
+		set '@karma_d,rand(1,10);
+		if ('@karma_d > 4) {
+			mes "[Paladin]";
+			mes "Congratulations.";
+			mes "Honor to the warriors!";
+			close;
+		} else {
+			mes "[Paladin]";
+			mes "Do not forget";
+			mes "that the Holy War";
+			mes "is fast approaching!";
+			mes "We must ready ourselves!";
+			mes "May the light of justice";
+			mes "always brighten our path!";
+			close;
+		}
+	} else if ((job_karma == 7) && (Class == Job_Swordman && Upper == 1) && (JobLevel > 39)) {
+		mes "[Paladin]";
+		mes "The Holy War will";
+		mes "be upon us before we";
+		mes "know it. More than ever,";
+		mes "we have need of strong men";
+		mes "and women to fight for what";
+		mes "is good and right.";
+		next;
+		mes "[Paladin]";
+		mes "Will you fight on";
+		mes "the side of righteousness";
+		mes "as a Paladin?";
+		next;
+		switch(select("No.","Yes.")) {
+		case 1:
+			mes "[Paladin]";
+			mes "When you're ready,";
+			mes "feel free to come back.";
+			mes "Honor to the warriors!";
+			close;
+		case 2:
+			if (SkillPoint != 0) {
+				mes "[Paladin]";
+				mes "It is still possible for you to learn more skills. Please use";
+				mes "all of your remaining Skill Points before returning to me.";
+				close;
+			} else {
+				callfunc "F_JobChange",Job_Crusader;
+				mes "[Paladin]";
+				mes "Congratulations.";
+				mes "As a Paladin, I hope";
+				mes "you will protect those";
+				mes "weaker than you, and bring";
+				mes "us victory in the upcoming";
+				mes "war between good and evil.";
+				close;
+			}
+		}
+	} else {
+		mes "[Paladin]";
+		mes "Welcome";
+		mes "to Valhalla,";
+		mes "the Hall of Honor.";
+		next;
+		mes "[Paladin]";
+		mes "Please make";
+		mes "yourself comfortable";
+		mes "while you are here.";
+		mes "Honor to the warriors!";
+		close;
+	}
+}
+
+valkyrie.gat,44,42,5	script	High Priest#Valkyrie#	60,{
+
+	if (job_karma == 0) {
+		set '@karma_d,rand(1,10);
+		if ('@karma_d > 4) {
+			mes "[High Priest]";
+			mes "Congratulations.";
+			mes "Honor to the warriors!";
+			close;
+		} else {
+			mes "[High Priest]";
+			mes "Through the power";
+			mes "of holiness, may we";
+			mes "find peace, strength";
+			mes "and protection. Deliver";
+			mes "us from the forces of evil...";
+			close;
+		}
+	} else if ((job_karma == 2) && (Class == Job_Acolyte && Upper == 1) && (JobLevel > 39)) {
+		mes "[High Priest]";
+		mes "Our world is in";
+		mes "need of people of";
+		mes "talent and conviction.";
+		mes "Please continue your";
+		mes "good works as an even";
+		mes "greater hero of holiness...";
+		next;
+		mes "[High Priest]";
+		mes "Would you like";
+		mes "to become a High Priest?";
+		next;
+		switch(select("No.","Yes.")) {
+		case 1:
+			mes "[High Priest]";
+			mes "When you're ready,";
+			mes "feel free to come back.";
+			mes "Honor to the warriors!";
+			close;
+		case 2:
+			if (SkillPoint != 0) {
+				mes "[High Priest]";
+				mes "It is still possible for you to learn more skills. Please use";
+				mes "all of your remaining Skill Points before returning to me.";
+				close;
+			} else {
+				callfunc "F_JobChange",Job_Priest;
+				mes "[High Priest]";
+				mes "Congratulations.";
+				mes "As a High Priest,";
+				mes "I hope you will guide";
+				mes "others upon the path";
+				mes "to holiness...";
+				close;
+			}
+		}
+	} else {
+		mes "[High Priest]";
+		mes "Welcome";
+		mes "to Valhalla,";
+		mes "the Hall of Honor.";
+		next;
+		mes "[High Priest]";
+		mes "Please make";
+		mes "yourself comfortable";
+		mes "while you are here.";
+		mes "Honor to the warriors!";
+		close;
+	}
+}
+
+valkyrie.gat,53,42,3	script	Champion#Valkyrie#	52,{
+
+	if (job_karma == 0) {
+		set '@karma_d,rand(1,10);
+		if ('@karma_d > 4) {
+			mes "[Champion]";
+			mes "Congratulations.";
+			mes "Honor to the warriors!";
+			close;
+		} else {
+			mes "[Champion]";
+			mes "Skill.";
+			mes "Speed.";
+			mes "Strength.";
+			mes "Agility.";
+			next;
+			mes "[Champion]";
+			mes "A Champion can";
+			mes "benefit from all";
+			mes "these things. But";
+			mes "one can only master";
+			mes "so much in life...";
+			close;
+		}
+	} else if ((job_karma == 8) && (Class == Job_Acolyte && Upper == 1) && (JobLevel > 39)) {
+		mes "[Champion]";
+		mes "It's time.";
+		mes "Time for great heroes";
+		mes "to stand up against the";
+		mes "forces of evil which plague";
+		mes "the world of Rune-Midgard!";
+		next;
+		mes "[Champion]";
+		mes "Would you like";
+		mes "to become a Champion?";
+		next;
+		switch(select("No.","Yes.")) {
+		case 1:
+			mes "[Champion]";
+			mes "When you're ready,";
+			mes "feel free to come back.";
+			mes "Honor to the warriors!";
+			close;
+		case 2:
+			if (SkillPoint != 0) {
+				mes "[Champion]";
+				mes "It is still possible for you to learn more skills. Please use";
+				mes "all of your remaining Skill Points before returning to me.";
+				close;
+			} else {
+				callfunc "F_JobChange",Job_Monk;
+				mes "[Champion]";
+				mes "Congratulations!";
+				mes "Live as a Champion,";
+				mes "and bring light into";
+				mes "the world through the";
+				mes "strength of your fists.";
+				close;
+			}
+		}
+	} else {
+		mes "[Champion]";
+		mes "Welcome";
+		mes "to Valhalla,";
+		mes "the Hall of Honor.";
+		next;
+		mes "[Champion]";
+		mes "Please make";
+		mes "yourself comfortable";
+		mes "while you are here.";
+		mes "Honor to the warriors!";
+		close;
+	}
+}
+
+valkyrie.gat,44,47,5	script	High Wizard#Valkyrie#	735,{
+
+	if (job_karma == 0) {
+		set '@karma_d,rand(1,10);
+		if ('@karma_d > 4) {
+			mes "[High Wizard]";
+			mes "Congratulations.";
+			mes "Honor to the warriors!";
+			close;
+		} else {
+			mes "[High Wizard]";
+			mes "We High Wizards have";
+			mes "the responsibility of";
+			mes "using our destructive magic";
+			mes "for the right purposes.";
+			next;
+			mes "[High Wizard]";
+			mes "A lifetime of training";
+			mes "is required before becoming";
+			mes "a High Wizard. Can you imagine";
+			mes "what would happen if our power";
+			mes "was placed in the wrong hands?!";
+			close;
+		}
+	} else if ((job_karma == 3) && (Class == Job_Mage && Upper == 1) && (JobLevel > 39)) {
+		mes "[High Wizard]";
+		mes "It is time.";
+		mes "And Rune-Midgard has";
+		mes "need of those who can";
+		mes "wield the strongest of magic...";
+		next;
+		mes "[High Wizard]";
+		mes "Would you like to";
+		mes "become a High Wizard?";
+		next;
+		switch(select("No.","Yes.")) {
+		case 1:
+			mes "[High Wizard]";
+			mes "When you're ready,";
+			mes "feel free to come back.";
+			mes "Honors to the warriors!";
+			close;
+		case 2:
+			if (SkillPoint != 0) {
+				mes "[High Wizard]";
+				mes "It is still possible for you to learn more skills. Please use";
+				mes "all of your remaining Skill Points before returning to me.";
+				close;
+			} else {
+				callfunc "F_JobChange",Job_Wizard;
+				mes "[High Wizard]";
+				mes "Congratulations.";
+				mes "As a High Wizard,";
+				mes "I hope use you use";
+				mes "your powers to bring";
+				mes "peace to the oppressed.";
+				close;
+			}
+		}
+	} else {
+		mes "[High Wizard]";
+		mes "Welcome";
+		mes "to Valhalla,";
+		mes "the Hall of Honor.";
+		next;
+		mes "[High Wizard]";
+		mes "Please make";
+		mes "yourself comfortable";
+		mes "while you are here.";
+		mes "Honor to the warriors!";
+		close;
+	}
+}
+
+valkyrie.gat,53,47,3	script	Scholar#Valkyrie#	743,{
+
+	if (job_karma == 0) {
+		set '@karma_d,rand(1,10);
+		if ('@karma_d > 4) {
+			mes "[Scholar]";
+			mes "Congratulations.";
+			mes "Honor to the warriors!";
+			close;
+		} else {
+			mes "[Scholar]";
+			mes "It takes a lifetime...";
+			mes "Literally a lifetime";
+			mes "to amass the knowledge";
+			mes "necessary to become";
+			mes "a Scholar...";
+			next;
+			mes "[Scholar]";
+			mes "It's overwhelming.";
+			mes "The more you learn, the";
+			mes "more you discover what";
+			mes "else you don't know.";
+			mes "There's no end to the";
+			mes "process of learning...";
+			close;
+		}
+	} else if ((job_karma == 9) && (Class == Job_Mage && Upper == 1) && (JobLevel > 39)) {
+		mes "[Scholar]";
+		mes "Rune-Midgard doesn't";
+		mes "have enough Scholars to";
+		mes "help usher in a new age";
+		mes "of prosperity. The";
+		mes "world needs you...";
+		next;
+		mes "[Scholar]";
+		mes "Will you take this";
+		mes "awesome responsibility?";
+		mes "Will you serve Rune-Midgard";
+		mes "as a Scholar?";
+		next;
+		switch(select("No.","Yes.")) {
+		case 1:
+			mes "[Scholar]";
+			mes "When you're ready,";
+			mes "feel free to come back.";
+			mes "Honor to the warriors!";
+			close;
+		case 2:
+			if (SkillPoint != 0) {
+				mes "[Scholar]";
+				mes "It is still possible for you to learn more skills. Please use";
+				mes "all of your remaining Skill Points before returning to me.";
+				close;
+			} else {
+				callfunc "F_JobChange",Job_Sage;
+				mes "[Scholar]";
+				mes "Congratulations!";
+				mes "As a Professor, I hope";
+				mes "that you will take an";
+				mes "active part in bringing";
+				mes "the light of knowledge";
+				mes "where there is darkness.";
+				close;
+			}
+		}
+	} else {
+		mes "[Scholar]";
+		mes "Welcome";
+		mes "to Valhalla,";
+		mes "the Hall of Honor.";
+		next;
+		mes "[Scholar]";
+		mes "Please make";
+		mes "yourself comfortable";
+		mes "while you are here.";
+		mes "Honor to the warriors!";
+		close;
+	}
+}
+
+valkyrie.gat,44,50,5	script	MasterSmith#Valkyrie#	731,{
+
+	if (job_karma == 0) {
+		set '@karma_d,rand(1,10);
+		if ('@karma_d > 4) {
+			mes "[MasterSmith]";
+			mes "Congratulations.";
+			mes "Honor to the warriors!";
+			close;
+		} else {
+			mes "[MasterSmith]";
+			mes "Ah...";
+			mes "The pinnacle";
+			mes "of craftsmanship.";
+			mes "That's the work of";
+			mes "a MasterSmith.";
+			next;
+			mes "[MasterSmith]";
+			mes "Once you're the";
+			mes "the best of the best,";
+			mes "you begin forging with";
+			mes "the goal of discovering";
+			mes "new and better ways of";
+			mes "crafting...";
+			close;
+		}
+	} else if ((job_karma == 4) && (Class == Job_Merchant && Upper == 1) && (JobLevel > 39)) {
+		mes "[MasterSmith]";
+		mes "The time has come!";
+		mes "Our world needs brave,";
+		mes "hard-working adventurers";
+		mes "like you...";
+		next;
+		mes "[Whitesmith]";
+		mes "Would you like to";
+		mes "become a MasterSmith?";
+		next;
+		switch(select("No.","Yes.")) {
+		case 1:
+			mes "[MasterSmith]";
+			mes "When you're ready,";
+			mes "feel free to come back.";
+			mes "Honor to the warriors!";
+			close;
+		case 2:
+			if (SkillPoint != 0) {
+				mes "[MasterSmith]";
+				mes "It is still possible for you to learn more skills. Please use";
+				mes "all of your remaining Skill Points before returning to me.";
+				close;
+			} else {
+				callfunc "F_JobChange",Job_Blacksmith;
+				mes "[MasterSmith]";
+				mes "Congratulations!";
+				mes "As a MasterSmith,";
+				mes "I hope you will forge";
+				mes "a path towards a brighter";
+				mes "future for Rune-Midgard.";
+				close;
+			}
+		}
+	} else {
+		mes "[MasterSmith]";
+		mes "Welcome";
+		mes "to Valhalla,";
+		mes "the Hall of Honor.";
+		next;
+		mes "[MasterSmith]";
+		mes "Please make";
+		mes "yourself comfortable";
+		mes "while you are here.";
+		mes "Honor to the warriors!";
+		close;
+	}
+}
+
+valkyrie.gat,53,50,3	script	Biochemist#Valkyrie#	122,{
+
+	if (job_karma == 0) {
+		set '@karma_d,rand(1,10);
+		if ('@karma_d > 4) {
+			mes "[Biochemist]";
+			mes "Congratulations.";
+			mes "Honor to the warriors!";
+			close;
+		} else {
+			mes "[Biochemist]";
+			mes "It's strange that";
+			mes "someone like me is here.";
+			mes "But even someone skilled";
+			mes "in the ways of science";
+			mes "can manage to be a hero.";
+			next;
+			mes "[Biochemist]";
+			mes "In this instance,";
+			mes "it's not necessarily";
+			mes "the means I've used, but";
+			mes "the ends for which I've";
+			mes "fought that earned me";
+			mes "a place in Valhalla...";
+			close;
+		}
+	} else if ((job_karma == 10) && (Class == Job_Merchant && Upper == 1) && (JobLevel > 39)) {
+		mes "[Biochemist]";
+		mes "Yes...";
+		mes "It's about time.";
+		mes "We need more geniuses";
+		mes "like you on Rune-Midgard.";
+		next;
+		mes "[Biochemist]";
+		mes "Would you like to";
+		mes "become a Biochemist?";
+		next;
+		switch(select("No.","Yes.")) {
+		case 1:
+			mes "[Biochemist]";
+			mes "When you're ready,";
+			mes "feel free to come back.";
+			mes "Honor to the warriors!";
+			close;
+		case 2:
+			if (SkillPoint != 0) {
+				mes "[Biochemist]";
+				mes "It is still possible for you to learn more skills. Please use";
+				mes "all of your remaining Skill Points before returning to me.";
+				close;
+			} else {
+				callfunc "F_JobChange",Job_Alchemist;
+				mes "[Biochemist]";
+				mes "Congratulations!";
+				mes "As a Biochemist,";
+				mes "I hope you use your";
+				mes "vast knowledge for the";
+				mes "right purposes.";
+				close;
+			}
+		}
+	} else {
+		if ((Class == Job_Alchemist && Upper == 1) && (qskill_homun == 13) && (getskilllv(238) == 0)) {
+			mes "[Biochemist]";
+			mes "Ah, have you come to";
+			mes "retrieve the memories";
+			mes "lost to you? Yes, you";
+			mes "must be here for the";
+			mes "secrets of life that";
+			mes "were once yours...";
+			next;
+			switch(select("Yes","No")) {
+			case 1:
+				mes "[Biochemist]";
+				mes "Close your eyes and";
+				mes "put your mind at rest.";
+				mes "We will return to your";
+				mes "past to recollect the";
+				mes "fragments of your lost";
+				mes "memories.";
+				next;
+				mes "[Biochemist]";
+				mes "When you open your eyes,";
+				mes "you will clearly remember";
+				mes "the secret of life. You will";
+				mes "also remember the weight of";
+				mes "responsibility in using these";
+				mes "secrets for the right ends...";
+				next;
+				skill 238,1,0;
+				mes "[Biochemist]";
+				mes "Open your eyes...";
+				mes "Now that you have";
+				mes "remembered how to";
+				mes "create artificial life, I only";
+				mes "ask that you treat all of your";
+				mes "creations with respect.";
+				close;
+			case 2:
+				mes "[Biochemist]";
+				mes "If you wish to";
+				mes "retrieve your lost";
+				mes "memories, please";
+				mes "come back to me.";
+				mes "The secret to creating";
+				mes "life is no trifling thing...";
+				close;
+			}
+		} else {
+			mes "[Biochemist]";
+			mes "Welcome";
+			mes "to Valhalla,";
+			mes "the Hall of Honor.";
+			next;
+			mes "[Biochemist]";
+			mes "Please make";
+			mes "yourself comfortable";
+			mes "while you are here.";
+			mes "Honor to the warriors!";
+			close;
+		}
+	}
+}
+
+valkyrie.gat,44,55,5	script	Sniper#Valkyrie#	727,{
+
+	if (job_karma == 0) {
+		set '@karma_d,rand(1,10);
+		if ('@karma_d > 4) {
+			mes "[Sniper]";
+			mes "Congratulations.";
+			mes "Honor to the warriors!";
+			close;
+		} else {
+			mes "[Sniper]";
+			mes "One shot.";
+			mes "One kill.";
+			mes "It's not so hard";
+			mes "once you develop the";
+			mes "vision for that style";
+			mes "of battling.";
+			close;
+		}
+	} else if ((job_karma == 5) && (Class == Job_Archer && Upper == 1) && (JobLevel > 39)) {
+		mes "[Sniper]";
+		mes "The world is in";
+		mes "need of mighty Bowmen";
+		mes "like you. Are you ready for";
+		mes "the awesome responsibility?";
+		next;
+		mes "[Sniper]";
+		mes "Are you willing to";
+		mes "take the next step and";
+		mes "become a Sniper?";
+		next;
+		switch(select("No.","Yes.")) {
+		case 1:
+			mes "[Sniper]";
+			mes "When you're ready,";
+			mes "feel free to come back.";
+			mes "Honor to the warriors!";
+			close;
+		case 2:
+			if (SkillPoint != 0) {
+				mes "[Sniper]";
+				mes "It is still possible for you to learn more skills. Please use";
+				mes "all of your remaining Skill Points before returning to me.";
+				close;
+			} else {
+				callfunc "F_JobChange",Job_Hunter;
+				mes "[Sniper]";
+				mes "Congratulations!";
+				mes "As a Sniper, I hope";
+				mes "that the minions of evil";
+				mes "will never be safe so";
+				mes "long as they are in";
+				mes "your sight!";
+				close;
+			}
+		}
+	} else {
+		mes "[Sniper]";
+		mes "Welcome";
+		mes "to Valhalla,";
+		mes "the Hall of Honor.";
+		next;
+		mes "[Sniper]";
+		mes "Please make";
+		mes "yourself comfortable";
+		mes "while you are here.";
+		mes "Honor to the warriors!";
+		close;
+	}
+}
+
+valkyrie.gat,53,54,3	script	Minstrel#Valkyrie#	741,{
+
+	if (job_karma == 0) {
+		set '@karma_d,rand(1,10);
+		if ('@karma_d > 4) {
+			mes "[Minstrel]";
+			mes "Congratulations.";
+			mes "Honor to the warriors!";
+			close;
+		} else {
+			mes "[Minstrel]";
+			mes "Do you want to";
+			mes "sing a song with me?";
+			mes "Sha la la la la~";
+			close;
+		}
+	} else if ((job_karma == 12) && (Class == Job_Archer && Upper == 1) && (JobLevel > 39)) {
+		mes "[Minstrel]";
+		mes "The dreary world";
+		mes "of mortals is in need";
+		mes "of more cheerful song.";
+		mes "Will you bring it to them";
+		mes "and turn the tide in the";
+		mes "battle against evil?";
+		next;
+		mes "[Minstrel]";
+		mes "Will you do this";
+		mes "for Rune-Midgard...";
+		mes "As a Minstrel?";
+		next;
+		switch(select("No.","Yes.")) {
+		case 1:
+			mes "[Minstrel]";
+			mes "When you're ready,";
+			mes "feel free to come back.";
+			mes "Honor to the warriors!";
+			close;
+		case 2:
+			if (SkillPoint != 0) {
+				mes "[Minstrel]";
+				mes "It is still possible for you to learn more skills. Please use";
+				mes "all of your remaining Skill Points before returning to me.";
+				close;
+			} else {
+				callfunc "F_JobChange",Job_Bard;
+				mes "[Minstrel]";
+				mes "Congratulations!";
+				mes "As a Minstrel, your";
+				mes "your songs will bring";
+				mes "hope to your allies, and";
+				mes "desperation to your foes.";
+				close;
+			}
+		}
+	} else {
+		mes "[Minstrel]";
+		mes "Welcome";
+		mes "to Valhalla,";
+		mes "the Hall of Honor.";
+		next;
+		mes "[Minstrel]";
+		mes "Please make";
+		mes "yourself comfortable";
+		mes "while you are here.";
+		mes "Honor to the warriors!";
+		close;
+	}
+}
+
+valkyrie.gat,53,56,3	script	Gypsy#Valkyrie#	101,{
+
+	if (job_karma == 0) {
+		set '@karma_d,rand(1,10);
+		if ('@karma_d > 4) {
+			mes "[Gypsy]";
+			mes "Congratulations.";
+			mes "Honor to the warriors!";
+			close;
+		} else {
+			mes "[Gypsy]";
+			mes "Move left,";
+			mes "move right~!";
+			mes "And step...!";
+			mes "Dancing can be";
+			mes "more than a hobby.";
+			mes "For me, it's a way of life~";
+			close;
+		}
+	} else if ((job_karma == 13) && (Class == Job_Archer && Upper == 1) && (JobLevel > 39)) {
+		mes "[Gypsy]";
+		mes "The land of Rune-Midgard";
+		mes "is in need of talented women";
+		mes "to subtly change the balances";
+		mes "in the battle between good";
+		mes "and evil.";
+		next;
+		mes "[Gypsy]";
+		mes "Are you ready";
+		mes "to take up this role,";
+		mes "and become a Gypsy?";
+		next;
+		switch(select("No.","Yes.")) {
+		case 1:
+			mes "[Gypsy]";
+			mes "When you're ready,";
+			mes "feel free to come back.";
+			mes "Honor to the warriors!";
+			close;
+		case 2:
+			if (SkillPoint != 0) {
+				mes "[Gypsy]";
+				mes "It is still possible for you to learn more skills. Please use";
+				mes "all of your remaining Skill Points before returning to me.";
+				close;
+			} else {
+				callfunc "F_JobChange",Job_Dancer;
+				mes "[Gypsy]";
+				mes "Congratulations!";
+				mes "As a Gypsy, I know";
+				mes "that your performances";
+				mes "sway the hearts of all";
+				mes "those who will be watching...";
+				close;
+			}
+		}
+	} else {
+		mes "[Gypsy]";
+		mes "Welcome";
+		mes "to Valhalla,";
+		mes "the Hall of Honor.";
+		next;
+		mes "[Gypsy]";
+		mes "Please make";
+		mes "yourself comfortable";
+		mes "while you are here.";
+		mes "Honor to the warriors!";
+		close;
+	}
+}
+
+valkyrie.gat,44,58,5	script	Assassin Cross#Valkyrie#	725,{
+
+	if (job_karma == 0) {
+		set '@karma_d,rand(1,10);
+		if ('@karma_d > 4) {
+			mes "[Assassin Cross]";
+			mes "Congratulations...";
+			next;
+			mes "[Assassin Cross]";
+			mes "...";
+			next;
+			mes "[Assassin Cross]";
+			mes "...";
+			mes "......";
+			next;
+			mes "[Assassin Cross]";
+			mes "...";
+			mes "......";
+			mes "Honor to";
+			mes "the warriors.";
+			close;
+		} else {
+			mes "[Assassin Cross]";
+			mes "We are the warriors";
+			mes "of the desert. Nobody";
+			mes "looks down upon us.";
+			mes "Nobody...";
+			close;
+		}
+	} else if ((job_karma == 6) && (Class == Job_Thief && Upper == 1) && (JobLevel > 39)) {
+		mes "[Assassin Cross]";
+		mes "The time has come.";
+		mes "The world needs you...";
+		mes "More than ever.";
+		next;
+		mes "[Assassin Cross]";
+		mes "I ask that you continue to live in the shadows, but as an even greater Assassin with a new appearance.";
+		next;
+		mes "[Assassin Cross]";
+		mes "Will you become";
+		mes "an Assassin Cross?";
+		next;
+		switch(select("No.","Yes.")) {
+		case 1:
+			mes "[Assassin Cross]";
+			mes "When you are";
+			mes "ready, come back.";
+			next;
+			mes "[Assassin Cross]";
+			mes "Honor to";
+			mes "the warriors.";
+			close;
+		case 2:
+			if (SkillPoint != 0) {
+				mes "[Assassin Cross]";
+				mes "You still haven't";
+				mes "learned everything";
+				mes "that you can.";
+				next;
+				mes "[Assassin Cross]";
+				mes "Use all your";
+				mes "Skill Points";
+				mes "and then come back.";
+				close;
+			} else {
+				callfunc "F_JobChange",Job_Assassin;
+				mes "[Assassin Cross]";
+				mes "Congratulations.";
+				mes "As an Assassin Cross,";
+				mes "I hope that you fight for a brighter future within the darkness.";
+				close;
+			}
+		}
+	} else {
+		mes "[Assassin Cross]";
+		mes "Welcome";
+		mes "to Valhalla,";
+		mes "the Hall of Honor.";
+		next;
+		mes "[Assassin Cross]";
+		mes "Please make";
+		mes "yourself comfortable";
+		mes "while you are here.";
+		mes "Honor to the warriors.";
+		close;
+	}
+}
+
+valkyrie.gat,53,58,3	script	Stalker#Valkyrie#	747,{
+
+	if (job_karma == 0) {
+		set '@karma_d,rand(1,10);
+		if ('@karma_d > 4) {
+			mes "[Stalker]";
+			mes "Congratulations.";
+			mes "Honor to the warriors!";
+			close;
+		} else {
+			mes "[Stalker]";
+			mes "Heh...";
+			mes "It's tough";
+			mes "being a hero";
+			mes "and being shady,";
+			mes "untrustworthy,";
+			mes "sneaky...";
+			next;
+			mes "[Stalker]";
+			mes "But when the";
+			mes "going gets rough";
+			mes "my pals know they";
+			mes "can count on me.";
+			mes "I need them and";
+			mes "they need me.";
+			close;
+		}
+	} else if ((job_karma == 11) && (Class == Job_Thief && Upper == 1) && (JobLevel > 39)) {
+		mes "[Stalker]";
+		mes "This world needs";
+		mes "more heroes who are";
+		mes "willing to walk the line";
+		mes "between order and lawlessness.";
+		next;
+		mes "[Stalker]";
+		mes "Are you ready";
+		mes "to join the ranks";
+		mes "of the sneakiest of";
+		mes "warriors? Are you ready";
+		mes "to become a Stalker?";
+		next;
+		switch(select("No.","Yes.")) {
+		case 1:
+			mes "[Stalker]";
+			mes "When you're ready,";
+			mes "feel free to come back.";
+			mes "Honor to the warriors!";
+			close;
+		case 2:
+			if (SkillPoint != 0) {
+				mes "[Stalker]";
+				mes "It is still possible for you to learn more skills. Please use";
+				mes "all of your remaining Skill Points before returning to me.";
+				close;
+			} else {
+				callfunc "F_JobChange",Job_Rogue;
+				mes "[Stalker]";
+				mes "Congratulations!";
+				mes "As a Stalker, I hope";
+				mes "you stab the right people";
+				mes "in the back. Banish the";
+				mes "wicked using their own";
+				mes "dastardly methods!";
+				close;
+			}
+		}
+	} else {
+		mes "[Stalker]";
+		mes "Welcome";
+		mes "to Valhalla,";
+		mes "the Hall of Honor.";
+		next;
+		mes "[Stalker]";
+		mes "Please make";
+		mes "yourself comfortable";
+		mes "while you are here.";
+		mes "Honor to the warriors!";
+		close;
+	}
+}
+
+valkyrie.gat,44,33,5	script	Teleporter	124,{
+
+	if (job_karma == 0) {
+		set '@karma_d,rand(1,10);
+		if ('@karma_d > 4) {
+			mes "[Teleporter]";
+			mes "Congratulations.";
+			mes "Honors to the warriors!";
+			close;
+		} else {
+			mes "[Teleporter]";
+			mes "Please refrain";
+			mes "from touching any";
+			mes "of the exhibitions.";
+			mes "..........";
+			close;
+		}
+	} else {
+		mes "[Teleporter]";
+		mes "Honorable one,";
+		mes "which place do you wish to go?";
+		next;
+		switch(select("Prontera","Morroc","Payon","Geffen","Alberta","Izlude","Al De Baran","Comodo","Juno")) {
+		case 1:
+			mes "[Teleporter]";
+			mes "Have a nice trip.";
+			close2;
+			savepoint "prontera.gat",116,72;
+			warp "prontera.gat",116,72;
+			break;
+		case 2:
+			mes "[Teleporter]";
+			mes "Have a nice trip.";
+			close2;
+			savepoint "morocc.gat",156,46;
+			warp "morocc.gat",156,46;
+			break;
+		case 3:
+			mes "[Teleporter]";
+			mes "Have a nice trip.";
+			close2;
+			savepoint "payon.gat",69,100;
+			warp "payon.gat",69,100;
+			break;
+		case 4:
+			mes "[Teleporter]";
+			mes "Have a nice trip.";
+			close2;
+			savepoint "geffen.gat",120,39;
+			warp "geffen.gat",120,39;
+			break;
+		case 5:
+			mes "[Teleporter]";
+			mes "Have a nice trip.";
+			close2;
+			savepoint "alberta.gat",117,56;
+			warp "alberta.gat",117,56;
+			break;
+		case 6:
+			mes "[Teleporter]";
+			mes "Have a nice trip.";
+			close2;
+			savepoint "izlude.gat",94,103;
+			warp "izlude.gat",94,103;
+			break;
+		case 7:
+			mes "[Teleporter]";
+			mes "Have a nice trip.";
+			close2;
+			savepoint "aldebaran.gat",91,105;
+			warp "aldebaran.gat",91,105;
+			break;
+		case 8:
+			mes "[Teleporter]";
+			mes "Have a nice trip.";
+			close2;
+			savepoint "comodo.gat",209,143;
+			warp "comodo.gat",209,143;
+			break;
+		case 9:
+			mes "[Teleporter]";
+			mes "Have a nice trip.";
+			close2;
+			savepoint "yuno.gat",328,101;
+			warp "yuno.gat",328,101;
+			break;
+		}
+		end;
+	}
+}

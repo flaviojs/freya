@@ -1,0 +1,33 @@
+//--------------------------------------------------------------
+//               (c)2004-2007 Aurora Team Presents:             
+//                  ___                                         
+//                 /   |_   _ _ __ ___  _ __ __ _               
+//                / /| | | | | '__/ _ \| '__/ _` |              
+//               / ___ | |_| | | | (_) | | | (_| |++            
+//              /_/  |_|\____|_|  \___/|_|  \__,_|              
+//                 http://aurora.deltaanime.net                 
+//--------------------------------------------------------------
+//
+// refine_db.txt
+// Refinery Database
+//
+//--------------------------------------------------------------
+// Structure of Database:
+//--------------------------------------------------------------
+//
+// <StatsPerLvForSafeUpgrade>,<StatsPerLvAfterSafeLimit>,<SafeLvLimit>,<Lv1%>,<Lv2%>,<Lv3%>,...
+//
+// Armor defense is done in percentage (Example: 70 = .7 DEF)
+// Weapons are whole numbers (Example: 3 = 3 ATK)
+//
+// The SafeLvLimit may be different from the actual success rate, but only the StatsPerLvAfterSafeLimit will be taken into account
+//
+//--------------------------------------------------------------
+// Database Entries:
+//--------------------------------------------------------------
+//
+ 70, 4,4, 100,100,100,100, 60, 40, 40, 20, 20, 10,	// Armor
+  2, 3,7, 100,100,100,100,100,100,100, 60, 40, 20,	// Lv1 Weapons
+  3, 5,6, 100,100,100,100,100,100, 60, 40, 20, 20,	// Lv2 Weapons
+  5, 8,5, 100,100,100,100,100, 60, 50, 20, 20, 20,	// Lv3 Weapons
+  7,14,4, 100,100,100,100, 60, 40, 40, 20, 20, 10,	// Lv4 Weapons

@@ -1,0 +1,59 @@
+//--------------------------------------------------------------
+//               (c)2004-2007 Aurora Team Presents:             
+//                  ___                                         
+//                 /   |_   _ _ __ ___  _ __ __ _               
+//                / /| | | | | '__/ _ \| '__/ _` |              
+//               / ___ | |_| | | | (_) | | | (_| |++            
+//              /_/  |_|\____|_|  \___/|_|  \__,_|              
+//                 http://aurora.deltaanime.net                 
+//--------------------------------------------------------------
+//
+// mob_avail.txt
+// Monster Disguise Database
+//
+//--------------------------------------------------------------
+// Structure of Database:
+//--------------------------------------------------------------
+//
+// <MobID>,<ReplacementSpriteMobID>
+//
+// Disguises a monster with a different sprite.
+// 1001-2000 must be used for now as any other ID is invalid.
+// Monster must have an equipment its pet counterpart can use or it will cause problems. If no equip use 0.
+// With ID from 1+ (PC) or 46+ (NPC), monster will be displayed like a player character or an existing NPC.
+//
+// Example:
+// 1002,1039,0	// Poring,Baphomet,0 (Make Poring(1002) look like Baphomet(1039))
+//
+// The following format is used if a class sprite is used:
+//
+// <MobID>,<ReplacementSpriteClassID>,<Size(-1:Small,0:Normal,1:Large)>,<Sex(0:Female,1:Male)>,<HairStyle>,<HairColor>,<ClothesColor>,<WeaponItemID>,<ShieldItemID>,<HeadTopItemID>,<HeadMiddleItemID>,<HeadBottomItemID>,<Option>,<Upper>
+//
+// ReplacementSpriteClassID:
+//    0:Novice       23:Super Novice     22:Wedding
+//    1:Swordman      7:Knight           14:Crusader
+//    2:Mage          9:Wizard           16:Sage
+//    3:Archer       11:Hunter           19:Bard             20:Dancer
+//    4:Acolyte       8:Priest           15:Monk
+//    5:Merchant     10:Blacksmith       18:Alchemist
+//    6:Thief        12:Assassin         17:Rogue
+//   24:Taekwon      25:Taekwon Master   27:Soul Linker
+//   28:Gunslinger
+//   29:Ninja
+//   30:Death Knight
+//   31:Dark Collector
+//
+// Option:
+//     1:Sight                2:Hide               4:Cloak
+//     8:Level 1 Cart        16:Falcon            32:Peco Peco Riding
+//    64:GM Perfect Hide    128:Level 2 Cart     256:Level 3 Cart
+//   512:Level 4 Cart      1024:Level 5 Cart    2048:Orc Head
+//  4096:Wedding Sprites   8192:Ruwach         16384:Footprints Walking
+// 32768:Santa Clothes
+//
+// Upper:
+//    0:Normal       1:Transcendent      2:Baby
+//
+//--------------------------------------------------------------
+// Database Entries:
+//--------------------------------------------------------------

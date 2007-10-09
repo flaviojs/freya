@@ -1,0 +1,46 @@
+//--------------------------------------------------------------
+//               (c)2004-2007 Aurora Team Presents:             
+//                  ___                                         
+//                 /   |_   _ _ __ ___  _ __ __ _               
+//                / /| | | | | '__/ _ \| '__/ _` |              
+//               / ___ | |_| | | | (_) | | | (_| |++            
+//              /_/  |_|\____|_|  \___/|_|  \__,_|              
+//                 http://aurora.deltaanime.net                 
+//--------------------------------------------------------------
+//
+// item_meiji_almond.txt
+// Meiji Almond Random Database
+
+//--------------------------------------------------------------
+// Structure of Database:
+//--------------------------------------------------------------
+//
+// <ItemID>,<DummyName>,<Rate>
+//
+// Rate Examples:
+//  10000   = 1%
+//  500000  = 50%
+//  1000000 = 100%
+
+//--------------------------------------------------------------
+// Database Entries:
+//--------------------------------------------------------------
+
+4047,Ghostring Card,1
+4054,Angeling Card,1
+5022,Solar God Helm,1
+2234,Tiara,3
+2235,Crown,3
+2254,Angelic Chain,2
+5058,Resting Cat,4
+603,Unknown Item,15
+616,Old Card Album,10
+617,Old Purple Box,10
+607,Yggdrasilberry,20
+608,Yggdrasil Seed,20
+660,Red Candle,20
+661,Soft Apron,20
+529,Candy,500
+530,Candy Cane,500
+538,Well-baked Cookie,500
+539,Piece of Cake,200
