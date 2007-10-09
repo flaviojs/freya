@@ -5,22 +5,72 @@
 
 
 ===========================================================================
+	Configuration (conf/)
+---------------------------------------------------------------------------
+
+- Changed all @commands with GM level 0 required to GM level 1.
+- Added @warp duplicate of @rura.
+- Added @job duplicate of @jobchange.
+- Added @lvlup/@baselvlup duplicates of @lvup.
+- Added @guildlvlup duplicate of @guildlvup.
+- Added @joblvlup duplicate of @joblvup.
+- conf/help.txt files contain @command changes.
+- In conf/GM_account.txt, account ID 2000001 is set to GM level 99 by default.
+- In conf/map_athena.conf, read_map_from_cache is set to active at '2'. Normal jAthena is set to '0', inactive.
+
+
+===========================================================================
+	Databases (db/)
+---------------------------------------------------------------------------
+
+- Random selection databases such as Old Blue Box and Dead Branch are located inside db/random/ instead of db/ (As noted above).
+- Renamed: mob_boss.txt -> mob_bloodybranch.txt, mob_branch.txt -> mob_deadbranch.txt, mob_poring.txt -> mob_poringbox.txt (As noted above).
+
+- All databases generally follow jAthena's, except for the following:
+-----------------------------------------------------------------------------
+- db/mob_group_db.txt
+- db/mob_skill_db.txt
+- db/random/mob_bloodybranch.txt
+- db/random/mob_deadbranch.txt
+- db/random/item_cardalbum.txt
+
+
+===========================================================================
+	TXT Saved Data (save/)
+---------------------------------------------------------------------------
+
+- This folder is included by default to prevent user problems, instead of being generated on the first server launch.
+- The account ID 2000001 exists by default with the username 'Test', password 'Test' and GM level 99.
+
+
+===========================================================================
+	NPC Scripts (script/)
+---------------------------------------------------------------------------
+
+- All NPC scripts have been converted from Aegis, with the exception of jAthena's map flag script.
+- Translation would have been far too much work, and Aegis is more accurate as well.
+	-> script/misc/misc_mapflag.txt
+
+
+===========================================================================
+	SQL Saved Data (sql-files/)
+---------------------------------------------------------------------------
+
+- The account ID 2000001 is created by default with the username 'Test', password 'Test' and GM level 99.
+
+
+===========================================================================
 	Source Code (src/)
 ---------------------------------------------------------------------------
 
--> Database File Changes:
-- Databases such as OCA and OBB are located inside ./db/random/ instead of ./db/.
+- In all three servers, the 'Aurora' logo was added as the first thing displayed upon server startup.
+	-> src/common/core.c
+- Random selection databases such as Old Blue Box and Dead Branch are located inside db/random/ instead of db/.
+	-> src/map/itemdb.c + src/map/mob.c
 - Renamed: mob_boss.txt -> mob_bloodybranch.txt, mob_branch.txt -> mob_deadbranch.txt, mob_poring.txt -> mob_poringbox.txt.
-
--> Startup Changes:
-- In all three servers, the 'Aurora' logo was added as the first thing printed at application startup.
-
--> Compilation Changes:
-- Server executables are placed in the main directory upon compilation, whereas in jAthena, they are placed in ./bin.
-
-- Source code comments are NOT translated. This would make updating the code far too messy and difficult.
-- Other than code comments, there really isn't anything that needs translating in the source.
-- All source code modifications are documented/noticed in the form of comments in the code itself.
+	-> src/map/mob.c
+- Server executables are placed in the main directory upon compilation, while in jAthena, they are placed in bin/.
+	-> src/char/Makefile + src/converter/Makefile + src/login/Makefile + src/map/Makefile
 
 - The following source code files have modifications, the rest are unaltered:
 -----------------------------------------------------------------------------
@@ -34,73 +84,19 @@
 
 
 ===========================================================================
-	Databases (db/)
+	Miscellaneous Changes
 ---------------------------------------------------------------------------
 
-- All databases generally follow jAthena's, except for the following:
-
-	- ./db/mob_skill_db.txt
-	- ./db/random/mob_bloodybranch.txt
-	- ./db/random/mob_deadbranch.txt
-	- ./db/random/item_cardalbum.txt
-
--> As listed above:
-- Databases such as OCA and OBB are located inside ./db/random/ instead of ./db/.
-- Renamed: mob_boss.txt -> mob_bloodybranch.txt, mob_branch.txt -> mob_deadbranch.txt, mob_poring.txt -> mob_poringbox.txt.
-
-
-===========================================================================
-	NPC Scripts (script/)
----------------------------------------------------------------------------
-
-- Almost all scripts have been imported from English emulators. We currently only use and update one file from jAthena's scripts:
-
-	- ./script/misc/misc_mapflag.txt [Translated]
-
-
-===========================================================================
-	Configuration (conf/)
----------------------------------------------------------------------------
-
-- Changed all @commands with GM level 0 required to GM level 1.
-- Added @warp duplicate of @rura.
-- Added @job duplicate of @jobchange.
-- Added @lvlup/@baselvlup duplicates of @lvup.
-- Added @guildlvlup duplicate of @guildlvup.
-- Added @joblvlup duplicate of @joblvup.
-- ./conf/help.txt files contain @command changes.
-- In ./conf/GM_account.txt, account ID 2000001 is set to GM level 99 by default.
-- In ./conf/map_athena.conf, read_map_from_cache is set to active at '2'. Normal jAthena is set to '0', inactive.
-
-
-===========================================================================
-	TXT Saved Data (save/)
----------------------------------------------------------------------------
-
-- This folder is included by default instead of being generated on the first server launch to prevent user errors.
-- The account ID 2000001 is created by default with the username 'Test', password 'Test' and GM level 99.
-
-
-===========================================================================
-	SQL Saved Data (sql-files/)
----------------------------------------------------------------------------
-
-- The account ID 2000001 is created by default with the username 'Test', password 'Test' and GM level 99.
-
-
-===========================================================================
-	Misc Changes
----------------------------------------------------------------------------
-
-- The ./bin folder has been removed, and ./bin/tool has been moved to ./tool.
-- There is no LICENCE_JA file in Aurora, instead there is just License.txt.
-- The 'Readme' changelog is stored in ./doc as 'Readme.txt' instead of in the main folder.
-- This documentation file, './doc/aurora_diff.txt' does not exist in jAthena.
-- The '.doc/effect_list.txt' documentation file does not exist in jAthena.
-- The './doc/aurora_script.txt' documentation file does not exist in jAthena.
+- The jAthena bin/ folder has been removed, and bin/tool/ has been moved to tool/.
+- There is no LICENCE_JA file in Aurora. In replacement there is an English version, renamed to License.txt.
+- The 'Readme' changelog is stored in doc/ as Readme.txt instead of in the main folder.
+- Most of jAthena's documentation files in doc/ have been removed due to lack of translation.
+- This documentation file doc/aurora_diff.txt does not exist in jAthena.
+- The doc/effect_list.txt documentation file does not exist in jAthena.
+- The doc/aurora_script.txt documentation file does not exist in jAthena.
 - The Changelog.txt file in the main folder does not exist in jAthena, they use the 'Readme' file as their Changelog.
-- The ./tool/translate folder is a translation system for Aurora that does not exist in jAthena.
-- The win32_start.bat batch launcher has been modified to work better.
+- The tool/translate/ folder is a database translation utility for Aurora that does not exist in jAthena.
+- The win32_start.bat batch launcher has been modified to work differently.
 - All files currently use DOS (Win32) line endings.
 
 
