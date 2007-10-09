@@ -3,7 +3,7 @@
 //                  ___                                         
 //                 /   |_   _ _ __ ___  _ __ __ _               
 //                / /| | | | | '__/ _ \| '__/ _` |              
-//               / ___ | |_| | | | (_) | | | (_| |++            
+//               / ___ | |_| | | | (_) | | | (_| |              
 //              /_/  |_|\____|_|  \___/|_|  \__,_|              
 //                 http://aurora.deltaanime.net                 
 //--------------------------------------------------------------
@@ -14,6 +14,20 @@
 //	1.0 First version, based on iRO Sakray 11.2 [Tsuyuki]
 //--------------------------------------------------------------
 // Additional Notes: * Official-certified *
+//--------------------------------------------------------------
+
+
+//--------------------------------------------------------------
+// Episode 11.2 Quests (Incomplete)
+//--------------------------------------------------------------
+// - Thor Volcano Base Quest [*]
+//	-> http://ro.doddlercon.com/wiki/index.php?title=Thor_Volcano_Base_Quest
+// - Spy Quest [*]
+//	-> http://ro.doddlercon.com/wiki/index.php?title=Spy_Quest
+// - Siblings Quest [*]
+//	-> http://ro.doddlercon.com/wiki/index.php?title=Veins_Siblings_Quest
+// - Help Mr. Zabaroo Quest [*]
+//	-> http://ro.doddlercon.com/wiki/index.php?title=Help_Mr._Zabaroo_Quest
 //--------------------------------------------------------------
 
 
