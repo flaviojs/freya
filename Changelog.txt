@@ -13,6 +13,10 @@
 
 Date	Added
 
+2007/10/09
+	* Updated: Veins development script [Tsuyuki]
+	* Updated: Script folder structure - Separated developing content from finished scripts [Tsuyuki]
+
 2007/10/07
 	* Note: Aurora now features a fully Aegis, iRO Episode 11.1 script folder!
 	* Added: The /log/ folder by default [Tsuyuki]

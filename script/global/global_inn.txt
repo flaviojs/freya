@@ -7,12 +7,11 @@
 //              /_/  |_|\____|_|  \___/|_|  \__,_|              
 //                 http://aurora.deltaanime.net                 
 //--------------------------------------------------------------
-// Script Title: Inn Employees	Author: Tsuyuki/L0ne_W0lf
+// Script Title: Inn Employees	Author: Tsuyuki
 //--------------------------------------------------------------
-// Revision History: v1.1
+// Revision History: v1.0
 //--------------------------------------------------------------
 //	1.0 First version, converted from Aegis [Tsuyuki]
-//	1.1 Added Veins Inn by L0ne_W0lf (Possibly custom?) [Tsuyuki]
 //--------------------------------------------------------------
 // Additional Notes: * Official-certified / Aegis-certified *
 //--------------------------------------------------------------
@@ -548,45 +547,4 @@ ra_in01.gat,376,69,5	script	Hotel Employee	931,{
 	mes "[Hotel Employee]";
 	mes "Have a good day.";
 	close;
-}
-
-
-//--------------------------------------------------------------
-// Veins Inn Employees - [L0ne_W0lf]
-//--------------------------------------------------------------
-
-ve_in.gat,157,219,5	script	Inn Master	709,{
-
-	mes "[Inn Master]";
-	mes "Good day~";
-	mes "Welcome to the";
-	mes "most comfortable";
-	mes "inn here in Veins~";
-	next;
-	switch(select("Save.","Take a Rest -> 5000 zeny","Cancel.")) {
-	case 1:
-		mes "[Inn Master]";
-		mes "Your respawn point";
-		mes "has been saved in Veins.";
-		mes "Enjoy your stay in town~";
-		savepoint "ve_in.gat",157,209;
-		close;
-	case 2:
-		mes "[Inn Master]";
-		if (Zeny < 5000) {
-			mes "I'm sorry, but the service charge";
-			mes "is 5,000 zeny. Please make sure";
-			mes "that you have enough money to check";
-			mes "in next time, okay?";
-			close;
-		}
-		mes "Enjoy your stay~";
-		close2;
-		set Zeny,Zeny - 5000;
-		percentheal 100,100;
-		warp "ve_in.gat",184,228;
-		end;
-	case 3:
-		close;
-	}
 }
