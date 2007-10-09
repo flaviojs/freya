@@ -18,6 +18,7 @@ S 7532
 	End of connection (no reply is sended back).
 	When client requests an end of connection, the server sets eof (=1) and this information is not logged.
 
+
 ===========================================================================
 	Administration Packets Of The Login Server
 ---------------------------------------------------------------------------
