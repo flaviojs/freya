@@ -5,17 +5,6 @@
 
 
 ===========================================================================
-	Aurora's Non-Aegis Scripts:
----------------------------------------------------------------------------
-
-- mob/mob_future.txt			<- Placeholder file for non-Aegis spawn entries
-- warp/warp_future.txt			<- Placeholder file for non-Aegis portal entries
-
-- town/town_nameless.txt		<- No access to an Aegis version [*]
-- town/town_veins.txt			<- No access to an Aegis version [*]
-
-
-===========================================================================
 	Aurora's euRO Dialogue Aegis Scripts:
 ---------------------------------------------------------------------------
 
