@@ -20,10 +20,14 @@
 //--------------------------------------------------------------
 // Episode 11.2 Quests (Incomplete)
 //--------------------------------------------------------------
-// - Episode 11.2	<- Thor Volcano Base Quest [*]
-// - Episode 11.2	<- Spy Quest [*]
-// - Episode 11.2	<- Siblings Quest [*]
-// - Episode 11.2	<- Help Mr. Zabaroo Quest [*]
+// - Thor Volcano Base Quest [*]
+//	-> http://ro.doddlercon.com/wiki/index.php?title=Thor_Volcano_Base_Quest
+// - Spy Quest [*]
+//	-> http://ro.doddlercon.com/wiki/index.php?title=Spy_Quest
+// - Siblings Quest [*]
+//	-> http://ro.doddlercon.com/wiki/index.php?title=Veins_Siblings_Quest
+// - Help Mr. Zabaroo Quest [*]
+//	-> http://ro.doddlercon.com/wiki/index.php?title=Help_Mr._Zabaroo_Quest
 //--------------------------------------------------------------
 
 

@@ -20,13 +20,13 @@
 //--------------------------------------------------------------
 // Episode 11.3 Quests (Incomplete)
 //--------------------------------------------------------------
-// - Episode 11.3	<- Nameless Island Admission Quest [*]
-// - Episode 11.3	<- Peace Teaching of Arunafeltz Republic Quest [*]
-// - Episode 11.3	<- Z Group Quest [*]
-// - Episode 11.3	<- Investigation Cooperation Quest [*]
-// - Episode 11.3	<- Loan Book of Mirv Quest [*]
-// - Episode 11.3	<- Diamond of Ruin Quest [*]
-// - Episode 11.3	<- Emerald of Misfortune Quest [*]
+// - Nameless Island Admission Quest [*]
+// - Peace Teaching of Arunafeltz Republic Quest [*]
+// - Z Group Quest [*]
+// - Investigation Cooperation Quest [*]
+// - Loan Book of Mirv Quest [*]
+// - Diamond of Ruin Quest [*]
+// - Emerald of Misfortune Quest [*]
 //--------------------------------------------------------------
 
 
