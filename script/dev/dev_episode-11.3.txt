@@ -7,21 +7,91 @@
 //              /_/  |_|\____|_|  \___/|_|  \__,_|              
 //                 http://aurora.deltaanime.net                 
 //--------------------------------------------------------------
-// Script Title: Nameless Island Town NPCs / Quests	Author: Tsuyuki
+// Script Title: RO Episode 11.3 Nameless Island Script Addition	Author: Various People
 //--------------------------------------------------------------
-// Revision History: v1.2
+// Revision History: v1.0
 //--------------------------------------------------------------
-//	1.0 First version [Tsuyuki]
-//	1.1 Now warps player to Nameless Island / Nightmare based on whether it's night or day [Tsuyuki]
-//	1.2 Added official base level 80 requirement to go to Nameless Island [Tsuyuki]
-//	1.3 Added special hidden warpers to warp players during night to Nightmare, and back to Nameless during the day [Tsuyuki]
+//	1.0 First version, based on kRO Sakray 11.3 [Tsuyuki]
 //--------------------------------------------------------------
-// Additional Notes: Highly incomplete/inaccurate.
+// Additional Notes: * Highly Unofficial *
 //--------------------------------------------------------------
 
 
 //--------------------------------------------------------------
-// Nameless Island Town NPCs (Temporary) - [Tsuyuki]
+// Nameless Island Town Warp Portals - [jAthena]
+//--------------------------------------------------------------
+
+nameless_i.gat,168,257,0	warp	namelesswarp01	1,1,nameless_in.gat,12,43
+nameless_in.gat,12,40,0		warp	namelesswarp02	1,1,nameless_i.gat,168,254
+nameless_i.gat,252,130,0	warp	namelesswarp03	1,1,nameless_in.gat,26,128
+nameless_in.gat,23,128,0	warp	namelesswarp04	1,1,nameless_i.gat,249,130
+nameless_i.gat,79,256,0		warp	namelesswarp05	1,1,nameless_in.gat,12,172
+nameless_in.gat,12,169,0	warp	namelesswarp06	1,1,nameless_i.gat,82,256
+nameless_i.gat,78,94,0		warp	namelesswarp07	1,1,nameless_in.gat,96,180
+nameless_in.gat,96,177,0	warp	namelesswarp08	1,1,nameless_i.gat,81,96
+
+
+//--------------------------------------------------------------
+// Abbey Dungeon Warp Portals - [jAthena]
+//--------------------------------------------------------------
+
+nameless_n.gat,156,184,0	warp	abbeywarp01	1,1,abbey01.gat,51,12
+nameless_i.gat,156,184,0	warp	abbeywarp02	1,1,abbey01.gat,51,12
+abbey01.gat,51,9,0	warp	abbeywarp03	1,1,nameless_n.gat,159,184
+abbey01.gat,88,122,0	warp	abbeywarp04	1,1,abbey01.gat,16,195
+abbey01.gat,12,195,0	warp	abbeywarp05	1,1,abbey01.gat,88,118
+abbey01.gat,322,100,0	warp	abbeywarp06	1,1,abbey02.gat,150,13
+abbey02.gat,150,8,0	warp	abbeywarp07	1,1,abbey01.gat,322,96
+abbey02.gat,150,290,0	warp	abbeywarp08	1,1,abbey03.gat,120,10
+abbey03.gat,120,6,0	warp	abbeywarp09	1,1,abbey02.gat,150,285
+
+
+//--------------------------------------------------------------
+// Nameless Island Nightmare Monster Spawns - [Playtester]
+//--------------------------------------------------------------
+
+nameless_n.gat,0,0,0,0	monster	Ragged Zombie	1865,30,0,0,0
+nameless_n.gat,0,0,0,0	monster	Hell Poodle	1866,30,0,0,0
+nameless_n.gat,0,0,0,0	monster	Ghoul	1036,20,0,0,0
+nameless_n.gat,0,0,0,0	monster	Zombie Slaughter	1864,20,0,0,0
+nameless_n.gat,0,0,0,0	monster	Flame Skull	1869,20,0,0,0
+nameless_n.gat,0,0,0,0	monster	Banshee	1867,10,0,0,0
+
+// nameless_n.gat,0,0,0,0	monster	Wild Rose	1261,1,7200000,3600000,0
+
+
+//--------------------------------------------------------------
+// Nameless Island Town Monster Spawns - [Playtester]
+//--------------------------------------------------------------
+
+nameless_i.gat,0,0,0,0	monster	Wild Rose	1261,1,7200000,3600000,0
+
+
+//--------------------------------------------------------------
+// Abbey Dungeon Monster Spawns - [Playtester]
+//--------------------------------------------------------------
+
+abbey01.gat,0,0,0,0	monster	Banshee	1867,30,0,0,0
+abbey01.gat,0,0,0,0	monster	Ghoul	1036,20,0,0,0
+abbey01.gat,0,0,0,0	monster	Zombie Slaughter	1864,20,0,0,0
+abbey01.gat,0,0,0,0	monster	Ragged Zombie	1865,20,0,0,0
+abbey01.gat,0,0,0,0	monster	Hell Poodle	1866,20,0,0,0
+abbey01.gat,0,0,0,0	monster	Flame Skull	1869,20,0,0,0
+
+abbey02.gat,0,0,0,0	monster	Zombie Slaughter	1864,60,0,0,0
+abbey02.gat,0,0,0,0	monster	Ragged Zombie	1865,30,0,0,0
+abbey02.gat,0,0,0,0	monster	Flame Skull	1869,20,0,0,0
+abbey02.gat,0,0,0,0	monster	Necromancer	1870,10,0,0,0
+abbey02.gat,0,0,0,0	monster	Falling Bishop	1871,1,7200000,3600000,1
+
+abbey03.gat,0,0,0,0	monster	Necromancer	1870,30,0,0,0
+abbey03.gat,0,0,0,0	monster	Banshee	1867,20,0,0,0
+abbey03.gat,0,0,0,0	monster	Flame Skull	1869,20,0,0,0
+abbey03.gat,0,0,0,0	monster	Beelzebub	1873,1,43200000,19800000,1
+
+
+//--------------------------------------------------------------
+// Nameless Island Access Sailor (Custom) - [Tsuyuki]
 //--------------------------------------------------------------
 
 ve_fild07.gat,127,133,3	script	Sailor#veins	934,{
@@ -101,7 +171,7 @@ nameless_n.gat,255,217,6	duplicate(Sailor#nameless)	Sailor#nightmare	934
 
 
 //--------------------------------------------------------------
-// Day / Night Warpers (Temporary) - [Tsuyuki]
+// Nameless Island / Nightmare Switchers (Custom) - [Tsuyuki]
 //--------------------------------------------------------------
 
 nameless_i.gat,184,212,0	script	NamelessManager	139,1,1,{

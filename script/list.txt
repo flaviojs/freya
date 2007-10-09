@@ -19,6 +19,14 @@
 
 
 //--------------------------------------------------------------
+// Developing Scripts
+//--------------------------------------------------------------
+
+// npc: script/dev/dev_episode-11.2.txt // Veins
+// npc: script/dev/dev_episode-11.3.txt // Nameless Island
+// npc: script/dev/dev_episode-11.4.txt // Moscovia
+
+//--------------------------------------------------------------
 // Global Town Scripts
 //--------------------------------------------------------------
 
@@ -107,7 +115,6 @@ npc: script/misc/misc_vote.txt
 
 npc: script/mob/mob_dungeon.txt
 npc: script/mob/mob_field.txt
-// npc: script/mob/mob_future.txt
 npc: script/mob/mob_gvg.txt
 npc: script/mob/mob_job.txt
 npc: script/mob/mob_misc.txt
@@ -158,13 +165,11 @@ npc: script/town/town_lighthalzen.txt
 npc: script/town/town_louyang.txt
 npc: script/town/town_lutie.txt
 npc: script/town/town_morroc.txt
-// npc: script/town/town_nameless.txt
 npc: script/town/town_niflheim.txt
 npc: script/town/town_payon.txt
 npc: script/town/town_prontera.txt
 npc: script/town/town_rachel.txt
 npc: script/town/town_umbala.txt
-// npc: script/town/town_veins.txt
 
 
 //--------------------------------------------------------------
@@ -173,7 +178,6 @@ npc: script/town/town_umbala.txt
 
 npc: script/warp/warp_dungeon.txt
 npc: script/warp/warp_field.txt
-// npc: script/warp/warp_future.txt
 npc: script/warp/warp_gvg.txt
 npc: script/warp/warp_job.txt
 npc: script/warp/warp_misc.txt

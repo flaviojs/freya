@@ -1,0 +1,1188 @@
+//--------------------------------------------------------------
+//               (c)2004-2007 Aurora Team Presents:             
+//                  ___                                         
+//                 /   |_   _ _ __ ___  _ __ __ _               
+//                / /| | | | | '__/ _ \| '__/ _` |              
+//               / ___ | |_| | | | (_) | | | (_| |++            
+//              /_/  |_|\____|_|  \___/|_|  \__,_|              
+//                 http://aurora.deltaanime.net                 
+//--------------------------------------------------------------
+// Script Title: RO Episode 11.2 Veins Script Addition	Author: Various People
+//--------------------------------------------------------------
+// Revision History: v1.0
+//--------------------------------------------------------------
+//	1.0 First version, based on iRO Sakray 11.2 [Tsuyuki]
+//--------------------------------------------------------------
+// Additional Notes: * Official-certified *
+//--------------------------------------------------------------
+
+
+//--------------------------------------------------------------
+// Veins Field Warp Portals - [jAthena]
+//--------------------------------------------------------------
+
+rachel.gat,130,20,0	warp	vefildwarp01	1,1,ve_fild02.gat,196,379
+ve_fild02.gat,196,382,0	warp	vefildwarp02	1,1,rachel.gat,130,23
+veins.gat,218,361,0	warp	vefildwarp03	1,1,ve_fild06.gat,152,221
+veins.gat,146,24,0	warp	vefildwarp04	1,1,ve_fild07.gat,148,370
+ve_fild06.gat,154,219,0	warp	vefildwarp05	1,1,veins.gat,218,358
+ve_fild07.gat,147,372,0	warp	vefildwarp06	1,1,veins.gat,146,27
+ve_fild01.gat,243,369,0	warp	vefildwarp07	1,1,ra_fild11.gat,232,29
+ra_fild11.gat,232,26,0	warp	vefildwarp08	1,1,ve_fild01.gat,243,366
+ve_fild01.gat,367,263,0	warp	vefildwarp09	1,1,ve_fild02.gat,33,259
+ve_fild02.gat,30,259,0	warp	vefildwarp10	1,1,ve_fild01.gat,364,263
+ve_fild01.gat,351,95,0	warp	vefildwarp11	1,1,ve_fild02.gat,76,133
+ve_fild02.gat,73,133,0	warp	vefildwarp12	1,1,ve_fild01.gat,348,95
+ve_fild01.gat,185,19,0	warp	vefildwarp13	1,1,ve_fild04.gat,174,337
+ve_fild04.gat,174,340,0	warp	vefildwarp14	1,1,ve_fild01.gat,185,22
+ve_fild02.gat,385,309,0	warp	vefildwarp15	1,1,ra_fild13.gat,31,311
+ra_fild13.gat,28,311,0	warp	vefildwarp16	1,1,ve_fild02.gat,382,309
+ve_fild03.gat,355,222,0	warp	vefildwarp17	1,1,ve_fild04.gat,46,249
+ve_fild04.gat,43,249,0	warp	vefildwarp18	1,1,ve_fild03.gat,353,221
+ve_fild03.gat,222,42,0	warp	vefildwarp19	1,1,ve_fild05.gat,204,330
+ve_fild05.gat,206,331,0	warp	vefildwarp20	1,1,ve_fild03.gat,222,45
+ve_fild04.gat,115,50,0	warp	vefildwarp21	1,1,ve_fild06.gat,78,183
+ve_fild05.gat,359,192,0	warp	vefildwarp22	1,1,ve_fild06.gat,78,183
+ve_fild06.gat,88,176,0	script	vefildwarp23	45,2,2,{
+OnTouch:
+	if (rand(1,2) == 1) {
+		warp "ve_fild04.gat",115,55;
+	} else {
+		warp "ve_fild05.gat",354,192;
+	}
+	end;
+}
+
+
+//--------------------------------------------------------------
+// Thor Volcano Dungeon Warp Portals - [jAthena]
+//--------------------------------------------------------------
+
+ve_fild03.gat,168,241,0	warp	thorwarp01	1,1,thor_v01.gat,21,226
+thor_v01.gat,21,223,0	warp	thorwarp02	1,1,ve_fild03.gat,168,238
+thor_v01.gat,202,34,0	warp	thorwarp03	1,1,thor_v02.gat,74,205
+thor_v02.gat,72,206,0	warp	thorwarp04	1,1,thor_v01.gat,199,34
+thor_v02.gat,191,55,0	warp	thorwarp05	1,1,thor_v03.gat,31,272
+thor_v03.gat,28,272,0	warp	thorwarp06	1,1,thor_v02.gat,190,57
+thor_v02.gat,143,78,0	warp	thorwarp07	1,1,thor_camp.gat,284,289
+thor_camp.gat,288,289,0	warp	thorwarp08	1,1,thor_v02.gat,146,86
+
+
+//--------------------------------------------------------------
+// Veins Town Warp Portals - [jAthena]
+//--------------------------------------------------------------
+
+veins.gat,218,361,0	warp	veinswarp01	1,1,ve_fild06.gat,152,221
+veins.gat,146,24,0	warp	veinswarp02	1,1,ve_fild07.gat,148,370
+veins.gat,196,260,0	warp	veinswarp03	1,1,ve_in.gat,351,320
+ve_in.gat,351,317,0	warp	veinswarp04	1,1,veins.gat,196,257
+veins.gat,116,277,0	warp	veinswarp05	1,1,ve_in.gat,99,218
+ve_in.gat,99,215,0	warp	veinswarp06	1,1,veins.gat,113,277
+ve_in.gat,76,229,0	warp	veinswarp07	1,1,ve_in.gat,74,160
+ve_in.gat,71,160,0	warp	veinswarp08	1,1,ve_in.gat,73,229
+veins.gat,148,220,0	warp	veinswarp09	1,1,ve_in.gat,253,127
+ve_in.gat,256,127,0	warp	veinswarp10	1,1,veins.gat,150,217
+ve_in.gat,224,115,0	warp	veinswarp11	1,1,ve_in.gat,312,114
+ve_in.gat,309,114,0	warp	veinswarp12	1,1,ve_in.gat,221,115
+veins.gat,230,166,0	warp	veinswarp13	1,1,ve_in.gat,251,286
+ve_in.gat,251,283,0	warp	veinswarp14	1,1,veins.gat,230,163
+ve_in.gat,261,315,0	warp	veinswarp15	1,1,ve_in.gat,177,296
+ve_in.gat,177,293,0	warp	veinswarp16	1,1,ve_in.gat,261,312
+veins.gat,138,190,0	warp	veinswarp17	1,1,ve_in.gat,349,251
+ve_in.gat,346,251,0	warp	veinswarp18	1,1,veins.gat,135,190
+veins.gat,88,174,0	warp	veinswarp19	1,1,ve_in.gat,77,294
+ve_in.gat,77,291,0	warp	veinswarp20	1,1,veins.gat,88,171
+ve_in.gat,97,298,0	warp	veinswarp21	1,1,ve_in.gat,125,372
+ve_in.gat,128,372,0	warp	veinswarp22	1,1,ve_in.gat,100,298
+veins.gat,199,165,0	warp	veinswarp23	1,1,ve_in.gat,183,206
+ve_in.gat,183,203,0	warp	veinswarp24	1,1,veins.gat,199,162
+veins.gat,210,167,0	warp	veinswarp25	1,1,ve_in.gat,203,211
+ve_in.gat,206,211,0	warp	veinswarp26	1,1,veins.gat,213,167
+veins.gat,267,230,0	warp	veinswarp27	1,1,ve_in.gat,283,223
+ve_in.gat,286,223,0	warp	veinswarp28	1,1,veins.gat,268,227
+veins.gat,338,230,0	warp	veinswarp29	1,1,ve_in.gat,194,372
+ve_in.gat,194,369,0	warp	veinswarp30	1,1,veins.gat,335,230
+
+
+//--------------------------------------------------------------
+// Veins Field Monster Spawns - [Playtester]
+//--------------------------------------------------------------
+
+ve_fild01.gat,0,0,0,0	monster	Muka	1055,70,0,0,0
+ve_fild01.gat,0,0,0,0	monster	Drops	1113,20,0,0,0
+ve_fild01.gat,0,0,0,0	monster	Stapo	1784,20,0,0,0
+ve_fild01.gat,0,0,0,0	monster	Side Winder	1037,10,0,0,0
+ve_fild01.gat,0,0,0,0	monster	Red Plant	1078,10,180000,90000,1
+ve_fild01.gat,0,0,0,0	monster	Yellow Plant	1081,10,180000,90000,1
+ve_fild01.gat,0,0,0,0	monster	Blue Plant	1079,3,1800000,900000,1
+ve_fild01.gat,0,0,0,0	monster	Shining Plant	1083,1,1800000,900000,1
+ve_fild01.gat,0,0,0,0	monster	Atroce	1785,1,39600000,39000000,1
+
+ve_fild02.gat,0,0,0,0	monster	Savage	1166,60,0,0,0
+ve_fild02.gat,0,0,0,0	monster	Side Winder	1037,20,0,0,0
+ve_fild02.gat,0,0,0,0	monster	Roween	1782,20,0,0,0
+ve_fild02.gat,0,0,0,0	monster	Stapo	1784,30,0,0,0
+ve_fild02.gat,0,0,0,0	monster	Yellow Plant	1081,10,180000,90000,1
+ve_fild02.gat,0,0,0,0	monster	Atroce	1785,1,39600000,39000000,1
+
+ve_fild03.gat,0,0,0,0	monster	Sandman	1165,20,600000,300000,1
+ve_fild03.gat,0,0,0,0	monster	Sleeper	1386,20,600000,300000,1
+ve_fild03.gat,0,0,0,0	monster	Stapo	1784,10,600000,300000,1
+ve_fild03.gat,200,250,100,50	monster	Magmaring	1836,10,600000,300000,1
+ve_fild03.gat,0,0,0,0	monster	Red Plant	1078,10,180000,90000,1
+ve_fild03.gat,0,0,0,0	monster	Yellow Plant	1081,10,180000,90000,1
+
+ve_fild04.gat,0,0,0,0	monster	Desert Wolf	1106,50,0,0,0
+ve_fild04.gat,0,0,0,0	monster	Roween	1782,40,0,0,0
+ve_fild04.gat,0,0,0,0	monster	Muscipular	1780,10,0,0,0
+ve_fild04.gat,0,0,0,0	monster	Stapo	1784,10,0,0,0
+ve_fild04.gat,0,0,0,0	monster	Yellow Plant	1081,10,180000,90000,1
+ve_fild04.gat,0,0,0,0	monster	Blue Plant	1079,3,1800000,900000,1
+
+ve_fild05.gat,0,0,0,0	monster	Sleeper	1386,40,0,0,0
+ve_fild05.gat,0,0,0,0	monster	Sandman	1165,20,0,0,0
+ve_fild05.gat,0,0,0,0	monster	Roween	1782,20,0,0,0
+ve_fild05.gat,0,0,0,0	monster	Drosera	1781,10,0,0,0
+ve_fild05.gat,0,0,0,0	monster	Galion	1783,5,0,0,0
+ve_fild05.gat,0,0,0,0	monster	White Plant	1082,5,180000,90000,1
+ve_fild05.gat,0,0,0,0	monster	Shining Plant	1083,1,1800000,900000,1
+
+ve_fild06.gat,0,0,0,0	monster	Stapo	1784,5,600000,300000,1
+ve_fild06.gat,0,0,0,0	monster	Shining Plant	1083,1,1800000,900000,1
+
+ve_fild07.gat,0,0,0,0	monster	Side Winder	1037,50,0,0,0
+ve_fild07.gat,0,0,0,0	monster	Shellfish	1074,20,0,0,0
+ve_fild07.gat,0,0,0,0	monster	Raggler	1254,20,0,0,0
+ve_fild07.gat,0,0,0,0	monster	Aster	1266,20,0,0,0
+ve_fild07.gat,0,0,0,0	monster	Stapo	1784,20,0,0,0
+ve_fild07.gat,0,0,0,0	monster	White Plant	1082,5,180000,90000,1
+
+
+//--------------------------------------------------------------
+// Veins Town Monster Spawns - [Tsuyuki]
+//--------------------------------------------------------------
+
+veins.gat,0,0,0,0	monster	Wild Rose	1261,1,7200000,3600000,0
+
+
+//--------------------------------------------------------------
+// Thor Volcano Dungeon Monster Spawns - [Playtester]
+//--------------------------------------------------------------
+
+thor_v01.gat,0,0,0,0	monster	Kasa	1833,30,0,0,0
+thor_v01.gat,0,0,0,0	monster	Fire Imp	1837,20,0,0,0
+thor_v01.gat,0,0,0,0	monster	Magmaring	1836,10,0,0,0
+thor_v01.gat,0,0,0,0	monster	Salamander	1831,5,0,0,0
+thor_v01.gat,0,0,0,0	monster	Sword Master	1829,1,0,0,0
+thor_v01.gat,0,0,0,0	monster	Bow Master	1830,1,0,0,0
+thor_v01.gat,0,0,0,0	monster	Byorgue	1839,1,0,0,0
+
+thor_v02.gat,0,0,0,0	monster	Knocker	1838,70,0,0,0
+thor_v02.gat,0,0,0,0	monster	Fire Imp	1837,10,0,0,0
+thor_v02.gat,0,0,0,0	monster	Magmaring	1836,10,0,0,0
+thor_v02.gat,0,0,0,0	monster	Salamander	1831,5,0,0,0
+thor_v02.gat,0,0,0,0	monster	Sword Master	1829,1,0,0,0
+thor_v02.gat,0,0,0,0	monster	Bow Master	1830,1,0,0,0
+thor_v02.gat,0,0,0,0	monster	Byorgue	1839,1,0,0,0
+
+thor_v03.gat,0,0,0,0	monster	Salamander	1831,30,0,0,0
+thor_v03.gat,0,0,0,0	monster	Kasa	1833,20,0,0,0
+thor_v03.gat,0,0,0,0	monster	Sword Master	1829,3,0,0,0
+thor_v03.gat,0,0,0,0	monster	Bow Master	1830,3,0,0,0
+thor_v03.gat,0,0,0,0	monster	Byorgue	1839,1,0,0,0
+thor_v03.gat,0,0,0,0	monster	Ifrit	1832,1,39600000,39000000,1
+
+
+//--------------------------------------------------------------
+// Veins Shops - [L0ne_W0lf]
+//--------------------------------------------------------------
+
+ve_in.gat,386,245,3	shop	Weapon Dealer	931,1201:-1,1207:-1,1216:-1,1107:-1,1122:-1,1116:-1,1154:-1
+ve_in.gat,336,243,3	shop	Weapon Dealer	931,1407:-1,1457:-1,1354:-1,1519:-1,13003:-1
+ve_in.gat,374,230,3	shop	Armor Dealer	919,2101:-1,2103:-1,2403:-1,2405:-1,2503:-1,2321:-1,2314:-1,2309:-1,2335:-1,2628:-1
+ve_in.gat,243,303,5	shop	Tool Dealer	943,501:-1,502:-1,503:-1,504:-1,506:-1,645:-1,656:-1,601:-1,602:-1,611:-1,1065:-1,610:-1
+ve_in.gat,253,304,5	shop	Fruit Gardener	941,512:-1,513:-1
+ve_in.gat,252,313,0	shop	Magical Item Seller	942,717:-1,1601:-1,1604:-1,1607:-1,1610:-1,2232:-1,2321:-1,2332:-1
+
+
+//--------------------------------------------------------------
+// Veins Cool Event Employee - [Tsuyuki]
+//--------------------------------------------------------------
+
+veins.gat,208,127,5	script	Cool Event Corp. Staff	874,{
+
+	cutin "zonda_01",2;
+	mes "[Cool Event Corp. Staff]";
+	mes "Welcome to Cool Event Corp.";
+	mes "Our staff is always working";
+	mes "to surpass your expectations";
+	mes "for quality service. So how";
+	mes "may I assist you today?";
+	next;
+	switch(select("Save","Use Storage","Use Teleport Service","Rent a Pushcart","Cancel")) {
+	case 1:
+		savepoint "veins.gat",115,125; // Custom coordinates
+		mes "[Cool Event Corp. Staff]";
+		mes "Your Respawn Point";
+		mes "has been saved in Veins.";
+		mes "Thank you for using the";
+		mes "Cool Event Corp. service~";
+		close2;
+		cutin "zonda_01",255;
+		end;
+	case 2:
+		if (getskilllv(1) < 6) {
+			mes "[Cool Event Corp. Staff]";
+			mes "I'm sorry, but you";
+			mes "need the Novice's";
+			mes "Basic Skill Level 6 to";
+			mes "use the Storage Service.";
+			close2;
+			cutin "zonda_01",255;
+			end;
+		} else {
+			if (Zeny >= 40) {
+				set Zeny,Zeny-40;
+				mes "[Cool Event Corp. Staff]";
+				mes "Let me open your personal";
+				mes "storage for you right away.";
+				mes "Thanks for supporting Cool";
+				mes "Event Corp. by using our";
+				mes "services. Have a good day~";
+				close2;
+				cutin "zonda_01",255;
+				openstorage;
+				end;
+			} else {
+				mes "[Cool Event Corp. Staff]";
+				mes "I'm sorry, but you don't";
+				mes "have enough zeny to use";
+				mes "the Storage Service. Our";
+				mes "Storage access fee is 40 zeny.";
+				close2;
+				cutin "zonda_01",255;
+				end;
+			}
+		}
+	case 3:
+		mes "[Cool Event Corp. Staff]";
+		mes "Please choose";
+		mes "your destination.";
+		next;
+		switch(select("Rachel -> 2200 z","Cancel")) {
+		case 1:
+			if (Zeny > 2199) {
+				warp "rachel.gat",x,y;
+				cutin "zonda_01",255;
+				end;
+			} else {
+				mes "[Cool Event Corp. Staff]";
+				mes "I'm sorry, but you don't have";
+				mes "enough zeny for the Teleport";
+				mes "Service. The fee to teleport";
+				mes "to Rachel is 2200 zeny.";
+				close2;
+				cutin "zonda_01",255;
+				end;
+		case 2:
+			close2;
+			cutin "zonda_01",255;
+			end;
+	case 4:
+		if ((Class != Job_Merchant) && (Class != Job_Blacksmith) && (Class != Job_Alchemist)) {
+			mes "[Cool Event Corp. Staff]";
+			mes "I'm sorry, but the";
+			mes "Pushcart rental service";
+			mes "is only available to Merchants,";
+			mes "Blacksmiths, Master Smiths";
+			mes "Alchemists and Biochemists.";
+			close2;
+			cutin "zonda_01",255;
+			end;
+		} else if (Cart) {
+			mes "[Cool Event Corp. Staff]";
+			mes "You already have";
+			mes "a Pushcart equipped.";
+			mes "Unfortunately, we can't";
+			mes "rent more than one to";
+			mes "each customer at a time.";
+			close2;
+			cutin "zonda_01",255;
+			end;
+		} else {
+			if (!getskilllv(39)) {
+				mes "[Cool Event Corp. Staff]";
+				mes "You can only rent a cart after learning \"Push Cart\" skill.";
+				close2;
+				cutin "zonda_01",255;
+				end;
+			}
+			if (countitem(7061) != 0) {
+				delitem 7061,1;
+				setcart;
+				close2;
+				cutin "zonda_01",255;
+				end;
+			} else {
+				mes "[Cool Event Corp. Staff]";
+				mes "The Pushcart rental";
+				mes "fee is 800 zeny. Would";
+				mes "you like to rent a Pushcart?";
+				next;
+				switch(select("Rent a Pushcart.","Cancel")) {
+				case 1:
+					if (Zeny >= 800) {
+						set Zeny,Zeny-800;
+						setcart;
+						close2;
+						cutin "zonda_01",255;
+						end;
+					} else {
+						mes "[Cool Event Corp. Staff]";
+						mes "I'm sorry, but you";
+						mes "don't have enough";
+						mes "zeny to pay the Pushcart";
+						mes "rental fee of 800 zeny.";
+						close2;
+						cutin "zonda_01",255;
+						end;
+					}
+				case 2:
+					close2;
+					cutin "zonda_01",255;
+					end;
+				}
+			}
+		}
+	case 5:
+		mes "[Cool Event Corp. Staff]";
+		mes "Cool Event Corp. is always";
+		mes "striving to provide the best";
+		mes "services for our customers.";
+		mes "Help us become the best by";
+		mes "providing us with your opinions";
+		mes "and honest feedback. Thank you.";
+		close2;
+		cutin "zonda_01",255;
+		end;
+	}
+}
+
+
+//--------------------------------------------------------------
+// Veins Guides - [Tsuyuki]
+//--------------------------------------------------------------
+
+veins.gat,210,345,5	script	Veins Guide	934,{
+
+	mes "[Veins Guide]";
+	mes "Desert City Veins welcomes adventurers seeking shelter from harsh sandstorms.";
+	mes "If this is the first time for you to use the guide services, why don't you check the ...";
+	while(1) {
+		next;
+		switch(select("Village Guide","Remove Marks from Mini-Map","Notice","Cancel")) {
+		case 1:
+			mes "[Veins Guide]";
+			mes "I can tell you any building location as long as it is in Veins.";
+			mes "So where do you want to go?";
+			if ('@compass_check == 0) {
+				mes "Would you like me";
+				mes "to mark locations";
+				mes "on your Mini-Map?";
+				next;
+ 				switch(select("Yes.","No.")) {
+ 				case 1:
+ 					set '@compass_check,1;
+ 					break;
+ 				case 2:
+ 					set '@compass_check,2;
+ 					break;
+ 				}
+			}
+			while(1) {
+ 				if ('@wait_button_chk == 0) {
+					set '@wait_button_chk,1;
+				} else {
+					next;
+ 				}
+				switch(select("Temple","Inn","Weapon Shop","Tool Shop","Airship","Tavern","Geological Research Institute","Cancel")) {
+				case 1:
+					mes "[Veins Guide]";
+					mes "Our temple is located north,";
+					mes "and always crowded with sincere followes of Goddess Freya.";
+					if ('@compass_check == 1) {
+						viewpoint 1,196,274,2,0xFF0000;
+					} else {
+						viewpoint 1,196,274,2,0xFF0000;
+					}
+					break;
+				case 2:
+					mes "[Veins Guide]";
+					mes "You can rest your fatigue of the journey in the Inn.";
+					mes "The left building next to me is the Inn of Veins.";
+					if ('@compass_check == 1) {
+						viewpoint 1,131,280,3,0xFF00FF;
+					} else {
+						viewpoint 1,131,280,3,0xFF00FF;
+					}
+					break;
+				case 3:
+					mes "[Veins Guide]";
+					mes "Yes, you should protect yourself from danger on your own.";
+					mes "Purchase high quality weapons at affordable prices.";
+					mes "The Veins Weapon Shop is located to the West.";
+					if ('@compass_check == 1) {
+						viewpoint 1,149,184,4,0x99FFFF;
+					} else {
+						viewpoint 1,149,184,4,0x99FFFF;
+					}
+					break;
+				case 4:
+					mes "[Veins Guide]";
+					mes "Have you packed enough necessities  for your adventure?";
+					mes "If not, I suggest you check what the Veins in the Center can offer you.";
+					if ('@compass_check == 1) {
+						viewpoint 1,230,172,5,0x0000FF;
+					} else {
+						viewpoint 1,230,172,5,0x0000FF;
+					}
+					break;
+				case 5:
+					mes "[Veins Guide]";
+					mes "Please be aware that Veins only operates cargo airships.";
+					if ('@compass_check == 1) {
+						viewpoint 1,272,292,6,0xCE9CFF;
+					} else {
+						viewpoint 1,272,292,6,0x00FF00;
+					}
+					break;
+				case 6:
+					mes "[Veins Guide]";
+					mes "If you'd like to make friends with";
+					mes "the townspeople, I suggest you";
+					mes "go have a drink at the tavern to";
+					mes "the west.";
+					if ('@compass_check == 1) {
+						viewpoint 1,140,227,7,0xCECE31;
+					} else {
+						viewpoint 1,140,227,7,0x00FF00;
+					}
+					break;
+				case 7:
+					mes "[Veins Guide]";
+					mes "Are you interested in studying geology?";
+					mes "Then you'd better go check out the";
+					mes "Geological Research Institute on";
+					mes "the 2nd floor of the weapon shop.";
+					if ('@compass_check == 1) {
+						viewpoint 1,149,184,8,0xFF9C00;
+					} else {
+						viewpoint 1,149,184,8,0x00FF00;
+					}
+					break;
+				case 8:
+					mes "[Veins Guide]";
+					mes "If you like to get rid of all the location marks on your Mini-Map,";
+					mes "just ask me again, and choose 'Remove Marks from Mini-Map' menu.";
+					set '@exitwhile,1;
+					break;
+				}
+				if ('@exitwhile == 1) {
+					set '@exitwhile,0;
+					break;
+				}
+			}
+			break;
+		case 2:
+			viewpoint 2,196,274,2,0x00FF00;
+			viewpoint 2,131,280,3,0x00FF00;
+			viewpoint 2,149,184,4,0x00FF00;
+			viewpoint 2,230,172,5,0x00FF00;
+			viewpoint 2,272,292,6,0x00FF00;
+			viewpoint 2,140,227,7,0x00FF00;
+			viewpoint 2,149,184,8,0x00FF00;
+			viewpoint 2,87,170,9,0x00FF00;
+			set '@compass_check,0;
+			mes "[Veins Guide]";
+			mes "Okay, they are gone now. If you have more locations to ask, just let me know.";
+			mes "Enjoy your stay in Veins.";
+			break;
+		case 3:
+			mes "[Veins Guide]";
+			mes "When you are using the ''Village Guide'' menu,";
+			mes "make sure that building locations will be marked on your mini-map at the upper right side of your screen.";
+			mes "If you cannot see your mini-map, use the short cut key ''ctrl+tab'' or press the ''Map'' button on your basic information windows, okay?";
+			mes "And you can also zoom out your mini-map by using the ''-'' button in case you cannot view the entire map of the village.";
+			break;
+		case 4:
+			mes "[Veins Guide]";
+			mes "Enjoy your stay in Veins.";
+			close;
+		}
+	}
+}
+
+veins.gat,189,101,5	script	Veins Guide	934,{
+
+	mes "[Veins Guide]";
+	mes "Desert City Veins welcomes adventurers seeking shelter from harsh sandstorms.";
+	mes "If this is the first time for you to use the guide services, why don't you check the ...";
+	while(1) {
+		next;
+		switch(select("Village Guide","Remove Marks from Mini-Map","Notice","Cancel")) {
+		case 1:
+			mes "[Veins Guide]";
+			mes "I can tell you any building location as long as it is in Veins.";
+			mes "So where do you want to go?";
+			if ('@compass_check == 0) {
+				mes "Would you like me";
+				mes "to mark locations";
+				mes "on your Mini-Map?";
+				next;
+ 				switch(select("Yes.","No.")) {
+ 				case 1:
+ 					set '@compass_check,1;
+ 					break;
+ 				case 2:
+ 					set '@compass_check,2;
+ 					break;
+ 				}
+			}
+			while(1) {
+ 				if ('@wait_button_chk == 0) {
+					set '@wait_button_chk,1;
+				} else {
+					next;
+ 				}
+				switch(select("Temple","Inn","Weapon Shop","Tool Shop","Airship","Tavern","Geological Research Institute","Cancel")) {
+				case 1:
+					mes "[Veins Guide]";
+					mes "Our temple is located north,";
+					mes "and always crowded with sincere followes of Goddess Freya.";
+					if ('@compass_check == 1) {
+						viewpoint 1,196,274,2,0xFF0000;
+					} else {
+						viewpoint 1,196,274,2,0xFF0000;
+					}
+					break;
+				case 2:
+					mes "[Veins Guide]";
+					mes "You can rest your fatigue of the journey in the Inn.";
+					mes "The left building next to me is the Inn of Veins.";
+					if ('@compass_check == 1) {
+						viewpoint 1,131,280,3,0xFF00FF;
+					} else {
+						viewpoint 1,131,280,3,0xFF00FF;
+					}
+					break;
+				case 3:
+					mes "[Veins Guide]";
+					mes "Yes, you should protect yourself from danger on your own.";
+					mes "Purchase high quality weapons at affordable prices.";
+					mes "The Veins Weapon Shop is located to the West.";
+					if ('@compass_check == 1) {
+						viewpoint 1,149,184,4,0x99FFFF;
+					} else {
+						viewpoint 1,149,184,4,0x99FFFF;
+					}
+					break;
+				case 4:
+					mes "[Veins Guide]";
+					mes "Have you packed enough necessities  for your adventure?";
+					mes "If not, I suggest you check what the Veins in the Center can offer you.";
+					if ('@compass_check == 1) {
+						viewpoint 1,230,172,5,0x0000FF;
+					} else {
+						viewpoint 1,230,172,5,0x0000FF;
+					}
+					break;
+				case 5:
+					mes "[Veins Guide]";
+					mes "Please be aware that Veins only operates cargo airships.";
+					if ('@compass_check == 1) {
+						viewpoint 1,272,292,6,0xCE9CFF;
+					} else {
+						viewpoint 1,272,292,6,0x00FF00;
+					}
+					break;
+				case 6:
+					mes "[Veins Guide]";
+					mes "If you'd like to make friends with";
+					mes "the townspeople, I suggest you";
+					mes "go have a drink at the tavern to";
+					mes "the west.";
+					if ('@compass_check == 1) {
+						viewpoint 1,140,227,7,0xCECE31;
+					} else {
+						viewpoint 1,140,227,7,0x00FF00;
+					}
+					break;
+				case 7:
+					mes "[Veins Guide]";
+					mes "Are you interested in studying geology?";
+					mes "Then you'd better go check out the";
+					mes "Geological Research Institute on";
+					mes "the 2nd floor of the weapon shop.";
+					if ('@compass_check == 1) {
+						viewpoint 1,149,184,8,0xFF9C00;
+					} else {
+						viewpoint 1,149,184,8,0x00FF00;
+					}
+					break;
+				case 8:
+					mes "[Veins Guide]";
+					mes "If you like to get rid of all the location marks on your Mini-Map,";
+					mes "just ask me again, and choose 'Remove Marks from Mini-Map' menu.";
+					set '@exitwhile,1;
+					break;
+				}
+				if ('@exitwhile == 1) {
+					set '@exitwhile,0;
+					break;
+				}
+			}
+			break;
+		case 2:
+			viewpoint 2,196,274,2,0x00FF00;
+			viewpoint 2,131,280,3,0x00FF00;
+			viewpoint 2,149,184,4,0x00FF00;
+			viewpoint 2,230,172,5,0x00FF00;
+			viewpoint 2,272,292,6,0x00FF00;
+			viewpoint 2,140,227,7,0x00FF00;
+			viewpoint 2,149,184,8,0x00FF00;
+			viewpoint 2,87,170,9,0x00FF00;
+			set '@compass_check,0;
+			mes "[Veins Guide]";
+			mes "Okay, they are gone now. If you have more locations to ask, just let me know.";
+			mes "Enjoy your stay in Veins.";
+			break;
+		case 3:
+			mes "[Veins Guide]";
+			mes "When you are using the ''Village Guide'' menu,";
+			mes "make sure that building locations will be marked on your mini-map at the upper right side of your screen.";
+			mes "If you cannot see your mini-map, use the short cut key ''ctrl+tab'' or press the ''Map'' button on your basic information windows, okay?";
+			mes "And you can also zoom out your mini-map by using the ''-'' button in case you cannot view the entire map of the village.";
+			break;
+		case 4:
+			mes "[Veins Guide]";
+			mes "Enjoy your stay in Veins.";
+			close;
+		}
+	}
+}
+
+
+//--------------------------------------------------------------
+// Veins Inn Employee - [Tsuyuki]
+//--------------------------------------------------------------
+
+ve_in.gat,157,219,5	script	Inn Master	709,{
+
+	mes "[Inn Master]";
+	mes "Good day~";
+	mes "Welcome to the";
+	mes "most comfortable";
+	mes "inn here in Veins~";
+	next;
+	switch(select("Save Point","Rest -> 5000z","Quit")) {
+	case 1:
+		mes "[Inn Master]";
+		mes "Your Respawn Point";
+		mes "has been saved in Veins.";
+		mes "Enjoy your stay in town~";
+		savepoint "ve_in.gat",157,209; // Possibly custom coords
+		close;
+	case 2:
+		if (Zeny > 4999) {
+			// Possibly custom dialogue
+			mes "[Inn Master]";
+			mes "Enjoy your stay~";
+			close2;
+			set Zeny,Zeny - 5000;
+			percentheal 100,100;
+			warp "ve_in.gat",184,228; // Possibly custom coords
+			end;
+			// End possibly custom dialogue
+		} else {
+			mes "[Inn Master]";
+			mes "I'm sorry, but I don't";
+			mes "think you have enough";
+			mes "money to check in. The";
+			mes "service charge is 5,000 zeny.";
+			close;
+		}
+	case 3:
+		mes "Please come again.";
+		close;
+	}
+}
+
+
+//--------------------------------------------------------------
+// Veins Mail Box NPC - [Tsuyuki]
+//--------------------------------------------------------------
+
+veins.gat,218,123,6	script	Mailbox#28	888,{
+
+	mes "[Mailbox]";
+	mes "To use the mailbox service, you are required";
+	mes "to pay 130 zeny.";
+	mes "Would you like to use the service?";
+	next;
+	switch(select("Yes.","No.")) {
+	case 1:
+		if (Zeny < 130) {
+			mes "[Mailbox]";
+			mes "I am sorry, but you do not have enough money.";
+			mes "To use the mailbox service, you are required";
+			mes "to pay 130 zeny.";
+			close;
+		}
+		mes "[Mailbox]";
+		mes "Thank you, please come again.";
+		set Zeny,Zeny-130;
+		gmcommand "@mailbox";
+		close;
+
+	case 2:
+		mes "[Mailbox]";
+		mes "Thank you, please come again.";
+		close;
+	}
+}
+
+// Use instead when merged into normal file
+// veins.gat,218,123,6	duplicate(Mailbox)	Mailbox#28	888
+
+
+//--------------------------------------------------------------
+// Veins Town NPCs - (WIP) [Tsuyuki]
+//--------------------------------------------------------------
+
+ve_fild03.gat,257,130,3	script	Wincing Old Man	945,{
+
+	mes "[Zabaroo]";
+	mes "My back is killing me";
+	mes "after stooping over to";
+	mes "pick up stones all day long...";
+	mes "The pain... It's unbearable!";
+	next;
+	switch(select("Bend with your knees, yo.","Gosh, how bad is it?")) {
+	case 1:
+		mes "[Zabaroo]";
+		mes "Whippersnapper!";
+		mes "I didn't ask you for";
+		mes "your advice! Don't";
+		mes "patronize an old man!";
+		close;
+	case 2:
+		mes "[Zabaroo]";
+		mes "Oh, it hurts so much, it's";
+		mes "almost crippling. But I don't";
+		mes "have any choice. I need to";
+		mes "get enough stops to fill";
+		mes "this gap if I want to get";
+		mes "paid. Arrrrgh, damn it!";
+		next;
+		mes "[Zabaroo]";
+		mes "If I don't get enough";
+		mes "money to pay for my";
+		mes "grandaughter's medicine,";
+		mes "I won't be able to buy any";
+		mes "medicine for my granddaughter!";
+		mes "And that will be horrible! Ag!";
+		next;
+		switch(select("Can I help?"));
+		case 1:
+			break;
+		}
+		mes "[Zabaroo]";
+		mes "I appreciate your kindness,";
+		mes "stranger, but no. I have";
+		mes "to do this on my own.";
+		mes "A man must have his pride.";
+		next;
+		mes "*Snap*";
+		next;
+		mes "[Zabaroo]";
+		mes "Argh! My back...!";
+		mes "This was totally";
+		mes "unforeseeable!";
+		mes "Please! Please,";
+		mes "for the love of Freya,";
+		mes "please help me!";
+		next;
+		switch(select("I will help you."));
+		case 1:
+			break;
+		}
+		mes "[Zabaroo]";
+		mes "Thank you!";
+		mes "Thanks so much!";
+		next;
+		switch(select("What do you want me to do?")) {
+		case 1:
+			break;
+		}
+		// Died, couldn't get the rest of the dialogue [Tsuyuki]
+		close;
+	}
+}
+
+veins.gat,219,323,1	script	Towner	945,{
+
+	mes "[Towner]";
+	mes "Whoa, it's been a while";
+	mes "since I've seen tourists";
+	mes "in town. You might think";
+	mes "there's nothing here, but";
+	mes "take a closer look. You";
+	mes "might learn something.";
+	next;
+	mes "[Towner]";
+	mes "Just like people, you";
+	mes "can't know everything about";
+	mes "a place with only a glance.";
+	mes "If you give it a chance, I'm";
+	mes "sure you'll find something.";
+	next;
+	mes "[Towner]";
+	mes "What do I mean by ''a";
+	mes "closer look?'' Heh, you'll";
+	mes "see... Maybe. Hahahaha!";
+	mes "Oh, forget it, it's not";
+	mes "that important anyway.";
+	mes "May Freya bless you~";
+	close;
+}
+
+veins.gat,171,256,3	script	Towner	943,{
+
+	mes "[Towner]";
+	mes "Don't get me wrong:";
+	mes "I'd give my life in Freya's";
+	mes "name, but that so-called";
+	mes "temple just looks so strange";
+	mes "and suspicious. How can it";
+	mes "be a place of worship?";
+	close;
+}
+
+veins.gat,197,219,5	script	Towner	943,{
+
+	mes "[Towner]";
+	mes "I guess you can tell";
+	mes "from this withered tree";
+	mes "that our town is short";
+	mes "on water. I guess that's";
+	mes "a natural consequence of";
+	mes "living here in the desert...";
+	close;
+}
+
+veins.gat,78,226,5	script	Camel	938,{
+
+	mes "[Camel]";
+	mes "*Neigh* ~";
+	mes "*Chew Chew*";
+	close;
+}
+
+veins.gat,81,222,1	script	Camel	938,{
+
+	mes "[Camel]";
+	mes "*Neigh* ~";
+	mes "*Chew Chew*";
+	close;
+}
+
+veins.gat,77,219,5	script	Camel	938,{
+
+	mes "[Camel]";
+	mes "*Neigh* ~";
+	mes "*Chew Chew*";
+	close;
+}
+
+veins.gat,72,227,3	script	Camel	938,{
+
+	mes "[Camel]";
+	mes "*Neigh* ~";
+	mes "*Chew Chew*";
+	close;
+}
+
+veins.gat,73,215,7	script	Camel	938,{
+
+	mes "[Camel]";
+	mes "*Neigh* ~";
+	mes "*Chew Chew*";
+	close;
+}
+
+veins.gat,68,215,5	script	Camel	938,{
+
+	mes "[Camel]";
+	mes "*Neigh* ~";
+	mes "*Chew Chew*";
+	mes "*Sparkling Eyes*";
+	close;
+}
+
+viens.gat,121,199,3	script	Old Man	945,{
+
+	mes "[Old Man]";
+	mes "This isn't good.";
+	mes "The elderly outnumber";
+	mes "the youth here in Veins.";
+	mes "We're too close to becoming";
+	mes "something of a retirement";
+	mes "community. You see it, right?";
+	next;
+	mes "[Old Man]";
+	mes "I guess the young people";
+	mes "aren't content living here";
+	mes "since we lack a lot of the";
+	mes "material excitement of other";
+	mes "towns. They can't appreciate";
+	mes "what's really special here...";
+	close;
+}
+
+veins.gat,137,179,5	script	Towner	943,{
+
+	mes "[Towner]";
+	mes "Geez, why is our weapon";
+	mes "shop so boring? Nothing";
+	mes "there but the same ol'";
+	mes "regular junk. Sad to say,";
+	mes "there's nothing special.";
+	next;
+	mes "[Towner]";
+	mes "Wouldn't it be great";
+	mes "if there was a shop that";
+	mes "sold the legendary godly";
+	mes "weapons? Of course, that's";
+	mes "asking a bit too much.";
+	close;
+}
+
+veins.gat,159,171,3	script	Towner	945,{
+
+	mes "[Towner]";
+	mes "The small office on the";
+	mes "2nd floor of this weapon";
+	mes "shop is occupied by a";
+	mes "geologist. At least, he's";
+	mes "supposed to be one...";
+	next;
+	mes "[Towner]";
+	mes "The guy might be a quack:";
+	mes "all he does is drink and";
+	mes "flirt with skanky women";
+	mes "all day. I thought scholars";
+	mes "are supposed to read and study";
+	mes "and discover things, you know?";
+	close;
+}
+
+veins.gat,181,166,3	script	Lockenlock	900,{
+
+	mes "[Lockenlock]";
+	mes "Zzzz...";
+	mes "Zzzz... Argh!";
+	mes "...Zzz...";
+	next;
+	mes "^3366CCHe's drunk and fast asleep.^000000";
+	close;
+}
+
+veins.gat,177,147,3	script	Old Lady	942,{
+
+	mes "[Old Lady]";
+	mes "Owning a lot of stuff";
+	mes "might seem great, but";
+	mes "many things aren't that";
+	mes "valuable when you think";
+	mes "of them in terms of";
+	mes "real emotional value.";
+	next;
+	mes "[Old Lady]";
+	mes "Well, that might have been";
+	mes "a dangerous remark when";
+	mes "I'm trying to sell things to";
+	mes "customers. Still, I wish";
+	mes "I could carry a wider";
+	mes "selection of goods.";
+	next;
+	mes "[Old Lady]";
+	mes "Of course, we're here";
+	mes "in the middle of the desert,";
+	mes "so maybe I'm asking too much.";
+	close;
+}
+
+veins.gat,191,134,3	script	Old Man	945,{
+
+	mes "[Old Man]";
+	mes "Why don't you take";
+	mes "a look at my goods?";
+	mes "I've got many things";
+	mes "that might interest you~";
+	next;
+	mes "[Old Man]";
+	mes "Praise be to Freya,";
+	mes "who watches over us,";
+	mes "and blesses us with";
+	mes "food and drink. Don't";
+	mes "you think that's great,";
+	mes "young adventurer?";
+	close;
+}
+
+veins.gat,221,220,5	script	Young Town Native	943,{
+
+	mes "[Native Young Man]";
+	mes "My name is Toby.";
+	mes "I was born and raised here,";
+	mes "and no one knows more about";
+	mes "this town than me. Feel free";
+	mes "to ask if you need to find";
+	mes "your way around here.";
+	next;
+	mes "["+strcharinfo(0)+"]";
+	mes "No, thanks.";
+	next;
+	mes "[Native Young Man]";
+	mes "You don't...";
+	mes "*Sob* You don't";
+	mes "need me at all?";
+	close;
+}
+
+veins.gat,227,127,5	script	Ivory	940,{
+
+	mes "[Beautiful Lady]";
+	mes "Hm? Did you need";
+	mes "something? I'm still";
+	mes "setting up shop now";
+	mes "so I'm not really ready";
+	mes "to sell anything yet.";
+	close;
+}
+
+veins.gat,162,34,5	script	Towner	943,{
+
+	mes "[Towner]";
+	mes "I love cacti. They're";
+	mes "the most beautiful plants";
+	mes "in the desert. Sometimes,";
+	mes "they're the only signs of";
+	mes "life in a barren land.";
+	next;
+	mes "[Towner]";
+	mes "If you feel a stirring";
+	mes "in your heart when you";
+	mes "look at a cactus, you";
+	mes "must appreciate the";
+	mes "desert's true beauty.";
+	next;
+	mes "[Towner]";
+	mes "Well, I don't know if";
+	mes "I can find anyone that";
+	mes "finds the desert as";
+	mes "wonderful and enchanting";
+	mes "as I do. It's a pity, really.";
+	close;
+}
+
+veins.gat,148,41,3	script	Towner	940,{
+
+	mes "[Towner]";
+	mes "Welcome to Veins, the";
+	mes "town near the Temple of";
+	mes "Cheshrumnir. You may think";
+	mes "this is a dreary desert town,";
+	mes "but you'll find that it's as";
+	mes "lively as any other place.";
+	next;
+	mes "[Towner]";
+	mes "Sure, there are a few";
+	mes "characters in town, like";
+	mes "that cactus loving loony";
+	mes "over there, but not everyone's";
+	mes "like him. There's lots of nice,";
+	mes "kind people that you can meet.";
+	next;
+	mes "[Towner]";
+	mes "Well then, I hope that";
+	mes "you enjoy your stay~";
+	close;
+}
+
+veins.gat,161,63,3	script	Old Man	945,{
+
+	mes "[Old Man]";
+	mes "Oh. You must be";
+	mes "sightseeing. Um,";
+	mes "Veins is a small town,";
+	mes "visit Cheshrumnir Temple?";
+	next;
+	mes "[Old Man]";
+	mes "I hope you enjoy";
+	mes "your stay. Now if";
+	mes "you'll excuse me, I'd";
+	mes "like to continue with";
+	mes "my prayers to Freya.";
+	next;
+	mes "[Old Man]";
+	mes "Oh, gracious Freya, your";
+	mes "servant humbly beseeches";
+	mes "you on bended knee...";
+	mes "Heal me of this infirmity!";
+	mes "The body is droopingly limp,";
+	mes "but the spirit is willing...!";
+	mes "must be... Cheshrumnir Temple.";
+	close;
+}
+
+veins.gat,138,71,5	script	Kid	941,{
+
+	mes "[Kid]";
+	mes "Whoa, get out of here!";
+	mes "Can't you see that I'm";
+	mes "playing hide and go seek?!";
+	mes "Move before they find me!";
+	close;
+}
+
+veins.gat,115,59,5	script	Saraman	847,{
+
+	mes "[Saraman]";
+	mes "Zzz... Zzz~";
+	mes "Zzz...";
+	next;
+	mes "^3366CCWatching this man";
+	mes "snore also makes you";
+	mes "want to take a snooze.^000000";
+	close;
+}
+
+veins.gat,112,51	script	Towner	940,{
+
+	mes "[Towner]";
+	mes "Well, I'm actually";
+	mes "a little tired of coming";
+	mes "here all the time. I kind";
+	mes "of want to try someplace";
+	mes "else, but I also know he";
+	mes "really loves coming here.";
+	next;
+	mes "[Towner]";
+	mes "It would actually be";
+	mes "kind of sad if we stopped";
+	mes "coming here altogether.";
+	mes "I'm just happy so long";
+	mes "as he's with me~ Hoho~";
+	close;
+}

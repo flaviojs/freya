@@ -1,0 +1,60 @@
+//--------------------------------------------------------------
+//               (c)2004-2007 Aurora Team Presents:             
+//                  ___                                         
+//                 /   |_   _ _ __ ___  _ __ __ _               
+//                / /| | | | | '__/ _ \| '__/ _` |              
+//               / ___ | |_| | | | (_) | | | (_| |++            
+//              /_/  |_|\____|_|  \___/|_|  \__,_|              
+//                 http://aurora.deltaanime.net                 
+//--------------------------------------------------------------
+// Script Title: RO Episode 11.4 Moscovia Script Addition	Author: Various People
+//--------------------------------------------------------------
+// Revision History: v1.0
+//--------------------------------------------------------------
+//	1.0 First version, based on RussianRO's Moscovia addition [Tsuyuki]
+//--------------------------------------------------------------
+// Additional Notes: * Highly Unofficial *
+//--------------------------------------------------------------
+
+
+//--------------------------------------------------------------
+// Moscovia Region Warp Portals - [Azazel/$ephiroth]
+//--------------------------------------------------------------
+
+moscovia.gat,224,235,0	warp	moscoviawarp01	1,1,mosk_in.gat,96,91
+mosk_in.gat,93,91,0	warp	moscoviawarp02	1,1,moscovia.gat,224,232
+mosk_in.gat,100,126,0	warp	moscoviawarp03	1,1,mosk_in.gat,21,116
+mosk_in.gat,21,113,0	warp	moscoviawarp04	1,1,mosk_in.gat,100,123
+moscovia.gat,185,189,0	warp	moscoviawarp05	1,1,mosk_in.gat,16,179
+mosk_in.gat,13,179,0	warp	moscoviawarp06	1,1,moscovia.gat,188,193
+moscovia.gat,203,171,0	warp	moscoviawarp07	1,1,mosk_in.gat,85,179
+mosk_in.gat,88,179,0	warp	moscoviawarp08	1,1,moscovia.gat,205,168
+moscovia.gat,223,174,0	warp	moscoviawarp09	1,1,mosk_in.gat,14,245
+mosk_in.gat,11,245,0	warp	moscoviawarp10	1,1,moscovia.gat,220,177
+moscovia.gat,229,207,0	warp	moscoviawarp11	1,1,mosk_in.gat,141,178
+mosk_in.gat,141,175,0	warp	moscoviawarp12	1,1,moscovia.gat,226,204
+mosk_in.gat,150,191,0	warp	moscoviawarp13	1,1,mosk_in.gat,206,187
+mosk_in.gat,203,187,0	warp	moscoviawarp14	1,1,mosk_in.gat,147,191
+moscovia.gat,256,138,0	warp	moscoviawarp15	1,1,mosk_in.gat,211,114
+mosk_in.gat,211,111,0	warp	moscoviawarp16	1,1,moscovia.gat,254,141
+mosk_in.gat,221,128,0	warp	moscoviawarp17	1,1,mosk_in.gat,287,120
+mosk_in.gat,287,117,0	warp	moscoviawarp18	1,1,mosk_in.gat,221,125
+moscovia.gat,195,80,0	warp	moscoviawarp19	1,1,mosk_in.gat,215,40
+mosk_in.gat,215,37,0	warp	moscoviawarp20	1,1,moscovia.gat,194,78
+moscovia.gat,205,98,0	warp	moscoviawarp21	1,1,mosk_in.gat,213,256
+mosk_in.gat,213,253,0	warp	moscoviawarp22	1,1,moscovia.gat,202,96
+mosk_in.gat,219,272,0	warp	moscoviawarp23	1,1,mosk_in.gat,151,276
+mosk_in.gat,151,273,0	warp	moscoviawarp24	1,1,mosk_in.gat,219,269
+mosk_fild02.gat,190,256,0	warp	moscoviawarp025	1,1,mosk_dun01.gat,190,46
+mosk_dun01.gat,190,43,0	warp	moscoviawarp26	1,1,mosk_fild02.gat,190,253
+mosk_dun01.gat,200,272,0	warp	moscoviawarp27	1,1,mosk_dun02.gat,163,31
+mosk_dun02.gat,165,28,0	warp	moscoviawarp28	1,1,mosk_dun01.gat,200,269
+mosk_dun02.gat,266,117,0	warp	moscoviawarp29	1,1,mosk_dun03.gat,33,136
+mosk_dun03.gat,30,133,0	warp	moscoviawarp30	1,1,mosk_dun02.gat,263,118
+
+
+//--------------------------------------------------------------
+// Moscovia Region Monster Spawns - [Tsuyuki]
+//--------------------------------------------------------------
+
+// moscovia.gat,0,0,0,0	monster	Wild Rose	1261,1,7200000,3600000,0
