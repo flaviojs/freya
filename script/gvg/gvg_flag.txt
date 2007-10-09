@@ -80,6 +80,7 @@ function	script	F_GvGFlag	{
 	close;
 
 OnInit:
+OnFlagEmb_L1:
 	flagemblem getcastledata("aldeg_cas01.gat",1);
 	end;
 }
@@ -90,6 +91,7 @@ OnInit:
 	close;
 
 OnInit:
+OnFlagEmb_L1:
 	flagemblem getcastledata("aldeg_cas01.gat",1);
 	end;
 }
@@ -99,6 +101,7 @@ aldebaran.gat,152,97,4	script	Neuschwanstein#Flag0	722,{
 	close;
 
 OnInit:
+OnFlagEmb_L1:
 	flagemblem getcastledata("aldeg_cas01.gat",1);
 	end;
 }
@@ -137,6 +140,7 @@ aldeg_cas01.gat,210,150,4	duplicate(GvGFlagL1-2)	Neuschwanstein#Flag22	722
 	close;
 
 OnInit:
+OnFlagEmb_L2:
 	flagemblem getcastledata("aldeg_cas02.gat",1);
 	end;
 }
@@ -147,6 +151,7 @@ OnInit:
 	close;
 
 OnInit:
+OnFlagEmb_L2:
 	flagemblem getcastledata("aldeg_cas02.gat",1);
 	end;
 }
@@ -156,6 +161,7 @@ aldebaran.gat,149,97,4	script	Hohenschwangau#Flag0	722,{
 	close;
 
 OnInit:
+OnFlagEmb_L2:
 	flagemblem getcastledata("aldeg_cas02.gat",1);
 	end;
 }
@@ -188,6 +194,7 @@ aldeg_cas02.gat,121,29,2	duplicate(GvGFlagL2-2)	Hohenschwangau#Flag16	722
 	close;
 
 OnInit:
+OnFlagEmb_L3:
 	flagemblem getcastledata("aldeg_cas03.gat",1);
 	end;
 }
@@ -198,6 +205,7 @@ OnInit:
 	close;
 
 OnInit:
+OnFlagEmb_L3:
 	flagemblem getcastledata("aldeg_cas03.gat",1);
 	end;
 }
@@ -207,6 +215,7 @@ aldebaran.gat,134,97,4	script	Nuernberg#Flag0	722,{
 	close;
 
 OnInit:
+OnFlagEmb_L3:
 	flagemblem getcastledata("aldeg_cas03.gat",1);
 	end;
 }
@@ -242,6 +251,7 @@ aldeg_cas03.gat,96,62,2	duplicate(GvGFlagL3-2)	Nuernberg#Flag19	722
 	close;
 
 OnInit:
+OnFlagEmb_L4:
 	flagemblem getcastledata("aldeg_cas04.gat",1);
 	end;
 }
@@ -252,6 +262,7 @@ OnInit:
 	close;
 
 OnInit:
+OnFlagEmb_L4:
 	flagemblem getcastledata("aldeg_cas04.gat",1);
 	end;
 }
@@ -261,6 +272,7 @@ aldebaran.gat,131,97,4	script	Wuerzburg#Flag0	722,{
 	close;
 
 OnInit:
+OnFlagEmb_L4:
 	flagemblem getcastledata("aldeg_cas04.gat",1);
 	end;
 }
@@ -296,6 +308,7 @@ aldeg_cas04.gat,169,15,2	duplicate(GvGFlagL4-2)	Wuerzburg#Flag19	722
 	close;
 
 OnInit:
+OnFlagEmb_L5:
 	flagemblem getcastledata("aldeg_cas05.gat",1);
 	end;
 }
@@ -306,6 +319,7 @@ OnInit:
 	close;
 
 OnInit:
+OnFlagEmb_L5:
 	flagemblem getcastledata("aldeg_cas05.gat",1);
 	end;
 }
@@ -315,6 +329,7 @@ aldebaran.gat,128,97,4	script	Rothenburg#Flag0	722,{
 	close;
 
 OnInit:
+OnFlagEmb_L5:
 	flagemblem getcastledata("aldeg_cas05.gat",1);
 	end;
 }
@@ -349,6 +364,7 @@ aldeg_cas05.gat,150,202,2	duplicate(GvGFlagL5-2)	Rothenburg#Flag18	722
 	close;
 
 OnInit:
+OnFlagEmb_B1:
 	flagemblem getcastledata("gefg_cas01.gat",1);
 	end;
 }
@@ -359,6 +375,7 @@ OnInit:
 	close;
 
 OnInit:
+OnFlagEmb_B1:
 	flagemblem getcastledata("gefg_cas01.gat",1);
 	end;
 }
@@ -368,6 +385,7 @@ geffen.gat,109,123,2	script	Repherion#Flag0	722,{
 	close;
 
 OnInit:
+OnFlagEmb_B1:
 	flagemblem getcastledata("gefg_cas01.gat",1);
 	end;
 }
@@ -394,6 +412,7 @@ gefg_cas01.gat,64,16,4	duplicate(GvGFlagB1-2)	Repherion#Flag10	722
 	close;
 
 OnInit:
+OnFlagEmb_B2:
 	flagemblem getcastledata("gefg_cas02.gat",1);
 	end;
 }
@@ -404,6 +423,7 @@ OnInit:
 	close;
 
 OnInit:
+OnFlagEmb_B2:
 	flagemblem getcastledata("gefg_cas02.gat",1);
 	end;
 }
@@ -413,6 +433,7 @@ geffen.gat,112,129,1	script	Eeyorbriggar#Flag0	722,{
 	close;
 
 OnInit:
+OnFlagEmb_B2:
 	flagemblem getcastledata("gefg_cas02.gat",1);
 	end;
 }
@@ -440,6 +461,7 @@ gefg_cas02.gat,68,36,2	duplicate(GvGFlagB2-2)	Eeyorbriggar#Flag11	722
 	close;
 
 OnInit:
+OnFlagEmb_B3:
 	flagemblem getcastledata("gefg_cas03.gat",1);
 	end;
 }
@@ -450,6 +472,7 @@ OnInit:
 	close;
 
 OnInit:
+OnFlagEmb_B3:
 	flagemblem getcastledata("gefg_cas03.gat",1);
 	end;
 }
@@ -459,6 +482,7 @@ geffen.gat,120,132,8	script	Yesnelph#Flag0	722,{
 	close;
 
 OnInit:
+OnFlagEmb_B3:
 	flagemblem getcastledata("gefg_cas03.gat",1);
 	end;
 }
@@ -489,6 +513,7 @@ gefg_cas03.gat,34,208,1	duplicate(GvGFlagB3-2)	Yesnelph#Flag14	722
 	close;
 
 OnInit:
+OnFlagEmb_B4:
 	flagemblem getcastledata("gefg_cas04.gat",1);
 	end;
 }
@@ -499,6 +524,7 @@ OnInit:
 	close;
 
 OnInit:
+OnFlagEmb_B4:
 	flagemblem getcastledata("gefg_cas04.gat",1);
 	end;
 }
@@ -508,6 +534,7 @@ geffen.gat,127,130,7	script	Bergel#Flag0	722,{
 	close;
 
 OnInit:
+OnFlagEmb_B4:
 	flagemblem getcastledata("gefg_cas04.gat",1);
 	end;
 }
@@ -534,6 +561,7 @@ gefg_cas04.gat,35,73,4	duplicate(GvGFlagB4-2)	Bergel#Flag10	722
 	close;
 
 OnInit:
+OnFlagEmb_B5:
 	flagemblem getcastledata("gefg_cas05.gat",1);
 	end;
 }
@@ -544,6 +572,7 @@ OnInit:
 	close;
 
 OnInit:
+OnFlagEmb_B5:
 	flagemblem getcastledata("gefg_cas05.gat",1);
 	end;
 }
@@ -553,6 +582,7 @@ geffen.gat,131,123,6	script	Mersetzdeitz#Flag0	722,{
 	close;
 
 OnInit:
+OnFlagEmb_B5:
 	flagemblem getcastledata("gefg_cas05.gat",1);
 	end;
 }
@@ -579,6 +609,7 @@ gefg_cas05.gat,69,66,4	duplicate(GvGFlagB5-2)	Mersetzdeitz#Flag10	722
 	close;
 
 OnInit:
+OnFlagEmb_C1:
 	flagemblem getcastledata("payg_cas01.gat",1);
 	end;
 }
@@ -589,6 +620,7 @@ OnInit:
 	close;
 
 OnInit:
+OnFlagEmb_C1:
 	flagemblem getcastledata("payg_cas01.gat",1);
 	end;
 }
@@ -598,6 +630,7 @@ payon.gat,90,322,4	script	Bright Arbor#Flag0	722,{
 	close;
 
 OnInit:
+OnFlagEmb_C1:
 	flagemblem getcastledata("payg_cas01.gat",1);
 	end;
 }
@@ -607,6 +640,7 @@ payon.gat,166,177,3	script	Bright Arbor#Flag1	722,{
 	close;
 
 OnInit:
+OnFlagEmb_C1:
 	flagemblem getcastledata("payg_cas01.gat",1);
 	end;
 }
@@ -633,6 +667,7 @@ payg_cas01.gat,212,108,4	duplicate(GvGFlagC1-2)	Bright Arbor#Flag11	722
 	close;
 
 OnInit:
+OnFlagEmb_C2:
 	flagemblem getcastledata("payg_cas02.gat",1);
 	end;
 }
@@ -643,6 +678,7 @@ OnInit:
 	close;
 
 OnInit:
+OnFlagEmb_C2:
 	flagemblem getcastledata("payg_cas02.gat",1);
 	end;
 }
@@ -652,6 +688,7 @@ payon.gat,97,322,4	script	Sacred Altar#Flag0	722,{
 	close;
 
 OnInit:
+OnFlagEmb_C2:
 	flagemblem getcastledata("payg_cas02.gat",1);
 	end;
 }
@@ -661,6 +698,7 @@ payon.gat,166,173,3	script	Sacred Altar#Flag1	722,{
 	close;
 
 OnInit:
+OnFlagEmb_C2:
 	flagemblem getcastledata("payg_cas02.gat",1);
 	end;
 }
@@ -687,6 +725,7 @@ payg_cas02.gat,70,282,4	duplicate(GvGFlagC2-2)	Sacred Altar#Flag11	722
 	close;
 
 OnInit:
+OnFlagEmb_C3:
 	flagemblem getcastledata("payg_cas03.gat",1);
 	end;
 }
@@ -697,6 +736,7 @@ OnInit:
 	close;
 
 OnInit:
+OnFlagEmb_C3:
 	flagemblem getcastledata("payg_cas03.gat",1);
 	end;
 }
@@ -706,6 +746,7 @@ payon.gat,113,322,4	script	Holy Shadow#Flag0	722,{
 	close;
 
 OnInit:
+OnFlagEmb_C3:
 	flagemblem getcastledata("payg_cas03.gat",1);
 	end;
 }
@@ -715,6 +756,7 @@ payon.gat,166,169,3	script	Holy Shadow#Flag1	722,{
 	close;
 
 OnInit:
+OnFlagEmb_C3:
 	flagemblem getcastledata("payg_cas03.gat",1);
 	end;
 }
@@ -741,6 +783,7 @@ payg_cas03.gat,43,31,4	duplicate(GvGFlagC3-2)	Holy Shadow#Flag11	722
 	close;
 
 OnInit:
+OnFlagEmb_C4:
 	flagemblem getcastledata("payg_cas04.gat",1);
 	end;
 }
@@ -751,6 +794,7 @@ OnInit:
 	close;
 
 OnInit:
+OnFlagEmb_C4:
 	flagemblem getcastledata("payg_cas04.gat",1);
 	end;
 }
@@ -760,6 +804,7 @@ payon.gat,118,322,4	script	Scarlet Palace#Flag0	722,{
 	close;
 
 OnInit:
+OnFlagEmb_C4:
 	flagemblem getcastledata("payg_cas04.gat",1);
 	end;
 }
@@ -769,6 +814,7 @@ payon.gat,166,165,3	script	Scarlet Palace#Flag1	722,{
 	close;
 
 OnInit:
+OnFlagEmb_C4:
 	flagemblem getcastledata("payg_cas04.gat",1);
 	end;
 }
@@ -795,6 +841,7 @@ payg_cas04.gat,239,181,4	duplicate(GvGFlagC4-2)	Scarlet Palace#Flag11	722
 	close;
 
 OnInit:
+OnFlagEmb_C5:
 	flagemblem getcastledata("payg_cas05.gat",1);
 	end;
 }
@@ -805,6 +852,7 @@ OnInit:
 	close;
 
 OnInit:
+OnFlagEmb_C5:
 	flagemblem getcastledata("payg_cas05.gat",1);
 	end;
 }
@@ -814,6 +862,7 @@ payon.gat,123,322,4	script	Bamboo Grove Hill#Flag0	722,{
 	close;
 
 OnInit:
+OnFlagEmb_C5:
 	flagemblem getcastledata("payg_cas05.gat",1);
 	end;
 }
@@ -823,6 +872,7 @@ payon.gat,166,161,3	script	Bamboo Grove Hill#Flag1	722,{
 	close;
 
 OnInit:
+OnFlagEmb_C5:
 	flagemblem getcastledata("payg_cas05.gat",1);
 	end;
 }
@@ -849,6 +899,7 @@ payg_cas05.gat,55,260,2	duplicate(GvGFlagC5-2)	Bamboo Grove Hill#Flag11	722
 	close;
 
 OnInit:
+OnFlagEmb_V1:
 	flagemblem getcastledata("prtg_cas01.gat",1);
 	end;
 }
@@ -859,6 +910,7 @@ OnInit:
 	close;
 
 OnInit:
+OnFlagEmb_V1:
 	flagemblem getcastledata("prtg_cas01.gat",1);
 	end;
 }
@@ -868,6 +920,7 @@ prontera.gat,155,190,4	script	Kriemhild#0	722,{
 	close;
 
 OnInit:
+OnFlagEmb_V1:
 	flagemblem getcastledata("prtg_cas01.gat",1);
 	end;
 }
@@ -898,6 +951,7 @@ prtg_cas01.gat,45,46,4	duplicate(GvGFlagV1-2)	Kriemhild#Flag15	722
 	close;
 
 OnInit:
+OnFlagEmb_V2:
 	flagemblem getcastledata("prtg_cas02.gat",1);
 	end;
 }
@@ -908,6 +962,7 @@ OnInit:
 	close;
 
 OnInit:
+OnFlagEmb_V2:
 	flagemblem getcastledata("prtg_cas02.gat",1);
 	end;
 }
@@ -917,6 +972,7 @@ prontera.gat,146,194,3	script	Swanhild#0	722,{
 	close;
 
 OnInit:
+OnFlagEmb_V2:
 	flagemblem getcastledata("prtg_cas02.gat",1);
 	end;
 }
@@ -949,6 +1005,7 @@ prtg_cas02.gat,162,161,4	duplicate(GvGFlagV2-2)	Swanhild#Flag16	722
 	close;
 
 OnInit:
+OnFlagEmb_V3:
 	flagemblem getcastledata("prtg_cas03.gat",1);
 	end;
 }
@@ -959,6 +1016,7 @@ OnInit:
 	close;
 
 OnInit:
+OnFlagEmb_V3:
 	flagemblem getcastledata("prtg_cas03.gat",1);
 	end;
 }
@@ -968,6 +1026,7 @@ prontera.gat,143,203,2	script	Fadhgridh#0	722,{
 	close;
 
 OnInit:
+OnFlagEmb_V3:
 	flagemblem getcastledata("prtg_cas03.gat",1);
 	end;
 }
@@ -998,6 +1057,7 @@ prtg_cas03.gat,165,201,4	duplicate(GvGFlagV3-2)	Fadhgridh#Flag14	722
 	close;
 
 OnInit:
+OnFlagEmb_V4:
 	flagemblem getcastledata("prtg_cas04.gat",1);
 	end;
 }
@@ -1008,6 +1068,7 @@ OnInit:
 	close;
 
 OnInit:
+OnFlagEmb_V4:
 	flagemblem getcastledata("prtg_cas04.gat",1);
 	end;
 }
@@ -1017,6 +1078,7 @@ prontera.gat,167,203,6	script	Skoegul#0	722,{
 	close;
 
 OnInit:
+OnFlagEmb_V4:
 	flagemblem getcastledata("prtg_cas04.gat",1);
 	end;
 }
@@ -1047,6 +1109,7 @@ prtg_cas04.gat,263,27,4	duplicate(GvGFlagV4-2)	Skoegul#Flag14	722
 	close;
 
 OnInit:
+OnFlagEmb_V5:
 	flagemblem getcastledata("prtg_cas05.gat",1);
 	end;
 }
@@ -1057,6 +1120,7 @@ OnInit:
 	close;
 
 OnInit:
+OnFlagEmb_V5:
 	flagemblem getcastledata("prtg_cas05.gat",1);
 	end;
 }
@@ -1066,6 +1130,7 @@ prontera.gat,165,194,5	script	Gondul#0	722,{
 	close;
 
 OnInit:
+OnFlagEmb_V5:
 	flagemblem getcastledata("prtg_cas05.gat",1);
 	end;
 }
